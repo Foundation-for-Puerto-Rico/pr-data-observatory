@@ -40,3 +40,7 @@ The Knowledge Area page `site/money-cycle.html` ("How public money moves" / "Có
 **Sources and a caution.** The library of laws of the Office of Management and Budget (`bvirtualogp.pr.gov`) did not answer from the build computer on 2026-11-19, so two laws link to copies on `hacienda.pr.gov` and `docs.pr.gov`; Act 147 of 1980 links to the library, which a web search confirmed holds it.
 
 **Tests:** `tests/test_money_cycle.py`.
+
+## OGP's Manual of the Budget Process (2026-11-23)
+
+The stages "Request" and "Approval" follow the order of OGP's manual (https://gestion-presupuestaria.ogp.pr.gov/): the Board approves the Governor's proposal or sends it back before the Legislature sees it, and certifies the budget after the Governor signs. "Approved is not spent" gives the manual's rule on money of earlier fiscal years. The manual is in `SOURCES`. More in `docs/spending.md`.
