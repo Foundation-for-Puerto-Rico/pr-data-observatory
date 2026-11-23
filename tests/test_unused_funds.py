@@ -186,5 +186,74 @@ class Page(unittest.TestCase):
                 self.assertTrue(v and v != k or k in ("Medicaid",), k[:60])
 
 
+REBUILT = ROOT / "docs" / "analysis" / "unused-funds-2026-11" / "awards_rebuilt.json"
+
+
+@unittest.skipUnless(REBUILT.exists() and PAGE.exists(), "the rebuilt grants are not built")
+class Rebuilt(unittest.TestCase):
+    """Five grants rebuilt from the first commitment to the last payment on record (decision 112, step 4; rebuild_awards.py)."""
+
+    @classmethod
+    def setUpClass(cls):
+        import importlib.util
+        spec = importlib.util.spec_from_file_location("rebuild_awards", REBUILT.with_name("rebuild_awards.py"))
+        cls.R = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(cls.R)
+        cls.doc = json.loads(REBUILT.read_text(encoding="utf-8"))
+        cls.page = PAGE.read_text(encoding="utf-8")
+
+    def test_payments_by_year_are_the_last_month_of_each_year_summed_over_account_lines(self):
+        f = lambda y, m, line, v: {"reporting_fiscal_year": y, "reporting_fiscal_month": m, "federal_account": line, "gross_outlay_amount": v}
+        rows = [f(2022, 6, "a", 10.0), f(2022, 12, "a", 30.0), f(2022, 12, "b", 5.0), f(2023, 3, "a", 7.0), f(2023, 9, "a", 4.0), f(2021, 9, "a", None)]
+        self.assertEqual(self.R.by_year(rows), [[2021, 9, 0.0], [2022, 12, 35.0], [2023, 9, 4.0]])
+        self.assertEqual(self.R.fiscal_year("2023-09-30"), 2023)
+        self.assertEqual(self.R.fiscal_year("2023-10-01"), 2024)
+
+    def test_five_grants_of_five_programs_outside_the_programs_kept_apart(self):
+        g = self.doc["grants"]
+        self.assertEqual(len(g), 5)
+        self.assertEqual(len({"/".join(x["listings"]) for x in g}), 5)
+        for x in g:
+            self.assertFalse(set(x["listings"]) & self.R.LEFT_OUT)
+            self.assertLess(x["end"], self.doc["ended_before"])
+        balances = [x["obligated"] - x["paid"] for x in g]
+        self.assertEqual(balances, sorted(balances, reverse=True))
+
+    def test_each_grant_adds_up(self):
+        for x in self.doc["grants"]:
+            self.assertAlmostEqual(sum(y[2] for y in x["paid_by_year"]), x["paid"], delta=1)
+            self.assertAlmostEqual(sum(c[2] for c in x["changes"]), x["obligated"], delta=1)
+            self.assertAlmostEqual(sum(y[2] for y in x["paid_by_year"] if y[0] > x["end_fiscal_year"]), x["paid_after_end_year"], delta=1)
+            self.assertGreaterEqual(x["highest"], x["obligated"])
+
+    def test_no_recipient_and_no_grant_number(self):
+        text = REBUILT.read_text(encoding="utf-8").lower().replace("no recipient", "").replace("the recipient is not read", "")
+        for word in ("recipient", "award id", "uei", "duns", "fain", "asst_", "generated"):
+            self.assertNotIn(word, text)
+
+    def test_the_file_is_what_the_cache_gives(self):
+        if not (self.R.CACHE / "index.json").exists():
+            self.skipTest("no cache of the rebuilt grants")
+        self.assertEqual(self.R.build(check=True), 0)
+
+    def test_the_page_quotes_the_file_and_draws_no_indicator(self):
+        sec = self.page[self.page.index('id="rebuilt"'):self.page.index('id="limits"')]
+        self.assertEqual(sec.count('class="card uf-rb"'), 5)
+        for x in self.doc["grants"]:
+            self.assertIn(f"Committed: ${x['obligated'] / 1e6:,.1f} million. Paid out on record: ${x['paid'] / 1e6:,.1f} million", sec)
+            for y in x["paid_by_year"]:
+                if y[2]:
+                    self.assertIn(f">{y[2] / 1e6:,.1f}<", sec)
+        self.assertIn("the page builds no indicator from these balances", sec)
+        self.assertIn('href="#rebuilt"', self.page[:self.page.index('id="rebuilt"')])
+        low = re.sub(r"<[^>]+>", " ", sec).lower()
+        for word in ("returned", "lost", "at risk", "wasted", "failed", "unused"):
+            self.assertNotIn(word, low)
+        es = json.loads((ROOT / "i18n_src" / "es" / "unused_funds.json").read_text(encoding="utf-8"))
+        for k, v in es.items():
+            if "rebuilt" in k or "on record:" in k or "The record shows payments" in k:
+                self.assertNotEqual(k, v)
+
+
 if __name__ == "__main__":
     unittest.main()
