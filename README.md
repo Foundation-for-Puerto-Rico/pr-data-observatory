@@ -313,7 +313,7 @@ cache/                raw downloads (git-ignored)
 
 ## Publishing
 
-Live at https://observatory.foundationpr.org/ (Azure Static Web Apps, deployed by `.github/workflows/pages.yml` from `site/` on every push to `main`; see `docs/azure.md`). The old address, https://foundation-for-puerto-rico.github.io/pr-digital-twin/, redirects there. See `SHARE.md` for links, blurbs, the WordPress embed and the attribution line.
+Live at https://observatory.foundationpr.org/ (Azure Static Web Apps, deployed by `.github/workflows/pages.yml` from `site/` on every push to `main`; see `docs/azure.md`). See `SHARE.md` for links, blurbs, the WordPress embed and the attribution line.
 
 The `site/` folder is a complete static site with no build step. For a WordPress link, embed the published URL in an iframe or link to it from a tab.
 

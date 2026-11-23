@@ -41,7 +41,7 @@ LAADS DAAC is the NASA archive that holds the Black Marble files. It only accept
 
 You need admin rights on the repository.
 
-1. Go to https://github.com/Foundation-for-Puerto-Rico/pr-digital-twin.
+1. Go to https://github.com/Foundation-for-Puerto-Rico/pr-data-observatory.
 2. Click **Settings** (top right of the repository; you need admin rights to see it).
 3. In the left menu, open **Secrets and variables → Actions**.
 4. On the **Secrets** tab, click **New repository secret**.

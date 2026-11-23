@@ -31,7 +31,7 @@ STATE = Path(os.environ.get("FRESHNESS_STATE", ROOT / ".freshness" / "state.json
 OUT = Path(os.environ.get("FRESHNESS_OUT", ROOT / ".freshness"))
 DOC = ROOT / "docs" / "automation.md"
 MONTHS = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"]
-UA = "PR-Data-Observatory/1.0 (+https://github.com/Foundation-for-Puerto-Rico/pr-digital-twin)"
+UA = "PR-Data-Observatory/1.0 (+https://github.com/Foundation-for-Puerto-Rico/pr-data-observatory)"
 
 
 class ProbeError(Exception):

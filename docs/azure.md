@@ -29,7 +29,7 @@ These steps record how the site was set up, for a rebuild or a second environmen
 3. **Give the repository the deployment token.** The pipe sends the token straight into the secret, so no person sees it:
 
    ```bash
-   az staticwebapp secrets list -n swa-observatory-prod -g rg-observatory-prod --query properties.apiKey -o tsv | gh secret set AZURE_STATIC_WEB_APPS_API_TOKEN -R Foundation-for-Puerto-Rico/pr-digital-twin
+   az staticwebapp secrets list -n swa-observatory-prod -g rg-observatory-prod --query properties.apiKey -o tsv | gh secret set AZURE_STATIC_WEB_APPS_API_TOKEN -R Foundation-for-Puerto-Rico/pr-data-observatory
    ```
 
 4. **Publish.** Run **Actions > Publish site > Run workflow**.
@@ -45,7 +45,6 @@ These steps record how the site was set up, for a rebuild or a second environmen
 
 ## How publishing works
 
-`.github/workflows/pages.yml` runs on every push to `main` that touches `site/`, `pages-redirect/`, or the workflow itself. It has two jobs:
+`.github/workflows/pages.yml` runs on every push to `main` that touches `site/`, `connector/`, or the workflow itself. Its one job:
 
 - **`azure`** runs the privacy checks on `places.json` and then uploads `site/` to the Static Web App with the `AZURE_STATIC_WEB_APPS_API_TOKEN` secret. Nothing reaches the site when a check fails.
-- **`pages`** keeps the old address, `https://foundation-for-puerto-rico.github.io/pr-digital-twin/`, alive as a redirect. It publishes `pages-redirect/index.html` as both `index.html` and `404.html`, so GitHub Pages serves it at every path. The page sends the reader to the same path, query, and hash on the new address. GitHub Pages can't redirect on the server, so links shared before the move keep working only through this page.

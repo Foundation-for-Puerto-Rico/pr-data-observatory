@@ -53,7 +53,7 @@ import xlsx_read
 ROOT = Path(__file__).resolve().parent
 CACHE = ROOT / "cache" / "economy"
 OUT = hs.OUT
-UA = {"User-Agent": "Mozilla/5.0 (compatible; pr-digital-twin research dashboard; +https://github.com/Foundation-for-Puerto-Rico/pr-digital-twin)"}
+UA = {"User-Agent": "Mozilla/5.0 (compatible; pr-digital-twin research dashboard; +https://github.com/Foundation-for-Puerto-Rico/pr-data-observatory)"}
 log = hs.log
 
 SECTORS = [("11", "Agriculture, forestry, fishing and hunting"), ("21", "Mining and quarrying"), ("22", "Utilities"), ("23", "Construction"), ("31-33", "Manufacturing"),

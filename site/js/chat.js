@@ -1524,7 +1524,7 @@ function chSaveWish(a) { try { localStorage.setItem(CH_WISH_KEY, JSON.stringify(
 function chAddWish(q) { if (CH.handed) return;   // a question that arrived in a link (#ask=) is not the visitor's own wish
   const a = chWish().concat(CH.memWish || []).filter((x, i, s) => s.findIndex(y => y.q === x.q) === i); if (a.some(x => x.q === q)) return; a.push({ q: q.slice(0, 200), t: new Date().toISOString().slice(0, 10) }); chSaveWish(a); }
 function chWishText(w) { return 'Data requests from the PR Data Observatory chat\n\n' + w.map(x => `- ${x.q} (${x.t})`).join('\n'); }
-function chIssueUrl(w) { return 'https://github.com/Foundation-for-Puerto-Rico/pr-digital-twin/issues/new?title=' + encodeURIComponent('Data requests from the chat') + '&body=' + encodeURIComponent(chWishText(w)); }
+function chIssueUrl(w) { return 'https://github.com/Foundation-for-Puerto-Rico/pr-data-observatory/issues/new?title=' + encodeURIComponent('Data requests from the chat') + '&body=' + encodeURIComponent(chWishText(w)); }
 async function chCopyWish() { const w = chWish(); if (!w.length) { toast(chTx(CH.ui).wishEmpty, 3000); return; } try { await navigator.clipboard.writeText(chWishText(w)); toast(chTx(CH.ui).copied, 2500); } catch { toast(chTx(CH.ui).copyFail, 4000); } }
 
 // ── Ask ──────────────────────────────────────────────────────────────────────

@@ -10,7 +10,7 @@
 | Knowledge Area · WCRP (published with an "In review" marker; not indexed) | https://observatory.foundationpr.org/wcrp.html |
 | A municipality directly (example) | https://observatory.foundationpr.org/#San%20Juan |
 
-Hosting: Azure Static Web Apps, deployed from the `site/` folder of the private repo `Foundation-for-Puerto-Rico/pr-digital-twin` by the workflow in `.github/workflows/pages.yml` (`docs/azure.md`). Links to the old address, https://foundation-for-puerto-rico.github.io/pr-digital-twin/, redirect to the same page on the new one. Every push to `main` that touches `site/` republishes within about two minutes. The repo stays private; only the site is public.
+Hosting: Azure Static Web Apps, deployed from the `site/` folder of the public repo `Foundation-for-Puerto-Rico/pr-data-observatory` by the workflow in `.github/workflows/pages.yml` (`docs/azure.md`). Every push to `main` that touches `site/` republishes within about two minutes. The repo stays private; only the site is public.
 
 ## Before sharing outside FPR
 

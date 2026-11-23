@@ -26,7 +26,7 @@ Creating an App for the organization and installing it on a repository needs an 
      - Metadata: Read-only (always required)
      - Everything else: No access.
    - Where can this App be installed: **Only on this account**.
-2. **Install it** on the organization, choosing **Only select repositories → pr-digital-twin**.
+2. **Install it** on the organization, choosing **Only select repositories → pr-data-observatory**.
 3. **Generate a private key** on the App's page (Private keys → Generate). The browser downloads a `.pem` file. Keep it private: whoever holds it can act as the App.
 4. **Give the repository the App's ID and key.** Repository settings → Secrets and variables → Actions:
    - Variables tab → New repository variable: `BOT_APP_ID` = the App ID shown at the top of the App's page (a number; not secret).

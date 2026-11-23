@@ -39,7 +39,7 @@ import xlsx_read
 ROOT = Path(__file__).resolve().parent
 CACHE = ROOT / "cache" / "inflation"
 OUT = ROOT / "site" / "data" / "inflation.json"
-UA = {"User-Agent": "Mozilla/5.0 (compatible; pr-digital-twin research dashboard; +https://github.com/Foundation-for-Puerto-Rico/pr-digital-twin)"}
+UA = {"User-Agent": "Mozilla/5.0 (compatible; pr-digital-twin research dashboard; +https://github.com/Foundation-for-Puerto-Rico/pr-data-observatory)"}
 UA_CENSUS = {"User-Agent": "pr-digital-twin/1.0 (Foundation for Puerto Rico)"}   # the agent housing_series.py uses on www2.census.gov
 
 URL = {

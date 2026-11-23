@@ -81,7 +81,7 @@ const Scenarios = (() => {
       </section>
       <section class="sc-box" aria-labelledby="scModelH"><h3 class="sec" id="scModelH">${esc(T('Load a model output'))}</h3>
         <div class="ix-warn" role="note"><span class="ms-icon" aria-hidden="true">warning</span>${esc(T('A model output is the result of a model, not observed data. The observatory checks its format, not its numbers.'))}</div>
-        <div class="note">${Th('A CSV or GeoJSON file in the format of the <a href="{doc}" target="_blank" rel="noopener">documentation</a>, by municipio. <a href="{sample}" download>Sample file (made-up values)</a>.', { doc: 'https://github.com/Foundation-for-Puerto-Rico/pr-digital-twin/blob/main/docs/scenarios.md', sample: 'samples/model_output_sample.csv' })}</div>
+        <div class="note">${Th('A CSV or GeoJSON file in the format of the <a href="{doc}" target="_blank" rel="noopener">documentation</a>, by municipio. <a href="{sample}" download>Sample file (made-up values)</a>.', { doc: 'https://github.com/Foundation-for-Puerto-Rico/pr-data-observatory/blob/main/docs/scenarios.md', sample: 'samples/model_output_sample.csv' })}</div>
         <div class="btn-row"><label class="btn" for="scModel"><span class="ms-icon" aria-hidden="true">upload</span>${esc(T('Choose a file'))}</label><input type="file" id="scModel" accept=".csv,.geojson,.json,text/csv,application/geo+json,application/json" hidden></div>
         ${st.models.length ? `<ul class="sc-ul">${st.models.map(m => `<li>${esc(m.header.model_name)} ${esc(m.header.model_version)} · ${esc(Tn(m.series.length, '{n} variable', '{n} variables'))}</li>`).join('')}</ul>` : ''}
       </section></div>
