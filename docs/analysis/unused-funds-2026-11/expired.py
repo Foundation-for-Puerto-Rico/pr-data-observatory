@@ -21,7 +21,7 @@ import requests
 HERE = pathlib.Path(__file__).resolve().parent
 CACHE = pathlib.Path(os.environ.get("TWIN_CACHE", "C:/t/cache")) / "spending" / "expired"
 URL = "https://api.usaspending.gov/api/v2/search/spending_by_award/"
-UA = {"User-Agent": "Mozilla/5.0 (compatible; pr-digital-twin research dashboard; +https://github.com/Foundation-for-Puerto-Rico/pr-digital-twin)"}
+UA = {"User-Agent": "Mozilla/5.0 (compatible; pr-digital-twin research dashboard; +https://github.com/Foundation-for-Puerto-Rico/pr-data-observatory)"}
 FIELDS = ["Award ID", "Award Amount", "Total Outlays", "CFDA Number", "End Date", "Awarding Agency", "Recipient Name"]
 YEARS = range(2020, 2026)
 EXCLUDE = {"97.036"}

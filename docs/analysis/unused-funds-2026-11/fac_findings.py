@@ -20,7 +20,7 @@ import requests
 HERE = pathlib.Path(__file__).resolve().parent
 CACHE = pathlib.Path(os.environ.get("TWIN_CACHE", "C:/t/cache")) / "spending" / "fac_findings"
 URL = "https://api.fac.gov"
-UA = {"User-Agent": "Mozilla/5.0 (compatible; pr-digital-twin research dashboard; +https://github.com/Foundation-for-Puerto-Rico/pr-digital-twin)"}
+UA = {"User-Agent": "Mozilla/5.0 (compatible; pr-digital-twin research dashboard; +https://github.com/Foundation-for-Puerto-Rico/pr-data-observatory)"}
 GENERAL = "report_id,audit_year,auditee_name,entity_type,fy_end_date,total_amount_expended,fac_accepted_date"
 FINDINGS = "report_id,award_reference,reference_number,is_repeat_finding,is_questioned_costs,is_material_weakness,is_significant_deficiency,is_modified_opinion,type_requirement"
 AWARDS = "report_id,award_reference,federal_agency_prefix,federal_award_extension,federal_program_name,amount_expended,findings_count"

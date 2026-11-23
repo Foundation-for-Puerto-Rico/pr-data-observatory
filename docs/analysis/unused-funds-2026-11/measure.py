@@ -20,7 +20,7 @@ import requests
 HERE = pathlib.Path(__file__).resolve().parent
 CACHE = pathlib.Path(os.environ.get("TWIN_CACHE", "C:/t/cache")) / "spending" / "deobligations"
 URL = "https://api.usaspending.gov/api/v2/search/spending_by_transaction/"
-UA = {"User-Agent": "Mozilla/5.0 (compatible; pr-digital-twin research dashboard; +https://github.com/Foundation-for-Puerto-Rico/pr-digital-twin)"}
+UA = {"User-Agent": "Mozilla/5.0 (compatible; pr-digital-twin research dashboard; +https://github.com/Foundation-for-Puerto-Rico/pr-data-observatory)"}
 FIELDS = ["Award ID", "Mod", "Recipient Name", "Action Date", "Transaction Amount", "Awarding Agency", "Awarding Sub Agency", "Award Type",
           "Assistance Listing", "Action Type", "generated_internal_id"]
 YEARS = range(2019, 2027)          # federal fiscal years, October to September, named by the year they end

@@ -1,7 +1,7 @@
 {
  "built": "2026-11-23",
  "snapshot": "Snapshot 2026-10",
- "total_bytes": 144966788,
+ "total_bytes": 144966795,
  "limits": {
   "site_bytes": 1048576000,
   "file_bytes": 104857600,
@@ -12,7 +12,7 @@
  "growth_note": "Every harvested dataset stays and new ones are added, so the data folder only grows. Each dataset is its own lazily loaded file. When the total passes the planning line, move the large files to object storage as Parquet or PMTiles and query them in the browser (for example with DuckDB-WASM) while the small summaries stay on the page.",
  "totals": {
   "files": 195,
-  "bytes": 144966788,
+  "bytes": 144966795,
   "records": 8935234,
   "fields": 2504,
   "values": 12896932,
@@ -387,7 +387,7 @@
   {
    "date": "2026-11-23",
    "files": 195,
-   "bytes": 144966788,
+   "bytes": 144966795,
    "records": 8935234,
    "fields": 2504,
    "values": 12896932,
@@ -1117,7 +1117,7 @@
    "file": "catalog.json",
    "title": "Catalog: domains and headline figures, read first",
    "bytes": 30388,
-   "gzip_bytes": 9127,
+   "gzip_bytes": 9126,
    "loaded_by": [
     {
      "route": "map",
@@ -1144,7 +1144,7 @@
    "vertices": null,
    "first_published": "2026-10-06",
    "last_updated": "2026-11-23",
-   "versions": 261,
+   "versions": 262,
    "documented_by": 1,
    "review": {
     "status": "unstated",
@@ -1817,7 +1817,7 @@
   {
    "file": "dictionary.json",
    "title": "Data dictionary: entries, sources, glossary and descriptions",
-   "bytes": 5587063,
+   "bytes": 5587067,
    "gzip_bytes": 1231871,
    "loaded_by": [],
    "title_es": "Diccionario de datos: entradas, fuentes, glosario y descripciones",
@@ -1837,7 +1837,7 @@
    "vertices": null,
    "first_published": "2026-10-05",
    "last_updated": "2026-11-23",
-   "versions": 223,
+   "versions": 224,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -2427,8 +2427,8 @@
   {
    "file": "dictionary_detail_system.json",
    "title": "Data dictionary page: the full entries of the Observatory system domain, read when one is opened",
-   "bytes": 717306,
-   "gzip_bytes": 214535,
+   "bytes": 717310,
+   "gzip_bytes": 214537,
    "loaded_by": [],
    "title_es": "Página del diccionario de datos: las entradas completas del dominio Sistema del observatorio, que se leen al abrir una",
    "domains": [
@@ -2446,7 +2446,7 @@
    "vertices": null,
    "first_published": "2026-10-18",
    "last_updated": "2026-11-23",
-   "versions": 107,
+   "versions": 108,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -2583,8 +2583,8 @@
   {
    "file": "dictionary_words.json",
    "title": "Data dictionary search words: the words of each entry's definition, method, geography, source notes, how to read it and cautions, for the page's search",
-   "bytes": 1308471,
-   "gzip_bytes": 353340,
+   "bytes": 1308470,
+   "gzip_bytes": 353335,
    "loaded_by": [
     {
      "route": "dictionary",
@@ -2607,7 +2607,7 @@
    "vertices": null,
    "first_published": "2026-11-16",
    "last_updated": "2026-11-23",
-   "versions": 24,
+   "versions": 25,
    "documented_by": 0,
    "review": {
     "status": "none",
