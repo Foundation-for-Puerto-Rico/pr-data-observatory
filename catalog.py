@@ -65,7 +65,7 @@ def check_island(spec, muni, who):
     if not fields:
         raise SystemExit(f"catalog: the island rule of {who} has no sum, ratio or wmean")
     for f in fields:
-        if not any(f in r for r in muni.values()):
+        if not any(f.partition(".")[0] in r and (not f.partition(".")[2] or isinstance(r[f.partition(".")[0]], dict)) for r in muni.values()):
             raise SystemExit(f"catalog: the island rule of {who} reads '{f}', which no municipality has in municipalities.json")
     if spec.get("unit", "") not in ("", "$", "%"):
         raise SystemExit(f"catalog: the island rule of {who} has the unit '{spec['unit']}'; use '', '$' or '%'")
@@ -73,15 +73,25 @@ def check_island(spec, muni, who):
         raise SystemExit(f"catalog: the island rule of {who} needs 'd' (decimals) as a whole number of 0 or more")
 
 
+def field_value(row, f):
+    """A municipal field; "a.b" reads key b of the object a (missing = 0), and an object field (the areas of landuse_km2) reads as the sum of its values."""
+    head, _, key = f.partition(".")
+    v = row.get(head)
+    if isinstance(v, dict):
+        return v.get(key) or 0 if key else sum(x or 0 for x in v.values())
+    return v
+
+
 def island_value(spec, muni):
-    """The Puerto Rico figure of a municipal snapshot field, by the rule in the registry: {"sum": f} | {"ratio": {num, den, scale}} | {"wmean": {field, weight}}."""
+    """The Puerto Rico figure of a municipal snapshot field, by the rule in the registry: {"sum": f} | {"ratio": {num, den, scale}} | {"wmean": {field, weight}}.
+    In a ratio, "a.b" reads key b of an object field and an object field reads as the sum of its values (landuse_km2.protected / landuse_km2)."""
     rows = list(muni.values())
     if "sum" in spec:
         return sum(r.get(spec["sum"]) or 0 for r in rows)
     if "ratio" in spec:
         r = spec["ratio"]
-        den = sum(x.get(r["den"]) or 0 for x in rows)
-        return sum(x.get(r["num"]) or 0 for x in rows) / den * r.get("scale", 1) if den else None
+        den = sum(field_value(x, r["den"]) or 0 for x in rows)
+        return sum(field_value(x, r["num"]) or 0 for x in rows) / den * r.get("scale", 1) if den else None
     if "wmean" in spec:
         w = spec["wmean"]
         pairs = [(x.get(w["field"]), x.get(w["weight"])) for x in rows if x.get(w["field"]) is not None and x.get(w["weight"])]

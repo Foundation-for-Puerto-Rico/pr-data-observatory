@@ -41,6 +41,13 @@ class IslandRules(unittest.TestCase):
     def test_weighted_mean_skips_municipalities_without_a_value_or_weight(self):
         self.assertAlmostEqual(catalog.island_value({"wmean": {"field": "x", "weight": "w"}}, self.MUNI), (50 * 100 + 10 * 300) / 400)
 
+    def test_ratio_reads_a_key_of_an_object_field_and_the_sum_of_the_object(self):
+        muni = {"A": {"lu": {"p": 30, "u": 70}}, "B": {"lu": {"p": 10, "u": 290}}, "C": {"lu": None}}
+        self.assertAlmostEqual(catalog.island_value({"ratio": {"num": "lu.p", "den": "lu", "scale": 100}}, muni), 10.0)   # (30+10)/(100+300)
+        catalog.check_island({"ratio": {"num": "lu.p", "den": "lu"}}, muni, "x.y")
+        with self.assertRaises(SystemExit):
+            catalog.check_island({"ratio": {"num": "nope.p", "den": "lu"}}, muni, "x.y")
+
     def test_zero_denominator_gives_none(self):
         self.assertIsNone(catalog.island_value({"ratio": {"num": "n", "den": "zero"}}, self.MUNI))
         self.assertIsNone(catalog.island_value({"wmean": {"field": "x", "weight": "zero"}}, self.MUNI))
@@ -174,7 +181,7 @@ class PublishedCatalog(unittest.TestCase):
             self.assertTrue(d["name"]["es"] and d["name"]["en"] and d["description"]["es"] and d["description"]["en"], d["id"])
 
     def test_headline_series_figures_equal_the_last_puerto_rico_value_of_the_file(self):
-        files = {f: load(DATA / f) for f in ("housing_series.json", "economy_series.json", "health_series.json", "community_series.json", "broadband_series.json", "infrastructure_series.json")}
+        files = {f: load(DATA / f) for f in ("housing_series.json", "economy_series.json", "health_series.json", "community_series.json", "broadband_series.json", "infrastructure_series.json", "buildings_series.json")}
         n = 0
         for d in self.cat["domains"]:
             h = d["headline"]
@@ -202,9 +209,8 @@ class PublishedCatalog(unittest.TestCase):
     def test_headline_snapshot_figures_are_recomputed_independently(self):
         rows = list(self.muni.values())
         by_id = {d["id"]: d for d in self.cat["domains"]}
-        hz = by_id["hazards"]["headline"]
-        self.assertAlmostEqual(hz["value"], round(sum(r["in_sfha"] for r in rows) / sum(r["assets"] for r in rows) * 100, 1))
-        self.assertEqual(by_id["environment.land"]["headline"]["value"], sum(r["in_protected"] for r in rows))
+        lu = [r.get("landuse_km2") or {} for r in rows]   # Land since 2026-11-17: the island's share of specially protected rural land in the 2015 plan, not tourism places
+        self.assertEqual(by_id["environment.land"]["headline"]["value"], round(sum(x.get("protected", 0) for x in lu) / sum(sum(x.values()) for x in lu) * 100, 1))
         self.assertEqual(by_id["economy.visitor-economy"]["headline"]["value"], sum(r["assets"] for r in rows))
         mb = by_id["infrastructure.mobility"]["headline"]
         w = sum(r["population_2020"] for r in rows)

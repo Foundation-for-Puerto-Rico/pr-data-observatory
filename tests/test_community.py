@@ -334,7 +334,7 @@ class Published(unittest.TestCase):
     def test_the_series_holds_counts_only(self):
         t = (DATA / "community_series.json").read_text(encoding="utf-8")
         d = json.loads(t)
-        self.assertEqual([v["key"] for v in d["vars"]], ["nrhp_places", "bh_all", "bh_su", "bh_mh", "bh_both"])
+        self.assertEqual([v["key"] for v in d["vars"]], ["nrhp_places", "ce_n", "ce_viviendas", "bh_all", "bh_su", "bh_mh", "bh_both"])
         self.assertEqual(d["geo"]["ids"][-1], "72")
         self.assertEqual(len(d["geo"]["ids"]), 79)
         V = {v["key"]: list(v["years"].values())[0] for v in d["vars"]}
@@ -343,12 +343,17 @@ class Published(unittest.TestCase):
             self.assertTrue(all(isinstance(x, int) and x >= 0 for x in vals), k)
         for i in range(79):
             self.assertEqual(V["bh_all"][i], V["bh_su"][i] + V["bh_mh"][i] + V["bh_both"][i], d["geo"]["names"][i])
+        ce = json.loads((DATA / "comunidades.geojson").read_text(encoding="utf-8"))["features"]   # the Comunidades Especiales (2006): Puerto Rico = every community, the municipios add up to it
+        self.assertEqual(V["ce_n"][-1], len(ce))
+        self.assertEqual(sum(V["ce_n"][:-1]), len(ce))
+        self.assertEqual(V["ce_viviendas"][-1], sum(f["properties"].get("viviendas") or 0 for f in ce))
+        self.assertEqual(sum(V["ce_viviendas"][:-1]), V["ce_viviendas"][-1])
         self.assertGreaterEqual(V["bh_all"][-1], sum(V["bh_all"][:-1]))
         self.assertGreaterEqual(sum(V["nrhp_places"][:-1]), V["nrhp_places"][-1] - 1)   # a listing counts in each municipio it touches
         self.assertNotRegex(t, r"-6[5-7]\.\d{4,}", "a longitude")
         self.assertNotRegex(t, PHONE_TEXT)
         self.assertNotRegex(t, EMAIL_TEXT)
-        self.assertEqual(sorted(d["sources"]), ["nps_nrhp", "samhsa_nsumhss"])
+        self.assertEqual(sorted(d["sources"]), ["jp_comunidades_especiales", "nps_nrhp", "samhsa_nsumhss"])
 
     def test_non_prasa_water_counts_have_no_names(self):
         d = json.loads((DATA / "infrastructure_series.json").read_text(encoding="utf-8"))

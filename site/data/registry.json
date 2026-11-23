@@ -1,7 +1,7 @@
 {
  "built": "2026-11-23",
  "snapshot": "Snapshot 2026-10",
- "total_bytes": 144966795,
+ "total_bytes": 144980284,
  "limits": {
   "site_bytes": 1048576000,
   "file_bytes": 104857600,
@@ -12,14 +12,14 @@
  "growth_note": "Every harvested dataset stays and new ones are added, so the data folder only grows. Each dataset is its own lazily loaded file. When the total passes the planning line, move the large files to object storage as Parquet or PMTiles and query them in the browser (for example with DuckDB-WASM) while the small summaries stay on the page.",
  "totals": {
   "files": 195,
-  "bytes": 144966795,
-  "records": 8935234,
-  "fields": 2504,
-  "values": 12896932,
-  "items": 1160,
+  "bytes": 144980284,
+  "records": 8935313,
+  "fields": 2506,
+  "values": 12897090,
+  "items": 1162,
   "vertices": 4047648,
   "counted_files": 156,
-  "documenting_items": 840,
+  "documenting_items": 842,
   "first_published": "2026-10-01",
   "last_updated": "2026-11-23"
  },
@@ -387,11 +387,11 @@
   {
    "date": "2026-11-23",
    "files": 195,
-   "bytes": 144966795,
-   "records": 8935234,
-   "fields": 2504,
-   "values": 12896932,
-   "items": 1160
+   "bytes": 144980284,
+   "records": 8935313,
+   "fields": 2506,
+   "values": 12897090,
+   "items": 1162
   }
  ],
  "domain_names": {
@@ -1116,8 +1116,8 @@
   {
    "file": "catalog.json",
    "title": "Catalog: domains and headline figures, read first",
-   "bytes": 30388,
-   "gzip_bytes": 9126,
+   "bytes": 30482,
+   "gzip_bytes": 9215,
    "loaded_by": [
     {
      "route": "map",
@@ -1144,7 +1144,7 @@
    "vertices": null,
    "first_published": "2026-10-06",
    "last_updated": "2026-11-23",
-   "versions": 262,
+   "versions": 263,
    "documented_by": 1,
    "review": {
     "status": "unstated",
@@ -1163,8 +1163,8 @@
   {
    "file": "catalog_domains.json",
    "title": "Catalog: the domain of each dictionary entry, for the area profile",
-   "bytes": 30526,
-   "gzip_bytes": 7676,
+   "bytes": 30568,
+   "gzip_bytes": 7684,
    "loaded_by": [
     {
      "route": "profile",
@@ -1187,7 +1187,7 @@
    "vertices": null,
    "first_published": "2026-11-16",
    "last_updated": "2026-11-23",
-   "versions": 19,
+   "versions": 20,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -1197,8 +1197,8 @@
   {
    "file": "catalog_es.json",
    "title": "Catalog: words of the Spanish summaries, for the search",
-   "bytes": 159584,
-   "gzip_bytes": 41289,
+   "bytes": 159810,
+   "gzip_bytes": 41334,
    "loaded_by": [],
    "title_es": "Catálogo: palabras de los resúmenes en español, para la búsqueda",
    "domains": [
@@ -1209,7 +1209,7 @@
    "geography": "none",
    "time": "snapshot",
    "built": "2026-10-02T02:31:31+00:00",
-   "items": 1064,
+   "items": 1066,
    "kind": "documentation",
    "records": null,
    "fields": null,
@@ -1217,7 +1217,7 @@
    "vertices": null,
    "first_published": "2026-10-18",
    "last_updated": "2026-11-23",
-   "versions": 91,
+   "versions": 92,
    "documented_by": 1,
    "review": {
     "status": "none",
@@ -1227,8 +1227,8 @@
   {
    "file": "catalog_index.json",
    "title": "Catalog: index of the dictionary, read on first use",
-   "bytes": 279704,
-   "gzip_bytes": 47185,
+   "bytes": 280303,
+   "gzip_bytes": 47265,
    "loaded_by": [],
    "title_es": "Catálogo: índice del diccionario, que se lee al usarlo",
    "domains": [
@@ -1239,7 +1239,7 @@
    "geography": "none",
    "time": "snapshot",
    "built": "2026-10-02T02:31:31+00:00",
-   "items": 1160,
+   "items": 1162,
    "kind": "documentation",
    "records": null,
    "fields": null,
@@ -1247,7 +1247,7 @@
    "vertices": null,
    "first_published": "2026-10-18",
    "last_updated": "2026-11-23",
-   "versions": 104,
+   "versions": 105,
    "documented_by": 1,
    "review": {
     "status": "none",
@@ -1391,8 +1391,8 @@
   {
    "file": "community_series.json",
    "title": "Historic places and treatment facilities by municipio (NPS, SAMHSA)",
-   "bytes": 9093,
-   "gzip_bytes": 2739,
+   "bytes": 11378,
+   "gzip_bytes": 3448,
    "loaded_by": [
     {
      "route": "profile",
@@ -1413,21 +1413,21 @@
    "tier": "small",
    "geography": "municipio",
    "time": "snapshot",
-   "datasets": 5,
+   "datasets": 7,
    "years": [
-    2024,
+    2006,
     2026
    ],
    "built": "2026-10-18",
    "kind": "data",
-   "records": 158,
-   "fields": 5,
-   "values": 395,
+   "records": 237,
+   "fields": 7,
+   "values": 553,
    "vertices": null,
    "first_published": "2026-10-18",
-   "last_updated": "2026-10-18",
-   "versions": 2,
-   "documented_by": 5,
+   "last_updated": "2026-11-23",
+   "versions": 3,
+   "documented_by": 7,
    "review": {
     "status": "none",
     "flags": [
@@ -1436,7 +1436,7 @@
    },
    "map": {
     "e": "bh_all",
-    "n": 5
+    "n": 7
    }
   },
   {
@@ -1817,8 +1817,8 @@
   {
    "file": "dictionary.json",
    "title": "Data dictionary: entries, sources, glossary and descriptions",
-   "bytes": 5587067,
-   "gzip_bytes": 1231871,
+   "bytes": 5591340,
+   "gzip_bytes": 1232509,
    "loaded_by": [],
    "title_es": "Diccionario de datos: entradas, fuentes, glosario y descripciones",
    "domains": [
@@ -1829,7 +1829,7 @@
    "geography": "none",
    "time": "snapshot",
    "built": "2026-11-23",
-   "items": 1160,
+   "items": 1162,
    "kind": "documentation",
    "records": null,
    "fields": null,
@@ -1837,7 +1837,7 @@
    "vertices": null,
    "first_published": "2026-10-05",
    "last_updated": "2026-11-23",
-   "versions": 224,
+   "versions": 225,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -1847,8 +1847,8 @@
   {
    "file": "dictionary_detail_communities.json",
    "title": "Data dictionary page: the full entries of the Communities domain, read when one is opened",
-   "bytes": 115946,
-   "gzip_bytes": 19100,
+   "bytes": 118776,
+   "gzip_bytes": 19532,
    "loaded_by": [],
    "title_es": "Página del diccionario de datos: las entradas completas del dominio Comunidades, que se leen al abrir una",
    "domains": [
@@ -1858,7 +1858,7 @@
    "tier": "medium",
    "geography": "none",
    "time": "snapshot",
-   "items": 35,
+   "items": 37,
    "kind": "documentation",
    "records": null,
    "fields": null,
@@ -1866,7 +1866,7 @@
    "vertices": null,
    "first_published": "2026-11-04",
    "last_updated": "2026-11-23",
-   "versions": 4,
+   "versions": 5,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -2427,8 +2427,8 @@
   {
    "file": "dictionary_detail_system.json",
    "title": "Data dictionary page: the full entries of the Observatory system domain, read when one is opened",
-   "bytes": 717310,
-   "gzip_bytes": 214537,
+   "bytes": 717544,
+   "gzip_bytes": 214614,
    "loaded_by": [],
    "title_es": "Página del diccionario de datos: las entradas completas del dominio Sistema del observatorio, que se leen al abrir una",
    "domains": [
@@ -2446,7 +2446,7 @@
    "vertices": null,
    "first_published": "2026-10-18",
    "last_updated": "2026-11-23",
-   "versions": 108,
+   "versions": 109,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -2474,8 +2474,8 @@
    "values": null,
    "vertices": null,
    "first_published": "2026-10-21",
-   "last_updated": "2026-11-20",
-   "versions": 55,
+   "last_updated": "2026-11-23",
+   "versions": 56,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -2485,8 +2485,8 @@
   {
    "file": "dictionary_list.json",
    "title": "Data dictionary page: the list, filters and search words, read first",
-   "bytes": 1910810,
-   "gzip_bytes": 427872,
+   "bytes": 1912652,
+   "gzip_bytes": 428189,
    "loaded_by": [
     {
      "route": "dictionary",
@@ -2502,7 +2502,7 @@
    "geography": "none",
    "time": "snapshot",
    "built": "2026-11-23",
-   "items": 1160,
+   "items": 1162,
    "kind": "documentation",
    "records": null,
    "fields": null,
@@ -2510,7 +2510,7 @@
    "vertices": null,
    "first_published": "2026-10-18",
    "last_updated": "2026-11-23",
-   "versions": 171,
+   "versions": 172,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -2555,7 +2555,7 @@
    "file": "dictionary_summary.json",
    "title": "Data dictionary: counts for the About tab",
    "bytes": 84,
-   "gzip_bytes": 94,
+   "gzip_bytes": 93,
    "loaded_by": [],
    "title_es": "Diccionario de datos: cifras para la pestaña Info",
    "domains": [
@@ -2573,7 +2573,7 @@
    "vertices": null,
    "first_published": "2026-10-05",
    "last_updated": "2026-11-23",
-   "versions": 124,
+   "versions": 125,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -2583,8 +2583,8 @@
   {
    "file": "dictionary_words.json",
    "title": "Data dictionary search words: the words of each entry's definition, method, geography, source notes, how to read it and cautions, for the page's search",
-   "bytes": 1308470,
-   "gzip_bytes": 353335,
+   "bytes": 1309534,
+   "gzip_bytes": 353581,
    "loaded_by": [
     {
      "route": "dictionary",
@@ -2607,7 +2607,7 @@
    "vertices": null,
    "first_published": "2026-11-16",
    "last_updated": "2026-11-23",
-   "versions": 25,
+   "versions": 26,
    "documented_by": 0,
    "review": {
     "status": "none",

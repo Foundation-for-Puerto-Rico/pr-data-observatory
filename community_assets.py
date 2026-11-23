@@ -85,6 +85,9 @@ SOURCES = {
     "samhsa_nsumhss": {"name": "SAMHSA — National Directories of substance use and mental health treatment facilities (N-SUMHSS)", "url": SAMHSA_DIRS,
                        "license": "Public domain (SAMHSA's Public Domain Notice in the directories; they may not be reproduced or distributed for a fee)",
                        "note": "Treatment facilities counted by municipio and type of care. The observatory publishes counts only: no facility name, address, telephone or point."},
+    "jp_comunidades_especiales": {"name": "Junta de Planificación — Delimitation of the Comunidades Especiales (2006)",
+                                  "url": "https://services6.arcgis.com/a523XM128lX5Nsff/arcgis/rest/services/Comunidades_Especiales/FeatureServer/0",
+                                  "license": "No data license stated (public layer of the Junta de Planificación)", "note": "Counted by municipio from comunidades.geojson (python comunidades.py)."},
 }
 
 
@@ -374,6 +377,22 @@ def treatment(rows, M):
     return counts, island, notes
 
 
+def comunidades(M):
+    """Counts by municipio of the Comunidades Especiales (Junta de Planificación, 2006) and of their housing units, read from comunidades.geojson (built by comunidades.py)."""
+    feats = json.loads((OUT / "comunidades.geojson").read_text(encoding="utf-8"))["features"]
+    n, viv, isl = Counter(), Counter(), Counter()
+    for f in feats:
+        p = f["properties"]
+        g = M.named(p.get("municipio"))
+        if g is None:
+            raise SystemExit(f"community_assets: Comunidad Especial {p.get('nombre')!r} names an unknown municipio {p.get('municipio')!r}")
+        n[g] += 1
+        viv[g] += p.get("viviendas") or 0
+        isl["n"] += 1
+        isl["viv"] += p.get("viviendas") or 0
+    return n, viv, isl
+
+
 def var(key, group, label, definition, values, sources, ref, **extra):
     return {"key": key, "group": group, "label": label, "unit": "", "d": 0, "type": "count", "sources": sources, "ref": ref, "definition": definition, "family": "community",
             "counted": False, "classes": "jenks", "noPerHU": True, **extra, "years": values}
@@ -394,6 +413,10 @@ def compute(refresh=(), offline=False):
     tfeats, tnotes = townhalls(srcs["townhall"]["rows"], M, srcs["townhall"].get("notes") if srcs["townhall"].get("from_published") else None)
     bh, bh_island, bh_notes = treatment(srcs["samhsa"]["rows"], M)
     col = lambda c, isl: [c.get(f, 0) for f in M.ids] + [isl]
+    ce_n, ce_viv, ce_isl = comunidades(M)
+    CE = "Communities · Comunidades Especiales"
+    ce_def = (" From the Junta de Planificación's 2006 delimitation of the Comunidades Especiales (713 communities), placed in the municipio the Junta gives each one."
+              " A 2006 designation: communities named later may be missing.")
     nps_year, sy = V["nps"][:4], str(srcs["samhsa"]["survey_year"])
     S = srcs["samhsa"]
     s_ref = f"SAMHSA National Directories {S['vintage']} (N-SUMHSS {sy}, released {S['released']})"
@@ -405,6 +428,10 @@ def compute(refresh=(), offline=False):
         var("nrhp_places", "Education · Historic places", "Places on the National Register of Historic Places (NPS)",
             "Buildings, structures, sites, objects and historic districts of Puerto Rico listed on the National Register of Historic Places, in the municipio that holds each listing's point. A listing with points in several municipios (a historic road or an irrigation system) counts in each, so the municipal values add up to more than Puerto Rico's, which counts each listing once. Every listing counts, private residences too, although the map does not draw those. Restricted and sensitive listings, such as archaeological sites, are not in the public data.",
             {nps_year: col(hn, hisland)}, ["nps_nrhp"], f"NPS National Register of Historic Places, public locations, edited up to {V['nps']}"),
+        var("ce_n", CE, "Comunidades Especiales (2006 delimitation)", "How many Comunidades Especiales each municipio has." + ce_def,
+            {"2006": col(ce_n, ce_isl["n"])}, ["jp_comunidades_especiales"], "Junta de Planificación, Comunidades Especiales delimitation (2006)"),
+        var("ce_viviendas", CE, "Housing units in Comunidades Especiales (2006 inventory)", "Housing units counted inside the Comunidades Especiales of each municipio by the 2006 inventory." + ce_def,
+            {"2006": col(ce_viv, ce_isl["viv"])}, ["jp_comunidades_especiales"], "Junta de Planificación, Comunidades Especiales delimitation (2006)"),
         var("bh_all", G, "Substance use and mental health treatment facilities (SAMHSA)", "All the facilities below: substance use treatment, mental health treatment or both." + bh_def,
             {sy: col(bh["bh_all"], bh_island["bh_all"])}, ["samhsa_nsumhss"], s_ref),
         var("bh_su", G, "Treatment facilities: substance use only (SAMHSA)", "Facilities that offer substance use treatment and not mental health treatment." + bh_def,
@@ -416,8 +443,8 @@ def compute(refresh=(), offline=False):
     ]
     notes = {"historic_places": hnotes, "town_halls": tnotes, "treatment_facilities": bh_notes,
              "vintages": {"nps_nrhp": V["nps"], "osm": V["townhall"], "samhsa_nsumhss": {"directory": S["vintage"], "survey_year": S["survey_year"], "released": S["released"]}}}
-    series = {"as_of": max(V["nps"], V["townhall"] or "")[:7], "years": sorted({int(nps_year), int(sy)}), "geo": {"ids": M.ids + ["72"], "names": M.names + ["Puerto Rico"]}, "vars": vs,
-              "sources": {k: SOURCES[k] for k in ("nps_nrhp", "samhsa_nsumhss")}, "notes": notes}
+    series = {"as_of": max(V["nps"], V["townhall"] or "")[:7], "years": sorted({2006, int(nps_year), int(sy)}), "geo": {"ids": M.ids + ["72"], "names": M.names + ["Puerto Rico"]}, "vars": vs,
+              "sources": {k: SOURCES[k] for k in ("nps_nrhp", "samhsa_nsumhss", "jp_comunidades_especiales")}, "notes": notes}
     srt = lambda fs: sorted(fs, key=lambda x: (x["properties"]["geoid"], x["properties"]["name"] or "", x["geometry"]["coordinates"]))
     layers = {FILES["nps"]: {"type": "FeatureCollection", "source": "nps_nrhp", "vintage": V["nps"], "notes": hnotes, "features": srt(hfeats)},
               FILES["townhall"]: {"type": "FeatureCollection", "source": "osm", "vintage": V["townhall"], "notes": tnotes, "features": srt(tfeats)}}
