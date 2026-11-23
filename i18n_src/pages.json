@@ -988,6 +988,34 @@
           ]
         }
       }
+    },
+    "treach": {
+      "file": "transit-reach.html",
+      "scopes": [
+        "common",
+        "knowledge",
+        "treach",
+        "chat"
+      ],
+      "scripts": [
+        "common.js",
+        "core/knowledge.js",
+        "transit_reach_page.js",
+        "chatboot.js"
+      ],
+      "pick": [
+        "chat"
+      ],
+      "modules": {
+        "glossary": {
+          "scopes": [
+            "glossary"
+          ],
+          "scripts": [
+            "core/glossary.js"
+          ]
+        }
+      }
     }
   },
   "data_labels": [

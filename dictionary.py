@@ -927,7 +927,7 @@ def check_links():
                 continue
             page, _, rest = h.partition("#")
             page, _, query = page.partition("?")
-            if page not in ("index.html", "3d.html", "housing.html", "wcrp.html", "route-analysis.html", "gii.html", "women-labor.html", "public-money.html", "public-spending.html", "unused-funds.html", "money-cycle.html", "reservoirs.html", "broadband.html", "opportunity-zones.html", "transit-links.html", "knowledge.html", "learn.html", "dictionary.html", "about.html", "profile.html", "data-management.html", ""):
+            if page not in ("index.html", "3d.html", "housing.html", "wcrp.html", "route-analysis.html", "gii.html", "women-labor.html", "public-money.html", "public-spending.html", "unused-funds.html", "money-cycle.html", "reservoirs.html", "broadband.html", "opportunity-zones.html", "transit-links.html", "transit-reach.html", "knowledge.html", "learn.html", "dictionary.html", "about.html", "profile.html", "data-management.html", ""):
                 no("unknown page")
                 continue
             if page == "data-management.html":   # the Data management page: a part of the page (#files, #growth, #withheld, #definitions)

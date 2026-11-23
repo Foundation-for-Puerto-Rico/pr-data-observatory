@@ -518,6 +518,14 @@ def a_tlinks(name, doc, t):
         rows([dict(zip(cols, r)) for r in doc.get(table) or []], t, table)
 
 
+def a_treach(name, doc, t):
+    """transit_reach.json (transit_reach.py): two tables of rows whose column names are listed beside them (barrios with barrio_fields, municipios with
+    muni_fields). Puerto Rico's totals are summaries of these records; the map's lines (Tren Urbano and the ferries) are drawing aids, not counted."""
+    for table, fk in (("barrios", "barrio_fields"), ("municipios", "muni_fields")):
+        cols = doc.get(fk) or []
+        rows([dict(zip(cols, r)) for r in doc.get(table) or []], t, table)
+
+
 def a_energy(name, doc, t):
     """energy.json (energy_series.py): one record for each month since 2010 (production by source, rooftop solar, the RPS share), one for each municipio
     (batteries, sales, smart meters), one for each LUMA commercial district, one for each month of SAIDI and of the price. Totals and the flood figures are
@@ -547,7 +555,7 @@ SPECIAL = {"places.json": a_places, "facility_hazards.json": lambda n, d, t: row
            "wcrp_social.json": a_wcrp_social, "wcrp_rvi_inputs.json": a_columns, "exposure_municipio.json": a_columns, "exposure_barrio.json": a_columns,
            "exposure_tract.json": a_columns, "route_compare.json": a_route_compare, "gii_profile.json": a_gii_profile,
            "gii_changes.json": a_gii_changes, "women_labor.json": a_women_labor, "geo/regions.json": a_regions,
-           "public_money_need.json": a_columns, "opportunity_zones.json": a_oz, "transit_links.json": a_tlinks, "urban_heat.json": a_columns, "reservoir_history.json": lambda n, d, t: rows(d["reservoirs"], t, "reservoirs"), "inflation.json": a_inflation, "energy.json": a_energy, "spending_state.json": a_spending_state, "spending_pica.json": a_spending_pica, "spending_federal.json": a_spending_federal, "spending_outlays.json": a_spending_outlays, "unused_funds.json": a_unused_funds, "taken_back.json": a_taken_back, "audit_findings.json": a_audit_findings, "spending_fema_pa.json": a_spending_fema_pa, "spending_municipio.json": a_spending_municipio, "spending_cdbgdr.json": a_spending_cdbgdr, "spending_cdbg.json": a_spending_cdbg, "nightlights_monthly.json": a_nightlights_monthly}
+           "public_money_need.json": a_columns, "opportunity_zones.json": a_oz, "transit_links.json": a_tlinks, "transit_reach.json": a_treach, "urban_heat.json": a_columns, "reservoir_history.json": lambda n, d, t: rows(d["reservoirs"], t, "reservoirs"), "inflation.json": a_inflation, "energy.json": a_energy, "spending_state.json": a_spending_state, "spending_pica.json": a_spending_pica, "spending_federal.json": a_spending_federal, "spending_outlays.json": a_spending_outlays, "unused_funds.json": a_unused_funds, "taken_back.json": a_taken_back, "audit_findings.json": a_audit_findings, "spending_fema_pa.json": a_spending_fema_pa, "spending_municipio.json": a_spending_municipio, "spending_cdbgdr.json": a_spending_cdbgdr, "spending_cdbg.json": a_spending_cdbg, "nightlights_monthly.json": a_nightlights_monthly}
 FAMILY = {**{n: "series" for n in SERIES}, **{n: "special" for n in SPECIAL}}
 
 

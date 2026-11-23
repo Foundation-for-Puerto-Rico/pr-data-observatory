@@ -185,10 +185,10 @@
   "catalog.json": {
    "first_published": "2026-10-06",
    "last_updated": "2026-11-23",
-   "versions": 262,
+   "versions": 263,
    "kind": "documentation",
-   "hash": "je9a4e2ced9f2b5af",
-   "bytes": 30388,
+   "hash": "j8bd903a013e8aaa2",
+   "bytes": 30578,
    "records": null,
    "fields": null,
    "values": null,
@@ -406,10 +406,10 @@
   "dictionary.json": {
    "first_published": "2026-10-05",
    "last_updated": "2026-11-23",
-   "versions": 224,
+   "versions": 225,
    "kind": "documentation",
-   "hash": "j2281830a13bbc002",
-   "bytes": 5587067,
+   "hash": "j254a588e3950fed2",
+   "bytes": 5588012,
    "records": null,
    "fields": null,
    "values": null,
@@ -2176,6 +2176,18 @@
    "values": 19273,
    "vertices": 78
   },
+  "transit_reach.json": {
+   "first_published": "2026-11-23",
+   "last_updated": "2026-11-23",
+   "versions": 1,
+   "kind": "data",
+   "hash": "j691466a9940a7382",
+   "bytes": 74643,
+   "records": 979,
+   "fields": 28,
+   "values": 14451,
+   "vertices": null
+  },
   "transit_routes.geojson": {
    "first_published": "2026-10-01",
    "last_updated": "2026-11-20",
@@ -2746,11 +2758,11 @@
   },
   {
    "date": "2026-11-23",
-   "files": 195,
-   "bytes": 144966795,
-   "records": 8935234,
-   "fields": 2504,
-   "values": 12896932,
+   "files": 196,
+   "bytes": 145042573,
+   "records": 8936213,
+   "fields": 2532,
+   "values": 12911383,
    "items": 1160
   }
  ]

@@ -25,6 +25,7 @@
     { id: 'energy', label: { en: 'Energy', es: 'Energía' }, icon: 'bolt', page: 'energy.html', status: 'published', review: true, ai: true, updated: '2026-11', domain: 'infrastructure.energy' },
     { id: 'oppzones', label: { en: 'Opportunity Zones 2.0', es: 'Zonas de Oportunidad 2.0' }, icon: 'work', page: 'opportunity-zones.html', status: 'published', ai: true, updated: '2026-11', domain: 'economy' },
     { id: 'tlinks', label: { en: 'Connections between municipios', es: 'Conexiones entre municipios' }, icon: 'commute', page: 'transit-links.html', status: 'published', review: true, ai: true, updated: '2026-11', domain: 'infrastructure' },
+    { id: 'treach', label: { en: 'Transit, barrio by barrio', es: 'Transporte colectivo, barrio por barrio' }, icon: 'directions_bus', page: 'transit-reach.html', status: 'published', review: true, ai: true, reviewer: ['leadership', 'compliance'], updated: '2026-11', domain: 'infrastructure' },
   ];
   const TOPICS = { communities: { es: 'Comunidades', en: 'Communities' }, economy: { es: 'Economía', en: 'Economy' }, environment: { es: 'Ambiente y clima', en: 'Environment and climate' }, housing: { es: 'Vivienda', en: 'Housing' }, infrastructure: { es: 'Infraestructura y movilidad', en: 'Infrastructure and mobility' }, 'public-money': { es: 'Dinero público', en: 'Public money' } };
   const REVIEWER_NAMES = { compliance: { en: 'Compliance', es: 'Cumplimiento' }, leadership: { en: 'leadership', es: 'la dirección' } };
