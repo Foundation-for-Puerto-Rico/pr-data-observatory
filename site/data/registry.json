@@ -1,7 +1,7 @@
 {
  "built": "2026-11-23",
  "snapshot": "Snapshot 2026-10",
- "total_bytes": 144966795,
+ "total_bytes": 144974724,
  "limits": {
   "site_bytes": 1048576000,
   "file_bytes": 104857600,
@@ -12,12 +12,12 @@
  "growth_note": "Every harvested dataset stays and new ones are added, so the data folder only grows. Each dataset is its own lazily loaded file. When the total passes the planning line, move the large files to object storage as Parquet or PMTiles and query them in the browser (for example with DuckDB-WASM) while the small summaries stay on the page.",
  "totals": {
   "files": 195,
-  "bytes": 144966795,
-  "records": 8935234,
-  "fields": 2504,
-  "values": 12896932,
+  "bytes": 144974724,
+  "records": 8935238,
+  "fields": 2509,
+  "values": 12897004,
   "items": 1160,
-  "vertices": 4047648,
+  "vertices": 4047652,
   "counted_files": 156,
   "documenting_items": 840,
   "first_published": "2026-10-01",
@@ -387,10 +387,10 @@
   {
    "date": "2026-11-23",
    "files": 195,
-   "bytes": 144966795,
-   "records": 8935234,
-   "fields": 2504,
-   "values": 12896932,
+   "bytes": 144974724,
+   "records": 8935238,
+   "fields": 2509,
+   "values": 12897004,
    "items": 1160
   }
  ],
@@ -1117,7 +1117,7 @@
    "file": "catalog.json",
    "title": "Catalog: domains and headline figures, read first",
    "bytes": 30388,
-   "gzip_bytes": 9126,
+   "gzip_bytes": 9134,
    "loaded_by": [
     {
      "route": "map",
@@ -1144,7 +1144,7 @@
    "vertices": null,
    "first_published": "2026-10-06",
    "last_updated": "2026-11-23",
-   "versions": 262,
+   "versions": 263,
    "documented_by": 1,
    "review": {
     "status": "unstated",
@@ -1227,8 +1227,8 @@
   {
    "file": "catalog_index.json",
    "title": "Catalog: index of the dictionary, read on first use",
-   "bytes": 279704,
-   "gzip_bytes": 47185,
+   "bytes": 279726,
+   "gzip_bytes": 47188,
    "loaded_by": [],
    "title_es": "Catálogo: índice del diccionario, que se lee al usarlo",
    "domains": [
@@ -1247,7 +1247,7 @@
    "vertices": null,
    "first_published": "2026-10-18",
    "last_updated": "2026-11-23",
-   "versions": 104,
+   "versions": 105,
    "documented_by": 1,
    "review": {
     "status": "none",
@@ -1817,8 +1817,8 @@
   {
    "file": "dictionary.json",
    "title": "Data dictionary: entries, sources, glossary and descriptions",
-   "bytes": 5587067,
-   "gzip_bytes": 1231871,
+   "bytes": 5589205,
+   "gzip_bytes": 1232645,
    "loaded_by": [],
    "title_es": "Diccionario de datos: entradas, fuentes, glosario y descripciones",
    "domains": [
@@ -1837,7 +1837,7 @@
    "vertices": null,
    "first_published": "2026-10-05",
    "last_updated": "2026-11-23",
-   "versions": 224,
+   "versions": 225,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -2253,8 +2253,8 @@
   {
    "file": "dictionary_detail_infrastructure.json",
    "title": "Data dictionary page: the full entries of the Infrastructure and mobility domain, read when one is opened",
-   "bytes": 544414,
-   "gzip_bytes": 133342,
+   "bytes": 546407,
+   "gzip_bytes": 134092,
    "loaded_by": [],
    "title_es": "Página del diccionario de datos: las entradas completas del dominio Infraestructura y movilidad, que se leen al abrir una",
    "domains": [
@@ -2271,8 +2271,8 @@
    "values": null,
    "vertices": null,
    "first_published": "2026-10-18",
-   "last_updated": "2026-11-14",
-   "versions": 38,
+   "last_updated": "2026-11-23",
+   "versions": 39,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -2485,8 +2485,8 @@
   {
    "file": "dictionary_list.json",
    "title": "Data dictionary page: the list, filters and search words, read first",
-   "bytes": 1910810,
-   "gzip_bytes": 427872,
+   "bytes": 1910816,
+   "gzip_bytes": 427873,
    "loaded_by": [
     {
      "route": "dictionary",
@@ -2510,7 +2510,7 @@
    "vertices": null,
    "first_published": "2026-10-18",
    "last_updated": "2026-11-23",
-   "versions": 171,
+   "versions": 172,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -2520,7 +2520,7 @@
   {
    "file": "dictionary_list_es.json",
    "title": "Data dictionary page in Spanish: the names, labels, source cards and area texts, read right after the page is ready",
-   "bytes": 426490,
+   "bytes": 426486,
    "gzip_bytes": 118497,
    "loaded_by": [
     {
@@ -2544,7 +2544,7 @@
    "vertices": null,
    "first_published": "2026-10-21",
    "last_updated": "2026-11-23",
-   "versions": 74,
+   "versions": 75,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -2583,8 +2583,8 @@
   {
    "file": "dictionary_words.json",
    "title": "Data dictionary search words: the words of each entry's definition, method, geography, source notes, how to read it and cautions, for the page's search",
-   "bytes": 1308470,
-   "gzip_bytes": 353335,
+   "bytes": 1309273,
+   "gzip_bytes": 353689,
    "loaded_by": [
     {
      "route": "dictionary",
@@ -2607,7 +2607,7 @@
    "vertices": null,
    "first_published": "2026-11-16",
    "last_updated": "2026-11-23",
-   "versions": 25,
+   "versions": 26,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -2770,8 +2770,8 @@
   {
    "file": "energy.json",
    "title": "Energy in Puerto Rico (Knowledge Area data)",
-   "bytes": 34200,
-   "gzip_bytes": 13608,
+   "bytes": 34234,
+   "gzip_bytes": 13620,
    "loaded_by": [
     {
      "route": "energy",
@@ -2795,8 +2795,8 @@
    "values": 3158,
    "vertices": null,
    "first_published": "2026-11-14",
-   "last_updated": "2026-11-14",
-   "versions": 1,
+   "last_updated": "2026-11-23",
+   "versions": 2,
    "documented_by": 1,
    "review": {
     "status": "unstated",
@@ -5895,26 +5895,26 @@
   {
    "file": "power_plants.geojson",
    "title": "Power plants (EIA-860M), points",
-   "bytes": 20472,
-   "gzip_bytes": 3824,
+   "bytes": 23409,
+   "gzip_bytes": 4757,
    "loaded_by": [],
    "title_es": "Plantas de energía (EIA-860M), puntos",
    "domains": [
     "infrastructure.energy",
     "environment"
    ],
-   "licence_class": "open",
+   "licence_class": "open-with-conditions",
    "tier": "small",
    "geography": "point",
    "time": "snapshot",
    "kind": "data",
-   "records": 68,
-   "fields": 26,
-   "values": 873,
-   "vertices": 68,
+   "records": 72,
+   "fields": 31,
+   "values": 945,
+   "vertices": 72,
    "first_published": "2026-11-14",
-   "last_updated": "2026-11-14",
-   "versions": 1,
+   "last_updated": "2026-11-23",
+   "versions": 2,
    "documented_by": 1,
    "review": {
     "status": "none",

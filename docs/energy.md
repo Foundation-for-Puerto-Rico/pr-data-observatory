@@ -69,6 +69,33 @@ The plan is `docs/energy-proposal-2026-11.md`, approved by Francis on 2026-11-13
 
 **Dictionary page.** The six entries pushed the dictionary page's first data past its budget, so `registry.json` (the geography filter, the file count and the files summary) now loads right after the first paint instead of before the page is ready (`later` in `routes.json`; `loadRegistry()` in `dictionary.js`). A link that names a geography level waits for it. The area profile's script budget is now 122 KB (`docs/performance.md`).
 
+## Built solar plants that EIA does not list yet (`energy_src/plants_added.json`, 2026-11-17)
+
+Francis on 2026-11-17: the energy map was missing some solar projects. EIA-860M lists a plant only once it is in commercial operation (or reported as planned), so in its September 2026 file Puerto Rico's renewable plants were 397.7 MW, and the largest new solar farms were missing.
+
+**What was found.** OpenStreetMap had 48 solar plant outlines in Puerto Rico. Four groups of large unnamed outlines, all traced from Esri World Imagery in 2025 and 2026, were not in EIA. Esri's Wayback imagery dates each one, and the Energy Bureau's filings and the press name them:
+
+| Plant | Where (outline) | Solar | Batteries | Status | Source |
+|---|---|---|---|---|---|
+| CIRO One Salinas | 108.9 ha north of Salinas, built June 2024 to September 2025 | 90 MW | 51.5 MW, 206 MWh | Connected by LUMA in January 2026; commercial operation date not yet set (Energy Bureau, 10 August 2026) | PV Tech, 13 January 2026; NEPR-AP-2021-0001 |
+| Marahú, Salinas site | 164.4 ha at the Salinas–Guayama line, built September 2025 to October 2026 | 120 MW | 175 MW, four hours | Built, not connected (5 October 2026) | San Juan Daily Star; Telemundo PR, 24 September 2025 |
+| Marahú, Jobos site | 113.7 ha by the AES plant in Jobos, Guayama, same period | 80 MW | 110 MW, four hours | Built, not connected (5 October 2026) | same |
+| Yabucoa Solar | 33.5 ha south of the Yabucoa fuel terminal, outlined September 2026 | 32.1 MW | none counted | Construction complete, first synchronization scheduled for September 2026 | LUMA's August 2026 report, NEPR-MI-2024-0005 |
+
+Together: 322.1 MW of solar and 336.5 MW of batteries, about four-fifths of the 397.7 MW of renewable plants EIA lists.
+
+**Choices.**
+- The points come from the outlines (area-weighted centre), never from the GEM wiki (its Puerto Rico points are island-centre approximations, its statuses are out of date, and its text is CC BY-NC-SA).
+- AES gives 120 MW for its "Salinas" site and 80 MW for Jobos. The larger of the two new farms (164 ha) is taken as the Salinas site, although most of it lies inside Guayama's census outline, so its pop-up says Guayama. The imagery shows no other new farm in Salinas.
+- Yabucoa Solar: Esri's public imagery still predates the panels. The Energy Bureau's report says construction is complete, and the OpenStreetMap outline is at the site.
+- They are drawn dashed, with status `built` (not in commercial operation). They stay out of the notes' totals (plants, MW, renewable MW), which remain EIA's. The pop-up gives the stage, the month and the source, and no owner.
+- Each entry has an `eia_match` pattern. When EIA lists a plant whose name matches, `power_plants.py` drops the entry and logs it, so nothing is counted twice.
+- Not drawn: utility-scale solar that is contracted but not built (the rest of procurement tranches 1, 2 and 4, such as Guayama Solar, Xzerta-Tec Solar I with a commercial operation date of December 2028, the Go Green parks in Yabucoa and Naguabo, San Juan Solar, Marisol Power, CS-UR Juncos, Lajas and Solaner in San Germán). The filings checked give no site.
+
+**Also changed.** The Energy page's "Power plants" card adds "Another 322.1 MW of solar is built, not yet in commercial operation" (`energy.json` `capacity.built_mw`). `power_plants.geojson` now carries OpenStreetMap's attribution, so its licence class is open with conditions (ODbL). Tests: `tests/test_power_plants.py`, `tests/facilities_plants.test.js`.
+
+**To keep it current.** Check the list when EIA publishes a new month, and when the Energy Bureau's monthly collaborative report (NEPR-MI-2024-0005) changes a project's status. Update `stage`, `as_of` and the source, or remove an entry once EIA lists the plant (the build does this by itself).
+
 ## Next steps (each its own pull request, on Francis's word)
 
 5. Solar and wind potential.

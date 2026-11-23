@@ -4979,13 +4979,14 @@
     "last": 2026
    },
    "sources": [
-    "eia_860m"
+    "eia_860m",
+    "osm"
    ],
-   "licence_class": "open",
+   "licence_class": "open-with-conditions",
    "cadence": "monthly",
    "tier": "small",
    "published": "2026-11",
-   "note": "One point per power plant in EIA-860M's Puerto Rico sheets (67 plants with an operating generator in 40 municipios and 1 planned plant, file of September 2026): the plant's name as EIA writes it, type, municipio, GEOID, EIA plant id, main technology, operating nameplate MW without batteries, battery MW and MWh, MW by technology, MW on standby and out of service, operating generators, first and last operating year, MW planned and the earliest expected month, and status. Owner names are never kept (HANDOFF decision 104 (b)).",
+   "note": "One point per power plant in EIA-860M's Puerto Rico sheets (67 plants with an operating generator in 40 municipios and 1 planned plant, file of September 2026): the plant's name as EIA writes it, type, municipio, GEOID, EIA plant id, main technology, operating nameplate MW without batteries, battery MW and MWh, MW by technology, MW on standby and out of service, operating generators, first and last operating year, MW planned and the earliest expected month, and status. Owner names are never kept (HANDOFF decision 104 (b)). Four built solar plants that EIA does not list yet (not in commercial operation in November 2026) are added from energy_src/plants_added.json with status built: capacity and status from the Energy Bureau's filings and the press, points from their OpenStreetMap outlines (ODbL), so the file carries OpenStreetMap's attribution.",
    "review": []
   },
   {
