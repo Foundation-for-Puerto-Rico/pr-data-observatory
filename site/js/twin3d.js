@@ -14,7 +14,7 @@ const HELP = {
   trips: [T('Scheduled vehicles'), T('Every scheduled weekday trip in the ATI and municipal GTFS feeds replayed against the clock: positions are interpolated between consecutive stops using the timetable, so they show where vehicles are scheduled to be, not real-time locations.')],
   storms: [T('Hurricane tracks'), T('NOAA HURDAT2 best tracks for every Atlantic cyclone since 1851 that passed within 250 km of Puerto Rico. Colour is the Saffir-Simpson category of the peak wind while near the island; the filter uses the same value.')],
   // the layers the 2D map has too: the same texts as its help (help.js), but the boundaries, which have columns here instead of shading
-  muni: [T('Municipal boundaries'), T('2020 Census boundaries of the 78 municipios, on when the view opens. Click a municipality for its summary; Columns by municipality compares a measure across them.')],
+  muni: [T('Municipal boundaries'), T('2020 Census boundaries of the 78 municipios, off when the view opens. Click a municipality for its summary; Columns by municipality compares a measure across them.')],
   barrios: [T('Barrios'), T('Sub-municipal districts (the US Census Bureau calls them county subdivisions). Dashed outlines; click inside one for its tourism places, flood exposure and transit access. Boundaries are the 2020 Census subdivisions.')],
   stops: [T('Transit stops'), T('Boarding points: ATI GTFS stops (official, with routes served and weekday trips) plus OpenStreetMap bus stops island-wide (municipal systems, públicos). OSM stops within 30 m of an official stop are folded into it.')],
   taxi: [T('Taxi stands and EV charging'), T('Taxi stands and electric-vehicle charging stations mapped in OpenStreetMap. Ride-hailing (Uber) is shown per municipality as a yes/no listing because Uber publishes no coverage or availability data.')],
@@ -293,7 +293,7 @@ let metricKey = '';
 function addMunicipalities() {
   for (const f of S.muniFc.features) Object.assign(f.properties, S.muni[f.properties.municipality] || {});
   map.addSource('munis', { type: 'geojson', data: S.muniFc });
-  map.addLayer({ id: 'muni-line', type: 'line', source: 'munis', paint: { 'line-color': '#205D7B', 'line-width': ['interpolate', ['linear'], ['zoom'], 8, .6, 12, 1.6], 'line-opacity': .8 } }, firstSymbolLayer());
+  map.addLayer({ id: 'muni-line', type: 'line', source: 'munis', layout: { visibility: $('#lyMuni').checked ? 'visible' : 'none' }, paint: { 'line-color': '#205D7B', 'line-width': ['interpolate', ['linear'], ['zoom'], 8, .6, 12, 1.6], 'line-opacity': .8 } }, firstSymbolLayer());
   map.addLayer({ id: 'muni-cols', type: 'fill-extrusion', source: 'munis', paint: { 'fill-extrusion-color': '#338CB3', 'fill-extrusion-height': 0, 'fill-extrusion-opacity': .55 } }, firstSymbolLayer());
   // an invisible flat layer keeps the municipalities clickable while the columns are off (the columns layer is hidden then: a column of height 0 still paints a blue sheet)
   map.addLayer({ id: 'muni-hit', type: 'fill', source: 'munis', paint: { 'fill-color': '#000000', 'fill-opacity': 0 } }, 'muni-cols');
