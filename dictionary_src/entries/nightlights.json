@@ -1,0 +1,171 @@
+[
+  {
+    "id": "methods.nightlights",
+    "name": "Night-time lights by barrio and municipio (NASA Black Marble)",
+    "domain": "economy",
+    "domains": [
+      "economy",
+      "infrastructure"
+    ],
+    "group": "Night-time lights (NASA Black Marble)",
+    "kind": "method",
+    "plain": "How bright each barrio and municipio is at night, every month since 2012, from NASA's Black Marble satellite product. Light follows activity and electric power, so it can show growth, decline and blackouts after storms, but it does not count people or homes.",
+    "definition": "Mean radiance (nW/cm²/sr) of the VNP46A3 pixels whose centre falls in the area, and the share of the area's pixels that the product flags as poor quality (three or fewer clear observations in the month) or gap-filled (none). A municipio's and Puerto Rico's figures pool all their pixels; a year's pools its twelve months.",
+    "unit": "nW/cm²/sr (mean radiance); % of pixels (quality share)",
+    "value_type": "level",
+    "geography": "901 barrios, 78 municipios and Puerto Rico",
+    "coverage": {
+      "timeline": "annual",
+      "first": 2012,
+      "last": 2025,
+      "frequency": "Monthly from NASA (2012-01 to 2026-09 in this build); a year is published when its twelve months are in"
+    },
+    "method": "nightlights.py lists NASA's LAADS archive of VNP46A3 collection 2 (no login needed), downloads the monthly HDF5 file of tile h11v07 (all of Puerto Rico; h10v07 holds no barrio) with a NASA Earthdata token read from EARTHDATA_TOKEN, and reads the layers AllAngle_Composite_Snow_Free (32-bit radiance, fill value -999.9) and AllAngle_Composite_Snow_Free_Quality (0 good, 1 poor, 2 gap-filled, 255 no value). Each 15 arc-second pixel (about 460 m) counts in the barrio whose outline holds its centre; the three barrios smaller than a pixel take the pixel under them. It keeps a summary per month and deletes the file, and publishes only means and shares, no images. Without the token it stops and changes nothing (docs/nightlights.md).",
+    "sources": [
+      "nasa_black_marble",
+      "census_tiger"
+    ],
+    "source_detail": "VNP46A3 collection 2, https://doi.org/10.5067/VIIRS/VNP46A3.002 (LAADS DAAC); Black Marble User Guide v2.0 (October 2024), tables 11 and 12; Román et al. (2018), https://doi.org/10.1016/j.rse.2018.03.017. Barrio outlines: barrios.geojson.",
+    "how_to_read": "Puerto Rico's mean radiance in 2025 was 5.431 nW/cm²/sr, with 0.2% of its pixels of poor quality or gap-filled. Read the mean radiance together with the quality share: a month with many poor or gap-filled pixels rests on few clear nights.",
+    "caveats": [
+      "Clouds: Puerto Rico is often cloudy, mostly from May to November. A month with few clear nights is flagged poor (three or fewer) or gap-filled (none), and its value can lag the real light.",
+      "Moonlight: the product removes moonlight with a model (the lunar BRDF correction), so bright-moon and dark-moon months can be compared; the correction has its own error, largest where the light is dim.",
+      "Light is a proxy for activity and for electric power, not a count of people, jobs or homes with power. A change can also come from new LED streetlights, whose whiter light the sensor sees less of.",
+      "Pixels are about 460 m across and light spills over borders, so a small or dark barrio next to a bright one reads brighter than it is."
+    ],
+    "see_also": [
+      "nightlights.ntl_radiance",
+      "nightlights.ntl_poor_pct"
+    ],
+    "where": {
+      "files": [
+        "nightlights_monthly.json:*"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab: night-time light",
+          "href": "index.html#e=ntl_radiance.s"
+        }
+      ]
+    },
+    "added": "2026-11-02"
+  },
+  {
+    "id": "nightlights.ntl_radiance",
+    "name": "Night-time light, mean radiance (NASA Black Marble, nW/cm²/sr)",
+    "domain": "economy",
+    "domains": [
+      "economy",
+      "infrastructure"
+    ],
+    "group": "Economy · Night-time lights (NASA Black Marble)",
+    "kind": "variable",
+    "plain": "How bright the area is at night, as NASA's satellite sees it: the average light of the area's pixels over the year. Brighter usually means more activity and power; a sudden drop can mean a blackout.",
+    "definition": "The mean of the VNP46A3 monthly radiance (AllAngle_Composite_Snow_Free, nW/cm²/sr) of the 15 arc-second pixels whose centre lies in the area, pooled over the twelve months of the calendar year. A municipio's and Puerto Rico's means are over all their pixels.",
+    "unit": "nW/cm²/sr (nanowatts per square centimetre per steradian)",
+    "value_type": "level",
+    "geography": "78 municipalities and Puerto Rico; also 901 barrios",
+    "coverage": {
+      "timeline": "annual",
+      "first": 2012,
+      "last": 2025,
+      "frequency": "Each complete calendar year; NASA adds a month about seven weeks after it ends"
+    },
+    "method": "nightlights.py (methods.nightlights): each monthly HDF5 file of tile h11v07 is read with h5py, each pixel goes to the barrio holding its centre, and the year's mean pools the twelve months' pixels with a value.",
+    "sources": [
+      "nasa_black_marble",
+      "census_tiger"
+    ],
+    "source_detail": "NASA Black Marble VNP46A3 collection 2, https://doi.org/10.5067/VIIRS/VNP46A3.002; Román et al. (2018), https://doi.org/10.1016/j.rse.2018.03.017.",
+    "how_to_read": "Puerto Rico in 2025: 5.431 nW/cm²/sr. Brightest municipios: San Juan (47.2), Cataño (38.4), Guaynabo (26.2); darkest: Maricao (0.5), Vieques (0.7), Las Marías (0.8). Puerto Rico fell from 5.245 in 2016 to 4.233 in 2017, the year of Hurricane María.",
+    "caveats": [
+      "Clouds: Puerto Rico is often cloudy, mostly from May to November. A month with few clear nights is flagged poor (three or fewer) or gap-filled (none), and its value can lag the real light.",
+      "Moonlight: the product removes moonlight with a model (the lunar BRDF correction), so bright-moon and dark-moon months can be compared; the correction has its own error, largest where the light is dim.",
+      "Light is a proxy for activity and for electric power, not a count of people, jobs or homes with power. A change can also come from new LED streetlights, whose whiter light the sensor sees less of.",
+      "Pixels are about 460 m across and light spills over borders, so a small or dark barrio next to a bright one reads brighter than it is."
+    ],
+    "see_also": [
+      "nightlights.ntl_poor_pct",
+      "methods.nightlights"
+    ],
+    "where": {
+      "files": [
+        "nightlights_series.json:ntl_radiance",
+        "nightlights_barrio.json:ntl_radiance"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab",
+          "href": "index.html#e=ntl_radiance.s"
+        }
+      ]
+    },
+    "ask": {
+      "en": [
+        "night lights",
+        "night-time lights",
+        "nighttime lights",
+        "light at night",
+        "lights at night"
+      ],
+      "es": [
+        "luces nocturnas",
+        "luz nocturna",
+        "luces de noche"
+      ]
+    },
+    "added": "2026-11-04"
+  },
+  {
+    "id": "nightlights.ntl_poor_pct",
+    "name": "Night-time light, pixels of poor quality or gap-filled (%)",
+    "domain": "economy",
+    "domains": [
+      "economy",
+      "infrastructure"
+    ],
+    "group": "Economy · Night-time lights (NASA Black Marble)",
+    "kind": "variable",
+    "plain": "How much of the area's night-time light figure rests on few clear nights: the share of its pixels that NASA flags as poor quality or filled in from earlier data, mostly because of clouds.",
+    "definition": "The share of the area's pixels whose VNP46A3 quality flag is 1 (three or fewer clear observations in the month) or 2 (gap-filled: none), over the pixels with a quality value, pooled over the year's twelve months, in percent.",
+    "unit": "% of pixels",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico; also 901 barrios",
+    "coverage": {
+      "timeline": "annual",
+      "first": 2012,
+      "last": 2025,
+      "frequency": "Each complete calendar year; NASA adds a month about seven weeks after it ends"
+    },
+    "method": "nightlights.py (methods.nightlights): each monthly HDF5 file of tile h11v07 is read with h5py, each pixel goes to the barrio holding its centre, and the year's mean pools the twelve months' pixels with a value.",
+    "sources": [
+      "nasa_black_marble",
+      "census_tiger"
+    ],
+    "source_detail": "NASA Black Marble VNP46A3 collection 2, https://doi.org/10.5067/VIIRS/VNP46A3.002; Román et al. (2018), https://doi.org/10.1016/j.rse.2018.03.017.",
+    "how_to_read": "Puerto Rico in 2025: 0.2%. A high share means the year's mean radiance rests on few clear nights; compare it before reading a change in light.",
+    "caveats": [
+      "Clouds: Puerto Rico is often cloudy, mostly from May to November. A month with few clear nights is flagged poor (three or fewer) or gap-filled (none), and its value can lag the real light.",
+      "Moonlight: the product removes moonlight with a model (the lunar BRDF correction), so bright-moon and dark-moon months can be compared; the correction has its own error, largest where the light is dim.",
+      "Light is a proxy for activity and for electric power, not a count of people, jobs or homes with power. A change can also come from new LED streetlights, whose whiter light the sensor sees less of.",
+      "Pixels are about 460 m across and light spills over borders, so a small or dark barrio next to a bright one reads brighter than it is."
+    ],
+    "see_also": [
+      "nightlights.ntl_radiance",
+      "methods.nightlights"
+    ],
+    "where": {
+      "files": [
+        "nightlights_series.json:ntl_poor_pct",
+        "nightlights_barrio.json:ntl_poor_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab",
+          "href": "index.html#e=ntl_poor_pct.s"
+        }
+      ]
+    },
+    "added": "2026-11-04"
+  }
+]

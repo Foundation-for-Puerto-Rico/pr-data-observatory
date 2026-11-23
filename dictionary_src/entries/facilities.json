@@ -1,0 +1,2041 @@
+[
+ {
+  "id": "facilities.ph_devs",
+  "ask": {
+   "en": [
+    "public housing developments",
+    "public housing projects"
+   ],
+   "es": [
+    "residenciales publicos",
+    "caserios"
+   ]
+  },
+  "name": "Public housing developments (HUD)",
+  "domain": "housing",
+  "domains": [
+   "housing"
+  ],
+  "group": "Public housing",
+  "kind": "variable",
+  "plain": "How many public housing developments HUD lists in each municipio.",
+  "definition": "Public housing developments in HUD's eGIS layer, in the municipio (county) HUD gives for each. A development can be one building or several scattered across a community. All 304 Puerto Rico developments are counted, including the 132 HUD could geocode only to a block group or tract, which the map does not draw.",
+  "unit": "developments",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot, each count in its source's vintage (HUD coverage 2026-09, USGS loads to 2026-07-17, OpenStreetMap 2026-10-17, USAC 2026-11-07). Rebuilt with python facilities.py --refresh."
+  },
+  "method": "facilities.py queries HUD's Public Housing Developments feature service for STATE2KX = '72' and counts the developments by CNTY2KX (the county code). Every development is managed by the Puerto Rico Public Housing Administration in the 2026-06 layer.",
+  "sources": [
+   "hud_public_housing"
+  ],
+  "source_detail": "HUD eGIS Public_Housing_Developments FeatureServer 0, fields DEVELOPMENT_CODE, PROJECT_NAME, TOTAL_UNITS, SCATTERED_SITE_IND, CNTY2KX, LVL2KX",
+  "how_to_read": "Puerto Rico has 304 public housing developments: San Juan 61, Ponce 22, Mayagüez 17. Three municipios have none. Shade it per 1,000 residents to compare places of different size.",
+  "caveats": [
+   "A count of developments, not of buildings or people: a development may hold 20 units or 1,000. Use the units for the size.",
+   "HUD's list covers federally assisted public housing only; other subsidised housing (Section 8, LIHTC) is not in it."
+  ],
+  "see_also": [
+   "facilities.ph_units",
+   "layers.public_housing"
+  ],
+  "where": {
+   "files": [
+    "facility_series.json:ph_devs"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: public housing developments",
+     "href": "index.html#e=ph_devs.f.per1000.blue.q.1.0.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-17"
+ },
+ {
+  "id": "facilities.ph_units",
+  "ask": {
+   "en": [
+    "public housing units",
+    "public housing apartments"
+   ],
+   "es": [
+    "unidades de vivienda publica",
+    "viviendas publicas"
+   ]
+  },
+  "name": "Public housing units (HUD)",
+  "domain": "housing",
+  "domains": [
+   "housing"
+  ],
+  "group": "Public housing",
+  "kind": "variable",
+  "plain": "How many homes the public housing developments of each municipio hold, as HUD reports them.",
+  "definition": "The dwelling units of the public housing developments in the municipio (HUD's TOTAL_UNITS), occupied or vacant.",
+  "unit": "units",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot, each count in its source's vintage (HUD coverage 2026-09, USGS loads to 2026-07-17, OpenStreetMap 2026-10-17, USAC 2026-11-07). Rebuilt with python facilities.py --refresh."
+  },
+  "method": "facilities.py sums TOTAL_UNITS over every development of the municipio (all 304, drawn on the map or not).",
+  "sources": [
+   "hud_public_housing"
+  ],
+  "source_detail": "HUD eGIS Public_Housing_Developments, field TOTAL_UNITS",
+  "how_to_read": "Puerto Rico's public housing holds 54,092 units: San Juan 18,040, Ponce 5,256, Mayagüez 3,480. Per 1,000 housing units it shows how much of a municipio's housing is public housing.",
+  "caveats": [
+   "HUD's unit count includes vacant units and units being repaired.",
+   "Per 1,000 housing units uses the survey's count of housing units, an estimate with a margin of error."
+  ],
+  "see_also": [
+   "facilities.ph_devs",
+   "layers.public_housing"
+  ],
+  "where": {
+   "files": [
+    "facility_series.json:ph_units"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: public housing units",
+     "href": "index.html#e=ph_units.f.per1000.blue.q.1.0.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-17"
+ },
+ {
+  "id": "facilities.lihtc_projects",
+  "ask": {
+   "en": [
+    "tax credit housing projects",
+    "lihtc projects",
+    "low-income housing tax credit projects"
+   ],
+   "es": [
+    "proyectos de vivienda con credito contributivo",
+    "proyectos lihtc"
+   ]
+  },
+  "name": "LIHTC projects (HUD)",
+  "domain": "housing",
+  "domains": [
+   "housing"
+  ],
+  "group": "Tax credit housing",
+  "kind": "variable",
+  "plain": "How many rental housing projects in each municipio were built or rehabilitated with Low-Income Housing Tax Credits since 1987.",
+  "definition": "LIHTC projects placed in service in the municipio, as the Puerto Rico Housing Finance Authority reported them to HUD's National LIHTC Database.",
+  "unit": "projects",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot: HUD's LIHTC database released 2026-04-30, projects placed in service from 1987 to 2024 (the latest in Puerto Rico in 2023). HUD adds a year each spring; rebuilt with python facilities.py --only lihtc after the archive is saved by hand (HANDOFF decision 71)."
+  },
+  "method": "facilities.py reads LIHTCPUB.xlsx from the archive saved by hand (cache/facilities/lihtcpub.zip; HUD USER refuses scripts), keeps the Puerto Rico rows and places each project in the county of its 2020 census tract or, where HUD has no tract, in the municipio of the city it lists (163 of 245). Every project counts, drawn on the map or not.",
+  "sources": [
+   "hud_lihtc"
+  ],
+  "source_detail": "HUD National LIHTC Database (LIHTCPUB.xlsx, release of 2026-04-30), Puerto Rico rows",
+  "how_to_read": "In HUD's 2026-04-30 release, Puerto Rico has 245 LIHTC projects in 63 municipios: San Juan 46, Ponce 13, Caguas 10. Read it with the units: projects range from 16 to more than 300 units.",
+  "caveats": [
+   "A project counts from the year it was placed in service; projects placed in service since the release are missing until HUD's next one.",
+   "Where HUD has no census tract for a project (163 of 245), the project counts in the municipio of the city HUD lists, which may be a mailing city: a few projects may count in a neighbouring municipio.",
+   "9 projects are no longer monitored for the credit's rules (their affordability period ended or another reason); they still count, and their units may no longer be rent-restricted.",
+   "These are about a federal tax credit program. Their Spanish summaries are held for Finance and Compliance review (HANDOFF decision 21)."
+  ],
+  "see_also": [
+   "facilities.lihtc_units",
+   "facilities.lihtc_li_units",
+   "layers.lihtc",
+   "facilities.ph_devs"
+  ],
+  "where": {
+   "files": [
+    "facility_series.json:lihtc_projects"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: LIHTC projects",
+     "href": "index.html#e=lihtc_projects.f.value.blue.q.1.0.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-31"
+ },
+ {
+  "id": "facilities.lihtc_units",
+  "ask": {
+   "en": [
+    "tax credit housing units",
+    "lihtc units"
+   ],
+   "es": [
+    "unidades de vivienda con credito contributivo",
+    "unidades lihtc"
+   ]
+  },
+  "name": "LIHTC housing units (HUD)",
+  "domain": "housing",
+  "domains": [
+   "housing"
+  ],
+  "group": "Tax credit housing",
+  "kind": "variable",
+  "plain": "How many homes the Low-Income Housing Tax Credit projects of each municipio hold, low-income and market-rate together.",
+  "definition": "The housing units of the LIHTC projects in the municipio (HUD's N_UNITS).",
+  "unit": "units",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot: HUD's LIHTC database released 2026-04-30, projects placed in service from 1987 to 2024 (the latest in Puerto Rico in 2023). HUD adds a year each spring; rebuilt with python facilities.py --only lihtc after the archive is saved by hand (HANDOFF decision 71)."
+  },
+  "method": "facilities.py reads LIHTCPUB.xlsx from the archive saved by hand (cache/facilities/lihtcpub.zip; HUD USER refuses scripts), keeps the Puerto Rico rows and places each project in the county of its 2020 census tract or, where HUD has no tract, in the municipio of the city it lists (163 of 245). Every project counts, drawn on the map or not. It sums N_UNITS.",
+  "sources": [
+   "hud_lihtc"
+  ],
+  "source_detail": "HUD National LIHTC Database (release of 2026-04-30), field N_UNITS",
+  "how_to_read": "Puerto Rico's LIHTC projects hold 23,075 units: San Juan 5,100, Ponce 1,642, Caguas 1,297. Per 1,000 housing units it shows how much of a municipio's housing was financed with the credit.",
+  "caveats": [
+   "Almost every unit in Puerto Rico's projects is a low-income unit (facilities.lihtc_li_units); the two differ only where a project mixes in market-rate units.",
+   "Where HUD has no census tract for a project (163 of 245), the project counts in the municipio of the city HUD lists, which may be a mailing city: a few projects may count in a neighbouring municipio.",
+   "9 projects are no longer monitored for the credit's rules (their affordability period ended or another reason); they still count, and their units may no longer be rent-restricted.",
+   "Per 1,000 housing units uses the survey's count of housing units, an estimate with a margin of error.",
+   "These are about a federal tax credit program. Their Spanish summaries are held for Finance and Compliance review (HANDOFF decision 21)."
+  ],
+  "see_also": [
+   "facilities.lihtc_li_units",
+   "facilities.lihtc_projects",
+   "layers.lihtc",
+   "facilities.ph_units"
+  ],
+  "where": {
+   "files": [
+    "facility_series.json:lihtc_units"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: LIHTC housing units",
+     "href": "index.html#e=lihtc_units.f.per1000.blue.q.1.0.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-31"
+ },
+ {
+  "id": "facilities.lihtc_li_units",
+  "ask": {
+   "en": [
+    "low-income tax credit units",
+    "lihtc low-income units",
+    "affordable rental units"
+   ],
+   "es": [
+    "unidades de bajos ingresos con credito contributivo",
+    "unidades lihtc de bajos ingresos"
+   ]
+  },
+  "name": "LIHTC low-income units (HUD)",
+  "domain": "housing",
+  "domains": [
+   "housing"
+  ],
+  "group": "Tax credit housing",
+  "kind": "variable",
+  "plain": "How many rent- and income-restricted homes the Low-Income Housing Tax Credit projects of each municipio hold.",
+  "definition": "The low-income units of the LIHTC projects in the municipio (HUD's LI_UNITS): units whose rent and tenants' income are capped under the credit's rules.",
+  "unit": "units",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot: HUD's LIHTC database released 2026-04-30, projects placed in service from 1987 to 2024 (the latest in Puerto Rico in 2023). HUD adds a year each spring; rebuilt with python facilities.py --only lihtc after the archive is saved by hand (HANDOFF decision 71)."
+  },
+  "method": "facilities.py reads LIHTCPUB.xlsx from the archive saved by hand (cache/facilities/lihtcpub.zip; HUD USER refuses scripts), keeps the Puerto Rico rows and places each project in the county of its 2020 census tract or, where HUD has no tract, in the municipio of the city it lists (163 of 245). Every project counts, drawn on the map or not. It sums LI_UNITS.",
+  "sources": [
+   "hud_lihtc"
+  ],
+  "source_detail": "HUD National LIHTC Database (release of 2026-04-30), field LI_UNITS",
+  "how_to_read": "Puerto Rico's LIHTC projects hold 22,890 low-income units: San Juan 5,032, Ponce 1,641, Caguas 1,251. Compare per 1,000 housing units, and beside public housing units (facilities.ph_units).",
+  "caveats": [
+   "The rent cap applies for the project's compliance period (15 years) and an extended use period (at least 15 more); a unit can leave the program after that.",
+   "Where HUD has no census tract for a project (163 of 245), the project counts in the municipio of the city HUD lists, which may be a mailing city: a few projects may count in a neighbouring municipio.",
+   "9 projects are no longer monitored for the credit's rules (their affordability period ended or another reason); they still count, and their units may no longer be rent-restricted.",
+   "Per 1,000 housing units uses the survey's count of housing units, an estimate with a margin of error.",
+   "These are about a federal tax credit program. Their Spanish summaries are held for Finance and Compliance review (HANDOFF decision 21)."
+  ],
+  "see_also": [
+   "facilities.lihtc_units",
+   "facilities.lihtc_projects",
+   "layers.lihtc",
+   "facilities.ph_units"
+  ],
+  "where": {
+   "files": [
+    "facility_series.json:lihtc_li_units"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: LIHTC low-income units",
+     "href": "index.html#e=lihtc_li_units.f.per1000.blue.q.1.0.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-31"
+ },
+ {
+  "id": "facilities.fire_stations",
+  "ask": {
+   "en": [
+    "fire stations",
+    "firehouses",
+    "ems stations"
+   ],
+   "es": [
+    "estaciones de bomberos",
+    "parques de bombas",
+    "bomberos"
+   ]
+  },
+  "name": "Fire and EMS stations (USGS)",
+  "domain": "infrastructure",
+  "domains": [
+   "infrastructure"
+  ],
+  "group": "Emergency services",
+  "kind": "variable",
+  "plain": "How many fire and emergency medical service stations each municipio has, as the US Geological Survey maps them.",
+  "definition": "Fire stations and emergency medical service (EMS) stations in the USGS National Structures Dataset (feature code 74026), in the municipio that holds each point.",
+  "unit": "stations",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot, each count in its source's vintage (HUD coverage 2026-09, USGS loads to 2026-07-17, OpenStreetMap 2026-10-17, USAC 2026-11-07). Rebuilt with python facilities.py --refresh."
+  },
+  "method": "facilities.py queries layer 51 of USGS's structures map service for state = 'PR' and places each station by point in polygon against the municipio outlines (a point on the coast within 2 km of a municipio counts there).",
+  "sources": [
+   "usgs_structures"
+  ],
+  "source_detail": "USGS TNM structures MapServer layer 51 (Fire Stations/EMS Stations), fields permanent_identifier, name, fcode, state, loaddate",
+  "how_to_read": "USGS maps 94 fire and EMS stations in Puerto Rico: San Juan 7, Ponce 4. One municipio has none in the dataset.",
+  "caveats": [
+   "USGS collects structures for emergency planning; a station can be missing or closed. OpenStreetMap had 77 fire stations on 2026-10-17, 74 of them within 500 m of a USGS station.",
+   "Fire and EMS stations are one category in the source and cannot be told apart."
+  ],
+  "see_also": [
+   "facilities.police_stations",
+   "layers.fire_stations"
+  ],
+  "where": {
+   "files": [
+    "facility_series.json:fire_stations"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: fire and EMS stations",
+     "href": "index.html#e=fire_stations.f.per1000.red.q.1.0.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-17"
+ },
+ {
+  "id": "facilities.police_stations",
+  "ask": {
+   "en": [
+    "police stations",
+    "police precincts"
+   ],
+   "es": [
+    "cuarteles de la policia",
+    "cuarteles",
+    "estaciones de policia"
+   ]
+  },
+  "name": "Police stations (OpenStreetMap)",
+  "domain": "infrastructure",
+  "domains": [
+   "infrastructure"
+  ],
+  "group": "Emergency services",
+  "kind": "variable",
+  "plain": "How many police stations volunteers have mapped in each municipio in OpenStreetMap.",
+  "definition": "Features tagged amenity=police in OpenStreetMap (state and municipal police stations and a few other police facilities), in the municipio that holds each point. A station mapped twice (a point and its building with the same name, within 30 m) counts once.",
+  "unit": "stations",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot, each count in its source's vintage (HUD coverage 2026-09, USGS loads to 2026-07-17, OpenStreetMap 2026-10-17, USAC 2026-11-07). Rebuilt with python facilities.py --refresh."
+  },
+  "method": "facilities.py asks the Overpass API for every amenity=police node, way and relation in Puerto Rico's bounding box (a building's centre stands for it) and places each by point in polygon. 144 features gave 141 stations on 2026-10-17.",
+  "sources": [
+   "osm"
+  ],
+  "source_detail": "Overpass API: nwr[\"amenity\"=\"police\"](17.85,-67.97,18.57,-65.20); out center tags",
+  "how_to_read": "OpenStreetMap has 141 police stations in Puerto Rico: San Juan 24, Ponce 8, Guaynabo 6. Fifteen municipios have none mapped, which more likely means a gap in the map than no station.",
+  "caveats": [
+   "Volunteers map these; a missing station is likely. USGS had only 8 police stations for Puerto Rico, so OpenStreetMap is the more complete source.",
+   "A few features are other police facilities (a highway patrol, a maritime unit, a watchtower), as they are tagged.",
+   "OpenStreetMap data are under the ODbL: credit OpenStreetMap contributors."
+  ],
+  "see_also": [
+   "facilities.fire_stations",
+   "layers.police_stations"
+  ],
+  "where": {
+   "files": [
+    "facility_series.json:police_stations"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: police stations",
+     "href": "index.html#e=police_stations.f.per1000.blue.q.1.0.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-17"
+ },
+ {
+  "id": "facilities.libraries",
+  "ask": {
+   "en": [
+    "public libraries",
+    "libraries"
+   ],
+   "es": [
+    "bibliotecas publicas",
+    "bibliotecas"
+   ]
+  },
+  "name": "Public libraries (USAC E-Rate)",
+  "domain": "education",
+  "domains": [
+   "education"
+  ],
+  "group": "Libraries",
+  "kind": "variable",
+  "plain": "How many libraries in each municipio are registered as public libraries in the federal E-Rate program, including community technology centres.",
+  "definition": "Active libraries in USAC's E-Rate entity list that USAC marks as public libraries, in the municipio of their address (else of their point). In Puerto Rico the list includes community technology centres and other community libraries registered as public libraries, not only municipal libraries.",
+  "unit": "libraries",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot, each count in its source's vintage (HUD coverage 2026-09, USGS loads to 2026-07-17, OpenStreetMap 2026-10-17, USAC 2026-11-07). Rebuilt with python facilities.py --refresh."
+  },
+  "method": "facilities.py asks USAC's Socrata API for Puerto Rico entities of type Library and keeps those that are active and public (1,231 on 2026-10-17). The municipio is the address's city or county when it is a municipio's name or a known postal place (Río Piedras is San Juan); 27 libraries are placed by their point and 2 could not be placed.",
+  "sources": [
+   "usac_erate"
+  ],
+  "source_detail": "USAC open data 7i5i-83qf (E-Rate Supplemental Entity Information), fields entity_number, entity_name, entity_type, status, physical_city, physical_county, public_library, main_branch, bookmobile, kiosk, latitude, longitude",
+  "how_to_read": "USAC lists 1,228 placed public libraries in Puerto Rico: San Juan 94, Guaynabo 75, Ponce 48. Every municipio has at least one.",
+  "caveats": [
+   "A registration for federal internet discounts, not a census of libraries: a library that never applied is missing and one that closed may still be listed as active.",
+   "Most entries are community technology centres, school-community libraries or church-run centres registered as public libraries; the type says only whether USAC marks it a main library, kiosk or bookmobile.",
+   "IMLS's Public Libraries Survey, the usual national source, has no Puerto Rico rows."
+  ],
+  "see_also": [
+   "layers.libraries",
+   "education.sch_open"
+  ],
+  "where": {
+   "files": [
+    "facility_series.json:libraries"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: public libraries",
+     "href": "index.html#e=libraries.f.per1000.green.q.1.0.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-17"
+ },
+ {
+  "id": "nonprofits.npo_all",
+  "ask": {
+   "en": [
+    "tax-exempt organizations",
+    "nonprofit organizations",
+    "irs nonprofits"
+   ],
+   "es": [
+    "organizaciones exentas",
+    "entidades sin fines de lucro",
+    "organizaciones sin fines de lucro"
+   ]
+  },
+  "name": "Tax-exempt organizations (IRS)",
+  "domain": "economy",
+  "domains": [
+   "economy",
+   "population"
+  ],
+  "group": "Nonprofit organizations",
+  "kind": "variable",
+  "plain": "How many organizations in each municipio the IRS recognizes as exempt from federal income tax: charities, social welfare groups, unions, clubs and similar.",
+  "definition": "Organizations in the IRS Exempt Organizations Business Master File (Puerto Rico file) whose headquarters address is in the municipio. Puerto Rico's value counts every organization in the file.",
+  "unit": "organizations",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot: the IRS Puerto Rico file of 2026-10-13 (the IRS renews it about monthly). Rebuilt with python nonprofits.py --refresh."
+  },
+  "method": "nonprofits.py reads the IRS's Puerto Rico CSV and keeps only the city, ZIP code, subsection and NTEE code. The municipio is the city when it is a municipio's name (2,456 of 2,572), else a known postal place (28: Saint Just is Trujillo Alto), else the municipio holding most of the land of the ZIP code (88, Census 2020 ZCTA to county file). No name, EIN or address is kept.",
+  "sources": [
+   "irs_eo_bmf",
+   "census_zcta_county"
+  ],
+  "source_detail": "https://www.irs.gov/pub/irs-soi/eo_pr.csv, columns CITY, ZIP, SUBSECTION, NTEE_CD",
+  "how_to_read": "The IRS lists 2,572 tax-exempt organizations in Puerto Rico: San Juan 822, Ponce 131, Bayamón 126. Per 1,000 residents compares municipios of different size.",
+  "caveats": [
+   "Only organizations the IRS recognizes as tax-exempt. Many Puerto Rico nonprofits are incorporated only under Puerto Rico law and never apply to the IRS, so they are not counted.",
+   "Counted where the headquarters' mailing address is, which may not be where the organization works; San Juan gathers many island-wide organizations.",
+   "The NTEE code is assigned by the IRS from the organization's application and can be out of date; about one in five has none."
+  ],
+  "see_also": [
+   "nonprofits.npo_501c3",
+   "nonprofits.npo_human",
+   "economy.nonprofit_worker_pct"
+  ],
+  "where": {
+   "files": [
+    "nonprofit_series.json:npo_all"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: tax-exempt organizations",
+     "href": "index.html#e=npo_all.f.per1000.blue.q.1.0.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-17"
+ },
+ {
+  "id": "nonprofits.npo_501c3",
+  "ask": {
+   "en": [
+    "501(c)(3)",
+    "501c3",
+    "charities"
+   ],
+   "es": [
+    "501(c)(3)",
+    "entidades beneficas"
+   ]
+  },
+  "name": "501(c)(3) charities (IRS)",
+  "domain": "economy",
+  "domains": [
+   "economy",
+   "population"
+  ],
+  "group": "Nonprofit organizations",
+  "kind": "variable",
+  "plain": "How many of those organizations are 501(c)(3) charities, to which gifts are tax-deductible.",
+  "definition": "Tax-exempt organizations in the IRS file with subsection 03: charitable, educational, religious, scientific and similar public-benefit organizations under section 501(c)(3).",
+  "unit": "organizations",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot: the IRS Puerto Rico file of 2026-10-13 (the IRS renews it about monthly). Rebuilt with python nonprofits.py --refresh."
+  },
+  "method": "As for all tax-exempt organizations, keeping those whose SUBSECTION is 03.",
+  "sources": [
+   "irs_eo_bmf",
+   "census_zcta_county"
+  ],
+  "source_detail": "eo_pr.csv, SUBSECTION = 03",
+  "how_to_read": "2,412 of Puerto Rico's 2,572 IRS-recognized organizations are 501(c)(3) charities.",
+  "caveats": [
+   "Only organizations the IRS recognizes as tax-exempt. Many Puerto Rico nonprofits are incorporated only under Puerto Rico law and never apply to the IRS, so they are not counted.",
+   "Counted where the headquarters' mailing address is, which may not be where the organization works; San Juan gathers many island-wide organizations."
+  ],
+  "see_also": [
+   "nonprofits.npo_all"
+  ],
+  "where": {
+   "files": [
+    "nonprofit_series.json:npo_501c3"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: 501(c)(3) charities",
+     "href": "index.html#e=npo_501c3.f.per1000.blue.q.1.0.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-17"
+ },
+ {
+  "id": "nonprofits.npo_arts",
+  "ask": {
+   "en": [
+    "arts nonprofits",
+    "cultural organizations"
+   ],
+   "es": [
+    "organizaciones culturales"
+   ]
+  },
+  "name": "Nonprofits: arts, culture and humanities (IRS)",
+  "domain": "economy",
+  "domains": [
+   "economy",
+   "population"
+  ],
+  "group": "Nonprofit organizations",
+  "kind": "variable",
+  "plain": "How many tax-exempt organizations in each municipio work in arts, culture and humanities, by the activity code the IRS gives them.",
+  "definition": "Tax-exempt organizations in the IRS file whose NTEE code (National Taxonomy of Exempt Entities) starts with A: the major group arts, culture and humanities of the National Center for Charitable Statistics.",
+  "unit": "organizations",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot: the IRS Puerto Rico file of 2026-10-13 (the IRS renews it about monthly). Rebuilt with python nonprofits.py --refresh."
+  },
+  "method": "As for all tax-exempt organizations, grouped by the first letter of NTEE_CD into the ten major groups (A arts; B education; C-D environment and animals; E-H health; I-P human services; Q international; R-W public and societal benefit; X religion; Y mutual benefit; Z or no code unclassified).",
+  "sources": [
+   "irs_eo_bmf",
+   "census_zcta_county"
+  ],
+  "source_detail": "eo_pr.csv, first letter of NTEE_CD",
+  "caveats": [
+   "Only organizations the IRS recognizes as tax-exempt. Many Puerto Rico nonprofits are incorporated only under Puerto Rico law and never apply to the IRS, so they are not counted.",
+   "Counted where the headquarters' mailing address is, which may not be where the organization works; San Juan gathers many island-wide organizations.",
+   "The NTEE code is assigned by the IRS from the organization's application and can be out of date; about one in five has none."
+  ],
+  "see_also": [
+   "nonprofits.npo_all"
+  ],
+  "where": {
+   "files": [
+    "nonprofit_series.json:npo_arts"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: nonprofits, arts, culture and humanities",
+     "href": "index.html#e=npo_arts.f.per1000.blue.q.1.0.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-17"
+ },
+ {
+  "id": "nonprofits.npo_education",
+  "ask": {
+   "en": [
+    "education nonprofits"
+   ],
+   "es": [
+    "organizaciones educativas"
+   ]
+  },
+  "name": "Nonprofits: education (IRS)",
+  "domain": "economy",
+  "domains": [
+   "economy",
+   "population"
+  ],
+  "group": "Nonprofit organizations",
+  "kind": "variable",
+  "plain": "How many tax-exempt organizations in each municipio work in education, by the activity code the IRS gives them.",
+  "definition": "Tax-exempt organizations in the IRS file whose NTEE code (National Taxonomy of Exempt Entities) starts with B: the major group education of the National Center for Charitable Statistics.",
+  "unit": "organizations",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot: the IRS Puerto Rico file of 2026-10-13 (the IRS renews it about monthly). Rebuilt with python nonprofits.py --refresh."
+  },
+  "method": "As for all tax-exempt organizations, grouped by the first letter of NTEE_CD into the ten major groups (A arts; B education; C-D environment and animals; E-H health; I-P human services; Q international; R-W public and societal benefit; X religion; Y mutual benefit; Z or no code unclassified).",
+  "sources": [
+   "irs_eo_bmf",
+   "census_zcta_county"
+  ],
+  "source_detail": "eo_pr.csv, first letter of NTEE_CD",
+  "caveats": [
+   "Only organizations the IRS recognizes as tax-exempt. Many Puerto Rico nonprofits are incorporated only under Puerto Rico law and never apply to the IRS, so they are not counted.",
+   "Counted where the headquarters' mailing address is, which may not be where the organization works; San Juan gathers many island-wide organizations.",
+   "The NTEE code is assigned by the IRS from the organization's application and can be out of date; about one in five has none."
+  ],
+  "see_also": [
+   "nonprofits.npo_all"
+  ],
+  "where": {
+   "files": [
+    "nonprofit_series.json:npo_education"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: nonprofits, education",
+     "href": "index.html#e=npo_education.f.per1000.blue.q.1.0.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-17"
+ },
+ {
+  "id": "nonprofits.npo_environment",
+  "ask": {
+   "en": [
+    "environmental nonprofits",
+    "environmental organizations"
+   ],
+   "es": [
+    "organizaciones ambientales"
+   ]
+  },
+  "name": "Nonprofits: environment and animals (IRS)",
+  "domain": "economy",
+  "domains": [
+   "economy",
+   "population"
+  ],
+  "group": "Nonprofit organizations",
+  "kind": "variable",
+  "plain": "How many tax-exempt organizations in each municipio work in environment and animals, by the activity code the IRS gives them.",
+  "definition": "Tax-exempt organizations in the IRS file whose NTEE code (National Taxonomy of Exempt Entities) starts with C and D: the major group environment and animals of the National Center for Charitable Statistics.",
+  "unit": "organizations",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot: the IRS Puerto Rico file of 2026-10-13 (the IRS renews it about monthly). Rebuilt with python nonprofits.py --refresh."
+  },
+  "method": "As for all tax-exempt organizations, grouped by the first letter of NTEE_CD into the ten major groups (A arts; B education; C-D environment and animals; E-H health; I-P human services; Q international; R-W public and societal benefit; X religion; Y mutual benefit; Z or no code unclassified).",
+  "sources": [
+   "irs_eo_bmf",
+   "census_zcta_county"
+  ],
+  "source_detail": "eo_pr.csv, first letter of NTEE_CD",
+  "caveats": [
+   "Only organizations the IRS recognizes as tax-exempt. Many Puerto Rico nonprofits are incorporated only under Puerto Rico law and never apply to the IRS, so they are not counted.",
+   "Counted where the headquarters' mailing address is, which may not be where the organization works; San Juan gathers many island-wide organizations.",
+   "The NTEE code is assigned by the IRS from the organization's application and can be out of date; about one in five has none."
+  ],
+  "see_also": [
+   "nonprofits.npo_all"
+  ],
+  "where": {
+   "files": [
+    "nonprofit_series.json:npo_environment"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: nonprofits, environment and animals",
+     "href": "index.html#e=npo_environment.f.per1000.blue.q.1.0.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-17"
+ },
+ {
+  "id": "nonprofits.npo_health",
+  "ask": {
+   "en": [
+    "health nonprofits"
+   ],
+   "es": [
+    "organizaciones de salud sin fines de lucro"
+   ]
+  },
+  "name": "Nonprofits: health (IRS)",
+  "domain": "economy",
+  "domains": [
+   "economy",
+   "population"
+  ],
+  "group": "Nonprofit organizations",
+  "kind": "variable",
+  "plain": "How many tax-exempt organizations in each municipio work in health, by the activity code the IRS gives them.",
+  "definition": "Tax-exempt organizations in the IRS file whose NTEE code (National Taxonomy of Exempt Entities) starts with E, F, G and H: the major group health of the National Center for Charitable Statistics.",
+  "unit": "organizations",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot: the IRS Puerto Rico file of 2026-10-13 (the IRS renews it about monthly). Rebuilt with python nonprofits.py --refresh."
+  },
+  "method": "As for all tax-exempt organizations, grouped by the first letter of NTEE_CD into the ten major groups (A arts; B education; C-D environment and animals; E-H health; I-P human services; Q international; R-W public and societal benefit; X religion; Y mutual benefit; Z or no code unclassified).",
+  "sources": [
+   "irs_eo_bmf",
+   "census_zcta_county"
+  ],
+  "source_detail": "eo_pr.csv, first letter of NTEE_CD",
+  "caveats": [
+   "Only organizations the IRS recognizes as tax-exempt. Many Puerto Rico nonprofits are incorporated only under Puerto Rico law and never apply to the IRS, so they are not counted.",
+   "Counted where the headquarters' mailing address is, which may not be where the organization works; San Juan gathers many island-wide organizations.",
+   "The NTEE code is assigned by the IRS from the organization's application and can be out of date; about one in five has none."
+  ],
+  "see_also": [
+   "nonprofits.npo_all"
+  ],
+  "where": {
+   "files": [
+    "nonprofit_series.json:npo_health"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: nonprofits, health",
+     "href": "index.html#e=npo_health.f.per1000.blue.q.1.0.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-17"
+ },
+ {
+  "id": "nonprofits.npo_human",
+  "ask": {
+   "en": [
+    "human services nonprofits",
+    "social service organizations"
+   ],
+   "es": [
+    "organizaciones de servicios humanos"
+   ]
+  },
+  "name": "Nonprofits: human services (IRS)",
+  "domain": "economy",
+  "domains": [
+   "economy",
+   "population"
+  ],
+  "group": "Nonprofit organizations",
+  "kind": "variable",
+  "plain": "How many tax-exempt organizations in each municipio work in human services, by the activity code the IRS gives them.",
+  "definition": "Tax-exempt organizations in the IRS file whose NTEE code (National Taxonomy of Exempt Entities) starts with I to P: the major group human services of the National Center for Charitable Statistics.",
+  "unit": "organizations",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot: the IRS Puerto Rico file of 2026-10-13 (the IRS renews it about monthly). Rebuilt with python nonprofits.py --refresh."
+  },
+  "method": "As for all tax-exempt organizations, grouped by the first letter of NTEE_CD into the ten major groups (A arts; B education; C-D environment and animals; E-H health; I-P human services; Q international; R-W public and societal benefit; X religion; Y mutual benefit; Z or no code unclassified).",
+  "sources": [
+   "irs_eo_bmf",
+   "census_zcta_county"
+  ],
+  "source_detail": "eo_pr.csv, first letter of NTEE_CD",
+  "caveats": [
+   "Only organizations the IRS recognizes as tax-exempt. Many Puerto Rico nonprofits are incorporated only under Puerto Rico law and never apply to the IRS, so they are not counted.",
+   "Counted where the headquarters' mailing address is, which may not be where the organization works; San Juan gathers many island-wide organizations.",
+   "The NTEE code is assigned by the IRS from the organization's application and can be out of date; about one in five has none."
+  ],
+  "see_also": [
+   "nonprofits.npo_all"
+  ],
+  "where": {
+   "files": [
+    "nonprofit_series.json:npo_human"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: nonprofits, human services",
+     "href": "index.html#e=npo_human.f.per1000.blue.q.1.0.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-17"
+ },
+ {
+  "id": "nonprofits.npo_international",
+  "ask": {
+   "en": [
+    "international nonprofits"
+   ],
+   "es": [
+    "organizaciones internacionales"
+   ]
+  },
+  "name": "Nonprofits: international and foreign affairs (IRS)",
+  "domain": "economy",
+  "domains": [
+   "economy",
+   "population"
+  ],
+  "group": "Nonprofit organizations",
+  "kind": "variable",
+  "plain": "How many tax-exempt organizations in each municipio work in international and foreign affairs, by the activity code the IRS gives them.",
+  "definition": "Tax-exempt organizations in the IRS file whose NTEE code (National Taxonomy of Exempt Entities) starts with Q: the major group international and foreign affairs of the National Center for Charitable Statistics.",
+  "unit": "organizations",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot: the IRS Puerto Rico file of 2026-10-13 (the IRS renews it about monthly). Rebuilt with python nonprofits.py --refresh."
+  },
+  "method": "As for all tax-exempt organizations, grouped by the first letter of NTEE_CD into the ten major groups (A arts; B education; C-D environment and animals; E-H health; I-P human services; Q international; R-W public and societal benefit; X religion; Y mutual benefit; Z or no code unclassified).",
+  "sources": [
+   "irs_eo_bmf",
+   "census_zcta_county"
+  ],
+  "source_detail": "eo_pr.csv, first letter of NTEE_CD",
+  "caveats": [
+   "Only organizations the IRS recognizes as tax-exempt. Many Puerto Rico nonprofits are incorporated only under Puerto Rico law and never apply to the IRS, so they are not counted.",
+   "Counted where the headquarters' mailing address is, which may not be where the organization works; San Juan gathers many island-wide organizations.",
+   "The NTEE code is assigned by the IRS from the organization's application and can be out of date; about one in five has none."
+  ],
+  "see_also": [
+   "nonprofits.npo_all"
+  ],
+  "where": {
+   "files": [
+    "nonprofit_series.json:npo_international"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: nonprofits, international and foreign affairs",
+     "href": "index.html#e=npo_international.f.per1000.blue.q.1.0.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-17"
+ },
+ {
+  "id": "nonprofits.npo_public",
+  "ask": {
+   "en": [
+    "civic organizations",
+    "community development nonprofits"
+   ],
+   "es": [
+    "organizaciones civicas"
+   ]
+  },
+  "name": "Nonprofits: public and societal benefit (IRS)",
+  "domain": "economy",
+  "domains": [
+   "economy",
+   "population"
+  ],
+  "group": "Nonprofit organizations",
+  "kind": "variable",
+  "plain": "How many tax-exempt organizations in each municipio work in public and societal benefit, by the activity code the IRS gives them.",
+  "definition": "Tax-exempt organizations in the IRS file whose NTEE code (National Taxonomy of Exempt Entities) starts with R to W: the major group public and societal benefit of the National Center for Charitable Statistics.",
+  "unit": "organizations",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot: the IRS Puerto Rico file of 2026-10-13 (the IRS renews it about monthly). Rebuilt with python nonprofits.py --refresh."
+  },
+  "method": "As for all tax-exempt organizations, grouped by the first letter of NTEE_CD into the ten major groups (A arts; B education; C-D environment and animals; E-H health; I-P human services; Q international; R-W public and societal benefit; X religion; Y mutual benefit; Z or no code unclassified).",
+  "sources": [
+   "irs_eo_bmf",
+   "census_zcta_county"
+  ],
+  "source_detail": "eo_pr.csv, first letter of NTEE_CD",
+  "caveats": [
+   "Only organizations the IRS recognizes as tax-exempt. Many Puerto Rico nonprofits are incorporated only under Puerto Rico law and never apply to the IRS, so they are not counted.",
+   "Counted where the headquarters' mailing address is, which may not be where the organization works; San Juan gathers many island-wide organizations.",
+   "The NTEE code is assigned by the IRS from the organization's application and can be out of date; about one in five has none."
+  ],
+  "see_also": [
+   "nonprofits.npo_all"
+  ],
+  "where": {
+   "files": [
+    "nonprofit_series.json:npo_public"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: nonprofits, public and societal benefit",
+     "href": "index.html#e=npo_public.f.per1000.blue.q.1.0.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-17"
+ },
+ {
+  "id": "nonprofits.npo_religion",
+  "ask": {
+   "en": [
+    "religious organizations",
+    "religious nonprofits"
+   ],
+   "es": [
+    "organizaciones religiosas"
+   ]
+  },
+  "name": "Nonprofits: religion-related (IRS)",
+  "domain": "economy",
+  "domains": [
+   "economy",
+   "population"
+  ],
+  "group": "Nonprofit organizations",
+  "kind": "variable",
+  "plain": "How many tax-exempt organizations in each municipio work in religion-related, by the activity code the IRS gives them.",
+  "definition": "Tax-exempt organizations in the IRS file whose NTEE code (National Taxonomy of Exempt Entities) starts with X: the major group religion-related of the National Center for Charitable Statistics.",
+  "unit": "organizations",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot: the IRS Puerto Rico file of 2026-10-13 (the IRS renews it about monthly). Rebuilt with python nonprofits.py --refresh."
+  },
+  "method": "As for all tax-exempt organizations, grouped by the first letter of NTEE_CD into the ten major groups (A arts; B education; C-D environment and animals; E-H health; I-P human services; Q international; R-W public and societal benefit; X religion; Y mutual benefit; Z or no code unclassified).",
+  "sources": [
+   "irs_eo_bmf",
+   "census_zcta_county"
+  ],
+  "source_detail": "eo_pr.csv, first letter of NTEE_CD",
+  "caveats": [
+   "Only organizations the IRS recognizes as tax-exempt. Many Puerto Rico nonprofits are incorporated only under Puerto Rico law and never apply to the IRS, so they are not counted.",
+   "Counted where the headquarters' mailing address is, which may not be where the organization works; San Juan gathers many island-wide organizations.",
+   "The NTEE code is assigned by the IRS from the organization's application and can be out of date; about one in five has none."
+  ],
+  "see_also": [
+   "nonprofits.npo_all"
+  ],
+  "where": {
+   "files": [
+    "nonprofit_series.json:npo_religion"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: nonprofits, religion-related",
+     "href": "index.html#e=npo_religion.f.per1000.blue.q.1.0.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-17"
+ },
+ {
+  "id": "nonprofits.npo_mutual",
+  "ask": {
+   "en": [
+    "mutual benefit organizations"
+   ],
+   "es": [
+    "organizaciones de beneficio mutuo"
+   ]
+  },
+  "name": "Nonprofits: mutual and membership benefit (IRS)",
+  "domain": "economy",
+  "domains": [
+   "economy",
+   "population"
+  ],
+  "group": "Nonprofit organizations",
+  "kind": "variable",
+  "plain": "How many tax-exempt organizations in each municipio work in mutual and membership benefit, by the activity code the IRS gives them.",
+  "definition": "Tax-exempt organizations in the IRS file whose NTEE code (National Taxonomy of Exempt Entities) starts with Y: the major group mutual and membership benefit of the National Center for Charitable Statistics.",
+  "unit": "organizations",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot: the IRS Puerto Rico file of 2026-10-13 (the IRS renews it about monthly). Rebuilt with python nonprofits.py --refresh."
+  },
+  "method": "As for all tax-exempt organizations, grouped by the first letter of NTEE_CD into the ten major groups (A arts; B education; C-D environment and animals; E-H health; I-P human services; Q international; R-W public and societal benefit; X religion; Y mutual benefit; Z or no code unclassified).",
+  "sources": [
+   "irs_eo_bmf",
+   "census_zcta_county"
+  ],
+  "source_detail": "eo_pr.csv, first letter of NTEE_CD",
+  "caveats": [
+   "Only organizations the IRS recognizes as tax-exempt. Many Puerto Rico nonprofits are incorporated only under Puerto Rico law and never apply to the IRS, so they are not counted.",
+   "Counted where the headquarters' mailing address is, which may not be where the organization works; San Juan gathers many island-wide organizations.",
+   "The NTEE code is assigned by the IRS from the organization's application and can be out of date; about one in five has none."
+  ],
+  "see_also": [
+   "nonprofits.npo_all"
+  ],
+  "where": {
+   "files": [
+    "nonprofit_series.json:npo_mutual"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: nonprofits, mutual and membership benefit",
+     "href": "index.html#e=npo_mutual.f.per1000.blue.q.1.0.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-17"
+ },
+ {
+  "id": "nonprofits.npo_unclassified",
+  "ask": {
+   "en": [
+    "unclassified nonprofits"
+   ],
+   "es": [
+    "organizaciones sin clasificar"
+   ]
+  },
+  "name": "Nonprofits: unclassified or no NTEE code (IRS)",
+  "domain": "economy",
+  "domains": [
+   "economy",
+   "population"
+  ],
+  "group": "Nonprofit organizations",
+  "kind": "variable",
+  "plain": "How many tax-exempt organizations in each municipio have no activity code, or the code for unknown.",
+  "definition": "Tax-exempt organizations in the IRS file whose NTEE code (National Taxonomy of Exempt Entities) starts with Z, or no code: the major group unclassified or no NTEE code of the National Center for Charitable Statistics.",
+  "unit": "organizations",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot: the IRS Puerto Rico file of 2026-10-13 (the IRS renews it about monthly). Rebuilt with python nonprofits.py --refresh."
+  },
+  "method": "As for all tax-exempt organizations, grouped by the first letter of NTEE_CD into the ten major groups (A arts; B education; C-D environment and animals; E-H health; I-P human services; Q international; R-W public and societal benefit; X religion; Y mutual benefit; Z or no code unclassified).",
+  "sources": [
+   "irs_eo_bmf",
+   "census_zcta_county"
+  ],
+  "source_detail": "eo_pr.csv, first letter of NTEE_CD",
+  "caveats": [
+   "Only organizations the IRS recognizes as tax-exempt. Many Puerto Rico nonprofits are incorporated only under Puerto Rico law and never apply to the IRS, so they are not counted.",
+   "Counted where the headquarters' mailing address is, which may not be where the organization works; San Juan gathers many island-wide organizations.",
+   "The NTEE code is assigned by the IRS from the organization's application and can be out of date; about one in five has none."
+  ],
+  "see_also": [
+   "nonprofits.npo_all"
+  ],
+  "where": {
+   "files": [
+    "nonprofit_series.json:npo_unclassified"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: nonprofits, unclassified or no NTEE code",
+     "href": "index.html#e=npo_unclassified.f.per1000.blue.q.1.0.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-17"
+ },
+ {
+  "kind": "layer",
+  "value_type": "geometry",
+  "unit": "points (longitude and latitude, WGS 84)",
+  "added": "2026-10-17",
+  "id": "layers.public_housing",
+  "name": "Public housing developments (map layer)",
+  "domain": "housing",
+  "domains": [
+   "housing"
+  ],
+  "group": "Public housing",
+  "plain": "The public housing developments of Puerto Rico on the map, each at its main building, with its name, type and municipio.",
+  "definition": "public_housing.geojson: one point per development HUD geocoded to the rooftop or the ZIP+4 centroid, with name, type (public housing development or scattered-site public housing), units, municipio and geoid (the municipio's GEOID). 172 of 304 developments on 2026-10-17.",
+  "geography": "Points in 55 municipios",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot, each count in its source's vintage (HUD coverage 2026-09, USGS loads to 2026-07-17, OpenStreetMap 2026-10-17, USAC 2026-11-07). Rebuilt with python facilities.py --refresh."
+  },
+  "method": "facilities.py keeps the developments whose LVL2KX is R (rooftop) or 4 (ZIP+4 centroid), as HUD says to map, and whose point lies within 1 km of the municipio HUD gives. The 132 others sit at the centre of a block group or tract in HUD's layer; they are counted in the municipio figures but not drawn. The 2D map (facilities.js) and the 3D view (facilities3d.js) draw it with core/facilities.js, which holds its file, colour, pop-up and note.",
+  "sources": [
+   "hud_public_housing"
+  ],
+  "source_detail": "HUD eGIS Public_Housing_Developments FeatureServer 0",
+  "how_to_read": "Switch the layer on in the Map layers tab of the 2D map or the 3D view (Land and housing: Public housing developments). Both views draw the same points, with the same note on what is counted but not drawn and the same pop-up. Click a point for the development's name, type, municipio and source.",
+  "caveats": [
+   "The point is the building with the most units; a development can spread over several blocks.",
+   "About four in ten developments are not drawn because HUD could place them only approximately; the municipio counts include them."
+  ],
+  "see_also": [
+   "facilities.ph_devs",
+   "facilities.ph_units"
+  ],
+  "where": {
+   "files": [
+    "public_housing.geojson:name",
+    "public_housing.geojson:type",
+    "public_housing.geojson:units",
+    "public_housing.geojson:municipio",
+    "public_housing.geojson:geoid"
+   ],
+   "view": [
+    {
+     "label": "Map, Map layers tab: Public housing developments",
+     "href": "index.html#l=pubhousing"
+    },
+    {
+     "label": "3D view, Layers tab: Public housing developments",
+     "href": "3d.html"
+    }
+   ]
+  }
+ },
+ {
+  "kind": "layer",
+  "value_type": "geometry",
+  "unit": "points (longitude and latitude, WGS 84)",
+  "added": "2026-10-31",
+  "id": "layers.lihtc",
+  "name": "Tax credit housing projects (map layer)",
+  "domain": "housing",
+  "domains": [
+   "housing"
+  ],
+  "group": "Tax credit housing",
+  "plain": "The Low-Income Housing Tax Credit projects that HUD placed at a point, on the map, with their name, municipio, units and the year they opened.",
+  "definition": "lihtc.geojson: one point per LIHTC project that HUD geocoded to a point in a 2020 census tract, with name, type, municipio, geoid (the municipio's GEOID), units, low-income units (li_units) and year placed in service (year). 67 of 245 projects in HUD's 2026-04-30 release.",
+  "geography": "Points in 31 municipios",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot: HUD's LIHTC database released 2026-04-30, projects placed in service from 1987 to 2024 (the latest in Puerto Rico in 2023). HUD adds a year each spring; rebuilt with python facilities.py --only lihtc after the archive is saved by hand (HANDOFF decision 71)."
+  },
+  "method": "facilities.py draws a project only where HUD placed it at a point and in a 2020 census tract and the point lies within 1 km of its municipio (67 projects). The 158 projects HUD could not place are counted in the municipio figures but not drawn. The 20 projects for people who are homeless or living with HIV (HUD's TRGT_HML and TRGT_SPC) or whose name says they are a care home (an égida, a \"Hogar ...\": the sensitive-place words of places_privacy.py) are counted, never drawn or named (the owner's rule on sensitive places). No address is kept. The 2D map (facilities.js) and the 3D view (facilities3d.js) draw it with core/facilities.js.",
+  "sources": [
+   "hud_lihtc"
+  ],
+  "source_detail": "HUD National LIHTC Database (LIHTCPUB.xlsx, release of 2026-04-30): latitude, longitude, fips2020",
+  "how_to_read": "Switch the layer on in the Map layers tab of the 2D map or the 3D view (Land and housing: Tax credit housing projects). Both views draw the same points, with the same note on what is counted but not drawn and the same pop-up. Click a point for the project's name, municipio, units, low-income units, year placed in service and source.",
+  "caveats": [
+   "About two in three projects are not drawn: HUD could place them only by city. The municipio counts include them.",
+   "Projects that serve people who are homeless or living with HIV, and care homes for older adults, are never drawn or named; they are in the counts.",
+   "9 projects are no longer monitored for the credit's rules (their affordability period ended or another reason); they still count, and their units may no longer be rent-restricted.",
+   "These are about a federal tax credit program. Their Spanish summaries are held for Finance and Compliance review (HANDOFF decision 21)."
+  ],
+  "see_also": [
+   "facilities.lihtc_projects",
+   "facilities.lihtc_li_units",
+   "layers.public_housing"
+  ],
+  "where": {
+   "files": [
+    "lihtc.geojson:name",
+    "lihtc.geojson:type",
+    "lihtc.geojson:municipio",
+    "lihtc.geojson:geoid",
+    "lihtc.geojson:units",
+    "lihtc.geojson:li_units",
+    "lihtc.geojson:year"
+   ],
+   "view": [
+    {
+     "label": "Map, Map layers tab: Tax credit housing projects",
+     "href": "index.html#l=lihtc"
+    },
+    {
+     "label": "3D view, Layers tab: Tax credit housing projects",
+     "href": "3d.html"
+    }
+   ]
+  }
+ },
+ {
+  "kind": "layer",
+  "value_type": "geometry",
+  "unit": "points (longitude and latitude, WGS 84)",
+  "added": "2026-10-17",
+  "id": "layers.fire_stations",
+  "name": "Fire and EMS stations (map layer)",
+  "domain": "infrastructure",
+  "domains": [
+   "infrastructure"
+  ],
+  "group": "Emergency services",
+  "plain": "Fire and emergency medical service stations on the map, with their name, type and municipio.",
+  "definition": "fire_stations.geojson: one point per station of the USGS National Structures Dataset, with name, type, municipio and geoid. 94 stations on 2026-10-17.",
+  "geography": "Points in 77 municipios",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot, each count in its source's vintage (HUD coverage 2026-09, USGS loads to 2026-07-17, OpenStreetMap 2026-10-17, USAC 2026-11-07). Rebuilt with python facilities.py --refresh."
+  },
+  "method": "facilities.py reads USGS layer 51 for Puerto Rico and places each station in the municipio that holds its point. The 2D map (facilities.js) and the 3D view (facilities3d.js) draw it with core/facilities.js, which holds its file, colour, pop-up and note.",
+  "sources": [
+   "usgs_structures"
+  ],
+  "source_detail": "USGS TNM structures MapServer layer 51",
+  "how_to_read": "Switch the layer on in the Map layers tab of the 2D map or the 3D view (Community services, Safety and emergencies: Fire and EMS stations). Both views draw the same points, with the same note on what is counted but not drawn and the same pop-up. Click a point for the station's name, type, municipio and source.",
+  "caveats": [
+   "A station can be missing, moved or closed since USGS last edited it."
+  ],
+  "see_also": [
+   "facilities.fire_stations",
+   "layers.police_stations"
+  ],
+  "where": {
+   "files": [
+    "fire_stations.geojson:name",
+    "fire_stations.geojson:type",
+    "fire_stations.geojson:municipio",
+    "fire_stations.geojson:geoid"
+   ],
+   "view": [
+    {
+     "label": "Map, Map layers tab: Fire and EMS stations",
+     "href": "index.html#l=fire"
+    },
+    {
+     "label": "3D view, Layers tab: Fire and EMS stations",
+     "href": "3d.html"
+    }
+   ]
+  }
+ },
+ {
+  "kind": "layer",
+  "value_type": "geometry",
+  "unit": "points (longitude and latitude, WGS 84)",
+  "added": "2026-10-17",
+  "id": "layers.police_stations",
+  "name": "Police stations (map layer)",
+  "domain": "infrastructure",
+  "domains": [
+   "infrastructure"
+  ],
+  "group": "Emergency services",
+  "plain": "Police stations as volunteers mapped them in OpenStreetMap, with their name, type and municipio.",
+  "definition": "police_stations.geojson: one point per OpenStreetMap police feature (amenity=police; a building outline is drawn at its centre), with name (15 have none), type (municipal police, state police, or agency not stated, read from the name and operator tags), municipio, geoid and osm (the OpenStreetMap element, such as n123 for a node or w456 for a way). 141 stations on 2026-10-17.",
+  "geography": "Points in 63 municipios",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot, each count in its source's vintage (HUD coverage 2026-09, USGS loads to 2026-07-17, OpenStreetMap 2026-10-17, USAC 2026-11-07). Rebuilt with python facilities.py --refresh."
+  },
+  "method": "facilities.py asks the Overpass API for amenity=police in Puerto Rico, places each feature by point in polygon and counts a station mapped twice (same name, within 30 m) once. The type is 'Municipal police' when the name or operator says municipal, 'State police' when it names the Policía de Puerto Rico or the state police, else 'agency not stated'. The 2D map (facilities.js) and the 3D view (facilities3d.js) draw it with core/facilities.js, which holds its file, colour, pop-up and note.",
+  "sources": [
+   "osm"
+  ],
+  "source_detail": "Overpass API, amenity=police",
+  "how_to_read": "Switch the layer on in the Map layers tab of the 2D map or the 3D view (Community services, Safety and emergencies: Police stations). Both views draw the same points, with the same note on what is counted but not drawn and the same pop-up. Click a point for the station's name, type, municipio and source. Anyone can add a missing station at openstreetmap.org.",
+  "caveats": [
+   "Volunteers map these; stations are likely missing, and a few features are other police facilities.",
+   "ODbL: credit OpenStreetMap contributors; a database built on this file must be shared alike."
+  ],
+  "see_also": [
+   "facilities.police_stations",
+   "layers.fire_stations"
+  ],
+  "where": {
+   "files": [
+    "police_stations.geojson:name",
+    "police_stations.geojson:type",
+    "police_stations.geojson:municipio",
+    "police_stations.geojson:geoid",
+    "police_stations.geojson:osm"
+   ],
+   "view": [
+    {
+     "label": "Map, Map layers tab: Police stations",
+     "href": "index.html#l=police"
+    },
+    {
+     "label": "3D view, Layers tab: Police stations",
+     "href": "3d.html"
+    }
+   ]
+  }
+ },
+ {
+  "kind": "layer",
+  "value_type": "geometry",
+  "unit": "points (longitude and latitude, WGS 84)",
+  "added": "2026-10-17",
+  "id": "layers.libraries",
+  "name": "Public libraries (map layer)",
+  "domain": "education",
+  "domains": [
+   "education"
+  ],
+  "group": "Libraries",
+  "plain": "Libraries registered as public libraries in the E-Rate program, on the map, with their name, type and municipio.",
+  "definition": "libraries.geojson: one point per active public library of USAC's E-Rate list whose point lies within 1 km of the municipio of its address, with name, type (main library, library or branch, library kiosk, bookmobile), municipio and geoid. 1,099 of 1,228 libraries on 2026-11-07.",
+  "geography": "Points in all 78 municipios",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot, each count in its source's vintage (HUD coverage 2026-09, USGS loads to 2026-07-17, OpenStreetMap 2026-10-17, USAC 2026-11-07). Rebuilt with python facilities.py --refresh."
+  },
+  "method": "facilities.py keeps USAC's active Puerto Rico libraries marked public. A library whose point falls more than 1 km outside the municipio of its address (107) or that has no point (21) is counted there but not drawn. Any telephone number written into a name is removed. The 2D map (facilities.js) and the 3D view (facilities3d.js) draw it with core/facilities.js, which holds its file, colour, pop-up and note.",
+  "sources": [
+   "usac_erate"
+  ],
+  "source_detail": "USAC open data 7i5i-83qf",
+  "how_to_read": "Switch the layer on in the Map layers tab of the 2D map or the 3D view (Community services, Education and culture: Public libraries). Both views draw the same points, with the same note on what is counted but not drawn and the same pop-up. Click a point for the library's name, type, municipio and source.",
+  "caveats": [
+   "Most entries are community technology centres and community libraries registered as public libraries, not municipal libraries.",
+   "USAC's points are entered by the applicants; some are off by a street or more."
+  ],
+  "see_also": [
+   "facilities.libraries"
+  ],
+  "where": {
+   "files": [
+    "libraries.geojson:name",
+    "libraries.geojson:type",
+    "libraries.geojson:municipio",
+    "libraries.geojson:geoid"
+   ],
+   "view": [
+    {
+     "label": "Map, Map layers tab: Public libraries",
+     "href": "index.html#l=libraries"
+    },
+    {
+     "label": "3D view, Layers tab: Public libraries",
+     "href": "3d.html"
+    }
+   ]
+  }
+ },
+ {
+  "kind": "layer",
+  "value_type": "geometry",
+  "unit": "points (longitude and latitude, WGS 84)",
+  "added": "2026-11-16",
+  "id": "layers.schools",
+  "name": "Public schools (map layer)",
+  "domain": "education",
+  "domains": [
+   "education",
+   "hazards"
+  ],
+  "group": "Education",
+  "plain": "The open public schools on the map, with their students, grades and the hazard areas each one stands in.",
+  "definition": "public_schools.geojson: one point per open public school of the newest NCES school directory (2024-25) with a published point: name (as NCES writes it, in capitals without accents), municipio, geoid, students, grades, NCES id and hz, the hazard areas the point stands in. 862 schools with 235,819 students.",
+  "geography": "Points in all 78 municipios",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot, the newest school year with its students in the NCES directory (2024-25); rebuilt with python facility_exposure.py."
+  },
+  "method": "facility_exposure.py reads the NCES Common Core of Data directory through the Urban Institute's Education Data API (no key), keeps the open schools (status open, new, added, changed agency or reopened) that have a point, and tests each point against FEMA's 1% flood area, NOAA's 3 ft sea level rise area and the USGS landslide susceptibility map. The 2D map (facilities.js) and the 3D view (facilities3d.js) draw it with core/facilities.js, which holds its colour, pop-up and note.",
+  "sources": [
+   "urban_ccd",
+   "fema_nfhl",
+   "noaa_slr",
+   "usgs_landslide_map"
+  ],
+  "source_detail": "https://educationdata.urban.org/api/v1/schools/ccd/directory/{year}/?fips=72",
+  "how_to_read": "Each orange point is an open public school (862 in 2024-25). Its pop-up gives the students and grades and, when it applies, the hazard areas it stands in. The flags say where the building stands, not that harm will come to it.",
+  "caveats": [
+   "Private schools are not in the NCES public school directory.",
+   "The point is the one NCES publishes; a school with several buildings has one point.",
+   "A school on land the USGS rates highly susceptible to landslides is rare on the map because a building stands on a levelled pad, which the 5 m map rates by its own slope (docs/facility-exposure.md)."
+  ],
+  "see_also": [
+   "facility_exposure.fx_schools_flood_n",
+   "facility_exposure.fx_students_flood_pct",
+   "layers.libraries"
+  ],
+  "where": {
+   "files": [
+    "public_schools.geojson:name", "public_schools.geojson:type", "public_schools.geojson:municipio", "public_schools.geojson:geoid", "public_schools.geojson:students", "public_schools.geojson:grades", "public_schools.geojson:nces", "public_schools.geojson:hz"
+   ],
+   "view": [
+    {
+     "label": "Map, Layers tab, Education: Public schools",
+     "href": "index.html?l=schools"
+    },
+    {
+     "label": "3D view, Layers tab, Education: Public schools",
+     "href": "3d.html"
+    }
+   ]
+  }
+ },
+ {
+  "kind": "layer",
+  "value_type": "geometry",
+  "unit": "points (longitude and latitude, WGS 84)",
+  "added": "2026-11-02",
+  "id": "layers.reservoirs",
+  "name": "Reservoir levels (map layer)",
+  "domain": "environment",
+  "domains": [
+   "environment",
+   "infrastructure",
+   "hazards"
+  ],
+  "group": "Water supply",
+  "plain": "Every reservoir with a live USGS gauge on the map: how high its water is now, how it changed in a week, and whether that is usual for this time of year.",
+  "definition": "reservoirs.geojson: one point per reservoir with a USGS water-level gauge that reported in the last 30 days and has at least 8 years of daily values in 2011-2025 (25 on 2026-11-02, 19 of them in the Aqueduct and Sewer Authority's daily report). Each point has name, type, municipio, geoid, usgs (the monitoring location), aaa (true for the 19), level and level_time (the latest reading when the file was built), recent_start and recent (120 daily levels in metres, null where missing) and p10, p25, p50, p75, p90 (the usual level for each of the 53 weeks of the year, metres).",
+  "geography": "Points in 20 municipios",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "The latest reading is live: the page asks USGS for it each time the layer is switched on (at most every 10 minutes). The daily values and the usual levels are rebuilt once a month (python reservoirs.py --refresh)."
+  },
+  "method": "reservoirs.py reads the USGS Water Data API (no key): the lakes and reservoirs of Puerto Rico, the latest water-surface elevation (parameter 72376, metres above local mean sea level) and the daily values since 2011 (parameter 72375, feet, converted to metres). For each week of the year it takes the mean of that week in each year 2011-2025 and the 10th, 25th, 50th, 75th and 90th percentile of those yearly means (at least 8 years). The pop-up says where the latest reading falls: below the 10th percentile is lower than usual for the time of year, above the 90th higher, and between them usual (the level of about 8 years in 10). The chart shades the 10th to 90th percentile and, darker, the 25th to 75th. A finer cut was tried and dropped: where a reservoir is usually kept full, its middle half can be 10 cm wide, so a few centimetres read as 'lower than usual'. On 2026-11-02 the USGS reading matched the level in AAA's 05:00 chart to within 0.08 m for 18 of the 19 reservoirs AAA reports. The 2D map (facilities.js) and the 3D view (facilities3d.js) draw it with core/facilities.js.",
+  "sources": [
+   "usgs_water"
+  ],
+  "source_detail": "USGS Water Data API (api.waterdata.usgs.gov/ogcapi/v1): monitoring-locations (site_type_code LK, state 72), latest-continuous (72376) and daily (72375)",
+  "how_to_read": "Switch the layer on in the Map layers tab of the 2D map or the 3D view (Hazards and environment: Reservoir levels). Click a reservoir for its level now, the change in 7 days, how it compares with the same week in 2011-2025, a chart of the last 120 days over the usual range, and, for the reservoirs in AAA's report, a link to AAA's alert level.",
+  "caveats": [
+   "A level is not a volume: sediment has filled part of several reservoirs, so the same level holds less water than it did when the reservoir was built.",
+   "'Usual' means the same week in 2011-2025, a period that includes the droughts of 2015 and 2019-2020 and the years after Hurricane María. An operator can lower a reservoir on purpose, for repairs, dredging or before a storm.",
+   "The live reading is provisional, as USGS publishes it; USGS may revise it.",
+   "AAA's alert levels (desborde, seguridad, observación, ajustes, control) are not published here: AAA states no licence for them. The pop-up links to AAA's own page.",
+   "When the layer is switched on, the visitor's browser asks USGS's server for the latest readings, as the sea level rise layer asks NOAA's for its tiles."
+  ],
+  "see_also": [
+   "layers.fire_stations",
+   "hazards.flood_zone"
+  ],
+  "where": {
+   "files": [
+    "reservoirs.geojson:name",
+    "reservoirs.geojson:type",
+    "reservoirs.geojson:municipio",
+    "reservoirs.geojson:geoid",
+    "reservoirs.geojson:usgs",
+    "reservoirs.geojson:aaa",
+    "reservoirs.geojson:level",
+    "reservoirs.geojson:level_time",
+    "reservoirs.geojson:recent_start",
+    "reservoirs.geojson:recent",
+    "reservoirs.geojson:p10",
+    "reservoirs.geojson:p25",
+    "reservoirs.geojson:p50",
+    "reservoirs.geojson:p75",
+    "reservoirs.geojson:p90"
+   ],
+   "view": [
+    {
+     "label": "Map, Map layers tab: Reservoir levels",
+     "href": "index.html#l=reservoirs"
+    },
+    {
+     "label": "3D view, Layers tab: Reservoir levels",
+     "href": "3d.html"
+    }
+   ]
+  },
+  "ask": {
+   "en": [
+    "reservoirs",
+    "reservoir levels",
+    "water levels",
+    "lake levels",
+    "drought"
+   ],
+   "es": [
+    "embalses",
+    "niveles de los embalses",
+    "nivel del agua",
+    "represas",
+    "sequia"
+   ]
+  }
+ },
+ {
+  "kind": "layer",
+  "value_type": "geometry",
+  "unit": "points (longitude and latitude, WGS 84)",
+  "added": "2026-11-11",
+  "id": "layers.rivers",
+  "name": "River flow (map layer)",
+  "domain": "environment",
+  "domains": [
+   "environment",
+   "hazards",
+   "infrastructure"
+  ],
+  "group": "Water: map layers",
+  "plain": "Every river and stream with a live USGS gauge on the map: how much water is passing now, how that compares with a week ago, and whether it is usual for this time of year.",
+  "definition": "river_gauges.geojson: one point per stream gauge of the US Geological Survey that reported a discharge in the last 30 days and has at least 8 years of daily values in 2011-2025 (71 gauges on 54 rivers and streams on 2026-11-11). Discharge is the volume of water that passes the gauge each second, here in cubic metres per second (m³/s). Each point has name (the river or stream), type, municipio, geoid, usgs (the monitoring location), station (the name USGS gives the gauge), flow and flow_time (the latest reading when the file was built), recent_start and recent (120 daily mean flows, null where missing) and p10, p25, p50, p75, p90 (the usual flow for each of the 53 weeks of the year). Since 2026-11-12 each gauge also carries its gauge height (how high the water stands on the gauge's own scale, in metres), and, where USGS has surveyed them, flood reference levels: the top of the riverbank, the lowest beam and the deck of a bridge, a past flood's high-water mark (1 gauge on 2026-11-12: Río de la Plata at Comerío).",
+  "geography": "Points in 46 municipios",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "The latest reading is live: the page asks USGS for it each time the layer is switched on (at most every 10 minutes). The daily values and the usual flows are rebuilt once a month (python river_gauges.py --refresh)."
+  },
+  "method": "river_gauges.py reads the USGS Water Data API (no key): the stream sites of Puerto Rico, the latest discharge (parameter 00060, cubic feet per second) and the daily mean discharge since 2011 (statistic 00003), both converted to cubic metres per second (x 0.0283168). For each week of the year it takes the mean of that week in each year 2011-2025 and the 10th, 25th, 50th, 75th and 90th percentile of those yearly means (at least 8 years), the method of the Reservoir levels layer. The pop-up says where the latest reading falls: below the 10th percentile is lower than usual for the time of year, above the 90th higher, and between them usual (the flow of about 8 years in 10). The latest reading is one moment and the usual range is made of weekly means, so a short burst of rain can read as higher than usual. The chart draws the last 120 days over the shaded 10th to 90th percentile (darker: 25th to 75th) on a logarithmic scale, because a storm's flow can be hundreds of times a dry week's. The river's name is the start of the USGS station name, with its accents restored; the pop-up gives the station name as USGS writes it and links to the gauge's USGS page. The 2D map (facilities.js) and the 3D view (facilities3d.js) draw it with core/facilities.js. The gauge height (parameter 00065, feet, kept in metres) is the latest reading of each gauge. The flood reference levels come from USGS Real-Time Flood Impacts; each is a gauge height, so the pop-up can say how far the water is from it. A gauge height is measured from the gauge's own zero, not from sea level, so two gauges cannot be compared. The flood stages come from the National Weather Service's National Water Prediction Service: each NWS gauge names its USGS site, and its stages are gauge heights in feet on that site's scale, converted to metres. A gauge keeps them only where they are in feet, rise from action to major and, when both agencies' latest readings were taken within an hour, the two agree to half a foot.",
+  "sources": [
+   "usgs_water",
+   "nws_nwps"
+  ],
+  "source_detail": "USGS Water Data API (api.waterdata.usgs.gov/ogcapi/v1): monitoring-locations (site_type_code ST, state 72), latest-continuous (00060) and daily (00060, statistic 00003); latest-continuous (00065, gauge height; 00010, water temperature, which no river gauge reported on 2026-11-12); USGS Real-Time Flood Impacts (api.waterdata.usgs.gov/rtfi-api), reference points of Puerto Rico; NWS National Water Prediction Service API (api.water.noaa.gov/nwps/v1/gauges): flood categories",
+  "how_to_read": "Switch the layer on in the Map layers tab of the 2D map or the 3D view (Environment and climate: River flow). Click a gauge for the flow now, the flow seven days ago, how it compares with the same week in 2011-2025, a chart of the last 120 days over the usual range, and a link to the gauge's page at USGS. Turn on Flood zones or Watersheds and streams to see what lies downstream. For most gauges the pop-up also gives the National Weather Service's flood stages (action, minor, moderate, major), which one the water has reached, and how far it is from each.",
+  "caveats": [
+   "Nothing in this layer is a flood warning. A flow higher than usual is not one, and neither is water above a flood stage: the National Weather Service issues the warnings. The stages are those NWS has set for 66 of the 71 gauges, read once a month, so one NWS revised since may be out of date here; the pop-up links to the gauge's NWS page. A river can also leave its banks between two gauges.",
+   "The live reading is provisional, as USGS publishes it; USGS may revise it. During a flood a gauge can be damaged or stop reporting, and the pop-up then shows the last reading it has, with its time.",
+   "Some gauges are below a dam, a water intake or an irrigation canal: their flow is what the operator lets through, not what the rain brings.",
+   "'Usual' means the same week in 2011-2025, a period that includes the droughts of 2015 and 2019-2020 and Hurricanes Irma, María and Fiona.",
+   "Only gauges that report now and have 8 years of record are drawn: 71 of the 1,083 stream sites USGS lists for Puerto Rico, most of which stopped reporting years ago or were measured only a few times. Many rivers and most streams have no gauge.",
+   "A flow is not a water level: the same flow is deep in a narrow channel and shallow in a wide one.",
+   "When the layer is switched on, the visitor's browser asks USGS's server for the latest readings, as the Reservoir levels layer does.",
+   "The flood reference levels are surveyed points at one place on the river. Water below them there does not mean no flooding elsewhere, and they do not replace a warning from the National Weather Service."
+  ],
+  "see_also": [
+   "layers.reservoirs",
+   "water.watersheds_layer",
+   "hazards.flood_zone"
+  ],
+  "where": {
+   "files": [
+    "river_gauges.geojson:name",
+    "river_gauges.geojson:type",
+    "river_gauges.geojson:municipio",
+    "river_gauges.geojson:geoid",
+    "river_gauges.geojson:usgs",
+    "river_gauges.geojson:station",
+    "river_gauges.geojson:flow",
+    "river_gauges.geojson:flow_time",
+    "river_gauges.geojson:recent_start",
+    "river_gauges.geojson:recent",
+    "river_gauges.geojson:p10",
+    "river_gauges.geojson:p25",
+    "river_gauges.geojson:p50",
+    "river_gauges.geojson:p75",
+    "river_gauges.geojson:p90",
+    "river_gauges.geojson:nws"
+   ],
+   "view": [
+    {
+     "label": "Map, Map layers tab: River flow",
+     "href": "index.html#l=rivers"
+    },
+    {
+     "label": "3D view, Layers tab: River flow",
+     "href": "3d.html"
+    }
+   ]
+  },
+  "ask": {
+   "en": [
+    "river flow",
+    "rivers",
+    "river gauges",
+    "stream gauges",
+    "streamflow",
+    "river levels"
+   ],
+   "es": [
+    "caudal de los rios",
+    "caudal",
+    "rios",
+    "medidores de rios",
+    "nivel de los rios",
+    "crecidas"
+   ]
+  }
+ },
+ {
+  "kind": "layer",
+  "value_type": "geometry",
+  "unit": "points (longitude and latitude, WGS 84)",
+  "added": "2026-11-12",
+  "id": "layers.groundwater",
+  "name": "Groundwater levels (map layer)",
+  "domain": "environment",
+  "domains": [
+   "environment",
+   "infrastructure",
+   "hazards"
+  ],
+  "group": "Water: map layers",
+  "plain": "Every well with a live USGS gauge on the map: how far below the ground the water stands now, how that changed in a week, and whether it is usual for this time of year.",
+  "definition": "groundwater.geojson: one point per well of the US Geological Survey that reported a depth to water in the last 30 days (34 wells in 24 municipios on 2026-11-12). Depth to water is how far below the ground the water stands in the well, here in metres: a larger number is lower water. Each point has name, type, municipio, geoid, usgs (the monitoring location), station (the name USGS gives the well), depth and depth_time (the latest reading when the file was built), well_depth (how deep the well was built, where USGS records it), recent_start and recent (120 daily depths, null where missing) and p10, p25, p50, p75, p90 (the usual depth for each of the 53 weeks of the year; null where the well has fewer than 8 years of daily values).",
+  "geography": "Points in 24 municipios",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "The latest reading is live: the page asks USGS for it each time the layer is switched on (at most every 10 minutes). The daily values and the usual depths are rebuilt once a month (python groundwater.py --refresh)."
+  },
+  "method": "groundwater.py reads the USGS Water Data API (no key): the wells of Puerto Rico, the latest depth to water (parameter 72019, feet below land surface) and the daily values since 2011, converted to metres (x 0.3048). USGS keeps one daily statistic per well, the mean of the day or the reading at noon; the build takes the mean where the well has it. For each week of the year it takes the mean of that week in each year 2011-2025 and the 10th, 25th, 50th, 75th and 90th percentile of those yearly means (at least 8 years), the method of the Reservoir levels layer. The pop-up says where the latest reading falls: deeper than the 90th percentile is water lower than usual for the time of year, shallower than the 10th is water higher than usual, and between them usual (the depth of about 8 years in 10). The chart draws the last 120 days over the shaded 10th to 90th percentile, with the ground towards the top.",
+  "sources": [
+   "usgs_water"
+  ],
+  "source_detail": "USGS Water Data API (api.waterdata.usgs.gov/ogcapi/v1): monitoring-locations (site_type_code GW, state 72), latest-continuous (72019) and daily (72019)",
+  "how_to_read": "Switch the layer on in the Map layers tab of the 2D map or the 3D view (Environment and climate: Groundwater levels). Click a well for the depth to water now, the change in seven days, how it compares with the same week in 2011-2025, a chart of the last 120 days over the usual range, the depth of the well and a link to the well's page at USGS.",
+  "caveats": [
+   "A well shows the water at one point of one aquifer. Pumping from that well or one nearby can lower the water within hours, so a single low reading is not a drought, and the next well can read differently.",
+   "The layer says nothing about the quality of the water (salt, nitrate or other contamination) or about how much water can be pumped.",
+   "The live reading is provisional, as USGS publishes it; USGS may revise it.",
+   "'Usual' means the same week in 2011-2025, a period that includes the droughts of 2015 and 2019-2020 and Hurricanes Irma, María and Fiona. 5 of the 34 wells have fewer than 8 years of daily values and show no usual range.",
+   "Only wells that report now are drawn: 34 of the 5,197 well sites USGS lists for Puerto Rico, most of which were measured a few times or stopped reporting years ago. Large parts of the island have no well in the layer.",
+   "The wells are named as USGS names them, often with the code of the well field (JUA 5, MW 11).",
+   "When the layer is switched on, the visitor's browser asks USGS's server for the latest readings, as the Reservoir levels layer does."
+  ],
+  "see_also": [
+   "layers.reservoirs",
+   "layers.rivers"
+  ],
+  "where": {
+   "files": [
+    "groundwater.geojson:name",
+    "groundwater.geojson:type",
+    "groundwater.geojson:municipio",
+    "groundwater.geojson:geoid",
+    "groundwater.geojson:usgs",
+    "groundwater.geojson:station",
+    "groundwater.geojson:depth",
+    "groundwater.geojson:depth_time",
+    "groundwater.geojson:well_depth",
+    "groundwater.geojson:recent_start",
+    "groundwater.geojson:recent",
+    "groundwater.geojson:p10",
+    "groundwater.geojson:p25",
+    "groundwater.geojson:p50",
+    "groundwater.geojson:p75",
+    "groundwater.geojson:p90"
+   ],
+   "view": [
+    {
+     "label": "Map, Map layers tab: Groundwater levels",
+     "href": "index.html#l=groundwater"
+    },
+    {
+     "label": "3D view, Layers tab: Groundwater levels",
+     "href": "3d.html"
+    }
+   ]
+  },
+  "ask": {
+   "en": [
+    "groundwater",
+    "groundwater levels",
+    "groundwater wells",
+    "water table",
+    "aquifer",
+    "wells"
+   ],
+   "es": [
+    "agua subterranea",
+    "aguas subterraneas",
+    "nivel freatico",
+    "acuifero",
+    "acuiferos",
+    "pozos"
+   ]
+  }
+ },
+ {
+  "kind": "layer",
+  "value_type": "geometry",
+  "unit": "points (longitude and latitude, WGS 84)",
+  "added": "2026-11-12",
+  "id": "layers.rain",
+  "name": "Rainfall (map layer)",
+  "domain": "environment",
+  "domains": [
+   "environment",
+   "hazards"
+  ],
+  "group": "Water: map layers",
+  "plain": "Every USGS rain gauge that is reporting now on the map: how much rain fell in the last 24 hours and the last 7 days, and whether that week is usual for this time of year.",
+  "definition": "rain_gauges.geojson: one point per site of the US Geological Survey that reported precipitation in the last 30 days (54 gauges in 30 municipios on 2026-11-12; 20 are rain gauges of their own and the others are the rain gauge of a river, reservoir or well station). Rain is given in millimetres (25.4 mm is one inch). Each point has name, type, municipio, geoid, usgs (the monitoring location), station (the name USGS gives the site), recent_start and recent (120 daily totals, null where missing) and p10, p25, p50, p75, p90 (the usual rain of a week for each of the 53 weeks of the year; null where the gauge has fewer than 8 years of daily totals).",
+  "geography": "Points in 30 municipios",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "The last 24 hours and the last 7 days are live: the page asks USGS for them each time the layer is switched on (at most every 10 minutes). The 120 daily totals and the usual weeks are rebuilt once a month (python rain_gauges.py --refresh)."
+  },
+  "method": "rain_gauges.py reads the USGS Water Data API (no key): every site inside Puerto Rico's box with a precipitation reading (parameter 00045, inches), its name, and its daily totals since 2011 (statistic 00006, the sum of the day), converted to millimetres (x 25.4). For each week of the year it takes the rain of that week in each year 2011-2025 (the mean of its daily totals times seven; a week needs six of its days) and the 10th, 25th, 50th, 75th and 90th percentile of those yearly weeks (at least 8 years). When the layer is switched on, the page asks USGS for the 15-minute readings of the last 24 hours, which it adds up, and for the daily totals of the last 8 days. The pop-up gives the 24-hour total, the total of the last 7 whole days, and where that falls: below the 10th percentile is drier than usual for the time of year, above the 90th wetter, and between them usual. The chart draws one bar for each of the 120 days before the file was built.",
+  "sources": [
+   "usgs_water"
+  ],
+  "source_detail": "USGS Water Data API (api.waterdata.usgs.gov/ogcapi/v1): latest-continuous (00045, by bounding box), monitoring-locations (names), daily (00045, statistic 00006) and, from the page, continuous (00045, the last 24 hours)",
+  "how_to_read": "Switch the layer on in the Map layers tab of the 2D map or the 3D view (Environment and climate: Rainfall). Click a gauge for the rain of the last 24 hours, the rain of the last 7 days, how that compares with the same time of year in 2011-2025, a bar for each of the last 120 days and a link to the gauge's page at USGS. Turn on River flow to see how the rivers answered.",
+  "caveats": [
+   "A gauge measures the rain at one spot. A shower a kilometre wide can miss it, so the rain over a barrio or a watershed can be very different from the gauge's.",
+   "This is not a flood warning or a forecast. The National Weather Service issues warnings and forecasts, and maps rain between the gauges with radar.",
+   "The readings are provisional, as USGS publishes them. A gauge can clog, be damaged or stop reporting during a storm, which reads as less rain than fell.",
+   "The 7-day total is compared with calendar weeks of 2011-2025; in the dry season the usual range of some gauges starts at or near zero, so a week without rain reads as usual. 9 of the 54 gauges have fewer than 8 years of daily totals and show no usual range.",
+   "The gauges are not spread evenly: most stand at river and reservoir stations or in the Río Grande de Loíza basin above Caguas, and 48 municipios have none. The National Weather Service's own gauges are not in this layer.",
+   "When the layer is switched on, the visitor's browser asks USGS's server for the latest readings, as the Reservoir levels layer does."
+  ],
+  "see_also": [
+   "layers.rivers",
+   "layers.reservoirs",
+   "layers.groundwater"
+  ],
+  "where": {
+   "files": [
+    "rain_gauges.geojson:name",
+    "rain_gauges.geojson:type",
+    "rain_gauges.geojson:municipio",
+    "rain_gauges.geojson:geoid",
+    "rain_gauges.geojson:usgs",
+    "rain_gauges.geojson:station",
+    "rain_gauges.geojson:recent_start",
+    "rain_gauges.geojson:recent",
+    "rain_gauges.geojson:p10",
+    "rain_gauges.geojson:p25",
+    "rain_gauges.geojson:p50",
+    "rain_gauges.geojson:p75",
+    "rain_gauges.geojson:p90"
+   ],
+   "view": [
+    {
+     "label": "Map, Map layers tab: Rainfall",
+     "href": "index.html#l=rain"
+    },
+    {
+     "label": "3D view, Layers tab: Rainfall",
+     "href": "3d.html"
+    }
+   ]
+  },
+  "ask": {
+   "en": [
+    "rainfall",
+    "rain gauges",
+    "rain",
+    "precipitation gauges",
+    "how much rain"
+   ],
+   "es": [
+    "lluvia",
+    "pluviometros",
+    "pluviometro",
+    "cuanta lluvia",
+    "precipitacion medida"
+   ]
+  }
+ },
+ {
+  "kind": "layer",
+  "value_type": "geometry",
+  "unit": "points (longitude and latitude, WGS 84)",
+  "added": "2026-10-23",
+  "id": "layers.illegal_dumping",
+  "name": "Illegal dumping sites (map layer)",
+  "domain": "environment",
+  "domains": [
+   "environment",
+   "infrastructure"
+  ],
+  "group": "Waste",
+  "plain": "Illegal dumping sites FPR found at or near natural and cultural assets of the Eastern Region, with the size and kinds of waste.",
+  "definition": "illegal_dumping.geojson: one point per site recorded in FPR's 2025 Eastern Region baseline survey, with the asset nearby, municipio, estimated size, kinds of waste and signs of burning. 21 sites in 11 municipios.",
+  "geography": "Points in 11 municipios of the Eastern Region",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2025,
+   "last": 2025,
+   "frequency": "FPR's 2025 baseline, kept by hand. Rebuilt with python fpr_baseline.py after the CSV is edited."
+  },
+  "method": "FPR staff filled a survey form at each site during the baseline visits. fpr_baseline.py reads fpr_vertederos_clandestinos.csv, checks each point is in its municipio and writes the file; core/facilities.js draws it on both views.",
+  "sources": [
+   "fpr_baseline"
+  ],
+  "source_detail": "FPR Eastern Region baseline dashboard (Power BI), read 2026-10-23",
+  "how_to_read": "Switch the layer on in the Layers tab (Environment and climate: Illegal dumping sites). Click a point for the asset nearby, the size and kinds of waste.",
+  "caveats": [
+   "A sample of the assets FPR visited, not every dumping site in the region.",
+   "The form records no date for each visit; the survey is from 2025."
+  ],
+  "see_also": [
+   "conditions.epa_landfills"
+  ],
+  "where": {
+   "files": [
+    "illegal_dumping.geojson:name",
+    "illegal_dumping.geojson:municipio",
+    "illegal_dumping.geojson:size",
+    "illegal_dumping.geojson:waste",
+    "illegal_dumping.geojson:burning"
+   ],
+   "view": [
+    {
+     "label": "Map, Layers tab: Illegal dumping sites",
+     "href": "index.html#l=dumping"
+    },
+    {
+     "label": "3D view, Layers tab: Illegal dumping sites",
+     "href": "3d.html"
+    }
+   ]
+  }
+ },
+ {
+  "kind": "layer",
+  "value_type": "geometry",
+  "unit": "lines (longitude and latitude, WGS 84)",
+  "added": "2026-10-23",
+  "id": "layers.fpr_routes",
+  "name": "Municipal routes mapped by FPR (map layer)",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility"
+  ],
+  "group": "Public transport",
+  "plain": "Municipal bus and trolley routes FPR traced in the Eastern Region where the observatory has no route yet.",
+  "definition": "fpr_routes.geojson: one line per traced stretch the Transit routes layer does not already show, with its municipio, length in km and the share within 75 m of an observatory route. 38 stretches, 151.6 km, in 7 municipios.",
+  "geography": "Lines in 7 municipios of the Eastern Region",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2025,
+   "last": 2025,
+   "frequency": "FPR's 2025 baseline, kept by hand. Rebuilt with python fpr_baseline.py after the traced routes are exported again."
+  },
+  "method": "FPR traced the routes in ArcGIS Pro (Municipalroutes_ExportFeatures). fpr_baseline.py measures, in metres (Puerto Rico State Plane), how much of each stretch lies within 75 m of a route in transit_routes.geojson and publishes those under half.",
+  "sources": [
+   "fpr_baseline"
+  ],
+  "source_detail": "FPR Eastern Region baseline dashboard (Power BI), read 2026-10-23",
+  "how_to_read": "Switch the layer on in the Layers tab (Infrastructure and mobility: Municipal routes mapped by FPR). Click a line for its municipio and length.",
+  "caveats": [
+   "A traced path, not a timetable: no stops, frequency or hours.",
+   "Most stretches have no route name; FPR can add nombre, operador and fuente in fpr_rutas_municipales.geojson."
+  ],
+  "see_also": [
+   "layers.illegal_dumping"
+  ],
+  "where": {
+   "files": [
+    "fpr_routes.geojson:name",
+    "fpr_routes.geojson:municipio",
+    "fpr_routes.geojson:km",
+    "fpr_routes.geojson:covered_pct"
+   ],
+   "view": [
+    {
+     "label": "Map, Layers tab: Municipal routes mapped by FPR",
+     "href": "index.html#l=fprroutes"
+    },
+    {
+     "label": "3D view, Layers tab: Municipal routes mapped by FPR",
+     "href": "3d.html"
+    }
+   ]
+  }
+ },
+ {
+  "kind": "variable",
+  "value_type": "level",
+  "unit": "metres above local mean sea level",
+  "added": "2026-11-10",
+  "id": "facilities.reservoir_history",
+  "name": "Reservoir levels: history",
+  "domain": "infrastructure",
+  "domains": [
+   "infrastructure",
+   "hazards"
+  ],
+  "group": "Water supply",
+  "plain": "Each reservoir's water level through time: its range in 2011-2025, its lowest on record, its usual level for each week of the year, every month since its gauge began and the last 400 days.",
+  "definition": "reservoir_history.json: one record per reservoir (25; 19 in AAA's daily report) with usgs, name, aaa, municipio, geoid, level and level_time (the latest reading at build time), lo and hi with their dates (the lowest and highest daily level in 2011-2025), rec_lo and rec_lo_date (the lowest daily level kept since the gauge began), dropped (daily values left out), wk (53 weeks x 15 years: the mean of each week of the year in each year 2011-2025), m0 and mon (monthly means from m0) and d0 and day (the last 400 daily levels).",
+  "geography": "Points in 20 municipios",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "Rebuilt once a month with the map layer (python reservoirs.py --refresh); the Reservoirs page adds the latest readings and daily values from USGS when it opens."
+  },
+  "method": "reservoirs.py converts USGS daily values (parameter 72375, feet above local mean sea level) to metres. A month's mean needs 15 days with a value. The history of a gauge starts the year after the last year before 2011 whose median lies more than one 2011-2025 range outside it (another reference, or a reservoir still filling: Toa Vaca reported a depth until 2005, Cerrillos was filling in 1991-1992); after that, a single value more than three ranges below the low or one above the high is left out as a gauge error. The page's 'usual' is the map layer's: the 10th and 90th percentile of the same week's yearly means in 2011-2025, at least 8 years.",
+  "sources": [
+   "usgs_water"
+  ],
+  "source_detail": "USGS Water Data API (api.waterdata.usgs.gov/ogcapi/v1): daily (72375) and latest-continuous (72376)",
+  "how_to_read": "Open Knowledge › Reservoirs. The ranking orders the reservoirs by the share of the years 2011-2025 with a lower level in the same week; the tanks show where each level sits between its lowest and highest level of 2011-2025, not a volume.",
+  "caveats": [
+   "A level is not a volume: USGS publishes no volumes, and sediment has filled part of several reservoirs.",
+   "'Usual' compares a reservoir with its own past (2011-2025), not with AAA's alert levels, which are not published here (no licence stated).",
+   "Recent values are provisional, as USGS publishes them."
+  ],
+  "see_also": [
+   "layers.reservoirs"
+  ],
+  "where": {
+   "files": [
+    "reservoir_history.json:usgs",
+    "reservoir_history.json:name",
+    "reservoir_history.json:aaa",
+    "reservoir_history.json:municipio",
+    "reservoir_history.json:geoid",
+    "reservoir_history.json:level",
+    "reservoir_history.json:level_time",
+    "reservoir_history.json:lo",
+    "reservoir_history.json:lo_date",
+    "reservoir_history.json:hi",
+    "reservoir_history.json:hi_date",
+    "reservoir_history.json:rec_lo",
+    "reservoir_history.json:rec_lo_date",
+    "reservoir_history.json:dropped",
+    "reservoir_history.json:wk",
+    "reservoir_history.json:m0",
+    "reservoir_history.json:mon",
+    "reservoir_history.json:d0",
+    "reservoir_history.json:day"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Reservoirs",
+     "href": "reservoirs.html"
+    }
+   ]
+  },
+  "ask": {
+   "en": [
+    "reservoir history",
+    "drought",
+    "reservoir levels over time"
+   ],
+   "es": [
+    "historia de los embalses",
+    "sequia",
+    "niveles de los embalses"
+   ]
+  }
+ }
+]

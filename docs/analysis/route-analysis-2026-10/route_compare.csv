@@ -1,0 +1,98 @@
+operator,operator_name,region,route,name,timetable_expired,weekday_trips,first,last,peak_trips_one_direction,peak_headway_min,length_km,speed_kmh,busy_junctions,busy_per_10km,busy_passes_6_9,busy_passes_16_19,passes_estimated,timepoints_only,express_two_stops,minutes_peak,minutes_midday,peak_extra_pct,reaches_tren_urbano,other_operators,other_operator_names,stops,residents_400m,footbridges_30m,km_to_ati
+ati,ATI (AMA),metro,1,Estación Sagrado Corazón - Ave. Barbosa y 65 Infantería,False,81,5:55,20:30,9,20,5.7,11.3,10,17.7,104,106,False,False,False,30.0,30.0,0.0,True,2,Autoridad Metropolitana de Autobuses; City of San Juan,37,15123,4,0.0
+ati,ATI (AMA),metro,2,Estación Bayamón - Estación Sagrado Corazón,False,86,5:00,21:00,8,22,14.3,12.3,25,17.4,367,442,False,False,False,68.0,70.0,-2.9,True,4,Autoridad Metropolitana de Autobuses; City of San Juan; Municipality of Bayamon; Municipality of Guaynabo,74,28746,6,0.0
+ati,ATI (AMA),metro,3,Estación Sagrado Corazón - Terminal Covadonga,False,138,5:00,23:00,18,10,7.1,14.1,3,4.2,85,77,False,False,False,30.0,40.0,-25.0,True,2,Autoridad Metropolitana de Autobuses; City of San Juan,55,19710,6,0.0
+ati,ATI (AMA),metro,4,Terminal Cataño - Estación Piñero,False,60,5:00,21:02,5,36,19.6,16.8,24,12.3,207,249,False,False,False,75.0,70.0,7.1,True,3,Autoridad Metropolitana de Autobuses; City of San Juan; Municipality of Guaynabo,104,32549,1,0.0
+ati,ATI (AMA),metro,5,Terminal Iturregui - Terminal Covadonga,False,88,5:00,21:00,9,20,24.2,19.3,9,3.7,111,125,False,False,False,75.0,75.0,0.0,False,2,Autoridad Metropolitana de Autobuses; City of San Juan,126,46767,8,0.0
+ati,ATI (AMA),metro,6,Terminal Carolina - Terminal Iturregui,False,34,5:00,20:37,3,60,8.5,17.0,14,16.5,84,84,False,False,False,27.0,30.0,-10.0,False,1,Autoridad Metropolitana de Autobuses,53,22576,0,0.0
+ati,ATI (AMA),metro,7,Estación Cupey - Terminal Carolina,False,87,5:00,21:02,8,22,18.5,20.5,32,17.3,494,478,False,False,False,54.0,54.0,0.0,True,2,Autoridad Metropolitana de Autobuses; City of San Juan,89,37674,4,0.0
+ati,ATI (AMA),metro,8,Estación Martínez Nadal - Estación Piñero,False,32,5:22,20:30,3,60,10.4,16.9,15,14.4,84,84,False,False,False,38.0,37.0,2.7,True,3,Autoridad Metropolitana de Autobuses; City of San Juan; Municipality of Guaynabo,51,26417,3,0.0
+ati,ATI (AMA),metro,9,Estación Cupey - Terminal Covadonga,False,84,5:00,21:07,9,20,18.4,17.6,18,9.8,225,277,False,False,False,63.0,63.0,0.0,True,2,Autoridad Metropolitana de Autobuses; City of San Juan,95,47432,13,0.0
+ati,ATI (AMA),metro,10,Estación Sagrado Corazón - Terminal Covadonga,False,106,6:00,19:00,12,15,7.5,22.6,2,2.7,24,24,False,False,False,20.0,20.0,0.0,True,2,Autoridad Metropolitana de Autobuses; City of San Juan,23,5912,7,0.0
+ati,ATI (AMA),metro,15,Estación Cupey - Estación Sagrado Corazón,False,33,5:00,21:00,3,60,12.4,16.2,11,8.9,57,57,False,False,False,50.0,46.0,8.7,True,2,Autoridad Metropolitana de Autobuses; City of San Juan,64,34871,10,0.0
+ati,ATI (AMA),metro,17,Estación Piñero - Estación Cupey,False,30,5:00,20:08,3,60,13.0,15.7,17,13.0,96,70,False,False,False,50.0,50.0,0.0,True,3,Autoridad Metropolitana de Autobuses; City of San Juan; Municipality of Guaynabo,75,29110,0,0.0
+ati,ATI (AMA),metro,18,Estación Cupey - Riveras de Cupey,False,41,5:00,20:33,4,45,9.4,16.2,7,7.4,42,44,False,False,False,36.0,29.0,24.1,True,2,Autoridad Metropolitana de Autobuses; City of San Juan,50,18320,2,0.0
+ati,ATI (AMA),metro,19,Estación Martínez Nadal - Estación Centro Médico,False,32,5:00,20:36,3,60,9.4,13.1,7,7.4,40,44,False,False,False,45.0,43.0,4.7,True,3,Autoridad Metropolitana de Autobuses; City of San Juan; Municipality of Guaynabo,64,26188,2,0.0
+ati,ATI (AMA),metro,20,Estación Bayamón - Terminal Campanilla,False,77,5:00,19:00,11,16,17.0,50.4,1,0.6,21,21,True,True,True,20.0,20.0,0.0,True,1,Municipality of Bayamon,2,1443,0,0.3
+ati,ATI (AMA),metro,21,Terminal Covadonga - SC - Plaza Las Américas,False,65,5:00,21:11,6,30,12.4,14.9,13,10.5,120,120,False,False,False,47.0,50.0,-6.0,True,2,Autoridad Metropolitana de Autobuses; City of San Juan,85,29682,6,0.0
+ati,ATI (AMA),metro,22,Estación Sagrado Corazón - Plaza Las Américas,False,58,6:00,20:30,6,30,4.7,9.3,9,19.4,99,108,False,False,False,30.0,30.0,0.0,True,2,Autoridad Metropolitana de Autobuses; City of San Juan,28,7556,2,0.0
+ati,ATI (AMA),metro,26,Estación Piñero - Trujillo Alto,False,45,5:20,20:30,5,36,16.1,16.9,10,6.2,69,75,False,False,False,55.0,57.0,-3.5,True,2,Autoridad Metropolitana de Autobuses; City of San Juan,69,40406,1,0.0
+ati,ATI (AMA),metro,27,Estación Martínez Nadal - Guaynabo,False,41,5:30,20:45,4,45,10.7,16.4,7,6.6,45,48,False,False,False,38.0,40.0,-5.0,True,2,Autoridad Metropolitana de Autobuses; Municipality of Guaynabo,68,27482,0,0.0
+ati,ATI (AMA),metro,30,Estación Cupey - Terminal Caguas,False,54,6:00,19:10,6,30,25.0,37.5,6,2.4,61,66,False,False,False,40.0,40.0,0.0,True,3,Autoridad Metropolitana de Autobuses; City of San Juan; Municipality of Caguas,11,4124,0,0.0
+ati,ATI (AMA),metro,31,Estación Cupey - Ave. Emiliano Pol,False,38,5:25,21:00,4,45,13.3,18.9,17,12.8,92,92,False,False,False,45.0,42.0,7.1,True,2,Autoridad Metropolitana de Autobuses; City of San Juan,53,17231,1,0.0
+ati,ATI (AMA),metro,35,Estación Sagrado Corazón - Puerto Rico Convention Center,False,62,5:00,20:25,6,30,5.7,13.6,3,5.3,18,18,False,False,False,25.0,25.0,0.0,True,2,Autoridad Metropolitana de Autobuses; City of San Juan,36,20142,6,0.0
+ati,ATI (AMA),metro,36,Estación Sagrado Corazón - Lloréns Torres,False,86,5:00,20:20,9,20,7.0,16.8,5,7.2,41,45,False,False,False,25.0,25.0,0.0,True,2,Autoridad Metropolitana de Autobuses; City of San Juan,40,39093,0,0.0
+ati,ATI (AMA),metro,37,Terminal Cataño - Estación Bayamón,False,48,5:00,21:00,4,45,23.6,20.2,16,6.8,126,133,False,False,False,70.0,70.0,0.0,True,2,Autoridad Metropolitana de Autobuses; Municipality of Bayamon,102,40955,0,0.0
+ati,ATI (AMA),metro,40,Estación Piñero - Aeropuerto LMM,False,32,5:00,20:20,2,90,11.2,33.7,1,0.9,3,3,False,False,False,20.0,20.0,0.0,True,1,Autoridad Metropolitana de Autobuses,7,4523,2,0.0
+ati,ATI (AMA),metro,41,Estación Piñero - Terminal Iturregui,False,78,5:00,21:00,7,26,15.6,16.1,17,10.9,247,242,False,False,False,54.0,58.0,-6.9,True,2,Autoridad Metropolitana de Autobuses; City of San Juan,98,42870,1,0.0
+ati,ATI (AMA),metro,43,Teminal Iturregui - Vista Mar - Escorial,False,43,5:00,20:45,4,45,12.0,18.9,16,13.4,64,63,False,False,False,40.0,38.0,5.3,False,1,Autoridad Metropolitana de Autobuses,74,40572,2,0.0
+ati,ATI (AMA),metro,44,Terminal Carolina - Villa Carolina,False,33,5:00,20:00,3,60,6.7,19.1,3,4.5,9,9,False,False,False,22.0,21.0,4.8,False,1,Autoridad Metropolitana de Autobuses,47,25974,0,0.0
+ati,ATI (AMA),metro,45,Estación Sagrado Corazón - Loíza,False,40,5:00,20:00,5,36,23.3,25.8,8,3.4,44,34,False,False,False,50.0,54.0,-7.4,True,2,Autoridad Metropolitana de Autobuses; City of San Juan,87,25189,2,0.0
+ati,ATI (AMA),metro,53,Terminal Covadonga - Aeropuerto LMM,False,27,6:00,20:11,3,60,17.4,18.6,7,4.0,30,35,False,False,False,49.0,56.0,-12.5,False,2,Autoridad Metropolitana de Autobuses; City of San Juan,89,32496,10,0.0
+ati,ATI (AMA),metro,55,Terminal Carolina - Canovanas -Loíza,False,28,5:45,19:00,3,60,19.3,26.9,14,7.3,66,66,False,False,False,43.0,43.0,0.0,False,2,Autoridad Metropolitana de Autobuses; Municipality of Canovanas,52,15886,4,0.0
+ati,ATI (AMA),metro,91,Estación Bayamón - Santa Juanita,False,61,5:00,20:30,6,30,8.9,13.7,8,9.0,78,78,False,False,False,40.0,39.0,2.6,True,2,Autoridad Metropolitana de Autobuses; Municipality of Bayamon,66,25691,1,0.0
+ati,ATI (AMA),metro,92,Estación Bayamón - Magnolia,False,51,5:00,20:45,5,36,8.4,17.9,7,8.4,59,65,False,False,False,30.0,28.0,7.1,True,2,Autoridad Metropolitana de Autobuses; Municipality of Bayamon,43,20854,0,0.0
+san_juan,San Juan,metro,Condado,Condado,False,7,7:00,15:41,2,90,14.7,11.6,2,1.4,4,0,False,False,False,76.0,76.0,0.0,False,2,Autoridad Metropolitana de Autobuses; Autoridad de Transporte Integrado (ATI),39,17770,4,0.0
+san_juan,San Juan,metro,Domenech,Domenech,False,8,7:00,15:54,2,90,9.1,8.2,7,7.7,10,7,False,False,False,66.0,66.0,0.0,True,2,Autoridad Metropolitana de Autobuses; Autoridad de Transporte Integrado (ATI),23,13820,2,0.0
+san_juan,San Juan,metro,Margaritas,Margaritas,False,6,7:00,14:43,2,90,10.7,7.9,2,1.9,2,0,False,False,False,81.0,81.0,0.0,True,2,Autoridad Metropolitana de Autobuses; Autoridad de Transporte Integrado (ATI),28,23139,0,0.0
+san_juan,San Juan,metro,Buen Consejo,Buen Consejo,False,8,7:00,15:54,2,90,3.9,3.5,0,0.0,0,0,False,False,False,66.0,66.0,0.0,True,2,Autoridad Metropolitana de Autobuses; Autoridad de Transporte Integrado (ATI),23,7350,2,0.0
+san_juan,San Juan,metro,Caimito/Cupey,Caimito/Cupey,False,7,7:00,14:59,2,90,26.1,22.7,10,3.8,11,4,False,False,False,69.0,69.0,0.0,False,2,ALSA; Autoridad de Transporte Integrado (ATI),24,16417,1,0.0
+san_juan,San Juan,metro,Centro Medico,Centro Medico,False,13,7:00,15:59,3,60,12.0,20.0,8,6.7,22,8,False,False,False,36.0,36.0,0.0,True,2,Autoridad Metropolitana de Autobuses; Autoridad de Transporte Integrado (ATI),13,5684,7,0.0
+san_juan,San Juan,metro,Hill Brothers,Hill Brothers,False,7,7:00,15:05,2,90,16.0,13.7,12,7.5,22,2,False,False,False,70.0,70.0,0.0,True,2,Autoridad Metropolitana de Autobuses; Autoridad de Transporte Integrado (ATI),36,35253,4,0.0
+san_juan,San Juan,metro,Shangai/Llorens,Shangai/Llorens,False,6,7:00,15:18,2,90,11.1,7.6,6,5.4,7,2,False,False,False,88.0,88.0,0.0,False,2,Autoridad Metropolitana de Autobuses; Autoridad de Transporte Integrado (ATI),45,27532,0,0.0
+san_juan,San Juan,metro,Caimito/Rio Piedras,Caimito/Rio Piedras,False,10,7:00,16:05,3,60,18.3,21.6,10,5.5,20,10,False,False,False,51.0,51.0,0.0,True,3,ALSA; Autoridad Metropolitana de Autobuses; Autoridad de Transporte Integrado (ATI),18,11297,2,0.0
+bayamon,Bayamón,metro,BR-1,BayaRide-1,False,12,7:30,14:00,1,180,32.1,,8,2.5,16,0,True,True,False,45.0,45.0,0.0,True,2,Autoridad Metropolitana de Autobuses; Autoridad de Transporte Integrado (ATI),34,19814,3,0.0
+bayamon,Bayamón,metro,BR-2,BayaRide-2,False,12,7:30,14:00,1,180,28.4,,11,3.9,22,0,True,True,False,25.0,25.0,0.0,True,2,Autoridad Metropolitana de Autobuses; Autoridad de Transporte Integrado (ATI),22,21327,1,0.0
+bayamon,Bayamón,metro,BR-3,BayaRide-3,False,12,7:30,14:00,1,180,36.4,,9,2.5,18,0,True,True,False,45.0,45.0,0.0,True,3,Autoridad Metropolitana de Autobuses; Autoridad de Transporte Integrado (ATI); Municipality of Guaynabo,20,14538,2,0.0
+bayamon,Bayamón,metro,BT-1,BayaTrolley-1,False,19,6:30,17:00,5,36,7.4,,3,4.0,15,6,True,True,False,35.0,35.0,0.0,True,2,Autoridad Metropolitana de Autobuses; Autoridad de Transporte Integrado (ATI),19,5534,0,0.0
+bayamon,Bayamón,metro,BT-2,BayaTrolley-2,False,15,6:30,17:00,4,45,10.4,13.8,9,8.7,36,18,True,True,True,45.0,45.0,0.0,True,2,Autoridad Metropolitana de Autobuses; Autoridad de Transporte Integrado (ATI),27,10506,2,0.0
+bayamon,Bayamón,metro,BT-3,BayaTrolley-3,False,15,6:30,17:00,4,45,10.0,13.3,8,8.0,32,16,True,True,True,45.0,45.0,0.0,True,1,Autoridad de Transporte Integrado (ATI),27,11809,3,0.0
+guaynabo,Guaynabo,metro,Mamey,Mamey,False,22,6:00,16:23,3,60,11.5,29.9,3,2.6,12,4,False,False,False,23.0,23.0,0.0,False,1,Autoridad de Transporte Integrado (ATI),28,6045,0,0.1
+guaynabo,Guaynabo,metro,Amelia,Amelia,False,22,6:00,16:46,3,60,9.8,25.5,2,2.0,11,5,False,False,False,46.0,23.0,100.0,True,2,Autoridad Metropolitana de Autobuses; Autoridad de Transporte Integrado (ATI),36,13930,1,0.0
+guaynabo,Guaynabo,metro,Bo. Rio,Bo. Rio,False,22,6:00,16:35,3,60,15.1,25.8,4,2.7,18,6,False,False,False,35.0,35.0,0.0,False,1,Autoridad de Transporte Integrado (ATI),31,4602,0,0.1
+guaynabo,Guaynabo,metro,Torrimar,Torrimar,False,22,6:00,16:18,3,60,7.5,26.5,3,4.0,18,6,False,False,False,17.0,17.0,0.0,True,2,Autoridad Metropolitana de Autobuses; Autoridad de Transporte Integrado (ATI),32,14278,1,0.1
+guaynabo,Guaynabo,metro,Camarones,Camarones,False,22,6:00,16:29,3,60,13.6,28.2,3,2.2,12,4,False,False,False,29.0,29.0,0.0,False,1,Autoridad de Transporte Integrado (ATI),33,7194,0,0.1
+guaynabo,Guaynabo,metro,Esmeralda,Esmeralda,False,12,6:00,17:00,2,90,14.1,17.0,12,8.5,32,20,False,False,False,50.0,50.0,0.0,True,2,Autoridad Metropolitana de Autobuses; Autoridad de Transporte Integrado (ATI),48,26318,1,0.0
+guaynabo,Guaynabo,metro,Guaraguao,Guaraguao,False,22,6:00,16:30,3,60,10.8,21.6,3,2.8,12,4,False,False,False,30.0,30.0,0.0,False,2,Autoridad de Transporte Integrado (ATI); Municipality of Bayamon,32,5982,0,0.1
+guaynabo,Guaynabo,metro,Troncales,Troncales,False,44,6:00,16:30,3,60,8.3,20.7,4,4.8,27,9,False,False,False,24.0,24.0,0.0,True,2,Autoridad Metropolitana de Autobuses; Autoridad de Transporte Integrado (ATI),31,17530,1,0.0
+guaynabo,Guaynabo,metro,Hato Nuevo,Hato Nuevo,False,22,6:00,16:29,3,60,14.2,30.3,3,2.1,12,4,False,False,False,28.0,28.0,0.0,False,1,Autoridad de Transporte Integrado (ATI),24,4811,0,0.1
+guaynabo,Guaynabo,metro,Piedras Blancas,Piedras Blancas,False,22,6:00,16:17,3,60,6.7,23.5,8,12.0,39,13,False,False,False,17.0,17.0,0.0,False,1,Autoridad de Transporte Integrado (ATI),23,11572,0,0.0
+guaynabo,Guaynabo,metro,Canta Gallo/Santa Rosa,Canta Gallo/Santa Rosa,False,22,6:00,16:16,3,60,5.5,22.2,3,5.4,12,4,False,False,False,15.0,15.0,0.0,False,1,Autoridad de Transporte Integrado (ATI),22,7510,0,0.1
+caguas,Caguas,metro,Red,Red,True,6,6:00,16:15,1,180,25.5,21.9,15,5.9,27,15,False,False,False,70.0,65.0,7.7,False,1,Autoridad de Transporte Integrado (ATI),35,6816,1,0.1
+caguas,Caguas,metro,Blue,Blue,True,4,7:15,15:35,1,180,15.4,19.4,7,4.6,7,0,True,True,True,55.0,47.5,15.8,False,1,Autoridad de Transporte Integrado (ATI),30,10712,0,0.0
+caguas,Caguas,metro,Gray,Gray,True,10,7:15,16:45,2,90,6.4,10.3,10,15.5,20,10,True,True,True,35.0,40.0,-12.5,False,1,Autoridad de Transporte Integrado (ATI),21,7964,0,0.0
+caguas,Caguas,metro,Bblue,Bblue,True,10,7:15,17:25,2,90,6.7,16.1,6,8.9,12,12,True,True,True,27.5,25.0,10.0,False,1,Autoridad de Transporte Integrado (ATI),13,7537,0,0.4
+caguas,Caguas,metro,Green,Green,True,6,6:30,16:30,2,90,31.9,,6,1.9,12,6,True,True,False,90.0,70.0,28.6,False,1,Autoridad de Transporte Integrado (ATI),42,20358,0,0.2
+caguas,Caguas,metro,Fuchsa,Fuchsa,True,4,8:15,13:45,1,180,10.1,20.3,1,1.0,1,0,True,True,True,40.0,30.0,33.3,False,1,Autoridad de Transporte Integrado (ATI),22,11257,0,0.4
+caguas,Caguas,metro,Orange,Orange,True,6,6:00,16:30,2,90,26.5,,3,1.1,6,3,True,True,False,67.5,70.0,-3.6,False,1,Autoridad de Transporte Integrado (ATI),50,10563,1,0.2
+caguas,Caguas,metro,Purple,Purple,True,6,6:30,16:30,2,90,35.5,,3,0.8,6,3,True,True,False,80.0,77.5,3.2,False,1,Autoridad de Transporte Integrado (ATI),66,11809,1,0.2
+caguas,Caguas,metro,Yellow,Yellow,True,10,7:15,15:00,3,60,3.9,11.6,1,2.6,3,0,True,True,True,20.0,17.0,17.6,False,1,Autoridad de Transporte Integrado (ATI),13,6347,0,0.2
+canovanas,Canóvanas,metro,1,Las 400,False,6,6:00,16:00,2,90,7.6,13.8,0,0.0,0,0,False,False,False,31.6,33.5,-5.5,False,1,Municipality of Juncos,6,518,0,7.3
+canovanas,Canóvanas,metro,2,Cubuy,False,6,6:00,16:00,2,90,10.7,7.1,0,0.0,0,0,False,False,False,93.2,90.8,2.7,False,0,,14,1792,0,4.4
+canovanas,Canóvanas,metro,3,Palma Sola,False,4,6:30,13:15,2,90,18.1,10.8,0,0.0,0,0,False,False,False,103.2,99.8,3.4,False,0,,20,3380,0,1.2
+canovanas,Canóvanas,metro,4,Cambalache,False,6,6:00,16:00,2,90,5.1,5.8,0,0.0,0,0,False,False,False,59.9,52.3,14.6,False,1,Autoridad de Transporte Integrado (ATI),11,3889,0,0.2
+canovanas,Canóvanas,metro,5,San Isidro,False,7,6:00,16:00,3,60,13.5,7.4,3,2.2,8,3,False,False,False,107.2,113.3,-5.4,False,1,Autoridad de Transporte Integrado (ATI),19,9651,1,0.0
+canovanas,Canóvanas,metro,6,La Central,False,6,6:00,16:00,2,90,12.3,6.4,3,2.4,5,6,False,False,False,111.3,114.0,-2.4,False,1,Autoridad de Transporte Integrado (ATI),22,8602,0,0.0
+fajardo,Fajardo,este,3 Ruta Paraiso,3 Ruta Paraiso,True,8,6:00,15:12,3,60,21.0,20.0,0,0.0,0,0,False,False,False,63.0,63.0,0.0,False,0,,21,4653,0,20.3
+fajardo,Fajardo,este,5 Ruta Existente,5 Ruta Existente,True,16,6:00,15:00,5,36,6.2,18.6,7,11.3,35,0,False,False,False,30.0,20.0,50.0,False,0,,10,5539,1,22.4
+fajardo,Fajardo,este,2 Ruta Puerto Real,2 Ruta Puerto Real,True,8,6:00,15:00,2,90,9.2,18.5,0,0.0,0,0,False,False,False,30.0,30.0,0.0,False,0,,19,5581,0,23.7
+fajardo,Fajardo,este,4 Ruta Las Croabas,4 Ruta Las Croabas,True,7,6:00,14:18,3,60,20.1,16.1,1,0.5,3,0,False,False,False,75.0,75.0,0.0,False,0,,25,8456,0,22.9
+fajardo,Fajardo,este,1 Ruta Centros Comerciales,1 Ruta Centros Comerciales,True,8,6:00,15:00,2,90,8.2,16.4,8,9.8,16,0,False,False,False,30.0,30.0,0.0,False,0,,10,4810,1,21.3
+humacao,Humacao,este,1,Ruta Este,False,9,7:30,15:20,2,90,3.2,5.8,0,0.0,0,0,False,False,False,33.0,33.0,0.0,False,0,,10,2283,0,23.9
+humacao,Humacao,este,2,Rute Oeste,False,9,7:30,15:20,2,90,2.2,3.9,0,0.0,0,0,False,False,False,33.0,33.0,0.0,False,0,,10,1421,0,23.6
+juncos,Juncos,este,Las Piñas,Las Piñas,True,8,8:00,16:00,1,180,18.9,22.6,0,0.0,0,0,True,True,True,50.0,50.0,0.0,False,1,Municipality of Canovanas,21,6060,0,10.1
+juncos,Juncos,este,Bo. Valenciano,Bo. Valenciano,True,8,8:00,16:00,1,180,19.4,21.2,3,1.5,3,3,True,True,True,55.0,55.0,0.0,False,0,,31,5621,0,12.0
+juncos,Juncos,este,Bo. Juncos Pueblo,Bo. Juncos Pueblo,True,8,8:00,16:00,1,180,8.9,,3,3.4,3,3,True,True,False,55.0,55.0,0.0,False,0,,34,5264,0,11.3
+juncos,Juncos,este,Bo. Mamey y Bo. Lirios,Bo. Mamey y Bo. Lirios,True,8,8:00,16:00,1,180,15.2,18.2,0,0.0,0,0,True,True,True,50.0,50.0,0.0,False,0,,20,5111,0,9.0
+juncos,Juncos,este,Bo. Placita y Bo. Mangó,Bo. Placita y Bo. Mangó,True,8,8:00,16:00,1,180,16.8,18.3,0,0.0,0,0,True,True,True,55.0,55.0,0.0,False,0,,23,8327,0,12.0
+juncos,Juncos,este,Bo. Ceiba Norte y Bo. Ceiba Sur,Bo. Ceiba Norte y Bo. Ceiba Sur,True,8,8:00,16:00,1,180,23.7,,0,0.0,0,0,True,True,False,50.0,50.0,0.0,False,1,Municipality of San Lorenzo,23,3490,0,11.3
+san_lorenzo,San Lorenzo,este,Red,Red,True,9,6:00,17:00,3,60,9.3,16.0,0,0.0,0,0,True,True,True,35.0,35.0,0.0,False,0,,19,3620,0,6.6
+san_lorenzo,San Lorenzo,este,Blue,Blue,True,9,6:00,17:00,3,60,6.0,10.2,0,0.0,0,0,True,True,True,35.0,35.0,0.0,False,0,,19,5703,0,7.9
+san_lorenzo,San Lorenzo,este,Green,Green,True,7,6:00,17:00,2,90,13.8,16.5,0,0.0,0,0,True,True,True,35.0,47.5,-26.3,False,0,,23,4157,0,8.7
+san_lorenzo,San Lorenzo,este,Fuchsa,Fuchsa,True,7,6:00,17:00,2,90,16.0,17.4,0,0.0,0,0,True,True,True,40.0,55.0,-27.3,False,0,,29,4135,0,9.4
+san_lorenzo,San Lorenzo,este,Orange,Orange,True,9,6:00,17:00,3,60,10.4,20.8,0,0.0,0,0,True,True,True,30.0,35.0,-14.3,False,0,,20,4883,0,9.4
+san_lorenzo,San Lorenzo,este,Purple,Purple,True,9,6:00,17:00,3,60,9.9,14.8,0,0.0,0,0,True,True,True,45.0,40.0,12.5,False,1,Municipality of Juncos,17,5217,0,9.4
+san_lorenzo,San Lorenzo,este,Yellow,Yellow,True,7,6:00,17:00,2,90,14.8,9.2,0,0.0,0,0,True,True,True,35.0,47.5,-26.3,False,0,,18,3915,0,8.3
+san_lorenzo,San Lorenzo,este,Babyblue,Babyblue,True,9,6:00,17:00,3,60,8.3,14.2,0,0.0,0,0,True,True,True,35.0,35.0,0.0,False,0,,14,2824,0,7.4
+patillas,Patillas,este,Marin Alto,Marin Alto,False,3,6:00,13:00,1,180,1.4,1.0,0,0.0,0,0,False,False,False,80.0,80.0,0.0,False,0,,4,1484,0,25.5
+vieques,Vieques,este,VERDE,VERDE,False,4,7:30,13:30,1,180,13.7,8.6,0,0.0,0,0,False,False,False,95.0,95.0,0.0,False,0,,19,2654,0,49.4

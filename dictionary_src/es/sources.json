@@ -1,0 +1,794 @@
+{
+ "overture": {
+  "access": "La herramienta de línea de comandos overturemaps descarga el tema Places de los archivos públicos de Overture alojados en la nube, recortado a un recuadro alrededor de Puerto Rico (oeste -67.97, sur 17.85, este -65.20, norte 18.57). El corte de datos actual es la versión 2026-09-23.1 de Overture, descargada el 1 de octubre de 2026.",
+  "cadence": "Overture publica el tema Places cada mes. El observatorio conserva un corte de datos y lo renueva solo cuando FPR reconstruye los datos (un nuevo corte de datos).",
+  "used_for": "Cada lugar turístico en los mapas (nombre, categoría, ubicación, dirección, sitio web, puntuación de confianza y conjunto de datos de origen) y cada conteo, densidad y cifra de exposición que se calcula a partir de esos lugares. También la distancia por carretera desde donde vive la gente hasta el supermercado, la tienda de alimentos, la farmacia y el banco o la cooperativa más cercanos, por barrio y municipio (essentials_series.json, essentials_barrio.json; solo las distancias, nunca los comercios).",
+  "terms_note": "La licencia depende de quién aportó el registro: CDLA-Permissive-2.0 para Meta, Microsoft y otros; Apache 2.0 para Foursquare, y CC0 1.0 para AllThePlaces. En el corte de datos 2026-10, el observatorio publica 32,541 lugares. La fuente indicada es Meta para 31,945, Foursquare para 252, Microsoft para 241 y AllThePlaces para 103. Los otros temas de Overture (Buildings, Divisions, Transportation) usan la ODbL; el observatorio también usa Buildings, con su propia ficha de fuente (overture_buildings). Overture sugiere citar 'Overture Maps Foundation, overturemaps.org' con la fecha de consulta. El aviso de Foursquare pide a quien use sus registros que mantenga la atribución a Foursquare (incluido el texto completo de su NOTICE.txt), que entregue a quienes los reciban una copia de la licencia Apache 2.0 y que indique cualquier cambio; la página de atribución de Overture incluye la línea de derechos de autor de Foursquare. Los listados son registros comerciales de terceros, no un registro oficial. FPR los clasifica y elimina los duplicados. No se publican números de teléfono, correos electrónicos ni enlaces a redes sociales.",
+  "_en": {
+   "access": "e1996f29",
+   "cadence": "3e3b37a6",
+   "used_for": "ad96ba68",
+   "terms_note": "9fed88d6"
+  }
+ },
+ "overture_buildings": {
+  "access": "El paquete overturemaps lee el tema Buildings de los archivos GeoParquet públicos de Overture para un recuadro alrededor de Puerto Rico (oeste -67.97, sur 17.85, este -65.20, norte 18.57), en unos 3.5 minutos. La compilación guarda, de cada edificio, un punto dentro de su contorno, el área de su huella, su primera fuente y su altura (cache/buildings/, no se publica). El sitio nunca consulta Overture.",
+  "cadence": "Overture publica una versión cada mes; la actualización revisa cada 30 días y reconstruye con la versión más reciente (unidad de actualización buildings).",
+  "used_for": "El número de edificios, los edificios por km², el terreno bajo techo, la huella mediana, los edificios en un Área Especial de Riesgo de Inundación de FEMA y la proporción trazada con aprendizaje automático, para los 78 municipios, los 901 barrios y Puerto Rico (buildings_series.json, buildings_barrio.json).",
+  "terms_note": "ODbL 1.0 porque el tema contiene datos de OpenStreetMap: atribución como arriba y compartir igual para una base de datos derivada. Los archivos de edificios del observatorio son conteos y proporciones derivados de ella, así que también se ofrecen bajo la ODbL 1.0. En la versión 2026-10-21.0, los 2,157,363 edificios de Puerto Rico vienen de OpenStreetMap (1,500,399), Google Open Buildings (536,571) y Microsoft ML Buildings (120,393); 203,060 tienen altura. Las huellas trazadas con aprendizaje automático pueden incluir cobertizos y omitir edificios bajo los árboles. La mayoría de los edificios son viviendas: no se publica nada por edificio.",
+  "_en": {
+   "access": "8f0fa1c1",
+   "cadence": "a8e53a3c",
+   "used_for": "05c28308",
+   "terms_note": "0e9872ee"
+  }
+ },
+ "nasa_firms": {
+  "access": "La compilación descarga los archivos anuales por país de FIRMS para Puerto Rico (NOAA-20, procesamiento estándar; públicos, sin clave) y, solo en GitHub Actions, los últimos 12 meses del servicio de área de la API de FIRMS para el recuadro de Puerto Rico con la MAP_KEY de FPR, guardada como el secreto FIRMS_MAP_KEY. Las detecciones se quedan en la caché de la compilación; solo se publican conteos por municipio. El sitio nunca consulta FIRMS.",
+  "cadence": "FIRMS añade detecciones a las pocas horas de cada pase; el archivo anual de un año terminado aparece en los primeros meses del siguiente. El observatorio reconstruye cada mes (unidad de actualización fires).",
+  "used_for": "Las detecciones de fuegos de vegetación por municipio para cada año desde 2019, por 100 km² de terreno y en los últimos 12 meses (fires_series.json).",
+  "terms_note": "Los datos de la NASA son abiertos y sin restricciones; FIRMS pide que los trabajos publicados den crédito a 'NASA FIRMS'. Una detección es un píxel de 375 m que tenía uno o más fuegos u otras fuentes de calor cuando pasó el satélite, no el contorno ni el tamaño de un fuego. Suomi NPP dejó de enviar datos a FIRMS el 2026-11-02, así que el observatorio usa NOAA-20 para todos los años.",
+  "_en": {
+   "access": "8317687a",
+   "cadence": "bf4b8001",
+   "used_for": "f98faa6a",
+   "terms_note": "dde387de"
+  }
+ },
+ "fema_nfhl": {
+  "access": "Servicio ArcGIS REST (un servicio web público que devuelve datos de mapas cuando se le piden) en hazards.fema.gov: NFHL MapServer, capa 28, Flood Hazard Zones. La compilación recorre la capa por páginas con el filtro DFIRM_ID LIKE '72%' (Puerto Rico) y lee los campos FLD_ZONE, ZONE_SUBTY, SFHA_TF y STATIC_BFE. No se necesita clave.",
+  "cadence": "FEMA indica que agrega datos nuevos y revisados de forma continua, y sus metadatos indican una frecuencia de actualización mensual. El observatorio conserva un corte de datos, descargado el 1 de octubre de 2026, y lo renueva solo cuando FPR reconstruye los datos (un nuevo corte de datos).",
+  "used_for": "Las formas de las zonas inundables en los mapas (flood.geojson) y los indicadores y las proporciones de zona inundable de los lugares turísticos y los municipios. También las carreteras que cierran en el estimado de residentes incomunicados de los hospitales por inundaciones (cutoff_series.json, cutoff_barrio.json).",
+  "terms_note": "Los metadatos de FEMA indican que el Mapa de Tasas del Seguro de Inundación (Flood Insurance Rate Map) impreso, su base de datos y el Estudio del Seguro de Inundación (Flood Insurance Study) son la designación oficial de las Áreas Especiales de Riesgo de Inundación y de las elevaciones de inundación base. El observatorio dibuja una copia simplificada como contexto. No es una determinación de inundación para ninguna propiedad.",
+  "_en": {
+   "access": "7f38fc0d",
+   "cadence": "8f353814",
+   "used_for": "666618e3",
+   "terms_note": "88e4857e"
+  }
+ },
+ "padus": {
+  "access": "Capa 0 de un ArcGIS REST FeatureServer (un servicio web público) de una copia alojada de PAD-US 4.1 (capa PADUS4_1ProtMechCat, servicio Protection_Mechanism_Category_PADUS, en una cuenta de ArcGIS Online del USGS). La compilación la recorre por páginas con el filtro State_Nm='PR' y lee Unit_Nm, Mang_Name, Des_Tp, GAP_Sts, Category, Pub_Access y GIS_Acres. No se necesita clave.",
+  "cadence": "El USGS publica PAD-US en versiones numeradas. Al 3 de octubre de 2026, indica como la más reciente la versión 4.1 (publicada en marzo de 2025 y citada por el USGS como una publicación de datos de 2024). El observatorio conserva un corte de datos, descargado el 1 de octubre de 2026, y lo renueva solo cuando FPR reconstruye los datos (un nuevo corte de datos).",
+  "used_for": "Los contornos de las áreas protegidas en los mapas (protected.geojson), el nombre y el estado del área protegida de cada lugar turístico, y la proporción de lugares dentro de áreas protegidas.",
+  "terms_note": "El USGS indica que sus datos son de dominio público en los EE. UU., y el USGS y sus socios de datos declinan toda responsabilidad por el mal uso. PAD-US combina datos de agencias federales, estatales y locales y de socios sin fines de lucro. El USGS lo recomienda para comparar agencias y aconseja consultar directamente a la agencia que administra el área para obtener límites oficiales. Los límites de proclamación (tipo de designación PROC) se dibujan, pero un lugar dentro de ellos no cuenta como dentro de un área protegida. El observatorio dibuja una copia simplificada.",
+  "_en": {
+   "access": "691c1925",
+   "cadence": "92c258a2",
+   "used_for": "de652023",
+   "terms_note": "a44cbe31"
+  }
+ },
+ "census_tiger": {
+  "access": "Servicios ArcGIS REST (servicios web públicos que devuelven datos de mapas cuando se les piden) en tigerweb.geo.census.gov, sin clave y siempre filtrados con STATE='72'. 2020 Census Counties (capa 82) da la población, las unidades de vivienda y el área de cada municipio. Generalized_ACS2023 Counties 500K (capa 11) da los límites recortados a la costa que se dibujan en los mapas. 2010 Census Counties (capa 100) da la población de 2010. 2020 Census Blocks (capa 10) da la población de los bloques. Generalized_ACS2023 County Subdivisions 500K (capa 7) da los contornos de los barrios. 2020 Census Tracts (capa 6), Block Groups (capa 8) y County Subdivisions (capa 20) dan el nombre, el área de tierra, los residentes y las unidades de vivienda de cada unidad; los contornos de las subdivisiones de condado a resolución completa ubican cada bloque censal en su barrio (geo.py). La capa 10 también da el identificador de 15 dígitos, las unidades de vivienda y el área de tierra de cada bloque.",
+  "cadence": "El Negociado del Censo de EE. UU. publica estas capas por edición (los censos de 2010 y 2020 y los límites generalizados de 2023), así que no cambian entre una edición y otra. El observatorio conserva un corte de datos, descargado el 1 de octubre de 2026 (las tablas de sectores censales, grupos de bloques y subdivisiones de condado, y los identificadores de bloque, el 6 de octubre de 2026), y lo renueva solo cuando FPR reconstruye los datos (un nuevo corte de datos).",
+  "used_for": "Los límites de municipios y barrios, los conteos de población y de unidades de vivienda de 2010 y 2020 por municipio, la población por bloque en la que se basan las cifras de cobertura del transporte colectivo, y el municipio de cada lugar y cada parada. La tabla de equivalencias geográficas de 2020 (las unidades, las unidades que las contienen, los residentes y las unidades de vivienda de cada unidad, y los pesos de barrio a sector censal) y los identificadores de bloque y las unidades de vivienda en los que se basa.",
+  "terms_note": "La documentación técnica de TIGER/Line del Negociado del Censo indica que la protección de derechos de autor no aplica a las obras del Gobierno de EE. UU. y pide citar al Negociado del Censo como fuente. La página de citas del Negociado agrega que las conclusiones de cualquier análisis de los datos son responsabilidad exclusiva de quien lo realiza. El Negociado del Censo no respalda el uso que FPR hace de estos datos. Los límites legales de la capa de 2020 incluyen aguas costeras (llegan a 3 millas náuticas mar adentro), así que los mapas y las búsquedas por punto usan en su lugar los límites generalizados recortados a la costa. Los barrios son subdivisiones de condado del Censo. El observatorio no usa datos de parcelas (catastro) del CRIM, el Centro de Recaudación de Ingresos Municipales.",
+  "_en": {
+   "access": "e669847b",
+   "cadence": "edd5b0ac",
+   "used_for": "d89818ff",
+   "terms_note": "0a983d9c"
+  }
+ },
+ "census_cartographic": {
+  "access": "Dos archivos zip de shapefiles en www2.census.gov/geo/tiger/GENZ2020/shp, sin clave: cb_2020_72_tract_500k.zip (0.6 MB) y cb_2020_72_bg_500k.zip (1.0 MB), modificados por última vez el 19 de mayo de 2023 y leídos el 6 de octubre de 2026. geo.py los lee con pyshp, escribe site/data/geo/tracts.geojson y blockgroups.geojson y conserva solo el GEOID.",
+  "cadence": "Una geografía de 2020. Los archivos no se revisan dentro de la década, salvo para corregir errores. El observatorio los descarga una vez y no los actualiza a menos que la compilación se ejecute con su opción de actualización.",
+  "used_for": "Los contornos de los sectores censales y los grupos de bloques, solo para dibujarlos.",
+  "terms_note": "El Negociado del Censo describe estos archivos como representaciones simplificadas diseñadas para mapas temáticos a pequeña escala y dice en su página de descripción: \"These files should not be used for: geographic analysis including area or perimeter calculation.\" (estos archivos no deben usarse para análisis geográficos, incluido el cálculo de áreas o perímetros). El observatorio los usa solo para dibujar contornos; las áreas de tierra provienen del propio campo de área de tierra del Negociado del Censo (AREALAND) y los conteos, de la tabla de bloques de 2020. Los archivos generalizados están recortados a un contorno simplificado de la costa y \"some offshore areas may be excluded\" (algunas áreas mar adentro pueden quedar excluidas), así que los 42 sectores censales y los 42 grupos de bloques que son todo agua no tienen contorno. La página de descripción no indica ninguna regla de derechos de autor ni de cita. La documentación de TIGER/Line, que cubre un producto relacionado, indica que la protección de derechos de autor no aplica a las obras del Gobierno de EE. UU. y pide citar al Negociado del Censo como fuente. El Negociado del Censo no respalda el uso que FPR hace de estos archivos.",
+  "_en": {
+   "access": "5bc640e2",
+   "cadence": "109b591f",
+   "used_for": "60359c04",
+   "terms_note": "41466c83"
+  }
+ },
+ "census_pep": {
+  "access": "Archivos CSV públicos en www2.census.gov, sin clave: PRM-EST2020.csv (totales) y PRM-EST2020-AGESEX.csv para 2010-2019 (Vintage 2020), y cc-est2025-agesex-72.csv para 2020-2025 (Vintage 2025). gii.py lee la fila de Puerto Rico del archivo de totales por estado más reciente (NST-EST2025-ALLDATA.csv) y la guarda en cache/gii/.",
+  "cadence": "El Negociado del Censo publica una nueva edición (vintage) cada año (Vintage 2025 salió en junio de 2026) e indica que la edición más reciente sustituye los estimados anteriores para las mismas fechas. El observatorio lee la edición más reciente que tenga un archivo de Puerto Rico cuando FPR reconstruye los datos (un nuevo corte de datos).",
+  "used_for": "La población residente por municipio y la proporción de residentes de 65 años o más, de 2010 a 2025 en el corte de datos 2026-10 (housing_series.json), que se muestran en la página de Vivienda y en la pestaña Análisis; y la población de Puerto Rico, el denominador del estimado de FPR de la producción de electricidad por millón de habitantes (indicador 3.2.1 de la página del Índice Global de Innovación, gii_profile.json).",
+  "terms_note": "Los estimados corresponden al 1 de julio. Los valores de 2010 y 2020 son conteos censales del 1 de abril. Los estimados de 2011 a 2019 se basaron en el censo de 2010 y no se revisaron según el conteo de 2020, así que la serie da un salto en 2020. Las páginas del producto no indican ninguna licencia. La documentación de TIGER/Line del Negociado del Censo, que cubre un producto distinto, indica que la protección de derechos de autor no aplica a las obras del Gobierno de EE. UU. La página de citas del Negociado pide citarlo como fuente e indica que las conclusiones de cualquier análisis de los datos son responsabilidad exclusiva de quien lo realiza. El Negociado del Censo no respalda el uso que FPR hace de estos datos.",
+  "_en": {
+   "access": "15519a7c",
+   "cadence": "9d59f17c",
+   "used_for": "1cf15caf",
+   "terms_note": "e9e72ba1"
+  }
+ },
+ "census_decennial": {
+  "access": "Dos archivos ZIP públicos en www2.census.gov, sin clave: census_2010/01-Redistricting_File--PL_94-171/Puerto_Rico/pr2010.pl.zip y programs-surveys/decennial/2020/data/01-Redistricting_File--PL_94-171/Puerto_Rico/pr2020.pl.zip. La compilación lee la tabla de códigos de lugar de cada archivo y la parte que contiene la tabla H1 (ocupación de la vivienda), y conserva el total de la isla y los 78 municipios.",
+  "cadence": "El censo se realiza cada diez años, el 1 de abril (2010 y 2020; el próximo es en 2030), así que estos archivos no cambian. El observatorio los lee una vez y conserva el resultado.",
+  "used_for": "Unidades de vivienda, unidades desocupadas, tasa de desocupación y residentes por unidad de vivienda el día del censo en 2010 y 2020 (housing_series.json).",
+  "terms_note": "Los conteos de desocupación del día del censo y los estimados de desocupación de la Encuesta sobre la Comunidad Estadounidense (ACS) miden la desocupación de forma distinta, así que compare cada fuente solo consigo misma. Las páginas del producto no indican ninguna licencia. La documentación de TIGER/Line del Negociado del Censo, que cubre un producto distinto, indica que la protección de derechos de autor no aplica a las obras del Gobierno de EE. UU. La página de citas del Negociado pide citarlo como fuente e indica que las conclusiones de cualquier análisis de los datos son responsabilidad exclusiva de quien lo realiza. El Negociado del Censo no respalda el uso que FPR hace de estos datos.",
+  "_en": {
+   "access": "f01d1aa7",
+   "cadence": "6fd1f255",
+   "used_for": "61c7f732",
+   "terms_note": "701c1ebc"
+  }
+ },
+ "acs5": {
+  "access": "Archivos de resumen públicos en www2.census.gov, sin clave. Para las ediciones de 2010 a 2020: archivos por secuencia en 5_year_seq_by_state/PuertoRico (y el ZIP de Puerto Rico de 2012 que se usa para la base 2008-2012). Para 2021 a 2024: archivos por tabla llamados acsdt5y{year}-{table}.dat. La compilación conserva la isla y sus 78 municipios. Un segundo lector, acs_small.py, lee las filas de sectores censales, grupos de bloques y barrios de los archivos por tabla de 2021 a 2024 por rangos de bytes (los cinco niveles de una tabla ocupan de 0.5 a 1.5 MB, frente a 18 a 121 MB del archivo nacional). small_area.py construye con ellas los archivos de barrios, sectores censales y grupos de bloques (acs_barrio.json, acs_tract.json, acs_blockgroup.json) y las series del dominio Población (population_series.json). La compilación también lee las definiciones de las tablas del Negociado del Censo en api.census.gov, sin clave (las etiquetas de las celdas de cada tabla, https://api.census.gov/data/{year}/acs/acs5/groups/{table}.json), para comprobar que las celdas que usa son las que corresponden; ninguna página del sitio llama a ese servidor.",
+  "cadence": "El Negociado del Censo publica cada año una nueva edición de 5 años. En el corte de datos 2026-10, la ventana más reciente que tiene el observatorio es 2020-2024. La compilación busca un archivo por tabla más reciente y lo agrega cuando FPR reconstruye los datos (un nuevo corte de datos).",
+  "used_for": "Variables municipales de vivienda, ingreso, pobreza, empleo, educación, carga de costos de vivienda, traslado al trabajo, vehículos e internet (housing_series.json y economy_series.json), además de la base 2008-2012 y las cifras de asequibilidad. Para 2021 a 2024, las mismas variables y las proporciones de edad, hogares, veteranos y discapacidad para 901 barrios, 981 sectores censales y 2,555 grupos de bloques, con sus márgenes de error. Los tramos y grupos de edad (population_age.json; las proporciones de los grupos de edad también en population_series.json y, para 18 a 44 y 45 a 64, en los archivos de barrios y sectores censales), de las tablas B01001 y B09001. La participación en la fuerza laboral, el desempleo de mujeres y hombres y los conteos detrás de ellos por sexo y grupo de edad, para los 78 municipios y cualquier grupo de ellos, en las tres ventanas que no comparten ningún año (2010-2014, 2015-2019, 2020-2024), de las tablas B23001, B23003, B98003 y B98001 (labor_sex_series.json y women_labor.json, women_labor.py).",
+  "terms_note": "Son estimados de encuesta. Cada uno agrupa 60 meses de respuestas, y el Negociado del Censo publica márgenes de error con un nivel de confianza de 90 por ciento (vea su documento 'Accuracy of the Data'), que el observatorio conserva cuando existen. Las ventanas se identifican por su último año. Los valores en dólares están en dólares de ese último año, sin ajustar por inflación. Las páginas del producto no indican ninguna licencia. La documentación de TIGER/Line del Negociado del Censo, que cubre un producto distinto, indica que la protección de derechos de autor no aplica a las obras del Gobierno de EE. UU. La página de citas del Negociado pide citarlo como fuente e indica que las conclusiones de cualquier análisis de los datos son responsabilidad exclusiva de quien lo realiza. El Negociado del Censo no respalda el uso que FPR hace de estos datos.",
+  "_en": {
+   "access": "40ac4079",
+   "cadence": "ba1415f6",
+   "used_for": "7d73da66",
+   "terms_note": "a3f7789f"
+  }
+ },
+ "bls_qcew": {
+  "access": "Archivos CSV de datos abiertos del QCEW, sin clave: https://data.bls.gov/cew/data/api/{year}/a/area/{area}.csv para cada una de las 78 áreas municipales y para Puerto Rico (área 72000), promedios anuales. La compilación también comprueba si existe el archivo del año siguiente.",
+  "cadence": "El BLS publica el QCEW cada trimestre y publica los promedios anuales después de que termina el año. Al 28 de agosto de 2026, la publicación más reciente cubría el primer trimestre de 2026; la del segundo trimestre se espera el 2 de diciembre de 2026. En el corte de datos 2026-10, el observatorio tiene los años 2014 a 2025. Vuelve a leer los archivos cuando FPR reconstruye los datos (un nuevo corte de datos).",
+  "used_for": "Empleos, establecimientos, salarios, empleos por industria, empleos relacionados con el turismo y concentración industrial por municipio y año (economy_series.json).",
+  "terms_note": "El BLS indica que todo lo que publica es de dominio público y pide citarlo como fuente. Las celdas que identificarían a un solo patrono se suprimen, y el observatorio las deja en blanco, así que en los municipios pequeños faltan muchas industrias. Los empleos se cuentan donde se realiza el trabajo. El BLS indica que el QCEW cubre más del 95 por ciento de los empleos de EE. UU. El observatorio no mide esa proporción para Puerto Rico. El QCEW excluye a las personas que trabajan por cuenta propia sin haberse incorporado, a quienes trabajan sin paga en negocios familiares y a algunos otros grupos.",
+  "_en": {
+   "access": "e9a8fed7",
+   "cadence": "b8041583",
+   "used_for": "d2cab034",
+   "terms_note": "96989ce7"
+  }
+ },
+ "bls_laus": {
+  "access": "API de datos públicos del BLS, versión 1 (https://api.bls.gov/publicAPI/v1/timeseries/data/), sin clave, con solicitudes POST de promedios anuales: las series municipales LAUCN72xxx0000000003 (tasa de desempleo) y LAUCN72xxx0000000006 (fuerza laboral), y la serie de Puerto Rico LASST72. El BLS limita la versión de la API sin clave a 25 consultas al día.",
+  "cadence": "El BLS publica LAUS cada mes y un promedio anual cuando termina el año. En el corte de datos 2026-10, el observatorio tiene los años 2010 a 2025, sin valor para 2020 porque el archivo del BLS no tiene promedio anual para ese año. El último año (2025) es preliminar. El observatorio vuelve a leer las series cuando FPR reconstruye los datos (un nuevo corte de datos).",
+  "used_for": "Tasa de desempleo, fuerza laboral, y residentes con empleo y desempleados, por municipio y año (economy_series.json). El empleo de Puerto Rico (LAUST720000000000005, promedio anual de los 12 meses) en el estimado de FPR del indicador 6.2.1 de la página del Índice Global de Innovación (gii_profile.json).",
+  "terms_note": "El BLS indica que todo lo que publica es de dominio público y pide citarlo como fuente. Los términos de la API del BLS exigen declarar que 'BLS.gov cannot vouch for the data or analyses derived from these data after the data have been retrieved from BLS.gov' (BLS.gov no puede garantizar los datos ni los análisis derivados de ellos después de que se obtienen de BLS.gov) y citar la fecha en que se obtuvieron los datos. El BLS describe los estimados de condado como elaborados a partir de datos de empleo y de reclamaciones, y ajustados a los totales estatales. FPR no encontró ninguna descripción del BLS sobre cómo se elaboran los estimados municipales de Puerto Rico. Los estimados de los municipios pequeños pueden variar mucho de un año a otro y pueden revisarse.",
+  "_en": {
+   "access": "3cb79bca",
+   "cadence": "b89000bc",
+   "used_for": "1078fc15",
+   "terms_note": "b3d8f901"
+  }
+ },
+ "bls_cpi": {
+  "access": "API de datos públicos del BLS, versión 1 (https://api.bls.gov/publicAPI/v1/timeseries/data/), sin clave, una serie: CUUR0000SA0 (CPI-U, promedio de las ciudades de EE. UU., todos los artículos), promedios anuales desde 2000.",
+  "cadence": "El BLS publica el CPI cada mes. En el corte de datos 2026-10, el observatorio tiene los promedios anuales de 2000 a 2025. Los vuelve a leer cuando FPR reconstruye los datos (un nuevo corte de datos).",
+  "used_for": "Poner en una misma base los montos en dólares de años distintos. Cuando una persona marca 'ajustado por inflación' en una capa de dólares de la pestaña Análisis, los montos se expresan en dólares del año más reciente del CPI (2025 en el corte de datos 2026-10). La serie comienza en 2000, así que también se pueden ajustar los primeros años de declaración de FEMA (desde 2001).",
+  "terms_note": "El BLS indica que todo lo que publica es de dominio público y pide citarlo como fuente. El índice cubre el promedio de las ciudades de EE. UU., no Puerto Rico, así que solo aproxima los cambios de precios en la isla. La base del índice es 1982-84 = 100. Los términos de la API del BLS exigen declarar que 'BLS.gov cannot vouch for the data or analyses derived from these data after the data have been retrieved from BLS.gov' (BLS.gov no puede garantizar los datos ni los análisis derivados de ellos después de que se obtienen de BLS.gov) y citar la fecha en que se obtuvieron los datos.",
+  "_en": {
+   "access": "1bc1aebc",
+   "cadence": "bc469cd1",
+   "used_for": "b8e6012d",
+   "terms_note": "7dd5a6d4"
+  }
+ },
+ "noaa_slr": {
+  "access": "Mosaicos de mapa que se transmiten en vivo desde el servidor ArcGIS de NOAA al navegador de la persona que visita el sitio: https://coast.noaa.gov/arcgis/rest/services/dc_slr/slr_{n}ft/MapServer/tile/{z}/{y}/{x}, con n de 1 a 10 pies. Sin clave. Para la serie de exposición, exposure.py también descarga una vez la versión en polígonos de los mismos datos de NOAA (una File Geodatabase, PR_slr_final_dist.gdb en PR_slr_data_dist.zip, 23 MB, con fecha del 27 de septiembre de 2023), lee las capas PR_slr_{n}ft (inundación conectada al océano) y PR_low_{n}ft (áreas bajas no conectadas al océano) para n de 1 a 10 pies, y conserva solo los conteos de residentes y de unidades de vivienda de cada área, no los polígonos.",
+  "cadence": "NOAA ofrece un conjunto de escenarios de 2022 y otro de 2017, y actualiza el visor de vez en cuando. El observatorio muestra lo que NOAA sirva en ese momento. Los archivos de polígonos son los datos de 2017 de NOAA (así lo indican los metadatos); el observatorio vuelve a leerlos solo cuando la compilación se ejecuta con su opción de actualización.",
+  "used_for": "La capa Aumento del nivel del mar en el mapa 2D y en la vista 3D. Los residentes y las unidades de vivienda expuestos a un aumento del nivel del mar de 1 a 10 pies, por municipio, barrio y sector censal (exposure_municipio.json, exposure_barrio.json, exposure_tract.json).",
+  "terms_note": "Las páginas de NOAA no indican ninguna licencia. NOAA indica que el visor muestra la inundación en las mareas altas más altas y no modela la marejada ciclónica, la erosión, el hundimiento del terreno ni la construcción futura. El descargo de responsabilidad de NOAA indica que los mapas muestran la magnitud de una posible inundación, no ubicaciones exactas, y que son una referencia para la planificación que no debe usarse para la navegación, los permisos ni otros fines legales; además, NOAA no ofrece ninguna garantía. Las capas necesitan que el servidor de NOAA responda; el observatorio muestra un mensaje cuando no responde. Los metadatos de NOAA describen el método como un enfoque de 'bañera' modificado que toma en cuenta la variación de las mareas y la conectividad hidrológica; la precisión vertical depende de los datos de elevación y de las conversiones de datum de NOAA; los datos son una herramienta de evaluación preliminar y se ofrecen tal cual. También indican que se agradecería reconocer a la Oficina de Manejo Costero de NOAA (NOAA Office for Coastal Management) como fuente de los datos, y el crédito de la fuente lo hace. Se volvió a verificar el 2026-10-19 para la página Gestión de datos: la página de datos de Digital Coast (https://coast.noaa.gov/digitalcoast/data/slr.html) y los metadatos de los datos de inundación de 1 a 10 pies (2017) no indican ninguna licencia ni aviso de dominio público: las restricciones de acceso son \"None\" (ninguna) y las restricciones de uso son precauciones (una herramienta de evaluación preliminar que se ofrece tal cual). Por eso la clase sigue como no declarada; NOAA tendría que declarar los términos.",
+  "_en": {
+   "access": "8f043c06",
+   "cadence": "8adce114",
+   "used_for": "0f86c88d",
+   "terms_note": "b099e7f6"
+  }
+ },
+ "nhc_hurdat2": {
+  "access": "Un archivo de texto público, sin clave: https://www.nhc.noaa.gov/data/hurdat/hurdat2-1851-2025-092326.txt. Cuando la compilación se ejecuta con la opción de actualización, lee el directorio del NHC (https://www.nhc.noaa.gov/data/hurdat/) y descarga el archivo más reciente. La compilación conserva cada tormenta cuya trayectoria pasa a menos de 250 km de un punto cerca del centro de la isla (18.22 N, 66.45 W), con los puntos de su trayectoria.",
+  "cadence": "El NHC actualiza el archivo después de cada temporada y cuando revisa temporadas anteriores. El archivo 1851-2025 que se usa aquí se actualizó el 23 de septiembre de 2026 e incluye revisiones de las temporadas de 1971 a 1975. El observatorio lo lee tal como se obtuvo el 5 de octubre de 2026 (Corte 2026-10). Solo se usa un archivo nuevo cuando FPR reconstruye los datos con la opción de actualización.",
+  "used_for": "Las trayectorias de tormentas desde 1851 en la vista 3D (hurricanes.json). En el corte de datos 2026-10, 157 tormentas del archivo 1851-2025 pasaron a menos de 250 km de Puerto Rico; cada una tiene su trayectoria, sus vientos y una categoría de huracán.",
+  "terms_note": "El NHC indica que la información de los servidores del gobierno puede usarse libremente, y que su información no debe modificarse y luego presentarse como material oficial del gobierno. El observatorio selecciona las tormentas por distancia y calcula la categoría Saffir-Simpson a partir del viento más alto registrado mientras la tormenta estaba a menos de 250 km del punto central de la isla. Esa categoría es el viento más fuerte de la tormenta en esa zona, no necesariamente el viento que se sintió en Puerto Rico. Ambos pasos son cálculos de FPR, no del NHC. La escala Saffir-Simpson (enlazada aquí) clasifica solo el viento sostenido; el NHC señala que no toma en cuenta la marejada ciclónica, las inundaciones por lluvia ni los tornados. El NHC revisa temporadas pasadas de vez en cuando.",
+  "_en": {
+   "access": "2d470f80",
+   "cadence": "b70998a9",
+   "used_for": "2089321a",
+   "terms_note": "b54fb87a"
+  }
+ },
+ "osm": {
+  "access": "Dos vías, sin clave. Las consultas a la API de Overpass (overpass-api.de, con overpass.kumi.systems, que ahora opera como overpass.private.coffee, como respaldo) obtienen paradas de guaguas, estaciones, terminales de lanchas, paradas de taxis, alquiler de bicicletas, carga de vehículos eléctricos, aeródromos y relaciones de rutas de transporte colectivo. El extracto diario de Geofabrik para Puerto Rico (download.geofabrik.de/north-america/us/puerto-rico-latest.osm.pbf) se lee en una computadora local para construir el grafo de carreteras (roads.bin) y el índice de nombres de lugares (gazetteer.json). facilities.py lee los cuarteles de la policía (amenity=police) a través de Overpass, y también prueba un tercer servidor público de Overpass (maps.mail.ru) cuando los otros están ocupados.",
+  "cadence": "OpenStreetMap cambia todo el tiempo, y Geofabrik actualiza a diario su archivo de Puerto Rico. El observatorio tomó las paradas el 1 de octubre de 2026 y las rutas y el extracto el 2 de octubre de 2026, y los renueva cuando FPR reconstruye los datos (un nuevo corte de datos). Una actualización nocturna también vuelve a leer las fuentes de datos de transporte colectivo de la ATI y de los municipios, e intenta volver a leer las rutas de OpenStreetMap. Si los servidores de Overpass no responden, el observatorio conserva las rutas de la última reconstrucción completa. Los servidores de Overpass rechazaron las solicitudes desde los servidores de GitHub en la prueba del 2 de octubre de 2026, así que en el corte de datos 2026-10 las rutas de OpenStreetMap solo cambian con una reconstrucción.",
+  "used_for": "Paradas de guaguas, estaciones, terminales, paradas de taxis, alquiler de bicicletas, carga de vehículos eléctricos y aeródromos (transport.json); públicos (rutas de taxis y vans compartidos) y otras rutas (transit_routes.geojson); la red de carreteras para ajustar puntos a las vías y planificar rutas (roads.bin); el índice de nombres de lugares para la búsqueda (gazetteer.json); los cuarteles de la policía (police_stations.geojson) y su conteo en cada municipio (facility_series.json: police_stations), y las casas alcaldía (town_halls.geojson, amenity=townhall, que community_assets.py leyó el 2026-10-18), y los cruces con semáforo, las rotondas y los puentes peatonales que se cuentan a lo largo de cada ruta de autobús en el Análisis de ruta (route_compare.json, a partir de road_features.geojson en docs/analysis/route-analysis-2026-10/, extracto de Geofabrik del 2026-10-15); y las líneas de transmisión de 230, 115 y 38 kV, simplificadas, con las subestaciones contadas por municipio (power_lines.geojson, leído por power_lines.py el 2026-11-14). También las carreteras que sigue la distancia a lo esencial, y la verificación de los comercios de Overture: se añaden los supermercados, farmacias, bancos y estaciones de bomberos de OpenStreetMap que Overture o USGS no tienen (essentials_series.json, essentials_barrio.json). También las carreteras y los hospitales del estimado de residentes incomunicados de los hospitales cuando cierran las carreteras inundables o los puentes en malas condiciones (cutoff_series.json, cutoff_barrio.json).",
+  "terms_note": "La página de derechos de autor de OpenStreetMap indica que los datos pueden copiarse, distribuirse, transmitirse y adaptarse 'as long as you credit OpenStreetMap and its contributors' (siempre que se dé crédito a OpenStreetMap y a sus colaboradores), y que quien modifique los datos o cree algo a partir de ellos solo puede distribuir el resultado bajo la misma licencia. Los archivos del observatorio construidos a partir de OpenStreetMap son las partes de OpenStreetMap de transport.json y transit_routes.geojson, roads.bin, gazetteer.json, police_stations.geojson, town_halls.geojson y los conteos de intersecciones y puentes peatonales de route_compare.json. Revise el texto de la licencia antes de reutilizarlos. OpenStreetMap lo editan personas voluntarias, así que una parada o una ruta que falte puede simplemente no estar mapeada.",
+  "_en": {
+   "access": "b1b1d3c0",
+   "cadence": "256e9ab0",
+   "used_for": "906af0b2",
+   "terms_note": "1d69c9b0"
+  }
+ },
+ "ati_gtfs": {
+  "access": "Un archivo ZIP público en formato GTFS, sin clave: https://docs.pr.gov/files/ATI/DATOS_ABIERTOS/GTFS/PRITA_GTFS.zip.",
+  "cadence": "La ATI sustituye el archivo cuando cambian los horarios. El 3 de octubre de 2026, la página de la ATI indicaba una versión del 10 de agosto de 2026, pero la propia fuente de datos dice 'Updated: Aug 26, 2026' (actualizado el 26 de agosto de 2026). Sus fechas de servicio van del 20 de julio de 2026 al 19 de julio de 2027. El observatorio la descarga cada noche a las 04:17, hora de Puerto Rico, y solo publica si algo cambió.",
+  "used_for": "Rutas, paradas y horarios del Tren Urbano, la AMA, el Metrobús y AcuaExpreso (transit_routes.geojson, transport.json, trips.json, trips_sa.json, trips_su.json) y las cifras de cobertura del servicio.",
+  "terms_note": "Los términos de la ATI indican que ni la ATI ni sus contratistas garantizan que los datos sean completamente exactos, que los datos se ofrecen 'tal cual' y que la ATI no garantiza que estén siempre disponibles o actualizados. Indican que las agencias conservan sus derechos sobre los datos, que usar los datos no otorga ningún derecho sobre ellos y que quienes los usen deben cumplir las leyes aplicables. También indican que los logos de las agencias están reservados para uso oficial, y que una aplicación creada con los datos debe dejar claro que no está afiliada a la ATI ni patrocinada por ella, salvo que exista un acuerdo explícito. La página de la ATI dice 'Nos encontramos en el desarrollo del GTFS-RT' (el GTFS-RT es la fuente de datos en tiempo real), así que el observatorio muestra el servicio según el horario, no las posiciones de los vehículos en vivo.",
+  "_en": {
+   "access": "bad44bb7",
+   "cadence": "c0bc0532",
+   "used_for": "20c83f61",
+   "terms_note": "e7d709e8"
+  }
+ },
+ "muni_gtfs": {
+  "access": "La compilación lee el archivo de registro de Transitland Atlas para el portal del National RTAP (raw.githubusercontent.com/transitland/transitland-atlas, feeds/nationalrtap.org.dmfr.json), selecciona las fuentes de datos municipales de Puerto Rico y descarga el ZIP de cada fuente desde rapid.nationalrtap.org. Sin clave. El 3 de octubre de 2026, el registro incluía 24 fuentes de datos municipales de Puerto Rico.",
+  "cadence": "Cada municipio actualiza su propia fuente de datos cuando lo decide. El observatorio vuelve a leer el registro y cada fuente cada noche a las 04:17, hora de Puerto Rico, así que una fuente nueva o actualizada aparece al día siguiente. El 2 de octubre de 2026, de las 24 fuentes municipales, 16 estaban vigentes, 1 estaba por vencer y 7 estaban vencidas (había pasado su fecha de fin).",
+  "used_for": "Rutas, paradas y horarios de los sistemas municipales de guaguas y trolleys (transit_routes.geojson, transport.json, trips.json, trips_sa.json, trips_su.json) y las cifras de cobertura del servicio.",
+  "terms_note": "El registro y los archivos de las fuentes no indican ninguna licencia. Las reglas de la National Transit Database de la FTA, desde el año de informe 2023, exigen que quienes informan servicio de ruta fija mantengan un conjunto de datos GTFS de dominio público. Es un requisito de la FTA, no una licencia impresa en cada fuente municipal. Revise los términos de cada municipio antes de reutilizar una fuente para algo más que verla. La página del portal no indica editor ni licencia; se atribuye al National RTAP por su dominio y por el nombre del archivo de registro de Transitland. Las direcciones de las fuentes se encuentran a través de Transitland Atlas (CC BY 4.0), que pide enlazar a su repositorio o a www.transit.land. La calidad varía: muchas fuentes no tienen formas de ruta (el observatorio dibuja esas rutas siguiendo las carreteras), algunas enumeran las paradas sin seguir el orden del recorrido y algunas están vencidas.",
+  "_en": {
+   "access": "6f937e73",
+   "cadence": "8a408abe",
+   "used_for": "acf59b95",
+   "terms_note": "fe4fdda2"
+  }
+ },
+ "ntd": {
+  "access": "Un archivo CSV público en GitHub, sin clave: raw.githubusercontent.com/transitland/transitland-atlas/main/external-data-for-reference/ntd-gtfs-weblinks/2023-gtfs-weblinks.csv, una copia de la lista de la FTA.",
+  "cadence": "La FTA publica la lista por año de informe e indica que una lista al día se actualiza cada mes. El observatorio lee la copia del año de informe 2023, y la vuelve a leer cada noche y cuando FPR reconstruye los datos (un nuevo corte de datos).",
+  "used_for": "La lista de verificación de las agencias de transporte colectivo de Puerto Rico que informan a la FTA. El 2 de octubre de 2026, el observatorio conservó 39: 36 sistemas municipales, la AMA, la autoridad de transporte marítimo y la autoridad de los públicos. La lista Operadores agrega la ATI, tres municipios que publican fuentes de datos pero no están en la lista de verificación, y las rutas de OpenStreetMap (44 entradas en el corte de datos 2026-10). La lista de verificación también alimenta los campos que indican si un municipio tiene un sistema.",
+  "terms_note": "El repositorio de Transitland Atlas tiene licencia CC BY 4.0, y su README pide enlazar al repositorio o a www.transit.land. Que una agencia aparezca aquí muestra que informa a la FTA, no que publica una fuente de datos pública. Para los operadores sin fuente de datos, la columna Weblink de la lista de la FTA se copia en operators.json como enlace de la fuente (un operador en el corte de datos 2026-10). Apunta a una página web, no a una fuente GTFS. No se publica un enlace al almacenamiento personal en la nube de alguien.",
+  "_en": {
+   "access": "6d4042e6",
+   "cadence": "c0d95124",
+   "used_for": "61da6d6c",
+   "terms_note": "ff7d621b"
+  }
+ },
+ "faa_airports": {
+  "access": "Capa ArcGIS REST (un servicio web público) en services.arcgis.com (/xOi1kZaI0eWDREZv/arcgis/rest/services/NTAD_Aviation_Facilities/FeatureServer/0), consultada con STATE_CODE='PR' y SITE_TYPE_CODE='A' (aeropuertos; se excluyen los helipuertos y otros tipos de instalación) para obtener nombre, ciudad, uso, propiedad, identificador del aeropuerto, estado, fecha de vigencia y coordenadas. Sin clave. El código de compilación se cambió el 5 de octubre de 2026 porque la dirección anterior de geo.dot.gov (Hosted/Airports_) ya no respondía; el transport.json publicado se compiló antes de ese cambio.",
+  "cadence": "NTAD actualiza las instalaciones de aviación cada 28 días con datos de la FAA. El observatorio conserva un corte de datos, descargado el 1 de octubre de 2026 (14 aeropuertos de Puerto Rico), y lo renueva solo cuando FPR reconstruye los datos (un nuevo corte de datos).",
+  "used_for": "La lista de aeropuertos de Puerto Rico (14 en el corte de datos 2026-10), si cada uno está abierto al uso público y el número de aeropuertos por municipio (transport.json, municipalities.json); y la capa del mapa Aeropuertos y helipuertos (airports.geojson, transport_inventories.py), que lee todos los tipos de instalación y dibuja las que están abiertas al uso público o son propiedad de una entidad pública.",
+  "terms_note": "El observatorio trata la lista de la FAA como la lista oficial de aeropuertos y descarta los aeródromos de OpenStreetMap que estén a menos de 2 km de un aeropuerto de la FAA. Los helipuertos y otras pistas pequeñas provienen de OpenStreetMap. El servicio que la compilación lee ahora (services.arcgis.com, enlazado aquí) contiene más tipos de instalación (44 instalaciones en Puerto Rico en octubre de 2026), así que la compilación conserva solo el tipo A (aeropuertos). Esa consulta devuelve 15 aeropuertos el 5 de octubre de 2026, uno más que los 14 del corte de datos 2026-10 publicado; el adicional aparecerá después de la próxima compilación completa. Los conteos de todas las instalaciones no son comparables con la lista de aeropuertos del observatorio.",
+  "_en": {
+   "access": "337ba510",
+   "cadence": "5640c921",
+   "used_for": "1b27245e",
+   "terms_note": "b532d9d0"
+  }
+ },
+ "uber": {
+  "access": "FPR leyó la página de Uber y escribió a mano en el observatorio los nombres de los municipios que aparecen en ella (57 nombres, verificados el 1 de octubre de 2026). El observatorio no se conecta a los servidores de Uber.",
+  "cadence": "Uber puede cambiar su página en cualquier momento. La lista del observatorio es un corte fechado que FPR actualiza a mano.",
+  "used_for": "El sí o no de 'Uber indica servicio' (si el municipio aparece en la página de ciudades de Uber) para cada municipio (municipalities.json) y la nota sobre el transporte por aplicación en la pestaña Transporte.",
+  "terms_note": "La página enumera pueblos y vecindarios e indica que el servicio de Uber llega más allá de los lugares enumerados, así que 'no aparece' no significa que Uber no opere allí. Solo se registra un sí o un no por municipio; el observatorio no copia nada más de la página. El 4 de octubre de 2026, la página enlazaba 167 lugares. Si se cuentan por el municipio que aparece en la dirección de cada enlace, la página incluye lugares en 58 de los 78 municipios. La lista del observatorio, verificada el 1 de octubre de 2026, tiene 57 nombres. El 4 de octubre de 2026, la página también incluía Maunabo, que el observatorio muestra como no incluido.",
+  "_en": {
+   "access": "40690894",
+   "cadence": "7328e47c",
+   "used_for": "5907f5b7",
+   "terms_note": "f2c17de5"
+  }
+ },
+ "jp_put2015": {
+  "access": "El observatorio usa una copia del shapefile oficial de la Junta (un archivo estándar de datos de mapas), en la versión del 30 de noviembre de 2015, convertida al sistema de coordenadas WGS 84. La página de la Junta enlaza el mapa y el memorial en PDF, pero no ofrece el shapefile, así que no da un enlace de descarga para el archivo que usa el observatorio. Si falta la copia del observatorio, la compilación lee una copia pública en ArcGIS Online (services6.arcgis.com, Puerto_Rico_Land_Use_Plan, capa 0), que no muestra propietario ni texto de licencia y se editó por última vez el 24 de enero de 2019.",
+  "cadence": "El plan tiene una vigencia de diez años (según la página de la Junta); el shapefile del observatorio es la versión del 30 de noviembre de 2015. La página de la Junta indica un proceso de revisión para un nuevo plan (PUT-2025). El observatorio usa la versión de 2015 y no la actualiza.",
+  "used_for": "Las clases de uso de terrenos que se dibujan en los mapas (landuse.geojson), la clase de suelo de cada lugar turístico y la proporción de suelo urbano, urbanizable, rústico y protegido de cada municipio.",
+  "terms_note": "El pie de página de la Junta incluye un aviso general del sitio web ('© 2022 Puerto Rico Innovation & Technology Service. Todos los derechos reservados') que no menciona los datos de uso de terrenos. El plan clasifica el suelo. Los distritos de calificación están en el plan territorial de cada municipio. Los mapas dibujan contornos simplificados hasta unos 100 metros; las estadísticas usan las formas completas. El plan de 2015 podría sustituirse como resultado de la revisión que indica la Junta.",
+  "_en": {
+   "access": "3bd3652c",
+   "cadence": "62de3501",
+   "used_for": "10c21395",
+   "terms_note": "a2713200"
+  }
+ },
+ "jp_calificacion": {
+  "access": "En cada compilación completa, el observatorio pide al servicio de mapas de Calificación del MIPR en sige.pr.gov su lista de capas (MapServer?f=pjson). No descarga datos de calificación.",
+  "cadence": "No aplica: el observatorio no tiene datos de calificación de este servicio. El servicio respondió con un error en la compilación del 1 al 2 de octubre de 2026 y con HTTP 502 el 3 de octubre de 2026.",
+  "used_for": "No se publica nada de este servicio. La pestaña Capas del mapa indica que no se muestran los distritos de calificación, y la página de Vivienda indica que la capa de calificación está pendiente.",
+  "terms_note": "El servicio devolvió un error (HTTP 502) cuando se intentó el 3 de octubre de 2026. El observatorio no muestra ni cuenta distritos de calificación (Calificación). Sus clases de uso de terrenos provienen del Plan de Uso de Terrenos, una fuente distinta.",
+  "_en": {
+   "access": "c5b6cfcb",
+   "cadence": "377c78e4",
+   "used_for": "293ed101",
+   "terms_note": "ad987e6a"
+  }
+ },
+ "fpr_method": {
+  "access": "La compilación lo calcula a partir de tablas de la ACS: B19013 (ingreso mediano del hogar) y B25077 (valor mediano de la vivienda) para las cifras de asequibilidad, y B25070 y B25091 para las distribuciones de carga de costos de vivienda al estilo del estudio. No hay una descarga aparte.",
+  "cadence": "Se vuelve a calcular cada vez que se reconstruyen las cifras de la ACS, es decir, cada vez que FPR reconstruye los datos (un nuevo corte de datos). Las constantes del método nunca cambian, así que los años difieren solo por los ingresos y los precios.",
+  "used_for": "El préstamo máximo asequible a 30 años y la razón de asequibilidad de la vivienda propia, por municipio y año.",
+  "terms_note": "El método: el 30 por ciento del ingreso se destina a la vivienda, y alrededor del 78 por ciento de eso (430/549), a capital e intereses, con un préstamo a 30 años a una tasa fija de 5 por ciento. FPR dedujo la tasa de 5 por ciento del ejemplo de Puerto Rico publicado en el estudio, así que es un supuesto del modelo, no la tasa del mercado de ningún año en particular. La página de Vivienda llama a este método 'Tabla 6'. En el PDF de este enlace, la Tabla 6 es la tabla de carga del alquiler (Gross Rent as a Percentage of Household Income) y la razón de asequibilidad de la vivienda propia (Home Ownership Affordability Ratio) es la Tabla 8, así que cite la Tabla 8. El resultado es un indicador, no un límite de préstamo ni un consejo para comprar una vivienda.",
+  "_en": {
+   "access": "c73ee80e",
+   "cadence": "bc4b06c0",
+   "used_for": "8a70ef26",
+   "terms_note": "58544ce0"
+  }
+ },
+ "openfreemap": {
+  "access": "Mosaicos vectoriales en el esquema OpenMapTiles, con un estilo, fuentes e íconos, que se transmiten en vivo desde tiles.openfreemap.org al navegador de cada persona que visita el sitio: el estilo 'liberty' (https://tiles.openfreemap.org/styles/liberty) en el mapa 3D, dibujado por MapLibre GL JS, y el estilo 'positron' (https://tiles.openfreemap.org/styles/positron) en el mapa 2D y en los dos mapas de WCRP; en los mapas 2D y 3D, la opción 'Mapa base' ofrece además sus estilos 'bright', 'dark' y 'fiord' (https://tiles.openfreemap.org/styles/bright, /dark, /fiord), tres mapas del USGS (una fuente aparte) o ningún mapa base, y cada estilo se descarga solo cuando se muestra. Los mapas 2D y de WCRP se dibujan con MapLibre GL JS debajo de Leaflet por medio de MapLibre GL Leaflet cuando cada página está lista. Sin clave ni registro. El observatorio no almacena mosaicos. Cada estilo y cada línea de crédito se fijan en un solo archivo, site/js/core/basemap.js.",
+  "cadence": "OpenFreeMap indica que ofrece descargas completas del planeta cada semana. Su página principal y sus términos no indican cada cuánto se actualizan los mosaicos en vivo. El observatorio no hace nada para actualizarlos.",
+  "used_for": "El mapa base de todos los mapas: el mapa 2D (index.html), los dos mapas de WCRP (wcrp.html) y el mapa 3D (3d.html), donde además se elevan en 3D las formas de los edificios.",
+  "terms_note": "La página principal de OpenFreeMap (consultada el 2026-10-23) indica que la atribución es obligatoria, pide 'OpenFreeMap © OpenMapTiles Data from OpenStreetMap' (mencionar a OpenFreeMap es opcional) e indica que la instancia pública no limita las vistas del mapa ni las solicitudes y no ofrece SLA. Sus términos (actualizados el 2026-10-14) indican que el servicio se ofrece tal cual, sin garantía, que puede terminar en cualquier momento sin aviso, que prohíben la recolección automatizada salvo descargas pequeñas para uso fuera de línea (hasta 3,000 mosaicos o 50 MB, 4 solicitudes en paralelo y un User-Agent propio) y que se rigen por las leyes de Hungría, con arbitraje en Budapest. Cada solicitud de mosaico pasa por Cloudflare hasta los servidores de OpenFreeMap y envía la dirección IP de la persona. Cuando el servicio no responde, los mapas del observatorio muestran sus datos sobre un fondo liso y lo indican; nunca recurren a los servidores de mosaicos propios de la Fundación OpenStreetMap.",
+  "_en": {
+   "access": "1c990569",
+   "cadence": "908b8e5a",
+   "used_for": "cc9bbd9a",
+   "terms_note": "48b7425f"
+  }
+ },
+ "usgs_basemaps": {
+  "access": "Mosaicos ráster (de 256 px, JPEG o PNG) que se transmiten en vivo desde basemap.nationalmap.gov al navegador de cada persona que visita el sitio, solo cuando elige uno de estos mapas en la opción 'Mapa base' del mapa 2D o de la vista 3D: 'Imágenes aéreas' (USGSImageryOnly), 'Topográfico' (USGSTopo) y 'Relieve sombreado' (USGSShadedReliefOnly), cada uno hasta el zoom 16 y ampliado por encima. Sobre Puerto Rico responden todos los zooms del 6 al 16, salvo USGSImageryOnly en los zooms 9 y 10 (comprobado el 2026-11-13), que el mapa dibuja con sus mosaicos del zoom 8, ampliados. El estilo se arma en site/js/core/basemap.js; sin clave ni registro. El observatorio no almacena mosaicos.",
+  "cadence": "Cada servicio indica su propia actualización: Imagery Only 'Data refreshed June, 2024', Topo 'Data refreshed September 4, 2026', Shaded Relief 'Data refreshed September, 2025' (consultado el 2026-11-13). Las fechas de toma de las fotografías varían por zona y no se dan por mosaico. El observatorio no hace nada para actualizarlos.",
+  "used_for": "Tres opciones del selector 'Mapa base' en el mapa 2D (index.html) y en la vista 3D (3d.html), donde se extienden sobre el terreno.",
+  "terms_note": "El USGS indica que los servicios de mapas y los datos de The National Map son de uso libre, sin restricciones de uso, y pide el crédito 'Map services and data available from U.S. Geological Survey, National Geospatial Program' (consultado el 2026-11-13). Los datos de autoría del USGS son de dominio público en EE. UU. El servicio USGS Imagery Topo (imágenes con rótulos) se retira el 2026-11-16, por lo que no se ofrece. Son imágenes: no contienen datos de OpenStreetMap, el inspector del mapa no puede leerlas y la vista 3D no dibuja sobre ellas los edificios de OpenStreetMap. Cada solicitud de un mosaico va a los servidores del USGS y envía la dirección IP de quien visita. Si los mosaicos no responden, los mapas muestran sus datos sobre un fondo liso y lo indican.",
+  "_en": {
+   "access": "03ba23e4",
+   "cadence": "49326a0f",
+   "used_for": "abc38c39",
+   "terms_note": "82800510"
+  }
+ },
+ "aws_terrain": {
+  "access": "Mosaicos de elevación (imágenes PNG con codificación Terrarium) que se transmiten en vivo desde s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png al navegador de cada persona que visita el sitio, hasta el nivel de zoom 15. Sin clave. El observatorio no almacena mosaicos.",
+  "cadence": "El registro indica que se agregan datos nuevos según los comentarios de la comunidad. El observatorio no hace nada para actualizarlos.",
+  "used_for": "El terreno 3D y el sombreado del relieve en la vista 3D (3d.html).",
+  "terms_note": "La página de atribución de Mapzen pide 'Mapzen' más un reconocimiento de cada conjunto de datos de elevación en el que se basan los mosaicos. Enumera 3DEP, GMTED2010 y SRTM (cortesía del Servicio Geológico de EE. UU.) para los Estados Unidos y ETOPO1 (NOAA) para el mundo. No indica qué conjunto de datos cubre cada mosaico alrededor de Puerto Rico, así que el crédito los nombra a todos. El registro de AWS pide indicar la fecha de consulta y la dirección del registro. Cada solicitud de mosaico va a los servidores de Amazon y envía la dirección IP de la persona.",
+  "_en": {
+   "access": "00c6802f",
+   "cadence": "3330b66a",
+   "used_for": "fc4cc899",
+   "terms_note": "36980d75"
+  }
+ },
+ "nominatim": {
+  "access": "Solo cuando una persona hace clic en 'Buscar como dirección en línea', la página envía el texto escrito desde su navegador a nominatim.openstreetmap.org/search. La solicitud pide hasta 6 resultados (formato jsonv2, código de país pr) dentro de un recuadro alrededor de la isla. No se envía nada mientras la persona escribe. Sin clave. No se almacena nada.",
+  "cadence": "Cada búsqueda es en vivo, así que refleja OpenStreetMap en ese momento. El observatorio no guarda ninguna copia.",
+  "used_for": "La búsqueda opcional de direcciones en los cuadros de búsqueda y en el planificador de rutas, que se usa cuando el índice de lugares propio del observatorio no encuentra coincidencias.",
+  "terms_note": "La política de uso permite como máximo una solicitud por segundo, prohíbe la búsqueda mientras se escribe, pide un Referer o un User-Agent válido y una atribución visible, y permite que la OpenStreetMap Foundation bloquee el uso intenso. El observatorio consulta Nominatim solo cuando se hace clic. El texto escrito va a los servidores de OpenStreetMap junto con la dirección IP de la persona.",
+  "_en": {
+   "access": "a8fbf17e",
+   "cadence": "b9f51bde",
+   "used_for": "f1448d76",
+   "terms_note": "ce19fc5a"
+  }
+ },
+ "leaflet": {
+  "access": "Archivos JavaScript y de estilo que se cargan desde cdnjs.cloudflare.com en el navegador de la persona con una verificación contra alteraciones (un hash de integridad), desde index.html (Leaflet y markercluster) y housing.html (solo Leaflet).",
+  "cadence": "Versiones fijas. Solo cambian si FPR edita la página.",
+  "used_for": "Dibujar el mapa 2D (index.html) y los mapas de la página de Vivienda (housing.html), incluidos los grupos de lugares del mapa 2D.",
+  "terms_note": "Las licencias están confirmadas en los archivos package.json de las versiones fijadas (Leaflet 1.9.4: BSD-2-Clause; Leaflet.markercluster 1.5.3: MIT). Los avisos de licencia van dentro de los archivos de las bibliotecas. Cloudflare opera cdnjs, así que el navegador de la persona se conecta con Cloudflare cuando se abre una página.",
+  "_en": {
+   "access": "66eba15d",
+   "cadence": "dde0590f",
+   "used_for": "0cb6537b",
+   "terms_note": "157c436e"
+  }
+ },
+ "maplibre": {
+  "access": "Archivos de JavaScript y de estilo que se cargan desde cdnjs.cloudflare.com en el navegador de la persona con una verificación contra alteraciones (un hash de integridad): 3d.html los carga con la página, y site/js/core/basemap.js los carga en el mapa 2D y en la página de WCRP cuando cada página está lista (el mismo archivo, así que la caché del navegador sirve a ambas).",
+  "cadence": "Una versión fija. Solo cambia si FPR edita la página.",
+  "used_for": "Dibujar el mapa 3D (3d.html): mapa base, terreno y las capas de inundación y de nivel del mar; y dibujar el mapa base vectorial debajo de las capas de Leaflet del mapa 2D (index.html) y de los mapas de WCRP (wcrp.html).",
+  "terms_note": "La licencia está confirmada en el package.json de la versión fijada (4.7.1: BSD-3-Clause); el archivo de licencia también incluye un componente con licencia MIT. Los avisos de licencia van dentro de los archivos de las bibliotecas. Cloudflare opera cdnjs, así que el navegador de la persona se conecta con Cloudflare cuando se abre la página.",
+  "_en": {
+   "access": "1b588f32",
+   "cadence": "2589ad88",
+   "used_for": "b86e013c",
+   "terms_note": "49035e00"
+  }
+ },
+ "deckgl": {
+  "access": "Un archivo JavaScript (https://unpkg.com/deck.gl@9.0.38/dist.min.js) que se carga desde unpkg.com en el navegador de la persona con una verificación contra alteraciones (un hash de integridad), desde la vista 3D (js/twin3d.js) cuando su mapa está listo.",
+  "cadence": "Una versión fija. Solo cambia si FPR edita la página.",
+  "used_for": "Los viajes de transporte colectivo en movimiento, las líneas de las rutas y las capas de puntos que se dibujan sobre la vista 3D (3d.html).",
+  "terms_note": "La licencia está confirmada en el package.json de la versión fijada (9.0.38: MIT). Los avisos de licencia van dentro de los archivos de las bibliotecas. unpkg.com sirve el archivo, así que el navegador de la persona se conecta con ese servicio cuando se abre la página.",
+  "_en": {
+   "access": "34e8f248",
+   "cadence": "2589ad88",
+   "used_for": "cdaf019c",
+   "terms_note": "503eb606"
+  }
+ },
+ "chartjs": {
+  "access": "Un archivo JavaScript que se carga desde cdnjs.cloudflare.com en el navegador de la persona con una verificación contra alteraciones (un hash de integridad), desde index.html y housing.html.",
+  "cadence": "Una versión fija. Solo cambia si FPR edita la página.",
+  "used_for": "Las gráficas de la página del mapa 2D, la pestaña Análisis y la página de Vivienda.",
+  "terms_note": "La licencia está confirmada en el package.json de la versión fijada (4.4.1: MIT). Los avisos de licencia van dentro de los archivos de las bibliotecas. Cloudflare opera cdnjs, así que el navegador de la persona se conecta con Cloudflare cuando se abre una página.",
+  "_en": {
+   "access": "5279821f",
+   "cadence": "2589ad88",
+   "used_for": "64190240",
+   "terms_note": "5bfdbeac"
+  }
+ },
+ "material_symbols": {
+  "access": "La fuente de íconos se carga por medio de la API CSS de Google Fonts (fonts.googleapis.com/css2?family=Material+Symbols+Rounded, solo con los íconos que necesita cada página). Los archivos de la fuente provienen de fonts.gstatic.com.",
+  "cadence": "Google mantiene el conjunto de íconos. El observatorio pide una lista de íconos por nombre y muestra lo que Google sirva.",
+  "used_for": "Los íconos de todas las páginas del observatorio.",
+  "terms_note": "El navegador de la persona se conecta con los servidores de Google para cargar los íconos, y la pestaña Info del observatorio incluye Google Fonts entre los servidores que pueden ver la dirección IP de quien visita el sitio.",
+  "_en": {
+   "access": "0eae8707",
+   "cadence": "3916c946",
+   "used_for": "6f0fe28e",
+   "terms_note": "e2bb52c0"
+  }
+ },
+ "prtc_regions": {
+  "access": "FPR leyó las listas de regiones de la página de la Compañía de Turismo (PRTC) y escribió a mano en el observatorio la región de cada municipio. El observatorio no se conecta a tourism.pr.gov.",
+  "cadence": "La copia del observatorio solo cambia cuando FPR la actualiza a mano. El 3 de octubre de 2026, las siete listas de regiones de la página de la PRTC coincidían con la lista del observatorio para los 78 municipios.",
+  "used_for": "La región turística de cada municipio (municipalities.json y municipios.geojson), que se usa para agrupar las cifras por región.",
+  "terms_note": "El pie de página del sitio de la PRTC dice '© 2026 - Puerto Rico Tourism Company. All rights reserved.' (todos los derechos reservados). Una región turística es una agrupación de la Compañía de Turismo, no una unidad del Censo, de planificación ni política. Solo se usan los nombres de las regiones y los municipios que pertenecen a cada una. Si la Compañía de Turismo cambia sus regiones, el observatorio queda desactualizado hasta que FPR actualice su lista.",
+  "_en": {
+   "access": "a1bb6c81",
+   "cadence": "238d8c8d",
+   "used_for": "4b3ac548",
+   "terms_note": "4f82b253"
+  }
+ },
+ "noaa_slr_scenarios": {
+  "access": "No se descarga ningún archivo. FPR escribió valores aproximados en la vista 3D. Dan el nivel medio global del mar en metros por encima del nivel del año 2000 para cuatro escenarios (Intermedio-bajo, Intermedio, Intermedio-alto y Alto) en 2020, 2050, 2100 y 2150. Los valores entre esos años se interpolan en línea recta.",
+  "cadence": "NOAA publicó el informe en 2022, su primera actualización desde 2017. Las cifras del observatorio solo cambian cuando FPR las actualiza a mano.",
+  "used_for": "El reloj Años de la vista 3D: un año y un escenario dan un aumento en pies, que selecciona la capa más cercana (de 1 a 10 pies) del Visor de Aumento del Nivel del Mar de NOAA.",
+  "terms_note": "Los valores son aproximaciones de las tablas de nivel medio global del mar del informe. Los valores de 2100 coinciden con el informe, pero algunos otros difieren: el valor Intermedio-bajo de 2050 (0.24 m) es la extrapolación del informe basada en observaciones, no el escenario (0.20 m); los valores Intermedio (0.30 m) y Alto (0.44 m) de 2050 están 0.02 m y 0.01 m por encima del informe (0.28 m y 0.43 m); los valores Intermedio-alto y Alto de 2020 (0.07 m) están 0.01 m por debajo del informe (0.08 m), y los valores Intermedio-alto y Alto de 2150 (2.9 m y 3.9 m) están 0.2 m por encima del informe (2.7 m y 3.7 m). Los valores son promedios globales, no valores para la costa de Puerto Rico. El resultado es indicativo, no un pronóstico. El informe define cinco escenarios (de Bajo a Alto) y el observatorio ofrece cuatro, sin el Bajo. El aviso del informe indica que no se autoriza usar su información para la publicidad o la promoción de productos comerciales de marca ni de sus pruebas. Se volvió a verificar el 2026-10-19 para la página Gestión de datos: el informe no indica ninguna licencia ni aviso de dominio público, y su aviso restringe un solo uso (la publicidad o la promoción de productos comerciales de marca), así que la clase sigue como no declarada.",
+  "_en": {
+   "access": "8b248302",
+   "cadence": "84b52e67",
+   "used_for": "04262a53",
+   "terms_note": "feef542f"
+  }
+ },
+ "github_pages": {
+  "access": "Un flujo de trabajo (GitHub Actions) publica la carpeta del sitio en GitHub Pages cada vez que cambian los archivos del sitio en la rama principal (main) y después de cada actualización nocturna que cambia datos. Un segundo flujo de trabajo se ejecuta cada noche a las 04:17, hora de Puerto Rico, y actualiza los datos de transporte colectivo. El botón de solicitud de datos del chat abre una página de GitHub para crear un issue nuevo, que la persona debe revisar y enviar.",
+  "cadence": "Se vuelve a publicar cuando cambian los archivos del sitio y después de cada actualización nocturna que cambia datos.",
+  "used_for": "Servir cada página y cada archivo de datos del observatorio, ejecutar la actualización nocturna del transporte colectivo y ofrecer el enlace opcional para crear un issue en GitHub desde el chat.",
+  "terms_note": "Es un servicio de alojamiento, no una licencia de datos. La página de límites de GitHub Pages indica que los sitios publicados no pueden ocupar más de 1 GB, con límites flexibles de 100 GB de ancho de banda al mes y 10 compilaciones por hora (el límite de compilaciones no aplica a los flujos de trabajo personalizados). Como cualquier servicio de alojamiento web, GitHub recibe la dirección IP de la persona cuando se carga una página; vea la declaración de privacidad de GitHub.",
+  "_en": {
+   "access": "14505263",
+   "cadence": "ab6c2f74",
+   "used_for": "1e597d63",
+   "terms_note": "57b3284f"
+  }
+ },
+ "live_transit_checks": {
+  "access": "FPR verificó estas páginas a mano y anotó los resultados en operators.json, bajo la clave 'live'. El observatorio no se conecta a estas páginas.",
+  "cadence": "Se verificaron una vez, el 2 de octubre de 2026. Nada las vuelve a verificar automáticamente.",
+  "used_for": "La tabla 'Qué está en vivo' de la pestaña Transporte, que indica que las posiciones de las guaguas en tiempo real no están disponibles para el público.",
+  "terms_note": "El 3 de octubre de 2026, FPR abrió tres páginas. La ficha de transPRte la publica SENDA Limited Liability Company, que indica que la aplicación es independiente y no está afiliada a la ATI, a la AMA ni a ninguna agencia; sus notas de versión indican que muestra las guaguas expreso de la ATI T3, E10, E20, E30, E40, C22, C35 y C36 'using the positions the operator publishes' (con las posiciones que publica el operador). La ficha de AMA Móvil en Google Play está publicada a nombre del Gobierno de Puerto Rico e incluye entre sus funciones el seguimiento de guaguas en tiempo real; no indica si existe una fuente pública de datos. La página de transporte urbano de la ATI remite a los pasajeros a la aplicación City Experiences para seguir el servicio de lanchas en tiempo real. La fila de aeronaves (ADS-B) de la tabla no indica ninguna dirección web, y el observatorio no se conecta a ningún servicio ADS-B. Cada página mantiene los términos de quien la publica.",
+  "_en": {
+   "access": "967c58a1",
+   "cadence": "e6d5060d",
+   "used_for": "372a7c44",
+   "terms_note": "4b09df96"
+  }
+ },
+ "fpr_twin": {
+  "access": "Lo escriben los programas que construyen los datos del observatorio y se publica como meta.json, registry.json y wanted.json. FPR edita wanted.json a mano. No se descarga nada de terceros.",
+  "cadence": "meta.json y registry.json se reescriben cada vez que FPR reconstruye los datos (un nuevo corte de datos). wanted.json solo cambia cuando FPR lo edita (última actualización: 3 de octubre de 2026).",
+  "used_for": "La etiqueta, las fechas y los conteos del corte de datos (meta.json); el tamaño de cada archivo publicado y su parte del límite de 1 GB de GitHub Pages (registry.json), y la lista de conjuntos de datos candidatos que el chat lee para responder qué falta (wanted.json: 30 candidatos en el corte de datos 2026-10).",
+  "terms_note": "wanted.json solo enumera conjuntos de datos candidatos. Sus licencias no se han confirmado, y la lista no es una fuente de datos del observatorio.",
+  "_en": {
+   "access": "ac83c698",
+   "cadence": "a59e6603",
+   "used_for": "df65833e",
+   "terms_note": "254a5a21"
+  }
+ },
+ "jp_comunidades_especiales": {
+  "access": "La compilación lee una copia pública de la capa de la Junta en ArcGIS Online (services6.arcgis.com, Comunidades_Especiales, capa 0), que pertenece a la misma cuenta que la copia del Plan de Uso de Terrenos que usa el observatorio. No muestra descripción, organización propietaria ni texto de licencia. Una segunda copia pública con los mismos 713 polígonos y campos se llama delim_comunidades_especiales_2006. El propio servicio de mapas de la Junta (MIPR, Comunidades) no respondió el 6 de octubre de 2026.",
+  "cadence": "Una delimitación de 2006. El observatorio la descarga una vez y no la actualiza a menos que la compilación se ejecute con su opción de actualización.",
+  "used_for": "Los contornos de las Comunidades Especiales en el mapa 2D (comunidades.geojson) y el nombre, el lugar, las unidades de vivienda, el tipo de comunidad y los riesgos informados que se muestran al hacer clic en una de ellas.",
+  "terms_note": "La capa no incluye texto de licencia. La Ley 1-2001 creó el programa de Comunidades Especiales; pueden faltar comunidades designadas después de esta delimitación. Los atributos provienen de un inventario de comunidades realizado junto con la delimitación y describen las condiciones de ese momento.",
+  "_en": {
+   "access": "7b183a04",
+   "cadence": "115c439d",
+   "used_for": "4fc4c3b8",
+   "terms_note": "48bde219"
+  }
+ },
+ "fpr_wcrp": {
+  "access": "El índice de documentos de WCRP de FPR (WCRP-RAG, list_comunidades) enumera cada comunidad con su municipio, su región de WCRP, el estado de su plan y su subrecipiente; FPR copió esa lista en wcrp_comunidades.csv el 6 de octubre de 2026. Siete comunidades de la fase 1 aún no tienen documentos en ese índice, así que sus filas provienen del rastreador del programa que FPR tiene en Smartsheet (TRACKER_Planning Phases, 79 comunidades), y su municipio, de sus planes de trabajo. Ambas fuentes son internas; el observatorio publica siete columnas (comunidad, estado del plan, municipio, el lugar a partir del cual se fijó el punto, región, subrecipiente y cómo se ubicó el punto) y un punto aproximado.",
+  "cadence": "Se copió una vez, el 6 de octubre de 2026. Nada lo actualiza automáticamente: FPR agrega o actualiza filas del CSV a mano y ejecuta wcrp.py.",
+  "used_for": "Los puntos de las comunidades de WCRP en el mapa 2D (wcrp.geojson): nombre, municipio, región, estado del plan, subrecipiente, el lugar a partir del cual se fijó el punto y cómo se ubicó el punto aproximado.",
+  "terms_note": "Los planes comunitarios definen el área de cada comunidad solo en un mapa en PDF, así que el observatorio ubica un punto aproximado por comunidad y no dibuja el límite del plan. Foundation for Puerto Rico dirige WCRP en colaboración con el Departamento de la Vivienda de Puerto Rico (PRDOH), con fondos CDBG-DR de HUD.",
+  "_en": {
+   "access": "6ef35869",
+   "cadence": "ff45c66f",
+   "used_for": "b42b4b44",
+   "terms_note": "f7ccc23d"
+  }
+ },
+ "fhwa_hpms": {
+  "access": "Dos lecturas, sin clave. (1) traffic.py: el servicio HPMS_FULL_PR_<año> de la FHWA en geo.dot.gov, el año de datos más reciente (2025: 262,462 tramos viales, unas 160 solicitudes), guardado en cache/traffic/; publica las carreteras principales con conteo (traffic_roads.geojson) y cifras por municipio (traffic_series.json). (2) El análisis de elementos viales del Análisis de ruta (road_flow.py, que se mantiene con ese trabajo): la capa HPMS_National_Current de la BTS, datos de 2024, guardada en una computadora local; solo los conteos de intersecciones llegan a site/data.",
+  "cadence": "Puerto Rico, por medio del DTOP, informa a la FHWA cada año; la FHWA publica un año de datos el año siguiente (2025 en 2026). La lista de servicios de geo.dot.gov se revisa cada 30 días; un año nuevo se prepara con traffic.py --refresh después de que una persona lo revise. El Análisis de ruta conserva su corte de 2024 hasta que se rehaga.",
+  "used_for": "La capa del mapa Tránsito en las carreteras principales y, para cada municipio, los vehículo-kilómetros diarios, por residente, los km de arterias y colectoras principales, el conteo más alto, la proporción de camiones y la parte de las carreteras principales medidas con pavimento áspero (traffic.py); el tránsito en las carreteras que sigue cada conexión simulada entre municipios (transit_links.py); y el volumen estimado de la hora de diseño en cada cruce con semáforo y cada rotonda del Análisis de ruta (route_compare.json).",
+  "terms_note": "HPMS informa las carreteras estatales y de ayuda federal, no la mayoría de las calles locales, por lo que una intersección sin una carretera de HPMS cerca no tiene flujo. El factor K solo se exige en los tramos de muestra (Sample Panel), y el Manual de campo indica que no se usen valores estatales ni por sistema. En 764 de las 1,582 intersecciones (48%) la carretera no tiene factor K y el observatorio usó la mediana del factor K de su clase funcional (k_imputed): un estimado propio del observatorio, que la guía de HPMS no avala. El AADT es un promedio anual de ambas direcciones; AADT x K es un volumen de la hora de diseño (una de las horas de más tránsito del año), no una hora pico típica de un día de semana, y no dice nada de velocidad ni de atraso. La ficha de NTAD desaconseja comparar estados con los datos de muestra; solo se usa Puerto Rico.",
+  "_en": {
+   "access": "1f324e82",
+   "cadence": "0bb90a7d",
+   "used_for": "09f1f221",
+   "terms_note": "df55ad28"
+  }
+ },
+ "fpr_gii_2021": {
+  "access": "El perfil de dos páginas de FPR (PDF creado el 2021-09-26) y su archivo de trabajo, ambos internos. Los 80 indicadores, valores, posiciones y marcas del perfil se copiaron tal como se publicaron en docs/analysis/gii-2021/gii_original.json el 2026-10-23; el archivo de trabajo solo se leyó para explicar diferencias. No se copió ningún nombre, correo electrónico ni teléfono de esos archivos.",
+  "cadence": "Una instantánea fija: el perfil de 2021 no cambia. Las correcciones son notas junto a los valores publicados, nunca cambios.",
+  "used_for": "Los valores originales, las posiciones 'x / 132' y las marcas de la página del Índice Global de Innovación del Área de conocimiento (gii_profile.json: value, shown, rank, star, hourglass, year).",
+  "terms_note": "Cálculo propio de FPR, no una clasificación oficial de la OMPI: Puerto Rico no está en el Índice Global de Innovación oficial. FPR no ha declarado una licencia para el perfil. Algunos valores de 2021 vienen de fuentes propietarias (riesgo país de IHS Markit, Web of Science de Clarivate, Brand Finance) y se muestran como FPR los publicó, sin actualizar.",
+  "_en": {
+   "access": "f3ad51b7",
+   "cadence": "dab5fb83",
+   "used_for": "cb3752e3",
+   "terms_note": "8c81b9c1"
+  }
+ },
+ "wipo_gii2020": {
+  "access": "El informe y su Apéndice III, leídos para el marco (7 pilares, 21 subpilares, 80 indicadores), las definiciones (resumidas en palabras de FPR) y las marcas de cada indicador (compuesto, encuesta, peso a la mitad, más alto es peor).",
+  "cadence": "Una edición fija (2020).",
+  "used_for": "La estructura y las definiciones de la página del Índice Global de Innovación (gii_profile.json), y el método de las posiciones que publicó FPR. No se publican datos del GII 2020 de ninguna otra economía.",
+  "terms_note": "Licencia CC BY-NC-ND 3.0 IGO: no se permiten obras derivadas sin permiso de la OMPI. Las posiciones de FPR ubican el valor de Puerto Rico entre los valores del GII 2020, por lo que se derivan de esa edición; la página muestra solo los valores de Puerto Rico y las posiciones que FPR publicó en 2021, y una revisión de licencia abierta deja la pregunta a Cumplimiento.",
+  "_en": {
+   "access": "b498e985",
+   "cadence": "82e8f91b",
+   "used_for": "a4adb132",
+   "terms_note": "d26e9495"
+  }
+ },
+ "wipo_gii2026": {
+  "access": "El archivo de la base de datos (943,159 bytes tal como lo sirve la OMPI, SHA-256 bbce0a2d...ffd73; una copia en una carpeta que sincronizan SharePoint u OneDrive recibe partes de metadatos customXml y por eso otro hash, que gii.py también anota; descargado el 2026-10-23 con la aprobación de FPR) se guarda en el caché local (cache/gii/2026/) y lo lee con openpyxl, en modo de solo lectura, 'python -I gii.py --extract-2026', que conserva, para cada uno de los 79 indicadores, los valores depurados (sin nombres de economías), el año que usa la mayoría de las economías y las comprobaciones de FPR del método de la OMPI en sus propios datos (dirección, min-max simple o transformación logarítmica, el rango que ninguna winsorización recorta, la regla de las posiciones). El extracto se queda en el caché.",
+  "cadence": "Una edición al año (la 19.ª, 2026-09-29, 139 economías, 79 indicadores). Una edición nueva se lee cuando FPR actualiza la página.",
+  "used_for": "La posición indicativa en el GII 2026 del valor actualizado de Puerto Rico en 10 indicadores cuya fuente y definición coinciden (gii_profile.json: c26_*): el número de economías con datos, el año que usa la mayoría, los percentiles 25, 50 y 75 y el lugar de Puerto Rico entre ellas, escrito X/N. También el umbral del marcador de cambio (chg_thr: el 5 % del rango intercuartílico de cada indicador) y la estructura, el método y la lista de indicadores de «Cambios en el índice desde 2020» (gii_changes.json).",
+  "terms_note": "CC BY 4.0 permite reutilizar y adaptar con crédito a la OMPI, marcando los cambios y declarando que la OMPI no es responsable. Los datos de terceros de la base de datos están excluidos de la licencia de la OMPI, así que no se republican los valores de las economías ni se nombra ninguna: solo conteos, el año de los datos, tres percentiles y el lugar indicativo de Puerto Rico. Un percentil puede coincidir con el valor de una economía (la mediana en 8 de los 10 indicadores comparados), sin decir cuál. No es una posición oficial del GII.",
+  "_en": {
+   "access": "4426d8a0",
+   "cadence": "77f551a4",
+   "used_for": "55f50918",
+   "terms_note": "1bfd82b4"
+  }
+ },
+ "wb_wgi": {
+  "access": "API del Banco Mundial, sin clave: api.worldbank.org/v2/country/PRI/indicator/{series}?source=3 para GOV_WGI_GE.EST (efectividad del gobierno), GOV_WGI_RQ.EST (calidad regulatoria) y GOV_WGI_RL.EST (estado de derecho); las lee gii.py y las guarda en cache/gii/.",
+  "cadence": "Se actualiza una vez al año (última actualización 2026-09-25, datos hasta 2025). Cada edición revisa todos los años anteriores.",
+  "used_for": "Los valores actualizados de los indicadores 1.1.2, 1.2.1 y 1.2.2 de la página del Índice Global de Innovación (gii_profile.json: upd_value, upd_year), y los valores de Puerto Rico de 2024 para su posición en el GII 2026.",
+  "terms_note": "Estimados compuestos basados en percepciones, con errores estándar; el Banco Mundial advierte que no se lean como significativas las diferencias pequeñas entre años o economías. Como cada edición revisa el pasado, los valores de ediciones distintas no son comparables.",
+  "_en": {
+   "access": "b403dd82",
+   "cadence": "4c807531",
+   "used_for": "2d79b265",
+   "terms_note": "80cf6ad4"
+  }
+ },
+ "wb_wdi": {
+  "access": "API del Banco Mundial, sin clave: api.worldbank.org/v2/country/PRI/indicator/{series} (los Estados Unidos, USA, para el arancel); las lee gii.py y las guarda en cache/gii/.",
+  "cadence": "Se actualiza varias veces al año (última actualización 2026-10-08 para las series que se usan).",
+  "used_for": "Los valores actualizados de los indicadores 3.2.3 (NE.GDI.TOTL.ZS), 6.2.2 (IC.BUS.NDNS.ZS) y 4.3.1 (TM.TAX.MRCH.WM.AR.ZS de los Estados Unidos, método de FPR), los componentes de TIC que se muestran junto a 3.1.1 y 3.1.2, y la copia de series de la UNESCO que se usa cuando es más reciente (gii_profile.json).",
+  "terms_note": "Muchas series del WDI para Puerto Rico están vacías (logística, crédito interno, capitalización bursátil, patentes, inversión extranjera directa, exportaciones de alta tecnología). El arancel de los Estados Unidos representa a Puerto Rico porque allí aplica el arancel de los Estados Unidos; se identifica como método de FPR.",
+  "_en": {
+   "access": "bc0334a5",
+   "cadence": "e48160a7",
+   "used_for": "180255f6",
+   "terms_note": "072db950"
+  }
+ },
+ "unesco_uis": {
+  "access": "API de datos del UIS, sin clave: api.uis.unesco.org/api/public/data/indicators?indicator={code}&geoUnit=PRI; las lee gii.py y las guarda en cache/gii/.",
+  "cadence": "Publica datos unas dos veces al año (febrero de 2026 para las series que se usan).",
+  "used_for": "Los valores actualizados de los indicadores 2.1.1 (XGDP.FSGOV), 2.1.3 (SLE.1T8), 2.1.5 (PTRHC.2T3.QUALIFIED), 2.2.1 (GER.5T8), 2.2.2 (FOSGP.5T8.F500600700) y 2.2.3 (MOR.5T8.40510) de la página del Índice Global de Innovación (gii_profile.json).",
+  "terms_note": "Compartir igual: una adaptación debe llevar la misma licencia. Las series se revisan entre ediciones, por lo que los valores publicados en 2021 pueden diferir de los actuales para el mismo año. La movilidad entrante de Puerto Rico es un estimado del UIS.",
+  "_en": {
+   "access": "20167da2",
+   "cadence": "49953004",
+   "used_for": "fdef2bda",
+   "terms_note": "fb9fe5f1"
+  }
+ },
+ "imf_weo": {
+  "access": "API de DataMapper del FMI, sin clave: imf.org/external/datamapper/api/v1/PPPGDP y NGDP_RPCH; las lee gii.py y las guarda en cache/gii/ (el servidor rechaza el User-Agent de este proyecto, así que esa solicitud va con el de la biblioteca).",
+  "cadence": "Dos veces al año (abril y octubre); los últimos años son estimados del FMI y los siguientes, proyecciones, que gii.py deja fuera.",
+  "used_for": "El valor actualizado del indicador 4.3.3 (PIB en dólares PPA) y el crecimiento del PIB real del estimado de FPR de 6.2.1 (gii_profile.json).",
+  "terms_note": "El FMI permite reutilizar sus datos con atribución, según sus términos de derechos de autor y de uso. Los valores se revisan entre ediciones: el PIB de 2019 en dólares PPA es 119,600 millones en la edición actual, frente a los 126,900 millones que FPR tomó de la edición de octubre de 2019.",
+  "_en": {
+   "access": "67b3283e",
+   "cadence": "3c8c8da5",
+   "used_for": "34db1c73",
+   "terms_note": "c4fb88f2"
+  }
+ },
+ "openmaptiles": {
+  "access": "No se descarga por sí solo: es la organización (capas como transportation, building, place y poi, y sus campos) de los mosaicos vectoriales de OpenFreeMap que dibujan los mapas base.",
+  "cadence": "Una versión del esquema (la 3.16 en los mosaicos de OpenFreeMap el 2026-10-23). Solo cambia cuando OpenFreeMap pasa a una versión nueva.",
+  "used_for": "La organización de los mosaicos vectoriales del mapa base en todos los mapas; el mapa 3D eleva los edificios a partir de su capa 'building' y su campo 'render_height'.",
+  "terms_note": "La licencia pide que los productos que usan mapas hechos con el esquema den crédito visible a 'OpenMapTiles', con un enlace a openmaptiles.org, en la esquina de un mapa interactivo, junto al crédito de OpenStreetMap. Todos los mapas del observatorio muestran '© OpenMapTiles' en su línea de crédito.",
+  "_en": {
+   "access": "f3d8b29b",
+   "cadence": "293cb668",
+   "used_for": "705496fc",
+   "terms_note": "cbaf0820"
+  }
+ },
+ "maplibre_gl_leaflet": {
+  "access": "Un archivo de JavaScript copiado sin cambios del paquete de npm (versión 0.1.4, integridad verificada al descargarlo) en site/vendor/maplibre-gl-leaflet/0.1.4/ con su licencia, y cargado desde el propio sitio del observatorio por site/js/core/basemap.js cuando una página con un mapa 2D está lista.",
+  "cadence": "Una versión fija. Solo cambia si FPR reemplaza el archivo.",
+  "used_for": "Dibujar el mapa base vectorial de OpenFreeMap con MapLibre GL JS como una capa debajo de todas las capas de Leaflet del mapa 2D (index.html) y de los mapas de WCRP (wcrp.html).",
+  "terms_note": "La licencia (ISC) está en el archivo LICENSE del paquete, copiado junto al script. La versión 0.1.4 (npm, 2026-08-16) declara Leaflet ^1.9.3 y MapLibre GL JS de ^2.4 a ^6, lo que cubre el Leaflet 1.9.4 y el MapLibre GL JS 4.7.1 que usa el observatorio. Como se sirve desde el propio sitio del observatorio, no envía nada a otro servidor.",
+  "_en": {
+   "access": "2f6cd23b",
+   "cadence": "2de14677",
+   "used_for": "43c2f4e0",
+   "terms_note": "c6249dbe"
+  }
+ },
+ "nasa_black_marble": {
+  "access": "LAADS DAAC publica la lista de archivos sin restricción; para descargarlos se necesita una cuenta gratuita de NASA Earthdata. La compilación lee un token de usuario de la variable de entorno EARTHDATA_TOKEN (un secreto de GitHub Actions) y lo envía solo a LAADS; el sitio nunca consulta a la NASA y los visitantes no necesitan cuenta (decisión 75 de HANDOFF). Un archivo HDF5 al mes del mosaico h11v07, que contiene todo Puerto Rico (unos 70 MB); la compilación guarda un resumen por área y borra el archivo. No se publica ninguna imagen.",
+  "cadence": "La NASA publica cada mes unas siete semanas después de que termina. El observatorio lee los meses nuevos cuando FPR corre la compilación (python nightlights.py o el flujo Night-time lights).",
+  "used_for": "La radiancia nocturna media y la proporción de píxeles de calidad baja o rellenados, por mes (2012-01 a 2026-09) y por año (2012-2025), para los 78 municipios, los 901 barrios y Puerto Rico (nightlights_series.json, nightlights_barrio.json, nightlights_monthly.json). También los meses para que volviera la luz nocturna tras los huracanes María y Fiona, y el mes más oscuro después de cada uno, por barrio y municipio (storm_recovery_series.json, storm_recovery_barrio.json).",
+  "terms_note": "La guía de uso de datos de la NASA dice que los datos de misiones dirigidas por la NASA son CC0 salvo que se indique otra cosa, que no tienen restricciones de uso y que se recomienda encarecidamente citarlos; también pide reconocer a la NASA como fuente y no sugerir su respaldo. El observatorio citará el DOI del producto y a Román et al. (2018) dondequiera que aparezcan las cifras. La cuenta es la condición de la NASA para descargar, no un término de la licencia.",
+  "_en": {
+   "access": "bf891252",
+   "cadence": "37dcffb1",
+   "used_for": "b9ba9e9b",
+   "terms_note": "6d93e9d2"
+  }
+ },
+ "usgs_landsat_c2_st": {
+  "access": "La compilación lee la copia de Microsoft Planetary Computer con su token de acceso anónimo (sin cuenta; la copia de AWS cobra al que solicita), por solicitudes HTTP de rango en la primera vista general (60 m), solo los mosaicos sobre Puerto Rico (raster.py, unos 2 MB por escena). El sitio nunca consulta Planetary Computer. No se publica ninguna imagen.",
+  "cadence": "Una escena cada 8 días en cada una de seis rutas y filas con Landsat 8 y 9 juntos; el observatorio usa los últimos tres veranos completos (junio a septiembre), así que sus cifras cambian una vez al año, después de septiembre (unidad de actualización heat).",
+  "used_for": "La temperatura mediana y del percentil 90 de la superficie terrestre en mañanas despejadas de verano, la proporción del terreno entre la décima parte más caliente de Puerto Rico y los residentes que viven allí, para los 78 municipios, los 901 barrios y Puerto Rico (heat_series.json, heat_barrio.json).",
+  "terms_note": "Los datos e información creados o producidos por el USGS son de dominio público; el USGS pide reconocimiento (\"cortesía del U.S. Geological Survey\"). Los términos de uso de Planetary Computer cubren el acceso a su copia, no la licencia de los datos.",
+  "_en": {
+   "access": "45448c7e",
+   "cadence": "a3b1cc94",
+   "used_for": "538bd7f2",
+   "terms_note": "317e920d"
+  }
+ },
+ "copernicus_sentinel2_l2a": {
+  "access": "La compilación lee la copia pública de Earth Search en AWS (sin cuenta ni clave) por solicitudes HTTP de rango a 40 m (la segunda vista general de las bandas de 10 m y la primera de la clasificación de la escena, de 20 m), solo los mosaicos sobre Puerto Rico (raster.py), y guarda de cada escena las celdas despejadas y su NDVI (a lo sumo 1 MB por escena). El sitio nunca consulta Earth Search. No se publica ninguna imagen.",
+  "cadence": "Una vista cada 2 a 5 días con Sentinel-2A, 2B y 2C; el observatorio usa los últimos tres veranos completos (junio a septiembre), la ventana del calor de superficie, así que sus cifras cambian una vez al año, después de septiembre (unidad de actualización vegetation).",
+  "used_for": "El verdor mediano de la vegetación (NDVI) en días despejados de verano, la proporción del terreno con vegetación densa y con poca o ninguna, y los residentes que viven en terreno con poca o ninguna vegetación, para los 78 municipios, los 901 barrios y Puerto Rico (vegetation_series.json, vegetation_barrio.json).",
+  "terms_note": "Los términos de los datos Sentinel de Copernicus permiten el uso libre, pleno y abierto, incluida la reproducción, distribución, adaptación y uso comercial, con el crédito \"Contains modified Copernicus Sentinel data [año]\" para datos modificados. Earth Search y el Registro de Datos Abiertos de AWS sirven la copia; sus términos cubren el acceso, no la licencia de los datos.",
+  "_en": {
+   "access": "ccfce285",
+   "cadence": "28e3fcd5",
+   "used_for": "9a516bbf",
+   "terms_note": "8539c8c0"
+  }
+ },
+ "nasa_ecostress_lste": {
+  "access": "La compilación lee la copia en la nube del LP DAAC con el token de NASA Earthdata de FPR (el mismo de las luces nocturnas, decisiones 75 y 80), enviado solo a los servidores de NASA; el LP DAAC responde con una dirección firmada de corta duración que se lee por solicitudes HTTP de rango, solo donde caen las celdas de los barrios. La compilación corre en GitHub Actions con el token como secreto. El sitio nunca consulta a NASA y no se publica ninguna imagen.",
+  "cadence": "ECOSTRESS va en la Estación Espacial Internacional y pasa varias veces por semana, cada vez a una hora distinta; el observatorio usa los pases de noche (de 21:00 a 06:00) de los últimos tres veranos completos (junio a septiembre), la ventana del calor de superficie, así que sus cifras cambian una vez al año, después de septiembre (unidad de actualización night_heat).",
+  "used_for": "La temperatura mediana y del percentil 90 de la superficie terrestre en noches despejadas de verano, la proporción del terreno entre la décima parte más cálida de Puerto Rico de noche y los residentes que viven allí, para los 78 municipios, los 901 barrios y Puerto Rico (night_heat_series.json, night_heat_barrio.json).",
+  "terms_note": "La guía de uso de datos de NASA: los datos de misiones dirigidas por NASA no tienen restricciones de uso (CC0), y se pide encarecidamente citarlos. Descargarlos requiere una cuenta gratuita de Earthdata; los resúmenes publicados no requieren ninguna.",
+  "_en": {
+   "access": "e3e237c9",
+   "cadence": "cf580a2b",
+   "used_for": "60e43fd1",
+   "terms_note": "911d2630"
+  }
+ },
+ "usgs_3dep_13": {
+  "access": "La compilación lee la versión más reciente de cada mosaico de un grado sobre Puerto Rico de los archivos públicos de The National Map en AWS (sin cuenta), por solicitudes HTTP de rango con raster.py: para climb.py solo donde pasan los caminos a las paradas (alturas cada 10 m a lo largo de los caminos), para slope.py todo Puerto Rico en ventanas de 0.1 grado. El sitio nunca consulta al USGS. La imagen publicada es slope_surface.png, la pendiente promedio de bloques de unos 60 m; no se publica ninguna imagen de alturas.",
+  "cadence": "El USGS reemplaza un mosaico cuando llega un lidar mejor (los mosaicos de Puerto Rico se reemplazaron por última vez el 2026-07-22); las cifras de subida se rehacen con la actualización nocturna del transporte, que solo las escribe cuando cambian los caminantes o las alturas.",
+  "used_for": "La subida de ida y vuelta del camino a una parada con horario vigente, y los residentes cuyo camino tiene un tramo más empinado de lo que puede ser una rampa, para los 78 municipios, los 901 barrios y Puerto Rico (climb_series.json, climb_barrio.json); y la pendiente del terreno: la proporción con más de 15 % y de 30 % y la pendiente promedio, por barrio y municipio (slope_series.json, slope_barrio.json), con la imagen de la capa Pendiente (slope_surface.png).",
+  "terms_note": "Los datos e información creados o producidos por el USGS son de dominio público; el USGS pide reconocimiento (\"cortesía del U.S. Geological Survey\").",
+  "_en": {
+   "access": "2d68cf6e",
+   "cadence": "69320387",
+   "used_for": "4112d99c",
+   "terms_note": "d4145f5d"
+  }
+ },
+ "eia_intl": {
+  "access": "El archivo masivo INTL.zip (sin clave; 24,264,743 bytes el 2026-10-29, una serie JSON por línea) lo descarga gii.py, que guarda solo tres series de Puerto Rico en cache/gii/: INTL.2-12-PRI-BKWH.A (generación neta de electricidad, miles de millones de kWh), INTL.44-2-PRI-QBTU.A (consumo total de energía, cuatrillones de Btu) e INTL.4419-2-PRI-QBTU.A (consumo de fuentes nucleares, renovables y otras).",
+  "cadence": "La EIA reconstruye los archivos masivos dos veces al día; las series de Puerto Rico se actualizaron por última vez en febrero y marzo de 2026, con datos hasta 2024. gii.py vuelve a leer el archivo con --refresh.",
+  "used_for": "Los estimados de FPR del indicador 3.2.1 (producción de electricidad por millón de habitantes, con la población del Negociado del Censo; gii_profile.json) y de IN.3.3.2 (uso de energía baja en carbono, nuevo en el GII 2026; gii_changes.json).",
+  "terms_note": "La página de derechos de autor de la EIA indica que las publicaciones del Gobierno de EE. UU. son de dominio público y pide reconocer a la EIA como fuente. La generación es neta (excluye lo que consumen las propias plantas), mientras que el GII 2026 toma la producción bruta de la Agencia Internacional de Energía. La EIA cuenta la electricidad eólica, solar e hidroeléctrica por su contenido energético (3,412 Btu por kWh). La EIA no respalda el uso que FPR hace de estos datos.",
+  "_en": {
+   "access": "dcabd025",
+   "cadence": "a3538725",
+   "used_for": "8e103734",
+   "terms_note": "9a0d6dbc"
+  }
+ },
+ "bls_oews": {
+  "access": "El archivo estatal oesmYYst.zip (sin clave; 7,563,829 bytes para mayo de 2025, un .xlsx) lo descarga gii.py con un User-Agent descriptivo (más el contacto de FRESHNESS_CONTACT cuando está definido, como hace freshness.py; bls.gov rechaza las solicitudes anónimas) y lo lee con la biblioteca estándar. Solo se guardan en cache/gii/ el empleo total de Puerto Rico (00-0000) y sus 22 grupos mayores del SOC.",
+  "cadence": "Una vez al año: los estimados de mayo salen la primavera siguiente (mayo de 2025 en mayo de 2026). gii.py toma el archivo más reciente con --refresh.",
+  "used_for": "El estimado de FPR del indicador 5.1.1 (empleo intensivo en conocimiento: los grupos mayores 11 a 29 del SOC como proporción de todo el empleo; gii_profile.json).",
+  "terms_note": "OEWS cuenta empleos asalariados en establecimientos y excluye a los trabajadores por cuenta propia, así que no es la medida de las encuestas de fuerza laboral que el GII 2026 toma de la OIT. Los estimados provienen de tres años de paneles de la encuesta. El BLS pide citarlo como fuente.",
+  "_en": {
+   "access": "b319987b",
+   "cadence": "040d45ef",
+   "used_for": "e0bbd747",
+   "terms_note": "0b80cc44"
+  }
+ },
+ "fpr_baseline": {
+  "access": "El tablero interno de la línea base de la Región Este de FPR contiene la encuesta de vertederos clandestinos (21 registros con coordenadas). Las rutas municipales que FPR trazó para la línea base están en un proyecto de ArcGIS Pro, exportadas a fpr_rutas_municipales.geojson. La tabla de la encuesta se leyó del tablero el 2026-10-23 y se copió a fpr_vertederos_clandestinos.csv. La fuente es interna; Finanzas y Cumplimiento autorizaron publicar estas dos capas (2026-11-10).",
+  "cadence": "Copiada una vez, el 2026-10-23. FPR añade o actualiza filas en fpr_vertederos_clandestinos.csv, o exporta otra vez las rutas trazadas, y corre fpr_baseline.py; en cada corrida se calcula de nuevo qué rutas trazadas ya tiene el observatorio.",
+  "used_for": "Las capas Vertederos clandestinos y Rutas municipales trazadas por FPR del mapa 2D y de la vista 3D (illegal_dumping.geojson, fpr_routes.geojson).",
+  "terms_note": "Los demás temas del tablero no se publican de nuevo. Sus cifras de interrupciones (SAIDI, SAIFI) vienen del Negociado de Energía, que las recibe de LUMA cada mes (wanted.json, power-reliability). De los 59 tramos que FPR trazó, se dejan fuera los 21 que las capas de transporte del observatorio ya cubren. El formulario no registra la fecha de cada visita.",
+  "_en": {
+   "access": "ebeb09bf",
+   "cadence": "24697c57",
+   "used_for": "a1a7fc51",
+   "terms_note": "2a48e738"
+  }
+ },
+ "fcc_bdc": {
+  "access": "La API de datos públicos de la FCC responde solo con una cuenta: la compilación lee el usuario y la ficha de API de la FCC de FPR de los secretos de GitHub Actions FCC_BDC_USERNAME y FCC_BDC_HASH y los envía solo a broadbandmap.fcc.gov. Descarga los archivos de ubicaciones de Puerto Rico (un CSV por tecnología fija, unos 60 MB por publicación), guarda conteos por bloque censal en su caché y publica solo conteos y proporciones por área. El sitio nunca consulta la FCC.",
+  "cadence": "Los proveedores informan dos veces al año, al 30 de junio y al 31 de diciembre; la FCC publica cada informe unos meses después y de nuevo cuando se resuelven las impugnaciones. El observatorio usa la publicación de junio de cada año y busca una nueva cada 30 días (unidad de actualización broadband).",
+  "used_for": "Las ubicaciones con servicio de banda ancha posible, las proporciones servidas, subatendidas y sin servicio según BEAD de la NTIA, las ubicaciones por debajo de 100/20 Mbps y la proporción con fibra disponible, para los 78 municipios, los 901 barrios y Puerto Rico, junio de 2023 a 2026 (broadband_series.json, broadband_barrio.json).",
+  "terms_note": "Las obras del Gobierno de EE. UU. no tienen derechos de autor en EE. UU. La lista de ubicaciones detrás de los archivos (el Fabric) tiene licencia de CostQuest Associates y no se usa: los archivos públicos dan el bloque censal de cada ubicación, y el observatorio no publica identificadores de ubicaciones, direcciones ni listas de proveedores. La disponibilidad es lo que informan los proveedores y se puede impugnar.",
+  "_en": {
+   "access": "8b474b76",
+   "cadence": "b67f2468",
+   "used_for": "bdb08b12",
+   "terms_note": "20bf65bd"
+  }
+ },
+ "usgs_wbd": {
+  "access": "watersheds.py lee las subcuencas (HUC-12) y las subregiones hidrológicas (HUC-8) de la subregión 2101 (Puerto Rico) del servicio ArcGIS de The National Map (sin clave), con los contornos simplificados por el servicio a unos 20 m.",
+  "cadence": "El USGS actualiza el WBD unas pocas veces al año; el observatorio lo lee de nuevo cuando watersheds.py corre con su opción de actualizar.",
+  "used_for": "La capa Cuencas y quebradas: 227 subcuencas (HUC-12) con su subregión hidrológica, su área y sus residentes de 2020 (watersheds.geojson).",
+  "terms_note": "Los datos e información creados o producidos por el USGS son de dominio público; el USGS pide reconocimiento (\"cortesía del U.S. Geological Survey\").",
+  "_en": {
+   "access": "05f556d4",
+   "cadence": "d4548950",
+   "used_for": "05403591",
+   "terms_note": "d4145f5d"
+  }
+ },
+ "usgs_nhdplus_hr": {
+  "access": "watersheds.py lee las líneas de flujo de la red (atributos, y la geometría de las que drenan 5 km² o más) y las áreas de captación de la VPU 2101 (Puerto Rico) del servicio ArcGIS de The National Map (sin clave), con los contornos simplificados por el servicio a unos 20 m.",
+  "cadence": "El USGS publica NHDPlus HR rara vez (la VPU de Puerto Rico es un producto beta); el observatorio lo lee de nuevo cuando watersheds.py corre con su opción de actualizar.",
+  "used_for": "Las quebradas de la capa Cuencas y quebradas (streams.geojson) y Qué drena aquí: 13,809 áreas de captación enlazadas aguas abajo (catchments.geojson), trazadas aguas arriba en el navegador.",
+  "terms_note": "Los datos e información creados o producidos por el USGS son de dominio público; el USGS pide reconocimiento (\"cortesía del U.S. Geological Survey\").",
+  "_en": {
+   "access": "202468c1",
+   "cadence": "5fc969c5",
+   "used_for": "1cc08332",
+   "terms_note": "d4145f5d"
+  }
+ },
+ "nhc_slosh": {
+  "access": "Un archivo ZIP público, sin clave: https://www.nhc.noaa.gov/gis/hazardmaps/PR_SLOSH_MOM_Inundation.zip (7.3 MB, con fecha del 30 de noviembre de 2018). Contiene cinco GeoTIFF, uno por categoría de huracán, con celdas de unos 10 m en NAD83; cada celda tiene un código según la profundidad del agua sobre el terreno en franjas de 1 pie (1 = menos de 1 pie, 2 = de 1 a 2 pies, y así sucesivamente). exposure.py lo descarga una vez, lee la celda bajo el punto interno de cada bloque censal de 2020 con el lector de GeoTIFF propio del proyecto (raster.py) y conserva solo los conteos de residentes y de unidades de vivienda de cada área, no los mapas.",
+  "cadence": "El NHC publicó los mapas de Puerto Rico en noviembre de 2018 (los archivos que contiene tienen fecha de noviembre de 2017) y no los ha reemplazado desde entonces; los mapas del territorio continental se actualizaron después (versión 4). La verificación de vigencia vigila la fecha y el tamaño del archivo ZIP. Solo se usa un archivo nuevo cuando FPR reconstruye la serie de exposición con la opción de actualización.",
+  "used_for": "Los residentes y las unidades de vivienda en el área que los mapas de marejada ciclónica de NOAA muestran inundada por un huracán de categoría 1 a 5, a cualquier profundidad y bajo 3 pies de agua o más, por municipio, barrio y sector censal (exposure_municipio.json, exposure_barrio.json, exposure_tract.json; familias surge_cat1 a surge_cat5 y surge_deep_cat1 a surge_deep_cat5).",
+  "terms_note": "El NHC indica que la información de los servidores del gobierno puede usarse libremente y es de dominio público, y que no debe modificarse y luego presentarse como material oficial del gobierno. Los metadatos de los mapas indican que los datos muestran la magnitud de una posible inundación, no la ubicación exacta, para crear conciencia general sobre el riesgo de marejada ciclónica a nivel de ciudad o comunidad, no de parcela ni de celda; no toman en cuenta la erosión, el hundimiento del terreno ni la construcción futura, y el riesgo puede extenderse más allá de las mallas del modelo SLOSH. Son una referencia para la planificación y para conocer el riesgo de marejada, no para la navegación, los permisos ni fines legales o reglamentarios. Cada mapa es el Máximo de los MEOW (MOM): para cada categoría, el nivel de agua más alto entre muchas tormentas hipotéticas con distintas trayectorias, velocidades y tamaños, en marea alta, así que es casi el peor caso, no una tormenta. Los mapas no son zonas de desalojo; esas las establece el Negociado para el Manejo de Emergencias de Puerto Rico.",
+  "_en": {
+   "access": "acfd8ef4",
+   "cadence": "c5018854",
+   "used_for": "d26d1e0d",
+   "terms_note": "df6dc548"
+  }
+ },
+ "nces_ipeds": {
+  "access": "Dos archivos ZIP por año del IPEDS Data Center del NCES, sin clave: https://nces.ed.gov/ipeds/datacenter/data/C{year}_A.zip (títulos: premios por institución, campo CIP de seis dígitos, nivel y primera o segunda especialidad) y HD{year}.zip (el directorio: el estado y el condado de cada institución). Se lee el archivo revisado dentro del ZIP (_RV) cuando el NCES lo ha publicado. degrees.py conserva solo los conteos de cada municipio.",
+  "cadence": "El NCES publica los títulos de un año académico alrededor de un año después de que termina, y los revisa al año siguiente. El observatorio tiene los años académicos que terminan de 2015 a 2024. La verificación de vigencia busca el archivo del año siguiente cada 30 días; cuando aparece, se sube LAST en degrees.py y se reconstruye.",
+  "used_for": "Los títulos y certificados otorgados por nivel y campo amplio, por municipio del recinto, años académicos que terminan de 2015 a 2024 (degrees_series.json).",
+  "terms_note": "Los datos de IPEDS son una obra del Gobierno de EE. UU. y de dominio público. Las instituciones informan sus propios conteos; el NCES imputa los de unas pocas que no informan. Los conteos siguen al recinto, no a donde viven los graduados; un estudiante con dos especialidades se cuenta una vez aquí (primeras especialidades).",
+  "_en": {
+   "access": "09257bbb",
+   "cadence": "7a43fd3b",
+   "used_for": "6f0ae3dd",
+   "terms_note": "e1fafcee"
+  }
+ },
+ "urban_crdc": {
+  "access": "La API del Education Data Portal del Urban Institute, sin clave, solo las filas de todos los estudiantes de Puerto Rico: schools/crdc/enrollment/{year}/race/sex, schools/crdc/chronic-absenteeism/{year}/race/sex y schools/crdc/teachers-staff/{year}, con fips=72 y raza, sexo, discapacidad, aprendiz de inglés y sin hogar en 99 (total). school_conditions.py guarda los conteos de cada escuela solo en su caché y publica totales por municipio.",
+  "cadence": "La Recopilación de Datos de Derechos Civiles se hace cada dos años; 2019-20 no se recopiló (la pandemia). El observatorio tiene 2017-18 y 2021-22; la próxima es 2023-24. El portal estuvo lento el 2026-11-18 (las solicitudes vencían); el programa intenta cada página hasta seis veces.",
+  "used_for": "El ausentismo crónico, los estudiantes por consejero, las escuelas con enfermero y las escuelas sin consejero, por municipio, años escolares 2017-18 y 2021-22 (school_conditions_series.json).",
+  "terms_note": "El portal está bajo la licencia Open Data Commons Attribution (ODC-By 1.0) y pide dar crédito al Urban Institute y a la fuente original; la CRDC es una obra del Gobierno de EE. UU. Las escuelas informan sus propias cifras a la Oficina de Derechos Civiles; la oficina no las audita, y la forma en que una escuela cuenta una ausencia puede variar.",
+  "_en": {
+   "access": "a61d5b1c",
+   "cadence": "5d25e51e",
+   "used_for": "0f97aeaf",
+   "terms_note": "e09ee97e"
+  }
+ },
+ "urban_edfacts": {
+  "access": "La API del Education Data Portal del Urban Institute, sin clave: schools/edfacts/assessments/{year}/grade-99 con fips=72 y cada subgrupo en 99 (todos los estudiantes). proficiency.py guarda los estudiantes evaluados y la proporción proficiente de cada escuela solo en su caché y publica proporciones por municipio.",
+  "cadence": "El portal tiene los resultados por escuela de Puerto Rico de 2009-10 a 2018-19; en 2019-20 no se administraron pruebas y los años posteriores no están. ED Data Express le contesta a un programa con una página vacía y el perfil escolar del Departamento de Educación es un informe de Power BI, así que 2018-19 es el resultado por escuela más reciente que un programa puede leer (verificado el 2026-11-18). Las cifras de la isla de años posteriores aparecen en la prensa y en los informes del Departamento, no por municipio.",
+  "used_for": "Los estudiantes proficientes en lectura (español) y matemáticas, por municipio, años escolares 2014-15 a 2018-19 (proficiency_series.json).",
+  "terms_note": "El portal está bajo la licencia Open Data Commons Attribution (ODC-By 1.0) y pide dar crédito al Urban Institute y a la fuente original; EDFacts es una obra del Gobierno de EE. UU. Para proteger a los estudiantes, la proporción de una escuela pequeña viene como un intervalo; el observatorio usa su punto medio y guarda en las notas las cifras más baja y más alta posibles de la isla.",
+  "_en": {
+   "access": "bf4a25bc",
+   "cadence": "a1aa9d77",
+   "used_for": "b63345c1",
+   "terms_note": "93fcea3a"
+  }
+ },
+ "cms_nppes": {
+  "access": "El archivo completo mensual de https://download.cms.gov/nppes/NPI_Files.html (unos 1.1 GB comprimido, 11.8 GB descomprimido), sin clave. providers.py lee el CSV nacional dentro del ZIP como flujo y conserva, solo para los proveedores individuales de Puerto Rico, el código de taxonomía principal, la ciudad y el código postal de la práctica, el año de la última actualización y si el NPI está activo: ningún nombre, NPI, dirección ni teléfono llega a la caché.",
+  "cadence": "CMS publica un archivo completo nuevo cada mes. El observatorio tiene NPPES_November_2026_V2.zip; python providers.py --refresh descarga el más reciente.",
+  "used_for": "Los proveedores de servicios de salud por tipo (médicos, psiquiatras, dentistas, enfermeros practicantes y asistentes médicos, psicólogos, consejeros y trabajadores sociales, farmacéuticos), por municipio (providers_series.json).",
+  "terms_note": "Los datos de NPPES son una obra del Gobierno de EE. UU. y públicos por ley (45 CFR 162.410 permite a CMS divulgarlos). Las filas nombran a proveedores individuales: el observatorio no guarda nada de eso y publica solo conteos por municipio, sin ningún conteo de 1 a 9. Los proveedores registran y actualizan sus propios datos; muchos nunca los actualizan, así que aparecer en la lista no prueba que un proveedor siga ejerciendo.",
+  "_en": {
+   "access": "3a0a27c0",
+   "cadence": "8027aa3b",
+   "used_for": "ae3a35b7",
+   "terms_note": "1b966aee"
+  }
+ }
+}

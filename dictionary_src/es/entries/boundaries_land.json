@@ -1,0 +1,522 @@
+{
+ "boundaries.municipios": {
+  "name": "Límites de los municipios (78 municipios)",
+  "how_to_read": "Úselo para ver dónde empieza y dónde termina un municipio en tierra. No lo use para medir superficies ni para decidir si un solar en particular está dentro de un municipio.",
+  "_en": {
+   "name": "bf88fbe0",
+   "how_to_read": "8a0be5cf"
+  }
+ },
+ "boundaries.barrios": {
+  "name": "Barrios (901 subdivisiones de condado del Censo)",
+  "how_to_read": "Haga clic en un barrio en el mapa para ver su superficie, sus lugares turísticos, los lugares por km², los lugares en zona de riesgo de inundación, los lugares a 400 m o menos de una parada con horario vigente (y de una parada frecuente) y los lugares a 400 m o menos de cualquier parada mapeada. El conteo de alojamiento está solo en barrios.geojson. Compare los barrios por lugares por km², no por conteos brutos: con los límites vigentes al 1 de enero de 2023, las superficies van de 0.09 a 64 km².",
+  "_en": {
+   "name": "6da3c063",
+   "how_to_read": "43975477"
+  }
+ },
+ "boundaries.shoreline_clipped": {
+  "name": "Límites recortados en la costa frente a los límites legales de 2020",
+  "how_to_read": "Las superficies terrestres de los municipios (AREALAND, land_km2) cuentan solo tierra. Las superficies de los barrios (km2) son superficies de polígonos que terminan en la línea de costa y pueden incluir algo de agua interior. Si necesita un límite que incluya las aguas costeras, use los límites de 2020 en resolución completa del Negociado del Censo, no este archivo.",
+  "_en": {
+   "name": "72320fb1",
+   "how_to_read": "35d89a56"
+  }
+ },
+ "boundaries.display_copies": {
+  "name": "Geometría simplificada para mostrar",
+  "how_to_read": "Si mide una superficie o una distancia en los polígonos publicados, espere errores del tamaño de la tolerancia. Para la capa de uso de terrenos son unos 110 m, lo que es mucho para parcelas pequeñas.",
+  "_en": {
+   "name": "2e232598",
+   "how_to_read": "557fb676"
+  }
+ },
+ "boundaries.barrio_selection": {
+  "name": "Cómo se eligieron los barrios",
+  "how_to_read": "Trate los 901 barrios como unidades del Censo. Si necesita la lista de barrios que usa una oficina municipal o de planificación, consulte la lista de esa oficina; puede ser distinta.",
+  "_en": {
+   "name": "65437246",
+   "how_to_read": "f0afe655"
+  }
+ },
+ "boundaries.barrio_stats": {
+  "name": "Cómo se calculan las estadísticas de los barrios",
+  "how_to_read": "En el corte de datos 2026-10, la base es de 24,209 lugares en toda la isla. De estos, 23,884 tienen el marcador dentro del polígono de un barrio y se cuentan, y 325 (1.3%) no lo tienen dentro de ninguno. Los totales por barrio se acercan a los totales por municipio, pero no son iguales. En municipalities.json, 41 municipios tienen más lugares que la suma de sus barrios, uno tiene uno menos y 36 coinciden. San Juan es el que más difiere (3,424 lugares frente a 3,373 en sus barrios).",
+  "_en": {
+   "name": "b449ce4c",
+   "how_to_read": "50b3b6ce"
+  }
+ },
+ "boundaries.municipio_name": {
+  "name": "Nombre del municipio (ortografía del observatorio)",
+  "how_to_read": "Use este campo para emparejar filas entre los archivos de lugares y de municipios. El archivo de uso de terrenos usa la misma ortografía en 78 de sus 79 valores de municipio; un polígono de agua lleva la variante Guayanabo (vea land.municipio).",
+  "_en": {
+   "name": "847beec4",
+   "how_to_read": "d1881a97"
+  }
+ },
+ "boundaries.municipio_census_name": {
+  "name": "Nombre del municipio (Negociado del Censo)",
+  "how_to_read": "Úselo para emparejar con las tablas del Negociado del Censo. Para unir datos dentro del observatorio, use la ortografía del observatorio (municipality) o el código (GEOID).",
+  "_en": {
+   "name": "6a9b3aa9",
+   "how_to_read": "bf11d650"
+  }
+ },
+ "boundaries.municipio_geoid": {
+  "name": "Código del municipio (GEOID del Censo)",
+  "how_to_read": "Use el código para unir tablas del Negociado del Censo u otros datos federales. No cambia cuando un nombre se escribe de otra forma.",
+  "_en": {
+   "name": "cd282290",
+   "how_to_read": "871ba1d4"
+  }
+ },
+ "boundaries.municipio_land_area": {
+  "name": "Superficie terrestre del municipio (Censo, metros cuadrados)",
+  "how_to_read": "Úsela como denominador de la densidad cuando trabaje con este archivo. 1 km² equivale a 1,000,000 m². Con los límites vigentes al 1 de enero de 2023, los 78 valores suman 8,869 km². El más pequeño es Cataño (12.5 km²) y el más grande es Arecibo (326.2 km²).",
+  "_en": {
+   "name": "c55ae85f",
+   "how_to_read": "04b51a41"
+  }
+ },
+ "boundaries.municipio_pop2020": {
+  "name": "Población, Censo 2020 (archivo de límites)",
+  "how_to_read": "Describe abril de 2020, no el presente. En el Censo 2020, los 78 valores suman 3,285,874, el conteo del Censo para Puerto Rico. El más pequeño es Culebra (1,792) y el más grande es San Juan (342,259). Para estimados anuales, vea la serie de población residente.",
+  "_en": {
+   "name": "62e8cfcb",
+   "how_to_read": "5e436e39"
+  }
+ },
+ "boundaries.municipio_hu2020": {
+  "name": "Unidades de vivienda, Censo 2020 (archivo de límites)",
+  "how_to_read": "Úselo para saber cuántas viviendas existen, no cuántas están ocupadas. Las unidades ocupadas equivalen a los hogares. En el Censo 2020, los 78 valores suman 1,598,159. El más pequeño es Culebra (1,563) y el más grande es San Juan (193,244).",
+  "_en": {
+   "name": "89893d6b",
+   "how_to_read": "e42b0067"
+  }
+ },
+ "boundaries.municipio_region": {
+  "name": "Región turística en el archivo de límites (Compañía de Turismo de Puerto Rico)",
+  "how_to_read": "Úsela para agrupar los municipios como lo hace la Compañía de Turismo. El observatorio no guarda totales regionales: si los necesita, sume las filas de los municipios. Los conteos del observatorio son listados de Overture, no estadísticas de la Compañía de Turismo.",
+  "_en": {
+   "name": "ca78d7c4",
+   "how_to_read": "2f7a2752"
+  }
+ },
+ "boundaries.barrio_name": {
+  "name": "Nombre del barrio",
+  "how_to_read": "Acompañe el nombre con el municipio o, mejor aún, use el geoid.",
+  "_en": {
+   "name": "19d5f855",
+   "how_to_read": "9326f98c"
+  }
+ },
+ "boundaries.barrio_municipality": {
+  "name": "Municipio del barrio",
+  "how_to_read": "Úselo para agrupar los barrios por municipio. Lo determina el código censal, no la ubicación de los lugares turísticos.",
+  "_en": {
+   "name": "ceca0142",
+   "how_to_read": "6f34f069"
+  }
+ },
+ "boundaries.barrio_geoid": {
+  "name": "Código del barrio (GEOID del Censo)",
+  "how_to_read": "Úselo para unir con las tablas del Negociado del Censo para subdivisiones de condado. Aquí el campo se escribe geoid, en minúsculas, y GEOID en el archivo de municipios.",
+  "_en": {
+   "name": "e1e52a4e",
+   "how_to_read": "e10d6a27"
+  }
+ },
+ "boundaries.barrio_km2": {
+  "name": "Superficie del barrio (km²)",
+  "how_to_read": "Úsela como denominador de los lugares por km². Puede incluir un poco de agua interior. Con los límites vigentes al 1 de enero de 2023, los 901 valores suman 8,916 km² y van de 0.09 km² (el barrio Toa Alta, en Toa Alta) a 64.08 km² (Lapa, en Salinas).",
+  "_en": {
+   "name": "10441ac1",
+   "how_to_read": "41f89c96"
+  }
+ },
+ "boundaries.barrio_assets": {
+  "name": "Lugares turísticos en el barrio",
+  "how_to_read": "Un conteo alto significa muchos negocios y sitios listados en ese barrio. No dice cuántos visitantes reciben. En el corte de datos 2026-10, 23,884 lugares se cuentan en algún barrio, y el conteo va de 0 (24 barrios) a 1,233 (Santurce, San Juan).",
+  "_en": {
+   "name": "131fe88a",
+   "how_to_read": "a6bbf3d2"
+  }
+ },
+ "boundaries.barrio_assets_per_km2": {
+  "name": "Lugares turísticos por km² (barrio)",
+  "how_to_read": "En el corte de datos 2026-10, los valores van de 0 a 322.19 (el barrio Barceloneta, en Barceloneta: 33 lugares en unos 0.1 km²). Los valores más altos están en barrios pequeños. Los cinco primeros son Barceloneta, Cabo Rojo, Luquillo, Dorado y Quinto (en Ponce); todos menos Quinto son barrios-pueblo (centros urbanos) en la capa del Censo. Compare barrios de tamaño parecido.",
+  "_en": {
+   "name": "05ec3d31",
+   "how_to_read": "78780678"
+  }
+ },
+ "boundaries.barrio_sfha": {
+  "name": "Lugares turísticos en zona de riesgo de inundación (conteo por barrio)",
+  "how_to_read": "Un número alto significa que muchos lugares listados están en un área que FEMA mapea con 1% de probabilidad de inundarse en cualquier año (alrededor de 1 en 4 en 30 años). No es un pronóstico de cuándo ocurrirá una inundación, y no dice nada sobre la elevación del edificio ni sobre su seguro. En el corte de datos 2026-10, los valores van de 0 a 150 y suman 4,216.",
+  "_en": {
+   "name": "2dd3ff51",
+   "how_to_read": "7bcfb1e3"
+  }
+ },
+ "boundaries.barrio_transit": {
+  "name": "Lugares turísticos a 400 m o menos de cualquier parada mapeada (conteo por barrio)",
+  "how_to_read": "Un número alto significa que muchos lugares están cerca de una parada mapeada. No dice si las guaguas pasan a menudo ni a horas útiles. Para los lugares cerca de una parada cuyo horario no ha terminado, vea acc_cur400. En el corte de datos 2026-10, los valores van de 0 a 1,218 y suman 11,429.",
+  "_en": {
+   "name": "0f7012fe",
+   "how_to_read": "5b7b07f4"
+  }
+ },
+ "boundaries.barrio_acc_cur400": {
+  "name": "Lugares turísticos a 400 m o menos de una parada con horario vigente (conteo por barrio)",
+  "how_to_read": "Un número alto significa que muchos de los lugares del barrio están cerca de una parada con horario vigente. No muestra con qué frecuencia pasan los vehículos. En el corte de datos 2026-10, los valores van de 0 a 1,210 (Santurce, San Juan) y suman 7,723. 153 de los 901 barrios tienen un valor mayor que 0. El total de los barrios es menor que el conteo de la isla (7,790) porque 67 lugares cerca de una parada con horario vigente no caen en ningún barrio. Compare los barrios por la proporción de sus lugares (divida entre assets), no por conteos brutos, porque sus tamaños son distintos.",
+  "_en": {
+   "name": "98dfc89e",
+   "how_to_read": "7192be01"
+  }
+ },
+ "boundaries.barrio_acc_freq400": {
+  "name": "Lugares turísticos a 400 m o menos de una parada frecuente (conteo por barrio)",
+  "how_to_read": "Un número alto significa que muchos de los lugares del barrio tienen cerca una parada con mucho servicio. Es un indicador aproximado de la frecuencia, no un intervalo de paso (el tiempo entre vehículos). En el corte de datos 2026-10, los valores van de 0 a 1,205 (Santurce, San Juan) y suman 5,120. 67 de los 901 barrios tienen un valor mayor que 0. El total de los barrios es menor que el conteo de la isla (5,163) porque 43 lugares cerca de una parada frecuente no caen en ningún barrio.",
+  "_en": {
+   "name": "bb6782d0",
+   "how_to_read": "d61759fc"
+  }
+ },
+ "boundaries.barrio_lodging": {
+  "name": "Lugares de alojamiento en el barrio",
+  "how_to_read": "Úselo para ver dónde se agrupan los listados de alojamiento. Cuenta listados, no habitaciones ni camas. En el corte de datos 2026-10, la isla tiene 1,831 lugares de alojamiento: Hoteles (1,029), Alquileres vacacionales (426), Alojamiento (234), Posadas (70), Casas de huéspedes (36) y Complejos turísticos (36). Los valores por barrio van de 0 a 137 y suman 1,809.",
+  "_en": {
+   "name": "d7289b27",
+   "how_to_read": "2022eae1"
+  }
+ },
+ "land.put_layer": {
+  "name": "Plan de Uso de Terrenos 2015 (capa de clasificación de terrenos)",
+  "how_to_read": "Úselo para ver el patrón general de dónde el Plan permite el crecimiento y dónde protege el terreno. El mapa 2D dibuja los cuatro grupos de terreno y deja fuera los polígonos de agua y de vías; estos siguen en el archivo.",
+  "_en": {
+   "name": "4251bfa7",
+   "how_to_read": "5f52accd"
+  }
+ },
+ "land.cls": {
+  "name": "Código de clase de uso de terrenos (CLASIPUT)",
+  "how_to_read": "Use el código, no la etiqueta, cuando necesite distinguir las cinco variantes de suelo protegido sin etiqueta propia (SREP-AE, SREP-EA, SREP-AP, SREP-EP, SREP-P). Todas comparten la etiqueta Suelo Rústico Especialmente Protegido.",
+  "_en": {
+   "name": "02ebd816",
+   "how_to_read": "992409bb"
+  }
+ },
+ "land.label": {
+  "name": "Nombre de la clase de uso de terrenos (etiqueta)",
+  "how_to_read": "Use la etiqueta para mostrar la clase. Para distinguir los subtipos de suelo protegido, use el código de clase.",
+  "_en": {
+   "name": "45b49398",
+   "how_to_read": "691951ff"
+  }
+ },
+ "land.group": {
+  "name": "Grupo de uso de terrenos",
+  "how_to_read": "Use el grupo para comparaciones generales. Cada grupo tiene su propia entrada en este diccionario.",
+  "_en": {
+   "name": "0a02a958",
+   "how_to_read": "658d2bf2"
+  }
+ },
+ "land.color": {
+  "name": "Color de la clase de uso de terrenos en el mapa",
+  "how_to_read": "Los mapas 2D y 3D lo usan para colorear los polígonos. No le atribuya significado a los tonos: verdes y azules parecidos son clases distintas.",
+  "_en": {
+   "name": "a49870fe",
+   "how_to_read": "b308ad16"
+  }
+ },
+ "land.municipio": {
+  "name": "Municipio que indica el Plan",
+  "how_to_read": "Úselo para ver bajo qué municipio está registrado un polígono. 78 de los 79 valores se escriben exactamente igual que los nombres de municipio del observatorio (vea boundaries.municipio_name); solo la variante Guayanabo es distinta.",
+  "_en": {
+   "name": "07684568",
+   "how_to_read": "12319b49"
+  }
+ },
+ "land.group_urban": {
+  "name": "Grupo de uso de terrenos: Suelo Urbano",
+  "how_to_read": "En la versión del Plan del 30 de noviembre de 2015, el Suelo Urbano cubre unos 1,191 km², el 14.2% de los 8,409 km² de terreno mapeado. El terreno mapeado son los cuatro grupos de terreno, sin agua ni vías; es alrededor del 95% de la superficie terrestre del Censo (8,869 km²). Por eso, 14.2% no es la proporción de la isla que está edificada. Las superficies son la suma del atributo Shape_Area de la capa del Plan; los polígonos publicados están simplificados y no deben usarse para medirlas.",
+  "_en": {
+   "name": "c03ff12f",
+   "how_to_read": "772a3a2f"
+  }
+ },
+ "land.group_urbanizable": {
+  "name": "Grupo de uso de terrenos: Suelo Urbanizable",
+  "how_to_read": "En la versión del Plan del 30 de noviembre de 2015, el suelo urbanizable cubre unos 69 km², el 0.8% de los 8,409 km² de terreno mapeado (los cuatro grupos de terreno, sin agua ni vías). Las superficies son la suma del atributo Shape_Area de la capa del Plan; los polígonos publicados están simplificados y no deben usarse para medirlas.",
+  "_en": {
+   "name": "7bf2663d",
+   "how_to_read": "509b1a53"
+  }
+ },
+ "land.group_rustic": {
+  "name": "Grupo de uso de terrenos: Suelo Rústico Común",
+  "how_to_read": "En la versión del Plan del 30 de noviembre de 2015, el Suelo Rústico Común cubre unos 1,789 km², el 21.3% de los 8,409 km² de terreno mapeado. Las superficies son la suma del atributo Shape_Area de la capa del Plan; los polígonos publicados están simplificados y no deben usarse para medirlas.",
+  "_en": {
+   "name": "3da97d30",
+   "how_to_read": "df31c38a"
+  }
+ },
+ "land.group_protected": {
+  "name": "Grupo de uso de terrenos: Suelo Rústico Especialmente Protegido",
+  "how_to_read": "En la versión del Plan del 30 de noviembre de 2015, el suelo rústico protegido cubre unos 5,361 km², alrededor del 64% de los 8,409 km² de terreno mapeado. Es el grupo más grande. Las superficies son la suma del atributo Shape_Area de la capa del Plan; los polígonos publicados están simplificados y no deben usarse para medirlas.",
+  "_en": {
+   "name": "697ee5be",
+   "how_to_read": "8e0aa543"
+  }
+ },
+ "land.group_water": {
+  "name": "Grupo de uso de terrenos: Agua",
+  "how_to_read": "En la versión del Plan del 30 de noviembre de 2015, los polígonos de agua cubren unos 103 km² en la capa del Plan. Las superficies son la suma del atributo Shape_Area de la capa del Plan; los polígonos publicados están simplificados y no deben usarse para medirlas.",
+  "_en": {
+   "name": "92b1a6f1",
+   "how_to_read": "ed2ea8a0"
+  }
+ },
+ "land.group_road": {
+  "name": "Grupo de uso de terrenos: Vías (Vial)",
+  "how_to_read": "En la versión del Plan del 30 de noviembre de 2015, los polígonos de vías cubren unos 365 km² en la capa del Plan. Las superficies son la suma del atributo Shape_Area de la capa del Plan; los polígonos publicados están simplificados y no deben usarse para medirlas.",
+  "_en": {
+   "name": "887b84c9",
+   "how_to_read": "4aba1a65"
+  }
+ },
+ "land.class_su": {
+  "name": "Clase de uso de terrenos SU: Suelo Urbano",
+  "how_to_read": "En la versión del Plan del 30 de noviembre de 2015, la superficie guardada en el campo Shape_Area del Plan suma unos 1,191 km² para esta clase en todo Puerto Rico. Los polígonos publicados están simplificados y no deben usarse para medirla.",
+  "_en": {
+   "name": "1c50bad9",
+   "how_to_read": "148db207"
+  }
+ },
+ "land.class_surp": {
+  "name": "Clase de uso de terrenos SURP: Suelo Urbanizable Programado",
+  "how_to_read": "En la versión del Plan del 30 de noviembre de 2015, la superficie guardada en el campo Shape_Area del Plan suma unos 42 km² para esta clase en todo Puerto Rico. Los polígonos publicados están simplificados y no deben usarse para medirla.",
+  "_en": {
+   "name": "ccde6698",
+   "how_to_read": "3fad5c1f"
+  }
+ },
+ "land.class_surnp": {
+  "name": "Clase de uso de terrenos SURNP: Suelo Urbanizable No Programado",
+  "how_to_read": "En la versión del Plan del 30 de noviembre de 2015, la superficie guardada en el campo Shape_Area del Plan suma unos 27 km² para esta clase en todo Puerto Rico. Los polígonos publicados están simplificados y no deben usarse para medirla.",
+  "_en": {
+   "name": "d6aa82c5",
+   "how_to_read": "156b9812"
+  }
+ },
+ "land.class_src": {
+  "name": "Clase de uso de terrenos SRC: Suelo Rústico Común",
+  "how_to_read": "En la versión del Plan del 30 de noviembre de 2015, la superficie guardada en el campo Shape_Area del Plan suma unos 1,789 km² para esta clase en todo Puerto Rico. Los polígonos publicados están simplificados y no deben usarse para medirla.",
+  "_en": {
+   "name": "069e6294",
+   "how_to_read": "a01cb926"
+  }
+ },
+ "land.class_srep": {
+  "name": "Clase de uso de terrenos SREP: Suelo Rústico Especialmente Protegido",
+  "how_to_read": "En la versión del Plan del 30 de noviembre de 2015, la superficie guardada en el campo Shape_Area del Plan suma unos 111 km² para esta clase en todo Puerto Rico. Los polígonos publicados están simplificados y no deben usarse para medirla.",
+  "_en": {
+   "name": "13ea6b43",
+   "how_to_read": "67cded2c"
+  }
+ },
+ "land.class_srep_a": {
+  "name": "Clase de uso de terrenos SREP-A: SREP Agrícola",
+  "how_to_read": "En la versión del Plan del 30 de noviembre de 2015, la superficie guardada en el campo Shape_Area del Plan suma unos 2,329 km² para esta clase en todo Puerto Rico. Los polígonos publicados están simplificados y no deben usarse para medirla.",
+  "_en": {
+   "name": "5c55e414",
+   "how_to_read": "417aa374"
+  }
+ },
+ "land.class_srep_e": {
+  "name": "Clase de uso de terrenos SREP-E: SREP Ecológico",
+  "how_to_read": "En la versión del Plan del 30 de noviembre de 2015, la superficie guardada en el campo Shape_Area del Plan suma unos 1,795 km² para esta clase en todo Puerto Rico. Los polígonos publicados están simplificados y no deben usarse para medirla.",
+  "_en": {
+   "name": "32ac99ab",
+   "how_to_read": "b5ccd2ae"
+  }
+ },
+ "land.class_srep_h": {
+  "name": "Clase de uso de terrenos SREP-H: SREP Hídrico",
+  "how_to_read": "En la versión del Plan del 30 de noviembre de 2015, la superficie guardada en el campo Shape_Area del Plan suma unos 70 km² para esta clase en todo Puerto Rico. Los polígonos publicados están simplificados y no deben usarse para medirla.",
+  "_en": {
+   "name": "cd00ac87",
+   "how_to_read": "c642cf5e"
+  }
+ },
+ "land.class_srep_eh": {
+  "name": "Clase de uso de terrenos SREP-EH: SREP Ecológico e Hídrico",
+  "how_to_read": "En la versión del Plan del 30 de noviembre de 2015, la superficie guardada en el campo Shape_Area del Plan suma unos 611 km² para esta clase en todo Puerto Rico. Los polígonos publicados están simplificados y no deben usarse para medirla.",
+  "_en": {
+   "name": "426e6ed8",
+   "how_to_read": "54aa913d"
+  }
+ },
+ "land.class_srep_ah": {
+  "name": "Clase de uso de terrenos SREP-AH: SREP Agrícola e Hídrico",
+  "how_to_read": "En la versión del Plan del 30 de noviembre de 2015, la superficie guardada en el campo Shape_Area del Plan suma unos 116 km² para esta clase en todo Puerto Rico. Los polígonos publicados están simplificados y no deben usarse para medirla.",
+  "_en": {
+   "name": "9b588b32",
+   "how_to_read": "86dd6136"
+  }
+ },
+ "land.class_srep_ae": {
+  "name": "Clase de uso de terrenos SREP-AE: Suelo Rústico Especialmente Protegido (agrícola y ecológico)",
+  "how_to_read": "En la versión del Plan del 30 de noviembre de 2015, la superficie guardada en el campo Shape_Area del Plan suma unos 53 km² para esta clase en todo Puerto Rico. Los polígonos publicados están simplificados y no deben usarse para medirla.",
+  "_en": {
+   "name": "b7d17225",
+   "how_to_read": "8d70602f"
+  }
+ },
+ "land.class_srep_ea": {
+  "name": "Clase de uso de terrenos SREP-EA: Suelo Rústico Especialmente Protegido (ecológico y agrícola)",
+  "how_to_read": "En la versión del Plan del 30 de noviembre de 2015, la superficie guardada en el campo Shape_Area del Plan suma unos 29 km² para esta clase en todo Puerto Rico. Los polígonos publicados están simplificados y no deben usarse para medirla.",
+  "_en": {
+   "name": "888753fb",
+   "how_to_read": "1521bb32"
+  }
+ },
+ "land.class_srep_ap": {
+  "name": "Clase de uso de terrenos SREP-AP: Suelo Rústico Especialmente Protegido (agrícola y de paisaje)",
+  "how_to_read": "En la versión del Plan del 30 de noviembre de 2015, la superficie guardada en el campo Shape_Area del Plan suma unos 7 km² para esta clase en todo Puerto Rico. Los polígonos publicados están simplificados y no deben usarse para medirla.",
+  "_en": {
+   "name": "9abdad7f",
+   "how_to_read": "bed6f771"
+  }
+ },
+ "land.class_srep_ep": {
+  "name": "Clase de uso de terrenos SREP-EP: Suelo Rústico Especialmente Protegido (ecológico y de paisaje)",
+  "how_to_read": "En la versión del Plan del 30 de noviembre de 2015, la superficie guardada en el campo Shape_Area del Plan suma unos 194 km² para esta clase en todo Puerto Rico. Los polígonos publicados están simplificados y no deben usarse para medirla.",
+  "_en": {
+   "name": "21512771",
+   "how_to_read": "42857c66"
+  }
+ },
+ "land.class_srep_p": {
+  "name": "Clase de uso de terrenos SREP-P: Suelo Rústico Especialmente Protegido (de paisaje)",
+  "how_to_read": "En la versión del Plan del 30 de noviembre de 2015, la superficie guardada en el campo Shape_Area del Plan suma unos 44 km² para esta clase en todo Puerto Rico. Los polígonos publicados están simplificados y no deben usarse para medirla.",
+  "_en": {
+   "name": "6a39854f",
+   "how_to_read": "7d7eccdf"
+  }
+ },
+ "land.class_agua": {
+  "name": "Clase de uso de terrenos AGUA: Agua",
+  "how_to_read": "En la versión del Plan del 30 de noviembre de 2015, la superficie guardada en el campo Shape_Area del Plan suma unos 103 km² para esta clase en todo Puerto Rico. Los polígonos publicados están simplificados y no deben usarse para medirla.",
+  "_en": {
+   "name": "80fdaa2b",
+   "how_to_read": "431c6525"
+  }
+ },
+ "land.class_vial": {
+  "name": "Clase de uso de terrenos VIAL: Vial",
+  "how_to_read": "En la versión del Plan del 30 de noviembre de 2015, la superficie guardada en el campo Shape_Area del Plan suma unos 365 km² para esta clase en todo Puerto Rico. Los polígonos publicados están simplificados y no deben usarse para medirla.",
+  "_en": {
+   "name": "9c5705ba",
+   "how_to_read": "ae75d573"
+  }
+ },
+ "land.calificacion": {
+  "name": "Distritos de calificación: previstos, no publicados",
+  "how_to_read": "No interprete la clase del Plan de Uso de Terrenos (por ejemplo, Suelo Urbano) como la calificación de un solar. El Plan es una clasificación general; la calificación es una capa aparte que el observatorio aún no muestra.",
+  "_en": {
+   "name": "7ac604c9",
+   "how_to_read": "2c60bcca"
+  }
+ },
+ "land.put_statistics": {
+  "name": "Cómo se calculan las proporciones de uso de terrenos y los conteos de lugares",
+  "how_to_read": "Use las proporciones para el municipio en su conjunto. Use las estadísticas de lugares como guía aproximada: dependen de dónde esté el marcador. En la versión del Plan del 30 de noviembre de 2015, los totales para toda la isla de las superficies municipales son 5,361 km² de suelo protegido, 1,789 km² de rústico, 1,190 km² de urbano y 68 km² de urbanizable, 8,409 km² en total. Si se suma directamente el atributo Shape_Area del Plan, se obtienen 5,361, 1,789, 1,191 y 69 km².",
+  "_en": {
+   "name": "888513ca",
+   "how_to_read": "33c0f922"
+  }
+ },
+ "boundaries.comunidades_especiales": {
+  "name": "Comunidades Especiales (713 comunidades, 2006)",
+  "how_to_read": "Active la capa y haga clic dentro de una comunidad para ver su nombre, sus unidades de vivienda, su tipo y los riesgos que informaron sus residentes. Active también las zonas inundables para ver qué comunidades están hoy en un área de inundación mapeada.",
+  "_en": {
+   "name": "4b66bacd",
+   "how_to_read": "2ce9e463"
+  }
+ },
+ "boundaries.comunidades_viviendas": {
+  "name": "Unidades de vivienda en una Comunidad Especial (inventario de 2006)",
+  "how_to_read": "Úselo para comparar el tamaño de las comunidades en el momento de la delimitación. No es un conteo actual.",
+  "_en": {
+   "name": "1063f08d",
+   "how_to_read": "f9a08861"
+  }
+ },
+ "boundaries.comunidades_tipo": {
+  "name": "Tipo de comunidad (inventario de 2006)",
+  "how_to_read": "Léalo como la descripción del inventario, no como una categoría legal.",
+  "_en": {
+   "name": "1f0181d6",
+   "how_to_read": "804250f9"
+  }
+ },
+ "boundaries.comunidades_hazards": {
+  "name": "Inundaciones y deslizamientos informados en una Comunidad Especial (inventario de 2006)",
+  "how_to_read": "Compárelo con boundaries.comunidades_sfha, la proporción de la comunidad dentro de una zona de riesgo de inundación de FEMA: 85 comunidades informaron inundaciones pero no tienen superficie en una de esas zonas, y 79 tienen superficie en una pero no informaron inundaciones.",
+  "_en": {
+   "name": "be66a58b",
+   "how_to_read": "b2933bd8"
+  }
+ },
+ "boundaries.comunidades_sfha": {
+  "name": "Superficie de una Comunidad Especial en zona de riesgo de inundación de FEMA",
+  "how_to_read": "Un valor de 100% significa que toda la comunidad está en el área mapeada con 1% de probabilidad anual de inundación; 0% significa que ninguna parte lo está. Combínelo con las unidades de vivienda para tener una idea aproximada de cuántas viviendas pueden estar en el área inundable, teniendo en cuenta que las viviendas no están repartidas de forma pareja dentro de una comunidad.",
+  "_en": {
+   "name": "65c0e604",
+   "how_to_read": "dab498a7"
+  }
+ },
+ "boundaries.wcrp_comunidades": {
+  "name": "Comunidades de WCRP (76 planes comunitarios, puntos aproximados)",
+  "how_to_read": "Úselo para ver dónde trabaja el programa y para compararlo con otras capas, como las zonas inundables o las Comunidades Especiales. No interprete el punto como el límite de la comunidad ni como su centro.",
+  "_en": {
+   "name": "6e428476",
+   "how_to_read": "97c84b96"
+  }
+ },
+ "boundaries.wcrp_estado": {
+  "name": "Estado del plan de WCRP",
+  "how_to_read": "En el mapa, cada comunidad se marca con la figura central del logo de WCRP: anaranjado sólido para un plan aprobado y un contorno anaranjado para un plan en proceso. Cuando varios planes comparten un punto, el marcador es sólido si alguno está aprobado; la ventana emergente lista cada plan con su propio marcador.",
+  "_en": {
+   "name": "5e68b53c",
+   "how_to_read": "3bef530b"
+  }
+ },
+ "boundaries.wcrp_subrecipiente": {
+  "name": "Subrecipiente de WCRP",
+  "how_to_read": "Úselo para saber a qué organización preguntar sobre el plan de una comunidad.",
+  "_en": {
+   "name": "61e7eda1",
+   "how_to_read": "369ba5b3"
+  }
+ },
+ "boundaries.wcrp_ubicacion": {
+  "name": "De dónde sale un punto de WCRP",
+  "how_to_read": "Un punto comunidad_especial suele estar dentro de la comunidad. Un punto osm o barrio_censo puede estar a un kilómetro o más cuando la comunidad es un sector de un barrio grande.",
+  "_en": {
+   "name": "772902f2",
+   "how_to_read": "dd44ed90"
+  }
+ },
+ "land.soils_layer": {
+  "name": "Suelos (unidades del mapa de suelos, USDA NRCS SSURGO)",
+  "how_to_read": "Elija qué mostrar en el menú de la capa: el tipo de suelo y de qué se formó, la pendiente, la química de los primeros 30 cm o una de tres preguntas (señales de inundación, sembrar, construir casas). Desmarque una fila de la leyenda para ocultar esa clase. Léalo como el suelo típico de un área para planificar; las zonas de inundación oficiales son las de FEMA, y esta capa las complementa.",
+  "_en": {
+   "name": "ce7aba03",
+   "how_to_read": "67aea752"
+  }
+ }
+}

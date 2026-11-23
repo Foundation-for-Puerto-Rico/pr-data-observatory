@@ -1,0 +1,108 @@
+{
+ "audits_in_pr": 3039,
+ "municipio_audits": 755,
+ "matched_by_ein": [
+  "MUNCIPALITY OF JUNCOS",
+  "MUNICIAPILTY OF ISABELA"
+ ],
+ "left_out_with_municipio": 25,
+ "filed": {
+  "2016": 78,
+  "2017": 74,
+  "2018": 77,
+  "2019": 77,
+  "2020": 76,
+  "2021": 78,
+  "2022": 78,
+  "2023": 77,
+  "2024": 75,
+  "2025": 65
+ },
+ "not_filed": {
+  "2016": [],
+  "2017": [
+   "Culebra",
+   "Lares",
+   "Loíza",
+   "Moca"
+  ],
+  "2018": [
+   "Culebra"
+  ],
+  "2019": [
+   "Culebra"
+  ],
+  "2020": [
+   "Culebra",
+   "Lares"
+  ],
+  "2021": [],
+  "2022": [],
+  "2023": [
+   "Villalba"
+  ],
+  "2024": [
+   "Camuy",
+   "Guánica",
+   "Villalba"
+  ],
+  "2025": [
+   "Adjuntas",
+   "Camuy",
+   "Ceiba",
+   "Ciales",
+   "Comerío",
+   "Guánica",
+   "Guayanilla",
+   "Lajas",
+   "Las Marías",
+   "Las Piedras",
+   "Loíza",
+   "Morovis",
+   "Villalba"
+  ]
+ },
+ "totals_million": {
+  "2016": 587.5,
+  "2017": 573.9,
+  "2018": 705.1,
+  "2019": 779.4,
+  "2020": 722.4,
+  "2021": 955.1,
+  "2022": 1234.1,
+  "2023": 1429.2,
+  "2024": 1534.0,
+  "2025": 1503.6
+ },
+ "agency_pct": {
+  "hhs": 29.4,
+  "hud": 23.4,
+  "dhs": 20.2,
+  "treasury": 19.0,
+  "other": 8.0
+ },
+ "direct_pct": 59.7,
+ "loan_pct": 3.5,
+ "lines_vs_audit_totals": 0,
+ "comparisons": {
+  "head_start_fy2019_2024": {
+   "fac_municipio_governments_million": 1325.1,
+   "usaspending_all_recipients_million": 1499.2,
+   "correlation": 0.849,
+   "municipios_with_money": [
+    31,
+    35
+   ]
+  },
+  "fema_pa_all_years": {
+   "fac_spent_million": 1544.0,
+   "openfema_obligated_million": 8652.9,
+   "correlation": 0.709,
+   "spent_over_obligated": {
+    "p10": 0.07,
+    "median": 0.21,
+    "p90": 0.42
+   }
+  }
+ }
+}

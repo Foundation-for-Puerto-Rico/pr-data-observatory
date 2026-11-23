@@ -1,0 +1,134 @@
+[
+  {
+    "id": "proficiency.prof_read_pct",
+    "ask": {
+      "en": [
+        "test scores",
+        "meta-pr",
+        "student achievement",
+        "reading proficiency",
+        "spanish proficiency"
+      ],
+      "es": [
+        "resultados de las pruebas",
+        "meta-pr",
+        "aprovechamiento",
+        "proficiencia en lectura",
+        "proficiencia en espanol"
+      ]
+    },
+    "name": "Students proficient in reading (Spanish) (%)",
+    "domain": "education",
+    "domains": [
+      "education"
+    ],
+    "group": "Test results",
+    "kind": "variable",
+    "plain": "The share of public school students tested in reading (Spanish) who scored proficient or above on Puerto Rico's test.",
+    "definition": "The share of students tested in reading (Spanish) who scored proficient or above on Puerto Rico's test. Public schools, all tested grades together, pooled over the students with a valid score; a small school's share comes as a range and its middle is used. Puerto Rico sets its own test (META-PR) and its own line for proficient: do not compare with a state. The newest school-level results a script can read end in 2018-19. The year is the school year that starts in it (2018 = 2018-19, tested in spring 2019).",
+    "unit": "%",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "annual",
+      "first": 2014,
+      "last": 2018,
+      "frequency": "Every school year, 2014-15 to 2018-19; no newer results by school a script can read."
+    },
+    "method": "proficiency.py reads the all-students rows of the EDFacts assessment file for each school year (all grades together), places each school in a municipio by its NCES id in the Common Core of Data directory of the same year, and pools: a municipio's share is the sum over its schools of (share proficient x students tested) over the students tested. A small school's share comes as a range; its middle is used.",
+    "sources": [
+      "urban_edfacts",
+      "urban_ccd"
+    ],
+    "source_detail": "US Department of Education, EDFacts state assessment files, school years 2014-15 to 2018-19, via the Urban Institute's Education Data Portal; pooled by municipio",
+    "how_to_read": "Puerto Rico: 2014-15 43.6%, 2015-16 50.7%, 2016-17 48.8%, 2017-18 45.9%, 2018-19 45.2%. Lowest in 2018-19: Vieques (19.3%), Cataño (28.8%), Canóvanas (30.8%); highest: Orocovis (63.8%), Barranquitas (61.4%), Cidra (59.8%).",
+    "caveats": [
+      "Puerto Rico sets its own test (META-PR) and its own line for proficient: do not compare these shares with a state's or with NAEP.",
+      "The newest results by school a script can read are 2018-19 (2019-20 was not tested); later island figures are in the Department of Education's reports, not by municipio.",
+      "Small schools report a range; from the bottom and the top of every range the island's 2018-19 figure is 44.3% to 46.0%.",
+      "About 265 schools closed after 2017-18, so 2018-19 covers fewer schools (836 against 1,090); a municipio's share can move because its students moved to other schools.",
+      "Check: the Department of Education's own 2018-19 results are 45.1% proficient in Spanish and 30.1% in math."
+    ],
+    "see_also": [
+      "proficiency.prof_math_pct",
+      "school_conditions.crdc_absent_pct"
+    ],
+    "where": {
+      "files": [
+        "proficiency_series.json:prof_read_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Education · Test results (META-PR, 2014-15 to 2018-19)): Students proficient in reading (Spanish) (%)",
+          "href": "index.html#e=prof_read_pct.f"
+        }
+      ]
+    },
+    "added": "2026-11-18"
+  },
+  {
+    "id": "proficiency.prof_math_pct",
+    "ask": {
+      "en": [
+        "math proficiency",
+        "test scores",
+        "meta-pr",
+        "student achievement"
+      ],
+      "es": [
+        "proficiencia en matemáticas",
+        "resultados de las pruebas",
+        "meta-pr",
+        "aprovechamiento"
+      ]
+    },
+    "name": "Students proficient in math (%)",
+    "domain": "education",
+    "domains": [
+      "education"
+    ],
+    "group": "Test results",
+    "kind": "variable",
+    "plain": "The share of public school students tested in math who scored proficient or above on Puerto Rico's test.",
+    "definition": "The share of students tested in math who scored proficient or above on Puerto Rico's test. Public schools, all tested grades together, pooled over the students with a valid score; a small school's share comes as a range and its middle is used. Puerto Rico sets its own test (META-PR) and its own line for proficient: do not compare with a state. The newest school-level results a script can read end in 2018-19. The year is the school year that starts in it (2018 = 2018-19, tested in spring 2019).",
+    "unit": "%",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "annual",
+      "first": 2014,
+      "last": 2018,
+      "frequency": "Every school year, 2014-15 to 2018-19; no newer results by school a script can read."
+    },
+    "method": "proficiency.py reads the all-students rows of the EDFacts assessment file for each school year (all grades together), places each school in a municipio by its NCES id in the Common Core of Data directory of the same year, and pools: a municipio's share is the sum over its schools of (share proficient x students tested) over the students tested. A small school's share comes as a range; its middle is used.",
+    "sources": [
+      "urban_edfacts",
+      "urban_ccd"
+    ],
+    "source_detail": "US Department of Education, EDFacts state assessment files, school years 2014-15 to 2018-19, via the Urban Institute's Education Data Portal; pooled by municipio",
+    "how_to_read": "Puerto Rico: 2014-15 29.8%, 2015-16 33.5%, 2016-17 32.7%, 2017-18 32.6%, 2018-19 30.2%. Lowest in 2018-19: Vieques (8.7%), Ceiba (13.2%), Maunabo (16.8%); highest: Orocovis (57.4%), Barranquitas (50.4%), Manatí (48.8%).",
+    "caveats": [
+      "Puerto Rico sets its own test (META-PR) and its own line for proficient: do not compare these shares with a state's or with NAEP.",
+      "The newest results by school a script can read are 2018-19 (2019-20 was not tested); later island figures are in the Department of Education's reports, not by municipio.",
+      "Small schools report a range; from the bottom and the top of every range the island's 2018-19 figure is 29.3% to 31.1%.",
+      "About 265 schools closed after 2017-18, so 2018-19 covers fewer schools (836 against 1,090); a municipio's share can move because its students moved to other schools.",
+      "Check: the Department of Education's own 2018-19 results are 45.1% proficient in Spanish and 30.1% in math."
+    ],
+    "see_also": [
+      "proficiency.prof_read_pct",
+      "school_conditions.crdc_absent_pct"
+    ],
+    "where": {
+      "files": [
+        "proficiency_series.json:prof_math_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Education · Test results (META-PR, 2014-15 to 2018-19)): Students proficient in math (%)",
+          "href": "index.html#e=prof_math_pct.f"
+        }
+      ]
+    },
+    "added": "2026-11-18"
+  }
+]

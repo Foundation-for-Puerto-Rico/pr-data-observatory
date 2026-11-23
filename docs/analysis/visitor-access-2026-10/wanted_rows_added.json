@@ -1,0 +1,356 @@
+[
+ {
+  "id": "ferry-itineraries",
+  "domains": [
+   "infrastructure.mobility",
+   "economy.visitor-economy"
+  ],
+  "title": "Ferry itineraries, fares and boarding rules (Cataño, Vieques, Culebra)",
+  "why": "Tells you when and at what cost a visitor can reach Old San Juan, Vieques and Culebra by boat, and what limits access: resident priority, no rental cars on board, one-hour check-in.",
+  "source": "Autoridad de Transporte Integrado (ATI) and Puerto Rico Ferry (Hornblower)",
+  "url": "https://www.puertoricoferry.com/en/routes-schedules/",
+  "licence": "Not stated; itineraries are PDFs and the site footer says all rights reserved",
+  "geography": "Route and terminal (Cataño, Old San Juan, Ceiba, Vieques x2, Culebra)",
+  "cadence": "Seasonal itineraries (current one runs 2026-08-01 to 2026-11-30); fares by regulation",
+  "size": "small",
+  "status": "checked",
+  "check": "Checked 2026-10-05. The only machine-readable schedule is the ATI GTFS (4 ferry routes, 6 stops, 385 trips). Its Cataño first and last departures and its Vieques weekday times match the official PDFs (apart from a Tuesday and Friday 3:45 AM departure that only the PDF notes and a Sunday 23:30 Cataño departure that only the feed has); Culebra (all days) and Vieques weekend departures do not, run times are placeholders (45 minutes for Culebra against 90 on the operator page) and island fares are missing. Fares in the ATI regulation: non-residents pay 11.25 USD per trip (residents 2.00 Vieques, 2.25 Culebra) plus a 2 USD conservation fee; news says the rise took effect 2026-05-05, while the portal rates page still shows resident prices. Vehicles board only if owned by island residents. Still to confirm with ATI: the fare in force, the itinerary after 2026-11-30 and a corrected GTFS."
+ },
+ {
+  "id": "ferry-census",
+  "domains": [
+   "infrastructure.mobility",
+   "economy.visitor-economy"
+  ],
+  "title": "Ferry passengers, trips and vessel capacity (National Census of Ferry Operators)",
+  "why": "Annual passengers and trips per ferry route, vessel capacity and whether each terminal links to bus, parking or bike share: demand and capacity for the island links.",
+  "source": "US Bureau of Transportation Statistics (BTS), National Census of Ferry Operators",
+  "url": "https://data.bts.gov/resource/7umd-qc2k.json?$where=operator_id='104'",
+  "licence": "Public Domain U.S. Government (BTS metadata)",
+  "geography": "Route segment, terminal and vessel (6 terminals, 6 main route segments)",
+  "cadence": "Every two years (2024 census, released 2026-06)",
+  "size": "small",
+  "status": "checked",
+  "check": "Checked 2026-10-05, keyless. Operator 'HMS Puerto Rico Ferry' has 6 terminals, 8 operator-segment rows and 24 vessels (10 in service). 2024 census passengers, both directions: Ceiba-Vieques 641,183, Ceiba-Culebra 546,258, Cataño-Old San Juan 428,604 (the 2020 census gave 530,295, 477,704 and 631,179 for 2019). In-service vessels carry 72 to 574 passengers; Isla Bonita (401) and Cayo Largo (297) serve the island routes. Average trip times 12, 60 and 90 minutes. Terminal link flags are self-reported. The file does not state its reference year; confirm in the BTS data dictionary."
+ },
+ {
+  "id": "airport-traffic",
+  "domains": [
+   "economy.visitor-economy",
+   "infrastructure.mobility"
+  ],
+  "title": "Airport passengers and flights (FAA, BTS and Ports Authority)",
+  "why": "How many people enter each gateway, by month, to set against hotel capacity, ground transport and jobs.",
+  "source": "FAA (enplanements), BTS (T-100), Puerto Rico Ports Authority and Tourism Company",
+  "url": "https://data.bts.gov/resource/r495-tyji.json",
+  "licence": "US Government work, public domain (FAA, BTS); Ports Authority report is free to distribute, no licence stated",
+  "geography": "Airport (8 in the FAA file, 7 in T-100, 10 in the Ports Authority report)",
+  "cadence": "FAA yearly (CY2025 final 2026-09); BTS monthly (to 2026-04); Ports Authority monthly (PRTC PDF to 2026-07)",
+  "size": "small",
+  "status": "checked",
+  "check": "Checked 2026-10-05, keyless. FAA CY2025 file (58 KB) lists 8 Puerto Rico airports: San Juan 6,658,037 enplanements, Aguadilla 335,014, Ponce 95,055, Vieques 35,973, Ceiba 23,214, Culebra 19,812, Isla Grande 17,466, Mayagüez 8,991. BTS T-100 origin summary gives monthly passengers for 7 airports, Jan 2014 to Apr 2026 (San Juan 6,687,309 in 2025); FAA and BTS agree within about 1% (Culebra within 2%). Ceiba is only in the FAA file. The PRTC/Ports Authority report adds arrivals and departures separately for San Juan, Aguadilla and Ponce to Jul 2026, and 10 airports in the quarterly workbook. To confirm: why San Juan 'out' counts (6.82 million in 2025) exceed enplanements."
+ },
+ {
+  "id": "cruise",
+  "domains": [
+   "economy.visitor-economy",
+   "infrastructure.mobility"
+  ],
+  "title": "Cruise ship calls and passengers (Old San Juan and Ponce)",
+  "why": "A large, concentrated visitor flow into Old San Juan that hotel data do not capture, and the piers where ground transport has to meet it.",
+  "source": "Puerto Rico Tourism Company, San Juan Cruise Port, Puerto Rico Ports Authority, BTS",
+  "url": "https://tourism.pr.gov/statistics/",
+  "licence": "Not stated; the PRTC site footer says all rights reserved",
+  "geography": "Port (Old San Juan piers; Ponce a few calls a year)",
+  "cadence": "Monthly (PRTC PDF); yearly (San Juan Cruise Port, BTS)",
+  "size": "small",
+  "status": "checked",
+  "check": "Checked 2026-10-05. PRTC publishes monthly passengers and calls for Old San Juan, homeport versus in transit, by calendar and fiscal year (PDF): 2025 was 1,615,039 passengers and 563 calls. San Juan Cruise Port shows 1,593,513 passengers and 561 calls for 2025 (HTML, yearly back to 2008). BTS has 2023 only (San Juan 438 calls, 1,303,648 passengers). No split by pier; a Ports Authority PDF names Piers 1, 3 and 4 and Pan American I and II. Ask PRTC for spreadsheets and whether future months in the PDF are scheduled calls. The old url (pports.org) does not resolve; the authority's site is prpa.pr.gov."
+ },
+ {
+  "id": "tourism-stats",
+  "domains": [
+   "economy.visitor-economy"
+  ],
+  "title": "Hotel occupancy, room rates and guest arrivals (PRTC monthly report)",
+  "why": "Demand to set against the tourism supply on the map: where capacity is used and where it is not.",
+  "source": "Puerto Rico Tourism Company (through the Instituto de Estadísticas and tourism.pr.gov)",
+  "url": "https://tourism.pr.gov/statistics/",
+  "licence": "Not stated; the PRTC site footer says all rights reserved",
+  "geography": "Tourism region (Metro and 5 others), hotel size class; no municipio, no hotel level",
+  "cadence": "Monthly (PRTC PDF to 2026-06); Instituto spreadsheets stop at 2024-12 and skip months",
+  "size": "small",
+  "status": "checked",
+  "check": "Checked 2026-10-05. The monthly Registration and Occupancy workbook (Dec 2024 file, 0.7 MB) gives arrivals, non-resident share, occupancy, room-nights sold and available, daily rate and stay length by region and by hotel size; the PRTC site has a 41-page PDF through Jun 2026. Region membership by municipio is on the PRTC regions page and as 78 polygons in the island geoserver. Missing: municipio, property level, room counts. Ask PRTC for machine-readable monthly files and for the reuse terms."
+ },
+ {
+  "id": "visitor-profile",
+  "domains": [
+   "economy.visitor-economy"
+  ],
+  "title": "Visitor Profile survey (who visits, where they stay, what they spend)",
+  "why": "Weights for the tourism layer: how visitors split between hotels, rentals and relatives, what share of spending goes to car rental and transport, how long cruise passengers stay ashore.",
+  "source": "Instituto de Estadísticas de Puerto Rico and Puerto Rico Tourism Company",
+  "url": "https://tourism.pr.gov/wp-content/uploads/2025/07/Visitor-Profile-Fiscal-Year-2023-2024.pdf",
+  "licence": "Not stated (published report)",
+  "geography": "Island, with some municipality detail; surveyed at San Juan, Ponce and Aguadilla airports and Old San Juan piers",
+  "cadence": "Fiscal-year survey (latest 2023-24, published 2024-10)",
+  "size": "small",
+  "status": "checked",
+  "check": "Checked 2026-10-05. 23,782 valid responses; 49% of air passengers are visitors; lodging is 47% friends and family, 22% hotels, 20% short-term rentals; car rental is 13% of visitor spending and transport services 6%; 1,178,417 cruise passengers in transit, 69.74 USD average per excursionist, 65% on 5 to 10 hour excursions. It has no question on how visitors move around the island. PDF only; microdata for 2010 to 2012 only on request."
+ },
+ {
+  "id": "taxi-fixed-fares",
+  "domains": [
+   "infrastructure.mobility",
+   "economy.visitor-economy"
+  ],
+  "title": "Taxi Turístico fixed fares from the airport and the cruise piers",
+  "why": "The cost of the last mile from the airport and the Old San Juan piers by official taxi, by zone.",
+  "source": "Negociado de Transporte y Otros Servicios Públicos (NTSP) with the Tourism Company; Aerostar for the airport fare card",
+  "url": "https://ntsp.pr.gov/ServiciosProgramas/Secretaria/Reglamentos/Reglamentos/9358%20C%C3%B3digo%20de%20Reglamentos%20de%20la%20NTSP.pdf",
+  "licence": "Not stated (official regulation)",
+  "geography": "Zone or municipality of destination, from the airport and from the Port of Ponce",
+  "cadence": "Irregular (regulation 2022-03; airport card 2023-12)",
+  "size": "small",
+  "status": "checked",
+  "check": "Checked 2026-10-05. Sections 8.11 and 8.12 of Reglamento 9358 list fixed fares from the San Juan airport to 74 municipalities (30 to 177 USD) and 11 areas of interest (Isla Verde 12, Condado/Miramar/Ocean Park 17, Old San Juan and piers 21, Convention Center 17, Isla Grande 17, Plaza las Américas 20), and from the Port of Ponce to about 20 places. The airport card (PDF image, 2023-12) repeats the zone fares and adds a 3 USD airport fee, 1 USD late-night and 1 USD per extra bag. The tables sit in a 5 MB PDF and must be keyed in by hand. Confirm with NTSP that the 2022 table is still in force."
+ },
+ {
+  "id": "sju-ground-transport",
+  "domains": [
+   "infrastructure.mobility"
+  ],
+  "title": "San Juan airport ground transport (taxi, bus, ride-hail, rental cars)",
+  "why": "Which modes leave the airport, from which terminal, so the first step of a visit can be modelled.",
+  "source": "Aerostar Airport Holdings (San Juan airport)",
+  "url": "https://aeropuertosju.com/transportacion/",
+  "licence": "Not stated (operator web page)",
+  "geography": "Terminal (A, B, C, D, E)",
+  "cadence": "Irregular",
+  "size": "small",
+  "status": "checked",
+  "check": "Checked 2026-10-05. The Spanish page lists taxi pickup at Terminal A (main station) and Terminal B (also for C), three bus stops on the departures level at Terminals A, D and E (routes written T5, D53 and E40, while the ATI GTFS names them 5, 53 and 40), Uber pickup at Terminal A and Terminals B and C columns 16 to 19, and 18 rental companies. No coordinates or timetables. The www host answered 500 and the English paths 404. Needs a route-name crosswalk to the GTFS."
+ },
+ {
+  "id": "osm-visitor-mobility",
+  "domains": [
+   "infrastructure.mobility",
+   "economy.visitor-economy"
+  ],
+  "title": "Car rental, bike and scooter rental, públicos and EV charging in OpenStreetMap",
+  "why": "Free counts of the services a visitor may use after arrival, to compare with official sources.",
+  "source": "OpenStreetMap contributors",
+  "url": "https://www.openstreetmap.org/copyright",
+  "licence": "ODbL 1.0 (credit and share-alike)",
+  "geography": "Point, area and route relation",
+  "cadence": "Continuous",
+  "size": "small",
+  "status": "checked",
+  "check": "Checked 2026-10-05 with small Overpass count queries on the twin's bounding box: 49 car rental features (39 points, 10 areas; 6 with opening hours), 0 bicycle rental, 0 kick-scooter rental, 0 share-taxi routes, 60 bus route relations, 1 ferry route, 11 charging stations (the twin already holds 11). Car rental is probably mapped for the airport and large brands only; do not treat as an inventory. The main Overpass server timed out intermittently; retry later rather than in a loop."
+ },
+ {
+  "id": "ev-charging-ntad",
+  "domains": [
+   "infrastructure.mobility"
+  ],
+  "title": "EV charging stations (US Department of Energy list, via BTS)",
+  "why": "Where visitors who arrive by electric car can charge, set against hotels and attractions.",
+  "source": "US Department of Energy (National Laboratory of the Rockies, formerly NREL), through BTS NTAD",
+  "url": "https://services.arcgis.com/xOi1kZaI0eWDREZv/arcgis/rest/services/Alternative_Fueling_Stations/FeatureServer/0",
+  "licence": "US Government work, available for unrestricted public use (BTS metadata)",
+  "geography": "Point (25 public EV stations)",
+  "cadence": "Daily",
+  "size": "small",
+  "status": "checked",
+  "check": "Checked 2026-10-05, keyless: 25 public EV stations in Puerto Rico (20 open, 5 temporarily unavailable; 2 fast-charge and 50 level-2 ports; San Juan 6, Guaynabo 4), against 11 in OSM. The direct AFDC API needs a free key (the developer.nrel.gov host did not resolve) and the AFDC bulk download asks for contact details, so use this BTS copy. The layer has a business phone field: do not publish it. The count looks low for the island; treat it as a lower bound."
+ },
+ {
+  "id": "bikeshare-scooter-ntad",
+  "domains": [
+   "infrastructure.mobility"
+  ],
+  "title": "Bike and e-scooter share (cities served)",
+  "why": "Shows which cities have shared micro-mobility for the last mile.",
+  "source": "US Bureau of Transportation Statistics, NTAD Bikeshare and Scooter Systems",
+  "url": "https://services.arcgis.com/xOi1kZaI0eWDREZv/arcgis/rest/services/NTAD_Bikeshare_Scooter_Systems/FeatureServer/0",
+  "licence": "US Government work, public domain (BTS metadata)",
+  "geography": "City (Guaynabo, San Juan (Río Piedras, Condado), Mayagüez)",
+  "cadence": "Yearly (updated 2026-01)",
+  "size": "small",
+  "status": "checked",
+  "check": "Checked 2026-10-05. Puerto Rico rows for 2019 to 2025 (a 2026 row carries an as-of date of 2026-12, so it looks carried forward) list e-scooter operators Skootel (all three cities) and KICK (San Juan) and a dockless system in San Juan from 2022, with no docks. City level only: no stations or service areas. The MobilityData GBFS catalog (1,541 systems) has no Puerto Rico system and OSM has no rental points. Ask the operators or the municipalities for service-area maps."
+ },
+ {
+  "id": "ntm-stops",
+  "domains": [
+   "infrastructure.mobility"
+  ],
+  "title": "National Transit Map: stops and route lines for municipal bus systems",
+  "why": "Adds scheduled-stop locations the twin lacks for 13 municipalities, so more visitor destinations can be tested for transit access.",
+  "source": "US Bureau of Transportation Statistics, National Transit Map (NTAD)",
+  "url": "https://services.arcgis.com/xOi1kZaI0eWDREZv/arcgis/rest/services/NTAD_National_Transit_Map_Stops/FeatureServer/0",
+  "licence": "Public Domain (agency licence field in the BTS layer)",
+  "geography": "Stop (point) and route line",
+  "cadence": "Periodic (compiled 2026-03-09)",
+  "size": "small",
+  "status": "checked",
+  "check": "Checked 2026-10-05, keyless: 5,590 stops, 112 route lines and 40 agencies in Puerto Rico. 1,642 stops belong to 13 municipalities where the twin has no feed (Carolina 449, Yauco 195, Barceloneta 190, Mayagüez 186, Camuy 136, Toa Baja 134, Cataño 114, Dorado 88, Gurabo 66, Cayey 31, Hormigueros 22, Añasco 22, Aguada 9); route lines exist for Carolina (17), Añasco (4) and Toa Baja (3). All stops fall inside Puerto Rico. No timetables: use for access, not service hours. Before sending the municipal outreach drafts, ask BTS or FTA where these feeds come from and whether they are still running."
+ },
+ {
+  "id": "walkability-epa",
+  "domains": [
+   "infrastructure.mobility",
+   "population"
+  ],
+  "title": "National Walkability Index (EPA), by block group",
+  "why": "A ready measure of how walkable the surroundings of a place are (intersection density, transit proximity, land-use mix), to temper straight-line walking distances.",
+  "source": "US Environmental Protection Agency, Smart Location Database",
+  "url": "https://geodata.epa.gov/arcgis/rest/services/OA/WalkabilityIndex/MapServer/0",
+  "licence": "No licence text in the service metadata; EPA is a US agency (confirm)",
+  "geography": "Census block group (2019 boundaries), 2,552 in Puerto Rico",
+  "cadence": "Static snapshot (no update schedule stated)",
+  "size": "small",
+  "status": "checked",
+  "check": "Checked 2026-10-05, keyless: all 2,552 Puerto Rico block groups have a walkability score (range 1 to 7.3, mean 4.7), plus intersection density, distance to transit, job-household mix and car-free household counts (183 fields; take about 10). Built on 2019 block groups and older input data. The street data behind the index may be licensed commercial data, so read the SLD user guide before republishing. Join to the twin's 2020 blocks by area."
+ },
+ {
+  "id": "osm-pedestrian",
+  "domains": [
+   "infrastructure.mobility"
+  ],
+  "title": "Sidewalks, footpaths and crossings in OpenStreetMap",
+  "why": "Tests how realistic a walking last mile is. It shows the walking network is too thin to route on.",
+  "source": "OpenStreetMap contributors",
+  "url": "https://www.openstreetmap.org/copyright",
+  "licence": "ODbL 1.0 (credit and share-alike)",
+  "geography": "Way and node",
+  "cadence": "Continuous",
+  "size": "small",
+  "status": "checked",
+  "check": "Checked 2026-10-05 (Overpass counts): 8,487 footway ways, of which 2,031 are tagged sidewalks and 1,182 crossings; 3,006 crossing nodes; 627 pedestrian streets; 341 flights of steps; against 114,013 drivable road ways, only 232 of which carry a sidewalk tag (62 say none). The pedestrian network is far from complete: walk along the road graph and adjust with the walkability index. No official sidewalk or curb-ramp inventory was found."
+ },
+ {
+  "id": "nps-visitation",
+  "domains": [
+   "economy.visitor-economy",
+   "environment.land"
+  ],
+  "title": "San Juan National Historic Site visits (National Park Service)",
+  "why": "A measured, monthly demand weight for the busiest heritage site in Old San Juan.",
+  "source": "National Park Service, Visitor Use Statistics",
+  "url": "https://irmaservices.nps.gov/v3/rest/stats/visitation?unitCodes=SAJU&startMonth=1&startYear=2019&endMonth=12&endYear=2026",
+  "licence": "US Government work (no licence text found on the service)",
+  "geography": "Park unit (San Juan NHS; to our knowledge the only National Park Service unit on the island)",
+  "cadence": "Monthly",
+  "size": "small",
+  "status": "checked",
+  "check": "Checked 2026-10-05, keyless XML: monthly recreation visits for San Juan NHS; 2025 total 1,402,132, 2024 1,329,728, 2019 1,197,345 (2020 fell to 357,100). El Yunque (Forest Service) and the state parks have no open series; see park-visitation."
+ },
+ {
+  "id": "pr-geoserver-tourism-transport",
+  "domains": [
+   "economy.visitor-economy",
+   "infrastructure.mobility"
+  ],
+  "title": "Tourism and transport layers on the island geoserver (PRITS)",
+  "why": "Official layers for endorsed lodgings, attractions, public beaches, públicos routes, ports and state roads, to cross-check Overture and OpenStreetMap.",
+  "source": "Puerto Rico Innovation and Technology Service (PRITS), gis.pr.gov, with Tourism Company, Planning Board and DTOP data",
+  "url": "https://gis.pr.gov/descargaGeodatos/Pages/default.aspx",
+  "licence": "Not stated",
+  "geography": "Point, line and polygon (layers dated 2005 to 2026)",
+  "cadence": "Irregular",
+  "size": "medium",
+  "status": "checked",
+  "check": "Checked 2026-10-05 over WFS (HTTP only, keyless): endorsed lodgings 2021 (160 points: name, category, region, municipio; no rooms), tourist attractions (144), public beaches 2005 (55) and balnearios 2016 (32, with parking, lifeguard and Blue Flag fields), tourist-region polygons 2010 (78), públicos routes of the San Juan metro 2010 (3,676 segments, 64 route codes with ATI codes), AcuaExpreso 2010, ports 2010 (10), toll plazas 2018 (34), state roads 2026 (4,198 segments). Several vintages are old and the portal states no licence. Confirm terms and whether HTTPS is offered."
+ },
+ {
+  "id": "gtfs-rt",
+  "domains": [
+   "infrastructure.mobility"
+  ],
+  "title": "Real-time bus, train and ferry positions",
+  "why": "The live layer the transit tab cannot yet show.",
+  "source": "Autoridad de Transporte Integrado",
+  "url": "https://www.ati.pr.gov/relaciones-comunidad?tab=DatosAbiertos",
+  "licence": "Not published",
+  "geography": "Vehicle",
+  "cadence": "Live",
+  "size": "large",
+  "status": "blocked",
+  "check": "Rechecked 2026-10-05: ATI's open data page (published 2026-08-10) still says GTFS-RT is in development; the MobilityData catalog lists 1,929 real-time feeds and none for Puerto Rico. Ferry tracking and arrival times exist only in the City Experiences app, and bus positions only in the AMA Móvil app. ATI's Llame y Viaje is eligibility-based paratransit, not a visitor service.",
+  "who_to_ask": "Autoridad de Transporte Integrado (planning office); Hornblower (Puerto Rico Ferry) for the ferry app data"
+ },
+ {
+  "id": "opening-hours",
+  "domains": [
+   "economy.visitor-economy",
+   "infrastructure.mobility"
+  ],
+  "title": "Opening hours of tourism places",
+  "why": "To test whether a place is open when the bus, ferry or taxi runs.",
+  "source": "OpenStreetMap and Overture Maps",
+  "url": "https://docs.overturemaps.org/schema/reference/places/place/",
+  "licence": "Not applicable",
+  "geography": "Place",
+  "cadence": "Not applicable",
+  "size": "small",
+  "status": "blocked",
+  "check": "Checked 2026-10-05: the Overture Places schema (v2.0.0) has no opening-hours field. OSM has the tag on 1,892 features island-wide: 603 of 3,895 food and drink places (15%), 25 of 442 attractions (6%) and 4 of 347 lodgings. That is too thin to align 35,118 listings. Workaround: assume hours by category and label them as assumptions.",
+  "who_to_ask": "Overture Maps Foundation (feature request); Puerto Rico Tourism Company (endorsed businesses)"
+ },
+ {
+  "id": "park-visitation",
+  "domains": [
+   "economy.visitor-economy",
+   "environment.land"
+  ],
+  "title": "Visits to forests, reserves and public beaches",
+  "why": "Demand weights for nature sites such as El Yunque and the public beaches.",
+  "source": "USDA Forest Service (NVUM), Departamento de Recursos Naturales y Ambientales, Compañía de Parques Nacionales",
+  "url": "https://www.fs.usda.gov/about-agency/nvum",
+  "licence": "Not applicable",
+  "geography": "Site",
+  "cadence": "NVUM about every five years",
+  "size": "small",
+  "status": "blocked",
+  "check": "Checked 2026-10-05: the Forest Service results app answered 403 to a plain request (not bypassed); El Yunque figures appear only in secondary sources (about 600,000 to 1.2 million a year, not confirmed). No visitation series found for state forests, reserves or balnearios; the island geoserver lists the 32 balnearios without counts.",
+  "who_to_ask": "USDA Forest Service (Caribbean National Forest and NVUM program); Departamento de Recursos Naturales y Ambientales; Compañía de Parques Nacionales de Puerto Rico"
+ },
+ {
+  "id": "lodging-rooms",
+  "domains": [
+   "economy.visitor-economy",
+   "infrastructure"
+  ],
+  "title": "Hotel rooms by property (lodging inventory)",
+  "why": "Capacity weights for lodging, so occupancy and transport access can be compared by place.",
+  "source": "Puerto Rico Tourism Company",
+  "url": "https://tourism.pr.gov/lodging-categories/",
+  "licence": "Not applicable",
+  "geography": "Property",
+  "cadence": "Not applicable",
+  "size": "small",
+  "status": "blocked",
+  "check": "Checked 2026-10-05: PRTC pages describe lodging categories but publish no list with rooms; the island geoserver has 160 endorsed lodgings (2021) without rooms; Inside Airbnb has no Puerto Rico data; the room-tax page holds forms only. Region-level room-nights available are in the monthly report.",
+  "who_to_ask": "Puerto Rico Tourism Company (statistics and planning)"
+ },
+ {
+  "id": "publicos-franchises",
+  "domains": [
+   "infrastructure.mobility",
+   "economy.visitor-economy"
+  ],
+  "title": "Públicos, taxi and rental-car franchises (current routes and counts)",
+  "why": "Shared vans and públicos are how many people move between towns; no current route data exists.",
+  "source": "Negociado de Transporte y Otros Servicios Públicos (NTSP)",
+  "url": "https://ntsp.pr.gov/",
+  "licence": "Not stated",
+  "geography": "Franchise and route",
+  "cadence": "Not applicable",
+  "size": "small",
+  "status": "blocked",
+  "check": "Checked 2026-10-05: NTSP publishes regulations and circulars as PDF (a circular on certifying rental-vehicle inventories exists; title seen in search, not opened), but no list of franchises, routes or inventories is public. OSM has no share-taxi routes. The only route lines are the 2010 San Juan metro públicos in the island geoserver.",
+  "who_to_ask": "Negociado de Transporte y Otros Servicios Públicos (NTSP); Autoridad de Transporte Integrado"
+ }
+]

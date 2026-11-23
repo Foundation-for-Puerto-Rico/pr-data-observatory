@@ -1,0 +1,330 @@
+{
+ "measures.show_as": {
+  "name": "El menú 'Mostrar como': formas de reescalar un conjunto de datos",
+  "how_to_read": "Sombree las tasas y los conteos reescalados; muestre los conteos brutos como símbolos de tamaño variable. Un mapa sombreado de conteos brutos muestra sobre todo qué municipios son grandes. El título de la leyenda nombra la opción en uso, por ejemplo 'Empleos (todos los patronos) · por cada 1,000 residentes'.",
+  "_en": {
+   "name": "75427794",
+   "how_to_read": "2ac5cf35"
+  }
+ },
+ "measures.per_1000_residents": {
+  "name": "Por cada 1,000 residentes",
+  "how_to_read": "En el corte de datos 2026-10, los datos de 2025 muestran 770 empleos ubicados en San Juan por cada 1,000 residentes de San Juan, frente a 298 para Puerto Rico en su conjunto. Los empleos se cuentan donde la gente trabaja, así que la cifra indica cuántos empleos hay en San Juan, no cuántas personas residentes de San Juan tienen uno. Vea 'Base del lugar de trabajo y base de residencia'.",
+  "_en": {
+   "name": "addd1753",
+   "how_to_read": "2812a337"
+  }
+ },
+ "measures.per_resident": {
+  "name": "Dólares por residente",
+  "how_to_read": "En el corte de datos 2026-10, los fondos federales otorgados registrados para San Juan en el año fiscal 2025 equivalen a unos $42,076 por residente, frente a $12,068 para Puerto Rico. Parte de la diferencia refleja dónde se registran los fondos: las adjudicaciones al Gobierno de Puerto Rico para programas de alcance estatal suelen atribuirse a la capital (vea la precaución sobre las adjudicaciones estatales más abajo). Los datos no muestran qué tan grande es esa parte. La cifra no es lo que recibió cada residente.",
+  "_en": {
+   "name": "f1d53738",
+   "how_to_read": "519ce23b"
+  }
+ },
+ "measures.per_km2": {
+  "name": "Por kilómetro cuadrado",
+  "how_to_read": "En el corte de datos 2026-10, los datos de 2025 muestran unos 2,045 empleos por km² de tierra en San Juan, frente a 107 para Puerto Rico, cuya área de tierra es la suma de los 78 municipios (8,868.5 km²). Un valor alto señala un centro de empleo denso.",
+  "_en": {
+   "name": "9542a74a",
+   "how_to_read": "88bfb1df"
+  }
+ },
+ "measures.share_of_pr_total": {
+  "name": "Proporción del total de Puerto Rico",
+  "how_to_read": "En el corte de datos 2026-10, los datos de 2025 muestran que San Juan tiene el 26.79% de los empleos de Puerto Rico y el 10.4% de sus residentes. Una proporción muy por encima de la proporción de residentes del municipio señala un lugar que concentra la actividad.",
+  "_en": {
+   "name": "0bca920c",
+   "how_to_read": "7db0c4e7"
+  }
+ },
+ "measures.share_of_jobs": {
+  "name": "Proporción de los empleos del municipio",
+  "how_to_read": "En el corte de datos 2026-10, los empleos del turismo fueron el 10.0% de los empleos de San Juan en 2025 y el 10.5% de los de Puerto Rico. La vista 'Economía del turismo' de la pestaña Análisis sombrea esta medida.",
+  "_en": {
+   "name": "98272f6d",
+   "how_to_read": "4b71ea51"
+  }
+ },
+ "measures.location_quotient": {
+  "name": "Cociente de localización",
+  "how_to_read": "En el corte de datos 2026-10, los empleos en alojamiento de San Juan tienen un cociente de localización de 1.26 en 2025: la proporción de los empleos de San Juan en hoteles, posadas y otros lugares de hospedaje es un 26% mayor que la proporción de la isla. Por debajo de 1, el sector está menos concentrado que en la isla.",
+  "_en": {
+   "name": "2bf7fab5",
+   "how_to_read": "146d6e77"
+  }
+ },
+ "measures.index_pr_100": {
+  "name": "Índice (Puerto Rico = 100)",
+  "how_to_read": "En el corte de datos 2026-10, la tasa de pobreza de San Juan en la ventana 2020-2024 (que se muestra como 2024) tiene un índice de 96 (95.8 antes de redondear): alrededor de un 4% por debajo de la tasa de la isla. Para ver la diferencia en puntos porcentuales, use 'Diferencia con Puerto Rico'.",
+  "_en": {
+   "name": "1515a28b",
+   "how_to_read": "9faf5962"
+  }
+ },
+ "measures.difference_from_pr": {
+  "name": "Diferencia con Puerto Rico",
+  "how_to_read": "En el corte de datos 2026-10, el ingreso mediano del hogar de San Juan en la ventana 2020-2024 está $1,695 por encima del de Puerto Rico: $27,992 frente a $26,297.",
+  "_en": {
+   "name": "be1657d0",
+   "how_to_read": "c7e45940"
+  }
+ },
+ "measures.change_since_base_year": {
+  "name": "Cambio desde el año base",
+  "how_to_read": "En el corte de datos 2026-10, la tasa de pobreza de Puerto Rico bajó 4.72 puntos porcentuales entre la ventana 2010-2014 (2014) y la ventana 2020-2024 (2024); la de San Juan bajó 2.10 puntos. En el mismo corte, el alquiler bruto mediano de Puerto Rico subió 25.1% en dólares nominales en el mismo período. La lista 'Cambio medido desde' termina en 2024 en la pestaña Análisis y en 2023 en la página Vivienda.",
+  "_en": {
+   "name": "bf0d5f8e",
+   "how_to_read": "d346cce1"
+  }
+ },
+ "measures.percentile": {
+  "name": "Percentil entre los municipios",
+  "how_to_read": "En el corte de datos 2026-10, Guaynabo tiene la tasa de pobreza más baja de los 78 municipios en la ventana 2020-2024 (percentil 0) y Guánica la más alta (percentil 100). Un percentil de 50 es la mitad de la lista.",
+  "_en": {
+   "name": "4831153b",
+   "how_to_read": "359a23f8"
+  }
+ },
+ "measures.rank": {
+  "name": "Posición (1 = la más alta)",
+  "how_to_read": "En el corte de datos 2026-10, Ponce ocupa la posición #19 de 78 en tasa de pobreza en la ventana 2020-2024: 18 municipios tienen una tasa más alta. En pobreza, la posición 1 es la tasa más alta; en ingreso, la posición 1 es el ingreso más alto.",
+  "_en": {
+   "name": "57321f99",
+   "how_to_read": "b621dc46"
+  }
+ },
+ "measures.municipal_median": {
+  "name": "Mediana de los 78 municipios (página Vivienda)",
+  "how_to_read": "En el corte de datos 2026-10, para el ingreso mediano del hogar en la ventana 2020-2024, el valor del medio de los 78 valores municipales es $24,070, el más bajo es $16,314 (Las Marías), el más alto es $46,731 (Guaynabo) y Puerto Rico en su conjunto tiene $26,297. El valor municipal del medio ($24,070) no es la mediana de la isla ($26,297). La cifra de la isla abarca todos los hogares. El valor del medio cuenta cada municipio una vez.",
+  "_en": {
+   "name": "e80f7e5f",
+   "how_to_read": "9af054ca"
+  }
+ },
+ "measures.inflation_adjustment": {
+  "name": "Ajuste por inflación (IPC-U de EE. UU.)",
+  "how_to_read": "En el corte de datos 2026-10, el año de referencia es 2025, y $1,000 de 2014 equivalen a $1,360 en dólares de 2025 (IPC 321.943 ÷ 236.736). El alquiler bruto mediano de Puerto Rico subió 25.1% entre las ventanas 2010-2014 y 2020-2024 en dólares nominales, pero bajó 5.6% en dólares de 2025.",
+  "_en": {
+   "name": "e7e9d1e3",
+   "how_to_read": "b2e802d9"
+  }
+ },
+ "measures.class_breaks": {
+  "name": "Límites de las clases: cuantiles, intervalos iguales y cortes naturales",
+  "how_to_read": "En el corte de datos 2026-10, los mismos datos de pobreza dan tres conjuntos distintos de límites (porcentaje, todos los años juntos): cuantiles 41.3, 46.4, 50.5 y 54.9; intervalos iguales 30.1, 39.3, 48.6 y 57.8; cortes naturales 33.5, 41.3, 48.2 y 55.0. Los tres describen los mismos datos. La leyenda lista cada rango y cuántos municipios caen en él.",
+  "_en": {
+   "name": "92acc5c4",
+   "how_to_read": "7fc96f07"
+  }
+ },
+ "measures.fixed_classes": {
+  "name": "Mismas clases en todos los años",
+  "how_to_read": "En el corte de datos 2026-10, la tasa de pobreza tiene 78 municipios × 15 ventanas = 1,170 valores, y estos fijan los límites. Con la casilla marcada, un mapa de 2014 y uno de 2024 usan los mismos límites, así que un cambio de color entre los dos mapas refleja un cambio en los datos. Con la casilla sin marcar, los límites interiores para 2024 solo serían 37.2, 42.2, 46.1 y 50.3, frente a 41.3, 46.4, 50.5 y 54.9 con todos los años juntos.",
+  "_en": {
+   "name": "2cae0b80",
+   "how_to_read": "661001d9"
+  }
+ },
+ "measures.diverging_scale": {
+  "name": "Escala divergente (índice, diferencia, cociente de localización y cambio)",
+  "how_to_read": "En el corte de datos 2026-10, para la pobreza como índice (Puerto Rico = 100), la mayor distancia de 100 entre los valores de todos los años juntos es 57.2, así que los límites quedan en 71.4, 94.3, 105.7 y 128.6. Un municipio en 100 es igual a la isla; uno en 130 está en la clase más alta.",
+  "_en": {
+   "name": "6cf2d3e3",
+   "how_to_read": "132fb31d"
+  }
+ },
+ "measures.bivariate_map": {
+  "name": "Mapa bivariado (dos conjuntos de datos en uno)",
+  "how_to_read": "Sombree primero la pobreza y luego el ingreso mediano del hogar. El color de cada municipio muestra entonces su clase de pobreza en el eje horizontal (→) y su clase de ingreso en el eje vertical (↑). Lea los dos ejes de la leyenda, y sus cortes, antes que los colores. En el corte de datos 2026-10, con todos los años juntos, el eje de pobreza dice 'hasta 45.0%' para bajo y 'más de 51.8%' para alto.",
+  "_en": {
+   "name": "a93da14a",
+   "how_to_read": "1dba5e51"
+  }
+ },
+ "measures.proportional_symbols": {
+  "name": "Símbolos de tamaño variable (círculos proporcionales)",
+  "how_to_read": "En el corte de datos 2026-10, los empleos de San Juan en 2025 (253,816) dibujan un círculo de 29.9 px, frente a 30 px para el valor más alto de cualquier año (255,426). Un municipio con 50,000 empleos dibujaría 13.3 px.",
+  "_en": {
+   "name": "6d698a99",
+   "how_to_read": "4b9e6b0a"
+  }
+ },
+ "measures.nearest_year_rule": {
+  "name": "Regla del año más cercano (el último valor en el año elegido o antes)",
+  "how_to_read": "En el corte de datos 2026-10: si elige 2020, el desempleo del Negociado de Estadísticas Laborales (BLS) muestra 2019, porque la serie de desempleo del observatorio no tiene valor para 2020, mientras que la pobreza muestra la ventana de la encuesta que termina en 2020. Si elige 2012, los empleos muestran 2014 como 'datos desde 2014', porque la serie de empleos empieza en 2014. Si elige 2015, la Asistencia Pública de la Agencia Federal para el Manejo de Emergencias (FEMA) muestra 2011, el último año de declaración en los datos antes de 2015. Si elige 2025, las series de encuesta muestran la ventana 2020-2024.",
+  "_en": {
+   "name": "a0d5d0b4",
+   "how_to_read": "21b6e246"
+  }
+ },
+ "measures.trend_line": {
+  "name": "Línea de tendencia en el Inspector y en la gráfica Tendencia",
+  "how_to_read": "Use la línea para ver la dirección y el momento de los cambios, y luego lea los números en la tabla. La leyenda indica si la línea abarca una serie completa de años o si tiene huecos. En el corte de datos 2026-10, los empleos del Censo Trimestral de Empleo y Salarios (QCEW) dicen '12 años · 2014–25'. La tasa de desempleo del Negociado de Estadísticas Laborales (BLS) dice '16 años, 15 valores · 2010–25' porque no tiene valor para 2020. En la página Vivienda, la población residente dice '16 años'.",
+  "_en": {
+   "name": "1c5cf84d",
+   "how_to_read": "3b5461a6"
+  }
+ },
+ "measures.margin_of_error": {
+  "name": "Margen de error (cifras de encuesta, 90% de confianza)",
+  "how_to_read": "En el corte de datos 2026-10, la tasa de pobreza de San Juan en la ventana 2020-2024 es 38.84% ± 1.08 puntos. La de Culebra es 25.74% ± 9.48 puntos y la de Maricao, 52.89% ± 7.73 puntos. El ingreso mediano del hogar de San Juan es $27,992 ± $1,036. En ese corte, 94 de los 549 conjuntos de datos de la pestaña Análisis tienen márgenes de error. Guía del Negociado del Censo: una diferencia entre dos estimados es estadísticamente significativa, con el mismo nivel de confianza, cuando es mayor que la raíz cuadrada de la suma de los cuadrados de los dos márgenes. Use esta regla para dos estimados de lugares distintos en la misma ventana. No se aplica a dos ventanas que se solapan. Un municipio comparado con Puerto Rico no es una comparación independiente, porque la cifra de la isla incluye al municipio, así que trate ese resultado como aproximado.",
+  "_en": {
+   "name": "48dda6e3",
+   "how_to_read": "a42d7c12"
+  }
+ },
+ "measures.correlation": {
+  "name": "Correlación entre dos conjuntos de datos (r de Pearson)",
+  "how_to_read": "En el corte de datos 2026-10, entre los 78 municipios, la pobreza y el ingreso mediano del hogar (ventana 2020-2024) tienen r = −0.89: donde la pobreza es mayor, el ingreso tiende a ser menor. El desempleo (2025) y la pobreza (2024) tienen r = 0.67. Los empleos del turismo como proporción de los empleos y el ingreso mediano del hogar tienen r = −0.02 con n = 39: no hay patrón, y solo 39 municipios tienen ambos valores.",
+  "_en": {
+   "name": "0a149a82",
+   "how_to_read": "5423f6c4"
+  }
+ },
+ "measures.outliers": {
+  "name": "Valores atípicos (residuos estandarizados)",
+  "how_to_read": "En el corte de datos 2026-10, para la pobreza (primero) frente al ingreso mediano del hogar (segundo), ventana 2020-2024: Guaynabo tiene z = +3.95, Gurabo +3.30 y Culebra −2.38. Los ingresos de Guaynabo y Gurabo son mucho más altos de lo que predicen sus tasas de pobreza, y el de Culebra es más bajo.",
+  "_en": {
+   "name": "bbe79f66",
+   "how_to_read": "9fbe5649"
+  }
+ },
+ "measures.patterns_ranking": {
+  "name": "La clasificación de patrones en el chat",
+  "how_to_read": "En el corte de datos 2026-10 se compararon 262 pares de áreas distintas y 40 pasaron los umbrales. San Juan tiene el 27% de los empleos de la isla y el 10% de sus residentes, y San Juan, Guaynabo, Bayamón, Carolina y Ponce juntos tienen el 49% de los empleos. Los cinco pares mostrados: ingreso mediano del hogar y alquiler bruto mediano (r = 0.80); trabajar desde el hogar y conducir solo al trabajo (−0.70); fondos federales otorgados por residente y empleos por cada 1,000 residentes (0.66); proporción de empleos del gobierno y adultos con bachillerato (−0.64); residentes de 65 años o más y la tasa de empleo (−0.51).",
+  "_en": {
+   "name": "0d0cda34",
+   "how_to_read": "0fbd50d6"
+  }
+ },
+ "measures.chat_trend": {
+  "name": "Los mayores aumentos y descensos en el chat",
+  "how_to_read": "Pregunte '¿Cómo ha cambiado la pobreza desde 2014?'. La respuesta da la tasa de pobreza de Puerto Rico en 2014 y ahora, los tres municipios donde más subió (o menos bajó) y los tres donde más bajó. Si ningún municipio bajó, la segunda lista lleva el título 'Subió menos'.",
+  "_en": {
+   "name": "d82e134b",
+   "how_to_read": "1545164d"
+  }
+ },
+ "methods.municipality_assignment": {
+  "name": "Cómo se asignan a un municipio los puntos, las paradas y los bloques",
+  "how_to_read": "Un conteo municipal coincide con el polígono dibujado en el mapa. Un lugar contado para San Juan tiene su punto dentro del límite de San Juan, a menos que sea uno de los pocos puntos que quedan fuera de todos los límites. El pueblo que aparece en una dirección no decide. En el corte de datos 2026-10, 348 de los 32,541 listados de lugares (324 de los 24,209 lugares contados) quedan fuera de todos los polígonos y se asignan al punto central más cercano; para todos los demás, el resultado de punto en polígono es el municipio publicado. De los lugares contados, 23,884 caen dentro de un polígono de barrio y tienen barrio.",
+  "_en": {
+   "name": "f5fc67e0",
+   "how_to_read": "ebaeee77"
+  }
+ },
+ "methods.access_profile": {
+  "name": "Cómo describe el observatorio el acceso al transporte de un lugar turístico (el perfil de acceso)",
+  "how_to_read": "Léalo como un perfil: primero la distancia, luego la frecuencia y luego los fines de semana. El observatorio no los combina en una sola puntuación. Una puntuación necesitaría pesos (cuánto vale un servicio los sábados frente a una parada más cercana), y esos pesos serían una decisión de política pública que no se ha tomado. Una puntuación también ocultaría el hallazgo principal: en el corte de datos 2026-10, el 64% de los 24,209 lugares de la base predeterminada no tiene ninguna parada con horario vigente a 800 m o menos. Cifras de la isla con la base predeterminada, al 2026-10-06: el 47.5% de los lugares está a 400 m o menos de cualquier parada mapeada y el 32.2% de una parada con horario vigente; el 21.3% está a 400 m o menos de una parada frecuente; el 22.4% está a 400 m o menos de una parada con servicio los sábados y el 6.4% de una con servicio los domingos. De los 11,507 lugares a 400 m o menos de cualquier parada mapeada, 7,790 (67.7%) tienen una parada con horario vigente y 3,717 (32.3%) dependen de paradas cuyo horario terminó o que no tienen horario.",
+  "_en": {
+   "name": "8cfaa4ef",
+   "how_to_read": "4a065da3"
+  }
+ },
+ "methods.acs_windows": {
+  "name": "Ventanas de 5 años de la Encuesta sobre la Comunidad Estadounidense (ACS) y cómo las rotula el observatorio",
+  "how_to_read": "Lea una cifra rotulada 2024 como 'el valor típico de 2020-2024'. Para juzgar un cambio real, compare ventanas que no se solapen, por ejemplo 2014, 2019 y 2024.",
+  "_en": {
+   "name": "e8bde5d1",
+   "how_to_read": "3e409815"
+  }
+ },
+ "methods.population_vintage_break": {
+  "name": "El salto de 2020 en la serie de población",
+  "how_to_read": "Compare años dentro de una misma base (2011-2019, o 2020-2025), o compare los dos conteos del censo (2010 y 2020). No compare 2019 con 2020 como si ambos se basaran en el mismo conteo. En el corte de datos 2026-10, el estimado de toda la isla para julio de 2019 es 3,193,553 y el valor de 2020 es 3,285,874, un aumento de 2.9%; el estimado de 2021 es 3,262,731, una disminución de 0.7%.",
+  "_en": {
+   "name": "75aad3af",
+   "how_to_read": "80ce290f"
+  }
+ },
+ "methods.latest_year": {
+  "name": "Qué significa 'Último'",
+  "how_to_read": "Revise la etiqueta del año junto a cada capa antes de comparar dos capas en 'Último': pueden describir años distintos. Para una comparación fija, elija un año en la barra de años.",
+  "_en": {
+   "name": "0e33576d",
+   "how_to_read": "1ae2ec69"
+  }
+ },
+ "methods.snapshot_labelling": {
+  "name": "Etiquetas de los cortes de datos y reconstrucciones",
+  "how_to_read": "Cite la etiqueta del corte de datos, el año o la ventana de la cifra y la fecha en que la obtuvo (el botón Citar agrega la fecha de consulta). Al 2026-10-04, la compilación completa del corte de datos 2026-10 tiene fecha 2026-10-02 (UTC), los archivos de transporte colectivo 2026-10-02, las series de vivienda 2026-10-03 y las series de economía 2026-10-04. Los campos de acceso de los lugares turísticos (place_access.json y los campos acc_) son al 2026-10-06. La fecha de compilación está en la página del mapa: pase el cursor sobre la etiqueta del corte de datos en la parte superior o abra la sección Info. La ficha del diccionario de cada conjunto de datos indica qué tan antiguos son los datos de su fuente.",
+  "_en": {
+   "name": "289ef14e",
+   "how_to_read": "04a8e890"
+  }
+ },
+ "methods.qcew_suppression": {
+  "name": "Cifras suprimidas en los datos de empleos (supresión del QCEW)",
+  "how_to_read": "Cuando un sector está en blanco para un municipio, no sume las cifras de los sectores esperando obtener el total. Las proporciones, los cocientes de localización y las correlaciones que se basan en ese sector dejan fuera a ese municipio. En el corte de datos 2026-10, de las 1,482 celdas de sector (19 sectores × 78 municipios) de 2024, 769 tienen un valor, 527 están suprimidas y 186 no tienen fila. En 2025, el año más reciente, 671 tienen un valor, 632 están suprimidas y 179 no tienen fila. En 2024, 34 municipios no tienen cifra para alojamiento y servicios de comida (código NAICS 72); en 2025 son 39.",
+  "_en": {
+   "name": "35405f45",
+   "how_to_read": "e4bd81ae"
+  }
+ },
+ "methods.workplace_vs_residence": {
+  "name": "Base del lugar de trabajo y base de residencia",
+  "how_to_read": "Un municipio con más empleos que residentes con empleo es un centro de empleo que atrae a personas de otros municipios. Uno con muchos menos es un lugar donde muchas personas residentes trabajan en otra parte. La razón no indica dónde trabajan. San Juan muestra la diferencia: en el corte de datos 2026-10 tiene 253,816 empleos en 2025 (26.8% de los empleos de la isla), pero 329,737 residentes (10.4% de los residentes de la isla), y en 2024 tiene 1.91 empleos por cada residente con empleo.",
+  "_en": {
+   "name": "32c05f2b",
+   "how_to_read": "e1f3ff21"
+  }
+ },
+ "methods.rounding_display": {
+  "name": "El redondeo y cómo se muestran los números",
+  "how_to_read": "Redondee solo en su propio texto e indique el año y la unidad. Si dos números se ven iguales en pantalla, revise los valores guardados en una descarga.",
+  "_en": {
+   "name": "9f36d7f3",
+   "how_to_read": "267bf96e"
+  }
+ },
+ "methods.shared_links": {
+  "name": "Cómo guarda una vista un enlace compartido",
+  "how_to_read": "Un enlace compartido comparte una vista, no una tabla de números. Si los datos se reconstruyeron después de crear el enlace, la misma vista puede mostrar números distintos. Para fijar los números en un informe, cite la etiqueta del corte de datos y la fecha, y guarde el archivo de datos descargado.",
+  "_en": {
+   "name": "a17ce89a",
+   "how_to_read": "0806d003"
+  }
+ },
+ "methods.citation": {
+  "name": "Cómo citar el observatorio y sus fuentes",
+  "how_to_read": "Indique qué es la cifra, el año o la ventana, la etiqueta del corte de datos y la fecha de consulta. Para las cifras de encuesta, agregue la ventana ('estimados de 5 años de la Encuesta sobre la Comunidad Estadounidense 2020-2024'). Para las cifras que calcula el observatorio, como las tasas por cada 1,000 residentes o la razón de asequibilidad, indique que Foundation for Puerto Rico (FPR) las calculó a partir de las fuentes nombradas. Ejemplo de cifra calculada: 'En 2025 había unos 770 empleos ubicados en San Juan por cada 1,000 residentes (cálculo de FPR a partir de US Bureau of Labor Statistics, Quarterly Census of Employment and Wages, promedio anual de 2025, y US Census Bureau Population Estimates, Vintage 2025; Observatorio de Datos de PR, Corte 2026-10, recuperado el [fecha]).' Ejemplo de cifra de encuesta: 'La tasa de pobreza de San Juan era 38.8% ± 1.1 puntos porcentuales (90% de confianza), estimados de 5 años de la Encuesta sobre la Comunidad Estadounidense 2020-2024 (Observatorio de Datos de PR, Corte 2026-10, recuperado el [fecha]).' Las fichas de medidas y métodos no son conjuntos de datos. En la cita APA de una de ellas, borre '[Conjunto de datos]'. En las citas APA y BibTeX, borre un título que termine en '(No ligado a un año)'. Cada cuadro de diálogo de un conjunto de datos en la pestaña Análisis y en la página Vivienda enlaza a su ficha del diccionario, donde está el botón Citar.",
+  "_en": {
+   "name": "e235f710",
+   "how_to_read": "11ac719f"
+  }
+ },
+ "methods.headline_figures": {
+  "name": "Cómo calcula el Resumen la cifra principal de cada campo",
+  "how_to_read": "Lea cada cifra con su período y su nombre: indican lo que cuenta. Una cifra principal se escoge para iniciar una conversación sobre un campo. No indica qué campo importa más, y otra cifra principal para el mismo campo contaría una historia distinta.",
+  "_en": {
+   "name": "5dd9dd7e",
+   "how_to_read": "0e62adb5"
+  }
+ },
+ "measures.per_1000_housing_units": {
+  "name": "Por cada 1,000 unidades de vivienda",
+  "how_to_read": "En el corte de datos 2026-10, San Juan tiene 3,424 lugares turísticos y 201,026 unidades de vivienda (2020-2024), lo que equivale a 17.0 lugares por cada 1,000 unidades de vivienda (10.4 por cada 1,000 residentes). Culebra tiene 136 lugares y 1,539 unidades de vivienda: 88.4 por cada 1,000 unidades de vivienda. Léalo como cuántos de estos hay por cada 1,000 viviendas.",
+  "_en": {
+   "name": "64b8e9d1",
+   "how_to_read": "5636cbb7"
+  }
+ },
+ "measures.less_reliable_values": {
+  "name": "Valores menos confiables: rayado, contornos discontinuos y cursiva",
+  "how_to_read": "En el corte de datos 2026-10, 74 de los 78 municipios aparecen rayados en personas que caminan al trabajo (2020-2024) y 66 en residentes que trabajan para organizaciones sin fines de lucro, porque pocas personas residentes de un municipio pequeño dan esa respuesta; ninguno aparece rayado en ingreso mediano del hogar. Por la regla 2, 10 municipios tienen menos de 10 unidades de vivienda dentro del área inundada con 3 pies de aumento del nivel del mar, así que su proporción de unidades de vivienda aparece rayada.",
+  "_en": {
+   "name": "187407fc",
+   "how_to_read": "70eac4ad"
+  }
+ },
+ "methods.hexagon_counts": {
+  "name": "Lugares turísticos contados en hexágonos y por municipio, con sus filtros",
+  "how_to_read": "En el corte de datos 2026-10, con los filtros predeterminados (confianza de 0.50 o más, sin lugares de culto), los 23,467 lugares con marcador (los 24,209 lugares contados menos los 742 alquileres vacacionales y unidades numeradas, que se cuentan pero no se dibujan) caen en 950 hexágonos de 10 kilómetros cuadrados: el más concurrido tiene 447 y la mitad tiene 8 o menos. En hexágonos de 2 km² caen en 2,833 (el más concurrido, 309) y en hexágonos de 50 km², en 231 (el más concurrido, 1,988). Por municipio, San Juan tiene 3,424 lugares contados, Vieques 237 y Culebra 136.",
+  "_en": {
+   "name": "a338d7be",
+   "how_to_read": "8ae81521"
+  }
+ }
+}

@@ -1,0 +1,592 @@
+{
+ "expired_operators_excluded": [
+  "caguas",
+  "cidra",
+  "fajardo",
+  "hatillo",
+  "juncos",
+  "ponce",
+  "san_lorenzo"
+ ],
+ "timetable_weekday_current_feeds": {
+  "trips": 2925,
+  "connections": 71258,
+  "stops_with_calls": 2408,
+  "bad_connections_negative_duration": 0,
+  "build_s": 0.2
+ },
+ "timetable_weekday_all_feeds": {
+  "trips": 3297,
+  "connections": 74899,
+  "stops_with_calls": 2849
+ },
+ "timetable_sat_current": {
+  "trips": 1600,
+  "connections": 45356,
+  "stops": 1751
+ },
+ "timetable_sun_current": {
+  "trips": 381,
+  "connections": 5084,
+  "stops": 94
+ },
+ "origin_sju": {
+  "reference_point": "FAA airport reference point of SJU (transport.json, faa:SJU)",
+  "origin_radius_m": 500.0,
+  "stops_used": 3,
+  "walk_distances_m": [
+   290,
+   465,
+   481
+  ]
+ },
+ "places_with_a_stop_within_400m_in_timetable_current": 7763,
+ "scan_seconds_one_origin": 0.02,
+ "main_weekday_10": {
+  "all": {
+   "n": 26579,
+   "within_60": 2640,
+   "pct_within_60": 9.9,
+   "within_90": 3694,
+   "pct_within_90": 13.9,
+   "within_120": 4869,
+   "pct_within_120": 18.3,
+   "reachable_any_within_4h": 5948,
+   "median_minutes_of_reachable": 69.0
+  },
+  "by_category": {
+   "ACCOMMODATIONS": {
+    "n": 3106,
+    "within_60": 284,
+    "pct_within_60": 9.1,
+    "within_90": 345,
+    "pct_within_90": 11.1,
+    "within_120": 395,
+    "pct_within_120": 12.7,
+    "reachable_any_within_4h": 472,
+    "median_minutes_of_reachable": 56.0
+   },
+   "ATTRACTIONS": {
+    "n": 5676,
+    "within_60": 589,
+    "pct_within_60": 10.4,
+    "within_90": 820,
+    "pct_within_90": 14.4,
+    "within_120": 1034,
+    "pct_within_120": 18.2,
+    "reachable_any_within_4h": 1259,
+    "median_minutes_of_reachable": 67.0
+   },
+   "GASTRONOMY": {
+    "n": 17178,
+    "within_60": 1641,
+    "pct_within_60": 9.6,
+    "within_90": 2379,
+    "pct_within_90": 13.8,
+    "within_120": 3267,
+    "pct_within_120": 19.0,
+    "reachable_any_within_4h": 4024,
+    "median_minutes_of_reachable": 76.0
+   },
+   "VISITOR_SERVICES": {
+    "n": 619,
+    "within_60": 126,
+    "pct_within_60": 20.4,
+    "within_90": 150,
+    "pct_within_90": 24.2,
+    "within_120": 173,
+    "pct_within_120": 27.9,
+    "reachable_any_within_4h": 193,
+    "median_minutes_of_reachable": 53.0
+   }
+  },
+  "by_region": {
+   "Porta Atlántico": {
+    "n": 3370,
+    "within_60": 0,
+    "pct_within_60": 0.0,
+    "within_90": 0,
+    "pct_within_90": 0.0,
+    "within_120": 7,
+    "pct_within_120": 0.2,
+    "reachable_any_within_4h": 155,
+    "median_minutes_of_reachable": 137.0
+   },
+   "Porta Capital": {
+    "n": 8505,
+    "within_60": 2543,
+    "pct_within_60": 29.9,
+    "within_90": 3570,
+    "pct_within_90": 42.0,
+    "within_120": 4716,
+    "pct_within_120": 55.4,
+    "reachable_any_within_4h": 5549,
+    "median_minutes_of_reachable": 67.0
+   },
+   "Porta Caribe": {
+    "n": 3090,
+    "within_60": 0,
+    "pct_within_60": 0.0,
+    "within_90": 0,
+    "pct_within_90": 0.0,
+    "within_120": 0,
+    "pct_within_120": 0.0,
+    "reachable_any_within_4h": 0,
+    "median_minutes_of_reachable": null
+   },
+   "Porta Cordillera": {
+    "n": 2269,
+    "within_60": 0,
+    "pct_within_60": 0.0,
+    "within_90": 0,
+    "pct_within_90": 0.0,
+    "within_120": 0,
+    "pct_within_120": 0.0,
+    "reachable_any_within_4h": 0,
+    "median_minutes_of_reachable": null
+   },
+   "Porta del Mar": {
+    "n": 3417,
+    "within_60": 97,
+    "pct_within_60": 2.8,
+    "within_90": 124,
+    "pct_within_90": 3.6,
+    "within_120": 146,
+    "pct_within_120": 4.3,
+    "reachable_any_within_4h": 244,
+    "median_minutes_of_reachable": 73.0
+   },
+   "Porta del Sol Norte": {
+    "n": 3274,
+    "within_60": 0,
+    "pct_within_60": 0.0,
+    "within_90": 0,
+    "pct_within_90": 0.0,
+    "within_120": 0,
+    "pct_within_120": 0.0,
+    "reachable_any_within_4h": 0,
+    "median_minutes_of_reachable": null
+   },
+   "Porta del Sol Sur": {
+    "n": 2654,
+    "within_60": 0,
+    "pct_within_60": 0.0,
+    "within_90": 0,
+    "pct_within_90": 0.0,
+    "within_120": 0,
+    "pct_within_120": 0.0,
+    "reachable_any_within_4h": 0,
+    "median_minutes_of_reachable": null
+   }
+  },
+  "within_120_with_1_boardings_exactly": 1603,
+  "within_120_with_2_boardings_exactly": 1396,
+  "within_120_with_3_boardings_exactly": 1870,
+  "stops_reached_by_vehicle_any_round": 1581,
+  "stops_reached_within_60_90_120": {
+   "60": 341,
+   "90": 707,
+   "120": 1110
+  },
+  "stops_reached_by_round": {
+   "1": 78,
+   "2": 533,
+   "3": 970
+  }
+ },
+ "municipalities_with_any_place_within_120": 10,
+ "municipalities_with_ge50pct_within_120": 2,
+ "sensitivity": {
+  "weekday_10_including_expired_feeds": {
+   "n": 26579,
+   "within_60": 2640,
+   "pct_within_60": 9.9,
+   "within_90": 3694,
+   "pct_within_90": 13.9,
+   "within_120": 4869,
+   "pct_within_120": 18.3,
+   "reachable_any_within_4h": 5948,
+   "median_minutes_of_reachable": 69.0
+  },
+  "weekday_07_current": {
+   "n": 26579,
+   "within_60": 2315,
+   "pct_within_60": 8.7,
+   "within_90": 3508,
+   "pct_within_90": 13.2,
+   "within_120": 5228,
+   "pct_within_120": 19.7,
+   "reachable_any_within_4h": 5948,
+   "median_minutes_of_reachable": 79.0
+  },
+  "weekday_14_current": {
+   "n": 26579,
+   "within_60": 2034,
+   "pct_within_60": 7.7,
+   "within_90": 3556,
+   "pct_within_90": 13.4,
+   "within_120": 4857,
+   "pct_within_120": 18.3,
+   "reachable_any_within_4h": 5940,
+   "median_minutes_of_reachable": 79.0
+  },
+  "weekday_18_current": {
+   "n": 26579,
+   "within_60": 2063,
+   "pct_within_60": 7.8,
+   "within_90": 3465,
+   "pct_within_90": 13.0,
+   "within_120": 4745,
+   "pct_within_120": 17.9,
+   "reachable_any_within_4h": 5443,
+   "median_minutes_of_reachable": 74.0
+  },
+  "saturday_10_current": {
+   "n": 26579,
+   "within_60": 756,
+   "pct_within_60": 2.8,
+   "within_90": 3065,
+   "pct_within_90": 11.5,
+   "within_120": 4583,
+   "pct_within_120": 17.2,
+   "reachable_any_within_4h": 5542,
+   "median_minutes_of_reachable": 84.0
+  },
+  "sunday_10_current": {
+   "n": 26579,
+   "within_60": 117,
+   "pct_within_60": 0.4,
+   "within_90": 513,
+   "pct_within_90": 1.9,
+   "within_120": 1454,
+   "pct_within_120": 5.5,
+   "reachable_any_within_4h": 1454,
+   "median_minutes_of_reachable": 98.0
+  },
+  "weekday_10_max2_boardings": {
+   "n": 26579,
+   "within_60": 2206,
+   "pct_within_60": 8.3,
+   "within_90": 3202,
+   "pct_within_90": 12.0,
+   "within_120": 3762,
+   "pct_within_120": 14.2,
+   "reachable_any_within_4h": 4132,
+   "median_minutes_of_reachable": 58.0
+  },
+  "weekday_10_max1_boarding": {
+   "n": 26579,
+   "within_60": 1754,
+   "pct_within_60": 6.6,
+   "within_90": 1796,
+   "pct_within_90": 6.8,
+   "within_120": 1796,
+   "pct_within_120": 6.8,
+   "reachable_any_within_4h": 1796,
+   "median_minutes_of_reachable": 39.0
+  },
+  "weekday_10_buffer_0s": {
+   "n": 26579,
+   "within_60": 2748,
+   "pct_within_60": 10.3,
+   "within_90": 3850,
+   "pct_within_90": 14.5,
+   "within_120": 5081,
+   "pct_within_120": 19.1,
+   "reachable_any_within_4h": 5948,
+   "median_minutes_of_reachable": 65.0
+  }
+ },
+ "other_gateway_origins_weekday_10": {
+  "old_san_juan_cruise_pier_osm_mapped": {
+   "n": 26579,
+   "within_60": 2397,
+   "pct_within_60": 9.0,
+   "within_90": 3858,
+   "pct_within_90": 14.5,
+   "within_120": 4991,
+   "pct_within_120": 18.8,
+   "reachable_any_within_4h": 6016,
+   "median_minutes_of_reachable": 73.0,
+   "origin_stops_within_500m": 6,
+   "reachable_within_4h_by_municipality": {
+    "San Juan": 3473,
+    "Carolina": 818,
+    "Guaynabo": 522,
+    "Bayamón": 479,
+    "Caguas": 160,
+    "Toa Baja": 155
+   },
+   "by_region_pct_within_120": {
+    "Porta Atlántico": 0.2,
+    "Porta Capital": 57.1,
+    "Porta Caribe": 0.0,
+    "Porta Cordillera": 0.0,
+    "Porta del Mar": 3.6,
+    "Porta del Sol Norte": 0.0,
+    "Porta del Sol Sur": 0.0
+   }
+  },
+  "ceiba_ferry_terminal_ati": {
+   "n": 26579,
+   "within_60": 0,
+   "pct_within_60": 0.0,
+   "within_90": 0,
+   "pct_within_90": 0.0,
+   "within_120": 0,
+   "pct_within_120": 0.0,
+   "reachable_any_within_4h": 65,
+   "median_minutes_of_reachable": 199.0,
+   "origin_stops_within_500m": 1,
+   "reachable_within_4h_by_municipality": {
+    "Culebra": 38,
+    "Vieques": 27
+   },
+   "by_region_pct_within_120": {
+    "Porta Atlántico": 0.0,
+    "Porta Capital": 0.0,
+    "Porta Caribe": 0.0,
+    "Porta Cordillera": 0.0,
+    "Porta del Mar": 0.0,
+    "Porta del Sol Norte": 0.0,
+    "Porta del Sol Sur": 0.0
+   }
+  },
+  "terminal_covadonga_old_san_juan": {
+   "n": 26579,
+   "within_60": 2997,
+   "pct_within_60": 11.3,
+   "within_90": 4403,
+   "pct_within_90": 16.6,
+   "within_120": 5421,
+   "pct_within_120": 20.4,
+   "reachable_any_within_4h": 6016,
+   "median_minutes_of_reachable": 61.0,
+   "origin_stops_within_500m": 8,
+   "reachable_within_4h_by_municipality": {
+    "San Juan": 3473,
+    "Carolina": 818,
+    "Guaynabo": 522,
+    "Bayamón": 479,
+    "Caguas": 160,
+    "Toa Baja": 155
+   },
+   "by_region_pct_within_120": {
+    "Porta Atlántico": 0.2,
+    "Porta Capital": 62.2,
+    "Porta Caribe": 0.0,
+    "Porta Cordillera": 0.0,
+    "Porta del Mar": 3.6,
+    "Porta del Sol Norte": 0.0,
+    "Porta del Sol Sur": 0.0
+   }
+  }
+ },
+ "pair_checks": {
+  "Terminal Covadonga (Old San Juan)": {
+   "minutes_from_10:00": 55.0,
+   "boardings_if_by_vehicle": 1,
+   "arrives_by_vehicle_min": 55.0
+  },
+  "Estación Bayamón (Tren Urbano)": {
+   "minutes_from_10:00": 78.0,
+   "boardings_if_by_vehicle": 2,
+   "arrives_by_vehicle_min": 78.0
+  },
+  "Terminal de Cataño (bus)": {
+   "minutes_from_10:00": 123.0,
+   "boardings_if_by_vehicle": 2,
+   "arrives_by_vehicle_min": 127.0
+  },
+  "Terminal de Lancha Cataño (ferry)": {
+   "minutes_from_10:00": 123.0,
+   "boardings_if_by_vehicle": 2,
+   "arrives_by_vehicle_min": 132.0
+  },
+  "Terminal de Lancha San Juan (ferry)": {
+   "minutes_from_10:00": 59.0,
+   "boardings_if_by_vehicle": 3,
+   "arrives_by_vehicle_min": 162.0
+  },
+  "Estación Río Piedras": {
+   "minutes_from_10:00": 57.0,
+   "boardings_if_by_vehicle": 2,
+   "arrives_by_vehicle_min": 57.0
+  },
+  "Terminal de Carolina": {
+   "minutes_from_10:00": 118.0,
+   "boardings_if_by_vehicle": 2,
+   "arrives_by_vehicle_min": 118.0
+  },
+  "Terminal Transporte Publico de Caguas": {
+   "minutes_from_10:00": 115.0,
+   "boardings_if_by_vehicle": 3,
+   "arrives_by_vehicle_min": 115.0
+  },
+  "Terminal de Lanchas de Ceiba (ferry)": {
+   "minutes_from_10:00": null,
+   "boardings_if_by_vehicle": null,
+   "arrives_by_vehicle_min": null
+  },
+  "Terminal de Lanchas Vieques (Isabel II)": {
+   "minutes_from_10:00": null,
+   "boardings_if_by_vehicle": null,
+   "arrives_by_vehicle_min": null
+  },
+  "Terminal de Lanchas Culebra": {
+   "minutes_from_10:00": null,
+   "boardings_if_by_vehicle": null,
+   "arrives_by_vehicle_min": null
+  },
+  "Terminal Multimodal Bayamón": {
+   "minutes_from_10:00": 79.0,
+   "boardings_if_by_vehicle": 3,
+   "arrives_by_vehicle_min": 107.0
+  }
+ },
+ "road_graph_components": {
+  "nodes_in_main_component_pct": 98.8,
+  "edges_in_main_component_pct": 99.0
+ },
+ "drive_origin_snap_connector_m": 623.0,
+ "drive_origin_edge_class": "primary",
+ "drive_dijkstra_s": 4.2,
+ "drive_nodes_reached": 190832,
+ "drive_nodes_total": 193507,
+ "places_default_with_no_main_road_within_300m": 845,
+ "drive_all": {
+  "n": 26579,
+  "pct_within_60": 54.8,
+  "pct_within_90": 72.7,
+  "pct_within_120": 86.1,
+  "pct_no_road_path_or_no_road_within_300m": 3.3,
+  "median_minutes": 48.0,
+  "p90_minutes": 122.0
+ },
+ "drive_by_category": {
+  "ACCOMMODATIONS": {
+   "n": 3106,
+   "pct_within_60": 45.8,
+   "pct_within_90": 61.0,
+   "pct_within_120": 76.3,
+   "pct_no_road_path_or_no_road_within_300m": 5.6,
+   "median_minutes": 63.0,
+   "p90_minutes": 133.0
+  },
+  "ATTRACTIONS": {
+   "n": 5676,
+   "pct_within_60": 53.2,
+   "pct_within_90": 70.1,
+   "pct_within_120": 81.4,
+   "pct_no_road_path_or_no_road_within_300m": 7.7,
+   "median_minutes": 48.0,
+   "p90_minutes": 124.0
+  },
+  "GASTRONOMY": {
+   "n": 17178,
+   "pct_within_60": 57.0,
+   "pct_within_90": 75.9,
+   "pct_within_120": 89.7,
+   "pct_no_road_path_or_no_road_within_300m": 1.2,
+   "median_minutes": 47.0,
+   "p90_minutes": 118.0
+  },
+  "VISITOR_SERVICES": {
+   "n": 619,
+   "pct_within_60": 54.3,
+   "pct_within_90": 66.2,
+   "pct_within_120": 76.6,
+   "pct_no_road_path_or_no_road_within_300m": 12.0,
+   "median_minutes": 47.0,
+   "p90_minutes": 124.0
+  }
+ },
+ "drive_by_region": {
+  "Porta Atlántico": {
+   "n": 3370,
+   "pct_within_60": 65.1,
+   "pct_within_90": 98.4,
+   "pct_within_120": 98.6,
+   "pct_no_road_path_or_no_road_within_300m": 1.4,
+   "median_minutes": 46.0,
+   "p90_minutes": 71.0
+  },
+  "Porta Capital": {
+   "n": 8505,
+   "pct_within_60": 98.4,
+   "pct_within_90": 98.5,
+   "pct_within_120": 98.5,
+   "pct_no_road_path_or_no_road_within_300m": 1.5,
+   "median_minutes": 16.0,
+   "p90_minutes": 31.0
+  },
+  "Porta Caribe": {
+   "n": 3090,
+   "pct_within_60": 1.6,
+   "pct_within_90": 82.5,
+   "pct_within_120": 97.5,
+   "pct_no_road_path_or_no_road_within_300m": 2.4,
+   "median_minutes": 83.0,
+   "p90_minutes": 96.0
+  },
+  "Porta Cordillera": {
+   "n": 2269,
+   "pct_within_60": 51.2,
+   "pct_within_90": 80.9,
+   "pct_within_120": 98.1,
+   "pct_no_road_path_or_no_road_within_300m": 1.9,
+   "median_minutes": 59.0,
+   "p90_minutes": 98.0
+  },
+  "Porta del Mar": {
+   "n": 3417,
+   "pct_within_60": 81.8,
+   "pct_within_90": 85.7,
+   "pct_within_120": 85.7,
+   "pct_no_road_path_or_no_road_within_300m": 14.3,
+   "median_minutes": 42.0,
+   "p90_minutes": 57.0
+  },
+  "Porta del Sol Norte": {
+   "n": 3274,
+   "pct_within_60": 0.0,
+   "pct_within_90": 9.7,
+   "pct_within_120": 80.3,
+   "pct_no_road_path_or_no_road_within_300m": 1.1,
+   "median_minutes": 109.0,
+   "p90_minutes": 125.0
+  },
+  "Porta del Sol Sur": {
+   "n": 2654,
+   "pct_within_60": 0.0,
+   "pct_within_90": 0.0,
+   "pct_within_120": 14.3,
+   "pct_no_road_path_or_no_road_within_300m": 2.8,
+   "median_minutes": 129.0,
+   "p90_minutes": 145.0
+  }
+ },
+ "drive_assumptions": "planning speeds by road class from roads.py SPEED_KMH (motorway 90, trunk 75, primary 55, secondary 48, tertiary 40, residential 25 km/h), one-way rules obeyed, no traffic, no signals, no parking, connector to the road at 20 km/h; islands without a road link are unreachable",
+ "transit_over_drive_time_ratio_places_reachable_by_transit_le_120": {
+  "n": 4796,
+  "median": 4.4,
+  "p25": 3.6,
+  "p75": 5.5
+ },
+ "median_drive_minutes_of_those_places": 13.0,
+ "median_transit_minutes_of_those_places": 58.0,
+ "places_le60_drive_but_not_le120_transit": 9775,
+ "share_of_le60_drive_places_not_le120_transit_pct": 67.1,
+ "of_places_within_60_min_drive_share_also_within_60_min_transit_pct": 17.6,
+ "of_places_within_60_min_drive_share_also_within_120_min_transit_pct": 32.9,
+ "by_region_of_le60_drive_places_share_le120_transit_pct": {
+  "Porta Atlántico": 0.3,
+  "Porta Capital": 55.5,
+  "Porta Caribe": 0.0,
+  "Porta Cordillera": 0.0,
+  "Porta del Mar": 5.2,
+  "Porta del Sol Norte": null,
+  "Porta del Sol Sur": null
+ },
+ "total_s": 5.8
+}

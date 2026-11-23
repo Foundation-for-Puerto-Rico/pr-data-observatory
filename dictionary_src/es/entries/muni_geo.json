@@ -1,0 +1,202 @@
+{
+ "municipalities.municipality": {
+  "name": "Nombre del municipio",
+  "how_to_read": "Use el nombre para enlazar esta tabla con places.json, que escribe su campo de municipio de la misma forma. Los nombres conservan sus acentos, así que 'Mayagüez' no coincide con 'Mayaguez' a menos que se eliminen los acentos de ambos.",
+  "_en": {
+   "name": "70aeba12",
+   "how_to_read": "02a68f39"
+  }
+ },
+ "municipalities.region": {
+  "name": "Región turística (Compañía de Turismo de Puerto Rico)",
+  "how_to_read": "Las regiones siguen la agrupación de la PRTC. Los conteos turísticos del observatorio son listados de Overture, no estadísticas de la PRTC, así que no los compare con los inventarios ni los informes de la propia PRTC. El observatorio no guarda totales regionales: si los necesita, sume las filas de los municipios.",
+  "_en": {
+   "name": "fc1a28db",
+   "how_to_read": "3a07d13e"
+  }
+ },
+ "municipalities.land_km2": {
+  "name": "Superficie terrestre (kilómetros cuadrados)",
+  "how_to_read": "En los datos del Censo 2020, Arecibo es el municipio con mayor superficie terrestre (326.4 km²) y Cataño, el de menor superficie (12.5 km²). La superficie terrestre es el denominador de los lugares por km²; la pestaña Análisis también la usa para su opción por km². La pestaña Municipio la muestra redondeada a km² enteros.",
+  "_en": {
+   "name": "565336fd",
+   "how_to_read": "614e5d74"
+  }
+ },
+ "municipalities.population_2020": {
+  "name": "Población, Censo 2020",
+  "how_to_read": "En el Censo 2020, San Juan es el municipio más grande (342,259 personas) y Culebra, el más pequeño (1,792). Compárelo con population_2010 o pop_change_pct para ver el cambio en diez años.",
+  "_en": {
+   "name": "2f6432dd",
+   "how_to_read": "b5d3d470"
+  }
+ },
+ "municipalities.population_2010": {
+  "name": "Población, Censo 2010",
+  "how_to_read": "En el Censo 2010, San Juan era el municipio más grande (395,326 personas) y Culebra, el más pequeño (1,818). La población de 2010 de la página Vivienda es el mismo conteo para todos los municipios.",
+  "_en": {
+   "name": "c5b02eaf",
+   "how_to_read": "54497f46"
+  }
+ },
+ "municipalities.pop_change_pct": {
+  "name": "Cambio en la población, 2010 a 2020 (%)",
+  "how_to_read": "Es un cambio en diez años, no una tasa anual. Entre los censos de 2010 y 2020, los 78 valores son negativos, de -29.0 (Guánica) a -0.1 (Rincón); Maricao (-24.2) y Loíza (-21.2) siguen a Guánica. En conjunto, los 78 municipios bajaron de 3,725,789 a 3,285,874 personas, es decir, -11.8% (calculado a partir de los valores municipales, no guardado en el archivo). San Juan pasó de 395,326 a 342,259 personas, es decir, -13.4%. En la vista 3D, las columnas más altas y más rojas indican pérdidas mayores, porque todos los valores son pérdidas.",
+  "_en": {
+   "name": "62c6b487",
+   "how_to_read": "295fd860"
+  }
+ },
+ "municipalities.housing_units_2020": {
+  "name": "Unidades de vivienda, Censo 2020",
+  "how_to_read": "En el Censo 2020, San Juan tiene la mayor cantidad de unidades de vivienda (193,244) y Culebra, la menor (1,563). Cuenta todas las viviendas, incluidas las desocupadas y las de uso estacional, así que es mayor que el número de hogares.",
+  "_en": {
+   "name": "323d5b0e",
+   "how_to_read": "a4e68dac"
+  }
+ },
+ "municipalities.housing_units_2010": {
+  "name": "Unidades de vivienda, Censo 2010",
+  "how_to_read": "En el Censo 2010, San Juan tenía la mayor cantidad de unidades de vivienda (199,915) y Culebra, la menor (1,603). Réstelo de housing_units_2020 para obtener el cambio en el número de viviendas. Entre los censos de 2010 y 2020, 15 municipios ganaron unidades de vivienda y 63 las perdieron; el total de la isla bajó 2.4% (de 1,636,946 a 1,598,159). Maricao perdió la mayor proporción (15.3%) y Aibonito ganó la mayor (5.2%); ambas proporciones y el 2.4% se calcularon a partir de los valores municipales y no están guardados en el archivo.",
+  "_en": {
+   "name": "7ed11f13",
+   "how_to_read": "1ecba3c4"
+  }
+ },
+ "municipalities.assets": {
+  "name": "Lugares turísticos (conteo)",
+  "how_to_read": "En el corte de datos 2026-10, San Juan tiene la mayor cantidad de lugares contados (3,424) y Maricao, la menor (36). Los municipios grandes tienen más, así que compare los lugares por cada 1,000 residentes o por km² antes de ordenar unos municipios frente a otros. El primer recuadro de la pestaña Municipio, 'lugares turísticos (filtros actuales)', se cuenta en vivo a partir de los lugares que muestra el mapa, así que cambia cuando se cambian los botones de categoría o el control deslizante de confianza; este valor guardado no cambia. En municipalities.json y en la descarga CSV (valores separados por comas), este conteo es la columna 'assets'. Un corte de datos es una compilación del observatorio. El corte de datos 2026-10 (etiqueta 'Corte 2026-10') se generó el 2 de octubre de 2026 (UTC) a partir de la versión 2026-09-23.1 de Overture.",
+  "_en": {
+   "name": "11d7494b",
+   "how_to_read": "9a6935d8"
+  }
+ },
+ "municipalities.assets_all_confidence": {
+  "name": "Lugares turísticos, todos los niveles de confianza (conteo)",
+  "how_to_read": "La diferencia entre este campo y assets es el número de listados con una confianza menor de 0.50. En el corte de datos 2026-10 es 3,300 en toda la isla, 639 en San Juan y 2 en Maricao. Una diferencia grande significa que el conteo del municipio depende más de dónde se fije el punto de corte.",
+  "_en": {
+   "name": "bdbfdc63",
+   "how_to_read": "9fda0c58"
+  }
+ },
+ "municipalities.listings_all": {
+  "name": "Todos los listados turísticos (conteo)",
+  "how_to_read": "Úselo para cuadrar con la lista completa de lugares de places.json. En el corte de datos 2026-10, San Juan tiene 4,597 listados y Maricao, 47. Para la oferta turística, use assets.",
+  "_en": {
+   "name": "c676b4e9",
+   "how_to_read": "1d8789c3"
+  }
+ },
+ "municipalities.by_category": {
+  "name": "Lugares turísticos por categoría (conteos)",
+  "how_to_read": "Úselo para comparar la composición de la oferta: en el corte de datos 2026-10, 2,421 de los 3,424 lugares de San Juan son de Gastronomía, mientras que 51 de los 136 de Culebra son Alojamientos. En la descarga CSV (valores separados por comas), el objeto se divide en cuatro columnas: by_category_ATTRACTIONS, by_category_GASTRONOMY, by_category_ACCOMMODATIONS y by_category_VISITOR_SERVICES. La pestaña Análisis muestra los cuatro conteos en el mapa como capas separadas.",
+  "_en": {
+   "name": "f86e0594",
+   "how_to_read": "1932cbf9"
+  }
+ },
+ "municipalities.with_website": {
+  "name": "Lugares turísticos con sitio web (conteo)",
+  "how_to_read": "En el corte de datos 2026-10, San Juan tiene la mayor cantidad de lugares con sitio web (1,597) y Florida, la menor (7). Como proporción de los lugares contados, en ese corte va de alrededor del 8% en Maunabo al 47% en San Juan (calculado a partir de los valores municipales). Úselo como una señal aproximada de qué tan visible es un lugar en internet, no como una medida de calidad.",
+  "_en": {
+   "name": "15bed61f",
+   "how_to_read": "a093b43d"
+  }
+ },
+ "municipalities.avg_confidence": {
+  "name": "Confianza promedio de Overture de los lugares contados",
+  "how_to_read": "En el corte de datos 2026-10, los promedios van de 0.780 (Peñuelas) a 0.850 (San Juan). El intervalo es estrecho porque solo se promedian las puntuaciones de 0.50 o más. Trátelo como una señal aproximada de la calidad de los datos, no como una tasa de exactitud.",
+  "_en": {
+   "name": "d600e15e",
+   "how_to_read": "12f876e3"
+  }
+ },
+ "municipalities.assets_per_1000_residents": {
+  "name": "Lugares turísticos por cada 1,000 residentes",
+  "how_to_read": "Un número más alto significa más lugares turísticos por residente. En el corte de datos 2026-10, Culebra (75.89), Rincón (29.10) y Vieques (28.73) tienen los valores más altos. Trujillo Alto (2.73) y Toa Alta (2.92) tienen los más bajos. La razón no mide visitantes ni demanda. En el corte de datos 2026-10, casi dos terceras partes de los lugares contados son lugares de comida y bebida, que también sirven a residentes.",
+  "_en": {
+   "name": "d2c9907a",
+   "how_to_read": "40024a31"
+  }
+ },
+ "municipalities.assets_per_km2": {
+  "name": "Lugares turísticos por kilómetro cuadrado de superficie terrestre",
+  "how_to_read": "En el corte de datos 2026-10, San Juan tiene la mayor densidad (27.59 lugares por km²), seguido de Rincón (11.95) y Cataño (11.84). Maricao tiene la menor densidad (0.38). Los lugares se agrupan en los centros urbanos, así que el promedio de todo un municipio oculta cuán concentrado está el centro. La capa Barrios del mapa muestra los lugares por km² para áreas más pequeñas, con otra base, así que no compare los dos valores (vea 'Lugares turísticos por km² (barrio)').",
+  "_en": {
+   "name": "87b55513",
+   "how_to_read": "ef0e46a2"
+  }
+ },
+ "municipalities.in_sfha": {
+  "name": "Lugares turísticos en zona de riesgo de inundación (conteo)",
+  "how_to_read": "En el corte de datos 2026-10, Ponce tiene la mayor cantidad de lugares en zona de riesgo de inundación (540), seguido de San Juan (473), Carolina (194) y Cabo Rojo (181). Florida no tiene ninguno: en la capa de FEMA que usó el observatorio, un solo polígono de riesgo mínimo de inundación cubre todo Florida. Use sfha_pct para la proporción de los lugares de un municipio.",
+  "_en": {
+   "name": "e4f825cc",
+   "how_to_read": "0693d652"
+  }
+ },
+ "municipalities.in_flood_zone": {
+  "name": "Lugares turísticos en zona inundable mapeada de 1% o 0.2% (conteo)",
+  "how_to_read": "En el corte de datos 2026-10, San Juan tiene la mayor cantidad (676) y Florida no tiene ninguno. La diferencia entre este campo e in_sfha es el número de lugares que están solo en el área de 0.2%. En ese corte, los dos conteos son iguales en 20 municipios, porque allí ningún lugar contado está solo en el área de 0.2%. Los mapas y las posiciones del observatorio no muestran este campo. Está en el archivo de datos y en la descarga CSV (valores separados por comas).",
+  "_en": {
+   "name": "59c1bc88",
+   "how_to_read": "35ae8421"
+  }
+ },
+ "municipalities.sfha_pct": {
+  "name": "Lugares turísticos en zona de riesgo de inundación (%)",
+  "how_to_read": "Un valor alto significa que muchos de los lugares contados del municipio están en el área de inundación de 1% mapeada. Es la proporción de lugares turísticos contados cuyo marcador está en esa área. No es la proporción de la tierra, las viviendas ni las personas residentes del municipio que están en un área inundable. En el corte de datos 2026-10, Salinas (73.7%), Cataño (73.0%), Guayanilla (63.1%), Loíza (54.5%) y Guánica (52.6%) tienen los valores más altos. Florida tiene 0%. La pestaña Municipio también ordena los municipios por esta proporción (1 = la más alta).",
+  "_en": {
+   "name": "41f601c2",
+   "how_to_read": "a37c4e71"
+  }
+ },
+ "municipalities.in_protected": {
+  "name": "Lugares turísticos dentro de áreas protegidas (conteo)",
+  "how_to_read": "En el corte de datos 2026-10, San Juan tiene la mayor cantidad (134), seguido de Río Grande (50), Guánica (38) y Ponce (36). De los 869 lugares contados dentro de un área protegida en ese corte, el estado más estricto del área es 4 para 509 lugares, 2 para 252, 1 para 62 y 3 para 46. Es el código GAP del Gap Analysis Project del Servicio Geológico de EE. UU.: 1 = manejada para la biodiversidad, se permiten las perturbaciones naturales; 2 = manejada para la biodiversidad, se contienen las perturbaciones; 3 = manejada para varios usos, como la minería o la tala; 4 = sin requisito conocido de proteger la biodiversidad. El mapa describe estos códigos con otras palabras (llama al GAP 1 'reserva natural estricta'); vea 'Nivel de protección, estatus GAP (GAP_Sts)'.",
+  "_en": {
+   "name": "c10f26e5",
+   "how_to_read": "b0df7bc1"
+  }
+ },
+ "municipalities.counting_rules": {
+  "name": "Qué lugares incluye cada conteo municipal",
+  "how_to_read": "Use assets para la oferta turística. Use assets_all_confidence para ver cuánto depende el conteo de un municipio del punto de corte de 0.50. Use listings_all solo para cuadrar con la lista completa de lugares de places.json (32,541 filas en el corte de datos 2026-10).",
+  "_en": {
+   "name": "a4bcada7",
+   "how_to_read": "c5c5fbbb"
+  }
+ },
+ "municipalities.place_to_municipality": {
+  "name": "Cómo se asigna un lugar turístico a un municipio",
+  "how_to_read": "Los conteos coinciden con los polígonos que dibuja el mapa. Un lugar contado para San Juan tiene su marcador dentro del límite de San Juan, a menos que fuera uno de los pocos marcadores fuera de todos los límites. El pueblo que aparece en la dirección de un listado no decide: en el corte de datos 2026-10, 863 de los 32,541 listados (2.7%) tienen una dirección que nombra un municipio distinto de aquel en que cae su marcador. Todos los conteos de lugares por municipio del observatorio siguen el marcador.",
+  "_en": {
+   "name": "40c54602",
+   "how_to_read": "eeba9ecb"
+  }
+ },
+ "municipalities.exposure_method": {
+  "name": "Cómo se cuenta la exposición a inundaciones y a áreas protegidas",
+  "how_to_read": "La prueba indica si el marcador cae dentro de un área de riesgo mapeada en las capas descargadas para el corte de datos (el 1 de octubre de 2026 para el corte de datos 2026-10). No indica qué tan probable es que un edificio en particular se inunde. Lea las letras de las zonas en la lista de 'valores' tal como las define FEMA y revise las definiciones de zonas de la propia FEMA para la redacción exacta.",
+  "_en": {
+   "name": "88065938",
+   "how_to_read": "933fd24e"
+  }
+ },
+ "municipalities.quintile_shading": {
+  "name": "Sombreado por quintiles de las estadísticas municipales",
+  "how_to_read": "Lea la leyenda, porque el mismo color corresponde a números distintos en cada estadística. Más oscuro significa un valor más alto que el de la mayoría de los demás municipios, no un resultado bueno o malo. Algunos campos de la tabla de municipios no se pueden sombrear, como la superficie terrestre, los conteos de unidades de vivienda, la población de 2010, los lugares por categoría, la confianza promedio, las proporciones de lugares a 800 m o menos de una parada con horario vigente o a 400 m o menos de una estación de tren o una terminal de lanchas, y los conteos de paradas según el estado de su horario. El cambio en la población de 2010 a 2020 se sombrea solo en la vista 3D. Los lugares dentro de áreas protegidas y los lugares con sitio web se ofrecen en la pestaña Posiciones, no en el menú de sombreado.",
+  "_en": {
+   "name": "a7ae9c3e",
+   "how_to_read": "f21598d0"
+  }
+ },
+ "municipalities.profile_ranking_download": {
+  "name": "Perfil del municipio, posiciones y descarga CSV",
+  "how_to_read": "Para citar o analizar cifras, use los valores guardados en la descarga CSV o en municipalities.json. Las cifras que se leen en los recuadros de la pestaña Municipio pueden diferir de ellos si se ha cambiado un filtro.",
+  "_en": {
+   "name": "69b013a7",
+   "how_to_read": "f476643b"
+  }
+ }
+}

@@ -1,0 +1,47 @@
+[
+ {
+  "id": "economy.unused_funds",
+  "name": "Federal grants in Puerto Rico that ended with an unpaid balance",
+  "domain": "public-money",
+  "domains": [
+   "public-money"
+  ],
+  "group": "Public spending (Gasto Público)",
+  "kind": "table",
+  "plain": "For the federal grants signed for work in Puerto Rico since federal fiscal year 2020 that ended more than a year ago, how many still show money that was committed and not paid, and how much, by federal agency and by program. A balance on record is not money lost, and by itself it does not show that money is at risk.",
+  "definition": "unused_funds.json holds, for the grants with place of performance Puerto Rico that USAspending.gov lists as signed in each federal fiscal year (October to September) from 2020, the count and the dollars of the ones whose end date is more than one year before the day the data were read and whose obligation exceeds their total outlays by at least 5% of the award and at least $1,000, by awarding federal agency, by assistance listing and by the year they ended. Medicaid is kept apart and FEMA Public Assistance is left out.",
+  "unit": "US dollars (not adjusted for inflation) and counts of grants",
+  "value_type": "level",
+  "geography": "Puerto Rico as a whole (place of performance Puerto Rico)",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2020,
+   "last": 2025,
+   "frequency": "Once a year, after a federal fiscal year counts as final (from 15 November), and whenever the page is rebuilt (unused_funds.py --refresh): balances change as payments are reported"
+  },
+  "method": "unused_funds.py asks USAspending.gov's award search for every grant (award types 02 to 05) with place of performance Puerto Rico signed in each federal fiscal year from 2020, with its Award Amount (obligation over the award's life), its Total Outlays and its End Date. An award has ended when its end date is more than one year before the read date: the 120 days a recipient has to draw down (2 CFR 200.344) and the agency's year to close the award have passed. The unpaid balance is the obligation minus the outlays, never below zero. Ended awards that report no outlay are counted apart and not as unpaid.",
+  "how_to_read": "Read the number of grants next to the dollars: one large grant can put a program or an agency near the top. Older end years are less likely to be paid.",
+  "cautions": [
+   "An unpaid balance is not proof that money was lost: a grant can be extended, an agency can pay a late claim, and USAspending can be behind on what was paid.",
+   "Medicaid is kept apart: its ended awards show billions unpaid, more likely a gap in what USAspending reports as paid than money not paid. Never add it to the other programs.",
+   "The agency is the federal agency that awarded the grant, not the body in Puerto Rico that received it. No recipient is in the file.",
+   "Never add these figures to the federal grants obligated and paid out: they are the same awards.",
+   "Federal grant content: its Compliance review is open (HANDOFF decisions 21 and 110)."
+  ],
+  "sources": [
+   "usaspending"
+  ],
+  "added": "2026-11-18",
+  "where": {
+   "files": [
+    "unused_funds.json:*"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Federal grants: balances, reductions and audit findings",
+     "href": "unused-funds.html"
+    }
+   ]
+  }
+ }
+]

@@ -1,0 +1,1539 @@
+[
+  {
+    "id": "hazards.flood_zone",
+    "name": "FEMA flood zone (FLD_ZONE)",
+    "group": "Flood hazard zones (FEMA)",
+    "kind": "variable",
+    "plain": "The letter code that the US Federal Emergency Management Agency (FEMA) gives a mapped flood area. A, A99, AE, AH, AO and VE mean a 1% yearly chance of flooding (VE adds storm waves on the coast), and X and D mean lower or unstudied hazard.",
+    "definition": "FLD_ZONE is the flood zone code of one map shape (polygon) in the National Flood Hazard Layer (NFHL) of the Federal Emergency Management Agency (FEMA). The NFHL is the digital version of FEMA's flood insurance rate maps. In the 2026-10 snapshot, this file holds eight codes for Puerto Rico: A, A99, AE, AH, AO, VE, X and D. Zones A, A99, AE, AH, AO and VE form the Special Flood Hazard Area (SFHA): land FEMA maps with a 1% chance of flooding in any year (the '100-year flood'). Zone X has two parts, told apart by the ZONE_SUBTY field: a shaded 0.2% part (the '500-year flood') and an unshaded part of minimal hazard.",
+    "unit": "zone code (text)",
+    "value_type": "code",
+    "geography": "Puerto Rico. In the 2026-10 snapshot the file holds 4,894 polygons. 77 of the 78 municipios overlap a polygon in the 1% or 0.2% zones. Florida municipio lies wholly inside one unshaded zone X polygon (minimal hazard). Coastal polygons extend over open water.",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Retrieved from FEMA on 1 October 2026 (Snapshot 2026-10). The observatory keeps that copy until its next snapshot. FEMA changes its maps as new flood maps take effect, so a later copy can differ. 2026 is the year the observatory retrieved the layer, not the year FEMA drew each map. Map dates vary by panel and are not stored here."
+    },
+    "method": "The build downloads layer 28 (Flood Hazard Zones) of the NFHL for every record whose DFIRM_ID (the identifier of FEMA's Digital Flood Insurance Rate Map database) starts with 72, the Puerto Rico code. It publishes FLD_ZONE, ZONE_SUBTY and SFHA_TF. Outlines are simplified to about 5 m (0.00005 degrees) for display, and no polygon is dropped. The map layer draws the SFHA zones and zone X with the 0.2% subtype. It hides zone D and unshaded zone X.",
+    "sources": [
+      "fema_nfhl"
+    ],
+    "source_detail": "FEMA NFHL MapServer layer 28 (Flood Hazard Zones), DFIRM_ID LIKE '72%'. The zone meanings paraphrase FEMA's Flood Zones glossary page (fema.gov/glossary/flood-zones, updated 8 July 2020) and FEMA's FloodSmart page 'What is my flood zone' (floodsmart.gov), both read on 4 October 2026. Those pages give FEMA's own wording. The FEMA service itself carries no definition table. Cite as: FEMA, National Flood Hazard Layer, layer 28 Flood Hazard Zones, Puerto Rico (DFIRM_ID beginning 72), https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/28, retrieved 1 October 2026 for observatory Snapshot 2026-10.",
+    "how_to_read": "Read the letters as families. VE is the coastal high-hazard zone, where waves add force to flooding. A, A99, AE, AH and AO are the other 1% zones. X with the 0.2% subtype is outside the 1% area but inside the wider 0.2% area. Unshaded X and D are not drawn on the observatory's maps. FEMA gives base flood elevations or depths for some zones, but the observatory does not publish them: the file holds only the zone, subtype and SFHA flag.",
+    "caveats": [
+      "A zone is a map category. It is not a flood depth, a forecast or a record of damage in a past storm.",
+      "Zone D means FEMA has not studied the area. It does not mean low risk.",
+      "Unshaded X means minimal hazard on FEMA's map, not no hazard. Heavy rain can flood land that FEMA maps as minimal hazard.",
+      "FEMA publishes an effective date for each map panel. The observatory does not keep it, so the age of a polygon cannot be read from this file."
+    ],
+    "see_also": [
+      "hazards.flood_subtype",
+      "hazards.sfha",
+      "hazards.flood_zones_layer",
+      "hazards.flood_exposure_flag",
+      "hazards.flood_limits",
+      "places.flood_zone",
+      "layers.flood_zones_control"
+    ],
+    "where": {
+      "files": [
+        "flood.geojson:FLD_ZONE"
+      ],
+      "view": [
+        {
+          "label": "2D map, Map layers tab: Hazards and environment, Flood zones (FEMA)",
+          "href": "index.html#l=flood"
+        },
+        {
+          "label": "3D + Time, Layers tab: Hazards and environment, Flood zones (FEMA)",
+          "href": "3d.html"
+        }
+      ]
+    },
+    "values": {
+      "A": "1% yearly chance flood area (SFHA) where FEMA did not work out flood heights. Drawn on the maps. In the 2026-10 snapshot: 191 polygons.",
+      "A99": "1% yearly chance flood area (SFHA) that a federal flood-control system under construction is meant to protect once it is finished. Drawn. In the 2026-10 snapshot: 1 polygon.",
+      "AE": "1% yearly chance flood area (SFHA) where FEMA gives base flood elevations, the height the 1% flood is expected to reach. It is the most common SFHA zone. Drawn on the maps; floodway polygons are drawn red. In the 2026-10 snapshot: 1,760 polygons, 138 of them also marked floodway. Zone X has more polygons overall (2,368).",
+      "AH": "1% yearly chance shallow flooding area (SFHA), usually ponding about 1 to 3 feet deep, with base flood elevations. Drawn. In the 2026-10 snapshot: 1 polygon.",
+      "AO": "1% yearly chance shallow flooding area (SFHA), usually water flowing over sloping ground about 1 to 3 feet deep, with flood depths given. Drawn; a floodway polygon is drawn red. In the 2026-10 snapshot: 25 polygons, 1 also marked floodway.",
+      "VE": "Coastal 1% yearly chance flood area (SFHA) with an added hazard from storm waves, with base flood elevations. Drawn in the darkest blue, except a river floodway polygon, which is red. In the 2026-10 snapshot: 539 polygons, 1 of them a river floodway inside the coastal zone.",
+      "X": "Outside the 1% area and not part of the SFHA. It has two parts, set by ZONE_SUBTY: 0.2% annual chance flood hazard (drawn light blue) and area of minimal flood hazard (not drawn). In the 2026-10 snapshot: 2,368 polygons, of which 1,648 are the 0.2% part and 720 the minimal-hazard part.",
+      "D": "Possible but undetermined flood hazard: FEMA has not studied the area. Not part of the SFHA and not drawn. In the 2026-10 snapshot: 9 polygons."
+    },
+    "example": "A tourism place whose pin falls in an AE polygon is flagged as in a flood hazard area. A place in an X polygon with the 0.2% subtype is flagged as in a flood zone only.",
+    "domain": "hazards",
+    "domains": ["hazards"],
+    "added": "2026-10-01"
+  },
+  {
+    "id": "hazards.flood_subtype",
+    "name": "FEMA flood zone subtype (ZONE_SUBTY)",
+    "group": "Flood hazard zones (FEMA)",
+    "kind": "variable",
+    "plain": "A second label from the US Federal Emergency Management Agency (FEMA) that marks the 0.2% flood area, areas of minimal hazard and floodways. In the 2026-10 snapshot it is blank on 2,386 of the 4,894 polygons.",
+    "definition": "ZONE_SUBTY refines FLD_ZONE in FEMA's National Flood Hazard Layer (NFHL). It exists to separate the two kinds of zone X, which carry the same letter, and to mark floodways inside the 1% zones (the Special Flood Hazard Area, SFHA). In the 2026-10 snapshot this file holds four values. The field is blank (stored as null) for 2,386 polygons: the 1% zones that are not floodways, plus zone D.",
+    "unit": "subtype text (FEMA's capital-letter wording)",
+    "value_type": "code",
+    "geography": "Puerto Rico. In the 2026-10 snapshot the file holds 4,894 polygons. 77 of the 78 municipios overlap a polygon in the 1% or 0.2% zones. Florida municipio lies wholly inside one unshaded zone X polygon (minimal hazard). Coastal polygons extend over open water.",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Retrieved from FEMA on 1 October 2026 (Snapshot 2026-10). The observatory keeps that copy until its next snapshot. FEMA changes its maps as new flood maps take effect, so a later copy can differ. 2026 is the year the observatory retrieved the layer, not the year FEMA drew each map. Map dates vary by panel and are not stored here."
+    },
+    "method": "Copied from NFHL layer 28 without change. The observatory reads a subtype that contains '0.2' as the 0.2% zone, and one that contains 'FLOODWAY' as a floodway, drawn red.",
+    "sources": [
+      "fema_nfhl"
+    ],
+    "source_detail": "FEMA NFHL MapServer layer 28 (Flood Hazard Zones), field ZONE_SUBTY. Cite as: FEMA, National Flood Hazard Layer, layer 28 Flood Hazard Zones, Puerto Rico (DFIRM_ID beginning 72), https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/28, retrieved 1 October 2026 for observatory Snapshot 2026-10.",
+    "how_to_read": "Use the subtype to tell the two kinds of zone X apart. In the observatory, only zone X with the 0.2% subtype counts as a flood zone. Unshaded X is ignored.",
+    "caveats": [
+      "The wording is FEMA's. It can change between FEMA releases, and a later release can add other values. Only these four occur in the 2026-10 snapshot.",
+      "The observatory counts a zone X polygon as a flood zone only when its subtype contains '0.2'. A zone X polygon with any other subtype would be hidden and not flagged, even if FEMA draws it as a hazard. Only two X subtypes occur in the 2026-10 snapshot.",
+      "Blank is not an error. It is the normal value for a 1% polygon that is not a floodway."
+    ],
+    "see_also": [
+      "hazards.flood_zone",
+      "hazards.sfha",
+      "hazards.flood_zones_layer",
+      "places.flood_subtype",
+      "layers.flood_zones_control"
+    ],
+    "where": {
+      "files": [
+        "flood.geojson:ZONE_SUBTY"
+      ],
+      "view": [
+        {
+          "label": "2D map, Map layers tab: Hazards and environment, Flood zones (FEMA)",
+          "href": "index.html#l=flood"
+        },
+        {
+          "label": "3D + Time, Layers tab: Hazards and environment, Flood zones (FEMA)",
+          "href": "3d.html"
+        }
+      ]
+    },
+    "values": {
+      "0.2 PCT ANNUAL CHANCE FLOOD HAZARD": "Zone X, shaded: moderate hazard, land between the limits of the 1% and the 0.2% ('500-year') floods. Drawn light blue. In the 2026-10 snapshot: 1,648 polygons, all zone X, none in the SFHA.",
+      "AREA OF MINIMAL FLOOD HAZARD": "Zone X, unshaded: land FEMA maps outside the 0.2% flood area. Not drawn and not counted as flood exposure. In the 2026-10 snapshot: 720 polygons, all zone X. Florida municipio lies wholly inside one of them.",
+      "FLOODWAY": "Regulatory floodway: the river channel and the strip beside it that must stay clear so the 1% flood can pass without raising water levels by more than a set height. Always inside the SFHA. Drawn red. In the 2026-10 snapshot: 139 polygons (138 zone AE, 1 zone AO).",
+      "RIVERINE FLOODWAY SHOWN IN COASTAL ZONE": "A river floodway that FEMA shows inside a coastal zone. Inside the SFHA. Drawn red like other floodways. In the 2026-10 snapshot: 1 polygon, zone VE.",
+      "null (blank)": "Stored as null in flood.geojson. No subtype given. In the 2026-10 snapshot: 2,386 polygons, the A, A99, AE, AH, AO and VE polygons that are not floodways (2,377) plus the 9 zone D polygons."
+    },
+    "domain": "hazards",
+    "domains": ["hazards"],
+    "added": "2026-10-01"
+  },
+  {
+    "id": "hazards.sfha",
+    "name": "In the Special Flood Hazard Area (SFHA_TF)",
+    "group": "Flood hazard zones (FEMA)",
+    "kind": "variable",
+    "plain": "A true or false flag on each polygon of the US Federal Emergency Management Agency (FEMA) flood map. T means the polygon is in the Special Flood Hazard Area (SFHA), land with a 1% yearly chance of flooding, and F means it is not.",
+    "definition": "SFHA_TF holds the letter T (true) or F (false). The Special Flood Hazard Area (SFHA) is the land FEMA maps as having a 1% chance of flooding in any year. T marks zones A, A99, AE, AH, AO and VE. F marks every zone X and zone D polygon. In the 2026-10 snapshot, 2,517 polygons are T and 2,377 are F.",
+    "unit": "T or F (text)",
+    "value_type": "flag",
+    "geography": "Puerto Rico. In the 2026-10 snapshot the file holds 4,894 polygons. 77 of the 78 municipios overlap a polygon in the 1% or 0.2% zones. Florida municipio lies wholly inside one unshaded zone X polygon (minimal hazard). Coastal polygons extend over open water.",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Retrieved from FEMA on 1 October 2026 (Snapshot 2026-10). The observatory keeps that copy until its next snapshot. FEMA changes its maps as new flood maps take effect, so a later copy can differ. 2026 is the year the observatory retrieved the layer, not the year FEMA drew each map. Map dates vary by panel and are not stored here."
+    },
+    "method": "Copied without change from layer 28 of FEMA's National Flood Hazard Layer (NFHL). The build sets a place's sfha flag to yes when the place falls in a polygon where SFHA_TF is T.",
+    "sources": [
+      "fema_nfhl"
+    ],
+    "source_detail": "FEMA NFHL MapServer layer 28 (Flood Hazard Zones), field SFHA_TF. Cite as: FEMA, National Flood Hazard Layer, layer 28 Flood Hazard Zones, Puerto Rico (DFIRM_ID beginning 72), https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/28, retrieved 1 October 2026 for observatory Snapshot 2026-10.",
+    "how_to_read": "The observatory uses this flag, not the zone letter, to decide that a tourism place is in a flood hazard area. The route planner uses it too (see 'Share of the route in a flood hazard area').",
+    "caveats": [
+      "F does not mean safe. Polygons in the 0.2% zone are F but can still flood.",
+      "The values are the text letters T and F, not true or false values."
+    ],
+    "see_also": [
+      "hazards.flood_zone",
+      "hazards.flood_exposure_flag",
+      "municipalities.in_sfha",
+      "municipalities.sfha_pct",
+      "places.sfha",
+      "measures.route_flood",
+      "boundaries.barrio_sfha"
+    ],
+    "where": {
+      "files": [
+        "flood.geojson:SFHA_TF"
+      ],
+      "view": [
+        {
+          "label": "2D map, Map layers tab: Hazards and environment, Flood zones (FEMA)",
+          "href": "index.html#l=flood"
+        },
+        {
+          "label": "3D + Time, Layers tab: Hazards and environment, Flood zones (FEMA)",
+          "href": "3d.html"
+        }
+      ]
+    },
+    "values": {
+      "T": "In the Special Flood Hazard Area: zones A, A99, AE, AH, AO and VE. In the 2026-10 snapshot: 2,517 polygons.",
+      "F": "Not in the Special Flood Hazard Area. In the 2026-10 snapshot: 2,377 polygons, made up of 1,648 shaded X, 720 unshaded X and 9 zone D."
+    },
+    "domain": "hazards",
+    "domains": ["hazards"],
+    "added": "2026-10-01"
+  },
+  {
+    "id": "hazards.flood_zones_layer",
+    "name": "FEMA flood zones (map layer)",
+    "group": "Flood hazard zones (FEMA)",
+    "kind": "layer",
+    "plain": "A map layer that shades the land the US Federal Emergency Management Agency (FEMA) maps as flood-prone: the 1% zones, floodways, coastal high-hazard zones and the 0.2% zone. Zone D and unshaded X are left blank.",
+    "definition": "The layer called 'Flood zones' (source FEMA, from its National Flood Hazard Layer, NFHL) in the 2D map and in the 3D view draws the polygons of flood.geojson that are in the Special Flood Hazard Area (SFHA) or are zone X with the 0.2% subtype. Red is a floodway. The darkest blue is a V zone (VE). Mid blue is any other SFHA zone (A, A99, AE, AH, AO). Light blue is the 0.2% zone. The layer hides zone D, unshaded X and the FEMA labels OPEN WATER and AREA NOT INCLUDED (neither occurs in the 2026-10 snapshot). Clicking a shaded area opens a popup with its zone and subtype, the same in the 2D map and the 3D view: one card with a section for each area under the click.",
+    "unit": "map polygons",
+    "value_type": "geometry",
+    "geography": "In the 2026-10 snapshot the file holds 4,894 polygons for Puerto Rico. The layer draws 4,165 of them: 2,517 in the SFHA and 1,648 shaded zone X. It hides 729: 720 unshaded X and 9 zone D.",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Retrieved from FEMA on 1 October 2026 (Snapshot 2026-10). The observatory keeps that copy until its next snapshot. FEMA changes its maps as new flood maps take effect, so a later copy can differ. 2026 is the year the observatory retrieved the layer, not the year FEMA drew each map. Map dates vary by panel and are not stored here."
+    },
+    "method": "Both maps draw the polygons in the SFHA and the zone X polygons whose subtype contains 0.2. They hide zone D, unshaded X and the two FEMA labels named above. Colours are red (floodway), darkest blue (V zones), mid blue (other SFHA zones) and light blue (0.2% zone), drawn at about 45% opacity. Place flags are not read from this file. They come from FEMA's unsimplified polygons.",
+    "sources": [
+      "fema_nfhl"
+    ],
+    "source_detail": "flood.geojson, built from FEMA NFHL layer 28 (Flood Hazard Zones). Cite as: FEMA, National Flood Hazard Layer, layer 28 Flood Hazard Zones, Puerto Rico (DFIRM_ID beginning 72), https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/28, retrieved 1 October 2026 for observatory Snapshot 2026-10.",
+    "how_to_read": "Colour shows the zone family, not depth. Use the zone letter and subtype to read what FEMA says. An unshaded area is not proof of safety. The layer 'Flood zones' covers the 1% zones and the 0.2% zone. In the place and municipality figures, 'in a flood hazard area' means the 1% area only (the Special Flood Hazard Area).",
+    "caveats": [
+      "Drawn outlines are simplified to about 5 m. A place at a zone edge can look inside or outside on the map while its flag uses FEMA's unsimplified outline.",
+      "In the 2026-10 snapshot, Florida municipio shows no flood colour because FEMA maps all of it as one unshaded zone X polygon (minimal hazard), which the layer does not draw. The blank is a mapped result, not missing data. FEMA's panels for that municipio took effect between 2005 and 2009 (checked 5 October 2026).",
+      "Coastal polygons extend over open water. A shoreline place can sit in a VE zone.",
+      "The layer shows FEMA's mapped hazard, not sea level rise. The sea level layer of the National Oceanic and Atmospheric Administration (NOAA) is separate."
+    ],
+    "see_also": [
+      "hazards.flood_zone",
+      "hazards.flood_subtype",
+      "hazards.sfha",
+      "hazards.flood_limits",
+      "hazards.slr_inundation",
+      "layers.flood_zones_control",
+      "layers.hazards_3d"
+    ],
+    "where": {
+      "files": [],
+      "view": [
+        {
+          "label": "2D map, Map layers tab: Hazards and environment, Flood zones (FEMA)",
+          "href": "index.html#l=flood"
+        },
+        {
+          "label": "3D + Time, Layers tab: Hazards and environment, Flood zones (FEMA)",
+          "href": "3d.html"
+        }
+      ]
+    },
+    "domain": "hazards",
+    "domains": ["hazards"],
+    "added": "2026-10-01"
+  },
+  {
+    "id": "hazards.flood_exposure_flag",
+    "name": "How flood exposure of a place is flagged",
+    "group": "Flood hazard zones (FEMA)",
+    "kind": "method",
+    "plain": "The observatory flags a tourism place as in a flood hazard area when its map point lies inside an area that the US Federal Emergency Management Agency (FEMA) maps with a 1% chance of flooding each year. A second, wider flag also covers the area FEMA maps with a 0.2% chance. Places in areas that FEMA marks as minimal hazard, or has not studied, get neither flag.",
+    "definition": "For every place the build tests its coordinates against FEMA's flood polygons (point in polygon) and records two results. The sfha flag (Special Flood Hazard Area, SFHA) is yes when the point is inside a polygon where SFHA_TF is T. The flood zone value holds the zone and subtype when the point is in an SFHA polygon or in a zone X polygon with the 0.2% subtype. A point in unshaded X or zone D gets neither. If a point lies in more than one polygon, an SFHA polygon wins over a 0.2% polygon. Polygons labelled OPEN WATER or AREA NOT INCLUDED are skipped before testing (none occur in the 2026-10 snapshot).",
+    "unit": "not applicable (yes or no per place)",
+    "value_type": "flag",
+    "geography": "Every place in Puerto Rico's places file (32,541 listings in the 2026-10 snapshot). Municipality figures use the 24,209 counted places of that snapshot: tourism places with confidence 0.50 or higher, places of worship excluded (see 'Which places each municipality count includes').",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Recalculated with each snapshot, from the FEMA copy retrieved on 1 October 2026."
+    },
+    "method": "The build tests each place's longitude and latitude with the 'within' test of Shapely (a Python geometry library) against FEMA's unsimplified polygons, not the simplified display file. A point exactly on an edge is not 'within'. Municipality counts use counted places only: confidence 0.50 or higher, places of worship excluded. Percent in a flood hazard area is places in the SFHA divided by counted places, times 100, to one decimal.",
+    "sources": [
+      "overture",
+      "fema_nfhl"
+    ],
+    "source_detail": "Overture Maps places; FEMA National Flood Hazard Layer, layer 28 (Flood Hazard Zones), https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/28, retrieved 1 October 2026.",
+    "how_to_read": "'In a flood hazard area' means the pin sits inside a polygon that FEMA maps with a 1% yearly chance of flooding. It does not say the place floods, how deep the water gets or whether the place has insurance.",
+    "caveats": [
+      "Only the pin is tested. A building, beach or park can be partly inside a zone and partly outside.",
+      "The pin comes from Overture Maps and can be off the building by metres or more.",
+      "Coastal zones run along the shore, so shoreline places are flagged more often. In the 2026-10 snapshot, 428 of 817 counted beaches (52%) are in the SFHA, against 18% of all counted places.",
+      "No flag does not mean safe. Zone D and unshaded X are treated as not flagged, and FEMA's map covers only what FEMA studied.",
+      "Places of worship are flagged in the places file but left out of municipality percentages.",
+      "In the 2026-10 snapshot, Florida municipio lies wholly inside one unshaded zone X polygon (minimal hazard), which is not flagged, so its 55 counted places show 0.0% in a flood hazard area. That is a mapped result, not missing data.",
+      "On a place, flood_zone X means the 0.2% zone. Unshaded X and zone D are never stored. A place with no flood_zone may still sit in unshaded X or outside FEMA's mapped area.",
+      "The percent is a share of listed places, not of land area, buildings or residents.",
+      "A municipio with few places can swing widely. See 'Tourism places in a flood hazard area (%)' for an example.",
+      "If a point sits in two polygons of the SFHA, the build keeps one of them and no rule decides which, so the zone letter can be either."
+    ],
+    "see_also": [
+      "hazards.sfha",
+      "hazards.flood_zone",
+      "hazards.flood_limits",
+      "municipalities.in_sfha",
+      "municipalities.in_flood_zone",
+      "municipalities.sfha_pct",
+      "places.sfha",
+      "places.flood_zone",
+      "places.flood_subtype",
+      "boundaries.barrio_sfha",
+      "measures.route_flood"
+    ],
+    "where": {
+      "files": [],
+      "view": [
+        {
+          "label": "Map, Map layers tab: shade municipalities by % of places in flood hazard area",
+          "href": "index.html#s=sfha_pct"
+        }
+      ]
+    },
+    "example": "Snapshot 2026-10: of 24,209 counted places, 4,468 (18.5%) are in the SFHA and 5,668 (23.4%) are in the SFHA or the 0.2% zone.",
+    "domain": "hazards",
+    "domains": ["hazards"],
+    "added": "2026-10-01"
+  },
+  {
+    "id": "hazards.flood_limits",
+    "name": "What FEMA flood zones can and cannot tell you",
+    "group": "Flood hazard zones (FEMA)",
+    "kind": "method",
+    "plain": "Zones from the US Federal Emergency Management Agency (FEMA) describe the mapped flood hazard at a point on the map. They do not give a building's elevation, a flood depth for a given storm, or a place's insurance status.",
+    "definition": "A FEMA flood zone is a regulatory map category for an area. It says how FEMA classes the chance of flooding there. It does not say how high a building's floor is, how deep water will be in a given storm, or what insurance a place has. The observatory holds no insurance data, so it cannot say whether a place needs or has flood insurance.",
+    "unit": "not applicable",
+    "value_type": "text",
+    "geography": "Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Rebuilt with each snapshot"
+    },
+    "method": "Applies to every FEMA-based figure in the observatory: the flood layers, a place's flood flag and the municipality percentages.",
+    "sources": [
+      "fema_nfhl"
+    ],
+    "source_detail": "FEMA National Flood Hazard Layer (NFHL), layer 28 (Flood Hazard Zones). Cite as: FEMA, National Flood Hazard Layer, layer 28 Flood Hazard Zones, Puerto Rico (DFIRM_ID beginning 72), https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/28, retrieved 1 October 2026 for observatory Snapshot 2026-10.",
+    "how_to_read": "Treat the flags as a first screen. For a decision about a building, check the official FEMA flood map for that address and ask a qualified professional.",
+    "caveats": [
+      "A 1% yearly chance is not 'once in 100 years'. Over 30 years the chance of at least one such flood is about 26%.",
+      "Zones come from studies of past and present conditions. They are not forecasts, and the observatory does not add sea level rise to them.",
+      "The flags are a point-in-polygon test on the pin (map point). They ignore ground elevation, drainage, flood-control works and building design.",
+      "FEMA's zones exist only where FEMA mapped. Zone D marks land that was not studied."
+    ],
+    "see_also": [
+      "hazards.flood_zone",
+      "hazards.flood_exposure_flag",
+      "hazards.flood_zones_layer",
+      "measures.route_flood",
+      "hazards.slr_inundation",
+      "places.sfha",
+      "municipalities.sfha_pct"
+    ],
+    "where": {
+      "files": []
+    },
+    "domain": "hazards",
+    "domains": ["hazards"],
+    "added": "2026-10-01"
+  },
+  {
+    "id": "hazards.slr_inundation",
+    "name": "Sea level rise inundation layer (NOAA)",
+    "group": "Sea level rise",
+    "kind": "layer",
+    "plain": "Map tiles streamed live from the US National Oceanic and Atmospheric Administration (NOAA) that show land that would be under water at high tide if the sea rose by 1 to 10 feet. The observatory does not store them.",
+    "definition": "Each tile layer shows the area that NOAA's Office for Coastal Management maps as flooded when sea level is a set number of feet above today's mean higher high water (MHHW), the average height of the higher of the two daily high tides. The observatory offers whole-foot steps from 1 to 10 ft. NOAA draws the tiles. The browser asks coast.noaa.gov for them while the layer is on. No sea level data are kept in the observatory's data files.",
+    "unit": "feet above mean higher high water (MHHW)",
+    "value_type": "geometry",
+    "geography": "Puerto Rico coast, as covered by NOAA's national layers",
+    "coverage": {
+      "timeline": "live",
+      "frequency": "Live from NOAA each time the layer is shown"
+    },
+    "method": "NOAA draws the tiles. While the layer is on, the browser asks https://coast.noaa.gov/arcgis/rest/services/dc_slr/slr_{N}ft/MapServer for tiles, where N is the height in feet. Tiles are requested up to zoom level 16 and enlarged beyond that. If NOAA does not answer, the page shows a message. For the controls, see 'Sea level rise switch and slider (2D map)', '3D view: Sea level by year' and '3D view: flood zones and sea level switches'.",
+    "sources": [
+      "noaa_slr"
+    ],
+    "source_detail": "NOAA Office for Coastal Management, Sea Level Rise Viewer, ArcGIS service dc_slr, tile layers slr_1ft to slr_10ft (https://coast.noaa.gov/arcgis/rest/services/dc_slr). The tiles are streamed live, so there is no retrieval date to give: cite the feet value and the date you viewed the layer.",
+    "how_to_read": "Tinted areas are where NOAA maps flooding at the chosen height above mean higher high water, at the highest regular high tides. It is a what-if for planning, not a forecast for a year. NOAA says all features should be verified with a site visit. To cite a layer, give the feet value and the date you viewed it, because NOAA can update the service.",
+    "caveats": [
+      "NOAA describes the layers as a screening-level tool. They show the scale of possible flooding, not exact locations.",
+      "NOAA says the layers do not account for erosion, subsidence or future construction.",
+      "NOAA says the layers show water at the highest high tides and exclude wind-driven tides. Its viewer does not model storm surge.",
+      "As of 4 October 2026, NOAA's service for the 3 ft layer holds two sublayers, 'Low-lying Areas' and 'Depth', and the observatory shows NOAA's full tile set. NOAA's Sea Level Rise Viewer help explains how NOAA defines low-lying areas. Read it before concluding that a particular place would flood.",
+      "NOAA provides the data as is, for planning and not for permits or navigation.",
+      "The observatory keeps no copy. If NOAA changes or removes the service, the layer stops working."
+    ],
+    "see_also": [
+      "hazards.slr_year_to_feet",
+      "hazards.flood_zones_layer",
+      "layers.slr_control",
+      "layers.sea_level_clock_3d"
+    ],
+    "where": {
+      "files": [],
+      "view": [
+        {
+          "label": "2D map, Map layers tab: Hazards and environment, Sea level rise (NOAA), slider set to 3 ft",
+          "href": "index.html#l=slr&slr=3"
+        },
+        {
+          "label": "3D + Time, Time tab: Sea level by year (Year slider and NOAA 2022 scenario)",
+          "href": "3d.html"
+        },
+        {
+          "label": "3D + Time, Layers tab: Hazards, Sea level rise",
+          "href": "3d.html"
+        }
+      ]
+    },
+    "domain": "hazards",
+    "domains": ["hazards"],
+    "added": "2026-10-01"
+  },
+  {
+    "id": "hazards.landslide_layer",
+    "name": "Landslide susceptibility layer (USGS)",
+    "group": "Landslides",
+    "kind": "layer",
+    "plain": "A map from the US Geological Survey of how likely the ground is to slide when intense rain falls, in five classes from low to extremely high. The tiles are streamed live; the observatory does not store them.",
+    "definition": "The USGS map of susceptibility to landslides triggered by intense rainfall (Hughes and Schulz, 2020), drawn on the 2D map and draped on the terrain of the 3D view in its five classes: Low (the least susceptible 40% of the main island), Moderate (the next 30%), High (20%), Very High (9%) and Extremely High (the top 1%). The browser asks the first author's tile copy for the tiles while the layer is on; nothing is stored in the observatory's data files.",
+    "unit": "susceptibility class (five classes)",
+    "value_type": "geometry",
+    "geography": "The main island of Puerto Rico (not Vieques or Culebra)",
+    "coverage": {
+      "timeline": "live",
+      "frequency": "Streamed from the map service each time the layer is shown; the model itself is static (2020)."
+    },
+    "method": "While the layer is on, the browser asks https://tiles.arcgis.com/tiles/TQ9qkk0dURXSP7LQ/arcgis/rest/services/Susceptibilidad_Derrumbe_PR/MapServer for tiles up to zoom 17 and enlarges them beyond that, at 60% opacity, under the Soils layer. The same tiles are what landslide.py reads for the barrio and municipio figures, checked there against the report (see landslide.ls_land_high_pct).",
+    "sources": [
+      "usgs_landslide_map"
+    ],
+    "source_detail": "Hughes and Schulz (2020), USGS Open-File Report 2020-1022; GIS layer: https://doi.org/10.5066/P990ZP4C. Tiles: https://tiles.arcgis.com/tiles/TQ9qkk0dURXSP7LQ/arcgis/rest/services/Susceptibilidad_Derrumbe_PR/MapServer.",
+    "how_to_read": "The redder the area, the more likely a landslide is there when intense rain falls; the blue-violet class is the most susceptible 1% of the island. It shows where a slide is more likely, not when or whether one will happen. Turn it on with the Soils layer's slope to compare.",
+    "caveats": [
+      "The authors say the map is for planning and emergency preparation and is not a substitute for a site-specific slope-stability study.",
+      "It does not show where a landslide travels downhill, and deep bedrock landslides and earthquake-triggered ones are poorly represented.",
+      "Vieques and Culebra are not in the map.",
+      "The layer needs the map service to answer; if the copy is moved or removed, the layer stops working."
+    ],
+    "see_also": [
+      "landslide.ls_land_high_pct",
+      "land.soils_layer",
+      "hazards.flood_zones_layer"
+    ],
+    "where": {
+      "files": [],
+      "view": [
+        {
+          "label": "Map, Layers tab: Hazards and environment, Landslide susceptibility",
+          "href": "index.html#l=slide"
+        }
+      ]
+    },
+    "domain": "hazards",
+    "domains": ["hazards"],
+    "added": "2026-11-06"
+  },
+  {
+    "id": "hazards.slr_year_to_feet",
+    "name": "Sea level rise by year and scenario (3D view)",
+    "group": "Sea level rise",
+    "kind": "measure",
+    "plain": "The 3D view picks a layer of the US National Oceanic and Atmospheric Administration (NOAA) from a year and a scenario. It reads the scenario's rise in metres for that year, converts it to feet, rounds to a whole foot and keeps it between 1 and 10.",
+    "definition": "In the Time tab of the 3D view, you choose a year (2020 to 2150, in steps of 5) and one of four NOAA 2022 scenarios. The page holds a small table of global mean sea level rise, in metres above the year-2000 level, for 2020, 2050, 2100 and 2150 in each scenario. It joins those points with straight lines, multiplies the metres by 3.28084 to get feet, rounds to the nearest whole foot and limits the result to 1 to 10 ft. It then loads NOAA's layer for that number of feet.",
+    "unit": "feet of sea level rise (whole feet, 1 to 10)",
+    "value_type": "level",
+    "geography": "Global mean curves applied to Puerto Rico",
+    "coverage": {
+      "timeline": "static",
+      "first": 2020,
+      "last": 2150,
+      "frequency": "Fixed in the page code. It changes only when the code changes."
+    },
+    "method": "For a year y between two table years y0 and y1, the page works out: metres = m0 + (m1 - m0) x (y - y0) / (y1 - y0). Feet = metres x 3.28084, rounded half up, then at least 1 and at most 10. The 2D map has no year. Its slider sets the feet directly.",
+    "sources": [
+      "noaa_slr_scenarios",
+      "noaa_slr"
+    ],
+    "source_detail": "Sweet et al. (2022), Global and Regional Sea Level Rise Scenarios for the United States: Updated Mean Projections and Extreme Water Level Probabilities Along U.S. Coastlines, NOAA Technical Report NOS 01, for the curves; NOAA Sea Level Rise Viewer for the layers. The observatory's values are approximate readings of the report's tables, not NOAA's published numbers.",
+    "how_to_read": "Several years show the same layer, because the result is rounded to whole feet. The layer is 1 ft from 2020 until 2050 in High and Intermediate-High, until 2060 in Intermediate and until 2090 in Intermediate-Low. A year on the slider is a position on a scenario curve, not a prediction that the sea will reach that level in that year. The Year slider opens at 2050 and the scenario at Intermediate, which gives the 1 ft layer.",
+    "caveats": [
+      "The curves are global averages typed into the page code. They are not Puerto Rico local values.",
+      "The scenarios measure rise above the year-2000 sea level. The NOAA layers show water above today's mean higher high water. The observatory treats the two as the same number of feet.",
+      "Only four scenarios are offered: Intermediate-Low, Intermediate, Intermediate-High and High. NOAA's 2022 report also has a Low scenario, which the observatory does not offer.",
+      "The result is capped at 10 ft, so the High scenario in 2150 (12.8 ft) shows the 10 ft layer.",
+      "The layer is never lower than 1 ft. In 2020 the table value is 0.07 m (0.2 ft) in every scenario, so the 1 ft layer shows more water than the table gives. The floor changes the result only while the table value is under 0.5 ft: up to 2025 in High and Intermediate-High, and up to 2030 in Intermediate and Intermediate-Low.",
+      "These metres are the observatory's own approximate readings of NOAA's tables, not NOAA's published numbers. For scenario values to cite, use the NOAA report."
+    ],
+    "see_also": [
+      "hazards.slr_inundation",
+      "layers.sea_level_clock_3d",
+      "layers.slr_control"
+    ],
+    "where": {
+      "files": [],
+      "view": [
+        {
+          "label": "3D + Time, Time tab: Sea level by year (Year slider and NOAA 2022 scenario)",
+          "href": "3d.html"
+        }
+      ]
+    },
+    "values": {
+      "Intermediate-Low": "Approximate reading of the NOAA 2022 tables, in metres above the year-2000 level: 2020 0.07; 2050 0.24; 2100 0.50; 2150 0.80.",
+      "Intermediate": "Approximate reading of the NOAA 2022 tables, in metres above the year-2000 level: 2020 0.07; 2050 0.30; 2100 1.00; 2150 1.90.",
+      "Intermediate-High": "Approximate reading of the NOAA 2022 tables, in metres above the year-2000 level: 2020 0.07; 2050 0.37; 2100 1.50; 2150 2.90.",
+      "High": "Approximate reading of the NOAA 2022 tables, in metres above the year-2000 level: 2020 0.07; 2050 0.44; 2100 2.00; 2150 3.90."
+    },
+    "example": "NOAA layer shown in 2050, 2100 and 2150. Intermediate-Low: 1, 2, 3 ft. Intermediate: 1, 3, 6 ft. Intermediate-High: 1, 5, 10 ft. High: 1, 7, 10 ft. Worked example: Intermediate in 2100 is 1.0 m, which is 3.28 ft, so the 3 ft layer.",
+    "domain": "hazards",
+    "domains": ["hazards"],
+    "added": "2026-10-01"
+  },
+  {
+    "id": "hazards.storm_selection",
+    "name": "How storms near Puerto Rico are selected",
+    "group": "Hurricanes and tropical storms",
+    "kind": "method",
+    "plain": "The observatory keeps every Atlantic storm from 1851 to 2025 that had a recorded position within 250 km (155 miles) of the centre of Puerto Rico. The storms come from the Hurricane Database, 2nd generation (HURDAT2) of the US National Oceanic and Atmospheric Administration (NOAA). In the 2026-10 snapshot that is 157 storms.",
+    "definition": "The National Hurricane Center (NHC), part of NOAA, publishes HURDAT2, the Atlantic hurricane database: a list of storms, each with positions and winds every 6 hours. The build measures the distance from each best-track position to a fixed point at 18.22 N, 66.45 W, near the middle of the main island. A storm is kept when its closest position is 250 km (about 155 miles) or less from that point. Each kept storm carries four derived values: min_dist_km, max_wind, wind_near_pr and cat_near_pr.",
+    "unit": "not applicable",
+    "value_type": "text",
+    "geography": "Atlantic storms with a best-track position within 250 km of the centre of Puerto Rico (157 storms in the 2026-10 snapshot)",
+    "coverage": {
+      "timeline": "event-based",
+      "first": 1851,
+      "last": 2025,
+      "frequency": "The observatory uses NOAA's release file hurdat2-1851-2025-092326.txt, retrieved on 5 October 2026 (Snapshot 2026-10). The build looks up the newest NOAA file only when it is run with the refresh option; it does not check on its own. NOAA adds each season after it ends and may revise earlier seasons."
+    },
+    "method": "1) Read the HURDAT2 Atlantic file (hurdat2-1851-2025-092326.txt): one header line per storm (id, name), then one row per position (date, time, status, latitude, longitude, wind in knots). 2) Keep every row of a kept storm as its track, so the track covers the storm's whole life. 3) min_dist_km is the smallest great-circle (haversine) distance from any position to the centre point, rounded to a whole km. Keep the storm when the unrounded value is 250 km or less. 4) max_wind is the largest wind on the whole track. 5) wind_near_pr is the largest wind among positions within 250 km of the centre point. 6) cat_near_pr is the Saffir-Simpson category of wind_near_pr, with 0 for winds below 64 knots. 7) Sort storms by the time of their first position. meta.json records the count and the year range.",
+    "sources": [
+      "nhc_hurdat2"
+    ],
+    "source_detail": "National Oceanic and Atmospheric Administration (NOAA), National Hurricane Center (NHC), HURDAT2 Atlantic best-track database 1851-2025, file hurdat2-1851-2025-092326.txt, https://www.nhc.noaa.gov/data/#hurdat, retrieved 5 October 2026. Format reference: Landsea and Franklin (2013), Atlantic Hurricane Database Uncertainty and Presentation of a New Database Format, Monthly Weather Review 141, 3576-3592.",
+    "how_to_read": "250 km is measured from one point, not from the coast. Along the compass lines through that point, the circle reaches about 160 km beyond the east coast, 175 km beyond the west coast and 220 km beyond the north and south coasts. A storm on the list may never have touched land.",
+    "caveats": [
+      "The test uses best-track positions, not the line between them. A fast storm could cross the circle between two positions and be left out.",
+      "Only Atlantic storms (id prefix AL) are read. Eastern Pacific storms are not included.",
+      "Observation methods changed a great deal between 1851 and 2025. Older tracks and winds are less certain, so counts by decade should not be read as a trend. In the 2026-10 snapshot the 2020s have six years (2020 to 2025), so that decade is incomplete.",
+      "In the 2026-10 snapshot, 157 storms are kept, and 65 had hurricane-strength wind (category 1 or higher) near the island by this method.",
+      "In the 2026-10 snapshot, the 157 include 6 systems that were only a low, disturbance or tropical wave when within 250 km, and 22 storms with a single position inside the circle. The count is storms that came near, not storms that struck the island."
+    ],
+    "see_also": [
+      "hazards.storm_min_dist_km",
+      "hazards.storm_wind_near_pr",
+      "hazards.storm_cat_near_pr",
+      "hazards.storm_track",
+      "hazards.storm_limits",
+      "hazards.storm_layer"
+    ],
+    "where": {
+      "files": [],
+      "view": [
+        {
+          "label": "3D + Time, Time tab: Hurricanes 1851–2025, Storm tracks within 250 km",
+          "href": "3d.html"
+        }
+      ]
+    },
+    "domain": "hazards",
+    "domains": ["hazards"],
+    "added": "2026-10-01"
+  },
+  {
+    "id": "hazards.storm_id",
+    "name": "Storm identifier (id)",
+    "group": "Hurricanes and tropical storms",
+    "kind": "variable",
+    "plain": "The unique code that the Hurricane Database, 2nd generation (HURDAT2) of the US National Oceanic and Atmospheric Administration (NOAA) gives each storm: AL for the Atlantic, the storm's number in that year, and the year. AL152017 is Atlantic storm number 15 of 2017.",
+    "definition": "id holds the HURDAT2 storm identifier: the basin code AL (Atlantic), a two-digit storm number within the year, and the four-digit year. In the 2026-10 snapshot, all 156 ids start with AL and are different. It is the only reliable key, because names repeat (two storms are named Earl, in 2010 and 2022) and 85 storms have no name.",
+    "unit": "text code",
+    "value_type": "code",
+    "geography": "Atlantic storms with a best-track position within 250 km of the centre of Puerto Rico (157 storms in the 2026-10 snapshot)",
+    "coverage": {
+      "timeline": "event-based",
+      "first": 1851,
+      "last": 2025,
+      "frequency": "The observatory uses NOAA's release file hurdat2-1851-2025-092326.txt, retrieved on 5 October 2026 (Snapshot 2026-10). The build looks up the newest NOAA file only when it is run with the refresh option; it does not check on its own. NOAA adds each season after it ends and may revise earlier seasons."
+    },
+    "method": "Copied from the HURDAT2 header line of each storm.",
+    "sources": [
+      "nhc_hurdat2"
+    ],
+    "source_detail": "HURDAT2 header line: basin and number, name, number of rows. National Oceanic and Atmospheric Administration (NOAA), National Hurricane Center (NHC), HURDAT2 Atlantic best-track database 1851-2025, file hurdat2-1851-2025-092326.txt, https://www.nhc.noaa.gov/data/#hurdat, retrieved 5 October 2026. Format reference: Landsea and Franklin (2013), Atlantic Hurricane Database Uncertainty and Presentation of a New Database Format, Monthly Weather Review 141, 3576-3592.",
+    "how_to_read": "Use id to find or cite one storm. The last four characters are its year.",
+    "caveats": [
+      "The number is the storm's position in that year's list. It does not say how strong the storm was."
+    ],
+    "see_also": [
+      "hazards.storm_name",
+      "hazards.storm_year",
+      "hazards.storm_selection"
+    ],
+    "where": {
+      "files": [
+        "hurricanes.json:id"
+      ],
+      "view": [
+        {
+          "label": "3D + Time, Time tab: Hurricanes 1851–2025, Storm tracks within 250 km",
+          "href": "3d.html"
+        }
+      ]
+    },
+    "example": "AL152017: Atlantic basin, storm number 15 of 2017 (named Maria).",
+    "domain": "hazards",
+    "domains": ["hazards"],
+    "added": "2026-10-01"
+  },
+  {
+    "id": "hazards.storm_name",
+    "name": "Storm name (name)",
+    "group": "Hurricanes and tropical storms",
+    "kind": "variable",
+    "plain": "The name that the US National Oceanic and Atmospheric Administration (NOAA) gave the storm in its Hurricane Database, 2nd generation (HURDAT2), or Unnamed. In the 2026-10 snapshot, 85 of the 157 storms are Unnamed, the last one from 1981.",
+    "definition": "name is the storm name from HURDAT2, written in title case (Maria, not MARIA). A storm that HURDAT2 lists as UNNAMED shows as Unnamed. In the 2026-10 snapshot there are 65 different values, including Unnamed.",
+    "unit": "text",
+    "value_type": "text",
+    "geography": "Atlantic storms with a best-track position within 250 km of the centre of Puerto Rico (157 storms in the 2026-10 snapshot)",
+    "coverage": {
+      "timeline": "event-based",
+      "first": 1851,
+      "last": 2025,
+      "frequency": "The observatory uses NOAA's release file hurdat2-1851-2025-092326.txt, retrieved on 5 October 2026 (Snapshot 2026-10). The build looks up the newest NOAA file only when it is run with the refresh option; it does not check on its own. NOAA adds each season after it ends and may revise earlier seasons."
+    },
+    "method": "Taken from the HURDAT2 header line and converted to title case by the build.",
+    "sources": [
+      "nhc_hurdat2"
+    ],
+    "source_detail": "HURDAT2 header line, name field. National Oceanic and Atmospheric Administration (NOAA), National Hurricane Center (NHC), HURDAT2 Atlantic best-track database 1851-2025, file hurdat2-1851-2025-092326.txt, https://www.nhc.noaa.gov/data/#hurdat, retrieved 5 October 2026. Format reference: Landsea and Franklin (2013), Atlantic Hurricane Database Uncertainty and Presentation of a New Database Format, Monthly Weather Review 141, 3576-3592.",
+    "how_to_read": "Names repeat across years. Always pair a name with its year, or use the id.",
+    "caveats": [
+      "A name is a label for the storm, not a measure of its strength."
+    ],
+    "see_also": [
+      "hazards.storm_id",
+      "hazards.storm_year"
+    ],
+    "where": {
+      "files": [
+        "hurricanes.json:name"
+      ],
+      "view": [
+        {
+          "label": "3D + Time, Time tab: Hurricanes 1851–2025, Storm tracks within 250 km",
+          "href": "3d.html"
+        }
+      ]
+    },
+    "domain": "hazards",
+    "domains": ["hazards"],
+    "added": "2026-10-01"
+  },
+  {
+    "id": "hazards.storm_year",
+    "name": "Storm year (year)",
+    "group": "Hurricanes and tropical storms",
+    "kind": "variable",
+    "plain": "The year in the storm's identifier. In the 2026-10 snapshot it runs from 1851 to 2025.",
+    "definition": "year is the four-digit year in the storm identifier of the Hurricane Database, 2nd generation (HURDAT2), stored as a whole number. In the 2026-10 snapshot it is also the calendar year of the storm's first and last position, so no storm in the file runs across New Year. In that snapshot, 108 of the 175 years from 1851 to 2025 have at least one storm.",
+    "unit": "calendar year",
+    "value_type": "date",
+    "geography": "Atlantic storms with a best-track position within 250 km of the centre of Puerto Rico (157 storms in the 2026-10 snapshot)",
+    "coverage": {
+      "timeline": "event-based",
+      "first": 1851,
+      "last": 2025,
+      "frequency": "The observatory uses NOAA's release file hurdat2-1851-2025-092326.txt, retrieved on 5 October 2026 (Snapshot 2026-10). The build looks up the newest NOAA file only when it is run with the refresh option; it does not check on its own. NOAA adds each season after it ends and may revise earlier seasons."
+    },
+    "method": "Characters 5 to 8 of the id, converted to a number.",
+    "sources": [
+      "nhc_hurdat2"
+    ],
+    "source_detail": "HURDAT2 header line, year part of the storm identifier. National Oceanic and Atmospheric Administration (NOAA), National Hurricane Center (NHC), HURDAT2 Atlantic best-track database 1851-2025, file hurdat2-1851-2025-092326.txt, https://www.nhc.noaa.gov/data/#hurdat, retrieved 5 October 2026. Format reference: Landsea and Franklin (2013), Atlantic Hurricane Database Uncertainty and Presentation of a New Database Format, Monthly Weather Review 141, 3576-3592.",
+    "how_to_read": "Use it to place a storm in time or to filter the 3D storm layer by a window of years.",
+    "caveats": [
+      "A storm that began in December and ended in January would keep the year of its identifier. None does in the 2026-10 snapshot."
+    ],
+    "see_also": [
+      "hazards.storm_id",
+      "hazards.storm_limits"
+    ],
+    "where": {
+      "files": [
+        "hurricanes.json:year"
+      ],
+      "view": [
+        {
+          "label": "3D + Time, Time tab: Hurricanes 1851–2025, Storm tracks within 250 km",
+          "href": "3d.html"
+        }
+      ]
+    },
+    "domain": "hazards",
+    "domains": ["hazards"],
+    "added": "2026-10-01"
+  },
+  {
+    "id": "hazards.storm_max_wind",
+    "name": "Peak wind of the whole storm (max_wind)",
+    "group": "Hurricanes and tropical storms",
+    "kind": "variable",
+    "plain": "The best estimate by the US National Oceanic and Atmospheric Administration (NOAA) of the storm's highest sustained wind anywhere along its whole track, in knots. It is not the wind that reached Puerto Rico.",
+    "definition": "max_wind is the largest value of the 'maximum sustained wind' (the wind averaged over one minute near the surface) among all best-track positions of the storm. It is in knots. One knot is 1.15 miles per hour or 1.85 km per hour. In the 2026-10 snapshot, values run from 30 to 160 knots, in steps of 5.",
+    "unit": "knots",
+    "value_type": "level",
+    "geography": "Atlantic storms with a best-track position within 250 km of the centre of Puerto Rico (157 storms in the 2026-10 snapshot)",
+    "coverage": {
+      "timeline": "event-based",
+      "first": 1851,
+      "last": 2025,
+      "frequency": "The observatory uses NOAA's release file hurdat2-1851-2025-092326.txt, retrieved on 5 October 2026 (Snapshot 2026-10). The build looks up the newest NOAA file only when it is run with the refresh option; it does not check on its own. NOAA adds each season after it ends and may revise earlier seasons."
+    },
+    "method": "The maximum of the wind column over every row of the storm, ignoring rows with no wind value. In the 2026-10 snapshot every row has a wind value.",
+    "sources": [
+      "nhc_hurdat2"
+    ],
+    "source_detail": "Hurricane Database, 2nd generation (HURDAT2), maximum sustained wind column. National Oceanic and Atmospheric Administration (NOAA), National Hurricane Center (NHC), HURDAT2 Atlantic best-track database 1851-2025, file hurdat2-1851-2025-092326.txt, https://www.nhc.noaa.gov/data/#hurdat, retrieved 5 October 2026. Format reference: Landsea and Franklin (2013), Atlantic Hurricane Database Uncertainty and Presentation of a New Database Format, Monthly Weather Review 141, 3576-3592.",
+    "how_to_read": "Compare it with wind_near_pr. If the two differ, the storm was stronger somewhere else. In the 2026-10 snapshot, Dorian (2019) peaked at 160 knots far from the island, but its highest wind within 250 km was 75 knots.",
+    "caveats": [
+      "The peak can occur thousands of kilometres from Puerto Rico.",
+      "In the 2026-10 snapshot, all 156 values are multiples of 5 knots, which is how HURDAT2 reports wind.",
+      "It is a sustained wind, not a gust."
+    ],
+    "see_also": [
+      "hazards.storm_wind_near_pr",
+      "hazards.storm_cat_near_pr",
+      "hazards.hurricane_scale"
+    ],
+    "where": {
+      "files": [
+        "hurricanes.json:max_wind"
+      ],
+      "view": [
+        {
+          "label": "3D + Time, Time tab: Hurricanes 1851–2025, Storm tracks within 250 km",
+          "href": "3d.html"
+        }
+      ]
+    },
+    "domain": "hazards",
+    "domains": ["hazards"],
+    "added": "2026-10-01"
+  },
+  {
+    "id": "hazards.storm_wind_near_pr",
+    "name": "Peak wind near Puerto Rico (wind_near_pr)",
+    "group": "Hurricanes and tropical storms",
+    "kind": "variable",
+    "plain": "The highest sustained wind of the storm, in knots, among its best-track positions within 250 km of the centre of Puerto Rico.",
+    "definition": "wind_near_pr is the largest 'maximum sustained wind' (one-minute average, in knots) among the storm's positions that lie within 250 km of the point 18.22 N, 66.45 W. In the 2026-10 snapshot, values run from 25 to 155 knots, in steps of 5. A knot is 1.15 miles per hour. The category value cat_near_pr is worked out from it.",
+    "unit": "knots",
+    "value_type": "level",
+    "geography": "Atlantic storms with a best-track position within 250 km of the centre of Puerto Rico (157 storms in the 2026-10 snapshot)",
+    "coverage": {
+      "timeline": "event-based",
+      "first": 1851,
+      "last": 2025,
+      "frequency": "The observatory uses NOAA's release file hurdat2-1851-2025-092326.txt, retrieved on 5 October 2026 (Snapshot 2026-10). The build looks up the newest NOAA file only when it is run with the refresh option; it does not check on its own. NOAA adds each season after it ends and may revise earlier seasons."
+    },
+    "method": "Filter the track to positions with a wind value and a distance of 250 km or less from the centre point, then take the maximum wind.",
+    "sources": [
+      "nhc_hurdat2"
+    ],
+    "source_detail": "Hurricane Database, 2nd generation (HURDAT2), maximum sustained wind column and positions. National Oceanic and Atmospheric Administration (NOAA), National Hurricane Center (NHC), HURDAT2 Atlantic best-track database 1851-2025, file hurdat2-1851-2025-092326.txt, https://www.nhc.noaa.gov/data/#hurdat, retrieved 5 October 2026. Format reference: Landsea and Franklin (2013), Atlantic Hurricane Database Uncertainty and Presentation of a New Database Format, Monthly Weather Review 141, 3576-3592.",
+    "how_to_read": "It is the storm's own wind at a position near the island. It is not a wind measured on land or in a town.",
+    "caveats": [
+      "The position can be as far as 250 km away. In the 2026-10 snapshot, Maria (2017) shows 150 knots from a position about 212 km from the centre. Its best-track winds were 135 knots at 63 km and 115 knots at 26 km.",
+      "Positions are 6 hours apart, so the true peak between two positions may be higher or lower."
+    ],
+    "see_also": [
+      "hazards.storm_max_wind",
+      "hazards.storm_cat_near_pr",
+      "hazards.storm_selection",
+      "hazards.storm_limits"
+    ],
+    "where": {
+      "files": [
+        "hurricanes.json:wind_near_pr"
+      ],
+      "view": [
+        {
+          "label": "3D + Time, Time tab: Hurricanes 1851–2025, Storm tracks within 250 km",
+          "href": "3d.html"
+        }
+      ]
+    },
+    "domain": "hazards",
+    "domains": ["hazards"],
+    "added": "2026-10-01"
+  },
+  {
+    "id": "hazards.storm_cat_near_pr",
+    "name": "Saffir-Simpson category near Puerto Rico (cat_near_pr)",
+    "group": "Hurricanes and tropical storms",
+    "kind": "variable",
+    "plain": "The storm's hurricane category, 1 to 5, based on its peak wind while within 250 km of the centre of Puerto Rico. 0 means below hurricane strength.",
+    "definition": "cat_near_pr is the Saffir-Simpson category of wind_near_pr, using the wind thresholds in knots: 137 or more is 5, 113 to 136 is 4, 96 to 112 is 3, 83 to 95 is 2, 64 to 82 is 1, and below 64 is 0. Counts in the 2026-10 snapshot: category 0, 92; 1, 21; 2, 15; 3, 16; 4, 8; 5, 5. 29 storms are category 3 or higher (major).",
+    "unit": "category 0 to 5",
+    "value_type": "code",
+    "geography": "Atlantic storms with a best-track position within 250 km of the centre of Puerto Rico (157 storms in the 2026-10 snapshot)",
+    "coverage": {
+      "timeline": "event-based",
+      "first": 1851,
+      "last": 2025,
+      "frequency": "The observatory uses NOAA's release file hurdat2-1851-2025-092326.txt, retrieved on 5 October 2026 (Snapshot 2026-10). The build looks up the newest NOAA file only when it is run with the refresh option; it does not check on its own. NOAA adds each season after it ends and may revise earlier seasons."
+    },
+    "method": "A chain of thresholds on wind_near_pr. The same thresholds colour the storm tracks in the 3D view and drive its minimum-category filter (the menu's All (incl. tropical storms), Hurricane (Cat 1+), Major (Cat 3+) and Cat 4+).",
+    "sources": [
+      "nhc_hurdat2"
+    ],
+    "source_detail": "Hurricane Database, 2nd generation (HURDAT2) winds; Saffir-Simpson hurricane wind scale thresholds as the observatory applies them. National Oceanic and Atmospheric Administration (NOAA), National Hurricane Center (NHC), HURDAT2 Atlantic best-track database 1851-2025, file hurdat2-1851-2025-092326.txt, https://www.nhc.noaa.gov/data/#hurdat, retrieved 5 October 2026. Format reference: Landsea and Franklin (2013), Atlantic Hurricane Database Uncertainty and Presentation of a New Database Format, Monthly Weather Review 141, 3576-3592.",
+    "how_to_read": "Use it to compare how strong storms were while near the island. It is not the category at landfall.",
+    "caveats": [
+      "Category 0 is not a Saffir-Simpson category. It groups storms below hurricane strength. In the 2026-10 snapshot, 21 of the 92 have winds under 34 knots (tropical depression strength or weaker) and 71 have 34 to 63 knots (tropical storm strength). The 3D hover tip labels every category 0 storm 'Tropical storm', and the list badge shows TS (tropical storm), although some had only depression-strength winds near the island.",
+      "The value uses any position within 250 km, whatever its status code. In the 2026-10 snapshot those positions are hurricane (205), tropical storm (204), tropical depression (50), low (8), disturbance (5), subtropical storm (4) and tropical wave (2). No extratropical position is within 250 km.",
+      "The scale rates wind only. It does not rate rain, storm surge or flooding, which caused much of the harm in many storms.",
+      "Category 4 and 5 here often come from a position far from the island. In the 2026-10 snapshot, all 13 storms in categories 4 and 5 had a peak-wind position 155 km or more from the centre. The unnamed 1928 storm also recorded its peak wind (140 knots) 63 km away. Do not read the category counts as hits on the island.",
+      "In the 2026-10 snapshot, Maria (2017) shows category 5 here because of a 150-knot position about 212 km away. Its best-track winds were 135 knots at 63 km and 115 knots at 26 km."
+    ],
+    "see_also": [
+      "hazards.hurricane_scale",
+      "hazards.storm_wind_near_pr",
+      "hazards.storm_layer"
+    ],
+    "where": {
+      "files": [
+        "hurricanes.json:cat_near_pr"
+      ],
+      "view": [
+        {
+          "label": "3D + Time, Time tab: Hurricanes 1851–2025, Storm tracks within 250 km",
+          "href": "3d.html"
+        }
+      ]
+    },
+    "values": {
+      "0": "Below hurricane strength: wind_near_pr under 64 knots. The observatory's own label, not a Saffir-Simpson category. In the 2026-10 snapshot: 92 storms.",
+      "1": "Category 1: 64 to 82 knots (74 to 95 mph). In the 2026-10 snapshot: 21 storms.",
+      "2": "Category 2: 83 to 95 knots (96 to 110 mph). In the 2026-10 snapshot: 15 storms.",
+      "3": "Category 3: 96 to 112 knots (111 to 129 mph). Counts as a major hurricane. In the 2026-10 snapshot: 16 storms.",
+      "4": "Category 4: 113 to 136 knots (130 to 156 mph). Counts as a major hurricane. In the 2026-10 snapshot: 8 storms.",
+      "5": "Category 5: 137 knots or more (157 mph or more). Counts as a major hurricane. In the 2026-10 snapshot: 5 storms."
+    },
+    "domain": "hazards",
+    "domains": ["hazards"],
+    "added": "2026-10-01"
+  },
+  {
+    "id": "hazards.storm_min_dist_km",
+    "name": "Closest approach to the centre of Puerto Rico (min_dist_km)",
+    "group": "Hurricanes and tropical storms",
+    "kind": "variable",
+    "plain": "How close the storm's nearest recorded position came to the centre of Puerto Rico, in kilometres. It is never more than 250.",
+    "definition": "min_dist_km is the smallest great-circle distance between any best-track position of the storm and the point 18.22 N, 66.45 W, rounded to a whole kilometre. The distance uses an Earth radius of 6,371 km. In the 2026-10 snapshot, values run from 6 to 250.",
+    "unit": "kilometres (whole km)",
+    "value_type": "level",
+    "geography": "Atlantic storms with a best-track position within 250 km of the centre of Puerto Rico (157 storms in the 2026-10 snapshot)",
+    "coverage": {
+      "timeline": "event-based",
+      "first": 1851,
+      "last": 2025,
+      "frequency": "The observatory uses NOAA's release file hurdat2-1851-2025-092326.txt, retrieved on 5 October 2026 (Snapshot 2026-10). The build looks up the newest NOAA file only when it is run with the refresh option; it does not check on its own. NOAA adds each season after it ends and may revise earlier seasons."
+    },
+    "method": "Haversine distance from every track position to the centre point, minimum, then rounded.",
+    "sources": [
+      "nhc_hurdat2"
+    ],
+    "source_detail": "Hurricane Database, 2nd generation (HURDAT2) positions. National Oceanic and Atmospheric Administration (NOAA), National Hurricane Center (NHC), HURDAT2 Atlantic best-track database 1851-2025, file hurdat2-1851-2025-092326.txt, https://www.nhc.noaa.gov/data/#hurdat, retrieved 5 October 2026. Format reference: Landsea and Franklin (2013), Atlantic Hurricane Database Uncertainty and Presentation of a New Database Format, Monthly Weather Review 141, 3576-3592.",
+    "how_to_read": "A small value means the storm passed near the middle of the island. A value of 100 km can still mean a coastline close to the storm, because the main island is about 180 km long from west to east.",
+    "caveats": [
+      "It is measured to the centre point, not to the coast, and not to Vieques, Culebra or Mona.",
+      "Positions are 6 hours apart. The true closest distance may be smaller.",
+      "A value of 6 km does not mean the eye passed over land. Positions are rounded to 0.1 degree, about 11 km."
+    ],
+    "see_also": [
+      "hazards.storm_selection",
+      "hazards.storm_track"
+    ],
+    "where": {
+      "files": [
+        "hurricanes.json:min_dist_km"
+      ],
+      "view": [
+        {
+          "label": "3D + Time, Time tab: Hurricanes 1851–2025, Storm tracks within 250 km",
+          "href": "3d.html"
+        }
+      ]
+    },
+    "domain": "hazards",
+    "domains": ["hazards"],
+    "added": "2026-10-01"
+  },
+  {
+    "id": "hazards.storm_track",
+    "name": "Storm track points (track)",
+    "group": "Hurricanes and tropical storms",
+    "kind": "variable",
+    "plain": "The list of best-track positions of the storm, from its first record to its last. Each point has longitude, latitude, time, wind in knots and a status code.",
+    "definition": "track is a list of points. Each point is five values: [longitude, latitude, time, wind, status]. Longitude is in degrees (negative is west). Latitude is in degrees north. Time is text in the form YYYYMMDDHHMM, in Coordinated Universal Time (UTC), as the format of the National Hurricane Center (NHC) specifies. Wind is the maximum sustained wind in knots. Status is a code from the Hurricane Database, 2nd generation (HURDAT2). In the 2026-10 snapshot, the 157 tracks hold 6,624 points, from 1 to 133 per storm. Most points are at 00, 06, 12 and 18 UTC. 189 are at other times, such as landfall or peak intensity.",
+    "unit": "list of points [longitude, latitude, time, wind in knots, status]",
+    "value_type": "geometry",
+    "geography": "Atlantic storms with a best-track position within 250 km of the centre of Puerto Rico (157 storms in the 2026-10 snapshot)",
+    "coverage": {
+      "timeline": "event-based",
+      "first": 1851,
+      "last": 2025,
+      "frequency": "The observatory uses NOAA's release file hurdat2-1851-2025-092326.txt, retrieved on 5 October 2026 (Snapshot 2026-10). The build looks up the newest NOAA file only when it is run with the refresh option; it does not check on its own. NOAA adds each season after it ends and may revise earlier seasons."
+    },
+    "method": "Every row of the storm is kept, so the track covers the storm's whole life and not only the part within 250 km. Positions are rounded to 0.01 degree (HURDAT2 gives 0.1 degree). HURDAT2's record identifier (for example L for landfall), pressure and wind-radius columns are not kept. In the 2026-10 snapshot, 478 of the points lie within 250 km of the centre point.",
+    "sources": [
+      "nhc_hurdat2"
+    ],
+    "source_detail": "HURDAT2 data rows: date, time, status, latitude, longitude, maximum sustained wind. National Oceanic and Atmospheric Administration (NOAA), National Hurricane Center (NHC), HURDAT2 Atlantic best-track database 1851-2025, file hurdat2-1851-2025-092326.txt, https://www.nhc.noaa.gov/data/#hurdat, retrieved 5 October 2026. Format reference: Landsea and Franklin (2013), Atlantic Hurricane Database Uncertainty and Presentation of a New Database Format, Monthly Weather Review 141, 3576-3592.",
+    "how_to_read": "The 3D map joins the points with straight lines. The real path curves between them. Point size and colour follow each point's own wind.",
+    "caveats": [
+      "Winds are in 5-knot steps and positions in 0.1 degree. These are best estimates, not exact measurements.",
+      "Early records rely on ships and land stations, so older tracks are less certain.",
+      "The status code describes the system at that time. Status EX (extratropical) can still carry hurricane-force wind."
+    ],
+    "see_also": [
+      "hazards.storm_selection",
+      "hazards.storm_limits",
+      "hazards.storm_layer",
+      "hazards.storm_wind_near_pr"
+    ],
+    "where": {
+      "files": [
+        "hurricanes.json:track"
+      ],
+      "view": [
+        {
+          "label": "3D + Time, Time tab: Hurricanes 1851–2025, Storm tracks within 250 km",
+          "href": "3d.html"
+        }
+      ]
+    },
+    "values": {
+      "HU": "Tropical cyclone of hurricane strength (64 knots or more). In the 2026-10 snapshot: 2,703 points.",
+      "TS": "Tropical cyclone of tropical storm strength (34 to 63 knots). In the 2026-10 snapshot: 2,246 points.",
+      "TD": "Tropical cyclone of tropical depression strength (under 34 knots). In the 2026-10 snapshot: 754 points.",
+      "EX": "Extratropical cyclone, of any strength. In the 2026-10 snapshot: 641 points.",
+      "LO": "A low that is not a tropical, subtropical or extratropical cyclone, of any strength. In the 2026-10 snapshot: 134 points.",
+      "DB": "Disturbance, of any strength. In the 2026-10 snapshot: 80 points.",
+      "SS": "Subtropical cyclone of subtropical storm strength (34 knots or more). In the 2026-10 snapshot: 46 points.",
+      "WV": "Tropical wave, of any strength. In the 2026-10 snapshot: 20 points."
+    },
+    "example": "[-66.2, 18.2, \"201709201200\", 115, \"HU\"] is a point of Maria (2017) in the 2026-10 snapshot, at 18.2 N, 66.2 W, at 12:00 UTC on 20 September, with 115 knots.",
+    "domain": "hazards",
+    "domains": ["hazards"],
+    "added": "2026-10-01"
+  },
+  {
+    "id": "hazards.hurricane_scale",
+    "name": "Saffir-Simpson hurricane wind scale (as used in the observatory)",
+    "group": "Hurricanes and tropical storms",
+    "kind": "category",
+    "plain": "The scale that sorts hurricanes by sustained wind, from category 1 to 5. The observatory adds category 0 for storms below hurricane strength.",
+    "definition": "The Saffir-Simpson hurricane wind scale rates a hurricane by its maximum sustained wind. The observatory applies it in knots to wind_near_pr. It rates wind only. It does not rate rain, storm surge or flooding. Categories 3, 4 and 5 are 'major' hurricanes.",
+    "unit": "category 0 to 5",
+    "value_type": "code",
+    "geography": "Applied to the storms near Puerto Rico",
+    "coverage": {
+      "timeline": "static",
+      "frequency": "Fixed in the code"
+    },
+    "method": "The observatory applies the thresholds 64, 83, 96, 113 and 137 knots when it works out each storm's category and when the 3D view colours each point by its own wind.",
+    "sources": [
+      "nhc_hurdat2"
+    ],
+    "source_detail": "Wind thresholds as the observatory applies them. They match the National Hurricane Center's published Saffir-Simpson Hurricane Wind Scale (nhc.noaa.gov/aboutsshws.php).",
+    "how_to_read": "Colours in the 3D view run from grey (category 0) through blue, green, orange and red to dark red (category 5).",
+    "caveats": [
+      "Category 0 is added by the observatory and is not part of the official scale.",
+      "A storm's category near Puerto Rico is not its category at landfall."
+    ],
+    "see_also": [
+      "hazards.storm_cat_near_pr",
+      "hazards.storm_layer"
+    ],
+    "where": {
+      "files": []
+    },
+    "values": {
+      "0": "Under 64 knots (under 74 mph; under 119 km/h). The observatory's label for tropical storm strength or weaker.",
+      "1": "64 to 82 knots (74 to 95 mph; 119 to 153 km/h).",
+      "2": "83 to 95 knots (96 to 110 mph; 154 to 177 km/h).",
+      "3": "96 to 112 knots (111 to 129 mph; 178 to 208 km/h). Major.",
+      "4": "113 to 136 knots (130 to 156 mph; 209 to 251 km/h). Major.",
+      "5": "137 knots or more (157 mph or more; 252 km/h or more). Major."
+    },
+    "domain": "hazards",
+    "domains": ["hazards"],
+    "added": "2026-10-01"
+  },
+  {
+    "id": "hazards.storm_layer",
+    "name": "Hurricane tracks (map layer, 3D view)",
+    "group": "Hurricanes and tropical storms",
+    "kind": "layer",
+    "plain": "A 3D map layer that draws the path of storms near Puerto Rico since 1851, coloured by category near the island. At first it shows only category 3 and higher; you can filter by years and strength and play it through time.",
+    "definition": "The layer 'Storm tracks within 250 km' draws each storm's track as a line and each recorded position as a dot. Line colour is cat_near_pr. Line width is 1.5 pixels plus the category. Dot colour follows each point's own wind with the same thresholds, and dot size grows with that wind. Hovering a line shows the name, year, category, peak wind near the island and closest distance. A list shows the 25 strongest storms in the window.",
+    "unit": "map lines and points",
+    "value_type": "geometry",
+    "geography": "Atlantic storms with a best-track position within 250 km of the centre of Puerto Rico (157 storms in the 2026-10 snapshot)",
+    "coverage": {
+      "timeline": "event-based",
+      "first": 1851,
+      "last": 2025,
+      "frequency": "The observatory uses NOAA's release file hurdat2-1851-2025-092326.txt, retrieved on 5 October 2026 (Snapshot 2026-10). The build looks up the newest NOAA file only when it is run with the refresh option; it does not check on its own. NOAA adds each season after it ends and may revise earlier seasons."
+    },
+    "method": "Filters: a year window (1851 to 2025 by default) and a minimum category (the menu's All (incl. tropical storms), Hurricane (Cat 1+), Major (Cat 3+) and Cat 4+; the default is Major (Cat 3+)). In the Storms mode of the time bar, and when you press Play through the years, the layer shows storms from the current year and the 10 years before it (11 calendar years) and fades older ones, down to 15% opacity. The 25-storm list sorts by category, then wind near the island, then newest year.",
+    "sources": [
+      "nhc_hurdat2"
+    ],
+    "source_detail": "hurricanes.json, built from the Hurricane Database, 2nd generation (HURDAT2) of the US National Oceanic and Atmospheric Administration (NOAA). National Oceanic and Atmospheric Administration (NOAA), National Hurricane Center (NHC), HURDAT2 Atlantic best-track database 1851-2025, file hurdat2-1851-2025-092326.txt, https://www.nhc.noaa.gov/data/#hurdat, retrieved 5 October 2026. Format reference: Landsea and Franklin (2013), Atlantic Hurricane Database Uncertainty and Presentation of a New Database Format, Monthly Weather Review 141, 3576-3592.",
+    "how_to_read": "Thicker lines mean a stronger storm near the island. Colour follows the category: grey 0, blue 1, green 2, orange 3, red 4, dark red 5. A line may extend far beyond Puerto Rico, because the whole track is drawn. When you switch the layer on, it shows only category 3 and higher storms (29 of the 157 in the 2026-10 snapshot). Choose All (incl. tropical storms) to see every storm in the file.",
+    "caveats": [
+      "Lines join recorded positions with straight segments.",
+      "The 3D hover tip labels every category 0 storm 'Tropical storm', and the list badge shows TS (tropical storm), although some had only depression-strength winds near the island.",
+      "There is no Category 2+ option in the minimum-category filter."
+    ],
+    "see_also": [
+      "hazards.storm_selection",
+      "hazards.storm_cat_near_pr",
+      "hazards.hurricane_scale",
+      "hazards.storm_track",
+      "layers.storm_controls_3d",
+      "layers.time_bar_3d"
+    ],
+    "where": {
+      "files": [],
+      "view": [
+        {
+          "label": "3D + Time, Time tab: Hurricanes 1851–2025, Storm tracks within 250 km",
+          "href": "3d.html"
+        }
+      ]
+    },
+    "domain": "hazards",
+    "domains": ["hazards"],
+    "added": "2026-10-01"
+  },
+  {
+    "id": "hazards.storm_limits",
+    "name": "Limits of the hurricane data (HURDAT2 best tracks)",
+    "group": "Hurricanes and tropical storms",
+    "kind": "method",
+    "plain": "The Hurricane Database, 2nd generation (HURDAT2) of the US National Oceanic and Atmospheric Administration (NOAA) is a best-track record. It is revised after each season, shows the storm's own wind and position, and says nothing about rain, surge, damage or deaths.",
+    "definition": "A best track is a final estimate of a storm's position and wind. National Hurricane Center (NHC) specialists build it after the season ends, from all the observations. NHC revises it after each season and sometimes re-analyses older storms. The observatory uses one release, covering 1851 to 2025. A newer release is used only when the observatory is rebuilt to use it.",
+    "unit": "not applicable",
+    "value_type": "text",
+    "geography": "Atlantic basin, storms within 250 km of Puerto Rico",
+    "coverage": {
+      "timeline": "event-based",
+      "first": 1851,
+      "last": 2025,
+      "frequency": "The observatory uses NOAA's release file hurdat2-1851-2025-092326.txt, retrieved on 5 October 2026 (Snapshot 2026-10). The build looks up the newest NOAA file only when it is run with the refresh option; it does not check on its own. NOAA adds each season after it ends and may revise earlier seasons."
+    },
+    "method": "Applies to every storm value in the observatory: id, name, year, track, max_wind, wind_near_pr, cat_near_pr and min_dist_km.",
+    "sources": [
+      "nhc_hurdat2"
+    ],
+    "source_detail": "National Oceanic and Atmospheric Administration (NOAA), National Hurricane Center (NHC), HURDAT2 Atlantic best-track database 1851-2025, file hurdat2-1851-2025-092326.txt, https://www.nhc.noaa.gov/data/#hurdat, retrieved 5 October 2026. Format reference: Landsea and Franklin (2013), Atlantic Hurricane Database Uncertainty and Presentation of a New Database Format, Monthly Weather Review 141, 3576-3592.",
+    "how_to_read": "Use the data to see which storms came near the island and how strong they were while near. Do not use it to say how much damage a storm did.",
+    "caveats": [
+      "The file runs through the 2025 season (NHC file updated 23 September 2026). Storms after the 2025 season are not in the 2026-10 snapshot. NHC also revised some 1971 to 1975 storms in that file, so a few older values differ from earlier snapshots (for example, Eloise 1975 now peaks at 55 knots near the island, so it is category 0, not 1).",
+      "HURDAT2 holds no rainfall, storm surge, damage or death figures. The observatory keeps only time, position, wind and status. It drops central pressure and wind-radius columns.",
+      "Winds are sustained one-minute averages in 5-knot steps. They are not gusts.",
+      "Older storms are less certain, and some storms may be missing from the early record.",
+      "Storm names repeat. Use the id."
+    ],
+    "see_also": [
+      "hazards.storm_selection",
+      "hazards.storm_track",
+      "hazards.storm_cat_near_pr"
+    ],
+    "where": {
+      "files": []
+    },
+    "domain": "hazards",
+    "domains": ["hazards"],
+    "added": "2026-10-01"
+  },
+  {
+    "id": "land.padus_unit_name",
+    "name": "Protected area name (Unit_Nm)",
+    "group": "Protected areas (PAD-US)",
+    "kind": "variable",
+    "plain": "The name of the protected area record, as the US Geological Survey lists it. In the 2026-10 snapshot, 665 records share 640 different names.",
+    "definition": "Unit_Nm is the unit name in the Protected Areas Database of the United States (PAD-US). Each polygon (map shape) is one record. A named place can have several records. In the 2026-10 snapshot, for example, five records are named Culebra National Wildlife Refuge: a proclamation boundary, a marine protected area, two national wildlife refuge records (Gap Analysis Project (GAP) status 1 and 2) and a conservation easement. Names are in Spanish, English or both.",
+    "unit": "text",
+    "value_type": "text",
+    "geography": "Puerto Rico: 665 records in the 2026-10 snapshot, on the main island, Vieques, Culebra, Mona and nearby waters",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2025,
+      "last": 2025,
+      "frequency": "PAD-US 4.1, retrieved from a USGS-hosted service on 1 October 2026 (Snapshot 2026-10). The observatory keeps that copy until its next snapshot. 2025 is the version date (March 2025) shown by that service. USGS's overview page dates PAD-US 4.1 to 2024. USGS publishes new versions from time to time. PAD-US combines data from federal, state and local agencies and nonprofit partners, so boundaries and details differ in age by record."
+    },
+    "method": "The build downloads the PAD-US records for Puerto Rico and keeps Unit_Nm unchanged.",
+    "sources": [
+      "padus"
+    ],
+    "source_detail": "US Geological Survey (USGS) PAD-US 4.1, feature service Protection_Mechanism_Category_PADUS, layer 0, State_Nm='PR'. Cite as: U.S. Geological Survey (USGS) Gap Analysis Project (GAP), 2024, Protected Areas Database of the United States (PAD-US) 4.1: USGS data release, https://doi.org/10.5066/P96WBCHS. Version 4.1 was released in March 2025; USGS cites it as a 2024 data release. Retrieved 1 October 2026.",
+    "how_to_read": "Use the name to find the area. For a count of areas, count distinct names with care, because one name can have several records.",
+    "caveats": [
+      "Some local-park records have generic names, for example a facility type rather than a park name.",
+      "In the 2026-10 snapshot, one record named 'Unknown Local Park' is a single record made of many separate small parcels (a MultiPolygon) spread across the island, 1,126 acres in all. It is not one park.",
+      "In the 2026-10 snapshot, at least one name says '(proposed)' (Reserva Natural Torrecilla Alta), so a record can describe a proposed area, not yet protected land."
+    ],
+    "see_also": [
+      "land.padus_designation",
+      "land.protected_layer",
+      "land.protected_place_flag",
+      "places.protected_area"
+    ],
+    "where": {
+      "files": [
+        "protected.geojson:Unit_Nm"
+      ],
+      "view": [
+        {
+          "label": "2D map, Map layers tab: Protected areas",
+          "href": "index.html#l=prot"
+        },
+        {
+          "label": "3D + Time, Layers tab: Protected areas, USGS PAD-US",
+          "href": "3d.html"
+        }
+      ]
+    },
+    "domain": "environment.land",
+    "domains": ["environment.land"],
+    "added": "2026-10-01"
+  },
+  {
+    "id": "land.padus_designation",
+    "name": "Protected area designation type (Des_Tp)",
+    "group": "Protected areas (PAD-US)",
+    "kind": "variable",
+    "plain": "A short code for the type of protected area. Examples are local park (LP), state conservation area (SCA), marine protected area (MPA) and national wildlife refuge (NWR). The codes come from PAD-US, the Protected Areas Database of the United States, kept by the US Geological Survey.",
+    "definition": "Des_Tp is the designation type in PAD-US: the legal or planning category that created or recognises the area. In the 2026-10 snapshot, 22 codes occur in Puerto Rico. Local parks (LP) are 411 of the 665 records. The same place can appear under several types.",
+    "unit": "designation code (text)",
+    "value_type": "code",
+    "geography": "Puerto Rico: 665 records in the 2026-10 snapshot, on the main island, Vieques, Culebra, Mona and nearby waters",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2025,
+      "last": 2025,
+      "frequency": "PAD-US 4.1, retrieved from a USGS-hosted service on 1 October 2026 (Snapshot 2026-10). The observatory keeps that copy until its next snapshot. 2025 is the version date (March 2025) shown by that service. USGS's overview page dates PAD-US 4.1 to 2024. USGS publishes new versions from time to time. PAD-US combines data from federal, state and local agencies and nonprofit partners, so boundaries and details differ in age by record."
+    },
+    "method": "Copied from PAD-US without change. The map draws every record. Place flags skip records with code PROC.",
+    "sources": [
+      "padus"
+    ],
+    "source_detail": "US Geological Survey (USGS) PAD-US 4.1, feature service Protection_Mechanism_Category_PADUS, layer 0, State_Nm='PR'. Code names follow the PAD-US value list in the service. The longer explanations in 'values' are the observatory's plain-language wording of the PAD-US definitions. The PAD-US Data Manual has the exact text. Cite as: U.S. Geological Survey (USGS) Gap Analysis Project (GAP), 2024, Protected Areas Database of the United States (PAD-US) 4.1: USGS data release, https://doi.org/10.5066/P96WBCHS. Version 4.1 was released in March 2025; USGS cites it as a 2024 data release. Retrieved 1 October 2026.",
+    "how_to_read": "The code says how an area is classed, not how well it is protected. Read GAP status for the level of protection and public access for entry.",
+    "caveats": [
+      "The 2D map's popup spells out only some codes. It shows codes such as SCA, SRMA and MIL as raw letters. The list of values below gives the meaning of every code in the data.",
+      "PAD-US uses the word 'state' for the Puerto Rico government.",
+      "PAD-US counts military land, national cemeteries and local playgrounds as protected areas. Many of these are GAP status 4."
+    ],
+    "see_also": [
+      "land.padus_gap_status",
+      "land.padus_public_access",
+      "land.padus_manager",
+      "land.protected_layer",
+      "land.protected_place_flag",
+      "data.count_protected_units"
+    ],
+    "where": {
+      "files": [
+        "protected.geojson:Des_Tp"
+      ],
+      "view": [
+        {
+          "label": "2D map, Map layers tab: Protected areas",
+          "href": "index.html#l=prot"
+        },
+        {
+          "label": "3D + Time, Layers tab: Protected areas, USGS PAD-US",
+          "href": "3d.html"
+        }
+      ]
+    },
+    "values": {
+      "LP": "Local Park: a park owned or run by a local government. In the 2026-10 snapshot: 411 records, all with manager UNK, public access OA and GAP status 4.",
+      "SCA": "State Conservation Area: land the Puerto Rico government holds mainly to conserve nature. PAD-US calls any such government a 'state'. Many are named Reserva Natural. In the 2026-10 snapshot: 72 records.",
+      "PCON": "Private Conservation: private land held for conservation. In the 2026-10 snapshot: 56 records, all managed by non-governmental organizations.",
+      "MPA": "Marine Protected Area: sea area managed for conservation, such as natural reserves and the marine parts of national wildlife refuges. In the 2026-10 snapshot: 37 records.",
+      "SRMA": "State Resource Management Area: state land managed for resources and several uses. Here mostly state forests (Bosque Estatal). In the 2026-10 snapshot: 19 records.",
+      "CONE": "Conservation Easement: a legal agreement that limits development on land the owner keeps. In the 2026-10 snapshot: 13 records.",
+      "MIL": "Military Land: bases, training areas and other land of the US Department of Defense. In the 2026-10 snapshot: 12 records, all closed to the public in PAD-US.",
+      "NWR": "National Wildlife Refuge: refuge land managed by the US Fish and Wildlife Service. In the 2026-10 snapshot: 10 records.",
+      "PROC": "Approved or Proclamation Boundary: the outer boundary approved for a park, forest, refuge or historic site. It outlines an area and is not separate protected land. The map draws these outlines. Place flags ignore them. In the 2026-10 snapshot: 7 records.",
+      "WSR": "Wild and Scenic River: a river segment in the national Wild and Scenic Rivers system. In the 2026-10 snapshot: 6 records, all managed by the US Forest Service.",
+      "SOTH": "State Other or Unknown: state-level land whose type is not given. In the 2026-10 snapshot: 5 records.",
+      "HCA": "Historic or Cultural Area: a federal historic or cultural site, such as a national historic site or a national cemetery. In the 2026-10 snapshot: 3 records.",
+      "SP": "State Park: a park run by the Puerto Rico government. In the 2026-10 snapshot: 2 records.",
+      "REA": "Research or Educational Area: land used for research or teaching, such as an experimental forest or an agricultural experiment station. In the 2026-10 snapshot: 2 records.",
+      "POTH": "Private Other or Unknown: private land with another or unknown purpose. In the 2026-10 snapshot: 2 records.",
+      "IRA": "Inventoried Roadless Area: national forest land that the Forest Service has inventoried as roadless. In the 2026-10 snapshot: 2 records.",
+      "NF": "National Forest: El Yunque National Forest. In the 2026-10 snapshot: 1 record.",
+      "LRMA": "Local Resource Management Area: local-government land managed for resources. Here a community forest. In the 2026-10 snapshot: 1 record.",
+      "PFOR": "Private Forest Stewardship: private forest land under a stewardship program. In the 2026-10 snapshot: 1 record.",
+      "SHCA": "State Historic or Cultural Area: a state historic or cultural site. Here an Indigenous ceremonial park. In the 2026-10 snapshot: 1 record.",
+      "RNA": "Research Natural Area: land kept natural for research. In the 2026-10 snapshot: 1 record.",
+      "WA": "Wilderness Area: federal wilderness. Here El Toro Wilderness. In the 2026-10 snapshot: 1 record."
+    },
+    "domain": "environment.land",
+    "domains": ["environment.land"],
+    "added": "2026-10-01"
+  },
+  {
+    "id": "land.padus_gap_status",
+    "name": "Protection level, GAP status (GAP_Sts)",
+    "group": "Protected areas (PAD-US)",
+    "kind": "variable",
+    "plain": "A code from 1 to 4 that shows how strongly an area is managed to protect nature. Codes 1 and 2 are managed for biodiversity. Code 3 may allow uses such as mining or logging. Code 4 has no known requirement to protect biodiversity.",
+    "definition": "GAP_Sts is the status code of the Gap Analysis Project (GAP) of the US Geological Survey, as carried in the Protected Areas Database of the United States (PAD-US). It sorts areas by how they are managed for biodiversity. In the 2026-10 snapshot the counts are: code 4, 440; code 2, 181; code 1, 25; code 3, 19. The values are text digits.",
+    "unit": "code 1 to 4 (text)",
+    "value_type": "code",
+    "geography": "Puerto Rico: 665 records in the 2026-10 snapshot, on the main island, Vieques, Culebra, Mona and nearby waters",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2025,
+      "last": 2025,
+      "frequency": "PAD-US 4.1, retrieved from a USGS-hosted service on 1 October 2026 (Snapshot 2026-10). The observatory keeps that copy until its next snapshot. 2025 is the version date (March 2025) shown by that service. USGS's overview page dates PAD-US 4.1 to 2024. USGS publishes new versions from time to time. PAD-US combines data from federal, state and local agencies and nonprofit partners, so boundaries and details differ in age by record."
+    },
+    "method": "Copied from PAD-US without change. When a place sits in several protected areas, the build keeps the one with the strictest (lowest) GAP status.",
+    "sources": [
+      "padus"
+    ],
+    "source_detail": "US Geological Survey (USGS) PAD-US 4.1, feature service Protection_Mechanism_Category_PADUS, layer 0, State_Nm='PR'. Code labels follow the service's field description of GAP_Sts. Cite as: U.S. Geological Survey (USGS) Gap Analysis Project (GAP), 2024, Protected Areas Database of the United States (PAD-US) 4.1: USGS data release, https://doi.org/10.5066/P96WBCHS. Version 4.1 was released in March 2025; USGS cites it as a 2024 data release. Retrieved 1 October 2026.",
+    "how_to_read": "1 is the strictest and 4 the loosest. A high count of places in GAP 4 land says little about nature protection.",
+    "caveats": [
+      "The status describes how land is managed on paper. It does not measure habitat condition.",
+      "In the 2026-10 snapshot, 59% of the counted places flagged as in a protected area are in GAP 4 land (509 of 869).",
+      "PAD-US words code 1 as managed for biodiversity with natural disturbance allowed. Do not read it as a strict nature reserve. The 2D map popup words the codes differently: strict nature reserve (1), managed for biodiversity (2), multiple use, some extraction (3) and no known biodiversity mandate (4). Those are the map's labels, not PAD-US wording."
+    ],
+    "see_also": [
+      "land.padus_designation",
+      "land.protected_place_flag",
+      "places.protected_gap",
+      "layers.protected_control",
+      "municipalities.in_protected"
+    ],
+    "where": {
+      "files": [
+        "protected.geojson:GAP_Sts"
+      ],
+      "view": [
+        {
+          "label": "2D map, Map layers tab: Protected areas",
+          "href": "index.html#l=prot"
+        },
+        {
+          "label": "3D + Time, Layers tab: Protected areas, USGS PAD-US",
+          "href": "3d.html"
+        }
+      ]
+    },
+    "values": {
+      "1": "Managed for biodiversity. Natural disturbance, such as fire or flooding, is allowed to happen or is imitated by management. In the 2026-10 snapshot: 25 records.",
+      "2": "Managed for biodiversity, but natural disturbance is suppressed, for example fires are put out. In the 2026-10 snapshot: 181 records.",
+      "3": "Managed for multiple uses. Extractive uses such as mining or logging, or off-highway vehicle use, may be allowed. In the 2026-10 snapshot: 19 records.",
+      "4": "No known requirement to protect biodiversity. In the 2026-10 snapshot: 440 records, including all 411 local parks."
+    },
+    "domain": "environment.land",
+    "domains": ["environment.land"],
+    "added": "2026-10-01"
+  },
+  {
+    "id": "land.padus_public_access",
+    "name": "Public access (Pub_Access)",
+    "group": "Protected areas (PAD-US)",
+    "kind": "variable",
+    "plain": "A code for whether the public can enter a protected area: open, restricted, closed or unknown.",
+    "definition": "Pub_Access is the public access code in the Protected Areas Database of the United States (PAD-US). In the 2026-10 snapshot the counts are: OA, 473; RA, 89; XA, 85; UK, 18. In that snapshot, for several designation types every record has the same code, for example all 72 State Conservation Areas are RA and all 56 Private Conservation records are XA.",
+    "unit": "access code (text)",
+    "value_type": "code",
+    "geography": "Puerto Rico: 665 records in the 2026-10 snapshot, on the main island, Vieques, Culebra, Mona and nearby waters",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2025,
+      "last": 2025,
+      "frequency": "PAD-US 4.1, retrieved from a USGS-hosted service on 1 October 2026 (Snapshot 2026-10). The observatory keeps that copy until its next snapshot. 2025 is the version date (March 2025) shown by that service. USGS's overview page dates PAD-US 4.1 to 2024. USGS publishes new versions from time to time. PAD-US combines data from federal, state and local agencies and nonprofit partners, so boundaries and details differ in age by record."
+    },
+    "method": "Copied from PAD-US without change.",
+    "sources": [
+      "padus"
+    ],
+    "source_detail": "US Geological Survey (USGS) PAD-US 4.1, feature service Protection_Mechanism_Category_PADUS, layer 0, State_Nm='PR'. Code labels follow the service's field description of Pub_Access. Cite as: U.S. Geological Survey (USGS) Gap Analysis Project (GAP), 2024, Protected Areas Database of the United States (PAD-US) 4.1: USGS data release, https://doi.org/10.5066/P96WBCHS. Version 4.1 was released in March 2025; USGS cites it as a 2024 data release. Retrieved 1 October 2026.",
+    "how_to_read": "It is a general access category. Check the managing agency for hours, fees, permits and closures before a visit.",
+    "caveats": [
+      "The code does not say whether you can enter today.",
+      "It does not describe a site visit. For some designation types it is the same for every record."
+    ],
+    "see_also": [
+      "land.padus_designation",
+      "land.padus_manager"
+    ],
+    "where": {
+      "files": [
+        "protected.geojson:Pub_Access"
+      ],
+      "view": [
+        {
+          "label": "2D map, Map layers tab: Protected areas",
+          "href": "index.html#l=prot"
+        },
+        {
+          "label": "3D + Time, Layers tab: Protected areas, USGS PAD-US",
+          "href": "3d.html"
+        }
+      ]
+    },
+    "values": {
+      "OA": "Open Access: open to the public without a special permit, as PAD-US codes it. In the 2026-10 snapshot: 473 records.",
+      "RA": "Restricted Access: the public can enter only with a permit or at variable hours, as PAD-US codes it. In the 2026-10 snapshot: 89 records.",
+      "XA": "Closed: closed to the public. In the 2026-10 snapshot: 85 records.",
+      "UK": "Unknown: PAD-US has no access information. In the 2026-10 snapshot: 18 records."
+    },
+    "domain": "environment.land",
+    "domains": ["environment.land"],
+    "added": "2026-10-01"
+  },
+  {
+    "id": "land.padus_manager",
+    "name": "Managing body (Mang_Name)",
+    "group": "Protected areas (PAD-US)",
+    "kind": "variable",
+    "plain": "A short code for the agency or group that manages the protected area. In the 2026-10 snapshot, 411 of the 665 records, all local parks, have no manager recorded.",
+    "definition": "Mang_Name is the manager name code in the Protected Areas Database of the United States (PAD-US). In the 2026-10 snapshot, 13 codes occur. PAD-US describes the field as the land manager or administrative agency, standardised for the US. This file keeps the manager code only. It has no owner field.",
+    "unit": "manager code (text)",
+    "value_type": "code",
+    "geography": "Puerto Rico: 665 records in the 2026-10 snapshot, on the main island, Vieques, Culebra, Mona and nearby waters",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2025,
+      "last": 2025,
+      "frequency": "PAD-US 4.1, retrieved from a USGS-hosted service on 1 October 2026 (Snapshot 2026-10). The observatory keeps that copy until its next snapshot. 2025 is the version date (March 2025) shown by that service. USGS's overview page dates PAD-US 4.1 to 2024. USGS publishes new versions from time to time. PAD-US combines data from federal, state and local agencies and nonprofit partners, so boundaries and details differ in age by record."
+    },
+    "method": "Copied from PAD-US without change.",
+    "sources": [
+      "padus"
+    ],
+    "source_detail": "US Geological Survey (USGS) PAD-US 4.1, feature service Protection_Mechanism_Category_PADUS, layer 0, State_Nm='PR'. The definition follows the service's field description of Mang_Name. Cite as: U.S. Geological Survey (USGS) Gap Analysis Project (GAP), 2024, Protected Areas Database of the United States (PAD-US) 4.1: USGS data release, https://doi.org/10.5066/P96WBCHS. Version 4.1 was released in March 2025; USGS cites it as a 2024 data release. Retrieved 1 October 2026.",
+    "how_to_read": "Use the code to see which body to ask about a site. In the 2026-10 snapshot, 411 records have the code UNK. For those, look up the municipio instead.",
+    "caveats": [
+      "PAD-US uses 'State' for the Puerto Rico government and its agencies.",
+      "The map popups print the raw code, for example 'managed by UNK', which means no manager is recorded."
+    ],
+    "see_also": [
+      "land.padus_designation",
+      "land.padus_public_access"
+    ],
+    "where": {
+      "files": [
+        "protected.geojson:Mang_Name"
+      ],
+      "view": [
+        {
+          "label": "2D map, Map layers tab: Protected areas",
+          "href": "index.html#l=prot"
+        },
+        {
+          "label": "3D + Time, Layers tab: Protected areas, USGS PAD-US",
+          "href": "3d.html"
+        }
+      ]
+    },
+    "values": {
+      "UNK": "Unknown: manager not recorded. In the 2026-10 snapshot: 411 records, all local parks.",
+      "SDNR": "State Department of Natural Resources (PAD-US label). State conservation areas, state forests and other state land. PAD-US does not name the Puerto Rico agency. In the 2026-10 snapshot: 92 records.",
+      "NGO": "Non-governmental organization: a private non-profit. In the 2026-10 snapshot: 72 records.",
+      "SDC": "State Department of Conservation (PAD-US label). In the 2026-10 snapshot: 30 records, all marine protected areas.",
+      "FWS": "US Fish and Wildlife Service. In the 2026-10 snapshot: 21 records.",
+      "USFS": "US Forest Service. In the 2026-10 snapshot: 13 records.",
+      "DOD": "US Department of Defense. In the 2026-10 snapshot: 12 records.",
+      "JNT": "Joint: managed by more than one body. In the 2026-10 snapshot: 6 records.",
+      "NPS": "National Park Service. In the 2026-10 snapshot: 2 records.",
+      "OTHF": "Other or unknown federal land. Here national cemeteries. In the 2026-10 snapshot: 2 records.",
+      "OTHS": "Other or unknown state land. In the 2026-10 snapshot: 2 records.",
+      "SLB": "State Land Board (PAD-US label). Here an agricultural experiment station. In the 2026-10 snapshot: 1 record.",
+      "SPR": "State Park and Recreation (PAD-US label). Here a cave park. In the 2026-10 snapshot: 1 record."
+    },
+    "domain": "environment.land",
+    "domains": ["environment.land"],
+    "added": "2026-10-01"
+  },
+  {
+    "id": "land.padus_acres",
+    "name": "Area in acres (GIS_Acres)",
+    "group": "Protected areas (PAD-US)",
+    "kind": "variable",
+    "plain": "The area of the protected area record in whole acres, as the US Geological Survey calculated it. In the 2026-10 snapshot the records run from under an acre to 387,847 acres.",
+    "definition": "GIS_Acres is the area of the record's polygon (map shape) in acres, worked out in a geographic information system (GIS) and stored as a whole number. In the 2026-10 snapshot, values run from 0 to 387,847. The median is 5 acres. 90 records show 0. The largest is the Isla de Mona Natural Reserve, a marine protected area. One acre is 0.4047 hectares.",
+    "unit": "acres (whole)",
+    "value_type": "level",
+    "geography": "Puerto Rico: 665 records in the 2026-10 snapshot, on the main island, Vieques, Culebra, Mona and nearby waters",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2025,
+      "last": 2025,
+      "frequency": "PAD-US 4.1, retrieved from a USGS-hosted service on 1 October 2026 (Snapshot 2026-10). The observatory keeps that copy until its next snapshot. 2025 is the version date (March 2025) shown by that service. USGS's overview page dates PAD-US 4.1 to 2024. USGS publishes new versions from time to time. PAD-US combines data from federal, state and local agencies and nonprofit partners, so boundaries and details differ in age by record."
+    },
+    "method": "Copied from the Protected Areas Database of the United States (PAD-US). The build does not recompute it from the simplified display outlines.",
+    "sources": [
+      "padus"
+    ],
+    "source_detail": "US Geological Survey (USGS) PAD-US 4.1, feature service Protection_Mechanism_Category_PADUS, layer 0, State_Nm='PR'. Cite as: U.S. Geological Survey (USGS) Gap Analysis Project (GAP), 2024, Protected Areas Database of the United States (PAD-US) 4.1: USGS data release, https://doi.org/10.5066/P96WBCHS. Version 4.1 was released in March 2025; USGS cites it as a 2024 data release. Retrieved 1 October 2026.",
+    "how_to_read": "Use it to compare the size of single records. Do not add the values up to get the total protected land.",
+    "caveats": [
+      "Records overlap. A refuge can appear as a proclamation boundary, a wildlife refuge and a marine area, so a sum counts the same land more than once.",
+      "The 37 marine protected area records in the 2026-10 snapshot include open water, so their acres are not land area.",
+      "Some records are tiny. In the 2026-10 snapshot, 90 show 0 acres, and the median record is 5 acres.",
+      "The map popups print acres. The rest of the observatory uses square kilometres."
+    ],
+    "see_also": [
+      "land.padus_unit_name",
+      "land.protected_layer"
+    ],
+    "where": {
+      "files": [
+        "protected.geojson:GIS_Acres"
+      ],
+      "view": [
+        {
+          "label": "2D map, Map layers tab: Protected areas",
+          "href": "index.html#l=prot"
+        },
+        {
+          "label": "3D + Time, Layers tab: Protected areas, USGS PAD-US",
+          "href": "3d.html"
+        }
+      ]
+    },
+    "domain": "environment.land",
+    "domains": ["environment.land"],
+    "added": "2026-10-01"
+  },
+  {
+    "id": "land.protected_layer",
+    "name": "Protected areas (map layer)",
+    "group": "Protected areas (PAD-US)",
+    "kind": "layer",
+    "plain": "A map layer of the US Geological Survey's protected-areas database, from El Yunque National Forest to local parks (665 records in the 2026-10 snapshot). Records overlap, so the number of records is not a count of separate areas, and 'protected' here includes recreation and military land.",
+    "definition": "The 'Protected areas' layer draws every record of the Protected Areas Database of the United States (PAD-US) in protected.geojson in green, including the proclamation outlines. Clicking a point opens a popup with the name, designation, manager, public access, acres and Gap Analysis Project (GAP) status for up to two records under the click, the same in the 2D map and the 3D view.",
+    "unit": "map polygons",
+    "value_type": "geometry",
+    "geography": "Puerto Rico: 665 records in the 2026-10 snapshot, on the main island, Vieques, Culebra, Mona and nearby waters",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2025,
+      "last": 2025,
+      "frequency": "PAD-US 4.1, retrieved from a USGS-hosted service on 1 October 2026 (Snapshot 2026-10). The observatory keeps that copy until its next snapshot. 2025 is the version date (March 2025) shown by that service. USGS's overview page dates PAD-US 4.1 to 2024. USGS publishes new versions from time to time. PAD-US combines data from federal, state and local agencies and nonprofit partners, so boundaries and details differ in age by record."
+    },
+    "method": "protected.geojson holds the PAD-US outlines simplified to about 5 m (0.00005 degrees). The 2D layer is green at 30% opacity, and the 3D layer at 35%. No record is hidden.",
+    "sources": [
+      "padus"
+    ],
+    "source_detail": "US Geological Survey (USGS) PAD-US 4.1, feature service Protection_Mechanism_Category_PADUS, layer 0, State_Nm='PR'. Cite as: U.S. Geological Survey (USGS) Gap Analysis Project (GAP), 2024, Protected Areas Database of the United States (PAD-US) 4.1: USGS data release, https://doi.org/10.5066/P96WBCHS. Version 4.1 was released in March 2025; USGS cites it as a 2024 data release. Retrieved 1 October 2026.",
+    "how_to_read": "Overlapping outlines are stacked, so a darker patch can be several records. Check the designation and GAP status before reading a patch as nature reserve.",
+    "caveats": [
+      "In the 2026-10 snapshot the layer includes military land, national cemeteries and 411 local parks.",
+      "Outlines are simplified for display. Place flags use the unsimplified outlines.",
+      "The route planner in the 2D map and the 3D view counts every protected polygon, including the proclamation outlines. The place flag skips them.",
+      "PAD-US combines data from federal, state and local agencies and nonprofit partners, so the quality and age of boundaries vary. USGS advises asking the managing agency directly for authoritative boundaries.",
+      "PAD-US protected areas are not the land-use plan's 'Suelo Rústico Especialmente Protegido' class. The two come from different sources and draw different boundaries."
+    ],
+    "see_also": [
+      "land.padus_designation",
+      "land.padus_gap_status",
+      "land.protected_place_flag",
+      "layers.protected_control",
+      "layers.land_layers_3d",
+      "land.group_protected"
+    ],
+    "where": {
+      "files": [],
+      "view": [
+        {
+          "label": "2D map, Map layers tab: Protected areas",
+          "href": "index.html#l=prot"
+        },
+        {
+          "label": "3D + Time, Layers tab: Protected areas, USGS PAD-US",
+          "href": "3d.html"
+        }
+      ]
+    },
+    "domain": "environment.land",
+    "domains": ["environment.land"],
+    "added": "2026-10-01"
+  },
+  {
+    "id": "land.protected_place_flag",
+    "name": "How a place is flagged as inside a protected area",
+    "group": "Protected areas (PAD-US)",
+    "kind": "method",
+    "plain": "A tourism place counts as inside a protected area when its map point falls in a polygon (map shape) of the Protected Areas Database of the United States (PAD-US) other than a proclamation outline. If it falls in several, the strictest Gap Analysis Project (GAP) status is kept.",
+    "definition": "For every place the build tests its coordinates against the PAD-US polygons. Records with designation PROC (outlines) are skipped. If the point is in more than one other record, the record with the lowest GAP status wins. The place then carries that record's name (protected_area) and GAP status (protected_gap).",
+    "unit": "not applicable (yes or no per place)",
+    "value_type": "flag",
+    "geography": "Every place in Puerto Rico's places file. In the 2026-10 snapshot, municipality counts use the 24,209 counted places (tourism places with confidence 0.50 or higher, places of worship excluded).",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Recalculated with each snapshot, from the PAD-US copy retrieved on 1 October 2026."
+    },
+    "method": "The build tests each place with the Shapely 'within' test against the unsimplified PAD-US polygons. Municipality counts (in_protected) use counted places only: confidence 0.50 or higher, places of worship excluded.",
+    "sources": [
+      "overture",
+      "padus"
+    ],
+    "source_detail": "Overture Maps places; PAD-US 4.1 (Puerto Rico). Cite as: U.S. Geological Survey (USGS) Gap Analysis Project (GAP), 2024, Protected Areas Database of the United States (PAD-US) 4.1: USGS data release, https://doi.org/10.5066/P96WBCHS. Version 4.1 was released in March 2025; USGS cites it as a 2024 data release. Retrieved 1 October 2026.",
+    "how_to_read": "'Inside a protected area' means the pin lies in a PAD-US record. It does not mean the place is in a nature reserve.",
+    "caveats": [
+      "Snapshot 2026-10: 869 of 24,209 counted places (3.6%) are flagged. For 465 the record kept is a local park, for 13 military land and for 15 a historic or cultural area. 509 are in GAP 4 land.",
+      "In the same snapshot, one 'Unknown Local Park' record that spans the island holds 117 of the flagged places.",
+      "Only the pin is tested. The pin can be off the building.",
+      "If two records share the lowest GAP status, the build keeps one of them and no rule chooses which. The protected_area name can be either."
+    ],
+    "see_also": [
+      "land.protected_layer",
+      "land.padus_gap_status",
+      "municipalities.in_protected",
+      "places.protected_area",
+      "places.protected_gap",
+      "hazards.flood_exposure_flag",
+      "measures.route_protected",
+      "land.group_protected"
+    ],
+    "where": {
+      "files": [],
+      "view": [
+        {
+          "label": "Map, Rankings tab: rank municipalities by places inside protected areas",
+          "href": "index.html"
+        }
+      ]
+    },
+    "domain": "environment.land",
+    "domains": ["environment.land"],
+    "added": "2026-10-01"
+  }
+]

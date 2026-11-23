@@ -1,0 +1,77 @@
+name: Night-time lights (NASA Black Marble)
+
+# Builds the night-time lights summaries (nightlights.py) with the NASA Earthdata token, the one secret the build uses for it (HANDOFF decision 75;
+# docs/nightlights-setup.md), and keeps the three files with the run as an artifact; it writes nothing to the repository. The monthly rebuild that opens a pull
+# request is rebuild.yml's unit 'nightlights'. Started by hand, or by pushing a tag named nightlights-run-*; a tag named nightlights-diag-* only checks what LAADS answers.
+on:
+  workflow_dispatch:
+    inputs:
+      since:
+        description: "First year to read (the product starts in 2012)"
+        type: string
+        default: "2012"
+  push:
+    tags: ["nightlights-run-*", "nightlights-diag-*"]   # a diag tag only checks what LAADS answers for one file (python nightlights.py --diagnose)
+
+permissions:
+  contents: read
+
+concurrency:
+  group: nightlights
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 330   # the first run downloads every month since 2012: about 177 files of 70 MB, one at a time, each deleted once summarised
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements.txt
+      - run: pip install -r requirements.txt
+      - name: What LAADS answers for one file (diag tags only; never prints the token)
+        if: startsWith(github.ref_name, 'nightlights-diag-')
+        env:
+          EARTHDATA_TOKEN: ${{ secrets.EARTHDATA_TOKEN }}
+        run: python nightlights.py --diagnose
+      - name: Monthly summaries of earlier runs (so a run downloads only the new months)
+        if: "!startsWith(github.ref_name, 'nightlights-diag-')"
+        uses: actions/cache@v4
+        with:
+          path: cache/nightlights/summary
+          key: nightlights-summary-${{ github.run_id }}
+          restore-keys: nightlights-summary-
+      - name: Build
+        if: "!startsWith(github.ref_name, 'nightlights-diag-')"
+        env:
+          EARTHDATA_TOKEN: ${{ secrets.EARTHDATA_TOKEN }}
+          SINCE: ${{ inputs.since || '2012' }}
+        run: |
+          test -n "$EARTHDATA_TOKEN" || { echo "::error::The secret EARTHDATA_TOKEN is not set (docs/nightlights-setup.md)."; exit 1; }
+          python -u nightlights.py --since "$SINCE"
+          python nightlights.py --check
+      - name: Keep the files with the run
+        if: "!startsWith(github.ref_name, 'nightlights-diag-')"
+        uses: actions/upload-artifact@v4
+        with:
+          name: nightlights-${{ github.run_id }}
+          path: |
+            site/data/nightlights_series.json
+            site/data/nightlights_barrio.json
+            site/data/nightlights_monthly.json
+          if-no-files-found: error
+          retention-days: 30
+      - name: Report in the run summary
+        if: "!startsWith(github.ref_name, 'nightlights-diag-')"
+        run: |
+          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json
+          s = json.load(open("site/data/nightlights_series.json", encoding="utf-8"))
+          n = s["notes"]
+          r = next(v for v in s["vars"] if v["key"] == "ntl_radiance")["years"]
+          print(f"Night-time lights: {n['months']} months, {n['first_month']} to {n['last_month']}; complete years {s['years'][0]}-{s['years'][-1]}.")
+          print(f"Puerto Rico's mean radiance by year (nW/cm²/sr): " + ", ".join(f"{y} {v[-1]}" for y, v in r.items()))
+          PY

@@ -1,0 +1,466 @@
+[
+ {
+  "id": "methods.broadband",
+  "name": "Fixed broadband availability by barrio and municipio (FCC Broadband Data Collection)",
+  "domain": "infrastructure",
+  "domains": [
+   "infrastructure",
+   "economy"
+  ],
+  "group": "Broadband (FCC)",
+  "kind": "method",
+  "plain": "Where homes and businesses can get fast internet at home, from what internet providers report to the FCC twice a year: how many places are served at 100/20 Mbps or more, underserved or unserved, and where fiber is available, for every barrio and municipio since 2023.",
+  "definition": "Each broadband serviceable location in the FCC's Puerto Rico files gets one tier from the best low-latency service it can get over a reliable technology: served (100/20 Mbps or more), underserved (25/3 or more, below 100/20) or unserved (below 25/3, or none), as NTIA's BEAD program defines them; fiber is any provider reporting fiber to the premises. Counts are summed by 2020 census block, then by barrio, municipio and Puerto Rico.",
+  "unit": "locations (counts); % of locations (shares)",
+  "value_type": "count",
+  "geography": "901 barrios, 78 municipios and Puerto Rico",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2023,
+   "last": 2026,
+   "frequency": "Twice a year from the FCC (as of June 30 and December 31); the observatory keeps the June release of each year (refresh unit broadband)"
+  },
+  "method": "broadband.py, in GitHub Actions with FPR's FCC account (secrets FCC_BDC_USERNAME and FCC_BDC_HASH), lists the BDC releases, keeps the June 30 release of each year from 2023, and downloads Puerto Rico's state location files for every fixed technology (copper, cable, fiber, satellite, licensed, licensed-by-rule and unlicensed fixed wireless). Each row is a location, a provider and a technology with its maximum advertised speeds and a low-latency flag. The build gives each location its best tier, sums the locations by census block (block_geoid), places each block in its barrio by the Census Bureau's internal point, and publishes only counts and shares by area. Checks at every build: 900,000 to 1,500,000 locations, every municipio with locations, every block known. In this build the June 2025 count of served locations (1,108,862) is within 0.04% of the figure Esri's Living Atlas copy of the same FCC data gives (1,109,321).",
+  "sources": [
+   "fcc_bdc",
+   "census_tiger"
+  ],
+  "source_detail": "FCC Broadband Data Collection, fixed broadband availability, Puerto Rico state location files (category State, subcategory Location Coverage), June releases 2023-2026; newest as of 2026-06-30, published by the FCC on 2026-10-24 (https://broadbandmap.fcc.gov/data-download). Tiers: NTIA, BEAD Notice of Funding Opportunity (2022). Census blocks and barrio outlines: TIGER/Line 2020.",
+  "how_to_read": "As of June 30, 2026, Puerto Rico had 1,177,315 broadband serviceable locations: 95.4% served at 100/20 Mbps or more, 1.2% underserved and 3.4% unserved; fiber was available at 70.6% of them, up from 46.3% in June 2023.",
+  "caveats": [
+   "Availability is what providers report they can install within ten business days; it is not what households subscribe to (see the survey's households with an internet subscription) or the speed they get.",
+   "Providers' reports can be challenged and corrected; the FCC publishes each release again as challenges are settled, so a figure can move a little between versions of the same release.",
+   "The FCC's list of locations (the Fabric) changes between releases, so part of a change from one year to the next comes from the list, not from the networks.",
+   "A barrio with few locations moves a lot from one release to the next: read several years together."
+  ],
+  "see_also": [
+   "broadband.bb_locations",
+   "broadband.bb_served_pct",
+   "broadband.bb_underserved_pct",
+   "broadband.bb_unserved_pct",
+   "broadband.bb_below100_n",
+   "broadband.bb_fiber_pct",
+   "economy.internet_subscription_pct"
+  ],
+  "where": {
+   "files": [
+    "broadband_barrio.json:*"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: broadband",
+     "href": "index.html#e=bb_served_pct.f"
+    }
+   ]
+  },
+  "added": "2026-11-10"
+ },
+ {
+  "id": "broadband.bb_locations",
+  "name": "Broadband serviceable locations (FCC)",
+  "domain": "infrastructure",
+  "domains": [
+   "infrastructure",
+   "economy"
+  ],
+  "group": "Infrastructure · Broadband (FCC)",
+  "kind": "variable",
+  "plain": "How many homes, apartment buildings and businesses in the area the FCC counts as places that could get internet service at a fixed address.",
+  "definition": "The number of broadband serviceable locations in the area: places in the FCC's list (the Fabric) where a home or business is or could be served.",
+  "unit": "locations",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico; also 901 barrios",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2023,
+   "last": 2026,
+   "frequency": "Twice a year from the FCC (as of June 30 and December 31); the observatory keeps the June release of each year (refresh unit broadband)"
+  },
+  "method": "broadband.py (methods.broadband): Puerto Rico's FCC state location files of each June release; one tier per location; counts by census block, then barrio and municipio.",
+  "sources": [
+   "fcc_bdc",
+   "census_tiger"
+  ],
+  "source_detail": "FCC Broadband Data Collection, fixed broadband availability, Puerto Rico state location files (category State, subcategory Location Coverage), June releases 2023-2026; newest as of 2026-06-30, published by the FCC on 2026-10-24 (https://broadbandmap.fcc.gov/data-download). Tiers: NTIA, BEAD Notice of Funding Opportunity (2022). Census blocks and barrio outlines: TIGER/Line 2020.",
+  "how_to_read": "June 2026: Puerto Rico 1,177,315. Most: San Juan (88,204), Bayamón (63,898), Ponce (51,209); fewest: Culebra (1,206), Maricao (1,909), Las Marías (3,083). A location is a building or unit point, not a household: an apartment building can be one location with many units.",
+  "caveats": [
+   "Availability is what providers report they can install within ten business days; it is not what households subscribe to (see the survey's households with an internet subscription) or the speed they get.",
+   "Providers' reports can be challenged and corrected; the FCC publishes each release again as challenges are settled, so a figure can move a little between versions of the same release.",
+   "The FCC's list of locations (the Fabric) changes between releases, so part of a change from one year to the next comes from the list, not from the networks.",
+   "A barrio with few locations moves a lot from one release to the next: read several years together."
+  ],
+  "see_also": [
+   "broadband.bb_served_pct",
+   "broadband.bb_underserved_pct",
+   "broadband.bb_unserved_pct",
+   "broadband.bb_below100_n",
+   "broadband.bb_fiber_pct",
+   "methods.broadband"
+  ],
+  "where": {
+   "files": [
+    "broadband_series.json:bb_locations",
+    "broadband_barrio.json:bb_locations"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Infrastructure · Broadband (FCC)): shade municipalities or barrios by",
+     "href": "index.html#e=bb_locations.f.value.blue.j.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-11-10"
+ },
+ {
+  "id": "broadband.bb_served_pct",
+  "name": "Locations served at 100/20 Mbps or more (FCC, %)",
+  "ask": {
+   "en": [
+    "broadband",
+    "internet",
+    "fiber",
+    "internet speed",
+    "fast internet",
+    "bead",
+    "unserved",
+    "underserved"
+   ],
+   "es": [
+    "banda ancha",
+    "internet",
+    "fibra",
+    "velocidad de internet",
+    "internet rápido",
+    "bead",
+    "sin servicio",
+    "subatendidas"
+   ]
+  },
+  "domain": "infrastructure",
+  "domains": [
+   "infrastructure",
+   "economy"
+  ],
+  "group": "Infrastructure · Broadband (FCC)",
+  "kind": "variable",
+  "plain": "The share of places in the area that can get fast home internet: at least 100 megabits a second down and 20 up, over cable, fiber, copper or licensed fixed wireless.",
+  "definition": "Served locations over all locations, in percent: a location is served when it can get 100/20 Mbps or more over a reliable technology. Reliable technologies (NTIA's BEAD rules) are copper, cable, fiber to the premises and licensed or licensed-by-rule fixed wireless, with low latency (100 ms or less); satellite and unlicensed fixed wireless do not count. Each location counts once, by its best such service.",
+  "unit": "% of locations",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico; also 901 barrios",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2023,
+   "last": 2026,
+   "frequency": "Twice a year from the FCC (as of June 30 and December 31); the observatory keeps the June release of each year (refresh unit broadband)"
+  },
+  "method": "broadband.py (methods.broadband): Puerto Rico's FCC state location files of each June release; one tier per location; counts by census block, then barrio and municipio.",
+  "sources": [
+   "fcc_bdc",
+   "census_tiger"
+  ],
+  "source_detail": "FCC Broadband Data Collection, fixed broadband availability, Puerto Rico state location files (category State, subcategory Location Coverage), June releases 2023-2026; newest as of 2026-06-30, published by the FCC on 2026-10-24 (https://broadbandmap.fcc.gov/data-download). Tiers: NTIA, BEAD Notice of Funding Opportunity (2022). Census blocks and barrio outlines: TIGER/Line 2020.",
+  "how_to_read": "June 2026: Puerto Rico 95.4% (June 2023: 91.1%). Lowest: Yabucoa (63.4), Maricao (67.7), Barranquitas (73.2); highest: San Juan (99.8), Salinas (99.7), Vieques (99.3).",
+  "caveats": [
+   "Availability is what providers report they can install within ten business days; it is not what households subscribe to (see the survey's households with an internet subscription) or the speed they get.",
+   "Providers' reports can be challenged and corrected; the FCC publishes each release again as challenges are settled, so a figure can move a little between versions of the same release.",
+   "The FCC's list of locations (the Fabric) changes between releases, so part of a change from one year to the next comes from the list, not from the networks.",
+   "A barrio with few locations moves a lot from one release to the next: read several years together."
+  ],
+  "see_also": [
+   "broadband.bb_locations",
+   "broadband.bb_underserved_pct",
+   "broadband.bb_unserved_pct",
+   "broadband.bb_below100_n",
+   "broadband.bb_fiber_pct",
+   "methods.broadband"
+  ],
+  "where": {
+   "files": [
+    "broadband_series.json:bb_served_pct",
+    "broadband_barrio.json:bb_served_pct"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Infrastructure · Broadband (FCC)): shade municipalities or barrios by",
+     "href": "index.html#e=bb_served_pct.f.value.blue.j.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-11-10"
+ },
+ {
+  "id": "broadband.bb_underserved_pct",
+  "name": "Locations underserved, 25/3 to 100/20 Mbps (FCC, %)",
+  "domain": "infrastructure",
+  "domains": [
+   "infrastructure",
+   "economy"
+  ],
+  "group": "Infrastructure · Broadband (FCC)",
+  "kind": "variable",
+  "plain": "The share of places in the area whose best home internet is slower than 100/20 Mbps but at least 25/3.",
+  "definition": "Underserved locations over all locations, in percent: a location is underserved when its best service over a reliable technology is at least 25/3 Mbps but less than 100/20. Reliable technologies (NTIA's BEAD rules) are copper, cable, fiber to the premises and licensed or licensed-by-rule fixed wireless, with low latency (100 ms or less); satellite and unlicensed fixed wireless do not count. Each location counts once, by its best such service.",
+  "unit": "% of locations",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico; also 901 barrios",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2023,
+   "last": 2026,
+   "frequency": "Twice a year from the FCC (as of June 30 and December 31); the observatory keeps the June release of each year (refresh unit broadband)"
+  },
+  "method": "broadband.py (methods.broadband): Puerto Rico's FCC state location files of each June release; one tier per location; counts by census block, then barrio and municipio.",
+  "sources": [
+   "fcc_bdc",
+   "census_tiger"
+  ],
+  "source_detail": "FCC Broadband Data Collection, fixed broadband availability, Puerto Rico state location files (category State, subcategory Location Coverage), June releases 2023-2026; newest as of 2026-06-30, published by the FCC on 2026-10-24 (https://broadbandmap.fcc.gov/data-download). Tiers: NTIA, BEAD Notice of Funding Opportunity (2022). Census blocks and barrio outlines: TIGER/Line 2020.",
+  "how_to_read": "June 2026: Puerto Rico 1.2%. Highest: Yabucoa (14.2), Barranquitas (10.8), Las Piedras (7.1).",
+  "caveats": [
+   "Availability is what providers report they can install within ten business days; it is not what households subscribe to (see the survey's households with an internet subscription) or the speed they get.",
+   "Providers' reports can be challenged and corrected; the FCC publishes each release again as challenges are settled, so a figure can move a little between versions of the same release.",
+   "The FCC's list of locations (the Fabric) changes between releases, so part of a change from one year to the next comes from the list, not from the networks.",
+   "A barrio with few locations moves a lot from one release to the next: read several years together."
+  ],
+  "see_also": [
+   "broadband.bb_locations",
+   "broadband.bb_served_pct",
+   "broadband.bb_unserved_pct",
+   "broadband.bb_below100_n",
+   "broadband.bb_fiber_pct",
+   "methods.broadband"
+  ],
+  "where": {
+   "files": [
+    "broadband_series.json:bb_underserved_pct",
+    "broadband_barrio.json:bb_underserved_pct"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Infrastructure · Broadband (FCC)): shade municipalities or barrios by",
+     "href": "index.html#e=bb_underserved_pct.f.value.blue.j.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-11-10"
+ },
+ {
+  "id": "broadband.bb_unserved_pct",
+  "name": "Locations unserved, below 25/3 Mbps (FCC, %)",
+  "domain": "infrastructure",
+  "domains": [
+   "infrastructure",
+   "economy"
+  ],
+  "group": "Infrastructure · Broadband (FCC)",
+  "kind": "variable",
+  "plain": "The share of places in the area that cannot get even 25/3 Mbps over cable, fiber, copper or licensed fixed wireless; many can still get satellite.",
+  "definition": "Unserved locations over all locations, in percent: a location is unserved when no reliable technology offers it 25/3 Mbps or more (it may still have satellite or unlicensed fixed wireless). Reliable technologies (NTIA's BEAD rules) are copper, cable, fiber to the premises and licensed or licensed-by-rule fixed wireless, with low latency (100 ms or less); satellite and unlicensed fixed wireless do not count. Each location counts once, by its best such service.",
+  "unit": "% of locations",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico; also 901 barrios",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2023,
+   "last": 2026,
+   "frequency": "Twice a year from the FCC (as of June 30 and December 31); the observatory keeps the June release of each year (refresh unit broadband)"
+  },
+  "method": "broadband.py (methods.broadband): Puerto Rico's FCC state location files of each June release; one tier per location; counts by census block, then barrio and municipio.",
+  "sources": [
+   "fcc_bdc",
+   "census_tiger"
+  ],
+  "source_detail": "FCC Broadband Data Collection, fixed broadband availability, Puerto Rico state location files (category State, subcategory Location Coverage), June releases 2023-2026; newest as of 2026-06-30, published by the FCC on 2026-10-24 (https://broadbandmap.fcc.gov/data-download). Tiers: NTIA, BEAD Notice of Funding Opportunity (2022). Census blocks and barrio outlines: TIGER/Line 2020.",
+  "how_to_read": "June 2026: Puerto Rico 3.4% (June 2023: 6.2%). Highest: Maricao (29.3), Las Marías (23.8), Yabucoa (22.4).",
+  "caveats": [
+   "Availability is what providers report they can install within ten business days; it is not what households subscribe to (see the survey's households with an internet subscription) or the speed they get.",
+   "Providers' reports can be challenged and corrected; the FCC publishes each release again as challenges are settled, so a figure can move a little between versions of the same release.",
+   "The FCC's list of locations (the Fabric) changes between releases, so part of a change from one year to the next comes from the list, not from the networks.",
+   "A barrio with few locations moves a lot from one release to the next: read several years together."
+  ],
+  "see_also": [
+   "broadband.bb_locations",
+   "broadband.bb_served_pct",
+   "broadband.bb_underserved_pct",
+   "broadband.bb_below100_n",
+   "broadband.bb_fiber_pct",
+   "methods.broadband"
+  ],
+  "where": {
+   "files": [
+    "broadband_series.json:bb_unserved_pct",
+    "broadband_barrio.json:bb_unserved_pct"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Infrastructure · Broadband (FCC)): shade municipalities or barrios by",
+     "href": "index.html#e=bb_unserved_pct.f.value.blue.j.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-11-10"
+ },
+ {
+  "id": "broadband.bb_below100_n",
+  "name": "Locations below 100/20 Mbps, underserved or unserved (FCC)",
+  "domain": "infrastructure",
+  "domains": [
+   "infrastructure",
+   "economy"
+  ],
+  "group": "Infrastructure · Broadband (FCC)",
+  "kind": "variable",
+  "plain": "How many places in the area cannot get 100/20 Mbps home internet over cable, fiber, copper or licensed fixed wireless: the ones federal BEAD money can help connect.",
+  "definition": "The number of underserved and unserved locations in the area: those with no service of 100/20 Mbps or more over a reliable technology. Reliable technologies (NTIA's BEAD rules) are copper, cable, fiber to the premises and licensed or licensed-by-rule fixed wireless, with low latency (100 ms or less); satellite and unlicensed fixed wireless do not count. Each location counts once, by its best such service.",
+  "unit": "locations",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico; also 901 barrios",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2023,
+   "last": 2026,
+   "frequency": "Twice a year from the FCC (as of June 30 and December 31); the observatory keeps the June release of each year (refresh unit broadband)"
+  },
+  "method": "broadband.py (methods.broadband): Puerto Rico's FCC state location files of each June release; one tier per location; counts by census block, then barrio and municipio.",
+  "sources": [
+   "fcc_bdc",
+   "census_tiger"
+  ],
+  "source_detail": "FCC Broadband Data Collection, fixed broadband availability, Puerto Rico state location files (category State, subcategory Location Coverage), June releases 2023-2026; newest as of 2026-06-30, published by the FCC on 2026-10-24 (https://broadbandmap.fcc.gov/data-download). Tiers: NTIA, BEAD Notice of Funding Opportunity (2022). Census blocks and barrio outlines: TIGER/Line 2020.",
+  "how_to_read": "June 2026: Puerto Rico 54,180 (June 2023: 104,909). Most: Yabucoa (4,408), Cayey (2,788), Barranquitas (2,401).",
+  "caveats": [
+   "Availability is what providers report they can install within ten business days; it is not what households subscribe to (see the survey's households with an internet subscription) or the speed they get.",
+   "Providers' reports can be challenged and corrected; the FCC publishes each release again as challenges are settled, so a figure can move a little between versions of the same release.",
+   "The FCC's list of locations (the Fabric) changes between releases, so part of a change from one year to the next comes from the list, not from the networks.",
+   "A barrio with few locations moves a lot from one release to the next: read several years together."
+  ],
+  "see_also": [
+   "broadband.bb_locations",
+   "broadband.bb_served_pct",
+   "broadband.bb_underserved_pct",
+   "broadband.bb_unserved_pct",
+   "broadband.bb_fiber_pct",
+   "methods.broadband"
+  ],
+  "where": {
+   "files": [
+    "broadband_series.json:bb_below100_n",
+    "broadband_barrio.json:bb_below100_n"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Infrastructure · Broadband (FCC)): shade municipalities or barrios by",
+     "href": "index.html#e=bb_below100_n.f.value.blue.j.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-11-10"
+ },
+ {
+  "id": "broadband.bb_fiber_pct",
+  "name": "Locations where fiber is available (FCC, %)",
+  "domain": "infrastructure",
+  "domains": [
+   "infrastructure",
+   "economy"
+  ],
+  "group": "Infrastructure · Broadband (FCC)",
+  "kind": "variable",
+  "plain": "The share of places in the area where at least one provider says it can bring a fiber-optic line to the building.",
+  "definition": "Locations where at least one provider reports fiber to the premises, at any speed, over all locations, in percent.",
+  "unit": "% of locations",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico; also 901 barrios",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2023,
+   "last": 2026,
+   "frequency": "Twice a year from the FCC (as of June 30 and December 31); the observatory keeps the June release of each year (refresh unit broadband)"
+  },
+  "method": "broadband.py (methods.broadband): Puerto Rico's FCC state location files of each June release; one tier per location; counts by census block, then barrio and municipio.",
+  "sources": [
+   "fcc_bdc",
+   "census_tiger"
+  ],
+  "source_detail": "FCC Broadband Data Collection, fixed broadband availability, Puerto Rico state location files (category State, subcategory Location Coverage), June releases 2023-2026; newest as of 2026-06-30, published by the FCC on 2026-10-24 (https://broadbandmap.fcc.gov/data-download). Tiers: NTIA, BEAD Notice of Funding Opportunity (2022). Census blocks and barrio outlines: TIGER/Line 2020.",
+  "how_to_read": "June 2026: Puerto Rico 70.6% (June 2023: 46.3%). Lowest: Culebra (0.1), Naguabo (3.8), Santa Isabel (4.4); highest: San Juan (97.6), Hatillo (96.9), Vieques (96.1).",
+  "caveats": [
+   "Availability is what providers report they can install within ten business days; it is not what households subscribe to (see the survey's households with an internet subscription) or the speed they get.",
+   "Providers' reports can be challenged and corrected; the FCC publishes each release again as challenges are settled, so a figure can move a little between versions of the same release.",
+   "The FCC's list of locations (the Fabric) changes between releases, so part of a change from one year to the next comes from the list, not from the networks.",
+   "A barrio with few locations moves a lot from one release to the next: read several years together."
+  ],
+  "see_also": [
+   "broadband.bb_locations",
+   "broadband.bb_served_pct",
+   "broadband.bb_underserved_pct",
+   "broadband.bb_unserved_pct",
+   "broadband.bb_below100_n",
+   "methods.broadband"
+  ],
+  "where": {
+   "files": [
+    "broadband_series.json:bb_fiber_pct",
+    "broadband_barrio.json:bb_fiber_pct"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Infrastructure · Broadband (FCC)): shade municipalities or barrios by",
+     "href": "index.html#e=bb_fiber_pct.f.value.blue.j.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-11-10"
+ },
+ {
+  "kind": "layer",
+  "value_type": "geometry",
+  "unit": "hexagons (H3 resolution 8, about 0.74 km² each; longitude and latitude, WGS 84)",
+  "added": "2026-11-12",
+  "id": "layers.broadband_hex",
+  "name": "Broadband gaps, FCC hexagons (map layer)",
+  "domain": "infrastructure",
+  "domains": [
+   "infrastructure",
+   "economy"
+  ],
+  "group": "Broadband (FCC)",
+  "plain": "A map layer of small hexagons that shows where home internet of 100/20 Mbps or more is missing, from what providers report to the FCC. Darker hexagons have a larger share of homes and businesses that cannot get it.",
+  "definition": "broadband_hex.geojson: one hexagon for each H3 cell of resolution 8 that holds 10 or more broadband serviceable locations in the FCC's newest June release (9,971 hexagons with 1,162,059 locations as of 2026-06-30). Each has h (the H3 cell), n (locations), below_pct (the share underserved or unserved: no 100/20 Mbps over a reliable technology with low latency), unserved_pct (below 25/3), fiber_pct (fiber to the premises from any provider) and mun (the municipio that holds most of its locations). 3,800 cells with fewer than 10 locations (15,256 locations) are counted in the file's notes and not drawn.",
+  "geography": "Hexagons over all 78 municipios",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "The FCC's newest June release; rebuilt with the broadband series (refresh unit broadband)"
+  },
+  "method": "broadband.py reads the FCC's Puerto Rico state location files of the newest June release with FPR's FCC account (GitHub Actions), gives each location its best tier (NTIA BEAD: served 100/20 Mbps or more, underserved 25/3 to 100/20, unserved below, over copper, cable, fiber or licensed fixed wireless with low latency) and its fiber flag, and counts the locations in the H3 cell the FCC gives each one (h3_res8_id). Outlines come from the h3 library (cell_to_boundary), to 4 decimals. Cells with fewer than 10 locations are not drawn (HANDOFF decision 101 (b)). The 2D map (js/facilities.js) and the 3D view (js/facilities3d.js) draw it from the shared list core/facilities.js, in the classes of the Broadband gaps page (below 1, 1-5, 5-15, 15-35, 35% and over), so any map that reads that list draws it too.",
+  "sources": [
+   "fcc_bdc"
+  ],
+  "source_detail": "FCC Broadband Data Collection, fixed broadband availability, Puerto Rico state location files as of 2026-06-30 (https://broadbandmap.fcc.gov/data-download). H3: Uber Technologies, H3 hexagonal grid (https://h3geo.org/).",
+  "how_to_read": "As of 2026-06-30, 9,971 hexagons hold 1,162,059 of Puerto Rico's 1,177,315 locations. Read a dark hexagon as a place where many homes and businesses lack 100/20 Mbps, and look at its number of locations in the pop-up: a hexagon of 12 locations is a handful of homes.",
+  "caveats": [
+   "Availability is what providers report they can install within ten business days, not what anyone subscribes to or the speed they get.",
+   "Hexagons with fewer than 10 locations, mostly in the mountains and on the edges, are not drawn, so the gaps there are under-shown on the map; the Broadband gaps page counts them by barrio.",
+   "A hexagon is a fixed grid cell, not a neighbourhood: it can cut across a barrio or a municipio line."
+  ],
+  "see_also": [
+   "methods.broadband",
+   "broadband.bb_served_pct",
+   "broadband.bb_below100_n"
+  ],
+  "where": {
+   "files": [
+    "broadband_hex.geojson:*"
+   ],
+   "view": [
+    {
+     "label": "Map, Layers tab: Infrastructure and mobility, Communications",
+     "href": "index.html#l=broadband"
+    }
+   ]
+  }
+ }
+]

@@ -1,0 +1,76 @@
+name: Data freshness
+
+# Every morning, run the cheap checks that are due (freshness.py, refresh/sources.json): has a source published something new?
+# Nothing is downloaded but the answers. The answers of the last run are kept in the Actions cache, so a check compares with its own past.
+# A source with a new release that a clean runner can rebuild starts rebuild.yml; the others are listed in the issue "Data freshness",
+# with what to do. See docs/automation.md, part 2.
+on:
+  schedule:
+    - cron: "41 9 * * *"   # 05:41 in Puerto Rico, after the transit refresh
+  workflow_dispatch:
+    inputs:
+      all:
+        description: "Run every check now, not only the ones due"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+  issues: write
+  actions: write
+
+concurrency:
+  group: freshness
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests
+      - name: The answers of the last run
+        uses: actions/cache/restore@v4
+        with:
+          path: .freshness/state.json
+          key: freshness-state-${{ github.run_id }}
+          restore-keys: freshness-state-
+      - name: Run the checks that are due
+        env:
+          FRESHNESS_CONTACT: ${{ vars.FRESHNESS_CONTACT }}
+        run: python freshness.py ${{ inputs.all && '--all' || '' }}
+      - name: Keep today's answers
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: .freshness/state.json
+          key: freshness-state-${{ github.run_id }}
+      - name: Report in the run summary
+        run: cat .freshness/report.md >> "$GITHUB_STEP_SUMMARY"
+      - name: Update the issue "Data freshness"
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          n=$(python -c "import json; print(json.load(open('.freshness/changes.json'))['notify'])")   # new releases and checks that started failing today
+          num=$(gh issue list --state open --search 'in:title "Data freshness"' --json number,title --jq '[.[] | select(.title == "Data freshness")][0].number // empty')
+          if [ -z "$num" ]; then
+            gh issue create --title "Data freshness" --body-file .freshness/report.md
+          else
+            gh issue edit "$num" --body-file .freshness/report.md
+            # a comment notifies the people who watch the issue; only when something needs attention
+            if [ "$n" != "0" ]; then gh issue comment "$num" --body-file .freshness/report.md; fi
+          fi
+      - name: Start the rebuilds a clean runner can do
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import json, subprocess
+          for unit, ids in json.load(open(".freshness/changes.json"))["rebuild"].items():
+              print("rebuild", unit, ids)
+              subprocess.run(["gh", "workflow", "run", "rebuild.yml", "-f", f"unit={unit}", "-f", "sources=" + ",".join(ids)], check=True)
+          PY

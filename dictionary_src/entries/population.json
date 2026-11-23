@@ -1,0 +1,1680 @@
+[
+  {
+    "id": "population.acs_population",
+    "name": "Population (survey estimate)",
+    "domain": "population",
+    "domains": [
+      "population"
+    ],
+    "group": "People and age",
+    "kind": "variable",
+    "plain": "How many people live in the area, as the American Community Survey estimates it from five years of answers. It is a survey estimate, not the census count and not the yearly estimate, and below the municipality it has a margin of error.",
+    "definition": "The total population of the area in the American Community Survey (ACS) 5-year estimates, for the windows 2017-2021 to 2020-2024. A five-year estimate pools 60 months of answers: it describes the period, not one day. It counts everyone the survey counts where they live, people in group quarters such as nursing homes included.",
+    "unit": "people",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico; also 901 barrios, 981 census tracts and 2,555 block groups",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2021,
+      "last": 2024,
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+    },
+    "method": "The observatory reads table B01003 (Total Population) of the Census Bureau's American Community Survey (ACS) 5-year files, for each of the four five-year windows, and works the value out by using its total (cell 001). The same arithmetic makes the value for a municipality, a barrio, a census tract and a block group. The margin of error follows the Census Bureau's formulas: the margin of a sum is the square root of the sum of the squares of the margins of its cells, and a share uses the Bureau's proportion formula. A total that the Census Bureau controls to its own estimate has no margin; the observatory gives it a margin of zero, as the Bureau says may be done, so a share of it keeps the margin of its numerator. A cell the Census Bureau leaves empty gives no value, never a zero. A share whose margin works out to zero (a share of exactly 100%, for example) is published without a margin: the proportion formula would give zero, which would read as exact. The Puerto Rico value is the Census Bureau's own island row. The code is small_area.py in the project's repository.",
+    "sources": [
+      "acs5"
+    ],
+    "source_detail": "ACS 5-year table B01003 (Total Population), table-based summary files, https://www2.census.gov/programs-surveys/acs/summary_file/{vintage}/table-based-SF/data/5YRData/ (vintages 2021 to 2024). The cells used are checked against the Census Bureau's own labels, https://api.census.gov/data/{vintage}/acs/acs5/groups/B01003.json, in every vintage at every build.",
+    "how_to_read": "In the 2020-2024 window the survey puts Puerto Rico at 3,234,309 people. The largest municipalities are San Juan (336,160), Bayamón (182,469) and Carolina (152,204); the smallest are Culebra (1,387) and Maricao (4,988). Counts add up: the block groups of a tract, and the block groups, tracts and barrios of a municipality, give the figure above them exactly (checked for the population, the housing units and the households in every window). For a headline count of residents with no survey margin, use the 2020 Census count (3,285,874 in the crosswalk) or the yearly estimate of the Population Estimates Program (3,184,835 for 2025, housing.population). In 2020-2024 the margin of error is above 30% of the estimate (the CSV by area marks such values as less reliable; no map or table draws areas below the municipality yet) for neither of the 2 municipalities that have a margin (the Census Bureau controls the other 76 totals and prints none), 47% of barrios, 8% of census tracts and 73% of block groups that have a value.",
+    "caveats": [
+      "It is not the 2020 Census count and not the Population Estimates Program's yearly estimate: three sources with different dates and methods. In the 2026-10 snapshot Puerto Rico is 3,285,874 in the 2020 Census, 3,234,309 in the 2020-2024 survey and 3,184,835 for 2025 in the yearly estimates. Cite the source and the period with each figure.",
+      "The Census Bureau publishes no margin of error for the total population of the island or of 76 of the 78 municipalities (only Culebra and Maricao have one) because it controls those totals to its own population estimates. Such an estimate has no sampling error, so the Analysis tab shows no margin for it; it is still the Census Bureau's estimate, not a count of everyone. 900 of the 901 barrios have a margin (Florida Adentro has none: the Census Bureau controls its total too), and every census tract and block group has one.",
+      "Of the 82 census tracts flagged in 2020-2024, 60 have no residents at all: an estimate of zero with any margin counts as less reliable. Among the 921 tracts with residents the share flagged is 2%.",
+      "Below the municipality the figure is a rough survey estimate: read it with its margin of error and see methods.small_area_estimates for how large the margins are.",
+      "Adjacent five-year windows share four of their five years, so a change from one window to the next is not a trend to read closely."
+    ],
+    "see_also": [
+      "methods.small_area_estimates",
+      "measures.margin_of_error",
+      "methods.acs_windows"
+    ],
+    "where": {
+      "files": [
+        "population_series.json:acs_population",
+        "acs_barrio.json:acs_population",
+        "acs_tract.json:acs_population",
+        "acs_blockgroup.json:acs_population"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Population · People and age): size symbols by",
+          "href": "index.html#e=acs_population.s.value.blue.q.1.1.0.75.0"
+        }
+      ]
+    },
+    "added": "2026-10-06"
+  },
+  {
+    "id": "population.acs_under18_pct",
+    "name": "People under 18, % of all people",
+    "domain": "population",
+    "domains": [
+      "population"
+    ],
+    "group": "People and age",
+    "kind": "variable",
+    "plain": "Out of every 100 people in the area, how many are under 18, as the survey estimates it.",
+    "definition": "People under 18 divided by all people of the area (table B01001, the four age groups under 18, male and female, over the total), in percent.",
+    "unit": "% of people",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico; also 901 barrios, 981 census tracts and 2,555 block groups",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2021,
+      "last": 2024,
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+    },
+    "method": "The observatory reads table B01001 (Sex by Age) of the Census Bureau's American Community Survey (ACS) 5-year files, for each of the four five-year windows, and works the value out by adding the cells for under 5, 5 to 9, 10 to 14 and 15 to 17 years, male and female (003-006 and 027-030), and dividing by the total (001). The same arithmetic makes the value for a municipality, a barrio, a census tract and a block group. The margin of error follows the Census Bureau's formulas: the margin of a sum is the square root of the sum of the squares of the margins of its cells, and a share uses the Bureau's proportion formula. A total that the Census Bureau controls to its own estimate has no margin; the observatory gives it a margin of zero, as the Bureau says may be done, so a share of it keeps the margin of its numerator. A cell the Census Bureau leaves empty gives no value, never a zero. A share whose margin works out to zero (a share of exactly 100%, for example) is published without a margin: the proportion formula would give zero, which would read as exact. The Puerto Rico value is the Census Bureau's own island row. The code is small_area.py in the project's repository.",
+    "sources": [
+      "acs5"
+    ],
+    "source_detail": "ACS 5-year table B01001 (Sex by Age), table-based summary files, https://www2.census.gov/programs-surveys/acs/summary_file/{vintage}/table-based-SF/data/5YRData/ (vintages 2021 to 2024). The cells used are checked against the Census Bureau's own labels, https://api.census.gov/data/{vintage}/acs/acs5/groups/B01001.json, in every vintage at every build.",
+    "how_to_read": "In 2020-2024, 16.1% of the people of Puerto Rico are under 18. The share is highest in Barranquitas (19.4%), Peñuelas (19.0%) and Jayuya (18.6%) and lowest in Hormigueros (13.5%). In 2020-2024 the margin of error is above 30% of the estimate (the CSV by area marks such values as less reliable; no map or table draws areas below the municipality yet) for 1% of municipalities, 70% of barrios, 60% of census tracts and 91% of block groups that have a value.",
+    "caveats": [
+      "A share is worked out again from its parts at every level; it is not an average of the shares of smaller areas.",
+      "Below the municipality the figure is a rough survey estimate: read it with its margin of error and see methods.small_area_estimates for how large the margins are.",
+      "Adjacent five-year windows share four of their five years, so a change from one window to the next is not a trend to read closely."
+    ],
+    "see_also": [
+      "methods.small_area_estimates",
+      "measures.margin_of_error",
+      "methods.acs_windows"
+    ],
+    "where": {
+      "files": [
+        "population_series.json:acs_under18_pct",
+        "acs_barrio.json:acs_under18_pct",
+        "acs_tract.json:acs_under18_pct",
+        "acs_blockgroup.json:acs_under18_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Population · People and age): shade municipalities by",
+          "href": "index.html#e=acs_under18_pct.f.value.blue.q.1.1.0.85.0"
+        }
+      ]
+    },
+    "added": "2026-10-06"
+  },
+  {
+    "id": "population.acs_age65plus_pct",
+    "name": "People 65 and older, % of all people",
+    "domain": "population",
+    "domains": [
+      "population"
+    ],
+    "group": "People and age",
+    "kind": "variable",
+    "plain": "Out of every 100 people in the area, how many are 65 or older, as the survey estimates it.",
+    "definition": "People 65 years old or older divided by all people of the area (table B01001, the six age groups from 65 and 66 years to 85 years and over, male and female, over the total), in percent. It differs from housing.age65_pct, which comes from the yearly Population Estimates Program and exists only for municipalities.",
+    "unit": "% of people",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico; also 901 barrios, 981 census tracts and 2,555 block groups",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2021,
+      "last": 2024,
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+    },
+    "method": "The observatory reads table B01001 (Sex by Age) of the Census Bureau's American Community Survey (ACS) 5-year files, for each of the four five-year windows, and works the value out by adding the cells from 65 and 66 years to 85 years and over, male and female (020-025 and 044-049), and dividing by the total (001). The same arithmetic makes the value for a municipality, a barrio, a census tract and a block group. The margin of error follows the Census Bureau's formulas: the margin of a sum is the square root of the sum of the squares of the margins of its cells, and a share uses the Bureau's proportion formula. A total that the Census Bureau controls to its own estimate has no margin; the observatory gives it a margin of zero, as the Bureau says may be done, so a share of it keeps the margin of its numerator. A cell the Census Bureau leaves empty gives no value, never a zero. A share whose margin works out to zero (a share of exactly 100%, for example) is published without a margin: the proportion formula would give zero, which would read as exact. The Puerto Rico value is the Census Bureau's own island row. The code is small_area.py in the project's repository.",
+    "sources": [
+      "acs5"
+    ],
+    "source_detail": "ACS 5-year table B01001 (Sex by Age), table-based summary files, https://www2.census.gov/programs-surveys/acs/summary_file/{vintage}/table-based-SF/data/5YRData/ (vintages 2021 to 2024). The cells used are checked against the Census Bureau's own labels, https://api.census.gov/data/{vintage}/acs/acs5/groups/B01001.json, in every vintage at every build.",
+    "how_to_read": "In 2020-2024, 23.4% of the people of Puerto Rico are 65 or older. The share is highest in Hormigueros (30.2%), Rincón (27.9%) and San Germán (27.8%) and lowest in Toa Alta (17.3%). In 2020-2024 the margin of error is above 30% of the estimate (the CSV by area marks such values as less reliable; no map or table draws areas below the municipality yet) for 0% of municipalities, 36% of barrios, 6% of census tracts and 51% of block groups that have a value.",
+    "caveats": [
+      "Where a tract holds a nursing home, the age profile of the tract is partly the home's: the survey counts people in group quarters where they live.",
+      "Below the municipality the figure is a rough survey estimate: read it with its margin of error and see methods.small_area_estimates for how large the margins are.",
+      "Adjacent five-year windows share four of their five years, so a change from one window to the next is not a trend to read closely."
+    ],
+    "see_also": [
+      "methods.small_area_estimates",
+      "measures.margin_of_error",
+      "methods.acs_windows"
+    ],
+    "where": {
+      "files": [
+        "population_series.json:acs_age65plus_pct",
+        "acs_barrio.json:acs_age65plus_pct",
+        "acs_tract.json:acs_age65plus_pct",
+        "acs_blockgroup.json:acs_age65plus_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Population · People and age): shade municipalities by",
+          "href": "index.html#e=acs_age65plus_pct.f.value.blue.q.1.1.0.85.0"
+        }
+      ]
+    },
+    "added": "2026-10-06"
+  },
+  {
+    "id": "population.acs_female_pct",
+    "name": "Women and girls, % of all people",
+    "domain": "population",
+    "domains": [
+      "population"
+    ],
+    "group": "People and age",
+    "kind": "variable",
+    "plain": "Out of every 100 people in the area, how many are women or girls, as the survey estimates it.",
+    "definition": "Women and girls divided by all people of the area (table B01001, cell 026 over cell 001), in percent.",
+    "unit": "% of people",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico; also 901 barrios and 981 census tracts (not published for block groups)",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2021,
+      "last": 2024,
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+    },
+    "method": "The observatory reads table B01001 (Sex by Age) of the Census Bureau's American Community Survey (ACS) 5-year files, for each of the four five-year windows, and works the value out by dividing the female total (026) by the total (001). The same arithmetic makes the value for a municipality, a barrio, a census tract. The margin of error follows the Census Bureau's formulas: the margin of a sum is the square root of the sum of the squares of the margins of its cells, and a share uses the Bureau's proportion formula. A total that the Census Bureau controls to its own estimate has no margin; the observatory gives it a margin of zero, as the Bureau says may be done, so a share of it keeps the margin of its numerator. A cell the Census Bureau leaves empty gives no value, never a zero. A share whose margin works out to zero (a share of exactly 100%, for example) is published without a margin: the proportion formula would give zero, which would read as exact. The Puerto Rico value is the Census Bureau's own island row. The code is small_area.py in the project's repository.",
+    "sources": [
+      "acs5"
+    ],
+    "source_detail": "ACS 5-year table B01001 (Sex by Age), table-based summary files, https://www2.census.gov/programs-surveys/acs/summary_file/{vintage}/table-based-SF/data/5YRData/ (vintages 2021 to 2024). The cells used are checked against the Census Bureau's own labels, https://api.census.gov/data/{vintage}/acs/acs5/groups/B01001.json, in every vintage at every build.",
+    "how_to_read": "In 2020-2024, 52.7% of the people of Puerto Rico are women or girls; the share runs from 47.2% (Culebra) to 54.6% (Carolina) among the municipalities. In 2020-2024 the margin of error is above 30% of the estimate (the CSV by area marks such values as less reliable; no map or table draws areas below the municipality yet) for none of the 26 municipalities that have a margin (the Census Bureau controls the number of women in the other 52 and prints none), 20% of barrios and 3% of census tracts that have a value.",
+    "caveats": [
+      "In 2020-2024 the Census Bureau gives no margin of error for the number of women in 52 of the 78 municipalities (in earlier windows, 57 or 58) because it controls that count to its own estimate, so the share has no margin there; it has one for the other 26 municipalities and for the island.",
+      "A tract that holds a prison or a military barracks can read far from 50%: the figure describes who is counted there, not who lives in the surrounding streets.",
+      "Below the municipality the figure is a rough survey estimate: read it with its margin of error and see methods.small_area_estimates for how large the margins are.",
+      "Adjacent five-year windows share four of their five years, so a change from one window to the next is not a trend to read closely."
+    ],
+    "see_also": [
+      "methods.small_area_estimates",
+      "measures.margin_of_error",
+      "methods.acs_windows"
+    ],
+    "where": {
+      "files": [
+        "population_series.json:acs_female_pct",
+        "acs_barrio.json:acs_female_pct",
+        "acs_tract.json:acs_female_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Population · People and age): shade municipalities by",
+          "href": "index.html#e=acs_female_pct.f.value.blue.q.1.1.0.85.0"
+        }
+      ]
+    },
+    "added": "2026-10-06"
+  },
+  {
+    "id": "population.acs_family_households_pct",
+    "name": "Family households, % of all households",
+    "domain": "population",
+    "domains": [
+      "population"
+    ],
+    "group": "Household types",
+    "kind": "variable",
+    "plain": "Out of every 100 households, how many are family households: the person in whose name the home is owned or rented lives with at least one relative.",
+    "definition": "Family households divided by all households of the area (table B11001, cell 002 over cell 001), in percent. A family household has a householder (the person in whose name the home is owned or rented) living with one or more relatives by birth, marriage or adoption.",
+    "unit": "% of households",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico; also 901 barrios and 981 census tracts (not published for block groups)",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2021,
+      "last": 2024,
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+    },
+    "method": "The observatory reads table B11001 (Household Type (Including Living Alone)) of the Census Bureau's American Community Survey (ACS) 5-year files, for each of the four five-year windows, and works the value out by dividing the family households (002) by all households (001). The same arithmetic makes the value for a municipality, a barrio, a census tract. The margin of error follows the Census Bureau's formulas: the margin of a sum is the square root of the sum of the squares of the margins of its cells, and a share uses the Bureau's proportion formula. A total that the Census Bureau controls to its own estimate has no margin; the observatory gives it a margin of zero, as the Bureau says may be done, so a share of it keeps the margin of its numerator. A cell the Census Bureau leaves empty gives no value, never a zero. A share whose margin works out to zero (a share of exactly 100%, for example) is published without a margin: the proportion formula would give zero, which would read as exact. The Puerto Rico value is the Census Bureau's own island row. The code is small_area.py in the project's repository.",
+    "sources": [
+      "acs5"
+    ],
+    "source_detail": "ACS 5-year table B11001 (Household Type (Including Living Alone)), table-based summary files, https://www2.census.gov/programs-surveys/acs/summary_file/{vintage}/table-based-SF/data/5YRData/ (vintages 2021 to 2024). The cells used are checked against the Census Bureau's own labels, https://api.census.gov/data/{vintage}/acs/acs5/groups/B11001.json, in every vintage at every build.",
+    "how_to_read": "In 2020-2024, 63.4% of the households of Puerto Rico are family households (margin ±0.32 points). The share is highest in Toa Alta (73.9%) and lowest in San Juan (50.8%). In 2020-2024 the margin of error is above 30% of the estimate (the CSV by area marks such values as less reliable; no map or table draws areas below the municipality yet) for 0% of municipalities, 23% of barrios and 3% of census tracts that have a value.",
+    "caveats": [
+      "A household is a home with people in it; the number of households is not the number of homes (housing.housing_units includes the empty ones).",
+      "Below the municipality the figure is a rough survey estimate: read it with its margin of error and see methods.small_area_estimates for how large the margins are.",
+      "Adjacent five-year windows share four of their five years, so a change from one window to the next is not a trend to read closely."
+    ],
+    "see_also": [
+      "methods.small_area_estimates",
+      "measures.margin_of_error",
+      "methods.acs_windows"
+    ],
+    "where": {
+      "files": [
+        "population_series.json:acs_family_households_pct",
+        "acs_barrio.json:acs_family_households_pct",
+        "acs_tract.json:acs_family_households_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Population · Household types): shade municipalities by",
+          "href": "index.html#e=acs_family_households_pct.f.value.blue.q.1.1.0.85.0"
+        }
+      ]
+    },
+    "added": "2026-10-06"
+  },
+  {
+    "id": "population.acs_living_alone_pct",
+    "name": "One-person households, % of all households",
+    "domain": "population",
+    "domains": [
+      "population"
+    ],
+    "group": "Household types",
+    "kind": "variable",
+    "plain": "Out of every 100 households, how many are one person living alone.",
+    "definition": "Households in which the householder lives alone divided by all households of the area (table B11001, cell 008 over cell 001), in percent.",
+    "unit": "% of households",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico; also 901 barrios and 981 census tracts (not published for block groups)",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2021,
+      "last": 2024,
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+    },
+    "method": "The observatory reads table B11001 (Household Type (Including Living Alone)) of the Census Bureau's American Community Survey (ACS) 5-year files, for each of the four five-year windows, and works the value out by dividing the householders living alone (008) by all households (001). The same arithmetic makes the value for a municipality, a barrio, a census tract. The margin of error follows the Census Bureau's formulas: the margin of a sum is the square root of the sum of the squares of the margins of its cells, and a share uses the Bureau's proportion formula. A total that the Census Bureau controls to its own estimate has no margin; the observatory gives it a margin of zero, as the Bureau says may be done, so a share of it keeps the margin of its numerator. A cell the Census Bureau leaves empty gives no value, never a zero. A share whose margin works out to zero (a share of exactly 100%, for example) is published without a margin: the proportion formula would give zero, which would read as exact. The Puerto Rico value is the Census Bureau's own island row. The code is small_area.py in the project's repository.",
+    "sources": [
+      "acs5"
+    ],
+    "source_detail": "ACS 5-year table B11001 (Household Type (Including Living Alone)), table-based summary files, https://www2.census.gov/programs-surveys/acs/summary_file/{vintage}/table-based-SF/data/5YRData/ (vintages 2021 to 2024). The cells used are checked against the Census Bureau's own labels, https://api.census.gov/data/{vintage}/acs/acs5/groups/B11001.json, in every vintage at every build.",
+    "how_to_read": "In 2020-2024, 31.4% of the households of Puerto Rico are one person. The share is highest in San Juan (42.8%), Mayagüez (36.9%) and San Germán (36.7%). In 2020-2024 the margin of error is above 30% of the estimate (the CSV by area marks such values as less reliable; no map or table draws areas below the municipality yet) for 1% of municipalities, 72% of barrios and 50% of census tracts that have a value.",
+    "caveats": [
+      "Read it beside the share of people 65 and older (population.acs_age65plus_pct): the survey does not say how old the people who live alone are.",
+      "Below the municipality the figure is a rough survey estimate: read it with its margin of error and see methods.small_area_estimates for how large the margins are.",
+      "Adjacent five-year windows share four of their five years, so a change from one window to the next is not a trend to read closely."
+    ],
+    "see_also": [
+      "methods.small_area_estimates",
+      "measures.margin_of_error",
+      "methods.acs_windows"
+    ],
+    "where": {
+      "files": [
+        "population_series.json:acs_living_alone_pct",
+        "acs_barrio.json:acs_living_alone_pct",
+        "acs_tract.json:acs_living_alone_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Population · Household types): shade municipalities by",
+          "href": "index.html#e=acs_living_alone_pct.f.value.blue.q.1.1.0.85.0"
+        }
+      ]
+    },
+    "added": "2026-10-06"
+  },
+  {
+    "id": "population.acs_veteran_pct",
+    "name": "Veterans, % of civilians 18 and older",
+    "domain": "population",
+    "domains": [
+      "population"
+    ],
+    "group": "Disability and veterans",
+    "kind": "variable",
+    "plain": "Out of every 100 civilians 18 or older, how many are veterans of the armed forces.",
+    "definition": "Veterans divided by the civilian population 18 and older of the area (table B21001, cell 002 over cell 001), in percent. People serving in the armed forces are not in the denominator.",
+    "unit": "% of civilians 18 and older",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico; also 901 barrios and 981 census tracts (not published for block groups)",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2021,
+      "last": 2024,
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+    },
+    "method": "The observatory reads table B21001 (Sex by Age by Veteran Status for the Civilian Population 18 Years and Over) of the Census Bureau's American Community Survey (ACS) 5-year files, for each of the four five-year windows, and works the value out by dividing the veterans (002) by the civilian population 18 and older (001). The same arithmetic makes the value for a municipality, a barrio, a census tract. The margin of error follows the Census Bureau's formulas: the margin of a sum is the square root of the sum of the squares of the margins of its cells, and a share uses the Bureau's proportion formula. A total that the Census Bureau controls to its own estimate has no margin; the observatory gives it a margin of zero, as the Bureau says may be done, so a share of it keeps the margin of its numerator. A cell the Census Bureau leaves empty gives no value, never a zero. A share whose margin works out to zero (a share of exactly 100%, for example) is published without a margin: the proportion formula would give zero, which would read as exact. The Puerto Rico value is the Census Bureau's own island row. The code is small_area.py in the project's repository.",
+    "sources": [
+      "acs5"
+    ],
+    "source_detail": "ACS 5-year table B21001 (Sex by Age by Veteran Status for the Civilian Population 18 Years and Over), table-based summary files, https://www2.census.gov/programs-surveys/acs/summary_file/{vintage}/table-based-SF/data/5YRData/ (vintages 2021 to 2024). The cells used are checked against the Census Bureau's own labels, https://api.census.gov/data/{vintage}/acs/acs5/groups/B21001.json, in every vintage at every build.",
+    "how_to_read": "In 2020-2024, 2.4% of the civilian adults of Puerto Rico are veterans. The share is highest in Culebra (5.2%, ±4.2 points, less reliable), Ceiba (4.1%, ±1.4 points, less reliable) and Fajardo (4.1%, ±0.8 points); a margin above 30% of the estimate is what the site calls less reliable, so these are not firm rankings. In 2020-2024 the margin of error is above 30% of the estimate (the CSV by area marks such values as less reliable; no map or table draws areas below the municipality yet) for 62% of municipalities, 98% of barrios and 100% of census tracts that have a value.",
+    "caveats": [
+      "In a very small area the share can read 0% or 100% from a handful of people, with a margin of hundreds of points: do not quote it (methods.small_area_estimates says how many areas are that small).",
+      "The counts are small, so the margins are wide even for a municipality: in 2020-2024 the typical margin is 35% of the estimate for a municipality and 88% for a census tract. Compare broad groups of municipalities, not two neighbouring places.",
+      "Below the municipality the figure is a rough survey estimate: read it with its margin of error and see methods.small_area_estimates for how large the margins are.",
+      "Adjacent five-year windows share four of their five years, so a change from one window to the next is not a trend to read closely."
+    ],
+    "see_also": [
+      "methods.small_area_estimates",
+      "measures.margin_of_error",
+      "methods.acs_windows"
+    ],
+    "where": {
+      "files": [
+        "population_series.json:acs_veteran_pct",
+        "acs_barrio.json:acs_veteran_pct",
+        "acs_tract.json:acs_veteran_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Population · Disability and veterans): shade municipalities by",
+          "href": "index.html#e=acs_veteran_pct.f.value.blue.q.1.1.0.85.0"
+        }
+      ]
+    },
+    "added": "2026-10-06"
+  },
+  {
+    "id": "population.acs_disability_pct",
+    "name": "People with a disability, % of people outside institutions",
+    "domain": "population",
+    "domains": [
+      "population"
+    ],
+    "group": "Disability and veterans",
+    "kind": "variable",
+    "plain": "Out of every 100 people the survey counts outside institutions, how many have a disability.",
+    "definition": "People with a disability divided by the civilian population living outside institutions (table B18101: the six age groups with a disability, male and female, over the total), in percent. The survey asks about hearing, vision, cognitive, walking, self-care and independent-living difficulty.",
+    "unit": "% of people",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico; also 901 barrios and 981 census tracts (not published for block groups)",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2021,
+      "last": 2024,
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+    },
+    "method": "The observatory reads table B18101 (Sex by Age by Disability Status) of the Census Bureau's American Community Survey (ACS) 5-year files, for each of the four five-year windows, and works the value out by adding the twelve cells \"With a disability\" (004, 007, 010, 013, 016, 019, 023, 026, 029, 032, 035, 038) and dividing by the total (001). The Census Bureau does not publish this table for block groups, so there is no block-group value. The same arithmetic makes the value for a municipality, a barrio, a census tract. The margin of error follows the Census Bureau's formulas: the margin of a sum is the square root of the sum of the squares of the margins of its cells, and a share uses the Bureau's proportion formula. A total that the Census Bureau controls to its own estimate has no margin; the observatory gives it a margin of zero, as the Bureau says may be done, so a share of it keeps the margin of its numerator. A cell the Census Bureau leaves empty gives no value, never a zero. A share whose margin works out to zero (a share of exactly 100%, for example) is published without a margin: the proportion formula would give zero, which would read as exact. The Puerto Rico value is the Census Bureau's own island row. The code is small_area.py in the project's repository.",
+    "sources": [
+      "acs5"
+    ],
+    "source_detail": "ACS 5-year table B18101 (Sex by Age by Disability Status), table-based summary files, https://www2.census.gov/programs-surveys/acs/summary_file/{vintage}/table-based-SF/data/5YRData/ (vintages 2021 to 2024). The cells used are checked against the Census Bureau's own labels, https://api.census.gov/data/{vintage}/acs/acs5/groups/B18101.json, in every vintage at every build.",
+    "how_to_read": "In 2020-2024, 22.9% of the civilian population of Puerto Rico living outside institutions has a disability. The share is highest in Aibonito (36.1%, ±2.5 points), Cidra (35.9%, ±1.8 points) and Rincón (33.4%, ±2.8 points) and lowest in Culebra (6.6%, ±4.7 points, less reliable). In 2020-2024 the margin of error is above 30% of the estimate (the CSV by area marks such values as less reliable; no map or table draws areas below the municipality yet) for 4% of municipalities, 45% of barrios and 17% of census tracts that have a value.",
+    "caveats": [
+      "In a very small area the share can read 0% or 100% from a handful of people, with a margin of hundreds of points: do not quote it (methods.small_area_estimates says how many areas are that small).",
+      "It counts difficulties as people report them in a survey; it is not a count of the people who receive disability benefits or services.",
+      "People living in institutions (nursing homes, prisons) are not in the table, so an area with an institution reads differently from its surroundings.",
+      "Below the municipality the figure is a rough survey estimate: read it with its margin of error and see methods.small_area_estimates for how large the margins are.",
+      "Adjacent five-year windows share four of their five years, so a change from one window to the next is not a trend to read closely."
+    ],
+    "see_also": [
+      "methods.small_area_estimates",
+      "measures.margin_of_error",
+      "methods.acs_windows"
+    ],
+    "where": {
+      "files": [
+        "population_series.json:acs_disability_pct",
+        "acs_barrio.json:acs_disability_pct",
+        "acs_tract.json:acs_disability_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Population · Disability and veterans): shade municipalities by",
+          "href": "index.html#e=acs_disability_pct.f.value.blue.q.1.1.0.85.0"
+        }
+      ]
+    },
+    "added": "2026-10-06"
+  },
+  {
+    "id": "population.acs_uninsured_pct",
+    "ask": {
+      "en": [
+        "uninsured",
+        "no health insurance",
+        "without health insurance"
+      ],
+      "es": [
+        "sin seguro medico",
+        "sin plan medico",
+        "sin seguro de salud"
+      ]
+    },
+    "name": "People without health insurance, % of people outside institutions",
+    "domain": "health",
+    "domains": [
+      "health",
+      "population"
+    ],
+    "group": "Health insurance",
+    "kind": "variable",
+    "plain": "Out of every 100 people the survey counts outside institutions, how many have no health insurance of any kind.",
+    "definition": "People with no health insurance coverage divided by the civilian population living outside institutions (table B27010: the four age groups without coverage over the total), in percent. Coverage of any kind counts: employer, direct purchase, Medicare, Medicaid or Plan Vital, military or VA.",
+    "unit": "% of people",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico; also 901 barrios and 981 census tracts (not published for block groups)",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2021,
+      "last": 2024,
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+    },
+    "method": "The observatory reads table B27010 (Types of Health Insurance Coverage by Age) of the Census Bureau's American Community Survey (ACS) 5-year files, for each of the four five-year windows, and works the value out by adding the four cells \"No health insurance coverage\" (017, 033, 050, 066) and dividing by the total (001). The Census Bureau does not publish this table for block groups, so there is no block-group value. The same arithmetic makes the value for a municipality, a barrio, a census tract. The margin of error follows the Census Bureau's formulas: the margin of a sum is the square root of the sum of the squares of the margins of its cells, and a share uses the Bureau's proportion formula. A total that the Census Bureau controls to its own estimate has no margin; the observatory gives it a margin of zero, as the Bureau says may be done, so a share of it keeps the margin of its numerator. A cell the Census Bureau leaves empty gives no value, never a zero. A share whose margin works out to zero (a share of exactly 100%, for example) is published without a margin: the proportion formula would give zero, which would read as exact. The Puerto Rico value is the Census Bureau's own island row. The code is small_area.py in the project's repository.",
+    "sources": [
+      "acs5"
+    ],
+    "source_detail": "ACS 5-year table table B27010 (Types of Health Insurance Coverage by Age), table-based summary files, https://www2.census.gov/programs-surveys/acs/summary_file/{vintage}/table-based-SF/data/5YRData/ (vintages 2021 to 2024). The cells used are checked against the Census Bureau's own labels, https://api.census.gov/data/{vintage}/acs/acs5/groups/table.json, in every vintage at every build.",
+    "how_to_read": "In 2020-2024, 5.72% of the civilian population of Puerto Rico living outside institutions had no health insurance (margin ±0.13), against 6.82% in 2017-2021.",
+    "caveats": [
+      "The windows share years: the change from one to the next is not a yearly trend.",
+      "Barrio and tract values have wide margins; the map hatches the least reliable."
+    ],
+    "see_also": [
+      "health.medicare_benes",
+      "population.acs_disability_pct"
+    ],
+    "where": {
+      "files": [
+        "population_series.json:acs_uninsured_pct",
+        "acs_barrio.json:acs_uninsured_pct",
+        "acs_tract.json:acs_uninsured_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab: people without health insurance, % of people outside institutions",
+          "href": "index.html#e=acs_uninsured_pct.f"
+        }
+      ]
+    },
+    "added": "2026-10-14"
+  },
+  {
+    "id": "population.acs_no_hs_pct",
+    "ask": {
+      "en": [
+        "no high school diploma",
+        "without a high school diploma",
+        "dropouts"
+      ],
+      "es": [
+        "sin diploma de escuela superior",
+        "sin cuarto ano"
+      ]
+    },
+    "name": "Adults 25+ without a high school diploma, % of adults 25+",
+    "domain": "education",
+    "domains": [
+      "education",
+      "population"
+    ],
+    "group": "Education level",
+    "kind": "variable",
+    "plain": "Out of every 100 adults 25 and older, how many did not finish high school (no diploma or equivalent).",
+    "definition": "Adults 25 and older whose highest schooling is below a high school diploma or its equivalent, divided by all adults 25 and older (table B15002: cells from 'No schooling completed' to '12th grade, no diploma', men and women), in percent.",
+    "unit": "% of adults 25+",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico; also 901 barrios and 981 census tracts (not published for block groups)",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2021,
+      "last": 2024,
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+    },
+    "method": "The observatory reads table B15002 (Sex by Educational Attainment for the Population 25 Years and Over) of the Census Bureau's American Community Survey (ACS) 5-year files, for each of the four five-year windows, and works the value out by adding the sixteen cells below a high school diploma (003 to 010 and 020 to 027) and dividing by the total (001). The Census Bureau does not publish this table for block groups, so there is no block-group value. The same arithmetic makes the value for a municipality, a barrio, a census tract. The margin of error follows the Census Bureau's formulas: the margin of a sum is the square root of the sum of the squares of the margins of its cells, and a share uses the Bureau's proportion formula. A total that the Census Bureau controls to its own estimate has no margin; the observatory gives it a margin of zero, as the Bureau says may be done, so a share of it keeps the margin of its numerator. A cell the Census Bureau leaves empty gives no value, never a zero. A share whose margin works out to zero (a share of exactly 100%, for example) is published without a margin: the proportion formula would give zero, which would read as exact. The Puerto Rico value is the Census Bureau's own island row. The code is small_area.py in the project's repository.",
+    "sources": [
+      "acs5"
+    ],
+    "source_detail": "ACS 5-year table table B15002 (Sex by Educational Attainment for the Population 25 Years and Over), table-based summary files, https://www2.census.gov/programs-surveys/acs/summary_file/{vintage}/table-based-SF/data/5YRData/ (vintages 2021 to 2024). The cells used are checked against the Census Bureau's own labels, https://api.census.gov/data/{vintage}/acs/acs5/groups/table.json, in every vintage at every build.",
+    "how_to_read": "In 2020-2024, 18.83% of adults 25 and older in Puerto Rico had no high school diploma (margin ±0.22), against 21.64% in 2017-2021.",
+    "caveats": [
+      "The windows share years: the change from one to the next is not a yearly trend.",
+      "Bachelor's degree or higher is a separate dataset (housing.bachelors_pct)."
+    ],
+    "see_also": [
+      "housing.bachelors_pct",
+      "education.sch_enroll"
+    ],
+    "where": {
+      "files": [
+        "population_series.json:acs_no_hs_pct",
+        "acs_barrio.json:acs_no_hs_pct",
+        "acs_tract.json:acs_no_hs_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab: adults 25+ without a high school diploma, % of adults 25+",
+          "href": "index.html#e=acs_no_hs_pct.f"
+        }
+      ]
+    },
+    "added": "2026-10-14"
+  },
+  {
+    "id": "population.acs_age_under3_pct",
+    "name": "Children under 3, % of all people",
+    "domain": "population",
+    "domains": [
+      "population"
+    ],
+    "group": "People and age",
+    "kind": "variable",
+    "plain": "Out of every 100 people in the area, how many are children under 3, as the survey estimates it.",
+    "definition": "Children under 3 years old who live in households (table B09001, cell 003) divided by all people of the area (B01001_001), in percent. The survey gives ages under 5 in this detail only for children in households; in Puerto Rico the children under 5 in group quarters round to none (the under-3 and 3-and-4 counts add up to B01001's under-5 count in the island row).",
+    "unit": "% of people",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2021,
+      "last": 2024,
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+    },
+    "method": "The observatory reads table B09001 and B01001 of the Census Bureau's American Community Survey (ACS) 5-year files for each of the four windows and divides the children under 3 in households (B09001_003) by all people of the area (B01001_001), in percent. The margin of error follows the Census Bureau's formulas: a sum adds the squares of its cells' margins, and a share uses the proportion formula; a total the Census Bureau controls to its own estimate gets a margin of zero, so the share keeps the margin of its count. The cells are worked out from the Census Bureau's own labels and checked against them in every vintage at every build. The code is small_area.py (age_counts, derive_pop).",
+    "sources": [
+      "acs5"
+    ],
+    "source_detail": "ACS 5-year tables B09001 (Population Under 18 Years by Age) and B01001 (Sex by Age), table-based summary files, https://www2.census.gov/programs-surveys/acs/summary_file/{vintage}/table-based-SF/data/5YRData/ (vintages 2021 to 2024); cell labels checked against https://api.census.gov/data/{vintage}/acs/acs5/groups/{table}.json.",
+    "how_to_read": "In 2020-2024, 1.8% of the people of Puerto Rico are in this age group; the share is highest in Ciales (2.5%) and Jayuya (2.4%) and lowest in Maunabo (0.5%). The margin of error is above 30% of the estimate for 25 of the 78 municipalities in 2020-2024.",
+    "caveats": [
+      "Adjacent five-year windows share four of their five years, so a change from one window to the next is not a trend to read closely.",
+      "Published for the 78 municipalities and Puerto Rico only: below the municipality the margin of error is above 30% of the estimate for 99% of the barrios and 100% of the census tracts that have a value (docs/small-area.md). The barrios and census tracts get broader groups: under 18, 18 to 44, 45 to 64 and 65 and older."
+    ],
+    "see_also": [
+      "population.age_table",
+      "population.acs_under18_pct",
+      "population.acs_age65plus_pct",
+      "methods.small_area_estimates",
+      "measures.margin_of_error",
+      "methods.acs_windows"
+    ],
+    "where": {
+      "files": [
+        "population_series.json:acs_age_under3_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Population · People and age): shade municipalities by",
+          "href": "index.html#e=acs_age_under3_pct.f.value.blue.q.1.1.0.85.0"
+        }
+      ]
+    },
+    "added": "2026-10-18"
+  },
+  {
+    "id": "population.acs_age3to4_pct",
+    "name": "Children aged 3 and 4, % of all people",
+    "domain": "population",
+    "domains": [
+      "population"
+    ],
+    "group": "People and age",
+    "kind": "variable",
+    "plain": "Out of every 100 people in the area, how many are children aged 3 or 4, as the survey estimates it.",
+    "definition": "Children aged 3 or 4 who live in households (table B09001, cell 004) divided by all people of the area (B01001_001), in percent. As for children under 3, the survey gives this detail for children in households only.",
+    "unit": "% of people",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2021,
+      "last": 2024,
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+    },
+    "method": "The observatory reads table B09001 and B01001 of the Census Bureau's American Community Survey (ACS) 5-year files for each of the four windows and divides the children aged 3 and 4 in households (B09001_004) by all people of the area (B01001_001), in percent. The margin of error follows the Census Bureau's formulas: a sum adds the squares of its cells' margins, and a share uses the proportion formula; a total the Census Bureau controls to its own estimate gets a margin of zero, so the share keeps the margin of its count. The cells are worked out from the Census Bureau's own labels and checked against them in every vintage at every build. The code is small_area.py (age_counts, derive_pop).",
+    "sources": [
+      "acs5"
+    ],
+    "source_detail": "ACS 5-year tables B09001 (Population Under 18 Years by Age) and B01001 (Sex by Age), table-based summary files, https://www2.census.gov/programs-surveys/acs/summary_file/{vintage}/table-based-SF/data/5YRData/ (vintages 2021 to 2024); cell labels checked against https://api.census.gov/data/{vintage}/acs/acs5/groups/{table}.json.",
+    "how_to_read": "In 2020-2024, 1.4% of the people of Puerto Rico are in this age group; the share is highest in Naranjito (2.2%) and Barranquitas (2.2%) and lowest in Adjuntas (0.6%). The margin of error is above 30% of the estimate for 46 of the 78 municipalities in 2020-2024.",
+    "caveats": [
+      "Adjacent five-year windows share four of their five years, so a change from one window to the next is not a trend to read closely.",
+      "Published for the 78 municipalities and Puerto Rico only: below the municipality the margin of error is above 30% of the estimate for more than 99% of the barrios and 100% of the census tracts that have a value (docs/small-area.md). The barrios and census tracts get broader groups: under 18, 18 to 44, 45 to 64 and 65 and older."
+    ],
+    "see_also": [
+      "population.age_table",
+      "population.acs_under18_pct",
+      "population.acs_age65plus_pct",
+      "methods.small_area_estimates",
+      "measures.margin_of_error",
+      "methods.acs_windows"
+    ],
+    "where": {
+      "files": [
+        "population_series.json:acs_age3to4_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Population · People and age): shade municipalities by",
+          "href": "index.html#e=acs_age3to4_pct.f.value.blue.q.1.1.0.85.0"
+        }
+      ]
+    },
+    "added": "2026-10-18"
+  },
+  {
+    "id": "population.acs_age5to17_pct",
+    "name": "People aged 5 to 17, % of all people",
+    "domain": "population",
+    "domains": [
+      "population"
+    ],
+    "group": "People and age",
+    "kind": "variable",
+    "plain": "Out of every 100 people in the area, how many are 5 to 17 years old, as the survey estimates it.",
+    "definition": "People 5 to 17 years old divided by all people of the area (table B01001: the age groups 5 to 9, 10 to 14 and 15 to 17, male and female, over the total), in percent.",
+    "unit": "% of people",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2021,
+      "last": 2024,
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+    },
+    "method": "The observatory reads table B01001 of the Census Bureau's American Community Survey (ACS) 5-year files for each of the four windows and divides the people aged 5 to 17 by all people of the area (B01001_001), in percent. The cells are 004-006 (male) and 028-030 (female). The margin of error follows the Census Bureau's formulas: a sum adds the squares of its cells' margins, and a share uses the proportion formula; a total the Census Bureau controls to its own estimate gets a margin of zero, so the share keeps the margin of its count. The cells are worked out from the Census Bureau's own labels and checked against them in every vintage at every build. The code is small_area.py (age_counts, derive_pop).",
+    "sources": [
+      "acs5"
+    ],
+    "source_detail": "ACS 5-year tables B01001 (Sex by Age), table-based summary files, https://www2.census.gov/programs-surveys/acs/summary_file/{vintage}/table-based-SF/data/5YRData/ (vintages 2021 to 2024); cell labels checked against https://api.census.gov/data/{vintage}/acs/acs5/groups/{table}.json.",
+    "how_to_read": "In 2020-2024, 13.0% of the people of Puerto Rico are in this age group; the share is highest in Barranquitas (15.6%) and Peñuelas (15.3%) and lowest in Guaynabo (10.9%). The margin of error is above 30% of the estimate for 1 of the 78 municipalities in 2020-2024.",
+    "caveats": [
+      "Adjacent five-year windows share four of their five years, so a change from one window to the next is not a trend to read closely.",
+      "Published for the 78 municipalities and Puerto Rico only: below the municipality the margin of error is above 30% of the estimate for 79% of the barrios and 77% of the census tracts that have a value (docs/small-area.md). The barrios and census tracts get broader groups: under 18, 18 to 44, 45 to 64 and 65 and older."
+    ],
+    "see_also": [
+      "population.age_table",
+      "population.acs_under18_pct",
+      "population.acs_age65plus_pct",
+      "methods.small_area_estimates",
+      "measures.margin_of_error",
+      "methods.acs_windows"
+    ],
+    "where": {
+      "files": [
+        "population_series.json:acs_age5to17_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Population · People and age): shade municipalities by",
+          "href": "index.html#e=acs_age5to17_pct.f.value.blue.q.1.1.0.85.0"
+        }
+      ]
+    },
+    "added": "2026-10-18"
+  },
+  {
+    "id": "population.acs_age18to24_pct",
+    "name": "People aged 18 to 24, % of all people",
+    "domain": "population",
+    "domains": [
+      "population"
+    ],
+    "group": "People and age",
+    "kind": "variable",
+    "plain": "Out of every 100 people in the area, how many are 18 to 24 years old, as the survey estimates it.",
+    "definition": "People 18 to 24 years old divided by all people of the area (table B01001: the age groups 18 and 19, 20, 21 and 22 to 24, male and female, over the total), in percent. College students are counted where they live while studying.",
+    "unit": "% of people",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2021,
+      "last": 2024,
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+    },
+    "method": "The observatory reads table B01001 of the Census Bureau's American Community Survey (ACS) 5-year files for each of the four windows and divides the people aged 18 to 24 by all people of the area (B01001_001), in percent. The cells are 007-010 (male) and 031-034 (female). The margin of error follows the Census Bureau's formulas: a sum adds the squares of its cells' margins, and a share uses the proportion formula; a total the Census Bureau controls to its own estimate gets a margin of zero, so the share keeps the margin of its count. The cells are worked out from the Census Bureau's own labels and checked against them in every vintage at every build. The code is small_area.py (age_counts, derive_pop).",
+    "sources": [
+      "acs5"
+    ],
+    "source_detail": "ACS 5-year tables B01001 (Sex by Age), table-based summary files, https://www2.census.gov/programs-surveys/acs/summary_file/{vintage}/table-based-SF/data/5YRData/ (vintages 2021 to 2024); cell labels checked against https://api.census.gov/data/{vintage}/acs/acs5/groups/{table}.json.",
+    "how_to_read": "In 2020-2024, 9.0% of the people of Puerto Rico are in this age group; the share is highest in Culebra (16.4%) and Mayagüez (15.9%) and lowest in Maricao (7.1%). The margin of error is above 30% of the estimate for 3 of the 78 municipalities in 2020-2024.",
+    "caveats": [
+      "Adjacent five-year windows share four of their five years, so a change from one window to the next is not a trend to read closely.",
+      "Published for the 78 municipalities and Puerto Rico only: below the municipality the margin of error is above 30% of the estimate for 89% of the barrios and 96% of the census tracts that have a value (docs/small-area.md). The barrios and census tracts get broader groups: under 18, 18 to 44, 45 to 64 and 65 and older."
+    ],
+    "see_also": [
+      "population.age_table",
+      "population.acs_under18_pct",
+      "population.acs_age65plus_pct",
+      "methods.small_area_estimates",
+      "measures.margin_of_error",
+      "methods.acs_windows"
+    ],
+    "where": {
+      "files": [
+        "population_series.json:acs_age18to24_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Population · People and age): shade municipalities by",
+          "href": "index.html#e=acs_age18to24_pct.f.value.blue.q.1.1.0.85.0"
+        }
+      ]
+    },
+    "added": "2026-10-18"
+  },
+  {
+    "id": "population.acs_age25to44_pct",
+    "name": "People aged 25 to 44, % of all people",
+    "domain": "population",
+    "domains": [
+      "population"
+    ],
+    "group": "People and age",
+    "kind": "variable",
+    "plain": "Out of every 100 people in the area, how many are 25 to 44 years old, as the survey estimates it.",
+    "definition": "People 25 to 44 years old divided by all people of the area (table B01001: the four five-year groups from 25 to 29 to 40 to 44, male and female, over the total), in percent.",
+    "unit": "% of people",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2021,
+      "last": 2024,
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+    },
+    "method": "The observatory reads table B01001 of the Census Bureau's American Community Survey (ACS) 5-year files for each of the four windows and divides the people aged 25 to 44 by all people of the area (B01001_001), in percent. The cells are 011-014 (male) and 035-038 (female). The margin of error follows the Census Bureau's formulas: a sum adds the squares of its cells' margins, and a share uses the proportion formula; a total the Census Bureau controls to its own estimate gets a margin of zero, so the share keeps the margin of its count. The cells are worked out from the Census Bureau's own labels and checked against them in every vintage at every build. The code is small_area.py (age_counts, derive_pop).",
+    "sources": [
+      "acs5"
+    ],
+    "source_detail": "ACS 5-year tables B01001 (Sex by Age), table-based summary files, https://www2.census.gov/programs-surveys/acs/summary_file/{vintage}/table-based-SF/data/5YRData/ (vintages 2021 to 2024); cell labels checked against https://api.census.gov/data/{vintage}/acs/acs5/groups/{table}.json.",
+    "how_to_read": "In 2020-2024, 25.2% of the people of Puerto Rico are in this age group; the share is highest in Comerío (28.5%) and Gurabo (28.4%) and lowest in Culebra (17.9%). The margin of error is above 30% of the estimate for 1 of the 78 municipalities in 2020-2024.",
+    "caveats": [
+      "Adjacent five-year windows share four of their five years, so a change from one window to the next is not a trend to read closely.",
+      "Published for the 78 municipalities and Puerto Rico only: below the municipality the margin of error is above 30% of the estimate for 53% of the barrios and 19% of the census tracts that have a value (docs/small-area.md). The barrios and census tracts get broader groups: under 18, 18 to 44, 45 to 64 and 65 and older."
+    ],
+    "see_also": [
+      "population.age_table",
+      "population.acs_under18_pct",
+      "population.acs_age65plus_pct",
+      "methods.small_area_estimates",
+      "measures.margin_of_error",
+      "methods.acs_windows"
+    ],
+    "where": {
+      "files": [
+        "population_series.json:acs_age25to44_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Population · People and age): shade municipalities by",
+          "href": "index.html#e=acs_age25to44_pct.f.value.blue.q.1.1.0.85.0"
+        }
+      ]
+    },
+    "added": "2026-10-18"
+  },
+  {
+    "id": "population.acs_age45to64_pct",
+    "name": "People aged 45 to 64, % of all people",
+    "domain": "population",
+    "domains": [
+      "population"
+    ],
+    "group": "People and age",
+    "kind": "variable",
+    "plain": "Out of every 100 people in the area, how many are 45 to 64 years old, as the survey estimates it.",
+    "definition": "People 45 to 64 years old divided by all people of the area (table B01001: the age groups from 45 to 49 to 62 to 64, male and female, over the total), in percent.",
+    "unit": "% of people",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico; also 901 barrios and 981 census tracts (not published for block groups)",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2021,
+      "last": 2024,
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+    },
+    "method": "The observatory reads table B01001 of the Census Bureau's American Community Survey (ACS) 5-year files for each of the four windows and divides the people aged 45 to 64 by all people of the area (B01001_001), in percent. The cells are 015-019 (male) and 039-043 (female). The margin of error follows the Census Bureau's formulas: a sum adds the squares of its cells' margins, and a share uses the proportion formula; a total the Census Bureau controls to its own estimate gets a margin of zero, so the share keeps the margin of its count. The cells are worked out from the Census Bureau's own labels and checked against them in every vintage at every build. The code is small_area.py (age_counts, derive_pop).",
+    "sources": [
+      "acs5"
+    ],
+    "source_detail": "ACS 5-year tables B01001 (Sex by Age), table-based summary files, https://www2.census.gov/programs-surveys/acs/summary_file/{vintage}/table-based-SF/data/5YRData/ (vintages 2021 to 2024); cell labels checked against https://api.census.gov/data/{vintage}/acs/acs5/groups/{table}.json.",
+    "how_to_read": "In 2020-2024, 26.2% of the people of Puerto Rico are in this age group; the share is highest in Coamo (30.1%) and Rincón (29.2%) and lowest in Mayagüez (21.3%). In 2020-2024 the margin of error is above 30% of the estimate (the barrio map hatches such values, and the CSV by area marks them) for 0% of municipalities, 31% of barrios and 4% of census tracts that have a value.",
+    "caveats": [
+      "Adjacent five-year windows share four of their five years, so a change from one window to the next is not a trend to read closely.",
+      "Below the municipality the figure is a rough survey estimate: read it with its margin of error and see methods.small_area_estimates for how large the margins are."
+    ],
+    "see_also": [
+      "population.age_table",
+      "population.acs_under18_pct",
+      "population.acs_age65plus_pct",
+      "methods.small_area_estimates",
+      "measures.margin_of_error",
+      "methods.acs_windows"
+    ],
+    "where": {
+      "files": [
+        "population_series.json:acs_age45to64_pct",
+        "acs_barrio.json:acs_age45to64_pct",
+        "acs_tract.json:acs_age45to64_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Population · People and age): shade municipalities by",
+          "href": "index.html#e=acs_age45to64_pct.f.value.blue.q.1.1.0.85.0"
+        }
+      ]
+    },
+    "added": "2026-10-18"
+  },
+  {
+    "id": "population.acs_age18to44_pct",
+    "name": "People aged 18 to 44, % of all people",
+    "domain": "population",
+    "domains": [
+      "population"
+    ],
+    "group": "People and age",
+    "kind": "variable",
+    "plain": "Out of every 100 people in the area, how many are 18 to 44 years old, as the survey estimates it.",
+    "definition": "People 18 to 44 years old divided by all people of the area (table B01001: the age groups from 18 and 19 to 40 to 44, male and female, over the total), in percent. It is the broader group published for barrios and census tracts in place of 18 to 24 and 25 to 44, which are too rough there.",
+    "unit": "% of people",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico; also 901 barrios and 981 census tracts (not published for block groups)",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2021,
+      "last": 2024,
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+    },
+    "method": "The observatory reads table B01001 of the Census Bureau's American Community Survey (ACS) 5-year files for each of the four windows and divides the people aged 18 to 44 by all people of the area (B01001_001), in percent. The cells are 007-014 (male) and 031-038 (female). The margin of error follows the Census Bureau's formulas: a sum adds the squares of its cells' margins, and a share uses the proportion formula; a total the Census Bureau controls to its own estimate gets a margin of zero, so the share keeps the margin of its count. The cells are worked out from the Census Bureau's own labels and checked against them in every vintage at every build. The code is small_area.py (age_counts, derive_pop).",
+    "sources": [
+      "acs5"
+    ],
+    "source_detail": "ACS 5-year tables B01001 (Sex by Age), table-based summary files, https://www2.census.gov/programs-surveys/acs/summary_file/{vintage}/table-based-SF/data/5YRData/ (vintages 2021 to 2024); cell labels checked against https://api.census.gov/data/{vintage}/acs/acs5/groups/{table}.json.",
+    "how_to_read": "In 2020-2024, 34.2% of the people of Puerto Rico are in this age group; the share is highest in Florida (39.5%) and Juncos (38.0%) and lowest in Rincón (29.1%). In 2020-2024 the margin of error is above 30% of the estimate (the barrio map hatches such values, and the CSV by area marks them) for 0% of municipalities, 39% of barrios and 7% of census tracts that have a value.",
+    "caveats": [
+      "Adjacent five-year windows share four of their five years, so a change from one window to the next is not a trend to read closely.",
+      "Below the municipality the figure is a rough survey estimate: read it with its margin of error and see methods.small_area_estimates for how large the margins are."
+    ],
+    "see_also": [
+      "population.age_table",
+      "population.acs_under18_pct",
+      "population.acs_age65plus_pct",
+      "methods.small_area_estimates",
+      "measures.margin_of_error",
+      "methods.acs_windows"
+    ],
+    "where": {
+      "files": [
+        "population_series.json:acs_age18to44_pct",
+        "acs_barrio.json:acs_age18to44_pct",
+        "acs_tract.json:acs_age18to44_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Population · People and age): shade municipalities by",
+          "href": "index.html#e=acs_age18to44_pct.f.value.blue.q.1.1.0.85.0"
+        }
+      ]
+    },
+    "added": "2026-10-18"
+  },
+  {
+    "id": "population.acs_age_under3",
+    "name": "Children under 3 (in households)",
+    "domain": "population",
+    "domains": [
+      "population"
+    ],
+    "group": "People and age",
+    "kind": "variable",
+    "plain": "About how many children under 3 live in the area's households, as the survey estimates it.",
+    "definition": "Children of the age who live in households, as the American Community Survey 5-year estimates count them: cell 003 of B09001 (children under 3 in households; the few in group quarters are left out). The survey gives ages under 5 in this detail only for children in households.",
+    "unit": "people",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2021,
+      "last": 2024,
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+    },
+    "method": "The observatory reads table B09001 of the Census Bureau's American Community Survey (ACS) 5-year files for each of the four windows and takes cell 003 of B09001 (children under 3 in households; the few in group quarters are left out), with the Census Bureau's margin of error. The cell is checked against the Census Bureau's own labels in every vintage at every build. The same count and its share are in population_age.json. The code is small_area.py (age_counts, derive_pop).",
+    "sources": [
+      "acs5"
+    ],
+    "source_detail": "ACS 5-year table B09001 (Population Under 18 Years by Age), table-based summary files, https://www2.census.gov/programs-surveys/acs/summary_file/{vintage}/table-based-SF/data/5YRData/ (vintages 2021 to 2024); cell labels checked against https://api.census.gov/data/{vintage}/acs/acs5/groups/{table}.json.",
+    "how_to_read": "In 2020-2024 the survey puts Puerto Rico at 56,644 (± 1,339). The largest counts are in San Juan (6,142), Bayamón (3,561), Carolina (2,742); the smallest in Maunabo (53) and Culebra (29). The margin of error is above 30% of the estimate for 25 of the 78 municipalities in 2020-2024.",
+    "caveats": [
+      "Adjacent five-year windows share four of their five years, so a change from one window to the next is not a trend to read closely.",
+      "A survey estimate, not a census count: it differs from the 2020 census and from the yearly Population Estimates Program. On the map a count is shaded per 1,000 residents by default; the share of the same group (its see-also entry) is the survey's own ratio and keeps its margin of error.",
+      "Published for the 78 municipalities and Puerto Rico only: below the municipality the group is too rough (docs/small-area.md section 9). The barrios and census tracts get broader groups: under 18, 18 to 44, 45 to 64 and 65 and older."
+    ],
+    "see_also": [
+      "population.acs_age_under3_pct",
+      "population.age_table",
+      "population.acs_population",
+      "methods.small_area_estimates",
+      "measures.margin_of_error",
+      "methods.acs_windows"
+    ],
+    "where": {
+      "files": [
+        "population_series.json:acs_age_under3"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Population · People and age): size symbols by",
+          "href": "index.html#e=acs_age_under3.s.value.blue.q.1.1.0.75.0"
+        }
+      ]
+    },
+    "added": "2026-10-18"
+  },
+  {
+    "id": "population.acs_age3to4",
+    "name": "Children aged 3 and 4 (in households)",
+    "domain": "population",
+    "domains": [
+      "population"
+    ],
+    "group": "People and age",
+    "kind": "variable",
+    "plain": "About how many children aged 3 or 4 live in the area's households, as the survey estimates it.",
+    "definition": "Children of the age who live in households, as the American Community Survey 5-year estimates count them: cell 004 of B09001 (children aged 3 and 4 in households). The survey gives ages under 5 in this detail only for children in households.",
+    "unit": "people",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2021,
+      "last": 2024,
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+    },
+    "method": "The observatory reads table B09001 of the Census Bureau's American Community Survey (ACS) 5-year files for each of the four windows and takes cell 004 of B09001 (children aged 3 and 4 in households), with the Census Bureau's margin of error. The cell is checked against the Census Bureau's own labels in every vintage at every build. The same count and its share are in population_age.json. The code is small_area.py (age_counts, derive_pop).",
+    "sources": [
+      "acs5"
+    ],
+    "source_detail": "ACS 5-year table B09001 (Population Under 18 Years by Age), table-based summary files, https://www2.census.gov/programs-surveys/acs/summary_file/{vintage}/table-based-SF/data/5YRData/ (vintages 2021 to 2024); cell labels checked against https://api.census.gov/data/{vintage}/acs/acs5/groups/{table}.json.",
+    "how_to_read": "In 2020-2024 the survey puts Puerto Rico at 44,875 (± 1,353). The largest counts are in San Juan (4,815), Bayamón (2,377), Ponce (1,981); the smallest in Maunabo (87) and Culebra (11). The margin of error is above 30% of the estimate for 45 of the 78 municipalities in 2020-2024.",
+    "caveats": [
+      "Adjacent five-year windows share four of their five years, so a change from one window to the next is not a trend to read closely.",
+      "A survey estimate, not a census count: it differs from the 2020 census and from the yearly Population Estimates Program. On the map a count is shaded per 1,000 residents by default; the share of the same group (its see-also entry) is the survey's own ratio and keeps its margin of error.",
+      "Published for the 78 municipalities and Puerto Rico only: below the municipality the group is too rough (docs/small-area.md section 9). The barrios and census tracts get broader groups: under 18, 18 to 44, 45 to 64 and 65 and older."
+    ],
+    "see_also": [
+      "population.acs_age3to4_pct",
+      "population.age_table",
+      "population.acs_population",
+      "methods.small_area_estimates",
+      "measures.margin_of_error",
+      "methods.acs_windows"
+    ],
+    "where": {
+      "files": [
+        "population_series.json:acs_age3to4"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Population · People and age): size symbols by",
+          "href": "index.html#e=acs_age3to4.s.value.blue.q.1.1.0.75.0"
+        }
+      ]
+    },
+    "added": "2026-10-18"
+  },
+  {
+    "id": "population.acs_age5to17",
+    "name": "People aged 5 to 17",
+    "domain": "population",
+    "domains": [
+      "population"
+    ],
+    "group": "People and age",
+    "kind": "variable",
+    "plain": "About how many people aged 5 to 17 live in the area, as the survey estimates it.",
+    "definition": "People of the age who live in the area, as the American Community Survey 5-year estimates count them: the sum of the B01001 groups 5 to 9, 10 to 14 and 15 to 17, male and female (cells 004-006 and 028-030).",
+    "unit": "people",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2021,
+      "last": 2024,
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+    },
+    "method": "The observatory reads table B01001 of the Census Bureau's American Community Survey (ACS) 5-year files for each of the four windows and adds the B01001 groups 5 to 9, 10 to 14 and 15 to 17, male and female (cells 004-006 and 028-030). The margin of error follows the Census Bureau's formulas: the margin of a sum is the square root of the sum of the squares of its cells' margins. A cell the Census Bureau controls to its own estimate prints no margin and adds none, and a count made only of such cells has no margin (it is not exact). The cells are worked out from the Census Bureau's own labels and checked against them in every vintage at every build. The same count and its share are in population_age.json. The code is small_area.py (age_counts, derive_pop).",
+    "sources": [
+      "acs5"
+    ],
+    "source_detail": "ACS 5-year table B01001 (Sex by Age), table-based summary files, https://www2.census.gov/programs-surveys/acs/summary_file/{vintage}/table-based-SF/data/5YRData/ (vintages 2021 to 2024); cell labels checked against https://api.census.gov/data/{vintage}/acs/acs5/groups/{table}.json.",
+    "how_to_read": "In 2020-2024 the survey puts Puerto Rico at 419,870 (± 3,425). The largest counts are in San Juan (40,430), Bayamón (22,254), Carolina (18,861); the smallest in Maricao (632) and Culebra (172). The margin of error is above 30% of the estimate for 1 of the 78 municipalities in 2020-2024.",
+    "caveats": [
+      "Adjacent five-year windows share four of their five years, so a change from one window to the next is not a trend to read closely.",
+      "A survey estimate, not a census count: it differs from the 2020 census and from the yearly Population Estimates Program. On the map a count is shaded per 1,000 residents by default; the share of the same group (its see-also entry) is the survey's own ratio and keeps its margin of error.",
+      "Published for the 78 municipalities and Puerto Rico only: below the municipality the group is too rough (docs/small-area.md section 9). The barrios and census tracts get broader groups: under 18, 18 to 44, 45 to 64 and 65 and older."
+    ],
+    "see_also": [
+      "population.acs_age5to17_pct",
+      "population.age_table",
+      "population.acs_population",
+      "methods.small_area_estimates",
+      "measures.margin_of_error",
+      "methods.acs_windows"
+    ],
+    "where": {
+      "files": [
+        "population_series.json:acs_age5to17"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Population · People and age): size symbols by",
+          "href": "index.html#e=acs_age5to17.s.value.blue.q.1.1.0.75.0"
+        }
+      ]
+    },
+    "added": "2026-10-18"
+  },
+  {
+    "id": "population.acs_age18to24",
+    "name": "People aged 18 to 24",
+    "domain": "population",
+    "domains": [
+      "population"
+    ],
+    "group": "People and age",
+    "kind": "variable",
+    "plain": "About how many people aged 18 to 24 live in the area, as the survey estimates it.",
+    "definition": "People of the age who live in the area, as the American Community Survey 5-year estimates count them: the sum of the B01001 groups 18 and 19, 20, 21 and 22 to 24, male and female (cells 007-010 and 031-034).",
+    "unit": "people",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2021,
+      "last": 2024,
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+    },
+    "method": "The observatory reads table B01001 of the Census Bureau's American Community Survey (ACS) 5-year files for each of the four windows and adds the B01001 groups 18 and 19, 20, 21 and 22 to 24, male and female (cells 007-010 and 031-034). The margin of error follows the Census Bureau's formulas: the margin of a sum is the square root of the sum of the squares of its cells' margins. A cell the Census Bureau controls to its own estimate prints no margin and adds none, and a count made only of such cells has no margin (it is not exact). The cells are worked out from the Census Bureau's own labels and checked against them in every vintage at every build. The same count and its share are in population_age.json. The code is small_area.py (age_counts, derive_pop).",
+    "sources": [
+      "acs5"
+    ],
+    "source_detail": "ACS 5-year table B01001 (Sex by Age), table-based summary files, https://www2.census.gov/programs-surveys/acs/summary_file/{vintage}/table-based-SF/data/5YRData/ (vintages 2021 to 2024); cell labels checked against https://api.census.gov/data/{vintage}/acs/acs5/groups/{table}.json.",
+    "how_to_read": "In 2020-2024 the survey puts Puerto Rico at 291,744 (± 3,423). The largest counts are in San Juan (30,622), Bayamón (16,515), Carolina (13,594); the smallest in Maricao (356) and Culebra (227). The margin of error is above 30% of the estimate for 3 of the 78 municipalities in 2020-2024.",
+    "caveats": [
+      "Adjacent five-year windows share four of their five years, so a change from one window to the next is not a trend to read closely.",
+      "A survey estimate, not a census count: it differs from the 2020 census and from the yearly Population Estimates Program. On the map a count is shaded per 1,000 residents by default; the share of the same group (its see-also entry) is the survey's own ratio and keeps its margin of error.",
+      "Published for the 78 municipalities and Puerto Rico only: below the municipality the group is too rough (docs/small-area.md section 9). The barrios and census tracts get broader groups: under 18, 18 to 44, 45 to 64 and 65 and older."
+    ],
+    "see_also": [
+      "population.acs_age18to24_pct",
+      "population.age_table",
+      "population.acs_population",
+      "methods.small_area_estimates",
+      "measures.margin_of_error",
+      "methods.acs_windows"
+    ],
+    "where": {
+      "files": [
+        "population_series.json:acs_age18to24"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Population · People and age): size symbols by",
+          "href": "index.html#e=acs_age18to24.s.value.blue.q.1.1.0.75.0"
+        }
+      ]
+    },
+    "added": "2026-10-18"
+  },
+  {
+    "id": "population.acs_age25to44",
+    "name": "People aged 25 to 44",
+    "domain": "population",
+    "domains": [
+      "population"
+    ],
+    "group": "People and age",
+    "kind": "variable",
+    "plain": "About how many people aged 25 to 44 live in the area, as the survey estimates it.",
+    "definition": "People of the age who live in the area, as the American Community Survey 5-year estimates count them: the sum of the B01001 groups 25 to 29 ... 40 to 44, male and female (cells 011-014 and 035-038).",
+    "unit": "people",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2021,
+      "last": 2024,
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+    },
+    "method": "The observatory reads table B01001 of the Census Bureau's American Community Survey (ACS) 5-year files for each of the four windows and adds the B01001 groups 25 to 29 ... 40 to 44, male and female (cells 011-014 and 035-038). The margin of error follows the Census Bureau's formulas: the margin of a sum is the square root of the sum of the squares of its cells' margins. A cell the Census Bureau controls to its own estimate prints no margin and adds none, and a count made only of such cells has no margin (it is not exact). The cells are worked out from the Census Bureau's own labels and checked against them in every vintage at every build. The same count and its share are in population_age.json. The code is small_area.py (age_counts, derive_pop).",
+    "sources": [
+      "acs5"
+    ],
+    "source_detail": "ACS 5-year table B01001 (Sex by Age), table-based summary files, https://www2.census.gov/programs-surveys/acs/summary_file/{vintage}/table-based-SF/data/5YRData/ (vintages 2021 to 2024); cell labels checked against https://api.census.gov/data/{vintage}/acs/acs5/groups/{table}.json.",
+    "how_to_read": "In 2020-2024 the survey puts Puerto Rico at 814,272 (± 4,029). The largest counts are in San Juan (82,949), Bayamón (47,830), Carolina (38,316); the smallest in Maricao (1,174) and Culebra (248). The margin of error is above 30% of the estimate for 1 of the 78 municipalities in 2020-2024.",
+    "caveats": [
+      "Adjacent five-year windows share four of their five years, so a change from one window to the next is not a trend to read closely.",
+      "A survey estimate, not a census count: it differs from the 2020 census and from the yearly Population Estimates Program. On the map a count is shaded per 1,000 residents by default; the share of the same group (its see-also entry) is the survey's own ratio and keeps its margin of error.",
+      "Published for the 78 municipalities and Puerto Rico only: below the municipality the group is too rough (docs/small-area.md section 9). The barrios and census tracts get broader groups: under 18, 18 to 44, 45 to 64 and 65 and older."
+    ],
+    "see_also": [
+      "population.acs_age25to44_pct",
+      "population.age_table",
+      "population.acs_population",
+      "methods.small_area_estimates",
+      "measures.margin_of_error",
+      "methods.acs_windows"
+    ],
+    "where": {
+      "files": [
+        "population_series.json:acs_age25to44"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Population · People and age): size symbols by",
+          "href": "index.html#e=acs_age25to44.s.value.blue.q.1.1.0.75.0"
+        }
+      ]
+    },
+    "added": "2026-10-18"
+  },
+  {
+    "id": "population.acs_age45to64",
+    "name": "People aged 45 to 64",
+    "domain": "population",
+    "domains": [
+      "population"
+    ],
+    "group": "People and age",
+    "kind": "variable",
+    "plain": "About how many people aged 45 to 64 live in the area, as the survey estimates it.",
+    "definition": "People of the age who live in the area, as the American Community Survey 5-year estimates count them: the sum of the B01001 groups 45 to 49 ... 62 to 64, male and female (cells 015-019 and 039-043).",
+    "unit": "people",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico (the share of the group is also published for barrios and census tracts)",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2021,
+      "last": 2024,
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+    },
+    "method": "The observatory reads table B01001 of the Census Bureau's American Community Survey (ACS) 5-year files for each of the four windows and adds the B01001 groups 45 to 49 ... 62 to 64, male and female (cells 015-019 and 039-043). The margin of error follows the Census Bureau's formulas: the margin of a sum is the square root of the sum of the squares of its cells' margins. A cell the Census Bureau controls to its own estimate prints no margin and adds none, and a count made only of such cells has no margin (it is not exact). The cells are worked out from the Census Bureau's own labels and checked against them in every vintage at every build. The same count and its share are in population_age.json. The code is small_area.py (age_counts, derive_pop).",
+    "sources": [
+      "acs5"
+    ],
+    "source_detail": "ACS 5-year table B01001 (Sex by Age), table-based summary files, https://www2.census.gov/programs-surveys/acs/summary_file/{vintage}/table-based-SF/data/5YRData/ (vintages 2021 to 2024); cell labels checked against https://api.census.gov/data/{vintage}/acs/acs5/groups/{table}.json.",
+    "how_to_read": "In 2020-2024 the survey puts Puerto Rico at 848,818 (± 4,058). The largest counts are in San Juan (85,613), Bayamón (45,366), Carolina (39,071); the smallest in Maricao (1,350) and Culebra (382). The margin of error is above 30% of the estimate for 0 of the 78 municipalities in 2020-2024.",
+    "caveats": [
+      "Adjacent five-year windows share four of their five years, so a change from one window to the next is not a trend to read closely.",
+      "A survey estimate, not a census count: it differs from the 2020 census and from the yearly Population Estimates Program. On the map a count is shaded per 1,000 residents by default; the share of the same group (its see-also entry) is the survey's own ratio and keeps its margin of error.",
+      "Published for the 78 municipalities and Puerto Rico only. Below the municipality the count is rougher than its share (the share's margin takes out the uncertainty of the area's total): in 2020-2024 the count's margin is above 30% of the estimate in 61 of every 100 barrios, its share's in 31. An item is published below the municipality only when it is flagged for under half of the barrios (docs/small-area.md section 9), so barrios and census tracts get the share; the counts by barrio and tract are in the table population_age.json."
+    ],
+    "see_also": [
+      "population.acs_age45to64_pct",
+      "population.age_table",
+      "population.acs_population",
+      "methods.small_area_estimates",
+      "measures.margin_of_error",
+      "methods.acs_windows"
+    ],
+    "where": {
+      "files": [
+        "population_series.json:acs_age45to64"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Population · People and age): size symbols by",
+          "href": "index.html#e=acs_age45to64.s.value.blue.q.1.1.0.75.0"
+        }
+      ]
+    },
+    "added": "2026-10-18"
+  },
+  {
+    "id": "population.acs_age65plus",
+    "name": "People 65 and older",
+    "domain": "population",
+    "domains": [
+      "population"
+    ],
+    "group": "People and age",
+    "kind": "variable",
+    "plain": "About how many people 65 or older live in the area, as the survey estimates it.",
+    "definition": "People of the age who live in the area, as the American Community Survey 5-year estimates count them: the sum of the B01001 groups 65 and 66 ... 85 and over, male and female (cells 020-025 and 044-049).",
+    "unit": "people",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico (the share of the group is also published for barrios and census tracts)",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2021,
+      "last": 2024,
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+    },
+    "method": "The observatory reads table B01001 of the Census Bureau's American Community Survey (ACS) 5-year files for each of the four windows and adds the B01001 groups 65 and 66 ... 85 and over, male and female (cells 020-025 and 044-049). The margin of error follows the Census Bureau's formulas: the margin of a sum is the square root of the sum of the squares of its cells' margins. A cell the Census Bureau controls to its own estimate prints no margin and adds none, and a count made only of such cells has no margin (it is not exact). The cells are worked out from the Census Bureau's own labels and checked against them in every vintage at every build. The same count and its share are in population_age.json. The code is small_area.py (age_counts, derive_pop).",
+    "sources": [
+      "acs5"
+    ],
+    "source_detail": "ACS 5-year table B01001 (Sex by Age), table-based summary files, https://www2.census.gov/programs-surveys/acs/summary_file/{vintage}/table-based-SF/data/5YRData/ (vintages 2021 to 2024); cell labels checked against https://api.census.gov/data/{vintage}/acs/acs5/groups/{table}.json.",
+    "how_to_read": "In 2020-2024 the survey puts Puerto Rico at 758,086 (± 5,187). The largest counts are in San Juan (85,589), Bayamón (44,566), Carolina (37,658); the smallest in Maricao (1,303) and Culebra (318). The margin of error is above 30% of the estimate for 1 of the 78 municipalities in 2020-2024.",
+    "caveats": [
+      "Adjacent five-year windows share four of their five years, so a change from one window to the next is not a trend to read closely.",
+      "A survey estimate, not a census count: it differs from the 2020 census and from the yearly Population Estimates Program. On the map a count is shaded per 1,000 residents by default; the share of the same group (its see-also entry) is the survey's own ratio and keeps its margin of error.",
+      "Published for the 78 municipalities and Puerto Rico only. Below the municipality the count is rougher than its share (the share's margin takes out the uncertainty of the area's total): in 2020-2024 the count's margin is above 30% of the estimate in 61 of every 100 barrios, its share's in 36. An item is published below the municipality only when it is flagged for under half of the barrios (docs/small-area.md section 9), so barrios and census tracts get the share; the counts by barrio and tract are in the table population_age.json."
+    ],
+    "see_also": [
+      "population.acs_age65plus_pct",
+      "population.age_table",
+      "population.acs_population",
+      "methods.small_area_estimates",
+      "measures.margin_of_error",
+      "methods.acs_windows"
+    ],
+    "where": {
+      "files": [
+        "population_series.json:acs_age65plus"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Population · People and age): size symbols by",
+          "href": "index.html#e=acs_age65plus.s.value.blue.q.1.1.0.75.0"
+        }
+      ]
+    },
+    "added": "2026-10-18"
+  },
+  {
+    "id": "population.acs_under18",
+    "name": "People under 18",
+    "domain": "population",
+    "domains": [
+      "population"
+    ],
+    "group": "People and age",
+    "kind": "variable",
+    "plain": "About how many people under 18 live in the area, as the survey estimates it.",
+    "definition": "People of the age who live in the area, as the American Community Survey 5-year estimates count them: the sum of the B01001 groups under 5 ... 15 to 17, male and female (cells 003-006 and 027-030).",
+    "unit": "people",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico (the share of the group is also published for barrios and census tracts)",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2021,
+      "last": 2024,
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+    },
+    "method": "The observatory reads table B01001 of the Census Bureau's American Community Survey (ACS) 5-year files for each of the four windows and adds the B01001 groups under 5 ... 15 to 17, male and female (cells 003-006 and 027-030). The margin of error follows the Census Bureau's formulas: the margin of a sum is the square root of the sum of the squares of its cells' margins. A cell the Census Bureau controls to its own estimate prints no margin and adds none, and a count made only of such cells has no margin (it is not exact). The cells are worked out from the Census Bureau's own labels and checked against them in every vintage at every build. The same count and its share are in population_age.json. The code is small_area.py (age_counts, derive_pop).",
+    "sources": [
+      "acs5"
+    ],
+    "source_detail": "ACS 5-year table B01001 (Sex by Age), table-based summary files, https://www2.census.gov/programs-surveys/acs/summary_file/{vintage}/table-based-SF/data/5YRData/ (vintages 2021 to 2024); cell labels checked against https://api.census.gov/data/{vintage}/acs/acs5/groups/{table}.json.",
+    "how_to_read": "In 2020-2024 the survey puts Puerto Rico at 521,389 (± 3,505). The largest counts are in San Juan (51,387), Bayamón (28,192), Carolina (23,565); the smallest in Maricao (805) and Culebra (212). The margin of error is above 30% of the estimate for 1 of the 78 municipalities in 2020-2024.",
+    "caveats": [
+      "Adjacent five-year windows share four of their five years, so a change from one window to the next is not a trend to read closely.",
+      "A survey estimate, not a census count: it differs from the 2020 census and from the yearly Population Estimates Program. On the map a count is shaded per 1,000 residents by default; the share of the same group (its see-also entry) is the survey's own ratio and keeps its margin of error.",
+      "Published for the 78 municipalities and Puerto Rico only. Below the municipality the count is rougher than its share (the share's margin takes out the uncertainty of the area's total): in 2020-2024 the count's margin is above 30% of the estimate in 84 of every 100 barrios, its share's in 70. An item is published below the municipality only when it is flagged for under half of the barrios (docs/small-area.md section 9), so barrios and census tracts get the share; the counts by barrio and tract are in the table population_age.json."
+    ],
+    "see_also": [
+      "population.acs_under18_pct",
+      "population.age_table",
+      "population.acs_population",
+      "methods.small_area_estimates",
+      "measures.margin_of_error",
+      "methods.acs_windows"
+    ],
+    "where": {
+      "files": [
+        "population_series.json:acs_under18"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Population · People and age): size symbols by",
+          "href": "index.html#e=acs_under18.s.value.blue.q.1.1.0.75.0"
+        }
+      ]
+    },
+    "added": "2026-10-18"
+  },
+  {
+    "id": "population.acs_age18to44",
+    "name": "People aged 18 to 44",
+    "domain": "population",
+    "domains": [
+      "population"
+    ],
+    "group": "People and age",
+    "kind": "variable",
+    "plain": "About how many people aged 18 to 44 live in the area, as the survey estimates it.",
+    "definition": "People of the age who live in the area, as the American Community Survey 5-year estimates count them: the sum of the B01001 groups 18 and 19 ... 40 to 44, male and female (cells 007-014 and 031-038).",
+    "unit": "people",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico (the share of the group is also published for barrios and census tracts)",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2021,
+      "last": 2024,
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+    },
+    "method": "The observatory reads table B01001 of the Census Bureau's American Community Survey (ACS) 5-year files for each of the four windows and adds the B01001 groups 18 and 19 ... 40 to 44, male and female (cells 007-014 and 031-038). The margin of error follows the Census Bureau's formulas: the margin of a sum is the square root of the sum of the squares of its cells' margins. A cell the Census Bureau controls to its own estimate prints no margin and adds none, and a count made only of such cells has no margin (it is not exact). The cells are worked out from the Census Bureau's own labels and checked against them in every vintage at every build. The same count and its share are in population_age.json. The code is small_area.py (age_counts, derive_pop).",
+    "sources": [
+      "acs5"
+    ],
+    "source_detail": "ACS 5-year table B01001 (Sex by Age), table-based summary files, https://www2.census.gov/programs-surveys/acs/summary_file/{vintage}/table-based-SF/data/5YRData/ (vintages 2021 to 2024); cell labels checked against https://api.census.gov/data/{vintage}/acs/acs5/groups/{table}.json.",
+    "how_to_read": "In 2020-2024 the survey puts Puerto Rico at 1,106,016 (± 5,287). The largest counts are in San Juan (113,571), Bayamón (64,345), Carolina (51,910); the smallest in Maricao (1,530) and Culebra (475). The margin of error is above 30% of the estimate for 0 of the 78 municipalities in 2020-2024.",
+    "caveats": [
+      "Adjacent five-year windows share four of their five years, so a change from one window to the next is not a trend to read closely.",
+      "A survey estimate, not a census count: it differs from the 2020 census and from the yearly Population Estimates Program. On the map a count is shaded per 1,000 residents by default; the share of the same group (its see-also entry) is the survey's own ratio and keeps its margin of error.",
+      "Published for the 78 municipalities and Puerto Rico only. Below the municipality the count is rougher than its share (the share's margin takes out the uncertainty of the area's total): in 2020-2024 the count's margin is above 30% of the estimate in 65 of every 100 barrios, its share's in 39. An item is published below the municipality only when it is flagged for under half of the barrios (docs/small-area.md section 9), so barrios and census tracts get the share; the counts by barrio and tract are in the table population_age.json."
+    ],
+    "see_also": [
+      "population.acs_age18to44_pct",
+      "population.age_table",
+      "population.acs_population",
+      "methods.small_area_estimates",
+      "measures.margin_of_error",
+      "methods.acs_windows"
+    ],
+    "where": {
+      "files": [
+        "population_series.json:acs_age18to44"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Population · People and age): size symbols by",
+          "href": "index.html#e=acs_age18to44.s.value.blue.q.1.1.0.75.0"
+        }
+      ]
+    },
+    "added": "2026-10-18"
+  },
+  {
+    "id": "population.acs_english_lt_very_well_pct",
+    "ask": {
+      "en": [
+        "english proficiency",
+        "speak english",
+        "limited english",
+        "english ability"
+      ],
+      "es": [
+        "dominio del ingles",
+        "hablan ingles",
+        "ingles limitado",
+        "saben ingles"
+      ]
+    },
+    "name": "People who speak English less than \"very well\", % of people 5 and older",
+    "domain": "population",
+    "domains": [
+      "population",
+      "education"
+    ],
+    "group": "Language",
+    "kind": "variable",
+    "plain": "Out of every 100 people aged 5 or older, how many say they speak English less than \"very well\".",
+    "definition": "People 5 and older who speak a language other than English at home and rate their English as \"well\", \"not well\" or \"not at all\", divided by all people 5 and older (table B16004), in percent. It is 100 minus the share who speak only English at home or rate their English as \"very well\".",
+    "unit": "% of people 5 and older",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico; also 901 barrios and 981 census tracts (not published for block groups)",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2021,
+      "last": 2024,
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+    },
+    "method": "The observatory reads table B16004 (Age by Language Spoken at Home by Ability to Speak English for the Population 5 Years and Over) of the Census Bureau's American Community Survey (ACS) 5-year files, for each of the four five-year windows. It adds the 15 cells of people who speak only English at home or speak English \"very well\" (in each of the three age groups, the cell \"Speak only English\" and the cell 'Speak English \"very well\"' of each of the four language groups), divides by the total (001) and takes that share from 100. The complement of a share has the margin of error of the share. The Census Bureau does not publish block-group values here. The same arithmetic makes the value for a municipality, a barrio, a census tract. A total that the Census Bureau controls to its own estimate has no margin; the observatory gives it a margin of zero, as the Bureau says may be done. The margin of error follows the Census Bureau's formulas: the margin of a sum is the square root of the sum of the squares of the margins of its cells, and a share uses the Bureau's proportion formula. A cell the Census Bureau leaves empty gives no value, never a zero. A share whose margin works out to zero (a share of exactly 100%, for example) is published without a margin. The Puerto Rico value is the Census Bureau's own island row. The code is small_area.py in the project's repository.",
+    "sources": [
+      "acs5"
+    ],
+    "source_detail": "ACS 5-year table B16004 (Age by Language Spoken at Home by Ability to Speak English for the Population 5 Years and Over), table-based summary files, https://www2.census.gov/programs-surveys/acs/summary_file/{vintage}/table-based-SF/data/5YRData/ (vintages 2021 to 2024). The cells used are checked against the Census Bureau's own labels, https://api.census.gov/data/{vintage}/acs/acs5/groups/B16004.json, in every vintage at every build.",
+    "how_to_read": "In 2020-2024, 74.9% of the people of Puerto Rico aged 5 or older speak English less than \"very well\" (margin ±0.27), against 75.9% in 2017-2021. The share is lowest in Guaynabo (57.4%), Dorado (62.9%) and Bayamón (66.1%); it is highest in Maricao (93.5%), Las Marías (89.3%) and Naranjito (89.0%). In 2020-2024 the margin of error is above 30% of the estimate (the map hatches such values and the CSV by area marks them as less reliable) for 0% of municipalities, 10% of barrios and less than 1% of census tracts that have a value.",
+    "caveats": [
+      "It is each person's own rating of their English, not a test. It says nothing about Spanish: in 2020-2024, 95.3% of the people of Puerto Rico aged 5 or older speak Spanish at home.",
+      "Below the municipality the figure is a rough survey estimate: read it with its margin of error and see methods.small_area_estimates for how large the margins are.",
+      "Adjacent five-year windows share four of their five years, so a change from one window to the next is not a trend to read closely."
+    ],
+    "see_also": [
+      "methods.small_area_estimates",
+      "measures.margin_of_error",
+      "methods.acs_windows",
+      "population.acs_no_hs_pct"
+    ],
+    "where": {
+      "files": [
+        "population_series.json:acs_english_lt_very_well_pct",
+        "acs_barrio.json:acs_english_lt_very_well_pct",
+        "acs_tract.json:acs_english_lt_very_well_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Population · Language): shade municipalities by",
+          "href": "index.html#e=acs_english_lt_very_well_pct.f"
+        }
+      ]
+    },
+    "added": "2026-11-14"
+  },
+  {
+    "id": "population.acs_pan_hh_pct",
+    "ask": {
+      "en": [
+        "nutrition assistance",
+        "food stamps",
+        "food assistance",
+        "snap"
+      ],
+      "es": [
+        "asistencia nutricional",
+        "cupones de alimentos",
+        "ayuda de alimentos",
+        "el pan"
+      ]
+    },
+    "name": "Households that received nutrition assistance (PAN), % of all households",
+    "domain": "economy",
+    "domains": [
+      "economy",
+      "population"
+    ],
+    "group": "Poverty and assistance",
+    "kind": "variable",
+    "plain": "Out of every 100 households, how many received nutrition assistance (PAN) in the past 12 months.",
+    "definition": "Households in which someone received benefits of the Programa de Asistencia Nutricional (PAN) in the past 12 months, divided by all households (table B22010, cell 002 over cell 001), in percent. The Census Bureau's table is titled Food Stamps/SNAP; the Puerto Rico questionnaire asks about the Nutritional Assistance Program and tells people not to count WIC, school lunches or food banks.",
+    "unit": "% of households",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico; also 901 barrios and 981 census tracts (not published for block groups)",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2021,
+      "last": 2024,
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+    },
+    "method": "The observatory reads table B22010 (Receipt of Food Stamps/SNAP in the Past 12 Months by Disability Status for Households) of the Census Bureau's American Community Survey (ACS) 5-year files, for each of the four five-year windows, and divides the households that received the benefit (002) by all households (001). The same arithmetic makes the value for a municipality, a barrio, a census tract; block groups are not published by the observatory. The margin of error follows the Census Bureau's formulas: the margin of a sum is the square root of the sum of the squares of the margins of its cells, and a share uses the Bureau's proportion formula. A cell the Census Bureau leaves empty gives no value, never a zero. A share whose margin works out to zero (a share of exactly 100%, for example) is published without a margin. The Puerto Rico value is the Census Bureau's own island row. The code is small_area.py in the project's repository.",
+    "sources": [
+      "acs5"
+    ],
+    "source_detail": "ACS 5-year table B22010 (Receipt of Food Stamps/SNAP in the Past 12 Months by Disability Status for Households), table-based summary files, https://www2.census.gov/programs-surveys/acs/summary_file/{vintage}/table-based-SF/data/5YRData/ (vintages 2021 to 2024). The cells used are checked against the Census Bureau's own labels, https://api.census.gov/data/{vintage}/acs/acs5/groups/B22010.json, in every vintage at every build. The question is number 15 of the housing section of the Puerto Rico Community Survey questionnaire, https://www2.census.gov/programs-surveys/acs/methodology/questionnaires/2023/quest23PR.pdf.",
+    "how_to_read": "In 2020-2024, 47.4% of the households of Puerto Rico received nutrition assistance (margin ±0.33), against 43.8% in 2017-2021. The share is lowest in Guaynabo (25.8%), Trujillo Alto (34.3%) and Carolina (34.5%); it is highest in Lares (67.6%), Ciales (67.3%) and Comerío (66.2%). In 2020-2024 the margin of error is above 30% of the estimate (the map hatches such values and the CSV by area marks them as less reliable) for 0% of municipalities, 34% of barrios and 20% of census tracts that have a value.",
+    "caveats": [
+      "It is what households told the survey, not the program's records: surveys usually count fewer recipients than a program's own files. The Administración de Desarrollo Socioeconómico de la Familia (ADSEF) runs the program and holds the official counts; the observatory does not have them by municipio.",
+      "It counts households, not people, and not the amount received.",
+      "Below the municipality the figure is a rough survey estimate: read it with its margin of error and see methods.small_area_estimates for how large the margins are.",
+      "Adjacent five-year windows share four of their five years, so a change from one window to the next is not a trend to read closely."
+    ],
+    "see_also": [
+      "housing.poverty_pct",
+      "population.acs_child_poverty_pct",
+      "methods.small_area_estimates",
+      "measures.margin_of_error",
+      "methods.acs_windows"
+    ],
+    "where": {
+      "files": [
+        "population_series.json:acs_pan_hh_pct",
+        "acs_barrio.json:acs_pan_hh_pct",
+        "acs_tract.json:acs_pan_hh_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Population · Poverty and assistance): shade municipalities by",
+          "href": "index.html#e=acs_pan_hh_pct.f"
+        }
+      ]
+    },
+    "added": "2026-11-14"
+  },
+  {
+    "id": "population.acs_child_poverty_pct",
+    "ask": {
+      "en": [
+        "child poverty",
+        "children in poverty",
+        "poor children"
+      ],
+      "es": [
+        "pobreza infantil",
+        "ninos en pobreza",
+        "menores en pobreza"
+      ]
+    },
+    "name": "Children under 18 below the poverty level, % of children under 18",
+    "domain": "economy",
+    "domains": [
+      "economy",
+      "population"
+    ],
+    "group": "Poverty and assistance",
+    "kind": "variable",
+    "plain": "Out of every 100 children under 18, how many live in a family whose income is below the poverty level.",
+    "definition": "The children under 18 whose income in the past 12 months was below the federal poverty level, divided by the children under 18 for whom the survey determines poverty status (table B17001), in percent. A child has the poverty status of the family they live in.",
+    "unit": "% of children under 18",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2021,
+      "last": 2024,
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+    },
+    "method": "The observatory reads table B17001 (Poverty Status in the Past 12 Months by Sex by Age) of the Census Bureau's American Community Survey (ACS) 5-year files, for each of the four five-year windows. It adds the twelve cells of boys and girls under 18 below the poverty level (004-009 and 018-023) and the twelve at or above it (033-038 and 047-052), and divides the first sum by the two together. The poverty level is the federal one, the same in Puerto Rico as in the states. The margin of error follows the Census Bureau's formulas: the margin of a sum is the square root of the sum of the squares of the margins of its cells, and a share uses the Bureau's proportion formula. A cell the Census Bureau leaves empty gives no value, never a zero. A share whose margin works out to zero (a share of exactly 100%, for example) is published without a margin. The Puerto Rico value is the Census Bureau's own island row. The code is small_area.py in the project's repository.",
+    "sources": [
+      "acs5"
+    ],
+    "source_detail": "ACS 5-year table B17001 (Poverty Status in the Past 12 Months by Sex by Age), table-based summary files, https://www2.census.gov/programs-surveys/acs/summary_file/{vintage}/table-based-SF/data/5YRData/ (vintages 2021 to 2024). The cells used are checked against the Census Bureau's own labels, https://api.census.gov/data/{vintage}/acs/acs5/groups/B17001.json, in every vintage at every build.",
+    "how_to_read": "In 2020-2024, 54.9% of the children under 18 of Puerto Rico were below the poverty level (margin ±0.51), against 56.3% in 2017-2021. The share is lowest in Dorado (33.1%), Culebra (33.5%) and Guaynabo (33.6%); it is highest in Vieques (87.5%), Adjuntas (76.6%) and Las Marías (76.2%). The margin of error is above 30% of the estimate for 1 of the 78 municipalities in 2020-2024.",
+    "caveats": [
+      "Published for the 78 municipalities and Puerto Rico only: below the municipality the share is flagged less reliable for 69% of the barrios and 65% of the census tracts (2020-2024) (docs/small-area.md). The poverty rate of all ages (housing.poverty_pct) is published for barrios and census tracts.",
+      "Small municipalities have wide margins: read Culebra and Vieques with theirs.",
+      "Adjacent five-year windows share four of their five years, so a change from one window to the next is not a trend to read closely."
+    ],
+    "see_also": [
+      "housing.poverty_pct",
+      "population.acs_pan_hh_pct",
+      "measures.margin_of_error",
+      "methods.acs_windows"
+    ],
+    "where": {
+      "files": [
+        "population_series.json:acs_child_poverty_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Population · Poverty and assistance): shade municipalities by",
+          "href": "index.html#e=acs_child_poverty_pct.f"
+        }
+      ]
+    },
+    "added": "2026-11-14"
+  },
+  {
+    "id": "population.acs_senior_poverty_pct",
+    "ask": {
+      "en": [
+        "senior poverty",
+        "elderly poverty",
+        "older adults in poverty"
+      ],
+      "es": [
+        "pobreza en personas mayores",
+        "adultos mayores en pobreza",
+        "envejecientes en pobreza"
+      ]
+    },
+    "name": "People 65 and older below the poverty level, % of people 65 and older",
+    "domain": "economy",
+    "domains": [
+      "economy",
+      "population"
+    ],
+    "group": "Poverty and assistance",
+    "kind": "variable",
+    "plain": "Out of every 100 people aged 65 or older, how many have an income below the poverty level.",
+    "definition": "The people 65 and older whose income in the past 12 months was below the federal poverty level, divided by the people 65 and older for whom the survey determines poverty status (table B17001), in percent. A child has the poverty status of the family they live in.",
+    "unit": "% of people 65 and older",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2021,
+      "last": 2024,
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+    },
+    "method": "The observatory reads table B17001 (Poverty Status in the Past 12 Months by Sex by Age) of the Census Bureau's American Community Survey (ACS) 5-year files, for each of the four five-year windows. It adds the four cells of men and women 65 to 74 and 75 and over below the poverty level (015, 016, 029, 030) and the four at or above it (044, 045, 058, 059), and divides the first sum by the two together. The poverty level is the federal one, the same in Puerto Rico as in the states. The margin of error follows the Census Bureau's formulas: the margin of a sum is the square root of the sum of the squares of the margins of its cells, and a share uses the Bureau's proportion formula. A cell the Census Bureau leaves empty gives no value, never a zero. A share whose margin works out to zero (a share of exactly 100%, for example) is published without a margin. The Puerto Rico value is the Census Bureau's own island row. The code is small_area.py in the project's repository.",
+    "sources": [
+      "acs5"
+    ],
+    "source_detail": "ACS 5-year table B17001 (Poverty Status in the Past 12 Months by Sex by Age), table-based summary files, https://www2.census.gov/programs-surveys/acs/summary_file/{vintage}/table-based-SF/data/5YRData/ (vintages 2021 to 2024). The cells used are checked against the Census Bureau's own labels, https://api.census.gov/data/{vintage}/acs/acs5/groups/B17001.json, in every vintage at every build.",
+    "how_to_read": "In 2020-2024, 39.2% of the people 65 and older of Puerto Rico were below the poverty level (margin ±0.38), against 38.5% in 2017-2021. The share is lowest in Culebra (22.6%), Carolina (27.1%) and Guaynabo (27.1%); it is highest in Guánica (60.9%), Orocovis (53.6%) and Vieques (52.7%). The margin of error is above 30% of the estimate for 1 of the 78 municipalities in 2020-2024.",
+    "caveats": [
+      "Published for the 78 municipalities and Puerto Rico only: below the municipality the share is flagged less reliable for 64% of the barrios and 57% of the census tracts (2020-2024) (docs/small-area.md). The poverty rate of all ages (housing.poverty_pct) is published for barrios and census tracts.",
+      "Small municipalities have wide margins: read Culebra and Vieques with theirs.",
+      "Adjacent five-year windows share four of their five years, so a change from one window to the next is not a trend to read closely."
+    ],
+    "see_also": [
+      "housing.poverty_pct",
+      "population.acs_pan_hh_pct",
+      "measures.margin_of_error",
+      "methods.acs_windows"
+    ],
+    "where": {
+      "files": [
+        "population_series.json:acs_senior_poverty_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Population · Poverty and assistance): shade municipalities by",
+          "href": "index.html#e=acs_senior_poverty_pct.f"
+        }
+      ]
+    },
+    "added": "2026-11-14"
+  },
+  {
+    "id": "population.age_table",
+    "name": "Age bands and age groups (table for download)",
+    "domain": "population",
+    "domains": [
+      "population"
+    ],
+    "group": "People and age",
+    "kind": "table",
+    "plain": "How many people of each age live in each municipality, in five-year bands and in broader age groups, with each figure's margin of error; barrios and census tracts get the broad groups only.",
+    "definition": "population_age.json holds, for the 78 municipalities and Puerto Rico (geo.ids, the last is 72), the count of people and its share of all people (with 90% margins of error, four windows 2017-2021 to 2020-2024) for the 18 five-year bands (0 to 4, 5 to 9 ... 80 to 84, 85 and over), the groups under 3, 3 and 4, 5 to 17, 18 to 24, 25 to 44, 45 to 64 and 65 and older, and the broad groups under 18 and 18 to 44. levels.barrio (901 barrios) and levels.tract (981 census tracts) hold the counts and shares of the broad groups under 18, 18 to 44, 45 to 64 and 65 and older only, in the crosswalk's order. Keys: acs_age0to4 ... acs_age85plus (bands), acs_age_under3, acs_age3to4, acs_age5to17, acs_age18to24, acs_age25to44, acs_age45to64, acs_age65plus, acs_under18, acs_age18to44 (counts), each with a _pct share.",
+    "unit": "people; % of people",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico; the broad groups also for 901 barrios and 981 census tracts",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2021,
+      "last": 2024,
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+    },
+    "method": "small_area.py (age_file) reads tables B01001 (Sex by Age) and B09001 (Population Under 18 Years by Age) for every window and level through acs_small.py. A five-year band adds the B01001 groups inside it (15 to 19 is 15-17 plus 18-19; 20 to 24 is 20, 21 and 22-24; 60 to 64 is 60-61 plus 62-64; 65 to 69 is 65-66 plus 67-69), male and female. Under 3 and 3 and 4 are B09001's children in households. A count's margin is the square root of the sum of the squares of its cells' margins; a cell the Census Bureau controls to its own estimate prints no margin and adds none, and a count made only of such cells has no margin (it is not exact). A share is over all people (B01001_001) by the proportion formula, with a controlled total given a margin of zero. The five-year bands add up to all people in every area, and so do under 5, 5 to 17, 18 to 24, 25 to 44, 45 to 64 and 65 and older, and under 18, 18 to 44, 45 to 64 and 65 and older (tests/test_small_area.py). Reliability decided what is published below the municipality (2020-2024): every five-year band has a margin above 30% of the estimate for 89% or more of the barrios and 95% or more of the census tracts, so the bands are for municipalities only; of the age groups, the shares of 18 to 44 (39% of barrios flagged), 45 to 64 (31%) and 65 and older (36%) are flagged for under half of the barrios and are published there, with under 18 (70%), published since 2026-10-06; 5 to 17 (79%), 18 to 24 (89%), 25 to 44 (53%), under 3 and 3 and 4 (99% or more) are not.",
+    "sources": [
+      "acs5"
+    ],
+    "source_detail": "ACS 5-year tables B01001 (Sex by Age) and B09001 (Population Under 18 Years by Age), table-based summary files, https://www2.census.gov/programs-surveys/acs/summary_file/{vintage}/table-based-SF/data/5YRData/ (vintages 2021 to 2024); cell labels checked against https://api.census.gov/data/{vintage}/acs/acs5/groups/{table}.json.",
+    "how_to_read": "In 2020-2024 Puerto Rico had about 101,519 children under 5 (56,644 under 3) and 758,086 people 65 and older (23.4%); people 85 and older were 3.1%. Read each count with its margin of error: a band of a small municipality can be rough (the share is flagged less reliable for 20 of the 78 municipalities for 85 and older).",
+    "caveats": [
+      "Adjacent five-year windows share four of their five years, so a change from one window to the next is not a trend to read closely.",
+      "Survey estimates, not a census count: they differ from the 2020 census and from the yearly Population Estimates Program.",
+      "A blank margin is never an exact value: the Census Bureau controls the total and some age cells of most municipalities to its own estimates and prints no margin for them.",
+      "No page draws this table; the Analysis tab shows the shares and counts of the age groups (Population · People and age), not the five-year bands."
+    ],
+    "see_also": [
+      "population.acs_population",
+      "population.acs_under18_pct",
+      "population.acs_age65plus_pct",
+      "population.acs_age_under3_pct",
+      "population.acs_age18to44_pct",
+      "methods.small_area_estimates"
+    ],
+    "where": {
+      "files": [
+        "population_age.json:*"
+      ]
+    },
+    "added": "2026-10-18"
+  }
+]

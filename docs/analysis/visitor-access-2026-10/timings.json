@@ -1,0 +1,74 @@
+{
+ "01_baseline.py": {
+  "seconds": 4.2,
+  "exit_code": 0
+ },
+ "01b_stale_check.py": {
+  "seconds": 7.3,
+  "exit_code": 0
+ },
+ "01c_bruteforce_check.py": {
+  "seconds": 7.3,
+  "exit_code": 0
+ },
+ "07b_location_sensitivity.py": {
+  "seconds": 1.4,
+  "exit_code": 0
+ },
+ "02_walk.py": {
+  "seconds": 10.7,
+  "exit_code": 0
+ },
+ "02b_osm_walk_ways.py": {
+  "seconds": 16.1,
+  "exit_code": 0
+ },
+ "02c_walk_osm_compare.py": {
+  "seconds": 10.5,
+  "exit_code": 0
+ },
+ "02d_muni_graph_diff.py": {
+  "seconds": 1.0,
+  "exit_code": 0
+ },
+ "03_gateways.py": {
+  "seconds": 1.5,
+  "exit_code": 0
+ },
+ "03b_east_and_osm.py": {
+  "seconds": 1.7,
+  "exit_code": 0
+ },
+ "04_journey.py": {
+  "seconds": 7.4,
+  "exit_code": 0
+ },
+ "04c_check_csa.py": {
+  "seconds": 1.3,
+  "exit_code": 0
+ },
+ "05_problems.py": {
+  "seconds": 6.2,
+  "exit_code": 0
+ },
+ "06_design_numbers.py": {
+  "seconds": 7.5,
+  "exit_code": 0
+ },
+ "07_extra_and_tables.py": {
+  "seconds": 3.0,
+  "exit_code": 0
+ },
+ "record_history.py": {
+  "seconds": 0.6,
+  "exit_code": 0
+ },
+ "make_report.py": {
+  "seconds": 0.7,
+  "exit_code": 0
+ },
+ "99_privacy_scan.py": {
+  "seconds": 17.6,
+  "exit_code": 0
+ }
+}

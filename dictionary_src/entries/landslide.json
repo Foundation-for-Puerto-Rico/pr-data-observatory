@@ -1,0 +1,491 @@
+[
+  {
+    "id": "landslide.ls_land_high_pct",
+    "name": "Land highly susceptible to landslides (USGS, %)",
+    "domain": "hazards",
+    "domains": [
+      "hazards"
+    ],
+    "group": "Environment · Landslide susceptibility (USGS)",
+    "kind": "variable",
+    "plain": "How much of the land is in the three most landslide-prone classes of the USGS map: the places where intense rain is most likely to set off a slide.",
+    "definition": "The share of the land that the USGS map of susceptibility to landslides triggered by intense rainfall (Hughes and Schulz, 2020) puts in its High, Very High or Extremely High class: the most susceptible 30% of the main island. Over all the land of the area that the map classifies, in percent.",
+    "unit": "% of the land the map classifies",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico (no value for Vieques and Culebra); also 901 barrios (no value for the 15 on Vieques, Culebra and Isla de Mona)",
+    "coverage": {
+      "timeline": "static",
+      "first": 2020,
+      "last": 2020,
+      "frequency": "One model, published in 2020 (its GIS layer in 2021). The build checks the first author's copy for an edit (refresh unit landslide)."
+    },
+    "method": "landslide.py reads the 7,294 PNG tiles of zoom 15 that cover the main island (4.8 m a pixel in Web Mercator, about 4.5 m on the ground), turns each pixel's colour back into its class (grey Low, yellow Moderate, orange High, red Very High, blue-violet Extremely High; the build stops on any other colour) and counts each pixel's ground area in the barrio whose outline holds its centre (or the nearest within about 1 km, for the generalised coast). No raster library is used: the PNGs are decoded with zlib and numpy. Checks against the report, run at every build: the classes cover 40.0, 30.0, 20.0, 9.0 and 1.0% of the 8,739 km2 classified (the report: 40, 30, 20, 9 and 1% of 8,700 km2), and the 71,431 slope failures of Hurricane María fall 1.2, 10.2, 29.4, 44.4 and 14.7% in the five classes (the report's table 5: 1.2, 10.0, 29.4, 44.6 and 14.9%), so the tiles are the published map. A barrio's share is the area of the three classes over all its classified area; a municipio's and Puerto Rico's shares come from the areas of their barrios. The share of each of the five classes is a dataset of its own (landslide.ls_cls_low_pct to landslide.ls_cls_extremely_high_pct).",
+    "sources": [
+      "usgs_landslide_map",
+      "census_tiger"
+    ],
+    "source_detail": "Hughes and Schulz (2020), USGS Open-File Report 2020-1022; GIS layer: USGS data release https://doi.org/10.5066/P990ZP4C (5 m raster, five classes). Read from the first author's tile copy, https://tiles.arcgis.com/tiles/TQ9qkk0dURXSP7LQ/arcgis/rest/services/Susceptibilidad_Derrumbe_PR/MapServer, zoom 15. Barrio outlines: barrios.geojson; residents: 2020 census blocks (population_blocks.json).",
+    "how_to_read": "Puerto Rico (the main island): 30.0%, by the map's design. Highest: Maricao (79.8%), Jayuya (70.4%), Las Marías (69.5%). 4 municipios have less than 0.5%, and 55 barrios have none; 229 barrios have half or more of their land in these classes.",
+    "caveats": [
+      "A relative ranking within Puerto Rico, not a probability: the classes are set by area (the most susceptible 30% of the island is High or above), so 'high' means high compared with the rest of the island.",
+      "The map shows where landslides may start during or soon after intense rainfall; it does not show where a slide travels downhill, and deep bedrock slides and earthquake-triggered ones are poorly represented. It is not a substitute for a site-specific slope-stability study.",
+      "Vieques, Culebra and Isla de Mona are not in the USGS model: no value. Puerto Rico's figure is the main island's."
+    ],
+    "see_also": [
+      "landslide.ls_land_vhigh_pct",
+      "landslide.ls_res_high",
+      "landslide.ls_res_high_pct",
+      "environment.landslides_maria",
+      "environment.nri_eal_landslide"
+    ],
+    "where": {
+      "files": [
+        "landslide_series.json:ls_land_high_pct",
+        "landslide_barrio.json:ls_land_high_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Environment · Landslide susceptibility (USGS)): shade municipalities, or barrios (Settings > Area), by",
+          "href": "index.html#e=ls_land_high_pct.f.value.red.q.1.1.0.85.0"
+        }
+      ]
+    },
+    "added": "2026-10-18"
+  },
+  {
+    "id": "landslide.ls_land_vhigh_pct",
+    "name": "Land very highly susceptible to landslides (USGS, %)",
+    "domain": "hazards",
+    "domains": [
+      "hazards"
+    ],
+    "group": "Environment · Landslide susceptibility (USGS)",
+    "kind": "variable",
+    "plain": "How much of the land is in the two most landslide-prone classes of the USGS map: the most susceptible tenth of the island.",
+    "definition": "The share of the land that the USGS susceptibility map puts in its Very High or Extremely High class: the most susceptible 10% of the main island. Over all the land of the area that the map classifies, in percent.",
+    "unit": "% of the land the map classifies",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico (no value for Vieques and Culebra); also 901 barrios (no value for the 15 on Vieques, Culebra and Isla de Mona)",
+    "coverage": {
+      "timeline": "static",
+      "first": 2020,
+      "last": 2020,
+      "frequency": "One model, published in 2020 (its GIS layer in 2021). The build checks the first author's copy for an edit (refresh unit landslide)."
+    },
+    "method": "landslide.py reads the 7,294 PNG tiles of zoom 15 that cover the main island (4.8 m a pixel in Web Mercator, about 4.5 m on the ground), turns each pixel's colour back into its class (grey Low, yellow Moderate, orange High, red Very High, blue-violet Extremely High; the build stops on any other colour) and counts each pixel's ground area in the barrio whose outline holds its centre (or the nearest within about 1 km, for the generalised coast). No raster library is used: the PNGs are decoded with zlib and numpy. Checks against the report, run at every build: the classes cover 40.0, 30.0, 20.0, 9.0 and 1.0% of the 8,739 km2 classified (the report: 40, 30, 20, 9 and 1% of 8,700 km2), and the 71,431 slope failures of Hurricane María fall 1.2, 10.2, 29.4, 44.4 and 14.7% in the five classes (the report's table 5: 1.2, 10.0, 29.4, 44.6 and 14.9%), so the tiles are the published map. Computed as for the share in the three highest classes, with the two highest.",
+    "sources": [
+      "usgs_landslide_map",
+      "census_tiger"
+    ],
+    "source_detail": "Hughes and Schulz (2020), USGS Open-File Report 2020-1022; GIS layer: USGS data release https://doi.org/10.5066/P990ZP4C (5 m raster, five classes). Read from the first author's tile copy, https://tiles.arcgis.com/tiles/TQ9qkk0dURXSP7LQ/arcgis/rest/services/Susceptibilidad_Derrumbe_PR/MapServer, zoom 15. Barrio outlines: barrios.geojson; residents: 2020 census blocks (population_blocks.json).",
+    "how_to_read": "Puerto Rico (the main island): 10.0%. Highest: Maricao (49.3%), Las Marías (36.8%), Utuado (35.2%).",
+    "caveats": [
+      "A relative ranking within Puerto Rico, not a probability: the classes are set by area (the most susceptible 30% of the island is High or above), so 'high' means high compared with the rest of the island.",
+      "The map shows where landslides may start during or soon after intense rainfall; it does not show where a slide travels downhill, and deep bedrock slides and earthquake-triggered ones are poorly represented. It is not a substitute for a site-specific slope-stability study.",
+      "Vieques, Culebra and Isla de Mona are not in the USGS model: no value. Puerto Rico's figure is the main island's."
+    ],
+    "see_also": [
+      "landslide.ls_land_high_pct",
+      "landslide.ls_res_high",
+      "landslide.ls_res_high_pct",
+      "environment.landslides_maria",
+      "environment.nri_eal_landslide"
+    ],
+    "where": {
+      "files": [
+        "landslide_series.json:ls_land_vhigh_pct",
+        "landslide_barrio.json:ls_land_vhigh_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Environment · Landslide susceptibility (USGS)): shade municipalities, or barrios (Settings > Area), by",
+          "href": "index.html#e=ls_land_vhigh_pct.f.value.red.q.1.1.0.85.0"
+        }
+      ]
+    },
+    "added": "2026-10-18"
+  },
+  {
+    "id": "landslide.ls_res_high",
+    "name": "Residents on land highly susceptible to landslides (estimate)",
+    "domain": "hazards",
+    "domains": [
+      "hazards",
+      "population"
+    ],
+    "group": "Environment · Landslide susceptibility (USGS)",
+    "kind": "variable",
+    "plain": "About how many people (2020 census) live where the USGS map ranks the ground as high, very high or extremely high for landslides in intense rain.",
+    "definition": "The 2020 census residents of the blocks whose internal point lies in the High, Very High or Extremely High class of the USGS susceptibility map. An estimate.",
+    "unit": "residents (2020 census)",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico (no value for Vieques and Culebra); also 901 barrios (no value for the 15 on Vieques, Culebra and Isla de Mona)",
+    "coverage": {
+      "timeline": "static",
+      "first": 2020,
+      "last": 2020,
+      "frequency": "One model, published in 2020 (its GIS layer in 2021). The build checks the first author's copy for an edit (refresh unit landslide)."
+    },
+    "method": "landslide.py reads the 7,294 PNG tiles of zoom 15 that cover the main island (4.8 m a pixel in Web Mercator, about 4.5 m on the ground), turns each pixel's colour back into its class (grey Low, yellow Moderate, orange High, red Very High, blue-violet Extremely High; the build stops on any other colour) and counts each pixel's ground area in the barrio whose outline holds its centre (or the nearest within about 1 km, for the generalised coast). No raster library is used: the PNGs are decoded with zlib and numpy. Checks against the report, run at every build: the classes cover 40.0, 30.0, 20.0, 9.0 and 1.0% of the 8,739 km2 classified (the report: 40, 30, 20, 9 and 1% of 8,700 km2), and the 71,431 slope failures of Hurricane María fall 1.2, 10.2, 29.4, 44.4 and 14.7% in the five classes (the report's table 5: 1.2, 10.0, 29.4, 44.6 and 14.9%), so the tiles are the published map. Each 2020 census block with residents counts whole in the class of the pixel under its internal point (the point the Census Bureau guarantees lies inside the block), in the barrio whose outline holds the point; a municipio is the sum of its barrios. A block that a class edge crosses is counted on one side, so a barrio's figure is rough (the same rule as the exposure series). 1,080 residents live in blocks whose point falls on a pixel the map leaves unclassified (the coast) and count as not in these classes.",
+    "sources": [
+      "usgs_landslide_map",
+      "census_tiger"
+    ],
+    "source_detail": "Hughes and Schulz (2020), USGS Open-File Report 2020-1022; GIS layer: USGS data release https://doi.org/10.5066/P990ZP4C (5 m raster, five classes). Read from the first author's tile copy, https://tiles.arcgis.com/tiles/TQ9qkk0dURXSP7LQ/arcgis/rest/services/Susceptibilidad_Derrumbe_PR/MapServer, zoom 15. Barrio outlines: barrios.geojson; residents: 2020 census blocks (population_blocks.json).",
+    "how_to_read": "Puerto Rico (the main island): about 375,779 residents in 2020. Most: Naranjito (17,078), Utuado (15,269), Mayagüez (13,959).",
+    "caveats": [
+      "A relative ranking within Puerto Rico, not a probability: the classes are set by area (the most susceptible 30% of the island is High or above), so 'high' means high compared with the rest of the island.",
+      "The map shows where landslides may start during or soon after intense rainfall; it does not show where a slide travels downhill, and deep bedrock slides and earthquake-triggered ones are poorly represented. It is not a substitute for a site-specific slope-stability study.",
+      "Vieques, Culebra and Isla de Mona are not in the USGS model: no value. Puerto Rico's figure is the main island's.",
+      "An estimate from whole census blocks: rough for a barrio, where a class edge can cut a block.",
+      "Puerto Rico's share is over the main island's 3,275,833 residents in 2020 (11.5%); the Analysis tab's 'per 1,000 residents' view of the count divides it by all 3,285,874 residents of Puerto Rico, Vieques and Culebra included, as it does for every dataset, so it reads 114.4. The share is the figure to quote: Vieques and Culebra are not in the map, so their residents cannot be placed in a class."
+    ],
+    "see_also": [
+      "landslide.ls_land_high_pct",
+      "landslide.ls_land_vhigh_pct",
+      "landslide.ls_res_high_pct",
+      "environment.landslides_maria",
+      "environment.nri_eal_landslide"
+    ],
+    "where": {
+      "files": [
+        "landslide_series.json:ls_res_high",
+        "landslide_barrio.json:ls_res_high"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Environment · Landslide susceptibility (USGS)): shade municipalities, or barrios (Settings > Area), by",
+          "href": "index.html#e=ls_res_high.f.value.red.q.1.1.0.85.0"
+        }
+      ]
+    },
+    "added": "2026-10-18"
+  },
+  {
+    "id": "landslide.ls_res_high_pct",
+    "name": "Residents on land highly susceptible to landslides (estimate, %)",
+    "domain": "hazards",
+    "domains": [
+      "hazards",
+      "population"
+    ],
+    "group": "Environment · Landslide susceptibility (USGS)",
+    "kind": "variable",
+    "plain": "Out of every 100 residents (2020 census), about how many live where the USGS map ranks the ground as high, very high or extremely high for landslides in intense rain.",
+    "definition": "The 2020 census residents of the blocks whose internal point lies in the High, Very High or Extremely High class of the USGS susceptibility map, over all the 2020 residents of the area, in percent. An estimate.",
+    "unit": "% of residents (2020 census)",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico (no value for Vieques and Culebra); also 901 barrios (no value for the 15 on Vieques, Culebra and Isla de Mona)",
+    "coverage": {
+      "timeline": "static",
+      "first": 2020,
+      "last": 2020,
+      "frequency": "One model, published in 2020 (its GIS layer in 2021). The build checks the first author's copy for an edit (refresh unit landslide)."
+    },
+    "method": "landslide.py reads the 7,294 PNG tiles of zoom 15 that cover the main island (4.8 m a pixel in Web Mercator, about 4.5 m on the ground), turns each pixel's colour back into its class (grey Low, yellow Moderate, orange High, red Very High, blue-violet Extremely High; the build stops on any other colour) and counts each pixel's ground area in the barrio whose outline holds its centre (or the nearest within about 1 km, for the generalised coast). No raster library is used: the PNGs are decoded with zlib and numpy. Checks against the report, run at every build: the classes cover 40.0, 30.0, 20.0, 9.0 and 1.0% of the 8,739 km2 classified (the report: 40, 30, 20, 9 and 1% of 8,700 km2), and the 71,431 slope failures of Hurricane María fall 1.2, 10.2, 29.4, 44.4 and 14.7% in the five classes (the report's table 5: 1.2, 10.0, 29.4, 44.6 and 14.9%), so the tiles are the published map. Residents are counted as for the number of residents in these classes, over all the 2020 census residents of the area (geo/crosswalk.json).",
+    "sources": [
+      "usgs_landslide_map",
+      "census_tiger"
+    ],
+    "source_detail": "Hughes and Schulz (2020), USGS Open-File Report 2020-1022; GIS layer: USGS data release https://doi.org/10.5066/P990ZP4C (5 m raster, five classes). Read from the first author's tile copy, https://tiles.arcgis.com/tiles/TQ9qkk0dURXSP7LQ/arcgis/rest/services/Susceptibilidad_Derrumbe_PR/MapServer, zoom 15. Barrio outlines: barrios.geojson; residents: 2020 census blocks (population_blocks.json).",
+    "how_to_read": "Puerto Rico (the main island): 11.5% of the residents, against 30% of the land: people live mostly on the flatter ground. Highest: Las Marías (63.9%), Maricao (59.8%), Naranjito (58.4%).",
+    "caveats": [
+      "A relative ranking within Puerto Rico, not a probability: the classes are set by area (the most susceptible 30% of the island is High or above), so 'high' means high compared with the rest of the island.",
+      "The map shows where landslides may start during or soon after intense rainfall; it does not show where a slide travels downhill, and deep bedrock slides and earthquake-triggered ones are poorly represented. It is not a substitute for a site-specific slope-stability study.",
+      "Vieques, Culebra and Isla de Mona are not in the USGS model: no value. Puerto Rico's figure is the main island's.",
+      "An estimate from whole census blocks: rough for a barrio, where a class edge can cut a block.",
+      "Puerto Rico's share is over the main island's 3,275,833 residents in 2020 (11.5%); the Analysis tab's 'per 1,000 residents' view of the count divides it by all 3,285,874 residents of Puerto Rico, Vieques and Culebra included, as it does for every dataset, so it reads 114.4. The share is the figure to quote: Vieques and Culebra are not in the map, so their residents cannot be placed in a class.",
+      "Three barrios of the main island had no residents in the 2020 census (Cedro in Guayanilla, Emajagual in Juana Díaz and Santa Rosa in Utuado): they have no share, and the barrio map says 'No residents in 2020' for them, not 'not mapped', which is said only of the 15 barrios of Vieques, Culebra and Isla de Mona."
+    ],
+    "see_also": [
+      "landslide.ls_land_high_pct",
+      "landslide.ls_land_vhigh_pct",
+      "landslide.ls_res_high",
+      "environment.landslides_maria",
+      "environment.nri_eal_landslide"
+    ],
+    "where": {
+      "files": [
+        "landslide_series.json:ls_res_high_pct",
+        "landslide_barrio.json:ls_res_high_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Environment · Landslide susceptibility (USGS)): shade municipalities, or barrios (Settings > Area), by",
+          "href": "index.html#e=ls_res_high_pct.f.value.red.q.1.1.0.85.0"
+        }
+      ]
+    },
+    "added": "2026-10-18"
+  },
+  {
+    "id": "landslide.ls_cls_low_pct",
+    "name": "Land in the Low landslide susceptibility class (USGS, %)",
+    "domain": "hazards",
+    "domains": [
+      "hazards"
+    ],
+    "group": "Environment · Landslide susceptibility (USGS)",
+    "kind": "variable",
+    "plain": "How much of the land is in the Low class of the USGS landslide map: the least susceptible 40% of the main island.",
+    "definition": "The share of the land that the USGS map of susceptibility to landslides triggered by intense rainfall (Hughes and Schulz, 2020) puts in its Low class: the least susceptible 40% of the main island. Over all the land of the area that the map classifies, in percent. The five classes add up to 100%.",
+    "unit": "% of the land the map classifies",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico (no value for Vieques and Culebra); also 901 barrios (no value for the 15 on Vieques, Culebra and Isla de Mona)",
+    "coverage": {
+      "timeline": "static",
+      "first": 2020,
+      "last": 2020,
+      "frequency": "One model, published in 2020 (its GIS layer in 2021). The build checks the first author's copy for an edit (refresh unit landslide)."
+    },
+    "method": "landslide.py reads the map as for landslide.ls_land_high_pct (the first author's tiles at zoom 15, each pixel's colour turned back into its class, checked against the report at every build) and divides the area of the Low class in each barrio by all its classified area; a municipio's and Puerto Rico's shares come from the areas of their barrios.",
+    "sources": [
+      "usgs_landslide_map",
+      "census_tiger"
+    ],
+    "source_detail": "Hughes and Schulz (2020), USGS Open-File Report 2020-1022; GIS layer: USGS data release https://doi.org/10.5066/P990ZP4C (5 m raster, five classes). Read from the first author's tile copy, https://tiles.arcgis.com/tiles/TQ9qkk0dURXSP7LQ/arcgis/rest/services/Susceptibilidad_Derrumbe_PR/MapServer, zoom 15. Barrio outlines: barrios.geojson; residents: 2020 census blocks (population_blocks.json).",
+    "how_to_read": "Puerto Rico (the main island): 40.0%, by the map's design. Highest: Cataño (99.8%), Loíza (99.2%), Santa Isabel (93.6%). Lowest: Maricao (2.6%), Orocovis (4.2%), Las Marías (4.9%). 0 of the 886 barrios in the map have none of their land in this class, and 344 have half or more.",
+    "caveats": [
+      "A relative ranking within Puerto Rico, not a probability: the classes are set by area (the most susceptible 30% of the island is High or above), so 'high' means high compared with the rest of the island.",
+      "The map shows where landslides may start during or soon after intense rainfall; it does not show where a slide travels downhill, and deep bedrock slides and earthquake-triggered ones are poorly represented. It is not a substitute for a site-specific slope-stability study.",
+      "Vieques, Culebra and Isla de Mona are not in the USGS model: no value. Puerto Rico's figure is the main island's."
+    ],
+    "see_also": [
+      "landslide.ls_land_high_pct",
+      "landslide.ls_land_vhigh_pct",
+      "landslide.ls_cls_moderate_pct",
+      "landslide.ls_cls_high_pct",
+      "landslide.ls_cls_very_high_pct",
+      "landslide.ls_cls_extremely_high_pct"
+    ],
+    "where": {
+      "files": [
+        "landslide_series.json:ls_cls_low_pct",
+        "landslide_barrio.json:ls_cls_low_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Environment · Landslide susceptibility (USGS)): shade municipalities, or barrios (Settings > Area), by",
+          "href": "index.html#e=ls_cls_low_pct.f.value.red.q.1.1.0.85.0"
+        }
+      ]
+    },
+    "added": "2026-10-18"
+  },
+  {
+    "id": "landslide.ls_cls_moderate_pct",
+    "name": "Land in the Moderate landslide susceptibility class (USGS, %)",
+    "domain": "hazards",
+    "domains": [
+      "hazards"
+    ],
+    "group": "Environment · Landslide susceptibility (USGS)",
+    "kind": "variable",
+    "plain": "How much of the land is in the Moderate class of the USGS landslide map: the next 30% of the main island.",
+    "definition": "The share of the land that the USGS map of susceptibility to landslides triggered by intense rainfall (Hughes and Schulz, 2020) puts in its Moderate class: the next 30% of the main island. Over all the land of the area that the map classifies, in percent. The five classes add up to 100%.",
+    "unit": "% of the land the map classifies",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico (no value for Vieques and Culebra); also 901 barrios (no value for the 15 on Vieques, Culebra and Isla de Mona)",
+    "coverage": {
+      "timeline": "static",
+      "first": 2020,
+      "last": 2020,
+      "frequency": "One model, published in 2020 (its GIS layer in 2021). The build checks the first author's copy for an edit (refresh unit landslide)."
+    },
+    "method": "landslide.py reads the map as for landslide.ls_land_high_pct (the first author's tiles at zoom 15, each pixel's colour turned back into its class, checked against the report at every build) and divides the area of the Moderate class in each barrio by all its classified area; a municipio's and Puerto Rico's shares come from the areas of their barrios.",
+    "sources": [
+      "usgs_landslide_map",
+      "census_tiger"
+    ],
+    "source_detail": "Hughes and Schulz (2020), USGS Open-File Report 2020-1022; GIS layer: USGS data release https://doi.org/10.5066/P990ZP4C (5 m raster, five classes). Read from the first author's tile copy, https://tiles.arcgis.com/tiles/TQ9qkk0dURXSP7LQ/arcgis/rest/services/Susceptibilidad_Derrumbe_PR/MapServer, zoom 15. Barrio outlines: barrios.geojson; residents: 2020 census blocks (population_blocks.json).",
+    "how_to_read": "Puerto Rico (the main island): 30.0%, by the map's design. Highest: Cidra (53.0%), Trujillo Alto (49.9%), Moca (48.8%). Lowest: Cataño (0.2%), Loíza (0.7%), Santa Isabel (6.1%). 6 of the 886 barrios in the map have none of their land in this class, and 105 have half or more.",
+    "caveats": [
+      "A relative ranking within Puerto Rico, not a probability: the classes are set by area (the most susceptible 30% of the island is High or above), so 'high' means high compared with the rest of the island.",
+      "The map shows where landslides may start during or soon after intense rainfall; it does not show where a slide travels downhill, and deep bedrock slides and earthquake-triggered ones are poorly represented. It is not a substitute for a site-specific slope-stability study.",
+      "Vieques, Culebra and Isla de Mona are not in the USGS model: no value. Puerto Rico's figure is the main island's."
+    ],
+    "see_also": [
+      "landslide.ls_land_high_pct",
+      "landslide.ls_land_vhigh_pct",
+      "landslide.ls_cls_low_pct",
+      "landslide.ls_cls_high_pct",
+      "landslide.ls_cls_very_high_pct",
+      "landslide.ls_cls_extremely_high_pct"
+    ],
+    "where": {
+      "files": [
+        "landslide_series.json:ls_cls_moderate_pct",
+        "landslide_barrio.json:ls_cls_moderate_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Environment · Landslide susceptibility (USGS)): shade municipalities, or barrios (Settings > Area), by",
+          "href": "index.html#e=ls_cls_moderate_pct.f.value.red.q.1.1.0.85.0"
+        }
+      ]
+    },
+    "added": "2026-10-18"
+  },
+  {
+    "id": "landslide.ls_cls_high_pct",
+    "name": "Land in the High landslide susceptibility class (USGS, %)",
+    "domain": "hazards",
+    "domains": [
+      "hazards"
+    ],
+    "group": "Environment · Landslide susceptibility (USGS)",
+    "kind": "variable",
+    "plain": "How much of the land is in the High class of the USGS landslide map: the next 20% of the main island, above Moderate.",
+    "definition": "The share of the land that the USGS map of susceptibility to landslides triggered by intense rainfall (Hughes and Schulz, 2020) puts in its High class: the next 20% of the main island. Over all the land of the area that the map classifies, in percent. The five classes add up to 100%.",
+    "unit": "% of the land the map classifies",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico (no value for Vieques and Culebra); also 901 barrios (no value for the 15 on Vieques, Culebra and Isla de Mona)",
+    "coverage": {
+      "timeline": "static",
+      "first": 2020,
+      "last": 2020,
+      "frequency": "One model, published in 2020 (its GIS layer in 2021). The build checks the first author's copy for an edit (refresh unit landslide)."
+    },
+    "method": "landslide.py reads the map as for landslide.ls_land_high_pct (the first author's tiles at zoom 15, each pixel's colour turned back into its class, checked against the report at every build) and divides the area of the High class in each barrio by all its classified area; a municipio's and Puerto Rico's shares come from the areas of their barrios.",
+    "sources": [
+      "usgs_landslide_map",
+      "census_tiger"
+    ],
+    "source_detail": "Hughes and Schulz (2020), USGS Open-File Report 2020-1022; GIS layer: USGS data release https://doi.org/10.5066/P990ZP4C (5 m raster, five classes). Read from the first author's tile copy, https://tiles.arcgis.com/tiles/TQ9qkk0dURXSP7LQ/arcgis/rest/services/Susceptibilidad_Derrumbe_PR/MapServer, zoom 15. Barrio outlines: barrios.geojson; residents: 2020 census blocks (population_blocks.json).",
+    "how_to_read": "Puerto Rico (the main island): 20.0%, by the map's design. Highest: Comerío (39.4%), Jayuya (37.6%), Naranjito (37.3%). Lowest: Cataño (0.0%), Guánica (0.0%), Loíza (0.1%). 55 of the 886 barrios in the map have none of their land in this class, and 6 have half or more.",
+    "caveats": [
+      "A relative ranking within Puerto Rico, not a probability: the classes are set by area (the most susceptible 30% of the island is High or above), so 'high' means high compared with the rest of the island.",
+      "The map shows where landslides may start during or soon after intense rainfall; it does not show where a slide travels downhill, and deep bedrock slides and earthquake-triggered ones are poorly represented. It is not a substitute for a site-specific slope-stability study.",
+      "Vieques, Culebra and Isla de Mona are not in the USGS model: no value. Puerto Rico's figure is the main island's."
+    ],
+    "see_also": [
+      "landslide.ls_land_high_pct",
+      "landslide.ls_land_vhigh_pct",
+      "landslide.ls_cls_low_pct",
+      "landslide.ls_cls_moderate_pct",
+      "landslide.ls_cls_very_high_pct",
+      "landslide.ls_cls_extremely_high_pct"
+    ],
+    "where": {
+      "files": [
+        "landslide_series.json:ls_cls_high_pct",
+        "landslide_barrio.json:ls_cls_high_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Environment · Landslide susceptibility (USGS)): shade municipalities, or barrios (Settings > Area), by",
+          "href": "index.html#e=ls_cls_high_pct.f.value.red.q.1.1.0.85.0"
+        }
+      ]
+    },
+    "added": "2026-10-18"
+  },
+  {
+    "id": "landslide.ls_cls_very_high_pct",
+    "name": "Land in the Very High landslide susceptibility class (USGS, %)",
+    "domain": "hazards",
+    "domains": [
+      "hazards"
+    ],
+    "group": "Environment · Landslide susceptibility (USGS)",
+    "kind": "variable",
+    "plain": "How much of the land is in the Very High class of the USGS landslide map: the next 9% of the main island.",
+    "definition": "The share of the land that the USGS map of susceptibility to landslides triggered by intense rainfall (Hughes and Schulz, 2020) puts in its Very High class: the next 9% of the main island. Over all the land of the area that the map classifies, in percent. The five classes add up to 100%.",
+    "unit": "% of the land the map classifies",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico (no value for Vieques and Culebra); also 901 barrios (no value for the 15 on Vieques, Culebra and Isla de Mona)",
+    "coverage": {
+      "timeline": "static",
+      "first": 2020,
+      "last": 2020,
+      "frequency": "One model, published in 2020 (its GIS layer in 2021). The build checks the first author's copy for an edit (refresh unit landslide)."
+    },
+    "method": "landslide.py reads the map as for landslide.ls_land_high_pct (the first author's tiles at zoom 15, each pixel's colour turned back into its class, checked against the report at every build) and divides the area of the Very High class in each barrio by all its classified area; a municipio's and Puerto Rico's shares come from the areas of their barrios.",
+    "sources": [
+      "usgs_landslide_map",
+      "census_tiger"
+    ],
+    "source_detail": "Hughes and Schulz (2020), USGS Open-File Report 2020-1022; GIS layer: USGS data release https://doi.org/10.5066/P990ZP4C (5 m raster, five classes). Read from the first author's tile copy, https://tiles.arcgis.com/tiles/TQ9qkk0dURXSP7LQ/arcgis/rest/services/Susceptibilidad_Derrumbe_PR/MapServer, zoom 15. Barrio outlines: barrios.geojson; residents: 2020 census blocks (population_blocks.json).",
+    "how_to_read": "Puerto Rico (the main island): 9.0%, by the map's design. Highest: Maricao (34.8%), Adjuntas (31.4%), Las Marías (30.6%). Lowest: Toa Baja (0.0%), Santa Isabel (0.0%), Loíza (0.0%). 236 of the 886 barrios in the map have none of their land in this class, and 3 have half or more.",
+    "caveats": [
+      "A relative ranking within Puerto Rico, not a probability: the classes are set by area (the most susceptible 30% of the island is High or above), so 'high' means high compared with the rest of the island.",
+      "The map shows where landslides may start during or soon after intense rainfall; it does not show where a slide travels downhill, and deep bedrock slides and earthquake-triggered ones are poorly represented. It is not a substitute for a site-specific slope-stability study.",
+      "Vieques, Culebra and Isla de Mona are not in the USGS model: no value. Puerto Rico's figure is the main island's."
+    ],
+    "see_also": [
+      "landslide.ls_land_high_pct",
+      "landslide.ls_land_vhigh_pct",
+      "landslide.ls_cls_low_pct",
+      "landslide.ls_cls_moderate_pct",
+      "landslide.ls_cls_high_pct",
+      "landslide.ls_cls_extremely_high_pct"
+    ],
+    "where": {
+      "files": [
+        "landslide_series.json:ls_cls_very_high_pct",
+        "landslide_barrio.json:ls_cls_very_high_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Environment · Landslide susceptibility (USGS)): shade municipalities, or barrios (Settings > Area), by",
+          "href": "index.html#e=ls_cls_very_high_pct.f.value.red.q.1.1.0.85.0"
+        }
+      ]
+    },
+    "added": "2026-10-18"
+  },
+  {
+    "id": "landslide.ls_cls_extremely_high_pct",
+    "name": "Land in the Extremely High landslide susceptibility class (USGS, %)",
+    "domain": "hazards",
+    "domains": [
+      "hazards"
+    ],
+    "group": "Environment · Landslide susceptibility (USGS)",
+    "kind": "variable",
+    "plain": "How much of the land is in the Extremely High class of the USGS landslide map: the most susceptible 1% of the main island.",
+    "definition": "The share of the land that the USGS map of susceptibility to landslides triggered by intense rainfall (Hughes and Schulz, 2020) puts in its Extremely High class: the most susceptible 1% of the main island. Over all the land of the area that the map classifies, in percent. The five classes add up to 100%.",
+    "unit": "% of the land the map classifies",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico (no value for Vieques and Culebra); also 901 barrios (no value for the 15 on Vieques, Culebra and Isla de Mona)",
+    "coverage": {
+      "timeline": "static",
+      "first": 2020,
+      "last": 2020,
+      "frequency": "One model, published in 2020 (its GIS layer in 2021). The build checks the first author's copy for an edit (refresh unit landslide)."
+    },
+    "method": "landslide.py reads the map as for landslide.ls_land_high_pct (the first author's tiles at zoom 15, each pixel's colour turned back into its class, checked against the report at every build) and divides the area of the Extremely High class in each barrio by all its classified area; a municipio's and Puerto Rico's shares come from the areas of their barrios.",
+    "sources": [
+      "usgs_landslide_map",
+      "census_tiger"
+    ],
+    "source_detail": "Hughes and Schulz (2020), USGS Open-File Report 2020-1022; GIS layer: USGS data release https://doi.org/10.5066/P990ZP4C (5 m raster, five classes). Read from the first author's tile copy, https://tiles.arcgis.com/tiles/TQ9qkk0dURXSP7LQ/arcgis/rest/services/Susceptibilidad_Derrumbe_PR/MapServer, zoom 15. Barrio outlines: barrios.geojson; residents: 2020 census blocks (population_blocks.json).",
+    "how_to_read": "Puerto Rico (the main island): 1.0%, by the map's design. Highest: Maricao (14.5%), Utuado (9.2%), Las Marías (6.1%). Lowest: Vega Baja (0.0%), Vega Alta (0.0%), Trujillo Alto (0.0%). 539 of the 886 barrios in the map have none of their land in this class, and 0 have half or more.",
+    "caveats": [
+      "A relative ranking within Puerto Rico, not a probability: the classes are set by area (the most susceptible 30% of the island is High or above), so 'high' means high compared with the rest of the island.",
+      "The map shows where landslides may start during or soon after intense rainfall; it does not show where a slide travels downhill, and deep bedrock slides and earthquake-triggered ones are poorly represented. It is not a substitute for a site-specific slope-stability study.",
+      "Vieques, Culebra and Isla de Mona are not in the USGS model: no value. Puerto Rico's figure is the main island's."
+    ],
+    "see_also": [
+      "landslide.ls_land_high_pct",
+      "landslide.ls_land_vhigh_pct",
+      "landslide.ls_cls_low_pct",
+      "landslide.ls_cls_moderate_pct",
+      "landslide.ls_cls_high_pct",
+      "landslide.ls_cls_very_high_pct"
+    ],
+    "where": {
+      "files": [
+        "landslide_series.json:ls_cls_extremely_high_pct",
+        "landslide_barrio.json:ls_cls_extremely_high_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Environment · Landslide susceptibility (USGS)): shade municipalities, or barrios (Settings > Area), by",
+          "href": "index.html#e=ls_cls_extremely_high_pct.f.value.red.q.1.1.0.85.0"
+        }
+      ]
+    },
+    "added": "2026-10-18"
+  }
+]

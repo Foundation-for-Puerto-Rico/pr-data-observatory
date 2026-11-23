@@ -1,0 +1,275 @@
+{
+ "read": "2026-11-17",
+ "audit_year": "2023",
+ "audits": 350,
+ "audits_with_findings": 141,
+ "expended": 23069303274,
+ "findings": 306,
+ "repeat": 140,
+ "questioned_costs": 15,
+ "material_weakness": 120,
+ "by_kind": {
+  "Commonwealth bodies and public corporations": {
+   "findings": 114,
+   "repeat": 58,
+   "questioned_costs": 6,
+   "material_weakness": 65,
+   "audits": 33
+  },
+  "municipio bodies": {
+   "findings": 83,
+   "repeat": 38,
+   "questioned_costs": 2,
+   "material_weakness": 34,
+   "audits": 41
+  },
+  "nonprofits and other bodies": {
+   "findings": 109,
+   "repeat": 44,
+   "questioned_costs": 7,
+   "material_weakness": 21,
+   "audits": 67
+  }
+ },
+ "by_federal_agency_prefix": [
+  {
+   "prefix": "14",
+   "findings": 79,
+   "repeat": 48,
+   "questioned_costs": 3,
+   "material_weakness": 29
+  },
+  {
+   "prefix": "93",
+   "findings": 72,
+   "repeat": 26,
+   "questioned_costs": 2,
+   "material_weakness": 47
+  },
+  {
+   "prefix": "21",
+   "findings": 63,
+   "repeat": 32,
+   "questioned_costs": 3,
+   "material_weakness": 17
+  },
+  {
+   "prefix": "97",
+   "findings": 51,
+   "repeat": 35,
+   "questioned_costs": 3,
+   "material_weakness": 16
+  },
+  {
+   "prefix": "84",
+   "findings": 40,
+   "repeat": 14,
+   "questioned_costs": 4,
+   "material_weakness": 11
+  },
+  {
+   "prefix": "10",
+   "findings": 30,
+   "repeat": 18,
+   "questioned_costs": 1,
+   "material_weakness": 21
+  },
+  {
+   "prefix": "20",
+   "findings": 15,
+   "repeat": 8,
+   "questioned_costs": 0,
+   "material_weakness": 2
+  },
+  {
+   "prefix": "17",
+   "findings": 14,
+   "repeat": 9,
+   "questioned_costs": 1,
+   "material_weakness": 6
+  },
+  {
+   "prefix": "59",
+   "findings": 5,
+   "repeat": 4,
+   "questioned_costs": 0,
+   "material_weakness": 0
+  },
+  {
+   "prefix": "96",
+   "findings": 4,
+   "repeat": 1,
+   "questioned_costs": 0,
+   "material_weakness": 4
+  }
+ ],
+ "listings_with_findings": 145,
+ "by_listing": [
+  {
+   "listing": "21.027",
+   "title": "CORONAVIRUS STATE AND LOCAL FISCAL RECOVERY FUNDS",
+   "findings": 59,
+   "repeat": 29,
+   "questioned_costs": 3,
+   "material_weakness": 17
+  },
+  {
+   "listing": "97.036",
+   "title": "DISASTER GRANTS - PUBLIC ASSISTANCE (PRESIDENTIALLY DECLARED DISASTERS)",
+   "findings": 44,
+   "repeat": 28,
+   "questioned_costs": 2,
+   "material_weakness": 12
+  },
+  {
+   "listing": "14.228",
+   "title": "COMMUNITY DEVELOPMENT BLOCK GRANTS/STATE'S PROGRAM AND NON-ENTITLEMENT GRANTS IN HAWAII",
+   "findings": 32,
+   "repeat": 15,
+   "questioned_costs": 1,
+   "material_weakness": 12
+  },
+  {
+   "listing": "14.871",
+   "title": "SECTION 8 HOUSING CHOICE VOUCHERS",
+   "findings": 24,
+   "repeat": 16,
+   "questioned_costs": 0,
+   "material_weakness": 14
+  },
+  {
+   "listing": "93.575",
+   "title": "CHILD CARE AND DEVELOPMENT BLOCK GRANT",
+   "findings": 22,
+   "repeat": 4,
+   "questioned_costs": 2,
+   "material_weakness": 9
+  },
+  {
+   "listing": "14.195",
+   "title": "SECTION 8 HOUSING ASSISTANCE PAYMENTS PROGRAM",
+   "findings": 16,
+   "repeat": 10,
+   "questioned_costs": 1,
+   "material_weakness": 2
+  },
+  {
+   "listing": "93.558",
+   "title": "TEMPORARY ASSISTANCE FOR NEEDY FAMILIES",
+   "findings": 16,
+   "repeat": 3,
+   "questioned_costs": 0,
+   "material_weakness": 16
+  },
+  {
+   "listing": "84.268",
+   "title": "FEDERAL DIRECT STUDENT LOANS",
+   "findings": 14,
+   "repeat": 4,
+   "questioned_costs": 0,
+   "material_weakness": 2
+  },
+  {
+   "listing": "84.063",
+   "title": "FEDERAL PELL GRANT PROGRAM",
+   "findings": 13,
+   "repeat": 4,
+   "questioned_costs": 1,
+   "material_weakness": 2
+  },
+  {
+   "listing": "84.425",
+   "title": "EDUCATION STABILIZATION FUND",
+   "findings": 10,
+   "repeat": 4,
+   "questioned_costs": 2,
+   "material_weakness": 4
+  },
+  {
+   "listing": "17.259",
+   "title": "WIA YOUTH ACTIVITIES",
+   "findings": 8,
+   "repeat": 4,
+   "questioned_costs": 0,
+   "material_weakness": 2
+  },
+  {
+   "listing": "84.007",
+   "title": "FEDERAL SUPPLEMENTAL EDUCATIONAL OPPORTUNITY GRANTS",
+   "findings": 8,
+   "repeat": 1,
+   "questioned_costs": 0,
+   "material_weakness": 2
+  },
+  {
+   "listing": "93.600",
+   "title": "HEAD START",
+   "findings": 8,
+   "repeat": 5,
+   "questioned_costs": 0,
+   "material_weakness": 3
+  },
+  {
+   "listing": "10.566",
+   "title": "NUTRITION ASSISTANCE FOR PUERTO RICO",
+   "findings": 8,
+   "repeat": 2,
+   "questioned_costs": 0,
+   "material_weakness": 8
+  },
+  {
+   "listing": "93.568",
+   "title": "LOW-INCOME HOME ENERGY ASSISTANCE",
+   "findings": 7,
+   "repeat": 1,
+   "questioned_costs": 0,
+   "material_weakness": 7
+  },
+  {
+   "listing": "93.556",
+   "title": "MARYLEE ALLEN PROMOTING SAFE AND STABLE FAMILIES PROGRAM",
+   "findings": 7,
+   "repeat": 1,
+   "questioned_costs": 0,
+   "material_weakness": 7
+  },
+  {
+   "listing": "84.033",
+   "title": "FEDERAL WORK-STUDY PROGRAM",
+   "findings": 6,
+   "repeat": 1,
+   "questioned_costs": 0,
+   "material_weakness": 2
+  },
+  {
+   "listing": "97.039",
+   "title": "HAZARD MITIGATION GRANT",
+   "findings": 6,
+   "repeat": 5,
+   "questioned_costs": 0,
+   "material_weakness": 0
+  },
+  {
+   "listing": "20.507",
+   "title": "FEDERAL TRANSIT - FORMULA GRANTS (URBANIZED AREA FORMULA PROGRAM)",
+   "findings": 6,
+   "repeat": 2,
+   "questioned_costs": 0,
+   "material_weakness": 1
+  },
+  {
+   "listing": "93.778",
+   "title": "MEDICAL ASSISTANCE PROGRAM",
+   "findings": 6,
+   "repeat": 6,
+   "questioned_costs": 0,
+   "material_weakness": 4
+  }
+ ],
+ "months_to_acceptance": {
+  "median": 8.9,
+  "over_9_months": 159,
+  "over_18_months": 51,
+  "audits": 350
+ }
+}

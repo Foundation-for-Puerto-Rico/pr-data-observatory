@@ -1,0 +1,541 @@
+{
+ "_about": "Held back from the published site until Finance and Compliance review them (HANDOFF decisions 20 and 21; the organisation's rule: federal grant work needs that review before external communication). Nothing here is deleted. What is held: the Spanish text of the WCRP layer (CDBG-funded program: its popup, its legend line, its subtitle and the title of its file in the dictionary) and of Table 10 of the housing page (LIHTC projects funded with CDBG-DR: its cost and beneficiary columns and the groups of beneficiaries; the generic labels Project, Location, Type, Units, its note and its tag stay in Spanish), the headline figure of the Public money card, and the Spanish summaries (dictionary_plain, by entry id) of the dictionary entries of the WCRP layer and of Table 10. 'spanish' is the translation of each string, which the Spanish pages do not show: the line in i18n_src/es/<scope>.json repeats the English text instead. 'titles' is the Spanish title that a record of dictionary_src/datasets.json had; its 'es' now repeats the English title. 'headlines' is the headline figure that dictionary_src/domains.json had for a domain before it was set to null. To release a string: put its Spanish back in i18n_src/es/<scope>.json, delete it here and from i18n_src/keep.json, run python i18n.py, and raise the ?v= of js/i18n.js on the pages that use the scope. To release a title: put the Spanish back in datasets.json, delete it here, run python dictionary.py, python catalog.py and python registry.py. To release a headline: put the object back in domains.json, delete it here, run the same three commands, and python dictionary.py --domains. To release a dictionary summary: move it back to i18n_src/dictionary_plain.json, delete it here and run python dictionary.py. 'released' lists what was released on purpose after the hold, with who, when and why; the safety-net tests accept those strings.",
+ "spanish": {
+  "housing": {
+   "Est. CDBG-DR grant": "Subvención CDBG-DR estimada",
+   "<b>{name}</b> · {n} LIHTC units<br>{projects}": "<b>{name}</b> · {n} unidades LIHTC<br>{projects}",
+   "Table 10 (LIHTC projects), as published": "Tabla 10 (proyectos LIHTC), tal como se publicó",
+   "HUD calls a household cost-burdened when it pays more than 30% of income for housing. The study found 52% of renters and 38% of mortgaged owners burdened (Tables 3 and 4). Below, the island-wide distribution for the selected year, rebuilt from the ACS, then each municipality.": "HUD (Departamento de Vivienda y Desarrollo Urbano de EE. UU.) considera que un hogar tiene carga de costos cuando paga más del 30% de su ingreso por la vivienda. El estudio encontró que el 52% de los inquilinos y el 38% de los propietarios con hipoteca tenían esa carga (Tablas 3 y 4). Abajo se muestra la distribución en toda la isla para el año seleccionado, reconstruida con la ACS, y luego cada municipio.",
+   "7 · Low-Income Housing Tax Credit projects": "7 · Proyectos de Crédito Contributivo para Vivienda de Bajos Ingresos (LIHTC)",
+   "Six LIHTC projects funded with CDBG-DR, 851 units, $242 million of development (Table 10, Map 6). Locations are shown at the municipality. HUD's current LIHTC database is not available to automated downloads, so this table stays as published.": "Seis proyectos LIHTC financiados con CDBG-DR, 851 unidades, $242 millones en desarrollo (Tabla 10, Mapa 6). Las ubicaciones se muestran a nivel de municipio. La base de datos actual de LIHTC de HUD no está disponible para descargas automatizadas, por lo que esta tabla se mantiene tal como se publicó.",
+   "LIHTC projects": "Proyectos LIHTC",
+   "Beneficiaries": "Personas beneficiarias",
+   "Est. development cost": "Costo estimado de desarrollo",
+   "Multifamily apartments": "Apartamentos multifamiliares",
+   "Nursing home": "Hogar para personas mayores",
+   "Elderly": "Personas mayores",
+   "Elderly and handicapped people": "Personas mayores y personas con discapacidad",
+   "Low-income families": "Familias de bajos ingresos",
+   "Low-income families, people with HIV, people experiencing homelessness": "Familias de bajos ingresos, personas con VIH, personas sin hogar",
+   "One-parent families": "Familias monoparentales"
+  },
+  "facilities": {
+   "HUD, National LIHTC Database (release of {date})": "HUD, base de datos nacional de LIHTC (publicación de {date})",
+   "Tax credit housing: HUD LIHTC Database": "Vivienda con crédito contributivo: base de datos LIHTC de HUD",
+   "Rental housing built or rehabilitated with Low-Income Housing Tax Credits (LIHTC), as the Puerto Rico Housing Finance Authority reports it to HUD: every project placed in service since 1987, including a few no longer monitored for the credit's rules. HUD placed only some projects at a point; the others are counted in their municipio (a dataset in Explore) but not drawn. Projects for people who are homeless or living with HIV, and care homes for older adults, are counted, never drawn or named. The pop-up gives the name, municipio, units, low-income units, year placed in service and source, never the address.": "Vivienda de alquiler construida o rehabilitada con Créditos Contributivos por Vivienda de Bajos Ingresos (LIHTC), según la Autoridad para el Financiamiento de la Vivienda de Puerto Rico la informa a HUD: cada proyecto puesto en servicio desde 1987, incluidos unos pocos que ya no se fiscalizan bajo las reglas del crédito. HUD ubicó en un punto solo algunos proyectos; los demás se cuentan en su municipio (un conjunto de datos en Explorar) pero no se dibujan. Los proyectos para personas sin hogar o que viven con VIH, y los hogares de cuido para personas mayores, se cuentan, pero nunca se dibujan ni se nombran. La ventana emergente muestra el nombre, el municipio, las unidades, las unidades de bajos ingresos, el año en que se puso en servicio y la fuente, nunca la dirección.",
+   "Low-Income Housing Tax Credit project": "Proyecto con crédito contributivo para vivienda de bajos ingresos"
+  },
+  "labels_facilities": {
+   "LIHTC projects (HUD)": "Proyectos LIHTC (HUD)",
+   "LIHTC housing units (HUD)": "Unidades de vivienda LIHTC (HUD)",
+   "LIHTC low-income units (HUD)": "Unidades LIHTC de bajos ingresos (HUD)"
+  },
+  "public_spending_after": {
+   "Each CDBG-DR and CDBG-MIT grant to the Department of Housing: what HUD obligated over the grant's life and what the Treasury has paid out to the Department so far (its draws), from USAspending. HUD's own monthly reports for 1 September 2026 give draws within 2% of these for four of the six grants over $100 million, and lower for the mitigation grant (4%) and the 2020 earthquakes grant (19%); USAspending was read later, in November 2026. A draw pays the Department, not yet the work; a grant signed later has had less time to draw.": "Cada subvención CDBG-DR y CDBG-MIT al Departamento de la Vivienda: lo que HUD obligó durante la vida de la subvención y lo que el Tesoro ha desembolsado al Departamento hasta ahora (sus giros), según USAspending. Los informes mensuales de HUD al 1 de septiembre de 2026 dan giros con una diferencia de 2 % o menos para cuatro de las seis subvenciones de más de $100 millones, y menores para la subvención de mitigación (4 %) y la de los terremotos de 2020 (19 %); USAspending se leyó después, en noviembre de 2026. Un giro le paga al Departamento, todavía no a la obra; una subvención firmada más tarde ha tenido menos tiempo para girar.",
+   "The Department of Housing manages the federal disaster recovery and mitigation grants of the Community Development Block Grant program (CDBG-DR and CDBG-MIT). USAspending places those grants where the Department is, in San Juan. The part the Department passes on as subawards, to municipalities, contractors and nonprofits, is reported where the work is done. This map shows those subawards.": "El Departamento de la Vivienda administra las subvenciones federales de recuperación y mitigación por desastres del programa Community Development Block Grant (CDBG-DR y CDBG-MIT). USAspending ubica esas subvenciones donde está el Departamento, en San Juan. La parte que el Departamento entrega como subadjudicaciones, a municipios, contratistas y organizaciones sin fines de lucro, se informa donde se hace el trabajo. Este mapa muestra esas subadjudicaciones."
+  },
+  "public_spending": {
+   "<b>Data and method.</b> The data files are data/spending_state.json (ogp_budget.py), data/spending_pica.json (pica.py), data/spending_federal.json (federal_awards.py), data/spending_outlays.json (federal_outlays.py), data/spending_cdbgdr.json (cdbg_dr.py) and data/spending_fema_pa.json (fema_pa_stage.py); the method is in docs/spending.md of the project repository.": "<b>Datos y método.</b> Los archivos de datos son data/spending_state.json (ogp_budget.py), data/spending_pica.json (pica.py), data/spending_federal.json (federal_awards.py), data/spending_outlays.json (federal_outlays.py), data/spending_cdbgdr.json (cdbg_dr.py) y data/spending_fema_pa.json (fema_pa_stage.py); el método está en docs/spending.md del repositorio del proyecto.",
+   "<b>Read with care.</b> A large project, such as a water treatment plant that serves a region, lands in the one municipio where it is built, so a few municipios stand out per resident. The map shows where a project is built, not who runs the money (often a central agency) or who benefits. Part of the program is federal money (FEMA, HUD, EPA revolving funds) that other sources also report: never add it to them.": "<b>Lea con cuidado.</b> Un proyecto grande, como una planta de tratamiento de agua que sirve a una región, cae en el único municipio donde se construye, por lo que algunos municipios sobresalen por residente. El mapa muestra dónde se construye un proyecto, no quién administra el dinero (a menudo una agencia central) ni quién se beneficia. Parte del programa es dinero federal (FEMA, HUD, fondos rotatorios de la EPA) que otras fuentes también informan: nunca lo sume a ellas."
+  },
+  "studyareas": {
+   "Tax-credit housing (LIHTC)": "Vivienda con créditos contributivos (LIHTC)"
+  },
+  "public_money": {
+   "4 · HUD grants: CDBG-DR, CDBG-MIT and yearly CDBG": "4 · Subvenciones de HUD: CDBG-DR, CDBG-MIT y CDBG anual",
+   "<b>HUD money per resident.</b> The same 2020 Census residents, over federal fiscal years 2019 to 2025 (October to September), by the year HUD obligated the money. CDBG-DR and CDBG-MIT: the subawards of the Department of Housing's disaster grants, by the municipio where the work is done. Yearly CDBG: the entitlement grants by the municipio that receives them, plus the CDBG state program's subawards by municipio; COVID-19 grants (CDBG-CV) are left out. Subawards are part of the prime grants and are never added to them, nor to FEMA's money.": "<b>Dinero de HUD por residente.</b> Los mismos residentes del Censo 2020, en los años fiscales federales 2019 a 2025 (octubre a septiembre), por el año en que HUD obligó el dinero. CDBG-DR y CDBG-MIT: las subadjudicaciones de las subvenciones por desastre del Departamento de la Vivienda, por el municipio donde se hace el trabajo. CDBG anual: las subvenciones de derecho (entitlement) por el municipio que las recibe, más las subadjudicaciones del programa estatal CDBG por municipio; se excluyen las subvenciones del COVID-19 (CDBG-CV). Las subadjudicaciones son parte de las subvenciones principales y nunca se suman a ellas ni al dinero de FEMA.",
+   "<b>USAspending.gov.</b> HUD's CDBG grants to Puerto Rico (assistance listings 14.218 and 14.228) and the subawards reported under the federal transparency law (FFATA), read from USAspending's API by cdbg_dr.py and cdbg_regular.py, as published on the Public spending page. US Government work; USAspending states no license for the data.": "<b>USAspending.gov.</b> Las subvenciones CDBG de HUD a Puerto Rico (listados de asistencia 14.218 y 14.228) y las subadjudicaciones informadas bajo la ley federal de transparencia (FFATA), leídas de la API de USAspending con cdbg_dr.py y cdbg_regular.py, tal como se publican en la página de Gasto público. Obra del Gobierno de EE. UU.; USAspending no declara una licencia para los datos.",
+   "CDBG entitlement grant": "Subvención CDBG de derecho (entitlement)",
+   "CDBG state program subawards": "Subadjudicaciones del programa estatal CDBG",
+   "CDBG yearly grants, per resident": "Subvenciones anuales CDBG, por residente",
+   "CDBG-DR and CDBG-MIT subawards": "Subadjudicaciones CDBG-DR y CDBG-MIT",
+   "CDBG-DR and CDBG-MIT, per resident": "CDBG-DR y CDBG-MIT, por residente",
+   "HUD CDBG yearly grants": "Subvenciones anuales CDBG de HUD",
+   "HUD CDBG-DR and CDBG-MIT subawards": "Subadjudicaciones CDBG-DR y CDBG-MIT de HUD",
+   "HUD CDBG-DR, CDBG-MIT and yearly CDBG by municipio, federal fiscal years {y}": "CDBG-DR, CDBG-MIT y CDBG anual de HUD por municipio, años fiscales federales {y}",
+   "HUD grants": "Subvenciones de HUD",
+   "HUD's Community Development Block Grants reach Puerto Rico in three ways. The disaster recovery and mitigation grants (CDBG-DR and CDBG-MIT) go to the Puerto Rico Department of Housing: HUD obligated $19.10 billion of them in federal fiscal years 2019 to 2025, and the Department reported $4.90 billion in subawards to municipalities, contractors and nonprofits, $4.33 billion of it with a municipio. The yearly grants go straight from HUD to 27 larger municipios (entitlement grants, $222 million) and, for the other municipios, to the Department of Housing as the CDBG state program ($160 million), which passes it on as subawards. Subawards often arrive a year or more after the grant, so the latest year can show little. Obligated is not spent. Select a column heading to sort.": "Las Subvenciones en Bloque para el Desarrollo Comunitario de HUD llegan a Puerto Rico de tres formas. Las de recuperación y mitigación por desastres (CDBG-DR y CDBG-MIT) van al Departamento de la Vivienda de Puerto Rico: HUD obligó 19.10 mil millones de dólares en los años fiscales federales 2019 a 2025, y el Departamento informó 4.90 mil millones en subadjudicaciones a municipios, contratistas y organizaciones sin fines de lucro, 4.33 mil millones con un municipio. Las anuales van directo de HUD a 27 municipios más grandes (subvenciones de derecho o entitlement, 222 millones) y, para los demás municipios, al Departamento de la Vivienda como programa estatal CDBG (160 millones), que las transfiere como subadjudicaciones. Las subadjudicaciones suelen llegar un año o más después de la subvención, así que el último año puede mostrar poco. Obligado no es gastado. Seleccione el título de una columna para ordenar.",
+   "HUD's grants are placed through the subawards the Puerto Rico Department of Housing reports, and the yearly entitlement grants through the municipio that receives them. Money the Department keeps for its own programs, has not passed on yet, or reports with no municipio is not placed.": "Las subvenciones de HUD se ubican por las subadjudicaciones que informa el Departamento de la Vivienda de Puerto Rico, y las subvenciones anuales de derecho (entitlement) por el municipio que las recibe. El dinero que el Departamento conserva para sus propios programas, aún no ha transferido o informa sin municipio no está ubicado.",
+   "The page also shows HUD's Community Development Block Grants (CDBG): the disaster recovery and mitigation grants (CDBG-DR and CDBG-MIT) and the yearly grants, as obligated in federal fiscal years 2019 to 2025. HUD's money is never added to FEMA's: the years are counted differently. Pick it under Money, or see section 4.": "La página también muestra las Subvenciones en Bloque para el Desarrollo Comunitario (CDBG) de HUD: las de recuperación y mitigación por desastres (CDBG-DR y CDBG-MIT) y las anuales, según se obligaron en los años fiscales federales 2019 a 2025. El dinero de HUD nunca se suma al de FEMA: los años se cuentan de otra forma. Selecciónelo en Dinero o vea la sección 4."
+  }
+ },
+ "titles": {
+  "lihtc": {
+   "en": "Tax credit housing projects (HUD LIHTC), points",
+   "es": "Proyectos de vivienda con crédito contributivo (LIHTC de HUD), puntos"
+  }
+ },
+ "headlines": {
+  "public-money": {
+   "variable": "economy.fema_pa_obligated",
+   "norm": "value",
+   "label": {
+    "es": "Asistencia Pública de FEMA obligada (parte federal)",
+    "en": "FEMA Public Assistance obligated (federal share)"
+   }
+  }
+ },
+ "dictionary_plain": {
+  "study.table_10": {
+   "en": "Table 10 lists six housing projects named in the 2023 study. Each uses the Low-Income Housing Tax Credit (LIHTC) and also gets money from the Community Development Block Grant for Disaster Recovery (CDBG-DR), a program of the US Department of Housing and Urban Development (HUD). The projects have 851 units in four municipalities. The study estimates their cost at $242,090,072 and their CDBG-DR grants at $90,532,871.",
+   "es": "La Tabla 10 presenta seis proyectos de vivienda mencionados en el estudio de 2023. Cada uno usa el LIHTC (Crédito Contributivo por Vivienda de Bajos Ingresos) y además recibe dinero del CDBG-DR (Subvención en Bloque para el Desarrollo Comunitario, Recuperación ante Desastres), un programa de HUD (Departamento de Vivienda y Desarrollo Urbano federal). Los proyectos tienen 851 unidades en cuatro municipios. El estudio estima su costo en $242,090,072 y sus subvenciones de CDBG-DR en $90,532,871."
+  },
+  "economy.fed_awards_total": {
+   "en": "Federal money promised for work or benefits in a municipality in one fiscal year (October to September). It adds contracts, grants, direct payments, loans (at their estimated cost) and other aid. It is not money spent and does not measure need. San Juan's figure can include money meant for the whole island. The Puerto Rico figure also counts awards that name no municipality.",
+   "es": "Fondos federales prometidos para trabajos o beneficios en un municipio en un año fiscal (de octubre a septiembre). Suma contratos, subvenciones, pagos directos, préstamos (según su costo estimado) y otras ayudas. No es dinero gastado y no mide la necesidad. La cifra de San Juan puede incluir dinero destinado a toda la isla. La cifra de Puerto Rico también cuenta las adjudicaciones que no nombran un municipio."
+  },
+  "economy.fed_contracts": {
+   "en": "A federal contract is an agreement to pay a company or agency for goods or services. This is the money the government promised for contract work in the municipality in one fiscal year (October to September). It is money promised, not money spent. It can be negative when an earlier contract amount is cut.",
+   "es": "Un contrato federal es un acuerdo para pagarle a una empresa o agencia por bienes o servicios. Esta cifra es el dinero que el gobierno prometió para trabajo por contrato en el municipio en un año fiscal (de octubre a septiembre). Es dinero prometido, no gastado. Puede ser negativa cuando se reduce el monto de un contrato anterior."
+  },
+  "economy.fed_grants": {
+   "en": "Federal grants, which give money for a public purpose instead of buying goods or services, recorded for places in the municipality in a fiscal year. They are money promised, not money spent. In the 2026-10 snapshot, San Juan holds most of the grant dollars that name a municipality, and in some years more than half of the island's grant dollars name no municipality.",
+   "es": "Subvenciones federales, que dan dinero para un fin público en vez de comprar bienes o servicios, registradas para lugares del municipio en un año fiscal. Son dinero prometido, no gastado. En el corte de datos de 2026-10, San Juan tiene la mayor parte de los dólares de subvenciones que nombran un municipio, y en algunos años más de la mitad de los dólares de subvenciones de la isla no nombran ningún municipio."
+  },
+  "economy.fed_direct_payments": {
+   "en": "Money the federal government committed to pay straight to recipients, for example through benefit programs rather than a grant or a loan, recorded for places in the municipality in a fiscal year. It is money promised, not money spent. In the 2026-10 snapshot it is the largest of the five groups in 17 of the 18 years.",
+   "es": "Dinero que el gobierno federal se comprometió a pagar directamente a quienes lo reciben, por ejemplo mediante programas de beneficios y no mediante una subvención o un préstamo, registrado para lugares del municipio en un año fiscal. Es dinero prometido, no gastado. En el corte de datos de 2026-10 es el mayor de los cinco grupos en 17 de los 18 años."
+  },
+  "economy.fed_loans": {
+   "en": "This is what the federal government expects its loans and loan guarantees to cost, for loans recorded in a municipality in one fiscal year (October to September). A loan guarantee is a promise to repay a lender if a borrower does not pay. The value is not the amount lent. It can be negative: in the 2026-10 snapshot the Puerto Rico value is negative in four of the 18 years.",
+   "es": "Lo que el gobierno federal espera que le cuesten sus préstamos y garantías de préstamo, para los préstamos registrados en un municipio en un año fiscal (de octubre a septiembre). Una garantía de préstamo es la promesa de pagarle a un prestamista si quien tomó el préstamo no paga. El valor no es la cantidad prestada. Puede ser negativo: en el corte de datos de 2026-10, el valor de Puerto Rico es negativo en cuatro de los 18 años."
+  },
+  "economy.fed_other": {
+   "en": "Federal insurance and other aid that is not a contract, grant, direct payment or loan, recorded for places in the municipality in a fiscal year. In the 2026-10 snapshot, Adjuntas holds about 90% to 94% of this group's dollars from FY2009 to FY2013, and the data do not say why.",
+   "es": "Seguros federales y otras ayudas que no son contratos, subvenciones, pagos directos ni préstamos, registrados para lugares del municipio en un año fiscal. En el corte de datos de 2026-10, Adjuntas tiene entre el 90% y el 94% de los dólares de este grupo en los años fiscales 2009-2013, y los datos no dicen por qué."
+  },
+  "economy.fed_place_of_performance": {
+   "en": "USAspending records each award where the awarding agency says the work is done or the benefit goes. Awards for the whole island are often recorded in San Juan, so San Juan's figures can include money meant for other places and other municipalities' figures can be low. The Puerto Rico figure is the territory total, which also counts awards that name no municipality.",
+   "es": "USAspending registra cada adjudicación donde la agencia que la otorga dice que se hace el trabajo o llega el beneficio. Las adjudicaciones para toda la isla a menudo se registran en San Juan, así que las cifras de San Juan pueden incluir dinero destinado a otros lugares y las de otros municipios pueden quedar bajas. La cifra de Puerto Rico es el total del territorio, que también cuenta las adjudicaciones que no nombran un municipio."
+  },
+  "economy.fema_pa_obligated": {
+   "en": "After a disaster, the Federal Emergency Management Agency (FEMA) approves money to clear debris and repair public buildings, roads and utilities. This is the federal share of that money, by municipality and by the year the disaster was declared. It is money approved. It does not show damage, need, finished repairs or spending. In the 2026-10 snapshot, 11% to 88% of each year's money is recorded as statewide. No municipality is named for that money.",
+   "es": "Después de un desastre, FEMA (Agencia Federal para el Manejo de Emergencias) aprueba dinero para remover escombros y reparar edificios públicos, carreteras y servicios públicos. Esta es la parte federal de ese dinero, por municipio y por el año en que se declaró el desastre. Es dinero aprobado. No muestra daños, necesidad, reparaciones terminadas ni gastos. En el corte de datos de 2026-10, entre el 11% y el 88% del dinero de cada año está registrado como estatal. Ese dinero no tiene un municipio asignado."
+  },
+  "economy.fema_pa_statewide_share": {
+   "en": "Out of every 100 dollars of Federal Emergency Management Agency (FEMA) Public Assistance federal share for a year's disasters, how many are recorded as statewide and so cannot be placed in a municipality. In the 2026-10 snapshot it ranges from 11.0% to 88.3%, and is 80.9% for 2017.",
+   "es": "De cada 100 dólares de la parte federal de la Asistencia Pública de FEMA (Agencia Federal para el Manejo de Emergencias) para los desastres de un año, cuántos están registrados como estatales y por eso no se pueden ubicar en un municipio. En el corte de datos de 2026-10 va de 11.0% a 88.3%, y es 80.9% para 2017."
+  },
+  "housing.fema_ia_households": {
+   "en": "The number of households FEMA (the Federal Emergency Management Agency) approved for help after disasters declared in a given year, by municipality. It counts approvals, not damage. It does not show how many homes were hurt or how much help people needed.",
+   "es": "El número de hogares que FEMA (Agencia Federal para el Manejo de Emergencias) aprobó para recibir ayuda después de los desastres declarados en un año dado, por municipio. Cuenta aprobaciones, no daños. No muestra cuántas viviendas sufrieron daños ni cuánta ayuda necesitaba la gente."
+  },
+  "housing.fema_ia_amount": {
+   "en": "The dollars the Federal Emergency Management Agency (FEMA) approved for households after disasters declared in a given year, by municipality. It shows aid approved, not damage and not necessarily money paid out.",
+   "es": "Los dólares que FEMA (Agencia Federal para el Manejo de Emergencias) aprobó para hogares después de los desastres declarados en un año dado, por municipio. Muestra la ayuda aprobada, no los daños, y no necesariamente el dinero pagado."
+  }
+ },
+ "released": [
+  {
+   "by": "Francis Pérez, project lead",
+   "date": "2026-10-17",
+   "reason": "Public housing locations from HUD's open data: where public housing is, not grant money.",
+   "spanish": {
+    "labels_facilities": [
+     "Public housing developments (HUD)",
+     "Public housing units (HUD)"
+    ],
+    "facilities": [
+     "HUD, Public Housing Developments (date of coverage {date})",
+     "Public housing: HUD",
+     "Public housing developments in HUD's list, each at the building with the most units. HUD says to map only the developments it could place at the building or the ZIP+4 area; the others are counted in their municipio (a dataset in Explore) but not drawn. The pop-up gives the name, type, municipio and source."
+    ]
+   },
+   "titles": [
+    "public_housing"
+   ],
+   "dictionary_plain": [
+    "facilities.ph_devs",
+    "facilities.ph_units"
+   ]
+  },
+  {
+   "by": "Francis Pérez, project lead",
+   "date": "2026-10-17",
+   "reason": "HUD CHAS severe housing problems: housing conditions data, not grant money.",
+   "spanish": {
+    "labels_conditions": [
+     "Households with one or more severe housing problems (HUD CHAS)",
+     "Households with one or more severe housing problems (HUD CHAS, %)"
+    ]
+   },
+   "titles": [
+    "conditions_series",
+    "conditions_barrio"
+   ],
+   "dictionary_plain": [
+    "conditions.chas_severe_hh",
+    "conditions.chas_severe_pct"
+   ]
+  },
+  {
+   "by": "Francis Pérez, project lead",
+   "date": "2026-10-19",
+   "reason": "WCRP page approved for publication (the page and its data, the dictionary entries, the catalog, the Economy tab's WCRP group and the WCRP Spanish); the \"In review\" marker stays on the page and its tab (HANDOFF decision 51). Table 10, the Public money headline and the federal money and FEMA summaries stay held.",
+   "spanish": {
+    "common": [
+     "WCRP community",
+     "WCRP region: {region}",
+     "Foundation for Puerto Rico, Whole Community Resilience Planning (WCRP) program, list of 2026-10-06",
+     "Plan approved by the Puerto Rico Department of Housing",
+     "Plan in progress",
+     "Led by {name}",
+     "This plan serves a population group, not an area. The point marks where the plan works",
+     "Point inside the Comunidad Especial (Junta de Planificación, 2006)",
+     "Point at the OpenStreetMap place or landmark",
+     "Point inside the Census barrio",
+     "Point at the town centre",
+     "Point at coordinates the plan gives",
+     "The plan's own boundary is in its PDF map."
+    ],
+    "map": [
+     "WCRP communities",
+     "The communities in FPR's Whole Community Resilience Planning program, with the state of each plan (approved by the Puerto Rico Department of Housing, or in progress) and the organisation that leads it. The plans draw their area only in a PDF map, so each community is one approximate point: the popup says where the point comes from. The marker is the centre figure of the WCRP logo: solid orange for an approved plan, an orange outline for a plan in progress.",
+     "WCRP communities: Foundation for Puerto Rico",
+     "Switch map layers on and off: tourism places by category, FEMA flood zones, sea level rise, transit routes and stops, protected areas, land use, Comunidades Especiales, WCRP communities, municipality and barrio boundaries. Shade municipalities by any of the listed measures.",
+     "FPR resilience plans"
+    ],
+    "threed": [
+     "WCRP communities",
+     "The communities in FPR's Whole Community Resilience Planning program, with the state of each plan (approved by the Puerto Rico Department of Housing, or in progress) and the organisation that leads it. The plans draw their area only in a PDF map, so each community is one approximate point: the popup says where the point comes from. The marker is the centre figure of the WCRP logo: solid orange for an approved plan, an orange outline for a plan in progress.",
+     "FPR resilience plans"
+    ],
+    "wcrp": [
+     "Knowledge Area · WCRP: vulnerability by barrio",
+     "Knowledge Area · WCRP",
+     "Whole Community Resilience Planning · vulnerability by barrio",
+     "About WCRP",
+     "Social Capital map",
+     "The Social Capital map could not be loaded. Check your connection, then scroll away and back to try again.",
+     "<b>In review:</b> the content of this page is under review and may change.",
+     "Knowledge Area · Program tools",
+     "Whole Community Resilience Planning (WCRP)",
+     "The program description is Foundation for Puerto Rico's. The communities are the 79 points of the observatory's WCRP layer (FPR program list, 2026-10-06); each point is approximate, because the plans map their area only in a PDF.",
+     "The Risk and Vulnerability Indicators (RVI) rank Puerto Rico's barrios in six areas (economy, education, environment, health, housing and infrastructure) and overall. Each rank is a fifth of the barrios: 1 is the fifth that is least vulnerable on the inputs used, 5 the fifth that is most. Choose an area and a version; click a barrio for its ranks in both versions and the inputs behind them.",
+     "WCRP communities",
+     "<b>Overall.</b> The six area percentiles are added with equal weights and the sum is ranked again.",
+     "<b>Ranks.</b> The index is cut in fifths: 1 (0 to 0.20, low), 2 (medium-low), 3 (medium), 4 (medium-high), 5 (above 0.80, high). Barrios with no residents have no value (14 in the original).",
+     "A rank compares barrios with each other on the inputs used. It is not a measure of need, risk of harm or eligibility for any program.",
+     "Survey estimates for barrios are rough. Many barrios have few households in the sample, so a barrio near the edge of a fifth can move a rank from one survey period to the next. Read ranks for groups of barrios, not for one barrio alone.",
+     "3 · Social Capital map",
+     "<b>WCRP communities.</b> Foundation for Puerto Rico, Whole Community Resilience Planning program, list of communities of 2026-10-06 (the observatory's WCRP layer).",
+     "<b>Base map.</b> © OpenStreetMap contributors (ODbL). Barrio outlines: US Census Bureau, TIGERweb county subdivisions.",
+     "<b>How to cite this page.</b> Foundation for Puerto Rico, <i>Knowledge Area: Whole Community Resilience Planning, vulnerability by barrio</i>, PR Data Observatory, <span class=\"snap\"></span>, https://observatory.foundationpr.org/wcrp.html. Original index: Hunter College for Foundation for Puerto Rico, Risk and Vulnerability Indicators (2022).",
+     "Every dataset on this page has an entry in the <a href=\"dictionary.html#wcrp.rvi_overall_orig\">data dictionary</a>. The vulnerability ranks can also be put on the main map, with other data, from Explore (topic Communities, group \"Vulnerability (WCRP)\").",
+     "The overall index adds the six area percentiles. Choose an area to see its inputs.",
+     "Survey estimates for one barrio are rough: read them with care.",
+     "Source: WCRP Risk and Vulnerability Indicators (Hunter College for Foundation for Puerto Rico, 2022), as published; rebuild by the PR Data Observatory with the same method on ACS {window}. In review; the original states no license.",
+     "municipios with a WCRP community",
+     "plans approved by the Puerto Rico Department of Housing",
+     "barrios on the map ({orig} ranked in the original, {rebuild} in the rebuild)",
+     "Out of {n} barrios ranked in both versions, {changed}% have a different overall rank in the rebuild and {moved}% move two ranks or more. The table gives each area.",
+     "Applied to the original's own published inputs, the method as written here should give back the original's published index. It does for overall, education, health, housing and infrastructure: the order of the barrios is the same (rank correlation 1.00) and almost every barrio keeps its rank. It does not for economy and environment, whose published inputs do not give back their published index; the white paper does not explain the difference. Housing matches when its three inputs are added together, not as the two sub-indicators the white paper describes.",
+     "<b>Mislabelled comparison columns.</b> The dashboard compares each barrio with its municipio and with Puerto Rico. In the economy panel the municipio column shows unemployment under the label \"public assistance\", public assistance under \"poverty\" and poverty under \"unemployed\", and the Puerto Rico column shows {pa}% (public assistance) as poverty, which is {pov}%. The housing panel's municipio column is shifted too. The barrio values are labelled correctly. This page shows only barrio values.",
+     "<b>Lead-paint shares above 100%.</b> The municipio values of the lead-paint indicator (homes built before 1960) run from {lo}% to {hi}%; {n} municipio values are above 100%, which is impossible for a share. The barrio values used in the index are all at or below 100%.",
+     "<b>Homes built before 1990.</b> The share reaches {max}% in {n} barrios of the original.",
+     "<b>No license.</b> The ArcGIS services that publish the original state no license or access terms (their license and access fields are empty). The observatory shows the values as published, credits Hunter College and FPR, and records the license as unstated until the Puerto Rico Department of Housing confirms the terms.",
+     "<b>Original.</b> Hunter College for Foundation for Puerto Rico, Risk and Vulnerability Indicators (RVI) dashboard, WCRP program: services All_Indicator and Master_Data_Table_Update of the PlanningCDBG account on ArcGIS Online, data last edited {edited}, read on {read}. License: none stated. <a href=\"{url}\" target=\"_blank\" rel=\"noopener\">Service</a>.",
+     "<b>Rebuild.</b> US Census Bureau, American Community Survey 5-year estimates {window} (tables B01003, B15002, B17001, B18101, B19057, B23025, B25002, B25034, B25044, B27010, B28002, B28003, B14003), barrio rows; method of the RVI white paper (Hunter College, 2021), applied by the PR Data Observatory (wcrp_rvi.py).",
+     "Severe housing problems, HUD CHAS definition (%)",
+     "Per capita income ($; shown in the table, not an input of the index per the white paper)",
+     "Community assets of the Comunidades Especiales, by municipio",
+     "The WCRP Social Capital Mapping list records, for each Comunidad Especial, whether it has a community center, a library, an electronic library, a passive park, a sports court, a residents' association, a recreation association, a crime-prevention association and a PDI. The list does not state its date; it was compiled for the program about 2019–2021 from the Junta de Planificación inventory, and no newer source exists. \"PDI\" is the list's own column name and is not defined there. Click a Comunidad Especial on the map for its own flags.",
+     "No road leads from this barrio to a general hospital: its health rank uses the other two inputs.",
+     "Four things move the ranks. First, the method does not give back the original's economy and environment indices from their own inputs, and the rebuild leaves out one input (next section): ranking the original's own 2015–2019 values with the rebuild's inputs changes {fewer}% of overall ranks, almost all through economy and environment. Second, several inputs now come from newer sources that define them differently. Third, five years passed. Fourth, survey estimates for barrios are rough: the rebuild run on two survey periods that share two years ({older} and {w}), with the same values for the inputs that are not from the survey, gives a different overall rank to {older_pct}% of barrios. A rank correlation of 1 means the same order; 0 means no relation.",
+     "The rebuild reads the inputs the observatory already holds for barrios (acs_barrio.json) and five more tables of the same survey period (public assistance, year built, computers, broadband and school enrollment). The environment, hospital, severe housing problems and street inputs come from the observatory's local conditions (conditions_barrio.json), each in its own source's latest vintage. The original does not say which survey cells it used for each input, so the two versions can define an input slightly differently (for example, the original counts {orig_nc}% of households in the average barrio without a computer, the rebuild {reb_nc}%).",
+     "Barrios ranked with an input missing in the rebuild: {list}.",
+     "{n} barrios ranked in health have no drive time to a hospital, because no road leads from them to one ({munis}): their health rank uses disability and health insurance only, which leaves out how far they are from hospital care.",
+     "Barrios flagged: {reb} of {rr} in the rebuild, {orig} of {ro} in the original.",
+     "Barrios flagged: {reb} in the rebuild, {orig} in the original.",
+     "Facilities counted in the barrios: {reb} in the rebuild, {orig} in the original.",
+     "A possible explanation for economy, to confirm with Hunter College: the published economy index is much closer to one built from public assistance, poverty and per capita income, with higher income counted as more vulnerable and without unemployment (rank correlation {h} instead of {e}; {same}% of barrios keep their rank). If that is how it was computed, the published economy index counts income the wrong way round and leaves out unemployment. The rebuild keeps the method the white paper describes.",
+     "Local conditions by barrio (<a href=\"dictionary.html#conditions.epa_tri\">data dictionary</a>): US EPA Toxics Release Inventory (reporting year 2024), Facility Registry Service (Risk Management Plan facilities, Superfund sites), ATTAINS (2024 cycle), Green Book and Landfill Methane Outreach Program; US Department of Housing and Urban Development, CHAS 2016–2020 by census tract; US Census Bureau, TIGER/Line 2026; drive time to a general hospital (CMS list) along © OpenStreetMap roads (ODbL), estimated by the observatory.",
+     "No public source states terms: EPA lists municipal landfills only, and the only list of open dumps found (DRNA, 2014) states no license.",
+     "Hunter College built the RVI for Foundation for Puerto Rico's WCRP program and described it in a white paper (December 2021); the dashboard data were published in March 2022. The observatory rebuilds it with the same method on the latest five-year Census survey and on current EPA, housing, street and hospital data.",
+     "<b>Percentiles.</b> Each input becomes a percentile among the barrios that have a value: the share of those barrios with a lower value, from 0 to 1. A higher percentile always means more vulnerable (for example, more poverty or fewer homes with internet; for street intersections, fewer intersections).",
+     "<b>Areas.</b> Within an area, the percentiles of its inputs are added and the sum is ranked again among the barrios. Infrastructure first groups its inputs in two parts (telecommunications and transportation), each ranked, then adds the two. The white paper describes housing in two parts too, but the published housing index is the plain sum of its three inputs (see the check below), so the rebuild adds them. A barrio that lacks one input gets the sum of the inputs it has, scaled up to the full number: the white paper's rule for education, where 21 barrios with nobody aged 3 to 24 have their no-diploma percentile doubled.",
+     "The rebuild leaves out one input that has no current source (solid waste facilities other than landfills), and several inputs come from newer sources that define them differently. The table above says which.",
+     "Puerto Rico maps the assessment units of its rivers as the land that drains to each assessed reach, so a listed unit covers a watershed and far more barrios touch one than in the original, which does not say how it drew the waters. The input separates barrios less than the original's.",
+     "EPA's Landfill Methane Outreach Program lists municipal solid waste landfills only (open or closed), not open dumps; the original's landfill or open dump layer was supplied by FPR.",
+     "Only the facilities the Facility Registry Service marks active are counted, far fewer than the original counted; it does not say which it took.",
+     "Areas still in non-attainment in the EPA Green Book: San Juan and Guayama-Salinas for sulfur dioxide, Arecibo for lead.",
+     "CHAS is published for census tracts, not barrios: the barrio value is an estimate, the tract counts spread by 2020 housing units. 2016–2020 is the newest window a script may read.",
+     "Intersections where three or more street edges meet (TIGER/Line 2026; no highways, ramps or paths) over land area. The original counted TIGER 2020 roads in a way it does not describe, so only the order of the barrios compares, not the values.",
+     "WCRP helps communities in Puerto Rico design their own resilience plans: they set their vision, needs and goals, and plan, run and follow up the work to reach them. Foundation for Puerto Rico runs the program in collaboration with the Puerto Rico Department of Housing (PRDOH), with Community Development Block Grant – Disaster Recovery (CDBG-DR) funds from the U.S. Department of Housing and Urban Development (HUD), as part of the Action Plan that HUD approved.",
+     "The observatory's estimate along OpenStreetMap roads at free-flow speeds, from each barrio's population-weighted point to the nearest general hospital with an emergency department (CMS list); 0 where the barrio holds one. Vieques, Culebra and Isla de Mona have no road to a hospital and no value: their health rank uses the other two inputs.",
+     "Not an input of the index. The white paper's method has no age input; the original dashboard showed each barrio's age groups (under 17, over 65 and age bands, ACS 2015-2019) beside the index as its vulnerable population. The rebuild shows the same groups from the current survey; they change no rank.",
+     "Not an input of the index: the white paper keeps natural hazards such as flooding, landslides and earthquakes in separate layers. The landslide susceptibility map (USGS, Hughes and Schulz 2020) covers the main island only.",
+     "The observatory now has the residents' age groups by barrio and a current landslide susceptibility map. The white paper's method uses neither as an input, so the index and its ranks did not change. Both are shown as context: choose Overall and click a barrio to see them.",
+     "Hazards (floods, landslides, sea level rise) are not part of the index, as the white paper decided; the observatory's map shows them as separate layers, and a barrio's pop-up gives its landslide susceptibility beside its ranks.",
+     "The WCRP Social Capital Maps placed community assets on a map in six themes: health, education, security, Comunidades Especiales, community services and environment. This map shows the same themes with the observatory's current official layers, each with its own date. No contact details or private addresses are shown, and sensitive places are counted, not drawn.",
+     "Points: public libraries (USAC E-Rate) and historic places (National Park Service, National Register of Historic Places), fire and EMS stations (USGS), police stations and city halls (OpenStreetMap), public housing developments (HUD). Areas: Comunidades Especiales (Junta de Planificación, 2006) and protected areas (USGS PAD-US). Counted by municipio, never drawn: health facilities, substance use and mental health treatment facilities (SAMHSA), community water systems outside PRASA (EPA), and historic places that are private homes.",
+     "<b>Social Capital map.</b> HUD, Public Housing Developments; USGS, National Structures Dataset (fire and EMS stations); © OpenStreetMap contributors, ODbL (police stations and city halls); USAC, E-Rate Supplemental Entity Information (libraries); National Park Service, National Register of Historic Places; CMS Provider Data Catalog and HRSA Data Warehouse (health counts); SAMHSA, National Directories of mental health and substance use treatment facilities (N-SUMHSS 2024); US EPA, ECHO Safe Drinking Water Act data (water systems outside PRASA); USGS PAD-US (protected areas); Junta de Planificación, Comunidades Especiales (2006); US Census Bureau, Population Estimates. Community assets of the Comunidades Especiales: WCRP Social Capital Mapping tool (Puerto Rico Department of Housing and Foundation for Puerto Rico, CDBG-DR), date not stated.",
+     "<b>Context in the vulnerability pop-up.</b> US Census Bureau, American Community Survey 5-year estimates (age groups, table B01001); USGS, Hughes and Schulz (2020), map of susceptibility to landslides triggered by intense rainfall, Puerto Rico (Open-File Report 2020-1022), read by the observatory (landslide.py)."
+    ],
+    "labels_wcrp": [
+     "WCRP vulnerability, overall: original 2022 (ACS 2015–2019)",
+     "Vulnerability (WCRP) · Original 2022 (ACS 2015–2019)",
+     "Ranked among barrios only: shown by barrio",
+     "WCRP vulnerability, economy: original 2022 (ACS 2015–2019)",
+     "WCRP vulnerability, education: original 2022 (ACS 2015–2019)",
+     "WCRP vulnerability, environment: original 2022 (ACS 2015–2019)",
+     "WCRP vulnerability, health: original 2022 (ACS 2015–2019)",
+     "WCRP vulnerability, housing: original 2022 (ACS 2015–2019)",
+     "WCRP vulnerability, infrastructure: original 2022 (ACS 2015–2019)",
+     "WCRP vulnerability, overall: rebuild (ACS 2020–2024)",
+     "Vulnerability (WCRP) · Rebuild (ACS 2020–2024)",
+     "WCRP vulnerability, economy: rebuild (ACS 2020–2024)",
+     "WCRP vulnerability, education: rebuild (ACS 2020–2024)",
+     "WCRP vulnerability, environment: rebuild (ACS 2020–2024)",
+     "WCRP vulnerability, health: rebuild (ACS 2020–2024)",
+     "WCRP vulnerability, housing: rebuild (ACS 2020–2024)",
+     "WCRP vulnerability, infrastructure: rebuild (ACS 2020–2024)"
+    ],
+    "econ_level": [
+     "WCRP Risk and Vulnerability Indicators: each rank is a fifth of the barrios, 5 the most vulnerable. A rank compares barrios with each other; it is not a measure of need."
+    ],
+    "wcrp_social": [
+     "WCRP communities",
+     "Community center",
+     "Library",
+     "Electronic library",
+     "Passive park",
+     "Sports court",
+     "Residents' association",
+     "Recreation association",
+     "Crime-prevention association",
+     "with an approved plan",
+     "Not found in the WCRP Social Capital Mapping list.",
+     "Community assets in the WCRP Social Capital Mapping list (date not stated, about 2019–2021)",
+     "Comunidades Especiales of {name} in the WCRP Social Capital Mapping list: {n}",
+     "{rows} communities in the list; {matched} matched to a polygon of the Junta's 2006 delimitation ({exact} by the same name, {barrio} by name and barrio, {close} by a close name in the same barrio); {polys} of its {all} polygons have flags.",
+     "Comunidades Especiales in the WCRP list",
+     "Sources: HUD, USGS, OpenStreetMap contributors (ODbL), USAC, NPS, CMS, HRSA, SAMHSA, EPA ECHO, USGS PAD-US, Junta de Planificación (2006), Census Bureau; community assets: WCRP Social Capital Mapping list (PRDOH and FPR, date not stated, about 2019–2021). In review."
+    ]
+   },
+   "titles": [
+    "wcrp",
+    "wcrp_rvi_barrio",
+    "wcrp_rvi_inputs",
+    "wcrp_social"
+   ],
+   "dictionary_plain": [
+    "boundaries.wcrp_comunidades",
+    "boundaries.wcrp_estado",
+    "boundaries.wcrp_subrecipiente",
+    "boundaries.wcrp_ubicacion",
+    "wcrp.rvi_overall_orig",
+    "wcrp.rvi_overall_rebuild",
+    "wcrp.rvi_econ_orig",
+    "wcrp.rvi_econ_rebuild",
+    "wcrp.rvi_edu_orig",
+    "wcrp.rvi_edu_rebuild",
+    "wcrp.rvi_envir_orig",
+    "wcrp.rvi_envir_rebuild",
+    "wcrp.rvi_health_orig",
+    "wcrp.rvi_health_rebuild",
+    "wcrp.rvi_housing_orig",
+    "wcrp.rvi_housing_rebuild",
+    "wcrp.rvi_infra_orig",
+    "wcrp.rvi_infra_rebuild",
+    "wcrp.rvi_inputs_orig",
+    "wcrp.rvi_inputs_rebuild",
+    "methods.wcrp_rvi",
+    "wcrp.ce_assets",
+    "wcrp.social_counts",
+    "wcrp.rvi_age_context",
+    "layers.knowledge_area"
+   ]
+  },
+  {
+   "by": "Francis Pérez, project lead",
+   "date": "2026-10-19",
+   "reason": "Plain-language rework of the WCRP page approved for publication the same day (decision 51): the Social Capital map first, one legend for levels 1 to 5, the explanations collapsible, the comparison of the two versions in its own section; and the second version renamed \"Updated 2020–2024\" (\"Actualizado 2020–2024\") wherever a reader sees it (Francis, 2026-10-19). The new and reworded Spanish of the page, of its vulnerability map (scope wcrp_vuln: the module's strings, most moved from wcrp), of the Social Capital summary and of the map's WCRP labels, the two dataset titles and the summaries that named the version are released with the page. The \"In review\" marker stays. Review of PR #69: \"level\" for \"rank\" where it means the 1 to 5 level (pop-up, CSV, comparison, method, sources, dictionary), and Spanish wording fixes; the re-keyed strings keep their Spanish.",
+   "spanish": {
+    "wcrp": [
+     "Medium-high",
+     "Medium-low",
+     "A level compares barrios with each other on the inputs used. It is not a measure of need, risk of harm or eligibility for any program.",
+     "Survey estimates for barrios are rough. Many barrios have few households in the sample, so a barrio near the edge of a fifth can move a level from one survey period to the next. Read levels for groups of barrios, not for one barrio alone.",
+     "Hazards (floods, landslides, sea level rise) are not part of the index, as the white paper decided; the observatory's map shows them as separate layers, and a barrio's pop-up gives its landslide susceptibility beside its levels.",
+     "Vulnerability levels of the municipio's barrios, scrollable",
+     "Map of barrios shaded by their vulnerability level",
+     "<b>Levels.</b> The index is cut in fifths: 1 (0 to 0.20, low), 2 (medium-low), 3 (medium), 4 (medium-high), 5 (above 0.80, high). Barrios with no residents have no value (14 in the original).",
+     "Updated",
+     "Updated {window}",
+     "<b>Areas.</b> Within an area, the percentiles of its inputs are added and the sum is ranked again among the barrios. Infrastructure first groups its inputs in two parts (telecommunications and transportation), each ranked, then adds the two. The white paper describes housing in two parts too, but the published housing index is the plain sum of its three inputs (see the check below), so the updated version adds them. A barrio that lacks one input gets the sum of the inputs it has, scaled up to the full number: the white paper's rule for education, where 21 barrios with nobody aged 3 to 24 have their no-diploma percentile doubled.",
+     "Not an input of the index. The white paper's method has no age input; the original dashboard showed each barrio's age groups (under 17, over 65 and age bands, ACS 2015-2019) beside the index as its vulnerable population. The updated version shows the same groups from the current survey; they change no level.",
+     "Hunter College built the Risk and Vulnerability Indicators (RVI) for Foundation for Puerto Rico's WCRP program and described them in a white paper (December 2021); the dashboard data were published in March 2022. The observatory updates them with the same method on the latest five-year Census survey and on current EPA, housing, street and hospital data.",
+     "The updated version leaves out one input that has no current source (solid waste facilities other than landfills), and several inputs come from newer sources that define them differently: see <a href=\"#method\">How the index is built</a>.",
+     "1 · Social Capital map",
+     "2 · Vulnerability map",
+     "The program description is Foundation for Puerto Rico's.",
+     "This map shows places that serve communities, such as libraries, fire and police stations, public housing and city halls: switch a theme on or off and click a point to see what it is.",
+     "About this map and its sources",
+     "The WCRP communities are the 76 points of the observatory's WCRP layer (FPR program list, 2026-10-06); each point is approximate, because the plans map their area only in a PDF.",
+     "Pick a municipio to see each asset type next to the vulnerability levels of its barrios. The municipio is the same as in the vulnerability map below.",
+     "Notes on these counts",
+     "About this list",
+     "The Risk and Vulnerability Indicators give each barrio a level from 1 (low) to 5 (high) by comparing it with the other barrios of Puerto Rico: choose an area and click a barrio to see what is behind its level.",
+     "The map shows how each barrio's level changes from the original 2022 index to the updated version.",
+     "What the levels mean",
+     "among the 20% least vulnerable barrios",
+     "among the 20% most vulnerable barrios",
+     "No residents or no data",
+     "The index compares each barrio with the other barrios in Puerto Rico, using Census and other official data. Level 5 means the barrio is in the fifth with the most disadvantages in the chosen area; level 1, in the fifth with the fewest. It does not measure any one person's need or decide who gets help. Use it to see patterns across groups of barrios.",
+     "More about the comparison between 2022 and the updated version",
+     "Show on the map the barrios whose level changes",
+     "barrios on the vulnerability map",
+     "The vulnerability map could not be loaded. Check your connection, then scroll away and back to try again.",
+     "Every dataset on this page has an entry in the <a href=\"dictionary.html#wcrp.rvi_overall_orig\">data dictionary</a>. The vulnerability levels can also be put on the main map, with other data, from Explore (topic Communities, group \"Vulnerability (WCRP)\").",
+     "The observatory's estimate along OpenStreetMap roads at free-flow speeds, from each barrio's population-weighted point to the nearest general hospital with an emergency department (CMS list); 0 where the barrio holds one. Vieques, Culebra and Isla de Mona have no road to a hospital and no value: their health level uses the other two inputs.",
+     "The observatory now has the residents' age groups by barrio and a current landslide susceptibility map. The white paper's method uses neither as an input, so the index and its levels did not change. Both are shown as context: choose Overall and click a barrio to see them.",
+     "Read with care",
+     "<b>Overall.</b> The six area percentiles are added with equal weights and the sum is ranked again.",
+     "Updated 2020–2024"
+    ],
+    "wcrp_vuln": [
+     "<b>Homes built before 1990.</b> The share reaches {max}% in {n} barrios of the original.",
+     "<b>Lead-paint shares above 100%.</b> The municipio values of the lead-paint indicator (homes built before 1960) run from {lo}% to {hi}%; {n} municipio values are above 100%, which is impossible for a share. The barrio values used in the index are all at or below 100%.",
+     "<b>Mislabelled comparison columns.</b> The dashboard compares each barrio with its municipio and with Puerto Rico. In the economy panel the municipio column shows unemployment under the label \"public assistance\", public assistance under \"poverty\" and poverty under \"unemployed\", and the Puerto Rico column shows {pa}% (public assistance) as poverty, which is {pov}%. The housing panel's municipio column is shifted too. The barrio values are labelled correctly. This page shows only barrio values.",
+     "<b>No license.</b> The ArcGIS services that publish the original state no license or access terms (their license and access fields are empty). The observatory shows the values as published, credits Hunter College and FPR, and records the license as unstated until the Puerto Rico Department of Housing confirms the terms.",
+     "<b>Original.</b> Hunter College for Foundation for Puerto Rico, Risk and Vulnerability Indicators (RVI) dashboard, WCRP program: services All_Indicator and Master_Data_Table_Update of the PlanningCDBG account on ArcGIS Online, data last edited {edited}, read on {read}. License: none stated. <a href=\"{url}\" target=\"_blank\" rel=\"noopener\">Service</a>.",
+     "Applied to the original's own published inputs, the method as written here should give back the original's published index. It does for overall, education, health, housing and infrastructure: the order of the barrios is the same (rank correlation 1.00) and almost every barrio keeps its level. It does not for economy and environment, whose published inputs do not give back their published index; the white paper does not explain the difference. Housing matches when its three inputs are added together, not as the two sub-indicators the white paper describes.",
+     "Barrios with the same level",
+     "Loading the inputs…",
+     "Local conditions by barrio (<a href=\"dictionary.html#conditions.epa_tri\">data dictionary</a>): US EPA Toxics Release Inventory (reporting year 2024), Facility Registry Service (Risk Management Plan facilities, Superfund sites), ATTAINS (2024 cycle), Green Book and Landfill Methane Outreach Program; US Department of Housing and Urban Development, CHAS 2016–2020 by census tract; US Census Bureau, TIGER/Line 2026; drive time to a general hospital (CMS list) along © OpenStreetMap roads (ODbL), estimated by the observatory.",
+     "Moves 2+ levels",
+     "Municipality",
+     "No data",
+     "None",
+     "Original 2022 (ACS 2015–2019 and others)",
+     "Original 2022 (ACS 2015–2019)",
+     "Original inputs (ACS 2015–2019 and others)",
+     "Level changes",
+     "Rank correlation",
+     "Rank correlation with the published index",
+     "Residents",
+     "Residents (survey estimate)",
+     "Survey estimates for one barrio are rough: read them with care.",
+     "The inputs could not be loaded. Check your connection and click the barrio again.",
+     "The overall index adds the six area percentiles. Choose an area to see its inputs.",
+     "Two survey periods: level changes",
+     "as two sub-indicators",
+     "housing problems",
+     "index (0-100)",
+     "neighbourhood quality",
+     "level (1-5)",
+     "{n} barrios with a health level have no drive time to a hospital, because no road leads from them to one ({munis}): their health level uses disability and health insurance only, which leaves out how far they are from hospital care.",
+     "{n} in {area}",
+     "The landslide susceptibility could not be loaded.",
+     "not mapped (main island only)",
+     "Beside the index, not inputs",
+     "Age groups: survey estimates for {window} with their margins of error. Landslides: USGS susceptibility map, 2020. Neither changes a level.",
+     "Age groups",
+     "Landslide susceptibility",
+     "Level {rank} ({name}) · index {value} of 100",
+     "Level 1 is low, 5 is high vulnerability",
+     "No road leads from this barrio to a general hospital: its health level uses the other two inputs.",
+     "2 or more levels lower",
+     "1 level lower",
+     "Same level",
+     "1 level higher",
+     "2 or more levels higher",
+     "Level {from} in the original 2022, {to} in the updated version",
+     "Updated {window} (ACS and current sources)",
+     "Inputs of the updated version (ACS {window} and current sources)",
+     "Left out of the updated version, and why",
+     "Original values, updated inputs: level changes",
+     "Barrios flagged: {reb} in the updated version, {orig} in the original.",
+     "Barrios flagged: {reb} of {rr} in the updated version, {orig} of {ro} in the original.",
+     "Facilities counted in the barrios: {reb} in the updated version, {orig} in the original.",
+     "Barrios ranked with an input missing in the updated version: {list}.",
+     "Out of {n} barrios with a level in both versions, {changed}% have a different overall level in the updated version and {moved}% move two levels or more. The table gives each area.",
+     "Four things move the levels. First, the method does not give back the original's economy and environment indices from their own inputs, and the updated version leaves out one input (see How the index is built): ranking the original's own 2015–2019 values with the updated version's inputs changes {fewer}% of overall levels, almost all through economy and environment. Second, several inputs now come from newer sources that define them differently. Third, five years passed. Fourth, survey estimates for barrios are rough: the updated version run on two survey periods that share two years ({older} and {w}), with the same values for the inputs that are not from the survey, gives a different overall level to {older_pct}% of barrios. A rank correlation of 1 means the same order; 0 means no relation.",
+     "A possible explanation for economy, to confirm with Hunter College: the published economy index is much closer to one built from public assistance, poverty and per capita income, with higher income counted as more vulnerable and without unemployment (rank correlation {h} instead of {e}; {same}% of barrios keep their level). If that is how it was computed, the published economy index counts income the wrong way round and leaves out unemployment. The updated version keeps the method the white paper describes.",
+     "The updated version reads the inputs the observatory already holds for barrios (acs_barrio.json) and five more tables of the same survey period (public assistance, year built, computers, broadband and school enrollment). The environment, hospital, severe housing problems and street inputs come from the observatory's local conditions (conditions_barrio.json), each in its own source's latest vintage. The original does not say which survey cells it used for each input, so the two versions can define an input slightly differently (for example, the original counts {orig_nc}% of households in the average barrio without a computer, the updated version {reb_nc}%).",
+     "<b>Updated {window}.</b> US Census Bureau, American Community Survey 5-year estimates {window} (tables B01003, B15002, B17001, B18101, B19057, B23025, B25002, B25034, B25044, B27010, B28002, B28003, B14003), barrio rows; method of the RVI white paper (Hunter College, 2021), applied by the PR Data Observatory (wcrp_rvi.py).",
+     "Source: WCRP Risk and Vulnerability Indicators (Hunter College for Foundation for Puerto Rico, 2022), as published; updated version by the PR Data Observatory with the same method on ACS {window}. In review; the original states no license.",
+     "No level in one of the two versions",
+     "How the level changes from 2022 to the updated version",
+     "Barrios of {name}. Levels compare them with every barrio of Puerto Rico.",
+     "{n} barrio",
+     "Combines the six areas with equal weight.",
+     "Looks at: {list}.",
+     "The updated version leaves out: {list}.",
+     "Original 2022: the index as published in 2022, with Census data from {window} and other official sources.",
+     "Updated {window}: the same method with {window} Census data and current official sources.",
+     "Change: each barrio's level in the updated version minus its level in the original 2022 index.",
+     "Back to Original 2022 and Updated {window}",
+     "public assistance",
+     "poverty",
+     "unemployment",
+     "young people (3 to 24) not in school",
+     "adults without a high school diploma",
+     "air pollution (sulfur dioxide or lead)",
+     "polluted water bodies",
+     "facilities that handle dangerous chemicals",
+     "landfills",
+     "other solid waste facilities",
+     "toxic waste sites (Superfund)",
+     "industries that report toxic releases",
+     "homes built before 1960 (lead paint)",
+     "disability",
+     "no health insurance",
+     "time to the nearest hospital",
+     "empty homes",
+     "homes built before 1990",
+     "severe housing problems",
+     "few street intersections",
+     "homes without a vehicle",
+     "homes without a computer",
+     "homes without internet",
+     "homes without broadband"
+    ],
+    "wcrp_social": [
+     "Level {rank}: {n} barrios",
+     "Levels 1 to 5: {list}",
+     "Vulnerability levels of the barrios of {name} (map 2)",
+     "{n} of {m} in levels 4–5"
+    ],
+    "labels_wcrp": [
+     "Vulnerability (WCRP) · Updated 2020–2024",
+     "WCRP vulnerability, economy: updated 2020–2024",
+     "WCRP vulnerability, education: updated 2020–2024",
+     "WCRP vulnerability, environment: updated 2020–2024",
+     "WCRP vulnerability, health: updated 2020–2024",
+     "WCRP vulnerability, housing: updated 2020–2024",
+     "WCRP vulnerability, infrastructure: updated 2020–2024",
+     "WCRP vulnerability, overall: updated 2020–2024"
+    ]
+   },
+   "titles": [
+    "wcrp_rvi_barrio",
+    "wcrp_rvi_inputs"
+   ],
+   "dictionary_plain": [
+    "wcrp.rvi_overall_rebuild",
+    "wcrp.rvi_econ_rebuild",
+    "wcrp.rvi_edu_rebuild",
+    "wcrp.rvi_envir_rebuild",
+    "wcrp.rvi_health_rebuild",
+    "wcrp.rvi_housing_rebuild",
+    "wcrp.rvi_infra_rebuild",
+    "wcrp.rvi_inputs_rebuild",
+    "wcrp.rvi_age_context"
+   ]
+  },
+  {
+   "by": "Francis Pérez, project lead",
+   "date": "2026-10-19",
+   "reason": "The WCRP licence reviews are cleared (HANDOFF decision 54): FPR's approval of the WCRP page of 2026-10-19 includes the licences, so FPR publishes the original index and the Social Capital Mapping list with the program's approval. The page's licence sentence no longer says the observatory waits for PRDOH; it says no open license is stated and that others should ask PRDOH and FPR before re-use. Its reworded Spanish is released under that approval. A native Spanish reader's check of the released WCRP Spanish is postponed (decision 15).",
+   "spanish": {
+    "wcrp_vuln": [
+     "<b>No license.</b> The ArcGIS services that publish the original state no license or access terms (their license and access fields are empty). The observatory shows the values as published and credits Hunter College and FPR. FPR publishes them with the program's approval. That is not an open license: to re-use them, ask the Puerto Rico Department of Housing and FPR."
+    ]
+   },
+   "titles": [],
+   "dictionary_plain": []
+  }
+ ]
+}

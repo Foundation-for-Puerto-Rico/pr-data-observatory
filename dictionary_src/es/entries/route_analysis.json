@@ -1,0 +1,202 @@
+{
+ "route_compare.file": {
+  "name": "Análisis de ruta: rutas de autobús comparadas (route_compare.json)",
+  "how_to_read": "Compare rutas con el mismo tipo de horario. Una ruta con horario completo (una hora en cada parada) se mide en su camino con hora; una ruta con solo horario de punto a punto (dos paradas con hora), en la línea del operador, por lo que su largo, su velocidad y sus cruces llevan un asterisco en la página.",
+  "_en": {
+   "name": "5e2d404f",
+   "how_to_read": "d975eddd"
+  }
+ },
+ "route_compare.operator": {
+  "name": "Sistema (identificador del operador)",
+  "_en": {
+   "name": "22f7051d"
+  }
+ },
+ "route_compare.operator_name": {
+  "name": "Nombre del sistema",
+  "_en": {
+   "name": "cc5da38f"
+  }
+ },
+ "route_compare.region": {
+  "name": "Región",
+  "_en": {
+   "name": "0f217179"
+  }
+ },
+ "route_compare.route": {
+  "name": "Ruta",
+  "_en": {
+   "name": "4999528e"
+  }
+ },
+ "route_compare.name": {
+  "name": "Nombre de la ruta",
+  "_en": {
+   "name": "4421bcfb"
+  }
+ },
+ "route_compare.timetable_expired": {
+  "name": "Horario vencido",
+  "_en": {
+   "name": "411004a9"
+  }
+ },
+ "route_compare.weekday_trips": {
+  "name": "Viajes en un día de semana",
+  "_en": {
+   "name": "6cec7433"
+  }
+ },
+ "route_compare.first": {
+  "name": "Primera salida",
+  "_en": {
+   "name": "a185bf4f"
+  }
+ },
+ "route_compare.last": {
+  "name": "Última salida",
+  "_en": {
+   "name": "76b89584"
+  }
+ },
+ "route_compare.peak_trips_one_direction": {
+  "name": "Viajes en la hora pico de la mañana, dirección con más viajes",
+  "_en": {
+   "name": "9716dd75"
+  }
+ },
+ "route_compare.peak_headway_min": {
+  "name": "Intervalo entre salidas en la hora pico de la mañana",
+  "how_to_read": "Quienes planifican el transporte suelen considerar que 15 minutos o menos es un servicio que la gente puede usar sin consultar el horario.",
+  "_en": {
+   "name": "4b57d72c",
+   "how_to_read": "3f11fd68"
+  }
+ },
+ "route_compare.length_km": {
+  "name": "Largo de la ruta",
+  "_en": {
+   "name": "98a47e6d"
+  }
+ },
+ "route_compare.speed_kmh": {
+  "name": "Velocidad programada",
+  "_en": {
+   "name": "a88161f8"
+  }
+ },
+ "route_compare.busy_junctions": {
+  "name": "Intersecciones de alto volumen en el camino",
+  "_en": {
+   "name": "df4e960b"
+  }
+ },
+ "route_compare.busy_per_10km": {
+  "name": "Intersecciones de alto volumen por cada 10 km",
+  "_en": {
+   "name": "64c5a36e"
+  }
+ },
+ "route_compare.busy_passes_6_9": {
+  "name": "Cruces por intersecciones de alto volumen en la hora pico de la mañana",
+  "how_to_read": "Es una medida de la exposición prevista a la congestión, no del atraso: los horarios no dicen cuánto espera una guagua en una intersección.",
+  "_en": {
+   "name": "5069b5e6",
+   "how_to_read": "45291a46"
+  }
+ },
+ "route_compare.busy_passes_16_19": {
+  "name": "Cruces por intersecciones de alto volumen en la hora pico de la tarde",
+  "_en": {
+   "name": "421cd33a"
+  }
+ },
+ "route_compare.passes_estimated": {
+  "name": "Cruces estimados",
+  "_en": {
+   "name": "1202243c"
+  }
+ },
+ "route_compare.timepoints_only": {
+  "name": "Solo horario de punto a punto (dos paradas con hora)",
+  "_en": {
+   "name": "5754ee5b"
+  }
+ },
+ "route_compare.express_two_stops": {
+  "name": "Expreso con dos paradas",
+  "_en": {
+   "name": "680ae116"
+  }
+ },
+ "route_compare.minutes_peak": {
+  "name": "Tiempo de viaje programado, hora pico de la mañana",
+  "_en": {
+   "name": "6b95e346"
+  }
+ },
+ "route_compare.minutes_midday": {
+  "name": "Tiempo de viaje programado, mediodía",
+  "_en": {
+   "name": "bad37621"
+  }
+ },
+ "route_compare.peak_extra_pct": {
+  "name": "Tiempo programado adicional en la hora pico de la mañana",
+  "how_to_read": "Cero significa que el operador no planifica tiempo adicional para la hora pico; no significa que no haya congestión.",
+  "_en": {
+   "name": "d87297bc",
+   "how_to_read": "4534f826"
+  }
+ },
+ "route_compare.reaches_tren_urbano": {
+  "name": "Llega al Tren Urbano",
+  "_en": {
+   "name": "6bb5ec4c"
+  }
+ },
+ "route_compare.other_operators": {
+  "name": "Otros sistemas cercanos",
+  "_en": {
+   "name": "8fe33427"
+  }
+ },
+ "route_compare.other_operator_names": {
+  "name": "Nombres de los otros sistemas cercanos",
+  "_en": {
+   "name": "97f32bbd"
+  }
+ },
+ "route_compare.stops": {
+  "name": "Paradas",
+  "_en": {
+   "name": "0e648419"
+  }
+ },
+ "route_compare.residents_400m": {
+  "name": "Residentes a 400 m de una parada",
+  "_en": {
+   "name": "003eb32a"
+  }
+ },
+ "route_compare.footbridges_30m": {
+  "name": "Puentes peatonales cerca del camino",
+  "_en": {
+   "name": "94c87c7b"
+  }
+ },
+ "route_compare.km_to_ati": {
+  "name": "Distancia a la red de la ATI",
+  "_en": {
+   "name": "b238dc8b"
+  }
+ },
+ "route_compare.feed_end": {
+  "name": "Fecha final del horario",
+  "_en": {
+   "name": "ce6af272"
+  }
+ }
+}

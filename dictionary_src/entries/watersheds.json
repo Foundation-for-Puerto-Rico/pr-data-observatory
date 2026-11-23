@@ -1,0 +1,95 @@
+[
+ {
+  "id": "water.watersheds_layer",
+  "name": "Watersheds and streams (USGS WBD and NHDPlus HR)",
+  "group": "Water: map layers",
+  "kind": "layer",
+  "domain": "environment",
+  "domains": [
+   "environment",
+   "hazards"
+  ],
+  "plain": "The subwatersheds of Puerto Rico, the areas whose rain drains to one stretch of river, with the main streams.",
+  "definition": "watersheds.geojson holds the 227 subwatersheds (HUC-12) of the USGS Watershed Boundary Dataset in Puerto Rico, drawn as dashed outlines, with their subbasin (HUC-8), area and 2020 residents; streams.geojson holds the 3,992 flowlines of NHDPlus High Resolution that drain 5 km² or more, drawn wider for larger rivers. A click on the map names the subwatershed there.",
+  "unit": "polygons and lines (longitude and latitude, WGS 84)",
+  "value_type": "geometry",
+  "geography": "Puerto Rico, Vieques, Culebra and Mona",
+  "coverage": {
+   "timeline": "snapshot",
+   "frequency": "Rebuilt with watersheds.py."
+  },
+  "method": "watersheds.py reads both from The National Map's ArcGIS services (subregion and VPU 2101), simplified to about 20 m. Residents are the 2020 census blocks whose point is inside each subwatershed, as the study areas count them; they add up to 3,285,324 of Puerto Rico's 3,285,874.",
+  "sources": [
+   "usgs_wbd",
+   "usgs_nhdplus_hr",
+   "census_tiger"
+  ],
+  "source_detail": "USGS WBD (wbd/MapServer layers 6 and 4) and NHDPlus HR (NHDPlus_HR/MapServer layer 3), read 2026-11-10.",
+  "how_to_read": "Each dashed outline is the land that drains to one stretch of river. The blue lines are the streams, wider for larger rivers. For the land that drains to any point, use What drains here in Tools › Analysis › Study areas.",
+  "caveats": [
+   "Outlines and lines are simplified to about 20 m.",
+   "Small streams (draining less than 5 km²) are not drawn, though What drains here uses them."
+  ],
+  "see_also": [
+   "water.what_drains_here"
+  ],
+  "where": {
+   "files": [
+    "watersheds.geojson:*",
+    "streams.geojson:*"
+   ],
+   "view": [
+    {
+     "label": "Map, Layers tab: Environment and climate, Watersheds and streams",
+     "href": "index.html#l=watersheds"
+    }
+   ]
+  },
+  "added": "2026-11-10"
+ },
+ {
+  "id": "water.what_drains_here",
+  "name": "What drains here (the land upstream of a point, NHDPlus HR)",
+  "group": "Water: map layers",
+  "kind": "layer",
+  "domain": "environment",
+  "domains": [
+   "environment",
+   "hazards"
+  ],
+  "plain": "A tool that traces the land whose rain flows to a point you pick, down the USGS stream network, and summarises it like any study area.",
+  "definition": "catchments.geojson holds the 13,809 catchments of NHDPlus High Resolution in Puerto Rico (8,860.4 km2), each linked to the next one downstream by its stream's hydrologic sequence, and each minor branch linked to the reaches it splits from. Picking a point finds the catchment under it and walks the links upstream in the browser; the catchments found become one study area.",
+  "unit": "polygons (longitude and latitude, WGS 84)",
+  "value_type": "geometry",
+  "geography": "Puerto Rico, Vieques, Culebra and Mona",
+  "coverage": {
+   "timeline": "snapshot",
+   "frequency": "Rebuilt with watersheds.py."
+  },
+  "method": "Checks at every build: 12,000 to 16,000 catchments and flowlines, the links valid and without a cycle, the catchments adding up to 8,500 to 10,500 km2, 200 to 260 subwatersheds, 99% of the residents in one, and the drainage area of the five largest rivers and of the largest minor branch within 3% of NHDPlus's own: Río Grande De Loiza 750 km2 (NHDPlus 750); Río Grande de Arecibo 655 km2 (NHDPlus 655); Río Grande de Manati 593 km2 (NHDPlus 593); Río Cocal 586 km2 (NHDPlus 586); Río de la Plata 568 km2 (NHDPlus 568); (no name) (minor branch) 544 km2 (NHDPlus 544).",
+  "sources": [
+   "usgs_nhdplus_hr"
+  ],
+  "source_detail": "USGS NHDPlus HR (NHDPlus_HR/MapServer layers 3 and 10), VPU 2101, read 2026-11-10.",
+  "how_to_read": "The area found is the land that drains to the stream next to the point, from the whole catchment the point is in. A point on a hillside gets its catchment and everything upstream of it.",
+  "caveats": [
+   "Water is routed down each river's main path, as NHDPlus does; canals and pipes that move water between basins are not followed.",
+   "Outlines are simplified to about 20 m, so the edge of the area is approximate."
+  ],
+  "see_also": [
+   "water.watersheds_layer"
+  ],
+  "where": {
+   "files": [
+    "catchments.geojson:*"
+   ],
+   "view": [
+    {
+     "label": "Map, Tools › Analysis › Area around a point › What drains here",
+     "href": "index.html"
+    }
+   ]
+  },
+  "added": "2026-11-10"
+ }
+]

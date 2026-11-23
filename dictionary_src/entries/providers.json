@@ -1,0 +1,424 @@
+[
+  {
+    "id": "providers.prov_primary_care",
+    "ask": {
+      "en": [
+        "primary care physicians",
+        "family doctors",
+        "general practitioners",
+        "doctors"
+      ],
+      "es": [
+        "medicos de atencion primaria",
+        "medicos de familia",
+        "medicos generalistas",
+        "medicos"
+      ]
+    },
+    "name": "Primary care physicians",
+    "domain": "health",
+    "domains": [
+      "health"
+    ],
+    "group": "Health care providers",
+    "kind": "variable",
+    "plain": "How many primary care physicians are registered with a practice address in each municipio.",
+    "definition": "Primary care physicians registered in NPPES with a practice location in the municipio (taxonomy codes 207Q, 208D, 207R00000X, 208000000X, 207V00000X). Counted at the primary practice location in the NPPES registry, by the provider's primary taxonomy code. A registry, not a head count: a provider who left, retired or works part-time may still be listed. To protect individuals, a municipio with 1 to 9 is shown empty; the island total is exact.",
+    "unit": "providers",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Monthly file; rebuilt by hand with python providers.py --refresh."
+    },
+    "method": "providers.py streams the NPPES monthly full file, keeps individual providers (entity type 1) with an active NPI and a Puerto Rico practice location, and counts them by their primary taxonomy code in the municipio of the practice location: the city when it is a municipio's name, else a known postal place, else the municipio holding most of the land of the ZIP code (the placement nonprofits.py uses; 99.9% placed). A municipio with 1 to 9 is not published.",
+    "sources": [
+      "cms_nppes",
+      "census_zcta_county"
+    ],
+    "source_detail": "CMS NPPES monthly full file (NPPES_November_2026_V2.zip): individual providers with an active NPI and a Puerto Rico practice location, by primary taxonomy, counted by municipio",
+    "how_to_read": "Puerto Rico: 7,296 registered; 3,302 of them updated their record in the last five years. The number practising is likely between the two. Most: San Juan (1,606), Bayamón (545), Ponce (523).",
+    "caveats": [
+      "A registry, not a head count: a provider who left Puerto Rico, retired or works part-time may still be listed; one person who practises in several municipios is counted once.",
+      "To protect individuals, a municipio with 1 to 9 is shown empty; 0 and 10 or more are shown, and the island total is exact.",
+      "14,018 of the 25,740 records counted were last updated more than five years ago."
+    ],
+    "see_also": [
+      "providers.prov_psychiatrists",
+      "providers.prov_other_physicians",
+      "providers.prov_dentists"
+    ],
+    "where": {
+      "files": [
+        "providers_series.json:prov_primary_care"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Health · Health care providers (NPPES registry)): Primary care physicians",
+          "href": "index.html#e=prov_primary_care.f"
+        }
+      ]
+    },
+    "added": "2026-11-18"
+  },
+  {
+    "id": "providers.prov_psychiatrists",
+    "ask": {
+      "en": [
+        "psychiatrists"
+      ],
+      "es": [
+        "psiquiatras"
+      ]
+    },
+    "name": "Psychiatrists",
+    "domain": "health",
+    "domains": [
+      "health"
+    ],
+    "group": "Health care providers",
+    "kind": "variable",
+    "plain": "How many psychiatrists are registered with a practice address in each municipio.",
+    "definition": "Psychiatrists registered in NPPES with a practice location in the municipio (taxonomy codes 2084P0800X, 2084P0804X, 2084P0805X, 2084P0802X). Counted at the primary practice location in the NPPES registry, by the provider's primary taxonomy code. A registry, not a head count: a provider who left, retired or works part-time may still be listed. To protect individuals, a municipio with 1 to 9 is shown empty; the island total is exact.",
+    "unit": "providers",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Monthly file; rebuilt by hand with python providers.py --refresh."
+    },
+    "method": "providers.py streams the NPPES monthly full file, keeps individual providers (entity type 1) with an active NPI and a Puerto Rico practice location, and counts them by their primary taxonomy code in the municipio of the practice location: the city when it is a municipio's name, else a known postal place, else the municipio holding most of the land of the ZIP code (the placement nonprofits.py uses; 99.9% placed). A municipio with 1 to 9 is not published.",
+    "sources": [
+      "cms_nppes",
+      "census_zcta_county"
+    ],
+    "source_detail": "CMS NPPES monthly full file (NPPES_November_2026_V2.zip): individual providers with an active NPI and a Puerto Rico practice location, by primary taxonomy, counted by municipio",
+    "how_to_read": "Puerto Rico: 507 registered; 193 of them updated their record in the last five years. The number practising is likely between the two. Most: San Juan (234), Caguas (37), Ponce (36).",
+    "caveats": [
+      "A registry, not a head count: a provider who left Puerto Rico, retired or works part-time may still be listed; one person who practises in several municipios is counted once.",
+      "To protect individuals, a municipio with 1 to 9 is shown empty; 0 and 10 or more are shown, and the island total is exact.",
+      "14,018 of the 25,740 records counted were last updated more than five years ago."
+    ],
+    "see_also": [
+      "providers.prov_primary_care",
+      "providers.prov_other_physicians",
+      "providers.prov_dentists"
+    ],
+    "where": {
+      "files": [
+        "providers_series.json:prov_psychiatrists"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Health · Health care providers (NPPES registry)): Psychiatrists",
+          "href": "index.html#e=prov_psychiatrists.f"
+        }
+      ]
+    },
+    "added": "2026-11-18"
+  },
+  {
+    "id": "providers.prov_other_physicians",
+    "ask": {
+      "en": [
+        "specialist physicians",
+        "medical specialists"
+      ],
+      "es": [
+        "medicos especialistas",
+        "especialistas"
+      ]
+    },
+    "name": "Other physicians (specialists)",
+    "domain": "health",
+    "domains": [
+      "health"
+    ],
+    "group": "Health care providers",
+    "kind": "variable",
+    "plain": "How many other physicians (specialists) are registered with a practice address in each municipio.",
+    "definition": "Other physicians (specialists) registered in NPPES with a practice location in the municipio (taxonomy codes 20). Counted at the primary practice location in the NPPES registry, by the provider's primary taxonomy code. A registry, not a head count: a provider who left, retired or works part-time may still be listed. To protect individuals, a municipio with 1 to 9 is shown empty; the island total is exact.",
+    "unit": "providers",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Monthly file; rebuilt by hand with python providers.py --refresh."
+    },
+    "method": "providers.py streams the NPPES monthly full file, keeps individual providers (entity type 1) with an active NPI and a Puerto Rico practice location, and counts them by their primary taxonomy code in the municipio of the practice location: the city when it is a municipio's name, else a known postal place, else the municipio holding most of the land of the ZIP code (the placement nonprofits.py uses; 99.9% placed). A municipio with 1 to 9 is not published.",
+    "sources": [
+      "cms_nppes",
+      "census_zcta_county"
+    ],
+    "source_detail": "CMS NPPES monthly full file (NPPES_November_2026_V2.zip): individual providers with an active NPI and a Puerto Rico practice location, by primary taxonomy, counted by municipio",
+    "how_to_read": "Puerto Rico: 4,572 registered; 1,911 of them updated their record in the last five years. The number practising is likely between the two. Most: San Juan (1,810), Bayamón (423), Ponce (394).",
+    "caveats": [
+      "A registry, not a head count: a provider who left Puerto Rico, retired or works part-time may still be listed; one person who practises in several municipios is counted once.",
+      "To protect individuals, a municipio with 1 to 9 is shown empty; 0 and 10 or more are shown, and the island total is exact.",
+      "14,018 of the 25,740 records counted were last updated more than five years ago."
+    ],
+    "see_also": [
+      "providers.prov_primary_care",
+      "providers.prov_psychiatrists",
+      "providers.prov_dentists"
+    ],
+    "where": {
+      "files": [
+        "providers_series.json:prov_other_physicians"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Health · Health care providers (NPPES registry)): Other physicians (specialists)",
+          "href": "index.html#e=prov_other_physicians.f"
+        }
+      ]
+    },
+    "added": "2026-11-18"
+  },
+  {
+    "id": "providers.prov_dentists",
+    "ask": {
+      "en": [
+        "dentists"
+      ],
+      "es": [
+        "dentistas"
+      ]
+    },
+    "name": "Dentists",
+    "domain": "health",
+    "domains": [
+      "health"
+    ],
+    "group": "Health care providers",
+    "kind": "variable",
+    "plain": "How many dentists are registered with a practice address in each municipio.",
+    "definition": "Dentists registered in NPPES with a practice location in the municipio (taxonomy codes 1223). Counted at the primary practice location in the NPPES registry, by the provider's primary taxonomy code. A registry, not a head count: a provider who left, retired or works part-time may still be listed. To protect individuals, a municipio with 1 to 9 is shown empty; the island total is exact.",
+    "unit": "providers",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Monthly file; rebuilt by hand with python providers.py --refresh."
+    },
+    "method": "providers.py streams the NPPES monthly full file, keeps individual providers (entity type 1) with an active NPI and a Puerto Rico practice location, and counts them by their primary taxonomy code in the municipio of the practice location: the city when it is a municipio's name, else a known postal place, else the municipio holding most of the land of the ZIP code (the placement nonprofits.py uses; 99.9% placed). A municipio with 1 to 9 is not published.",
+    "sources": [
+      "cms_nppes",
+      "census_zcta_county"
+    ],
+    "source_detail": "CMS NPPES monthly full file (NPPES_November_2026_V2.zip): individual providers with an active NPI and a Puerto Rico practice location, by primary taxonomy, counted by municipio",
+    "how_to_read": "Puerto Rico: 1,773 registered; 587 of them updated their record in the last five years. The number practising is likely between the two. Most: San Juan (456), Bayamón (149), Ponce (96).",
+    "caveats": [
+      "A registry, not a head count: a provider who left Puerto Rico, retired or works part-time may still be listed; one person who practises in several municipios is counted once.",
+      "To protect individuals, a municipio with 1 to 9 is shown empty; 0 and 10 or more are shown, and the island total is exact.",
+      "14,018 of the 25,740 records counted were last updated more than five years ago."
+    ],
+    "see_also": [
+      "providers.prov_primary_care",
+      "providers.prov_psychiatrists",
+      "providers.prov_other_physicians"
+    ],
+    "where": {
+      "files": [
+        "providers_series.json:prov_dentists"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Health · Health care providers (NPPES registry)): Dentists",
+          "href": "index.html#e=prov_dentists.f"
+        }
+      ]
+    },
+    "added": "2026-11-18"
+  },
+  {
+    "id": "providers.prov_np_pa",
+    "ask": {
+      "en": [
+        "nurse practitioners",
+        "physician assistants"
+      ],
+      "es": [
+        "enfermeros practicantes",
+        "asistentes medicos"
+      ]
+    },
+    "name": "Nurse practitioners and physician assistants",
+    "domain": "health",
+    "domains": [
+      "health"
+    ],
+    "group": "Health care providers",
+    "kind": "variable",
+    "plain": "How many nurse practitioners and physician assistants are registered with a practice address in each municipio.",
+    "definition": "Nurse practitioners and physician assistants registered in NPPES with a practice location in the municipio (taxonomy codes 363L, 363A). Counted at the primary practice location in the NPPES registry, by the provider's primary taxonomy code. A registry, not a head count: a provider who left, retired or works part-time may still be listed. To protect individuals, a municipio with 1 to 9 is shown empty; the island total is exact.",
+    "unit": "providers",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Monthly file; rebuilt by hand with python providers.py --refresh."
+    },
+    "method": "providers.py streams the NPPES monthly full file, keeps individual providers (entity type 1) with an active NPI and a Puerto Rico practice location, and counts them by their primary taxonomy code in the municipio of the practice location: the city when it is a municipio's name, else a known postal place, else the municipio holding most of the land of the ZIP code (the placement nonprofits.py uses; 99.9% placed). A municipio with 1 to 9 is not published.",
+    "sources": [
+      "cms_nppes",
+      "census_zcta_county"
+    ],
+    "source_detail": "CMS NPPES monthly full file (NPPES_November_2026_V2.zip): individual providers with an active NPI and a Puerto Rico practice location, by primary taxonomy, counted by municipio",
+    "how_to_read": "Puerto Rico: 591 registered; 494 of them updated their record in the last five years. The number practising is likely between the two. Most: San Juan (138), Caguas (42), Bayamón (41).",
+    "caveats": [
+      "A registry, not a head count: a provider who left Puerto Rico, retired or works part-time may still be listed; one person who practises in several municipios is counted once.",
+      "To protect individuals, a municipio with 1 to 9 is shown empty; 0 and 10 or more are shown, and the island total is exact.",
+      "14,018 of the 25,740 records counted were last updated more than five years ago."
+    ],
+    "see_also": [
+      "providers.prov_primary_care",
+      "providers.prov_psychiatrists",
+      "providers.prov_other_physicians"
+    ],
+    "where": {
+      "files": [
+        "providers_series.json:prov_np_pa"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Health · Health care providers (NPPES registry)): Nurse practitioners and physician assistants",
+          "href": "index.html#e=prov_np_pa.f"
+        }
+      ]
+    },
+    "added": "2026-11-18"
+  },
+  {
+    "id": "providers.prov_mental_other",
+    "ask": {
+      "en": [
+        "psychologists",
+        "counselors",
+        "social workers",
+        "mental health providers"
+      ],
+      "es": [
+        "psicologos",
+        "consejeros",
+        "trabajadores sociales",
+        "proveedores de salud mental"
+      ]
+    },
+    "name": "Psychologists, counselors and social workers",
+    "domain": "health",
+    "domains": [
+      "health"
+    ],
+    "group": "Health care providers",
+    "kind": "variable",
+    "plain": "How many psychologists, counselors and social workers are registered with a practice address in each municipio.",
+    "definition": "Psychologists, counselors and social workers registered in NPPES with a practice location in the municipio (taxonomy codes 103T, 101Y, 1041). Counted at the primary practice location in the NPPES registry, by the provider's primary taxonomy code. A registry, not a head count: a provider who left, retired or works part-time may still be listed. To protect individuals, a municipio with 1 to 9 is shown empty; the island total is exact.",
+    "unit": "providers",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Monthly file; rebuilt by hand with python providers.py --refresh."
+    },
+    "method": "providers.py streams the NPPES monthly full file, keeps individual providers (entity type 1) with an active NPI and a Puerto Rico practice location, and counts them by their primary taxonomy code in the municipio of the practice location: the city when it is a municipio's name, else a known postal place, else the municipio holding most of the land of the ZIP code (the placement nonprofits.py uses; 99.9% placed). A municipio with 1 to 9 is not published.",
+    "sources": [
+      "cms_nppes",
+      "census_zcta_county"
+    ],
+    "source_detail": "CMS NPPES monthly full file (NPPES_November_2026_V2.zip): individual providers with an active NPI and a Puerto Rico practice location, by primary taxonomy, counted by municipio",
+    "how_to_read": "Puerto Rico: 7,539 registered; 4,107 of them updated their record in the last five years. The number practising is likely between the two. Most: San Juan (1,634), Ponce (563), Bayamón (494).",
+    "caveats": [
+      "A registry, not a head count: a provider who left Puerto Rico, retired or works part-time may still be listed; one person who practises in several municipios is counted once.",
+      "To protect individuals, a municipio with 1 to 9 is shown empty; 0 and 10 or more are shown, and the island total is exact.",
+      "14,018 of the 25,740 records counted were last updated more than five years ago."
+    ],
+    "see_also": [
+      "providers.prov_primary_care",
+      "providers.prov_psychiatrists",
+      "providers.prov_other_physicians"
+    ],
+    "where": {
+      "files": [
+        "providers_series.json:prov_mental_other"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Health · Health care providers (NPPES registry)): Psychologists, counselors and social workers",
+          "href": "index.html#e=prov_mental_other.f"
+        }
+      ]
+    },
+    "added": "2026-11-18"
+  },
+  {
+    "id": "providers.prov_pharmacists",
+    "ask": {
+      "en": [
+        "pharmacists"
+      ],
+      "es": [
+        "farmaceuticos"
+      ]
+    },
+    "name": "Pharmacists",
+    "domain": "health",
+    "domains": [
+      "health"
+    ],
+    "group": "Health care providers",
+    "kind": "variable",
+    "plain": "How many pharmacists are registered with a practice address in each municipio.",
+    "definition": "Pharmacists registered in NPPES with a practice location in the municipio (taxonomy codes 1835). Counted at the primary practice location in the NPPES registry, by the provider's primary taxonomy code. A registry, not a head count: a provider who left, retired or works part-time may still be listed. To protect individuals, a municipio with 1 to 9 is shown empty; the island total is exact.",
+    "unit": "providers",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Monthly file; rebuilt by hand with python providers.py --refresh."
+    },
+    "method": "providers.py streams the NPPES monthly full file, keeps individual providers (entity type 1) with an active NPI and a Puerto Rico practice location, and counts them by their primary taxonomy code in the municipio of the practice location: the city when it is a municipio's name, else a known postal place, else the municipio holding most of the land of the ZIP code (the placement nonprofits.py uses; 99.9% placed). A municipio with 1 to 9 is not published.",
+    "sources": [
+      "cms_nppes",
+      "census_zcta_county"
+    ],
+    "source_detail": "CMS NPPES monthly full file (NPPES_November_2026_V2.zip): individual providers with an active NPI and a Puerto Rico practice location, by primary taxonomy, counted by municipio",
+    "how_to_read": "Puerto Rico: 3,462 registered; 1,128 of them updated their record in the last five years. The number practising is likely between the two. Most: San Juan (680), Bayamón (247), Ponce (178).",
+    "caveats": [
+      "A registry, not a head count: a provider who left Puerto Rico, retired or works part-time may still be listed; one person who practises in several municipios is counted once.",
+      "To protect individuals, a municipio with 1 to 9 is shown empty; 0 and 10 or more are shown, and the island total is exact.",
+      "14,018 of the 25,740 records counted were last updated more than five years ago."
+    ],
+    "see_also": [
+      "providers.prov_primary_care",
+      "providers.prov_psychiatrists",
+      "providers.prov_other_physicians"
+    ],
+    "where": {
+      "files": [
+        "providers_series.json:prov_pharmacists"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Health · Health care providers (NPPES registry)): Pharmacists",
+          "href": "index.html#e=prov_pharmacists.f"
+        }
+      ]
+    },
+    "added": "2026-11-18"
+  }
+]

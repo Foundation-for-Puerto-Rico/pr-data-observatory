@@ -1,0 +1,330 @@
+[
+  {
+    "id": "cutoff.cut_flood_pct",
+    "ask": {
+      "en": [
+        "cut off by floods",
+        "isolated communities",
+        "flood access to hospital",
+        "only road floods"
+      ],
+      "es": [
+        "incomunicados por inundaciones",
+        "comunidades aisladas",
+        "acceso a hospital en inundacion",
+        "unica carretera se inunda"
+      ]
+    },
+    "name": "Residents with no flood-free road to a hospital (estimate, %)",
+    "domain": "hazards",
+    "domains": [
+      "hazards",
+      "infrastructure.mobility",
+      "health"
+    ],
+    "group": "Cut off from hospitals",
+    "kind": "variable",
+    "plain": "The share of residents who would have no road to a hospital that stays out of the flood area, in a 1% annual chance flood.",
+    "definition": "The share of the area's residents (2020 Census) who would have no open road to any hospital if every road in FEMA's 1% annual chance flood area closed, those whose own street floods included. An estimate and a worst case: the 1% flood everywhere at once and every flooded stretch closed, where a real storm raises only some rivers for a few hours. Expressways and sound bridges stay open. Landslides and fallen trees are not in the model. Vieques and Culebra, with no road to a hospital at all, are left out.",
+    "unit": "%",
+    "value_type": "rate",
+    "geography": "78 municipalities, Puerto Rico and 901 barrios",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Rebuilt by hand with python cutoff.py when the roads, the flood map or the bridge inventory change."
+    },
+    "method": "cutoff.py places a test point every 25 m along every road of the graph the map uses (roads.bin, from OpenStreetMap) and closes each stretch whose points fall in FEMA's 1% annual chance flood area, except motorways and trunk roads (raised expressways) and the span of each bridge the National Bridge Inventory rates good or fair. Bridges in poor condition, and those listed as closed, close the road under their point. Each 2020 Census block with residents is placed on its nearest road joined to the network within 2 km; it is cut off when no open road leads from it to a hospital (the hospitals and medical centres of OpenStreetMap in the observatory's place index). A block whose own stretch is closed is cut off too. A barrio's or municipio's figure is the share of its residents, Vieques and Culebra left out.",
+    "sources": [
+      "osm",
+      "fema_nfhl",
+      "fhwa_nbi",
+      "census_tiger"
+    ],
+    "source_detail": "Estimated by the observatory: the OpenStreetMap road graph (roads.bin) with the roads in FEMA's flood area or under bridges in poor condition closed, and each 2020 Census block tested for an open road to a hospital (cutoff.py)",
+    "how_to_read": "Puerto Rico: 16.2% (532,031 residents): 7.8% of residents live on a street that floods, and 8.4% on a dry street with every road to a hospital flooded. Highest: Salinas (84.2%), Loíza (75.8%), Dorado (58.4%). 101 barrios have half or more. Range for the island: 14.9% with primary roads also kept open, 24.5% with the 0.2% annual chance area and every road class closed; the published figure is 16.2%.",
+    "caveats": [
+      "A worst case: the 1% flood everywhere at once, every flooded stretch closed for its whole length. In a real storm only some rivers rise, for a few hours.",
+      "Check: of the 8 WCRP communities whose plans say floods or a failing bridge leave them cut off, 5 have half or more of the residents within 800 m cut off in the model (59.4% on average), against 16 of the other 67 WCRP communities (27.7%). It misses Mariana (Humacao), Punta Tuna (Maunabo), Río Blanco (Naguabo).",
+      "Landslides, fallen trees and power lines also cut roads; they are not in the model. Nor are private roads missing from OpenStreetMap.",
+      "Hospitals are those of OpenStreetMap named hospital or medical centre; a community health centre (CDT or 330 centre) is not one."
+    ],
+    "see_also": [
+      "cutoff.cut_flood_dry_pct",
+      "cutoff.cut_bridge_pct",
+      "cutoff.cut_both_pct",
+      "cutoff.cut_flood_res"
+    ],
+    "where": {
+      "files": [
+        "cutoff_series.json:cut_flood_pct",
+        "cutoff_barrio.json:cut_flood_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Hazards · Cut off from hospitals (estimate)): Residents with no flood-free road to a hospital (estimate, %)",
+          "href": "index.html#e=cut_flood_pct.f"
+        }
+      ]
+    },
+    "added": "2026-11-20"
+  },
+  {
+    "id": "cutoff.cut_flood_dry_pct",
+    "ask": {
+      "en": [
+        "dry but cut off",
+        "isolated by flooded roads"
+      ],
+      "es": [
+        "secos pero incomunicados",
+        "aislados por carreteras inundadas"
+      ]
+    },
+    "name": "Residents on dry streets cut off from hospitals by floods (estimate, %)",
+    "domain": "hazards",
+    "domains": [
+      "hazards",
+      "infrastructure.mobility",
+      "health"
+    ],
+    "group": "Cut off from hospitals",
+    "kind": "variable",
+    "plain": "The share of residents whose own street stays dry in a 1% flood but every road from it to a hospital floods.",
+    "definition": "The share of the area's residents (2020 Census) whose own street stays out of FEMA's 1% annual chance flood area but every road from it to a hospital crosses the flood area: they are dry and still cut off. An estimate and a worst case: the 1% flood everywhere at once and every flooded stretch closed, where a real storm raises only some rivers for a few hours. Expressways and sound bridges stay open. Landslides and fallen trees are not in the model. Vieques and Culebra, with no road to a hospital at all, are left out.",
+    "unit": "%",
+    "value_type": "rate",
+    "geography": "78 municipalities, Puerto Rico and 901 barrios",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Rebuilt by hand with python cutoff.py when the roads, the flood map or the bridge inventory change."
+    },
+    "method": "cutoff.py places a test point every 25 m along every road of the graph the map uses (roads.bin, from OpenStreetMap) and closes each stretch whose points fall in FEMA's 1% annual chance flood area, except motorways and trunk roads (raised expressways) and the span of each bridge the National Bridge Inventory rates good or fair. Bridges in poor condition, and those listed as closed, close the road under their point. Each 2020 Census block with residents is placed on its nearest road joined to the network within 2 km; it is cut off when no open road leads from it to a hospital (the hospitals and medical centres of OpenStreetMap in the observatory's place index). A block whose own stretch is closed is cut off too. A barrio's or municipio's figure is the share of its residents, Vieques and Culebra left out.",
+    "sources": [
+      "osm",
+      "fema_nfhl",
+      "fhwa_nbi",
+      "census_tiger"
+    ],
+    "source_detail": "Estimated by the observatory: the OpenStreetMap road graph (roads.bin) with the roads in FEMA's flood area or under bridges in poor condition closed, and each 2020 Census block tested for an open road to a hospital (cutoff.py)",
+    "how_to_read": "Puerto Rico: 8.4% (276,403 residents). Highest: Loíza (50.6%), Dorado (45.1%), Salinas (43.8%). These residents are not in the flood area, so a flood map alone does not show them.",
+    "caveats": [
+      "A worst case: the 1% flood everywhere at once, every flooded stretch closed for its whole length. In a real storm only some rivers rise, for a few hours.",
+      "Landslides, fallen trees and power lines also cut roads; they are not in the model. Nor are private roads missing from OpenStreetMap."
+    ],
+    "see_also": [
+      "cutoff.cut_flood_pct",
+      "cutoff.cut_bridge_pct",
+      "cutoff.cut_both_pct",
+      "cutoff.cut_flood_res"
+    ],
+    "where": {
+      "files": [
+        "cutoff_series.json:cut_flood_dry_pct",
+        "cutoff_barrio.json:cut_flood_dry_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Hazards · Cut off from hospitals (estimate)): Residents on dry streets cut off from hospitals by floods (estimate, %)",
+          "href": "index.html#e=cut_flood_dry_pct.f"
+        }
+      ]
+    },
+    "added": "2026-11-20"
+  },
+  {
+    "id": "cutoff.cut_bridge_pct",
+    "ask": {
+      "en": [
+        "cut off by bridges",
+        "isolated by bridge closures"
+      ],
+      "es": [
+        "incomunicados por puentes",
+        "aislados por cierre de puentes"
+      ]
+    },
+    "name": "Residents cut off from hospitals by bridges in poor condition (estimate, %)",
+    "domain": "hazards",
+    "domains": [
+      "hazards",
+      "infrastructure.mobility",
+      "health"
+    ],
+    "group": "Cut off from hospitals",
+    "kind": "variable",
+    "plain": "The share of residents who would have no road to a hospital if every bridge in poor condition, or already closed, were closed.",
+    "definition": "The share of the area's residents (2020 Census) who would have no road to any hospital if every bridge the National Bridge Inventory rates in poor condition, or lists as closed, were closed. An estimate and a worst case: the 1% flood everywhere at once and every flooded stretch closed, where a real storm raises only some rivers for a few hours. Expressways and sound bridges stay open. Landslides and fallen trees are not in the model. Vieques and Culebra, with no road to a hospital at all, are left out.",
+    "unit": "%",
+    "value_type": "rate",
+    "geography": "78 municipalities, Puerto Rico and 901 barrios",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Rebuilt by hand with python cutoff.py when the roads, the flood map or the bridge inventory change."
+    },
+    "method": "cutoff.py places a test point every 25 m along every road of the graph the map uses (roads.bin, from OpenStreetMap) and closes each stretch whose points fall in FEMA's 1% annual chance flood area, except motorways and trunk roads (raised expressways) and the span of each bridge the National Bridge Inventory rates good or fair. Bridges in poor condition, and those listed as closed, close the road under their point. Each 2020 Census block with residents is placed on its nearest road joined to the network within 2 km; it is cut off when no open road leads from it to a hospital (the hospitals and medical centres of OpenStreetMap in the observatory's place index). A block whose own stretch is closed is cut off too. A barrio's or municipio's figure is the share of its residents, Vieques and Culebra left out.",
+    "sources": [
+      "osm",
+      "fema_nfhl",
+      "fhwa_nbi",
+      "census_tiger"
+    ],
+    "source_detail": "Estimated by the observatory: the OpenStreetMap road graph (roads.bin) with the roads in FEMA's flood area or under bridges in poor condition closed, and each 2020 Census block tested for an open road to a hospital (cutoff.py)",
+    "how_to_read": "Puerto Rico: 0.1% (4,478 residents). Highest: Yabucoa (4.2%), Maunabo (2.7%), Cabo Rojo (1.5%). 355 bridges are in poor condition or closed; 339 road stretches close. Most communities have another way around.",
+    "caveats": [
+      "Poor condition is the National Bridge Inventory's rating of the deck, superstructure or substructure: it does not mean the bridge will fail.",
+      "A bridge's point is placed on the nearest road within 60 m; where a bridge crosses over another road, the wrong one may close.",
+      "Hospitals are those of OpenStreetMap named hospital or medical centre; a community health centre (CDT or 330 centre) is not one."
+    ],
+    "see_also": [
+      "cutoff.cut_flood_pct",
+      "cutoff.cut_flood_dry_pct",
+      "cutoff.cut_both_pct",
+      "cutoff.cut_flood_res"
+    ],
+    "where": {
+      "files": [
+        "cutoff_series.json:cut_bridge_pct",
+        "cutoff_barrio.json:cut_bridge_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Hazards · Cut off from hospitals (estimate)): Residents cut off from hospitals by bridges in poor condition (estimate, %)",
+          "href": "index.html#e=cut_bridge_pct.f"
+        }
+      ]
+    },
+    "added": "2026-11-20"
+  },
+  {
+    "id": "cutoff.cut_both_pct",
+    "ask": {
+      "en": [
+        "cut off floods and bridges"
+      ],
+      "es": [
+        "incomunicados inundaciones y puentes"
+      ]
+    },
+    "name": "Residents cut off from hospitals by floods or poor bridges (estimate, %)",
+    "domain": "hazards",
+    "domains": [
+      "hazards",
+      "infrastructure.mobility",
+      "health"
+    ],
+    "group": "Cut off from hospitals",
+    "kind": "variable",
+    "plain": "The share of residents who would have no open road to a hospital if both the flooded roads and the bridges in poor condition closed.",
+    "definition": "The share of the area's residents (2020 Census) who would have no open road to any hospital if both the roads in FEMA's 1% flood area and the bridges in poor condition or closed were closed. An estimate and a worst case: the 1% flood everywhere at once and every flooded stretch closed, where a real storm raises only some rivers for a few hours. Expressways and sound bridges stay open. Landslides and fallen trees are not in the model. Vieques and Culebra, with no road to a hospital at all, are left out.",
+    "unit": "%",
+    "value_type": "rate",
+    "geography": "78 municipalities, Puerto Rico and 901 barrios",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Rebuilt by hand with python cutoff.py when the roads, the flood map or the bridge inventory change."
+    },
+    "method": "cutoff.py places a test point every 25 m along every road of the graph the map uses (roads.bin, from OpenStreetMap) and closes each stretch whose points fall in FEMA's 1% annual chance flood area, except motorways and trunk roads (raised expressways) and the span of each bridge the National Bridge Inventory rates good or fair. Bridges in poor condition, and those listed as closed, close the road under their point. Each 2020 Census block with residents is placed on its nearest road joined to the network within 2 km; it is cut off when no open road leads from it to a hospital (the hospitals and medical centres of OpenStreetMap in the observatory's place index). A block whose own stretch is closed is cut off too. A barrio's or municipio's figure is the share of its residents, Vieques and Culebra left out.",
+    "sources": [
+      "osm",
+      "fema_nfhl",
+      "fhwa_nbi",
+      "census_tiger"
+    ],
+    "source_detail": "Estimated by the observatory: the OpenStreetMap road graph (roads.bin) with the roads in FEMA's flood area or under bridges in poor condition closed, and each 2020 Census block tested for an open road to a hospital (cutoff.py)",
+    "how_to_read": "Puerto Rico: 16.9% (554,342 residents), against 16.2% for the floods alone. Highest: Salinas (84.2%), Loíza (75.8%), Patillas (71.6%).",
+    "caveats": [
+      "A worst case: the 1% flood everywhere at once, every flooded stretch closed for its whole length. In a real storm only some rivers rise, for a few hours.",
+      "Landslides, fallen trees and power lines also cut roads; they are not in the model. Nor are private roads missing from OpenStreetMap."
+    ],
+    "see_also": [
+      "cutoff.cut_flood_pct",
+      "cutoff.cut_flood_dry_pct",
+      "cutoff.cut_bridge_pct",
+      "cutoff.cut_flood_res"
+    ],
+    "where": {
+      "files": [
+        "cutoff_series.json:cut_both_pct",
+        "cutoff_barrio.json:cut_both_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Hazards · Cut off from hospitals (estimate)): Residents cut off from hospitals by floods or poor bridges (estimate, %)",
+          "href": "index.html#e=cut_both_pct.f"
+        }
+      ]
+    },
+    "added": "2026-11-20"
+  },
+  {
+    "id": "cutoff.cut_flood_res",
+    "ask": {
+      "en": [
+        "residents cut off by floods"
+      ],
+      "es": [
+        "residentes incomunicados por inundaciones"
+      ]
+    },
+    "name": "Residents with no flood-free road to a hospital (estimate)",
+    "domain": "hazards",
+    "domains": [
+      "hazards",
+      "infrastructure.mobility",
+      "health"
+    ],
+    "group": "Cut off from hospitals",
+    "kind": "variable",
+    "plain": "How many residents would have no road to a hospital that stays out of the flood area, in a 1% annual chance flood.",
+    "definition": "The share of the area's residents (2020 Census) who would have no open road to any hospital if every road in FEMA's 1% annual chance flood area closed, those whose own street floods included. An estimate and a worst case: the 1% flood everywhere at once and every flooded stretch closed, where a real storm raises only some rivers for a few hours. Expressways and sound bridges stay open. Landslides and fallen trees are not in the model. Vieques and Culebra, with no road to a hospital at all, are left out.",
+    "unit": "residents",
+    "value_type": "count",
+    "geography": "78 municipalities, Puerto Rico and 901 barrios",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Rebuilt by hand with python cutoff.py when the roads, the flood map or the bridge inventory change."
+    },
+    "method": "cutoff.py places a test point every 25 m along every road of the graph the map uses (roads.bin, from OpenStreetMap) and closes each stretch whose points fall in FEMA's 1% annual chance flood area, except motorways and trunk roads (raised expressways) and the span of each bridge the National Bridge Inventory rates good or fair. Bridges in poor condition, and those listed as closed, close the road under their point. Each 2020 Census block with residents is placed on its nearest road joined to the network within 2 km; it is cut off when no open road leads from it to a hospital (the hospitals and medical centres of OpenStreetMap in the observatory's place index). A block whose own stretch is closed is cut off too. A barrio's or municipio's figure is the share of its residents, Vieques and Culebra left out.",
+    "sources": [
+      "osm",
+      "fema_nfhl",
+      "fhwa_nbi",
+      "census_tiger"
+    ],
+    "source_detail": "Estimated by the observatory: the OpenStreetMap road graph (roads.bin) with the roads in FEMA's flood area or under bridges in poor condition closed, and each 2020 Census block tested for an open road to a hospital (cutoff.py)",
+    "how_to_read": "Puerto Rico: 532,031 residents. Most: San Juan (54,909), Carolina (48,441), Ponce (45,389).",
+    "caveats": [
+      "A worst case: the 1% flood everywhere at once, every flooded stretch closed for its whole length. In a real storm only some rivers rise, for a few hours.",
+      "Shaded per 1,000 residents by default: the share in % times ten."
+    ],
+    "see_also": [
+      "cutoff.cut_flood_pct",
+      "cutoff.cut_flood_dry_pct",
+      "cutoff.cut_bridge_pct",
+      "cutoff.cut_both_pct"
+    ],
+    "where": {
+      "files": [
+        "cutoff_series.json:cut_flood_res",
+        "cutoff_barrio.json:cut_flood_res"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Hazards · Cut off from hospitals (estimate)): Residents with no flood-free road to a hospital (estimate)",
+          "href": "index.html#e=cut_flood_res.f"
+        }
+      ]
+    },
+    "added": "2026-11-20"
+  }
+]

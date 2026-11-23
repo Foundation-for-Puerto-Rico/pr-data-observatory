@@ -1,0 +1,1226 @@
+[
+ {
+  "id": "wcrp.rvi_overall_orig",
+  "name": "WCRP vulnerability, overall: original 2022 (index and level by barrio)",
+  "domain": "communities",
+  "domains": [
+   "communities",
+   "population",
+   "public-money"
+  ],
+  "group": "WCRP vulnerability (Risk and Vulnerability Indicators)",
+  "kind": "variable",
+  "plain": "How vulnerable each barrio was in all six areas together compared with the other barrios, in the WCRP Risk and Vulnerability Indicators as published in 2022: a level from 1 (the least vulnerable fifth) to 5 (the most vulnerable fifth).",
+  "definition": "The overall index of the Risk and Vulnerability Indicators (RVI) that Hunter College built for Foundation for Puerto Rico's Whole Community Resilience Planning (WCRP) program, as published in March 2022: the barrio's percentile among the 887 barrios with residents (0 to 1 in the source, stored times 100), where higher is more vulnerable, and its rank, the fifth of the index (1 = 0 to 20, low; 5 = above 80, high). Inputs: the six area indices (economy, education, environment, health, housing, infrastructure), with equal weights. Mostly ACS 2015-2019; the environment inputs are EPA layers of about 2021 and FPR-supplied waste layers, travel time to a hospital was computed by Hunter College, and intersection density uses TIGER 2020. The 14 barrios with no residents or structures have no value.",
+  "unit": "percentile among barrios (0 to 100); rank 1 to 5",
+  "value_type": "index",
+  "geography": "901 barrios (887 with a value)",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2015,
+   "last": 2019,
+   "frequency": "Published once (March 2022); wcrp_rvi.py reads the public services again on request"
+  },
+  "method": "Read as published from the public ArcGIS service All_Indicator (the OVERALL row of each barrio carries every area's index and rank); nothing is recomputed. The build checks that each published rank is the fifth of the published index (rank = ceil(5 x index), at least 1) and stops if one is not. Method of the source (white paper, December 2021): each input becomes a percentile among the barrios, the percentiles of an area are added and the sum ranked again; the overall index ranks the sum of the six area indices. Applied to the original's own published inputs, that method gives back this index with a rank correlation of 1.00 (99.8% of barrios keep their rank).",
+  "sources": [
+   "wcrp_rvi",
+   "acs5"
+  ],
+  "source_detail": "ArcGIS REST service All_Indicator (account PlanningCDBG), fields OVERALL, OVERA_RANK",
+  "how_to_read": "Read the rank, not small differences in the index: each rank holds a fifth of the barrios (about 177). Compare groups of barrios; the barrio values of the survey behind most inputs are rough.",
+  "caveats": [
+   "A rank compares barrios with each other on the inputs used. It is not a measure of need, risk of harm or eligibility for any program.",
+   "Foundation for Puerto Rico runs WCRP in collaboration with the Puerto Rico Department of Housing (PRDOH), with HUD CDBG-DR funds. The WCRP page is published with an 'In review' marker: these values may change, and the page asks search engines not to index it while the marker is on.",
+   "No open license is stated: the ArcGIS services publish no license or access terms. FPR publishes the values on the observatory with the program's approval; others should ask PRDOH and FPR before re-using them.",
+   "The dashboard's municipio and Puerto Rico comparison columns are mislabelled and some municipio lead-paint values exceed 100%; the barrio values used here are labelled correctly (see the WCRP page)."
+  ],
+  "see_also": [
+   "wcrp.rvi_overall_rebuild",
+   "methods.wcrp_rvi",
+   "wcrp.rvi_inputs_orig",
+   "boundaries.wcrp_comunidades"
+  ],
+  "where": {
+   "files": [
+    "wcrp_rvi_barrio.json:rvi_overall_orig"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area, WCRP page: vulnerability map",
+     "href": "wcrp.html#vulnerability"
+    },
+    {
+     "label": "Map, Analysis tab: shade the barrios by this index",
+     "href": "index.html#e=rvi_overall_orig.b"
+    }
+   ]
+  },
+  "added": "2026-10-17"
+ },
+ {
+  "id": "wcrp.rvi_overall_rebuild",
+  "name": "WCRP vulnerability, overall: updated 2020–2024 (index and level by barrio)",
+  "domain": "communities",
+  "domains": [
+   "communities",
+   "population",
+   "public-money"
+  ],
+  "group": "WCRP vulnerability (Risk and Vulnerability Indicators)",
+  "kind": "variable",
+  "plain": "The same ranking of barrios in all six areas together, updated by the observatory with the WCRP method on the Census survey of 2020–2024 and current local conditions (EPA sites, impaired waters and polluted air, severe housing problems, street intersections and the drive time to a hospital): a level from 1 (the least vulnerable fifth) to 5 (the most vulnerable fifth).",
+  "definition": "The overall index of the Risk and Vulnerability Indicators rebuilt by the observatory with the white paper's method on American Community Survey 5-year estimates 2020–2024 and, for the environment, health, housing and infrastructure areas, the observatory's current local conditions (conditions_barrio.json): the barrio's percentile among the barrios with residents in that window, times 100 (higher is more vulnerable), and its rank, the fifth of the index. Inputs: the six area indices (economy, education, environment, health, housing, infrastructure), with equal weights. Computed from the six rebuilt areas, with equal weights.",
+  "unit": "percentile among barrios (0 to 100); rank 1 to 5",
+  "value_type": "index",
+  "geography": "901 barrios (885 with a value)",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2020,
+   "last": 2024,
+   "frequency": "Rebuilt by python wcrp_rvi.py; the next window (2021-2025) is due in December 2026"
+  },
+  "method": "wcrp_rvi.py: each input becomes a percentile among the barrios that have a value (the share of them with a strictly lower value); within an area (or a sub-indicator: infrastructure's telecommunications and transportation; housing is the plain sum of its three inputs, which is what gives back the original) the percentiles are added and the sum ranked again; a barrio that lacks an input gets the sum of the inputs it has scaled to the full count (the white paper's education rule, generalised); the overall index ranks the sum of the six areas; the rank is ceil(5 x index), at least 1. A barrio with no residents in the window has no value. Inputs come from acs_barrio.json and, for public assistance (B19057), year built (B25034), computers (B28003), broadband (B28002) and school enrollment (B14003), from the same ACS window read by acs_small.py. The environment, hospital, severe housing problems and street inputs come from conditions_barrio.json (conditions.py: EPA TRI, Facility Registry Service, ATTAINS, Green Book and LMOP; HUD CHAS 2016-2020 spread from tracts; TIGER/Line 2026; drive time to a CMS general hospital along OpenStreetMap roads), each in its source's vintage. Against the original, 68% of the 879 barrios ranked in both change rank and 29% move two ranks or more (rank correlation 0.50).",
+  "sources": [
+   "acs5",
+   "fpr_method",
+   "epa_tri",
+   "epa_frs",
+   "epa_attains",
+   "epa_greenbook",
+   "epa_lmop",
+   "cms_provider_data",
+   "hhs_hospital_capacity",
+   "osm",
+   "hud_chas",
+   "census_tiger_lines"
+  ],
+  "source_detail": "ACS 5-year 2020–2024, barrio rows (acs_barrio.json and tables B19057, B25034, B28003, B28002, B14003); method of the RVI white paper (Hunter College, 2021); conditions_barrio.json (EPA TRI, FRS, ATTAINS, Green Book, LMOP; HUD CHAS 2016-2020; TIGER/Line 2026; CMS hospitals and OpenStreetMap roads)",
+  "how_to_read": "Read the rank, not small differences in the index. Where the rank differs from the original, the cause can be the inputs left out, five years of change or the roughness of barrio survey estimates: the WCRP page measures each.",
+  "caveats": [
+   "A rank compares barrios with each other on the inputs used. It is not a measure of need, risk of harm or eligibility for any program.",
+   "Foundation for Puerto Rico runs WCRP in collaboration with the Puerto Rico Department of Housing (PRDOH), with HUD CDBG-DR funds. The WCRP page is published with an 'In review' marker: these values may change, and the page asks search engines not to index it while the marker is on.",
+   "Margins of error of the inputs are not carried into the index; barrio survey estimates are rough, so a barrio near the edge of a fifth can change rank between survey windows.",
+   "Inputs are defined from the ACS tables named in the method; the original does not say which cells it used, so a definition can differ (households without a computer average 62% of households per barrio in the original and 20% here).",
+   "Vieques, Culebra and Isla de Mona have no road to a general hospital and no drive time: their health index uses disability and health insurance only (the missing-input rule), which leaves out how far they are from hospital care."
+  ],
+  "see_also": [
+   "wcrp.rvi_overall_orig",
+   "methods.wcrp_rvi",
+   "wcrp.rvi_inputs_rebuild"
+  ],
+  "where": {
+   "files": [
+    "wcrp_rvi_barrio.json:rvi_overall_rebuild"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area, WCRP page: vulnerability map",
+     "href": "wcrp.html#v=rebuild"
+    },
+    {
+     "label": "Map, Analysis tab: shade the barrios by this index",
+     "href": "index.html#e=rvi_overall_rebuild.b"
+    }
+   ]
+  },
+  "added": "2026-10-17"
+ },
+ {
+  "id": "wcrp.rvi_econ_orig",
+  "name": "WCRP vulnerability, economy: original 2022 (index and level by barrio)",
+  "domain": "communities",
+  "domains": [
+   "communities",
+   "population",
+   "economy"
+  ],
+  "group": "WCRP vulnerability (Risk and Vulnerability Indicators)",
+  "kind": "variable",
+  "plain": "How vulnerable each barrio was in economy compared with the other barrios, in the WCRP Risk and Vulnerability Indicators as published in 2022: a level from 1 (the least vulnerable fifth) to 5 (the most vulnerable fifth).",
+  "definition": "The economy index of the Risk and Vulnerability Indicators (RVI) that Hunter College built for Foundation for Puerto Rico's Whole Community Resilience Planning (WCRP) program, as published in March 2022: the barrio's percentile among the 887 barrios with residents (0 to 1 in the source, stored times 100), where higher is more vulnerable, and its rank, the fifth of the index (1 = 0 to 20, low; 5 = above 80, high). Inputs: Population on public assistance (%); Population below the poverty line (%); Unemployed (%). Mostly ACS 2015-2019; the environment inputs are EPA layers of about 2021 and FPR-supplied waste layers, travel time to a hospital was computed by Hunter College, and intersection density uses TIGER 2020. The 14 barrios with no residents or structures have no value.",
+  "unit": "percentile among barrios (0 to 100); rank 1 to 5",
+  "value_type": "index",
+  "geography": "901 barrios (887 with a value)",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2015,
+   "last": 2019,
+   "frequency": "Published once (March 2022); wcrp_rvi.py reads the public services again on request"
+  },
+  "method": "Read as published from the public ArcGIS service All_Indicator (the OVERALL row of each barrio carries every area's index and rank); nothing is recomputed. The build checks that each published rank is the fifth of the published index (rank = ceil(5 x index), at least 1) and stops if one is not. Method of the source (white paper, December 2021): each input becomes a percentile among the barrios, the percentiles of an area are added and the sum ranked again; the overall index ranks the sum of the six area indices. Applied to the original's own published inputs, that method gives back this index with a rank correlation of 0.68 (39.1% of barrios keep their rank). Economy does not reproduce: its published inputs do not give back its published index, and the white paper does not explain why.",
+  "sources": [
+   "wcrp_rvi",
+   "acs5"
+  ],
+  "source_detail": "ArcGIS REST service All_Indicator (account PlanningCDBG), fields ECON, ECON_RANK",
+  "how_to_read": "Read the rank, not small differences in the index: each rank holds a fifth of the barrios (about 177). Compare groups of barrios; the barrio values of the survey behind most inputs are rough.",
+  "caveats": [
+   "A rank compares barrios with each other on the inputs used. It is not a measure of need, risk of harm or eligibility for any program.",
+   "Foundation for Puerto Rico runs WCRP in collaboration with the Puerto Rico Department of Housing (PRDOH), with HUD CDBG-DR funds. The WCRP page is published with an 'In review' marker: these values may change, and the page asks search engines not to index it while the marker is on.",
+   "No open license is stated: the ArcGIS services publish no license or access terms. FPR publishes the values on the observatory with the program's approval; others should ask PRDOH and FPR before re-using them.",
+   "The dashboard's municipio and Puerto Rico comparison columns are mislabelled and some municipio lead-paint values exceed 100%; the barrio values used here are labelled correctly (see the WCRP page)."
+  ],
+  "see_also": [
+   "wcrp.rvi_econ_rebuild",
+   "methods.wcrp_rvi",
+   "wcrp.rvi_inputs_orig",
+   "boundaries.wcrp_comunidades"
+  ],
+  "where": {
+   "files": [
+    "wcrp_rvi_barrio.json:rvi_econ_orig"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area, WCRP page: vulnerability map",
+     "href": "wcrp.html#a=econ"
+    },
+    {
+     "label": "Map, Analysis tab: shade the barrios by this index",
+     "href": "index.html#e=rvi_econ_orig.b"
+    }
+   ]
+  },
+  "added": "2026-10-17"
+ },
+ {
+  "id": "wcrp.rvi_econ_rebuild",
+  "name": "WCRP vulnerability, economy: updated 2020–2024 (index and level by barrio)",
+  "domain": "communities",
+  "domains": [
+   "communities",
+   "population",
+   "economy"
+  ],
+  "group": "WCRP vulnerability (Risk and Vulnerability Indicators)",
+  "kind": "variable",
+  "plain": "The same ranking of barrios in economy, updated by the observatory with the WCRP method on the Census survey of 2020–2024: a level from 1 (the least vulnerable fifth) to 5 (the most vulnerable fifth).",
+  "definition": "The economy index of the Risk and Vulnerability Indicators rebuilt by the observatory with the white paper's method on American Community Survey 5-year estimates 2020–2024 (no local-conditions input): the barrio's percentile among the barrios with residents in that window, times 100 (higher is more vulnerable), and its rank, the fifth of the index. Inputs: People below the poverty line (%); Households with cash public assistance income (%); Unemployment rate (%).",
+  "unit": "percentile among barrios (0 to 100); rank 1 to 5",
+  "value_type": "index",
+  "geography": "901 barrios (885 with a value)",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2020,
+   "last": 2024,
+   "frequency": "Rebuilt by python wcrp_rvi.py; the next window (2021-2025) is due in December 2026"
+  },
+  "method": "wcrp_rvi.py: each input becomes a percentile among the barrios that have a value (the share of them with a strictly lower value); within an area (or a sub-indicator: infrastructure's telecommunications and transportation; housing is the plain sum of its three inputs, which is what gives back the original) the percentiles are added and the sum ranked again; a barrio that lacks an input gets the sum of the inputs it has scaled to the full count (the white paper's education rule, generalised); the overall index ranks the sum of the six areas; the rank is ceil(5 x index), at least 1. A barrio with no residents in the window has no value. Inputs come from acs_barrio.json and, for public assistance (B19057), year built (B25034), computers (B28003), broadband (B28002) and school enrollment (B14003), from the same ACS window read by acs_small.py. The environment, hospital, severe housing problems and street inputs come from conditions_barrio.json (conditions.py: EPA TRI, Facility Registry Service, ATTAINS, Green Book and LMOP; HUD CHAS 2016-2020 spread from tracts; TIGER/Line 2026; drive time to a CMS general hospital along OpenStreetMap roads), each in its source's vintage. Against the original, 73% of the 879 barrios ranked in both change rank and 38% move two ranks or more (rank correlation 0.26).",
+  "sources": [
+   "acs5",
+   "fpr_method"
+  ],
+  "source_detail": "ACS 5-year 2020–2024, barrio rows (acs_barrio.json and tables B19057, B25034, B28003, B28002, B14003); method of the RVI white paper (Hunter College, 2021)",
+  "how_to_read": "Read the rank, not small differences in the index. Where the rank differs from the original, the cause can be the inputs left out, five years of change or the roughness of barrio survey estimates: the WCRP page measures each.",
+  "caveats": [
+   "A rank compares barrios with each other on the inputs used. It is not a measure of need, risk of harm or eligibility for any program.",
+   "Foundation for Puerto Rico runs WCRP in collaboration with the Puerto Rico Department of Housing (PRDOH), with HUD CDBG-DR funds. The WCRP page is published with an 'In review' marker: these values may change, and the page asks search engines not to index it while the marker is on.",
+   "Margins of error of the inputs are not carried into the index; barrio survey estimates are rough, so a barrio near the edge of a fifth can change rank between survey windows.",
+   "Inputs are defined from the ACS tables named in the method; the original does not say which cells it used, so a definition can differ (households without a computer average 62% of households per barrio in the original and 20% here)."
+  ],
+  "see_also": [
+   "wcrp.rvi_econ_orig",
+   "methods.wcrp_rvi",
+   "wcrp.rvi_inputs_rebuild"
+  ],
+  "where": {
+   "files": [
+    "wcrp_rvi_barrio.json:rvi_econ_rebuild"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area, WCRP page: vulnerability map",
+     "href": "wcrp.html#a=econ&v=rebuild"
+    },
+    {
+     "label": "Map, Analysis tab: shade the barrios by this index",
+     "href": "index.html#e=rvi_econ_rebuild.b"
+    }
+   ]
+  },
+  "added": "2026-10-17"
+ },
+ {
+  "id": "wcrp.rvi_edu_orig",
+  "name": "WCRP vulnerability, education: original 2022 (index and level by barrio)",
+  "domain": "communities",
+  "domains": [
+   "communities",
+   "population",
+   "education"
+  ],
+  "group": "WCRP vulnerability (Risk and Vulnerability Indicators)",
+  "kind": "variable",
+  "plain": "How vulnerable each barrio was in education compared with the other barrios, in the WCRP Risk and Vulnerability Indicators as published in 2022: a level from 1 (the least vulnerable fifth) to 5 (the most vulnerable fifth).",
+  "definition": "The education index of the Risk and Vulnerability Indicators (RVI) that Hunter College built for Foundation for Puerto Rico's Whole Community Resilience Planning (WCRP) program, as published in March 2022: the barrio's percentile among the 887 barrios with residents (0 to 1 in the source, stored times 100), where higher is more vulnerable, and its rank, the fifth of the index (1 = 0 to 20, low; 5 = above 80, high). Inputs: People aged 3 to 24 not enrolled in school (%); Adults 25+ without a high school diploma (%). Mostly ACS 2015-2019; the environment inputs are EPA layers of about 2021 and FPR-supplied waste layers, travel time to a hospital was computed by Hunter College, and intersection density uses TIGER 2020. The 14 barrios with no residents or structures have no value.",
+  "unit": "percentile among barrios (0 to 100); rank 1 to 5",
+  "value_type": "index",
+  "geography": "901 barrios (887 with a value)",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2015,
+   "last": 2019,
+   "frequency": "Published once (March 2022); wcrp_rvi.py reads the public services again on request"
+  },
+  "method": "Read as published from the public ArcGIS service All_Indicator (the OVERALL row of each barrio carries every area's index and rank); nothing is recomputed. The build checks that each published rank is the fifth of the published index (rank = ceil(5 x index), at least 1) and stops if one is not. Method of the source (white paper, December 2021): each input becomes a percentile among the barrios, the percentiles of an area are added and the sum ranked again; the overall index ranks the sum of the six area indices. Applied to the original's own published inputs, that method gives back this index with a rank correlation of 1.00 (99.5% of barrios keep their rank).",
+  "sources": [
+   "wcrp_rvi",
+   "acs5"
+  ],
+  "source_detail": "ArcGIS REST service All_Indicator (account PlanningCDBG), fields EDU, EDU_RANK",
+  "how_to_read": "Read the rank, not small differences in the index: each rank holds a fifth of the barrios (about 177). Compare groups of barrios; the barrio values of the survey behind most inputs are rough.",
+  "caveats": [
+   "A rank compares barrios with each other on the inputs used. It is not a measure of need, risk of harm or eligibility for any program.",
+   "Foundation for Puerto Rico runs WCRP in collaboration with the Puerto Rico Department of Housing (PRDOH), with HUD CDBG-DR funds. The WCRP page is published with an 'In review' marker: these values may change, and the page asks search engines not to index it while the marker is on.",
+   "No open license is stated: the ArcGIS services publish no license or access terms. FPR publishes the values on the observatory with the program's approval; others should ask PRDOH and FPR before re-using them.",
+   "The dashboard's municipio and Puerto Rico comparison columns are mislabelled and some municipio lead-paint values exceed 100%; the barrio values used here are labelled correctly (see the WCRP page)."
+  ],
+  "see_also": [
+   "wcrp.rvi_edu_rebuild",
+   "methods.wcrp_rvi",
+   "wcrp.rvi_inputs_orig",
+   "boundaries.wcrp_comunidades"
+  ],
+  "where": {
+   "files": [
+    "wcrp_rvi_barrio.json:rvi_edu_orig"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area, WCRP page: vulnerability map",
+     "href": "wcrp.html#a=edu"
+    },
+    {
+     "label": "Map, Analysis tab: shade the barrios by this index",
+     "href": "index.html#e=rvi_edu_orig.b"
+    }
+   ]
+  },
+  "added": "2026-10-17"
+ },
+ {
+  "id": "wcrp.rvi_edu_rebuild",
+  "name": "WCRP vulnerability, education: updated 2020–2024 (index and level by barrio)",
+  "domain": "communities",
+  "domains": [
+   "communities",
+   "population",
+   "education"
+  ],
+  "group": "WCRP vulnerability (Risk and Vulnerability Indicators)",
+  "kind": "variable",
+  "plain": "The same ranking of barrios in education, updated by the observatory with the WCRP method on the Census survey of 2020–2024: a level from 1 (the least vulnerable fifth) to 5 (the most vulnerable fifth).",
+  "definition": "The education index of the Risk and Vulnerability Indicators rebuilt by the observatory with the white paper's method on American Community Survey 5-year estimates 2020–2024 (no local-conditions input): the barrio's percentile among the barrios with residents in that window, times 100 (higher is more vulnerable), and its rank, the fifth of the index. Inputs: People aged 3 to 24 not enrolled in school (%); Adults 25+ without a high school diploma (%).",
+  "unit": "percentile among barrios (0 to 100); rank 1 to 5",
+  "value_type": "index",
+  "geography": "901 barrios (885 with a value)",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2020,
+   "last": 2024,
+   "frequency": "Rebuilt by python wcrp_rvi.py; the next window (2021-2025) is due in December 2026"
+  },
+  "method": "wcrp_rvi.py: each input becomes a percentile among the barrios that have a value (the share of them with a strictly lower value); within an area (or a sub-indicator: infrastructure's telecommunications and transportation; housing is the plain sum of its three inputs, which is what gives back the original) the percentiles are added and the sum ranked again; a barrio that lacks an input gets the sum of the inputs it has scaled to the full count (the white paper's education rule, generalised); the overall index ranks the sum of the six areas; the rank is ceil(5 x index), at least 1. A barrio with no residents in the window has no value. Inputs come from acs_barrio.json and, for public assistance (B19057), year built (B25034), computers (B28003), broadband (B28002) and school enrollment (B14003), from the same ACS window read by acs_small.py. The environment, hospital, severe housing problems and street inputs come from conditions_barrio.json (conditions.py: EPA TRI, Facility Registry Service, ATTAINS, Green Book and LMOP; HUD CHAS 2016-2020 spread from tracts; TIGER/Line 2026; drive time to a CMS general hospital along OpenStreetMap roads), each in its source's vintage. Against the original, 68% of the 879 barrios ranked in both change rank and 36% move two ranks or more (rank correlation 0.30).",
+  "sources": [
+   "acs5",
+   "fpr_method"
+  ],
+  "source_detail": "ACS 5-year 2020–2024, barrio rows (acs_barrio.json and tables B19057, B25034, B28003, B28002, B14003); method of the RVI white paper (Hunter College, 2021)",
+  "how_to_read": "Read the rank, not small differences in the index. Where the rank differs from the original, the cause can be the inputs left out, five years of change or the roughness of barrio survey estimates: the WCRP page measures each.",
+  "caveats": [
+   "A rank compares barrios with each other on the inputs used. It is not a measure of need, risk of harm or eligibility for any program.",
+   "Foundation for Puerto Rico runs WCRP in collaboration with the Puerto Rico Department of Housing (PRDOH), with HUD CDBG-DR funds. The WCRP page is published with an 'In review' marker: these values may change, and the page asks search engines not to index it while the marker is on.",
+   "Margins of error of the inputs are not carried into the index; barrio survey estimates are rough, so a barrio near the edge of a fifth can change rank between survey windows.",
+   "Inputs are defined from the ACS tables named in the method; the original does not say which cells it used, so a definition can differ (households without a computer average 62% of households per barrio in the original and 20% here)."
+  ],
+  "see_also": [
+   "wcrp.rvi_edu_orig",
+   "methods.wcrp_rvi",
+   "wcrp.rvi_inputs_rebuild"
+  ],
+  "where": {
+   "files": [
+    "wcrp_rvi_barrio.json:rvi_edu_rebuild"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area, WCRP page: vulnerability map",
+     "href": "wcrp.html#a=edu&v=rebuild"
+    },
+    {
+     "label": "Map, Analysis tab: shade the barrios by this index",
+     "href": "index.html#e=rvi_edu_rebuild.b"
+    }
+   ]
+  },
+  "added": "2026-10-17"
+ },
+ {
+  "id": "wcrp.rvi_envir_orig",
+  "name": "WCRP vulnerability, environment: original 2022 (index and level by barrio)",
+  "domain": "communities",
+  "domains": [
+   "communities",
+   "population",
+   "environment"
+  ],
+  "group": "WCRP vulnerability (Risk and Vulnerability Indicators)",
+  "kind": "variable",
+  "plain": "How vulnerable each barrio was in environment compared with the other barrios, in the WCRP Risk and Vulnerability Indicators as published in 2022: a level from 1 (the least vulnerable fifth) to 5 (the most vulnerable fifth).",
+  "definition": "The environment index of the Risk and Vulnerability Indicators (RVI) that Hunter College built for Foundation for Puerto Rico's Whole Community Resilience Planning (WCRP) program, as published in March 2022: the barrio's percentile among the 887 barrios with residents (0 to 1 in the source, stored times 100), where higher is more vulnerable, and its rank, the fifth of the index (1 = 0 to 20, low; 5 = above 80, high). Inputs: In a sulfur dioxide or lead non-attainment area (1 = yes); Impaired water body, EPA 303(d) (1 = yes); Risk Management Plan sites (count); Municipal landfill or open dump (1 = yes); Solid waste facility (1 = yes); Superfund (National Priorities List) sites (count); Toxics Release Inventory facilities (count); Lead-paint indicator: homes built before 1960 (%). Mostly ACS 2015-2019; the environment inputs are EPA layers of about 2021 and FPR-supplied waste layers, travel time to a hospital was computed by Hunter College, and intersection density uses TIGER 2020. The 14 barrios with no residents or structures have no value.",
+  "unit": "percentile among barrios (0 to 100); rank 1 to 5",
+  "value_type": "index",
+  "geography": "901 barrios (887 with a value)",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2015,
+   "last": 2019,
+   "frequency": "Published once (March 2022); wcrp_rvi.py reads the public services again on request"
+  },
+  "method": "Read as published from the public ArcGIS service All_Indicator (the OVERALL row of each barrio carries every area's index and rank); nothing is recomputed. The build checks that each published rank is the fifth of the published index (rank = ceil(5 x index), at least 1) and stops if one is not. Method of the source (white paper, December 2021): each input becomes a percentile among the barrios, the percentiles of an area are added and the sum ranked again; the overall index ranks the sum of the six area indices. Applied to the original's own published inputs, that method gives back this index with a rank correlation of 0.93 (67.8% of barrios keep their rank). Environment does not reproduce exactly from the published inputs (the white paper counts point layers with a min-max scale whose details it does not give).",
+  "sources": [
+   "wcrp_rvi",
+   "acs5"
+  ],
+  "source_detail": "ArcGIS REST service All_Indicator (account PlanningCDBG), fields ENVIR, ENVIR_RANK",
+  "how_to_read": "Read the rank, not small differences in the index: each rank holds a fifth of the barrios (about 177). Compare groups of barrios; the barrio values of the survey behind most inputs are rough.",
+  "caveats": [
+   "A rank compares barrios with each other on the inputs used. It is not a measure of need, risk of harm or eligibility for any program.",
+   "Foundation for Puerto Rico runs WCRP in collaboration with the Puerto Rico Department of Housing (PRDOH), with HUD CDBG-DR funds. The WCRP page is published with an 'In review' marker: these values may change, and the page asks search engines not to index it while the marker is on.",
+   "No open license is stated: the ArcGIS services publish no license or access terms. FPR publishes the values on the observatory with the program's approval; others should ask PRDOH and FPR before re-using them.",
+   "The dashboard's municipio and Puerto Rico comparison columns are mislabelled and some municipio lead-paint values exceed 100%; the barrio values used here are labelled correctly (see the WCRP page)."
+  ],
+  "see_also": [
+   "wcrp.rvi_envir_rebuild",
+   "methods.wcrp_rvi",
+   "wcrp.rvi_inputs_orig",
+   "boundaries.wcrp_comunidades"
+  ],
+  "where": {
+   "files": [
+    "wcrp_rvi_barrio.json:rvi_envir_orig"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area, WCRP page: vulnerability map",
+     "href": "wcrp.html#a=envir"
+    },
+    {
+     "label": "Map, Analysis tab: shade the barrios by this index",
+     "href": "index.html#e=rvi_envir_orig.b"
+    }
+   ]
+  },
+  "added": "2026-10-17"
+ },
+ {
+  "id": "wcrp.rvi_envir_rebuild",
+  "name": "WCRP vulnerability, environment: updated 2020–2024 (index and level by barrio)",
+  "domain": "communities",
+  "domains": [
+   "communities",
+   "population",
+   "environment"
+  ],
+  "group": "WCRP vulnerability (Risk and Vulnerability Indicators)",
+  "kind": "variable",
+  "plain": "The same ranking of barrios in environment, updated by the observatory with the WCRP method on the Census survey of 2020–2024 and current EPA data on regulated sites, impaired waters and polluted air: a level from 1 (the least vulnerable fifth) to 5 (the most vulnerable fifth).",
+  "definition": "The environment index of the Risk and Vulnerability Indicators rebuilt by the observatory with the white paper's method on American Community Survey 5-year estimates 2020–2024 and the observatory's current local conditions: the barrio's percentile among the barrios with residents in that window, times 100 (higher is more vulnerable), and its rank, the fifth of the index. Inputs: Lead-paint indicator: homes built before 1960 (%); In a sulfur dioxide or lead non-attainment area (1 = yes); In a 303(d)-listed water assessment unit, EPA ATTAINS (1 = yes); Risk Management Plan facilities, active (count); Municipal solid waste landfill, open or closed, EPA LMOP (1 = yes); Superfund (National Priorities List) sites (count); Toxics Release Inventory facilities (count). Left out because no current source states terms: Solid waste facilities (transfer stations, recycling, open dumps) (No public source states terms: EPA lists municipal landfills only, and the only list of open dumps found (DRNA, 2014) states no license.). Defined differently from the original: In a sulfur dioxide or lead non-attainment area (1 = yes): Areas still in non-attainment in the EPA Green Book: San Juan and Guayama-Salinas for sulfur dioxide, Arecibo for lead. In a 303(d)-listed water assessment unit, EPA ATTAINS (1 = yes): Puerto Rico maps the assessment units of its rivers as the land that drains to each assessed reach, so a listed unit covers a watershed and far more barrios touch one than in the original, which does not say how it drew the waters. The input separates barrios less than the original's. Risk Management Plan facilities, active (count): Only the facilities the Facility Registry Service marks active are counted, far fewer than the original counted; it does not say which it took. Municipal solid waste landfill, open or closed, EPA LMOP (1 = yes): EPA's Landfill Methane Outreach Program lists municipal solid waste landfills only (open or closed), not open dumps; the original's landfill or open dump layer was supplied by FPR.",
+  "unit": "percentile among barrios (0 to 100); rank 1 to 5",
+  "value_type": "index",
+  "geography": "901 barrios (885 with a value)",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2020,
+   "last": 2024,
+   "frequency": "Rebuilt by python wcrp_rvi.py; the next window (2021-2025) is due in December 2026"
+  },
+  "method": "wcrp_rvi.py: each input becomes a percentile among the barrios that have a value (the share of them with a strictly lower value); within an area (or a sub-indicator: infrastructure's telecommunications and transportation; housing is the plain sum of its three inputs, which is what gives back the original) the percentiles are added and the sum ranked again; a barrio that lacks an input gets the sum of the inputs it has scaled to the full count (the white paper's education rule, generalised); the overall index ranks the sum of the six areas; the rank is ceil(5 x index), at least 1. A barrio with no residents in the window has no value. Inputs come from acs_barrio.json and, for public assistance (B19057), year built (B25034), computers (B28003), broadband (B28002) and school enrollment (B14003), from the same ACS window read by acs_small.py. The environment, hospital, severe housing problems and street inputs come from conditions_barrio.json (conditions.py: EPA TRI, Facility Registry Service, ATTAINS, Green Book and LMOP; HUD CHAS 2016-2020 spread from tracts; TIGER/Line 2026; drive time to a CMS general hospital along OpenStreetMap roads), each in its source's vintage. Against the original, 69% of the 879 barrios ranked in both change rank and 36% move two ranks or more (rank correlation 0.39).",
+  "sources": [
+   "acs5",
+   "fpr_method",
+   "epa_tri",
+   "epa_frs",
+   "epa_attains",
+   "epa_greenbook",
+   "epa_lmop"
+  ],
+  "source_detail": "ACS 5-year 2020–2024, barrio rows (acs_barrio.json and tables B19057, B25034, B28003, B28002, B14003); method of the RVI white paper (Hunter College, 2021); conditions_barrio.json (EPA TRI, FRS, ATTAINS, Green Book, LMOP; HUD CHAS 2016-2020; TIGER/Line 2026; CMS hospitals and OpenStreetMap roads)",
+  "how_to_read": "Read the rank, not small differences in the index. Where the rank differs from the original, the cause can be the inputs left out, five years of change or the roughness of barrio survey estimates: the WCRP page measures each.",
+  "caveats": [
+   "A rank compares barrios with each other on the inputs used. It is not a measure of need, risk of harm or eligibility for any program.",
+   "Foundation for Puerto Rico runs WCRP in collaboration with the Puerto Rico Department of Housing (PRDOH), with HUD CDBG-DR funds. The WCRP page is published with an 'In review' marker: these values may change, and the page asks search engines not to index it while the marker is on.",
+   "Margins of error of the inputs are not carried into the index; barrio survey estimates are rough, so a barrio near the edge of a fifth can change rank between survey windows.",
+   "Inputs are defined from the ACS tables named in the method; the original does not say which cells it used, so a definition can differ (households without a computer average 62% of households per barrio in the original and 20% here)."
+  ],
+  "see_also": [
+   "wcrp.rvi_envir_orig",
+   "methods.wcrp_rvi",
+   "wcrp.rvi_inputs_rebuild"
+  ],
+  "where": {
+   "files": [
+    "wcrp_rvi_barrio.json:rvi_envir_rebuild"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area, WCRP page: vulnerability map",
+     "href": "wcrp.html#a=envir&v=rebuild"
+    },
+    {
+     "label": "Map, Analysis tab: shade the barrios by this index",
+     "href": "index.html#e=rvi_envir_rebuild.b"
+    }
+   ]
+  },
+  "added": "2026-10-17"
+ },
+ {
+  "id": "wcrp.rvi_health_orig",
+  "name": "WCRP vulnerability, health: original 2022 (index and level by barrio)",
+  "domain": "communities",
+  "domains": [
+   "communities",
+   "population",
+   "health"
+  ],
+  "group": "WCRP vulnerability (Risk and Vulnerability Indicators)",
+  "kind": "variable",
+  "plain": "How vulnerable each barrio was in health compared with the other barrios, in the WCRP Risk and Vulnerability Indicators as published in 2022: a level from 1 (the least vulnerable fifth) to 5 (the most vulnerable fifth).",
+  "definition": "The health index of the Risk and Vulnerability Indicators (RVI) that Hunter College built for Foundation for Puerto Rico's Whole Community Resilience Planning (WCRP) program, as published in March 2022: the barrio's percentile among the 887 barrios with residents (0 to 1 in the source, stored times 100), where higher is more vulnerable, and its rank, the fifth of the index (1 = 0 to 20, low; 5 = above 80, high). Inputs: People with a disability (%); People without health insurance (%); Travel time to the nearest general hospital (minutes). Mostly ACS 2015-2019; the environment inputs are EPA layers of about 2021 and FPR-supplied waste layers, travel time to a hospital was computed by Hunter College, and intersection density uses TIGER 2020. The 14 barrios with no residents or structures have no value.",
+  "unit": "percentile among barrios (0 to 100); rank 1 to 5",
+  "value_type": "index",
+  "geography": "901 barrios (887 with a value)",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2015,
+   "last": 2019,
+   "frequency": "Published once (March 2022); wcrp_rvi.py reads the public services again on request"
+  },
+  "method": "Read as published from the public ArcGIS service All_Indicator (the OVERALL row of each barrio carries every area's index and rank); nothing is recomputed. The build checks that each published rank is the fifth of the published index (rank = ceil(5 x index), at least 1) and stops if one is not. Method of the source (white paper, December 2021): each input becomes a percentile among the barrios, the percentiles of an area are added and the sum ranked again; the overall index ranks the sum of the six area indices. Applied to the original's own published inputs, that method gives back this index with a rank correlation of 1.00 (99.4% of barrios keep their rank).",
+  "sources": [
+   "wcrp_rvi",
+   "acs5"
+  ],
+  "source_detail": "ArcGIS REST service All_Indicator (account PlanningCDBG), fields HEALTH, HEALTH_RAN",
+  "how_to_read": "Read the rank, not small differences in the index: each rank holds a fifth of the barrios (about 177). Compare groups of barrios; the barrio values of the survey behind most inputs are rough.",
+  "caveats": [
+   "A rank compares barrios with each other on the inputs used. It is not a measure of need, risk of harm or eligibility for any program.",
+   "Foundation for Puerto Rico runs WCRP in collaboration with the Puerto Rico Department of Housing (PRDOH), with HUD CDBG-DR funds. The WCRP page is published with an 'In review' marker: these values may change, and the page asks search engines not to index it while the marker is on.",
+   "No open license is stated: the ArcGIS services publish no license or access terms. FPR publishes the values on the observatory with the program's approval; others should ask PRDOH and FPR before re-using them.",
+   "The dashboard's municipio and Puerto Rico comparison columns are mislabelled and some municipio lead-paint values exceed 100%; the barrio values used here are labelled correctly (see the WCRP page)."
+  ],
+  "see_also": [
+   "wcrp.rvi_health_rebuild",
+   "methods.wcrp_rvi",
+   "wcrp.rvi_inputs_orig",
+   "boundaries.wcrp_comunidades"
+  ],
+  "where": {
+   "files": [
+    "wcrp_rvi_barrio.json:rvi_health_orig"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area, WCRP page: vulnerability map",
+     "href": "wcrp.html#a=health"
+    },
+    {
+     "label": "Map, Analysis tab: shade the barrios by this index",
+     "href": "index.html#e=rvi_health_orig.b"
+    }
+   ]
+  },
+  "added": "2026-10-17"
+ },
+ {
+  "id": "wcrp.rvi_health_rebuild",
+  "name": "WCRP vulnerability, health: updated 2020–2024 (index and level by barrio)",
+  "domain": "communities",
+  "domains": [
+   "communities",
+   "population",
+   "health"
+  ],
+  "group": "WCRP vulnerability (Risk and Vulnerability Indicators)",
+  "kind": "variable",
+  "plain": "The same ranking of barrios in health, updated by the observatory with the WCRP method on the Census survey of 2020–2024 and the drive time to the nearest general hospital: a level from 1 (the least vulnerable fifth) to 5 (the most vulnerable fifth).",
+  "definition": "The health index of the Risk and Vulnerability Indicators rebuilt by the observatory with the white paper's method on American Community Survey 5-year estimates 2020–2024 and the observatory's current local conditions: the barrio's percentile among the barrios with residents in that window, times 100 (higher is more vulnerable), and its rank, the fifth of the index. Inputs: People with a disability (%); People without health insurance (%); Drive time to the nearest general hospital (minutes, estimate). Defined differently from the original: Drive time to the nearest general hospital (minutes, estimate): The observatory's estimate along OpenStreetMap roads at free-flow speeds, from each barrio's population-weighted point to the nearest general hospital with an emergency department (CMS list); 0 where the barrio holds one. Vieques, Culebra and Isla de Mona have no road to a hospital and no value: their health rank uses the other two inputs.",
+  "unit": "percentile among barrios (0 to 100); rank 1 to 5",
+  "value_type": "index",
+  "geography": "901 barrios (885 with a value)",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2020,
+   "last": 2024,
+   "frequency": "Rebuilt by python wcrp_rvi.py; the next window (2021-2025) is due in December 2026"
+  },
+  "method": "wcrp_rvi.py: each input becomes a percentile among the barrios that have a value (the share of them with a strictly lower value); within an area (or a sub-indicator: infrastructure's telecommunications and transportation; housing is the plain sum of its three inputs, which is what gives back the original) the percentiles are added and the sum ranked again; a barrio that lacks an input gets the sum of the inputs it has scaled to the full count (the white paper's education rule, generalised); the overall index ranks the sum of the six areas; the rank is ceil(5 x index), at least 1. A barrio with no residents in the window has no value. Inputs come from acs_barrio.json and, for public assistance (B19057), year built (B25034), computers (B28003), broadband (B28002) and school enrollment (B14003), from the same ACS window read by acs_small.py. The environment, hospital, severe housing problems and street inputs come from conditions_barrio.json (conditions.py: EPA TRI, Facility Registry Service, ATTAINS, Green Book and LMOP; HUD CHAS 2016-2020 spread from tracts; TIGER/Line 2026; drive time to a CMS general hospital along OpenStreetMap roads), each in its source's vintage. Against the original, 66% of the 879 barrios ranked in both change rank and 31% move two ranks or more (rank correlation 0.43).",
+  "sources": [
+   "acs5",
+   "fpr_method",
+   "cms_provider_data",
+   "hhs_hospital_capacity",
+   "osm"
+  ],
+  "source_detail": "ACS 5-year 2020–2024, barrio rows (acs_barrio.json and tables B19057, B25034, B28003, B28002, B14003); method of the RVI white paper (Hunter College, 2021); conditions_barrio.json (EPA TRI, FRS, ATTAINS, Green Book, LMOP; HUD CHAS 2016-2020; TIGER/Line 2026; CMS hospitals and OpenStreetMap roads)",
+  "how_to_read": "Read the rank, not small differences in the index. Where the rank differs from the original, the cause can be the inputs left out, five years of change or the roughness of barrio survey estimates: the WCRP page measures each.",
+  "caveats": [
+   "A rank compares barrios with each other on the inputs used. It is not a measure of need, risk of harm or eligibility for any program.",
+   "Foundation for Puerto Rico runs WCRP in collaboration with the Puerto Rico Department of Housing (PRDOH), with HUD CDBG-DR funds. The WCRP page is published with an 'In review' marker: these values may change, and the page asks search engines not to index it while the marker is on.",
+   "Margins of error of the inputs are not carried into the index; barrio survey estimates are rough, so a barrio near the edge of a fifth can change rank between survey windows.",
+   "Inputs are defined from the ACS tables named in the method; the original does not say which cells it used, so a definition can differ (households without a computer average 62% of households per barrio in the original and 20% here).",
+   "Vieques, Culebra and Isla de Mona have no road to a general hospital and no drive time: their health index uses disability and health insurance only (the missing-input rule), which leaves out how far they are from hospital care."
+  ],
+  "see_also": [
+   "wcrp.rvi_health_orig",
+   "methods.wcrp_rvi",
+   "wcrp.rvi_inputs_rebuild"
+  ],
+  "where": {
+   "files": [
+    "wcrp_rvi_barrio.json:rvi_health_rebuild"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area, WCRP page: vulnerability map",
+     "href": "wcrp.html#a=health&v=rebuild"
+    },
+    {
+     "label": "Map, Analysis tab: shade the barrios by this index",
+     "href": "index.html#e=rvi_health_rebuild.b"
+    }
+   ]
+  },
+  "added": "2026-10-17"
+ },
+ {
+  "id": "wcrp.rvi_housing_orig",
+  "name": "WCRP vulnerability, housing: original 2022 (index and level by barrio)",
+  "domain": "communities",
+  "domains": [
+   "communities",
+   "population",
+   "housing"
+  ],
+  "group": "WCRP vulnerability (Risk and Vulnerability Indicators)",
+  "kind": "variable",
+  "plain": "How vulnerable each barrio was in housing compared with the other barrios, in the WCRP Risk and Vulnerability Indicators as published in 2022: a level from 1 (the least vulnerable fifth) to 5 (the most vulnerable fifth).",
+  "definition": "The housing index of the Risk and Vulnerability Indicators (RVI) that Hunter College built for Foundation for Puerto Rico's Whole Community Resilience Planning (WCRP) program, as published in March 2022: the barrio's percentile among the 887 barrios with residents (0 to 1 in the source, stored times 100), where higher is more vulnerable, and its rank, the fifth of the index (1 = 0 to 20, low; 5 = above 80, high). Inputs: Vacant housing units (%); Homes built before 1990 (%); Severe housing problems, HUD CHAS definition (%). Mostly ACS 2015-2019; the environment inputs are EPA layers of about 2021 and FPR-supplied waste layers, travel time to a hospital was computed by Hunter College, and intersection density uses TIGER 2020. The 14 barrios with no residents or structures have no value.",
+  "unit": "percentile among barrios (0 to 100); rank 1 to 5",
+  "value_type": "index",
+  "geography": "901 barrios (887 with a value)",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2015,
+   "last": 2019,
+   "frequency": "Published once (March 2022); wcrp_rvi.py reads the public services again on request"
+  },
+  "method": "Read as published from the public ArcGIS service All_Indicator (the OVERALL row of each barrio carries every area's index and rank); nothing is recomputed. The build checks that each published rank is the fifth of the published index (rank = ceil(5 x index), at least 1) and stops if one is not. Method of the source (white paper, December 2021): each input becomes a percentile among the barrios, the percentiles of an area are added and the sum ranked again; the overall index ranks the sum of the six area indices. Applied to the original's own published inputs, that method gives back this index with a rank correlation of 1.00 (98.9% of barrios keep their rank). Housing reproduces as the sum of its three inputs, not as the two sub-indicators the white paper describes.",
+  "sources": [
+   "wcrp_rvi",
+   "acs5"
+  ],
+  "source_detail": "ArcGIS REST service All_Indicator (account PlanningCDBG), fields HOUSING, HOUSING_RA",
+  "how_to_read": "Read the rank, not small differences in the index: each rank holds a fifth of the barrios (about 177). Compare groups of barrios; the barrio values of the survey behind most inputs are rough.",
+  "caveats": [
+   "A rank compares barrios with each other on the inputs used. It is not a measure of need, risk of harm or eligibility for any program.",
+   "Foundation for Puerto Rico runs WCRP in collaboration with the Puerto Rico Department of Housing (PRDOH), with HUD CDBG-DR funds. The WCRP page is published with an 'In review' marker: these values may change, and the page asks search engines not to index it while the marker is on.",
+   "No open license is stated: the ArcGIS services publish no license or access terms. FPR publishes the values on the observatory with the program's approval; others should ask PRDOH and FPR before re-using them.",
+   "The dashboard's municipio and Puerto Rico comparison columns are mislabelled and some municipio lead-paint values exceed 100%; the barrio values used here are labelled correctly (see the WCRP page)."
+  ],
+  "see_also": [
+   "wcrp.rvi_housing_rebuild",
+   "methods.wcrp_rvi",
+   "wcrp.rvi_inputs_orig",
+   "boundaries.wcrp_comunidades"
+  ],
+  "where": {
+   "files": [
+    "wcrp_rvi_barrio.json:rvi_housing_orig"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area, WCRP page: vulnerability map",
+     "href": "wcrp.html#a=housing"
+    },
+    {
+     "label": "Map, Analysis tab: shade the barrios by this index",
+     "href": "index.html#e=rvi_housing_orig.b"
+    }
+   ]
+  },
+  "added": "2026-10-17"
+ },
+ {
+  "id": "wcrp.rvi_housing_rebuild",
+  "name": "WCRP vulnerability, housing: updated 2020–2024 (index and level by barrio)",
+  "domain": "communities",
+  "domains": [
+   "communities",
+   "population",
+   "housing"
+  ],
+  "group": "WCRP vulnerability (Risk and Vulnerability Indicators)",
+  "kind": "variable",
+  "plain": "The same ranking of barrios in housing, updated by the observatory with the WCRP method on the Census survey of 2020–2024 and estimates of severe housing problems: a level from 1 (the least vulnerable fifth) to 5 (the most vulnerable fifth).",
+  "definition": "The housing index of the Risk and Vulnerability Indicators rebuilt by the observatory with the white paper's method on American Community Survey 5-year estimates 2020–2024 and the observatory's current local conditions: the barrio's percentile among the barrios with residents in that window, times 100 (higher is more vulnerable), and its rank, the fifth of the index. Inputs: Vacant housing units (%); Homes built before 1990 (%); Households with severe housing problems, CHAS 2016–2020 (%, estimate). Defined differently from the original: Households with severe housing problems, CHAS 2016–2020 (%, estimate): CHAS is published for census tracts, not barrios: the barrio value is an estimate, the tract counts spread by 2020 housing units. 2016–2020 is the newest window a script may read.",
+  "unit": "percentile among barrios (0 to 100); rank 1 to 5",
+  "value_type": "index",
+  "geography": "901 barrios (885 with a value)",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2020,
+   "last": 2024,
+   "frequency": "Rebuilt by python wcrp_rvi.py; the next window (2021-2025) is due in December 2026"
+  },
+  "method": "wcrp_rvi.py: each input becomes a percentile among the barrios that have a value (the share of them with a strictly lower value); within an area (or a sub-indicator: infrastructure's telecommunications and transportation; housing is the plain sum of its three inputs, which is what gives back the original) the percentiles are added and the sum ranked again; a barrio that lacks an input gets the sum of the inputs it has scaled to the full count (the white paper's education rule, generalised); the overall index ranks the sum of the six areas; the rank is ceil(5 x index), at least 1. A barrio with no residents in the window has no value. Inputs come from acs_barrio.json and, for public assistance (B19057), year built (B25034), computers (B28003), broadband (B28002) and school enrollment (B14003), from the same ACS window read by acs_small.py. The environment, hospital, severe housing problems and street inputs come from conditions_barrio.json (conditions.py: EPA TRI, Facility Registry Service, ATTAINS, Green Book and LMOP; HUD CHAS 2016-2020 spread from tracts; TIGER/Line 2026; drive time to a CMS general hospital along OpenStreetMap roads), each in its source's vintage. Against the original, 68% of the 879 barrios ranked in both change rank and 30% move two ranks or more (rank correlation 0.48).",
+  "sources": [
+   "acs5",
+   "fpr_method",
+   "hud_chas"
+  ],
+  "source_detail": "ACS 5-year 2020–2024, barrio rows (acs_barrio.json and tables B19057, B25034, B28003, B28002, B14003); method of the RVI white paper (Hunter College, 2021); conditions_barrio.json (EPA TRI, FRS, ATTAINS, Green Book, LMOP; HUD CHAS 2016-2020; TIGER/Line 2026; CMS hospitals and OpenStreetMap roads)",
+  "how_to_read": "Read the rank, not small differences in the index. Where the rank differs from the original, the cause can be the inputs left out, five years of change or the roughness of barrio survey estimates: the WCRP page measures each.",
+  "caveats": [
+   "A rank compares barrios with each other on the inputs used. It is not a measure of need, risk of harm or eligibility for any program.",
+   "Foundation for Puerto Rico runs WCRP in collaboration with the Puerto Rico Department of Housing (PRDOH), with HUD CDBG-DR funds. The WCRP page is published with an 'In review' marker: these values may change, and the page asks search engines not to index it while the marker is on.",
+   "Margins of error of the inputs are not carried into the index; barrio survey estimates are rough, so a barrio near the edge of a fifth can change rank between survey windows.",
+   "Inputs are defined from the ACS tables named in the method; the original does not say which cells it used, so a definition can differ (households without a computer average 62% of households per barrio in the original and 20% here)."
+  ],
+  "see_also": [
+   "wcrp.rvi_housing_orig",
+   "methods.wcrp_rvi",
+   "wcrp.rvi_inputs_rebuild"
+  ],
+  "where": {
+   "files": [
+    "wcrp_rvi_barrio.json:rvi_housing_rebuild"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area, WCRP page: vulnerability map",
+     "href": "wcrp.html#a=housing&v=rebuild"
+    },
+    {
+     "label": "Map, Analysis tab: shade the barrios by this index",
+     "href": "index.html#e=rvi_housing_rebuild.b"
+    }
+   ]
+  },
+  "added": "2026-10-17"
+ },
+ {
+  "id": "wcrp.rvi_infra_orig",
+  "name": "WCRP vulnerability, infrastructure: original 2022 (index and level by barrio)",
+  "domain": "communities",
+  "domains": [
+   "communities",
+   "population",
+   "infrastructure"
+  ],
+  "group": "WCRP vulnerability (Risk and Vulnerability Indicators)",
+  "kind": "variable",
+  "plain": "How vulnerable each barrio was in infrastructure compared with the other barrios, in the WCRP Risk and Vulnerability Indicators as published in 2022: a level from 1 (the least vulnerable fifth) to 5 (the most vulnerable fifth).",
+  "definition": "The infrastructure index of the Risk and Vulnerability Indicators (RVI) that Hunter College built for Foundation for Puerto Rico's Whole Community Resilience Planning (WCRP) program, as published in March 2022: the barrio's percentile among the 887 barrios with residents (0 to 1 in the source, stored times 100), where higher is more vulnerable, and its rank, the fifth of the index (1 = 0 to 20, low; 5 = above 80, high). Inputs: Street intersections per square mile (TIGER 2020); Households with no vehicle (%); Households without a computer (%); Households without internet (%); Households without broadband (%). Mostly ACS 2015-2019; the environment inputs are EPA layers of about 2021 and FPR-supplied waste layers, travel time to a hospital was computed by Hunter College, and intersection density uses TIGER 2020. The 14 barrios with no residents or structures have no value.",
+  "unit": "percentile among barrios (0 to 100); rank 1 to 5",
+  "value_type": "index",
+  "geography": "901 barrios (887 with a value)",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2015,
+   "last": 2019,
+   "frequency": "Published once (March 2022); wcrp_rvi.py reads the public services again on request"
+  },
+  "method": "Read as published from the public ArcGIS service All_Indicator (the OVERALL row of each barrio carries every area's index and rank); nothing is recomputed. The build checks that each published rank is the fifth of the published index (rank = ceil(5 x index), at least 1) and stops if one is not. Method of the source (white paper, December 2021): each input becomes a percentile among the barrios, the percentiles of an area are added and the sum ranked again; the overall index ranks the sum of the six area indices. Applied to the original's own published inputs, that method gives back this index with a rank correlation of 1.00 (99.5% of barrios keep their rank).",
+  "sources": [
+   "wcrp_rvi",
+   "acs5"
+  ],
+  "source_detail": "ArcGIS REST service All_Indicator (account PlanningCDBG), fields INFRA, INFRA_RANK",
+  "how_to_read": "Read the rank, not small differences in the index: each rank holds a fifth of the barrios (about 177). Compare groups of barrios; the barrio values of the survey behind most inputs are rough.",
+  "caveats": [
+   "A rank compares barrios with each other on the inputs used. It is not a measure of need, risk of harm or eligibility for any program.",
+   "Foundation for Puerto Rico runs WCRP in collaboration with the Puerto Rico Department of Housing (PRDOH), with HUD CDBG-DR funds. The WCRP page is published with an 'In review' marker: these values may change, and the page asks search engines not to index it while the marker is on.",
+   "No open license is stated: the ArcGIS services publish no license or access terms. FPR publishes the values on the observatory with the program's approval; others should ask PRDOH and FPR before re-using them.",
+   "The dashboard's municipio and Puerto Rico comparison columns are mislabelled and some municipio lead-paint values exceed 100%; the barrio values used here are labelled correctly (see the WCRP page)."
+  ],
+  "see_also": [
+   "wcrp.rvi_infra_rebuild",
+   "methods.wcrp_rvi",
+   "wcrp.rvi_inputs_orig",
+   "boundaries.wcrp_comunidades"
+  ],
+  "where": {
+   "files": [
+    "wcrp_rvi_barrio.json:rvi_infra_orig"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area, WCRP page: vulnerability map",
+     "href": "wcrp.html#a=infra"
+    },
+    {
+     "label": "Map, Analysis tab: shade the barrios by this index",
+     "href": "index.html#e=rvi_infra_orig.b"
+    }
+   ]
+  },
+  "added": "2026-10-17"
+ },
+ {
+  "id": "wcrp.rvi_infra_rebuild",
+  "name": "WCRP vulnerability, infrastructure: updated 2020–2024 (index and level by barrio)",
+  "domain": "communities",
+  "domains": [
+   "communities",
+   "population",
+   "infrastructure"
+  ],
+  "group": "WCRP vulnerability (Risk and Vulnerability Indicators)",
+  "kind": "variable",
+  "plain": "The same ranking of barrios in infrastructure, updated by the observatory with the WCRP method on the Census survey of 2020–2024 and street intersections: a level from 1 (the least vulnerable fifth) to 5 (the most vulnerable fifth).",
+  "definition": "The infrastructure index of the Risk and Vulnerability Indicators rebuilt by the observatory with the white paper's method on American Community Survey 5-year estimates 2020–2024 and the observatory's current local conditions: the barrio's percentile among the barrios with residents in that window, times 100 (higher is more vulnerable), and its rank, the fifth of the index. Inputs: Households without a computer (%); Households with no internet access (%); Households without broadband (%); Households with no vehicle (%); Street intersections per square mile, TIGER/Line 2026 (fewer is more vulnerable). Defined differently from the original: Street intersections per square mile, TIGER/Line 2026 (fewer is more vulnerable): Intersections where three or more street edges meet (TIGER/Line 2026; no highways, ramps or paths) over land area. The original counted TIGER 2020 roads in a way it does not describe, so only the order of the barrios compares, not the values.",
+  "unit": "percentile among barrios (0 to 100); rank 1 to 5",
+  "value_type": "index",
+  "geography": "901 barrios (885 with a value)",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2020,
+   "last": 2024,
+   "frequency": "Rebuilt by python wcrp_rvi.py; the next window (2021-2025) is due in December 2026"
+  },
+  "method": "wcrp_rvi.py: each input becomes a percentile among the barrios that have a value (the share of them with a strictly lower value); within an area (or a sub-indicator: infrastructure's telecommunications and transportation; housing is the plain sum of its three inputs, which is what gives back the original) the percentiles are added and the sum ranked again; a barrio that lacks an input gets the sum of the inputs it has scaled to the full count (the white paper's education rule, generalised); the overall index ranks the sum of the six areas; the rank is ceil(5 x index), at least 1. A barrio with no residents in the window has no value. Inputs come from acs_barrio.json and, for public assistance (B19057), year built (B25034), computers (B28003), broadband (B28002) and school enrollment (B14003), from the same ACS window read by acs_small.py. The environment, hospital, severe housing problems and street inputs come from conditions_barrio.json (conditions.py: EPA TRI, Facility Registry Service, ATTAINS, Green Book and LMOP; HUD CHAS 2016-2020 spread from tracts; TIGER/Line 2026; drive time to a CMS general hospital along OpenStreetMap roads), each in its source's vintage. Against the original, 64% of the 879 barrios ranked in both change rank and 28% move two ranks or more (rank correlation 0.54).",
+  "sources": [
+   "acs5",
+   "fpr_method",
+   "census_tiger_lines"
+  ],
+  "source_detail": "ACS 5-year 2020–2024, barrio rows (acs_barrio.json and tables B19057, B25034, B28003, B28002, B14003); method of the RVI white paper (Hunter College, 2021); conditions_barrio.json (EPA TRI, FRS, ATTAINS, Green Book, LMOP; HUD CHAS 2016-2020; TIGER/Line 2026; CMS hospitals and OpenStreetMap roads)",
+  "how_to_read": "Read the rank, not small differences in the index. Where the rank differs from the original, the cause can be the inputs left out, five years of change or the roughness of barrio survey estimates: the WCRP page measures each.",
+  "caveats": [
+   "A rank compares barrios with each other on the inputs used. It is not a measure of need, risk of harm or eligibility for any program.",
+   "Foundation for Puerto Rico runs WCRP in collaboration with the Puerto Rico Department of Housing (PRDOH), with HUD CDBG-DR funds. The WCRP page is published with an 'In review' marker: these values may change, and the page asks search engines not to index it while the marker is on.",
+   "Margins of error of the inputs are not carried into the index; barrio survey estimates are rough, so a barrio near the edge of a fifth can change rank between survey windows.",
+   "Inputs are defined from the ACS tables named in the method; the original does not say which cells it used, so a definition can differ (households without a computer average 62% of households per barrio in the original and 20% here)."
+  ],
+  "see_also": [
+   "wcrp.rvi_infra_orig",
+   "methods.wcrp_rvi",
+   "wcrp.rvi_inputs_rebuild"
+  ],
+  "where": {
+   "files": [
+    "wcrp_rvi_barrio.json:rvi_infra_rebuild"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area, WCRP page: vulnerability map",
+     "href": "wcrp.html#a=infra&v=rebuild"
+    },
+    {
+     "label": "Map, Analysis tab: shade the barrios by this index",
+     "href": "index.html#e=rvi_infra_rebuild.b"
+    }
+   ]
+  },
+  "added": "2026-10-17"
+ },
+ {
+  "id": "wcrp.rvi_inputs_orig",
+  "name": "Inputs of the WCRP vulnerability index, original 2022 (by barrio)",
+  "domain": "communities",
+  "domains": [
+   "communities",
+   "population",
+   "economy",
+   "education",
+   "environment",
+   "health",
+   "housing",
+   "infrastructure"
+  ],
+  "group": "WCRP vulnerability (Risk and Vulnerability Indicators)",
+  "kind": "variable",
+  "plain": "The values behind each barrio's WCRP vulnerability index in the original 2022 version, as published: poverty, public assistance, unemployment, schooling, environmental sites, disability, insurance, hospital travel time, housing and internet.",
+  "definition": "One field per input, for each of the 901 barrios: o_public_assist_pct: Population on public assistance (%); o_per_capita_income: Per capita income ($; shown in the table, not an input of the index per the white paper); o_poverty_pct: Population below the poverty line (%); o_unemployed_pct: Unemployed (%); o_not_enrolled_3_24_pct: People aged 3 to 24 not enrolled in school (%); o_no_diploma_pct: Adults 25+ without a high school diploma (%); o_nonattainment: In a sulfur dioxide or lead non-attainment area (1 = yes); o_impaired_water: Impaired water body, EPA 303(d) (1 = yes); o_rmp_sites: Risk Management Plan sites (count); o_dumps: Municipal landfill or open dump (1 = yes); o_solid_waste: Solid waste facility (1 = yes); o_npl_sites: Superfund (National Priorities List) sites (count); o_tri_facilities: Toxics Release Inventory facilities (count); o_lead_paint_pct: Lead-paint indicator: homes built before 1960 (%); o_disability_pct: People with a disability (%); o_uninsured_pct: People without health insurance (%); o_hospital_min: Travel time to the nearest general hospital (minutes); o_vacancy_pct: Vacant housing units (%); o_built_pre1990_pct: Homes built before 1990 (%); o_severe_problems_pct: Severe housing problems, HUD CHAS definition (%); o_intersections_sqmi: Street intersections per square mile (TIGER 2020); o_no_vehicle_pct: Households with no vehicle (%); o_no_computer_pct: Households without a computer (%); o_no_internet_pct: Households without internet (%); o_no_broadband_pct: Households without broadband (%). population: total population (ACS 2015-2019, TOTPOP).",
+  "unit": "as each field says (%, count, 1 = yes, minutes, dollars)",
+  "value_type": "rate",
+  "geography": "901 barrios",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2015,
+   "last": 2019,
+   "frequency": "Published once (March 2022)"
+  },
+  "method": "Read from the barrio columns of the public ArcGIS table Master_Data_Table_Update (Var1 to Var8 of each indicator's rows; GEOID is a number there and is matched to the observatory's ten-digit barrio code) and TOTPOP from All_Indicator. The municipio and Puerto Rico columns are not kept: several are mislabelled. The labels follow the dashboard's barrio list and the white paper. The 21 barrios with nobody aged 3 to 24 (white paper, appendix C) carry a 0 for school enrollment in the service; the observatory stores no value for them, as the white paper says.",
+  "sources": [
+   "wcrp_rvi"
+  ],
+  "source_detail": "ArcGIS REST table Master_Data_Table_Update and service All_Indicator (account PlanningCDBG)",
+  "how_to_read": "These are the values the original ranked; compare them with the rebuild's inputs in the WCRP page's pop-up, keeping in mind that the two versions may define an input differently.",
+  "caveats": [
+   "A rank compares barrios with each other on the inputs used. It is not a measure of need, risk of harm or eligibility for any program.",
+   "Foundation for Puerto Rico runs WCRP in collaboration with the Puerto Rico Department of Housing (PRDOH), with HUD CDBG-DR funds. The WCRP page is published with an 'In review' marker: these values may change, and the page asks search engines not to index it while the marker is on.",
+   "Per capita income (o_per_capita_income) appears in the source table but is not an input of the index according to the white paper.",
+   "Homes built before 1990 reach 100.1% in 2 barrios: an error in the source."
+  ],
+  "see_also": [
+   "wcrp.rvi_overall_orig",
+   "wcrp.rvi_inputs_rebuild"
+  ],
+  "where": {
+   "files": [
+    "wcrp_rvi_inputs.json:o_public_assist_pct",
+    "wcrp_rvi_inputs.json:o_per_capita_income",
+    "wcrp_rvi_inputs.json:o_poverty_pct",
+    "wcrp_rvi_inputs.json:o_unemployed_pct",
+    "wcrp_rvi_inputs.json:o_not_enrolled_3_24_pct",
+    "wcrp_rvi_inputs.json:o_no_diploma_pct",
+    "wcrp_rvi_inputs.json:o_nonattainment",
+    "wcrp_rvi_inputs.json:o_impaired_water",
+    "wcrp_rvi_inputs.json:o_rmp_sites",
+    "wcrp_rvi_inputs.json:o_dumps",
+    "wcrp_rvi_inputs.json:o_solid_waste",
+    "wcrp_rvi_inputs.json:o_npl_sites",
+    "wcrp_rvi_inputs.json:o_tri_facilities",
+    "wcrp_rvi_inputs.json:o_lead_paint_pct",
+    "wcrp_rvi_inputs.json:o_disability_pct",
+    "wcrp_rvi_inputs.json:o_uninsured_pct",
+    "wcrp_rvi_inputs.json:o_hospital_min",
+    "wcrp_rvi_inputs.json:o_vacancy_pct",
+    "wcrp_rvi_inputs.json:o_built_pre1990_pct",
+    "wcrp_rvi_inputs.json:o_severe_problems_pct",
+    "wcrp_rvi_inputs.json:o_intersections_sqmi",
+    "wcrp_rvi_inputs.json:o_no_vehicle_pct",
+    "wcrp_rvi_inputs.json:o_no_computer_pct",
+    "wcrp_rvi_inputs.json:o_no_internet_pct",
+    "wcrp_rvi_inputs.json:o_no_broadband_pct",
+    "wcrp_rvi_inputs.json:population"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area, WCRP page: vulnerability map",
+     "href": "wcrp.html#vulnerability"
+    }
+   ]
+  },
+  "added": "2026-10-17"
+ },
+ {
+  "id": "wcrp.rvi_inputs_rebuild",
+  "name": "Inputs of the WCRP vulnerability index, updated 2020–2024 (by barrio)",
+  "domain": "communities",
+  "domains": [
+   "communities",
+   "population",
+   "economy",
+   "education",
+   "environment",
+   "health",
+   "housing",
+   "infrastructure"
+  ],
+  "group": "WCRP vulnerability (Risk and Vulnerability Indicators)",
+  "kind": "variable",
+  "plain": "The values behind each barrio's updated WCRP vulnerability index (Updated 2020–2024): shares from the Census survey of 2020–2024, such as poverty, unemployment, disability, vacancy and households without internet, and current counts of EPA sites, flags for impaired waters and polluted air, severe housing problems, street intersections and the drive time to a hospital.",
+  "definition": "One field per input, for each of the 901 barrios: poverty_pct: People below the poverty line (%) (acs_barrio:poverty_pct); public_assist_hh_pct: Households with cash public assistance income (%) (B19057: 002 / 001); unemployment_rate_pct: Unemployment rate (%) (acs_barrio:unemployment_rate_pct); not_enrolled_3_24_pct: People aged 3 to 24 not enrolled in school (%) (B14003: not enrolled aged 3 to 24 / everyone aged 3 to 24); acs_no_hs_pct: Adults 25+ without a high school diploma (%) (acs_barrio:acs_no_hs_pct); built_pre1960_pct: Lead-paint indicator: homes built before 1960 (%) (B25034: 009 + 010 + 011 / 001); nonattainment_flag: In a sulfur dioxide or lead non-attainment area (1 = yes) (conditions_barrio: epa_naa_so2_pct > 0 or epa_naa_lead_pct > 0); impaired_water_flag: In a 303(d)-listed water assessment unit, EPA ATTAINS (1 = yes) (conditions_barrio: epa_303d_pct > 0); rmp_sites: Risk Management Plan facilities, active (count) (conditions_barrio:epa_rmp); landfill_flag: Municipal solid waste landfill, open or closed, EPA LMOP (1 = yes) (conditions_barrio: epa_landfills > 0); npl_sites: Superfund (National Priorities List) sites (count) (conditions_barrio:epa_npl); tri_facilities: Toxics Release Inventory facilities (count) (conditions_barrio:epa_tri); acs_disability_pct: People with a disability (%) (acs_barrio:acs_disability_pct); acs_uninsured_pct: People without health insurance (%) (acs_barrio:acs_uninsured_pct); hospital_drive_min: Drive time to the nearest general hospital (minutes, estimate) (conditions_barrio:hosp_drive_min); vacancy_pct: Vacant housing units (%) (acs_barrio:vacancy_pct); built_pre1990_pct: Homes built before 1990 (%) (B25034: 006 to 011 / 001); severe_problems_pct: Households with severe housing problems, CHAS 2016–2020 (%, estimate) (conditions_barrio:chas_severe_pct); no_computer_pct: Households without a computer (%) (B28003: 006 / 001); no_internet_pct: Households with no internet access (%) (acs_barrio:no_internet_pct); no_broadband_pct: Households without broadband (%) (B28002: (001 - 004) / 001); no_vehicle_hh_pct: Households with no vehicle (%) (acs_barrio:no_vehicle_hh_pct); intersection_density: Street intersections per square mile, TIGER/Line 2026 (fewer is more vulnerable) (conditions_barrio:street_intersection_density). Shares are percent; flags are 1 (yes) or 0; counts are sites in the barrio; the drive time is in minutes. The population of each version is in the population field of its block (ACS 2020–2024, acs_population).",
+  "unit": "percent, count, flag (1 = yes) or minutes, as each label says",
+  "value_type": "rate",
+  "geography": "901 barrios",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2020,
+   "last": 2024,
+   "frequency": "Rebuilt by python wcrp_rvi.py"
+  },
+  "method": "Variables that acs_barrio.json holds are copied from its newest window; the others are computed from the barrio rows of the same window's tables read by acs_small.py: the cells named after each label. The other inputs are copied from conditions_barrio.json (conditions.py); a flag is 1 where the barrio's share of the area is above 0. A share whose denominator is zero or missing has no value. Rounded to one decimal.",
+  "sources": [
+   "acs5",
+   "epa_tri",
+   "epa_frs",
+   "epa_attains",
+   "epa_greenbook",
+   "epa_lmop",
+   "cms_provider_data",
+   "hhs_hospital_capacity",
+   "osm",
+   "hud_chas",
+   "census_tiger_lines"
+  ],
+  "source_detail": "ACS 5-year 2020–2024: acs_barrio.json; tables B19057, B25034, B28003, B28002 and B14003 (barrio rows); conditions_barrio.json (EPA TRI, FRS, ATTAINS, Green Book, LMOP; HUD CHAS 2016-2020; TIGER/Line 2026; CMS hospitals and OpenStreetMap roads)",
+  "how_to_read": "Survey estimates for barrios are rough; their margins of error are in acs_barrio.json for the variables it holds and are not kept here.",
+  "caveats": [
+   "Margins of error are not stored in this file.",
+   "Definitions can differ from the original's, which does not say which cells or layers it used; the WCRP page lists the inputs whose current source defines them differently.",
+   "Severe housing problems and the drive time to a hospital are estimates (see conditions.chas_severe_pct and conditions.hosp_drive_min); Vieques, Culebra and Isla de Mona have no drive time."
+  ],
+  "see_also": [
+   "wcrp.rvi_overall_rebuild",
+   "wcrp.rvi_inputs_orig",
+   "conditions.epa_tri",
+   "conditions.hosp_drive_min",
+   "conditions.chas_severe_pct"
+  ],
+  "where": {
+   "files": [
+    "wcrp_rvi_inputs.json:poverty_pct",
+    "wcrp_rvi_inputs.json:public_assist_hh_pct",
+    "wcrp_rvi_inputs.json:unemployment_rate_pct",
+    "wcrp_rvi_inputs.json:not_enrolled_3_24_pct",
+    "wcrp_rvi_inputs.json:acs_no_hs_pct",
+    "wcrp_rvi_inputs.json:built_pre1960_pct",
+    "wcrp_rvi_inputs.json:acs_disability_pct",
+    "wcrp_rvi_inputs.json:acs_uninsured_pct",
+    "wcrp_rvi_inputs.json:vacancy_pct",
+    "wcrp_rvi_inputs.json:built_pre1990_pct",
+    "wcrp_rvi_inputs.json:no_computer_pct",
+    "wcrp_rvi_inputs.json:no_internet_pct",
+    "wcrp_rvi_inputs.json:no_broadband_pct",
+    "wcrp_rvi_inputs.json:no_vehicle_hh_pct",
+    "wcrp_rvi_inputs.json:nonattainment_flag",
+    "wcrp_rvi_inputs.json:impaired_water_flag",
+    "wcrp_rvi_inputs.json:rmp_sites",
+    "wcrp_rvi_inputs.json:landfill_flag",
+    "wcrp_rvi_inputs.json:npl_sites",
+    "wcrp_rvi_inputs.json:tri_facilities",
+    "wcrp_rvi_inputs.json:hospital_drive_min",
+    "wcrp_rvi_inputs.json:severe_problems_pct",
+    "wcrp_rvi_inputs.json:intersection_density"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area, WCRP page: vulnerability map",
+     "href": "wcrp.html#v=rebuild"
+    }
+   ]
+  },
+  "added": "2026-10-17"
+ },
+ {
+  "id": "wcrp.rvi_age_context",
+  "name": "Age groups beside the WCRP vulnerability index, 2020–2024 (by barrio)",
+  "domain": "communities",
+  "domains": [
+   "communities",
+   "population",
+   "health"
+  ],
+  "group": "WCRP vulnerability (Risk and Vulnerability Indicators)",
+  "kind": "variable",
+  "plain": "The share of each barrio's residents in four age groups (under 18, 18 to 44, 45 to 64, 65 and over), from the Census survey of 2020–2024, shown beside the updated WCRP vulnerability index (Updated 2020–2024). They are not part of the index and change no level.",
+  "definition": "Four fields for each of the 901 barrios, in the rebuild block's context (wcrp_rvi_inputs.json): age_under18_pct: residents under 18 (%); age_18to44_pct: residents aged 18 to 44 (%); age_45to64_pct: residents aged 45 to 64 (%); age_65plus_pct: residents aged 65 and over (%). context_moe holds the margin of error of each (90% confidence, percentage points). The original dashboard showed the same groups as counts (All_Indicator UNDER17, OVER65 and the age bands, ACS 2015–2019) beside its index as the vulnerable population; the white paper's method uses no age input (its Appendix A lists vulnerable populations among the candidates, not among the inputs chosen).",
+  "unit": "percent of residents",
+  "value_type": "rate",
+  "geography": "901 barrios",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2020,
+   "last": 2024,
+   "frequency": "Rebuilt by python wcrp_rvi.py"
+  },
+  "method": "Copied from acs_barrio.json (acs_under18_pct, acs_age18to44_pct, acs_age45to64_pct, acs_age65plus_pct and their margins of error, built by small_area.py from table B01001) for the rebuild's survey window, rounded to one decimal.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "ACS 5-year 2020–2024, table B01001 (sex by age), barrio rows: acs_barrio.json",
+  "how_to_read": "Survey estimates for barrios are rough: the WCRP page gives each share with its margin of error. A share of 0 in a small barrio can be a sampling result, not the absence of the group.",
+  "caveats": [
+   "Context only: not an input of the index, so it changes no rank.",
+   "The original's age groups (under 17, over 65) do not match these bands exactly; the page does not compare them."
+  ],
+  "see_also": [
+   "population.acs_under18_pct",
+   "population.acs_age65plus_pct",
+   "wcrp.rvi_inputs_rebuild",
+   "wcrp.rvi_overall_rebuild"
+  ],
+  "where": {
+   "files": [
+    "wcrp_rvi_inputs.json:age_under18_pct",
+    "wcrp_rvi_inputs.json:age_18to44_pct",
+    "wcrp_rvi_inputs.json:age_45to64_pct",
+    "wcrp_rvi_inputs.json:age_65plus_pct"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area, WCRP page: vulnerability map (pop-up, Overall)",
+     "href": "wcrp.html#method"
+    }
+   ]
+  },
+  "added": "2026-10-18"
+ },
+ {
+  "id": "methods.wcrp_rvi",
+  "name": "WCRP Risk and Vulnerability Indicators: method, updated version and checks",
+  "domain": "population",
+  "domains": [
+   "population",
+   "system.docs"
+  ],
+  "group": "WCRP vulnerability (Risk and Vulnerability Indicators)",
+  "kind": "method",
+  "plain": "How the WCRP vulnerability index ranks barrios: each input becomes a percentile among barrios, the percentiles of an area are added and ranked again, the six areas are added for the overall index, and levels are fifths.",
+  "definition": "Hunter College built the Risk and Vulnerability Indicators (RVI) for Foundation for Puerto Rico's Whole Community Resilience Planning (WCRP) program (white paper, December 2021; data published March 2022). Steps: (1) each input becomes a percentile among the barrios with a value, higher meaning more vulnerable; (2) within an area the percentiles are added and the sum ranked again (infrastructure through two sub-indicators; the white paper describes two for housing too, but the published housing index is the plain sum of its inputs); (3) the overall index ranks the sum of the six area indices with equal weights; (4) ranks are fifths: 1 = 0 to 0.20 (low) to 5 = above 0.80 (high). Barrios with no residents have no value; in education, 21 barrios with nobody aged 3 to 24 have their no-diploma percentile doubled. The observatory shows the original as published and a rebuild on ACS 2020–2024 and its current local conditions (conditions_barrio.json). Input left out of the rebuild: Solid waste facilities (transfer stations, recycling, open dumps) (environment).",
+  "unit": "not applicable (method)",
+  "value_type": "text",
+  "geography": "901 barrios",
+  "coverage": {
+   "timeline": "static",
+   "frequency": "Fixed by the white paper; the rebuild follows each new ACS window"
+  },
+  "method": "The percentile that reproduces the original from its own inputs is the share of barrios with a strictly lower value (n = barrios with a value). With it, the original's own inputs give back its published index with rank correlation 1.00 for overall, education, health, housing and infrastructure; economy (0.68) and environment (0.93) do not reproduce. Housing reproduces as a flat sum of its three inputs (1.00), not as the two sub-indicators the white paper describes (0.96). A hypothesis to confirm with Hunter College: the published economy index matches one built from public assistance, poverty and per capita income, with higher income counted as more vulnerable and without unemployment, much better (rank correlation 0.93, 81% same rank). Where the rebuild differs: ranking the original's 2015-2019 values with the rebuild's inputs changes 29% of overall ranks (almost all through economy and environment); the rebuild changes the overall rank of 68% of the 879 barrios ranked in both and moves 29% two ranks or more; the rebuild on 2017-2021 and on 2020-2024, with the same non-survey inputs, differs for 52% of barrios. tests/test_wcrp_rvi.py checks the method on a small hand-worked example.",
+  "sources": [
+   "wcrp_rvi",
+   "acs5",
+   "epa_tri",
+   "epa_frs",
+   "epa_attains",
+   "epa_greenbook",
+   "epa_lmop",
+   "cms_provider_data",
+   "hhs_hospital_capacity",
+   "osm",
+   "hud_chas",
+   "census_tiger_lines"
+  ],
+  "source_detail": "RVI white paper (Hunter College for FPR, December 2021), an internal FPR document; wcrp_rvi.py",
+  "how_to_read": "A rank is relative: it says which fifth of barrios a place falls in on the inputs used, not how much need there is.",
+  "caveats": [
+   "A rank compares barrios with each other on the inputs used. It is not a measure of need, risk of harm or eligibility for any program.",
+   "Foundation for Puerto Rico runs WCRP in collaboration with the Puerto Rico Department of Housing (PRDOH), with HUD CDBG-DR funds. The WCRP page is published with an 'In review' marker: these values may change, and the page asks search engines not to index it while the marker is on.",
+   "Hazards (flood, landslide, sea level rise) are not inputs, as the white paper decided."
+  ],
+  "see_also": [
+   "wcrp.rvi_overall_orig",
+   "wcrp.rvi_overall_rebuild",
+   "boundaries.wcrp_comunidades"
+  ],
+  "where": {
+   "files": [],
+   "view": [
+    {
+     "label": "Knowledge Area, WCRP page: vulnerability map",
+     "href": "wcrp.html#vulnerability"
+    }
+   ]
+  },
+  "added": "2026-10-17"
+ },
+ {
+  "id": "wcrp.ce_assets",
+  "name": "Community assets of the Comunidades Especiales (WCRP Social Capital Mapping list)",
+  "domain": "communities",
+  "domains": [
+   "communities",
+   "housing",
+   "population",
+   "education",
+   "public-money"
+  ],
+  "group": "WCRP Social Capital map",
+  "kind": "variable",
+  "plain": "Whether each Comunidad Especial had a community center, a library, an electronic library, a passive park, a sports court, a residents', recreation or crime-prevention association, and a PDI, as the WCRP Social Capital Mapping list records it; counted by municipio.",
+  "definition": "Nine Yes/No flags of the WCRP Social Capital Mapping list of 711 Comunidades Especiales, as the list writes them: centro_comunal (community center), biblioteca (library), biblioteca_electronica (electronic library), parque_pasivo (passive park), cancha (sports court), asoc_residentes (residents' association), asoc_recreativa (recreation association), asoc_prevencion_crimen (crime-prevention association) and pdi (the list's column PDI, which it does not define). Each flag is 'si', 'no' or 'nd' ('Información No Disponible'). By municipio and for Puerto Rico: listed (rows of the list), matched (rows matched to a polygon of comunidades.geojson), yes.<flag> (rows with 'si') and unknown.<flag> (rows with 'nd'); and for each matched polygon its nine flags as one code (1 yes, 0 no, - not recorded).",
+  "unit": "count of communities; a flag per community",
+  "value_type": "count",
+  "geography": "78 municipios and Puerto Rico; 710 of the 713 Comunidades Especiales polygons",
+  "coverage": {
+   "timeline": "snapshot",
+   "frequency": "Date not stated: the WCRP Social Capital Mapping list, about 2019-2021, from the Junta de Planificación inventory; no live source"
+  },
+  "method": "wcrp_social.py --import reads the list, restores the municipio names and, where it can, the accented letters the copy lost, and matches each row to a polygon of the same municipio: by the same name once accents, capitals and punctuation are set aside (686 rows), by name and barrio where two polygons share the name (1), or by a clearly closest name in the same barrio (23; listed with enlace = parecido in wcrp_ce_assets.csv for review). One row is not matched (Parcelas Pda. 27, San Juan); 3 polygons have no row. The build counts the flags by municipio over every row, matched or not.",
+  "sources": [
+   "wcrp_scm",
+   "jp_comunidades_especiales"
+  ],
+  "source_detail": "COMUNIDADES ESPECIALES.csv, WCRP Social Capital Mapping tool (FPR SharePoint, Community Resiliency Planning); cleaned extract wcrp_ce_assets.csv",
+  "how_to_read": "Read a count as what the list recorded when it was compiled, not as today's situation. 'Not recorded' is not 'no': about 110 to 130 rows have no information for each flag except PDI.",
+  "caveats": [
+   "The list's date is not stated. It was compiled for the WCRP Social Capital Mapping tool, about 2019-2021, from the Junta de Planificación inventory; assets may have opened or closed since.",
+   "The list does not define PDI.",
+   "23 rows are matched to a polygon by a close name, not the same name: wcrp_ce_assets.csv marks them (enlace = parecido) so a reviewer can check them.",
+   "Foundation for Puerto Rico runs WCRP in collaboration with the Puerto Rico Department of Housing (PRDOH), with HUD CDBG-DR funds. The WCRP page is published with an 'In review' marker: these values may change, and the page asks search engines not to index it while the marker is on."
+  ],
+  "see_also": [
+   "boundaries.comunidades_especiales",
+   "boundaries.wcrp_comunidades",
+   "wcrp.social_counts"
+  ],
+  "where": {
+   "files": [
+    "wcrp_social.json:centro_comunal",
+    "wcrp_social.json:biblioteca",
+    "wcrp_social.json:biblioteca_electronica",
+    "wcrp_social.json:parque_pasivo",
+    "wcrp_social.json:cancha",
+    "wcrp_social.json:asoc_residentes",
+    "wcrp_social.json:asoc_recreativa",
+    "wcrp_social.json:asoc_prevencion_crimen",
+    "wcrp_social.json:pdi",
+    "wcrp_social.json:listed",
+    "wcrp_social.json:matched"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area, WCRP page: Social Capital map",
+     "href": "wcrp.html#social"
+    }
+   ]
+  },
+  "added": "2026-10-17"
+ },
+ {
+  "id": "wcrp.social_counts",
+  "name": "Residents and Comunidades Especiales by municipio, for the WCRP Social Capital summary",
+  "domain": "communities",
+  "domains": [
+   "communities",
+   "population",
+   "housing"
+  ],
+  "group": "WCRP Social Capital map",
+  "kind": "variable",
+  "plain": "For each municipio: its residents (latest Census Bureau estimate), which the WCRP page divides the asset counts by, and how many Comunidades Especiales and housing units in them it has (2006).",
+  "definition": "population: residents, the latest year of the Census Bureau's Population Estimates in housing_series.json (2025, Vintage 2025), the denominator of the per-1,000 rates of the WCRP page's municipio summary. polygons: the Comunidades Especiales of comunidades.geojson in the municipio. housing_units: the sum of their housing units (viviendas, Junta de Planificación 2006 inventory). The last value of each array is Puerto Rico.",
+  "unit": "people; communities; housing units",
+  "value_type": "count",
+  "geography": "78 municipios and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2006,
+   "last": 2025,
+   "frequency": "Rebuilt by python wcrp_social.py when housing_series.json or comunidades.geojson changes"
+  },
+  "method": "Copied from housing_series.json (population, latest year) and counted from comunidades.geojson by its municipio field. The residents inside a protected area, which the summary divides by the 2020 Census residents, come from exposure_municipio.json.",
+  "sources": [
+   "census_pep",
+   "jp_comunidades_especiales"
+  ],
+  "source_detail": "housing_series.json:population; comunidades.geojson:municipio, viviendas",
+  "how_to_read": "A rate per 1,000 residents compares municipios of different sizes; for small counts (a few stations) a single facility moves the rate a lot.",
+  "caveats": [
+   "The Comunidades Especiales and their housing units describe the 2006 delimitation, not today."
+  ],
+  "see_also": [
+   "housing.population",
+   "boundaries.comunidades_viviendas",
+   "wcrp.ce_assets"
+  ],
+  "where": {
+   "files": [
+    "wcrp_social.json:population",
+    "wcrp_social.json:polygons",
+    "wcrp_social.json:housing_units"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area, WCRP page: Social Capital map",
+     "href": "wcrp.html#social"
+    }
+   ]
+  },
+  "added": "2026-10-17"
+ }
+]

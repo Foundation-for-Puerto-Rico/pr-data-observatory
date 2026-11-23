@@ -1,0 +1,863 @@
+[
+ {
+  "id": "conditions.epa_tri",
+  "ask": {
+   "en": [
+    "toxic release inventory",
+    "tri facilities",
+    "toxic chemical plants"
+   ],
+   "es": [
+    "inventario de emisiones tóxicas",
+    "instalaciones tri",
+    "plantas con químicos tóxicos"
+   ]
+  },
+  "name": "Toxics Release Inventory facilities (EPA)",
+  "domain": "environment",
+  "domains": [
+   "environment",
+   "health"
+  ],
+  "group": "Regulated sites (EPA)",
+  "kind": "variable",
+  "plain": "How many plants in each barrio and municipio reported toxic chemical releases or waste to EPA's Toxics Release Inventory for 2024.",
+  "definition": "Facilities that filed a Toxics Release Inventory (TRI) report with EPA for the reporting year 2024: plants of covered industries (chemicals, pharmaceuticals, power, petroleum terminals and others) that make, process or otherwise use more than a threshold amount of a listed toxic chemical. A count of facilities, not of releases or of their amounts.",
+  "unit": "facilities",
+  "value_type": "count",
+  "geography": "901 barrios, 78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2024,
+   "last": 2024,
+   "frequency": "One snapshot; each dataset in its source's vintage (TRI reporting year 2024; FRS, Green Book and CMS read 2026-10-17; ATTAINS 2024 cycle; LMOP data of 2024-09; HUD CHAS 2016-2020; TIGER/Line 2026). Rebuilt with python conditions.py --refresh."
+  },
+  "method": "conditions.py reads the source, places each site in the barrio whose outline (barrios.geojson) holds its point, or the nearest outline within 2 km for a point on the coast, and adds the barrios up to their municipio; Puerto Rico's count adds any site no barrio holds (none on 2026-10-17).",
+  "sources": [
+   "epa_tri",
+   "census_tiger"
+  ],
+  "source_detail": "EPA TRI Basic Data File, Puerto Rico, reporting year 2024 (Envirofacts download); one facility per TRI id",
+  "how_to_read": "104 facilities reported for 2024: Guaynabo 8, Bayamón 6, San Juan 5; 43 municipios and 76 barrios have at least one.",
+  "caveats": [
+   "A facility counts where its point is, not where its releases go: air and water carry them across barrio lines.",
+   "Only facilities above TRI's thresholds report; smaller users of the same chemicals are not in the file."
+  ],
+  "see_also": [
+   "conditions.epa_rmp",
+   "conditions.epa_npl"
+  ],
+  "where": {
+   "files": [
+    "conditions_series.json:epa_tri",
+    "conditions_barrio.json:epa_tri"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: TRI facilities",
+     "href": "index.html#e=epa_tri.f.value.red.j.1.0.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-17"
+ },
+ {
+  "id": "conditions.epa_rmp",
+  "ask": {
+   "en": [
+    "risk management plan",
+    "rmp facilities",
+    "chemical accident risk"
+   ],
+   "es": [
+    "plan de manejo de riesgos",
+    "instalaciones rmp",
+    "riesgo de accidente químico"
+   ]
+  },
+  "name": "Risk Management Plan facilities (EPA)",
+  "domain": "environment",
+  "domains": [
+   "environment",
+   "health"
+  ],
+  "group": "Regulated sites (EPA)",
+  "kind": "variable",
+  "plain": "How many places in each barrio and municipio keep enough of a dangerous chemical that they must file a Risk Management Plan with EPA.",
+  "definition": "Facilities with an active Risk Management Plan (RMP) registration in EPA's Facility Registry Service: places that hold more than a threshold quantity of a listed toxic or flammable substance, such as chlorine at water and wastewater plants, ammonia at food plants, or fuels and chemicals at industrial plants.",
+  "unit": "facilities",
+  "value_type": "count",
+  "geography": "901 barrios, 78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot; each dataset in its source's vintage (TRI reporting year 2024; FRS, Green Book and CMS read 2026-10-17; ATTAINS 2024 cycle; LMOP data of 2024-09; HUD CHAS 2016-2020; TIGER/Line 2026). Rebuilt with python conditions.py --refresh."
+  },
+  "method": "conditions.py reads the source, places each site in the barrio whose outline (barrios.geojson) holds its point, or the nearest outline within 2 km for a point on the coast, and adds the barrios up to their municipio; Puerto Rico's count adds any site no barrio holds (none on 2026-10-17). Only the RMP interests FRS marks active are counted (33 of 157 on 2026-10-17).",
+  "sources": [
+   "epa_frs",
+   "census_tiger"
+  ],
+  "source_detail": "EPA Facility Registry Service, Facility Interests layer 8, RMP interests marked ACTIVE",
+  "how_to_read": "33 active RMP facilities: Cataño 5, San Juan 3, Ponce 3; 20 municipios and 25 barrios have at least one.",
+  "caveats": [
+   "FRS's active flag follows the RMP program's records; a plant that closed without de-registering can still count.",
+   "The plans themselves, and their worst-case scenarios, are not read or published."
+  ],
+  "see_also": [
+   "conditions.epa_tri",
+   "conditions.epa_npl"
+  ],
+  "where": {
+   "files": [
+    "conditions_series.json:epa_rmp",
+    "conditions_barrio.json:epa_rmp"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: RMP facilities",
+     "href": "index.html#e=epa_rmp.f.value.red.j.1.0.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-17"
+ },
+ {
+  "id": "conditions.epa_npl",
+  "ask": {
+   "en": [
+    "superfund",
+    "npl sites",
+    "national priorities list",
+    "contaminated sites"
+   ],
+   "es": [
+    "superfund",
+    "lista de prioridades nacionales",
+    "sitios contaminados"
+   ]
+  },
+  "name": "Superfund National Priorities List sites (EPA)",
+  "domain": "environment",
+  "domains": [
+   "environment",
+   "health"
+  ],
+  "group": "Regulated sites (EPA)",
+  "kind": "variable",
+  "plain": "How many Superfund sites on EPA's National Priorities List lie in each barrio and municipio.",
+  "definition": "Superfund sites currently on EPA's final National Priorities List (NPL), as EPA's Facility Registry Service places them: sites of hazardous waste that EPA ranks for long-term cleanup. Sites deleted from the list after cleanup are not counted.",
+  "unit": "sites",
+  "value_type": "count",
+  "geography": "901 barrios, 78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot; each dataset in its source's vintage (TRI reporting year 2024; FRS, Green Book and CMS read 2026-10-17; ATTAINS 2024 cycle; LMOP data of 2024-09; HUD CHAS 2016-2020; TIGER/Line 2026). Rebuilt with python conditions.py --refresh."
+  },
+  "method": "conditions.py reads the source, places each site in the barrio whose outline (barrios.geojson) holds its point, or the nearest outline within 2 km for a point on the coast, and adds the barrios up to their municipio; Puerto Rico's count adds any site no barrio holds (none on 2026-10-17).",
+  "sources": [
+   "epa_frs",
+   "census_tiger"
+  ],
+  "source_detail": "EPA Facility Registry Service, layer 22 (SEMS_NPL), status CURRENTLY ON THE FINAL NPL",
+  "how_to_read": "18 sites are on the final list: Arecibo 3; 16 municipios and 17 barrios have one or two.",
+  "caveats": [
+   "A site is a point; the contamination it names can cover a wider area, sometimes several barrios.",
+   "8 Puerto Rico sites deleted from the list are not counted."
+  ],
+  "see_also": [
+   "conditions.epa_tri",
+   "conditions.epa_landfills"
+  ],
+  "where": {
+   "files": [
+    "conditions_series.json:epa_npl",
+    "conditions_barrio.json:epa_npl"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: Superfund sites",
+     "href": "index.html#e=epa_npl.f.value.red.j.1.0.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-17"
+ },
+ {
+  "id": "conditions.epa_landfills",
+  "ask": {
+   "en": [
+    "landfills",
+    "solid waste",
+    "dumps"
+   ],
+   "es": [
+    "vertederos",
+    "rellenos sanitarios",
+    "desperdicios sólidos"
+   ]
+  },
+  "name": "Municipal solid waste landfills, open or closed (EPA LMOP)",
+  "domain": "environment",
+  "domains": [
+   "environment",
+   "infrastructure"
+  ],
+  "group": "Regulated sites (EPA)",
+  "kind": "variable",
+  "plain": "How many municipal solid waste landfills, open or closed, EPA's landfill gas program lists in each barrio and municipio.",
+  "definition": "Municipal solid waste landfills in EPA's Landfill Methane Outreach Program (LMOP) database, open or closed. LMOP does not list every landfill, and lists no open dumps, transfer stations, recycling centres, industrial or hazardous waste landfills.",
+  "unit": "landfills",
+  "value_type": "count",
+  "geography": "901 barrios, 78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2024,
+   "last": 2024,
+   "frequency": "One snapshot; each dataset in its source's vintage (TRI reporting year 2024; FRS, Green Book and CMS read 2026-10-17; ATTAINS 2024 cycle; LMOP data of 2024-09; HUD CHAS 2016-2020; TIGER/Line 2026). Rebuilt with python conditions.py --refresh."
+  },
+  "method": "conditions.py reads the source, places each site in the barrio whose outline (barrios.geojson) holds its point, or the nearest outline within 2 km for a point on the coast, and adds the barrios up to their municipio; Puerto Rico's count adds any site no barrio holds (none on 2026-10-17).",
+  "sources": [
+   "epa_lmop",
+   "census_tiger"
+  ],
+  "source_detail": "EPA LMOP, All Landfills in LMOP Database with Coordinates (data edited 2024-09-20)",
+  "how_to_read": "32 landfills, one each in 32 municipios and 32 barrios; 22 of them are listed as open.",
+  "caveats": [
+   "LMOP's status and closure years are as of its last update (September 2024) and can lag a closure or an expansion.",
+   "Open dumps and other solid waste facilities are not in any source that states terms of use, so they are not counted (wanted.json: open-dumps)."
+  ],
+  "see_also": [
+   "conditions.epa_landfills_open",
+   "conditions.epa_npl"
+  ],
+  "where": {
+   "files": [
+    "conditions_series.json:epa_landfills",
+    "conditions_barrio.json:epa_landfills"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: landfills",
+     "href": "index.html#e=epa_landfills.f.value.red.j.1.0.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-17"
+ },
+ {
+  "id": "conditions.epa_landfills_open",
+  "ask": {
+   "en": [
+    "open landfills",
+    "active landfills"
+   ],
+   "es": [
+    "vertederos abiertos",
+    "rellenos sanitarios activos"
+   ]
+  },
+  "name": "Municipal solid waste landfills still open (EPA LMOP)",
+  "domain": "environment",
+  "domains": [
+   "environment",
+   "infrastructure"
+  ],
+  "group": "Regulated sites (EPA)",
+  "kind": "variable",
+  "plain": "How many municipal solid waste landfills that still take waste EPA's landfill gas program lists in each barrio and municipio.",
+  "definition": "Municipal solid waste landfills that EPA's Landfill Methane Outreach Program lists as open (accepting waste). The status is LMOP's as of its last update, which can lag a closure.",
+  "unit": "landfills",
+  "value_type": "count",
+  "geography": "901 barrios, 78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2024,
+   "last": 2024,
+   "frequency": "One snapshot; each dataset in its source's vintage (TRI reporting year 2024; FRS, Green Book and CMS read 2026-10-17; ATTAINS 2024 cycle; LMOP data of 2024-09; HUD CHAS 2016-2020; TIGER/Line 2026). Rebuilt with python conditions.py --refresh."
+  },
+  "method": "conditions.py reads the source, places each site in the barrio whose outline (barrios.geojson) holds its point, or the nearest outline within 2 km for a point on the coast, and adds the barrios up to their municipio; Puerto Rico's count adds any site no barrio holds (none on 2026-10-17).",
+  "sources": [
+   "epa_lmop",
+   "census_tiger"
+  ],
+  "source_detail": "EPA LMOP, All Landfills in LMOP Database with Coordinates, current_landfill_status = Open (data edited 2024-09-20)",
+  "how_to_read": "22 landfills are listed as open, one each in 22 municipios.",
+  "caveats": [
+   "A landfill LMOP lists as open may have closed since September 2024 (Mayagüez's closure year was given as 2025)."
+  ],
+  "see_also": [
+   "conditions.epa_landfills"
+  ],
+  "where": {
+   "files": [
+    "conditions_series.json:epa_landfills_open",
+    "conditions_barrio.json:epa_landfills_open"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: open landfills",
+     "href": "index.html#e=epa_landfills_open.f.value.red.j.1.0.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-17"
+ },
+ {
+  "id": "conditions.epa_303d_pct",
+  "ask": {
+   "en": [
+    "impaired waters",
+    "303(d)",
+    "polluted rivers",
+    "water quality"
+   ],
+   "es": [
+    "aguas deterioradas",
+    "303(d)",
+    "ríos contaminados",
+    "calidad del agua"
+   ]
+  },
+  "name": "Area draining to or in a 303(d)-listed impaired water (EPA ATTAINS, %)",
+  "domain": "environment",
+  "domains": [
+   "environment",
+   "health"
+  ],
+  "group": "Water and air quality (EPA)",
+  "kind": "variable",
+  "plain": "What share of each barrio and municipio lies in the watershed of a river or stream, or in a lake, estuary or coastal water, that Puerto Rico lists as impaired and needing a cleanup plan.",
+  "definition": "The share of the area inside an assessment unit that Puerto Rico's 2024 water quality report puts on the Clean Water Act 303(d) list (impaired, with a cleanup plan still needed). Puerto Rico maps its rivers and streams as the land that drains to each assessed reach, so a listed unit covers that watershed; lakes, estuaries and coastal waters are their own areas. A barrio touches a listed water when its share is above 0.",
+  "unit": "% of the area",
+  "value_type": "rate",
+  "geography": "901 barrios, 78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2024,
+   "last": 2024,
+   "frequency": "One snapshot; each dataset in its source's vintage (TRI reporting year 2024; FRS, Green Book and CMS read 2026-10-17; ATTAINS 2024 cycle; LMOP data of 2024-09; HUD CHAS 2016-2020; TIGER/Line 2026). Rebuilt with python conditions.py --refresh."
+  },
+  "method": "conditions.py projects the areas and the barrio outlines (barrios.geojson) on an equal-area plane centred on Puerto Rico, and measures the share of each barrio's area inside the union of the areas; a municipio's and Puerto Rico's shares are worked out from the areas of their barrios. The units are the 179 of 336 Puerto Rico units with on303dlist = Y.",
+  "sources": [
+   "epa_attains",
+   "census_tiger"
+  ],
+  "source_detail": "EPA ATTAINS Assessment feature service, layer 2 (areas), state = PR, 2024 cycle",
+  "how_to_read": "54% of Puerto Rico's area lies in a listed unit; 782 of 901 barrios touch one (median barrio 71%). The original WCRP index (2022) flagged 448 barrios with an older representation of the waters.",
+  "caveats": [
+   "Because river units are watersheds, a high share says the land drains to an impaired water, not that the barrio's own water is impaired.",
+   "Units that are impaired but already have a cleanup plan (category 4A, 128 units) are not on the 303(d) list and do not count.",
+   "Coastal units reach into the sea; the share is measured on the barrio's land as drawn."
+  ],
+  "see_also": [
+   "conditions.epa_naa_so2_pct",
+   "conditions.epa_naa_lead_pct"
+  ],
+  "where": {
+   "files": [
+    "conditions_series.json:epa_303d_pct",
+    "conditions_barrio.json:epa_303d_pct"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: impaired waters",
+     "href": "index.html#e=epa_303d_pct.f.value.blue.q.1.0.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-17"
+ },
+ {
+  "id": "conditions.epa_naa_so2_pct",
+  "ask": {
+   "en": [
+    "sulfur dioxide",
+    "so2 nonattainment",
+    "air quality"
+   ],
+   "es": [
+    "dióxido de azufre",
+    "incumplimiento so2",
+    "calidad del aire"
+   ]
+  },
+  "name": "Area in a sulfur dioxide non-attainment area (EPA Green Book, %)",
+  "domain": "environment",
+  "domains": [
+   "environment",
+   "health"
+  ],
+  "group": "Water and air quality (EPA)",
+  "kind": "variable",
+  "plain": "What share of each barrio and municipio lies in an area that EPA says does not meet the national standard for sulfur dioxide in the air.",
+  "definition": "The share of the area inside an area that EPA designates as not meeting the 1-hour sulfur dioxide (SO₂) standard of 2010 (non-attainment), as EPA's Green Book maps it: San Juan and Guayama-Salinas, designated in 2018. A barrio is in a non-attainment area when its share is above 0. It says where the designation applies, not what anyone breathes.",
+  "unit": "% of the area",
+  "value_type": "rate",
+  "geography": "901 barrios, 78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot; each dataset in its source's vintage (TRI reporting year 2024; FRS, Green Book and CMS read 2026-10-17; ATTAINS 2024 cycle; LMOP data of 2024-09; HUD CHAS 2016-2020; TIGER/Line 2026). Rebuilt with python conditions.py --refresh."
+  },
+  "method": "conditions.py projects the areas and the barrio outlines (barrios.geojson) on an equal-area plane centred on Puerto Rico, and measures the share of each barrio's area inside the union of the areas; a municipio's and Puerto Rico's shares are worked out from the areas of their barrios.",
+  "sources": [
+   "epa_greenbook",
+   "census_tiger"
+  ],
+  "source_detail": "EPA Green Book non-attainment areas map service, layer 4 (SO2 1-hour, 2010 standard), state PR, current status Nonattainment",
+  "how_to_read": "2.5% of Puerto Rico's area; 34 barrios in 11 municipios touch one of the two areas, most of Cataño (99%) among the municipios.",
+  "caveats": [
+   "A designation covers the area EPA drew around the sources it found (power plants, industry); air outside it is not shown to be clean.",
+   "Maintenance areas (once in non-attainment, now meeting the standard) are not counted."
+  ],
+  "see_also": [
+   "conditions.epa_naa_lead_pct",
+   "conditions.epa_303d_pct"
+  ],
+  "where": {
+   "files": [
+    "conditions_series.json:epa_naa_so2_pct",
+    "conditions_barrio.json:epa_naa_so2_pct"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: sulfur dioxide non-attainment",
+     "href": "index.html#e=epa_naa_so2_pct.f.value.gray.q.1.0.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-17"
+ },
+ {
+  "id": "conditions.epa_naa_lead_pct",
+  "ask": {
+   "en": [
+    "lead nonattainment",
+    "lead in air"
+   ],
+   "es": [
+    "incumplimiento de plomo",
+    "plomo en el aire"
+   ]
+  },
+  "name": "Area in a lead non-attainment area (EPA Green Book, %)",
+  "domain": "environment",
+  "domains": [
+   "environment",
+   "health"
+  ],
+  "group": "Water and air quality (EPA)",
+  "kind": "variable",
+  "plain": "What share of each barrio and municipio lies in an area that EPA says does not meet the national standard for lead in the air.",
+  "definition": "The share of the area inside an area that EPA designates as not meeting the lead standard of 2008 (non-attainment), as EPA's Green Book maps it: Arecibo, designated in 2011. A barrio is in a non-attainment area when its share is above 0. It says where the designation applies, not what anyone breathes.",
+  "unit": "% of the area",
+  "value_type": "rate",
+  "geography": "901 barrios, 78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot; each dataset in its source's vintage (TRI reporting year 2024; FRS, Green Book and CMS read 2026-10-17; ATTAINS 2024 cycle; LMOP data of 2024-09; HUD CHAS 2016-2020; TIGER/Line 2026). Rebuilt with python conditions.py --refresh."
+  },
+  "method": "conditions.py projects the areas and the barrio outlines (barrios.geojson) on an equal-area plane centred on Puerto Rico, and measures the share of each barrio's area inside the union of the areas; a municipio's and Puerto Rico's shares are worked out from the areas of their barrios.",
+  "sources": [
+   "epa_greenbook",
+   "census_tiger"
+  ],
+  "source_detail": "EPA Green Book non-attainment areas map service, layer 3 (lead, 2008 standard), state PR, current status Nonattainment",
+  "how_to_read": "0.5% of Puerto Rico's area, all in Arecibo (14% of the municipio); 11 barrios touch it.",
+  "caveats": [
+   "The area was drawn around a lead smelter in Arecibo; the designation can stay after the source closes, until EPA redesignates it."
+  ],
+  "see_also": [
+   "conditions.epa_naa_so2_pct"
+  ],
+  "where": {
+   "files": [
+    "conditions_series.json:epa_naa_lead_pct",
+    "conditions_barrio.json:epa_naa_lead_pct"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: lead non-attainment",
+     "href": "index.html#e=epa_naa_lead_pct.f.value.gray.q.1.0.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-17"
+ },
+ {
+  "id": "conditions.chas_severe_hh",
+  "ask": {
+   "en": [
+    "severe housing problems",
+    "chas",
+    "overcrowding",
+    "cost burden"
+   ],
+   "es": [
+    "problemas graves de vivienda",
+    "chas",
+    "hacinamiento"
+   ]
+  },
+  "name": "Households with one or more severe housing problems (HUD CHAS)",
+  "domain": "housing",
+  "domains": [
+   "housing"
+  ],
+  "group": "Severe housing problems",
+  "kind": "variable",
+  "plain": "How many households lack a complete kitchen or plumbing, are badly overcrowded, or pay more than half their income for housing, by HUD's count for 2016-2020; the barrio figures are the observatory's estimates.",
+  "definition": "Households with at least one of the four severe housing problems in HUD's Comprehensive Housing Affordability Strategy (CHAS) data, 2016-2020: a home without complete kitchen facilities, without complete plumbing, with more than 1.5 people per room, or a household paying more than half of its income for housing (owners plus renters, Table 2). The barrio values are estimates spread from census tracts; the municipio values are exact sums of their tracts.",
+  "unit": "households",
+  "value_type": "count",
+  "geography": "901 barrios, 78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2020,
+   "last": 2020,
+   "frequency": "One snapshot; each dataset in its source's vintage (TRI reporting year 2024; FRS, Green Book and CMS read 2026-10-17; ATTAINS 2024 cycle; LMOP data of 2024-09; HUD CHAS 2016-2020; TIGER/Line 2026). Rebuilt with python conditions.py --refresh."
+  },
+  "method": "conditions.py reads Table 2 of HUD's CHAS for the census tracts (households with one or more of the four severe problems, owners plus renters, and all households), adds the tracts of each municipio (exact, as tracts nest in municipios), and spreads each tract's two counts over its barrios in proportion to the 2020 housing units each barrio has in the tract (geo/crosswalk.json weights; docs/geography.md, section 4); a barrio's share is its two spread counts divided.",
+  "sources": [
+   "hud_chas",
+   "census_tiger"
+  ],
+  "source_detail": "HUD CHAS 2016-2020 by census tract (HUD eGIS layer ACS_5YR_ESTIMATES_CHAS_TRACT): T2_EST3 + T2_EST127 over T2_EST1",
+  "how_to_read": "193,934 households in Puerto Rico (16.1%): San Juan 29,843, Carolina 12,400, Bayamón 11,630. Among barrios the largest estimate is Santurce's (about 7,500).",
+  "caveats": [
+   "The barrio values are estimates: a barrio that lies in several tracts gets a blend of them, as if each tract's problems were spread like its housing units.",
+   "CHAS is a survey tabulation: the Census Bureau rounds its counts, and HUD's layer publishes no margins of error; small areas are rough.",
+   "HUD User has a newer window (2018-2022) but refuses scripted downloads; this is the newest window HUD's open data service holds."
+  ],
+  "see_also": [
+   "conditions.chas_severe_pct"
+  ],
+  "where": {
+   "files": [
+    "conditions_series.json:chas_severe_hh",
+    "conditions_barrio.json:chas_severe_hh"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: households with severe housing problems",
+     "href": "index.html#e=chas_severe_hh.f.per1000.gold.q.1.0.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-17"
+ },
+ {
+  "id": "conditions.chas_severe_pct",
+  "ask": {
+   "en": [
+    "share of households with severe housing problems",
+    "housing problems rate"
+   ],
+   "es": [
+    "porcentaje de hogares con problemas graves de vivienda"
+   ]
+  },
+  "name": "Households with one or more severe housing problems (HUD CHAS, %)",
+  "domain": "housing",
+  "domains": [
+   "housing"
+  ],
+  "group": "Severe housing problems",
+  "kind": "variable",
+  "plain": "Out of every 100 households, how many lack a complete kitchen or plumbing, are badly overcrowded, or pay more than half their income for housing, by HUD's count for 2016-2020; the barrio figures are estimates.",
+  "definition": "The share of households with at least one of the four severe housing problems in HUD's CHAS data, 2016-2020: no complete kitchen, no complete plumbing, more than 1.5 people per room, or housing costs above half of income. The barrio values are estimates spread from census tracts; the municipio values are exact sums of their tracts.",
+  "unit": "% of households",
+  "value_type": "rate",
+  "geography": "901 barrios, 78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2020,
+   "last": 2020,
+   "frequency": "One snapshot; each dataset in its source's vintage (TRI reporting year 2024; FRS, Green Book and CMS read 2026-10-17; ATTAINS 2024 cycle; LMOP data of 2024-09; HUD CHAS 2016-2020; TIGER/Line 2026). Rebuilt with python conditions.py --refresh."
+  },
+  "method": "conditions.py reads Table 2 of HUD's CHAS for the census tracts (households with one or more of the four severe problems, owners plus renters, and all households), adds the tracts of each municipio (exact, as tracts nest in municipios), and spreads each tract's two counts over its barrios in proportion to the 2020 housing units each barrio has in the tract (geo/crosswalk.json weights; docs/geography.md, section 4); a barrio's share is its two spread counts divided.",
+  "sources": [
+   "hud_chas",
+   "census_tiger"
+  ],
+  "source_detail": "HUD CHAS 2016-2020 by census tract (HUD eGIS): (T2_EST3 + T2_EST127) / T2_EST1",
+  "how_to_read": "16.1% in Puerto Rico; San Juan and Salinas 20.6%, Guánica 7.4%. Barrio estimates run from 3% to 31% (median 14%).",
+  "caveats": [
+   "The barrio values are estimates spread from tracts, so neighbouring barrios that share a tract look alike.",
+   "No margins of error are published in HUD's layer; read small differences as noise."
+  ],
+  "see_also": [
+   "conditions.chas_severe_hh"
+  ],
+  "where": {
+   "files": [
+    "conditions_series.json:chas_severe_pct",
+    "conditions_barrio.json:chas_severe_pct"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: share of households with severe housing problems",
+     "href": "index.html#e=chas_severe_pct.f.value.gold.q.1.0.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-17"
+ },
+ {
+  "id": "conditions.street_intersections",
+  "ask": {
+   "en": [
+    "street intersections",
+    "intersections"
+   ],
+   "es": [
+    "intersecciones",
+    "cruces de calles"
+   ]
+  },
+  "name": "Street intersections (TIGER/Line)",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility"
+  ],
+  "group": "Street connectivity",
+  "kind": "variable",
+  "plain": "How many places in each barrio and municipio three or more streets meet, from the Census Bureau's 2026 street map.",
+  "definition": "Street intersections: points where three or more street segments of the Census Bureau's TIGER/Line 2026 files meet (secondary roads, local streets, alleys and private roads; limited-access highways, ramps, service drives, trails, walkways and parking lot roads are left out). A dead end or a bend is not an intersection.",
+  "unit": "intersections",
+  "value_type": "count",
+  "geography": "901 barrios, 78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot; each dataset in its source's vintage (TRI reporting year 2024; FRS, Green Book and CMS read 2026-10-17; ATTAINS 2024 cycle; LMOP data of 2024-09; HUD CHAS 2016-2020; TIGER/Line 2026). Rebuilt with python conditions.py --refresh."
+  },
+  "method": "conditions.py reads the TIGER/Line EDGES file of each municipio, keeps the road edges (ROADFLG = Y) once each, counts for every topological node how many street edges end at it (S1200, S1400, S1730, S1740), and keeps the nodes with three or more. Each is placed in the barrio that holds it; density divides by the land area of the 2020 Census (km² / 2.59 = square miles).",
+  "sources": [
+   "census_tiger_lines",
+   "census_tiger"
+  ],
+  "source_detail": "US Census Bureau TIGER/Line 2026 EDGES, 78 municipios (MTFCC S1200, S1400, S1730, S1740)",
+  "how_to_read": "116,462 intersections: San Juan 7,599, Bayamón 5,182, Ponce 4,849; Culebra 106.",
+  "caveats": [
+   "The observatory's own road graph (roads.bin) comes from OpenStreetMap; this count uses TIGER/Line, the source the original WCRP index named, so the two networks can differ."
+  ],
+  "see_also": [
+   "conditions.street_intersection_density"
+  ],
+  "where": {
+   "files": [
+    "conditions_series.json:street_intersections",
+    "conditions_barrio.json:street_intersections"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: street intersections",
+     "href": "index.html#e=street_intersections.f.perkm2.blue.q.1.0.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-17"
+ },
+ {
+  "id": "conditions.street_intersection_density",
+  "ask": {
+   "en": [
+    "intersection density",
+    "street connectivity",
+    "walkability"
+   ],
+   "es": [
+    "densidad de intersecciones",
+    "conectividad de las calles"
+   ]
+  },
+  "name": "Street intersections per square mile (TIGER/Line)",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility"
+  ],
+  "group": "Street connectivity",
+  "kind": "variable",
+  "plain": "How many street intersections there are per square mile of land: a finer street grid, usually easier to walk, has more.",
+  "definition": "Street intersections (three or more street segments of TIGER/Line 2026 meeting at a point; highways, ramps, service drives, trails, walkways and parking lot roads left out) divided by the land area in square miles (2020 Census).",
+  "unit": "intersections per square mile",
+  "value_type": "ratio",
+  "geography": "901 barrios, 78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot; each dataset in its source's vintage (TRI reporting year 2024; FRS, Green Book and CMS read 2026-10-17; ATTAINS 2024 cycle; LMOP data of 2024-09; HUD CHAS 2016-2020; TIGER/Line 2026). Rebuilt with python conditions.py --refresh."
+  },
+  "method": "conditions.py reads the TIGER/Line EDGES file of each municipio, keeps the road edges (ROADFLG = Y) once each, counts for every topological node how many street edges end at it (S1200, S1400, S1730, S1740), and keeps the nodes with three or more. Each is placed in the barrio that holds it; density divides by the land area of the 2020 Census (km² / 2.59 = square miles).",
+  "sources": [
+   "census_tiger_lines",
+   "census_tiger"
+  ],
+  "source_detail": "US Census Bureau TIGER/Line 2026 EDGES; 2020 Census land area",
+  "how_to_read": "34 per square mile for Puerto Rico; San Juan 159, Cataño 131, Bayamón 117; Culebra 9. Town-centre barrios pass 600 (Gurabo pueblo 741); the median barrio has 31.",
+  "caveats": [
+   "Land area includes forests and farms, so a rural barrio with a dense village still reads low.",
+   "The original WCRP index gave 124.5 for Puerto Rico with TIGER 2020; it does not say which roads or nodes it counted, so the two are not comparable."
+  ],
+  "see_also": [
+   "conditions.street_intersections"
+  ],
+  "where": {
+   "files": [
+    "conditions_series.json:street_intersection_density",
+    "conditions_barrio.json:street_intersection_density"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: intersection density",
+     "href": "index.html#e=street_intersection_density.f.value.blue.q.1.0.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-17"
+ },
+ {
+  "id": "conditions.hosp_drive_min",
+  "ask": {
+   "en": [
+    "drive time to hospital",
+    "drive time to a hospital",
+    "drive time to the hospital",
+    "driving time to a hospital",
+    "hospital access",
+    "time to emergency room"
+   ],
+   "es": [
+    "tiempo al hospital",
+    "tiempo en carro al hospital",
+    "tiempo en auto al hospital",
+    "tiempo de viaje al hospital",
+    "acceso a hospitales",
+    "tiempo a sala de emergencias"
+   ]
+  },
+  "name": "Drive time to the nearest general hospital (estimate, minutes)",
+  "domain": "health",
+  "domains": [
+   "health",
+   "infrastructure.mobility"
+  ],
+  "group": "Distance to a general hospital",
+  "kind": "variable",
+  "plain": "About how many minutes it takes to drive, with no traffic, from where a barrio's people live to the nearest general hospital with an emergency room. An estimate made by the observatory.",
+  "definition": "The drive time, at the observatory's free-flow planning speeds for each class of road, from a barrio's population-weighted point to the nearest general acute care hospital with emergency services in CMS's Hospital General Information list. 0 when the barrio holds a hospital. A municipio's figure is the average of its barrios weighted by 2020 residents. Vieques and Culebra have no road link to a hospital and no value.",
+  "unit": "minutes",
+  "value_type": "ratio",
+  "geography": "901 barrios, 78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot; each dataset in its source's vintage (TRI reporting year 2024; FRS, Green Book and CMS read 2026-10-17; ATTAINS 2024 cycle; LMOP data of 2024-09; HUD CHAS 2016-2020; TIGER/Line 2026). Rebuilt with python conditions.py --refresh."
+  },
+  "method": "conditions.py takes CMS's general acute care hospitals with emergency services (52), places each at the OpenStreetMap hospital of its municipio with the same name (29, from gazetteer.json), else at an OpenStreetMap hospital within 1 km of HHS's geocoded address whose name shares a word with CMS's (8), else at HHS's geocoded address itself (15), and runs a shortest-path search from all of them over roads.bin in both directions of every road (care_access.py's search). Each barrio's point is the average of its 2020 census blocks' internal points weighted by residents (population_blocks.json; the barrio's internal point when no one lives there), snapped to the nearest road within 2 km that reaches a hospital. A barrio that holds a hospital is 0; which barrios those are is uncertain near the 15 hospitals placed at HHS's point (for 13 of the 27 hospitals placed by name that HHS also places, HHS's point falls in another barrio). A municipio's and Puerto Rico's figure is the average of their barrios weighted by 2020 residents, over the barrios that have a value.",
+  "sources": [
+   "cms_provider_data",
+   "hhs_hospital_capacity",
+   "osm",
+   "census_tiger"
+  ],
+  "source_detail": "Computed by the observatory (conditions.py) from CMS Hospital General Information, OpenStreetMap and HHS hospital points, 2020 census blocks and roads.bin",
+  "how_to_read": "10.9 minutes on average for Puerto Rico's residents with a road link; San Juan 1.9, Orocovis 37.6. The farthest barrio is Cacaos in Orocovis (48.6). 41 barrios hold a general hospital.",
+  "caveats": [
+   "Free-flow speeds: no traffic, lights or stops, so real trips take longer; the road distance is the firmer figure.",
+   "A hospital point can be a few hundred metres off where OpenStreetMap or HHS placed it; HHS's points are the rougher ones.",
+   "Which barrios show 0 is uncertain near the 15 hospitals placed at HHS's geocoded address, not at their OpenStreetMap building: for 13 of the 27 hospitals placed by name that HHS also places, HHS's point falls in another barrio.",
+   "The original WCRP index measured from each barrio's centroid; this measures from where its residents live.",
+   "Vieques and Culebra have no value: the trip needs a ferry or a flight. Two uninhabited barrios (Isla de Mona, Santa Rosa in Utuado) have none either."
+  ],
+  "see_also": [
+   "conditions.hosp_road_km"
+  ],
+  "where": {
+   "files": [
+    "conditions_series.json:hosp_drive_min",
+    "conditions_barrio.json:hosp_drive_min"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: drive time to a hospital",
+     "href": "index.html#e=hosp_drive_min.f.value.red.q.1.0.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-17"
+ },
+ {
+  "id": "conditions.hosp_road_km",
+  "ask": {
+   "en": [
+    "distance to hospital",
+    "how far is the hospital"
+   ],
+   "es": [
+    "distancia al hospital",
+    "qué tan lejos queda el hospital"
+   ]
+  },
+  "name": "Road distance to the nearest general hospital (km)",
+  "domain": "health",
+  "domains": [
+   "health",
+   "infrastructure.mobility"
+  ],
+  "group": "Distance to a general hospital",
+  "kind": "variable",
+  "plain": "How many kilometres of road separate where a barrio's people live from the nearest general hospital with an emergency room. An estimate made by the observatory.",
+  "definition": "The road distance from a barrio's population-weighted point to the nearest general acute care hospital with emergency services in CMS's Hospital General Information list, along the observatory's OpenStreetMap roads in either direction. 0 when the barrio holds a hospital. A municipio's figure is the average of its barrios weighted by 2020 residents. Vieques and Culebra have no road link to a hospital and no value.",
+  "unit": "km",
+  "value_type": "ratio",
+  "geography": "901 barrios, 78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot; each dataset in its source's vintage (TRI reporting year 2024; FRS, Green Book and CMS read 2026-10-17; ATTAINS 2024 cycle; LMOP data of 2024-09; HUD CHAS 2016-2020; TIGER/Line 2026). Rebuilt with python conditions.py --refresh."
+  },
+  "method": "conditions.py takes CMS's general acute care hospitals with emergency services (52), places each at the OpenStreetMap hospital of its municipio with the same name (29, from gazetteer.json), else at an OpenStreetMap hospital within 1 km of HHS's geocoded address whose name shares a word with CMS's (8), else at HHS's geocoded address itself (15), and runs a shortest-path search from all of them over roads.bin in both directions of every road (care_access.py's search). Each barrio's point is the average of its 2020 census blocks' internal points weighted by residents (population_blocks.json; the barrio's internal point when no one lives there), snapped to the nearest road within 2 km that reaches a hospital. A barrio that holds a hospital is 0; which barrios those are is uncertain near the 15 hospitals placed at HHS's point (for 13 of the 27 hospitals placed by name that HHS also places, HHS's point falls in another barrio). A municipio's and Puerto Rico's figure is the average of their barrios weighted by 2020 residents, over the barrios that have a value.",
+  "sources": [
+   "cms_provider_data",
+   "hhs_hospital_capacity",
+   "osm",
+   "census_tiger"
+  ],
+  "source_detail": "Computed by the observatory (conditions.py) from CMS Hospital General Information, OpenStreetMap and HHS hospital points, 2020 census blocks and roads.bin",
+  "how_to_read": "8.4 km on average for Puerto Rico's residents with a road link; San Juan 1.3, Orocovis 26.0. The farthest barrio is Cacaos in Orocovis (34.5 km).",
+  "caveats": [
+   "One-way streets are read in both directions: a distance to care, not a driving route.",
+   "Which barrios show 0 km is uncertain near the 15 hospitals placed at HHS's geocoded address, not at their OpenStreetMap building: HHS's point can fall in another barrio.",
+   "Vieques and Culebra have no value: the trip needs a ferry or a flight."
+  ],
+  "see_also": [
+   "conditions.hosp_drive_min"
+  ],
+  "where": {
+   "files": [
+    "conditions_series.json:hosp_road_km",
+    "conditions_barrio.json:hosp_road_km"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: road distance to a hospital",
+     "href": "index.html#e=hosp_road_km.f.value.red.q.1.0.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-17"
+ }
+]

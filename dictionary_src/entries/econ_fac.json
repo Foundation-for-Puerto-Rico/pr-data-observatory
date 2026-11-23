@@ -1,0 +1,494 @@
+[
+ {
+  "id": "economy.fac_expended",
+  "name": "Federal money spent by the municipio government",
+  "domain": "public-money",
+  "domains": [
+   "public-money"
+  ],
+  "group": "Federal money spent by municipio governments (single audits)",
+  "kind": "variable",
+  "plain": "Federal money that the municipio government itself spent in its fiscal year, from every federal agency, as its single audit reports it. It counts money spent, not money awarded, and only the municipio government, not other bodies in the municipio.",
+  "definition": "Federal awards expended, as defined in 2 CFR 200.502, reported in the Schedule of Expenditures of Federal Awards of the municipio government's single audit and filed with the Federal Audit Clearinghouse: the sum of amount_expended over every award line of the audit, for the municipal fiscal year (1 July to 30 June, named by the year it ends), in dollars of that year. Awards received directly from a federal agency and through a pass-through entity both count; a loan counts the amount used in the year (2 CFR 200.502(b)).",
+  "unit": "US dollars expended in the municipal fiscal year (not adjusted for inflation)",
+  "value_type": "level",
+  "geography": "78 municipio governments and Puerto Rico (the sum of the municipios that filed)",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2016,
+   "last": 2025,
+   "frequency": "One value per municipal fiscal year (1 July to 30 June). An audit is due nine months after the year ends; in the 2026-10 snapshot FY2025 is the latest, with 65 of 78 filed."
+  },
+  "method": "economy_series.py, functions fac_audits, fac_awards and fac_values (FAC_AGENCIES). The build reads the list of Puerto Rico audits from the FAC API (general, auditee_state PR, most recent submissions, no contact fields), keeps those of the 78 municipio governments (fac_municipio: name patterns such as 'MUNICIPALITY OF', 'MUNICIPIO DE' and 'AUTONOMOUS MUNICIPALITY OF', leaving out housing projects and other bodies named after a municipio; a typo'd name is taken by an EIN that belongs to one municipio only), then reads their award lines (federal_awards) once per fiscal year and sums amount_expended. The award lines of every audit add up to its reported total. Puerto Rico = the sum of the municipios that filed; notes.fac_filed in economy_series.json counts them. The API needs an api.data.gov key (FAC_API_KEY, HANDOFF decision 70). Checks: docs/analysis/public-money-v2-2026-10/fac_check.py.",
+  "sources": [
+   "fac"
+  ],
+  "source_detail": "Federal Audit Clearinghouse API (api.fac.gov), tables general and federal_awards, auditee_state PR, municipal fiscal years 2016 to 2025, retrieved 2026-10-31.",
+  "how_to_read": "In the 2026-10 snapshot (Federal Audit Clearinghouse, retrieved 2026-10-31), the 65 municipio governments that had filed for FY2025 report $1.50 billion; for FY2016, all 78 filed and report $587.5 million. In FY2025 the largest are San Juan ($169.5 million), Bayamón ($88.9 million), Ponce ($81.1 million). 65 of the 65 that filed have a value above zero. Compare municipios per resident, and compare years only where the same municipios filed.",
+  "caveats": [
+   "Only the municipio government. Federal money spent in the municipio by Commonwealth agencies, nonprofits, universities, Head Start consortia and the municipio's own housing projects (which file their own audits) is not counted. Audits whose names mention a municipio but are not its government's are left out: housing projects, a community San Juan runs, Bayamón's Ryan White program filed apart, municipal alliances, a cooperative and Commonwealth offices (25 names, listed in docs/analysis/public-money-v2-2026-10/fac_check.json).",
+   "Cross-checks in docs/analysis/public-money-v2-2026-10: the municipio governments' Head Start spending, FY2019 to FY2024, follows USAspending's Head Start money by municipio (correlation 0.849; $1.33 billion against $1.50 billion, which also counts nonprofit grantees). Their FEMA Public Assistance spending in all audits is $1.54 billion, against $8.65 billion OpenFEMA shows obligated to them as applicants (a median municipio has spent 21% of it); spent and obligated measure different things.",
+   "A year is blank where the audit is not filed: a government that spent less than $750,000 of federal money in the year files none ($1,000,000 for fiscal years that start on or after 1 October 2024, so from FY2026 for the municipios; 2 CFR 200.501), and late audits are common. Not filed in the 2026-10 snapshot: FY2017 Culebra, Lares, Loíza, Moca; FY2018 to FY2019 Culebra; FY2020 Culebra, Lares; FY2023 Villalba; FY2024 Camuy, Guánica, Villalba; FY2025 Adjuntas, Camuy, Ceiba, Ciales, Comerío, Guánica, Guayanilla, Lajas, Las Marías, Las Piedras, Loíza, Morovis, Villalba. FY2016, FY2021 and FY2022 are complete. The Puerto Rico value adds up the municipios that filed, so it is low in years with missing audits, most of all FY2025; refresh the data as audits arrive (they are due nine months after the fiscal year ends).",
+   "In the 2026-10 snapshot, of the 780 municipio-year cells (10 years, 78 municipios), 25 are blank (no audit filed) and 0 are zero (an audit with no money of this kind).",
+   "Money spent (expended) in the municipio's fiscal year, as the audit reports it. It is not the same as money obligated or awarded (the USAspending series) or approved (the FEMA series), and a large award can be spent over several years.",
+   "Municipal fiscal years run from 1 July to 30 June and are named by the year they end: FY2024 is July 2023 to June 2024. Federal fiscal years (October to September) are used by the USAspending series, so the two do not line up exactly.",
+   "Matched by name: the auditee names were matched to the 78 municipios, and two with typos in their names were matched by their EIN (employer identification number). One municipio filed two identical audits for FY2024; one is kept.",
+   "Values are in dollars of each year, not adjusted for inflation.",
+   "These series are about federal grant money. Their Spanish summaries are held for Finance and Compliance review (HANDOFF decision 21)."
+  ],
+  "see_also": [
+   "economy.fac_direct",
+   "economy.fac_passthrough",
+   "economy.fac_hhs",
+   "economy.fac_hud",
+   "economy.fac_dhs",
+   "economy.fac_treasury",
+   "economy.fac_other",
+   "economy.fed_awards_total",
+   "economy.fema_pa_obligated",
+   "measures.per_resident",
+   "measures.inflation_adjustment"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:fac_expended"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Public money): shade municipalities by dollars per resident",
+     "href": "index.html#e=fac_expended.f.perCapita.blue.q.1.1.0.85.0&ey=2024"
+    }
+   ]
+  },
+  "example": "Snapshot 2026-10 (Federal Audit Clearinghouse, retrieved 2026-10-31), FY2024: Puerto Rico $1.53 billion from the 75 municipio governments that filed.",
+  "added": "2026-10-31"
+ },
+ {
+  "id": "economy.fac_direct",
+  "name": "Federal money spent by the municipio government: received directly",
+  "domain": "public-money",
+  "domains": [
+   "public-money"
+  ],
+  "group": "Federal money spent by municipio governments (single audits)",
+  "kind": "variable",
+  "plain": "The part of the municipio government's federal spending that came straight from a federal agency, not through the Commonwealth or another pass-through entity.",
+  "definition": "The sum of amount_expended over the award lines marked direct (is_direct = Y) in the municipio government's single audit, municipal fiscal year.",
+  "unit": "US dollars expended in the municipal fiscal year (not adjusted for inflation)",
+  "value_type": "level",
+  "geography": "78 municipio governments and Puerto Rico (the sum of the municipios that filed)",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2016,
+   "last": 2025,
+   "frequency": "One value per municipal fiscal year (1 July to 30 June). An audit is due nine months after the year ends; in the 2026-10 snapshot FY2025 is the latest, with 65 of 78 filed."
+  },
+  "method": "economy_series.py, functions fac_audits, fac_awards and fac_values (FAC_AGENCIES). The build reads the list of Puerto Rico audits from the FAC API (general, auditee_state PR, most recent submissions, no contact fields), keeps those of the 78 municipio governments (fac_municipio: name patterns such as 'MUNICIPALITY OF', 'MUNICIPIO DE' and 'AUTONOMOUS MUNICIPALITY OF', leaving out housing projects and other bodies named after a municipio; a typo'd name is taken by an EIN that belongs to one municipio only), then reads their award lines (federal_awards) once per fiscal year and sums amount_expended. The award lines of every audit add up to its reported total. Puerto Rico = the sum of the municipios that filed; notes.fac_filed in economy_series.json counts them. The API needs an api.data.gov key (FAC_API_KEY, HANDOFF decision 70). Checks: docs/analysis/public-money-v2-2026-10/fac_check.py.",
+  "sources": [
+   "fac"
+  ],
+  "source_detail": "Federal Audit Clearinghouse API (api.fac.gov), tables general and federal_awards, auditee_state PR, municipal fiscal years 2016 to 2025, retrieved 2026-10-31.",
+  "how_to_read": "In the 2026-10 snapshot (Federal Audit Clearinghouse, retrieved 2026-10-31), the 65 municipio governments that had filed for FY2025 report $804.5 million (53.5% of fac_expended); for FY2016, all 78 filed and report $335.2 million. In FY2025 the largest are San Juan ($129.2 million), Bayamón ($61.0 million), Caguas ($53.3 million). 64 of the 65 that filed have a value above zero. Compare municipios per resident, and compare years only where the same municipios filed.",
+  "caveats": [
+   "Only the municipio government. Federal money spent in the municipio by Commonwealth agencies, nonprofits, universities, Head Start consortia and the municipio's own housing projects (which file their own audits) is not counted. Audits whose names mention a municipio but are not its government's are left out: housing projects, a community San Juan runs, Bayamón's Ryan White program filed apart, municipal alliances, a cooperative and Commonwealth offices (25 names, listed in docs/analysis/public-money-v2-2026-10/fac_check.json).",
+   "With economy.fac_passthrough it adds up to economy.fac_expended. Do not add it to economy.fac_expended, which already includes it.",
+   "A year is blank where the audit is not filed: a government that spent less than $750,000 of federal money in the year files none ($1,000,000 for fiscal years that start on or after 1 October 2024, so from FY2026 for the municipios; 2 CFR 200.501), and late audits are common. Not filed in the 2026-10 snapshot: FY2017 Culebra, Lares, Loíza, Moca; FY2018 to FY2019 Culebra; FY2020 Culebra, Lares; FY2023 Villalba; FY2024 Camuy, Guánica, Villalba; FY2025 Adjuntas, Camuy, Ceiba, Ciales, Comerío, Guánica, Guayanilla, Lajas, Las Marías, Las Piedras, Loíza, Morovis, Villalba. FY2016, FY2021 and FY2022 are complete. The Puerto Rico value adds up the municipios that filed, so it is low in years with missing audits, most of all FY2025; refresh the data as audits arrive (they are due nine months after the fiscal year ends).",
+   "In the 2026-10 snapshot, of the 780 municipio-year cells (10 years, 78 municipios), 25 are blank (no audit filed) and 11 are zero (an audit with no money of this kind).",
+   "Money spent (expended) in the municipio's fiscal year, as the audit reports it. It is not the same as money obligated or awarded (the USAspending series) or approved (the FEMA series), and a large award can be spent over several years.",
+   "Municipal fiscal years run from 1 July to 30 June and are named by the year they end: FY2024 is July 2023 to June 2024. Federal fiscal years (October to September) are used by the USAspending series, so the two do not line up exactly.",
+   "Matched by name: the auditee names were matched to the 78 municipios, and two with typos in their names were matched by their EIN (employer identification number). One municipio filed two identical audits for FY2024; one is kept.",
+   "Values are in dollars of each year, not adjusted for inflation.",
+   "These series are about federal grant money. Their Spanish summaries are held for Finance and Compliance review (HANDOFF decision 21)."
+  ],
+  "see_also": [
+   "economy.fac_expended",
+   "economy.fac_passthrough",
+   "economy.fed_awards_total",
+   "economy.fema_pa_obligated",
+   "measures.per_resident",
+   "measures.inflation_adjustment"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:fac_direct"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Public money): shade municipalities by dollars per resident",
+     "href": "index.html#e=fac_direct.f.perCapita.blue.q.1.1.0.85.0&ey=2024"
+    }
+   ]
+  },
+  "example": "Snapshot 2026-10 (Federal Audit Clearinghouse, retrieved 2026-10-31), FY2024: Puerto Rico $881.3 million from the 75 municipio governments that filed.",
+  "added": "2026-10-31"
+ },
+ {
+  "id": "economy.fac_passthrough",
+  "name": "Federal money spent by the municipio government: through a pass-through entity",
+  "domain": "public-money",
+  "domains": [
+   "public-money"
+  ],
+  "group": "Federal money spent by municipio governments (single audits)",
+  "kind": "variable",
+  "plain": "The part of the municipio government's federal spending that came through a pass-through entity, mostly a Commonwealth agency that received the federal award first.",
+  "definition": "The sum of amount_expended over the award lines not marked direct (is_direct = N) in the municipio government's single audit, municipal fiscal year. The municipio is the subrecipient; the pass-through entity named in the audit received the award from the federal agency.",
+  "unit": "US dollars expended in the municipal fiscal year (not adjusted for inflation)",
+  "value_type": "level",
+  "geography": "78 municipio governments and Puerto Rico (the sum of the municipios that filed)",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2016,
+   "last": 2025,
+   "frequency": "One value per municipal fiscal year (1 July to 30 June). An audit is due nine months after the year ends; in the 2026-10 snapshot FY2025 is the latest, with 65 of 78 filed."
+  },
+  "method": "economy_series.py, functions fac_audits, fac_awards and fac_values (FAC_AGENCIES). The build reads the list of Puerto Rico audits from the FAC API (general, auditee_state PR, most recent submissions, no contact fields), keeps those of the 78 municipio governments (fac_municipio: name patterns such as 'MUNICIPALITY OF', 'MUNICIPIO DE' and 'AUTONOMOUS MUNICIPALITY OF', leaving out housing projects and other bodies named after a municipio; a typo'd name is taken by an EIN that belongs to one municipio only), then reads their award lines (federal_awards) once per fiscal year and sums amount_expended. The award lines of every audit add up to its reported total. Puerto Rico = the sum of the municipios that filed; notes.fac_filed in economy_series.json counts them. The API needs an api.data.gov key (FAC_API_KEY, HANDOFF decision 70). Checks: docs/analysis/public-money-v2-2026-10/fac_check.py.",
+  "sources": [
+   "fac"
+  ],
+  "source_detail": "Federal Audit Clearinghouse API (api.fac.gov), tables general and federal_awards, auditee_state PR, municipal fiscal years 2016 to 2025, retrieved 2026-10-31.",
+  "how_to_read": "In the 2026-10 snapshot (Federal Audit Clearinghouse, retrieved 2026-10-31), the 65 municipio governments that had filed for FY2025 report $699.1 million (46.5% of fac_expended); for FY2016, all 78 filed and report $252.3 million. In FY2025 the largest are Carolina ($42.6 million), San Juan ($40.3 million), Jayuya ($38.8 million). 65 of the 65 that filed have a value above zero. Compare municipios per resident, and compare years only where the same municipios filed.",
+  "caveats": [
+   "Only the municipio government. Federal money spent in the municipio by Commonwealth agencies, nonprofits, universities, Head Start consortia and the municipio's own housing projects (which file their own audits) is not counted. Audits whose names mention a municipio but are not its government's are left out: housing projects, a community San Juan runs, Bayamón's Ryan White program filed apart, municipal alliances, a cooperative and Commonwealth offices (25 names, listed in docs/analysis/public-money-v2-2026-10/fac_check.json).",
+   "With economy.fac_direct it adds up to economy.fac_expended. Do not add it to economy.fac_expended, which already includes it.",
+   "A year is blank where the audit is not filed: a government that spent less than $750,000 of federal money in the year files none ($1,000,000 for fiscal years that start on or after 1 October 2024, so from FY2026 for the municipios; 2 CFR 200.501), and late audits are common. Not filed in the 2026-10 snapshot: FY2017 Culebra, Lares, Loíza, Moca; FY2018 to FY2019 Culebra; FY2020 Culebra, Lares; FY2023 Villalba; FY2024 Camuy, Guánica, Villalba; FY2025 Adjuntas, Camuy, Ceiba, Ciales, Comerío, Guánica, Guayanilla, Lajas, Las Marías, Las Piedras, Loíza, Morovis, Villalba. FY2016, FY2021 and FY2022 are complete. The Puerto Rico value adds up the municipios that filed, so it is low in years with missing audits, most of all FY2025; refresh the data as audits arrive (they are due nine months after the fiscal year ends).",
+   "In the 2026-10 snapshot, of the 780 municipio-year cells (10 years, 78 municipios), 25 are blank (no audit filed) and 9 are zero (an audit with no money of this kind).",
+   "Money spent (expended) in the municipio's fiscal year, as the audit reports it. It is not the same as money obligated or awarded (the USAspending series) or approved (the FEMA series), and a large award can be spent over several years.",
+   "Municipal fiscal years run from 1 July to 30 June and are named by the year they end: FY2024 is July 2023 to June 2024. Federal fiscal years (October to September) are used by the USAspending series, so the two do not line up exactly.",
+   "Matched by name: the auditee names were matched to the 78 municipios, and two with typos in their names were matched by their EIN (employer identification number). One municipio filed two identical audits for FY2024; one is kept.",
+   "Values are in dollars of each year, not adjusted for inflation.",
+   "These series are about federal grant money. Their Spanish summaries are held for Finance and Compliance review (HANDOFF decision 21)."
+  ],
+  "see_also": [
+   "economy.fac_expended",
+   "economy.fac_direct",
+   "economy.fed_awards_total",
+   "economy.fema_pa_obligated",
+   "measures.per_resident",
+   "measures.inflation_adjustment"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:fac_passthrough"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Public money): shade municipalities by dollars per resident",
+     "href": "index.html#e=fac_passthrough.f.perCapita.blue.q.1.1.0.85.0&ey=2024"
+    }
+   ]
+  },
+  "example": "Snapshot 2026-10 (Federal Audit Clearinghouse, retrieved 2026-10-31), FY2024: Puerto Rico $652.7 million from the 75 municipio governments that filed.",
+  "added": "2026-10-31"
+ },
+ {
+  "id": "economy.fac_hhs",
+  "name": "Federal money spent by the municipio government: Health and Human Services",
+  "domain": "public-money",
+  "domains": [
+   "public-money"
+  ],
+  "group": "Federal money spent by municipio governments (single audits)",
+  "kind": "variable",
+  "plain": "The municipio government's federal spending of US Department of Health and Human Services awards, mostly Head Start, child care and HIV programs.",
+  "definition": "The sum of amount_expended over award lines with agency prefix 93 (Department of Health and Human Services) in the municipio government's single audit, municipal fiscal year.",
+  "unit": "US dollars expended in the municipal fiscal year (not adjusted for inflation)",
+  "value_type": "level",
+  "geography": "78 municipio governments and Puerto Rico (the sum of the municipios that filed)",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2016,
+   "last": 2025,
+   "frequency": "One value per municipal fiscal year (1 July to 30 June). An audit is due nine months after the year ends; in the 2026-10 snapshot FY2025 is the latest, with 65 of 78 filed."
+  },
+  "method": "economy_series.py, functions fac_audits, fac_awards and fac_values (FAC_AGENCIES). The build reads the list of Puerto Rico audits from the FAC API (general, auditee_state PR, most recent submissions, no contact fields), keeps those of the 78 municipio governments (fac_municipio: name patterns such as 'MUNICIPALITY OF', 'MUNICIPIO DE' and 'AUTONOMOUS MUNICIPALITY OF', leaving out housing projects and other bodies named after a municipio; a typo'd name is taken by an EIN that belongs to one municipio only), then reads their award lines (federal_awards) once per fiscal year and sums amount_expended. The award lines of every audit add up to its reported total. Puerto Rico = the sum of the municipios that filed; notes.fac_filed in economy_series.json counts them. The API needs an api.data.gov key (FAC_API_KEY, HANDOFF decision 70). Checks: docs/analysis/public-money-v2-2026-10/fac_check.py.",
+  "sources": [
+   "fac"
+  ],
+  "source_detail": "Federal Audit Clearinghouse API (api.fac.gov), tables general and federal_awards, auditee_state PR, municipal fiscal years 2016 to 2025, retrieved 2026-10-31.",
+  "how_to_read": "In the 2026-10 snapshot (Federal Audit Clearinghouse, retrieved 2026-10-31), the 65 municipio governments that had filed for FY2025 report $368.0 million (24.5% of fac_expended); for FY2016, all 78 filed and report $263.0 million. In FY2025 the largest are San Juan ($42.9 million), Bayamón ($30.4 million), Caguas ($28.2 million). 65 of the 65 that filed have a value above zero. Compare municipios per resident, and compare years only where the same municipios filed.",
+  "caveats": [
+   "Only the municipio government. Federal money spent in the municipio by Commonwealth agencies, nonprofits, universities, Head Start consortia and the municipio's own housing projects (which file their own audits) is not counted. Audits whose names mention a municipio but are not its government's are left out: housing projects, a community San Juan runs, Bayamón's Ryan White program filed apart, municipal alliances, a cooperative and Commonwealth offices (25 names, listed in docs/analysis/public-money-v2-2026-10/fac_check.json).",
+   "The five agency series (economy.fac_hhs, fac_hud, fac_dhs, fac_treasury, fac_other) add up to economy.fac_expended. Do not add one to economy.fac_expended, which already includes it.",
+   "A year is blank where the audit is not filed: a government that spent less than $750,000 of federal money in the year files none ($1,000,000 for fiscal years that start on or after 1 October 2024, so from FY2026 for the municipios; 2 CFR 200.501), and late audits are common. Not filed in the 2026-10 snapshot: FY2017 Culebra, Lares, Loíza, Moca; FY2018 to FY2019 Culebra; FY2020 Culebra, Lares; FY2023 Villalba; FY2024 Camuy, Guánica, Villalba; FY2025 Adjuntas, Camuy, Ceiba, Ciales, Comerío, Guánica, Guayanilla, Lajas, Las Marías, Las Piedras, Loíza, Morovis, Villalba. FY2016, FY2021 and FY2022 are complete. The Puerto Rico value adds up the municipios that filed, so it is low in years with missing audits, most of all FY2025; refresh the data as audits arrive (they are due nine months after the fiscal year ends).",
+   "In the 2026-10 snapshot, of the 780 municipio-year cells (10 years, 78 municipios), 25 are blank (no audit filed) and 46 are zero (an audit with no money of this kind).",
+   "Money spent (expended) in the municipio's fiscal year, as the audit reports it. It is not the same as money obligated or awarded (the USAspending series) or approved (the FEMA series), and a large award can be spent over several years.",
+   "Municipal fiscal years run from 1 July to 30 June and are named by the year they end: FY2024 is July 2023 to June 2024. Federal fiscal years (October to September) are used by the USAspending series, so the two do not line up exactly.",
+   "Matched by name: the auditee names were matched to the 78 municipios, and two with typos in their names were matched by their EIN (employer identification number). One municipio filed two identical audits for FY2024; one is kept.",
+   "Values are in dollars of each year, not adjusted for inflation.",
+   "These series are about federal grant money. Their Spanish summaries are held for Finance and Compliance review (HANDOFF decision 21)."
+  ],
+  "see_also": [
+   "economy.fac_expended",
+   "economy.fac_hud",
+   "economy.fac_dhs",
+   "economy.fac_treasury",
+   "economy.fac_other",
+   "economy.fed_awards_total",
+   "economy.fema_pa_obligated",
+   "measures.per_resident",
+   "measures.inflation_adjustment"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:fac_hhs"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Public money): shade municipalities by dollars per resident",
+     "href": "index.html#e=fac_hhs.f.perCapita.blue.q.1.1.0.85.0&ey=2024"
+    }
+   ]
+  },
+  "example": "Snapshot 2026-10 (Federal Audit Clearinghouse, retrieved 2026-10-31), FY2024: Puerto Rico $362.2 million from the 75 municipio governments that filed.",
+  "added": "2026-10-31"
+ },
+ {
+  "id": "economy.fac_hud",
+  "name": "Federal money spent by the municipio government: Housing and Urban Development",
+  "domain": "public-money",
+  "domains": [
+   "public-money"
+  ],
+  "group": "Federal money spent by municipio governments (single audits)",
+  "kind": "variable",
+  "plain": "The municipio government's federal spending of US Department of Housing and Urban Development awards, mostly housing choice vouchers and community development block grants.",
+  "definition": "The sum of amount_expended over award lines with agency prefix 14 (Department of Housing and Urban Development) in the municipio government's single audit, municipal fiscal year. Includes CDBG-DR money that reaches the municipio through the Puerto Rico Department of Housing.",
+  "unit": "US dollars expended in the municipal fiscal year (not adjusted for inflation)",
+  "value_type": "level",
+  "geography": "78 municipio governments and Puerto Rico (the sum of the municipios that filed)",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2016,
+   "last": 2025,
+   "frequency": "One value per municipal fiscal year (1 July to 30 June). An audit is due nine months after the year ends; in the 2026-10 snapshot FY2025 is the latest, with 65 of 78 filed."
+  },
+  "method": "economy_series.py, functions fac_audits, fac_awards and fac_values (FAC_AGENCIES). The build reads the list of Puerto Rico audits from the FAC API (general, auditee_state PR, most recent submissions, no contact fields), keeps those of the 78 municipio governments (fac_municipio: name patterns such as 'MUNICIPALITY OF', 'MUNICIPIO DE' and 'AUTONOMOUS MUNICIPALITY OF', leaving out housing projects and other bodies named after a municipio; a typo'd name is taken by an EIN that belongs to one municipio only), then reads their award lines (federal_awards) once per fiscal year and sums amount_expended. The award lines of every audit add up to its reported total. Puerto Rico = the sum of the municipios that filed; notes.fac_filed in economy_series.json counts them. The API needs an api.data.gov key (FAC_API_KEY, HANDOFF decision 70). Checks: docs/analysis/public-money-v2-2026-10/fac_check.py.",
+  "sources": [
+   "fac"
+  ],
+  "source_detail": "Federal Audit Clearinghouse API (api.fac.gov), tables general and federal_awards, auditee_state PR, municipal fiscal years 2016 to 2025, retrieved 2026-10-31.",
+  "how_to_read": "In the 2026-10 snapshot (Federal Audit Clearinghouse, retrieved 2026-10-31), the 65 municipio governments that had filed for FY2025 report $300.1 million (20.0% of fac_expended); for FY2016, all 78 filed and report $238.6 million. In FY2025 the largest are San Juan ($59.3 million), Carolina ($26.0 million), Bayamón ($24.3 million). 65 of the 65 that filed have a value above zero. Compare municipios per resident, and compare years only where the same municipios filed.",
+  "caveats": [
+   "Only the municipio government. Federal money spent in the municipio by Commonwealth agencies, nonprofits, universities, Head Start consortia and the municipio's own housing projects (which file their own audits) is not counted. Audits whose names mention a municipio but are not its government's are left out: housing projects, a community San Juan runs, Bayamón's Ryan White program filed apart, municipal alliances, a cooperative and Commonwealth offices (25 names, listed in docs/analysis/public-money-v2-2026-10/fac_check.json).",
+   "The five agency series (economy.fac_hhs, fac_hud, fac_dhs, fac_treasury, fac_other) add up to economy.fac_expended. Do not add one to economy.fac_expended, which already includes it.",
+   "A year is blank where the audit is not filed: a government that spent less than $750,000 of federal money in the year files none ($1,000,000 for fiscal years that start on or after 1 October 2024, so from FY2026 for the municipios; 2 CFR 200.501), and late audits are common. Not filed in the 2026-10 snapshot: FY2017 Culebra, Lares, Loíza, Moca; FY2018 to FY2019 Culebra; FY2020 Culebra, Lares; FY2023 Villalba; FY2024 Camuy, Guánica, Villalba; FY2025 Adjuntas, Camuy, Ceiba, Ciales, Comerío, Guánica, Guayanilla, Lajas, Las Marías, Las Piedras, Loíza, Morovis, Villalba. FY2016, FY2021 and FY2022 are complete. The Puerto Rico value adds up the municipios that filed, so it is low in years with missing audits, most of all FY2025; refresh the data as audits arrive (they are due nine months after the fiscal year ends).",
+   "In the 2026-10 snapshot, of the 780 municipio-year cells (10 years, 78 municipios), 25 are blank (no audit filed) and 1 are zero (an audit with no money of this kind).",
+   "Money spent (expended) in the municipio's fiscal year, as the audit reports it. It is not the same as money obligated or awarded (the USAspending series) or approved (the FEMA series), and a large award can be spent over several years.",
+   "Municipal fiscal years run from 1 July to 30 June and are named by the year they end: FY2024 is July 2023 to June 2024. Federal fiscal years (October to September) are used by the USAspending series, so the two do not line up exactly.",
+   "Matched by name: the auditee names were matched to the 78 municipios, and two with typos in their names were matched by their EIN (employer identification number). One municipio filed two identical audits for FY2024; one is kept.",
+   "Values are in dollars of each year, not adjusted for inflation.",
+   "These series are about federal grant money. Their Spanish summaries are held for Finance and Compliance review (HANDOFF decision 21)."
+  ],
+  "see_also": [
+   "economy.fac_expended",
+   "economy.fac_hhs",
+   "economy.fac_dhs",
+   "economy.fac_treasury",
+   "economy.fac_other",
+   "economy.fed_awards_total",
+   "economy.fema_pa_obligated",
+   "measures.per_resident",
+   "measures.inflation_adjustment"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:fac_hud"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Public money): shade municipalities by dollars per resident",
+     "href": "index.html#e=fac_hud.f.perCapita.blue.q.1.1.0.85.0&ey=2024"
+    }
+   ]
+  },
+  "example": "Snapshot 2026-10 (Federal Audit Clearinghouse, retrieved 2026-10-31), FY2024: Puerto Rico $289.0 million from the 75 municipio governments that filed.",
+  "added": "2026-10-31"
+ },
+ {
+  "id": "economy.fac_dhs",
+  "name": "Federal money spent by the municipio government: Homeland Security (FEMA)",
+  "domain": "public-money",
+  "domains": [
+   "public-money"
+  ],
+  "group": "Federal money spent by municipio governments (single audits)",
+  "kind": "variable",
+  "plain": "The municipio government's federal spending of US Department of Homeland Security awards, almost all FEMA Public Assistance and Community Disaster Loans.",
+  "definition": "The sum of amount_expended over award lines with agency prefix 97 (Department of Homeland Security, FEMA included) in the municipio government's single audit, municipal fiscal year. Community Disaster Loans (97.030) count the amount used in the year.",
+  "unit": "US dollars expended in the municipal fiscal year (not adjusted for inflation)",
+  "value_type": "level",
+  "geography": "78 municipio governments and Puerto Rico (the sum of the municipios that filed)",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2016,
+   "last": 2025,
+   "frequency": "One value per municipal fiscal year (1 July to 30 June). An audit is due nine months after the year ends; in the 2026-10 snapshot FY2025 is the latest, with 65 of 78 filed."
+  },
+  "method": "economy_series.py, functions fac_audits, fac_awards and fac_values (FAC_AGENCIES). The build reads the list of Puerto Rico audits from the FAC API (general, auditee_state PR, most recent submissions, no contact fields), keeps those of the 78 municipio governments (fac_municipio: name patterns such as 'MUNICIPALITY OF', 'MUNICIPIO DE' and 'AUTONOMOUS MUNICIPALITY OF', leaving out housing projects and other bodies named after a municipio; a typo'd name is taken by an EIN that belongs to one municipio only), then reads their award lines (federal_awards) once per fiscal year and sums amount_expended. The award lines of every audit add up to its reported total. Puerto Rico = the sum of the municipios that filed; notes.fac_filed in economy_series.json counts them. The API needs an api.data.gov key (FAC_API_KEY, HANDOFF decision 70). Checks: docs/analysis/public-money-v2-2026-10/fac_check.py.",
+  "sources": [
+   "fac"
+  ],
+  "source_detail": "Federal Audit Clearinghouse API (api.fac.gov), tables general and federal_awards, auditee_state PR, municipal fiscal years 2016 to 2025, retrieved 2026-10-31.",
+  "how_to_read": "In the 2026-10 snapshot (Federal Audit Clearinghouse, retrieved 2026-10-31), the 65 municipio governments that had filed for FY2025 report $414.9 million (27.6% of fac_expended); for FY2016, all 78 filed and report $9.0 million. In FY2025 the largest are Jayuya ($36.0 million), Vieques ($23.8 million), Yabucoa ($22.7 million). 65 of the 65 that filed have a value above zero. Compare municipios per resident, and compare years only where the same municipios filed.",
+  "caveats": [
+   "Only the municipio government. Federal money spent in the municipio by Commonwealth agencies, nonprofits, universities, Head Start consortia and the municipio's own housing projects (which file their own audits) is not counted. Audits whose names mention a municipio but are not its government's are left out: housing projects, a community San Juan runs, Bayamón's Ryan White program filed apart, municipal alliances, a cooperative and Commonwealth offices (25 names, listed in docs/analysis/public-money-v2-2026-10/fac_check.json).",
+   "The five agency series (economy.fac_hhs, fac_hud, fac_dhs, fac_treasury, fac_other) add up to economy.fac_expended. Do not add one to economy.fac_expended, which already includes it.",
+   "A year is blank where the audit is not filed: a government that spent less than $750,000 of federal money in the year files none ($1,000,000 for fiscal years that start on or after 1 October 2024, so from FY2026 for the municipios; 2 CFR 200.501), and late audits are common. Not filed in the 2026-10 snapshot: FY2017 Culebra, Lares, Loíza, Moca; FY2018 to FY2019 Culebra; FY2020 Culebra, Lares; FY2023 Villalba; FY2024 Camuy, Guánica, Villalba; FY2025 Adjuntas, Camuy, Ceiba, Ciales, Comerío, Guánica, Guayanilla, Lajas, Las Marías, Las Piedras, Loíza, Morovis, Villalba. FY2016, FY2021 and FY2022 are complete. The Puerto Rico value adds up the municipios that filed, so it is low in years with missing audits, most of all FY2025; refresh the data as audits arrive (they are due nine months after the fiscal year ends).",
+   "In the 2026-10 snapshot, of the 780 municipio-year cells (10 years, 78 municipios), 25 are blank (no audit filed) and 84 are zero (an audit with no money of this kind).",
+   "Money spent (expended) in the municipio's fiscal year, as the audit reports it. It is not the same as money obligated or awarded (the USAspending series) or approved (the FEMA series), and a large award can be spent over several years.",
+   "Municipal fiscal years run from 1 July to 30 June and are named by the year they end: FY2024 is July 2023 to June 2024. Federal fiscal years (October to September) are used by the USAspending series, so the two do not line up exactly.",
+   "Matched by name: the auditee names were matched to the 78 municipios, and two with typos in their names were matched by their EIN (employer identification number). One municipio filed two identical audits for FY2024; one is kept.",
+   "Values are in dollars of each year, not adjusted for inflation.",
+   "These series are about federal grant money. Their Spanish summaries are held for Finance and Compliance review (HANDOFF decision 21)."
+  ],
+  "see_also": [
+   "economy.fac_expended",
+   "economy.fac_hhs",
+   "economy.fac_hud",
+   "economy.fac_treasury",
+   "economy.fac_other",
+   "economy.fed_awards_total",
+   "economy.fema_pa_obligated",
+   "measures.per_resident",
+   "measures.inflation_adjustment"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:fac_dhs"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Public money): shade municipalities by dollars per resident",
+     "href": "index.html#e=fac_dhs.f.perCapita.blue.q.1.1.0.85.0&ey=2024"
+    }
+   ]
+  },
+  "example": "Snapshot 2026-10 (Federal Audit Clearinghouse, retrieved 2026-10-31), FY2024: Puerto Rico $357.6 million from the 75 municipio governments that filed.",
+  "added": "2026-10-31"
+ },
+ {
+  "id": "economy.fac_treasury",
+  "name": "Federal money spent by the municipio government: Treasury",
+  "domain": "public-money",
+  "domains": [
+   "public-money"
+  ],
+  "group": "Federal money spent by municipio governments (single audits)",
+  "kind": "variable",
+  "plain": "The municipio government's federal spending of US Department of the Treasury awards, mostly the COVID-19 relief funds.",
+  "definition": "The sum of amount_expended over award lines with agency prefix 21 (Department of the Treasury) in the municipio government's single audit, municipal fiscal year: mostly the Coronavirus Relief Fund (21.019) and the Coronavirus State and Local Fiscal Recovery Funds (21.027).",
+  "unit": "US dollars expended in the municipal fiscal year (not adjusted for inflation)",
+  "value_type": "level",
+  "geography": "78 municipio governments and Puerto Rico (the sum of the municipios that filed)",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2016,
+   "last": 2025,
+   "frequency": "One value per municipal fiscal year (1 July to 30 June). An audit is due nine months after the year ends; in the 2026-10 snapshot FY2025 is the latest, with 65 of 78 filed."
+  },
+  "method": "economy_series.py, functions fac_audits, fac_awards and fac_values (FAC_AGENCIES). The build reads the list of Puerto Rico audits from the FAC API (general, auditee_state PR, most recent submissions, no contact fields), keeps those of the 78 municipio governments (fac_municipio: name patterns such as 'MUNICIPALITY OF', 'MUNICIPIO DE' and 'AUTONOMOUS MUNICIPALITY OF', leaving out housing projects and other bodies named after a municipio; a typo'd name is taken by an EIN that belongs to one municipio only), then reads their award lines (federal_awards) once per fiscal year and sums amount_expended. The award lines of every audit add up to its reported total. Puerto Rico = the sum of the municipios that filed; notes.fac_filed in economy_series.json counts them. The API needs an api.data.gov key (FAC_API_KEY, HANDOFF decision 70). Checks: docs/analysis/public-money-v2-2026-10/fac_check.py.",
+  "sources": [
+   "fac"
+  ],
+  "source_detail": "Federal Audit Clearinghouse API (api.fac.gov), tables general and federal_awards, auditee_state PR, municipal fiscal years 2016 to 2025, retrieved 2026-10-31.",
+  "how_to_read": "In the 2026-10 snapshot (Federal Audit Clearinghouse, retrieved 2026-10-31), the 65 municipio governments that had filed for FY2025 report $296.1 million (19.7% of fac_expended); for FY2016, all 78 filed and report $0. In FY2025 the largest are San Juan ($33.2 million), Ponce ($27.1 million), Arecibo ($19.4 million). 64 of the 65 that filed have a value above zero. Compare municipios per resident, and compare years only where the same municipios filed.",
+  "caveats": [
+   "Only the municipio government. Federal money spent in the municipio by Commonwealth agencies, nonprofits, universities, Head Start consortia and the municipio's own housing projects (which file their own audits) is not counted. Audits whose names mention a municipio but are not its government's are left out: housing projects, a community San Juan runs, Bayamón's Ryan White program filed apart, municipal alliances, a cooperative and Commonwealth offices (25 names, listed in docs/analysis/public-money-v2-2026-10/fac_check.json).",
+   "The five agency series (economy.fac_hhs, fac_hud, fac_dhs, fac_treasury, fac_other) add up to economy.fac_expended. Do not add one to economy.fac_expended, which already includes it.",
+   "A year is blank where the audit is not filed: a government that spent less than $750,000 of federal money in the year files none ($1,000,000 for fiscal years that start on or after 1 October 2024, so from FY2026 for the municipios; 2 CFR 200.501), and late audits are common. Not filed in the 2026-10 snapshot: FY2017 Culebra, Lares, Loíza, Moca; FY2018 to FY2019 Culebra; FY2020 Culebra, Lares; FY2023 Villalba; FY2024 Camuy, Guánica, Villalba; FY2025 Adjuntas, Camuy, Ceiba, Ciales, Comerío, Guánica, Guayanilla, Lajas, Las Marías, Las Piedras, Loíza, Morovis, Villalba. FY2016, FY2021 and FY2022 are complete. The Puerto Rico value adds up the municipios that filed, so it is low in years with missing audits, most of all FY2025; refresh the data as audits arrive (they are due nine months after the fiscal year ends).",
+   "In the 2026-10 snapshot, of the 780 municipio-year cells (10 years, 78 municipios), 25 are blank (no audit filed) and 362 are zero (an audit with no money of this kind).",
+   "Money spent (expended) in the municipio's fiscal year, as the audit reports it. It is not the same as money obligated or awarded (the USAspending series) or approved (the FEMA series), and a large award can be spent over several years.",
+   "Municipal fiscal years run from 1 July to 30 June and are named by the year they end: FY2024 is July 2023 to June 2024. Federal fiscal years (October to September) are used by the USAspending series, so the two do not line up exactly.",
+   "Matched by name: the auditee names were matched to the 78 municipios, and two with typos in their names were matched by their EIN (employer identification number). One municipio filed two identical audits for FY2024; one is kept.",
+   "Values are in dollars of each year, not adjusted for inflation.",
+   "These series are about federal grant money. Their Spanish summaries are held for Finance and Compliance review (HANDOFF decision 21)."
+  ],
+  "see_also": [
+   "economy.fac_expended",
+   "economy.fac_hhs",
+   "economy.fac_hud",
+   "economy.fac_dhs",
+   "economy.fac_other",
+   "economy.fed_awards_total",
+   "economy.fema_pa_obligated",
+   "measures.per_resident",
+   "measures.inflation_adjustment"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:fac_treasury"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Public money): shade municipalities by dollars per resident",
+     "href": "index.html#e=fac_treasury.f.perCapita.blue.q.1.1.0.85.0&ey=2024"
+    }
+   ]
+  },
+  "example": "Snapshot 2026-10 (Federal Audit Clearinghouse, retrieved 2026-10-31), FY2024: Puerto Rico $421.7 million from the 75 municipio governments that filed.",
+  "added": "2026-10-31"
+ },
+ {
+  "id": "economy.fac_other",
+  "name": "Federal money spent by the municipio government: other agencies",
+  "domain": "public-money",
+  "domains": [
+   "public-money"
+  ],
+  "group": "Federal money spent by municipio governments (single audits)",
+  "kind": "variable",
+  "plain": "The municipio government's federal spending of awards from every other federal agency, such as Agriculture, Labor, Transportation, Education and Justice.",
+  "definition": "The sum of amount_expended over award lines whose agency prefix is not 93, 14, 97 or 21, in the municipio government's single audit, municipal fiscal year.",
+  "unit": "US dollars expended in the municipal fiscal year (not adjusted for inflation)",
+  "value_type": "level",
+  "geography": "78 municipio governments and Puerto Rico (the sum of the municipios that filed)",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2016,
+   "last": 2025,
+   "frequency": "One value per municipal fiscal year (1 July to 30 June). An audit is due nine months after the year ends; in the 2026-10 snapshot FY2025 is the latest, with 65 of 78 filed."
+  },
+  "method": "economy_series.py, functions fac_audits, fac_awards and fac_values (FAC_AGENCIES). The build reads the list of Puerto Rico audits from the FAC API (general, auditee_state PR, most recent submissions, no contact fields), keeps those of the 78 municipio governments (fac_municipio: name patterns such as 'MUNICIPALITY OF', 'MUNICIPIO DE' and 'AUTONOMOUS MUNICIPALITY OF', leaving out housing projects and other bodies named after a municipio; a typo'd name is taken by an EIN that belongs to one municipio only), then reads their award lines (federal_awards) once per fiscal year and sums amount_expended. The award lines of every audit add up to its reported total. Puerto Rico = the sum of the municipios that filed; notes.fac_filed in economy_series.json counts them. The API needs an api.data.gov key (FAC_API_KEY, HANDOFF decision 70). Checks: docs/analysis/public-money-v2-2026-10/fac_check.py.",
+  "sources": [
+   "fac"
+  ],
+  "source_detail": "Federal Audit Clearinghouse API (api.fac.gov), tables general and federal_awards, auditee_state PR, municipal fiscal years 2016 to 2025, retrieved 2026-10-31.",
+  "how_to_read": "In the 2026-10 snapshot (Federal Audit Clearinghouse, retrieved 2026-10-31), the 65 municipio governments that had filed for FY2025 report $124.5 million (8.3% of fac_expended); for FY2016, all 78 filed and report $76.9 million. In FY2025 the largest are San Juan ($26.0 million), Ponce ($10.4 million), Guaynabo ($7.4 million). 64 of the 65 that filed have a value above zero. Compare municipios per resident, and compare years only where the same municipios filed.",
+  "caveats": [
+   "Only the municipio government. Federal money spent in the municipio by Commonwealth agencies, nonprofits, universities, Head Start consortia and the municipio's own housing projects (which file their own audits) is not counted. Audits whose names mention a municipio but are not its government's are left out: housing projects, a community San Juan runs, Bayamón's Ryan White program filed apart, municipal alliances, a cooperative and Commonwealth offices (25 names, listed in docs/analysis/public-money-v2-2026-10/fac_check.json).",
+   "The five agency series (economy.fac_hhs, fac_hud, fac_dhs, fac_treasury, fac_other) add up to economy.fac_expended. Do not add one to economy.fac_expended, which already includes it.",
+   "A year is blank where the audit is not filed: a government that spent less than $750,000 of federal money in the year files none ($1,000,000 for fiscal years that start on or after 1 October 2024, so from FY2026 for the municipios; 2 CFR 200.501), and late audits are common. Not filed in the 2026-10 snapshot: FY2017 Culebra, Lares, Loíza, Moca; FY2018 to FY2019 Culebra; FY2020 Culebra, Lares; FY2023 Villalba; FY2024 Camuy, Guánica, Villalba; FY2025 Adjuntas, Camuy, Ceiba, Ciales, Comerío, Guánica, Guayanilla, Lajas, Las Marías, Las Piedras, Loíza, Morovis, Villalba. FY2016, FY2021 and FY2022 are complete. The Puerto Rico value adds up the municipios that filed, so it is low in years with missing audits, most of all FY2025; refresh the data as audits arrive (they are due nine months after the fiscal year ends).",
+   "In the 2026-10 snapshot, of the 780 municipio-year cells (10 years, 78 municipios), 25 are blank (no audit filed) and 54 are zero (an audit with no money of this kind).",
+   "Money spent (expended) in the municipio's fiscal year, as the audit reports it. It is not the same as money obligated or awarded (the USAspending series) or approved (the FEMA series), and a large award can be spent over several years.",
+   "Municipal fiscal years run from 1 July to 30 June and are named by the year they end: FY2024 is July 2023 to June 2024. Federal fiscal years (October to September) are used by the USAspending series, so the two do not line up exactly.",
+   "Matched by name: the auditee names were matched to the 78 municipios, and two with typos in their names were matched by their EIN (employer identification number). One municipio filed two identical audits for FY2024; one is kept.",
+   "Values are in dollars of each year, not adjusted for inflation.",
+   "These series are about federal grant money. Their Spanish summaries are held for Finance and Compliance review (HANDOFF decision 21)."
+  ],
+  "see_also": [
+   "economy.fac_expended",
+   "economy.fac_hhs",
+   "economy.fac_hud",
+   "economy.fac_dhs",
+   "economy.fac_treasury",
+   "economy.fed_awards_total",
+   "economy.fema_pa_obligated",
+   "measures.per_resident",
+   "measures.inflation_adjustment"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:fac_other"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Public money): shade municipalities by dollars per resident",
+     "href": "index.html#e=fac_other.f.perCapita.blue.q.1.1.0.85.0&ey=2024"
+    }
+   ]
+  },
+  "example": "Snapshot 2026-10 (Federal Audit Clearinghouse, retrieved 2026-10-31), FY2024: Puerto Rico $103.5 million from the 75 municipio governments that filed.",
+  "added": "2026-10-31"
+ }
+]

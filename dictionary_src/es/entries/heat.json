@@ -1,0 +1,50 @@
+{
+ "heat.heat_lst_med": {
+  "name": "Temperatura mediana de la superficie terrestre, mañanas de verano (Landsat, °C)",
+  "how_to_read": "Puerto Rico: 33.4 °C. Municipios más calientes: Santa Isabel (42.8 °C), Salinas (41.0 °C), San Juan (40.9 °C). Más frescos: Jayuya (29.5 °C), Maricao (29.6 °C), Adjuntas (29.7 °C).",
+  "_en": {
+   "name": "6ef7b2ca",
+   "how_to_read": "41fa5295"
+  }
+ },
+ "heat.heat_lst_p90": {
+  "name": "Décima parte más caliente del terreno, temperatura de superficie, mañanas de verano (Landsat, °C)",
+  "how_to_read": "Puerto Rico: 40.5 °C (su mediana es 33.4 °C). Más altos: Salinas (46.2 °C), Santa Isabel (45.8 °C), Cataño (45.3 °C).",
+  "_en": {
+   "name": "c484084b",
+   "how_to_read": "4babdfb6"
+  }
+ },
+ "heat.heat_hot_land_pct": {
+  "name": "Terreno entre la décima parte más caliente de Puerto Rico, mañanas de verano (Landsat, %)",
+  "how_to_read": "Puerto Rico: 10.0% (10% por construcción). Más altos: Santa Isabel (75.0%), San Juan (53.5%), Salinas (53.4%).",
+  "_en": {
+   "name": "cea7c4b7",
+   "how_to_read": "0c6a27a7"
+  }
+ },
+ "heat.heat_res_hot": {
+  "name": "Residentes en la décima parte más caliente del terreno de Puerto Rico (estimado)",
+  "how_to_read": "Puerto Rico: 1,236,030 residentes (37.6%). Más: San Juan (251,510), Bayamón (128,244), Carolina (108,293).",
+  "_en": {
+   "name": "e83be047",
+   "how_to_read": "e1a19942"
+  }
+ },
+ "heat.heat_res_hot_pct": {
+  "name": "Residentes en la décima parte más caliente del terreno de Puerto Rico (estimado, %)",
+  "how_to_read": "Puerto Rico: 37.6% de los residentes viven en su décima parte más caliente del terreno, más de 10% porque la gente vive en el terreno bajo y urbano, que es más caliente. Más altos: Santa Isabel (91.1%), Salinas (80.1%), Ponce (75.7%).",
+  "_en": {
+   "name": "b35809cd",
+   "how_to_read": "fff15389"
+  }
+ },
+ "heat.surface_layer": {
+  "name": "Calor de la superficie, mañanas y noches de verano (capa del mapa, mapa 2D y vista 3D)",
+  "how_to_read": "Lea el color frente a la mediana de Puerto Rico: el terreno azul está más fresco que la superficie típica y el rojo más caliente. Es la superficie, no el aire, en mañanas despejadas; las montañas están más frescas en parte porque están más altas, así que compare lugares de altura parecida. Cada píxel es una celda de 60 m: una celda mezcla techos, calles y árboles.",
+  "_en": {
+   "name": "a745ace4",
+   "how_to_read": "6313a22f"
+  }
+ }
+}

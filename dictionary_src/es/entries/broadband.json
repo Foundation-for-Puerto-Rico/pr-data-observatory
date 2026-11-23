@@ -1,0 +1,66 @@
+{
+ "methods.broadband": {
+  "name": "Disponibilidad de banda ancha fija por barrio y municipio (FCC, Broadband Data Collection)",
+  "how_to_read": "Al 30 de junio de 2026, Puerto Rico tenía 1,177,315 ubicaciones con servicio de banda ancha posible: 95.4% servidas a 100/20 Mbps o más, 1.2% subatendidas y 3.4% sin servicio; la fibra estaba disponible en 70.6% de ellas, frente a 46.3% en junio de 2023.",
+  "_en": {
+   "name": "69eab9d8",
+   "how_to_read": "d4c90a9e"
+  }
+ },
+ "broadband.bb_locations": {
+  "name": "Ubicaciones con servicio de banda ancha posible (FCC)",
+  "how_to_read": "Junio de 2026: Puerto Rico 1,177,315. Más: San Juan (88,204), Bayamón (63,898), Ponce (51,209); menos: Culebra (1,206), Maricao (1,909), Las Marías (3,083). Una ubicación es un punto de edificio o unidad, no un hogar: un edificio de apartamentos puede ser una sola ubicación con muchas unidades.",
+  "_en": {
+   "name": "1fb62e67",
+   "how_to_read": "b4a4ecdc"
+  }
+ },
+ "broadband.bb_served_pct": {
+  "name": "Ubicaciones servidas a 100/20 Mbps o más (FCC, %)",
+  "how_to_read": "Junio de 2026: Puerto Rico 95.4% (junio de 2023: 91.1%). Más bajos: Yabucoa (63.4), Maricao (67.7), Barranquitas (73.2); más altos: San Juan (99.8), Salinas (99.7), Vieques (99.3).",
+  "_en": {
+   "name": "61e85bfc",
+   "how_to_read": "1bf73f8b"
+  }
+ },
+ "broadband.bb_underserved_pct": {
+  "name": "Ubicaciones subatendidas, de 25/3 a 100/20 Mbps (FCC, %)",
+  "how_to_read": "Junio de 2026: Puerto Rico 1.2%. Más altos: Yabucoa (14.2), Barranquitas (10.8), Las Piedras (7.1).",
+  "_en": {
+   "name": "28415996",
+   "how_to_read": "db84cb86"
+  }
+ },
+ "broadband.bb_unserved_pct": {
+  "name": "Ubicaciones sin servicio, menos de 25/3 Mbps (FCC, %)",
+  "how_to_read": "Junio de 2026: Puerto Rico 3.4% (junio de 2023: 6.2%). Más altos: Maricao (29.3), Las Marías (23.8), Yabucoa (22.4).",
+  "_en": {
+   "name": "779345e7",
+   "how_to_read": "06bf9c0b"
+  }
+ },
+ "broadband.bb_below100_n": {
+  "name": "Ubicaciones por debajo de 100/20 Mbps, subatendidas o sin servicio (FCC)",
+  "how_to_read": "Junio de 2026: Puerto Rico 54,180 (junio de 2023: 104,909). Más: Yabucoa (4,408), Cayey (2,788), Barranquitas (2,401).",
+  "_en": {
+   "name": "7f2e4012",
+   "how_to_read": "f534736d"
+  }
+ },
+ "broadband.bb_fiber_pct": {
+  "name": "Ubicaciones con fibra disponible (FCC, %)",
+  "how_to_read": "Junio de 2026: Puerto Rico 70.6% (junio de 2023: 46.3%). Más bajos: Culebra (0.1), Naguabo (3.8), Santa Isabel (4.4); más altos: San Juan (97.6), Hatillo (96.9), Vieques (96.1).",
+  "_en": {
+   "name": "a56b59fe",
+   "how_to_read": "fb6cb19d"
+  }
+ },
+ "layers.broadband_hex": {
+  "name": "Brechas de banda ancha, hexágonos de la FCC (capa del mapa)",
+  "how_to_read": "Al 2026-06-30, 9,971 hexágonos contienen 1,162,059 de las 1,177,315 ubicaciones de Puerto Rico. Lea un hexágono oscuro como un lugar donde muchos hogares y negocios no tienen 100/20 Mbps, y mire su número de ubicaciones en la ventana emergente: un hexágono de 12 ubicaciones es un puñado de hogares.",
+  "_en": {
+   "name": "23638bdb",
+   "how_to_read": "dc3987ed"
+  }
+ }
+}

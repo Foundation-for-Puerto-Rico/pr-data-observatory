@@ -1,0 +1,42 @@
+{
+ "vegetation.veg_ndvi_med": {
+  "name": "Verdor mediano de la vegetación, verano (NDVI de Sentinel-2)",
+  "how_to_read": "Puerto Rico: 0.78. Municipios más verdes: Las Marías (0.87), Utuado (0.85), Maricao (0.85). Menos verdes: San Juan (0.31), Cataño (0.37), Santa Isabel (0.41).",
+  "_en": {
+   "name": "19064430",
+   "how_to_read": "798a12a7"
+  }
+ },
+ "vegetation.veg_dense_pct": {
+  "name": "Terreno con vegetación densa, verano (Sentinel-2, %)",
+  "how_to_read": "Puerto Rico: 75.7%. Más altos: Maricao (97.4%), Las Marías (97.1%), Utuado (95.7%). Más bajos: Santa Isabel (16.6%), Lajas (22.9%), Guánica (27.4%).",
+  "_en": {
+   "name": "d3d4737f",
+   "how_to_read": "75b14bb6"
+  }
+ },
+ "vegetation.veg_sparse_pct": {
+  "name": "Terreno con poca o ninguna vegetación, verano (Sentinel-2, %)",
+  "how_to_read": "Puerto Rico: 4.2%. Más altos: Cataño (36.2%), San Juan (36.0%), Bayamón (21.6%).",
+  "_en": {
+   "name": "41892ca1",
+   "how_to_read": "cb74e7be"
+  }
+ },
+ "vegetation.veg_res_sparse": {
+  "name": "Residentes en terreno con poca o ninguna vegetación (estimado)",
+  "how_to_read": "Puerto Rico: 875,584 residentes (26.6%). Más: San Juan (170,752), Bayamón (87,439), Carolina (74,789).",
+  "_en": {
+   "name": "6d59a42e",
+   "how_to_read": "01b42840"
+  }
+ },
+ "vegetation.veg_res_sparse_pct": {
+  "name": "Residentes en terreno con poca o ninguna vegetación (estimado, %)",
+  "how_to_read": "Puerto Rico: 26.6% de los residentes, más que el 4.2% del terreno, porque la gente vive donde el terreno está construido. Más altos: Santa Isabel (53.1%), San Juan (49.9%), Cataño (49.1%).",
+  "_en": {
+   "name": "31a16abf",
+   "how_to_read": "cb8f4f5c"
+  }
+ }
+}

@@ -1,0 +1,102 @@
+[
+ {
+  "id": "economy.opportunity_zones",
+  "name": "Opportunity Zones 2.0: the status of each census tract, and the residents in zones (Knowledge Area data)",
+  "domain": "economy",
+  "domains": [
+   "economy",
+   "communities",
+   "public-money"
+  ],
+  "group": "Opportunity Zones",
+  "kind": "table",
+  "plain": "Which of Puerto Rico's census tracts are Opportunity Zones from 2027 to 2036, whether each zone is rural, which tracts were eligible but not chosen, and how many people live in zones in each barrio and municipio. It also gives the first round of zones, which ends in 2027.",
+  "definition": "opportunity_zones.json: tracts lists the 981 census tracts of 2020 (columns in tract_fields): id (GEOID), mun (municipio), tract (its number), status (2 a zone made entirely of rural area, 1 a zone that is not rural, 0 eligible as a low-income community but not designated, -1 not eligible), rural (Treasury's rural flag), pov (poverty rate, %), mfi (median family income, $), mfi_pct (median family income as a percent of the comparison area's), area (an index of areas: the metropolitan or micropolitan area, or Puerto Rico outside one, with its median family income), pop and hu (2020 Census residents and housing units), km2 (land) and barrios (the barrios with residents in the tract, most first). barrios (barrio_fields): pop, pop_designated (residents in zones), pop_eligible (residents in eligible tracts, zones included). municipios (muni_fields): tracts, tracts with residents, eligible, designated, rural, residents, residents in zones and in eligible tracts, housing units in zones, land and land in zones. pr holds Puerto Rico's totals, the 25 percent limit and whether it was reached; groups the medians of poverty and income by status; first_round the 2018 zones (863 tracts of 2010: 837 low-income communities, 26 contiguous) and the 2010 Census residents in them.",
+  "unit": "census tracts; residents; % ; US dollars (median family income)",
+  "value_type": "level",
+  "geography": "The 981 census tracts of 2020, the 901 barrios with residents and the 78 municipios; Puerto Rico's totals",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "Designated on 2026-11-05 for 2027-01-01 to 2036-12-31; rebuilt when Treasury publishes a new file (refresh unit oz)"
+  },
+  "method": "opportunity_zones.py reads Treasury's 2027 designations and eligible tracts from its Data Transparency page, checks Puerto Rico's designated tracts against the CDFI Fund's full list (same 178 tracts, same rural status), against eligibility (every one eligible) and against the limit (a quarter of the 712 eligible tracts, rounded up: 178). Residents come from the observatory's crosswalk (2020 Census blocks counted whole in their tract and, by internal point, in their barrio), so tracts, barrios and municipios add up exactly. The law's test (median family income at most 70% of the area's, or poverty 20% or more with income at most 125%) applied to Treasury's figures gives exactly Treasury's list of eligible tracts. The first round is the CDFI Fund's 2018 list with the 2010 Census residents of TIGERweb.",
+  "sources": [
+   "treasury_oz",
+   "census_tiger"
+  ],
+  "source_detail": "US Treasury, Office of Tax Policy, Data Transparency for Qualified Opportunity Zones: OZ2-Designations-2027-Data-Transparency-10302026.xlsx and OZ2-Eligible-Tracts-Data-Transparency-10302026.xlsx (https://home.treasury.gov/policy-issues/tax-policy/data-transparency/qualified-opportunity-zones); CDFI Fund, full list of designated QOZs (2026-11-05) and designated QOZs of 2018 (https://www.cdfifund.gov/opportunity-zones); US Census Bureau, 2020 Census blocks and TIGERweb Census 2010 tracts.",
+  "how_to_read": "178 tracts are zones: 96 not rural and 82 rural, with 676,727 residents (20.6% of Puerto Rico in the 2020 Census); every municipio has at least one. 712 tracts were eligible. In the first round, 863 tracts were zones, with 97.5% of the 2010 Census residents.",
+  "caveats": [
+   "A zone is a federal tax incentive for private investment, not a grant: the file says where it applies, not whether anyone invested.",
+   "Poverty and income are survey estimates (ACS 2020-2024) with margins of error, as Treasury published them; Treasury's file is the official list.",
+   "The two rounds use different census tracts (2010 and 2020): compare their counts and shares, not tract by tract."
+  ],
+  "see_also": [
+   "layers.oz_tracts"
+  ],
+  "where": {
+   "files": [
+    "opportunity_zones.json:*"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Opportunity Zones 2.0",
+     "href": "opportunity-zones.html"
+    }
+   ]
+  },
+  "added": "2026-11-13"
+ },
+ {
+  "id": "layers.oz_tracts",
+  "name": "Opportunity Zones 2.0 (map layer)",
+  "kind": "layer",
+  "value_type": "geometry",
+  "unit": "census tracts (2020 outlines, 1:500,000; longitude and latitude, WGS 84)",
+  "added": "2026-11-13",
+  "domain": "economy",
+  "domains": [
+   "economy",
+   "communities",
+   "public-money"
+  ],
+  "group": "Opportunity Zones",
+  "plain": "A map layer of the census tracts of Puerto Rico that are Opportunity Zones from 2027 to 2036: purple for zones that are not rural, orange for zones made entirely of rural area, where investors get larger tax benefits.",
+  "definition": "oz_tracts.geojson: one polygon per designated tract (178) with g (GEOID), c (2 rural, 1 not rural), m (municipio), t (tract number), p (2020 Census residents), pv (poverty rate, %), mr (median family income as a percent of the area's), b (up to three barrios with the most residents in the tract) and nb (how many barrios have residents in it). Its notes give the counts, the limit and the dates.",
+  "geography": "The 178 designated census tracts, in all 78 municipios",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "Designated on 2026-11-05 for 2027-01-01 to 2036-12-31 (refresh unit oz)"
+  },
+  "method": "opportunity_zones.py takes the designated tracts and their rural status from Treasury's file and the outlines from the Census Bureau's 1:500,000 cartographic file (site/data/geo/tracts.geojson), rounded to 4 decimals. The 2D map (js/facilities.js) and the 3D view (js/facilities3d.js) draw it from the shared list core/facilities.js, filled by rural status, with a legend and a pop-up; the eligible tracts that were not designated are on the Opportunity Zones page, not on this layer.",
+  "sources": [
+   "treasury_oz",
+   "census_cartographic",
+   "census_tiger"
+  ],
+  "source_detail": "US Treasury, 2027 Qualified Opportunity Zone designations (Data Transparency, 2026-10-30; CDFI Fund list of 2026-11-05); US Census Bureau, cartographic boundary file of 2020 census tracts (cb_2020_72_tract_500k).",
+  "how_to_read": "A coloured tract is a zone from January 1, 2027: orange if rural, purple if not. Click it for its municipio, barrios, residents and the poverty rate and income Treasury used. An uncoloured tract is not a zone of the second round; the first round's zones, which covered nearly all of Puerto Rico, end on December 31, 2027.",
+  "caveats": [
+   "The outlines are generalised (1:500,000): for drawing, not for deciding whether an address is in a zone; use the Census Bureau's geocoder and the official list for that.",
+   "A zone is a tax incentive for private investment, not a grant."
+  ],
+  "see_also": [
+   "economy.opportunity_zones"
+  ],
+  "where": {
+   "files": [
+    "oz_tracts.geojson:*"
+   ],
+   "view": [
+    {
+     "label": "Map, Layers tab: Economy",
+     "href": "index.html#l=oz"
+    }
+   ]
+  }
+ }
+]

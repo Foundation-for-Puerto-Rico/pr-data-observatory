@@ -1,0 +1,30 @@
+{
+ "twin_formula_pct400_default_current_stops": 47.0,
+ "published_pct400_default": 46.5,
+ "places_where_transit_m_differs_by_more_than_2m_all": 892,
+ "places_where_transit_m_differs_by_more_than_2m_default": 683,
+ "differs_gt2m_not_jayuya_all": 709,
+ "differs_gt2m_new_closer_all": 892,
+ "differs_gt2m_new_farther_all": 0,
+ "flag_changes_default": 112,
+ "flag_false_to_true_default": 112,
+ "flag_true_to_false_default": 0,
+ "flag_changes_default_jayuya": 111,
+ "flag_changes_default_not_jayuya": 1,
+ "flag_changes_not_jayuya_within_3m_of_line": 0,
+ "differs_gt2m_and_nearest_stop_name_differs_all": 890,
+ "jayuya_places_all": 183,
+ "jayuya_published_median_transit_m": 9927.0,
+ "jayuya_recomputed_median_transit_m": 200.57639495487547,
+ "jayuya_default_pct400_published": 0.0,
+ "jayuya_default_pct400_recomputed": 70.7,
+ "epsg32161_over_twin_formula_ratio_median_within_2km": 0.9974713158844138,
+ "epsg32161_over_twin_formula_ratio_p5_p95_within_2km": [
+  0.9943228699161895,
+  1.0002920932200314
+ ],
+ "share_default_within_400_epsg32161": 47.0,
+ "share_default_within_400_twin_formula": 47.0,
+ "share_default_within_800_epsg32161": 55.5,
+ "share_default_within_800_twin_formula": 55.4
+}

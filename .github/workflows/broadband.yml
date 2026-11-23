@@ -1,0 +1,66 @@
+name: Fixed broadband (FCC Broadband Data Collection)
+
+# Builds the fixed broadband counts (broadband.py) with FPR's FCC account, kept only as the secrets FCC_BDC_USERNAME and FCC_BDC_HASH (docs/broadband.md),
+# and keeps the two files and the block summaries with the run as an artifact; it writes nothing to the repository. Started by hand, or by pushing a tag named
+# broadband-run-*; a tag named broadband-diag-* only lists what the API offers (python broadband.py --diagnose). The secrets are never printed.
+on:
+  workflow_dispatch:
+  push:
+    tags: ["broadband-run-*", "broadband-diag-*"]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: broadband
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90   # the first run downloads four June releases of about 60 MB each; a run reads the newest again when its H3 cells are missing
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements.txt
+      - run: pip install -r requirements.txt
+      - name: What the FCC API offers (diag tags only; never prints the secrets)
+        if: startsWith(github.ref_name, 'broadband-diag-')
+        env:
+          FCC_BDC_USERNAME: ${{ secrets.FCC_BDC_USERNAME }}
+          FCC_BDC_HASH: ${{ secrets.FCC_BDC_HASH }}
+        run: python broadband.py --diagnose
+      - name: Block summaries of earlier runs, and the census blocks and barrio outlines (so a run downloads only new releases)
+        if: "!startsWith(github.ref_name, 'broadband-diag-')"
+        uses: actions/cache@v4
+        with:
+          path: |
+            cache/broadband
+            cache/network/census_blocks_ids.json
+            cache/geo
+          key: broadband-${{ github.run_id }}
+          restore-keys: broadband-
+      - name: Build
+        if: "!startsWith(github.ref_name, 'broadband-diag-')"
+        env:
+          FCC_BDC_USERNAME: ${{ secrets.FCC_BDC_USERNAME }}
+          FCC_BDC_HASH: ${{ secrets.FCC_BDC_HASH }}
+        run: |
+          test -n "$FCC_BDC_USERNAME" -a -n "$FCC_BDC_HASH" || { echo "::error::The secrets FCC_BDC_USERNAME and FCC_BDC_HASH are not both set (docs/broadband.md)."; exit 1; }
+          python -u broadband.py
+          python broadband.py --check
+      - name: Keep the files, and the block summaries for a rebuild elsewhere, with the run
+        if: "!startsWith(github.ref_name, 'broadband-diag-')"
+        uses: actions/upload-artifact@v4
+        with:
+          name: broadband-${{ github.run_id }}
+          path: |
+            site/data/broadband_series.json
+            site/data/broadband_barrio.json
+            site/data/broadband_hex.geojson
+            cache/broadband
+          if-no-files-found: error
+          retention-days: 30

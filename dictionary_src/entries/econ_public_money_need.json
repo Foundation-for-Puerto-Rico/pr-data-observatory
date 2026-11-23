@@ -1,0 +1,62 @@
+[
+ {
+  "id": "economy.public_money_need",
+  "name": "Disaster funding and need: the money and two measures of need by municipio (Knowledge Area data)",
+  "domain": "public-money",
+  "domains": [
+   "public-money",
+   "environment"
+  ],
+  "group": "Disaster funding and need",
+  "kind": "table",
+  "plain": "The figures behind the Disaster funding and need page: for each municipio, the FEMA money of disasters and grants of 2017 to 2025 in three programs, HUD's Community Development Block Grant money (disaster and yearly grants) of federal fiscal years 2019 on, its residents, and two measures of need, so money per resident can be set next to need. It adds no source; every value comes from data files the observatory already publishes.",
+  "definition": "public_money_need.json holds, for the 78 municipios in the order of geo.ids: money.pa (FEMA Public Assistance obligated, federal share, by applicant and declaration year), money.ia (FEMA Individual Assistance approved for owners and renters, by declaration year) and money.hma (FEMA Hazard Mitigation Assistance federal share approved, by benefiting municipio and fiscal year), each in dollars summed over 2017 to 2025 (years.first, years.last); population (2020 Census residents); need.eal (FEMA National Risk Index expected annual loss from natural hazards, $ a year; need_year.eal names its version) and need.cre3 (Census Community Resilience Estimates, % of residents with three or more risk factors, the year in need_year.cre3); and hma.approved, hma.obligated, hma.pending (dollars awaiting a FEMA decision) and hma.projects (approved subapplications). money.cdbg_dr (HUD CDBG-DR and CDBG-MIT subawards by municipio of the work) and money.cdbg (HUD yearly CDBG: entitlement grants plus state program subawards), each summed over the federal fiscal years in money_years; cdbg_parts splits money.cdbg into entitlement and state and gives the island totals (entitlement_total, state_prime, state_subawards, dr_subawards). island.<program>.total is Puerto Rico's total (for HUD, the prime grants' obligations) with the money recorded as statewide and island.<program>.placed the part in the 78 municipios; hma_island holds Puerto Rico's Hazard Mitigation totals. inputs names the series each field is read from; notes.hma_payment_reported counts the subapplications with a payment reported.",
+  "unit": "US dollars (not adjusted for inflation); residents; % of residents",
+  "value_type": "level",
+  "geography": "The 78 municipalities; Puerto Rico's totals separately",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2017,
+   "last": 2025,
+   "frequency": "Rebuilt with the series it reads (public_money_need.py, run by build.py after the economy, housing, environment and hazard series)"
+  },
+  "method": "public_money_need.py reads economy_series.json (fema_pa_obligated, hma_approved_federal, hma_obligated, hma_pending_federal, hma_projects), housing_series.json (fema_ia_amount, population in 2020), environment_series.json (nri_eal_total) hazard_series.json (cre_risk3_pct, the latest year), spending_cdbgdr.json (cdbg_dr.py) and spending_cdbg.json (cdbg_regular.py), adds each money series over the years 2017 to 2025 (a blank year adds nothing) and checks that every file lists the 78 municipios in the same order and that no program's municipios add up to more than Puerto Rico. The page divides money by 2020 residents, ranks the 78 municipios on each measure and cuts them into thirds of 26 (a bivariate map of nine colours), and gives the rank correlation (Spearman) and the medians; it states facts and draws no conclusions. HUD's money is never added to FEMA's: it is counted by the federal fiscal year HUD obligated it.",
+  "sources": [
+   "openfema",
+   "fema_nri",
+   "census_cre",
+   "pep",
+   "usaspending"
+  ],
+  "source_detail": "OpenFEMA Public Assistance Funded Projects Details and HMA Subapplications (retrieved 2026-10-30), Housing Assistance Data (owners and renters); FEMA National Risk Index county table (December 2025); Census Bureau Community Resilience Estimates (2024); 2020 Census.",
+  "how_to_read": "Of the FEMA Public Assistance obligated for 2017 to 2025, 22% is placed in a municipio; the rest is recorded as statewide (power, water and Commonwealth agencies), so a municipio's value leaves out statewide projects that also served it. Individual Assistance is all placed (100%), Hazard Mitigation 64%. Hazard Mitigation: $3.67 billion approved for Puerto Rico, $0.77 billion obligated and $1.06 billion awaiting a FEMA decision.",
+  "caveats": [
+   "Obligated or approved money is not money spent or paid. FEMA reports a payment for 163 of 1,134 Hazard Mitigation subapplications, too few to show money paid.",
+   "Expected annual loss is a model estimate that grows with the value of what is exposed; it is not a record of losses.",
+   "The three programs follow different steps (obligated, approved), so their sum is a rough total.",
+   "A municipio can rank high on money because of one large project; a Hazard Mitigation project that benefits several municipios is split equally among them.",
+   "HUD's subawards cover only the part of the grants that the Puerto Rico Department of Housing passed on and reported with a municipio; subawards often arrive a year or more after the grant."
+  ],
+  "see_also": [
+   "economy.fema_pa_obligated",
+   "economy.hma_approved_federal",
+   "environment.nri_eal_total",
+   "environment.cre_risk3_pct",
+   "layers.knowledge_area",
+   "economy.spending_cdbgdr",
+   "economy.spending_cdbg"
+  ],
+  "where": {
+   "files": [
+    "public_money_need.json:*"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Disaster funding and need",
+     "href": "public-money.html"
+    }
+   ]
+  },
+  "added": "2026-10-31"
+ }
+]

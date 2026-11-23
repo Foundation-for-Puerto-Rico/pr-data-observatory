@@ -1,0 +1,19 @@
+/* The Connections between municipios page (transit-links.html, Knowledge Area): what it adds to public_money.css and oz.css, whose layout it shares (cards, maps, sortable tables). */
+.tl-map svg { display:block; max-width:100%; height:auto; }
+.tl-map .tl-m { fill:#f3f4f6; stroke:#c5cad3; stroke-width:0.6; cursor:pointer; }
+.tl-map .tl-m:hover { fill:#e6e8ec; }
+.tl-map .tl-m.on { fill:#fff3c4; stroke:#1d2433; stroke-width:1.4; }
+.tl-map .tl-sim { fill:none; stroke-dasharray:5 3.5; stroke-linecap:butt; stroke-linejoin:round; opacity:.8; }
+.tl-map .tl-tt { fill:none; stroke:#1b7837; stroke-linecap:round; stroke-linejoin:round; opacity:.9; }
+.tl-map .dim { opacity:.1; }
+.tl-map .tl-dot { fill:#1d2433; pointer-events:none; }
+.tl-key { display:inline-block; width:22px; height:0; margin-right:6px; vertical-align:3px; background:none; border:0; }
+.oz-legend i.tl-key { height:0; border-left:0; border-right:0; border-bottom:0; }
+.tl-chip { display:inline-block; padding:1px 8px; border-radius:10px; border:1.5px solid var(--c); color:#1d2433; background:#fff; font-size:12.5px; white-space:nowrap; }
+.tl-chip::before { content:""; display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--c); margin-right:5px; }
+.tl-l { text-align:left !important; }
+.oz-table small { color:#5b6475; font-weight:400; }
+.tl-pick { display:flex; flex-wrap:wrap; gap:8px 18px; margin:4px 0 10px; }
+.tl-more { text-decoration:underline; }
+.tl-findings { margin: .4rem 0 0; padding-left: 1.4rem; }
+.tl-findings li { margin: .45rem 0; line-height: 1.5; }

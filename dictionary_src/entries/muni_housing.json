@@ -1,0 +1,1697 @@
+[
+  {
+    "id": "municipalities.acs_year",
+    "geography": "78 municipalities",
+    "added": "2026-10-01",
+    "name": "Latest survey window (last year)",
+    "domain": "housing",
+    "domains": ["housing"],
+    "group": "Survey window",
+    "kind": "variable",
+    "plain": "The last year of the five-year Census Bureau survey window behind the housing and household figures. A value of 2024 means the figures describe 2020 to 2024.",
+    "definition": "The year in which the American Community Survey (ACS) 5-year window ends. ACS 5-year estimates combine survey responses collected over five calendar years, so 2024 means the window 2020-2024. Every ACS-based field in the municipality record (home values, rents, income, vacancy, cost burden, poverty, employment, education and age) describes that window. All 78 municipalities carry the same value.",
+    "unit": "year (last year of the window)",
+    "value_type": "date",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2024,
+      "last": 2024,
+      "frequency": "Rebuilt with each snapshot. The Census Bureau publishes a new 5-year window each year. In the 2026-10 snapshot the Housing page expects the 2021-2025 window in December 2026."
+    },
+    "method": "Set once for the whole municipality file (2024 in the 2026-10 snapshot) and copied into each municipality's record. The comparison window is set the same way (2012, meaning the 2008-2012 window) and is used only by the change fields. Both years are also written to meta.json under housing (acs_latest and acs_base).",
+    "values": {
+      "2024": "The ACS 5-year window 2020-2024. In the 2026-10 snapshot it is the only value present (78 of 78 municipalities)."
+    },
+    "sources": [
+      "acs5"
+    ],
+    "source_detail": "US Census Bureau ACS 5-year estimates, 2020-2024 window (the 2024 release)",
+    "how_to_read": "Cite the window, not the single year: write 'ACS 5-year estimates, 2020-2024'. A window is built from five years of responses. It is not a count taken on one date.",
+    "caveats": [
+      "The map and the municipality file take the window from a setting that changes only when the observatory is rebuilt. The Housing page series looks for the newest window the Census Bureau has published. After a new window is published, the Housing page can therefore show a newer window than the map and the municipality file until the observatory is rebuilt.",
+      "Windows that end one year apart share four of their five survey years, so they are not independent. The 2008-2012 and 2020-2024 windows share none."
+    ],
+    "see_also": [
+      "methods.acs_windows",
+      "municipalities.change_method",
+      "municipalities.acs_table_map",
+      "municipalities.acs_reliability",
+      "measures.margin_of_error"
+    ],
+    "where": {
+      "files": [
+        "municipalities.json:acs_year"
+      ],
+      "view": [
+        {
+          "label": "Map, Rankings tab: download the municipality table (CSV)",
+          "href": "index.html"
+        }
+      ]
+    }
+  },
+  {
+    "id": "municipalities.median_home_value",
+    "geography": "78 municipalities",
+    "added": "2026-10-01",
+    "name": "Median home value",
+    "domain": "housing",
+    "domains": ["housing"],
+    "group": "Prices and costs",
+    "kind": "variable",
+    "plain": "The middle value among owner-occupied homes in the municipality, as the owners estimate it. Half of these homes are valued above this amount and half below.",
+    "definition": "Median of the owners' own estimate of what their home would sell for, across all owner-occupied housing units. It is table B25077 ('Median value (dollars)') of the Census Bureau's American Community Survey (ACS) 5-year estimates for the latest window (2020-2024 in the 2026-10 snapshot). The Census Bureau reports ACS dollar amounts in the dollars of the last year of the window (2024 in the 2026-10 snapshot). The observatory applies no inflation adjustment: the Housing page's 'each survey period's dollars, not adjusted for inflation' means the same, with no conversion between windows.",
+    "unit": "US dollars of the latest window's last year (2024 in the 2026-10 snapshot)",
+    "value_type": "level",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2024,
+      "last": 2024,
+      "frequency": "One five-year window (2020-2024, labeled 2024, in the 2026-10 snapshot), read again at each rebuild."
+    },
+    "method": "Copied unchanged from ACS table B25077, cell 001, for each of the 78 municipalities. The observatory reads the Census Bureau's table-based summary file for the latest window (acsdt5y2024-b25077.dat in the 2026-10 snapshot) and keeps the rows for Puerto Rico's municipalities. The same table for the 2008-2012 window feeds home_value_change_pct.",
+    "sources": [
+      "acs5"
+    ],
+    "source_detail": "ACS 5-year 2020-2024, table B25077 (median value, owner-occupied housing units); file acsdt5y2024-b25077.dat",
+    "how_to_read": "A higher amount means owners put a higher price on their homes. It is an opinion of value, not a sale price, and it covers homes people already own, not homes for sale now.",
+    "caveats": [
+      "Owners estimate the value themselves. It is not an appraisal, an assessed value or a recorded sale price.",
+      "Only owner-occupied homes are counted. Rented and vacant homes are left out.",
+      "A survey estimate. In the 2026-10 snapshot (2020-2024 window), the Housing page series shows a 90% margin of error from ±$1,926 (Carolina) to ±$44,042 (Vieques). The municipality file (municipalities.json) carries the estimate only, with no margin.",
+      "The 2008-2012 value is in the dollars of 2012, not in the dollars of this field, so do not subtract one from the other as if the dollars were the same. 'Change in median home value since 2008-2012 (%)' compares them as published, so it includes general price rises."
+    ],
+    "example": "In the 2026-10 snapshot (2020-2024 window): lowest Las Marías ($86,500); highest Guaynabo ($226,800).",
+    "see_also": [
+      "housing.median_home_value",
+      "municipalities.home_value_change_pct",
+      "municipalities.affordability_ratio",
+      "municipalities.acs_reliability",
+      "municipalities.quintile_shading"
+    ],
+    "where": {
+      "files": [
+        "municipalities.json:median_home_value"
+      ],
+      "view": [
+        {
+          "label": "Map, Map layers tab: shade municipalities by",
+          "href": "index.html#s=median_home_value"
+        },
+        {
+          "label": "Map, Municipality tab: Housing panel",
+          "href": "index.html"
+        },
+        {
+          "label": "Map, Rankings tab: rank by 'Housing: median home value'",
+          "href": "index.html"
+        },
+        {
+          "label": "Map, Rankings tab: download the municipality table (CSV)",
+          "href": "index.html"
+        },
+        {
+          "label": "3D view: municipality columns",
+          "href": "3d.html"
+        },
+        {
+          "label": "Housing page: full data for every year, with trend chart and CSV",
+          "href": "housing.html?d=median_home_value"
+        },
+        {
+          "label": "Housing page: municipality profile",
+          "href": "housing.html#profile"
+        }
+      ]
+    }
+  },
+  {
+    "id": "municipalities.median_gross_rent",
+    "geography": "78 municipalities",
+    "added": "2026-10-01",
+    "name": "Median gross rent",
+    "domain": "housing",
+    "domains": ["housing"],
+    "group": "Prices and costs",
+    "kind": "variable",
+    "plain": "The middle monthly rent, with utilities, paid by renters who pay cash rent. Half of these renters pay more and half pay less.",
+    "definition": "Median gross rent per month among renter-occupied housing units that pay cash rent. It is table B25064 ('Median gross rent') of the Census Bureau's American Community Survey (ACS) 5-year estimates for the latest window (2020-2024 in the 2026-10 snapshot). Gross rent is the monthly rent plus the cost of utilities. The Census Bureau reports ACS dollar amounts in the dollars of the last year of the window (2024 in the 2026-10 snapshot). The observatory applies no inflation adjustment: the Housing page's 'each survey period's dollars, not adjusted for inflation' means the same, with no conversion between windows.",
+    "unit": "US dollars per month, of the latest window's last year (2024 in the 2026-10 snapshot)",
+    "value_type": "level",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2024,
+      "last": 2024,
+      "frequency": "One five-year window (2020-2024, labeled 2024, in the 2026-10 snapshot), read again at each rebuild."
+    },
+    "method": "Copied unchanged from ACS table B25064, cell 001, for each municipality (file acsdt5y2024-b25064.dat in the 2026-10 snapshot). The same table for the 2008-2012 window feeds gross_rent_change_pct.",
+    "sources": [
+      "acs5"
+    ],
+    "source_detail": "ACS 5-year 2020-2024, table B25064 (median gross rent, renter-occupied housing units paying cash rent)",
+    "how_to_read": "A higher amount means current renters pay more each month. It describes what tenants pay now, not what a landlord asks for a home that is for rent today.",
+    "caveats": [
+      "Renters who pay no cash rent are not counted.",
+      "It is what sitting tenants pay. A tenant who has lived in a home for years may pay less than a new tenant would.",
+      "A survey estimate. In the 2026-10 snapshot (2020-2024 window), the Housing page series shows a 90% margin of error from ±$16 (San Juan) to ±$240 (Culebra). The municipality file (municipalities.json) carries the estimate only, with no margin.",
+      "The 2008-2012 value is in the dollars of 2012, not in the dollars of this field, so do not subtract one from the other as if the dollars were the same. 'Change in median gross rent since 2008-2012 (%)' compares them as published, so it includes general price rises."
+    ],
+    "example": "In the 2026-10 snapshot (2020-2024 window): lowest Guánica ($349); highest Guaynabo ($901).",
+    "see_also": [
+      "housing.median_gross_rent",
+      "municipalities.gross_rent_change_pct",
+      "municipalities.renter_cost_burden_pct",
+      "municipalities.acs_reliability",
+      "municipalities.quintile_shading"
+    ],
+    "where": {
+      "files": [
+        "municipalities.json:median_gross_rent"
+      ],
+      "view": [
+        {
+          "label": "Map, Map layers tab: shade municipalities by",
+          "href": "index.html#s=median_gross_rent"
+        },
+        {
+          "label": "Map, Municipality tab: Housing panel",
+          "href": "index.html"
+        },
+        {
+          "label": "Map, Rankings tab: rank by 'Housing: median gross rent'",
+          "href": "index.html"
+        },
+        {
+          "label": "Map, Rankings tab: download the municipality table (CSV)",
+          "href": "index.html"
+        },
+        {
+          "label": "Housing page: full data for every year, with trend chart and CSV",
+          "href": "housing.html?d=median_gross_rent"
+        },
+        {
+          "label": "Housing page: municipality profile",
+          "href": "housing.html#profile"
+        }
+      ]
+    }
+  },
+  {
+    "id": "municipalities.housing_units_acs",
+    "geography": "78 municipalities",
+    "added": "2026-10-01",
+    "name": "Housing units (survey estimate)",
+    "domain": "housing",
+    "domains": ["housing"],
+    "group": "Housing stock",
+    "kind": "variable",
+    "plain": "The number of homes in the municipality, occupied or empty, as the Census Bureau's five-year survey estimates it. It is a survey estimate, not the 2020 census count.",
+    "definition": "All housing units, occupied and vacant, from table B25002 (occupancy status), cell 001 ('Total'), of the Census Bureau's American Community Survey (ACS) 5-year estimates for the latest window (2020-2024 in the 2026-10 snapshot). A housing unit is a house, apartment, mobile home, group of rooms or single room that is occupied, or meant to be occupied, as separate living quarters.",
+    "unit": "housing units",
+    "value_type": "count",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2024,
+      "last": 2024,
+      "frequency": "One five-year window (2020-2024, labeled 2024, in the 2026-10 snapshot), read again at each rebuild."
+    },
+    "method": "Copied unchanged from ACS table B25002, cell 001 (file acsdt5y2024-b25002.dat in the 2026-10 snapshot). It is the denominator of vacancy_pct and seasonal_pct. The Housing page series reads the same count from table B25001. In the 2026-10 snapshot the two agree for all 78 municipalities.",
+    "sources": [
+      "acs5"
+    ],
+    "source_detail": "ACS 5-year 2020-2024, table B25002 (occupancy status), cell 001",
+    "how_to_read": "Use it as the base for the vacancy and seasonal shares in the same window. For the count taken on census day 2020, use 'Housing units, 2020 Census'. This is a count, so it is largest where the municipality is largest. To compare municipalities of different size, use a share, such as 'Vacant housing units (%)'.",
+    "caveats": [
+      "It differs from the 2020 census count ('Housing units, 2020 Census'). In the 2026-10 snapshot, across the 78 municipalities, the survey figure is between 97% and 112% of the census figure.",
+      "A survey estimate. In the 2026-10 snapshot (2020-2024 window), the Housing page series shows a 90% margin of error from ±105 (Culebra) to ±1,639 (San Juan). The municipality file (municipalities.json) carries the estimate only, with no margin."
+    ],
+    "example": "In the 2026-10 snapshot (2020-2024 window): lowest Culebra (1,539); highest San Juan (201,026).",
+    "see_also": [
+      "housing.housing_units",
+      "municipalities.housing_units_2020",
+      "municipalities.vacant_units",
+      "municipalities.vacancy_pct",
+      "municipalities.residents_per_unit",
+      "municipalities.acs_reliability"
+    ],
+    "where": {
+      "files": [
+        "municipalities.json:housing_units_acs"
+      ],
+      "view": [
+        {
+          "label": "Map, Rankings tab: download the municipality table (CSV)",
+          "href": "index.html"
+        },
+        {
+          "label": "Housing page: full data for every year, with trend chart and CSV",
+          "href": "housing.html?d=housing_units"
+        },
+        {
+          "label": "Housing page: municipality profile",
+          "href": "housing.html#profile"
+        }
+      ]
+    }
+  },
+  {
+    "id": "municipalities.vacant_units",
+    "geography": "78 municipalities",
+    "added": "2026-10-01",
+    "name": "Vacant housing units (number)",
+    "domain": "housing",
+    "domains": ["housing"],
+    "group": "Housing stock",
+    "kind": "variable",
+    "plain": "The number of homes with nobody living in them when the survey asked. It includes homes for rent or sale, weekend homes and homes empty for other reasons.",
+    "definition": "Housing units classed as vacant in table B25002, cell 003 ('Vacant'), of the Census Bureau's American Community Survey (ACS) 5-year estimates for the latest window (2020-2024 in the 2026-10 snapshot). Vacant units include homes for rent, rented but not yet occupied, for sale, sold but not yet occupied, held for seasonal, recreational or occasional use, for migrant workers, and other vacant (the classes of table B25004).",
+    "unit": "housing units",
+    "value_type": "count",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2024,
+      "last": 2024,
+      "frequency": "One five-year window (2020-2024, labeled 2024, in the 2026-10 snapshot), read again at each rebuild."
+    },
+    "method": "Copied unchanged from ACS table B25002, cell 003 (file acsdt5y2024-b25002.dat in the 2026-10 snapshot).",
+    "sources": [
+      "acs5"
+    ],
+    "source_detail": "ACS 5-year 2020-2024, table B25002 (occupancy status), cell 003",
+    "how_to_read": "A vacant home is not necessarily abandoned. Use 'Seasonal, recreational or occasional-use units (number)' to see how many of the vacant homes are held for occasional use. This is a count, so it is largest where the municipality is largest. To compare municipalities, use 'Vacant housing units (%)'.",
+    "caveats": [
+      "The count mixes very different homes: homes on the market, weekend homes, and homes that are empty or in poor repair.",
+      "A survey estimate. In the 2026-10 snapshot (2020-2024 window), the Housing page series shows a 90% margin of error from ±91 (Culebra) to ±1,556 (San Juan). The municipality file (municipalities.json) carries the estimate only, with no margin."
+    ],
+    "example": "In the 2026-10 snapshot (2020-2024 window): lowest Florida (466); highest San Juan (47,394).",
+    "see_also": [
+      "housing.vacant_units",
+      "municipalities.vacancy_pct",
+      "municipalities.seasonal_units",
+      "housing.other_vacant_units",
+      "municipalities.acs_reliability"
+    ],
+    "where": {
+      "files": [
+        "municipalities.json:vacant_units"
+      ],
+      "view": [
+        {
+          "label": "Map, Rankings tab: download the municipality table (CSV)",
+          "href": "index.html"
+        },
+        {
+          "label": "Housing page: full data for every year, with trend chart and CSV",
+          "href": "housing.html?d=vacant_units"
+        }
+      ]
+    }
+  },
+  {
+    "id": "municipalities.vacancy_pct",
+    "geography": "78 municipalities",
+    "added": "2026-10-01",
+    "name": "Vacant housing units (%)",
+    "domain": "housing",
+    "domains": ["housing"],
+    "group": "Housing stock",
+    "kind": "variable",
+    "plain": "Out of every 100 homes in the municipality, how many were empty when the survey asked. Weekend homes and homes for sale or rent count as empty.",
+    "definition": "Vacant housing units divided by all housing units, times 100. Both counts come from table B25002 of the Census Bureau's American Community Survey (ACS) 5-year estimates for the latest window (2020-2024 in the 2026-10 snapshot): cell 003 divided by cell 001.",
+    "unit": "% of all housing units",
+    "value_type": "rate",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2024,
+      "last": 2024,
+      "frequency": "One five-year window (2020-2024, labeled 2024, in the 2026-10 snapshot), read again at each rebuild."
+    },
+    "method": "vacant_units divided by housing_units_acs, times 100, rounded to one decimal.",
+    "sources": [
+      "acs5"
+    ],
+    "source_detail": "ACS 5-year 2020-2024, table B25002, cell 003 divided by cell 001",
+    "how_to_read": "A high value means many homes were empty. Read it with 'Seasonal, recreational or occasional-use units (%)': in places with many weekend and vacation homes, much of the vacancy is seasonal and is not abandonment.",
+    "caveats": [
+      "It does not separate abandoned homes from homes that are for sale, for rent or used on weekends.",
+      "In the 2026-10 snapshot, the 2020 census count gives a lower rate than the 2020-2024 survey in 74 of 78 municipalities. For Puerto Rico as a whole the Housing page series shows 16.1% in the 2020 census and 21.0% in 2020-2024. Compare each source only with itself.",
+      "A survey estimate. In the 2026-10 snapshot (2020-2024 window), the Housing page series shows a 90% margin of error from ±0.8 points (San Juan) to ±5.5 points (Maricao). The municipality file (municipalities.json) carries the estimate only, with no margin."
+    ],
+    "example": "In the 2026-10 snapshot (2020-2024 window): lowest Florida (8.9%); highest Culebra (66.0%).",
+    "see_also": [
+      "housing.vacancy_pct",
+      "housing.census_vacancy_pct",
+      "municipalities.vacant_units",
+      "municipalities.seasonal_pct",
+      "municipalities.quintile_shading",
+      "municipalities.acs_reliability"
+    ],
+    "where": {
+      "files": [
+        "municipalities.json:vacancy_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Map layers tab: shade municipalities by",
+          "href": "index.html#s=vacancy_pct"
+        },
+        {
+          "label": "Map, Rankings tab: rank by 'Housing: % vacant units'",
+          "href": "index.html"
+        },
+        {
+          "label": "Map, Rankings tab: download the municipality table (CSV)",
+          "href": "index.html"
+        },
+        {
+          "label": "Housing page: full data for every year, with trend chart and CSV",
+          "href": "housing.html?d=vacancy_pct"
+        },
+        {
+          "label": "Housing page: municipality profile",
+          "href": "housing.html#profile"
+        }
+      ]
+    }
+  },
+  {
+    "id": "municipalities.seasonal_units",
+    "geography": "78 municipalities",
+    "added": "2026-10-01",
+    "name": "Seasonal, recreational or occasional-use units (number)",
+    "domain": "housing",
+    "domains": ["housing"],
+    "group": "Housing stock",
+    "kind": "variable",
+    "plain": "The number of empty homes kept for seasonal, recreational or occasional use, such as weekend and vacation homes. It is the nearest public count of weekend homes.",
+    "definition": "Vacant housing units whose vacancy status is 'For seasonal, recreational, or occasional use': table B25004, cell 006, of the Census Bureau's American Community Survey (ACS) 5-year estimates for the latest window (2020-2024 in the 2026-10 snapshot).",
+    "unit": "housing units",
+    "value_type": "count",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2024,
+      "last": 2024,
+      "frequency": "One five-year window (2020-2024, labeled 2024, in the 2026-10 snapshot), read again at each rebuild."
+    },
+    "method": "Copied unchanged from ACS table B25004, cell 006 (file acsdt5y2024-b25004.dat in the 2026-10 snapshot).",
+    "sources": [
+      "acs5"
+    ],
+    "source_detail": "ACS 5-year 2020-2024, table B25004 (vacancy status), cell 006",
+    "how_to_read": "Use it as an indirect sign of weekend and second homes. The Housing page treats it as the closest public stand-in for weekend homes and short-term rentals, but the Census Bureau has no short-term rental category, so this is not a count of short-term rentals. This is a count, so it is largest where the municipality is largest. To compare municipalities, use 'Seasonal, recreational or occasional-use units (%)'.",
+    "caveats": [
+      "The Census Bureau has no separate category for short-term rentals, so they are not identified in this count. It is an indirect measure only.",
+      "A survey estimate. In the 2026-10 snapshot (2020-2024 window), the Housing page series shows a 90% margin of error from ±50 (Florida) to ±649 (San Juan). In the same snapshot, Florida's margin (±50) is larger than its estimate (30)."
+    ],
+    "example": "In the 2026-10 snapshot (2020-2024 window): lowest Florida (30); highest San Juan (7,203).",
+    "see_also": [
+      "housing.seasonal_units",
+      "municipalities.seasonal_pct",
+      "municipalities.acs_reliability"
+    ],
+    "where": {
+      "files": [
+        "municipalities.json:seasonal_units"
+      ],
+      "view": [
+        {
+          "label": "Map, Rankings tab: download the municipality table (CSV)",
+          "href": "index.html"
+        },
+        {
+          "label": "Housing page: full data for every year, with trend chart and CSV",
+          "href": "housing.html?d=seasonal_units"
+        }
+      ]
+    }
+  },
+  {
+    "id": "municipalities.seasonal_pct",
+    "geography": "78 municipalities",
+    "added": "2026-10-01",
+    "name": "Seasonal, recreational or occasional-use units (%)",
+    "domain": "housing",
+    "domains": ["housing"],
+    "group": "Housing stock",
+    "kind": "variable",
+    "plain": "Out of every 100 homes, this many sit empty because they are kept for weekends, vacations or other part-time use.",
+    "definition": "Vacant units held for seasonal, recreational or occasional use (table B25004, cell 006) divided by all housing units (table B25002, cell 001), times 100. Census Bureau American Community Survey (ACS) 5-year estimates for the latest window (2020-2024 in the 2026-10 snapshot).",
+    "unit": "% of all housing units",
+    "value_type": "rate",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2024,
+      "last": 2024,
+      "frequency": "One five-year window (2020-2024, labeled 2024, in the 2026-10 snapshot), read again at each rebuild."
+    },
+    "method": "seasonal_units divided by housing_units_acs, times 100, rounded to one decimal.",
+    "sources": [
+      "acs5"
+    ],
+    "source_detail": "ACS 5-year 2020-2024, table B25004 cell 006 divided by table B25002 cell 001",
+    "how_to_read": "A high value means many homes are held for occasional use rather than lived in year-round. It does not say who owns them or whether they are rented to visitors.",
+    "caveats": [
+      "An indirect measure of weekend and second homes. The Census Bureau has no short-term rental category, so it is not a count of short-term rentals.",
+      "A survey estimate. In the 2026-10 snapshot (2020-2024 window), the Housing page series shows a 90% margin of error from ±0.3 points (Bayamón) to ±4.2 points (Culebra). The municipality file (municipalities.json) carries the estimate only, with no margin."
+    ],
+    "example": "In the 2026-10 snapshot (2020-2024 window): lowest Sabana Grande (0.5%); highest Culebra (40.7%).",
+    "see_also": [
+      "housing.seasonal_pct",
+      "municipalities.seasonal_units",
+      "municipalities.vacancy_pct",
+      "municipalities.quintile_shading",
+      "municipalities.acs_reliability"
+    ],
+    "where": {
+      "files": [
+        "municipalities.json:seasonal_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Map layers tab: shade municipalities by",
+          "href": "index.html#s=seasonal_pct"
+        },
+        {
+          "label": "Map, Municipality tab: Housing panel",
+          "href": "index.html"
+        },
+        {
+          "label": "Map, Rankings tab: rank by 'Housing: % seasonal / recreational units'",
+          "href": "index.html"
+        },
+        {
+          "label": "Map, Rankings tab: download the municipality table (CSV)",
+          "href": "index.html"
+        },
+        {
+          "label": "3D view: municipality columns",
+          "href": "3d.html"
+        },
+        {
+          "label": "Housing page: full data for every year, with trend chart and CSV",
+          "href": "housing.html?d=seasonal_pct"
+        },
+        {
+          "label": "Housing page: municipality profile",
+          "href": "housing.html#profile"
+        }
+      ]
+    }
+  },
+  {
+    "id": "municipalities.residents_per_unit",
+    "geography": "78 municipalities",
+    "added": "2026-10-01",
+    "name": "Residents per housing unit (2020 census)",
+    "domain": "housing",
+    "domains": ["housing"],
+    "group": "Housing stock",
+    "kind": "variable",
+    "plain": "How many residents there are for every home in the municipality, counting empty homes. A low number means many homes for each resident.",
+    "definition": "Total population divided by total housing units, both counted in the 2020 census. Housing units include occupied and vacant homes. Population includes everyone counted in the municipality, including people in group housing.",
+    "unit": "residents per housing unit",
+    "value_type": "ratio",
+    "coverage": {
+      "timeline": "decennial",
+      "first": 2020,
+      "last": 2020,
+      "frequency": "Every ten years (2020 census count); rebuilt with each snapshot."
+    },
+    "method": "population_2020 divided by housing_units_2020, rounded to two decimals. Both come from the Census Bureau's TIGERweb 2020 Census layer (fields POP100 and HU100). This field does not use the American Community Survey.",
+    "sources": [
+      "census_tiger"
+    ],
+    "source_detail": "US Census Bureau TIGERweb, 2020 Census (POP100 population, HU100 housing units)",
+    "how_to_read": "It is not household size. Empty homes are in the denominator, so a low value can mean many empty or seasonal homes, small households, or both. Average household size (people per occupied home) is a different measure; see 'Average household size' in the Housing page series.",
+    "caveats": [
+      "A census count on one date (April 1, 2020), not a five-year survey estimate."
+    ],
+    "example": "In the 2026-10 snapshot (2020 census): lowest Culebra (1.15); highest Villalba (2.49).",
+    "see_also": [
+      "housing.residents_per_unit",
+      "housing.avg_household_size",
+      "municipalities.population_2020",
+      "municipalities.housing_units_2020",
+      "municipalities.housing_units_acs",
+      "municipalities.vacancy_pct"
+    ],
+    "where": {
+      "files": [
+        "municipalities.json:residents_per_unit"
+      ],
+      "view": [
+        {
+          "label": "Map, Rankings tab: download the municipality table (CSV)",
+          "href": "index.html"
+        },
+        {
+          "label": "Housing page: full data for every year, with trend chart and CSV",
+          "href": "housing.html?d=residents_per_unit"
+        },
+        {
+          "label": "Housing page: municipality profile",
+          "href": "housing.html#profile"
+        }
+      ]
+    }
+  },
+  {
+    "id": "municipalities.owner_occupied_pct",
+    "geography": "78 municipalities",
+    "added": "2026-10-01",
+    "name": "Owner-occupied share of occupied units",
+    "domain": "housing",
+    "domains": ["housing"],
+    "group": "Owners and renters",
+    "kind": "variable",
+    "plain": "Out of every 100 occupied homes in the municipality, how many are lived in by their owners. The rest are rented.",
+    "definition": "Owner-occupied housing units divided by all occupied housing units, times 100. Both counts come from table B25003 (tenure), cells 002 and 001, of the Census Bureau's American Community Survey (ACS) 5-year estimates for the latest window (2020-2024 in the 2026-10 snapshot). Owners with and without a mortgage are both counted.",
+    "unit": "% of occupied housing units",
+    "value_type": "rate",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2024,
+      "last": 2024,
+      "frequency": "One five-year window (2020-2024, labeled 2024, in the 2026-10 snapshot), read again at each rebuild."
+    },
+    "method": "B25003 cell 002 divided by cell 001, times 100, rounded to one decimal (file acsdt5y2024-b25003.dat in the 2026-10 snapshot).",
+    "sources": [
+      "acs5"
+    ],
+    "source_detail": "ACS 5-year 2020-2024, table B25003 (tenure), cell 002 divided by cell 001",
+    "how_to_read": "A high value means most households own their home. It counts occupied homes only, so it is not a share of all homes or of all people.",
+    "caveats": [
+      "Vacant homes are not in the denominator.",
+      "It says who lives in the home, not who owns the land or whether the owner holds a title.",
+      "A survey estimate. In the 2026-10 snapshot (2020-2024 window), the Housing page series shows a 90% margin of error from ±0.8 points (Bayamón) to ±10.4 points (Culebra). The municipality file (municipalities.json) carries the estimate only, with no margin."
+    ],
+    "example": "In the 2026-10 snapshot (2020-2024 window): lowest Mayagüez (49.8%); highest Toa Alta (80.5%).",
+    "see_also": [
+      "housing.owner_occupied_pct",
+      "municipalities.owner_cost_burden_pct",
+      "municipalities.renter_cost_burden_pct",
+      "municipalities.acs_reliability"
+    ],
+    "where": {
+      "files": [
+        "municipalities.json:owner_occupied_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Rankings tab: download the municipality table (CSV)",
+          "href": "index.html"
+        },
+        {
+          "label": "Housing page: full data for every year, with trend chart and CSV",
+          "href": "housing.html?d=owner_occupied_pct"
+        },
+        {
+          "label": "Housing page: municipality profile",
+          "href": "housing.html#profile"
+        }
+      ]
+    }
+  },
+  {
+    "id": "municipalities.renter_cost_burden_pct",
+    "geography": "78 municipalities",
+    "added": "2026-10-01",
+    "name": "Cost-burdened renters (30%+ of income on rent)",
+    "domain": "housing",
+    "domains": ["housing"],
+    "group": "Cost burden",
+    "kind": "variable",
+    "plain": "The share of renter households that pay 30% or more of their income for rent and utilities. Renter households whose share cannot be worked out are left out. In the 2026-10 snapshot they are about 4 in 10 across the 78 municipalities, so the figure describes the other 6 in 10.",
+    "definition": "Renter households whose gross rent is 30% or more of household income, divided by renter households for which that share can be computed, times 100. From table B25070 (gross rent as a percentage of household income) of the Census Bureau's American Community Survey (ACS) 5-year estimates for the latest window (2020-2024 in the 2026-10 snapshot). The burdened classes are '30.0 to 34.9', '35.0 to 39.9', '40.0 to 49.9' and '50.0 percent or more'.",
+    "unit": "% of renter households with a computed rent-to-income share",
+    "value_type": "rate",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2024,
+      "last": 2024,
+      "frequency": "One five-year window (2020-2024, labeled 2024, in the 2026-10 snapshot), read again at each rebuild."
+    },
+    "method": "B25070 cells 007 to 010 added, divided by (cell 001 minus cell 011 'Not computed'), times 100, rounded to one decimal (file acsdt5y2024-b25070.dat in the 2026-10 snapshot).",
+    "sources": [
+      "acs5"
+    ],
+    "source_detail": "ACS 5-year 2020-2024, table B25070, cells 007-010 over (001 minus 011)",
+    "how_to_read": "A high value means many renters spend a large part of their income on housing. It follows the 30% rule of thumb used in the 2023 study. It does not say how many renters are behind on rent.",
+    "caveats": [
+      "Renters whose ratio cannot be computed are left out. In the 2026-10 snapshot (2020-2024 window) that is about 42% of renter households across the 78 municipalities (173,394 of 414,280), and between 25% and 65% depending on the municipality. These are households with no cash rent or with no income, for example. The share describes only the rest.",
+      "Small renter groups make the estimate unstable. In the 2026-10 snapshot (2020-2024 window), the Housing page series shows a 90% margin of error from ±0.7 points (Gurabo) to ±67.9 points (Florida). In the same snapshot it is more than 10 points in 47 of the 78 municipalities and more than 20 points in 34. Read rankings and map shades on this field with care: differences of a few points are often within the margin. The municipality file (municipalities.json) carries the estimate only, with no margin.",
+      "The field counts the Census class 30.0 percent or more. HUD's wording is 'more than 30%', so a household at exactly 30.0% counts here."
+    ],
+    "example": "In the 2026-10 snapshot (2020-2024 window): lowest Culebra (22.0%, margin ±24.2 points, an estimated 100 renter households with a computed share); highest Florida (65.2%, margin ±67.9 points, larger than the estimate, an estimated 486 such households). Both rest on very small groups.",
+    "see_also": [
+      "housing.renter_cost_burden_pct",
+      "housing.renter_severe_burden_pct",
+      "municipalities.owner_cost_burden_pct",
+      "municipalities.median_gross_rent",
+      "municipalities.quintile_shading",
+      "study.table_3",
+      "municipalities.acs_reliability"
+    ],
+    "where": {
+      "files": [
+        "municipalities.json:renter_cost_burden_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Map layers tab: shade municipalities by",
+          "href": "index.html#s=renter_cost_burden_pct"
+        },
+        {
+          "label": "Map, Municipality tab: Housing panel",
+          "href": "index.html"
+        },
+        {
+          "label": "Map, Rankings tab: rank by 'Housing: % cost-burdened renters'",
+          "href": "index.html"
+        },
+        {
+          "label": "Map, Rankings tab: download the municipality table (CSV)",
+          "href": "index.html"
+        },
+        {
+          "label": "3D view: municipality columns",
+          "href": "3d.html"
+        },
+        {
+          "label": "Housing page: full data for every year, with trend chart and CSV",
+          "href": "housing.html?d=renter_cost_burden_pct"
+        },
+        {
+          "label": "Housing page: municipality profile",
+          "href": "housing.html#profile"
+        }
+      ]
+    }
+  },
+  {
+    "id": "municipalities.owner_cost_burden_pct",
+    "geography": "78 municipalities",
+    "added": "2026-10-01",
+    "name": "Cost-burdened owners with a mortgage (30%+ of income)",
+    "domain": "housing",
+    "domains": ["housing"],
+    "group": "Cost burden",
+    "kind": "variable",
+    "plain": "The share of owner households with a mortgage that pay 30% or more of their income for housing costs. Owners with no mortgage are left out. In the 2026-10 snapshot they are about 6 in 10 owner households across the 78 municipalities.",
+    "definition": "Owner households with a mortgage whose selected monthly owner costs are 30% or more of household income, divided by owner households with a mortgage for which that share can be computed, times 100. From table B25091 (mortgage status by selected monthly owner costs as a percentage of household income) of the Census Bureau's American Community Survey (ACS) 5-year estimates for the latest window (2020-2024 in the 2026-10 snapshot). Selected monthly owner costs include the mortgage payment, property taxes, insurance, utilities and fuel.",
+    "unit": "% of owner households with a mortgage and a computed cost share",
+    "value_type": "rate",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2024,
+      "last": 2024,
+      "frequency": "One five-year window (2020-2024, labeled 2024, in the 2026-10 snapshot), read again at each rebuild."
+    },
+    "method": "B25091 cells 008 to 011 added, divided by (cell 002 'Housing units with a mortgage' minus cell 012 'Not computed'), times 100, rounded to one decimal (file acsdt5y2024-b25091.dat in the 2026-10 snapshot).",
+    "sources": [
+      "acs5"
+    ],
+    "source_detail": "ACS 5-year 2020-2024, table B25091, cells 008-011 over (002 minus 012)",
+    "how_to_read": "A high value means many owners who are still paying a mortgage spend a large part of their income on housing. It says nothing about owners without a mortgage.",
+    "caveats": [
+      "Owners without a mortgage are not counted. In the 2026-10 snapshot (2020-2024 window) they are about 63% of owner households across the 78 municipalities (552,275 of 876,586).",
+      "Owners whose ratio cannot be computed are also left out (in the 2026-10 snapshot, 4,803 of 324,311 owner households with a mortgage).",
+      "Small groups make the estimate unstable. In the 2026-10 snapshot (2020-2024 window), the Housing page series shows a 90% margin of error from ±2.1 points (San Juan) to ±46.3 points (Culebra). In the same snapshot it is more than 10 points in 23 of the 78 municipalities. The municipality file (municipalities.json) carries the estimate only, with no margin."
+    ],
+    "example": "In the 2026-10 snapshot (2020-2024 window): lowest Guánica (23.6%); highest Culebra (61.5%, margin ±46.3 points, too wide to rank it with confidence; only 39 owner households there have a mortgage).",
+    "see_also": [
+      "housing.owner_cost_burden_pct",
+      "housing.median_owner_costs_mortgage",
+      "municipalities.renter_cost_burden_pct",
+      "municipalities.owner_occupied_pct",
+      "study.table_4",
+      "municipalities.acs_reliability"
+    ],
+    "where": {
+      "files": [
+        "municipalities.json:owner_cost_burden_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Rankings tab: download the municipality table (CSV)",
+          "href": "index.html"
+        },
+        {
+          "label": "Housing page: full data for every year, with trend chart and CSV",
+          "href": "housing.html?d=owner_cost_burden_pct"
+        },
+        {
+          "label": "Housing page: municipality profile",
+          "href": "housing.html#profile"
+        }
+      ]
+    }
+  },
+  {
+    "id": "municipalities.max_affordable_loan",
+    "geography": "78 municipalities",
+    "added": "2026-10-01",
+    "name": "Maximum affordable 30-year loan",
+    "domain": "housing",
+    "domains": ["housing"],
+    "group": "Affordability",
+    "kind": "variable",
+    "plain": "This is the largest 30-year home loan that a household with the municipality's median income could carry. Three assumptions apply. Housing takes 30% of income. About 78% of that budget (23.5% of income) pays the loan. The interest rate is a fixed 5%. It is a yardstick, not a lender's limit.",
+    "definition": "A calculation on the median household income of the latest window (2020-2024 in the 2026-10 snapshot), table B19013 of the Census Bureau's American Community Survey (ACS) 5-year estimates. Housing may take 30% of income. 78% of that housing budget goes to principal and interest, the part of a mortgage payment that repays the loan and pays the lender (the study's own proportion: $430 of $549). The result is the loan that this monthly payment repays over 30 years at a fixed 5% yearly interest rate. The loan is in the same dollars as the income: the dollars of the window's last year (2024 in the 2026-10 snapshot). It follows the method of Table 6 (Table 8 in the study PDF) of The State of Housing in Puerto Rico, published by Foundation for Puerto Rico (FPR) in 2023.",
+    "unit": "US dollars (loan amount), in the dollars of the latest window's last year (2024 in the 2026-10 snapshot)",
+    "value_type": "level",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2024,
+      "last": 2024,
+      "frequency": "One five-year window (2020-2024, labeled 2024, in the 2026-10 snapshot), read again at each rebuild."
+    },
+    "method": "monthly housing budget = median household income × 0.30 ÷ 12. Monthly principal and interest = budget × 430/549 (about 0.7832). With r = 0.05 ÷ 12, loan = payment × (1 − (1 + r)^−360) ÷ r, rounded to a whole dollar. In short, the loan is about 3.65 times median household income. The rate (5%) and the principal-and-interest share (430/549) are fixed settings of the observatory's build. The 30% income share and the 360-month term are written into the calculation itself.",
+    "sources": [
+      "acs5",
+      "fpr_method",
+      "fpr_housing_2023"
+    ],
+    "source_detail": "ACS 5-year 2020-2024, table B19013; FPR (2023), Table 6 method (Table 8 in the study PDF)",
+    "how_to_read": "A higher amount means a typical household in the municipality could borrow more under these assumptions. Compare it with the median home value through the affordability ratio. To cite it in the 2026-10 snapshot, write: 'Foundation for Puerto Rico, PR Data Observatory; calculated from US Census Bureau ACS 5-year estimates 2020-2024, table B19013, with the affordability method of The State of Housing in Puerto Rico (2023).'",
+    "caveats": [
+      "The 30% share, the 78% share (430 of 549) and the 30-year term follow the study's Table 6 method. The 5% rate is the one the study states in its endnotes for the maximum mortgage (a bank's mortgage calculator, assuming no other debt, homeowners' association fees or taxes). The study's published maximums imply 4.994%, so the observatory's figures at exactly 5% run $19 to $65 below them. None of these is a lender's rule. Real rates and lending rules differ.",
+      "The calculation leaves out the down payment, closing costs, credit history and any other debt.",
+      "It uses the median income of all households, renters and owners alike, not of people who plan to buy.",
+      "The method gives $80,127 for the study's Puerto Rico median income of $21,967. The study prints $80,181, a gap of $54.",
+      "No margin of error is calculated for this field. It inherits the survey margin of the income it is based on.",
+      "An illustration of one set of assumptions across municipalities. It is not financial or lending advice and not an estimate of what any household can borrow."
+    ],
+    "example": "In the 2026-10 snapshot (2020-2024 window): lowest Las Marías ($59,507); highest Guaynabo ($170,456). Worked example, Guaynabo: $46,731 income gives a budget of about $1,168 a month, about $915 of it for principal and interest, and a loan of $170,456.",
+    "see_also": [
+      "housing.max_affordable_loan",
+      "municipalities.affordability_method",
+      "municipalities.affordability_ratio",
+      "municipalities.median_hh_income",
+      "study.table_6",
+      "municipalities.acs_reliability"
+    ],
+    "where": {
+      "files": [
+        "municipalities.json:max_affordable_loan"
+      ],
+      "view": [
+        {
+          "label": "Map, Rankings tab: download the municipality table (CSV)",
+          "href": "index.html"
+        },
+        {
+          "label": "Housing page: full data for every year, with trend chart and CSV",
+          "href": "housing.html?d=max_affordable_loan"
+        },
+        {
+          "label": "Housing page: municipality profile",
+          "href": "housing.html#profile"
+        }
+      ]
+    }
+  },
+  {
+    "id": "municipalities.affordability_ratio",
+    "geography": "78 municipalities",
+    "added": "2026-10-01",
+    "name": "Home ownership affordability ratio",
+    "domain": "housing",
+    "domains": ["housing"],
+    "group": "Affordability",
+    "kind": "variable",
+    "plain": "The median home value divided by the largest loan a median-income household could carry. Above 1.00, the typical home costs more than the typical household can borrow under the assumptions of the Table 6 method.",
+    "definition": "median_home_value (table B25077 of the Census Bureau's American Community Survey (ACS) 5-year estimates) divided by max_affordable_loan, from the latest window (2020-2024 in the 2026-10 snapshot). The loan comes from the Table 6 method (Table 8 in the study PDF) of The State of Housing in Puerto Rico, published by Foundation for Puerto Rico (FPR) in 2023. The ratio has no unit: it says how many times the median home value exceeds the maximum affordable loan.",
+    "unit": "ratio (home value divided by maximum loan)",
+    "value_type": "ratio",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2024,
+      "last": 2024,
+      "frequency": "One five-year window (2020-2024, labeled 2024, in the 2026-10 snapshot), read again at each rebuild."
+    },
+    "method": "median_home_value divided by max_affordable_loan, rounded to two decimals. The Housing page profile labels a ratio above 1.00 'out of reach' and a ratio of 1.00 or less 'within reach'. The map's Municipality tab colors the tile as a warning above 1.00 and green at 1.00 or less. Both tests use the ratio after rounding to two decimals.",
+    "sources": [
+      "acs5",
+      "fpr_method",
+      "fpr_housing_2023"
+    ],
+    "source_detail": "ACS 5-year 2020-2024, tables B25077 and B19013; FPR (2023), Table 6 method",
+    "how_to_read": "A ratio of 1.50 means the median home costs one and a half times the largest loan the median household could carry. A higher ratio means homes are further out of reach. It does not say how many households can buy. To cite it in the 2026-10 snapshot, write: 'Foundation for Puerto Rico, PR Data Observatory; calculated from US Census Bureau ACS 5-year estimates 2020-2024, tables B19013 and B25077, with the affordability method of The State of Housing in Puerto Rico (2023).'",
+    "caveats": [
+      "In the 2026-10 snapshot, 76 of 78 municipalities have a stored value above 1.00. Culebra (0.97) is below. In the same snapshot, Guayanilla is stored as 1.00, but its unrounded ratio is 1.002 (median home value $87,400, maximum loan $87,232). The map and the Housing page profile test the rounded value, so they class Guayanilla as green, or 'within reach', although its median home is $168 above its maximum loan. Treat a value near 1.00 as a tie.",
+      "It compares two medians from different groups: the value of homes that owners already hold, and the income of all households. Buyers of a home may have more or less income, savings or help.",
+      "It rests on the assumptions listed under 'Maximum affordable 30-year loan', including a fixed 5% rate and no down payment.",
+      "No margin of error is calculated for this field. Both inputs are survey estimates. In the 2026-10 snapshot (2020-2024 window), combining the 90% margins of the median home value and the median household income in the Housing page series with the Census Bureau's formula for the margin of a ratio (treating the two estimates as independent), the margin is larger than the distance from 1.00 in 10 of the 78 municipalities, among them Culebra, Guayanilla, Patillas, Gurabo and Vieques. For those, the survey cannot show on which side of 1.00 the true ratio lies.",
+      "An illustration of one set of assumptions across municipalities. It is not financial or lending advice and not an estimate of what any household can borrow."
+    ],
+    "example": "In the 2026-10 snapshot (2020-2024 window): lowest Culebra (0.97); highest Aguadilla (1.92).",
+    "see_also": [
+      "housing.affordability_ratio",
+      "municipalities.max_affordable_loan",
+      "municipalities.median_home_value",
+      "municipalities.affordability_method",
+      "municipalities.quintile_shading",
+      "study.table_6",
+      "municipalities.acs_reliability"
+    ],
+    "where": {
+      "files": [
+        "municipalities.json:affordability_ratio"
+      ],
+      "view": [
+        {
+          "label": "Map, Map layers tab: shade municipalities by",
+          "href": "index.html#s=affordability_ratio"
+        },
+        {
+          "label": "Map, Municipality tab: Housing panel",
+          "href": "index.html"
+        },
+        {
+          "label": "Map, Rankings tab: rank by 'Housing: affordability ratio (value ÷ max loan)'",
+          "href": "index.html"
+        },
+        {
+          "label": "Map, Rankings tab: download the municipality table (CSV)",
+          "href": "index.html"
+        },
+        {
+          "label": "3D view: municipality columns",
+          "href": "3d.html"
+        },
+        {
+          "label": "Housing page: full data for every year, with trend chart and CSV",
+          "href": "housing.html?d=affordability_ratio"
+        },
+        {
+          "label": "Housing page: affordability section",
+          "href": "housing.html#afford"
+        },
+        {
+          "label": "Housing page: municipality profile",
+          "href": "housing.html#profile"
+        }
+      ]
+    }
+  },
+  {
+    "id": "municipalities.median_hh_income",
+    "geography": "78 municipalities",
+    "added": "2026-10-01",
+    "name": "Median household income (municipality file)",
+    "domain": "economy",
+    "domains": ["economy"],
+    "group": "Income and poverty",
+    "kind": "variable",
+    "plain": "The middle yearly income of households in the municipality. Half of the households earn more and half earn less.",
+    "definition": "Median household income in the past 12 months, table B19013 of the Census Bureau's American Community Survey (ACS) 5-year estimates for the latest window (2020-2024 in the 2026-10 snapshot). A household is all the people who live in one housing unit. Its income adds the money income of every member aged 15 or over. The Census Bureau reports ACS dollar amounts in the dollars of the last year of the window (2024 in the 2026-10 snapshot; the Analysis tab says the same). The observatory applies no inflation adjustment.",
+    "unit": "US dollars per year, of the latest window's last year (2024 in the 2026-10 snapshot)",
+    "value_type": "level",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2024,
+      "last": 2024,
+      "frequency": "One five-year window (2020-2024, labeled 2024, in the 2026-10 snapshot), read again at each rebuild."
+    },
+    "method": "Copied unchanged from ACS table B19013, cell 001 (file acsdt5y2024-b19013.dat in the 2026-10 snapshot). The same table for the 2008-2012 window feeds income_change_pct. The value is also the input of max_affordable_loan.",
+    "sources": [
+      "acs5"
+    ],
+    "source_detail": "ACS 5-year 2020-2024, table B19013 (median household income in the past 12 months)",
+    "how_to_read": "A higher value means a typical household in the municipality has more money to spend. It describes households, not individuals. For income per person see 'Per capita income' in the Housing page series.",
+    "caveats": [
+      "It is money income before taxes. It does not count the value of benefits that are not paid in cash.",
+      "'Past 12 months' means the 12 months before each household was interviewed. The window pools interviews from five years, so it is not one calendar year.",
+      "A survey estimate. In the 2026-10 snapshot (2020-2024 window), the Housing page series shows a 90% margin of error from ±$805 (Mayagüez) to ±$7,604 (Culebra). The municipality file (municipalities.json) carries the estimate only, with no margin.",
+      "The 2008-2012 value is in 2012 dollars, not in the dollars of this field, so do not subtract one from the other as if the dollars were the same. 'Change in median household income since 2008-2012 (%)' compares them as published, so it includes general price rises."
+    ],
+    "example": "In the 2026-10 snapshot (2020-2024 window): lowest Las Marías ($16,314); highest Guaynabo ($46,731).",
+    "see_also": [
+      "housing.median_hh_income",
+      "municipalities.income_change_pct",
+      "municipalities.max_affordable_loan",
+      "housing.per_capita_income",
+      "study.table_11",
+      "municipalities.acs_reliability"
+    ],
+    "where": {
+      "files": [
+        "municipalities.json:median_hh_income"
+      ],
+      "view": [
+        {
+          "label": "Map, Rankings tab: download the municipality table (CSV)",
+          "href": "index.html"
+        },
+        {
+          "label": "Housing page: full data for every year, with trend chart and CSV",
+          "href": "housing.html?d=median_hh_income"
+        },
+        {
+          "label": "Housing page: municipality profile",
+          "href": "housing.html#profile"
+        }
+      ]
+    }
+  },
+  {
+    "id": "municipalities.poverty_pct",
+    "geography": "78 municipalities",
+    "added": "2026-10-01",
+    "name": "Population below the poverty level (%)",
+    "domain": "economy",
+    "domains": ["economy", "population"],
+    "group": "Income and poverty",
+    "kind": "variable",
+    "plain": "Out of every 100 people, how many live in a family with income below the federal poverty level. The Census Bureau compares the family's income with a threshold for its size. A person with no relatives is compared on their own income. People whose poverty status the Bureau cannot determine are left out.",
+    "definition": "People whose income in the past 12 months is below the poverty threshold, divided by the population for whom poverty status is determined, times 100. The Census Bureau compares the total income of a person's family (or, for a person with no relatives in the household, the person's own income) with the federal threshold for that family size. From table B17001 (cells 002 and 001) of the Census Bureau's American Community Survey (ACS) 5-year estimates for the latest window (2020-2024 in the 2026-10 snapshot).",
+    "unit": "% of people for whom poverty status is determined",
+    "value_type": "rate",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2024,
+      "last": 2024,
+      "frequency": "One five-year window (2020-2024, labeled 2024, in the 2026-10 snapshot), read again at each rebuild."
+    },
+    "method": "B17001 cell 002 divided by cell 001, times 100, rounded to one decimal (file acsdt5y2024-b17001.dat in the 2026-10 snapshot).",
+    "sources": [
+      "acs5"
+    ],
+    "source_detail": "ACS 5-year 2020-2024, table B17001 (poverty status in the past 12 months), cell 002 divided by cell 001",
+    "how_to_read": "A high value means a large share of residents live on very low incomes by the federal definition. It counts people, not households.",
+    "caveats": [
+      "The poverty level is a federal threshold that depends on family size and does not vary by place, so it does not reflect local prices.",
+      "'Past 12 months' means the 12 months before each household was interviewed. The window pools interviews from five years, so it is not one calendar year.",
+      "The base leaves out some people in group quarters, such as prisons, nursing homes, military barracks and college dormitories.",
+      "A survey estimate. In the 2026-10 snapshot (2020-2024 window), the Housing page series shows a 90% margin of error from ±1.1 points (San Juan) to ±9.5 points (Culebra). The municipality file (municipalities.json) carries the estimate only, with no margin."
+    ],
+    "example": "In the 2026-10 snapshot (2020-2024 window): lowest Guaynabo (24.3%); highest Guánica (63.6%).",
+    "see_also": [
+      "housing.poverty_pct",
+      "municipalities.median_hh_income",
+      "municipalities.employment_rate_pct",
+      "study.table_11",
+      "municipalities.acs_reliability"
+    ],
+    "where": {
+      "files": [
+        "municipalities.json:poverty_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Rankings tab: download the municipality table (CSV)",
+          "href": "index.html"
+        },
+        {
+          "label": "Housing page: full data for every year, with trend chart and CSV",
+          "href": "housing.html?d=poverty_pct"
+        },
+        {
+          "label": "Housing page: municipality profile",
+          "href": "housing.html#profile"
+        }
+      ]
+    }
+  },
+  {
+    "id": "municipalities.employment_rate_pct",
+    "geography": "78 municipalities",
+    "added": "2026-10-01",
+    "name": "Employment rate, ages 16 and over (%)",
+    "domain": "economy",
+    "domains": ["economy"],
+    "group": "Labor force",
+    "kind": "variable",
+    "plain": "Out of every 100 residents aged 16 or older, how many have a civilian job. Retirees, students and others who are not looking for work are in the base, so the rate is lower than a share of the labor force.",
+    "definition": "Employed civilians divided by the whole population aged 16 and over, times 100. From table B23025 (employment status; cells 004 and 001) of the Census Bureau's American Community Survey (ACS) 5-year estimates for the latest window (2020-2024 in the 2026-10 snapshot). The base is everyone aged 16 and over: employed civilians, unemployed civilians, members of the armed forces (these three make up the labor force) and people not in the labor force.",
+    "unit": "% of residents aged 16 and over",
+    "value_type": "rate",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2024,
+      "last": 2024,
+      "frequency": "One five-year window (2020-2024, labeled 2024, in the 2026-10 snapshot), read again at each rebuild."
+    },
+    "method": "B23025 cell 004 ('Employed', civilian) divided by cell 001 (total population 16 and over), times 100, rounded to one decimal (file acsdt5y2024-b23025.dat in the 2026-10 snapshot).",
+    "sources": [
+      "acs5"
+    ],
+    "source_detail": "ACS 5-year 2020-2024, table B23025 (employment status for the population 16 years and over), cell 004 divided by cell 001",
+    "how_to_read": "A low value can reflect a large share of retirees, students or people who are not looking for work, as well as few jobs. It is not the unemployment rate.",
+    "caveats": [
+      "It counts residents where they live. It does not count jobs located in the municipality; for jobs by workplace see 'Jobs (all employers)' (Quarterly Census of Employment and Wages, QCEW).",
+      "It is not the unemployment rate. For that, see 'Unemployment rate (BLS)' (Local Area Unemployment Statistics, LAUS), which is measured differently.",
+      "A survey estimate. In the 2026-10 snapshot (2020-2024 window), the Housing page series shows a 90% margin of error from ±0.7 points (San Juan) to ±5.9 points (Culebra and Vieques). The municipality file (municipalities.json) carries the estimate only, with no margin."
+    ],
+    "example": "In the 2026-10 snapshot (2020-2024 window): lowest Ciales (31.1%); highest Culebra (58.9%).",
+    "see_also": [
+      "housing.employment_rate_pct",
+      "economy.laus_unemp_rate",
+      "economy.qcew_jobs",
+      "housing.unemployment_rate_pct",
+      "study.table_11",
+      "municipalities.acs_reliability"
+    ],
+    "where": {
+      "files": [
+        "municipalities.json:employment_rate_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Rankings tab: download the municipality table (CSV)",
+          "href": "index.html"
+        },
+        {
+          "label": "Housing page: full data for every year, with trend chart and CSV",
+          "href": "housing.html?d=employment_rate_pct"
+        },
+        {
+          "label": "Housing page: municipality profile",
+          "href": "housing.html#profile"
+        }
+      ]
+    }
+  },
+  {
+    "id": "municipalities.bachelors_pct",
+    "geography": "78 municipalities",
+    "added": "2026-10-01",
+    "name": "Adults 25+ with a bachelor's degree or higher (%)",
+    "domain": "education",
+    "domains": ["education", "population"],
+    "group": "Education",
+    "kind": "variable",
+    "plain": "The share of adults aged 25 or older with a bachelor's degree (a four-year degree) or a higher degree.",
+    "definition": "Adults aged 25 and over whose highest education is a bachelor's, master's, professional school or doctorate degree, divided by all adults aged 25 and over, times 100. From table B15003 (educational attainment for the population 25 years and over; cells 022 to 025 and 001) of the Census Bureau's American Community Survey (ACS) 5-year estimates for the latest window (2020-2024 in the 2026-10 snapshot).",
+    "unit": "% of adults aged 25 and over",
+    "value_type": "rate",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2024,
+      "last": 2024,
+      "frequency": "One five-year window (2020-2024, labeled 2024, in the 2026-10 snapshot), read again at each rebuild."
+    },
+    "method": "B15003 cells 022, 023, 024 and 025 added, divided by cell 001, times 100, rounded to one decimal (file acsdt5y2024-b15003.dat in the 2026-10 snapshot). The 2008-2012 baseline for bachelors_change_pts uses the older table B15002 (see municipalities.change_method). The Housing page series uses B15002 for every window. In the 2026-10 snapshot it gives the same 2020-2024 values.",
+    "sources": [
+      "acs5"
+    ],
+    "source_detail": "ACS 5-year 2020-2024, table B15003, cells 022-025 over cell 001",
+    "how_to_read": "A higher value means more adults hold a four-year degree or more. It describes adults who live in the municipality, whether or not they work there.",
+    "caveats": [
+      "Associate degrees and some college without a degree are not counted.",
+      "The municipality file (municipalities.json) carries the estimate only, with no margin.",
+      "In the 2026-10 snapshot (2020-2024 window) the Housing page series shows a margin for only 5 municipalities (Culebra, Florida, Las Marías, Maricao, Vieques). For the other 73 the Census Bureau sets the adult population to its own estimate and publishes no margin for it, and the observatory does not calculate a share's margin without it. A missing margin does not mean the figure is exact: the number of degree holders is still a survey estimate."
+    ],
+    "example": "In the 2026-10 snapshot (2020-2024 window): lowest Vieques (12.3%); highest Guaynabo (50.5%).",
+    "see_also": [
+      "housing.bachelors_pct",
+      "municipalities.bachelors_change_pts",
+      "municipalities.change_method",
+      "study.table_11",
+      "municipalities.acs_reliability"
+    ],
+    "where": {
+      "files": [
+        "municipalities.json:bachelors_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Rankings tab: download the municipality table (CSV)",
+          "href": "index.html"
+        },
+        {
+          "label": "Housing page: full data for every year, with trend chart and CSV",
+          "href": "housing.html?d=bachelors_pct"
+        },
+        {
+          "label": "Housing page: municipality profile",
+          "href": "housing.html#profile"
+        }
+      ]
+    }
+  },
+  {
+    "id": "municipalities.median_age",
+    "geography": "78 municipalities",
+    "added": "2026-10-01",
+    "name": "Median age",
+    "domain": "population",
+    "domains": ["population"],
+    "group": "Population",
+    "kind": "variable",
+    "plain": "The age that splits the municipality's residents in half: half are younger and half are older. It comes from the latest 5-year survey window (2020-2024 in the 2026-10 snapshot).",
+    "definition": "Median age of all residents, in years, table B01002 (median age by sex), cell 001 ('Total'), of the Census Bureau's American Community Survey (ACS) 5-year estimates for the latest window (2020-2024 in the 2026-10 snapshot).",
+    "unit": "years",
+    "value_type": "level",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2024,
+      "last": 2024,
+      "frequency": "One five-year window (2020-2024, labeled 2024, in the 2026-10 snapshot), read again at each rebuild."
+    },
+    "method": "Copied unchanged from ACS table B01002, cell 001 (file acsdt5y2024-b01002.dat in the 2026-10 snapshot).",
+    "sources": [
+      "acs5"
+    ],
+    "source_detail": "ACS 5-year 2020-2024, table B01002 (median age by sex), cell 001",
+    "how_to_read": "A higher value means an older population. A median is the middle, not the average.",
+    "caveats": [
+      "A survey estimate. In the 2026-10 snapshot (2020-2024 window), the Housing page series shows a 90% margin of error from ±0.1 years (13 municipalities, among them Adjuntas) to ±4.0 years (Culebra). The municipality file (municipalities.json) carries the estimate only, with no margin.",
+      "The window mixes five years of responses, so the figure is not the median age on one date."
+    ],
+    "example": "In the 2026-10 snapshot (2020-2024 window): lowest Naguabo (40.0 years); highest Hormigueros (50.2 years).",
+    "see_also": [
+      "housing.median_age",
+      "housing.age65_pct",
+      "methods.acs_windows",
+      "municipalities.acs_table_map",
+      "municipalities.acs_year",
+      "municipalities.acs_reliability",
+      "study.table_11"
+    ],
+    "where": {
+      "files": [
+        "municipalities.json:median_age"
+      ],
+      "view": [
+        {
+          "label": "Map, Rankings tab: download the municipality table (CSV)",
+          "href": "index.html"
+        },
+        {
+          "label": "Housing page: full data for every year, with trend chart and CSV",
+          "href": "housing.html?d=median_age"
+        },
+        {
+          "label": "Housing page: municipality profile",
+          "href": "housing.html#profile"
+        }
+      ]
+    }
+  },
+  {
+    "id": "municipalities.home_value_change_pct",
+    "geography": "78 municipalities",
+    "added": "2026-10-01",
+    "name": "Change in median home value since 2008-2012 (%)",
+    "domain": "housing",
+    "domains": ["housing"],
+    "group": "Change since 2008-2012",
+    "kind": "variable",
+    "plain": "How much the median home value changed between the 2008-2012 survey window and the latest window (2020-2024 in the 2026-10 snapshot), in percent. Each window is in the dollars of its own last year (2012 and 2024 in the 2026-10 snapshot), so general price rises are still in the number.",
+    "definition": "(median_home_value in the latest window minus median_home_value in the 2008-2012 window) divided by the 2008-2012 value, times 100. The latest window is 2020-2024 in the 2026-10 snapshot. Both medians are table B25077 of the Census Bureau's American Community Survey (ACS) 5-year estimates. The Census Bureau reports ACS dollar amounts in the dollars of the last year of each window, so the 2008-2012 window is in 2012 dollars and the latest window is in the dollars of its last year (2024 in the 2026-10 snapshot). The observatory makes no conversion between windows.",
+    "unit": "% change",
+    "value_type": "rate",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2012,
+      "last": 2024,
+      "frequency": "Two windows: 2008-2012 (labeled 2012) and the latest window (2020-2024, labeled 2024, in the 2026-10 snapshot)."
+    },
+    "method": "Calculated as round((new − old) ÷ old × 100, 1), where new is B25077 cell 001 for the latest window and old is the same cell for 2008-2012. The field is empty if the old value is missing or zero.",
+    "sources": [
+      "acs5",
+      "fpr_housing_2023"
+    ],
+    "source_detail": "ACS 5-year, table B25077, 2020-2024 compared with 2008-2012",
+    "how_to_read": "A positive value means owners estimate higher home values now than in 2008-2012, in unadjusted dollars. A value near the general rise in prices over the same years means home values kept pace with prices. In the 2026-10 snapshot, 77 of 78 municipalities show a change smaller than the 36.6% rise in the US CPI-U over 2012 to 2024, and 15 of them show a fall in dollars. On the Housing page you can choose another base year, and the page then shows a different comparison. This field always compares 2008-2012 with the latest window. To cite it in the 2026-10 snapshot, write 'ACS 5-year estimates, 2020-2024 compared with 2008-2012, table B25077, calculated by Foundation for Puerto Rico, PR Data Observatory'.",
+    "caveats": [
+      "The observatory does not convert 2012 dollars to 2024 dollars, so the change includes general price rises. For scale, the US Consumer Price Index for All Urban Consumers (CPI-U) rose 36.6% from 2012 to 2024 (annual averages, stored in economy_series.json). The CPI-U is a US index of all consumer prices. It is not a Puerto Rico index and not a measure of rent or home-price inflation, so it is only a rough scale.",
+      "Both ends are survey estimates with their own margins of error. A small change in a small municipality can be noise. The municipality file (municipalities.json) carries the estimate only, with no margin.",
+      "In the 2026-10 snapshot, the lowest value, Culebra (-16.0%), rests on medians of $124,200 (margin of error ±$33,764) in 2008-2012 and $104,300 (±$14,624) in 2020-2024. The $19,900 drop is smaller than the combined margin of about ±$36,800, so the survey cannot show that values fell there."
+    ],
+    "example": "In the 2026-10 snapshot (2020-2024 compared with 2008-2012): lowest Culebra (-16.0%); highest Aguas Buenas (+52.2%).",
+    "see_also": [
+      "municipalities.median_home_value",
+      "housing.median_home_value",
+      "municipalities.change_method",
+      "municipalities.acs_reliability"
+    ],
+    "where": {
+      "files": [
+        "municipalities.json:home_value_change_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Rankings tab: download the municipality table (CSV)",
+          "href": "index.html"
+        },
+        {
+          "label": "Housing page: change from a base year you choose (default 2012), with trend chart and CSV",
+          "href": "housing.html?d=home_value_change_pct"
+        },
+        {
+          "label": "Housing page: municipality profile",
+          "href": "housing.html#profile"
+        }
+      ]
+    }
+  },
+  {
+    "id": "municipalities.gross_rent_change_pct",
+    "geography": "78 municipalities",
+    "added": "2026-10-01",
+    "name": "Change in median gross rent since 2008-2012 (%)",
+    "domain": "housing",
+    "domains": ["housing"],
+    "group": "Change since 2008-2012",
+    "kind": "variable",
+    "plain": "How much the median monthly rent changed between the 2008-2012 survey window and the latest window (2020-2024 in the 2026-10 snapshot), in percent. Each window is in the dollars of its own last year (2012 and 2024 in the 2026-10 snapshot), so general price rises are still in the number.",
+    "definition": "(median_gross_rent in the latest window minus median_gross_rent in the 2008-2012 window) divided by the 2008-2012 value, times 100. The latest window is 2020-2024 in the 2026-10 snapshot. Both medians are table B25064 of the Census Bureau's American Community Survey (ACS) 5-year estimates. The Census Bureau reports ACS dollar amounts in the dollars of the last year of each window, so the 2008-2012 window is in 2012 dollars and the latest window is in the dollars of its last year (2024 in the 2026-10 snapshot). The observatory makes no conversion between windows.",
+    "unit": "% change",
+    "value_type": "rate",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2012,
+      "last": 2024,
+      "frequency": "Two windows: 2008-2012 (labeled 2012) and the latest window (2020-2024, labeled 2024, in the 2026-10 snapshot)."
+    },
+    "method": "Calculated as round((new − old) ÷ old × 100, 1), where new is B25064 cell 001 for the latest window and old is the same cell for 2008-2012. The field is empty if the old value is missing or zero.",
+    "sources": [
+      "acs5",
+      "fpr_housing_2023"
+    ],
+    "source_detail": "ACS 5-year, table B25064, 2020-2024 compared with 2008-2012",
+    "how_to_read": "A positive value means current renters pay more per month than renters did in 2008-2012, in unadjusted dollars. A value near the general rise in prices over the same years means rents kept pace with prices. In the 2026-10 snapshot, 54 of 78 municipalities show a change smaller than the 36.6% rise in the US CPI-U over 2012 to 2024, and 2 of them show a fall in dollars. On the Housing page you can choose another base year, and the page then shows a different comparison. This field always compares 2008-2012 with the latest window. To cite it in the 2026-10 snapshot, write 'ACS 5-year estimates, 2020-2024 compared with 2008-2012, table B25064, calculated by Foundation for Puerto Rico, PR Data Observatory'.",
+    "caveats": [
+      "The observatory does not convert 2012 dollars to 2024 dollars, so the change includes general price rises. For scale, the US Consumer Price Index for All Urban Consumers (CPI-U) rose 36.6% from 2012 to 2024 (annual averages, stored in economy_series.json). The CPI-U is a US index of all consumer prices. It is not a Puerto Rico index and not a measure of rent or home-price inflation, so it is only a rough scale.",
+      "Both ends are survey estimates with their own margins of error. A small change in a small municipality can be noise. The municipality file (municipalities.json) carries the estimate only, with no margin.",
+      "In the 2026-10 snapshot, the largest increase, in Villalba (+85.3%), rests on medians with margins of error of ±$59 in 2008-2012 and ±$133 in 2020-2024."
+    ],
+    "example": "In the 2026-10 snapshot (2020-2024 compared with 2008-2012): lowest Guayama (-5.2%); highest Villalba (+85.3%).",
+    "see_also": [
+      "municipalities.median_gross_rent",
+      "housing.median_gross_rent",
+      "municipalities.change_method",
+      "municipalities.acs_reliability",
+      "municipalities.quintile_shading"
+    ],
+    "where": {
+      "files": [
+        "municipalities.json:gross_rent_change_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Map layers tab: shade municipalities by",
+          "href": "index.html#s=gross_rent_change_pct"
+        },
+        {
+          "label": "Map, Rankings tab: rank by 'Housing: rent change 2012 → latest'",
+          "href": "index.html"
+        },
+        {
+          "label": "Map, Rankings tab: download the municipality table (CSV)",
+          "href": "index.html"
+        },
+        {
+          "label": "Housing page: change from a base year you choose (default 2012), with trend chart and CSV",
+          "href": "housing.html?d=gross_rent_change_pct"
+        },
+        {
+          "label": "Housing page: municipality profile",
+          "href": "housing.html#profile"
+        }
+      ]
+    }
+  },
+  {
+    "id": "municipalities.income_change_pct",
+    "geography": "78 municipalities",
+    "added": "2026-10-01",
+    "name": "Change in median household income since 2008-2012 (%)",
+    "domain": "economy",
+    "domains": ["economy"],
+    "group": "Change since 2008-2012",
+    "kind": "variable",
+    "plain": "How much the median household income changed between the 2008-2012 survey window and the latest window (2020-2024 in the 2026-10 snapshot), in percent. Each window is in the dollars of its own last year (2012 and 2024 in the 2026-10 snapshot), so general price rises are still in the number.",
+    "definition": "(median_hh_income in the latest window minus median_hh_income in the 2008-2012 window) divided by the 2008-2012 value, times 100. The latest window is 2020-2024 in the 2026-10 snapshot. Both medians are table B19013 of the Census Bureau's American Community Survey (ACS) 5-year estimates. The Census Bureau reports ACS dollar amounts in the dollars of the last year of each window, and the 2008-2012 table is titled 'in 2012 inflation-adjusted dollars'. So the 2008-2012 window is in 2012 dollars and the latest window is in the dollars of its last year (2024 in the 2026-10 snapshot). The observatory makes no conversion between windows.",
+    "unit": "% change",
+    "value_type": "rate",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2012,
+      "last": 2024,
+      "frequency": "Two windows: 2008-2012 (labeled 2012) and the latest window (2020-2024, labeled 2024, in the 2026-10 snapshot)."
+    },
+    "method": "Calculated as round((new − old) ÷ old × 100, 1), where new is B19013 cell 001 for the latest window and old is the same cell for 2008-2012. The field is empty if the old value is missing or zero.",
+    "sources": [
+      "acs5",
+      "fpr_housing_2023"
+    ],
+    "source_detail": "ACS 5-year, table B19013, 2020-2024 compared with 2008-2012",
+    "how_to_read": "A positive value means the median household has more dollars of income than in 2008-2012. In the 2026-10 snapshot, every municipality shows more dollars of income than in 2008-2012, but 34 of 78 rose by less than the 36.6% rise in the US CPI-U over 2012 to 2024. A rise in dollars is not a rise in buying power. On the Housing page you can choose another base year, and the page then shows a different comparison. This field always compares 2008-2012 with the latest window. To cite it in the 2026-10 snapshot, write 'ACS 5-year estimates, 2020-2024 compared with 2008-2012, table B19013, calculated by Foundation for Puerto Rico, PR Data Observatory'.",
+    "caveats": [
+      "The observatory does not convert 2012 dollars to 2024 dollars, so the change includes general price rises. For scale, the US Consumer Price Index for All Urban Consumers (CPI-U) rose 36.6% from 2012 to 2024 (annual averages, stored in economy_series.json). The CPI-U is a US index of all consumer prices. It is not a Puerto Rico index and not a measure of rent or home-price inflation, so it is only a rough scale.",
+      "Both ends are survey estimates with their own margins of error. A small change in a small municipality can be noise. The municipality file (municipalities.json) carries the estimate only, with no margin."
+    ],
+    "example": "In the 2026-10 snapshot (2020-2024 compared with 2008-2012): lowest Maunabo (+12.5%); highest Culebra (+80.9%).",
+    "see_also": [
+      "municipalities.median_hh_income",
+      "housing.median_hh_income",
+      "municipalities.change_method",
+      "municipalities.acs_reliability"
+    ],
+    "where": {
+      "files": [
+        "municipalities.json:income_change_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Rankings tab: download the municipality table (CSV)",
+          "href": "index.html"
+        },
+        {
+          "label": "Housing page: change from a base year you choose (default 2012), with trend chart and CSV",
+          "href": "housing.html?d=income_change_pct"
+        },
+        {
+          "label": "Housing page: municipality profile",
+          "href": "housing.html#profile"
+        }
+      ]
+    }
+  },
+  {
+    "id": "municipalities.bachelors_change_pts",
+    "geography": "78 municipalities",
+    "added": "2026-10-01",
+    "name": "Change in adults 25+ with a bachelor's degree or higher since 2008-2012 (points)",
+    "domain": "education",
+    "domains": ["education", "population"],
+    "group": "Change since 2008-2012",
+    "kind": "variable",
+    "plain": "How many percentage points the share of adults with a bachelor's degree or higher changed between the 2008-2012 window and the latest window (2020-2024 in the 2026-10 snapshot). A positive number means the share rose.",
+    "definition": "bachelors_pct in the latest window minus the same share in the 2008-2012 window. The latest window is 2020-2024 in the 2026-10 snapshot. The two shares are rounded to one decimal before they are subtracted. Both use the Census Bureau's American Community Survey (ACS) 5-year estimates: table B15003 for the latest window and table B15002 for 2008-2012.",
+    "unit": "percentage points",
+    "value_type": "rate",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2012,
+      "last": 2024,
+      "frequency": "Two windows: 2008-2012 (labeled 2012) and the latest window (2020-2024, labeled 2024, in the 2026-10 snapshot)."
+    },
+    "method": "round(share_latest − share_2012, 1). share_latest = B15003 cells 022-025 over cell 001. share_2012 = B15002 cells 015-018 (men) and 032-035 (women) over cell 001. Both tables count the same adults and the same degrees (bachelor's, master's, professional, doctorate). The field is empty if either share is missing.",
+    "sources": [
+      "acs5",
+      "fpr_housing_2023"
+    ],
+    "source_detail": "ACS 5-year, tables B15003 (2020-2024) and B15002 (2008-2012)",
+    "how_to_read": "A positive value means a larger share of adults hold a degree than in 2008-2012. It is a difference of shares in points, not a percent change. In the 2026-10 snapshot, all 78 municipalities show a gain. On the Housing page you can choose another base year, and the page then shows a different comparison. This field always compares 2008-2012 with the latest window. To cite it in the 2026-10 snapshot, write 'ACS 5-year estimates, 2020-2024 compared with 2008-2012, tables B15003 and B15002, calculated by Foundation for Puerto Rico, PR Data Observatory'.",
+    "caveats": [
+      "It measures the adults who live in the municipality now compared with those who lived there then. It does not follow the same people, so people who left or arrived change the result.",
+      "Both shares are survey estimates with their own margins of error. The municipality file (municipalities.json) carries the estimate only, with no margin."
+    ],
+    "example": "In the 2026-10 snapshot (2020-2024 compared with 2008-2012): lowest Maricao (+0.6 points); highest Dorado (+13.2 points).",
+    "see_also": [
+      "municipalities.bachelors_pct",
+      "housing.bachelors_pct",
+      "municipalities.change_method",
+      "municipalities.acs_reliability"
+    ],
+    "where": {
+      "files": [
+        "municipalities.json:bachelors_change_pts"
+      ],
+      "view": [
+        {
+          "label": "Map, Rankings tab: download the municipality table (CSV)",
+          "href": "index.html"
+        },
+        {
+          "label": "Housing page: change from a base year you choose (default 2012), with trend chart and CSV",
+          "href": "housing.html?d=bachelors_change_pts"
+        },
+        {
+          "label": "Housing page: municipality profile",
+          "href": "housing.html#profile"
+        }
+      ]
+    }
+  },
+  {
+    "id": "municipalities.population_change_2012_pct",
+    "geography": "78 municipalities",
+    "added": "2026-10-01",
+    "name": "Change in total population since 2008-2012 (%)",
+    "domain": "population",
+    "domains": ["population"],
+    "group": "Change since 2008-2012",
+    "kind": "variable",
+    "plain": "How much the survey's estimate of the population changed from the 2008-2012 window to the latest window (2020-2024 in the 2026-10 snapshot), in percent.",
+    "definition": "(total population in the latest window minus total population in the 2008-2012 window) divided by the 2008-2012 value, times 100. The latest window is 2020-2024 in the 2026-10 snapshot. Both are table B01003 (total population), cell 001, of the Census Bureau's American Community Survey (ACS) 5-year estimates.",
+    "unit": "% change",
+    "value_type": "rate",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2012,
+      "last": 2024,
+      "frequency": "Two windows: 2008-2012 (labeled 2012) and the latest window (2020-2024, labeled 2024, in the 2026-10 snapshot)."
+    },
+    "method": "Calculated as round((new − old) ÷ old × 100, 1), with B01003 cell 001 for the latest window and for 2008-2012. The field is empty if the old value is missing or zero.",
+    "sources": [
+      "acs5",
+      "fpr_housing_2023"
+    ],
+    "source_detail": "ACS 5-year, table B01003, 2020-2024 compared with 2008-2012",
+    "how_to_read": "A negative value means the survey estimates fewer residents than in 2008-2012. In the 2026-10 snapshot, all municipalities but one (Rincón, +1.3%) show a decline. To cite it in the 2026-10 snapshot, write 'ACS 5-year estimates, 2020-2024 compared with 2008-2012, table B01003, calculated by Foundation for Puerto Rico, PR Data Observatory'.",
+    "caveats": [
+      "It compares two five-year survey windows, not two census counts. For census-to-census change (2010 to 2020) use 'Population change, 2010 to 2020 (%)'; for yearly estimates see 'Resident population' in the Housing page series.",
+      "The Census Bureau sets the survey's population totals to agree with its own population estimates. In the 2026-10 snapshot (2020-2024 window) it published no margin of error for total population in 76 of 78 municipalities.",
+      "The Census Bureau's own population estimates were built on the 2010 census before 2020 and on the 2020 census from 2020 on, and the Housing page's population series steps up in 2020 for that reason. The survey totals are set to the Census Bureau's estimates, and this change spans the two bases, so part of it may reflect that break rather than people moving. The observatory does not measure how much."
+    ],
+    "example": "In the 2026-10 snapshot (2020-2024 compared with 2008-2012): lowest Guánica (-33.6%); highest Rincón (+1.3%).",
+    "see_also": [
+      "housing.population",
+      "housing.pop_change_since_2010_pct",
+      "municipalities.pop_change_pct",
+      "municipalities.population_2020",
+      "municipalities.change_method",
+      "municipalities.acs_reliability"
+    ],
+    "where": {
+      "files": [
+        "municipalities.json:population_change_2012_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Rankings tab: download the municipality table (CSV)",
+          "href": "index.html"
+        }
+      ]
+    }
+  },
+  {
+    "id": "municipalities.affordability_method",
+    "geography": "78 municipalities",
+    "added": "2026-10-01",
+    "name": "Affordability method: settings and rounding rules for the municipality fields",
+    "domain": "housing",
+    "domains": ["housing", "system.docs"],
+    "group": "Housing methods",
+    "kind": "method",
+    "plain": "The observatory uses the affordability method of the 2023 housing study by Foundation for Puerto Rico (Table 6 on the Housing page and in this dictionary; Table 8 in the study PDF). It turns median income into the largest 30-year loan a household could carry, then compares that loan with the median home value. This entry lists the settings. In the list below, the 'Code' column holds the method's settings, not coded values.",
+    "definition": "A four-step calculation. The method comes from The State of Housing in Puerto Rico, published by Foundation for Puerto Rico (FPR) in 2023 (Table 6 here; Table 8 in the study PDF). (1) Take the median household income of the window (table B19013 of the Census Bureau's American Community Survey (ACS) 5-year estimates). (2) A household may spend 30% of its income on housing, so the monthly housing budget is income × 0.30 ÷ 12. (3) Of that budget, 430/549 (about 78.3%) goes to principal and interest, the part of the payment that repays the loan and pays the lender. (4) The maximum loan is the amount that this payment repays in full over 360 monthly payments at a fixed 5% yearly rate. The affordability ratio is median home value divided by that loan.",
+    "unit": "not applicable (method)",
+    "value_type": "text",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2024,
+      "last": 2024,
+      "frequency": "Recalculated with each snapshot. The rate stays fixed at 5% in every window."
+    },
+    "method": "With r = 0.05 ÷ 12: loan = income × 0.30 ÷ 12 × (430/549) × (1 − (1 + r)^−360) ÷ r, rounded to a whole dollar. Multiplier: about 3.6476 × income. Ratio = median_home_value ÷ loan, rounded to two decimals. The Housing page series uses the same formula for every year. Check against the study: income $21,967 gives $80,127; the study prints $80,181 for Puerto Rico (a gap of $54).",
+    "values": {
+      "30%": "Share of income that housing may take.",
+      "430/549": "Share of the housing budget that goes to principal and interest (about 78.3%), the study's own proportion ($430 of $549).",
+      "5%": "Fixed yearly interest rate, the one the study states. Held at 5% in every window and municipality.",
+      "30 years": "Loan term (360 monthly payments).",
+      "ratio above 1.00": "After rounding to two decimals, the median home costs more than the maximum loan: 'out of reach' in the Housing page profile, a warning color on the map's Municipality tab.",
+      "ratio of 1.00 or less": "After rounding to two decimals, the median home costs no more than the maximum loan: 'within reach' in the Housing page profile, green on the map's Municipality tab. Because the test uses the rounded ratio, a home that costs slightly more than the maximum loan can still show 1.00 and count as 'within reach'. In the 2026-10 snapshot this is the case for Guayanilla: its median home ($87,400) is $168 above its maximum loan ($87,232), and the ratio rounds to 1.00."
+    },
+    "sources": [
+      "acs5",
+      "fpr_method",
+      "fpr_housing_2023"
+    ],
+    "source_detail": "FPR (2023), The State of Housing in Puerto Rico, Table 6 (Table 8 in the study PDF); ACS 5-year tables B19013 and B25077",
+    "how_to_read": "Use the ratio to compare municipalities with each other under one set of assumptions. Do not use it to say whether a particular family can buy a particular home. Worked example from the 2026-10 snapshot (Guaynabo, 2020-2024 window): median household income $46,731 gives a housing budget of about $1,168 a month, about $915 of it for principal and interest, and a maximum loan of $170,456. The median home value is $226,800, so the ratio is 1.33.",
+    "caveats": [
+      "The 30% share, the 78% share ($430 of $549) and the 30-year term are the study's. The 5% rate is the one the study states in its endnotes for the maximum mortgage (a bank's mortgage calculator, assuming no other debt, homeowners' association fees or taxes). The study's published maximums imply 4.994%, so the observatory's figures at exactly 5% run $19 to $65 below them. The Housing page notes that actual mortgage rates ranged from under 4% to over 7% over the period it covers.",
+      "The method has no down payment, closing costs, credit score or other debt.",
+      "Table numbers: this dictionary and the Housing page call the study's affordability table Table 6. The study PDF prints it as Table 8. See 'The State of Housing in Puerto Rico (2023): figures and tables on the Housing page'.",
+      "Calculated by the observatory from public Census Bureau data. The Census Bureau does not publish it, and no margin of error is calculated for it."
+    ],
+    "see_also": [
+      "municipalities.max_affordable_loan",
+      "municipalities.affordability_ratio",
+      "housing.max_affordable_loan",
+      "housing.affordability_ratio",
+      "study.table_6",
+      "study.state_of_housing_2023",
+      "municipalities.acs_reliability"
+    ],
+    "where": {
+      "files": []
+    }
+  },
+  {
+    "id": "municipalities.change_method",
+    "geography": "78 municipalities",
+    "added": "2026-10-01",
+    "name": "How the changes since 2008-2012 are calculated",
+    "domain": "housing",
+    "domains": ["housing", "system.docs"],
+    "group": "Housing methods",
+    "kind": "method",
+    "plain": "Each change field compares the latest five-year survey window (2020-2024 in the 2026-10 snapshot) with the 2008-2012 window for the same municipality. Dollar changes are not adjusted for inflation. In the list below, the 'Code' column holds field names, not coded values.",
+    "definition": "Percent changes are (latest minus baseline) divided by baseline, times 100, rounded to one decimal. The education change is the latest share minus the baseline share, in percentage points. The two windows share no survey years. The baseline is the 2008-2012 American Community Survey (ACS) 5-year release, a fixed comparison window of the observatory, read from the Census Bureau's Puerto Rico sequence files. The latest window is read from the table-based summary files (2020-2024 in the 2026-10 snapshot).",
+    "unit": "not applicable (method)",
+    "value_type": "text",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2012,
+      "last": 2024,
+      "frequency": "Two windows: 2008-2012 (labeled 2012) and the latest window (2020-2024, labeled 2024, in the 2026-10 snapshot)."
+    },
+    "method": "The observatory reads the two windows separately and calculates each change from the two medians or shares. The comparison is nominal: the observatory makes no conversion between windows. The Census Bureau reports each window's dollars in its last year (2012 for the baseline; 2024 for the latest window in the 2026-10 snapshot). The 2008-2012 income table is titled 'in 2012 inflation-adjusted dollars'; the 2012 titles for home value and rent say only '(DOLLARS)'. The Housing page computes the same kind of change for a base year you choose and says it is not adjusted for inflation.",
+    "values": {
+      "home_value_change_pct": "Median home value, table B25077 cell 001, percent change.",
+      "gross_rent_change_pct": "Median gross rent, table B25064 cell 001, percent change.",
+      "income_change_pct": "Median household income, table B19013 cell 001, percent change.",
+      "bachelors_change_pts": "Adults 25 and over with a bachelor's degree or higher: B15003 (latest window) minus B15002 (2008-2012), percentage points.",
+      "population_change_2012_pct": "Total population, table B01003 cell 001, percent change."
+    },
+    "sources": [
+      "acs5",
+      "fpr_housing_2023"
+    ],
+    "source_detail": "ACS 5-year summary files for the 2008-2012 and 2020-2024 windows; method modeled on the 2023 study, which compares 2012 with 2021",
+    "how_to_read": "Read a change as 'higher or lower than in 2008-2012', not as a measured yearly trend. Remember that prices in general rose between the two windows.",
+    "caveats": [
+      "The observatory does not convert 2012 dollars to 2024 dollars, so the change includes general price rises. For scale, the US Consumer Price Index for All Urban Consumers (CPI-U) rose 36.6% from 2012 to 2024 (annual averages, stored in economy_series.json). The CPI-U is a US index of all consumer prices. It is not a Puerto Rico index and not a measure of rent or home-price inflation, so it is only a rough scale.",
+      "Only two points in time are compared. What happened between them, such as hurricanes and population loss, is not shown by these fields; the Housing page series has every window.",
+      "No margin of error is calculated for a change. Both ends are survey estimates."
+    ],
+    "see_also": [
+      "municipalities.home_value_change_pct",
+      "municipalities.gross_rent_change_pct",
+      "municipalities.income_change_pct",
+      "municipalities.bachelors_change_pts",
+      "municipalities.population_change_2012_pct",
+      "municipalities.acs_reliability"
+    ],
+    "where": {
+      "files": []
+    }
+  },
+  {
+    "id": "municipalities.acs_table_map",
+    "geography": "78 municipalities",
+    "added": "2026-10-01",
+    "name": "Census tables and cells behind each housing and household field",
+    "domain": "system.docs",
+    "domains": ["system.docs"],
+    "group": "Survey tables",
+    "kind": "method",
+    "plain": "Use this list to find the Census Bureau table and cell behind each housing and household field. It helps you cite the original numbers. The 'Code' column lists field names in municipalities.json, not coded values.",
+    "definition": "For each field, the American Community Survey (ACS) table number, the cell numbers used and the calculation. Table numbers are the Census Bureau's own (for example B25077). 'Cell 001' is the first line of the table. In the 2026-10 snapshot the latest window is 2020-2024. The baseline window for the change fields is 2008-2012. In the table-based files the estimate for cell 001 is the column B25077_E001 and its margin of error is B25077_M001.",
+    "unit": "not applicable (method)",
+    "value_type": "text",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2012,
+      "last": 2024,
+      "frequency": "Rebuilt with each snapshot. The Census Bureau publishes a new 5-year window each year."
+    },
+    "method": "Latest window (2020-2024 in the 2026-10 snapshot): the Census Bureau's table-based summary files, one file per table (acsdt5y2024-<table>.dat), filtered to the rows for Puerto Rico's municipalities (the Census Bureau calls them municipios; geographic codes starting 0500000US72). Baseline window: the 2012 ACS 5-year Puerto Rico sequence files (PuertoRico_All_Geographies_Not_Tracts_Block_Groups.zip), with cells located through the Census Bureau's sequence-and-table lookup file. Tables read for the latest window: B25077, B25064, B19013, B25002, B25004, B25003, B15003, B25070, B25091, B01003, B17001, B01002, B23025. Tables read for the baseline: B25077, B25064, B19013, B15002, B01003.",
+    "values": {
+      "acs_year": "Not an ACS cell. The last year of the latest window, set when the observatory is rebuilt (2024 in the 2026-10 snapshot).",
+      "median_home_value": "B25077 cell 001 (median value, owner-occupied housing units). Baseline: same cell, 2008-2012.",
+      "median_gross_rent": "B25064 cell 001 (median gross rent, renter-occupied units paying cash rent). Baseline: same cell, 2008-2012.",
+      "median_hh_income": "B19013 cell 001 (median household income in the past 12 months, households). Baseline: same cell, 2008-2012.",
+      "housing_units_acs": "B25002 cell 001 (total housing units).",
+      "vacant_units": "B25002 cell 003 (vacant housing units).",
+      "vacancy_pct": "B25002 cell 003 divided by cell 001.",
+      "seasonal_units": "B25004 cell 006 (vacant: for seasonal, recreational, or occasional use).",
+      "seasonal_pct": "B25004 cell 006 divided by B25002 cell 001.",
+      "owner_occupied_pct": "B25003 cell 002 (owner occupied) divided by cell 001 (occupied housing units).",
+      "renter_cost_burden_pct": "B25070 cells 007 to 010 (30.0 percent or more) divided by cell 001 minus cell 011 (not computed).",
+      "owner_cost_burden_pct": "B25091 cells 008 to 011 (30.0 percent or more, with a mortgage) divided by cell 002 minus cell 012 (not computed).",
+      "poverty_pct": "B17001 cell 002 (below the poverty level) divided by cell 001 (population for whom poverty status is determined).",
+      "median_age": "B01002 cell 001 (median age, total).",
+      "employment_rate_pct": "B23025 cell 004 (employed civilians) divided by cell 001 (population 16 and over).",
+      "bachelors_pct": "B15003 cells 022 to 025 (bachelor's, master's, professional, doctorate) divided by cell 001 (population 25 and over). Baseline for the change: B15002 cells 015-018 and 032-035 over cell 001.",
+      "max_affordable_loan": "Calculated from B19013 cell 001 with the Table 6 method (see methods.affordability_method).",
+      "affordability_ratio": "Calculated: B25077 cell 001 divided by max_affordable_loan.",
+      "home_value_change_pct": "B25077 cell 001, latest window against 2008-2012.",
+      "gross_rent_change_pct": "B25064 cell 001, latest window against 2008-2012.",
+      "income_change_pct": "B19013 cell 001, latest window against 2008-2012.",
+      "bachelors_change_pts": "Share from B15003 (latest window) minus share from B15002 (2008-2012).",
+      "population_change_2012_pct": "B01003 cell 001 (total population), latest window against 2008-2012.",
+      "residents_per_unit": "Not ACS. 2020 census population (POP100) divided by 2020 census housing units (HU100), Census Bureau TIGERweb."
+    },
+    "sources": [
+      "acs5"
+    ],
+    "source_detail": "US Census Bureau, ACS 5-year summary files. Latest window: https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-<table>.dat, one file per table (for example acsdt5y2024-b25077.dat). 2008-2012 baseline: https://www2.census.gov/programs-surveys/acs/summary_file/2012/data/5_year_by_state/PuertoRico_All_Geographies_Not_Tracts_Block_Groups.zip, with cells located through https://www2.census.gov/programs-surveys/acs/summary_file/2012/documentation/5_year/user_tools/Sequence_Number_and_Table_Number_Lookup.txt",
+    "how_to_read": "To cite a number, give the table, the window and the geography, for example 'US Census Bureau, ACS 5-year estimates 2020-2024, table B25077, Ponce Municipio, Puerto Rico'. For a change field cite both windows ('2020-2024 compared with 2008-2012') and both tables. For a calculated field cite the input tables and say who calculated it. If you took the number from the observatory's files rather than from the Census Bureau, cite the observatory as well (Foundation for Puerto Rico, PR Data Observatory).",
+    "caveats": [
+      "The keys of the list are field names in municipalities.json, not codes found in the data.",
+      "The observatory reads the Census Bureau's summary files directly and needs no data API key.",
+      "Census codes for values that are not available (-666666666 and below) become empty fields. In the 2026-10 snapshot, no estimate in the 2020-2024 files used for the 78 municipalities is negative."
+    ],
+    "see_also": [
+      "municipalities.acs_year",
+      "methods.acs_windows",
+      "municipalities.change_method",
+      "municipalities.acs_reliability"
+    ],
+    "where": {
+      "files": []
+    }
+  },
+  {
+    "id": "municipalities.acs_reliability",
+    "geography": "78 municipalities",
+    "added": "2026-10-01",
+    "name": "How reliable the survey-based housing and household fields are",
+    "domain": "system.docs",
+    "domains": ["system.docs"],
+    "group": "Survey tables",
+    "kind": "method",
+    "plain": "Survey figures are estimates with a margin of error. The municipality file does not show the margins. Take extra care in small municipalities and with small differences.",
+    "definition": "The American Community Survey (ACS) interviews a sample of households, so every estimate has a margin of error. The Census Bureau publishes it at the 90% confidence level: it is 90% confident that the true value lies within the estimate plus or minus the margin. The municipality file carries estimates only. Margins for most fields are in the Housing page series (housing_series.json, 'moe' values, by window).",
+    "unit": "not applicable (method)",
+    "value_type": "text",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2024,
+      "last": 2024,
+      "frequency": "Rebuilt with each snapshot. The Census Bureau publishes a new 5-year window each year."
+    },
+    "method": "Margins are read from the Census Bureau's own margin columns. For shares and sums the observatory computes margins with the Census Bureau's formulas.",
+    "sources": [
+      "acs5"
+    ],
+    "source_detail": "US Census Bureau ACS 5-year margins of error; Housing page series (housing_series.json)",
+    "how_to_read": "Check the margin before ranking or comparing. Add and subtract the margin to get a range for each municipality. If the two ranges overlap, the survey may not be able to tell the municipalities apart. For a formal test, use the Census Bureau's formula for the margin of a difference. In the 2026-10 snapshot, margins are widest in the smallest municipalities, such as Culebra, Vieques, Florida and Maricao.",
+    "caveats": [
+      "In the 2026-10 snapshot (2020-2024 window), margins of error in the Housing page series run across the 78 municipalities as follows: median home value ±$1,926 (Carolina) to ±$44,042 (Vieques); median gross rent ±$16 (San Juan) to ±$240 (Culebra); median household income ±$805 (Mayagüez) to ±$7,604 (Culebra); people below poverty ±1.1 points (San Juan) to ±9.5 points (Culebra); employment rate ±0.7 points (San Juan) to ±5.9 points (Culebra and Vieques); cost-burdened renters ±0.7 points (Gurabo) to ±67.9 points (Florida).",
+      "The maximum affordable loan, the affordability ratio and the change fields have no margin of error. Their inputs do.",
+      "For total population and for the adult population aged 25 and over the Census Bureau sets the survey totals to its own estimates and often publishes no margin. In the 2026-10 snapshot (2020-2024 window) that holds for total population in 76 of 78 municipalities and for the adult population in 73 of 78. The observatory does not calculate a share's margin when the Census Bureau publishes none for the total the share is built on, so shares built on those totals show no margin in the Housing page series (for example 'Adults 25+ with a bachelor's degree or higher (%)'). The Population series and the files below the municipality give such a total a margin of zero instead, so their shares keep the margin of the numerator (methods.small_area_estimates). A missing margin does not mean the figure is exact.",
+      "Windows that end one year apart share four of five survey years. A difference between neighboring windows mostly reflects one year of new responses. The 2008-2012 and 2020-2024 windows share none.",
+      "A margin covers sampling error only. It does not cover mistakes in answers, such as owners' estimates of home value."
+    ],
+    "see_also": [
+      "municipalities.acs_year",
+      "municipalities.change_method",
+      "municipalities.acs_table_map",
+      "housing.median_hh_income",
+      "measures.margin_of_error"
+    ],
+    "where": {
+      "files": []
+    }
+  }
+]

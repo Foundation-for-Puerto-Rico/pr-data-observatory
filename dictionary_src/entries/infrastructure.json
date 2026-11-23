@@ -1,0 +1,1644 @@
+[
+ {
+  "id": "infrastructure.water_systems",
+  "ask": {
+   "en": [
+    "water systems",
+    "drinking water systems",
+    "aqueducts"
+   ],
+   "es": [
+    "sistemas de agua",
+    "acueductos",
+    "agua potable"
+   ]
+  },
+  "name": "Community water systems serving the municipality",
+  "domain": "infrastructure",
+  "domains": [
+   "infrastructure"
+  ],
+  "group": "Drinking water",
+  "kind": "variable",
+  "plain": "How many community water systems serve each municipality: PRASA's systems and the community-run ones.",
+  "definition": "Active community water systems that list the municipality among those they serve (EPA ECHO). A system serving several municipalities counts in each.",
+  "unit": "systems",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot (ECHO of 2026-11-11; EIA-860M of 2026-09). Rebuilt with each full build (python infrastructure_series.py)."
+  },
+  "method": "infrastructure_series.py searches ECHO for the active community water systems of Puerto Rico and downloads seven columns. Each system counts in every municipality its FIPS codes name; 28 systems serve two to four municipalities and 5 small ones give no municipality (Puerto Rico's code only): they count in the island value only. Puerto Rico's value counts each system once, so the municipal values add up to more. The system's name is never kept.",
+  "sources": [
+   "epa_echo_sdwa"
+  ],
+  "source_detail": "ECHO sdw_rest_services get_systems (p_st=PR, p_act=Y, p_systyp=CWS) and get_download, columns PWSId, PWSTypeCode, PopulationServedCount, OwnerTypeCode, SeriousViolator, HealthFlag, FIPSCodes",
+  "how_to_read": "Puerto Rico has 404 active community water systems, which together serve about 3,295,853 people. The most are in Ponce 21, Caguas 20, Orocovis 18: municipalities with many small community-run systems.",
+  "caveats": [
+   "The municipal values add up to more than Puerto Rico's, which counts each system once.",
+   "Population served is not given per municipality: a large system's people cannot be split honestly among the municipalities it serves."
+  ],
+  "see_also": [
+   "infrastructure.water_health_vio",
+   "infrastructure.water_priority"
+  ],
+  "where": {
+   "files": [
+    "infrastructure_series.json:water_systems"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: community water systems serving the municipality",
+     "href": "index.html#e=water_systems.s"
+    }
+   ]
+  },
+  "added": "2026-10-14"
+ },
+ {
+  "id": "infrastructure.water_health_vio",
+  "ask": {
+   "en": [
+    "water violations",
+    "drinking water violations",
+    "unsafe water"
+   ],
+   "es": [
+    "violaciones de agua",
+    "violaciones del agua potable"
+   ]
+  },
+  "name": "Water systems with a health-based violation",
+  "domain": "infrastructure",
+  "domains": [
+   "infrastructure"
+  ],
+  "group": "Drinking water",
+  "kind": "variable",
+  "plain": "How many of the water systems serving each municipality EPA flags with a health-based violation.",
+  "definition": "Systems that ECHO flags with a health-based violation: a breach of a maximum contaminant level, a maximum residual disinfectant level or a treatment technique rule (ECHO's HealthFlag).",
+  "unit": "systems",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot (ECHO of 2026-11-11; EIA-860M of 2026-09). Rebuilt with each full build (python infrastructure_series.py)."
+  },
+  "method": "infrastructure_series.py searches ECHO for the active community water systems of Puerto Rico and downloads seven columns. Each system counts in every municipality its FIPS codes name; 28 systems serve two to four municipalities and 5 small ones give no municipality (Puerto Rico's code only): they count in the island value only. Puerto Rico's value counts each system once, so the municipal values add up to more. The system's name is never kept.",
+  "sources": [
+   "epa_echo_sdwa"
+  ],
+  "source_detail": "ECHO sdw_rest_services get_systems (p_st=PR, p_act=Y, p_systyp=CWS) and get_download, columns PWSId, PWSTypeCode, PopulationServedCount, OwnerTypeCode, SeriousViolator, HealthFlag, FIPSCodes",
+  "how_to_read": "239 of Puerto Rico's 404 systems carry the flag; the most in Caguas 17, San Lorenzo 14, Adjuntas 13.",
+  "caveats": [
+   "A compliance record, not proof that the water is unsafe today.",
+   "ECHO's flag covers recent years of violations; read a system's own report on ECHO for its dates."
+  ],
+  "see_also": [
+   "infrastructure.water_systems"
+  ],
+  "where": {
+   "files": [
+    "infrastructure_series.json:water_health_vio"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: water systems with a health-based violation",
+     "href": "index.html#e=water_health_vio.s"
+    }
+   ]
+  },
+  "added": "2026-10-14"
+ },
+ {
+  "id": "infrastructure.water_priority",
+  "ask": {
+   "en": [
+    "water enforcement priority",
+    "serious water violators"
+   ],
+   "es": [
+    "prioridad de cumplimiento del agua"
+   ]
+  },
+  "name": "Water systems that are an enforcement priority",
+  "domain": "infrastructure",
+  "domains": [
+   "infrastructure"
+  ],
+  "group": "Drinking water",
+  "kind": "variable",
+  "plain": "How many of the water systems serving each municipality EPA treats as a priority for enforcement.",
+  "definition": "Systems that EPA designates as an enforcement priority: unresolved serious, multiple or continuing violations (ECHO's SeriousViolator).",
+  "unit": "systems",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot (ECHO of 2026-11-11; EIA-860M of 2026-09). Rebuilt with each full build (python infrastructure_series.py)."
+  },
+  "method": "infrastructure_series.py searches ECHO for the active community water systems of Puerto Rico and downloads seven columns. Each system counts in every municipality its FIPS codes name; 28 systems serve two to four municipalities and 5 small ones give no municipality (Puerto Rico's code only): they count in the island value only. Puerto Rico's value counts each system once, so the municipal values add up to more. The system's name is never kept.",
+  "sources": [
+   "epa_echo_sdwa"
+  ],
+  "source_detail": "ECHO sdw_rest_services get_systems (p_st=PR, p_act=Y, p_systyp=CWS) and get_download, columns PWSId, PWSTypeCode, PopulationServedCount, OwnerTypeCode, SeriousViolator, HealthFlag, FIPSCodes",
+  "how_to_read": "125 systems in Puerto Rico; the most in Utuado 12, Adjuntas 8, Ponce 8.",
+  "caveats": [
+   "Priority for formal enforcement under EPA's response policy; many systems with violations are not designated."
+  ],
+  "see_also": [
+   "infrastructure.water_health_vio"
+  ],
+  "where": {
+   "files": [
+    "infrastructure_series.json:water_priority"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: water systems that are an enforcement priority",
+     "href": "index.html#e=water_priority.s"
+    }
+   ]
+  },
+  "added": "2026-10-14"
+ },
+ {
+  "id": "infrastructure.water_nonprasa",
+  "ask": {
+   "en": [
+    "non-prasa water systems",
+    "systems outside prasa"
+   ],
+   "es": [
+    "sistemas non-prasa",
+    "acueductos comunitarios"
+   ]
+  },
+  "name": "Community water systems outside PRASA (non-PRASA)",
+  "domain": "infrastructure",
+  "domains": [
+   "infrastructure"
+  ],
+  "group": "Drinking water",
+  "kind": "variable",
+  "plain": "How many community water systems outside PRASA, most of them run by the community itself, serve each municipality.",
+  "definition": "Active community water systems that the Safe Drinking Water Information System (SDWIS) records as privately owned, through EPA ECHO. EPA Region 2 defines the non-PRASA systems as the privately owned ones; most are run by community associations in the mountains, a few serve private developments or institutions. A system serving several municipalities counts in each.",
+  "unit": "systems",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot (ECHO of 2026-10-14). Rebuilt with each full build (python infrastructure_series.py)."
+  },
+  "method": "infrastructure_series.py reads the owner type of each active community water system from the same ECHO download as water_systems and counts the privately owned ones (owner type P) in every municipality their FIPS codes name. Puerto Rico's value counts each system once. No name is kept.",
+  "sources": [
+   "epa_echo_sdwa"
+  ],
+  "source_detail": "ECHO sdw_rest_services get_download, column OwnerTypeCode = P",
+  "how_to_read": "207 systems in Puerto Rico report serving 100,743 people. The most are in San Lorenzo 14, Orocovis 13, Caguas 13 and Utuado 12. 31 municipalities have none. 201 of the 207 carry ECHO's health-based violation flag (infrastructure_series.json notes).",
+  "caveats": [
+   "SDWIS records some community-run systems as local government, the owner type of PRASA's systems, so this count can miss a few: EPA Region 2 counted 241 non-PRASA community systems serving about 93,500 people in 2025.",
+   "No federal source gives where these systems are below the municipality, and their names often carry a person's or a family's name, so the observatory publishes counts only (wanted.json: non-prasa-locations).",
+   "A violation flag is a compliance record, not proof that the water is unsafe today."
+  ],
+  "see_also": [
+   "infrastructure.water_nonprasa_pop",
+   "infrastructure.water_systems",
+   "infrastructure.water_health_vio"
+  ],
+  "where": {
+   "files": [
+    "infrastructure_series.json:water_nonprasa"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: community water systems outside PRASA",
+     "href": "index.html#e=water_nonprasa.s"
+    }
+   ]
+  },
+  "added": "2026-10-18"
+ },
+ {
+  "id": "infrastructure.water_nonprasa_pop",
+  "ask": {
+   "en": [
+    "people served by non-prasa systems"
+   ],
+   "es": [
+    "personas servidas por sistemas non-prasa"
+   ]
+  },
+  "name": "Residents served by community water systems outside PRASA",
+  "domain": "infrastructure",
+  "domains": [
+   "infrastructure"
+  ],
+  "group": "Drinking water",
+  "kind": "variable",
+  "plain": "How many people get their water from a community system outside PRASA, as the systems report it, in each municipality.",
+  "definition": "The population that the non-PRASA systems (privately owned in SDWIS) report serving, added up for the systems that serve only this municipality. Shaded per 1,000 residents, it approximates the share of residents on a non-PRASA system.",
+  "unit": "people",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot (ECHO of 2026-10-14). Rebuilt with each full build (python infrastructure_series.py)."
+  },
+  "method": "infrastructure_series.py adds the PopulationServedCount of each non-PRASA system to its municipality when the system serves one municipality only. The 5 systems that serve two municipalities (1,087 people) and one that names no municipality (165 people) are left out of every municipality's value and counted in Puerto Rico's.",
+  "sources": [
+   "epa_echo_sdwa"
+  ],
+  "source_detail": "ECHO sdw_rest_services get_download, columns PopulationServedCount, OwnerTypeCode = P, FIPSCodes",
+  "how_to_read": "Puerto Rico: 100,743 people. Lares 17,278, Yabucoa 6,573, Naranjito 5,840, Caguas 4,958.",
+  "caveats": [
+   "The population served is each system's own estimate to the regulator, not a census count.",
+   "The municipal values add up to less than Puerto Rico's: systems that serve two municipalities are left out of both, because their population cannot be split.",
+   "Systems recorded as local government are not included (see Community water systems outside PRASA)."
+  ],
+  "see_also": [
+   "infrastructure.water_nonprasa",
+   "infrastructure.water_systems"
+  ],
+  "where": {
+   "files": [
+    "infrastructure_series.json:water_nonprasa_pop"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: residents served by community water systems outside PRASA",
+     "href": "index.html#e=water_nonprasa_pop.f.per1000.blue.q.1.0.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-18"
+ },
+ {
+  "id": "infrastructure.wastewater_permits",
+  "ask": {
+   "en": [
+    "wastewater permits",
+    "wastewater",
+    "discharge permits",
+    "npdes permits",
+    "sewage"
+   ],
+   "es": [
+    "permisos de aguas usadas",
+    "aguas usadas",
+    "aguas residuales",
+    "permisos de descarga",
+    "permisos npdes"
+   ]
+  },
+  "name": "Facilities with a permit to discharge wastewater",
+  "domain": "infrastructure",
+  "domains": [
+   "infrastructure",
+   "environment"
+  ],
+  "group": "Wastewater",
+  "kind": "variable",
+  "plain": "How many facilities in each municipality hold their own federal permit to discharge wastewater into a river, a lake or the sea.",
+  "definition": "Facilities with an active individual permit of the National Pollutant Discharge Elimination System (NPDES), which EPA issues in Puerto Rico under the Clean Water Act: sewage treatment plants, water filtration plants, power plants, factories and others that discharge wastewater into surface waters, counted in the municipality that holds the facility's point.",
+  "unit": "facilities",
+  "value_type": "count",
+  "geography": "901 barrios, 78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot (ECHO of 2026-11-11; EIA-860M of 2026-09). Rebuilt with each full build (python infrastructure_series.py)."
+  },
+  "method": "infrastructure_series.py searches ECHO for the active Clean Water Act facilities of Puerto Rico and downloads eight columns. It keeps the 177 facilities with an individual NPDES permit and leaves out the 1,097 facilities covered by a general permit (construction sites, industrial and municipal stormwater) and the records attached to another permit. Each facility counts once, in the municipality whose boundary holds its point; ECHO's own county code, taken from the mailing address, names another municipality for 6 of them. Puerto Rico's value is the sum of the municipalities. The facility's name and point are never kept. Since 2026-11-12 the count is also given for the 901 barrios (infrastructure_barrio.json): a facility counts in the barrio whose outline holds its point, or the nearest outline within 2 km; 157 barrios hold one or more.",
+  "sources": [
+   "epa_echo_cwa"
+  ],
+  "source_detail": "ECHO cwa_rest_services get_facilities (p_st=PR, p_act=Y) and get_download, columns SourceID, FacFIPSCode, FacLat, FacLong, CWPFacilityTypeIndicator, CWPPermitTypeDesc, CWPMajorMinorStatusFlag, CWPStatus",
+  "how_to_read": "Puerto Rico has 177 such facilities in 68 municipalities; the most in Peñuelas 9, Ponce 7, Utuado 7.",
+  "caveats": [
+   "By barrio most counts are 0 or 1, so a barrio's figure often stands for a single facility. ECHO places a facility by the point on record, which can be a gate, an office or a mailing address rather than the works themselves, and at the scale of a barrio that can put it in the barrio next door.",
+   "A permit allows a discharge within limits; holding one is not a violation.",
+   "Construction sites and stormwater facilities covered by a general permit are not counted: they come and go with each project.",
+   "A facility counts where it stands. The water it discharges flows on to other municipalities downstream.",
+   "Septic tanks and discharges with no permit are not in ECHO."
+  ],
+  "see_also": [
+   "infrastructure.wastewater_plants",
+   "infrastructure.water_systems"
+  ],
+  "where": {
+   "files": [
+    "infrastructure_series.json:wastewater_permits",
+    "infrastructure_barrio.json:wastewater_permits"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: facilities with a permit to discharge wastewater",
+     "href": "index.html#e=wastewater_permits.s"
+    }
+   ]
+  },
+  "added": "2026-11-11"
+ },
+ {
+  "id": "infrastructure.wastewater_plants",
+  "ask": {
+   "en": [
+    "sewage treatment plants",
+    "sewage plants",
+    "wastewater treatment plants",
+    "treatment plants"
+   ],
+   "es": [
+    "plantas de tratamiento",
+    "plantas de aguas usadas",
+    "plantas de tratamiento de aguas usadas",
+    "alcantarillado"
+   ]
+  },
+  "name": "Public sewage treatment plants",
+  "domain": "infrastructure",
+  "domains": [
+   "infrastructure",
+   "environment"
+  ],
+  "group": "Wastewater",
+  "kind": "variable",
+  "plain": "How many public sewage treatment plants stand in each municipality.",
+  "definition": "Of the facilities with an individual NPDES permit, the publicly owned treatment works (POTW, ECHO's facility type): the plants that treat the sewage of homes and businesses before it is discharged. In Puerto Rico the Aqueduct and Sewer Authority (PRASA) runs nearly all of them.",
+  "unit": "facilities",
+  "value_type": "count",
+  "geography": "901 barrios, 78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot (ECHO of 2026-11-11; EIA-860M of 2026-09). Rebuilt with each full build (python infrastructure_series.py)."
+  },
+  "method": "infrastructure_series.py searches ECHO for the active Clean Water Act facilities of Puerto Rico and downloads eight columns. It keeps the 177 facilities with an individual NPDES permit and leaves out the 1,097 facilities covered by a general permit (construction sites, industrial and municipal stormwater) and the records attached to another permit. Each facility counts once, in the municipality whose boundary holds its point; ECHO's own county code, taken from the mailing address, names another municipality for 6 of them. Puerto Rico's value is the sum of the municipalities. The facility's name and point are never kept. Since 2026-11-12 the count is also given for the 901 barrios (infrastructure_barrio.json): a facility counts in the barrio whose outline holds its point, or the nearest outline within 2 km; 51 barrios hold one or more.",
+  "sources": [
+   "epa_echo_cwa"
+  ],
+  "source_detail": "ECHO cwa_rest_services get_facilities (p_st=PR, p_act=Y) and get_download, columns SourceID, FacFIPSCode, FacLat, FacLong, CWPFacilityTypeIndicator, CWPPermitTypeDesc, CWPMajorMinorStatusFlag, CWPStatus",
+  "how_to_read": "Puerto Rico has 51 plants in 47 municipalities; the most in Caguas 2, Carolina 2, Morovis 2.",
+  "caveats": [
+   "By barrio most counts are 0 or 1, so a barrio's figure often stands for a single facility. ECHO places a facility by the point on record, which can be a gate, an office or a mailing address rather than the works themselves, and at the scale of a barrio that can put it in the barrio next door.",
+   "A plant counts in the municipality where it stands, which may not be the only one it serves; a municipality with no plant can be served by a neighbour's.",
+   "The count says nothing about the homes that are not connected to a sewer: a large share of Puerto Rico's homes use septic tanks.",
+   "The size of a plant is not given here: one large plant can treat more than many small ones."
+  ],
+  "see_also": [
+   "infrastructure.wastewater_permits"
+  ],
+  "where": {
+   "files": [
+    "infrastructure_series.json:wastewater_plants",
+    "infrastructure_barrio.json:wastewater_plants"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: public sewage treatment plants",
+     "href": "index.html#e=wastewater_plants.s"
+    }
+   ]
+  },
+  "added": "2026-11-11"
+ },
+ {
+  "id": "infrastructure.wastewater_major",
+  "ask": {
+   "en": [
+    "major dischargers",
+    "major wastewater dischargers",
+    "large dischargers"
+   ],
+   "es": [
+    "descargas mayores",
+    "descargadores mayores",
+    "grandes descargas"
+   ]
+  },
+  "name": "Major wastewater dischargers",
+  "domain": "infrastructure",
+  "domains": [
+   "infrastructure",
+   "environment"
+  ],
+  "group": "Wastewater",
+  "kind": "variable",
+  "plain": "How many of the facilities with a wastewater permit EPA classes as major dischargers.",
+  "definition": "Of the facilities with an individual NPDES permit, the ones EPA classes as major (ECHO's major/minor flag): sewage treatment plants built to treat 1 million gallons a day or more, and industrial facilities that EPA scores as major for the volume or the pollutants of their discharge.",
+  "unit": "facilities",
+  "value_type": "count",
+  "geography": "901 barrios, 78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot (ECHO of 2026-11-11; EIA-860M of 2026-09). Rebuilt with each full build (python infrastructure_series.py)."
+  },
+  "method": "infrastructure_series.py searches ECHO for the active Clean Water Act facilities of Puerto Rico and downloads eight columns. It keeps the 177 facilities with an individual NPDES permit and leaves out the 1,097 facilities covered by a general permit (construction sites, industrial and municipal stormwater) and the records attached to another permit. Each facility counts once, in the municipality whose boundary holds its point; ECHO's own county code, taken from the mailing address, names another municipality for 6 of them. Puerto Rico's value is the sum of the municipalities. The facility's name and point are never kept. Since 2026-11-12 the count is also given for the 901 barrios (infrastructure_barrio.json): a facility counts in the barrio whose outline holds its point, or the nearest outline within 2 km; 60 barrios hold one or more.",
+  "sources": [
+   "epa_echo_cwa"
+  ],
+  "source_detail": "ECHO cwa_rest_services get_facilities (p_st=PR, p_act=Y) and get_download, columns SourceID, FacFIPSCode, FacLat, FacLong, CWPFacilityTypeIndicator, CWPPermitTypeDesc, CWPMajorMinorStatusFlag, CWPStatus",
+  "how_to_read": "Puerto Rico has 62 major dischargers in 49 municipalities; the most in Arecibo 2, Dorado 2, Guayanilla 2.",
+  "caveats": [
+   "By barrio most counts are 0 or 1, so a barrio's figure often stands for a single facility. ECHO places a facility by the point on record, which can be a gate, an office or a mailing address rather than the works themselves, and at the scale of a barrio that can put it in the barrio next door.",
+   "Major is EPA's class for the size or the kind of a discharge, not a finding that the facility pollutes.",
+   "A facility counts where it stands; its discharge flows on downstream."
+  ],
+  "see_also": [
+   "infrastructure.wastewater_permits"
+  ],
+  "where": {
+   "files": [
+    "infrastructure_series.json:wastewater_major",
+    "infrastructure_barrio.json:wastewater_major"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: major wastewater dischargers",
+     "href": "index.html#e=wastewater_major.s"
+    }
+   ]
+  },
+  "added": "2026-11-11"
+ },
+ {
+  "id": "infrastructure.wastewater_violation",
+  "ask": {
+   "en": [
+    "wastewater violations",
+    "discharge violations",
+    "clean water act violations",
+    "sewage violations"
+   ],
+   "es": [
+    "violaciones de aguas usadas",
+    "violaciones de descarga",
+    "violaciones de la ley de agua limpia"
+   ]
+  },
+  "name": "Wastewater dischargers with a violation on record",
+  "domain": "infrastructure",
+  "domains": [
+   "infrastructure",
+   "environment"
+  ],
+  "group": "Wastewater",
+  "kind": "variable",
+  "plain": "How many of the facilities with a wastewater permit have a violation of their permit on EPA's record now.",
+  "definition": "Of the facilities with an individual NPDES permit, the ones whose current compliance status in ECHO is 'Violation Identified' or 'Significant/Category I Noncompliance': a discharge above a permit limit, a missed deadline of a compliance schedule, or a monitoring report that was late or never sent.",
+  "unit": "facilities",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot (ECHO of 2026-11-11; EIA-860M of 2026-09). Rebuilt with each full build (python infrastructure_series.py)."
+  },
+  "method": "infrastructure_series.py searches ECHO for the active Clean Water Act facilities of Puerto Rico and downloads eight columns. It keeps the 177 facilities with an individual NPDES permit and leaves out the 1,097 facilities covered by a general permit (construction sites, industrial and municipal stormwater) and the records attached to another permit. Each facility counts once, in the municipality whose boundary holds its point; ECHO's own county code, taken from the mailing address, names another municipality for 6 of them. Puerto Rico's value is the sum of the municipalities. The facility's name and point are never kept.",
+  "sources": [
+   "epa_echo_cwa"
+  ],
+  "source_detail": "ECHO cwa_rest_services get_facilities (p_st=PR, p_act=Y) and get_download, columns SourceID, FacFIPSCode, FacLat, FacLong, CWPFacilityTypeIndicator, CWPPermitTypeDesc, CWPMajorMinorStatusFlag, CWPStatus",
+  "how_to_read": "113 of Puerto Rico's 177 permitted facilities have a violation on record, 7 of them in significant noncompliance (EPA's most serious class); the most in Barranquitas 4, Cayey 4, Morovis 4.",
+  "caveats": [
+   "A compliance record of the last reported quarter, not a measure of how clean the water is today.",
+   "A late or missing report counts the same as a discharge above a limit: the count does not say how serious a violation is. Read a facility's own report on ECHO for what was found.",
+   "The status changes every quarter, so the count moves between builds.",
+   "Small counts: one facility more or less changes a municipality's value."
+  ],
+  "see_also": [
+   "infrastructure.wastewater_permits",
+   "infrastructure.water_health_vio"
+  ],
+  "where": {
+   "files": [
+    "infrastructure_series.json:wastewater_violation"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: wastewater dischargers with a violation on record",
+     "href": "index.html#e=wastewater_violation.s"
+    }
+   ]
+  },
+  "added": "2026-11-11"
+ },
+ {
+  "id": "infrastructure.air_sources",
+  "ask": {
+   "en": [
+    "air pollution sources",
+    "air permits",
+    "air polluters",
+    "clean air act facilities",
+    "air emissions facilities"
+   ],
+   "es": [
+    "fuentes de contaminación del aire",
+    "permisos de aire",
+    "contaminación del aire",
+    "instalaciones de la ley de aire limpio"
+   ]
+  },
+  "name": "Facilities regulated for air pollution",
+  "domain": "infrastructure",
+  "domains": [
+   "infrastructure",
+   "environment"
+  ],
+  "group": "Air pollution sources",
+  "kind": "variable",
+  "plain": "How many facilities in each municipality the federal Clean Air Act regulates for what they emit into the air.",
+  "definition": "Active stationary sources of air pollution that the Clean Air Act regulates and EPA's ECHO lists: power plants, factories, quarries and asphalt plants, fuel terminals, hospitals and others with boilers, generators or processes that emit into the air, counted in the municipality that holds the facility's point.",
+  "unit": "facilities",
+  "value_type": "count",
+  "geography": "901 barrios, 78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot (ECHO of 2026-11-11; EIA-860M of 2026-09). Rebuilt with each full build (python infrastructure_series.py)."
+  },
+  "method": "infrastructure_series.py searches ECHO for the active Clean Air Act facilities of Puerto Rico and downloads seven columns. Each of the 482 facilities counts once, in the municipality whose boundary holds its point; ECHO's own county code, taken from the mailing address, names another municipality for 33 of them. 13 facilities that ECHO lists as temporarily closed are counted, because their permits are active. Puerto Rico's value is the sum of the municipalities. The facility's name and point are never kept. Since 2026-11-12 the count is also given for the 901 barrios (infrastructure_barrio.json): a facility counts in the barrio whose outline holds its point, or the nearest outline within 2 km; 219 barrios hold one or more.",
+  "sources": [
+   "epa_echo_caa"
+  ],
+  "source_detail": "ECHO air_rest_services get_facilities (p_st=PR, p_act=Y) and get_download, columns SourceID, FacFIPSCode, FacLat, FacLong, AIRStatus, AIRClassification, AIRComplStatus",
+  "how_to_read": "Puerto Rico has 482 such facilities in 65 municipalities; the most in San Juan 60, Guaynabo 31, Ponce 26. 438 of the 482 are not major sources.",
+  "caveats": [
+   "By barrio most counts are 0 or 1, so a barrio's figure often stands for a single facility. ECHO places a facility by the point on record, which can be a gate, an office or a mailing address rather than the works themselves, and at the scale of a barrio that can put it in the barrio next door.",
+   "Being regulated is not a violation: the count shows where permitted sources are, not where the air is dirty.",
+   "It is not a measure of air quality. Cars, trucks, ships, Saharan dust and other sources that are not facilities are not counted.",
+   "Most are minor sources, such as a business with an emergency generator; one large plant can emit more than many small ones.",
+   "A facility counts where it stands. Its emissions travel with the wind to other municipalities."
+  ],
+  "see_also": [
+   "infrastructure.air_major",
+   "infrastructure.power_plants"
+  ],
+  "where": {
+   "files": [
+    "infrastructure_series.json:air_sources",
+    "infrastructure_barrio.json:air_sources"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: facilities regulated for air pollution",
+     "href": "index.html#e=air_sources.s"
+    }
+   ]
+  },
+  "added": "2026-11-11"
+ },
+ {
+  "id": "infrastructure.air_major",
+  "ask": {
+   "en": [
+    "major air pollution sources",
+    "major air sources",
+    "title v facilities",
+    "large air polluters"
+   ],
+   "es": [
+    "fuentes mayores de contaminación del aire",
+    "fuentes mayores de aire",
+    "instalaciones título v"
+   ]
+  },
+  "name": "Major sources of air pollution",
+  "domain": "infrastructure",
+  "domains": [
+   "infrastructure",
+   "environment"
+  ],
+  "group": "Air pollution sources",
+  "kind": "variable",
+  "plain": "How many of the facilities regulated for air pollution EPA classes as major sources.",
+  "definition": "Of the active facilities the Clean Air Act regulates, the ones EPA classes as major emissions sources (ECHO's classification): they emit, or could emit, more than the Act's thresholds, in most areas 100 tons a year of a regulated pollutant, or 10 tons a year of one hazardous air pollutant. A major source needs a Title V operating permit.",
+  "unit": "facilities",
+  "value_type": "count",
+  "geography": "901 barrios, 78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot (ECHO of 2026-11-11; EIA-860M of 2026-09). Rebuilt with each full build (python infrastructure_series.py)."
+  },
+  "method": "infrastructure_series.py searches ECHO for the active Clean Air Act facilities of Puerto Rico and downloads seven columns. Each of the 482 facilities counts once, in the municipality whose boundary holds its point; ECHO's own county code, taken from the mailing address, names another municipality for 33 of them. 13 facilities that ECHO lists as temporarily closed are counted, because their permits are active. Puerto Rico's value is the sum of the municipalities. The facility's name and point are never kept. Since 2026-11-12 the count is also given for the 901 barrios (infrastructure_barrio.json): a facility counts in the barrio whose outline holds its point, or the nearest outline within 2 km; 37 barrios hold one or more.",
+  "sources": [
+   "epa_echo_caa"
+  ],
+  "source_detail": "ECHO air_rest_services get_facilities (p_st=PR, p_act=Y) and get_download, columns SourceID, FacFIPSCode, FacLat, FacLong, AIRStatus, AIRClassification, AIRComplStatus",
+  "how_to_read": "Puerto Rico has 44 major sources in 27 municipalities; no municipality has more than 3.",
+  "caveats": [
+   "By barrio most counts are 0 or 1, so a barrio's figure often stands for a single facility. ECHO places a facility by the point on record, which can be a gate, an office or a mailing address rather than the works themselves, and at the scale of a barrio that can put it in the barrio next door.",
+   "Major is EPA's class for how much a facility emits or could emit, not a finding that it breaks its permit.",
+   "On 2026-11-11, ECHO showed 1 facility in Puerto Rico with a high priority violation. A number that small is not published for each municipality.",
+   "A facility counts where it stands. Its emissions travel with the wind to other municipalities.",
+   "Small counts: one facility more or less changes a municipality's value."
+  ],
+  "see_also": [
+   "infrastructure.air_sources"
+  ],
+  "where": {
+   "files": [
+    "infrastructure_series.json:air_major",
+    "infrastructure_barrio.json:air_major"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: major sources of air pollution",
+     "href": "index.html#e=air_major.s"
+    }
+   ]
+  },
+  "added": "2026-11-11"
+ },
+ {
+  "id": "infrastructure.hazwaste_handlers",
+  "ask": {
+   "en": [
+    "hazardous waste handlers",
+    "hazardous waste",
+    "hazardous waste generators",
+    "rcra facilities",
+    "toxic waste"
+   ],
+   "es": [
+    "manejadores de desperdicios peligrosos",
+    "desperdicios peligrosos",
+    "generadores de desperdicios peligrosos",
+    "residuos peligrosos",
+    "desperdicios tóxicos"
+   ]
+  },
+  "name": "Hazardous waste handlers",
+  "domain": "infrastructure",
+  "domains": [
+   "infrastructure",
+   "environment"
+  ],
+  "group": "Hazardous waste",
+  "kind": "variable",
+  "plain": "How many businesses and institutions in each municipality generate, transport, treat or store hazardous waste under federal rules.",
+  "definition": "Active handlers of hazardous waste that EPA's ECHO lists under the Resource Conservation and Recovery Act (RCRA): the businesses and institutions that generate hazardous waste (factories, laboratories, hospitals, auto shops, dry cleaners and others), and those that transport, treat or store it, counted in the municipality that holds the handler's point.",
+  "unit": "handlers",
+  "value_type": "count",
+  "geography": "901 barrios, 78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot (ECHO of 2026-11-11; EIA-860M of 2026-09). Rebuilt with each full build (python infrastructure_series.py)."
+  },
+  "method": "infrastructure_series.py searches ECHO for the active hazardous waste handlers of Puerto Rico and downloads six columns. Each of the 1,740 handlers counts once, in the municipality whose boundary holds its point; ECHO's own county code, taken from the mailing address, names another municipality for 113 of them. A handler that is in several classes (a large quantity generator that is also a transporter) counts once. Puerto Rico's value is the sum of the municipalities. The handler's name and point are never kept. Since 2026-11-12 the count is also given for the 901 barrios (infrastructure_barrio.json): a facility counts in the barrio whose outline holds its point, or the nearest outline within 2 km; 389 barrios hold one or more.",
+  "sources": [
+   "epa_echo_rcra"
+  ],
+  "source_detail": "ECHO rcra_rest_services get_facilities (p_st=PR, p_act=Y) and get_download, columns SourceID, FacFIPSCode, FacLat, FacLong, RCRAUniverse, RCRAComplStatus",
+  "how_to_read": "Puerto Rico has 1,740 handlers in 75 municipalities; the most in San Juan 287, Bayamón 117, Carolina 116. 1,203 of them generate very small quantities (less than 100 kilograms a month).",
+  "caveats": [
+   "By barrio most counts are 0 or 1, so a barrio's figure often stands for a single facility. ECHO places a facility by the point on record, which can be a gate, an office or a mailing address rather than the works themselves, and at the scale of a barrio that can put it in the barrio next door.",
+   "Being a handler is not a violation: the count shows where hazardous waste is generated or managed under the rules, not where it has been spilled or dumped.",
+   "Most handlers generate very small amounts, such as an auto shop or a pharmacy; the count follows where businesses are.",
+   "The count does not give the amount or the kind of waste.",
+   "Household hazardous waste and illegal dumping are not in ECHO."
+  ],
+  "see_also": [
+   "infrastructure.hazwaste_large",
+   "infrastructure.air_sources"
+  ],
+  "where": {
+   "files": [
+    "infrastructure_series.json:hazwaste_handlers",
+    "infrastructure_barrio.json:hazwaste_handlers"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: hazardous waste handlers",
+     "href": "index.html#e=hazwaste_handlers.s"
+    }
+   ]
+  },
+  "added": "2026-11-11"
+ },
+ {
+  "id": "infrastructure.hazwaste_large",
+  "ask": {
+   "en": [
+    "large quantity generators",
+    "large generators of hazardous waste",
+    "large hazardous waste generators"
+   ],
+   "es": [
+    "grandes generadores de desperdicios peligrosos",
+    "generadores de grandes cantidades",
+    "grandes generadores"
+   ]
+  },
+  "name": "Large generators of hazardous waste",
+  "domain": "infrastructure",
+  "domains": [
+   "infrastructure",
+   "environment"
+  ],
+  "group": "Hazardous waste",
+  "kind": "variable",
+  "plain": "How many of the hazardous waste handlers generate large amounts of it.",
+  "definition": "Of the active hazardous waste handlers, the large quantity generators (ECHO's handler class): they generate 1,000 kilograms or more of hazardous waste in a month, or more than 1 kilogram of acutely hazardous waste, and must follow the strictest federal rules for storing, shipping and reporting it.",
+  "unit": "handlers",
+  "value_type": "count",
+  "geography": "901 barrios, 78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot (ECHO of 2026-11-11; EIA-860M of 2026-09). Rebuilt with each full build (python infrastructure_series.py)."
+  },
+  "method": "infrastructure_series.py searches ECHO for the active hazardous waste handlers of Puerto Rico and downloads six columns. Each of the 1,740 handlers counts once, in the municipality whose boundary holds its point; ECHO's own county code, taken from the mailing address, names another municipality for 113 of them. A handler that is in several classes (a large quantity generator that is also a transporter) counts once. Puerto Rico's value is the sum of the municipalities. The handler's name and point are never kept. Since 2026-11-12 the count is also given for the 901 barrios (infrastructure_barrio.json): a facility counts in the barrio whose outline holds its point, or the nearest outline within 2 km; 74 barrios hold one or more.",
+  "sources": [
+   "epa_echo_rcra"
+  ],
+  "source_detail": "ECHO rcra_rest_services get_facilities (p_st=PR, p_act=Y) and get_download, columns SourceID, FacFIPSCode, FacLat, FacLong, RCRAUniverse, RCRAComplStatus",
+  "how_to_read": "Puerto Rico has 113 large quantity generators in 43 municipalities; the most in San Juan 14, Bayamón 9, Carolina 8.",
+  "caveats": [
+   "By barrio most counts are 0 or 1, so a barrio's figure often stands for a single facility. ECHO places a facility by the point on record, which can be a gate, an office or a mailing address rather than the works themselves, and at the scale of a barrio that can put it in the barrio next door.",
+   "Large is EPA's class for the amount generated, not a finding that the handler breaks the rules.",
+   "On 2026-11-11, ECHO showed 17 handlers in Puerto Rico with a violation on record. A number that small is not published for each municipality.",
+   "A handler's class can change from month to month with the amount it generates.",
+   "Small counts: one handler more or less changes a municipality's value."
+  ],
+  "see_also": [
+   "infrastructure.hazwaste_handlers"
+  ],
+  "where": {
+   "files": [
+    "infrastructure_series.json:hazwaste_large",
+    "infrastructure_barrio.json:hazwaste_large"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: large generators of hazardous waste",
+     "href": "index.html#e=hazwaste_large.s"
+    }
+   ]
+  },
+  "added": "2026-11-11"
+ },
+ {
+  "id": "infrastructure.epa_inspected",
+  "ask": {
+   "en": [
+    "environmental inspections",
+    "facilities inspected",
+    "epa inspections",
+    "compliance inspections"
+   ],
+   "es": [
+    "inspecciones ambientales",
+    "instalaciones inspeccionadas",
+    "inspecciones de la epa"
+   ]
+  },
+  "name": "Facilities inspected for environmental compliance",
+  "domain": "infrastructure",
+  "domains": [
+   "infrastructure",
+   "environment"
+  ],
+  "group": "Environmental enforcement",
+  "kind": "variable",
+  "plain": "How many regulated facilities in each municipality had an environmental inspection in the last five years.",
+  "definition": "Of the active facilities that EPA regulates under the air, water, hazardous waste or drinking water laws, the ones that EPA or the Puerto Rico government inspected at least once in the last five years, counted in the municipality that holds the facility's point.",
+  "unit": "facilities",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot (ECHO of 2026-11-12), covering the five years before it. Rebuilt with each full build (python infrastructure_series.py)."
+  },
+  "method": "infrastructure_series.py searches ECHO for the active facilities of Puerto Rico in every program (3,925 on 2026-11-12) and downloads six columns. A facility counts once, however many inspections or actions it had, in the municipality whose boundary holds its point. 1 facility whose point is off the island is placed by ECHO's county code, and 2 with neither are left out. Puerto Rico's value is the sum of the municipalities. The facility's name and point are never kept.",
+  "sources": [
+   "epa_echo_all"
+  ],
+  "source_detail": "ECHO echo_rest_services get_facilities (p_st=PR, p_act=Y) and get_download, columns RegistryID, FacLat, FacLong, FacInspectionCount, FacFormalActionCount, FacFIPSCode",
+  "how_to_read": "594 of Puerto Rico's 3,925 regulated facilities were inspected in the last five years (1,074 inspections in all); the most in San Juan 35, Caguas 24, Guaynabo 21.",
+  "caveats": [
+   "An inspection is a routine check, not a finding that something is wrong.",
+   "The count follows where regulated facilities are and where inspectors went: a low count can mean few facilities or few inspections.",
+   "A facility counts once, however many times it was inspected.",
+   "A drinking water system is placed at the point ECHO gives it, often its office, not where its pipes are."
+  ],
+  "see_also": [
+   "infrastructure.epa_formal_action"
+  ],
+  "where": {
+   "files": [
+    "infrastructure_series.json:epa_inspected"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: facilities inspected for environmental compliance",
+     "href": "index.html#e=epa_inspected.s"
+    }
+   ]
+  },
+  "added": "2026-11-12"
+ },
+ {
+  "id": "infrastructure.epa_formal_action",
+  "ask": {
+   "en": [
+    "environmental enforcement",
+    "enforcement actions",
+    "formal enforcement actions",
+    "epa enforcement"
+   ],
+   "es": [
+    "cumplimiento ambiental",
+    "acciones de cumplimiento",
+    "acciones formales de cumplimiento",
+    "acciones de la epa"
+   ]
+  },
+  "name": "Facilities with a formal environmental enforcement action",
+  "domain": "infrastructure",
+  "domains": [
+   "infrastructure",
+   "environment"
+  ],
+  "group": "Environmental enforcement",
+  "kind": "variable",
+  "plain": "How many regulated facilities in each municipality received a formal environmental enforcement action in the last five years.",
+  "definition": "Of the active facilities that EPA regulates, the ones that received at least one formal enforcement action in the last five years: an administrative order or a court case in which EPA or the Puerto Rico government requires the facility to correct a violation, with or without a penalty.",
+  "unit": "facilities",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot (ECHO of 2026-11-12), covering the five years before it. Rebuilt with each full build (python infrastructure_series.py)."
+  },
+  "method": "infrastructure_series.py searches ECHO for the active facilities of Puerto Rico in every program (3,925 on 2026-11-12) and downloads six columns. A facility counts once, however many inspections or actions it had, in the municipality whose boundary holds its point. 1 facility whose point is off the island is placed by ECHO's county code, and 2 with neither are left out. Puerto Rico's value is the sum of the municipalities. The facility's name and point are never kept.",
+  "sources": [
+   "epa_echo_all"
+  ],
+  "source_detail": "ECHO echo_rest_services get_facilities (p_st=PR, p_act=Y) and get_download, columns RegistryID, FacLat, FacLong, FacInspectionCount, FacFormalActionCount, FacFIPSCode",
+  "how_to_read": "347 of Puerto Rico's 3,925 regulated facilities had a formal action in the last five years (471 actions in all); the most in Guaynabo 15, Ponce 14, San Juan 14.",
+  "caveats": [
+   "A warning letter or a notice of violation is an informal action and is not counted.",
+   "An action can be about paperwork or reporting as well as pollution: the count does not say how serious a case was. Read a facility's own report on ECHO for what was found.",
+   "It is a record of enforcement, not a measure of how clean the air or the water is.",
+   "A facility counts once, however many actions it received.",
+   "Small counts: one facility more or less changes a municipality's value."
+  ],
+  "see_also": [
+   "infrastructure.epa_inspected",
+   "infrastructure.wastewater_violation"
+  ],
+  "where": {
+   "files": [
+    "infrastructure_series.json:epa_formal_action"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: facilities with a formal environmental enforcement action",
+     "href": "index.html#e=epa_formal_action.s"
+    }
+   ]
+  },
+  "added": "2026-11-12"
+ },
+ {
+  "id": "infrastructure.tri_release_lb",
+  "ask": {
+   "en": [
+    "toxic releases",
+    "toxic chemicals released",
+    "toxics release inventory",
+    "tri releases",
+    "chemical releases"
+   ],
+   "es": [
+    "emisiones tóxicas",
+    "sustancias tóxicas liberadas",
+    "inventario de emisiones tóxicas",
+    "liberaciones químicas"
+   ]
+  },
+  "name": "Toxic chemicals released, pounds",
+  "domain": "infrastructure",
+  "domains": [
+   "infrastructure",
+   "environment"
+  ],
+  "group": "Toxic chemical releases",
+  "kind": "variable",
+  "plain": "How many pounds of listed toxic chemicals the reporting facilities of each municipality released in a year.",
+  "definition": "The pounds of listed toxic chemicals that the facilities reporting to EPA's Toxics Release Inventory (TRI) released in 2024: on site, to the air, to water and to land, and off site, sent elsewhere for disposal. Summed for the municipality that holds each facility's point.",
+  "unit": "lb",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One reporting year (2024), the newest EPA has published for Puerto Rico; EPA publishes a year in the autumn of the next. Rebuilt with each full build (python infrastructure_series.py)."
+  },
+  "method": "infrastructure_series.py downloads EPA's TRI Basic Data File for Puerto Rico (reporting year 2024: 104 facilities), which has one row for each facility and chemical. It adds each facility's pounds (dioxins, reported in grams, are converted) and sums them for the municipality whose boundary holds the facility's point. Puerto Rico's value is the sum of the facilities. Values are whole pounds. The facility's name is never read, and its point is not published.",
+  "sources": [
+   "epa_tri"
+  ],
+  "source_detail": "TRI Basic Data File, Puerto Rico: columns 2 (TRIFD), 12-13 (point), 50 (unit), 51-52 (fugitive and stack air), 107 (total releases)",
+  "how_to_read": "In 2024, 104 facilities in 43 municipalities reported 2,686,420 pounds; the most in Guayama 919,665, Ponce 575,010, Peñuelas 384,782. One facility reported 32.6% of the total.",
+  "caveats": [
+   "Pounds of different chemicals are added together: a pound of one chemical can be far more harmful than a pound of another, so the figure shows amount, not toxicity or risk.",
+   "A release is reported and usually allowed by a permit; it is not by itself a violation.",
+   "Only larger facilities in certain industries report, and only for the chemicals on EPA's list. Smaller sources and vehicles are not counted.",
+   "18 of the 43 municipalities with a reporting facility have only one: there the figure is that facility's own public report.",
+   "A facility counts where it stands. What it releases to the air or to water travels to other municipalities.",
+   "The amounts are the facilities' own estimates."
+  ],
+  "see_also": [
+   "infrastructure.tri_air_lb",
+   "conditions.epa_tri"
+  ],
+  "where": {
+   "files": [
+    "infrastructure_series.json:tri_release_lb"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: toxic chemicals released, pounds",
+     "href": "index.html#e=tri_release_lb.s"
+    }
+   ]
+  },
+  "added": "2026-11-12"
+ },
+ {
+  "id": "infrastructure.tri_air_lb",
+  "ask": {
+   "en": [
+    "toxic air releases",
+    "toxic chemicals released to the air",
+    "air toxics",
+    "toxic air emissions"
+   ],
+   "es": [
+    "emisiones tóxicas al aire",
+    "sustancias tóxicas liberadas al aire",
+    "tóxicos del aire"
+   ]
+  },
+  "name": "Toxic chemicals released to the air, pounds",
+  "domain": "infrastructure",
+  "domains": [
+   "infrastructure",
+   "environment"
+  ],
+  "group": "Toxic chemical releases",
+  "kind": "variable",
+  "plain": "How many pounds of listed toxic chemicals the reporting facilities of each municipality released to the air in a year.",
+  "definition": "Of the pounds the TRI facilities released in 2024, the ones released on site to the air: from stacks and vents (stack air) and as leaks and evaporation (fugitive air). Summed for the municipality that holds each facility's point.",
+  "unit": "lb",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One reporting year (2024), the newest EPA has published for Puerto Rico; EPA publishes a year in the autumn of the next. Rebuilt with each full build (python infrastructure_series.py)."
+  },
+  "method": "infrastructure_series.py downloads EPA's TRI Basic Data File for Puerto Rico (reporting year 2024: 104 facilities), which has one row for each facility and chemical. It adds each facility's pounds (dioxins, reported in grams, are converted) and sums them for the municipality whose boundary holds the facility's point. Puerto Rico's value is the sum of the facilities. Values are whole pounds. The facility's name is never read, and its point is not published.",
+  "sources": [
+   "epa_tri"
+  ],
+  "source_detail": "TRI Basic Data File, Puerto Rico: columns 2 (TRIFD), 12-13 (point), 50 (unit), 51-52 (fugitive and stack air), 107 (total releases)",
+  "how_to_read": "In 2024 the facilities reported 1,264,140 pounds released to the air, of 2,686,420 pounds in all; the most in Peñuelas 384,761, Guayama 316,292, Salinas 119,868.",
+  "caveats": [
+   "Pounds of different chemicals are added together, so the figure shows amount, not toxicity or risk.",
+   "It is not a measure of air quality: the wind carries a release away from the municipality where the facility stands.",
+   "Only larger facilities in certain industries report, and only for the chemicals on EPA's list.",
+   "18 of the 43 municipalities with a reporting facility have only one: there the figure is that facility's own public report."
+  ],
+  "see_also": [
+   "infrastructure.tri_release_lb",
+   "infrastructure.air_sources"
+  ],
+  "where": {
+   "files": [
+    "infrastructure_series.json:tri_air_lb"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: toxic chemicals released to the air, pounds",
+     "href": "index.html#e=tri_air_lb.s"
+    }
+   ]
+  },
+  "added": "2026-11-12"
+ },
+ {
+  "id": "infrastructure.power_plants",
+  "ask": {
+   "en": [
+    "power plants",
+    "electric plants"
+   ],
+   "es": [
+    "plantas de energia",
+    "plantas electricas",
+    "centrales electricas"
+   ]
+  },
+  "name": "Power plants (operating)",
+  "domain": "infrastructure.energy",
+  "domains": [
+   "infrastructure.energy"
+  ],
+  "group": "Power plants",
+  "kind": "variable",
+  "plain": "How many power plants with an operating generator are in each municipality.",
+  "definition": "Plants with at least one operating generator in EIA's monthly inventory, in the municipality that holds the plant's point.",
+  "unit": "plants",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot (ECHO of 2026-11-11; EIA-860M of 2026-09). Rebuilt with each full build (python infrastructure_series.py)."
+  },
+  "method": "infrastructure_series.py reads the newest EIA-860M file (sheet Operating_PR) and places each operating generator in the municipality whose boundary holds the plant's point (the county field is blank for about a third of them). Each plant's point, name and capacity are also published as the Power plants map layer (power_plants.geojson); owner names are not kept.",
+  "sources": [
+   "eia_860m"
+  ],
+  "source_detail": "EIA-860M monthly generator file, sheet Operating_PR: Plant ID, Technology, Nameplate Capacity (MW), Status, Latitude, Longitude",
+  "how_to_read": "Puerto Rico has 67 such plants (EIA-860M, 2026-09).",
+  "caveats": [
+   "Plants whose generators add up to less than 1 MW, most rooftop solar among them, are not in the inventory.",
+   "EIA's operating list includes generators on standby and a few out of service for now (85 of 228 in August 2026, about 110 MW)."
+  ],
+  "see_also": [
+   "infrastructure.power_mw",
+   "layers.plants"
+  ],
+  "where": {
+   "files": [
+    "infrastructure_series.json:power_plants"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: power plants (operating)",
+     "href": "index.html#e=power_plants.s"
+    }
+   ]
+  },
+  "added": "2026-10-14"
+ },
+ {
+  "id": "infrastructure.power_mw",
+  "ask": {
+   "en": [
+    "generating capacity",
+    "megawatts",
+    "power capacity"
+   ],
+   "es": [
+    "capacidad de generacion",
+    "megavatios"
+   ]
+  },
+  "name": "Generating capacity, MW (nameplate)",
+  "domain": "infrastructure.energy",
+  "domains": [
+   "infrastructure.energy"
+  ],
+  "group": "Power plants",
+  "kind": "variable",
+  "plain": "How much electricity the power plants in each municipality are built to produce, in megawatts.",
+  "definition": "The nameplate capacity of the operating generators of the municipality, in megawatts. Batteries are left out: they store power.",
+  "unit": "MW",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot (ECHO of 2026-11-11; EIA-860M of 2026-09). Rebuilt with each full build (python infrastructure_series.py)."
+  },
+  "method": "infrastructure_series.py reads the newest EIA-860M file (sheet Operating_PR) and places each operating generator in the municipality whose boundary holds the plant's point (the county field is blank for about a third of them). Each plant's point, name and capacity are also published as the Power plants map layer (power_plants.geojson); owner names are not kept.",
+  "sources": [
+   "eia_860m"
+  ],
+  "source_detail": "EIA-860M monthly generator file, sheet Operating_PR: Plant ID, Technology, Nameplate Capacity (MW), Status, Latitude, Longitude",
+  "how_to_read": "6,436.1 MW for Puerto Rico; the largest in Salinas 1,544 MW, Guayanilla 1,032 MW, San Juan 852 MW.",
+  "caveats": [
+   "Nameplate capacity is what generators are built to produce, not what they produce or can produce today."
+  ],
+  "see_also": [
+   "infrastructure.power_renewable_mw",
+   "layers.plants"
+  ],
+  "where": {
+   "files": [
+    "infrastructure_series.json:power_mw"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: generating capacity, mw (nameplate)",
+     "href": "index.html#e=power_mw.s"
+    }
+   ]
+  },
+  "added": "2026-10-14"
+ },
+ {
+  "id": "infrastructure.power_renewable_mw",
+  "ask": {
+   "en": [
+    "renewable energy",
+    "solar",
+    "renewables",
+    "wind power"
+   ],
+   "es": [
+    "energia renovable",
+    "renovables",
+    "energia solar"
+   ]
+  },
+  "name": "Renewable generating capacity, MW (solar, wind, hydro, landfill gas)",
+  "domain": "infrastructure.energy",
+  "domains": [
+   "infrastructure.energy"
+  ],
+  "group": "Power plants",
+  "kind": "variable",
+  "plain": "How much of that capacity is solar, wind, hydroelectric or landfill gas, in megawatts.",
+  "definition": "The nameplate capacity of the operating solar, wind, hydroelectric and landfill gas generators of the municipality, in megawatts.",
+  "unit": "MW",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot (ECHO of 2026-11-11; EIA-860M of 2026-09). Rebuilt with each full build (python infrastructure_series.py)."
+  },
+  "method": "infrastructure_series.py reads the newest EIA-860M file (sheet Operating_PR) and places each operating generator in the municipality whose boundary holds the plant's point (the county field is blank for about a third of them). Each plant's point, name and capacity are also published as the Power plants map layer (power_plants.geojson); owner names are not kept.",
+  "sources": [
+   "eia_860m"
+  ],
+  "source_detail": "EIA-860M monthly generator file, sheet Operating_PR: Plant ID, Technology, Nameplate Capacity (MW), Status, Latitude, Longitude",
+  "how_to_read": "397.7 MW for Puerto Rico; the largest in Santa Isabel 101.2 MW, Isabela 45.0 MW, Yauco 34.0 MW.",
+  "caveats": [
+   "Rooftop solar, which is large in Puerto Rico, is not in EIA's inventory."
+  ],
+  "see_also": [
+   "infrastructure.power_mw",
+   "layers.plants"
+  ],
+  "where": {
+   "files": [
+    "infrastructure_series.json:power_renewable_mw"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: renewable generating capacity, mw (solar, wind, hydro, landfill gas)",
+     "href": "index.html#e=power_renewable_mw.s"
+    }
+   ]
+  },
+  "added": "2026-10-14"
+ },
+ {
+  "id": "infrastructure.bridges",
+  "ask": {
+   "en": [
+    "bridges"
+   ],
+   "es": [
+    "puentes"
+   ]
+  },
+  "name": "Highway bridges",
+  "domain": "infrastructure",
+  "domains": [
+   "infrastructure",
+   "infrastructure.mobility"
+  ],
+  "group": "Bridges",
+  "kind": "variable",
+  "plain": "How many highway bridges are in each municipality, every year.",
+  "definition": "Bridges of the public road network in the National Bridge Inventory (spans longer than 20 feet), in the municipality the inventory gives.",
+  "unit": "bridges",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2016,
+   "last": 2025,
+   "frequency": "One inventory a year. FHWA publishes each year's file the following spring; the observatory adds it when FPR rebuilds the data."
+  },
+  "method": "infrastructure_series.py reads each year's Puerto Rico file and works out each bridge's condition by FHWA's rule (the lowest of the deck, superstructure, substructure and culvert ratings: 4 or below is poor, 7 or above good, the rest fair). In every year whose file gives FHWA's own condition column the two agree for every bridge; the build stops otherwise.",
+  "sources": [
+   "fhwa_nbi"
+  ],
+  "source_detail": "FHWA National Bridge Inventory, delimited file PR{yy}.txt for 2016-2025: COUNTY_CODE_003, DECK_COND_058, SUPERSTRUCTURE_COND_059, SUBSTRUCTURE_COND_060, CULVERT_COND_062, BRIDGE_CONDITION",
+  "how_to_read": "Puerto Rico had 2,308 bridges in 2016 and 2,434 in 2025.",
+  "caveats": [
+   "New or newly inventoried bridges raise the count."
+  ],
+  "see_also": [
+   "infrastructure.bridges_poor_pct"
+  ],
+  "where": {
+   "files": [
+    "bridges_series.json:bridges"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: highway bridges",
+     "href": "index.html#e=bridges.s"
+    }
+   ]
+  },
+  "added": "2026-10-14"
+ },
+ {
+  "id": "infrastructure.bridges_poor",
+  "ask": {
+   "en": [
+    "bridges in poor condition",
+    "bad bridges",
+    "deficient bridges"
+   ],
+   "es": [
+    "puentes en mal estado",
+    "puentes en mala condicion",
+    "puentes deficientes"
+   ]
+  },
+  "name": "Bridges in poor condition",
+  "domain": "infrastructure",
+  "domains": [
+   "infrastructure",
+   "infrastructure.mobility"
+  ],
+  "group": "Bridges",
+  "kind": "variable",
+  "plain": "How many highway bridges in each municipality are in poor condition, every year.",
+  "definition": "Bridges whose lowest rating of deck, superstructure, substructure or culvert is 4 or below (FHWA's definition of poor).",
+  "unit": "bridges",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2016,
+   "last": 2025,
+   "frequency": "One inventory a year. FHWA publishes each year's file the following spring; the observatory adds it when FPR rebuilds the data."
+  },
+  "method": "infrastructure_series.py reads each year's Puerto Rico file and works out each bridge's condition by FHWA's rule (the lowest of the deck, superstructure, substructure and culvert ratings: 4 or below is poor, 7 or above good, the rest fair). In every year whose file gives FHWA's own condition column the two agree for every bridge; the build stops otherwise.",
+  "sources": [
+   "fhwa_nbi"
+  ],
+  "source_detail": "FHWA National Bridge Inventory, delimited file PR{yy}.txt for 2016-2025: COUNTY_CODE_003, DECK_COND_058, SUPERSTRUCTURE_COND_059, SUBSTRUCTURE_COND_060, CULVERT_COND_062, BRIDGE_CONDITION",
+  "how_to_read": "268 in 2016 and 344 in 2025 for Puerto Rico.",
+  "caveats": [
+   "Poor does not mean unsafe: a bridge found unsafe is closed."
+  ],
+  "see_also": [
+   "infrastructure.bridges_poor_pct"
+  ],
+  "where": {
+   "files": [
+    "bridges_series.json:bridges_poor"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: bridges in poor condition",
+     "href": "index.html#e=bridges_poor.s"
+    }
+   ]
+  },
+  "added": "2026-10-14"
+ },
+ {
+  "id": "infrastructure.bridges_poor_pct",
+  "ask": {
+   "en": [
+    "share of bridges in poor condition",
+    "percent of bridges in poor condition"
+   ],
+   "es": [
+    "porcentaje de puentes en mal estado",
+    "por ciento de puentes en mala condicion"
+   ]
+  },
+  "name": "Bridges in poor condition, % of bridges",
+  "domain": "infrastructure",
+  "domains": [
+   "infrastructure",
+   "infrastructure.mobility"
+  ],
+  "group": "Bridges",
+  "kind": "variable",
+  "plain": "Out of every 100 highway bridges in each municipality, how many are in poor condition, every year.",
+  "definition": "Bridges in poor condition (FHWA's definition) divided by all of the municipality's bridges, by count, times 100.",
+  "unit": "% of bridges",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2016,
+   "last": 2025,
+   "frequency": "One inventory a year. FHWA publishes each year's file the following spring; the observatory adds it when FPR rebuilds the data."
+  },
+  "method": "infrastructure_series.py reads each year's Puerto Rico file and works out each bridge's condition by FHWA's rule (the lowest of the deck, superstructure, substructure and culvert ratings: 4 or below is poor, 7 or above good, the rest fair). In every year whose file gives FHWA's own condition column the two agree for every bridge; the build stops otherwise.",
+  "sources": [
+   "fhwa_nbi"
+  ],
+  "source_detail": "FHWA National Bridge Inventory, delimited file PR{yy}.txt for 2016-2025: COUNTY_CODE_003, DECK_COND_058, SUPERSTRUCTURE_COND_059, SUBSTRUCTURE_COND_060, CULVERT_COND_062, BRIDGE_CONDITION",
+  "how_to_read": "11.61% in 2016 and 14.13% in 2025 for Puerto Rico.",
+  "caveats": [
+   "A municipality with few bridges can swing widely.",
+   "By count, not by deck area."
+  ],
+  "see_also": [
+   "infrastructure.bridges_poor"
+  ],
+  "where": {
+   "files": [
+    "bridges_series.json:bridges_poor_pct"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: bridges in poor condition, % of bridges",
+     "href": "index.html#e=bridges_poor_pct.f"
+    }
+   ]
+  },
+  "added": "2026-10-14"
+ },
+ {
+  "id": "infrastructure.air_passengers",
+  "name": "Air passengers boarding (commercial flights)",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility",
+   "economy.visitor-economy"
+  ],
+  "group": "Airports and ferries",
+  "kind": "variable",
+  "plain": "How many passengers board a commercial flight at the airports of each municipality, every year.",
+  "definition": "Passengers who boarded a commercial flight at an airport in the municipality during the year, to anywhere: the US mainland, another island or abroad. A passenger is counted each time they board.",
+  "unit": "passengers",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2014,
+   "last": 2025,
+   "frequency": "Monthly at the source; the observatory publishes full years when FPR rebuilds the data (python gateway_series.py)."
+  },
+  "method": "gateway_series.py sums BTS's monthly T-100 rows of the seven Puerto Rico airports in the file (SJU, BQN, PSE, VQS, CPX, SIG, MAZ) by year, and places each airport in the municipality that holds it (the FAA airports of transport.json): San Juan's Luis Muñoz Marín (SJU) is in Carolina and Isla Grande (SIG) in San Juan. A year is published once SJU has all twelve months.",
+  "sources": [
+   "bts_t100"
+  ],
+  "source_detail": "BTS T-100 Segment Summary by Origin Airport (data.bts.gov r495-tyji): total_passengers by origin_airport_code and month",
+  "how_to_read": "7.2 million passengers boarded at Puerto Rico's airports in 2025, 6.7 million of them at SJU (Carolina); in 2020 the figure fell to 2.5 million.",
+  "caveats": [
+   "Counts boardings, not visitors: residents travelling and passengers changing planes are counted, and a passenger who arrives is not.",
+   "Ceiba's airport (RVR) is not in T-100; see the FAA count.",
+   "A smaller airport with fewer months in a year had no commercial flights in the others (Ponce reported 3 months in 2020 and 9 in 2021)."
+  ],
+  "see_also": [
+   "infrastructure.air_enplanements_faa",
+   "infrastructure.air_departures",
+   "infrastructure.ferry_passengers"
+  ],
+  "ask": {
+   "en": [
+    "air passengers",
+    "airline passengers",
+    "airport passengers",
+    "passengers boarding flights"
+   ],
+   "es": [
+    "pasajeros aereos",
+    "pasajeros de avion",
+    "pasajeros de vuelos",
+    "pasajeros en aeropuertos"
+   ]
+  },
+  "where": {
+   "files": [
+    "gateway_series.json:air_passengers"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: air passengers boarding (commercial flights)",
+     "href": "index.html#e=air_passengers.s"
+    }
+   ]
+  },
+  "added": "2026-10-14"
+ },
+ {
+  "id": "infrastructure.air_departures",
+  "name": "Commercial flights departing",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility",
+   "economy.visitor-economy"
+  ],
+  "group": "Airports and ferries",
+  "kind": "variable",
+  "plain": "How many commercial flights leave the airports of each municipality, every year.",
+  "definition": "Commercial flights, passenger and cargo, that departed from an airport in the municipality during the year.",
+  "unit": "flights",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2014,
+   "last": 2025,
+   "frequency": "Monthly at the source; the observatory publishes full years when FPR rebuilds the data (python gateway_series.py)."
+  },
+  "method": "gateway_series.py sums BTS's monthly T-100 rows of the seven Puerto Rico airports in the file (SJU, BQN, PSE, VQS, CPX, SIG, MAZ) by year, and places each airport in the municipality that holds it (the FAA airports of transport.json): San Juan's Luis Muñoz Marín (SJU) is in Carolina and Isla Grande (SIG) in San Juan. A year is published once SJU has all twelve months.",
+  "sources": [
+   "bts_t100"
+  ],
+  "source_detail": "BTS T-100 Segment Summary by Origin Airport (data.bts.gov r495-tyji): total_departures by origin_airport_code and month",
+  "how_to_read": "94,613 commercial flights left Puerto Rico's airports in 2025, 68,110 of them from SJU.",
+  "caveats": [
+   "Small island flights (Vieques, Culebra) carry few passengers each, so flights and passengers rank the airports differently."
+  ],
+  "see_also": [
+   "infrastructure.air_passengers"
+  ],
+  "ask": {
+   "en": [
+    "commercial flights",
+    "departing flights",
+    "flights"
+   ],
+   "es": [
+    "vuelos comerciales",
+    "salidas de vuelos",
+    "vuelos"
+   ]
+  },
+  "where": {
+   "files": [
+    "gateway_series.json:air_departures"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: commercial flights departing",
+     "href": "index.html#e=air_departures.s"
+    }
+   ]
+  },
+  "added": "2026-10-14"
+ },
+ {
+  "id": "infrastructure.air_enplanements_faa",
+  "name": "Air passengers boarding (FAA enplanements)",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility",
+   "economy.visitor-economy"
+  ],
+  "group": "Airports and ferries",
+  "kind": "variable",
+  "plain": "How many passengers board at the commercial airports of each municipality, as FAA counts them.",
+  "definition": "Passengers who boarded at a commercial service airport in the municipality during the calendar year, as FAA counts them for airport funding. It includes Ceiba's airport (RVR) and on-demand air taxi flights.",
+  "unit": "passengers",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2023,
+   "last": 2025,
+   "frequency": "One file a calendar year, published the following autumn; each file also holds the year before."
+  },
+  "method": "gateway_series.py reads every FAA file under its current name (CY2024 and CY2025, which give 2023 to 2025) and keeps Puerto Rico's rows; for a year two files share, the file of that year wins. Each airport is placed in its municipality as for T-100.",
+  "sources": [
+   "faa_enplanements"
+  ],
+  "source_detail": "FAA arp-cy{year}-commercial-service-enplanements.xlsx: Locid, ST, CY {yy} Enplanements",
+  "how_to_read": "FAA counted 7.19 million boardings in 2025, within 0.1% of T-100's 7.20 million; Ceiba's 23,214 are only here.",
+  "caveats": [
+   "Earlier years are in files under other names that no longer answer; the series starts in 2023."
+  ],
+  "see_also": [
+   "infrastructure.air_passengers"
+  ],
+  "ask": {
+   "en": [
+    "enplanements",
+    "faa enplanements"
+   ],
+   "es": [
+    "embarques",
+    "embarques de la faa"
+   ]
+  },
+  "where": {
+   "files": [
+    "gateway_series.json:air_enplanements_faa"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: air passengers boarding (faa enplanements)",
+     "href": "index.html#e=air_enplanements_faa.s"
+    }
+   ]
+  },
+  "added": "2026-10-14"
+ },
+ {
+  "id": "infrastructure.ferry_passengers",
+  "name": "Ferry passengers boarding",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility",
+   "economy.visitor-economy"
+  ],
+  "group": "Airports and ferries",
+  "kind": "variable",
+  "plain": "How many passengers board a ferry at the terminals of each municipality, in the years of the ferry census.",
+  "definition": "Passengers who boarded a ferry at a terminal in the municipality during the year the census covers, as the operator reported them: the Cataño crossing (Cataño and Old San Juan), Ceiba, Vieques and Culebra. Passengers going and coming back are each counted where they board.",
+  "unit": "passengers",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2019,
+   "last": 2024,
+   "frequency": "Every two years (censuses of 2020, 2022 and 2024)."
+  },
+  "method": "gateway_series.py reads each census's terminals in Puerto Rico, the one-way segments that start at them and the operator's passengers on each segment. A segment's passengers board at its first terminal, which is placed in the municipality that holds its point. The 2020 census gives data year 2019; since 2022 BTS names each census for the year of its data. The 2018 census is left out: it does not state its data year and its routes start at Fajardo, before the move to Ceiba.",
+  "sources": [
+   "bts_ncfo"
+  ],
+  "source_detail": "BTS NCFO operator segment, segment and terminal files of 2020, 2022 and 2024 (data.bts.gov): passengers, trips_per_year, seg_terminal1_id, terminal points",
+  "how_to_read": "1.62 million ferry boardings in 2024: 593,000 at Ceiba, 321,000 at Vieques, 273,000 at Culebra and 429,000 on the Cataño crossing.",
+  "caveats": [
+   "Reported by the operator to the census, not counted by the observatory.",
+   "Only three years; the year control shows the latest census at or before the year chosen.",
+   "2022 was a year of reduced service on the Cataño crossing (84,145 and 86,441 boardings)."
+  ],
+  "see_also": [
+   "infrastructure.air_passengers"
+  ],
+  "ask": {
+   "en": [
+    "ferry passengers",
+    "ferries",
+    "ferry"
+   ],
+   "es": [
+    "pasajeros de lancha",
+    "pasajeros del ferry",
+    "lanchas",
+    "lancha"
+   ]
+  },
+  "where": {
+   "files": [
+    "gateway_series.json:ferry_passengers"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: ferry passengers boarding",
+     "href": "index.html#e=ferry_passengers.s"
+    }
+   ]
+  },
+  "added": "2026-10-14"
+ }
+]

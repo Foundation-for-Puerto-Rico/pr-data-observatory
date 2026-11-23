@@ -1,0 +1,485 @@
+[
+ {
+  "id": "buildings.bld_n",
+  "name": "Buildings (Overture footprints)",
+  "ask": {
+   "en": [
+    "number of buildings",
+    "how many buildings",
+    "building count"
+   ],
+   "es": [
+    "numero de edificios",
+    "cuantos edificios",
+    "cantidad de edificios"
+   ]
+  },
+  "domain": "housing",
+  "domains": [
+   "housing",
+   "environment.land"
+  ],
+  "group": "Housing · Buildings (Overture)",
+  "kind": "variable",
+  "plain": "How many buildings the area has, counted from building outlines traced from above.",
+  "definition": "The number of building footprints whose inner point is in the area.",
+  "unit": "buildings",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico; also 901 barrios",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One Overture release (2026-10-21.0); the refresh checks for a newer one every 30 days (refresh unit buildings)."
+  },
+  "method": "buildings.py reads the Overture Maps buildings theme, release 2026-10-21.0, for a box around Puerto Rico with the overturemaps package (about 3.5 minutes, no key) and keeps, for each building, one point inside its outline (shapely's point on surface), its footprint area on the Lambert equal-area plane of the barrio figures, its first source and its height. A building belongs to the barrio whose outline holds that point, or the nearest within 100 m (a pier, a building on the shore); 335 of 2,157,363 buildings in the box are farther and left out. Municipios and Puerto Rico pool their barrios. Checks at every build: 1.9 to 2.5 million buildings, 99.5% or more placed, San Juan denser than Puerto Rico, 1% to 30% in a Special Flood Hazard Area, and buildings following 2020 housing units across the barrios (a Spearman rank correlation of 0.6 or more; 0.965 in this build).",
+  "sources": [
+   "overture_buildings",
+   "census_tiger"
+  ],
+  "source_detail": "Overture Maps Foundation, Buildings theme, release 2026-10-21.0 (https://docs.overturemaps.org/guides/buildings/): OpenStreetMap (1,500,399 buildings), Google Open Buildings (536,571) and Microsoft ML Buildings (120,393). © OpenStreetMap contributors, Overture Maps Foundation, ODbL 1.0. Barrio outlines and land area: barrios.geojson and the crosswalk (Census).",
+  "how_to_read": "Puerto Rico: 2,157,028. Highest: San Juan (125,872), Bayamón (86,214), Ponce (80,349). Lowest: Culebra (2,743), Maricao (4,904), Florida (7,829).",
+  "caveats": [
+   "A building is one footprint: a row of attached houses may be one footprint or several, depending on who traced it.",
+   "Footprints traced by machine learning (about 3 in 10 in Puerto Rico) can include sheds, carports and ruins and miss buildings under trees; see the share traced by machine learning.",
+   "The footprints are as of Overture's release 2026-10-21.0, not a census date: a building torn down or built recently may or may not be in it.",
+   "Most buildings are homes, so nothing is published per building: only counts, areas and shares by barrio and larger areas."
+  ],
+  "see_also": [
+   "buildings.bld_per_km2",
+   "buildings.bld_ml_pct",
+   "housing.housing_units"
+  ],
+  "where": {
+   "files": [
+    "buildings_series.json:bld_n",
+    "buildings_barrio.json:bld_n"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Housing · Buildings (Overture)): shade municipalities, or barrios (Settings > Area), by",
+     "href": "index.html#e=bld_n.f.value.blue.j.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-11-09"
+ },
+ {
+  "id": "buildings.bld_per_km2",
+  "name": "Buildings per km² of land",
+  "ask": {
+   "en": [
+    "building density",
+    "buildings per square kilometre",
+    "how built up"
+   ],
+   "es": [
+    "densidad de edificios",
+    "edificios por kilometro cuadrado",
+    "cuan construido"
+   ]
+  },
+  "domain": "housing",
+  "domains": [
+   "housing",
+   "environment.land"
+  ],
+  "group": "Housing · Buildings (Overture)",
+  "kind": "variable",
+  "plain": "How closely packed the buildings are: buildings for each square kilometre of land.",
+  "definition": "The number of buildings divided by the area's land area in km² (Census land area, water left out).",
+  "unit": "buildings per km²",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico; also 901 barrios",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One Overture release (2026-10-21.0); the refresh checks for a newer one every 30 days (refresh unit buildings)."
+  },
+  "method": "buildings.py reads the Overture Maps buildings theme, release 2026-10-21.0, for a box around Puerto Rico with the overturemaps package (about 3.5 minutes, no key) and keeps, for each building, one point inside its outline (shapely's point on surface), its footprint area on the Lambert equal-area plane of the barrio figures, its first source and its height. A building belongs to the barrio whose outline holds that point, or the nearest within 100 m (a pier, a building on the shore); 335 of 2,157,363 buildings in the box are farther and left out. Municipios and Puerto Rico pool their barrios. Checks at every build: 1.9 to 2.5 million buildings, 99.5% or more placed, San Juan denser than Puerto Rico, 1% to 30% in a Special Flood Hazard Area, and buildings following 2020 housing units across the barrios (a Spearman rank correlation of 0.6 or more; 0.965 in this build).",
+  "sources": [
+   "overture_buildings",
+   "census_tiger"
+  ],
+  "source_detail": "Overture Maps Foundation, Buildings theme, release 2026-10-21.0 (https://docs.overturemaps.org/guides/buildings/): OpenStreetMap (1,500,399 buildings), Google Open Buildings (536,571) and Microsoft ML Buildings (120,393). © OpenStreetMap contributors, Overture Maps Foundation, ODbL 1.0. Barrio outlines and land area: barrios.geojson and the crosswalk (Census).",
+  "how_to_read": "Puerto Rico: 243.2. Highest: San Juan (1,014.6), Cataño (971.8), Bayamón (749.1). Lowest: Maricao (51.7), Las Marías (70.2), Vieques (75.3).",
+  "caveats": [
+   "A building is one footprint: a row of attached houses may be one footprint or several, depending on who traced it.",
+   "Footprints traced by machine learning (about 3 in 10 in Puerto Rico) can include sheds, carports and ruins and miss buildings under trees; see the share traced by machine learning.",
+   "Most buildings are homes, so nothing is published per building: only counts, areas and shares by barrio and larger areas."
+  ],
+  "see_also": [
+   "buildings.bld_n",
+   "buildings.bld_roof_pct"
+  ],
+  "where": {
+   "files": [
+    "buildings_series.json:bld_per_km2",
+    "buildings_barrio.json:bld_per_km2"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Housing · Buildings (Overture)): shade municipalities, or barrios (Settings > Area), by",
+     "href": "index.html#e=bld_per_km2.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-11-09"
+ },
+ {
+  "id": "buildings.bld_roof_pct",
+  "name": "Land under roofs (%)",
+  "ask": {
+   "en": [
+    "land under roofs",
+    "share of land under roofs",
+    "roofed land"
+   ],
+   "es": [
+    "terreno bajo techo"
+   ]
+  },
+  "domain": "housing",
+  "domains": [
+   "housing",
+   "environment.land"
+  ],
+  "group": "Housing · Buildings (Overture)",
+  "kind": "variable",
+  "plain": "How much of the area's land is covered by buildings, seen from above.",
+  "definition": "The sum of the footprints' areas (m², on an equal-area plane) over the area's land area, as a percentage. A footprint traced from above is the roof's outline, so eaves count.",
+  "unit": "% of land",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico; also 901 barrios",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One Overture release (2026-10-21.0); the refresh checks for a newer one every 30 days (refresh unit buildings)."
+  },
+  "method": "buildings.py reads the Overture Maps buildings theme, release 2026-10-21.0, for a box around Puerto Rico with the overturemaps package (about 3.5 minutes, no key) and keeps, for each building, one point inside its outline (shapely's point on surface), its footprint area on the Lambert equal-area plane of the barrio figures, its first source and its height. A building belongs to the barrio whose outline holds that point, or the nearest within 100 m (a pier, a building on the shore); 335 of 2,157,363 buildings in the box are farther and left out. Municipios and Puerto Rico pool their barrios. Checks at every build: 1.9 to 2.5 million buildings, 99.5% or more placed, San Juan denser than Puerto Rico, 1% to 30% in a Special Flood Hazard Area, and buildings following 2020 housing units across the barrios (a Spearman rank correlation of 0.6 or more; 0.965 in this build).",
+  "sources": [
+   "overture_buildings",
+   "census_tiger"
+  ],
+  "source_detail": "Overture Maps Foundation, Buildings theme, release 2026-10-21.0 (https://docs.overturemaps.org/guides/buildings/): OpenStreetMap (1,500,399 buildings), Google Open Buildings (536,571) and Microsoft ML Buildings (120,393). © OpenStreetMap contributors, Overture Maps Foundation, ODbL 1.0. Barrio outlines and land area: barrios.geojson and the crosswalk (Census).",
+  "how_to_read": "Puerto Rico: 3.3%. Highest: San Juan (20.3%), Cataño (18.1%), Bayamón (13.4%). Lowest: Maricao (0.5%), Las Marías (0.7%), Vieques (0.8%).",
+  "caveats": [
+   "Roofs only: streets, parking lots and other paving are not counted, so this is not the impervious share of the land.",
+   "Footprints traced by machine learning (about 3 in 10 in Puerto Rico) can include sheds, carports and ruins and miss buildings under trees; see the share traced by machine learning.",
+   "Most buildings are homes, so nothing is published per building: only counts, areas and shares by barrio and larger areas."
+  ],
+  "see_also": [
+   "buildings.bld_per_km2",
+   "vegetation.veg_sparse_pct"
+  ],
+  "where": {
+   "files": [
+    "buildings_series.json:bld_roof_pct",
+    "buildings_barrio.json:bld_roof_pct"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Housing · Buildings (Overture)): shade municipalities, or barrios (Settings > Area), by",
+     "href": "index.html#e=bld_roof_pct.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-11-09"
+ },
+ {
+  "id": "buildings.bld_area_med",
+  "name": "Median building footprint (m²)",
+  "ask": {
+   "en": [
+    "building size",
+    "footprint size",
+    "how big are the buildings"
+   ],
+   "es": [
+    "tamano de los edificios",
+    "tamano de la huella"
+   ]
+  },
+  "domain": "housing",
+  "domains": [
+   "housing",
+   "environment.land"
+  ],
+  "group": "Housing · Buildings (Overture)",
+  "kind": "variable",
+  "plain": "The size on the ground of a typical building: half the area's buildings are smaller.",
+  "definition": "The median footprint area of the area's buildings, in m² on an equal-area plane. A footprint is the ground area, not the floor area: a three-storey building counts once.",
+  "unit": "m²",
+  "value_type": "ratio",
+  "geography": "78 municipalities and Puerto Rico; also 901 barrios",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One Overture release (2026-10-21.0); the refresh checks for a newer one every 30 days (refresh unit buildings)."
+  },
+  "method": "buildings.py reads the Overture Maps buildings theme, release 2026-10-21.0, for a box around Puerto Rico with the overturemaps package (about 3.5 minutes, no key) and keeps, for each building, one point inside its outline (shapely's point on surface), its footprint area on the Lambert equal-area plane of the barrio figures, its first source and its height. A building belongs to the barrio whose outline holds that point, or the nearest within 100 m (a pier, a building on the shore); 335 of 2,157,363 buildings in the box are farther and left out. Municipios and Puerto Rico pool their barrios. Checks at every build: 1.9 to 2.5 million buildings, 99.5% or more placed, San Juan denser than Puerto Rico, 1% to 30% in a Special Flood Hazard Area, and buildings following 2020 housing units across the barrios (a Spearman rank correlation of 0.6 or more; 0.965 in this build).",
+  "sources": [
+   "overture_buildings",
+   "census_tiger"
+  ],
+  "source_detail": "Overture Maps Foundation, Buildings theme, release 2026-10-21.0 (https://docs.overturemaps.org/guides/buildings/): OpenStreetMap (1,500,399 buildings), Google Open Buildings (536,571) and Microsoft ML Buildings (120,393). © OpenStreetMap contributors, Overture Maps Foundation, ODbL 1.0. Barrio outlines and land area: barrios.geojson and the crosswalk (Census).",
+  "how_to_read": "Puerto Rico: 106 m². Highest: Bayamón (155 m²), San Juan (151 m²), Carolina (143 m²). Lowest: Adjuntas (73 m²), Moca (77 m²), Las Marías (77 m²).",
+  "caveats": [
+   "Ground area, not floor area: storeys are not counted (Overture has a height for fewer than 1 in 10 buildings in Puerto Rico).",
+   "Footprints traced by machine learning (about 3 in 10 in Puerto Rico) can include sheds, carports and ruins and miss buildings under trees; see the share traced by machine learning.",
+   "Most buildings are homes, so nothing is published per building: only counts, areas and shares by barrio and larger areas."
+  ],
+  "see_also": [
+   "buildings.bld_n"
+  ],
+  "where": {
+   "files": [
+    "buildings_series.json:bld_area_med",
+    "buildings_barrio.json:bld_area_med"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Housing · Buildings (Overture)): shade municipalities, or barrios (Settings > Area), by",
+     "href": "index.html#e=bld_area_med.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-11-09"
+ },
+ {
+  "id": "buildings.bld_sfha_n",
+  "name": "Buildings in a FEMA Special Flood Hazard Area",
+  "ask": {
+   "en": [
+    "buildings in flood zone",
+    "buildings at risk of flooding",
+    "buildings in flood area"
+   ],
+   "es": [
+    "edificios en zona inundable",
+    "edificios en riesgo de inundacion"
+   ]
+  },
+  "domain": "housing",
+  "domains": [
+   "housing",
+   "hazards"
+  ],
+  "group": "Housing · Buildings (Overture)",
+  "kind": "variable",
+  "plain": "How many buildings stand where FEMA maps a 1% chance of flooding in any year.",
+  "definition": "The number of buildings whose inner point falls in a Special Flood Hazard Area (zones A, AE, AH, AO, A99, V and VE; SFHA_TF = T) of the FEMA National Flood Hazard Layer as published in flood.geojson (exposure.flood_polygons).",
+  "unit": "buildings",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico; also 901 barrios",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One Overture release (2026-10-21.0); the refresh checks for a newer one every 30 days (refresh unit buildings)."
+  },
+  "method": "buildings.py reads the Overture Maps buildings theme, release 2026-10-21.0, for a box around Puerto Rico with the overturemaps package (about 3.5 minutes, no key) and keeps, for each building, one point inside its outline (shapely's point on surface), its footprint area on the Lambert equal-area plane of the barrio figures, its first source and its height. A building belongs to the barrio whose outline holds that point, or the nearest within 100 m (a pier, a building on the shore); 335 of 2,157,363 buildings in the box are farther and left out. Municipios and Puerto Rico pool their barrios. Checks at every build: 1.9 to 2.5 million buildings, 99.5% or more placed, San Juan denser than Puerto Rico, 1% to 30% in a Special Flood Hazard Area, and buildings following 2020 housing units across the barrios (a Spearman rank correlation of 0.6 or more; 0.965 in this build).",
+  "sources": [
+   "overture_buildings",
+   "census_tiger"
+  ],
+  "source_detail": "Overture Maps Foundation, Buildings theme, release 2026-10-21.0 (https://docs.overturemaps.org/guides/buildings/): OpenStreetMap (1,500,399 buildings), Google Open Buildings (536,571) and Microsoft ML Buildings (120,393). © OpenStreetMap contributors, Overture Maps Foundation, ODbL 1.0. Barrio outlines and land area: barrios.geojson and the crosswalk (Census).",
+  "how_to_read": "Puerto Rico: 193,704. Highest: Ponce (17,947), San Juan (17,308), Carolina (16,732). Lowest: Florida (0), Quebradillas (2), Las Marías (22).",
+  "caveats": [
+   "A building counts by one point inside its outline: a building partly in the flood area may count as outside, and the reverse. FEMA's outlines in flood.geojson are simplified by about 5 m.",
+   "FEMA's maps show the 1% annual chance flood from rivers and the sea; heavy rain flooding outside those areas is not counted.",
+   "Footprints traced by machine learning (about 3 in 10 in Puerto Rico) can include sheds, carports and ruins and miss buildings under trees; see the share traced by machine learning.",
+   "Most buildings are homes, so nothing is published per building: only counts, areas and shares by barrio and larger areas."
+  ],
+  "see_also": [
+   "buildings.bld_sfha_pct",
+   "hazards.sfha"
+  ],
+  "where": {
+   "files": [
+    "buildings_series.json:bld_sfha_n",
+    "buildings_barrio.json:bld_sfha_n"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Housing · Buildings (Overture)): shade municipalities, or barrios (Settings > Area), by",
+     "href": "index.html#e=bld_sfha_n.f.value.red.j.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-11-09"
+ },
+ {
+  "id": "buildings.bld_sfha_pct",
+  "name": "Buildings in a FEMA Special Flood Hazard Area (%)",
+  "ask": {
+   "en": [
+    "share of buildings in flood zone",
+    "percent of buildings in flood area"
+   ],
+   "es": [
+    "porcentaje de edificios en zona inundable"
+   ]
+  },
+  "domain": "housing",
+  "domains": [
+   "housing",
+   "hazards"
+  ],
+  "group": "Housing · Buildings (Overture)",
+  "kind": "variable",
+  "plain": "Out of every 100 buildings in the area, how many stand where FEMA maps a 1% chance of flooding in any year.",
+  "definition": "Buildings in a Special Flood Hazard Area as a percentage of the area's buildings (same rule as the count).",
+  "unit": "% of buildings",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico; also 901 barrios",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One Overture release (2026-10-21.0); the refresh checks for a newer one every 30 days (refresh unit buildings)."
+  },
+  "method": "buildings.py reads the Overture Maps buildings theme, release 2026-10-21.0, for a box around Puerto Rico with the overturemaps package (about 3.5 minutes, no key) and keeps, for each building, one point inside its outline (shapely's point on surface), its footprint area on the Lambert equal-area plane of the barrio figures, its first source and its height. A building belongs to the barrio whose outline holds that point, or the nearest within 100 m (a pier, a building on the shore); 335 of 2,157,363 buildings in the box are farther and left out. Municipios and Puerto Rico pool their barrios. Checks at every build: 1.9 to 2.5 million buildings, 99.5% or more placed, San Juan denser than Puerto Rico, 1% to 30% in a Special Flood Hazard Area, and buildings following 2020 housing units across the barrios (a Spearman rank correlation of 0.6 or more; 0.965 in this build).",
+  "sources": [
+   "overture_buildings",
+   "census_tiger"
+  ],
+  "source_detail": "Overture Maps Foundation, Buildings theme, release 2026-10-21.0 (https://docs.overturemaps.org/guides/buildings/): OpenStreetMap (1,500,399 buildings), Google Open Buildings (536,571) and Microsoft ML Buildings (120,393). © OpenStreetMap contributors, Overture Maps Foundation, ODbL 1.0. Barrio outlines and land area: barrios.geojson and the crosswalk (Census).",
+  "how_to_read": "Puerto Rico: 9.0%. Highest: Salinas (46.9%), Loíza (42.6%), Cataño (37.2%). Lowest: Quebradillas (0.0%), Florida (0.0%), Morovis (0.3%).",
+  "caveats": [
+   "A building counts by one point inside its outline: a building partly in the flood area may count as outside, and the reverse. FEMA's outlines in flood.geojson are simplified by about 5 m.",
+   "Footprints traced by machine learning (about 3 in 10 in Puerto Rico) can include sheds, carports and ruins and miss buildings under trees; see the share traced by machine learning.",
+   "Most buildings are homes, so nothing is published per building: only counts, areas and shares by barrio and larger areas."
+  ],
+  "see_also": [
+   "buildings.bld_sfha_n",
+   "hazards.sfha"
+  ],
+  "where": {
+   "files": [
+    "buildings_series.json:bld_sfha_pct",
+    "buildings_barrio.json:bld_sfha_pct"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Housing · Buildings (Overture)): shade municipalities, or barrios (Settings > Area), by",
+     "href": "index.html#e=bld_sfha_pct.f.value.red.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-11-09"
+ },
+ {
+  "id": "buildings.bld_ml_pct",
+  "name": "Buildings traced by machine learning (%)",
+  "ask": {
+   "en": [
+    "machine learning buildings",
+    "data quality buildings",
+    "openstreetmap coverage"
+   ],
+   "es": [
+    "edificios por aprendizaje automatico",
+    "calidad de los datos de edificios"
+   ]
+  },
+  "domain": "housing",
+  "domains": [
+   "housing",
+   "environment.land"
+  ],
+  "group": "Housing · Buildings (Overture)",
+  "kind": "variable",
+  "plain": "How many of the area's buildings were traced by a computer model rather than by OpenStreetMap volunteers: a sign of how certain the building figures are.",
+  "definition": "The share of the area's buildings whose first source in Overture is Google Open Buildings or Microsoft ML Buildings, not OpenStreetMap. It describes the data, not the buildings.",
+  "unit": "% of buildings",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico; also 901 barrios",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One Overture release (2026-10-21.0); the refresh checks for a newer one every 30 days (refresh unit buildings)."
+  },
+  "method": "buildings.py reads the Overture Maps buildings theme, release 2026-10-21.0, for a box around Puerto Rico with the overturemaps package (about 3.5 minutes, no key) and keeps, for each building, one point inside its outline (shapely's point on surface), its footprint area on the Lambert equal-area plane of the barrio figures, its first source and its height. A building belongs to the barrio whose outline holds that point, or the nearest within 100 m (a pier, a building on the shore); 335 of 2,157,363 buildings in the box are farther and left out. Municipios and Puerto Rico pool their barrios. Checks at every build: 1.9 to 2.5 million buildings, 99.5% or more placed, San Juan denser than Puerto Rico, 1% to 30% in a Special Flood Hazard Area, and buildings following 2020 housing units across the barrios (a Spearman rank correlation of 0.6 or more; 0.965 in this build).",
+  "sources": [
+   "overture_buildings",
+   "census_tiger"
+  ],
+  "source_detail": "Overture Maps Foundation, Buildings theme, release 2026-10-21.0 (https://docs.overturemaps.org/guides/buildings/): OpenStreetMap (1,500,399 buildings), Google Open Buildings (536,571) and Microsoft ML Buildings (120,393). © OpenStreetMap contributors, Overture Maps Foundation, ODbL 1.0. Barrio outlines and land area: barrios.geojson and the crosswalk (Census).",
+  "how_to_read": "Puerto Rico: 30.4%. Highest: Moca (42.7%), Aguada (42.6%), San Sebastián (42.5%). Lowest: San Juan (17.7%), Bayamón (22.5%), Ponce (22.7%).",
+  "caveats": [
+   "Not a measure of the buildings: OpenStreetMap volunteers also make mistakes, and machine learning can be accurate.",
+   "Most buildings are homes, so nothing is published per building: only counts, areas and shares by barrio and larger areas."
+  ],
+  "see_also": [
+   "buildings.bld_n"
+  ],
+  "where": {
+   "files": [
+    "buildings_series.json:bld_ml_pct",
+    "buildings_barrio.json:bld_ml_pct"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Housing · Buildings (Overture)): shade municipalities, or barrios (Settings > Area), by",
+     "href": "index.html#e=bld_ml_pct.f.value.gold.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-11-09"
+ },
+ {
+  "id": "buildings.gap_tiles",
+  "name": "Buildings missing from the base map (3D view tiles)",
+  "domain": "housing",
+  "domains": [
+   "housing",
+   "environment.land"
+  ],
+  "group": "Housing · Buildings (Overture)",
+  "kind": "table",
+  "plain": "The outlines and heights of the buildings that Google and Microsoft traced from satellite images and OpenStreetMap does not have, so the 3D view shows the whole island's buildings and not only the ones volunteers have mapped.",
+  "definition": "Vector tiles (PMTiles, layer b, zooms 13 and 14) of the building footprints in Overture's buildings theme whose geometry source is not OpenStreetMap (Google Open Buildings and Microsoft ML Buildings), each with its height and base height in metres when Overture has them, and no other attribute.",
+  "unit": "Building outlines (polygons); heights in metres",
+  "value_type": "geometry",
+  "geography": "Puerto Rico, Vieques, Culebra and Mona (the box -67.97, 17.85 to -65.20, 18.57)",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One Overture release (2026-10-21.0); rebuilt by hand or every 90 days (refresh unit buildings3d)."
+  },
+  "method": "buildings3d.py reads Overture's own building tiles for Puerto Rico (zooms 13 and 14, about 2,300 tiles, by HTTP range requests), keeps the buildings whose @geometry_source is not OpenStreetMap with only their height and min_height, and writes one PMTiles file. A rebuild from the cache gives the same bytes. Checks: 550,000 to 800,000 buildings at zoom 14, under 20 MB, none from OpenStreetMap.",
+  "sources": [
+   "overture_buildings"
+  ],
+  "source_detail": "Overture Maps Foundation, buildings theme, release 2026-10-21.0, its PMTiles (tiles/2026-10-21.0/buildings.pmtiles on the overturemaps-extras-us-west-2 bucket). © OpenStreetMap contributors, Overture Maps Foundation, ODbL 1.0.",
+  "how_to_read": "Turn on \"3D buildings\" in the 3D view and zoom in to a street (zoom 13 or closer): the buildings that come from this file stand beside the base map's. In release 2026-10-21.0 the file holds 704,061 buildings at zoom 14 (a building on a tile edge counts in each tile). Town centres are already mapped in OpenStreetMap; the new buildings are mostly houses on the outskirts and in the countryside, such as Cañaboncito in Caguas, where 5,115 of 12,354 buildings (41%) were traced by machine learning. The file is 7.4 MB.",
+  "caveats": [
+   "No building in this file has a height in Overture's release 2026-10-21.0 (Google's and Microsoft's footprints carry none), so all are drawn 6 m tall, as the base map draws its own buildings without a height. The file keeps the fields so a later release's heights are used.",
+   "Footprints traced by machine learning can include sheds, carports and ruins and miss buildings under trees.",
+   "Where OpenStreetMap volunteers added a building after Overture's release, it can appear twice, once from each source.",
+   "Outlines only: no name, address or use is attached to a building, and most are homes."
+  ],
+  "see_also": [
+   "buildings.bld_ml_pct",
+   "buildings.bld_n"
+  ],
+  "where": {
+   "files": [
+    "buildings_gap.pmtiles:*"
+   ],
+   "view": [
+    {
+     "label": "3D view, \"3D buildings\" switch (example: Cañaboncito, Caguas)",
+     "href": "3d.html#c=18.2143,-66.0820,16.3&b=20&p=58"
+    }
+   ]
+  },
+  "added": "2026-11-10"
+ }
+]

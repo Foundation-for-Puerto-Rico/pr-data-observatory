@@ -1,0 +1,560 @@
+[
+ {
+  "id": "labor_sex.lfpr_women",
+  "ask": {
+   "en": [
+    "women labor force participation",
+    "female labor force participation",
+    "women in the workforce",
+    "women working",
+    "labor force participation women",
+    "womens participation rate"
+   ],
+   "es": [
+    "participacion laboral de las mujeres",
+    "participacion laboral femenina",
+    "tasa de participacion de las mujeres",
+    "mujeres que trabajan"
+   ]
+  },
+  "name": "Labor force participation, women 16 and over",
+  "domain": "economy",
+  "domains": [
+   "economy",
+   "population"
+  ],
+  "group": "Labor force by sex",
+  "kind": "variable",
+  "plain": "Out of every 100 women aged 16 and over who live in the area, how many are working or looking for work, as the survey estimates it.",
+  "definition": "Women 16 and over in the labor force (employed, or unemployed: without work, looking for it and available), civilian or in the Armed Forces, divided by all women 16 and over, in percent (ACS B23001). This is the definition of ACS table S2301, which counts the Armed Forces in the labor force.",
+  "unit": "% of women 16 and over",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico (the island value is the Census Bureau's own island row)",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2014,
+   "last": 2024,
+   "frequency": "Three five-year windows that share no year: 2010-2014, 2015-2019 and 2020-2024, labelled 2014, 2019 and 2024. Because they do not overlap, a change from one to the next can be read and tested against its margin. The next window that shares no year with these is 2025-2029; women_labor.py adds a window only when its list of windows names it."
+  },
+  "method": "women_labor.py reads ACS 5-year table B23001 (Sex by Age by Employment Status for the Population 16 Years and Over) for each window: the per-sequence summary files for 2010-2014 and 2015-2019 and the table-based files for 2020-2024. For each sex it adds the cells of seven age groups (16-19, 20-24, 25-34, 35-44, 45-54, 55-64, 65 and over) into four counts: population, labor force (civilian and Armed Forces), civilian labor force and unemployed. The margin of a sum is the square root of the sum of the squared margins of its cells (a cell the Census Bureau controls to its own estimate has no printed margin and adds none). The rate is the women's labor force over the women's population, both summed over the seven age groups, and its margin follows the Census Bureau's formula for a proportion (ACS General Handbook, chapter 8). The value for a group of municipios is pooled: summed counts over summed counts, never an average of the municipio rates.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "ACS 5-year table B23001, cells 001-173 (males from 003, females from 089), vintages 2014 and 2019 (per-sequence files, 5_year_seq_by_state/PuertoRico) and 2024 (table-based file acsdt5y2024-b23001.dat), https://www2.census.gov/programs-surveys/acs/summary_file/",
+  "how_to_read": "In 2020-2024, 41.9% (± 0.3 points) of the women 16 and over of Puerto Rico were in the labor force, against 51.4% (± 0.3) of the men; the women's rate was 40.4% in 2010-2014 and 39.8% in 2015-2019. Among the municipios it runs from 26.7% (± 5.7) in Maricao to 51.8% (± 2.3) in Trujillo Alto, leaving aside Culebra (64.0% ± 10.4), whose margin is too wide to rank. The rate counts every woman 16 and over, retired women included, so a municipio with an older population has a lower rate for that reason alone; the 25-to-54 rate (labor_sex.lfpr_women_prime) and the age-adjusted rate of the Knowledge Area page take that out.",
+  "caveats": [
+   "A survey estimate, not a count: every value has a 90% margin of error (the Analysis tab shows it); two areas differ significantly only when the difference is larger than its own margin.",
+   "Small municipios have wide margins: in 2020-2024 Culebra's women's rate is 64.0% ± 10.4 points and Vieques's 38.6% ± 10.3, so neither can be ranked against most others.",
+   "The three windows share no year, so they can be compared with each other; do not set them beside the ACS 5-year windows that overlap them (2016-2020 to 2019-2023, for example), which share years with them.",
+   "Counts the Armed Forces in the labor force, as table S2301 does; the Bureau of Labor Statistics' rate counts the civilian population only, so the two differ slightly."
+  ],
+  "see_also": [
+   "labor_sex.lfpr_men",
+   "labor_sex.lfpr_women_prime",
+   "labor_sex.lfpr_gap",
+   "labor_sex.women_labor",
+   "economy.laus_unemp_rate",
+   "measures.margin_of_error",
+   "methods.acs_windows"
+  ],
+  "where": {
+   "files": [
+    "labor_sex_series.json:lfpr_women"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Labor force by sex): labor force participation, women 16 and over",
+     "href": "index.html#e=lfpr_women.f"
+    },
+    {
+     "label": "Knowledge Area: Women in the labor force",
+     "href": "women-labor.html"
+    }
+   ]
+  },
+  "added": "2026-10-30"
+ },
+ {
+  "id": "labor_sex.lfpr_men",
+  "ask": {
+   "en": [
+    "men labor force participation",
+    "male labor force participation",
+    "men in the workforce"
+   ],
+   "es": [
+    "participacion laboral de los hombres",
+    "participacion laboral masculina",
+    "hombres en la fuerza laboral"
+   ]
+  },
+  "name": "Labor force participation, men 16 and over",
+  "domain": "economy",
+  "domains": [
+   "economy",
+   "population"
+  ],
+  "group": "Labor force by sex",
+  "kind": "variable",
+  "plain": "Out of every 100 men aged 16 and over who live in the area, how many are working or looking for work, as the survey estimates it.",
+  "definition": "Men 16 and over in the labor force (employed or unemployed, civilian or in the Armed Forces) divided by all men 16 and over, in percent (ACS B23001, as in table S2301).",
+  "unit": "% of men 16 and over",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico (the island value is the Census Bureau's own island row)",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2014,
+   "last": 2024,
+   "frequency": "Three five-year windows that share no year: 2010-2014, 2015-2019 and 2020-2024, labelled 2014, 2019 and 2024. Because they do not overlap, a change from one to the next can be read and tested against its margin. The next window that shares no year with these is 2025-2029; women_labor.py adds a window only when its list of windows names it."
+  },
+  "method": "women_labor.py reads ACS 5-year table B23001 (Sex by Age by Employment Status for the Population 16 Years and Over) for each window: the per-sequence summary files for 2010-2014 and 2015-2019 and the table-based files for 2020-2024. For each sex it adds the cells of seven age groups (16-19, 20-24, 25-34, 35-44, 45-54, 55-64, 65 and over) into four counts: population, labor force (civilian and Armed Forces), civilian labor force and unemployed. The margin of a sum is the square root of the sum of the squared margins of its cells (a cell the Census Bureau controls to its own estimate has no printed margin and adds none). The rate is the men's labor force over the men's population, with the Census Bureau's margin formula for a proportion.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "ACS 5-year table B23001, cells 001-173 (males from 003, females from 089), vintages 2014 and 2019 (per-sequence files, 5_year_seq_by_state/PuertoRico) and 2024 (table-based file acsdt5y2024-b23001.dat), https://www2.census.gov/programs-surveys/acs/summary_file/",
+  "how_to_read": "In 2020-2024, 51.4% (± 0.3 points) of the men 16 and over of Puerto Rico were in the labor force (51.3% in 2010-2014, 49.8% in 2015-2019). Among the municipios it runs from 36.0% (± 4.1) in Ciales to 63.1% (± 2.5) in Gurabo. Read it beside the women's rate (labor_sex.lfpr_women); their difference is labor_sex.lfpr_gap.",
+  "caveats": [
+   "A survey estimate, not a count: every value has a 90% margin of error (the Analysis tab shows it); two areas differ significantly only when the difference is larger than its own margin.",
+   "Small municipios have wide margins: in 2020-2024 Culebra's men's rate is 53.8% ± 11.9 points and Vieques's 49.9% ± 10.8.",
+   "The three windows share no year, so they can be compared with each other; do not set them beside the ACS 5-year windows that overlap them (2016-2020 to 2019-2023, for example), which share years with them.",
+   "Counts the Armed Forces in the labor force, as table S2301 does."
+  ],
+  "see_also": [
+   "labor_sex.lfpr_women",
+   "labor_sex.lfpr_gap",
+   "labor_sex.women_labor",
+   "economy.laus_unemp_rate",
+   "measures.margin_of_error",
+   "methods.acs_windows"
+  ],
+  "where": {
+   "files": [
+    "labor_sex_series.json:lfpr_men"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Labor force by sex): labor force participation, men 16 and over",
+     "href": "index.html#e=lfpr_men.f"
+    },
+    {
+     "label": "Knowledge Area: Women in the labor force",
+     "href": "women-labor.html"
+    }
+   ]
+  },
+  "added": "2026-10-30"
+ },
+ {
+  "id": "labor_sex.lfpr_women_prime",
+  "ask": {
+   "en": [
+    "prime age women participation",
+    "women 25 to 54 labor force",
+    "prime working age women"
+   ],
+   "es": [
+    "participacion laboral de mujeres de 25 a 54",
+    "mujeres en edad laboral principal",
+    "mujeres de 25 a 54 anos en la fuerza laboral"
+   ]
+  },
+  "name": "Labor force participation, women 25 to 54",
+  "domain": "economy",
+  "domains": [
+   "economy",
+   "population"
+  ],
+  "group": "Labor force by sex",
+  "kind": "variable",
+  "plain": "Out of every 100 women aged 25 to 54 in the area, how many are working or looking for work. Leaving out the ages when many study or have retired makes areas easier to compare.",
+  "definition": "Women 25 to 54 (the prime working ages) in the labor force, civilian or Armed Forces, divided by all women 25 to 54, in percent (ACS B23001, age groups 25-34, 35-44 and 45-54).",
+  "unit": "% of women 25 to 54",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico (the island value is the Census Bureau's own island row)",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2014,
+   "last": 2024,
+   "frequency": "Three five-year windows that share no year: 2010-2014, 2015-2019 and 2020-2024, labelled 2014, 2019 and 2024. Because they do not overlap, a change from one to the next can be read and tested against its margin. The next window that shares no year with these is 2025-2029; women_labor.py adds a window only when its list of windows names it."
+  },
+  "method": "women_labor.py reads ACS 5-year table B23001 (Sex by Age by Employment Status for the Population 16 Years and Over) for each window: the per-sequence summary files for 2010-2014 and 2015-2019 and the table-based files for 2020-2024. For each sex it adds the cells of seven age groups (16-19, 20-24, 25-34, 35-44, 45-54, 55-64, 65 and over) into four counts: population, labor force (civilian and Armed Forces), civilian labor force and unemployed. The margin of a sum is the square root of the sum of the squared margins of its cells (a cell the Census Bureau controls to its own estimate has no printed margin and adds none). The rate adds the female 25-34, 35-44 and 45-54 groups (cells 110 to 137) and divides their labor force by their population, with the Census Bureau's margin formula for a proportion.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "ACS 5-year table B23001, cells 001-173 (males from 003, females from 089), vintages 2014 and 2019 (per-sequence files, 5_year_seq_by_state/PuertoRico) and 2024 (table-based file acsdt5y2024-b23001.dat), https://www2.census.gov/programs-surveys/acs/summary_file/",
+  "how_to_read": "In 2020-2024, 69.9% (± 0.5 points) of the women 25 to 54 of Puerto Rico were in the labor force, up from 63.0% in 2010-2014 and 64.6% in 2015-2019: a rise much larger than that of the 16-and-over rate, which the growing number of older women holds down. Among the municipios it runs from 52.2% (± 11.1) in Maricao to 81.0% (± 3.6) in Trujillo Alto. The margins are wider than those of the 16-and-over rate: 51 of the 78 municipios have a margin above 5 points.",
+  "caveats": [
+   "A survey estimate, not a count: every value has a 90% margin of error (the Analysis tab shows it); two areas differ significantly only when the difference is larger than its own margin.",
+   "Small municipios have wide margins: in 2020-2024 Vieques's prime-age rate is 70.2% ± 20.1 points and Culebra's 72.6% ± 10.0.",
+   "The three windows share no year, so they can be compared with each other; do not set them beside the ACS 5-year windows that overlap them (2016-2020 to 2019-2023, for example), which share years with them."
+  ],
+  "see_also": [
+   "labor_sex.lfpr_women",
+   "labor_sex.women_labor",
+   "economy.laus_unemp_rate",
+   "measures.margin_of_error",
+   "methods.acs_windows"
+  ],
+  "where": {
+   "files": [
+    "labor_sex_series.json:lfpr_women_prime"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Labor force by sex): labor force participation, women 25 to 54",
+     "href": "index.html#e=lfpr_women_prime.f"
+    },
+    {
+     "label": "Knowledge Area: Women in the labor force",
+     "href": "women-labor.html"
+    }
+   ]
+  },
+  "added": "2026-10-30"
+ },
+ {
+  "id": "labor_sex.lfpr_gap",
+  "ask": {
+   "en": [
+    "gender gap labor force",
+    "gender participation gap",
+    "labor force gap men women",
+    "gender gap in participation",
+    "gender gap in labor force participation",
+    "labor force participation gap",
+    "participation gap"
+   ],
+   "es": [
+    "brecha de genero laboral",
+    "brecha de genero en la participacion laboral",
+    "brecha laboral entre hombres y mujeres",
+    "diferencia de participacion hombres mujeres"
+   ]
+  },
+  "name": "Participation gap, men minus women (percentage points)",
+  "domain": "economy",
+  "domains": [
+   "economy",
+   "population"
+  ],
+  "group": "Labor force by sex",
+  "kind": "variable",
+  "plain": "How many percentage points higher the men's labor force participation rate is than the women's in the area; a negative value means the women's rate is higher.",
+  "definition": "The labor force participation rate of men 16 and over minus that of women 16 and over, in percentage points (ACS B23001). Its margin is the square root of the sum of the squared margins of the two rates.",
+  "unit": "percentage points",
+  "value_type": "ratio",
+  "geography": "78 municipalities and Puerto Rico (the island value is the Census Bureau's own island row)",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2014,
+   "last": 2024,
+   "frequency": "Three five-year windows that share no year: 2010-2014, 2015-2019 and 2020-2024, labelled 2014, 2019 and 2024. Because they do not overlap, a change from one to the next can be read and tested against its margin. The next window that shares no year with these is 2025-2029; women_labor.py adds a window only when its list of windows names it."
+  },
+  "method": "women_labor.py reads ACS 5-year table B23001 (Sex by Age by Employment Status for the Population 16 Years and Over) for each window: the per-sequence summary files for 2010-2014 and 2015-2019 and the table-based files for 2020-2024. For each sex it adds the cells of seven age groups (16-19, 20-24, 25-34, 35-44, 45-54, 55-64, 65 and over) into four counts: population, labor force (civilian and Armed Forces), civilian labor force and unemployed. The margin of a sum is the square root of the sum of the squared margins of its cells (a cell the Census Bureau controls to its own estimate has no printed margin and adds none). The two rates are worked out as in labor_sex.lfpr_men and labor_sex.lfpr_women and subtracted; the margin of the difference treats the two rates as independent, as the Census Bureau's formula for a difference does.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "ACS 5-year table B23001, cells 001-173 (males from 003, females from 089), vintages 2014 and 2019 (per-sequence files, 5_year_seq_by_state/PuertoRico) and 2024 (table-based file acsdt5y2024-b23001.dat), https://www2.census.gov/programs-surveys/acs/summary_file/",
+  "how_to_read": "In 2020-2024 the men's rate in Puerto Rico was 9.5 points (± 0.4) above the women's, against 10.8 points in 2010-2014 and 10.1 in 2015-2019. In 67 of the 78 municipios the gap is larger than its margin, so men's participation is significantly higher there. Only Culebra shows women ahead (-10.3 points), but its margin of ± 15.8 points means the survey cannot tell; the largest gaps are in Barranquitas and Comerío (18.5 points).",
+  "caveats": [
+   "A survey estimate, not a count: every value has a 90% margin of error (the Analysis tab shows it); two areas differ significantly only when the difference is larger than its own margin.",
+   "Small municipios have wide margins: in 2020-2024 Culebra's gap is -10.3 ± 15.8 points and Vieques's 11.2 ± 14.9.",
+   "The three windows share no year, so they can be compared with each other; do not set them beside the ACS 5-year windows that overlap them (2016-2020 to 2019-2023, for example), which share years with them.",
+   "A gap can narrow because women's participation rises or because men's falls: read it with the two rates."
+  ],
+  "see_also": [
+   "labor_sex.lfpr_women",
+   "labor_sex.lfpr_men",
+   "labor_sex.women_labor",
+   "economy.laus_unemp_rate",
+   "measures.margin_of_error",
+   "methods.acs_windows"
+  ],
+  "where": {
+   "files": [
+    "labor_sex_series.json:lfpr_gap"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Labor force by sex): participation gap, men minus women (percentage points)",
+     "href": "index.html#e=lfpr_gap.f"
+    },
+    {
+     "label": "Knowledge Area: Women in the labor force",
+     "href": "women-labor.html"
+    }
+   ]
+  },
+  "added": "2026-10-30"
+ },
+ {
+  "id": "labor_sex.unemp_women",
+  "ask": {
+   "en": [
+    "women unemployment",
+    "female unemployment rate",
+    "unemployed women"
+   ],
+   "es": [
+    "desempleo de las mujeres",
+    "tasa de desempleo femenina",
+    "mujeres desempleadas"
+   ]
+  },
+  "name": "Unemployment rate, women 16 and over",
+  "domain": "economy",
+  "domains": [
+   "economy",
+   "population"
+  ],
+  "group": "Labor force by sex",
+  "kind": "variable",
+  "plain": "Out of every 100 women in the civilian labor force of the area, how many have no job and are looking for one, as the survey estimates it.",
+  "definition": "Unemployed women 16 and over (without work, looking for it and available) divided by women 16 and over in the civilian labor force, in percent (ACS B23001). The Armed Forces are left out of the denominator, as in table S2301.",
+  "unit": "% of the civilian labor force (women)",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico (the island value is the Census Bureau's own island row)",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2014,
+   "last": 2024,
+   "frequency": "Three five-year windows that share no year: 2010-2014, 2015-2019 and 2020-2024, labelled 2014, 2019 and 2024. Because they do not overlap, a change from one to the next can be read and tested against its margin. The next window that shares no year with these is 2025-2029; women_labor.py adds a window only when its list of windows names it."
+  },
+  "method": "women_labor.py reads ACS 5-year table B23001 (Sex by Age by Employment Status for the Population 16 Years and Over) for each window: the per-sequence summary files for 2010-2014 and 2015-2019 and the table-based files for 2020-2024. For each sex it adds the cells of seven age groups (16-19, 20-24, 25-34, 35-44, 45-54, 55-64, 65 and over) into four counts: population, labor force (civilian and Armed Forces), civilian labor force and unemployed. The margin of a sum is the square root of the sum of the squared margins of its cells (a cell the Census Bureau controls to its own estimate has no printed margin and adds none). The rate is the women's unemployed over the women's civilian labor force, with the Census Bureau's margin formula for a proportion.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "ACS 5-year table B23001, cells 001-173 (males from 003, females from 089), vintages 2014 and 2019 (per-sequence files, 5_year_seq_by_state/PuertoRico) and 2024 (table-based file acsdt5y2024-b23001.dat), https://www2.census.gov/programs-surveys/acs/summary_file/",
+  "how_to_read": "In 2020-2024, 10.8% (± 0.3 points) of the women in Puerto Rico's civilian labor force were unemployed, down from 18.2% in 2010-2014 and 16.2% in 2015-2019. Among the municipios the margins are wide (22 of 78 above 5 points): Guánica's 25.4% has a margin of ± 8.8 and Maricao's 0.0% one of ± 9.4, so neither is a firm extreme. For the yearly unemployment rate of all residents use the Bureau of Labor Statistics series (economy.laus_unemp_rate), a model estimate.",
+  "caveats": [
+   "A survey estimate, not a count: every value has a 90% margin of error (the Analysis tab shows it); two areas differ significantly only when the difference is larger than its own margin.",
+   "Small municipios have wide margins: in 2020-2024 Culebra's rate is 0.0% ± 13.9 points and Vieques's 10.9% ± 10.1.",
+   "The three windows share no year, so they can be compared with each other; do not set them beside the ACS 5-year windows that overlap them (2016-2020 to 2019-2023, for example), which share years with them.",
+   "A five-year average of survey answers: it does not show the year-to-year swings of the Bureau of Labor Statistics' yearly rate, and the two are not the same measure."
+  ],
+  "see_also": [
+   "labor_sex.lfpr_women",
+   "labor_sex.women_labor",
+   "economy.laus_unemp_rate",
+   "measures.margin_of_error",
+   "methods.acs_windows"
+  ],
+  "where": {
+   "files": [
+    "labor_sex_series.json:unemp_women"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Labor force by sex): unemployment rate, women 16 and over",
+     "href": "index.html#e=unemp_women.f"
+    },
+    {
+     "label": "Knowledge Area: Women in the labor force",
+     "href": "women-labor.html"
+    }
+   ]
+  },
+  "added": "2026-10-30"
+ },
+ {
+  "id": "labor_sex.women_16plus",
+  "ask": {
+   "en": [
+    "women 16 and over",
+    "women of working age",
+    "working age women"
+   ],
+   "es": [
+    "mujeres de 16 anos o mas",
+    "mujeres en edad de trabajar"
+   ]
+  },
+  "name": "Women 16 and over",
+  "domain": "economy",
+  "domains": [
+   "economy",
+   "population"
+  ],
+  "group": "Labor force by sex",
+  "kind": "variable",
+  "plain": "How many women aged 16 and over live in the area, as the survey estimates it: the women the participation rate is a share of.",
+  "definition": "Women 16 and over living in the area, the sum of the female age groups of ACS table B23001, with its 90% margin of error.",
+  "unit": "women",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico (the island value is the Census Bureau's own island row)",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2014,
+   "last": 2024,
+   "frequency": "Three five-year windows that share no year: 2010-2014, 2015-2019 and 2020-2024, labelled 2014, 2019 and 2024. Because they do not overlap, a change from one to the next can be read and tested against its margin. The next window that shares no year with these is 2025-2029; women_labor.py adds a window only when its list of windows names it."
+  },
+  "method": "women_labor.py reads ACS 5-year table B23001 (Sex by Age by Employment Status for the Population 16 Years and Over) for each window: the per-sequence summary files for 2010-2014 and 2015-2019 and the table-based files for 2020-2024. For each sex it adds the cells of seven age groups (16-19, 20-24, 25-34, 35-44, 45-54, 55-64, 65 and over) into four counts: population, labor force (civilian and Armed Forces), civilian labor force and unemployed. The margin of a sum is the square root of the sum of the squared margins of its cells (a cell the Census Bureau controls to its own estimate has no printed margin and adds none). The count is the sum of the seven female age groups.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "ACS 5-year table B23001, cells 001-173 (males from 003, females from 089), vintages 2014 and 2019 (per-sequence files, 5_year_seq_by_state/PuertoRico) and 2024 (table-based file acsdt5y2024-b23001.dat), https://www2.census.gov/programs-surveys/acs/summary_file/",
+  "how_to_read": "In 2020-2024 Puerto Rico had 1,485,977 women 16 and over (± 4,535), against 1,542,203 in 2010-2014 and 1,465,816 in 2015-2019; counts from different windows are controlled to different population estimates, so part of a change in counts comes from those controls. San Juan has the most (160,655 ± 1,610) and Culebra the fewest (606 ± 129). Use it to weigh a municipio's rate: a high rate among few women is fewer workers than a moderate rate among many.",
+  "caveats": [
+   "A survey estimate, not a count: every value has a 90% margin of error (the Analysis tab shows it); two areas differ significantly only when the difference is larger than its own margin.",
+   "The three windows share no year, so they can be compared with each other; do not set them beside the ACS 5-year windows that overlap them (2016-2020 to 2019-2023, for example), which share years with them.",
+   "The survey's count, which differs from the Census count and from the Population Estimates Program."
+  ],
+  "see_also": [
+   "labor_sex.women_in_lf",
+   "labor_sex.lfpr_women",
+   "labor_sex.women_labor",
+   "economy.laus_unemp_rate",
+   "measures.margin_of_error",
+   "methods.acs_windows"
+  ],
+  "where": {
+   "files": [
+    "labor_sex_series.json:women_16plus"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Labor force by sex): women 16 and over",
+     "href": "index.html#e=women_16plus.f"
+    },
+    {
+     "label": "Knowledge Area: Women in the labor force",
+     "href": "women-labor.html"
+    }
+   ]
+  },
+  "added": "2026-10-30"
+ },
+ {
+  "id": "labor_sex.women_in_lf",
+  "ask": {
+   "en": [
+    "women in the labor force",
+    "number of working women",
+    "female labor force"
+   ],
+   "es": [
+    "mujeres en la fuerza laboral",
+    "numero de mujeres que trabajan",
+    "fuerza laboral femenina"
+   ]
+  },
+  "name": "Women in the labor force",
+  "domain": "economy",
+  "domains": [
+   "economy",
+   "population"
+  ],
+  "group": "Labor force by sex",
+  "kind": "variable",
+  "plain": "How many women aged 16 and over in the area are working or looking for work, as the survey estimates it.",
+  "definition": "Women 16 and over in the labor force, employed or unemployed, civilian or in the Armed Forces: the sum of the female age groups of ACS table B23001, with its 90% margin of error.",
+  "unit": "women",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico (the island value is the Census Bureau's own island row)",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2014,
+   "last": 2024,
+   "frequency": "Three five-year windows that share no year: 2010-2014, 2015-2019 and 2020-2024, labelled 2014, 2019 and 2024. Because they do not overlap, a change from one to the next can be read and tested against its margin. The next window that shares no year with these is 2025-2029; women_labor.py adds a window only when its list of windows names it."
+  },
+  "method": "women_labor.py reads ACS 5-year table B23001 (Sex by Age by Employment Status for the Population 16 Years and Over) for each window: the per-sequence summary files for 2010-2014 and 2015-2019 and the table-based files for 2020-2024. For each sex it adds the cells of seven age groups (16-19, 20-24, 25-34, 35-44, 45-54, 55-64, 65 and over) into four counts: population, labor force (civilian and Armed Forces), civilian labor force and unemployed. The margin of a sum is the square root of the sum of the squared margins of its cells (a cell the Census Bureau controls to its own estimate has no printed margin and adds none). The count is the women's labor force summed over the seven age groups.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "ACS 5-year table B23001, cells 001-173 (males from 003, females from 089), vintages 2014 and 2019 (per-sequence files, 5_year_seq_by_state/PuertoRico) and 2024 (table-based file acsdt5y2024-b23001.dat), https://www2.census.gov/programs-surveys/acs/summary_file/",
+  "how_to_read": "In 2020-2024, 623,031 women (± 4,628) were in Puerto Rico's labor force, about as many as in 2010-2014 (623,522) and more than in 2015-2019 (582,698); counts from different windows are controlled to different population estimates, so part of a change in counts comes from those controls. San Juan has 75,739 (± 1,603) and Culebra 388 (± 104).",
+  "caveats": [
+   "A survey estimate, not a count: every value has a 90% margin of error (the Analysis tab shows it); two areas differ significantly only when the difference is larger than its own margin.",
+   "The three windows share no year, so they can be compared with each other; do not set them beside the ACS 5-year windows that overlap them (2016-2020 to 2019-2023, for example), which share years with them."
+  ],
+  "see_also": [
+   "labor_sex.women_16plus",
+   "labor_sex.lfpr_women",
+   "labor_sex.women_labor",
+   "economy.laus_unemp_rate",
+   "measures.margin_of_error",
+   "methods.acs_windows"
+  ],
+  "where": {
+   "files": [
+    "labor_sex_series.json:women_in_lf"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Labor force by sex): women in the labor force",
+     "href": "index.html#e=women_in_lf.f"
+    },
+    {
+     "label": "Knowledge Area: Women in the labor force",
+     "href": "women-labor.html"
+    }
+   ]
+  },
+  "added": "2026-10-30"
+ },
+ {
+  "id": "labor_sex.women_labor",
+  "ask": {
+   "en": [
+    "women labor force eastern region",
+    "ersv women labor",
+    "women labor force by region"
+   ],
+   "es": [
+    "mujeres en la fuerza laboral region este",
+    "participacion laboral de las mujeres por region"
+   ]
+  },
+  "name": "Women in the labor force: counts by sex and age, by municipio and region (Knowledge Area data)",
+  "domain": "economy",
+  "domains": [
+   "economy",
+   "population"
+  ],
+  "group": "Labor force by sex",
+  "kind": "table",
+  "plain": "The survey counts behind the Women in the labor force page: for Puerto Rico and each municipio, how many women and men of each age group live there, are in the labor force and are unemployed, with margins of error, so the rate of any group of municipios can be worked out.",
+  "definition": "women_labor.json holds, under areas.<window> (2014, 2019 and 2024, for 2010-2014, 2015-2019 and 2020-2024) and keyed by GEOID (72 for Puerto Rico and the 78 municipios), for each sex (m, f) and the seven age groups of ages (16-19 to 65 and over), four counts in the order of cells: pop (population), lf (labor force, civilian and Armed Forces), clf (civilian labor force) and une (unemployed), each as [estimate, 90% margin]; kids: the women 20 to 64 and those in the labor force by age of own children (u6: with a child under 6; 617: children 6 to 17 only; none), from B23003; sample: the survey's unweighted people and housing units (2020-2024 only, B98003 and B98001). groups lists the 15 municipios of the Eastern Region of FPR's Eastern Region Strategic Vision (ersv) and the seven tourism regions; names gives each municipio's name. analysis.ersv holds, for each window, the region's measures (pooled rates with margins), those of the rest of the island and of Puerto Rico, the differences with the rest of the island and whether each is significant at 90%, the gender gaps, the age-adjusted rate with its Kitagawa split and the unweighted mean of the 15 municipio rates, and the change from 2010-2014 to 2020-2024.",
+  "unit": "people; % of people; percentage points",
+  "value_type": "count",
+  "geography": "Puerto Rico, the 78 municipalities, and any group of them (the Eastern Region of the ERSV and the seven tourism regions are listed)",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2014,
+   "last": 2024,
+   "frequency": "Three five-year windows that share no year: 2010-2014, 2015-2019 and 2020-2024, labelled 2014, 2019 and 2024. Because they do not overlap, a change from one to the next can be read and tested against its margin. The next window that shares no year with these is 2025-2029; women_labor.py adds a window only when its list of windows names it."
+  },
+  "method": "women_labor.py reads ACS 5-year table B23001 (Sex by Age by Employment Status for the Population 16 Years and Over) for each window: the per-sequence summary files for 2010-2014 and 2015-2019 and the table-based files for 2020-2024. For each sex it adds the cells of seven age groups (16-19, 20-24, 25-34, 35-44, 45-54, 55-64, 65 and over) into four counts: population, labor force (civilian and Armed Forces), civilian labor force and unemployed. The margin of a sum is the square root of the sum of the squared margins of its cells (a cell the Census Bureau controls to its own estimate has no printed margin and adds none). B23003 (Presence of Own Children Under 18 Years by Age of Own Children by Employment Status for Females 20 to 64 Years) is read the same way. A group's counts are the sums of its municipios' counts (margins added in quadrature) and its rates are pooled: summed labor force over summed population, never an average of rates. A region is compared with the rest of the island, not with the island total that contains it. A difference is significant when it is larger than its own 90% margin. The age-adjusted rate applies the region's rate in each age group to the age mix of the women 16 and over in the rest of the island (direct standardization); the gap with the rest of the island splits into a part due to the age mix and a part due to the rates within each age group (Kitagawa, 1955). The method is in women_labor.py and docs/analysis/women-labor-2026-10/README.md.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "ACS 5-year tables B23001 and B23003 (every window) and B98003 and B98001 (2020-2024), https://www2.census.gov/programs-surveys/acs/summary_file/",
+  "how_to_read": "In 2020-2024 the 15 municipios of the Eastern Region had 183,952 women 16 and over (± 1,752), and 42.0% (± 0.8 points) of them were in the labor force, against 41.9% for the rest of the island: a difference of 0.1 points with a margin of ± 0.9, so not significant. Adjusted to the age mix of the rest of the island, the region's rate is 40.7%: the region's women are slightly younger, which raises its unadjusted rate by 1.3 points, while lower participation at 55 and over lowers it by 1.2 points in total. The plain average of the 15 municipio rates, 42.6%, gives Culebra the same weight as Humacao; the pooled rate is the region's own. From 2010-2014 to 2020-2024 the region's women's rate rose 1.3 points (± 1.1), a significant change, and its rate for women 25 to 54 rose 7.8 points (± 1.9).",
+  "caveats": [
+   "A survey estimate, not a count: every value has a 90% margin of error (the Analysis tab shows it); two areas differ significantly only when the difference is larger than its own margin.",
+   "Small municipios have wide margins: in 2020-2024 Culebra's women's rate is 64.0% ± 10.4 points and Vieques's 38.6% ± 10.3, so neither can be ranked against most others.",
+   "The three windows share no year, so they can be compared with each other; do not set them beside the ACS 5-year windows that overlap them (2016-2020 to 2019-2023, for example), which share years with them.",
+   "The margin of a sum of municipios treats their estimates as independent, as the Census Bureau's approximation does; it is an approximation.",
+   "The survey's sample (the people and homes it interviewed) is published for 2020-2024 only: in the Eastern Region, 16,930 people and 10,139 housing units."
+  ],
+  "see_also": [
+   "labor_sex.lfpr_women",
+   "labor_sex.lfpr_women_prime",
+   "labor_sex.lfpr_gap",
+   "measures.margin_of_error",
+   "methods.acs_windows"
+  ],
+  "where": {
+   "files": [
+    "women_labor.json:*"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Women in the labor force",
+     "href": "women-labor.html"
+    }
+   ]
+  },
+  "added": "2026-10-30"
+ }
+]

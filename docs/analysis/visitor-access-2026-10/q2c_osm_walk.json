@@ -1,0 +1,113 @@
+{
+ "build_edges_s": 2.4,
+ "osm_walk_graph": {
+  "nodes": 309829,
+  "edges": 365729,
+  "km": 43666.0,
+  "build_total_s": 3.3,
+  "km_by_class": {
+   "residential": 21769.1,
+   "track": 5781.7,
+   "tertiary": 5656.9,
+   "service": 4249.8,
+   "secondary": 1808.0,
+   "unclassified": 1353.4,
+   "path": 895.2,
+   "footway": 765.5,
+   "trunk": 605.6,
+   "primary": 533.3,
+   "trunk_link": 92.6,
+   "primary_link": 37.3,
+   "secondary_link": 35.1,
+   "tertiary_link": 30.9
+  },
+  "roads_bin_layout_size_mb_estimate": 11.4
+ },
+ "stops_snapped": 3844,
+ "places_default_snapped_150m": 26221,
+ "places_default_not_snapped_150m": 358,
+ "places_default_median_connector_m": 11.27420940342496,
+ "full_run_s": 2.2,
+ "full_run_settled_nodes_per_stop_mean": 327,
+ "island_current": {
+  "straight_line": 32.1,
+  "roads_bin": {
+   "n": 26579,
+   "sl_400_pct": 32.1,
+   "net_400_pct": 26.6,
+   "lost_400_pct_of_sl": 17.2,
+   "sl_800_pct": 36.3,
+   "net_800_pct": 33.0,
+   "lost_800_pct_of_sl": 9.2
+  },
+  "osm_full_walk": {
+   "n": 26579,
+   "sl_400_pct": 32.1,
+   "net_400_pct": 27.0,
+   "lost_400_pct_of_sl": 15.9,
+   "sl_800_pct": 36.3,
+   "net_800_pct": 33.5,
+   "lost_800_pct_of_sl": 7.7
+  }
+ },
+ "island_all_scheduled": {
+  "roads_bin": {
+   "n": 26579,
+   "sl_400_pct": 40.8,
+   "net_400_pct": 33.5,
+   "lost_400_pct_of_sl": 17.9,
+   "sl_800_pct": 46.2,
+   "net_800_pct": 41.9,
+   "lost_800_pct_of_sl": 9.3
+  },
+  "osm_full_walk": {
+   "n": 26579,
+   "sl_400_pct": 40.8,
+   "net_400_pct": 34.0,
+   "lost_400_pct_of_sl": 16.6,
+   "sl_800_pct": 46.2,
+   "net_800_pct": 42.6,
+   "lost_800_pct_of_sl": 7.8
+  }
+ },
+ "sample_roads_bin": {
+  "sample": 1000,
+  "snapped": 973,
+  "found": 941,
+  "median_ratio": 1.42,
+  "p90_ratio": 2.36,
+  "p95_ratio": 2.93,
+  "sl_le_400": 852,
+  "flips_over_400": 122,
+  "flip_pct": 14.3
+ },
+ "sample_osm_full_walk": {
+  "sample": 1000,
+  "snapped": 996,
+  "found": 953,
+  "median_ratio": 1.44,
+  "p90_ratio": 2.51,
+  "p95_ratio": 3.24,
+  "sl_le_400": 870,
+  "flips_over_400": 144,
+  "flip_pct": 16.6
+ },
+ "sample_roads_bin_flips": 140,
+ "sample_of_those_recovered_le_400_on_osm_walk": 17,
+ "sample_of_those_unsnapped_on_roads_bin": 18,
+ "island_current_lost_on_roads_bin_400": 1467,
+ "island_current_lost_on_roads_bin_400_recovered_on_osm_walk": 284,
+ "island_current_lost_on_roads_bin_400_still_lost_on_osm_walk": 1183,
+ "osm_walk_over_roads_bin_distance_ratio_where_both_found": {
+  "n": 11372,
+  "median": 1.0,
+  "p10": 0.907,
+  "p90": 1.134,
+  "share_osm_walk_shorter_by_more_than_10pct": 9.6
+ },
+ "places_default_unsnapped_roads_bin_vs_osm": {
+  "roads_bin": 1095,
+  "osm_walk": 358
+ },
+ "total_s": 9.2
+}

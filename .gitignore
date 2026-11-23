@@ -1,0 +1,13 @@
+venv/
+cache/
+__pycache__/
+*.pyc
+.env
+.DS_Store
+Thumbs.db
+build.log
+.freshness/
+
+# A base-map provider key, if one is ever needed (site/js/core/basemap.js, docs/basemap.md): never committed
+site/js/basemap.local.js
+connector/data/

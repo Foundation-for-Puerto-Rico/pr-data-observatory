@@ -1,0 +1,47 @@
+[
+ {
+  "id": "economy.taken_back",
+  "name": "Federal grant money taken back in Puerto Rico: net reduction of each grant",
+  "domain": "public-money",
+  "domains": [
+   "public-money"
+  ],
+  "group": "Public spending (Gasto Público)",
+  "kind": "table",
+  "plain": "How much the federal government lowered, for good, the money it had committed to grants for work in Puerto Rico since federal fiscal year 2019, by federal agency and by program. The data do not say why an amount was lowered: an administrative adjustment, an adjustment to actual cost, a federal cancellation or money not committed in time all look the same.",
+  "definition": "taken_back.json holds, for the grants with place of performance Puerto Rico that have a transaction in USAspending.gov from federal fiscal year 2019, the count and the dollars of the grants whose obligation ended the period below the highest level it reached in the period (the net reduction), by awarding federal agency, by assistance listing and by the fiscal year of the grant's last reduction. Programs paid by actual cost, highway projects and disaster programs are kept apart.",
+  "unit": "US dollars (not adjusted for inflation) and counts of grants",
+  "value_type": "level",
+  "geography": "Puerto Rico as a whole (place of performance Puerto Rico)",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2019,
+   "last": 2026,
+   "frequency": "Once a year, after a federal fiscal year counts as final (from 15 November), and whenever the page is rebuilt (taken_back.py --refresh)"
+  },
+  "method": "taken_back.py asks USAspending.gov's transaction search for every transaction on grants (award types 02 to 05) with place of performance Puerto Rico, quarter by quarter from federal fiscal year 2019. A reduction matched by an equal increase on another grant of the same listing and agency within 31 days is a move and is left out. For each grant the transactions of one day are added, and the net reduction is the highest cumulative level reached in the period, counted from where the grant stood when the period began, minus the final level. Grants with a net reduction under $1,000 are left out. A grant that carries several listings is placed under the one with most money.",
+  "how_to_read": "Read the number of grants next to the dollars: one large grant can put a program near the top. The latest fiscal years can still change, because a grant lowered this year can be raised again.",
+  "cautions": [
+   "A net reduction is not proof that money was lost or that anyone did something wrong: it can be money left unused when a grant closed, a recapture, a program the federal government ended early, or a correction. The data do not say which.",
+   "Programs paid by actual cost (Medicaid and others), highway projects and disaster programs are kept apart: their reductions are part of how they work. Never add them to the other programs.",
+   "Never add these figures to the grants that ended with an unpaid balance: the grants overlap and the years differ.",
+   "The agency is the federal agency that awarded the grant, not the body in Puerto Rico that received it. No recipient is in the file.",
+   "Federal grant content: its Compliance review is open (HANDOFF decisions 21 and 110)."
+  ],
+  "sources": [
+   "usaspending"
+  ],
+  "added": "2026-11-18",
+  "where": {
+   "files": [
+    "taken_back.json:*"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Federal grants: balances, reductions and audit findings",
+     "href": "unused-funds.html"
+    }
+   ]
+  }
+ }
+]

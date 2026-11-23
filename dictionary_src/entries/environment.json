@@ -1,0 +1,807 @@
+[
+  {
+    "id": "environment.nri_eal_total",
+    "ask": {"en": ["expected annual loss", "natural hazard risk", "disaster risk", "hazard losses"], "es": ["perdida anual esperada", "riesgo de amenazas naturales", "riesgo de desastres"]},
+    "name": "Expected annual loss from natural hazards, $ a year",
+    "domain": "hazards",
+    "domains": [
+      "hazards",
+      "economy"
+    ],
+    "group": "Natural hazard risk",
+    "kind": "variable",
+    "plain": "How much money natural hazards are expected to cost each municipio in an average year, by FEMA's model.",
+    "definition": "FEMA's estimate of the average loss each year, in dollars, to buildings, agriculture and lives (lives valued in dollars by FEMA's rule), from the 18 hazards of the National Risk Index.",
+    "unit": "$ a year",
+    "value_type": "level",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2025,
+      "last": 2025,
+      "frequency": "One snapshot: the National Risk Index version of December 2025. Renewed with each full build (python environment_series.py)."
+    },
+    "method": "environment_series.py reads FEMA's county table of the National Risk Index for Puerto Rico's 78 municipios and publishes the expected annual loss as given; Puerto Rico's value is their sum. It also checks that the composite risk score, social vulnerability and community resilience are still empty for Puerto Rico and records it in the file's notes.",
+    "sources": [
+      "fema_nri"
+    ],
+    "source_detail": "FEMA National Risk Index (December 2025), county table: EAL_VALT and HRCN_EALT, ERQK_EALT, IFLD_EALT, LNDS_EALT, CFLD_EALT, TSUN_EALT",
+    "how_to_read": "$3.19 billion a year for Puerto Rico; the most in San Juan $434,520,246, Bayamón $167,313,545, Carolina $154,370,865. The Analysis tab shades it per resident, so large municipios do not dominate.",
+    "caveats": [
+      "A model estimate of average loss, not a record of what was lost.",
+      "FEMA's composite risk score, social vulnerability and community resilience are empty for Puerto Rico; this file does not fill them."
+    ],
+    "see_also": [
+      "environment.nri_eal_hurricane",
+      "environment.nri_eal_earthquake"
+    ],
+    "where": {
+      "files": [
+        "environment_series.json:nri_eal_total"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab: expected annual loss from natural hazards, $ a year",
+          "href": "index.html#e=nri_eal_total.s"
+        }
+      ]
+    },
+    "added": "2026-10-14"
+  },
+  {
+    "id": "environment.nri_eal_hurricane",
+    "ask": {"en": ["hurricane risk", "hurricane loss", "hurricane damage"], "es": ["riesgo de huracanes", "perdida por huracanes"]},
+    "name": "Expected annual loss from hurricane (wind), $ a year",
+    "domain": "hazards",
+    "domains": [
+      "hazards"
+    ],
+    "group": "Natural hazard risk",
+    "kind": "variable",
+    "plain": "How much money hurricane (wind) is expected to cost each municipio in an average year, by FEMA's model.",
+    "definition": "FEMA's estimate of the average loss each year, in dollars, from hurricane (wind) alone. Hurricane wind; storm surge is part of coastal flooding.",
+    "unit": "$ a year",
+    "value_type": "level",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2025,
+      "last": 2025,
+      "frequency": "One snapshot: the National Risk Index version of December 2025. Renewed with each full build (python environment_series.py)."
+    },
+    "method": "environment_series.py reads FEMA's county table of the National Risk Index for Puerto Rico's 78 municipios and publishes the expected annual loss as given; Puerto Rico's value is their sum. It also checks that the composite risk score, social vulnerability and community resilience are still empty for Puerto Rico and records it in the file's notes.",
+    "sources": [
+      "fema_nri"
+    ],
+    "source_detail": "FEMA National Risk Index (December 2025), county table: EAL_VALT and HRCN_EALT, ERQK_EALT, IFLD_EALT, LNDS_EALT, CFLD_EALT, TSUN_EALT",
+    "how_to_read": "$1.48 billion a year for Puerto Rico; the most in San Juan $193,328,387, Bayamón $85,128,412, Carolina $84,251,885.",
+    "caveats": [
+      "A model estimate of average loss, not a record of what was lost."
+    ],
+    "see_also": [
+      "environment.nri_eal_total"
+    ],
+    "where": {
+      "files": [
+        "environment_series.json:nri_eal_hurricane"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab: expected annual loss from hurricane (wind), $ a year",
+          "href": "index.html#e=nri_eal_hurricane.s"
+        }
+      ]
+    },
+    "added": "2026-10-14"
+  },
+  {
+    "id": "environment.nri_eal_earthquake",
+    "ask": {"en": ["earthquake risk", "earthquake loss"], "es": ["riesgo de terremotos", "riesgo sismico"]},
+    "name": "Expected annual loss from earthquake, $ a year",
+    "domain": "hazards",
+    "domains": [
+      "hazards"
+    ],
+    "group": "Natural hazard risk",
+    "kind": "variable",
+    "plain": "How much money earthquake is expected to cost each municipio in an average year, by FEMA's model.",
+    "definition": "FEMA's estimate of the average loss each year, in dollars, from earthquake alone. Shaking, not tsunami.",
+    "unit": "$ a year",
+    "value_type": "level",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2025,
+      "last": 2025,
+      "frequency": "One snapshot: the National Risk Index version of December 2025. Renewed with each full build (python environment_series.py)."
+    },
+    "method": "environment_series.py reads FEMA's county table of the National Risk Index for Puerto Rico's 78 municipios and publishes the expected annual loss as given; Puerto Rico's value is their sum. It also checks that the composite risk score, social vulnerability and community resilience are still empty for Puerto Rico and records it in the file's notes.",
+    "sources": [
+      "fema_nri"
+    ],
+    "source_detail": "FEMA National Risk Index (December 2025), county table: EAL_VALT and HRCN_EALT, ERQK_EALT, IFLD_EALT, LNDS_EALT, CFLD_EALT, TSUN_EALT",
+    "how_to_read": "$803 million a year for Puerto Rico; the most in San Juan $132,083,868, Bayamón $53,409,741, Carolina $43,107,526.",
+    "caveats": [
+      "A model estimate of average loss, not a record of what was lost."
+    ],
+    "see_also": [
+      "environment.nri_eal_total"
+    ],
+    "where": {
+      "files": [
+        "environment_series.json:nri_eal_earthquake"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab: expected annual loss from earthquake, $ a year",
+          "href": "index.html#e=nri_eal_earthquake.s"
+        }
+      ]
+    },
+    "added": "2026-10-14"
+  },
+  {
+    "id": "environment.nri_eal_inland_flood",
+    "ask": {"en": ["flood risk", "flood loss", "river flooding"], "es": ["riesgo de inundacion", "perdida por inundaciones"]},
+    "name": "Expected annual loss from inland (river and rain) flooding, $ a year",
+    "domain": "hazards",
+    "domains": [
+      "hazards"
+    ],
+    "group": "Natural hazard risk",
+    "kind": "variable",
+    "plain": "How much money inland (river and rain) flooding is expected to cost each municipio in an average year, by FEMA's model.",
+    "definition": "FEMA's estimate of the average loss each year, in dollars, from inland (river and rain) flooding alone. River and rain flooding away from the coast.",
+    "unit": "$ a year",
+    "value_type": "level",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2025,
+      "last": 2025,
+      "frequency": "One snapshot: the National Risk Index version of December 2025. Renewed with each full build (python environment_series.py)."
+    },
+    "method": "environment_series.py reads FEMA's county table of the National Risk Index for Puerto Rico's 78 municipios and publishes the expected annual loss as given; Puerto Rico's value is their sum. It also checks that the composite risk score, social vulnerability and community resilience are still empty for Puerto Rico and records it in the file's notes.",
+    "sources": [
+      "fema_nri"
+    ],
+    "source_detail": "FEMA National Risk Index (December 2025), county table: EAL_VALT and HRCN_EALT, ERQK_EALT, IFLD_EALT, LNDS_EALT, CFLD_EALT, TSUN_EALT",
+    "how_to_read": "$314 million a year for Puerto Rico; the most in San Juan $34,209,264, Bayamón $21,222,943, Caguas $18,442,205.",
+    "caveats": [
+      "A model estimate of average loss, not a record of what was lost."
+    ],
+    "see_also": [
+      "environment.nri_eal_total"
+    ],
+    "where": {
+      "files": [
+        "environment_series.json:nri_eal_inland_flood"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab: expected annual loss from inland (river and rain) flooding, $ a year",
+          "href": "index.html#e=nri_eal_inland_flood.s"
+        }
+      ]
+    },
+    "added": "2026-10-14"
+  },
+  {
+    "id": "environment.nri_eal_landslide",
+    "ask": {"en": ["landslide risk", "landslide loss"], "es": ["riesgo de deslizamientos"]},
+    "name": "Expected annual loss from landslide, $ a year",
+    "domain": "hazards",
+    "domains": [
+      "hazards"
+    ],
+    "group": "Natural hazard risk",
+    "kind": "variable",
+    "plain": "How much money landslide is expected to cost each municipio in an average year, by FEMA's model.",
+    "definition": "FEMA's estimate of the average loss each year, in dollars, from landslide alone. Landslides set off by rain or shaking.",
+    "unit": "$ a year",
+    "value_type": "level",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2025,
+      "last": 2025,
+      "frequency": "One snapshot: the National Risk Index version of December 2025. Renewed with each full build (python environment_series.py)."
+    },
+    "method": "environment_series.py reads FEMA's county table of the National Risk Index for Puerto Rico's 78 municipios and publishes the expected annual loss as given; Puerto Rico's value is their sum. It also checks that the composite risk score, social vulnerability and community resilience are still empty for Puerto Rico and records it in the file's notes.",
+    "sources": [
+      "fema_nri"
+    ],
+    "source_detail": "FEMA National Risk Index (December 2025), county table: EAL_VALT and HRCN_EALT, ERQK_EALT, IFLD_EALT, LNDS_EALT, CFLD_EALT, TSUN_EALT",
+    "how_to_read": "$291 million a year for Puerto Rico; the most in Utuado $41,264,081, Maricao $13,028,172, Jayuya $12,275,388.",
+    "caveats": [
+      "A model estimate of average loss, not a record of what was lost."
+    ],
+    "see_also": [
+      "environment.nri_eal_total"
+    ],
+    "where": {
+      "files": [
+        "environment_series.json:nri_eal_landslide"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab: expected annual loss from landslide, $ a year",
+          "href": "index.html#e=nri_eal_landslide.s"
+        }
+      ]
+    },
+    "added": "2026-10-14"
+  },
+  {
+    "id": "environment.nri_eal_coastal_flood",
+    "ask": {"en": ["coastal flooding risk", "storm surge loss"], "es": ["riesgo de inundacion costera"]},
+    "name": "Expected annual loss from coastal flooding, $ a year",
+    "domain": "hazards",
+    "domains": [
+      "hazards"
+    ],
+    "group": "Natural hazard risk",
+    "kind": "variable",
+    "plain": "How much money coastal flooding is expected to cost each municipio in an average year, by FEMA's model.",
+    "definition": "FEMA's estimate of the average loss each year, in dollars, from coastal flooding alone. Flooding from the sea, including storm surge.",
+    "unit": "$ a year",
+    "value_type": "level",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2025,
+      "last": 2025,
+      "frequency": "One snapshot: the National Risk Index version of December 2025. Renewed with each full build (python environment_series.py)."
+    },
+    "method": "environment_series.py reads FEMA's county table of the National Risk Index for Puerto Rico's 78 municipios and publishes the expected annual loss as given; Puerto Rico's value is their sum. It also checks that the composite risk score, social vulnerability and community resilience are still empty for Puerto Rico and records it in the file's notes.",
+    "sources": [
+      "fema_nri"
+    ],
+    "source_detail": "FEMA National Risk Index (December 2025), county table: EAL_VALT and HRCN_EALT, ERQK_EALT, IFLD_EALT, LNDS_EALT, CFLD_EALT, TSUN_EALT",
+    "how_to_read": "$3 million a year for Puerto Rico; the most in San Juan $913,313, Cataño $385,087, Carolina $260,734.",
+    "caveats": [
+      "A model estimate of average loss, not a record of what was lost."
+    ],
+    "see_also": [
+      "environment.nri_eal_total"
+    ],
+    "where": {
+      "files": [
+        "environment_series.json:nri_eal_coastal_flood"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab: expected annual loss from coastal flooding, $ a year",
+          "href": "index.html#e=nri_eal_coastal_flood.s"
+        }
+      ]
+    },
+    "added": "2026-10-14"
+  },
+  {
+    "id": "environment.nri_eal_tsunami",
+    "ask": {"en": ["tsunami risk", "tsunami"], "es": ["riesgo de tsunami", "maremoto"]},
+    "name": "Expected annual loss from tsunami, $ a year",
+    "domain": "hazards",
+    "domains": [
+      "hazards"
+    ],
+    "group": "Natural hazard risk",
+    "kind": "variable",
+    "plain": "How much money tsunami is expected to cost each municipio in an average year, by FEMA's model.",
+    "definition": "FEMA's estimate of the average loss each year, in dollars, from tsunami alone. Blank where FEMA does not model a tsunami for the municipio.",
+    "unit": "$ a year",
+    "value_type": "level",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2025,
+      "last": 2025,
+      "frequency": "One snapshot: the National Risk Index version of December 2025. Renewed with each full build (python environment_series.py)."
+    },
+    "method": "environment_series.py reads FEMA's county table of the National Risk Index for Puerto Rico's 78 municipios and publishes the expected annual loss as given; Puerto Rico's value is their sum. It also checks that the composite risk score, social vulnerability and community resilience are still empty for Puerto Rico and records it in the file's notes.",
+    "sources": [
+      "fema_nri"
+    ],
+    "source_detail": "FEMA National Risk Index (December 2025), county table: EAL_VALT and HRCN_EALT, ERQK_EALT, IFLD_EALT, LNDS_EALT, CFLD_EALT, TSUN_EALT",
+    "how_to_read": "$249 million a year for Puerto Rico; the most in San Juan $65,354,421, Hatillo $55,838,735, Arecibo $30,785,325.",
+    "caveats": [
+      "A model estimate of average loss, not a record of what was lost."
+    ],
+    "see_also": [
+      "environment.nri_eal_total"
+    ],
+    "where": {
+      "files": [
+        "environment_series.json:nri_eal_tsunami"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab: expected annual loss from tsunami, $ a year",
+          "href": "index.html#e=nri_eal_tsunami.s"
+        }
+      ]
+    },
+    "added": "2026-10-14"
+  },
+  {
+    "id": "environment.landslides_maria",
+    "ask": {"en": ["landslides", "landslides after maria", "mudslides"], "es": ["deslizamientos", "derrumbes", "derrumbes despues de maria"]},
+    "name": "Landslides mapped after Hurricane María (2017)",
+    "domain": "hazards",
+    "domains": [
+      "hazards"
+    ],
+    "group": "Landslides",
+    "kind": "variable",
+    "plain": "How many landslides geologists mapped in each municipio after Hurricane María.",
+    "definition": "Slope failures (landslides, debris flows and rock falls) that USGS and UPRM geologists mapped from aerial images taken after Hurricane María, by the municipal boundary that holds each one.",
+    "unit": "landslides",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2017,
+      "last": 2017,
+      "frequency": "One storm: the slope failures mapped after Hurricane María (September 2017)."
+    },
+    "method": "environment_series.py reads the 71,431 mapped points and places each one in the municipal boundary that holds it (all of them fall inside one). The copy's own municipio and barrio names are not used.",
+    "sources": [
+      "usgs_slope_failures"
+    ],
+    "source_detail": "Hughes and others (2019), USGS data release doi:10.5066/P9BVMD74, read from the first author's copy at UPRM (DERRUMBES_HURACAN_MARIA): point locations only",
+    "how_to_read": "71,431 for Puerto Rico; the most in Utuado 17,762, Maricao 5,806, Jayuya 4,874: the steep, wet centre-west of the island.",
+    "caveats": [
+      "A record of one storm, not a forecast of where slides will happen.",
+      "Read from a copy of the USGS data release kept by its first author at UPRM, because the USGS catalogue refuses scripts."
+    ],
+    "see_also": [
+      "environment.landslides_maria_km2",
+      "environment.nri_eal_landslide"
+    ],
+    "where": {
+      "files": [
+        "environment_series.json:landslides_maria"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab: landslides mapped after Hurricane María (2017)",
+          "href": "index.html#e=landslides_maria.s"
+        }
+      ]
+    },
+    "added": "2026-10-14"
+  },
+  {
+    "id": "environment.landslides_maria_km2",
+    "ask": {"en": ["landslide density", "landslides per km2"], "es": ["densidad de deslizamientos", "derrumbes por km2"]},
+    "name": "Landslides mapped after Hurricane María, per km² of land",
+    "domain": "hazards",
+    "domains": [
+      "hazards"
+    ],
+    "group": "Landslides",
+    "kind": "variable",
+    "plain": "How densely landslides covered each municipio after Hurricane María.",
+    "definition": "The landslides mapped after Hurricane María divided by the municipio's land area in square kilometres (Census).",
+    "unit": "landslides per km²",
+    "value_type": "ratio",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2017,
+      "last": 2017,
+      "frequency": "One storm: the slope failures mapped after Hurricane María (September 2017)."
+    },
+    "method": "environment_series.py reads the 71,431 mapped points and places each one in the municipal boundary that holds it (all of them fall inside one). The copy's own municipio and barrio names are not used.",
+    "sources": [
+      "usgs_slope_failures",
+      "census_tiger"
+    ],
+    "source_detail": "Hughes and others (2019), USGS data release doi:10.5066/P9BVMD74, read from the first author's copy at UPRM (DERRUMBES_HURACAN_MARIA): point locations only",
+    "how_to_read": "8.1 per km² for Puerto Rico; the highest in Maricao 61.2, Utuado 60.4, Jayuya 42.3.",
+    "caveats": [
+      "A record of one storm, not a forecast."
+    ],
+    "see_also": [
+      "environment.landslides_maria"
+    ],
+    "where": {
+      "files": [
+        "environment_series.json:landslides_maria_km2"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab: landslides mapped after Hurricane María, per km² of land",
+          "href": "index.html#e=landslides_maria_km2.f"
+        }
+      ]
+    },
+    "added": "2026-10-14"
+  },
+  {
+    "id": "environment.wetland_km2",
+    "ask": {"en": ["wetlands", "wetland area", "marshes", "swamps"], "es": ["humedales", "cienagas", "pantanos"]},
+    "name": "Wetlands, km²",
+    "domain": "environment.land",
+    "domains": [
+      "environment.land",
+      "hazards"
+    ],
+    "group": "Wetlands",
+    "kind": "variable",
+    "plain": "How much of each municipio is wetland: marshes, swamps, mangroves and tidal flats.",
+    "definition": "The area of the wetlands the National Wetlands Inventory maps in the municipio: estuarine and marine wetlands (mangroves, beaches, tidal flats), freshwater marshes and freshwater swamps and shrub wetlands, in square kilometres. Lakes, ponds, rivers and open water are left out.",
+    "unit": "km²",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 1983,
+      "last": 1983,
+      "frequency": "One snapshot of the inventory, read in October 2026; almost all of the wetland area lies in the parts mapped from aerial photographs of 1983 (the coasts)."
+    },
+    "method": "environment_series.py reads the inventory's polygons of Puerto Rico from its map service and keeps the three wetland types (estuarine and marine wetland, freshwater emergent, freshwater forested and shrub). Each polygon is split among the municipal boundaries in metres (NAD83 Puerto Rico); the part beyond the drawn coast goes to the municipio with the largest share. Mangroves are the polygons coded E2FO3 or E2SS3.",
+    "sources": [
+      "usfws_nwi"
+    ],
+    "source_detail": "USFWS National Wetlands Inventory map service, layer Wetlands: ATTRIBUTE, WETLAND_TYPE and the outline; photo years from the Data_Source service",
+    "how_to_read": "488.27 km² for Puerto Rico; the most in Lajas 38.5 km², Loíza 35.9 km², Cabo Rojo 24.8 km².",
+    "caveats": [
+      "Almost all of the wetland area was mapped from aerial photographs of 1983: wetlands filled or restored since then are not shown.",
+      "Areas are worked out from the inventory's outlines and can differ from official acreages."
+    ],
+    "see_also": [
+      "environment.wetland_pct",
+      "environment.mangrove_km2"
+    ],
+    "where": {
+      "files": [
+        "environment_series.json:wetland_km2"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab: wetlands, km²",
+          "href": "index.html#e=wetland_km2.s"
+        }
+      ]
+    },
+    "added": "2026-10-14"
+  },
+  {
+    "id": "environment.wetland_pct",
+    "ask": {"en": ["share of wetlands", "wetland share"], "es": ["porcentaje de humedales"]},
+    "name": "Wetlands, % of land area",
+    "domain": "environment.land",
+    "domains": [
+      "environment.land",
+      "hazards"
+    ],
+    "group": "Wetlands",
+    "kind": "variable",
+    "plain": "What share of each municipio's land is wetland.",
+    "definition": "Wetland area divided by the municipio's land area (Census), in percent.",
+    "unit": "% of land area",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 1983,
+      "last": 1983,
+      "frequency": "One snapshot of the inventory, read in October 2026; almost all of the wetland area lies in the parts mapped from aerial photographs of 1983 (the coasts)."
+    },
+    "method": "environment_series.py reads the inventory's polygons of Puerto Rico from its map service and keeps the three wetland types (estuarine and marine wetland, freshwater emergent, freshwater forested and shrub). Each polygon is split among the municipal boundaries in metres (NAD83 Puerto Rico); the part beyond the drawn coast goes to the municipio with the largest share. Mangroves are the polygons coded E2FO3 or E2SS3.",
+    "sources": [
+      "usfws_nwi",
+      "census_tiger"
+    ],
+    "source_detail": "USFWS National Wetlands Inventory map service, layer Wetlands: ATTRIBUTE, WETLAND_TYPE and the outline; photo years from the Data_Source service",
+    "how_to_read": "5.51% for Puerto Rico; the highest in Loíza 71.6%, Cataño 44.8%, Toa Baja 35.5%.",
+    "caveats": [
+      "Coastal wetlands can lie partly on what the Census counts as water, so a small coastal municipio's share can be high.",
+      "Almost all of the wetland area was mapped from photographs of 1983."
+    ],
+    "see_also": [
+      "environment.wetland_km2"
+    ],
+    "where": {
+      "files": [
+        "environment_series.json:wetland_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab: wetlands, % of land area",
+          "href": "index.html#e=wetland_pct.f"
+        }
+      ]
+    },
+    "added": "2026-10-14"
+  },
+  {
+    "id": "environment.mangrove_km2",
+    "ask": {"en": ["mangroves", "mangrove forest"], "es": ["manglares", "mangles"]},
+    "name": "Mangroves, km²",
+    "domain": "environment.land",
+    "domains": [
+      "environment.land",
+      "hazards"
+    ],
+    "group": "Wetlands",
+    "kind": "variable",
+    "plain": "How much mangrove forest each municipio has.",
+    "definition": "The area of the inventory's estuarine intertidal forested and scrub-shrub wetlands with broad-leaved evergreen plants (codes E2FO3 and E2SS3), which in Puerto Rico are mangroves, in square kilometres.",
+    "unit": "km²",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 1983,
+      "last": 1983,
+      "frequency": "One snapshot of the inventory, read in October 2026; almost all of the wetland area lies in the parts mapped from aerial photographs of 1983 (the coasts)."
+    },
+    "method": "environment_series.py reads the inventory's polygons of Puerto Rico from its map service and keeps the three wetland types (estuarine and marine wetland, freshwater emergent, freshwater forested and shrub). Each polygon is split among the municipal boundaries in metres (NAD83 Puerto Rico); the part beyond the drawn coast goes to the municipio with the largest share. Mangroves are the polygons coded E2FO3 or E2SS3.",
+    "sources": [
+      "usfws_nwi"
+    ],
+    "source_detail": "USFWS National Wetlands Inventory map service, layer Wetlands: ATTRIBUTE, WETLAND_TYPE and the outline; photo years from the Data_Source service",
+    "how_to_read": "94.99 km² for Puerto Rico; the most in Loíza 13.8 km², Ceiba 9.4 km², Río Grande 7.1 km².",
+    "caveats": [
+      "Mapped from photographs of 1983, before later losses and recovery (Hurricane María among them)."
+    ],
+    "see_also": [
+      "environment.wetland_km2"
+    ],
+    "where": {
+      "files": [
+        "environment_series.json:mangrove_km2"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab: mangroves, km²",
+          "href": "index.html#e=mangrove_km2.s"
+        }
+      ]
+    },
+    "added": "2026-10-14"
+  },
+  {
+    "id": "environment.cre_risk0_pct",
+    "ask": {"en": ["no risk factors"], "es": ["sin factores de riesgo"]},
+    "name": "Residents with no risk factors, % (Community Resilience Estimates)",
+    "domain": "hazards",
+    "domains": [
+      "hazards",
+      "population"
+    ],
+    "group": "Community resilience",
+    "kind": "variable",
+    "plain": "Out of every 100 residents of each municipio, how many have none of the Census Bureau's disaster risk factors.",
+    "definition": "Residents with none of the risk factors, in percent of the residents the estimates cover. The risk factors are the Census Bureau's ten risk factors that make it harder to withstand and recover from a disaster: household income below 130% of the poverty line, only one or no adults aged 18 to 64 in the household, more than 0.75 people per room, limited English or no one with a high-school diploma in the household, no one employed full-time year-round, a disability, no health insurance, age 65 or over, no vehicle and no broadband.",
+    "unit": "% of residents",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "annual",
+      "first": 2019,
+      "last": 2024,
+      "frequency": "One release a year: 2019, 2021, 2022, 2023, 2024 (no release for 2020)."
+    },
+    "method": "environment_series.py reads each release's Puerto Rico municipio file and the island row of its tract file and publishes the three shares (PRED0_PE, PRED12_PE, PRED3_PE) with their margins of error (_PM, 90% confidence).",
+    "sources": [
+      "census_cre"
+    ],
+    "source_detail": "Census Bureau Community Resilience Estimates for Puerto Rico, files CRE{yy}_PR_MUNICIPIO.csv and CRE{yy}_PR.csv, 2019 and 2021, 2022, 2023, 2024",
+    "how_to_read": "Puerto Rico: 14.74% in 2019 and 18.09% in 2024 (± 0.55 points). Highest in 2024: Dorado 27.0%, Guaynabo 26.5%, Barceloneta 24.3%.",
+    "caveats": [
+      "Modelled estimates with margins of error: read the margin before comparing two places.",
+      "The ten factors are the same in every release, but from 2023 the Census Bureau computes municipio margins a new way (smaller), so compare margins across 2022 and 2023 with care.",
+      "One factor is a household where no one speaks English very well (or no one has a high-school diploma), so in Puerto Rico it counts many Spanish-speaking households and raises the shares with risk factors."
+    ],
+    "see_also": [
+      "environment.cre_risk3_pct"
+    ],
+    "where": {
+      "files": [
+        "hazard_series.json:cre_risk0_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab: residents with no risk factors, % (Community Resilience Estimates)",
+          "href": "index.html#e=cre_risk0_pct.f"
+        }
+      ]
+    },
+    "added": "2026-10-14"
+  },
+  {
+    "id": "environment.cre_risk12_pct",
+    "ask": {"en": ["one or two risk factors"], "es": ["uno o dos factores de riesgo"]},
+    "name": "Residents with one or two risk factors, %",
+    "domain": "hazards",
+    "domains": [
+      "hazards",
+      "population"
+    ],
+    "group": "Community resilience",
+    "kind": "variable",
+    "plain": "Out of every 100 residents of each municipio, how many have one or two disaster risk factors.",
+    "definition": "Residents with one or two of the risk factors, in percent. The risk factors are the Census Bureau's ten risk factors that make it harder to withstand and recover from a disaster: household income below 130% of the poverty line, only one or no adults aged 18 to 64 in the household, more than 0.75 people per room, limited English or no one with a high-school diploma in the household, no one employed full-time year-round, a disability, no health insurance, age 65 or over, no vehicle and no broadband.",
+    "unit": "% of residents",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "annual",
+      "first": 2019,
+      "last": 2024,
+      "frequency": "One release a year: 2019, 2021, 2022, 2023, 2024 (no release for 2020)."
+    },
+    "method": "environment_series.py reads each release's Puerto Rico municipio file and the island row of its tract file and publishes the three shares (PRED0_PE, PRED12_PE, PRED3_PE) with their margins of error (_PM, 90% confidence).",
+    "sources": [
+      "census_cre"
+    ],
+    "source_detail": "Census Bureau Community Resilience Estimates for Puerto Rico, files CRE{yy}_PR_MUNICIPIO.csv and CRE{yy}_PR.csv, 2019 and 2021, 2022, 2023, 2024",
+    "how_to_read": "Puerto Rico: 39.19% in 2019 and 41.75% in 2024 (± 0.69 points). Highest in 2024: Jayuya 48.8%, Toa Alta 48.6%, Naguabo 48.5%.",
+    "caveats": [
+      "Modelled estimates with margins of error: read the margin before comparing two places.",
+      "The ten factors are the same in every release, but from 2023 the Census Bureau computes municipio margins a new way (smaller), so compare margins across 2022 and 2023 with care.",
+      "One factor is a household where no one speaks English very well (or no one has a high-school diploma), so in Puerto Rico it counts many Spanish-speaking households and raises the shares with risk factors."
+    ],
+    "see_also": [
+      "environment.cre_risk3_pct"
+    ],
+    "where": {
+      "files": [
+        "hazard_series.json:cre_risk12_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab: residents with one or two risk factors, %",
+          "href": "index.html#e=cre_risk12_pct.f"
+        }
+      ]
+    },
+    "added": "2026-10-14"
+  },
+  {
+    "id": "environment.cre_risk3_pct",
+    "ask": {"en": ["community resilience", "resilience", "risk factors", "vulnerable residents", "social vulnerability"], "es": ["resiliencia comunitaria", "resiliencia", "factores de riesgo", "vulnerabilidad social"]},
+    "name": "Residents with three or more risk factors, %",
+    "domain": "hazards",
+    "domains": [
+      "hazards",
+      "population"
+    ],
+    "group": "Community resilience",
+    "kind": "variable",
+    "plain": "Out of every 100 residents of each municipio, how many have three or more disaster risk factors: those least able to recover from a disaster.",
+    "definition": "Residents with three or more of the risk factors, in percent: the Census Bureau's measure of the population least able to recover from a disaster. The risk factors are the Census Bureau's ten risk factors that make it harder to withstand and recover from a disaster: household income below 130% of the poverty line, only one or no adults aged 18 to 64 in the household, more than 0.75 people per room, limited English or no one with a high-school diploma in the household, no one employed full-time year-round, a disability, no health insurance, age 65 or over, no vehicle and no broadband.",
+    "unit": "% of residents",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "annual",
+      "first": 2019,
+      "last": 2024,
+      "frequency": "One release a year: 2019, 2021, 2022, 2023, 2024 (no release for 2020)."
+    },
+    "method": "environment_series.py reads each release's Puerto Rico municipio file and the island row of its tract file and publishes the three shares (PRED0_PE, PRED12_PE, PRED3_PE) with their margins of error (_PM, 90% confidence).",
+    "sources": [
+      "census_cre"
+    ],
+    "source_detail": "Census Bureau Community Resilience Estimates for Puerto Rico, files CRE{yy}_PR_MUNICIPIO.csv and CRE{yy}_PR.csv, 2019 and 2021, 2022, 2023, 2024",
+    "how_to_read": "Puerto Rico: 46.07% in 2019 and 40.16% in 2024 (± 0.68 points). Highest in 2024: Maricao 54.8%, Las Marías 54.1%, Vieques 52.9%.",
+    "caveats": [
+      "Modelled estimates with margins of error: read the margin before comparing two places.",
+      "The ten factors are the same in every release, but from 2023 the Census Bureau computes municipio margins a new way (smaller), so compare margins across 2022 and 2023 with care.",
+      "One factor is a household where no one speaks English very well (or no one has a high-school diploma), so in Puerto Rico it counts many Spanish-speaking households and raises the shares with risk factors."
+    ],
+    "see_also": [
+      "environment.cre_risk0_pct"
+    ],
+    "where": {
+      "files": [
+        "hazard_series.json:cre_risk3_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab: residents with three or more risk factors, %",
+          "href": "index.html#e=cre_risk3_pct.f"
+        }
+      ]
+    },
+    "added": "2026-10-14"
+  },
+  {
+    "id": "environment.quakes_m25",
+    "ask": {"en": ["earthquakes", "seismic activity", "tremors"], "es": ["terremotos", "sismos", "temblores", "actividad sismica"]},
+    "name": "Earthquakes of magnitude 2.5 or more",
+    "domain": "hazards",
+    "domains": [
+      "hazards"
+    ],
+    "group": "Earthquakes",
+    "kind": "variable",
+    "plain": "How many earthquakes of magnitude 2.5 or more struck in or just off each municipio, every year.",
+    "definition": "Earthquakes of magnitude 2.5 or more in USGS's catalogue whose epicenter is in the municipio or, offshore, nearest to it and within 25 km of its coast.",
+    "unit": "earthquakes",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "annual",
+      "first": 2000,
+      "last": 2025,
+      "frequency": "Whole calendar years. The last two years are downloaded again with each full build."
+    },
+    "method": "environment_series.py asks ComCat for every earthquake of magnitude 2.5 or more in a box around Puerto Rico each year. An earthquake counts in the municipio whose boundary holds its epicenter; offshore, in the nearest municipio if it is within 25 km of that municipio's coast, else not at all. Each earthquake counts once, so the municipal values add up to Puerto Rico's.",
+    "sources": [
+      "usgs_comcat"
+    ],
+    "source_detail": "USGS ComCat event web service (fdsnws/event/1), format csv, minmagnitude 2.5, latitude 17.4-19.0, longitude -68.4 to -64.9, 2000-2025: epicenter and magnitude",
+    "how_to_read": "Puerto Rico: 153 in 2000, 6,297 in 2020 (the southwest sequence; strongest 6.4) and 522 in 2025.",
+    "caveats": [
+      "A count of events, not of damage: most are felt little or not at all.",
+      "The catalogue records more small earthquakes in later years as the seismic network grew."
+    ],
+    "see_also": [
+      "environment.quakes_m4"
+    ],
+    "where": {
+      "files": [
+        "hazard_series.json:quakes_m25"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab: earthquakes of magnitude 2.5 or more",
+          "href": "index.html#e=quakes_m25.s"
+        }
+      ]
+    },
+    "added": "2026-10-14"
+  },
+  {
+    "id": "environment.quakes_m4",
+    "ask": {"en": ["strong earthquakes", "earthquakes of magnitude 4"], "es": ["terremotos fuertes", "sismos de magnitud 4"]},
+    "name": "Earthquakes of magnitude 4.0 or more",
+    "domain": "hazards",
+    "domains": [
+      "hazards"
+    ],
+    "group": "Earthquakes",
+    "kind": "variable",
+    "plain": "How many earthquakes of magnitude 4.0 or more struck in or just off each municipio, every year.",
+    "definition": "Earthquakes of magnitude 4.0 or more in USGS's catalogue, placed the same way.",
+    "unit": "earthquakes",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "annual",
+      "first": 2000,
+      "last": 2025,
+      "frequency": "Whole calendar years. The last two years are downloaded again with each full build."
+    },
+    "method": "environment_series.py asks ComCat for every earthquake of magnitude 2.5 or more in a box around Puerto Rico each year. An earthquake counts in the municipio whose boundary holds its epicenter; offshore, in the nearest municipio if it is within 25 km of that municipio's coast, else not at all. Each earthquake counts once, so the municipal values add up to Puerto Rico's.",
+    "sources": [
+      "usgs_comcat"
+    ],
+    "source_detail": "USGS ComCat event web service (fdsnws/event/1), format csv, minmagnitude 2.5, latitude 17.4-19.0, longitude -68.4 to -64.9, 2000-2025: epicenter and magnitude",
+    "how_to_read": "Puerto Rico: 116 in 2020 and 1 in 2025.",
+    "caveats": [
+      "Few in most years, so most municipios have none."
+    ],
+    "see_also": [
+      "environment.quakes_m25"
+    ],
+    "where": {
+      "files": [
+        "hazard_series.json:quakes_m4"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab: earthquakes of magnitude 4.0 or more",
+          "href": "index.html#e=quakes_m4.s"
+        }
+      ]
+    },
+    "added": "2026-10-14"
+  }
+]

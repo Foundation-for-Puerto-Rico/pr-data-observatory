@@ -1,0 +1,416 @@
+[
+ {
+  "id": "community.nrhp_places",
+  "ask": {
+   "en": [
+    "historic places",
+    "historic sites"
+   ],
+   "es": [
+    "lugares historicos",
+    "sitios historicos"
+   ]
+  },
+  "name": "Places on the National Register of Historic Places (NPS)",
+  "domain": "communities",
+  "domains": [
+   "communities",
+   "education",
+   "economy.visitor-economy"
+  ],
+  "group": "Historic places",
+  "kind": "variable",
+  "plain": "How many places in each municipio are listed on the National Register of Historic Places, the federal list of buildings, sites and districts worth preserving.",
+  "definition": "Buildings, structures, sites, objects and historic districts of Puerto Rico listed on the National Register of Historic Places, in the municipio that holds each listing's point (National Park Service public locations). A listing with points in several municipios counts in each; Puerto Rico's value counts each listing once. Every listing counts, private residences too (73 on 2026-10-18, privately owned haciendas and a former home for the elderly among them), although the map does not draw those. Restricted and sensitive listings, such as archaeological sites, are not in the public data.",
+  "unit": "listings",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot: NPS edits up to 2026-08-07 (read 2026-10-18). Rebuilt with python community_assets.py --refresh nps."
+  },
+  "method": "community_assets.py reads the National Park Service's public locations service for Puerto Rico: 360 points (layer 0) and, for the 14 listings with only an outline, a point inside the outline (layer 1). Each point is placed in the municipio that holds it; the two points at sea (a lighthouse on a cay, a crash site) go to the municipio their listing's city names, and one point of an irrigation system that falls in the sea is left out. A listing counts once in each municipio where it has a point. 342 listings on 2026-10-18, of which 73 are private residences, privately owned haciendas, a home for the elderly when listed, or are named by a street address (counted, not drawn; historic_places.geojson notes.counted_not_drawn_by_municipio gives them by municipio).",
+  "sources": [
+   "nps_nrhp"
+  ],
+  "source_detail": "NPS nrhp_locations MapServer, layers 0 and 1, State = 'PUERTO RICO'; fields NRIS_Refnum, RESNAME, ResType, City, CertDate, STATUS",
+  "how_to_read": "Puerto Rico has 342 listings: San Juan 66, Ponce 45, Mayagüez 17, Arecibo 16. Four municipios have none. The municipal values add up to more than Puerto Rico's because a historic road or irrigation system counts in each municipio it crosses.",
+  "caveats": [
+   "A listing is a federal recognition, not a measure of all heritage: many historic places were never nominated, and Puerto Rico's own register (Instituto de Cultura Puertorriqueña, Junta de Planificación) is not included.",
+   "Most points come from the nomination's coordinates and can be off by tens of metres; NPS says the data are for general reference only.",
+   "A listing may no longer stand: NPS marks most Puerto Rico points 'existence unknown'."
+  ],
+  "see_also": [
+   "layers.historic_places",
+   "facilities.libraries"
+  ],
+  "where": {
+   "files": [
+    "community_series.json:nrhp_places"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: historic places",
+     "href": "index.html#e=nrhp_places.s"
+    }
+   ]
+  },
+  "added": "2026-10-18"
+ },
+ {
+  "id": "community.bh_all",
+  "ask": {
+   "en": [
+    "treatment facilities",
+    "substance use treatment",
+    "mental health treatment"
+   ],
+   "es": [
+    "centros de tratamiento",
+    "tratamiento de adicciones",
+    "tratamiento de salud mental"
+   ]
+  },
+  "name": "Substance use and mental health treatment facilities (SAMHSA)",
+  "domain": "health",
+  "domains": [
+   "health"
+  ],
+  "group": "Treatment facilities (SAMHSA)",
+  "kind": "variable",
+  "plain": "How many treatment facilities for substance use, mental health or both each municipio has, as SAMHSA's national directories list them.",
+  "definition": "Facilities in Puerto Rico listed in SAMHSA's National Directory of Drug and Alcohol Use Treatment Facilities or its National Directory of Mental Health Treatment Facilities (2025 editions, survey of 2024), in the municipio of their address. A facility in both directories counts once.",
+  "unit": "facilities",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2024,
+   "last": 2024,
+   "frequency": "One snapshot: SAMHSA's 2025 National Directories (survey of 2024, released 2026-03-06). SAMHSA publishes a new edition each year; rebuilt with python community_assets.py --refresh samhsa."
+  },
+  "method": "community_assets.py finds the newest edition on SAMHSA's National Directories page and reads the Puerto Rico rows of its two Excel files in memory (52 in the substance use directory and 59 in the mental health directory for the 2025 edition). A facility listed in both (24) counts once: the two lists are joined on a one-way hash of the name and address. Its type of care comes from the codes SA (substance use treatment) and MH (mental health treatment) in either list. Each facility is placed in the municipio of its city (Coto Laurel is Ponce, Garrochales is Arecibo). Names, addresses and telephones are never written to disk or published.",
+  "sources": [
+   "samhsa_nsumhss"
+  ],
+  "source_detail": "SAMHSA National Directories 2025 (N-SUMHSS 2024): 2025_SU_Facilities_for_All_City_All.xlsx and 2025_MH_Facilities_for_All_City_All.xlsx, columns city, state and the type-of-care codes of service_code_info",
+  "how_to_read": "SAMHSA lists 87 facilities in Puerto Rico: San Juan 15, Bayamón 9, Ponce 8, Mayagüez 8. 49 municipios have none listed. The Analysis tab shows them per 1,000 residents when shaded.",
+  "caveats": [
+   "Counts only. These are sensitive services, so no facility's name, address or point is published.",
+   "The directories list the facilities that answered SAMHSA's yearly survey and agreed to be listed. Facilities that did not answer, most individual practitioners and private offices are missing, so a 0 does not mean no care is offered there.",
+   "The survey describes 2024. SAMHSA's live locator (FindTreatment.gov) is more current but states no licence for reuse, so it is not used.",
+   "A facility is counted where its address is; people travel to care, often to another municipio."
+  ],
+  "see_also": [
+   "community.bh_su",
+   "community.bh_mh",
+   "community.bh_both",
+   "health.hpsa_mh_short"
+  ],
+  "where": {
+   "files": [
+    "community_series.json:bh_all"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: substance use and mental health treatment facilities (SAMHSA)",
+     "href": "index.html#e=bh_all.f.per1000.red.q.1.0.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-18"
+ },
+ {
+  "id": "community.bh_su",
+  "ask": {
+   "en": [
+    "addiction treatment only"
+   ],
+   "es": [
+    "solo adicciones"
+   ]
+  },
+  "name": "Treatment facilities: substance use only (SAMHSA)",
+  "domain": "health",
+  "domains": [
+   "health"
+  ],
+  "group": "Treatment facilities (SAMHSA)",
+  "kind": "variable",
+  "plain": "How many facilities in each municipio treat substance use but not mental health, as SAMHSA's directories list them.",
+  "definition": "Facilities whose listed type of care includes substance use treatment and not mental health treatment, in either of SAMHSA's 2025 National Directories.",
+  "unit": "facilities",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2024,
+   "last": 2024,
+   "frequency": "One snapshot: SAMHSA's 2025 National Directories (survey of 2024, released 2026-03-06). SAMHSA publishes a new edition each year; rebuilt with python community_assets.py --refresh samhsa."
+  },
+  "method": "community_assets.py finds the newest edition on SAMHSA's National Directories page and reads the Puerto Rico rows of its two Excel files in memory (52 in the substance use directory and 59 in the mental health directory for the 2025 edition). A facility listed in both (24) counts once: the two lists are joined on a one-way hash of the name and address. Its type of care comes from the codes SA (substance use treatment) and MH (mental health treatment) in either list. Each facility is placed in the municipio of its city (Coto Laurel is Ponce, Garrochales is Arecibo). Names, addresses and telephones are never written to disk or published.",
+  "sources": [
+   "samhsa_nsumhss"
+  ],
+  "source_detail": "SAMHSA National Directories 2025 (N-SUMHSS 2024): 2025_SU_Facilities_for_All_City_All.xlsx and 2025_MH_Facilities_for_All_City_All.xlsx, columns city, state and the type-of-care codes of service_code_info",
+  "how_to_read": "28 facilities in Puerto Rico: Bayamón 5; Mayagüez, Arecibo and Aguadilla 2 each.",
+  "caveats": [
+   "Counts only. These are sensitive services, so no facility's name, address or point is published.",
+   "The directories list the facilities that answered SAMHSA's yearly survey and agreed to be listed. Facilities that did not answer, most individual practitioners and private offices are missing, so a 0 does not mean no care is offered there.",
+   "The survey describes 2024. SAMHSA's live locator (FindTreatment.gov) is more current but states no licence for reuse, so it is not used.",
+   "A facility is counted where its address is; people travel to care, often to another municipio."
+  ],
+  "see_also": [
+   "community.bh_all",
+   "community.bh_mh",
+   "community.bh_both",
+   "health.hpsa_mh_short"
+  ],
+  "where": {
+   "files": [
+    "community_series.json:bh_su"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: treatment facilities: substance use only (SAMHSA)",
+     "href": "index.html#e=bh_su.s"
+    }
+   ]
+  },
+  "added": "2026-10-18"
+ },
+ {
+  "id": "community.bh_mh",
+  "ask": {
+   "en": [
+    "mental health only"
+   ],
+   "es": [
+    "solo salud mental"
+   ]
+  },
+  "name": "Treatment facilities: mental health only (SAMHSA)",
+  "domain": "health",
+  "domains": [
+   "health"
+  ],
+  "group": "Treatment facilities (SAMHSA)",
+  "kind": "variable",
+  "plain": "How many facilities in each municipio treat mental health but not substance use, as SAMHSA's directories list them.",
+  "definition": "Facilities whose listed type of care includes mental health treatment and not substance use treatment, in either of SAMHSA's 2025 National Directories.",
+  "unit": "facilities",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2024,
+   "last": 2024,
+   "frequency": "One snapshot: SAMHSA's 2025 National Directories (survey of 2024, released 2026-03-06). SAMHSA publishes a new edition each year; rebuilt with python community_assets.py --refresh samhsa."
+  },
+  "method": "community_assets.py finds the newest edition on SAMHSA's National Directories page and reads the Puerto Rico rows of its two Excel files in memory (52 in the substance use directory and 59 in the mental health directory for the 2025 edition). A facility listed in both (24) counts once: the two lists are joined on a one-way hash of the name and address. Its type of care comes from the codes SA (substance use treatment) and MH (mental health treatment) in either list. Each facility is placed in the municipio of its city (Coto Laurel is Ponce, Garrochales is Arecibo). Names, addresses and telephones are never written to disk or published.",
+  "sources": [
+   "samhsa_nsumhss"
+  ],
+  "source_detail": "SAMHSA National Directories 2025 (N-SUMHSS 2024): 2025_SU_Facilities_for_All_City_All.xlsx and 2025_MH_Facilities_for_All_City_All.xlsx, columns city, state and the type-of-care codes of service_code_info",
+  "how_to_read": "17 facilities in Puerto Rico: San Juan 4, Ponce 3, Gurabo 3, Mayagüez 2.",
+  "caveats": [
+   "Counts only. These are sensitive services, so no facility's name, address or point is published.",
+   "The directories list the facilities that answered SAMHSA's yearly survey and agreed to be listed. Facilities that did not answer, most individual practitioners and private offices are missing, so a 0 does not mean no care is offered there.",
+   "The survey describes 2024. SAMHSA's live locator (FindTreatment.gov) is more current but states no licence for reuse, so it is not used.",
+   "A facility is counted where its address is; people travel to care, often to another municipio."
+  ],
+  "see_also": [
+   "community.bh_all",
+   "community.bh_su",
+   "community.bh_both",
+   "health.hpsa_mh_short"
+  ],
+  "where": {
+   "files": [
+    "community_series.json:bh_mh"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: treatment facilities: mental health only (SAMHSA)",
+     "href": "index.html#e=bh_mh.s"
+    }
+   ]
+  },
+  "added": "2026-10-18"
+ },
+ {
+  "id": "community.bh_both",
+  "ask": {
+   "en": [
+    "dual diagnosis"
+   ],
+   "es": [
+    "diagnostico dual"
+   ]
+  },
+  "name": "Treatment facilities: both substance use and mental health (SAMHSA)",
+  "domain": "health",
+  "domains": [
+   "health"
+  ],
+  "group": "Treatment facilities (SAMHSA)",
+  "kind": "variable",
+  "plain": "How many facilities in each municipio treat both substance use and mental health, as SAMHSA's directories list them.",
+  "definition": "Facilities whose listed type of care includes both substance use treatment and mental health treatment, in either of SAMHSA's 2025 National Directories.",
+  "unit": "facilities",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2024,
+   "last": 2024,
+   "frequency": "One snapshot: SAMHSA's 2025 National Directories (survey of 2024, released 2026-03-06). SAMHSA publishes a new edition each year; rebuilt with python community_assets.py --refresh samhsa."
+  },
+  "method": "community_assets.py finds the newest edition on SAMHSA's National Directories page and reads the Puerto Rico rows of its two Excel files in memory (52 in the substance use directory and 59 in the mental health directory for the 2025 edition). A facility listed in both (24) counts once: the two lists are joined on a one-way hash of the name and address. Its type of care comes from the codes SA (substance use treatment) and MH (mental health treatment) in either list. Each facility is placed in the municipio of its city (Coto Laurel is Ponce, Garrochales is Arecibo). Names, addresses and telephones are never written to disk or published.",
+  "sources": [
+   "samhsa_nsumhss"
+  ],
+  "source_detail": "SAMHSA National Directories 2025 (N-SUMHSS 2024): 2025_SU_Facilities_for_All_City_All.xlsx and 2025_MH_Facilities_for_All_City_All.xlsx, columns city, state and the type-of-care codes of service_code_info",
+  "how_to_read": "42 facilities in Puerto Rico: San Juan 10; Ponce, Mayagüez and Caguas 4 each.",
+  "caveats": [
+   "Counts only. These are sensitive services, so no facility's name, address or point is published.",
+   "The directories list the facilities that answered SAMHSA's yearly survey and agreed to be listed. Facilities that did not answer, most individual practitioners and private offices are missing, so a 0 does not mean no care is offered there.",
+   "The survey describes 2024. SAMHSA's live locator (FindTreatment.gov) is more current but states no licence for reuse, so it is not used.",
+   "A facility is counted where its address is; people travel to care, often to another municipio."
+  ],
+  "see_also": [
+   "community.bh_all",
+   "community.bh_su",
+   "community.bh_mh",
+   "health.hpsa_mh_short"
+  ],
+  "where": {
+   "files": [
+    "community_series.json:bh_both"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: treatment facilities: both substance use and mental health (SAMHSA)",
+     "href": "index.html#e=bh_both.s"
+    }
+   ]
+  },
+  "added": "2026-10-18"
+ },
+ {
+  "kind": "layer",
+  "value_type": "geometry",
+  "unit": "points (longitude and latitude, WGS 84)",
+  "added": "2026-10-18",
+  "id": "layers.historic_places",
+  "name": "Historic places (map layer)",
+  "domain": "communities",
+  "domains": [
+   "communities",
+   "education",
+   "economy.visitor-economy"
+  ],
+  "group": "Historic places",
+  "plain": "Places listed on the National Register of Historic Places, with their name, type, municipio and the date they were listed. Private homes and haciendas are counted by municipio, not drawn.",
+  "definition": "historic_places.geojson: one point per listing and municipio from the National Park Service's public locations (a listing with only an outline is placed at a point inside it), with name, type (historic building, structure, district, site or object), municipio, geoid and listed (the listing date, YYYY-MM or YYYY-MM-DD). Private residences, and listings whose name holds a street address or house number, are not drawn: they count in nrhp_places, and the file's notes give how many by municipio (counted_not_drawn_by_municipio). 277 points for 269 of 342 listings on 2026-10-18; 73 listings counted only.",
+  "geography": "Points in 74 municipios",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One snapshot: NPS edits up to 2026-08-07 (read 2026-10-18). Rebuilt with python community_assets.py --refresh nps."
+  },
+  "method": "community_assets.py reads layers 0 and 1 of the NPS service for Puerto Rico, keeps listed properties, places each point by point in polygon and keeps one point per listing and municipio. The address is never requested. NPS gives no ownership or use field: names that match a pattern (Casa, House, Residencia, Residence, Home, Villa, Chalet, Quinta, Hacienda, a number or a street word) are reviewed by hand in nrhp_review.json, which keeps public buildings, museums, public heritage sites and numbered bridges drawn and counts private residences only (decided by FPR on 2026-10-18). The 2D map (facilities.js) and the 3D view (facilities3d.js) draw it with core/facilities.js, which holds its file, colour, pop-up and note.",
+  "sources": [
+   "nps_nrhp"
+  ],
+  "source_detail": "NPS nrhp_locations MapServer, layers 0 and 1",
+  "how_to_read": "Switch the layer on in the Map layers tab of the 2D map or the 3D view (Community services, Education and culture: Historic places). Both views draw the same points, with the same note on what is counted but not drawn and the same pop-up. Click a point for the place's name, type, municipio, listing date and source.",
+  "caveats": [
+   "Points can be off by tens of metres, and a listing may no longer stand.",
+   "Private homes are counted, not drawn, and their names are not published; the review is by name and public descriptions, so a few borderline buildings (listed in nrhp_review.json) may be on the wrong side.",
+   "Sensitive listings, such as archaeological sites, are not public."
+  ],
+  "see_also": [
+   "community.nrhp_places",
+   "layers.libraries"
+  ],
+  "where": {
+   "files": [
+    "historic_places.geojson:name",
+    "historic_places.geojson:type",
+    "historic_places.geojson:municipio",
+    "historic_places.geojson:geoid",
+    "historic_places.geojson:listed"
+   ],
+   "view": [
+    {
+     "label": "Map, Map layers tab: Historic places",
+     "href": "index.html#l=historic"
+    },
+    {
+     "label": "3D view, Layers tab: Historic places",
+     "href": "3d.html"
+    }
+   ]
+  }
+ },
+ {
+  "kind": "layer",
+  "value_type": "geometry",
+  "unit": "points (longitude and latitude, WGS 84)",
+  "added": "2026-10-18",
+  "id": "layers.town_halls",
+  "name": "City halls (map layer)",
+  "domain": "communities",
+  "domains": [
+   "communities",
+   "infrastructure"
+  ],
+  "group": "Public buildings",
+  "plain": "City halls (alcaldías) as volunteers mapped them in OpenStreetMap, with their name, type and municipio.",
+  "definition": "town_halls.geojson: one point per OpenStreetMap feature tagged amenity=townhall (a building outline is drawn at its centre), with name (3 have none), type (city hall, or city hall annex when the name says Anexo), municipio, geoid and osm (the OpenStreetMap element, such as w123). 65 features on 2026-10-18: 63 city halls in 62 municipios and 2 annexes.",
+  "geography": "Points in 62 municipios",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "OpenStreetMap data of 2026-10-18. Refreshed by hand (python community_assets.py --refresh townhall): a runner cannot reach Overpass."
+  },
+  "method": "community_assets.py asks the Overpass API for every amenity=townhall node, way and relation in Puerto Rico's bounding box and places each by point in polygon. A node and its building with the same name within 30 m would count once (none on 2026-10-18). The 2D map (facilities.js) and the 3D view (facilities3d.js) draw it with core/facilities.js, which holds its file, colour, pop-up and note.",
+  "sources": [
+   "osm"
+  ],
+  "source_detail": "Overpass API: nwr[\"amenity\"=\"townhall\"](17.85,-67.97,18.57,-65.20); out center tags",
+  "how_to_read": "Switch the layer on in the Map layers tab of the 2D map or the 3D view (Community services, Government: City halls). Both views draw the same points, with the same note on what is counted but not drawn and the same pop-up. 16 municipios have no city hall mapped on 2026-10-18 (Adjuntas, Aguas Buenas, Arroyo, Barceloneta, Barranquitas, Cidra, Coamo, Florida, Guayama, Hormigueros, Juana Díaz, Juncos, Orocovis, Quebradillas, Río Grande and San Sebastián). Every municipio has a city hall; the gap is in the map, and anyone can add one at openstreetmap.org.",
+  "caveats": [
+   "Volunteers map these; 16 municipios have none mapped, and none was added by hand.",
+   "ODbL: credit OpenStreetMap contributors; a database built on this file must be shared alike."
+  ],
+  "see_also": [
+   "layers.police_stations",
+   "layers.fire_stations"
+  ],
+  "where": {
+   "files": [
+    "town_halls.geojson:name",
+    "town_halls.geojson:type",
+    "town_halls.geojson:municipio",
+    "town_halls.geojson:geoid",
+    "town_halls.geojson:osm"
+   ],
+   "view": [
+    {
+     "label": "Map, Map layers tab: City halls",
+     "href": "index.html#l=townhalls"
+    },
+    {
+     "label": "3D view, Layers tab: City halls",
+     "href": "3d.html"
+    }
+   ]
+  }
+ }
+]

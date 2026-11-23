@@ -1,0 +1,469 @@
+[
+  {
+    "id": "essentials.ess_supermarket_km",
+    "ask": {
+      "en": [
+        "distance to supermarket",
+        "food access",
+        "food desert",
+        "nearest supermarket"
+      ],
+      "es": [
+        "distancia al supermercado",
+        "acceso a alimentos",
+        "desierto alimentario",
+        "supermercado mas cercano"
+      ]
+    },
+    "name": "Road distance to a supermarket (estimate, km)",
+    "domain": "communities",
+    "domains": [
+      "communities",
+      "health",
+      "economy"
+    ],
+    "group": "Distance to essentials",
+    "kind": "variable",
+    "plain": "How far residents live from the nearest supermarket, along the roads, on average.",
+    "definition": "The average road distance from where the area's residents live to the nearest supermarket, in kilometres, each 2020 Census block weighted by its residents. Supermarkets are Overture's grocery and warehouse-club places whose name is a supermarket's (\"supermercado\", \"supermarket\" or a supermarket chain), plus Walmart, Costco and Sam's Club, and OpenStreetMap's supermarkets that Overture lacks; corner stores (colmados) are left out. An estimate: distance along the mapped roads in either direction, not a driving route or a time. The places come from a directory, so a shop that closed may still be counted and one that opened may be missing. Blocks with no road within 2 km, or no road to any place of the kind, are left out.",
+    "unit": "km",
+    "value_type": "rate",
+    "geography": "78 municipalities, Puerto Rico and 901 barrios",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Rebuilt by hand with python essentials.py --refresh (Overture release 2026-10-21.0, OpenStreetMap extract of 2026-11-17)."
+    },
+    "method": "essentials.py searches the road graph the map uses (roads.bin, from OpenStreetMap) outward from every place of a kind at once, in both directions of every road (one-way streets are read as two-way: a distance, not a driving route). Each 2020 Census block with residents is snapped to the nearest road joined to the network within 2 km; its distance is the road distance to the nearest place, plus the straight lines from the block and the place to their roads. A barrio's or municipio's figure is the average over its residents. Shops come from Overture's places (confidence 0.5 or more) and OpenStreetMap's that Overture lacks; libraries and fire stations from the map's own layers, with OpenStreetMap's fire stations that USGS lacks. No time is estimated and no traffic is assumed.",
+    "sources": [
+      "overture",
+      "osm",
+      "census_tiger"
+    ],
+    "source_detail": "Estimated by the observatory: road distance over the OpenStreetMap road graph (roads.bin) from each 2020 Census block with residents to the nearest point of the kind, averaged over residents (essentials.py)",
+    "how_to_read": "Puerto Rico: 2.81 km on average (half of residents 1.97 km or less). Farthest: Maricao (14.96 km), Comerío (8.69 km), Adjuntas (5.97 km). Barrios: half are 3.74 km or less, one in ten 9.66 km or more. Range: from Overture's 483 places alone the island figure is 2.94 km; with the 70 OpenStreetMap places Overture lacks, 2.81 km.",
+    "caveats": [
+      "The places come from directories, not an inspection: a shop that closed may still be listed (the distance then reads shorter) and one that opened may be missing (longer).",
+      "Supermarket is a rule on the name (\"supermercado\", \"supermarket\" or a chain); in small towns the nearest food store is often a colmado that the rule leaves out: compare with the distance to any food store.",
+      "A road distance, not a travel time: it does not say whether people have a car, how often a bus passes or how steep the road is.",
+      "Check: of OpenStreetMap's places, 76.0% of 292 supermarkets, 87.1% of 387 pharmacies, 84.1% of 308 banks have an Overture place within 300 m."
+    ],
+    "see_also": [
+      "essentials.ess_grocery_km",
+      "essentials.ess_pharmacy_km",
+      "essentials.ess_bank_km",
+      "essentials.ess_library_km"
+    ],
+    "where": {
+      "files": [
+        "essentials_series.json:ess_supermarket_km",
+        "essentials_barrio.json:ess_supermarket_km"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Communities · Road distance to essentials (estimate)): Road distance to a supermarket (estimate, km)",
+          "href": "index.html#e=ess_supermarket_km.f"
+        }
+      ]
+    },
+    "added": "2026-11-18"
+  },
+  {
+    "id": "essentials.ess_grocery_km",
+    "ask": {
+      "en": [
+        "distance to grocery store",
+        "nearest colmado",
+        "corner store"
+      ],
+      "es": [
+        "distancia al colmado",
+        "colmado mas cercano",
+        "tienda de alimentos"
+      ]
+    },
+    "name": "Road distance to a food store (supermarket or colmado) (estimate, km)",
+    "domain": "communities",
+    "domains": [
+      "communities",
+      "health",
+      "economy"
+    ],
+    "group": "Distance to essentials",
+    "kind": "variable",
+    "plain": "How far residents live from the nearest food store of any size, colmados included, along the roads, on average.",
+    "definition": "The average road distance from where the area's residents live to the nearest food store (supermarket or colmado), in kilometres, each 2020 Census block weighted by its residents. Food stores are every place in Overture's grocery categories, colmados (corner stores) included, and the supermarkets above. In small towns the nearest food store is often a colmado or a 'super colmado' that the supermarket rule leaves out. An estimate: distance along the mapped roads in either direction, not a driving route or a time. The places come from a directory, so a shop that closed may still be counted and one that opened may be missing. Blocks with no road within 2 km, or no road to any place of the kind, are left out.",
+    "unit": "km",
+    "value_type": "rate",
+    "geography": "78 municipalities, Puerto Rico and 901 barrios",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Rebuilt by hand with python essentials.py --refresh (Overture release 2026-10-21.0, OpenStreetMap extract of 2026-11-17)."
+    },
+    "method": "essentials.py searches the road graph the map uses (roads.bin, from OpenStreetMap) outward from every place of a kind at once, in both directions of every road (one-way streets are read as two-way: a distance, not a driving route). Each 2020 Census block with residents is snapped to the nearest road joined to the network within 2 km; its distance is the road distance to the nearest place, plus the straight lines from the block and the place to their roads. A barrio's or municipio's figure is the average over its residents. Shops come from Overture's places (confidence 0.5 or more) and OpenStreetMap's that Overture lacks; libraries and fire stations from the map's own layers, with OpenStreetMap's fire stations that USGS lacks. No time is estimated and no traffic is assumed.",
+    "sources": [
+      "overture",
+      "osm",
+      "census_tiger"
+    ],
+    "source_detail": "Estimated by the observatory: road distance over the OpenStreetMap road graph (roads.bin) from each 2020 Census block with residents to the nearest point of the kind, averaged over residents (essentials.py)",
+    "how_to_read": "Puerto Rico: 1.88 km on average, against 2.81 km to a supermarket. Farthest: Maricao (5.61 km), Ciales (4.9 km), Orocovis (4.68 km). In Maricao the nearest supermarket is 14.96 km away on average, the nearest food store 5.61 km.",
+    "caveats": [
+      "The places come from directories, not an inspection: a shop that closed may still be listed (the distance then reads shorter) and one that opened may be missing (longer).",
+      "A colmado sells less, often at higher prices, than a supermarket; the two distances together show where only a colmado is near.",
+      "A road distance, not a travel time: it does not say whether people have a car, how often a bus passes or how steep the road is."
+    ],
+    "see_also": [
+      "essentials.ess_supermarket_km",
+      "essentials.ess_pharmacy_km",
+      "essentials.ess_bank_km",
+      "essentials.ess_library_km"
+    ],
+    "where": {
+      "files": [
+        "essentials_series.json:ess_grocery_km",
+        "essentials_barrio.json:ess_grocery_km"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Communities · Road distance to essentials (estimate)): Road distance to a food store (supermarket or colmado) (estimate, km)",
+          "href": "index.html#e=ess_grocery_km.f"
+        }
+      ]
+    },
+    "added": "2026-11-18"
+  },
+  {
+    "id": "essentials.ess_pharmacy_km",
+    "ask": {
+      "en": [
+        "distance to pharmacy",
+        "nearest pharmacy",
+        "drugstore"
+      ],
+      "es": [
+        "distancia a la farmacia",
+        "farmacia mas cercana"
+      ]
+    },
+    "name": "Road distance to a pharmacy (estimate, km)",
+    "domain": "communities",
+    "domains": [
+      "communities",
+      "health",
+      "economy"
+    ],
+    "group": "Distance to essentials",
+    "kind": "variable",
+    "plain": "How far residents live from the nearest pharmacy, along the roads, on average.",
+    "definition": "The average road distance from where the area's residents live to the nearest pharmacy, in kilometres, each 2020 Census block weighted by its residents. Pharmacies are Overture's places in the pharmacy and drugstore categories, and OpenStreetMap's pharmacies that Overture lacks. An estimate: distance along the mapped roads in either direction, not a driving route or a time. The places come from a directory, so a shop that closed may still be counted and one that opened may be missing. Blocks with no road within 2 km, or no road to any place of the kind, are left out.",
+    "unit": "km",
+    "value_type": "rate",
+    "geography": "78 municipalities, Puerto Rico and 901 barrios",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Rebuilt by hand with python essentials.py --refresh (Overture release 2026-10-21.0, OpenStreetMap extract of 2026-11-17)."
+    },
+    "method": "essentials.py searches the road graph the map uses (roads.bin, from OpenStreetMap) outward from every place of a kind at once, in both directions of every road (one-way streets are read as two-way: a distance, not a driving route). Each 2020 Census block with residents is snapped to the nearest road joined to the network within 2 km; its distance is the road distance to the nearest place, plus the straight lines from the block and the place to their roads. A barrio's or municipio's figure is the average over its residents. Shops come from Overture's places (confidence 0.5 or more) and OpenStreetMap's that Overture lacks; libraries and fire stations from the map's own layers, with OpenStreetMap's fire stations that USGS lacks. No time is estimated and no traffic is assumed.",
+    "sources": [
+      "overture",
+      "osm",
+      "census_tiger"
+    ],
+    "source_detail": "Estimated by the observatory: road distance over the OpenStreetMap road graph (roads.bin) from each 2020 Census block with residents to the nearest point of the kind, averaged over residents (essentials.py)",
+    "how_to_read": "Puerto Rico: 2.24 km on average (half of residents 1.49 km or less). Farthest: Maricao (8.59 km), Orocovis (5.61 km), Adjuntas (5.5 km). Range: from Overture's 968 places alone the island figure is 2.3 km; with the 50 OpenStreetMap places Overture lacks, 2.24 km.",
+    "caveats": [
+      "The places come from directories, not an inspection: a shop that closed may still be listed (the distance then reads shorter) and one that opened may be missing (longer).",
+      "Blocks with no road within 2 km, or no road path to a place of the kind, have no figure: Culebra has no pharmacy in either directory.",
+      "A road distance, not a travel time: it does not say whether people have a car, how often a bus passes or how steep the road is.",
+      "Check: of OpenStreetMap's places, 76.0% of 292 supermarkets, 87.1% of 387 pharmacies, 84.1% of 308 banks have an Overture place within 300 m."
+    ],
+    "see_also": [
+      "essentials.ess_supermarket_km",
+      "essentials.ess_grocery_km",
+      "essentials.ess_bank_km",
+      "essentials.ess_library_km"
+    ],
+    "where": {
+      "files": [
+        "essentials_series.json:ess_pharmacy_km",
+        "essentials_barrio.json:ess_pharmacy_km"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Communities · Road distance to essentials (estimate)): Road distance to a pharmacy (estimate, km)",
+          "href": "index.html#e=ess_pharmacy_km.f"
+        }
+      ]
+    },
+    "added": "2026-11-18"
+  },
+  {
+    "id": "essentials.ess_bank_km",
+    "ask": {
+      "en": [
+        "distance to bank",
+        "nearest bank",
+        "banking access"
+      ],
+      "es": [
+        "distancia al banco",
+        "banco mas cercano",
+        "cooperativa mas cercana"
+      ]
+    },
+    "name": "Road distance to a bank or cooperativa (estimate, km)",
+    "domain": "communities",
+    "domains": [
+      "communities",
+      "health",
+      "economy"
+    ],
+    "group": "Distance to essentials",
+    "kind": "variable",
+    "plain": "How far residents live from the nearest bank branch or cooperativa, along the roads, on average.",
+    "definition": "The average road distance from where the area's residents live to the nearest bank or cooperativa, in kilometres, each 2020 Census block weighted by its residents. Banks and cooperativas are Overture's places in the bank and credit union categories, and OpenStreetMap's banks that Overture lacks; ATMs are not counted. An estimate: distance along the mapped roads in either direction, not a driving route or a time. The places come from a directory, so a shop that closed may still be counted and one that opened may be missing. Blocks with no road within 2 km, or no road to any place of the kind, are left out.",
+    "unit": "km",
+    "value_type": "rate",
+    "geography": "78 municipalities, Puerto Rico and 901 barrios",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Rebuilt by hand with python essentials.py --refresh (Overture release 2026-10-21.0, OpenStreetMap extract of 2026-11-17)."
+    },
+    "method": "essentials.py searches the road graph the map uses (roads.bin, from OpenStreetMap) outward from every place of a kind at once, in both directions of every road (one-way streets are read as two-way: a distance, not a driving route). Each 2020 Census block with residents is snapped to the nearest road joined to the network within 2 km; its distance is the road distance to the nearest place, plus the straight lines from the block and the place to their roads. A barrio's or municipio's figure is the average over its residents. Shops come from Overture's places (confidence 0.5 or more) and OpenStreetMap's that Overture lacks; libraries and fire stations from the map's own layers, with OpenStreetMap's fire stations that USGS lacks. No time is estimated and no traffic is assumed.",
+    "sources": [
+      "overture",
+      "osm",
+      "census_tiger"
+    ],
+    "source_detail": "Estimated by the observatory: road distance over the OpenStreetMap road graph (roads.bin) from each 2020 Census block with residents to the nearest point of the kind, averaged over residents (essentials.py)",
+    "how_to_read": "Puerto Rico: 3.44 km on average (half of residents 2.56 km or less). Farthest: Guánica (9.04 km), Maricao (8.7 km), Orocovis (6.75 km). Range: from Overture's 439 places alone the island figure is 3.53 km; with the 49 OpenStreetMap places Overture lacks, 3.44 km.",
+    "caveats": [
+      "The places come from directories, not an inspection: a shop that closed may still be listed (the distance then reads shorter) and one that opened may be missing (longer).",
+      "Cooperativas are counted with banks; ATMs are not.",
+      "A road distance, not a travel time: it does not say whether people have a car, how often a bus passes or how steep the road is.",
+      "Check: of OpenStreetMap's places, 76.0% of 292 supermarkets, 87.1% of 387 pharmacies, 84.1% of 308 banks have an Overture place within 300 m."
+    ],
+    "see_also": [
+      "essentials.ess_supermarket_km",
+      "essentials.ess_grocery_km",
+      "essentials.ess_pharmacy_km",
+      "essentials.ess_library_km"
+    ],
+    "where": {
+      "files": [
+        "essentials_series.json:ess_bank_km",
+        "essentials_barrio.json:ess_bank_km"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Communities · Road distance to essentials (estimate)): Road distance to a bank or cooperativa (estimate, km)",
+          "href": "index.html#e=ess_bank_km.f"
+        }
+      ]
+    },
+    "added": "2026-11-18"
+  },
+  {
+    "id": "essentials.ess_library_km",
+    "ask": {
+      "en": [
+        "distance to library",
+        "nearest library"
+      ],
+      "es": [
+        "distancia a la biblioteca",
+        "biblioteca mas cercana"
+      ]
+    },
+    "name": "Road distance to a library (estimate, km)",
+    "domain": "communities",
+    "domains": [
+      "communities",
+      "health",
+      "economy"
+    ],
+    "group": "Distance to essentials",
+    "kind": "variable",
+    "plain": "How far residents live from the nearest library on the map, along the roads, on average.",
+    "definition": "The average road distance from where the area's residents live to the nearest library, in kilometres, each 2020 Census block weighted by its residents. Libraries are the ones the map draws: USAC's E-Rate list of public libraries, which in Puerto Rico also holds community, church and university libraries and municipal technology centres, so it counts more places than the municipal libraries alone. An estimate: distance along the mapped roads in either direction, not a driving route or a time. The places come from a directory, so a shop that closed may still be counted and one that opened may be missing. Blocks with no road within 2 km, or no road to any place of the kind, are left out.",
+    "unit": "km",
+    "value_type": "rate",
+    "geography": "78 municipalities, Puerto Rico and 901 barrios",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Rebuilt by hand with python essentials.py --refresh (Overture release 2026-10-21.0, OpenStreetMap extract of 2026-11-17)."
+    },
+    "method": "essentials.py searches the road graph the map uses (roads.bin, from OpenStreetMap) outward from every place of a kind at once, in both directions of every road (one-way streets are read as two-way: a distance, not a driving route). Each 2020 Census block with residents is snapped to the nearest road joined to the network within 2 km; its distance is the road distance to the nearest place, plus the straight lines from the block and the place to their roads. A barrio's or municipio's figure is the average over its residents. Shops come from Overture's places (confidence 0.5 or more) and OpenStreetMap's that Overture lacks; libraries and fire stations from the map's own layers, with OpenStreetMap's fire stations that USGS lacks. No time is estimated and no traffic is assumed.",
+    "sources": [
+      "usac_erate",
+      "osm",
+      "census_tiger"
+    ],
+    "source_detail": "Estimated by the observatory: road distance over the OpenStreetMap road graph (roads.bin) from each 2020 Census block with residents to the nearest point of the kind, averaged over residents (essentials.py)",
+    "how_to_read": "Puerto Rico: 2.41 km on average. Farthest: Utuado (5.19 km), Maricao (4.96 km), Adjuntas (4.76 km).",
+    "caveats": [
+      "The libraries are USAC's E-Rate list of public libraries, which in Puerto Rico also holds community, church and university libraries and municipal technology centres, so the distance is shorter than to a municipal library.",
+      "A road distance, not a travel time: it does not say whether people have a car, how often a bus passes or how steep the road is."
+    ],
+    "see_also": [
+      "essentials.ess_supermarket_km",
+      "essentials.ess_grocery_km",
+      "essentials.ess_pharmacy_km",
+      "essentials.ess_bank_km"
+    ],
+    "where": {
+      "files": [
+        "essentials_series.json:ess_library_km",
+        "essentials_barrio.json:ess_library_km"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Communities · Road distance to essentials (estimate)): Road distance to a library (estimate, km)",
+          "href": "index.html#e=ess_library_km.f"
+        }
+      ]
+    },
+    "added": "2026-11-18"
+  },
+  {
+    "id": "essentials.ess_fire_km",
+    "ask": {
+      "en": [
+        "distance to fire station",
+        "nearest fire station",
+        "emergency services access"
+      ],
+      "es": [
+        "distancia a la estacion de bomberos",
+        "bomberos mas cercanos"
+      ]
+    },
+    "name": "Road distance to a fire or EMS station (estimate, km)",
+    "domain": "communities",
+    "domains": [
+      "communities",
+      "health",
+      "economy"
+    ],
+    "group": "Distance to essentials",
+    "kind": "variable",
+    "plain": "How far residents live from the nearest fire or EMS station, along the roads, on average.",
+    "definition": "The average road distance from where the area's residents live to the nearest fire or EMS station, in kilometres, each 2020 Census block weighted by its residents. Stations are the fire and EMS stations the map draws (USGS), and OpenStreetMap's fire stations that USGS lacks (Jayuya's, on 2026-11-18). An estimate: distance along the mapped roads in either direction, not a driving route or a time. The places come from a directory, so a shop that closed may still be counted and one that opened may be missing. Blocks with no road within 2 km, or no road to any place of the kind, are left out.",
+    "unit": "km",
+    "value_type": "rate",
+    "geography": "78 municipalities, Puerto Rico and 901 barrios",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Rebuilt by hand with python essentials.py --refresh (Overture release 2026-10-21.0, OpenStreetMap extract of 2026-11-17)."
+    },
+    "method": "essentials.py searches the road graph the map uses (roads.bin, from OpenStreetMap) outward from every place of a kind at once, in both directions of every road (one-way streets are read as two-way: a distance, not a driving route). Each 2020 Census block with residents is snapped to the nearest road joined to the network within 2 km; its distance is the road distance to the nearest place, plus the straight lines from the block and the place to their roads. A barrio's or municipio's figure is the average over its residents. Shops come from Overture's places (confidence 0.5 or more) and OpenStreetMap's that Overture lacks; libraries and fire stations from the map's own layers, with OpenStreetMap's fire stations that USGS lacks. No time is estimated and no traffic is assumed.",
+    "sources": [
+      "usgs_structures",
+      "osm",
+      "census_tiger"
+    ],
+    "source_detail": "Estimated by the observatory: road distance over the OpenStreetMap road graph (roads.bin) from each 2020 Census block with residents to the nearest point of the kind, averaged over residents (essentials.py)",
+    "how_to_read": "Puerto Rico: 4.58 km on average (half of residents 4.07 km or less). Farthest: Arecibo (7.32 km), Ciales (7.03 km), Maricao (6.91 km).",
+    "caveats": [
+      "USGS's list, with OpenStreetMap's stations that USGS lacks (Jayuya's on 2026-11-18). A distance, not a response time.",
+      "A road distance, not a travel time: it does not say whether people have a car, how often a bus passes or how steep the road is."
+    ],
+    "see_also": [
+      "essentials.ess_supermarket_km",
+      "essentials.ess_grocery_km",
+      "essentials.ess_pharmacy_km",
+      "essentials.ess_bank_km"
+    ],
+    "where": {
+      "files": [
+        "essentials_series.json:ess_fire_km",
+        "essentials_barrio.json:ess_fire_km"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Communities · Road distance to essentials (estimate)): Road distance to a fire or EMS station (estimate, km)",
+          "href": "index.html#e=ess_fire_km.f"
+        }
+      ]
+    },
+    "added": "2026-11-18"
+  },
+  {
+    "id": "essentials.ess_supermarket_far_pct",
+    "ask": {
+      "en": [
+        "far from supermarket",
+        "food desert",
+        "low food access"
+      ],
+      "es": [
+        "lejos del supermercado",
+        "bajo acceso a alimentos"
+      ]
+    },
+    "name": "Residents more than 5 km by road from a supermarket (estimate, %)",
+    "domain": "communities",
+    "domains": [
+      "communities",
+      "health",
+      "economy"
+    ],
+    "group": "Distance to essentials",
+    "kind": "variable",
+    "plain": "The share of residents who live more than 5 km by road from the nearest supermarket.",
+    "definition": "The share of the area's residents (2020 Census) who live more than 5 km by road from the nearest supermarket. Supermarkets are Overture's grocery and warehouse-club places whose name is a supermarket's (\"supermercado\", \"supermarket\" or a supermarket chain), plus Walmart, Costco and Sam's Club, and OpenStreetMap's supermarkets that Overture lacks; corner stores (colmados) are left out. An estimate: distance along the mapped roads in either direction, not a driving route or a time. The places come from a directory, so a shop that closed may still be counted and one that opened may be missing. Blocks with no road within 2 km, or no road to any place of the kind, are left out.",
+    "unit": "%",
+    "value_type": "rate",
+    "geography": "78 municipalities, Puerto Rico and 901 barrios",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Rebuilt by hand with python essentials.py --refresh (Overture release 2026-10-21.0, OpenStreetMap extract of 2026-11-17)."
+    },
+    "method": "essentials.py searches the road graph the map uses (roads.bin, from OpenStreetMap) outward from every place of a kind at once, in both directions of every road (one-way streets are read as two-way: a distance, not a driving route). Each 2020 Census block with residents is snapped to the nearest road joined to the network within 2 km; its distance is the road distance to the nearest place, plus the straight lines from the block and the place to their roads. A barrio's or municipio's figure is the average over its residents. Shops come from Overture's places (confidence 0.5 or more) and OpenStreetMap's that Overture lacks; libraries and fire stations from the map's own layers, with OpenStreetMap's fire stations that USGS lacks. No time is estimated and no traffic is assumed.",
+    "sources": [
+      "overture",
+      "osm",
+      "census_tiger"
+    ],
+    "source_detail": "Estimated by the observatory: road distance over the OpenStreetMap road graph (roads.bin) from each 2020 Census block with residents to the nearest point of the kind, averaged over residents (essentials.py)",
+    "how_to_read": "Puerto Rico: 16.0%. Highest: Maricao (100.0%), Comerío (85.7%), Yabucoa (62.4%). From Overture's places alone, 17.4%.",
+    "caveats": [
+      "The places come from directories, not an inspection: a shop that closed may still be listed (the distance then reads shorter) and one that opened may be missing (longer).",
+      "5 km is the observatory's line, about 3 miles; the USDA's food-access atlas uses 1 mile in towns and 10 in the country, and leaves Puerto Rico out.",
+      "A road distance, not a travel time: it does not say whether people have a car, how often a bus passes or how steep the road is."
+    ],
+    "see_also": [
+      "essentials.ess_supermarket_km",
+      "essentials.ess_grocery_km",
+      "essentials.ess_pharmacy_km",
+      "essentials.ess_bank_km"
+    ],
+    "where": {
+      "files": [
+        "essentials_series.json:ess_supermarket_far_pct",
+        "essentials_barrio.json:ess_supermarket_far_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Communities · Road distance to essentials (estimate)): Residents more than 5 km by road from a supermarket (estimate, %)",
+          "href": "index.html#e=ess_supermarket_far_pct.f"
+        }
+      ]
+    },
+    "added": "2026-11-18"
+  }
+]

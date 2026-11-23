@@ -1,0 +1,54 @@
+[
+  {
+    "kind": "layer",
+    "value_type": "geometry",
+    "unit": "hexagons of 1 km² (equal area; longitude and latitude, WGS 84)",
+    "added": "2026-11-19",
+    "id": "layers.hex_grid",
+    "name": "Hexagon grid, 1 km² (map layer)",
+    "domain": "population",
+    "domains": [
+      "population",
+      "housing",
+      "hazards"
+    ],
+    "group": "Hexagon grid",
+    "plain": "A map layer of equal hexagons of 1 km² over the island, shaded by residents, housing units, buildings, land under buildings or residents in the flood area, to compare places below the barrio in one unit.",
+    "definition": "hex_grid.geojson: 8,745 hexagons of 1 km² (6,887 with residents), each with p (residents, 2020 Census), h (housing units), b (buildings), bf (land under buildings, % of the hexagon) and pf (residents in FEMA's 1% annual chance flood area, % of the hexagon's residents). The hexagons add up to Puerto Rico's 3,285,874 residents, 1,598,159 housing units and 2,157,363 buildings.",
+    "geography": "Hexagons over Puerto Rico, Vieques and Culebra",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Rebuilt with python hexgrid.py when the blocks, the building release or the flood areas change."
+    },
+    "method": "hexgrid.py lays the map's own equal-area hexagons (core/hexbin.js: a Lambert azimuthal equal-area projection centred on Puerto Rico, pointy-topped hexagons of exactly 1 km²) and counts in each the census blocks by their internal point and the building footprints by their point. A block is counted whole in one hexagon, so a count per hexagon is calculated, not spread: a large rural block puts all its residents in one hexagon. A block is in the flood area when its internal point is (exposure.py's rule). Equal area means a count per hexagon is also a density per km².",
+    "sources": [
+      "census_tiger",
+      "overture_buildings",
+      "fema_nfhl"
+    ],
+    "source_detail": "2020 Census blocks (TIGERweb layer 10); Overture Maps buildings, release 2026-10-21.0; FEMA National Flood Hazard Layer (flood.geojson)",
+    "how_to_read": "Pick the measure under the layer. Because every hexagon is 1 km², the shades compare density directly. Read a single rural hexagon with care: a census block can be larger than a hexagon. The hexagons are not the FCC's H3 hexagons of the broadband layer, which vary in area.",
+    "caveats": [
+      "A census block is counted whole in the hexagon of its internal point; a block that spans several hexagons puts all its residents in one.",
+      "Buildings include sheds and other small structures in the footprint data.",
+      "Residents in the flood area use FEMA's 1% annual chance area as published in flood.geojson (outlines simplified by about 5 m)."
+    ],
+    "see_also": [
+      "layers.broadband_hex",
+      "exposure.pop_flood"
+    ],
+    "where": {
+      "files": [
+        "hex_grid.geojson:*"
+      ],
+      "view": [
+        {
+          "label": "Map, Explore tab: Reference → Hexagon grid (1 km²)",
+          "href": "index.html#l=hexgrid"
+        }
+      ]
+    }
+  }
+]

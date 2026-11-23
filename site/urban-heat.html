@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Knowledge Area · Urban heat</title>
+<meta name="description" content="How hot the land gets on summer mornings and how warm it stays at night, and how green it is, barrio by barrio, set beside who lives there: older residents, poverty, households without a vehicle, people living alone and the drive to a hospital. Side by side, never combined; facts only.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="icon" href="img/fpr-mark.png">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0&icon_names=account_balance,bolt,chat_bubble,close,commute,delete,diversity_3,download,grid_on,home_work,hourglass_bottom,info,lightbulb,map,menu_book,park,payments,price_change,rocket_launch,route,scatter_plot,school,send,table_view,thermostat,view_in_ar,warning,water,wifi,woman,work&display=block">
+<link rel="stylesheet" href="css/twin.css?v=63">
+<link rel="stylesheet" href="css/housing.css?v=21">
+<link rel="stylesheet" href="css/public_money.css?v=1">
+<link rel="stylesheet" href="css/urban_heat.css?v=2">
+<link rel="stylesheet" href="css/chat.css?v=4">
+<script src="js/i18n.js?v=62" data-page="urbanheat"></script>
+</head>
+<body class="research">
+<a class="skip" href="#compare">Skip to the content</a>
+<header class="topbar">
+  <a class="logo" href="index.html" title="PR Data Observatory home"><img src="img/fpr-logo.png" alt="Foundation for Puerto Rico. PR Data Observatory home"></a>
+  <div class="brand"><b>Knowledge Area · Urban heat</b><span>Surface heat and greenness beside the people who live there, by barrio</span></div>
+  <div class="spacer"></div>
+  <nav class="views" aria-label="Views">
+    <a class="btn" href="index.html"><span class="ms-icon" aria-hidden="true">map</span><span class="lbl">Map</span></a>
+    <a class="btn" href="3d.html" title="Immersive 3D + time view"><span class="ms-icon" aria-hidden="true">view_in_ar</span><span class="lbl">3D + Time</span></a>
+    <a class="btn" href="knowledge.html" aria-current="page" title="Knowledge: FPR studies, analyses and tools"><span class="ms-icon" aria-hidden="true">lightbulb</span><span class="lbl">Knowledge</span></a>
+    <a class="btn" href="dictionary.html" title="Data dictionary: meanings, sources, licenses, how to cite"><span class="ms-icon" aria-hidden="true">menu_book</span><span class="lbl">Data dictionary</span></a>
+    <a class="btn" href="learn.html" title="Learn: short lessons about maps and spatial analysis"><span class="ms-icon" aria-hidden="true">school</span><span class="lbl">Learn</span></a>
+  </nav>
+</header>
+
+<nav class="toc" id="toc" aria-label="On this page">
+  <span class="ka-tabs" role="group" aria-label="Knowledge Area" data-ka="urbanheat"></span><span class="ka-sep" aria-hidden="true"></span>
+  <a href="#compare">Heat and people</a><a href="#barrios">Barrio by barrio</a><a href="#grid">All the pairs</a><a href="#cooling">Cooler places</a><a href="#method">Method</a><a href="#sources">Sources</a>
+</nav>
+
+<main class="page">
+  <div class="note caution review-note" role="note" data-ka-note></div>
+
+  <section class="hero" id="compare">
+    <div class="eyebrow">Knowledge Area · Terrain and climate</div>
+    <h1>Urban heat: the land and the people on it, by barrio</h1>
+    <p class="lede">How hot the land gets on summer mornings, how warm it stays at night and how green it is, measured from satellites over the summers of 2024 to 2026, set beside measures of the residents of each of the 901 barrios. Pick a measure of the land, a measure of the people and, if you wish, a municipio. The two are shown side by side and never combined into one score.</p>
+    <div class="pm-controls">
+      <label>Land <select id="uhLand"></select></label>
+      <label>People <select id="uhPeople"></select></label>
+      <label>Municipio <select id="uhMuni"></select></label>
+      <button type="button" class="btn" id="uhCsv"><span class="ms-icon" aria-hidden="true">download</span>Download CSV</button>
+    </div>
+    <div class="card pm-chart"><div id="uhScatter"></div></div>
+    <div class="note" id="uhRead" data-t="skip"></div>
+    <p class="uh-links"><a id="uhMap" href="index.html"><span class="ms-icon" aria-hidden="true">map</span>Shade the barrios by this land measure on the map</a></p>
+    <div class="note caution"><b>Read with care.</b> This page states facts and draws no conclusions. Surface temperature is the temperature of the ground, roofs and pavement, not of the air people breathe. Two measures that rise together across barrios do not show that one causes the other: elevation, the coast and how built a barrio is move several of them at once. The survey figures of a small barrio can have wide margins of error.</div>
+  </section>
+
+  <section class="block" id="barrios">
+    <h2><span class="ms-icon" aria-hidden="true">table_view</span>1 · Barrio by barrio</h2>
+    <p class="pm-p">Every measure of the barrios of the chosen municipio, or of all Puerto Rico, side by side. Select a column heading to sort.</p>
+    <p class="pm-small" id="uhCount" data-t="skip"></p>
+    <div class="card pm-tablebox uh-tablebox" id="uhTable"></div>
+  </section>
+
+  <section class="block" id="grid">
+    <h2><span class="ms-icon" aria-hidden="true">grid_on</span>2 · All the pairs at once</h2>
+    <p class="pm-p">The rank correlation (Spearman) of each measure of the land with each measure of the people, across all the barrios that have both values. It is 1 when the two orders agree, 0 when they are unrelated and below 0 when they run opposite. Over the 901 barrios, the morning and night temperatures have a rank correlation of 0.82, and greenness and the morning temperature -0.89.</p>
+    <div class="card pm-tablebox" id="uhGrid"></div>
+  </section>
+
+  <section class="block" id="cooling">
+    <h2><span class="ms-icon" aria-hidden="true">park</span>3 · From heat islands to cooler places</h2>
+    <p class="pm-p">What makes a place hotter, what studies of San Juan found, and what cities elsewhere are doing to cool down, each stated as its source states it. The section names no barrio and recommends no project: the steps at the end show how to use this page to see where the facts line up.</p>
+
+    <h3 class="uh-h3">What makes a place hot</h3>
+    <div class="note"><b>Five causes.</b> The U.S. Environmental Protection Agency (EPA) names five causes of an urban heat island: fewer trees, plants and bodies of water; pavement and roofs that absorb the sun's heat and release it slowly; buildings close together and narrow streets that trap heat and block the wind; waste heat from vehicles, air conditioners and industry; and calm, clear weather. It reports that, in the United States, cities are about 1 to 7 °F (0.6 to 3.9 °C) warmer than outlying areas by day and 2 to 5 °F (1.1 to 2.8 °C) warmer at night.</div>
+    <p class="uh-cite"><a href="https://www.epa.gov/heatislands/learn-about-heat-islands" target="_blank" rel="noopener">EPA, Learn About Heat Islands</a></p>
+    <div class="note"><b>In Puerto Rico's barrios.</b> Across the 901 barrios of this page, greenness and the morning surface temperature have a rank correlation of -0.89: the greener a barrio, the cooler its surface, with few exceptions. The morning and night temperatures have a rank correlation of 0.82: most barrios whose surface heats up by day also stay warm at night. The median barrio's surface reaches 33.9 °C on a summer morning and 24.2 °C at night. Elevation and the sea also shape these values, so they do not show how much of the difference greenness alone explains.</div>
+
+    <h3 class="uh-h3">What studies of San Juan found</h3>
+    <div class="note"><b>A heat island that grows.</b> A 2004 report for NASA by Jorge E. González-Cruz (Santa Clara University) compared historical air temperatures of an urban and a rural area. It found a heat island in the San Juan metropolitan area all year round, increasing at a rate of 0.41 °C per decade.</div>
+    <p class="uh-cite"><a href="https://ntrs.nasa.gov/citations/20050215322" target="_blank" rel="noopener">González-Cruz, Analysis of upper air, ground and remote sensing data for the ATLAS field campaign in San Juan, Puerto Rico (NASA, 2004)</a></p>
+    <div class="note"><b>Hottest in the late morning.</b> In the field campaign that followed, in February 2004, the heat island of San Juan peaked between 10:00 and noon, with an average difference of 4.5 °C in air temperature between the city and rural areas (González, Comarazamy, Luvall and Rickman, 2006). These are measurements of the air, not of the surface, and from the cool season.</div>
+    <p class="uh-cite"><a href="https://ams.confex.com/ams/Annual2006/webprogram/Paper105359.html" target="_blank" rel="noopener">González et al., A validation study of the urban heat island in the tropical coastal city of San Juan, Puerto Rico (American Meteorological Society, 2006)</a></p>
+
+    <h3 class="uh-h3">What cities are doing</h3>
+    <div class="note"><b>Trees and vegetation.</b> Trees cool by their shade and by evapotranspiration. A 2026 study of Barcelona's streets found that street trees in moist soil lowered the air temperature by 1.2 ± 0.4 °C on average. In dry soil, during droughts, that cooling of the air fell, but the shade kept 71% to 97% of its cooling effect.</div>
+    <p class="uh-cite"><a href="https://doi.org/10.1016/j.uclim.2026.103086" target="_blank" rel="noopener">The role of soil moisture and shading in influencing the capacity of urban street trees to reduce heat stress (Urban Climate, 2026)</a> · <a href="https://www.epa.gov/heatislands/using-trees-and-vegetation-reduce-heat-islands" target="_blank" rel="noopener">EPA, Using Trees and Vegetation to Reduce Heat Islands</a></p>
+    <div class="note"><b>Cool roofs.</b> A cool roof reflects more sunlight and absorbs less heat than a dark one. EPA reports that cool roofs can lower the highest indoor temperature of buildings without air conditioning by 1.2 to 3.3 °C.</div>
+    <p class="uh-cite"><a href="https://www.epa.gov/heatislands/using-cool-roofs-reduce-heat-islands" target="_blank" rel="noopener">EPA, Using Cool Roofs to Reduce Heat Islands</a></p>
+    <div class="note"><b>Pavements, green roofs and the shape of streets.</b> EPA lists cool pavements and green roofs among the strategies cities use, and names buildings close together that block the wind as one of the causes. The 2004 NASA report above notes that the general climate of Puerto Rico is dominated by the easterly trade winds.</div>
+    <div class="note"><b>Planning with the community.</b> The United Nations Environment Programme's handbook for cities, Beating the Heat (2021), gathers cooling strategies and case studies from cities around the world and gives guidelines for a citywide cooling action plan.</div>
+    <p class="uh-cite"><a href="https://wedocs.unep.org/handle/20.500.11822/37313" target="_blank" rel="noopener">UNEP, Beating the Heat: A Sustainable Cooling Handbook for Cities (2021)</a></p>
+
+    <h3 class="uh-h3">Use this page to see where the facts line up</h3>
+    <ol class="uh-steps">
+      <li>At the top, pick Land: surface temperature, summer mornings, and People: households of one person living alone. Pick your municipio. The dots above and to the right of both dashed lines are barrios above the median on both.</li>
+      <li>Change Land to vegetation greenness. The barrios to the left of the median line are the least green of the ones shown.</li>
+      <li>Change Land to the night temperature to see which barrios stay warm after dark.</li>
+      <li>Open the map or the 3D view with the surface heat layer to see which streets and blocks inside a barrio are hottest.</li>
+    </ol>
+    <p class="uh-links"><a href="3d.html#c=18.4200,-66.0700,14&amp;b=-30&amp;p=65&amp;l=muni,surfheat,terrain,buildings"><span class="ms-icon" aria-hidden="true">view_in_ar</span>Surface heat under the buildings, in the 3D view</a></p>
+    <div class="note caution"><b>Other places, other times.</b> The studies above were done in other cities and climates, or in San Juan many years ago; what works, and how much, depends on the place. The figures are as each source reports them.</div>
+  </section>
+
+  <section class="block" id="method">
+    <h2><span class="ms-icon" aria-hidden="true">info</span>Method</h2>
+    <div class="note"><b>The land.</b> The median surface temperature of each barrio's land on clear summer mornings (Landsat 8 and 9, about 10:30) and on clear summer nights (ECOSTRESS, 21:00 to 06:00), and its median vegetation greenness (Sentinel-2 NDVI), all from June to September of 2024 to 2026, on one 60 m grid. They are the barrio values of the map's datasets (Explore › Environment and climate), groups Surface heat, Night surface heat and Vegetation.</div>
+    <div class="note"><b>The people.</b> Residents 65 and older, residents below the poverty level, households without a vehicle and households of one person living alone: the Census Bureau's American Community Survey, 5-year estimates 2020-2024, by barrio, with the margins of error the Bureau publishes (90% confidence). Drive time to a general hospital: the observatory's estimate from each barrio's population-weighted point along the road network. Residents: the 2020 Census. The Census Bureau's Community Resilience Estimates have no barrio values, so they are not on this page.</div>
+    <div class="note"><b>Margins of error.</b> A survey estimate whose margin of error is above 30% of the estimate is shown in italics in the table and as a hollow dot in the chart, the rule the whole observatory uses. The rank correlations include every barrio with both values; they describe the order of the published estimates, not a test.</div>
+    <div class="note"><b>What the page does not do.</b> It does not combine the measures into an index, rank barrios as better or worse, say who is at risk, or measure the heat people feel. Elevation and the coast shape the land's temperature: the Cordillera is cooler, and the sea keeps the coast warm at night.</div>
+  </section>
+
+  <section class="block" id="sources">
+    <h2><span class="ms-icon" aria-hidden="true">menu_book</span>Sources and licenses</h2>
+    <div class="note"><b>USGS Landsat 8 and 9.</b> Collection 2 Level-2 surface temperature, read from Microsoft Planetary Computer. US Government work, public domain; courtesy of the U.S. Geological Survey.</div>
+    <div class="note"><b>NASA ECOSTRESS.</b> Tiled Land Surface Temperature and Emissivity, version 2 (Hook and Hulley 2022, doi 10.5067/ECOSTRESS/ECO_L2T_LSTE.002), from the LP DAAC. NASA data: no restrictions on use, with citation.</div>
+    <div class="note"><b>Copernicus Sentinel-2.</b> Level-2A surface reflectance, Collection 1, from Earth Search on AWS. Contains modified Copernicus Sentinel data.</div>
+    <div class="note"><b>U.S. Census Bureau.</b> American Community Survey 5-year estimates and the 2020 Census, by county subdivision (barrio). US Government work.</div>
+    <div class="note"><b>Data and method.</b> The data file is data/urban_heat.json (urban_heat.py), built only from the observatory's published barrio files; the methods of the land measures are in docs/heat.md, docs/ecostress.md and docs/vegetation.md of the project repository.</div>
+    <div class="note"><b>How to cite this page.</b> Foundation for Puerto Rico, Knowledge Area: Urban heat, PR Data Observatory, Snapshot 2026-10 (draft). Data: USGS (Landsat), NASA (ECOSTRESS), Copernicus (Sentinel-2) and U.S. Census Bureau.</div>
+  </section>
+</main>
+<script src="js/core/knowledge.js?v=34"></script>
+<script>Core.knowledge.render(); I18N.apply();</script>
+<script src="js/common.js?v=20"></script>
+<script src="js/urban_heat.js?v=1"></script>
+<script src="js/chatboot.js?v=60"></script>
+</body>
+</html>

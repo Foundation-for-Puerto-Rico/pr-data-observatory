@@ -1,0 +1,182 @@
+[
+ {
+  "id": "climb.walk_climb_med",
+  "name": "Round-trip climb of the walk to a current stop, median (m)",
+  "ask": {
+   "en": [
+    "hill",
+    "climb",
+    "slope",
+    "uphill walk"
+   ],
+   "es": [
+    "cuesta",
+    "subida",
+    "pendiente",
+    "loma"
+   ]
+  },
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility",
+   "health"
+  ],
+  "group": "Infrastructure · Climb on the walk to a stop (USGS 3DEP)",
+  "kind": "variable",
+  "plain": "How much the walk to the nearest bus or train stop with a current timetable typically climbs, going and coming back, for the people who live within a 400 m walk of one.",
+  "definition": "The median, weighted by residents, of the round-trip climb (the sum of the rises and falls) of the walk along mapped roads from each block within a 400 m walk of a current stop to its nearest one. In metres.",
+  "unit": "metres (round trip)",
+  "value_type": "ratio",
+  "geography": "78 municipalities and Puerto Rico; also 901 barrios (values only where residents live within a 400 m walk of a current stop)",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "Rebuilt with the nightly transit refresh, only when the walkers or the heights change."
+  },
+  "method": "climb.py takes the 2020 census blocks within a 400 m walk along mapped roads of a stop with a current timetable on 2026-10-29 (the rule of access.py: 4,914 blocks, 405,841 residents, the same as the published 'within a 400 m walk'), traces each block's shortest walk to its nearest current stop (walknet.nearest_paths) and reads the ground's height every 10 m along the roads (USGS 3DEP, interpolated between the four nearest cells), from the road nearest the block to the stop. The round-trip climb is the sum of the rises and falls; a walk is steep when a 30 m stretch rises or falls more than 1 in 12. 99 walks whose block or stop is on no walkable road are read along the straight line, as access.py measures them. A block counts whole in the barrio the crosswalk gives it; the median is weighted by residents. Checks at every build: the residents add up to the published walkers; Puerto Rico's median between 0 and 30 m; Barranquitas, Jayuya and Orocovis above it; Cataño and Toa Baja below it.",
+  "sources": [
+   "usgs_3dep_13",
+   "census_tiger"
+  ],
+  "source_detail": "USGS 3D Elevation Program, 1/3 arc-second (about 10 m) seamless DEM, tiles USGS_13_n18w066_20260722.tif, USGS_13_n18w067_20260722.tif, USGS_13_n18w068_20260722.tif, USGS_13_n19w066_20260722.tif, USGS_13_n19w067_20260722.tif, USGS_13_n19w068_20260722.tif; walks along mapped roads (roads.bin) to the stops with a current timetable on 2026-10-29 (transport.json, operators.json); 2020 census blocks.",
+  "how_to_read": "Puerto Rico: 3.4 m. Highest: Arroyo (29.7 m), Orocovis (20.6 m), Jayuya (11.6 m). 29 municipios have residents within a walk of a current stop.",
+  "caveats": [
+   "Only the residents within a 400 m walk of a stop with a current timetable are counted: in most municipios few or none are, so most areas have no value.",
+   "Heights are of the bare ground at about 10 m: a road on a bridge or an embankment reads the valley or the slope below, and a short steep stretch can be smoothed out.",
+   "Mapped roads only: steps, sidewalks and footpaths are not on the map, and a block's walk starts at the road nearest its point, not at a door.",
+   "Where few residents live within a walk, one block moves the figure a lot."
+  ],
+  "see_also": [
+   "climb.walk_steep_pct"
+  ],
+  "where": {
+   "files": [
+    "climb_series.json:walk_climb_med",
+    "climb_barrio.json:walk_climb_med"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Infrastructure · Climb on the walk to a stop (USGS 3DEP)): shade municipalities, or barrios (Settings > Area), by",
+     "href": "index.html#e=walk_climb_med.f.value.gold.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-11-04"
+ },
+ {
+  "id": "climb.walk_steep_pct",
+  "name": "Walks to a current stop with a stretch steeper than a ramp may be (%)",
+  "ask": {
+   "en": [
+    "steep walk",
+    "too steep for a wheelchair"
+   ],
+   "es": [
+    "camino empinado",
+    "muy empinado para silla de ruedas"
+   ]
+  },
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility",
+   "population",
+   "health"
+  ],
+  "group": "Infrastructure · Climb on the walk to a stop (USGS 3DEP)",
+  "kind": "variable",
+  "plain": "Out of every 100 people who live within a 400 m walk of a stop with a current timetable, about how many have a stretch on the way steeper than a wheelchair ramp may be.",
+  "definition": "The share of the residents within a 400 m walk of a current stop whose walk has a 30 m stretch rising or falling more than 1 in 12 (8.33%), the steepest running slope a ramp may have under the 2010 ADA Standards (405.2).",
+  "unit": "% of the residents within a walk",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico; also 901 barrios (values only where residents live within a 400 m walk of a current stop)",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "Rebuilt with the nightly transit refresh, only when the walkers or the heights change."
+  },
+  "method": "climb.py takes the 2020 census blocks within a 400 m walk along mapped roads of a stop with a current timetable on 2026-10-29 (the rule of access.py: 4,914 blocks, 405,841 residents, the same as the published 'within a 400 m walk'), traces each block's shortest walk to its nearest current stop (walknet.nearest_paths) and reads the ground's height every 10 m along the roads (USGS 3DEP, interpolated between the four nearest cells), from the road nearest the block to the stop. The round-trip climb is the sum of the rises and falls; a walk is steep when a 30 m stretch rises or falls more than 1 in 12. 99 walks whose block or stop is on no walkable road are read along the straight line, as access.py measures them. A block counts whole in the barrio the crosswalk gives it; the median is weighted by residents. Checks at every build: the residents add up to the published walkers; Puerto Rico's median between 0 and 30 m; Barranquitas, Jayuya and Orocovis above it; Cataño and Toa Baja below it.",
+  "sources": [
+   "usgs_3dep_13",
+   "census_tiger"
+  ],
+  "source_detail": "USGS 3D Elevation Program, 1/3 arc-second (about 10 m) seamless DEM, tiles USGS_13_n18w066_20260722.tif, USGS_13_n18w067_20260722.tif, USGS_13_n18w068_20260722.tif, USGS_13_n19w066_20260722.tif, USGS_13_n19w067_20260722.tif, USGS_13_n19w068_20260722.tif; walks along mapped roads (roads.bin) to the stops with a current timetable on 2026-10-29 (transport.json, operators.json); 2020 census blocks.",
+  "how_to_read": "Puerto Rico: 13.7%. Highest: Orocovis (95.7%), Hormigueros (60.2%), Arroyo (56.9%).",
+  "caveats": [
+   "Only the residents within a 400 m walk of a stop with a current timetable are counted: in most municipios few or none are, so most areas have no value.",
+   "Heights are of the bare ground at about 10 m: a road on a bridge or an embankment reads the valley or the slope below, and a short steep stretch can be smoothed out.",
+   "Mapped roads only: steps, sidewalks and footpaths are not on the map, and a block's walk starts at the road nearest its point, not at a door.",
+   "Where few residents live within a walk, one block moves the figure a lot."
+  ],
+  "see_also": [
+   "climb.walk_steep_res",
+   "climb.walk_climb_med"
+  ],
+  "where": {
+   "files": [
+    "climb_series.json:walk_steep_pct",
+    "climb_barrio.json:walk_steep_pct"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Infrastructure · Climb on the walk to a stop (USGS 3DEP)): shade municipalities, or barrios (Settings > Area), by",
+     "href": "index.html#e=walk_steep_pct.f.value.red.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-11-04"
+ },
+ {
+  "id": "climb.walk_steep_res",
+  "name": "Residents whose walk to a current stop has a stretch steeper than a ramp may be (estimate)",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility",
+   "population",
+   "health"
+  ],
+  "group": "Infrastructure · Climb on the walk to a stop (USGS 3DEP)",
+  "kind": "variable",
+  "plain": "About how many people live within a 400 m walk of a stop with a current timetable but have a stretch on the way steeper than a wheelchair ramp may be.",
+  "definition": "The residents within a 400 m walk of a current stop whose walk has a 30 m stretch rising or falling more than 1 in 12 (8.33%), the steepest running slope of a ramp under the 2010 ADA Standards. A count; an estimate.",
+  "unit": "residents (2020 census)",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico; also 901 barrios (values only where residents live within a 400 m walk of a current stop)",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "Rebuilt with the nightly transit refresh, only when the walkers or the heights change."
+  },
+  "method": "climb.py takes the 2020 census blocks within a 400 m walk along mapped roads of a stop with a current timetable on 2026-10-29 (the rule of access.py: 4,914 blocks, 405,841 residents, the same as the published 'within a 400 m walk'), traces each block's shortest walk to its nearest current stop (walknet.nearest_paths) and reads the ground's height every 10 m along the roads (USGS 3DEP, interpolated between the four nearest cells), from the road nearest the block to the stop. The round-trip climb is the sum of the rises and falls; a walk is steep when a 30 m stretch rises or falls more than 1 in 12. 99 walks whose block or stop is on no walkable road are read along the straight line, as access.py measures them. A block counts whole in the barrio the crosswalk gives it; the median is weighted by residents. Checks at every build: the residents add up to the published walkers; Puerto Rico's median between 0 and 30 m; Barranquitas, Jayuya and Orocovis above it; Cataño and Toa Baja below it.",
+  "sources": [
+   "usgs_3dep_13",
+   "census_tiger"
+  ],
+  "source_detail": "USGS 3D Elevation Program, 1/3 arc-second (about 10 m) seamless DEM, tiles USGS_13_n18w066_20260722.tif, USGS_13_n18w067_20260722.tif, USGS_13_n18w068_20260722.tif, USGS_13_n19w066_20260722.tif, USGS_13_n19w067_20260722.tif, USGS_13_n19w068_20260722.tif; walks along mapped roads (roads.bin) to the stops with a current timetable on 2026-10-29 (transport.json, operators.json); 2020 census blocks.",
+  "how_to_read": "Puerto Rico: 55,648 residents. Most: San Juan (12,793), Guaynabo (11,726), Bayamón (5,414).",
+  "caveats": [
+   "Only the residents within a 400 m walk of a stop with a current timetable are counted: in most municipios few or none are, so most areas have no value.",
+   "Heights are of the bare ground at about 10 m: a road on a bridge or an embankment reads the valley or the slope below, and a short steep stretch can be smoothed out.",
+   "Mapped roads only: steps, sidewalks and footpaths are not on the map, and a block's walk starts at the road nearest its point, not at a door.",
+   "Where few residents live within a walk, one block moves the figure a lot."
+  ],
+  "see_also": [
+   "climb.walk_steep_pct"
+  ],
+  "where": {
+   "files": [
+    "climb_series.json:walk_steep_res",
+    "climb_barrio.json:walk_steep_res"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Infrastructure · Climb on the walk to a stop (USGS 3DEP)): shade municipalities, or barrios (Settings > Area), by",
+     "href": "index.html#e=walk_steep_res.f.value.red.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-11-04"
+ }
+]

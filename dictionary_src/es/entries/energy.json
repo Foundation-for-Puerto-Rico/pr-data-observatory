@@ -1,0 +1,74 @@
+{
+ "layers.plants": {
+  "name": "Plantas de energía (capa del mapa)",
+  "how_to_read": "Active la capa en la pestaña Capas del mapa 2D o de la vista 3D (Infraestructura y movilidad: Energía). Los círculos más grandes son las plantas de petróleo y gas de la empresa eléctrica en las costas sur y norte (Aguirre, 1,534 MW, en Salinas; Costa Sur, 1,032 MW, en Guayanilla; San Juan, 840 MW). Haga clic en una planta para ver su capacidad por tecnología, sus baterías, lo que está en reserva, los años en servicio y el número de planta de la EIA. Puerto Rico tenía 67 plantas con 6,436.1 MW en septiembre de 2026, de los cuales 397.7 MW eran renovables, y 38.2 MW de baterías.",
+  "_en": {
+   "name": "f82826ed",
+   "how_to_read": "57b71489"
+  }
+ },
+ "layers.powerlines": {
+  "name": "Líneas de transmisión (capa del mapa)",
+  "how_to_read": "Active la capa en la pestaña Capas del mapa 2D o de la vista 3D (Infraestructura y movilidad: Energía), junto con Plantas de energía. La red troncal de 230 kV (752 km) va desde las plantas de la costa sur (Aguirre, Costa Sur, EcoEléctrica, AES) por encima de la Cordillera Central hasta el norte, donde se usa la mayor parte de la electricidad; las redes de 115 kV (900 km) y de 38 kV (1,052 km) se extienden desde ella hacia los pueblos. Haga clic en una línea para ver su voltaje y la longitud mapeada a ese voltaje.",
+  "_en": {
+   "name": "885aa1e4",
+   "how_to_read": "ec257fd4"
+  }
+ },
+ "energy.page": {
+  "name": "Energía en Puerto Rico (datos del Área de conocimiento)",
+  "how_to_read": "Abra la página del Área de conocimiento Energía en Puerto Rico (energy.html). La producción por fuente va de 2010-01 a 2026-06; las baterías, las ventas y el SAIDI, de 2021-06 a 2026-09; el precio residencial, de 2021-01 a 2026-08.",
+  "_en": {
+   "name": "4e7d1249",
+   "how_to_read": "49b13784"
+  }
+ },
+ "energy.en_batteries": {
+  "name": "Baterías en hogares y negocios (instalaciones)",
+  "how_to_read": "Puerto Rico: 189,459 en 2026-09. Más: Bayamón (12,362), San Juan (12,239), Carolina (9,068). Divida entre las unidades de vivienda para comparar municipios.",
+  "_en": {
+   "name": "c8a82b3f",
+   "how_to_read": "72141d24"
+  }
+ },
+ "energy.en_battery_mwh": {
+  "name": "Almacenamiento en baterías, MWh (hogares y negocios)",
+  "how_to_read": "Puerto Rico: 3,154.7 MWh en 2026-09.",
+  "_en": {
+   "name": "ce84b22f",
+   "how_to_read": "a832f215"
+  }
+ },
+ "energy.en_sales_gwh": {
+  "name": "Ventas de electricidad, GWh al año",
+  "how_to_read": "Puerto Rico: 16,337.5 GWh en 2025. Más: San Juan (2,884.5), Bayamón (988.8), Carolina (947.9).",
+  "_en": {
+   "name": "87b27b32",
+   "how_to_read": "c89954bf"
+  }
+ },
+ "energy.en_ami_pct": {
+  "name": "Clientes con contadores inteligentes (%)",
+  "how_to_read": "Puerto Rico: 20.4 % en 2026-09; LUMA aún no informa una parte para la mayoría de los municipios.",
+  "_en": {
+   "name": "cec05715",
+   "how_to_read": "4a64b8e9"
+  }
+ },
+ "energy.en_bill250_pct": {
+  "name": "Hogares que pagan $250 o más al mes de electricidad (%)",
+  "how_to_read": "Puerto Rico: 11.8 % en 2020-2024, frente al 7.3 % en 2017-2021. También por barrio.",
+  "_en": {
+   "name": "d4937cad",
+   "how_to_read": "867414ac"
+  }
+ },
+ "energy.en_bill250_n": {
+  "name": "Hogares que pagan $250 o más al mes de electricidad",
+  "how_to_read": "Puerto Rico: 147,196 hogares en 2020-2024.",
+  "_en": {
+   "name": "3b531a7c",
+   "how_to_read": "f90f62f1"
+  }
+ }
+}

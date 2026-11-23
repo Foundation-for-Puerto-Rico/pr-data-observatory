@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Knowledge Area · Budget and public spending</title>
+<meta name="description" content="The Government of Puerto Rico's budget by function, agency, fund and what the money pays for: what was approved, proposed and spent, from the Office of Management and Budget's data sheets.">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="icon" href="img/fpr-mark.png">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0&icon_names=account_balance,arrow_back,bar_chart,bolt,chat_bubble,close,commute,compare_arrows,delete,diversity_3,download,home_work,hourglass_bottom,info,lightbulb,location_city,map,menu_book,payments,pie_chart,price_change,rocket_launch,route,school,send,table_view,thermostat,view_in_ar,warning,water,wifi,woman,work&display=block">
+<link rel="stylesheet" href="css/twin.css?v=62">
+<link rel="stylesheet" href="css/housing.css?v=21">
+<link rel="stylesheet" href="css/public_spending.css?v=15">
+<link rel="stylesheet" href="css/chat.css?v=4">
+<script src="js/i18n.js?v=64" data-page="publicspending"></script>
+</head>
+<body class="research">
+<a class="skip" href="#budget">Skip to the content</a>
+<header class="topbar">
+  <a class="logo" href="index.html" title="PR Data Observatory home"><img src="img/fpr-logo.png" alt="Foundation for Puerto Rico. PR Data Observatory home"></a>
+  <div class="brand"><b>Knowledge Area · Budget and public spending</b><span>The Government of Puerto Rico's budget: approved, proposed and spent</span></div>
+  <div class="spacer"></div>
+  <nav class="views" aria-label="Views">
+    <a class="btn" href="index.html"><span class="ms-icon" aria-hidden="true">map</span><span class="lbl">Map</span></a>
+    <a class="btn" href="3d.html" title="Immersive 3D + time view"><span class="ms-icon" aria-hidden="true">view_in_ar</span><span class="lbl">3D + Time</span></a>
+    <a class="btn" href="knowledge.html" aria-current="page" title="Knowledge: FPR studies, analyses and tools"><span class="ms-icon" aria-hidden="true">lightbulb</span><span class="lbl">Knowledge</span></a>
+    <a class="btn" href="dictionary.html" title="Data dictionary: meanings, sources, licenses, how to cite"><span class="ms-icon" aria-hidden="true">menu_book</span><span class="lbl">Data dictionary</span></a>
+    <a class="btn" href="learn.html" title="Learn: short lessons about maps and spatial analysis"><span class="ms-icon" aria-hidden="true">school</span><span class="lbl">Learn</span></a>
+  </nav>
+</header>
+
+<nav class="toc" id="toc" aria-label="On this page">
+  <span class="ka-tabs" role="group" aria-label="Knowledge Area" data-ka="publicspending"></span><span class="ka-sep" aria-hidden="true"></span>
+  <a href="#budget">The budget</a><a href="#gap">Approved and spent</a><a href="#funds">Where the money comes from</a><a href="#concepts">What it pays for</a><a href="#capital">Capital projects</a><a href="#federal">Federal money</a><a href="#sector">By sector</a><a href="#recovery">Disaster recovery</a><a href="#fema">FEMA projects</a><a href="#municipio">My municipio</a><a href="#method">Method</a><a href="#sources">Sources</a>
+</nav>
+
+<main class="page">
+  <div class="note caution review-note" role="note" data-ka-note></div>
+
+  <section class="hero" id="budget">
+    <div class="eyebrow">Knowledge Area · Public money</div>
+    <h1>Budget and public spending</h1>
+    <p class="lede">What the government's agencies were approved to spend, were proposed to spend and spent, by function and by agency. The approved budget for fiscal year 2027 (July 2026 to June 2027) is $33.58 billion. These are the agencies in the fiscal plan: public corporations with their own budgets, such as the electric and water utilities, and the municipal governments' own budgets are not included (ABRE Tu Municipio covers municipal finances), and no figure is placed in a municipio, because the budget names none. <a href="https://www.abretumunicipio.org/" target="_blank" rel="noopener">ABRE Tu Municipio</a></p>
+    <p class="ps-p"><a href="money-cycle.html">How public money moves: the stages behind these figures</a></p>
+    <p class="ps-stage" data-t-wait><b>Stage and basis.</b> Proposed and approved are OGP's budgets; spent is what the agencies reported to OGP in the next budget process, not the audited close. Each fiscal year runs from July to June.</p>
+    <div class="ps-controls">
+      <label>Budget <select id="psCol"></select></label>
+      <button type="button" class="btn" id="psCsv"><span class="ms-icon" aria-hidden="true">download</span>Download CSV</button>
+    </div>
+    <div class="ps-tiles" id="psTiles" aria-live="polite"></div>
+    <p class="ps-age" data-age="spending_state.json" data-cycle="365" aria-live="polite"></p>
+    <div class="card ps-chart">
+      <div class="ps-head"><button type="button" class="btn" id="psBack" hidden><span class="ms-icon" aria-hidden="true">arrow_back</span>All functions</button><span id="psTreeHead" aria-live="polite"></span></div>
+      <div id="psTree"></div>
+      <details class="ps-more"><summary>See the figures as a table</summary><div class="ps-tablebox" id="psTable"></div></details>
+    </div>
+    <p class="ps-small">Each rectangle's area is its share of the budget chosen. The function of each budget line is assigned by a crosswalk reviewed on 9 November 2026. In the approved budget for fiscal year 2027, 5% of the money is “Other”, mostly the lottery, the Gaming Commission and lines of the custodial accounts that mix several purposes; for fiscal years 2023 and 2024, whose custodial lines use other codes, the share is larger.</p>
+    <div class="note caution"><b>Functions are approximate.</b> About 75% of this budget takes the general function of its agency, not of its own program, because the data sheets do not say more. A function's total is a guide, not an exact figure; the Method section shows which agencies this affects most.</div>
+    <div class="note" data-t-wait><b>Names that are easy to confuse.</b> The appropriations under the custody of Hacienda ($3.43 billion) are not the Treasury Department's own budget, which is a separate line ($1.04 billion): they are money it holds for the whole government, mostly transfers ($2.21 billion) and debt service ($1.04 billion). The appropriations under the custody of the Office of Management and Budget ($0.76 billion) are apart from that office's own budget in the same way. The Department of Housing ($3.29 billion, 99% of it federal funds) and the Public Housing Administration ($0.76 billion) are two bodies: the second is attached to the first and runs the public housing projects. Figures: approved budget, fiscal year 2027.</div>
+  </section>
+
+  <section class="block" id="gap">
+    <h2><span class="ms-icon" aria-hidden="true">compare_arrows</span>1 · Approved and spent</h2>
+    <p class="ps-p">For fiscal year 2025 the data sheets give both the approved budget and what was spent: $29.23 billion spent of $33.28 billion approved. Spent is what the agencies reported during the next budget process; the official close is the Treasury Department's financial statements.</p>
+    <div class="note" data-t-wait><b>What the difference can mean.</b> The $4.05 billion between approved and spent in fiscal year 2025 can come from reserves held back, payments scheduled after June 30, legal restrictions on some funds, accounting differences or later amendments to the budget; the two figures also come from two different OGP data sheets. The difference alone does not show inefficiency or a lack of capacity. The audited close is the Treasury Department's Basic Financial Statements, prepared on another accounting basis; the latest found as of November 2026 is for fiscal year 2023.</div>
+    <p class="ps-stage" data-t-wait><b>Stage and basis.</b> Approved, from OGP's approved budget; spent, the “Gastado” column of OGP's data sheets, which is what each agency reported. Neither is audited, and this page reads no figure from the Treasury Department (Hacienda).</p>
+    <div class="card ps-chart"><div id="psGap"></div>
+      <div class="ps-legend"><div><i class="dot" aria-hidden="true"></i><span>Approved</span></div><div><i class="dot f" aria-hidden="true"></i><span>Spent</span></div></div>
+      <p class="ps-small" id="psGapNote" aria-live="polite"></p>
+      <details class="ps-more"><summary>See the figures as a table</summary><div class="ps-tablebox" id="psGapTable"></div></details>
+    </div>
+    <h3>By agency and fund</h3>
+    <p class="ps-p">Choose a fund to see, agency by agency, what was approved and what was reported as spent. The funds are never mixed, because each follows its own rules.</p>
+    <div class="ps-controls"><label>Fund <select id="psAgFund"><option value="">Choose a fund</option></select></label></div>
+    <div id="psAgencies" aria-live="polite"></div>
+    <p class="ps-p" data-t-wait>Each budget goes through stages: the Governor proposes it, the Legislature adopts it, the Oversight Board certifies the budget that follows the fiscal plan, and the agencies spend it. The budget in force is the one the Board certifies. The Board has no column of its own: the data sheets give three stages for each fiscal year, proposed, approved and spent, and a missing stage is a dot.</p>
+    <p class="ps-p" data-t-wait><a href="money-cycle.html#stages">See every stage and who does what</a></p>
+    <p class="ps-p" data-t-wait>Select a function in the treemap above to see only that function here. The chart then stays on that function: “All functions”, here and above, brings the whole budget back.</p>
+    <div class="card ps-chart"><div class="ps-head"><button type="button" class="btn" id="psBack2" hidden><span class="ms-icon" aria-hidden="true">arrow_back</span>All functions</button><span id="psPipeHead" aria-live="polite"></span></div><div id="psPipe"></div><div class="ps-legend" id="psPipeKey"></div>
+      <p class="ps-small" data-t-wait>Where “spent” comes from: the “Gastado” column of OGP's data sheets, which is what each agency reported in the next budget process. It is not a figure of the Treasury Department (Hacienda) and it is not audited.</p>
+      <details class="ps-more"><summary>See the figures as a table</summary><div class="ps-tablebox" id="psPipeTable"></div></details>
+    </div>
+  </section>
+
+  <section class="block" id="funds">
+    <h2><span class="ms-icon" aria-hidden="true">payments</span>2 · Where the money comes from</h2>
+    <p class="ps-p">Every budget in the data sheets, by fund. The General Fund is mostly taxes. Federal funds are grants from the federal government that the agencies manage, such as the Nutrition Assistance Program and Medicaid; the same dollars also appear in USAspending as federal awards, so the two sources are never added together. Special funds are fees and other revenue set aside by law.</p>
+    <div class="card ps-chart"><div id="psFunds"></div><div class="ps-legend" id="psFundKey"></div>
+      <details class="ps-more"><summary>See the figures as a table</summary><div class="ps-tablebox" id="psFundTable"></div></details>
+    </div>
+    <p class="ps-p">The budget chosen at the top of the page, from the fund the money comes from to the function it pays for. The width of each band is its dollars.</p>
+    <div class="card ps-chart"><div class="ps-head" id="psFlowHead" aria-live="polite"></div><div id="psFlow"></div><div class="ps-legend" id="psFlowKey"></div></div>
+  </section>
+
+  <section class="block" id="concepts">
+    <h2><span class="ms-icon" aria-hidden="true">bar_chart</span>3 · What the money pays for</h2>
+    <p class="ps-p">The budget chosen above, by concept of expense. Transfers include the government health plan's payments, nutrition assistance and contributions to other entities; debt service and pensions are counted here whatever agency pays them.</p>
+    <p class="ps-small" data-t-wait>Debt service is the payment of principal and interest on the government's debt: $1.08 billion in the approved budget for fiscal year 2027, 96% of it under the appropriations in Hacienda's custody. The Constitution of Puerto Rico (Article VI, section 8) orders that, when a year's resources do not cover its appropriations, interest and principal on the public debt are paid first.</p>
+    <div class="card ps-chart"><div class="ps-head" id="psConceptsHead" aria-live="polite"></div><p class="ps-small">Open a line to see what it covers, the functions it pays for and the agencies with the most of it.</p><div id="psConcepts"></div></div>
+  </section>
+
+  <section class="block" id="capital">
+    <h2><span class="ms-icon" aria-hidden="true">location_city</span>4 · Capital projects by municipio</h2>
+    <p class="ps-p">Where the government plans to build: the Planning Board's Four-Year Investment Program for fiscal years 2026 to 2029 lists the capital projects of the agencies and public corporations, each with its municipio. It is a plan of recommended projects, not money approved or spent, and it includes public corporations, such as the Aqueduct and Sewer Authority, that the budget above leaves out. 86% of the money is in projects with a municipio; the rest is beside the map.</p>
+    <p class="ps-stage" data-t-wait><b>Stage and basis.</b> Planned: projects the Planning Board recommends, not money approved, obligated or spent. Basis: the adopted program as published.</p>
+    <div class="ps-controls">
+      <label>Show <select id="psPicaMeasure"><option value="per">Dollars per resident</option><option value="total">Total dollars</option></select></label>
+      <label>Agency <select id="psPicaAgency"></select></label>
+      <label>View <select id="psPicaView"><option value="map">Map</option><option value="hex">Equal hexagons</option></select></label>
+    </div>
+    <div class="ps-maprow">
+      <div class="card ps-chart"><div id="psMap"></div><div class="ps-legend" id="psMapKey"></div></div>
+      <div class="ps-side">
+        <div class="card ps-unplaced" id="psUnplaced" aria-live="polite"></div>
+        <div class="card ps-place" id="psPlace" aria-live="polite"></div>
+      </div>
+    </div>
+    <p class="ps-small" id="psPicaNote"></p>
+    <p class="ps-age" data-age="spending_pica.json" data-cycle="365" aria-live="polite"></p>
+    <details class="ps-more"><summary>See the figures as a table</summary><div class="ps-tablebox" id="psPicaTable"></div></details>
+    <p class="ps-small">Equal hexagons give every municipio the same size, so a small municipio counts as much on the screen as a large one; each hexagon keeps its municipio's place on the island as closely as the grid allows.</p>
+    <div class="note caution"><b>Read with care.</b> A large project, such as a water treatment plant that serves a region, lands in the one municipio where it is built, so a few municipios stand out per resident. The map shows where a project is built, not who runs the money (often a central agency) or who benefits. Part of the program is federal money (FEMA, HUD, EPA revolving funds) that other sources also report: never add it to them.</div>
+  </section>
+
+  <section class="block" id="federal">
+    <h2><span class="ms-icon" aria-hidden="true">account_balance</span>5 · Federal money in Puerto Rico</h2>
+    <p class="ps-p">What federal agencies committed to spend on work or benefits in Puerto Rico, from USAspending.gov. In federal fiscal year 2025 (October 2024 to September 2025) the obligations add up to $38.44 billion; 73% are direct payments, mostly Social Security and Medicare benefits paid to people. The highest year was 2021, with $65.23 billion, when pandemic relief was added.</p>
+    <p class="ps-stage" data-t-wait><b>Stage and basis.</b> Obligated: committed by federal agencies, not necessarily paid out. Basis: reported by the agencies to USAspending.gov, not audited. Each federal fiscal year runs from October to September.</p>
+    <div class="ps-controls">
+      <label>Year <select id="psFedYear"></select></label>
+      <button type="button" class="btn" id="psFedCsv"><span class="ms-icon" aria-hidden="true">download</span>Download CSV</button>
+    </div>
+    <div class="ps-tiles" id="psFedTiles" aria-live="polite"></div>
+    <p class="ps-small" data-t-wait>A grant is not repaid; a loan is. The Loans figure is what the loans cost the federal government, not the amount lent.</p>
+    <p class="ps-age" data-age="spending_federal.json" data-cycle="365" aria-live="polite"></p>
+    <div class="card ps-chart"><div id="psFedYears"></div><p class="ps-small" id="psFedYearsNote"></p></div>
+    <div class="card ps-chart"><div class="ps-head" id="psFedHead" aria-live="polite"></div><div id="psFedFns"></div>
+      <details class="ps-more"><summary>See the largest programs</summary><div class="ps-tablebox" id="psFedTable"></div></details>
+    </div>
+    <div class="card ps-chart ps-outlays" id="outlays" data-t-wait>
+      <h3>Obligated and paid out</h3>
+      <p class="ps-small">For the federal grants and contracts signed in each federal fiscal year since 2020, what was obligated over the awards' lives and what the federal Treasury has paid out to the recipients so far (USAspending's outlays start in fiscal year 2020). Paid out is a payment to the recipient, such as a Commonwealth agency, not yet money spent on the work. Direct payments such as Social Security are paid when they are recorded and are not shown.</p>
+      <div class="ps-controls"><label>Awards <select id="psOutGroup"></select></label></div>
+      <div class="ps-head" id="psOutHead" aria-live="polite"></div>
+      <h4>Share paid out by signing year</h4>
+      <div id="psOutYrs"></div>
+      <p class="ps-small">Older awards have had more time to pay out, so compare a year with the years around it. A low share in an older year shows where to ask, not that anyone failed to comply.</p>
+      <h4>By function</h4>
+      <div id="psOut"></div>
+      <div class="ps-legend"><span><i class="sw o" aria-hidden="true"></i>Obligated</span><span><i class="sw p" aria-hidden="true"></i>Paid out</span></div>
+      <p class="ps-small" id="psOutNote" aria-live="polite"></p>
+      <p class="ps-age" data-age="spending_outlays.json" data-cycle="365" aria-live="polite"></p>
+      <details class="ps-more"><summary>See the figures as a table</summary><div class="ps-tablebox" id="psOutYears"></div></details>
+    <!-- /outlays --></div>
+    <div class="note caution"><b>Read with care.</b> Never add these figures to the budget above: the budget's federal funds are federal grants here too. Federal disaster Public Assistance is also on the FEMA disaster funding page, from OpenFEMA. An obligation is a commitment to pay, recorded when an award is made or changed, so a large grant for several years can show up in one year. The function of each program comes from the same reviewed crosswalk; program names are USAspending's, in English. The municipio figures are in the federal awards series of the map.</div>
+  </section>
+
+  <section class="block" id="sector" data-t-wait>
+    <h2><span class="ms-icon" aria-hidden="true">pie_chart</span>6 · One sector across the sources</h2>
+    <p class="ps-p">Choose a function to see, side by side, what the Commonwealth budget gives it, what federal agencies obligated for it, what the capital program plans for it and how much that is per resident. For Education, the page adds spending per public school student and an estimate by municipio.</p>
+    <p class="ps-stage" data-t-wait><b>Two fiscal years.</b> The Commonwealth's fiscal year runs from July to June and the federal one from October to September. Each line shows its source's latest year: the approved budget of fiscal year 2027 sits beside the federal obligations of federal fiscal year 2025. Two lines differ: spent is fiscal year 2025, the latest with both approved and spent, and capital projects are the total of the program for fiscal years 2026 to 2029. Compare shares and orders of magnitude, not dollars of one year.</p>
+    <div class="ps-controls"><label>Function <select id="psSectorPick"></select></label></div>
+    <div class="card ps-chart ps-sector" id="psSector" aria-live="polite"></div>
+  </section>
+
+  <section class="block" id="recovery" data-t-wait>
+    <h2><span class="ms-icon" aria-hidden="true">home_work</span>7 · Disaster recovery money by municipio</h2>
+    <p class="ps-p">The Department of Housing manages the federal disaster recovery and mitigation grants of the Community Development Block Grant program (CDBG-DR and CDBG-MIT). USAspending places those grants where the Department is, in San Juan. The part the Department passes on as subawards, to municipalities, contractors and nonprofits, is reported where the work is done. This map shows those subawards.</p>
+    <p class="ps-stage" data-t-wait><b>Stage and basis.</b> Subawarded: the part of the prime grants passed on to first-tier subrecipients, counted when it is made, not when it is paid out. Basis: reported by the Department of Housing under the federal transparency law, not audited.</p>
+    <div class="ps-controls">
+      <label>Show <select id="psRecMeasure"><option value="per">Dollars per resident</option><option value="total">Total dollars</option></select></label>
+      <label>From <select id="psRecFrom"></select></label>
+    </div>
+    <div class="ps-maprow">
+      <div class="card ps-chart"><div id="psRecMap"></div><div class="ps-legend" id="psRecKey"></div></div>
+      <div class="card ps-place" id="psRecSide" aria-live="polite"></div>
+    </div>
+    <p class="ps-age" data-age="spending_cdbgdr.json" data-cycle="365" aria-live="polite"></p>
+    <details class="ps-more"><summary>See the figures as a table</summary><div class="ps-tablebox" id="psRecTable"></div></details>
+    <div class="card ps-chart" id="psRecGrantsCard">
+      <h3>The prime grants: obligated and paid out</h3>
+      <p class="ps-small">Each CDBG-DR and CDBG-MIT grant to the Department of Housing: what HUD obligated over the grant's life and what the Treasury has paid out to the Department so far (its draws), from USAspending. HUD's own monthly reports for 1 September 2026 give draws within 2% of these for four of the six grants over $100 million, and lower for the mitigation grant (4%) and the 2020 earthquakes grant (19%); USAspending was read later, in November 2026. A draw pays the Department, not yet the work; a grant signed later has had less time to draw.</p>
+      <div id="psRecGrants"></div>
+      <div class="ps-legend"><span><i class="sw o" aria-hidden="true"></i>Obligated</span><span><i class="sw p" aria-hidden="true"></i>Paid out</span></div>
+    </div>
+    <div class="note caution"><b>Read with care.</b> Subawards are a part of the prime grants, not money on top of them, and they are already inside the federal money of section 5: never add the two. Only first-tier subawards that the Department reports under the federal transparency law are here, usually of $30,000 or more; the money it spends through its own housing programs is not placed. A subaward is counted in the year it is made and where the work is reported, which can differ from where the people it helps live.</div>
+  </section>
+
+  <section class="block" id="fema" data-t-wait>
+    <h2><span class="ms-icon" aria-hidden="true">home_work</span>8 · FEMA Public Assistance: stage and age</h2>
+    <p class="ps-p">FEMA's Public Assistance pays to repair public roads, schools, utilities and other public facilities after a disaster. OpenFEMA lists 23,059 Puerto Rico projects with $39.05 billion of federal share obligated, and the step each project is in: closed out, open or pending a review. It gives obligations, not payments. The Disaster funding and need page has the same money by municipio with each disaster's damage and need.</p>
+    <p class="ps-stage"><b>Stage and basis.</b> Obligated by FEMA, by each project's process step; reported in OpenFEMA, not audited. Closed out is FEMA's final reconciliation of a project's costs: an open project can be finished on the ground and still waiting for its documents.</p>
+    <p class="ps-p"><a href="public-money.html">Open the Disaster funding and need page</a></p>
+    <div class="ps-tiles" id="psFemaTiles" aria-live="polite"></div>
+    <div class="card ps-chart"><h3>By stage</h3><div id="psFemaStage"></div><div class="ps-legend" id="psFemaKey"></div></div>
+    <div class="card ps-chart"><h3>How long the open money has been open</h3><div id="psFemaAge"></div></div>
+    <div class="ps-controls">
+      <label>Show <select id="psFemaMeasure"><option value="old">Dollars open more than five years, per resident</option><option value="closed">Share closed out</option><option value="age">Median age of what is open</option></select></label>
+    </div>
+    <div class="ps-maprow">
+      <div class="card ps-chart"><div id="psFemaMap"></div><div class="ps-legend" id="psFemaKey2"></div></div>
+      <div class="card ps-place" id="psFemaSide" aria-live="polite"></div>
+    </div>
+    <p class="ps-age" data-age="spending_fema_pa.json" data-cycle="31" aria-live="polite"></p>
+    <details class="ps-more"><summary>See the figures as a table</summary><div class="ps-tablebox" id="psFemaMuni"></div><div class="ps-tablebox" id="psFemaTable"></div></details>
+    <div class="note caution"><b>Read with care.</b> Most of the money, recorded as Statewide, names no municipio and is not on the map, so a municipio's figure is only the part that names it. An old open project points to where to ask, not to a failure: large permanent works take years, and some wait only for their documents. Never add these dollars to the federal money of section 5, which counts the same awards. Closed out is measured in dollars (10%); counted in projects, 11,617 of 23,059 (50%) are closed out, because the largest projects are the ones still open.</div>
+  </section>
+
+  <section class="block" id="municipio" data-t-wait>
+    <h2><span class="ms-icon" aria-hidden="true">location_city</span>9 · My municipio</h2>
+    <p class="ps-p">Choose a municipio to see, in one place, the public money in its territory that this page can place, who runs each part, the answers to four questions about its disaster recovery money, and what could be requested to evaluate how it is being spent.</p>
+    <div class="ps-controls"><label>Municipio <select id="psMuniPick"><option value="">Choose a municipio</option></select></label></div>
+    <div class="card ps-place ps-muni" id="psMuni" aria-live="polite"></div>
+    <p class="ps-small">A municipio's figures are the money that names it: much of the money is run island-wide and is in no municipio. The municipal government's own budget is not here; ABRE Tu Municipio covers its finances.</p>
+    <p class="ps-small">Why one municipio shows far more recovery money than another: besides the damage, FEMA Public Assistance is obligated project by project, for the projects an applicant requests and documents; and the large federal recovery grants to Commonwealth agencies are recorded in San Juan, where the agency is. Only what is passed on by subaward is placed where the work is reported.</p>
+  </section>
+
+  <section class="block" id="method">
+    <h2><span class="ms-icon" aria-hidden="true">info</span>Method</h2>
+    <div class="note"><b>The data sheets.</b> The Office of Management and Budget (OGP) publishes one data sheet (sábana) for each approved and each proposed budget, with one line for each agency, fund, program, concept and object of expense. A newer sheet repeats earlier years; each fiscal year and stage on this page comes from the newest sheet whose lines add up to its own total, so every figure equals OGP's published total. A draft marked confidential that is posted on the budget site is not used.</div>
+    <div class="note"><b>Functions.</b> Each agency has one function (Education, Health and so on); a few programs and the funds in custodial accounts have their own. Debt service and pensions are always Debt and pensions. The table of equivalences was reviewed on 9 November 2026 against the UN Classification of the Functions of Government (COFOG); the decisions are in the project repository.</div>
+    <div class="card ps-chart" id="basis" data-t-wait>
+      <h3>Where each line's function comes from</h3>
+      <p class="ps-small">A line takes its function from its own row of the table of equivalences when it has one: its program, its object of expense, or its concept when that is debt service or pensions. Otherwise it takes its agency's general function. An agency with mixed work, classified by its general function, hides the mix, so the largest such agencies come first in the next review.</p>
+      <div id="psBasis"></div>
+    </div>
+    <div class="note"><b>Capital projects.</b> Each project line of the program's agency tables is read with its municipio and its four fiscal years; a line counts only when its years add up to its total. A line that lists several municipios is split equally among them; a line for a region, the whole island or no defined place is shown beside the map. Per resident uses the Census Bureau's estimate for July 1, 2025. Project names are not shown.</div>
+    <div class="note"><b>Federal money.</b> For each finished federal fiscal year, USAspending.gov's obligations with place of performance Puerto Rico are read once for each award type: assistance by program (assistance listing), contracts by awarding agency. Each program takes its function from the crosswalk, or else its agency's; a contract takes its agency's. A year counts as final from 15 November, about six weeks after it ends. Loans are the estimated cost to the government, not the amount lent.</div>
+    <div class="note" data-t-wait><b>Paid out.</b> USAspending.gov's award search gives, for each grant and contract in Puerto Rico signed from federal fiscal year 2020, its obligation over its life and its outlays to date. An award counts up to its obligated amount; the note under the chart counts the exceptions. The two latest signing years are read again each year.</div>
+    <div class="note"><b>Sectors and data age.</b> Section 6 reads the same files as the rest of the page. Per resident uses one population: the Census Bureau's estimate for July 1, 2025. Spending per public school student divides the Department of Education's spending by the students of the school year that matches the fiscal year (NCES Common Core of Data); the estimate by municipio splits that spending by each municipio's share of the students. Each data section says when its file was built and is marked when the file is older than two of its update cycles.</div>
+    <div class="note"><b>Disaster recovery.</b> For each finished federal fiscal year, USAspending.gov's subawards with place of performance Puerto Rico are read for the Department of Housing's disaster grants only (grant numbers of the DR, MIT and electrical grid grants; the yearly block grants and the COVID grant are left out): once by municipio and once for Puerto Rico as a whole, so the subawards that name no municipio are shown apart. Per resident uses the same population as the capital projects map.</div>
+    <div class="note"><b>What the page does not do.</b> It does not place the budget in municipios (the capital projects and disaster recovery maps place plans and subawards where the work is reported), compare Puerto Rico with other places, or say whether a function received enough. It shows where money is assigned, not what it achieved. Never add two budgets: they are different stages, or different years, of the same money.</div>
+  </section>
+
+  <section class="block" id="sources">
+    <h2><span class="ms-icon" aria-hidden="true">menu_book</span>Sources and licenses</h2>
+    <div class="note"><b>Office of Management and Budget (OGP), Government of Puerto Rico.</b> Budget data sheets (Sábana) of the approved and proposed budgets, www.presupuestos.pr.gov. Public documents of the Government of Puerto Rico; OGP states no license for them.</div>
+    <div class="note" data-t-wait><b>Law and roles.</b> Who proposes, adopts and certifies the budget: PROMESA, section 202 (Public Law 114-187; 48 U.S.C. 2142). The order of payment when resources fall short: Constitution of Puerto Rico, Article VI, section 8. The Public Housing Administration: Act 66 of 1989, as OGP's budget document for the agency describes it (docs.pr.gov).</div>
+    <div class="note"><b>Junta de Planificación de Puerto Rico.</b> Programa de Inversiones de Cuatro Años (PICA), adopted, jp.pr.gov. Public document of the Government of Puerto Rico; the Planning Board states no license for it. Population: U.S. Census Bureau, Population Estimates.</div>
+    <div class="note"><b>USAspending.gov, US Department of the Treasury.</b> Federal awards by place of performance (spending_by_category API) and award outlays (spending_by_award API), www.usaspending.gov. No license is stated for the data; the API's source code is CC0-1.0.</div>
+    <div class="note"><b>Data and method.</b> The data files are data/spending_state.json (ogp_budget.py), data/spending_pica.json (pica.py), data/spending_federal.json (federal_awards.py), data/spending_outlays.json (federal_outlays.py), data/spending_cdbgdr.json (cdbg_dr.py) and data/spending_fema_pa.json (fema_pa_stage.py); the method is in docs/spending.md of the project repository.</div>
+    <div class="note"><b>How to cite this page.</b> Foundation for Puerto Rico, Knowledge Area: Budget and public spending, PR Data Observatory, Snapshot 2026-11. Data: Oficina de Gerencia y Presupuesto and Junta de Planificación, Gobierno de Puerto Rico; USAspending.gov.</div>
+  </section>
+</main>
+<script src="js/core/knowledge.js?v=34"></script>
+<script>Core.knowledge.render(); I18N.apply();</script>
+<script src="js/common.js?v=20"></script>
+<script src="js/public_spending.js?v=27"></script>
+<script src="js/chatboot.js?v=60"></script>
+</body>
+</html>

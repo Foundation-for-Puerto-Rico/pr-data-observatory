@@ -1,0 +1,18 @@
+/* The Federal funds returned and unused page (unused-funds.html, Knowledge Area): what it adds to public_money.css, whose tables it shares. */
+.uf-cards { display:grid; grid-template-columns:repeat(auto-fit, minmax(190px, 1fr)); gap:10px; margin:12px 0; }
+.uf-card { display:flex; gap:10px; align-items:flex-start; background:#fff; border:1px solid #dfe3ea; border-radius:10px; padding:12px; }
+.uf-card .ms-icon { font-size:26px; color:#3b73bd; }
+.uf-v { font-size:24px; font-weight:700; line-height:1.1; }
+.uf-l { font-size:13px; color:#1d2433; margin-top:2px; }
+.uf-table caption { text-align:left; font-size:13px; color:#5b6475; padding:6px 10px; caption-side:top; }
+.uf-table th[scope="row"] { font-weight:600; }
+.uf-table .uf-code { white-space:nowrap; font-variant-numeric:tabular-nums; color:#5b6475; }
+.uf-barcell { width:22%; min-width:70px; }
+.uf-bar { display:block; height:10px; border-radius:3px; background:#3b73bd; }
+.uf-more { margin:10px 0; }
+.uf-more summary { cursor:pointer; color:#1f5fae; font-weight:600; padding:6px 0; }
+@media (max-width: 600px) { .uf-v { font-size:20px; } .uf-barcell { display:none; } }
+.uf-all { max-height:none; }
+.uf-h3 { font-size:17px; margin:20px 0 6px; }
+.uf-table .tb-code { white-space:nowrap; font-variant-numeric:tabular-nums; color:#5b6475; }
+.uf-table .af-code { white-space:nowrap; font-variant-numeric:tabular-nums; color:#5b6475; }

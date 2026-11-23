@@ -1,0 +1,108 @@
+{
+ "Current": "Vigente",
+ "Expires soon": "Vence pronto",
+ "Expired": "Vencido",
+ "No public feed": "Sin datos públicos",
+ "In the ATI feed": "En los datos de la ATI",
+ "Community-mapped": "Mapeado por la comunidad",
+ "Feed error": "Error en los datos",
+ "Dates unknown": "Fechas desconocidas",
+ "The feed has no route shape, so the line follows the road network between the stops (OpenStreetMap roads); the exact street may differ.": "La fuente de datos no incluye el trazado de la ruta, así que la línea sigue la red de carreteras entre las paradas (carreteras de OpenStreetMap); la calle exacta puede ser distinta.",
+ "The order of the stops is inferred.": "El orden de las paradas se dedujo.",
+ "The feed lists this route's stops alphabetically (zig-zag ratio {ratio}), so the order of visit is inferred and its times are not usable.": "La fuente de datos enumera las paradas de esta ruta en orden alfabético (razón de zigzag {ratio}), así que el orden de visita se dedujo y sus horarios no se pueden usar.",
+ "The feed lists this route's stops out of travel order (zig-zag ratio {ratio}), so the order of visit is inferred and its times are not usable.": "La fuente de datos enumera las paradas de esta ruta fuera del orden del recorrido (razón de zigzag {ratio}), así que el orden de visita se dedujo y sus horarios no se pueden usar.",
+ "Approximate alignment: no road path was found, so the line joins the stops in order.": "Trazado aproximado: no se encontró un camino por carretera, así que la línea une las paradas en orden.",
+ "Mapped by volunteers in OpenStreetMap; incomplete and unscheduled.": "Trazada por personas voluntarias en OpenStreetMap; incompleta y sin horario.",
+ "Alignment from the operator's route shape.": "Trazado publicado por el operador para esta ruta.",
+ "No timetable published for this route.": "No hay un horario publicado para esta ruta.",
+ "weekday trip": [
+  "viaje de lunes a viernes",
+  "viajes de lunes a viernes"
+ ],
+ "{n} Saturday": "sábados: {n}",
+ "{n} Sunday": "domingos: {n}",
+ "First departure {first}, last {last} (weekday)": "Primera salida a las {first}, última a las {last} (de lunes a viernes)",
+ "timetable valid {start} to {end}": "horario válido del {start} al {end}",
+ "operator publishes a schedule ({current} current, {expiring} expiring, {expired} expired)": [
+  "operador publica un horario (vigentes: {current}, por vencer: {expiring}, vencidos: {expired})",
+  "operadores publican un horario (vigentes: {current}, por vencer: {expiring}, vencidos: {expired})"
+ ],
+ "operator with no public schedule data": [
+  "operador sin datos públicos de horarios",
+  "operadores sin datos públicos de horarios"
+ ],
+ "route on the map": [
+  "ruta en el mapa",
+  "rutas en el mapa"
+ ],
+ "of residents live within 400 m of a scheduled stop ({pct}% counting only current timetables)": "de las personas residentes viven a 400 m o menos de una parada con horario ({pct}% si solo se cuentan los horarios vigentes)",
+ "Every operator that reports to the federal transit database is listed below, with the state of its public data as of the build date ({built}). Where a feed has no route shape, the line follows the roads between its stops; dashed lines mark routes whose stop order had to be inferred.": "Abajo aparece cada operador que informa a la base de datos federal de transporte colectivo (NTD), con el estado de sus datos públicos a la fecha de compilación ({built}). Cuando una fuente de datos no incluye el trazado de las rutas, la línea sigue las carreteras entre sus paradas; las líneas discontinuas marcan las rutas cuyo orden de paradas hubo que deducir.",
+ "<b>Real-time bus positions are not available to the public.</b> Checked {date}. What exists:": "<b>Las posiciones de las guaguas en tiempo real no están disponibles para el público.</b> Verificado el {date}. Lo que existe:",
+ "source": "fuente",
+ "not published": "No publicado",
+ "app only": "Solo en la app",
+ "private feed": "Datos privados",
+ "none found": "No se encontró",
+ "available, needs a relay": "Disponible, requiere un intermediario",
+ "ATI GTFS-Realtime (vehicle positions and arrival forecasts)": "ATI GTFS-Realtime (posiciones de los vehículos y pronósticos de llegada)",
+ "ATI's open data page lists GTFS-RT as \"en desarrollo\" (in development). No feed URL exists yet.": "La página de datos abiertos de la ATI indica que GTFS-RT está \"en desarrollo\". Todavía no existe una dirección (URL) para la fuente de datos.",
+ "AMA Móvil app (AMATrack)": "Aplicación AMA Móvil (AMATrack)",
+ "The official AMA app shows bus positions, but there is no public data feed behind it.": "La aplicación oficial de la AMA muestra las posiciones de las guaguas, pero no hay una fuente de datos pública detrás de ella.",
+ "ATI express buses (T3, E10, E20, E30, E40, C22, C35, C36)": "Guaguas expreso de la ATI (T3, E10, E20, E30, E40, C22, C35, C36)",
+ "The independent app transPRte says it shows live positions for these routes \"using the positions the operator publishes\". The feed is not public; access has to be requested from ATI.": "La aplicación independiente transPRte dice que muestra las posiciones en vivo de estas rutas \"usando las posiciones que publica el operador\". La fuente de datos no es pública; hay que solicitar el acceso a la ATI.",
+ "Municipal bus and trolley systems": "Sistemas municipales de guaguas y trolleys",
+ "No municipal GTFS-RT feed exists in the public registries. Schedules are public for the systems listed under Operators.": "En los registros públicos no existe ninguna fuente municipal GTFS-RT. Los horarios son públicos para los sistemas que aparecen en Operadores.",
+ "AcuaExpreso ferries (Hornblower)": "Lanchas de AcuaExpreso (Hornblower)",
+ "ATI points riders to the City Experiences app for ferry tracking and service alerts. No public feed.": "La ATI dirige a quienes viajan a la aplicación City Experiences para ver dónde están las lanchas y recibir avisos de servicio. No hay una fuente de datos pública.",
+ "Aircraft near Puerto Rico (ADS-B)": "Aeronaves cerca de Puerto Rico (ADS-B)",
+ "Community ADS-B networks publish free live positions, but their servers do not allow calls from a web page, so a small relay (a Cloudflare Worker or Azure Function) is needed.": "Las redes comunitarias de ADS-B publican posiciones en vivo de forma gratuita, pero sus servidores no permiten consultas desde una página web, así que haría falta un pequeño servicio intermediario (un Cloudflare Worker o una Azure Function).",
+ "Públicos run without a published schedule": "Los públicos operan sin un horario publicado",
+ "No GTFS feed found": "No se encontró una fuente de datos GTFS",
+ "Operated inside the ATI network": "Opera dentro de la red de la ATI",
+ "{n} route": [
+  "{n} ruta",
+  "{n} rutas"
+ ],
+ "{n} stop": [
+  "{n} parada",
+  "{n} paradas"
+ ],
+ "{n} weekday trip": [
+  "{n} viaje de lunes a viernes",
+  "{n} viajes de lunes a viernes"
+ ],
+ "valid to {date}": "válido hasta el {date}",
+ "no route shapes (drawn along roads)": "sin trazado de rutas (se dibujan siguiendo las carreteras)",
+ "{n} route lists stops out of order": [
+  "{n} ruta enumera las paradas fuera de orden",
+  "{n} rutas enumeran las paradas fuera de orden"
+ ],
+ "Showing": "Mostrando",
+ "Show": "Mostrar",
+ "Open {name}": "Abrir {name}",
+ "No operators match.": "Ningún operador coincide.",
+ "Sunday timetables": "horarios del domingo",
+ "Saturday timetables": "horarios del sábado",
+ "weekday timetables": "horarios de lunes a viernes",
+ "<b>{route}</b> · {operator}<br><small>on its timetable, not a GPS position</small>": "<b>{route}</b> · {operator}<br><small>según su horario, no es una posición GPS</small>",
+ "<b>{n}</b> {vehicles} in service on {timetables} at {time} Puerto Rico time{top}. Positions are interpolated from the timetable, not GPS. Expired timetables are left out; holidays are not modelled.": "<b>{n}</b> {vehicles} en servicio a las {time}, hora de Puerto Rico, según los {timetables}{top}. Las posiciones se interpolan a partir del horario, no del GPS. Los horarios vencidos no se incluyen; los días feriados no se modelan.",
+ "vehicle": [
+  "vehículo",
+  "vehículos"
+ ],
+ "population by block": "población por bloque",
+ "<b>{n}</b> residents · {m} m to the nearest scheduled stop": "<b>{n}</b> residentes · a {m} m de la parada con horario más cercana",
+ "<b>{n}</b> residents ({pct}%) live more than 800 m from any scheduled stop. Circles show census blocks with 40 or more residents.": "<b>{n}</b> residentes ({pct}%) viven a más de 800 m de cualquier parada con horario. Los círculos muestran los bloques censales con 40 residentes o más.",
+ "<b>{first}</b> “{firststop}”<br>↔ <b>{second}</b> “{secondstop}”<br><small>{d} m apart</small>": "<b>{first}</b> “{firststop}”<br>↔ <b>{second}</b> “{secondstop}”<br><small>a {d} m de distancia</small>",
+ "<b>{n}</b> places where stops of two different systems are within 250 m of each other{drawn}. These are the natural places to coordinate timetables and fares.": "<b>{n}</b> lugares donde hay paradas de dos sistemas distintos a 250 m o menos una de otra{drawn}. Son los lugares naturales para coordinar horarios y tarifas.",
+ "(the closest {n} are drawn)": "(se dibujan los {n} más cercanos)",
+ "transit operators": "operadores de transporte colectivo",
+ "The operator list could not be loaded.": "No se pudo cargar la lista de operadores.",
+ "Showing transit only. Turn tourism places back on in Explore › Map layers.": "Mostrando solo el transporte colectivo. Vuelva a activar los lugares turísticos en Explorar › Capas del mapa.",
+ "of residents live within a 400 m walk of a scheduled stop, along mapped roads ({pct}% counting only current timetables)": "de las personas residentes viven a 400 m o menos a pie de una parada con horario, por las calles mapeadas ({pct}% si solo se cuentan los horarios vigentes)",
+ "<b>{n}</b> residents · {m} m walking to the nearest scheduled stop ({s} m in a straight line)": "<b>{n}</b> residentes · a {m} m a pie de la parada con horario más cercana ({s} m en línea recta)",
+ "<b>{n}</b> residents · more than 1 km walking to the nearest scheduled stop ({s} m in a straight line)": "<b>{n}</b> residentes · a más de 1 km a pie de la parada con horario más cercana ({s} m en línea recta)",
+ "<b>{n}</b> residents ({pct}%) live more than an 800 m walk from any scheduled stop, along mapped roads. Circles show census blocks with 40 or more residents.": "<b>{n}</b> residentes ({pct}%) viven a más de 800 m a pie de cualquier parada con horario, por las calles mapeadas. Los círculos muestran los bloques censales con 40 residentes o más.",
+ "<b>{a}</b> operators with a schedule · <b>{b}</b> with no public data · <b>{c}</b> routes · <b>{d}%</b> of residents within 400 m of a scheduled stop": "<b>{a}</b> operadores con horario · <b>{b}</b> sin datos públicos · <b>{c}</b> rutas · <b>{d}%</b> de las personas residentes a 400 m o menos de una parada con horario",
+ "What these figures count": "Qué cuentan estas cifras"
+}

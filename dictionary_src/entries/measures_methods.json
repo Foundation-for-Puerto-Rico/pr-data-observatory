@@ -1,0 +1,2415 @@
+[
+ {
+  "id": "measures.show_as",
+  "name": "The 'Show as' menu: ways to rescale a dataset",
+  "domain": "system.docs",
+  "domains": [
+   "system.docs"
+  ],
+  "group": "Rescaling a value",
+  "kind": "measure",
+  "plain": "Each layer on the Analysis tab can show a dataset as published or rescaled. Rescaled views include per resident, per square kilometre, share of the island, comparison with Puerto Rico, change since a base year and percentile. The options offered depend on the kind of number.",
+  "definition": "The 'Show as' list in each layer's Settings. The kind of dataset decides the options. Counts (people, jobs, places, households, work sites): As published, Per 1,000 residents, Per 1,000 housing units (not for jobs, for exposure counts or for housing units themselves), Per km², % of the Puerto Rico total. Exposure counts (residents or housing units inside a hazard, a protected area or near transit) also get % of the area's own residents or housing units, which is how they start. Counts of jobs (25 datasets in the 2026-10 snapshot: total, private-sector and government jobs; tourism-related jobs; accommodation jobs; food service jobs; and the 19 sector jobs) also get % of the municipality's jobs and Location quotient. Dollar totals (total wages, federal awards by type, Federal Emergency Management Agency (FEMA) dollars): As published, $ per resident, $ per km² and % of the Puerto Rico total (not offered for federal loans). All other datasets (rates, dollar levels such as medians and average pay, and ratios): As published, Index (Puerto Rico = 100), Difference from Puerto Rico. Every dataset that is not a one-time snapshot also gets Change since the base year, and every dataset gets Percentile among municipalities.",
+  "unit": "one of 13 menu options (each dataset offers 4 to 8)",
+  "value_type": "code",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "static",
+   "frequency": "Calculated in your browser each time the map redraws"
+  },
+  "method": "The functions options, compute and describe of Core.normalize (site/js/core/normalize.js) build the list, do the arithmetic and set the unit and the number of decimals shown. The calculation runs in your browser from the published series each time the map draws. A new shaded count layer starts as 'Per 1,000 residents', a new shaded dollar total starts as '$ per resident', and everything else starts as 'As published', including every symbol layer.",
+  "sources": [
+   "bls_qcew",
+   "bls_laus",
+   "acs5",
+   "census_pep",
+   "usaspending",
+   "openfema",
+   "overture"
+  ],
+  "source_detail": "Inputs are the Analysis tab datasets: jobs and wages from the Quarterly Census of Employment and Wages (QCEW), unemployment from Local Area Unemployment Statistics (LAUS), survey series from the American Community Survey (ACS), population from the Population Estimates, federal awards from USAspending, FEMA dollars from OpenFEMA and tourism places from Overture. The menu is a design choice by Foundation for Puerto Rico (FPR).",
+  "how_to_read": "Shade rates and rescaled counts; show raw counts as sized symbols. A shaded map of raw counts mostly shows which municipalities are big. The legend title names the option in use, for example 'Jobs (all employers) · per 1,000 residents'.",
+  "caveats": [
+   "An option changes the question, not the data. A municipality can rank high in jobs per 1,000 residents and low in total jobs.",
+   "For share, index, difference and location quotient, 'Puerto Rico' is the island figure published for that dataset. It is not always the sum or the average of the 78 municipalities. Each option's entry says what applies.",
+   "'% of the Puerto Rico total' is not offered for federal loans. That series is the estimated cost of loans to the government, which can be near zero or negative in a year, so a share of the island figure would not mean much.",
+   "Margins of error are shown only when a layer is shown 'As published'. A value whose margin is wide, or a rate built on very few counted, is marked less reliable in every view (hatching and italics: see measures.less_reliable_values)."
+  ],
+  "see_also": [
+   "measures.per_1000_residents",
+   "measures.per_1000_housing_units",
+   "measures.per_resident",
+   "measures.per_km2",
+   "measures.share_of_pr_total",
+   "measures.share_of_jobs",
+   "measures.location_quotient",
+   "measures.index_pr_100",
+   "measures.difference_from_pr",
+   "measures.change_since_base_year",
+   "measures.percentile",
+   "measures.nearest_year_rule",
+   "layers.economy_normalisation"
+  ],
+  "values": {
+   "As published": "The dataset's own number in its own unit.",
+   "Per 1,000 residents": "Count ÷ residents × 1,000.",
+   "Per km²": "Count (or dollars) ÷ land area in square kilometres.",
+   "% of the Puerto Rico total": "Value ÷ Puerto Rico value × 100. Not offered for federal loans.",
+   "% of the municipality's jobs": "Jobs in a sector ÷ all jobs in the municipality × 100.",
+   "Location quotient (Puerto Rico = 1)": "The sector's share of local jobs ÷ its share of island jobs.",
+   "$ per resident": "Dollar total ÷ residents.",
+   "$ per km²": "Dollar total ÷ land area in square kilometres.",
+   "Index (Puerto Rico = 100)": "Value ÷ Puerto Rico value × 100.",
+   "Difference from Puerto Rico": "Value − Puerto Rico value.",
+   "Change since the base year": "Percent change for counts and dollars; difference for rates and ratios.",
+   "Percentile among municipalities": "Position among the 78 municipalities: 0 is the lowest, 100 the highest."
+  },
+  "where": {
+   "files": [],
+   "view": [
+    {
+     "label": "Map, Analysis tab: add a layer, open Settings, choose 'Show as'",
+     "href": "index.html#e=qcew_jobs.f.per1000.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-03"
+ },
+ {
+  "id": "measures.per_1000_residents",
+  "name": "Per 1,000 residents",
+  "domain": "system.docs",
+  "domains": [
+   "system.docs"
+  ],
+  "group": "Rescaling a value",
+  "kind": "measure",
+  "plain": "A count divided by the municipality's residents and multiplied by 1,000. It puts a small and a large municipality on the same footing.",
+  "definition": "Value ÷ resident population × 1,000. The unit is the dataset's unit per 1,000 residents, for example jobs per 1,000 residents or tourism places per 1,000 residents. The option is offered for counts only. The population is the resident population of the same year as the data (a Census count or a July 1 estimate). When the population has no value for that year, the latest earlier year is used, or the first year if none is earlier.",
+  "unit": "count per 1,000 residents",
+  "value_type": "ratio",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "static",
+   "frequency": "Calculated in your browser each time the map redraws"
+  },
+  "method": "Case per1000 of ecCalc in site/js/economy.js: x ÷ popAt(year)[i] × 1000, calculated to three decimals and shown with one. The result is blank when the value or the population is missing or zero. The Puerto Rico row uses the island population. The population is the housing series 'population' (see the entry for resident population).",
+  "sources": [
+   "census_pep",
+   "bls_qcew",
+   "bls_laus",
+   "acs5",
+   "openfema",
+   "overture"
+  ],
+  "source_detail": "Numerators: any count in the Analysis tab. Denominator: Census Bureau census counts (2010, 2020) and Population Estimates (other years).",
+  "how_to_read": "In the 2026-10 snapshot, 2025 data show 770 jobs located in San Juan for every 1,000 San Juan residents, against 298 for Puerto Rico as a whole. The jobs are counted where people work, so the figure says how many jobs sit in San Juan, not how many San Juan residents hold one. See 'Workplace basis and residence basis'.",
+  "caveats": [
+   "The population series steps up in 2020 because of a change of estimate base, so a per-1,000 value for 2019 and one for 2020 are not on the same basis.",
+   "The denominator counts residents only. Visitors, commuters and people who live in a municipality part of the year are in the numerator (jobs, places, households) but not in the denominator.",
+   "For survey series labelled by the last year of a five-year window, the denominator is that one year's population, not an average over the window.",
+   "For the five tourism-place datasets the Analysis tab divides by the latest population estimate (2025 in the 2026-10 snapshot), while municipalities.json:assets_per_1000_residents divides by the 2020 census count. In the 2026-10 snapshot San Juan shows 10.4 places per 1,000 residents in one and 10.0 in the other.",
+   "A small municipality can swing widely when a few units change."
+  ],
+  "see_also": [
+   "measures.per_resident",
+   "measures.per_km2",
+   "measures.show_as",
+   "methods.population_vintage_break",
+   "methods.workplace_vs_residence",
+   "housing.population",
+   "municipalities.assets_per_1000_residents"
+  ],
+  "where": {
+   "files": [],
+   "view": [
+    {
+     "label": "Map, Analysis tab: jobs per 1,000 residents",
+     "href": "index.html#e=qcew_jobs.f.per1000.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-03"
+ },
+ {
+  "id": "measures.per_resident",
+  "name": "Dollars per resident",
+  "domain": "system.docs",
+  "domains": [
+   "system.docs"
+  ],
+  "group": "Rescaling a value",
+  "kind": "measure",
+  "plain": "A dollar total divided by the municipality's residents. It lets a large and a small municipality be compared on wages, federal awards or disaster aid.",
+  "definition": "Dollar total ÷ resident population. The unit is dollars per resident, in the dollars of the data year, or in the dollars of the latest Consumer Price Index (CPI) year when 'Inflation-adjusted' is ticked. The option is offered for dollar totals only: total wages paid, federal awards (all types, contracts, grants, direct payments, loans, other), Federal Emergency Management Agency (FEMA) Public Assistance obligated and FEMA Individual Assistance approved. Federal awards are obligations (legal commitments to pay) in a federal fiscal year. They are not payments, money spent or a measure of need. Federal loans count at their estimated cost to the government (the subsidy cost), not the amount lent, and can be negative. FEMA dollars are grouped by the year of the disaster declaration, not the year the money was obligated, paid or spent, and Individual Assistance is the amount approved.",
+  "unit": "dollars per resident",
+  "value_type": "level",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "static",
+   "frequency": "Calculated in your browser each time the map redraws"
+  },
+  "method": "Case perCapita of ecCalc in site/js/economy.js: x ÷ popAt(year)[i], shown with no decimals and a dollar sign. The Puerto Rico row divides the island total by the island population. A new shaded dollar-total layer starts in this view.",
+  "sources": [
+   "usaspending",
+   "openfema",
+   "bls_qcew",
+   "census_pep"
+  ],
+  "source_detail": "Numerators: USAspending awards by place of performance, OpenFEMA Public Assistance and Housing Assistance, Quarterly Census of Employment and Wages (QCEW) total wages, FEMA National Risk Index expected annual loss. Denominator: Census Bureau population series.",
+  "how_to_read": "In the 2026-10 snapshot, federal awards recorded for San Juan in fiscal year 2025 come to about $42,076 per resident, against $12,068 for Puerto Rico. Part of the gap reflects where awards are recorded: awards to the Commonwealth government for statewide programs are often attributed to the capital (see the caution on statewide awards below). The data do not show how large that part is. The figure is not what each resident received.",
+  "caveats": [
+   "Per resident does not mean that each resident received the amount. Money goes to governments, firms, programs and households.",
+   "Federal awards are filed by place of performance as the awarding agency reports it. Awards to the Commonwealth government for statewide programs are often attributed to the capital, so San Juan's figure can include money that serves other places and other municipalities' figures can be low. The data cannot say how much.",
+   "A large part of FEMA Public Assistance cannot be placed in a municipality and is recorded as statewide: in the 2026-10 snapshot, 14% of the 2024 total and up to 88% in some years. The Puerto Rico row includes it, so Puerto Rico's per-resident figure can be higher than the sum of its municipalities would give.",
+   "The Puerto Rico row for federal awards is USAspending's total for the territory. It also counts awards that name no municipality (21.6% of the fiscal year 2025 total in the 2026-10 snapshot), so it is higher than the sum of the 78 municipalities.",
+   "Federal fiscal years run from October to September, and the dollars of a fiscal year are matched to the CPI of the calendar year with the same number.",
+   "The population series starts in 2010. In the Trend chart, FEMA Public Assistance values for 2001 to 2009 shown per resident are divided by the 2010 population.",
+   "For total wages, the dollars are paid by employers located in the municipality, wherever the workers live. Wages per resident is not residents' income; use American Community Survey income figures for that."
+  ],
+  "see_also": [
+   "measures.per_1000_residents",
+   "measures.inflation_adjustment",
+   "economy.fed_awards_total",
+   "economy.fema_pa_obligated",
+   "economy.qcew_wages"
+  ],
+  "where": {
+   "files": [],
+   "view": [
+    {
+     "label": "Map, Analysis tab: federal awards per resident",
+     "href": "index.html#e=fed_awards_total.f.perCapita.gold.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-03"
+ },
+ {
+  "id": "measures.per_km2",
+  "name": "Per square kilometre",
+  "domain": "system.docs",
+  "domains": [
+   "system.docs"
+  ],
+  "group": "Rescaling a value",
+  "kind": "measure",
+  "plain": "A count or a dollar total divided by the municipality's land area in square kilometres. It shows how tightly something is packed on the land.",
+  "definition": "Value ÷ land area in km². The unit is the dataset's unit per km² of land (jobs per km², dollars per km²). The option is offered for counts and for dollar totals. The land area is the Census Bureau's 2020 land area, the same for every year.",
+  "unit": "per km² of land",
+  "value_type": "ratio",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "static",
+   "frequency": "Calculated in your browser each time the map redraws"
+  },
+  "method": "Case perkm2 of ecCalc in site/js/economy.js: x ÷ land_km2, taken from municipalities.json. Counts are shown with one decimal and dollar totals with none. The Puerto Rico row divides by the sum of the 78 land areas.",
+  "sources": [
+   "census_tiger",
+   "bls_qcew",
+   "usaspending",
+   "openfema",
+   "overture"
+  ],
+  "source_detail": "Denominator: land area (AREALAND) from the Census Bureau's 2020 boundary layer. Numerators: any count or dollar total in the Analysis tab.",
+  "how_to_read": "In the 2026-10 snapshot, 2025 data show about 2,045 jobs per km² of land in San Juan, against 107 for Puerto Rico, whose land area is the sum of the 78 municipalities (8,868.5 km²). A high value marks a dense job centre.",
+  "caveats": [
+   "Land area only, from the 2020 Census. Water is not in the denominator, and the area does not change from year to year.",
+   "An average over the whole municipality. Jobs and places cluster in town centres, so a municipality with large rural or protected areas looks sparse even where its centre is dense.",
+   "The areas are rounded to 0.1 km² in municipalities.json, which matters little except for very small areas."
+  ],
+  "see_also": [
+   "measures.per_1000_residents",
+   "measures.per_resident",
+   "measures.show_as",
+   "municipalities.land_km2",
+   "municipalities.assets_per_km2"
+  ],
+  "where": {
+   "files": [],
+   "view": [
+    {
+     "label": "Map, Analysis tab: jobs per km²",
+     "href": "index.html#e=qcew_jobs.f.perkm2.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-03"
+ },
+ {
+  "id": "measures.share_of_pr_total",
+  "name": "Share of the Puerto Rico total",
+  "domain": "system.docs",
+  "domains": [
+   "system.docs"
+  ],
+  "group": "Rescaling a value",
+  "kind": "measure",
+  "plain": "The municipality's value as a percent of the Puerto Rico value. It shows how much of the island's jobs, dollars or places sit in one municipality.",
+  "definition": "Value ÷ Puerto Rico value × 100, in percent. The option is offered for counts and for dollar totals, except federal loans (an estimated cost that can be near zero or negative). The Puerto Rico value is the island figure published for that dataset in the same year.",
+  "unit": "% of the Puerto Rico total",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "static",
+   "frequency": "Calculated in your browser each time the map redraws"
+  },
+  "method": "Case sharePR of ecCalc in site/js/economy.js: x ÷ a[Puerto Rico] × 100, shown with two decimals. The result is blank when the island value is missing or zero. A shaded count layer is better shown per 1,000 residents when the aim is to compare municipalities of different size.",
+  "sources": [
+   "bls_qcew",
+   "bls_laus",
+   "acs5",
+   "census_pep",
+   "usaspending",
+   "openfema",
+   "overture"
+  ],
+  "source_detail": "Numerators and island values come from the same Analysis tab dataset.",
+  "how_to_read": "In the 2026-10 snapshot, 2025 data show San Juan with 26.79% of Puerto Rico's jobs and 10.4% of its residents. A share well above the municipality's share of residents marks a place that concentrates the activity.",
+  "caveats": [
+   "The island value is not always the sum of the 78 municipalities, so shares may not add up to 100%. In the 2026-10 snapshot: Quarterly Census of Employment and Wages (QCEW) jobs in 2025, the municipalities add to 943,002 and the island figure is 947,557 (the municipalities hold 99.5%); Federal Emergency Management Agency (FEMA) Public Assistance in 2024, the municipalities hold 86% of the island figure and 14% is recorded as statewide; federal awards in fiscal year 2025, the municipalities hold 78.4% and 21.6% names no municipality.",
+   "Where a sector figure is withheld for a municipality, that municipality is blank, not zero, and the shares shown do not add up to 100%.",
+   "A share says how big a municipality's part is, not how well it is doing."
+  ],
+  "see_also": [
+   "measures.per_1000_residents",
+   "measures.share_of_jobs",
+   "measures.show_as",
+   "economy.qcew_method",
+   "economy.fema_pa_obligated",
+   "economy.fed_loans"
+  ],
+  "where": {
+   "files": [],
+   "view": [
+    {
+     "label": "Map, Analysis tab: share of Puerto Rico's jobs",
+     "href": "index.html#e=qcew_jobs.f.sharePR.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-03"
+ },
+ {
+  "id": "measures.share_of_jobs",
+  "name": "Share of the municipality's jobs",
+  "domain": "system.docs",
+  "domains": [
+   "system.docs"
+  ],
+  "group": "Rescaling a value",
+  "kind": "measure",
+  "plain": "A sector's jobs as a percent of all jobs located in the municipality. It shows how much of a local economy rests on one sector, such as tourism.",
+  "definition": "Jobs in the dataset ÷ all jobs located in the same municipality × 100, in percent. The denominator is the Quarterly Census of Employment and Wages (QCEW) total for all employers (private and government) in the same year, or in the latest earlier year if the data year has none. The option is offered for the jobs family (25 datasets in the 2026-10 snapshot).",
+  "unit": "% of the municipality's jobs",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "static",
+   "frequency": "Calculated in your browser each time the map redraws"
+  },
+  "method": "Case shareJobs of ecCalc in site/js/economy.js: x ÷ jobsAt(year)[i] × 100, shown with one decimal. Jobs data start in 2014. If you choose an earlier year, the layer shows 2014 (the year shown beside the layer reads 'first data 2014') and divides by the 2014 total.",
+  "sources": [
+   "bls_qcew"
+  ],
+  "source_detail": "US Bureau of Labor Statistics (BLS) Quarterly Census of Employment and Wages: sector jobs and total jobs.",
+  "how_to_read": "In the 2026-10 snapshot, tourism-related jobs were 10.0% of San Juan's jobs in 2025 and 10.5% of Puerto Rico's. The Analysis tab's 'Tourism economy' view shades this measure.",
+  "caveats": [
+   "For the 19 sector datasets and the tourism datasets, the numerator counts private-sector jobs while the denominator counts all jobs, government included. Sector shares therefore do not add up to 100%. For 'Jobs (all employers)' the share is 100% wherever it has a value.",
+   "Where the Bureau of Labor Statistics withholds a sector in a municipality, the share is blank, not zero. In the 2026-10 snapshot, 34 of the 78 municipalities have no 2024 figure for accommodation and food services, and 39 have none for 2025.",
+   "Where arts, entertainment and recreation is withheld, tourism-related jobs count accommodation and food services alone, so the share is slightly low there.",
+   "Tourism-related jobs is a grouping of industries (accommodation, food services, arts, entertainment and recreation). It includes jobs that serve residents and does not count every job that serves visitors.",
+   "Jobs are counted at the employer's work site, not where workers live."
+  ],
+  "see_also": [
+   "measures.location_quotient",
+   "measures.share_of_pr_total",
+   "methods.qcew_suppression",
+   "economy.qcew_method",
+   "economy.tourism_jobs",
+   "economy.qcew_jobs"
+  ],
+  "where": {
+   "files": [],
+   "view": [
+    {
+     "label": "Map, Analysis tab: tourism-related jobs as a share of local jobs",
+     "href": "index.html#e=tourism_jobs.f.shareJobs.green.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-03"
+ },
+ {
+  "id": "measures.location_quotient",
+  "name": "Location quotient",
+  "domain": "system.docs",
+  "domains": [
+   "system.docs"
+  ],
+  "group": "Rescaling a value",
+  "kind": "measure",
+  "plain": "A location quotient compares a sector's share of local jobs with its share of jobs on the whole island. A value of 1 means the same concentration as Puerto Rico; 2 means twice as concentrated.",
+  "definition": "(Sector jobs in the municipality ÷ all jobs in the municipality) ÷ (sector jobs in Puerto Rico ÷ all jobs in Puerto Rico). It has no unit. The jobs are annual averages from the Quarterly Census of Employment and Wages (QCEW), in the same year. The numerator is private-sector jobs in the sector, except for the datasets 'Jobs (all employers)', 'Private-sector jobs' and 'Government jobs', which count what their names say. Both denominators count all jobs, government included. The option is offered for the jobs family (25 datasets in the 2026-10 snapshot).",
+  "unit": "ratio (1 = same as Puerto Rico)",
+  "value_type": "ratio",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "static",
+   "frequency": "Calculated in your browser each time the map redraws"
+  },
+  "method": "Case lq of ecCalc in site/js/economy.js: (x ÷ jobs[i]) ÷ (pr ÷ jobs[Puerto Rico]), shown with two decimals. The result is blank when a denominator is missing or zero. Jobs data start in 2014; an earlier chosen year shows 2014. Colours use the diverging scale centred on 1.",
+  "sources": [
+   "bls_qcew"
+  ],
+  "source_detail": "Bureau of Labor Statistics (BLS) Quarterly Census of Employment and Wages.",
+  "how_to_read": "In the 2026-10 snapshot, accommodation jobs in San Juan have a location quotient of 1.26 in 2025: the share of San Juan's jobs in hotels, inns and other places to stay is 26% higher than the island's share. Below 1 the sector is less concentrated than on the island.",
+  "caveats": [
+   "A high quotient means concentration, not size. A municipality with few jobs can have a high quotient from a handful of employers.",
+   "Blank where the sector is withheld or the municipality has no such employers; blank is not zero.",
+   "Both denominators include government jobs. For the 19 sector datasets and the tourism datasets, the numerators count private-sector jobs only.",
+   "For 'Jobs (all employers)' every municipality shows 1.00 (and 100% as a share of jobs), so the option tells nothing there.",
+   "Jobs are counted at the work site, not where workers live."
+  ],
+  "see_also": [
+   "measures.share_of_jobs",
+   "measures.diverging_scale",
+   "methods.qcew_suppression",
+   "economy.accommodation_jobs",
+   "economy.qcew_method"
+  ],
+  "where": {
+   "files": [],
+   "view": [
+    {
+     "label": "Map, Analysis tab: accommodation jobs, location quotient",
+     "href": "index.html#e=accommodation_jobs.f.lq.gold.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-03"
+ },
+ {
+  "id": "measures.index_pr_100",
+  "name": "Index (Puerto Rico = 100)",
+  "domain": "system.docs",
+  "domains": [
+   "system.docs"
+  ],
+  "group": "Rescaling a value",
+  "kind": "measure",
+  "plain": "The municipality's value as a percent of the Puerto Rico value, so that the island equals 100. Above 100 means higher than the island; below 100 means lower.",
+  "definition": "Value ÷ Puerto Rico value × 100. It has no unit. The option is offered for rates, dollar levels (such as medians and average pay) and ratios. It is a relative comparison: 120 means 20% higher than the island figure, not 20 percentage points higher.",
+  "unit": "index (Puerto Rico = 100)",
+  "value_type": "index",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "static",
+   "frequency": "Calculated in your browser each time the map redraws"
+  },
+  "method": "Case index of ecCalc in site/js/economy.js: x ÷ a[Puerto Rico] × 100, shown with no decimals. The layer title reads 'index (puerto rico = 100)'. Colours use the diverging scale centred on 100. The Puerto Rico value is the dataset's own island figure (for survey series, the Census Bureau's island estimate), not the average of the 78 municipalities.",
+  "sources": [
+   "bls_qcew",
+   "bls_laus",
+   "acs5",
+   "census_pep",
+   "usaspending",
+   "openfema"
+  ],
+  "source_detail": "Any rate, level or ratio dataset in the Analysis tab.",
+  "how_to_read": "In the 2026-10 snapshot, San Juan's poverty rate in the 2020-2024 window (shown as 2024) has an index of 96 (95.8 before rounding): about 4% below the island's rate. To see the gap in percentage points, use 'Difference from Puerto Rico'.",
+  "caveats": [
+   "A relative comparison. A rate that is small on the island can swing the index widely for small changes.",
+   "The island figure is not the mean of the municipalities. For medians the island median is not the median of the municipal medians.",
+   "No margin of error is calculated for an index. Survey figures for small municipalities can be noisy."
+  ],
+  "see_also": [
+   "measures.difference_from_pr",
+   "measures.diverging_scale",
+   "measures.margin_of_error",
+   "measures.show_as"
+  ],
+  "where": {
+   "files": [],
+   "view": [
+    {
+     "label": "Map, Analysis tab: poverty rate as an index",
+     "href": "index.html#e=poverty_pct.f.index.blue.q.1.1.0.85.0&ey=2024"
+    }
+   ]
+  },
+  "added": "2026-10-03"
+ },
+ {
+  "id": "measures.difference_from_pr",
+  "name": "Difference from Puerto Rico",
+  "domain": "system.docs",
+  "domains": [
+   "system.docs"
+  ],
+  "group": "Rescaling a value",
+  "kind": "measure",
+  "plain": "The municipality's value minus the Puerto Rico value, in the same unit. It shows how far above or below the island a place sits.",
+  "definition": "Value − Puerto Rico value, in the dataset's own unit: dollars for dollar levels, percentage points for percent rates, the dataset's unit otherwise. The option is offered for rates, dollar levels and ratios.",
+  "unit": "same unit as the dataset (percentage points for percent rates)",
+  "value_type": "level",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "static",
+   "frequency": "Calculated in your browser each time the map redraws"
+  },
+  "method": "Case diff of ecCalc in site/js/economy.js: x − a[Puerto Rico]. A percent rate is labelled 'pts'. Dollars are shown with no decimals, and negative values carry a minus sign. Colours use the diverging scale centred on 0.",
+  "sources": [
+   "bls_qcew",
+   "bls_laus",
+   "acs5",
+   "census_pep",
+   "usaspending",
+   "openfema"
+  ],
+  "source_detail": "Any rate, level or ratio dataset in the Analysis tab.",
+  "how_to_read": "In the 2026-10 snapshot, San Juan's median household income in the 2020-2024 window is $1,695 above Puerto Rico's: $27,992 against $26,297.",
+  "caveats": [
+   "No margin of error is calculated for a difference. For survey series, check the margins of both numbers before reading a small difference.",
+   "The island figure is the dataset's own island value, not the average of the municipalities.",
+   "A difference in percentage points is not a percent difference. Use the index for the relative gap."
+  ],
+  "see_also": [
+   "measures.index_pr_100",
+   "measures.diverging_scale",
+   "measures.margin_of_error",
+   "housing.median_hh_income"
+  ],
+  "where": {
+   "files": [],
+   "view": [
+    {
+     "label": "Map, Analysis tab: median household income, difference from Puerto Rico",
+     "href": "index.html#e=median_hh_income.f.diff.blue.q.1.1.0.85.0&ey=2024"
+    }
+   ]
+  },
+  "added": "2026-10-03"
+ },
+ {
+  "id": "measures.change_since_base_year",
+  "name": "Change since the base year",
+  "domain": "system.docs",
+  "domains": [
+   "system.docs"
+  ],
+  "group": "Rescaling a value",
+  "kind": "measure",
+  "plain": "How much a value has changed between a base year you choose and the year on the map. Counts and dollars show percent change. Rates show the change in percentage points.",
+  "definition": "For counts, dollar totals and dollar levels: (value now − value at the base) ÷ value at the base × 100, in percent. For rates and ratios: value now − value at the base, in the dataset's own unit (percentage points for percent rates, years for median age, index points for the Gini index). On the Analysis tab the base value is the dataset's latest value at or before the chosen base year; the Housing page needs a value in the base year itself. If the year on the map is not later than that base data year, or there is no base value, the municipality is blank. A base value of zero gives a blank for percent change.",
+  "unit": "percent (counts and dollars) or points (rates and ratios)",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "static",
+   "frequency": "Calculated in your browser each time the map redraws"
+  },
+  "method": "Case change of ecCalc in site/js/economy.js. The default base year is 2014 on the Analysis tab and 2012 on the Housing page. 'Change measured from' lists every year from 2010 to the year before the latest one (on the Analysis tab, the latest year on the year bar; on the Housing page, the latest survey window), so any of them can be chosen. With 'Inflation-adjusted' ticked, both ends are first restated to the same Consumer Price Index (CPI) dollars. The legend title shows the span, for example '(2014 → 2024)'. Colours use the diverging scale centred on 0.",
+  "sources": [
+   "bls_qcew",
+   "bls_laus",
+   "acs5",
+   "census_pep",
+   "usaspending",
+   "openfema"
+  ],
+  "source_detail": "Any dataset with more than one year in the Analysis tab, or a Housing page series.",
+  "how_to_read": "In the 2026-10 snapshot, Puerto Rico's poverty rate fell 4.72 percentage points between the 2010-2014 window (2014) and the 2020-2024 window (2024); San Juan's fell 2.10 points. In the same snapshot, median gross rent for Puerto Rico rose 25.1% in nominal dollars over the same span. The 'Change measured from' list ends in 2024 on the Analysis tab and in 2023 on the Housing page.",
+  "caveats": [
+   "Survey windows that share years overlap. Windows labelled 2022 and 2024 share three survey years, so their difference understates real change. The Census Bureau advises comparing windows that do not overlap.",
+   "A base year before 2020 and a year after it cross the population estimate break, which can move per-1,000 values and population change.",
+   "Percent change from a small base is large. The Ask the observatory chat leaves out municipalities whose starting value is below a minimum for this reason.",
+   "Percent change is not meaningful when the base is near zero or negative, as it can be for federal loans (an estimated cost).",
+   "No margin of error is calculated for a change. Both ends are estimates.",
+   "Dollar changes are in the dollars of each year unless 'Inflation-adjusted' is ticked. The Housing page's change fields are never adjusted for inflation.",
+   "Median age is a 'rate' in the Analysis tab, so its change is labelled 'pts' although it is in years."
+  ],
+  "see_also": [
+   "measures.inflation_adjustment",
+   "measures.diverging_scale",
+   "measures.chat_trend",
+   "measures.margin_of_error",
+   "methods.acs_windows",
+   "methods.population_vintage_break",
+   "municipalities.change_method",
+   "economy.fed_loans"
+  ],
+  "where": {
+   "files": [],
+   "view": [
+    {
+     "label": "Map, Analysis tab: poverty rate, change since 2014",
+     "href": "index.html#e=poverty_pct.f.change.red.q.1.1.0.85.0&ey=2024&eb=2014"
+    },
+    {
+     "label": "Housing page: change maps with a base year",
+     "href": "housing.html"
+    }
+   ]
+  },
+  "added": "2026-10-03"
+ },
+ {
+  "id": "measures.percentile",
+  "name": "Percentile among municipalities",
+  "domain": "system.docs",
+  "domains": [
+   "system.docs"
+  ],
+  "group": "Rescaling a value",
+  "kind": "measure",
+  "plain": "The municipality's position in the list of the 78 municipalities, from 0 (lowest value) to 100 (highest value). It says how a place compares with the others, not by how much.",
+  "definition": "Position of the value in the sorted list of municipal values, as a percent of the way from the lowest (0) to the highest (100): (number of lower values) ÷ (number of municipalities with a value − 1) × 100. With 78 municipalities each step is 1.3 points. Municipalities with the same value share the lower percentile. The Puerto Rico row is blank. Municipalities without a value are left out and the list gets shorter.",
+  "unit": "percentile (0 to 100)",
+  "value_type": "index",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "static",
+   "frequency": "Calculated in your browser each time the map redraws"
+  },
+  "method": "Case pctile of ecCalc in site/js/economy.js: the index of the value in the ascending sorted list (first match for ties) ÷ max(1, n − 1) × 100, shown with no decimals. It uses the layer's own settings for year, inflation adjustment and base year.",
+  "sources": [
+   "bls_qcew",
+   "bls_laus",
+   "acs5",
+   "census_pep",
+   "usaspending",
+   "openfema"
+  ],
+  "source_detail": "Any dataset in the Analysis tab.",
+  "how_to_read": "In the 2026-10 snapshot, Guaynabo has the lowest poverty rate of the 78 municipalities in the 2020-2024 window (percentile 0) and Guánica the highest (percentile 100). A percentile of 50 is the middle of the list.",
+  "caveats": [
+   "A percentile ignores distances. Two municipalities one percentile apart can be far apart in value, or almost equal.",
+   "Each municipality counts once, whatever its population. It is not a percentile of people.",
+   "Municipalities with a blank value (for example withheld sectors) are left out, so the steps are larger than 1.3 points when fewer than 78 have a value."
+  ],
+  "see_also": [
+   "measures.rank",
+   "measures.class_breaks",
+   "measures.show_as",
+   "measures.municipal_median"
+  ],
+  "where": {
+   "files": [],
+   "view": [
+    {
+     "label": "Map, Analysis tab: poverty rate as a percentile",
+     "href": "index.html#e=poverty_pct.f.pctile.blue.q.1.1.0.85.0&ey=2024"
+    }
+   ]
+  },
+  "added": "2026-10-03"
+ },
+ {
+  "id": "measures.rank",
+  "name": "Rank (1 = highest)",
+  "domain": "system.docs",
+  "domains": [
+   "system.docs"
+  ],
+  "group": "Ranking and comparing",
+  "kind": "measure",
+  "plain": "A municipality's position when the 78 municipalities are sorted from the highest value to the lowest. Rank 1 is the highest value, not the best result.",
+  "definition": "1 + the number of municipalities with a higher value, among the municipalities that have a value. It is written '#19 of 78'. The Puerto Rico row has no rank. On the Analysis tab and the Housing page, municipalities with the same value share the better rank: if three tie for fifth, all show #5 and the next shows #8. The 2D map's Municipality tab note and Rankings tab work differently (see the cautions).",
+  "unit": "rank (1 = highest)",
+  "value_type": "index",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "static",
+   "frequency": "Calculated in your browser each time the map redraws"
+  },
+  "method": "Function ecRank in site/js/economy.js (Analysis tab inspector and popup) and rankOf in site/js/housing.js (Housing page). Both count the municipalities with a higher value. The rank follows the layer's settings: year, rescaling, inflation adjustment and base year. The Ask the observatory chat's municipality profile also lists a position for each indicator, under the note 'Rank 1 = the highest value among the 78 municipalities'.",
+  "sources": [
+   "bls_qcew",
+   "bls_laus",
+   "acs5",
+   "census_pep",
+   "usaspending",
+   "openfema",
+   "overture"
+  ],
+  "source_detail": "Any dataset in the Analysis tab, the Housing page series and the tourism place counts.",
+  "how_to_read": "In the 2026-10 snapshot, Ponce has rank #19 of 78 for poverty rate in the 2020-2024 window: 18 municipalities have a higher rate. For poverty, rank 1 is the highest rate; for income, rank 1 is the highest income.",
+  "caveats": [
+   "Rank 1 is the highest value. Whether that is good or bad depends on the dataset.",
+   "On the 2D map, the Municipality tab note ('Rank #n of 78 by tourism places') and the Rankings tab give the position in the sorted list, so tied municipalities get consecutive ranks, not one shared rank. The Ask the observatory chat's municipality profile does the same.",
+   "The 'of n' shrinks when some municipalities have no value, so ranks from different datasets are out of different totals.",
+   "Ranks use the unrounded values. Two municipalities that show the same rounded number can have different ranks.",
+   "A rank hides the size of the gap between neighbours. Use the value, and its margin of error for survey series."
+  ],
+  "see_also": [
+   "measures.percentile",
+   "measures.margin_of_error",
+   "municipalities.quintile_shading",
+   "municipalities.profile_ranking_download",
+   "measures.municipal_median",
+   "layers.rankings_tab",
+   "layers.municipality_profile"
+  ],
+  "where": {
+   "files": [],
+   "view": [
+    {
+     "label": "Map, Analysis tab: click a municipality to see its rank",
+     "href": "index.html#e=poverty_pct.f.value.blue.q.1.1.0.85.0&ey=2024"
+    }
+   ]
+  },
+  "added": "2026-10-03"
+ },
+ {
+  "id": "measures.municipal_median",
+  "name": "Median of the 78 municipalities (Housing page)",
+  "domain": "system.docs",
+  "domains": [
+   "system.docs"
+  ],
+  "group": "Ranking and comparing",
+  "kind": "measure",
+  "plain": "The Housing page shows the middle value of the 78 municipalities, the lowest, the highest and the Puerto Rico figure above each chart. The middle value is not the island figure.",
+  "definition": "The median of the municipal values that have a value in the year on screen: sort them and take the middle one, or the average of the two middle ones when the count is even. Each municipality counts once, whatever its population. Lowest and highest are the smallest and largest of the same values. The Puerto Rico figure is the dataset's own island value, not a calculation from the municipalities.",
+  "unit": "same unit as the dataset",
+  "value_type": "level",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "static",
+   "frequency": "Calculated in your browser each time the year bar or the base year changes"
+  },
+  "method": "Function updateViz and the median helper in site/js/housing.js. They run on the values of the 78 municipalities in the year the dataset resolves to (see the nearest-year rule). The line above each chart reads 'Median of the 78 municipalities, lowest, highest, Puerto Rico'. The words 'the 78 municipalities' are fixed text, so the label still says 78 when fewer municipalities have a value.",
+  "sources": [
+   "acs5",
+   "census_pep",
+   "census_decennial",
+   "openfema"
+  ],
+  "source_detail": "Housing page series: American Community Survey (ACS) 5-year estimates, Population Estimates and census counts, and OpenFEMA housing assistance.",
+  "how_to_read": "In the 2026-10 snapshot, for median household income in the 2020-2024 window, the middle of the 78 municipal values is $24,070, the lowest is $16,314 (Las Marías), the highest is $46,731 (Guaynabo) and Puerto Rico as a whole is $26,297. The middle municipal value ($24,070) is not the island median ($26,297). The island figure covers all households. The middle value counts each municipality once.",
+  "caveats": [
+   "Each municipality counts once, so the middle value is not weighted by population and is not the island median.",
+   "The label always says 78, even when fewer municipalities have a value in the year shown. Check the ranked chart for the count.",
+   "For survey series the middle value uses the estimates alone. Margins of error are not used."
+  ],
+  "see_also": [
+   "measures.rank",
+   "measures.percentile",
+   "measures.nearest_year_rule",
+   "housing.median_hh_income"
+  ],
+  "where": {
+   "files": [],
+   "view": [
+    {
+     "label": "Housing page: the line above each chart",
+     "href": "housing.html"
+    }
+   ]
+  },
+  "added": "2026-10-04"
+ },
+ {
+  "id": "measures.inflation_adjustment",
+  "name": "Inflation adjustment (US CPI-U)",
+  "domain": "system.docs",
+  "domains": [
+   "system.docs"
+  ],
+  "group": "Dollars and prices",
+  "kind": "measure",
+  "plain": "Ticking 'Inflation-adjusted' restates dollars of different years in the dollars of the latest year, using the US Consumer Price Index. It lets you compare money across years. The observatory does not use a Puerto Rico price index, so the result is an approximation.",
+  "definition": "Adjusted value = value × (CPI of the reference year ÷ CPI of the data year). The CPI is the Bureau of Labor Statistics Consumer Price Index for All Urban Consumers (CPI-U), US city average, all items, not seasonally adjusted (series CUUR0000SA0), annual average, 1982-84 = 100. The reference year is the latest year in the CPI table. The table runs from 2000 to the latest full calendar year at the time of the build, so it holds a factor for every year of every dollar dataset (the earliest is 2001, for FEMA Public Assistance). A year outside the table would take the nearest end of the table. The option appears on datasets whose unit is dollars (dollar levels and dollar totals) and does not change counts or percentages.",
+  "unit": "dollars of the latest Consumer Price Index (CPI) year",
+  "value_type": "level",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2000,
+   "last": 2025,
+   "frequency": "Calculated in your browser each time the map redraws; the CPI table is rebuilt with each snapshot"
+  },
+  "method": "Function cpiFactor in site/js/economy.js, applied in ecCalc before any rescaling, so per-resident and per-km² dollars are also in reference-year dollars. In a change layer the base value is restated with its own year's factor. Margins of error are multiplied by the same factor. The CPI values are stored in economy_series.json (deflator.cpi) and come from economy_series.py, which reads the annual averages from the public Bureau of Labor Statistics (BLS) data API (Application Programming Interface).",
+  "sources": [
+   "bls_cpi",
+   "acs5",
+   "bls_qcew",
+   "usaspending",
+   "openfema"
+  ],
+  "source_detail": "Bureau of Labor Statistics CPI-U US city average, series CUUR0000SA0. Dollar datasets: ACS medians and incomes, QCEW wages and pay, USAspending awards, OpenFEMA dollars, FEMA National Risk Index expected annual loss.",
+  "how_to_read": "In the 2026-10 snapshot the reference year is 2025, and $1,000 in 2014 equals $1,360 in 2025 dollars (CPI 321.943 ÷ 236.736). Puerto Rico's median gross rent rose 25.1% between the 2010-2014 and 2020-2024 windows in nominal dollars but fell 5.6% in 2025 dollars.",
+  "caveats": [
+   "The observatory uses the US city average and no Puerto Rico price index. Prices in Puerto Rico can move differently from the US average, so adjusted values are an approximation.",
+   "The CPI table starts in 2000, so every year of every dollar dataset has its own factor, including the years 2001 to 2009 of the Federal Emergency Management Agency (FEMA) series that the Trend chart shows.",
+   "American Community Survey (ACS) dollar figures are labelled by the last year of a five-year window, and the factor uses that last year. The Census Bureau's documentation of the 2013-2017 Puerto Rico Community Survey 5-year estimates says monetary values are adjusted to the dollars of the final year of the period with the national CPI. The observatory applies no adjustment of its own to ACS dollars, so they are the figures the Bureau published. The Analysis tab describes them as dollars of each window's last year, and the Housing page describes them as 'not adjusted for inflation' (the observatory itself adds no adjustment). Check the Bureau's documentation for the window you cite.",
+   "Federal fiscal-year awards (October to September) use the CPI of the calendar year with the same number. Quarterly Census of Employment and Wages (QCEW) wages are for the calendar year.",
+   "The adjustment is one national index applied to every municipality and every kind of spending."
+  ],
+  "see_also": [
+   "measures.change_since_base_year",
+   "measures.per_resident",
+   "methods.acs_windows",
+   "municipalities.change_method",
+   "housing.median_gross_rent",
+   "economy.fema_pa_obligated",
+   "economy.fed_awards_total",
+   "layers.economy_inflation"
+  ],
+  "where": {
+   "files": [],
+   "view": [
+    {
+     "label": "Map, Analysis tab: rent change 2014-2024, nominal dollars",
+     "href": "index.html#e=median_gross_rent.f.change.blue.q.1.1.0.85.0&ey=2024&eb=2014"
+    },
+    {
+     "label": "Same map, inflation-adjusted",
+     "href": "index.html#e=median_gross_rent.f.change.blue.q.1.1.1.85.0&ey=2024&eb=2014"
+    }
+   ]
+  },
+  "added": "2026-10-03"
+ },
+ {
+  "id": "measures.class_breaks",
+  "name": "Class breaks: quantiles, equal intervals and natural breaks",
+  "domain": "system.docs",
+  "domains": [
+   "system.docs"
+  ],
+  "group": "Classes and colours",
+  "kind": "measure",
+  "plain": "A shaded map sorts the municipalities into five colour classes. The Analysis tab sets the class limits one of four ways: the same number of municipalities in each class (quantiles), classes of equal width (equal intervals), limits at gaps in the data (natural breaks), or four limits that the user types.",
+  "definition": "Class limits for a shaded layer whose values have no natural centre. The values of the 78 municipalities are pooled (all years together when 'Same classes in every year' is on) and sorted. Quantiles: the limits are the values one fifth, two fifths, three fifths and four fifths of the way along the sorted list, so each class holds about the same number of values. Equal intervals: the range from the lowest to the highest value is cut into five equal widths. Natural breaks (Jenks): the limits are chosen so that values inside a class are as alike as possible and classes are as different as possible. A value equal to a limit goes in the lower class. My own limits: four numbers in rising order typed in the layer's Settings, which start from the classes the layer has at that moment; text that is not four rising numbers is ignored (the classes stay quantiles until it is fixed). Typed limits apply to a layer shaded alone: two shaded layers together use three classes each, and a scale around a centre (index, difference, change, location quotient) keeps its own cut-offs. A municipality with no value is grey and listed as 'No data'.",
+  "unit": "class (1 to 5)",
+  "value_type": "index",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "static",
+   "frequency": "Calculated in your browser each time the map redraws"
+  },
+  "method": "The functions make, classOf, jenks and parseBreaks of Core.classify (site/js/core/classify.js), with pool and breaks of the layer engine (site/js/core/engine.js). Quantile limits take pool[floor(n × i ÷ 5)] for i = 1 to 4. Natural breaks use the Fisher-Jenks dynamic programme; when the pool has more than 1,500 values the code runs it on every nth value to keep the page fast. The Puerto Rico row is not in the pool. Bivariate maps use three classes instead of five (see the bivariate entry). The Map layers tab's municipality shading uses quintiles only (see the quintile entry).",
+  "sources": [
+   "bls_qcew",
+   "bls_laus",
+   "acs5",
+   "census_pep",
+   "usaspending",
+   "openfema"
+  ],
+  "source_detail": "Any shaded dataset in the Analysis tab. The class methods are a display choice by Foundation for Puerto Rico (FPR).",
+  "how_to_read": "In the 2026-10 snapshot, the same poverty data give three different sets of limits (percent, all years pooled): quantiles 41.3, 46.4, 50.5 and 54.9; equal intervals 30.1, 39.3, 48.6 and 57.8; natural breaks 33.5, 41.3, 48.2 and 55.0. All three describe the same data. The legend lists each range and how many municipalities fall in it.",
+  "caveats": [
+   "A colour class is not a verdict. Dark does not mean good or bad, only higher than the limit.",
+   "With quantiles, two municipalities with almost the same value can sit in different classes, and with equal intervals a class can have no municipality.",
+   "With 'Same classes in every year' on, the five classes are not equal-sized in any single year. In the 2026-10 snapshot, the 2024 poverty map has 28, 21, 15, 9 and 5 municipalities in its five classes.",
+   "Values for years that are not on screen shape the limits when classes are fixed across years.",
+   "Typed limits are kept in the shareable link, so a link that holds them opens the same classes."
+  ],
+  "see_also": [
+   "measures.fixed_classes",
+   "measures.diverging_scale",
+   "measures.bivariate_map",
+   "measures.proportional_symbols",
+   "municipalities.quintile_shading",
+   "layers.economy_shaded"
+  ],
+  "values": {
+   "Quantiles (equal counts)": "Each class holds about the same number of municipalities. This is the default.",
+   "Equal intervals": "Each class covers the same width of values. A class can be empty if a few values are extreme.",
+   "Natural breaks": "Limits are chosen so that values inside a class are as alike as possible, which tends to put limits where the data have gaps. The limits are not round numbers.",
+   "My own limits": "Four limits typed by the user, in rising order. Use them to hold the classes to round numbers or to a policy threshold."
+  },
+  "where": {
+   "files": [],
+   "view": [
+    {
+     "label": "Map, Analysis tab: poverty rate, quantiles",
+     "href": "index.html#e=poverty_pct.f.value.blue.q.1.1.0.85.0&ey=2024"
+    },
+    {
+     "label": "Same data, equal intervals",
+     "href": "index.html#e=poverty_pct.f.value.blue.e.1.1.0.85.0&ey=2024"
+    },
+    {
+     "label": "Same data, natural breaks",
+     "href": "index.html#e=poverty_pct.f.value.blue.j.1.1.0.85.0&ey=2024"
+    },
+    {
+     "label": "Same data, limits typed by the user (20, 30, 40, 50)",
+     "href": "index.html#e=poverty_pct.f.value.blue.m.1.1.0.85.0.20~30~40~50&ey=2024"
+    }
+   ]
+  },
+  "added": "2026-10-03"
+ },
+ {
+  "id": "measures.fixed_classes",
+  "name": "Same classes in every year",
+  "domain": "system.docs",
+  "domains": [
+   "system.docs"
+  ],
+  "group": "Classes and colours",
+  "kind": "measure",
+  "plain": "By default the colour limits are set from all years of a dataset together, so a colour means the same range in every year. When you move the year slider you see real change, not a map that re-sorts itself.",
+  "definition": "The checkbox 'Same classes in every year' in a layer's Settings. On (the default): class limits, the diverging scale's span and the size of the largest symbol are calculated from the values of all municipalities in every year the dataset has, with the layer's own settings (rescaling, inflation adjustment, base year). Off: they are calculated from the year on screen only, so every year uses all five colours but colours are not comparable between years. The box is not shown for one-time snapshot datasets, which have a single year.",
+  "unit": "setting (on or off)",
+  "value_type": "flag",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "static",
+   "frequency": "Calculated in your browser each time the map redraws"
+  },
+  "method": "Function ecPool in site/js/economy.js builds the pool: every year of the dataset when the layer is fixed, otherwise the current year only. The limits are cached by dataset, rescaling, inflation setting, base year, class method and year. The Housing page always pools every year and states it in its legend note.",
+  "sources": [
+   "bls_qcew",
+   "bls_laus",
+   "acs5",
+   "census_pep",
+   "usaspending",
+   "openfema"
+  ],
+  "source_detail": "Any shaded or symbol dataset with more than one year.",
+  "how_to_read": "In the 2026-10 snapshot, the poverty rate has 78 municipalities × 15 windows = 1,170 values, and they set the limits. With the box on, a map for 2014 and a map for 2024 use the same limits, so a change of colour between the two maps reflects a change in the data. With the box off, the inner limits for 2024 alone would be 37.2, 42.2, 46.1 and 50.3, against 41.3, 46.4, 50.5 and 54.9 when pooled.",
+  "caveats": [
+   "A rate that moves across the whole period can leave most municipalities in the lowest or highest classes in the first or last years.",
+   "The legend counts show how many municipalities fall in each class in the year on screen. They are not equal.",
+   "The setting is saved in a shared link as the 'fixed' flag of each layer.",
+   "The pool holds every year the dataset has, including years before 2010 that the year bar does not offer (federal awards from 2008 and the FEMA series from 2001)."
+  ],
+  "see_also": [
+   "measures.class_breaks",
+   "measures.diverging_scale",
+   "measures.proportional_symbols",
+   "measures.nearest_year_rule",
+   "methods.shared_links",
+   "layers.economy_shaded"
+  ],
+  "where": {
+   "files": [],
+   "view": [
+    {
+     "label": "Map, Analysis tab: poverty rate, classes fixed across years",
+     "href": "index.html#e=poverty_pct.f.value.blue.q.1.1.0.85.0&ey=2014"
+    },
+    {
+     "label": "Same map, classes from one year only",
+     "href": "index.html#e=poverty_pct.f.value.blue.q.1.0.0.85.0&ey=2014"
+    }
+   ]
+  },
+  "added": "2026-10-03"
+ },
+ {
+  "id": "measures.diverging_scale",
+  "name": "Diverging scale (index, difference, location quotient and change)",
+  "domain": "system.docs",
+  "domains": [
+   "system.docs"
+  ],
+  "group": "Classes and colours",
+  "kind": "measure",
+  "plain": "When a value has a natural centre, the map shades distance from that centre instead of equal-count classes. Red means below the centre, blue means above, and pale grey means near it.",
+  "definition": "Used for 'Index' (centre 100), 'Difference from Puerto Rico' (centre 0), 'Location quotient' (centre 1) and 'Change since the base year' (centre 0). The span is the largest distance from the centre among all values in the pool. Five classes follow from t = (value − centre) ÷ span: t below −0.5 (strongly below), −0.5 up to −0.1 (below), −0.1 to +0.1 (near the centre), +0.1 up to +0.5 (above), above +0.5 (strongly above). The classes are not equal-count and not chosen by the quantile, equal-interval or natural-breaks setting.",
+  "unit": "class (1 to 5)",
+  "value_type": "index",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "static",
+   "frequency": "Calculated in your browser each time the map redraws"
+  },
+  "method": "Function ecBreaks (branch for a diverging output with five classes) and ecClass in site/js/economy.js. The colours run dark red, light red, pale grey, light blue, dark blue. In a bivariate map a diverging layer is cut into three classes by the layer's class method instead. The Housing page uses the same rule around 0 for its change maps.",
+  "sources": [
+   "bls_qcew",
+   "bls_laus",
+   "acs5",
+   "census_pep",
+   "usaspending",
+   "openfema"
+  ],
+  "source_detail": "Rescaled Analysis tab layers (index, difference, location quotient, change).",
+  "how_to_read": "In the 2026-10 snapshot, for poverty as an index (Puerto Rico = 100) the largest distance from 100 among the pooled values is 57.2, so the limits sit at 71.4, 94.3, 105.7 and 128.6. A municipality at 100 is the same as the island; one at 130 is in the highest class.",
+  "caveats": [
+   "One extreme value stretches the span and pushes most municipalities into the pale middle class.",
+   "Red and blue show direction from the centre, not good and bad.",
+   "The legend lists only classes that hold at least one municipality."
+  ],
+  "see_also": [
+   "measures.index_pr_100",
+   "measures.difference_from_pr",
+   "measures.location_quotient",
+   "measures.change_since_base_year",
+   "measures.class_breaks",
+   "measures.fixed_classes"
+  ],
+  "where": {
+   "files": [],
+   "view": [
+    {
+     "label": "Map, Analysis tab: poverty rate as an index (diverging colours)",
+     "href": "index.html#e=poverty_pct.f.index.blue.q.1.1.0.85.0&ey=2024"
+    }
+   ]
+  },
+  "added": "2026-10-03"
+ },
+ {
+  "id": "measures.bivariate_map",
+  "name": "Bivariate map (two datasets in one)",
+  "domain": "system.docs",
+  "domains": [
+   "system.docs"
+  ],
+  "group": "Classes and colours",
+  "kind": "measure",
+  "plain": "When two shaded layers are visible, the map colours each municipality by both at once: three classes for each dataset, nine colours in all. It shows where two things are high together, low together, or differ.",
+  "definition": "The first shaded layer runs left to right (→) and the second runs upward (↑). Each is cut into three classes (low, middle, high), and a municipality's colour is the pair of its two classes. Each layer's three classes follow its own class method. With quantiles (the default) the cut-offs are terciles. The legend title says 'terciles of each' only when both layers use quantile classes; if either layer uses equal intervals or natural breaks, it says 'three classes of each'. With the default 'Same classes in every year', the terciles are thirds of all municipality values from every year pooled, not thirds of the 78 municipalities in the year shown, so one year can have far more places in one class. Untick 'Same classes in every year' on a layer to cut the year on screen into thirds. A municipality with no value in either layer is grey. A map can shade at most two datasets; further datasets must be shown as symbols.",
+  "unit": "class pair (3 × 3)",
+  "value_type": "index",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "static",
+   "frequency": "Calculated in your browser each time the map redraws"
+  },
+  "method": "Function ecRenderMap in site/js/economy.js calls ecBreaks with three classes for each layer and picks a colour from a 3 × 3 palette. Each layer keeps its own year, rescaling and 'Same classes in every year' setting. The legend title names the kind of classes and the legend gives the cut-offs of each axis.",
+  "sources": [
+   "bls_qcew",
+   "bls_laus",
+   "acs5",
+   "census_pep",
+   "usaspending",
+   "openfema"
+  ],
+  "source_detail": "Any two shaded datasets in the Analysis tab.",
+  "how_to_read": "Shade poverty first and median household income second. Each municipality's colour then shows its poverty class along the horizontal axis (→) and its income class along the vertical axis (↑). Read the two axes of the legend, and their cut-offs, before the colours. In the 2026-10 snapshot, with all years pooled, the poverty axis reads 'up to 45.0%' for low and 'above 51.8%' for high.",
+  "caveats": [
+   "'High' and 'low' are relative, not absolute. With the default settings they compare a municipality with the values of all years pooled, not only with the other municipalities in the year shown. In the 2026-10 snapshot, the 2024 poverty classes (low, middle, high) hold 44, 21 and 13 municipalities. Median household income, in the dollars of each year, holds 1, 13 and 64.",
+   "The legend title says 'terciles of each' only when both layers use quantile classes. Otherwise it says 'three classes of each', and each layer's classes follow its own method (equal intervals or natural breaks). With the default settings, terciles are terciles of all years pooled (see the definition), not thirds of the year on screen.",
+   "The two layers can be for different years. Check the year shown beside each layer in the legend.",
+   "A bivariate map shows two patterns together. It does not show that one causes the other."
+  ],
+  "see_also": [
+   "measures.class_breaks",
+   "measures.fixed_classes",
+   "measures.correlation",
+   "measures.nearest_year_rule",
+   "layers.economy_bivariate"
+  ],
+  "where": {
+   "files": [],
+   "view": [
+    {
+     "label": "Map, Analysis tab: poverty and median household income together",
+     "href": "index.html#e=poverty_pct.f.value.blue.q.1.1.0.85.0,median_hh_income.f.value.green.q.1.1.0.85.0&ey=2024"
+    }
+   ]
+  },
+  "added": "2026-10-03"
+ },
+ {
+  "id": "measures.proportional_symbols",
+  "name": "Sized symbols (proportional circles)",
+  "domain": "system.docs",
+  "domains": [
+   "system.docs"
+  ],
+  "group": "Classes and colours",
+  "kind": "measure",
+  "plain": "A sized-symbol layer draws one circle per municipality whose area is proportional to the value. Counts, such as jobs, are better shown this way than as shaded colour.",
+  "definition": "A circle is drawn at the area-weighted centre of each municipality's largest polygon, so islands and detached parts do not pull it into the sea. The radius is 30 px × √(|value| ÷ largest |value|) (20 px on a phone), with a minimum of 2.5 px. Because area grows with the square of the radius, the circle's area is proportional to the value. The largest |value| comes from all years when classes are fixed. Circles are drawn from the largest to the smallest so small ones stay visible. When the layer has negative values, as change layers do, blue circles mark increases and red circles mark decreases, and size follows the absolute value.",
+  "unit": "circle area",
+  "value_type": "geometry",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "static",
+   "frequency": "Calculated in your browser each time the map redraws"
+  },
+  "method": "Function ecRenderMap (symbols) and ecCentroid in site/js/economy.js. The legend shows three circles: the largest value, half of it and a tenth of it.",
+  "sources": [
+   "bls_qcew",
+   "bls_laus",
+   "acs5",
+   "census_pep",
+   "usaspending",
+   "openfema",
+   "leaflet"
+  ],
+  "source_detail": "Any dataset in the Analysis tab; circles are drawn with Leaflet.",
+  "how_to_read": "In the 2026-10 snapshot, San Juan's jobs in 2025 (253,816) draw a circle of 29.9 px against 30 px for the largest value in any year (255,426). A municipality with 50,000 jobs would draw 13.3 px.",
+  "caveats": [
+   "Below the minimum size the circle is larger than proportional. A value under about 0.7% of the largest is drawn at 2.5 px (about 1,800 jobs when the largest value is 255,426, as in the 2026-10 snapshot).",
+   "The eye reads area poorly. Check the numbers in the inspector.",
+   "Circles sit at the centre of the municipality's largest polygon, not at the places where the activity happens, and large circles overlap in the San Juan area.",
+   "Symbols can be added for any dataset, but they suit counts and dollar totals. The page advises shading rates."
+  ],
+  "see_also": [
+   "measures.class_breaks",
+   "measures.fixed_classes",
+   "measures.per_1000_residents",
+   "measures.show_as",
+   "layers.economy_symbols"
+  ],
+  "where": {
+   "files": [],
+   "view": [
+    {
+     "label": "Map, Analysis tab: jobs as sized symbols",
+     "href": "index.html#e=qcew_jobs.s.value.blue.q.1.1.0.75.1"
+    }
+   ]
+  },
+  "added": "2026-10-03"
+ },
+ {
+  "id": "measures.nearest_year_rule",
+  "name": "Nearest-year rule (latest value at or before the chosen year)",
+  "domain": "system.docs",
+  "domains": [
+   "system.docs"
+  ],
+  "group": "Time and vintages",
+  "kind": "measure",
+  "plain": "One year control sets every layer. A layer that has no value for that year shows its latest earlier year, and a small note beside the layer (the year chip) says which year it used.",
+  "definition": "For the year chosen on the year bar, each layer shows its own data year: the latest year in its series that is not later than the chosen year. If every year in the series is later, it shows its first year and the year chip says 'first data'. A one-time snapshot layer always shows its snapshot year. With 'Latest' chosen, each layer shows its own last year. The same rule picks the denominators for per-1,000, per-resident, share-of-jobs and location-quotient views.",
+  "unit": "year",
+  "value_type": "date",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "static",
+   "frequency": "Calculated in your browser each time the map redraws"
+  },
+  "method": "The function resolve of Core.time (site/js/core/time.js), used by the layer engine (the Analysis tab) and by the Housing page. The year chip comes from E.chip: '2019 (latest at or before 2020)', 'first data 2014', 'snapshot 2026' or, for a survey window, '2016–2020'. The year bar lists the years from 2010 on. Population, jobs and housing units for rescaling come from E.pop, E.jobs and E.hu, which apply the same rule.",
+  "sources": [
+   "bls_qcew",
+   "bls_laus",
+   "acs5",
+   "census_pep",
+   "usaspending",
+   "openfema"
+  ],
+  "source_detail": "Every dataset in the Analysis tab.",
+  "how_to_read": "In the 2026-10 snapshot: choose 2020, and unemployment from the Bureau of Labor Statistics (BLS) shows 2019, because the observatory's unemployment series has no 2020 value, while poverty shows the survey window that ends in 2020. Choose 2012, and jobs show 2014 as 'first data 2014', because the jobs series starts in 2014. Choose 2015, and Federal Emergency Management Agency (FEMA) Public Assistance shows 2011, the latest declaration year in the data before 2015. Choose 2025, and survey series show the 2020-2024 window.",
+  "caveats": [
+   "A layer can be older than the year you chose. Read the year chip beside each layer in the legend.",
+   "FEMA series have values only for years with a disaster declaration. A year with none shows the last earlier declaration year, not zero, and the dollars are those of that earlier disaster. In the 2026-10 snapshot, choosing 2019 shows 2017 for Public Assistance.",
+   "Two layers can describe different years. The table, the scatter plot and the correlation use each layer's own data year.",
+   "In the Analysis tab the year chip for a survey series names the whole five-year window, for example 2020–2024, while the year bar counts it by its last year (2024).",
+   "The year bar in a shared link stores your choice. Without it the link opens at 'Latest'."
+  ],
+  "see_also": [
+   "methods.latest_year",
+   "methods.acs_windows",
+   "measures.correlation",
+   "measures.fixed_classes",
+   "methods.shared_links",
+   "layers.economy_year_control",
+   "layers.housing_year_bar"
+  ],
+  "where": {
+   "files": [],
+   "view": [
+    {
+     "label": "Map, Analysis tab: unemployment rate with the year set to 2020",
+     "href": "index.html#e=laus_unemp_rate.f.value.blue.q.1.1.0.85.0&ey=2020"
+    }
+   ]
+  },
+  "added": "2026-10-03"
+ },
+ {
+  "id": "measures.trend_line",
+  "name": "Trend line in the inspector and the Trend chart",
+  "domain": "system.docs",
+  "domains": [
+   "system.docs"
+  ],
+  "group": "Time and vintages",
+  "kind": "measure",
+  "plain": "The small line beside each value in the workbench's Inspector, and the Trend view of the workbench, show how a layer's value moved across the years. A caption under each small line says how many years it covers. The Housing page profile has similar lines.",
+  "definition": "The Trend column of the workbench's Inspector view shows the layer's calculated values (with the same rescaling, inflation and base-year settings) for each data year from 2010 on, as one small line per layer for the place you selected. The column header reads 'Trend' with 'years shown; dot = chosen year' under it. Under each line a caption gives the number of years from the first to the last (counting years with no data), then the span, in the form 'N yrs · 2014–25'. When some years have no value it adds the number of values, in the form 'N yrs, M values · 2010–25'. A dot marks the data year on the map. The line needs at least two values and is not drawn for one-time snapshots. The Housing page profile has lines of the same kind, drawn from every year the series has, with a caption of the number of years only ('N yrs'). The Trend view charts the places you click or add, with the layer's settings. It uses years from 2010 on, and from the first year for the three Federal Emergency Management Agency (FEMA) datasets. It draws at most eight lines.",
+  "unit": "line of yearly values",
+  "value_type": "geometry",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "static",
+   "frequency": "Calculated in your browser each time the map redraws"
+  },
+  "method": "Functions ecSpark and ecBenchTrend in site/js/economy.js and spark in site/js/housing.js. Each line in the Trend column (and on the Housing page profile) is scaled between that place's own lowest and highest value. The chart joins points across years with no value (spanGaps).",
+  "sources": [
+   "bls_qcew",
+   "bls_laus",
+   "acs5",
+   "census_pep",
+   "usaspending",
+   "openfema",
+   "chartjs"
+  ],
+  "source_detail": "Any dataset with more than one year in the Analysis tab; the Trend tab chart is drawn with Chart.js.",
+  "how_to_read": "Use the line for direction and timing, then read the numbers in the table. The caption tells you whether the line covers a full run of years or has gaps. In the 2026-10 snapshot, Quarterly Census of Employment and Wages (QCEW) jobs read '12 yrs · 2014–25'. The Bureau of Labor Statistics (BLS) unemployment rate reads '16 yrs, 15 values · 2010–25' because it has no 2020 value. On the Housing page the resident population reads '16 yrs'.",
+  "caveats": [
+   "Each small line is scaled to its own minimum and maximum, so the steepness of two lines cannot be compared between rows or between municipalities.",
+   "Where years have no value the chart draws a straight line across the gap, which suggests steady change. FEMA series have values only for years with a disaster declaration. The observatory's unemployment series has no 2020 value.",
+   "For survey series each year on the line is a five-year window, so '15 yrs' means 15 overlapping windows, not 15 separate years of responses.",
+   "The population series changes base in 2020 and survey windows overlap, which can bend or smooth a line (see the entries on both).",
+   "For a 'Change since the base year' layer the line starts after the base year.",
+   "The Trend view draws at most eight lines. Puerto Rico always comes first when it is chosen, then the municipalities in list order, so with more than seven municipalities chosen the last ones in the list are left out and Puerto Rico stays."
+  ],
+  "see_also": [
+   "measures.nearest_year_rule",
+   "measures.change_since_base_year",
+   "methods.population_vintage_break",
+   "methods.acs_windows",
+   "layers.trend_sparkline",
+   "layers.workbench_trend",
+   "layers.housing_profile"
+  ],
+  "where": {
+   "files": [],
+   "view": [
+    {
+     "label": "Map, Analysis tab: poverty rate (click a municipality, choose 'Open in the workbench', then read the Trend column)",
+     "href": "index.html#e=poverty_pct.f.value.blue.q.1.1.0.85.0"
+    },
+    {
+     "label": "Housing page: the small lines beside each value in a municipality profile",
+     "href": "housing.html"
+    }
+   ]
+  },
+  "added": "2026-10-03"
+ },
+ {
+  "id": "measures.margin_of_error",
+  "name": "Margin of error (survey figures, 90% confidence)",
+  "domain": "system.docs",
+  "domains": [
+   "system.docs"
+  ],
+  "group": "Uncertainty",
+  "kind": "measure",
+  "plain": "Figures from the American Community Survey are estimates from a sample, so they carry a margin of error. A figure of 38.8% ± 1.1 percentage points means the Census Bureau is 90% confident that the true value lies between 37.7% and 39.9%.",
+  "definition": "The margin of error (written ±) is the Census Bureau's published margin at the 90% confidence level: the Bureau is 90% confident that the true value lies within the estimate plus or minus the margin. The observatory carries the Bureau's margins for single cells such as medians. For sums and shares it computes the margin with the Bureau's formulas: the margin of a sum is the square root of the sum of the squared margins, and shares use the Bureau's proportion formula. If that formula would take the square root of a negative number, it uses the ratio formula. Margins are in the same unit as the estimate: percentage points for percent figures, dollars for dollar figures. On the Analysis tab the margin of a rate prints in percentage points with one decimal (for example '±1.1 pts').",
+  "unit": "same unit as the estimate (±)",
+  "value_type": "level",
+  "geography": "78 municipalities and Puerto Rico; for the variables of the Census small-area files also 901 barrios, 981 census tracts and 2,555 block groups",
+  "coverage": {
+   "timeline": "static",
+   "frequency": "Calculated in your browser each time the map redraws"
+  },
+  "method": "Functions derive, pct and Cells in housing_series.py, derive_econ in economy_series.py and derive_pop in small_area.py compute and store the margins (the 'moe' values of housing_series.json, economy_series.json, population_series.json and, for the levels below the municipality, acs_barrio.json, acs_tract.json and acs_blockgroup.json; see methods.small_area_estimates). The Analysis tab shows '±' in the inspector and the popup when a layer is shown as published (a rate in percentage points, for example '±1.1 pts', and a dollar figure in dollars); with 'Inflation-adjusted' ticked the margin is multiplied by the same factor. The Housing page shows ± in its readouts and profile. Downloads of a series (comma-separated values, CSV, files) add a margin column per year. A value whose margin is above 30% of the estimate is marked less reliable (hatching, a dashed outline, italics) by Core.reliability; see measures.less_reliable_values.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "American Community Survey 5-year estimates; margins as published by the Census Bureau or computed by Foundation for Puerto Rico (FPR) with the Bureau's formulas.",
+  "how_to_read": "In the 2026-10 snapshot, San Juan's poverty rate in the 2020-2024 window is 38.84% ± 1.08 points. Culebra's is 25.74% ± 9.48 points and Maricao's 52.89% ± 7.73 points. San Juan's median household income is $27,992 ± $1,036. In that snapshot 94 of the 549 Analysis tab datasets have margins of error. Census Bureau guidance: a difference between two estimates is statistically significant at the same confidence level when it is larger than the square root of the sum of the two squared margins. Use this rule for two estimates from different places in the same window. It does not apply to two overlapping windows. A municipality compared with Puerto Rico is not an independent comparison, because the island figure includes the municipality, so treat that result as approximate.",
+  "caveats": [
+   "Margins are wide for small municipalities and narrow for large ones.",
+   "Rescaled views (per 1,000, index, difference, change, percentile) hide the margin. No margin is calculated for a difference, an index, a change or the affordability figures. A value whose published margin is wide is still marked less reliable in those views (see measures.less_reliable_values).",
+   "On the Analysis tab the margin of median age prints as '± … pts' although median age is in years.",
+   "A margin covers sampling error only. It does not cover mistakes in answers, such as an owner's estimate of home value.",
+   "Datasets from sources that are not surveys have no margin: Quarterly Census of Employment and Wages (QCEW) jobs, the Population Estimates, USAspending and OpenFEMA. The Bureau of Labor Statistics (BLS) unemployment series is a model estimate and has none in the observatory.",
+   "A share shows no margin when the observatory cannot calculate one from the margins published for its cells. In the 2026-10 snapshot, for adults with a bachelor's degree, 68 to 73 of the 78 municipalities have no margin in the 2021 to 2024 windows, while all 78 have one in 2010 to 2020. The Population series and the files below the municipality give such a total a margin of zero instead (the Census Bureau says it may be treated as zero), so their shares keep the margin of the numerator; see methods.small_area_estimates."
+  ],
+  "see_also": [
+   "measures.less_reliable_values",
+   "methods.small_area_estimates",
+   "methods.acs_windows",
+   "measures.index_pr_100",
+   "measures.difference_from_pr",
+   "measures.change_since_base_year",
+   "municipalities.acs_reliability",
+   "housing.poverty_pct",
+   "housing.median_hh_income"
+  ],
+  "where": {
+   "files": [],
+   "view": [
+    {
+     "label": "Map, Analysis tab: click a municipality to see the ± beside the poverty rate",
+     "href": "index.html#e=poverty_pct.f.value.blue.q.1.1.0.85.0&ey=2024"
+    },
+    {
+     "label": "Data dictionary: entries that have margins of error",
+     "href": "dictionary.html?moe=1"
+    }
+   ]
+  },
+  "added": "2026-10-03"
+ },
+ {
+  "id": "measures.correlation",
+  "name": "Correlation between two datasets (Pearson r)",
+  "domain": "system.docs",
+  "domains": [
+   "system.docs"
+  ],
+  "group": "Relationships between datasets",
+  "kind": "measure",
+  "plain": "The correlation r is a number from −1 to +1 that shows how closely two datasets move together across the municipalities. It shows a pattern across places, not a cause.",
+  "definition": "Pearson's correlation coefficient r between two layers across the municipalities that have a value in both, with n the number of such municipalities. Near +1 the points lie close to a rising straight line, near −1 to a falling line, near 0 there is no straight-line pattern. The scatter plot also draws the least-squares line of the second layer on the first. Each municipality counts once, whatever its population. On log scales only municipalities with both values above zero are used and no line is drawn. The workbench's Correlations tab gives r for every pair of visible layers, and also Spearman's rank correlation (Pearson on the ranks).",
+  "unit": "r (−1 to +1) and n",
+  "value_type": "ratio",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "static",
+   "frequency": "Calculated in your browser each time the scatter plot or the Ask the observatory chat answers"
+  },
+  "method": "Scatter tab of the workbench: ecBenchScatter in site/js/economy.js, using the visible layers with their current year, rescaling and settings. The chat: chPearson in site/js/chat.js, which needs at least 8 municipalities with both values and compares each dataset in its default view (counts per 1,000 residents, dollar totals per resident, everything else as published) at its latest year unless a year is named. The chat says 'rise together' when r > 0, 'move in opposite directions' when r < 0 and 'show little relationship' when |r| < 0.3.",
+  "sources": [
+   "bls_qcew",
+   "bls_laus",
+   "acs5",
+   "census_pep",
+   "usaspending",
+   "openfema",
+   "chartjs"
+  ],
+  "source_detail": "Any two datasets in the Analysis tab; scatter plots are drawn with Chart.js.",
+  "how_to_read": "In the 2026-10 snapshot, across the 78 municipalities, poverty and median household income (2020-2024 window) have r = −0.89: where poverty is higher, income tends to be lower. Unemployment (2025) and poverty (2024) have r = 0.67. Tourism-related jobs as a share of jobs and median household income have r = −0.02 with n = 39: no pattern, and only 39 municipalities have both values.",
+  "caveats": [
+   "A pattern across municipalities is not proof that one thing causes the other, and it does not say what is true for the people or households inside them.",
+   "The two layers can be for different years (each shows its latest year at or before the one chosen). Check the year shown beside each layer in the legend.",
+   "A few large municipalities, a few extreme values or noisy survey figures for small municipalities can move r a lot. r only measures straight-line patterns.",
+   "With 'Log scales' ticked, r is still calculated on the original values of the municipalities with both values above zero. It is not the correlation of the logarithms and does not describe the curve drawn.",
+   "No significance test or confidence interval is calculated. Check n: a low n (withheld or missing values) makes r less reliable.",
+   "The result depends on the settings: the same pair can have a different r per 1,000 residents than as a raw count."
+  ],
+  "see_also": [
+   "measures.outliers",
+   "measures.patterns_ranking",
+   "measures.bivariate_map",
+   "measures.nearest_year_rule",
+   "measures.margin_of_error",
+   "layers.workbench_scatter",
+   "layers.chat_correlation"
+  ],
+  "where": {
+   "files": [],
+   "view": [
+    {
+     "label": "Map, Analysis tab: poverty and median household income (open the Workbench, Scatter tab)",
+     "href": "index.html#e=poverty_pct.f.value.blue.q.1.1.0.85.0,median_hh_income.f.value.green.q.1.1.0.85.0&ey=2024"
+    }
+   ]
+  },
+  "added": "2026-10-03"
+ },
+ {
+  "id": "measures.outliers",
+  "name": "Outliers (standardised residuals)",
+  "domain": "system.docs",
+  "domains": [
+   "system.docs"
+  ],
+  "group": "Relationships between datasets",
+  "kind": "measure",
+  "plain": "When you use the Ask the observatory chat to compare two datasets, it names the municipalities that sit farthest from the usual pattern. Each gets a score: the bigger the score, positive or negative, the bigger the exception.",
+  "definition": "For two datasets A (first) and B (second), the observatory fits the straight line B = intercept + slope × A across the municipalities by least squares. A municipality's residual e is its actual B minus the B the line predicts from its A. The standard deviation of the residuals is s = √(Σe² ÷ (n − 2)). The standardised residual is z = e ÷ s, in standard deviations. The municipalities with the largest |z| are the 'biggest exceptions': three in a comparison (listed only when |r| is at least 0.3) and two in each pattern. A positive z means B is higher than the line predicts.",
+  "unit": "standard deviations",
+  "value_type": "ratio",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "static",
+   "frequency": "Calculated in your browser when you ask the chat"
+  },
+  "method": "Function chPearson in site/js/chat.js returns the outliers sorted by |z|; the compare answer and the patterns answer list them as 'Biggest exceptions'. The residuals use all municipalities with both values, including the municipality being scored.",
+  "sources": [
+   "bls_qcew",
+   "bls_laus",
+   "acs5",
+   "census_pep",
+   "usaspending",
+   "openfema"
+  ],
+  "source_detail": "Any two datasets in the Analysis tab, compared in the chat.",
+  "how_to_read": "In the 2026-10 snapshot, for poverty (first) against median household income (second), 2020-2024 window: Guaynabo has z = +3.95, Gurabo +3.30 and Culebra −2.38. Guaynabo's and Gurabo's incomes are much higher than their poverty rates predict, and Culebra's is lower.",
+  "caveats": [
+   "The score is not a test and not an error flag. It only says how far a municipality is from a straight-line pattern. A high |z| can be a real difference, noisy survey data or a different year.",
+   "The score changes if you swap the datasets, because the line is fitted to the second one.",
+   "It is not a leave-one-out score. A municipality that pulls the line toward itself looks less extreme.",
+   "It is meaningful only where a straight-line pattern is a fair description."
+  ],
+  "see_also": [
+   "measures.correlation",
+   "measures.patterns_ranking",
+   "layers.chat_answers"
+  ],
+  "where": {
+   "files": [],
+   "view": [
+    {
+     "label": "Map, Analysis tab: poverty and median household income (then ask the chat: Do poverty and income move together?)",
+     "href": "index.html#e=poverty_pct.f.value.blue.q.1.1.0.85.0,median_hh_income.f.value.green.q.1.1.0.85.0&ey=2024"
+    }
+   ]
+  },
+  "added": "2026-10-03"
+ },
+ {
+  "id": "measures.patterns_ranking",
+  "name": "The patterns ranking in the chat",
+  "domain": "system.docs",
+  "domains": [
+   "system.docs"
+  ],
+  "group": "Relationships between datasets",
+  "kind": "measure",
+  "plain": "When asked for the most interesting patterns, the Ask the observatory chat compares many pairs of datasets from different areas of life, ranks them by how closely they move together and shows up to five. It starts with a note on where jobs concentrate.",
+  "definition": "Step 1: 26 datasets (listed in INSIGHT_KEYS in site/js/chat.js) are taken in their default view at their latest year: counts per 1,000 residents, dollar totals per resident, tourism jobs as a share of jobs, everything else as published. Step 2: the chat compares every pair of datasets except two kinds. It skips pairs in the same area, because Foundation for Puerto Rico (FPR) puts each dataset in one area: welfare, housing, work, mobility, tourism, money or people. It also skips pairs that are linked by definition, such as the employment rate and the unemployment rate (the code lists eight such pairs; seven involve datasets in this list). Step 3: it keeps pairs with at least 60 municipalities and |r| of at least 0.4, and sorts them by |r|. Step 4: it picks the strongest pairs, with no dataset used twice and no pair of areas used twice, until five are chosen. The answer starts with the municipality that has the most jobs: its share of the island's jobs, its share of residents and the share held by the five biggest job centres. It then adds a fixed sentence that many people cross municipal lines to work. That sentence is not calculated. It is an inference from jobs counted at the workplace and people counted at home, not a measured commuting flow.",
+  "unit": "ranked list",
+  "value_type": "text",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "static",
+   "frequency": "Calculated in your browser when you ask the chat"
+  },
+  "method": "Function chInsights in site/js/chat.js, which calls chPearson (see the correlation entry). The result is computed once per page load. Nothing is sent anywhere.",
+  "sources": [
+   "acs5",
+   "bls_laus",
+   "bls_qcew",
+   "usaspending",
+   "openfema",
+   "census_pep"
+  ],
+  "source_detail": "The 26 datasets in INSIGHT_KEYS: survey series from the American Community Survey (ACS), unemployment from Local Area Unemployment Statistics (LAUS), jobs, pay and work sites from the Quarterly Census of Employment and Wages (QCEW), federal awards from USAspending, Federal Emergency Management Agency (FEMA) Public Assistance from OpenFEMA, and the population denominators.",
+  "how_to_read": "In the 2026-10 snapshot, 262 pairs from different areas were compared and 40 passed the cut-offs. San Juan holds 27% of the island's jobs and 10% of its residents, and San Juan, Guaynabo, Bayamón, Carolina and Ponce together hold 49% of the jobs. The five pairs shown: median household income and median gross rent (r = 0.80); working from home and driving alone to work (−0.70); federal awards per resident and jobs per 1,000 residents (0.66); government share of jobs and adults with a bachelor's degree (−0.64); residents aged 65 and over and the employment rate (−0.51).",
+  "caveats": [
+   "Strongest is not most important. The list is an automatic scan of many pairs, and no significance test is applied.",
+   "The areas are FPR's own grouping. Pairs inside one area, such as poverty and income, are skipped, so some expected links do not appear.",
+   "In the 2026-10 snapshot, the federal awards and jobs pair is sensitive to San Juan: r is 0.66 with it and 0.52 without it (n = 77). San Juan has the most jobs, and statewide awards are often filed there.",
+   "Each dataset is at its own latest year (2024 or 2025 in the 2026-10 snapshot), so a pair can mix years.",
+   "A pattern across municipalities is not a cause, and the list changes when the data are updated."
+  ],
+  "see_also": [
+   "measures.correlation",
+   "measures.outliers",
+   "layers.chat_answers",
+   "methods.workplace_vs_residence"
+  ],
+  "where": {
+   "files": [],
+   "view": [
+    {
+     "label": "Map, Analysis tab (then open the chat and ask: What are the most interesting patterns?)",
+     "href": "index.html#e=qcew_jobs.s.value.blue.q.1.1.0.75.1"
+    }
+   ]
+  },
+  "added": "2026-10-03"
+ },
+ {
+  "id": "measures.chat_trend",
+  "name": "Biggest rises and falls in the chat",
+  "domain": "system.docs",
+  "domains": [
+   "system.docs"
+  ],
+  "group": "Ranking and comparing",
+  "kind": "measure",
+  "plain": "When asked how something has changed, the Ask the observatory chat gives the island's change and the three municipalities that rose most and fell most. It ignores very small starting values so that tiny bases do not produce huge percentages.",
+  "definition": "The change runs from a start year to an end year. With no year in the question, the start is the dataset's first year from 2003 on and the end is its latest year. Two years in the question set the start and the end. One year after 'since' (or 'desde') sets the start. A named year that the dataset does not have is ignored. For rates and ratios the change is the difference in points. For counts and dollars it is the percent change. For counts it uses only municipalities whose starting value is at least 50, for dollar totals at least $100,000, and for dollar levels (such as medians and average pay) a starting value above zero. The answer lists the three largest rises and the three largest falls, and puts 'Change since the base year' on the map with the starting year as the base.",
+  "unit": "percent, or points for rates",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "static",
+   "frequency": "Calculated in your browser when you ask the chat"
+  },
+  "method": "Function Tools.trend in site/js/chat.js; the base values and the thresholds are in the minBase constant of that function. The chat's map step calls the Analysis tab with norm 'change' and the starting year as the base. For dollar datasets it also turns on 'Inflation-adjusted' on the layer it opens.",
+  "sources": [
+   "bls_qcew",
+   "bls_laus",
+   "acs5",
+   "census_pep",
+   "usaspending",
+   "openfema"
+  ],
+  "source_detail": "Any dataset with more than one year in the Analysis tab.",
+  "how_to_read": "Ask 'How has poverty changed since 2014?' The reply gives Puerto Rico's poverty rate in 2014 and now, the three municipalities where it rose most (or fell least) and the three where it fell most. If no municipality fell, the second list is headed 'Rose least'.",
+  "caveats": [
+   "Municipalities below the minimum starting value are left out of the rises and falls, though they appear on the map.",
+   "For dollar datasets the figures in the reply are in the dollars of each year, but the map the chat opens is already inflation-adjusted (its legend title ends '2025 dollars'), so the two can differ. Untick 'Inflation-adjusted' on the layer to see the map in the dollars of each year.",
+   "For FEMA series the change compares the first declaration year from 2003 on with the latest one, which means one set of disasters against another. It is not a trend in yearly spending.",
+   "Survey windows can overlap and the population series changes base in 2020, so read changes with the entries on both.",
+   "It names patterns, not causes."
+  ],
+  "see_also": [
+   "measures.change_since_base_year",
+   "measures.inflation_adjustment",
+   "layers.chat_answers",
+   "methods.acs_windows",
+   "methods.population_vintage_break"
+  ],
+  "where": {
+   "files": [],
+   "view": [
+    {
+     "label": "Map, Analysis tab: poverty rate, change since 2014 (then ask the chat: How has poverty changed since 2014?)",
+     "href": "index.html#e=poverty_pct.f.change.red.q.1.1.0.85.0&ey=2024&eb=2014"
+    }
+   ]
+  },
+  "added": "2026-10-03"
+ },
+ {
+  "id": "methods.municipality_assignment",
+  "name": "How points, stops and blocks are assigned to a municipality",
+  "domain": "economy.visitor-economy",
+  "domains": [
+   "economy.visitor-economy",
+   "system.docs"
+  ],
+  "group": "How places and points are built",
+  "kind": "method",
+  "plain": "A tourism place or a transit stop belongs to the municipality whose boundary contains its map point. If the point is outside every boundary, such as on a pier, the municipality whose boundary is nearest takes it. Census blocks and barrios use their Census county code.",
+  "definition": "The observatory assigns a municipality in four ways, by kind of record. (1) Tourism places and transport features (stops, stations, terminals, airports, taxi stands, electric vehicle (EV) charging points): the full build tests the point against the Census Bureau's shoreline-clipped municipio polygons (a generalized 1:500,000 layer, boundaries as of January 1, 2023); a point inside no polygon takes the municipality whose polygon is nearest (muni_locate.py). The published tourism places still carry the earlier rule, the nearest centre point listed in municipalities.py, until the next full build. (2) Scheduled transit stops after a nightly transit refresh: tested against the published municipios.geojson, a simplified copy of the polygons; a stop outside every polygon takes the municipality whose polygon is nearest, as in the full build. (3) Census blocks: the municipality comes from the county code in the block's ID. (4) Barrios: the municipality comes from the county code in the barrio's GEOID, and a tourism place gets its barrio from a point-in-polygon test against the barrio polygons. Only counted places (confidence 0.50 or higher, no places of worship) get a barrio, and only when their point falls inside a barrio polygon.",
+  "unit": "municipality name",
+  "value_type": "text",
+  "geography": "78 municipalities",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "Rebuilt with each snapshot; transit stops also refreshed nightly"
+  },
+  "method": "Functions make_muni_locator and nearest_muni in build.py; the refresh in refresh_network.py; network.coverage for blocks; build_barrios in landuse.py. The address town in Overture's records is used only while duplicate listings are folded, so that listings in different towns are not merged.",
+  "sources": [
+   "overture",
+   "census_tiger",
+   "ati_gtfs",
+   "muni_gtfs",
+   "osm"
+  ],
+  "source_detail": "Overture Maps place coordinates; Census Bureau TIGERweb generalized county boundaries (layer 11) and 2020 blocks; transit stops from the Autoridad de Transporte Integrado (ATI) and municipal General Transit Feed Specification (GTFS) feeds and from OpenStreetMap.",
+  "how_to_read": "A municipal count agrees with the polygon drawn on the map. A place counted for San Juan has its point inside San Juan's boundary, unless it is one of the few points outside every boundary. The town named in an address does not decide. In the 2026-10 snapshot, 348 of the 32,541 place listings (324 of the 24,209 counted places) lie outside every polygon and took the nearest centre point (the next full build gives them the nearest polygon, which moves 60 listings, 59 of them counted); for all the others the point-in-polygon result is the published municipality. Of the counted places, 23,884 fall inside a barrio polygon and have a barrio.",
+  "caveats": [
+   "A wrong point in the source puts a place in the wrong municipality.",
+   "Boundaries are clipped to the shoreline, so points on piers, marinas and beaches can fall outside. They then go to the municipality whose polygon is nearest. Until the 2026-11 fix they went to the nearest centre point, which can be a different municipality from the one the point is next to: it put the Cataño ferry and bus terminals in San Juan. Scheduled stops follow the new rule since that fix, tourism places from the next full build.",
+   "The boundary drawn on the map is simplified for display (about 22 metres, 0.0002 degrees), so a place very near a border can look as if it is on the wrong side.",
+   "The nightly refresh tests stops against the simplified copy of the boundaries and the full build against the full-detail ones, so a stop within about 22 metres of a border can land in a different municipality in the two. Both give a stop outside every polygon the municipality whose polygon is nearest. Until the 2026-10 access update the nightly refresh left such a stop without a municipality."
+  ],
+  "see_also": [
+   "places.municipality_assignment",
+   "municipalities.place_to_municipality",
+   "municipalities.transit_data_updates",
+   "boundaries.municipios",
+   "boundaries.shoreline_clipped",
+   "boundaries.barrios"
+  ],
+  "where": {
+   "files": []
+  },
+  "added": "2026-10-03"
+ },
+ {
+  "id": "methods.access_profile",
+  "name": "How the observatory describes a tourism place's access to transport (the access profile)",
+  "domain": "economy.visitor-economy",
+  "domains": [
+   "economy.visitor-economy",
+   "infrastructure.mobility"
+  ],
+  "group": "Transit access of tourism places",
+  "kind": "method",
+  "plain": "The observatory describes a tourism place's access to transport as a profile, not a score: the nearest stop whose timetable has not ended, how many weekday departures it has and whether it has weekend service. Walking distance and gateways such as airports and ferry terminals are planned and not published yet.",
+  "definition": "The profile has three layers. Layer 1 is published: the straight-line distance to the nearest stop with a current timetable (ts_m), the most weekday calls at such a stop within 400 m (ts_calls) and the Saturday and Sunday service at those stops (ts_we). The stops come from the GTFS (General Transit Feed Specification) timetable feeds of ATI (Autoridad de Transporte Integrado) and of the municipal transit systems. Layer 2, the walking distance along mapped roads, and layer 3, the nearest gateways (airport, ferry terminal, rail station and bus terminal) and scheduled journey times from a gateway, are planned. They are not published, and nothing in the map or the data files measures them yet. From layer 1 each place falls in one of five access classes, which use the distances 400 m and 800 m and the threshold of 20 weekday calls (see Codes). The older measure, within 400 m of any mapped stop (transit_m, transit_400m and transit_pct), stays and is labelled as what it is: it also counts stops whose timetable has ended and stops that volunteers mapped. The pop-up of a place shows the class as a badge, then the line 'Nearest stop with a current timetable' with its distance (and, within 400 m, the weekday departures and the weekend service). A third line, 'Any mapped stop (expired timetables and volunteer-mapped stops included)', appears when such a stop is closer than the nearest stop with a current timetable.",
+  "unit": "not applicable (method)",
+  "value_type": "text",
+  "geography": "Puerto Rico (78 municipalities)",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "Recomputed at each full build and at each run of the nightly transit refresh (access.py). In the 2026-10 snapshot the access is as of 2026-10-06 and the stops were read on 2026-10-02."
+  },
+  "method": "access.py computes the profile from places.json, transport.json and operators.json. A stop has a current timetable when it is a scheduled stop (source ATI or a municipal GTFS feed) and its operator's feed end date is on or after the as-of date; a feed with no end date does not count. For every place it finds the nearest such stop (ts_m, rounded up to whole metres), the largest number of weekday calls at such stops within 400 m (ts_calls) and the Saturday and Sunday flags (ts_we). It also finds the nearest mapped stop of any kind (transit_m, cut to whole metres, and the flag transit_400m). Distances are straight lines from the flat-earth formula that the observatory has always used. Against a computation in projected metres the formula is about 0.6% long north to south, so a share can read up to 0.1 point lower than a projected computation (32.0% instead of 32.1% of places within 400 m of a stop with a current timetable). Shares count the default basis: tourism places with confidence 0.50 or higher and no places of worship. The municipal fields, the barrio counts and the access part of meta.json add up the same flags. The class of a place follows access_class in access.py, and the map applies the same rule in site/js/access.js.",
+  "sources": [
+   "overture",
+   "ati_gtfs",
+   "muni_gtfs",
+   "osm"
+  ],
+  "source_detail": "access.py (compute, access_class, island_summary); Overture Maps places (release 2026-09-23.1, downloaded 1 October 2026); stops and feed end dates from transport.json and operators.json (ATI and municipal GTFS feeds read on 2026-10-02); OpenStreetMap extract of 1 October 2026 for the mapped stops",
+  "how_to_read": "Read it as a profile: first the distance, then how often, then weekends. The observatory does not combine them into one score. A score would need weights (how much a Saturday service is worth against a closer stop), and the weights would be a policy choice that has not been made. A score would also hide the main finding: in the 2026-10 snapshot 64% of the 24,209 places on the default basis have no stop with a current timetable within 800 m. Island figures on the default basis, as of 2026-10-06: 47.5% of places are within 400 m of any mapped stop and 32.2% of a stop with a current timetable; 21.3% are within 400 m of a frequent stop; 22.4% are within 400 m of a stop with Saturday service and 6.4% of one with Sunday service. Of the 11,507 places within 400 m of any mapped stop, 7,790 (67.7%) have a stop with a current timetable and 3,717 (32.3%) rest on stops whose timetable has ended or that have none.",
+  "caveats": [
+   "Schedule-based, not real time. The observatory has no live vehicle positions. A stop with a current timetable is a stop in a published schedule, not proof that vehicles run, on time or at all.",
+   "Straight line, not walking distance. It ignores hills, rivers, highways, fences and missing sidewalks. A walking distance along mapped roads would be an estimate, and it is not published yet.",
+   "Públicos (shared taxis and vans), taxis, ride-hailing, rental cars and tour shuttles are in no timetable. A place with no stop within 800 m can still be reachable by them.",
+   "Missing is not zero. A feed with no weekend calls does not prove that there is no weekend service, and a municipality with no feed does not lack transport. In the 2026-10 snapshot 25 operators publish a feed (ATI and 24 municipal systems). No feed was found for 15 municipal systems and the públicos authority. Only 3 of the 18 current feeds list Saturday calls and only 1 lists Sunday calls.",
+   "An expired timetable is not an absence of buses. Ponce's figures (0.1% of its places within 400 m of a stop with a current timetable, 79.1% within 400 m of any mapped stop) reflect a feed that ended on 2024-12-31. Do not compare municipalities as if their feeds were equally complete.",
+   "The profile depends on the date. It is computed as of a date (2026-10-06 in the 2026-10 snapshot) and changes on the day a feed ends: 9 of the 18 current feeds end between 2026-10-31 and 2027-01-31, among them San Juan's municipal feed on 2027-01-31. Computed as of 2027-02-01 with the same feeds, 26.1% of the places would be within 400 m of a stop with a current timetable, instead of 32.2%. That is arithmetic on the end dates, not a forecast of service: operators can publish new feeds.",
+   "Weekday calls are a proxy for frequency, not a headway (the time between vehicles). The busiest single stop within 400 m is used, not the sum of the stops.",
+   "Counts are listings from Overture Maps, not businesses, rooms or visitors. The distance is measured from a place's listed point.",
+   "The barrio counts are rebuilt only at a full build, so between full builds they can lag the municipal fields."
+  ],
+  "see_also": [
+   "place_access.ts_m",
+   "place_access.ts_calls",
+   "place_access.ts_we",
+   "municipalities.acc_cur400_pct",
+   "municipalities.acc_cur800_pct",
+   "municipalities.acc_freq400_pct",
+   "municipalities.acc_sat400_pct",
+   "municipalities.acc_sun400_pct",
+   "municipalities.acc_hub400_pct",
+   "municipalities.acc_paper_pct",
+   "municipalities.access_n",
+   "municipalities.access_as_of",
+   "municipalities.stops_current",
+   "municipalities.stops_expired",
+   "municipalities.stops_osm",
+   "boundaries.barrio_acc_cur400",
+   "boundaries.barrio_acc_freq400",
+   "transit.stop_calls_sat",
+   "transit.stop_calls_sun",
+   "transit.stop_feed_end",
+   "places.transit_m",
+   "places.transit_400m",
+   "municipalities.transit_pct",
+   "municipalities.walk_rule_400m",
+   "municipalities.feed_status",
+   "data.build_access"
+  ],
+  "values": {
+   "Frequent stop within 400 m": "A stop with a current timetable is 400 m or less away and the busiest such stop within 400 m has 20 or more weekday calls. 5,163 places (21.3%) in the 2026-10 snapshot.",
+   "Stop within 400 m": "A stop with a current timetable is 400 m or less away, and the busiest such stop within 400 m has fewer than 20 weekday calls. 2,627 places (10.9%).",
+   "Stop 400–800 m away": "The nearest stop with a current timetable is more than 400 m and at most 800 m away. 964 places (4.0%).",
+   "Only expired or unscheduled stops within 800 m": "No stop with a current timetable within 800 m, but a mapped stop within 800 m: a stop whose timetable has ended, or one that volunteers mapped, with no timetable. 4,690 places (19.4%).",
+   "No stop within 800 m": "No mapped stop of any kind within 800 m. 10,765 places (44.5%)."
+  },
+  "where": {
+   "files": [],
+   "view": [
+    {
+     "label": "Map: click a tourism pin (the badge names the access class)",
+     "href": "index.html#l=places"
+    },
+    {
+     "label": "Map, Municipality tab: the mobility tiles (example: Ponce)",
+     "href": "index.html#Ponce"
+    }
+   ]
+  },
+  "added": "2026-10-05"
+ },
+ {
+  "id": "methods.acs_windows",
+  "name": "American Community Survey 5-year windows and how the observatory labels them",
+  "domain": "system.docs",
+  "domains": [
+   "system.docs"
+  ],
+  "group": "Time and vintages",
+  "kind": "method",
+  "plain": "Survey figures come from five years of responses pooled together. The observatory labels each window by its last year, so '2024' means the 2020-2024 window. They are averages over a window, not figures for one year.",
+  "definition": "The American Community Survey (ACS) 5-year estimates pool the responses collected over 60 months. In Puerto Rico the Census Bureau runs the survey as the Puerto Rico Community Survey (PRCS); its 5-year estimates are published with the ACS tables that the observatory reads. In the 2026-10 snapshot, the observatory reads every window from 2006-2010 to 2020-2024 (15 windows) and labels each one by its last year: 2010 is 2006-2010 and 2024 is 2020-2024. Windows one year apart share four of their five years. The Census Bureau's documentation of the 2013-2017 PRCS 5-year estimates says money values are adjusted to the dollars of the final year of the period, using the national Consumer Price Index. Check the Bureau's documentation for the window you cite before you compare dollar figures across windows. A window is a reading of a typical year in that period, not of its last year.",
+  "unit": "year label (last year of the window)",
+  "value_type": "date",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "A new window is added when the Census Bureau publishes it"
+  },
+  "method": "housing_series.py reads the per-sequence summary files for the windows labelled 2010-2020 and the table-based files for 2021 onward, and finds the next window by itself. economy_series.py reads further tables from the same windows. The Housing page spells out the window ('ACS 2020-2024'), and so does the Analysis tab's year chip ('2020–2024'): a series made only from ACS tables is a window in Core.adapters and Core.time, and a series that mixes a yearly count into a survey (jobs per employed resident) is not. A table the survey did not yet have is skipped for early windows: the internet questions start with the 2013-2017 window, labelled 2017.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "US Census Bureau, American Community Survey 5-year estimates, summary files 2006-2010 through 2020-2024; US Census Bureau, Puerto Rico Community Survey, Multiyear Accuracy of the Data (5-year 2013-2017), for the dollar adjustment.",
+  "how_to_read": "Read a figure labelled 2024 as 'the typical value over 2020-2024'. To judge real change, compare windows that do not overlap, for example 2014, 2019 and 2024.",
+  "caveats": [
+   "Because windows overlap, a change between neighbouring labels mostly reflects one year of new responses and understates real change.",
+   "A window pools years before and after an event, so it smooths sudden changes. The 2020-2024 window mixes the pandemic years with later years.",
+   "Windows that include 2017 or 2020 carry survey disruption. The Census Bureau halted Puerto Rico Community Survey data collection from October to December 2017 after Hurricane María. It also says margins of error for 5-year estimates that include 2020 data rose because fewer interviews were completed in 2020. The windows ending 2017 to 2021 include 2017, and the windows ending 2020 to 2024 include 2020. The observatory makes no adjustment. See 'Census tables behind the income, worker, commuting and internet figures' (economy.acs_work_income_tables) for the Census sources.",
+   "Small municipalities have small samples, so figures are noisy. Margins of error are published (90% confidence) and shown where they exist.",
+   "For rescaling by population, the observatory uses the population of the last year of the window, not an average."
+  ],
+  "see_also": [
+   "measures.margin_of_error",
+   "measures.nearest_year_rule",
+   "measures.change_since_base_year",
+   "municipalities.acs_reliability",
+   "municipalities.acs_table_map",
+   "economy.acs_work_income_tables",
+   "municipalities.acs_year"
+  ],
+  "where": {
+   "files": []
+  },
+  "added": "2026-10-03"
+ },
+ {
+  "id": "methods.population_vintage_break",
+  "name": "The 2020 break in the population series",
+  "domain": "system.docs",
+  "domains": [
+   "system.docs"
+  ],
+  "group": "Time and vintages",
+  "kind": "method",
+  "plain": "Population estimates for 2011-2019 were built on the 2010 census and never revised after the 2020 census. The series therefore steps up in 2020. Do not read that step as one year of growth.",
+  "definition": "A vintage is one annual release of Census Bureau population estimates. In the 2026-10 snapshot, the observatory uses Vintage 2020 for 2011-2019 (built on the 2010 census) and Vintage 2025 for 2020-2025 (built on the 2020 census). The 2010 and 2020 values are April 1 values; the other years are July 1 estimates.",
+  "unit": "people",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2010,
+   "last": 2025,
+   "frequency": "A new vintage is read when the Census Bureau releases it"
+  },
+  "method": "In the 2026-10 snapshot, population() in housing_series.py reads PRM-EST2020.csv (2010 and 2011-2019) and the cc-est2025-agesex-72 file (2020 and 2021-2025) and records each year's basis in the series ('basis'). The notes of housing_series.json say: 'Estimates for 2011-2019 were made before the 2020 census and were not revised to match it; 2020 and later are on the 2020 census base.' The 2020 value is the April 2020 base of the latest estimates. It includes the Census Bureau's post-census count corrections, so a few municipalities differ from the census count in municipalities.json:population_2020.",
+  "sources": [
+   "census_pep",
+   "census_decennial"
+  ],
+  "source_detail": "US Census Bureau Population Estimates, municipios of Puerto Rico (Vintage 2020 and Vintage 2025); 2010 and 2020 census counts.",
+  "how_to_read": "Compare years inside one base (2011-2019, or 2020-2025), or compare the two census counts (2010 and 2020). Do not compare 2019 with 2020 as if both rested on the same count. In the 2026-10 snapshot, the island-wide July 2019 estimate is 3,193,553 and the 2020 value is 3,285,874, a rise of 2.9%; the 2021 estimate is 3,262,731, a fall of 0.7%.",
+  "caveats": [
+   "Everything divided by population is affected: per-1,000 and per-resident values step in 2020 as well.",
+   "'Population change since 2010' compares each year with the 2010 census count. The 2011-2019 values rest on the 2010 base and the 2020-2025 values on the 2020 base, so that series also steps at 2020.",
+   "These are estimates, not head counts, and the Census Bureau publishes no margin of error for them.",
+   "The American Community Survey also estimates population. The observatory's population series does not use it, so the two can differ.",
+   "The series labels the 2020 value '2020 census count', but it is the April 2020 base of the latest estimates, which includes the Census Bureau's post-census count corrections. In the 2026-10 snapshot it matches the census count for the island (3,285,874) but differs from municipalities.json:population_2020 in 68 of 78 municipalities, by 1 to 31 people."
+  ],
+  "see_also": [
+   "housing.population",
+   "housing.pop_change_since_2010_pct",
+   "housing.pop_change_since_2020_pct",
+   "measures.per_1000_residents",
+   "boundaries.municipio_pop2020",
+   "municipalities.population_2020",
+   "housing.age65_pct",
+   "study.table_2",
+   "layers.housing_year_bar"
+  ],
+  "where": {
+   "files": []
+  },
+  "added": "2026-10-03"
+ },
+ {
+  "id": "methods.latest_year",
+  "name": "What 'latest' means",
+  "domain": "system.docs",
+  "domains": [
+   "system.docs"
+  ],
+  "group": "Time and vintages",
+  "kind": "method",
+  "plain": "'Latest' means the newest year each dataset has, and datasets do not all end in the same year. The build looks for the newest release itself, so 'latest' moves when the data are rebuilt.",
+  "definition": "On the year bar, 'Latest' makes every layer show its own last year. The table of codes below gives those years for the 2026-10 snapshot.",
+  "unit": "year",
+  "value_type": "date",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "static",
+   "frequency": "Moves each time the data are rebuilt"
+  },
+  "method": "Each series script finds its last year when it runs. housing_series.py asks the Census Bureau's server whether the next American Community Survey (ACS) window and the next population vintage exist, starting from 2024 and 2025. economy_series.py asks the BLS server whether the next QCEW year exists, starting from 2024, reads unemployment and CPI through the last full calendar year, and reads federal awards through the last fiscal year, counted as final from 15 November. The page then shows 'Latest' by taking the last year of each series (ecResolve in site/js/economy.js, resolve in site/js/housing.js).",
+  "sources": [
+   "acs5",
+   "census_pep",
+   "bls_qcew",
+   "bls_laus",
+   "bls_cpi",
+   "usaspending",
+   "openfema"
+  ],
+  "source_detail": "The release calendars of each source decide the last year available at build time.",
+  "how_to_read": "Check the year chip beside each layer before comparing two layers on 'Latest': they may describe different years. For a fixed comparison, choose a year on the year bar.",
+  "caveats": [
+   "The newest year of some sources can be revised. The Analysis tab's description of the Bureau of Labor Statistics (BLS) unemployment series calls its latest year preliminary. USAspending.gov says new or updated data appear the day after an agency submits them, so a recent fiscal year can change. Check the QCEW release notes for its newest year.",
+   "The newest values can be thinner than earlier ones: fewer sector figures are published, and small municipalities swing more.",
+   "A shared link opens at 'Latest' unless it stores a year, so the same link can show later data after a rebuild.",
+   "The observatory has no 2020 value for its four unemployment series (rate, labor force, employed and unemployed). The annual average for 2020 is empty in the BLS data the observatory downloaded, so the series skip 2020."
+  ],
+  "see_also": [
+   "measures.nearest_year_rule",
+   "methods.snapshot_labelling",
+   "methods.acs_windows",
+   "methods.shared_links",
+   "economy.qcew_method",
+   "economy.laus_method"
+  ],
+  "where": {
+   "files": []
+  },
+  "added": "2026-10-03",
+  "values": {
+   "Resident population": "2025 (Population Estimates, July 1)",
+   "Survey series (American Community Survey)": "2024, the 2020-2024 window",
+   "Jobs, work sites and pay (Quarterly Census of Employment and Wages, QCEW)": "2025. Mining jobs (industry code 21 in the North American Industry Classification System, NAICS) and jobs per employed resident end in 2024.",
+   "Unemployment (Local Area Unemployment Statistics, LAUS)": "2025. There is no 2020 value.",
+   "Federal awards (USAspending)": "Fiscal year 2025",
+   "Federal Emergency Management Agency (FEMA) Public Assistance (OpenFEMA)": "2024, the latest declaration year with funded projects in the OpenFEMA file at build time",
+   "FEMA Individual Assistance (OpenFEMA)": "2022, the latest declaration year with approved housing assistance in the OpenFEMA file at build time",
+   "Consumer Price Index": "2025, the reference year for inflation adjustment",
+   "Tourism places (Overture)": "One snapshot, labelled 2026"
+  }
+ },
+ {
+  "id": "methods.snapshot_labelling",
+  "name": "Snapshot labels and rebuilds",
+  "domain": "system.docs",
+  "domains": [
+   "system.docs"
+  ],
+  "group": "Time and vintages",
+  "kind": "method",
+  "plain": "The observatory's data are rebuilt as a snapshot with a label such as 'Snapshot 2026-10'. The label names the full build, not every file. Transit files refresh nightly and some series files carry their own build dates.",
+  "definition": "A full build (python build.py) downloads or reuses every source, writes every data file and then meta.json, whose 'label' is the --label text or, by default, 'Snapshot' plus the year and month of the build in Coordinated Universal Time (UTC). meta.json also holds 'generated_at'. The time-series builders write their own 'built' dates, and a nightly job refreshes only the transit data: the transit files and the transit and access fields of places.json, municipalities.json and meta.json. The label is shown on the map pages, appears in the file name of the municipality table download (for example pr_digital_twin_municipalities_Snapshot_2026-10.csv) and in every citation the data dictionary offers.",
+  "unit": "text label and date",
+  "value_type": "text",
+  "geography": "Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "Full build on demand; transit refresh nightly"
+  },
+  "method": "build.py (label, generated_at); refresh_network.py (nightly, writes only when a feed or an access value changed, leaves the label as it is); housing_series.build and economy_series.build (their own 'built' dates); registry.main and dictionary.build run at the end of a full build. Downloads are kept between builds, so a rebuild reuses them unless a refresh is requested.",
+  "sources": [
+   "overture",
+   "fema_nfhl",
+   "padus",
+   "census_tiger",
+   "ati_gtfs",
+   "muni_gtfs"
+  ],
+  "source_detail": "Sources captured at the snapshot: Overture places, Federal Emergency Management Agency (FEMA) flood zones, Protected Areas Database of the United States (PAD-US), Census boundaries; transit feeds refreshed nightly.",
+  "how_to_read": "Quote the snapshot label, the year or window of the figure and the date you retrieved it (the Cite button adds the retrieval date). As of 2026-10-04, the full build of the 2026-10 snapshot is dated 2026-10-02 (UTC), the transit files 2026-10-02, the housing series 2026-10-03 and the economy series 2026-10-04. The access fields of the tourism places (place_access.json and the acc_ fields) are as of 2026-10-06. The build date is on the map page: hover over the snapshot label at the top or open the About section. The dictionary entry for each dataset says how old its source data are.",
+  "caveats": [
+   "A month label does not give the day, and two builds in one month can share a label.",
+   "Parts of one snapshot can have different dates: the label names the full build only.",
+   "Source data can be older than the build, because the build reuses cached downloads. Each source's own release date applies.",
+   "Rebuilding can change numbers: new releases, revised estimates and changed source records all flow in."
+  ],
+  "see_also": [
+   "data.build_label",
+   "data.build_generated_at",
+   "data.build_info",
+   "methods.latest_year",
+   "methods.citation",
+   "municipalities.transit_data_updates"
+  ],
+  "where": {
+   "files": []
+  },
+  "added": "2026-10-03"
+ },
+ {
+  "id": "methods.qcew_suppression",
+  "name": "Withheld figures in the jobs data (QCEW suppression)",
+  "domain": "economy",
+  "domains": [
+   "economy",
+   "system.docs"
+  ],
+  "group": "Jobs and money",
+  "kind": "method",
+  "plain": "The jobs data hide any cell that could reveal one employer. A blank in the observatory means the figure was withheld or no employer was listed, and it is never zero. Small municipalities and narrow industries have the most blanks.",
+  "definition": "The Quarterly Census of Employment and Wages (QCEW) marks a withheld cell with disclosure code N. When it does, the observatory leaves all four values (work sites, jobs, total wages, average pay) blank. In the 2026-10 snapshot, the all-industry total and the private-sector total are published for every municipality in 2025. Cells for the 19 private-sector industries are often blank, and a blank can also mean the file lists no such employers. The published data file does not tell the two apart.",
+  "unit": "jobs (blank when withheld)",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2014,
+   "last": 2025,
+   "frequency": "Rebuilt with each snapshot"
+  },
+  "method": "qcew_area in economy_series.py reads each area-year file, keeps the all-industry rows by ownership and the sector rows for private ownership, and sets the four figures to blank when disclosure_code is N. Tourism-related jobs use code 72 of the North American Industry Classification System (NAICS) alone where NAICS 71 is withheld, and are blank where 72 is. The industry concentration index is computed only where the published sectors cover at least 80% of jobs.",
+  "sources": [
+   "bls_qcew"
+  ],
+  "source_detail": "Bureau of Labor Statistics (BLS) QCEW open-data API, annual files by area.",
+  "how_to_read": "Where a sector is blank for a municipality, do not add the sector figures and expect the total. The shares, location quotients and correlations built on that sector leave the municipality out. In the 2026-10 snapshot, of the 1,482 sector cells (19 sectors × 78 municipalities) in 2024, 769 have a value, 527 are withheld and 186 have no row. In 2025, the latest year, 671 have a value, 632 are withheld and 179 have no row. In 2024, 34 municipalities have no figure for accommodation and food services (NAICS code 72); in 2025 it is 39.",
+  "caveats": [
+   "A blank is not zero. Treat it as unknown.",
+   "Shares of jobs by sector do not add up to 100% where cells are withheld, and sector figures add up to less than the total.",
+   "The Puerto Rico figure is the Bureau's island figure, not the sum of the 78 municipalities. In the 2026-10 snapshot, the island figure for 2025 is 947,557 jobs and the 78 municipalities add up to 943,002.",
+   "Correlations that use a sector with many blanks rest on few municipalities. Check n."
+  ],
+  "see_also": [
+   "economy.qcew_method",
+   "economy.tourism_jobs",
+   "economy.industry_hhi",
+   "measures.share_of_jobs",
+   "measures.location_quotient",
+   "measures.correlation"
+  ],
+  "where": {
+   "files": []
+  },
+  "added": "2026-10-03"
+ },
+ {
+  "id": "methods.workplace_vs_residence",
+  "name": "Workplace basis and residence basis",
+  "domain": "economy",
+  "domains": [
+   "economy",
+   "system.docs"
+  ],
+  "group": "Jobs and money",
+  "kind": "method",
+  "plain": "Some figures count where the work is done, and others count where people live. Jobs, wages and work sites are by workplace. Income, poverty, employed residents and commuting are by residence. Read the basis before comparing two figures.",
+  "definition": "Workplace basis: a job or a work site belongs to the municipality where the employer's work site is. Residence basis: a person or household belongs to the municipality where they live, wherever they work. Other bases are named in the list of codes below.",
+  "unit": "basis (workplace, residence or other)",
+  "value_type": "code",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "static",
+   "frequency": "Applies to every release"
+  },
+  "method": "Set by each source: the Quarterly Census of Employment and Wages (QCEW) counts by work site, the American Community Survey (ACS) and Local Area Unemployment Statistics (LAUS) count residents, and USAspending files an award by place of performance as the awarding agency reports it. The jobs-per-employed-resident ratio divides QCEW jobs (workplace) by ACS employed residents (residence).",
+  "sources": [
+   "bls_qcew",
+   "bls_laus",
+   "acs5",
+   "usaspending",
+   "openfema",
+   "overture"
+  ],
+  "source_detail": "The definition of each series in the source's own documentation.",
+  "how_to_read": "A municipality with more jobs than employed residents is a job centre that draws commuters. One with far fewer is a place where many residents work elsewhere. The ratio does not say where they work. San Juan shows the difference: in the 2026-10 snapshot it holds 253,816 jobs in 2025 (26.8% of the island's jobs) but 329,737 residents (10.4% of the island's residents), and in 2024 it has 1.91 jobs for each employed resident.",
+  "caveats": [
+   "Do not use jobs per 1,000 residents as an employment rate. It counts jobs located in the municipality, not jobs held by residents.",
+   "Jobs are placed in the municipality where the employer reports each work site. The observatory does not check those reports.",
+   "QCEW counts only jobs at employers covered by unemployment insurance. Self-employed people, unpaid family workers and informal work are not counted, so jobs per employed resident compares covered jobs with all employed residents.",
+   "Jobs are not people: a person with two jobs counts twice.",
+   "A QCEW year is divided by a five-year survey window that ends in the same year, so the two are not the same period."
+  ],
+  "see_also": [
+   "economy.jobs_per_employed_resident",
+   "economy.qcew_method",
+   "economy.laus_method",
+   "economy.commute_45plus_pct",
+   "measures.per_1000_residents",
+   "measures.patterns_ranking"
+  ],
+  "values": {
+   "Jobs, work sites, wages, average pay (Quarterly Census of Employment and Wages, QCEW)": "Workplace: the municipality of the employer's work site.",
+   "Jobs by industry, tourism jobs, government share of jobs": "Workplace.",
+   "Labor force, employed and unemployed residents (Local Area Unemployment Statistics, LAUS, from the Bureau of Labor Statistics)": "Residence: where the worker lives.",
+   "Income, poverty, education, vehicles, internet (American Community Survey, ACS)": "Residence: where the household lives.",
+   "Employed residents and class of worker, commuting (ACS)": "Residence: the worker's home municipality, wherever the job is.",
+   "Housing units and vacancy (Census counts and ACS)": "Neither: the location of the home, whoever lives in it.",
+   "Jobs per employed resident": "Both: jobs at the workplace divided by workers at home.",
+   "Population and age (Population Estimates, census counts)": "Residence.",
+   "Federal awards (USAspending)": "Place of performance as the awarding agency reports it.",
+   "Federal Emergency Management Agency (FEMA) Public Assistance": "Applicant municipality of the project; a large part is recorded as statewide.",
+   "FEMA Individual Assistance (housing)": "The county recorded in the OpenFEMA housing assistance record.",
+   "Tourism places (Overture)": "The municipality that contains the listing's map point."
+  },
+  "where": {
+   "files": []
+  },
+  "added": "2026-10-03"
+ },
+ {
+  "id": "methods.rounding_display",
+  "name": "Rounding and how numbers are displayed",
+  "domain": "system.docs",
+  "domains": [
+   "system.docs"
+  ],
+  "group": "Using the observatory",
+  "kind": "method",
+  "plain": "The observatory keeps more decimals than it shows. Maps, legends and tables round numbers for reading. Downloads and data files keep the stored precision. Cite the stored value with its unit and year.",
+  "definition": "Display: numbers use US format (commas for thousands, points for decimals). A missing value shows as a dash on the page, 'No data' in grey on the map, and an empty cell in downloads. Legend and axis labels, negative dollar amounts, the Ask the observatory chat's changes and the Housing page's signed changes use a true minus sign (−). Other negative figures, such as those in the Analysis tab inspector and table, use a plain hyphen (-). The Analysis tab gives each dataset its own number of decimals (counts none, most percentages one, the Gini index three). A rescaling overrides it: per 1,000 one decimal; per km² one decimal (none for dollars); dollars per resident none; difference from Puerto Rico the dataset's own decimals (none for dollars); share of Puerto Rico two; share of jobs one; location quotient two; index none; percentile none; change one (two for ratios). Margins of error (±) print with one decimal for rates, in percentage points. Legend and axis labels are shortened (255K, 1.5K, 12M). Median year built shows as a whole year. The Housing page shows dollars to the whole dollar. Stored precision: place coordinates six decimals, confidence three, tourism places per 1,000 residents and per km² two, flood share one, land area one, survey shares two, Gini three.",
+  "unit": "decimals",
+  "value_type": "text",
+  "geography": "Puerto Rico",
+  "coverage": {
+   "timeline": "static",
+   "frequency": "Applies to every page"
+  },
+  "method": "Functions ecFmt, ecCompact and ecOut in site/js/economy.js; fmt in site/js/common.js; the rounding in build.py, housing_series.py and economy_series.py. Downloads are comma-separated values (CSV) files. The table download from the Analysis tab writes the calculated values (per-1,000 values already rounded to three decimals), a series download writes the stored values, and the municipality download on the Rankings tab writes municipalities.json as stored.",
+  "sources": [
+   "bls_qcew",
+   "bls_laus",
+   "acs5",
+   "census_pep",
+   "usaspending",
+   "openfema"
+  ],
+  "source_detail": "Applies to every dataset in the observatory.",
+  "how_to_read": "Round only in your own text, and say the year and the unit. If two numbers look equal on screen, check the stored values in a download.",
+  "caveats": [
+   "Rounded shares may not add up to 100%.",
+   "Ranks and colour classes use unrounded values. Two municipalities that show the same rounded number can have different ranks or colours.",
+   "Per-1,000 values are calculated to three decimals and shown with one.",
+   "The legend limits are rounded labels. A value shown as 41.3 may sit on either side of a limit labelled 41.3."
+  ],
+  "see_also": [
+   "municipalities.quintile_shading",
+   "municipalities.profile_ranking_download",
+   "measures.rank",
+   "measures.class_breaks",
+   "methods.citation"
+  ],
+  "where": {
+   "files": []
+  },
+  "added": "2026-10-03"
+ },
+ {
+  "id": "methods.shared_links",
+  "name": "How a shared link stores a view",
+  "domain": "system.docs",
+  "domains": [
+   "system.docs"
+  ],
+  "group": "Using the observatory",
+  "kind": "method",
+  "plain": "A link from the map or the housing page stores your view settings in the web address: where the map is looking, which layers are on and the year. It holds no table of data and no name or account. If you plan a route, the link also holds the route's map coordinates, so check it before you share it.",
+  "definition": "The 2D map writes #Municipality&c=lat,lng,zoom&l=layers&s=shading&r=route&e=economy layers&ey=year&eb=base year&slr=feet into the address as you work. The 'e' part lists each Economy layer as ten values joined by dots: dataset key, mode (shaded or symbols), rescaling, colour ramp, class method, visible, same classes in every year, inflation-adjusted, opacity and symbol colour. 'ey' is written only when you choose a year ('Latest' has none) and 'eb' only when the base year is not 2014. The 3D view writes #c=lat,lng,zoom and r. The housing page writes ?m=municipality, then y=year only when you choose a year ('Latest' has none) and c=base year only when it is not 2012 (and ?d=dataset for an open dataset). The dictionary writes #entry and its filters as ?q=, domain, source, kind, time, file and moe.",
+  "unit": "web address",
+  "value_type": "text",
+  "geography": "Puerto Rico",
+  "coverage": {
+   "timeline": "static",
+   "frequency": "Applies to every page"
+  },
+  "method": "Functions writeHash, parseHash and applyHash in site/js/app.js, ecEncode and ecRestore in site/js/economy.js, writeUrl in site/js/housing.js and the 3D page's address writer. The page updates the address in the browser (history.replaceState); nothing is sent to a server. A dataset key that no longer exists is skipped when a link is opened, and a rescaling that does not suit the dataset falls back to 'As published'.",
+  "sources": [
+   "leaflet",
+   "maplibre"
+  ],
+  "source_detail": "Map position and zoom come from the Leaflet (2D) and MapLibre (3D) maps.",
+  "how_to_read": "A shared link shares a view, not a table of numbers. If the data were rebuilt after you made the link, the same view can show different numbers. To fix numbers in a report, cite the snapshot label and the date and keep the downloaded data file.",
+  "caveats": [
+   "Route points are saved as coordinates with four decimals (about 11 metres). A route that starts at a home would put that location in the link. The link also holds the map centre (four decimals) and the municipality you selected. Check a link before sharing it.",
+   "A link without a year opens at 'Latest', which moves when the data are rebuilt.",
+   "Not everything is stored: an open workbench tab, the Ask the observatory chat and the selected municipality in the Analysis tab are not in the link."
+  ],
+  "see_also": [
+   "measures.nearest_year_rule",
+   "methods.latest_year",
+   "methods.snapshot_labelling",
+   "methods.citation",
+   "layers.share_link_2d",
+   "layers.share_link_economy",
+   "layers.share_link_3d",
+   "layers.share_link_housing"
+  ],
+  "where": {
+   "files": []
+  },
+  "added": "2026-10-03"
+ },
+ {
+  "id": "methods.citation",
+  "name": "How to cite the observatory and its sources",
+  "domain": "system.docs",
+  "domains": [
+   "system.docs"
+  ],
+  "group": "Using the observatory",
+  "kind": "method",
+  "plain": "Cite the original source for the data and the observatory for how the data were put together. The Cite button on each dictionary entry gives a ready credit line and APA, Chicago and BibTeX versions.",
+  "definition": "Each dictionary entry has a Cite button with four formats. The credit line joins the credit lines of the entry's sources and adds 'Processed by Foundation for Puerto Rico, PR Data Observatory (snapshot label)'. APA 7 and BibTeX give Foundation for Puerto Rico as author and the entry name and its years as the title. Chicago gives the entry name only. All three add the snapshot label, the address of the entry, the original sources and the date you retrieved it. The year is the year of the snapshot build. The dictionary page also has a citation for the whole site. It uses the address of the page you are on, or https://observatory.foundationpr.org/ when the page runs on a local address.",
+  "unit": "citation text",
+  "value_type": "text",
+  "geography": "Puerto Rico",
+  "coverage": {
+   "timeline": "static",
+   "frequency": "Applies to every entry"
+  },
+  "method": "Functions citeTexts and citePanel in site/js/dictionary.js. The credit line of each source is stored in the dictionary's source list. When the page runs on a local address, the public address is used in the citation.",
+  "sources": [
+   "overture",
+   "osm",
+   "census_tiger",
+   "acs5",
+   "bls_qcew",
+   "fpr_housing_2023"
+  ],
+  "source_detail": "Not a data entry. The sources listed are examples of those that figures from the observatory credit. When you cite this entry, credit the observatory only.",
+  "how_to_read": "Say what the figure is, the year or window, the snapshot label and the retrieval date. For survey figures, add the window ('2020-2024 American Community Survey 5-year estimates'). For figures the observatory calculates, such as rates per 1,000 residents or the affordability ratio, say that Foundation for Puerto Rico (FPR) calculated them from the named sources. Example, calculated figure: 'In 2025 there were about 770 jobs located in San Juan for every 1,000 residents (FPR calculation from US Bureau of Labor Statistics, Quarterly Census of Employment and Wages, 2025 annual average, and US Census Bureau Population Estimates, Vintage 2025; PR Data Observatory, Snapshot 2026-10, retrieved [date]).' Example, survey figure: 'San Juan's poverty rate was 38.8% ± 1.1 percentage points (90% confidence), 2020-2024 American Community Survey 5-year estimates (PR Data Observatory, Snapshot 2026-10, retrieved [date]).' Measure and method entries are not data sets. In the APA citation of one of them, delete '[Data set]'. In the APA and BibTeX citations, delete a title ending '(Not tied to a year)'. Every dataset dialog on the Analysis tab and the Housing page links to its dictionary entry, where the Cite button is.",
+  "caveats": [
+   "The observatory's citation does not replace the source's own terms. Check the license or terms of the source, which are in the Sources section, before reuse.",
+   "Terms differ by source. Examples: OpenStreetMap data need credit and share-alike under the Open Database License (ODbL); municipal transit feeds state no license; Autoridad de Transporte Integrado (ATI) data are provided as is; OpenFEMA asks for a statement that the Federal Emergency Management Agency (FEMA) does not endorse the product. Check each source's terms in the Sources section. This is not legal advice.",
+   "Credit lines are recorded in the source list. Check each source's own terms for the wording it requires; the observatory does not give legal advice.",
+   "Numbers can change when the data are rebuilt, so always give the snapshot label."
+  ],
+  "see_also": [
+   "methods.snapshot_labelling",
+   "methods.rounding_display",
+   "study.citation_links",
+   "layers.data_dictionary_page"
+  ],
+  "where": {
+   "files": []
+  },
+  "added": "2026-10-03"
+ },
+ {
+  "id": "methods.headline_figures",
+  "name": "How the Overview works out the headline figure of each field",
+  "domain": "system.docs",
+  "domains": [
+   "system.docs"
+  ],
+  "group": "Using the observatory",
+  "kind": "method",
+  "plain": "Each field on the Topics tab shows one figure for the whole of Puerto Rico. It is either the Puerto Rico value of a yearly series, for example the median rent, or a total or share worked out from the 78 municipal values by a rule written next to the field in the registry. It is a figure to start from, not a score.",
+  "definition": "The registry (dictionary_src/domains.json) names one dictionary entry as the headline of a field, with a short label in Spanish and English. For a yearly series (the housing and economy series files) the figure is the Puerto Rico value of the latest year and the trend is the Puerto Rico value of every year. For a measure held for each municipality (a field of municipalities.json) the registry also gives an 'island' rule: a sum of one field, a ratio of the sums of two fields times a scale, or an average of one field weighted by another. The result is rounded to the decimals the registry gives. The period on the card says what the figure covers: a five-year estimate, a calendar year, a year of declaration, or the snapshot.",
+  "unit": "Depends on the figure (dollars, a percentage or a count)",
+  "value_type": "text",
+  "geography": "Puerto Rico as a whole",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "Recomputed whenever catalog.py runs (each full build). In the 2026-10 snapshot the series figures are the latest years in the files (2024 for the American Community Survey windows, 2025 for jobs and population)."
+  },
+  "method": "catalog.py headline() reads the last element of each year's array in the series file (the Puerto Rico row) and keeps the years that have a value. island_value() applies the registry's rule to the municipal values. In the 2026-10 snapshot the rules are: tourism places listed is the sum of the municipal counts; tourism places in a flood hazard area is the sum of places in a flood hazard area divided by the sum of places, times 100; tourism places inside protected areas is the sum of the municipal counts; residents within 400 m of a stop with a current timetable is the average of the municipal shares weighted by the 2020 residents, which equals the island share apart from rounding.",
+  "sources": [
+   "fpr_twin",
+   "acs5",
+   "census_pep",
+   "bls_qcew",
+   "openfema",
+   "overture",
+   "fema_nfhl",
+   "padus",
+   "census_tiger",
+   "ati_gtfs",
+   "muni_gtfs"
+  ],
+  "source_detail": "catalog.py (headline, island_value, period_of); dictionary_src/domains.json (headline.label, headline.island)",
+  "how_to_read": "Read each figure with its period and its name: they say what it counts. A headline is chosen to start a conversation about a field. It does not say which field matters most, and a different headline for the same field would tell a different story.",
+  "caveats": [
+   "Several headlines count tourism places (Overture Maps listings), not businesses, visitors or hazards in general. That is what the data hold today; fuller hazard and land figures for residents and homes are planned.",
+   "A five-year estimate (the American Community Survey) has a margin of error that the card does not show. The Housing page and the dictionary entry do.",
+   "A series of events (FEMA Public Assistance) shows the latest year that has a value, which can be small next to the years of large disasters. Read it with its trend line.",
+   "The share of residents near a stop with a current timetable depends on the date: it is computed as of the build date, and a feed that ends changes it (see methods.access_profile).",
+   "Where a field has no headline yet, or no data, the card says so instead of leaving the field out."
+  ],
+  "see_also": [
+   "data.catalog",
+   "layers.overview_tab",
+   "methods.access_profile",
+   "municipalities.sfha_pct",
+   "municipalities.in_protected",
+   "municipalities.pop_served_active_pct"
+  ],
+  "where": {
+   "files": [],
+   "view": [
+    {
+     "label": "Map, Topics tab",
+     "href": "index.html"
+    }
+   ]
+  },
+  "added": "2026-10-06"
+ },
+ {
+  "id": "measures.per_1000_housing_units",
+  "name": "Per 1,000 housing units",
+  "domain": "system.docs",
+  "domains": [
+   "system.docs"
+  ],
+  "group": "Rescaling a value",
+  "kind": "measure",
+  "plain": "A count divided by the number of homes in the municipality and multiplied by 1,000. It shows how common something is compared with the housing stock, so a municipality does not look high only because it has more homes.",
+  "definition": "Value ÷ housing units × 1,000. The housing units are the American Community Survey (ACS) 5-year estimate for the latest window that ends at or before the year shown (the first window when the year chosen is earlier). It is calculated to three decimals and shown with one. It is offered for counts of things that sit on housing (tourism places, transit stops, vacant or seasonal homes, households, people), not for jobs, not for exposure counts (which have a share of their own area) and not for housing units themselves. The result is blank when the value or the housing units are missing or zero; the Puerto Rico row uses the island's housing units.",
+  "unit": "count per 1,000 housing units",
+  "value_type": "ratio",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "static",
+   "frequency": "Calculated in your browser each time the map redraws"
+  },
+  "method": "Case perHU of compute in Core.normalize (site/js/core/normalize.js): x ÷ housing units × 1000, with the housing units of the series housing_units (the engine's housing-unit denominator, E.hu). A new layer does not start in this view: shaded counts start per 1,000 residents.",
+  "sources": [
+   "acs5",
+   "overture"
+  ],
+  "source_detail": "Denominator: ACS 5-year table B25001 (Housing Units), as in housing.housing_units. Numerator: any count the Analysis tab offers; the example uses the tourism places counted from Overture Maps.",
+  "how_to_read": "In the 2026-10 snapshot, San Juan has 3,424 tourism places and 201,026 housing units (2020-2024), which is 17.0 places per 1,000 housing units (10.4 per 1,000 residents). Culebra has 136 places and 1,539 housing units: 88.4 per 1,000 housing units. Read it as how many of these there are for every 1,000 homes.",
+  "caveats": [
+   "Housing units are a survey estimate with a margin of error; the margin is not carried into the rate.",
+   "Seasonal and vacant homes count as housing units, so a municipality with many second homes has a larger denominator than its residents suggest.",
+   "The housing units are those of the survey window that ends at or before the year shown, not of the year itself (see methods.acs_windows).",
+   "A small municipality can swing widely when a few units change."
+  ],
+  "see_also": [
+   "measures.show_as",
+   "measures.per_1000_residents",
+   "housing.housing_units",
+   "methods.acs_windows",
+   "measures.less_reliable_values"
+  ],
+  "where": {
+   "files": [],
+   "view": [
+    {
+     "label": "Map, Analysis tab: tourism places per 1,000 housing units",
+     "href": "index.html#e=tourism_places.f.perHU.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-06"
+ },
+ {
+  "id": "measures.less_reliable_values",
+  "name": "Less reliable values: hatching, dashed outlines and italics",
+  "domain": "system.docs",
+  "domains": [
+   "system.docs"
+  ],
+  "group": "Uncertainty",
+  "kind": "measure",
+  "plain": "A value is marked less reliable when it is a survey estimate whose margin of error is large next to the estimate, or a rate or share built on fewer than ten counted. On a shaded map the municipality is hatched, a symbol gets a dashed outline, and the value in a pop-up or table is in italics. The mark says how much to trust a number, not whether it is right.",
+  "definition": "Two rules, applied to the values a layer shows. (1) Margin of error: the published margin of error (90% confidence) is more than 30% of the estimate; an estimate of zero with any margin counts, because the margin cannot be small next to nothing. For a change since a base year, either of the two years counts. (2) Few counted: a rate or share of a count (per 1,000 residents, per 1,000 housing units, % of the municipality's jobs, % of the area's residents or housing units, location quotient; or a share whose dataset names the count it rests on) where the count is above zero and below 10. A figure that the source withholds is not flagged: the municipality has no value and the legend says why (see methods.qcew_suppression). A municipality with no published margin is never flagged by rule 1.",
+  "unit": "flag for each municipality (yes or no)",
+  "value_type": "code",
+  "geography": "78 municipalities",
+  "coverage": {
+   "timeline": "static",
+   "frequency": "Calculated in your browser each time the map redraws"
+  },
+  "method": "Core.reliability (site/js/core/reliability.js). isUnreliable(value, moe) is true when moe is above zero and either the value is zero or moe ÷ |value| is above 0.3. assess() applies it to the published estimates of the year shown and the small-count rule to the layer's counts, and the layer engine keeps the result (E.reliability). The 2D map draws the hatch as a pattern over the municipality (a dark line beside a white one, so it shows on pale and dark colours and in print), the legend lists each flag in words with the number of municipalities, and the pop-up, the workbench table and the hover card set the value in italics with a sentence below. The Housing page uses the same rule and the same sentence.",
+  "sources": [
+   "acs5",
+   "bls_qcew"
+  ],
+  "source_detail": "Margins of error: American Community Survey 5-year estimates, published by the Census Bureau or computed by Foundation for Puerto Rico with the Bureau's formulas (see measures.margin_of_error). The thresholds, 30% and 10 counted, are display conventions chosen by FPR, not statistical tests.",
+  "how_to_read": "In the 2026-10 snapshot, 74 of the 78 municipalities are hatched for workers who walk to work (2020-2024) and 66 for nonprofit workers, because few residents in a small municipality give such an answer; none is hatched for median household income. For rule 2, 10 municipalities have fewer than 10 housing units inside the area flooded by 3 feet of sea level rise, so their share of housing units is hatched.",
+  "caveats": [
+   "A flag is a caution, not a verdict: a flagged value can be close to the truth, and an unflagged one can be off.",
+   "The thresholds are conventions. 30% is the rule the Housing page has always used; fewer than 10 is a common point below which a count is treated as small.",
+   "Margins of error are not carried through a rescaling (per 1,000 residents, index, difference, change, percentile). The flag describes the published estimate, and the legend says so when a view other than 'As published' is flagged.",
+   "A value with no margin published (for example a figure that is not from a survey) is never flagged by the margin rule.",
+   "Housing page tables set zero estimates that carry a margin in italics, as the Analysis tab does; before 2026-10 they were left as ordinary figures."
+  ],
+  "see_also": [
+   "measures.margin_of_error",
+   "methods.qcew_suppression",
+   "methods.acs_windows",
+   "municipalities.acs_reliability",
+   "measures.show_as",
+   "measures.per_1000_housing_units"
+  ],
+  "where": {
+   "files": [],
+   "view": [
+    {
+     "label": "Map, Analysis tab: workers who walk to work (74 of 78 municipalities hatched)",
+     "href": "index.html#e=commute_walk_pct.f.value.blue.q.1.1.0.85.0&ey=2024"
+    },
+    {
+     "label": "Housing page: full data for seasonal units, with margins and italic values",
+     "href": "housing.html?d=seasonal_units"
+    }
+   ]
+  },
+  "added": "2026-10-06"
+ },
+ {
+  "id": "methods.hexagon_counts",
+  "name": "Tourism places counted in hexagons and by municipality, under your filters",
+  "domain": "system.docs",
+  "domains": [
+   "system.docs"
+  ],
+  "group": "How places and points are built",
+  "kind": "method",
+  "plain": "The Map layers tab can draw the tourism places that pass its filters as hexagons instead of pins. Every hexagon covers the same area, so the number in it also says how crowded the place is. Three more shading choices count the places that pass the filters in each municipality.",
+  "definition": "Hexagons: the map points of the places are projected with a Lambert azimuthal equal-area projection centred on Puerto Rico and counted in a grid of regular hexagons of 2, 10 or 50 square kilometres, as the user chooses. In that projection equal areas on the plane are equal areas on the ground, so every hexagon covers the same ground area (to about 0.3% on the real earth). The legend gives five classes of the counts, with the number of hexagons in each, and states the method. Municipalities: the same places counted in each municipality, as a total, per 1,000 residents (2020 Census) and per square kilometre of land. Both follow the filters of the Map layers tab (categories, minimum confidence, places of worship) and change when a filter changes; the fixed counts in the shading menu (tourism places, per 1,000 residents, per km²) stay as they were built.",
+  "unit": "places per hexagon; places per municipality, per 1,000 residents and per km²",
+  "value_type": "count",
+  "geography": "hexagons of 2, 10 or 50 km² and 78 municipalities",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "Counted in your browser each time a filter changes"
+  },
+  "method": "Core.hexbin (site/js/core/hexbin.js) projects each place and assigns it to the hexagon that holds it, using axial coordinates; site/js/app.js draws the hexagons (drawHexes) and counts the municipalities (countShown) from the places that pass the filters. The view is kept in the link as pv=hex2, pv=hex10 or pv=hex50, and the municipal shading as s=shown, s=shown_per_1000_residents or s=shown_per_km2. The tourism places file (about 3 MB compressed) is downloaded the first time the view is used.",
+  "sources": [
+   "overture",
+   "census_decennial"
+  ],
+  "source_detail": "The places are the Overture Maps listings that the observatory classifies (places.json). Residents and land area are the municipal fields of municipalities.json.",
+  "how_to_read": "In the 2026-10 snapshot with the default filters (confidence 0.50 or higher, places of worship left out), the 23,467 places with a pin (the 24,209 counted places less the 742 holiday rentals and numbered units, which are counted but not drawn) fall in 950 hexagons of 10 square kilometres: the busiest holds 447 and half hold 8 or fewer. In hexagons of 2 km² they fall in 2,833 (busiest 309) and in hexagons of 50 km² in 231 (busiest 1,988). By municipality, San Juan has 3,424 counted places, Vieques 237 and Culebra 136.",
+  "caveats": [
+   "A hexagon is a counting unit, not a place: it ignores municipal and barrio borders, and a busy hexagon can straddle two municipalities.",
+   "Counts depend on the size of the hexagon. Compare hexagons of the same size only; the legend names the size.",
+   "Equal area is exact on a sphere of the earth's mean radius; on the real earth, which is slightly flattened, areas are right to about 0.3%.",
+   "The places are listings, not businesses, and the filters decide which listings count (see methods.municipality_assignment).",
+   "Hexagons over the sea are not drawn: only hexagons that hold a place appear."
+  ],
+  "see_also": [
+   "methods.municipality_assignment",
+   "municipalities.assets",
+   "municipalities.assets_per_1000_residents",
+   "layers.place_categories"
+  ],
+  "where": {
+   "files": [],
+   "view": [
+    {
+     "label": "Map, Map layers tab: tourism places as hexagons of 10 km²",
+     "href": "index.html#l=muni,places&pv=hex10"
+    },
+    {
+     "label": "Map, Map layers tab: places that pass the filters, per km² in each municipality",
+     "href": "index.html#l=muni&s=shown_per_km2"
+    }
+   ]
+  },
+  "added": "2026-10-06"
+ },
+ {
+  "id": "measures.composite_index",
+  "name": "User-built composite (not an official index)",
+  "domain": "system.docs",
+  "domains": [
+   "system.docs",
+   "system.tools"
+  ],
+  "group": "Relationships between datasets",
+  "kind": "measure",
+  "plain": "A score you build yourself in the workbench from several datasets, with your own directions and weights. It is your own index, not an official one.",
+  "definition": "Choose two to twelve datasets, say for each whether a higher value is better or worse, and give each a weight. Each input is read as a shaded map shows it (counts per 1,000 residents, dollar totals per resident, rates and shares as published) at the year the year control picks, and put on one scale across the 78 municipalities: z-scores (standard deviations from the average municipality), 0 to 100 between the lowest and the highest, or the percentile rank (0 to 100). An input where lower is better is turned round. The score is the weighted mean of the inputs a municipality has; a municipality with less than 80% of the weight present is left blank. Puerto Rico as a whole gets no score. The table gives each municipality's score, the share of the weight it has and what each input adds (the additions sum to the score).",
+  "unit": "score (z-score units or 0 to 100)",
+  "value_type": "ratio",
+  "geography": "78 municipalities",
+  "coverage": {
+   "timeline": "static",
+   "frequency": "Calculated in your browser when you build it; it follows the year control"
+  },
+  "method": "Core.composite (site/js/core/composite.js: scale, compute) and economy.js (ecIxInputs, ecIxApply, ecBenchComposite). The inputs, directions, weights and scale are kept in the map's link (#ix=), so a shared link rebuilds the same composite.",
+  "sources": [
+   "bls_qcew",
+   "bls_laus",
+   "acs5",
+   "census_pep",
+   "usaspending",
+   "openfema"
+  ],
+  "source_detail": "Any datasets of the Analysis tab.",
+  "how_to_read": "A higher score means more of what you marked as better, relative to the other municipalities. Read the contributions to see which inputs drive a place's score.",
+  "caveats": [
+   "User-built composite, not an official index: the result depends entirely on the inputs, directions and weights chosen.",
+   "Standardising across municipalities compares places with each other, not with a target.",
+   "Inputs from different years and from surveys with margins of error are combined without carrying the margins."
+  ],
+  "see_also": [
+   "measures.correlation",
+   "layers.workbench"
+  ],
+  "where": {
+   "files": [],
+   "view": [
+    {
+     "label": "2D map: Analysis tab (press Workbench, then Composite)",
+     "href": "index.html#l=muni&e=poverty_pct.f.value.blue.q.1.1.0.85.0&ix=z,poverty_pct:l:1,laus_unemp_rate:l:1,qcew_avg_pay:h:1"
+    }
+   ]
+  },
+  "added": "2026-10-15"
+ },
+ {
+  "id": "measures.peer_municipios",
+  "name": "Similar municipios (peers) in the area profiles",
+  "domain": "system.docs",
+  "domains": [
+   "system.docs",
+   "population"
+  ],
+  "group": "Relationships between datasets",
+  "kind": "measure",
+  "plain": "For each municipio, the five municipios most like it in population and in residents per square kilometre.",
+  "definition": "The latest population of each municipio (Census Bureau estimates) and its residents per km² of land are each put on a log scale and then on z-scores across the 78 municipios. The five municipios at the shortest straight-line distance on those two numbers are the peers, nearest first.",
+  "unit": "list of 5 municipios",
+  "value_type": "text",
+  "geography": "78 municipalities",
+  "coverage": {
+   "timeline": "static",
+   "frequency": "Calculated in your browser when a profile opens, from the latest population year"
+  },
+  "method": "Core.stats.peers and Core.stats.zscores (site/js/core/stats.js), called by profile.js (peersOf).",
+  "sources": [
+   "census_pep",
+   "census_tiger"
+  ],
+  "source_detail": "Population: the Analysis tab's population series; land area: Census TIGER (municipalities.json).",
+  "how_to_read": "In the 2026-10 snapshot the peers of San Juan are Bayamón, Carolina, Guaynabo, Caguas and Toa Baja.",
+  "caveats": [
+   "Similar in size and density only, not in income, economy or anything else."
+  ],
+  "see_also": [
+   "layers.profile_page"
+  ],
+  "where": {
+   "files": [],
+   "view": [
+    {
+     "label": "Area profile of San Juan",
+     "href": "profile.html?area=72127"
+    }
+   ]
+  },
+  "added": "2026-10-15"
+ },
+ {
+  "id": "measures.model_output",
+  "name": "Model output (not observed data)",
+  "domain": "system.docs",
+  "domains": [
+   "system.docs",
+   "system.tools"
+  ],
+  "group": "Relationships between datasets",
+  "kind": "measure",
+  "plain": "Figures that an outside model produced and that a person loaded in the workbench. They are model results, not observed data, and the observatory checks only their format.",
+  "definition": "A CSV file with a header of lines starting with '#' (model_name, model_version, run_id, date, assumptions_url, licence, contact_label) and the columns geography_key, geography_level, period, variable, value, unit and, optionally, lower and upper; or a GeoJSON FeatureCollection with a 'model' member holding the header and the same fields in each feature's properties. geography_level is 'municipio' (the five-digit code; 72 is Puerto Rico as a whole); period is a year. Each variable becomes a dataset of the Analysis tab labelled 'Model output (not observed data)', with the header in its definition. lower and upper must bracket the value; the map shows the value.",
+  "unit": "the file's own unit",
+  "value_type": "ratio",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "static",
+   "frequency": "Whatever periods the file gives"
+  },
+  "method": "Core.scenario.parseModel (site/js/core/scenario.js) checks the header, every row and the size (5 MB and 20,000 rows at most) and refuses the whole file on any error, listing up to 50; js/scenarios.js adds each variable to the engine. The format is in docs/scenarios.md; site/samples/model_output_sample.csv is a sample with made-up values.",
+  "sources": [
+   "bls_qcew",
+   "acs5",
+   "census_pep",
+   "census_tiger"
+  ],
+  "source_detail": "The file a person loads; the observatory publishes no model results.",
+  "how_to_read": "Read it as what a model says under its assumptions (the header's assumptions_url), not as a measurement.",
+  "caveats": [
+   "Not observed data: the observatory checks the format, not the numbers.",
+   "The header names a team or organisation as the contact; e-mail addresses and telephone numbers are refused."
+  ],
+  "see_also": [
+   "layers.scenarios"
+  ],
+  "where": {
+   "files": [],
+   "view": [
+    {
+     "label": "2D map: Analysis tab (press Workbench, then Scenarios)",
+     "href": "index.html#l=muni&e=poverty_pct.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-15"
+ }
+]

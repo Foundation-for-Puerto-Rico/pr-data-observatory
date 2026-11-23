@@ -1,0 +1,604 @@
+[
+  {
+    "domain": "system.geography",
+    "domains": [
+      "system.geography"
+    ],
+    "added": "2026-10-06",
+    "id": "geo.crosswalk",
+    "name": "Geography crosswalk (4,523 units in six levels)",
+    "group": "Geography crosswalk",
+    "kind": "table",
+    "plain": "The list of every area the observatory can join data to: the island, 7 tourism regions, 78 municipios, 901 barrios, 981 census tracts and 2,555 block groups. For each it gives a code, its parent, its names, its land area, its 2020 residents and housing units, and a point inside it.",
+    "definition": "The file geo/crosswalk.json has one row for each unit in six levels (island 1, tourism region 7, municipio 78, barrio 901, census tract 981, block group 2,555). A row has ten values: id, parent, name_es, name_en, norm, km2, pop, hu, lat and lng, and each has its own entry. The file also holds the weights that carry numbers between barrios and tracts, which do not fit one inside the other (geo.weights_barrio_tract), and the totals: 3,285,874 residents, 1,598,159 housing units and 41,987 census blocks, 36,570 of them with residents. Census blocks are not units: they are used only to count the weights.",
+    "unit": "table of units",
+    "value_type": "code",
+    "geography": "the island, 7 tourism regions, 78 municipios, 901 barrios, 981 census tracts and 2,555 block groups (4,523 units)",
+    "coverage": {
+      "timeline": "static",
+      "first": 2020,
+      "last": 2020,
+      "frequency": "2020 Census geography; rebuilt only by a full build (python geo.py)"
+    },
+    "method": "geo.py reads the block table (geo.block_table) and the Census Bureau's attribute tables for municipios, tracts, block groups and county subdivisions, puts each block in its barrio by the block's internal point, and adds the blocks up to every unit. It stops, and writes nothing, unless the blocks add up exactly to the Census Bureau's own residents and housing units for all 78 municipios, 981 tracts, 2,555 block groups and 939 county subdivisions. python geo.py --check repeats the checks on the published file: ids are unique, every parent exists, and the residents, housing units and land areas of the children add up to their parent.",
+    "sources": [
+      "census_tiger",
+      "prtc_regions"
+    ],
+    "source_detail": "TIGERweb 2020 layers 82 (counties), 6 (tracts), 8 (block groups), 10 (blocks) and 20 (county subdivisions); the tourism region of each municipio from municipios.geojson",
+    "how_to_read": "Join a dataset to the crosswalk by id, never by name. A file whose rows carry the id of a unit can be shown at that level, added up to the parent when it counts people or things, or moved to a level that does not fit inside it with the weights. Rules and examples: docs/geography.md.",
+    "caveats": [
+      "The regions are the Puerto Rico Tourism Company's tourism regions, the only region scheme the observatory holds. They are not planning regions.",
+      "Barrios and census tracts do not fit one inside the other: 489 of the 896 barrios that have residents or housing units (55%), holding 81% of residents, lie in two or more tracts.",
+      "Counts are 2020 Census counts. They do not show change since 2020; use the survey and population-estimate series for later years.",
+      "The 38 county subdivisions called 'Municipio subdivision not defined' are offshore water with no land, no residents and no housing units. They are not units."
+    ],
+    "see_also": [
+      "geo.unit_id",
+      "geo.weights_barrio_tract",
+      "geo.block_table",
+      "boundaries.municipios",
+      "boundaries.barrios"
+    ],
+    "example": "72001956400 is tract 9564 in Adjuntas (municipio 72001): 2,645 residents and 1,150 housing units in 2020",
+    "where": {
+      "files": [
+        "geo/crosswalk.json:*"
+      ]
+    }
+  },
+  {
+    "domain": "system.geography",
+    "domains": [
+      "system.geography"
+    ],
+    "added": "2026-10-06",
+    "id": "geo.unit_id",
+    "name": "Unit id (the code of an area)",
+    "group": "Geography crosswalk",
+    "kind": "variable",
+    "plain": "The code that names an area and ties data to it. A municipio has 5 digits, a barrio 10, a census tract 11 and a block group 12, and each code starts with the code of the area it sits in.",
+    "definition": "The id value of each row. Island: 72, the Census code of Puerto Rico. Tourism region: reg- and a short name (reg-capital, reg-atlantico, reg-mar, reg-caribe, reg-cordillera, reg-sol-norte, reg-sol-sur). Municipio: 5 digits (72 and a 3-digit municipio code). Barrio: 10 digits (the municipio code and a 5-digit county subdivision code). Census tract: 11 digits (the municipio code and a 6-digit tract code). Block group: 12 digits (the tract code and 1 digit). These are the Census Bureau's GEOIDs, so any Census table joins to them. A census block has 15 digits (its block group and 3 digits); blocks are not units.",
+    "unit": "code (text)",
+    "value_type": "code",
+    "geography": "the island, 7 tourism regions, 78 municipios, 901 barrios, 981 census tracts and 2,555 block groups (4,523 units)",
+    "coverage": {
+      "timeline": "static",
+      "first": 2020,
+      "last": 2020,
+      "frequency": "2020 Census geography; rebuilt only by a full build (python geo.py)"
+    },
+    "method": "Copied from the Census Bureau's GEOID. The region ids are made by geo.py from the Tourism Company's region names.",
+    "sources": [
+      "census_tiger",
+      "prtc_regions"
+    ],
+    "how_to_read": "Keep ids as text. They start with 72, and a tract id has 11 digits, more than a spreadsheet keeps as a number. The first 5 digits of a barrio, tract or block group id are its municipio; the first 11 digits of a block group id are its tract.",
+    "caveats": [
+      "Barrio names repeat (694 different names for 901 barrios), so join by id.",
+      "Five-year survey windows that end in 2020 or earlier use the 2010 Census geography, whose tract and block group codes differ from these."
+    ],
+    "see_also": [
+      "geo.crosswalk",
+      "boundaries.municipio_geoid",
+      "boundaries.barrio_geoid"
+    ],
+    "example": "7200113645 is the barrio Capáez in Adjuntas",
+    "where": {
+      "files": [
+        "geo/crosswalk.json:*"
+      ]
+    }
+  },
+  {
+    "domain": "system.geography",
+    "domains": [
+      "system.geography"
+    ],
+    "added": "2026-10-06",
+    "id": "geo.unit_parent",
+    "name": "Parent of a unit",
+    "group": "Geography crosswalk",
+    "kind": "variable",
+    "plain": "The area a unit belongs to: a region belongs to the island, a municipio to a region, a barrio or a census tract to a municipio, and a block group to a tract.",
+    "definition": "The parent value of each row is the id of the next larger unit: tourism region to island, municipio to region, barrio to municipio, tract to municipio, block group to tract. The island has none (null). Barrios and tracts both belong to a municipio, but neither fits inside the other.",
+    "unit": "id of a unit",
+    "value_type": "code",
+    "geography": "the island, 7 tourism regions, 78 municipios, 901 barrios, 981 census tracts and 2,555 block groups (4,523 units)",
+    "coverage": {
+      "timeline": "static",
+      "first": 2020,
+      "last": 2020,
+      "frequency": "2020 Census geography; rebuilt only by a full build (python geo.py)"
+    },
+    "method": "Barrio, tract and block group parents come from the first digits of the Census id; a municipio's region comes from municipios.geojson.",
+    "sources": [
+      "census_tiger",
+      "prtc_regions"
+    ],
+    "how_to_read": "Add the children to get the parent for counts of people, housing units or places. Do not add percentages, medians or averages: work them out again from their parts.",
+    "caveats": [
+      "To move a number between barrios and tracts, use geo.weights_barrio_tract, not the parent."
+    ],
+    "see_also": [
+      "geo.crosswalk",
+      "geo.weights_barrio_tract"
+    ],
+    "where": {
+      "files": [
+        "geo/crosswalk.json:*"
+      ]
+    }
+  },
+  {
+    "domain": "system.geography",
+    "domains": [
+      "system.geography"
+    ],
+    "added": "2026-10-06",
+    "id": "geo.unit_names",
+    "name": "Names of a unit (name_es, name_en, norm)",
+    "group": "Geography crosswalk",
+    "kind": "variable",
+    "plain": "The name of an area in Spanish and in English, and a plain form of it for matching what a person types.",
+    "definition": "name_es and name_en are the display names. A tourism region, municipio or barrio has the same name in both languages. A tract is 'Sector censal 9564' in Spanish and 'Census tract 9564' in English; a block group is 'Grupo de bloques 2, sector censal 9563' and 'Block group 2, census tract 9563'. norm is the Spanish name in lower case without accents. It is for matching what a person types, in the search box or the chat; a dataset joins by id.",
+    "unit": "text",
+    "value_type": "text",
+    "geography": "the island, 7 tourism regions, 78 municipios, 901 barrios, 981 census tracts and 2,555 block groups (4,523 units)",
+    "coverage": {
+      "timeline": "static",
+      "first": 2020,
+      "last": 2020,
+      "frequency": "2020 Census geography; rebuilt only by a full build (python geo.py)"
+    },
+    "method": "Region names are the Tourism Company's; municipio and barrio names are the Census Bureau's (the same as in municipios.geojson and barrios.geojson, which geo.py checks); tract and block group names are built from the Census Bureau's tract and block group numbers.",
+    "sources": [
+      "census_tiger",
+      "prtc_regions"
+    ],
+    "how_to_read": "Show the municipio with a barrio name, because names repeat.",
+    "caveats": [
+      "Barrio names repeat: 694 different names for 901 barrios (Collores and Quebrada Arenas each name six barrios)."
+    ],
+    "see_also": [
+      "geo.unit_id",
+      "boundaries.barrio_name"
+    ],
+    "where": {
+      "files": [
+        "geo/crosswalk.json:*"
+      ]
+    }
+  },
+  {
+    "domain": "system.geography",
+    "domains": [
+      "system.geography"
+    ],
+    "added": "2026-10-06",
+    "id": "geo.unit_km2",
+    "name": "Land area of a unit (km²)",
+    "group": "Geography crosswalk",
+    "kind": "variable",
+    "plain": "How much land an area covers, in square kilometers, water left out. It is the base for figures per square kilometer.",
+    "definition": "The Census Bureau's land area (AREALAND) in square kilometers to four decimals. Water is left out. For the island it is the sum of the census blocks, and for a tourism region the sum of its municipios.",
+    "unit": "km² of land",
+    "value_type": "level",
+    "geography": "the island, 7 tourism regions, 78 municipios, 901 barrios, 981 census tracts and 2,555 block groups (4,523 units)",
+    "coverage": {
+      "timeline": "static",
+      "first": 2020,
+      "last": 2020,
+      "frequency": "2020 Census geography; rebuilt only by a full build (python geo.py)"
+    },
+    "method": "Copied from the Census Bureau's tables for each unit and added up for the island and the regions. The land areas of the children add up to their parent within rounding: each area is rounded to 0.0001 km².",
+    "sources": [
+      "census_tiger"
+    ],
+    "how_to_read": "Use it as the base of a density (residents, housing units or places per km²). It is measured on the Census Bureau's own boundaries, not on the simplified outlines the maps draw.",
+    "caveats": [
+      "It can differ from the km2 in barrios.geojson, which was measured on a generalized outline cut at the shoreline (for the barrio Guayabal in Juana Díaz: 15.31 here and 15.68 there)."
+    ],
+    "see_also": [
+      "geo.crosswalk",
+      "boundaries.barrio_km2",
+      "boundaries.municipio_land_area"
+    ],
+    "where": {
+      "files": [
+        "geo/crosswalk.json:*"
+      ]
+    }
+  },
+  {
+    "domain": "system.geography",
+    "domains": [
+      "system.geography"
+    ],
+    "added": "2026-10-06",
+    "id": "geo.unit_pop2020",
+    "name": "Residents of a unit (2020 Census)",
+    "group": "Geography crosswalk",
+    "kind": "variable",
+    "plain": "The number of people the 2020 Census counted in an area.",
+    "definition": "The residents counted by the 2020 Census in the unit: the sum of its census blocks. For every municipio, barrio, tract and block group it equals the Census Bureau's own figure for that unit, which geo.py checks when it builds the file. The island has 3,285,874.",
+    "unit": "residents",
+    "value_type": "count",
+    "geography": "the island, 7 tourism regions, 78 municipios, 901 barrios, 981 census tracts and 2,555 block groups (4,523 units)",
+    "coverage": {
+      "timeline": "static",
+      "first": 2020,
+      "last": 2020,
+      "frequency": "2020 Census geography; rebuilt only by a full build (python geo.py)"
+    },
+    "method": "Census block residents (POP100 of TIGERweb layer 10) added up to each unit through the block's id (tract, block group, municipio) or its internal point (barrio).",
+    "sources": [
+      "census_tiger"
+    ],
+    "how_to_read": "A 2020 count, not a figure for today. Do not compare it with a survey estimate of the same area as if both measured the same thing: the survey is a sample with a margin of error.",
+    "caveats": [
+      "The Census Bureau adds statistical noise to block counts to protect privacy, so counts of small units are approximate.",
+      "People in group quarters, such as a dormitory or a nursing home, are counted: 53 blocks hold 6,503 residents and no housing units."
+    ],
+    "see_also": [
+      "geo.unit_hu2020",
+      "boundaries.municipio_pop2020"
+    ],
+    "where": {
+      "files": [
+        "geo/crosswalk.json:*"
+      ]
+    }
+  },
+  {
+    "domain": "system.geography",
+    "domains": [
+      "system.geography"
+    ],
+    "added": "2026-10-06",
+    "id": "geo.unit_hu2020",
+    "name": "Housing units of a unit (2020 Census)",
+    "group": "Geography crosswalk",
+    "kind": "variable",
+    "plain": "The number of homes, occupied or empty, the 2020 Census counted in an area.",
+    "definition": "The housing units (occupied and vacant) counted by the 2020 Census in the unit: the sum of its census blocks. A housing unit is a house, an apartment, a mobile home or a room meant as separate living quarters. The island has 1,598,159. The Census Bureau does not add noise to housing-unit counts at block level, so they are the better weight for moving numbers between areas.",
+    "unit": "housing units",
+    "value_type": "count",
+    "geography": "the island, 7 tourism regions, 78 municipios, 901 barrios, 981 census tracts and 2,555 block groups (4,523 units)",
+    "coverage": {
+      "timeline": "static",
+      "first": 2020,
+      "last": 2020,
+      "frequency": "2020 Census geography; rebuilt only by a full build (python geo.py)"
+    },
+    "method": "Census block housing units (HU100 of TIGERweb layer 10) added up to each unit as for residents.",
+    "sources": [
+      "census_tiger"
+    ],
+    "how_to_read": "Use it for the base of a housing count or a share of homes, and as the weight in geo.weights_barrio_tract.",
+    "caveats": [
+      "A 2020 count: homes built or lost since 2020 are not in it.",
+      "Group quarters are not housing units: 41 blocks have housing units and no residents, and 53 have residents and no housing units."
+    ],
+    "see_also": [
+      "geo.unit_pop2020",
+      "boundaries.municipio_hu2020"
+    ],
+    "where": {
+      "files": [
+        "geo/crosswalk.json:*"
+      ]
+    }
+  },
+  {
+    "domain": "system.geography",
+    "domains": [
+      "system.geography"
+    ],
+    "added": "2026-10-06",
+    "id": "geo.unit_point",
+    "name": "Internal point of a unit (lat, lng)",
+    "group": "Geography crosswalk",
+    "kind": "variable",
+    "plain": "A point that lies inside the area, for placing a label or a marker. It is not the center.",
+    "definition": "lat and lng are a latitude and longitude in degrees (WGS 84), rounded to 5 decimals. For a municipio, barrio, tract or block group they are the Census Bureau's internal point (INTPTLAT, INTPTLON), which always lies inside the unit. For the island and the tourism regions they are a point inside the union of the municipio outlines.",
+    "unit": "degrees (latitude, longitude)",
+    "value_type": "geometry",
+    "geography": "the island, 7 tourism regions, 78 municipios, 901 barrios, 981 census tracts and 2,555 block groups (4,523 units)",
+    "coverage": {
+      "timeline": "static",
+      "first": 2020,
+      "last": 2020,
+      "frequency": "2020 Census geography; rebuilt only by a full build (python geo.py)"
+    },
+    "method": "Copied from the Census Bureau's internal points; for the island and regions, shapely's representative point of the union of the municipio outlines.",
+    "sources": [
+      "census_tiger",
+      "prtc_regions"
+    ],
+    "how_to_read": "Use it to put a label on a unit or to fly the map to it. It is not the center of the unit and not where most people live.",
+    "see_also": [
+      "geo.crosswalk"
+    ],
+    "where": {
+      "files": [
+        "geo/crosswalk.json:*"
+      ]
+    }
+  },
+  {
+    "domain": "system.geography",
+    "domains": [
+      "system.geography"
+    ],
+    "added": "2026-10-06",
+    "id": "geo.weights_barrio_tract",
+    "name": "Barrio-to-tract weights (2,057 pairs)",
+    "group": "Geography crosswalk",
+    "kind": "table",
+    "plain": "For each barrio, how many residents and housing units lie in each census tract it touches. It lets a count known for tracts be spread over barrios, or the reverse, because the two do not fit one inside the other.",
+    "definition": "weights.barrio_tract in geo/crosswalk.json: one row for each pair of a barrio and a tract that share at least one census block with residents or housing units, with five values: barrio id, tract id, residents, housing units and number of blocks. The 2,057 rows cover 896 barrios; the 5 barrios with no residents and no housing units have none. 407 barrios lie in one tract; 489 lie in two or more tracts (up to 35), and they hold 81% of the island's residents.",
+    "unit": "residents, housing units and blocks per pair",
+    "value_type": "count",
+    "geography": "896 barrios and the 981 tracts they touch",
+    "coverage": {
+      "timeline": "static",
+      "first": 2020,
+      "last": 2020,
+      "frequency": "2020 Census geography; rebuilt only by a full build (python geo.py)"
+    },
+    "method": "geo.py puts each census block in the barrio that holds its internal point and in the tract named by the first 11 digits of its id, then adds residents, housing units and blocks for each pair. Housing units are the preferred weight because the Census Bureau does not add noise to them at block level.",
+    "sources": [
+      "census_tiger"
+    ],
+    "how_to_read": "To spread a count from tracts over barrios, split each tract's count among its barrios in proportion to their housing units in that tract (the row's housing units over the tract's housing units), then add up for each barrio. To go from barrios to tracts, do the same with the roles swapped. Label the result 'estimated from tracts using 2020 housing units' and show no margin of error for it. When a survey table has the Census Bureau's own barrio rows, use those.",
+    "caveats": [
+      "It assumes a count is spread over a tract like its housing units. Incomes, rents and poverty often differ inside a tract, so the result is rough.",
+      "Percentages, medians and averages are not split this way. Weighting them gives only a rough figure.",
+      "The weights are 2020 counts."
+    ],
+    "see_also": [
+      "geo.crosswalk",
+      "geo.block_table",
+      "methods.small_area_estimates"
+    ],
+    "example": "The barrio Guaniquilla in Aguada (7200331318) has 748 housing units in tract 4302 and 421 in tract 4303: 64% and 36% of its housing units",
+    "where": {
+      "files": [
+        "geo/crosswalk.json:*"
+      ]
+    }
+  },
+  {
+    "domain": "system.geography",
+    "domains": [
+      "system.geography"
+    ],
+    "added": "2026-10-06",
+    "id": "geo.tracts_layer",
+    "name": "Census tract outlines (939 of 981; for drawing only)",
+    "group": "Census tracts and block groups",
+    "kind": "boundary",
+    "plain": "The outlines of the census tracts, the Census Bureau's small areas of about 3,300 residents each, drawn in a simplified form. No page draws them yet.",
+    "definition": "The file geo/tracts.geojson holds 939 shapes, one for each of the 981 census tracts of the 2020 Census that has land. The other 42 tracts are all water, with no land, residents or housing units, and have no outline. Each shape has one property, GEOID, the tract's 11-digit id; names, counts and areas are in the crosswalk. The shapes are the Census Bureau's cartographic boundary file at 1:500,000, clipped to a simplified outline of the coast.",
+    "unit": "polygon outlines (longitude and latitude, WGS 84)",
+    "value_type": "geometry",
+    "geography": "939 of the 981 census tracts of Puerto Rico",
+    "coverage": {
+      "timeline": "static",
+      "first": 2020,
+      "last": 2020,
+      "frequency": "2020 Census geography; rebuilt only by a full build (python geo.py)"
+    },
+    "method": "geo.py reads cb_2020_72_tract_500k.zip, keeps the GEOID and rounds coordinates to 5 decimals (about 1 m). The shapes come in NAD83 longitude and latitude, which the observatory treats as WGS 84 (they differ by about a meter).",
+    "sources": [
+      "census_cartographic"
+    ],
+    "source_detail": "https://www2.census.gov/geo/tiger/GENZ2020/shp/cb_2020_72_tract_500k.zip",
+    "how_to_read": "Join to the crosswalk by GEOID to name a tract and give its counts. Draw the outlines; do not measure them.",
+    "caveats": [
+      "For drawing only. The Census Bureau says these files 'should not be used for: geographic analysis including area or perimeter calculation'. Use the crosswalk's land area.",
+      "The coast is simplified, so an outline can differ from the coast on the base map by tens of meters, and offshore areas are missing.",
+      "A tract is a statistical area of the Census, not a neighborhood."
+    ],
+    "see_also": [
+      "geo.crosswalk",
+      "geo.blockgroups_layer"
+    ],
+    "where": {
+      "files": [
+        "geo/tracts.geojson:GEOID"
+      ]
+    }
+  },
+  {
+    "domain": "system.geography",
+    "domains": [
+      "system.geography"
+    ],
+    "added": "2026-10-06",
+    "id": "geo.blockgroups_layer",
+    "name": "Block group outlines (2,513 of 2,555; for drawing only)",
+    "group": "Census tracts and block groups",
+    "kind": "boundary",
+    "plain": "The outlines of the census block groups, the Census Bureau's smallest areas for survey estimates, about 1,200 residents each, drawn in a simplified form. No page draws them yet.",
+    "definition": "The file geo/blockgroups.geojson holds 2,513 shapes, one for each of the 2,555 block groups of the 2020 Census that has land. The other 42 are all water, with no land, residents or housing units, and have no outline. Each shape has one property, GEOID, the block group's 12-digit id; names, counts and areas are in the crosswalk. The shapes are the Census Bureau's cartographic boundary file at 1:500,000, clipped to a simplified outline of the coast.",
+    "unit": "polygon outlines (longitude and latitude, WGS 84)",
+    "value_type": "geometry",
+    "geography": "2,513 of the 2,555 block groups of Puerto Rico",
+    "coverage": {
+      "timeline": "static",
+      "first": 2020,
+      "last": 2020,
+      "frequency": "2020 Census geography; rebuilt only by a full build (python geo.py)"
+    },
+    "method": "geo.py reads cb_2020_72_bg_500k.zip, keeps the GEOID and rounds coordinates to 5 decimals (about 1 m). The shapes come in NAD83 longitude and latitude, which the observatory treats as WGS 84.",
+    "sources": [
+      "census_cartographic"
+    ],
+    "source_detail": "https://www2.census.gov/geo/tiger/GENZ2020/shp/cb_2020_72_bg_500k.zip",
+    "how_to_read": "Join to the crosswalk by GEOID to name a block group and give its counts. Draw the outlines; do not measure them.",
+    "caveats": [
+      "For drawing only. The Census Bureau says these files 'should not be used for: geographic analysis including area or perimeter calculation'. Use the crosswalk's land area.",
+      "Survey estimates for block groups are rough: see methods.small_area_estimates.",
+      "A block group is a statistical area of the Census, not a neighborhood."
+    ],
+    "see_also": [
+      "geo.crosswalk",
+      "geo.tracts_layer",
+      "methods.small_area_estimates"
+    ],
+    "where": {
+      "files": [
+        "geo/blockgroups.geojson:GEOID"
+      ]
+    }
+  },
+  {
+    "domain": "system.geography",
+    "domains": [
+      "system.geography"
+    ],
+    "added": "2026-10-06",
+    "id": "geo.block_table",
+    "name": "Census block table (41,987 blocks, kept by the build)",
+    "group": "Geography crosswalk",
+    "kind": "method",
+    "plain": "The list of every 2020 census block of Puerto Rico with its 15-digit id, residents, housing units, land area and an internal point. The build keeps it and does not publish it. The crosswalk's numbers and weights are counted from it.",
+    "definition": "41,987 blocks, 36,570 of them with residents: 3,285,874 residents and 1,598,159 housing units. Six columns: geoid, pop, hu, land_m2, lon and lat. Two programs read it: network.py (the transit coverage, which uses the blocks with residents) and geo.py (the crosswalk). population_blocks.json is a published extract: the 36,570 blocks with residents as longitude, latitude, residents and metres to the nearest scheduled stop, in the same order but without the id (adding the ids would add 141 KB compressed to a file the Transit tab loads).",
+    "unit": "table of blocks (not published)",
+    "value_type": "code",
+    "geography": "41,987 census blocks of Puerto Rico",
+    "coverage": {
+      "timeline": "static",
+      "first": 2020,
+      "last": 2020,
+      "frequency": "2020 Census geography; rebuilt only by a full build (python geo.py)"
+    },
+    "method": "network.load_block_table pages TIGERweb layer 10 (2020 Census Blocks) for state code 72 and keeps GEOID, POP100, HU100, AREALAND, INTPTLAT and INTPTLON. It saves the table once (cache/network/census_blocks_ids.json) and reads it again until the build is run with its refresh option. network.load_blocks returns the blocks with residents from the same table, unchanged from before the table existed.",
+    "sources": [
+      "census_tiger"
+    ],
+    "how_to_read": "Not for display. To count something inside an area (residents near a stop, in a flood zone, in a barrio), give each block to the area that holds its internal point, then add residents or housing units.",
+    "caveats": [
+      "Residents are noise-injected for privacy; housing units are not at block level.",
+      "A block is counted wholly in or out of an area by its one internal point, even if the area cuts the block.",
+      "41 blocks have housing units and no residents, and 53 have 6,503 residents and no housing units (people in group quarters are not counted in housing units)."
+    ],
+    "see_also": [
+      "geo.crosswalk",
+      "geo.weights_barrio_tract"
+    ],
+    "where": {
+      "files": []
+    }
+  },
+  {
+    "domain": "system.docs",
+    "domains": [
+      "system.docs"
+    ],
+    "added": "2026-10-06",
+    "id": "methods.small_area_estimates",
+    "name": "Reading small-area survey estimates (tracts, block groups, barrios)",
+    "group": "Small-area estimates",
+    "kind": "method",
+    "plain": "Survey figures for barrios, census tracts and block groups are rough. Look at the margin of error every time, read an empty value as 'not known', and never add or average margins, medians or percentages.",
+    "definition": "small_area.py builds four files from the American Community Survey (ACS) 5-year tables that acs_small.py reads: population_series.json (the Population domain's 8 variables for the 78 municipalities and Puerto Rico), acs_barrio.json (901 barrios, 34 variables), acs_tract.json (981 census tracts, 34 variables) and acs_blockgroup.json (2,555 block groups, 13 variables). Each holds the estimate and the margin of error of every area for the four windows 2017-2021 to 2020-2024. Every variable of the level files also exists for the 78 municipalities under the same key, so the layer engine reads a tract as one more level of the same dataset.",
+    "unit": "estimates and margins of error",
+    "value_type": "level",
+    "geography": "island, 78 municipios, 901 barrios, 981 tracts, 2,555 block groups",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2021,
+      "last": 2024,
+      "frequency": "A new vintage each December; the reader works for the table-based files, 2021 onward. The files hold four windows, 2017-2021 to 2020-2024, labelled by their last year, and are rebuilt with each snapshot (python small_area.py)."
+    },
+    "method": "The Census Bureau publishes each table for the whole country in one large file, sorted by area code, and its server accepts requests for part of a file. The observatory asks only for the rows it needs: 0.5 to 1.5 MB per table for all five levels. It checked the result against the municipality rows that the Housing page series read from the same files (395 values, none different), and the pieces add up: block groups to tracts, tracts and barrios to municipalities, municipalities to the island. The 38 offshore county subdivisions that are not units of the crosswalk are dropped and counted. Each variable is then worked out for every area with the functions that make the municipal series, so a value has the same definition at every level. Block groups have 13 variables: the 10 of the plan's first wave (population, housing units, households, tenure, vacancy and other vacant units, household size, crowding, home value and income per person), median age, and the shares under 18 and 65 and over. Barrios and census tracts have those and 21 more, 34 in all: the 16 variables of the plan's first and second waves (internet counts as two columns) and 17 more from tables that the build already reads (household income, rent, year built, housing types, poverty, work, education, vehicles, internet, inequality, sex, household types, veterans and disability). The Census Bureau does not publish poverty, the Gini index, income by tenure or disability for block groups, so they are not in that file. The tests check, without the cache of Census rows, that the counts of population, housing units and households of the block groups, tracts and barrios of each municipality add up exactly to the municipality; that every published value is plausible (shares between 0 and 100, no median of 0, no margin without an estimate); and that the areas with no margin for their population are the controlled totals and no other. They also read the cell numbers behind the Population variables against the Census Bureau's own labels in every vintage: the labels of the five tables are committed in tests/fixtures/acs_labels, and the build stops if one differs. With the cache, the municipal values equal the ones the Housing page series publishes (1,716 values in 2020-2024, none different) and the cached Census rows give the published files again. The code is small_area.py, with acs_small.py, in the project's repository.",
+    "sources": [
+      "acs5",
+      "census_tiger"
+    ],
+    "source_detail": "ACS 5-year table-based summary files, https://www2.census.gov/programs-surveys/acs/summary_file/{vintage}/table-based-SF/data/5YRData/. Measurements for every variable and level: docs/small-area.md (2020-2024 window); the study that preceded the files: docs/analysis/small-area-2026-10.",
+    "how_to_read": "Compare areas only when their margins are small next to the difference. Typical margin of error as a share of the estimate in 2020-2024 (the median over the areas that have both): median home value: 5% for a municipality, 17% for a barrio, 12% for a census tract and 19% for a block group; median household income: 9% for a municipality, 30% for a barrio and 25% for a census tract (not published for block groups); median gross rent: 9% for a municipality, 23% for a barrio and 24% for a census tract; people under 18: 7% for a municipality, 40% for a barrio, 32% for a census tract and 57% for a block group; vacancy rate: 12% for a municipality, 42% for a barrio, 34% for a census tract and 58% for a block group; unemployment rate: 28% for a municipality, 82% for a barrio and 72% for a census tract. The CSV by area marks a value whose margin of error is above 30% of the estimate as less reliable (no map or table draws the areas below the municipality yet); docs/small-area.md gives the share of areas flagged for every variable and level. Median gross rent has no estimate for 41% of barrios and 13% of tracts (45% of block groups in the Census Bureau's table, which the observatory does not publish). For the share of renter households paying 30% or more of income, which is not published below the municipality, the typical margin is about plus or minus 18 points for a municipality, 36 for a tract and 55 for a block group among the units with 20 or more renter households.",
+    "caveats": [
+      "Every margin is at 90% confidence. Do not add or average margins, and do not sum medians or rates: only counts add up from a finer level to a coarser one.",
+      "An empty value means the Census Bureau gives none (it writes negative codes such as -666666666): it is not zero.",
+      "Two things the Census Bureau prints are not estimates, and the observatory leaves them empty too. One is a median at the edge of an open-ended interval: it prints the boundary and marks the margin ***, such as 51 for 'rent is 50% or more of income', 2,499 for 'under $2,500' and 1938 for 'built before 1939'. The other is a median of 0, the same edge in the oldest window (it prints 0 where later windows print the boundary 1938 or a real median). In 2020-2024 that is rent as a share of income in 74 census tracts, rent as a share of income in 47 barrios, median household income in 4 census tracts, median household income in 1 barrio, median year built in 2 census tracts, median home value in 1 barrio.",
+      "A share of exactly 100% is published without a margin: the proportion formula would give a margin of zero, which would read as exact. In 2020-2024 that is the owner-occupied share in 45 barrios, the share of detached homes in 59 barrios, the share with an internet subscription in 39 barrios, the share of family households in 22 barrios; in census tracts it is at most 4 areas for any variable, and in block groups the owner-occupied share in 50 areas. A margin that works out to zero for another reason (three published values) is dropped too. A share of 0% keeps the margin the formula gives, and the CSV by area marks it less reliable.",
+      "For a total that the Census Bureau controls to its own population or housing estimate it prints no margin (marked *****: no sampling error). The observatory gives such a total a margin of zero, as the Bureau says may be done, so a share of it keeps the margin of its numerator. The total population of the island and of 76 of the 78 municipalities is one. The number of women is controlled in 52 of the municipalities: the zero is given to a total, not to a number of women, so the share of women has no margin there.",
+      "Five-year windows that share years are not independent of each other: the change from one window to the next is not a trend. The four windows use the 2020 geography (981 tracts, 2,555 block groups, 939 county subdivisions), so no crosswalk is needed between them.",
+      "Barrios do not fit inside tracts, so a barrio value is the Census Bureau's own barrio row, never made from tracts.",
+      "Survey estimates are not the 2020 Census counts of the crosswalk: they come from a sample, are for a five-year window and have margins of error.",
+      "Some variables are almost always flagged below the municipality: in 2020-2024 the margin is above 30% of the estimate for at least 80% of the census tracts that have a value for overcrowded homes (100%), veterans (100%), mobile homes (more than 99%), the unemployment rate (more than 99%), seasonal or occasional-use units (97%), households with no vehicle (96%), other vacant units (89%), households with no internet access (89%), units in buildings of 5 or more (84%).",
+      "For six of those nine the municipal value is rough too (municipalities flagged out of 78: mobile homes 77 of 78, overcrowded homes 72 of 78, veterans 48 of 78, seasonal or occasional-use units 39 of 78, units in buildings of 5 or more 38 of 78, the unemployment rate 35 of 78): compare broad groups, not neighbouring places. A margin above 100 points is not an interval: read it as 'not known'.",
+      "Very small areas: in 2020-2024, 30 of the 901 barrios have fewer than 50 estimated residents and 60 census tracts have none. 14 of those barrios show both a share of people with a disability and a share of veterans; one with 8 estimated residents reads 100% with a disability, plus or minus 580 points. Do not quote such a value: its margin says it is not known.",
+      "The margin of a sum is the Census Bureau's approximation (the square root of the sum of the squares of the margins of the cells): it can overstate the margin.",
+      "Not published below the municipality: cost burden (the share of renters or owners paying 30% or more of income), because its margin is about 36 points for a tract and 55 for a block group; the affordability measures of the 2023 study (maximum affordable loan, affordability ratio), which are calculations with assumptions and not survey figures; and the rental and homeowner vacancy rates, whose denominators are a handful of homes.",
+      "The municipal series made before item 7 leave a share's margin blank when its denominator has none: the bachelor's share (housing.bachelors_pct) has a margin for only 5 of the 78 municipalities in 2020-2024 because the Census Bureau controls the adult total of the other 73, while its barrio and tract values have one. The Population series follows the Census Bureau's rule instead.",
+      "The map shows municipalities. The areas below are in the files, in the CSV by area (the information button of a dataset on the Analysis tab; it marks the less reliable values and says where a margin is missing) and in the layer engine, as the levels barrio, tract and block-group."
+    ],
+    "see_also": [
+      "geo.crosswalk",
+      "geo.weights_barrio_tract",
+      "measures.margin_of_error",
+      "methods.acs_windows",
+      "population.acs_population"
+    ],
+    "where": {
+      "files": []
+    }
+  },
+  {
+    "domain": "system.geography",
+    "domains": [
+      "system.geography"
+    ],
+    "added": "2026-10-31",
+    "id": "geo.regions",
+    "name": "Regions (groups of whole municipios)",
+    "group": "Geography crosswalk",
+    "kind": "table",
+    "plain": "The regions the observatory offers: the 15 municipios of the Eastern Region of FPR's Eastern Region Strategic Vision and the seven tourism regions. A region's figures are always added up from its municipios.",
+    "definition": "The file geo/regions.json lists 8 regions. Each has an id (ersv, or the crosswalk's reg- code), a kind (planning or tourism), a name in Spanish and English, its source, and the codes and names of its municipios. Figures are not stored: counts are added from the municipios, shares whose parts are published are pooled (the sum of the parts over the sum of the base), and any other rate, median or level is shown as the range of its municipios (map) or as the average of its municipios weighted by residents, marked as an estimate (regional profile).",
+    "unit": "table of regions",
+    "value_type": "code",
+    "geography": "8 regions: 1 FPR planning region and 7 tourism regions, each a set of whole municipios",
+    "coverage": {
+      "timeline": "static",
+      "first": 2020,
+      "last": 2020,
+      "frequency": "Rebuilt by python regions.py when a region is added or the crosswalk changes"
+    },
+    "method": "regions.py reads the tourism region of each municipio from the crosswalk (geo.crosswalk) and the Eastern Region's list from the program, checks that each Eastern Region code has the name the crosswalk gives it, and writes the file. python regions.py --check compares a rebuild with the published file. The seven tourism regions cover the 78 municipios once each (tests/profile_region.test.js).",
+    "sources": [
+      "fpr_twin",
+      "prtc_regions"
+    ],
+    "source_detail": "FPR, Eastern Region Economic Development Council, Human Capital Demographic Profile (2025): the list of the 15 municipios; the crosswalk for the tourism regions",
+    "how_to_read": "Choose a region in the map's Region tab, or open profile.html?region=ersv. The Eastern Region (ERSV) is Canóvanas, Ceiba, Culebra, Fajardo, Humacao, Juncos, Las Piedras, Loíza, Luquillo, Maunabo, Naguabo, Río Grande, San Lorenzo, Vieques and Yabucoa: 409,525 residents in the 2020 Census.",
+    "caveats": [
+      "A region's rate that is not pooled from published parts is an estimate (the residents-weighted average of its municipios), and a median of medians is not the region's median.",
+      "The Eastern Region is the ERSV's definition; other FPR programs may group the east differently."
+    ],
+    "see_also": [
+      "geo.crosswalk",
+      "labor_sex.women_labor"
+    ],
+    "where": {
+      "files": [
+        "geo/regions.json:*"
+      ],
+      "view": [
+        {
+          "label": "Map, Region tab",
+          "href": "index.html"
+        },
+        {
+          "label": "Regional area profile: Eastern Region",
+          "href": "profile.html?region=ersv"
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,3053 @@
+[
+  {
+    "id": "transit.transport_features",
+    "name": "Transport points: stops, stations, terminals, airports, taxi stands and chargers",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Stops, stations and terminals",
+    "kind": "layer",
+    "plain": "Every mapped point that helps people get around: scheduled bus, train and ferry stops, plus stations, terminals, airports, taxi stands and electric vehicle chargers. The 2026-10 snapshot has 4,405 points, and each one says where it came from.",
+    "definition": "The file transport.json holds one record per point. In the 2026-10 snapshot, 3,847 records are scheduled stops taken from public timetables in GTFS format (General Transit Feed Specification) from ATI (Autoridad de Transporte Integrado, the Integrated Transport Authority) and from 24 municipalities; 544 records are points that volunteers mapped in OpenStreetMap (OSM): bus stops, bus stations, ferry terminals, airports, taxi stands and electric vehicle (EV) chargers; and 14 records are airports from the Federal Aviation Administration (FAA) list. The field source tells which group a record belongs to. Only scheduled stops carry routes, modes, weekday stop calls (shown on the map as weekday departures), Saturday and Sunday stop calls (calls_sat and calls_sun), the end date of their timetable feed (feed_end) and the operator_name field. OpenStreetMap points can carry operator text that volunteers typed in the operator field.",
+    "unit": "points (one record per stop, station, terminal, airport, stand or charger)",
+    "value_type": "geometry",
+    "geography": "Puerto Rico: main island, Vieques and Culebra; each point also carries its municipality",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Scheduled stops: re-read every night at 04:17 Puerto Rico time and rewritten only when a feed changes. OpenStreetMap points and FAA airports: read at each full build, a rebuild of all the observatory's data (the 2026-10 snapshot used OpenStreetMap data of 2026-10-01)."
+    },
+    "method": "1. Scheduled stops: network.py reads every GTFS feed and keeps the boarding points (stops whose location_type is blank or 0) that lie inside Puerto Rico. 2. Mapped points: transport.py asks the Overpass API of OpenStreetMap for bus stops, bus stations, rail and public-transport stations, ferry terminals, taxi stands, bicycle rental, charging stations, aerodromes and helipads inside a box from 17.85 to 18.57 degrees north and 67.97 to 65.20 degrees west. 3. Airports: every airport whose state is PR in the FAA layer of the National Transportation Atlas Database of the Bureau of Transportation Statistics. 4. Duplicates (checked only at a full build, which rebuilds all of the observatory's data): an OSM bus stop, bus station, rail station or ferry terminal within 30 m of a scheduled stop is dropped; an OSM rail station or ferry terminal within 200 m, or bus station within 100 m, of a scheduled or already kept point of the same kind is dropped; an OSM aerodrome within 2 km of an FAA airport is dropped. In the OSM pull of 2026-10-01, 1,804 bus stops, 78 bus stations, 16 rail stations, 13 ferry terminals and 24 aerodromes were mapped; 459, 47, 0, 7 and 11 remain. 5. Each point is given a municipality from its location.",
+    "sources": [
+      "ati_gtfs",
+      "muni_gtfs",
+      "osm",
+      "faa_airports"
+    ],
+    "source_detail": "ATI GTFS zip (PRITA_GTFS.zip on docs.pr.gov) and the municipal GTFS zips listed in the Transitland Atlas registry of the National Rural Transit Assistance Program (RTAP) portal; OpenStreetMap through the Overpass API; FAA airports from the National Transportation Atlas Database of the Bureau of Transportation Statistics",
+    "how_to_read": "Look at source first. A point from ati_gtfs or muni_gtfs appears in an operator's published timetable. A point from osm_transport only shows that someone mapped a stop there; it does not show that a vehicle calls there today. A point from faa_airports is an airport record, not a transit stop.",
+    "caveats": [
+      "Stops from expired timetables stay in the file. In the 2026-10 snapshot, 966 of the 3,847 scheduled stops belong to the 7 operators whose feed had ended by the build date (2026-10-02).",
+      "Points that volunteers mapped can be missing, out of date or wrong; the observatory does not check them on the ground.",
+      "Taxi stands and EV chargers are listed because they help visitors get around. They are not public transit and are not counted as stops.",
+      "Licenses differ by source: ATI states its feed is provided without warranty and that an app built on its data must make clear it is not affiliated with or sponsored by ATI; the municipal feeds state no license; OpenStreetMap data is under the Open Database License (ODbL); the FAA list is a US Government source. Check each source's terms before reusing the points.",
+      "Duplicates between OpenStreetMap points and scheduled stops are removed only at a full build. The nightly refresh replaces the scheduled stops and does not repeat that check.",
+      "Scheduled stops are not merged with each other, so a count of points is a count of records, not of distinct places. In the 2026-10 snapshot, 167 pairs of stops of different operators lie within 30 m of each other (the same physical stop can appear once for ATI and once for a municipal system), and 122 positions hold two stops of the same operator.",
+      "The airport kind counts mapped aerodromes, not airports with service. In the 2026-10 snapshot, the 11 from OpenStreetMap include two seaplane bases, two fields named Histórico, a military field and a facility whose name says CERRADO (closed), and Fajardo's Aeropuerto Diego Jiménez Torres comes only from OpenStreetMap."
+    ],
+    "see_also": [
+      "transit.scheduled_vs_mapped",
+      "transit.stop_kind",
+      "transit.stop_source",
+      "transit.stop_calls_sat",
+      "transit.stop_calls_sun",
+      "transit.stop_feed_end",
+      "transit.distance_rules",
+      "municipalities.transit_stops",
+      "municipalities.gtfs_stops",
+      "data.build_transport",
+      "places.transit_m",
+      "places.transit_400m"
+    ],
+    "where": {
+      "files": [],
+      "view": [
+        {
+          "label": "Map, Map layers tab: Transit stops; Stations, terminals and airports",
+          "href": "index.html#l=stops,hubs"
+        }
+      ]
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.scheduled_vs_mapped",
+    "name": "Scheduled versus mapped transit points",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Stops, stations and terminals",
+    "kind": "method",
+    "plain": "A scheduled stop is in a timetable that an operator published; a mapped stop is a point that volunteers drew in OpenStreetMap. Only scheduled stops come with routes, weekday departures and the operator_name field; mapped points can carry operator text that volunteers typed.",
+    "definition": "Scheduled: a boarding point in the stops file of a public timetable feed in GTFS format (General Transit Feed Specification) from ATI (Autoridad de Transporte Integrado) or from a municipality; the source is ati_gtfs or muni_gtfs. The same feed says which routes call at the stop and at what times, so the observatory can count weekday departures. Mapped: a point or area tagged in OpenStreetMap as a bus stop, station, terminal, taxi stand, charger or airport (source osm_transport). The tag says the object exists; it holds no timetable. Airports from the list of the FAA (Federal Aviation Administration; source faa_airports) are a third group: a federal register of airports, not a transit timetable.",
+    "unit": "not a measured value (a method)",
+    "value_type": "text",
+    "geography": "Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Scheduled stops: re-read every night at 04:17 Puerto Rico time and rewritten only when a feed changes. OpenStreetMap points and FAA airports: read at each full build, a rebuild of all the observatory's data (the 2026-10 snapshot used OpenStreetMap data of 2026-10-01)."
+    },
+    "method": "Scheduled stops come from network.py. Mapped points come from transport.py. A mapped bus stop, bus station, rail station or ferry terminal that lies next to a scheduled one is dropped and the scheduled record wins (distances are in the entry on distance rules). This check runs only at a full build. Scheduled stops are not merged with each other: the same physical stop can appear once for Autoridad de Transporte Integrado (ATI) and once for a municipal system, and one operator can list two stops at the same position.",
+    "sources": [
+      "ati_gtfs",
+      "muni_gtfs",
+      "osm",
+      "faa_airports"
+    ],
+    "how_to_read": "Tools that need a timetable use scheduled stops only: service coverage (residents within 400 m), service gaps, integration points, route counts and the replay of vehicles on their timetable. Tools that only need to know where a stop physically is use scheduled and mapped stops together: the 400 m walk rings on the map and the share of tourism places within 400 m of any mapped stop (kinds transit_stop, bus_stop, bus_station, rail_station and ferry_terminal). The access of tourism places to a stop with a current timetable (place_access.json and the acc_ fields of municipalities.json) uses scheduled stops only, and only those whose operator's feed has not ended.",
+    "caveats": [
+      "A scheduled stop from an expired timetable is not proof of service today, and a mapped stop is not proof of service at all.",
+      "How complete the mapped stops are depends on volunteer mapping. In the 2026-10 snapshot, 393 of the 459 mapped bus stops name the Autoridad Metropolitana de Autobuses as operator.",
+      "A count of stops is a count of records, not of distinct places. In the 2026-10 snapshot, 167 pairs of scheduled stops of different operators lie within 30 m of each other."
+    ],
+    "see_also": [
+      "transit.transport_features",
+      "transit.stop_source",
+      "transit.stop_kind",
+      "methods.access_profile",
+      "transit.stop_feed_end",
+      "transit.feed_status",
+      "transit.distance_rules"
+    ],
+    "where": {
+      "files": [],
+      "view": [
+        {
+          "label": "Map, Map layers tab: Transit stops; Stations, terminals and airports",
+          "href": "index.html#l=stops,hubs"
+        }
+      ]
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.stop_id",
+    "name": "Transport point id",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Stops, stations and terminals",
+    "kind": "variable",
+    "plain": "A unique text id for each transport point. It starts with where the point came from.",
+    "definition": "Text id, unique in transport.json. Scheduled stops: gtfs, then the operator id, then the stop id used in that operator's feed (example gtfs:ati:1017). OpenStreetMap (OSM) points: osm: followed by n for a node or w for a way, then the OpenStreetMap number (example osm:n368381564). Federal Aviation Administration (FAA) airports: faa: followed by the FAA location id (example faa:SJU). The examples are from the 2026-10 snapshot.",
+    "unit": "text id",
+    "value_type": "code",
+    "geography": "Puerto Rico, point locations",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Scheduled stops: re-read every night at 04:17 Puerto Rico time and rewritten only when a feed changes. OpenStreetMap points and FAA airports: read at each full build, a rebuild of all the observatory's data (the 2026-10 snapshot used OpenStreetMap data of 2026-10-01)."
+    },
+    "method": "Built by network.py (scheduled stops), transport.py (OSM points) and the FAA loader in transport.py.",
+    "sources": [
+      "ati_gtfs",
+      "muni_gtfs",
+      "osm",
+      "faa_airports"
+    ],
+    "source_detail": "GTFS stops.txt field stop_id (prefixed gtfs:<operator>:); OpenStreetMap element type (n for node, w for way) and number; FAA location id (loc_id)",
+    "how_to_read": "Use the id to point to one record in this snapshot.",
+    "caveats": [
+      "A scheduled stop's id contains the feed's own stop id, so it changes if the operator renumbers its stops. Do not use it to follow a stop over time.",
+      "Some feed stop ids contain spaces or capital letters. In the 2026-10 snapshot, an example is the Vieques stop gtfs:vieques:EL GALLITO BEACH."
+    ],
+    "see_also": [
+      "transit.stop_source"
+    ],
+    "example": "gtfs:ati:1017",
+    "where": {
+      "files": [
+        "transport.json:id"
+      ],
+      "view": [
+        {
+          "label": "Map, Map layers tab: Transit stops; Stations, terminals and airports",
+          "href": "index.html#l=stops,hubs"
+        }
+      ]
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.stop_name",
+    "name": "Transport point name",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Stops, stations and terminals",
+    "kind": "variable",
+    "plain": "The name of the stop, station, terminal, airport, stand or charger, as its source gives it. A few names are blank, misspelled or missing letters in the source.",
+    "definition": "Scheduled stops: the stop_name in the operator's feed, trimmed. OpenStreetMap (OSM) points: the name tag, otherwise the ref tag, otherwise empty text. Federal Aviation Administration (FAA) airports: the facility name, converted from capitals to title case. Autoridad de Transporte Integrado (ATI) names usually describe a position on a street (for example a road and the cross street it is next to) rather than a place name.",
+    "unit": "text",
+    "value_type": "text",
+    "geography": "Puerto Rico, point locations",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Scheduled stops: re-read every night at 04:17 Puerto Rico time and rewritten only when a feed changes. OpenStreetMap points and FAA airports: read at each full build, a rebuild of all the observatory's data (the 2026-10 snapshot used OpenStreetMap data of 2026-10-01)."
+    },
+    "method": "Copied from the source without correction.",
+    "sources": [
+      "ati_gtfs",
+      "muni_gtfs",
+      "osm",
+      "faa_airports"
+    ],
+    "source_detail": "GTFS stops.txt field stop_name; OpenStreetMap tags name, then ref; FAA Aviation Facilities layer 0 of the National Transportation Atlas Database, field fac_name",
+    "caveats": [
+      "In the 2026-10 snapshot, 48 OSM points have no name (the value is empty text).",
+      "Some municipal feeds have lost accented letters in the source file itself (in the 2026-10 snapshot, for example, Pblicos for Públicos and Estacin for Estación), and some lose a letter inside a word (for example Funeraria Marn for Marín). The observatory does not repair them.",
+      "FAA names have no accents and may be shortened (in the 2026-10 snapshot, for example, Luis Munoz Marin Intl)."
+    ],
+    "see_also": [
+      "transit.stop_kind"
+    ],
+    "where": {
+      "files": [
+        "transport.json:name"
+      ],
+      "view": [
+        {
+          "label": "Map, Map layers tab: Transit stops; Stations, terminals and airports",
+          "href": "index.html#l=stops,hubs"
+        }
+      ]
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.stop_kind",
+    "name": "Transport point kind",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Stops, stations and terminals",
+    "kind": "variable",
+    "plain": "What kind of place the point is: a stop, a bus station, a train station, a ferry terminal, an airport, a taxi stand or a charger.",
+    "definition": "A code for the type of point. For scheduled stops, which come from the timetables of Autoridad de Transporte Integrado (ATI) and of municipalities, the kind comes from the feed: a stop served by a rail route is rail_station; one served by a ferry route is ferry_terminal; one whose name starts with Terminal or Estación (and that no rail or ferry route serves) is bus_station; every other scheduled stop is transit_stop. For OpenStreetMap (OSM) points the kind comes from the tags, checked in this order: railway=station (or public_transport=station on an object that also has a railway tag) gives rail_station; amenity=ferry_terminal gives ferry_terminal; amenity=bus_station, or public_transport=station when the point has no railway tag, gives bus_station (in the 2026-10 snapshot, 2 of the 47 mapped bus stations carry only the second tag); highway=bus_stop gives bus_stop; aeroway=aerodrome gives airport; amenity=taxi gives taxi; amenity=charging_station gives ev_charging. The code can also write helipad (aeroway=helipad) and bike_rental (amenity=bicycle_rental) for OSM points; the 2026-10 snapshot has none.",
+    "unit": "code (8 values)",
+    "value_type": "code",
+    "geography": "Puerto Rico, point locations",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Scheduled stops: re-read every night at 04:17 Puerto Rico time and rewritten only when a feed changes. OpenStreetMap points and FAA airports: read at each full build, a rebuild of all the observatory's data (the 2026-10 snapshot used OpenStreetMap data of 2026-10-01)."
+    },
+    "method": "Rules in network.py (parse_gtfs) and transport.py (osm_kind). The kind decides which map layer shows the point: stops layer (transit_stop, bus_stop), stations layer (bus_station, rail_station, ferry_terminal, airport) and taxi layer (taxi, ev_charging, bike_rental, helipad).",
+    "sources": [
+      "ati_gtfs",
+      "muni_gtfs",
+      "osm",
+      "faa_airports"
+    ],
+    "source_detail": "GTFS routes.txt field route_type (through trips.txt and stop_times.txt) and stops.txt field stop_name; OpenStreetMap tags railway, public_transport, amenity, highway and aeroway",
+    "how_to_read": "Kind says what the point is, not whether it is scheduled. Combine it with source.",
+    "caveats": [
+      "A scheduled stop is called a bus_station only when its name starts with Terminal or Estación. A terminal with a different name stays transit_stop.",
+      "The map popup labels every transit_stop as “Transit stop (ATI)”, although in the 2026-10 snapshot 2,381 of the 3,781 come from municipal feeds. Use the source field to tell them apart.",
+      "The rail_station label on the map reads Tren Urbano station. In the 2026-10 snapshot the only rail route is Tren Urbano.",
+      "The airport kind counts mapped aerodromes, not airports with service. In the 2026-10 snapshot, the 11 from OpenStreetMap include two seaplane bases, two fields named Histórico, a military field and a facility whose name says CERRADO (closed), and Fajardo's Aeropuerto Diego Jiménez Torres comes only from OpenStreetMap."
+    ],
+    "see_also": [
+      "transit.stop_source",
+      "transit.scheduled_vs_mapped",
+      "transit.taxi_ev_charging",
+      "municipalities.stop_kinds"
+    ],
+    "values": {
+      "transit_stop": "Scheduled boarding point that is not a station or terminal. 3,781 records in the 2026-10 snapshot: 1,400 from ATI and 2,381 from municipal feeds.",
+      "bus_stop": "Bus stop mapped in OpenStreetMap that is not within 30 m of a scheduled stop. 459 records in the 2026-10 snapshot.",
+      "bus_station": "Bus station or terminal. 91 records in the 2026-10 snapshot: 15 from ATI and 29 from municipal feeds (scheduled stops named Terminal or Estación), and 47 mapped in OpenStreetMap.",
+      "rail_station": "Tren Urbano station: a scheduled stop served by a rail route in the ATI feed. 16 records in the 2026-10 snapshot.",
+      "ferry_terminal": "Ferry terminal. 13 records in the 2026-10 snapshot: 6 scheduled stops served by ferry routes in the ATI feed and 7 mapped in OpenStreetMap.",
+      "airport": "Airport. 25 records in the 2026-10 snapshot: 14 from the Federal Aviation Administration (FAA) list and 11 mapped in OpenStreetMap (more than 2 km from any FAA airport). The mapped ones include seaplane bases, historic and military fields and a closed airfield, so this is not a count of airports with service.",
+      "taxi": "Taxi stand mapped in OpenStreetMap (amenity=taxi). 9 records in the 2026-10 snapshot.",
+      "ev_charging": "Electric vehicle charging station mapped in OpenStreetMap. 11 records in the 2026-10 snapshot."
+    },
+    "where": {
+      "files": [
+        "transport.json:kind"
+      ],
+      "view": [
+        {
+          "label": "Map, Map layers tab: Transit stops; Stations, terminals and airports",
+          "href": "index.html#l=stops,hubs"
+        }
+      ]
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.stop_location",
+    "name": "Transport point location (latitude and longitude)",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Stops, stations and terminals",
+    "kind": "variable",
+    "plain": "Where the point is, as latitude and longitude in decimal degrees.",
+    "definition": "Latitude (lat, degrees north) and longitude (lng, degrees east, so negative in Puerto Rico) in the World Geodetic System 1984 (WGS 84), the reference system used by satellite navigation. Scheduled stops: the feed's coordinates rounded to 5 decimals (about 1 m). OpenStreetMap (OSM) points: 6 decimals; for areas such as a station building, the centre point. Federal Aviation Administration (FAA) airports: the position in the FAA layer, 6 decimals. In the 2026-10 snapshot, latitudes run from 17.965554 to 18.507643 and longitudes from -67.931886 to -65.30252.",
+    "unit": "decimal degrees (WGS 84)",
+    "value_type": "geometry",
+    "geography": "Puerto Rico, point locations",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Scheduled stops: re-read every night at 04:17 Puerto Rico time and rewritten only when a feed changes. OpenStreetMap points and FAA airports: read at each full build, a rebuild of all the observatory's data (the 2026-10 snapshot used OpenStreetMap data of 2026-10-01)."
+    },
+    "method": "Scheduled stops: if a feed gives a positive longitude between 65 and 68 (the minus sign was lost, as in Jayuya's feed in the 2026-10 snapshot), the observatory changes its sign. A stop outside latitude 17.5 to 18.8 and longitude -68 to -65 is dropped.",
+    "sources": [
+      "ati_gtfs",
+      "muni_gtfs",
+      "osm",
+      "faa_airports"
+    ],
+    "source_detail": "GTFS stops.txt fields stop_lat and stop_lon; OpenStreetMap node position or way centre; FAA Aviation Facilities layer 0 of the National Transportation Atlas Database, point geometry",
+    "caveats": [
+      "Positions are as precise as the source. A scheduled stop can sit some metres from the real pole or shelter.",
+      "The sign correction is a rule on the longitude only; it does not test whether the stop is on a road."
+    ],
+    "see_also": [
+      "transit.stop_municipality"
+    ],
+    "where": {
+      "files": [
+        "transport.json:lat",
+        "transport.json:lng"
+      ],
+      "view": [
+        {
+          "label": "Map, Map layers tab: Transit stops; Stations, terminals and airports",
+          "href": "index.html#l=stops,hubs"
+        }
+      ]
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.stop_source",
+    "name": "Transport point source",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Stops, stations and terminals",
+    "kind": "variable",
+    "plain": "Says where a point comes from: a timetable published by Autoridad de Transporte Integrado (ATI) or a municipality, OpenStreetMap volunteers, or the Federal Aviation Administration (FAA) airport list.",
+    "definition": "A code naming where the record came from. The value osm_transport means OpenStreetMap; the source list in this dictionary calls that source OpenStreetMap.",
+    "unit": "code (4 values)",
+    "value_type": "code",
+    "geography": "Puerto Rico, point locations",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Scheduled stops: re-read every night at 04:17 Puerto Rico time and rewritten only when a feed changes. OpenStreetMap points and FAA airports: read at each full build, a rebuild of all the observatory's data (the 2026-10 snapshot used OpenStreetMap data of 2026-10-01)."
+    },
+    "method": "Set when each record is created.",
+    "sources": [
+      "ati_gtfs",
+      "muni_gtfs",
+      "osm",
+      "faa_airports"
+    ],
+    "how_to_read": "source tells how much you can trust a point to be in service: see Scheduled versus mapped transit points.",
+    "see_also": [
+      "transit.scheduled_vs_mapped",
+      "transit.stop_kind"
+    ],
+    "values": {
+      "ati_gtfs": "Scheduled stop from the ATI timetable feed (Tren Urbano, Autoridad Metropolitana de Autobuses (AMA) and Metrobús buses, AcuaExpreso ferries). 1,437 records in the 2026-10 snapshot.",
+      "muni_gtfs": "Scheduled stop from a municipal timetable feed. 2,410 records from 24 municipalities in the 2026-10 snapshot.",
+      "osm_transport": "Point mapped in OpenStreetMap, read through the Overpass API. 544 records in the 2026-10 snapshot.",
+      "faa_airports": "Airport from the FAA list (via the National Transportation Atlas Database of the Bureau of Transportation Statistics). 14 records in the 2026-10 snapshot."
+    },
+    "where": {
+      "files": [
+        "transport.json:source"
+      ],
+      "view": [
+        {
+          "label": "Map, Map layers tab: Transit stops; Stations, terminals and airports",
+          "href": "index.html#l=stops,hubs"
+        }
+      ]
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.stop_operator",
+    "name": "Operator of the transport point",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Stops, stations and terminals",
+    "kind": "variable",
+    "plain": "Who runs the point. Scheduled stops carry an operator id such as ati or caguas. OpenStreetMap (OSM) points carry whatever operator name volunteers typed. Federal Aviation Administration (FAA) airports have none.",
+    "definition": "Scheduled stops: the operator id used in operators.json and in transit_routes.geojson (in the 2026-10 snapshot, 25 different values, for example ati, caguas, san_juan). OSM points: the free text of the operator tag, otherwise the network tag, otherwise null, meaning no value (in the 2026-10 snapshot, 411 points have text and 133 are null). The field is absent from FAA airport records.",
+    "unit": "operator id or free text",
+    "value_type": "text",
+    "geography": "Puerto Rico, point locations",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Scheduled stops: re-read every night at 04:17 Puerto Rico time and rewritten only when a feed changes. OpenStreetMap points and FAA airports: read at each full build, a rebuild of all the observatory's data (the 2026-10 snapshot used OpenStreetMap data of 2026-10-01)."
+    },
+    "method": "Copied from the feed (scheduled stops) or from the OSM tags.",
+    "sources": [
+      "ati_gtfs",
+      "muni_gtfs",
+      "osm"
+    ],
+    "source_detail": "Operator id set by network.py from the feed registry (ati for the ATI file PRITA_GTFS.zip); OpenStreetMap tags operator, then network",
+    "how_to_read": "Match a scheduled stop to its operator through the operators list. Treat the OSM text as a label, not as an official operator name.",
+    "caveats": [
+      "The same field holds two kinds of value. An id such as ati can be joined to operators.json; OSM text such as Autoridad Metropolitana de Autobuses cannot.",
+      "OSM text is whatever a volunteer typed, so one operator can appear under several spellings (in the 2026-10 snapshot, for example, Tesla, Inc. and Tesla).",
+      "Municipal feeds state no license, and the terms of the Autoridad de Transporte Integrado (ATI) ask that an app built on its data say it is not affiliated with or sponsored by ATI. See the sources listed for this entry."
+    ],
+    "see_also": [
+      "transit.stop_operator_name",
+      "transit.operators_file",
+      "transit.stop_source"
+    ],
+    "values": {
+      "ati": "Autoridad de Transporte Integrado (ATI). 1,437 scheduled stops in the 2026-10 snapshot.",
+      "bayamon": "Municipality of Bayamon. 128 scheduled stops in the 2026-10 snapshot.",
+      "cabo_rojo": "Municipality of Cabo Rojo. 110 scheduled stops in the 2026-10 snapshot.",
+      "caguas": "Municipality of Caguas. 292 scheduled stops in the 2026-10 snapshot.",
+      "canovanas": "Municipality of Canovanas. 92 scheduled stops in the 2026-10 snapshot.",
+      "cidra": "Municipality of Cidra. 14 scheduled stops in the 2026-10 snapshot.",
+      "coamo": "Municipality of Coamo. 10 scheduled stops in the 2026-10 snapshot.",
+      "corozal": "Municipality of Corozal. 29 scheduled stops in the 2026-10 snapshot.",
+      "fajardo": "Municipality of Fajardo. 81 scheduled stops in the 2026-10 snapshot.",
+      "guaynabo": "Municipality of Guaynabo. 273 scheduled stops in the 2026-10 snapshot.",
+      "hatillo": "Municipality of Hatillo. 11 scheduled stops in the 2026-10 snapshot.",
+      "humacao": "Municipality of Humacao. 18 scheduled stops in the 2026-10 snapshot.",
+      "jayuya": "Municipality of Jayuya. 58 scheduled stops in the 2026-10 snapshot.",
+      "juncos": "Municipality of Juncos. 133 scheduled stops in the 2026-10 snapshot.",
+      "manati": "Municipality of Manati. 43 scheduled stops in the 2026-10 snapshot.",
+      "orocovis": "Municipality of Orocovis. 10 scheduled stops in the 2026-10 snapshot.",
+      "patillas": "Municipality of Patillas. 116 scheduled stops in the 2026-10 snapshot.",
+      "ponce": "Autonomous Municipality of Ponce. 276 scheduled stops in the 2026-10 snapshot.",
+      "san_juan": "City of San Juan. 249 scheduled stops in the 2026-10 snapshot.",
+      "san_lorenzo": "Municipality of San Lorenzo. 159 scheduled stops in the 2026-10 snapshot.",
+      "san_sebastian": "Municipality of San Sebastian. 14 scheduled stops in the 2026-10 snapshot.",
+      "utuado": "Municipality of Utuado. 47 scheduled stops in the 2026-10 snapshot.",
+      "vega_alta": "Autonomous Municipality of Vega Alta. 135 scheduled stops in the 2026-10 snapshot.",
+      "vega_baja": "Municipality of Vega Baja. 93 scheduled stops in the 2026-10 snapshot.",
+      "vieques": "Municipality of Vieques. 19 scheduled stops in the 2026-10 snapshot.",
+      "free text (OpenStreetMap points)": "Text that volunteers typed in the OpenStreetMap operator tag, otherwise the network tag. 411 points in the 2026-10 snapshot, for example Autoridad Metropolitana de Autobuses on 394 of them; another 133 OpenStreetMap points are null."
+    },
+    "where": {
+      "files": [
+        "transport.json:operator"
+      ],
+      "view": [
+        {
+          "label": "Map, Map layers tab: Transit stops; Stations, terminals and airports",
+          "href": "index.html#l=stops,hubs"
+        }
+      ]
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.stop_operator_name",
+    "name": "Operator name of the scheduled stop",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Stops, stations and terminals",
+    "kind": "variable",
+    "plain": "The name of the transit operator that publishes the timetable for a scheduled stop. Only scheduled stops have it.",
+    "definition": "Name of the operator, such as Autoridad de Transporte Integrado (ATI), City of San Juan or Autonomous Municipality of Ponce. It is the operator's name in operators.json (from the federal transit database list or the feed registry), not the agency name written inside the feed. In the 2026-10 snapshot there are 25 different names, present on 3,847 records.",
+    "unit": "text",
+    "value_type": "text",
+    "geography": "Puerto Rico, point locations",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Feeds are re-read every night at 04:17 Puerto Rico time and the files are rewritten only when a feed changes. Snapshot built 2026-10-02."
+    },
+    "method": "Set by network.py when it reads each feed.",
+    "sources": [
+      "ati_gtfs",
+      "muni_gtfs",
+      "ntd"
+    ],
+    "source_detail": "FTA National Transit Database 2023 GTFS weblinks table, field Agency Name, or the operator name in the Transitland Atlas registry file feeds/nationalrtap.org.dmfr.json; fixed name for ATI",
+    "caveats": [
+      "Names from the federal list and the registry have no accents (for example Municipality of Bayamon).",
+      "The name says who publishes the timetable, not who drives the vehicles."
+    ],
+    "see_also": [
+      "transit.stop_operator",
+      "transit.operator_record"
+    ],
+    "where": {
+      "files": [
+        "transport.json:operator_name"
+      ],
+      "view": [
+        {
+          "label": "Map, Map layers tab: Transit stops; Stations, terminals and airports",
+          "href": "index.html#l=stops,hubs"
+        }
+      ]
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.stop_modes",
+    "name": "Modes served at the stop",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Stops, stations and terminals",
+    "kind": "variable",
+    "plain": "The kinds of vehicle that call at a scheduled stop: bus, rail or ferry.",
+    "definition": "A list of modes taken from the routes that call at the stop. A route's mode comes from its General Transit Feed Specification (GTFS) route_type (rail for types 1, 2 and 12; bus for 3 and 11; ferry for 4; other types are mapped to tram, cable, gondola or funicular). The list is sorted and has no repeats. It is empty when no route calls at the stop. Only scheduled stops have it.",
+    "unit": "list of codes",
+    "value_type": "code",
+    "geography": "Puerto Rico, point locations",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Feeds are re-read every night at 04:17 Puerto Rico time and the files are rewritten only when a feed changes. Snapshot built 2026-10-02."
+    },
+    "method": "network.py collects the route ids from stop_times.txt for the stop, then the mode of each route.",
+    "sources": [
+      "ati_gtfs",
+      "muni_gtfs"
+    ],
+    "source_detail": "GTFS routes.txt field route_type, joined to trips.txt and stop_times.txt",
+    "caveats": [
+      "In the 2026-10 snapshot, 1 scheduled stop has an empty list because no trip in its feed calls there."
+    ],
+    "see_also": [
+      "transit.route_mode",
+      "transit.stop_routes"
+    ],
+    "values": {
+      "bus": "A bus route calls here. 3,824 stops in the 2026-10 snapshot.",
+      "rail": "A rail route calls here (Tren Urbano). 16 stops in the 2026-10 snapshot.",
+      "ferry": "A ferry route calls here. 6 stops in the 2026-10 snapshot."
+    },
+    "where": {
+      "files": [
+        "transport.json:modes"
+      ],
+      "view": [
+        {
+          "label": "Map, Map layers tab: Transit stops; Stations, terminals and airports",
+          "href": "index.html#l=stops,hubs"
+        }
+      ]
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.stop_routes",
+    "name": "Routes that call at the stop",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Stops, stations and terminals",
+    "kind": "variable",
+    "plain": "The routes that call at a scheduled stop, by route number or name. Only scheduled stops have it.",
+    "definition": "A list of route labels. The label is the route's short name; if the feed has none, its long name; if neither, its route id. In the 2026-10 snapshot a stop lists at most 9 routes. The list is empty when no trip calls at the stop.",
+    "unit": "list of route labels",
+    "value_type": "text",
+    "geography": "Puerto Rico, point locations",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Feeds are re-read every night at 04:17 Puerto Rico time and the files are rewritten only when a feed changes. Snapshot built 2026-10-02."
+    },
+    "method": "network.py takes the route of every trip that has a stop time at this stop.",
+    "sources": [
+      "ati_gtfs",
+      "muni_gtfs"
+    ],
+    "source_detail": "GTFS routes.txt fields route_short_name, route_long_name and route_id, joined to trips.txt and stop_times.txt",
+    "caveats": [
+      "A label is only unique within one operator. The label 1 can mean different routes in different municipal systems.",
+      "A route can be listed here even if the operator's timetable has ended; check the operator's feed status."
+    ],
+    "see_also": [
+      "transit.route_short_name",
+      "transit.stop_modes"
+    ],
+    "where": {
+      "files": [
+        "transport.json:routes"
+      ],
+      "view": [
+        {
+          "label": "Map, Map layers tab: Transit stops; Stations, terminals and airports",
+          "href": "index.html#l=stops,hubs"
+        }
+      ]
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.stop_trips_weekday",
+    "name": "Scheduled weekday calls at the stop (shown on the map as weekday departures)",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Stops, stations and terminals",
+    "kind": "variable",
+    "plain": "How many times the published timetable has a vehicle call at the stop on a typical weekday. The map popup calls it weekday departures.",
+    "definition": "Number of stop times at this stop (a stop time is one line in a feed saying that a trip calls at a stop at a given time), counting every trip in the feed whose service runs on the reference weekday (Wednesday, or the first of Tuesday, Thursday, Monday or Friday that the feed serves). A trip that calls at the stop twice counts twice. It counts every scheduled call, including the last stop of a trip, where the vehicle ends its run. Only scheduled stops have it.",
+    "unit": "calls (stop times) per typical weekday",
+    "value_type": "count",
+    "geography": "Puerto Rico, point locations",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Feeds are re-read every night at 04:17 Puerto Rico time and the files are rewritten only when a feed changes. Snapshot built 2026-10-02."
+    },
+    "method": "network.py counts rows of stop_times.txt per stop for trips on the weekday service. It does not apply the feed's calendar_dates.txt exceptions such as holidays; see Typical weekday.",
+    "sources": [
+      "ati_gtfs",
+      "muni_gtfs"
+    ],
+    "source_detail": "GTFS stop_times.txt, trips.txt and calendar.txt",
+    "how_to_read": "A higher number means more scheduled calls. In the 2026-10 snapshot the largest is Terminal Covadonga with 508 calls. It does not tell how full vehicles are or whether they run on time. A timetable covers the dates from the operator's feed.start to feed.end in operators.json, not the build date. In the build of 2026-10-02 the earliest start is 2023-01-01 and the latest end is 2029-12-31; Ponce's feed ended 2024-12-31. Cite both the build date and the feed dates.",
+    "caveats": [
+      "It counts calls in the timetable, not vehicles seen.",
+      "The Autoridad de Transporte Integrado (ATI) feed read on 2026-10-02 includes 30 trips on a holiday service pattern that is counted as ordinary weekday service (see Typical weekday), so stops on ATI route 1 are slightly overstated.",
+      "In the 2026-10 snapshot, one scheduled stop has 0 because no trip calls there.",
+      "At a terminal the count includes vehicles that arrive and stop there, not only vehicles that leave.",
+      "The stop popup on the map shows this number as weekday departures even when the operator's timetable has ended. The popup also shows the end date of the timetable (feed_end) and says 'Timetable ended' when that date has passed.",
+      "The same field name, trips_weekday, counts trips on a route in transit_routes.geojson and operators.json. Here it counts stop calls, so the values are not comparable."
+    ],
+    "see_also": [
+      "transit.typical_weekday",
+      "transit.stop_calls_sat",
+      "transit.stop_calls_sun",
+      "transit.stop_feed_end",
+      "place_access.ts_calls",
+      "transit.route_trips"
+    ],
+    "where": {
+      "files": [
+        "transport.json:trips_weekday"
+      ],
+      "view": [
+        {
+          "label": "Map, Map layers tab: Transit stops; Stations, terminals and airports",
+          "href": "index.html#l=stops,hubs"
+        }
+      ]
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.stop_calls_sat",
+    "name": "Scheduled Saturday calls at the stop (shown on the map as Saturday departures)",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Stops, stations and terminals",
+    "kind": "variable",
+    "plain": "How many times the published timetable has a vehicle call at the stop on a typical Saturday. The map popup shows it as Saturday departures. The field is missing when the feed lists no Saturday call at the stop.",
+    "definition": "Number of stop times at this stop (a stop time is one line in a feed saying that a trip calls at a stop at a given time) for trips whose service pattern runs on Saturday (saturday = 1 in the feed's calendar.txt). A trip that calls at the stop twice counts twice, and every call counts, including the last stop of a trip. The field is left out when the count is 0, so a missing field means that the feed lists no Saturday call at this stop. Only scheduled stops can have it. In the 2026-10 snapshot 1,910 of the 3,847 scheduled stops have it, with at most 276 calls (Terminal Covadonga).",
+    "unit": "calls (stop times) per typical Saturday",
+    "value_type": "count",
+    "geography": "Puerto Rico, point locations",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Feeds are re-read every night at 04:17 Puerto Rico time and the files are rewritten only when a feed changes. Snapshot built 2026-10-02."
+    },
+    "method": "parse_gtfs in network.py counts the rows of stop_times.txt for each stop, on trips whose service pattern runs on Saturday, in the same pass that counts the weekday calls. Like the weekday count, it does not apply the exceptions in calendar_dates.txt (holidays, added or removed dates) and does not check the dates when a pattern starts and ends; see Typical weekday.",
+    "sources": [
+      "ati_gtfs",
+      "muni_gtfs"
+    ],
+    "source_detail": "GTFS (General Transit Feed Specification) stop_times.txt, trips.txt and calendar.txt",
+    "how_to_read": "A higher number means more scheduled Saturday calls. A missing field means that the timetable lists no Saturday call at the stop. It does not prove that no vehicle runs. In the 2026-10 snapshot only four feeds list any Saturday call: ATI (Autoridad de Transporte Integrado; 1,369 stops), Guaynabo (273), Vega Alta (135) and Juncos (133; its feed ended on 2026-07-31). The other 21 feeds list weekday service only. The fields ts_we (place_access.json) and acc_sat400_pct are built from this field.",
+    "caveats": [
+      "It counts calls in the timetable, not vehicles seen.",
+      "The stop popup on the map shows this number as Saturday departures even when the operator's timetable has ended. The popup also shows the end date of the timetable (feed_end).",
+      "A stop of an expired timetable can carry the field (Juncos, 133 stops). The access fields do not use it, because they read only stops with a current timetable."
+    ],
+    "see_also": [
+      "transit.stop_trips_weekday",
+      "transit.stop_calls_sun",
+      "transit.stop_feed_end",
+      "transit.typical_weekday",
+      "place_access.ts_we",
+      "municipalities.acc_sat400_pct"
+    ],
+    "where": {
+      "files": [
+        "transport.json:calls_sat"
+      ],
+      "view": [
+        {
+          "label": "Map, Map layers tab: Transit stops; Stations, terminals and airports (click a stop)",
+          "href": "index.html#l=stops,hubs"
+        }
+      ]
+    },
+    "added": "2026-10-05"
+  },
+  {
+    "id": "transit.stop_calls_sun",
+    "name": "Scheduled Sunday calls at the stop (shown on the map as Sunday departures)",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Stops, stations and terminals",
+    "kind": "variable",
+    "plain": "How many times the published timetable has a vehicle call at the stop on a typical Sunday. The map popup shows it as Sunday departures. The field is missing when the feed lists no Sunday call at the stop.",
+    "definition": "Number of stop times at this stop for trips whose service pattern runs on Sunday (sunday = 1 in the feed's calendar.txt). A trip that calls at the stop twice counts twice, and every call counts, including the last stop of a trip. The field is left out when the count is 0, so a missing field means that the feed lists no Sunday call at this stop. Only scheduled stops can have it. In the 2026-10 snapshot 94 of the 3,847 scheduled stops have it, with at most 138 calls (Estación Cupey).",
+    "unit": "calls (stop times) per typical Sunday",
+    "value_type": "count",
+    "geography": "Puerto Rico, point locations",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Feeds are re-read every night at 04:17 Puerto Rico time and the files are rewritten only when a feed changes. Snapshot built 2026-10-02."
+    },
+    "method": "parse_gtfs in network.py counts the rows of stop_times.txt for each stop, on trips whose service pattern runs on Sunday, in the same pass that counts the weekday calls. Like the weekday count, it does not apply the exceptions in calendar_dates.txt (holidays, added or removed dates) and does not check the dates when a pattern starts and ends; see Typical weekday.",
+    "sources": [
+      "ati_gtfs",
+      "muni_gtfs"
+    ],
+    "source_detail": "GTFS (General Transit Feed Specification) stop_times.txt, trips.txt and calendar.txt",
+    "how_to_read": "A higher number means more scheduled Sunday calls. A missing field means that the timetable lists no Sunday call at the stop. It does not prove that no vehicle runs. In the 2026-10 snapshot only the feed of ATI (Autoridad de Transporte Integrado) lists Sunday calls, at 94 of its 1,437 stops: all 16 rail stations, 5 ferry terminals and 73 bus stops and stations. The other 24 feeds list none. The fields ts_we (place_access.json) and acc_sun400_pct are built from this field.",
+    "caveats": [
+      "It counts calls in the timetable, not vehicles seen.",
+      "The stop popup on the map shows this number as Sunday departures even when the operator's timetable has ended. The popup also shows the end date of the timetable (feed_end)."
+    ],
+    "see_also": [
+      "transit.stop_trips_weekday",
+      "transit.stop_calls_sat",
+      "transit.stop_feed_end",
+      "transit.typical_weekday",
+      "place_access.ts_we",
+      "municipalities.acc_sun400_pct"
+    ],
+    "where": {
+      "files": [
+        "transport.json:calls_sun"
+      ],
+      "view": [
+        {
+          "label": "Map, Map layers tab: Transit stops; Stations, terminals and airports (click a stop)",
+          "href": "index.html#l=stops,hubs"
+        }
+      ]
+    },
+    "added": "2026-10-05"
+  },
+  {
+    "id": "transit.stop_feed_end",
+    "name": "End date of the stop's timetable feed",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Stops, stations and terminals",
+    "kind": "variable",
+    "plain": "The last date covered by the published timetable of the operator that lists the stop. After this date the timetable no longer applies. The stop popup says 'Timetable valid until' this date, or 'Timetable ended' when the date has passed.",
+    "definition": "A date written YYYY-MM-DD: the end date of the operator's timetable feed (feed.end in operators.json), copied onto each scheduled stop of that operator. All 3,847 scheduled stops have it in the 2026-10 snapshot. It is missing from points that volunteers mapped, from airports, and from a stop of an operator whose feed has no end date (none in the snapshot). The end date is the latest end date among the feed's service calendars, or the feed's own end date when it has no calendar. In the 2026-10 snapshot the 3,847 stops carry 16 different dates, from 2024-12-31 (Ponce, 276 stops) to 2029-12-31 (Bayamón and Jayuya, 186 stops).",
+    "unit": "date (YYYY-MM-DD)",
+    "value_type": "date",
+    "geography": "Puerto Rico, point locations",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Feeds are re-read every night at 04:17 Puerto Rico time and the files are rewritten only when a feed changes. Snapshot built 2026-10-02."
+    },
+    "method": "build_network in network.py writes the feed's end date on each scheduled stop of the operator, and the nightly refresh does the same. The stop popup compares the date with the date on your device. The access fields (ts_m, ts_calls, ts_we, stops_current and the acc_ fields) do not read this field: access.py reads the same end date from operators.json.",
+    "sources": [
+      "ati_gtfs",
+      "muni_gtfs"
+    ],
+    "source_detail": "Timetable feed end date: the latest end_date in calendar.txt, or feed_info.txt when the feed has no calendar (see transit.feed_dates)",
+    "how_to_read": "Compare the date with today's date. A date in the past means that the published timetable has ended: the stop may still be served, but the file no longer says so. A date far in the future is what the publisher entered, not a promise: Bayamón and Jayuya end on 2029-12-31.",
+    "caveats": [
+      "All stops of one operator share one date. The end date of a single route can be earlier (see transit.feed_dates).",
+      "The popup's test uses the date on your device. The stored operator status in operators.json is worked out on the build date, and the Transit tab recomputes it when the page opens (see transit.feed_status).",
+      "A feed can run out of dates while buses still run. The date says what the published timetable covers, not whether service stopped."
+    ],
+    "see_also": [
+      "transit.feed_dates",
+      "transit.feed_status",
+      "municipalities.feed_status",
+      "transit.stop_trips_weekday",
+      "transit.stop_calls_sat",
+      "place_access.ts_m",
+      "municipalities.stops_expired"
+    ],
+    "where": {
+      "files": [
+        "transport.json:feed_end"
+      ],
+      "view": [
+        {
+          "label": "Map, Map layers tab: Transit stops; Stations, terminals and airports (click a stop)",
+          "href": "index.html#l=stops,hubs"
+        }
+      ]
+    },
+    "added": "2026-10-05"
+  },
+  {
+    "id": "transit.stop_wheelchair",
+    "name": "Wheelchair boarding stated for the stop",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Stops, stations and terminals",
+    "kind": "variable",
+    "plain": "True means the source says a rider in a wheelchair can board at the stop. False means the source does not say; it does not mean the stop is inaccessible.",
+    "definition": "Scheduled stops: true when the wheelchair_boarding field of the timetable feed (GTFS, General Transit Feed Specification) is 1. OpenStreetMap (OSM) points: true when the wheelchair tag is yes. Everything else is false. The field is missing on Federal Aviation Administration (FAA) airports.",
+    "unit": "yes/no",
+    "value_type": "flag",
+    "geography": "Puerto Rico, point locations",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Scheduled stops: re-read every night at 04:17 Puerto Rico time and rewritten only when a feed changes. OpenStreetMap points and FAA airports: read at each full build, a rebuild of all the observatory's data (the 2026-10 snapshot used OpenStreetMap data of 2026-10-01)."
+    },
+    "method": "network.py compares wheelchair_boarding to 1; transport.py compares the OSM tag to yes.",
+    "sources": [
+      "ati_gtfs",
+      "muni_gtfs",
+      "osm"
+    ],
+    "source_detail": "GTFS stops.txt field wheelchair_boarding; OpenStreetMap tag wheelchair",
+    "how_to_read": "Use true as a positive statement. Do not read false as not accessible.",
+    "caveats": [
+      "In the Autoridad de Transporte Integrado (ATI) feed read on 2026-10-02, 1,317 stops have an empty wheelchair_boarding value, 86 have 0 (no information in the GTFS standard) and 34 have 1. In the municipal feeds of the same date, most stops that are not true have an empty value, and Ponce's feed has no such column. The OSM points are true only when tagged yes.",
+      "The observatory does not check vehicles, ramps or kerbs.",
+      "True is the publisher's own statement, not checked on the ground. In the 2026-10 snapshot, seven municipal feeds mark every stop true (Bayamón, Coamo, Jayuya, Orocovis, Patillas, Utuado and Vieques), while 16 of the 25 feeds have no true stop. Counts or shares of true stops therefore compare how the feeds were filled in, not how accessible each place is. Do not compare across operators or municipalities."
+    ],
+    "see_also": [
+      "transit.stop_shelter"
+    ],
+    "values": {
+      "true": "The source says wheelchair boarding is possible. 458 points in the 2026-10 snapshot (34 ATI, 423 municipal, 1 OSM).",
+      "false": "The source says nothing, says no, or the value is empty. 3,933 points in the 2026-10 snapshot."
+    },
+    "where": {
+      "files": [
+        "transport.json:wheelchair"
+      ],
+      "view": [
+        {
+          "label": "Map, Map layers tab: Transit stops; Stations, terminals and airports",
+          "href": "index.html#l=stops,hubs"
+        }
+      ]
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.stop_shelter",
+    "name": "Shelter tagged at the stop",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Stops, stations and terminals",
+    "kind": "variable",
+    "plain": "True means volunteers tagged the point as having a shelter; false means it is not tagged that way. Only OpenStreetMap (OSM) points have it.",
+    "definition": "True when the OSM tag shelter is yes; false otherwise. The field exists only on OSM points; scheduled stops and Federal Aviation Administration (FAA) airports do not have it. In the 2026-10 snapshot, 21 of the 544 OSM points are true and 523 are false.",
+    "unit": "yes/no",
+    "value_type": "flag",
+    "geography": "Puerto Rico, point locations",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Scheduled stops: re-read every night at 04:17 Puerto Rico time and rewritten only when a feed changes. OpenStreetMap points and FAA airports: read at each full build, a rebuild of all the observatory's data (the 2026-10 snapshot used OpenStreetMap data of 2026-10-01)."
+    },
+    "method": "transport.py compares the OSM shelter tag to yes.",
+    "sources": [
+      "osm"
+    ],
+    "source_detail": "OpenStreetMap tag shelter",
+    "caveats": [
+      "False does not mean there is no shelter; most points are simply untagged.",
+      "Scheduled stops have no shelter information in this file."
+    ],
+    "see_also": [
+      "transit.stop_wheelchair"
+    ],
+    "values": {
+      "true": "Tagged shelter=yes in OpenStreetMap.",
+      "false": "No shelter tag, or a tag other than yes."
+    },
+    "where": {
+      "files": [
+        "transport.json:shelter"
+      ],
+      "view": [
+        {
+          "label": "Map, Map layers tab: Transit stops; Stations, terminals and airports",
+          "href": "index.html#l=stops,hubs"
+        }
+      ]
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.stop_municipality",
+    "name": "Municipality of the transport point",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Stops, stations and terminals",
+    "kind": "variable",
+    "plain": "The municipality in which the point lies. In the 2026-10 snapshot every point has one.",
+    "definition": "Name of the municipality whose boundary contains the point, or the municipality whose boundary is nearest when the point lies inside no boundary (a pier or a shoreline stop, for example). Since the 2026-11 fix there are 64 different names (65 before it, when Maunabo's only stop was counted there) and none is null.",
+    "unit": "municipality name",
+    "value_type": "text",
+    "geography": "78 municipalities",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Scheduled stops: re-read every night at 04:17 Puerto Rico time and rewritten only when a feed changes. OpenStreetMap points and FAA airports: read at each full build, a rebuild of all the observatory's data (the 2026-10 snapshot used OpenStreetMap data of 2026-10-01)."
+    },
+    "method": "At a full build, each point is tested against the Census Bureau's generalized (1:500,000) municipality boundaries, clipped to the shoreline (the legal boundaries run 3 nautical miles into the sea, so they are not used). A point outside every polygon is given the municipality whose polygon is nearest (muni_locate.py), so no point is null. The nightly refresh re-tests only the scheduled stops, against the web-simplified copy of those boundaries (municipios.geojson), with the same nearest-centre fallback.",
+    "sources": [
+      "census_tiger",
+      "ati_gtfs",
+      "muni_gtfs",
+      "osm",
+      "faa_airports"
+    ],
+    "source_detail": "TIGERweb Generalized_ACS2023 State_County MapServer layer 11 (counties, 500k, shoreline-clipped), STATE=72",
+    "caveats": [
+      "The municipality of the point is not necessarily the municipality of the operator.",
+      "The nightly refresh tests scheduled stops against boundaries simplified for the web (about 20 m), so a stop right on a boundary can fall on either side of the full-detail boundary that a full build uses.",
+      "The city field of the Federal Aviation Administration (FAA) airport list can differ: the main San Juan airport (SJU) has city San Juan but lies in the municipality of Carolina.",
+      "Until the 2026-10 access update the nightly refresh left a stop outside every polygon without a municipality (11 scheduled stops, 4 of them ferry terminals, were null). It then used the nearest centre point, as the full build did. Since the 2026-11 fix both use the nearest polygon, which moved 7 scheduled stops: 5 on Cataño's waterfront from San Juan to Cataño, one from Carolina to Loíza and one from Maunabo to Patillas."
+    ],
+    "see_also": [
+      "transit.airport_city",
+      "transit.stop_location",
+      "municipalities.transit_data_updates",
+      "methods.municipality_assignment"
+    ],
+    "where": {
+      "files": [
+        "transport.json:municipality"
+      ],
+      "view": [
+        {
+          "label": "Map, Map layers tab: Transit stops; Stations, terminals and airports",
+          "href": "index.html#l=stops,hubs"
+        }
+      ]
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.airport_public_use",
+    "name": "Airport open to the public (Federal Aviation Administration list)",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Airports, taxis and charging",
+    "kind": "variable",
+    "plain": "True when the Federal Aviation Administration (FAA) lists the airport as public use, false when it is private use. Only FAA airports have it.",
+    "definition": "True when the FAA facility-use code is PU (public use); false for PR (private use). In the 2026-10 snapshot the field is present on the 14 FAA airports (10 public, 4 private). The 11 aerodromes mapped in OpenStreetMap (OSM) do not have the field.",
+    "unit": "yes/no",
+    "value_type": "flag",
+    "geography": "Puerto Rico, airports",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Scheduled stops: re-read every night at 04:17 Puerto Rico time and rewritten only when a feed changes. OpenStreetMap points and FAA airports: read at each full build, a rebuild of all the observatory's data (the 2026-10 snapshot used OpenStreetMap data of 2026-10-01)."
+    },
+    "method": "transport.py compares the FAA field fac_use to PU.",
+    "sources": [
+      "faa_airports"
+    ],
+    "source_detail": "FAA Aviation Facilities layer 0 of the National Transportation Atlas Database, state_post_office_code=PR, field fac_use",
+    "caveats": [
+      "True when the FAA record's use code is PU and false when it is PR, as the FAA lists them; see the FAA source for its definitions. It does not mean airline service exists.",
+      "The map popup shows Public use for any airport without this field, so in the 2026-10 snapshot the 11 OSM-mapped aerodromes (one of them marked closed in its name) read as Public use on the map even though the data do not say so."
+    ],
+    "see_also": [
+      "transit.airport_code",
+      "transit.stop_kind"
+    ],
+    "values": {
+      "true": "Public use (FAA code PU).",
+      "false": "Private use (FAA code PR)."
+    },
+    "where": {
+      "files": [
+        "transport.json:public_use"
+      ],
+      "view": [
+        {
+          "label": "Map, Map layers tab: Transit stops; Stations, terminals and airports",
+          "href": "index.html#l=stops,hubs"
+        }
+      ]
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.airport_city",
+    "name": "Airport city (Federal Aviation Administration list)",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Airports, taxis and charging",
+    "kind": "variable",
+    "plain": "The city the Federal Aviation Administration (FAA) associates with the airport. It can differ from the municipality where the airport lies.",
+    "definition": "City name from the FAA record, in title case. In the 2026-10 snapshot there are 13 different values among 14 airports; examples are Isla De Culebra and Isla De Vieques. Only FAA airports have it.",
+    "unit": "text",
+    "value_type": "text",
+    "geography": "Puerto Rico, airports",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Scheduled stops: re-read every night at 04:17 Puerto Rico time and rewritten only when a feed changes. OpenStreetMap points and FAA airports: read at each full build, a rebuild of all the observatory's data (the 2026-10 snapshot used OpenStreetMap data of 2026-10-01)."
+    },
+    "method": "Copied from the FAA field city and converted to title case.",
+    "sources": [
+      "faa_airports"
+    ],
+    "source_detail": "FAA Aviation Facilities layer 0 of the National Transportation Atlas Database, state_post_office_code=PR, field city",
+    "caveats": [
+      "The city is an address label, not a boundary. Use the municipality field for counts by municipality."
+    ],
+    "see_also": [
+      "transit.stop_municipality",
+      "transit.airport_code"
+    ],
+    "where": {
+      "files": [
+        "transport.json:city"
+      ],
+      "view": [
+        {
+          "label": "Map, Map layers tab: Transit stops; Stations, terminals and airports",
+          "href": "index.html#l=stops,hubs"
+        }
+      ]
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.airport_code",
+    "name": "Airport code (Federal Aviation Administration location id)",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Airports, taxis and charging",
+    "kind": "variable",
+    "plain": "The short code the Federal Aviation Administration (FAA) gives the airport. It is not always the same as the airline code of the International Air Transport Association (IATA).",
+    "definition": "FAA location identifier, 3 or 4 characters (examples from the 2026-10 snapshot: SJU, BQN, X63, PR20). In the 2026-10 snapshot there are 14 different values, one per FAA airport. Only FAA airports have it.",
+    "unit": "text code",
+    "value_type": "code",
+    "geography": "Puerto Rico, airports",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Scheduled stops: re-read every night at 04:17 Puerto Rico time and rewritten only when a feed changes. OpenStreetMap points and FAA airports: read at each full build, a rebuild of all the observatory's data (the 2026-10 snapshot used OpenStreetMap data of 2026-10-01)."
+    },
+    "method": "Copied from the FAA field loc_id.",
+    "sources": [
+      "faa_airports"
+    ],
+    "source_detail": "FAA Aviation Facilities layer 0 of the National Transportation Atlas Database, state_post_office_code=PR, field loc_id",
+    "caveats": [
+      "Private-use airports have codes such as PR20 or 02PR that are not airline codes.",
+      "For the airline code (IATA) and the aviation code of the International Civil Aviation Organization (ICAO), see the separate field entry; they are not filled for FAA airports."
+    ],
+    "see_also": [
+      "transit.airport_iata_icao",
+      "transit.airport_public_use"
+    ],
+    "where": {
+      "files": [
+        "transport.json:code"
+      ],
+      "view": [
+        {
+          "label": "Map, Map layers tab: Transit stops; Stations, terminals and airports",
+          "href": "index.html#l=stops,hubs"
+        }
+      ]
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.airport_iata_icao",
+    "name": "Airport codes of the International Air Transport Association and the International Civil Aviation Organization (OpenStreetMap)",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Airports, taxis and charging",
+    "kind": "variable",
+    "plain": "Two airport codes that volunteers can add in OpenStreetMap: the 3-letter code of the International Air Transport Association (IATA), used by airlines, and the 4-letter code of the International Civil Aviation Organization (ICAO). Only one airport, in Fajardo, has them in the 2026-10 snapshot.",
+    "definition": "Text from the OpenStreetMap (OSM) tags iata (3 letters) and icao (4 letters). In the 2026-10 snapshot they are present on one record: Aeropuerto Diego Jiménez Torres in Fajardo (FAJ, TJFA). They are null on the other OSM points and absent from scheduled stops and Federal Aviation Administration (FAA) airports.",
+    "unit": "text code",
+    "value_type": "code",
+    "geography": "Puerto Rico, airports",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Scheduled stops: re-read every night at 04:17 Puerto Rico time and rewritten only when a feed changes. OpenStreetMap points and FAA airports: read at each full build, a rebuild of all the observatory's data (the 2026-10 snapshot used OpenStreetMap data of 2026-10-01)."
+    },
+    "method": "Copied from the OSM tags when present.",
+    "sources": [
+      "osm"
+    ],
+    "source_detail": "OpenStreetMap tags iata and icao",
+    "caveats": [
+      "Null means not recorded here. It does not mean the airport has no IATA or ICAO code: the FAA records do not carry these fields, so even the main San Juan airport has none here (use the FAA code field)."
+    ],
+    "see_also": [
+      "transit.airport_code"
+    ],
+    "where": {
+      "files": [
+        "transport.json:iata",
+        "transport.json:icao"
+      ],
+      "view": [
+        {
+          "label": "Map, Map layers tab: Transit stops; Stations, terminals and airports",
+          "href": "index.html#l=stops,hubs"
+        }
+      ]
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.taxi_ev_charging",
+    "name": "Taxi stands and electric vehicle charging points",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Airports, taxis and charging",
+    "kind": "layer",
+    "plain": "Taxi stands and electric vehicle chargers that volunteers mapped in OpenStreetMap (OSM). The 2026-10 snapshot has 9 taxi stands and 11 chargers.",
+    "definition": "OSM points tagged amenity=taxi (kind taxi) and amenity=charging_station (kind ev_charging). The 2026-10 snapshot has 9 taxi points and 11 charging points. The data carry a name, an operator tag and the municipality; they do not record the number of plugs, the power, the price, opening hours or whether the charger is working. The map layer also reserves bike_rental and helipad; the 2026-10 snapshot has no such points.",
+    "unit": "points",
+    "value_type": "geometry",
+    "geography": "Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Scheduled stops: re-read every night at 04:17 Puerto Rico time and rewritten only when a feed changes. OpenStreetMap points and FAA airports: read at each full build, a rebuild of all the observatory's data (the 2026-10 snapshot used OpenStreetMap data of 2026-10-01)."
+    },
+    "method": "Read from OpenStreetMap by transport.py with the other mapped points.",
+    "sources": [
+      "osm"
+    ],
+    "how_to_read": "Use the layer to see where such points are known. It is not a list of all taxis or chargers.",
+    "caveats": [
+      "The list is whatever volunteers mapped; it is likely incomplete.",
+      "Taxi stands and chargers are not scheduled transit and are not counted in the transit stop totals."
+    ],
+    "see_also": [
+      "transit.stop_kind",
+      "municipalities.uber_listed",
+      "municipalities.taxi_stands",
+      "municipalities.ev_charging",
+      "layers.taxi_ev_control"
+    ],
+    "where": {
+      "files": [],
+      "view": [
+        {
+          "label": "Map, Map layers tab: Taxi stands and EV charging",
+          "href": "index.html#l=taxi"
+        }
+      ]
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.routes",
+    "name": "Transit routes",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Routes",
+    "kind": "layer",
+    "plain": "The lines of public transit routes: the Tren Urbano, buses and ferries of Autoridad de Transporte Integrado (ATI), municipal routes, and públicos and trolley routes that volunteers mapped. The 2026-10 snapshot has 165 routes. Of these, only 50 lines come from an operator's own route shape; the rest were drawn by the observatory along roads, or by volunteers.",
+    "definition": "The file transit_routes.geojson has one feature per route. Each is one line made of one or more parts (GeoJSON type MultiLineString; 1 to 94 parts in the 2026-10 snapshot) with properties for the operator, names, mode, trips per day, first and last departure and how the line was drawn. In the 2026-10 snapshot, 38 routes come from the ATI feed, 111 from 24 municipal feeds and 16 from OpenStreetMap (OSM). On the map, line colour follows the mode and the type of operator, line width grows with weekday trips, and the line style shows how the line was drawn.",
+    "unit": "routes (lines)",
+    "value_type": "geometry",
+    "geography": "165 routes (2026-10 snapshot)",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Feeds are re-read every night at 04:17 Puerto Rico time and the files are rewritten only when a feed changes. OpenStreetMap routes are read at each full build; the nightly refresh asks for them too and, when the OpenStreetMap service does not answer, keeps the OpenStreetMap routes it already has. Snapshot built 2026-10-02."
+    },
+    "method": "network.py builds the routes from each feed (see How route lines are drawn) and load_osm_routes adds the OSM routes. Coordinates have 5 decimals (about 1 m).",
+    "sources": [
+      "ati_gtfs",
+      "muni_gtfs",
+      "osm",
+      "ntd"
+    ],
+    "source_detail": "ATI timetable zip; municipal timetable zips found through the registry of the National Rural Transit Assistance Program portal; OpenStreetMap route relations through the Overpass API; road network from OpenStreetMap (roads.bin)",
+    "how_to_read": "Open a route to see its operator, trips per day, first and last departure and whether its timetable is current, expiring or expired.",
+    "caveats": [
+      "Routes of expired timetables stay on the map. In the 2026-10 snapshot, 38 of the 165 routes belong to operators whose feed had ended by the build date.",
+      "A route in a feed is not proof that the service runs today. Check the feed status.",
+      "OSM routes have no timetable. Their trip counts are 0, which means none published, not none running.",
+      "Lines and stops of expired timetables look the same as current ones on the map. The Expired badge appears only when a route is opened and in the Operators list.",
+      "Terms differ by source. The terms of the Autoridad de Transporte Integrado (ATI) say the data are provided as is, without warranty, and that an app built on them must make clear it is not affiliated with or sponsored by ATI. The municipal feeds state no license; ask the municipality before reusing a feed beyond viewing it. Parts drawn from OpenStreetMap are under the Open Database License (credit and share-alike). Check each source's terms before reuse."
+    ],
+    "see_also": [
+      "transit.route_drawing",
+      "transit.route_geometry_source",
+      "transit.feed_status",
+      "transit.osm_routes",
+      "measures.routes_on_map",
+      "layers.transit_routes_control"
+    ],
+    "where": {
+      "files": [],
+      "view": [
+        {
+          "label": "Map, Map layers tab: Transit routes",
+          "href": "index.html#l=routes"
+        }
+      ]
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.route_drawing",
+    "name": "How route lines are drawn",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Routes",
+    "kind": "method",
+    "plain": "A route line is the operator's own shape when the feed has one, otherwise a path along roads between the stops. If the stop order looks wrong the observatory infers one, and if nothing works it joins the stops with straight dotted lines.",
+    "definition": "The counts below are for the 2026-10 snapshot. 1. Feed shape: if the feed lists a route shape (the line the operator publishes for the path of a route), the observatory keeps up to the two most used shapes of the route (usually one per direction). 50 routes are drawn this way, including every Autoridad de Transporte Integrado (ATI) route. 2. Road-snapped: with no shape, the observatory takes the stops of the longest trip in each direction and links each pair of neighbouring stops by the fastest road path in the OpenStreetMap road network (roads.bin). 94 routes are drawn this way. 3. Inferred order: if a feed lists its stops out of travel order, the observatory picks a plausible order and then snaps it to roads. 5 routes are drawn this way, all from Patillas. 4. Straight dotted: if too little of a route can be snapped, the stops are joined by straight lines and drawn dotted. No route uses this in the 2026-10 snapshot. 5. OpenStreetMap: the 16 públicos and trolley routes are drawn from the lines volunteers mapped.",
+    "unit": "not a measured value (a method)",
+    "value_type": "text",
+    "geography": "165 routes (2026-10 snapshot)",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Feeds are re-read every night at 04:17 Puerto Rico time and the files are rewritten only when a feed changes. Snapshot built 2026-10-02."
+    },
+    "method": "Road snapping: each stop is moved to the nearest road within 500 m; a leg is accepted if the road path is no longer than 3 times the straight distance plus 400 m; stops less than 25 m apart are joined directly. A route is kept as road-snapped only if at least 60% of the legs in each direction follow a road; otherwise it falls back to straight lines. The line is then simplified (tolerance about 3 m). Inferred order: a feed is flagged when the stop order has a zig-zag ratio above 2.5 (the length of the path through the stops in listed order divided by the length of a nearest-neighbour tour; real routes sit near 1 to 2) or when the stop names are in alphabetical order. The order is then rebuilt from the terminal or first stop by always going to the nearest unvisited stop by road, improved by reversing stretches of the order while that shortens the road distance, and the line returns to its start; for more than 45 distinct stops the order is not rebuilt and the route falls back to straight lines. A route whose stops did not change keeps its previous line (see the entry on the route line fingerprint).",
+    "sources": [
+      "ati_gtfs",
+      "muni_gtfs",
+      "osm"
+    ],
+    "how_to_read": "On the map a solid line follows the operator's shape or the roads, a lighter dashed line is a route with inferred stop order, a dotted line joins stops straight, and a gold dashed line is an OpenStreetMap route. Ferries are dashed teal.",
+    "caveats": [
+      "Only a feed shape is the operator's own alignment. A road-snapped line is an estimate and the real street may differ.",
+      "A route with an inferred order shows a plausible path, not the route the operator runs. Its times are left out of the timetable replay.",
+      "The feed's route colour is not used on the map; line colour follows the mode and the type of operator.",
+      "Road-snapped lines are derived from OpenStreetMap roads, which are under the Open Database License. Credit OpenStreetMap contributors and check the license terms before reuse."
+    ],
+    "see_also": [
+      "transit.route_geometry_source",
+      "transit.route_order_note",
+      "transit.route_sig",
+      "transit.routes",
+      "roads.transit_snapping"
+    ],
+    "where": {
+      "files": [],
+      "view": [
+        {
+          "label": "Map, Map layers tab: Transit routes",
+          "href": "index.html#l=routes"
+        }
+      ]
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.osm_routes",
+    "name": "Públicos and other routes mapped in OpenStreetMap",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Routes",
+    "kind": "layer",
+    "plain": "Bus, público and trolley routes that volunteers mapped in OpenStreetMap (OSM): 16 in the 2026-10 snapshot. They have no published timetable, so the observatory shows the line but not trips or times.",
+    "definition": "Route relations in OpenStreetMap tagged route=bus, trolleybus, share_taxi or minibus inside Puerto Rico. Públicos (carros públicos) are shared cars and vans that run set routes. Routes whose network or operator tag names the AMA (Autoridad Metropolitana de Autobuses), ATI (Autoridad de Transporte Integrado) or Bayamón are left out, because those come from official feeds. A route needs at least one mapped way to be kept. Each kept route has operator osm, mode bus, trips set to 0 and no first or last time. The label is Público for share_taxi routes or networks whose name contains público, and Bus otherwise (in the 2026-10 snapshot, 9 Público and 7 Bus).",
+    "unit": "routes",
+    "value_type": "geometry",
+    "geography": "16 routes (2026-10 snapshot)",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Read at each full build. The nightly refresh also asks the OpenStreetMap service (Overpass) for them; when the service does not answer, it keeps the OpenStreetMap routes it already has. Last OpenStreetMap read: 2026-10-02."
+    },
+    "method": "load_osm_routes in network.py sends one Overpass query and keeps the member ways with roles empty, route, forward or backward. route_id is r followed by the OSM relation number; short_name is the ref tag; long_name is the name, description or network tag, else Unnamed route.",
+    "sources": [
+      "osm"
+    ],
+    "how_to_read": "Treat these lines as a volunteer map of where públicos are known to run, not as a service guarantee.",
+    "caveats": [
+      "The routes are incomplete and unscheduled. A público can run without being mapped, and a mapped route may no longer run.",
+      "OpenStreetMap data is under the Open Database License (ODbL), which has credit and share-alike terms. Check the terms before reuse."
+    ],
+    "see_also": [
+      "transit.route_network",
+      "transit.route_label",
+      "transit.routes"
+    ],
+    "where": {
+      "files": [],
+      "view": [
+        {
+          "label": "Map, Map layers tab: Transit routes",
+          "href": "index.html#l=routes"
+        }
+      ]
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.route_operator",
+    "name": "Operator id of the route",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Routes",
+    "kind": "variable",
+    "plain": "The id of the operator that publishes the route: ati, a municipality's id, or osm for volunteer-mapped routes.",
+    "definition": "Operator id, the same id used in operators.json and in the operator field of scheduled stops. In the 2026-10 snapshot there are 26 different values among 165 routes; osm marks the 16 OpenStreetMap routes.",
+    "unit": "operator id",
+    "value_type": "code",
+    "geography": "165 routes (2026-10 snapshot)",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Feeds are re-read every night at 04:17 Puerto Rico time and the files are rewritten only when a feed changes. Snapshot built 2026-10-02."
+    },
+    "method": "Set by network.py for each feed.",
+    "sources": [
+      "ati_gtfs",
+      "muni_gtfs",
+      "osm"
+    ],
+    "source_detail": "Operator id set by network.py for each feed (ati for the ATI file PRITA_GTFS.zip; otherwise a slug of the municipality or agency name from the federal checklist or the registry); osm for the volunteer routes",
+    "how_to_read": "Join to operators.json by id to find the feed status and dates.",
+    "caveats": [
+      "An operator id is a short label made by the observatory from the municipality name; it is not an official code."
+    ],
+    "see_also": [
+      "transit.route_operator_name",
+      "transit.operator_record"
+    ],
+    "values": {
+      "ati": "Autoridad de Transporte Integrado (ATI). 38 routes in the 2026-10 snapshot.",
+      "osm": "Públicos and other routes (OpenStreetMap). 16 routes in the 2026-10 snapshot.",
+      "bayamon": "Municipality of Bayamon. 6 routes in the 2026-10 snapshot.",
+      "cabo_rojo": "Municipality of Cabo Rojo. 7 routes in the 2026-10 snapshot.",
+      "caguas": "Municipality of Caguas. 9 routes in the 2026-10 snapshot.",
+      "canovanas": "Municipality of Canovanas. 6 routes in the 2026-10 snapshot.",
+      "cidra": "Municipality of Cidra. 1 route in the 2026-10 snapshot.",
+      "coamo": "Municipality of Coamo. 1 route in the 2026-10 snapshot.",
+      "corozal": "Municipality of Corozal. 2 routes in the 2026-10 snapshot.",
+      "fajardo": "Municipality of Fajardo. 5 routes in the 2026-10 snapshot.",
+      "guaynabo": "Municipality of Guaynabo. 11 routes in the 2026-10 snapshot.",
+      "hatillo": "Municipality of Hatillo. 1 route in the 2026-10 snapshot.",
+      "humacao": "Municipality of Humacao. 2 routes in the 2026-10 snapshot.",
+      "jayuya": "Municipality of Jayuya. 6 routes in the 2026-10 snapshot.",
+      "juncos": "Municipality of Juncos. 6 routes in the 2026-10 snapshot.",
+      "manati": "Municipality of Manati. 3 routes in the 2026-10 snapshot.",
+      "orocovis": "Municipality of Orocovis. 1 route in the 2026-10 snapshot.",
+      "patillas": "Municipality of Patillas. 6 routes in the 2026-10 snapshot.",
+      "ponce": "Autonomous Municipality of Ponce. 8 routes in the 2026-10 snapshot.",
+      "san_juan": "City of San Juan. 9 routes in the 2026-10 snapshot.",
+      "san_lorenzo": "Municipality of San Lorenzo. 8 routes in the 2026-10 snapshot.",
+      "san_sebastian": "Municipality of San Sebastian. 1 route in the 2026-10 snapshot.",
+      "utuado": "Municipality of Utuado. 2 routes in the 2026-10 snapshot.",
+      "vega_alta": "Autonomous Municipality of Vega Alta. 5 routes in the 2026-10 snapshot.",
+      "vega_baja": "Municipality of Vega Baja. 4 routes in the 2026-10 snapshot.",
+      "vieques": "Municipality of Vieques. 1 route in the 2026-10 snapshot."
+    },
+    "where": {
+      "files": [
+        "transit_routes.geojson:operator"
+      ],
+      "view": [
+        {
+          "label": "Map, Map layers tab: Transit routes",
+          "href": "index.html#l=routes"
+        }
+      ]
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.route_operator_name",
+    "name": "Operator name of the route",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Routes",
+    "kind": "variable",
+    "plain": "The name of the operator that publishes the route.",
+    "definition": "Operator name, such as Autoridad de Transporte Integrado (ATI), City of San Juan or Municipality of Guaynabo. For volunteer-mapped routes it is Públicos and other routes (OpenStreetMap). In the 2026-10 snapshot there are 26 different names.",
+    "unit": "text",
+    "value_type": "text",
+    "geography": "165 routes (2026-10 snapshot)",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Feeds are re-read every night at 04:17 Puerto Rico time and the files are rewritten only when a feed changes. Snapshot built 2026-10-02."
+    },
+    "method": "Same name as in operators.json.",
+    "sources": [
+      "ati_gtfs",
+      "muni_gtfs",
+      "osm",
+      "ntd"
+    ],
+    "source_detail": "FTA National Transit Database 2023 GTFS weblinks table, field Agency Name, or the operator name in the Transitland Atlas registry file feeds/nationalrtap.org.dmfr.json; fixed names for ATI and the OpenStreetMap routes",
+    "caveats": [
+      "Names from the federal list and the registry have no accents (for example Municipality of Bayamon)."
+    ],
+    "see_also": [
+      "transit.route_operator"
+    ],
+    "where": {
+      "files": [
+        "transit_routes.geojson:operator_name"
+      ],
+      "view": [
+        {
+          "label": "Map, Map layers tab: Transit routes",
+          "href": "index.html#l=routes"
+        }
+      ]
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.route_id",
+    "name": "Transit route id",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Routes",
+    "kind": "variable",
+    "plain": "The id the operator uses for the route. For volunteer-mapped routes, an r followed by the OpenStreetMap (OSM) number.",
+    "definition": "Text id. Feed routes: the route_id in the operator's routes file (examples from the 2026-10 snapshot: 92, MA004, Rt 1, trolley, Zona Urbana). OSM routes: r plus the OSM relation number (example r938736). It is unique within one operator but not across operators: in the 2026-10 snapshot the 165 routes have 146 different ids in total.",
+    "unit": "text id",
+    "value_type": "code",
+    "geography": "165 routes (2026-10 snapshot)",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Feeds are re-read every night at 04:17 Puerto Rico time and the files are rewritten only when a feed changes. Snapshot built 2026-10-02."
+    },
+    "method": "Copied from the feed, or built from the OSM relation id.",
+    "sources": [
+      "ati_gtfs",
+      "muni_gtfs",
+      "osm"
+    ],
+    "source_detail": "GTFS routes.txt field route_id; OpenStreetMap route relation number",
+    "how_to_read": "Use operator and route_id together to point to one route.",
+    "caveats": [
+      "Two municipal systems can use the same id.",
+      "A few route ids lost a letter in the source (in the 2026-10 snapshot, for example, the route id Ruta Marn Bajo, whose name field reads Marin Bajo)."
+    ],
+    "see_also": [
+      "transit.route_operator",
+      "transit.route_short_name"
+    ],
+    "example": "MA004",
+    "where": {
+      "files": [
+        "transit_routes.geojson:route_id"
+      ],
+      "view": [
+        {
+          "label": "Map, Map layers tab: Transit routes",
+          "href": "index.html#l=routes"
+        }
+      ]
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.route_short_name",
+    "name": "Transit route number or short name",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Routes",
+    "kind": "variable",
+    "plain": "The route's number or short code, such as 92 or CSJ (examples from the 2026-10 snapshot). It is empty for routes that have only a long name.",
+    "definition": "The route_short_name in the feed, or the OpenStreetMap (OSM) ref tag. In the 2026-10 snapshot it is empty text for 57 of 165 routes; Autoridad de Transporte Integrado (ATI) routes all have one.",
+    "unit": "text",
+    "value_type": "text",
+    "geography": "165 routes (2026-10 snapshot)",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Feeds are re-read every night at 04:17 Puerto Rico time and the files are rewritten only when a feed changes. Snapshot built 2026-10-02."
+    },
+    "method": "Copied from the source.",
+    "sources": [
+      "ati_gtfs",
+      "muni_gtfs",
+      "osm"
+    ],
+    "source_detail": "GTFS routes.txt field route_short_name; OpenStreetMap tag ref",
+    "caveats": [
+      "A short name is only unique within an operator."
+    ],
+    "see_also": [
+      "transit.route_long_name",
+      "transit.route_id"
+    ],
+    "where": {
+      "files": [
+        "transit_routes.geojson:short_name"
+      ],
+      "view": [
+        {
+          "label": "Map, Map layers tab: Transit routes",
+          "href": "index.html#l=routes"
+        }
+      ]
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.route_long_name",
+    "name": "Transit route name",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Routes",
+    "kind": "variable",
+    "plain": "The route's full name, usually the places it connects, such as Ceiba-Mosquitos (example from the 2026-10 snapshot).",
+    "definition": "The route_long_name in the feed. For OpenStreetMap (OSM) routes: the name tag, else the description, else the network or operator tag, else Unnamed route. In the 2026-10 snapshot it is empty text for 18 of 165 routes (Caguas, San Lorenzo and Vieques leave it empty).",
+    "unit": "text",
+    "value_type": "text",
+    "geography": "165 routes (2026-10 snapshot)",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Feeds are re-read every night at 04:17 Puerto Rico time and the files are rewritten only when a feed changes. Snapshot built 2026-10-02."
+    },
+    "method": "Copied from the source.",
+    "sources": [
+      "ati_gtfs",
+      "muni_gtfs",
+      "osm"
+    ],
+    "source_detail": "GTFS routes.txt field route_long_name; OpenStreetMap tags name, then description, then network or operator",
+    "caveats": [
+      "Names are as the publisher wrote them, including missing accents (in the 2026-10 snapshot, for example, Marin Bajo for Marín Bajo) and, in a few, a lost letter (for example Samn - Boquern in a Cabo Rojo route name)."
+    ],
+    "see_also": [
+      "transit.route_short_name"
+    ],
+    "where": {
+      "files": [
+        "transit_routes.geojson:long_name"
+      ],
+      "view": [
+        {
+          "label": "Map, Map layers tab: Transit routes",
+          "href": "index.html#l=routes"
+        }
+      ]
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.route_mode",
+    "name": "Transit route mode",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Routes",
+    "kind": "variable",
+    "plain": "The type of vehicle on the route: bus, ferry or rail.",
+    "definition": "A code from the feed's route_type: 3 and 11 give bus; 1, 2 and 12 give rail; 4 gives ferry; 0, 5, 6 and 7 give tram, cable, gondola and funicular, and an unknown or missing type is read as bus. OpenStreetMap (OSM) routes are always bus.",
+    "unit": "code (3 values)",
+    "value_type": "code",
+    "geography": "165 routes (2026-10 snapshot)",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Feeds are re-read every night at 04:17 Puerto Rico time and the files are rewritten only when a feed changes. Snapshot built 2026-10-02."
+    },
+    "method": "ROUTE_TYPES in network.py.",
+    "sources": [
+      "ati_gtfs",
+      "muni_gtfs",
+      "osm"
+    ],
+    "source_detail": "GTFS routes.txt field route_type; always bus for OpenStreetMap routes",
+    "caveats": [
+      "The codes tram, cable, gondola and funicular are possible but not present in the 2026-10 snapshot."
+    ],
+    "see_also": [
+      "transit.route_label",
+      "transit.stop_modes"
+    ],
+    "values": {
+      "bus": "Bus, trolley or público route. 160 routes in the 2026-10 snapshot.",
+      "ferry": "Ferry route (AcuaExpreso). 4 routes in the 2026-10 snapshot.",
+      "rail": "Rail route (Tren Urbano). 1 route in the 2026-10 snapshot."
+    },
+    "where": {
+      "files": [
+        "transit_routes.geojson:mode"
+      ],
+      "view": [
+        {
+          "label": "Map, Map layers tab: Transit routes",
+          "href": "index.html#l=routes"
+        }
+      ]
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.route_label",
+    "name": "Transit route label",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Routes",
+    "kind": "variable",
+    "plain": "The label the map shows for the type of route: Bus, Público, Ferry or Tren Urbano.",
+    "definition": "Feed routes: Tren Urbano for rail, Bus for bus, Ferry for ferry and Tram for tram; a cable, gondola or funicular route would show its mode name. Tram, cable, gondola and funicular are not present in the 2026-10 snapshot. OpenStreetMap (OSM) routes: Público if the OSM route type is share_taxi or the network name contains público, otherwise Bus.",
+    "unit": "code (4 values)",
+    "value_type": "code",
+    "geography": "165 routes (2026-10 snapshot)",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Feeds are re-read every night at 04:17 Puerto Rico time and the files are rewritten only when a feed changes. Snapshot built 2026-10-02."
+    },
+    "method": "ROUTE_LABEL in network.py and load_osm_routes.",
+    "sources": [
+      "ati_gtfs",
+      "muni_gtfs",
+      "osm"
+    ],
+    "source_detail": "Set by network.py from the route mode (ROUTE_LABEL); for OpenStreetMap routes from the tags route and network",
+    "caveats": [
+      "Any rail route would be labelled Tren Urbano. In the 2026-10 snapshot the only rail route is Tren Urbano."
+    ],
+    "see_also": [
+      "transit.route_mode",
+      "transit.osm_routes"
+    ],
+    "values": {
+      "Bus": "Bus route from a feed, or an OpenStreetMap bus route that is not a público. 151 routes in the 2026-10 snapshot.",
+      "Público": "OpenStreetMap route of the Carros Públicos network. 9 routes in the 2026-10 snapshot.",
+      "Ferry": "AcuaExpreso ferry route. 4 routes in the 2026-10 snapshot.",
+      "Tren Urbano": "Rail route. 1 route in the 2026-10 snapshot."
+    },
+    "where": {
+      "files": [
+        "transit_routes.geojson:label"
+      ],
+      "view": [
+        {
+          "label": "Map, Map layers tab: Transit routes",
+          "href": "index.html#l=routes"
+        }
+      ]
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.route_color",
+    "name": "Transit route colour in the feed",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Routes",
+    "kind": "variable",
+    "plain": "The colour the operator gave the route in its feed, as a hex code such as #0000FF. The map does not use it.",
+    "definition": "The route_color of the Autoridad de Transporte Integrado (ATI) or municipal feed written as # and six hex digits, when the feed gives a valid one. In the 2026-10 snapshot it is present on 113 routes (67 different colours) and null for the other 52, including every OpenStreetMap (OSM) route.",
+    "unit": "hex colour code",
+    "value_type": "code",
+    "geography": "165 routes (2026-10 snapshot)",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Feeds are re-read every night at 04:17 Puerto Rico time and the files are rewritten only when a feed changes. Snapshot built 2026-10-02."
+    },
+    "method": "Copied from the feed after checking that it has exactly six hex digits.",
+    "sources": [
+      "ati_gtfs",
+      "muni_gtfs"
+    ],
+    "source_detail": "GTFS routes.txt field route_color",
+    "how_to_read": "Use it only if you want the operator's own colour scheme.",
+    "caveats": [
+      "The map and the 3D view colour lines by mode and type of operator and ignore this field: rail red, ferries teal, ATI buses blue, municipal buses green and OSM routes gold."
+    ],
+    "see_also": [
+      "transit.route_drawing"
+    ],
+    "where": {
+      "files": [
+        "transit_routes.geojson:color"
+      ],
+      "view": [
+        {
+          "label": "Map, Map layers tab: Transit routes",
+          "href": "index.html#l=routes"
+        }
+      ]
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.route_trips",
+    "name": "Scheduled trips per day on the route",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Routes",
+    "kind": "variable",
+    "plain": "How many trips the operator's timetable has on this route on a typical weekday, a Saturday and a Sunday. Zero means none listed, which for volunteer-mapped routes means no timetable.",
+    "definition": "Three counts per route: trips_weekday, trips_saturday and trips_sunday. A trip is one scheduled run listed in the feed's trips file (a feed is the set of GTFS files in which an operator publishes its stops, routes, trips and times). Autoridad de Transporte Integrado (ATI) and Guaynabo list each direction as its own trip, so an out-and-back journey counts as two. In the 2026-10 snapshot, the other 23 feeds give every trip of a route the same direction code, so a trip there may be one leg or a whole loop. The weekday count uses the reference weekday described under Typical weekday. In the 2026-10 snapshot the largest values are 166 on weekdays and 138 on Saturdays and Sundays (Tren Urbano).",
+    "unit": "trips per day type",
+    "value_type": "count",
+    "geography": "165 routes (2026-10 snapshot)",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Feeds are re-read every night at 04:17 Puerto Rico time and the files are rewritten only when a feed changes. Snapshot built 2026-10-02."
+    },
+    "method": "network.py counts the trips of the route whose service runs on each day type. Exceptions in calendar_dates.txt (holidays, added or removed dates) are not applied, and the date range of each service pattern is not checked.",
+    "sources": [
+      "ati_gtfs",
+      "muni_gtfs"
+    ],
+    "source_detail": "GTFS trips.txt joined to calendar.txt (service days); calendar_dates.txt only when a feed has no calendar.txt",
+    "how_to_read": "Compare routes of the same operator. A route with more trips has more scheduled service. The map draws wider lines for higher weekday counts. A timetable covers the dates from the operator's feed.start to feed.end in operators.json, not the build date. In the build of 2026-10-02 the earliest start is 2023-01-01 and the latest end is 2029-12-31; Ponce's feed ended 2024-12-31. Cite both the build date and the feed dates.",
+    "caveats": [
+      "In the ATI feed read on 2026-10-02, route 1 shows 81 weekday trips, but 30 of them belong to a holiday service pattern that the feed removes on most dates. Without them the count is 51.",
+      "A feed that gives no Saturday or Sunday service shows 0 for those days. In the 2026-10 snapshot, only ATI, Guaynabo, Juncos and Vega Alta list Saturday service, and only ATI lists Sunday service.",
+      "Counts are for the timetable in the feed, whether or not it has expired."
+    ],
+    "see_also": [
+      "transit.typical_weekday",
+      "transit.stop_trips_weekday",
+      "transit.route_first_last"
+    ],
+    "where": {
+      "files": [
+        "transit_routes.geojson:trips_weekday",
+        "transit_routes.geojson:trips_saturday",
+        "transit_routes.geojson:trips_sunday"
+      ],
+      "view": [
+        {
+          "label": "Map, Map layers tab: Transit routes",
+          "href": "index.html#l=routes"
+        }
+      ]
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.route_first_last",
+    "name": "First and last weekday departure on the route",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Routes",
+    "kind": "variable",
+    "plain": "The earliest and the latest time a weekday trip on the route starts, in seconds after midnight. The map shows them as clock times.",
+    "definition": "first is the earliest and last is the latest departure from the first stop of any weekday trip on the route. Seconds after midnight, local time (12600 is 03:30). In the 2026-10 snapshot it is present for 149 routes; first runs from 12600 (03:30) to 29700 (08:15) and last from 39600 (11:00) to 84600 (23:30). It is null for the 16 OpenStreetMap (OSM) routes.",
+    "unit": "seconds after midnight, local time",
+    "value_type": "level",
+    "geography": "165 routes (2026-10 snapshot)",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Feeds are re-read every night at 04:17 Puerto Rico time and the files are rewritten only when a feed changes. Snapshot built 2026-10-02."
+    },
+    "method": "network.py sorts the time at the first stop of each weekday trip and keeps the smallest and the largest.",
+    "sources": [
+      "ati_gtfs",
+      "muni_gtfs"
+    ],
+    "source_detail": "GTFS stop_times.txt (time at the first stop of each weekday trip), joined to trips.txt and calendar.txt",
+    "how_to_read": "Divide by 3600 to get hours. last is when the final trip leaves its first stop, not when it arrives. A timetable covers the dates from the operator's feed.start to feed.end in operators.json, not the build date. In the build of 2026-10-02 the earliest start is 2023-01-01 and the latest end is 2029-12-31; Ponce's feed ended 2024-12-31. Cite both the build date and the feed dates.",
+    "caveats": [
+      "For Autoridad de Transporte Integrado (ATI) and Guaynabo, which list each direction, the two values mix both directions of travel; in the 2026-10 snapshot the other 23 feeds do not separate directions.",
+      "They are taken from the stop times as listed, so in the 2026-10 snapshot the five Patillas routes with an inferred stop order also show them even though their times are not used in the replay."
+    ],
+    "see_also": [
+      "transit.route_trips",
+      "transit.typical_weekday"
+    ],
+    "where": {
+      "files": [
+        "transit_routes.geojson:first",
+        "transit_routes.geojson:last"
+      ],
+      "view": [
+        {
+          "label": "Map, Map layers tab: Transit routes",
+          "href": "index.html#l=routes"
+        }
+      ]
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.route_geometry_source",
+    "name": "How the route line was drawn",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Routes",
+    "kind": "variable",
+    "plain": "Says whether the line is the operator's own shape, a path along roads, a path along roads with a guessed stop order, or a volunteer-mapped line.",
+    "definition": "A code for how the line of a route from Autoridad de Transporte Integrado (ATI), a municipality or OpenStreetMap was made. The code stops (a straight dotted line joining the stops) exists in the program but no route uses it in the 2026-10 snapshot.",
+    "unit": "code (4 values)",
+    "value_type": "code",
+    "geography": "165 routes (2026-10 snapshot)",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Feeds are re-read every night at 04:17 Puerto Rico time and the files are rewritten only when a feed changes. Snapshot built 2026-10-02."
+    },
+    "method": "Set by network.py (shape, stops), snap_routes (roads, roads_inferred) and load_osm_routes (osm). See How route lines are drawn.",
+    "sources": [
+      "ati_gtfs",
+      "muni_gtfs",
+      "osm"
+    ],
+    "source_detail": "GTFS shapes.txt (shape); the OpenStreetMap road network, Geofabrik Puerto Rico extract (roads.bin), for roads and roads_inferred; OpenStreetMap route relations (osm)",
+    "how_to_read": "Trust shape most. Treat roads as a good estimate, roads_inferred as a rough guess, and osm as a volunteer map.",
+    "caveats": [
+      "The code stops would appear as a dotted straight line; none is present in the 2026-10 snapshot."
+    ],
+    "see_also": [
+      "transit.route_drawing",
+      "transit.route_order_note",
+      "transit.route_sig"
+    ],
+    "values": {
+      "shape": "The route shape published in the feed. 50 routes in the 2026-10 snapshot (all ATI routes and 12 municipal ones).",
+      "roads": "No shape in the feed; the line follows roads between the stops in listed order. 94 routes in the 2026-10 snapshot.",
+      "roads_inferred": "The feed lists the stops out of travel order, so the order of visit is inferred and the line follows roads. 5 routes (Patillas) in the 2026-10 snapshot.",
+      "osm": "Line mapped by volunteers in OpenStreetMap. 16 routes in the 2026-10 snapshot."
+    },
+    "where": {
+      "files": [
+        "transit_routes.geojson:geometry_source"
+      ],
+      "view": [
+        {
+          "label": "Map, Map layers tab: Transit routes",
+          "href": "index.html#l=routes"
+        }
+      ]
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.route_sig",
+    "name": "Route line fingerprint",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Routes",
+    "kind": "variable",
+    "plain": "A short technical code used to decide whether a road-snapped line must be redrawn. It has no meaning for readers.",
+    "definition": "The first 12 hexadecimal digits of an MD5 checksum (a fixed-length fingerprint of text) of the route's stop sequence plus the version of the snapping method. In the 2026-10 snapshot it is present on the 99 routes drawn along roads, all of them municipal routes, and absent on shape and OpenStreetMap (OSM) routes.",
+    "unit": "12-character code",
+    "value_type": "code",
+    "geography": "99 road-snapped routes (2026-10 snapshot)",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Feeds are re-read every night at 04:17 Puerto Rico time and the files are rewritten only when a feed changes. Snapshot built 2026-10-02."
+    },
+    "method": "snap_routes in network.py. If a route's sig matches the one in the last published file, the earlier line is reused instead of snapping again.",
+    "sources": [
+      "muni_gtfs"
+    ],
+    "source_detail": "Computed by network.py from the stop sequence of the route (GTFS stop_times.txt and stops.txt)",
+    "how_to_read": "Ignore it for analysis. A changed sig means the stops of the route or the snapping method changed.",
+    "caveats": [
+      "It is not an identifier. Use operator and route_id to point to a route."
+    ],
+    "see_also": [
+      "transit.route_drawing",
+      "transit.route_geometry_source"
+    ],
+    "where": {
+      "files": [
+        "transit_routes.geojson:sig"
+      ],
+      "view": [
+        {
+          "label": "Map, Map layers tab: Transit routes",
+          "href": "index.html#l=routes"
+        }
+      ]
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.route_order_note",
+    "name": "Note on a feed's stop order",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Routes",
+    "kind": "variable",
+    "plain": "A sentence that explains why the observatory had to guess the order of a route's stops. In the 2026-10 snapshot it appears on five Patillas routes.",
+    "definition": "Text, present only on routes whose feed lists the stops out of travel order. It states the zig-zag ratio found and that the order of visit is inferred and the times are not usable. The sentence says alphabetically when the stop names are in alphabetical order, and out of travel order otherwise. In the 2026-10 snapshot the five notes give the ratios 2.72, 2.77, 2.93, 4.44 and 4.99, and all five say out of travel order.",
+    "unit": "text",
+    "value_type": "text",
+    "geography": "5 routes (2026-10 snapshot)",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Feeds are re-read every night at 04:17 Puerto Rico time and the files are rewritten only when a feed changes. Snapshot built 2026-10-02."
+    },
+    "method": "Written by snap_routes in network.py when order_quality flags a route (zig-zag ratio above 2.5, or at least 5 stops in alphabetical order).",
+    "sources": [
+      "muni_gtfs"
+    ],
+    "source_detail": "Computed by network.py from the stop order in GTFS stop_times.txt and the stop names in stops.txt",
+    "how_to_read": "When a note is present, read the line as a plausible path, not the real route.",
+    "caveats": [
+      "Trip counts and first and last times for these routes are still in the file. Their times are left out of the timetable replay files."
+    ],
+    "see_also": [
+      "transit.route_drawing",
+      "transit.route_geometry_source",
+      "transit.feed_flags"
+    ],
+    "where": {
+      "files": [
+        "transit_routes.geojson:order_note"
+      ],
+      "view": [
+        {
+          "label": "Map, Map layers tab: Transit routes",
+          "href": "index.html#l=routes"
+        }
+      ]
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.route_network",
+    "name": "Network name (OpenStreetMap routes)",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Routes",
+    "kind": "variable",
+    "plain": "The name of the network or operator that volunteers wrote on an OpenStreetMap (OSM) route, such as Carros Públicos. Only OSM routes can have it.",
+    "definition": "Text of the OSM network tag, or the operator tag when there is no network. The key is present only on OSM routes: in the 2026-10 snapshot on all 16, with a null value on 4 of them. It is absent from feed routes.",
+    "unit": "text",
+    "value_type": "text",
+    "geography": "16 OpenStreetMap routes (2026-10 snapshot)",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Feeds are re-read every night at 04:17 Puerto Rico time and the files are rewritten only when a feed changes. Snapshot built 2026-10-02."
+    },
+    "method": "Copied from the OSM tags by load_osm_routes.",
+    "sources": [
+      "osm"
+    ],
+    "source_detail": "OpenStreetMap route relation tags network, then operator",
+    "caveats": [
+      "The text is free and unchecked. It is not an official operator name."
+    ],
+    "see_also": [
+      "transit.osm_routes",
+      "transit.route_label"
+    ],
+    "values": {
+      "Carros Públicos": "9 routes in the 2026-10 snapshot, all labelled Público.",
+      "Línea de San Juan": "2 routes in the 2026-10 snapshot.",
+      "San Juan Trolley": "1 route in the 2026-10 snapshot."
+    },
+    "where": {
+      "files": [
+        "transit_routes.geojson:network"
+      ],
+      "view": [
+        {
+          "label": "Map, Map layers tab: Transit routes",
+          "href": "index.html#l=routes"
+        }
+      ]
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.operators_file",
+    "name": "Operators file: operators, feeds, live checks, coverage and integration points",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Operators and timetable feeds",
+    "kind": "variable",
+    "plain": "One file with the list of operators and the state of their timetables, a check of real-time data, residents near stops in each municipality, and places where stops of two systems are close.",
+    "definition": "The file operators.json is one JSON object with six keys, listed under Codes. A feed is the set of files, in the General Transit Feed Specification (GTFS) format, in which one operator publishes its stops, routes, trips and times. The parts of the file have their own entries: the operator record, real-time data, residents counted for coverage and integration points.",
+    "unit": "one file (see each part)",
+    "value_type": "text",
+    "geography": "Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Feeds are re-read every night at 04:17 Puerto Rico time and the files are rewritten only when a feed changes. Snapshot built 2026-10-02."
+    },
+    "method": "Written by network.py and build.py, and rewritten every night by refresh_network.py. Operators with no feed (status none) come last; among the others the regional operator, Autoridad de Transporte Integrado (ATI), comes first and the rest follow by short name.",
+    "sources": [
+      "ati_gtfs",
+      "muni_gtfs",
+      "ntd",
+      "osm",
+      "census_tiger"
+    ],
+    "source_detail": "FTA National Transit Database 2023 GTFS weblinks table (2023-gtfs-weblinks.csv, report year 2023), read through the Transitland Atlas copy on GitHub; Transitland Atlas registry file feeds/nationalrtap.org.dmfr.json for the National RTAP portal feeds; ATI file PRITA_GTFS.zip",
+    "how_to_read": "Start with the operator record for the state of each feed, then the coverage records for residents near stops.",
+    "caveats": [
+      "The status stored in the file is the one worked out on the build date. The map recomputes it from the feed end date each time the page opens.",
+      "The files do not record when each feed was last downloaded. If a download fails, the previous copy of that feed is kept, so the build date does not prove that every feed was refreshed that night.",
+      "Terms differ by source. The terms of the Autoridad de Transporte Integrado (ATI) say the data are provided as is, without warranty, and that an app built on them must make clear it is not affiliated with or sponsored by ATI. The municipal feeds state no license; ask the municipality before reusing a feed beyond viewing it. Parts drawn from OpenStreetMap are under the Open Database License (credit and share-alike). Check each source's terms before reuse.",
+      "An operator record can have feed.url set to null when its feed address is not a public web page, and an operator with no feed may have no address at all (see Transit operator record)."
+    ],
+    "see_also": [
+      "transit.operator_record",
+      "transit.real_time",
+      "transit.coverage_served",
+      "transit.integration_points",
+      "data.build_network",
+      "layers.operators_list"
+    ],
+    "values": {
+      "built": "The build date (2026-10-02 in the 2026-10 snapshot).",
+      "operators": "A list of operator records (see Transit operator record): 44 in the 2026-10 snapshot.",
+      "live": "An object with checked (the date real-time sources were checked: 2026-10-02 in the 2026-10 snapshot) and sources (a list of checks, 6 in the 2026-10 snapshot; see Real-time vehicle data).",
+      "coverage": "An object with one record for each of the 78 municipalities, keyed by municipality name (for example Vega Baja). Each record holds the residents counted and the residents within 400 m of scheduled stops (see Residents counted for coverage).",
+      "transfers": "A list of pairs of nearby stops of different operators (366 in the 2026-10 snapshot; see Integration points).",
+      "transfers_total": "The number of pairs found before the list is cut at 600 (366 in the 2026-10 snapshot, so all are present)."
+    },
+    "where": {
+      "files": [
+        "operators.json:*"
+      ],
+      "view": [
+        {
+          "label": "Map, Transit tab: Operators list",
+          "href": "index.html"
+        }
+      ]
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.operator_discovery",
+    "name": "How the operator list is made",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Operators and timetable feeds",
+    "kind": "method",
+    "plain": "The observatory starts from the federal list of transit agencies that report to the National Transit Database, then looks for each agency's public timetable feed. In the 2026-10 snapshot it lists 44 operators and says which ones publish a feed.",
+    "definition": "1. Checklist: the 2023 table of General Transit Feed Specification (GTFS) web links of the National Transit Database (NTD, run by the Federal Transit Administration), read through the Transitland Atlas copy on GitHub. An agency is kept when its name matches a municipality (a municipal operator), contains Metropolitan Bus Authority (AMA), Highway and Transportation Authority or Público (públicos), or Maritime Transport (the ferry authority). Other agencies are skipped, and a City of San Juan in Texas is skipped by its NTD id. 2. Feeds: the Atlas registry of the National Rural Transit Assistance Program (RTAP) portal is read for municipal static GTFS feed URLs; the Autoridad de Transporte Integrado (ATI) feed comes from its open data page. 3. Volunteer routes: OpenStreetMap routes are added as a separate operator. 4. An operator on the checklist with no feed gets status none (or in_ati for AMA and the ferry authority, whose services are in the ATI feed).",
+    "unit": "not a measured value (a method)",
+    "value_type": "text",
+    "geography": "Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Feeds are re-read every night at 04:17 Puerto Rico time and the files are rewritten only when a feed changes. Snapshot built 2026-10-02."
+    },
+    "method": "network.discover reads both lists whenever a refresh is requested (the nightly refresh always requests one) and otherwise uses its saved copy; if the lists cannot be reached it falls back to the saved copy. A municipality that uploads a feed to the registry appears at the next refresh.",
+    "sources": [
+      "ntd",
+      "ati_gtfs",
+      "muni_gtfs",
+      "osm"
+    ],
+    "source_detail": "FTA National Transit Database 2023 GTFS weblinks table (2023-gtfs-weblinks.csv, report year 2023), read through the Transitland Atlas copy on GitHub; Transitland Atlas registry file feeds/nationalrtap.org.dmfr.json for the National RTAP portal feeds; ATI file PRITA_GTFS.zip",
+    "how_to_read": "The list is the federal checklist plus ATI, the feeds found and the OpenStreetMap routes. It is not a census of every vehicle service on the island.",
+    "caveats": [
+      "A private público or a bus service that neither reports to the NTD nor publishes a feed is not listed.",
+      "In the 2026-10 snapshot, Cabo Rojo, Canóvanas and Corozal publish feeds but are not on the NTD checklist, so their records have a null municipality and a null ntd_id. For these three, the municipality fields muni_system and muni_system_routes in municipalities.json therefore read null and 0, even though they publish feeds.",
+      "The checklist is the report-year 2023 table, so agencies that started or stopped reporting later are not reflected."
+    ],
+    "see_also": [
+      "transit.operator_record",
+      "transit.operator_type",
+      "transit.feed_status"
+    ],
+    "where": {
+      "files": [],
+      "view": [
+        {
+          "label": "Map, Transit tab: Operators list",
+          "href": "index.html"
+        }
+      ]
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.operator_record",
+    "name": "Transit operator record",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Operators and timetable feeds",
+    "kind": "variable",
+    "plain": "One record per operator: its name, type, how many routes, stops and weekday trips it has, and the state of its public timetable feed.",
+    "definition": "Each record in the operators list describes one operator (44 records in the 2026-10 snapshot). Its keys are listed under Codes. For an operator with no feed, routes, stops and trips_weekday are 0 and modes is an empty list.",
+    "unit": "text, codes and counts",
+    "value_type": "text",
+    "geography": "44 operators (2026-10 snapshot)",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Feeds are re-read every night at 04:17 Puerto Rico time and the files are rewritten only when a feed changes. Snapshot built 2026-10-02."
+    },
+    "method": "Built by build_network in network.py.",
+    "sources": [
+      "ati_gtfs",
+      "muni_gtfs",
+      "ntd",
+      "osm"
+    ],
+    "how_to_read": "Filter on feed.status to see who has current data. Use routes, stops and trips_weekday to compare the size of systems.",
+    "caveats": [
+      "feed.url is the address the timetable file was downloaded from: the ATI file, or a file uploaded to the National Rural Transit Assistance Program (RTAP) portal. It can be null: the observatory leaves it blank when the address is not a public web page.",
+      "feed.url is also null for an operator with no feed of its own when the federal list gives no link; where the list gives one, the observatory copies it without checking it. In the 2026-10 snapshot, 1 of the 18 operators without a feed of their own has a link (a web page, not a timetable file) and the other 17 are null. For the OpenStreetMap routes the url is the OpenStreetMap home page, not a timetable.",
+      "In the 2026-10 snapshot, 5 operators have no ntd_id: ATI, the OpenStreetMap routes and three municipal operators that are not on the federal list.",
+      "Operator-level trips_weekday counts trips with at least two stop times; the route-level count counts all trips of the route. They are equal in the 2026-10 snapshot."
+    ],
+    "see_also": [
+      "transit.operator_type",
+      "transit.feed_status",
+      "transit.feed_dates",
+      "transit.feed_flags",
+      "transit.operators_file",
+      "municipalities.muni_system"
+    ],
+    "values": {
+      "id": "Operator id: ati, osm, or a lower-case slug of the municipality or agency name (for example san_juan).",
+      "name": "Full name of the operator.",
+      "short": "Short name for display: ATI for the Autoridad de Transporte Integrado, AMA for the Autoridad Metropolitana de Autobuses, OpenStreetMap for the volunteer routes, the municipality's name (for example Bayamón) for a municipal operator, and the full name when no municipality is known (for example Municipality of Cabo Rojo).",
+      "type": "Kind of operator: regional, municipal, ama, ferry, publico or community (see Operator type).",
+      "municipality": "Municipality of a municipal operator on the federal list, else null (in the 2026-10 snapshot also null for the 3 municipal operators that are not on that list).",
+      "ntd_id": "National Transit Database id (a number), or null (5 operators in the 2026-10 snapshot).",
+      "modes": "List of the modes of the routes it publishes (an empty list for operators with no routes).",
+      "routes": "Number of routes drawn.",
+      "stops": "Number of boarding stops.",
+      "trips_weekday": "Weekday trips that have at least two stop times.",
+      "feed": "Object with status, url (the address the timetable was downloaded from; it can be null, see Cautions) and, for operators with a feed, agency, version, start, end, has_shapes, weekend_service and sometimes order_issue (see the feed entries)."
+    },
+    "where": {
+      "files": [],
+      "view": [
+        {
+          "label": "Map, Transit tab: Operators list",
+          "href": "index.html"
+        }
+      ]
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.operator_type",
+    "name": "Transit operator type",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Operators and timetable feeds",
+    "kind": "variable",
+    "plain": "Says what kind of operator a record is. There are six kinds: regional (Autoridad de Transporte Integrado, ATI), municipal, bus authority (Autoridad Metropolitana de Autobuses, AMA), ferry, público and community (OpenStreetMap volunteers).",
+    "definition": "A code for the type of operator, set from its name on the federal checklist or fixed by the observatory (ATI is regional, OpenStreetMap is community). A feed operator that is not on the checklist is recorded as municipal.",
+    "unit": "code (6 values)",
+    "value_type": "code",
+    "geography": "44 operators (2026-10 snapshot)",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Feeds are re-read every night at 04:17 Puerto Rico time and the files are rewritten only when a feed changes. Snapshot built 2026-10-02."
+    },
+    "method": "network.discover and build_network.",
+    "sources": [
+      "ntd",
+      "ati_gtfs",
+      "osm"
+    ],
+    "source_detail": "FTA National Transit Database 2023 GTFS weblinks table (2023-gtfs-weblinks.csv, report year 2023), read through the Transitland Atlas copy on GitHub; Transitland Atlas registry file feeds/nationalrtap.org.dmfr.json; ATI file PRITA_GTFS.zip",
+    "caveats": [
+      "The type says how the operator is listed, not who drives the vehicles."
+    ],
+    "see_also": [
+      "transit.operator_record",
+      "transit.operator_discovery"
+    ],
+    "values": {
+      "municipal": "A municipal agency. In the 2026-10 snapshot there are 39: 36 appear on the federal transit list, and 3 (Cabo Rojo, Canóvanas and Corozal) are known only because they publish a timetable feed; 24 of the 39 have a feed. The observatory does not record whether a municipality runs fixed routes or on-demand service.",
+      "regional": "Autoridad de Transporte Integrado (ATI), the regional authority (Tren Urbano, Autoridad Metropolitana de Autobuses (AMA) and Metrobús buses, ferries).",
+      "ama": "The Autoridad Metropolitana de Autobuses (AMA), the Metropolitan Bus Authority. Its buses are in the ATI feed, so it has no feed of its own.",
+      "ferry": "Puerto Rico Maritime Transport Authority. Its ferries are in the ATI feed.",
+      "publico": "Puerto Rico Highway and Transportation Authority, Público: the públicos (shared cars and vans). It publishes no timetable feed.",
+      "community": "The OpenStreetMap volunteer routes."
+    },
+    "where": {
+      "files": [],
+      "view": [
+        {
+          "label": "Map, Transit tab: Operators list",
+          "href": "index.html"
+        }
+      ]
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.feed_status",
+    "name": "Timetable feed status",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Operators and timetable feeds",
+    "kind": "variable",
+    "plain": "Says whether an operator's published timetable is still in force: current (more than 60 days left), expiring (60 days or fewer) or expired (the end date has passed). It does not say whether the service runs.",
+    "definition": "The state of an operator's public timetable, worked out from the feed's end date (feed.end). Expired: the end date is before today. Expiring: the end date is today or up to 60 days ahead. Current: the end date is more than 60 days ahead. Other values apply to operators without a feed or with special cases (for example in_ati: the operator's services are inside the feed of the Autoridad de Transporte Integrado, ATI). The stored status uses the build date; the map recomputes it from the Puerto Rico calendar date each time the page opens, so a page opened later never shows current for a feed that has ended.",
+    "unit": "code",
+    "value_type": "code",
+    "geography": "44 operators (2026-10 snapshot)",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Feeds are re-read every night at 04:17 Puerto Rico time and the files are rewritten only when a feed changes. Snapshot built 2026-10-02."
+    },
+    "method": "feed_status in network.py (build time) and opStatus in network.js (page open). Text on the map: Current, Expires soon, Expired, No public feed, In the ATI feed, Community-mapped.",
+    "sources": [
+      "ati_gtfs",
+      "muni_gtfs",
+      "ntd",
+      "osm"
+    ],
+    "how_to_read": "Use current for planning only after checking the end date. Treat expired timetables as history.",
+    "caveats": [
+      "Expired means the published file ended. The operator may still run service; the public file may simply not have been updated.",
+      "Current means the published timetable has not ended. It does not mean vehicles run on time or at all.",
+      "The code broken (the feed could not be read; map label Feed error) and unknown (no end date; map label Dates unknown) exist in the program but are not present in the 2026-10 snapshot.",
+      "Stops and routes of expired operators stay in the other files. Their lines and stops look the same as current ones on the map; the Expired badge appears only when a route is opened and in the Operators list, and a stop's popup gives the end date of its timetable. The observatory leaves them out of the vehicles-on-their-timetable layer, out of the active coverage figures and out of the access fields of tourism places that need a current timetable.",
+      "The feed object also holds url, the address the timetable was downloaded from. It can be null (see Transit operator record)."
+    ],
+    "see_also": [
+      "transit.feed_dates",
+      "transit.stop_feed_end",
+      "municipalities.acc_cur400_pct",
+      "transit.coverage_active",
+      "transit.vehicles_now",
+      "transit.operator_record",
+      "municipalities.feed_status",
+      "municipalities.muni_system"
+    ],
+    "values": {
+      "current": "The feed's end date is more than 60 days away. 17 operators on 2026-10-02.",
+      "expiring": "The feed ends within 60 days (map label: Expires soon). 1 operator on 2026-10-02.",
+      "expired": "The feed's end date has passed. 7 operators on 2026-10-02.",
+      "none": "The operator is on the federal checklist, but no timetable feed was found in the registry the observatory reads. It may publish elsewhere. 16 operators on 2026-10-02.",
+      "in_ati": "The operator's services are inside the ATI feed (the Autoridad Metropolitana de Autobuses, AMA, and the Maritime Transport Authority ferries). 2 operators on 2026-10-02.",
+      "community": "Routes mapped by volunteers in OpenStreetMap; there is no timetable. 1 operator on 2026-10-02."
+    },
+    "where": {
+      "files": [],
+      "view": [
+        {
+          "label": "Map, Transit tab: Operators list",
+          "href": "index.html"
+        }
+      ]
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.feed_dates",
+    "name": "Timetable feed dates, version and agency",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Operators and timetable feeds",
+    "kind": "variable",
+    "plain": "The first and last date covered by an operator's published timetable, the feed's version label and the agency name written inside the feed.",
+    "definition": "A feed is the set of files, in the General Transit Feed Specification (GTFS) format, in which one operator publishes its stops, routes, trips and times. feed.start and feed.end: the earliest start date and the latest end date among the feed's service patterns (calendar.txt); if the feed has no calendar, the dates in feed_info.txt. Written as YYYY-MM-DD. feed.version: the feed_version text (null for 2 feeds in the 2026-10 snapshot). feed.agency: the first agency name in the feed. In the build of 2026-10-02 the earliest start is 2023-01-01 and the latest end is 2029-12-31.",
+    "unit": "date (YYYY-MM-DD) and text",
+    "value_type": "date",
+    "geography": "25 operators with a feed (2026-10 snapshot)",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Feeds are re-read every night at 04:17 Puerto Rico time and the files are rewritten only when a feed changes. Snapshot built 2026-10-02."
+    },
+    "method": "parse_gtfs in network.py. An operator without a feed has none of these keys.",
+    "sources": [
+      "ati_gtfs",
+      "muni_gtfs"
+    ],
+    "how_to_read": "feed.end is the date after which the published timetable no longer applies.",
+    "caveats": [
+      "start and end come from the whole feed. A single route's own service can end earlier.",
+      "The end date is what the publisher entered. In the build of 2026-10-02, Bayamón and Jayuya end on 2029-12-31, far later than the other feeds.",
+      "The agency name is the one in the feed and can differ from the operator name (for example Sistema Integrado de Transportación del Sur for Ponce).",
+      "The files do not record when each feed was last downloaded. If a download fails, the previous copy of that feed is kept, so the build date does not prove that every feed was refreshed that night.",
+      "The feed object also holds url, the address the timetable was downloaded from. It can be null (see Transit operator record)."
+    ],
+    "see_also": [
+      "transit.feed_status",
+      "transit.stop_feed_end",
+      "transit.operator_record"
+    ],
+    "where": {
+      "files": [],
+      "view": [
+        {
+          "label": "Map, Transit tab: Operators list",
+          "href": "index.html"
+        }
+      ]
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.feed_flags",
+    "name": "Timetable feed flags: shapes, weekend service and order issues",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Operators and timetable feeds",
+    "kind": "variable",
+    "plain": "Three details about a feed: whether it has route shapes, whether it lists weekend service, and how many of its routes list stops out of order.",
+    "definition": "feed.has_shapes: true when at least one route is drawn from a shape in the feed (6 of 25 feeds in the 2026-10 snapshot). feed.weekend_service: true when any route has Saturday or Sunday trips; in the 2026-10 snapshot this holds for 4 feeds: Autoridad de Transporte Integrado (ATI), Guaynabo, Juncos and Vega Alta. feed.order_issue: the number of the operator's routes with an out-of-order stop list; the key exists only when it is above 0 (in the 2026-10 snapshot, Patillas, 5).",
+    "unit": "yes/no and a count",
+    "value_type": "flag",
+    "geography": "25 operators with a feed (2026-10 snapshot)",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Feeds are re-read every night at 04:17 Puerto Rico time and the files are rewritten only when a feed changes. Snapshot built 2026-10-02."
+    },
+    "method": "parse_gtfs and build_network in network.py. The OpenStreetMap (OSM) operator has has_shapes true and no weekend_service.",
+    "sources": [
+      "ati_gtfs",
+      "muni_gtfs"
+    ],
+    "how_to_read": "has_shapes false means the operator's lines on the map are drawn along roads by the observatory.",
+    "caveats": [
+      "weekend_service false means the feed lists no Saturday or Sunday trips. Service may exist without being published."
+    ],
+    "see_also": [
+      "transit.route_geometry_source",
+      "transit.route_order_note",
+      "transit.operator_record"
+    ],
+    "values": {
+      "true": "The condition holds for the feed.",
+      "false": "The condition does not hold, or the feed does not say."
+    },
+    "where": {
+      "files": [],
+      "view": [
+        {
+          "label": "Map, Transit tab: Operators list",
+          "href": "index.html"
+        }
+      ]
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.real_time",
+    "name": "Real-time vehicle data: what exists and what does not",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Real-time data",
+    "kind": "variable",
+    "plain": "On 2 October 2026 no public real-time feed of bus, train or ferry positions was found for Puerto Rico, so the data hold no live vehicle positions. This entry lists what was checked and what each source needs.",
+    "definition": "The key live in operators.json holds checked (the check date, 2026-10-02) and sources (the list of checks, 6 on that date). Each check has id, name, status, detail and, when there is one, url. The checks of 2026-10-02 cover the Autoridad de Transporte Integrado (ATI) real-time feed (listed by ATI as in development, with no feed address), the AMA Móvil app (AMA is the Autoridad Metropolitana de Autobuses; positions shown in an app, no public data), ATI express buses (a third-party app says it uses positions the operator publishes; no public feed), municipal systems (none found), the AcuaExpreso ferries (an app, no public feed) and aircraft near Puerto Rico (community data in ADS-B format, Automatic Dependent Surveillance-Broadcast, that need a relay).",
+    "unit": "status of each source (text)",
+    "value_type": "code",
+    "geography": "Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Checked by a person and recorded in the program code (network.py); the program does not re-check the sources. Last checked 2026-10-02"
+    },
+    "method": "The result of each check is written into LIVE_SOURCES in network.py (checked 2026-10-02). The observatory does not test the sources automatically.",
+    "sources": [
+      "ati_gtfs"
+    ],
+    "source_detail": "operators.json key live: live.checked (2026-10-02) and live.sources (6 items with id, name, status, detail and url). Pages checked: ATI open data page, AMA Móvil (AMATrack) on Google Play, transPRte on the Apple App Store, ATI urban transportation page, community ADS-B networks",
+    "how_to_read": "Where the observatory shows vehicles moving, it is replaying a timetable. See Vehicles on their timetable now.",
+    "caveats": [
+      "The check is a snapshot. A feed published after the check date will not be known until someone updates the list.",
+      "The statuses describe public data. An operator can have private tracking that is not shared."
+    ],
+    "see_also": [
+      "transit.vehicles_now",
+      "transit.operators_file",
+      "layers.live_status_box"
+    ],
+    "values": {
+      "not published": "The operator has announced the feed but no address exists. Example: the ATI real-time feed, which ATI lists as en desarrollo (in development).",
+      "app only": "Positions are shown in a mobile app, and no public data feed sits behind it (AMA Móvil, the ferries).",
+      "private feed": "A third-party app says it shows positions that the operator publishes. No public feed address exists, and access is said to require a request to ATI (the ATI express buses).",
+      "none found": "No real-time feed exists in the public registries (municipal systems).",
+      "available, needs a relay": "Free live data exist but their servers do not allow calls from a web page, so a small relay service is needed (aircraft, ADS-B)."
+    },
+    "where": {
+      "files": [],
+      "view": [
+        {
+          "label": "Map, Transit tab: What is live",
+          "href": "index.html"
+        }
+      ]
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.coverage_pop",
+    "name": "Residents counted for coverage (by municipality)",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Service coverage and planning",
+    "kind": "variable",
+    "plain": "How many residents each municipality has in the coverage figures: the 2020 Census count for blocks with at least one resident. For all of Puerto Rico it is 3,285,874 people.",
+    "definition": "The field pop in each municipality record of operators.json coverage: the sum of the 2020 Census residents (the Census field POP100, total people counted in the block) of the municipality's census blocks that have residents. The 78 values add up to 3,285,874, the Puerto Rico total in population_blocks.json.",
+    "unit": "residents (2020 Census)",
+    "value_type": "count",
+    "geography": "78 municipalities",
+    "coverage": {
+      "timeline": "decennial",
+      "first": 2020,
+      "last": 2020,
+      "frequency": "2020 Census population; recomputed whenever the stops change"
+    },
+    "method": "network.coverage adds block residents by the first five digits of the block code (the county, which is the municipality).",
+    "sources": [
+      "census_tiger"
+    ],
+    "source_detail": "US Census Bureau TIGERweb, 2020 Census Blocks (tigerWMS_Census2020 MapServer layer 10), STATE=72, fields GEOID, POP100, INTPTLAT and INTPTLON, blocks with POP100 above 0",
+    "how_to_read": "Use it as the denominator for the share of residents near a stop.",
+    "caveats": [
+      "These are 2020 Census counts, not current estimates. The Census Bureau applies privacy protection to block counts, which can shift small blocks.",
+      "Census Bureau data are a US Government work; the Bureau asks to be cited as the source."
+    ],
+    "see_also": [
+      "transit.population_blocks",
+      "transit.coverage_served"
+    ],
+    "where": {
+      "files": [],
+      "view": [
+        {
+          "label": "Map, Transit tab: summary figures",
+          "href": "index.html#l=routes"
+        }
+      ]
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.coverage_served",
+    "name": "Residents within 400 m of a scheduled stop (coverage records in the operators file)",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Service coverage and planning",
+    "kind": "measure",
+    "plain": "How many residents live in blocks within 400 metres (about a quarter mile, in a straight line) of a scheduled stop. Using 2020 Census counts and the stops of the 2026-10-02 build, it is 925,788 of 3,285,874 residents in Puerto Rico: 28.2% counting every scheduled stop, 22.2% counting only operators whose timetable has not ended.",
+    "definition": "Fields served and served_pct in each municipality record of operators.json coverage. served: residents of census blocks whose nearest scheduled stop (any operator, any feed status) is 400 m or less away in a straight line. served_pct: served divided by pop, times 100, one decimal. In the 2026-10 snapshot, 40 of 78 municipalities have 0 residents within 400 m of a scheduled stop. The same values are copied into municipalities.json as pop_served_400m and pop_served_pct.",
+    "unit": "residents (2020 Census); % of residents",
+    "value_type": "count",
+    "geography": "78 municipalities",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Recomputed in each full build and by the nightly transit refresh when a feed changes (transit data built 2026-10-02); residents are 2020 Census counts"
+    },
+    "method": "network.coverage finds the nearest scheduled stop of each block and keeps the block if the distance is 400 m or less. The block's position is the Census Bureau's internal point. 400 m is about a quarter mile. It is the walking distance the observatory uses, a planning convention and not a legal or engineering standard.",
+    "sources": [
+      "census_tiger",
+      "ati_gtfs",
+      "muni_gtfs"
+    ],
+    "source_detail": "US Census Bureau TIGERweb, 2020 Census Blocks (tigerWMS_Census2020 MapServer layer 10), STATE=72, fields GEOID, POP100, INTPTLAT and INTPTLON, blocks with POP100 above 0; distances use the scheduled stops in transport.json (sources ati_gtfs and muni_gtfs)",
+    "how_to_read": "A higher share means more residents have a scheduled stop close by. It says nothing about how often vehicles come or where they go. People: 2020 Census. Stops and timetables: build of 2026-10-02.",
+    "caveats": [
+      "Straight-line distance, not walking distance. Hills, rivers, highways and walls can make the real walk longer.",
+      "Only scheduled stops count. Stops mapped only in OpenStreetMap are not used.",
+      "Stops of expired timetables still count here. In the 2026-10 snapshot, the active figures leave them out: 729,507 residents (22.2%).",
+      "A block is counted at one point, so a block that straddles the 400 m line is all in or all out.",
+      "If you recompute this from the published block and stop files, the total differs by under 0.1% in the 2026-10 snapshot. Block positions in the file are rounded, and the observatory finds the nearest stop in degrees rather than metres.",
+      "A low or zero share can mean that the observatory found no timetable, not that no service runs. In the 2026-10 snapshot, no timetable feed was found in the registry the observatory reads for 15 municipal systems and the públicos authority, and públicos are never counted. Do not rank municipalities by this share without checking each operator's feed status.",
+      "Census Bureau data are a US Government work; the Bureau asks to be cited as the source. The stop data carry the terms described in the entry on transit routes."
+    ],
+    "see_also": [
+      "transit.coverage_active",
+      "transit.coverage_systems",
+      "transit.coverage_pop",
+      "transit.distance_rules",
+      "municipalities.pop_served_400m",
+      "municipalities.pop_served_pct",
+      "municipalities.pop_served_method",
+      "municipalities.walk_rule_400m",
+      "measures.residents_served_400m",
+      "measures.distance_rules"
+    ],
+    "where": {
+      "files": [],
+      "view": [
+        {
+          "label": "Map, Transit tab: summary figures",
+          "href": "index.html#l=routes"
+        }
+      ]
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.coverage_active",
+    "name": "Residents within 400 m of a scheduled stop, excluding expired timetables",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Service coverage and planning",
+    "kind": "measure",
+    "plain": "Like the 400 m measure, but it leaves out stops of operators whose timetable had ended. With 2020 Census counts and the stops of the 2026-10-02 build, it is 729,507 residents (22.2%) in Puerto Rico, compared with 28.2% when every stop counts.",
+    "definition": "Fields served_active and served_active_pct in each municipality record of operators.json coverage. served_active: residents of blocks with at least one scheduled stop within 400 m that belongs to an operator whose feed status was not expired on the build date. served_active_pct: that number divided by pop, times 100, one decimal. Copied into municipalities.json as pop_served_active_pct.",
+    "unit": "residents (2020 Census); % of residents",
+    "value_type": "count",
+    "geography": "78 municipalities",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Recomputed in each full build and by the nightly transit refresh when a feed changes (transit data built 2026-10-02); residents are 2020 Census counts"
+    },
+    "method": "network.coverage queries all scheduled stops within 400 m of each block and skips those whose operator id is in the set of expired operators (inactive_ops).",
+    "sources": [
+      "census_tiger",
+      "ati_gtfs",
+      "muni_gtfs"
+    ],
+    "source_detail": "US Census Bureau TIGERweb, 2020 Census Blocks (tigerWMS_Census2020 MapServer layer 10), STATE=72, fields GEOID, POP100, INTPTLAT and INTPTLON, blocks with POP100 above 0; distances use the scheduled stops in transport.json (sources ati_gtfs and muni_gtfs)",
+    "how_to_read": "Compare with the all-stops measure. The map calls this a stop with a current timetable; for tourism places the matching measure is municipalities.acc_cur400_pct. The gap shows how much of the measured access depends on timetables that have ended. People: 2020 Census. Stops and timetables: build of 2026-10-02. For example, in the 2026-10-02 build Ponce shows 56.6% with every stop and 0.0% with only active timetables, because its feed ended on 2024-12-31.",
+    "caveats": [
+      "The expired set is fixed on the build date. On 2026-10-02 it includes the 7 operators with an expired feed: Caguas, Cidra, Fajardo, Hatillo, Juncos, Ponce, San Lorenzo. An expiring feed still counts as active.",
+      "In the 2026-10 snapshot, in Manatí and Carolina this figure is higher than the all-stops figure (by 35 and 223 residents), because the two are found with different search steps.",
+      "A low or zero share can mean that the observatory found no timetable, not that no service runs. In the 2026-10 snapshot, no timetable feed was found in the registry the observatory reads for 15 municipal systems and the públicos authority, and públicos are never counted. Do not rank municipalities by this share without checking each operator's feed status."
+    ],
+    "see_also": [
+      "transit.coverage_served",
+      "transit.feed_status",
+      "municipalities.pop_served_active_pct",
+      "municipalities.acc_cur400_pct",
+      "measures.residents_served_400m",
+      "measures.distance_rules"
+    ],
+    "where": {
+      "files": [],
+      "view": [
+        {
+          "label": "Map, Transit tab: summary figures",
+          "href": "index.html#l=routes"
+        }
+      ]
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.coverage_systems",
+    "name": "Residents within 400 m of Autoridad de Transporte Integrado (ATI) stops, municipal stops, or both",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Service coverage and planning",
+    "kind": "measure",
+    "plain": "How many residents live within 400 metres of a stop of Autoridad de Transporte Integrado (ATI), of a municipal system, or of both. With 2020 Census counts and the stops of the 2026-10-02 build, 487,026 residents of Puerto Rico are near an ATI stop, 609,383 are near a municipal stop and 171,389 are near both.",
+    "definition": "Fields served_ati, served_muni and served_both in each municipality record of operators.json coverage. served_ati: residents of blocks with at least one ATI stop within 400 m. served_muni: residents with at least one stop of a municipal operator (any scheduled stop that is not ATI's) within 400 m. served_both: residents with both. Copied into municipalities.json as pop_served_ati and pop_served_muni.",
+    "unit": "residents (2020 Census)",
+    "value_type": "count",
+    "geography": "78 municipalities",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Recomputed in each full build and by the nightly transit refresh when a feed changes (transit data built 2026-10-02); residents are 2020 Census counts"
+    },
+    "method": "network.coverage flags each block for ATI, municipal or both from the stops found within 400 m. Expired municipal feeds still count here.",
+    "sources": [
+      "census_tiger",
+      "ati_gtfs",
+      "muni_gtfs"
+    ],
+    "source_detail": "US Census Bureau TIGERweb, 2020 Census Blocks (tigerWMS_Census2020 MapServer layer 10), STATE=72, fields GEOID, POP100, INTPTLAT and INTPTLON, blocks with POP100 above 0; distances use the scheduled stops in transport.json (sources ati_gtfs and muni_gtfs)",
+    "how_to_read": "served_both shows where the two kinds of system overlap, which is where coordination matters. People: 2020 Census. Stops and timetables: build of 2026-10-02.",
+    "caveats": [
+      "Expired municipal timetables are included. See the active measure for the version without them.",
+      "A resident near a stop of both counts once in served_both and also in served_ati and in served_muni, so the three do not add up.",
+      "In the 2026-10 snapshot, in 11 municipalities the all-stops figure differs from served_ati + served_muni - served_both, by up to 287 residents, because the two are found with different search steps.",
+      "A low or zero share can mean that the observatory found no timetable, not that no service runs. In the 2026-10 snapshot, no timetable feed was found in the registry the observatory reads for 15 municipal systems and the públicos authority, and públicos are never counted. Do not rank municipalities by this share without checking each operator's feed status."
+    ],
+    "see_also": [
+      "transit.coverage_served",
+      "transit.coverage_active",
+      "municipalities.pop_served_ati",
+      "municipalities.pop_served_muni"
+    ],
+    "where": {
+      "files": []
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.population_blocks",
+    "name": "Population by census block, with distance to the nearest scheduled stop",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Service coverage and planning",
+    "kind": "variable",
+    "plain": "A list of the 36,570 census blocks that had residents in the 2020 Census. Each row gives the block's position, its 2020 population and how far it is from the nearest scheduled stop.",
+    "definition": "The file population_blocks.json is a list of 36,570 rows, one for each 2020 Census block that has residents. Each row is [longitude, latitude, residents, metres], described under Codes. The rows hold 3,285,874 residents in total (2020 Census). The 2D map uses the file for service gaps and the route planner, and the 3D view uses it for the route planner. The coverage figures in operators.json are computed from the same blocks.",
+    "unit": "rows of [degrees, degrees, residents, metres]",
+    "value_type": "count",
+    "geography": "36,570 census blocks (2020 Census)",
+    "coverage": {
+      "timeline": "decennial",
+      "first": 2020,
+      "last": 2020,
+      "frequency": "2020 population; the distance column is rewritten whenever the stops change"
+    },
+    "method": "load_blocks in network.py reads the 2020 Census block layer of TIGERweb for Puerto Rico (state code 72), keeps blocks with POP100 above 0 and stores the internal point. coverage() then replaces the block's county code with the distance to the nearest scheduled stop.",
+    "sources": [
+      "census_tiger",
+      "ati_gtfs",
+      "muni_gtfs"
+    ],
+    "source_detail": "US Census Bureau TIGERweb, 2020 Census Blocks (tigerWMS_Census2020 MapServer layer 10), STATE=72, fields GEOID, POP100, INTPTLAT and INTPTLON, blocks with POP100 above 0; distances use the scheduled stops in transport.json (sources ati_gtfs and muni_gtfs)",
+    "how_to_read": "Add up residents for blocks that meet a distance rule. For example, blocks with metres of 400 or less hold the residents counted as near a stop.",
+    "caveats": [
+      "The 2020 Census applies privacy protection to block counts, so small blocks are not exact.",
+      "Positions are rounded, and the distance is a straight line from the block's internal point, not from where people live in the block.",
+      "A row is a statistical block with its internal point, not a home. In the 2020 Census counts used, 50 rows hold exactly one resident. Do not use rows with very small counts to identify or locate any household.",
+      "Census Bureau data are a US Government work; the Bureau asks to be cited as the source."
+    ],
+    "see_also": [
+      "transit.block_stop_distance",
+      "transit.service_gaps",
+      "transit.coverage_pop"
+    ],
+    "values": {
+      "1st value: longitude": "Longitude of the block's internal point, in decimal degrees, rounded to 4 decimals (about 11 m). The internal point is a point the Census Bureau places inside the block, usually near its centre.",
+      "2nd value: latitude": "Latitude of the block's internal point, in decimal degrees, rounded to 4 decimals.",
+      "3rd value: residents": "The 2020 Census population of the block (the Census field POP100, total people counted in the block). Blocks with 0 residents are left out.",
+      "4th value: metres": "Straight-line distance in whole metres from the internal point to the nearest scheduled stop, capped at 9,999. Stops of expired timetables count. It is a distance, not a count of housing units."
+    },
+    "where": {
+      "files": [
+        "population_blocks.json:*"
+      ],
+      "view": [
+        {
+          "label": "Map, Transit tab: Residents far from service",
+          "href": "index.html#l=gaps"
+        }
+      ]
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.block_stop_distance",
+    "name": "Distance from a census block to the nearest scheduled stop",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Service coverage and planning",
+    "kind": "variable",
+    "plain": "How many metres in a straight line from the block to the closest scheduled stop. Values above 9,999 are shown as 9,999.",
+    "definition": "The fourth value of each row in population_blocks.json, in whole metres (the decimals are cut off). It uses every scheduled stop in the Autoridad de Transporte Integrado (ATI) and municipal feeds, whatever the state of the feed. In the build of 2026-10-02, values run from 2 to 9999; 6,419 blocks are capped at 9999; and 925,788 residents (28.2%) are in blocks at 400 m or less.",
+    "unit": "metres (straight line, capped at 9,999)",
+    "value_type": "level",
+    "geography": "36,570 census blocks (2020 Census)",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Feeds are re-read every night at 04:17 Puerto Rico time and the files are rewritten only when a feed changes. Snapshot built 2026-10-02."
+    },
+    "method": "network.coverage uses a spatial index to find the nearest stop and converts the degree difference to metres (111,320 m per degree of latitude, shortened for longitude).",
+    "sources": [
+      "census_tiger",
+      "ati_gtfs",
+      "muni_gtfs"
+    ],
+    "source_detail": "US Census Bureau TIGERweb, 2020 Census Blocks (tigerWMS_Census2020 MapServer layer 10), STATE=72, fields GEOID, POP100, INTPTLAT and INTPTLON, blocks with POP100 above 0; distances use the scheduled stops in transport.json (sources ati_gtfs and muni_gtfs)",
+    "how_to_read": "A small value means a stop is near. Use 400 m for the walk-access measure and 800 m for the service-gap layer.",
+    "caveats": [
+      "The nearest stop is found in degrees, so a few blocks can have a slightly longer distance than the true nearest stop; recomputing the figures from the published files changes the total near 400 m by under 0.1% in the 2026-10 snapshot.",
+      "The distance ignores streets, barriers and the timetable. A stop of an expired timetable counts as a stop.",
+      "The distance counts stops of expired timetables. For tourism places, the matching distance to the nearest stop with a current timetable is ts_m in place_access.json."
+    ],
+    "see_also": [
+      "transit.population_blocks",
+      "transit.service_gaps",
+      "transit.distance_rules",
+      "place_access.ts_m"
+    ],
+    "where": {
+      "files": []
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.service_gaps",
+    "name": "Residents far from service (map layer)",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Service coverage and planning",
+    "kind": "layer",
+    "plain": "Residents who live more than 800 m, in a straight line, from any scheduled stop. The map layer draws a circle for each census block with 40 or more residents that is more than 800 m from a stop. Using 2020 Census counts and the stops of the 2026-10-02 build, 1,986,126 residents (60%) in Puerto Rico live more than 800 m from any stop in a published timetable; the total counts every block, including small ones.",
+    "definition": "A map layer drawn from population_blocks.json: one circle for each block with more than 800 m to the nearest scheduled stop and at least 40 residents (12,790 blocks in the 2026-10 snapshot). Circle size follows the number of residents. The note on the map counts all residents in blocks more than 800 m from a stop, including blocks with fewer than 40 people.",
+    "unit": "blocks and residents",
+    "value_type": "geometry",
+    "geography": "Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Recomputed in each full build and by the nightly transit refresh when a feed changes (transit data built 2026-10-02); residents are 2020 Census counts"
+    },
+    "method": "The layer filters the rows of population_blocks.json in the browser (network.js, setGaps). 800 m is about half a mile. It is a planning convention chosen by the observatory, not a legal or engineering standard.",
+    "sources": [
+      "census_tiger",
+      "ati_gtfs",
+      "muni_gtfs"
+    ],
+    "source_detail": "US Census Bureau TIGERweb, 2020 Census Blocks (tigerWMS_Census2020 MapServer layer 10), STATE=72, fields GEOID, POP100, INTPTLAT and INTPTLON, blocks with POP100 above 0; distances use the scheduled stops in transport.json (sources ati_gtfs and muni_gtfs)",
+    "how_to_read": "Large circles in low-service areas show many residents far from a scheduled stop. People: 2020 Census. Stops and timetables: build of 2026-10-02.",
+    "caveats": [
+      "Stops from expired timetables still count as stops. Públicos, systems for which no timetable feed was found and stops mapped only in OpenStreetMap are not counted. The true gap could therefore be larger or smaller.",
+      "Straight-line distance and 2020 counts. It is a planning aid, not a demand forecast."
+    ],
+    "see_also": [
+      "transit.population_blocks",
+      "transit.block_stop_distance",
+      "measures.service_gap",
+      "layers.service_gaps_control"
+    ],
+    "where": {
+      "files": [],
+      "view": [
+        {
+          "label": "Map, Transit tab: Residents far from service",
+          "href": "index.html#l=gaps"
+        }
+      ]
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.integration_points",
+    "name": "Integration points: nearby stops of different operators",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Service coverage and planning",
+    "kind": "layer",
+    "plain": "Places where a stop of one transit system lies within 250 metres of a stop of another system, a starting point for looking at possible transfers. There are 366 in the 2026-10 snapshot.",
+    "definition": "The transfers list in operators.json has one record for each pair of nearby stops of different operators; its keys are listed under Codes. In the 2026-10 snapshot the total found is 366 (transfers_total) and the list is cut at 600, so all are present. Most pairs involve Autoridad de Transporte Integrado (ATI): 362 of 366.",
+    "unit": "pairs of stops",
+    "value_type": "geometry",
+    "geography": "Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Feeds are re-read every night at 04:17 Puerto Rico time and the files are rewritten only when a feed changes. Snapshot built 2026-10-02."
+    },
+    "method": "network.transfers compares every scheduled stop with the others within 250 m, keeps pairs from different operators, keeps only one pair for each pair of operators in each 0.001-degree cell (about 110 m) around the first stop, and sorts by distance.",
+    "sources": [
+      "ati_gtfs",
+      "muni_gtfs"
+    ],
+    "how_to_read": "A short distance means stops of two systems are almost the same place.",
+    "caveats": [
+      "A pair shows that the stops are close. It does not show that riders can transfer: the observatory does not compare timetables, walking routes or fares.",
+      "Stops of expired timetables are included; in the 2026-10 snapshot some pairs involve Caguas, Juncos or San Lorenzo, whose feeds had ended."
+    ],
+    "see_also": [
+      "transit.distance_rules",
+      "transit.operators_file",
+      "measures.integration_points",
+      "layers.integration_points_control"
+    ],
+    "values": {
+      "a": "Operator id of the first stop (for example ati).",
+      "an": "Name of the first stop.",
+      "b": "Operator id of the second stop.",
+      "bn": "Name of the second stop.",
+      "lat": "Latitude of the midpoint of the two stops (5 decimals).",
+      "lng": "Longitude of the midpoint of the two stops (5 decimals).",
+      "d": "Distance between the two stops in whole metres (0 to 249 in the 2026-10 snapshot)."
+    },
+    "where": {
+      "files": [],
+      "view": [
+        {
+          "label": "Map, Transit tab: Integration points",
+          "href": "index.html#l=xfer"
+        }
+      ]
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.distance_rules",
+    "name": "Distances used for walking, gaps, transfers and removing duplicates",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Service coverage and planning",
+    "kind": "method",
+    "plain": "The observatory uses fixed straight-line distances. 400 m is a walk to a stop, 800 m is a service gap and 250 m is an integration point. Distances from 30 m to 2 km remove duplicate points.",
+    "definition": "400 m: about a quarter mile, used for the walk rings on the map, the shares of tourism places near any mapped stop and near a stop with a current timetable, and the resident coverage. 800 m: a service gap, and the outer limit of the 'Stop 400–800 m away' and 'Only expired or unscheduled stops within 800 m' classes of the access profile. 250 m: two stops of different operators count as an integration point. 30 m: an OpenStreetMap (OSM) stop that close to a scheduled stop is treated as the same stop. 200 m (rail stations and ferry terminals) and 100 m (bus stations): OSM station points that close to a same-kind point are folded together. 2 km: an OSM aerodrome that close to a Federal Aviation Administration (FAA) airport is dropped. 500 m: how far a stop may be moved to reach a road when a route line is snapped.",
+    "unit": "metres (straight line)",
+    "value_type": "level",
+    "geography": "Puerto Rico",
+    "coverage": {
+      "timeline": "static",
+      "first": null,
+      "last": null,
+      "frequency": "Fixed in the program code"
+    },
+    "method": "Constants in network.py (WALK_M, TRANSFER_M), transport.py (WALK_M, HUB_FOLD_M) and access.py (NEAR_M, FAR_M). Distances are computed on a flat approximation: 111,320 m per degree of latitude, and the same figure scaled by the cosine of the latitude for longitude.",
+    "sources": [
+      "ati_gtfs",
+      "muni_gtfs",
+      "osm",
+      "faa_airports"
+    ],
+    "how_to_read": "All distances are straight lines, not walking routes.",
+    "caveats": [
+      "The distances are planning conventions chosen for the observatory, not legal or engineering standards."
+    ],
+    "see_also": [
+      "transit.coverage_served",
+      "methods.access_profile",
+      "place_access.ts_m",
+      "transit.service_gaps",
+      "transit.integration_points",
+      "transit.transport_features",
+      "municipalities.walk_rule_400m",
+      "measures.distance_rules"
+    ],
+    "where": {
+      "files": []
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.typical_weekday",
+    "name": "Typical weekday, Saturday and Sunday service",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Timetable replay",
+    "kind": "method",
+    "plain": "Weekday trip counts show one reference day, usually Wednesday, so trips that run only on other weekdays are not included. Saturday and Sunday use their own timetables. Holidays are not modelled.",
+    "definition": "The reference weekday is Wednesday, or the first of Tuesday, Thursday, Monday or Friday that the feed actually serves. A trip counts as weekday service if its service pattern runs on that day, as Saturday service if its pattern runs on Saturday and as Sunday service if it runs on Sunday. A pattern that runs on several day types counts in each. If a trip names a service that the feed does not define, it counts as weekday service. If a feed has no calendar.txt, every service listed in calendar_dates.txt counts as running on every day type.",
+    "unit": "not a measured value (a method)",
+    "value_type": "text",
+    "geography": "Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Feeds are re-read every night at 04:17 Puerto Rico time and the files are rewritten only when a feed changes. Snapshot built 2026-10-02."
+    },
+    "method": "parse_gtfs in network.py. The feed's start and end dates for each pattern are not checked, and exceptions in calendar_dates.txt (holidays, added or removed dates) are not applied when the feed has a calendar.txt.",
+    "sources": [
+      "ati_gtfs",
+      "muni_gtfs"
+    ],
+    "how_to_read": "Read weekday counts as the number of trips on a normal Wednesday, not an average of the week.",
+    "caveats": [
+      "The Autoridad de Transporte Integrado (ATI) feed read on 2026-10-02 has a pattern named Holiday_Service_Route_1. Its calendar covers every Monday to Friday from 2026-07-27 to 2027-05-31, but for its Monday and Wednesday pattern the feed's exceptions file removes 87 dates and adds 6. The observatory does not apply exceptions, so the 30 trips of that pattern count as ordinary weekday trips on route 1: 81 in the file, 51 without them.",
+      "Service on public holidays, school breaks or special events is not modelled.",
+      "A feed whose patterns cover different date ranges is counted as if all ran together."
+    ],
+    "see_also": [
+      "transit.route_trips",
+      "transit.stop_trips_weekday",
+      "transit.stop_calls_sat",
+      "transit.stop_calls_sun",
+      "transit.trips_files"
+    ],
+    "where": {
+      "files": []
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.trips_files",
+    "name": "Timetable replay files: weekday, Saturday and Sunday trips",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Timetable replay",
+    "kind": "layer",
+    "plain": "Three files that hold every scheduled trip as its stops and times along its route's line, so the map and the 3D view can show vehicles on their timetable, following the roads. They are not Global Positioning System (GPS) data.",
+    "definition": "A trip is one scheduled run of a vehicle along a route, as listed in a feed (the set of GTFS files in which an operator publishes its stops, routes, trips and times). In the 2026-10 snapshot, trips.json (weekday, typical Wednesday service) holds 3,297 trips from 25 operators. trips_sa.json (Saturday) holds 1,648 trips from 4 operators: Autoridad de Transporte Integrado (ATI), Guaynabo, Juncos and Vega Alta. trips_su.json (Sunday) holds 381 trips from 1 operator, ATI. Each file has five keys: day (a label, which reads 'weekday (typical Wednesday service)' in trips.json, 'Saturday' in trips_sa.json and 'Sunday' in trips_su.json); format (2); paths (one path for each stop pattern, that is each set of trips that stop at the same places in the same order: a list of [longitude, latitude, metres from the start of the path] along the route's line, at 5 decimals); path_kind (for each path, 'line' when it follows the route's line, or 'stops' when no line fits the stops and the path joins them in straight lines); and trips (the list; see Trip record). In the 2026-10 snapshot, the 3,297 weekday trips share 222 stop patterns, 206 of them along their route's line. Only trips with at least two stop times are kept. Trips of the five Patillas routes with an inferred stop order are left out: in the 2026-10 snapshot the operator trips_weekday values in operators.json add up to 3,312, while trips.json holds 3,297 (15 Patillas trips left out). Trips of expired and expiring operators remain in the files: in the 2026-10 snapshot, 372 weekday trips belong to expired operators.",
+    "unit": "trips (lists of timed stops)",
+    "value_type": "geometry",
+    "geography": "Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Feeds are re-read every night at 04:17 Puerto Rico time and the files are rewritten only when a feed changes. Snapshot built 2026-10-02."
+    },
+    "method": "parse_gtfs in network.py reads each trip's stops and times. trip_paths.py places the stops of each trip on one line of its route (the operator's own shape, or the road network that network.py snaps the route to), in travel order, and keeps the part of the line between the first and the last stop, simplified to about 5 m. Trips with the same stops in the same order share one path. refresh_network.py and build.py save the files. The 2D map loads the file that matches today's day in Puerto Rico; the 3D view loads the weekday file. Between two stops, a vehicle's time is spread along the path in proportion to distance (tripPoints in common.js).",
+    "sources": [
+      "ati_gtfs",
+      "muni_gtfs"
+    ],
+    "how_to_read": "Each trip is one scheduled run, drawn along its route's line. In the 2026-10 snapshot, 3,191 of the 3,297 weekday trips follow their route line; the other 106 (16 stop patterns whose stops do not fit any line of their route) join their stops in straight lines and are marked 'stops' in path_kind. Speeds between stops come from the timetable, so a vehicle keeps its scheduled times but moves at an even speed between two stops. A timetable covers the dates from the operator's feed.start to feed.end in operators.json, not the build date. In the build of 2026-10-02 the earliest start is 2023-01-01 and the latest end is 2029-12-31; Ponce's feed ended 2024-12-31. Cite both the build date and the feed dates.",
+    "caveats": [
+      "The files hold timetables, not observed positions.",
+      "The 3D view replays every weekday trip in trips.json, including those of expired timetables; the 2D map leaves expired operators out.",
+      "In the 2026-10 snapshot, two weekday trips of Ponce (route Tuque) have one stop time that is far earlier than the stops around it, so the replay would place the vehicle oddly. Ponce's feed ended 2024-12-31, so the 2D map skips these trips; the 3D view does not.",
+      "Terms differ by source. The terms of the Autoridad de Transporte Integrado (ATI) say the data are provided as is, without warranty, and that an app built on them must make clear it is not affiliated with or sponsored by ATI. The municipal feeds state no license; ask the municipality before reusing a feed beyond viewing it. Parts drawn from OpenStreetMap are under the Open Database License (credit and share-alike). Check each source's terms before reuse."
+    ],
+    "see_also": [
+      "transit.trip_record",
+      "transit.typical_weekday",
+      "transit.vehicles_now",
+      "layers.transit_replay_3d"
+    ],
+    "where": {
+      "files": [
+        "trips.json:*",
+        "trips_sa.json:*",
+        "trips_su.json:*"
+      ],
+      "view": [
+        {
+          "label": "Map, Transit tab: Vehicles on their timetable now",
+          "href": "index.html#l=now"
+        },
+        {
+          "label": "3D view: Day clock with the replay of weekday transit",
+          "href": "3d.html"
+        }
+      ]
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.trip_record",
+    "name": "Trip record: route, mode, operator, stop pattern and stop times",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Timetable replay",
+    "kind": "variable",
+    "plain": "One scheduled trip. It has the route label, the mode, the operator, the path it follows along its route, where its stops are on that path, and the time at each stop.",
+    "definition": "Each trip (one scheduled run of a vehicle along a route, as listed in a feed) is an object with six keys. r: the route label (the route's short name, or its long name if there is no short name). m: the mode. o: the operator id. k: the trip's path, an index into the file's paths (the stop pattern it shares with every trip that stops at the same places in the same order). s: for each stop time, the index of the point of that path where the stop is. t: the time at each stop, in seconds after midnight, in stop order. A stop time is a line in the feed saying that the trip calls at a stop at a given time; the time is the departure time at the stop, or the arrival time if there is no departure time. Times are local; General Transit Feed Specification (GTFS) allows times after 24:00 for trips that run past midnight, but in the 2026-10 snapshot no time in these files is above 86,400 (24:00). In the same snapshot, one Saturday trip and one Sunday trip, both Tren Urbano (TU), end exactly at 86,400; no weekday trip does (the latest weekday time is 86,340, 23:59). The weekday file has 78,414 stop times in that snapshot. A stop sits on its path a median 7 m from the stop's own coordinates (95% within 13 m), because the path follows the road line.",
+    "unit": "seconds after midnight; degrees",
+    "value_type": "geometry",
+    "geography": "Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Feeds are re-read every night at 04:17 Puerto Rico time and the files are rewritten only when a feed changes. Snapshot built 2026-10-02."
+    },
+    "method": "Built in parse_gtfs (network.py) from the feed's stop_times.txt; trip_paths.py fits the stops to the route line and writes k, s and t. To get the vehicle's position at any time, walk the path between two stops and spread the time between them by distance (tripPoints in site/js/common.js does this).",
+    "sources": [
+      "ati_gtfs",
+      "muni_gtfs"
+    ],
+    "how_to_read": "The value list shows the codes of m. The route label r can be matched with the short or long name of a route of the same operator. The stop times t are the timetable itself: use them, not the path points, to count departures, measure headways or find transfers. Trips that share k are one service pattern of a route, which is the unit to compare supply between routes.",
+    "caveats": [
+      "A route label is only unique within one operator.",
+      "A trip with a gap in its stop times only has the stops that carry times, so its path can skip stops."
+    ],
+    "see_also": [
+      "transit.trips_files",
+      "transit.route_short_name"
+    ],
+    "values": {
+      "bus": "Bus trip. 3,067 weekday trips in the 2026-10 snapshot.",
+      "rail": "Tren Urbano trip. 166 weekday trips in the 2026-10 snapshot.",
+      "ferry": "Ferry trip. 64 weekday trips in the 2026-10 snapshot."
+    },
+    "where": {
+      "files": []
+    },
+    "added": "2026-10-02"
+  },
+  {
+    "id": "transit.vehicles_now",
+    "name": "Vehicles on their timetable now (timetable replay)",
+    "domain": "infrastructure.mobility",
+    "domains": ["infrastructure.mobility"],
+    "group": "Timetable replay",
+    "kind": "measure",
+    "plain": "A map layer that shows where each scheduled vehicle should be right now, in Puerto Rico time, according to the published timetable. It is not live Global Positioning System (GPS) tracking and does not show real vehicle positions.",
+    "definition": "For the current Puerto Rico day, the map picks the Sunday, Saturday or weekday file. A trip counts as in service when the current time is between its first and last stop time. Its position is worked out in a straight line between the two stops that surround the current time, in proportion to the time elapsed. The layer refreshes every 5 seconds and shows the total and the largest operators.",
+    "unit": "scheduled trips in progress (count)",
+    "value_type": "count",
+    "geography": "Puerto Rico",
+    "coverage": {
+      "timeline": "live",
+      "frequency": "Recalculated every 5 seconds in your browser while the layer is on, from timetable files rewritten when a feed changes (last write: 2026-10-02)"
+    },
+    "method": "updateNow in network.js. Trips of operators whose feed is expired on today's date are skipped. Holidays are not modelled.",
+    "sources": [
+      "ati_gtfs",
+      "muni_gtfs"
+    ],
+    "how_to_read": "Read it as where the schedule says vehicles are, not where they are. The number is worked out in your browser every 5 seconds and is not stored in any file. To cite it, give the date, the Puerto Rico clock time shown in the layer note, the build date of the timetables and the feed dates. A timetable covers the dates from the operator's feed.start to feed.end in operators.json, not the build date. In the build of 2026-10-02 the earliest start is 2023-01-01 and the latest end is 2029-12-31; Ponce's feed ended 2024-12-31.",
+    "caveats": [
+      "Real-time bus positions do not exist in the data; see Real-time data.",
+      "The position is a straight line between stops, so a vehicle can appear off the road.",
+      "A late or cancelled vehicle is shown as on time. On a Monday or Friday the weekday file still shows the reference weekday's timetable, usually Wednesday's.",
+      "Only operators with a published timetable appear. Operators with no feed, públicos and OpenStreetMap routes are absent.",
+      "Each marker is one scheduled trip in progress, not an identified vehicle: the trip files hold no vehicle ids. In the 2026-10 snapshot, on Saturday only 4 operators, and on Sunday only ATI, have timetable files, so a lower weekend count does not show how much service runs."
+    ],
+    "see_also": [
+      "transit.real_time",
+      "transit.trips_files",
+      "transit.typical_weekday",
+      "transit.feed_status",
+      "measures.vehicles_now",
+      "layers.vehicles_now_control"
+    ],
+    "where": {
+      "files": [],
+      "view": [
+        {
+          "label": "Map, Transit tab: Vehicles on their timetable now",
+          "href": "index.html#l=now"
+        }
+      ]
+    },
+    "added": "2026-10-02"
+  }
+]

@@ -1,0 +1,514 @@
+{
+ "places.oid": {
+  "name": "ID del lugar (Overture)",
+  "how_to_read": "Trátelo como una etiqueta. El código no dice nada sobre el lugar en sí.",
+  "_en": {
+   "name": "c20f4849",
+   "how_to_read": "6433367e"
+  }
+ },
+ "places.name": {
+  "name": "Nombre del lugar",
+  "how_to_read": "La búsqueda del mapa encuentra los lugares por su nombre. Dos lugares pueden tener el mismo nombre; para distinguirlos, use el ID del lugar o las coordenadas.",
+  "_en": {
+   "name": "e203bc8b",
+   "how_to_read": "f5ab58fe"
+  }
+ },
+ "places.coordinates": {
+  "name": "Latitud y longitud del lugar",
+  "how_to_read": "El marcador está donde una fuente dice que está el lugar. Puede quedar en la calle, en una entrada o en medio de un solar.",
+  "_en": {
+   "name": "5bf0e637",
+   "how_to_read": "024da4f2"
+  }
+ },
+ "places.municipality": {
+  "name": "Municipio del lugar",
+  "how_to_read": "Úselo para contar o comparar lugares por municipio. Todos los conteos de lugares por municipio del observatorio usan este campo. La base predeterminada son los lugares con una puntuación de confianza de 0.50 o más, sin los lugares de culto.",
+  "_en": {
+   "name": "b4c9b4b0",
+   "how_to_read": "52665a88"
+  }
+ },
+ "places.barrio": {
+  "name": "Barrio del lugar",
+  "how_to_read": "Lea siempre el barrio junto con el municipio. Muchos nombres de barrio se repiten: en la capa de barrios del corte de datos 2026-10, 133 de los 694 nombres de barrio aparecen en más de un municipio (por ejemplo, Collores o Playa). La base predeterminada son los lugares con una puntuación de confianza de 0.50 o más, sin los lugares de culto.",
+  "_en": {
+   "name": "7d1b37d0",
+   "how_to_read": "0b16ff1d"
+  }
+ },
+ "places.category": {
+  "name": "Categoría turística",
+  "how_to_read": "Úsela para filtrar lugares y para comparar la composición de la oferta. Foundation for Puerto Rico (FPR) definió los cuatro grupos. No son una clasificación oficial ni de la industria. Cada lugar tiene una categoría y un tipo. La base predeterminada son los lugares con una puntuación de confianza de 0.50 o más, sin los lugares de culto.",
+  "_en": {
+   "name": "56180937",
+   "how_to_read": "667caf65"
+  }
+ },
+ "places.type": {
+  "name": "Tipo de lugar",
+  "how_to_read": "Los tipos aparecen en las ventanas emergentes del mapa, en la lista de tipos principales de un municipio y en la búsqueda. Un tipo es una etiqueta basada en reglas; lea la ficha del tipo para ver qué incluye y qué deja fuera. La base predeterminada son los lugares con una puntuación de confianza de 0.50 o más, sin los lugares de culto.",
+  "_en": {
+   "name": "9f818a97",
+   "how_to_read": "88b2601e"
+  }
+ },
+ "places.overture_category": {
+  "name": "Categoría de Overture (original)",
+  "how_to_read": "Úsela para revisar o rehacer la clasificación: busque el código más abajo y luego las palabras de la regla en la ficha del tipo. Una misma categoría de Overture puede ir a otro tipo cuando su grupo superior es distinto; en el corte de datos 2026-10, cada código corresponde a un solo tipo.",
+  "_en": {
+   "name": "082074c5",
+   "how_to_read": "b0450c2f"
+  }
+ },
+ "places.confidence": {
+  "name": "Puntuación de confianza de Overture",
+  "how_to_read": "Una puntuación más alta significa que Overture tiene más confianza en el listado. Es un estimado, no una calificación de calidad ni una medida de cuántas personas visitan el lugar.",
+  "_en": {
+   "name": "5b6f36b5",
+   "how_to_read": "ddc55a30"
+  }
+ },
+ "places.source": {
+  "name": "Fuente de datos de origen",
+  "how_to_read": "Úsela para indicar de dónde vino el registro de un lugar. La ventana emergente del mapa la muestra como la fuente del listado.",
+  "_en": {
+   "name": "8b303d0a",
+   "how_to_read": "f8818ffe"
+  }
+ },
+ "places.updated": {
+  "name": "Fecha de actualización del registro de origen",
+  "how_to_read": "En el corte de datos 2026-10, para los 31,049 lugares dibujados (98.5%) que provienen de Meta o AllThePlaces, la fecha es igual a la etiqueta de versión del registro de origen (por ejemplo, 2026-09-14). Por eso marca una versión de los datos, no una visita al lugar ni un cambio en él. En los registros de Foursquare y Microsoft, la fecha es distinta de la etiqueta de versión. No use la fecha para juzgar si un listado está vigente o desactualizado.",
+  "_en": {
+   "name": "486c58c3",
+   "how_to_read": "11b7f11c"
+  }
+ },
+ "places.duplicates": {
+  "name": "Listados duplicados combinados en el lugar",
+  "how_to_read": "La ventana emergente del mapa indica cuántos listados duplicados se combinaron. Un número alto suele indicar un nombre de vecindario o de lugar emblemático que comparten muchos listados, no un solo lugar muy concurrido. Un valor mayor que 0 significa que se quitaron listados del conteo. No significa que el lugar sea grande o popular.",
+  "_en": {
+   "name": "0e37a5b6",
+   "how_to_read": "3403b1c5"
+  }
+ },
+ "places.flood_zone": {
+  "name": "Zona inundable de FEMA en el lugar",
+  "how_to_read": "Las zonas A, AE, AH, AO, A99 y VE significan todas una probabilidad de 1% de inundación en cualquier año, que a menudo se llama la inundación de 100 años. Una probabilidad anual de 1% no significa una inundación cada 100 años. Es una probabilidad de 1 en 100 cada año, y se repite todos los años. La zona X con el subtipo de 0.2% es el área de 500 años. Un lugar sin zona inundable no está en ninguna de las dos áreas mapeadas. Eso no significa que no se pueda inundar.",
+  "_en": {
+   "name": "60355933",
+   "how_to_read": "6cdb32c6"
+  }
+ },
+ "places.flood_subtype": {
+  "name": "Subtipo de zona inundable de FEMA en el lugar",
+  "how_to_read": "Un cauce mayor es parte del Área Especial de Riesgo de Inundación. El área de 0.2% está fuera de ella. La mayoría de los lugares con zona inundable no tiene subtipo.",
+  "_en": {
+   "name": "f0254d7b",
+   "how_to_read": "8a498c79"
+  }
+ },
+ "places.sfha": {
+  "name": "En una zona de riesgo de inundación (Área Especial de Riesgo de Inundación)",
+  "how_to_read": "En el mapa, un aro oscuro alrededor de un marcador señala un lugar con esta marca, y la ventana emergente indica la zona. Que falte la marca no garantiza que el lugar sea seguro. La base predeterminada son los lugares con una puntuación de confianza de 0.50 o más, sin los lugares de culto.",
+  "_en": {
+   "name": "270145bb",
+   "how_to_read": "e53d6d3c"
+  }
+ },
+ "places.protected_area": {
+  "name": "Área protegida que contiene el lugar",
+  "how_to_read": "PAD-US lista terrenos que son públicos o que se dedican a la conservación o la recreación. Estar dentro de uno no significa que el lugar esté en una reserva natural: PAD-US también lista parques locales, plazas y terrenos militares. Lea el nivel de protección (estatus GAP) que aparece al lado. La base predeterminada son los lugares con una puntuación de confianza de 0.50 o más, sin los lugares de culto.",
+  "_en": {
+   "name": "c4b7b377",
+   "how_to_read": "d9dd365a"
+  }
+ },
+ "places.protected_gap": {
+  "name": "Nivel de protección (estatus GAP) de esa área",
+  "how_to_read": "Las áreas GAP 1 y 2 se manejan para la biodiversidad. GAP 4 significa que no hay un mandato conocido de proteger la biodiversidad. En el corte de datos 2026-10, 608 de los 1,013 lugares con un valor son GAP 4; por lo tanto, la mayoría de los lugares con área protegida está en terrenos sin mandato conocido de biodiversidad. La ventana emergente del lugar muestra solo el nombre del área. El estatus GAP está en el archivo descargado, en la descarga CSV (valores separados por comas) y en la ventana emergente de la capa Áreas protegidas.",
+  "_en": {
+   "name": "9415cc47",
+   "how_to_read": "dab0bea8"
+  }
+ },
+ "places.land_use": {
+  "name": "Clase del plan de uso de terrenos (PUT 2015) en el lugar",
+  "how_to_read": "El plan clasifica el suelo según lo que el plan se propone o permite: urbano, urbanizable (crecimiento futuro), rústico o rústico especialmente protegido. Es una clase de planificación. No es el uso real del edificio, y no es la calificación.",
+  "_en": {
+   "name": "631448b3",
+   "how_to_read": "4221e7fa"
+  }
+ },
+ "places.land_group": {
+  "name": "Grupo de uso de terrenos en el lugar",
+  "how_to_read": "Úselo para conteos rápidos, por ejemplo, de lugares en suelo urbano. Aquí, protegido significa suelo rústico bajo protección especial en el plan. No es lo mismo que un área protegida en PAD-US (Base de Datos de Áreas Protegidas de los Estados Unidos).",
+  "_en": {
+   "name": "25244800",
+   "how_to_read": "72126903"
+  }
+ },
+ "places.transit_m": {
+  "name": "Distancia a la parada mapeada más cercana de cualquier tipo (m)",
+  "how_to_read": "Un número más pequeño significa que hay alguna parada más cerca. 400 m (un cuarto de milla) es la distancia de planificación para caminar hasta una parada de guagua. Esta es la distancia a cualquier parada mapeada, que puede ser una parada cuyo horario terminó o una que mapearon personas voluntarias. Para la parada más cercana con horario vigente, use ts_m en place_access.json. La ventana emergente del mapa la muestra en la línea \"Cualquier parada mapeada (con horarios vencidos y paradas mapeadas por voluntarios)\", en metros o kilómetros, cuando una parada sin horario vigente está más cerca que la parada con horario vigente más cercana. Al pasar el cursor sobre esa línea se ve el nombre de la parada. Versiones anteriores del observatorio llamaban a este campo \"distancia a la parada de transporte colectivo más cercana\".",
+  "_en": {
+   "name": "2b65e1df",
+   "how_to_read": "a07547e2"
+  }
+ },
+ "places.nearest_stop": {
+  "name": "Parada mapeada más cercana de cualquier tipo (nombre)",
+  "how_to_read": "El mapa lo muestra como texto flotante sobre la línea \"Cualquier parada mapeada\" de una ventana emergente. Muchos nombres son terminales, por ejemplo, terminales de públicos. Indica la parada más cercana de cualquier tipo, que puede no tener horario vigente. El observatorio no publica el nombre de la parada más cercana con horario vigente.",
+  "_en": {
+   "name": "5222689c",
+   "how_to_read": "205a9955"
+  }
+ },
+ "places.transit_400m": {
+  "name": "A 400 m o menos de cualquier parada mapeada",
+  "how_to_read": "Es una señal, del lado de la oferta, de acceso sin carro a una parada, no al servicio: cuenta paradas cuyo horario terminó y paradas que mapearon personas voluntarias. Para una parada con horario vigente, use un ts_m de 400 o menos en place_access.json. No toma en cuenta con qué frecuencia pasan los vehículos, las horas de servicio ni si el camino a pie es seguro. La base predeterminada son los lugares con una puntuación de confianza de 0.50 o más, sin los lugares de culto. Versiones anteriores del observatorio llamaban a este campo \"a 400 m o menos del transporte colectivo\".",
+  "_en": {
+   "name": "e7d03ce9",
+   "how_to_read": "e18e4968"
+  }
+ },
+ "place_access.ts_m": {
+  "name": "Distancia a la parada con horario vigente más cercana (m)",
+  "how_to_read": "Un número más pequeño significa que hay más cerca una parada cuyo horario sigue vigente. 400 m o menos es la prueba para una parada a 400 m o menos; de 400 a 800 m es la clase \"Parada a 400–800 m\" de la ventana emergente. Indica qué tan lejos está la parada. No indica con qué frecuencia pasan los vehículos (vea ts_calls), si el camino a pie es seguro ni si el servicio opera hoy. En el corte de datos 2026-10, el valor del medio es 3,924 m entre los 32,541 lugares. 10,491 lugares (32.2%) están a 400 m o menos de una parada así, y también 7,790 de los 24,209 lugares de la base predeterminada (32.2%). Para la parada más cercana de cualquier tipo, use transit_m.",
+  "_en": {
+   "name": "f12bb0d7",
+   "how_to_read": "87e1367b"
+  }
+ },
+ "place_access.ts_calls": {
+  "name": "Pasadas de lunes a viernes en la parada con horario vigente con más servicio a 400 m o menos",
+  "how_to_read": "Un número mayor significa una parada con más salidas programadas. En el corte de datos 2026-10, 10,491 de los 32,541 lugares tienen un valor mayor que 0; el valor del medio entre ellos es 30 y el más alto es 508 (Terminal Covadonga). 5,163 de los 24,209 lugares de la base predeterminada tienen 20 o más (21.3%). Es una aproximación de la frecuencia, no un intervalo entre vehículos (el tiempo que pasa entre uno y otro): las salidas no se reparten de forma pareja durante el día, y el conteo de un terminal incluye vehículos que llegan allí y terminan su recorrido.",
+  "_en": {
+   "name": "d45e2f45",
+   "how_to_read": "337ef9c9"
+  }
+ },
+ "place_access.ts_we": {
+  "name": "Servicio de fin de semana en paradas con horario vigente a 400 m o menos (código)",
+  "how_to_read": "Úselo junto con ts_m. Un 0 junto a un ts_m corto significa que el horario muestra servicio solo de lunes a viernes. No demuestra que ningún vehículo opere los fines de semana. En el corte de datos 2026-10, solo 3 de las 18 fuentes de horarios vigentes incluyen salidas los sábados (ATI, Guaynabo y Vega Alta) y solo la ATI incluye salidas los domingos; por eso, el servicio de fin de semana depende de qué fuentes lo publican. De los 7,790 lugares de la base predeterminada que están cerca de una parada con horario vigente, 5,412 tienen servicio los sábados (69.5%) y 1,540 tienen servicio los domingos (19.8%).",
+  "_en": {
+   "name": "4f7666b9",
+   "how_to_read": "326e64ed"
+  }
+ },
+ "places.type.places_of_worship": {
+  "name": "Lugares de culto (Atracciones)",
+  "how_to_read": "Cuenta lugares, no visitantes, habitaciones, asientos ni superficie. Cada lugar es un listado que se conserva después de combinar los duplicados (en el corte de datos 2026-10 se combinaron 1,088 listados). Un listado significa que una fuente registra el lugar. No significa que el lugar esté abierto hoy. Los lugares de culto no se cuentan de forma predeterminada; en el mapa 2D se pueden activar. La base predeterminada son los lugares con una puntuación de confianza de 0.50 o más, sin los lugares de culto.",
+  "_en": {
+   "name": "add11795",
+   "how_to_read": "ce525942"
+  }
+ },
+ "places.type.historic_sites": {
+  "name": "Sitios históricos (Atracciones)",
+  "how_to_read": "Cuenta lugares, no visitantes, habitaciones, asientos ni superficie. Cada lugar es un listado que se conserva después de combinar los duplicados (en el corte de datos 2026-10 se combinaron 1,088 listados). Un listado significa que una fuente registra el lugar. No significa que el lugar esté abierto hoy. La base predeterminada son los lugares con una puntuación de confianza de 0.50 o más, sin los lugares de culto.",
+  "_en": {
+   "name": "771d5b9b",
+   "how_to_read": "e6864c1f"
+  }
+ },
+ "places.type.parks": {
+  "name": "Parques (Atracciones)",
+  "how_to_read": "Cuenta lugares, no visitantes, habitaciones, asientos ni superficie. Cada lugar es un listado que se conserva después de combinar los duplicados (en el corte de datos 2026-10 se combinaron 1,088 listados). Un listado significa que una fuente registra el lugar. No significa que el lugar esté abierto hoy. La base predeterminada son los lugares con una puntuación de confianza de 0.50 o más, sin los lugares de culto.",
+  "_en": {
+   "name": "e103e33d",
+   "how_to_read": "e6864c1f"
+  }
+ },
+ "places.type.tourist_attractions": {
+  "name": "Atracciones turísticas (Atracciones)",
+  "how_to_read": "Cuenta lugares, no visitantes, habitaciones, asientos ni superficie. Cada lugar es un listado que se conserva después de combinar los duplicados (en el corte de datos 2026-10 se combinaron 1,088 listados). Un listado significa que una fuente registra el lugar. No significa que el lugar esté abierto hoy. La base predeterminada son los lugares con una puntuación de confianza de 0.50 o más, sin los lugares de culto.",
+  "_en": {
+   "name": "12434975",
+   "how_to_read": "e6864c1f"
+  }
+ },
+ "places.type.beaches": {
+  "name": "Playas (Atracciones)",
+  "how_to_read": "Cuenta lugares, no visitantes, habitaciones, asientos ni superficie. Cada lugar es un listado que se conserva después de combinar los duplicados (en el corte de datos 2026-10 se combinaron 1,088 listados). Un listado significa que una fuente registra el lugar. No significa que el lugar esté abierto hoy. La base predeterminada son los lugares con una puntuación de confianza de 0.50 o más, sin los lugares de culto.",
+  "_en": {
+   "name": "ea218e03",
+   "how_to_read": "e6864c1f"
+  }
+ },
+ "places.type.cultural_attractions": {
+  "name": "Atracciones culturales (Atracciones)",
+  "how_to_read": "Cuenta lugares, no visitantes, habitaciones, asientos ni superficie. Cada lugar es un listado que se conserva después de combinar los duplicados (en el corte de datos 2026-10 se combinaron 1,088 listados). Un listado significa que una fuente registra el lugar. No significa que el lugar esté abierto hoy. La base predeterminada son los lugares con una puntuación de confianza de 0.50 o más, sin los lugares de culto.",
+  "_en": {
+   "name": "18e272ac",
+   "how_to_read": "e6864c1f"
+  }
+ },
+ "places.type.scenic_areas": {
+  "name": "Áreas panorámicas (Atracciones)",
+  "how_to_read": "Cuenta lugares, no visitantes, habitaciones, asientos ni superficie. Cada lugar es un listado que se conserva después de combinar los duplicados (en el corte de datos 2026-10 se combinaron 1,088 listados). Un listado significa que una fuente registra el lugar. No significa que el lugar esté abierto hoy. La base predeterminada son los lugares con una puntuación de confianza de 0.50 o más, sin los lugares de culto.",
+  "_en": {
+   "name": "a9966803",
+   "how_to_read": "e6864c1f"
+  }
+ },
+ "places.type.museums": {
+  "name": "Museos (Atracciones)",
+  "how_to_read": "Cuenta lugares, no visitantes, habitaciones, asientos ni superficie. Cada lugar es un listado que se conserva después de combinar los duplicados (en el corte de datos 2026-10 se combinaron 1,088 listados). Un listado significa que una fuente registra el lugar. No significa que el lugar esté abierto hoy. La base predeterminada son los lugares con una puntuación de confianza de 0.50 o más, sin los lugares de culto.",
+  "_en": {
+   "name": "8f3ef9ff",
+   "how_to_read": "e6864c1f"
+  }
+ },
+ "places.type.nature_reserves": {
+  "name": "Reservas naturales (Atracciones)",
+  "how_to_read": "Cuenta lugares, no visitantes, habitaciones, asientos ni superficie. Cada lugar es un listado que se conserva después de combinar los duplicados (en el corte de datos 2026-10 se combinaron 1,088 listados). Un listado significa que una fuente registra el lugar. No significa que el lugar esté abierto hoy. La base predeterminada son los lugares con una puntuación de confianza de 0.50 o más, sin los lugares de culto.",
+  "_en": {
+   "name": "d7cb2514",
+   "how_to_read": "e6864c1f"
+  }
+ },
+ "places.type.restaurants": {
+  "name": "Restaurantes (Gastronomía)",
+  "how_to_read": "Cuenta lugares, no visitantes, habitaciones, asientos ni superficie. Cada lugar es un listado que se conserva después de combinar los duplicados (en el corte de datos 2026-10 se combinaron 1,088 listados). Un listado significa que una fuente registra el lugar. No significa que el lugar esté abierto hoy. La base predeterminada son los lugares con una puntuación de confianza de 0.50 o más, sin los lugares de culto.",
+  "_en": {
+   "name": "996e0501",
+   "how_to_read": "e6864c1f"
+  }
+ },
+ "places.type.bars": {
+  "name": "Bares (Gastronomía)",
+  "how_to_read": "Cuenta lugares, no visitantes, habitaciones, asientos ni superficie. Cada lugar es un listado que se conserva después de combinar los duplicados (en el corte de datos 2026-10 se combinaron 1,088 listados). Un listado significa que una fuente registra el lugar. No significa que el lugar esté abierto hoy. La base predeterminada son los lugares con una puntuación de confianza de 0.50 o más, sin los lugares de culto.",
+  "_en": {
+   "name": "11bdcff2",
+   "how_to_read": "e6864c1f"
+  }
+ },
+ "places.type.cafes": {
+  "name": "Cafés (Gastronomía)",
+  "how_to_read": "Cuenta lugares, no visitantes, habitaciones, asientos ni superficie. Cada lugar es un listado que se conserva después de combinar los duplicados (en el corte de datos 2026-10 se combinaron 1,088 listados). Un listado significa que una fuente registra el lugar. No significa que el lugar esté abierto hoy. La base predeterminada son los lugares con una puntuación de confianza de 0.50 o más, sin los lugares de culto.",
+  "_en": {
+   "name": "52300b17",
+   "how_to_read": "e6864c1f"
+  }
+ },
+ "places.type.bakeries": {
+  "name": "Panaderías (Gastronomía)",
+  "how_to_read": "Cuenta lugares, no visitantes, habitaciones, asientos ni superficie. Cada lugar es un listado que se conserva después de combinar los duplicados (en el corte de datos 2026-10 se combinaron 1,088 listados). Un listado significa que una fuente registra el lugar. No significa que el lugar esté abierto hoy. La base predeterminada son los lugares con una puntuación de confianza de 0.50 o más, sin los lugares de culto.",
+  "_en": {
+   "name": "3ae64ceb",
+   "how_to_read": "e6864c1f"
+  }
+ },
+ "places.type.nightlife": {
+  "name": "Vida nocturna (Gastronomía)",
+  "how_to_read": "Cuenta lugares, no visitantes, habitaciones, asientos ni superficie. Cada lugar es un listado que se conserva después de combinar los duplicados (en el corte de datos 2026-10 se combinaron 1,088 listados). Un listado significa que una fuente registra el lugar. No significa que el lugar esté abierto hoy. La base predeterminada son los lugares con una puntuación de confianza de 0.50 o más, sin los lugares de culto.",
+  "_en": {
+   "name": "73d80e44",
+   "how_to_read": "e6864c1f"
+  }
+ },
+ "places.type.food_experiences": {
+  "name": "Experiencias gastronómicas (Gastronomía)",
+  "how_to_read": "Cuenta lugares, no visitantes, habitaciones, asientos ni superficie. Cada lugar es un listado que se conserva después de combinar los duplicados (en el corte de datos 2026-10 se combinaron 1,088 listados). Un listado significa que una fuente registra el lugar. No significa que el lugar esté abierto hoy. La base predeterminada son los lugares con una puntuación de confianza de 0.50 o más, sin los lugares de culto.",
+  "_en": {
+   "name": "727fad2c",
+   "how_to_read": "e6864c1f"
+  }
+ },
+ "places.type.lodging": {
+  "name": "Alojamiento (Alojamientos)",
+  "how_to_read": "Cuenta lugares, no visitantes, habitaciones, asientos ni superficie. Cada lugar es un listado que se conserva después de combinar los duplicados (en el corte de datos 2026-10 se combinaron 1,088 listados). Un listado significa que una fuente registra el lugar. No significa que el lugar esté abierto hoy. La base predeterminada son los lugares con una puntuación de confianza de 0.50 o más, sin los lugares de culto.",
+  "_en": {
+   "name": "58f7166c",
+   "how_to_read": "e6864c1f"
+  }
+ },
+ "places.type.hotels": {
+  "name": "Hoteles (Alojamientos)",
+  "how_to_read": "Cuenta lugares, no visitantes, habitaciones, asientos ni superficie. Cada lugar es un listado que se conserva después de combinar los duplicados (en el corte de datos 2026-10 se combinaron 1,088 listados). Un listado significa que una fuente registra el lugar. No significa que el lugar esté abierto hoy. La base predeterminada son los lugares con una puntuación de confianza de 0.50 o más, sin los lugares de culto.",
+  "_en": {
+   "name": "f5a7f377",
+   "how_to_read": "e6864c1f"
+  }
+ },
+ "places.type.vacation_properties": {
+  "name": "Alquileres vacacionales (Alojamientos)",
+  "how_to_read": "Cuenta lugares, no visitantes, habitaciones, asientos ni superficie. Cada lugar es un listado que se conserva después de combinar los duplicados (en el corte de datos 2026-10 se combinaron 1,088 listados). Un listado significa que una fuente registra el lugar. No significa que el lugar esté abierto hoy. La base predeterminada son los lugares con una puntuación de confianza de 0.50 o más, sin los lugares de culto.",
+  "_en": {
+   "name": "42d81693",
+   "how_to_read": "e6864c1f"
+  }
+ },
+ "places.type.inns": {
+  "name": "Posadas (Alojamientos)",
+  "how_to_read": "Cuenta lugares, no visitantes, habitaciones, asientos ni superficie. Cada lugar es un listado que se conserva después de combinar los duplicados (en el corte de datos 2026-10 se combinaron 1,088 listados). Un listado significa que una fuente registra el lugar. No significa que el lugar esté abierto hoy. La base predeterminada son los lugares con una puntuación de confianza de 0.50 o más, sin los lugares de culto.",
+  "_en": {
+   "name": "18b8f7b0",
+   "how_to_read": "e6864c1f"
+  }
+ },
+ "places.type.resorts": {
+  "name": "Complejos turísticos (Alojamientos)",
+  "how_to_read": "Cuenta lugares, no visitantes, habitaciones, asientos ni superficie. Cada lugar es un listado que se conserva después de combinar los duplicados (en el corte de datos 2026-10 se combinaron 1,088 listados). Un listado significa que una fuente registra el lugar. No significa que el lugar esté abierto hoy. La base predeterminada son los lugares con una puntuación de confianza de 0.50 o más, sin los lugares de culto.",
+  "_en": {
+   "name": "0dde336e",
+   "how_to_read": "e6864c1f"
+  }
+ },
+ "places.type.guest_houses": {
+  "name": "Casas de huéspedes (Alojamientos)",
+  "how_to_read": "Cuenta lugares, no visitantes, habitaciones, asientos ni superficie. Cada lugar es un listado que se conserva después de combinar los duplicados (en el corte de datos 2026-10 se combinaron 1,088 listados). Un listado significa que una fuente registra el lugar. No significa que el lugar esté abierto hoy. La base predeterminada son los lugares con una puntuación de confianza de 0.50 o más, sin los lugares de culto.",
+  "_en": {
+   "name": "14fb3b27",
+   "how_to_read": "e6864c1f"
+  }
+ },
+ "places.type.transportation": {
+  "name": "Transporte (Servicios para visitantes)",
+  "how_to_read": "Cuenta lugares, no visitantes, habitaciones, asientos ni superficie. Cada lugar es un listado que se conserva después de combinar los duplicados (en el corte de datos 2026-10 se combinaron 1,088 listados). Un listado significa que una fuente registra el lugar. No significa que el lugar esté abierto hoy. La base predeterminada son los lugares con una puntuación de confianza de 0.50 o más, sin los lugares de culto.",
+  "_en": {
+   "name": "7836474a",
+   "how_to_read": "e6864c1f"
+  }
+ },
+ "places.type.tour_operators": {
+  "name": "Operadores turísticos (Servicios para visitantes)",
+  "how_to_read": "Cuenta lugares, no visitantes, habitaciones, asientos ni superficie. Cada lugar es un listado que se conserva después de combinar los duplicados (en el corte de datos 2026-10 se combinaron 1,088 listados). Un listado significa que una fuente registra el lugar. No significa que el lugar esté abierto hoy. La base predeterminada son los lugares con una puntuación de confianza de 0.50 o más, sin los lugares de culto.",
+  "_en": {
+   "name": "229ff6b2",
+   "how_to_read": "e6864c1f"
+  }
+ },
+ "places.type.adventure_operators": {
+  "name": "Operadores de aventura (Servicios para visitantes)",
+  "how_to_read": "Cuenta lugares, no visitantes, habitaciones, asientos ni superficie. Cada lugar es un listado que se conserva después de combinar los duplicados (en el corte de datos 2026-10 se combinaron 1,088 listados). Un listado significa que una fuente registra el lugar. No significa que el lugar esté abierto hoy. La base predeterminada son los lugares con una puntuación de confianza de 0.50 o más, sin los lugares de culto.",
+  "_en": {
+   "name": "e6047226",
+   "how_to_read": "e6864c1f"
+  }
+ },
+ "places.type.cultural_experience_providers": {
+  "name": "Proveedores de experiencias culturales (Servicios para visitantes)",
+  "how_to_read": "Cuenta lugares, no visitantes, habitaciones, asientos ni superficie. Cada lugar es un listado que se conserva después de combinar los duplicados (en el corte de datos 2026-10 se combinaron 1,088 listados). Un listado significa que una fuente registra el lugar. No significa que el lugar esté abierto hoy. La base predeterminada son los lugares con una puntuación de confianza de 0.50 o más, sin los lugares de culto.",
+  "_en": {
+   "name": "0d485c7e",
+   "how_to_read": "e6864c1f"
+  }
+ },
+ "places.type.marinas": {
+  "name": "Marinas (Servicios para visitantes)",
+  "how_to_read": "Cuenta lugares, no visitantes, habitaciones, asientos ni superficie. Cada lugar es un listado que se conserva después de combinar los duplicados (en el corte de datos 2026-10 se combinaron 1,088 listados). Un listado significa que una fuente registra el lugar. No significa que el lugar esté abierto hoy. La base predeterminada son los lugares con una puntuación de confianza de 0.50 o más, sin los lugares de culto.",
+  "_en": {
+   "name": "405db424",
+   "how_to_read": "e6864c1f"
+  }
+ },
+ "places.type.visitor_centers": {
+  "name": "Centros de visitantes (Servicios para visitantes)",
+  "how_to_read": "Cuenta lugares, no visitantes, habitaciones, asientos ni superficie. Cada lugar es un listado que se conserva después de combinar los duplicados (en el corte de datos 2026-10 se combinaron 1,088 listados). Un listado significa que una fuente registra el lugar. No significa que el lugar esté abierto hoy. La base predeterminada son los lugares con una puntuación de confianza de 0.50 o más, sin los lugares de culto.",
+  "_en": {
+   "name": "80ce27b4",
+   "how_to_read": "e6864c1f"
+  }
+ },
+ "places.category.attractions": {
+  "name": "Atracciones (categoría turística)",
+  "how_to_read": "Compare las cuatro categorías para ver la composición de la oferta, y abra los tipos para ver el detalle. Los lugares de culto no se cuentan de forma predeterminada. Los conteos son de lugares (uno por cada listado que se conserva después de combinar los duplicados), no de visitantes, habitaciones ni tamaño. La base predeterminada son los lugares con una puntuación de confianza de 0.50 o más, sin los lugares de culto.",
+  "_en": {
+   "name": "6bddf860",
+   "how_to_read": "4232c36e"
+  }
+ },
+ "places.category.gastronomy": {
+  "name": "Gastronomía (categoría turística)",
+  "how_to_read": "Compare las cuatro categorías para ver la composición de la oferta, y abra los tipos para ver el detalle. Los conteos son de lugares (uno por cada listado que se conserva después de combinar los duplicados), no de visitantes, habitaciones ni tamaño. La base predeterminada son los lugares con una puntuación de confianza de 0.50 o más, sin los lugares de culto.",
+  "_en": {
+   "name": "e7940d86",
+   "how_to_read": "a69e7b3c"
+  }
+ },
+ "places.category.accommodations": {
+  "name": "Alojamientos (categoría turística)",
+  "how_to_read": "Compare las cuatro categorías para ver la composición de la oferta, y abra los tipos para ver el detalle. Los conteos son de lugares (uno por cada listado que se conserva después de combinar los duplicados), no de visitantes, habitaciones ni tamaño. La base predeterminada son los lugares con una puntuación de confianza de 0.50 o más, sin los lugares de culto.",
+  "_en": {
+   "name": "125804c4",
+   "how_to_read": "a69e7b3c"
+  }
+ },
+ "places.category.visitor_services": {
+  "name": "Servicios para visitantes (categoría turística)",
+  "how_to_read": "Compare las cuatro categorías para ver la composición de la oferta, y abra los tipos para ver el detalle. Los conteos son de lugares (uno por cada listado que se conserva después de combinar los duplicados), no de visitantes, habitaciones ni tamaño. La base predeterminada son los lugares con una puntuación de confianza de 0.50 o más, sin los lugares de culto.",
+  "_en": {
+   "name": "3e7edc9a",
+   "how_to_read": "a69e7b3c"
+  }
+ },
+ "places.classification": {
+  "name": "Cómo las categorías de Overture se convierten en categorías turísticas",
+  "how_to_read": "Lea las reglas como una escalera: gana la primera coincidencia, y luego el grupo de Overture puede cambiarla. Cuando un resultado parezca raro, busque la categoría de Overture del lugar en la ficha de la categoría de Overture y luego las palabras de la regla en la ficha del tipo.",
+  "_en": {
+   "name": "f54019f8",
+   "how_to_read": "bc2a595e"
+  }
+ },
+ "places.counting_basis": {
+  "name": "Qué lugares cuenta el observatorio (confianza de 0.50 o más, sin lugares de culto)",
+  "how_to_read": "Use el control deslizante para obtener una lista más estricta o más amplia. En el perfil de un municipio, el conteo de lugares, la proporción en zonas inundables, la proporción en áreas protegidas, el conteo de sitios web y la proporción con acceso al transporte colectivo siguen los filtros elegidos. Los lugares por cada 1,000 residentes, los lugares por km² y las posiciones siempre usan la base predeterminada, así que pueden no coincidir con el conteo que aparece al lado. El CSV (valores separados por comas) de los lugares de un municipio sigue los filtros elegidos. El CSV de todos los municipios (posiciones y sombreado) usa la base predeterminada. En el corte de datos 2026-10, una base sin límite de confianza y sin lugares de culto tiene 27,509 lugares.",
+  "_en": {
+   "name": "d6abef26",
+   "how_to_read": "94ca6d91"
+  }
+ },
+ "places.dedup": {
+  "name": "Cómo se combinan los listados duplicados",
+  "how_to_read": "Un lugar con un valor de duplicados mayor que 0 representa varios listados. La ventana emergente del mapa muestra el conteo. Las posiciones y los conteos usan solo el listado que se conservó.",
+  "_en": {
+   "name": "d1bab91a",
+   "how_to_read": "363be776"
+  }
+ },
+ "places.municipality_assignment": {
+  "name": "Cómo se asignan el municipio y el barrio a un lugar",
+  "how_to_read": "El municipio publicado es donde está el marcador, así que los conteos coinciden con los límites dibujados en el mapa. En el corte de datos 2026-10, 863 lugares tienen en su dirección un pueblo que corresponde a otro municipio. La base predeterminada son los lugares con una puntuación de confianza de 0.50 o más, sin los lugares de culto.",
+  "_en": {
+   "name": "4299b5b0",
+   "how_to_read": "8551fadd"
+  }
+ },
+ "places.point_tests": {
+  "name": "Cómo se asignan las marcas de inundación, área protegida, uso de terrenos y transporte colectivo",
+  "how_to_read": "Lea cada marca como \"el conjunto de datos dice esto sobre el punto donde está el marcador\". No es una conclusión sobre el edificio ni sobre el solar.",
+  "_en": {
+   "name": "933782d5",
+   "how_to_read": "29fd819b"
+  }
+ },
+ "places.not_published": {
+  "name": "Campos que el observatorio no publica",
+  "how_to_read": "Los datos de contacto de negocios individuales pueden identificar a personas, por eso el observatorio deja fuera estos campos. En el corte de datos 2026-10, entre los 32,541 lugares publicados, el registro de Overture tiene un número de teléfono para 24,077 (74%), una dirección de correo electrónico para 12,711 (39%), enlaces a redes sociales para 32,104 (99%), una dirección de calle para 27,235 (84%), un sitio web para 9,416 (29%), un código postal para 26,760 (82%) y un nombre de marca para 1,963 (6%). Esos campos no están en los datos del observatorio. Los nombres se copian tal como los escribió la fuente, salvo un número de teléfono o una dirección de correo electrónico (vea las precauciones).",
+  "_en": {
+   "name": "48a5011c",
+   "how_to_read": "1267ad85"
+  }
+ },
+ "places.missing_values": {
+  "name": "Cómo leer un valor que falta en el archivo de lugares",
+  "how_to_read": "Un valor que falta no es un cero medido ni una garantía de seguridad. Lea las notas de cada campo más abajo. En una hoja de cálculo, una celda vacía significa lo mismo que un campo que falta.",
+  "_en": {
+   "name": "e62ea659",
+   "how_to_read": "ca811831"
+  }
+ },
+ "places.pipeline": {
+  "name": "Cómo se hace el archivo de lugares turísticos",
+  "how_to_read": "El archivo es un corte de datos de una versión de Overture. Los lugares que abrieron, cerraron o se mudaron después de esa versión no están en él.",
+  "_en": {
+   "name": "5147e223",
+   "how_to_read": "a23047aa"
+  }
+ }
+}

@@ -1,0 +1,738 @@
+{
+ "current_only_excluding_expiring_feed": {
+  "pct400": 31.8,
+  "pct800": 36.0,
+  "expiring_feed_stops": 92
+ },
+ "locations_with_feed_trips_but_zero_calls_in_trips_json": {
+  "n": 844,
+  "of_total_locations": 3698,
+  "current_feeds_n": 383,
+  "by_operator": {
+   "caguas": 207,
+   "juncos": 131,
+   "bayamon": 124,
+   "san_lorenzo": 120,
+   "patillas": 101,
+   "vega_baja": 92,
+   "jayuya": 53,
+   "san_sebastian": 13,
+   "fajardo": 3
+  }
+ },
+ "jayuya_stop_in_caguas": [
+  {
+   "kind": "transit_stop",
+   "lng": -66.1126,
+   "lat": 18.20462,
+   "trips_weekday": 9,
+   "routes": [
+    "Ruta Zamas"
+   ]
+  }
+ ],
+ "scheduled_stops_by_operator_status": {
+  "ati": {
+   "stops": 1437,
+   "status": "current"
+  },
+  "bayamon": {
+   "stops": 128,
+   "status": "current"
+  },
+  "cabo_rojo": {
+   "stops": 110,
+   "status": "current"
+  },
+  "caguas": {
+   "stops": 292,
+   "status": "expired"
+  },
+  "canovanas": {
+   "stops": 92,
+   "status": "expiring"
+  },
+  "cidra": {
+   "stops": 14,
+   "status": "expired"
+  },
+  "coamo": {
+   "stops": 10,
+   "status": "current"
+  },
+  "corozal": {
+   "stops": 29,
+   "status": "current"
+  },
+  "fajardo": {
+   "stops": 81,
+   "status": "expired"
+  },
+  "guaynabo": {
+   "stops": 273,
+   "status": "current"
+  },
+  "hatillo": {
+   "stops": 11,
+   "status": "expired"
+  },
+  "humacao": {
+   "stops": 18,
+   "status": "current"
+  },
+  "jayuya": {
+   "stops": 58,
+   "status": "current"
+  },
+  "juncos": {
+   "stops": 133,
+   "status": "expired"
+  },
+  "manati": {
+   "stops": 43,
+   "status": "current"
+  },
+  "orocovis": {
+   "stops": 10,
+   "status": "current"
+  },
+  "patillas": {
+   "stops": 116,
+   "status": "current"
+  },
+  "ponce": {
+   "stops": 276,
+   "status": "expired"
+  },
+  "san_juan": {
+   "stops": 249,
+   "status": "current"
+  },
+  "san_lorenzo": {
+   "stops": 159,
+   "status": "expired"
+  },
+  "san_sebastian": {
+   "stops": 14,
+   "status": "current"
+  },
+  "utuado": {
+   "stops": 47,
+   "status": "current"
+  },
+  "vega_alta": {
+   "stops": 135,
+   "status": "current"
+  },
+  "vega_baja": {
+   "stops": 93,
+   "status": "current"
+  },
+  "vieques": {
+   "stops": 19,
+   "status": "current"
+  }
+ },
+ "municipality_full_rows": 78,
+ "published_vs_recomputed_transit_pct_differences_over_half_point": [
+  {
+   "municipality": "Culebra",
+   "published": 24.3,
+   "recomputed": 27.1
+  },
+  {
+   "municipality": "Jayuya",
+   "published": 0.0,
+   "recomputed": 70.7
+  },
+  {
+   "municipality": "Naguabo",
+   "published": 24.4,
+   "recomputed": 25.0
+  }
+ ],
+ "municipality_rows_by_name": {
+  "Adjuntas": {
+   "places": 157,
+   "pct400_any_stop": 28.0,
+   "pct400_current_scheduled": 0.0,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 44
+  },
+  "Aguada": {
+   "places": 476,
+   "pct400_any_stop": 14.9,
+   "pct400_current_scheduled": 0.0,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 71
+  },
+  "Aguadilla": {
+   "places": 682,
+   "pct400_any_stop": 8.2,
+   "pct400_current_scheduled": 0.0,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 56
+  },
+  "Aguas Buenas": {
+   "places": 125,
+   "pct400_any_stop": 30.4,
+   "pct400_current_scheduled": 0.0,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 38
+  },
+  "Aibonito": {
+   "places": 199,
+   "pct400_any_stop": 28.1,
+   "pct400_current_scheduled": 0.0,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 56
+  },
+  "Arecibo": {
+   "places": 675,
+   "pct400_any_stop": 5.6,
+   "pct400_current_scheduled": 0.0,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 38
+  },
+  "Arroyo": {
+   "places": 119,
+   "pct400_any_stop": 0.8,
+   "pct400_current_scheduled": 0.8,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 0
+  },
+  "Añasco": {
+   "places": 253,
+   "pct400_any_stop": 0.0,
+   "pct400_current_scheduled": 0.0,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 0
+  },
+  "Barceloneta": {
+   "places": 246,
+   "pct400_any_stop": 17.5,
+   "pct400_current_scheduled": 0.0,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 43
+  },
+  "Barranquitas": {
+   "places": 243,
+   "pct400_any_stop": 0.0,
+   "pct400_current_scheduled": 0.0,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 0
+  },
+  "Bayamón": {
+   "places": 1091,
+   "pct400_any_stop": 69.4,
+   "pct400_current_scheduled": 68.7,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 8
+  },
+  "Cabo Rojo": {
+   "places": 773,
+   "pct400_any_stop": 58.1,
+   "pct400_current_scheduled": 58.1,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 0
+  },
+  "Caguas": {
+   "places": 916,
+   "pct400_any_stop": 77.4,
+   "pct400_current_scheduled": 17.6,
+   "near_expired_only_n": 540,
+   "near_osm_only_n": 8
+  },
+  "Camuy": {
+   "places": 211,
+   "pct400_any_stop": 15.6,
+   "pct400_current_scheduled": 0.0,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 33
+  },
+  "Canóvanas": {
+   "places": 211,
+   "pct400_any_stop": 83.4,
+   "pct400_current_scheduled": 83.4,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 0
+  },
+  "Carolina": {
+   "places": 970,
+   "pct400_any_stop": 91.4,
+   "pct400_current_scheduled": 86.0,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 53
+  },
+  "Cataño": {
+   "places": 167,
+   "pct400_any_stop": 68.3,
+   "pct400_current_scheduled": 67.7,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 1
+  },
+  "Cayey": {
+   "places": 346,
+   "pct400_any_stop": 22.5,
+   "pct400_current_scheduled": 0.0,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 78
+  },
+  "Ceiba": {
+   "places": 97,
+   "pct400_any_stop": 2.1,
+   "pct400_current_scheduled": 2.1,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 0
+  },
+  "Ciales": {
+   "places": 147,
+   "pct400_any_stop": 17.7,
+   "pct400_current_scheduled": 0.0,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 26
+  },
+  "Cidra": {
+   "places": 270,
+   "pct400_any_stop": 40.7,
+   "pct400_current_scheduled": 0.0,
+   "near_expired_only_n": 110,
+   "near_osm_only_n": 0
+  },
+  "Coamo": {
+   "places": 219,
+   "pct400_any_stop": 39.3,
+   "pct400_current_scheduled": 39.3,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 0
+  },
+  "Comerío": {
+   "places": 109,
+   "pct400_any_stop": 31.2,
+   "pct400_current_scheduled": 0.0,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 34
+  },
+  "Corozal": {
+   "places": 214,
+   "pct400_any_stop": 44.4,
+   "pct400_current_scheduled": 44.4,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 0
+  },
+  "Culebra": {
+   "places": 140,
+   "pct400_any_stop": 27.1,
+   "pct400_current_scheduled": 27.1,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 0
+  },
+  "Dorado": {
+   "places": 349,
+   "pct400_any_stop": 20.1,
+   "pct400_current_scheduled": 0.9,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 67
+  },
+  "Fajardo": {
+   "places": 433,
+   "pct400_any_stop": 70.4,
+   "pct400_current_scheduled": 0.0,
+   "near_expired_only_n": 303,
+   "near_osm_only_n": 2
+  },
+  "Florida": {
+   "places": 59,
+   "pct400_any_stop": 0.0,
+   "pct400_current_scheduled": 0.0,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 0
+  },
+  "Guayama": {
+   "places": 288,
+   "pct400_any_stop": 17.7,
+   "pct400_current_scheduled": 0.0,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 51
+  },
+  "Guayanilla": {
+   "places": 150,
+   "pct400_any_stop": 0.0,
+   "pct400_current_scheduled": 0.0,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 0
+  },
+  "Guaynabo": {
+   "places": 693,
+   "pct400_any_stop": 91.9,
+   "pct400_current_scheduled": 90.8,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 8
+  },
+  "Gurabo": {
+   "places": 211,
+   "pct400_any_stop": 27.0,
+   "pct400_current_scheduled": 0.0,
+   "near_expired_only_n": 11,
+   "near_osm_only_n": 46
+  },
+  "Guánica": {
+   "places": 193,
+   "pct400_any_stop": 0.0,
+   "pct400_current_scheduled": 0.0,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 0
+  },
+  "Hatillo": {
+   "places": 332,
+   "pct400_any_stop": 42.5,
+   "pct400_current_scheduled": 0.0,
+   "near_expired_only_n": 141,
+   "near_osm_only_n": 0
+  },
+  "Hormigueros": {
+   "places": 115,
+   "pct400_any_stop": 13.0,
+   "pct400_current_scheduled": 13.0,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 0
+  },
+  "Humacao": {
+   "places": 414,
+   "pct400_any_stop": 25.1,
+   "pct400_current_scheduled": 25.1,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 0
+  },
+  "Isabela": {
+   "places": 490,
+   "pct400_any_stop": 0.0,
+   "pct400_current_scheduled": 0.0,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 0
+  },
+  "Jayuya": {
+   "places": 157,
+   "pct400_any_stop": 70.7,
+   "pct400_current_scheduled": 70.7,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 0
+  },
+  "Juana Díaz": {
+   "places": 280,
+   "pct400_any_stop": 19.6,
+   "pct400_current_scheduled": 0.0,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 55
+  },
+  "Juncos": {
+   "places": 152,
+   "pct400_any_stop": 92.8,
+   "pct400_current_scheduled": 0.0,
+   "near_expired_only_n": 141,
+   "near_osm_only_n": 0
+  },
+  "Lajas": {
+   "places": 236,
+   "pct400_any_stop": 9.7,
+   "pct400_current_scheduled": 0.0,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 23
+  },
+  "Lares": {
+   "places": 155,
+   "pct400_any_stop": 31.0,
+   "pct400_current_scheduled": 0.0,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 48
+  },
+  "Las Marías": {
+   "places": 60,
+   "pct400_any_stop": 0.0,
+   "pct400_current_scheduled": 0.0,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 0
+  },
+  "Las Piedras": {
+   "places": 169,
+   "pct400_any_stop": 15.4,
+   "pct400_current_scheduled": 0.0,
+   "near_expired_only_n": 2,
+   "near_osm_only_n": 24
+  },
+  "Loíza": {
+   "places": 257,
+   "pct400_any_stop": 59.5,
+   "pct400_current_scheduled": 55.6,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 10
+  },
+  "Luquillo": {
+   "places": 260,
+   "pct400_any_stop": 25.0,
+   "pct400_current_scheduled": 0.0,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 65
+  },
+  "Manatí": {
+   "places": 288,
+   "pct400_any_stop": 57.6,
+   "pct400_current_scheduled": 57.6,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 0
+  },
+  "Maricao": {
+   "places": 38,
+   "pct400_any_stop": 0.0,
+   "pct400_current_scheduled": 0.0,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 0
+  },
+  "Maunabo": {
+   "places": 90,
+   "pct400_any_stop": 0.0,
+   "pct400_current_scheduled": 0.0,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 0
+  },
+  "Mayagüez": {
+   "places": 661,
+   "pct400_any_stop": 21.8,
+   "pct400_current_scheduled": 4.2,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 116
+  },
+  "Moca": {
+   "places": 217,
+   "pct400_any_stop": 28.1,
+   "pct400_current_scheduled": 0.0,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 61
+  },
+  "Morovis": {
+   "places": 152,
+   "pct400_any_stop": 0.0,
+   "pct400_current_scheduled": 0.0,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 0
+  },
+  "Naguabo": {
+   "places": 168,
+   "pct400_any_stop": 25.0,
+   "pct400_current_scheduled": 0.0,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 42
+  },
+  "Naranjito": {
+   "places": 204,
+   "pct400_any_stop": 17.2,
+   "pct400_current_scheduled": 0.0,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 35
+  },
+  "Orocovis": {
+   "places": 177,
+   "pct400_any_stop": 33.3,
+   "pct400_current_scheduled": 33.3,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 0
+  },
+  "Patillas": {
+   "places": 148,
+   "pct400_any_stop": 67.6,
+   "pct400_current_scheduled": 67.6,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 0
+  },
+  "Peñuelas": {
+   "places": 134,
+   "pct400_any_stop": 0.0,
+   "pct400_current_scheduled": 0.0,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 0
+  },
+  "Ponce": {
+   "places": 1165,
+   "pct400_any_stop": 79.1,
+   "pct400_current_scheduled": 0.1,
+   "near_expired_only_n": 921,
+   "near_osm_only_n": 0
+  },
+  "Quebradillas": {
+   "places": 177,
+   "pct400_any_stop": 20.9,
+   "pct400_current_scheduled": 0.0,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 37
+  },
+  "Rincón": {
+   "places": 470,
+   "pct400_any_stop": 16.4,
+   "pct400_current_scheduled": 0.0,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 77
+  },
+  "Río Grande": {
+   "places": 414,
+   "pct400_any_stop": 6.5,
+   "pct400_current_scheduled": 0.0,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 27
+  },
+  "Sabana Grande": {
+   "places": 135,
+   "pct400_any_stop": 35.6,
+   "pct400_current_scheduled": 0.0,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 48
+  },
+  "Salinas": {
+   "places": 239,
+   "pct400_any_stop": 0.0,
+   "pct400_current_scheduled": 0.0,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 0
+  },
+  "San Germán": {
+   "places": 241,
+   "pct400_any_stop": 32.4,
+   "pct400_current_scheduled": 0.0,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 78
+  },
+  "San Juan": {
+   "places": 3753,
+   "pct400_any_stop": 94.7,
+   "pct400_current_scheduled": 92.8,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 74
+  },
+  "San Lorenzo": {
+   "places": 193,
+   "pct400_any_stop": 78.2,
+   "pct400_current_scheduled": 0.0,
+   "near_expired_only_n": 151,
+   "near_osm_only_n": 0
+  },
+  "San Sebastián": {
+   "places": 294,
+   "pct400_any_stop": 42.9,
+   "pct400_current_scheduled": 42.9,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 0
+  },
+  "Santa Isabel": {
+   "places": 177,
+   "pct400_any_stop": 10.7,
+   "pct400_current_scheduled": 0.0,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 19
+  },
+  "Toa Alta": {
+   "places": 238,
+   "pct400_any_stop": 0.4,
+   "pct400_current_scheduled": 0.4,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 0
+  },
+  "Toa Baja": {
+   "places": 373,
+   "pct400_any_stop": 43.2,
+   "pct400_current_scheduled": 41.6,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 6
+  },
+  "Trujillo Alto": {
+   "places": 233,
+   "pct400_any_stop": 31.8,
+   "pct400_current_scheduled": 22.3,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 22
+  },
+  "Utuado": {
+   "places": 240,
+   "pct400_any_stop": 45.8,
+   "pct400_current_scheduled": 45.8,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 0
+  },
+  "Vega Alta": {
+   "places": 218,
+   "pct400_any_stop": 84.4,
+   "pct400_current_scheduled": 84.4,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 0
+  },
+  "Vega Baja": {
+   "places": 381,
+   "pct400_any_stop": 69.8,
+   "pct400_current_scheduled": 69.8,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 0
+  },
+  "Vieques": {
+   "places": 247,
+   "pct400_any_stop": 34.8,
+   "pct400_current_scheduled": 34.8,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 0
+  },
+  "Villalba": {
+   "places": 171,
+   "pct400_any_stop": 0.0,
+   "pct400_current_scheduled": 0.0,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 0
+  },
+  "Yabucoa": {
+   "places": 172,
+   "pct400_any_stop": 14.5,
+   "pct400_current_scheduled": 0.0,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 25
+  },
+  "Yauco": {
+   "places": 262,
+   "pct400_any_stop": 0.0,
+   "pct400_current_scheduled": 0.0,
+   "near_expired_only_n": 0,
+   "near_osm_only_n": 0
+  }
+ },
+ "paper_municipalities_n": 37,
+ "paper_municipalities_zero_current": 33,
+ "paper_causes": {
+  "expired feed": 5,
+  "expired feed and OSM stops": 4,
+  "OSM stops only": 28
+ },
+ "municipalities_zero_places_near_any_stop": 14,
+ "municipalities_zero_near_current": 47,
+ "municipalities_zero_near_c20": 59,
+ "municipalities_zero_near_sat": 63,
+ "municipalities_zero_near_sun": 69,
+ "municipalities_ge50_current": 13,
+ "saturday_operators": [
+  "ati",
+  "guaynabo",
+  "juncos",
+  "vega_alta"
+ ],
+ "sunday_operators": [
+  "ati"
+ ],
+ "sunday_routes_ati": [
+  "3",
+  "30",
+  "40",
+  "CC",
+  "CI",
+  "CSJ",
+  "TU"
+ ],
+ "sunday_ferry_routes": [
+  "CC",
+  "CI",
+  "CSJ"
+ ]
+}

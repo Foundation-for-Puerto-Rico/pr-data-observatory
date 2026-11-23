@@ -1,0 +1,74 @@
+name: Tests
+
+# Runs on every pull request. Nothing here writes to the repository.
+# The ruleset on main requires its job, "checks", before a pull request can merge. The nightly bot opens its pull requests as the observatory's
+# GitHub App (docs/automation.md), so they start this workflow like anyone's.
+# It doesn't run again on push to main: every commit there arrives through a pull request that already passed "checks", and the
+# second run used about a third of the organization's Actions minutes (November 2026). To check main after a merge, run it by hand.
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tests-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements.txt
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: pip install -r requirements.txt
+      - name: Python tests
+        run: python -m unittest discover -s tests
+      - name: Browser-code tests (Node)
+        run: node --test tests/*.test.js
+      - name: Data contract (registry, licences, domains)
+        run: python contract.py
+      - name: Spanish sources
+        run: python i18n.py --check
+      - name: Generated files are current (Spanish bundles, dictionary, catalog, registry and ledger)
+        run: |
+          python i18n.py
+          git diff --exit-code -- site/i18n || { echo "::error::The Spanish bundles are out of date: run i18n.py and commit what it writes."; exit 1; }
+          test -z "$(git status --porcelain -- site/i18n)" || { git status --porcelain -- site/i18n; echo "::error::i18n.py writes a Spanish bundle that is not committed (a new module?): commit it."; exit 1; }
+          python catalog.py --check
+          python registry.py --check   # the ledger and registry.json describe the files as they are; dates are never compared with today
+          for f in dictionary.json dictionary_summary.json; do git show "HEAD:site/data/$f" > "$RUNNER_TEMP/$f"; done
+          python dictionary.py
+          python - <<'PY'
+          # dictionary.py stamps today's date in "built": compare everything else
+          import json, os, sys
+          bad = []
+          for f in ("dictionary.json", "dictionary_summary.json"):
+              old = json.load(open(os.path.join(os.environ["RUNNER_TEMP"], f), encoding="utf-8"))
+              new = json.load(open(f"site/data/{f}", encoding="utf-8"))
+              for d in (old, new):
+                  d.pop("built", None)
+              if old != new:
+                  bad.append(f)
+          if bad:
+              sys.exit(f"::error::Out of date: {', '.join(bad)}. Run dictionary.py and commit what it writes.")
+          print("dictionary files are current (build date aside)")
+          PY
+      - name: Page weight budget
+        run: python budget.py
+      - name: Privacy (no contact fields in the published places)
+        run: python check_refresh.py
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"   # the connector's managed-function runtime (site/staticwebapp.config.json)
+      - name: Claude connector (the same data copy that Publish site deploys at /api/mcp)
+        run: bash connector/bundle_data.sh

@@ -1,0 +1,289 @@
+[
+ {
+  "id": "slope.slope_steep15_pct",
+  "name": "Land steeper than 15% (%)",
+  "ask": {
+   "en": [
+    "steep land",
+    "hillside",
+    "slope 15"
+   ],
+   "es": [
+    "terreno empinado",
+    "ladera",
+    "pendiente 15"
+   ]
+  },
+  "domain": "environment.land",
+  "domains": [
+   "environment.land",
+   "hazards",
+   "housing"
+  ],
+  "group": "Environment · Slope of the land (USGS 3DEP)",
+  "kind": "variable",
+  "plain": "Out of every 100 parts of the area's land, how many are steeper than 15%: where building and farming begin to need terraces or special design.",
+  "definition": "The share of the area's 10 m cells whose slope is more than 15%, by Horn's method on the USGS 3DEP 1/3 arc-second elevation model.",
+  "unit": "percent",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico; also 901 barrios",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "Rebuilt by hand (python slope.py) when USGS replaces an elevation tile, which happens only when new lidar arrives."
+  },
+  "method": "slope.py reads the USGS 3DEP 1/3 arc-second elevation tiles over Puerto Rico in windows of 0.1 degree (raster.py) and computes the slope of every 10 m cell by Horn's method, with the cell's size in metres at its latitude, as rise over run x 100; a cell next to one with no height has no slope. The cells are counted in blocks of 6 x 6 (about 60 m); a block belongs to the barrio that holds its centre (the nearest within 100 m off the coast), and blocks in no barrio (the sea) are left out. Municipios and Puerto Rico pool their barrios' cells. Checks at every build: Puerto Rico's share steeper than 30% between 15% and 55%; Jayuya, Orocovis and Barranquitas steeper than Puerto Rico; Cataño with less than 5% of its land steeper than 15%; the cells counted cover 97% to 110% of the barrios' Census land area.",
+  "sources": [
+   "usgs_3dep_13",
+   "census_tiger"
+  ],
+  "source_detail": "USGS 3D Elevation Program, 1/3 arc-second (about 10 m) seamless DEM, tiles USGS_13_n18w066_20260722.tif, USGS_13_n18w067_20260722.tif, USGS_13_n18w068_20260722.tif, USGS_13_n19w066_20260722.tif, USGS_13_n19w067_20260722.tif, USGS_13_n19w068_20260722.tif; barrio outlines of the observatory's crosswalk (Census 2020).",
+  "how_to_read": "Puerto Rico: 61.7%. Highest: Maricao (95.4%), Orocovis (93.7%), Adjuntas (92.7%). Lowest: Loíza (1.2%), Cataño (2.0%).",
+  "caveats": [
+   "Heights are of the bare ground at about 10 m: cuts, retaining walls and terraces narrower than a cell are smoothed out, and a road on a bridge reads the ground below.",
+   "A block of about 60 m across a barrio's edge counts whole in the barrio that holds its centre.",
+   "Inland water (lagoons, reservoirs) inside a barrio's outline counts as flat land.",
+   "The thresholds are planning guides, not rules for a site: whether a parcel can be built on depends on its soil, geology and drainage, and on the regulations."
+  ],
+  "see_also": [
+   "slope.slope_steep30_pct",
+   "slope.slope_mean",
+   "land.slope_layer"
+  ],
+  "where": {
+   "files": [
+    "slope_series.json:slope_steep15_pct",
+    "slope_barrio.json:slope_steep15_pct"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Environment · Slope of the land (USGS 3DEP)): shade municipalities, or barrios (Settings > Area), by",
+     "href": "index.html#e=slope_steep15_pct.f.value.gold.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-11-10"
+ },
+ {
+  "id": "slope.slope_steep30_pct",
+  "name": "Land steeper than 30% (%)",
+  "ask": {
+   "en": [
+    "very steep land",
+    "too steep to build",
+    "slope 30"
+   ],
+   "es": [
+    "terreno muy empinado",
+    "demasiado empinado para construir",
+    "pendiente 30"
+   ]
+  },
+  "domain": "environment.land",
+  "domains": [
+   "environment.land",
+   "hazards",
+   "housing"
+  ],
+  "group": "Environment · Slope of the land (USGS 3DEP)",
+  "kind": "variable",
+  "plain": "Out of every 100 parts of the area's land, how many are steeper than 30%: ground generally treated as too steep to build on without engineering.",
+  "definition": "The share of the area's 10 m cells whose slope is more than 30%, by Horn's method on the USGS 3DEP 1/3 arc-second elevation model.",
+  "unit": "percent",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico; also 901 barrios",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "Rebuilt by hand (python slope.py) when USGS replaces an elevation tile, which happens only when new lidar arrives."
+  },
+  "method": "slope.py reads the USGS 3DEP 1/3 arc-second elevation tiles over Puerto Rico in windows of 0.1 degree (raster.py) and computes the slope of every 10 m cell by Horn's method, with the cell's size in metres at its latitude, as rise over run x 100; a cell next to one with no height has no slope. The cells are counted in blocks of 6 x 6 (about 60 m); a block belongs to the barrio that holds its centre (the nearest within 100 m off the coast), and blocks in no barrio (the sea) are left out. Municipios and Puerto Rico pool their barrios' cells. Checks at every build: Puerto Rico's share steeper than 30% between 15% and 55%; Jayuya, Orocovis and Barranquitas steeper than Puerto Rico; Cataño with less than 5% of its land steeper than 15%; the cells counted cover 97% to 110% of the barrios' Census land area.",
+  "sources": [
+   "usgs_3dep_13",
+   "census_tiger"
+  ],
+  "source_detail": "USGS 3D Elevation Program, 1/3 arc-second (about 10 m) seamless DEM, tiles USGS_13_n18w066_20260722.tif, USGS_13_n18w067_20260722.tif, USGS_13_n18w068_20260722.tif, USGS_13_n19w066_20260722.tif, USGS_13_n19w067_20260722.tif, USGS_13_n19w068_20260722.tif; barrio outlines of the observatory's crosswalk (Census 2020).",
+  "how_to_read": "Puerto Rico: 44.1%. Highest: Maricao (83.3%), Jayuya (77.2%), Adjuntas (76.1%). Lowest: Cataño (0.1%), Loíza (0.5%).",
+  "caveats": [
+   "Heights are of the bare ground at about 10 m: cuts, retaining walls and terraces narrower than a cell are smoothed out, and a road on a bridge reads the ground below.",
+   "A block of about 60 m across a barrio's edge counts whole in the barrio that holds its centre.",
+   "Inland water (lagoons, reservoirs) inside a barrio's outline counts as flat land.",
+   "The thresholds are planning guides, not rules for a site: whether a parcel can be built on depends on its soil, geology and drainage, and on the regulations."
+  ],
+  "see_also": [
+   "slope.slope_steep15_pct",
+   "slope.slope_mean",
+   "land.slope_layer"
+  ],
+  "where": {
+   "files": [
+    "slope_series.json:slope_steep30_pct",
+    "slope_barrio.json:slope_steep30_pct"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Environment · Slope of the land (USGS 3DEP)): shade municipalities, or barrios (Settings > Area), by",
+     "href": "index.html#e=slope_steep30_pct.f.value.gold.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-11-10"
+ },
+ {
+  "id": "slope.slope_mean",
+  "name": "Mean slope of the land (%)",
+  "ask": {
+   "en": [
+    "mean slope",
+    "how steep",
+    "hilly"
+   ],
+   "es": [
+    "pendiente promedio",
+    "cuán empinado",
+    "montañoso"
+   ]
+  },
+  "domain": "environment.land",
+  "domains": [
+   "environment.land",
+   "hazards",
+   "housing"
+  ],
+  "group": "Environment · Slope of the land (USGS 3DEP)",
+  "kind": "variable",
+  "plain": "How steep the area's land is on average, as a percent of rise over run.",
+  "definition": "The mean slope of the area's 10 m cells, in percent (rise over run x 100), by Horn's method on the USGS 3DEP 1/3 arc-second elevation model.",
+  "unit": "percent",
+  "value_type": "level",
+  "geography": "78 municipalities and Puerto Rico; also 901 barrios",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "Rebuilt by hand (python slope.py) when USGS replaces an elevation tile, which happens only when new lidar arrives."
+  },
+  "method": "slope.py reads the USGS 3DEP 1/3 arc-second elevation tiles over Puerto Rico in windows of 0.1 degree (raster.py) and computes the slope of every 10 m cell by Horn's method, with the cell's size in metres at its latitude, as rise over run x 100; a cell next to one with no height has no slope. The cells are counted in blocks of 6 x 6 (about 60 m); a block belongs to the barrio that holds its centre (the nearest within 100 m off the coast), and blocks in no barrio (the sea) are left out. Municipios and Puerto Rico pool their barrios' cells. Checks at every build: Puerto Rico's share steeper than 30% between 15% and 55%; Jayuya, Orocovis and Barranquitas steeper than Puerto Rico; Cataño with less than 5% of its land steeper than 15%; the cells counted cover 97% to 110% of the barrios' Census land area.",
+  "sources": [
+   "usgs_3dep_13",
+   "census_tiger"
+  ],
+  "source_detail": "USGS 3D Elevation Program, 1/3 arc-second (about 10 m) seamless DEM, tiles USGS_13_n18w066_20260722.tif, USGS_13_n18w067_20260722.tif, USGS_13_n18w068_20260722.tif, USGS_13_n19w066_20260722.tif, USGS_13_n19w067_20260722.tif, USGS_13_n19w068_20260722.tif; barrio outlines of the observatory's crosswalk (Census 2020).",
+  "how_to_read": "Puerto Rico: 29.7%. Highest: Ciales (53.1%), Maricao (52.6%), Utuado (49.7%). Lowest: Loíza (1.6%), Cataño (2.6%).",
+  "caveats": [
+   "Heights are of the bare ground at about 10 m: cuts, retaining walls and terraces narrower than a cell are smoothed out, and a road on a bridge reads the ground below.",
+   "A block of about 60 m across a barrio's edge counts whole in the barrio that holds its centre.",
+   "Inland water (lagoons, reservoirs) inside a barrio's outline counts as flat land.",
+   "The thresholds are planning guides, not rules for a site: whether a parcel can be built on depends on its soil, geology and drainage, and on the regulations."
+  ],
+  "see_also": [
+   "slope.slope_steep15_pct",
+   "slope.slope_steep30_pct",
+   "land.slope_layer"
+  ],
+  "where": {
+   "files": [
+    "slope_series.json:slope_mean",
+    "slope_barrio.json:slope_mean"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Environment · Slope of the land (USGS 3DEP)): shade municipalities, or barrios (Settings > Area), by",
+     "href": "index.html#e=slope_mean.f.value.gold.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-11-10"
+ },
+ {
+  "id": "land.slope_layer",
+  "name": "Slope (USGS 3DEP, image of about 60 m blocks)",
+  "group": "Terrain: map layers",
+  "kind": "layer",
+  "domain": "environment.land",
+  "domains": [
+   "environment.land",
+   "hazards"
+  ],
+  "plain": "A map of how steep the ground is, darker for steeper, from the USGS 10 m elevation model. A slider shows only the land at or above a slope.",
+  "definition": "slope_surface.png is an indexed Web Mercator image of 3730 x 1241 pixels of about 59 m: each pixel is the mean slope of the 10 m cells of one block of slope.py, on a fixed scale of 64 steps from 0% to 60% (steeper is drawn as 60%), transparent over the sea. slope_surface.json gives its corners, size and scale. The 2D map lays it at 75% opacity under the landslide and soil layers; the legend's slider leaves out the steps below a chosen slope, and a click on the map gives the slope of the block under the point.",
+  "unit": "percent (rise over run)",
+  "value_type": "geometry",
+  "geography": "Puerto Rico, Vieques and Culebra (Mona, Monito and Desecheo are not drawn)",
+  "coverage": {
+   "timeline": "snapshot",
+   "frequency": "Rebuilt with slope.py."
+  },
+  "method": "slope.py reads the USGS 3DEP 1/3 arc-second elevation tiles over Puerto Rico in windows of 0.1 degree (raster.py) and computes the slope of every 10 m cell by Horn's method, with the cell's size in metres at its latitude, as rise over run x 100; a cell next to one with no height has no slope. The cells are counted in blocks of 6 x 6 (about 60 m); a block belongs to the barrio that holds its centre (the nearest within 100 m off the coast), and blocks in no barrio (the sea) are left out. Municipios and Puerto Rico pool their barrios' cells. Checks at every build: Puerto Rico's share steeper than 30% between 15% and 55%; Jayuya, Orocovis and Barranquitas steeper than Puerto Rico; Cataño with less than 5% of its land steeper than 15%; the cells counted cover 97% to 110% of the barrios' Census land area.",
+  "sources": [
+   "usgs_3dep_13"
+  ],
+  "source_detail": "USGS 3D Elevation Program, 1/3 arc-second (about 10 m) seamless DEM, tiles USGS_13_n18w066_20260722.tif, USGS_13_n18w067_20260722.tif, USGS_13_n18w068_20260722.tif, USGS_13_n19w066_20260722.tif, USGS_13_n19w067_20260722.tif, USGS_13_n19w068_20260722.tif; barrio outlines of the observatory's crosswalk (Census 2020).",
+  "how_to_read": "Pale is flat, dark brown is steep. Move the slider to 15% or 30% to see only the land steeper than that. The shares by barrio are in Explore.",
+  "caveats": [
+   "Heights are of the bare ground at about 10 m: cuts, retaining walls and terraces narrower than a cell are smoothed out, and a road on a bridge reads the ground below.",
+   "Each pixel is the mean of a block of about 60 m, so a narrow steep bank inside a flatter block looks gentler than it is."
+  ],
+  "see_also": [
+   "slope.slope_steep30_pct",
+   "land.contours_layer",
+   "hazards.landslide_layer"
+  ],
+  "added": "2026-11-10",
+  "where": {
+   "files": [
+    "slope_surface.json:*"
+   ],
+   "view": [
+    {
+     "label": "Map, Layers tab: Land and protected areas, Slope",
+     "href": "index.html#l=slope"
+    }
+   ]
+  }
+ },
+ {
+  "id": "land.contours_layer",
+  "name": "Contour lines (drawn from the terrain tiles)",
+  "group": "Terrain: map layers",
+  "kind": "layer",
+  "domain": "environment.land",
+  "domains": [
+   "environment.land"
+  ],
+  "plain": "Lines that join points of the same height, drawn in the browser from the terrain tiles of the 3D view; closer lines as you zoom in.",
+  "definition": "While the layer is on, the browser asks the AWS Terrain Tiles (Terrarium encoding, the source of the 3D view's terrain; in Puerto Rico from USGS 3DEP) for the tiles in view up to zoom 15, decodes each pixel's height ((R x 256 + G + B / 256) - 32768 m) and traces the contour lines with marching squares. The interval is 100 m up to zoom 11, 50 m at 12, 20 m at 13 and 10 m from 14; every fifth line is thicker. Nothing is stored in the observatory's files.",
+  "unit": "metres above sea level",
+  "value_type": "geometry",
+  "geography": "Puerto Rico, Vieques, Culebra and Mona",
+  "coverage": {
+   "timeline": "live",
+   "frequency": "Drawn each time the layer is shown; the terrain tiles change rarely."
+  },
+  "method": "js/terrain.js: marching squares on each 256 x 256 tile, the saddle cells split by the mean of their four corners; levels above 0 m only.",
+  "sources": [
+   "usgs_3dep_13"
+  ],
+  "source_detail": "AWS Open Data Terrain Tiles (Mapzen, Terrarium encoding): https://registry.opendata.aws/terrain-tiles/; in Puerto Rico from USGS 3DEP.",
+  "how_to_read": "Lines close together mean steep ground; far apart, gentle ground. Read the thicker lines for the height in round numbers.",
+  "caveats": [
+   "Lines are traced tile by tile, so a line can have a one-pixel gap where two tiles meet.",
+   "The terrain tiles are about 5 m at the closest zoom and are smoothed at the island's scale."
+  ],
+  "see_also": [
+   "land.slope_layer"
+  ],
+  "added": "2026-11-10",
+  "where": {
+   "files": [],
+   "view": [
+    {
+     "label": "Map, Layers tab: Land and protected areas, Contour lines",
+     "href": "index.html#l=contours"
+    }
+   ]
+  }
+ }
+]

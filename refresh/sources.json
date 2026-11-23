@@ -1,0 +1,2215 @@
+{
+ "_about": "When each data source is checked for a new release and how it is rebuilt (docs/automation.md, part 2). freshness.py reads it. probe: the cheap check (no data download). every_days: how often; hot_months: months when a release is expected, checked daily then. unit: what rebuilds it (units). review: 'auto' lets GitHub merge the rebuild's pull request when its checks pass; 'human' waits for a person. code_edit: a new period also needs a code change before the rebuild picks it up.",
+ "units": {
+  "transit": {
+   "how": "refresh-transit.yml (nightly)",
+   "runs": [],
+   "where": "nightly"
+  },
+  "medicare": {
+   "how": "python medicare_series.py --refresh",
+   "runs": [
+    "python medicare_series.py --refresh"
+   ],
+   "files": [
+    "medicare_series.json"
+   ],
+   "where": "ci"
+  },
+  "education": {
+   "how": "python education_series.py (where cache/education holds the earlier years)",
+   "runs": [],
+   "where": "local",
+   "why": "On a clean runner it downloads every school year from the Urban Institute's API, which timed out (HTTP 524) after 13 minutes in a test on 2026-10-15."
+  },
+  "infrastructure": {
+   "how": "python infrastructure_series.py --refresh; python power_plants.py --refresh; python transport_inventories.py --refresh",
+   "runs": [
+    "python infrastructure_series.py --refresh",
+    "python power_plants.py --refresh",
+    "python transport_inventories.py --refresh"
+   ],
+   "files": [
+    "infrastructure_series.json",
+    "bridges_series.json",
+    "infrastructure_barrio.json",
+    "power_plants.geojson",
+    "bridges.geojson"
+   ],
+   "where": "ci"
+  },
+  "environment": {
+   "how": "python environment_series.py --refresh",
+   "runs": [
+    "python environment_series.py --refresh"
+   ],
+   "files": [
+    "environment_series.json",
+    "hazard_series.json"
+   ],
+   "where": "ci",
+   "ignore": [
+    "as_of"
+   ],
+   "why_ignore": "environment_series.json's as_of is the month the files were downloaded, not a date of the data."
+  },
+  "health": {
+   "how": "python health_series.py --refresh",
+   "runs": [
+    "python health_series.py --refresh"
+   ],
+   "files": [
+    "health_series.json"
+   ],
+   "where": "ci"
+  },
+  "care": {
+   "how": "python care_series.py --refresh",
+   "runs": [],
+   "where": "local",
+   "why": "It needs cache/network/census_blocks_ids.json, which only the full build makes (test on 2026-10-15)."
+  },
+  "economy": {
+   "how": "python economy_series.py (delete the source's cache files first; see the source's note), then python federal_awards.py (federal money by function for the Public spending page), python federal_outlays.py --refresh (federal grants and contracts obligated and paid out), python unused_funds.py --refresh (federal grants that ended with an unpaid balance), python taken_back.py --refresh (federal grant money taken back), python cdbg_dr.py (disaster recovery subawards by municipio), python fema_pa_stage.py --refresh (FEMA Public Assistance by stage and age), python cdbg_regular.py (HUD's yearly CDBG by municipio) and python public_money_need.py (the Disaster funding and need page reads the FEMA series and the two CDBG files)",
+   "runs": [],
+   "where": "local"
+  },
+  "housing": {
+   "how": "python housing_series.py, python economy_series.py, python small_area.py, python women_labor.py, then python wcrp_rvi.py (the WCRP rebuild reads acs_barrio.json)",
+   "runs": [],
+   "where": "local"
+  },
+  "police": {
+   "how": "python economy_series.py --police --refresh",
+   "runs": [],
+   "where": "local"
+  },
+  "build": {
+   "how": "delete the source's cache file, then python build.py (the full build, about 3 GB of downloads)",
+   "runs": [],
+   "where": "local"
+  },
+  "exposure": {
+   "how": "python exposure.py --refresh",
+   "runs": [],
+   "where": "local"
+  },
+  "osm": {
+   "how": "python roads.py, python gazetteer.py, then python build.py --refresh-network; python facilities.py --refresh osm (police stations); python community_assets.py --refresh townhall (city halls); python power_lines.py --refresh (transmission lines)",
+   "runs": [],
+   "where": "local"
+  },
+  "gateways": {
+   "how": "python gateway_series.py --refresh",
+   "runs": [
+    "python gateway_series.py --refresh"
+   ],
+   "files": [
+    "gateway_series.json"
+   ],
+   "where": "ci"
+  },
+  "facilities": {
+   "how": "python facilities.py --refresh hud,usgs,usac (the police stations of OpenStreetMap are kept as published; renew them by hand with --refresh osm)",
+   "runs": [
+    "python facilities.py --refresh hud,usgs,usac"
+   ],
+   "files": [
+    "facility_series.json",
+    "public_housing.geojson",
+    "fire_stations.geojson",
+    "police_stations.geojson",
+    "libraries.geojson"
+   ],
+   "where": "ci"
+  },
+  "lihtc": {
+   "how": "Save https://www.huduser.gov/lihtc/lihtcpub.zip from a browser to cache/facilities/lihtcpub.zip (HUD USER refuses scripts; decision 71), then python facilities.py --only lihtc",
+   "runs": [],
+   "files": [
+    "lihtc.geojson",
+    "facility_series.json"
+   ],
+   "where": "local"
+  },
+  "nonprofits": {
+   "how": "python nonprofits.py --refresh",
+   "runs": [
+    "python nonprofits.py --refresh"
+   ],
+   "files": [
+    "nonprofit_series.json"
+   ],
+   "where": "ci"
+  },
+  "wcrp": {
+   "how": "python wcrp_rvi.py --refresh",
+   "runs": [],
+   "where": "local",
+   "why": "WCRP is a HUD CDBG-DR program: its files wait for Finance and Compliance review (HANDOFF), so a rebuild is run and reviewed by a person, never merged by itself."
+  },
+  "conditions": {
+   "how": "python conditions.py --refresh, then python wcrp_rvi.py (the WCRP rebuild reads conditions_barrio.json)",
+   "runs": [
+    "python conditions.py --refresh",
+    "python wcrp_rvi.py"
+   ],
+   "files": [
+    "conditions_series.json",
+    "conditions_barrio.json",
+    "wcrp_rvi_barrio.json",
+    "wcrp_rvi_inputs.json"
+   ],
+   "where": "ci",
+   "ignore": [
+    "harvested"
+   ],
+   "why_ignore": "wcrp_rvi_barrio.json's harvested is the day the runner read the original's ArcGIS services again (a clean runner has no cache), not a change of the data.",
+   "human_if_changed": [
+    "wcrp_rvi_barrio.json",
+    "wcrp_rvi_inputs.json"
+   ],
+   "why_human": "The WCRP index is rebuilt from conditions_barrio.json, so a new release of the local conditions changes it; WCRP is a HUD CDBG-DR program and its files are reviewed by a person (unit wcrp), so such a rebuild never merges by itself."
+  },
+  "community": {
+   "how": "python community_assets.py --refresh nps,samhsa (the city halls of OpenStreetMap are kept as published; renew them by hand with --refresh townhall)",
+   "runs": [
+    "python community_assets.py --refresh nps,samhsa"
+   ],
+   "files": [
+    "community_series.json",
+    "historic_places.geojson",
+    "town_halls.geojson"
+   ],
+   "where": "ci"
+  },
+  "landslide": {
+   "how": "python landslide.py --refresh",
+   "runs": [
+    "python landslide.py --refresh"
+   ],
+   "files": [
+    "landslide_series.json",
+    "landslide_barrio.json"
+   ],
+   "where": "ci"
+  },
+  "heat": {
+   "how": "python heat.py --refresh",
+   "runs": [
+    "python heat.py --refresh"
+   ],
+   "files": [
+    "heat_series.json",
+    "heat_barrio.json"
+   ],
+   "where": "ci"
+  },
+  "vegetation": {
+   "how": "python vegetation.py --refresh",
+   "runs": [
+    "python vegetation.py --refresh"
+   ],
+   "files": [
+    "vegetation_series.json",
+    "vegetation_barrio.json"
+   ],
+   "where": "ci"
+  },
+  "buildings": {
+   "how": "python buildings.py --refresh; python buildings3d.py --refresh",
+   "runs": [
+    "python buildings.py --refresh",
+    "python buildings3d.py --refresh"
+   ],
+   "files": [
+    "buildings_series.json",
+    "buildings_barrio.json",
+    "buildings_gap.pmtiles"
+   ],
+   "where": "ci"
+  },
+  "night_heat": {
+   "how": "python ecostress.py --refresh",
+   "runs": [
+    "python ecostress.py --refresh"
+   ],
+   "files": [
+    "night_heat_series.json",
+    "night_heat_barrio.json"
+   ],
+   "where": "ci"
+  },
+  "reservoirs": {
+   "how": "python reservoirs.py --refresh; python river_gauges.py --refresh; python groundwater.py --refresh; python rain_gauges.py --refresh",
+   "runs": [
+    "python reservoirs.py --refresh",
+    "python river_gauges.py --refresh",
+    "python groundwater.py --refresh",
+    "python rain_gauges.py --refresh"
+   ],
+   "files": [
+    "reservoirs.geojson",
+    "river_gauges.geojson",
+    "groundwater.geojson",
+    "rain_gauges.geojson"
+   ],
+   "where": "ci"
+  },
+  "nightlights": {
+   "how": "python nightlights.py (needs EARTHDATA_TOKEN; docs/nightlights-setup.md); then python storm_recovery.py (no network) rebuilds the storm recovery files from the new monthly file",
+   "runs": [
+    "python nightlights.py",
+    "python storm_recovery.py"
+   ],
+   "files": [
+    "nightlights_series.json",
+    "nightlights_barrio.json",
+    "nightlights_monthly.json",
+    "storm_recovery_series.json",
+    "storm_recovery_barrio.json"
+   ],
+   "where": "ci"
+  },
+  "broadband": {
+   "how": "python broadband.py (needs FCC_BDC_USERNAME and FCC_BDC_HASH; docs/broadband.md)",
+   "runs": [
+    "python broadband.py"
+   ],
+   "files": [
+    "broadband_series.json",
+    "broadband_barrio.json"
+   ],
+   "where": "ci"
+  },
+  "fires": {
+   "how": "python fires.py --refresh (the last 12 months need FIRMS_MAP_KEY; docs/fires.md)",
+   "runs": [
+    "python fires.py --refresh"
+   ],
+   "files": [
+    "fires_series.json"
+   ],
+   "where": "ci"
+  },
+  "spending": {
+   "how": "python ogp_budget.py --refresh",
+   "runs": [
+    "python ogp_budget.py --refresh"
+   ],
+   "files": [
+    "spending_state.json"
+   ],
+   "where": "ci"
+  },
+  "spending-pica": {
+   "how": "python pica.py --refresh (needs pdftotext from poppler)",
+   "runs": [],
+   "where": "local",
+   "why": "The program is a PDF read with pdftotext, which the clean runner does not have."
+  },
+  "inflation": {
+   "how": "python inflation.py --refresh, then python docs/analysis/inflation-2026-11/make_page.py (the page's figures are written into it) and python i18n.py; raise js/i18n.js ?v= on inflation.html when its Spanish bundle changes",
+   "runs": [],
+   "where": "local",
+   "why": "The page's text carries the latest month's figures, so a new month rewrites the page and its Spanish bundle, which a person checks before it is published."
+  },
+  "oz": {
+   "how": "python opportunity_zones.py --refresh",
+   "runs": [
+    "python opportunity_zones.py --refresh"
+   ],
+   "files": [
+    "opportunity_zones.json",
+    "oz_tracts.geojson"
+   ],
+   "where": "ci"
+  },
+  "transit_links": {
+   "how": "python transit_links.py --refresh; python commuting.py",
+   "runs": [
+    "python transit_links.py --refresh",
+    "python commuting.py"
+   ],
+   "files": [
+    "transit_links.json",
+    "simulated_links.geojson",
+    "publicos.geojson",
+    "commuting_series.json"
+   ],
+   "where": "ci"
+  },
+  "traffic": {
+   "how": "python traffic.py --refresh, then python transit_links.py",
+   "runs": [
+    "python traffic.py --refresh",
+    "python transit_links.py"
+   ],
+   "files": [
+    "traffic_series.json",
+    "traffic_roads.geojson",
+    "transit_links.json",
+    "simulated_links.geojson",
+    "publicos.geojson"
+   ],
+   "where": "ci"
+  },
+  "crashes": {
+   "how": "python crashes.py --refresh, then python transit_links.py",
+   "runs": [
+    "python crashes.py --refresh",
+    "python transit_links.py"
+   ],
+   "files": [
+    "crashes_series.json",
+    "transit_links.json",
+    "simulated_links.geojson",
+    "publicos.geojson"
+   ],
+   "where": "ci"
+  },
+  "energy": {
+   "how": "python energy_series.py --refresh; python energy_municipios.py --refresh",
+   "runs": [
+    "python energy_series.py --refresh",
+    "python energy_municipios.py --refresh"
+   ],
+   "files": [
+    "energy.json",
+    "energy_series.json",
+    "energy_barrio.json"
+   ],
+   "where": "ci"
+  },
+  "inventories": {
+   "how": "python transport_inventories.py --refresh, then python transit_links.py",
+   "runs": [
+    "python transport_inventories.py --refresh",
+    "python transit_links.py"
+   ],
+   "files": [
+    "bridges.geojson",
+    "airports.geojson",
+    "ferry_routes.geojson",
+    "ev_stations.geojson",
+    "transit_links.json",
+    "simulated_links.geojson",
+    "publicos.geojson",
+    "timetabled_links.geojson"
+   ],
+   "where": "ci"
+  },
+  "credit": {
+   "how": "python credit.py --refresh (downloads the Summary of Deposits again and any HMDA year the cache does not hold)",
+   "runs": [
+    "python credit.py --refresh"
+   ],
+   "files": [
+    "credit_series.json"
+   ],
+   "where": "ci"
+  },
+  "drought": {
+   "how": "python drought.py --refresh (downloads every week again for the 78 municipios and Puerto Rico, 79 requests)",
+   "runs": [
+    "python drought.py --refresh"
+   ],
+   "files": [
+    "drought_series.json"
+   ],
+   "where": "ci"
+  },
+  "essentials": {
+   "how": "python essentials.py --refresh (downloads the newest Overture places, about 130 MB, and Geofabrik's Puerto Rico extract, about 75 MB; the OpenStreetMap check needs osmium)",
+   "runs": [],
+   "files": [
+    "essentials_series.json",
+    "essentials_barrio.json"
+   ],
+   "where": "local"
+  },
+  "degrees": {
+   "how": "python degrees.py --refresh (downloads two IPEDS ZIP files a year, about 10 MB each, from NCES)",
+   "runs": [],
+   "files": [
+    "degrees_series.json"
+   ],
+   "where": "local"
+  },
+  "school_conditions": {
+   "how": "python school_conditions.py --refresh (Puerto Rico's all-students rows of three CRDC files a year from the Urban Institute's portal)",
+   "runs": [],
+   "files": [
+    "school_conditions_series.json"
+   ],
+   "where": "local"
+  },
+  "proficiency": {
+   "how": "python proficiency.py --refresh (Puerto Rico's all-students rows of the EDFacts assessment file, one a year, from the Urban Institute's portal)",
+   "runs": [],
+   "files": [
+    "proficiency_series.json"
+   ],
+   "where": "local"
+  },
+  "providers": {
+   "how": "python providers.py --refresh (downloads the newest NPPES monthly file, about 1.1 GB, and keeps Puerto Rico's counts)",
+   "runs": [],
+   "files": [
+    "providers_series.json"
+   ],
+   "where": "local"
+  },
+  "hexgrid": {
+   "how": "python hexgrid.py (no network: the census blocks, the building cache, flood.geojson and the caches of heat.py, vegetation.py and slope.py; run it after those)",
+   "runs": [],
+   "files": [
+    "hex_grid.geojson"
+   ],
+   "where": "local"
+  },
+  "cutoff": {
+   "how": "python cutoff.py (no download: reads roads.bin, flood.geojson, bridges.geojson, gazetteer.json and wcrp.geojson, and the census block cache; about a minute)",
+   "runs": [],
+   "files": [
+    "cutoff_series.json",
+    "cutoff_barrio.json"
+   ],
+   "where": "local"
+  }
+ },
+ "sources": [
+  {
+   "id": "ati_gtfs",
+   "name": "ATI GTFS feed",
+   "probe": {
+    "kind": "head",
+    "url": "https://docs.pr.gov/files/ATI/DATOS_ABIERTOS/GTFS/PRITA_GTFS.zip",
+    "headers": [
+     "ETag",
+     "Content-Length"
+    ]
+   },
+   "every_days": 1,
+   "hot_months": [],
+   "unit": "transit",
+   "review": "auto"
+  },
+  {
+   "id": "muni_gtfs",
+   "name": "Municipal GTFS feeds (registry)",
+   "probe": {
+    "kind": "json",
+    "urls": [
+     "https://api.github.com/repos/transitland/transitland-atlas/commits?path=feeds/nationalrtap.org.dmfr.json&per_page=1"
+    ],
+    "paths": [
+     "0.sha"
+    ]
+   },
+   "every_days": 1,
+   "hot_months": [],
+   "unit": "transit",
+   "review": "auto",
+   "note": "Sees registry changes only; a municipality can replace its feed at the same address, which the nightly job catches."
+  },
+  {
+   "id": "ntd",
+   "name": "FTA National Transit Database list",
+   "probe": {
+    "kind": "walk",
+    "url": "https://raw.githubusercontent.com/transitland/transitland-atlas/main/external-data-for-reference/ntd-gtfs-weblinks/{y}-gtfs-weblinks.csv",
+    "start": "2023",
+    "step": "year"
+   },
+   "every_days": 30,
+   "hot_months": [],
+   "unit": "transit",
+   "review": "human",
+   "code_edit": "network.NTD_LIST names the 2023 file"
+  },
+  {
+   "id": "overture",
+   "name": "Overture Maps places",
+   "probe": {
+    "kind": "json",
+    "urls": [
+     "https://stac.overturemaps.org/catalog.json"
+    ],
+    "paths": [
+     "latest"
+    ]
+   },
+   "every_days": 7,
+   "hot_months": [],
+   "unit": "build",
+   "review": "human",
+   "note": "A new release also calls for rebuilding the distance to essentials by hand (unit essentials: python essentials.py --refresh)."
+  },
+  {
+   "id": "fema_nfhl",
+   "name": "FEMA flood hazard areas",
+   "probe": {
+    "kind": "json",
+    "urls": [
+     "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/28/query?where=DFIRM_ID+LIKE+%2772%25%27&outStatistics=%5B%7B%22statisticType%22%3A%22count%22%2C%22onStatisticField%22%3A%22OBJECTID%22%2C%22outStatisticFieldName%22%3A%22n%22%7D%2C%7B%22statisticType%22%3A%22max%22%2C%22onStatisticField%22%3A%22OBJECTID%22%2C%22outStatisticFieldName%22%3A%22maxoid%22%7D%5D&f=json"
+    ],
+    "paths": [
+     "features.0.attributes.n",
+     "features.0.attributes.maxoid"
+    ]
+   },
+   "every_days": 7,
+   "hot_months": [],
+   "unit": "build",
+   "review": "human",
+   "note": "The server drops connections at times: a failed check is retried the next day. A new release also calls for rebuilding the residents cut off from hospitals by hand (unit cutoff: python cutoff.py)."
+  },
+  {
+   "id": "padus",
+   "name": "USGS protected areas (PAD-US)",
+   "probe": {
+    "kind": "json",
+    "urls": [
+     "https://services.arcgis.com/v01gqwM5QqNysAAi/arcgis/rest/services/Protection_Mechanism_Category_PADUS/FeatureServer/0?f=json"
+    ],
+    "paths": [
+     "editingInfo.dataLastEditDate",
+     "name"
+    ]
+   },
+   "every_days": 30,
+   "hot_months": [],
+   "unit": "build",
+   "review": "human",
+   "note": "A new PAD-US version may come as a new service; watch USGS's PAD-US page too."
+  },
+  {
+   "id": "faa_airports",
+   "name": "FAA airports (NTAD)",
+   "probe": {
+    "kind": "json",
+    "urls": [
+     "https://services.arcgis.com/xOi1kZaI0eWDREZv/arcgis/rest/services/NTAD_Aviation_Facilities/FeatureServer/0?f=json"
+    ],
+    "paths": [
+     "editingInfo.dataLastEditDate"
+    ]
+   },
+   "every_days": 90,
+   "hot_months": [],
+   "unit": "build",
+   "review": "auto",
+   "note": "The layer is edited nationwide every 28 days; Puerto Rico's 14 airports rarely change, so it is checked every 90 days. transport_inventories.py (unit inventories) reads the same layer for the Airports and heliports layer; the unit build reads it for transport.json."
+  },
+  {
+   "id": "nhc_hurdat2",
+   "name": "NOAA hurricane tracks (HURDAT2)",
+   "probe": {
+    "kind": "regex",
+    "url": "https://www.nhc.noaa.gov/data/hurdat/",
+    "pattern": "hurdat2-1851-(\\d{4}-\\d{6})\\.txt"
+   },
+   "every_days": 30,
+   "hot_months": [
+    3,
+    4,
+    5,
+    6,
+    9
+   ],
+   "unit": "build",
+   "review": "human"
+  },
+  {
+   "id": "acs5",
+   "name": "Census ACS 5-year",
+   "probe": {
+    "kind": "walk",
+    "url": "https://www2.census.gov/programs-surveys/acs/summary_file/{y}/table-based-SF/data/5YRData/acsdt5y{y}-b25077.dat",
+    "start": "2024",
+    "step": "year"
+   },
+   "every_days": 30,
+   "hot_months": [
+    12,
+    1,
+    2
+   ],
+   "unit": "housing",
+   "review": "human",
+   "code_edit": "small_area.VINTAGES and housing.LATEST name the years; women_labor.WINDOWS names its windows that share no year (the next is 2029)"
+  },
+  {
+   "id": "census_pep",
+   "name": "Census population estimates (PEP)",
+   "probe": {
+    "kind": "walk",
+    "url": "https://www2.census.gov/programs-surveys/popest/datasets/2020-{y}/puerto-rico/asrh/cc-est{y}-agesex-72.csv",
+    "start": "2025",
+    "step": "year"
+   },
+   "every_days": 30,
+   "hot_months": [
+    5,
+    6,
+    7
+   ],
+   "unit": "housing",
+   "review": "human"
+  },
+  {
+   "id": "census_cre",
+   "name": "Census Community Resilience Estimates",
+   "probe": {
+    "kind": "walk",
+    "url": "https://www2.census.gov/programs-surveys/demo/datasets/community-resilience/{y}/pr/CRE{yy}_PR_MUNICIPIO.csv",
+    "start": "2024",
+    "step": "year"
+   },
+   "every_days": 30,
+   "hot_months": [
+    4,
+    5,
+    6
+   ],
+   "unit": "environment",
+   "review": "human",
+   "code_edit": "environment_series.CRE_YEARS names the years"
+  },
+  {
+   "id": "hrsa_hpsa",
+   "name": "HRSA shortage areas",
+   "probe": {
+    "kind": "range-size",
+    "urls": [
+     "https://data.hrsa.gov/DataDownload/DD_Files/BCD_HPSA_FCT_DET_PC.csv",
+     "https://data.hrsa.gov/DataDownload/DD_Files/BCD_HPSA_FCT_DET_DH.csv",
+     "https://data.hrsa.gov/DataDownload/DD_Files/BCD_HPSA_FCT_DET_MH.csv"
+    ]
+   },
+   "every_days": 7,
+   "hot_months": [],
+   "unit": "health",
+   "review": "human",
+   "note": "HRSA remakes the files daily; their size is the only steady sign of a change. Licence under review (decision 19)."
+  },
+  {
+   "id": "hrsa_sites",
+   "name": "HRSA health center sites",
+   "probe": {
+    "kind": "range-size",
+    "urls": [
+     "https://data.hrsa.gov/DataDownload/DD_Files/Health_Center_Service_Delivery_and_LookAlike_Sites.csv"
+    ]
+   },
+   "every_days": 7,
+   "hot_months": [],
+   "unit": "care",
+   "review": "human",
+   "note": "The site points are read on the runner and never kept or published (owner decision 2026-10-14)."
+  },
+  {
+   "id": "cms_provider_data",
+   "name": "CMS facility lists",
+   "probe": {
+    "kind": "json",
+    "urls": [
+     "https://data.cms.gov/provider-data/api/1/metastore/schemas/dataset/items/xubh-q36u",
+     "https://data.cms.gov/provider-data/api/1/metastore/schemas/dataset/items/23ew-n7w9",
+     "https://data.cms.gov/provider-data/api/1/metastore/schemas/dataset/items/4pq5-n9py",
+     "https://data.cms.gov/provider-data/api/1/metastore/schemas/dataset/items/6jpm-sxkc",
+     "https://data.cms.gov/provider-data/api/1/metastore/schemas/dataset/items/yc9t-dgbk"
+    ],
+    "paths": [
+     "modified"
+    ]
+   },
+   "every_days": 7,
+   "hot_months": [],
+   "unit": "care",
+   "review": "auto"
+  },
+  {
+   "id": "cms_medicare_enrollment",
+   "name": "CMS Medicare enrollment",
+   "probe": {
+    "kind": "json",
+    "urls": [
+     "https://data.cms.gov/data-api/v1/dataset/d7fabe1e-d19b-4333-9eff-e80e0643f2fd/data/stats?filter[BENE_STATE_ABRVTN]=PR&filter[BENE_GEO_LVL]=State&filter[MONTH]=Year"
+    ],
+    "paths": [
+     "found_rows"
+    ]
+   },
+   "every_days": 30,
+   "hot_months": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "unit": "medicare",
+   "review": "human",
+   "note": "The check counts yearly rows, so a change is always a new year."
+  },
+  {
+   "id": "bls_qcew",
+   "name": "BLS QCEW jobs and pay",
+   "probe": {
+    "kind": "walk",
+    "url": "https://data.bls.gov/cew/data/api/{y}/a/area/72127.csv",
+    "start": "2025",
+    "step": "year"
+   },
+   "every_days": 30,
+   "hot_months": [
+    8,
+    9
+   ],
+   "unit": "economy",
+   "review": "human"
+  },
+  {
+   "id": "bls_laus",
+   "name": "BLS unemployment (LAUS)",
+   "probe": {
+    "kind": "head",
+    "url": "https://download.bls.gov/pub/time.series/la/la.data.46.PuertoRico",
+    "headers": [
+     "Last-Modified"
+    ],
+    "contact": true
+   },
+   "every_days": 30,
+   "hot_months": [
+    3,
+    4
+   ],
+   "unit": "economy",
+   "review": "auto",
+   "note": "BLS answers only when the request names a contact (the variable FRESHNESS_CONTACT)."
+  },
+  {
+   "id": "bls_cpi",
+   "name": "BLS consumer prices (CPI)",
+   "probe": {
+    "kind": "head",
+    "url": "https://download.bls.gov/pub/time.series/cu/cu.data.1.AllItems",
+    "headers": [
+     "Last-Modified"
+    ],
+    "contact": true
+   },
+   "every_days": 30,
+   "hot_months": [
+    1
+   ],
+   "unit": "economy",
+   "review": "auto",
+   "note": "Changes monthly; the build uses the annual average, published with the December index in January. The Inflation page (unit inflation) reads the monthly CPI-U, CPI-W and the major groups from the API; rebuild it with python inflation.py --refresh after each monthly release."
+  },
+  {
+   "id": "usaspending",
+   "name": "USAspending federal awards",
+   "probe": {
+    "kind": "calendar",
+    "rule": "fiscal-year-final"
+   },
+   "every_days": 30,
+   "hot_months": [
+    11
+   ],
+   "unit": "economy",
+   "review": "human",
+   "note": "Public money: held for Compliance (decision 21). A fiscal year counts as final from 15 November."
+  },
+  {
+   "id": "openfema",
+   "name": "OpenFEMA assistance",
+   "probe": {
+    "kind": "json",
+    "urls": [
+     "https://www.fema.gov/api/open/v2/PublicAssistanceFundedProjectsDetails?$filter=stateNumberCode%20eq%20%2772%27&$top=1&$select=lastRefresh&$inlinecount=allpages"
+    ],
+    "paths": [
+     "metadata.count"
+    ]
+   },
+   "every_days": 30,
+   "hot_months": [],
+   "unit": "economy",
+   "review": "human",
+   "note": "Public money: held for Compliance (decision 21)."
+  },
+  {
+   "id": "fac",
+   "name": "Federal Audit Clearinghouse single audits",
+   "probe": {
+    "kind": "calendar",
+    "rule": "quarter"
+   },
+   "every_days": 30,
+   "hot_months": [],
+   "unit": "economy",
+   "review": "human",
+   "note": "Public money: held for Compliance (decision 21). Audits arrive all year and many are late: run economy_series.py --fac --refresh each quarter (needs FAC_API_KEY, decision 70)."
+  },
+  {
+   "id": "nmtc",
+   "name": "CDFI Fund New Markets Tax Credit public data release",
+   "probe": {
+    "kind": "regex",
+    "url": "https://www.cdfifund.gov/documents/data-releases",
+    "pattern": "NMTC_Public_Data_Release_includes_([A-Za-z0-9_]+)\\.xlsx"
+   },
+   "every_days": 30,
+   "hot_months": [
+    7,
+    8
+   ],
+   "unit": "economy",
+   "review": "human",
+   "note": "Public money: held for Compliance (decision 21). One release a year, in the summer; the check reads the newest file named on the page. Run economy_series.py --nmtc --refresh."
+  },
+  {
+   "id": "ppr_type1",
+   "name": "Police Type I crimes (December reports)",
+   "probe": {
+    "kind": "regex",
+    "url": "https://www.estadisticas.pr.gov/en-us/productos/delitos-tipo-i",
+    "pattern": "Policia-DelitosTipoI-(\\d{4})-12"
+   },
+   "every_days": 30,
+   "hot_months": [
+    1,
+    2,
+    3
+   ],
+   "unit": "police",
+   "review": "human",
+   "note": "Licence still to confirm (decision 24)."
+  },
+  {
+   "id": "urban_ccd",
+   "name": "NCES schools (Urban Institute mirror)",
+   "probe": {
+    "kind": "walk",
+    "url": "https://educationdata.urban.org/api/v1/schools/ccd/directory/{y}/?fips=72",
+    "start": "2024",
+    "step": "year",
+    "ok": "json-count"
+   },
+   "every_days": 30,
+   "hot_months": [],
+   "unit": "education",
+   "review": "auto",
+   "note": "The rebuild also reads IPEDS colleges, which follow the schools' years."
+  },
+  {
+   "id": "urban_ipeds",
+   "name": "IPEDS colleges (Urban Institute mirror)",
+   "probe": {
+    "kind": "follows",
+    "source": "urban_ccd"
+   },
+   "every_days": 30,
+   "hot_months": [],
+   "unit": "education",
+   "review": "auto",
+   "note": "Read with the schools: the education rebuild takes the colleges' years from the schools' years."
+  },
+  {
+   "id": "nces_ipeds",
+   "name": "NCES IPEDS completions",
+   "probe": {
+    "kind": "walk",
+    "url": "https://nces.ed.gov/ipeds/datacenter/data/C{y}_A.zip",
+    "start": "2024",
+    "step": "year"
+   },
+   "every_days": 30,
+   "hot_months": [],
+   "unit": "degrees",
+   "review": "human",
+   "note": "A new year's file: raise LAST in degrees.py and rebuild (python degrees.py --refresh also takes NCES's revision of the year before)."
+  },
+  {
+   "id": "urban_crdc",
+   "name": "Civil Rights Data Collection (Urban Institute portal)",
+   "probe": {
+    "kind": "calendar",
+    "rule": "quarter"
+   },
+   "every_days": 90,
+   "hot_months": [],
+   "unit": "school_conditions",
+   "review": "human",
+   "note": "Every two years; 2023-24 is the next collection. Each quarter, look for it on the portal (schools/crdc/directory/2023) and add it to YEARS in school_conditions.py."
+  },
+  {
+   "id": "urban_edfacts",
+   "name": "EDFacts state assessments (Urban Institute portal)",
+   "probe": {
+    "kind": "calendar",
+    "rule": "quarter"
+   },
+   "every_days": 90,
+   "hot_months": [],
+   "unit": "proficiency",
+   "review": "human",
+   "note": "The portal's Puerto Rico results end in 2018-19. Each quarter, look for a newer year (schools/edfacts/assessments/{year}/grade-99?fips=72) and add it to YEARS in proficiency.py."
+  },
+  {
+   "id": "epa_echo_sdwa",
+   "name": "EPA drinking water systems (ECHO)",
+   "probe": {
+    "kind": "json",
+    "urls": [
+     "https://echodata.epa.gov/echo/sdw_rest_services.get_systems?output=JSON&p_st=PR&p_act=Y&p_systyp=CWS&responseset=1"
+    ],
+    "paths": [
+     "Results.QueryRows",
+     "Results.SVRows",
+     "Results.CVRows",
+     "Results.V3Rows",
+     "Results.FEARows",
+     "Results.InfFEARows",
+     "Results.INSPRows"
+    ]
+   },
+   "every_days": 7,
+   "hot_months": [
+    1,
+    4,
+    7,
+    10
+   ],
+   "unit": "infrastructure",
+   "review": "auto"
+  },
+  {
+   "id": "epa_echo_cwa",
+   "name": "EPA wastewater discharge permits (ECHO)",
+   "probe": {
+    "kind": "json",
+    "urls": [
+     "https://echodata.epa.gov/echo/cwa_rest_services.get_facilities?output=JSON&p_st=PR&p_act=Y&responseset=1"
+    ],
+    "paths": [
+     "Results.QueryRows",
+     "Results.SVRows",
+     "Results.CVRows",
+     "Results.V3Rows",
+     "Results.FEARows",
+     "Results.InfFEARows",
+     "Results.INSPRows"
+    ]
+   },
+   "every_days": 7,
+   "hot_months": [
+    1,
+    4,
+    7,
+    10
+   ],
+   "unit": "infrastructure",
+   "review": "auto"
+  },
+  {
+   "id": "epa_echo_caa",
+   "name": "EPA air pollution sources (ECHO)",
+   "probe": {
+    "kind": "json",
+    "urls": [
+     "https://echodata.epa.gov/echo/air_rest_services.get_facilities?output=JSON&p_st=PR&p_act=Y&responseset=1"
+    ],
+    "paths": [
+     "Results.QueryRows",
+     "Results.SVRows",
+     "Results.CVRows",
+     "Results.V3Rows",
+     "Results.FEARows",
+     "Results.InfFEARows",
+     "Results.INSPRows",
+     "Results.FCERows"
+    ]
+   },
+   "every_days": 7,
+   "hot_months": [
+    1,
+    4,
+    7,
+    10
+   ],
+   "unit": "infrastructure",
+   "review": "auto"
+  },
+  {
+   "id": "epa_echo_rcra",
+   "name": "EPA hazardous waste handlers (ECHO)",
+   "probe": {
+    "kind": "json",
+    "urls": [
+     "https://echodata.epa.gov/echo/rcra_rest_services.get_facilities?output=JSON&p_st=PR&p_act=Y&responseset=1"
+    ],
+    "paths": [
+     "Results.QueryRows",
+     "Results.SVRows",
+     "Results.CVRows",
+     "Results.V3Rows",
+     "Results.FEARows",
+     "Results.InfFEARows",
+     "Results.INSPRows"
+    ]
+   },
+   "every_days": 7,
+   "hot_months": [
+    1,
+    4,
+    7,
+    10
+   ],
+   "unit": "infrastructure",
+   "review": "auto"
+  },
+  {
+   "id": "epa_echo_all",
+   "name": "EPA inspections and enforcement actions (ECHO)",
+   "probe": {
+    "kind": "json",
+    "urls": [
+     "https://echodata.epa.gov/echo/echo_rest_services.get_facilities?output=JSON&p_st=PR&p_act=Y&responseset=1"
+    ],
+    "paths": [
+     "Results.QueryRows",
+     "Results.FEARows",
+     "Results.InfFEARows",
+     "Results.INSPRows"
+    ]
+   },
+   "every_days": 7,
+   "hot_months": [
+    1,
+    4,
+    7,
+    10
+   ],
+   "unit": "infrastructure",
+   "review": "auto"
+  },
+  {
+   "id": "eia_860m",
+   "name": "EIA power plants (860M): counts by municipio and the Power plants layer",
+   "probe": {
+    "kind": "walk",
+    "url": "https://www.eia.gov/electricity/data/eia860m/xls/{month}_generator{y}.xlsx",
+    "start": "2026-08",
+    "step": "month",
+    "ok": "spreadsheet"
+   },
+   "every_days": 7,
+   "hot_months": [],
+   "unit": "infrastructure",
+   "review": "auto",
+   "note": "A month not yet published answers 503, not 404."
+  },
+  {
+   "id": "fhwa_nbi",
+   "name": "FHWA bridges (NBI)",
+   "probe": {
+    "kind": "walk",
+    "url": "https://www.fhwa.dot.gov/bridge/nbi/{y}/delimited/PR{yy}.txt",
+    "start": "2025",
+    "step": "year"
+   },
+   "every_days": 30,
+   "hot_months": [
+    4,
+    5,
+    6,
+    7
+   ],
+   "unit": "infrastructure",
+   "review": "human",
+   "note": "FHWA is changing formats: the 2026 file may come at another address. A new release also calls for rebuilding the residents cut off from hospitals by hand (unit cutoff: python cutoff.py)."
+  },
+  {
+   "id": "fema_nri",
+   "name": "FEMA National Risk Index",
+   "probe": {
+    "kind": "json",
+    "urls": [
+     "https://services.arcgis.com/XG15cJAlne2vxtgt/arcgis/rest/services/National_Risk_Index_Counties/FeatureServer/0/query?where=STCOFIPS%3D%2772001%27&outFields=NRI_VER&returnGeometry=false&f=json"
+    ],
+    "paths": [
+     "features.0.attributes.NRI_VER"
+    ]
+   },
+   "every_days": 30,
+   "hot_months": [],
+   "unit": "environment",
+   "review": "human"
+  },
+  {
+   "id": "usfws_nwi",
+   "name": "USFWS wetlands",
+   "probe": {
+    "kind": "json",
+    "urls": [
+     "https://fwspublicservices.wim.usgs.gov/wetlandsmapservice/rest/services/Wetlands/MapServer/0/query?where=1%3D1&returnCountOnly=true&geometry=-67.95,17.85,-65.2,18.55&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&f=json"
+    ],
+    "paths": [
+     "count"
+    ]
+   },
+   "every_days": 90,
+   "hot_months": [],
+   "unit": "environment",
+   "review": "human"
+  },
+  {
+   "id": "usgs_comcat",
+   "name": "USGS earthquakes",
+   "probe": {
+    "kind": "json",
+    "urls": [
+     "https://earthquake.usgs.gov/fdsnws/event/1/count?format=geojson&starttime={last_year}-01-01&endtime={this_year}-01-01&minmagnitude=2.5&minlatitude=17.4&maxlatitude=19.0&minlongitude=-68.4&maxlongitude=-64.9"
+    ],
+    "paths": [
+     "count"
+    ]
+   },
+   "every_days": 30,
+   "hot_months": [
+    1
+   ],
+   "unit": "environment",
+   "review": "human",
+   "note": "A new whole year exists every 1 January (a new year: reviewed); the rebuild re-reads the last two years."
+  },
+  {
+   "id": "noaa_slr",
+   "name": "NOAA sea level rise",
+   "probe": {
+    "kind": "head",
+    "url": "https://chs.coast.noaa.gov/htdata/Inundation/SLR/BulkDownload/Sea_Level_Rise_Vectors/PR/PR_slr_data_dist.zip",
+    "headers": [
+     "ETag",
+     "Content-Length"
+    ]
+   },
+   "every_days": 90,
+   "hot_months": [],
+   "unit": "exposure",
+   "review": "human"
+  },
+  {
+   "id": "nhc_slosh",
+   "name": "NOAA NHC storm surge maps (SLOSH MOM, Puerto Rico)",
+   "probe": {
+    "kind": "head",
+    "url": "https://www.nhc.noaa.gov/gis/hazardmaps/PR_SLOSH_MOM_Inundation.zip",
+    "headers": [
+     "Last-Modified",
+     "Content-Length"
+    ]
+   },
+   "every_days": 90,
+   "hot_months": [],
+   "unit": "exposure",
+   "review": "human",
+   "note": "Unchanged since 30 November 2018. A new file is read by python exposure.py --refresh (or --surge --refresh for these families only)."
+  },
+  {
+   "id": "osm",
+   "name": "OpenStreetMap roads and places (Geofabrik)",
+   "probe": {
+    "kind": "calendar",
+    "rule": "quarter"
+   },
+   "every_days": 30,
+   "hot_months": [],
+   "unit": "osm",
+   "review": "human",
+   "note": "OpenStreetMap changes daily: renew by hand each quarter. This includes the público routes from Overpass, which refuses GitHub's servers."
+  },
+  {
+   "id": "bts_t100",
+   "name": "BTS airline passengers (T-100)",
+   "probe": {
+    "kind": "json",
+    "urls": [
+     "https://data.bts.gov/resource/r495-tyji.json?%24select=max%28reporting_month%29&%24where=origin_airport_code%3D%27SJU%27"
+    ],
+    "paths": [
+     "0.max_reporting_month"
+    ]
+   },
+   "every_days": 30,
+   "hot_months": [],
+   "unit": "gateways",
+   "review": "auto",
+   "note": "The newest month BTS holds for San Juan. A year is published once San Juan has all twelve months."
+  },
+  {
+   "id": "faa_enplanements",
+   "name": "FAA airport enplanements",
+   "probe": {
+    "kind": "walk",
+    "url": "https://www.faa.gov/airports/planning_capacity/passenger_allcargo_stats/passenger/arp-cy{y}-commercial-service-enplanements.xlsx",
+    "start": "2025",
+    "step": "year",
+    "ok": "spreadsheet"
+   },
+   "every_days": 30,
+   "hot_months": [
+    9,
+    10,
+    11
+   ],
+   "unit": "gateways",
+   "review": "human",
+   "note": "One file a calendar year, published the following autumn."
+  },
+  {
+   "id": "bts_ncfo",
+   "name": "BTS ferry census (NCFO)",
+   "probe": {
+    "kind": "json",
+    "urls": [
+     "https://api.us.socrata.com/api/catalog/v1?domains=data.bts.gov&q=%22NCFO%20Operator%20Segment%22&limit=1"
+    ],
+    "paths": [
+     "resultSetSize"
+    ]
+   },
+   "every_days": 30,
+   "hot_months": [],
+   "unit": "gateways",
+   "review": "human",
+   "code_edit": "gateway_series.NCFO names each census's three datasets",
+   "note": "Counts BTS's ferry census datasets: a new census (every two years) adds some. The Ferry routes and passengers layer (transport_inventories.py, unit inventories) reads the newest census too."
+  },
+  {
+   "id": "wcrp_rvi",
+   "name": "WCRP Risk and Vulnerability Indicators (ArcGIS, PlanningCDBG)",
+   "probe": {
+    "kind": "json",
+    "urls": [
+     "https://services5.arcgis.com/phhDE88zbaXQ3N1m/arcgis/rest/services/All_Indicator/FeatureServer/0?f=json",
+     "https://services5.arcgis.com/phhDE88zbaXQ3N1m/arcgis/rest/services/Master_Data_Table_Update/FeatureServer/0?f=json"
+    ],
+    "paths": [
+     "editingInfo.dataLastEditDate"
+    ]
+   },
+   "every_days": 30,
+   "hot_months": [],
+   "unit": "wcrp",
+   "review": "human",
+   "note": "Published once in March 2022; a new edit date means the services changed."
+  },
+  {
+   "id": "hud_public_housing",
+   "name": "HUD public housing developments",
+   "probe": {
+    "kind": "json",
+    "urls": [
+     "https://services.arcgis.com/VTyQ9soqVukalItT/arcgis/rest/services/Public_Housing_Developments/FeatureServer/0?f=json"
+    ],
+    "paths": [
+     "editingInfo.dataLastEditDate"
+    ]
+   },
+   "every_days": 7,
+   "hot_months": [],
+   "unit": "facilities",
+   "review": "human",
+   "note": "HUD updates the layer quarterly; a person checks a new quarter (HUD program data)."
+  },
+  {
+   "id": "hud_lihtc",
+   "name": "HUD LIHTC database (tax credit housing projects)",
+   "probe": {
+    "kind": "calendar",
+    "rule": "quarter"
+   },
+   "every_days": 30,
+   "hot_months": [
+    5,
+    6
+   ],
+   "unit": "lihtc",
+   "review": "human",
+   "note": "HUD USER refuses scripts, so no probe can read it: HUD adds a year each spring (the 2026-05-28 release covers 1987 to 2024). Check huduser.gov/portal/datasets/lihtc/property.html by hand; federal tax credit program, held for Compliance."
+  },
+  {
+   "id": "usgs_structures",
+   "name": "USGS structures (fire and EMS stations)",
+   "probe": {
+    "kind": "json",
+    "urls": [
+     "https://carto.nationalmap.gov/arcgis/rest/services/structures/MapServer/51/query?where=state%3D%27PR%27&returnCountOnly=true&f=json"
+    ],
+    "paths": [
+     "count"
+    ]
+   },
+   "every_days": 30,
+   "hot_months": [],
+   "unit": "facilities",
+   "review": "auto",
+   "note": "The count of Puerto Rico stations: an edit that keeps the count is missed until the next change."
+  },
+  {
+   "id": "usac_erate",
+   "name": "USAC E-Rate entities (libraries)",
+   "probe": {
+    "kind": "json",
+    "urls": [
+     "https://opendata.usac.org/resource/7i5i-83qf.json?%24select=count%28*%29&%24where=physical_state%3D%27PR%27%20AND%20entity_type%3D%27Library%27%20AND%20status%3D%27Active%27%20AND%20public_library%3D%27Yes%27"
+    ],
+    "paths": [
+     "0.count"
+    ]
+   },
+   "every_days": 7,
+   "hot_months": [],
+   "unit": "facilities",
+   "review": "auto",
+   "note": "USAC updates the whole dataset daily, so its date says nothing; the check counts the active public libraries of Puerto Rico."
+  },
+  {
+   "id": "irs_eo_bmf",
+   "name": "IRS exempt organizations (EO BMF, Puerto Rico)",
+   "probe": {
+    "kind": "head",
+    "url": "https://www.irs.gov/pub/irs-soi/eo_pr.csv",
+    "headers": [
+     "Last-Modified"
+    ]
+   },
+   "every_days": 14,
+   "hot_months": [],
+   "unit": "nonprofits",
+   "review": "auto"
+  },
+  {
+   "id": "epa_tri",
+   "name": "EPA Toxics Release Inventory (Puerto Rico file)",
+   "probe": {
+    "kind": "walk",
+    "url": "https://data.epa.gov/efservice/downloads/tri/mv_tri_basic_download/{y}_PR/csv",
+    "start": "2024",
+    "step": "year",
+    "ok": "get"
+   },
+   "every_days": 30,
+   "hot_months": [
+    7,
+    8,
+    9,
+    10
+   ],
+   "unit": "conditions",
+   "review": "auto",
+   "note": "The newest reporting year with a Puerto Rico file; Envirofacts answers HEAD with an error, so the check asks for one byte. EPA's revisions of a year already read are picked up at the next rebuild of the unit."
+  },
+  {
+   "id": "epa_frs",
+   "name": "EPA Facility Registry Service (RMP and NPL)",
+   "probe": {
+    "kind": "json",
+    "urls": [
+     "https://geodata.epa.gov/arcgis/rest/services/OEI/FRS_INTERESTS/MapServer/8/query?where=STATE_CODE%3D%27PR%27%20AND%20PGM_SYS_ACRNM%3D%27RMP%27%20AND%20ACTIVE_STATUS%3D%27ACTIVE%27&returnCountOnly=true&f=json",
+     "https://geodata.epa.gov/arcgis/rest/services/OEI/FRS_INTERESTS/MapServer/22/query?where=STATE_CODE%3D%27PR%27%20AND%20ACTIVE_STATUS%3D%27CURRENTLY%20ON%20THE%20FINAL%20NPL%27&returnCountOnly=true&f=json"
+    ],
+    "paths": [
+     "count"
+    ]
+   },
+   "every_days": 30,
+   "hot_months": [],
+   "unit": "conditions",
+   "review": "auto",
+   "note": "The counts of active RMP facilities and of final NPL sites in Puerto Rico: an edit that keeps both counts is missed until the next change."
+  },
+  {
+   "id": "epa_attains",
+   "name": "EPA ATTAINS assessment units (303(d) list)",
+   "probe": {
+    "kind": "json",
+    "urls": [
+     "https://services.arcgis.com/cJ9YHowT8TU7DUyn/arcgis/rest/services/ATTAINS_Assessment/FeatureServer/2?f=json"
+    ],
+    "paths": [
+     "editingInfo.dataLastEditDate"
+    ]
+   },
+   "every_days": 30,
+   "hot_months": [],
+   "unit": "conditions",
+   "review": "auto",
+   "note": "The layer's last edit date, for every state: a change elsewhere starts a rebuild that finds nothing new for Puerto Rico."
+  },
+  {
+   "id": "epa_greenbook",
+   "name": "EPA Green Book non-attainment areas (lead, sulfur dioxide)",
+   "probe": {
+    "kind": "json",
+    "urls": [
+     "https://gispub.epa.gov/arcgis/rest/services/OAR_OAQPS/NonattainmentAreas/MapServer/3/query?where=state_abbreviation%3D%27PR%27%20AND%20current_status%3D%27Nonattainment%27&returnCountOnly=true&f=json",
+     "https://gispub.epa.gov/arcgis/rest/services/OAR_OAQPS/NonattainmentAreas/MapServer/4/query?where=state_abbreviation%3D%27PR%27%20AND%20current_status%3D%27Nonattainment%27&returnCountOnly=true&f=json"
+    ],
+    "paths": [
+     "count"
+    ]
+   },
+   "every_days": 30,
+   "hot_months": [],
+   "unit": "conditions",
+   "review": "auto",
+   "note": "How many Puerto Rico areas are in non-attainment for lead and for sulfur dioxide: a redesignation changes a count."
+  },
+  {
+   "id": "epa_lmop",
+   "name": "EPA LMOP landfills",
+   "probe": {
+    "kind": "json",
+    "urls": [
+     "https://services.arcgis.com/cJ9YHowT8TU7DUyn/arcgis/rest/services/New_Landfills/FeatureServer/0?f=json"
+    ],
+    "paths": [
+     "editingInfo.dataLastEditDate"
+    ]
+   },
+   "every_days": 30,
+   "hot_months": [],
+   "unit": "conditions",
+   "review": "auto"
+  },
+  {
+   "id": "hud_chas",
+   "name": "HUD CHAS by census tract (eGIS)",
+   "probe": {
+    "kind": "regex",
+    "url": "https://www.arcgis.com/sharing/rest/content/items/db5099395be44cbd8c6896136dbd5e7e?f=json",
+    "pattern": "Date of Coverage:[^0-9]{0,40}(\\d{4}\\s*-\\s*\\d{4})"
+   },
+   "every_days": 14,
+   "hot_months": [],
+   "unit": "conditions",
+   "review": "human",
+   "note": "The release (Date of Coverage) the eGIS item states; 2016-2020 on 2026-10-17, while HUD User has 2018-2022. HUD program data, and a new window moves every barrio estimate: a person checks it."
+  },
+  {
+   "id": "census_tiger_lines",
+   "name": "Census TIGER/Line EDGES (Puerto Rico)",
+   "probe": {
+    "kind": "walk",
+    "url": "https://www2.census.gov/geo/tiger/TIGER{y}/EDGES/tl_{y}_72001_edges.zip",
+    "start": "2026",
+    "step": "year"
+   },
+   "every_days": 30,
+   "hot_months": [
+    9,
+    10,
+    11
+   ],
+   "unit": "conditions",
+   "review": "auto"
+  },
+  {
+   "id": "nps_nrhp",
+   "name": "NPS National Register of Historic Places (public locations)",
+   "probe": {
+    "kind": "json",
+    "urls": [
+     "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer/0/query?where=State%3D%27PUERTO%20RICO%27&returnCountOnly=true&f=json",
+     "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer/1/query?where=State%3D%27PUERTO%20RICO%27&returnCountOnly=true&f=json"
+    ],
+    "paths": [
+     "count"
+    ]
+   },
+   "every_days": 30,
+   "hot_months": [],
+   "unit": "community",
+   "review": "auto",
+   "note": "The layers have no edit date: the check counts Puerto Rico's points and polygons, so an edit that keeps both counts is missed until the next listing."
+  },
+  {
+   "id": "samhsa_nsumhss",
+   "name": "SAMHSA National Directories of treatment facilities (N-SUMHSS)",
+   "probe": {
+    "kind": "regex",
+    "url": "https://www.samhsa.gov/data/data-we-collect/n-sumhss-national-substance-use-and-mental-health-services-survey/national-directories",
+    "pattern": "(\\d{4}) National Directory"
+   },
+   "every_days": 14,
+   "hot_months": [
+    2,
+    3,
+    4
+   ],
+   "unit": "community",
+   "review": "auto",
+   "note": "A new edition each year (the 2025 directories came out on 2026-03-06); the check reads the newest year the National Directories page names."
+  },
+  {
+   "id": "usgs_landslide_map",
+   "name": "USGS landslide susceptibility map of Puerto Rico (first author's tile copy at UPRM; the USGS release's DOI record)",
+   "probe": {
+    "kind": "json",
+    "urls": [
+     "https://www.arcgis.com/sharing/rest/content/items/ae6770d5b81e4a0e918d58b001948cb3?f=json",
+     "https://api.datacite.org/dois/10.5066/P990ZP4C"
+    ],
+    "paths": [
+     [
+      "modified"
+     ],
+     [
+      "data.attributes.updated"
+     ]
+    ],
+    "per_url": true
+   },
+   "every_days": 30,
+   "hot_months": [],
+   "unit": "landslide",
+   "review": "human",
+   "note": "Two dates: the copy's last edit on ArcGIS Online (2019-11-01 on 2026-10-18) and the last update of the USGS data release's DOI record at DataCite (2021-08-18). The data release itself (ScienceBase) answers scripts with a bot check, so its record at DataCite is the scriptable sign of a new USGS version; the build still reads the copy, so a new USGS version needs the copy (or a direct file) to follow. A new map moves every barrio's figures: a person checks the rebuild."
+  },
+  {
+   "id": "usgs_landsat_c2_st",
+   "name": "USGS Landsat 8 and 9 Collection 2 Level-2 surface temperature (Planetary Computer): the summer window of surface heat",
+   "probe": {
+    "kind": "calendar",
+    "rule": "summer"
+   },
+   "every_days": 30,
+   "hot_months": [],
+   "unit": "heat",
+   "review": "human",
+   "note": "New Landsat scenes arrive every few days, but the published figures use the last three complete summers (June to September), so the data changes once a year, after September: the check turns in October. A new summer moves every barrio's figures, and the build checks the physics (San Juan hotter, Jayuya and Adjuntas cooler than Puerto Rico); a person reads the rebuild."
+  },
+  {
+   "id": "copernicus_sentinel2_l2a",
+   "name": "Copernicus Sentinel-2 Level-2A, Collection 1 (Earth Search on AWS): the summer window of vegetation greenness",
+   "probe": {
+    "kind": "calendar",
+    "rule": "summer"
+   },
+   "every_days": 30,
+   "hot_months": [],
+   "unit": "vegetation",
+   "review": "human",
+   "note": "New Sentinel-2 scenes arrive every few days, but the published figures use the last three complete summers (June to September), the window of surface heat, so the data changes once a year, after September: the check turns in October. A new summer moves every barrio's figures, and the build checks that San Juan is less green and Jayuya and Adjuntas greener than Puerto Rico, and that greener barrios are cooler in the heat file; a person reads the rebuild. Rebuild heat first."
+  },
+  {
+   "id": "overture_buildings",
+   "name": "Overture Maps buildings theme: the newest monthly release",
+   "probe": {
+    "kind": "json",
+    "urls": [
+     "https://stac.overturemaps.org/catalog.json"
+    ],
+    "paths": [
+     "latest"
+    ]
+   },
+   "every_days": 90,
+   "hot_months": [],
+   "unit": "buildings",
+   "review": "human",
+   "note": "Overture releases every month, so the probe turns almost every time; buildings change slowly, and the 3D view's 7 MB tile file is added again to the repository's history with each rebuild, so the check runs every 90 days. The same rebuild makes buildings_gap.pmtiles (buildings3d.py: 550,000 to 800,000 buildings at zoom 14, under 20 MB, none from OpenStreetMap). The build stops unless Puerto Rico has 1.9 to 2.5 million buildings, 99.5% of them fall in a barrio, San Juan is denser than Puerto Rico, 1% to 30% stand in a Special Flood Hazard Area, and buildings follow housing units across the barrios; a person reads the rebuild."
+  },
+  {
+   "id": "nasa_ecostress_lste",
+   "name": "NASA ECOSTRESS ECO_L2T_LSTE version 2 (LP DAAC, Earthdata login): the summer window of night surface heat",
+   "probe": {
+    "kind": "calendar",
+    "rule": "summer"
+   },
+   "every_days": 30,
+   "hot_months": [],
+   "unit": "night_heat",
+   "review": "human",
+   "note": "ECOSTRESS passes several times a week at varying hours, but the published figures use the night passes of the last three complete summers (June to September), the window of surface heat, so the data changes once a year, after September: the check turns in October. The build needs the NASA Earthdata token (decisions 75 and 80) and checks that San Juan is warmer and Jayuya and Adjuntas cooler than Puerto Rico at night, and that the night is cooler than the morning in heat_series.json; a person reads the rebuild. Rebuild heat first."
+  },
+  {
+   "id": "usgs_water",
+   "name": "USGS reservoir levels, river flow, groundwater levels and rainfall (daily values and usual levels)",
+   "probe": {
+    "kind": "calendar",
+    "rule": "month"
+   },
+   "every_days": 7,
+   "hot_months": [],
+   "unit": "reservoirs",
+   "review": "auto",
+   "note": "The readings change every day and the page reads the latest live; the 120 daily values and usual levels of the four files (reservoirs, river gauges, groundwater wells, rain gauges) are rebuilt once a month."
+  },
+  {
+   "id": "nws_nwps",
+   "name": "NWS flood stages of the river gauges (National Water Prediction Service)",
+   "probe": {
+    "kind": "calendar",
+    "rule": "month"
+   },
+   "every_days": 7,
+   "hot_months": [],
+   "unit": "reservoirs",
+   "review": "auto",
+   "note": "Read with the river gauges: the monthly rebuild of river_gauges.geojson asks NWS for each gauge's flood stages."
+  },
+  {
+   "id": "nasa_black_marble",
+   "name": "NASA Black Marble VNP46A3 monthly night-time lights (LAADS DAAC)",
+   "probe": {
+    "kind": "calendar",
+    "rule": "month"
+   },
+   "every_days": 30,
+   "hot_months": [],
+   "unit": "nightlights",
+   "review": "human",
+   "note": "NASA adds a month about seven weeks after it ends; a monthly rebuild downloads only the months the cached summaries do not have (about 70 MB each). Needs the EARTHDATA_TOKEN secret, which expires about every 60 days (docs/nightlights-setup.md)."
+  },
+  {
+   "id": "fcc_bdc",
+   "name": "FCC Broadband Data Collection: fixed broadband availability, June release",
+   "probe": {
+    "kind": "calendar",
+    "rule": "month"
+   },
+   "every_days": 30,
+   "hot_months": [],
+   "unit": "broadband",
+   "review": "human",
+   "note": "Providers file as of June 30 and December 31; the FCC publishes a release some months later and republishes it as challenges settle. A monthly rebuild downloads only a June release the cache does not have. Needs the FCC_BDC_USERNAME and FCC_BDC_HASH secrets (docs/broadband.md)."
+  },
+  {
+   "id": "nasa_firms",
+   "name": "NASA FIRMS active fire detections (VIIRS on NOAA-20): yearly files and the last 12 months",
+   "probe": {
+    "kind": "calendar",
+    "rule": "month"
+   },
+   "every_days": 30,
+   "hot_months": [],
+   "unit": "fires",
+   "review": "human",
+   "note": "FIRMS adds detections every few hours, so the last 12 months move every day; a monthly rebuild keeps them current without a pull request a day. The yearly file of a finished year appears in the first months of the next. Needs the FIRMS_MAP_KEY secret for the last 12 months (docs/fires.md)."
+  },
+  {
+   "id": "ogp",
+   "name": "OGP budget data sheets (Sábana)",
+   "probe": {
+    "kind": "regex",
+    "url": "https://www.presupuestos.pr.gov/",
+    "pattern": "docs\\.pr\\.gov/files/OGP/((?:Aprobado|Presupuesto-Propuesto)-\\d{4}-\\d{4})/"
+   },
+   "every_days": 7,
+   "hot_months": [
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "unit": "spending",
+   "review": "human",
+   "note": "Public spending (decision 77): a proposed budget each spring and the approved one at the end of June. The check reads the newest budget folder linked from the home page; the rebuild reads every data sheet. The function crosswalk is a draft until Francis reviews it."
+  },
+  {
+   "id": "jp_pica",
+   "name": "Planning Board four-year investment program (PICA)",
+   "probe": {
+    "kind": "regex",
+    "url": "https://jp.pr.gov/",
+    "pattern": "PICA-(\\d{4}-\\d{4}-a-\\d{4}-\\d{4})-Adoptado"
+   },
+   "every_days": 14,
+   "hot_months": [
+    6,
+    7,
+    8,
+    9
+   ],
+   "unit": "spending-pica",
+   "review": "human",
+   "note": "Public spending (decision 79): the Board adopts a new four-year program each year after public hearings. The check reads the newest adopted program linked from the home page; a person rebuilds where pdftotext is installed."
+  },
+  {
+   "id": "dtrh_cpi",
+   "name": "DTRH consumer price index of Puerto Rico",
+   "probe": {
+    "kind": "head",
+    "url": "https://www.mercadolaboral.pr.gov/lmi/Excel/IPC/Serie%20Historica%20a%20Publicar.xls",
+    "headers": [
+     "Last-Modified",
+     "Content-Length"
+    ]
+   },
+   "every_days": 7,
+   "hot_months": [],
+   "unit": "inflation",
+   "review": "human",
+   "note": "Monthly, about four weeks after the month; the indicadores.pr copy (CSV from 1984, basket weights) lags by months and is read only for 1999-2006."
+  },
+  {
+   "id": "frbc_inflation_expectations",
+   "name": "Cleveland Fed inflation expectations",
+   "probe": {
+    "kind": "head",
+    "url": "https://www.clevelandfed.org/-/media/files/webcharts/inflationexpectations/inflation-expectations.xlsx?sc_lang=en",
+    "headers": [
+     "Last-Modified",
+     "Content-Length"
+    ]
+   },
+   "every_days": 30,
+   "hot_months": [],
+   "unit": "inflation",
+   "review": "human"
+  },
+  {
+   "id": "frbp_spf",
+   "name": "Philadelphia Fed Survey of Professional Forecasters",
+   "probe": {
+    "kind": "head",
+    "url": "https://www.philadelphiafed.org/-/media/FRBP/Assets/Surveys-And-Data/survey-of-professional-forecasters/historical-data/Inflation.xlsx?sc_lang=en",
+    "headers": [
+     "Last-Modified",
+     "Content-Length"
+    ]
+   },
+   "every_days": 30,
+   "hot_months": [
+    2,
+    5,
+    8,
+    11
+   ],
+   "unit": "inflation",
+   "review": "human"
+  },
+  {
+   "id": "acs1",
+   "name": "Census ACS 1-year (median household income)",
+   "probe": {
+    "kind": "walk",
+    "url": "https://www2.census.gov/programs-surveys/acs/summary_file/{y}/table-based-SF/data/1YRData/acsdt1y{y}-b19013.dat",
+    "start": "2025",
+    "step": "year"
+   },
+   "every_days": 30,
+   "hot_months": [
+    9,
+    10
+   ],
+   "unit": "inflation",
+   "review": "human"
+  },
+  {
+   "id": "treasury_oz",
+   "name": "US Treasury, Qualified Opportunity Zones: 2027 designations and eligible tracts (Data Transparency)",
+   "probe": {
+    "kind": "regex",
+    "url": "https://home.treasury.gov/policy-issues/tax-policy/data-transparency/qualified-opportunity-zones",
+    "pattern": "OZ2-Designations-[0-9]{4}-Data-Transparency-([0-9]{8})\\.xlsx"
+   },
+   "every_days": 30,
+   "hot_months": [],
+   "unit": "oz",
+   "review": "human",
+   "note": "Designations come every ten years (2027-2036); Treasury can correct its file in between, under a new date in its name. A person checks the change before it is merged."
+  },
+  {
+   "id": "census_commuting_flows",
+   "name": "Census Bureau, County-to-County Commuting Flows (American Community Survey, every five years)",
+   "probe": {
+    "kind": "regex",
+    "url": "https://www2.census.gov/programs-surveys/demo/tables/metro-micro/",
+    "pattern": "href=\"(20[0-9]{2})/\""
+   },
+   "every_days": 90,
+   "hot_months": [],
+   "unit": "transit_links",
+   "review": "human",
+   "note": "The newest folder of the Bureau's metro-micro tables (2020 holds the 2016-2020 flows). A newer folder may hold a new release: a person checks it, changes the file's address and the period in transit_links.py and in the page's text, and rebuilds."
+  },
+  {
+   "id": "iepr_publicos",
+   "name": "Instituto de Estadísticas de Puerto Rico, Mapa de rutas de porteadores públicos (ACT)",
+   "probe": {
+    "kind": "json",
+    "urls": [
+     "https://datos.estadisticas.pr/api/3/action/package_show?id=mapa-de-rutas-de-porteadores-publicos"
+    ],
+    "paths": [
+     "result.metadata_modified"
+    ]
+   },
+   "every_days": 90,
+   "hot_months": [],
+   "unit": "transit_links",
+   "review": "human",
+   "note": "Published once, on 2020-03-19. A change in the portal's record may be a new list: a person looks at it and changes the date in transit_links.py and in the texts before it is merged."
+  },
+  {
+   "id": "fhwa_hpms",
+   "name": "FHWA Highway Performance Monitoring System, Puerto Rico full join (geo.dot.gov)",
+   "probe": {
+    "kind": "regex",
+    "url": "https://geo.dot.gov/server/rest/services/Hosted?f=json",
+    "pattern": "HPMS_FULL_PR_([0-9]{4})"
+   },
+   "every_days": 30,
+   "hot_months": [],
+   "unit": "traffic",
+   "review": "human",
+   "note": "A new data year (FHWA publishes the year after collection) changes every figure; a person checks it before it is merged. The Route analysis keeps its 2024 snapshot."
+  },
+  {
+   "id": "nhtsa_fars",
+   "name": "NHTSA FARS, Puerto Rico file of the newest year",
+   "probe": {
+    "kind": "head",
+    "url": "https://static.nhtsa.gov/nhtsa/downloads/FARS/2024/Puerto%20Rico/FARS2024PuertoRicoCSV.zip",
+    "headers": [
+     "ETag",
+     "Content-Length"
+    ]
+   },
+   "every_days": 30,
+   "hot_months": [],
+   "unit": "crashes",
+   "review": "human",
+   "note": "Sees the newest year's file change (the final file replaces the Annual Report File). A new year is a new address: when NHTSA announces it, change the year here and run crashes.py --refresh."
+  },
+  {
+   "id": "luma_bureau",
+   "name": "LUMA filings at the Energy Bureau (distributed generation data, monthly metrics) and EIA-861M",
+   "probe": {
+    "kind": "calendar",
+    "rule": "month"
+   },
+   "every_days": 7,
+   "hot_months": [],
+   "unit": "energy",
+   "review": "auto",
+   "note": "LUMA files its metrics monthly and its distributed generation data quarterly; energy_series.py --refresh reads the case pages for new file names and EIA-861M's current year."
+  },
+  {
+   "id": "eia_861m",
+   "name": "EIA residential sales and revenue (861M)",
+   "probe": {
+    "kind": "calendar",
+    "rule": "month"
+   },
+   "every_days": 7,
+   "hot_months": [],
+   "unit": "energy",
+   "review": "auto",
+   "note": "EIA publishes a month about seven weeks after it ends; energy_series.py --refresh reads the current year's file again."
+  },
+  {
+   "id": "afdc_stations",
+   "name": "DOE Alternative Fuels Data Center stations (NTAD copy): the Public EV charging stations layer",
+   "probe": {
+    "kind": "json",
+    "urls": [
+     "https://services.arcgis.com/xOi1kZaI0eWDREZv/arcgis/rest/services/Alternative_Fueling_Stations/FeatureServer/0?f=json"
+    ],
+    "paths": [
+     "editingInfo.dataLastEditDate"
+    ]
+   },
+   "every_days": 30,
+   "hot_months": [],
+   "unit": "inventories",
+   "review": "auto",
+   "note": "BTS refreshes the copy daily; a monthly rebuild is enough for 26 stations."
+  },
+  {
+   "id": "fhwa_nti",
+   "name": "FHWA National Tunnel Inventory (NTAD): the tunnels on the Bridges and tunnels layer",
+   "probe": {
+    "kind": "json",
+    "urls": [
+     "https://services.arcgis.com/xOi1kZaI0eWDREZv/arcgis/rest/services/NTAD_National_Tunnel_Inventory/FeatureServer/0?f=json"
+    ],
+    "paths": [
+     "editingInfo.dataLastEditDate"
+    ]
+   },
+   "every_days": 90,
+   "hot_months": [],
+   "unit": "inventories",
+   "review": "auto",
+   "note": "Four Puerto Rico tunnels; a yearly update."
+  },
+  {
+   "id": "fdic_sod",
+   "name": "FDIC Summary of Deposits, Puerto Rico offices",
+   "probe": {
+    "kind": "json",
+    "urls": [
+     "https://api.fdic.gov/banks/sod?filters=STALPBR:PR&limit=1&fields=YEAR&format=json"
+    ],
+    "paths": [
+     "meta.total"
+    ]
+   },
+   "every_days": 30,
+   "hot_months": [
+    9,
+    10
+   ],
+   "unit": "credit",
+   "review": "human",
+   "note": "The count of Puerto Rico office-years grows when the FDIC adds a June 30 (in September or October) or corrects a year."
+  },
+  {
+   "id": "hmda",
+   "name": "HMDA Data Browser, Puerto Rico",
+   "probe": {
+    "kind": "json",
+    "urls": [
+     "https://ffiec.cfpb.gov/v2/data-browser-api/view/aggregations?states=PR&years=2025&actions_taken=1"
+    ],
+    "paths": [
+     "aggregations.0.count"
+    ]
+   },
+   "every_days": 30,
+   "hot_months": [
+    3,
+    4
+   ],
+   "unit": "credit",
+   "review": "human",
+   "code_edit": true,
+   "note": "Sees a revision of 2025. A new year (published each spring) is downloaded by the refresh on its own; then change the year in this check's address."
+  },
+  {
+   "id": "usdm",
+   "name": "US Drought Monitor, Puerto Rico",
+   "probe": {
+    "kind": "regex",
+    "url": "https://usdmdataservices.unl.edu/api/StateStatistics/GetDroughtSeverityStatisticsByAreaPercent?aoi=72&startdate=1/1/2026&enddate=12/31/2099&statisticsType=1",
+    "pattern": "(\\d{8}),PR,"
+   },
+   "every_days": 7,
+   "hot_months": [],
+   "unit": "drought",
+   "review": "auto",
+   "note": "A new map each Thursday (dated the Tuesday before); the check reads the newest map date. Past weeks are not revised, so the rebuild merges itself when the checks pass."
+  },
+  {
+   "id": "cms_nppes",
+   "name": "CMS NPPES monthly full file",
+   "probe": {
+    "kind": "regex",
+    "url": "https://download.cms.gov/nppes/NPI_Files.html",
+    "pattern": "NPPES_Data_Dissemination_[A-Za-z]+_\\d{4}_V2\\.zip"
+   },
+   "every_days": 30,
+   "hot_months": [],
+   "unit": "providers",
+   "review": "human",
+   "note": "A new full file every month. Rebuild by hand when the counts are worth renewing (python providers.py --refresh, about 1.1 GB)."
+  }
+ ],
+ "static": [
+  {
+   "id": "usda_ssurgo",
+   "why": "Rebuilt by hand: NRCS releases SSURGO once a year (October); run python soils.py --refresh and check the layer."
+  },
+  {
+   "id": "usgs_geology_pr",
+   "why": "A 1998 geologic map."
+  },
+  {
+   "id": "census_tiger",
+   "why": "2020 Census geography: fixed until the 2030 census."
+  },
+  {
+   "id": "usgs_3dep_13",
+   "why": "USGS replaces a 3DEP tile only when new lidar arrives (the Puerto Rico tiles: 2026-07-22). climb.py and slope.py take the newest tile listed in USGS's catalogue whenever cache/dem/tiles.json is cleared; the climb figures themselves follow the transit stops nightly (refresh_network.py), and the slope figures and image are rebuilt by hand (python slope.py) when USGS replaces a tile."
+  },
+  {
+   "id": "census_cartographic",
+   "why": "2020 boundaries: fixed within the decade."
+  },
+  {
+   "id": "census_decennial",
+   "why": "The 2010 and 2020 censuses never change; the next is 2030."
+  },
+  {
+   "id": "jp_put2015",
+   "why": "The 2015 land-use plan: a new plan would be a new source."
+  },
+  {
+   "id": "jp_calificacion",
+   "why": "No data held."
+  },
+  {
+   "id": "jp_comunidades_especiales",
+   "why": "A 2006 delimitation."
+  },
+  {
+   "id": "usgs_slope_failures",
+   "why": "One storm (Maria, 2017)."
+  },
+  {
+   "id": "fpr_housing_2023",
+   "why": "A published report (May 2023)."
+  },
+  {
+   "id": "fpr_method",
+   "why": "A method, recomputed with ACS."
+  },
+  {
+   "id": "fpr_wcrp",
+   "why": "Kept by hand: run python wcrp.py after editing."
+  },
+  {
+   "id": "uber",
+   "why": "Typed by hand."
+  },
+  {
+   "id": "prtc_regions",
+   "why": "Typed by hand."
+  },
+  {
+   "id": "noaa_slr_scenarios",
+   "why": "Numbers from the 2022 report, typed by hand."
+  },
+  {
+   "id": "live_transit_checks",
+   "why": "A one-time check."
+  },
+  {
+   "id": "openfreemap",
+   "why": "Streamed live."
+  },
+  {
+   "id": "usgs_basemaps",
+   "why": "Streamed live."
+  },
+  {
+   "id": "openmaptiles",
+   "why": "A tile schema, read with the tiles."
+  },
+  {
+   "id": "aws_terrain",
+   "why": "Streamed live."
+  },
+  {
+   "id": "nominatim",
+   "why": "A live lookup; nothing stored."
+  },
+  {
+   "id": "leaflet",
+   "why": "A library at a fixed version."
+  },
+  {
+   "id": "maplibre",
+   "why": "A library at a fixed version."
+  },
+  {
+   "id": "maplibre_gl_leaflet",
+   "why": "A library at a fixed version."
+  },
+  {
+   "id": "deckgl",
+   "why": "A library at a fixed version."
+  },
+  {
+   "id": "chartjs",
+   "why": "A library at a fixed version."
+  },
+  {
+   "id": "material_symbols",
+   "why": "Served live."
+  },
+  {
+   "id": "github_pages",
+   "why": "Hosting."
+  },
+  {
+   "id": "fpr_twin",
+   "why": "The observatory's own build records."
+  },
+  {
+   "id": "census_zcta_county",
+   "why": "2020 Census ZIP Code Tabulation Areas: fixed until the 2030 census."
+  },
+  {
+   "id": "wcrp_scm",
+   "why": "The WCRP Social Capital Mapping list of Comunidades Especiales: a one-time program list with no date and no live source, kept as wcrp_ce_assets.csv (wcrp_social.py --import)."
+  },
+  {
+   "id": "hhs_hospital_capacity",
+   "why": "HHS stopped updating the dataset on 2024-05-03; it only places hospitals that OpenStreetMap does not."
+  },
+  {
+   "id": "fpr_gii_2021",
+   "why": "FPR's 2021 profile, frozen as printed (docs/analysis/gii-2021/gii_original.json): it never changes."
+  },
+  {
+   "id": "wipo_gii2020",
+   "why": "The GII 2020 edition (method and definitions): fixed."
+  },
+  {
+   "id": "wipo_gii2026",
+   "why": "One GII edition a year; the database is downloaded by hand and read with 'python -I gii.py --extract-2026' when FPR updates the Global Innovation Index page."
+  },
+  {
+   "id": "wb_wgi",
+   "why": "Used only by the Global Innovation Index page; 'python gii.py --refresh' re-reads it when FPR updates the page (WGI releases once a year, in September)."
+  },
+  {
+   "id": "wb_wdi",
+   "why": "Used only by the Global Innovation Index page; 'python gii.py --refresh' re-reads it when FPR updates the page."
+  },
+  {
+   "id": "unesco_uis",
+   "why": "Used only by the Global Innovation Index page; 'python gii.py --refresh' re-reads it when FPR updates the page (UIS releases about twice a year)."
+  },
+  {
+   "id": "imf_weo",
+   "why": "Used only by the Global Innovation Index page; 'python gii.py --refresh' re-reads it when FPR updates the page (WEO in April and October)."
+  },
+  {
+   "id": "eia_intl",
+   "why": "Used only by the Global Innovation Index page; 'python gii.py --refresh' downloads the bulk file INTL.zip again (about 24 MB, no key) when FPR updates the page (EIA's Puerto Rico series change about once a year)."
+  },
+  {
+   "id": "bls_oews",
+   "why": "Used only by the Global Innovation Index page; 'python gii.py --refresh' takes the newest OEWS state file (about 7.5 MB, no key) when FPR updates the page (the May estimates appear the following spring)."
+  },
+  {
+   "id": "fpr_baseline",
+   "why": "Kept by hand: run python fpr_baseline.py after editing fpr_vertederos_clandestinos.csv or exporting fpr_rutas_municipales.geojson again (it also re-measures which traced routes the transit layer already has)."
+  },
+  {
+   "id": "usgs_wbd",
+   "why": "USGS updates the Watershed Boundary Dataset a few times a year and Puerto Rico's subwatersheds rarely change; watersheds.py reads it again with its refresh option (python watersheds.py --refresh), by hand."
+  },
+  {
+   "id": "usgs_nhdplus_hr",
+   "why": "NHDPlus High Resolution for Puerto Rico (VPU 2101) is a beta product USGS releases rarely; watersheds.py reads it again with its refresh option (python watersheds.py --refresh), by hand."
+  },
+  {
+   "id": "cdc_svi",
+   "why": "CDC publishes an edition every two years (2022 is the newest). Rebuilt by hand: change EDITION in svi.py, run python svi.py --refresh and read the notes on what changed."
+  }
+ ]
+}

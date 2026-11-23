@@ -1,0 +1,447 @@
+[
+  {
+    "id": "health.cms_hospitals",
+    "ask": {"en": ["hospitals"], "es": ["hospitales"]},
+    "name": "Hospitals (Medicare-certified)",
+    "domain": "health",
+    "domains": [
+      "health"
+    ],
+    "group": "Hospitals and care facilities",
+    "kind": "variable",
+    "plain": "How many hospitals that Medicare certifies are in each municipality.",
+    "definition": "Hospitals in CMS's Hospital General Information list, counted in the municipality of the hospital: acute care, psychiatric, children's and the VA hospital. Hospitals that do not take part in Medicare are not in the list.",
+    "unit": "hospitals",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico (the island value is the sum of the 78 municipal values)",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "One snapshot, made from the CMS lists of 2026-10-14. It is rebuilt with each full build (python care_series.py)."
+    },
+    "method": "care_series.py reads the Puerto Rico rows of the CMS list through the Provider Data Catalog API and counts them in the municipality the row's county field names (for home health agencies, the town field; four towns named by a barrio or sector are placed by their ZIP code). A name that is not a municipality stops the build. Names, addresses, telephone numbers and certification numbers are never kept or published.",
+    "sources": [
+      "cms_provider_data"
+    ],
+    "source_detail": "CMS Provider Data Catalog API, datastore/query/{dataset}/0 with state = PR",
+    "how_to_read": "Puerto Rico has 59 such hospitals in 24 municipalities; most are in San Juan 20, Bayamón 5, Ponce 4.",
+    "caveats": [
+      "A hospital is counted once, where it is, whatever its size.",
+      "Hospitals outside Medicare are not counted."
+    ],
+    "see_also": [
+      "health.cms_hospitals",
+      "health.hc_sites"
+    ],
+    "where": {
+      "files": [
+        "care_series.json:cms_hospitals"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab: hospitals (medicare-certified)",
+          "href": "index.html#e=cms_hospitals.s"
+        }
+      ]
+    },
+    "added": "2026-10-14"
+  },
+  {
+    "id": "health.cms_hospitals_er",
+    "ask": {"en": ["emergency rooms", "emergency departments"], "es": ["salas de emergencia", "emergencias"]},
+    "name": "Hospitals with an emergency department",
+    "domain": "health",
+    "domains": [
+      "health"
+    ],
+    "group": "Hospitals and care facilities",
+    "kind": "variable",
+    "plain": "How many of those hospitals say they provide emergency services, in each municipality.",
+    "definition": "Hospitals of CMS's Hospital General Information list whose field 'Emergency Services' is Yes, counted in the municipality of the hospital.",
+    "unit": "hospitals",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico (the island value is the sum of the 78 municipal values)",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "One snapshot, made from the CMS lists of 2026-10-14. It is rebuilt with each full build (python care_series.py)."
+    },
+    "method": "care_series.py reads the Puerto Rico rows of the CMS list through the Provider Data Catalog API and counts them in the municipality the row's county field names (for home health agencies, the town field; four towns named by a barrio or sector are placed by their ZIP code). A name that is not a municipality stops the build. Names, addresses, telephone numbers and certification numbers are never kept or published.",
+    "sources": [
+      "cms_provider_data"
+    ],
+    "source_detail": "CMS Provider Data Catalog API, datastore/query/{dataset}/0 with state = PR",
+    "how_to_read": "54 of the 59 hospitals say they provide emergency services.",
+    "caveats": [
+      "It says whether a hospital provides emergency services, not how large or busy its emergency department is."
+    ],
+    "see_also": [
+      "health.cms_hospitals",
+      "health.hc_sites"
+    ],
+    "where": {
+      "files": [
+        "care_series.json:cms_hospitals_er"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab: hospitals with an emergency department",
+          "href": "index.html#e=cms_hospitals_er.s"
+        }
+      ]
+    },
+    "added": "2026-10-14"
+  },
+  {
+    "id": "health.cms_dialysis",
+    "ask": {"en": ["dialysis", "dialysis centers"], "es": ["dialisis", "centros de dialisis"]},
+    "name": "Dialysis facilities",
+    "domain": "health",
+    "domains": [
+      "health"
+    ],
+    "group": "Hospitals and care facilities",
+    "kind": "variable",
+    "plain": "How many dialysis facilities that Medicare certifies are in each municipality.",
+    "definition": "Dialysis facilities in CMS's Dialysis Facility list, counted in the municipality CMS gives for the facility.",
+    "unit": "facilities",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico (the island value is the sum of the 78 municipal values)",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "One snapshot, made from the CMS lists of 2026-10-14. It is rebuilt with each full build (python care_series.py)."
+    },
+    "method": "care_series.py reads the Puerto Rico rows of the CMS list through the Provider Data Catalog API and counts them in the municipality the row's county field names (for home health agencies, the town field; four towns named by a barrio or sector are placed by their ZIP code). A name that is not a municipality stops the build. Names, addresses, telephone numbers and certification numbers are never kept or published.",
+    "sources": [
+      "cms_provider_data"
+    ],
+    "source_detail": "CMS Provider Data Catalog API, datastore/query/{dataset}/0 with state = PR",
+    "how_to_read": "Puerto Rico has 50 in 30 municipalities.",
+    "caveats": [
+      "Hospital-based units that do not report as facilities are not counted."
+    ],
+    "see_also": [
+      "health.cms_hospitals",
+      "health.hc_sites"
+    ],
+    "where": {
+      "files": [
+        "care_series.json:cms_dialysis"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab: dialysis facilities",
+          "href": "index.html#e=cms_dialysis.s"
+        }
+      ]
+    },
+    "added": "2026-10-14"
+  },
+  {
+    "id": "health.cms_nursing_homes",
+    "ask": {"en": ["nursing homes", "elder care homes"], "es": ["hogares de envejecientes", "hogares de ancianos", "asilos"]},
+    "name": "Nursing homes (Medicare or Medicaid certified)",
+    "domain": "health",
+    "domains": [
+      "health"
+    ],
+    "group": "Hospitals and care facilities",
+    "kind": "variable",
+    "plain": "How many nursing homes that Medicare or Medicaid certifies are in each municipality.",
+    "definition": "Nursing homes in CMS's Nursing Home list (certified by Medicare or Medicaid), counted in the municipality CMS gives.",
+    "unit": "facilities",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico (the island value is the sum of the 78 municipal values)",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "One snapshot, made from the CMS lists of 2026-10-14. It is rebuilt with each full build (python care_series.py)."
+    },
+    "method": "care_series.py reads the Puerto Rico rows of the CMS list through the Provider Data Catalog API and counts them in the municipality the row's county field names (for home health agencies, the town field; four towns named by a barrio or sector are placed by their ZIP code). A name that is not a municipality stops the build. Names, addresses, telephone numbers and certification numbers are never kept or published.",
+    "sources": [
+      "cms_provider_data"
+    ],
+    "source_detail": "CMS Provider Data Catalog API, datastore/query/{dataset}/0 with state = PR",
+    "how_to_read": "Only 9 such nursing homes are listed for Puerto Rico; most long-term care homes on the island are not certified and are not in the list.",
+    "caveats": [
+      "Long-term care homes that are not certified by Medicare or Medicaid are not counted."
+    ],
+    "see_also": [
+      "health.cms_hospitals",
+      "health.hc_sites"
+    ],
+    "where": {
+      "files": [
+        "care_series.json:cms_nursing_homes"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab: nursing homes (medicare or medicaid certified)",
+          "href": "index.html#e=cms_nursing_homes.s"
+        }
+      ]
+    },
+    "added": "2026-10-14"
+  },
+  {
+    "id": "health.cms_home_health",
+    "ask": {"en": ["home health", "home health agencies"], "es": ["salud en el hogar", "cuidado en el hogar"]},
+    "name": "Home health agencies",
+    "domain": "health",
+    "domains": [
+      "health"
+    ],
+    "group": "Hospitals and care facilities",
+    "kind": "variable",
+    "plain": "How many home health agencies that Medicare certifies have their office in each municipality.",
+    "definition": "Home health agencies in CMS's Home Health Care Agencies list, counted in the municipality of the agency's office.",
+    "unit": "agencies",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico (the island value is the sum of the 78 municipal values)",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "One snapshot, made from the CMS lists of 2026-10-14. It is rebuilt with each full build (python care_series.py)."
+    },
+    "method": "care_series.py reads the Puerto Rico rows of the CMS list through the Provider Data Catalog API and counts them in the municipality the row's county field names (for home health agencies, the town field; four towns named by a barrio or sector are placed by their ZIP code). A name that is not a municipality stops the build. Names, addresses, telephone numbers and certification numbers are never kept or published.",
+    "sources": [
+      "cms_provider_data"
+    ],
+    "source_detail": "CMS Provider Data Catalog API, datastore/query/{dataset}/0 with state = PR",
+    "how_to_read": "Puerto Rico has 39 in 22 municipalities. An agency serves people in other municipalities too.",
+    "caveats": [
+      "Counts offices, not where care is given."
+    ],
+    "see_also": [
+      "health.cms_hospitals",
+      "health.hc_sites"
+    ],
+    "where": {
+      "files": [
+        "care_series.json:cms_home_health"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab: home health agencies",
+          "href": "index.html#e=cms_home_health.s"
+        }
+      ]
+    },
+    "added": "2026-10-14"
+  },
+  {
+    "id": "health.cms_hospice",
+    "ask": {"en": ["hospice", "hospices"], "es": ["hospicio", "hospicios", "cuidado paliativo"]},
+    "name": "Hospice providers",
+    "domain": "health",
+    "domains": [
+      "health"
+    ],
+    "group": "Hospitals and care facilities",
+    "kind": "variable",
+    "plain": "How many hospice providers that Medicare certifies have their office in each municipality.",
+    "definition": "Hospice providers in CMS's Hospice list, counted in the municipality of the provider's office.",
+    "unit": "providers",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico (the island value is the sum of the 78 municipal values)",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "One snapshot, made from the CMS lists of 2026-10-14. It is rebuilt with each full build (python care_series.py)."
+    },
+    "method": "care_series.py reads the Puerto Rico rows of the CMS list through the Provider Data Catalog API and counts them in the municipality the row's county field names (for home health agencies, the town field; four towns named by a barrio or sector are placed by their ZIP code). A name that is not a municipality stops the build. Names, addresses, telephone numbers and certification numbers are never kept or published.",
+    "sources": [
+      "cms_provider_data"
+    ],
+    "source_detail": "CMS Provider Data Catalog API, datastore/query/{dataset}/0 with state = PR",
+    "how_to_read": "Puerto Rico has 42 in 26 municipalities. Hospice care is mostly given at home, in any municipality the provider serves.",
+    "caveats": [
+      "Counts offices, not where care is given."
+    ],
+    "see_also": [
+      "health.cms_hospitals",
+      "health.hc_sites"
+    ],
+    "where": {
+      "files": [
+        "care_series.json:cms_hospice"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab: hospice providers",
+          "href": "index.html#e=cms_hospice.s"
+        }
+      ]
+    },
+    "added": "2026-10-14"
+  },
+  {
+    "id": "health.hc_road_km",
+    "ask": {"en": ["distance to a health center", "distance to the nearest health center", "how far is a health center"], "es": ["distancia a un centro de salud", "distancia al centro de salud mas cercano", "que tan lejos esta un centro de salud"]},
+    "name": "Road distance to the nearest health center (average per resident, km)",
+    "domain": "health",
+    "domains": [
+      "health",
+      "infrastructure.mobility"
+    ],
+    "group": "Distance to a health center",
+    "kind": "variable",
+    "plain": "On average, how far residents of each municipality live from the nearest community health center, along the roads.",
+    "definition": "The road distance from where each resident lives (the 2020 census block) to the nearest permanent health center site, averaged over the municipality's residents, in kilometres.",
+    "unit": "km",
+    "value_type": "ratio",
+    "geography": "78 municipalities and Puerto Rico (each an average over its residents)",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "One estimate, from HRSA's site list of 2026-10-14 and the 2020 census blocks. Rebuilt with each full build."
+    },
+    "method": "care_access.py, run by care_series.py, searches the observatory's road graph (site/data/roads.bin, from OpenStreetMap) from every permanent health center site of HRSA's list at once, in both directions of every road, and measures from each 2020 census block with residents (its internal point, snapped to the nearest road that is joined to the network within 2 km) to the nearest site. A municipality's value is the average over its residents (each block weighted by its 2020 residents). The site points come from HRSA's file and stay in the local cache only (owner decision, 2026-10-14); they are never published. In the 2026-10 run, 124 sites, 36,570 blocks; 3 blocks (46 residents) have no road within 2 km and are left out.",
+    "sources": [
+      "hrsa_sites",
+      "census_tiger",
+      "osm"
+    ],
+    "source_detail": "HRSA Health Center Service Delivery and Look-Alike Sites (Geocoding Artifact Address Primary X and Y Coordinate, used in the build only); 2020 census blocks (network.py); OpenStreetMap roads (roads.py)",
+    "how_to_read": "Puerto Rico's residents live on average 5.13 km by road from the nearest health center. The longest averages are in Villalba 20.1 km, Sabana Grande 13.9 km, Juana Díaz 13.7 km; the shortest in Culebra 2.4 km, Arroyo 2.5 km, Florida 2.5 km.",
+    "caveats": [
+      "It is the distance to the nearest health center (a federally funded community health center or look-alike), not to a hospital, an emergency department or a doctor's office.",
+      "It says nothing about hours, services, waiting times or whether the center takes a person's insurance.",
+      "An estimate made by the observatory, not a figure HRSA publishes.",
+      "HRSA's site list of 2026-10-14, which this estimate uses, has no permanent site in Villalba or Las Marías, while the counts of health center sites (health.hc_sites, from HRSA's file of 2026-10-06) still show one in each: the two lists are a week apart, and both are HRSA's as published."
+    ],
+    "see_also": [
+      "health.hc_sites",
+      "municipalities.pop_served_active_pct"
+    ],
+    "where": {
+      "files": [
+        "care_series.json:hc_road_km"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab: road distance to the nearest health center (average per resident, km)",
+          "href": "index.html#e=hc_road_km.f"
+        }
+      ]
+    },
+    "added": "2026-10-14"
+  },
+  {
+    "id": "health.hc_drive_min",
+    "ask": {"en": ["drive to a health center", "minutes to a health center", "driving time to a health center"], "es": ["minutos a un centro de salud", "tiempo en carro a un centro de salud"]},
+    "name": "Drive time to the nearest health center (estimate, minutes)",
+    "domain": "health",
+    "domains": [
+      "health",
+      "infrastructure.mobility"
+    ],
+    "group": "Distance to a health center",
+    "kind": "variable",
+    "plain": "A rough estimate of how many minutes residents of each municipality would drive to the nearest community health center.",
+    "definition": "The same search as the road distance, with the observatory's planning speed for each class of road (free flow: no traffic, no stops), averaged over the municipality's residents, in minutes.",
+    "unit": "minutes",
+    "value_type": "ratio",
+    "geography": "78 municipalities and Puerto Rico (each an average over its residents)",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "One estimate, from HRSA's site list of 2026-10-14 and the 2020 census blocks. Rebuilt with each full build."
+    },
+    "method": "care_access.py, run by care_series.py, searches the observatory's road graph (site/data/roads.bin, from OpenStreetMap) from every permanent health center site of HRSA's list at once, in both directions of every road, and measures from each 2020 census block with residents (its internal point, snapped to the nearest road that is joined to the network within 2 km) to the nearest site. A municipality's value is the average over its residents (each block weighted by its 2020 residents). The site points come from HRSA's file and stay in the local cache only (owner decision, 2026-10-14); they are never published. In the 2026-10 run, 124 sites, 36,570 blocks; 3 blocks (46 residents) have no road within 2 km and are left out.",
+    "sources": [
+      "hrsa_sites",
+      "census_tiger",
+      "osm"
+    ],
+    "source_detail": "HRSA Health Center Service Delivery and Look-Alike Sites (Geocoding Artifact Address Primary X and Y Coordinate, used in the build only); 2020 census blocks (network.py); OpenStreetMap roads (roads.py)",
+    "how_to_read": "About 7.4 minutes on average for Puerto Rico. Real trips are longer: the speeds assume free-flowing traffic.",
+    "caveats": [
+      "It is the distance to the nearest health center (a federally funded community health center or look-alike), not to a hospital, an emergency department or a doctor's office.",
+      "It says nothing about hours, services, waiting times or whether the center takes a person's insurance.",
+      "An estimate made by the observatory, not a figure HRSA publishes.",
+      "A rough estimate: free-flow speeds, no traffic, no parking, no waiting. Use the road distance for comparisons.",
+      "HRSA's site list of 2026-10-14, which this estimate uses, has no permanent site in Villalba or Las Marías, while the counts of health center sites (health.hc_sites, from HRSA's file of 2026-10-06) still show one in each: the two lists are a week apart, and both are HRSA's as published."
+    ],
+    "see_also": [
+      "health.hc_road_km",
+      "health.hc_sites",
+      "municipalities.pop_served_active_pct"
+    ],
+    "where": {
+      "files": [
+        "care_series.json:hc_drive_min"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab: drive time to the nearest health center (estimate, minutes)",
+          "href": "index.html#e=hc_drive_min.f"
+        }
+      ]
+    },
+    "added": "2026-10-14"
+  },
+  {
+    "id": "health.hc_within_10km_pct",
+    "ask": {"en": ["within 10 km of a health center", "near a health center"], "es": ["a 10 km de un centro de salud", "cerca de un centro de salud"]},
+    "name": "Residents within 10 km of a health center by road (%)",
+    "domain": "health",
+    "domains": [
+      "health",
+      "infrastructure.mobility"
+    ],
+    "group": "Distance to a health center",
+    "kind": "variable",
+    "plain": "Out of every 100 residents of each municipality, how many live within 10 km of a community health center by road.",
+    "definition": "Residents whose road distance to the nearest permanent health center site is 10 km or less, divided by the municipality's residents counted, times 100.",
+    "unit": "% of residents",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico (each an average over its residents)",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "One estimate, from HRSA's site list of 2026-10-14 and the 2020 census blocks. Rebuilt with each full build."
+    },
+    "method": "care_access.py, run by care_series.py, searches the observatory's road graph (site/data/roads.bin, from OpenStreetMap) from every permanent health center site of HRSA's list at once, in both directions of every road, and measures from each 2020 census block with residents (its internal point, snapped to the nearest road that is joined to the network within 2 km) to the nearest site. A municipality's value is the average over its residents (each block weighted by its 2020 residents). The site points come from HRSA's file and stay in the local cache only (owner decision, 2026-10-14); they are never published. In the 2026-10 run, 124 sites, 36,570 blocks; 3 blocks (46 residents) have no road within 2 km and are left out.",
+    "sources": [
+      "hrsa_sites",
+      "census_tiger",
+      "osm"
+    ],
+    "source_detail": "HRSA Health Center Service Delivery and Look-Alike Sites (Geocoding Artifact Address Primary X and Y Coordinate, used in the build only); 2020 census blocks (network.py); OpenStreetMap roads (roads.py)",
+    "how_to_read": "90.4% of Puerto Rico's residents live within 10 km of a health center by road.",
+    "caveats": [
+      "It is the distance to the nearest health center (a federally funded community health center or look-alike), not to a hospital, an emergency department or a doctor's office.",
+      "It says nothing about hours, services, waiting times or whether the center takes a person's insurance.",
+      "An estimate made by the observatory, not a figure HRSA publishes.",
+      "HRSA's site list of 2026-10-14, which this estimate uses, has no permanent site in Villalba or Las Marías, while the counts of health center sites (health.hc_sites, from HRSA's file of 2026-10-06) still show one in each: the two lists are a week apart, and both are HRSA's as published."
+    ],
+    "see_also": [
+      "health.hc_road_km",
+      "health.hc_sites",
+      "municipalities.pop_served_active_pct"
+    ],
+    "where": {
+      "files": [
+        "care_series.json:hc_within_10km_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab: residents within 10 km of a health center by road (%)",
+          "href": "index.html#e=hc_within_10km_pct.f"
+        }
+      ]
+    },
+    "added": "2026-10-14"
+  }
+]

@@ -1,0 +1,880 @@
+{
+ "method": "block outlines sampled on a grid of about 60 m plus the internal point; wholly inside = all samples inside, touched = any sample inside; area share = share of samples inside",
+ "blocks": 36611,
+ "samples": 2456925,
+ "water_free_blocks": 36152,
+ "water_free_share": {
+  "pop": 0.9885,
+  "hu": 0.9874
+ },
+ "families": {
+  "flood_sfha": {
+   "pop": {
+    "island": {
+     "total": 3285874,
+     "lower": 168852,
+     "point": 316309,
+     "upper": 792943
+    },
+    "island_water_free": {
+     "total": 3248006,
+     "point": 307060,
+     "area_weighted": 339757
+    },
+    "municipio": {
+     "units": 78,
+     "bounds_width_points": {
+      "median": 18.74,
+      "p90": 37.55,
+      "max": 74.44,
+      "units_5_or_more": 75
+     },
+     "point_outside_bounds": 0,
+     "area_weighted_minus_point_points": {
+      "median": 0.99,
+      "p90": 2.43,
+      "max": 7.14,
+      "units_5_or_more": 2
+     }
+    },
+    "barrio": {
+     "units": 896,
+     "bounds_width_points": {
+      "median": 13.39,
+      "p90": 53.85,
+      "max": 100.0,
+      "units_5_or_more": 556
+     },
+     "point_outside_bounds": 0,
+     "area_weighted_minus_point_points": {
+      "median": 0.67,
+      "p90": 6.16,
+      "max": 32.44,
+      "units_5_or_more": 116
+     }
+    },
+    "tract": {
+     "units": 933,
+     "bounds_width_points": {
+      "median": 14.45,
+      "p90": 51.31,
+      "max": 100.0,
+      "units_5_or_more": 598
+     },
+     "point_outside_bounds": 0,
+     "area_weighted_minus_point_points": {
+      "median": 0.78,
+      "p90": 5.78,
+      "max": 44.67,
+      "units_5_or_more": 113
+     }
+    }
+   },
+   "hu": {
+    "island": {
+     "total": 1598159,
+     "lower": 91640,
+     "point": 172281,
+     "upper": 415111
+    },
+    "island_water_free": {
+     "total": 1577960,
+     "point": 167289,
+     "area_weighted": 182629
+    },
+    "municipio": {
+     "units": 78,
+     "bounds_width_points": {
+      "median": 20.69,
+      "p90": 38.4,
+      "max": 84.52,
+      "units_5_or_more": 75
+     },
+     "point_outside_bounds": 0,
+     "area_weighted_minus_point_points": {
+      "median": 0.97,
+      "p90": 2.48,
+      "max": 7.23,
+      "units_5_or_more": 2
+     }
+    },
+    "barrio": {
+     "units": 896,
+     "bounds_width_points": {
+      "median": 13.51,
+      "p90": 55.32,
+      "max": 100.0,
+      "units_5_or_more": 554
+     },
+     "point_outside_bounds": 0,
+     "area_weighted_minus_point_points": {
+      "median": 0.68,
+      "p90": 6.41,
+      "max": 37.1,
+      "units_5_or_more": 127
+     }
+    },
+    "tract": {
+     "units": 932,
+     "bounds_width_points": {
+      "median": 14.69,
+      "p90": 51.62,
+      "max": 100.0,
+      "units_5_or_more": 606
+     },
+     "point_outside_bounds": 0,
+     "area_weighted_minus_point_points": {
+      "median": 0.83,
+      "p90": 5.99,
+      "max": 41.76,
+      "units_5_or_more": 125
+     }
+    }
+   }
+  },
+  "flood_any": {
+   "pop": {
+    "island": {
+     "total": 3285874,
+     "lower": 277291,
+     "point": 454706,
+     "upper": 950000
+    },
+    "island_water_free": {
+     "total": 3248006,
+     "point": 441184,
+     "area_weighted": 473345
+    },
+    "municipio": {
+     "units": 78,
+     "bounds_width_points": {
+      "median": 20.1,
+      "p90": 37.88,
+      "max": 74.44,
+      "units_5_or_more": 75
+     },
+     "point_outside_bounds": 0,
+     "area_weighted_minus_point_points": {
+      "median": 1.09,
+      "p90": 2.43,
+      "max": 6.77,
+      "units_5_or_more": 2
+     }
+    },
+    "barrio": {
+     "units": 896,
+     "bounds_width_points": {
+      "median": 14.45,
+      "p90": 55.61,
+      "max": 100.0,
+      "units_5_or_more": 557
+     },
+     "point_outside_bounds": 0,
+     "area_weighted_minus_point_points": {
+      "median": 0.68,
+      "p90": 6.32,
+      "max": 32.92,
+      "units_5_or_more": 118
+     }
+    },
+    "tract": {
+     "units": 933,
+     "bounds_width_points": {
+      "median": 16.53,
+      "p90": 52.39,
+      "max": 100.0,
+      "units_5_or_more": 610
+     },
+     "point_outside_bounds": 0,
+     "area_weighted_minus_point_points": {
+      "median": 0.86,
+      "p90": 6.44,
+      "max": 40.69,
+      "units_5_or_more": 136
+     }
+    }
+   },
+   "hu": {
+    "island": {
+     "total": 1598159,
+     "lower": 146933,
+     "point": 243227,
+     "upper": 490614
+    },
+    "island_water_free": {
+     "total": 1577960,
+     "point": 234366,
+     "area_weighted": 249490
+    },
+    "municipio": {
+     "units": 78,
+     "bounds_width_points": {
+      "median": 21.56,
+      "p90": 38.77,
+      "max": 84.52,
+      "units_5_or_more": 75
+     },
+     "point_outside_bounds": 0,
+     "area_weighted_minus_point_points": {
+      "median": 1.15,
+      "p90": 2.42,
+      "max": 7.25,
+      "units_5_or_more": 2
+     }
+    },
+    "barrio": {
+     "units": 896,
+     "bounds_width_points": {
+      "median": 15.15,
+      "p90": 57.03,
+      "max": 100.0,
+      "units_5_or_more": 555
+     },
+     "point_outside_bounds": 0,
+     "area_weighted_minus_point_points": {
+      "median": 0.7,
+      "p90": 6.59,
+      "max": 37.1,
+      "units_5_or_more": 125
+     }
+    },
+    "tract": {
+     "units": 932,
+     "bounds_width_points": {
+      "median": 17.24,
+      "p90": 52.96,
+      "max": 100.0,
+      "units_5_or_more": 618
+     },
+     "point_outside_bounds": 0,
+     "area_weighted_minus_point_points": {
+      "median": 0.86,
+      "p90": 6.69,
+      "max": 45.26,
+      "units_5_or_more": 147
+     }
+    }
+   }
+  },
+  "slr_1ft": {
+   "pop": {
+    "island": {
+     "total": 3285874,
+     "lower": 265,
+     "point": 11005,
+     "upper": 76324
+    },
+    "island_water_free": {
+     "total": 3248006,
+     "point": 8943,
+     "area_weighted": 7986
+    },
+    "municipio": {
+     "units": 78,
+     "bounds_width_points": {
+      "median": 0.86,
+      "p90": 6.51,
+      "max": 65.35,
+      "units_5_or_more": 12
+     },
+     "point_outside_bounds": 0,
+     "area_weighted_minus_point_points": {
+      "median": 0.02,
+      "p90": 0.5,
+      "max": 1.43,
+      "units_5_or_more": 0
+     }
+    },
+    "barrio": {
+     "units": 896,
+     "bounds_width_points": {
+      "median": 0.0,
+      "p90": 6.97,
+      "max": 100.0,
+      "units_5_or_more": 102
+     },
+     "point_outside_bounds": 0,
+     "area_weighted_minus_point_points": {
+      "median": 0.0,
+      "p90": 0.23,
+      "max": 43.47,
+      "units_5_or_more": 10
+     }
+    },
+    "tract": {
+     "units": 933,
+     "bounds_width_points": {
+      "median": 0.0,
+      "p90": 7.9,
+      "max": 100.0,
+      "units_5_or_more": 120
+     },
+     "point_outside_bounds": 0,
+     "area_weighted_minus_point_points": {
+      "median": 0.0,
+      "p90": 0.47,
+      "max": 28.52,
+      "units_5_or_more": 13
+     }
+    }
+   },
+   "hu": {
+    "island": {
+     "total": 1598159,
+     "lower": 67,
+     "point": 7143,
+     "upper": 52658
+    },
+    "island_water_free": {
+     "total": 1577960,
+     "point": 6087,
+     "area_weighted": 5371
+    },
+    "municipio": {
+     "units": 78,
+     "bounds_width_points": {
+      "median": 1.36,
+      "p90": 10.09,
+      "max": 75.24,
+      "units_5_or_more": 19
+     },
+     "point_outside_bounds": 0,
+     "area_weighted_minus_point_points": {
+      "median": 0.02,
+      "p90": 0.65,
+      "max": 2.01,
+      "units_5_or_more": 0
+     }
+    },
+    "barrio": {
+     "units": 896,
+     "bounds_width_points": {
+      "median": 0.0,
+      "p90": 8.46,
+      "max": 100.0,
+      "units_5_or_more": 110
+     },
+     "point_outside_bounds": 0,
+     "area_weighted_minus_point_points": {
+      "median": 0.0,
+      "p90": 0.27,
+      "max": 43.47,
+      "units_5_or_more": 13
+     }
+    },
+    "tract": {
+     "units": 932,
+     "bounds_width_points": {
+      "median": 0.0,
+      "p90": 9.8,
+      "max": 100.0,
+      "units_5_or_more": 125
+     },
+     "point_outside_bounds": 0,
+     "area_weighted_minus_point_points": {
+      "median": 0.0,
+      "p90": 0.47,
+      "max": 26.54,
+      "units_5_or_more": 20
+     }
+    }
+   }
+  },
+  "slr_3ft": {
+   "pop": {
+    "island": {
+     "total": 3285874,
+     "lower": 1085,
+     "point": 25302,
+     "upper": 121228
+    },
+    "island_water_free": {
+     "total": 3248006,
+     "point": 22382,
+     "area_weighted": 25557
+    },
+    "municipio": {
+     "units": 78,
+     "bounds_width_points": {
+      "median": 2.32,
+      "p90": 8.63,
+      "max": 71.04,
+      "units_5_or_more": 20
+     },
+     "point_outside_bounds": 0,
+     "area_weighted_minus_point_points": {
+      "median": 0.08,
+      "p90": 0.62,
+      "max": 3.81,
+      "units_5_or_more": 0
+     }
+    },
+    "barrio": {
+     "units": 896,
+     "bounds_width_points": {
+      "median": 0.0,
+      "p90": 11.21,
+      "max": 100.0,
+      "units_5_or_more": 128
+     },
+     "point_outside_bounds": 0,
+     "area_weighted_minus_point_points": {
+      "median": 0.0,
+      "p90": 0.72,
+      "max": 74.05,
+      "units_5_or_more": 22
+     }
+    },
+    "tract": {
+     "units": 933,
+     "bounds_width_points": {
+      "median": 0.0,
+      "p90": 17.45,
+      "max": 100.0,
+      "units_5_or_more": 165
+     },
+     "point_outside_bounds": 0,
+     "area_weighted_minus_point_points": {
+      "median": 0.0,
+      "p90": 1.19,
+      "max": 24.9,
+      "units_5_or_more": 24
+     }
+    }
+   },
+   "hu": {
+    "island": {
+     "total": 1598159,
+     "lower": 553,
+     "point": 17018,
+     "upper": 78874
+    },
+    "island_water_free": {
+     "total": 1577960,
+     "point": 15374,
+     "area_weighted": 16799
+    },
+    "municipio": {
+     "units": 78,
+     "bounds_width_points": {
+      "median": 2.88,
+      "p90": 14.02,
+      "max": 82.79,
+      "units_5_or_more": 25
+     },
+     "point_outside_bounds": 0,
+     "area_weighted_minus_point_points": {
+      "median": 0.08,
+      "p90": 1.47,
+      "max": 4.49,
+      "units_5_or_more": 0
+     }
+    },
+    "barrio": {
+     "units": 896,
+     "bounds_width_points": {
+      "median": 0.0,
+      "p90": 14.07,
+      "max": 100.0,
+      "units_5_or_more": 135
+     },
+     "point_outside_bounds": 0,
+     "area_weighted_minus_point_points": {
+      "median": 0.0,
+      "p90": 0.72,
+      "max": 74.05,
+      "units_5_or_more": 28
+     }
+    },
+    "tract": {
+     "units": 932,
+     "bounds_width_points": {
+      "median": 0.0,
+      "p90": 20.33,
+      "max": 100.0,
+      "units_5_or_more": 173
+     },
+     "point_outside_bounds": 0,
+     "area_weighted_minus_point_points": {
+      "median": 0.0,
+      "p90": 1.31,
+      "max": 27.0,
+      "units_5_or_more": 34
+     }
+    }
+   }
+  },
+  "slr_10ft": {
+   "pop": {
+    "island": {
+     "total": 3285874,
+     "lower": 110736,
+     "point": 213681,
+     "upper": 360327
+    },
+    "island_water_free": {
+     "total": 3248006,
+     "point": 204812,
+     "area_weighted": 214497
+    },
+    "municipio": {
+     "units": 78,
+     "bounds_width_points": {
+      "median": 4.07,
+      "p90": 17.63,
+      "max": 73.77,
+      "units_5_or_more": 35
+     },
+     "point_outside_bounds": 0,
+     "area_weighted_minus_point_points": {
+      "median": 0.08,
+      "p90": 1.3,
+      "max": 11.2,
+      "units_5_or_more": 1
+     }
+    },
+    "barrio": {
+     "units": 896,
+     "bounds_width_points": {
+      "median": 0.0,
+      "p90": 23.37,
+      "max": 100.0,
+      "units_5_or_more": 175
+     },
+     "point_outside_bounds": 0,
+     "area_weighted_minus_point_points": {
+      "median": 0.0,
+      "p90": 2.25,
+      "max": 28.92,
+      "units_5_or_more": 40
+     }
+    },
+    "tract": {
+     "units": 933,
+     "bounds_width_points": {
+      "median": 0.0,
+      "p90": 40.64,
+      "max": 100.0,
+      "units_5_or_more": 260
+     },
+     "point_outside_bounds": 0,
+     "area_weighted_minus_point_points": {
+      "median": 0.0,
+      "p90": 4.35,
+      "max": 54.55,
+      "units_5_or_more": 83
+     }
+    }
+   },
+   "hu": {
+    "island": {
+     "total": 1598159,
+     "lower": 64062,
+     "point": 128658,
+     "upper": 210702
+    },
+    "island_water_free": {
+     "total": 1577960,
+     "point": 122157,
+     "area_weighted": 127210
+    },
+    "municipio": {
+     "units": 78,
+     "bounds_width_points": {
+      "median": 4.73,
+      "p90": 20.78,
+      "max": 84.39,
+      "units_5_or_more": 39
+     },
+     "point_outside_bounds": 0,
+     "area_weighted_minus_point_points": {
+      "median": 0.07,
+      "p90": 1.53,
+      "max": 12.5,
+      "units_5_or_more": 1
+     }
+    },
+    "barrio": {
+     "units": 896,
+     "bounds_width_points": {
+      "median": 0.0,
+      "p90": 27.86,
+      "max": 100.0,
+      "units_5_or_more": 176
+     },
+     "point_outside_bounds": 0,
+     "area_weighted_minus_point_points": {
+      "median": 0.0,
+      "p90": 2.47,
+      "max": 31.27,
+      "units_5_or_more": 50
+     }
+    },
+    "tract": {
+     "units": 932,
+     "bounds_width_points": {
+      "median": 0.0,
+      "p90": 42.38,
+      "max": 100.0,
+      "units_5_or_more": 256
+     },
+     "point_outside_bounds": 0,
+     "area_weighted_minus_point_points": {
+      "median": 0.0,
+      "p90": 4.71,
+      "max": 54.55,
+      "units_5_or_more": 86
+     }
+    }
+   }
+  },
+  "protected": {
+   "pop": {
+    "island": {
+     "total": 3285874,
+     "lower": 955,
+     "point": 58220,
+     "upper": 291798
+    },
+    "island_water_free": {
+     "total": 3248006,
+     "point": 55333,
+     "area_weighted": 47702
+    },
+    "municipio": {
+     "units": 78,
+     "bounds_width_points": {
+      "median": 7.09,
+      "p90": 17.34,
+      "max": 44.14,
+      "units_5_or_more": 52
+     },
+     "point_outside_bounds": 0,
+     "area_weighted_minus_point_points": {
+      "median": 0.34,
+      "p90": 1.19,
+      "max": 2.73,
+      "units_5_or_more": 0
+     }
+    },
+    "barrio": {
+     "units": 896,
+     "bounds_width_points": {
+      "median": 1.07,
+      "p90": 27.22,
+      "max": 100.0,
+      "units_5_or_more": 337
+     },
+     "point_outside_bounds": 0,
+     "area_weighted_minus_point_points": {
+      "median": 0.05,
+      "p90": 2.93,
+      "max": 38.58,
+      "units_5_or_more": 56
+     }
+    },
+    "tract": {
+     "units": 933,
+     "bounds_width_points": {
+      "median": 2.22,
+      "p90": 26.83,
+      "max": 100.0,
+      "units_5_or_more": 389
+     },
+     "point_outside_bounds": 0,
+     "area_weighted_minus_point_points": {
+      "median": 0.17,
+      "p90": 3.29,
+      "max": 36.62,
+      "units_5_or_more": 58
+     }
+    }
+   },
+   "hu": {
+    "island": {
+     "total": 1598159,
+     "lower": 307,
+     "point": 30778,
+     "upper": 147808
+    },
+    "island_water_free": {
+     "total": 1577960,
+     "point": 29096,
+     "area_weighted": 24817
+    },
+    "municipio": {
+     "units": 78,
+     "bounds_width_points": {
+      "median": 7.21,
+      "p90": 17.19,
+      "max": 48.75,
+      "units_5_or_more": 54
+     },
+     "point_outside_bounds": 0,
+     "area_weighted_minus_point_points": {
+      "median": 0.33,
+      "p90": 1.41,
+      "max": 3.64,
+      "units_5_or_more": 0
+     }
+    },
+    "barrio": {
+     "units": 896,
+     "bounds_width_points": {
+      "median": 0.71,
+      "p90": 28.44,
+      "max": 100.0,
+      "units_5_or_more": 344
+     },
+     "point_outside_bounds": 0,
+     "area_weighted_minus_point_points": {
+      "median": 0.04,
+      "p90": 3.04,
+      "max": 38.0,
+      "units_5_or_more": 62
+     }
+    },
+    "tract": {
+     "units": 932,
+     "bounds_width_points": {
+      "median": 2.22,
+      "p90": 27.09,
+      "max": 100.0,
+      "units_5_or_more": 388
+     },
+     "point_outside_bounds": 0,
+     "area_weighted_minus_point_points": {
+      "median": 0.13,
+      "p90": 3.54,
+      "max": 37.63,
+      "units_5_or_more": 59
+     }
+    }
+   }
+  },
+  "protected_strict": {
+   "pop": {
+    "island": {
+     "total": 3285874,
+     "lower": 627,
+     "point": 30716,
+     "upper": 94985
+    },
+    "island_water_free": {
+     "total": 3248006,
+     "point": 28332,
+     "area_weighted": 25694
+    },
+    "municipio": {
+     "units": 78,
+     "bounds_width_points": {
+      "median": 3.06,
+      "p90": 10.08,
+      "max": 20.38,
+      "units_5_or_more": 25
+     },
+     "point_outside_bounds": 0,
+     "area_weighted_minus_point_points": {
+      "median": 0.18,
+      "p90": 0.87,
+      "max": 2.96,
+      "units_5_or_more": 0
+     }
+    },
+    "barrio": {
+     "units": 896,
+     "bounds_width_points": {
+      "median": 0.0,
+      "p90": 16.72,
+      "max": 100.0,
+      "units_5_or_more": 178
+     },
+     "point_outside_bounds": 0,
+     "area_weighted_minus_point_points": {
+      "median": 0.0,
+      "p90": 1.81,
+      "max": 65.83,
+      "units_5_or_more": 40
+     }
+    },
+    "tract": {
+     "units": 933,
+     "bounds_width_points": {
+      "median": 0.0,
+      "p90": 8.67,
+      "max": 100.0,
+      "units_5_or_more": 130
+     },
+     "point_outside_bounds": 0,
+     "area_weighted_minus_point_points": {
+      "median": 0.0,
+      "p90": 1.02,
+      "max": 32.57,
+      "units_5_or_more": 24
+     }
+    }
+   },
+   "hu": {
+    "island": {
+     "total": 1598159,
+     "lower": 245,
+     "point": 16046,
+     "upper": 51825
+    },
+    "island_water_free": {
+     "total": 1577960,
+     "point": 14573,
+     "area_weighted": 13555
+    },
+    "municipio": {
+     "units": 78,
+     "bounds_width_points": {
+      "median": 3.18,
+      "p90": 11.36,
+      "max": 24.7,
+      "units_5_or_more": 25
+     },
+     "point_outside_bounds": 0,
+     "area_weighted_minus_point_points": {
+      "median": 0.2,
+      "p90": 1.1,
+      "max": 2.35,
+      "units_5_or_more": 0
+     }
+    },
+    "barrio": {
+     "units": 896,
+     "bounds_width_points": {
+      "median": 0.0,
+      "p90": 17.23,
+      "max": 100.0,
+      "units_5_or_more": 181
+     },
+     "point_outside_bounds": 0,
+     "area_weighted_minus_point_points": {
+      "median": 0.0,
+      "p90": 1.82,
+      "max": 65.83,
+      "units_5_or_more": 44
+     }
+    },
+    "tract": {
+     "units": 932,
+     "bounds_width_points": {
+      "median": 0.0,
+      "p90": 10.34,
+      "max": 100.0,
+      "units_5_or_more": 133
+     },
+     "point_outside_bounds": 0,
+     "area_weighted_minus_point_points": {
+      "median": 0.0,
+      "p90": 1.31,
+      "max": 32.57,
+      "units_5_or_more": 22
+     }
+    }
+   }
+  }
+ }
+}

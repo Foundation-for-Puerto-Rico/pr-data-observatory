@@ -1,0 +1,26 @@
+/* PR Data Observatory: area profile page (profile.js). Loads after twin.css and dictionary.css, whose page layout it shares. */
+.prof-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 4px 0 14px; font-size: 13px; }
+.prof-tools select { height: 34px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font: inherit; padding: 0 8px; background: #fff; }
+.prof-tools .btn { text-decoration: none; height: 34px; }
+.prof-top { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+.prof-map svg { width: 100%; height: auto; display: block; }
+.prof-peers h2 { font-size: 15px; margin: 0 0 6px; }
+.prof-peers ol { margin: 0 0 8px; padding-left: 20px; font-size: 14px; line-height: 1.7; }
+.mm-legend { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 12px; color: var(--color-text-muted); margin-top: 6px; }
+.mm-legend i { display: inline-block; width: 11px; height: 11px; border-radius: 2px; margin-right: 4px; vertical-align: -1px; border: 1px solid rgba(0,0,0,.12); }
+.pf-sec h2 small { font-size: 13px; color: var(--color-text-muted); font-weight: 400; }
+table.pf-tbl { width: 100%; border-collapse: collapse; font-size: 13px; background: var(--color-surface); }
+table.pf-tbl th, table.pf-tbl td { padding: 6px 8px; border-bottom: 1px solid var(--color-border-light); text-align: left; vertical-align: top; }
+table.pf-tbl thead th { font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: var(--color-text-muted); vertical-align: bottom; }
+table.pf-tbl th[scope=row] { font-weight: 400; max-width: 360px; }
+table.pf-tbl th small, table.pf-tbl td small { display: block; color: var(--color-text-muted); font-size: 11px; }
+table.pf-tbl .num { text-align: right; font-variant-numeric: tabular-nums; }
+table.pf-tbl td small.moe { display: inline; }
+table.pf-tbl tr.pf-g th { background: var(--color-bg); font-weight: 600; font-size: 12px; color: var(--color-primary-dark); }
+.pf-miss { color: var(--color-text-muted); font-style: italic; }
+.pf-spark { width: 110px; height: 26px; display: block; }
+.prof .dict-nav a small { color: var(--color-text-muted); float: right; }
+@media (max-width: 860px) {
+  .prof-top { grid-template-columns: 1fr; }
+  table.pf-tbl th[scope=row] { min-width: 160px; }
+}

@@ -1,0 +1,36 @@
+/* The Opportunity Zones 2.0 page (opportunity-zones.html, Knowledge Area): what it adds to public_money.css, whose layout it shares (controls, maps, sortable tables). */
+.oz-cards { display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:10px; margin:12px 0; }
+.oz-card { display:flex; gap:10px; align-items:flex-start; background:#fff; border:1px solid #dfe3ea; border-radius:10px; padding:12px; }
+.oz-card > i { flex:0 0 auto; width:14px; height:14px; margin-top:6px; border-radius:3px; border:1px solid #0002; }
+.oz-v { font-size:24px; font-weight:700; line-height:1.1; }
+.oz-l { font-size:13px; color:#1d2433; margin-top:2px; }
+.oz-s { font-size:12px; color:#5b6475; margin-top:2px; }
+.oz-map svg { display:block; max-width:100%; height:auto; }
+.oz-map path { stroke:#ffffff; stroke-width:0.5; cursor:pointer; }
+.oz-map path:hover { stroke:#1d2433; stroke-width:1.2; }
+.oz-map path.on { stroke:#000000; stroke-width:2.2; }
+.oz-legend { display:flex; flex-wrap:wrap; gap:6px 14px; margin-top:8px; font-size:13px; }
+.oz-legend i { display:inline-block; width:16px; height:12px; margin-right:5px; vertical-align:-1px; border:1px solid #c5cad3; }
+.oz-legend i.oz-none { background:repeating-linear-gradient(45deg, #f7f7f8 0 3px, #d3d6dc 3px 5px); }
+.oz-legend i.oz-eligkey { background:#f4efe3; border-color:#d9cfb6; }
+.oz-tract { background:#fff; border:1px solid #dfe3ea; border-radius:10px; padding:10px 14px; margin-top:10px; }
+.oz-h3 { font-size:17px; margin:4px 0 8px; }
+.oz-h3 small { font-weight:400; color:#5b6475; font-size:13px; }
+.oz-dl { display:grid; grid-template-columns:minmax(160px, max-content) 1fr; gap:4px 14px; margin:0; font-size:14px; }
+.oz-dl dt { color:#5b6475; }
+.oz-dl dd { margin:0; }
+.oz-tablebox { max-height:520px; }
+.oz-table caption { text-align:left; font-size:13px; color:#5b6475; padding:6px 8px; caption-side:top; }
+.oz-table th:first-child, .oz-table td:first-child { position:sticky; left:0; background:#fff; z-index:1; }
+.oz-table thead th:first-child { background:#f6f7f9; z-index:2; }
+.oz-table tr.oz-pr th, .oz-table tr.oz-pr td { font-weight:700; background:#f6f7f9; }
+.oz-sc text { font-size:12px; fill:#5b6475; }
+.oz-sc .oz-ax { font-size:13px; fill:#1d2433; }
+.oz-sc .oz-grid { stroke:#e6e8ec; stroke-width:1; }
+.oz-sc .oz-elig { fill:#f4efe3; }
+.oz-sc .oz-rule { stroke:#8a6d1f; stroke-width:1.4; stroke-dasharray:5 3; }
+.oz-pick { margin:4px 0 10px; }
+@media (max-width: 600px) { .oz-v { font-size:20px; } .oz-dl { grid-template-columns:1fr; } .oz-dl dd { margin-bottom:6px; } }
+.oz-intro { margin:6px 0 4px; }
+.oz-intro p { font-size:15px; line-height:1.6; margin:0 0 10px; }
+.oz-h2 { font-size:19px; margin:16px 0 6px; }

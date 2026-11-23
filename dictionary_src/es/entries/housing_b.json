@@ -1,0 +1,218 @@
+{
+ "housing.poverty_pct": {
+  "name": "Población bajo el nivel de pobreza",
+  "how_to_read": "Un valor de 40 significa que 40 de cada 100 personas contadas vivían bajo el nivel de pobreza. Cuenta personas, no hogares, y no muestra cuánto por debajo de la línea están las personas ni por cuánto tiempo. El número después del signo más o menos (±) es el margen de error. Con 90% de confianza, el valor real probablemente está a esa distancia del estimado o menos.",
+  "_en": {
+   "name": "73352363",
+   "how_to_read": "2049937a"
+  }
+ },
+ "housing.employment_rate_pct": {
+  "name": "Tasa de empleo, residentes de 16 años o más (ACS)",
+  "how_to_read": "Un valor de 41 significa que 41 de cada 100 residentes de 16 años o más tenían un empleo civil. La base incluye a las personas jubiladas, a estudiantes y a todas las demás personas que no están en la fuerza laboral, así que la tasa refleja la composición por edad además del número de empleos. No es la proporción de personas que buscaban empleo y lo encontraron; para eso, vea la tasa de desempleo. El número después del signo más o menos (±) es el margen de error. Con 90% de confianza, el valor real probablemente está a esa distancia del estimado o menos.",
+  "_en": {
+   "name": "aab79e2c",
+   "how_to_read": "8af71179"
+  }
+ },
+ "housing.unemployment_rate_pct": {
+  "name": "Tasa de desempleo (encuesta ACS)",
+  "how_to_read": "Un valor de 10 significa que 10 de cada 100 personas en la fuerza laboral no tenían trabajo y lo buscaban. No se cuentan las personas que dejaron de buscar. Use la serie Local Area Unemployment Statistics (LAUS) del BLS para el año más reciente; use esta serie para comparar municipios dentro de una misma ventana. El número después del signo más o menos (±) es el margen de error. Con 90% de confianza, el valor real probablemente está a esa distancia del estimado o menos.",
+  "_en": {
+   "name": "8b89a49a",
+   "how_to_read": "8aaf01a7"
+  }
+ },
+ "housing.bachelors_pct": {
+  "name": "Adultos de 25 años o más con bachillerato o grado superior",
+  "how_to_read": "Un valor de 30 significa que 30 de cada 100 adultos de 25 años o más tienen por lo menos un bachillerato. No se cuentan los grados asociados. La medida sigue el lugar donde viven las personas hoy, así que refleja quién se muda al lugar o se va de él, además de quién estudió allí. El número después del signo más o menos (±) es el margen de error. Con 90% de confianza, el valor real probablemente está a esa distancia del estimado o menos.",
+  "_en": {
+   "name": "4e3d95ef",
+   "how_to_read": "acb1c341"
+  }
+ },
+ "housing.median_home_value": {
+  "name": "Valor mediano de la vivienda",
+  "how_to_read": "Úselo para comparar lugares y ventanas, no para ponerle precio a una vivienda. Un aumento puede deberse a viviendas mejores, a cambios en la opinión de los propietarios o a que la muestra incluyó viviendas distintas. El número después del signo más o menos (±) es el margen de error. Con 90% de confianza, el valor real probablemente está a esa distancia del estimado o menos.",
+  "_en": {
+   "name": "634135aa",
+   "how_to_read": "9a88a7b7"
+  }
+ },
+ "housing.median_gross_rent": {
+  "name": "Alquiler bruto mediano",
+  "how_to_read": "Refleja lo que pagan los inquilinos actuales, incluidos los que llevan mucho tiempo en la vivienda. Puede ser distinto de los alquileres que se piden hoy por las viviendas en el mercado. El número después del signo más o menos (±) es el margen de error. Con 90% de confianza, el valor real probablemente está a esa distancia del estimado o menos.",
+  "_en": {
+   "name": "8cae6e78",
+   "how_to_read": "c83ee41f"
+  }
+ },
+ "housing.median_hh_income": {
+  "name": "Ingreso mediano del hogar",
+  "how_to_read": "Compárelo con el costo de la vivienda, no con la paga de una sola persona: un hogar puede tener varias personas que generan ingreso, o ninguna. Para el ingreso por persona, vea el ingreso per cápita. El número después del signo más o menos (±) es el margen de error. Con 90% de confianza, el valor real probablemente está a esa distancia del estimado o menos.",
+  "_en": {
+   "name": "567c1a07",
+   "how_to_read": "282626bb"
+  }
+ },
+ "housing.per_capita_income": {
+  "name": "Ingreso per cápita",
+  "how_to_read": "Es menor que el ingreso mediano del hogar principalmente porque el ingreso de un hogar se reparte entre unas 2.5 personas en promedio (2.48 en Puerto Rico en 2020-2024), y porque es un promedio por persona que incluye a los niños y a las personas sin ingreso. No compare los dos como si describieran la misma unidad. No lo use para decir cuánto gana una persona típica; es un promedio, y unos pocos ingresos altos lo suben. El número después del signo más o menos (±) es el margen de error. Con 90% de confianza, el valor real probablemente está a esa distancia del estimado o menos.",
+  "_en": {
+   "name": "d582213b",
+   "how_to_read": "96495427"
+  }
+ },
+ "housing.median_owner_income": {
+  "name": "Ingreso mediano de los hogares propietarios",
+  "how_to_read": "La tenencia indica si un hogar es dueño de su vivienda o la alquila. Describe la vivienda, no a la persona: un hogar es propietario si alguien en él es dueño de la vivienda o la está comprando. El Negociado del Censo de EE. UU. lo agrupa según la jefatura del hogar, la persona a cuyo nombre está la propiedad o el alquiler de la vivienda. Léalo junto con el ingreso de los hogares inquilinos para ver la brecha entre los dos grupos. El número después del signo más o menos (±) es el margen de error. Con 90% de confianza, el valor real probablemente está a esa distancia del estimado o menos.",
+  "_en": {
+   "name": "11f22527",
+   "how_to_read": "bd6ca013"
+  }
+ },
+ "housing.median_renter_income": {
+  "name": "Ingreso mediano de los hogares inquilinos",
+  "how_to_read": "En el corte de datos 2026-10, la mediana de los inquilinos en Puerto Rico está entre 45% y 53% de la mediana de los propietarios en todas las ventanas de 2010 a 2024 (53% en 2020-2024). En algunos municipios la brecha es mucho menor: en 30 de 1,169 pares de municipio y ventana, la mediana de los inquilinos es por lo menos 80% de la mediana de los propietarios. Úsela con el alquiler bruto mediano para ver cuánto del ingreso de un inquilino típico se va en alquiler. El número después del signo más o menos (±) es el margen de error. Con 90% de confianza, el valor real probablemente está a esa distancia del estimado o menos.",
+  "_en": {
+   "name": "f87a2865",
+   "how_to_read": "a293f673"
+  }
+ },
+ "housing.median_owner_costs_mortgage": {
+  "name": "Costo mensual mediano para propietarios, con hipoteca",
+  "how_to_read": "Compárelo con los costos para propietarios sin hipoteca para ver cuánto suma una hipoteca. Es mayor que el pago de la hipoteca solo, porque incluye impuestos, seguros, servicios y combustible. El número después del signo más o menos (±) es el margen de error. Con 90% de confianza, el valor real probablemente está a esa distancia del estimado o menos.",
+  "_en": {
+   "name": "aeafc868",
+   "how_to_read": "0d74f54a"
+  }
+ },
+ "housing.median_owner_costs_no_mortgage": {
+  "name": "Costo mensual mediano para propietarios, sin hipoteca",
+  "how_to_read": "Muestra el costo corriente de una vivienda sin hipoteca. Compárelo con los costos para propietarios con hipoteca para ver cuánto suma la hipoteca. El número después del signo más o menos (±) es el margen de error. Con 90% de confianza, el valor real probablemente está a esa distancia del estimado o menos.",
+  "_en": {
+   "name": "2a9d0ba9",
+   "how_to_read": "6a57ec84"
+  }
+ },
+ "housing.median_rent_pct_income": {
+  "name": "Alquiler bruto mediano como proporción del ingreso del hogar",
+  "how_to_read": "Un valor de 30 significa que la mitad de los hogares inquilinos paga 30% o más de su ingreso en alquiler. Es la mediana de las proporciones propias de cada hogar. No es el alquiler mediano dividido entre el ingreso mediano. Tampoco es la proporción de inquilinos con carga de costos (vea Inquilinos con carga de costos). El número después del signo más o menos (±) es el margen de error. Con 90% de confianza, el valor real probablemente está a esa distancia del estimado o menos.",
+  "_en": {
+   "name": "499af2ec",
+   "how_to_read": "9381d575"
+  }
+ },
+ "housing.renter_cost_burden_pct": {
+  "name": "Inquilinos con carga de costos (30% o más del ingreso en alquiler)",
+  "how_to_read": "Un valor de 50 significa que la mitad de los hogares inquilinos de la base gasta 30% o más del ingreso en alquiler. La línea de 30% es la regla práctica común para la carga de costos de vivienda, no una medida de dificultad económica. No dice cuánto dinero queda después de pagar el alquiler. El número después del signo más o menos (±) es el margen de error. Con 90% de confianza, el valor real probablemente está a esa distancia del estimado o menos.",
+  "_en": {
+   "name": "e2b903d7",
+   "how_to_read": "e2a8583d"
+  }
+ },
+ "housing.renter_severe_burden_pct": {
+  "name": "Inquilinos con carga de costos severa (50% o más del ingreso)",
+  "how_to_read": "Es un subconjunto de los inquilinos con carga de costos: todo hogar que se cuenta aquí también está en el grupo de 30% o más. Un valor de 27 significa que unos 27 de cada 100 hogares inquilinos de la base pagan la mitad o más de su ingreso en alquiler. El número después del signo más o menos (±) es el margen de error. Con 90% de confianza, el valor real probablemente está a esa distancia del estimado o menos.",
+  "_en": {
+   "name": "d7bb01af",
+   "how_to_read": "0f7a37f9"
+  }
+ },
+ "housing.owner_cost_burden_pct": {
+  "name": "Propietarios con hipoteca y carga de costos (30% o más del ingreso)",
+  "how_to_read": "Un valor de 36 significa que unos 36 de cada 100 propietarios con hipoteca gastan 30% o más del ingreso en costos de propietario. Los costos incluyen servicios e impuestos, así que la proporción es mayor que la que daría el pago de la hipoteca solo. El número después del signo más o menos (±) es el margen de error. Con 90% de confianza, el valor real probablemente está a esa distancia del estimado o menos.",
+  "_en": {
+   "name": "c6a33200",
+   "how_to_read": "f514bc05"
+  }
+ },
+ "housing.max_affordable_loan": {
+  "name": "Préstamo máximo asequible a 30 años",
+  "how_to_read": "Léalo así: el tamaño de préstamo que, según este método, puede sostener el hogar típico. Si la vivienda típica cuesta más que eso, el hogar típico queda fuera del mercado según el método. Es una forma de comparar lugares y años, no una predicción de lo que prestaría un banco. La razón entre el valor de la vivienda y este préstamo es la razón de asequibilidad.",
+  "_en": {
+   "name": "16eea79f",
+   "how_to_read": "0556408a"
+  }
+ },
+ "housing.affordability_ratio": {
+  "name": "Razón de asequibilidad de la vivienda propia",
+  "how_to_read": "Una razón de 1.37 significa que la vivienda típica vale 37% más que el préstamo más grande que podría asumir el hogar típico. Los valores de 1.0 o menos significan que está al alcance según el método. La página de Vivienda colorea un municipio como 'fuera de alcance' cuando la razón es mayor que 1.00 y como 'al alcance' en los demás casos.",
+  "_en": {
+   "name": "27e4f422",
+   "how_to_read": "577e1400"
+  }
+ },
+ "study.state_of_housing_2023": {
+  "name": "El estado de la vivienda en Puerto Rico (2023): cifras y tablas de la página de Vivienda",
+  "how_to_read": "Los elementos marcados 'tal como se publicó' en la página de Vivienda provienen del estudio; los marcados 'en vivo' se vuelven a calcular con datos del Negociado del Censo para el año seleccionado. Lea los dos como mediciones distintas del mismo tema, no como correcciones uno del otro.",
+  "_en": {
+   "name": "e747cc1d",
+   "how_to_read": "5e83498e"
+  }
+ },
+ "study.table_2": {
+  "name": "Tabla 2 (Tabla 5 en el PDF del estudio): cambio en la población de Puerto Rico, de 2010 a 2020",
+  "how_to_read": "Lea la primera fila como las cifras propias del estudio y las dos siguientes como el nuevo cálculo del observatorio. Una fila en vivo que abarca 2019 y 2020 mezcla dos bases de estimados.",
+  "_en": {
+   "name": "98c651f9",
+   "how_to_read": "bbf74e4b"
+  }
+ },
+ "study.table_3": {
+  "name": "Tabla 3: Inquilinos según el alquiler bruto como proporción del ingreso (GRAPI)",
+  "how_to_read": "Los datos de aquí no muestran qué ventana de la Encuesta sobre la Comunidad Estadounidense (ACS) usó el estudio para las Tablas 3 y 4; el 52% del estudio se muestra como referencia, no como una ventana comparable. Entre las ventanas 2017-2021 y 2020-2024, la proporción en vivo pasa de 52.8% a 50.8%, pero esas ventanas comparten dos de sus cinco años. Por el redondeo, los rangos suman 100.0% con 0.1 más o menos.",
+  "_en": {
+   "name": "766c062d",
+   "how_to_read": "aea94d8c"
+  }
+ },
+ "study.table_4": {
+  "name": "Tabla 4: Propietarios con hipoteca según los costos de propietario como proporción del ingreso (SMOCAPI)",
+  "how_to_read": "El 38% del estudio se muestra como referencia: los datos de aquí no muestran qué ventana de la Encuesta sobre la Comunidad Estadounidense (ACS) usó el estudio para las Tablas 3 y 4. La proporción en vivo es 41.3% para la ventana 2017-2021 y 36.4% para 2020-2024 (36.5% como suma de los rangos redondeados). Los propietarios sin hipoteca no están en la tabla.",
+  "_en": {
+   "name": "358b983e",
+   "how_to_read": "889ea6fa"
+  }
+ },
+ "study.table_6": {
+  "name": "Tabla 6: Asequibilidad de la vivienda propia según la edad de la jefatura del hogar",
+  "how_to_read": "Lea cada fila de izquierda a derecha: el ingreso, luego el presupuesto mensual, luego la parte para el préstamo y por último el préstamo. La página señala que el estudio sitúa el valor mediano de las unidades de vivienda en $111,800 (estudio, p. 22) y la mayoría de las viviendas disponibles en precios de venta de $90,000 o más.",
+  "_en": {
+   "name": "9be8bcea",
+   "how_to_read": "757d68b1"
+  }
+ },
+ "study.table_7": {
+  "name": "Tabla 7: Viviendas ocupadas por sus propietarios según la edad de la jefatura del hogar",
+  "how_to_read": "Las dos barras son mediciones distintas, así que no interprete la diferencia entre ellas como un cambio en el tiempo. Por ejemplo, la proporción en vivo de menores de 35 años es 4.5% en 2017-2021 y 5.2% en 2020-2024, frente a 10.7% en el estudio. Un grupo con una proporción grande tiene muchos propietarios de esa edad; eso no dice cuántas personas de esa edad son dueñas de una vivienda.",
+  "_en": {
+   "name": "58738e56",
+   "how_to_read": "0a360ed0"
+  }
+ },
+ "study.table_11": {
+  "name": "Tabla 11 y el perfil del municipio",
+  "how_to_read": "Haga clic en una etiqueta para abrir ese conjunto de datos completo; el cuadro de diálogo enlaza con la ficha del conjunto de datos en este diccionario. Una posición #1 significa el valor más alto entre los 78 municipios; que un valor alto sea bueno o no depende de la medida.",
+  "_en": {
+   "name": "342b969b",
+   "how_to_read": "1f5c3d7d"
+  }
+ },
+ "study.headline_figures": {
+  "name": "Cifras clave del estudio: unidades de vivienda, desocupación, abandono y el déficit anual de vivienda",
+  "how_to_read": "Úselas como órdenes de magnitud. Para conteos exactos, use las series en vivo: unidades de vivienda y unidades desocupadas del día del censo para 2010 y 2020, y unidades de vivienda y unidades desocupadas de la Encuesta sobre la Comunidad Estadounidense (ACS) para cada ventana.",
+  "_en": {
+   "name": "92145f24",
+   "how_to_read": "16790d60"
+  }
+ },
+ "study.citation_links": {
+  "name": "Cita del estudio y enlaces",
+  "how_to_read": "Use la cita para referirse al estudio. NALCAB financió el estudio en parte mediante su programa Advancing Equitable Neighborhood Development.",
+  "_en": {
+   "name": "5b103080",
+   "how_to_read": "edd8a124"
+  }
+ }
+}

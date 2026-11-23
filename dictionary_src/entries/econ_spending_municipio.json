@@ -1,0 +1,42 @@
+[
+ {
+  "id": "economy.spending_municipio",
+  "name": "Public money in each municipio's territory (My municipio)",
+  "domain": "public-money",
+  "domains": [
+   "public-money"
+  ],
+  "group": "Public spending (Gasto Público)",
+  "kind": "table",
+  "plain": "For each municipio, in one place: the capital plan's projects there and the agencies that run them, the disaster recovery subawards and FEMA projects that name it, with how long FEMA money has been open and how much is closed out, and the federal awards in its territory. It counts only the money that names the municipio.",
+  "definition": "spending_municipio.json gathers, for each of the 78 municipios, figures the observatory already publishes elsewhere: the capital plan for its four fiscal years and its three largest agencies (spending_pica.json), the CDBG-DR and CDBG-MIT subawards (spending_cdbgdr.json), FEMA Public Assistance by stage with the median age of open money and the dollars open more than five years (spending_fema_pa.json), and federal awards of every type in the latest federal fiscal year and the average of the last five (economy_series.json), with the slug of its ABRE Tu Municipio page.",
+  "unit": "US dollars (not adjusted for inflation); years",
+  "value_type": "level",
+  "geography": "Municipio",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "Whenever the files it reads are rebuilt (municipio_view.py)"
+  },
+  "method": "municipio_view.py reads the four published files and writes one row per municipio; it adds no source and changes no figure.",
+  "how_to_read": "Read the parts side by side, not added: they are different stages (planned, obligated) and some are the same money (FEMA Public Assistance is also in the federal awards).",
+  "cautions": [
+   "Much public money is run island-wide and names no municipio: about three quarters of FEMA Public Assistance is recorded as Statewide.",
+   "Payments are not published by municipio; the figures are plans and obligations.",
+   "Never add the parts: FEMA Public Assistance and the disaster recovery subawards are also inside the federal awards.",
+   "The municipal government's own budget and finances are not here; ABRE Tu Municipio covers them."
+  ],
+  "sources": [
+   "usaspending",
+   "openfema",
+   "census_pep"
+  ],
+  "added": "2026-11-17",
+  "where": {
+   "files": [
+    "spending_municipio.json:*"
+   ]
+  }
+ }
+]

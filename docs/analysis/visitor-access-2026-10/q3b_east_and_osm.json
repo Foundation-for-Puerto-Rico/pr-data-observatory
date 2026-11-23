@@ -1,0 +1,54 @@
+{
+ "ceiba_ferry_terminal_to_nearest_ati_bus_stop_km": 31.5,
+ "easternmost_ati_bus_stop": {
+  "lng": -65.87187,
+  "municipality": "Canóvanas"
+ },
+ "ceiba_ferry_terminal_to_nearest_other_scheduled_stop": {
+  "km": 10.4,
+  "operator": "fajardo",
+  "feed_status_today": "expired"
+ },
+ "fajardo_ferry_terminal_osm_to_nearest_scheduled_stop": {
+  "m": 82,
+  "operator": "fajardo",
+  "feed_status_today": "expired"
+ },
+ "ati_stops_in_porta_del_mar_by_municipality": {
+  "Canóvanas": 26,
+  "Ceiba": 1,
+  "Culebra": 1,
+  "Loíza": 43
+ },
+ "municipalities_total": 78,
+ "municipalities_without_any_bus_station": 26,
+ "municipalities_without_any_stop_station_or_terminal": 15,
+ "municipalities_without_scheduled_stop": 41,
+ "taxi_stands": {
+  "n": 9,
+  "municipalities": 4
+ },
+ "ev_charging_points": 11,
+ "uber_listed_municipalities": 57,
+ "osm_bus_stops_and_stations": {
+  "n": 506,
+  "operator_tag_ama": 394,
+  "no_operator_tag": 108,
+  "within_30m_of_scheduled": 2,
+  "30_to_100m": 224,
+  "100_to_250m": 106,
+  "250_to_1000m": 91,
+  "over_1000m": 83,
+  "ama_tagged_within_100m_of_scheduled": 190
+ },
+ "default_places_within_400_800m_of_an_osm_bus_station_pct": [
+  6.7,
+  12.6
+ ],
+ "mona_island": {
+  "default_places": 4,
+  "transport_features_within_15km": [
+   "airport|osm_transport"
+  ]
+ }
+}

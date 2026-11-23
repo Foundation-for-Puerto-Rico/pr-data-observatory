@@ -1,0 +1,16 @@
+{
+ "Ask": "Preguntar",
+ "Ask the observatory": "Preguntar al observatorio",
+ "{title} · inflation-adjusted": "{title} · ajustado por inflación",
+ "Economy": "Economía",
+ "Tourism": "Turismo",
+ "Hazards and resilience": "Riesgos y resiliencia",
+ "Infrastructure and services": "Infraestructura y servicios",
+ "Health and education": "Salud y educación",
+ "Mobility and safety": "Movilidad y seguridad",
+ "Land and buildings": "Terrenos y edificios",
+ "Governance and recovery": "Gobernanza y recuperación",
+ "Population and households": "Población y hogares",
+ "Every harvested dataset stays and new ones are added, so the data folder only grows. Each dataset is its own lazily loaded file. When the total passes the planning line, move the large files to object storage as Parquet or PMTiles and query them in the browser (for example with DuckDB-WASM) while the small summaries stay on the page.": "Todo conjunto de datos recolectado se queda y se agregan otros nuevos, así que la carpeta de datos solo crece. Cada conjunto de datos es un archivo propio que se carga solo cuando hace falta. Cuando el total pase la línea de planificación, hay que mover los archivos grandes a almacenamiento de objetos como Parquet o PMTiles y consultarlos en el navegador (por ejemplo, con DuckDB-WASM), mientras los resúmenes pequeños se quedan en la página.",
+ "The chat could not be loaded. Check your connection and try again.": "El chat no pudo cargar. Revise su conexión e inténtelo de nuevo."
+}

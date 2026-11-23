@@ -1,0 +1,644 @@
+[
+  {
+    "id": "degrees.deg_total",
+    "ask": {
+      "en": [
+        "degrees awarded",
+        "graduates",
+        "college graduates",
+        "completions"
+      ],
+      "es": [
+        "titulos otorgados",
+        "graduados universitarios",
+        "egresados"
+      ]
+    },
+    "name": "Degrees and certificates awarded (all levels)",
+    "domain": "education",
+    "domains": [
+      "education"
+    ],
+    "group": "Degrees awarded",
+    "kind": "variable",
+    "plain": "How many degrees and certificates the colleges in an area awarded in an academic year, at every level.",
+    "definition": "Every award colleges in the municipio gave in the academic year, first majors only: certificates and associate, bachelor's, master's and doctor's degrees. Counted at the campus that reports to IPEDS, not where the graduates live; a municipio with no college has 0. A college may report all its campuses from one place: NUC University reports its campuses and online programmes from Bayamón. The year is the end of the academic year (2024 = 2023-24).",
+    "unit": "degrees",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico (by campus)",
+    "coverage": {
+      "timeline": "annual",
+      "first": 2015,
+      "last": 2024,
+      "frequency": "Every academic year; NCES publishes a year about a year after it ends."
+    },
+    "method": "degrees.py reads NCES's IPEDS completions file and directory for each academic year, keeps Puerto Rico's institutions and first majors only, and adds each institution's awards to the municipio of its campus in that year's directory. Award levels: associate 3, bachelor's 5, master's 7, doctor's 17, 18 and 19. Fields are the first two digits of the CIP code. Two checks run every year: the six-digit rows add up to the file's own total (CIP 99) for every level, and the fields add up to the bachelor's and graduate degrees.",
+    "sources": [
+      "nces_ipeds"
+    ],
+    "source_detail": "NCES IPEDS completions (first majors) and directory, academic years ending 2015 to 2024, read from NCES's complete data files; counted by the municipio of each campus",
+    "how_to_read": "Puerto Rico: 60,533 in 2014-15 and 48,725 in 2023-24 (-20%). Most in 2023-24: Bayamón (17,157), San Juan (9,982), Caguas (3,512).",
+    "caveats": [
+      "Counted at the campus that reports to IPEDS, not where graduates live: most municipios have no college and read 0. A college may report all its campuses from one place: NUC University reports its campuses and online programmes from Bayamón (14,321 awards, 29.4% of the island's in 2023-24, mostly certificates), so Bayamón's count is far above where its students study.",
+      "Institutions report their own counts to NCES; a year is the academic year that ends in it (2024 = 2023-24).",
+      "First majors only: a student with two majors counts once."
+    ],
+    "see_also": [
+      "degrees.deg_bachelor",
+      "degrees.deg_graduate"
+    ],
+    "where": {
+      "files": [
+        "degrees_series.json:deg_total"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Education · Degrees awarded (IPEDS)): Degrees and certificates awarded (all levels)",
+          "href": "index.html#e=deg_total.s"
+        }
+      ]
+    },
+    "added": "2026-11-18"
+  },
+  {
+    "id": "degrees.deg_associate",
+    "ask": {
+      "en": [
+        "associate degrees"
+      ],
+      "es": [
+        "grados asociados"
+      ]
+    },
+    "name": "Associate degrees awarded",
+    "domain": "education",
+    "domains": [
+      "education"
+    ],
+    "group": "Degrees awarded",
+    "kind": "variable",
+    "plain": "How many associate degrees colleges in an area awarded in an academic year.",
+    "definition": "Associate degrees awarded in the academic year (IPEDS award level 3), first majors only. Counted at the campus that reports to IPEDS, not where the graduates live; a municipio with no college has 0. A college may report all its campuses from one place: NUC University reports its campuses and online programmes from Bayamón. The year is the end of the academic year (2024 = 2023-24).",
+    "unit": "degrees",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico (by campus)",
+    "coverage": {
+      "timeline": "annual",
+      "first": 2015,
+      "last": 2024,
+      "frequency": "Every academic year; NCES publishes a year about a year after it ends."
+    },
+    "method": "degrees.py reads NCES's IPEDS completions file and directory for each academic year, keeps Puerto Rico's institutions and first majors only, and adds each institution's awards to the municipio of its campus in that year's directory. Award levels: associate 3, bachelor's 5, master's 7, doctor's 17, 18 and 19. Fields are the first two digits of the CIP code. Two checks run every year: the six-digit rows add up to the file's own total (CIP 99) for every level, and the fields add up to the bachelor's and graduate degrees.",
+    "sources": [
+      "nces_ipeds"
+    ],
+    "source_detail": "NCES IPEDS completions (first majors) and directory, academic years ending 2015 to 2024, read from NCES's complete data files; counted by the municipio of each campus",
+    "how_to_read": "Puerto Rico: 9,143 in 2014-15 and 5,837 in 2023-24 (-36%).",
+    "caveats": [
+      "Counted at the campus that reports to IPEDS, not where graduates live: most municipios have no college and read 0. A college may report all its campuses from one place: NUC University reports its campuses and online programmes from Bayamón (14,321 awards, 29.4% of the island's in 2023-24, mostly certificates), so Bayamón's count is far above where its students study.",
+      "Institutions report their own counts to NCES; a year is the academic year that ends in it (2024 = 2023-24).",
+      "First majors only: a student with two majors counts once."
+    ],
+    "see_also": [
+      "degrees.deg_total",
+      "degrees.deg_bachelor"
+    ],
+    "where": {
+      "files": [
+        "degrees_series.json:deg_associate"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Education · Degrees awarded (IPEDS)): Associate degrees awarded",
+          "href": "index.html#e=deg_associate.s"
+        }
+      ]
+    },
+    "added": "2026-11-18"
+  },
+  {
+    "id": "degrees.deg_bachelor",
+    "ask": {
+      "en": [
+        "bachelor's degrees",
+        "bachelors degrees",
+        "college degrees"
+      ],
+      "es": [
+        "bachilleratos",
+        "grados de bachillerato"
+      ]
+    },
+    "name": "Bachelor's degrees awarded",
+    "domain": "education",
+    "domains": [
+      "education"
+    ],
+    "group": "Degrees awarded",
+    "kind": "variable",
+    "plain": "How many bachelor's degrees colleges in an area awarded in an academic year.",
+    "definition": "Bachelor's degrees awarded in the academic year (IPEDS award level 5), first majors only. Counted at the campus that reports to IPEDS, not where the graduates live; a municipio with no college has 0. A college may report all its campuses from one place: NUC University reports its campuses and online programmes from Bayamón. The year is the end of the academic year (2024 = 2023-24).",
+    "unit": "degrees",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico (by campus)",
+    "coverage": {
+      "timeline": "annual",
+      "first": 2015,
+      "last": 2024,
+      "frequency": "Every academic year; NCES publishes a year about a year after it ends."
+    },
+    "method": "degrees.py reads NCES's IPEDS completions file and directory for each academic year, keeps Puerto Rico's institutions and first majors only, and adds each institution's awards to the municipio of its campus in that year's directory. Award levels: associate 3, bachelor's 5, master's 7, doctor's 17, 18 and 19. Fields are the first two digits of the CIP code. Two checks run every year: the six-digit rows add up to the file's own total (CIP 99) for every level, and the fields add up to the bachelor's and graduate degrees.",
+    "sources": [
+      "nces_ipeds"
+    ],
+    "source_detail": "NCES IPEDS completions (first majors) and directory, academic years ending 2015 to 2024, read from NCES's complete data files; counted by the municipio of each campus",
+    "how_to_read": "Puerto Rico: 20,459 in 2014-15 and 14,779 in 2023-24 (-28%). Most in 2023-24: San Juan (3,743), Bayamón (2,593), Mayagüez (1,746).",
+    "caveats": [
+      "Counted at the campus that reports to IPEDS, not where graduates live: most municipios have no college and read 0. A college may report all its campuses from one place: NUC University reports its campuses and online programmes from Bayamón (14,321 awards, 29.4% of the island's in 2023-24, mostly certificates), so Bayamón's count is far above where its students study.",
+      "Institutions report their own counts to NCES; a year is the academic year that ends in it (2024 = 2023-24).",
+      "First majors only: a student with two majors counts once."
+    ],
+    "see_also": [
+      "degrees.deg_total",
+      "degrees.deg_graduate"
+    ],
+    "where": {
+      "files": [
+        "degrees_series.json:deg_bachelor"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Education · Degrees awarded (IPEDS)): Bachelor's degrees awarded",
+          "href": "index.html#e=deg_bachelor.s"
+        }
+      ]
+    },
+    "added": "2026-11-18"
+  },
+  {
+    "id": "degrees.deg_graduate",
+    "ask": {
+      "en": [
+        "master's degrees",
+        "doctorates",
+        "graduate degrees"
+      ],
+      "es": [
+        "maestrias",
+        "doctorados",
+        "grados graduados"
+      ]
+    },
+    "name": "Master's and doctor's degrees awarded",
+    "domain": "education",
+    "domains": [
+      "education"
+    ],
+    "group": "Degrees awarded",
+    "kind": "variable",
+    "plain": "How many master's and doctor's degrees colleges in an area awarded in an academic year.",
+    "definition": "Master's and doctor's degrees awarded in the academic year (IPEDS award levels 7, 17, 18 and 19: research, professional practice such as medicine and law, and other), first majors only. Counted at the campus that reports to IPEDS, not where the graduates live; a municipio with no college has 0. A college may report all its campuses from one place: NUC University reports its campuses and online programmes from Bayamón. The year is the end of the academic year (2024 = 2023-24).",
+    "unit": "degrees",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico (by campus)",
+    "coverage": {
+      "timeline": "annual",
+      "first": 2015,
+      "last": 2024,
+      "frequency": "Every academic year; NCES publishes a year about a year after it ends."
+    },
+    "method": "degrees.py reads NCES's IPEDS completions file and directory for each academic year, keeps Puerto Rico's institutions and first majors only, and adds each institution's awards to the municipio of its campus in that year's directory. Award levels: associate 3, bachelor's 5, master's 7, doctor's 17, 18 and 19. Fields are the first two digits of the CIP code. Two checks run every year: the six-digit rows add up to the file's own total (CIP 99) for every level, and the fields add up to the bachelor's and graduate degrees.",
+    "sources": [
+      "nces_ipeds"
+    ],
+    "source_detail": "NCES IPEDS completions (first majors) and directory, academic years ending 2015 to 2024, read from NCES's complete data files; counted by the municipio of each campus",
+    "how_to_read": "Puerto Rico: 7,204 in 2014-15 and 6,558 in 2023-24 (-9%).",
+    "caveats": [
+      "Counted at the campus that reports to IPEDS, not where graduates live: most municipios have no college and read 0. A college may report all its campuses from one place: NUC University reports its campuses and online programmes from Bayamón (14,321 awards, 29.4% of the island's in 2023-24, mostly certificates), so Bayamón's count is far above where its students study.",
+      "Institutions report their own counts to NCES; a year is the academic year that ends in it (2024 = 2023-24).",
+      "First majors only: a student with two majors counts once."
+    ],
+    "see_also": [
+      "degrees.deg_total",
+      "degrees.deg_bachelor"
+    ],
+    "where": {
+      "files": [
+        "degrees_series.json:deg_graduate"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Education · Degrees awarded (IPEDS)): Master's and doctor's degrees awarded",
+          "href": "index.html#e=deg_graduate.s"
+        }
+      ]
+    },
+    "added": "2026-11-18"
+  },
+  {
+    "id": "degrees.deg_field_health",
+    "ask": {
+      "en": [
+        "health degrees",
+        "graduates in health"
+      ],
+      "es": [
+        "titulos en salud",
+        "graduados en salud"
+      ]
+    },
+    "name": "Bachelor's or higher degrees in health",
+    "domain": "education",
+    "domains": [
+      "education"
+    ],
+    "group": "Degrees awarded",
+    "kind": "variable",
+    "plain": "How many bachelor's or higher degrees colleges in an area awarded in an academic year in health.",
+    "definition": "Bachelor's, master's and doctor's degrees awarded in the academic year in health: the CIP families 51, first majors only. Counted at the campus that reports to IPEDS, not where the graduates live; a municipio with no college has 0. A college may report all its campuses from one place: NUC University reports its campuses and online programmes from Bayamón. The year is the end of the academic year (2024 = 2023-24).",
+    "unit": "degrees",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico (by campus)",
+    "coverage": {
+      "timeline": "annual",
+      "first": 2015,
+      "last": 2024,
+      "frequency": "Every academic year; NCES publishes a year about a year after it ends."
+    },
+    "method": "degrees.py reads NCES's IPEDS completions file and directory for each academic year, keeps Puerto Rico's institutions and first majors only, and adds each institution's awards to the municipio of its campus in that year's directory. Award levels: associate 3, bachelor's 5, master's 7, doctor's 17, 18 and 19. Fields are the first two digits of the CIP code. Two checks run every year: the six-digit rows add up to the file's own total (CIP 99) for every level, and the fields add up to the bachelor's and graduate degrees.",
+    "sources": [
+      "nces_ipeds"
+    ],
+    "source_detail": "NCES IPEDS completions (first majors) and directory, academic years ending 2015 to 2024, read from NCES's complete data files; counted by the municipio of each campus",
+    "how_to_read": "Puerto Rico: 5,848 in 2014-15 and 5,196 in 2023-24 (-11%).",
+    "caveats": [
+      "Counted at the campus that reports to IPEDS, not where graduates live: most municipios have no college and read 0. A college may report all its campuses from one place: NUC University reports its campuses and online programmes from Bayamón (14,321 awards, 29.4% of the island's in 2023-24, mostly certificates), so Bayamón's count is far above where its students study.",
+      "Institutions report their own counts to NCES; a year is the academic year that ends in it (2024 = 2023-24).",
+      "First majors only: a student with two majors counts once."
+    ],
+    "see_also": [
+      "degrees.deg_total",
+      "degrees.deg_bachelor"
+    ],
+    "where": {
+      "files": [
+        "degrees_series.json:deg_field_health"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Education · Degrees awarded (IPEDS)): Bachelor's or higher degrees in health",
+          "href": "index.html#e=deg_field_health.s"
+        }
+      ]
+    },
+    "added": "2026-11-18"
+  },
+  {
+    "id": "degrees.deg_field_business",
+    "ask": {
+      "en": [
+        "business degrees",
+        "graduates in business"
+      ],
+      "es": [
+        "titulos en negocios",
+        "graduados en negocios"
+      ]
+    },
+    "name": "Bachelor's or higher degrees in business",
+    "domain": "education",
+    "domains": [
+      "education"
+    ],
+    "group": "Degrees awarded",
+    "kind": "variable",
+    "plain": "How many bachelor's or higher degrees colleges in an area awarded in an academic year in business.",
+    "definition": "Bachelor's, master's and doctor's degrees awarded in the academic year in business: the CIP families 52, first majors only. Counted at the campus that reports to IPEDS, not where the graduates live; a municipio with no college has 0. A college may report all its campuses from one place: NUC University reports its campuses and online programmes from Bayamón. The year is the end of the academic year (2024 = 2023-24).",
+    "unit": "degrees",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico (by campus)",
+    "coverage": {
+      "timeline": "annual",
+      "first": 2015,
+      "last": 2024,
+      "frequency": "Every academic year; NCES publishes a year about a year after it ends."
+    },
+    "method": "degrees.py reads NCES's IPEDS completions file and directory for each academic year, keeps Puerto Rico's institutions and first majors only, and adds each institution's awards to the municipio of its campus in that year's directory. Award levels: associate 3, bachelor's 5, master's 7, doctor's 17, 18 and 19. Fields are the first two digits of the CIP code. Two checks run every year: the six-digit rows add up to the file's own total (CIP 99) for every level, and the fields add up to the bachelor's and graduate degrees.",
+    "sources": [
+      "nces_ipeds"
+    ],
+    "source_detail": "NCES IPEDS completions (first majors) and directory, academic years ending 2015 to 2024, read from NCES's complete data files; counted by the municipio of each campus",
+    "how_to_read": "Puerto Rico: 6,126 in 2014-15 and 3,808 in 2023-24 (-38%).",
+    "caveats": [
+      "Counted at the campus that reports to IPEDS, not where graduates live: most municipios have no college and read 0. A college may report all its campuses from one place: NUC University reports its campuses and online programmes from Bayamón (14,321 awards, 29.4% of the island's in 2023-24, mostly certificates), so Bayamón's count is far above where its students study.",
+      "Institutions report their own counts to NCES; a year is the academic year that ends in it (2024 = 2023-24).",
+      "First majors only: a student with two majors counts once."
+    ],
+    "see_also": [
+      "degrees.deg_total",
+      "degrees.deg_bachelor"
+    ],
+    "where": {
+      "files": [
+        "degrees_series.json:deg_field_business"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Education · Degrees awarded (IPEDS)): Bachelor's or higher degrees in business",
+          "href": "index.html#e=deg_field_business.s"
+        }
+      ]
+    },
+    "added": "2026-11-18"
+  },
+  {
+    "id": "degrees.deg_field_education",
+    "ask": {
+      "en": [
+        "education degrees",
+        "graduates in education"
+      ],
+      "es": [
+        "titulos en educación",
+        "graduados en educación"
+      ]
+    },
+    "name": "Bachelor's or higher degrees in education",
+    "domain": "education",
+    "domains": [
+      "education"
+    ],
+    "group": "Degrees awarded",
+    "kind": "variable",
+    "plain": "How many bachelor's or higher degrees colleges in an area awarded in an academic year in education.",
+    "definition": "Bachelor's, master's and doctor's degrees awarded in the academic year in education: the CIP families 13, first majors only. Counted at the campus that reports to IPEDS, not where the graduates live; a municipio with no college has 0. A college may report all its campuses from one place: NUC University reports its campuses and online programmes from Bayamón. The year is the end of the academic year (2024 = 2023-24).",
+    "unit": "degrees",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico (by campus)",
+    "coverage": {
+      "timeline": "annual",
+      "first": 2015,
+      "last": 2024,
+      "frequency": "Every academic year; NCES publishes a year about a year after it ends."
+    },
+    "method": "degrees.py reads NCES's IPEDS completions file and directory for each academic year, keeps Puerto Rico's institutions and first majors only, and adds each institution's awards to the municipio of its campus in that year's directory. Award levels: associate 3, bachelor's 5, master's 7, doctor's 17, 18 and 19. Fields are the first two digits of the CIP code. Two checks run every year: the six-digit rows add up to the file's own total (CIP 99) for every level, and the fields add up to the bachelor's and graduate degrees.",
+    "sources": [
+      "nces_ipeds"
+    ],
+    "source_detail": "NCES IPEDS completions (first majors) and directory, academic years ending 2015 to 2024, read from NCES's complete data files; counted by the municipio of each campus",
+    "how_to_read": "Puerto Rico: 2,758 in 2014-15 and 1,183 in 2023-24 (-57%).",
+    "caveats": [
+      "Counted at the campus that reports to IPEDS, not where graduates live: most municipios have no college and read 0. A college may report all its campuses from one place: NUC University reports its campuses and online programmes from Bayamón (14,321 awards, 29.4% of the island's in 2023-24, mostly certificates), so Bayamón's count is far above where its students study.",
+      "Institutions report their own counts to NCES; a year is the academic year that ends in it (2024 = 2023-24).",
+      "First majors only: a student with two majors counts once."
+    ],
+    "see_also": [
+      "degrees.deg_total",
+      "degrees.deg_bachelor"
+    ],
+    "where": {
+      "files": [
+        "degrees_series.json:deg_field_education"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Education · Degrees awarded (IPEDS)): Bachelor's or higher degrees in education",
+          "href": "index.html#e=deg_field_education.s"
+        }
+      ]
+    },
+    "added": "2026-11-18"
+  },
+  {
+    "id": "degrees.deg_field_stem",
+    "ask": {
+      "en": [
+        "science, technology, engineering and mathematics degrees",
+        "graduates in science, technology, engineering and mathematics"
+      ],
+      "es": [
+        "titulos en ciencias, tecnología, ingeniería y matemáticas",
+        "graduados en ciencias, tecnología, ingeniería y matemáticas"
+      ]
+    },
+    "name": "Bachelor's or higher degrees in science, technology, engineering and mathematics (STEM)",
+    "domain": "education",
+    "domains": [
+      "education"
+    ],
+    "group": "Degrees awarded",
+    "kind": "variable",
+    "plain": "How many bachelor's or higher degrees colleges in an area awarded in an academic year in science, technology, engineering and mathematics.",
+    "definition": "Bachelor's, master's and doctor's degrees awarded in the academic year in science, technology, engineering and mathematics: the CIP families 01, 03, 11, 14, 15, 26, 27, 40, 41, first majors only. Counted at the campus that reports to IPEDS, not where the graduates live; a municipio with no college has 0. A college may report all its campuses from one place: NUC University reports its campuses and online programmes from Bayamón. The year is the end of the academic year (2024 = 2023-24).",
+    "unit": "degrees",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico (by campus)",
+    "coverage": {
+      "timeline": "annual",
+      "first": 2015,
+      "last": 2024,
+      "frequency": "Every academic year; NCES publishes a year about a year after it ends."
+    },
+    "method": "degrees.py reads NCES's IPEDS completions file and directory for each academic year, keeps Puerto Rico's institutions and first majors only, and adds each institution's awards to the municipio of its campus in that year's directory. Award levels: associate 3, bachelor's 5, master's 7, doctor's 17, 18 and 19. Fields are the first two digits of the CIP code. Two checks run every year: the six-digit rows add up to the file's own total (CIP 99) for every level, and the fields add up to the bachelor's and graduate degrees.",
+    "sources": [
+      "nces_ipeds"
+    ],
+    "source_detail": "NCES IPEDS completions (first majors) and directory, academic years ending 2015 to 2024, read from NCES's complete data files; counted by the municipio of each campus",
+    "how_to_read": "Puerto Rico: 4,959 in 2014-15 and 5,082 in 2023-24 (+2%).",
+    "caveats": [
+      "Counted at the campus that reports to IPEDS, not where graduates live: most municipios have no college and read 0. A college may report all its campuses from one place: NUC University reports its campuses and online programmes from Bayamón (14,321 awards, 29.4% of the island's in 2023-24, mostly certificates), so Bayamón's count is far above where its students study.",
+      "Institutions report their own counts to NCES; a year is the academic year that ends in it (2024 = 2023-24).",
+      "First majors only: a student with two majors counts once."
+    ],
+    "see_also": [
+      "degrees.deg_total",
+      "degrees.deg_bachelor"
+    ],
+    "where": {
+      "files": [
+        "degrees_series.json:deg_field_stem"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Education · Degrees awarded (IPEDS)): Bachelor's or higher degrees in science, technology, engineering and mathematics (STEM)",
+          "href": "index.html#e=deg_field_stem.s"
+        }
+      ]
+    },
+    "added": "2026-11-18"
+  },
+  {
+    "id": "degrees.deg_field_social",
+    "ask": {
+      "en": [
+        "social and behavioural sciences degrees",
+        "graduates in social and behavioural sciences"
+      ],
+      "es": [
+        "titulos en ciencias sociales y de la conducta",
+        "graduados en ciencias sociales y de la conducta"
+      ]
+    },
+    "name": "Bachelor's or higher degrees in social and behavioural sciences",
+    "domain": "education",
+    "domains": [
+      "education"
+    ],
+    "group": "Degrees awarded",
+    "kind": "variable",
+    "plain": "How many bachelor's or higher degrees colleges in an area awarded in an academic year in social and behavioural sciences.",
+    "definition": "Bachelor's, master's and doctor's degrees awarded in the academic year in social and behavioural sciences: the CIP families 42, 44, 45, first majors only. Counted at the campus that reports to IPEDS, not where the graduates live; a municipio with no college has 0. A college may report all its campuses from one place: NUC University reports its campuses and online programmes from Bayamón. The year is the end of the academic year (2024 = 2023-24).",
+    "unit": "degrees",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico (by campus)",
+    "coverage": {
+      "timeline": "annual",
+      "first": 2015,
+      "last": 2024,
+      "frequency": "Every academic year; NCES publishes a year about a year after it ends."
+    },
+    "method": "degrees.py reads NCES's IPEDS completions file and directory for each academic year, keeps Puerto Rico's institutions and first majors only, and adds each institution's awards to the municipio of its campus in that year's directory. Award levels: associate 3, bachelor's 5, master's 7, doctor's 17, 18 and 19. Fields are the first two digits of the CIP code. Two checks run every year: the six-digit rows add up to the file's own total (CIP 99) for every level, and the fields add up to the bachelor's and graduate degrees.",
+    "sources": [
+      "nces_ipeds"
+    ],
+    "source_detail": "NCES IPEDS completions (first majors) and directory, academic years ending 2015 to 2024, read from NCES's complete data files; counted by the municipio of each campus",
+    "how_to_read": "Puerto Rico: 3,460 in 2014-15 and 2,375 in 2023-24 (-31%).",
+    "caveats": [
+      "Counted at the campus that reports to IPEDS, not where graduates live: most municipios have no college and read 0. A college may report all its campuses from one place: NUC University reports its campuses and online programmes from Bayamón (14,321 awards, 29.4% of the island's in 2023-24, mostly certificates), so Bayamón's count is far above where its students study.",
+      "Institutions report their own counts to NCES; a year is the academic year that ends in it (2024 = 2023-24).",
+      "First majors only: a student with two majors counts once."
+    ],
+    "see_also": [
+      "degrees.deg_total",
+      "degrees.deg_bachelor"
+    ],
+    "where": {
+      "files": [
+        "degrees_series.json:deg_field_social"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Education · Degrees awarded (IPEDS)): Bachelor's or higher degrees in social and behavioural sciences",
+          "href": "index.html#e=deg_field_social.s"
+        }
+      ]
+    },
+    "added": "2026-11-18"
+  },
+  {
+    "id": "degrees.deg_field_arts",
+    "ask": {
+      "en": [
+        "arts and humanities degrees",
+        "graduates in arts and humanities"
+      ],
+      "es": [
+        "titulos en artes y humanidades",
+        "graduados en artes y humanidades"
+      ]
+    },
+    "name": "Bachelor's or higher degrees in arts and humanities",
+    "domain": "education",
+    "domains": [
+      "education"
+    ],
+    "group": "Degrees awarded",
+    "kind": "variable",
+    "plain": "How many bachelor's or higher degrees colleges in an area awarded in an academic year in arts and humanities.",
+    "definition": "Bachelor's, master's and doctor's degrees awarded in the academic year in arts and humanities: the CIP families 05, 09, 16, 23, 24, 38, 39, 50, 54, first majors only. Counted at the campus that reports to IPEDS, not where the graduates live; a municipio with no college has 0. A college may report all its campuses from one place: NUC University reports its campuses and online programmes from Bayamón. The year is the end of the academic year (2024 = 2023-24).",
+    "unit": "degrees",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico (by campus)",
+    "coverage": {
+      "timeline": "annual",
+      "first": 2015,
+      "last": 2024,
+      "frequency": "Every academic year; NCES publishes a year about a year after it ends."
+    },
+    "method": "degrees.py reads NCES's IPEDS completions file and directory for each academic year, keeps Puerto Rico's institutions and first majors only, and adds each institution's awards to the municipio of its campus in that year's directory. Award levels: associate 3, bachelor's 5, master's 7, doctor's 17, 18 and 19. Fields are the first two digits of the CIP code. Two checks run every year: the six-digit rows add up to the file's own total (CIP 99) for every level, and the fields add up to the bachelor's and graduate degrees.",
+    "sources": [
+      "nces_ipeds"
+    ],
+    "source_detail": "NCES IPEDS completions (first majors) and directory, academic years ending 2015 to 2024, read from NCES's complete data files; counted by the municipio of each campus",
+    "how_to_read": "Puerto Rico: 1,640 in 2014-15 and 1,544 in 2023-24 (-6%).",
+    "caveats": [
+      "Counted at the campus that reports to IPEDS, not where graduates live: most municipios have no college and read 0. A college may report all its campuses from one place: NUC University reports its campuses and online programmes from Bayamón (14,321 awards, 29.4% of the island's in 2023-24, mostly certificates), so Bayamón's count is far above where its students study.",
+      "Institutions report their own counts to NCES; a year is the academic year that ends in it (2024 = 2023-24).",
+      "First majors only: a student with two majors counts once."
+    ],
+    "see_also": [
+      "degrees.deg_total",
+      "degrees.deg_bachelor"
+    ],
+    "where": {
+      "files": [
+        "degrees_series.json:deg_field_arts"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Education · Degrees awarded (IPEDS)): Bachelor's or higher degrees in arts and humanities",
+          "href": "index.html#e=deg_field_arts.s"
+        }
+      ]
+    },
+    "added": "2026-11-18"
+  },
+  {
+    "id": "degrees.deg_field_other",
+    "ask": {
+      "en": [
+        "other fields degrees",
+        "graduates in other fields"
+      ],
+      "es": [
+        "titulos en otros campos",
+        "graduados en otros campos"
+      ]
+    },
+    "name": "Bachelor's or higher degrees in other fields",
+    "domain": "education",
+    "domains": [
+      "education"
+    ],
+    "group": "Degrees awarded",
+    "kind": "variable",
+    "plain": "How many bachelor's or higher degrees colleges in an area awarded in an academic year in other fields.",
+    "definition": "Bachelor's, master's and doctor's degrees awarded in the academic year in fields outside the six broad fields of this group (for example communication, law enforcement and protective services, legal studies, theology, family sciences), first majors only. Counted at the campus that reports to IPEDS, not where the graduates live; a municipio with no college has 0. A college may report all its campuses from one place: NUC University reports its campuses and online programmes from Bayamón. The year is the end of the academic year (2024 = 2023-24).",
+    "unit": "degrees",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico (by campus)",
+    "coverage": {
+      "timeline": "annual",
+      "first": 2015,
+      "last": 2024,
+      "frequency": "Every academic year; NCES publishes a year about a year after it ends."
+    },
+    "method": "degrees.py reads NCES's IPEDS completions file and directory for each academic year, keeps Puerto Rico's institutions and first majors only, and adds each institution's awards to the municipio of its campus in that year's directory. Award levels: associate 3, bachelor's 5, master's 7, doctor's 17, 18 and 19. Fields are the first two digits of the CIP code. Two checks run every year: the six-digit rows add up to the file's own total (CIP 99) for every level, and the fields add up to the bachelor's and graduate degrees.",
+    "sources": [
+      "nces_ipeds"
+    ],
+    "source_detail": "NCES IPEDS completions (first majors) and directory, academic years ending 2015 to 2024, read from NCES's complete data files; counted by the municipio of each campus",
+    "how_to_read": "Puerto Rico: 2,872 in 2014-15 and 2,149 in 2023-24 (-25%).",
+    "caveats": [
+      "Counted at the campus that reports to IPEDS, not where graduates live: most municipios have no college and read 0. A college may report all its campuses from one place: NUC University reports its campuses and online programmes from Bayamón (14,321 awards, 29.4% of the island's in 2023-24, mostly certificates), so Bayamón's count is far above where its students study.",
+      "Institutions report their own counts to NCES; a year is the academic year that ends in it (2024 = 2023-24).",
+      "First majors only: a student with two majors counts once."
+    ],
+    "see_also": [
+      "degrees.deg_total",
+      "degrees.deg_bachelor"
+    ],
+    "where": {
+      "files": [
+        "degrees_series.json:deg_field_other"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Education · Degrees awarded (IPEDS)): Bachelor's or higher degrees in other fields",
+          "href": "index.html#e=deg_field_other.s"
+        }
+      ]
+    },
+    "added": "2026-11-18"
+  }
+]

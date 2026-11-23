@@ -1,0 +1,758 @@
+[
+  {
+    "id": "economy.fema_pa_cat_a",
+    "name": "FEMA Public Assistance: debris removal (federal share)",
+    "domain": "public-money",
+    "domains": [
+      "public-money",
+      "hazards"
+    ],
+    "group": "Disaster recovery",
+    "kind": "variable",
+    "plain": "Federal Emergency Management Agency (FEMA) Public Assistance money approved for debris removal after disasters, by municipality and by the year the disaster was declared. It is one of the eight damage categories that make up FEMA Public Assistance. It is money approved, not money spent, and part of it cannot be placed in a municipality.",
+    "definition": "Sum of the federal share obligated (OpenFEMA field federalShareObligated) for Public Assistance projects in Puerto Rico whose damage category code (damageCategoryCode) is A (debris removal: clearing debris from public roads, property and waterways), by the project's county field and the calendar year of the disaster declaration, in dollars rounded to whole numbers. Projects whose county is not one of the 78 municipalities go into a statewide group; the Puerto Rico value is the 78 municipalities plus that group. The eight categories (A to G and Z) add up to economy.fema_pa_obligated.",
+    "unit": "US dollars of federal share obligated, by year of disaster declaration (not adjusted for inflation)",
+    "value_type": "level",
+    "geography": "78 municipalities and Puerto Rico (the 78 plus the statewide group)",
+    "coverage": {
+      "timeline": "event-based",
+      "first": 2001,
+      "last": 2024,
+      "frequency": "One value per calendar year that had a disaster declaration with Public Assistance projects in this category (2001, 2003, 2004, 2005, 2008, 2010, 2011, 2017, 2020, 2022, 2024 in the 2026-10 snapshot). Rebuilt from OpenFEMA with each snapshot."
+    },
+    "method": "economy_series.py, functions fema_pa and fema_values. The build pages through every OpenFEMA PublicAssistanceFundedProjectsDetails record with state code 72 (23,052 projects downloaded on 2026-10-30; all carry a damage category) and adds each project's federal share to its category, municipality and declaration year, or to that year's statewide group. Share recorded as statewide = statewide dollars / Puerto Rico dollars x 100, rounded to 0.1, stored in economy_series.json under extras.statewide_share.fema_pa_cat_a.",
+    "sources": [
+      "openfema"
+    ],
+    "source_detail": "FEMA OpenFEMA, Public Assistance Funded Projects Details (v2 API), filter stateNumberCode eq '72', fields declarationDate, county, damageCategoryCode, federalShareObligated; downloaded 2026-10-30. FEMA lists the damage categories on its Public Assistance process page.",
+    "how_to_read": "In the 2026-10 snapshot (OpenFEMA download of 2026-10-30), category A adds up to $785.9 million over all declaration years, $638.4 million of it for the 2017 declarations. For 2017, 41.7% of it is recorded as statewide and cannot be placed in a municipality, and 78 of the 78 municipalities have a value (largest: San Juan, $25.0 million). Read the statewide share before you compare municipalities: the Analysis tab lists it, year by year, in the dataset's information window.",
+    "caveats": [
+      "This is money obligated (approved and made available). It is not money paid, not damage and not need, and not a sign that the work is finished.",
+      "The year is the calendar year of the disaster declaration, not the year of the money or of the work. FEMA keeps obligating money for a disaster for years, so a year's value can still grow.",
+      "County is the applicant's location, not necessarily where the damage or the work was.",
+      "The Puerto Rico value includes the part recorded as statewide, so it is larger than the sum of the 78 municipalities, and a Puerto Rico value per resident is not comparable with a municipality's.",
+      "A blank municipality had no project in this category in that declaration year. A blank is not proof that a place was untouched.",
+      "Do not add this series to economy.fed_grants: FEMA Public Assistance is also a federal grant program, and the two series use different time bases.",
+      "OpenFEMA data are US government data under the OpenFEMA terms: name the data set (PublicAssistanceFundedProjectsDetails, v2) and the date retrieved (2026-10-30), and say the product is not endorsed by FEMA."
+    ],
+    "see_also": [
+      "economy.fema_pa_obligated",
+      "economy.fema_pa_statewide_share",
+      "economy.fema_pa_406_mitigation",
+      "economy.fema_pa_cat_b",
+      "economy.fema_pa_cat_c",
+      "economy.fema_pa_cat_d",
+      "measures.per_resident",
+      "measures.inflation_adjustment"
+    ],
+    "where": {
+      "files": [
+        "economy_series.json:fema_pa_cat_a"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Public money): shade municipalities by dollars per resident, declaration year 2017",
+          "href": "index.html#e=fema_pa_cat_a.f.perCapita.blue.q.1.1.0.85.0&ey=2017"
+        }
+      ]
+    },
+    "example": "Snapshot 2026-10 (OpenFEMA download of 2026-10-30), 2017 declarations: Puerto Rico $638.4 million; 41.7% recorded as statewide.",
+    "added": "2026-10-30"
+  },
+  {
+    "id": "economy.fema_pa_cat_b",
+    "name": "FEMA Public Assistance: emergency protective measures (federal share)",
+    "domain": "public-money",
+    "domains": [
+      "public-money",
+      "hazards"
+    ],
+    "group": "Disaster recovery",
+    "kind": "variable",
+    "plain": "Federal Emergency Management Agency (FEMA) Public Assistance money approved for emergency protective measures after disasters, by municipality and by the year the disaster was declared. It is one of the eight damage categories that make up FEMA Public Assistance. It is money approved, not money spent, and part of it cannot be placed in a municipality.",
+    "definition": "Sum of the federal share obligated (OpenFEMA field federalShareObligated) for Public Assistance projects in Puerto Rico whose damage category code (damageCategoryCode) is B (emergency protective measures: actions to save lives and protect property during and right after the disaster, such as shelters, generators, emergency power and temporary repairs), by the project's county field and the calendar year of the disaster declaration, in dollars rounded to whole numbers. Projects whose county is not one of the 78 municipalities go into a statewide group; the Puerto Rico value is the 78 municipalities plus that group. The eight categories (A to G and Z) add up to economy.fema_pa_obligated.",
+    "unit": "US dollars of federal share obligated, by year of disaster declaration (not adjusted for inflation)",
+    "value_type": "level",
+    "geography": "78 municipalities and Puerto Rico (the 78 plus the statewide group)",
+    "coverage": {
+      "timeline": "event-based",
+      "first": 2001,
+      "last": 2024,
+      "frequency": "One value per calendar year that had a disaster declaration with Public Assistance projects in this category (2001, 2003, 2004, 2005, 2008, 2009, 2010, 2011, 2017, 2020, 2022, 2024 in the 2026-10 snapshot). Rebuilt from OpenFEMA with each snapshot."
+    },
+    "method": "economy_series.py, functions fema_pa and fema_values. The build pages through every OpenFEMA PublicAssistanceFundedProjectsDetails record with state code 72 (23,052 projects downloaded on 2026-10-30; all carry a damage category) and adds each project's federal share to its category, municipality and declaration year, or to that year's statewide group. Share recorded as statewide = statewide dollars / Puerto Rico dollars x 100, rounded to 0.1, stored in economy_series.json under extras.statewide_share.fema_pa_cat_b.",
+    "sources": [
+      "openfema"
+    ],
+    "source_detail": "FEMA OpenFEMA, Public Assistance Funded Projects Details (v2 API), filter stateNumberCode eq '72', fields declarationDate, county, damageCategoryCode, federalShareObligated; downloaded 2026-10-30. FEMA lists the damage categories on its Public Assistance process page.",
+    "how_to_read": "In the 2026-10 snapshot (OpenFEMA download of 2026-10-30), category B adds up to $5.30 billion over all declaration years, $4.38 billion of it for the 2017 declarations. For 2017, 95.9% of it is recorded as statewide and cannot be placed in a municipality, and 78 of the 78 municipalities have a value (largest: San Juan, $28.3 million). Read the statewide share before you compare municipalities: the Analysis tab lists it, year by year, in the dataset's information window.",
+    "caveats": [
+      "Emergency protective measures include island-wide operations (emergency power, shelters, supplies), so most of the money is recorded as statewide (95.9% for the 2017 declarations).",
+      "This is money obligated (approved and made available). It is not money paid, not damage and not need, and not a sign that the work is finished.",
+      "The year is the calendar year of the disaster declaration, not the year of the money or of the work. FEMA keeps obligating money for a disaster for years, so a year's value can still grow.",
+      "County is the applicant's location, not necessarily where the damage or the work was.",
+      "The Puerto Rico value includes the part recorded as statewide, so it is larger than the sum of the 78 municipalities, and a Puerto Rico value per resident is not comparable with a municipality's.",
+      "A blank municipality had no project in this category in that declaration year. A blank is not proof that a place was untouched.",
+      "Do not add this series to economy.fed_grants: FEMA Public Assistance is also a federal grant program, and the two series use different time bases.",
+      "OpenFEMA data are US government data under the OpenFEMA terms: name the data set (PublicAssistanceFundedProjectsDetails, v2) and the date retrieved (2026-10-30), and say the product is not endorsed by FEMA."
+    ],
+    "see_also": [
+      "economy.fema_pa_obligated",
+      "economy.fema_pa_statewide_share",
+      "economy.fema_pa_406_mitigation",
+      "economy.fema_pa_cat_a",
+      "economy.fema_pa_cat_c",
+      "economy.fema_pa_cat_d",
+      "measures.per_resident",
+      "measures.inflation_adjustment"
+    ],
+    "where": {
+      "files": [
+        "economy_series.json:fema_pa_cat_b"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Public money): shade municipalities by dollars per resident, declaration year 2017",
+          "href": "index.html#e=fema_pa_cat_b.f.perCapita.blue.q.1.1.0.85.0&ey=2017"
+        }
+      ]
+    },
+    "example": "Snapshot 2026-10 (OpenFEMA download of 2026-10-30), 2017 declarations: Puerto Rico $4.38 billion; 95.9% recorded as statewide.",
+    "added": "2026-10-30"
+  },
+  {
+    "id": "economy.fema_pa_cat_c",
+    "name": "FEMA Public Assistance: roads and bridges (federal share)",
+    "domain": "public-money",
+    "domains": [
+      "public-money",
+      "hazards"
+    ],
+    "group": "Disaster recovery",
+    "kind": "variable",
+    "plain": "Federal Emergency Management Agency (FEMA) Public Assistance money approved for roads and bridges after disasters, by municipality and by the year the disaster was declared. It is one of the eight damage categories that make up FEMA Public Assistance. It is money approved, not money spent, and part of it cannot be placed in a municipality.",
+    "definition": "Sum of the federal share obligated (OpenFEMA field federalShareObligated) for Public Assistance projects in Puerto Rico whose damage category code (damageCategoryCode) is C (roads and bridges: repair of public roads, bridges and their culverts, drainage and signs), by the project's county field and the calendar year of the disaster declaration, in dollars rounded to whole numbers. Projects whose county is not one of the 78 municipalities go into a statewide group; the Puerto Rico value is the 78 municipalities plus that group. The eight categories (A to G and Z) add up to economy.fema_pa_obligated.",
+    "unit": "US dollars of federal share obligated, by year of disaster declaration (not adjusted for inflation)",
+    "value_type": "level",
+    "geography": "78 municipalities and Puerto Rico (the 78 plus the statewide group)",
+    "coverage": {
+      "timeline": "event-based",
+      "first": 2001,
+      "last": 2024,
+      "frequency": "One value per calendar year that had a disaster declaration with Public Assistance projects in this category (2001, 2003, 2004, 2005, 2008, 2010, 2011, 2017, 2020, 2022, 2024 in the 2026-10 snapshot). Rebuilt from OpenFEMA with each snapshot."
+    },
+    "method": "economy_series.py, functions fema_pa and fema_values. The build pages through every OpenFEMA PublicAssistanceFundedProjectsDetails record with state code 72 (23,052 projects downloaded on 2026-10-30; all carry a damage category) and adds each project's federal share to its category, municipality and declaration year, or to that year's statewide group. Share recorded as statewide = statewide dollars / Puerto Rico dollars x 100, rounded to 0.1, stored in economy_series.json under extras.statewide_share.fema_pa_cat_c.",
+    "sources": [
+      "openfema"
+    ],
+    "source_detail": "FEMA OpenFEMA, Public Assistance Funded Projects Details (v2 API), filter stateNumberCode eq '72', fields declarationDate, county, damageCategoryCode, federalShareObligated; downloaded 2026-10-30. FEMA lists the damage categories on its Public Assistance process page.",
+    "how_to_read": "In the 2026-10 snapshot (OpenFEMA download of 2026-10-30), category C adds up to $4.31 billion over all declaration years, $2.97 billion of it for the 2017 declarations. For 2017, 11.3% of it is recorded as statewide and cannot be placed in a municipality, and 75 of the 78 municipalities have a value (largest: Jayuya, $291.3 million). Read the statewide share before you compare municipalities: the Analysis tab lists it, year by year, in the dataset's information window.",
+    "caveats": [
+      "This is money obligated (approved and made available). It is not money paid, not damage and not need, and not a sign that the work is finished.",
+      "The year is the calendar year of the disaster declaration, not the year of the money or of the work. FEMA keeps obligating money for a disaster for years, so a year's value can still grow.",
+      "County is the applicant's location, not necessarily where the damage or the work was.",
+      "The Puerto Rico value includes the part recorded as statewide, so it is larger than the sum of the 78 municipalities, and a Puerto Rico value per resident is not comparable with a municipality's.",
+      "A blank municipality had no project in this category in that declaration year. A blank is not proof that a place was untouched.",
+      "Do not add this series to economy.fed_grants: FEMA Public Assistance is also a federal grant program, and the two series use different time bases.",
+      "OpenFEMA data are US government data under the OpenFEMA terms: name the data set (PublicAssistanceFundedProjectsDetails, v2) and the date retrieved (2026-10-30), and say the product is not endorsed by FEMA."
+    ],
+    "see_also": [
+      "economy.fema_pa_obligated",
+      "economy.fema_pa_statewide_share",
+      "economy.fema_pa_406_mitigation",
+      "economy.fema_pa_cat_a",
+      "economy.fema_pa_cat_b",
+      "economy.fema_pa_cat_d",
+      "measures.per_resident",
+      "measures.inflation_adjustment"
+    ],
+    "where": {
+      "files": [
+        "economy_series.json:fema_pa_cat_c"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Public money): shade municipalities by dollars per resident, declaration year 2017",
+          "href": "index.html#e=fema_pa_cat_c.f.perCapita.blue.q.1.1.0.85.0&ey=2017"
+        }
+      ]
+    },
+    "example": "Snapshot 2026-10 (OpenFEMA download of 2026-10-30), 2017 declarations: Puerto Rico $2.97 billion; 11.3% recorded as statewide.",
+    "added": "2026-10-30"
+  },
+  {
+    "id": "economy.fema_pa_cat_d",
+    "name": "FEMA Public Assistance: water control facilities (federal share)",
+    "domain": "public-money",
+    "domains": [
+      "public-money",
+      "hazards"
+    ],
+    "group": "Disaster recovery",
+    "kind": "variable",
+    "plain": "Federal Emergency Management Agency (FEMA) Public Assistance money approved for water control facilities after disasters, by municipality and by the year the disaster was declared. It is one of the eight damage categories that make up FEMA Public Assistance. It is money approved, not money spent, and part of it cannot be placed in a municipality.",
+    "definition": "Sum of the federal share obligated (OpenFEMA field federalShareObligated) for Public Assistance projects in Puerto Rico whose damage category code (damageCategoryCode) is D (water control facilities: repair of dams, reservoirs, levees, channels and other works built to control water), by the project's county field and the calendar year of the disaster declaration, in dollars rounded to whole numbers. Projects whose county is not one of the 78 municipalities go into a statewide group; the Puerto Rico value is the 78 municipalities plus that group. The eight categories (A to G and Z) add up to economy.fema_pa_obligated.",
+    "unit": "US dollars of federal share obligated, by year of disaster declaration (not adjusted for inflation)",
+    "value_type": "level",
+    "geography": "78 municipalities and Puerto Rico (the 78 plus the statewide group)",
+    "coverage": {
+      "timeline": "event-based",
+      "first": 2001,
+      "last": 2024,
+      "frequency": "One value per calendar year that had a disaster declaration with Public Assistance projects in this category (2001, 2003, 2004, 2005, 2008, 2010, 2011, 2017, 2020, 2022, 2024 in the 2026-10 snapshot). Rebuilt from OpenFEMA with each snapshot."
+    },
+    "method": "economy_series.py, functions fema_pa and fema_values. The build pages through every OpenFEMA PublicAssistanceFundedProjectsDetails record with state code 72 (23,052 projects downloaded on 2026-10-30; all carry a damage category) and adds each project's federal share to its category, municipality and declaration year, or to that year's statewide group. Share recorded as statewide = statewide dollars / Puerto Rico dollars x 100, rounded to 0.1, stored in economy_series.json under extras.statewide_share.fema_pa_cat_d.",
+    "sources": [
+      "openfema"
+    ],
+    "source_detail": "FEMA OpenFEMA, Public Assistance Funded Projects Details (v2 API), filter stateNumberCode eq '72', fields declarationDate, county, damageCategoryCode, federalShareObligated; downloaded 2026-10-30. FEMA lists the damage categories on its Public Assistance process page.",
+    "how_to_read": "In the 2026-10 snapshot (OpenFEMA download of 2026-10-30), category D adds up to $188.5 million over all declaration years, $131.8 million of it for the 2017 declarations. For 2017, 76.9% of it is recorded as statewide and cannot be placed in a municipality, and 18 of the 78 municipalities have a value (largest: Peñuelas, $15.8 million). Read the statewide share before you compare municipalities: the Analysis tab lists it, year by year, in the dataset's information window.",
+    "caveats": [
+      "This is money obligated (approved and made available). It is not money paid, not damage and not need, and not a sign that the work is finished.",
+      "The year is the calendar year of the disaster declaration, not the year of the money or of the work. FEMA keeps obligating money for a disaster for years, so a year's value can still grow.",
+      "County is the applicant's location, not necessarily where the damage or the work was.",
+      "The Puerto Rico value includes the part recorded as statewide, so it is larger than the sum of the 78 municipalities, and a Puerto Rico value per resident is not comparable with a municipality's.",
+      "A blank municipality had no project in this category in that declaration year. A blank is not proof that a place was untouched.",
+      "Do not add this series to economy.fed_grants: FEMA Public Assistance is also a federal grant program, and the two series use different time bases.",
+      "OpenFEMA data are US government data under the OpenFEMA terms: name the data set (PublicAssistanceFundedProjectsDetails, v2) and the date retrieved (2026-10-30), and say the product is not endorsed by FEMA."
+    ],
+    "see_also": [
+      "economy.fema_pa_obligated",
+      "economy.fema_pa_statewide_share",
+      "economy.fema_pa_406_mitigation",
+      "economy.fema_pa_cat_a",
+      "economy.fema_pa_cat_b",
+      "economy.fema_pa_cat_c",
+      "measures.per_resident",
+      "measures.inflation_adjustment"
+    ],
+    "where": {
+      "files": [
+        "economy_series.json:fema_pa_cat_d"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Public money): shade municipalities by dollars per resident, declaration year 2017",
+          "href": "index.html#e=fema_pa_cat_d.f.perCapita.blue.q.1.1.0.85.0&ey=2017"
+        }
+      ]
+    },
+    "example": "Snapshot 2026-10 (OpenFEMA download of 2026-10-30), 2017 declarations: Puerto Rico $131.8 million; 76.9% recorded as statewide.",
+    "added": "2026-10-30"
+  },
+  {
+    "id": "economy.fema_pa_cat_e",
+    "name": "FEMA Public Assistance: buildings and equipment (federal share)",
+    "domain": "public-money",
+    "domains": [
+      "public-money",
+      "hazards"
+    ],
+    "group": "Disaster recovery",
+    "kind": "variable",
+    "plain": "Federal Emergency Management Agency (FEMA) Public Assistance money approved for buildings and equipment after disasters, by municipality and by the year the disaster was declared. It is one of the eight damage categories that make up FEMA Public Assistance. It is money approved, not money spent, and part of it cannot be placed in a municipality.",
+    "definition": "Sum of the federal share obligated (OpenFEMA field federalShareObligated) for Public Assistance projects in Puerto Rico whose damage category code (damageCategoryCode) is E (buildings and equipment: repair or replacement of public buildings (schools, hospitals, offices), their contents, vehicles and equipment), by the project's county field and the calendar year of the disaster declaration, in dollars rounded to whole numbers. Projects whose county is not one of the 78 municipalities go into a statewide group; the Puerto Rico value is the 78 municipalities plus that group. The eight categories (A to G and Z) add up to economy.fema_pa_obligated.",
+    "unit": "US dollars of federal share obligated, by year of disaster declaration (not adjusted for inflation)",
+    "value_type": "level",
+    "geography": "78 municipalities and Puerto Rico (the 78 plus the statewide group)",
+    "coverage": {
+      "timeline": "event-based",
+      "first": 2001,
+      "last": 2024,
+      "frequency": "One value per calendar year that had a disaster declaration with Public Assistance projects in this category (2001, 2004, 2005, 2008, 2010, 2011, 2017, 2020, 2022, 2024 in the 2026-10 snapshot). Rebuilt from OpenFEMA with each snapshot."
+    },
+    "method": "economy_series.py, functions fema_pa and fema_values. The build pages through every OpenFEMA PublicAssistanceFundedProjectsDetails record with state code 72 (23,052 projects downloaded on 2026-10-30; all carry a damage category) and adds each project's federal share to its category, municipality and declaration year, or to that year's statewide group. Share recorded as statewide = statewide dollars / Puerto Rico dollars x 100, rounded to 0.1, stored in economy_series.json under extras.statewide_share.fema_pa_cat_e.",
+    "sources": [
+      "openfema"
+    ],
+    "source_detail": "FEMA OpenFEMA, Public Assistance Funded Projects Details (v2 API), filter stateNumberCode eq '72', fields declarationDate, county, damageCategoryCode, federalShareObligated; downloaded 2026-10-30. FEMA lists the damage categories on its Public Assistance process page.",
+    "how_to_read": "In the 2026-10 snapshot (OpenFEMA download of 2026-10-30), category E adds up to $8.79 billion over all declaration years, $8.18 billion of it for the 2017 declarations. For 2017, 75.2% of it is recorded as statewide and cannot be placed in a municipality, and 78 of the 78 municipalities have a value (largest: San Juan, $484.9 million). Read the statewide share before you compare municipalities: the Analysis tab lists it, year by year, in the dataset's information window.",
+    "caveats": [
+      "This is money obligated (approved and made available). It is not money paid, not damage and not need, and not a sign that the work is finished.",
+      "The year is the calendar year of the disaster declaration, not the year of the money or of the work. FEMA keeps obligating money for a disaster for years, so a year's value can still grow.",
+      "County is the applicant's location, not necessarily where the damage or the work was.",
+      "The Puerto Rico value includes the part recorded as statewide, so it is larger than the sum of the 78 municipalities, and a Puerto Rico value per resident is not comparable with a municipality's.",
+      "A blank municipality had no project in this category in that declaration year. A blank is not proof that a place was untouched.",
+      "Do not add this series to economy.fed_grants: FEMA Public Assistance is also a federal grant program, and the two series use different time bases.",
+      "OpenFEMA data are US government data under the OpenFEMA terms: name the data set (PublicAssistanceFundedProjectsDetails, v2) and the date retrieved (2026-10-30), and say the product is not endorsed by FEMA."
+    ],
+    "see_also": [
+      "economy.fema_pa_obligated",
+      "economy.fema_pa_statewide_share",
+      "economy.fema_pa_406_mitigation",
+      "economy.fema_pa_cat_a",
+      "economy.fema_pa_cat_b",
+      "economy.fema_pa_cat_c",
+      "measures.per_resident",
+      "measures.inflation_adjustment"
+    ],
+    "where": {
+      "files": [
+        "economy_series.json:fema_pa_cat_e"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Public money): shade municipalities by dollars per resident, declaration year 2017",
+          "href": "index.html#e=fema_pa_cat_e.f.perCapita.blue.q.1.1.0.85.0&ey=2017"
+        }
+      ]
+    },
+    "example": "Snapshot 2026-10 (OpenFEMA download of 2026-10-30), 2017 declarations: Puerto Rico $8.18 billion; 75.2% recorded as statewide.",
+    "added": "2026-10-30"
+  },
+  {
+    "id": "economy.fema_pa_cat_f",
+    "name": "FEMA Public Assistance: utilities (federal share)",
+    "domain": "public-money",
+    "domains": [
+      "public-money",
+      "hazards"
+    ],
+    "group": "Disaster recovery",
+    "kind": "variable",
+    "plain": "Federal Emergency Management Agency (FEMA) Public Assistance money approved for utilities after disasters, by municipality and by the year the disaster was declared. It is one of the eight damage categories that make up FEMA Public Assistance. It is money approved, not money spent, and part of it cannot be placed in a municipality.",
+    "definition": "Sum of the federal share obligated (OpenFEMA field federalShareObligated) for Public Assistance projects in Puerto Rico whose damage category code (damageCategoryCode) is F (utilities: repair of power, water, sewer and communication systems), by the project's county field and the calendar year of the disaster declaration, in dollars rounded to whole numbers. Projects whose county is not one of the 78 municipalities go into a statewide group; the Puerto Rico value is the 78 municipalities plus that group. The eight categories (A to G and Z) add up to economy.fema_pa_obligated.",
+    "unit": "US dollars of federal share obligated, by year of disaster declaration (not adjusted for inflation)",
+    "value_type": "level",
+    "geography": "78 municipalities and Puerto Rico (the 78 plus the statewide group)",
+    "coverage": {
+      "timeline": "event-based",
+      "first": 2001,
+      "last": 2024,
+      "frequency": "One value per calendar year that had a disaster declaration with Public Assistance projects in this category (2001, 2003, 2004, 2005, 2008, 2010, 2011, 2017, 2020, 2022, 2024 in the 2026-10 snapshot). Rebuilt from OpenFEMA with each snapshot."
+    },
+    "method": "economy_series.py, functions fema_pa and fema_values. The build pages through every OpenFEMA PublicAssistanceFundedProjectsDetails record with state code 72 (23,052 projects downloaded on 2026-10-30; all carry a damage category) and adds each project's federal share to its category, municipality and declaration year, or to that year's statewide group. Share recorded as statewide = statewide dollars / Puerto Rico dollars x 100, rounded to 0.1, stored in economy_series.json under extras.statewide_share.fema_pa_cat_f.",
+    "sources": [
+      "openfema"
+    ],
+    "source_detail": "FEMA OpenFEMA, Public Assistance Funded Projects Details (v2 API), filter stateNumberCode eq '72', fields declarationDate, county, damageCategoryCode, federalShareObligated; downloaded 2026-10-30. FEMA lists the damage categories on its Public Assistance process page.",
+    "how_to_read": "In the 2026-10 snapshot (OpenFEMA download of 2026-10-30), category F adds up to $15.08 billion over all declaration years, $15.00 billion of it for the 2017 declarations. For 2017, 99.9% of it is recorded as statewide and cannot be placed in a municipality, and 57 of the 78 municipalities have a value (largest: Vega Baja, $2.0 million). Read the statewide share before you compare municipalities: the Analysis tab lists it, year by year, in the dataset's information window.",
+    "caveats": [
+      "Almost all utility money is recorded as statewide (99.9% for the 2017 declarations): the island's power and water systems are run by public corporations (PREPA and PRASA) whose projects name no municipality. The municipal values are a small remainder and do not show where the power or water work was.",
+      "This is money obligated (approved and made available). It is not money paid, not damage and not need, and not a sign that the work is finished.",
+      "The year is the calendar year of the disaster declaration, not the year of the money or of the work. FEMA keeps obligating money for a disaster for years, so a year's value can still grow.",
+      "County is the applicant's location, not necessarily where the damage or the work was.",
+      "The Puerto Rico value includes the part recorded as statewide, so it is larger than the sum of the 78 municipalities, and a Puerto Rico value per resident is not comparable with a municipality's.",
+      "A blank municipality had no project in this category in that declaration year. A blank is not proof that a place was untouched.",
+      "Do not add this series to economy.fed_grants: FEMA Public Assistance is also a federal grant program, and the two series use different time bases.",
+      "OpenFEMA data are US government data under the OpenFEMA terms: name the data set (PublicAssistanceFundedProjectsDetails, v2) and the date retrieved (2026-10-30), and say the product is not endorsed by FEMA."
+    ],
+    "see_also": [
+      "economy.fema_pa_obligated",
+      "economy.fema_pa_statewide_share",
+      "economy.fema_pa_406_mitigation",
+      "economy.fema_pa_cat_a",
+      "economy.fema_pa_cat_b",
+      "economy.fema_pa_cat_c",
+      "measures.per_resident",
+      "measures.inflation_adjustment"
+    ],
+    "where": {
+      "files": [
+        "economy_series.json:fema_pa_cat_f"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Public money): shade municipalities by dollars per resident, declaration year 2017",
+          "href": "index.html#e=fema_pa_cat_f.f.perCapita.blue.q.1.1.0.85.0&ey=2017"
+        }
+      ]
+    },
+    "example": "Snapshot 2026-10 (OpenFEMA download of 2026-10-30), 2017 declarations: Puerto Rico $15.00 billion; 99.9% recorded as statewide.",
+    "added": "2026-10-30"
+  },
+  {
+    "id": "economy.fema_pa_cat_g",
+    "name": "FEMA Public Assistance: parks, recreation and other (federal share)",
+    "domain": "public-money",
+    "domains": [
+      "public-money",
+      "hazards"
+    ],
+    "group": "Disaster recovery",
+    "kind": "variable",
+    "plain": "Federal Emergency Management Agency (FEMA) Public Assistance money approved for parks, recreation and other after disasters, by municipality and by the year the disaster was declared. It is one of the eight damage categories that make up FEMA Public Assistance. It is money approved, not money spent, and part of it cannot be placed in a municipality.",
+    "definition": "Sum of the federal share obligated (OpenFEMA field federalShareObligated) for Public Assistance projects in Puerto Rico whose damage category code (damageCategoryCode) is G (parks, recreation and other: repair of parks, beaches, piers, recreation sites and other public facilities), by the project's county field and the calendar year of the disaster declaration, in dollars rounded to whole numbers. Projects whose county is not one of the 78 municipalities go into a statewide group; the Puerto Rico value is the 78 municipalities plus that group. The eight categories (A to G and Z) add up to economy.fema_pa_obligated.",
+    "unit": "US dollars of federal share obligated, by year of disaster declaration (not adjusted for inflation)",
+    "value_type": "level",
+    "geography": "78 municipalities and Puerto Rico (the 78 plus the statewide group)",
+    "coverage": {
+      "timeline": "event-based",
+      "first": 2001,
+      "last": 2024,
+      "frequency": "One value per calendar year that had a disaster declaration with Public Assistance projects in this category (2001, 2003, 2004, 2005, 2008, 2010, 2011, 2017, 2020, 2022, 2024 in the 2026-10 snapshot). Rebuilt from OpenFEMA with each snapshot."
+    },
+    "method": "economy_series.py, functions fema_pa and fema_values. The build pages through every OpenFEMA PublicAssistanceFundedProjectsDetails record with state code 72 (23,052 projects downloaded on 2026-10-30; all carry a damage category) and adds each project's federal share to its category, municipality and declaration year, or to that year's statewide group. Share recorded as statewide = statewide dollars / Puerto Rico dollars x 100, rounded to 0.1, stored in economy_series.json under extras.statewide_share.fema_pa_cat_g.",
+    "sources": [
+      "openfema"
+    ],
+    "source_detail": "FEMA OpenFEMA, Public Assistance Funded Projects Details (v2 API), filter stateNumberCode eq '72', fields declarationDate, county, damageCategoryCode, federalShareObligated; downloaded 2026-10-30. FEMA lists the damage categories on its Public Assistance process page.",
+    "how_to_read": "In the 2026-10 snapshot (OpenFEMA download of 2026-10-30), category G adds up to $1.77 billion over all declaration years, $1.67 billion of it for the 2017 declarations. For 2017, 28.3% of it is recorded as statewide and cannot be placed in a municipality, and 78 of the 78 municipalities have a value (largest: Lares, $115.4 million). Read the statewide share before you compare municipalities: the Analysis tab lists it, year by year, in the dataset's information window.",
+    "caveats": [
+      "This is money obligated (approved and made available). It is not money paid, not damage and not need, and not a sign that the work is finished.",
+      "The year is the calendar year of the disaster declaration, not the year of the money or of the work. FEMA keeps obligating money for a disaster for years, so a year's value can still grow.",
+      "County is the applicant's location, not necessarily where the damage or the work was.",
+      "The Puerto Rico value includes the part recorded as statewide, so it is larger than the sum of the 78 municipalities, and a Puerto Rico value per resident is not comparable with a municipality's.",
+      "A blank municipality had no project in this category in that declaration year. A blank is not proof that a place was untouched.",
+      "Do not add this series to economy.fed_grants: FEMA Public Assistance is also a federal grant program, and the two series use different time bases.",
+      "OpenFEMA data are US government data under the OpenFEMA terms: name the data set (PublicAssistanceFundedProjectsDetails, v2) and the date retrieved (2026-10-30), and say the product is not endorsed by FEMA."
+    ],
+    "see_also": [
+      "economy.fema_pa_obligated",
+      "economy.fema_pa_statewide_share",
+      "economy.fema_pa_406_mitigation",
+      "economy.fema_pa_cat_a",
+      "economy.fema_pa_cat_b",
+      "economy.fema_pa_cat_c",
+      "measures.per_resident",
+      "measures.inflation_adjustment"
+    ],
+    "where": {
+      "files": [
+        "economy_series.json:fema_pa_cat_g"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Public money): shade municipalities by dollars per resident, declaration year 2017",
+          "href": "index.html#e=fema_pa_cat_g.f.perCapita.blue.q.1.1.0.85.0&ey=2017"
+        }
+      ]
+    },
+    "example": "Snapshot 2026-10 (OpenFEMA download of 2026-10-30), 2017 declarations: Puerto Rico $1.67 billion; 28.3% recorded as statewide.",
+    "added": "2026-10-30"
+  },
+  {
+    "id": "economy.fema_pa_cat_z",
+    "name": "FEMA Public Assistance: management and administrative costs (federal share)",
+    "domain": "public-money",
+    "domains": [
+      "public-money",
+      "hazards"
+    ],
+    "group": "Disaster recovery",
+    "kind": "variable",
+    "plain": "Federal Emergency Management Agency (FEMA) Public Assistance money approved for management and administrative costs after disasters, by municipality and by the year the disaster was declared. It is one of the eight damage categories that make up FEMA Public Assistance. It is money approved, not money spent, and part of it cannot be placed in a municipality.",
+    "definition": "Sum of the federal share obligated (OpenFEMA field federalShareObligated) for Public Assistance projects in Puerto Rico whose damage category code (damageCategoryCode) is Z (management and administrative costs: the recipient's and applicants' costs of managing the grant), by the project's county field and the calendar year of the disaster declaration, in dollars rounded to whole numbers. Projects whose county is not one of the 78 municipalities go into a statewide group; the Puerto Rico value is the 78 municipalities plus that group. The eight categories (A to G and Z) add up to economy.fema_pa_obligated.",
+    "unit": "US dollars of federal share obligated, by year of disaster declaration (not adjusted for inflation)",
+    "value_type": "level",
+    "geography": "78 municipalities and Puerto Rico (the 78 plus the statewide group)",
+    "coverage": {
+      "timeline": "event-based",
+      "first": 2001,
+      "last": 2024,
+      "frequency": "One value per calendar year that had a disaster declaration with Public Assistance projects in this category (2001, 2003, 2004, 2005, 2008, 2009, 2010, 2011, 2017, 2020, 2022, 2024 in the 2026-10 snapshot). Rebuilt from OpenFEMA with each snapshot."
+    },
+    "method": "economy_series.py, functions fema_pa and fema_values. The build pages through every OpenFEMA PublicAssistanceFundedProjectsDetails record with state code 72 (23,052 projects downloaded on 2026-10-30; all carry a damage category) and adds each project's federal share to its category, municipality and declaration year, or to that year's statewide group. Share recorded as statewide = statewide dollars / Puerto Rico dollars x 100, rounded to 0.1, stored in economy_series.json under extras.statewide_share.fema_pa_cat_z.",
+    "sources": [
+      "openfema"
+    ],
+    "source_detail": "FEMA OpenFEMA, Public Assistance Funded Projects Details (v2 API), filter stateNumberCode eq '72', fields declarationDate, county, damageCategoryCode, federalShareObligated; downloaded 2026-10-30. FEMA lists the damage categories on its Public Assistance process page.",
+    "how_to_read": "In the 2026-10 snapshot (OpenFEMA download of 2026-10-30), category Z adds up to $2.85 billion over all declaration years, $2.63 billion of it for the 2017 declarations. For 2017, 87.5% of it is recorded as statewide and cannot be placed in a municipality, and 78 of the 78 municipalities have a value (largest: San Juan, $32.7 million). Read the statewide share before you compare municipalities: the Analysis tab lists it, year by year, in the dataset's information window.",
+    "caveats": [
+      "Management costs pay for running the grant, not for repairs. The recipient's (the Commonwealth's) costs are recorded as statewide (87.5% for the 2017 declarations).",
+      "This is money obligated (approved and made available). It is not money paid, not damage and not need, and not a sign that the work is finished.",
+      "The year is the calendar year of the disaster declaration, not the year of the money or of the work. FEMA keeps obligating money for a disaster for years, so a year's value can still grow.",
+      "County is the applicant's location, not necessarily where the damage or the work was.",
+      "The Puerto Rico value includes the part recorded as statewide, so it is larger than the sum of the 78 municipalities, and a Puerto Rico value per resident is not comparable with a municipality's.",
+      "A blank municipality had no project in this category in that declaration year. A blank is not proof that a place was untouched.",
+      "Do not add this series to economy.fed_grants: FEMA Public Assistance is also a federal grant program, and the two series use different time bases.",
+      "OpenFEMA data are US government data under the OpenFEMA terms: name the data set (PublicAssistanceFundedProjectsDetails, v2) and the date retrieved (2026-10-30), and say the product is not endorsed by FEMA."
+    ],
+    "see_also": [
+      "economy.fema_pa_obligated",
+      "economy.fema_pa_statewide_share",
+      "economy.fema_pa_406_mitigation",
+      "economy.fema_pa_cat_a",
+      "economy.fema_pa_cat_b",
+      "economy.fema_pa_cat_c",
+      "measures.per_resident",
+      "measures.inflation_adjustment"
+    ],
+    "where": {
+      "files": [
+        "economy_series.json:fema_pa_cat_z"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Public money): shade municipalities by dollars per resident, declaration year 2017",
+          "href": "index.html#e=fema_pa_cat_z.f.perCapita.blue.q.1.1.0.85.0&ey=2017"
+        }
+      ]
+    },
+    "example": "Snapshot 2026-10 (OpenFEMA download of 2026-10-30), 2017 declarations: Puerto Rico $2.63 billion; 87.5% recorded as statewide.",
+    "added": "2026-10-30"
+  },
+  {
+    "id": "economy.fema_pa_406_mitigation",
+    "name": "FEMA Public Assistance: Section 406 mitigation proposed (project cost)",
+    "domain": "public-money",
+    "domains": [
+      "public-money",
+      "hazards"
+    ],
+    "group": "Disaster recovery",
+    "kind": "variable",
+    "plain": "When FEMA pays to repair a public facility after a disaster, it can also pay to make it stronger than before, so the next disaster does less damage. This is called Section 406 mitigation. This series is the cost proposed for that extra work, by municipality and year of the disaster declaration. It is a cost proposed, not the federal share and not money spent.",
+    "definition": "Sum of the Public Assistance amount proposed for Section 406 hazard mitigation (OpenFEMA field mitigationAmount) in Puerto Rico's projects, by the project's county field and the calendar year of the disaster declaration, in dollars rounded to whole numbers. Section 406 of the Stafford Act lets FEMA pay for cost-effective measures that protect a damaged facility from future damage as part of its repair (44 CFR 206.226(e)). Projects whose county is not one of the 78 municipalities go into a statewide group; the Puerto Rico value includes it.",
+    "unit": "US dollars of proposed mitigation cost, by year of disaster declaration (not adjusted for inflation)",
+    "value_type": "level",
+    "geography": "78 municipalities and Puerto Rico (the 78 plus the statewide group)",
+    "coverage": {
+      "timeline": "event-based",
+      "first": 2001,
+      "last": 2024,
+      "frequency": "One value per declaration year (2001, 2003, 2004, 2005, 2008, 2009, 2010, 2011, 2017, 2020, 2022, 2024 in the 2026-10 snapshot). Rebuilt with each snapshot."
+    },
+    "method": "economy_series.py, functions fema_pa and fema_values: the same download and placement as economy.fema_pa_obligated (2026-10-30), summing mitigationAmount instead of federalShareObligated.",
+    "sources": [
+      "openfema"
+    ],
+    "source_detail": "FEMA OpenFEMA, Public Assistance Funded Projects Details (v2 API), field mitigationAmount; downloaded 2026-10-30.",
+    "how_to_read": "In the 2026-10 snapshot the series adds up to $6.43 billion over all declaration years, $5.75 billion of it for the 2017 declarations, of which 82.5% is recorded as statewide. Set it beside the federal share obligated (economy.fema_pa_obligated) to see how much of the rebuilding was planned to be stronger, keeping in mind that one is a proposed cost and the other a federal share.",
+    "caveats": [
+      "It is the total proposed cost of the mitigation measures, not the federal share, so it cannot be compared dollar for dollar with economy.fema_pa_obligated and is not part of it.",
+      "FEMA warns that the field does not capture some mitigation proposals, and that some values are negative after adjustments between mitigation and project costs or de-obligations (23 of the 23,052 Puerto Rico records in the download of 2026-10-30 are negative). They are counted as they are.",
+      "It is mitigation inside Public Assistance repairs (Section 406). Stand-alone mitigation projects paid by the Hazard Mitigation Grant Program and the other mitigation grants are in economy.hma_approved_federal. Do not add the two.",
+      "The year is the year of the disaster declaration, and the county is the applicant's location. The Puerto Rico value includes the statewide group."
+    ],
+    "see_also": [
+      "economy.fema_pa_obligated",
+      "economy.hma_approved_federal",
+      "economy.fema_pa_cat_e",
+      "economy.fema_pa_cat_f"
+    ],
+    "where": {
+      "files": [
+        "economy_series.json:fema_pa_406_mitigation"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Public money), declaration year 2017",
+          "href": "index.html#e=fema_pa_406_mitigation.f.perCapita.blue.q.1.1.0.85.0&ey=2017"
+        }
+      ]
+    },
+    "example": "Snapshot 2026-10, 2017 declarations: Puerto Rico $5.75 billion; 82.5% recorded as statewide.",
+    "added": "2026-10-30"
+  },
+  {
+    "id": "economy.hma_approved_federal",
+    "name": "FEMA Hazard Mitigation: federal share approved",
+    "domain": "public-money",
+    "domains": [
+      "public-money",
+      "hazards"
+    ],
+    "group": "Disaster recovery",
+    "kind": "variable",
+    "plain": "FEMA's Hazard Mitigation grants pay for projects and plans that reduce the damage of future disasters, such as flood control, stronger buildings and generators. This is the federal share FEMA approved for them, by the municipality each project benefits and the fiscal year of the grant. It is approved money, not money obligated or spent.",
+    "definition": "Sum of the federal share (OpenFEMA field federalShareAmount) of the Hazard Mitigation Assistance subapplications in Puerto Rico that FEMA approved (status Approved, Closed, Completed or Subaward Accepted), from the Hazard Mitigation Grant Program (HMGP), Building Resilient Infrastructure and Communities (BRIC), Flood Mitigation Assistance (FMA) and Pre-Disaster Mitigation (PDM), by benefiting municipality and federal fiscal year, in dollars rounded to whole numbers.",
+    "unit": "US dollars of federal share approved, by federal fiscal year of the grant (not adjusted for inflation)",
+    "value_type": "level",
+    "geography": "78 municipalities and Puerto Rico (the 78 plus the statewide group)",
+    "coverage": {
+      "timeline": "event-based",
+      "first": 2001,
+      "last": 2025,
+      "frequency": "One value per federal fiscal year with subapplications (18 years from 2001 to 2025 in the 2026-10 snapshot). Rebuilt from OpenFEMA with each snapshot."
+    },
+    "method": "economy_series.py, functions fema_hma, hma_place and fema_values. The build pages through every OpenFEMA HmaSubapplications (v2) record whose subapplicant state is PR (1,134 downloaded on 2026-10-30). It leaves out the 5 records of fiscal years before 2000 (the price index in the file starts in 2000). Statuses Approved, Closed, Completed and Subaward Accepted count as approved; Pending and Submitted to FEMA as awaiting a decision; the 95 records with other statuses (denied, not selected, ineligible, void, withdrawn) add only their obligated money, which is zero. The benefitingCounties text is split at semicolons, and each name, without accents, capitals, apostrophes and the word 'Municipio', is matched to the 78 municipalities. A subapplication that names several municipalities is split equally among them; one that names 'Statewide', a place that is not a municipality, or nothing is kept in a statewide group. The Puerto Rico value is the 78 municipalities plus that group; its share is stored in economy_series.json under extras.statewide_share.",
+    "sources": [
+      "openfema"
+    ],
+    "source_detail": "FEMA OpenFEMA, HMA Subapplications (v2 API, /api/open/v2/HmaSubapplications), filter subapplicantStateAbbreviation eq 'PR', fields program, fiscalYear, status, benefitingCounties, federalShareAmount, totalObligatedAmount, totalPaymentAmount; downloaded 2026-10-30.",
+    "how_to_read": "In the 2026-10 snapshot (OpenFEMA download of 2026-10-30) the approved federal share adds up to $3.72 billion over fiscal years 2001 to 2025, $3.36 billion of it for fiscal year 2017 (Hurricane Maria), of which 36.2% cannot be placed in a municipality. Largest 2017 values: Toa Baja ($621.1 million) and San Juan ($222.0 million). Set it beside economy.hma_obligated: the gap between approved and obligated is money not yet made available.",
+    "caveats": [
+      "Approved is not obligated or paid. FEMA approves many HMGP projects in phases and obligates the money as milestones are met, so most of the approved share for 2017 is not yet obligated.",
+      "The year is the federal fiscal year of the grant's funding opportunity. For disaster grants (HMGP) it is the fiscal year in which the disaster was declared, so Hurricane Maria's money is under 2017.",
+      "The municipality is the one the subapplication says it benefits, not the subapplicant's location. Splitting a project that benefits several municipalities equally is the observatory's choice: the data do not say how the benefit is shared.",
+      "Hazard Mitigation Assistance is mitigation as stand-alone projects and plans. Mitigation inside Public Assistance repairs is in economy.fema_pa_406_mitigation. Do not add the two.",
+      "Payments are not published: FEMA reports a payment amount for only 163 of the 1,134 Puerto Rico subapplications (the field comes from FEMA GO only), so a sum would understate what was paid.",
+      "The Puerto Rico value includes the statewide group, so it is larger than the sum of the 78 municipalities.",
+      "OpenFEMA data are US government data under the OpenFEMA terms: name the data set (HmaSubapplications, v2) and the date retrieved (2026-10-30), and say the product is not endorsed by FEMA."
+    ],
+    "see_also": [
+      "economy.hma_obligated",
+      "economy.hma_pending_federal",
+      "economy.hma_projects",
+      "economy.fema_pa_406_mitigation"
+    ],
+    "where": {
+      "files": [
+        "economy_series.json:hma_approved_federal"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Public money), fiscal year 2017",
+          "href": "index.html#e=hma_approved_federal.f.perCapita.blue.q.1.1.0.85.0&ey=2017"
+        }
+      ]
+    },
+    "added": "2026-10-30"
+  },
+  {
+    "id": "economy.hma_obligated",
+    "name": "FEMA Hazard Mitigation: federal money obligated",
+    "domain": "public-money",
+    "domains": [
+      "public-money",
+      "hazards"
+    ],
+    "group": "Disaster recovery",
+    "kind": "variable",
+    "plain": "Of the Hazard Mitigation money FEMA approved, how much it has obligated, that is, legally committed and made available, by the municipality each project benefits and the fiscal year of the grant. It is money committed, not money spent.",
+    "definition": "Sum of the total federal amount obligated (OpenFEMA field totalObligatedAmount) for Hazard Mitigation Assistance subapplications in Puerto Rico, by benefiting municipality and federal fiscal year, in dollars rounded to whole numbers. FEMA obligates in steps as each subgrant meets its milestones.",
+    "unit": "US dollars obligated, by federal fiscal year of the grant (not adjusted for inflation)",
+    "value_type": "level",
+    "geography": "78 municipalities and Puerto Rico (the 78 plus the statewide group)",
+    "coverage": {
+      "timeline": "event-based",
+      "first": 2001,
+      "last": 2025,
+      "frequency": "One value per federal fiscal year with subapplications (21 years from 2001 to 2025 in the 2026-10 snapshot). Rebuilt from OpenFEMA with each snapshot."
+    },
+    "method": "economy_series.py, functions fema_hma, hma_place and fema_values. The build pages through every OpenFEMA HmaSubapplications (v2) record whose subapplicant state is PR (1,134 downloaded on 2026-10-30). It leaves out the 5 records of fiscal years before 2000 (the price index in the file starts in 2000). Statuses Approved, Closed, Completed and Subaward Accepted count as approved; Pending and Submitted to FEMA as awaiting a decision; the 95 records with other statuses (denied, not selected, ineligible, void, withdrawn) add only their obligated money, which is zero. The benefitingCounties text is split at semicolons, and each name, without accents, capitals, apostrophes and the word 'Municipio', is matched to the 78 municipalities. A subapplication that names several municipalities is split equally among them; one that names 'Statewide', a place that is not a municipality, or nothing is kept in a statewide group. The Puerto Rico value is the 78 municipalities plus that group; its share is stored in economy_series.json under extras.statewide_share.",
+    "sources": [
+      "openfema"
+    ],
+    "source_detail": "FEMA OpenFEMA, HMA Subapplications (v2 API, /api/open/v2/HmaSubapplications), filter subapplicantStateAbbreviation eq 'PR', fields program, fiscalYear, status, benefitingCounties, federalShareAmount, totalObligatedAmount, totalPaymentAmount; downloaded 2026-10-30.",
+    "how_to_read": "In the 2026-10 snapshot the money obligated adds up to $806.4 million over all fiscal years, $679.4 million of it for fiscal year 2017, against $3.36 billion approved for that year. Read it as a share of economy.hma_approved_federal for the same place and year.",
+    "caveats": [
+      "Some approved subapplications have no obligation recorded, mostly older ones from FEMA's earlier systems, so a zero or a low share can mean the field is empty rather than that nothing was committed.",
+      "The year is the federal fiscal year of the grant's funding opportunity. For disaster grants (HMGP) it is the fiscal year in which the disaster was declared, so Hurricane Maria's money is under 2017.",
+      "The municipality is the one the subapplication says it benefits, not the subapplicant's location. Splitting a project that benefits several municipalities equally is the observatory's choice: the data do not say how the benefit is shared.",
+      "Hazard Mitigation Assistance is mitigation as stand-alone projects and plans. Mitigation inside Public Assistance repairs is in economy.fema_pa_406_mitigation. Do not add the two.",
+      "Payments are not published: FEMA reports a payment amount for only 163 of the 1,134 Puerto Rico subapplications (the field comes from FEMA GO only), so a sum would understate what was paid.",
+      "The Puerto Rico value includes the statewide group, so it is larger than the sum of the 78 municipalities.",
+      "OpenFEMA data are US government data under the OpenFEMA terms: name the data set (HmaSubapplications, v2) and the date retrieved (2026-10-30), and say the product is not endorsed by FEMA."
+    ],
+    "see_also": [
+      "economy.hma_approved_federal",
+      "economy.hma_pending_federal",
+      "economy.hma_projects",
+      "economy.fema_pa_406_mitigation"
+    ],
+    "where": {
+      "files": [
+        "economy_series.json:hma_obligated"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Public money), fiscal year 2017",
+          "href": "index.html#e=hma_obligated.f.perCapita.blue.q.1.1.0.85.0&ey=2017"
+        }
+      ]
+    },
+    "added": "2026-10-30"
+  },
+  {
+    "id": "economy.hma_pending_federal",
+    "name": "FEMA Hazard Mitigation: federal share awaiting decision",
+    "domain": "public-money",
+    "domains": [
+      "public-money",
+      "hazards"
+    ],
+    "group": "Disaster recovery",
+    "kind": "variable",
+    "plain": "Hazard Mitigation money that was requested from FEMA and still has no decision: the federal share in subapplications that are pending or submitted, by the municipality each project would benefit and the fiscal year of the grant.",
+    "definition": "Sum of the federal share requested (OpenFEMA field federalShareAmount) in Hazard Mitigation Assistance subapplications in Puerto Rico with status Pending or Submitted to FEMA, by benefiting municipality and federal fiscal year, in dollars rounded to whole numbers.",
+    "unit": "US dollars of federal share requested, by federal fiscal year of the grant (not adjusted for inflation)",
+    "value_type": "level",
+    "geography": "78 municipalities and Puerto Rico (the 78 plus the statewide group)",
+    "coverage": {
+      "timeline": "event-based",
+      "first": 2017,
+      "last": 2025,
+      "frequency": "One value per federal fiscal year with subapplications (6 years from 2017 to 2025 in the 2026-10 snapshot). Rebuilt from OpenFEMA with each snapshot."
+    },
+    "method": "economy_series.py, functions fema_hma, hma_place and fema_values. The build pages through every OpenFEMA HmaSubapplications (v2) record whose subapplicant state is PR (1,134 downloaded on 2026-10-30). It leaves out the 5 records of fiscal years before 2000 (the price index in the file starts in 2000). Statuses Approved, Closed, Completed and Subaward Accepted count as approved; Pending and Submitted to FEMA as awaiting a decision; the 95 records with other statuses (denied, not selected, ineligible, void, withdrawn) add only their obligated money, which is zero. The benefitingCounties text is split at semicolons, and each name, without accents, capitals, apostrophes and the word 'Municipio', is matched to the 78 municipalities. A subapplication that names several municipalities is split equally among them; one that names 'Statewide', a place that is not a municipality, or nothing is kept in a statewide group. The Puerto Rico value is the 78 municipalities plus that group; its share is stored in economy_series.json under extras.statewide_share.",
+    "sources": [
+      "openfema"
+    ],
+    "source_detail": "FEMA OpenFEMA, HMA Subapplications (v2 API, /api/open/v2/HmaSubapplications), filter subapplicantStateAbbreviation eq 'PR', fields program, fiscalYear, status, benefitingCounties, federalShareAmount, totalObligatedAmount, totalPaymentAmount; downloaded 2026-10-30.",
+    "how_to_read": "In the 2026-10 snapshot $1.06 billion is awaiting a decision, $573.2 million of it under fiscal year 2017 (largest: Yabucoa, $314.2 million). It is a request, so it may be approved, cut or denied.",
+    "caveats": [
+      "A pending request is not money: do not add it to the approved share.",
+      "The year is the federal fiscal year of the grant's funding opportunity. For disaster grants (HMGP) it is the fiscal year in which the disaster was declared, so Hurricane Maria's money is under 2017.",
+      "The municipality is the one the subapplication says it benefits, not the subapplicant's location. Splitting a project that benefits several municipalities equally is the observatory's choice: the data do not say how the benefit is shared.",
+      "Hazard Mitigation Assistance is mitigation as stand-alone projects and plans. Mitigation inside Public Assistance repairs is in economy.fema_pa_406_mitigation. Do not add the two.",
+      "Payments are not published: FEMA reports a payment amount for only 163 of the 1,134 Puerto Rico subapplications (the field comes from FEMA GO only), so a sum would understate what was paid.",
+      "The Puerto Rico value includes the statewide group, so it is larger than the sum of the 78 municipalities.",
+      "OpenFEMA data are US government data under the OpenFEMA terms: name the data set (HmaSubapplications, v2) and the date retrieved (2026-10-30), and say the product is not endorsed by FEMA."
+    ],
+    "see_also": [
+      "economy.hma_approved_federal",
+      "economy.hma_obligated",
+      "economy.hma_projects",
+      "economy.fema_pa_406_mitigation"
+    ],
+    "where": {
+      "files": [
+        "economy_series.json:hma_pending_federal"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Public money), fiscal year 2017",
+          "href": "index.html#e=hma_pending_federal.f.perCapita.blue.q.1.1.0.85.0&ey=2017"
+        }
+      ]
+    },
+    "added": "2026-10-30"
+  },
+  {
+    "id": "economy.hma_projects",
+    "name": "FEMA Hazard Mitigation: approved subapplications",
+    "domain": "public-money",
+    "domains": [
+      "public-money",
+      "hazards"
+    ],
+    "group": "Disaster recovery",
+    "kind": "variable",
+    "plain": "How many Hazard Mitigation subapplications (projects, plans and their management) FEMA approved for each municipality, by the fiscal year of the grant. A project that benefits several municipalities counts in each one.",
+    "definition": "Number of Hazard Mitigation Assistance subapplications in Puerto Rico that FEMA approved (status Approved, Closed, Completed or Subaward Accepted), by benefiting municipality and federal fiscal year. A subapplication that names several municipalities counts once in each; the Puerto Rico value counts each subapplication once.",
+    "unit": "subapplications approved",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico (the 78 plus the statewide group)",
+    "coverage": {
+      "timeline": "event-based",
+      "first": 2001,
+      "last": 2025,
+      "frequency": "One value per federal fiscal year with subapplications (18 years from 2001 to 2025 in the 2026-10 snapshot). Rebuilt from OpenFEMA with each snapshot."
+    },
+    "method": "economy_series.py, functions fema_hma, hma_place and fema_values. The build pages through every OpenFEMA HmaSubapplications (v2) record whose subapplicant state is PR (1,134 downloaded on 2026-10-30). It leaves out the 5 records of fiscal years before 2000 (the price index in the file starts in 2000). Statuses Approved, Closed, Completed and Subaward Accepted count as approved; Pending and Submitted to FEMA as awaiting a decision; the 95 records with other statuses (denied, not selected, ineligible, void, withdrawn) add only their obligated money, which is zero. The benefitingCounties text is split at semicolons, and each name, without accents, capitals, apostrophes and the word 'Municipio', is matched to the 78 municipalities. A subapplication that names several municipalities is split equally among them; one that names 'Statewide', a place that is not a municipality, or nothing is kept in a statewide group. The Puerto Rico value is the 78 municipalities plus that group; its share is stored in economy_series.json under extras.statewide_share.",
+    "sources": [
+      "openfema"
+    ],
+    "source_detail": "FEMA OpenFEMA, HMA Subapplications (v2 API, /api/open/v2/HmaSubapplications), filter subapplicantStateAbbreviation eq 'PR', fields program, fiscalYear, status, benefitingCounties, federalShareAmount, totalObligatedAmount, totalPaymentAmount; downloaded 2026-10-30.",
+    "how_to_read": "In the 2026-10 snapshot FEMA approved 844 subapplications from fiscal year 2001 to 2025, 396 of them for fiscal year 2017 (most in San Juan: 41). A count says nothing about size: one flood-control project and one generator count the same.",
+    "caveats": [
+      "The 78 municipalities add up to more than Puerto Rico when a subapplication benefits several of them, so the '% of the Puerto Rico total' option is not offered.",
+      "The year is the federal fiscal year of the grant's funding opportunity. For disaster grants (HMGP) it is the fiscal year in which the disaster was declared, so Hurricane Maria's money is under 2017.",
+      "The municipality is the one the subapplication says it benefits, not the subapplicant's location. Splitting a project that benefits several municipalities equally is the observatory's choice: the data do not say how the benefit is shared.",
+      "Hazard Mitigation Assistance is mitigation as stand-alone projects and plans. Mitigation inside Public Assistance repairs is in economy.fema_pa_406_mitigation. Do not add the two.",
+      "Payments are not published: FEMA reports a payment amount for only 163 of the 1,134 Puerto Rico subapplications (the field comes from FEMA GO only), so a sum would understate what was paid.",
+      "The Puerto Rico value includes the statewide group, so it is larger than the sum of the 78 municipalities.",
+      "OpenFEMA data are US government data under the OpenFEMA terms: name the data set (HmaSubapplications, v2) and the date retrieved (2026-10-30), and say the product is not endorsed by FEMA."
+    ],
+    "see_also": [
+      "economy.hma_approved_federal",
+      "economy.hma_obligated",
+      "economy.hma_pending_federal",
+      "economy.fema_pa_406_mitigation"
+    ],
+    "where": {
+      "files": [
+        "economy_series.json:hma_projects"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Public money), fiscal year 2017",
+          "href": "index.html#e=hma_projects.f.value.blue.q.1.1.0.85.0&ey=2017"
+        }
+      ]
+    },
+    "added": "2026-10-30"
+  }
+]

@@ -1,0 +1,234 @@
+{
+ "hazards.flood_zone": {
+  "name": "Zona inundable de FEMA (FLD_ZONE)",
+  "how_to_read": "Lea las letras como familias. VE es la zona costera de alto riesgo, donde las olas le dan más fuerza a la inundación. A, A99, AE, AH y AO son las demás zonas de 1%. X con el subtipo de 0.2% está fuera del área de 1%, pero dentro del área más amplia de 0.2%. Las zonas X sin sombrear y D no se dibujan en los mapas del observatorio. FEMA indica elevaciones o profundidades de inundación base para algunas zonas, pero el observatorio no las publica: el archivo solo contiene la zona, el subtipo y el indicador SFHA.",
+  "_en": {
+   "name": "8a6b7871",
+   "how_to_read": "68f7902a"
+  }
+ },
+ "hazards.flood_subtype": {
+  "name": "Subtipo de zona inundable de FEMA (ZONE_SUBTY)",
+  "how_to_read": "Use el subtipo para distinguir las dos clases de zona X. En el observatorio, solo la zona X con el subtipo de 0.2% cuenta como zona inundable. La zona X sin sombrear no se toma en cuenta.",
+  "_en": {
+   "name": "850b2f69",
+   "how_to_read": "aba44047"
+  }
+ },
+ "hazards.sfha": {
+  "name": "En el Área Especial de Riesgo de Inundación (SFHA_TF)",
+  "how_to_read": "El observatorio usa este indicador, no la letra de la zona, para decidir que un lugar turístico está en una zona de riesgo de inundación. El planificador de rutas también lo usa (vea 'Proporción de la ruta en una zona de riesgo de inundación').",
+  "_en": {
+   "name": "a99f3e73",
+   "how_to_read": "1f50e756"
+  }
+ },
+ "hazards.flood_zones_layer": {
+  "name": "Zonas inundables de FEMA (capa del mapa)",
+  "how_to_read": "El color muestra la familia de la zona, no la profundidad. Use la letra de la zona y el subtipo para leer lo que dice FEMA. Un área sin sombrear no es prueba de que sea segura. La capa 'Zonas inundables' cubre las zonas de 1% y la zona de 0.2%. En las cifras de lugares y municipios, 'en zona de riesgo de inundación' significa solo el área de 1% (el Área Especial de Riesgo de Inundación).",
+  "_en": {
+   "name": "ec6712ee",
+   "how_to_read": "092a82a9"
+  }
+ },
+ "hazards.flood_exposure_flag": {
+  "name": "Cómo se marca la exposición de un lugar a inundaciones",
+  "how_to_read": "'En zona de riesgo de inundación' significa que el marcador está dentro de un polígono que FEMA cartografía con una probabilidad anual de inundación de 1%. No dice que el lugar se inunde, hasta qué profundidad llega el agua ni si el lugar tiene seguro.",
+  "_en": {
+   "name": "9473b935",
+   "how_to_read": "c16eec77"
+  }
+ },
+ "hazards.flood_limits": {
+  "name": "Lo que las zonas inundables de FEMA pueden decir y lo que no",
+  "how_to_read": "Trate los indicadores como un primer filtro. Para tomar una decisión sobre un edificio, consulte el mapa oficial de inundaciones de FEMA para esa dirección y pida consejo a un profesional cualificado.",
+  "_en": {
+   "name": "606caa57",
+   "how_to_read": "5d516631"
+  }
+ },
+ "hazards.slr_inundation": {
+  "name": "Capa de inundación por aumento del nivel del mar (NOAA)",
+  "how_to_read": "Las áreas coloreadas son donde NOAA cartografía inundación a la altura elegida sobre la marea alta más alta del día, en promedio (MHHW), es decir, en las mareas altas regulares más altas. Es un escenario hipotético para planificar, no un pronóstico para un año. NOAA indica que todos los elementos deben verificarse con una visita al lugar. Para citar una capa, indique el valor en pies y la fecha en que la consultó, porque NOAA puede actualizar el servicio.",
+  "_en": {
+   "name": "df64b622",
+   "how_to_read": "23834c0d"
+  }
+ },
+ "hazards.slr_year_to_feet": {
+  "name": "Aumento del nivel del mar por año y escenario (vista 3D)",
+  "how_to_read": "Varios años muestran la misma capa, porque el resultado se redondea a pies enteros. La capa es de 1 ft desde 2020 hasta 2050 en Alto e Intermedio-alto, hasta 2060 en Intermedio y hasta 2090 en Intermedio-bajo. Un año en el control deslizante es una posición en la curva de un escenario, no una predicción de que el mar llegará a ese nivel en ese año. El control deslizante Año comienza en 2050 y el escenario en Intermedio, lo que da la capa de 1 ft.",
+  "_en": {
+   "name": "0e91110a",
+   "how_to_read": "550e31c8"
+  }
+ },
+ "hazards.storm_selection": {
+  "name": "Cómo se seleccionan las tormentas cerca de Puerto Rico",
+  "how_to_read": "Los 250 km se miden desde un punto, no desde la costa. En las líneas de los puntos cardinales que pasan por ese punto, el círculo llega a unos 160 km más allá de la costa este, 175 km más allá de la costa oeste y 220 km más allá de las costas norte y sur. Una tormenta de la lista puede no haber tocado tierra nunca.",
+  "_en": {
+   "name": "6588ec2a",
+   "how_to_read": "2727aa2b"
+  }
+ },
+ "hazards.storm_id": {
+  "name": "Identificador de la tormenta (id)",
+  "how_to_read": "Use id para buscar o citar una tormenta. Los últimos cuatro caracteres son su año.",
+  "_en": {
+   "name": "1182ee36",
+   "how_to_read": "c8c5bcf0"
+  }
+ },
+ "hazards.storm_name": {
+  "name": "Nombre de la tormenta (name)",
+  "how_to_read": "Los nombres se repiten de un año a otro. Acompañe siempre un nombre con su año, o use el id.",
+  "_en": {
+   "name": "5ecf631c",
+   "how_to_read": "6045960f"
+  }
+ },
+ "hazards.storm_year": {
+  "name": "Año de la tormenta (year)",
+  "how_to_read": "Úselo para ubicar una tormenta en el tiempo o para filtrar la capa 3D de tormentas por un período de años.",
+  "_en": {
+   "name": "b4e2aa09",
+   "how_to_read": "eb686a4e"
+  }
+ },
+ "hazards.storm_max_wind": {
+  "name": "Viento máximo de toda la tormenta (max_wind)",
+  "how_to_read": "Compárelo con wind_near_pr. Si los dos son distintos, la tormenta fue más fuerte en otro lugar. En el corte de datos 2026-10, Dorian (2019) alcanzó 160 nudos lejos de la isla, pero su viento más alto a 250 km o menos fue de 75 nudos.",
+  "_en": {
+   "name": "80574ff5",
+   "how_to_read": "505c2f3b"
+  }
+ },
+ "hazards.storm_wind_near_pr": {
+  "name": "Viento máximo cerca de Puerto Rico (wind_near_pr)",
+  "how_to_read": "Es el viento propio de la tormenta en una posición cerca de la isla. No es un viento medido en tierra ni en un pueblo.",
+  "_en": {
+   "name": "22ac66b2",
+   "how_to_read": "ade78002"
+  }
+ },
+ "hazards.storm_cat_near_pr": {
+  "name": "Categoría Saffir-Simpson cerca de Puerto Rico (cat_near_pr)",
+  "how_to_read": "Úsela para comparar cuán fuertes fueron las tormentas mientras estaban cerca de la isla. No es la categoría al tocar tierra.",
+  "_en": {
+   "name": "52007c37",
+   "how_to_read": "681edc3a"
+  }
+ },
+ "hazards.storm_min_dist_km": {
+  "name": "Paso más cercano al centro de Puerto Rico (min_dist_km)",
+  "how_to_read": "Un valor pequeño significa que la tormenta pasó cerca del medio de la isla. Un valor de 100 km todavía puede significar que alguna costa estuvo cerca de la tormenta, porque la isla grande mide unos 180 km de largo de oeste a este.",
+  "_en": {
+   "name": "c641f52b",
+   "how_to_read": "cd8c28d2"
+  }
+ },
+ "hazards.storm_track": {
+  "name": "Puntos de la trayectoria de la tormenta (track)",
+  "how_to_read": "El mapa 3D une los puntos con líneas rectas. La trayectoria real es curva entre ellos. El tamaño y el color de cada punto dependen de su propio viento.",
+  "_en": {
+   "name": "c9fcde3b",
+   "how_to_read": "87048d0b"
+  }
+ },
+ "hazards.hurricane_scale": {
+  "name": "Escala de vientos de huracanes Saffir-Simpson (tal como se usa en el observatorio)",
+  "how_to_read": "En la vista 3D, los colores van del gris (categoría 0), pasando por azul, verde, anaranjado y rojo, hasta rojo oscuro (categoría 5).",
+  "_en": {
+   "name": "69a12820",
+   "how_to_read": "04ff713f"
+  }
+ },
+ "hazards.storm_layer": {
+  "name": "Trayectorias de huracanes (capa del mapa, vista 3D)",
+  "how_to_read": "Las líneas más gruesas indican una tormenta más fuerte cerca de la isla. El color sigue la categoría: gris 0, azul 1, verde 2, anaranjado 3, rojo 4, rojo oscuro 5. Una línea puede extenderse mucho más allá de Puerto Rico, porque se dibuja toda la trayectoria. Al activar la capa, muestra solo las tormentas de categoría 3 o más (29 de las 157 en el corte de datos 2026-10). Elija Todas (incl. tormentas tropicales) para ver todas las tormentas del archivo.",
+  "_en": {
+   "name": "09531fa1",
+   "how_to_read": "c9d8afdf"
+  }
+ },
+ "hazards.storm_limits": {
+  "name": "Límites de los datos de huracanes (mejores trayectorias de HURDAT2)",
+  "how_to_read": "Use los datos para ver qué tormentas pasaron cerca de la isla y cuán fuertes eran mientras estaban cerca. No los use para decir cuánto daño causó una tormenta.",
+  "_en": {
+   "name": "51c3572d",
+   "how_to_read": "545638ca"
+  }
+ },
+ "land.padus_unit_name": {
+  "name": "Nombre del área protegida (Unit_Nm)",
+  "how_to_read": "Use el nombre para encontrar el área. Para contar áreas, cuente los nombres distintos con cuidado, porque un mismo nombre puede tener varios registros.",
+  "_en": {
+   "name": "fd4fbef5",
+   "how_to_read": "07732a88"
+  }
+ },
+ "land.padus_designation": {
+  "name": "Tipo de designación del área protegida (Des_Tp)",
+  "how_to_read": "El código dice cómo se clasifica un área, no qué tan bien está protegida. Vea el estatus GAP para el nivel de protección y el acceso público para saber si se puede entrar.",
+  "_en": {
+   "name": "da778172",
+   "how_to_read": "712fbf33"
+  }
+ },
+ "land.padus_gap_status": {
+  "name": "Nivel de protección, estatus GAP (GAP_Sts)",
+  "how_to_read": "1 es el más estricto y 4 el menos estricto. Un conteo alto de lugares en terrenos GAP 4 dice poco sobre la protección de la naturaleza.",
+  "_en": {
+   "name": "0acbda80",
+   "how_to_read": "dad0d8b6"
+  }
+ },
+ "land.padus_public_access": {
+  "name": "Acceso público (Pub_Access)",
+  "how_to_read": "Es una categoría general de acceso. Antes de una visita, consulte a la agencia que administra el área sobre horarios, tarifas, permisos y cierres.",
+  "_en": {
+   "name": "f6dd888c",
+   "how_to_read": "c88d4791"
+  }
+ },
+ "land.padus_manager": {
+  "name": "Entidad administradora (Mang_Name)",
+  "how_to_read": "Use el código para saber a qué entidad preguntar sobre un sitio. En el corte de datos 2026-10, 411 registros tienen el código UNK. Para esos, busque el municipio.",
+  "_en": {
+   "name": "25deeb92",
+   "how_to_read": "703ce3fb"
+  }
+ },
+ "land.padus_acres": {
+  "name": "Superficie en acres (GIS_Acres)",
+  "how_to_read": "Úsela para comparar el tamaño de registros individuales. No sume los valores para obtener el total de terreno protegido.",
+  "_en": {
+   "name": "10d3eb5e",
+   "how_to_read": "bb4fb8f3"
+  }
+ },
+ "land.protected_layer": {
+  "name": "Áreas protegidas (capa del mapa)",
+  "how_to_read": "Los contornos que se superponen se apilan, así que una mancha más oscura puede ser varios registros. Revise la designación y el estatus GAP antes de interpretar una mancha como una reserva natural.",
+  "_en": {
+   "name": "68bbd098",
+   "how_to_read": "0305239a"
+  }
+ },
+ "land.protected_place_flag": {
+  "name": "Cómo se marca que un lugar está dentro de un área protegida",
+  "how_to_read": "'Dentro de un área protegida' significa que el marcador está en un registro de PAD-US. No significa que el lugar esté en una reserva natural.",
+  "_en": {
+   "name": "f375aa29",
+   "how_to_read": "57f199b3"
+  }
+ },
+ "hazards.landslide_layer": {
+  "name": "Capa de susceptibilidad a deslizamientos (USGS)",
+  "how_to_read": "Mientras más roja el área, más probable es un deslizamiento allí con lluvia intensa; la clase azul violeta es el 1 % más susceptible de la isla. Muestra dónde un deslizamiento es más probable, no cuándo ni si ocurrirá. Enciéndala junto con la pendiente de la capa de Suelos para comparar.",
+  "_en": {
+   "name": "ac47a1fc",
+   "how_to_read": "34e5fdd5"
+  }
+ }
+}

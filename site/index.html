@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PR Data Observatory · Foundation for Puerto Rico</title>
+<meta name="description" content="A free, open model of Puerto Rico: public data from many fields on one map and one timeline, for all 78 municipalities. Developed by Foundation for Puerto Rico as a tool for public use and benefit.">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="canonical" href="https://observatory.foundationpr.org/">
+<meta property="og:site_name" content="Foundation for Puerto Rico">
+<meta property="og:type" content="website">
+<meta property="og:title" content="PR Data Observatory · Foundation for Puerto Rico">
+<meta property="og:description" content="A free, open model of Puerto Rico: public data from many fields on one map and one timeline, for all 78 municipalities. Developed by Foundation for Puerto Rico as a tool for public use and benefit.">
+<meta property="og:url" content="https://observatory.foundationpr.org/">
+<meta property="og:image" content="https://observatory.foundationpr.org/img/fpr-logo.png">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="img/fpr-mark.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" integrity="sha384-c6Rcwz4e4CITMbu/NBmnNS8yN2sC3cUElMEMfP3vqqKFp7GOYaaBBCqmaWBjmkjb" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.min.css" integrity="sha384-uIZNAcoEHVWMk8LrCSX95DJk6FQzH6zG00LQC9BykRY1UKKpkDzDhbDLYQ1Ho3mI" crossorigin="anonymous">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0&icon_names=account_balance,add,add_location_alt,airlines,arrow_back,arrow_downward,arrow_upward,attractions,bakery_dining,bar_chart,beach_access,bed,bolt,build,cancel,chat_bubble,check_circle,chevron_left,chevron_right,church,close,commute,construction,content_copy,delete,directions_boat,directions_bus,directions_car,diversity_3,download,draw,ev_station,explore,flight,flood,forest,foundation,groups,health_and_safety,help,hiking,holiday_village,home,home_work,hotel,hourglass_bottom,house,image,info,keyboard,keyboard_arrow_down,keyboard_arrow_up,landscape,layers,lightbulb,link,local_bar,local_cafe,local_hospital,local_taxi,location_city,luggage,map,menu,menu_book,museum,my_location,night_shelter,nightlife,open_in_new,palette,park,pause,payments,place,play_arrow,pool,price_change,public,remove,restaurant,rocket_launch,rotate_left,rotate_right,route,sailing,schedule,school,search,send,settings,shield,storefront,straighten,subway,swap_vert,table_view,terrain,theater_comedy,thermostat,tour,train,transfer_within_a_station,travel_explore,tune,upload,verified,view_in_ar,visibility,visibility_off,warning,water,waves,wifi,wine_bar,woman,work&display=block" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0&icon_names=account_balance,add,add_location_alt,airlines,arrow_back,arrow_downward,arrow_upward,attractions,bakery_dining,bar_chart,beach_access,bed,bolt,build,cancel,chat_bubble,check_circle,chevron_left,chevron_right,church,close,commute,construction,content_copy,delete,directions_boat,directions_bus,directions_car,download,draw,ev_station,explore,flight,flood,forest,foundation,groups,health_and_safety,help,hiking,holiday_village,home,home_work,hotel,hourglass_bottom,house,image,info,keyboard,keyboard_arrow_down,keyboard_arrow_up,landscape,layers,lightbulb,link,local_bar,local_cafe,local_hospital,local_taxi,location_city,luggage,map,menu,menu_book,museum,my_location,night_shelter,nightlife,open_in_new,palette,park,pause,payments,place,play_arrow,pool,public,remove,restaurant,rotate_left,rotate_right,route,sailing,schedule,school,search,send,settings,shield,storefront,straighten,subway,swap_vert,table_view,terrain,theater_comedy,tour,train,transfer_within_a_station,travel_explore,tune,upload,verified,view_in_ar,visibility,visibility_off,warning,water,waves,wifi,wine_bar,work&display=block"></noscript>
+<link rel="stylesheet" href="css/twin.css?v=63">
+<link rel="stylesheet" href="css/economy.css?v=25">
+<link rel="stylesheet" href="css/chat.css?v=4">
+<script src="js/i18n.js?v=91" data-page="map"></script>
+</head>
+<body>
+<noscript><div style="padding:16px;background:#FFE9A8;color:#5A3500;position:relative;z-index:3000">This map needs JavaScript. The Housing page lists its tables without it.</div></noscript>
+
+<div class="loader" id="loader" role="status"><div class="spin" aria-hidden="true"></div><div id="loaderText">Loading Puerto Rico…</div></div>
+
+<a class="skip" href="#map">Skip to the map</a>
+<header class="topbar">
+  <button type="button" class="icon-btn menu-btn" id="menuBtn" aria-label="Open the layers panel" aria-controls="panel" aria-expanded="false"><span class="ms-icon" aria-hidden="true">menu</span></button>
+  <a class="logo" href="index.html" title="PR Data Observatory home"><img src="img/fpr-logo.png" alt="Foundation for Puerto Rico. PR Data Observatory home"></a>
+  <div class="brand"><h1>PR Data Observatory</h1><span id="brandSub">Public data for all of Puerto Rico, on one map</span></div>
+  <div class="spacer"></div>
+  <div class="search" role="search">
+    <span class="ms-icon" aria-hidden="true">search</span>
+    <input id="search" type="search" placeholder="Search a place or street" aria-label="Search a place, street, town or municipality" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="searchResults" aria-autocomplete="list">
+    <div class="search-results" id="searchResults" role="listbox" aria-label="Search results"></div>
+  </div>
+  <nav class="views" aria-label="Views">
+    <a class="btn" href="index.html" aria-current="page"><span class="ms-icon" aria-hidden="true">map</span><span class="lbl">Map</span></a>
+    <a class="btn" href="3d.html" title="Immersive 3D + time view"><span class="ms-icon" aria-hidden="true">view_in_ar</span><span class="lbl">3D + Time</span></a>
+    <a class="btn" href="knowledge.html" title="Knowledge: FPR studies, analyses and tools"><span class="ms-icon" aria-hidden="true">lightbulb</span><span class="lbl">Knowledge</span></a>
+    <a class="btn" href="dictionary.html" title="Data dictionary: meanings, sources, licenses, how to cite"><span class="ms-icon" aria-hidden="true">menu_book</span><span class="lbl">Data dictionary</span></a>
+    <a class="btn" href="learn.html" title="Learn: short lessons about maps and spatial analysis"><span class="ms-icon" aria-hidden="true">school</span><span class="lbl">Learn</span></a>
+  </nav>
+  <div class="snapshot"><span class="ms-icon" aria-hidden="true" style="font-size:16px">verified</span><span id="snapshotLabel">—</span></div>
+</header>
+<div class="backdrop" id="backdrop"></div>
+
+<aside class="panel" id="panel" aria-label="Layers and municipality information">
+  <button type="button" class="icon-btn panel-close" id="panelClose" aria-label="Close the panel"><span class="ms-icon" aria-hidden="true">close</span></button>
+  <div class="tabs" role="tablist" aria-label="Panel sections">
+    <button type="button" role="tab" id="t-explore" aria-controls="tab-overview" aria-selected="true" class="active" data-main="explore" data-tab="overview"><span class="ms-icon" aria-hidden="true">explore</span>Explore</button>
+    <button type="button" role="tab" id="t-place" aria-controls="tab-muni" aria-selected="false" tabindex="-1" data-main="place" data-tab="muni"><span class="ms-icon" aria-hidden="true">place</span>Place</button>
+    <button type="button" role="tab" id="t-tools" aria-controls="tab-maptools" aria-selected="false" tabindex="-1" data-main="tools" data-tab="maptools"><span class="ms-icon" aria-hidden="true">construction</span>Tools</button>
+    <button type="button" role="tab" id="t-about" aria-controls="tab-about" aria-selected="false" tabindex="-1" data-tab="about"><span class="ms-icon" aria-hidden="true">info</span>About</button>
+  </div>
+  <div class="subtabs" role="tablist" aria-label="Explore" data-group="explore">
+    <button type="button" role="tab" id="s-overview" aria-controls="tab-overview" aria-selected="true" class="active" data-tab="overview">Topics</button>
+    <button type="button" role="tab" id="s-layers" aria-controls="tab-layers" aria-selected="false" tabindex="-1" data-tab="layers">Map layers</button>
+    <button type="button" role="tab" id="s-catalog" aria-controls="tab-catalog" aria-selected="false" tabindex="-1" data-tab="catalog">Data Catalog</button>
+  </div>
+  <div class="subtabs" role="tablist" aria-label="Place" data-group="place" hidden>
+    <button type="button" role="tab" id="s-muni" aria-controls="tab-muni" aria-selected="false" tabindex="-1" data-tab="muni">Municipality</button>
+    <button type="button" role="tab" id="s-region" aria-controls="tab-region" aria-selected="false" tabindex="-1" data-tab="region">Region</button>
+    <button type="button" role="tab" id="s-rank" aria-controls="tab-rank" aria-selected="false" tabindex="-1" data-tab="rank">Rankings</button>
+  </div>
+  <div class="subtabs" role="tablist" aria-label="Tools" data-group="tools" hidden>
+    <button type="button" role="tab" id="s-maptools" aria-controls="tab-maptools" aria-selected="false" tabindex="-1" data-tab="maptools">Map tools</button>
+    <button type="button" role="tab" id="s-transit" aria-controls="tab-transit" aria-selected="false" tabindex="-1" data-tab="transit">Transit</button>
+    <button type="button" role="tab" id="s-economy" aria-controls="tab-economy" aria-selected="false" tabindex="-1" data-tab="economy">Analysis</button>
+  </div>
+
+  <!-- OVERVIEW -->
+  <section class="tab-page active" id="tab-overview" role="tabpanel" aria-labelledby="s-overview">
+    <div class="ov-lead">
+      <h2>Explore Puerto Rico by topic</h2>
+      <p>Ten topics, each with a headline figure for the whole island. Open a topic for all its maps, or search all the data. What you put on the map appears in the <b>On the map</b> panel; click a municipality on the map for everything about it.</p>
+    </div>
+    <div class="ctrl ex-find"><label for="exQ" class="sr-only">Search all the data</label><input type="search" id="exQ" class="ec-find" placeholder="Search all the data: heat, rent, schools…" autocomplete="off"></div>
+    <div id="exResults" aria-live="polite" hidden></div>
+    <div id="exDomain" hidden></div>
+    <div id="ovCards"><div class="note">Loading the overview…</div></div>
+    <div class="btn-row"><button type="button" class="btn primary" data-tab-go="catalog"><span class="ms-icon" aria-hidden="true">table_view</span>Browse all data</button><button type="button" class="btn" data-ask-open="1"><span class="ms-icon" aria-hidden="true">chat_bubble</span>Ask the observatory</button></div>
+    <p class="note" id="ovFoot"></p>
+  </section>
+
+  <!-- LAYERS: groups and rows in the order of js/core/layers.js, from the macro to the micro (docs/layers.md; tests/layers_menu.test.js checks it) -->
+  <section class="tab-page" id="tab-layers" role="tabpanel" aria-labelledby="s-layers">
+    <h2 class="sec"><span class="ms-icon" aria-hidden="true" style="font-size:14px">map</span>Reference</h2>
+    <div class="ctrl"><label for="basemap">Base map</label><select id="basemap" aria-describedby="basemapDesc" disabled><optgroup label="OpenStreetMap maps" data-group="osm"><option value="positron" selected>Light (Positron)</option><option value="liberty">Detailed (Liberty)</option><option value="bright">Colorful (Bright)</option><option value="dark">Dark</option><option value="fiord">Dark blue (Fiord)</option></optgroup><optgroup label="USGS maps" data-group="usgs"><option value="imagery">Aerial imagery</option><option value="topo">Topographic</option><option value="relief">Shaded relief</option></optgroup><option value="none">No base map</option></select><p class="note" id="basemapDesc">A light map style that keeps the data in front: soft colors, few labels.</p> <button type="button" class="btn osmi-btn" id="osmInspect" aria-pressed="false" aria-describedby="osmInspectNote" data-no-glossary disabled><span class="ms-icon" aria-hidden="true">info</span>Inspect map</button><p class="note" id="osmInspectNote">Available once the base map has loaded.</p></div>
+    <div class="layer nocount">
+      <label><input type="checkbox" id="lyMuni" checked><span class="sw line" style="background:#205D7B"></span><span class="ly-name">Municipal boundaries <small class="src">Census 2020</small></span></label>
+      <button type="button" class="help-btn" data-help="muni" aria-label="What is this?"><span class="ms-icon" aria-hidden="true">help</span></button>
+    </div>
+    <div class="layer">
+      <label><input type="checkbox" id="lyBarrios"><span class="sw line" style="background:#205D7B"></span><span class="ly-name">Barrios <small class="src">Census 2020</small></span></label>
+      <button type="button" class="help-btn" data-help="barrios" aria-label="What is this?"><span class="ms-icon" aria-hidden="true">help</span></button>
+    </div>
+    <div class="layer">
+      <label><input type="checkbox" id="lyHexgrid"><span class="sw" style="background:linear-gradient(90deg,#eff3ff,#6baed6,#08519c)"></span><span class="ly-name">Hexagon grid (1 km²) <small class="src">Census 2020</small></span></label>
+      <button type="button" class="help-btn" data-help="fac_hexgrid" aria-label="What is this?"><span class="ms-icon" aria-hidden="true">help</span></button>
+    </div>
+
+    <h2 class="sec"><span class="ms-icon" aria-hidden="true" style="font-size:14px">work</span>Economy</h2>
+    <div class="layer">
+      <label><input type="checkbox" id="lyOz"><span class="sw" style="background:linear-gradient(90deg,#5e3c99 50%,#e66101 50%)"></span><span class="ly-name">Opportunity Zones 2.0 <small class="src">US Treasury</small></span></label>
+      <button type="button" class="help-btn" data-help="fac_oz" aria-label="What is this?"><span class="ms-icon" aria-hidden="true">help</span></button>
+    </div>
+
+    <h2 class="sec"><span class="ms-icon" aria-hidden="true" style="font-size:14px">home_work</span>Housing</h2>
+    <div class="layer">
+      <label><input type="checkbox" id="lyPubHousing"><span class="sw pin" style="background:#6A3D9A"></span><span class="ly-name">Public housing developments <small class="src" translate="no">HUD</small></span></label>
+      <button type="button" class="help-btn" data-help="fac_pubhousing" aria-label="What is this?"><span class="ms-icon" aria-hidden="true">help</span></button>
+    </div>
+    <div class="layer">
+      <label><input type="checkbox" id="lyLihtc"><span class="sw pin" style="background:#AD1457"></span><span class="ly-name">Tax credit housing projects <small class="src" translate="no">HUD LIHTC</small></span></label>
+      <button type="button" class="help-btn" data-help="fac_lihtc" aria-label="What is this?"><span class="ms-icon" aria-hidden="true">help</span></button>
+    </div>
+
+    <h2 class="sec"><span class="ms-icon" aria-hidden="true" style="font-size:14px">school</span>Education</h2>
+    <div class="layer">
+      <label><input type="checkbox" id="lyLibraries"><span class="sw pin" style="background:#0F7B6C"></span><span class="ly-name">Public libraries <small class="src" translate="no">USAC E-Rate</small></span></label>
+      <button type="button" class="help-btn" data-help="fac_libraries" aria-label="What is this?"><span class="ms-icon" aria-hidden="true">help</span></button>
+    </div>
+    <div class="layer">
+      <label><input type="checkbox" id="lySchools"><span class="sw pin" style="background:#E65100"></span><span class="ly-name">Public schools <small class="src" translate="no">NCES</small></span></label>
+      <button type="button" class="help-btn" data-help="fac_schools" aria-label="What is this?"><span class="ms-icon" aria-hidden="true">help</span></button>
+    </div>
+
+    <h2 class="sec"><span class="ms-icon" aria-hidden="true" style="font-size:14px">forest</span>Environment and climate</h2>
+    <div class="layer">
+      <label><input type="checkbox" id="lySurfHeat"><span class="sw" style="background:linear-gradient(90deg,#205D7B,#F2F2F2,#B82415)"></span><span class="ly-name">Surface heat, summer mornings and nights <small class="src" translate="no">USGS Landsat</small></span></label>
+      <button type="button" class="help-btn" data-help="surfheat" aria-label="What is this?"><span class="ms-icon" aria-hidden="true">help</span></button>
+    </div>
+    <div class="legend-box" id="surfLegend" style="display:none"></div>
+    <div class="layer">
+      <label><input type="checkbox" id="lyReservoirs"><span class="sw pin" style="background:#1565C0"></span><span class="ly-name">Reservoir levels <small class="src" translate="no">USGS</small></span></label>
+      <button type="button" class="help-btn" data-help="fac_reservoirs" aria-label="What is this?"><span class="ms-icon" aria-hidden="true">help</span></button>
+    </div>
+    <div class="layer">
+      <label><input type="checkbox" id="lyRivers"><span class="sw pin" style="background:#00838F"></span><span class="ly-name">River flow <small class="src" translate="no">USGS</small></span></label>
+      <button type="button" class="help-btn" data-help="fac_rivers" aria-label="What is this?"><span class="ms-icon" aria-hidden="true">help</span></button>
+    </div>
+    <div class="layer">
+      <label><input type="checkbox" id="lyGroundwater"><span class="sw pin" style="background:#827717"></span><span class="ly-name">Groundwater levels <small class="src" translate="no">USGS</small></span></label>
+      <button type="button" class="help-btn" data-help="fac_groundwater" aria-label="What is this?"><span class="ms-icon" aria-hidden="true">help</span></button>
+    </div>
+    <div class="layer">
+      <label><input type="checkbox" id="lyRain"><span class="sw pin" style="background:#EF6C00"></span><span class="ly-name">Rainfall <small class="src" translate="no">USGS</small></span></label>
+      <button type="button" class="help-btn" data-help="fac_rain" aria-label="What is this?"><span class="ms-icon" aria-hidden="true">help</span></button>
+    </div>
+    <div class="layer">
+      <label><input type="checkbox" id="lyWatersheds"><span class="sw" style="background:transparent;border:1.5px dashed #0B3D5C;box-shadow:inset 0 -3px 0 #1F78B4"></span><span class="ly-name">Watersheds and streams <small class="src" translate="no">USGS WBD, NHDPlus HR</small></span></label>
+      <button type="button" class="help-btn" data-help="watersheds" aria-label="What is this?"><span class="ms-icon" aria-hidden="true">help</span></button>
+    </div>
+    <div class="legend-box" id="shedLegend" style="display:none"></div>
+    <div class="layer">
+      <label><input type="checkbox" id="lyDumping"><span class="sw pin" style="background:#6D4C41"></span><span class="ly-name">Illegal dumping sites <small class="src">FPR field survey</small></span></label>
+      <button type="button" class="help-btn" data-help="fac_dumping" aria-label="What is this?"><span class="ms-icon" aria-hidden="true">help</span></button>
+    </div>
+    <h3 class="sec lsub">Land and protected areas</h3>
+    <div class="layer">
+      <label><input type="checkbox" id="lyProt"><span class="sw" style="background:#79901E;opacity:.7"></span><span class="ly-name">Protected areas <small class="src" translate="no">USGS PAD-US</small></span></label>
+      <button type="button" class="help-btn" data-help="protected" aria-label="What is this?"><span class="ms-icon" aria-hidden="true">help</span></button>
+    </div>
+    <div class="layer">
+      <label><input type="checkbox" id="lyLanduse"><span class="sw" style="background:#79901E;opacity:.7"></span><span class="ly-name">Land use 2015 <small class="src" translate="no">Junta de Planificación</small></span></label>
+      <button type="button" class="help-btn" data-help="landuse" aria-label="What is this?"><span class="ms-icon" aria-hidden="true">help</span></button>
+    </div>
+    <div class="btn-row lu-open"><button type="button" class="btn small" id="luAnalyze"><span class="ms-icon" aria-hidden="true">bar_chart</span>Land use by municipality and for Puerto Rico</button></div>
+    <div class="legend-box" id="luLegend" style="display:none">
+      <div class="legend-title">Classes on the map <small>untick to hide</small></div>
+      <label class="row lu-cls"><input type="checkbox" data-lu="SU" checked><span class="sw" style="background:#8C8E8E"></span>Suelo Urbano <small>urban</small></label>
+      <label class="row lu-cls"><input type="checkbox" data-lu="SURP" checked><span class="sw" style="background:#FFA600"></span>Urbanizable programado <small>planned growth</small></label>
+      <label class="row lu-cls"><input type="checkbox" data-lu="SURNP" checked><span class="sw" style="background:#FFC83C"></span>Urbanizable no programado <small>reserve growth</small></label>
+      <label class="row lu-cls"><input type="checkbox" data-lu="SRC" checked><span class="sw" style="background:#C2D85E"></span>Rústico común <small>ordinary rural</small></label>
+      <label class="row lu-cls"><input type="checkbox" data-lu="SREP" checked><span class="sw" style="background:#79901E"></span>Rústico especialmente protegido <small>protected rural</small></label>
+      <label class="row lu-cls"><input type="checkbox" data-lu="SREP-E" checked><span class="sw" style="background:#47560F"></span>SREP ecológico <small>ecological</small></label>
+      <label class="row lu-cls"><input type="checkbox" data-lu="SREP-A" checked><span class="sw" style="background:#A6BF33"></span>SREP agrícola <small>agricultural</small></label>
+      <label class="row lu-cls"><input type="checkbox" data-lu="SREP-H" checked><span class="sw" style="background:#338CB3"></span>SREP hídrico <small>water</small></label>
+      <label class="row lu-cls"><input type="checkbox" data-lu="SREP-EH" checked><span class="sw" style="background:#205D7B"></span>SREP ecológico e hídrico</label>
+      <label class="row lu-cls"><input type="checkbox" data-lu="SREP-AH" checked><span class="sw" style="background:#5FAFDA"></span>SREP agrícola e hídrico</label>
+      <div class="note" id="luZoning"></div>
+    </div>
+    <div class="layer">
+      <label><input type="checkbox" id="lySoil"><span class="sw" style="background:#1baf7a;opacity:.7"></span><span class="ly-name">Soils <small class="src" translate="no">USDA NRCS SSURGO</small></span></label>
+      <button type="button" class="help-btn" data-help="soil" aria-label="What is this?"><span class="ms-icon" aria-hidden="true">help</span></button>
+    </div>
+    <div class="legend-box" id="soilLegend" style="display:none"></div>
+    <div class="layer">
+      <label><input type="checkbox" id="lySlope"><span class="sw" style="background:linear-gradient(90deg,#F7F4EA,#C9A05A,#3E2410)"></span><span class="ly-name">Slope <small class="src" translate="no">USGS 3DEP</small></span></label>
+      <button type="button" class="help-btn" data-help="slope" aria-label="What is this?"><span class="ms-icon" aria-hidden="true">help</span></button>
+    </div>
+    <div class="legend-box" id="slopeLegend" style="display:none"></div>
+    <div class="layer">
+      <label><input type="checkbox" id="lyContours"><span class="sw" style="background:transparent;border-top:2px solid #5C3314;height:0;align-self:center"></span><span class="ly-name">Contour lines <small class="src" translate="no">USGS 3DEP</small></span></label>
+      <button type="button" class="help-btn" data-help="contours" aria-label="What is this?"><span class="ms-icon" aria-hidden="true">help</span></button>
+    </div>
+    <div class="legend-box" id="contourLegend" style="display:none"></div>
+
+    <h2 class="sec"><span class="ms-icon" aria-hidden="true" style="font-size:14px">flood</span>Hazards</h2>
+    <div class="layer">
+      <label><input type="checkbox" id="lyFlood"><span class="sw" style="background:#1F5F8B;opacity:.75"></span><span class="ly-name">Flood zones <small class="src" translate="no">FEMA</small></span></label>
+      <button type="button" class="help-btn" data-help="flood" aria-label="What is this?"><span class="ms-icon" aria-hidden="true">help</span></button>
+    </div>
+    <div class="legend-box" id="floodLegend" style="display:none">
+      <div class="row"><span class="sw" style="background:#0B3D5C"></span>VE / V — coastal high hazard (wave action)</div>
+      <div class="row"><span class="sw" style="background:#1F5F8B"></span>A / AE / AH / AO / A99 — 1% annual chance (SFHA)</div>
+      <div class="row"><span class="sw" style="background:#B82415;opacity:.8"></span>Regulatory floodway</div>
+      <div class="row"><span class="sw" style="background:#8FCAE8"></span>X shaded — 0.2% annual chance</div>
+    </div>
+    <div class="layer">
+      <label><input type="checkbox" id="lySlide"><span class="sw" style="background:#ff0000;opacity:.6"></span><span class="ly-name">Landslide susceptibility <small class="src" translate="no">USGS</small></span></label>
+      <button type="button" class="help-btn" data-help="slide" aria-label="What is this?"><span class="ms-icon" aria-hidden="true">help</span></button>
+    </div>
+    <div class="legend-box" id="slideLegend" style="display:none"></div>
+    <div class="layer">
+      <label><input type="checkbox" id="lySlr"><span class="sw" style="background:#2E86C1;opacity:.7"></span><span class="ly-name">Sea level rise <small class="src" translate="no">NOAA</small></span></label>
+      <button type="button" class="help-btn" data-help="slr" aria-label="What is this?"><span class="ms-icon" aria-hidden="true">help</span></button>
+    </div>
+    <div class="ctrl">
+      <label for="slr">Height of the rise <b id="slrVal">3 ft</b></label>
+      <input type="range" id="slr" min="1" max="10" step="1" value="3">
+      <div class="slr-ticks"><span>1 ft</span><span>5 ft</span><span>10 ft</span></div>
+    </div>
+
+    <h2 class="sec"><span class="ms-icon" aria-hidden="true" style="font-size:14px">commute</span>Infrastructure and mobility</h2>
+    <h3 class="sec lsub">Communications</h3>
+    <div class="layer">
+      <label><input type="checkbox" id="lyBroadband"><span class="sw" style="background:linear-gradient(90deg,#fbe9e7,#e57f63,#8a2312)"></span><span class="ly-name">Broadband gaps (FCC hexagons) <small class="src" translate="no">FCC</small></span></label>
+      <button type="button" class="help-btn" data-help="fac_broadband" aria-label="What is this?"><span class="ms-icon" aria-hidden="true">help</span></button>
+    </div>
+    <h3 class="sec lsub">Energy</h3>
+    <div class="layer">
+      <label><input type="checkbox" id="lyPowerLines"><span class="sw" style="background:transparent;border-top:3px solid #4a1486;height:0;margin-top:6px"></span><span class="ly-name">Transmission lines <small class="src" translate="no">OpenStreetMap</small></span></label>
+      <button type="button" class="help-btn" data-help="fac_powerlines" aria-label="What is this?"><span class="ms-icon" aria-hidden="true">help</span></button>
+    </div>
+    <div class="layer">
+      <label><input type="checkbox" id="lyPlants"><span class="sw pin" style="background:#E69F00"></span><span class="ly-name">Power plants <small class="src" translate="no">EIA</small></span></label>
+      <button type="button" class="help-btn" data-help="fac_plants" aria-label="What is this?"><span class="ms-icon" aria-hidden="true">help</span></button>
+    </div>
+    <h3 class="sec lsub">Mobility and transit</h3>
+    <div class="layer">
+      <label><input type="checkbox" id="lyRoutes"><span class="sw line" style="background:#B82415"></span><span class="ly-name">Transit routes <small class="src">ATI, municipal systems, OpenStreetMap</small></span></label>
+      <button type="button" class="help-btn" data-help="routes" aria-label="What is this?"><span class="ms-icon" aria-hidden="true">help</span></button>
+    </div>
+    <div class="layer">
+      <label><input type="checkbox" id="lyFprRoutes"><span class="sw line" style="background:#6A1B9A"></span><span class="ly-name">Municipal routes mapped by FPR <small class="src" translate="no">FPR</small></span></label>
+      <button type="button" class="help-btn" data-help="fac_fprroutes" aria-label="What is this?"><span class="ms-icon" aria-hidden="true">help</span></button>
+    </div>
+    <div class="layer">
+      <label><input type="checkbox" id="lyPublicos"><span class="sw line" style="background:#00695C"></span><span class="ly-name">Público routes (2020 list) <small class="src">Instituto de Estadísticas, ACT</small></span></label>
+      <button type="button" class="help-btn" data-help="fac_publicos" aria-label="What is this?"><span class="ms-icon" aria-hidden="true">help</span></button>
+    </div>
+    <div class="layer">
+      <label><input type="checkbox" id="lyTraffic"><span class="sw line" style="background:linear-gradient(90deg,#fee391,#fe9929,#8c2d04)"></span><span class="ly-name">Traffic on the main roads <small class="src" translate="no">FHWA HPMS</small></span></label>
+      <button type="button" class="help-btn" data-help="fac_traffic" aria-label="What is this?"><span class="ms-icon" aria-hidden="true">help</span></button>
+    </div>
+    <div class="layer">
+      <label><input type="checkbox" id="lyLinks"><span class="sw line" style="background:linear-gradient(90deg,#e66101 50%,#5e3c99 50%)"></span><span class="ly-name">Simulated connections between municipios <small class="src">FPR simulation</small></span></label>
+      <button type="button" class="help-btn" data-help="fac_links" aria-label="What is this?"><span class="ms-icon" aria-hidden="true">help</span></button>
+    </div>
+    <div class="layer">
+      <label><input type="checkbox" id="lyBridges"><span class="sw pin" style="background:#b2182b"></span><span class="ly-name">Bridges and tunnels <small class="src" translate="no">FHWA</small></span></label>
+      <button type="button" class="help-btn" data-help="fac_bridges" aria-label="What is this?"><span class="ms-icon" aria-hidden="true">help</span></button>
+    </div>
+    <div class="layer">
+      <label><input type="checkbox" id="lyAirports"><span class="sw pin" style="background:#0072B2"></span><span class="ly-name">Airports and heliports <small class="src" translate="no">FAA</small></span></label>
+      <button type="button" class="help-btn" data-help="fac_airports" aria-label="What is this?"><span class="ms-icon" aria-hidden="true">help</span></button>
+    </div>
+    <div class="layer">
+      <label><input type="checkbox" id="lyFerries"><span class="sw" style="background:transparent;border-top:3px dashed #0072B2;height:0;margin-top:6px"></span><span class="ly-name">Ferry routes and passengers <small class="src" translate="no">BTS</small></span></label>
+      <button type="button" class="help-btn" data-help="fac_ferries" aria-label="What is this?"><span class="ms-icon" aria-hidden="true">help</span></button>
+    </div>
+    <div class="layer">
+      <label><input type="checkbox" id="lyEvCharge"><span class="sw pin" style="background:#009E73"></span><span class="ly-name">Public EV charging stations <small class="src" translate="no">AFDC</small></span></label>
+      <button type="button" class="help-btn" data-help="fac_evcharge" aria-label="What is this?"><span class="ms-icon" aria-hidden="true">help</span></button>
+    </div>
+    <div class="layer">
+      <label><input type="checkbox" id="lyStops"><span class="sw pin" style="background:#205D7B"></span><span class="ly-name">Transit stops <small class="src" translate="no">ATI, OpenStreetMap</small> <small id="stopsCount"></small></span></label>
+      <button type="button" class="help-btn" data-help="stops" aria-label="What is this?"><span class="ms-icon" aria-hidden="true">help</span></button>
+    </div>
+    <div class="layer">
+      <label><input type="checkbox" id="lyHubs"><span class="sw pin" style="background:#2A2E2E"></span><span class="ly-name">Stations, terminals &amp; airports <small class="src" translate="no">ATI, OpenStreetMap, FAA</small></span></label>
+      <button type="button" class="help-btn" data-help="hubs" aria-label="What is this?"><span class="ms-icon" aria-hidden="true">help</span></button>
+    </div>
+    <div class="layer">
+      <label><input type="checkbox" id="lyTaxi"><span class="sw pin" style="background:#B56D00"></span><span class="ly-name">Taxi stands &amp; EV charging <small class="src" translate="no">OpenStreetMap</small></span></label>
+      <button type="button" class="help-btn" data-help="taxi" aria-label="What is this?"><span class="ms-icon" aria-hidden="true">help</span></button>
+    </div>
+    <label class="toggle"><input type="checkbox" id="walkRings"> Show 400 m walk radius around stops (zoomed in) <button type="button" class="help-btn" data-help="walk" aria-label="What is this?"><span class="ms-icon" aria-hidden="true">help</span></button></label>
+    <div class="legend-box" id="mobLegend" style="display:none">
+      <div class="row"><span class="sw" style="background:#B82415;height:3px;border:0"></span>Tren Urbano</div>
+      <div class="row"><span class="sw" style="background:#205D7B;height:3px;border:0"></span>ATI buses (AMA / Metrobús / Metro Urbano)</div>
+      <div class="row"><span class="sw" style="background:#607316;height:3px;border:0"></span>Municipal bus and trolley systems</div>
+      <div class="row"><span class="sw" style="background:none;height:0;border:0;border-top:3px dashed #B56D00"></span>Públicos (OpenStreetMap, no timetable)</div>
+      <div class="note">Solid lines follow the roads. Dashed, lighter lines: the feed lists the stops out of order, so the order of visit is inferred. Dotted lines join the stops straight because no road path could be found.</div>
+      <div class="row"><span class="sw" style="background:#338CB3;height:3px;border:0;border-top:3px dashed #338CB3;background:none"></span>Ferry (AcuaExpreso: Ceiba–Vieques–Culebra, Cataño–Old San Juan)</div>
+    </div>
+    <h3 class="sec lsub">Safety and emergencies</h3>
+    <div class="layer">
+      <label><input type="checkbox" id="lyFire"><span class="sw pin" style="background:#C62828"></span><span class="ly-name">Fire and EMS stations <small class="src" translate="no">USGS</small></span></label>
+      <button type="button" class="help-btn" data-help="fac_fire" aria-label="What is this?"><span class="ms-icon" aria-hidden="true">help</span></button>
+    </div>
+    <div class="layer">
+      <label><input type="checkbox" id="lyPolice"><span class="sw pin" style="background:#1F3A93"></span><span class="ly-name">Police stations <small class="src" translate="no">OpenStreetMap</small></span></label>
+      <button type="button" class="help-btn" data-help="fac_police" aria-label="What is this?"><span class="ms-icon" aria-hidden="true">help</span></button>
+    </div>
+
+    <h2 class="sec"><span class="ms-icon" aria-hidden="true" style="font-size:14px">groups</span>Communities</h2>
+    <div class="layer">
+      <label><input type="checkbox" id="lyComunidades"><span class="sw" style="background:#FF4D38;opacity:.6"></span><span class="ly-name">Comunidades Especiales <small class="src" translate="no">Junta de Planificación, 2006</small></span></label>
+      <button type="button" class="help-btn" data-help="comunidades" aria-label="What is this?"><span class="ms-icon" aria-hidden="true">help</span></button>
+    </div>
+    <div class="layer">
+      <label><input type="checkbox" id="lyWcrp"><span class="sw" style="border:0;border-radius:0;background:url(img/wcrp-pin.svg) center/contain no-repeat"></span><span class="ly-name">WCRP communities <small class="src" translate="no">FPR</small></span></label>
+      <button type="button" class="help-btn" data-help="wcrp" aria-label="What is this?"><span class="ms-icon" aria-hidden="true">help</span></button>
+    </div>
+    <div class="legend-box" id="wcrpLegend"><div class="row"><img src="img/wcrp-pin.svg" alt="" width="14" height="18">Plan approved by the Puerto Rico Department of Housing</div><div class="row"><img src="img/wcrp-pin-open.svg" alt="" width="14" height="18">Plan in progress</div></div>
+    <div class="layer">
+      <label><input type="checkbox" id="lyTownhalls"><span class="sw pin" style="background:#455A64"></span><span class="ly-name">City halls <small class="src" translate="no">OpenStreetMap</small></span></label>
+      <button type="button" class="help-btn" data-help="fac_townhalls" aria-label="What is this?"><span class="ms-icon" aria-hidden="true">help</span></button>
+    </div>
+    <div class="layer">
+      <label><input type="checkbox" id="lyHistoric"><span class="sw pin" style="background:#8C4A12"></span><span class="ly-name">Historic places <small class="src">NPS, National Register</small></span></label>
+      <button type="button" class="help-btn" data-help="fac_historic" aria-label="What is this?"><span class="ms-icon" aria-hidden="true">help</span></button>
+    </div>
+
+    <h2 class="sec"><span class="ms-icon" aria-hidden="true" style="font-size:14px">place</span>Visitor economy</h2>
+    <div class="layer">
+      <label><input type="checkbox" id="lyPlaces"><span class="sw pin" style="background:#338CB3"></span><span class="ly-name">Tourism places <small class="src" translate="no">Overture</small> <small id="placesCount"></small></span></label>
+      <button type="button" class="help-btn" data-help="places" aria-label="What is this?"><span class="ms-icon" aria-hidden="true">help</span></button>
+    </div>
+    <div class="chips" id="catChips"></div>
+    <div class="ctrl">
+      <label for="conf">Minimum confidence <b id="confVal">0.50</b></label>
+      <input type="range" id="conf" min="0" max="1" step="0.05" value="0.5">
+      <div class="note">Overture's estimate that a listing is a real, current place. 0.50 keeps the reliable majority; lower it to see everything.</div>
+    </div>
+    <label class="toggle"><input type="checkbox" id="worship"> Include places of worship <button type="button" class="help-btn" data-help="worship" aria-label="What is this?"><span class="ms-icon" aria-hidden="true">help</span></button></label>
+    <div class="ctrl">
+      <label for="placesView">Show places as</label>
+      <select id="placesView"><option value="pins">Pins</option><option value="hex2">Hexagons of 2 km²</option><option value="hex10">Hexagons of 10 km²</option><option value="hex50">Hexagons of 50 km²</option></select>
+      <div id="placesLegend"></div>
+    </div>
+  </section>
+
+  <!-- CATALOG -->
+  <section class="tab-page" id="tab-catalog" role="tabpanel" aria-labelledby="s-catalog">
+    <div class="ctrl"><label for="catQ">Find data</label><input id="catQ" type="search" placeholder="Search: rent, jobs, flood, transit…" autocomplete="off"></div>
+    <div class="cat-filters" role="group" aria-label="Filters">
+      <label>Domain<select id="catDomain"></select></label>
+      <label>Geography<select id="catLevel"></select></label>
+      <label>Covers year<select id="catYear"></select></label>
+      <label>License of the sources (strictest)<select id="catLicence"></select></label>
+      <label class="wide">Source<select id="catSource"></select></label>
+      <label class="chk wide"><input type="checkbox" id="catMapOnly" checked> Only what can go on the map</label>
+    </div>
+    <div class="btn-row"><button type="button" class="btn small" id="catReset">Reset filters</button></div>
+    <p class="note" id="catLang" hidden>The names and descriptions of the data are in English for now.</p>
+    <p class="note" id="catCount" role="status" aria-live="polite"></p>
+    <div id="catList"></div>
+    <div class="btn-row" id="catMoreRow" hidden><button type="button" class="btn small" id="catMore">Show more</button></div>
+    <div class="btn-row"><a class="btn" id="catDict" href="dictionary.html#browse"><span class="ms-icon" aria-hidden="true">menu_book</span>Open these in the data dictionary</a></div>
+  </section>
+
+  <!-- MUNICIPALITY -->
+  <section class="tab-page" id="tab-muni" role="tabpanel" aria-labelledby="s-muni">
+    <div class="ctrl"><select id="muniSel" aria-label="Municipality"><option value="">Choose a municipality…</option></select></div>
+    <div id="muniBody"><div class="empty">Choose a municipality from the list, or click one on the map, to see its tourism supply and exposure profile.</div></div>
+  </section>
+
+  <!-- REGION (js/region.js, loaded the first time the tab opens) -->
+  <section class="tab-page" id="tab-region" role="tabpanel" aria-labelledby="s-region">
+    <div class="ctrl"><select id="regionSel" aria-label="Region"><option value="">Choose a region…</option></select></div>
+    <div id="regionBody"><div class="empty">Choose a region to see its profile: its municipios added up, with the same measures as Place › Municipality.</div></div>
+  </section>
+
+  <!-- RANKINGS (Place › Rankings since decision 97) -->
+  <section class="tab-page" id="tab-rank" role="tabpanel" aria-labelledby="s-rank">
+    <div class="ctrl">
+      <label for="rankBy">Rank municipalities by any dataset</label>
+      <select id="rankBy" disabled><option>Loading the datasets…</option></select>
+    </div>
+    <div class="ctrl"><label for="rankNorm">Show as</label><select id="rankNorm" disabled></select></div>
+    <div class="btn-row"><button type="button" class="btn" id="rankMap"><span class="ms-icon" aria-hidden="true">map</span>Show on the map</button>
+    </div>
+    <div id="rankBody"></div>
+    <div class="btn-row"><button class="btn" id="dlCsv"><span class="ms-icon" aria-hidden="true">download</span>Download municipality table (CSV)</button></div>
+  </section>
+
+  <!-- MAP TOOLS (decision 97; js/maptools.js, loaded the first time the pane opens, makes each button open its tool where it works) -->
+  <section class="tab-page" id="tab-maptools" role="tabpanel" aria-labelledby="s-maptools" data-t-wait aria-hidden="true">
+    <div class="note">Tools that work on the map. Each one opens where it works: a layer, the workbench under the map or the Transit tab. The ranking of the municipalities is under <i>Place › Rankings</i>.</div>
+    <h2 class="sec mt-h">Measure an area</h2>
+    <ul class="mt-list">
+      <li class="mt-item"><button type="button" class="mt-tool" data-mt="m:line"><span class="ms-icon" aria-hidden="true">straighten</span>Measure distance and area</button><p class="mt-desc">Click points on the map for a straight-line distance, or outline an area for its size in km², hectares, cuerdas and acres.</p></li>
+      <li class="mt-item"><button type="button" class="mt-tool" data-mt="m:area"><span class="ms-icon" aria-hidden="true">draw</span>Draw an area</button><p class="mt-desc">Outline any area on the map and add it to Study areas, without a file: who lives there and what is there.</p></li>
+      <li class="mt-item"><button type="button" class="mt-tool" data-mt="b:study:saAroundH"><span class="ms-icon" aria-hidden="true">add_location_alt</span>Area around a point</button><p class="mt-desc">A circle or a ring (a buffer) around a point: who lives there and what is there.</p></li>
+      <li class="mt-item"><button type="button" class="mt-tool" data-mt="b:study:saWalkH"><span class="ms-icon" aria-hidden="true">hiking</span>Walking time</button><p class="mt-desc">The area within a 5 to 20 minute walk along the roads (a travel-time area).</p></li>
+      <li class="mt-item"><button type="button" class="mt-tool" data-mt="b:study:saDrainH"><span class="ms-icon" aria-hidden="true">water</span>What drains here</button><p class="mt-desc">The land whose rain flows to a point: its watershed, from the USGS stream network.</p></li>
+      <li class="mt-item"><button type="button" class="mt-tool" data-mt="b:study:saCrimH"><span class="ms-icon" aria-hidden="true">house</span>Property parcels (CRIM)</button><p class="mt-desc">Open the CRIM cadastre (Catastro Digital) at a point, in a new tab. Nothing is copied from it.</p></li>
+      <li class="mt-item"><button type="button" class="mt-tool" data-mt="b:study:saRegH"><span class="ms-icon" aria-hidden="true">map</span>Build my region</button><p class="mt-desc">Merge municipios or barrios into one area (a dissolve) and open its pooled profile.</p></li>
+      <li class="mt-item"><button type="button" class="mt-tool" data-mt="b:study:saPtsH"><span class="ms-icon" aria-hidden="true">upload</span>Count my points</button><p class="mt-desc">Load a file of points and count them by barrio or municipio. It is never uploaded.</p></li>
+      <li class="mt-item"><button type="button" class="mt-tool" data-mt="b:study:saLoadH"><span class="ms-icon" aria-hidden="true">layers</span>Study areas</button><p class="mt-desc">Load your own areas (GeoJSON), measure what each one holds and download what is inside.</p></li>
+      <li class="mt-item"><button type="button" class="mt-tool" data-mt="f:landuse"><span class="ms-icon" aria-hidden="true">home_work</span>Land-use analysis</button><p class="mt-desc">The share of each land-use class, for Puerto Rico and each municipio.</p></li>
+    </ul>
+    <h2 class="sec mt-h">Terrain and water</h2>
+    <ul class="mt-list">
+      <li class="mt-item"><button type="button" class="mt-tool" data-mt="l:lySlope"><span class="ms-icon" aria-hidden="true">landscape</span>Slope</button><p class="mt-desc">How steep the ground is. Its slider shows only the ground at or above a slope.</p></li>
+      <li class="mt-item"><button type="button" class="mt-tool" data-mt="l:lyContours"><span class="ms-icon" aria-hidden="true">terrain</span>Contour lines</button><p class="mt-desc">Lines of equal height every 10 to 100 m, following the zoom.</p></li>
+      <li class="mt-item"><button type="button" class="mt-tool" data-mt="l:lyWatersheds"><span class="ms-icon" aria-hidden="true">waves</span>Watersheds and streams</button><p class="mt-desc">The drainage areas and streams of the USGS network.</p></li>
+      <li class="mt-item"><button type="button" class="mt-tool" data-mt="l:lySlr"><span class="ms-icon" aria-hidden="true">flood</span>Sea level rise</button><p class="mt-desc">The area NOAA maps as flooded for a rise of 1 to 10 feet.</p></li>
+    </ul>
+    <h2 class="sec mt-h">Getting around</h2>
+    <ul class="mt-list">
+      <li class="mt-item"><button type="button" class="mt-tool" data-mt="s:planBox"><span class="ms-icon" aria-hidden="true">route</span>Plan a route</button><p class="mt-desc">A route along the roads: who and what it reaches, and where it connects.</p></li>
+      <li class="mt-item"><button type="button" class="mt-tool" data-mt="l:lyGaps"><span class="ms-icon" aria-hidden="true">directions_bus</span>Residents far from service</button><p class="mt-desc">Where people live beyond a walk to a stop with a current timetable.</p></li>
+      <li class="mt-item"><button type="button" class="mt-tool" data-mt="l:walkRings"><span class="ms-icon" aria-hidden="true">transfer_within_a_station</span>400 m walk radius</button><p class="mt-desc">Rings of 400 m around the stops, seen when zoomed in.</p></li>
+    </ul>
+    <h2 class="sec mt-h">Compare and combine</h2>
+    <ul class="mt-list">
+      <li class="mt-item"><button type="button" class="mt-tool" data-mt="b:swipe"><span class="ms-icon" aria-hidden="true">swap_vert</span>Compare two maps</button><p class="mt-desc">Slide between two layers on the same map.</p></li>
+      <li class="mt-item"><button type="button" class="mt-tool" data-mt="b:multiples"><span class="ms-icon" aria-hidden="true">table_view</span>Small multiples</button><p class="mt-desc">Several layers as small maps side by side.</p></li>
+      <li class="mt-item"><button type="button" class="mt-tool" data-mt="b:composite"><span class="ms-icon" aria-hidden="true">tune</span>Composite index</button><p class="mt-desc">Combine layers, with weights you choose, into one composite index.</p></li>
+      <li class="mt-item"><button type="button" class="mt-tool" data-mt="b:scenarios"><span class="ms-icon" aria-hidden="true">schedule</span>Scenarios</button><p class="mt-desc">Save what the map shows with its figures, and export it.</p></li>
+      <li class="mt-item"><button type="button" class="mt-tool" data-mt="h:hex10"><span class="ms-icon" aria-hidden="true">tour</span>Places in hexagons</button><p class="mt-desc">Count tourism places in hexagons of equal area.</p></li>
+    </ul>
+    <h2 class="sec mt-h">Share and download</h2>
+    <ul class="mt-list">
+      <li class="mt-item"><button type="button" class="mt-tool" data-mt="i:png"><span class="ms-icon" aria-hidden="true">image</span>Save the map as an image</button><p class="mt-desc">A PNG of the map as it is on screen, with its legend, scale, sources and date.</p></li>
+      <li class="mt-item"><button type="button" class="mt-tool" data-mt="c:copy"><span class="ms-icon" aria-hidden="true">link</span>Copy a link to this view</button><p class="mt-desc">The link reopens the map with its layers, year and place.</p></li>
+      <li class="mt-item"><button type="button" class="mt-tool" data-mt="b:table"><span class="ms-icon" aria-hidden="true">download</span>See the map as a table</button><p class="mt-desc">The values of the layers on the map, by municipio, with a CSV download.</p></li>
+    </ul>
+  </section>
+
+  <!-- TRANSIT NETWORK -->
+  <section class="tab-page" id="tab-transit" role="tabpanel" aria-labelledby="s-transit">
+    <div class="btn-row"><button type="button" class="btn" id="tvOnly">Show transit only on the map</button></div>
+    <!-- every h2.sec below is a fold (initFolds in network.js): Planning layers starts open, the others closed; a link that switches a layer on or holds a route opens its fold -->
+    <h2 class="sec"><span class="ms-icon" aria-hidden="true" style="font-size:14px">tune</span>Planning layers</h2>
+    <div class="layer"><label><input type="checkbox" id="lyGaps"><span class="sw pin" style="background:#FFA600"></span>Residents far from service</label><button type="button" class="help-btn" data-help="gaps" aria-label="What is this?"><span class="ms-icon" aria-hidden="true">help</span></button></div>
+    <div class="note" id="gapNote" aria-live="polite"></div>
+    <div class="layer"><label><input type="checkbox" id="lyXfer"><span class="sw pin" style="background:#fff;border:2px solid #205D7B"></span>Integration points</label><button type="button" class="help-btn" data-help="xfer" aria-label="What is this?"><span class="ms-icon" aria-hidden="true">help</span></button></div>
+    <div class="note" id="xferNote" aria-live="polite"></div>
+    <h2 class="sec" id="trLive"><span class="ms-icon" aria-hidden="true" style="font-size:14px">schedule</span>What is live</h2>
+    <div class="layer"><label><input type="checkbox" id="lyNow"><span class="sw pin" style="background:#607316"></span>Vehicles on their timetable now</label><button type="button" class="help-btn" data-help="now" aria-label="What is this?"><span class="ms-icon" aria-hidden="true">help</span></button></div>
+    <div class="note" id="nowNote" aria-live="polite"></div>
+    <div id="liveStatus"></div>
+    <h2 class="sec"><span class="ms-icon" aria-hidden="true" style="font-size:14px">directions_bus</span>Operators</h2>
+    <div id="netSummary"><div class="note">Loading the transit network…</div></div>
+    <div class="ctrl"><label for="opFilter">Show</label><select id="opFilter"><option value="all">All operators</option><option value="data">Operators with route data</option><option value="attention">Expired, expiring or no data</option><option value="nodata">No public data</option></select></div>
+    <div id="opList"></div>
+    <h2 class="sec"><span class="ms-icon" aria-hidden="true" style="font-size:14px">route</span>Plan a route</h2>
+    <div class="note">Name where a route starts, where it ends and any stops between (a town, street, landmark, stop or PR route number), or choose them on the map. The route follows roads, and the numbers show who and what it would reach, how much of it duplicates existing service, and where it could connect.</div>
+    <div id="planBox"><div class="note">Opening the route planner…</div></div>
+  </section>
+
+  <!-- ECONOMY -->
+  <section class="tab-page" id="tab-economy" role="tabpanel" aria-labelledby="s-economy">
+    <div id="econRoot"><div class="note">Loading the economy data…</div></div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="tab-page" id="tab-about" role="tabpanel" aria-labelledby="t-about" data-t-wait aria-hidden="true">
+    <div class="about-lead">
+      <h2 class="about-h">What is the PR Data Observatory?</h2>
+      <p><b>A living, open model of Puerto Rico.</b> It puts public data from many fields on one map and one timeline so you can see how things connect: where people live and what is near them, what things cost and what people earn, what is exposed to risk, and how all of it has changed.</p>
+      <p class="about-fpr">Developed by <a href="https://foundationforpuertorico.org/" target="_blank" rel="noopener">Foundation for Puerto Rico</a> as a <b>tool for public use and benefit</b>. It is free, needs no account, and is built from open and public data.</p>
+    </div>
+    <div class="kpis" id="aboutKpis"></div>
+
+    <h2 class="sec">What it covers</h2>
+    <ul class="about-list" id="aboutDomains"></ul>
+    <p class="note">The observatory keeps growing: a new field appears here and in the Overview when data for it is added. Fields marked “no data yet” are planned.</p>
+
+    <h2 class="sec">Who it is for</h2>
+    <ul class="about-list">
+      <li><b>Residents and community groups:</b> see how your municipality compares with others and what is near where you live.</li>
+      <li><b>Local and island planners:</b> find where people live far from services, test a new transit route and compare municipalities side by side.</li>
+      <li><b>Researchers, students and journalists:</b> every number has a definition, a source and a way to cite it in the data dictionary, and tables download as CSV.</li>
+      <li><b>Funders, nonprofits and recovery teams:</b> set money, needs and risks side by side to see where they meet.</li>
+    </ul>
+
+    <h2 class="sec">Start here: six steps</h2>
+    <ol class="about-steps">
+      <li><b>Explore by topic.</b> The <i>Explore</i> tab lists ten topics, from population to communities. Open one to see its maps and add them to the map, or search all the data. <i>Map layers</i> lists every layer of points, lines and areas, and <i>Catalog</i> every dataset.</li>
+      <li><b>See what is on the map.</b> The <i>On the map</i> panel lists every layer that is on, with its legend and year. Change, hide or remove a layer there.</li>
+      <li><b>Click a municipality or a place.</b> The <i>Place</i> tab shows its profile: housing, exposure to hazards, transit access and visitor places, and the profile of a region.</li>
+      <li><b>Analyze.</b> The <i>Tools</i> tab gathers the map tools, plans a route and holds the workbench: ready-made views, indexes and scenarios. <i>Place › Rankings</i> ranks the municipalities.</li>
+      <li><b>Ask a question.</b> Press <i>Ask</i> at the top, in English or Spanish. Try the examples below.</li>
+      <li><b>Check and share.</b> Open the <i>Data dictionary</i> to see what any number means, where it comes from and how to cite it. Copy a link to share your view. Download tables as CSV.</li>
+    </ol>
+    <div class="note"><b>New to maps?</b> <a href="learn.html">Learn</a> has short lessons that use this map: what a map is made of, how to compare places fairly and how to find what is near a place.</div>
+    <div class="btn-row"><button type="button" class="btn primary" data-ask-open="1"><span class="ms-icon" aria-hidden="true">chat_bubble</span>Ask the observatory</button><a class="btn" href="dictionary.html"><span class="ms-icon" aria-hidden="true">menu_book</span>Data dictionary</a></div>
+    <div class="note">Questions to try:</div>
+    <div class="chips" id="aboutAsk">
+      <button type="button" class="chip" data-ask="Where is unemployment highest?" style="background:#BDE0F2;color:#205D7B">Where is unemployment highest?</button>
+      <button type="button" class="chip" data-ask="Show poverty and unemployment together" style="background:#BDE0F2;color:#205D7B">Show poverty and unemployment together</button>
+      <button type="button" class="chip" data-ask="Tell me about Ponce" style="background:#BDE0F2;color:#205D7B">Tell me about Ponce</button>
+      <button type="button" class="chip" data-ask="What are the most interesting patterns?" style="background:#BDE0F2;color:#205D7B">What are the most interesting patterns?</button>
+      <button type="button" class="chip" data-ask="What data is missing?" style="background:#BDE0F2;color:#205D7B">What data is missing?</button>
+    </div>
+
+    <h2 class="sec">What is in each part</h2>
+    <details class="about-d"><summary>The tabs on this map</summary>
+      <dl class="about-dl">
+        <dt>Overview</dt><dd>One headline figure for each field, for the whole island, with a trend where there is one. Press Show on map to see where.</dd>
+        <dt>Layers</dt><dd>Switch map layers on and off, in groups that go from the whole island to single places: territory (municipal and barrio boundaries, and shading by any of the listed measures), hazards and environment, land and housing, infrastructure and mobility, community services, communities, and the visitor economy (tourism places by category).</dd>
+        <dt>Data Catalog</dt><dd>Search everything the observatory documents, filter it by field, geography, year, license and source, and add it to the map.</dd>
+        <dt>Municipality</dt><dd>Click a municipality for its profile: population, housing costs, share in flood zones, transit access, visitor places and more.</dd>
+        <dt>Rankings</dt><dd>Rank the 78 municipalities by any measure and download the table.</dd>
+        <dt>Map tools</dt><dd>Every tool that works on the map, in one list: the area around a point, walking time, what drains here, your own areas and points, slope and contour lines, route planning, comparing and combining layers, and sharing.</dd>
+        <dt>Transit</dt><dd>Every operator on the island and the state of its timetable, vehicles on their schedule right now, residents far from service, and a route planner that follows roads and scores a route.</dd>
+        <dt>Economy</dt><dd>More than 100 yearly datasets on jobs, pay, industries, unemployment, income, poverty, commuting, internet, housing and federal money. Layer as many as you like, compare two at once, and open a workbench with a table, scatter plot and trends.</dd>
+        <dt>About</dt><dd>This page.</dd>
+      </dl>
+    </details>
+    <details class="about-d"><summary>The top bar</summary>
+      <dl class="about-dl">
+        <dt>Search</dt><dd>Find a municipality, barrio, street, landmark, transit stop, route number or tourism place. Press <kbd>/</kbd> to jump to it.</dd>
+        <dt>Ask</dt><dd>A chat that finds datasets, answers questions with real numbers, puts the answer on the map and tells you what is missing. It builds every answer from the data loaded here (it is not a generative AI), and nothing you type leaves your browser.</dd>
+        <dt>Map</dt><dd>This 2D map.</dd>
+        <dt>3D + Time</dt><dd>An immersive 3D view with terrain and buildings, sea level rise by year, a replay of a day of transit, and hurricane tracks since 1851.</dd>
+        <dt>Housing</dt><dd>FPR's 2023 study <i>The State of Housing in Puerto Rico</i>, table by table, with live data for every year from 2010 to 2025.</dd>
+        <dt>Data dictionary</dt><dd>What every dataset, variable and measure means, its source and license, the glossary, the published data files, and how to cite.</dd>
+      </dl>
+    </details>
+
+    <h2 class="sec">Where the data come from</h2>
+    <p class="note">Public data from the US Census Bureau, Bureau of Labor Statistics, FEMA, NOAA, USGS, FAA, the Health Resources and Services Administration (HRSA), the Junta de Planificación, the Autoridad de Transporte Integrado and municipal transit feeds, OpenStreetMap, Overture Maps, and FPR's own 2023 housing study. Most have an open license, but not all: some sources, such as the municipal transit feeds and the Junta de Planificación's maps, state no license. The <a href="data-management.html">Data management</a> page gives the license class and review of every file.</p>
+    <p class="note">The <a href="dictionary.html#sources">data dictionary</a> lists every source with its license, the credit line to use and how often it changes, and <a href="dictionary.html#cite">how to cite</a> the observatory and any variable.</p>
+
+    <h2 class="sec">Keep in mind</h2>
+    <ul class="about-list tight">
+      <li><b>It is a snapshot.</b> The label at the top says which one. Transit timetables refresh every night; the rest is rebuilt in snapshots. Each dataset shows the year of its data.</li>
+      <li><b>Places are listings, not a census of businesses.</b> Tourism places come from Overture Maps and can be missing, duplicated or out of date. The confidence slider filters them.</li>
+      <li><b>Hazards are mapped zones.</b> A flood zone is FEMA's map of risk at a point, not a prediction, and it says nothing about a building's elevation or insurance.</li>
+      <li><b>Timetables are not live.</b> Real-time bus positions are not public today. “On their timetable” is a schedule calculation.</li>
+      <li><b>Survey numbers are estimates.</b> Margins of error are large in small municipalities. Jobs are counted where the work is done, not where people live, and informal work is not counted.</li>
+      <li><b>Patterns are not causes.</b> Use the observatory to ask better questions and plan, not as a legal, financial or engineering determination.</li>
+    </ul>
+
+    <h2 class="sec">Privacy</h2>
+    <p class="note" data-t="html">There are no accounts, cookies or analytics. What you type in the search box or the chat stays in your browser; the one exception is “Look up as an address online”, which sends that text to OpenStreetMap's Nominatim service (<span translate="no">nominatim.openstreetmap.org</span>).</p>
+    <p class="note">To draw the pages, your browser also asks other servers for files. Each server receives your IP address, the browser's usual HTTP headers and the file or tile it sends; a map tile shows which area of the map you are viewing. These are the servers:</p>
+    <ul class="about-list tight">
+      <li><b>GitHub Pages</b>, which hosts the observatory itself: every page and its data.</li>
+      <li><b>Google Fonts</b> (<span translate="no">fonts.googleapis.com</span>, <span translate="no">fonts.gstatic.com</span>): the fonts, on every page.</li>
+      <li><b>cdnjs</b> (<span translate="no">cdnjs.cloudflare.com</span>): code libraries (Leaflet, MapLibre, Chart.js) on the map, 3D and Housing pages and the barrio vulnerability page.</li>
+      <li><b>unpkg</b> (<span translate="no">unpkg.com</span>): the deck.gl and PMTiles libraries of the 3D view.</li>
+      <li><b>OpenFreeMap</b> (<span translate="no">tiles.openfreemap.org</span>, served through Cloudflare): the base map's style, vector tiles, icons and label fonts, on the map, 3D and barrio vulnerability pages.</li>
+      <li><b>Amazon Web Services</b> (<span translate="no">s3.amazonaws.com</span>): the terrain elevation tiles of the 3D view.</li>
+      <li><b>NOAA</b> (<span translate="no">coast.noaa.gov</span>): the sea level rise tiles, on the map and 3D pages, only while that layer is on.</li>
+    </ul>
+
+    <h2 class="sec">Cite it and tell us what is missing</h2>
+    <p class="note"><b>To cite:</b> Foundation for Puerto Rico, <i>PR Data Observatory</i>, <span class="snap"></span>. Please also credit the original sources, which the <a href="dictionary.html#cite">data dictionary</a> writes out for you.</p>
+    <p class="note">The observatory's database keeps growing as FPR adds open datasets. Ask the chat “What data is missing?” to see what is planned, or write to Foundation for Puerto Rico at <a href="https://foundationforpuertorico.org/" target="_blank" rel="noopener">foundationforpuertorico.org</a> with a correction or a dataset to add.</p>
+    <p class="note" id="aboutBuilt"></p>
+    <div class="note" style="margin-top:14px">Developed by <a href="https://foundationforpuertorico.org/" target="_blank" rel="noopener">Foundation for Puerto Rico</a> as a tool for public use and benefit.</div>
+  </section>
+</aside>
+
+<main id="map" aria-label="Interactive map of Puerto Rico">
+  <div class="map-toast" id="toast" role="status" aria-live="polite"><span class="ms-icon" aria-hidden="true">info</span><span id="toastText"></span></div>
+  <div class="hover-info" id="hoverInfo" aria-hidden="true"></div>
+  <div class="map-legend" id="mapLegend"></div>
+</main>
+
+<div class="help-pop" id="helpPop" role="dialog" aria-labelledby="helpTitle"><button type="button" class="help-close" id="helpClose" aria-label="Close"><span class="ms-icon" aria-hidden="true">close</span></button><b id="helpTitle"></b><div id="helpBody"></div><a class="help-learn" id="helpLearn" href="learn.html" data-t="skip" hidden></a></div>
+
+<script>I18N.apply();</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" integrity="sha384-NElt3Op+9NBMCYaef5HxeJmU4Xeard/Lku8ek6hoPTvYkQPh3zLIrJP7KiRocsxO" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.min.js" integrity="sha384-SIh+qcEBNMda8tT+rx66aCBuWtVYMVzRABqhK4eeQh4pjDHoRdVx8nYU4LQ5eGzI" crossorigin="anonymous"></script>
+<script src="js/icons.js?v=4"></script>
+<script src="js/common.js?v=20"></script>
+<script src="js/core/text.js?v=1"></script>
+<script src="js/core/palettes.js?v=2"></script>
+<script src="js/core/stats.js?v=4"></script>
+<script src="js/core/classify.js?v=2"></script>
+<script src="js/core/legend.js?v=3"></script>
+<script src="js/core/stack.js?v=11"></script>
+<script src="js/core/activelayers.js?v=9"></script>
+<script src="js/core/viewstate.js?v=24"></script>
+<script src="js/access.js?v=8"></script>
+<script src="js/roads.js?v=2"></script>
+<script src="js/plan.js?v=10"></script>
+<script src="js/core/cleanview.js?v=1"></script>
+<script src="js/app.js?v=118"></script>
+<script src="js/network.js?v=18"></script>
+<script src="js/econ_shell.js?v=29"></script>
+<script src="js/chatboot.js?v=61"></script>
+<script src="js/catalog.js?v=15"></script>
+</body>
+</html>

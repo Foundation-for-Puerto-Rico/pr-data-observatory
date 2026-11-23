@@ -1,0 +1,368 @@
+[
+ {
+  "id": "heat.heat_lst_med",
+  "name": "Median land surface temperature, summer mornings (Landsat, °C)",
+  "ask": {
+   "en": [
+    "heat",
+    "urban heat",
+    "heat island",
+    "hot surfaces",
+    "surface temperature"
+   ],
+   "es": [
+    "calor",
+    "calor urbano",
+    "isla de calor",
+    "superficies calientes",
+    "temperatura de la superficie"
+   ]
+  },
+  "domain": "environment",
+  "domains": [
+   "environment",
+   "health",
+   "hazards"
+  ],
+  "group": "Environment · Surface heat (Landsat)",
+  "kind": "variable",
+  "plain": "How hot the ground, roofs and pavement typically get on clear summer mornings, as Landsat's thermal sensor sees them: half the area's land is hotter than this.",
+  "definition": "The median, over the area's land, of each 60 m cell's land surface temperature on clear summer mornings (the median of the cell's cloud-free Landsat views). In degrees Celsius.",
+  "unit": "°C (land surface temperature)",
+  "value_type": "ratio",
+  "geography": "78 municipalities and Puerto Rico; also 901 barrios",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One window of three summers (June to September 2024-2026); rebuilt each October when a new summer is complete (refresh unit heat)."
+  },
+  "method": "heat.py lists every Landsat 8 and 9 Level-2 scene over Puerto Rico of June to September 2024-2026 with less than 70% cloud cover (246 scenes on six path/rows), reads each scene's surface temperature and QA_PIXEL at their first overview (60 m) with raster.py, only the tiles over the barrios, by HTTP range requests, and maps them onto one 60 m grid in UTM zone 20 (scenes in zone 19 through pyproj). An observation counts when QA_PIXEL says clear (bit 6), not cloud shadow, not water and not fill. Each cell's value is the median of its clear views (at least 3; the typical cell has 30). Where USGS has no surface temperature because its emissivity source (ASTER GED) has a gap, the build computes it from the scene's thermal radiance and atmosphere bands with an emissivity read from NDVI, fitted on USGS's own emissivity; against USGS where both exist the method's bias was -0.12, -0.24, +0.20 K on the build's check scenes (13.5% of the cells are mostly filled). A cell belongs to the barrio whose outline holds its centre; municipios and Puerto Rico pool the cells of their barrios. 100.0% of the 2,485,382 cells have a value. Checks at every build: Puerto Rico's median between 25 and 45 °C, San Juan's above it, Jayuya's and Adjuntas's below it.",
+  "sources": [
+   "usgs_landsat_c2_st",
+   "census_tiger"
+  ],
+  "source_detail": "USGS Landsat 8 and 9 Collection 2 Level-2 surface temperature (ST_B10) and pixel quality (QA_PIXEL), 244 scenes of June to September 2024-2026 with less than 70% cloud cover (https://doi.org/10.5066/P9OGBGM6), read from Microsoft Planetary Computer (https://planetarycomputer.microsoft.com/dataset/landsat-c2-l2) at 60 m. Barrio outlines: barrios.geojson; residents: 2020 census blocks (population_blocks.json).",
+  "how_to_read": "Puerto Rico: 33.4 °C. Hottest municipios: Santa Isabel (42.8 °C), Salinas (41.0 °C), San Juan (40.9 °C). Coolest: Jayuya (29.5 °C), Maricao (29.6 °C), Adjuntas (29.7 °C).",
+  "caveats": [
+   "Surface temperature, not air temperature: roofs, pavement and bare ground get much hotter than the air on a sunny morning, and tree canopy and grass stay closer to it.",
+   "Mid-morning (about 10:30 local time) on clear days of the summers: not the afternoon peak, not the night, and not cloudy days.",
+   "Elevation cools the land: compare places at similar heights. The Cordillera's barrios are cooler than the coast's for that reason as well as for their tree cover.",
+   "Landsat's thermal sensor sees about 100 m; the 60 m cells are finer than what it resolves, so a single roof or park is blurred into its neighbours.",
+   "Where USGS's emissivity source has gaps, the build computed the surface temperature itself (same physics, emissivity from vegetation; about half a degree of spread per view against USGS where both exist). Mostly computed this way: Aguada (100%), Aguadilla (100%), Rincón (95%), Moca (83%), Isabela (56%), Maricao (42%), Añasco (40%), Lares (35%), Las Marías (34%), Luquillo (29%), Fajardo (29%), San Sebastián (28%), Camuy (25%), Cayey (23%), Yauco (22%)."
+  ],
+  "see_also": [
+   "heat.heat_lst_p90",
+   "heat.heat_hot_land_pct"
+  ],
+  "where": {
+   "files": [
+    "heat_series.json:heat_lst_med",
+    "heat_barrio.json:heat_lst_med"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Environment · Surface heat (Landsat)): shade municipalities, or barrios (Settings > Area), by",
+     "href": "index.html#e=heat_lst_med.f.value.red.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-11-04"
+ },
+ {
+  "id": "heat.heat_lst_p90",
+  "name": "Hottest tenth of the land, surface temperature, summer mornings (Landsat, °C)",
+  "ask": {
+   "en": [
+    "hottest land",
+    "hot spots"
+   ],
+   "es": [
+    "terreno mas caliente",
+    "puntos calientes"
+   ]
+  },
+  "domain": "environment",
+  "domains": [
+   "environment",
+   "health",
+   "hazards"
+  ],
+  "group": "Environment · Surface heat (Landsat)",
+  "kind": "variable",
+  "plain": "How hot the hottest tenth of the area's land gets on clear summer mornings: its hot spots, which a median hides.",
+  "definition": "The 90th percentile, over the area's land, of each 60 m cell's land surface temperature on clear summer mornings (the median of the cell's cloud-free Landsat views). In degrees Celsius.",
+  "unit": "°C (land surface temperature)",
+  "value_type": "ratio",
+  "geography": "78 municipalities and Puerto Rico; also 901 barrios",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One window of three summers (June to September 2024-2026); rebuilt each October when a new summer is complete (refresh unit heat)."
+  },
+  "method": "heat.py lists every Landsat 8 and 9 Level-2 scene over Puerto Rico of June to September 2024-2026 with less than 70% cloud cover (246 scenes on six path/rows), reads each scene's surface temperature and QA_PIXEL at their first overview (60 m) with raster.py, only the tiles over the barrios, by HTTP range requests, and maps them onto one 60 m grid in UTM zone 20 (scenes in zone 19 through pyproj). An observation counts when QA_PIXEL says clear (bit 6), not cloud shadow, not water and not fill. Each cell's value is the median of its clear views (at least 3; the typical cell has 30). Where USGS has no surface temperature because its emissivity source (ASTER GED) has a gap, the build computes it from the scene's thermal radiance and atmosphere bands with an emissivity read from NDVI, fitted on USGS's own emissivity; against USGS where both exist the method's bias was -0.12, -0.24, +0.20 K on the build's check scenes (13.5% of the cells are mostly filled). A cell belongs to the barrio whose outline holds its centre; municipios and Puerto Rico pool the cells of their barrios. 100.0% of the 2,485,382 cells have a value. Checks at every build: Puerto Rico's median between 25 and 45 °C, San Juan's above it, Jayuya's and Adjuntas's below it.",
+  "sources": [
+   "usgs_landsat_c2_st",
+   "census_tiger"
+  ],
+  "source_detail": "USGS Landsat 8 and 9 Collection 2 Level-2 surface temperature (ST_B10) and pixel quality (QA_PIXEL), 244 scenes of June to September 2024-2026 with less than 70% cloud cover (https://doi.org/10.5066/P9OGBGM6), read from Microsoft Planetary Computer (https://planetarycomputer.microsoft.com/dataset/landsat-c2-l2) at 60 m. Barrio outlines: barrios.geojson; residents: 2020 census blocks (population_blocks.json).",
+  "how_to_read": "Puerto Rico: 40.5 °C (its median is 33.4 °C). Highest: Salinas (46.2 °C), Santa Isabel (45.8 °C), Cataño (45.3 °C).",
+  "caveats": [
+   "Surface temperature, not air temperature: roofs, pavement and bare ground get much hotter than the air on a sunny morning, and tree canopy and grass stay closer to it.",
+   "Mid-morning (about 10:30 local time) on clear days of the summers: not the afternoon peak, not the night, and not cloudy days.",
+   "Elevation cools the land: compare places at similar heights. The Cordillera's barrios are cooler than the coast's for that reason as well as for their tree cover.",
+   "Landsat's thermal sensor sees about 100 m; the 60 m cells are finer than what it resolves, so a single roof or park is blurred into its neighbours.",
+   "Where USGS's emissivity source has gaps, the build computed the surface temperature itself (same physics, emissivity from vegetation; about half a degree of spread per view against USGS where both exist). Mostly computed this way: Aguada (100%), Aguadilla (100%), Rincón (95%), Moca (83%), Isabela (56%), Maricao (42%), Añasco (40%), Lares (35%), Las Marías (34%), Luquillo (29%), Fajardo (29%), San Sebastián (28%), Camuy (25%), Cayey (23%), Yauco (22%)."
+  ],
+  "see_also": [
+   "heat.heat_lst_med",
+   "heat.heat_hot_land_pct"
+  ],
+  "where": {
+   "files": [
+    "heat_series.json:heat_lst_p90",
+    "heat_barrio.json:heat_lst_p90"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Environment · Surface heat (Landsat)): shade municipalities, or barrios (Settings > Area), by",
+     "href": "index.html#e=heat_lst_p90.f.value.red.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-11-04"
+ },
+ {
+  "id": "heat.heat_hot_land_pct",
+  "name": "Land among Puerto Rico's hottest tenth, summer mornings (Landsat, %)",
+  "domain": "environment",
+  "domains": [
+   "environment",
+   "health",
+   "hazards"
+  ],
+  "group": "Environment · Surface heat (Landsat)",
+  "kind": "variable",
+  "plain": "How much of the area's land is among the hottest tenth of Puerto Rico's land on clear summer mornings.",
+  "definition": "The share of the area's land cells whose surface temperature is above Puerto Rico's 90th percentile (40.5 °C), over its cells with a value. Puerto Rico's own share is 10% by construction.",
+  "unit": "% of the land with a value",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico; also 901 barrios",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One window of three summers (June to September 2024-2026); rebuilt each October when a new summer is complete (refresh unit heat)."
+  },
+  "method": "heat.py lists every Landsat 8 and 9 Level-2 scene over Puerto Rico of June to September 2024-2026 with less than 70% cloud cover (246 scenes on six path/rows), reads each scene's surface temperature and QA_PIXEL at their first overview (60 m) with raster.py, only the tiles over the barrios, by HTTP range requests, and maps them onto one 60 m grid in UTM zone 20 (scenes in zone 19 through pyproj). An observation counts when QA_PIXEL says clear (bit 6), not cloud shadow, not water and not fill. Each cell's value is the median of its clear views (at least 3; the typical cell has 30). Where USGS has no surface temperature because its emissivity source (ASTER GED) has a gap, the build computes it from the scene's thermal radiance and atmosphere bands with an emissivity read from NDVI, fitted on USGS's own emissivity; against USGS where both exist the method's bias was -0.12, -0.24, +0.20 K on the build's check scenes (13.5% of the cells are mostly filled). A cell belongs to the barrio whose outline holds its centre; municipios and Puerto Rico pool the cells of their barrios. 100.0% of the 2,485,382 cells have a value. Checks at every build: Puerto Rico's median between 25 and 45 °C, San Juan's above it, Jayuya's and Adjuntas's below it.",
+  "sources": [
+   "usgs_landsat_c2_st",
+   "census_tiger"
+  ],
+  "source_detail": "USGS Landsat 8 and 9 Collection 2 Level-2 surface temperature (ST_B10) and pixel quality (QA_PIXEL), 244 scenes of June to September 2024-2026 with less than 70% cloud cover (https://doi.org/10.5066/P9OGBGM6), read from Microsoft Planetary Computer (https://planetarycomputer.microsoft.com/dataset/landsat-c2-l2) at 60 m. Barrio outlines: barrios.geojson; residents: 2020 census blocks (population_blocks.json).",
+  "how_to_read": "Puerto Rico: 10.0% (10% by construction). Highest: Santa Isabel (75.0%), San Juan (53.5%), Salinas (53.4%).",
+  "caveats": [
+   "Surface temperature, not air temperature: roofs, pavement and bare ground get much hotter than the air on a sunny morning, and tree canopy and grass stay closer to it.",
+   "Mid-morning (about 10:30 local time) on clear days of the summers: not the afternoon peak, not the night, and not cloudy days.",
+   "Elevation cools the land: compare places at similar heights. The Cordillera's barrios are cooler than the coast's for that reason as well as for their tree cover.",
+   "Landsat's thermal sensor sees about 100 m; the 60 m cells are finer than what it resolves, so a single roof or park is blurred into its neighbours.",
+   "Where USGS's emissivity source has gaps, the build computed the surface temperature itself (same physics, emissivity from vegetation; about half a degree of spread per view against USGS where both exist). Mostly computed this way: Aguada (100%), Aguadilla (100%), Rincón (95%), Moca (83%), Isabela (56%), Maricao (42%), Añasco (40%), Lares (35%), Las Marías (34%), Luquillo (29%), Fajardo (29%), San Sebastián (28%), Camuy (25%), Cayey (23%), Yauco (22%).",
+   "Hot land is relative to Puerto Rico: the hottest 10% of its land on these mornings (above 40.5 °C), not a health threshold."
+  ],
+  "see_also": [
+   "heat.heat_lst_p90",
+   "heat.heat_res_hot_pct"
+  ],
+  "where": {
+   "files": [
+    "heat_series.json:heat_hot_land_pct",
+    "heat_barrio.json:heat_hot_land_pct"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Environment · Surface heat (Landsat)): shade municipalities, or barrios (Settings > Area), by",
+     "href": "index.html#e=heat_hot_land_pct.f.value.red.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-11-04"
+ },
+ {
+  "id": "heat.heat_res_hot",
+  "name": "Residents on Puerto Rico's hottest tenth of land (estimate)",
+  "domain": "environment",
+  "domains": [
+   "environment",
+   "health",
+   "hazards"
+  ],
+  "group": "Environment · Surface heat (Landsat)",
+  "kind": "variable",
+  "plain": "About how many people (2020 census) live on the hottest tenth of Puerto Rico's land on clear summer mornings.",
+  "definition": "The 2020 census residents whose block's internal point lies on a cell above Puerto Rico's 90th percentile of land surface temperature (40.5 °C). A count of residents; an estimate.",
+  "unit": "residents (2020 census)",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico; also 901 barrios",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One window of three summers (June to September 2024-2026); rebuilt each October when a new summer is complete (refresh unit heat)."
+  },
+  "method": "heat.py lists every Landsat 8 and 9 Level-2 scene over Puerto Rico of June to September 2024-2026 with less than 70% cloud cover (246 scenes on six path/rows), reads each scene's surface temperature and QA_PIXEL at their first overview (60 m) with raster.py, only the tiles over the barrios, by HTTP range requests, and maps them onto one 60 m grid in UTM zone 20 (scenes in zone 19 through pyproj). An observation counts when QA_PIXEL says clear (bit 6), not cloud shadow, not water and not fill. Each cell's value is the median of its clear views (at least 3; the typical cell has 30). Where USGS has no surface temperature because its emissivity source (ASTER GED) has a gap, the build computes it from the scene's thermal radiance and atmosphere bands with an emissivity read from NDVI, fitted on USGS's own emissivity; against USGS where both exist the method's bias was -0.12, -0.24, +0.20 K on the build's check scenes (13.5% of the cells are mostly filled). A cell belongs to the barrio whose outline holds its centre; municipios and Puerto Rico pool the cells of their barrios. 100.0% of the 2,485,382 cells have a value. Checks at every build: Puerto Rico's median between 25 and 45 °C, San Juan's above it, Jayuya's and Adjuntas's below it.",
+  "sources": [
+   "usgs_landsat_c2_st",
+   "census_tiger"
+  ],
+  "source_detail": "USGS Landsat 8 and 9 Collection 2 Level-2 surface temperature (ST_B10) and pixel quality (QA_PIXEL), 244 scenes of June to September 2024-2026 with less than 70% cloud cover (https://doi.org/10.5066/P9OGBGM6), read from Microsoft Planetary Computer (https://planetarycomputer.microsoft.com/dataset/landsat-c2-l2) at 60 m. Barrio outlines: barrios.geojson; residents: 2020 census blocks (population_blocks.json).",
+  "how_to_read": "Puerto Rico: 1,236,030 residents (37.6%). Most: San Juan (251,510), Bayamón (128,244), Carolina (108,293).",
+  "caveats": [
+   "An estimate from whole census blocks: rough for a barrio, where the edge of hot land can cut a block.",
+   "Hot land is relative to Puerto Rico: the hottest 10% of its land on these mornings (above 40.5 °C), not a health threshold.",
+   "Surface temperature, not air temperature: roofs, pavement and bare ground get much hotter than the air on a sunny morning, and tree canopy and grass stay closer to it.",
+   "Mid-morning (about 10:30 local time) on clear days of the summers: not the afternoon peak, not the night, and not cloudy days."
+  ],
+  "see_also": [
+   "heat.heat_res_hot_pct",
+   "heat.heat_hot_land_pct"
+  ],
+  "where": {
+   "files": [
+    "heat_series.json:heat_res_hot",
+    "heat_barrio.json:heat_res_hot"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Environment · Surface heat (Landsat)): shade municipalities, or barrios (Settings > Area), by",
+     "href": "index.html#e=heat_res_hot.f.value.red.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-11-04"
+ },
+ {
+  "id": "heat.heat_res_hot_pct",
+  "name": "Residents on Puerto Rico's hottest tenth of land (estimate, %)",
+  "domain": "environment",
+  "domains": [
+   "environment",
+   "health",
+   "hazards"
+  ],
+  "group": "Environment · Surface heat (Landsat)",
+  "kind": "variable",
+  "plain": "Out of every 100 residents (2020 census), about how many live on the hottest tenth of Puerto Rico's land on clear summer mornings.",
+  "definition": "The share of the area's 2020 census residents whose block's internal point lies on a cell above Puerto Rico's 90th percentile of land surface temperature (40.5 °C). An estimate.",
+  "unit": "% of residents (2020 census)",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico; also 901 barrios",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One window of three summers (June to September 2024-2026); rebuilt each October when a new summer is complete (refresh unit heat)."
+  },
+  "method": "heat.py lists every Landsat 8 and 9 Level-2 scene over Puerto Rico of June to September 2024-2026 with less than 70% cloud cover (246 scenes on six path/rows), reads each scene's surface temperature and QA_PIXEL at their first overview (60 m) with raster.py, only the tiles over the barrios, by HTTP range requests, and maps them onto one 60 m grid in UTM zone 20 (scenes in zone 19 through pyproj). An observation counts when QA_PIXEL says clear (bit 6), not cloud shadow, not water and not fill. Each cell's value is the median of its clear views (at least 3; the typical cell has 30). Where USGS has no surface temperature because its emissivity source (ASTER GED) has a gap, the build computes it from the scene's thermal radiance and atmosphere bands with an emissivity read from NDVI, fitted on USGS's own emissivity; against USGS where both exist the method's bias was -0.12, -0.24, +0.20 K on the build's check scenes (13.5% of the cells are mostly filled). A cell belongs to the barrio whose outline holds its centre; municipios and Puerto Rico pool the cells of their barrios. 100.0% of the 2,485,382 cells have a value. Checks at every build: Puerto Rico's median between 25 and 45 °C, San Juan's above it, Jayuya's and Adjuntas's below it.",
+  "sources": [
+   "usgs_landsat_c2_st",
+   "census_tiger"
+  ],
+  "source_detail": "USGS Landsat 8 and 9 Collection 2 Level-2 surface temperature (ST_B10) and pixel quality (QA_PIXEL), 244 scenes of June to September 2024-2026 with less than 70% cloud cover (https://doi.org/10.5066/P9OGBGM6), read from Microsoft Planetary Computer (https://planetarycomputer.microsoft.com/dataset/landsat-c2-l2) at 60 m. Barrio outlines: barrios.geojson; residents: 2020 census blocks (population_blocks.json).",
+  "how_to_read": "Puerto Rico: 37.6% of the residents live on its hottest tenth of land, more than 10% because people live on the warmer lowland and urban land. Highest: Santa Isabel (91.1%), Salinas (80.1%), Ponce (75.7%).",
+  "caveats": [
+   "An estimate from whole census blocks: rough for a barrio, where the edge of hot land can cut a block.",
+   "Hot land is relative to Puerto Rico: the hottest 10% of its land on these mornings (above 40.5 °C), not a health threshold.",
+   "Surface temperature, not air temperature: roofs, pavement and bare ground get much hotter than the air on a sunny morning, and tree canopy and grass stay closer to it.",
+   "Mid-morning (about 10:30 local time) on clear days of the summers: not the afternoon peak, not the night, and not cloudy days."
+  ],
+  "see_also": [
+   "heat.heat_res_hot",
+   "heat.heat_hot_land_pct"
+  ],
+  "where": {
+   "files": [
+    "heat_series.json:heat_res_hot_pct",
+    "heat_barrio.json:heat_res_hot_pct"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Environment · Surface heat (Landsat)): shade municipalities, or barrios (Settings > Area), by",
+     "href": "index.html#e=heat_res_hot_pct.f.value.red.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-11-04"
+ },
+ {
+  "id": "heat.surface_layer",
+  "name": "Surface heat, summer mornings and nights (map layer, 2D map and 3D view)",
+  "ask": {
+   "en": [
+    "surface heat map",
+    "heat layer",
+    "hot surfaces map"
+   ],
+   "es": [
+    "mapa de calor de la superficie",
+    "capa de calor",
+    "mapa de superficies calientes"
+   ]
+  },
+  "domain": "environment",
+  "domains": [
+   "environment",
+   "health",
+   "hazards"
+  ],
+  "group": "Environment · Surface heat (Landsat)",
+  "kind": "layer",
+  "plain": "A map layer that colours every 60 m of land by how hot its surface gets on clear summer mornings, or, with the legend's switch, how warm it stays on clear summer nights, from blue (cooler) to red (hotter). In the 3D view it is draped on the terrain under the 3D buildings.",
+  "definition": "The median land surface temperature of each 60 m cell (the same values as heat.heat_lst_med, before they are pooled by area), drawn on a diverging scale: grey at Puerto Rico's median, the darkest blue and red at the median minus and plus the larger of the distances from it to the 2nd and 98th percentiles, rounded up to a whole degree; values beyond are drawn at the ends. 64 colour steps. Water and cells with fewer than 3 clear views are transparent. The legend's Morning and Night switch shows the night composite of ecostress.py instead (night_heat_surface.png: ECOSTRESS read at 70 m onto the same grid, its own scale around Puerto Rico's night median); the Colours switch recolours either image for the land in view or for Puerto Rico.",
+  "unit": "°C (land surface temperature), as colour",
+  "value_type": "ratio",
+  "geography": "Puerto Rico, Vieques and Culebra, 60 m cells (Mona, Monito and Desecheo left out)",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One window of three summers (June to September 2024-2026); rebuilt each October when a new summer is complete (refresh unit heat)."
+  },
+  "method": "heat.py builds the composite (heat.heat_lst_med) and surface_image.py draws it: each pixel of a Web Mercator image of about one cell per pixel takes the value of the cell under its centre (nearest, so nothing is invented between cells), coloured on the scale of heat_surface.json, and written as an indexed PNG with zlib. The 2D map lays it with Leaflet's image overlay, under every other layer; the 3D view adds it as a MapLibre image source, draped on the terrain over the hillshade and under the 3D buildings, at 80% opacity.",
+  "sources": [
+   "usgs_landsat_c2_st",
+   "nasa_ecostress_lste"
+  ],
+  "source_detail": "heat.py (compute, the composite), surface_image.py (mercator_png); app.js (loadSurf) and twin3d.js (addSurfHeat) draw it",
+  "how_to_read": "Read the colour against Puerto Rico's median: blue land is cooler than the typical surface, red land hotter. It is the surface, not the air, on clear mornings; the mountains are cooler partly because they are higher, so compare places at similar heights. One pixel is one 60 m cell: a cell mixes roofs, streets and trees.",
+  "caveats": [
+   "Landsat's thermal sensor sees about 100 m; the 60 m cells are its pixels resampled, so a street or a single roof is not resolved.",
+   "Mid-morning on clear days only (about 10:30): not the afternoon peak, the night or cloudy days.",
+   "Land surface temperature, not air temperature: a dark roof can be 20 °C or more above the air.",
+   "Night values are ECOSTRESS passes between 21:00 and 06:00, whatever the hour: a place seen mostly before midnight reads a little warmer than one seen mostly before dawn."
+  ],
+  "see_also": [
+   "heat.heat_lst_med",
+   "heat.heat_hot_land_pct"
+  ],
+  "where": {
+   "files": [
+    "heat_surface.png:*",
+    "heat_surface.json:*",
+    "night_heat_surface.png:*",
+    "night_heat_surface.json:*"
+   ],
+   "view": [
+    {
+     "label": "Map, Explore › Map layers: Environment and climate",
+     "href": "index.html#l=muni,surfheat"
+    },
+    {
+     "label": "3D view, Layers tab: Environment and climate",
+     "href": "3d.html#l=muni,surfheat,terrain,buildings"
+    }
+   ]
+  },
+  "added": "2026-11-05"
+ }
+]

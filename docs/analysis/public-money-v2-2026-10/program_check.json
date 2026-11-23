@@ -1,0 +1,1075 @@
+{
+ "rule": {
+  "min_places": 20,
+  "max_san_juan_pct": 40,
+  "max_unplaced_pct": 50
+ },
+ "years": {
+  "ss_retirement": {
+   "2008": {
+    "municipios": 1,
+    "san_juan_pct": 100.0,
+    "unplaced_pct": 0.0,
+    "passes": false
+   },
+   "2009": {
+    "municipios": 1,
+    "san_juan_pct": 100.0,
+    "unplaced_pct": 0.0,
+    "passes": false
+   },
+   "2010": {
+    "municipios": 1,
+    "san_juan_pct": 100.0,
+    "unplaced_pct": 0.0,
+    "passes": false
+   },
+   "2011": {
+    "municipios": 78,
+    "san_juan_pct": 54.4,
+    "unplaced_pct": 0.0,
+    "passes": false
+   },
+   "2012": {
+    "municipios": 78,
+    "san_juan_pct": 14.5,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2013": {
+    "municipios": 78,
+    "san_juan_pct": 14.4,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2014": {
+    "municipios": 78,
+    "san_juan_pct": 14.3,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2015": {
+    "municipios": 78,
+    "san_juan_pct": 14.2,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2016": {
+    "municipios": 78,
+    "san_juan_pct": 14.2,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2017": {
+    "municipios": 78,
+    "san_juan_pct": 14.0,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2018": {
+    "municipios": 78,
+    "san_juan_pct": 14.0,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2019": {
+    "municipios": 78,
+    "san_juan_pct": 13.8,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2020": {
+    "municipios": 78,
+    "san_juan_pct": 14.2,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2021": {
+    "municipios": 78,
+    "san_juan_pct": 14.0,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2022": {
+    "municipios": 78,
+    "san_juan_pct": 13.9,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2023": {
+    "municipios": 78,
+    "san_juan_pct": 13.6,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2024": {
+    "municipios": 78,
+    "san_juan_pct": 13.5,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2025": {
+    "municipios": 78,
+    "san_juan_pct": 13.4,
+    "unplaced_pct": 0.0,
+    "passes": true
+   }
+  },
+  "ss_disability": {
+   "2008": {
+    "municipios": 1,
+    "san_juan_pct": 100.0,
+    "unplaced_pct": 0.0,
+    "passes": false
+   },
+   "2009": {
+    "municipios": 1,
+    "san_juan_pct": 100.0,
+    "unplaced_pct": 0.0,
+    "passes": false
+   },
+   "2010": {
+    "municipios": 1,
+    "san_juan_pct": 100.0,
+    "unplaced_pct": 0.0,
+    "passes": false
+   },
+   "2011": {
+    "municipios": 78,
+    "san_juan_pct": 51.9,
+    "unplaced_pct": 0.0,
+    "passes": false
+   },
+   "2012": {
+    "municipios": 78,
+    "san_juan_pct": 6.1,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2013": {
+    "municipios": 78,
+    "san_juan_pct": 6.1,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2014": {
+    "municipios": 78,
+    "san_juan_pct": 6.1,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2015": {
+    "municipios": 78,
+    "san_juan_pct": 6.0,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2016": {
+    "municipios": 78,
+    "san_juan_pct": 6.0,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2017": {
+    "municipios": 78,
+    "san_juan_pct": 5.9,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2018": {
+    "municipios": 78,
+    "san_juan_pct": 5.7,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2019": {
+    "municipios": 78,
+    "san_juan_pct": 5.7,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2020": {
+    "municipios": 78,
+    "san_juan_pct": 5.6,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2021": {
+    "municipios": 78,
+    "san_juan_pct": 5.6,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2022": {
+    "municipios": 78,
+    "san_juan_pct": 5.6,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2023": {
+    "municipios": 78,
+    "san_juan_pct": 5.5,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2024": {
+    "municipios": 78,
+    "san_juan_pct": 5.4,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2025": {
+    "municipios": 78,
+    "san_juan_pct": 5.3,
+    "unplaced_pct": 0.0,
+    "passes": true
+   }
+  },
+  "ss_survivors": {
+   "2008": {
+    "municipios": 1,
+    "san_juan_pct": 100.0,
+    "unplaced_pct": 0.0,
+    "passes": false
+   },
+   "2009": {
+    "municipios": 1,
+    "san_juan_pct": 100.0,
+    "unplaced_pct": 0.0,
+    "passes": false
+   },
+   "2010": {
+    "municipios": 1,
+    "san_juan_pct": 100.0,
+    "unplaced_pct": 0.0,
+    "passes": false
+   },
+   "2011": {
+    "municipios": 78,
+    "san_juan_pct": 68.8,
+    "unplaced_pct": 0.0,
+    "passes": false
+   },
+   "2012": {
+    "municipios": 78,
+    "san_juan_pct": 13.5,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2013": {
+    "municipios": 78,
+    "san_juan_pct": 13.2,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2014": {
+    "municipios": 78,
+    "san_juan_pct": 13.1,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2015": {
+    "municipios": 78,
+    "san_juan_pct": 12.9,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2016": {
+    "municipios": 78,
+    "san_juan_pct": 12.9,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2017": {
+    "municipios": 78,
+    "san_juan_pct": 12.8,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2018": {
+    "municipios": 78,
+    "san_juan_pct": 12.7,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2019": {
+    "municipios": 78,
+    "san_juan_pct": 12.4,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2020": {
+    "municipios": 78,
+    "san_juan_pct": 12.4,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2021": {
+    "municipios": 78,
+    "san_juan_pct": 12.2,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2022": {
+    "municipios": 78,
+    "san_juan_pct": 12.1,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2023": {
+    "municipios": 78,
+    "san_juan_pct": 11.8,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2024": {
+    "municipios": 78,
+    "san_juan_pct": 11.7,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2025": {
+    "municipios": 78,
+    "san_juan_pct": 11.4,
+    "unplaced_pct": 0.0,
+    "passes": true
+   }
+  },
+  "va_compensation": {
+   "2008": {
+    "municipios": 0,
+    "san_juan_pct": null,
+    "unplaced_pct": null,
+    "passes": false
+   },
+   "2009": {
+    "municipios": 0,
+    "san_juan_pct": null,
+    "unplaced_pct": null,
+    "passes": false
+   },
+   "2010": {
+    "municipios": 0,
+    "san_juan_pct": null,
+    "unplaced_pct": null,
+    "passes": false
+   },
+   "2011": {
+    "municipios": 78,
+    "san_juan_pct": 9.8,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2012": {
+    "municipios": 78,
+    "san_juan_pct": 9.0,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2013": {
+    "municipios": 78,
+    "san_juan_pct": 8.8,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2014": {
+    "municipios": 78,
+    "san_juan_pct": 8.8,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2015": {
+    "municipios": 78,
+    "san_juan_pct": 8.6,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2016": {
+    "municipios": 78,
+    "san_juan_pct": 8.6,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2017": {
+    "municipios": 78,
+    "san_juan_pct": 8.2,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2018": {
+    "municipios": 78,
+    "san_juan_pct": 8.3,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2019": {
+    "municipios": 78,
+    "san_juan_pct": 8.2,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2020": {
+    "municipios": 78,
+    "san_juan_pct": 8.1,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2021": {
+    "municipios": 78,
+    "san_juan_pct": 7.9,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2022": {
+    "municipios": 78,
+    "san_juan_pct": 7.7,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2023": {
+    "municipios": 78,
+    "san_juan_pct": 8.0,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2024": {
+    "municipios": 78,
+    "san_juan_pct": 7.9,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2025": {
+    "municipios": 78,
+    "san_juan_pct": 7.7,
+    "unplaced_pct": 0.0,
+    "passes": true
+   }
+  },
+  "pell": {
+   "2008": {
+    "municipios": 24,
+    "san_juan_pct": 57.8,
+    "unplaced_pct": 0.0,
+    "passes": false
+   },
+   "2009": {
+    "municipios": 24,
+    "san_juan_pct": 60.5,
+    "unplaced_pct": 0.0,
+    "passes": false
+   },
+   "2010": {
+    "municipios": 25,
+    "san_juan_pct": 54.9,
+    "unplaced_pct": 0.0,
+    "passes": false
+   },
+   "2011": {
+    "municipios": 25,
+    "san_juan_pct": 36.5,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2012": {
+    "municipios": 25,
+    "san_juan_pct": 34.7,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2013": {
+    "municipios": 25,
+    "san_juan_pct": 38.3,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2014": {
+    "municipios": 25,
+    "san_juan_pct": 42.9,
+    "unplaced_pct": 0.0,
+    "passes": false
+   },
+   "2015": {
+    "municipios": 27,
+    "san_juan_pct": 35.5,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2016": {
+    "municipios": 27,
+    "san_juan_pct": 27.4,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2017": {
+    "municipios": 27,
+    "san_juan_pct": 35.7,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2018": {
+    "municipios": 26,
+    "san_juan_pct": 28.2,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2019": {
+    "municipios": 28,
+    "san_juan_pct": 26.0,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2020": {
+    "municipios": 28,
+    "san_juan_pct": 24.1,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2021": {
+    "municipios": 26,
+    "san_juan_pct": 26.0,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2022": {
+    "municipios": 25,
+    "san_juan_pct": 25.1,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2023": {
+    "municipios": 25,
+    "san_juan_pct": 24.3,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2024": {
+    "municipios": 23,
+    "san_juan_pct": 26.3,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2025": {
+    "municipios": 24,
+    "san_juan_pct": 29.6,
+    "unplaced_pct": 0.0,
+    "passes": true
+   }
+  },
+  "head_start": {
+   "2008": {
+    "municipios": 0,
+    "san_juan_pct": null,
+    "unplaced_pct": null,
+    "passes": false
+   },
+   "2009": {
+    "municipios": 0,
+    "san_juan_pct": null,
+    "unplaced_pct": 100.0,
+    "passes": false
+   },
+   "2010": {
+    "municipios": 0,
+    "san_juan_pct": null,
+    "unplaced_pct": 100.0,
+    "passes": false
+   },
+   "2011": {
+    "municipios": 0,
+    "san_juan_pct": null,
+    "unplaced_pct": 100.0,
+    "passes": false
+   },
+   "2012": {
+    "municipios": 0,
+    "san_juan_pct": null,
+    "unplaced_pct": 100.0,
+    "passes": false
+   },
+   "2013": {
+    "municipios": 0,
+    "san_juan_pct": null,
+    "unplaced_pct": 100.0,
+    "passes": false
+   },
+   "2014": {
+    "municipios": 13,
+    "san_juan_pct": 67.3,
+    "unplaced_pct": 26.6,
+    "passes": false
+   },
+   "2015": {
+    "municipios": 22,
+    "san_juan_pct": 58.7,
+    "unplaced_pct": 0.2,
+    "passes": false
+   },
+   "2016": {
+    "municipios": 24,
+    "san_juan_pct": 58.1,
+    "unplaced_pct": 0.1,
+    "passes": false
+   },
+   "2017": {
+    "municipios": 24,
+    "san_juan_pct": 38.1,
+    "unplaced_pct": 20.9,
+    "passes": true
+   },
+   "2018": {
+    "municipios": 24,
+    "san_juan_pct": 21.4,
+    "unplaced_pct": 27.8,
+    "passes": true
+   },
+   "2019": {
+    "municipios": 21,
+    "san_juan_pct": 22.9,
+    "unplaced_pct": 39.1,
+    "passes": true
+   },
+   "2020": {
+    "municipios": 26,
+    "san_juan_pct": 19.6,
+    "unplaced_pct": 21.9,
+    "passes": true
+   },
+   "2021": {
+    "municipios": 26,
+    "san_juan_pct": 31.3,
+    "unplaced_pct": 7.4,
+    "passes": true
+   },
+   "2022": {
+    "municipios": 25,
+    "san_juan_pct": 32.9,
+    "unplaced_pct": 4.3,
+    "passes": true
+   },
+   "2023": {
+    "municipios": 25,
+    "san_juan_pct": 21.1,
+    "unplaced_pct": 12.1,
+    "passes": true
+   },
+   "2024": {
+    "municipios": 28,
+    "san_juan_pct": 15.2,
+    "unplaced_pct": 12.5,
+    "passes": true
+   },
+   "2025": {
+    "municipios": 26,
+    "san_juan_pct": 19.8,
+    "unplaced_pct": 15.5,
+    "passes": true
+   }
+  },
+  "pbra": {
+   "2008": {
+    "municipios": 7,
+    "san_juan_pct": 76.6,
+    "unplaced_pct": 94.2,
+    "passes": false
+   },
+   "2009": {
+    "municipios": 0,
+    "san_juan_pct": null,
+    "unplaced_pct": 100.0,
+    "passes": false
+   },
+   "2010": {
+    "municipios": 11,
+    "san_juan_pct": 84.4,
+    "unplaced_pct": 6.5,
+    "passes": false
+   },
+   "2011": {
+    "municipios": 36,
+    "san_juan_pct": 64.7,
+    "unplaced_pct": 0.4,
+    "passes": false
+   },
+   "2012": {
+    "municipios": 17,
+    "san_juan_pct": 82.3,
+    "unplaced_pct": 1.1,
+    "passes": false
+   },
+   "2013": {
+    "municipios": 40,
+    "san_juan_pct": 73.5,
+    "unplaced_pct": 1.0,
+    "passes": false
+   },
+   "2014": {
+    "municipios": 18,
+    "san_juan_pct": 83.3,
+    "unplaced_pct": 0.1,
+    "passes": false
+   },
+   "2015": {
+    "municipios": 32,
+    "san_juan_pct": 65.5,
+    "unplaced_pct": 0.0,
+    "passes": false
+   },
+   "2016": {
+    "municipios": 41,
+    "san_juan_pct": 54.7,
+    "unplaced_pct": 0.0,
+    "passes": false
+   },
+   "2017": {
+    "municipios": 41,
+    "san_juan_pct": 54.3,
+    "unplaced_pct": 0.0,
+    "passes": false
+   },
+   "2018": {
+    "municipios": 41,
+    "san_juan_pct": 54.6,
+    "unplaced_pct": 0.0,
+    "passes": false
+   },
+   "2019": {
+    "municipios": 45,
+    "san_juan_pct": 32.0,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2020": {
+    "municipios": 45,
+    "san_juan_pct": 33.1,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2021": {
+    "municipios": 45,
+    "san_juan_pct": 33.2,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2022": {
+    "municipios": 44,
+    "san_juan_pct": 33.3,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2023": {
+    "municipios": 44,
+    "san_juan_pct": 35.4,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2024": {
+    "municipios": 44,
+    "san_juan_pct": 34.6,
+    "unplaced_pct": 0.0,
+    "passes": true
+   },
+   "2025": {
+    "municipios": 44,
+    "san_juan_pct": 35.8,
+    "unplaced_pct": 0.0,
+    "passes": true
+   }
+  }
+ },
+ "kept": {
+  "ss_retirement": [
+   2012,
+   2025
+  ],
+  "ss_disability": [
+   2012,
+   2025
+  ],
+  "ss_survivors": [
+   2012,
+   2025
+  ],
+  "va_compensation": [
+   2011,
+   2025
+  ],
+  "pell": [
+   2015,
+   2025
+  ],
+  "head_start": [
+   2017,
+   2025
+  ],
+  "pbra": [
+   2019,
+   2025
+  ]
+ },
+ "sensitivity": {
+  "ss_retirement": {
+   "10/35": 2012,
+   "10/40": 2012,
+   "10/45": 2012,
+   "10/50": 2012,
+   "20/35": 2012,
+   "20/40": 2012,
+   "20/45": 2012,
+   "20/50": 2012,
+   "30/35": 2012,
+   "30/40": 2012,
+   "30/45": 2012,
+   "30/50": 2012
+  },
+  "ss_disability": {
+   "10/35": 2012,
+   "10/40": 2012,
+   "10/45": 2012,
+   "10/50": 2012,
+   "20/35": 2012,
+   "20/40": 2012,
+   "20/45": 2012,
+   "20/50": 2012,
+   "30/35": 2012,
+   "30/40": 2012,
+   "30/45": 2012,
+   "30/50": 2012
+  },
+  "ss_survivors": {
+   "10/35": 2012,
+   "10/40": 2012,
+   "10/45": 2012,
+   "10/50": 2012,
+   "20/35": 2012,
+   "20/40": 2012,
+   "20/45": 2012,
+   "20/50": 2012,
+   "30/35": 2012,
+   "30/40": 2012,
+   "30/45": 2012,
+   "30/50": 2012
+  },
+  "va_compensation": {
+   "10/35": 2011,
+   "10/40": 2011,
+   "10/45": 2011,
+   "10/50": 2011,
+   "20/35": 2011,
+   "20/40": 2011,
+   "20/45": 2011,
+   "20/50": 2011,
+   "30/35": 2011,
+   "30/40": 2011,
+   "30/45": 2011,
+   "30/50": 2011
+  },
+  "pell": {
+   "10/35": 2018,
+   "10/40": 2015,
+   "10/45": 2011,
+   "10/50": 2011,
+   "20/35": 2018,
+   "20/40": 2015,
+   "20/45": 2011,
+   "20/50": 2011,
+   "30/35": null,
+   "30/40": null,
+   "30/45": null,
+   "30/50": null
+  },
+  "head_start": {
+   "10/35": 2018,
+   "10/40": 2017,
+   "10/45": 2017,
+   "10/50": 2017,
+   "20/35": 2018,
+   "20/40": 2017,
+   "20/45": 2017,
+   "20/50": 2017,
+   "30/35": null,
+   "30/40": null,
+   "30/45": null,
+   "30/50": null
+  },
+  "pbra": {
+   "10/35": 2024,
+   "10/40": 2019,
+   "10/45": 2019,
+   "10/50": 2019,
+   "20/35": 2024,
+   "20/40": 2019,
+   "20/45": 2019,
+   "20/50": 2019,
+   "30/35": 2024,
+   "30/40": 2019,
+   "30/45": 2019,
+   "30/50": 2019
+  }
+ },
+ "coverage": {
+  "2008": {
+   "seven_listings": 0,
+   "all_federal_awards": 11942965712,
+   "pct": 0.0
+  },
+  "2009": {
+   "seven_listings": 0,
+   "all_federal_awards": 19696283850,
+   "pct": 0.0
+  },
+  "2010": {
+   "seven_listings": 0,
+   "all_federal_awards": 17229586367,
+   "pct": 0.0
+  },
+  "2011": {
+   "seven_listings": 268247195,
+   "all_federal_awards": 20619988270,
+   "pct": 1.3
+  },
+  "2012": {
+   "seven_listings": 8098673673,
+   "all_federal_awards": 25258400484,
+   "pct": 32.1
+  },
+  "2013": {
+   "seven_listings": 8489510235,
+   "all_federal_awards": 25649559438,
+   "pct": 33.1
+  },
+  "2014": {
+   "seven_listings": 8811870286,
+   "all_federal_awards": 21725655657,
+   "pct": 40.6
+  },
+  "2015": {
+   "seven_listings": 9944559221,
+   "all_federal_awards": 21619774597,
+   "pct": 46.0
+  },
+  "2016": {
+   "seven_listings": 10165887124,
+   "all_federal_awards": 22917467215,
+   "pct": 44.4
+  },
+  "2017": {
+   "seven_listings": 10025655527,
+   "all_federal_awards": 23833954975,
+   "pct": 42.1
+  },
+  "2018": {
+   "seven_listings": 10037794654,
+   "all_federal_awards": 37381386204,
+   "pct": 26.9
+  },
+  "2019": {
+   "seven_listings": 10877831054,
+   "all_federal_awards": 30464162616,
+   "pct": 35.7
+  },
+  "2020": {
+   "seven_listings": 11195728627,
+   "all_federal_awards": 49253728360,
+   "pct": 22.7
+  },
+  "2021": {
+   "seven_listings": 11482335784,
+   "all_federal_awards": 65226904877,
+   "pct": 17.6
+  },
+  "2022": {
+   "seven_listings": 12048520840,
+   "all_federal_awards": 39003333667,
+   "pct": 30.9
+  },
+  "2023": {
+   "seven_listings": 13309637313,
+   "all_federal_awards": 39640111296,
+   "pct": 33.6
+  },
+  "2024": {
+   "seven_listings": 14130289904,
+   "all_federal_awards": 40452074036,
+   "pct": 34.9
+  },
+  "2025": {
+   "seven_listings": 15261892965,
+   "all_federal_awards": 38433551211,
+   "pct": 39.7
+  }
+ },
+ "ssa": {
+  "ss_retirement|FY2014 vs December 2013": {
+   "usaspending_total": 4759075264,
+   "ssa_december_x12": 4777836000,
+   "total_ratio": 0.996,
+   "share_correlation": 0.9971,
+   "largest_share_gap_points": 0.58,
+   "largest_gap_municipio": "Río Grande",
+   "san_juan_share": [
+    14.35,
+    14.73
+   ]
+  },
+  "ss_disability|FY2014 vs December 2013": {
+   "usaspending_total": 2582250142,
+   "ssa_december_x12": 2439216000,
+   "total_ratio": 1.059,
+   "share_correlation": 0.9902,
+   "largest_share_gap_points": 0.63,
+   "largest_gap_municipio": "Vega Alta",
+   "san_juan_share": [
+    6.06,
+    6.1
+   ]
+  },
+  "ss_survivors|FY2014 vs December 2013": {
+   "usaspending_total": 912186354,
+   "ssa_december_x12": 921648000,
+   "total_ratio": 0.99,
+   "share_correlation": 0.9975,
+   "largest_share_gap_points": 0.54,
+   "largest_gap_municipio": "Río Grande",
+   "san_juan_share": [
+    13.09,
+    13.34
+   ]
+  },
+  "ss_retirement|FY2025 vs December 2024": {
+   "usaspending_total": 8862401056,
+   "ssa_december_x12": 8418432000,
+   "total_ratio": 1.053,
+   "share_correlation": 1.0,
+   "largest_share_gap_points": 0.04,
+   "largest_gap_municipio": "Mayagüez",
+   "san_juan_share": [
+    13.36,
+    13.37
+   ]
+  },
+  "ss_disability|FY2025 vs December 2024": {
+   "usaspending_total": 2428774552,
+   "ssa_december_x12": 2225784000,
+   "total_ratio": 1.091,
+   "share_correlation": 0.9999,
+   "largest_share_gap_points": 0.04,
+   "largest_gap_municipio": "Vega Alta",
+   "san_juan_share": [
+    5.33,
+    5.36
+   ]
+  },
+  "ss_survivors|FY2025 vs December 2024": {
+   "usaspending_total": 1250015376,
+   "ssa_december_x12": 1176492000,
+   "total_ratio": 1.062,
+   "share_correlation": 1.0,
+   "largest_share_gap_points": 0.1,
+   "largest_gap_municipio": "San Juan",
+   "san_juan_share": [
+    11.44,
+    11.54
+   ]
+  }
+ }
+}

@@ -1,0 +1,40 @@
+[
+ {
+  "id": "economy.spending_outlays",
+  "name": "Federal grants and contracts in Puerto Rico: obligated and paid out",
+  "domain": "public-money",
+  "domains": [
+   "public-money"
+  ],
+  "group": "Public spending (Gasto Público)",
+  "kind": "table",
+  "plain": "For the federal grants and contracts signed for work in Puerto Rico in each federal fiscal year since 2020, how much was committed over each award's life and how much the federal Treasury has paid out to the recipients so far, by function. It shows how far the money has gone, not what it achieved.",
+  "definition": "spending_outlays.json holds, for the grants and contracts with place of performance Puerto Rico that USAspending.gov lists as signed in each federal fiscal year (October to September) from 2020, the sum of each award's obligation over its life and of its total outlays to date, by program (assistance listing) or, for contracts, by awarding agency, with the program's function. An award's outlays count up to its obligated amount; the excess and the awards with no outlay reported are counted apart.",
+  "unit": "US dollars (not adjusted for inflation)",
+  "value_type": "level",
+  "geography": "Puerto Rico as a whole (place of performance Puerto Rico)",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2020,
+   "last": 2025,
+   "frequency": "Once a year, after a federal fiscal year counts as final (from 15 November); the two latest signing years are read again, since their outlays still grow (federal_outlays.py)"
+  },
+  "method": "federal_outlays.py asks USAspending.gov's award search for every grant (award types 02 to 05) and contract (A to D) with place of performance Puerto Rico signed in each federal fiscal year from 2020, with its Award Amount (obligation over the award's life) and Total Outlays. USAspending has outlays from fiscal year 2020, so older awards are not read. Each program takes its function from the function crosswalk; a contract takes its awarding agency's default. FEMA Public Assistance (97.036) is left out.",
+  "how_to_read": "Read the share paid out of each function or signing year: a low share means money committed and not yet paid to the recipients, which is usual for large multi-year grants such as disaster recovery. Older signing years have had more time to pay out.",
+  "cautions": [
+   "Paid out is what the federal Treasury paid to the recipient (for example, a Commonwealth agency), not what the recipient has spent on the work.",
+   "Contract outlays are often not reported: about a third of the contracts report none, so the contracts' share paid out is understated.",
+   "Never add these figures to the federal money by year of obligation: they are the same awards counted by the year they were signed.",
+   "FEMA Public Assistance is left out: USAspending's awards do not follow its projects, and the page counts it from OpenFEMA."
+  ],
+  "sources": [
+   "usaspending"
+  ],
+  "added": "2026-11-13",
+  "where": {
+   "files": [
+    "spending_outlays.json:*"
+   ]
+  }
+ }
+]

@@ -1,0 +1,1913 @@
+{
+  "_about": "Which Spanish scopes (i18n_src/es/<scope>.json) and scripts each page uses. A page's bundle site/i18n/es.<page>.js is the merge of its scopes. 'scripts' are checked for T()/Tn()/Th() keys; 'data_labels' lists display strings that live in data files and reach the screen through T(variable). 'modules' are the parts of a page that load on first use: each has its own bundle site/i18n/es.<page>.<module>.js, loaded with I18N.load(module) by the module's loader, with the Spanish of its scopes and of every key its scripts ask for, less what the page bundle already holds. A data label spec's \"modules\" ({page: module}) puts its labels, on that page, in that module's bundle instead of the page's; a page's \"pick\" lists scopes shared with other pages of which its bundle takes only the keys its scripts ask for, its HTML shows or its own data labels need.",
+  "pages": {
+    "map": {
+      "file": "index.html",
+      "scopes": [
+        "common",
+        "icons",
+        "access",
+        "plan",
+        "map",
+        "transit",
+        "chat",
+        "labels_places",
+        "labels_economy",
+        "labels_exposure",
+        "labels_health",
+        "labels_housing",
+        "labels_population",
+        "labels_education",
+        "labels_infrastructure",
+        "labels_environment",
+        "labels_facilities",
+        "labels_wcrp",
+        "labels_conditions",
+        "labels_community",
+        "activelayers",
+        "osmtoggle"
+      ],
+      "scripts": [
+        "common.js",
+        "core/text.js",
+        "core/palettes.js",
+        "core/stats.js",
+        "core/classify.js",
+        "core/hexbin.js",
+        "core/legend.js",
+        "core/stack.js",
+        "core/activelayers.js",
+        "icons.js",
+        "access.js",
+        "roads.js",
+        "plan.js",
+        "app.js",
+        "network.js",
+        "econ_shell.js",
+        "chat.js",
+        "chatboot.js",
+        "catalog.js"
+      ],
+      "modules": {
+        "economy": {
+          "scopes": [
+            "economy",
+            "reliability"
+          ],
+          "scripts": [
+            "core/time.js",
+            "core/format.js",
+            "core/normalize.js",
+            "core/reliability.js",
+            "core/engine.js",
+            "core/adapters.js",
+            "core/datasets.js",
+            "core/composite.js",
+            "core/popup.js",
+            "core/panel.js",
+            "economy.js"
+          ]
+        },
+        "scenarios": {
+          "scopes": [
+            "scenarios"
+          ],
+          "scripts": [
+            "core/scenario.js",
+            "scenarios.js"
+          ]
+        },
+        "studyareas": {
+          "scopes": [
+            "studyareas"
+          ],
+          "scripts": [
+            "core/scenario.js",
+            "core/study.js",
+            "studyareas.js"
+          ]
+        },
+        "workbench": {
+          "scopes": [
+            "workbench"
+          ],
+          "scripts": [
+            "core/minimap.js",
+            "workbench.js"
+          ]
+        },
+        "landuse": {
+          "scopes": [
+            "landuse"
+          ],
+          "scripts": [
+            "landuse_view.js"
+          ]
+        },
+        "econ_level": {
+          "scopes": [
+            "econ_level"
+          ],
+          "scripts": [
+            "econ_level.js"
+          ]
+        },
+        "facilities": {
+          "scopes": [
+            "facilities"
+          ],
+          "scripts": [
+            "core/facilities.js",
+            "facilities.js"
+          ]
+        },
+        "catalog": {
+          "scopes": [
+            "catalog"
+          ],
+          "scripts": []
+        },
+        "help": {
+          "scopes": [
+            "help"
+          ],
+          "scripts": [
+            "help.js"
+          ]
+        },
+        "soil": {
+          "scopes": [
+            "soil"
+          ],
+          "scripts": [
+            "soil.js"
+          ]
+        },
+        "mapimage": {
+          "scopes": [
+            "mapimage"
+          ],
+          "scripts": [
+            "core/mapimage.js",
+            "mapimage.js"
+          ]
+        },
+        "measure": {
+          "scopes": [
+            "measure"
+          ],
+          "scripts": [
+            "core/measure.js",
+            "measure.js"
+          ]
+        },
+        "maptools": {
+          "scopes": [],
+          "scripts": [
+            "maptools.js"
+          ],
+          "html": [
+            "tab-maptools"
+          ]
+        },
+        "terrain": {
+          "scopes": [
+            "terrain"
+          ],
+          "scripts": [
+            "terrain.js"
+          ]
+        },
+        "glossary": {
+          "scopes": [
+            "glossary"
+          ],
+          "scripts": [
+            "core/glossary.js"
+          ]
+        },
+        "about": {
+          "scopes": [],
+          "scripts": [],
+          "html": [
+            "tab-about"
+          ]
+        },
+        "osminspect": {
+          "scopes": [
+            "osminspect"
+          ],
+          "scripts": [
+            "core/osminspect.js"
+          ]
+        },
+        "region": {
+          "scopes": [
+            "region"
+          ],
+          "scripts": [
+            "region.js"
+          ]
+        },
+        "econ_terrain": {
+          "scopes": [],
+          "scripts": []
+        },
+        "mapextras": {
+          "scopes": [
+            "mapextras"
+          ],
+          "scripts": [
+            "mapextras.js"
+          ]
+        }
+      }
+    },
+    "threed": {
+      "file": "3d.html",
+      "scopes": [
+        "common",
+        "icons",
+        "access",
+        "plan",
+        "threed",
+        "labels_places",
+        "chat",
+        "activelayers",
+        "osmtoggle"
+      ],
+      "scripts": [
+        "common.js",
+        "core/text.js",
+        "core/palettes.js",
+        "core/classify.js",
+        "core/legend.js",
+        "core/activelayers.js",
+        "icons.js",
+        "access.js",
+        "roads.js",
+        "plan.js",
+        "plan_route.js",
+        "twin3d.js",
+        "series3d.js",
+        "supply3d.js",
+        "chatboot.js",
+        "chat.js",
+        "ask3d.js"
+      ],
+      "modules": {
+        "facilities": {
+          "scopes": [
+            "facilities"
+          ],
+          "scripts": [
+            "core/facilities.js",
+            "facilities3d.js"
+          ]
+        },
+        "glossary": {
+          "scopes": [
+            "glossary"
+          ],
+          "scripts": [
+            "core/glossary.js"
+          ]
+        },
+        "osminspect": {
+          "scopes": [
+            "osminspect"
+          ],
+          "scripts": [
+            "core/osminspect.js"
+          ]
+        },
+        "soil": {
+          "scopes": [
+            "soil"
+          ],
+          "scripts": [
+            "soil.js",
+            "soil3d.js"
+          ]
+        }
+      }
+    },
+    "housing": {
+      "file": "housing.html",
+      "scopes": [
+        "common",
+        "icons",
+        "housing",
+        "reliability",
+        "labels_housing",
+        "knowledge",
+        "chat"
+      ],
+      "scripts": [
+        "common.js",
+        "core/text.js",
+        "core/palettes.js",
+        "core/stats.js",
+        "core/classify.js",
+        "core/time.js",
+        "core/reliability.js",
+        "core/legend.js",
+        "icons.js",
+        "core/knowledge.js",
+        "housing.js",
+        "chatboot.js"
+      ],
+      "pick": [
+        "chat"
+      ],
+      "modules": {
+        "glossary": {
+          "scopes": [
+            "glossary"
+          ],
+          "scripts": [
+            "core/glossary.js"
+          ]
+        }
+      }
+    },
+    "dictionary": {
+      "file": "dictionary.html",
+      "scopes": [
+        "common",
+        "dictionary",
+        "chat"
+      ],
+      "scripts": [
+        "common.js",
+        "dictionary.js",
+        "chatboot.js"
+      ],
+      "pick": [
+        "chat"
+      ],
+      "modules": {
+        "glossary": {
+          "scopes": [
+            "glossary"
+          ],
+          "scripts": [
+            "core/glossary.js"
+          ]
+        }
+      }
+    },
+    "notfound": {
+      "file": "404.html",
+      "scopes": [
+        "common",
+        "chat"
+      ],
+      "scripts": [
+        "common.js",
+        "chatboot.js"
+      ],
+      "pick": [
+        "chat"
+      ],
+      "modules": {
+        "glossary": {
+          "scopes": [
+            "glossary"
+          ],
+          "scripts": [
+            "core/glossary.js"
+          ]
+        }
+      }
+    },
+    "datamgmt": {
+      "file": "data-management.html",
+      "scopes": [
+        "common",
+        "datamgmt",
+        "chat"
+      ],
+      "scripts": [
+        "common.js",
+        "datamgmt.js",
+        "chatboot.js"
+      ],
+      "pick": [
+        "chat"
+      ],
+      "modules": {
+        "glossary": {
+          "scopes": [
+            "glossary"
+          ],
+          "scripts": [
+            "core/glossary.js"
+          ]
+        }
+      }
+    },
+    "profile": {
+      "file": "profile.html",
+      "scopes": [
+        "common",
+        "map",
+        "transit",
+        "access",
+        "economy",
+        "reliability",
+        "profile",
+        "labels_places",
+        "labels_economy",
+        "labels_exposure",
+        "labels_health",
+        "labels_housing",
+        "labels_population",
+        "labels_education",
+        "labels_infrastructure",
+        "labels_environment",
+        "labels_facilities",
+        "labels_conditions",
+        "labels_community",
+        "chat"
+      ],
+      "scripts": [
+        "common.js",
+        "core/text.js",
+        "core/palettes.js",
+        "core/stats.js",
+        "core/classify.js",
+        "core/time.js",
+        "core/format.js",
+        "core/normalize.js",
+        "core/reliability.js",
+        "core/engine.js",
+        "core/hexbin.js",
+        "core/adapters.js",
+        "core/datasets.js",
+        "core/minimap.js",
+        "profile_region.js",
+        "profile.js",
+        "chatboot.js"
+      ],
+      "pick": [
+        "chat",
+        "map",
+        "transit",
+        "access"
+      ],
+      "modules": {
+        "glossary": {
+          "scopes": [
+            "glossary"
+          ],
+          "scripts": [
+            "core/glossary.js"
+          ]
+        }
+      }
+    },
+    "wcrp": {
+      "file": "wcrp.html",
+      "scopes": [
+        "common",
+        "wcrp",
+        "knowledge",
+        "facilities",
+        "wcrp_social",
+        "chat"
+      ],
+      "scripts": [
+        "common.js",
+        "core/palettes.js",
+        "core/knowledge.js",
+        "wcrp_social.js",
+        "wcrp.js",
+        "chatboot.js"
+      ],
+      "pick": [
+        "facilities",
+        "chat"
+      ],
+      "modules": {
+        "vuln": {
+          "scopes": [
+            "wcrp_vuln"
+          ],
+          "scripts": [
+            "wcrp_vuln.js"
+          ]
+        },
+        "glossary": {
+          "scopes": [
+            "glossary"
+          ],
+          "scripts": [
+            "core/glossary.js"
+          ]
+        }
+      }
+    },
+    "routes": {
+      "file": "route-analysis.html",
+      "scopes": [
+        "common",
+        "knowledge",
+        "routes",
+        "chat"
+      ],
+      "scripts": [
+        "common.js",
+        "core/knowledge.js",
+        "route_analysis.js",
+        "chatboot.js"
+      ],
+      "pick": [
+        "chat"
+      ],
+      "modules": {
+        "glossary": {
+          "scopes": [
+            "glossary"
+          ],
+          "scripts": [
+            "core/glossary.js"
+          ]
+        }
+      }
+    },
+    "gii": {
+      "file": "gii.html",
+      "scopes": [
+        "common",
+        "knowledge",
+        "gii",
+        "chat"
+      ],
+      "scripts": [
+        "common.js",
+        "core/knowledge.js",
+        "gii.js",
+        "chatboot.js"
+      ],
+      "pick": [
+        "chat"
+      ],
+      "modules": {
+        "glossary": {
+          "scopes": [
+            "glossary"
+          ],
+          "scripts": [
+            "core/glossary.js"
+          ]
+        }
+      }
+    },
+    "women": {
+      "file": "women-labor.html",
+      "scopes": [
+        "common",
+        "knowledge",
+        "women_labor",
+        "chat"
+      ],
+      "scripts": [
+        "common.js",
+        "core/knowledge.js",
+        "women_labor.js",
+        "chatboot.js"
+      ],
+      "pick": [
+        "chat"
+      ],
+      "modules": {
+        "glossary": {
+          "scopes": [
+            "glossary"
+          ],
+          "scripts": [
+            "core/glossary.js"
+          ]
+        }
+      }
+    },
+    "knowledge": {
+      "file": "knowledge.html",
+      "scopes": [
+        "common",
+        "knowledge_home",
+        "chat"
+      ],
+      "scripts": [
+        "common.js",
+        "knowledge_items.js",
+        "knowledge_home.js",
+        "chatboot.js"
+      ],
+      "pick": [
+        "chat"
+      ],
+      "modules": {
+        "glossary": {
+          "scopes": [
+            "glossary"
+          ],
+          "scripts": [
+            "core/glossary.js"
+          ]
+        }
+      }
+    },
+    "learn": {
+      "file": "learn.html",
+      "scopes": [
+        "common",
+        "learn",
+        "chat"
+      ],
+      "scripts": [
+        "common.js",
+        "learn_items.js",
+        "learn_page.js",
+        "chatboot.js"
+      ],
+      "pick": [
+        "chat"
+      ],
+      "modules": {
+        "glossary": {
+          "scopes": [
+            "glossary"
+          ],
+          "scripts": [
+            "core/glossary.js"
+          ]
+        }
+      }
+    },
+    "publicmoney": {
+      "file": "public-money.html",
+      "scopes": [
+        "common",
+        "knowledge",
+        "public_money",
+        "chat"
+      ],
+      "scripts": [
+        "common.js",
+        "core/knowledge.js",
+        "public_money.js",
+        "chatboot.js"
+      ],
+      "pick": [
+        "chat"
+      ],
+      "modules": {
+        "glossary": {
+          "scopes": [
+            "glossary"
+          ],
+          "scripts": [
+            "core/glossary.js"
+          ]
+        }
+      }
+    },
+    "publicspending": {
+      "file": "public-spending.html",
+      "scopes": [
+        "common",
+        "knowledge",
+        "public_spending",
+        "chat"
+      ],
+      "scripts": [
+        "common.js",
+        "core/knowledge.js",
+        "public_spending.js",
+        "chatboot.js"
+      ],
+      "pick": [
+        "chat"
+      ],
+      "modules": {
+        "glossary": {
+          "scopes": [
+            "glossary"
+          ],
+          "scripts": [
+            "core/glossary.js"
+          ]
+        },
+        "after": {
+          "scopes": [
+            "public_spending_after"
+          ],
+          "scripts": [
+            "public_spending_charts.js",
+            "public_spending_sectors.js",
+            "public_spending_recovery.js",
+            "public_spending_outlays.js",
+            "public_spending_fema.js"
+          ],
+          "html": [
+            "sector",
+            "recovery",
+            "outlays",
+            "fema",
+            "basis"
+          ]
+        },
+        "municipio": {
+          "scopes": [
+            "public_spending_municipio"
+          ],
+          "scripts": [
+            "public_spending_municipio.js"
+          ],
+          "html": []
+        },
+        "agencies": {
+          "scopes": [
+            "public_spending_agencies"
+          ],
+          "scripts": [
+            "public_spending_agencies.js"
+          ],
+          "html": []
+        }
+      }
+    },
+    "urbanheat": {
+      "file": "urban-heat.html",
+      "scopes": [
+        "common",
+        "knowledge",
+        "urban_heat",
+        "chat"
+      ],
+      "scripts": [
+        "common.js",
+        "core/knowledge.js",
+        "urban_heat.js",
+        "chatboot.js"
+      ],
+      "pick": [
+        "chat"
+      ],
+      "modules": {
+        "glossary": {
+          "scopes": [
+            "glossary"
+          ],
+          "scripts": [
+            "core/glossary.js"
+          ]
+        }
+      }
+    },
+    "inflation": {
+      "file": "inflation.html",
+      "scopes": [
+        "common",
+        "knowledge",
+        "inflation",
+        "chat"
+      ],
+      "scripts": [
+        "common.js",
+        "core/knowledge.js",
+        "inflation.js",
+        "chatboot.js"
+      ],
+      "pick": [
+        "chat"
+      ],
+      "modules": {
+        "glossary": {
+          "scopes": [
+            "glossary"
+          ],
+          "scripts": [
+            "core/glossary.js"
+          ]
+        }
+      }
+    },
+    "broadband": {
+      "file": "broadband.html",
+      "scopes": [
+        "common",
+        "knowledge",
+        "broadband",
+        "chat"
+      ],
+      "scripts": [
+        "common.js",
+        "core/knowledge.js",
+        "broadband_page.js",
+        "chatboot.js"
+      ],
+      "pick": [
+        "chat"
+      ],
+      "modules": {
+        "glossary": {
+          "scopes": [
+            "glossary"
+          ],
+          "scripts": [
+            "core/glossary.js"
+          ]
+        }
+      }
+    },
+    "oppzones": {
+      "file": "opportunity-zones.html",
+      "scopes": [
+        "common",
+        "knowledge",
+        "oppzones",
+        "chat"
+      ],
+      "scripts": [
+        "common.js",
+        "core/knowledge.js",
+        "oz_page.js",
+        "chatboot.js"
+      ],
+      "pick": [
+        "chat"
+      ],
+      "modules": {
+        "glossary": {
+          "scopes": [
+            "glossary"
+          ],
+          "scripts": [
+            "core/glossary.js"
+          ]
+        }
+      }
+    },
+    "reservoirs": {
+      "file": "reservoirs.html",
+      "scopes": [
+        "common",
+        "knowledge",
+        "reservoirs",
+        "chat"
+      ],
+      "scripts": [
+        "common.js",
+        "core/knowledge.js",
+        "reservoirs_page.js",
+        "chatboot.js"
+      ],
+      "pick": [
+        "chat"
+      ],
+      "modules": {
+        "glossary": {
+          "scopes": [
+            "glossary"
+          ],
+          "scripts": [
+            "core/glossary.js"
+          ]
+        }
+      }
+    },
+    "tlinks": {
+      "file": "transit-links.html",
+      "scopes": [
+        "common",
+        "knowledge",
+        "tlinks",
+        "chat"
+      ],
+      "scripts": [
+        "common.js",
+        "core/knowledge.js",
+        "transit_links_page.js",
+        "chatboot.js"
+      ],
+      "pick": [
+        "chat"
+      ],
+      "modules": {
+        "glossary": {
+          "scopes": [
+            "glossary"
+          ],
+          "scripts": [
+            "core/glossary.js"
+          ]
+        }
+      }
+    },
+    "energy": {
+      "file": "energy.html",
+      "scopes": [
+        "common",
+        "knowledge",
+        "energy",
+        "chat"
+      ],
+      "scripts": [
+        "common.js",
+        "core/knowledge.js",
+        "energy_page.js",
+        "chatboot.js"
+      ],
+      "pick": [
+        "chat"
+      ],
+      "modules": {
+        "glossary": {
+          "scopes": [
+            "glossary"
+          ],
+          "scripts": [
+            "core/glossary.js"
+          ]
+        }
+      }
+    },
+    "unusedfunds": {
+      "file": "unused-funds.html",
+      "scopes": [
+        "common",
+        "knowledge",
+        "unused_funds",
+        "chat"
+      ],
+      "scripts": [
+        "common.js",
+        "core/knowledge.js",
+        "chatboot.js"
+      ],
+      "pick": [
+        "chat"
+      ],
+      "modules": {
+        "glossary": {
+          "scopes": [
+            "glossary"
+          ],
+          "scripts": [
+            "core/glossary.js"
+          ]
+        }
+      }
+    },
+    "moneycycle": {
+      "file": "money-cycle.html",
+      "scopes": [
+        "common",
+        "knowledge",
+        "money_cycle",
+        "chat"
+      ],
+      "scripts": [
+        "common.js",
+        "core/knowledge.js",
+        "chatboot.js"
+      ],
+      "pick": [
+        "chat"
+      ],
+      "modules": {
+        "glossary": {
+          "scopes": [
+            "glossary"
+          ],
+          "scripts": [
+            "core/glossary.js"
+          ]
+        }
+      }
+    }
+  },
+  "data_labels": [
+    {
+      "file": "places.json",
+      "paths": [
+        "[].type"
+      ],
+      "pages": [
+        "map",
+        "threed"
+      ]
+    },
+    {
+      "file": "economy_series.json",
+      "paths": [
+        "vars[].label",
+        "vars[].group",
+        "vars[].unit"
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "housing_series.json",
+      "paths": [
+        "vars[].label",
+        "vars[].group",
+        "vars[].unit"
+      ],
+      "pages": [
+        "map",
+        "housing"
+      ]
+    },
+    {
+      "file": "population_series.json",
+      "paths": [
+        "vars[].label",
+        "vars[].unit"
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "population_series.json",
+      "paths": [
+        "vars[].group"
+      ],
+      "prefixes": [
+        "Population · "
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "registry.json",
+      "paths": [
+        "growth_note"
+      ],
+      "pages": [
+        "dictionary",
+        "map"
+      ]
+    },
+    {
+      "file": "wanted.json",
+      "paths": [
+        "items[].theme"
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "operators.json",
+      "paths": [
+        "live.sources[].name",
+        "live.sources[].detail",
+        "live.sources[].status"
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "places.json",
+      "paths": [
+        "[].overture_category"
+      ],
+      "transform": "humanize",
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "housing_series.json",
+      "paths": [
+        "notes.pop_break",
+        "vars[].basis.*"
+      ],
+      "pages": [
+        "housing"
+      ]
+    },
+    {
+      "file": "housing.json",
+      "paths": [
+        "lihtc[].type",
+        "lihtc[].beneficiaries"
+      ],
+      "pages": [
+        "housing"
+      ]
+    },
+    {
+      "file": "exposure_municipio.json",
+      "paths": [
+        "vars.*.label.en"
+      ],
+      "prefixes": [
+        "Residents: ",
+        "Housing units: "
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "exposure_municipio.json",
+      "paths": [
+        "groups.*.en"
+      ],
+      "prefixes": [
+        "Residents · ",
+        "Housing units · "
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "health_series.json",
+      "paths": [
+        "vars[].label",
+        "vars[].unit",
+        "vars[].noValue"
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "health_series.json",
+      "paths": [
+        "vars[].group"
+      ],
+      "prefixes": [
+        "Health care · "
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "education_series.json",
+      "paths": [
+        "vars[].label",
+        "vars[].unit"
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "education_series.json",
+      "paths": [
+        "vars[].group"
+      ],
+      "prefixes": [
+        "Education · "
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "labor_sex_series.json",
+      "paths": [
+        "vars[].label",
+        "vars[].unit",
+        "vars[].group"
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "medicare_series.json",
+      "paths": [
+        "vars[].label",
+        "vars[].unit"
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "medicare_series.json",
+      "paths": [
+        "vars[].group"
+      ],
+      "prefixes": [
+        "Health care · "
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "care_series.json",
+      "paths": [
+        "vars[].label",
+        "vars[].unit"
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "care_series.json",
+      "paths": [
+        "vars[].group"
+      ],
+      "prefixes": [
+        "Health care · "
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "infrastructure_series.json",
+      "paths": [
+        "vars[].label",
+        "vars[].unit"
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "infrastructure_series.json",
+      "paths": [
+        "vars[].group"
+      ],
+      "prefixes": [
+        "Infrastructure · "
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "bridges_series.json",
+      "paths": [
+        "vars[].label",
+        "vars[].unit"
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "bridges_series.json",
+      "paths": [
+        "vars[].group"
+      ],
+      "prefixes": [
+        "Infrastructure · "
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "environment_series.json",
+      "paths": [
+        "vars[].label",
+        "vars[].unit"
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "environment_series.json",
+      "paths": [
+        "vars[].group"
+      ],
+      "prefixes": [
+        "Environment · "
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "hazard_series.json",
+      "paths": [
+        "vars[].label",
+        "vars[].unit"
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "hazard_series.json",
+      "paths": [
+        "vars[].group"
+      ],
+      "prefixes": [
+        "Environment · "
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "gateway_series.json",
+      "paths": [
+        "vars[].label",
+        "vars[].unit"
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "gateway_series.json",
+      "paths": [
+        "vars[].group"
+      ],
+      "prefixes": [
+        "Infrastructure · "
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "facility_series.json",
+      "paths": [
+        "vars[].label",
+        "vars[].group"
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "nonprofit_series.json",
+      "paths": [
+        "vars[].label",
+        "vars[].group"
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "conditions_series.json",
+      "paths": [
+        "vars[].label",
+        "vars[].group",
+        "vars[].unit",
+        "vars[].noValue",
+        "vars[].caution"
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "wcrp_rvi_barrio.json",
+      "paths": [
+        "vars[].group"
+      ],
+      "prefixes": [
+        "Vulnerability (WCRP) · "
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "wcrp_rvi_barrio.json",
+      "paths": [
+        "method.orig[].label",
+        "method.rebuild[].label",
+        "method.rebuild[].note",
+        "method.missing[].label",
+        "method.missing[].why",
+        "method.context[].label",
+        "method.context_note",
+        "method.hazards[].label",
+        "method.hazards_note"
+      ],
+      "pages": [
+        "wcrp"
+      ],
+      "modules": {
+        "wcrp": "vuln"
+      }
+    },
+    {
+      "file": "wcrp_rvi_barrio.json",
+      "paths": [
+        "vars[].label",
+        "vars[].noValue"
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "community_series.json",
+      "paths": [
+        "vars[].label",
+        "vars[].group"
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "landslide_series.json",
+      "paths": [
+        "vars[].label",
+        "vars[].group",
+        "vars[].unit",
+        "vars[].noValue"
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "landslide_barrio.json",
+      "paths": [
+        "vars[].noValueWhy[].why"
+      ],
+      "pages": [
+        "map",
+        "wcrp"
+      ],
+      "modules": {
+        "wcrp": "vuln"
+      }
+    },
+    {
+      "file": "heat_series.json",
+      "paths": [
+        "vars[].label",
+        "vars[].group",
+        "vars[].unit",
+        "vars[].noValue"
+      ],
+      "pages": [
+        "map"
+      ],
+      "modules": {
+        "map": "econ_terrain"
+      }
+    },
+    {
+      "file": "heat_barrio.json",
+      "paths": [
+        "vars[].noValueWhy[].why"
+      ],
+      "pages": [
+        "map"
+      ],
+      "modules": {
+        "map": "econ_terrain"
+      }
+    },
+    {
+      "file": "vegetation_series.json",
+      "paths": [
+        "vars[].label",
+        "vars[].group",
+        "vars[].unit",
+        "vars[].noValue"
+      ],
+      "pages": [
+        "map"
+      ],
+      "modules": {
+        "map": "econ_terrain"
+      }
+    },
+    {
+      "file": "vegetation_barrio.json",
+      "paths": [
+        "vars[].noValueWhy[].why"
+      ],
+      "pages": [
+        "map"
+      ],
+      "modules": {
+        "map": "econ_terrain"
+      }
+    },
+    {
+      "file": "buildings_series.json",
+      "paths": [
+        "vars[].label",
+        "vars[].group",
+        "vars[].unit",
+        "vars[].noValue"
+      ],
+      "pages": [
+        "map"
+      ],
+      "modules": {
+        "map": "econ_terrain"
+      }
+    },
+    {
+      "file": "slope_series.json",
+      "paths": [
+        "vars[].label",
+        "vars[].group",
+        "vars[].unit",
+        "vars[].noValue"
+      ],
+      "pages": [
+        "map"
+      ],
+      "modules": {
+        "map": "econ_terrain"
+      }
+    },
+    {
+      "file": "slope_barrio.json",
+      "paths": [
+        "vars[].noValueWhy[].why"
+      ],
+      "pages": [
+        "map"
+      ],
+      "modules": {
+        "map": "econ_terrain"
+      }
+    },
+    {
+      "file": "buildings_barrio.json",
+      "paths": [
+        "vars[].noValueWhy[].why"
+      ],
+      "pages": [
+        "map"
+      ],
+      "modules": {
+        "map": "econ_terrain"
+      }
+    },
+    {
+      "file": "fires_series.json",
+      "paths": [
+        "vars[].label",
+        "vars[].group",
+        "vars[].unit",
+        "vars[].noValue"
+      ],
+      "pages": [
+        "map"
+      ],
+      "modules": {
+        "map": "econ_terrain"
+      }
+    },
+    {
+      "file": "night_heat_series.json",
+      "paths": [
+        "vars[].label",
+        "vars[].group",
+        "vars[].unit",
+        "vars[].noValue"
+      ],
+      "pages": [
+        "map"
+      ],
+      "modules": {
+        "map": "econ_terrain"
+      }
+    },
+    {
+      "file": "night_heat_barrio.json",
+      "paths": [
+        "vars[].noValueWhy[].why"
+      ],
+      "pages": [
+        "map"
+      ],
+      "modules": {
+        "map": "econ_terrain"
+      }
+    },
+    {
+      "file": "climb_series.json",
+      "paths": [
+        "vars[].label",
+        "vars[].group",
+        "vars[].unit",
+        "vars[].noValue"
+      ],
+      "pages": [
+        "map"
+      ],
+      "modules": {
+        "map": "econ_terrain"
+      }
+    },
+    {
+      "file": "crashes_series.json",
+      "paths": [
+        "vars[].label",
+        "vars[].group",
+        "vars[].unit"
+      ],
+      "pages": [
+        "map"
+      ],
+      "modules": {
+        "map": "econ_terrain"
+      }
+    },
+    {
+      "file": "traffic_series.json",
+      "paths": [
+        "vars[].label",
+        "vars[].group",
+        "vars[].unit"
+      ],
+      "pages": [
+        "map"
+      ],
+      "modules": {
+        "map": "econ_terrain"
+      }
+    },
+    {
+      "file": "broadband_series.json",
+      "paths": [
+        "vars[].label",
+        "vars[].group",
+        "vars[].unit"
+      ],
+      "pages": [
+        "map"
+      ],
+      "modules": {
+        "map": "econ_terrain"
+      }
+    },
+    {
+      "file": "nightlights_series.json",
+      "paths": [
+        "vars[].label",
+        "vars[].group",
+        "vars[].unit"
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "catalog_index.json",
+      "paths": [
+        "index.rows[].1"
+      ],
+      "pages": [
+        "map"
+      ],
+      "required": false
+    },
+    {
+      "file": "commuting_series.json",
+      "paths": [
+        "vars[].label",
+        "vars[].unit"
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "commuting_series.json",
+      "paths": [
+        "vars[].group"
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "svi_series.json",
+      "paths": [
+        "vars[].label",
+        "vars[].unit"
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "svi_series.json",
+      "paths": [
+        "vars[].group"
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "facility_exposure_series.json",
+      "paths": [
+        "vars[].label",
+        "vars[].unit",
+        "vars[].noValue"
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "facility_exposure_series.json",
+      "paths": [
+        "vars[].group"
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "credit_series.json",
+      "paths": [
+        "vars[].label",
+        "vars[].unit"
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "credit_series.json",
+      "paths": [
+        "vars[].group"
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "drought_series.json",
+      "paths": [
+        "vars[].label",
+        "vars[].unit"
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "drought_series.json",
+      "paths": [
+        "vars[].group"
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "storm_recovery_series.json",
+      "paths": [
+        "vars[].label",
+        "vars[].unit"
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "storm_recovery_series.json",
+      "paths": [
+        "vars[].group"
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "essentials_series.json",
+      "paths": [
+        "vars[].label",
+        "vars[].unit"
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "essentials_series.json",
+      "paths": [
+        "vars[].group"
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "degrees_series.json",
+      "paths": [
+        "vars[].label",
+        "vars[].unit"
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "degrees_series.json",
+      "paths": [
+        "vars[].group"
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "school_conditions_series.json",
+      "paths": [
+        "vars[].label",
+        "vars[].unit"
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "school_conditions_series.json",
+      "paths": [
+        "vars[].group"
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "proficiency_series.json",
+      "paths": [
+        "vars[].label",
+        "vars[].unit"
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "proficiency_series.json",
+      "paths": [
+        "vars[].group"
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "providers_series.json",
+      "paths": [
+        "vars[].label",
+        "vars[].unit"
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "providers_series.json",
+      "paths": [
+        "vars[].group"
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "cutoff_series.json",
+      "paths": [
+        "vars[].label",
+        "vars[].unit"
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "cutoff_series.json",
+      "paths": [
+        "vars[].group"
+      ],
+      "pages": [
+        "map"
+      ]
+    }
+  ]
+}

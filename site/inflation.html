@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Knowledge Area · Inflation</title>
+<meta name="description" content="Inflation in Puerto Rico and the United States since 2000, by month and by year, what drives it, a projection to five years ahead with its error bands, and what it means for a person and a family.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="icon" href="img/fpr-mark.png">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0&icon_names=account_balance,bar_chart,bolt,calculate,chat_bubble,close,commute,delete,diversity_3,download,elderly,family_restroom,home_work,hourglass_bottom,info,lightbulb,map,menu_book,payments,pie_chart,price_change,query_stats,restart_alt,rocket_launch,route,savings,school,send,show_chart,table_view,thermostat,view_in_ar,warning,water,wifi,woman,work&display=block">
+<link rel="stylesheet" href="css/twin.css?v=63">
+<link rel="stylesheet" href="css/housing.css?v=21">
+<link rel="stylesheet" href="css/public_money.css?v=1">
+<link rel="stylesheet" href="css/inflation.css?v=2">
+<link rel="stylesheet" href="css/chat.css?v=4">
+<script src="js/i18n.js?v=73" data-page="inflation"></script>
+</head>
+<body class="research">
+<a class="skip" href="#headline">Skip to the content</a>
+<header class="topbar">
+  <a class="logo" href="index.html" title="PR Data Observatory home"><img src="img/fpr-logo.png" alt="Foundation for Puerto Rico. PR Data Observatory home"></a>
+  <div class="brand"><b>Knowledge Area · Inflation</b><span>Prices in Puerto Rico and the United States, a five-year projection and what it means for families</span></div>
+  <div class="spacer"></div>
+  <nav class="views" aria-label="Views">
+    <a class="btn" href="index.html"><span class="ms-icon" aria-hidden="true">map</span><span class="lbl">Map</span></a>
+    <a class="btn" href="3d.html" title="Immersive 3D + time view"><span class="ms-icon" aria-hidden="true">view_in_ar</span><span class="lbl">3D + Time</span></a>
+    <a class="btn" href="knowledge.html" aria-current="page" title="Knowledge: FPR studies, analyses and tools"><span class="ms-icon" aria-hidden="true">lightbulb</span><span class="lbl">Knowledge</span></a>
+    <a class="btn" href="dictionary.html" title="Data dictionary: meanings, sources, licenses, how to cite"><span class="ms-icon" aria-hidden="true">menu_book</span><span class="lbl">Data dictionary</span></a>
+    <a class="btn" href="learn.html" title="Learn: short lessons about maps and spatial analysis"><span class="ms-icon" aria-hidden="true">school</span><span class="lbl">Learn</span></a>
+  </nav>
+</header>
+
+<nav class="toc" id="toc" aria-label="On this page">
+  <span class="ka-tabs" role="group" aria-label="Knowledge Area" data-ka="inflation"></span><span class="ka-sep" aria-hidden="true"></span>
+  <a href="#headline">Puerto Rico and the US</a><a href="#years">By year</a><a href="#drivers">What drives it</a><a href="#people">People and families</a><a href="#projection">The projection</a><a href="#method">Method</a><a href="#sources">Sources</a>
+</nav>
+
+<main class="page">
+  <div class="note caution review-note" role="note" data-ka-note></div>
+
+  <section class="hero" id="headline">
+    <div class="eyebrow">Knowledge Area · Economy</div>
+    <h1>Inflation in Puerto Rico and the United States</h1>
+    <p class="lede">In September 2026, consumer prices in Puerto Rico were 3.8% higher than a year before; in the United States, 3.7%. From January 2000 to September 2026, prices rose 74.9% in Puerto Rico and 99.6% in the United States. What markets and forecasters expect for US prices implies about 2.8% a year for both from 2027 to 2031, with a wide range.</p>
+    <div class="in-tiles">
+      <div class="in-tile in-pr"><span>Puerto Rico, 12 months to September 2026</span><b>3.8%</b></div>
+      <div class="in-tile in-us"><span>United States, 12 months to September 2026</span><b>3.7%</b></div>
+      <div class="in-tile"><span>Projected average, 2027 to 2031</span><b>2.8%</b><small>both places; wide range below</small></div>
+      <div class="in-tile"><span>Prices since January 2000</span><b>+75% / +100%</b><small>Puerto Rico / United States</small></div>
+    </div>
+    <div class="pm-controls">
+      <label>Start year <select id="inFromSel"><option value="2000">2000</option><option value="2010">2010</option><option value="2020">2020</option></select></label>
+      <label>Bands <select id="inBands"><option value="pr">Puerto Rico</option><option value="us">United States</option><option value="both">Both</option><option value="none">None</option></select></label>
+      <button type="button" class="btn" id="inCsv"><span class="ms-icon" aria-hidden="true">download</span>Download CSV</button>
+    </div>
+    <div class="card pm-chart"><div id="inMain"></div>
+      <div class="pm-legend"><span><i class="in-key" style="background:#2A2E2E"></i>Puerto Rico (DTRH)</span><span><i class="in-key" style="background:#205D7B"></i>United States (BLS CPI-U)</span><span><i class="in-key in-dash"></i>projected</span><span><i class="in-key in-band"></i>80% and 95% bands</span></div>
+    </div>
+    <p class="pm-small">12-month change of the consumer price index, by month: Puerto Rico from January 2000 to September 2026, the United States to October 2026. BLS did not publish October 2025, so the US rate for October 2026 is not shown. The bands are how far this method's forecasts have missed in the past (see The projection).</p>
+    <div class="note"><b>In short.</b> For most of the last 25 years Puerto Rico's measured inflation ran below the US rate: on average 1.89% a year against 2.63% since the end of 2006. The two move together, because Puerto Rico uses the dollar, shares the Federal Reserve's policy and imports most of what it consumes. In 6 of the last 12 months, Puerto Rico's rate was the higher one, led by transportation (9.7% over 12 months).</div>
+  </section>
+
+  <section class="block" id="years">
+    <h2><span class="ms-icon" aria-hidden="true">bar_chart</span>1 · Inflation by year</h2>
+    <p class="pm-p">The average inflation of each calendar year, 2001 to 2031. The lighter bars are projected; their line is the 80% range. 2026 has 9 months observed in Puerto Rico.</p>
+    <div class="card pm-chart"><div id="inYears"></div></div>
+    <div class="card pm-tablebox" id="inYearTable"></div>
+  </section>
+
+  <section class="block" id="drivers">
+    <h2><span class="ms-icon" aria-hidden="true">pie_chart</span>2 · What drives it</h2>
+    <p class="pm-p">The 8 major groups of each index. Since January 2020, housing prices rose 13.4% in Puerto Rico and 34.3% in the United States; food, 32.9% and 33.9%. Housing is where the two indexes differ most, and also where they measure most differently: the US index gives rent and the rent-equivalent of owned homes about a third of its weight.</p>
+    <div class="card pm-tablebox" id="inGroups"></div>
+    <div class="card pm-chart"><div id="inGroupBars"></div>
+      <div class="pm-legend"><span><i class="in-key" style="background:#2A2E2E"></i>Puerto Rico</span><span><i class="in-key" style="background:#205D7B"></i>United States</span></div></div>
+    <p class="pm-small">The weights are the shares of spending in DTRH's basket (survey of 2000-01, the base of December 2006 = 100). The US groups are BLS's major groups of the CPI-U; their names match DTRH's, their contents are close but not identical. US 12-month changes are to September 2026.</p>
+  </section>
+
+  <section class="block" id="people">
+    <h2><span class="ms-icon" aria-hidden="true">family_restroom</span>3 · What it means for a person and a family</h2>
+    <div class="in-tiles">
+      <div class="in-tile in-pr"><span>What cost $100 in January 2000 costs, in Puerto Rico in September 2026</span><b>$174.90</b><small>in the United States: $199.90</small></div>
+      <div class="in-tile in-pr"><span>What cost $100 in January 2020 costs now</span><b>$121.30</b><small>in the United States: $130.80</small></div>
+      <div class="in-tile"><span>What costs $100 today, projected for December 2031</span><b>$114.80</b><small>80% range: $106 to $124</small></div>
+    </div>
+    <h3>Income and prices</h3>
+    <p class="pm-p">The median household income in Puerto Rico was $29,272 in 2025 ($18,862 in 2010); in the United States, $84,780. After removing each place's inflation, Puerto Rico's median rose 24.0% from 2010 to 2025 and the US median 14.7%. Most of Puerto Rico's gain came after 2019. A median describes the middle household; many households saw less, and the figures are survey estimates with margins of error.</p>
+    <div class="card pm-chart"><div id="inIncome"></div></div>
+    <div class="card pm-tablebox" id="inIncomeTable"></div>
+    <h3 id="power"><span class="ms-icon" aria-hidden="true">savings</span>Buying power by household income</h3>
+    <p class="pm-p">When prices rise and income does not, the same income buys less. Enter a household's yearly income; it starts at Puerto Rico's median household income in 2025, $29,272, the latest from the Census Bureau. Choose a starting month to see what that income buys today at that month's prices, the raise it would need to buy the same, and how much more it would lose by December 2031 if it stays the same.</p>
+    <div class="pm-controls">
+      <label>Annual household income ($) <input id="inInc" type="number" min="0" step="1000" value="29272" inputmode="decimal"></label>
+      <label>Since <select id="inSince"></select></label>
+      <button type="button" class="btn" id="inIncReset"><span class="ms-icon" aria-hidden="true">restart_alt</span>Use the median</button>
+    </div>
+    <div id="inPowerOut" aria-live="polite"></div>
+    <p class="pm-small">The median is the income of the household in the middle; it is used instead of the average because a few high incomes pull the average up. Every income loses the same share here, because there is one price index for all families. Lower-income households spend more of their income on food, housing, electricity and transportation, so when those prices rise faster (transportation: 9.7% over 12 months) they lose more; DTRH does not publish an index by income.</p>
+    <h3 id="calc"><span class="ms-icon" aria-hidden="true">calculate</span>Your budget</h3>
+    <p class="pm-p">Enter what a household spent in a month and when. The calculator splits it among the 8 groups as DTRH's basket does, follows each group's prices in Puerto Rico to the latest month, and applies the projection to the total.</p>
+    <div class="pm-controls">
+      <label>Monthly spending ($) <input id="inAmt" type="number" min="0" step="50" value="2000" inputmode="decimal"></label>
+      <label>Spent in <select id="inFrom"></select></label>
+    </div>
+    <div id="inCalcOut" aria-live="polite"></div>
+    <p class="pm-small">A household whose spending differs from the basket (more on rent, fuel or medicines, for example) saw a different change. The projection is for all items; the groups are not projected one by one.</p>
+    <h3><span class="ms-icon" aria-hidden="true">elderly</span>Social Security in Puerto Rico</h3>
+    <p class="pm-p">Social Security benefits rise each December by a cost-of-living adjustment set from the US consumer price index for wage earners (CPI-W), the same everywhere. Because Puerto Rico's prices rose less than US prices, the adjustments bought more in Puerto Rico: a benefit of $1,000 in January 2007 was $1,594.96 by September 2026 after the adjustments; at Puerto Rico's prices of January 2007 that is $1,104.46, and at US prices $958.17.</p>
+    <div class="card pm-tablebox" id="inCola"></div>
+    <p class="pm-small">The adjustments are computed here from the CPI-W with Social Security's rule (the July to September average over the same months of the last year with an adjustment, rounded to a tenth of a point); they match the adjustments Social Security announced from 2007 to 2025.</p>
+  </section>
+
+  <section class="block" id="projection">
+    <h2><span class="ms-icon" aria-hidden="true">query_stats</span>4 · The projection and how reliable it is</h2>
+    <p class="pm-p">The central path for both places is the US consumer inflation that markets and forecasters expect, year by year: the Federal Reserve Bank of Cleveland's model of October 2026, which reads Treasury yields, inflation swaps and surveys. It expects 2.98% over the next year and 2.77% a year over five. The Survey of Professional Forecasters (2026 Q3) expects 2.43% over the next year and 2.30% a year over ten.</p>
+    <div class="card pm-tablebox in-narrow" id="inFwd"></div>
+    <p class="pm-p">Why use the US expectation for Puerto Rico? Five methods were tested the same way: a forecast from each quarter of 2011 to 2021, using only what was known then, compared with Puerto Rico's actual inflation over the next one to five years. Following the US expectation had the smallest error at every horizon: 1.18 points over five years, against 1.49 for a model fitted to Puerto Rico's own monthly data. That model finds that Puerto Rico's prices pass on US inflation about one for one (a long-run pass-through of 1.11), but its Puerto Rico-specific part did not help forecasts.</p>
+    <div class="card pm-tablebox" id="inBt"></div>
+    <div class="note caution"><b>Read the bands with care.</b> The 80% band is the central path plus or minus 1.28 times the root mean square error of the same method in the backtest, at each horizon; the 95% band, 1.96 times. For Puerto Rico's rate over the next year that error is about 2.0 points, so its 80% range is about ±2.6 points. Most of that comes from 2021 and 2022, when inflation rose far above almost every forecast. The bands come from a short history and assume the future misses like the past; they are not a probability statement about any one year.</div>
+    <div class="note"><b>What would move the path.</b> Fuel: transportation is 24% of Puerto Rico's basket, against about a sixth of the US index, and most of Puerto Rico's electricity is made from imported fuel, whose cost reaches bills through the fuel charge, so oil prices move Puerto Rico's rate further. Also electricity rates set by the Energy Bureau, shipping costs and federal tariffs on imports. A change in what markets expect from the Federal Reserve moves the central path of both places.</div>
+  </section>
+
+  <section class="block" id="method">
+    <h2><span class="ms-icon" aria-hidden="true">info</span>Method</h2>
+    <div class="note"><b>The indexes.</b> Puerto Rico: the official consumer price index of the Department of Labor and Human Resources (DTRH), all families, base December 2006 = 100, not seasonally adjusted. From 2007 it is the 2010 revision, which averages prices within each item with a geometric mean; before 2007 it is DTRH's earlier index joined to the same base, whose rise from 2005 to 2008 partly reflects its old weights. United States: the BLS consumer price index for all urban consumers (CPI-U), US city average, not seasonally adjusted. The DTRH workbook and DTRH's file on indicadores.pr agree in 230 of 231 shared months.</div>
+    <div class="note"><b>Not the same measurement.</b> Part of the long-run gap between the two rates is how they measure, not only prices: the geometric mean gives a lower rate than BLS's mostly arithmetic one, DTRH's basket is from 2000-01 while BLS updates its weights every year, and rent and owners' rent-equivalent weigh much less in Puerto Rico's index.</div>
+    <div class="note"><b>The projection.</b> The Cleveland Fed's expected inflation over one to ten years is turned into the expected inflation of each single year ahead; each place's index is carried forward at those rates from its latest month, with its own seasonal pattern (the average change of each calendar month over the last ten years), so the 12-month rates show only real base effects. The model in the backtest is an ARDL of Puerto Rico's monthly change on its last month, US inflation this month and last month, and month dummies, from 2008 (225 months). For each of the 44 origins, every method saw only data up to that month; the Cleveland Fed re-estimates its model with all data, so its past expectations are close to, but not exactly, what was known then.</div>
+    <div class="note"><b>What the page does not do.</b> It is not a forecast of FPR or of any agency. It does not project each group, municipio or kind of household, and it does not measure the cost of living in one place against another: an index measures change over time, not the level of prices.</div>
+  </section>
+
+  <section class="block" id="sources">
+    <h2><span class="ms-icon" aria-hidden="true">menu_book</span>Sources and licenses</h2>
+    <div class="note"><b>Departamento del Trabajo y Recursos Humanos de Puerto Rico.</b> Negociado de Estadísticas del Trabajo: Índice de Precios al Consumidor, Serie Histórica (mercadolaboral.pr.gov), to September 2026; and the index file and 2000-01 basket on indicadores.pr (Creative Commons Attribution).</div>
+    <div class="note"><b>US Bureau of Labor Statistics.</b> Consumer Price Index, CPI-U and CPI-W, US city average, and the CPI-U major groups, from the public data API, to October 2026, retrieved on 2026-11-10. US Government work, public domain. BLS.gov cannot vouch for the data or analyses derived from these data after the data have been retrieved from BLS.gov.</div>
+    <div class="note"><b>Federal Reserve Bank of Cleveland.</b> Inflation expectations, model output 1982 to the present (doi 10.26509/frbc-infexp). Free to use with citation.</div>
+    <div class="note"><b>Federal Reserve Bank of Philadelphia.</b> Survey of Professional Forecasters, median CPI inflation forecasts. Free to use with citation.</div>
+    <div class="note"><b>U.S. Census Bureau.</b> American Community Survey 1-year estimates, table B19013, median household income, Puerto Rico and the United States, 2010 to 2025. US Government work.</div>
+    <div class="note"><b>Data and method.</b> The data file is data/inflation.json (inflation.py); the plan and the backtest are in docs/inflation-plan-2026-11.md of the project repository.</div>
+    <div class="note"><b>How to cite this page.</b> Foundation for Puerto Rico, Knowledge Area: Inflation, PR Data Observatory, September 2026 data (draft). Data: DTRH, US Bureau of Labor Statistics, Federal Reserve Banks of Cleveland and Philadelphia, U.S. Census Bureau.</div>
+  </section>
+</main>
+<script src="js/core/knowledge.js?v=34"></script>
+<script>Core.knowledge.render(); I18N.apply();</script>
+<script src="js/common.js?v=20"></script>
+<script src="js/inflation.js?v=2"></script>
+<script src="js/chatboot.js?v=60"></script>
+</body>
+</html>

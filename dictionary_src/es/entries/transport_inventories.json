@@ -1,0 +1,34 @@
+{
+ "layers.bridges": {
+  "name": "Puentes y túneles (capa del mapa)",
+  "how_to_read": "Active la capa en la pestaña Capas del mapa 2D o de la vista 3D (Infraestructura y movilidad: Movilidad y transporte). Los círculos rojo oscuro son puentes en mala condición; los círculos más grandes llevan más tránsito, en la PR-18, la PR-22 y la PR-52 en el área de San Juan. Haga clic en un puente para ver su condición, si tiene límite de carga, socavación, el año de construcción, el desvío y la última inspección. En 2025: 411 puentes en buena condición, 1,671 en condición regular y 344 en mala condición; 24 cerrados y 695 con límite de carga o que deberían tenerlo; 505 con socavación crítica.",
+  "_en": {
+   "name": "4bef1f35",
+   "how_to_read": "3332193c"
+  }
+ },
+ "layers.airports": {
+  "name": "Aeropuertos y helipuertos (capa del mapa)",
+  "how_to_read": "Active la capa en la pestaña Capas del mapa 2D o de la vista 3D. Azul oscuro: San Juan (Luis Muñoz Marín), Aguadilla (Rafael Hernández) y Ponce (Mercedita), certificados para servicio de aerolíneas. Azul claro: los demás aeropuertos de uso público, entre ellos Vieques, Culebra y Ceiba. Rosa: helipuertos de hospitales, centros de salud, la autoridad de acueductos y el Ejército. Haga clic en un punto para ver su identificador de la FAA, su dueño, su uso, su elevación y si tiene torre de control.",
+  "_en": {
+   "name": "68c9669c",
+   "how_to_read": "005b0fbd"
+  }
+ },
+ "layers.ferries": {
+  "name": "Rutas de lanchas y pasajeros (capa del mapa)",
+  "how_to_read": "Active la capa en la pestaña Capas del mapa 2D o de la vista 3D. Ceiba–Vieques llevó 641,183 pasajeros en 2024 y Ceiba–Culebra 546,258, con unos 40,000 vehículos cada una; San Juan–Cataño llevó 428,604 pasajeros y ningún vehículo. Haga clic en una línea para ver sus viajes y el tiempo de un cruce.",
+  "_en": {
+   "name": "13184460",
+   "how_to_read": "add01581"
+  }
+ },
+ "layers.evcharge": {
+  "name": "Estaciones públicas de carga de vehículos eléctricos (capa del mapa)",
+  "how_to_read": "Active la capa en la pestaña Capas del mapa 2D o de la vista 3D. La mayoría de las estaciones son de nivel 2 (azul), con dos a seis puertos; solo dos tienen carga rápida de corriente continua (verde). Haga clic en una estación para ver sus puertos, su red, sus conectores y la fecha de su última confirmación. La capa Paradas de taxis y carga de vehículos eléctricos muestra los cargadores que personas voluntarias trazaron en OpenStreetMap, que pueden ser distintos.",
+  "_en": {
+   "name": "f864eb76",
+   "how_to_read": "9cc9c74a"
+  }
+ }
+}

@@ -1,0 +1,2396 @@
+{
+ "note": "OGP 'Sábana' data sheets, approved budget, thousands of dollars; FY26 = Aprobado-2025-2026, FY27 = Aprobado-2026-2027; read 2026-11-02",
+ "agencies": {
+  "008": "Oficina del Contralor",
+  "010": "Tribunal General De Justicia",
+  "011": "Comisión para la Seguridad en el Tránsito",
+  "015": "Oficina Del Gobernador",
+  "016": "Oficina De Gerencia Y Presupuesto",
+  "017": "Asignaciones bajo la Custodia de la Oficina de Gerencia y Presupuesto",
+  "018": "Junta De Planificacion",
+  "022": "Comisionado De Seguros",
+  "023": "Departamento De Estado",
+  "024": "Departamento De Hacienda",
+  "025": "Departamento De Hacienda Custodia",
+  "028": "Comision Estatal De Elecciones",
+  "029": "Administracion De Asuntos Federales De PR",
+  "030": "Oficina Administracion Y Transformacion Recursos Humanos",
+  "031": "Administracion Servicios Generales",
+  "034": "Comision de Investigacion Procesamiento Y Apelacion",
+  "037": "Comision De Derechos Civiles",
+  "038": "Departamento De Justicia",
+  "040": "Policia De PR",
+  "043": "Guardia Nacional De PR",
+  "045": "Negociado de la Policía de Puerto Rico",
+  "049": "Departamento Transportacion Y Obras Publicas",
+  "050": "Departamento De Recursos Naturales Y Ambientales",
+  "055": "Departamento De Agricultura",
+  "060": "Oficina Del Procurador Del Ciudadano",
+  "062": "Comision De Desarrollo Cooperativo",
+  "067": "Departamento Del Trabajo Y Recursos Humanos",
+  "068": "Junta De Relaciones Del Trabajo",
+  "069": "Departamento Asuntos Del Consumidor",
+  "070": "Corporación del Fondo del Seguro del Estado",
+  "071": "Departamento De Salud",
+  "075": "Oficina Del Comisionado De Instituciones Financieras",
+  "078": "Departamento De La Vivienda",
+  "079": "Administración de Compensaciones por Accidentes de Automóviles",
+  "081": "Departamento De Educacion",
+  "082": "Instituto de Cultura Puertorriqueña",
+  "087": "Departamento De Recreacion Y Deportes",
+  "090": "Administración de Servicios Médicos",
+  "095": "Administracion De Servicios De Salud Mental Y Contra la Addiccion",
+  "096": "Oficina De La Procuradora De Las Mujeres",
+  "100": "Asamblea Legislativa",
+  "105": "Comision Industrial De PR",
+  "106": "Administración de Vivienda Pública",
+  "109": "Escuela de Artes Plásticas",
+  "119": "Departamento de Desarrollo Económico y Comercio",
+  "120": "Oficina Del Procurador Del Veterano",
+  "122": "Departamento De La Familia",
+  "123": "Administracion De Familia Y Ninos",
+  "124": "Administracion Para El Sustento A Menores",
+  "126": "Administracion De Rehabilitacion Vocacional",
+  "127": "Administracion De Desarrollo Socioeconomico De La Familia",
+  "137": "Departamento De Correccion Y Rehabilitacion",
+  "138": "Fideicomiso Institucional de la Guardia Nacional",
+  "139": "Junta De Libertad Bajo Palabra",
+  "143": "Oficina De Proteccion Y Defensa De Las Personas Con Impedimentos",
+  "152": "Oficina Del Procurador De Persona De Edad Avanzada",
+  "153": "Defensoria De Las Personas Con Impedimentos",
+  "155": "Oficina Estatal De Conservacion Historica",
+  "161": "Autoridad para el Financiamiento de la Infraestructura",
+  "162": "Autoridad de Edificios Públicos",
+  "165": "Autoridad de Tierras",
+  "167": "Compañía para el Desarrollo Integral de la Península de Cantera",
+  "168": "Autoridad de los Puertos",
+  "176": "Universidad de Puerto Rico",
+  "177": "Administración de Terrenos",
+  "180": "Compañía de Turismo",
+  "186": "Autoridad de Conservación y Desarrollo de Culebra",
+  "187": "Administración de Seguros de Salud",
+  "188": "Corporación del Centro Cardiovascular de Puerto Rico y del Caribe",
+  "189": "Instituto de Ciencias Forenses",
+  "191": "Corporación de las Artes Musicales",
+  "192": "Corporación del Centro de Bellas Artes",
+  "193": "Oficina de Etica Gubernamental",
+  "195": "Banco de Desarrollo Económico para Puerto Rico",
+  "196": "Corporación de Puerto Rico para la Difusión Pública",
+  "198": "Corporación de Seguros Agrícolas",
+  "200": "Panel Sobre el Fiscal Especial Independiente",
+  "208": "Aportaciones a los Municipios",
+  "209": "Aportaciones a los Partidos Políticos",
+  "215": "Corporación del Conservatorio de Música",
+  "220": "Programa De Salud Correccional",
+  "231": "Oficina Del Procurador Del Paciente",
+  "235": "Autoridad para el Financiamiento de la Vivienda",
+  "236": "Fondo de Innovación para el Desarrollo Agrícola",
+  "238": "Autoridad de Ponce (Autoridad del Puerto de las Américas)",
+  "241": "Administracion Para El Cuidado Y Desarrollo Integral de la Ninez",
+  "264": "Corporación del Proyecto ENLACE del Caño Martín Peña",
+  "265": "Aut para Redesarrollo de Terrenos y Facilidades de Est Naval Roosevelt Roads",
+  "266": "Oficina Para Asuntos De Seguridad Publica",
+  "268": "Instituto de Estadísticas",
+  "271": "Oficina De Innovacion Y Servicios De Tecnologia",
+  "272": "Oficina del Inspector General del Gobierno",
+  "276": "Autoridad para las Alianzas Público Privadas",
+  "277": "Administración para el Desarrollo de Empresas Agropecuarias",
+  "279": "Comision Apelativa Servicio Publico",
+  "281": "Oficina Contralor Electoral",
+  "285": "Autoridad de Transporte Integrado",
+  "286": "Autoridad del Puerto de Ponce",
+  "288": "Centro Comprensivo del Cáncer",
+  "293": "Centro de Investigaciones, Educación y Servicios Médicos para la Diabetes",
+  "295": "Autoridad de Asesoría Financiera y Agencia Fiscal",
+  "297": "Junta de Supervisión y Administración Financiera",
+  "298": "Junta Reglamentadora De Servicio Publico (H)",
+  "303": "Autoridad del Distrito del Centro de Convenciones",
+  "310": "Corporación de Financiamiento Municipal",
+  "311": "Comision Juegos Gobierno PR",
+  "312": "Junta Retiro Gobierno De PR",
+  "329": "Oficina Para El Desarrollo Socioeconomico Y Comunitario"
+ },
+ "programs": {
+  "008-2057": {
+   "name": "P2057: Post Intervención de las Operaciones Fiscales en el Gobierno",
+   "FY26": 56135.0,
+   "FY27": 56170.0
+  },
+  "010-1415": {
+   "name": "P1415: Administración del Sistema  Judicial",
+   "FY26": 430826.0,
+   "FY27": 421757.0
+  },
+  "011-1261": {
+   "name": "P1261: Planificación y Coordinación de la Seguridad en el Tránsito",
+   "FY26": 12271.0,
+   "FY27": 13056.0
+  },
+  "015-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 13641.0,
+   "FY27": 0.0
+  },
+  "015-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 10540.0
+  },
+  "015-1633": {
+   "name": "P1633: Formulación y Coordinación de Política Pública",
+   "FY26": 1859.0,
+   "FY27": 2307.0
+  },
+  "015-1644": {
+   "name": "P1644: Oficina de la Primera  Dama",
+   "FY26": 118.0,
+   "FY27": 111.0
+  },
+  "015-2064": {
+   "name": "P2064: Nombramientos Judiciales",
+   "FY26": 252.0,
+   "FY27": 368.0
+  },
+  "015-2075": {
+   "name": "P2075: Comunicación y Servicios al Ciudadano",
+   "FY26": 2158.0,
+   "FY27": 2044.0
+  },
+  "015-3094": {
+   "name": "P3094: Mansión Ejecutiva",
+   "FY26": 1762.0,
+   "FY27": 1959.0
+  },
+  "016-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 12297.0,
+   "FY27": 0.0
+  },
+  "016-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 13237.0
+  },
+  "016-1351": {
+   "name": "P1351: Servicios a los  Ex-gobernadores",
+   "FY26": 545.0,
+   "FY27": 587.0
+  },
+  "016-1408": {
+   "name": "P1408: Asistencia Técnica y Económica a los  Municipios",
+   "FY26": 1296.0,
+   "FY27": 1290.0
+  },
+  "016-2065": {
+   "name": "P2065: Área de Presupuesto",
+   "FY26": 5036.0,
+   "FY27": 6294.0
+  },
+  "016-2068": {
+   "name": "P2068: Tecnologías de Información Gerencial y Presupuestaria",
+   "FY26": 3303.0,
+   "FY27": 2504.0
+  },
+  "016-2069": {
+   "name": "P2069: Administración General",
+   "FY26": 3008.0,
+   "FY27": 3278.0
+  },
+  "016-2070": {
+   "name": "P2070: Área de Gerencia Pública",
+   "FY26": 898.0,
+   "FY27": 378.0
+  },
+  "016-2073": {
+   "name": "P2073: Área de Asesoramiento Legal",
+   "FY26": 934.0,
+   "FY27": 638.0
+  },
+  "016-2076": {
+   "name": "P2076: Programa de Banda Ancha en Puerto Rico",
+   "FY26": 0.0,
+   "FY27": 161127.0
+  },
+  "016-4001": {
+   "name": "P4001: Área de Gerencia de Fondos Federales",
+   "FY26": 334.0,
+   "FY27": 968.0
+  },
+  "017-1248": {
+   "name": "P1248: Gerencia Gubernamental-Recursos Bajo la Custodia de OGP",
+   "FY26": 824241.0,
+   "FY27": 761229.0
+  },
+  "017-1251": {
+   "name": "P1251: Desarrollo Social-Recursos Bajo la Custodia de OGP",
+   "FY26": 0.0,
+   "FY27": 0.0
+  },
+  "018-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 12067.0,
+   "FY27": 0.0
+  },
+  "018-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 9618.0
+  },
+  "018-1353": {
+   "name": "P1353: Planificación Física",
+   "FY26": 59170.0,
+   "FY27": 45173.0
+  },
+  "018-2042": {
+   "name": "P2042: Planificación Económica y Social",
+   "FY26": 1719.0,
+   "FY27": 1924.0
+  },
+  "018-3134": {
+   "name": "P3134: Sistemas de Información",
+   "FY26": 1394.0,
+   "FY27": 1319.0
+  },
+  "018-3135": {
+   "name": "P3135: Administración Interna",
+   "FY26": 1409.0,
+   "FY27": 1183.0
+  },
+  "022-1236": {
+   "name": "P1236: Fiscalización y Reglamentación de la Industria  del Seguro",
+   "FY26": 11933.0,
+   "FY27": 12452.0
+  },
+  "023-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 8609.0,
+   "FY27": 0.0
+  },
+  "023-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 7915.0
+  },
+  "023-1354": {
+   "name": "P1354: Coordinación de Proyectos Públicos y Privados de Promoción Cultural",
+   "FY26": 1726.0,
+   "FY27": 1493.0
+  },
+  "023-1355": {
+   "name": "P1355: Servicios de Incorporación, Pasaportes, Reglamentos y Juntas Examinadoras",
+   "FY26": 10636.0,
+   "FY27": 8734.0
+  },
+  "023-2043": {
+   "name": "P2043: Relaciones entre Puerto Rico y Otros Países",
+   "FY26": 776.0,
+   "FY27": 387.0
+  },
+  "024-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 83308.0,
+   "FY27": 0.0
+  },
+  "024-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 77931.0
+  },
+  "024-1358": {
+   "name": "P1358: Rentas Internas y  Recaudaciones",
+   "FY26": 76159.0,
+   "FY27": 70567.0
+  },
+  "024-1550": {
+   "name": "P1550: Administración de la Lotería de Puerto Rico",
+   "FY26": 249123.0,
+   "FY27": 255191.0
+  },
+  "024-1551": {
+   "name": "P1551: Administración de la Lotería Electrónica",
+   "FY26": 565736.0,
+   "FY27": 574723.0
+  },
+  "024-2045": {
+   "name": "P2045: Contabilidad Central de Gobierno",
+   "FY26": 22158.0,
+   "FY27": 19645.0
+  },
+  "024-3104": {
+   "name": "P3104: Servicios Auxiliares",
+   "FY26": 8949.0,
+   "FY27": 9205.0
+  },
+  "024-3105": {
+   "name": "P3105: Tecnología de Información",
+   "FY26": 29304.0,
+   "FY27": 29479.0
+  },
+  "025-1640": {
+   "name": "P1640: Asignaciones  Generales",
+   "FY26": 3245441.0,
+   "FY27": 3428826.0
+  },
+  "028-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 6337.0,
+   "FY27": 0.0
+  },
+  "028-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 6505.0
+  },
+  "028-1370": {
+   "name": "P1370: Planificación y Desarrollo de Actividades  Electorales",
+   "FY26": 18843.0,
+   "FY27": 20016.0
+  },
+  "028-1580": {
+   "name": "P1580: Juntas de Inscripción  Permanentes",
+   "FY26": 6985.0,
+   "FY27": 7225.0
+  },
+  "028-1581": {
+   "name": "P1581: Comisionados Electorales",
+   "FY26": 235.0,
+   "FY27": 315.0
+  },
+  "029-1365": {
+   "name": "P1365: Coordinación y Orientación de Servicios en Oficinas Regionales",
+   "FY26": 127.0,
+   "FY27": 100.0
+  },
+  "029-1366": {
+   "name": "P1366: Gastos de Representación, Comisionado Residente de Puerto Rico",
+   "FY26": 400.0,
+   "FY27": 269.0
+  },
+  "029-1582": {
+   "name": "P1582: Asesoramiento en Asuntos  Federales",
+   "FY26": 2695.0,
+   "FY27": 2834.0
+  },
+  "030-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 1898.0,
+   "FY27": 0.0
+  },
+  "030-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 8125.0
+  },
+  "030-1360": {
+   "name": "P1360: Asesoramiento",
+   "FY26": 1279.0,
+   "FY27": 940.0
+  },
+  "030-2025": {
+   "name": "P2025: Administración de Recursos Humanos (Apoyo Técnico y Servicios Gerenciales)",
+   "FY26": 5841.0,
+   "FY27": 6577.0
+  },
+  "030-2066": {
+   "name": "P2066: Evaluación y Cumplimiento (Servicios Directos a Agencias, Municipios y Corps.)",
+   "FY26": 3042.0,
+   "FY27": 2860.0
+  },
+  "031-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 23849.0,
+   "FY27": 0.0
+  },
+  "031-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 19164.0
+  },
+  "031-2051": {
+   "name": "P2051: Compras, Servicios y Suministros",
+   "FY26": 5122.0,
+   "FY27": 3124.0
+  },
+  "031-2061": {
+   "name": "P2061: Transporte y Mantenimiento de Vehículos de Motor",
+   "FY26": 1392.0,
+   "FY27": 3070.0
+  },
+  "034-3121": {
+   "name": "P3121: Investigación de Casos por Abuso de Poder de Funcionarios Públicos",
+   "FY26": 526.0,
+   "FY27": 529.0
+  },
+  "037-1194": {
+   "name": "P1194: Educación y Orientación sobre los Derechos Civiles",
+   "FY26": 856.0,
+   "FY27": 839.0
+  },
+  "038-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 66897.0,
+   "FY27": 0.0
+  },
+  "038-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 62880.0
+  },
+  "038-1190": {
+   "name": "P1190: Investigación y Procesamiento  de Asuntos de  Menores y  Familia",
+   "FY26": 16231.0,
+   "FY27": 14995.0
+  },
+  "038-1191": {
+   "name": "P1191: Investigación y Procesamiento Criminal",
+   "FY26": 63377.0,
+   "FY27": 69466.0
+  },
+  "038-1227": {
+   "name": "P1227: Registro de la Propiedad",
+   "FY26": 21858.0,
+   "FY27": 20901.0
+  },
+  "038-1228": {
+   "name": "P1228: Restricción de Prácticas Monopolísticas",
+   "FY26": 642.0,
+   "FY27": 182.0
+  },
+  "038-1609": {
+   "name": "P1609: Oficina de Compensación y Servicios a las Víctimas  y Testigos  de Delito",
+   "FY26": 1935.0,
+   "FY27": 1542.0
+  },
+  "038-2012": {
+   "name": "P2012: Sistema de Información de Justicia Criminal",
+   "FY26": 2868.0,
+   "FY27": 2733.0
+  },
+  "038-2056": {
+   "name": "P2056: Asesoramiento Legal y Representación en Litigios",
+   "FY26": 12723.0,
+   "FY27": 10487.0
+  },
+  "040-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 276039.0
+  },
+  "040-1198": {
+   "name": "Vigilancia y Segur. en los Residenciales Públ. 1198 - Otros Serv.",
+   "FY26": 0.0,
+   "FY27": 24377.0
+  },
+  "040-1201": {
+   "name": "Fuerzas Unidas de Rápida Acción 1201 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 25814.0
+  },
+  "040-1202": {
+   "name": "Investigación Criminal 1202 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 163469.0
+  },
+  "040-1203": {
+   "name": "Recursos Humanos y Fiscales 1203 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 2890.0
+  },
+  "040-1204": {
+   "name": "Relaciones con la Comunidad 1204 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 10768.0
+  },
+  "040-1205": {
+   "name": "Serv. Aux. de Oper. Prof. y Científicas 1205 - Otros Serv.",
+   "FY26": 0.0,
+   "FY27": 33205.0
+  },
+  "040-1206": {
+   "name": "Vigilancia Policiaca 1206 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 409585.0
+  },
+  "040-1207": {
+   "name": "Serv. de Vigil. y Segur. al Gobernador y Ex-Gob. 1207 - Otros Serv.",
+   "FY26": 0.0,
+   "FY27": 9898.0
+  },
+  "040-1221": {
+   "name": "Serv. de Emerg. 9-1-1 / Línea de Maltrato a Menor. 1221 - Otros Serv.",
+   "FY26": 0.0,
+   "FY27": 16118.0
+  },
+  "040-1473": {
+   "name": "Profesionalización de la Policía de PR 1473 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 88830.0
+  },
+  "040-3045": {
+   "name": "Control y Seguridad en el Tránsito 3045 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 30847.0
+  },
+  "043-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 8323.0,
+   "FY27": 0.0
+  },
+  "043-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 7460.0
+  },
+  "043-1208": {
+   "name": "P1208: Seguridad y Conservación de Facilidades Militares",
+   "FY26": 52180.0,
+   "FY27": 47930.0
+  },
+  "043-1575": {
+   "name": "P1575: Guardia Estatal de Puerto Rico",
+   "FY26": 107.0,
+   "FY27": 874.0
+  },
+  "043-3047": {
+   "name": "P3047: Servicios Auxiliares de Administración",
+   "FY26": 7375.0,
+   "FY27": 955.0
+  },
+  "045-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 361455.0,
+   "FY27": 0.0
+  },
+  "045-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 57411.0
+  },
+  "045-1192": {
+   "name": "P1192: Investigaciones Especiales",
+   "FY26": 6061.0,
+   "FY27": 5800.0
+  },
+  "045-1198": {
+   "name": "P1198: Vigilancia y Seguridad en los Residenciales Públicos",
+   "FY26": 24918.0,
+   "FY27": 0.0
+  },
+  "045-1201": {
+   "name": "P1201: Fuerzas Unidas de Rápida Acción",
+   "FY26": 25834.0,
+   "FY27": 0.0
+  },
+  "045-1202": {
+   "name": "P1202: Investigación Criminal",
+   "FY26": 170860.0,
+   "FY27": 0.0
+  },
+  "045-1203": {
+   "name": "P1203: Recursos Humanos y Fiscales",
+   "FY26": 4780.0,
+   "FY27": 0.0
+  },
+  "045-1204": {
+   "name": "P1204: Relaciones con la Comunidad",
+   "FY26": 10725.0,
+   "FY27": 0.0
+  },
+  "045-1205": {
+   "name": "P1205: Servicios Auxiliares de Operaciones Profesionales y Científicas",
+   "FY26": 41748.0,
+   "FY27": 0.0
+  },
+  "045-1206": {
+   "name": "P1206: Vigilancia Policiaca",
+   "FY26": 417485.0,
+   "FY27": 0.0
+  },
+  "045-1207": {
+   "name": "P1207: Servicios de Vigilancia y Seguridad al Gobernador y Ex-Gobernadores",
+   "FY26": 8915.0,
+   "FY27": 0.0
+  },
+  "045-1221": {
+   "name": "P1221: Servicio de Emergencia 9-1-1 / Línea de Maltrato a Menores",
+   "FY26": 16748.0,
+   "FY27": 353.0
+  },
+  "045-1222": {
+   "name": "P1222: Educación y Prevención de Incendios",
+   "FY26": 3256.0,
+   "FY27": 3204.0
+  },
+  "045-1223": {
+   "name": "P1223: Extinción y Control de Incendios",
+   "FY26": 103913.0,
+   "FY27": 98305.0
+  },
+  "045-1224": {
+   "name": "P1224: Servicios de Emergencias Médicas",
+   "FY26": 38452.0,
+   "FY27": 35703.0
+  },
+  "045-1225": {
+   "name": "P1225: Operaciones de Emergencias, Crisis o Desastres",
+   "FY26": 12708.0,
+   "FY27": 11989.0
+  },
+  "045-1473": {
+   "name": "P1473: Profesionalización de la Policía de PR (Dirección y Administración General)",
+   "FY26": 64731.0,
+   "FY27": 0.0
+  },
+  "045-3045": {
+   "name": "P3045: Control y Seguridad en el Tránsito",
+   "FY26": 33079.0,
+   "FY27": 0.0
+  },
+  "045-3052": {
+   "name": "P3052: Adiestramiento en Técnicas de Prevención y Extinción de Incendios",
+   "FY26": 177.0,
+   "FY27": 183.0
+  },
+  "049-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 33733.0,
+   "FY27": 0.0
+  },
+  "049-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 22500.0
+  },
+  "049-1307": {
+   "name": "P1307: Adquisición y Administración de  Propiedades",
+   "FY26": 38.0,
+   "FY27": 38.0
+  },
+  "049-1308": {
+   "name": "P1308: Cuerpo de Ordenamiento del Tránsito",
+   "FY26": 2237.0,
+   "FY27": 2237.0
+  },
+  "049-1309": {
+   "name": "P1309: Diseño y Reconstrucción de Carreteras",
+   "FY26": 1223.0,
+   "FY27": 967.0
+  },
+  "049-1310": {
+   "name": "P1310: Embellecimiento y Ornato de Áreas Turísticas y de la Comunidad",
+   "FY26": 2123.0,
+   "FY27": 2123.0
+  },
+  "049-1311": {
+   "name": "P1311: Mantenimiento y Conservación de Carreteras",
+   "FY26": 17815.0,
+   "FY27": 16338.0
+  },
+  "049-1312": {
+   "name": "P1312: Reglamentación de Vehículos de Motor y Servicios al Conductor",
+   "FY26": 131769.0,
+   "FY27": 135785.0
+  },
+  "049-1313": {
+   "name": "P1313: Regulación y Seguridad del Tránsito en las Carreteras",
+   "FY26": 1767.0,
+   "FY27": 1388.0
+  },
+  "049-1635": {
+   "name": "P1635: Directoría de Urbanismo",
+   "FY26": 60.0,
+   "FY27": 60.0
+  },
+  "049-2027": {
+   "name": "P2027: Administración y Servicios Auxiliares Centrales",
+   "FY26": 12111.0,
+   "FY27": 12423.0
+  },
+  "049-3075": {
+   "name": "P3075: Supervisión y Coordinación de Obras Públicas",
+   "FY26": 100.0,
+   "FY27": 100.0
+  },
+  "050-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 57800.0,
+   "FY27": 0.0
+  },
+  "050-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 47620.0
+  },
+  "050-1068": {
+   "name": "P1068: Laboratorio de Investigaciones Ambientales",
+   "FY26": 758.0,
+   "FY27": 758.0
+  },
+  "050-1071": {
+   "name": "P1071: Control de la Contaminación por Ruidos",
+   "FY26": 307.0,
+   "FY27": 307.0
+  },
+  "050-1072": {
+   "name": "P1072: Mejoramiento de la Calidad del Agua",
+   "FY26": 98230.0,
+   "FY27": 114462.0
+  },
+  "050-1073": {
+   "name": "P1073: Mejoramiento de la Calidad del Aire",
+   "FY26": 4127.0,
+   "FY27": 4077.0
+  },
+  "050-1074": {
+   "name": "P1074: Reglamentación sobre Contaminación de Terrenos",
+   "FY26": 26435.0,
+   "FY27": 20598.0
+  },
+  "050-1075": {
+   "name": "P1075: Servicios Regionalizados",
+   "FY26": 581.0,
+   "FY27": 581.0
+  },
+  "050-1159": {
+   "name": "P1159: Parques de Puerto Rico",
+   "FY26": 10146.0,
+   "FY27": 10040.0
+  },
+  "050-1226": {
+   "name": "P1226: Administración y Conservación de Recursos de Agua y Minerales",
+   "FY26": 4653.0,
+   "FY27": 4684.0
+  },
+  "050-1321": {
+   "name": "P1321: Reforestación, Administración y Conservación de Recursos Vivientes",
+   "FY26": 35578.0,
+   "FY27": 33484.0
+  },
+  "050-1322": {
+   "name": "P1322: Coordinación Regional de Conservación  de Recursos Naturales",
+   "FY26": 3201.0,
+   "FY27": 3201.0
+  },
+  "050-1323": {
+   "name": "P1323: Cuerpo de Vigilantes de Recursos Naturales",
+   "FY26": 10403.0,
+   "FY27": 10403.0
+  },
+  "050-1324": {
+   "name": "P1324: Información y Educación sobre Protección del Ambiente",
+   "FY26": 721.0,
+   "FY27": 704.0
+  },
+  "050-1325": {
+   "name": "P1325: Planificación Integral del Uso, Conservación y Desarrollo de los Rec. Naturales",
+   "FY26": 3237.0,
+   "FY27": 3013.0
+  },
+  "050-1326": {
+   "name": "P1326: Seguridad Marina y Capacitación Ciudadana",
+   "FY26": 3324.0,
+   "FY27": 3384.0
+  },
+  "050-1327": {
+   "name": "P1327: Asesoramiento Técnico e Infraestructura",
+   "FY26": 70.0,
+   "FY27": 69.0
+  },
+  "050-1328": {
+   "name": "P1328: Educación, Reducción y Reciclaje de Desperdicios Sólidos",
+   "FY26": 953.0,
+   "FY27": 966.0
+  },
+  "050-1631": {
+   "name": "P1631: Emergencias Ambientales",
+   "FY26": 4754.0,
+   "FY27": 4814.0
+  },
+  "050-1704": {
+   "name": "P1704: Permisos, Endosos y Servicios Especializados",
+   "FY26": 943.0,
+   "FY27": 768.0
+  },
+  "050-3083": {
+   "name": "P3083: Asuntos Gerenciales - ARN",
+   "FY26": 28116.0,
+   "FY27": 27926.0
+  },
+  "050-3085": {
+   "name": "P3085: Oficinas de Asesoramiento al Secretario",
+   "FY26": 2230.0,
+   "FY27": 2227.0
+  },
+  "050-3131": {
+   "name": "P3131: Asuntos Gerenciales - JCA",
+   "FY26": 4318.0,
+   "FY27": 4402.0
+  },
+  "055-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 0.0,
+   "FY27": 0.0
+  },
+  "055-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 0.0
+  },
+  "055-1238": {
+   "name": "P1238: Administración de Regionales y Centros de Servicios Integrados",
+   "FY26": 16613.0,
+   "FY27": 16391.0
+  },
+  "055-1243": {
+   "name": "P1243: Integridad Agrocomercial",
+   "FY26": 7329.0,
+   "FY27": 7117.0
+  },
+  "055-1705": {
+   "name": "P1705: Innovación y Comercialización Agrícola",
+   "FY26": 13357.0,
+   "FY27": 13344.0
+  },
+  "055-3143": {
+   "name": "P3143: Dirección y Administración",
+   "FY26": 4564.0,
+   "FY27": 4650.0
+  },
+  "055-3145": {
+   "name": "P3145: Planificacion y Finanzas",
+   "FY26": 1553.0,
+   "FY27": 1553.0
+  },
+  "060-1414": {
+   "name": "P1414: Investigación de Quejas y  Querellas",
+   "FY26": 4006.0,
+   "FY27": 3769.0
+  },
+  "062-1299": {
+   "name": "P1299: Promoción y Desarrollo del Movimiento Cooperativo",
+   "FY26": 3002.0,
+   "FY27": 2778.0
+  },
+  "067-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 57017.0,
+   "FY27": 0.0
+  },
+  "067-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 41134.0
+  },
+  "067-1164": {
+   "name": "P1164: Administración de Legislación Laboral de Trabajadores No Unionados",
+   "FY26": 11701.0,
+   "FY27": 11668.0
+  },
+  "067-1165": {
+   "name": "P1165: Administración del Seguro Social para Choferes y Otros Empleados",
+   "FY26": 8033.0,
+   "FY27": 3988.0
+  },
+  "067-1167": {
+   "name": "P1167: Beneficio de Seguridad por Desempleo",
+   "FY26": 214403.0,
+   "FY27": 240295.0
+  },
+  "067-1168": {
+   "name": "P1168: Conciliación y Arbitraje de Controversias Laborales",
+   "FY26": 2841.0,
+   "FY27": 2129.0
+  },
+  "067-1169": {
+   "name": "P1169: Fomento de Oportunidades de Trabajo para Desempleados",
+   "FY26": 60346.0,
+   "FY27": 49519.0
+  },
+  "067-1172": {
+   "name": "P1172: Orientación de Servicio de Empleo",
+   "FY26": 5746.0,
+   "FY27": 5837.0
+  },
+  "067-1173": {
+   "name": "P1173: Protección Contra Discrimen en el Empleo",
+   "FY26": 1181.0,
+   "FY27": 266.0
+  },
+  "067-1174": {
+   "name": "P1174: Seguro por Incapacidad No Ocupacional Temporal",
+   "FY26": 15445.0,
+   "FY27": 17581.0
+  },
+  "067-1484": {
+   "name": "P1484: Certificación de  Extranjeros",
+   "FY26": 108.0,
+   "FY27": 64.0
+  },
+  "067-1485": {
+   "name": "P1485: Información sobre Mercado  Laboral",
+   "FY26": 832.0,
+   "FY27": 539.0
+  },
+  "067-1486": {
+   "name": "P1486: Programa de Alcance para Veteranos Discapacitados",
+   "FY26": 317.0,
+   "FY27": 310.0
+  },
+  "067-1487": {
+   "name": "P1487: Representante de Empleo a Veteranos Locales",
+   "FY26": 205.0,
+   "FY27": 159.0
+  },
+  "067-1488": {
+   "name": "P1488: Encuesta Empleo Asalariado no  Agrícola",
+   "FY26": 385.0,
+   "FY27": 358.0
+  },
+  "067-1489": {
+   "name": "P1489: Estadísticas Locales sobre Seguro por  Desempleo",
+   "FY26": 80.0,
+   "FY27": 95.0
+  },
+  "067-1490": {
+   "name": "P1490: Encuesta de Salario y Empleo por  Ocupación",
+   "FY26": 363.0,
+   "FY27": 392.0
+  },
+  "067-1491": {
+   "name": "P1491: Estadísticas de Empleo y  Salario",
+   "FY26": 312.0,
+   "FY27": 248.0
+  },
+  "067-1493": {
+   "name": "P1493: División de Estadísticas sobre Lesiones, Enfermedades y Muertes  Ocupacionales",
+   "FY26": 99.0,
+   "FY27": 99.0
+  },
+  "067-1494": {
+   "name": "P1494: Programa de Empleo en Servicio Comunitario para Personas de Mayor Edad",
+   "FY26": 1184.0,
+   "FY27": 1067.0
+  },
+  "067-1495": {
+   "name": "P1495: Crédito Contributivo por Oportunidades de  Empleo",
+   "FY26": 99.0,
+   "FY27": 117.0
+  },
+  "067-1496": {
+   "name": "P1496: Adiestramiento en Desarrollo Empresarial",
+   "FY26": 0.0,
+   "FY27": 0.0
+  },
+  "067-1497": {
+   "name": "P1497: Educación Tecnológica y  Vocacional",
+   "FY26": 63.0,
+   "FY27": 20.0
+  },
+  "067-2008": {
+   "name": "P2008: Seguridad y Salud en el Trabajo",
+   "FY26": 12645.0,
+   "FY27": 12476.0
+  },
+  "068-2009": {
+   "name": "P2009: Investigación y Adjudicación de Casos",
+   "FY26": 1558.0,
+   "FY27": 1571.0
+  },
+  "069-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 7590.0,
+   "FY27": 0.0
+  },
+  "069-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 7304.0
+  },
+  "069-1232": {
+   "name": "P1232: Servicio a Consumidores en Oficinas Regionales",
+   "FY26": 7536.0,
+   "FY27": 7555.0
+  },
+  "069-1660": {
+   "name": "P1660: Orientación al Ciudadano Contra la Obsc. y Pornog. Infantil en la Radio y TV",
+   "FY26": 196.0,
+   "FY27": 29.0
+  },
+  "069-3056": {
+   "name": "P3056: Gerencia de Recursos Internos",
+   "FY26": 1290.0,
+   "FY27": 799.0
+  },
+  "070-1137": {
+   "name": "P1137: Servicios Administrativos Auxiliares, Asuntos del Seguro Obrero y Reclamaciones",
+   "FY26": 273191.0,
+   "FY27": 252999.0
+  },
+  "070-1138": {
+   "name": "P1138: Servicios Médicos a Trabajadores Lesionados",
+   "FY26": 315841.0,
+   "FY27": 257241.0
+  },
+  "071-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 225912.0,
+   "FY27": 0.0
+  },
+  "071-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 241673.0
+  },
+  "071-1049": {
+   "name": "P1049: Programa Medicaid",
+   "FY26": 251780.0,
+   "FY27": 270588.0
+  },
+  "071-1052": {
+   "name": "P1052: Promoción y Protección de la Salud",
+   "FY26": 193852.0,
+   "FY27": 158730.0
+  },
+  "071-1053": {
+   "name": "P1053: Reglamentación sobre Salud Ambiental",
+   "FY26": 25925.0,
+   "FY27": 49973.0
+  },
+  "071-1054": {
+   "name": "P1054: Reglamentación y Acreditación de Facilidades de Salud",
+   "FY26": 12844.0,
+   "FY27": 16918.0
+  },
+  "071-1055": {
+   "name": "P1055: Reglamentación y Certificación de Profesionales de la Salud",
+   "FY26": 8862.0,
+   "FY27": 8199.0
+  },
+  "071-1056": {
+   "name": "P1056: Inscripción y Expedición de Documentos en Registro Demográfico",
+   "FY26": 11699.0,
+   "FY27": 12188.0
+  },
+  "071-1060": {
+   "name": "P1060: Servicios de Laboratorios Clínicos",
+   "FY26": 7291.0,
+   "FY27": 6736.0
+  },
+  "071-1472": {
+   "name": "P1472: Planificación, Evaluación y Estadísticas en el Área de Salud",
+   "FY26": 8771.0,
+   "FY27": 5154.0
+  },
+  "071-1474": {
+   "name": "P1474: Prog. Espec. Nutrición Suplem. para Mujeres Embarazadas; Infantes y Niños (WIC)",
+   "FY26": 209721.0,
+   "FY27": 225635.0
+  },
+  "071-1607": {
+   "name": "P1607: Administración del Hospital Universitario de Bayamón",
+   "FY26": 46107.0,
+   "FY27": 33104.0
+  },
+  "071-1610": {
+   "name": "P1610: Administración del Hospital Universitario de Adultos",
+   "FY26": 137242.0,
+   "FY27": 128452.0
+  },
+  "071-1611": {
+   "name": "P1611: Programa Discapacidad Intelectual (Retardación Mental)",
+   "FY26": 65117.0,
+   "FY27": 65817.0
+  },
+  "071-1612": {
+   "name": "P1612: Administración del Hospital Universitario Pediátrico",
+   "FY26": 73349.0,
+   "FY27": 78339.0
+  },
+  "071-1630": {
+   "name": "P1630: Instituciones de Salud",
+   "FY26": 61160.0,
+   "FY27": 72482.0
+  },
+  "071-3011": {
+   "name": "P3011: Servicios  Auxiliares",
+   "FY26": 15702.0,
+   "FY27": 16674.0
+  },
+  "075-1237": {
+   "name": "P1237: Reglamentación y Fiscalización de Bancos, Valores e Instituciones Financieras",
+   "FY26": 15069.0,
+   "FY27": 15498.0
+  },
+  "078-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 2215842.0,
+   "FY27": 0.0
+  },
+  "078-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 3242642.0
+  },
+  "078-1119": {
+   "name": "P1119: Planificación y Servicios Técnicos de la Vivienda",
+   "FY26": 23422.0,
+   "FY27": 22514.0
+  },
+  "078-1693": {
+   "name": "P1693: Subsidio de Vivienda y Desarrollo Comunitario",
+   "FY26": 18056.0,
+   "FY27": 5541.0
+  },
+  "078-1694": {
+   "name": "P1694: Gerencia y Desarrollo de Proyectos",
+   "FY26": 7891.0,
+   "FY27": 6801.0
+  },
+  "078-2005": {
+   "name": "P2005: Asesoramiento en Asuntos Legales y Litigios",
+   "FY26": 1129.0,
+   "FY27": 1127.0
+  },
+  "078-2006": {
+   "name": "P2006: Finanzas y Sistemas de Información",
+   "FY26": 8758.0,
+   "FY27": 9004.0
+  },
+  "078-2007": {
+   "name": "P2007: Recursos Humanos y Servicios Auxiliares",
+   "FY26": 1488.0,
+   "FY27": 1393.0
+  },
+  "079-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 4307.0,
+   "FY27": 0.0
+  },
+  "079-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 1689.0
+  },
+  "079-1134": {
+   "name": "P1134: Educación y Prevención de Accidentes",
+   "FY26": 2342.0,
+   "FY27": 3885.0
+  },
+  "079-1135": {
+   "name": "P1135: Reclamaciones y Compensaciones por Accidentes de Automóviles",
+   "FY26": 57113.0,
+   "FY27": 49826.0
+  },
+  "079-3035": {
+   "name": "P3035: Apoyo Técnico y Administrativo",
+   "FY26": 34325.0,
+   "FY27": 30390.0
+  },
+  "081-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 1112965.0,
+   "FY27": 0.0
+  },
+  "081-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 1071807.0
+  },
+  "081-1006": {
+   "name": "P1006: Educación Vocacional y Técnica",
+   "FY26": 89992.0,
+   "FY27": 90882.0
+  },
+  "081-1008": {
+   "name": "P1008: Escuelas de la Comunidad",
+   "FY26": 2257525.0,
+   "FY27": 1552240.0
+  },
+  "081-1009": {
+   "name": "P1009: Servicios Educativos Integrales para Personas con Impedimentos",
+   "FY26": 659894.0,
+   "FY27": 630867.0
+  },
+  "081-1010": {
+   "name": "P1010: Servicios de Alimentos al Estudiante",
+   "FY26": 309523.0,
+   "FY27": 309521.0
+  },
+  "081-1011": {
+   "name": "P1011: Procedimiento de Querellas y Remedio Provisional",
+   "FY26": 102966.0,
+   "FY27": 102966.0
+  },
+  "081-1416": {
+   "name": "P1416: Seguridad Escolar",
+   "FY26": 22164.0,
+   "FY27": 28034.0
+  },
+  "081-1552": {
+   "name": "P1552: Educación de Adultos",
+   "FY26": 44638.0,
+   "FY27": 28528.0
+  },
+  "081-1696": {
+   "name": "P1696: Institutos Tecnológicos de Puerto Rico",
+   "FY26": 14328.0,
+   "FY27": 15814.0
+  },
+  "081-3002": {
+   "name": "P3002: Servicios Auxiliares y Asistencia Técnica",
+   "FY26": 125777.0,
+   "FY27": 125953.0
+  },
+  "081-3140": {
+   "name": "P3140: Mantenimiento de Escuelas Públicas",
+   "FY26": 464582.0,
+   "FY27": 108644.0
+  },
+  "081-3142": {
+   "name": "P3142: Servicios de Imprenta del Departamento de Educación",
+   "FY26": 740.0,
+   "FY27": 740.0
+  },
+  "082-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 13612.0,
+   "FY27": 0.0
+  },
+  "082-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 12694.0
+  },
+  "082-1035": {
+   "name": "P1035: Conservación del Patrimonio Histórico",
+   "FY26": 1533.0,
+   "FY27": 1273.0
+  },
+  "082-1037": {
+   "name": "P1037: Conservación, Divulgación y Promoción del Patrimonio Documental",
+   "FY26": 1296.0,
+   "FY27": 1534.0
+  },
+  "082-1038": {
+   "name": "P1038: Financiamiento de Actividades Culturales",
+   "FY26": 926.0,
+   "FY27": 975.0
+  },
+  "082-1039": {
+   "name": "P1039: Promoción Cultural y de las Artes",
+   "FY26": 1902.0,
+   "FY27": 1813.0
+  },
+  "082-3006": {
+   "name": "P3006: Servicio de Apoyo Técnico y Administrativo",
+   "FY26": 2608.0,
+   "FY27": 2492.0
+  },
+  "087-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 24403.0,
+   "FY27": 0.0
+  },
+  "087-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 22532.0
+  },
+  "087-1155": {
+   "name": "P1155: Infraestructura Física",
+   "FY26": 8220.0,
+   "FY27": 7671.0
+  },
+  "087-1157": {
+   "name": "P1157: Promoción y Fomento de los Deportes",
+   "FY26": 27068.0,
+   "FY27": 28046.0
+  },
+  "090-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 30198.0,
+   "FY27": 0.0
+  },
+  "090-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 37696.0
+  },
+  "090-1063": {
+   "name": "P1063: Servicios Médicos Directos a Pacientes",
+   "FY26": 156779.0,
+   "FY27": 149542.0
+  },
+  "090-3014": {
+   "name": "P3014: Servicios  Operacionales",
+   "FY26": 57854.0,
+   "FY27": 61171.0
+  },
+  "095-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 60008.0,
+   "FY27": 0.0
+  },
+  "095-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 57722.0
+  },
+  "095-1094": {
+   "name": "P1094: Administración del Hospital de Psiquiatría de Río Piedras",
+   "FY26": 27648.0,
+   "FY27": 27804.0
+  },
+  "095-1095": {
+   "name": "P1095: Administración del Hospital de Psiquiatría Forense",
+   "FY26": 15036.0,
+   "FY27": 10297.0
+  },
+  "095-1096": {
+   "name": "P1096: Planificación",
+   "FY26": 15699.0,
+   "FY27": 15608.0
+  },
+  "095-1097": {
+   "name": "P1097: Prevención y Promoción de la Salud",
+   "FY26": 6113.0,
+   "FY27": 5525.0
+  },
+  "095-1100": {
+   "name": "P1100: Oficina de Organismos Reguladores",
+   "FY26": 490.0,
+   "FY27": 674.0
+  },
+  "095-1643": {
+   "name": "P1643: Administración del Hospital de Psiquiatría de Ponce",
+   "FY26": 7380.0,
+   "FY27": 7345.0
+  },
+  "095-1699": {
+   "name": "P1699: Calidad de Servicios",
+   "FY26": 450.0,
+   "FY27": 320.0
+  },
+  "095-1700": {
+   "name": "P1700: Servicios de Tratamiento Interno",
+   "FY26": 27720.0,
+   "FY27": 34325.0
+  },
+  "095-1701": {
+   "name": "P1701: Servicios de Tratamiento Ambulatorios",
+   "FY26": 43863.0,
+   "FY27": 42808.0
+  },
+  "095-1702": {
+   "name": "P1702: Servicios de Alcance y Apoyo Comunitarios",
+   "FY26": 8463.0,
+   "FY27": 6270.0
+  },
+  "095-2074": {
+   "name": "P2074: Administración",
+   "FY26": 5970.0,
+   "FY27": 6325.0
+  },
+  "095-3029": {
+   "name": "P3029: Información y Tecnología",
+   "FY26": 696.0,
+   "FY27": 647.0
+  },
+  "096-1195": {
+   "name": "P1195: Asuntos de la Mujer",
+   "FY26": 6196.0,
+   "FY27": 10124.0
+  },
+  "100-1410": {
+   "name": "P1410: Actividades  Conjuntas",
+   "FY26": 56764.0,
+   "FY27": 53144.0
+  },
+  "100-1411": {
+   "name": "P1411: Cámara de Representantes",
+   "FY26": 43338.0,
+   "FY27": 44965.0
+  },
+  "100-1412": {
+   "name": "P1412: Senado de  Puerto Rico",
+   "FY26": 37375.0,
+   "FY27": 39000.0
+  },
+  "105-1136": {
+   "name": "P1136: Evaluación y Adjudicación de Casos del Fondo del Seguro del Estado",
+   "FY26": 23356.0,
+   "FY27": 23862.0
+  },
+  "106-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 13338.0,
+   "FY27": 0.0
+  },
+  "106-0002": {
+   "name": "P0002: Deuda Pública y Gerencial",
+   "FY26": 35092.0,
+   "FY27": 0.0
+  },
+  "106-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 13950.0
+  },
+  "106-1002": {
+   "name": "Deuda Pública y Gerencial 1002 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 35090.0
+  },
+  "106-1118": {
+   "name": "P1118: Vales para libre Selección de Vivienda",
+   "FY26": 96104.0,
+   "FY27": 96614.0
+  },
+  "106-1124": {
+   "name": "P1124: Trámites sobre Alquiler de Vivienda con Opción  a Compra",
+   "FY26": 158.0,
+   "FY27": 270.0
+  },
+  "106-1125": {
+   "name": "P1125: Residenciales de Vivienda Pública Estatal",
+   "FY26": 5864.0,
+   "FY27": 5832.0
+  },
+  "106-1126": {
+   "name": "P1126: Residenciales de Vivienda Pública Convencional Federal",
+   "FY26": 607682.0,
+   "FY27": 610892.0
+  },
+  "109-1040": {
+   "name": "P1040: Formación de Maestros y Artistas en Artes Plásticas",
+   "FY26": 5341.0,
+   "FY27": 5872.0
+  },
+  "119-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 64681.0,
+   "FY27": 0.0
+  },
+  "119-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 89017.0
+  },
+  "119-1189": {
+   "name": "P1189: Des. y Adto de la Fuerza Laboral (Regulación y Fisc. de Sist. de Des. Ocup.)",
+   "FY26": 125440.0,
+   "FY27": 124440.0
+  },
+  "119-1331": {
+   "name": "P1331: Administración y Conservación de Asuntos de Energía",
+   "FY26": 11766.0,
+   "FY27": 11766.0
+  },
+  "119-1675": {
+   "name": "P1675: Programa de Comercio y  Exportación",
+   "FY26": 200.0,
+   "FY27": 200.0
+  },
+  "119-4043": {
+   "name": "P4043: Evaluación y Procesamiento de Permisos",
+   "FY26": 19447.0,
+   "FY27": 14819.0
+  },
+  "120-1177": {
+   "name": "P1177: Asistencia, Orientación y Asesoramiento al Veterano",
+   "FY26": 4455.0,
+   "FY27": 4297.0
+  },
+  "122-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 53977.0,
+   "FY27": 0.0
+  },
+  "122-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 52859.0
+  },
+  "122-3028": {
+   "name": "P3028: Determinación de Elegibilidad para Servicios de Incapacidad del Seguro Social",
+   "FY26": 15285.0,
+   "FY27": 13295.0
+  },
+  "122-4029": {
+   "name": "P4029: Licenciamiento de Lugares para el Cuido de Niños y Personas de Edad Avanzada",
+   "FY26": 2047.0,
+   "FY27": 1812.0
+  },
+  "123-1078": {
+   "name": "P1078: Servicios a Familia con Niños",
+   "FY26": 179832.0,
+   "FY27": 177913.0
+  },
+  "123-1080": {
+   "name": "P1080: Servicios Sociales a Personas de Edad Avanzada y Adultos con Impedimentos",
+   "FY26": 116083.0,
+   "FY27": 105813.0
+  },
+  "123-1081": {
+   "name": "P1081: Supervisión y Reglamentación de Facilidades Residenciales para Niños",
+   "FY26": 1666.0,
+   "FY27": 1666.0
+  },
+  "123-1221": {
+   "name": "P1221: Servicio de Emergencia 9-1-1 / Línea de Maltrato a Menores",
+   "FY26": 4876.0,
+   "FY27": 4902.0
+  },
+  "123-1459": {
+   "name": "P1459: Servicios Integrados a Comunidades",
+   "FY26": 3409.0,
+   "FY27": 3452.0
+  },
+  "124-1087": {
+   "name": "P1087: Solicitud y Trámite de Sustento de Menores",
+   "FY26": 41117.0,
+   "FY27": 49142.0
+  },
+  "124-1624": {
+   "name": "P1624: Sustento de Personas de Edad Avanzada",
+   "FY26": 603.0,
+   "FY27": 567.0
+  },
+  "126-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 61600.0
+  },
+  "126-1089": {
+   "name": "P1089: Prestación de Servicios de Rehabilitación Física y Vocacional",
+   "FY26": 80427.0,
+   "FY27": 28382.0
+  },
+  "126-1093": {
+   "name": "P1093: Industria de Ciegos y Personas con Impedimen. Físicos, Mentales y del Desarrollo",
+   "FY26": 340.0,
+   "FY27": 878.0
+  },
+  "127-1083": {
+   "name": "P1083: Asistencia Nutricional para Personas de Ingresos Limitados (PAN)",
+   "FY26": 3066065.0,
+   "FY27": 3119511.0
+  },
+  "127-1086": {
+   "name": "P1086: Rehabilitación Económica y Social de las Familias (PRES)",
+   "FY26": 4304.0,
+   "FY27": 2738.0
+  },
+  "127-1585": {
+   "name": "P1585: Ayuda Temporal para Familias Necesitadas (TANF)",
+   "FY26": 138403.0,
+   "FY27": 124289.0
+  },
+  "137-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 80819.0,
+   "FY27": 0.0
+  },
+  "137-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 80796.0
+  },
+  "137-1211": {
+   "name": "P1211: Administración y Supervisión del Complejo Correccional de Ponce",
+   "FY26": 47658.0,
+   "FY27": 68043.0
+  },
+  "137-1215": {
+   "name": "P1215: Servicios de Tratamiento y Rehabilitación a Menores Transgresores",
+   "FY26": 29624.0,
+   "FY27": 25880.0
+  },
+  "137-1465": {
+   "name": "P1465: Prog. Serv. con Antel. al Juicio (Invest. y Eval. de Imputados antes del Juicio)",
+   "FY26": 6019.0,
+   "FY27": 6097.0
+  },
+  "137-1501": {
+   "name": "P1501: Evaluación y Asesoramiento Sicosocial a Confinados y Jóvenes  Transgresores",
+   "FY26": 2093.0,
+   "FY27": 2268.0
+  },
+  "137-1502": {
+   "name": "P1502: Invest. y Supervisión de Confinados y Jóvenes Transgresores en la Comunidad",
+   "FY26": 14016.0,
+   "FY27": 13919.0
+  },
+  "137-1503": {
+   "name": "P1503: Adm. de Instituciones Penales  y Servicios a Confinados y Jóvenes  Transgresores",
+   "FY26": 224049.0,
+   "FY27": 230161.0
+  },
+  "137-1559": {
+   "name": "P1559: Administración y Supervisión del Complejo Correccional de  Bayamón",
+   "FY26": 54765.0,
+   "FY27": 54012.0
+  },
+  "137-2018": {
+   "name": "P2018: Prog. de Emps. y Adto. al Trabajo (Adto. Empleo de Confinados en el Área Indus.)",
+   "FY26": 795.0,
+   "FY27": 795.0
+  },
+  "137-3120": {
+   "name": "P3120: Oficina de Facilidades y Mantenimiento",
+   "FY26": 4719.0,
+   "FY27": 4563.0
+  },
+  "138-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 6131.0,
+   "FY27": 0.0
+  },
+  "138-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 8517.0
+  },
+  "138-1209": {
+   "name": "P1209: Beneficios de Anualidades, Seguro de Vida, Seguro de Funeral y de Educación",
+   "FY26": 2139.0,
+   "FY27": 0.0
+  },
+  "139-1214": {
+   "name": "P1214: Revisión de Casos  de los Confinados para Determinación de Libertad Bajo Palabra",
+   "FY26": 3363.0,
+   "FY27": 3358.0
+  },
+  "139-1560": {
+   "name": "P1560: Notificación a  Víctimas",
+   "FY26": 56.0,
+   "FY27": 56.0
+  },
+  "143-1099": {
+   "name": "P1099: Protección y Defensa de las Personas con Impedimentos",
+   "FY26": 3681.0,
+   "FY27": 3234.0
+  },
+  "152-1091": {
+   "name": "P1091: Coord., Educa., Evaluac. y Protec. de las Personas Pensionadas y Tercera Edad",
+   "FY26": 31894.0,
+   "FY27": 33736.0
+  },
+  "153-1092": {
+   "name": "P1092: Protección y Defensa de los Derechos de las Personas con Impedimentos",
+   "FY26": 4057.0,
+   "FY27": 2973.0
+  },
+  "155-1004": {
+   "name": "P1004: Administración y Desarrollo del Cuartel de Ballajá",
+   "FY26": 3279.0,
+   "FY27": 1958.0
+  },
+  "155-1005": {
+   "name": "P1005: Conservación y Preservación Histórica",
+   "FY26": 2161.0,
+   "FY27": 3427.0
+  },
+  "161-2031": {
+   "name": "P2031: Asistencia Financiera y Administrativa a Corporaciones Públicas y Otras Instru.",
+   "FY26": 3751.0,
+   "FY27": 3835.0
+  },
+  "162-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 91175.0,
+   "FY27": 0.0
+  },
+  "162-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 103383.0
+  },
+  "162-1586": {
+   "name": "P1586: Conservación y Mantenimiento de Estructuras  Físicas",
+   "FY26": 64939.0,
+   "FY27": 72737.0
+  },
+  "165-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 8201.0,
+   "FY27": 0.0
+  },
+  "165-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 8644.0
+  },
+  "165-1280": {
+   "name": "P1280: Tramitación de Terrenos para Usos Agrícolas",
+   "FY26": 1716.0,
+   "FY27": 1966.0
+  },
+  "165-1570": {
+   "name": "P1570: Desarrollo de Fincas  Familiares",
+   "FY26": 245.0,
+   "FY27": 259.0
+  },
+  "165-1608": {
+   "name": "P1608: Conservación de Terrenos e Infraestructura",
+   "FY26": 618.0,
+   "FY27": 651.0
+  },
+  "165-1628": {
+   "name": "P1628: Adquisición de Terrenos",
+   "FY26": 333.0,
+   "FY27": 366.0
+  },
+  "165-4064": {
+   "name": "P4064: Desarrollo de Infraestructura Rural y Mejoras Permanentes",
+   "FY26": 1082.0,
+   "FY27": 1130.0
+  },
+  "167-1133": {
+   "name": "P1133: Desarrollo de la Comunidad de la Península de Cantera",
+   "FY26": 10162.0,
+   "FY27": 9381.0
+  },
+  "168-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 42873.0,
+   "FY27": 0.0
+  },
+  "168-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 51402.0
+  },
+  "168-1318": {
+   "name": "P1318: Administración y Conservación de las Facilidades de Aeropuertos",
+   "FY26": 22649.0,
+   "FY27": 374023.0
+  },
+  "168-1319": {
+   "name": "P1319: Administración y Conservación de las Facilidades Marítimas",
+   "FY26": 13628.0,
+   "FY27": 40331.0
+  },
+  "168-3079": {
+   "name": "P3079: Finanzas y Otros Servicios Generales",
+   "FY26": 5115.0,
+   "FY27": 2474.0
+  },
+  "176-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 70580.0,
+   "FY27": 0.0
+  },
+  "176-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 120580.0
+  },
+  "176-1013": {
+   "name": "P1013: Asignaciones a Transferir al Sistema Universitario",
+   "FY26": 52371.0,
+   "FY27": 48000.0
+  },
+  "176-1014": {
+   "name": "P1014: Universidad de Puerto Rico en Aguadilla",
+   "FY26": 10327.0,
+   "FY27": 9406.0
+  },
+  "176-1015": {
+   "name": "P1015: Universidad de Puerto Rico en Carolina",
+   "FY26": 9365.0,
+   "FY27": 8036.0
+  },
+  "176-1016": {
+   "name": "P1016: Universidad de Puerto Rico en Utuado",
+   "FY26": 8916.0,
+   "FY27": 5100.0
+  },
+  "176-1017": {
+   "name": "P1017: Universidad de Puerto Rico en Cayey",
+   "FY26": 19680.0,
+   "FY27": 14477.0
+  },
+  "176-1018": {
+   "name": "P1018: Universidad de Puerto Rico en Humacao",
+   "FY26": 21175.0,
+   "FY27": 18751.0
+  },
+  "176-1019": {
+   "name": "P1019: Universidad de Puerto Rico en Arecibo",
+   "FY26": 18942.0,
+   "FY27": 17253.0
+  },
+  "176-1020": {
+   "name": "P1020: Universidad de Puerto Rico en Bayamón",
+   "FY26": 15855.0,
+   "FY27": 13313.0
+  },
+  "176-1021": {
+   "name": "P1021: Universidad de Puerto Rico en Ponce",
+   "FY26": 11998.0,
+   "FY27": 7556.0
+  },
+  "176-1023": {
+   "name": "P1023: Junta de Síndicos",
+   "FY26": 7300.0,
+   "FY27": 6649.0
+  },
+  "176-1024": {
+   "name": "P1024: Recinto de Ciencias Médicas",
+   "FY26": 104889.0,
+   "FY27": 96589.0
+  },
+  "176-1025": {
+   "name": "P1025: Recinto Universitario de Mayagüez",
+   "FY26": 79728.0,
+   "FY27": 72728.0
+  },
+  "176-1026": {
+   "name": "P1026: Recinto Universitario de Río Piedras",
+   "FY26": 103337.0,
+   "FY27": 97025.0
+  },
+  "176-1027": {
+   "name": "P1027: Servicios y Actividades del Sistema Universitario",
+   "FY26": 26435.0,
+   "FY27": 25435.0
+  },
+  "177-1606": {
+   "name": "P1606: Adq., Planificación y Desarrollo, Disposición, Arrend. y Reserva de Terrenos",
+   "FY26": 9987.0,
+   "FY27": 14251.0
+  },
+  "180-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 59478.0,
+   "FY27": 0.0
+  },
+  "180-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 80841.0
+  },
+  "180-1301": {
+   "name": "P1301: Promoción y Mercadeo Turístico",
+   "FY26": 89843.0,
+   "FY27": 83562.0
+  },
+  "180-1303": {
+   "name": "P1303: Planificación y Desarrollo",
+   "FY26": 1810.0,
+   "FY27": 2277.0
+  },
+  "180-1305": {
+   "name": "P1305: Productos y Servicios Turísticos",
+   "FY26": 1080.0,
+   "FY27": 1421.0
+  },
+  "186-1329": {
+   "name": "P1329: Conservación y Desarrollo de Culebra",
+   "FY26": 583.0,
+   "FY27": 630.0
+  },
+  "187-1076": {
+   "name": "P1076: Contratación y Negociación de Seguros de Salud",
+   "FY26": 5143414.0,
+   "FY27": 5443977.0
+  },
+  "188-1064": {
+   "name": "P1064: Administración y Operación del Centro Cardiovascular",
+   "FY26": 99474.0,
+   "FY27": 87460.0
+  },
+  "189-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 0.0,
+   "FY27": 0.0
+  },
+  "189-1193": {
+   "name": "P1193: Investigación Criminal en las Ciencias Forenses",
+   "FY26": 25062.0,
+   "FY27": 26123.0
+  },
+  "191-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 1894.0,
+   "FY27": 0.0
+  },
+  "191-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 8865.0
+  },
+  "191-1033": {
+   "name": "P1033: Corporación de la  Orquesta Sinfónica de Puerto Rico",
+   "FY26": 7937.0,
+   "FY27": 1702.0
+  },
+  "191-1034": {
+   "name": "P1034: Corporación de las Artes Escénico-Musicales de Puerto Rico",
+   "FY26": 308.0,
+   "FY27": 0.0
+  },
+  "191-1459": {
+   "name": "P1459: Servicios Integrados a Comunidades",
+   "FY26": 383.0,
+   "FY27": 128.0
+  },
+  "192-1460": {
+   "name": "P1460: Operación y Gerencia",
+   "FY26": 7030.0,
+   "FY27": 7315.0
+  },
+  "193-1413": {
+   "name": "P1413: Investigación de Querellas sobre Conducta  Impropia",
+   "FY26": 10149.0,
+   "FY27": 10140.0
+  },
+  "195-1340": {
+   "name": "P1340: Crédito",
+   "FY26": 14999.0,
+   "FY27": 15958.0
+  },
+  "196-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 142.0,
+   "FY27": 0.0
+  },
+  "196-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 139.0
+  },
+  "196-1046": {
+   "name": "P1046: Mantenimiento del Sistema de Telecomunicaciones",
+   "FY26": 0.0,
+   "FY27": 0.0
+  },
+  "196-1047": {
+   "name": "P1047: Operación de Estaciones de Radio",
+   "FY26": 0.0,
+   "FY27": 0.0
+  },
+  "196-1048": {
+   "name": "P1048: Programación y Producción de Programas para la Televisión",
+   "FY26": 0.0,
+   "FY27": 0.0
+  },
+  "196-9999": {
+   "name": "Programas sin mapear",
+   "FY26": 0.0,
+   "FY27": 0.0
+  },
+  "198-1244": {
+   "name": "P1244: Seguros Agrícolas contra Pérdidas de Cosechas y Otros",
+   "FY26": 3416.0,
+   "FY27": 3937.0
+  },
+  "200-2011": {
+   "name": "P2011: Investigación y Procesamiento de Funcionarios que Incurran en Conducta Delictiva",
+   "FY26": 3588.0,
+   "FY27": 3985.0
+  },
+  "208-1382": {
+   "name": "P1382: Aportación a los Municipios para Atender Otras Necesidades",
+   "FY26": 0.0,
+   "FY27": 0.0
+  },
+  "208-1391": {
+   "name": "P1391: Aportación para Ingreso al Fondo de Equiparación de Ingresos  Municipales",
+   "FY26": 51840.0,
+   "FY27": 51875.0
+  },
+  "209-1372": {
+   "name": "P1372: Aportaciones a los Partidos Políticos",
+   "FY26": 0.0,
+   "FY27": 0.0
+  },
+  "209-1673": {
+   "name": "P1673: Fondo Especial para Financiamiento de las Campañas Electorales",
+   "FY26": 0.0,
+   "FY27": 0.0
+  },
+  "215-1463": {
+   "name": "P1463: Desarrollo del Talento Musical",
+   "FY26": 12780.0,
+   "FY27": 12910.0
+  },
+  "215-4035": {
+   "name": "P4035: Des. Social de la Niñez y la Juventud de PR a través de la Formación Musical",
+   "FY26": 721.0,
+   "FY27": 721.0
+  },
+  "220-1058": {
+   "name": "P1058: Servicios de Salud a la Población Penal",
+   "FY26": 55039.0,
+   "FY27": 51677.0
+  },
+  "231-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 2089.0,
+   "FY27": 0.0
+  },
+  "231-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 2067.0
+  },
+  "235-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 90448.0,
+   "FY27": 0.0
+  },
+  "235-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 91838.0
+  },
+  "235-1129": {
+   "name": "P1129: Seguro Hipotecario para Viviendas",
+   "FY26": 690.0,
+   "FY27": 727.0
+  },
+  "235-1130": {
+   "name": "P1130: Servicio de Préstamos Hipotecarios",
+   "FY26": 3795.0,
+   "FY27": 4003.0
+  },
+  "235-1132": {
+   "name": "P1132: Financiamiento y Créditos Contrib. para el Desarrollo de Vivienda Multifamiliar",
+   "FY26": 1208.0,
+   "FY27": 1275.0
+  },
+  "235-1629": {
+   "name": "P1629: La Llave para tu Hogar",
+   "FY26": 689.0,
+   "FY27": 726.0
+  },
+  "235-1653": {
+   "name": "P1653: Vivienda Subsidiada",
+   "FY26": 148898.0,
+   "FY27": 160779.0
+  },
+  "235-1656": {
+   "name": "P1656: Fideicomiso para el Financiamiento de Viviendas",
+   "FY26": 5034.0,
+   "FY27": 5034.0
+  },
+  "235-4051": {
+   "name": "P4051: Programa de Asociación para Inversiones en Vivienda (HOME)",
+   "FY26": 23211.0,
+   "FY27": 25211.0
+  },
+  "236-4063": {
+   "name": "P4063: Servicios al Sector Agrícola",
+   "FY26": 13912.0,
+   "FY27": 14158.0
+  },
+  "238-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 1101.0,
+   "FY27": 0.0
+  },
+  "238-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 935.0
+  },
+  "241-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 0.0,
+   "FY27": 0.0
+  },
+  "241-1665": {
+   "name": "P1665: Head Start",
+   "FY26": 45521.0,
+   "FY27": 44218.0
+  },
+  "241-1666": {
+   "name": "P1666: Child Care",
+   "FY26": 106449.0,
+   "FY27": 122627.0
+  },
+  "264-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 6818.0,
+   "FY27": 0.0
+  },
+  "264-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 20365.0
+  },
+  "265-1690": {
+   "name": "P1690: Redesarrollo de los Terrenos y Facilidades de la Estación Naval Roosevelt Roads",
+   "FY26": 3059.0,
+   "FY27": 4627.0
+  },
+  "266-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 16805.0,
+   "FY27": 0.0
+  },
+  "266-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 14454.0
+  },
+  "268-2077": {
+   "name": "P2077: Coordinación de Estadística e Informática",
+   "FY26": 2900.0,
+   "FY27": 3045.0
+  },
+  "271-0003": {
+   "name": "P0003: Tecnologías de Información",
+   "FY26": 113320.0,
+   "FY27": 0.0
+  },
+  "271-1003": {
+   "name": "Tecnologías de Información 1003 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 102133.0
+  },
+  "272-1707": {
+   "name": "P1707: Integridad y Eficiencia Gubernamental",
+   "FY26": 19556.0,
+   "FY27": 19956.0
+  },
+  "276-4050": {
+   "name": "P4050: Gestión de Proyectos de Alianzas Público-Privadas",
+   "FY26": 187908.0,
+   "FY27": 196170.0
+  },
+  "277-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 14393.0,
+   "FY27": 0.0
+  },
+  "277-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 14565.0
+  },
+  "277-4061": {
+   "name": "P4061: Incentivos y Subsidios  para el Sector Agrícola",
+   "FY26": 55614.0,
+   "FY27": 54631.0
+  },
+  "277-4062": {
+   "name": "P4062: Mercadeo",
+   "FY26": 85169.0,
+   "FY27": 86602.0
+  },
+  "277-4063": {
+   "name": "P4063: Servicios al Sector Agrícola",
+   "FY26": 5433.0,
+   "FY27": 4258.0
+  },
+  "279-4055": {
+   "name": "P4055: Atender, Investigar y Resolver Controversias Laborales",
+   "FY26": 2819.0,
+   "FY27": 2800.0
+  },
+  "281-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 946.0,
+   "FY27": 0.0
+  },
+  "281-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 1297.0
+  },
+  "281-4069": {
+   "name": "P4069: Auditoría de Donativos y Gastos",
+   "FY26": 1977.0,
+   "FY27": 2977.0
+  },
+  "285-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 98784.0,
+   "FY27": 0.0
+  },
+  "285-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 71160.0
+  },
+  "285-9006": {
+   "name": "P9006: Transportación Colectiva Terrestre",
+   "FY26": 89874.0,
+   "FY27": 67926.0
+  },
+  "286-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 2906.0,
+   "FY27": 0.0
+  },
+  "286-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 2918.0
+  },
+  "288-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 91379.0,
+   "FY27": 0.0
+  },
+  "288-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 86509.0
+  },
+  "293-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 1527.0,
+   "FY27": 0.0
+  },
+  "293-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 1119.0
+  },
+  "295-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 47355.0,
+   "FY27": 0.0
+  },
+  "295-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 47005.0
+  },
+  "297-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 59323.0,
+   "FY27": 0.0
+  },
+  "297-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 59323.0
+  },
+  "298-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 557.0,
+   "FY27": 0.0
+  },
+  "298-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 575.0
+  },
+  "298-1218": {
+   "name": "P1218: Reglamentación y Fiscalización de la Energía",
+   "FY26": 18734.0,
+   "FY27": 19230.0
+  },
+  "298-1219": {
+   "name": "P1219: Orientación y Defensa del Consumidor del Servicio Público",
+   "FY26": 1200.0,
+   "FY27": 1200.0
+  },
+  "298-1234": {
+   "name": "P1234: Adjudicación de Casos y Reglamentación de Empresas de Servicio Público",
+   "FY26": 13390.0,
+   "FY27": 14030.0
+  },
+  "298-3122": {
+   "name": "P3122: Reglamentación y Fiscalización de las Telecomunicaciones",
+   "FY26": 8479.0,
+   "FY27": 7799.0
+  },
+  "303-1651": {
+   "name": "P1651: Promoción y Desarrollo Operacional del Distrito",
+   "FY26": 8007.0,
+   "FY27": 30124.0
+  },
+  "303-1681": {
+   "name": "P1681: Centro de Convenciones - Operación",
+   "FY26": 24128.0,
+   "FY27": 18251.0
+  },
+  "303-1682": {
+   "name": "P1682: Coliseo de Puerto Rico José Miguel Agrelot",
+   "FY26": 26342.0,
+   "FY27": 24330.0
+  },
+  "310-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 404665.0,
+   "FY27": 0.0
+  },
+  "310-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 423855.0
+  },
+  "311-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 3670.0,
+   "FY27": 0.0
+  },
+  "311-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 6171.0
+  },
+  "311-1161": {
+   "name": "P1161: Formulación y Supervisión de las Carreras",
+   "FY26": 2962.0,
+   "FY27": 2959.0
+  },
+  "311-1162": {
+   "name": "P1162: Reglamentación y Supervisión de Hipódromos y Planificación de Carreras",
+   "FY26": 68.0,
+   "FY27": 68.0
+  },
+  "311-1291": {
+   "name": "P1291: Supervisión de la Escuela Vocacional Hípica- Agustín Mercado Reverón",
+   "FY26": 300.0,
+   "FY27": 287.0
+  },
+  "311-1304": {
+   "name": "P1304: Supervisión de los Juegos de Azar",
+   "FY26": 444915.0,
+   "FY27": 491997.0
+  },
+  "312-0001": {
+   "name": "P0001: Dirección y Administración General",
+   "FY26": 59846.0,
+   "FY27": 0.0
+  },
+  "312-1001": {
+   "name": "Dirección y Administración General 1001 - Otros Servicios",
+   "FY26": 0.0,
+   "FY27": 56310.0
+  },
+  "329-1632": {
+   "name": "P1632: Des. de Asuntos Comunitarios y el Tercer Sector (Des. de las Comuni. Espec.)",
+   "FY26": 38769.0,
+   "FY27": 37350.0
+  }
+ },
+ "concepts": [
+  "001",
+  "002",
+  "003",
+  "004",
+  "005",
+  "006",
+  "007",
+  "008",
+  "009",
+  "010",
+  "011",
+  "012",
+  "013",
+  "014",
+  "030",
+  "081",
+  "082",
+  "089",
+  "098"
+ ]
+}

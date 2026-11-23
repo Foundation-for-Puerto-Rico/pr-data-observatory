@@ -1,0 +1,378 @@
+{
+ "municipalities.transit_stops": {
+  "name": "Paradas, estaciones y terminales de transporte colectivo (conteo)",
+  "how_to_read": "Un conteo más alto significa más lugares para abordar. Es un conteo, no una tasa: los municipios grandes y densos tienen más paradas, igual que los lugares donde las personas voluntarias han mapeado más. El observatorio no publica una tasa de paradas por residente; para una medida de residentes ajustada por tamaño, use pop_served_pct. El conteo no mide con qué frecuencia pasan los vehículos, si un horario sigue vigente ni si la gente puede llegar a una parada. Un valor de 0 significa que no aparece ninguna parada en estas fuentes; no descarta los públicos (taxis colectivos) ni un servicio informal que nadie haya mapeado. En el corte de datos 2026-10 la isla tiene 4,360 elementos de este tipo: 2,881 en un horario que no ha terminado, 966 en un horario que ya terminó y 513 que provienen solo de OpenStreetMap (vea stops_current, stops_expired y stops_osm).",
+  "_en": {
+   "name": "05b227a6",
+   "how_to_read": "3dfab704"
+  }
+ },
+ "municipalities.gtfs_stops": {
+  "name": "Paradas con horario de las fuentes de horarios (conteo)",
+  "how_to_read": "Una parada con horario tiene una entrada en un horario publicado. El conteo no dice nada sobre la frecuencia con que los vehículos se detienen allí. Es un conteo, no una tasa: los municipios grandes y densos tienen más paradas. Los municipios sin una fuente de horarios propia muestran 0, a menos que dentro de ellos haya paradas de otro operador. En el corte de datos 2026-10 la isla tiene 3,847 registros de paradas con horario, y uno de ellos no tiene ningún viaje en un día típico de lunes a viernes. De estos, 2,881 están en un horario que no ha terminado y 966 en uno que ya terminó (stops_current y stops_expired suman este campo).",
+  "_en": {
+   "name": "17703f23",
+   "how_to_read": "c27f4deb"
+  }
+ },
+ "municipalities.stops_current": {
+  "name": "Paradas con horario vigente (conteo)",
+  "how_to_read": "Es un conteo, no una tasa: los municipios grandes y densos tienen más paradas. Muestra dónde están las paradas con un horario en vigor. No muestra con qué frecuencia pasan los vehículos. En el corte de datos 2026-10 la isla tiene 2,881, en 30 municipios (San Juan 1,009, Guaynabo 349, Bayamón 276, Carolina 268); 48 municipios tienen 0. La pestaña Municipio muestra los tres conteos en una línea.",
+  "_en": {
+   "name": "9b24a95b",
+   "how_to_read": "96e40048"
+  }
+ },
+ "municipalities.stops_expired": {
+  "name": "Paradas con horario vencido (conteo)",
+  "how_to_read": "En el corte de datos 2026-10 la isla tiene 966 paradas de este tipo, en 10 municipios: Caguas 291, Ponce 276, San Lorenzo 159, Juncos 128, Fajardo 81, Cidra 14, Hatillo 11, Gurabo 4, Carolina 1 y Las Piedras 1. Pertenecen a 7 operadores cuyas fuentes de horarios terminaron: Ponce el 2024-12-31, Hatillo el 2025-12-31, Cidra el 2026-01-15, Caguas el 2026-01-31, San Lorenzo el 2026-02-28, Fajardo el 2026-06-15 y Juncos el 2026-07-31. Una parada puede estar en un municipio vecino: Gurabo no tiene una fuente de horarios propia. Una fuente de horarios puede quedarse sin fechas mientras las guaguas siguen circulando, así que un conteo alto no prueba que el servicio se haya detenido.",
+  "_en": {
+   "name": "f09de908",
+   "how_to_read": "a7c9ea6f"
+  }
+ },
+ "municipalities.stops_osm": {
+  "name": "Paradas mapeadas solo por personas voluntarias, sin horario (conteo)",
+  "how_to_read": "En el corte de datos 2026-10 la isla tiene 513 paradas de este tipo (459 paradas de guagua, 47 estaciones de guaguas y 7 terminales de lanchas), en 47 municipios: Carolina 185, San Juan 177, Bayamón 44, Guaynabo 17 y Toa Baja 15 son los que más tienen. Un conteo alto muestra dónde las personas voluntarias mapearon muchas paradas. No es una medida del servicio.",
+  "_en": {
+   "name": "88ae5485",
+   "how_to_read": "b9364fac"
+  }
+ },
+ "municipalities.bus_stations": {
+  "name": "Estaciones y terminales de guaguas (conteo)",
+  "how_to_read": "Úselo para ver dónde un pueblo tiene una terminal central. Es un conteo, no una tasa: los municipios más grandes y los lugares más mapeados tienen más. No indica cuántas rutas sirve la terminal, y un conteo de 8 puede ser ocho registros de una sola terminal. En el corte de datos 2026-10 la isla tiene 91 estaciones de guaguas: 44 paradas con horario (15 de la fuente de la ATI y 29 de fuentes municipales) y 47 de OpenStreetMap. Overture Maps lista 24 lugares como estaciones de guaguas en el corte de datos 2026-10 (vea places.type.transportation); ese es un conteo de listados de lugares, no de las estaciones que se cuentan aquí.",
+  "_en": {
+   "name": "1e215475",
+   "how_to_read": "7b514f3e"
+  }
+ },
+ "municipalities.rail_stations": {
+  "name": "Estaciones de tren (conteo)",
+  "how_to_read": "En el corte de datos 2026-10 la isla tiene 16 estaciones de tren. Todas provienen de la fuente de datos de la Autoridad de Transporte Integrado (ATI): San Juan 12, Bayamón 3, Guaynabo 1. No queda ninguna estación de OpenStreetMap después de eliminar los duplicados. Solo tres municipios tienen una estación de tren, así que 0 es el valor normal.",
+  "_en": {
+   "name": "bb1c906a",
+   "how_to_read": "9a91e3fd"
+  }
+ },
+ "municipalities.ferry_terminals": {
+  "name": "Terminales de lanchas (conteo)",
+  "how_to_read": "Una terminal de lanchas señala una conexión por barco. Es un conteo, no una tasa, y no indica qué rutas ni cuántos viajes sirven la terminal. En el corte de datos 2026-10 la isla tiene 13 terminales de lanchas: 6 de la fuente de la ATI y 7 de OpenStreetMap.",
+  "_en": {
+   "name": "46e8ddc6",
+   "how_to_read": "2cb14f78"
+  }
+ },
+ "municipalities.airports": {
+  "name": "Aeropuertos y aeródromos (conteo)",
+  "how_to_read": "El conteo es de instalaciones, no de aerolíneas ni de vuelos, y no es una tasa. Un valor de 1 puede ser un gran aeropuerto comercial o un aeródromo pequeño. En el corte de datos 2026-10 la isla tiene 25 aeropuertos: 14 de la lista de la FAA y 11 de OpenStreetMap. Overture Maps también lista 120 lugares en su categoría de aeropuertos en el corte de datos 2026-10; ese es un conteo de listados de lugares, no de aeropuertos (vea places.type.transportation).",
+  "_en": {
+   "name": "1a03b1c5",
+   "how_to_read": "41ec38a1"
+  }
+ },
+ "municipalities.public_airports": {
+  "name": "Aeropuertos de uso público (conteo)",
+  "how_to_read": "Úselo para ver dónde la FAA lista un aeropuerto abierto al público. No indica si las aerolíneas le dan servicio. En el corte de datos 2026-10 la isla tiene 10 aeropuertos de uso público entre sus 14 aeropuertos de la FAA; los otros cuatro (en Adjuntas, Cabo Rojo, Lajas y Vega Baja) son de uso privado.",
+  "_en": {
+   "name": "35f03d1e",
+   "how_to_read": "ec51773f"
+  }
+ },
+ "municipalities.taxi_stands": {
+  "name": "Paradas de taxis mapeadas (conteo)",
+  "how_to_read": "Trátelo como una señal del esfuerzo de mapeo tanto como del servicio de taxis. Un 0 no significa que no haya taxis. En el corte de datos 2026-10 el total de la isla es 9: San Juan 6, Arecibo 1, Caguas 1 y Aguadilla 1. Overture Maps lista 28 lugares en su categoría de servicio de taxi en el corte de datos 2026-10 (vea places.type.transportation); ese es un conteo distinto del de paradas mapeadas.",
+  "_en": {
+   "name": "ab52429a",
+   "how_to_read": "a38a7125"
+  }
+ },
+ "municipalities.ev_charging": {
+  "name": "Puntos de carga de vehículos eléctricos mapeados (conteo)",
+  "how_to_read": "Úselo solo como una señal aproximada de dónde se han mapeado puntos de carga. No es un inventario de cargadores. En el corte de datos 2026-10 el total de la isla es 11: Carolina 4, Guaynabo 4, Aguadilla 1, Mayagüez 1 y Lares 1.",
+  "_en": {
+   "name": "42a19558",
+   "how_to_read": "13606e50"
+  }
+ },
+ "municipalities.uber_listed": {
+  "name": "Uber incluye el municipio en su lista (sí/no)",
+  "how_to_read": "Un valor true (sí) significa solo que Uber nombra el municipio. No mide el área servida, los tiempos de espera, el precio ni si hay conductores disponibles. El observatorio no tiene datos del área de cobertura ni de conductores de Uber. Un valor false (no) significa que el municipio no aparecía en esa página, no que el servicio sea imposible.",
+  "_en": {
+   "name": "883f593a",
+   "how_to_read": "9b0e43b7"
+  }
+ },
+ "municipalities.places_near_transit": {
+  "name": "Lugares turísticos a 400 m o menos de cualquier parada mapeada (conteo)",
+  "how_to_read": "Cuenta los lugares cerca de una parada mapeada. Muestra dónde hay paradas, no dónde circula el servicio hoy, porque cuenta paradas cuyo horario ya terminó y paradas que mapearon personas voluntarias. Las versiones anteriores del observatorio lo llamaban 'a 400 m o menos del transporte colectivo'. Para los lugares cerca de una parada con un horario en vigor, use acc_cur400_pct. Para comparar municipios de distinto tamaño, use transit_pct, que divide este conteo entre los lugares turísticos de assets. No dice nada sobre la frecuencia del servicio, las horas de servicio ni el camino que recorrería una persona a pie. El recuadro \"lugares a 400 m o menos de cualquier parada mapeada\" de la pestaña Municipio del mapa es un porcentaje en vivo de los lugares filtrados, no este conteo guardado. En el corte de datos 2026-10 el total de la isla es 11,507 de 24,209 lugares turísticos.",
+  "_en": {
+   "name": "bf64c24d",
+   "how_to_read": "29c6b9dc"
+  }
+ },
+ "municipalities.transit_pct": {
+  "name": "Lugares turísticos a 400 m o menos de cualquier parada mapeada (%)",
+  "how_to_read": "Un valor alto significa que la mayoría de los lugares para visitantes del municipio están cerca de una parada mapeada. Es una medida de dónde hay paradas, no del servicio: una parada con una guagua al día cuenta igual que una estación, y también cuenta una parada cuyo horario ya terminó. Para los lugares cerca de una parada cuyo horario no ha terminado, use acc_cur400_pct; la diferencia entre ambos es acc_paper_pct. En el mapa 2D, un municipio sin paradas mapeadas no tiene color ni posición, ni para esta proporción ni para las proporciones de acceso; el 0.0 que se guarda para él no es un 0% medido. El panel del municipio en el mapa vuelve a calcular la proporción con los lugares que pasan los filtros actuales, así que puede diferir de este campo. En el corte de datos 2026-10 el archivo va de 0.0 a 95.4 (San Juan); en toda la isla, 47.5%.",
+  "_en": {
+   "name": "b3e8faab",
+   "how_to_read": "b46ff690"
+  }
+ },
+ "municipalities.acc_cur400_pct": {
+  "name": "Lugares turísticos a 400 m o menos de una parada con horario vigente (%)",
+  "how_to_read": "Un valor alto significa que la mayoría de los lugares para visitantes del municipio están cerca de una parada con un horario en vigor. Muestra dónde están esas paradas. No muestra con qué frecuencia pasan los vehículos (vea acc_freq400_pct) ni que el servicio opere hoy. Compárelo con transit_pct (cualquier parada mapeada): la diferencia son los lugares que solo están cerca de una parada con un horario terminado o sin horario (acc_paper_pct). En el corte de datos 2026-10 el valor es 32.2% en toda la isla (7,790 de 24,209 lugares) y va de 0.0 a 93.3 (San Juan). De los 78 municipios, 47 tienen 0.0 y 13 tienen 50% o más. La pestaña Municipio muestra una proporción en vivo de los lugares que pasan los filtros, no este campo guardado.",
+  "_en": {
+   "name": "694a9e8f",
+   "how_to_read": "988799a7"
+  }
+ },
+ "municipalities.acc_cur800_pct": {
+  "name": "Lugares turísticos a 800 m o menos de una parada con horario vigente (%)",
+  "how_to_read": "Úselo para ver cuántos lugares más se sumarían con un alcance mayor. En el corte de datos 2026-10 el valor es 36.2% en toda la isla (8,754 de 24,209 lugares), frente a 32.2% a 400 m o menos, y va de 0.0 a 98.0 (San Juan). De los 78 municipios, 43 tienen 0.0. Ningún control del mapa muestra este campo; está en municipalities.json y en la descarga de la tabla de municipios.",
+  "_en": {
+   "name": "381fcfdb",
+   "how_to_read": "fb1482a1"
+  }
+ },
+ "municipalities.acc_freq400_pct": {
+  "name": "Lugares turísticos a 400 m o menos de una parada frecuente (%)",
+  "how_to_read": "Un valor alto significa que la mayoría de los lugares para visitantes del municipio tienen cerca una parada concurrida. Es una aproximación de la frecuencia, no un intervalo de paso (el tiempo entre vehículos): las salidas se reparten a lo largo de todo un día de lunes a viernes, y 20 salidas pueden ser una guagua cada hora o unas pocas guaguas por la mañana y por la tarde. En el corte de datos 2026-10 el valor es 21.3% en toda la isla (5,163 de 24,209 lugares) y va de 0.0 a 77.6 (San Juan). De los 78 municipios, 59 tienen 0.0 y 19 tienen un valor mayor que 0. La pestaña Municipio muestra una proporción en vivo de los lugares que pasan los filtros, no este campo guardado.",
+  "_en": {
+   "name": "3ce547d8",
+   "how_to_read": "61ba4c68"
+  }
+ },
+ "municipalities.acc_sat400_pct": {
+  "name": "Lugares turísticos a 400 m o menos de una parada con servicio los sábados (%)",
+  "how_to_read": "Un valor alto significa que la mayoría de los lugares para visitantes del municipio están cerca de una parada con horario de sábado. En el corte de datos 2026-10 el valor es 22.4% en toda la isla (5,412 de 24,209 lugares) y va de 0.0 a 92.4 (Guaynabo). De los 78 municipios, 63 tienen 0.0. Solo tres de las 18 fuentes de horarios vigentes incluyen salidas los sábados (ATI, Guaynabo y Vega Alta), así que el patrón depende de qué fuentes incluyen servicio de fin de semana. Un 0.0 puede significar que la fuente solo incluye servicio de lunes a viernes, no que ningún vehículo circule los sábados.",
+  "_en": {
+   "name": "747b3bb0",
+   "how_to_read": "eb7755c2"
+  }
+ },
+ "municipalities.acc_sun400_pct": {
+  "name": "Lugares turísticos a 400 m o menos de una parada con servicio los domingos (%)",
+  "how_to_read": "Un valor alto significa que la mayoría de los lugares para visitantes del municipio están cerca de una parada con horario de domingo. En el corte de datos 2026-10 el valor es 6.4% en toda la isla (1,540 de 24,209 lugares) y va de 0.0 a 33.2 (San Juan). De los 78 municipios, 69 tienen 0.0. Solo la fuente de la ATI (Tren Urbano, las guaguas de la Autoridad Metropolitana de Autobuses (AMA) y las lanchas de AcuaExpreso) incluye salidas los domingos, en 94 paradas, así que el patrón depende de esa fuente. Un 0.0 puede significar que la fuente no incluye servicio los domingos, no que ningún vehículo circule los domingos.",
+  "_en": {
+   "name": "5a58a941",
+   "how_to_read": "15b442ed"
+  }
+ },
+ "municipalities.acc_hub400_pct": {
+  "name": "Lugares turísticos a 400 m o menos de una estación de tren o terminal de lanchas (%)",
+  "how_to_read": "Un valor alto significa que muchos de los lugares para visitantes del municipio están cerca de una estación o terminal de donde sale un tren o un barco. No indica si el servicio opera ni si la conexión lleva adonde quiere ir una persona visitante. En el corte de datos 2026-10 el valor es 2.9% en toda la isla (695 de 24,209 lugares) y va de 0.0 a 23.5 (Culebra). Solo 9 municipios tienen un valor mayor que 0: Culebra 23.5, Cataño 16.2, San Juan 14.5, Vieques 11.4, Bayamón 9.5, Ceiba 2.3, Fajardo 1.7, Guaynabo 1.7 y Arecibo 0.5.",
+  "_en": {
+   "name": "f2b331b1",
+   "how_to_read": "59619abf"
+  }
+ },
+ "municipalities.acc_paper_pct": {
+  "name": "Lugares turísticos a 400 m o menos solo de una parada con horario vencido o sin horario (%)",
+  "how_to_read": "Un valor alto significa que la cifra de cualquier parada mapeada (transit_pct) exagera el acceso que respalda un horario publicado. En el corte de datos 2026-10 el valor es 15.4% en toda la isla (3,717 de 24,209 lugares; alrededor del 32% de los 11,507 lugares cerca de cualquier parada mapeada). Va de 0.0 a 94.9 (Juncos), y 45 de los 78 municipios tienen un valor mayor que 0. Cinco municipios tienen 50% o más porque su fuente de horarios terminó: Juncos 94.9, Ponce 79.4, San Lorenzo 78.1, Fajardo 70.5 y Caguas 61.1. Un valor alto no prueba que el servicio se haya detenido: una fuente de horarios puede quedarse sin fechas mientras las guaguas siguen circulando.",
+  "_en": {
+   "name": "5d8836d0",
+   "how_to_read": "d84e9170"
+  }
+ },
+ "municipalities.access_n": {
+  "name": "Lugares turísticos contados en las proporciones de acceso (conteo)",
+  "how_to_read": "Léalo antes de comparar proporciones: la proporción de un municipio con pocos lugares puede variar mucho. En el corte de datos 2026-10 los valores suman 24,209 y van de 36 a 3,424 (San Juan). Multiplique una proporción por este número y divida entre 100 para obtener el número de lugares, redondeado al lugar más cercano. Los recuadros en vivo de la pestaña Municipio usan los lugares que pasan los filtros, no este número.",
+  "_en": {
+   "name": "2715e9e5",
+   "how_to_read": "489effe1"
+  }
+ },
+ "municipalities.access_as_of": {
+  "name": "Fecha de referencia de los campos de acceso (fecha)",
+  "how_to_read": "En el corte de datos 2026-10 es el 2026-10-06, cuatro días después de que se leyeron las fuentes de horarios (2026-10-02). Una fuente de horarios que termina después de esta fecha cuenta como vigente en los valores guardados. Una fecha más antigua significa que ningún valor ha cambiado desde entonces, no que la actualización no se haya ejecutado.",
+  "_en": {
+   "name": "7ecc5ec5",
+   "how_to_read": "09edd17c"
+  }
+ },
+ "municipalities.pop_served_400m": {
+  "name": "Residentes a 400 m o menos de una parada con horario (conteo)",
+  "how_to_read": "Estima cuántas personas viven a poca distancia a pie de una parada. No indica si pasa una guagua, con qué frecuencia ni adónde va. En los datos de transporte colectivo compilados el 2026-10-02, 925,788 de los 3,285,874 residentes de la isla (28.2%) viven a 400 m o menos de una parada con horario, y el valor es 0 en 40 de los 78 municipios: ninguna parada con horario está a 400 m o menos de ningún bloque poblado.",
+  "_en": {
+   "name": "9729e24e",
+   "how_to_read": "27ab9eae"
+  }
+ },
+ "municipalities.pop_served_pct": {
+  "name": "Residentes a 400 m o menos de una parada con horario, incluidos los horarios vencidos (%)",
+  "how_to_read": "Un valor alto significa que la mayoría de la gente vive cerca de una parada con horario publicado. No mide la frecuencia, las horas de servicio ni los destinos. Un valor de 0.0 significa que ningún bloque poblado está a 400 m o menos de una parada con horario; no significa que el municipio no tenga personas usuarias del transporte colectivo. El mapa lo sombrea en cinco clases (quintiles) y la pestaña Municipio resalta los valores menores de 25%. En los datos de transporte colectivo compilados el 2026-10-02, el valor va de 0.0 a 80.9 (San Juan) y es 28.2% en toda la isla. En esos datos, 40 de los 78 municipios tienen 0.0, así que la clase más baja reúne a los 40 y una clase queda vacía; lea la leyenda.",
+  "_en": {
+   "name": "07e8b330",
+   "how_to_read": "9b136163"
+  }
+ },
+ "municipalities.pop_served_active_pct": {
+  "name": "Residentes a 400 m o menos de una parada con horario vigente (%)",
+  "how_to_read": "Compárelo con pop_served_pct. Una diferencia grande significa que la mayoría de las paradas cercanas pertenecen a un horario que ya caducó. Una fuente de horarios puede quedarse sin fechas mientras las guaguas siguen circulando, así que un valor bajo no prueba que el servicio se haya detenido. En los datos de transporte colectivo compilados el 2026-10-02, Ponce muestra 56.6% y 0.0%; Caguas, 42.4% y 3.5%; en toda la isla la proporción es 22.2%, frente a 28.2% para pop_served_pct. En esos datos, la fuente de horarios de Canóvanas, que termina el 2026-10-31, cuenta como activa. Las mismas 7 fuentes de horarios están vencidas para los residentes (al 2026-10-02) y para los lugares (al 2026-10-06). Para los lugares cerca de una parada con horario vigente, vea acc_cur400_pct. El mapa rotula este campo 'de los residentes a 400 m o menos de una parada con horario vigente'.",
+  "_en": {
+   "name": "7d8b709c",
+   "how_to_read": "8fecd8ba"
+  }
+ },
+ "municipalities.pop_served_ati": {
+  "name": "Residentes a 400 m o menos de una parada de la ATI (conteo)",
+  "how_to_read": "Úselo para ver qué parte del alcance de un municipio proviene del operador regional. No lo sume a pop_served_muni: las personas cerca de ambos se cuentan dos veces. En los datos de transporte colectivo compilados el 2026-10-02, San Juan tiene 255,093 + 133,352, que es más que sus 276,909 residentes servidos, y el conteo es distinto de cero en 11 municipios.",
+  "_en": {
+   "name": "975f1830",
+   "how_to_read": "9af3d9e2"
+  }
+ },
+ "municipalities.pop_served_muni": {
+  "name": "Residentes a 400 m o menos de una parada municipal (conteo)",
+  "how_to_read": "Úselo para ver qué parte del alcance de un municipio proviene de los sistemas municipales. No lo sume a pop_served_ati: las personas cerca de ambos se cuentan dos veces. En los datos de transporte colectivo compilados el 2026-10-02, el observatorio lee 24 fuentes de horarios municipales y el conteo es distinto de cero en 35 municipios.",
+  "_en": {
+   "name": "0dd7052c",
+   "how_to_read": "706a34d6"
+  }
+ },
+ "municipalities.muni_system": {
+  "name": "Sistema municipal de transporte colectivo: estado de su horario público",
+  "how_to_read": "Vigente (current) significa que hay un horario válido publicado. No significa que las guaguas pasen a tiempo. Vacío no significa que el municipio no tenga servicio de guaguas: puede que la lista de verificación no incluya su sistema. Ninguno (none) significa que el observatorio no encontró una fuente de horarios en el registro de National RTAP; puede que el municipio publique un horario en otro lugar. La lista de verificación corresponde al año federal de informes 2023, así que un sistema que comenzó o se detuvo después puede faltar o aparecer por error. Vigente se juzga por la fecha de terminación más tardía de cualquier calendario de servicio de la fuente de horarios, así que muestra que algún servicio tiene fechas por delante, no que todas las rutas sean válidas. La pestaña Municipio muestra vigente como \"horario publicado\", vencido (expired) como \"horario vencido\" y ninguno como \"sin horario público\". En el corte de datos 2026-10, 14 municipios aparecen como vigente, 7 como vencido, 15 como ninguno y 42 están vacíos; por vencer (expiring), desconocido (unknown) y con error (broken) no aparecen.",
+  "_en": {
+   "name": "6bb77eef",
+   "how_to_read": "93dc165c"
+  }
+ },
+ "municipalities.muni_system_routes": {
+  "name": "Rutas en la fuente de horarios del sistema municipal (conteo)",
+  "how_to_read": "Un número más alto significa más rutas en el horario. No mide viajes, frecuencia ni cobertura. Una fuente de horarios cuyo horario venció sigue contando. En el corte de datos 2026-10 el valor más alto es 11 (Guaynabo).",
+  "_en": {
+   "name": "f9e772a0",
+   "how_to_read": "cce43b86"
+  }
+ },
+ "municipalities.landuse_km2": {
+  "name": "Superficie por grupo del plan de uso de terrenos (km²)",
+  "how_to_read": "Use las superficies cuando necesite kilómetros cuadrados. Para las proporciones, use urban_pct, urbanizable_pct, rustic_common_pct y protected_land_pct. En la descarga en CSV (valores separados por comas, para hojas de cálculo), el objeto se convierte en cuatro columnas: landuse_km2_urban, landuse_km2_urbanizable, landuse_km2_rustic y landuse_km2_protected. Una columna queda en blanco cuando el municipio no tiene ningún polígono de ese grupo. En el plan de 2015 falta el suelo urbanizable en 27 municipios y el suelo rústico común en Cataño, y los cuatro valores suman 8,409.1 km² para la isla, alrededor del 95% de la superficie terrestre del Censo (8,868.5 km²).",
+  "_en": {
+   "name": "238d170e",
+   "how_to_read": "316c5d20"
+  }
+ },
+ "municipalities.urban_pct": {
+  "name": "Terreno clasificado como urbano en el plan de uso de terrenos (%)",
+  "how_to_read": "Un valor alto significa que la mayor parte del terreno del municipio está designada como urbana en el plan; un valor bajo significa que poca lo está. El suelo urbano del plan puede estar vacío, y el terreno fuera de él puede tener edificios. En el plan de 2015 la proporción va de 0.8% (Maricao) a 99.9% (Cataño).",
+  "_en": {
+   "name": "f0113847",
+   "how_to_read": "8db874ef"
+  }
+ },
+ "municipalities.urbanizable_pct": {
+  "name": "Terreno clasificado como urbanizable en el plan de uso de terrenos (%)",
+  "how_to_read": "Una proporción pequeña es normal: en el plan de 2015 la proporción de toda la isla es 0.8% y los valores municipales van de 0.0% a 7.5% (Bayamón). Un valor de 0.0 significa que el plan no clasifica ningún suelo urbanizable allí, o menos del 0.05% del terreno. En el plan de 2015, 28 municipios muestran 0.0.",
+  "_en": {
+   "name": "9ed71f28",
+   "how_to_read": "ebd50f23"
+  }
+ },
+ "municipalities.rustic_common_pct": {
+  "name": "Terreno clasificado como rústico común en el plan de uso de terrenos (%)",
+  "how_to_read": "El suelo rústico común es la clase rural del plan sin la designación de protección especial. Un valor alto significa que gran parte del municipio es terreno rural que el plan no destaca para protegerlo. En el plan de 2015 la proporción va de 0.0% (Cataño) a 65.0% (Rincón). Ningún mapa ni página muestra este campo; está en municipalities.json y en la descarga en CSV (valores separados por comas).",
+  "_en": {
+   "name": "a98cbc25",
+   "how_to_read": "3638fd5a"
+  }
+ },
+ "municipalities.protected_land_pct": {
+  "name": "Terreno clasificado como rústico especialmente protegido en el plan de uso de terrenos (%)",
+  "how_to_read": "Un valor alto significa que el plan designa la mayor parte del terreno del municipio para protección especial (por su valor agrícola, ecológico, hídrico o paisajístico). En el plan de 2015 la proporción va de 0.1% (Cataño) a 96.7% (Maricao); en toda la isla es 63.8% (5,361.0 de 8,409.1 km² de terreno clasificado). El valor no indica qué se puede construir en una parcela; solo mide la superficie del plan. Consulte a la Junta de Planificación o al municipio sobre cualquier decisión sobre una parcela.",
+  "_en": {
+   "name": "e015ee47",
+   "how_to_read": "c90d2080"
+  }
+ },
+ "municipalities.places_on_protected_land": {
+  "name": "Listados de lugares en suelo rústico especialmente protegido (conteo)",
+  "how_to_read": "Muestra cuántos lugares listados están en terreno que el plan protege. Un listado en terreno protegido no es necesariamente un problema: las reservas naturales, los parques y las áreas escénicas también son lugares listados. En el corte de datos 2026-10 la isla tiene 2,151 listados de este tipo, en 77 de los 78 municipios.",
+  "_en": {
+   "name": "2f2c99c2",
+   "how_to_read": "40f14d4d"
+  }
+ },
+ "municipalities.places_on_protected_land_pct": {
+  "name": "Listados de lugares en suelo rústico especialmente protegido (%)",
+  "how_to_read": "Un valor alto significa que muchos de los listados del municipio están en suelo rural protegido; un valor bajo significa que pocos lo están. Es una proporción de listados, no de superficie (vea protected_land_pct). En el corte de datos 2026-10 el valor va de 0.0% a 44.7% (Maricao); Adjuntas 34.9%, San Juan 0.3%. De los 32,541 listados de la isla en ese corte, 172 no caen en ningún polígono.",
+  "_en": {
+   "name": "7d7ccf3e",
+   "how_to_read": "be9a5b2c"
+  }
+ },
+ "municipalities.places_urban_pct": {
+  "name": "Listados de lugares en suelo urbano (%)",
+  "how_to_read": "Un valor alto significa que la mayoría de los listados están en suelo urbano. En el corte de datos 2026-10 el valor va de 29.8% (Maricao) a 81.6% (Guaynabo), y el 66.2% de los listados de toda la isla (21,418 de 32,369) están en suelo urbano. Los listados en un polígono de calle (5,858 de esos 32,369, 18.1%) no se cuentan como urbanos, ni siquiera en un casco urbano. Por eso el valor subestima la proporción de listados en áreas construidas.",
+  "_en": {
+   "name": "1ac1cd08",
+   "how_to_read": "df74787b"
+  }
+ },
+ "municipalities.stop_kinds": {
+  "name": "Tipos de elementos de transporte colectivo: parada, parada con horario, estación, terminal",
+  "how_to_read": "Lea un conteo según su tipo. Un valor alto de transit_stops mezcla paradas con horario y paradas mapeadas por personas voluntarias; gtfs_stops aísla las paradas que tienen horario; stops_current, stops_expired y stops_osm dividen transit_stops según el estado del horario. En el corte de datos 2026-10, transit_stops es 4,360 (parada de transporte colectivo 3,781, parada de guagua 459, estación de guaguas 91, estación de tren 16, terminal de lanchas 13) y gtfs_stops es 3,847 (parada de transporte colectivo 3,781, 44 estaciones de guaguas con horario, 16 estaciones de tren, 6 terminales de lanchas con horario). Para los demás tipos, vea la tabla Códigos de transit.stop_kind.",
+  "_en": {
+   "name": "f14fe1b1",
+   "how_to_read": "88255b49"
+  }
+ },
+ "municipalities.feed_status": {
+  "name": "Estado de una fuente de horarios de transporte colectivo (vigente, por vencer, vencido, ninguno)",
+  "how_to_read": "Una fuente vigente tiene una fecha de terminación a más de 60 días. No se revisan la fecha de inicio ni los días feriados u otras excepciones, y la fecha de terminación es la más tardía de todos los calendarios de la fuente, así que vigente no demuestra que todas las rutas operen con un horario válido. Tampoco demuestra que los vehículos circulen según ese horario. Vencido significa que las fechas se acabaron, lo que puede pasar mientras las guaguas siguen circulando. En los datos de transporte colectivo compilados el 2026-10-02 hay 44 operadores: 17 vigentes (incluida la Autoridad de Transporte Integrado, ATI), 1 por vencer, 7 vencidos (todos municipales), 16 sin fuente, 2 dentro de la fuente de la ATI y 1 comunitario. Los estados desconocido (unknown) y con error (broken) no aparecen. En los campos de acceso, 'horario vigente' abarca los dos primeros estados: 18 fuentes (17 vigentes y 1 por vencer, Canóvanas) frente a 7 vencidas.",
+  "_en": {
+   "name": "b87fa083",
+   "how_to_read": "1a11c58b"
+  }
+ },
+ "municipalities.walk_rule_400m": {
+  "name": "La regla de 400 m a pie",
+  "how_to_read": "Cerca significa una distancia corta en línea recta hasta una parada. No toma en cuenta la frecuencia ni las horas del servicio, las cuestas, los ríos, las verjas, la falta de aceras ni los cruces de calles. Un lugar a 300 m de una parada al otro lado de una autopista cuenta como cerca.",
+  "_en": {
+   "name": "df8500b9",
+   "how_to_read": "989a3316"
+  }
+ },
+ "municipalities.pop_served_method": {
+  "name": "Cómo se cuentan los residentes cerca de una parada con horario",
+  "how_to_read": "Los conteos son estimados de cuántas personas viven cerca de una parada. Tratan a todas las personas de un bloque como si vivieran en un solo punto, así que un bloque rural grande con gente repartida a lo largo de una carretera queda aproximado.",
+  "_en": {
+   "name": "7603c819",
+   "how_to_read": "2a6b7064"
+  }
+ },
+ "municipalities.place_bases": {
+  "name": "Qué lugares cuenta cada porcentaje municipal",
+  "how_to_read": "No compare places_on_protected_land directamente con assets ni con in_protected: cuentan conjuntos de lugares distintos. En el corte de datos 2026-10 la isla tiene 24,209 lugares turísticos y 32,541 listados: los listados son los 24,209 lugares turísticos más 3,300 con confianza menor de 0.50 y 5,032 lugares de culto.",
+  "_en": {
+   "name": "19d95597",
+   "how_to_read": "45ec4fe8"
+  }
+ },
+ "municipalities.transit_data_updates": {
+  "name": "Cuándo se actualizan los campos de transporte colectivo de un municipio",
+  "how_to_read": "Cite un campo de transporte colectivo con la fecha de sus datos: la fecha de compilación de los datos de transporte colectivo (2026-10-02 en este corte) y, para los campos de acceso, access_as_of (2026-10-06), no solo la etiqueta del corte de datos, porque la actualización nocturna puede cambiarlos sin un corte nuevo. Los conteos por barrio son la excepción: conservan los valores de la última compilación completa, así que entre compilaciones completas pueden quedar rezagados respecto a los campos municipales.",
+  "_en": {
+   "name": "ddfa75d3",
+   "how_to_read": "b78caf6d"
+  }
+ },
+ "municipalities.landuse_classes": {
+  "name": "Clases y grupos del plan de uso de terrenos",
+  "how_to_read": "Urbano, urbanizable y rústico común son las clases generales del plan; los códigos SREP agregan el motivo de la protección. Lea el plan mismo para saber qué permite cada clase. En el plan de 2015, landuse.geojson contiene 996 polígonos; 68 de ellos tienen los cinco subtipos menos comunes (SREP-AE, SREP-AP, SREP-EA, SREP-EP, SREP-P).",
+  "_en": {
+   "name": "331baf7a",
+   "how_to_read": "4a3565dd"
+  }
+ },
+ "municipalities.landuse_share_method": {
+  "name": "Cómo se calculan las proporciones del plan de uso de terrenos",
+  "how_to_read": "Use las proporciones de superficie para describir el terreno y las proporciones de lugares para describir dónde están los lugares listados. Las dos pueden diferir mucho: un terreno mayormente protegido puede tener pocos listados. En el corte de datos 2026-10, 32,369 de los 32,541 listados de la isla caen dentro de un polígono del plan.",
+  "_en": {
+   "name": "7637d9c2",
+   "how_to_read": "5b549fc1"
+  }
+ }
+}

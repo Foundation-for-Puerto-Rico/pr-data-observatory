@@ -1,0 +1,122 @@
+{
+ "exposure.pop_flood": {
+  "name": "Residentes en una zona de riesgo de inundación de FEMA",
+  "how_to_read": "Compare las áreas por proporción: divida un conteo por el total del área (el campo total), lo que pone a un barrio pequeño y a un municipio grande en una misma escala. Para obtener la proporción de un grupo de áreas (la isla, una región), sume primero los conteos y los totales, y luego divida; no promedie las proporciones. Una proporción alta significa que mucha gente vive donde FEMA cartografía un riesgo de inundación. No dice nada sobre la elevación, la construcción ni el seguro de una vivienda en particular.",
+  "_en": {
+   "name": "3b62986c",
+   "how_to_read": "0e7bbb85"
+  }
+ },
+ "exposure.pop_slr": {
+  "name": "Residentes en el área inundada con 1 a 10 pies de aumento del nivel del mar",
+  "how_to_read": "Compare las áreas por proporción: divida un conteo por el total del área (el campo total), lo que pone a un barrio pequeño y a un municipio grande en una misma escala. Para obtener la proporción de un grupo de áreas (la isla, una región), sume primero los conteos y los totales, y luego divida; no promedie las proporciones. Cada campo es un número de pies por encima del nivel actual de la marea alta más alta del día, en promedio (MHHW), no un año ni un pronóstico: la vista 3D convierte un año y un escenario de NOAA 2022 en el pie entero más cercano, de 1 a 10, y ese mismo pie aquí da los residentes del área inundada en ese mapa.",
+  "_en": {
+   "name": "51b38759",
+   "how_to_read": "c1a44ff0"
+  }
+ },
+ "exposure.pop_low": {
+  "name": "Residentes en áreas bajas que podrían inundarse con el aumento del nivel del mar",
+  "how_to_read": "Compare las áreas por proporción: divida un conteo por el total del área (el campo total), lo que pone a un barrio pequeño y a un municipio grande en una misma escala. Para obtener la proporción de un grupo de áreas (la isla, una región), sume primero los conteos y los totales, y luego divida; no promedie las proporciones. Léalo junto al área conectada (exposure.pop_slr): a una misma altura, un bloque está en una o en la otra, no en ambas (se verificó para las diez alturas en la compilación del 2026-10-06: ningún bloque está en ambas).",
+  "_en": {
+   "name": "e30bacd0",
+   "how_to_read": "27a54dd6"
+  }
+ },
+ "exposure.pop_surge": {
+  "name": "Residentes en el área inundada por marejada ciclónica en un huracán de categoría 1 a 5",
+  "how_to_read": "Compare las áreas por proporción: divida un conteo por el total del área (el campo total). Para obtener la proporción de un grupo de áreas, sume primero los conteos y los totales, y luego divida. Proporciones más altas en categoría 3: Cataño 21.8%, Santa Isabel 10.2%, Loíza 9.2%; en categoría 5: Cataño 52.3%, Loíza 36.4%, Carolina 15.0%. 39 de los 78 municipios no tienen ninguna en categoría 5, la mayoría del interior. Lea la categoría como un escenario hipotético: mientras más fuerte el huracán, más tierra adentro puede llegar el agua.",
+  "_en": {
+   "name": "405d0569",
+   "how_to_read": "95c48486"
+  }
+ },
+ "exposure.pop_protected": {
+  "name": "Residentes dentro de áreas protegidas",
+  "how_to_read": "Compare las áreas por proporción: divida un conteo por el total del área (el campo total), lo que pone a un barrio pequeño y a un municipio grande en una misma escala. Para obtener la proporción de un grupo de áreas (la isla, una región), sume primero los conteos y los totales, y luego divida; no promedie las proporciones. Muestra dónde hay viviendas dentro del contorno de terrenos de conservación, lo que importa para la planificación; no indica cuántas personas viven en terrenos públicos bajo manejo.",
+  "_en": {
+   "name": "4b0bf1a2",
+   "how_to_read": "5e762edb"
+  }
+ },
+ "exposure.pop_transit": {
+  "name": "Residentes a 400 m o menos de una parada de transporte colectivo",
+  "how_to_read": "Compare las áreas por proporción: divida un conteo por el total del área (el campo total), lo que pone a un barrio pequeño y a un municipio grande en una misma escala. Para obtener la proporción de un grupo de áreas (la isla, una región), sume primero los conteos y los totales, y luego divida; no promedie las proporciones. Es una medida de acceso según el horario: dónde hay una parada a poca distancia a pie y si un horario cubre el día de hoy.",
+  "_en": {
+   "name": "10988093",
+   "how_to_read": "59ea23be"
+  }
+ },
+ "exposure.hu_flood": {
+  "name": "Unidades de vivienda en una zona de riesgo de inundación de FEMA",
+  "how_to_read": "Compare las áreas por proporción: divida un conteo por el total del área (el campo total), lo que pone a un barrio pequeño y a un municipio grande en una misma escala. Para obtener la proporción de un grupo de áreas (la isla, una región), sume primero los conteos y los totales, y luego divida; no promedie las proporciones. Una proporción alta significa que muchas viviendas están donde FEMA cartografía un riesgo de inundación. No dice nada sobre la elevación, la construcción ni el seguro de una vivienda en particular.",
+  "_en": {
+   "name": "02e02bf2",
+   "how_to_read": "1547feb8"
+  }
+ },
+ "exposure.hu_slr": {
+  "name": "Unidades de vivienda en el área inundada con 1 a 10 pies de aumento del nivel del mar",
+  "how_to_read": "Compare las áreas por proporción: divida un conteo por el total del área (el campo total), lo que pone a un barrio pequeño y a un municipio grande en una misma escala. Para obtener la proporción de un grupo de áreas (la isla, una región), sume primero los conteos y los totales, y luego divida; no promedie las proporciones. Cada campo es un número de pies por encima del nivel actual de la marea alta más alta del día, en promedio (MHHW), no un año ni un pronóstico: la vista 3D convierte un año y un escenario de NOAA 2022 en el pie entero más cercano, de 1 a 10, y ese mismo pie aquí da las unidades de vivienda del área inundada en ese mapa.",
+  "_en": {
+   "name": "06539847",
+   "how_to_read": "7d3594d5"
+  }
+ },
+ "exposure.hu_low": {
+  "name": "Unidades de vivienda en áreas bajas que podrían inundarse con el aumento del nivel del mar",
+  "how_to_read": "Compare las áreas por proporción: divida un conteo por el total del área (el campo total), lo que pone a un barrio pequeño y a un municipio grande en una misma escala. Para obtener la proporción de un grupo de áreas (la isla, una región), sume primero los conteos y los totales, y luego divida; no promedie las proporciones. Léalo junto al área conectada (exposure.hu_slr): a una misma altura, un bloque está en una o en la otra, no en ambas (se verificó para las diez alturas en la compilación del 2026-10-06: ningún bloque está en ambas).",
+  "_en": {
+   "name": "de68be38",
+   "how_to_read": "b1cafa27"
+  }
+ },
+ "exposure.hu_surge": {
+  "name": "Unidades de vivienda en el área inundada por marejada ciclónica en un huracán de categoría 1 a 5",
+  "how_to_read": "Compare las áreas por proporción: divida un conteo por el total del área (el campo total). Para obtener la proporción de un grupo de áreas, sume primero los conteos y los totales, y luego divida. Proporciones más altas en categoría 3: Cataño 26.2%, Salinas 11.3%, Santa Isabel 11.3%; en categoría 5: Cataño 55.2%, Loíza 36.6%, Carolina 17.3%. 39 de los 78 municipios no tienen ninguna en categoría 5, la mayoría del interior. Lea la categoría como un escenario hipotético: mientras más fuerte el huracán, más tierra adentro puede llegar el agua.",
+  "_en": {
+   "name": "765f6587",
+   "how_to_read": "4008581f"
+  }
+ },
+ "exposure.hu_protected": {
+  "name": "Unidades de vivienda dentro de áreas protegidas",
+  "how_to_read": "Compare las áreas por proporción: divida un conteo por el total del área (el campo total), lo que pone a un barrio pequeño y a un municipio grande en una misma escala. Para obtener la proporción de un grupo de áreas (la isla, una región), sume primero los conteos y los totales, y luego divida; no promedie las proporciones. Muestra dónde hay viviendas dentro del contorno de terrenos de conservación, lo que importa para la planificación; no indica cuántas personas viven en terrenos públicos bajo manejo.",
+  "_en": {
+   "name": "a526ae5e",
+   "how_to_read": "5e762edb"
+  }
+ },
+ "exposure.hu_transit": {
+  "name": "Unidades de vivienda a 400 m o menos de una parada de transporte colectivo",
+  "how_to_read": "Compare las áreas por proporción: divida un conteo por el total del área (el campo total), lo que pone a un barrio pequeño y a un municipio grande en una misma escala. Para obtener la proporción de un grupo de áreas (la isla, una región), sume primero los conteos y los totales, y luego divida; no promedie las proporciones. Es una medida de acceso según el horario: dónde hay una parada a poca distancia a pie y si un horario cubre el día de hoy.",
+  "_en": {
+   "name": "6a48d962",
+   "how_to_read": "59ea23be"
+  }
+ },
+ "exposure.total": {
+  "name": "Residentes y unidades de vivienda de cada área (la base de toda proporción de exposición)",
+  "how_to_read": "Divida un conteo de exposición por el total correspondiente para obtener una proporción. Los conteos se pueden sumar entre niveles; las proporciones no.",
+  "_en": {
+   "name": "791156da",
+   "how_to_read": "238c8772"
+  }
+ },
+ "exposure.method": {
+  "name": "Cómo se cuenta la exposición (bloques censales contados completos según su punto interno)",
+  "how_to_read": "Lea cada cifra como 'residentes (o viviendas) en bloques cuyo punto interno está dentro de la capa', un estimado cercano de cuántos hay en la capa. Trate las diferencias pequeñas entre áreas como ruido.",
+  "_en": {
+   "name": "1a17248d",
+   "how_to_read": "287c63b8"
+  }
+ },
+ "exposure.share": {
+  "name": "Proporción de residentes o de unidades de vivienda expuestos",
+  "how_to_read": "Una proporción sirve para comparar áreas de distinto tamaño. Una proporción de 100% significa que todas las personas residentes (o viviendas) contadas en el área están expuestas; un área con un total de cero no tiene proporción.",
+  "_en": {
+   "name": "7a76dd93",
+   "how_to_read": "1e3b15ea"
+  }
+ }
+}

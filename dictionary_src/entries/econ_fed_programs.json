@@ -1,0 +1,431 @@
+[
+  {
+    "id": "economy.fed_prog_ss_retirement",
+    "name": "Social Security retirement benefits",
+    "domain": "public-money",
+    "domains": [
+      "public-money"
+    ],
+    "group": "Federal awards by place of performance",
+    "kind": "variable",
+    "plain": "Social Security benefits paid to retired workers and their families, recorded by municipality and federal fiscal year. It is the largest federal payment to Puerto Rico households that the data can place in a municipality. It is money obligated, and part of it names no municipality.",
+    "definition": "Obligations for prime awards (awards made directly to the first recipient) under assistance listing 96.002 (Social Security Retirement Insurance, Social Security Administration (SSA)) whose place of performance is in the municipality, summed over transactions dated in the federal fiscal year, in dollars of that year. The Puerto Rico value is USAspending's territory total for the listing; it also counts obligations that name no municipality.",
+    "unit": "US dollars obligated in the federal fiscal year (not adjusted for inflation)",
+    "value_type": "level",
+    "geography": "78 municipalities and Puerto Rico (USAspending's territory total, which includes obligations that name no municipality)",
+    "coverage": {
+      "timeline": "annual",
+      "first": 2012,
+      "last": 2025,
+      "frequency": "One value per federal fiscal year (1 October to 30 September). A year is added about six weeks after it ends, from 15 November. In the 2026-10 snapshot the file ends with FY2025."
+    },
+    "method": "economy_series.py, functions usa_programs and program_values (PROGRAMS['96.002']). For each fiscal year the build asks the USAspending 'spending by geography' service for prime awards with program_numbers [96.002], once at the county layer for the 78 municipality codes and once at the state layer for PR. Unplaced share = (Puerto Rico - sum of the 78) / Puerto Rico x 100, at least 0, rounded to 0.1, stored in economy_series.json under extras.statewide_share.fed_prog_ss_retirement. A listing is mapped, and a year kept, only when it passes the placement rule of HANDOFF decision 69: at least 20 municipalities with money, under 40% of the placed money in San Juan and at most 50% naming no municipality. A series keeps the latest unbroken run of years that pass (kept_years). The checks, their sensitivity to the thresholds and a comparison with SSA's county tables are in docs/analysis/public-money-v2-2026-10.",
+    "sources": [
+      "usaspending"
+    ],
+    "source_detail": "USAspending.gov, search service 'spending by geography' (api.usaspending.gov/api/v2/search/spending_by_geography/): scope place_of_performance, filter program_numbers [96.002], county layer for the 78 municipality codes and state layer for PR, prime awards only (subawards off), federal fiscal years 2012 to 2025, retrieved 2026-10-31.",
+    "how_to_read": "In the 2026-10 snapshot (USAspending, retrieved 2026-10-31), Puerto Rico's value for FY2025 is $8.86 billion, against $4.28 billion in FY2012. In FY2025, 78 of the 78 municipalities have a value; the largest are San Juan ($1.18 billion), Bayamón ($573.4 million), Carolina ($438.8 million). In every year from FY2012 to FY2025, USAspending places all of Puerto Rico's money for this listing in a municipality. Compare municipalities per resident.",
+    "caveats": [
+      "The Social Security Administration reports these benefits to USAspending as aggregated records (one per place and period, not per person). They follow where beneficiaries live: each municipality's share of the FY2025 money matches its share of the benefits in SSA's own county table for December 2024 (correlation 1.0, largest gap 0.04 percentage points, Mayagüez), and FY2014 matches December 2013 (correlation 0.9971, largest gap 0.58 points). SSA's table, OASDI Beneficiaries by State and County, counts beneficiaries by county of residence.",
+      "Fiscal years 2008 to 2011 are left out under the placement rule of HANDOFF decision 69: in FY2008 to FY2011 San Juan holds 54% to 100% of the money placed. The agency recorded the money centrally in those years, so a map would show where it was recorded, not where it went.",
+      "In the 2026-10 snapshot, of the 1,092 municipality-year cells (14 years, 78 municipalities), 0 are blank (no obligation recorded there) and 0 are negative (downward corrections larger than the year's new obligations). A blank is not proof that no one there received the program.",
+      "The seven programs the observatory maps are 39.7% of all federal awards to Puerto Rico in FY2025 (17.6% to 39.7% over FY2021 to FY2025). The rest, including Medicaid, nutrition assistance, highways and most disaster and COVID money, is not mapped by program because USAspending names no municipality for it or records it where the Commonwealth agency is, in San Juan (HANDOFF decision 69).",
+      "This is money obligated (committed) in the fiscal year, as USAspending reports it. It is not the same as money paid (outlays), and a year's value can change when agencies correct their records.",
+      "The Puerto Rico value is USAspending's total for the territory, which also counts obligations that name no municipality, so it is larger than the sum of the 78 municipalities. The share that cannot be placed is listed by year in the dataset's information window (extras.statewide_share).",
+      "Federal fiscal years run from 1 October to 30 September: FY2024 is October 2023 to September 2024.",
+      "Values are in dollars of each year, not adjusted for inflation.",
+      "Do not add this series to economy.fed_direct_payments or economy.fed_awards_total: those already include it."
+    ],
+    "see_also": [
+      "economy.fed_prog_ss_disability",
+      "economy.fed_prog_ss_survivors",
+      "economy.fed_prog_va_compensation",
+      "economy.fed_direct_payments",
+      "economy.fed_awards_total",
+      "economy.fed_place_of_performance",
+      "measures.per_resident",
+      "measures.inflation_adjustment"
+    ],
+    "where": {
+      "files": [
+        "economy_series.json:fed_prog_ss_retirement"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Public money): shade municipalities by dollars per resident",
+          "href": "index.html#e=fed_prog_ss_retirement.f.perCapita.blue.q.1.1.0.85.0&ey=2025"
+        }
+      ]
+    },
+    "example": "Snapshot 2026-10 (USAspending, retrieved 2026-10-31), FY2025: Puerto Rico $8.86 billion; 0.0% names no municipality.",
+    "added": "2026-10-31"
+  },
+  {
+    "id": "economy.fed_prog_ss_disability",
+    "name": "Social Security disability benefits",
+    "domain": "public-money",
+    "domains": [
+      "public-money"
+    ],
+    "group": "Federal awards by place of performance",
+    "kind": "variable",
+    "plain": "Social Security disability benefits: monthly payments to insured workers who cannot work because of a disability, and to their families, recorded by municipality and federal fiscal year. It is money obligated, and part of it names no municipality.",
+    "definition": "Obligations for prime awards (awards made directly to the first recipient) under assistance listing 96.001 (Social Security Disability Insurance, Social Security Administration (SSA)) whose place of performance is in the municipality, summed over transactions dated in the federal fiscal year, in dollars of that year. The Puerto Rico value is USAspending's territory total for the listing; it also counts obligations that name no municipality.",
+    "unit": "US dollars obligated in the federal fiscal year (not adjusted for inflation)",
+    "value_type": "level",
+    "geography": "78 municipalities and Puerto Rico (USAspending's territory total, which includes obligations that name no municipality)",
+    "coverage": {
+      "timeline": "annual",
+      "first": 2012,
+      "last": 2025,
+      "frequency": "One value per federal fiscal year (1 October to 30 September). A year is added about six weeks after it ends, from 15 November. In the 2026-10 snapshot the file ends with FY2025."
+    },
+    "method": "economy_series.py, functions usa_programs and program_values (PROGRAMS['96.001']). For each fiscal year the build asks the USAspending 'spending by geography' service for prime awards with program_numbers [96.001], once at the county layer for the 78 municipality codes and once at the state layer for PR. Unplaced share = (Puerto Rico - sum of the 78) / Puerto Rico x 100, at least 0, rounded to 0.1, stored in economy_series.json under extras.statewide_share.fed_prog_ss_disability. A listing is mapped, and a year kept, only when it passes the placement rule of HANDOFF decision 69: at least 20 municipalities with money, under 40% of the placed money in San Juan and at most 50% naming no municipality. A series keeps the latest unbroken run of years that pass (kept_years). The checks, their sensitivity to the thresholds and a comparison with SSA's county tables are in docs/analysis/public-money-v2-2026-10.",
+    "sources": [
+      "usaspending"
+    ],
+    "source_detail": "USAspending.gov, search service 'spending by geography' (api.usaspending.gov/api/v2/search/spending_by_geography/): scope place_of_performance, filter program_numbers [96.001], county layer for the 78 municipality codes and state layer for PR, prime awards only (subawards off), federal fiscal years 2012 to 2025, retrieved 2026-10-31.",
+    "how_to_read": "In the 2026-10 snapshot (USAspending, retrieved 2026-10-31), Puerto Rico's value for FY2025 is $2.43 billion, against $2.50 billion in FY2012. In FY2025, 78 of the 78 municipalities have a value; the largest are San Juan ($129.5 million), Bayamón ($108.7 million), Arecibo ($99.1 million). In every year from FY2012 to FY2025, USAspending places all of Puerto Rico's money for this listing in a municipality. Compare municipalities per resident.",
+    "caveats": [
+      "The Social Security Administration reports these benefits to USAspending as aggregated records (one per place and period, not per person). They follow where beneficiaries live: each municipality's share of the FY2025 money matches its share of the benefits in SSA's own county table for December 2024 (correlation 0.9999, largest gap 0.04 percentage points, Vega Alta), and FY2014 matches December 2013 (correlation 0.9902, largest gap 0.63 points). SSA's table, OASDI Beneficiaries by State and County, counts beneficiaries by county of residence.",
+      "Fiscal years 2008 to 2011 are left out under the placement rule of HANDOFF decision 69: in FY2008 to FY2011 San Juan holds 52% to 100% of the money placed. The agency recorded the money centrally in those years, so a map would show where it was recorded, not where it went.",
+      "In the 2026-10 snapshot, of the 1,092 municipality-year cells (14 years, 78 municipalities), 0 are blank (no obligation recorded there) and 0 are negative (downward corrections larger than the year's new obligations). A blank is not proof that no one there received the program.",
+      "The seven programs the observatory maps are 39.7% of all federal awards to Puerto Rico in FY2025 (17.6% to 39.7% over FY2021 to FY2025). The rest, including Medicaid, nutrition assistance, highways and most disaster and COVID money, is not mapped by program because USAspending names no municipality for it or records it where the Commonwealth agency is, in San Juan (HANDOFF decision 69).",
+      "This is money obligated (committed) in the fiscal year, as USAspending reports it. It is not the same as money paid (outlays), and a year's value can change when agencies correct their records.",
+      "The Puerto Rico value is USAspending's total for the territory, which also counts obligations that name no municipality, so it is larger than the sum of the 78 municipalities. The share that cannot be placed is listed by year in the dataset's information window (extras.statewide_share).",
+      "Federal fiscal years run from 1 October to 30 September: FY2024 is October 2023 to September 2024.",
+      "Values are in dollars of each year, not adjusted for inflation.",
+      "Do not add this series to economy.fed_direct_payments or economy.fed_awards_total: those already include it."
+    ],
+    "see_also": [
+      "economy.fed_prog_ss_retirement",
+      "economy.fed_prog_ss_survivors",
+      "economy.fed_prog_va_compensation",
+      "economy.fed_direct_payments",
+      "economy.fed_awards_total",
+      "economy.fed_place_of_performance",
+      "measures.per_resident",
+      "measures.inflation_adjustment"
+    ],
+    "where": {
+      "files": [
+        "economy_series.json:fed_prog_ss_disability"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Public money): shade municipalities by dollars per resident",
+          "href": "index.html#e=fed_prog_ss_disability.f.perCapita.blue.q.1.1.0.85.0&ey=2025"
+        }
+      ]
+    },
+    "example": "Snapshot 2026-10 (USAspending, retrieved 2026-10-31), FY2025: Puerto Rico $2.43 billion; 0.0% names no municipality.",
+    "added": "2026-10-31"
+  },
+  {
+    "id": "economy.fed_prog_ss_survivors",
+    "name": "Social Security survivors benefits",
+    "domain": "public-money",
+    "domains": [
+      "public-money"
+    ],
+    "group": "Federal awards by place of performance",
+    "kind": "variable",
+    "plain": "Social Security benefits paid to the families of insured workers who have died (widows, widowers, children and dependent parents), recorded by municipality and federal fiscal year. It is money obligated, and part of it names no municipality.",
+    "definition": "Obligations for prime awards (awards made directly to the first recipient) under assistance listing 96.004 (Social Security Survivors Insurance, Social Security Administration (SSA)) whose place of performance is in the municipality, summed over transactions dated in the federal fiscal year, in dollars of that year. The Puerto Rico value is USAspending's territory total for the listing; it also counts obligations that name no municipality.",
+    "unit": "US dollars obligated in the federal fiscal year (not adjusted for inflation)",
+    "value_type": "level",
+    "geography": "78 municipalities and Puerto Rico (USAspending's territory total, which includes obligations that name no municipality)",
+    "coverage": {
+      "timeline": "annual",
+      "first": 2012,
+      "last": 2025,
+      "frequency": "One value per federal fiscal year (1 October to 30 September). A year is added about six weeks after it ends, from 15 November. In the 2026-10 snapshot the file ends with FY2025."
+    },
+    "method": "economy_series.py, functions usa_programs and program_values (PROGRAMS['96.004']). For each fiscal year the build asks the USAspending 'spending by geography' service for prime awards with program_numbers [96.004], once at the county layer for the 78 municipality codes and once at the state layer for PR. Unplaced share = (Puerto Rico - sum of the 78) / Puerto Rico x 100, at least 0, rounded to 0.1, stored in economy_series.json under extras.statewide_share.fed_prog_ss_survivors. A listing is mapped, and a year kept, only when it passes the placement rule of HANDOFF decision 69: at least 20 municipalities with money, under 40% of the placed money in San Juan and at most 50% naming no municipality. A series keeps the latest unbroken run of years that pass (kept_years). The checks, their sensitivity to the thresholds and a comparison with SSA's county tables are in docs/analysis/public-money-v2-2026-10.",
+    "sources": [
+      "usaspending"
+    ],
+    "source_detail": "USAspending.gov, search service 'spending by geography' (api.usaspending.gov/api/v2/search/spending_by_geography/): scope place_of_performance, filter program_numbers [96.004], county layer for the 78 municipality codes and state layer for PR, prime awards only (subawards off), federal fiscal years 2012 to 2025, retrieved 2026-10-31.",
+    "how_to_read": "In the 2026-10 snapshot (USAspending, retrieved 2026-10-31), Puerto Rico's value for FY2025 is $1.25 billion, against $893.6 million in FY2012. In FY2025, 78 of the 78 municipalities have a value; the largest are San Juan ($143.0 million), Bayamón ($85.6 million), Ponce ($64.0 million). In every year from FY2012 to FY2025, USAspending places all of Puerto Rico's money for this listing in a municipality. Compare municipalities per resident.",
+    "caveats": [
+      "The Social Security Administration reports these benefits to USAspending as aggregated records (one per place and period, not per person). They follow where beneficiaries live: each municipality's share of the FY2025 money matches its share of the benefits in SSA's own county table for December 2024 (correlation 1.0, largest gap 0.1 percentage points, San Juan), and FY2014 matches December 2013 (correlation 0.9975, largest gap 0.54 points). SSA's table, OASDI Beneficiaries by State and County, counts beneficiaries by county of residence.",
+      "Fiscal years 2008 to 2011 are left out under the placement rule of HANDOFF decision 69: in FY2008 to FY2011 San Juan holds 69% to 100% of the money placed. The agency recorded the money centrally in those years, so a map would show where it was recorded, not where it went.",
+      "In the 2026-10 snapshot, of the 1,092 municipality-year cells (14 years, 78 municipalities), 0 are blank (no obligation recorded there) and 0 are negative (downward corrections larger than the year's new obligations). A blank is not proof that no one there received the program.",
+      "The seven programs the observatory maps are 39.7% of all federal awards to Puerto Rico in FY2025 (17.6% to 39.7% over FY2021 to FY2025). The rest, including Medicaid, nutrition assistance, highways and most disaster and COVID money, is not mapped by program because USAspending names no municipality for it or records it where the Commonwealth agency is, in San Juan (HANDOFF decision 69).",
+      "This is money obligated (committed) in the fiscal year, as USAspending reports it. It is not the same as money paid (outlays), and a year's value can change when agencies correct their records.",
+      "The Puerto Rico value is USAspending's total for the territory, which also counts obligations that name no municipality, so it is larger than the sum of the 78 municipalities. The share that cannot be placed is listed by year in the dataset's information window (extras.statewide_share).",
+      "Federal fiscal years run from 1 October to 30 September: FY2024 is October 2023 to September 2024.",
+      "Values are in dollars of each year, not adjusted for inflation.",
+      "Do not add this series to economy.fed_direct_payments or economy.fed_awards_total: those already include it."
+    ],
+    "see_also": [
+      "economy.fed_prog_ss_retirement",
+      "economy.fed_prog_ss_disability",
+      "economy.fed_prog_va_compensation",
+      "economy.fed_direct_payments",
+      "economy.fed_awards_total",
+      "economy.fed_place_of_performance",
+      "measures.per_resident",
+      "measures.inflation_adjustment"
+    ],
+    "where": {
+      "files": [
+        "economy_series.json:fed_prog_ss_survivors"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Public money): shade municipalities by dollars per resident",
+          "href": "index.html#e=fed_prog_ss_survivors.f.perCapita.blue.q.1.1.0.85.0&ey=2025"
+        }
+      ]
+    },
+    "example": "Snapshot 2026-10 (USAspending, retrieved 2026-10-31), FY2025: Puerto Rico $1.25 billion; 0.0% names no municipality.",
+    "added": "2026-10-31"
+  },
+  {
+    "id": "economy.fed_prog_va_compensation",
+    "name": "Veterans disability compensation",
+    "domain": "public-money",
+    "domains": [
+      "public-money"
+    ],
+    "group": "Federal awards by place of performance",
+    "kind": "variable",
+    "plain": "Veterans disability compensation: monthly, tax-free payments from the Department of Veterans Affairs to veterans with a disability caused or made worse by military service, recorded by municipality and federal fiscal year. It is money obligated, and part of it names no municipality.",
+    "definition": "Obligations for prime awards (awards made directly to the first recipient) under assistance listing 64.109 (Veterans Compensation for Service-Connected Disability, Department of Veterans Affairs (VA)) whose place of performance is in the municipality, summed over transactions dated in the federal fiscal year, in dollars of that year. The Puerto Rico value is USAspending's territory total for the listing; it also counts obligations that name no municipality.",
+    "unit": "US dollars obligated in the federal fiscal year (not adjusted for inflation)",
+    "value_type": "level",
+    "geography": "78 municipalities and Puerto Rico (USAspending's territory total, which includes obligations that name no municipality)",
+    "coverage": {
+      "timeline": "annual",
+      "first": 2011,
+      "last": 2025,
+      "frequency": "One value per federal fiscal year (1 October to 30 September). A year is added about six weeks after it ends, from 15 November. In the 2026-10 snapshot the file ends with FY2025."
+    },
+    "method": "economy_series.py, functions usa_programs and program_values (PROGRAMS['64.109']). For each fiscal year the build asks the USAspending 'spending by geography' service for prime awards with program_numbers [64.109], once at the county layer for the 78 municipality codes and once at the state layer for PR. Unplaced share = (Puerto Rico - sum of the 78) / Puerto Rico x 100, at least 0, rounded to 0.1, stored in economy_series.json under extras.statewide_share.fed_prog_va_compensation. A listing is mapped, and a year kept, only when it passes the placement rule of HANDOFF decision 69: at least 20 municipalities with money, under 40% of the placed money in San Juan and at most 50% naming no municipality. A series keeps the latest unbroken run of years that pass (kept_years). The checks, their sensitivity to the thresholds and a comparison with SSA's county tables are in docs/analysis/public-money-v2-2026-10.",
+    "sources": [
+      "usaspending"
+    ],
+    "source_detail": "USAspending.gov, search service 'spending by geography' (api.usaspending.gov/api/v2/search/spending_by_geography/): scope place_of_performance, filter program_numbers [64.109], county layer for the 78 municipality codes and state layer for PR, prime awards only (subawards off), federal fiscal years 2011 to 2025, retrieved 2026-10-31.",
+    "how_to_read": "In the 2026-10 snapshot (USAspending, retrieved 2026-10-31), Puerto Rico's value for FY2025 is $1.35 billion, against $268.2 million in FY2011. In FY2025, 78 of the 78 municipalities have a value; the largest are San Juan ($104.2 million), Bayamón ($80.8 million), Ponce ($67.5 million). In every year from FY2011 to FY2025, USAspending places all of Puerto Rico's money for this listing in a municipality. Compare municipalities per resident.",
+    "caveats": [
+      "The Department of Veterans Affairs reports these payments as aggregated records, which USAspending places in the municipality VA gives. The data do not say whether that is where the veterans live.",
+      "The series starts in FY2011, the first year USAspending has obligations under this listing for Puerto Rico. Every year since passes the placement rule.",
+      "In the 2026-10 snapshot, of the 1,170 municipality-year cells (15 years, 78 municipalities), 0 are blank (no obligation recorded there) and 0 are negative (downward corrections larger than the year's new obligations). A blank is not proof that no one there received the program.",
+      "The seven programs the observatory maps are 39.7% of all federal awards to Puerto Rico in FY2025 (17.6% to 39.7% over FY2021 to FY2025). The rest, including Medicaid, nutrition assistance, highways and most disaster and COVID money, is not mapped by program because USAspending names no municipality for it or records it where the Commonwealth agency is, in San Juan (HANDOFF decision 69).",
+      "This is money obligated (committed) in the fiscal year, as USAspending reports it. It is not the same as money paid (outlays), and a year's value can change when agencies correct their records.",
+      "The Puerto Rico value is USAspending's total for the territory, which also counts obligations that name no municipality, so it is larger than the sum of the 78 municipalities. The share that cannot be placed is listed by year in the dataset's information window (extras.statewide_share).",
+      "Federal fiscal years run from 1 October to 30 September: FY2024 is October 2023 to September 2024.",
+      "Values are in dollars of each year, not adjusted for inflation.",
+      "Do not add this series to economy.fed_direct_payments or economy.fed_awards_total: those already include it."
+    ],
+    "see_also": [
+      "economy.fed_prog_ss_retirement",
+      "economy.fed_prog_ss_disability",
+      "economy.fed_prog_ss_survivors",
+      "economy.fed_direct_payments",
+      "economy.fed_awards_total",
+      "economy.fed_place_of_performance",
+      "measures.per_resident",
+      "measures.inflation_adjustment"
+    ],
+    "where": {
+      "files": [
+        "economy_series.json:fed_prog_va_compensation"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Public money): shade municipalities by dollars per resident",
+          "href": "index.html#e=fed_prog_va_compensation.f.perCapita.blue.q.1.1.0.85.0&ey=2025"
+        }
+      ]
+    },
+    "example": "Snapshot 2026-10 (USAspending, retrieved 2026-10-31), FY2025: Puerto Rico $1.35 billion; 0.0% names no municipality.",
+    "added": "2026-10-31"
+  },
+  {
+    "id": "economy.fed_prog_pell",
+    "name": "Pell Grants",
+    "domain": "public-money",
+    "domains": [
+      "public-money"
+    ],
+    "group": "Federal awards by place of performance",
+    "kind": "variable",
+    "plain": "Pell Grants for undergraduate students with financial need, recorded where the college or university that receives them is, by federal fiscal year. It shows where the campuses are, not where the students live. It is money obligated, and part of it names no municipality.",
+    "definition": "Obligations for prime awards (awards made directly to the first recipient) under assistance listing 84.063 (Federal Pell Grant Program, Department of Education) whose place of performance is in the municipality, summed over transactions dated in the federal fiscal year, in dollars of that year. The Puerto Rico value is USAspending's territory total for the listing; it also counts obligations that name no municipality.",
+    "unit": "US dollars obligated in the federal fiscal year (not adjusted for inflation)",
+    "value_type": "level",
+    "geography": "78 municipalities and Puerto Rico (USAspending's territory total, which includes obligations that name no municipality)",
+    "coverage": {
+      "timeline": "annual",
+      "first": 2015,
+      "last": 2025,
+      "frequency": "One value per federal fiscal year (1 October to 30 September). A year is added about six weeks after it ends, from 15 November. In the 2026-10 snapshot the file ends with FY2025."
+    },
+    "method": "economy_series.py, functions usa_programs and program_values (PROGRAMS['84.063']). For each fiscal year the build asks the USAspending 'spending by geography' service for prime awards with program_numbers [84.063], once at the county layer for the 78 municipality codes and once at the state layer for PR. Unplaced share = (Puerto Rico - sum of the 78) / Puerto Rico x 100, at least 0, rounded to 0.1, stored in economy_series.json under extras.statewide_share.fed_prog_pell. A listing is mapped, and a year kept, only when it passes the placement rule of HANDOFF decision 69: at least 20 municipalities with money, under 40% of the placed money in San Juan and at most 50% naming no municipality. A series keeps the latest unbroken run of years that pass (kept_years). The checks, their sensitivity to the thresholds and a comparison with SSA's county tables are in docs/analysis/public-money-v2-2026-10.",
+    "sources": [
+      "usaspending"
+    ],
+    "source_detail": "USAspending.gov, search service 'spending by geography' (api.usaspending.gov/api/v2/search/spending_by_geography/): scope place_of_performance, filter program_numbers [84.063], county layer for the 78 municipality codes and state layer for PR, prime awards only (subawards off), federal fiscal years 2015 to 2025, retrieved 2026-10-31.",
+    "how_to_read": "In the 2026-10 snapshot (USAspending, retrieved 2026-10-31), Puerto Rico's value for FY2025 is $892.6 million, against $905.7 million in FY2015. In FY2025, 25 of the 78 municipalities have a value; the largest are San Juan ($264.0 million), Arecibo ($193.9 million), Bayamón ($76.0 million). In every year from FY2015 to FY2025, USAspending places all of Puerto Rico's money for this listing in a municipality. Compare municipalities per resident.",
+    "caveats": [
+      "Placed at the campus that receives the money, not where the students live, so only municipalities with a college or university have a value, and a municipality's value is not what its residents received.",
+      "Puerto Rico's value drops to $413.3 million in FY2017, against $900.3 million in FY2016 and $556.8 million in FY2018. The data do not say why; read it as the obligations recorded that year, not as fewer students.",
+      "Fiscal years 2008 to 2014 are left out under the placement rule of HANDOFF decision 69: in FY2008 to FY2010 and FY2014 San Juan holds 43% to 60% of the money placed. FY2011 to FY2013 pass the rule but come before a year that fails, and the series keeps only its latest unbroken run of years. The data do not say how much of San Juan's share is its campuses and how much is money recorded centrally.",
+      "The start year depends on the rule's San Juan limit: FY2014 has 43% in San Juan. With a 45% limit the series would start in FY2011, with 35% in FY2018. Many campuses are in San Juan, so part of that share is real; the observatory keeps the rule as it was set rather than change it to fit.",
+      "In the 2026-10 snapshot, of the 858 municipality-year cells (11 years, 78 municipalities), 569 are blank (no obligation recorded there) and 3 are negative (downward corrections larger than the year's new obligations). A blank is not proof that no one there received the program.",
+      "The seven programs the observatory maps are 39.7% of all federal awards to Puerto Rico in FY2025 (17.6% to 39.7% over FY2021 to FY2025). The rest, including Medicaid, nutrition assistance, highways and most disaster and COVID money, is not mapped by program because USAspending names no municipality for it or records it where the Commonwealth agency is, in San Juan (HANDOFF decision 69).",
+      "This is money obligated (committed) in the fiscal year, as USAspending reports it. It is not the same as money paid (outlays), and a year's value can change when agencies correct their records.",
+      "The Puerto Rico value is USAspending's total for the territory, which also counts obligations that name no municipality, so it is larger than the sum of the 78 municipalities. The share that cannot be placed is listed by year in the dataset's information window (extras.statewide_share).",
+      "Federal fiscal years run from 1 October to 30 September: FY2024 is October 2023 to September 2024.",
+      "Values are in dollars of each year, not adjusted for inflation.",
+      "Do not add this series to economy.fed_direct_payments or economy.fed_awards_total: those already include it. USAspending records this program as a direct payment for a specified use, not as a grant."
+    ],
+    "see_also": [
+      "economy.fed_prog_ss_retirement",
+      "economy.fed_prog_ss_disability",
+      "economy.fed_prog_ss_survivors",
+      "economy.fed_direct_payments",
+      "economy.fed_awards_total",
+      "economy.fed_place_of_performance",
+      "measures.per_resident",
+      "measures.inflation_adjustment"
+    ],
+    "where": {
+      "files": [
+        "economy_series.json:fed_prog_pell"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Public money): shade municipalities by dollars per resident",
+          "href": "index.html#e=fed_prog_pell.f.perCapita.blue.q.1.1.0.85.0&ey=2025"
+        }
+      ]
+    },
+    "example": "Snapshot 2026-10 (USAspending, retrieved 2026-10-31), FY2025: Puerto Rico $892.6 million; 0.0% names no municipality.",
+    "added": "2026-10-31"
+  },
+  {
+    "id": "economy.fed_prog_head_start",
+    "name": "Head Start grants",
+    "domain": "public-money",
+    "domains": [
+      "public-money"
+    ],
+    "group": "Federal awards by place of performance",
+    "kind": "variable",
+    "plain": "Head Start grants for early childhood education, health and family services for children from birth to age 5 in families with low income, recorded where the grant recipient reports the work, by federal fiscal year. It is money obligated, and part of it names no municipality.",
+    "definition": "Obligations for prime awards (awards made directly to the first recipient) under assistance listing 93.600 (Head Start, Department of Health and Human Services (HHS)) whose place of performance is in the municipality, summed over transactions dated in the federal fiscal year, in dollars of that year. The Puerto Rico value is USAspending's territory total for the listing; it also counts obligations that name no municipality.",
+    "unit": "US dollars obligated in the federal fiscal year (not adjusted for inflation)",
+    "value_type": "level",
+    "geography": "78 municipalities and Puerto Rico (USAspending's territory total, which includes obligations that name no municipality)",
+    "coverage": {
+      "timeline": "annual",
+      "first": 2017,
+      "last": 2025,
+      "frequency": "One value per federal fiscal year (1 October to 30 September). A year is added about six weeks after it ends, from 15 November. In the 2026-10 snapshot the file ends with FY2025."
+    },
+    "method": "economy_series.py, functions usa_programs and program_values (PROGRAMS['93.600']). For each fiscal year the build asks the USAspending 'spending by geography' service for prime awards with program_numbers [93.600], once at the county layer for the 78 municipality codes and once at the state layer for PR. Unplaced share = (Puerto Rico - sum of the 78) / Puerto Rico x 100, at least 0, rounded to 0.1, stored in economy_series.json under extras.statewide_share.fed_prog_head_start. A listing is mapped, and a year kept, only when it passes the placement rule of HANDOFF decision 69: at least 20 municipalities with money, under 40% of the placed money in San Juan and at most 50% naming no municipality. A series keeps the latest unbroken run of years that pass (kept_years). The checks, their sensitivity to the thresholds and a comparison with SSA's county tables are in docs/analysis/public-money-v2-2026-10.",
+    "sources": [
+      "usaspending"
+    ],
+    "source_detail": "USAspending.gov, search service 'spending by geography' (api.usaspending.gov/api/v2/search/spending_by_geography/): scope place_of_performance, filter program_numbers [93.600], county layer for the 78 municipality codes and state layer for PR, prime awards only (subawards off), federal fiscal years 2017 to 2025, retrieved 2026-10-31.",
+    "how_to_read": "In the 2026-10 snapshot (USAspending, retrieved 2026-10-31), Puerto Rico's value for FY2025 is $329.1 million, against $275.6 million in FY2017. In FY2025, 27 of the 78 municipalities have a value; the largest are San Juan ($55.1 million), Guayama ($39.3 million), Caguas ($37.7 million). The share that names no municipality is 15.5% in FY2025 and ranges from 4.3% to 39.1% over FY2017 to FY2025. Compare municipalities per resident, and read the unplaced share first: when it is high, the municipal values show only part of the money.",
+    "caveats": [
+      "Placed where the grant recipient (a municipality, a consortium of municipalities or a nonprofit) reports the work. A consortium's grant can serve children of several municipalities but is recorded in one, so a municipality without a value may still have Head Start centres.",
+      "Fiscal years 2009 to 2016 are left out under the placement rule of HANDOFF decision 69: in FY2009 to FY2013 most or all of the money names no municipality; in FY2014 to FY2016 San Juan holds 58% to 67% of the money placed. The agency recorded the money centrally in those years, so a map would show where it was recorded, not where it went.",
+      "In the 2026-10 snapshot, of the 702 municipality-year cells (9 years, 78 municipalities), 462 are blank (no obligation recorded there) and 15 are negative (downward corrections larger than the year's new obligations). A blank is not proof that no one there received the program.",
+      "The seven programs the observatory maps are 39.7% of all federal awards to Puerto Rico in FY2025 (17.6% to 39.7% over FY2021 to FY2025). The rest, including Medicaid, nutrition assistance, highways and most disaster and COVID money, is not mapped by program because USAspending names no municipality for it or records it where the Commonwealth agency is, in San Juan (HANDOFF decision 69).",
+      "This is money obligated (committed) in the fiscal year, as USAspending reports it. It is not the same as money paid (outlays), and a year's value can change when agencies correct their records.",
+      "The Puerto Rico value is USAspending's total for the territory, which also counts obligations that name no municipality, so it is larger than the sum of the 78 municipalities. The share that cannot be placed is listed by year in the dataset's information window (extras.statewide_share).",
+      "Federal fiscal years run from 1 October to 30 September: FY2024 is October 2023 to September 2024.",
+      "Values are in dollars of each year, not adjusted for inflation.",
+      "Do not add this series to economy.fed_grants or economy.fed_awards_total: those already include it."
+    ],
+    "see_also": [
+      "economy.fed_prog_ss_retirement",
+      "economy.fed_prog_ss_disability",
+      "economy.fed_prog_ss_survivors",
+      "economy.fed_grants",
+      "economy.fed_awards_total",
+      "economy.fed_place_of_performance",
+      "measures.per_resident",
+      "measures.inflation_adjustment"
+    ],
+    "where": {
+      "files": [
+        "economy_series.json:fed_prog_head_start"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Public money): shade municipalities by dollars per resident",
+          "href": "index.html#e=fed_prog_head_start.f.perCapita.blue.q.1.1.0.85.0&ey=2025"
+        }
+      ]
+    },
+    "example": "Snapshot 2026-10 (USAspending, retrieved 2026-10-31), FY2025: Puerto Rico $329.1 million; 15.5% names no municipality.",
+    "added": "2026-10-31"
+  },
+  {
+    "id": "economy.fed_prog_pbra",
+    "name": "Project-Based Rental Assistance",
+    "domain": "public-money",
+    "domains": [
+      "public-money"
+    ],
+    "group": "Federal awards by place of performance",
+    "kind": "variable",
+    "plain": "Project-Based Rental Assistance: HUD rent payments to the owners of specific rental buildings for units let to low-income households, recorded where the building is, by federal fiscal year. It is money obligated, and part of it names no municipality.",
+    "definition": "Obligations for prime awards (awards made directly to the first recipient) under assistance listing 14.195 (Section 8 Housing Assistance Payments Program (Project-Based Rental Assistance), Department of Housing and Urban Development (HUD)) whose place of performance is in the municipality, summed over transactions dated in the federal fiscal year, in dollars of that year. The Puerto Rico value is USAspending's territory total for the listing; it also counts obligations that name no municipality.",
+    "unit": "US dollars obligated in the federal fiscal year (not adjusted for inflation)",
+    "value_type": "level",
+    "geography": "78 municipalities and Puerto Rico (USAspending's territory total, which includes obligations that name no municipality)",
+    "coverage": {
+      "timeline": "annual",
+      "first": 2019,
+      "last": 2025,
+      "frequency": "One value per federal fiscal year (1 October to 30 September). A year is added about six weeks after it ends, from 15 November. In the 2026-10 snapshot the file ends with FY2025."
+    },
+    "method": "economy_series.py, functions usa_programs and program_values (PROGRAMS['14.195']). For each fiscal year the build asks the USAspending 'spending by geography' service for prime awards with program_numbers [14.195], once at the county layer for the 78 municipality codes and once at the state layer for PR. Unplaced share = (Puerto Rico - sum of the 78) / Puerto Rico x 100, at least 0, rounded to 0.1, stored in economy_series.json under extras.statewide_share.fed_prog_pbra. A listing is mapped, and a year kept, only when it passes the placement rule of HANDOFF decision 69: at least 20 municipalities with money, under 40% of the placed money in San Juan and at most 50% naming no municipality. A series keeps the latest unbroken run of years that pass (kept_years). The checks, their sensitivity to the thresholds and a comparison with SSA's county tables are in docs/analysis/public-money-v2-2026-10.",
+    "sources": [
+      "usaspending"
+    ],
+    "source_detail": "USAspending.gov, search service 'spending by geography' (api.usaspending.gov/api/v2/search/spending_by_geography/): scope place_of_performance, filter program_numbers [14.195], county layer for the 78 municipality codes and state layer for PR, prime awards only (subawards off), federal fiscal years 2019 to 2025, retrieved 2026-10-31.",
+    "how_to_read": "In the 2026-10 snapshot (USAspending, retrieved 2026-10-31), Puerto Rico's value for FY2025 is $150.5 million, against $130.7 million in FY2019. In FY2025, 44 of the 78 municipalities have a value; the largest are San Juan ($53.9 million), Caguas ($12.3 million), Bayamón ($11.7 million). In every year from FY2019 to FY2025, USAspending places all of Puerto Rico's money for this listing in a municipality. Compare municipalities per resident.",
+    "caveats": [
+      "Placed where the assisted building is. A municipality without a Section 8 project-based building has no value. HUD's housing choice vouchers (listing 14.871) are a different program and are not in this series.",
+      "Fiscal years 2008 to 2018 are left out under the placement rule of HANDOFF decision 69: in FY2008 to FY2009 most or all of the money names no municipality; in FY2010 to FY2018 San Juan holds 54% to 84% of the money placed. The agency recorded the money centrally in those years, so a map would show where it was recorded, not where it went.",
+      "In the 2026-10 snapshot, of the 546 municipality-year cells (7 years, 78 municipalities), 235 are blank (no obligation recorded there) and 0 are negative (downward corrections larger than the year's new obligations). A blank is not proof that no one there received the program.",
+      "The seven programs the observatory maps are 39.7% of all federal awards to Puerto Rico in FY2025 (17.6% to 39.7% over FY2021 to FY2025). The rest, including Medicaid, nutrition assistance, highways and most disaster and COVID money, is not mapped by program because USAspending names no municipality for it or records it where the Commonwealth agency is, in San Juan (HANDOFF decision 69).",
+      "This is money obligated (committed) in the fiscal year, as USAspending reports it. It is not the same as money paid (outlays), and a year's value can change when agencies correct their records.",
+      "The Puerto Rico value is USAspending's total for the territory, which also counts obligations that name no municipality, so it is larger than the sum of the 78 municipalities. The share that cannot be placed is listed by year in the dataset's information window (extras.statewide_share).",
+      "Federal fiscal years run from 1 October to 30 September: FY2024 is October 2023 to September 2024.",
+      "Values are in dollars of each year, not adjusted for inflation.",
+      "Do not add this series to economy.fed_direct_payments or economy.fed_awards_total: those already include it. USAspending records this program as a direct payment for a specified use, not as a grant."
+    ],
+    "see_also": [
+      "economy.fed_prog_ss_retirement",
+      "economy.fed_prog_ss_disability",
+      "economy.fed_prog_ss_survivors",
+      "economy.fed_direct_payments",
+      "economy.fed_awards_total",
+      "economy.fed_place_of_performance",
+      "measures.per_resident",
+      "measures.inflation_adjustment"
+    ],
+    "where": {
+      "files": [
+        "economy_series.json:fed_prog_pbra"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Public money): shade municipalities by dollars per resident",
+          "href": "index.html#e=fed_prog_pbra.f.perCapita.blue.q.1.1.0.85.0&ey=2025"
+        }
+      ]
+    },
+    "example": "Snapshot 2026-10 (USAspending, retrieved 2026-10-31), FY2025: Puerto Rico $150.5 million; 0.0% names no municipality.",
+    "added": "2026-10-31"
+  }
+]

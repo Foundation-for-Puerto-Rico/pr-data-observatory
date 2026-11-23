@@ -1,0 +1,146 @@
+[
+ {
+  "path": "^economy_[a-z]{2}\\.datasets",
+  "why": "the exposure and snapshot datasets (plan item 6, adapters) are new"
+ },
+ {
+  "path": "^economy_[a-z]{2}\\.perKey\\.exp_",
+  "why": "the 60 exposure datasets are new"
+ },
+ {
+  "path": "^economy_[a-z]{2}\\.perKey\\.(sfha_pct|in_sfha|in_protected|with_website|transit_stops|pop_served_pct|pop_served_active_pct|urban_pct|protected_land_pct)$",
+  "why": "nine snapshot fields of municipalities.json (plan item 6, snapshot adapter) are new"
+ },
+ {
+  "path": "^economy_[a-z]{2}\\.ui\\.(browse|sources|skeleton)",
+  "why": "the dataset browser lists the new datasets and their sources"
+ },
+ {
+  "path": "^chat_[a-z]{2}\\.answers\\.(show me flood zones|which datasets are about housing)",
+  "why": "the chat finds the new datasets: \"flood zones\" now has an answer, and \"housing\" lists the housing-unit datasets too"
+ },
+ {
+  "sub": [
+   "<option value=\"manual\">[^<]*</option>",
+   ""
+  ],
+  "why": "the class menu of a layer card gained \"My own limits\" (class limits typed by the user)"
+ },
+ {
+  "sub": [
+   "<option value=\"perHU\">[^<]*</option>",
+   ""
+  ],
+  "why": "counts of things that sit on housing can be shown per 1,000 housing units"
+ },
+ {
+  "drop_key": "^perHU($|\\|)",
+  "why": "the new normalisation per 1,000 housing units (its unit, formats and values)"
+ },
+ {
+  "drop_item": [
+   "perHU",
+   "Per 1,000 housing units"
+  ],
+  "why": "the new normalisation per 1,000 housing units in the list a dataset offers"
+ },
+ {
+  "drop_item": [
+   "perHU",
+   "Por cada 1,000 unidades de vivienda"
+  ],
+  "why": "the new normalisation per 1,000 housing units in the list a dataset offers (Spanish)"
+ },
+ {
+  "sub": [
+   "\\b(\\d{4})\u2013(\\d{4})\\b",
+   "$window"
+  ],
+  "why": "a survey year is named by its five-year window (2020\u20132024) in legends, cards, pop-ups and tables"
+ },
+ {
+  "sub": [
+   "<div class=\"row rel\">.*?</div>",
+   ""
+  ],
+  "why": "the legend lists the places flagged less reliable (hatched, dashed outline)"
+ },
+ {
+  "sub": [
+   "<div class=\"el-note\">.*?</div>",
+   ""
+  ],
+  "why": "the legend's notes on margins not carried through and on withheld figures"
+ },
+ {
+  "sub": [
+   "<div class=\"note rel-note\">.*?</div>",
+   ""
+  ],
+  "why": "the pop-up and the table say what italics mean"
+ },
+ {
+  "sub": [
+   "class=\"num unrel\"",
+   "class=\"num\""
+  ],
+  "why": "a less reliable value is set in italics"
+ },
+ {
+  "sub": [
+   "<b class=\"unrel\">",
+   "<b>"
+  ],
+  "why": "a less reliable value is set in italics (hover card)"
+ },
+ {
+  "sub": [
+   "<span class=\"sr-only\"> \\(less reliable\\)</span>",
+   ""
+  ],
+  "why": "the words a screen reader hears after a less reliable value"
+ },
+ {
+  "sub": [
+   "<h3 class=\"sec\">(Cautions|Precauciones)</h3><ul class=\"ds-cautions\">.*?</ul>\\s*",
+   ""
+  ],
+  "why": "a dataset card lists the cautions that go with its kind of data"
+ },
+ {
+  "sub": [
+   "<div class=\"note\"><b>(Hatching|Rayado)\\.</b>.*?</div>\\s*",
+   ""
+  ],
+  "why": "\"Reading these maps\" explains the hatching"
+ },
+ {
+  "sub": [
+   "<option value=\"shown\">.*?<option value=\"shown_per_km2\">[^<]*</option>",
+   ""
+  ],
+  "why": "the shading menu lists the three choropleths of the places shown"
+ },
+ {
+  "sub": [
+   "<div class=\"ctrl\">\\s*<label for=\"placesView\">.*?<div id=\"placesLegend\"></div>\\s*</div>",
+   ""
+  ],
+  "why": "the Layers tab can draw the places as hexagons"
+ },
+ {
+  "drop_pair": "^shown(_per_1000_residents|_per_km2)?$",
+  "why": "the shading menu lists the three choropleths of the places shown (the Layers tab counts the listings that pass its filters)"
+ },
+ {
+  "drop_key": "^shown(_per_1000_residents|_per_km2)?$",
+  "why": "the shade of each of those three choropleths"
+ },
+ {
+  "sub": [
+   "\\s*<div class=\"ec-modes\" role=\"group\"[^>]*>.*?</div>",
+   ""
+  ],
+  "why": "a layer card gained its Shaded and Symbol switches (the dataset list's two checkboxes, on the card; 2026-10-21)"
+ }
+]

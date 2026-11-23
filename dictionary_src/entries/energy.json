@@ -1,0 +1,508 @@
+[
+ {
+  "kind": "layer",
+  "value_type": "geometry",
+  "unit": "lines (longitude and latitude, WGS 84)",
+  "added": "2026-11-14",
+  "id": "layers.powerlines",
+  "name": "Transmission lines (map layer)",
+  "domain": "infrastructure.energy",
+  "domains": [
+   "infrastructure.energy",
+   "hazards"
+  ],
+  "group": "Power grid",
+  "plain": "OpenStreetMap's high-voltage lines on the map, coloured and sized by voltage (230, 115 and 38 kV) and drawn simplified to about 100 m; substations are counted, not drawn.",
+  "definition": "power_lines.geojson: OpenStreetMap's ways tagged power=line or power=cable with a voltage of 230, 115 or 38 kV (the highest of the way's 'voltage' tag), joined by voltage and simplified to about 100 m; one MultiLineString per voltage and kind. Each has kv (230, 115 or 38), km (the length mapped at that voltage and kind, measured before simplifying) and cable (true for an underground or submarine cable). The notes give km by voltage, the km left out (281 km with no voltage tag), and the 549 substations mapped, by voltage class and by municipio. No name, operator, circuit number, tower or substation point is kept.",
+  "geography": "Lines over Puerto Rico, Vieques and Culebra",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "Renewed by hand each quarter with the other OpenStreetMap files (python power_lines.py --refresh): the Overpass servers refuse GitHub's runners."
+  },
+  "method": "power_lines.py asks the Overpass API (no key) for power=line, power=cable and power=substation inside Puerto Rico's box. A way's voltage is the highest value of its 'voltage' tag; only 230, 115 and 38 kV are drawn. Ways of the same voltage and kind are joined (shapely linemerge) and simplified with Douglas-Peucker at 0.0009 degrees, about 100 m. Substations are placed in the municipio whose outline holds them (the centre of a mapped outline) and only counted (HANDOFF decision 104 (c)).",
+  "sources": [
+   "osm"
+  ],
+  "source_detail": "OpenStreetMap through the Overpass API: ways tagged power=line or power=cable (tag voltage), and ways and nodes tagged power=substation (counted only)",
+  "how_to_read": "Switch the layer on in the Layers tab of the 2D map or the 3D view (Infrastructure and mobility: Energy), with Power plants. The 230 kV backbone (752 km) runs from the south-coast plants (Aguirre, Costa Sur, EcoEléctrica, AES) over the Cordillera Central to the north, where most electricity is used; the 115 kV (900 km) and 38 kV (1,052 km) networks spread from it to the towns. Click a line for its voltage and the length mapped at that voltage.",
+  "caveats": [
+   "The 38 kV network is about half mapped: 1,052 km in OpenStreetMap against 2,214 km of 38 kV circuits in the utility's 2019 Integrated Resource Plan. A gap in it is a gap in the map, not on the ground.",
+   "The 115 kV network has about 82% of the length the 2019 plan lists (900 km against 1,130 km of circuits); the 230 kV network is complete. Circuit length counts each circuit, so two circuits on one tower line count twice in the plan and once here.",
+   "The lines are simplified to about 100 m: they show where the network runs, not each tower or the exact path. The utility asks the Energy Bureau to treat the location of its lines as Critical Energy Infrastructure Information, which is why the layer keeps no name, operator or circuit number and draws no substation.",
+   "Distribution lines (13.2 kV and below, along the streets) are not in this layer."
+  ],
+  "see_also": [
+   "layers.plants",
+   "infrastructure.power_mw"
+  ],
+  "where": {
+   "files": [
+    "power_lines.geojson:kv",
+    "power_lines.geojson:km",
+    "power_lines.geojson:cable"
+   ],
+   "view": [
+    {
+     "label": "Map, Layers tab: Transmission lines",
+     "href": "index.html#l=powerlines"
+    },
+    {
+     "label": "3D view, Layers tab: Transmission lines",
+     "href": "3d.html"
+    }
+   ]
+  },
+  "ask": {
+   "en": [
+    "transmission lines",
+    "power lines",
+    "power grid",
+    "electric grid",
+    "high voltage lines"
+   ],
+   "es": [
+    "lineas de transmision",
+    "red electrica",
+    "tendido electrico",
+    "lineas de alto voltaje"
+   ]
+  }
+ },
+ {
+  "kind": "layer",
+  "value_type": "geometry",
+  "unit": "points (longitude and latitude, WGS 84)",
+  "added": "2026-11-13",
+  "id": "layers.plants",
+  "name": "Power plants (map layer)",
+  "domain": "infrastructure.energy",
+  "domains": [
+   "infrastructure.energy",
+   "environment"
+  ],
+  "group": "Power plants",
+  "plain": "Every power plant of 1 MW or more on the map, as the US Energy Information Administration lists them each month: the area of each circle is the plant's capacity and its colour is the technology with the most capacity.",
+  "definition": "power_plants.geojson: one point per plant in the Puerto Rico sheets of EIA-860M (67 plants with an operating generator in 40 municipios and 1 planned plant in the file of September 2026). Each point has name (as EIA writes it), type, municipio, geoid, eia (EIA's plant id), tech (the main technology: oil, gas, coal, solar, wind, hydro, battery or landfill), mw (operating nameplate MW without batteries), bat_mw and bat_mwh (batteries, in MW and MWh), by (MW by technology), sb (MW on standby), out (MW out of service), units (operating generators), y0 and y1 (the first and last year a generator entered service), plan and plan_ym (MW planned or under construction, and the earliest expected month) and status (op or planned).",
+  "geography": "Points in 40 municipios",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "Monthly. EIA publishes a month about seven weeks after it ends; the refresh bot rebuilds the file with the infrastructure counts (python power_plants.py --refresh)."
+  },
+  "method": "power_plants.py reads the newest EIA-860M workbook (no key), sheets Operating_PR and Planned_PR, and adds up each plant's generators by technology group. The point is EIA's, and it places the plant in the municipio whose outline holds it. The main technology is the one with the most operating nameplate MW without batteries (batteries when a plant has nothing else). The map draws each circle with an area in proportion to that MW: a radius of 0.55 times the square root of the MW, in pixels, and at least 3. A planned plant is drawn hollow. Owner names (EIA's Entity Name) are never kept (HANDOFF decision 104 (b)).",
+  "sources": [
+   "eia_860m"
+  ],
+  "source_detail": "EIA-860M monthly generator file, sheets Operating_PR and Planned_PR: Plant ID, Plant Name, Technology, Nameplate Capacity (MW), Nameplate Energy Capacity (MWh), Status, Operating Year, Planned Operation Month and Year, Latitude, Longitude",
+  "how_to_read": "Switch the layer on in the Layers tab of the 2D map or the 3D view (Infrastructure and mobility: Energy). The largest circles are the utility's oil and gas plants on the south and north coasts (Aguirre 1,534 MW in Salinas, Costa Sur 1,032 MW in Guayanilla, San Juan 840 MW). Click a plant for its capacity by technology, batteries, standby, years in service and EIA's plant number. Puerto Rico had 67 plants with 6,436.1 MW in September 2026, 397.7 MW of it renewable, and 38.2 MW of batteries.",
+  "caveats": [
+   "Nameplate capacity is what the generators are built to produce, not what they produce or can produce today. EIA counts generators on standby and out of service with the operating ones; the pop-up says how much.",
+   "Rooftop solar is not in this inventory: each system is under 1 MW. LUMA's monthly metrics, filed with the Puerto Rico Energy Bureau, counted 1,666 MW of rooftop solar at 209,404 installations in September 2026, more than four times the renewable capacity of these plants.",
+   "Factories, hospitals and federal sites appear with their own generators, many of which run only when the grid fails.",
+   "The colour is one technology per plant; a plant can have more (Costa Sur has natural gas and oil units). The pop-up lists them all."
+  ],
+  "see_also": [
+   "infrastructure.power_plants",
+   "infrastructure.power_mw",
+   "infrastructure.power_renewable_mw"
+  ],
+  "where": {
+   "files": [
+    "power_plants.geojson:name",
+    "power_plants.geojson:type",
+    "power_plants.geojson:municipio",
+    "power_plants.geojson:geoid",
+    "power_plants.geojson:eia",
+    "power_plants.geojson:tech",
+    "power_plants.geojson:mw",
+    "power_plants.geojson:bat_mw",
+    "power_plants.geojson:bat_mwh",
+    "power_plants.geojson:by",
+    "power_plants.geojson:sb",
+    "power_plants.geojson:out",
+    "power_plants.geojson:units",
+    "power_plants.geojson:y0",
+    "power_plants.geojson:y1",
+    "power_plants.geojson:plan",
+    "power_plants.geojson:plan_ym",
+    "power_plants.geojson:status"
+   ],
+   "view": [
+    {
+     "label": "Map, Layers tab: Power plants",
+     "href": "index.html#l=plants"
+    },
+    {
+     "label": "3D view, Layers tab: Power plants",
+     "href": "3d.html"
+    }
+   ]
+  },
+  "ask": {
+   "en": [
+    "power plant map",
+    "map of power plants",
+    "where are the power plants",
+    "power stations"
+   ],
+   "es": [
+    "mapa de plantas de energia",
+    "donde estan las plantas de energia",
+    "centrales de energia"
+   ]
+  }
+ },
+ {
+  "id": "energy.page",
+  "name": "Energy in Puerto Rico (Knowledge Area data)",
+  "domain": "infrastructure.energy",
+  "domains": [
+   "infrastructure.energy",
+   "environment",
+   "hazards"
+  ],
+  "group": "Energy page",
+  "kind": "table",
+  "value_type": "level",
+  "unit": "GWh, MW, counts, ¢/kWh, minutes",
+  "added": "2026-11-14",
+  "plain": "The figures of the Energy in Puerto Rico page: where electricity comes from since 2010, rooftop solar and batteries, use and smart meters by municipio, reliability, price and the grid's exposure to floods.",
+  "definition": "energy.json: series (months, gen_gwh by source: oil, gas, coal, hydro, solar, wind, landfill and dg, the energy rooftop systems export; rps_pct; rooftop_customers; rooftop_mw; exported_gwh), annual_gwh (full years), capacity (EIA-860M by technology and rooftop MW), municipios (ids, names, housing units, residents, batteries and their kWh, electricity sales in the last 12 months, smart-meter share, bess_series), districts (rooftop solar MW and installations by LUMA commercial district), saidi (monthly SAIDI of transmission and distribution, its distribution part, by technical district, and EIA-861's 2025 figures), price (Puerto Rico's and the United States' residential cents per kWh), exposure (line km and plant MW inside FEMA's 1% flood area and V zones), lines_km, lines_as_of and law (the renewable targets of Act 17-2019 and Act 1-2025).",
+  "geography": "Puerto Rico; 78 municipios; LUMA's 34 commercial and 16 technical districts",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2010,
+   "last": 2026,
+   "frequency": "Monthly series; Rebuilt when LUMA files new reports with the Energy Bureau and EIA publishes a new month (python energy_series.py --refresh)."
+  },
+  "method": "energy_series.py reads LUMA's Exhibit 2 of the distributed generation data (case NEPR-MI-2019-0016) and monthly metrics workbook (case NEPR-MI-2019-0007) from the Energy Bureau's site, EIA-861M's sales to ultimate customers, and the observatory's power_plants.geojson, power_lines.geojson, flood.geojson and municipios.geojson. San Juan's three LUMA areas (San Juan, Río Piedras, Santurce) are added together. Solar, wind and landfill gas production are read from Exhibit 2's contracted renewable production; its second set of columns for these fuels holds other quantities before October 2017.",
+  "sources": [
+   "luma_bureau",
+   "eia_861m",
+   "eia_860m",
+   "osm",
+   "fema_nfhl",
+   "census_decennial"
+  ],
+  "source_detail": "LUMA Exhibit 2 (sheet Monthly) and metrics workbook (sheet T&D); EIA-861M sales_ult_cust (territory and state sheets); EIA-860M via power_plants.geojson",
+  "how_to_read": "Open the Knowledge Area page Energy in Puerto Rico (energy.html). Production by source runs from 2010-01 to 2026-06; batteries, sales and SAIDI from 2021-06 to 2026-09; the residential price from 2021-01 to 2026-08.",
+  "caveats": [
+   "Production includes only the energy rooftop systems send to the grid, not what homes use themselves.",
+   "LUMA's monthly SAIDI counts transmission and distribution outages; outages from a lack of generation are not in it. EIA-861's 2025 figure counts every event.",
+   "Electricity sales by municipio include homes, businesses, industry and government.",
+   "The 38 kV lines are about half mapped in OpenStreetMap, so their flood figures are a lower bound."
+  ],
+  "see_also": [
+   "layers.plants",
+   "layers.powerlines"
+  ],
+  "where": {
+   "files": [
+    "energy.json:*"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Energy in Puerto Rico",
+     "href": "energy.html"
+    }
+   ]
+  },
+  "ask": {
+   "en": [
+    "energy in puerto rico",
+    "rooftop solar",
+    "home batteries",
+    "electricity price",
+    "saidi",
+    "renewable share"
+   ],
+   "es": [
+    "energia en puerto rico",
+    "solar en techos",
+    "baterias en hogares",
+    "precio de la electricidad",
+    "parte renovable"
+   ]
+  }
+ },
+ {
+  "id": "energy.en_batteries",
+  "name": "Home and business batteries (installations)",
+  "domain": "infrastructure.energy",
+  "domains": [
+   "infrastructure.energy"
+  ],
+  "group": "Energy by municipio",
+  "kind": "variable",
+  "plain": "How many battery storage systems homes and businesses have installed, by municipio.",
+  "definition": "Battery energy storage systems installed at homes and businesses connected to LUMA's grid, as LUMA counts them in its monthly metrics (December of each year; 2026 is September 2026). Most are paired with rooftop solar.",
+  "unit": "installations",
+  "value_type": "count",
+  "geography": "78 municipalities, Puerto Rico",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2021,
+   "last": 2026,
+   "frequency": "Year-end values from LUMA's monthly metrics; the current year at the latest month (refresh unit energy)"
+  },
+  "method": "energy_municipios.py: LUMA's monthly metrics workbook (case NEPR-MI-2019-0007, sheet T&D), read from the Energy Bureau's site; San Juan adds LUMA's San Juan, Río Piedras and Santurce areas.",
+  "sources": [
+   "luma_bureau"
+  ],
+  "source_detail": "LUMA Energy, monthly metrics workbook filed with the Puerto Rico Energy Bureau (case NEPR-MI-2019-0007), sheet T&D",
+  "how_to_read": "Puerto Rico: 189,459 in 2026-09. Most: Bayamón (12,362), San Juan (12,239), Carolina (9,068). Divide by housing units to compare municipios.",
+  "caveats": [
+   "LUMA counts the systems it registers; a battery installed without telling the utility is not counted.",
+   "San Juan adds LUMA's San Juan, Río Piedras and Santurce areas."
+  ],
+  "see_also": [
+   "energy.page"
+  ],
+  "where": {
+   "files": [
+    "energy_series.json:en_batteries"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: Home and business batteries (installations)",
+     "href": "index.html#e=en_batteries.s"
+    }
+   ]
+  },
+  "added": "2026-11-14"
+ },
+ {
+  "id": "energy.en_battery_mwh",
+  "name": "Battery storage, MWh (homes and businesses)",
+  "domain": "infrastructure.energy",
+  "domains": [
+   "infrastructure.energy"
+  ],
+  "group": "Energy by municipio",
+  "kind": "variable",
+  "plain": "How much energy those batteries can store, by municipio.",
+  "definition": "The energy those batteries can store, in megawatt-hours (LUMA reports kWh; December of each year; 2026 is September 2026).",
+  "unit": "MWh",
+  "value_type": "count",
+  "geography": "78 municipalities, Puerto Rico",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2021,
+   "last": 2026,
+   "frequency": "Year-end values from LUMA's monthly metrics; the current year at the latest month (refresh unit energy)"
+  },
+  "method": "energy_municipios.py: LUMA's monthly metrics workbook (case NEPR-MI-2019-0007, sheet T&D), read from the Energy Bureau's site; San Juan adds LUMA's San Juan, Río Piedras and Santurce areas.",
+  "sources": [
+   "luma_bureau"
+  ],
+  "source_detail": "LUMA Energy, monthly metrics workbook filed with the Puerto Rico Energy Bureau (case NEPR-MI-2019-0007), sheet T&D",
+  "how_to_read": "Puerto Rico: 3,154.7 MWh in 2026-09.",
+  "caveats": [
+   "Storage is the batteries' rated energy, not what they hold at any moment."
+  ],
+  "see_also": [
+   "energy.page"
+  ],
+  "where": {
+   "files": [
+    "energy_series.json:en_battery_mwh"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: Battery storage, MWh (homes and businesses)",
+     "href": "index.html#e=en_battery_mwh.s"
+    }
+   ]
+  },
+  "added": "2026-11-14"
+ },
+ {
+  "id": "energy.en_sales_gwh",
+  "name": "Electricity sales, GWh a year",
+  "domain": "infrastructure.energy",
+  "domains": [
+   "infrastructure.energy"
+  ],
+  "group": "Energy by municipio",
+  "kind": "variable",
+  "plain": "How much electricity LUMA sold in each municipio in a year.",
+  "definition": "The electricity LUMA sold to customers in the municipio in the calendar year, in gigawatt-hours: homes, businesses, industry and government together. Years with twelve months only.",
+  "unit": "GWh",
+  "value_type": "count",
+  "geography": "78 municipalities, Puerto Rico",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2022,
+   "last": 2025,
+   "frequency": "Year-end values from LUMA's monthly metrics; the current year at the latest month (refresh unit energy)"
+  },
+  "method": "energy_municipios.py: LUMA's monthly metrics workbook (case NEPR-MI-2019-0007, sheet T&D), read from the Energy Bureau's site; San Juan adds LUMA's San Juan, Río Piedras and Santurce areas.",
+  "sources": [
+   "luma_bureau"
+  ],
+  "source_detail": "LUMA Energy, monthly metrics workbook filed with the Puerto Rico Energy Bureau (case NEPR-MI-2019-0007), sheet T&D",
+  "how_to_read": "Puerto Rico: 16,337.5 GWh in 2025. Most: San Juan (2,884.5), Bayamón (988.8), Carolina (947.9).",
+  "caveats": [
+   "Sales include homes, businesses, industry and government: a municipio with factories or malls sells more per resident.",
+   "Electricity a rooftop system makes and uses on the spot is not a sale."
+  ],
+  "see_also": [
+   "energy.page"
+  ],
+  "where": {
+   "files": [
+    "energy_series.json:en_sales_gwh"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: Electricity sales, GWh a year",
+     "href": "index.html#e=en_sales_gwh.s"
+    }
+   ]
+  },
+  "added": "2026-11-14"
+ },
+ {
+  "id": "energy.en_ami_pct",
+  "name": "Customers with smart meters (%)",
+  "domain": "infrastructure.energy",
+  "domains": [
+   "infrastructure.energy"
+  ],
+  "group": "Energy by municipio",
+  "kind": "variable",
+  "plain": "The share of customers whose meter is a smart meter.",
+  "definition": "The share of LUMA's customers whose meter is a smart (AMI) meter (December of each year; 2026 is September 2026). Empty where LUMA reports no share yet: the meters are being installed.",
+  "unit": "%",
+  "value_type": "rate",
+  "geography": "78 municipalities, Puerto Rico",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2021,
+   "last": 2026,
+   "frequency": "Year-end values from LUMA's monthly metrics; the current year at the latest month (refresh unit energy)"
+  },
+  "method": "energy_municipios.py: LUMA's monthly metrics workbook (case NEPR-MI-2019-0007, sheet T&D), read from the Energy Bureau's site; San Juan adds LUMA's San Juan, Río Piedras and Santurce areas.",
+  "sources": [
+   "luma_bureau"
+  ],
+  "source_detail": "LUMA Energy, monthly metrics workbook filed with the Puerto Rico Energy Bureau (case NEPR-MI-2019-0007), sheet T&D",
+  "how_to_read": "Puerto Rico: 20.4% in 2026-09; LUMA reports no share yet for most municipios.",
+  "caveats": [
+   "The meters are being installed; an empty municipio has no figure yet, not zero."
+  ],
+  "see_also": [
+   "energy.page"
+  ],
+  "where": {
+   "files": [
+    "energy_series.json:en_ami_pct"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: Customers with smart meters (%)",
+     "href": "index.html#e=en_ami_pct.s"
+    }
+   ]
+  },
+  "added": "2026-11-14"
+ },
+ {
+  "id": "energy.en_bill250_pct",
+  "name": "Households paying $250 or more a month for electricity (%)",
+  "domain": "infrastructure.energy",
+  "domains": [
+   "infrastructure.energy",
+   "housing"
+  ],
+  "group": "Energy by municipio",
+  "kind": "variable",
+  "plain": "Of the homes that pay for electricity themselves, the share whose monthly bill is $250 or more.",
+  "definition": "Of the occupied housing units that pay for electricity separately, the share whose monthly electricity cost is $250 or more, from the five-year American Community Survey (table B25132); each year is the last year of its window.",
+  "unit": "%",
+  "value_type": "rate",
+  "geography": "78 municipalities, Puerto Rico and 901 barrios",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2021,
+   "last": 2024,
+   "frequency": "Five-year survey windows, one a year (refresh unit energy)"
+  },
+  "method": "energy_municipios.py: ACS 5-year table B25132 read with acs_small.py; the share is B25132_009 ($250 or more) over B25132_003 (pay for electricity separately), its margin by the Census Bureau's formula for a proportion.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "ACS 5-year B25132, Monthly electricity costs",
+  "how_to_read": "Puerto Rico: 11.8% in 2020-2024, from 7.3% in 2017-2021. By barrio too.",
+  "caveats": [
+   "A five-year survey estimate with a margin of error at 90% confidence; small barrios have wide margins.",
+   "Households whose electricity is included in the rent, or who use none, are not in the base."
+  ],
+  "see_also": [
+   "energy.page"
+  ],
+  "where": {
+   "files": [
+    "energy_series.json:en_bill250_pct",
+    "energy_barrio.json:en_bill250_pct"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: Households paying $250 or more a month for electricity (%)",
+     "href": "index.html#e=en_bill250_pct.s"
+    }
+   ]
+  },
+  "added": "2026-11-14"
+ },
+ {
+  "id": "energy.en_bill250_n",
+  "name": "Households paying $250 or more a month for electricity",
+  "domain": "infrastructure.energy",
+  "domains": [
+   "infrastructure.energy",
+   "housing"
+  ],
+  "group": "Energy by municipio",
+  "kind": "variable",
+  "plain": "How many homes pay $250 or more a month for electricity.",
+  "definition": "The number of occupied housing units that pay $250 or more a month for electricity (ACS 5-year B25132).",
+  "unit": "households",
+  "value_type": "count",
+  "geography": "78 municipalities, Puerto Rico and 901 barrios",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2021,
+   "last": 2024,
+   "frequency": "Five-year survey windows, one a year (refresh unit energy)"
+  },
+  "method": "energy_municipios.py: ACS 5-year table B25132 read with acs_small.py; the share is B25132_009 ($250 or more) over B25132_003 (pay for electricity separately), its margin by the Census Bureau's formula for a proportion.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "ACS 5-year B25132, Monthly electricity costs",
+  "how_to_read": "Puerto Rico: 147,196 households in 2020-2024.",
+  "caveats": [
+   "A five-year survey estimate with a margin of error at 90% confidence."
+  ],
+  "see_also": [
+   "energy.page"
+  ],
+  "where": {
+   "files": [
+    "energy_series.json:en_bill250_n",
+    "energy_barrio.json:en_bill250_n"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: Households paying $250 or more a month for electricity",
+     "href": "index.html#e=en_bill250_n.s"
+    }
+   ]
+  },
+  "added": "2026-11-14"
+ }
+]

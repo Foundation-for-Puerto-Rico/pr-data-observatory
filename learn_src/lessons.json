@@ -1,0 +1,492 @@
+{
+ "_about": "The Learn registry (docs/learn.md, HANDOFF decision 106): every lesson of the Learn page (learn.html), built or planned. python learn.py checks it and writes site/js/learn_items.js with the built lessons and the figures they quote; a planned lesson never reaches the site. 'tools' are data-mt codes of the map's Tools > Map tools pane (site/index.html); 'layers' are l= keys of the map's address (site/js/core/viewstate.js); 'glossary' are ids of dictionary_src/glossary.json. Titles and terms are { en, es } like the Knowledge registry's, not T() keys.",
+ "parts": [
+  {
+   "id": "read",
+   "letter": "A",
+   "name": {
+    "en": "Read a map",
+    "es": "Leer un mapa"
+   }
+  },
+  {
+   "id": "ask",
+   "letter": "B",
+   "name": {
+    "en": "Ask a question",
+    "es": "Hacer una pregunta"
+   }
+  },
+  {
+   "id": "judge",
+   "letter": "C",
+   "name": {
+    "en": "Judge a map",
+    "es": "Evaluar un mapa"
+   }
+  },
+  {
+   "id": "further",
+   "letter": "D",
+   "name": {
+    "en": "Take it further",
+    "es": "Ir más lejos"
+   }
+  }
+ ],
+ "lessons": [
+  {
+   "id": "shapes",
+   "code": "A1",
+   "part": "read",
+   "status": "built",
+   "title": {
+    "en": "Layers and shapes",
+    "es": "Capas y formas"
+   },
+   "term": {
+    "en": "Spatial data: vector and raster",
+    "es": "Datos espaciales: vectorial y ráster"
+   },
+   "tools": [],
+   "layers": [
+    "places",
+    "watersheds",
+    "barrios",
+    "surfheat"
+   ],
+   "glossary": [
+    "layer",
+    "polygon",
+    "vector-data",
+    "raster-data",
+    "gis"
+   ]
+  },
+  {
+   "id": "attributes",
+   "code": "A2",
+   "part": "read",
+   "status": "built",
+   "title": {
+    "en": "What a shape knows",
+    "es": "Lo que sabe una forma"
+   },
+   "term": {
+    "en": "Attribute data",
+    "es": "Datos de atributos"
+   },
+   "tools": [
+    "b:table"
+   ],
+   "layers": [
+    "barrios"
+   ],
+   "glossary": [
+    "attribute",
+    "geoid"
+   ]
+  },
+  {
+   "id": "relations",
+   "code": "A3",
+   "part": "read",
+   "status": "built",
+   "title": {
+    "en": "How shapes relate",
+    "es": "Cómo se relacionan las formas"
+   },
+   "term": {
+    "en": "Topology",
+    "es": "Topología"
+   },
+   "tools": [
+    "b:study:saRegH"
+   ],
+   "layers": [
+    "barrios"
+   ],
+   "glossary": [
+    "topology",
+    "point-in-polygon",
+    "dissolve"
+   ]
+  },
+  {
+   "id": "classes",
+   "code": "A4",
+   "part": "read",
+   "status": "built",
+   "title": {
+    "en": "Colours and classes",
+    "es": "Colores y clases"
+   },
+   "term": {
+    "en": "Classification",
+    "es": "Clasificación"
+   },
+   "tools": [],
+   "layers": [],
+   "glossary": [
+    "class-break",
+    "quantile",
+    "equal-intervals",
+    "natural-breaks",
+    "choropleth-map"
+   ]
+  },
+  {
+   "id": "rates",
+   "code": "A5",
+   "part": "read",
+   "status": "built",
+   "title": {
+    "en": "Counts and rates",
+    "es": "Conteos y tasas"
+   },
+   "term": {
+    "en": "Normalization",
+    "es": "Normalización"
+   },
+   "tools": [],
+   "layers": [
+    "muni"
+   ],
+   "glossary": [
+    "rate",
+    "per-1-000-residents",
+    "denominator",
+    "choropleth-map"
+   ]
+  },
+  {
+   "id": "sure",
+   "code": "A6",
+   "part": "read",
+   "status": "built",
+   "title": {
+    "en": "How old, how sure",
+    "es": "Qué tan reciente, qué tan seguro"
+   },
+   "term": {
+    "en": "Data age and margin of error",
+    "es": "Fecha del dato y margen de error"
+   },
+   "tools": [],
+   "layers": [],
+   "glossary": [
+    "moe",
+    "sampling-error",
+    "estimate",
+    "five-year-window"
+   ]
+  },
+  {
+   "id": "count",
+   "code": "B1",
+   "part": "ask",
+   "status": "built",
+   "title": {
+    "en": "How many, how much",
+    "es": "Cuántos y cuánto"
+   },
+   "term": {
+    "en": "Descriptive analysis",
+    "es": "Análisis descriptivo"
+   },
+   "tools": [
+    "b:study:saPtsH",
+    "f:landuse",
+    "b:table"
+   ],
+   "layers": [
+    "barrios",
+    "places"
+   ],
+   "glossary": [
+    "median",
+    "average-mean",
+    "spatial-join"
+   ]
+  },
+  {
+   "id": "overlay",
+   "code": "B2",
+   "part": "ask",
+   "status": "built",
+   "title": {
+    "en": "What overlaps",
+    "es": "Qué se superpone"
+   },
+   "term": {
+    "en": "Overlay analysis",
+    "es": "Análisis de superposición"
+   },
+   "tools": [
+    "b:swipe",
+    "b:composite",
+    "b:study:saLoadH"
+   ],
+   "layers": [
+    "flood",
+    "prot",
+    "places"
+   ],
+   "glossary": [
+    "overlay",
+    "point-in-polygon",
+    "sfha"
+   ]
+  },
+  {
+   "id": "near",
+   "code": "B3",
+   "part": "ask",
+   "status": "built",
+   "title": {
+    "en": "What is near",
+    "es": "Qué hay cerca"
+   },
+   "term": {
+    "en": "Buffer and proximity",
+    "es": "Área de influencia y proximidad"
+   },
+   "tools": [
+    "b:study:saAroundH",
+    "l:walkRings"
+   ],
+   "layers": [
+    "places",
+    "stops",
+    "rings"
+   ],
+   "glossary": [
+    "buffer",
+    "straight-line-distance",
+    "walking-distance-along-mapped-roads"
+   ]
+  },
+  {
+   "id": "network",
+   "code": "B4",
+   "part": "ask",
+   "status": "built",
+   "title": {
+    "en": "How to get there",
+    "es": "Cómo llegar"
+   },
+   "term": {
+    "en": "Network analysis",
+    "es": "Análisis de redes"
+   },
+   "tools": [
+    "b:study:saWalkH",
+    "s:planBox",
+    "l:lyGaps"
+   ],
+   "layers": [
+    "gaps",
+    "stops"
+   ],
+   "glossary": [
+    "network-analysis",
+    "travel-time-area-isochrone",
+    "walking-distance-along-mapped-roads"
+   ]
+  },
+  {
+   "id": "between",
+   "code": "B5",
+   "part": "ask",
+   "status": "built",
+   "title": {
+    "en": "Between measurements",
+    "es": "Entre una medición y otra"
+   },
+   "term": {
+    "en": "Spatial interpolation",
+    "es": "Interpolación espacial"
+   },
+   "tools": [
+    "l:lyContours",
+    "l:lySlope"
+   ],
+   "layers": [
+    "rain",
+    "groundwater",
+    "contours",
+    "slope"
+   ],
+   "glossary": [
+    "spatial-interpolation",
+    "contour-line"
+   ]
+  },
+  {
+   "id": "concentrate",
+   "code": "B6",
+   "part": "ask",
+   "status": "built",
+   "title": {
+    "en": "Where things concentrate",
+    "es": "Dónde se concentran las cosas"
+   },
+   "term": {
+    "en": "Hot spots and clusters",
+    "es": "Puntos calientes y agrupaciones"
+   },
+   "tools": [
+    "h:hex10"
+   ],
+   "layers": [
+    "places",
+    "broadband"
+   ],
+   "glossary": [
+    "hot-spot",
+    "hexagon-grid",
+    "statistically-significant"
+   ]
+  },
+  {
+   "id": "areasize",
+   "code": "C1",
+   "part": "judge",
+   "status": "built",
+   "title": {
+    "en": "The size of the area changes the answer",
+    "es": "El tamaño del área cambia la respuesta"
+   },
+   "term": {
+    "en": "Modifiable areal unit problem",
+    "es": "Problema de la unidad de área modificable"
+   },
+   "tools": [],
+   "layers": [
+    "muni",
+    "barrios"
+   ],
+   "glossary": [
+    "modifiable-areal-unit-problem"
+   ]
+  },
+  {
+   "id": "cause",
+   "code": "C2",
+   "part": "judge",
+   "status": "built",
+   "title": {
+    "en": "Two patterns that match are not a cause",
+    "es": "Dos patrones que coinciden no son una causa"
+   },
+   "term": {
+    "en": "Correlation and the ecological fallacy",
+    "es": "Correlación y falacia ecológica"
+   },
+   "tools": [],
+   "layers": [],
+   "glossary": [
+    "correlation-r",
+    "ecological-fallacy",
+    "bivariate-map"
+   ]
+  },
+  {
+   "id": "leftout",
+   "code": "C3",
+   "part": "judge",
+   "status": "built",
+   "title": {
+    "en": "What a map leaves out, and why",
+    "es": "Lo que un mapa deja fuera, y por qué"
+   },
+   "term": {
+    "en": "Privacy, suppression and licences",
+    "es": "Privacidad, supresión y licencias"
+   },
+   "tools": [],
+   "layers": [],
+   "glossary": [
+    "counted-not-drawn",
+    "suppression"
+   ]
+  },
+  {
+   "id": "owndata",
+   "code": "D1",
+   "part": "further",
+   "status": "built",
+   "title": {
+    "en": "Bring your own data",
+    "es": "Traiga sus propios datos"
+   },
+   "term": {
+    "en": "Your points and areas",
+    "es": "Sus puntos y áreas"
+   },
+   "tools": [
+    "b:study:saPtsH",
+    "m:area",
+    "b:study:saLoadH"
+   ],
+   "layers": [],
+   "glossary": [
+    "geojson",
+    "csv"
+   ]
+  },
+  {
+   "id": "qgis",
+   "code": "D2",
+   "part": "further",
+   "status": "built",
+   "title": {
+    "en": "From the observatory to QGIS",
+    "es": "Del observatorio a QGIS"
+   },
+   "term": {
+    "en": "Desktop GIS",
+    "es": "SIG de escritorio"
+   },
+   "tools": [],
+   "layers": [],
+   "glossary": [
+    "qgis",
+    "map-projection",
+    "geoid"
+   ]
+  }
+ ],
+ "figures": {
+  "_about": "What learn.py reads to compute the figures. Every file is one that only the local build writes (refresh/sources.json lists the files the automated rebuilds write: none of these), so a figure cannot go stale behind a bot's pull request; tests/test_learn.py checks it. The nightly transit refresh rewrites three of them, but not what learn.py reads: places.json (only its transit columns; the names, points, types and confidence stay), municipalities.json (only its transit part; the places, residents and flood counts stay) and population_blocks.json (only its fourth column, metres to the nearest stop).",
+  "near": {
+   "place": "Plaza Pública de Ponce Federico Degetau",
+   "municipality": "Ponce",
+   "metres": [
+    400,
+    800,
+    1000,
+    1600,
+    5000
+   ]
+  },
+  "inputs": [
+   "places.json",
+   "municipalities.json",
+   "barrios.geojson",
+   "municipios.geojson",
+   "streams.geojson",
+   "heat_surface.json",
+   "population_blocks.json",
+   "roads.bin",
+   "acs_barrio.json",
+   "housing_series.json"
+  ],
+  "walk_minutes": [
+   5,
+   10,
+   15,
+   20
+  ]
+ }
+}

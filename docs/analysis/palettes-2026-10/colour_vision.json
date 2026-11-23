@@ -1,0 +1,495 @@
+{
+ "threshold_weak": 5.0,
+ "threshold_clear": 10.0,
+ "palettes": {
+  "ramp blue": {
+   "normal": {
+    "min": 7.8,
+    "pair": [
+     "class 1 and 2",
+     "#BDE0F2",
+     "#8FCAE8"
+    ],
+    "below_weak": [],
+    "below_clear": 2,
+    "pairs": 6
+   },
+   "protan": {
+    "min": 6.9,
+    "pair": [
+     "class 1 and 2",
+     "#BDE0F2",
+     "#8FCAE8"
+    ],
+    "below_weak": [],
+    "below_clear": 3,
+    "pairs": 6
+   },
+   "deutan": {
+    "min": 8.1,
+    "pair": [
+     "class 1 and 2",
+     "#BDE0F2",
+     "#8FCAE8"
+    ],
+    "below_weak": [],
+    "below_clear": 2,
+    "pairs": 6
+   },
+   "tritan": {
+    "min": 8.5,
+    "pair": [
+     "class 2 and 3",
+     "#8FCAE8",
+     "#5FAFDA"
+    ],
+    "below_weak": [],
+    "below_clear": 2,
+    "pairs": 6
+   }
+  },
+  "ramp green": {
+   "normal": {
+    "min": 6.8,
+    "pair": [
+     "class 2 and 3",
+     "#C2D85E",
+     "#A6BF33"
+    ],
+    "below_weak": [],
+    "below_clear": 1,
+    "pairs": 6
+   },
+   "protan": {
+    "min": 6.9,
+    "pair": [
+     "class 2 and 3",
+     "#C2D85E",
+     "#A6BF33"
+    ],
+    "below_weak": [],
+    "below_clear": 1,
+    "pairs": 6
+   },
+   "deutan": {
+    "min": 6.8,
+    "pair": [
+     "class 2 and 3",
+     "#C2D85E",
+     "#A6BF33"
+    ],
+    "below_weak": [],
+    "below_clear": 1,
+    "pairs": 6
+   },
+   "tritan": {
+    "min": 4.4,
+    "pair": [
+     "lightest and the map background",
+     "#E4EFB8",
+     "#EDEDED"
+    ],
+    "below_weak": [
+     [
+      "lightest and the map background",
+      "#E4EFB8",
+      "#EDEDED",
+      4.4
+     ]
+    ],
+    "below_clear": 3,
+    "pairs": 6
+   }
+  },
+  "ramp gold": {
+   "normal": {
+    "min": 6.0,
+    "pair": [
+     "class 2 and 3",
+     "#FFD96E",
+     "#FFC83C"
+    ],
+    "below_weak": [],
+    "below_clear": 2,
+    "pairs": 6
+   },
+   "protan": {
+    "min": 5.8,
+    "pair": [
+     "class 2 and 3",
+     "#FFD96E",
+     "#FFC83C"
+    ],
+    "below_weak": [],
+    "below_clear": 3,
+    "pairs": 6
+   },
+   "deutan": {
+    "min": 4.7,
+    "pair": [
+     "class 2 and 3",
+     "#FFD96E",
+     "#FFC83C"
+    ],
+    "below_weak": [
+     [
+      "class 2 and 3",
+      "#FFD96E",
+      "#FFC83C",
+      4.7
+     ]
+    ],
+    "below_clear": 3,
+    "pairs": 6
+   },
+   "tritan": {
+    "min": 5.1,
+    "pair": [
+     "class 2 and 3",
+     "#FFD96E",
+     "#FFC83C"
+    ],
+    "below_weak": [],
+    "below_clear": 3,
+    "pairs": 6
+   }
+  },
+  "ramp red": {
+   "normal": {
+    "min": 9.9,
+    "pair": [
+     "class 2 and 3",
+     "#FFAB9F",
+     "#FF8270"
+    ],
+    "below_weak": [],
+    "below_clear": 1,
+    "pairs": 6
+   },
+   "protan": {
+    "min": 8.0,
+    "pair": [
+     "lightest and the map background",
+     "#FFD0C9",
+     "#EDEDED"
+    ],
+    "below_weak": [],
+    "below_clear": 2,
+    "pairs": 6
+   },
+   "deutan": {
+    "min": 8.2,
+    "pair": [
+     "class 1 and 2",
+     "#FFD0C9",
+     "#FFAB9F"
+    ],
+    "below_weak": [],
+    "below_clear": 3,
+    "pairs": 6
+   },
+   "tritan": {
+    "min": 9.9,
+    "pair": [
+     "class 2 and 3",
+     "#FFAB9F",
+     "#FF8270"
+    ],
+    "below_weak": [],
+    "below_clear": 1,
+    "pairs": 6
+   }
+  },
+  "ramp gray": {
+   "normal": {
+    "min": 1.5,
+    "pair": [
+     "lightest and the map background",
+     "#E6E6E6",
+     "#EDEDED"
+    ],
+    "below_weak": [
+     [
+      "lightest and the map background",
+      "#E6E6E6",
+      "#EDEDED",
+      1.5
+     ]
+    ],
+    "below_clear": 3,
+    "pairs": 6
+   },
+   "protan": {
+    "min": 1.5,
+    "pair": [
+     "lightest and the map background",
+     "#E6E6E6",
+     "#EDEDED"
+    ],
+    "below_weak": [
+     [
+      "lightest and the map background",
+      "#E6E6E6",
+      "#EDEDED",
+      1.5
+     ]
+    ],
+    "below_clear": 3,
+    "pairs": 6
+   },
+   "deutan": {
+    "min": 1.5,
+    "pair": [
+     "lightest and the map background",
+     "#E6E6E6",
+     "#EDEDED"
+    ],
+    "below_weak": [
+     [
+      "lightest and the map background",
+      "#E6E6E6",
+      "#EDEDED",
+      1.5
+     ]
+    ],
+    "below_clear": 3,
+    "pairs": 6
+   },
+   "tritan": {
+    "min": 1.5,
+    "pair": [
+     "lightest and the map background",
+     "#E6E6E6",
+     "#EDEDED"
+    ],
+    "below_weak": [
+     [
+      "lightest and the map background",
+      "#E6E6E6",
+      "#EDEDED",
+      1.5
+     ]
+    ],
+    "below_clear": 3,
+    "pairs": 6
+   }
+  },
+  "diverging": {
+   "normal": {
+    "min": 20.0,
+    "pair": [
+     "class 3 and 4",
+     "#F2F2F2",
+     "#8FCAE8"
+    ],
+    "below_weak": [],
+    "below_clear": 0,
+    "pairs": 5
+   },
+   "protan": {
+    "min": 16.2,
+    "pair": [
+     "class 3 and 4",
+     "#F2F2F2",
+     "#8FCAE8"
+    ],
+    "below_weak": [],
+    "below_clear": 0,
+    "pairs": 5
+   },
+   "deutan": {
+    "min": 19.5,
+    "pair": [
+     "class 3 and 4",
+     "#F2F2F2",
+     "#8FCAE8"
+    ],
+    "below_weak": [],
+    "below_clear": 0,
+    "pairs": 5
+   },
+   "tritan": {
+    "min": 24.2,
+    "pair": [
+     "class 3 and 4",
+     "#F2F2F2",
+     "#8FCAE8"
+    ],
+    "below_weak": [],
+    "below_clear": 0,
+    "pairs": 5
+   }
+  },
+  "bivariate grid": {
+   "normal": {
+    "min": 10.9,
+    "pair": [
+     "cell [0][1] and [0][2]",
+     "#ace4e4",
+     "#5ac8c8"
+    ],
+    "below_weak": [],
+    "below_clear": 0,
+    "pairs": 14
+   },
+   "protan": {
+    "min": 3.5,
+    "pair": [
+     "cell [1][0] and [1][1]",
+     "#dfb0d6",
+     "#a5add3"
+    ],
+    "below_weak": [
+     [
+      "cell [0][0] and [0][1]",
+      "#e8e8e8",
+      "#ace4e4",
+      3.5
+     ],
+     [
+      "cell [1][0] and [1][1]",
+      "#dfb0d6",
+      "#a5add3",
+      3.5
+     ],
+     [
+      "cell [2][0] and [2][1]",
+      "#be64ac",
+      "#8c62aa",
+      4.6
+     ]
+    ],
+    "below_clear": 5,
+    "pairs": 14
+   },
+   "deutan": {
+    "min": 7.7,
+    "pair": [
+     "cell [0][0] and [0][1]",
+     "#e8e8e8",
+     "#ace4e4"
+    ],
+    "below_weak": [],
+    "below_clear": 4,
+    "pairs": 14
+   },
+   "tritan": {
+    "min": 11.5,
+    "pair": [
+     "cell [0][1] and [0][2]",
+     "#ace4e4",
+     "#5ac8c8"
+    ],
+    "below_weak": [],
+    "below_clear": 0,
+    "pairs": 14
+   }
+  },
+  "symbols": {
+   "normal": {
+    "min": 20.5,
+    "pair": [
+     "2 and 5",
+     "#205D7B",
+     "#2A2E2E"
+    ],
+    "below_weak": [],
+    "below_clear": 0,
+    "pairs": 10
+   },
+   "protan": {
+    "min": 3.4,
+    "pair": [
+     "1 and 4",
+     "#B82415",
+     "#47560F"
+    ],
+    "below_weak": [
+     [
+      "1 and 4",
+      "#B82415",
+      "#47560F",
+      3.4
+     ]
+    ],
+    "below_clear": 1,
+    "pairs": 10
+   },
+   "deutan": {
+    "min": 10.5,
+    "pair": [
+     "1 and 3",
+     "#B82415",
+     "#B56D00"
+    ],
+    "below_weak": [],
+    "below_clear": 0,
+    "pairs": 10
+   },
+   "tritan": {
+    "min": 12.1,
+    "pair": [
+     "4 and 5",
+     "#47560F",
+     "#2A2E2E"
+    ],
+    "below_weak": [],
+    "below_clear": 0,
+    "pairs": 10
+   }
+  },
+  "lines": {
+   "normal": {
+    "min": 14.4,
+    "pair": [
+     "4 and 8",
+     "#79901E",
+     "#A6BF33"
+    ],
+    "below_weak": [],
+    "below_clear": 0,
+    "pairs": 28
+   },
+   "protan": {
+    "min": 7.6,
+    "pair": [
+     "4 and 5",
+     "#79901E",
+     "#B56D00"
+    ],
+    "below_weak": [],
+    "below_clear": 2,
+    "pairs": 28
+   },
+   "deutan": {
+    "min": 2.9,
+    "pair": [
+     "4 and 5",
+     "#79901E",
+     "#B56D00"
+    ],
+    "below_weak": [
+     [
+      "4 and 5",
+      "#79901E",
+      "#B56D00",
+      2.9
+     ]
+    ],
+    "below_clear": 4,
+    "pairs": 28
+   },
+   "tritan": {
+    "min": 13.2,
+    "pair": [
+     "5 and 7",
+     "#B56D00",
+     "#FF4D38"
+    ],
+    "below_weak": [],
+    "below_clear": 0,
+    "pairs": 28
+   }
+  }
+ }
+}

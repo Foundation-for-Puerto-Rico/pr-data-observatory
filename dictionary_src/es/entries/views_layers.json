@@ -1,0 +1,666 @@
+{
+ "layers.map_page": {
+  "name": "Mapa 2D: mapa base, panel lateral y controles del mapa",
+  "how_to_read": "Use las líneas de crédito del cuadro de atribución cuando comparta una imagen del mapa. Cada ficha del diccionario tiene un botón Citar. En la ficha de una capa o herramienta, ese botón cita el control y nombra sus fuentes. Para citar los datos mismos, use el botón Citar de las fichas de los conjuntos de datos que aparecen en Relacionado.",
+  "_en": {
+   "name": "bb489f88",
+   "how_to_read": "fc597e24"
+  }
+ },
+ "layers.about_tab": {
+  "name": "Pestaña Info y barra superior (mapa 2D y vista 3D)",
+  "how_to_read": "Cite un conteo junto con la etiqueta del corte de datos. El conteo de lugares turísticos sigue las reglas de conteo predeterminadas (vea Relacionado), no los filtros que se fijen en la pestaña Capas del mapa.",
+  "_en": {
+   "name": "35a8ba14",
+   "how_to_read": "c8a7fd6e"
+  }
+ },
+ "layers.help_buttons": {
+  "name": "Botones de ayuda (?) junto a capas y figuras",
+  "how_to_read": "Lea el cuadro como un recordatorio. Para una cifra que piense citar, use la ficha del diccionario.",
+  "_en": {
+   "name": "3c9ac681",
+   "how_to_read": "cf4848b5"
+  }
+ },
+ "layers.tourism_places": {
+  "name": "Interruptor Lugares turísticos (mapa 2D)",
+  "how_to_read": "El número de un grupo de marcadores cuenta los listados con los filtros actuales. Un marcador es un listado, no un conteo de visitantes ni de ventas. El aro oscuro indica que las coordenadas del lugar caen dentro de una zona inundable mapeada, no que el edificio se inunde. El botón Citar de esta ficha cita el control. Para citar los datos, use el botón Citar de las fichas que aparecen en Relacionado, por ejemplo places.category.",
+  "_en": {
+   "name": "604ce9eb",
+   "how_to_read": "e988d415"
+  }
+ },
+ "layers.place_categories": {
+  "name": "Botones de categoría (lugares turísticos)",
+  "how_to_read": "Una categoría es un grupo de categorías de Overture que asignó Foundation for Puerto Rico (FPR). Vea la ficha sobre la clasificación para saber cómo se formaron los grupos.",
+  "_en": {
+   "name": "c9c05705",
+   "how_to_read": "81d2d7c1"
+  }
+ },
+ "layers.confidence_filter": {
+  "name": "Control deslizante Confianza mínima (lugares turísticos)",
+  "how_to_read": "0.50 es el umbral propio del observatorio, no una regla de Overture. En el corte de datos 2026-10 conserva 24,209 de los 27,509 listados (88%) que no son lugares de culto. Una puntuación es un estimado de Overture, y una puntuación alta no prueba que un lugar esté abierto hoy.",
+  "_en": {
+   "name": "bde3b67f",
+   "how_to_read": "6f049a2a"
+  }
+ },
+ "layers.worship_toggle": {
+  "name": "Interruptor Incluir lugares de culto",
+  "how_to_read": "Active el interruptor para ver en el mapa lugares de interés como las iglesias. No los lea como atracciones para visitantes en las estadísticas, porque las estadísticas los excluyen.",
+  "_en": {
+   "name": "418c6c9f",
+   "how_to_read": "109e0df6"
+  }
+ },
+ "layers.flood_zones_control": {
+  "name": "Interruptor Zonas inundables (mapa 2D)",
+  "how_to_read": "Lea el color como la familia de zonas de FEMA, no como profundidad. Un área sin sombrear no prueba que sea segura.",
+  "_en": {
+   "name": "74fd8df3",
+   "how_to_read": "70aebd5a"
+  }
+ },
+ "layers.slr_control": {
+  "name": "Interruptor y control deslizante del aumento del nivel del mar (mapa 2D)",
+  "how_to_read": "Léalo como un escenario hipotético para planificar: 'terreno que estaría bajo agua a esta altura'. No es una línea de tiempo y no indica ningún año.",
+  "_en": {
+   "name": "abb94f2b",
+   "how_to_read": "ce3b0f24"
+  }
+ },
+ "layers.transit_routes_control": {
+  "name": "Interruptor Rutas de transporte colectivo (mapa 2D)",
+  "how_to_read": "Lea una línea como una guía de por dónde pasa una ruta. Abra su tarjeta para ver si su horario está vigente, por vencer o vencido.",
+  "_en": {
+   "name": "b94fb6de",
+   "how_to_read": "a835d578"
+  }
+ },
+ "layers.transit_stops_control": {
+  "name": "Interruptor Paradas de transporte colectivo (mapa 2D y vista 3D)",
+  "how_to_read": "Revise primero la línea de la fuente. Una parada con horario aparece en un horario publicado. Una parada de OpenStreetMap solo indica que alguien mapeó una parada en ese lugar.",
+  "_en": {
+   "name": "3ebedbbe",
+   "how_to_read": "e96257f5"
+  }
+ },
+ "layers.hubs_control": {
+  "name": "Interruptor Estaciones, terminales y aeropuertos (mapa 2D y vista 3D)",
+  "how_to_read": "Úselo para ver dónde están los principales puntos de trasbordo y de entrada. Un aeropuerto no es una parada de transporte colectivo.",
+  "_en": {
+   "name": "d9352307",
+   "how_to_read": "803ab858"
+  }
+ },
+ "layers.taxi_ev_control": {
+  "name": "Interruptor Paradas de taxis y carga de vehículos eléctricos (mapa 2D y vista 3D)",
+  "how_to_read": "Úselo para ver dónde se conocen estos puntos. No es una lista de todos los taxis ni de todos los cargadores.",
+  "_en": {
+   "name": "ab297ee4",
+   "how_to_read": "63419d90"
+  }
+ },
+ "layers.walk_rings": {
+  "name": "Interruptor del radio de 400 m a pie (mapa 2D y vista 3D)",
+  "how_to_read": "Fíjese en lo que cubren los círculos y en lo que dejan fuera. Los lugares fuera de todos los círculos están a más de 400 m, en línea recta, de la parada más cercana.",
+  "_en": {
+   "name": "710c8378",
+   "how_to_read": "ea5d4a20"
+  }
+ },
+ "layers.protected_control": {
+  "name": "Interruptor Áreas protegidas (mapa 2D)",
+  "how_to_read": "Revise la designación y el estatus GAP antes de leer una mancha como reserva natural.",
+  "_en": {
+   "name": "c8f4b235",
+   "how_to_read": "334695f9"
+  }
+ },
+ "layers.landuse_control": {
+  "name": "Interruptor Plan de Uso de Terrenos 2015 (mapa 2D)",
+  "how_to_read": "Úselo para ver el patrón general de dónde el plan permite el crecimiento y dónde protege el terreno.",
+  "_en": {
+   "name": "9164c4e5",
+   "how_to_read": "8e20bcda"
+  }
+ },
+ "layers.boundaries_control": {
+  "name": "Interruptor Límites municipales (mapa 2D y vista 3D), etiquetas y recuadro al pasar el cursor (mapa 2D)",
+  "how_to_read": "Use el contorno para ver en qué municipio está un lugar. El recuadro de resumen cuenta los lugares con los filtros predeterminados.",
+  "_en": {
+   "name": "75fc61dc",
+   "how_to_read": "7e9de3b6"
+  }
+ },
+ "layers.barrios_control": {
+  "name": "Interruptor Barrios (mapa 2D y vista 3D)",
+  "how_to_read": "Compare los barrios por lugares por kilómetro cuadrado, no por conteos brutos, porque sus áreas varían mucho.",
+  "_en": {
+   "name": "57b32283",
+   "how_to_read": "0140de88"
+  }
+ },
+ "layers.click_popup": {
+  "name": "Clic en el mapa 2D: qué se abre",
+  "how_to_read": "Active las capas superpuestas que quiera leer antes de hacer clic.",
+  "_en": {
+   "name": "eca37fac",
+   "how_to_read": "125cc7e1"
+  }
+ },
+ "layers.shade_by": {
+  "name": "Sombrear municipios por (mapa 2D, retirado)",
+  "how_to_read": "Lea el conjunto de datos que la medida abre ahora: su leyenda, su escala y su propia entrada del diccionario.",
+  "_en": {
+   "name": "8c8a3e32",
+   "how_to_read": "617eba54"
+  }
+ },
+ "layers.municipality_profile": {
+  "name": "Pestaña Municipio (perfil de un municipio)",
+  "how_to_read": "Compare un recuadro con el mismo recuadro de otros municipios, no con una meta. Lea las cifras de vivienda como estimados de encuesta.",
+  "_en": {
+   "name": "7a044344",
+   "how_to_read": "cee8b308"
+  }
+ },
+ "layers.rankings_tab": {
+  "name": "Pestaña Posiciones",
+  "how_to_read": "La posición 1 es el valor más alto, no el mejor resultado. Compare posiciones solo dentro de una misma medida.",
+  "_en": {
+   "name": "97f3a4cd",
+   "how_to_read": "fe1ca70b"
+  }
+ },
+ "layers.transit_tab_summary": {
+  "name": "Pestaña Transporte: cifras de resumen y 'Mostrar solo el transporte colectivo'",
+  "how_to_read": "Lea la última cifra como la proporción de residentes cerca de una parada en línea recta. No indica con qué frecuencia pasan los vehículos.",
+  "_en": {
+   "name": "7f34d627",
+   "how_to_read": "55003d5d"
+  }
+ },
+ "layers.live_status_box": {
+  "name": "Pestaña Transporte: Qué está en vivo",
+  "how_to_read": "Donde el observatorio muestra vehículos en movimiento, reproduce un horario. Vea 'Vehículos según su horario ahora'.",
+  "_en": {
+   "name": "be29303a",
+   "how_to_read": "6f3bf292"
+  }
+ },
+ "layers.operators_list": {
+  "name": "Pestaña Transporte: lista de Operadores",
+  "how_to_read": "El estado vigente significa que las fechas del horario cubren el día de hoy. No significa que el servicio opere según lo planificado.",
+  "_en": {
+   "name": "a96a1f28",
+   "how_to_read": "117db444"
+  }
+ },
+ "layers.vehicles_now_control": {
+  "name": "Interruptor Vehículos según su horario ahora (pestaña Transporte)",
+  "how_to_read": "Lea un punto como el lugar donde el horario dice que está un vehículo, no donde está.",
+  "_en": {
+   "name": "f90eeea3",
+   "how_to_read": "20696009"
+  }
+ },
+ "layers.service_gaps_control": {
+  "name": "Interruptor Residentes lejos del servicio (pestaña Transporte del mapa 2D y pestaña Ruta de la vista 3D)",
+  "how_to_read": "Los círculos grandes en áreas con poco servicio indican muchos residentes lejos de una parada con horario.",
+  "_en": {
+   "name": "a1e049ef",
+   "how_to_read": "47c99ab4"
+  }
+ },
+ "layers.integration_points_control": {
+  "name": "Interruptor Puntos de integración (pestaña Transporte del mapa 2D y pestaña Ruta de la vista 3D)",
+  "how_to_read": "Una distancia corta significa que dos sistemas tienen paradas casi en el mismo lugar.",
+  "_en": {
+   "name": "198395ea",
+   "how_to_read": "acca229a"
+  }
+ },
+ "layers.route_planner": {
+  "name": "Planificador de rutas (pestaña Transporte del mapa 2D y pestaña Ruta de la vista 3D)",
+  "how_to_read": "Úselo para comparar opciones. Lea cada cifra de la tarjeta con su propia ficha.",
+  "_en": {
+   "name": "a2d36f06",
+   "how_to_read": "55328a5f"
+  }
+ },
+ "layers.economy_tab": {
+  "name": "Pestaña Análisis",
+  "how_to_read": "Empiece con una vista preparada y luego cambie una cosa a la vez. Cada capa indica qué año muestra.",
+  "_en": {
+   "name": "81df2065",
+   "how_to_read": "5927b69a"
+  }
+ },
+ "layers.economy_datasets": {
+  "name": "Pestaña Análisis: lista y búsqueda de conjuntos de datos",
+  "how_to_read": "El grupo es la agrupación propia de la pestaña. No es la agrupación del diccionario.",
+  "_en": {
+   "name": "9374dc73",
+   "how_to_read": "ca8e6c1e"
+  }
+ },
+ "layers.economy_shaded": {
+  "name": "Pestaña Análisis: capas sombreadas",
+  "how_to_read": "Con 'Mismas clases en todos los años' activado (el ajuste inicial), un color es una clase calculada con todos los municipios de todos los años juntos, así que en un año los grupos pueden tener tamaños desiguales. Lea los conteos de la leyenda para ver las cifras. En la escala divergente, el rojo significa por debajo del centro (por debajo de Puerto Rico o por debajo de un cambio de cero) y el azul significa por encima. Ninguno de los dos significa mejor o peor: una tasa de desempleo en rojo es una tasa más baja.",
+  "_en": {
+   "name": "6526d51d",
+   "how_to_read": "1de94166"
+  }
+ },
+ "layers.economy_symbols": {
+  "name": "Pestaña Análisis: símbolos de tamaño variable",
+  "how_to_read": "Compare el tamaño de los círculos entre municipios de una misma capa. No compare tamaños entre dos capas distintas.",
+  "_en": {
+   "name": "a2c73cd4",
+   "how_to_read": "b0975595"
+  }
+ },
+ "layers.economy_bivariate": {
+  "name": "Pestaña Análisis: dos capas sombreadas juntas (mapa bivariado)",
+  "how_to_read": "Busque las celdas oscuras (ambas altas) y las pálidas (ambas bajas). Los colores mezclados muestran dónde las dos capas no coinciden.",
+  "_en": {
+   "name": "dbcb0cb0",
+   "how_to_read": "c11066a7"
+  }
+ },
+ "layers.economy_normalisation": {
+  "name": "Pestaña Análisis: las opciones de 'Mostrar como'",
+  "how_to_read": "Elija la opción que responde a su pregunta. 'Por cada 1,000 residentes' compara lugares de distinto tamaño. 'Índice' y 'diferencia' comparan con la isla.",
+  "_en": {
+   "name": "1d671cd0",
+   "how_to_read": "f35cc769"
+  }
+ },
+ "layers.economy_inflation": {
+  "name": "Pestaña Análisis: dólares ajustados por inflación",
+  "how_to_read": "Úsela para comparar un monto en dólares entre años. No cambia el mapa de un solo año. Ejemplo: $1,000 de 2015 equivalen a unos $1,358 en dólares de 2025, porque 321.943 dividido entre 237.017 es 1.358. Para otro ejemplo resuelto, vea la ficha sobre el ajuste por inflación.",
+  "_en": {
+   "name": "898e941a",
+   "how_to_read": "c02d1d92"
+  }
+ },
+ "layers.economy_year_control": {
+  "name": "Pestaña Análisis: control del año, Reproducir y año base",
+  "how_to_read": "Revise la etiqueta del año de cada capa antes de comparar dos capas. Las capas pueden mostrar años distintos bajo un mismo control.",
+  "_en": {
+   "name": "5d147d49",
+   "how_to_read": "9586aa0e"
+  }
+ },
+ "layers.economy_presets": {
+  "name": "Pestaña Análisis: vistas preparadas",
+  "how_to_read": "Use una vista como punto de partida y luego abra los ajustes de cada capa para modificarla.",
+  "_en": {
+   "name": "d8292672",
+   "how_to_read": "3d802c44"
+  }
+ },
+ "layers.economy_context": {
+  "name": "Pestaña Análisis: 'Mostrar también en el mapa'",
+  "how_to_read": "Agregue una capa de contexto a la vez. Varias capas superpuestas juntas hacen difícil leer los colores de la economía.",
+  "_en": {
+   "name": "745edea8",
+   "how_to_read": "ef3bb1af"
+  }
+ },
+ "layers.economy_inspector": {
+  "name": "Pestaña Análisis: clic, cursor y tarjeta del municipio",
+  "how_to_read": "Use la posición para situar el municipio y el margen de error para juzgar si una diferencia pequeña significa algo.",
+  "_en": {
+   "name": "37d04012",
+   "how_to_read": "44a1a66b"
+  }
+ },
+ "layers.trend_sparkline": {
+  "name": "Líneas de tendencia (minigráficos) y su etiqueta de duración",
+  "how_to_read": "Compare la forma y la duración, no la altura. Dos líneas de conjuntos de datos distintos se dibujan cada una para llenar el mismo espacio pequeño.",
+  "_en": {
+   "name": "ea83234d",
+   "how_to_read": "139bc837"
+  }
+ },
+ "layers.workbench": {
+  "name": "Mesa de trabajo de Economía: panel y pestaña Inspector",
+  "how_to_read": "Use el Inspector para responder '¿qué dicen todas mis capas sobre este lugar?'.",
+  "_en": {
+   "name": "6ef29b33",
+   "how_to_read": "259f9c66"
+  }
+ },
+ "layers.workbench_table": {
+  "name": "Mesa de trabajo de Economía: pestaña Tabla",
+  "how_to_read": "Use la tabla para consultar valores exactos. Use el CSV para analizarlos.",
+  "_en": {
+   "name": "2766f440",
+   "how_to_read": "c34d887b"
+  }
+ },
+ "layers.workbench_scatter": {
+  "name": "Mesa de trabajo de Economía: pestaña Dispersión",
+  "how_to_read": "r va de −1 a 1. Cerca de 0 significa poca relación lineal. Cerca de ±1 significa que los puntos siguen de cerca una línea. Las dos capas pueden mostrar años distintos, así que revise las etiquetas de año en los títulos de los ejes. Con las escalas logarítmicas activadas, los puntos se ven más alineados, pero r sigue midiendo el ajuste lineal de los valores sin transformar, y la línea ajustada se oculta.",
+  "_en": {
+   "name": "b7fb7b79",
+   "how_to_read": "a3bd3b68"
+  }
+ },
+ "layers.workbench_trend": {
+  "name": "Mesa de trabajo de Economía: pestaña Tendencia",
+  "how_to_read": "Compare las pendientes entre lugares. Revise la unidad del eje vertical.",
+  "_en": {
+   "name": "94d503b6",
+   "how_to_read": "8546ff69"
+  }
+ },
+ "layers.economy_dataset_dialog": {
+  "name": "Pestaña Análisis: ventana de información del conjunto de datos",
+  "how_to_read": "Lea la definición y la fuente antes de citar una cifra. La ficha del diccionario da el método completo y una cita.",
+  "_en": {
+   "name": "da2295d2",
+   "how_to_read": "680ad21d"
+  }
+ },
+ "layers.chat": {
+  "name": "Preguntar al observatorio (chat)",
+  "how_to_read": "Haga preguntas cortas que nombren un conjunto de datos: 'desempleo', 'alquiler', 'empleos en turismo'. Agregue un municipio o un año para precisar la respuesta.",
+  "_en": {
+   "name": "1d6fbc3c",
+   "how_to_read": "9ef9d81b"
+  }
+ },
+ "layers.chat_answers": {
+  "name": "Preguntar al observatorio: los tipos de respuesta",
+  "how_to_read": "Si una respuesta no es lo que buscaba, nombre el conjunto de datos de forma más directa o abra la pestaña Análisis.",
+  "_en": {
+   "name": "ed3bc188",
+   "how_to_read": "4a4e772f"
+  }
+ },
+ "layers.chat_privacy": {
+  "name": "Preguntar al observatorio: qué se queda en su dispositivo",
+  "how_to_read": "No escriba información personal en el chat. No hace falta, y se guardaría en su lista de deseos si el chat no pudiera responder.",
+  "_en": {
+   "name": "78dc4954",
+   "how_to_read": "1919e033"
+  }
+ },
+ "layers.chat_correlation": {
+  "name": "Preguntar al observatorio: correlaciones y patrones",
+  "how_to_read": "r es la correlación de Pearson. 0 significa que no hay relación lineal entre los dos. 1 significa que los lugares se alinean perfectamente. −1 significa que se alinean en direcciones opuestas. Un r fuerte indica que los dos varían juntos entre lugares.",
+  "_en": {
+   "name": "98e215a4",
+   "how_to_read": "2092c05d"
+  }
+ },
+ "layers.search_box": {
+  "name": "Cuadro de búsqueda (mapa 2D, vista 3D y planificador de rutas)",
+  "how_to_read": "Escriba parte de un nombre. Si una calle tiene varias coincidencias, agregue el municipio.",
+  "_en": {
+   "name": "5e75f323",
+   "how_to_read": "0a8b9e79"
+  }
+ },
+ "layers.share_link_2d": {
+  "name": "Enlace para compartir del mapa 2D",
+  "how_to_read": "Abra el enlace en una pestaña nueva para verificarlo antes de compartirlo. Un enlace hecho a mano debe incluir cada capa que se quiera activar. Ejemplo: index.html#c=18.4400,-66.0900,12&l=muni,flood&s=sfha_pct muestra las zonas inundables y sombrea los municipios por la proporción de lugares en zona de riesgo de inundación, sin marcadores.",
+  "_en": {
+   "name": "da034ccb",
+   "how_to_read": "861fee61"
+  }
+ },
+ "layers.share_link_economy": {
+  "name": "Enlace para compartir de la pestaña Análisis",
+  "how_to_read": "Arme un enlace copiando uno de la página y cambiando el año, en lugar de escribir a mano los códigos de las capas.",
+  "_en": {
+   "name": "66c64bd5",
+   "how_to_read": "fbcddc85"
+  }
+ },
+ "layers.share_link_3d": {
+  "name": "Enlace para compartir de la vista 3D",
+  "how_to_read": "Abra el enlace para verificarlo. La inclinación y la rotación no están en el enlace, así que la cámara abre con el ángulo habitual de la página. Ejemplo: 3d.html#c=18.4400,-66.0900,14 abre cerca del centro de San Juan.",
+  "_en": {
+   "name": "9c2bc61a",
+   "how_to_read": "6fc0f198"
+  }
+ },
+ "layers.share_link_housing": {
+  "name": "Enlace para compartir de la página Vivienda",
+  "how_to_read": "Use d para dirigir a quien lea a la tabla completa de un conjunto de datos, y y para fijar el año. Ejemplo: housing.html?m=Ponce&y=2020&c=2014&d=median_gross_rent#profile abre el perfil de Ponce para 2020, con los cambios medidos desde 2014, y la tabla completa del alquiler bruto mediano.",
+  "_en": {
+   "name": "7e55deaa",
+   "how_to_read": "1c8863b9"
+  }
+ },
+ "layers.csv_downloads": {
+  "name": "Descargas en CSV y GeoJSON",
+  "how_to_read": "Cite los valores guardados en los archivos, no las cifras redondeadas de la pantalla. Agregue la etiqueta del corte de datos y la fecha de descarga. Un archivo no tiene una cita propia. Use el botón Citar de las fichas del diccionario de los conjuntos de datos que contiene.",
+  "_en": {
+   "name": "9435dd37",
+   "how_to_read": "ab2a00e0"
+  }
+ },
+ "layers.data_dictionary_page": {
+  "name": "Página del diccionario de datos: búsqueda, filtros, citas y descargas",
+  "how_to_read": "Lea primero la descripción sencilla y luego las precauciones, que indican lo que una cifra no significa. Las cifras citadas en las fichas provienen del corte de datos que se indica en la barra superior y cambian cuando se reconstruye el observatorio. Las definiciones y los métodos no cambian. Para citar una variable, abra su ficha y presione Citar. Para enviar a otra persona a una ficha, presione Copiar enlace.",
+  "_en": {
+   "name": "c4fcdb59",
+   "how_to_read": "929daf1d"
+  }
+ },
+ "layers.scene_3d": {
+  "name": "Vista 3D + Tiempo: escena, pestañas y mapa base",
+  "how_to_read": "Use la vista 3D para ver cómo se sitúan los lugares en el terreno. Use el mapa 2D para las cifras, la pestaña Análisis y el chat.",
+  "_en": {
+   "name": "fed0f4b0",
+   "how_to_read": "3ed0e1ab"
+  }
+ },
+ "layers.terrain_3d": {
+  "name": "Terreno en 3D, sombreado del relieve y exageración",
+  "how_to_read": "Lea el relieve como una imagen del terreno. No mida alturas en la pantalla.",
+  "_en": {
+   "name": "e31c5758",
+   "how_to_read": "36e985f0"
+  }
+ },
+ "layers.buildings_3d": {
+  "name": "Edificios en 3D",
+  "how_to_read": "Úselo para ver la escala del área construida. Un prisma alto significa un valor de altura en el mosaico, no una altura medida.",
+  "_en": {
+   "name": "a689e380",
+   "how_to_read": "cd90c5c2"
+  }
+ },
+ "layers.navigation_3d": {
+  "name": "Vista 3D: cómo moverse, vistas rápidas y botones",
+  "how_to_read": "Presione el botón del teclado en los controles para ver estas teclas en la página.",
+  "_en": {
+   "name": "f3fa923d",
+   "how_to_read": "869f4115"
+  }
+ },
+ "layers.places_3d": {
+  "name": "Vista 3D: capa Lugares",
+  "how_to_read": "Use el mapa de calor para ver dónde se concentran los lugares para visitantes. Use los puntos para ver lugares individuales.",
+  "_en": {
+   "name": "7059b81b",
+   "how_to_read": "c08d730a"
+  }
+ },
+ "layers.columns_3d": {
+  "name": "Vista 3D: Columnas por municipio",
+  "how_to_read": "Lea las alturas como 'más o menos que otros municipios'. La columna más alta es el valor más grande, no una meta.",
+  "_en": {
+   "name": "7a33065c",
+   "how_to_read": "408a4b05"
+  }
+ },
+ "layers.hazards_3d": {
+  "name": "Vista 3D: interruptores de zonas inundables y nivel del mar",
+  "how_to_read": "Lea las zonas inundables como el riesgo cartografiado por FEMA. Lea la capa del nivel del mar como un escenario hipotético a la altura elegida.",
+  "_en": {
+   "name": "7d46b0e9",
+   "how_to_read": "e63b463b"
+  }
+ },
+ "layers.mobility_3d": {
+  "name": "Vista 3D: rutas, paradas y estaciones de transporte colectivo y paradas de taxis",
+  "how_to_read": "Compare el estilo de la línea con la leyenda del mapa 2D para ver cómo se trazó una línea.",
+  "_en": {
+   "name": "ecbe2e4a",
+   "how_to_read": "57ab2456"
+  }
+ },
+ "layers.land_layers_3d": {
+  "name": "Vista 3D: uso de terrenos y áreas protegidas",
+  "how_to_read": "Use la capa sobre el terreno para ver el patrón. Para el significado completo de un código, lea la ficha del diccionario.",
+  "_en": {
+   "name": "84a11f69",
+   "how_to_read": "5c734c2b"
+  }
+ },
+ "layers.time_bar_3d": {
+  "name": "Vista 3D: la barra de tiempo y los tres relojes",
+  "how_to_read": "Presione Reproducir en un reloj y luego cambie de reloj con los botones para comparar.",
+  "_en": {
+   "name": "22a49f4c",
+   "how_to_read": "91e5a291"
+  }
+ },
+ "layers.transit_replay_3d": {
+  "name": "Vista 3D: Un día de transporte colectivo (vehículos con horario)",
+  "how_to_read": "Lea las estelas como el lugar donde el horario dice que están los vehículos a esa hora. Un mapa tranquilo de noche es un horario tranquilo.",
+  "_en": {
+   "name": "e7913b09",
+   "how_to_read": "b00d5253"
+  }
+ },
+ "layers.sea_level_clock_3d": {
+  "name": "Vista 3D: Nivel del mar por año",
+  "how_to_read": "Lea un año como una posición en la curva de un escenario. Varios años muestran la misma capa, porque las alturas se redondean a pies enteros.",
+  "_en": {
+   "name": "54b5bedd",
+   "how_to_read": "89b1aa62"
+  }
+ },
+ "layers.storm_controls_3d": {
+  "name": "Vista 3D: controles de huracanes",
+  "how_to_read": "Las líneas más gruesas y oscuras indican tormentas más fuertes cerca de la isla. Una línea larga es la trayectoria completa, que puede llegar muy lejos de Puerto Rico.",
+  "_en": {
+   "name": "ef101eff",
+   "how_to_read": "9ca4c741"
+  }
+ },
+ "layers.route_planner_3d": {
+  "name": "Vista 3D: planificador de rutas y vuelo por la ruta",
+  "how_to_read": "Vuele por una ruta para ver por dónde pasa. Lea las cifras de la tarjeta con las fichas del planificador 2D.",
+  "_en": {
+   "name": "8efd5bcb",
+   "how_to_read": "83082696"
+  }
+ },
+ "layers.housing_page": {
+  "name": "Página Vivienda: secciones, etiquetas y años de los datos",
+  "how_to_read": "Revise la etiqueta antes de citar una cifra. Una etiqueta 'estudio' significa que se publicó en 2023. Una etiqueta de encuesta significa una cifra en vivo para esa ventana.",
+  "_en": {
+   "name": "8c79ed13",
+   "how_to_read": "5236b6de"
+  }
+ },
+ "layers.housing_year_bar": {
+  "name": "Página Vivienda: barra de años y año base",
+  "how_to_read": "Lea la etiqueta junto al título de un mapa para ver el año que realmente muestra.",
+  "_en": {
+   "name": "1d9dec84",
+   "how_to_read": "3117f32d"
+  }
+ },
+ "layers.housing_maps": {
+  "name": "Página Vivienda: mapas y gráficos ordenados",
+  "how_to_read": "Lea la leyenda para ver las cifras. Las clases de color no cambian con el año, así que un municipio puede cambiar de color cuando cambia su valor.",
+  "_en": {
+   "name": "3a4dbfb8",
+   "how_to_read": "1f4b1b26"
+  }
+ },
+ "layers.housing_change_measure": {
+  "name": "Página Vivienda: cambio desde el año base",
+  "how_to_read": "Un porcentaje positivo significa que el valor subió en dólares de su propio año. Parte de un aumento de los precios o de los alquileres es inflación general.",
+  "_en": {
+   "name": "dba6d87f",
+   "how_to_read": "9955e1db"
+  }
+ },
+ "layers.housing_dialog": {
+  "name": "Página Vivienda: ventana 'Datos completos'",
+  "how_to_read": "Use la ventana para encontrar el valor exacto y su margen. Cite el valor con su ventana de encuesta.",
+  "_en": {
+   "name": "92a83968",
+   "how_to_read": "30379a84"
+  }
+ },
+ "layers.housing_profile": {
+  "name": "Página Vivienda: perfil del municipio (Tabla 11 para cualquier municipio)",
+  "how_to_read": "Use la posición y la línea de tendencia para situar un municipio, y el margen para juzgar una diferencia pequeña.",
+  "_en": {
+   "name": "4a8c5707",
+   "how_to_read": "10275b10"
+  }
+ },
+ "layers.housing_catalog": {
+  "name": "Página Vivienda: catálogo de datos y búsqueda",
+  "how_to_read": "Use los nombres de los grupos para explorar. Use el cuadro cuando conozca una palabra como alquiler o desocupación.",
+  "_en": {
+   "name": "eedb4105",
+   "how_to_read": "6c2daf6c"
+  }
+ },
+ "layers.housing_published_tables": {
+  "name": "Página Vivienda: tablas publicadas junto a versiones en vivo",
+  "how_to_read": "Lea juntas una tabla publicada y su versión en vivo. Usan años y métodos distintos.",
+  "_en": {
+   "name": "4a8d8c50",
+   "how_to_read": "ecfe2116"
+  }
+ },
+ "layers.housing_affordability_scatter": {
+  "name": "Página Vivienda: ingreso frente a valor de la vivienda (gráfico de asequibilidad)",
+  "how_to_read": "Los puntos muy por encima de la línea son municipios donde las viviendas típicas cuestan mucho más de lo que los ingresos típicos permiten pedir prestado.",
+  "_en": {
+   "name": "4ef5a31a",
+   "how_to_read": "5bf14497"
+  }
+ },
+ "layers.housing_headline_numbers": {
+  "name": "Página Vivienda: cifras de 'Datos más recientes' y 'Tal como se publicó'",
+  "how_to_read": "Compare una cifra en vivo con su par publicada solo cuando describan lo mismo y el mismo año.",
+  "_en": {
+   "name": "bc8a8fbc",
+   "how_to_read": "75524b2b"
+  }
+ },
+ "layers.overview_tab": {
+  "name": "Pestaña Temas (la cifra principal de cada campo)",
+  "how_to_read": "Lea cada cifra como el número de todo Puerto Rico en el período que se muestra. No es una puntuación, y los campos no se ordenan unos frente a otros. Presione 'Qué significa' antes de citar una cifra: las cifras de turismo cuentan listados, y un estimado tiene un margen de error.",
+  "_en": {
+   "name": "f0946aa9",
+   "how_to_read": "1f0e29fc"
+  }
+ },
+ "layers.catalog_tab": {
+  "name": "Pestaña Catálogo (buscar datos y agregarlos al mapa)",
+  "how_to_read": "Úsela para encontrar un conjunto de datos por tema y luego abra su ficha del diccionario antes de usarlo. La geografía, los años y la clase de licencia están ahí para ayudar a elegir, no para reemplazar la ficha.",
+  "_en": {
+   "name": "175336db",
+   "how_to_read": "e543d1d5"
+  }
+ }
+}

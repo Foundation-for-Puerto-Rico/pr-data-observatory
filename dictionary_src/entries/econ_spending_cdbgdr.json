@@ -1,0 +1,41 @@
+[
+ {
+  "id": "economy.spending_cdbgdr",
+  "name": "Disaster recovery grant subawards by municipio (CDBG-DR and CDBG-MIT)",
+  "domain": "public-money",
+  "domains": [
+   "public-money"
+  ],
+  "group": "Public spending (Gasto Público)",
+  "kind": "table",
+  "plain": "Where the federal disaster recovery and mitigation money that the Puerto Rico Department of Housing manages was passed on, as subawards to municipalities, contractors and nonprofits, by the municipio where the work is reported, in each federal fiscal year. It covers only the reported subawards, not the money the Department spends through its own programs.",
+  "definition": "spending_cdbgdr.json holds, for each federal fiscal year (October to September), the first-tier subawards that USAspending.gov reports under the Puerto Rico Department of Housing's disaster grants (assistance listing 14.228; the grant numbers are in awards), summed by the municipio of the place of performance (by_muni), the subawards for Puerto Rico that name no municipio (unplaced), the subawards' total (subawards) and the prime grants' obligations (prime), in dollars. grants lists each prime grant with its obligation over its life and its outlays to date (what the Treasury has paid the Department), read on grants_read.",
+  "unit": "US dollars (not adjusted for inflation)",
+  "value_type": "level",
+  "geography": "Municipio, with the subawards that name no municipio apart",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2019,
+   "last": 2025,
+   "frequency": "Once a year, after a federal fiscal year counts as final (from 15 November) (cdbg_dr.py)"
+  },
+  "method": "cdbg_dr.py asks USAspending.gov's API (spending_by_geography) for each final federal fiscal year, filtered to the Department of Housing's disaster grant numbers: subawards by municipio, subawards for Puerto Rico as a whole and the prime grants for Puerto Rico as a whole. The yearly block grants and the COVID grant are left out.",
+  "how_to_read": "Compare municipios per resident over the same years. Read the subawards next to the prime grants: they are the part of the money that is placed, not all of it.",
+  "cautions": [
+   "Subawards are part of the prime grants and are already inside the federal money by function: never add the two.",
+   "Only first-tier subawards the Department reports under the federal transparency law (FFATA), usually $30,000 or more, are here; its own program spending is not placed.",
+   "A subaward is placed where the work is reported, which can differ from where the people it helps live.",
+   "A grant's outlays are payments to the Department of Housing (its draws), not yet payments for the work."
+  ],
+  "sources": [
+   "usaspending",
+   "census_pep"
+  ],
+  "added": "2026-11-05",
+  "where": {
+   "files": [
+    "spending_cdbgdr.json:*"
+   ]
+  }
+ }
+]

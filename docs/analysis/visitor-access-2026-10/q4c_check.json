@@ -1,0 +1,120 @@
+{
+ "stops_with_calls_current_feeds": 2408,
+ "stops_reached_scan": 1581,
+ "stops_reached_brute_force": 1581,
+ "mismatching_stops": 0,
+ "operators_reached_all_feeds": {
+  "ati": {
+   "reached": 1299,
+   "stops_with_calls": 1437,
+   "feed_status": "current"
+  },
+  "ponce": {
+   "reached": 0,
+   "stops_with_calls": 276,
+   "feed_status": "expired"
+  },
+  "guaynabo": {
+   "reached": 97,
+   "stops_with_calls": 273,
+   "feed_status": "current"
+  },
+  "san_juan": {
+   "reached": 182,
+   "stops_with_calls": 219,
+   "feed_status": "current"
+  },
+  "vega_alta": {
+   "reached": 0,
+   "stops_with_calls": 109,
+   "feed_status": "current"
+  },
+  "cabo_rojo": {
+   "reached": 0,
+   "stops_with_calls": 109,
+   "feed_status": "current"
+  },
+  "canovanas": {
+   "reached": 0,
+   "stops_with_calls": 92,
+   "feed_status": "expiring"
+  },
+  "fajardo": {
+   "reached": 0,
+   "stops_with_calls": 77,
+   "feed_status": "expired"
+  },
+  "caguas": {
+   "reached": 0,
+   "stops_with_calls": 50,
+   "feed_status": "expired"
+  },
+  "utuado": {
+   "reached": 0,
+   "stops_with_calls": 44,
+   "feed_status": "current"
+  },
+  "manati": {
+   "reached": 0,
+   "stops_with_calls": 33,
+   "feed_status": "current"
+  },
+  "corozal": {
+   "reached": 0,
+   "stops_with_calls": 27,
+   "feed_status": "current"
+  },
+  "humacao": {
+   "reached": 0,
+   "stops_with_calls": 18,
+   "feed_status": "current"
+  },
+  "vieques": {
+   "reached": 0,
+   "stops_with_calls": 18,
+   "feed_status": "current"
+  },
+  "cidra": {
+   "reached": 0,
+   "stops_with_calls": 14,
+   "feed_status": "expired"
+  },
+  "san_lorenzo": {
+   "reached": 0,
+   "stops_with_calls": 13,
+   "feed_status": "expired"
+  },
+  "hatillo": {
+   "reached": 0,
+   "stops_with_calls": 11,
+   "feed_status": "expired"
+  },
+  "coamo": {
+   "reached": 0,
+   "stops_with_calls": 10,
+   "feed_status": "current"
+  },
+  "orocovis": {
+   "reached": 0,
+   "stops_with_calls": 9,
+   "feed_status": "current"
+  },
+  "bayamon": {
+   "reached": 4,
+   "stops_with_calls": 4,
+   "feed_status": "current"
+  },
+  "patillas": {
+   "reached": 0,
+   "stops_with_calls": 4,
+   "feed_status": "current"
+  },
+  "jayuya": {
+   "reached": 0,
+   "stops_with_calls": 3,
+   "feed_status": "current"
+  }
+ },
+ "stops_reached_current_only": 1581,
+ "stops_reached_all_feeds": 1581
+}

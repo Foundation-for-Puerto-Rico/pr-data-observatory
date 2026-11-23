@@ -1,0 +1,131 @@
+[
+  {
+    "id": "storm_recovery.storm_months_back",
+    "ask": {
+      "en": [
+        "storm recovery",
+        "hurricane recovery",
+        "how long the blackout lasted",
+        "maria recovery",
+        "fiona recovery"
+      ],
+      "es": [
+        "recuperacion tras el huracan",
+        "cuanto duro el apagon",
+        "recuperacion maria",
+        "recuperacion fiona"
+      ]
+    },
+    "name": "Months until night-time light came back after the hurricane",
+    "domain": "hazards",
+    "domains": [
+      "hazards",
+      "infrastructure.energy"
+    ],
+    "group": "Storm recovery",
+    "kind": "variable",
+    "plain": "How many months after Hurricanes María (2017) and Fiona (2022) the area's night-time light came back to near what it was the year before.",
+    "definition": "The months from the hurricane's month (September) until the area's night-time light was back to at least 80% of the same month the year before, two months in a row. 1 means back by October. The year 2017 is Hurricane María (with Irma earlier that month); 2022 is Hurricane Fiona. Each month after the storm is compared with the same month in the twelve months before the storm month (September to August). Light counts as back in the first month after September when it and the next month are both at least 80% of the same month the year before; the figure counts months from September (1 means back by October). Areas with a mean under 0.5 nW/cm²/sr in the year before are too dim to read and have no figure. Light is a proxy for power and activity, not a count of homes with power. It can stay lower after a storm because homes were left empty, businesses closed or streetlights were changed to LED (whiter light, which the sensor sees less of), and a month is a composite of its clear nights, so an outage shorter than a few weeks barely shows. The rule is the observatory's; the island's figures agree with the utility's record of customers restored (docs/storm_recovery.md).",
+    "unit": "months",
+    "value_type": "rate",
+    "geography": "78 municipalities, Puerto Rico and 901 barrios",
+    "coverage": {
+      "timeline": "event-based",
+      "first": 2017,
+      "last": 2022,
+      "frequency": "Two storms: María (2017) and Fiona (2022). Rebuilt when the monthly night-time light is."
+    },
+    "method": "storm_recovery.py reads the observatory's monthly night-time light (nightlights_monthly.json: NASA Black Marble VNP46A3, pixels of about 460 m pooled by barrio, municipio and Puerto Rico) and compares each month after the storm month (September) with the same calendar month in the twelve months before it, so that cloudy and clear seasons cancel out. Light counts as back in the first month when it and the next month are both at least 80% of the same month the year before; the figure counts months from September. The lowest month is the darkest from September to March, as a share of the same month the year before. An area whose mean in the year before is under 0.5 nW/cm²/sr has no figure: its light moves 20% to 70% from month to month without any storm. No network and no key: the file is rebuilt with the night-light file.",
+    "sources": [
+      "nasa_black_marble",
+      "census_tiger"
+    ],
+    "source_detail": "Calculated by the observatory from NASA Black Marble VNP46A3 (collection 2) monthly night-time light, as read by nightlights.py (pixels of about 460 m, pooled by barrio, municipio and Puerto Rico); Román et al. (2018)",
+    "how_to_read": "Puerto Rico: 8 months after María (back by 2018-05), 1 after Fiona. Slowest after María: Vieques (26 months), Maunabo (25 months), Salinas (20 months); fastest: Hormigueros (2 months), San Germán (2 months), Cabo Rojo (3 months). After Fiona 77 of 78 municipios were back by October. Barrios after María: half took 8 months or less, one in ten 18 or more.",
+    "caveats": [
+      "Light is a proxy for power and activity, not a count of homes with power: it includes streetlights, businesses and traffic. Say 'light came back', not 'power came back'.",
+      "A long time can mean a lasting change rather than a long outage: homes left empty, a business that closed, or streetlights changed to LED (whiter light, which the sensor sees less of).",
+      "Each month is a composite of its clear nights, so an outage of a few days or weeks barely shows. Fiona's island-wide blackout lasted days to weeks for most customers, so most areas read 1 month.",
+      "The 80% line and the two months are the observatory's rule. With 70% the island reads 6 months after María, with 90% 14; the barrio median moves from 6 to 13 months.",
+      "Check: by the rule the island's light was back by 2018-05 after María; the Army Corps of Engineers reported 98.4% of the utility's customers restored in mid-May 2018. After Fiona it was back by 2022-10; LUMA reported 90% of customers restored on 2022-10-01. EAGLE-I's outage record (Oak Ridge National Laboratory, CC BY 4.0, figshare 24237376, 2022 file) agrees by region: in each of the seven LUMA regions the customers out fell to 10% of the peak or fewer between 2022-09-29 (San Juan, Bayamón, Carolina) and 2022-10-10 (Mayagüez), the southwest last, so every region was mostly back within October."
+    ],
+    "see_also": [
+      "storm_recovery.storm_low_light_pct",
+      "methods.nightlights"
+    ],
+    "where": {
+      "files": [
+        "storm_recovery_series.json:storm_months_back",
+        "storm_recovery_barrio.json:storm_months_back"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Hazards · Storm recovery (night-time light)): Months until night-time light came back after the hurricane",
+          "href": "index.html#e=storm_months_back.f"
+        }
+      ]
+    },
+    "added": "2026-11-17"
+  },
+  {
+    "id": "storm_recovery.storm_low_light_pct",
+    "ask": {
+      "en": [
+        "blackout depth",
+        "how dark after the hurricane"
+      ],
+      "es": [
+        "profundidad del apagon",
+        "que tan oscuro tras el huracan"
+      ]
+    },
+    "name": "Night-time light at its lowest after the hurricane (% of the year before)",
+    "domain": "hazards",
+    "domains": [
+      "hazards",
+      "infrastructure.energy"
+    ],
+    "group": "Storm recovery",
+    "kind": "variable",
+    "plain": "How dark the area got after Hurricanes María (2017) and Fiona (2022): its darkest month as a share of the same month the year before.",
+    "definition": "The area's darkest month from September to March after the hurricane, as a share of the same month the year before. 100 means no drop; a low share means a deep blackout that lasted most of a month. The year 2017 is Hurricane María (with Irma earlier that month); 2022 is Hurricane Fiona. Each month after the storm is compared with the same month in the twelve months before the storm month (September to August). Light counts as back in the first month after September when it and the next month are both at least 80% of the same month the year before; the figure counts months from September (1 means back by October). Areas with a mean under 0.5 nW/cm²/sr in the year before are too dim to read and have no figure. Light is a proxy for power and activity, not a count of homes with power. It can stay lower after a storm because homes were left empty, businesses closed or streetlights were changed to LED (whiter light, which the sensor sees less of), and a month is a composite of its clear nights, so an outage shorter than a few weeks barely shows. The rule is the observatory's; the island's figures agree with the utility's record of customers restored (docs/storm_recovery.md).",
+    "unit": "%",
+    "value_type": "rate",
+    "geography": "78 municipalities, Puerto Rico and 901 barrios",
+    "coverage": {
+      "timeline": "event-based",
+      "first": 2017,
+      "last": 2022,
+      "frequency": "Two storms: María (2017) and Fiona (2022). Rebuilt when the monthly night-time light is."
+    },
+    "method": "storm_recovery.py reads the observatory's monthly night-time light (nightlights_monthly.json: NASA Black Marble VNP46A3, pixels of about 460 m pooled by barrio, municipio and Puerto Rico) and compares each month after the storm month (September) with the same calendar month in the twelve months before it, so that cloudy and clear seasons cancel out. Light counts as back in the first month when it and the next month are both at least 80% of the same month the year before; the figure counts months from September. The lowest month is the darkest from September to March, as a share of the same month the year before. An area whose mean in the year before is under 0.5 nW/cm²/sr has no figure: its light moves 20% to 70% from month to month without any storm. No network and no key: the file is rebuilt with the night-light file.",
+    "sources": [
+      "nasa_black_marble",
+      "census_tiger"
+    ],
+    "source_detail": "Calculated by the observatory from NASA Black Marble VNP46A3 (collection 2) monthly night-time light, as read by nightlights.py (pixels of about 460 m, pooled by barrio, municipio and Puerto Rico); Román et al. (2018)",
+    "how_to_read": "Puerto Rico: 27% of the year before after María, 81% after Fiona. Darkest after María: Adjuntas (2%), Orocovis (3%), Ciales (4%). Darkest after Fiona: Maricao (41%), Adjuntas (57%), Guánica (58%), in the southwest where Fiona came ashore.",
+    "caveats": [
+      "Light is a proxy for power and activity, not a count of homes with power: it includes streetlights, businesses and traffic. Say 'light came back', not 'power came back'.",
+      "Each month is a composite of its clear nights, so an outage of a few days or weeks barely shows. Fiona's island-wide blackout lasted days to weeks for most customers, so most areas read 1 month. The storm month mixes nights before and after the storm, which is why Fiona's lowest month reads well above zero.",
+      "Pixels are about 460 m across and light spills over borders, so a small barrio next to a bright one reads brighter than it was."
+    ],
+    "see_also": [
+      "storm_recovery.storm_months_back",
+      "methods.nightlights"
+    ],
+    "where": {
+      "files": [
+        "storm_recovery_series.json:storm_low_light_pct",
+        "storm_recovery_barrio.json:storm_low_light_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Hazards · Storm recovery (night-time light)): Night-time light at its lowest after the hurricane (% of the year before)",
+          "href": "index.html#e=storm_low_light_pct.f"
+        }
+      ]
+    },
+    "added": "2026-11-17"
+  }
+]

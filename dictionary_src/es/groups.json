@@ -1,0 +1,358 @@
+{
+ "economy.visitor-economy": {
+  "summary": "Esta área reúne los datos del Observatorio de Datos sobre los lugares turísticos de Puerto Rico: conteos para cada uno de los 78 municipios, la lista de lugares individuales y las reglas que se usan para clasificarlos y contarlos. Ayuda a ver dónde están las atracciones, los lugares de comida y bebida, el alojamiento y los servicios para visitantes, y qué combinación tiene cada municipio. Compare por residente o por kilómetro cuadrado, porque los conteos sin ajustar muestran sobre todo qué municipios son grandes. Tenga en cuenta dos límites: cada lugar es un listado de Overture Maps, un proyecto abierto de datos de mapas, así que no es un negocio, una habitación, un visitante ni un empleo; y los datos son un corte de una sola versión de Overture, así que no muestran crecimiento ni disminución.",
+  "groups": {
+   "Tourism places counted": "Totales municipales de lugares turísticos: el conteo principal, dos conteos mayores que usan reglas más flexibles, conteos por categoría, lugares con sitio web y la puntuación de confianza promedio de Overture.",
+   "Tourism places relative to people and land": "Los lugares turísticos de cada municipio por cada 1,000 residentes (Censo 2020) y por kilómetro cuadrado de terreno, que permiten comparar municipios de distintos tamaños.",
+   "Tourism places: categories": "Una entrada para cada una de las cuatro categorías turísticas (Atracciones, Gastronomía, es decir, comida y bebida, Alojamientos y Servicios para visitantes), que indica qué tipos incluye y cómo llegan los lugares a ella.",
+   "Tourism places: classification": "Los tres campos que clasifican cada lugar: su categoría turística, su tipo más específico y la categoría original de Overture de la que proviene.",
+   "Tourism places: how the data are made": "Notas de método sobre cómo se elabora la lista de lugares: cómo se clasifican las categorías de Overture, qué lugares se cuentan, cómo se combinan los duplicados, cómo cada lugar recibe un municipio y un barrio y sus campos de inundación, área protegida, uso de terrenos y transporte colectivo, qué campos de Overture se dejan fuera, cómo leer un valor ausente y los pasos de la compilación.",
+   "Tourism places: identity and location": "Los campos que indican qué lugar es un listado y dónde está su marcador: id de Overture, nombre, latitud y longitud, texto de la dirección, sitio web, municipio y barrio.",
+   "Tourism places: quality and source": "Campos sobre la procedencia de un listado y la seguridad que Overture tiene sobre él: su puntuación de confianza, la fuente que lo aportó, la fecha en que la fuente actualizó su registro (una fecha de versión de los datos, no una visita al lugar) y cuántos listados duplicados se combinaron en el lugar.",
+   "Tourism places: types": "Una entrada para cada tipo de lugar que aparece en los datos, como Playas, Restaurantes, Hoteles o Marinas, que muestra qué categorías de Overture agrupa y cómo leerlo.",
+   "Tourism supply layers on the Analysis tab": "Las cinco capas de la pestaña Análisis que muestran en el mapa los lugares turísticos por municipio (todos los lugares, alojamiento, restaurantes y bares, atracciones y servicios para visitantes), y una nota sobre cómo la pestaña las construye.",
+   "Flood exposure by municipality": "Para cada municipio, el número de lugares turísticos contados en el área de inundación del 1%, el número en las áreas del 1% o del 0.2% juntas y la proporción de sus lugares en el área del 1%.",
+   "Flood exposure of tourism places": "Para cada lugar turístico, la zona inundable de FEMA, el subtipo de zona y el indicador de alto riesgo (1%) en su punto del mapa; se dejan fuera cuando el punto no está en un área inundable mapeada.",
+   "Protected-area exposure by municipality": "Para cada municipio, el número de lugares turísticos contados cuyo punto del mapa está dentro de un área protegida que aparece en PAD-US.",
+   "Protected-area exposure of tourism places": "Para cada lugar turístico, el nombre y el nivel de protección del área protegida que contiene su punto del mapa; cuando el punto está en varias áreas, se conserva el nivel más estricto.",
+   "Barrios: tourism-place counts": "Para cada barrio, conteos de lugares turísticos listados, lugares por kilómetro cuadrado, lugares en una zona de riesgo de inundación mapeada, lugares a 400 metros o menos del transporte colectivo y lugares de alojamiento.",
+   "Land use plan: place listings": "Cuántos listados de lugares, y qué proporción, están en suelo rústico especialmente protegido o en suelo urbano en cada municipio, y la clase y el grupo del plan en el marcador de cada lugar.",
+   "Transit access of tourism places": "Qué tan cerca del transporte están los lugares turísticos: la distancia y el nombre de la parada mapeada más cercana de cualquier tipo; la distancia a la parada con horario vigente más cercana, con sus salidas en días laborables y su servicio de fin de semana; y, para cada municipio y barrio, los conteos y las proporciones de lugares cerca de esas paradas, incluidos los que solo están cerca de una parada con horario vencido o sin horario.",
+   "How places and points are built": "Cómo se asignan a un municipio los lugares turísticos, las paradas de transporte colectivo y los bloques censales, qué lugares incluye cada conteo municipal y cómo se cuenta la exposición a inundaciones y a áreas protegidas de cada municipio.",
+   "Which places a percentage counts": "En qué conjunto de lugares se basa cada porcentaje municipal (los lugares turísticos para las proporciones de transporte colectivo y todos los listados de lugares para las proporciones del Plan de Uso de Terrenos) y por qué no se deben comparar directamente los dos conjuntos."
+  },
+  "_en": {
+   "summary": "379ee936",
+   "groups.Tourism places counted": "8aeac937",
+   "groups.Tourism places relative to people and land": "31053d32",
+   "groups.Tourism places: categories": "abcf3f60",
+   "groups.Tourism places: classification": "183cf6c2",
+   "groups.Tourism places: how the data are made": "4204d0cc",
+   "groups.Tourism places: identity and location": "8cf4d41f",
+   "groups.Tourism places: quality and source": "bd7a5102",
+   "groups.Tourism places: types": "05135a24",
+   "groups.Tourism supply layers on the Analysis tab": "177d2ae8",
+   "groups.Flood exposure by municipality": "f0924af0",
+   "groups.Flood exposure of tourism places": "8c44e60b",
+   "groups.Protected-area exposure by municipality": "2d6b06e7",
+   "groups.Protected-area exposure of tourism places": "7a67ce32",
+   "groups.Barrios: tourism-place counts": "d3e61fa5",
+   "groups.Land use plan: place listings": "a0344e29",
+   "groups.Transit access of tourism places": "dede2906",
+   "groups.How places and points are built": "add8b8af",
+   "groups.Which places a percentage counts": "0e96dd76"
+  }
+ },
+ "population": {
+  "summary": "Esta área trata de quién vive en Puerto Rico y en sus 78 municipios (cuántas personas, qué edad tienen y cuántos hogares hay) y ayuda a ver si un lugar gana o pierde residentes o envejece. Las cifras provienen de tres fuentes del Negociado del Censo de EE. UU. (los conteos del censo, los estimados anuales y los estimados quinquenales de la encuesta) que cubren fechas distintas, así que cite la fuente y el período junto con cada una. Los estimados anuales cambian a un nuevo punto de partida en 2020, así que no lea el paso de 2019 a 2020 como un año de cambio. Los estimados quinquenales de la encuesta también se publican para 901 barrios, 981 sectores censales y 2,555 grupos de bloques, siempre con sus márgenes de error: por debajo del municipio son aproximados, así que lea el margen cada vez.",
+  "groups": {
+   "Change since 2008-2012": "El cambio porcentual del estimado de población de cada municipio según la encuesta, desde el período 2008-2012 hasta el período quinquenal más reciente de la encuesta; no es lo mismo que el cambio entre los conteos del censo.",
+   "Households": "Cuántos hogares (viviendas donde vive gente) hay y cuántas personas viven en cada uno en promedio, según estimados quinquenales de la encuesta que tienen un margen de error.",
+   "People counted in the census": "Los conteos de residentes de los censos de 2010 y 2020 para cada municipio y el cambio porcentual entre los dos conteos.",
+   "Population": "Cuántas personas viven en cada municipio y en Puerto Rico cada año desde 2010, cuánto ha cambiado esa cifra desde los censos de 2010 y 2020, y qué edad tienen las personas residentes (la proporción de 65 años o más y la mediana de edad, que es la edad que divide a las personas residentes en dos mitades).",
+   "Residents exposed to hazards, protected land and transit": "Cuántas personas residentes viven dentro de una zona de riesgo de inundación de FEMA, en el área que inundaría un aumento del nivel del mar de 1 a 10 pies, dentro de un área protegida o a 400 m o menos de una parada de transporte colectivo, para cada municipio, barrio y sector censal, contadas a partir de los bloques del Censo 2020.",
+   "Language": "La proporción de personas de 5 años o más que dicen hablar inglés menos que \"muy bien\", según estimados de la encuesta con márgenes de error, para municipios, barrios y sectores censales.",
+   "Daytime population": "Cuántas personas hay en cada municipio en un día de trabajo, cuánto suman o restan los viajes al trabajo a sus residentes, y la proporción de sus personas trabajadoras que trabajan en otro municipio: calculado con los flujos de viaje al trabajo de 2016-2020 del Negociado del Censo y el Censo 2020, con márgenes de error."
+  },
+  "_en": {
+   "summary": "1612f96c",
+   "groups.Change since 2008-2012": "17edc2f7",
+   "groups.Households": "371bc7a8",
+   "groups.People counted in the census": "1d429335",
+   "groups.Population": "fac7e61c",
+   "groups.Residents exposed to hazards, protected land and transit": "6f60d022",
+   "groups.Language": "fd656d98",
+   "groups.Daytime population": "dd4db6cb"
+  }
+ },
+ "housing": {
+  "summary": "Esta área describe las viviendas de Puerto Rico y de sus 78 municipios: cuántas hay, cuántas están desocupadas, quién vive en ellas, cuánto cuestan y qué parte de su ingreso dedican los hogares al alquiler o a los costos de propietario. También reproduce tablas del estudio de 2023 de Foundation for Puerto Rico El estado de la vivienda en Puerto Rico, para comparar lugares y años; por ejemplo, dónde hay muchas viviendas desocupadas o para uso ocasional, cómo cambiaron los alquileres y los valores de la vivienda, y cuántos hogares dedican una gran parte de su ingreso a la vivienda. Tenga en cuenta dos cosas: la mayoría de las cifras son estimados de una encuesta que reúnen cinco años de respuestas y tienen un margen de error, así que pueden variar mucho en los municipios pequeños; y una vivienda desocupada no es una vivienda abandonada, porque los conteos incluyen viviendas en alquiler, en venta y para uso de fin de semana.",
+  "groups": {
+   "Affordability": "Una medida de referencia que compara el valor típico de la vivienda con el préstamo a 30 años más grande que podría pagar un hogar con el ingreso típico bajo supuestos fijos (30% del ingreso para vivienda y una tasa de interés de 5%); no es lo que prestaría un banco.",
+   "Change since 2008-2012": "Cuánto cambiaron, en porcentaje, el valor mediano de la vivienda y el alquiler mediano de cada municipio entre el período 2008-2012 de la encuesta y el más reciente, sin ningún ajuste por inflación.",
+   "Cost burden": "Qué parte del ingreso del hogar se va en vivienda: la proporción típica del ingreso que los inquilinos dedican al alquiler, y la proporción de inquilinos, y de propietarios con hipoteca, que dedican el 30% o más de su ingreso a la vivienda (para los inquilinos, también el 50% o más); se dejan fuera los hogares que no pagan alquiler en efectivo o que no tienen ingreso.",
+   "Homes counted in the census": "El número de viviendas que el censo contó en cada municipio el 1 de abril de 2010 y el 1 de abril de 2020, viviera o no alguien en ellas.",
+   "Housing stock": "Cuántas viviendas hay y cómo son: conteos y proporciones de viviendas, viviendas desocupadas y las razones por las que están desocupadas (en alquiler, en venta, de temporada u otras), tipos de edificio, antigüedad de las viviendas, hacinamiento y residentes por vivienda, según el censo que se hace cada 10 años y la encuesta quinquenal del Negociado del Censo.",
+   "Owners and renters": "La proporción de viviendas ocupadas en las que viven sus propietarios; el resto está alquilado.",
+   "Prices and costs": "Valores típicos (medianos) de la vivienda según los estiman sus propietarios, alquileres mensuales típicos y costos mensuales típicos de ser propietario con y sin hipoteca, en dólares de cada período de la encuesta.",
+   "State of Housing study (2023)": "Tablas y figuras publicadas en el estudio de 2023 de Foundation for Puerto Rico (cambio de población, intervalos de alquiler y de costos de propietario, tenencia según la edad, proyectos de vivienda con créditos contributivos, cifras principales y perfil municipal), con versiones en vivo recalculadas a partir de datos del Negociado del Censo para algunas tablas.",
+   "Survey window": "El último año del período quinquenal de la encuesta del Negociado del Censo en que se basan las cifras municipales de vivienda; un valor de 2024 significa los años 2020 a 2024.",
+   "Housing methods": "Cómo calcula el observatorio las cifras de asequibilidad de la vivienda (el préstamo más grande que podría pagar un hogar con el ingreso mediano, comparado con el valor mediano de la vivienda) y los cambios desde la ventana 2008-2012 de la encuesta.",
+   "Homes exposed to hazards, protected land and transit": "Cuántas unidades de vivienda están dentro de una zona de riesgo de inundación de FEMA, en el área que inundaría un aumento del nivel del mar de 1 a 10 pies, dentro de un área protegida o a 400 m o menos de una parada de transporte colectivo, para cada municipio, barrio y sector censal, contadas a partir de los bloques del Censo 2020.",
+   "Home loans": "Préstamos hipotecarios otorgados y denegados en cada municipio cada año desde el 2018, según los informes de los prestamistas bajo la Ley de Divulgación de Hipotecas (HMDA): solo conteos y sumas."
+  },
+  "_en": {
+   "summary": "2d5f1557",
+   "groups.Affordability": "b4560f09",
+   "groups.Change since 2008-2012": "f88d3baa",
+   "groups.Cost burden": "9ff1e905",
+   "groups.Homes counted in the census": "a0dbf2cb",
+   "groups.Housing stock": "1e4c5bde",
+   "groups.Owners and renters": "2199723a",
+   "groups.Prices and costs": "291a5413",
+   "groups.State of Housing study (2023)": "e5a2f905",
+   "groups.Survey window": "b22f4468",
+   "groups.Housing methods": "3114a946",
+   "groups.Homes exposed to hazards, protected land and transit": "9b9e88f2",
+   "groups.Home loans": "15394a40"
+  }
+ },
+ "economy": {
+  "summary": "Esta área reúne cifras sobre empleos, industrias, desempleo, ingreso, pobreza, educación, viaje al trabajo, y vehículos y acceso a internet de los hogares, para los 78 municipios y, en la mayoría de las cifras, para Puerto Rico en su conjunto. Ayuda a responder dónde están los empleos, quién busca trabajo y cuánto ganan los hogares. Pero los empleos y los salarios se cuentan donde está el patrono, mientras que las personas trabajadoras y el ingreso del hogar se cuentan donde vive la gente, así que las dos cifras pueden ser distintas. Las cifras de la encuesta y de desempleo son estimados menos precisos para los municipios pequeños, y un conteo de empleos de una industria en blanco significa que la cifra se omitió o no se publicó, no que es cero.",
+  "groups": {
+   "Change since 2008-2012": "Cuánto cambiaron el ingreso mediano del hogar y la proporción de adultos con bachillerato en cada municipio entre el período 2008-2012 de la encuesta y el más reciente; el cambio en el ingreso está en dólares no ajustados por el aumento de los precios.",
+   "Income and poverty": "Cuánto ganan los hogares y cuántas personas viven bajo el nivel de pobreza, según las encuestas quinquenales del Negociado del Censo: ingreso mediano y per cápita, ingreso mediano de los hogares propietarios e inquilinos, proporciones de hogares con menos de $25,000 y con $75,000 o más, una medida de la desigualdad del ingreso (el índice de Gini) y la tasa de pobreza.",
+   "Industries": "Conteos anuales de empleos del sector privado para cada uno de los 19 sectores industriales, empleos en industrias relacionadas con el turismo (hoteles, restaurantes, artes y recreación), una puntuación de cuán concentrados están los empleos locales en pocas industrias y la industria o el grupo de gobierno con más empleos.",
+   "Jobs and employers": "Conteos anuales de todos los empleos, de los del sector privado y de los del gobierno, de los lugares de trabajo y de la paga en los patronos ubicados en cada municipio, según el Negociado de Estadísticas Laborales de EE. UU. (BLS), además de la proporción de empleos del gobierno y el número de empleos por cada residente con empleo.",
+   "Labor force": "Estimados de las personas residentes que trabajan o buscan trabajo, contadas donde viven: cifras anuales del Negociado de Estadísticas Laborales de EE. UU. (BLS) (fuerza laboral, personas con empleo, personas desempleadas y tasa de desempleo), tasas de la encuesta quinquenal del Negociado del Censo (empleo y desempleo) y una nota sobre cómo se elaboran las cifras del BLS; las dos fuentes no son comparables.",
+   "Labor force by sex": "La participación en la fuerza laboral y el desempleo de mujeres y hombres, de la encuesta de cinco años del Negociado del Censo (tabla B23001) en tres ventanas que no comparten ningún año (2010-2014, 2015-2019, 2020-2024), con márgenes de error al 90%: las tasas de participación de las mujeres de 16 años o más, de los hombres de 16 años o más y de las mujeres de 25 a 54 años, la brecha entre hombres y mujeres, la tasa de desempleo de las mujeres y los conteos de mujeres detrás de ellas; también el archivo de la página Las mujeres en la fuerza laboral, con los conteos por sexo y edad de cada municipio y región.",
+   "Workers and commuting": "Las personas residentes con empleo, contadas donde viven, según trabajen para el gobierno, para una organización sin fines de lucro o por cuenta propia, según cómo suelen llegar al trabajo (conduciendo solas, en transporte colectivo, a pie, trabajando desde la casa) y según cuánto dura el viaje, a partir de las encuestas quinquenales del Negociado del Censo.",
+   "Jobs and money": "Cómo se cuentan las cifras de empleos, lugares de trabajo y salarios, por qué algunas cifras de empleo se omiten y quedan en blanco, y qué cifras cuentan donde se hace el trabajo, donde vive la gente u otro lugar.",
+   "Global Innovation Index": "El perfil de Puerto Rico de FPR de 2021 en el Índice Global de Innovación (método del GII 2020), fijo tal como se publicó, con el valor abierto más reciente de cada indicador que se puede actualizar y una posición indicativa entre las economías del GII 2026 donde las fuentes coinciden (gii_profile.json, la página Índice Global de Innovación del Área de conocimiento).",
+   "Poverty and assistance": "La proporción de hogares que recibieron asistencia nutricional (PAN), para municipios, barrios y sectores censales, y la proporción de menores de 18 años y de personas de 65 años o más bajo el nivel de pobreza, para municipios; estimados de la encuesta con márgenes de error.",
+   "Banks and deposits": "Las oficinas de los bancos asegurados por la FDIC en cada municipio y los depósitos registrados en ellas, cada 30 de junio desde el 2000 (Resumen de Depósitos de la FDIC). Las cooperativas no están incluidas."
+  },
+  "_en": {
+   "summary": "4ef04c70",
+   "groups.Change since 2008-2012": "6246057e",
+   "groups.Income and poverty": "dd73d37a",
+   "groups.Industries": "b787d633",
+   "groups.Jobs and employers": "69dfa6a5",
+   "groups.Labor force": "98e0bb80",
+   "groups.Workers and commuting": "eaf7a621",
+   "groups.Jobs and money": "260b1dcb",
+   "groups.Global Innovation Index": "a105ec13",
+   "groups.Labor force by sex": "7b0b4b56",
+   "groups.Poverty and assistance": "f5114204",
+   "groups.Banks and deposits": "571ae134"
+  }
+ },
+ "hazards": {
+  "summary": "Esta área reúne datos federales de EE. UU. sobre zonas inundables, aumento del nivel del mar, tormentas pasadas y terrenos protegidos en Puerto Rico, además de los indicadores y los conteos que muestran qué lugares turísticos, y cuántos en cada municipio, están dentro de zonas inundables y de áreas protegidas. Ayuda a preguntar qué lugares están en un área inundable mapeada, qué tormentas pasaron cerca de la isla y qué tan fuertes fueron sus vientos, qué podría cubrir una altura dada de aumento del nivel del mar y qué lugares están en terrenos registrados como protegidos. Dos límites son los más importantes: estas capas describen el riesgo, no los daños, la profundidad de la inundación en una tormenta dada ni los seguros, y los indicadores de los lugares solo evalúan un punto del mapa por lugar; y \"protegido\" significa que aparece en una base de datos de áreas protegidas que incluye parques locales y terrenos militares, no solo reservas naturales.",
+  "groups": {
+   "Flood hazard zones (FEMA)": "El mapa de zonas inundables de la Agencia Federal para el Manejo de Emergencias de EE. UU. (FEMA) para Puerto Rico: el código de zona, el subtipo y el indicador de alto riesgo de cada forma del mapa, cómo los dibuja la capa del mapa, cómo se marca un lugar y lo que las zonas no pueden indicar.",
+   "Hurricanes and tropical storms": "Las tormentas del Atlántico de la base de datos de huracanes de NOAA que pasaron a 250 km (unas 155 millas) o menos del centro de Puerto Rico: cómo se eligen, el nombre, el año, los vientos, la categoría, la distancia mínima y la trayectoria de cada tormenta, la escala de huracanes, la capa del mapa 3D y los límites de los datos.",
+   "Sea level rise": "Las capas de aumento del nivel del mar de la Administración Nacional Oceánica y Atmosférica de EE. UU. (NOAA), que el observatorio muestra en vivo sin guardarlas, y la regla que convierte un año y un escenario de la vista 3D en un número entero de pies.",
+   "Social Vulnerability Index (CDC/ATSDR)": "El Índice de Vulnerabilidad Social 2022 de los CDC para cada municipio: el rango general y los rangos de nivel socioeconómico, características del hogar, y tipo de vivienda y transporte, cada uno de 0 (menos vulnerable) a 1 (más vulnerable), solo entre los 78 municipios de Puerto Rico.",
+   "Facilities and roads in hazard zones": "Cuántas instalaciones públicas, estudiantes de escuelas públicas y kilómetros de carretera principal de cada municipio están dentro de tres áreas de riesgo: el área de inundación de 1% de probabilidad anual de FEMA, el área de aumento del nivel del mar de 3 pies de NOAA y las clases de alta susceptibilidad a deslizamientos del mapa del USGS. Las capas del observatorio superpuestas a los mapas de riesgo: indica dónde están, no que vayan a sufrir daño.",
+   "Drought": "Qué parte de cada municipio estuvo en sequía, cada año desde el 2000, según el Monitor de Sequía de EE. UU. semanal: el promedio del área y las semanas con sequía en más de la mitad.",
+   "Storm recovery": "Cuánto tardó en volver la luz nocturna tras los huracanes María (2017) y Fiona (2022), y qué tan oscura quedó cada área, por barrio y municipio.",
+   "Cut off from hospitals": "Cuántos residentes se quedarían sin carretera abierta hasta un hospital cuando cierran las carreteras del área inundable de FEMA o los puentes en malas condiciones, por barrio y municipio (estimados, el peor caso)."
+  },
+  "_en": {
+   "summary": "735eee80",
+   "groups.Flood hazard zones (FEMA)": "37e09f8c",
+   "groups.Hurricanes and tropical storms": "964118f9",
+   "groups.Sea level rise": "fee95562",
+   "groups.Social Vulnerability Index (CDC/ATSDR)": "cbd7957f",
+   "groups.Facilities and roads in hazard zones": "10cf1792",
+   "groups.Drought": "0a3855b4",
+   "groups.Storm recovery": "ee49c461",
+   "groups.Cut off from hospitals": "1d6a75f0"
+  }
+ },
+ "environment.land": {
+  "summary": "Esta área reúne los contornos y las áreas terrestres de los 78 municipios y los 901 barrios de Puerto Rico (los barrios son distritos dentro de los municipios), y el Plan de Uso de Terrenos de 2015 de la Junta de Planificación, sumado por municipio y asociado a los listados de lugares. Ayuda a ver dónde empieza y termina un municipio o un barrio, cuánto terreno cubre y cómo clasifica el plan ese terreno. Tenga en cuenta dos límites: los contornos son formas simplificadas del Negociado del Censo recortadas en la costa, así que sirven para mapas pero no para verificar un solar en particular; y el plan es una clasificación de planificación de 2015, no la calificación ni un registro de lo que hay hoy en el terreno.",
+  "groups": {
+   "Protected areas (PAD-US)": "Los registros de la Base de Datos de Áreas Protegidas de los Estados Unidos (PAD-US) del Servicio Geológico de EE. UU. (USGS) para Puerto Rico: el nombre, el tipo, el nivel de protección, el acceso público, el administrador y el tamaño de cada área, la capa del mapa y cómo se marca un lugar que está dentro de una.",
+   "Land use plan: area": "Para cada municipio, el área de terreno de cada grupo del plan y la proporción de su terreno clasificado que es urbano, urbanizable, rústico común o rústico especialmente protegido.",
+   "Land use plan: classes and methods": "Una guía de los códigos de clase del plan y de los seis grupos que se forman con ellos, y los pasos que se usan para calcular las proporciones de terreno y de lugares.",
+   "Land-use plan: classes": "Una entrada para cada uno de los 17 códigos de clase del plan, como suelo urbano, suelo rústico común, los tipos de suelo rústico protegido, agua y carreteras.",
+   "Land-use plan: groups": "Una entrada para cada uno de los seis grupos generales en los que este sitio agrupa las clases del plan: urbano, urbanizable, rústico común, rústico protegido, agua y carretera.",
+   "Land-use plan: map layer and fields": "El Plan de Uso de Terrenos de 2015 como capa del mapa, y sus campos: código de clase, nombre de la clase, grupo, color de visualización y el municipio que indica el plan.",
+   "Land-use plan: methods": "Cómo se calculan las proporciones de uso de terrenos a partir de las cifras de área del propio plan, y cómo cada listado de lugar recibe su clase del plan a partir de su marcador en el mapa.",
+   "Zoning (Calificación)": "Una entrada sobre los distritos de calificación de la Junta de Planificación, que este sitio no publica, y por qué las clases de terreno del plan no se deben leer como calificación."
+  },
+  "_en": {
+   "summary": "1d11455b",
+   "groups.Protected areas (PAD-US)": "0ca002de",
+   "groups.Land use plan: area": "d842226d",
+   "groups.Land use plan: classes and methods": "e90401ee",
+   "groups.Land-use plan: classes": "736896b5",
+   "groups.Land-use plan: groups": "c13a8d6b",
+   "groups.Land-use plan: map layer and fields": "2e3fbeb8",
+   "groups.Land-use plan: methods": "5286f394",
+   "groups.Zoning (Calificación)": "0e5e37f1"
+  }
+ },
+ "infrastructure.mobility": {
+  "summary": "Esta área describe el transporte colectivo, los aeropuertos y la red vial: dónde están las paradas, las estaciones, las terminales y las líneas de las rutas, qué operadores publican horarios, cuántas personas residentes y cuántos lugares turísticos están cerca de una parada, y dónde vive gente lejos del servicio. Ayuda a responder quién tiene una parada con horario cerca y dónde podrían conectarse sistemas distintos. Tenga en cuenta dos límites: \"cerca de una parada\" significa a 400 m o menos en línea recta de una parada que aparece en un horario publicado, lo cual no dice nada sobre la frecuencia de los vehículos ni sobre si la gente puede llegar a pie; y los datos contienen horarios y puntos mapeados por voluntarios, no posiciones de vehículos en vivo, así que los servicios sin horario publicado, como los públicos (carros y guaguas compartidos que recorren rutas fijas), no están en las cifras de cobertura de residentes.",
+  "groups": {
+   "Vehicles and internet": "La proporción de hogares sin vehículo, con suscripción a internet y sin acceso a internet, según las encuestas quinquenales del Negociado del Censo de EE. UU.",
+   "Airports, taxis and charging": "Aeropuertos y aeródromos de la lista de la Administración Federal de Aviación (FAA) y de OpenStreetMap, además de paradas de taxis y puntos de carga de vehículos eléctricos que mapearon personas voluntarias, como conteos para cada municipio y como detalles de cada punto, por ejemplo, los códigos de aeropuerto y el uso público; el mapeo voluntario es desigual, así que un cero en paradas de taxis o puntos de carga no significa que no haya ninguno.",
+   "Municipal transit systems": "Si un municipio opera su propio sistema de guaguas o trolleys que informa a la base de datos federal de transporte colectivo, si el horario público de ese sistema sigue vigente y cuántas rutas incluye.",
+   "Operators and timetable feeds": "Los operadores de transporte colectivo que incluye el observatorio, cómo se hace esa lista y si el horario publicado de cada operador (su fuente de horarios) está vigente, por vencer, vencido o ausente, con las fechas y los indicadores de la fuente.",
+   "Real-time data": "Qué fuentes públicas de posiciones de vehículos en vivo se verificaron, qué requiere cada una y la fecha de la verificación; el observatorio no tiene posiciones de vehículos en vivo.",
+   "Ride-hailing": "Si la página de ciudades de Puerto Rico de Uber nombra cada municipio, según se verificó en una fecha determinada; es un listado de sí o no, no una medida de cobertura ni de disponibilidad de conductores.",
+   "Road network": "El mapa vial creado a partir de OpenStreetMap que usa el observatorio para dibujar las rutas de transporte colectivo por las calles y para planificar rutas: qué carreteras conserva, las clases de carretera y las velocidades de planificación (no los límites de velocidad), y cómo el planificador y el dibujo de las rutas siguen las carreteras.",
+   "Routes": "Las líneas de las rutas de transporte colectivo en el mapa y los detalles de cada ruta (operador, número o nombre, tipo de vehículo, color, viajes programados por día, primera y última salida en días laborables y cómo se dibujó la línea), incluidas las rutas mapeadas por voluntarios que no tienen horario, como las de los públicos.",
+   "Service coverage and planning": "Cuántas personas residentes viven a 400 m o menos de una parada con horario y cuántas viven a más de 800 m de una, los datos de los bloques del Censo 2020 en que se basan esos conteos, los lugares donde paradas de operadores distintos están a 250 m o menos unas de otras, y las distancias fijas que usa el observatorio.",
+   "Stops, stations and terminals": "Conteos de paradas, estaciones de guaguas, estaciones de tren y terminales de lanchas en cada municipio, y un registro para cada punto de transporte (nombre, tipo, ubicación, operador y, cuando la fuente los da, rutas que lo sirven, salidas en días laborables, abordaje en silla de ruedas y techo), que separa las paradas con horario de las paradas que mapearon personas voluntarias en OpenStreetMap.",
+   "Timetable replay": "Los archivos de viajes de días laborables, sábados y domingos, y las reglas que muestran dónde debería estar cada vehículo en este momento según su horario publicado; es una reproducción del horario, no un seguimiento en vivo.",
+   "Transit access of residents": "Cuántas personas residentes de cada municipio (Censo 2020) viven a 400 m o menos de una parada con horario, como conteo y como proporción, la proporción cuando se dejan fuera los horarios vencidos, y los conteos cerca de paradas de la Autoridad de Transporte Integrado (ATI) y de los sistemas municipales.",
+   "Transit methods and categories": "Las definiciones y las reglas en que se basan los campos municipales de transporte colectivo: los tipos de elementos de transporte, los términos vigente, por vencer y vencido para los horarios, la regla de 400 m a pie, cómo se cuentan por bloque censal las personas residentes cerca de una parada, y qué campos se actualizan cada noche y cuáles solo cuando se reconstruyen todos los datos.",
+   "Route planner": "Cómo mide el planificador de rutas una ruta que se dibuja: su longitud y su tiempo de recorrido, las personas residentes y los lugares turísticos cerca de ella, cuánto se superpone con rutas existentes o pasa por áreas inundables o protegidas, los municipios que cruza y sus conexiones, con las reglas de muestreo y de distancia en que se basan estas cifras.",
+   "Route analysis": "Las rutas de autobús de la ATI y de los sistemas municipales del área metropolitana y del este, una fila por ruta, comparadas según sus horarios de un día de semana: viajes y frecuencia, largo y velocidad programada, las intersecciones de alto volumen que cruzan en hora pico (un estimado a partir de OpenStreetMap y de HPMS de la FHWA), las conexiones y las personas residentes cerca de sus paradas (route_compare.json, la página Análisis de ruta del Área de conocimiento)."
+  },
+  "_en": {
+   "summary": "07630fdc",
+   "groups.Vehicles and internet": "f0a56715",
+   "groups.Airports, taxis and charging": "5c4b660b",
+   "groups.Municipal transit systems": "ca04d10e",
+   "groups.Operators and timetable feeds": "933e5320",
+   "groups.Real-time data": "6cf4e6c1",
+   "groups.Ride-hailing": "485a8f2f",
+   "groups.Road network": "7fcaf2f7",
+   "groups.Routes": "3a9bb2ca",
+   "groups.Service coverage and planning": "9a814da5",
+   "groups.Stops, stations and terminals": "3d36c163",
+   "groups.Timetable replay": "4b3fd6b5",
+   "groups.Transit access of residents": "ccccec2e",
+   "groups.Transit methods and categories": "f4c11586",
+   "groups.Route planner": "dbfed955",
+   "groups.Route analysis": "04ffcacf"
+  }
+ },
+ "system.docs": {
+  "summary": "Esta área explica cómo el observatorio cuenta, reescala y compara sus cifras: desde cómo se cuentan los lugares y los empleos hasta cómo se colorean los mapas, cómo mide el planificador de rutas una ruta y cómo citar una cifra. Ayuda a responder qué cuenta una cifra, qué año cubre, qué tan segura es y cómo se calculó. Tenga en cuenta dos cosas: antes de comparar dos cifras, verifique el año o la ventana de la encuesta, el corte de datos y lo que se cuenta (por ejemplo, empleos por lugar de trabajo o personas por lugar de residencia); y lea las posiciones, los colores y las correlaciones como patrones, no como causas ni como resultados buenos o malos.",
+  "groups": {
+   "Build information": "Lo que registra el archivo de la compilación (meta.json): el nombre y la fecha del corte de datos, el recuadro del mapa, los créditos de las fuentes, y los ajustes y los datos de cada paso de la compilación (vivienda, uso de terrenos, barrios, transporte colectivo, vistas de tiempo) y de las categorías de lugares que la compilación dejó fuera.",
+   "Classes and colours": "Cómo un mapa coloreado agrupa los municipios en clases de color, por qué las clases fijas mantienen los colores comparables entre años, cómo las escalas de rojo y azul muestran la distancia a un valor central, cómo dos conjuntos de datos comparten un mapa y cómo se dibujan los círculos de tamaño variable.",
+   "Dollars and prices": "Cómo la opción 'Ajustado por inflación' expresa los dólares de años distintos en dólares del año más reciente con un índice de precios de EE. UU., que es solo una aproximación para Puerto Rico.",
+   "Ranking and comparing": "Cómo se determina la posición de un municipio, qué significa el valor del medio de los 78 municipios en la página de Vivienda y cómo el chat Preguntar al observatorio encuentra los mayores aumentos y descensos.",
+   "Relationships between datasets": "Cómo mide el observatorio si dos conjuntos de datos se mueven juntos entre municipios (correlación), cómo encuentra los municipios que se alejan del patrón habitual y cómo el chat ordena los patrones más fuertes; nada de esto demuestra causa.",
+   "Rescaling a value": "Cómo el menú 'Mostrar como' de la pestaña Análisis reescala un conjunto de datos: por residente o por kilómetro cuadrado, proporción de la isla o de los empleos locales, comparación con Puerto Rico (índice, diferencia, cociente de localización), cambio desde un año base y percentil.",
+   "Snapshot counts": "Los conteos que la compilación registra para un corte de datos: registros de lugares de Overture, lugares turísticos, listados, duplicados combinados, lugares de culto, polígonos de inundación, registros de áreas protegidas, municipios y residentes del Censo 2020, además del límite de confianza que se usa para los lugares turísticos.",
+   "Survey tables": "Qué tablas y celdas de la encuesta del Negociado del Censo están detrás de las cifras de ingreso, trabajo, viaje al trabajo, vehículos, internet, vivienda y hogares, y qué tan confiables son las cifras de vivienda y de hogares de la encuesta.",
+   "Time and vintages": "Cómo el observatorio elige qué año mostrar, qué significa 'más reciente', cómo se identifican las ventanas quinquenales de la encuesta, por qué la serie de población cambia de base en 2020, cómo se dibujan las líneas de tendencia y cómo se identifican y reconstruyen los cortes de datos.",
+   "Uncertainty": "Qué significa el margen de error en las cifras de la encuesta, cómo se calcula y se muestra, y dónde no hay margen disponible.",
+   "Using the observatory": "Cómo se redondean y muestran las cifras, qué guarda un enlace compartido sobre la vista y cómo citar el observatorio y sus fuentes.",
+   "Data inventory and wish list": "El archivo de inventario que lista cada archivo de datos publicado con su tamaño y su proporción del límite de alojamiento, y la lista de datos deseados, con los conjuntos de datos que se podrían agregar, su fuente, la licencia según se entiende hasta ahora y su estado.",
+   "Small-area estimates": "Cómo leer los estimados de la encuesta para sectores censales, grupos de bloques y barrios: márgenes de error, valores vacíos, medianas y tasas, por qué los barrios se leen de las filas propias del Negociado del Censo y qué descarga el lector de áreas pequeñas.",
+   "Exposure series": "Cómo se elaboran los conteos de exposición (los bloques se cuentan completos según su punto interno), cómo se verificaron, cómo se calcula una proporción y qué no se incluye todavía."
+  },
+  "_en": {
+   "summary": "f1a0ad1e",
+   "groups.Build information": "f5bfbc9b",
+   "groups.Classes and colours": "3a07566e",
+   "groups.Dollars and prices": "e9e01892",
+   "groups.Ranking and comparing": "5b2b9a38",
+   "groups.Relationships between datasets": "60603e97",
+   "groups.Rescaling a value": "729c0afd",
+   "groups.Snapshot counts": "a1ca1058",
+   "groups.Survey tables": "f0be4241",
+   "groups.Time and vintages": "b71e839f",
+   "groups.Uncertainty": "9bf183ac",
+   "groups.Using the observatory": "8244d963",
+   "groups.Data inventory and wish list": "d6c0a264",
+   "groups.Small-area estimates": "3cbc57ae",
+   "groups.Exposure series": "2bc1f765"
+  }
+ },
+ "system.tools": {
+  "summary": "Esta área describe las herramientas propias del observatorio (el mapa 2D y sus pestañas, la vista 3D + Tiempo, la página de Vivienda, la búsqueda, el chat Preguntar al observatorio, los enlaces y las descargas, y las listas de los archivos de datos del observatorio), para ver qué muestra cada interruptor, menú y color, cómo guardarlo o compartirlo y dónde se describen los datos que hay detrás. Lea cada leyenda, porque el mismo color significa cifras distintas en capas distintas, y un color más oscuro significa un valor más alto, no un resultado mejor. Varias capas son ayudas para la planificación, no datos en vivo ni exactos: los vehículos reproducen horarios, las capas de inundación y de nivel del mar muestran zonas mapeadas o alturas hipotéticas, y el planificador de rutas no es un estudio de ingeniería.",
+  "groups": {
+   "2D map: Analysis tab": "La pestaña Análisis, donde los conjuntos de datos (en su mayoría anuales) se colorean o se muestran con símbolos de tamaño variable en el mapa, y su panel de la mesa de trabajo con vistas de tabla, dispersión y tendencia, incluidos el control del año, las opciones de 'Mostrar como', el ajuste por inflación y la ventana de información del conjunto de datos.",
+   "2D map: Map layers tab": "Los interruptores, botones y menús de la pestaña Capas del mapa (lugares turísticos y sus filtros, zonas inundables, aumento del nivel del mar, transporte colectivo, áreas protegidas, uso de terrenos, límites y barrios), lo que se abre al hacer clic en el mapa y cómo se colorean los municipios en cinco grupos.",
+   "2D map: Municipality and Rankings tabs": "El perfil de un municipio, la lista ordenada de los municipios según una medida y la descarga de la tabla de municipios como archivo CSV (valores separados por comas).",
+   "2D map: Transit tab": "Las cifras de resumen de la pestaña Transporte, el recuadro que indica qué datos en tiempo real existen, la lista de operadores, los interruptores de vehículos según su horario, residentes lejos del servicio y puntos donde se encuentran dos sistemas de transporte colectivo, y el planificador de rutas.",
+   "2D map: page and controls": "El mapa base de OpenStreetMap, el panel lateral y la barra superior del mapa 2D, la pestaña Info y los botones de ayuda '?'.",
+   "3D + Time view": "La vista 3D de Puerto Rico con su terreno, edificios, lugares turísticos, columnas municipales y capas de riesgos, transporte colectivo, uso de terrenos y áreas protegidas; los tres relojes (un día de transporte colectivo, el nivel del mar por año y las trayectorias de tormentas desde 1851); el planificador de rutas y cómo moverse por la vista.",
+   "Ask the observatory (chat)": "El cuadro de chat que responde preguntas sobre los conjuntos de datos de la pestaña Análisis en inglés o en español usando reglas, no un modelo de lenguaje, con los tipos de respuesta que da, cómo mide las relaciones entre conjuntos de datos y lo que se queda en el dispositivo.",
+   "Data dictionary page": "La página del diccionario de datos, con su búsqueda, filtros, citas y descargas, y el archivo dictionary.json que lee, que también se puede descargar.",
+   "Housing page": "La página de Vivienda, que reproduce tablas clave del estudio de vivienda de 2023 de Foundation for Puerto Rico tal como se publicaron y agrega datos en vivo para los 78 municipios, con su barra de años, mapas y gráficas ordenadas, perfil municipal, catálogo de datos, gráfica de asequibilidad y ventana 'Datos completos'.",
+   "Place names and search": "El índice de nombres de lugares en que se basan los cuadros de búsqueda, sus tipos de nombre y cómo se construye, cómo la búsqueda encuentra lo que se escribe, y el propio cuadro de búsqueda.",
+   "Search, links and downloads": "Los enlaces para compartir del mapa 2D, la pestaña Análisis, la vista 3D y la página de Vivienda, las descargas en CSV y GeoJSON, y el archivo de la ruta planificada."
+  },
+  "_en": {
+   "summary": "ad13b052",
+   "groups.2D map: Analysis tab": "1769aad9",
+   "groups.2D map: Map layers tab": "d3962fb6",
+   "groups.2D map: Municipality and Rankings tabs": "4dc6a163",
+   "groups.2D map: Transit tab": "180ee149",
+   "groups.2D map: page and controls": "2e26e934",
+   "groups.3D + Time view": "7faf4f74",
+   "groups.Ask the observatory (chat)": "69e0683f",
+   "groups.Data dictionary page": "02fc30ed",
+   "groups.Housing page": "64d8a7d2",
+   "groups.Place names and search": "6fbe6288",
+   "groups.Search, links and downloads": "95d4a189"
+  }
+ },
+ "education": {
+  "groups": {
+   "Change since 2008-2012": "Cuánto cambiaron el ingreso mediano del hogar y la proporción de adultos con bachillerato en cada municipio entre el período 2008-2012 de la encuesta y el más reciente; el cambio en el ingreso está en dólares no ajustados por el aumento de los precios.",
+   "Education": "La proporción de adultos de 25 años o más con bachillerato o un grado superior, según las encuestas quinquenales del Negociado del Censo de EE. UU., como serie a lo largo del tiempo y como un solo valor para el período más reciente de la encuesta.",
+   "Degrees awarded": "Cuántos títulos y certificados otorgaron las universidades de cada municipio cada año académico desde 2014-15, por nivel y campo amplio (IPEDS).",
+   "School conditions": "Ausentismo crónico, estudiantes por consejero, escuelas con enfermero y escuelas sin consejero en las escuelas públicas, por municipio, según la Recopilación de Datos de Derechos Civiles (2017-18 y 2021-22).",
+   "Test results": "La proporción de estudiantes de escuelas públicas proficientes en lectura (español) y matemáticas en la prueba de Puerto Rico (META-PR), por municipio, años escolares 2014-15 a 2018-19."
+  },
+  "_en": {
+   "groups.Change since 2008-2012": "6246057e",
+   "groups.Education": "d82bb522",
+   "groups.Degrees awarded": "13af3421",
+   "groups.School conditions": "22055c44",
+   "groups.Test results": "396d0fe6"
+  }
+ },
+ "infrastructure": {
+  "groups": {
+   "Vehicles and internet": "La proporción de hogares sin vehículo, con suscripción a internet y sin acceso a internet, según las encuestas quinquenales del Negociado del Censo de EE. UU."
+  },
+  "_en": {
+   "groups.Vehicles and internet": "f0a56715"
+  }
+ },
+ "system.geography": {
+  "groups": {
+   "Barrios": "Los contornos de los 901 barrios, los distritos del Negociado del Censo de EE. UU. dentro de los municipios, con el nombre, el municipio, el código del Censo y el área de cada barrio.",
+   "Boundary methods": "Cómo se eligieron y se dibujaron los límites: recortados en la costa en lugar de extenderse mar adentro, simplificados para la visualización, qué barrios se usan y cómo se calculan los conteos por barrio.",
+   "Land area": "El área terrestre de cada municipio en kilómetros cuadrados según el Censo 2020, sin contar el agua, que es la base de las cifras por área.",
+   "Municipalities and regions": "El nombre del municipio, que vincula cada estadística y cada lugar con un municipio, y las siete regiones turísticas de la Compañía de Turismo de Puerto Rico.",
+   "Municipality boundaries": "El contorno de cada uno de los 78 municipios, con sus nombres, código del Censo, área terrestre, población y unidades de vivienda del Censo 2020, y región turística.",
+   "Geography crosswalk": "La lista de cada área a la que el observatorio asocia datos (la isla, las regiones turísticas, los municipios, los barrios, los sectores censales y los grupos de bloques): el código, el área superior, los nombres, el área terrestre, los residentes y las unidades de vivienda de 2020 y un punto interno de cada una, las ponderaciones que trasladan cifras de los barrios a los sectores censales y la tabla de bloques a partir de la cual se cuentan.",
+   "Census tracts and block groups": "Los contornos simplificados de los 939 sectores censales y los 2,513 grupos de bloques que tienen terreno. Sirven solo para dibujar, nunca para medir áreas ni distancias."
+  },
+  "_en": {
+   "groups.Barrios": "b6e180e2",
+   "groups.Boundary methods": "141798d1",
+   "groups.Land area": "1b97eb4b",
+   "groups.Municipalities and regions": "e0a93199",
+   "groups.Municipality boundaries": "8d56ae2f",
+   "groups.Geography crosswalk": "eedd5e1c",
+   "groups.Census tracts and block groups": "19774f91"
+  }
+ },
+ "infrastructure.energy": {
+  "summary": "Esta área describe cómo se produce y se usa la electricidad en Puerto Rico. Contiene el inventario de la EIA de las plantas de energía de 1 MW o más (cada planta en el mapa con su capacidad por tecnología, y las plantas, la capacidad y la capacidad renovable de cada municipio) y las líneas de transmisión de 230, 115 y 38 kV de OpenStreetMap. Tenga en cuenta dos límites: la energía solar en techos, que LUMA contó en 1,666 MW en septiembre de 2026, no está en el inventario de la EIA, así que la capacidad renovable de aquí deja fuera la mayor parte de la energía solar de Puerto Rico; y las líneas de 38 kV están mapeadas a medias. La energía solar en techos y las baterías por municipio, la confiabilidad y el costo están planificados (decisión 104 de HANDOFF).",
+  "groups": {
+   "Power plants": "El inventario mensual de la EIA de las plantas de energía de 1 MW o más (EIA-860M): cada planta en el mapa, y las plantas, la capacidad y la capacidad renovable de cada municipio.",
+   "Power grid": "Las líneas de alto voltaje de OpenStreetMap por voltaje (230, 115 y 38 kV), simplificadas a unos 100 m; las subestaciones se cuentan, no se dibujan.",
+   "Energy page": "Las cifras de la página del Área de conocimiento Energía en Puerto Rico, según los informes de LUMA al Negociado de Energía, la EIA y FEMA.",
+   "Energy by municipio": "Baterías, ventas de electricidad y contadores inteligentes por municipio según los informes de LUMA, y los hogares que pagan $250 o más al mes de electricidad por municipio y barrio (ACS)."
+  },
+  "_en": {
+   "summary": "10e54d3e",
+   "groups.Power plants": "dab6f2f5",
+   "groups.Power grid": "a24f785e",
+   "groups.Energy page": "9286c557",
+   "groups.Energy by municipio": "5359477f"
+  }
+ },
+ "communities": {
+  "groups": {
+   "Distance to essentials": "A qué distancia viven los residentes, por carretera, de un supermercado, cualquier tienda de alimentos, una farmacia, un banco o cooperativa, una biblioteca y una estación de bomberos o de emergencias médicas, por barrio y municipio (estimados)."
+  },
+  "_en": {
+   "groups.Distance to essentials": "207f3364"
+  }
+ },
+ "health": {
+  "groups": {
+   "Health care providers": "Proveedores de servicios de salud registrados con dirección de práctica en cada municipio, por tipo, según el registro NPPES: médicos, psiquiatras, dentistas, enfermeros practicantes y asistentes médicos, otros proveedores de salud mental y farmacéuticos."
+  },
+  "_en": {
+   "groups.Health care providers": "aa4f6cd4"
+  }
+ }
+}

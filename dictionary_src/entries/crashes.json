@@ -1,0 +1,373 @@
+[
+ {
+  "id": "infrastructure.crash_deaths",
+  "ask": {
+   "en": [
+    "traffic deaths",
+    "road deaths",
+    "people killed in crashes",
+    "fatalities"
+   ],
+   "es": [
+    "muertes en las carreteras",
+    "muertes de transito",
+    "fatalidades"
+   ]
+  },
+  "name": "People killed in traffic crashes (FARS)",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility",
+   "health"
+  ],
+  "group": "Road safety",
+  "kind": "variable",
+  "plain": "How many people died in traffic crashes in the municipio each year.",
+  "definition": "People who died within 30 days of a crash on a public road in the municipio, as NHTSA's Fatality Analysis Reporting System counts them.",
+  "unit": "deaths",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2020,
+   "last": 2024,
+   "frequency": "One year at a time; 2024 is NHTSA's first release (Annual Report File) and can change with the final file (refresh unit crashes)"
+  },
+  "method": "crashes.py reads the Puerto Rico FARS files of each year: accident.csv for each fatal crash and its municipio (COUNTY, a county code; 72 means not given, counted in Puerto Rico's total only), person.csv for each person killed (INJ_SEV 4) and who they were (PER_TYP 5 pedestrian, 6 and 7 cyclists; drivers and passengers of a BODY_TYP 80-89 vehicle are motorcyclists). Checks that stop the build: every county code is a municipio or 72; the municipios and the crashes not placed add up to Puerto Rico's total each year.",
+  "sources": [
+   "nhtsa_fars"
+  ],
+  "source_detail": "NHTSA FARS, Puerto Rico files 2020-2024 (https://static.nhtsa.gov/nhtsa/downloads/FARS/<year>/Puerto Rico/FARS<year>PuertoRicoCSV.zip): accident.csv (COUNTY, FATALS), person.csv (INJ_SEV, PER_TYP, BODY_TYP).",
+  "how_to_read": "Puerto Rico: 288 deaths in 2024 (242 in 2020). Most in 2024: San Juan (35), Bayamón (16), Carolina (11).",
+  "caveats": [
+   "Counts only: the observatory never publishes a crash's place, date or time.",
+   "2024 is NHTSA's first release and can change when the final file comes out.",
+   "A municipio has few deaths a year, so a year-to-year change can be chance; the five-year rates are steadier.",
+   "FARS can differ from the Puerto Rico Traffic Safety Commission's own count."
+  ],
+  "see_also": [
+   "infrastructure.crash_rate_5y",
+   "layers.transit_links"
+  ],
+  "where": {
+   "files": [
+    "crashes_series.json:crash_deaths"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: People killed in traffic crashes (FARS)",
+     "href": "index.html#e=crash_deaths.s"
+    }
+   ]
+  },
+  "added": "2026-11-13"
+ },
+ {
+  "id": "infrastructure.crash_fatal",
+  "ask": {
+   "en": [
+    "fatal crashes",
+    "deadly crashes"
+   ],
+   "es": [
+    "choques fatales",
+    "accidentes fatales"
+   ]
+  },
+  "name": "Fatal traffic crashes (FARS)",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility",
+   "health"
+  ],
+  "group": "Road safety",
+  "kind": "variable",
+  "plain": "How many crashes in the municipio killed at least one person each year.",
+  "definition": "Crashes on a public road in the municipio in which at least one person died within 30 days.",
+  "unit": "crashes",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2020,
+   "last": 2024,
+   "frequency": "One year at a time; 2024 is NHTSA's first release (Annual Report File) and can change with the final file (refresh unit crashes)"
+  },
+  "method": "crashes.py reads the Puerto Rico FARS files of each year: accident.csv for each fatal crash and its municipio (COUNTY, a county code; 72 means not given, counted in Puerto Rico's total only), person.csv for each person killed (INJ_SEV 4) and who they were (PER_TYP 5 pedestrian, 6 and 7 cyclists; drivers and passengers of a BODY_TYP 80-89 vehicle are motorcyclists). Checks that stop the build: every county code is a municipio or 72; the municipios and the crashes not placed add up to Puerto Rico's total each year.",
+  "sources": [
+   "nhtsa_fars"
+  ],
+  "source_detail": "NHTSA FARS, Puerto Rico files 2020-2024 (https://static.nhtsa.gov/nhtsa/downloads/FARS/<year>/Puerto Rico/FARS<year>PuertoRicoCSV.zip): accident.csv (COUNTY, FATALS), person.csv (INJ_SEV, PER_TYP, BODY_TYP).",
+  "how_to_read": "Puerto Rico: 275 fatal crashes in 2024. Most: San Juan (34), Bayamón (16), Caguas (10).",
+  "caveats": [
+   "Counts only: the observatory never publishes a crash's place, date or time.",
+   "2024 is NHTSA's first release and can change when the final file comes out.",
+   "A municipio has few deaths a year, so a year-to-year change can be chance; the five-year rates are steadier.",
+   "FARS can differ from the Puerto Rico Traffic Safety Commission's own count."
+  ],
+  "see_also": [
+   "infrastructure.crash_rate_5y",
+   "layers.transit_links"
+  ],
+  "where": {
+   "files": [
+    "crashes_series.json:crash_fatal"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: Fatal traffic crashes (FARS)",
+     "href": "index.html#e=crash_fatal.s"
+    }
+   ]
+  },
+  "added": "2026-11-13"
+ },
+ {
+  "id": "infrastructure.crash_walk_bike",
+  "ask": {
+   "en": [
+    "pedestrians killed",
+    "pedestrian deaths",
+    "cyclists killed"
+   ],
+   "es": [
+    "peatones muertos",
+    "ciclistas muertos",
+    "muertes de peatones"
+   ]
+  },
+  "name": "Pedestrians and bicyclists killed (FARS)",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility",
+   "health"
+  ],
+  "group": "Road safety",
+  "kind": "variable",
+  "plain": "How many people walking or cycling died in traffic crashes in the municipio each year.",
+  "definition": "People on foot or on a bicycle (or other pedal cycle) who died in a traffic crash in the municipio.",
+  "unit": "deaths",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2020,
+   "last": 2024,
+   "frequency": "One year at a time; 2024 is NHTSA's first release (Annual Report File) and can change with the final file (refresh unit crashes)"
+  },
+  "method": "crashes.py reads the Puerto Rico FARS files of each year: accident.csv for each fatal crash and its municipio (COUNTY, a county code; 72 means not given, counted in Puerto Rico's total only), person.csv for each person killed (INJ_SEV 4) and who they were (PER_TYP 5 pedestrian, 6 and 7 cyclists; drivers and passengers of a BODY_TYP 80-89 vehicle are motorcyclists). Checks that stop the build: every county code is a municipio or 72; the municipios and the crashes not placed add up to Puerto Rico's total each year.",
+  "sources": [
+   "nhtsa_fars"
+  ],
+  "source_detail": "NHTSA FARS, Puerto Rico files 2020-2024 (https://static.nhtsa.gov/nhtsa/downloads/FARS/<year>/Puerto Rico/FARS<year>PuertoRicoCSV.zip): accident.csv (COUNTY, FATALS), person.csv (INJ_SEV, PER_TYP, BODY_TYP).",
+  "how_to_read": "Puerto Rico: 89 in 2024, 31% of the deaths. Most: San Juan (19), Bayamón (6), Caguas (4).",
+  "caveats": [
+   "Counts only: the observatory never publishes a crash's place, date or time.",
+   "2024 is NHTSA's first release and can change when the final file comes out.",
+   "A municipio has few deaths a year, so a year-to-year change can be chance; the five-year rates are steadier.",
+   "FARS can differ from the Puerto Rico Traffic Safety Commission's own count.",
+   "Many municipios have none in a year; read several years together."
+  ],
+  "see_also": [
+   "infrastructure.crash_rate_5y",
+   "layers.transit_links"
+  ],
+  "where": {
+   "files": [
+    "crashes_series.json:crash_walk_bike"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: Pedestrians and bicyclists killed (FARS)",
+     "href": "index.html#e=crash_walk_bike.s"
+    }
+   ]
+  },
+  "added": "2026-11-13"
+ },
+ {
+  "id": "infrastructure.crash_moto",
+  "ask": {
+   "en": [
+    "motorcyclists killed",
+    "motorcycle deaths"
+   ],
+   "es": [
+    "motociclistas muertos",
+    "muertes de motociclistas"
+   ]
+  },
+  "name": "Motorcyclists killed (FARS)",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility",
+   "health"
+  ],
+  "group": "Road safety",
+  "kind": "variable",
+  "plain": "How many people riding motorcycles died in traffic crashes in the municipio each year.",
+  "definition": "Drivers and passengers of motorcycles who died in a traffic crash in the municipio.",
+  "unit": "deaths",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2020,
+   "last": 2024,
+   "frequency": "One year at a time; 2024 is NHTSA's first release (Annual Report File) and can change with the final file (refresh unit crashes)"
+  },
+  "method": "crashes.py reads the Puerto Rico FARS files of each year: accident.csv for each fatal crash and its municipio (COUNTY, a county code; 72 means not given, counted in Puerto Rico's total only), person.csv for each person killed (INJ_SEV 4) and who they were (PER_TYP 5 pedestrian, 6 and 7 cyclists; drivers and passengers of a BODY_TYP 80-89 vehicle are motorcyclists). Checks that stop the build: every county code is a municipio or 72; the municipios and the crashes not placed add up to Puerto Rico's total each year.",
+  "sources": [
+   "nhtsa_fars"
+  ],
+  "source_detail": "NHTSA FARS, Puerto Rico files 2020-2024 (https://static.nhtsa.gov/nhtsa/downloads/FARS/<year>/Puerto Rico/FARS<year>PuertoRicoCSV.zip): accident.csv (COUNTY, FATALS), person.csv (INJ_SEV, PER_TYP, BODY_TYP).",
+  "how_to_read": "Puerto Rico: 69 in 2024 (50 in 2020). Most: San Juan (6), Bayamón (5), Toa Alta (4).",
+  "caveats": [
+   "Counts only: the observatory never publishes a crash's place, date or time.",
+   "2024 is NHTSA's first release and can change when the final file comes out.",
+   "A municipio has few deaths a year, so a year-to-year change can be chance; the five-year rates are steadier.",
+   "FARS can differ from the Puerto Rico Traffic Safety Commission's own count."
+  ],
+  "see_also": [
+   "infrastructure.crash_rate_5y",
+   "layers.transit_links"
+  ],
+  "where": {
+   "files": [
+    "crashes_series.json:crash_moto"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: Motorcyclists killed (FARS)",
+     "href": "index.html#e=crash_moto.s"
+    }
+   ]
+  },
+  "added": "2026-11-13"
+ },
+ {
+  "id": "infrastructure.crash_rate_5y",
+  "ask": {
+   "en": [
+    "traffic death rate",
+    "road deaths per resident"
+   ],
+   "es": [
+    "tasa de muertes de transito",
+    "muertes por habitante"
+   ]
+  },
+  "name": "Traffic deaths per 100,000 residents, 2020-2024 (FARS)",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility",
+   "health"
+  ],
+  "group": "Road safety",
+  "kind": "variable",
+  "plain": "How many people died in traffic crashes in the municipio each year for every 100,000 residents, averaged over 2020-2024.",
+  "definition": "The people killed in traffic crashes in the municipio over 2020-2024, divided by the sum of its residents in those years (Census Bureau population estimates), times 100,000: a yearly rate. Five years are pooled because a municipio has few deaths a year.",
+  "unit": "deaths per 100,000 residents a year",
+  "value_type": "ratio",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2020,
+   "last": 2024,
+   "frequency": "Five years pooled, 2020-2024 (refresh unit crashes)"
+  },
+  "method": "crashes.py reads the Puerto Rico FARS files of each year: accident.csv for each fatal crash and its municipio (COUNTY, a county code; 72 means not given, counted in Puerto Rico's total only), person.csv for each person killed (INJ_SEV 4) and who they were (PER_TYP 5 pedestrian, 6 and 7 cyclists; drivers and passengers of a BODY_TYP 80-89 vehicle are motorcyclists). Checks that stop the build: every county code is a municipio or 72; the municipios and the crashes not placed add up to Puerto Rico's total each year.",
+  "sources": [
+   "nhtsa_fars",
+   "census_pep"
+  ],
+  "source_detail": "NHTSA FARS, Puerto Rico files 2020-2024 (https://static.nhtsa.gov/nhtsa/downloads/FARS/<year>/Puerto Rico/FARS<year>PuertoRicoCSV.zip): accident.csv (COUNTY, FATALS), person.csv (INJ_SEV, PER_TYP, BODY_TYP).",
+  "how_to_read": "Puerto Rico: 8.9 per 100,000 a year over 2020-2024. Highest: Santa Isabel (22.1), Guánica (21.7), Salinas (21.5); lowest: Culebra (0.0), Guayanilla (2.3), Las Marías (2.3).",
+  "caveats": [
+   "Counts only: the observatory never publishes a crash's place, date or time.",
+   "2024 is NHTSA's first release and can change when the final file comes out.",
+   "A municipio has few deaths a year, so a year-to-year change can be chance; the five-year rates are steadier.",
+   "FARS can differ from the Puerto Rico Traffic Safety Commission's own count.",
+   "It counts the deaths on the municipio's roads, also of people who live elsewhere: high where much traffic passes through (see the rate per vehicle-km)."
+  ],
+  "see_also": [
+   "infrastructure.crash_rate_5y",
+   "layers.transit_links"
+  ],
+  "where": {
+   "files": [
+    "crashes_series.json:crash_rate_5y"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: Traffic deaths per 100,000 residents, 2020-2024 (FARS)",
+     "href": "index.html#e=crash_rate_5y.f"
+    }
+   ]
+  },
+  "added": "2026-11-13"
+ },
+ {
+  "id": "infrastructure.crash_per_vkm",
+  "ask": {
+   "en": [
+    "deaths per vehicle km",
+    "road risk",
+    "fatality rate per mile"
+   ],
+   "es": [
+    "muertes por vehiculo kilometro",
+    "riesgo en la carretera"
+   ]
+  },
+  "name": "Traffic deaths per 100 million vehicle-km, 2020-2024 (FARS, HPMS)",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility",
+   "health"
+  ],
+  "group": "Road safety",
+  "kind": "variable",
+  "plain": "How many people died in traffic crashes for every 100 million kilometres driven on the municipio's roads, over 2020-2024: the risk per kilometre driven.",
+  "definition": "The people killed in traffic crashes in the municipio over 2020-2024, divided by the vehicle-kilometres driven on its roads in those years, times 100 million. The vehicle-kilometres are those of HPMS data year 2025 (traffic_series.json), counted for each of the 5 years: a measure of risk per kilometre driven, where the rate per resident is high because much traffic passes through.",
+  "unit": "deaths per 100 million vehicle-km",
+  "value_type": "ratio",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2020,
+   "last": 2024,
+   "frequency": "Five years pooled, 2020-2024 (refresh unit crashes)"
+  },
+  "method": "crashes.py reads the Puerto Rico FARS files of each year: accident.csv for each fatal crash and its municipio (COUNTY, a county code; 72 means not given, counted in Puerto Rico's total only), person.csv for each person killed (INJ_SEV 4) and who they were (PER_TYP 5 pedestrian, 6 and 7 cyclists; drivers and passengers of a BODY_TYP 80-89 vehicle are motorcyclists). Checks that stop the build: every county code is a municipio or 72; the municipios and the crashes not placed add up to Puerto Rico's total each year.",
+  "sources": [
+   "nhtsa_fars",
+   "fhwa_hpms"
+  ],
+  "source_detail": "NHTSA FARS, Puerto Rico files 2020-2024 (https://static.nhtsa.gov/nhtsa/downloads/FARS/<year>/Puerto Rico/FARS<year>PuertoRicoCSV.zip): accident.csv (COUNTY, FATALS), person.csv (INJ_SEV, PER_TYP, BODY_TYP).",
+  "how_to_read": "Puerto Rico: 1.05 over 2020-2024 (about 1.69 per 100 million vehicle-miles). Highest: Rincón (2.34), Yabucoa (2.16), Loíza (2.13); lowest: Culebra (0.00), Guayanilla (0.20), Aibonito (0.33).",
+  "caveats": [
+   "Counts only: the observatory never publishes a crash's place, date or time.",
+   "2024 is NHTSA's first release and can change when the final file comes out.",
+   "A municipio has few deaths a year, so a year-to-year change can be chance; the five-year rates are steadier.",
+   "FARS can differ from the Puerto Rico Traffic Safety Commission's own count.",
+   "The vehicle-kilometres are those of HPMS data year 2025, used for each of the five years; traffic changed over the period."
+  ],
+  "see_also": [
+   "infrastructure.crash_rate_5y",
+   "layers.transit_links"
+  ],
+  "where": {
+   "files": [
+    "crashes_series.json:crash_per_vkm"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: Traffic deaths per 100 million vehicle-km, 2020-2024 (FARS, HPMS)",
+     "href": "index.html#e=crash_per_vkm.f"
+    }
+   ]
+  },
+  "added": "2026-11-13"
+ }
+]

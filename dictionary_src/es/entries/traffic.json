@@ -1,0 +1,58 @@
+{
+ "infrastructure.traffic_vkt": {
+  "name": "Vehículo-kilómetros al día (HPMS)",
+  "how_to_read": "Puerto Rico: 75,159,323 vehículo-km al día en 2025. Más: San Juan (9,072,431), Caguas (3,802,640), Carolina (3,565,001).",
+  "_en": {
+   "name": "8ada1d7e",
+   "how_to_read": "bc0c998f"
+  }
+ },
+ "infrastructure.traffic_vkt_pc": {
+  "name": "Vehículo-kilómetros al día por residente (HPMS)",
+  "how_to_read": "Puerto Rico: 22.9 en 2025. Más alto: Salinas (56.1), Santa Isabel (41.3), Cayey (37.1); más bajo: Florida (11.2), Toa Alta (11.2), Loíza (13.0).",
+  "_en": {
+   "name": "d207f597",
+   "how_to_read": "0b08f131"
+  }
+ },
+ "infrastructure.traffic_main_km": {
+  "name": "Arterias y colectoras principales, km (HPMS)",
+  "how_to_read": "Puerto Rico: 5,418.9 km en 2025. Más: San Juan (236.1), Ponce (231.7), Arecibo (181.3).",
+  "_en": {
+   "name": "cddebc5a",
+   "how_to_read": "2cc4b42c"
+  }
+ },
+ "infrastructure.traffic_max_aadt": {
+  "name": "Carretera con más tránsito, vehículos al día (HPMS)",
+  "how_to_read": "Más alto en Puerto Rico: 266,200 vehículos al día. Por municipio: San Juan (266,200), Guaynabo (196,600), Toa Baja (141,900).",
+  "_en": {
+   "name": "3784f7d0",
+   "how_to_read": "ad146c82"
+  }
+ },
+ "infrastructure.traffic_truck_pct": {
+  "name": "Camiones, % del tránsito en las carreteras principales (HPMS)",
+  "how_to_read": "Puerto Rico: 5.2 % en 2025. Más alto: Barranquitas (12.4), Culebra (9.0), Cataño (8.7).",
+  "_en": {
+   "name": "c95a1029",
+   "how_to_read": "7e70baaf"
+  }
+ },
+ "infrastructure.traffic_poor_pct": {
+  "name": "Carreteras principales con pavimento áspero, % de los km medidos (HPMS)",
+  "how_to_read": "Puerto Rico: 77.4 % de los km medidos en 2025. Más alto: Comerío (100.0), Aguas Buenas (99.4), Maricao (99.0); más bajo: Salinas (35.7), Juana Díaz (55.0), Santa Isabel (56.3).",
+  "_en": {
+   "name": "9eb19b6a",
+   "how_to_read": "33dc0aa3"
+  }
+ },
+ "layers.traffic_roads": {
+  "name": "Tránsito en las carreteras principales (capa del mapa)",
+  "how_to_read": "Las líneas más anchas y oscuras llevan más vehículos al día. Haga clic en un tramo para ver su conteo, el año del conteo, los camiones, los carriles y el límite de velocidad. Actívela junto con las Conexiones simuladas entre municipios para ver el tránsito en las carreteras que seguiría una conexión que falta.",
+  "_en": {
+   "name": "80b33719",
+   "how_to_read": "4ba7a5bf"
+  }
+ }
+}

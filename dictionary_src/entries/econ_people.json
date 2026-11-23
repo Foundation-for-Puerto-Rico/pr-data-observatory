@@ -1,0 +1,1215 @@
+[
+ {
+  "id": "economy.laus_unemp_rate",
+  "name": "Unemployment rate (BLS)",
+  "domain": "economy",
+  "domains": ["economy"],
+  "group": "Labor force",
+  "kind": "variable",
+  "plain": "Out of every 100 residents aged 16 and over who have a job or are looking for one, how many are looking for work and have none. It is a yearly average that the Bureau of Labor Statistics (BLS) estimates for each municipality, not a head count. In the 2026-10 snapshot, Puerto Rico: 5.6% for 2025.",
+  "definition": "The number of unemployed residents divided by the labor force, times 100, as a yearly average from the US Bureau of Labor Statistics (BLS) program called Local Area Unemployment Statistics (LAUS). The labor force is the civilian residents 16 and over who do not live in an institution such as a prison or nursing home and who have a job or are looking for one. A resident is unemployed if they have no job, looked for work in the last four weeks and are available to start; people on temporary layoff who expect to be called back are also counted as unemployed. People who stopped looking are in neither group. The rate is for where people live, not where jobs are. For municipalities it is a Bureau estimate built from local administrative and survey data and controlled to state totals. It is not a direct count and not a separate survey of each municipality. BLS's county-method page describes how it builds county estimates but does not say how Puerto Rico's municipio estimates are made, and BLS's technical note says Puerto Rico's island estimates come from a monthly household survey similar to the Current Population Survey.",
+  "unit": "% of the labor force",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico (island total)",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2010,
+   "last": 2025,
+   "frequency": "One annual average per year, except 2020, which has no value. The observatory requests every year from 2010 to the last full calendar year, so a new year appears at the next rebuild. In the 2026-10 snapshot the series runs from 2010 to 2025."
+  },
+  "method": "The observatory asks the BLS public data interface (API) for one series per municipality, LAUCN72xxx0000000003, where 72xxx is the municipality's five-digit code (San Juan is 72127) and the last two digits, 03, mean unemployment rate. It requests the annual-average option and stores BLS's annual average (period M13, the code BLS uses for the annual average) as published, to one decimal. For Puerto Rico it uses the series LASST720000000000003. The BLS data hold no published annual average for that series, so the observatory takes the simple mean of its twelve monthly rates; this is why the island values carry more decimals and the Analysis tab shows them rounded to one. The 78 municipal values are never averaged to get the island value.",
+  "sources": [
+   "bls_laus"
+  ],
+  "source_detail": "BLS Local Area Unemployment Statistics (LAUS), annual averages from 2010, through the BLS public data interface (API) at https://api.bls.gov/publicAPI/v1/timeseries/data/. Series LAUCN72xxx0000000003 (municipalities) and LASST720000000000003 (Puerto Rico), measure 03 (unemployment rate). Definitions follow BLS (https://www.bls.gov/cps/definitions.htm). Method notes: https://www.bls.gov/lau/laumthd.htm (county method) and https://www.bls.gov/news.release/laus.tn.htm (technical note). Read BLS's own pages before you describe the method in your own work.",
+  "how_to_read": "A value of 5.6 means that 5.6 of every 100 people in the labor force were out of work and looking. Use it to follow one place over time or to compare larger municipalities in one year. Do not read small differences between small municipalities as real. To cite a municipality: 'US Bureau of Labor Statistics, Local Area Unemployment Statistics, series LAUCN721270000000003 (San Juan Municipio, Puerto Rico), annual average 2024, retrieved [date].' The five digits after LAUCN are the municipality's Federal Information Processing Standards (FIPS) code (72127 for San Juan), shown as GEOID in the CSV from the info (i) button. Give the date you retrieved the data; the info box shows the date the observatory built its file. For Puerto Rico the observatory uses series LASST720000000000003 and averages its twelve monthly values itself; BLS does not supply that annual average in the observatory's data. Cite the island value as: 'Average of the twelve monthly values of US Bureau of Labor Statistics series LASST720000000000003 (Puerto Rico), annual average 2024, calculated by Foundation for Puerto Rico, PR Data Observatory, retrieved [date].' If you took any number from the observatory, also cite Foundation for Puerto Rico, PR Data Observatory.",
+  "caveats": [
+   "There is no value for 2020, and the observatory does not estimate one; when you choose 2020 the map shows 2019, labeled '2019 (latest at or before 2020)'. See 'How the unemployment figures are built' (economy.laus_method) for what is known.",
+   "Small municipalities swing from year to year: in the 2026-10 snapshot, Maricao (labor force 1,620 in 2025) shows 27.8% in 2017, 15.3% in 2024 and 26.5% in 2025. For how large the typical swing is, see 'How the unemployment figures are built' (economy.laus_method).",
+   "The observatory's data hold no margin of error for these BLS series, so the Analysis tab shows none. Treat small municipalities as imprecise anyway.",
+   "The latest year (2025 in the 2026-10 snapshot) is preliminary and can be revised. Check the current BLS figure before you quote it. In the 2026-10 snapshot, five municipalities rise by 4 points or more from 2024 to 2025: Maricao (15.3% to 26.5%), Adjuntas (7.7% to 14.7%), Guánica (11.7% to 17.3%), Las Marías (10.4% to 15.1%) and Quebradillas (5.4% to 9.6%). The data do not explain these jumps.",
+   "It counts residents, not jobs. A person who lives in Caguas and works in San Juan counts in Caguas. For jobs by workplace, see the Quarterly Census of Employment and Wages (QCEW) series.",
+   "Not comparable with the survey rate 'Unemployment rate' (housing.unemployment_rate_pct), which the Analysis tab labels 'Unemployment rate (ACS survey)' and the Housing page also shows. In the 2026-10 snapshot, that American Community Survey (ACS) rate for Puerto Rico is 10.7% for 2020-2024, while the BLS annual averages are 8.0% (2021), 6.0% (2022), 5.9% (2023) and 5.6% (2024). The two use different sources and methods, and the data do not explain the gap.",
+   "The island rate comes from a different BLS series than the municipal rates. In BLS series codes, LAUCN is the county series that is not seasonally adjusted and LASST is the state series that is seasonally adjusted (https://www.bls.gov/help/hlpforma.htm). The island rate is therefore not exactly the labor-force-weighted average of the municipal rates: in the 2026-10 snapshot, the 2021 island rate is 8.0%, against 7.9% from the municipal counts.",
+   "Different periods side by side. With Year set to Latest, each layer on the Analysis tab uses its own latest period. In the 2026-10 snapshot, in the view 'Poverty and unemployment' the poverty rate is the 2020-2024 survey average and the unemployment rate is the 2025 annual average. Check the year chip in the legend."
+  ],
+  "see_also": [
+   "economy.laus_labor_force",
+   "economy.laus_unemployed",
+   "economy.laus_employed",
+   "economy.laus_method",
+   "housing.unemployment_rate_pct",
+   "housing.employment_rate_pct",
+   "economy.workers_16plus",
+   "economy.qcew_jobs",
+   "methods.workplace_vs_residence"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:laus_unemp_rate"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Labor force): shade municipalities by",
+     "href": "index.html#e=laus_unemp_rate.f.value.blue.q.1.1.0.85.0"
+    },
+    {
+     "label": "Map, Analysis tab, view 'Poverty and unemployment' (poverty rate, unemployment rate, unemployed residents)",
+     "href": "index.html#e=poverty_pct.f.value.blue.q.1.1.0.85.0,laus_unemp_rate.f.value.green.q.1.1.0.85.0,laus_unemployed.s.value.blue.q.1.1.0.75.0"
+    }
+   ]
+  },
+  "added": "2026-10-03",
+  "example": "In the 2026-10 snapshot, Puerto Rico: 5.6% in 2025, 8.0% in 2021 and 8.3% in 2019. In 2025 the highest of the 78 municipalities is Maricao, 26.5%, and the lowest is Culebra, 1.6%."
+ },
+ {
+  "id": "economy.laus_labor_force",
+  "name": "Labor force",
+  "domain": "economy",
+  "domains": ["economy"],
+  "group": "Labor force",
+  "kind": "variable",
+  "plain": "How many residents 16 and over have a job or are looking for one, as a yearly average from the Bureau of Labor Statistics. It counts people where they live. In the 2026-10 snapshot, Puerto Rico: about 1.23 million for 2025.",
+  "definition": "The yearly average number of residents 16 and over who are employed or unemployed (measure 06, labor force, of the US Bureau of Labor Statistics, BLS, Local Area Unemployment Statistics, LAUS). Residents with no job who are not looking, such as retirees, students and people who stopped looking, are not counted. The count is by place of residence: a person who lives in Caguas and works in San Juan is counted in Caguas. BLS counts civilians who do not live in an institution such as a prison or nursing home. Like the unemployment rate, it is a Bureau estimate and not a direct count.",
+  "unit": "people (residents 16 and over)",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico (island total)",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2010,
+   "last": 2025,
+   "frequency": "One annual average per year, except 2020, which has no value. The observatory requests every year from 2010 to the last full calendar year, so a new year appears at the next rebuild. In the 2026-10 snapshot the series runs from 2010 to 2025."
+  },
+  "method": "The observatory asks the BLS public data interface (API) for one series per municipality, LAUCN72xxx0000000006, where 72xxx is the municipality's five-digit code and the last two digits, 06, mean labor force. It stores BLS's annual average (period M13, the code BLS uses for the annual average) as published, a whole number. For Puerto Rico it uses the series LASST720000000000006. The BLS data hold no published annual average for that series, so the observatory takes the mean of its twelve monthly levels and rounds it to a whole person. The island value is not computed from the 78 municipalities.",
+  "sources": [
+   "bls_laus"
+  ],
+  "source_detail": "BLS Local Area Unemployment Statistics (LAUS), annual averages from 2010, through the BLS public data interface (API) at https://api.bls.gov/publicAPI/v1/timeseries/data/. Series LAUCN72xxx0000000006 (municipalities) and LASST720000000000006 (Puerto Rico), measure 06 (labor force). Definitions follow BLS (https://www.bls.gov/cps/definitions.htm).",
+  "how_to_read": "It is the base of the unemployment rate (rate = unemployed ÷ labor force). As a count it mostly shows how big a place is. On the Analysis tab a shaded layer shows it per 1,000 residents by default. That divides by the total population of all ages for the same year, not by residents 16 and over, so it is not a participation, employment or unemployment rate; for the unemployment rate use the rate layer. As symbols, the circle area is proportional to the count. It is not the number of jobs and not the number of employed residents. To compare places, use the unemployment rate. To cite a municipality: 'US Bureau of Labor Statistics, Local Area Unemployment Statistics, series LAUCN721270000000006 (San Juan Municipio, Puerto Rico), annual average 2024, retrieved [date].' The five digits after LAUCN are the municipality's Federal Information Processing Standards (FIPS) code, shown as GEOID in the CSV from the info (i) button. For Puerto Rico the observatory uses series LASST720000000000006 and averages its twelve monthly values itself; BLS does not supply that annual average in the observatory's data. Cite the island value as: 'Average of the twelve monthly values of US Bureau of Labor Statistics series LASST720000000000006 (Puerto Rico), annual average 2024, calculated by Foundation for Puerto Rico, PR Data Observatory, retrieved [date].' If you took any number from the observatory, also cite Foundation for Puerto Rico, PR Data Observatory.",
+  "caveats": [
+   "There is no value for 2020, and the observatory does not estimate one; when you choose 2020 the map shows 2019, labeled '2019 (latest at or before 2020)'. See 'How the unemployment figures are built' (economy.laus_method) for what is known.",
+   "The smallest municipalities have very small labor forces. In the 2026-10 snapshot, Culebra has 1,109 and Maricao 1,620 people in the labor force for 2025, and three municipalities have fewer than 3,000. Their yearly figures are noisy.",
+   "The observatory's data hold no margin of error for these BLS series, so the Analysis tab shows none. Treat small municipalities as imprecise anyway.",
+   "The latest year (2025 in the 2026-10 snapshot) is preliminary and can be revised. Check the current BLS figure before you quote it.",
+   "The Puerto Rico row is a separate BLS series, not the sum of the 78 municipalities. In the 2026-10 snapshot the two are close but not equal: in every year with data the island labor force is within 0.4% of the municipal sum and the island unemployed count within 0.9%.",
+   "It is a different count from the survey series 'Employed residents 16+ (ACS)' (from the American Community Survey, ACS), which covers only people with a job and pools five years of responses. In the 2026-10 snapshot, for Puerto Rico that survey count is 1.08 times the observatory's BLS-based employed count (labor force minus unemployed) for 2010 and 1.00 times for 2024, so the two series cannot be spliced."
+  ],
+  "see_also": [
+   "economy.laus_unemp_rate",
+   "economy.laus_employed",
+   "economy.laus_unemployed",
+   "economy.laus_method",
+   "economy.workers_16plus",
+   "housing.population",
+   "methods.workplace_vs_residence",
+   "measures.per_1000_residents"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:laus_labor_force"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Labor force): size symbols by",
+     "href": "index.html#e=laus_labor_force.s.value.blue.q.1.1.0.75.0"
+    }
+   ]
+  },
+  "added": "2026-10-03",
+  "example": "In the 2026-10 snapshot, Puerto Rico: 1,232,410 in 2025, 1,090,843 in 2019 and 1,268,343 in 2010. San Juan, 2025: 143,636. Culebra, 2025: 1,109."
+ },
+ {
+  "id": "economy.laus_employed",
+  "name": "Employed residents (BLS)",
+  "domain": "economy",
+  "domains": ["economy"],
+  "group": "Labor force",
+  "kind": "variable",
+  "plain": "How many residents have a job, as a yearly average, counted where they live. The observatory calculates it from two Bureau of Labor Statistics series: the labor force (people with a job or looking for one) minus the unemployed. In the 2026-10 snapshot, Puerto Rico: about 1.16 million for 2025.",
+  "definition": "The labor force minus the unemployed, both as yearly averages for residents 16 and over (BLS, the US Bureau of Labor Statistics, Local Area Unemployment Statistics). It counts people, not jobs: a resident with two jobs counts once, and a resident counts where they live, not where they work. The observatory calculates it; it is not a series BLS publishes in the observatory's files.",
+  "unit": "people (residents 16 and over)",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico (island total)",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2010,
+   "last": 2025,
+   "frequency": "One annual average per year, except 2020, which has no value. The observatory requests every year from 2010 to the last full calendar year, so a new year appears at the next rebuild. In the 2026-10 snapshot the series runs from 2010 to 2025."
+  },
+  "method": "For each municipality and year the observatory calculates: unemployed = round(labor force × unemployment rate ÷ 100); employed = round(labor force) − unemployed. The inputs are the BLS annual-average labor force (series LAUCN72xxx0000000006) and unemployment rate (LAUCN72xxx0000000003). BLS publishes the rate to one decimal, so the unemployed count, and therefore the employed count, can be off by up to 0.05% of the labor force: about 70 people where the labor force is 140,000, and less than one where it is 1,100. The Puerto Rico row uses the island series (LASST720000000000006 and LASST720000000000003, each averaged over twelve months) in the same formula.",
+  "sources": [
+   "bls_laus"
+  ],
+  "source_detail": "Derived by the observatory from BLS LAUS measure 06 (labor force) and measure 03 (unemployment rate), annual averages from 2010; see economy.laus_labor_force and economy.laus_unemp_rate. Definitions follow BLS (https://www.bls.gov/cps/definitions.htm).",
+  "how_to_read": "Compare it with the labor force to see how many of the people in the labor force have work. For the share without work, use the unemployment rate. On the Analysis tab a shaded layer shows it per 1,000 residents by default. That divides by the total population of all ages for the same year, not by residents 16 and over, so it is not an employment rate. To cite, name BLS and the two series it comes from and say the observatory derived it: 'Derived by Foundation for Puerto Rico, PR Data Observatory, from US Bureau of Labor Statistics, Local Area Unemployment Statistics, labor force and unemployment rate, annual average 2024, retrieved [date].' For Puerto Rico, name the two island series (LASST720000000000006 and LASST720000000000003) and say that the observatory averaged their twelve monthly values.",
+  "caveats": [
+   "It is not a count that BLS published. BLS also publishes its own employment series (measure 05), which the observatory does not read, so the two can differ slightly because of the rounding of the rate.",
+   "There is no value for 2020, and the observatory does not estimate one; when you choose 2020 the map shows 2019, labeled '2019 (latest at or before 2020)'. See 'How the unemployment figures are built' (economy.laus_method) for what is known.",
+   "The observatory's data hold no margin of error for these BLS series, so the Analysis tab shows none. Treat small municipalities as imprecise anyway.",
+   "The latest year (2025 in the 2026-10 snapshot) is preliminary and can be revised. Check the current BLS figure before you quote it.",
+   "It is not the same as the survey count 'Employed residents 16+ (ACS)' from the American Community Survey (ACS). In the 2026-10 snapshot, for Puerto Rico the survey count is 8% higher than this one for 2010 (1,149,431 against 1,060,969). The two come from different surveys and methods, and the survey count averages five years (2006-2010); the data do not show how much each explains. For 2024 they are nearly equal (1,150,831 against 1,152,370). Do not mix the two series in one comparison.",
+   "It counts people who live in the municipality, not jobs located there. For jobs by workplace, see the Quarterly Census of Employment and Wages (QCEW) series.",
+   "The island value is calculated from the island series, not added up from the municipalities. In the 2026-10 snapshot, the 2024 island count is 1,152,370 and the 78 municipalities add up to 1,152,649."
+  ],
+  "see_also": [
+   "economy.laus_labor_force",
+   "economy.laus_unemployed",
+   "economy.laus_unemp_rate",
+   "economy.laus_method",
+   "economy.workers_16plus",
+   "economy.qcew_jobs",
+   "housing.employment_rate_pct",
+   "methods.workplace_vs_residence",
+   "measures.per_1000_residents"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:laus_employed"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Labor force): size symbols by",
+     "href": "index.html#e=laus_employed.s.value.blue.q.1.1.0.75.0"
+    }
+   ]
+  },
+  "added": "2026-10-03",
+  "example": "In the 2026-10 snapshot, Puerto Rico: 1,163,600 in 2025 and 1,000,394 in 2019. San Juan, 2025: 138,609."
+ },
+ {
+  "id": "economy.laus_unemployed",
+  "name": "Unemployed residents (BLS)",
+  "domain": "economy",
+  "domains": ["economy"],
+  "group": "Labor force",
+  "kind": "variable",
+  "plain": "How many residents have no job and are looking for one, as a yearly average, counted where they live. The observatory calculates it as the labor force times the unemployment rate. In the 2026-10 snapshot, Puerto Rico: about 68,800 for 2025.",
+  "definition": "The labor force multiplied by the unemployment rate, as yearly averages for residents 16 and over (US Bureau of Labor Statistics, BLS, Local Area Unemployment Statistics, LAUS). A resident is unemployed if they have no job, looked for work in the last four weeks and are available to start; people on temporary layoff who expect to be called back are also counted as unemployed. People who stopped looking are not counted. The observatory calculates it; it is not a series BLS publishes in the observatory's files.",
+  "unit": "people (residents 16 and over)",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico (island total)",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2010,
+   "last": 2025,
+   "frequency": "One annual average per year, except 2020, which has no value. The observatory requests every year from 2010 to the last full calendar year, so a new year appears at the next rebuild. In the 2026-10 snapshot the series runs from 2010 to 2025."
+  },
+  "method": "For each municipality and year the observatory calculates: unemployed = round(labor force × unemployment rate ÷ 100). The inputs are the BLS annual-average labor force (series LAUCN72xxx0000000006) and unemployment rate (LAUCN72xxx0000000003). BLS publishes the rate to one decimal, so the result can be off by up to 0.05% of the labor force: about 70 people where the labor force is 140,000, and less than one where it is 1,100. The Puerto Rico row uses the island series (LASST720000000000006 and LASST720000000000003, each averaged over twelve months) in the same formula.",
+  "sources": [
+   "bls_laus"
+  ],
+  "source_detail": "Derived by the observatory from BLS LAUS measure 06 (labor force) and measure 03 (unemployment rate), annual averages from 2010; see economy.laus_labor_force and economy.laus_unemp_rate. Definitions follow BLS (https://www.bls.gov/cps/definitions.htm).",
+  "how_to_read": "Use it to see how many people are affected; use the unemployment rate to compare places of different size. On the Analysis tab a shaded layer shows it per 1,000 residents by default. That divides by the total population of all ages for the same year, not by residents 16 and over, so it is not the unemployment rate; for the rate use the rate layer. As symbols, circle area is proportional to the count. To cite, name BLS and the two series it comes from and say the observatory derived it: 'Derived by Foundation for Puerto Rico, PR Data Observatory, from US Bureau of Labor Statistics, Local Area Unemployment Statistics, labor force and unemployment rate, annual average 2024, retrieved [date].' For Puerto Rico, name the two island series (LASST720000000000006 and LASST720000000000003) and say that the observatory averaged their twelve monthly values.",
+  "caveats": [
+   "It is not a count that BLS published. BLS also publishes its own unemployment series (measure 04), which the observatory does not read, so the two can differ slightly because of the rounding of the rate.",
+   "There is no value for 2020, and the observatory does not estimate one; when you choose 2020 the map shows 2019, labeled '2019 (latest at or before 2020)'. See 'How the unemployment figures are built' (economy.laus_method) for what is known.",
+   "The observatory's data hold no margin of error for these BLS series, so the Analysis tab shows none. Treat small municipalities as imprecise anyway.",
+   "The latest year (2025 in the 2026-10 snapshot) is preliminary and can be revised. Check the current BLS figure before you quote it.",
+   "A small municipality has few unemployed people, and the yearly estimate is noisy: in the 2026-10 snapshot, Culebra has 18 and Maricao 429 for 2025.",
+   "The island value is calculated from the island series, not added up from the municipalities. In the 2026-10 snapshot, the 2021 island count is 93,700 and the 78 municipalities add up to 92,920.",
+   "It counts residents, not jobs. For jobs by workplace, see the Quarterly Census of Employment and Wages (QCEW) series."
+  ],
+  "see_also": [
+   "economy.laus_labor_force",
+   "economy.laus_employed",
+   "economy.laus_unemp_rate",
+   "economy.laus_method",
+   "housing.unemployment_rate_pct",
+   "methods.workplace_vs_residence",
+   "measures.per_1000_residents"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:laus_unemployed"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Labor force): size symbols by",
+     "href": "index.html#e=laus_unemployed.s.value.blue.q.1.1.0.75.0"
+    }
+   ]
+  },
+  "added": "2026-10-03",
+  "example": "In the 2026-10 snapshot, Puerto Rico: 68,810 in 2025, 90,449 in 2019 and 207,374 in 2010. San Juan, 2025: 5,027."
+ },
+ {
+  "id": "economy.gini",
+  "name": "Income inequality (Gini index)",
+  "domain": "economy",
+  "domains": ["economy"],
+  "group": "Income and poverty",
+  "kind": "variable",
+  "plain": "A number from 0 to 1 that shows how unevenly household income is spread in the area. 0 means every household has the same income; 1 means one household has all of it. In the 2026-10 snapshot, Puerto Rico: 0.543 in 2020-2024.",
+  "definition": "The Gini index of household income, as the Census Bureau publishes it (American Community Survey, ACS, table B19083, cell 1; universe: households). Household income is the money income of all household members aged 15 or over in the past 12 months, before taxes: wages, self-employment, interest, Social Security, retirement, public assistance and similar regular sources. Capital gains and non-cash benefits are left out. The index runs from 0 (every household has the same income) to 1 (one household has all the income).",
+  "unit": "index from 0 (equal) to 1 (one household has all income)",
+  "value_type": "index",
+  "geography": "78 municipalities and Puerto Rico (island total); also 901 barrios and 981 census tracts",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "Five-year windows, labeled by their last year (2010 = 2006-2010, 2024 = 2020-2024). In the 2026-10 snapshot the windows run from 2006-2010 to 2020-2024, so the Analysis tab's Years line reads 2010-2024 and means fifteen windows, not fifteen calendar years. A new window is added when the Census Bureau publishes it and the file is rebuilt."
+  },
+  "method": "The observatory reads table B19083 for every five-year window from the Census Bureau's summary files: per-sequence files for windows ending 2010 to 2020 and table-based files for windows ending 2021 and later. It keeps the 78 municipio rows and the Puerto Rico row. The estimate and its margin of error are the Census Bureau's published values (cell 1), rounded to three decimals. No calculation is added.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "US Census Bureau, American Community Survey 5-year estimates, table B19083 (Gini Index of Income Inequality), cell 001; windows from 2006-2010 to the latest published (2020-2024 in the 2026-10 snapshot).",
+  "how_to_read": "A higher value means income is more unevenly spread. In the 2026-10 snapshot, the 78 municipalities run from 0.369 to 0.629 for 2020-2024. Compare places within one window and check the margin of error. The number after the plus-minus sign (±) is the margin of error: with 90% confidence, the true value lies within that distance of the estimate. The Analysis tab prints it in the index's own units, for example ±0.035. To cite the source number, give the table, the window and the place, for example: 'US Census Bureau, American Community Survey 5-year estimates 2020-2024, table B19083 (Gini Index of Income Inequality), Ponce Municipio, Puerto Rico.' If you took the number from the observatory, also cite Foundation for Puerto Rico, PR Data Observatory.",
+  "caveats": [
+   "It measures how unequal incomes are inside one place, not how high they are. Two places with the same Gini can have very different incomes. For the level, see median household income.",
+   "It compares households, not people, and does not adjust for household size.",
+   "Margins are wide for small municipalities. In the 2026-10 snapshot, the margin of error for 2020-2024 runs from ±0.010 to ±0.117 across the 78 municipalities (Culebra 0.369, ± 0.046; Dorado 0.629, ± 0.035). Small differences between municipalities are within the margins.",
+   "Unlike dollar amounts, the index is a ratio, so it does not depend on the year of the dollars and needs no inflation adjustment to compare windows.",
+   "The Puerto Rico value is the Census Bureau's estimate for the whole island, not an average of the 78 municipal values. In the 2026-10 snapshot, the middle (median) municipality has 0.492 for 2020-2024 and the island value is 0.543.",
+   "Neighboring windows share four of their five years of survey responses, so the change from one window to the next mostly reflects one year of new responses. To judge real change, compare windows that do not overlap, for example 2012, 2017 and 2022. In some municipalities one new year can move the index a lot. In the 2026-10 snapshot, Sabana Grande goes from 0.467 (2018-2022) to 0.563 (2019-2023). Do not read a trend from one small municipality.",
+   "Also published for barrios and census tracts (acs_barrio.json and acs_tract.json), each value with its margin of error where the Census Bureau gives one. Below the municipality the figure is rough. In 2020-2024 the margin of error is above 30% of the estimate (the CSV by area marks such values as less reliable; no map or table draws areas below the municipality yet) for 20% of barrios and 1% of census tracts that have a value. See methods.small_area_estimates."
+  ],
+  "see_also": [
+   "economy.hh_income_under_25k_pct",
+   "economy.hh_income_75k_plus_pct",
+   "housing.median_hh_income",
+   "housing.per_capita_income",
+   "housing.poverty_pct",
+   "measures.margin_of_error",
+   "methods.acs_windows",
+   "economy.acs_work_income_tables",
+   "methods.small_area_estimates"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:gini",
+    "acs_barrio.json:gini",
+    "acs_tract.json:gini"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Income and poverty): shade municipalities by",
+     "href": "index.html#e=gini.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-03",
+  "example": "In the 2026-10 snapshot, Puerto Rico: 0.543 (± 0.004) in 2020-2024 and 0.538 in 2006-2010. Highest of the 78 municipalities in 2020-2024: Dorado, 0.629. Lowest: Culebra, 0.369."
+ },
+ {
+  "id": "economy.hh_income_under_25k_pct",
+  "name": "Households earning under $25,000",
+  "domain": "economy",
+  "domains": ["economy"],
+  "group": "Income and poverty",
+  "kind": "variable",
+  "plain": "Out of every 100 households, how many had a yearly income below $25,000. The dollars are those of the last year of the survey window. In the 2026-10 snapshot, Puerto Rico: 48.2% in 2020-2024.",
+  "definition": "Households with income below $25,000 in the past 12 months, divided by all households, times 100. Source: American Community Survey (ACS) table B19001. The top is the sum of cells 2 to 5 (under $10,000, $10,000 to $14,999, $15,000 to $19,999 and $20,000 to $24,999). The bottom is cell 1, all households. Household income is the money income of all household members aged 15 or over, before taxes.",
+  "unit": "% of households",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico (island total)",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "Five-year windows, labeled by their last year (2010 = 2006-2010, 2024 = 2020-2024). In the 2026-10 snapshot the windows run from 2006-2010 to 2020-2024, so the Analysis tab's Years line reads 2010-2024 and means fifteen windows, not fifteen calendar years. A new window is added when the Census Bureau publishes it and the file is rebuilt."
+  },
+  "method": "The observatory reads table B19001 for every five-year window from the Census Bureau's summary files: per-sequence files for windows ending 2010 to 2020 and table-based files for windows ending 2021 and later. It keeps the 78 municipio rows and the Puerto Rico row. It adds cells 2 to 5 and divides by cell 1. The margin of error is calculated by the observatory from the published margins of the cells used: margins of summed cells are combined as the square root of the sum of their squares, and the share's margin uses the Census Bureau's formula for a proportion whose numerator is part of its denominator. If that formula would need the square root of a negative number, the observatory uses the Census Bureau's ratio formula instead. Shares are kept to two decimals; the Analysis tab shows one.",
+  "sources": [
+   "acs5",
+   "bls_cpi"
+  ],
+  "source_detail": "US Census Bureau, American Community Survey 5-year estimates, table B19001 (Household Income in the Past 12 Months, in inflation-adjusted dollars), cells 001 and 002-005; windows from 2006-2010 to the latest published (2020-2024 in the 2026-10 snapshot). CPI-U, US city average (series CUUR0000SA0), used only to illustrate the fixed dollar line.",
+  "how_to_read": "A value of 48 means that 48 of every 100 households had income below $25,000. It counts households, not people, and does not adjust for household size. It is not the poverty rate; for that, see 'Population below the poverty level' (housing.poverty_pct). Income here is money income from all regular sources, such as wages, self-employment, Social Security, retirement and public assistance. The number after the plus-minus sign (±) is the margin of error: with 90% confidence, the true value lies within that distance of the estimate. The Analysis tab prints it in percentage points, for example ±0.4 pts. The percentage is not printed in the Census Bureau's table; the observatory calculates it from the cells named in the definition. To cite it: 'Share calculated by Foundation for Puerto Rico, PR Data Observatory, from US Census Bureau, American Community Survey 5-year estimates 2020-2024, table B19001 (Household Income in the Past 12 Months), cells 2 to 5 divided by cell 1, Ponce Municipio, Puerto Rico.' To cite the Census Bureau's own numbers, cite the table cells, not the percentage.",
+  "caveats": [
+   "The dollars are those of the last year of each window. The Census Bureau states table B19001 in inflation-adjusted dollars of that year (its table title says 2010 dollars for the 2006-2010 window and 2020 dollars for the 2016-2020 window), so the $25,000 line means 2010 dollars in the 2006-2010 window and 2024 dollars in the 2020-2024 window. The observatory changes nothing between windows, and percent layers on the Analysis tab have no inflation switch. In the 2026-10 snapshot, part of the fall from 60.1% (2006-2010) to 48.2% (2020-2024) comes from the fixed dollar line, not from real income. By the US Consumer Price Index (CPI-U), US city average (annual averages 218.056 in 2010 and 313.689 in 2024), $25,000 in 2024 dollars is about $17,400 in 2010 dollars. The observatory uses only the US city average CPI-U, so this is an approximation for Puerto Rico, and the factor the Census Bureau used to express the survey dollars may differ. The fixed line is therefore a lower real amount in later windows, which lowers the share below it even if real incomes did not change.",
+   "Small municipalities are less precise. In the 2026-10 snapshot, the margin of error for 2020-2024 runs from ±1.1 to ±12.3 points across the 78 municipalities, and 1 of the 78 is larger than 30% of the estimate.",
+   "The Puerto Rico share is calculated from the Census Bureau's island-wide counts, not averaged from the 78 municipal shares. In the 2026-10 snapshot, the middle (median) municipality has 51.7% for 2020-2024 and the island value is 48.2%.",
+   "Neighboring windows share four of their five years of survey responses, so the change from one window to the next mostly reflects one year of new responses. To judge real change, compare windows that do not overlap, for example 2012, 2017 and 2022. In some municipalities one new year can move the value a lot. In the 2026-10 snapshot, Culebra goes from 48.10% (2018-2022) to 39.02% (2019-2023). Do not read a trend from one small municipality."
+  ],
+  "see_also": [
+   "economy.hh_income_75k_plus_pct",
+   "economy.gini",
+   "housing.median_hh_income",
+   "housing.poverty_pct",
+   "housing.households",
+   "measures.margin_of_error",
+   "methods.acs_windows",
+   "economy.acs_work_income_tables",
+   "measures.inflation_adjustment"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:hh_income_under_25k_pct"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Income and poverty): shade municipalities by",
+     "href": "index.html#e=hh_income_under_25k_pct.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-03",
+  "example": "In the 2026-10 snapshot, Puerto Rico, 2020-2024: 48.2% (± 0.4 points); 2006-2010: 60.1%. Highest of the 78 municipalities: Guánica, 66.9% (± 6.0 points). Lowest: Guaynabo, 31.45% (± 2.0 points)."
+ },
+ {
+  "id": "economy.hh_income_75k_plus_pct",
+  "name": "Households earning $75,000 or more",
+  "domain": "economy",
+  "domains": ["economy"],
+  "group": "Income and poverty",
+  "kind": "variable",
+  "plain": "Out of every 100 households, how many had a yearly income of $75,000 or more. The dollars are those of the last year of the survey window. In the 2026-10 snapshot, Puerto Rico: 14.0% in 2020-2024.",
+  "definition": "Households with income of $75,000 or more in the past 12 months, divided by all households, times 100. Source: American Community Survey (ACS) table B19001. The top is the sum of cells 13 to 17 ($75,000 to $99,999, $100,000 to $124,999, $125,000 to $149,999, $150,000 to $199,999 and $200,000 or more). The bottom is cell 1, all households. Household income is the money income of all household members aged 15 or over, before taxes.",
+  "unit": "% of households",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico (island total)",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "Five-year windows, labeled by their last year (2010 = 2006-2010, 2024 = 2020-2024). In the 2026-10 snapshot the windows run from 2006-2010 to 2020-2024, so the Analysis tab's Years line reads 2010-2024 and means fifteen windows, not fifteen calendar years. A new window is added when the Census Bureau publishes it and the file is rebuilt."
+  },
+  "method": "The observatory reads table B19001 for every five-year window from the Census Bureau's summary files: per-sequence files for windows ending 2010 to 2020 and table-based files for windows ending 2021 and later. It keeps the 78 municipio rows and the Puerto Rico row. It adds cells 13 to 17 and divides by cell 1. The margin of error is calculated by the observatory from the published margins of the cells used: margins of summed cells are combined as the square root of the sum of their squares, and the share's margin uses the Census Bureau's formula for a proportion whose numerator is part of its denominator. If that formula would need the square root of a negative number, the observatory uses the Census Bureau's ratio formula instead. Shares are kept to two decimals; the Analysis tab shows one.",
+  "sources": [
+   "acs5",
+   "bls_cpi"
+  ],
+  "source_detail": "US Census Bureau, American Community Survey 5-year estimates, table B19001 (Household Income in the Past 12 Months, in inflation-adjusted dollars), cells 001 and 013-017; windows from 2006-2010 to the latest published (2020-2024 in the 2026-10 snapshot). CPI-U, US city average (series CUUR0000SA0), used only to illustrate the fixed dollar line.",
+  "how_to_read": "A value of 14 means that 14 of every 100 households had income of $75,000 or more. It counts households, not people, and does not adjust for household size. Use it with the share under $25,000 to see both ends of the income spread. Income here is money income from all regular sources, such as wages, self-employment, Social Security, retirement and public assistance. The number after the plus-minus sign (±) is the margin of error: with 90% confidence, the true value lies within that distance of the estimate. The Analysis tab prints it in percentage points, for example ±0.4 pts. The percentage is not printed in the Census Bureau's table; the observatory calculates it from the cells named in the definition. To cite it: 'Share calculated by Foundation for Puerto Rico, PR Data Observatory, from US Census Bureau, American Community Survey 5-year estimates 2020-2024, table B19001 (Household Income in the Past 12 Months), cells 13 to 17 divided by cell 1, Ponce Municipio, Puerto Rico.' To cite the Census Bureau's own numbers, cite the table cells, not the percentage.",
+  "caveats": [
+   "The dollars are those of the last year of each window. The Census Bureau states table B19001 in inflation-adjusted dollars of that year (its table title says 2010 dollars for the 2006-2010 window and 2020 dollars for the 2016-2020 window), so the $75,000 line means 2010 dollars in the 2006-2010 window and 2024 dollars in the 2020-2024 window. The observatory changes nothing between windows, and percent layers on the Analysis tab have no inflation switch. In the 2026-10 snapshot, part of the rise from 7.0% (2006-2010) to 14.0% (2020-2024) comes from the fixed dollar line, not from real income. By the US Consumer Price Index (CPI-U), US city average (annual averages 218.056 in 2010 and 313.689 in 2024), $75,000 in 2024 dollars is about $52,100 in 2010 dollars. The observatory uses only the US city average CPI-U, so this is an approximation for Puerto Rico, and the factor the Census Bureau used to express the survey dollars may differ. The fixed line is therefore a lower real amount in later windows, which raises the share above it even if real incomes did not change.",
+   "Small municipalities are less precise. In the 2026-10 snapshot, the margin of error for 2020-2024 runs from ±0.9 to ±7.7 points across the 78 municipalities, and 26 of the 78 are larger than 30% of the estimate. The shares are small, so a margin of a point or two matters.",
+   "A value near zero is a survey result for a small sample. In the 2026-10 snapshot, Las Marías shows 2.0% (± 1.5 points) for 2020-2024.",
+   "The Puerto Rico share is calculated from the Census Bureau's island-wide counts, not averaged from the 78 municipal shares. In the 2026-10 snapshot, the middle (median) municipality has 9.6% for 2020-2024 and the island value is 14.0%.",
+   "Neighboring windows share four of their five years of survey responses, so the change from one window to the next mostly reflects one year of new responses. To judge real change, compare windows that do not overlap, for example 2012, 2017 and 2022. In some municipalities one new year can move the value a lot. In the 2026-10 snapshot, Moca goes from 6.38% (2017-2021) to 10.71% (2018-2022). Do not read a trend from one small municipality."
+  ],
+  "see_also": [
+   "economy.hh_income_under_25k_pct",
+   "economy.gini",
+   "housing.median_hh_income",
+   "housing.per_capita_income",
+   "housing.households",
+   "measures.margin_of_error",
+   "methods.acs_windows",
+   "economy.acs_work_income_tables",
+   "measures.inflation_adjustment"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:hh_income_75k_plus_pct"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Income and poverty): shade municipalities by",
+     "href": "index.html#e=hh_income_75k_plus_pct.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-03",
+  "example": "In the 2026-10 snapshot, Puerto Rico, 2020-2024: 14.0% (± 0.3 points); 2006-2010: 7.0%. Highest of the 78 municipalities: Guaynabo, 34.6% (± 2.3 points). Lowest: Las Marías, 2.0% (± 1.5 points)."
+ },
+ {
+  "id": "economy.workers_16plus",
+  "name": "Employed residents 16+ (ACS)",
+  "domain": "economy",
+  "domains": ["economy"],
+  "group": "Workers and commuting",
+  "kind": "variable",
+  "plain": "How many residents aged 16 and over had a job (not counting the armed forces), from the American Community Survey. It counts people where they live and is an estimate for a five-year window. In the 2026-10 snapshot, Puerto Rico: about 1.15 million in 2020-2024.",
+  "definition": "The civilian employed population 16 years and over, both sexes and all classes of worker (American Community Survey, ACS, table B24080, cell 1). A person is employed if, in the week before answering the survey (the Census Bureau's reference week), they did any work as a paid employee or in their own business, worked 15 hours or more without pay in a family business, or had a job and were temporarily away. Members of the armed forces are not in the table. It is the base of the class-of-worker shares: government, self-employed and nonprofit.",
+  "unit": "people (employed civilian residents 16 and over)",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico (island total)",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "Five-year windows, labeled by their last year (2010 = 2006-2010, 2024 = 2020-2024). In the 2026-10 snapshot the windows run from 2006-2010 to 2020-2024, so the Analysis tab's Years line reads 2010-2024 and means fifteen windows, not fifteen calendar years. A new window is added when the Census Bureau publishes it and the file is rebuilt."
+  },
+  "method": "The observatory reads table B24080 for every five-year window from the Census Bureau's summary files: per-sequence files for windows ending 2010 to 2020 and table-based files for windows ending 2021 and later. It keeps the 78 municipio rows and the Puerto Rico row. The value and its margin of error are the Census Bureau's published ones (cell 1). The observatory also divides the jobs counted by the Quarterly Census of Employment and Wages (QCEW) in a year by this count for the five-year window ending that year to get 'jobs per employed resident' (from 2014, the first QCEW year), so the ratio mixes a one-year numerator with a five-year denominator.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "US Census Bureau, American Community Survey 5-year estimates, table B24080 (Sex by Class of Worker for the Civilian Employed Population 16 Years and Over), cell 001; windows from 2006-2010 to the latest published (2020-2024 in the 2026-10 snapshot).",
+  "how_to_read": "It counts people, not jobs: someone with two jobs counts once. It counts where people live, so a resident who works in another municipality counts at home. As a count it mostly shows the size of a place. On the Analysis tab a shaded layer shows it per 1,000 residents by default. That divides by the total population of all ages for the window's last year, not by residents 16 and over, so it is not an employment rate. The number after the plus-minus sign (±) is the margin of error: with 90% confidence, the true value lies within that distance of the estimate. The Analysis tab prints it in people, like the estimate, for example ±1,965. To cite the source number, give the table, the window and the place, for example: 'US Census Bureau, American Community Survey 5-year estimates 2020-2024, table B24080 (Sex by Class of Worker for the Civilian Employed Population 16 Years and Over), Ponce Municipio, Puerto Rico.' If you took the number from the observatory, also cite Foundation for Puerto Rico, PR Data Observatory.",
+  "caveats": [
+   "It is a five-year average, not a single year. In the 2026-10 snapshot, the 2006-2010 window gives 1,149,431 employed residents for Puerto Rico, 8% more than the observatory's BLS-based employed count for 2010 (labor force minus unemployed, 1,060,969). For 2024 the two are close: 1,150,831 here and 1,152,370 from the BLS-based count. Do not mix the two series in one comparison. For individual municipalities the 2020-2024 survey count runs from 0.66 times (Culebra) to 1.23 times (Utuado) the BLS-based employed count for 2024, so do not use one series for a place and the other for the island.",
+   "It is not the number of jobs located in the municipality. For jobs by workplace, see the QCEW series.",
+   "Margins grow with the size of the place. In the 2026-10 snapshot, the margin for 2020-2024 runs from ±135 (Culebra, 710 workers) to ±1,965 (San Juan, 133,578 workers).",
+   "The island value is the Census Bureau's own island-wide count, not an average. In the 2026-10 snapshot it equals the sum of the 78 municipal counts in every window.",
+   "Neighboring windows share four of their five years of survey responses, so the change from one window to the next mostly reflects one year of new responses. To judge real change, compare windows that do not overlap, for example 2012, 2017 and 2022."
+  ],
+  "see_also": [
+   "economy.gov_worker_pct",
+   "economy.self_employed_pct",
+   "economy.nonprofit_worker_pct",
+   "economy.jobs_per_employed_resident",
+   "economy.laus_employed",
+   "economy.qcew_jobs",
+   "housing.employment_rate_pct",
+   "measures.margin_of_error",
+   "methods.acs_windows",
+   "economy.acs_work_income_tables",
+   "methods.workplace_vs_residence",
+   "measures.per_1000_residents"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:workers_16plus"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Workers and commuting): size symbols by",
+     "href": "index.html#e=workers_16plus.s.value.blue.q.1.1.0.75.0"
+    }
+   ]
+  },
+  "added": "2026-10-03",
+  "example": "In the 2026-10 snapshot, Puerto Rico: 1,150,831 (± 6,702) in 2020-2024 and 1,149,431 in 2006-2010. Largest of the 78 municipalities in 2020-2024: San Juan, 133,578 (± 1,965). Smallest: Culebra, 710 (± 135)."
+ },
+ {
+  "id": "economy.gov_worker_pct",
+  "name": "Residents working for government",
+  "domain": "economy",
+  "domains": ["economy"],
+  "group": "Workers and commuting",
+  "kind": "variable",
+  "plain": "Out of every 100 employed residents aged 16 and over, how many work for a local, Commonwealth or federal government. It counts where people live, not where the government office is. In the 2026-10 snapshot, Puerto Rico: 18.4% in 2020-2024.",
+  "definition": "Government workers divided by all employed civilian residents 16 and over, times 100. Source: American Community Survey (ACS) table B24080. The top adds local government workers (cells 7 and 17), state government workers (cells 8 and 18; in Puerto Rico, the Commonwealth government) and federal government workers (cells 9 and 19); cells 7 to 9 are for males and cells 17 to 19 for females. The bottom is cell 1, all employed civilians 16 and over.",
+  "unit": "% of employed civilian residents 16 and over",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico (island total)",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "Five-year windows, labeled by their last year (2010 = 2006-2010, 2024 = 2020-2024). In the 2026-10 snapshot the windows run from 2006-2010 to 2020-2024, so the Analysis tab's Years line reads 2010-2024 and means fifteen windows, not fifteen calendar years. A new window is added when the Census Bureau publishes it and the file is rebuilt."
+  },
+  "method": "The observatory reads table B24080 for every five-year window from the Census Bureau's summary files: per-sequence files for windows ending 2010 to 2020 and table-based files for windows ending 2021 and later. It keeps the 78 municipio rows and the Puerto Rico row. It adds cells 7, 8, 9, 17, 18 and 19 and divides by cell 1. The margin of error is calculated by the observatory from the published margins of the cells used: margins of summed cells are combined as the square root of the sum of their squares, and the share's margin uses the Census Bureau's formula for a proportion whose numerator is part of its denominator. If that formula would need the square root of a negative number, the observatory uses the Census Bureau's ratio formula instead. Shares are kept to two decimals; the Analysis tab shows one.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "US Census Bureau, American Community Survey 5-year estimates, table B24080 (Sex by Class of Worker for the Civilian Employed Population 16 Years and Over), cells 001, 007-009 and 017-019; windows from 2006-2010 to the latest published (2020-2024 in the 2026-10 snapshot).",
+  "how_to_read": "A value of 18 means that 18 of every 100 employed residents worked for a government. In the 2026-10 snapshot, it fell island-wide from 25.1% in 2006-2010 to 18.4% in 2020-2024. The Analysis tab does not split local, Commonwealth and federal workers. The number after the plus-minus sign (±) is the margin of error: with 90% confidence, the true value lies within that distance of the estimate. The Analysis tab prints it in percentage points, for example ±0.4 pts. The percentage is not printed in the Census Bureau's table; the observatory calculates it from the cells named in the definition. To cite it: 'Share calculated by Foundation for Puerto Rico, PR Data Observatory, from US Census Bureau, American Community Survey 5-year estimates 2020-2024, table B24080 (Sex by Class of Worker for the Civilian Employed Population 16 Years and Over), cells 7, 8, 9, 17, 18 and 19 divided by cell 1, Ponce Municipio, Puerto Rico.' To cite the Census Bureau's own numbers, cite the table cells, not the percentage.",
+  "caveats": [
+   "It counts residents by where they live, not jobs by where they are. A municipality can host many government jobs and still have a modest share of resident government workers, because workers commute. For government jobs by workplace, see the 'Government share of jobs' series, from the Quarterly Census of Employment and Wages (QCEW).",
+   "Government workers are not a share of all adults. The base is employed residents only.",
+   "Small municipalities are less precise. In the 2026-10 snapshot, the margin of error for 2020-2024 runs from ±0.9 to ±11.0 points across the 78 municipalities, and 4 of the 78 are larger than 30% of the estimate.",
+   "The Puerto Rico share is calculated from the Census Bureau's island-wide counts, not averaged from the 78 municipal shares. In the 2026-10 snapshot, the middle (median) municipality has 19.3% for 2020-2024 and the island value is 18.4%.",
+   "Neighboring windows share four of their five years of survey responses, so the change from one window to the next mostly reflects one year of new responses. To judge real change, compare windows that do not overlap, for example 2012, 2017 and 2022. In some municipalities one new year can move the value a lot. In the 2026-10 snapshot, Vieques goes from 32.59% (2015-2019) to 51.97% (2016-2020). Do not read a trend from one small municipality."
+  ],
+  "see_also": [
+   "economy.gov_job_share_pct",
+   "economy.workers_16plus",
+   "economy.self_employed_pct",
+   "economy.nonprofit_worker_pct",
+   "economy.qcew_gov_jobs",
+   "measures.margin_of_error",
+   "methods.acs_windows",
+   "economy.acs_work_income_tables",
+   "methods.workplace_vs_residence"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:gov_worker_pct"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Workers and commuting): shade municipalities by",
+     "href": "index.html#e=gov_worker_pct.f.value.blue.q.1.1.0.85.0"
+    },
+    {
+     "label": "Related view (it shows the jobs-based government share, not this variable): Map, Analysis tab, view 'Government and self-employment' (government share of jobs and self-employed residents)",
+     "href": "index.html#e=gov_job_share_pct.f.value.blue.q.1.1.0.85.0,self_employed_pct.f.value.green.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-03",
+  "example": "In the 2026-10 snapshot, Puerto Rico, 2020-2024: 18.4% (± 0.3 points); 2006-2010: 25.1%. Highest of the 78 municipalities: Culebra, 42.3% (± 10.4 points). Lowest: Vega Alta, 14.1% (± 2.7 points)."
+ },
+ {
+  "id": "economy.self_employed_pct",
+  "name": "Self-employed residents",
+  "domain": "economy",
+  "domains": ["economy"],
+  "group": "Workers and commuting",
+  "kind": "variable",
+  "plain": "Out of every 100 employed residents aged 16 and over, how many run their own business or work for themselves. In the 2026-10 snapshot, Puerto Rico: 14.8% in 2020-2024.",
+  "definition": "Self-employed workers divided by all employed civilian residents 16 and over, times 100. Source: American Community Survey (ACS) table B24080. The top adds workers in their own incorporated business (cells 5 for males and 15 for females) and in their own business that is not incorporated (cells 10 and 20). The bottom is cell 1, all employed civilians 16 and over. The Census Bureau's table lists owners of an incorporated business under private for-profit wage and salary workers; the observatory counts them here as self-employed.",
+  "unit": "% of employed civilian residents 16 and over",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico (island total)",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "Five-year windows, labeled by their last year (2010 = 2006-2010, 2024 = 2020-2024). In the 2026-10 snapshot the windows run from 2006-2010 to 2020-2024, so the Analysis tab's Years line reads 2010-2024 and means fifteen windows, not fifteen calendar years. A new window is added when the Census Bureau publishes it and the file is rebuilt."
+  },
+  "method": "The observatory reads table B24080 for every five-year window from the Census Bureau's summary files: per-sequence files for windows ending 2010 to 2020 and table-based files for windows ending 2021 and later. It keeps the 78 municipio rows and the Puerto Rico row. It adds cells 5, 10, 15 and 20 and divides by cell 1. The margin of error is calculated by the observatory from the published margins of the cells used: margins of summed cells are combined as the square root of the sum of their squares, and the share's margin uses the Census Bureau's formula for a proportion whose numerator is part of its denominator. If that formula would need the square root of a negative number, the observatory uses the Census Bureau's ratio formula instead. Shares are kept to two decimals; the Analysis tab shows one.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "US Census Bureau, American Community Survey 5-year estimates, table B24080 (Sex by Class of Worker for the Civilian Employed Population 16 Years and Over), cells 001, 005, 010, 015 and 020; windows from 2006-2010 to the latest published (2020-2024 in the 2026-10 snapshot).",
+  "how_to_read": "A value of 15 means that 15 of every 100 employed residents worked for themselves. In the 2026-10 snapshot, it rose island-wide from 11.8% in 2006-2010 to 14.8% in 2020-2024. The jobs data (Quarterly Census of Employment and Wages, QCEW) leave out unincorporated self-employed workers (cells 10 and 20), so that part of this share points to work the jobs data miss. Owners of an incorporated business (cells 5 and 15) can be on a payroll that QCEW counts. The number after the plus-minus sign (±) is the margin of error: with 90% confidence, the true value lies within that distance of the estimate. The Analysis tab prints it in percentage points, for example ±0.4 pts. The percentage is not printed in the Census Bureau's table; the observatory calculates it from the cells named in the definition. To cite it: 'Share calculated by Foundation for Puerto Rico, PR Data Observatory, from US Census Bureau, American Community Survey 5-year estimates 2020-2024, table B24080 (Sex by Class of Worker for the Civilian Employed Population 16 Years and Over), cells 5, 10, 15, 20 divided by cell 1, Ponce Municipio, Puerto Rico.' To cite the Census Bureau's own numbers, cite the table cells, not the percentage.",
+  "caveats": [
+   "The survey records whether the business is incorporated, not whether it is registered or licensed, so this share mixes formal and informal work. It is a rough indicator of self-employment, not a measure of the informal economy.",
+   "Unpaid family workers (cells 11 and 21) and employees of private companies (cells 4 and 14) are not in this share.",
+   "Small municipalities are less precise. In the 2026-10 snapshot, the margin of error for 2020-2024 runs from ±0.9 to ±13.1 points across the 78 municipalities, and 20 of the 78 are larger than 30% of the estimate.",
+   "The Puerto Rico share is calculated from the Census Bureau's island-wide counts, not averaged from the 78 municipal shares. In the 2026-10 snapshot, the middle (median) municipality has 14.0% for 2020-2024 and the island value is 14.8%.",
+   "Neighboring windows share four of their five years of survey responses, so the change from one window to the next mostly reflects one year of new responses. To judge real change, compare windows that do not overlap, for example 2012, 2017 and 2022. In some municipalities one new year can move the value a lot. In the 2026-10 snapshot, Vieques goes from 18.22% (2016-2020) to 32.65% (2017-2021). Do not read a trend from one small municipality."
+  ],
+  "see_also": [
+   "economy.workers_16plus",
+   "economy.gov_worker_pct",
+   "economy.nonprofit_worker_pct",
+   "economy.qcew_jobs",
+   "measures.margin_of_error",
+   "methods.acs_windows",
+   "economy.acs_work_income_tables"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:self_employed_pct"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Workers and commuting): shade municipalities by",
+     "href": "index.html#e=self_employed_pct.f.value.blue.q.1.1.0.85.0"
+    },
+    {
+     "label": "Map, Analysis tab, view 'Government and self-employment' (government share of jobs and self-employed residents)",
+     "href": "index.html#e=gov_job_share_pct.f.value.blue.q.1.1.0.85.0,self_employed_pct.f.value.green.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-03",
+  "example": "In the 2026-10 snapshot, Puerto Rico, 2020-2024: 14.8% (± 0.3 points); 2006-2010: 11.8%. Highest of the 78 municipalities: Vieques, 36.8% (± 13.1 points). Lowest: Maricao, 2.65% (± 3.2 points)."
+ },
+ {
+  "id": "economy.nonprofit_worker_pct",
+  "ask": {"en": ["nonprofit workers", "work for a nonprofit"], "es": ["trabajadores de organizaciones sin fines de lucro", "empleados de organizaciones sin fines de lucro", "trabajan en organizaciones sin fines de lucro", "trabajan para organizaciones sin fines de lucro"]},
+  "name": "Residents working for nonprofits",
+  "domain": "economy",
+  "domains": ["economy"],
+  "group": "Workers and commuting",
+  "kind": "variable",
+  "plain": "Out of every 100 employed residents aged 16 and over, how many work for a nonprofit group. In the 2026-10 snapshot, Puerto Rico: 3.5% in 2020-2024. The share is small, so the value for a single municipality is rough.",
+  "definition": "Private not-for-profit wage and salary workers divided by all employed civilian residents 16 and over, times 100. Source: American Community Survey (ACS) table B24080. The top adds cell 6 (males) and cell 16 (females). The bottom is cell 1, all employed civilians 16 and over. These are employees of organizations that are not run for profit, such as charities, religious groups, and private nonprofit schools and hospitals.",
+  "unit": "% of employed civilian residents 16 and over",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico (island total)",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "Five-year windows, labeled by their last year (2010 = 2006-2010, 2024 = 2020-2024). In the 2026-10 snapshot the windows run from 2006-2010 to 2020-2024, so the Analysis tab's Years line reads 2010-2024 and means fifteen windows, not fifteen calendar years. A new window is added when the Census Bureau publishes it and the file is rebuilt."
+  },
+  "method": "The observatory reads table B24080 for every five-year window from the Census Bureau's summary files: per-sequence files for windows ending 2010 to 2020 and table-based files for windows ending 2021 and later. It keeps the 78 municipio rows and the Puerto Rico row. It adds cells 6 and 16 and divides by cell 1. The margin of error is calculated by the observatory from the published margins of the cells used: margins of summed cells are combined as the square root of the sum of their squares, and the share's margin uses the Census Bureau's formula for a proportion whose numerator is part of its denominator. If that formula would need the square root of a negative number, the observatory uses the Census Bureau's ratio formula instead. Shares are kept to two decimals; the Analysis tab shows one.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "US Census Bureau, American Community Survey 5-year estimates, table B24080 (Sex by Class of Worker for the Civilian Employed Population 16 Years and Over), cells 001, 006 and 016; windows from 2006-2010 to the latest published (2020-2024 in the 2026-10 snapshot).",
+  "how_to_read": "A value of 3 means that 3 of every 100 employed residents worked for a nonprofit. In the 2026-10 snapshot, it fell island-wide from 4.1% in 2006-2010 to 3.5% in 2020-2024. Use it for the island or for large municipalities. The number after the plus-minus sign (±) is the margin of error: with 90% confidence, the true value lies within that distance of the estimate. The Analysis tab prints it in percentage points, for example ±0.4 pts. The percentage is not printed in the Census Bureau's table; the observatory calculates it from the cells named in the definition. To cite it: 'Share calculated by Foundation for Puerto Rico, PR Data Observatory, from US Census Bureau, American Community Survey 5-year estimates 2020-2024, table B24080 (Sex by Class of Worker for the Civilian Employed Population 16 Years and Over), cells 6 and 16 divided by cell 1, Ponce Municipio, Puerto Rico.' To cite the Census Bureau's own numbers, cite the table cells, not the percentage.",
+  "caveats": [
+   "Small shares make the estimates imprecise. In the 2026-10 snapshot, 66 of the 78 municipalities have a margin of error larger than 30% of the estimate for 2020-2024. Do not rank small municipalities on this value.",
+   "San Lorenzo has an unexplained jump. In the 2026-10 snapshot, its share is 2.1% in 2006-2010, 24.6% (margin about ± 3.5 points) in 2013-2017, 20.8% in 2016-2020 and 1.4% in 2020-2024. The data do not explain the rise and fall. Do not rely on San Lorenzo's values for the windows from 2011-2015 to 2017-2021 without comparing them with the Census Bureau's table B24080.",
+   "It counts the employer's type, not the kind of work. A nurse at a nonprofit hospital counts here; a nurse at a government hospital counts under government workers.",
+   "The Puerto Rico share is calculated from the Census Bureau's island-wide counts, not averaged from the 78 municipal shares. In the 2026-10 snapshot, the middle (median) municipality has 2.8% for 2020-2024 and the island value is 3.5%.",
+   "Neighboring windows share four of their five years of survey responses, so the change from one window to the next mostly reflects one year of new responses. To judge real change, compare windows that do not overlap, for example 2012, 2017 and 2022. In some municipalities one new year can move the value a lot. In the 2026-10 snapshot, San Lorenzo goes from 20.84% (2016-2020) to 9.15% (2017-2021). Do not read a trend from one small municipality."
+  ],
+  "see_also": [
+   "economy.workers_16plus",
+   "economy.gov_worker_pct",
+   "economy.self_employed_pct",
+   "measures.margin_of_error",
+   "methods.acs_windows",
+   "economy.acs_work_income_tables"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:nonprofit_worker_pct"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Workers and commuting): shade municipalities by",
+     "href": "index.html#e=nonprofit_worker_pct.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-03",
+  "example": "In the 2026-10 snapshot, Puerto Rico, 2020-2024: 3.5% (± 0.15 points); 2006-2010: 4.1%. Highest of the 78 municipalities: Humacao, 8.3% (± 2.1 points). Lowest: Peñuelas, 0.4% (± 0.4 points)."
+ },
+ {
+  "id": "economy.commute_drive_alone_pct",
+  "name": "Workers who drive alone to work",
+  "domain": "economy",
+  "domains": ["economy", "infrastructure.mobility"],
+  "group": "Workers and commuting",
+  "kind": "variable",
+  "plain": "Out of every 100 workers aged 16 and over, how many usually drive to work alone in a car, truck or van. The base includes people who work from home. In the 2026-10 snapshot, Puerto Rico: 82.6% in 2020-2024.",
+  "definition": "Workers 16 and over whose usual means of getting to work is driving alone in a car, truck or van, divided by all workers 16 and over (including people who worked from home), times 100. Source: American Community Survey (ACS) table B08301. The top is cell 3. The bottom is cell 1. Carpoolers are a separate line (cells 4 to 9) and are not included.",
+  "unit": "% of workers 16 and over (including those who worked from home)",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico (island total)",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "Five-year windows, labeled by their last year (2010 = 2006-2010, 2024 = 2020-2024). In the 2026-10 snapshot the windows run from 2006-2010 to 2020-2024, so the Analysis tab's Years line reads 2010-2024 and means fifteen windows, not fifteen calendar years. A new window is added when the Census Bureau publishes it and the file is rebuilt."
+  },
+  "method": "The observatory reads table B08301 for every five-year window from the Census Bureau's summary files: per-sequence files for windows ending 2010 to 2020 and table-based files for windows ending 2021 and later. It keeps the 78 municipio rows and the Puerto Rico row. It divides cell 3 by cell 1. The margin of error is calculated by the observatory from the published margins of the cells used: margins of summed cells are combined as the square root of the sum of their squares, and the share's margin uses the Census Bureau's formula for a proportion whose numerator is part of its denominator. If that formula would need the square root of a negative number, the observatory uses the Census Bureau's ratio formula instead. Shares are kept to two decimals; the Analysis tab shows one.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "US Census Bureau, American Community Survey 5-year estimates, table B08301 (Means of Transportation to Work), cells 001 and 003; windows from 2006-2010 to the latest published (2020-2024 in the 2026-10 snapshot).",
+  "how_to_read": "A value of 83 means that 83 of every 100 workers usually drove alone to work. In the 2026-10 snapshot, the share rose island-wide from 76.9% in 2006-2010 to 83.4% in 2015-2019 and was 82.6% in 2020-2024. It counts residents by where they live, and says nothing about the distance of the trip. The number after the plus-minus sign (±) is the margin of error: with 90% confidence, the true value lies within that distance of the estimate. The Analysis tab prints it in percentage points, for example ±0.4 pts. The percentage is not printed in the Census Bureau's table; the observatory calculates it from the cells named in the definition. To cite it: 'Share calculated by Foundation for Puerto Rico, PR Data Observatory, from US Census Bureau, American Community Survey 5-year estimates 2020-2024, table B08301 (Means of Transportation to Work), cell 3 divided by cell 1, Ponce Municipio, Puerto Rico.' To cite the Census Bureau's own numbers, cite the table cells, not the percentage.",
+  "caveats": [
+   "The base is all workers 16 and over, including those who worked from home (in the 2026-10 snapshot, 6.1% of Puerto Rico's workers in 2020-2024), so the name says 'workers', not 'commuters'. The value is lower than the share among people who traveled to a workplace.",
+   "The base is the Census table's 'workers 16 and over': people who worked at some time in the reference week, according to the Census Bureau's subject definitions (in the 2026-10 snapshot, 1,119,495 for Puerto Rico in 2020-2024). The class-of-worker table counts all civilian employed people, including those with a job who were temporarily away (1,150,831 in the same window). Do not multiply this share by 'Employed residents 16+ (ACS)'.",
+   "Driving alone is one of several ways to travel. In the 2026-10 snapshot, driving alone, public transportation, walking and working from home together cover 91.9% of Puerto Rico's workers in 2020-2024; the rest carpool, take a taxi, ride a motorcycle or bicycle, or use other means.",
+   "Small municipalities are less precise. In the 2026-10 snapshot, the margin of error for 2020-2024 runs from ±0.9 to ±14.2 points across the 78 municipalities, and none is larger than 30% of the estimate.",
+   "The Puerto Rico share is calculated from the Census Bureau's island-wide counts, not averaged from the 78 municipal shares. In the 2026-10 snapshot, the middle (median) municipality has 86.1% for 2020-2024 and the island value is 82.6%.",
+   "Neighboring windows share four of their five years of survey responses, so the change from one window to the next mostly reflects one year of new responses. To judge real change, compare windows that do not overlap, for example 2012, 2017 and 2022. In some municipalities one new year can move the value a lot. In the 2026-10 snapshot, Culebra goes from 42.96% (2010-2014) to 53.86% (2011-2015). Do not read a trend from one small municipality."
+  ],
+  "see_also": [
+   "economy.commute_transit_pct",
+   "economy.commute_walk_pct",
+   "economy.work_from_home_pct",
+   "economy.commute_45plus_pct",
+   "economy.no_vehicle_hh_pct",
+   "measures.margin_of_error",
+   "methods.acs_windows",
+   "economy.acs_work_income_tables"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:commute_drive_alone_pct"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Workers and commuting): shade municipalities by",
+     "href": "index.html#e=commute_drive_alone_pct.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-03",
+  "example": "In the 2026-10 snapshot, Puerto Rico, 2020-2024: 82.6% (± 0.4 points); 2006-2010: 76.9%. Highest of the 78 municipalities: Juncos, 93.6% (± 2.6 points). Lowest: Vieques, 62.8% (± 14.2 points)."
+ },
+ {
+  "id": "economy.commute_transit_pct",
+  "name": "Workers who take public transportation to work",
+  "domain": "economy",
+  "domains": ["economy", "infrastructure.mobility"],
+  "group": "Workers and commuting",
+  "kind": "variable",
+  "plain": "Out of every 100 workers aged 16 and over, how many usually take public transportation to work. The base includes people who work from home. In the 2026-10 snapshot, Puerto Rico: 0.9% in 2020-2024, down from 3.1% in 2006-2010.",
+  "definition": "Workers 16 and over whose usual means of getting to work is public transportation, divided by all workers 16 and over (including people who worked from home), times 100. Source: American Community Survey (ACS) table B08301. The top is cell 10, 'Public transportation (excluding taxicab)'. It covers bus, subway or elevated rail, train, ferryboat and the carro público line, so riders of carros públicos are counted here. The Census Bureau labels that line 'Light rail, streetcar or trolley (carro público in Puerto Rico)', cell 14, from the window ending 2019, and 'Streetcar or trolley car (carro publico in Puerto Rico)', cell 12, in earlier windows. The bottom is cell 1. Taxicab is a separate line and is not included.",
+  "unit": "% of workers 16 and over (including those who worked from home)",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico (island total)",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "Five-year windows, labeled by their last year (2010 = 2006-2010, 2024 = 2020-2024). In the 2026-10 snapshot the windows run from 2006-2010 to 2020-2024, so the Analysis tab's Years line reads 2010-2024 and means fifteen windows, not fifteen calendar years. A new window is added when the Census Bureau publishes it and the file is rebuilt."
+  },
+  "method": "The observatory reads table B08301 for every five-year window from the Census Bureau's summary files: per-sequence files for windows ending 2010 to 2020 and table-based files for windows ending 2021 and later. It keeps the 78 municipio rows and the Puerto Rico row. It divides cell 10 by cell 1. The margin of error is calculated by the observatory from the published margins of the cells used: margins of summed cells are combined as the square root of the sum of their squares, and the share's margin uses the Census Bureau's formula for a proportion whose numerator is part of its denominator. If that formula would need the square root of a negative number, the observatory uses the Census Bureau's ratio formula instead. Shares are kept to two decimals; the Analysis tab shows one.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "US Census Bureau, American Community Survey 5-year estimates, table B08301 (Means of Transportation to Work), cells 001 and 010; windows from 2006-2010 to the latest published (2020-2024 in the 2026-10 snapshot).",
+  "how_to_read": "A value of 1 means that 1 of every 100 workers usually took public transportation to work. It describes what residents report, not the service available. For service, see the share of residents near a scheduled stop. The number after the plus-minus sign (±) is the margin of error: with 90% confidence, the true value lies within that distance of the estimate. The Analysis tab prints it in percentage points, for example ±0.4 pts. The percentage is not printed in the Census Bureau's table; the observatory calculates it from the cells named in the definition. To cite it: 'Share calculated by Foundation for Puerto Rico, PR Data Observatory, from US Census Bureau, American Community Survey 5-year estimates 2020-2024, table B08301 (Means of Transportation to Work), cell 10 divided by cell 1, Ponce Municipio, Puerto Rico.' To cite the Census Bureau's own numbers, cite the table cells, not the percentage.",
+  "caveats": [
+   "The base is all workers 16 and over, including those who worked from home (in the 2026-10 snapshot, 6.1% of Puerto Rico's workers in 2020-2024), so the name says 'workers', not 'commuters'.",
+   "A value of 0.0 is a sample result, not proof that nobody rides. In the 2026-10 snapshot, 25 of the 78 municipalities show 0.0% for 2020-2024. Orocovis has the highest value, 3.7%, with a margin of ± 2.8 points; San Juan has the second highest, 3.4% (± 0.4 points).",
+   "The base is the Census table's 'workers 16 and over': people who worked at some time in the reference week, according to the Census Bureau's subject definitions (in the 2026-10 snapshot, 1,119,495 for Puerto Rico in 2020-2024). The class-of-worker table counts all civilian employed people, including those with a job who were temporarily away (1,150,831 in the same window). Do not multiply this share by 'Employed residents 16+ (ACS)'.",
+   "Small municipalities are less precise. In the 2026-10 snapshot, the margin of error for 2020-2024 runs from ±0.1 to ±3.2 points across the 78 municipalities, and 76 of the 78 are larger than 30% of the estimate (51 with an estimate above zero, plus the 25 that show 0.0%).",
+   "In the 2026-10 snapshot, the island share fell from 3.1% to 0.9% between the 2006-2010 and 2020-2024 windows. The data do not say why.",
+   "The Puerto Rico share is calculated from the Census Bureau's island-wide counts, not averaged from the 78 municipal shares. In the 2026-10 snapshot, the middle (median) municipality has 0.3% for 2020-2024 and the island value is 0.9%.",
+   "Neighboring windows share four of their five years of survey responses, so the change from one window to the next mostly reflects one year of new responses. To judge real change, compare windows that do not overlap, for example 2012, 2017 and 2022. In some municipalities one new year can move the value a lot. In the 2026-10 snapshot, Cataño goes from 3.78% (2017-2021) to 1.16% (2018-2022). Do not read a trend from one small municipality."
+  ],
+  "see_also": [
+   "economy.commute_drive_alone_pct",
+   "economy.commute_walk_pct",
+   "economy.work_from_home_pct",
+   "economy.commute_45plus_pct",
+   "municipalities.pop_served_pct",
+   "municipalities.transit_stops",
+   "measures.margin_of_error",
+   "methods.acs_windows",
+   "economy.acs_work_income_tables"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:commute_transit_pct"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Workers and commuting): shade municipalities by",
+     "href": "index.html#e=commute_transit_pct.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-03",
+  "example": "In the 2026-10 snapshot, Puerto Rico, 2020-2024: 0.9% (± 0.1 points); 2006-2010: 3.1%. Highest of the 78 municipalities: Orocovis, 3.7% (± 2.8 points). 25 municipalities show 0.0%."
+ },
+ {
+  "id": "economy.commute_walk_pct",
+  "name": "Workers who walk to work",
+  "domain": "economy",
+  "domains": ["economy", "infrastructure.mobility"],
+  "group": "Workers and commuting",
+  "kind": "variable",
+  "plain": "Out of every 100 workers aged 16 and over, how many usually walk to work. The base includes people who work from home. In the 2026-10 snapshot, Puerto Rico: 2.4% in 2020-2024.",
+  "definition": "Workers 16 and over whose usual means of getting to work is walking, divided by all workers 16 and over (including people who worked from home), times 100. Source: American Community Survey (ACS) table B08301. The top is cell 19, 'Walked'. The bottom is cell 1.",
+  "unit": "% of workers 16 and over (including those who worked from home)",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico (island total)",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "Five-year windows, labeled by their last year (2010 = 2006-2010, 2024 = 2020-2024). In the 2026-10 snapshot the windows run from 2006-2010 to 2020-2024, so the Analysis tab's Years line reads 2010-2024 and means fifteen windows, not fifteen calendar years. A new window is added when the Census Bureau publishes it and the file is rebuilt."
+  },
+  "method": "The observatory reads table B08301 for every five-year window from the Census Bureau's summary files: per-sequence files for windows ending 2010 to 2020 and table-based files for windows ending 2021 and later. It keeps the 78 municipio rows and the Puerto Rico row. It divides cell 19 by cell 1. The margin of error is calculated by the observatory from the published margins of the cells used: margins of summed cells are combined as the square root of the sum of their squares, and the share's margin uses the Census Bureau's formula for a proportion whose numerator is part of its denominator. If that formula would need the square root of a negative number, the observatory uses the Census Bureau's ratio formula instead. Shares are kept to two decimals; the Analysis tab shows one.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "US Census Bureau, American Community Survey 5-year estimates, table B08301 (Means of Transportation to Work), cells 001 and 019; windows from 2006-2010 to the latest published (2020-2024 in the 2026-10 snapshot).",
+  "how_to_read": "A value of 2 means that 2 of every 100 workers usually walked to work. In the 2026-10 snapshot, it fell island-wide from 3.9% in 2006-2010 to 2.4% in 2020-2024. Bicycle is a separate line and is not included. The number after the plus-minus sign (±) is the margin of error: with 90% confidence, the true value lies within that distance of the estimate. The Analysis tab prints it in percentage points, for example ±0.4 pts. The percentage is not printed in the Census Bureau's table; the observatory calculates it from the cells named in the definition. To cite it: 'Share calculated by Foundation for Puerto Rico, PR Data Observatory, from US Census Bureau, American Community Survey 5-year estimates 2020-2024, table B08301 (Means of Transportation to Work), cell 19 divided by cell 1, Ponce Municipio, Puerto Rico.' To cite the Census Bureau's own numbers, cite the table cells, not the percentage.",
+  "caveats": [
+   "The base is all workers 16 and over, including those who worked from home (in the 2026-10 snapshot, 6.1% of Puerto Rico's workers in 2020-2024), so the name says 'workers', not 'commuters'.",
+   "The shares are small, so most municipal values are imprecise. In the 2026-10 snapshot, Patillas has the highest value for 2020-2024, 10.8%, with a margin of ± 4.6 points, and Arroyo shows 0.0% (± 0.5 points), a sample result and not proof that nobody walks.",
+   "The base is the Census table's 'workers 16 and over': people who worked at some time in the reference week, according to the Census Bureau's subject definitions (in the 2026-10 snapshot, 1,119,495 for Puerto Rico in 2020-2024). The class-of-worker table counts all civilian employed people, including those with a job who were temporarily away (1,150,831 in the same window). Do not multiply this share by 'Employed residents 16+ (ACS)'.",
+   "Small municipalities are less precise. In the 2026-10 snapshot, the margin of error for 2020-2024 runs from ±0.2 to ±6.5 points across the 78 municipalities, and 74 of the 78 are larger than 30% of the estimate (73 with an estimate above zero, plus Arroyo at 0.0%).",
+   "The Puerto Rico share is calculated from the Census Bureau's island-wide counts, not averaged from the 78 municipal shares. In the 2026-10 snapshot, the middle (median) municipality has 2.2% for 2020-2024 and the island value is 2.4%.",
+   "Neighboring windows share four of their five years of survey responses, so the change from one window to the next mostly reflects one year of new responses. To judge real change, compare windows that do not overlap, for example 2012, 2017 and 2022. In some municipalities one new year can move the value a lot. In the 2026-10 snapshot, Culebra goes from 24.66% (2011-2015) to 16.33% (2012-2016). Do not read a trend from one small municipality."
+  ],
+  "see_also": [
+   "economy.commute_drive_alone_pct",
+   "economy.commute_transit_pct",
+   "economy.work_from_home_pct",
+   "economy.commute_45plus_pct",
+   "measures.margin_of_error",
+   "methods.acs_windows",
+   "economy.acs_work_income_tables"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:commute_walk_pct"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Workers and commuting): shade municipalities by",
+     "href": "index.html#e=commute_walk_pct.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-03",
+  "example": "In the 2026-10 snapshot, Puerto Rico, 2020-2024: 2.4% (± 0.1 points); 2006-2010: 3.9%. Highest of the 78 municipalities: Patillas, 10.8% (± 4.6 points). Lowest: Arroyo, 0.0% (± 0.5 points)."
+ },
+ {
+  "id": "economy.work_from_home_pct",
+  "name": "Workers who work from home",
+  "domain": "economy",
+  "domains": ["economy", "infrastructure.mobility"],
+  "group": "Workers and commuting",
+  "kind": "variable",
+  "plain": "Out of every 100 workers aged 16 and over, how many worked from home. In the 2026-10 snapshot, Puerto Rico: 6.1% in 2020-2024, up from 2.2% in 2006-2010.",
+  "definition": "Workers 16 and over who worked from home, divided by all workers 16 and over, times 100. Source: American Community Survey (ACS) table B08301. The top is cell 21 (labeled 'Worked from home' from the window ending 2019 and 'Worked at home' in earlier windows). The bottom is cell 1.",
+  "unit": "% of workers 16 and over",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico (island total)",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "Five-year windows, labeled by their last year (2010 = 2006-2010, 2024 = 2020-2024). In the 2026-10 snapshot the windows run from 2006-2010 to 2020-2024, so the Analysis tab's Years line reads 2010-2024 and means fifteen windows, not fifteen calendar years. A new window is added when the Census Bureau publishes it and the file is rebuilt."
+  },
+  "method": "The observatory reads table B08301 for every five-year window from the Census Bureau's summary files: per-sequence files for windows ending 2010 to 2020 and table-based files for windows ending 2021 and later. It keeps the 78 municipio rows and the Puerto Rico row. It divides cell 21 by cell 1. The margin of error is calculated by the observatory from the published margins of the cells used: margins of summed cells are combined as the square root of the sum of their squares, and the share's margin uses the Census Bureau's formula for a proportion whose numerator is part of its denominator. If that formula would need the square root of a negative number, the observatory uses the Census Bureau's ratio formula instead. Shares are kept to two decimals; the Analysis tab shows one.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "US Census Bureau, American Community Survey 5-year estimates, table B08301 (Means of Transportation to Work), cells 001 and 021; windows from 2006-2010 to the latest published (2020-2024 in the 2026-10 snapshot).",
+  "how_to_read": "A value of 6 means that 6 of every 100 workers worked from home. In the 2026-10 snapshot, the island share stays between 2.15% and 2.34% in every window from 2006-2010 to 2015-2019, then rises: 3.1% in 2016-2020 and 6.1% in 2020-2024. A five-year window blends earlier and later years, so while the share is rising it lags behind the latest level. The number after the plus-minus sign (±) is the margin of error: with 90% confidence, the true value lies within that distance of the estimate. The Analysis tab prints it in percentage points, for example ±0.4 pts. The percentage is not printed in the Census Bureau's table; the observatory calculates it from the cells named in the definition. To cite it: 'Share calculated by Foundation for Puerto Rico, PR Data Observatory, from US Census Bureau, American Community Survey 5-year estimates 2020-2024, table B08301 (Means of Transportation to Work), cell 21 divided by cell 1, Ponce Municipio, Puerto Rico.' To cite the Census Bureau's own numbers, cite the table cells, not the percentage.",
+  "caveats": [
+   "The shares are small in most municipalities, so values are imprecise. In the 2026-10 snapshot, Vieques has the highest value for 2020-2024, 24.0%, with a margin of ± 10.9 points, and three municipalities (Jayuya, Maunabo and Yabucoa) show 0.0%, a sample result and not proof that nobody works from home.",
+   "Small municipalities are less precise. In the 2026-10 snapshot, the margin of error for 2020-2024 runs from ±0.1 to ±10.9 points across the 78 municipalities, and 59 of the 78 are larger than 30% of the estimate (56 with an estimate above zero, plus the 3 that show 0.0%).",
+   "The base is the Census table's 'workers 16 and over': people who worked at some time in the reference week, according to the Census Bureau's subject definitions (in the 2026-10 snapshot, 1,119,495 for Puerto Rico in 2020-2024). The class-of-worker table counts all civilian employed people, including those with a job who were temporarily away (1,150,831 in the same window). Do not multiply this share by 'Employed residents 16+ (ACS)'.",
+   "Workers who worked from home are also in the base of the other means-of-transportation shares (drive alone, public transportation, walk), but not in the base of the commute-time share.",
+   "The Puerto Rico share is calculated from the Census Bureau's island-wide counts, not averaged from the 78 municipal shares. In the 2026-10 snapshot, the middle (median) municipality has 4.4% for 2020-2024 and the island value is 6.1%.",
+   "Neighboring windows share four of their five years of survey responses, so the change from one window to the next mostly reflects one year of new responses. To judge real change, compare windows that do not overlap, for example 2012, 2017 and 2022. In some municipalities one new year can move the value a lot. In the 2026-10 snapshot, Vieques goes from 6.53% (2015-2019) to 17.54% (2016-2020). Do not read a trend from one small municipality."
+  ],
+  "see_also": [
+   "economy.commute_drive_alone_pct",
+   "economy.commute_transit_pct",
+   "economy.commute_walk_pct",
+   "economy.commute_45plus_pct",
+   "economy.internet_subscription_pct",
+   "measures.margin_of_error",
+   "methods.acs_windows",
+   "economy.acs_work_income_tables"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:work_from_home_pct"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Workers and commuting): shade municipalities by",
+     "href": "index.html#e=work_from_home_pct.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-03",
+  "example": "In the 2026-10 snapshot, Puerto Rico, 2020-2024: 6.1% (± 0.2 points); 2006-2010: 2.2%. Highest of the 78 municipalities: Vieques, 24.0% (± 10.9 points). Lowest: Jayuya, 0.0% (± 0.6 points)."
+ },
+ {
+  "id": "economy.commute_45plus_pct",
+  "name": "Commutes of 45 minutes or more",
+  "domain": "economy",
+  "domains": ["economy", "infrastructure.mobility"],
+  "group": "Workers and commuting",
+  "kind": "variable",
+  "plain": "Out of every 100 workers who travel to a workplace, how many usually need 45 minutes or more to get there. People who work from home are not counted. In the 2026-10 snapshot, Puerto Rico: 18.7% in 2020-2024.",
+  "definition": "Workers 16 and over who did not work from home and whose usual trip to work takes 45 minutes or more, divided by all such workers, times 100. Source: American Community Survey (ACS) table B08303. The top is cells 11 to 13 (45 to 59, 60 to 89 and 90 or more minutes). The bottom is cell 1, all workers who did not work from home.",
+  "unit": "% of workers 16 and over who did not work from home",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico (island total)",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "Five-year windows, labeled by their last year (2010 = 2006-2010, 2024 = 2020-2024). In the 2026-10 snapshot the windows run from 2006-2010 to 2020-2024, so the Analysis tab's Years line reads 2010-2024 and means fifteen windows, not fifteen calendar years. A new window is added when the Census Bureau publishes it and the file is rebuilt."
+  },
+  "method": "The observatory reads table B08303 for every five-year window from the Census Bureau's summary files: per-sequence files for windows ending 2010 to 2020 and table-based files for windows ending 2021 and later. It keeps the 78 municipio rows and the Puerto Rico row. It adds cells 11, 12 and 13 and divides by cell 1. The margin of error is calculated by the observatory from the published margins of the cells used: margins of summed cells are combined as the square root of the sum of their squares, and the share's margin uses the Census Bureau's formula for a proportion whose numerator is part of its denominator. If that formula would need the square root of a negative number, the observatory uses the Census Bureau's ratio formula instead. Shares are kept to two decimals; the Analysis tab shows one.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "US Census Bureau, American Community Survey 5-year estimates, table B08303 (Travel Time to Work), cells 001 and 011-013; windows from 2006-2010 to the latest published (2020-2024 in the 2026-10 snapshot).",
+  "how_to_read": "A value of 19 means that 19 of every 100 workers who travel to work spend 45 minutes or more getting there. In the 2026-10 snapshot, it fell island-wide from 21.8% in 2006-2010 to 18.7% in 2020-2024. The Analysis tab's view 'Job centres and commuting' shades it next to jobs per employed resident. The number after the plus-minus sign (±) is the margin of error: with 90% confidence, the true value lies within that distance of the estimate. The Analysis tab prints it in percentage points, for example ±0.4 pts. The percentage is not printed in the Census Bureau's table; the observatory calculates it from the cells named in the definition. To cite it: 'Share calculated by Foundation for Puerto Rico, PR Data Observatory, from US Census Bureau, American Community Survey 5-year estimates 2020-2024, table B08303 (Travel Time to Work), cells 11 to 13 divided by cell 1, Ponce Municipio, Puerto Rico.' To cite the Census Bureau's own numbers, cite the table cells, not the percentage.",
+  "caveats": [
+   "The base differs from the means-of-transportation shares: it leaves out people who worked from home. The two kinds of shares are not directly comparable.",
+   "The base is the Census table's workers 16 and over who did not work from home (in the 2026-10 snapshot, 1,050,989 for Puerto Rico in 2020-2024): the means-of-transportation total minus those who worked from home. It is not the same count as the civilian employed residents in the class-of-worker table (1,150,831 in the same window). Do not multiply this share by 'Employed residents 16+ (ACS)'.",
+   "It is the usual travel time reported by the worker. It does not give distance, mode or the workplace. A worker can live in one municipality and work in another; the value belongs to the home municipality.",
+   "Small municipalities are less precise. In the 2026-10 snapshot, the margin of error for 2020-2024 runs from ±0.8 to ±8.7 points across the 78 municipalities, and 19 of the 78 are larger than 30% of the estimate (18 with an estimate above zero, plus Vieques, which shows 0.0% (± 1.8 points), a sample result).",
+   "The Puerto Rico share is calculated from the Census Bureau's island-wide counts, not averaged from the 78 municipal shares. In the 2026-10 snapshot, the middle (median) municipality has 18.3% for 2020-2024 and the island value is 18.7%.",
+   "Neighboring windows share four of their five years of survey responses, so the change from one window to the next mostly reflects one year of new responses. To judge real change, compare windows that do not overlap, for example 2012, 2017 and 2022. In some municipalities one new year can move the value a lot. In the 2026-10 snapshot, Manatí goes from 31.65% (2007-2011) to 23.58% (2008-2012). Do not read a trend from one small municipality.",
+   "Different periods side by side. With Year set to Latest, each layer in the view 'Job centres and commuting' uses its own latest period. In the 2026-10 snapshot, the jobs symbols show the 2025 annual average from the Quarterly Census of Employment and Wages (QCEW), while the commute-time and jobs-per-employed-resident layers show the 2020-2024 survey window. Check the year chip in the legend."
+  ],
+  "see_also": [
+   "economy.commute_drive_alone_pct",
+   "economy.commute_transit_pct",
+   "economy.work_from_home_pct",
+   "economy.jobs_per_employed_resident",
+   "measures.margin_of_error",
+   "methods.acs_windows",
+   "economy.acs_work_income_tables",
+   "methods.workplace_vs_residence"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:commute_45plus_pct"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Workers and commuting): shade municipalities by",
+     "href": "index.html#e=commute_45plus_pct.f.value.blue.q.1.1.0.85.0"
+    },
+    {
+     "label": "Map, Analysis tab, view 'Job centres and commuting' (jobs per employed resident, 45-minute commutes, jobs)",
+     "href": "index.html#e=jobs_per_employed_resident.f.value.blue.q.1.1.0.85.0,commute_45plus_pct.f.value.green.q.1.1.0.85.0,qcew_jobs.s.value.blue.q.1.1.0.75.0"
+    }
+   ]
+  },
+  "added": "2026-10-03",
+  "example": "In the 2026-10 snapshot, Puerto Rico, 2020-2024: 18.7% (± 0.35 points); 2006-2010: 21.8%. Highest of the 78 municipalities: Naranjito, 41.0% (± 6.7 points). Lowest: Vieques, 0.0% (± 1.8 points)."
+ },
+ {
+  "id": "economy.no_vehicle_hh_pct",
+  "name": "Households with no vehicle",
+  "domain": "infrastructure.mobility",
+  "domains": ["infrastructure.mobility", "housing"],
+  "group": "Vehicles and internet",
+  "kind": "variable",
+  "plain": "Out of every 100 households, how many have no car, truck or van available. In the 2026-10 snapshot, Puerto Rico: 13.0% in 2020-2024, down from 20.3% in 2006-2010.",
+  "definition": "Households with no vehicle available, divided by all households (occupied housing units), times 100. Source: American Community Survey (ACS) table B25044. The top adds cell 3 (owner-occupied homes with no vehicle) and cell 10 (renter-occupied homes with no vehicle). The bottom is cell 1, all occupied housing units.",
+  "unit": "% of households (occupied housing units)",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico (island total); also 901 barrios and 981 census tracts",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "Five-year windows, labeled by their last year (2010 = 2006-2010, 2024 = 2020-2024). In the 2026-10 snapshot the windows run from 2006-2010 to 2020-2024, so the Analysis tab's Years line reads 2010-2024 and means fifteen windows, not fifteen calendar years. A new window is added when the Census Bureau publishes it and the file is rebuilt."
+  },
+  "method": "The observatory reads table B25044 for every five-year window from the Census Bureau's summary files: per-sequence files for windows ending 2010 to 2020 and table-based files for windows ending 2021 and later. It keeps the 78 municipio rows and the Puerto Rico row. It adds cells 3 and 10 and divides by cell 1. The margin of error is calculated by the observatory from the published margins of the cells used: margins of summed cells are combined as the square root of the sum of their squares, and the share's margin uses the Census Bureau's formula for a proportion whose numerator is part of its denominator. If that formula would need the square root of a negative number, the observatory uses the Census Bureau's ratio formula instead. Shares are kept to two decimals; the Analysis tab shows one.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "US Census Bureau, American Community Survey 5-year estimates, table B25044 (Tenure by Vehicles Available), cells 001, 003 and 010; windows from 2006-2010 to the latest published (2020-2024 in the 2026-10 snapshot).",
+  "how_to_read": "A value of 13 means that 13 of every 100 households had no vehicle available. It is a count of households, not of people, and it says nothing about whether a household wants a vehicle or has transit nearby. For transit access, see the share of residents near a scheduled stop. The number after the plus-minus sign (±) is the margin of error: with 90% confidence, the true value lies within that distance of the estimate. The Analysis tab prints it in percentage points, for example ±0.4 pts. The percentage is not printed in the Census Bureau's table; the observatory calculates it from the cells named in the definition. To cite it: 'Share calculated by Foundation for Puerto Rico, PR Data Observatory, from US Census Bureau, American Community Survey 5-year estimates 2020-2024, table B25044 (Tenure by Vehicles Available), cells 3 and 10 divided by cell 1, Ponce Municipio, Puerto Rico.' To cite the Census Bureau's own numbers, cite the table cells, not the percentage.",
+  "caveats": [
+   "It counts occupied homes only. Empty homes are not in the base.",
+   "Small municipalities are less precise. In the 2026-10 snapshot, the margin of error for 2020-2024 runs from ±0.8 to ±8.1 points across the 78 municipalities, and 8 of the 78 are larger than 30% of the estimate. In the same snapshot, San Juan has the highest value for 2020-2024, 20.78% (± 0.85 points), and Toa Alta the lowest, 5.5% (± 1.0 points).",
+   "The Puerto Rico share is calculated from the Census Bureau's island-wide counts, not averaged from the 78 municipal shares. In the 2026-10 snapshot, the middle (median) municipality has 11.9% for 2020-2024 and the island value is 13.0%.",
+   "Neighboring windows share four of their five years of survey responses, so the change from one window to the next mostly reflects one year of new responses. To judge real change, compare windows that do not overlap, for example 2012, 2017 and 2022. In some municipalities one new year can move the value a lot. In the 2026-10 snapshot, Culebra goes from 17.18% (2017-2021) to 24.16% (2018-2022). Do not read a trend from one small municipality.",
+   "Also published for barrios and census tracts (acs_barrio.json and acs_tract.json), each value with its margin of error where the Census Bureau gives one. Below the municipality the figure is rough. In 2020-2024 the margin of error is above 30% of the estimate (the CSV by area marks such values as less reliable; no map or table draws areas below the municipality yet) for 93% of barrios and 96% of census tracts that have a value. See methods.small_area_estimates."
+  ],
+  "see_also": [
+   "housing.households",
+   "economy.commute_drive_alone_pct",
+   "economy.commute_transit_pct",
+   "municipalities.pop_served_pct",
+   "measures.margin_of_error",
+   "methods.acs_windows",
+   "economy.acs_work_income_tables",
+   "methods.small_area_estimates"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:no_vehicle_hh_pct",
+    "acs_barrio.json:no_vehicle_hh_pct",
+    "acs_tract.json:no_vehicle_hh_pct"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Workers and commuting): shade municipalities by",
+     "href": "index.html#e=no_vehicle_hh_pct.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-03",
+  "example": "In the 2026-10 snapshot, Puerto Rico, 2020-2024: 13.0% (± 0.2 points); 2006-2010: 20.3%. Highest of the 78 municipalities: San Juan, 20.78% (± 0.85 points). Lowest: Toa Alta, 5.5% (± 1.0 points)."
+ },
+ {
+  "id": "economy.internet_subscription_pct",
+  "name": "Households with an internet subscription",
+  "domain": "infrastructure",
+  "domains": ["infrastructure", "housing"],
+  "group": "Vehicles and internet",
+  "kind": "variable",
+  "plain": "Out of every 100 households, how many pay for any kind of internet service, including a cellular data plan. In the 2026-10 snapshot, Puerto Rico: 81.4% in 2020-2024, up from 53.8% in 2013-2017.",
+  "definition": "Households with an internet subscription of any type divided by all households, times 100 (American Community Survey, ACS, table B28002: cell 2, 'With an Internet subscription', over cell 1, all households). Cell 2 includes dial-up, broadband of any type (cable, fiber optic, DSL, satellite) and a cellular data plan, alone or with others. The series starts with the 2013-2017 window, which the Analysis tab shows under the label 2017.",
+  "unit": "% of households",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico (island total); also 901 barrios and 981 census tracts",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2017,
+   "last": 2024,
+   "frequency": "Five-year windows, labeled by their last year. The first is 2013-2017 (labeled 2017). In the 2026-10 snapshot the last is 2020-2024, so the Analysis tab's Years line reads 2017-2024 and means eight windows, not eight calendar years. A new window is added when the Census Bureau publishes it and the file is rebuilt."
+  },
+  "method": "The observatory reads table B28002 for every five-year window from the Census Bureau's summary files: per-sequence files for windows ending 2010 to 2020 and table-based files for windows ending 2021 and later. It keeps the 78 municipio rows and the Puerto Rico row. It divides cell 2 by cell 1. The margin of error is calculated by the observatory from the published margins of the cells used: margins of summed cells are combined as the square root of the sum of their squares, and the share's margin uses the Census Bureau's formula for a proportion whose numerator is part of its denominator. If that formula would need the square root of a negative number, the observatory uses the Census Bureau's ratio formula instead. Shares are kept to two decimals; the Analysis tab shows one. The series starts with the 2013-2017 window (labeled 2017). The Census Bureau's Puerto Rico summary files for windows ending 2010 to 2016 do not contain table B28002, so no earlier value exists.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "US Census Bureau, American Community Survey 5-year estimates, table B28002 (Presence and Types of Internet Subscriptions in Household), cells 001 and 002; windows from 2013-2017 to the latest published (2020-2024 in the 2026-10 snapshot).",
+  "how_to_read": "A value of 81 means that 81 of every 100 households had an internet subscription. A household that has only a cellular data plan counts as subscribed, so the share does not tell you how many homes have fixed broadband. In the 2026-10 snapshot, the change from 53.8% to 81.4% between 2013-2017 and 2020-2024 is large next to the margins. The number after the plus-minus sign (±) is the margin of error: with 90% confidence, the true value lies within that distance of the estimate. The Analysis tab prints it in percentage points, for example ±0.4 pts. The percentage is not printed in the Census Bureau's table; the observatory calculates it from the cells named in the definition. To cite it: 'Share calculated by Foundation for Puerto Rico, PR Data Observatory, from US Census Bureau, American Community Survey 5-year estimates 2020-2024, table B28002 (Presence and Types of Internet Subscriptions in Household), cell 2 divided by cell 1, Ponce Municipio, Puerto Rico.' To cite the Census Bureau's own numbers, cite the table cells, not the percentage.",
+  "caveats": [
+   "The series starts with the 2013-2017 window, shown under the label 2017. The Census Bureau's Puerto Rico summary files for windows ending 2010 to 2016 do not contain table B28002, so no earlier value exists. The data do not show whether households were asked the internet questions in every year of the first window, so check the Census Bureau's documentation before you treat it as a full five-year window.",
+   "If you choose a year before 2017 on the Analysis tab, the map shows the 2013-2017 value and labels it 'first data 2017'. There is no earlier value.",
+   "Windows that include 2017 (2013-2017 to 2017-2021) or 2020 (2016-2020 to 2020-2024) carry survey disruption: see 'Census tables behind the income, worker, commuting and internet figures' (economy.acs_work_income_tables). The change between windows mixes real change with these effects.",
+   "This share and the share with no internet access do not add to 100. In the 2026-10 snapshot, the rest are households with internet access but no subscription (cell 12): 1.7% in Puerto Rico for 2020-2024 and 3.2% for 2013-2017.",
+   "Small municipalities are less precise. In the 2026-10 snapshot, the margin of error for 2020-2024 runs from ±0.8 to ±9.3 points across the 78 municipalities, and none is larger than 30% of the estimate. In the same snapshot, Las Marías has the lowest value for 2020-2024, 38.3% (± 5.8 points).",
+   "The Puerto Rico share is calculated from the Census Bureau's island-wide counts, not averaged from the 78 municipal shares. In the 2026-10 snapshot, the middle (median) municipality has 81.5% for 2020-2024 and the island value is 81.4%.",
+   "Neighboring windows share four of their five years of survey responses, so the change from one window to the next mostly reflects one year of new responses. To judge real change, compare windows that do not overlap, for example 2017 and 2022. In some municipalities one new year can move the value a lot. In the 2026-10 snapshot, Cabo Rojo goes from 39.06% (2016-2020) to 52.64% (2017-2021). Do not read a trend from one small municipality.",
+   "Also published for barrios and census tracts (acs_barrio.json and acs_tract.json), each value with its margin of error where the Census Bureau gives one. Below the municipality the figure is rough. In 2020-2024 the margin of error is above 30% of the estimate (the CSV by area marks such values as less reliable; no map or table draws areas below the municipality yet) for 16% of barrios and less than 1% of census tracts that have a value. See methods.small_area_estimates."
+  ],
+  "see_also": [
+   "economy.no_internet_pct",
+   "economy.work_from_home_pct",
+   "housing.households",
+   "measures.margin_of_error",
+   "methods.acs_windows",
+   "economy.acs_work_income_tables",
+   "methods.small_area_estimates"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:internet_subscription_pct",
+    "acs_barrio.json:internet_subscription_pct",
+    "acs_tract.json:internet_subscription_pct"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Workers and commuting): shade municipalities by",
+     "href": "index.html#e=internet_subscription_pct.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-03",
+  "example": "In the 2026-10 snapshot, Puerto Rico: 81.4% (± 0.2 points) in 2020-2024 and 53.8% in 2013-2017. Highest of the 78 municipalities in 2020-2024: Juana Díaz, 91.5% (± 0.8 points). Lowest: Las Marías, 38.3% (± 5.8 points)."
+ },
+ {
+  "id": "economy.no_internet_pct",
+  "name": "Households with no internet access",
+  "domain": "infrastructure",
+  "domains": ["infrastructure", "housing"],
+  "group": "Vehicles and internet",
+  "kind": "variable",
+  "plain": "Out of every 100 households, how many report no internet access of any kind: no paid subscription and no free access. In the 2026-10 snapshot, Puerto Rico: 16.9% in 2020-2024, down from 43.0% in 2013-2017.",
+  "definition": "Households with no internet access divided by all households, times 100 (American Community Survey, ACS, table B28002: cell 13, 'No Internet access', over cell 1, all households). Households that use the internet without paying for a subscription are in cell 12 and are not counted here. The series starts with the 2013-2017 window, which the Analysis tab shows under the label 2017.",
+  "unit": "% of households",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico (island total); also 901 barrios and 981 census tracts",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2017,
+   "last": 2024,
+   "frequency": "Five-year windows, labeled by their last year. The first is 2013-2017 (labeled 2017). In the 2026-10 snapshot the last is 2020-2024, so the Analysis tab's Years line reads 2017-2024 and means eight windows, not eight calendar years. A new window is added when the Census Bureau publishes it and the file is rebuilt."
+  },
+  "method": "The observatory reads table B28002 for every five-year window from the Census Bureau's summary files: per-sequence files for windows ending 2010 to 2020 and table-based files for windows ending 2021 and later. It keeps the 78 municipio rows and the Puerto Rico row. It divides cell 13 by cell 1. The margin of error is calculated by the observatory from the published margins of the cells used: margins of summed cells are combined as the square root of the sum of their squares, and the share's margin uses the Census Bureau's formula for a proportion whose numerator is part of its denominator. If that formula would need the square root of a negative number, the observatory uses the Census Bureau's ratio formula instead. Shares are kept to two decimals; the Analysis tab shows one. The series starts with the 2013-2017 window (labeled 2017). The Census Bureau's Puerto Rico summary files for windows ending 2010 to 2016 do not contain table B28002, so no earlier value exists.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "US Census Bureau, American Community Survey 5-year estimates, table B28002 (Presence and Types of Internet Subscriptions in Household), cells 001 and 013; windows from 2013-2017 to the latest published (2020-2024 in the 2026-10 snapshot).",
+  "how_to_read": "A value of 17 means that 17 of every 100 households had no internet access. In the 2026-10 snapshot, it fell island-wide from 43.0% in 2013-2017 to 16.9% in 2020-2024. It is not the opposite of the subscription share: the two do not add to 100. The number after the plus-minus sign (±) is the margin of error: with 90% confidence, the true value lies within that distance of the estimate. The Analysis tab prints it in percentage points, for example ±0.4 pts. The percentage is not printed in the Census Bureau's table; the observatory calculates it from the cells named in the definition. To cite it: 'Share calculated by Foundation for Puerto Rico, PR Data Observatory, from US Census Bureau, American Community Survey 5-year estimates 2020-2024, table B28002 (Presence and Types of Internet Subscriptions in Household), cell 13 divided by cell 1, Ponce Municipio, Puerto Rico.' To cite the Census Bureau's own numbers, cite the table cells, not the percentage.",
+  "caveats": [
+   "The series starts with the 2013-2017 window, shown under the label 2017. The Census Bureau's Puerto Rico summary files for windows ending 2010 to 2016 do not contain table B28002, so no earlier value exists. The data do not show whether households were asked the internet questions in every year of the first window, so check the Census Bureau's documentation before you treat it as a full five-year window.",
+   "If you choose a year before 2017 on the Analysis tab, the map shows the 2013-2017 value and labels it 'first data 2017'. There is no earlier value.",
+   "Windows that include 2017 (2013-2017 to 2017-2021) or 2020 (2016-2020 to 2020-2024) carry survey disruption: see 'Census tables behind the income, worker, commuting and internet figures' (economy.acs_work_income_tables). The change between windows mixes real change with these effects.",
+   "This share and the share with a subscription do not add to 100. In the 2026-10 snapshot, the rest are households with internet access but no subscription (cell 12): 1.7% in Puerto Rico for 2020-2024 and 3.2% for 2013-2017.",
+   "Small municipalities are less precise. In the 2026-10 snapshot, the margin of error for 2020-2024 runs from ±0.8 to ±8.5 points across the 78 municipalities, and 3 of the 78 are larger than 30% of the estimate. In the same snapshot, Maricao has the highest value for 2020-2024, 60.5% (± 6.8 points), and Juana Díaz the lowest, 7.4% (± 1.3 points).",
+   "It says that a household has no internet access. It does not say why, and it does not show speed, price or reliability.",
+   "The Puerto Rico share is calculated from the Census Bureau's island-wide counts, not averaged from the 78 municipal shares. In the 2026-10 snapshot, the middle (median) municipality has 17.2% for 2020-2024 and the island value is 16.9%.",
+   "Neighboring windows share four of their five years of survey responses, so the change from one window to the next mostly reflects one year of new responses. To judge real change, compare windows that do not overlap, for example 2017 and 2022. In some municipalities one new year can move the value a lot. In the 2026-10 snapshot, Cabo Rojo goes from 59.90% (2016-2020) to 45.23% (2017-2021). Do not read a trend from one small municipality.",
+   "Also published for barrios and census tracts (acs_barrio.json and acs_tract.json), each value with its margin of error where the Census Bureau gives one. Below the municipality the figure is rough. In 2020-2024 the margin of error is above 30% of the estimate (the CSV by area marks such values as less reliable; no map or table draws areas below the municipality yet) for 85% of barrios and 89% of census tracts that have a value. See methods.small_area_estimates."
+  ],
+  "see_also": [
+   "economy.internet_subscription_pct",
+   "economy.work_from_home_pct",
+   "housing.households",
+   "measures.margin_of_error",
+   "methods.acs_windows",
+   "economy.acs_work_income_tables",
+   "methods.small_area_estimates"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:no_internet_pct",
+    "acs_barrio.json:no_internet_pct",
+    "acs_tract.json:no_internet_pct"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Workers and commuting): shade municipalities by",
+     "href": "index.html#e=no_internet_pct.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-03",
+  "example": "In the 2026-10 snapshot, Puerto Rico: 16.9% (± 0.2 points) in 2020-2024 and 43.0% in 2013-2017. Highest of the 78 municipalities in 2020-2024: Maricao, 60.5% (± 6.8 points). Lowest: Juana Díaz, 7.4% (± 1.3 points)."
+ },
+ {
+  "id": "economy.laus_method",
+  "name": "How the unemployment figures are built",
+  "domain": "economy",
+  "domains": ["economy"],
+  "group": "Labor force",
+  "kind": "method",
+  "plain": "The observatory's unemployment figures are yearly averages of Bureau of Labor Statistics (BLS) estimates for the residents of each municipality and for Puerto Rico; the observatory calculates the employed and unemployed counts itself. There is no 2020 value.",
+  "definition": "Four variables come from the Bureau of Labor Statistics (BLS) Local Area Unemployment Statistics (LAUS) program: the unemployment rate and the labor force are BLS series; the employed and unemployed counts are calculated by the observatory from those two. All four are yearly averages for residents, by where they live. For municipalities they are Bureau estimates built from local administrative and survey data and controlled to state totals, not direct counts.",
+  "unit": "not applicable (method)",
+  "value_type": "text",
+  "geography": "78 municipalities and Puerto Rico (island total)",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2010,
+   "last": 2025,
+   "frequency": "One annual average per year, except 2020, which has no value. The observatory requests every year from 2010 to the last full calendar year, so a new year appears at the next rebuild. In the 2026-10 snapshot the series runs from 2010 to 2025."
+  },
+  "method": "1. Series. For each municipality: LAUCN72xxx0000000003 (measure 03, unemployment rate) and LAUCN72xxx0000000006 (measure 06, labor force), where 72xxx is the municipality's five-digit code (San Juan is 72127). For Puerto Rico: LASST720000000000003 and LASST720000000000006. The observatory asks the BLS public data interface (API, version 1, no key) with the annual-average option for every year from 2010 to the last full calendar year. 2. Annual averages. For municipalities the observatory stores BLS's own annual average (period M13, the code BLS uses for the annual average): the rate to one decimal, the labor force as a whole number. For Puerto Rico the BLS data hold no published annual average, so the observatory takes the simple mean of the twelve monthly values; the island rate therefore carries more decimals and the island labor force is rounded to a whole person. 3. Derived counts. Unemployed = round(labor force × rate ÷ 100). Employed = round(labor force) − unemployed. Because BLS publishes the rate to one decimal, a derived count can be off by up to 0.05% of the labor force.",
+  "sources": [
+   "bls_laus"
+  ],
+  "source_detail": "BLS Local Area Unemployment Statistics (LAUS), annual averages from 2010, through the BLS public data interface (API) at https://api.bls.gov/publicAPI/v1/timeseries/data/. Estimation method: https://www.bls.gov/lau/laumthd.htm. BLS technical note: https://www.bls.gov/news.release/laus.tn.htm. Definitions: https://www.bls.gov/cps/definitions.htm. Series codes: https://www.bls.gov/help/hlpforma.htm.",
+  "how_to_read": "Use the rate to compare places and years; use the counts to show how many people are affected. For small municipalities, read the trend over several years, not one year. On the Analysis tab, when the chosen year has no value, the map shows the latest earlier year and labels it (for 2020, '2019 (latest at or before 2020)'). The workbench trend chart lists only the years that have data. In the inspector, the small trend line spaces years by the calendar. The caption under it gives the length of the trend in years, the number of values when years are missing, and the first and last year: in the 2026-10 snapshot, an unemployment series reads '16 yrs, 15 values · 2010–25'. The info (i) button beside a dataset opens its definition and sources, links to its entry in this dictionary and offers a CSV of every year. To cite BLS data, give the series ID, the year, the program and the retrieval date: 'US Bureau of Labor Statistics, Local Area Unemployment Statistics, series LAUCN721270000000003 (San Juan Municipio, Puerto Rico), annual average 2024, retrieved [date].' For Puerto Rico, cite the average of the twelve monthly values of series LASST720000000000003 and say that Foundation for Puerto Rico's PR Data Observatory calculated it. For the employed and unemployed counts, say that the observatory derived them.",
+  "caveats": [
+   "The estimates are not a head count and not a separate survey of each municipality. For municipalities they are a Bureau estimate built from local administrative and survey data and controlled to state totals. BLS's county-method page describes how it builds county estimates (from employment and claims data, controlled to state totals) but does not say how Puerto Rico's municipio estimates are made. BLS's technical note says Puerto Rico's island estimates come from a monthly household survey similar to the Current Population Survey.",
+   "Small municipalities swing. In the 2026-10 snapshot, across pairs of consecutive years (2019 to 2021 is left out), the median size of the change in a municipality's rate, ignoring direction and using the labor force of the later year, is 1.9 points where the labor force is under 3,000 (46 year pairs, five municipalities), 1.1 points between 3,000 and 20,000 and 0.7 points over 20,000 (141 year pairs, 11 municipalities).",
+   "The observatory's data hold no margin of error for these BLS series, so the Analysis tab shows none. Treat small municipalities as imprecise anyway.",
+   "The latest year is preliminary and can be revised (2025 in the 2026-10 snapshot). Check the current BLS figure before you quote it.",
+   "No 2020 value. For 2020 the BLS data held an annual-average row with no number for any municipality. The observatory does not fall back to monthly values when that row is present, so it cannot say whether BLS published monthly values for municipalities in 2020. For Puerto Rico the BLS data had no complete set of twelve monthly values. So there is no 2020 value, and the observatory does not estimate one. The data do not say why.",
+   "The island row is the island series, not the sum of the 78 municipalities. In the 2026-10 snapshot, in every year with data the island labor force is within 0.4% of the municipal sum and the island unemployed count within 0.9%.",
+   "The series are for residents. They do not show where the jobs are; for that, see the Quarterly Census of Employment and Wages (QCEW) series.",
+   "In BLS series codes, LAUCN is the county series that is not seasonally adjusted and LASST is the state series that is seasonally adjusted, so the island row and the municipal rows are built differently.",
+   "Not comparable with the survey rates 'Unemployment rate' (housing.unemployment_rate_pct) and 'Employment rate (16 and over)' (housing.employment_rate_pct). They come from the American Community Survey (ACS) and appear on the Analysis tab, as 'Unemployment rate (ACS survey)' and 'Employment rate, residents 16+ (ACS)', and on the Housing page."
+  ],
+  "see_also": [
+   "economy.laus_unemp_rate",
+   "economy.laus_labor_force",
+   "economy.laus_employed",
+   "economy.laus_unemployed",
+   "housing.unemployment_rate_pct",
+   "housing.employment_rate_pct",
+   "methods.workplace_vs_residence"
+  ],
+  "where": {
+   "files": []
+  },
+  "added": "2026-10-03"
+ },
+ {
+  "id": "economy.acs_work_income_tables",
+  "name": "Census tables behind the income, worker, commuting and internet figures",
+  "domain": "system.docs",
+  "domains": ["system.docs"],
+  "group": "Survey tables",
+  "kind": "method",
+  "plain": "Use this list to find the Census Bureau table and cells behind each income, worker, commuting, vehicle and internet figure on the Analysis tab. It helps you cite the original numbers. The 'Code' column lists variable ids, not coded values.",
+  "definition": "In Puerto Rico the American Community Survey (ACS) is called the Puerto Rico Community Survey (PRCS). The Codes list gives, for each variable on the Analysis tab, the ACS table, who is counted and the cells used. 'Cell 1' is the first line of the table, and table numbers and titles are the Census Bureau's own.",
+  "unit": "not applicable (method)",
+  "value_type": "text",
+  "geography": "78 municipalities and Puerto Rico (island total)",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "Five-year windows, labeled by their last year (the Years line shows each window's last year). In the 2026-10 snapshot they run from 2006-2010 to 2020-2024. Table B28002 starts with 2013-2017, labeled 2017."
+  },
+  "method": "The observatory lists the tables and the number of cells each must have (B19083: 1, B19001: 17, B08301: 21, B08303: 13, B25044: 15, B28002: 13, B24080: 21). Before it publishes, the observatory checks that each table has the expected number of cells, and a mismatch stops the update. The one exception is table B28002 (internet): a vintage that lacks it or lays it out differently is left out without stopping the update. The observatory reads the Census Bureau's per-sequence summary files for windows ending 2010 to 2020 and its table-based summary files for windows ending 2021 and later, for the 78 municipio rows and the Puerto Rico row. Table B28002 is not in the Puerto Rico summary files for windows ending 2010 to 2016, so the internet figures start with 2013-2017. Shares are calculated by the observatory; their margins of error follow the Census Bureau's formulas (margins of summed cells are combined as the square root of the sum of their squares; a share whose numerator is part of its denominator uses the proportion formula).",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "US Census Bureau, ACS 5-year summary files: https://www2.census.gov/programs-surveys/acs/summary_file/. To find a table by its number: https://data.census.gov/",
+  "how_to_read": "To cite a number from the Census Bureau, give the table, the window and the geography, for example 'US Census Bureau, American Community Survey 5-year estimates 2020-2024, table B25044, Ponce Municipio, Puerto Rico'. The percentage shares are not printed in the Census Bureau's tables: the observatory calculates them, so cite the observatory for a share and the cells for the Census Bureau's own counts. On the Analysis tab, the info (i) button beside a dataset opens its definition and sources, links to its entry in this dictionary and offers a CSV of every year, with the margins of error. In the downloaded CSV, the column headed 2024 is the 2020-2024 window and the column '2024 margin of error' holds its margin. In economy_series.json, find the variable under 'vars' by its key; 'years' and 'moe' hold one list per window, in the order of 'geo.names' (Puerto Rico is last). The trend line and the trend chart plot one point per window, labeled by its last year. Under each trend line in the inspector, the caption gives the length of the trend and the first and last label; for these survey series it counts windows, not separate years of data (in the 2026-10 snapshot, '15 yrs · 2010–24'). Neighboring points share four of their five survey years, so they are not independent yearly values.",
+  "caveats": [
+   "Income bands in B19001 are in the dollars of the window's last year: the Census Bureau states the table in inflation-adjusted dollars of that year. The observatory does not convert one window's dollars to another's.",
+   "The means-of-transportation shares use all workers as the base, including those who worked from home. The travel-time share uses workers who did not work from home. Neither base is the same count as the civilian employed residents in the class-of-worker table.",
+   "Margins of error are published at the 90% confidence level and cover sampling error only.",
+   "Windows that include 2017 or 2020 carry survey disruption. The Census Bureau says it halted Puerto Rico Community Survey data collection from October to December 2017 after Hurricane María (https://www.census.gov/library/stories/2020/08/estimating-puerto-rico-population-after-hurricane-maria.html). It also says margins of error for 5-year estimates that include 2020 data rose because fewer interviews were completed in 2020 (https://www.census.gov/programs-surveys/acs/technical-documentation/user-notes/2022-04.html). The windows ending 2017 to 2021 include 2017 and the windows ending 2020 to 2024 include 2020. The observatory makes no adjustment.",
+   "Neighboring windows share four of their five years of survey responses, so the change from one window to the next mostly reflects one year of new responses."
+  ],
+  "see_also": [
+   "municipalities.acs_table_map",
+   "measures.margin_of_error",
+   "methods.acs_windows",
+   "measures.inflation_adjustment",
+   "economy.gini",
+   "economy.hh_income_under_25k_pct",
+   "economy.workers_16plus",
+   "economy.commute_drive_alone_pct",
+   "economy.no_vehicle_hh_pct",
+   "economy.internet_subscription_pct"
+  ],
+  "where": {
+   "files": []
+  },
+  "added": "2026-10-03",
+  "values": {
+   "gini": "Table B19083, Gini Index of Income Inequality. Households. Cell 1.",
+   "hh_income_under_25k_pct": "Table B19001, Household Income in the Past 12 Months (in inflation-adjusted dollars of the window's last year). Households. Cells 2 to 5 divided by cell 1.",
+   "hh_income_75k_plus_pct": "Table B19001, Household Income in the Past 12 Months (in inflation-adjusted dollars of the window's last year). Households. Cells 13 to 17 divided by cell 1.",
+   "workers_16plus": "Table B24080, Sex by Class of Worker for the Civilian Employed Population 16 Years and Over. Civilian employed residents 16 and over. Cell 1.",
+   "gov_worker_pct": "Table B24080, Sex by Class of Worker for the Civilian Employed Population 16 Years and Over. Civilian employed residents 16 and over. Cells 7, 8, 9, 17, 18 and 19 divided by cell 1.",
+   "self_employed_pct": "Table B24080, Sex by Class of Worker for the Civilian Employed Population 16 Years and Over. Civilian employed residents 16 and over. Cells 5, 10, 15 and 20 divided by cell 1.",
+   "nonprofit_worker_pct": "Table B24080, Sex by Class of Worker for the Civilian Employed Population 16 Years and Over. Civilian employed residents 16 and over. Cells 6 and 16 divided by cell 1.",
+   "commute_drive_alone_pct": "Table B08301, Means of Transportation to Work. Workers 16 and over, including those who worked from home. Cell 3 divided by cell 1.",
+   "commute_transit_pct": "Table B08301, Means of Transportation to Work. Workers 16 and over, including those who worked from home. Cell 10 divided by cell 1.",
+   "commute_walk_pct": "Table B08301, Means of Transportation to Work. Workers 16 and over, including those who worked from home. Cell 19 divided by cell 1.",
+   "work_from_home_pct": "Table B08301, Means of Transportation to Work. Workers 16 and over, including those who worked from home. Cell 21 divided by cell 1.",
+   "commute_45plus_pct": "Table B08303, Travel Time to Work. Workers 16 and over who did not work from home. Cells 11 to 13 divided by cell 1.",
+   "no_vehicle_hh_pct": "Table B25044, Tenure by Vehicles Available. Occupied housing units (households). Cells 3 and 10 divided by cell 1.",
+   "internet_subscription_pct": "Table B28002, Presence and Types of Internet Subscriptions in Household. Households. Cell 2 divided by cell 1. First window: 2013-2017.",
+   "no_internet_pct": "Table B28002, Presence and Types of Internet Subscriptions in Household. Households. Cell 13 divided by cell 1. First window: 2013-2017."
+  }
+ }
+]

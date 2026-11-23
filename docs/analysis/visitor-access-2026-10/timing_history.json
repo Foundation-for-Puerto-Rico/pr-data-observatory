@@ -1,0 +1,52 @@
+[
+ {
+  "run": "earlier run 1 (scripts run one by one)",
+  "seeded": true,
+  "island_search_s": 3.6,
+  "graph_load_s": 12.1,
+  "island_end_to_end_s": 17.7,
+  "pbf_read_s": 45.6,
+  "tier1_total_s": 5.3,
+  "drive_graph_s": 12.1
+ },
+ {
+  "run": "earlier run 2 (run_all.py)",
+  "seeded": true,
+  "island_search_s": 1.6,
+  "graph_load_s": 6.0,
+  "island_end_to_end_s": 8.5,
+  "pbf_read_s": 17.9,
+  "tier1_total_s": null,
+  "drive_graph_s": 7.3
+ },
+ {
+  "run": "earlier run 3 (run_all.py, busy machine)",
+  "seeded": true,
+  "island_search_s": 4.5,
+  "graph_load_s": 18.5,
+  "island_end_to_end_s": 25.6,
+  "pbf_read_s": 60.9,
+  "tier1_total_s": 14.5,
+  "drive_graph_s": 22.6
+ },
+ {
+  "run": "run_all.py 2026-10-05 18:19",
+  "seeded": false,
+  "island_search_s": 1.2,
+  "graph_load_s": 6.2,
+  "island_end_to_end_s": 8.2,
+  "pbf_read_s": 11.8,
+  "tier1_total_s": 10.5,
+  "drive_graph_s": 7.2
+ },
+ {
+  "run": "run_all.py 2026-10-05 18:23",
+  "seeded": false,
+  "island_search_s": 0.9,
+  "graph_load_s": 3.5,
+  "island_end_to_end_s": 5.0,
+  "pbf_read_s": 12.9,
+  "tier1_total_s": 3.5,
+  "drive_graph_s": 4.2
+ }
+]

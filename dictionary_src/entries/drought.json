@@ -1,0 +1,182 @@
+[
+  {
+    "id": "drought.drought_area_pct",
+    "ask": {
+      "en": [
+        "drought",
+        "dry",
+        "drought area",
+        "share in drought"
+      ],
+      "es": [
+        "sequia",
+        "sequía",
+        "area en sequia",
+        "porcentaje en sequia"
+      ]
+    },
+    "name": "Area in drought, average of the year (%)",
+    "domain": "hazards",
+    "domains": [
+      "hazards",
+      "environment.land"
+    ],
+    "group": "Drought",
+    "kind": "variable",
+    "plain": "How much of each municipio was in drought, on average over the weeks of the year.",
+    "definition": "The share of the municipio's area in drought (moderate, D1, or worse) on the US Drought Monitor, averaged over the weeks of the year. 100 means the whole municipio was in drought every week. The Drought Monitor is drawn each week by experts from rainfall, soil moisture, stream flow, reservoir levels and reports; it is a judgement, not a measurement, and its lines follow no municipio. 2026 holds the weeks published so far (up to the map of 2026-11-10).",
+    "unit": "%",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "annual",
+      "first": 2000,
+      "last": 2026,
+      "frequency": "Weekly maps (each Thursday), added up by year; the current year grows each week."
+    },
+    "method": "drought.py reads, for each municipio and for Puerto Rico, the share of the area in each drought class on every weekly US Drought Monitor map since 2000-01-04 (cumulative shares: D1 means moderate drought or worse). For each year it averages the D1 share over the weeks, and counts the weeks in which D1, or D2, covered at least half the area. A year has 52 or 53 maps; 2026 holds the weeks published so far (to 2026-11-10).",
+    "sources": [
+      "usdm"
+    ],
+    "source_detail": "US Drought Monitor, weekly maps 2000-01-04 to 2026-11-10. Data courtesy of NDMC, via https://droughtmonitor.unl.edu",
+    "how_to_read": "Puerto Rico: 0.1% in 2025; 26.5% in 2026 so far. The worst whole year was 2015 (28.5%); highest that year: Caguas (67.1%), Gurabo (66.2%), Guayama (65.9%). Most years before 2014 had little or none.",
+    "caveats": [
+      "The Drought Monitor is drawn each week by experts from rainfall, soil moisture, stream flow, reservoir levels and reports: a judgement, not a measurement. Its lines do not follow municipio borders.",
+      "2026 is not a whole year: it holds the weeks to 2026-11-10, and grows each Thursday when the new map is published.",
+      "Drought on the map is not the same as water rationing: rationing depends on the reservoirs and the pipes that serve each place (see the reservoir layer)."
+    ],
+    "see_also": [
+      "drought.drought_weeks",
+      "drought.drought_severe_weeks"
+    ],
+    "where": {
+      "files": [
+        "drought_series.json:drought_area_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Hazards · Drought (US Drought Monitor)): Area in drought, average of the year (%)",
+          "href": "index.html#e=drought_area_pct.f"
+        }
+      ]
+    },
+    "added": "2026-11-16"
+  },
+  {
+    "id": "drought.drought_weeks",
+    "ask": {
+      "en": [
+        "drought weeks",
+        "how long the drought lasted"
+      ],
+      "es": [
+        "semanas de sequia",
+        "duracion de la sequia"
+      ]
+    },
+    "name": "Weeks with drought over half the area",
+    "domain": "hazards",
+    "domains": [
+      "hazards",
+      "environment.land"
+    ],
+    "group": "Drought",
+    "kind": "variable",
+    "plain": "In how many weeks of the year drought covered at least half of the municipio.",
+    "definition": "The weeks of the year in which drought (moderate, D1, or worse) covered at least half of the municipio's area on the US Drought Monitor. A year has 52 or 53 weekly maps. The Drought Monitor is drawn each week by experts from rainfall, soil moisture, stream flow, reservoir levels and reports; it is a judgement, not a measurement, and its lines follow no municipio. 2026 holds the weeks published so far (up to the map of 2026-11-10).",
+    "unit": "count",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "annual",
+      "first": 2000,
+      "last": 2026,
+      "frequency": "Weekly maps (each Thursday), added up by year; the current year grows each week."
+    },
+    "method": "drought.py reads, for each municipio and for Puerto Rico, the share of the area in each drought class on every weekly US Drought Monitor map since 2000-01-04 (cumulative shares: D1 means moderate drought or worse). For each year it averages the D1 share over the weeks, and counts the weeks in which D1, or D2, covered at least half the area. A year has 52 or 53 maps; 2026 holds the weeks published so far (to 2026-11-10).",
+    "sources": [
+      "usdm"
+    ],
+    "source_detail": "US Drought Monitor, weekly maps 2000-01-04 to 2026-11-10. Data courtesy of NDMC, via https://droughtmonitor.unl.edu",
+    "how_to_read": "In 2015: Arroyo (35 weeks), Caguas (35 weeks), Guayama (35 weeks). In 2026 so far: Lajas (24 weeks), Santa Isabel (24 weeks), Salinas (23 weeks). Puerto Rico as a whole: 8 weeks in 2015, 13 in 2026 so far.",
+    "caveats": [
+      "The Drought Monitor is drawn each week by experts from rainfall, soil moisture, stream flow, reservoir levels and reports: a judgement, not a measurement. Its lines do not follow municipio borders.",
+      "2026 is not a whole year: it holds the weeks to 2026-11-10, and grows each Thursday when the new map is published.",
+      "Half the area is a line drawn by the observatory, so a municipio just under it counts no week; read it beside the average share."
+    ],
+    "see_also": [
+      "drought.drought_area_pct",
+      "drought.drought_severe_weeks"
+    ],
+    "where": {
+      "files": [
+        "drought_series.json:drought_weeks"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Hazards · Drought (US Drought Monitor)): Weeks with drought over half the area",
+          "href": "index.html#e=drought_weeks.s"
+        }
+      ]
+    },
+    "added": "2026-11-16"
+  },
+  {
+    "id": "drought.drought_severe_weeks",
+    "ask": {
+      "en": [
+        "severe drought",
+        "extreme drought"
+      ],
+      "es": [
+        "sequia severa",
+        "sequia extrema"
+      ]
+    },
+    "name": "Weeks with severe drought over half the area",
+    "domain": "hazards",
+    "domains": [
+      "hazards",
+      "environment.land"
+    ],
+    "group": "Drought",
+    "kind": "variable",
+    "plain": "In how many weeks of the year severe drought (D2) or worse covered at least half of the municipio.",
+    "definition": "The weeks of the year in which severe drought (D2) or worse covered at least half of the municipio's area on the US Drought Monitor. The Drought Monitor is drawn each week by experts from rainfall, soil moisture, stream flow, reservoir levels and reports; it is a judgement, not a measurement, and its lines follow no municipio. 2026 holds the weeks published so far (up to the map of 2026-11-10).",
+    "unit": "count",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "annual",
+      "first": 2000,
+      "last": 2026,
+      "frequency": "Weekly maps (each Thursday), added up by year; the current year grows each week."
+    },
+    "method": "drought.py reads, for each municipio and for Puerto Rico, the share of the area in each drought class on every weekly US Drought Monitor map since 2000-01-04 (cumulative shares: D1 means moderate drought or worse). For each year it averages the D1 share over the weeks, and counts the weeks in which D1, or D2, covered at least half the area. A year has 52 or 53 maps; 2026 holds the weeks published so far (to 2026-11-10).",
+    "sources": [
+      "usdm"
+    ],
+    "source_detail": "US Drought Monitor, weekly maps 2000-01-04 to 2026-11-10. Data courtesy of NDMC, via https://droughtmonitor.unl.edu",
+    "how_to_read": "In 2015: Caguas (29 weeks), Cidra (29 weeks), Arroyo (27 weeks). In 2026 so far: Salinas (21 weeks), Santa Isabel (21 weeks), Guánica (20 weeks). On the map of 2026-11-10, 8.83% of Puerto Rico was in severe drought or worse.",
+    "caveats": [
+      "The Drought Monitor is drawn each week by experts from rainfall, soil moisture, stream flow, reservoir levels and reports: a judgement, not a measurement. Its lines do not follow municipio borders.",
+      "2026 is not a whole year: it holds the weeks to 2026-11-10, and grows each Thursday when the new map is published."
+    ],
+    "see_also": [
+      "drought.drought_area_pct",
+      "drought.drought_weeks"
+    ],
+    "where": {
+      "files": [
+        "drought_series.json:drought_severe_weeks"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Hazards · Drought (US Drought Monitor)): Weeks with severe drought over half the area",
+          "href": "index.html#e=drought_severe_weeks.s"
+        }
+      ]
+    },
+    "added": "2026-11-16"
+  }
+]

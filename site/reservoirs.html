@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Knowledge Area · Reservoirs</title>
+<meta name="description" content="How full Puerto Rico's reservoirs are now compared with the same time of year in the past, how each one has changed, and how they stand together, from the US Geological Survey's live gauges.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="icon" href="img/fpr-mark.png">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0&icon_names=account_balance,arrow_downward,arrow_upward,bolt,chat_bubble,check,close,commute,delete,diversity_3,download,grid_on,history,home_work,hourglass_bottom,info,lightbulb,map,menu_book,open_in_new,payments,price_change,remove,rocket_launch,route,scatter_plot,school,send,show_chart,table_view,thermostat,view_in_ar,warning,water,water_drop,wifi,woman,work&display=block">
+<link rel="stylesheet" href="css/twin.css?v=63">
+<link rel="stylesheet" href="css/housing.css?v=21">
+<link rel="stylesheet" href="css/public_money.css?v=1">
+<link rel="stylesheet" href="css/urban_heat.css?v=1">
+<link rel="stylesheet" href="css/reservoirs.css?v=1">
+<link rel="stylesheet" href="css/chat.css?v=4">
+<script src="js/i18n.js?v=62" data-page="reservoirs"></script>
+</head>
+<body class="research">
+<a class="skip" href="#now">Skip to the content</a>
+<header class="topbar">
+  <a class="logo" href="index.html" title="PR Data Observatory home"><img src="img/fpr-logo.png" alt="Foundation for Puerto Rico. PR Data Observatory home"></a>
+  <div class="brand"><b>Knowledge Area · Reservoirs</b><span>How much water Puerto Rico's reservoirs hold now, compared with their own history</span></div>
+  <div class="spacer"></div>
+  <nav class="views" aria-label="Views">
+    <a class="btn" href="index.html"><span class="ms-icon" aria-hidden="true">map</span><span class="lbl">Map</span></a>
+    <a class="btn" href="3d.html" title="Immersive 3D + time view"><span class="ms-icon" aria-hidden="true">view_in_ar</span><span class="lbl">3D + Time</span></a>
+    <a class="btn" href="knowledge.html" aria-current="page" title="Knowledge: FPR studies, analyses and tools"><span class="ms-icon" aria-hidden="true">lightbulb</span><span class="lbl">Knowledge</span></a>
+    <a class="btn" href="dictionary.html" title="Data dictionary: meanings, sources, licenses, how to cite"><span class="ms-icon" aria-hidden="true">menu_book</span><span class="lbl">Data dictionary</span></a>
+    <a class="btn" href="learn.html" title="Learn: short lessons about maps and spatial analysis"><span class="ms-icon" aria-hidden="true">school</span><span class="lbl">Learn</span></a>
+  </nav>
+</header>
+
+<nav class="toc" id="toc" aria-label="On this page">
+  <span class="ka-tabs" role="group" aria-label="Knowledge Area" data-ka="reservoirs"></span><span class="ka-sep" aria-hidden="true"></span>
+  <a href="#now">Now</a><a href="#ranking">Ranking</a><a href="#detail">One reservoir</a><a href="#history">Over time</a><a href="#method">Method</a><a href="#sources">Sources</a>
+</nav>
+
+<main class="page">
+  <div class="note caution review-note" role="note" data-ka-note></div>
+
+  <section class="hero" id="now">
+    <div class="eyebrow">Knowledge Area · Water</div>
+    <h1>Puerto Rico's reservoirs: how full they are now</h1>
+    <p class="lede">The water level of 25 reservoirs, read live from the US Geological Survey, compared with the same week in 2011 to 2025. A reservoir is lower than usual when its level is below what it had in nine of every ten of those years for this week. The 19 reservoirs in the daily report of the Aqueduct and Sewer Authority (AAA) give Puerto Rico's overall picture.</p>
+    <div class="rv-now-row">
+      <div id="rvTank" aria-live="polite"></div>
+      <div><div class="rv-counts" id="rvCounts"></div><p class="pm-p" id="rvOverall" data-t="skip"></p><p class="pm-small" id="rvLive" data-t="skip"></p></div>
+    </div>
+    <div class="note caution"><b>Read with care.</b> The water in each tank is where the reservoir's level sits between its lowest and highest level of 2011-2025: a level, not a volume. USGS publishes no volumes, and sediment has filled part of several reservoirs, so the same level holds less water than it once did. 'Usual' compares a reservoir with its own past, not with a safe or unsafe line: the Aqueduct and Sewer Authority (AAA) sets the official alert levels, linked from each reservoir.</div>
+  </section>
+
+  <section class="block" id="ranking">
+    <h2><span class="ms-icon" aria-hidden="true">water</span>1 · All the reservoirs, ranked</h2>
+    <p class="pm-p">Ranked from the lowest to the highest for this time of year: by how many of the years 2011 to 2025 had a lower level in the same week. The first row is Puerto Rico: the median of the 19 reservoirs in AAA's report (6 other reservoirs, for irrigation or flood control, are listed without AAA). Select a column heading to sort, or a reservoir to see it below.</p>
+    <div class="card pm-tablebox rv-tablebox" id="rvRank"></div>
+  </section>
+
+  <section class="block" id="detail">
+    <h2><span class="ms-icon" aria-hidden="true">water_drop</span>2 · One reservoir</h2>
+    <div class="pm-controls"><label>Reservoir <select id="rvSel"></select></label></div>
+    <div class="card rv-detail"><div id="rvBigTank"></div><div id="rvFacts" data-t="skip"></div></div>
+    <h3 class="rv-h3"><span class="ms-icon" aria-hidden="true">show_chart</span>The last 400 days against its usual range</h3>
+    <div class="card pm-chart" id="rvRecent" data-t="skip"></div>
+    <div class="card pm-chart" id="rvSame" data-t="skip"></div>
+    <div class="card pm-chart" id="rvMonthly" data-t="skip"></div>
+  </section>
+
+  <section class="block" id="history">
+    <h2><span class="ms-icon" aria-hidden="true">history</span>3 · Puerto Rico over time</h2>
+    <p class="pm-p">Each bar is a month since 1995: the share of AAA's reservoirs whose mean level that month was below their usual level for the month (the 10th percentile of the same month in 2011 to 2025). Tall bars are the droughts.</p>
+    <div class="card pm-chart" id="rvPR" data-t="skip"></div>
+    <p class="pm-small" id="rvPRread" data-t="skip"></p>
+  </section>
+
+  <section class="block" id="method">
+    <h2><span class="ms-icon" aria-hidden="true">info</span>Method</h2>
+    <div class="note"><b>The level.</b> The water-surface elevation of each reservoir, in metres above local mean sea level (USGS parameter 72376), read live from USGS when the page opens, with the daily values since the file was built. On 2 November 2026 these matched AAA's morning chart to within 0.08 m for 18 of its 19 reservoirs (the check is in docs/facilities.md of the project repository).</div>
+    <div class="note"><b>Usual for this time of year.</b> For each week of the year, the mean level of that week in each year from 2011 to 2025. Lower than usual is below the 10th percentile of those yearly values, higher than usual above the 90th, usual in between, at least 8 years. The ranking is the share of those years with a lower level than today. The map's Reservoir levels layer uses the same rule.</div>
+    <div class="note"><b>The water in the tanks.</b> Where today's level sits between the reservoir's lowest and highest daily level of 2011 to 2025: 0% at its lowest, 100% at its highest. The shaded band in a large tank is the usual range for this week. Puerto Rico's tank is the median of the 19 reservoirs in AAA's report. It is not a share of the reservoir's volume.</div>
+    <div class="note"><b>The history.</b> The monthly mean level since each gauge's first daily value (the oldest in 1987); a month needs 15 days of readings. Older years on another reference, or while a reservoir was still filling, are left out: Toa Vaca reported a depth, not an elevation, until 2005, and Cerrillos was filling in 1991-1992.</div>
+    <div class="note"><b>What the page does not do.</b> It does not say whether there will be water rationing, how many days of water are left, or how much water a reservoir holds. AAA decides rationing with its own alert levels, and its daily report is on its website. A reservoir can be lowered on purpose for repairs, dredging or before a storm.</div>
+  </section>
+
+  <section class="block" id="sources">
+    <h2><span class="ms-icon" aria-hidden="true">menu_book</span>Sources and licenses</h2>
+    <div class="note"><b>US Geological Survey.</b> Water Data for the Nation, through its Water Data API: lake and reservoir water-surface elevation, the latest readings and daily values. US Government work, public domain. Recent data are provisional and subject to revision.</div>
+    <div class="note"><b>Aqueduct and Sewer Authority (AAA).</b> The list of the 19 reservoirs in its daily report. Its alert levels are not reproduced here; each reservoir links to AAA's page.</div>
+    <div class="note"><b>Data and method.</b> The data file is data/reservoir_history.json (reservoirs.py), rebuilt once a month; the page adds the latest readings itself. The method is in docs/facilities.md of the project repository.</div>
+    <div class="note"><b>How to cite this page.</b> Foundation for Puerto Rico, Knowledge Area: Reservoirs, PR Data Observatory, Snapshot 2026-11 (draft). Data: US Geological Survey.</div>
+  </section>
+</main>
+<div class="rv-tip" id="rvTip" hidden data-t="skip"></div>
+<script src="js/core/knowledge.js?v=34"></script>
+<script>Core.knowledge.render(); I18N.apply();</script>
+<script src="js/common.js?v=20"></script>
+<script src="js/reservoirs_page.js?v=1"></script>
+<script src="js/chatboot.js?v=60"></script>
+</body>
+</html>

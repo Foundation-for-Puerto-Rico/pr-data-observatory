@@ -1,0 +1,698 @@
+{
+ "feeds_with_stops": [
+  {
+   "operator": "ati",
+   "status_today": "current",
+   "end": "2027-07-19",
+   "stops": 1437,
+   "routes": 38,
+   "weekday_trips": 2129,
+   "days_since_end": -287,
+   "weekend_service": true,
+   "has_shapes": true,
+   "order_issue_routes": null
+  },
+  {
+   "operator": "bayamon",
+   "status_today": "current",
+   "end": "2029-12-31",
+   "stops": 128,
+   "routes": 6,
+   "weekday_trips": 85,
+   "days_since_end": -1183,
+   "weekend_service": false,
+   "has_shapes": true,
+   "order_issue_routes": null
+  },
+  {
+   "operator": "caguas",
+   "status_today": "expired",
+   "end": "2026-01-31",
+   "stops": 292,
+   "routes": 9,
+   "weekday_trips": 62,
+   "days_since_end": 247,
+   "weekend_service": false,
+   "has_shapes": false,
+   "order_issue_routes": null
+  },
+  {
+   "operator": "cidra",
+   "status_today": "expired",
+   "end": "2026-01-15",
+   "stops": 14,
+   "routes": 1,
+   "weekday_trips": 4,
+   "days_since_end": 263,
+   "weekend_service": false,
+   "has_shapes": true,
+   "order_issue_routes": null
+  },
+  {
+   "operator": "coamo",
+   "status_today": "current",
+   "end": "2028-01-15",
+   "stops": 10,
+   "routes": 1,
+   "weekday_trips": 10,
+   "days_since_end": -467,
+   "weekend_service": false,
+   "has_shapes": false,
+   "order_issue_routes": null
+  },
+  {
+   "operator": "fajardo",
+   "status_today": "expired",
+   "end": "2026-06-15",
+   "stops": 81,
+   "routes": 5,
+   "weekday_trips": 47,
+   "days_since_end": 112,
+   "weekend_service": false,
+   "has_shapes": false,
+   "order_issue_routes": null
+  },
+  {
+   "operator": "guaynabo",
+   "status_today": "current",
+   "end": "2027-12-31",
+   "stops": 273,
+   "routes": 11,
+   "weekday_trips": 254,
+   "days_since_end": -452,
+   "weekend_service": true,
+   "has_shapes": true,
+   "order_issue_routes": null
+  },
+  {
+   "operator": "hatillo",
+   "status_today": "expired",
+   "end": "2025-12-31",
+   "stops": 11,
+   "routes": 1,
+   "weekday_trips": 3,
+   "days_since_end": 278,
+   "weekend_service": false,
+   "has_shapes": false,
+   "order_issue_routes": null
+  },
+  {
+   "operator": "humacao",
+   "status_today": "current",
+   "end": "2027-01-31",
+   "stops": 18,
+   "routes": 2,
+   "weekday_trips": 18,
+   "days_since_end": -118,
+   "weekend_service": false,
+   "has_shapes": false,
+   "order_issue_routes": null
+  },
+  {
+   "operator": "jayuya",
+   "status_today": "current",
+   "end": "2029-12-31",
+   "stops": 58,
+   "routes": 6,
+   "weekday_trips": 96,
+   "days_since_end": -1183,
+   "weekend_service": false,
+   "has_shapes": false,
+   "order_issue_routes": null
+  },
+  {
+   "operator": "juncos",
+   "status_today": "expired",
+   "end": "2026-07-31",
+   "stops": 133,
+   "routes": 6,
+   "weekday_trips": 48,
+   "days_since_end": 66,
+   "weekend_service": true,
+   "has_shapes": false,
+   "order_issue_routes": null
+  },
+  {
+   "operator": "manati",
+   "status_today": "current",
+   "end": "2026-12-31",
+   "stops": 43,
+   "routes": 3,
+   "weekday_trips": 23,
+   "days_since_end": -87,
+   "weekend_service": false,
+   "has_shapes": false,
+   "order_issue_routes": null
+  },
+  {
+   "operator": "cabo_rojo",
+   "status_today": "current",
+   "end": "2027-01-31",
+   "stops": 110,
+   "routes": 7,
+   "weekday_trips": 61,
+   "days_since_end": -118,
+   "weekend_service": false,
+   "has_shapes": false,
+   "order_issue_routes": null
+  },
+  {
+   "operator": "canovanas",
+   "status_today": "expiring",
+   "end": "2026-10-31",
+   "stops": 92,
+   "routes": 6,
+   "weekday_trips": 35,
+   "days_since_end": -26,
+   "weekend_service": false,
+   "has_shapes": false,
+   "order_issue_routes": null
+  },
+  {
+   "operator": "corozal",
+   "status_today": "current",
+   "end": "2027-01-31",
+   "stops": 29,
+   "routes": 2,
+   "weekday_trips": 18,
+   "days_since_end": -118,
+   "weekend_service": false,
+   "has_shapes": false,
+   "order_issue_routes": null
+  },
+  {
+   "operator": "orocovis",
+   "status_today": "current",
+   "end": "2027-01-15",
+   "stops": 10,
+   "routes": 1,
+   "weekday_trips": 16,
+   "days_since_end": -102,
+   "weekend_service": false,
+   "has_shapes": true,
+   "order_issue_routes": null
+  },
+  {
+   "operator": "patillas",
+   "status_today": "current",
+   "end": "2027-12-31",
+   "stops": 116,
+   "routes": 6,
+   "weekday_trips": 18,
+   "days_since_end": -452,
+   "weekend_service": false,
+   "has_shapes": false,
+   "order_issue_routes": 5
+  },
+  {
+   "operator": "ponce",
+   "status_today": "expired",
+   "end": "2024-12-31",
+   "stops": 276,
+   "routes": 8,
+   "weekday_trips": 142,
+   "days_since_end": 643,
+   "weekend_service": false,
+   "has_shapes": false,
+   "order_issue_routes": null
+  },
+  {
+   "operator": "san_juan",
+   "status_today": "current",
+   "end": "2027-01-31",
+   "stops": 249,
+   "routes": 9,
+   "weekday_trips": 72,
+   "days_since_end": -118,
+   "weekend_service": false,
+   "has_shapes": false,
+   "order_issue_routes": null
+  },
+  {
+   "operator": "san_lorenzo",
+   "status_today": "expired",
+   "end": "2026-02-28",
+   "stops": 159,
+   "routes": 8,
+   "weekday_trips": 66,
+   "days_since_end": 219,
+   "weekend_service": false,
+   "has_shapes": false,
+   "order_issue_routes": null
+  },
+  {
+   "operator": "san_sebastian",
+   "status_today": "current",
+   "end": "2027-01-15",
+   "stops": 14,
+   "routes": 1,
+   "weekday_trips": 7,
+   "days_since_end": -102,
+   "weekend_service": false,
+   "has_shapes": true,
+   "order_issue_routes": null
+  },
+  {
+   "operator": "utuado",
+   "status_today": "current",
+   "end": "2027-12-31",
+   "stops": 47,
+   "routes": 2,
+   "weekday_trips": 10,
+   "days_since_end": -452,
+   "weekend_service": false,
+   "has_shapes": false,
+   "order_issue_routes": null
+  },
+  {
+   "operator": "vega_alta",
+   "status_today": "current",
+   "end": "2027-01-31",
+   "stops": 135,
+   "routes": 5,
+   "weekday_trips": 55,
+   "days_since_end": -118,
+   "weekend_service": true,
+   "has_shapes": false,
+   "order_issue_routes": null
+  },
+  {
+   "operator": "vega_baja",
+   "status_today": "current",
+   "end": "2027-03-15",
+   "stops": 93,
+   "routes": 4,
+   "weekday_trips": 29,
+   "days_since_end": -161,
+   "weekend_service": false,
+   "has_shapes": false,
+   "order_issue_routes": null
+  },
+  {
+   "operator": "vieques",
+   "status_today": "current",
+   "end": "2027-12-31",
+   "stops": 19,
+   "routes": 1,
+   "weekday_trips": 4,
+   "days_since_end": -452,
+   "weekend_service": false,
+   "has_shapes": false,
+   "order_issue_routes": null
+  }
+ ],
+ "operators_total": 44,
+ "operators_by_type_and_feed": {
+  "ama": {
+   "in_ati": 1
+  },
+  "community": {
+   "community": 1
+  },
+  "ferry": {
+   "in_ati": 1
+  },
+  "municipal": {
+   "with feed": 24,
+   "none": 15
+  },
+  "publico": {
+   "none": 1
+  },
+  "regional": {
+   "with feed": 1
+  }
+ },
+ "operators_by_status_today": {
+  "current": 17,
+  "in_ati": 2,
+  "expired": 7,
+  "expiring": 1,
+  "community": 1,
+  "none": 16
+ },
+ "scheduled_stops_by_status": {
+  "current": 2789,
+  "expired": 966,
+  "expiring": 92
+ },
+ "scheduled_stops_total": 3847,
+ "expired_stops": 966,
+ "expired_stop_share_pct": 25.1,
+ "expiring_within_60_days_stops": 92,
+ "muni_operators_with_no_public_feed": 16,
+ "muni_systems_with_feed": 24,
+ "default_places_near_only_expired_or_osm": {
+  "current": 8524,
+  "expired_only": 2320,
+  "osm_only": 1653,
+  "far": 14082
+ },
+ "stale": {
+  "twin_formula_pct400_default_current_stops": 47.0,
+  "published_pct400_default": 46.5,
+  "places_where_transit_m_differs_by_more_than_2m_all": 892,
+  "places_where_transit_m_differs_by_more_than_2m_default": 683,
+  "differs_gt2m_not_jayuya_all": 709,
+  "differs_gt2m_new_closer_all": 892,
+  "differs_gt2m_new_farther_all": 0,
+  "flag_changes_default": 112,
+  "flag_false_to_true_default": 112,
+  "flag_true_to_false_default": 0,
+  "flag_changes_default_jayuya": 111,
+  "flag_changes_default_not_jayuya": 1,
+  "flag_changes_not_jayuya_within_3m_of_line": 0,
+  "differs_gt2m_and_nearest_stop_name_differs_all": 890,
+  "jayuya_places_all": 183,
+  "jayuya_published_median_transit_m": 9927.0,
+  "jayuya_recomputed_median_transit_m": 200.57639495487547,
+  "jayuya_default_pct400_published": 0.0,
+  "jayuya_default_pct400_recomputed": 70.7,
+  "epsg32161_over_twin_formula_ratio_median_within_2km": 0.9974713158844138,
+  "epsg32161_over_twin_formula_ratio_p5_p95_within_2km": [
+   0.9943228699161895,
+   1.0002920932200314
+  ],
+  "share_default_within_400_epsg32161": 47.0,
+  "share_default_within_400_twin_formula": 47.0,
+  "share_default_within_800_epsg32161": 55.5,
+  "share_default_within_800_twin_formula": 55.4
+ },
+ "jayuya": {
+  "stops_in_transport_json": 58,
+  "lng_min": -66.65412,
+  "lng_max": -66.1126,
+  "all_negative_longitude": true,
+  "municipality_values": {
+   "Jayuya": 54,
+   "Utuado": 3,
+   "Caguas": 1
+  }
+ },
+ "stops_without_municipality": {
+  "n": 11,
+  "by_kind": {
+   "transit_stop|ati_gtfs": 4,
+   "bus_station|ati_gtfs": 1,
+   "ferry_terminal|ati_gtfs": 4,
+   "transit_stop|muni_gtfs": 2
+  },
+  "max_dist_to_polygon_m": 1019.0,
+  "rows": [
+   {
+    "kind": "transit_stop",
+    "source": "ati_gtfs",
+    "operator": "ati",
+    "dist_to_nearest_municipality_polygon_m": 4.0,
+    "nearest_municipality": "Cataño"
+   },
+   {
+    "kind": "bus_station",
+    "source": "ati_gtfs",
+    "operator": "ati",
+    "dist_to_nearest_municipality_polygon_m": 11.0,
+    "nearest_municipality": "Cataño"
+   },
+   {
+    "kind": "transit_stop",
+    "source": "ati_gtfs",
+    "operator": "ati",
+    "dist_to_nearest_municipality_polygon_m": 23.0,
+    "nearest_municipality": "Cataño"
+   },
+   {
+    "kind": "ferry_terminal",
+    "source": "ati_gtfs",
+    "operator": "ati",
+    "dist_to_nearest_municipality_polygon_m": 1019.0,
+    "nearest_municipality": "Vieques"
+   },
+   {
+    "kind": "ferry_terminal",
+    "source": "ati_gtfs",
+    "operator": "ati",
+    "dist_to_nearest_municipality_polygon_m": 0.0,
+    "nearest_municipality": "Vieques"
+   },
+   {
+    "kind": "ferry_terminal",
+    "source": "ati_gtfs",
+    "operator": "ati",
+    "dist_to_nearest_municipality_polygon_m": 85.0,
+    "nearest_municipality": "Cataño"
+   },
+   {
+    "kind": "ferry_terminal",
+    "source": "ati_gtfs",
+    "operator": "ati",
+    "dist_to_nearest_municipality_polygon_m": 63.0,
+    "nearest_municipality": "San Juan"
+   },
+   {
+    "kind": "transit_stop",
+    "source": "ati_gtfs",
+    "operator": "ati",
+    "dist_to_nearest_municipality_polygon_m": 11.0,
+    "nearest_municipality": "Loíza"
+   },
+   {
+    "kind": "transit_stop",
+    "source": "ati_gtfs",
+    "operator": "ati",
+    "dist_to_nearest_municipality_polygon_m": 11.0,
+    "nearest_municipality": "Cataño"
+   },
+   {
+    "kind": "transit_stop",
+    "source": "muni_gtfs",
+    "operator": "patillas",
+    "dist_to_nearest_municipality_polygon_m": 403.0,
+    "nearest_municipality": "Patillas"
+   },
+   {
+    "kind": "transit_stop",
+    "source": "muni_gtfs",
+    "operator": "vieques",
+    "dist_to_nearest_municipality_polygon_m": 36.0,
+    "nearest_municipality": "Vieques"
+   }
+  ]
+ },
+ "municipal_stops_more_than_3km_outside_own_municipality": {
+  "n": 1,
+  "by_operator": {
+   "jayuya": 1
+  },
+  "max_m": 44347
+ },
+ "municipal_stops_more_than_10km_outside_own_municipality": {
+  "n": 1,
+  "by_operator": {
+   "jayuya": 1
+  }
+ },
+ "scheduled_stops_not_within_150m_of_road_graph": {
+  "n": 13,
+  "by_kind": {
+   "transit_stop": 12,
+   "bus_station": 1
+  },
+  "by_operator": {
+   "ati": 4,
+   "ponce": 1,
+   "san_juan": 1,
+   "cabo_rojo": 1,
+   "manati": 1,
+   "patillas": 4,
+   "utuado": 1
+  },
+  "not_within_500m": 2
+ },
+ "osm_stops_within_30m_of_scheduled": 2,
+ "osm_stops_within_100m_of_scheduled": 227,
+ "osm_access_stops_total": 513,
+ "scheduled_stop_pairs_within_30m": {
+  "total": 905,
+  "same_operator": 737,
+  "different_operators": 168,
+  "different_operator_pairs_by_operators": {
+   "('ati', 'san_juan')": 92,
+   "('ati', 'guaynabo')": 43,
+   "('ati', 'bayamon')": 25,
+   "('ati', 'canovanas')": 5,
+   "('ati', 'caguas')": 2,
+   "('juncos', 'san_lorenzo')": 1
+  }
+ },
+ "scheduled_stops_sharing_exact_coordinates_with_another_stop_id": {
+  "locations": 122,
+  "stops": 271
+ },
+ "osm_stop_pairs_within_10m": 3,
+ "osm_station_or_terminal_within_500m_of_scheduled_hub": {
+  "osm_hubs": 54,
+  "within_500m_of_a_scheduled_hub": 5
+ },
+ "scheduled_stops_with_no_route": 1,
+ "scheduled_stops_with_zero_weekday_trips": 1,
+ "scheduled_stops_with_zero_weekday_trips_but_with_routes": 0,
+ "locations_with_zero_calls_in_all_three_trip_files": 844,
+ "current_locations_with_zero_calls_in_all_three_trip_files": 383,
+ "current_stops_without_weekend_service": {
+  "current_stops": 2881
+ },
+ "current_stops_with_saturday_service": 1777,
+ "current_stops_with_sunday_service": 94,
+ "routes_where_trips_json_count_differs_from_routes_file": {
+  "routes_checked": 149,
+  "differing": 5,
+  "by_operator": {
+   "patillas": 5
+  },
+  "routes_with_zero_trips_in_file_but_trips_in_feed": 5,
+  "of_which_order_issue": 5
+ },
+ "routes_with_order_note_non_geographic_stop_order": {
+  "n": 5,
+  "by_operator": {
+   "patillas": 5
+  }
+ },
+ "osm_routes_without_timetable": 16,
+ "weekday_calls": {
+  "feed_total": 86067,
+  "in_trips_json": 78414,
+  "share_missing_pct": 8.9,
+  "by_operator": {
+   "caguas": {
+    "calls_feed": 1836,
+    "calls_trips_json": 162,
+    "locations": 257,
+    "locations_short": 239
+   },
+   "juncos": {
+    "calls_feed": 1264,
+    "calls_trips_json": 96,
+    "locations": 133,
+    "locations_short": 131
+   },
+   "bayamon": {
+    "calls_feed": 1736,
+    "calls_trips_json": 170,
+    "locations": 128,
+    "locations_short": 124
+   },
+   "san_lorenzo": {
+    "calls_feed": 1291,
+    "calls_trips_json": 132,
+    "locations": 133,
+    "locations_short": 120
+   },
+   "patillas": {
+    "calls_feed": 391,
+    "calls_trips_json": 15,
+    "locations": 105,
+    "locations_short": 102
+   },
+   "vega_baja": {
+    "calls_feed": 797,
+    "calls_trips_json": 58,
+    "locations": 93,
+    "locations_short": 92
+   },
+   "jayuya": {
+    "calls_feed": 990,
+    "calls_trips_json": 192,
+    "locations": 56,
+    "locations_short": 53
+   },
+   "fajardo": {
+    "calls_feed": 775,
+    "calls_trips_json": 708,
+    "locations": 80,
+    "locations_short": 42
+   },
+   "san_sebastian": {
+    "calls_feed": 112,
+    "calls_trips_json": 14,
+    "locations": 14,
+    "locations_short": 13
+   },
+   "orocovis": {
+    "calls_feed": 113,
+    "calls_trips_json": 105,
+    "locations": 9,
+    "locations_short": 1
+   }
+  }
+ },
+ "implausible_bus_hops_in_trip_files": {
+  "hops_checked": 118782,
+  "flagged": 103,
+  "by_operator_and_type": {
+   "vega_alta|straight_line_speed_over_100kmh": 36,
+   "ati|zero_or_negative_time_over_500m": 30,
+   "cabo_rojo|straight_line_speed_over_100kmh": 18,
+   "ponce|zero_or_negative_time_over_500m": 8,
+   "cabo_rojo|zero_or_negative_time_over_500m": 6,
+   "fajardo|zero_or_negative_time_over_500m": 4,
+   "caguas|straight_line_speed_over_100kmh": 1
+  }
+ },
+ "places_fields": [
+  "address",
+  "barrio",
+  "category",
+  "confidence",
+  "duplicates",
+  "flood_subtype",
+  "flood_zone",
+  "land_group",
+  "land_use",
+  "lat",
+  "lng",
+  "municipality",
+  "name",
+  "nearest_stop",
+  "oid",
+  "overture_category",
+  "protected_area",
+  "protected_gap",
+  "sfha",
+  "source",
+  "transit_400m",
+  "transit_m",
+  "type",
+  "updated",
+  "website"
+ ],
+ "places_with_name_address_website": {
+  "name": 35118,
+  "address": 28810,
+  "website": 9683
+ },
+ "default_places_sharing_a_point_with_another_default_place": {
+  "distinct_points": 25563,
+  "places_in_shared_points": 1501,
+  "max_places_at_one_point": 18
+ },
+ "places_outside_every_municipality_polygon": {
+  "all": 358,
+  "default": 331
+ },
+ "pii_screen": {
+  "transport_json_has_email_pattern": false,
+  "operators_json_has_email_pattern": false,
+  "operators_json_has_personal_cloud_link": false,
+  "places_json_carries_business_name_address_website_fields": true,
+  "stop_names_that_embed_a_business_or_organisation_name": "yes (not counted, not printed)"
+ },
+ "population_blocks_fourth_value": {
+  "meaning": "metres to the nearest scheduled stop, capped at 9,999 (network.py coverage), NOT housing units",
+  "n_blocks": 36570,
+  "n_capped_9999": 6419,
+  "includes_expired_feeds": true
+ },
+ "faa_airports_in_file": 14,
+ "faa_airports_note": "HANDOFF: published transport.json still has the old 14 until the next full build (the source host changed)"
+}

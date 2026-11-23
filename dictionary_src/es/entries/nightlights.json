@@ -1,0 +1,26 @@
+{
+ "methods.nightlights": {
+  "name": "Luces nocturnas por barrio y municipio (NASA Black Marble)",
+  "how_to_read": "La radiancia media de Puerto Rico en 2025 fue de 5.431 nW/cm²/sr, con 0.2% de sus píxeles de calidad baja o rellenados. Lea la radiancia media junto con la proporción de calidad: un mes con muchos píxeles de calidad baja o rellenados se basa en pocas noches despejadas.",
+  "_en": {
+   "name": "670efdd5",
+   "how_to_read": "e94b2302"
+  }
+ },
+ "nightlights.ntl_radiance": {
+  "name": "Luz nocturna, radiancia media (NASA Black Marble, nW/cm²/sr)",
+  "how_to_read": "Puerto Rico en 2025: 5.431 nW/cm²/sr. Municipios más brillantes: San Juan (47.2), Cataño (38.4), Guaynabo (26.2); más oscuros: Maricao (0.5), Vieques (0.7), Las Marías (0.8). Puerto Rico bajó de 5.245 en 2016 a 4.233 en 2017, el año del huracán María.",
+  "_en": {
+   "name": "56d851d7",
+   "how_to_read": "f7ad83da"
+  }
+ },
+ "nightlights.ntl_poor_pct": {
+  "name": "Luz nocturna, píxeles de calidad baja o rellenados (%)",
+  "how_to_read": "Puerto Rico en 2025: 0.2%. Una proporción alta significa que la radiancia media del año se basa en pocas noches despejadas; compárela antes de leer un cambio en la luz.",
+  "_en": {
+   "name": "9d0191ad",
+   "how_to_read": "cd200f4c"
+  }
+ }
+}

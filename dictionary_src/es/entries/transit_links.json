@@ -1,0 +1,26 @@
+{
+ "infrastructure.transit_links": {
+  "name": "Conexiones entre municipios: personas que viajan entre cada par para trabajar y la ruta de transporte colectivo que aparece para el par (datos del Área de conocimiento)",
+  "how_to_read": "532,691 de 1,000,096 personas que trabajan (53.3 %) lo hacen en un municipio distinto de donde viven. Una ruta con horario vigente une 22 de los 1,084 pares, que reúnen el 26.8 % de esas personas; el 34.5 % viaja entre pares que solo tienen una ruta de públicos en la lista de 2020, el 36.5 % entre pares sin ninguna ruta en las listas y el 2.2 % entre 6 pares cuyo único horario está vencido.",
+  "_en": {
+   "name": "f4059d8e",
+   "how_to_read": "d56b276c"
+  }
+ },
+ "layers.transit_links": {
+  "name": "Conexiones simuladas entre municipios (capa del mapa)",
+  "how_to_read": "Cada línea entrecortada une dos centros de pueblo por las carreteras. Anaranjado: no aparece ninguna ruta para el par (81 líneas). Violeta: una ruta de públicos unía el par en la lista de 2020 (101 líneas). Una línea más gruesa indica que más personas viajan entre los dos municipios para trabajar. Haga clic en una línea para ver las cifras.",
+  "_en": {
+   "name": "2128b165",
+   "how_to_read": "f84ef514"
+  }
+ },
+ "layers.publicos": {
+  "name": "Rutas de públicos de la lista de 2020 (capa del mapa)",
+  "how_to_read": "Cada línea es una ruta tal como aparecía en la lista de 2020. Haga clic en ella para ver su código, su nombre y los municipios que une. Compárela con la capa Rutas de transporte colectivo, que muestra las rutas con horario publicado.",
+  "_en": {
+   "name": "1d846345",
+   "how_to_read": "08df2191"
+  }
+ }
+}

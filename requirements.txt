@@ -1,0 +1,14 @@
+# Versions below are the ones the 2026-10 snapshot was built with.
+overturemaps>=1.0,<2
+shapely>=2.1,<3
+requests>=2.32
+xlrd>=2,<3   # only economy_series.py: the Police reports of 2017 to 2022 are .xls (later ones need pdftotext, from Poppler)
+pyshp>=3.0,<4
+pyproj>=3.7,<4
+pyogrio>=0.7,<1   # only exposure.py, once: reads NOAA's File Geodatabase of sea level rise extents (bundles GDAL)
+numpy>=2,<3
+h5py>=3.11,<4   # only nightlights.py: reads NASA Black Marble's monthly HDF5 files (3.16.0 when it was added, 2026-11-02)
+osmium>=4,<5   # only roads.py (rebuilds site/data/roads.bin from the OpenStreetMap extract)
+pmtiles>=3.4,<4   # only buildings3d.py: reads and writes the 3D view's building tiles (PMTiles)
+mapbox-vector-tile>=2.1,<3   # only buildings3d.py: decodes and encodes the vector tiles
+h3>=4.1,<5   # only broadband.py: the outlines of the H3 cells of the broadband map layer (4.5.0 when it was added, 2026-11-12)

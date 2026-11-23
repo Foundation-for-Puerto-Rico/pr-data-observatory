@@ -1,0 +1,346 @@
+{
+ "graph_build_s": 3.5,
+ "roads_py_load_s": 3.1,
+ "graph": {
+  "roads_bin_nodes": 193507,
+  "roads_bin_edges": 226421,
+  "walk_edges_used": 222254,
+  "walk_km_used": 31906.0,
+  "km_by_class_in_file": {
+   "motorway": 812.8,
+   "motorway_link": 287.3,
+   "trunk": 606.2,
+   "trunk_link": 92.7,
+   "primary": 534.9,
+   "primary_link": 37.3,
+   "secondary": 1808.4,
+   "secondary_link": 35.1,
+   "tertiary": 5658.4,
+   "tertiary_link": 30.9,
+   "unclassified": 1352.7,
+   "residential": 21778.3,
+   "living_street": 18.0,
+   "service": 0.0,
+   "busway": 3.3
+  },
+  "classes_present": [
+   "motorway",
+   "motorway_link",
+   "trunk",
+   "trunk_link",
+   "primary",
+   "primary_link",
+   "secondary",
+   "secondary_link",
+   "tertiary",
+   "tertiary_link",
+   "unclassified",
+   "residential",
+   "living_street",
+   "busway"
+  ],
+  "footway_path_pedestrian_steps_cycleway_track_service_in_file": false,
+  "oneway_edges_pct": 10.2
+ },
+ "stop_snap_s": 0.06,
+ "stops": {
+  "scheduled": 3847,
+  "snapped_within_150m": 3834,
+  "not_snapped": 13,
+  "median_connector_m": 6.625363333633808,
+  "p90_connector_m": 11.434972825342824,
+  "not_snapped_within_300m": 5
+ },
+ "place_snap_s": 0.44,
+ "places": {
+  "all": 35118,
+  "default": 26579,
+  "default_snapped_within_150m": 25484,
+  "default_not_snapped_150m": 1095,
+  "default_median_connector_m": 13.422352545544303,
+  "default_p90_connector_m": 48.93880648730055,
+  "default_not_snapped_300m": 453
+ },
+ "stop_registry_s": 0.0,
+ "sample_pool_default_within_800m_scheduled": 12271,
+ "sample_search_s_per_place_ms": 0.2,
+ "sample_settled_nodes_median": 127.0,
+ "sample_settled_nodes_p90": 275.0,
+ "sample": {
+  "sample_n": 1000,
+  "snapped": 973,
+  "not_snapped_150m": 27,
+  "found_within_1000m": 941,
+  "not_found_within_1000m_but_snapped": 32,
+  "ratio_net_best_over_sl_nearest": {
+   "n": 941,
+   "median": 1.42,
+   "p25": 1.27,
+   "p75": 1.77,
+   "p90": 2.36,
+   "p95": 2.93,
+   "mean": 1.7
+  },
+  "detour_factor_to_same_stop": {
+   "n": 914,
+   "median": 1.45,
+   "p25": 1.27,
+   "p75": 1.9,
+   "p90": 2.69,
+   "p95": 3.6,
+   "mean": 1.85
+  },
+  "extra_metres_net_minus_sl_median": 52.4,
+  "extra_metres_p90": 204.4,
+  "share_ratio_gt_1_5": 42.5,
+  "share_ratio_gt_2": 17.7,
+  "by_sl_band": {
+   "0-200": {
+    "n": 658,
+    "median_ratio": 1.46,
+    "p90_ratio": 2.53,
+    "median_net_m": 121.0
+   },
+   "200-400": {
+    "n": 188,
+    "median_ratio": 1.41,
+    "p90_ratio": 2.18,
+    "median_net_m": 408.0
+   },
+   "400-600": {
+    "n": 74,
+    "median_ratio": 1.31,
+    "p90_ratio": 1.69,
+    "median_net_m": 625.0
+   },
+   "600-800": {
+    "n": 21,
+    "median_ratio": 1.32,
+    "p90_ratio": 1.51,
+    "median_net_m": 867.0
+   }
+  },
+  "places_sl_le_400": 870,
+  "sl_le_400_and_net_gt_400_or_not_found": 140,
+  "sl_le_400_and_net_gt_400_snapped_only": 122,
+  "sl_le_400_not_snapped": 18,
+  "flip_share_of_sl_le_400_pct": 14.3,
+  "sample_share_within_400_sl_pct": 87.0,
+  "sample_share_within_400_net_pct": 73.0,
+  "sample_share_within_400_net_pct_of_snapped": 75.0,
+  "sl_gt_400_and_net_le_400": 0,
+  "sl_le_800_and_net_gt_800_or_not_found_snapped": 70,
+  "share_sl_le_800_that_have_net_le_800_pct_of_snapped": 92.8,
+  "current_only_sample_n": 800,
+  "current_only_sl_le_400": 708,
+  "current_only_sl_le_400_and_net_gt_400_snapped": 92,
+  "current_only_ratio": {
+   "n": 750,
+   "median": 1.42,
+   "p25": 1.27,
+   "p75": 1.76,
+   "p90": 2.34,
+   "p95": 3.07,
+   "mean": 1.69
+  }
+ },
+ "place_registry_s": 0.05,
+ "full_run_s": 0.9,
+ "full_run_searches": 3834,
+ "full_run_per_stop_ms": 0.2,
+ "full_run_settled_nodes_total": 540889,
+ "full_run_settled_nodes_per_stop_mean": 141.0,
+ "consistency_place_side_vs_stop_side": {
+  "checked": 973,
+  "mismatches_gt_0.5m": 0,
+  "max_abs_diff_m_where_both_found": 0.0
+ },
+ "full_island": {
+  "all_scheduled": {
+   "n": 26579,
+   "sl_400_n": 10844,
+   "net_400_n": 8902,
+   "sl_400_pct": 40.8,
+   "net_400_pct": 33.5,
+   "lost_400_n": 1942,
+   "lost_400_pct_of_sl": 17.9,
+   "sl_800_n": 12271,
+   "net_800_n": 11126,
+   "sl_800_pct": 46.2,
+   "net_800_pct": 41.9,
+   "lost_800_n": 1145,
+   "lost_800_pct_of_sl": 9.3,
+   "lost_400_of_which_unsnapped_n": 276
+  },
+  "current_scheduled": {
+   "n": 26579,
+   "sl_400_n": 8524,
+   "net_400_n": 7057,
+   "sl_400_pct": 32.1,
+   "net_400_pct": 26.6,
+   "lost_400_n": 1467,
+   "lost_400_pct_of_sl": 17.2,
+   "sl_800_n": 9646,
+   "net_800_n": 8761,
+   "sl_800_pct": 36.3,
+   "net_800_pct": 33.0,
+   "lost_800_n": 885,
+   "lost_800_pct_of_sl": 9.2,
+   "lost_400_of_which_unsnapped_n": 241
+  }
+ },
+ "full_by_category": {
+  "ACCOMMODATIONS": {
+   "all_scheduled": {
+    "n": 3106,
+    "sl_400_n": 921,
+    "net_400_n": 674,
+    "sl_400_pct": 29.7,
+    "net_400_pct": 21.7,
+    "lost_400_n": 247,
+    "lost_400_pct_of_sl": 26.8,
+    "sl_800_n": 1155,
+    "net_800_n": 985,
+    "sl_800_pct": 37.2,
+    "net_800_pct": 31.7,
+    "lost_800_n": 170,
+    "lost_800_pct_of_sl": 14.7
+   },
+   "current_scheduled": {
+    "n": 3106,
+    "sl_400_n": 765,
+    "net_400_n": 574,
+    "sl_400_pct": 24.6,
+    "net_400_pct": 18.5,
+    "lost_400_n": 191,
+    "lost_400_pct_of_sl": 25.0,
+    "sl_800_n": 938,
+    "net_800_n": 822,
+    "sl_800_pct": 30.2,
+    "net_800_pct": 26.5,
+    "lost_800_n": 116,
+    "lost_800_pct_of_sl": 12.4
+   }
+  },
+  "ATTRACTIONS": {
+   "all_scheduled": {
+    "n": 5676,
+    "sl_400_n": 2115,
+    "net_400_n": 1618,
+    "sl_400_pct": 37.3,
+    "net_400_pct": 28.5,
+    "lost_400_n": 497,
+    "lost_400_pct_of_sl": 23.5,
+    "sl_800_n": 2487,
+    "net_800_n": 2167,
+    "sl_800_pct": 43.8,
+    "net_800_pct": 38.2,
+    "lost_800_n": 320,
+    "lost_800_pct_of_sl": 12.9
+   },
+   "current_scheduled": {
+    "n": 5676,
+    "sl_400_n": 1712,
+    "net_400_n": 1321,
+    "sl_400_pct": 30.2,
+    "net_400_pct": 23.3,
+    "lost_400_n": 391,
+    "lost_400_pct_of_sl": 22.8,
+    "sl_800_n": 2007,
+    "net_800_n": 1750,
+    "sl_800_pct": 35.4,
+    "net_800_pct": 30.8,
+    "lost_800_n": 257,
+    "lost_800_pct_of_sl": 12.8
+   }
+  },
+  "GASTRONOMY": {
+   "all_scheduled": {
+    "n": 17178,
+    "sl_400_n": 7529,
+    "net_400_n": 6408,
+    "sl_400_pct": 43.8,
+    "net_400_pct": 37.3,
+    "lost_400_n": 1121,
+    "lost_400_pct_of_sl": 14.9,
+    "sl_800_n": 8318,
+    "net_800_n": 7721,
+    "sl_800_pct": 48.4,
+    "net_800_pct": 44.9,
+    "lost_800_n": 597,
+    "lost_800_pct_of_sl": 7.2
+   },
+   "current_scheduled": {
+    "n": 17178,
+    "sl_400_n": 5822,
+    "net_400_n": 5000,
+    "sl_400_pct": 33.9,
+    "net_400_pct": 29.1,
+    "lost_400_n": 822,
+    "lost_400_pct_of_sl": 14.1,
+    "sl_800_n": 6450,
+    "net_800_n": 5989,
+    "sl_800_pct": 37.5,
+    "net_800_pct": 34.9,
+    "lost_800_n": 461,
+    "lost_800_pct_of_sl": 7.1
+   }
+  },
+  "VISITOR_SERVICES": {
+   "all_scheduled": {
+    "n": 619,
+    "sl_400_n": 279,
+    "net_400_n": 202,
+    "sl_400_pct": 45.1,
+    "net_400_pct": 32.6,
+    "lost_400_n": 77,
+    "lost_400_pct_of_sl": 27.6,
+    "sl_800_n": 311,
+    "net_800_n": 253,
+    "sl_800_pct": 50.2,
+    "net_800_pct": 40.9,
+    "lost_800_n": 58,
+    "lost_800_pct_of_sl": 18.6
+   },
+   "current_scheduled": {
+    "n": 619,
+    "sl_400_n": 225,
+    "net_400_n": 162,
+    "sl_400_pct": 36.3,
+    "net_400_pct": 26.2,
+    "lost_400_n": 63,
+    "lost_400_pct_of_sl": 28.0,
+    "sl_800_n": 251,
+    "net_800_n": 200,
+    "sl_800_pct": 40.5,
+    "net_800_pct": 32.3,
+    "lost_800_n": 51,
+    "lost_800_pct_of_sl": 20.3
+   }
+  }
+ },
+ "full_ratio_all_default_sl_le_800": {
+  "n": 11513,
+  "median": 1.44,
+  "p90": 2.5,
+  "p95": 3.24
+ },
+ "full_ratio_current_default_sl_le_800": {
+  "n": 9053,
+  "median": 1.44,
+  "p90": 2.48
+ },
+ "checks": {
+  "snap_distance_roads_py_vs_walknet": {
+   "n": 60,
+   "median_abs_diff_m": 0.01,
+   "share_within_2m": 98.3
+  },
+  "router_vs_walk": {
+   "pairs": 40,
+   "walk_le_router_pct": 100.0,
+   "median_router_over_walk": 1.002
+  }
+ },
+ "total_script_s": 9.3
+}

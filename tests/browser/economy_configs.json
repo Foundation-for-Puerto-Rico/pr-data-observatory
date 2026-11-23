@@ -1,0 +1,331 @@
+[
+ {
+  "id": "jobs_sym",
+  "layers": [
+   {
+    "key": "qcew_jobs",
+    "mode": "symbol"
+   }
+  ],
+  "year": null,
+  "base": 2014
+ },
+ {
+  "id": "pay_fill",
+  "layers": [
+   {
+    "key": "qcew_avg_pay",
+    "mode": "fill"
+   }
+  ],
+  "year": null,
+  "base": 2014
+ },
+ {
+  "id": "jobs_per1000_2019",
+  "layers": [
+   {
+    "key": "qcew_jobs",
+    "mode": "fill",
+    "norm": "per1000"
+   }
+  ],
+  "year": 2019,
+  "base": 2014
+ },
+ {
+  "id": "jobs_perkm2_equal_2022",
+  "layers": [
+   {
+    "key": "qcew_jobs",
+    "mode": "fill",
+    "norm": "perkm2",
+    "classes": "equal",
+    "fixed": false
+   }
+  ],
+  "year": 2022,
+  "base": 2014
+ },
+ {
+  "id": "jobs_sharePR_jenks",
+  "layers": [
+   {
+    "key": "qcew_jobs",
+    "mode": "fill",
+    "norm": "sharePR",
+    "classes": "jenks"
+   }
+  ],
+  "year": null,
+  "base": 2014
+ },
+ {
+  "id": "tourism_shareJobs",
+  "layers": [
+   {
+    "key": "tourism_jobs",
+    "mode": "fill",
+    "norm": "shareJobs"
+   }
+  ],
+  "year": null,
+  "base": 2014
+ },
+ {
+  "id": "tourism_lq_2021",
+  "layers": [
+   {
+    "key": "tourism_jobs",
+    "mode": "fill",
+    "norm": "lq"
+   }
+  ],
+  "year": 2021,
+  "base": 2014
+ },
+ {
+  "id": "income_index_2018",
+  "layers": [
+   {
+    "key": "median_hh_income",
+    "mode": "fill",
+    "norm": "index"
+   }
+  ],
+  "year": 2018,
+  "base": 2014
+ },
+ {
+  "id": "income_diff_real_2016",
+  "layers": [
+   {
+    "key": "median_hh_income",
+    "mode": "fill",
+    "norm": "diff",
+    "real": true
+   }
+  ],
+  "year": 2016,
+  "base": 2014
+ },
+ {
+  "id": "income_change_2023",
+  "layers": [
+   {
+    "key": "median_hh_income",
+    "mode": "fill",
+    "norm": "change"
+   }
+  ],
+  "year": 2023,
+  "base": 2014
+ },
+ {
+  "id": "rent_change_real_2024",
+  "layers": [
+   {
+    "key": "median_gross_rent",
+    "mode": "fill",
+    "norm": "change",
+    "real": true
+   }
+  ],
+  "year": 2024,
+  "base": 2012
+ },
+ {
+  "id": "poverty_pctile_2015",
+  "layers": [
+   {
+    "key": "poverty_pct",
+    "mode": "fill",
+    "norm": "pctile"
+   }
+  ],
+  "year": 2015,
+  "base": 2014
+ },
+ {
+  "id": "biv_poverty_unemployment",
+  "layers": [
+   {
+    "key": "poverty_pct",
+    "mode": "fill"
+   },
+   {
+    "key": "laus_unemp_rate",
+    "mode": "fill"
+   }
+  ],
+  "year": null,
+  "base": 2014
+ },
+ {
+  "id": "biv_equal_rent_income_2020",
+  "layers": [
+   {
+    "key": "median_gross_rent",
+    "mode": "fill",
+    "classes": "equal"
+   },
+   {
+    "key": "median_hh_income",
+    "mode": "fill",
+    "classes": "equal"
+   }
+  ],
+  "year": 2020,
+  "base": 2014
+ },
+ {
+  "id": "fed_percapita_2019",
+  "layers": [
+   {
+    "key": "fed_awards_total",
+    "mode": "fill",
+    "norm": "perCapita"
+   }
+  ],
+  "year": 2019,
+  "base": 2014
+ },
+ {
+  "id": "fed_loans_symbols",
+  "layers": [
+   {
+    "key": "fed_loans",
+    "mode": "symbol"
+   }
+  ],
+  "year": null,
+  "base": 2014
+ },
+ {
+  "id": "fema_pa_symbols_2018",
+  "layers": [
+   {
+    "key": "fema_pa_obligated",
+    "mode": "symbol"
+   }
+  ],
+  "year": 2018,
+  "base": 2014
+ },
+ {
+  "id": "pop_change_since_2010",
+  "layers": [
+   {
+    "key": "pop_change_since_2010_pct",
+    "mode": "fill"
+   }
+  ],
+  "year": null,
+  "base": 2014
+ },
+ {
+  "id": "tourism_places_per1000",
+  "layers": [
+   {
+    "key": "tourism_places",
+    "mode": "fill",
+    "norm": "per1000"
+   }
+  ],
+  "year": null,
+  "base": 2014
+ },
+ {
+  "id": "lodging_perkm2_green",
+  "layers": [
+   {
+    "key": "lodging_places",
+    "mode": "fill",
+    "norm": "perkm2",
+    "ramp": "green"
+   }
+  ],
+  "year": null,
+  "base": 2014
+ },
+ {
+  "id": "unemp_notfixed_2012_gold",
+  "layers": [
+   {
+    "key": "laus_unemp_rate",
+    "mode": "fill",
+    "fixed": false,
+    "ramp": "gold"
+   }
+  ],
+  "year": 2012,
+  "base": 2014
+ },
+ {
+  "id": "three_layers_2017",
+  "layers": [
+   {
+    "key": "poverty_pct",
+    "mode": "fill"
+   },
+   {
+    "key": "qcew_jobs",
+    "mode": "symbol"
+   },
+   {
+    "key": "fema_pa_obligated",
+    "mode": "symbol"
+   }
+  ],
+  "year": 2017,
+  "base": 2014
+ },
+ {
+  "id": "burden_early_2009",
+  "layers": [
+   {
+    "key": "renter_cost_burden_pct",
+    "mode": "fill",
+    "ramp": "red"
+   }
+  ],
+  "year": 2009,
+  "base": 2014
+ },
+ {
+  "id": "housing_units_per_km2_2021",
+  "layers": [
+   {
+    "key": "housing_units",
+    "mode": "fill",
+    "norm": "perkm2",
+    "classes": "jenks"
+   }
+  ],
+  "year": 2021,
+  "base": 2014
+ },
+ {
+  "id": "age65_gray_2014",
+  "layers": [
+   {
+    "key": "age65_pct",
+    "mode": "fill",
+    "ramp": "gray"
+   }
+  ],
+  "year": 2014,
+  "base": 2014
+ },
+ {
+  "id": "jobs_per_resident_ratio",
+  "layers": [
+   {
+    "key": "jobs_per_employed_resident",
+    "mode": "fill"
+   }
+  ],
+  "year": null,
+  "base": 2014
+ }
+]

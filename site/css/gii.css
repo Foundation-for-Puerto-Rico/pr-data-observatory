@@ -1,0 +1,115 @@
+/* The Global Innovation Index page (gii.html, Knowledge Area): the country profile as collapsible pillars, sub-pillars and indicators (native <details>). */
+/* no year bar on this page: the page starts under the section bar, as on the WCRP page (housing.css leaves room for the Housing page's year bar) */
+body.research .page { padding-top: calc(var(--topbar-height) + 56px); }
+@media print { body.research .page { padding-top: 0; } }   /* housing.css's print reset, which the rule above outranks */
+body.research.embed .page { padding-top: 16px; }
+body.research .block, body.research .hero { scroll-margin-top: calc(var(--topbar-height) + 50px); }
+html:has(body.research) { scroll-padding-top: calc(var(--topbar-height) + 50px); }
+.gp-label { margin: 0 0 18px; font-size: 14px; line-height: 1.55; max-width: 900px; }
+.gp-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; margin: 4px 0 12px; }
+.gp-btn { display: inline-flex; align-items: center; gap: 4px; font: inherit; font-size: 13px; padding: 5px 12px; border-radius: 999px; border: 1px solid #c9ced8; background: #fff; color: var(--color-text); cursor: pointer; }
+.gp-btn .ms-icon { font-size: 18px; }
+.gp-btn:hover { background: var(--tint-blue-bg); }
+.gp-btn:focus-visible { outline: 3px solid var(--color-primary-dark); outline-offset: 2px; }
+.gp-legend { display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: 12.5px; color: var(--color-text-muted); margin-left: auto; }
+.gp-hg { font-weight: 700; color: var(--color-text); }
+.gp-tag { display: inline-block; font-size: 11px; line-height: 16px; font-weight: 600; padding: 0 7px; border-radius: 8px; background: var(--tint-gray-bg); color: var(--tint-gray-fg); white-space: nowrap; }
+.gp-tag.fpr { background: var(--tint-yellow-bg); color: var(--tint-yellow-fg); }
+.gp-profile, .gp-head { --cols: 54px minmax(0, 1.25fr) minmax(0, .9fr) 70px 86px 132px 92px; }
+.gp-head { display: grid; grid-template-columns: var(--cols); gap: 10px; padding: 0 12px 6px; font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--color-text-muted); border-bottom: 3px solid var(--color-text); }
+.gp-head span:nth-child(n+4) { text-align: right; }
+.gp-loading { color: var(--color-text-muted); }
+
+details.gp-pillar, details.gp-sub, details.gp-ind { margin: 0; }
+.gp-profile summary { list-style: none; cursor: pointer; }
+.gp-profile summary::-webkit-details-marker { display: none; }
+.gp-profile summary:focus-visible { outline: 3px solid var(--color-primary-dark); outline-offset: -3px; border-radius: 6px; }
+.gp-profile summary h3, .gp-profile summary h4 { margin: 0; }
+.gp-profile summary::after { content: ''; flex: none; width: 7px; height: 7px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg); margin: -3px 2px 0 6px; transition: transform .15s; opacity: .7; }
+.gp-profile details[open] > summary::after { transform: rotate(-135deg); margin-top: 4px; }
+
+.gp-pillar { margin-top: 18px !important; }
+.gp-pillar > summary { display: flex; align-items: center; gap: 10px; padding: 10px 12px 6px; color: var(--pc); }
+.gp-pillar > summary .ms-icon { font-size: 22px; width: 36px; height: 36px; border-radius: 50%; background: var(--pc); color: #fff; display: inline-flex; align-items: center; justify-content: center; }
+.gp-pillar > summary h3 { font-size: 19px; font-weight: 800; text-transform: uppercase; letter-spacing: .02em; color: var(--pc); flex: 1; }
+.gp-about { font-size: 13.5px; line-height: 1.5; color: var(--color-text-muted); margin: 0 12px 6px 58px; max-width: 860px; }
+.gp-sub > summary { display: flex; align-items: center; padding: 8px 12px 4px; }
+.gp-sub > summary h4 { font-size: 14px; font-style: italic; font-weight: 700; color: var(--color-text); flex: 1; }
+.gp-sub > summary h4 .gp-code { display: inline-block; width: 54px; font-style: italic; }
+.gp-sub > .gp-about { margin-left: 76px; font-size: 12.5px; }
+
+.gp-ind > summary { display: grid; grid-template-columns: var(--cols) 0; gap: 10px; align-items: center; padding: 6px 12px; border-bottom: 1px dotted #c9ced8; font-size: 13.5px; color: var(--pc); }
+.gp-ind > summary:hover { background: #f6f7f9; }
+.gp-ind[open] > summary { background: #f6f7f9; border-bottom-style: solid; }
+.gp-ind > summary::after { position: relative; left: -4px; }
+.gp-ind .gp-code { font-variant-numeric: tabular-nums; }
+.gp-ind .gp-name { font-weight: 600; }
+.gp-ind .gp-src { color: var(--color-text-muted); font-size: 12.5px; }
+.gp-val, .gp-rank, .gp-upd, .gp-r26 { text-align: right; font-variant-numeric: tabular-nums; color: var(--color-text); }
+.gp-rank b, .gp-r26 b { display: inline-block; min-width: 64px; text-align: center; color: #fff; font-size: 12px; font-weight: 700; border-radius: 999px; padding: 2px 8px; }
+.gp-upd small { color: var(--color-text-muted); }
+.gp-r26 b { min-width: 58px; }
+.gp-fn { font-weight: 700; color: var(--color-text); margin-left: 1px; cursor: help; }
+/* the change marker: only the arrow is coloured; its shape and its label carry the meaning too (design tokens, WCAG AA on white) */
+.gp-chg { font-weight: 700; font-size: 12px; cursor: help; }
+.gp-chg.better { color: var(--tint-green-fg); }
+.gp-chg.worse { color: var(--color-danger); }
+.gp-chg.same, .gp-chg.na { color: var(--color-text-muted); }
+.gp-drop { font-size: 11.5px; line-height: 1.2; display: inline-block; }
+/* what became of the indicator in the GII 2026 */
+.gp-st { display: inline-block; font-size: 10.5px; line-height: 15px; font-weight: 600; padding: 0 6px; border-radius: 8px; white-space: nowrap; vertical-align: 1px; color: var(--tint-gray-fg); background: #f0f1f3; }
+.gp-st.renamed { background: var(--tint-blue-bg); color: var(--tint-blue-fg); }
+.gp-st.redefined { background: var(--tint-yellow-bg); color: var(--tint-yellow-fg); }
+.gp-st.dropped { background: var(--tint-red-bg); color: var(--tint-red-fg); }
+.gp-key { font-size: 12.5px; line-height: 1.5; color: var(--color-text); background: #f6f7f9; border-radius: 8px; padding: 8px 12px; margin: 0 0 12px; }
+.gp-key p { margin: 2px 0; }
+.gp-key > p > span { margin-right: 12px; white-space: nowrap; }
+.gp-key .gp-st { margin-right: 2px; }
+.gp-changes > summary { list-style: none; cursor: pointer; display: flex; align-items: center; }
+.gp-changes > summary::-webkit-details-marker { display: none; }
+.gp-changes > summary h2 { margin: 0; flex: 1; }
+.gp-changes > summary::after { content: ''; width: 8px; height: 8px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg); margin: -4px 4px 0 8px; transition: transform .15s; }
+.gp-changes[open] > summary::after { transform: rotate(-135deg); margin-top: 4px; }
+.gp-changes > summary:focus-visible { outline: 3px solid var(--color-primary-dark); outline-offset: 2px; border-radius: 6px; }
+.gp-changes h3 { font-size: 15px; margin: 18px 0 6px; }
+.gp-scroll { overflow-x: auto; }
+.gp-tbl { border-collapse: collapse; font-size: 13px; line-height: 1.45; margin: 6px 0 4px; min-width: 100%; }
+.gp-tbl th, .gp-tbl td { text-align: left; vertical-align: top; padding: 5px 10px 5px 0; border-bottom: 1px solid #e4e7ec; }
+.gp-tbl thead th { font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: var(--color-text-muted); border-bottom: 2px solid var(--color-text); }
+.gp-cw td:first-child, .gp-cw td:nth-child(3) { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.gp-method { margin: 4px 0; padding-left: 18px; font-size: 13.5px; line-height: 1.55; }
+.gp-method li { margin-bottom: 4px; }
+.gp-small { font-size: 12.5px; color: var(--color-text-muted); }
+.gp-none { color: var(--color-text-muted); }
+.gp-lab { display: none; }
+.gp-star { font-weight: 700; color: var(--color-text); }
+.gp-body { padding: 10px 14px 14px 76px; background: #fbfbfc; border-bottom: 1px solid #e4e7ec; font-size: 13.5px; line-height: 1.55; color: var(--color-text); }
+.gp-body dl { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 22px; margin: 0; }
+.gp-body dt { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--color-text-muted); }
+.gp-body dd { margin: 2px 0 0; }
+.gp-body code { font-size: 11.5px; background: #eef0f3; padding: 0 4px; border-radius: 4px; }
+.gp-kinds { display: block; margin-top: 4px; }
+.gp-kinds .gp-tag { margin-right: 4px; }
+.gp-note { margin: 0 0 10px; font-size: 13px; }
+.gp-comp { margin: 6px 0 0; padding-left: 18px; }
+
+@media (max-width: 760px) {
+  .gp-head { display: none; }
+  .gp-legend { margin-left: 0; }
+  .gp-pillar > summary h3 { font-size: 16px; }
+  .gp-about, .gp-sub > .gp-about { margin-left: 12px; }
+  .gp-ind > summary { grid-template-columns: 42px 1fr 1fr 10px; grid-template-areas: "code name name arrow" ". val rank ." ". upd r26 ."; gap: 4px 8px; }
+  .gp-ind > summary::after { grid-area: arrow; }
+  .gp-ind .gp-code { grid-area: code; } .gp-ind .gp-name { grid-area: name; }
+  .gp-ind .gp-src { display: none; }
+  .gp-val { grid-area: val; } .gp-rank { grid-area: rank; } .gp-upd { grid-area: upd; } .gp-r26 { grid-area: r26; }
+  .gp-val, .gp-rank, .gp-upd, .gp-r26 { text-align: left; font-size: 13px; }
+  .gp-key > p > span { white-space: normal; display: inline; }
+  .gp-tbl { font-size: 12.5px; }
+  .gp-lab { display: block; font-size: 10px; text-transform: uppercase; letter-spacing: .04em; color: var(--color-text-muted); }
+  .gp-rank b, .gp-r26 b { min-width: 0; }
+  .gp-body { padding: 10px 12px 12px; }
+  .gp-body dl { grid-template-columns: 1fr; }
+  .gp-sub > summary h4 .gp-code { width: auto; margin-right: 4px; }
+}
+@media print { .gp-tools { display: none; } .gp-profile details > .gp-body { display: block; } }

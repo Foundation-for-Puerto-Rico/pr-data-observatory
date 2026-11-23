@@ -1,0 +1,18 @@
+{
+ "water.watersheds_layer": {
+  "name": "Cuencas y quebradas (USGS WBD y NHDPlus HR)",
+  "how_to_read": "Cada contorno de líneas cortadas es el terreno que drena a un tramo de río. Las líneas azules son las quebradas y ríos, más anchas para los ríos mayores. Para el terreno que drena a cualquier punto, use Qué drena aquí en Herramientas › Análisis › Áreas de estudio.",
+  "_en": {
+   "name": "d5782363",
+   "how_to_read": "a7dbd35b"
+  }
+ },
+ "water.what_drains_here": {
+  "name": "Qué drena aquí (el terreno aguas arriba de un punto, NHDPlus HR)",
+  "how_to_read": "El área encontrada es el terreno que drena a la quebrada junto al punto, desde toda el área de captación donde está el punto. Un punto en una ladera recibe su área de captación y todo lo que está aguas arriba de ella.",
+  "_en": {
+   "name": "dc30509d",
+   "how_to_read": "108d2ab3"
+  }
+ }
+}

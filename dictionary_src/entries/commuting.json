@@ -1,0 +1,195 @@
+[
+  {
+    "id": "commuting.daytime_population",
+    "ask": {
+      "en": [
+        "daytime population",
+        "people during the day",
+        "commuter adjusted population"
+      ],
+      "es": [
+        "poblacion diurna",
+        "poblacion de dia",
+        "gente durante el dia"
+      ]
+    },
+    "name": "Daytime population (commuter-adjusted)",
+    "domain": "population",
+    "domains": [
+      "population",
+      "infrastructure.mobility",
+      "economy"
+    ],
+    "group": "Daytime population",
+    "kind": "variable",
+    "plain": "How many people are in each municipio on a working day: its residents, plus the workers who come in, minus the workers who leave.",
+    "definition": "The residents of the municipio in the 2020 Census, plus the workers who work in it and live elsewhere, minus the workers who live in it and work elsewhere. The Census Bureau calls it the commuter-adjusted population.",
+    "unit": "people",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2020,
+      "last": 2020,
+      "frequency": "One period: the commuting flows of 2016-2020, labelled by their last year. The Census Bureau publishes the flows about every five years; the file is rebuilt when a new release comes (python commuting.py)."
+    },
+    "method": "commuting.py reads Table 1 of the Census Bureau's County-to-County Commuting Flows of the American Community Survey 2016-2020 (workers 16 and over by the municipio where they live and the one where they work, each flow with a margin of error) and the residents of each municipio in the 2020 Census (geo/crosswalk.json). Workers who come in are those who live in another municipio or outside Puerto Rico and work in the municipio; workers who leave are those who live in it and work in another municipio or outside Puerto Rico. The Census Bureau's formula is the resident population, plus the workers working in the area, minus the workers living in the area, which gives the same number. Margins of error are at 90 percent: the margin of a sum of flows is the square root of the sum of the squares of their margins, and the census count has none. It is a calculated figure (decision 107): arithmetic on published figures, with nothing assumed.",
+    "sources": [
+      "census_commuting_flows",
+      "census_decennial"
+    ],
+    "source_detail": "US Census Bureau, County-to-County Commuting Flows, ACS 2016-2020, Table 1, https://www2.census.gov/programs-surveys/demo/tables/metro-micro/2020/commuting-flows-2020/table1.xlsx; 2020 Census residents by municipio. The formula: US Census Bureau, Calculating Commuter-Adjusted Population Estimates, https://www.census.gov/topics/employment/commuting/guidance/calculations.html.",
+    "how_to_read": "San Juan has 342,259 residents and about 450,689 people on a working day (margin ±3,342). 20 of the 78 municipios have more people by day than residents and 58 have fewer. The municipios add up to Puerto Rico's 3,285,077: the island loses the 2,657 workers who work outside it and gains the 1,860 who live outside it.",
+    "caveats": [
+      "It counts workers only. Students, shoppers, patients and visitors also move by day and are not in it.",
+      "The flows are an average of 2016 to 2020 and the residents are those of 2020: the two periods are not the same, and remote work has changed since.",
+      "A worker is counted at one workplace, the one where they worked most in the survey's reference week."
+    ],
+    "see_also": [
+      "commuting.daytime_change_pct",
+      "commuting.work_elsewhere_pct",
+      "infrastructure.transit_links",
+      "measures.margin_of_error"
+    ],
+    "where": {
+      "files": [
+        "commuting_series.json:daytime_population"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Population · Daytime population): Daytime population (commuter-adjusted)",
+          "href": "index.html#e=daytime_population.s"
+        }
+      ]
+    },
+    "added": "2026-11-14"
+  },
+  {
+    "id": "commuting.daytime_change_pct",
+    "ask": {
+      "en": [
+        "daytime change",
+        "fills up by day",
+        "bedroom community"
+      ],
+      "es": [
+        "cambio diurno",
+        "ciudad dormitorio",
+        "se llena de dia"
+      ]
+    },
+    "name": "Daytime change in population from commuting, % of residents",
+    "domain": "population",
+    "domains": [
+      "population",
+      "infrastructure.mobility",
+      "economy"
+    ],
+    "group": "Daytime population",
+    "kind": "variable",
+    "plain": "How much a working day adds to, or takes from, the people in each municipio, as a percent of its residents.",
+    "definition": "Workers who come in to work minus workers who leave to work elsewhere, divided by the residents of the municipio in the 2020 Census, in percent. Above zero the municipio has more people by day than residents; below zero it has fewer.",
+    "unit": "% of residents",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2020,
+      "last": 2020,
+      "frequency": "One period: the commuting flows of 2016-2020, labelled by their last year. The Census Bureau publishes the flows about every five years; the file is rebuilt when a new release comes (python commuting.py)."
+    },
+    "method": "commuting.py reads Table 1 of the Census Bureau's County-to-County Commuting Flows of the American Community Survey 2016-2020 (workers 16 and over by the municipio where they live and the one where they work, each flow with a margin of error) and the residents of each municipio in the 2020 Census (geo/crosswalk.json). The workers who come in (from another municipio or from outside Puerto Rico) minus the workers who leave (to another municipio or outside Puerto Rico) are divided by the residents. Margins of error are at 90 percent: the margin of a sum of flows is the square root of the sum of the squares of their margins, and the census count has none. It is a calculated figure (decision 107): arithmetic on published figures, with nothing assumed.",
+    "sources": [
+      "census_commuting_flows",
+      "census_decennial"
+    ],
+    "source_detail": "US Census Bureau, County-to-County Commuting Flows, ACS 2016-2020, Table 1; 2020 Census residents by municipio.",
+    "how_to_read": "It is highest in San Juan (+31.7%), Guaynabo (+22.7%) and Cataño (+20.1%), and lowest in Toa Alta (-31.4%), Trujillo Alto (-22.3%) and Loíza (-20.8%). For 72 of the 78 municipios the change is larger than its margin of error, so its direction is clear. The margin of error is above 30% of the estimate for 38 of the 78 municipalities; in 35 of them the change is under 10 points, small enough for the margin to be a large part of it.",
+    "caveats": [
+      "A value close to zero with a wide margin does not say whether the municipio fills or empties: read the margin.",
+      "It counts workers only, and one workplace for each worker.",
+      "The flows are an average of 2016 to 2020 and the residents are those of 2020."
+    ],
+    "see_also": [
+      "commuting.daytime_population",
+      "commuting.work_elsewhere_pct",
+      "infrastructure.transit_links",
+      "measures.margin_of_error"
+    ],
+    "where": {
+      "files": [
+        "commuting_series.json:daytime_change_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Population · Daytime population): Daytime change in population from commuting, % of residents",
+          "href": "index.html#e=daytime_change_pct.f"
+        }
+      ]
+    },
+    "added": "2026-11-14"
+  },
+  {
+    "id": "commuting.work_elsewhere_pct",
+    "ask": {
+      "en": [
+        "work in another municipio",
+        "commute out",
+        "work outside their town"
+      ],
+      "es": [
+        "trabajan en otro municipio",
+        "trabajan fuera de su pueblo",
+        "viajan a trabajar"
+      ]
+    },
+    "name": "Resident workers who work in another municipio, % of resident workers",
+    "domain": "population",
+    "domains": [
+      "population",
+      "infrastructure.mobility",
+      "economy"
+    ],
+    "group": "Daytime population",
+    "kind": "variable",
+    "plain": "Out of every 100 workers who live in a municipio, how many work in another one.",
+    "definition": "Of the workers 16 and over who live in the municipio and work in Puerto Rico, the share whose workplace is in another municipio, in percent.",
+    "unit": "% of resident workers",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "five-year window",
+      "first": 2020,
+      "last": 2020,
+      "frequency": "One period: the commuting flows of 2016-2020, labelled by their last year. The Census Bureau publishes the flows about every five years; the file is rebuilt when a new release comes (python commuting.py)."
+    },
+    "method": "commuting.py reads Table 1 of the Census Bureau's County-to-County Commuting Flows of the American Community Survey 2016-2020 and divides the workers who live in the municipio and work in another municipio by all the workers who live in it and work in Puerto Rico. The workers who work outside Puerto Rico are left out of both, as on the Connections between municipios page, whose figure this is. The margin of error follows the Census Bureau's formula for a proportion, with the margin of each sum as the square root of the sum of the squares of its flows' margins. It is a calculated figure (decision 107).",
+    "sources": [
+      "census_commuting_flows"
+    ],
+    "source_detail": "US Census Bureau, County-to-County Commuting Flows, ACS 2016-2020, Table 1, https://www2.census.gov/programs-surveys/demo/tables/metro-micro/2020/commuting-flows-2020/table1.xlsx.",
+    "how_to_read": "In Puerto Rico, 53.4% of the workers who work on the island work in a municipio other than the one where they live (margin ±0.46). The share is highest in Toa Alta (87.5%), Loíza (82.8%) and Canóvanas (78.5%), and lowest in the island municipios of Vieques (2.7%) and Culebra (3.8%), then Ponce (15.4%). The margin of error is above 30% of the estimate for 4 of the 78 municipalities.",
+    "caveats": [
+      "The Connections between municipios page gives 53.3% for Puerto Rico because it divides by all workers, including those who work outside Puerto Rico.",
+      "The flows are an average of 2016 to 2020."
+    ],
+    "see_also": [
+      "commuting.daytime_population",
+      "commuting.daytime_change_pct",
+      "infrastructure.transit_links",
+      "measures.margin_of_error"
+    ],
+    "where": {
+      "files": [
+        "commuting_series.json:work_elsewhere_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Population · Daytime population): Resident workers who work in another municipio, % of resident workers",
+          "href": "index.html#e=work_elsewhere_pct.f"
+        }
+      ]
+    },
+    "added": "2026-11-14"
+  }
+]

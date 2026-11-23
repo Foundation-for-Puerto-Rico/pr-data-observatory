@@ -1,0 +1,45 @@
+name: Fires (NASA FIRMS)
+
+# Builds the vegetation fire counts (fires.py) with FPR's FIRMS MAP_KEY, kept only as the secret FIRMS_MAP_KEY (HANDOFF decision 91, docs/fires.md), and keeps
+# the file and the downloaded detections with the run as an artifact; it writes nothing to the repository. Started by hand, or by pushing a tag named
+# fires-run-*. The key is never printed: fires.py reads it from the environment and puts it only in request addresses.
+on:
+  workflow_dispatch:
+  push:
+    tags: ["fires-run-*"]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: fires
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements.txt
+      - run: pip install -r requirements.txt
+      - name: Build (yearly files without a key; the last 12 months with FIRMS_MAP_KEY)
+        env:
+          FIRMS_MAP_KEY: ${{ secrets.FIRMS_MAP_KEY }}
+        run: |
+          test -n "$FIRMS_MAP_KEY" || { echo "::error::The secret FIRMS_MAP_KEY is not set (docs/fires.md)."; exit 1; }
+          python -u fires.py --refresh
+          python fires.py --check
+      - name: Keep the file, and the downloaded detections for a rebuild elsewhere, with the run
+        uses: actions/upload-artifact@v4
+        with:
+          name: fires-${{ github.run_id }}
+          path: |
+            site/data/fires_series.json
+            cache/fires
+          if-no-files-found: error
+          retention-days: 30

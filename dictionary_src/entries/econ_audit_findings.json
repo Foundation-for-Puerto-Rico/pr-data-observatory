@@ -1,0 +1,47 @@
+[
+ {
+  "id": "economy.audit_findings",
+  "name": "Single audit findings of bodies in Puerto Rico, and the findings that repeat",
+  "domain": "public-money",
+  "domains": [
+   "public-money"
+  ],
+  "group": "Public spending (Gasto Público)",
+  "kind": "table",
+  "plain": "How many problems the yearly audits of federal money found in bodies in Puerto Rico since 2019, and how many of them the auditor marked as repeated from the audit before, by year, kind of body, federal agency and program. A repeated finding is the closest open measure of whether a problem was corrected.",
+  "definition": "audit_findings.json holds, for the single audits that bodies in Puerto Rico filed in the Federal Audit Clearinghouse from audit year 2019, the number of audits, of audits with at least one finding on a federal program, of findings, and of findings that are repeated, a material weakness or carry questioned costs, by audit year, by the kind of body the Clearinghouse records, by federal agency and by assistance listing; and, by year, the audits accepted more than nine months after the fiscal year ended.",
+  "unit": "Counts of audits and of findings",
+  "value_type": "count",
+  "geography": "Puerto Rico as a whole (bodies whose audit gives a Puerto Rico address)",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2019,
+   "last": 2025,
+   "frequency": "Once a year, and whenever the page is rebuilt (audit_findings.py --refresh): audits of the two latest years keep arriving"
+  },
+  "method": "audit_findings.py asks the Federal Audit Clearinghouse API for the audits with auditee state PR from audit year 2019, then for their findings and for their award lines with a finding. The API lists a finding once per award line; the script counts one finding per audit and reference number, with a flag set when any of its lines sets it. In the breakdowns by agency and by program a finding counts once in each agency or program it touches.",
+  "how_to_read": "Read the share repeated next to the number of findings: programs with many audited bodies have more findings. The two latest audit years are incomplete, because audits arrive late.",
+  "cautions": [
+   "A finding is not a loss and is not proof that money was misused: it says a rule was not followed or a control was weak, and many findings are small.",
+   "Questioned costs are a yes or no. The Clearinghouse publishes no amount.",
+   "A repeated finding does not say why the problem was not corrected; some corrections take more than a year.",
+   "The breakdowns by agency and by program add up to more than the findings, because a finding can touch several programs.",
+   "No body is named in the file. Federal grant content: its Compliance review is open (HANDOFF decisions 21 and 110)."
+  ],
+  "sources": [
+   "fac"
+  ],
+  "added": "2026-11-18",
+  "where": {
+   "files": [
+    "audit_findings.json:*"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Federal grants: balances, reductions and audit findings",
+     "href": "unused-funds.html"
+    }
+   ]
+  }
+ }
+]

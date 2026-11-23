@@ -1,0 +1,159 @@
+/* 3D + Time view additions */
+body.three { background: #0b1b26; }
+body.three #map { background: #0b1b26; }
+body.three .topbar .btn { height: 34px; text-decoration: none; }
+.maplibregl-ctrl-attrib { font-family: var(--font); font-size: 10px; }
+.maplibregl-ctrl-bottom-left { max-width: calc(100% - 58px); }   /* the credits (open on a wide screen, folded behind an "i" button on a phone: twin3d.js setAttribution) end before the map buttons on the right */
+/* the open credits never take a click meant for the map under them (a cluster, a stop): only their links answer */
+.maplibregl-ctrl-bottom-left .maplibregl-ctrl-attrib { pointer-events: none; }
+.maplibregl-ctrl-bottom-left .maplibregl-ctrl-attrib a { pointer-events: auto; }
+@media (max-width: 500px) { .maplibregl-ctrl-attrib { font-size: 9px; line-height: 1.3; } }
+.maplibregl-ctrl-group { border-radius: var(--radius-sm); }
+.timebar { position: fixed; left: calc(var(--panel-width) + 16px); right: 16px; bottom: 14px; height: 54px; background: rgba(255,255,255,.85); border-radius: 27px; box-shadow: var(--shadow-lg); display: flex; align-items: center; gap: 12px; padding: 0 10px 0 8px; z-index: 950; }
+/* the time bar (2026-11-11): see-through at rest, solid while it is pointed at or used; it folds to its play button and clock (twin3d.js tbFoldApply) */
+.timebar { transition: background-color .15s ease; }
+.timebar:hover, .timebar:focus-within { background: rgba(255,255,255,.97); }
+.timebar.folded { right: auto; gap: 6px; padding-right: 6px; }
+.timebar.folded input[type=range], .timebar.folded .tb-modes { display: none; }
+.timebar.folded .tb-label { min-width: 0; max-width: 46vw; overflow: hidden; text-overflow: ellipsis; }
+.timebar .tb-fold { flex: none; }
+@media (prefers-reduced-motion: reduce) { .timebar { transition: none; } }
+.timebar .tb-label { min-width: 190px; font-size: 13px; font-weight: 500; color: var(--color-primary-dark); white-space: nowrap; }
+.timebar input[type=range] { flex: 1; accent-color: var(--color-primary); }
+.tb-modes { display: flex; background: var(--color-bg); border-radius: 18px; padding: 3px; }
+.tb-modes button { border: 0; background: none; border-radius: 15px; padding: 6px 12px; font-size: 12px; font-weight: 500; color: var(--color-text-muted); cursor: pointer; }
+.tb-modes button.active { background: var(--color-primary); color: #fff; }
+.tooltip { position: fixed; pointer-events: none; z-index: 1200; background: rgba(42,46,46,.94); color: #fff; padding: 8px 11px; border-radius: 8px; font-size: 12px; line-height: 1.4; max-width: 280px; display: none; }
+.tooltip.show { display: block; }
+.tooltip b { color: #BDE0F2; }
+.dual { position: relative; height: 24px; }
+.dual input { position: absolute; left: 0; right: 0; width: 100%; pointer-events: none; background: none; }
+.dual input::-webkit-slider-thumb { pointer-events: auto; }
+.dual input::-moz-range-thumb { pointer-events: auto; }
+.storm { width: 100%; text-align: left; border: 0; border-bottom: 1px solid var(--color-border-light); background: none; font: inherit; color: inherit; display: grid; grid-template-columns: 34px 1fr auto; align-items: center; gap: 8px; padding: 5px 0; border-bottom: 1px solid var(--color-border-light); font-size: 12px; cursor: pointer; }
+.storm:hover { background: var(--color-bg); }
+.storm .cat { width: 30px; height: 22px; border-radius: 6px; color: #fff; font-weight: 700; font-size: 11px; display: flex; align-items: center; justify-content: center; }
+.storm small { color: var(--color-text-muted); display: block; }
+.legend-swatches { display: flex; gap: 4px; margin: 6px 0; }
+.legend-swatches span { flex: 1; height: 10px; border-radius: 3px; }
+@media (max-width: 860px) {
+  .timebar { left: 10px; right: 10px; height: 48px; }
+  .timebar .tb-label { min-width: 0; font-size: 11px; }
+  .tb-modes button { padding: 5px 8px; }
+}
+
+/* ── QA pass 2026-10-01 ─────────────────────────────────────────────────── */
+/* map controls and credits sit above the floating time bar */
+.maplibregl-ctrl-bottom-left, .maplibregl-ctrl-bottom-right { bottom: 78px; }
+.tb-modes button.active { background: var(--color-primary-strong); color: #fff; }
+.tb-modes button { min-height: 28px; }
+.timebar .icon-btn { flex: none; }
+body.three .topbar .views .btn[aria-current="page"] { background: var(--tint-blue-bg); }
+@media (max-width: 860px) {
+  /* two rows: play + label + modes, then the slider across the full width */
+  .timebar { display: grid; grid-template-columns: auto 1fr auto; grid-template-areas: "play label modes" "range range range"; height: auto; padding: 8px 12px 10px; border-radius: 20px; gap: 4px 10px; bottom: 10px; }
+  .timebar #tbPlay { grid-area: play; }
+  .timebar .tb-label { grid-area: label; min-width: 0; overflow: hidden; text-overflow: ellipsis; font-size: 12px; }
+  .timebar .tb-modes { grid-area: modes; }
+  .timebar #tbRange { grid-area: range; width: 100%; margin: 0; }
+  .maplibregl-ctrl-bottom-left, .maplibregl-ctrl-bottom-right { bottom: 96px; }
+}
+.storm .cat { background-clip: padding-box; }
+
+/* ── Navigation controls, search and route planner (3D) ─────────────────── */
+.navpad button { display: flex; align-items: center; justify-content: center; color: var(--color-text); }
+.navpad button .ms-icon { font-size: 20px; font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24; }
+.navpad button[aria-expanded="true"] { background: var(--tint-blue-bg); color: var(--tint-blue-fg); }
+.nav-help { position: fixed; right: 54px; bottom: 96px; width: min(350px, calc(100vw - 24px)); background: #fff; border-radius: var(--radius-md); box-shadow: var(--shadow-lg); padding: 12px 36px 12px 14px; z-index: 1300; font-size: 12.5px; line-height: 1.45; }
+.nav-help[hidden] { display: none; }
+.nav-help dl { margin: 0; }
+.nav-help dt { font-weight: 700; margin-top: 8px; color: var(--color-primary-dark); }
+.nav-help dd { margin: 2px 0 0; color: var(--color-text); }
+.nav-help kbd { border: 1px solid #ccc; border-bottom-width: 2px; border-radius: 4px; padding: 0 4px; font: inherit; font-size: 11.5px; background: #f7f7f7; }
+.nav-help .help-close { position: absolute; top: 6px; right: 6px; border: 0; background: none; cursor: pointer; color: var(--color-text-muted); width: 28px; height: 28px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; }
+.nav-help .help-close:hover { background: var(--color-bg); }
+body.three .search input { width: 240px; }
+/* The deck.gl canvas (MapboxOverlay, not interleaved) lives in .maplibregl-ctrl-top-left, z-index 2. */
+.maplibregl-marker { z-index: 3; }
+.maplibregl-popup { z-index: 4; }
+.maplibregl-popup-content .pop .links { flex-wrap: wrap; }
+.maplibregl-popup-content .pop { max-height: 30vh; overflow-y: auto; }   /* several plans at one point make a long popup; keep it clear of the time bar */
+.maplibregl-marker.plan-marker { cursor: grab; }
+@media (max-width: 860px) { .nav-help { bottom: 110px; right: 12px; } }
+@media (max-width: 860px) { body.three .search input { width: 100%; } }   /* the phone grid sizes the search box: a fixed 240 px overlapped the view buttons */
+@media (min-width: 861px) and (max-width: 1180px) { body.three .search input { width: 150px; } }
+@media (min-width: 861px) and (max-width: 960px) { body.three .topbar .brand { display: none; } }   /* the 3D title (PR Data Observatory · 3D + Time) is longer than the map's: no room beside the ES | EN switch */
+/* Transit supply (supply3d.js): the day of the timetable, "Service at this hour" and the route profile */
+.day-seg { display: inline-flex; flex-wrap: wrap; background: var(--color-bg); border-radius: 16px; padding: 3px; gap: 2px; }
+.day-seg button { border: 0; background: none; border-radius: 13px; padding: 5px 11px; min-height: 28px; font: inherit; font-size: 12px; font-weight: 500; color: var(--color-text-muted); cursor: pointer; }
+.day-seg button[aria-pressed="true"] { background: var(--color-primary-strong); color: #fff; }
+.day-seg button:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 1px; }
+.ctrl .lbl { display: block; font-size: 12px; color: var(--color-text-muted); margin-bottom: 4px; }
+.ctrl label.chk { justify-content: flex-start; align-items: center; gap: 6px; color: var(--color-text); }
+.sup-now { font-size: 12.5px; line-height: 1.45; margin: 8px 0 4px; }
+.sup-bars { display: block; max-width: 320px; margin: 4px 0; }
+.sup-legend { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 11px; color: var(--color-text-muted); margin: 6px 0; }
+.sup-legend span { display: inline-flex; align-items: center; gap: 5px; }
+.sup-legend i { display: inline-block; width: 18px; border-radius: 2px; }
+.rp h3 { font-size: 15px; margin: 8px 0 2px; color: var(--color-text); }
+.rp .meta { font-size: 12px; color: var(--color-text-muted); }
+.rp-h { font-size: 13px; margin: 14px 0 4px; color: var(--color-text); }
+.rp .tbl-wrap { overflow-x: auto; margin: 8px 0; }
+table.rp-dirs { width: 100%; border-collapse: collapse; font-size: 12px; }
+table.rp-dirs th { text-align: left; font-size: 10.5px; font-weight: 500; color: var(--color-text-muted); padding: 5px 6px; border-bottom: 1px solid var(--color-border); vertical-align: bottom; }
+table.rp-dirs td { padding: 6px; border-bottom: 1px solid var(--color-border-light); vertical-align: top; font-variant-numeric: tabular-nums; }
+.rp-stops summary { cursor: pointer; font-size: 12.5px; margin: 8px 0 4px; }
+.rp-stops ol { font-size: 12px; padding-left: 22px; margin: 4px 0; max-height: 260px; overflow: auto; }
+.rp-conns { font-size: 12.5px; margin: 0; padding-left: 16px; }
+.rp-conns li { margin: 0 0 5px; }
+/* the sea level layer's height and year ("1 ft · 2050") stay on one line, beside or under the source (2026-10-19) */
+#slrLabel { white-space: nowrap; }
+/* Time series panel (series3d.js): a dark band above the time bar, as in the dashboards of urban activity signals; FPR yellow for the municipality, FPR light blue for Puerto Rico */
+.series { --sr-bg: rgba(13,22,28,.96); --sr-line: rgba(255,255,255,.08); --sr-text: #E6E6E6; --sr-muted: #9AA7AD; --sr-m: #FFA600; --sr-pr: #5FAFDA; --sr-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  position: fixed; left: calc(var(--panel-width) + 16px); right: 16px; bottom: 78px; height: 252px; z-index: 940; background: var(--sr-bg); color: var(--sr-text); border: 1px solid rgba(255,255,255,.1); border-radius: var(--radius-md); box-shadow: var(--shadow-lg); display: flex; flex-direction: column; }
+.series[hidden] { display: none; }
+.sr-head { display: flex; align-items: center; gap: 14px; padding: 9px 10px 4px 14px; min-width: 0; }
+.sr-title { margin: 0; font-size: 13.5px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.sr-keys { display: flex; gap: 12px; font-family: var(--sr-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .04em; color: var(--sr-muted); white-space: nowrap; }
+.sr-keys span { display: inline-flex; align-items: center; gap: 5px; }
+.sr-keys b { font-weight: 500; }
+.sr-keys i { display: inline-block; width: 16px; height: 0; border-top: 2px solid var(--sr-m); }
+.sr-keys i.sr-k-pr { border-top: 2px dashed var(--sr-pr); }
+.sr-pills { margin-left: auto; display: flex; align-items: center; gap: 6px; flex: none; }
+.sr-pills select, .sr-pills button { height: 28px; border-radius: 6px; border: 1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.04); color: var(--sr-text); font: 500 11.5px var(--sr-mono); padding: 0 9px; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; }
+.sr-pills select { max-width: 180px; }
+.sr-pills select option, .sr-pills select optgroup { background: #fff; color: var(--color-text); }
+.sr-pills button:hover, .sr-pills select:hover { background: rgba(255,255,255,.1); }
+.sr-pills button[hidden] { display: none; }
+.sr-pills .sr-x { width: 28px; padding: 0; justify-content: center; border-color: transparent; background: none; }
+.sr-pills :focus-visible, .sr-chart:focus-visible { outline: 2px solid var(--sr-pr); outline-offset: 1px; }
+.sr-chart { flex: 1; min-height: 0; position: relative; cursor: crosshair; border-radius: 0 0 var(--radius-md) var(--radius-md); }
+.sr-chart svg { display: block; }
+.sr-empty { margin: 0; padding: 40px 16px; text-align: center; font-size: 12.5px; color: var(--sr-muted); }
+.sr-grid { stroke: var(--sr-line); }
+.sr-ax { font: 10px var(--sr-mono); fill: var(--sr-muted); }
+.sr-area { fill: var(--sr-m); fill-opacity: .12; }
+.sr-band { fill: var(--sr-m); fill-opacity: .2; }   /* the margin of error (90%) of an ACS 5-year estimate */
+.sr-err { stroke: var(--sr-m); stroke-opacity: .45; stroke-width: 1.5; }
+.sr-note { margin: 0; padding: 0 14px 8px; font-size: 11px; line-height: 1.35; color: var(--sr-muted); }
+.sr-note[hidden] { display: none; }
+.series .gl-mark { text-decoration-color: var(--sr-pr); }   /* the glossary's underline, readable on the dark panel */
+.sr-line-m { fill: none; stroke: var(--sr-m); stroke-width: 2.25; stroke-linejoin: round; }
+.sr-line-pr { fill: none; stroke: var(--sr-pr); stroke-width: 1.75; stroke-dasharray: 5 4; }
+.sr-pt { fill: var(--sr-m); fill-opacity: .55; }
+.sr-sel { stroke: rgba(255,255,255,.55); stroke-dasharray: 2 3; }
+.sr-dot-m { fill: var(--sr-m); stroke: #0D161C; stroke-width: 2; }
+.sr-dot-pr { fill: var(--sr-pr); stroke: #0D161C; stroke-width: 2; }
+.sr-tag rect { fill: rgba(13,22,28,.92); stroke: rgba(255,255,255,.22); }
+.sr-tag text { font: 500 10.5px var(--sr-mono); fill: var(--sr-text); }
+body.series-open .maplibregl-ctrl-bottom-left, body.series-open .maplibregl-ctrl-bottom-right { bottom: 340px; }
+@media (max-width: 860px) {
+  /* the key keeps its place on a phone: a row of its own under the title and the buttons (2026-10-27, usability pass); the panel grows by that row */
+  .series { left: 10px; right: 10px; bottom: 92px; height: 254px; }
+  .sr-head { flex-wrap: wrap; row-gap: 2px; }
+  .sr-title { flex: 1 1 0; }
+  .sr-keys { order: 3; flex: 1 0 100%; gap: 14px; }
+  .sr-pills select { max-width: 120px; }
+  .sr-pills #srCols { font-size: 0; gap: 0; width: 28px; padding: 0; justify-content: center; }   /* the icon only: the dataset menu needs the room */
+  body.series-open .maplibregl-ctrl-bottom-left, body.series-open .maplibregl-ctrl-bottom-right { bottom: 356px; }
+}

@@ -1,0 +1,199 @@
+{
+ "_about": "Spanish of dictionary text that stays in English on the site until Finance and Compliance review it (federal grant content; HANDOFF decisions 9, 20 and 21; 2026-10-21, under Francis's delegation: the USAspending and OpenFEMA source cards are held with Public money; the WCRP entries' names and how to read it and the WCRP source card are released per decision 51; the 2023 housing study card stays held with Table 10). The build reads only the ids here, to keep their Spanish out of the published files: entries (their name and how to read it; their summary is also held in i18n_src/held_for_review.json dictionary_plain, whose ids the build holds too), sources (the source card), groups (the area text and group notes of a domain) and labels (units, geographies, group names and update frequencies used only by held entries; a held entry shows every label in English). The Spanish itself is never published. To release a record, move it into the matching file of dictionary_src/es/, delete it here (and from i18n_src/held_for_review.json for an entry's summary) and run python dictionary.py.",
+ "entries": {
+  "study.table_10": {
+   "name": "Tabla 10: Proyectos del Crédito Contributivo para Vivienda de Bajos Ingresos financiados con CDBG-DR",
+   "plain": "La Tabla 10 enumera seis proyectos de vivienda que menciona el estudio de 2023. Cada uno usa el Crédito Contributivo para Vivienda de Bajos Ingresos (LIHTC) y también recibe dinero de la Subvención en Bloque para el Desarrollo Comunitario para la Recuperación ante Desastres (CDBG-DR), un programa del Departamento de Vivienda y Desarrollo Urbano de EE. UU. (HUD). Los proyectos tienen 851 unidades en cuatro municipios. El estudio estima su costo en $242,090,072 y sus subvenciones de CDBG-DR en $90,532,871.",
+   "how_to_read": "Totales: 851 unidades, $242,090,072 de costo estimado de desarrollo y $90,532,871 de subvención estimada de CDBG-DR. Tres proyectos son apartamentos multifamiliares y tres son hogares de envejecientes. Caguas y San Juan tienen dos proyectos cada uno; Humacao y Coamo, uno cada uno. Son estimados del estudio, no cifras tomadas de HUD, y el observatorio no los ha actualizado. El PDF del estudio presenta esta tabla como Tabla 12; este diccionario y la página de Vivienda la llaman Tabla 10 (vea la ficha 'El estado de la vivienda en Puerto Rico (2023)').",
+   "_en": {
+    "name": "1a860339",
+    "plain": "825dd34e",
+    "how_to_read": "9d5b030a"
+   }
+  },
+  "economy.fed_awards_total": {
+   "name": "Fondos federales otorgados, todos los tipos",
+   "plain": "Fondos federales comprometidos para trabajos o beneficios en un municipio en un año fiscal (de octubre a septiembre). Suma contratos, subvenciones, pagos directos, préstamos (a su costo estimado) y otra asistencia. No es dinero gastado y no mide la necesidad. La cifra de San Juan puede incluir dinero destinado a toda la isla. La cifra de Puerto Rico también cuenta los fondos otorgados que no indican municipio.",
+   "how_to_read": "Compare los municipios por residente o como proporción, no en dólares absolutos. En el corte de datos 2026-10, San Juan tiene el 10.4% de las personas residentes de la isla (Censo 2020) y entre el 25.9% (año fiscal, AF, 2012) y el 70.6% (AF2010) del valor de Puerto Rico, o entre el 31.9% y el 76.9% de los dólares que indican un municipio. Los datos muestran que la proporción de San Juan es alta; no muestran cuánto de ella sirve a otros lugares. También en el corte de datos 2026-10, el valor de Puerto Rico fue $11.9 mil millones en el AF2008, llegó a un máximo de $65.2 mil millones en el AF2021 y fue $38.4 mil millones en el AF2025. Entre el 3.4% (AF2011) y el 24.7% (AF2024) del valor de Puerto Rico de cada año no indica municipio (la proporción 'sin ubicar'), así que los 78 municipios suman menos que la isla; esa proporción es 21.6% ($8.3 mil millones) en el AF2025. En el mismo corte, las subvenciones tienen el mayor monto sin ubicar en 11 de los 18 años y los pagos directos, en los otros siete. Los pagos directos son el 80% del valor de Puerto Rico en el AF2008 y el 73% en el AF2025. Las subvenciones explican los años máximos: $22.3 mil millones en el AF2020 y $35.0 mil millones en el AF2021. El valor de un municipio es el dinero registrado en su lugar, no lo que recibieron sus residentes. En el mismo corte, los totales del AF2009 al AF2013 incluyen de $1.3 a $5.6 mil millones al año de otra asistencia, registrada mayormente en Adjuntas (en el AF2011, la otra asistencia es el 27% del valor de Puerto Rico y Adjuntas sola, el 25%; vea economy.fed_other). Compare los totales sin ese grupo, o compare otros años, antes de leer una tendencia.",
+   "_en": {
+    "name": "2cb2cb37",
+    "plain": "d5052ad2",
+    "how_to_read": "1343cf47"
+   }
+  },
+  "economy.fed_contracts": {
+   "name": "Contratos federales",
+   "plain": "Un contrato federal es un acuerdo para pagarle a una empresa o agencia por bienes o servicios. Este es el dinero que el gobierno comprometió para trabajos por contrato en el municipio en un año fiscal (de octubre a septiembre). Es dinero comprometido, no dinero gastado. Puede ser negativo cuando se reduce el monto de un contrato anterior.",
+   "how_to_read": "Úselo para ver dónde se registran las compras federales, y compare lugares por residente. En el corte de datos 2026-10, la proporción de San Juan en el valor de Puerto Rico de los contratos va del 18.4% (año fiscal, AF, 2021) al 64.8% (AF2023). Casi todos los contratos están ubicados en un municipio: del 0.0% al 3.3% del valor de Puerto Rico de los contratos de cada año no indica municipio. Una celda en blanco significa que USAspending no devolvió ningún monto para ese municipio y año; los datos no permiten distinguir un registro que falta de la falta de actividad.",
+   "_en": {
+    "name": "486b69dc",
+    "plain": "d90bd845",
+    "how_to_read": "b6d480c8"
+   }
+  },
+  "economy.fed_grants": {
+   "name": "Subvenciones federales",
+   "plain": "Subvenciones federales, que dan dinero para un fin público en lugar de comprar bienes o servicios, registradas para lugares del municipio en un año fiscal. Son dinero comprometido, no dinero gastado. En el corte de datos 2026-10, San Juan tiene la mayoría de los dólares de subvenciones que indican un municipio, y en algunos años más de la mitad de los dólares de subvenciones de la isla no indica municipio.",
+   "how_to_read": "En el corte de datos 2026-10, el valor de Puerto Rico es $1.5 mil millones en el año fiscal (AF) 2008, $22.3 mil millones en el AF2020, $35.0 mil millones en el AF2021 y $9.4 mil millones en el AF2025. Entre el 5.2% (AF2014) y el 61.6% (AF2017) del valor de Puerto Rico de las subvenciones de cada año no indica municipio; en el AF2025 es el 55.6% ($9.4 mil millones frente a $4.2 mil millones en los 78 municipios). San Juan tiene del 83.5% (AF2017) al 96.8% (AF2008) de los dólares de subvenciones que indican un municipio, y del 32.0% (AF2017) al 88.5% (AF2014) del valor de Puerto Rico. La proporción de San Juan responde al patrón de registro descrito en economy.fed_awards_total, así que un mapa de subvenciones por residente resalta sobre todo la capital. Los datos no muestran qué programas componen el máximo del AF2020 y el AF2021.",
+   "_en": {
+    "name": "99203e12",
+    "plain": "20c37727",
+    "how_to_read": "f610b700"
+   }
+  },
+  "economy.fed_direct_payments": {
+   "name": "Pagos directos federales",
+   "plain": "Dinero que el gobierno federal se comprometió a pagar directamente a quienes lo reciben, por ejemplo mediante programas de beneficios y no mediante una subvención o un préstamo, registrado para lugares del municipio en un año fiscal. Es dinero comprometido, no dinero gastado. En el corte de datos 2026-10, es el mayor de los cinco grupos en 17 de los 18 años.",
+   "how_to_read": "En el corte de datos 2026-10, todos los municipios tienen un valor positivo en todos los años (no hay celdas en blanco, en cero ni negativas), y el valor de Puerto Rico sube de $9.5 mil millones en el año fiscal (AF) 2008 a $28.0 mil millones en el AF2025. Es el 80% del valor de Puerto Rico de todos los tipos en el AF2008 y el 73% en el AF2025; solo en el AF2021 las subvenciones son mayores. Úselo por residente para comparar lugares. El valor de un municipio es el dinero registrado en su lugar, no un conteo de las personas que recibieron un pago.",
+   "_en": {
+    "name": "83f8e949",
+    "plain": "1557bb41",
+    "how_to_read": "48836ea6"
+   }
+  },
+  "economy.fed_loans": {
+   "name": "Préstamos federales (costo estimado para el gobierno)",
+   "plain": "Es lo que el gobierno federal espera que le cuesten sus préstamos y garantías de préstamo, para los préstamos registrados en un municipio en un año fiscal (de octubre a septiembre). Una garantía de préstamo es una promesa de pagarle a un prestamista si quien tomó el préstamo no paga. El valor no es la cantidad prestada. Puede ser negativo: en el corte de datos 2026-10, el valor de Puerto Rico es negativo en cuatro de los 18 años.",
+   "how_to_read": "Léalo como una señal aproximada del costo federal de los programas de préstamos en un lugar, no de cuánto crédito recibieron las personas o las empresas. En el corte de datos 2026-10, el valor de Puerto Rico está entre $1.5 millones y $7.6 millones al año del año fiscal (AF) 2009 al AF2017; luego es $159.2 millones en el AF2018, $2.0 mil millones en el AF2020, $1.0 mil millones en el AF2021, y negativo en el AF2008, el AF2019, el AF2023 y el AF2025.",
+   "_en": {
+    "name": "9c127307",
+    "plain": "7153bf65",
+    "how_to_read": "eb75e6a9"
+   }
+  },
+  "economy.fed_other": {
+   "name": "Otra asistencia federal",
+   "plain": "Seguros federales y otra ayuda que no es un contrato, una subvención, un pago directo ni un préstamo, registrados para lugares del municipio en un año fiscal. En el corte de datos 2026-10, Adjuntas tiene entre alrededor del 90% y el 94% de los dólares de este grupo del año fiscal 2009 al 2013, y los datos no dicen por qué.",
+   "how_to_read": "Trate este grupo con cuidado: contiene lo que no entra en los otros cuatro grupos, y sus valores anuales cambian a grandes saltos. En el corte de datos 2026-10, el valor de Puerto Rico es $7.2 millones en el año fiscal (AF) 2008, $2.3 mil millones en el AF2009, entre $1.3 mil millones y $5.6 mil millones del AF2010 al AF2013, alrededor de $594.1 millones en el AF2014, $239.2 millones en el AF2023 y $26.3 millones en el AF2025. Del AF2009 al AF2013 es del 7% al 27% del valor de Puerto Rico de todos los tipos en economy.fed_awards_total (27% en el AF2011, 20% en el AF2012). Los datos no muestran qué fondos otorgados causan estos saltos.",
+   "_en": {
+    "name": "8772b22e",
+    "plain": "61254ca5",
+    "how_to_read": "7ebd3d77"
+   }
+  },
+  "economy.fema_pa_obligated": {
+   "name": "Asistencia Pública de FEMA: fondos obligados (parte federal)",
+   "plain": "Después de un desastre, FEMA (Agencia Federal para el Manejo de Emergencias) aprueba dinero para remover escombros y reparar edificios públicos, carreteras y servicios públicos. Esta es la parte federal de ese dinero, por municipio y por el año en que se declaró el desastre. Es dinero aprobado. No muestra daños, necesidad, reparaciones terminadas ni gastos. En el corte de datos 2026-10, entre el 11% y el 88% del dinero de cada año está registrado como estatal. Ese dinero no indica municipio.",
+   "how_to_read": "Mire juntos el valor de Puerto Rico y la proporción estatal. En el corte de datos 2026-10, la proporción registrada como estatal varía según el año del 11.0% al 88.3% y supera la mitad en 4 de los 12 años (2004, 2009, 2017 y 2020); es 80.9% para 2017. Con todos los años combinados, es 77.9% ($30.4 mil millones de $39.1 mil millones), casi por completo a causa de 2017. En el mismo corte, para las declaraciones de 2017 el valor de Puerto Rico es $35,606,846,160; $28,818,895,705 (80.9%) es estatal y $6.8 mil millones están en los 78 municipios (San Juan, $625,986,512). El valor de un municipio es solo la parte del dinero que FEMA vinculó a un solicitante de ese municipio. No es el dinero gastado allí ni el daño ocurrido allí. En la pestaña Análisis, un año sin declaración muestra el año anterior más reciente del archivo (con la etiqueta 'último dato hasta'), así que 2018 y 2019 muestran los valores de 2017. El control de año y las pequeñas líneas de tendencia del Inspector comienzan en 2010; los años anteriores están en la gráfica de tendencia y en la descarga de valores separados por comas (CSV). En la vista 'Fondos públicos', con el año en Último, la capa de FEMA muestra el año de declaración 2024 (en el corte de datos 2026-10, un valor de Puerto Rico de $176.1 millones, con 43 municipios con valor), no los huracanes de 2017.",
+   "_en": {
+    "name": "fcdaff1e",
+    "plain": "3086afd7",
+    "how_to_read": "c666d949"
+   }
+  },
+  "economy.fed_place_of_performance": {
+   "name": "Cómo se ubican en un municipio los fondos federales otorgados",
+   "plain": "USAspending registra cada adjudicación donde la agencia que la otorga dice que se realiza el trabajo o llega el beneficio. Los fondos para toda la isla suelen registrarse en San Juan, así que las cifras de San Juan pueden incluir dinero destinado a otros lugares y las cifras de otros municipios pueden ser bajas. La cifra de Puerto Rico es el total del territorio, que también cuenta los fondos otorgados que no indican municipio.",
+   "how_to_read": "Paso 1: use valores por residente o proporciones, no dólares absolutos. Paso 2: fíjese en el grupo, porque los grupos se comportan de forma distinta (en el corte de datos 2026-10, San Juan tiene del 83.5% al 96.8% de los dólares de subvenciones que indican un municipio, pero del 27.0% al 86.2% de los dólares de pagos directos que lo indican). Paso 3: para la capital, trate la cifra como registrada allí, no como gastada allí. San Juan tiene el 10.4% de las personas residentes de la isla (Censo 2020). En el corte de datos 2026-10, tiene del 25.9% al 70.6% del valor de Puerto Rico de todos los tipos, según el año, y del 31.9% al 76.9% de los dólares que indican un municipio. Paso 4: revise si las celdas que cita están en blanco, en cero o son negativas. Paso 5: recuerde que el valor de Puerto Rico incluye fondos otorgados que no indican municipio; revise la proporción que no indica municipio para su año (en el corte de datos 2026-10, del 3.4% al 24.7% del valor de todos los tipos). Paso 6: para citar, use el botón Citar (vea methods.citation). Indique USAspending.gov como fuente, escriba 'obligaciones por lugar de ejecución, año fiscal federal' (para los préstamos, costo del subsidio) e indique la etiqueta del corte de datos. Los datos de USAspending del corte de datos 2026-10 se recuperaron entre el 3 y el 4 de octubre de 2026.",
+   "_en": {
+    "name": "0649af3f",
+    "plain": "627da52e",
+    "how_to_read": "df43d40d"
+   }
+  },
+  "economy.fema_pa_statewide_share": {
+   "name": "Asistencia Pública de FEMA: proporción registrada como estatal",
+   "plain": "De cada 100 dólares de la parte federal de la Asistencia Pública (Public Assistance) de FEMA (Agencia Federal para el Manejo de Emergencias) para los desastres de un año, cuántos están registrados como estatales y, por lo tanto, no se pueden ubicar en un municipio. En el corte de datos 2026-10 va del 11.0% al 88.3%, y es 80.9% para 2017.",
+   "how_to_read": "Una proporción alta significa que los valores municipales de ese año muestran solo una parte pequeña del dinero. Las cifras año por año que se listan con esta ficha son del corte de datos 2026-10. En 2009 (88.3%), 2017 (80.9%) y 2020 (81.4%), la mayor parte del dinero no se puede ubicar. En 2010 (11.0%) y 2024 (13.1%), la mayor parte sí. Úsela antes de ordenar los municipios por economy.fema_pa_obligated. Revise el monto en dólares junto a cada proporción: el 88.3% de 2009 es $2.6 millones de $3.0 millones.",
+   "_en": {
+    "name": "d7994f92",
+    "plain": "90114162",
+    "how_to_read": "4eac62e4"
+   }
+  },
+  "housing.fema_ia_households": {
+   "name": "Hogares aprobados para asistencia de vivienda de FEMA",
+   "plain": "El número de hogares que FEMA (Agencia Federal para el Manejo de Emergencias) aprobó para recibir ayuda después de los desastres declarados en un año dado, por municipio. Cuenta aprobaciones, no daños. No muestra cuántas viviendas sufrieron daños ni cuánta ayuda necesitaban las personas.",
+   "how_to_read": "Lea cada valor como 'hogares aprobados para recibir ayuda después de los desastres declarados en ese año'. En el corte de datos 2026-10, los totales de la isla son 475,798 hogares en 2017 (Irma y María) y 741,313 en 2022 (el huracán Fiona y una tormenta severa con inundaciones y deslizamientos de tierra). Es un conteo, así que los municipios más grandes muestran números más grandes (San Juan tiene el más alto en ambos años). El número de aprobaciones y los dólares no se mueven juntos: 2022 tiene más aprobaciones que 2017, pero cerca de la mitad de los dólares (vea el monto aprobado). Los datos no explican esta diferencia.",
+   "_en": {
+    "name": "0e3a5e4b",
+    "plain": "7fcb7e9b",
+    "how_to_read": "090ca505"
+   }
+  },
+  "housing.fema_ia_amount": {
+   "name": "Asistencia Individual de FEMA aprobada",
+   "plain": "Los dólares que la Agencia Federal para el Manejo de Emergencias (FEMA) aprobó para los hogares después de los desastres declarados en un año dado, por municipio. Muestra la ayuda aprobada, no los daños, y no necesariamente el dinero desembolsado.",
+   "how_to_read": "En el corte de datos 2026-10, los totales de la isla son $1,348,391,207 en 2017 (Irma y María) y $650,531,031 en 2022 (el huracán Fiona y una tormenta severa con inundaciones y deslizamientos de tierra). Es un total, así que los municipios grandes muestran montos grandes; divida entre los residentes o los hogares para comparar lugares. En la pestaña Análisis, una capa sombreada comienza en dólares por residente (vea 'Dólares por residente').",
+   "_en": {
+    "name": "4d780f6b",
+    "plain": "be270024",
+    "how_to_read": "a187d636"
+   }
+  }
+ },
+ "sources": {
+  "fpr_housing_2023": {
+   "access": "Las cifras publicadas del estudio (los proyectos LIHTC y las cifras principales) se escribieron a mano en el observatorio y se publican en housing.json. El observatorio no lee el PDF.",
+   "cadence": "Se publicó en mayo de 2023 (el PDF tiene fecha del 12 de mayo de 2023) y nunca se actualizó. El observatorio reproduce las cifras tal como se publicaron.",
+   "used_for": "Las cifras propias del estudio, conservadas tal como se publicaron, en la página de Vivienda y en housing.json: los proyectos LIHTC financiados con CDBG-DR y las cifras principales de vivienda.",
+   "terms_note": "El título completo del estudio es 'The State of Housing in Puerto Rico: An Analysis of the Factors That Impact Housing and Rent Prices in Puerto Rico and Proposed Strategies to Increase Housing Affordability'. El estudio menciona al Censo de EE. UU. entre sus fuentes, y describe los proyectos LIHTC como provistos por el portal de CDBG-DR; la tabla LIHTC del PDF es una imagen sin una línea de fuente legible. El observatorio muestra esa tabla tal como se publicó en 2023. FPR no la ha comparado con la fuente federal, y no se actualiza con la base de datos LIHTC actual de HUD. El PDF no incluye ninguna línea de licencia, y el pie de página del sitio web de FPR dice '© Foundation for Puerto Rico'. La página de Vivienda numera algunas tablas de forma distinta al PDF de este enlace, que numera como 12 la tabla LIHTC. Cite una tabla por su título y por el número que tiene en el PDF.",
+   "_en": {
+    "access": "5c3e1648",
+    "cadence": "291467ca",
+    "used_for": "e6ce262c",
+    "terms_note": "3ac3cebd"
+   }
+  },
+  "usaspending": {
+   "access": "API de USAspending (https://api.usaspending.gov/api/v2/search/spending_by_geography/), sin clave. Para cada año fiscal federal y cada tipo de adjudicación, la compilación envía dos solicitudes POST, ambas con el alcance place_of_performance y sin las subadjudicaciones: una a nivel de condado para los 78 municipios y otra a nivel de estado con el código PR para el total de Puerto Rico.",
+   "cadence": "USAspending.gov indica que los datos nuevos o actualizados aparecen el día después de que una agencia los envía. En el corte de datos 2026-10, el observatorio tiene los años fiscales 2008 a 2025. Considera final un año fiscal a partir del 15 de noviembre, unas seis semanas después de que termina. Vuelve a leer los datos solo cuando FPR reconstruye los datos (un nuevo corte de datos), así que los valores de años anteriores pueden diferir de lo que USAspending.gov muestre más adelante.",
+   "used_for": "Contratos, subvenciones, pagos directos, préstamos y otra asistencia federales por municipio y año fiscal, y un total de Puerto Rico (economy_series.json).",
+   "terms_note": "Los montos son obligaciones por año fiscal federal (de octubre a septiembre), no dinero gastado. El lugar de ejecución es el que informa la agencia que otorga la adjudicación. Las adjudicaciones al Estado Libre Asociado para programas estatales a menudo se atribuyen a San Juan, así que San Juan aparece sobrestimado y los demás municipios, subestimados. El total de Puerto Rico es el total propio de USAspending para el territorio. También cuenta adjudicaciones que no indican municipio, así que la suma de los 78 municipios es menor que la de la isla. En el corte de datos 2026-10, la proporción del total de Puerto Rico que no indica municipio está entre 3.4% (año fiscal 2011) y 24.7% (año fiscal 2024); el diálogo del conjunto de datos en la pestaña Análisis la muestra por año. La documentación de la API de USAspending.gov no indica ninguna licencia para los datos. Se volvió a verificar el 2026-10-19 para la página Gestión de datos: usaspending.gov no indica términos para los datos en sus páginas; el registro de Data.gov de los archivos sin procesar de USAspending dice \"No license information was provided\" (no se proporcionó información de licencia), y el informe GAO-19-72 concluyó que el sitio web no ofrece información completa sobre las licencias de los datos. Por eso la clase sigue como no declarada; el Departamento del Tesoro tendría que declarar los términos.",
+   "_en": {
+    "access": "7d7b7918",
+    "cadence": "413650ea",
+    "used_for": "5ac04639",
+    "terms_note": "4d05395a"
+   }
+  },
+  "openfema": {
+   "access": "API de OpenFEMA, versión 2 (https://www.fema.gov/api/open/v2/), sin clave, leída de 1,000 filas a la vez: HousingAssistanceOwners y HousingAssistanceRenters (state eq 'PR'), DisasterDeclarationsSummaries (que se usa para fechar cada desastre) y PublicAssistanceFundedProjectsDetails (stateNumberCode eq '72').",
+   "cadence": "FEMA actualiza a diario sus conjuntos de datos de vivienda y de asistencia pública, y las declaraciones, cada 20 minutos aproximadamente. El observatorio los lee solo cuando FPR reconstruye los datos (un nuevo corte de datos) y conserva una copia entre una reconstrucción y otra, así que sus cifras pueden diferir de los datos actuales de FEMA.",
+   "used_for": "Hogares y dólares de la Asistencia Individual de FEMA por municipio y año de declaración (housing_series.json) y fondos obligados de la Asistencia Pública de FEMA por municipio (economy_series.json).",
+   "terms_note": "Los términos de OpenFEMA piden indicar el punto de acceso (endpoint) con su versión, y la fecha y la hora en que se obtuvieron los datos. También piden incluir esta declaración: 'This product uses the Federal Emergency Management Agency's OpenFEMA API, but is not endorsed by FEMA. The Federal Government or FEMA cannot vouch for the data or analyses derived from these data after the data have been retrieved from the Agency's website(s).' (este producto usa la API OpenFEMA de la Agencia Federal para el Manejo de Emergencias, pero FEMA no lo respalda; el Gobierno federal o FEMA no pueden garantizar los datos ni los análisis derivados de ellos después de que se obtienen de los sitios web de la Agencia). Los términos limitan el uso a la investigación estadística o a servir como registro para informes, prohíben volver a identificar a las personas y prohíben usar los datos para decidir si alguien es elegible para beneficios. FEMA indica que las cifras de vivienda y de proyectos provienen de sus sistemas de casos, no de sus sistemas financieros oficiales, y pueden diferir ligeramente de USAspending. Los registros de vivienda están agregados y no son personales. Una gran parte de la Asistencia Pública está registrada como estatal y no puede ubicarse en un municipio: en el corte de datos 2026-10, la proporción estatal de los fondos obligados de cada año de declaración va de 11% (2010) a 88% (2009).",
+   "_en": {
+    "access": "3610b24f",
+    "cadence": "18250099",
+    "used_for": "1d838c5d",
+    "terms_note": "62a05741"
+   }
+  }
+ },
+ "groups": {
+  "public-money": {
+   "summary": "Esta área muestra los contratos, subvenciones, pagos directos, préstamos y otras ayudas federales registrados para cada uno de los 78 municipios de Puerto Rico y para la isla en su conjunto, por año fiscal federal, y la ayuda por desastre que aprobó la Agencia Federal para el Manejo de Emergencias (FEMA) después de los desastres declarados cada año. Ayuda a ver dónde se registran los fondos federales, cómo cambia eso con el tiempo y cuánta ayuda por desastre se aprobó para entidades públicas y para hogares. Tenga en cuenta dos límites: las cifras en dólares son fondos comprometidos o aprobados, no fondos gastados, y ninguna de las cifras mide daños ni necesidades; y la cifra de un municipio solo cuenta los fondos que una agencia registró para ese lugar, así que las cifras de fondos federales otorgados a San Juan pueden incluir fondos destinados a toda la isla, y algunos fondos federales otorgados y de Asistencia Pública de FEMA no indican ningún municipio.",
+   "groups": {
+    "Disaster recovery": "La ayuda por desastre de la Agencia Federal para el Manejo de Emergencias (FEMA), por municipio y por año en que se declaró un desastre: los dólares de Asistencia Pública para entidades públicas, la proporción de esos dólares que FEMA registra como estatal sin indicar municipio, y los hogares y los dólares aprobados para ayuda individual.",
+    "Federal awards by place of performance": "Los fondos que el gobierno federal comprometió para Puerto Rico, como un total y en cinco tipos (contratos, subvenciones, pagos directos, préstamos contados por su costo estimado y otras ayudas), para cada municipio y para toda la isla por año fiscal federal, con una explicación de cómo se asignan los fondos otorgados a un lugar."
+   },
+   "_en": {
+    "summary": "243ad680",
+    "groups.Disaster recovery": "511b19c4",
+    "groups.Federal awards by place of performance": "eb00963b"
+   }
+  }
+ },
+ "labels": {
+  "% of the year's Puerto Rico federal share obligated": "% de la parte federal obligada para Puerto Rico en el año",
+  "78 municipalities and Puerto Rico (USAspending's territory total, which includes awards that name no municipality)": "78 municipios y Puerto Rico (el total del territorio según USAspending, que incluye fondos otorgados que no indican municipio)",
+  "78 municipalities and Puerto Rico (the 78 plus the statewide group)": "78 municipios y Puerto Rico (los 78 más el grupo estatal)",
+  "Disaster recovery": "Recuperación tras desastres",
+  "Federal awards by place of performance": "Fondos federales otorgados por lugar de ejecución",
+  "Fixed as published in 2023; not updated.": "Fijo, tal como se publicó en 2023; no se actualiza.",
+  "Four municipalities: Caguas, San Juan, Humacao and Coamo": "Cuatro municipios: Caguas, San Juan, Humacao y Coamo",
+  "One value per calendar year that had a disaster declaration with Public Assistance projects. In the 2026-10 snapshot those years are 2001, 2003, 2004, 2005, 2008, 2009, 2010, 2011, 2017, 2020, 2022 and 2024. Rebuilt from OpenFEMA with each snapshot.": "Un valor por año calendario con una declaración de desastre que tuvo proyectos de Asistencia Pública. En el corte de datos 2026-10 esos años son 2001, 2003, 2004, 2005, 2008, 2009, 2010, 2011, 2017, 2020, 2022 y 2024. Se reconstruye a partir de OpenFEMA con cada corte de datos.",
+  "One value per federal fiscal year (1 October to 30 September). A year is added about six weeks after it ends, from 15 November. In the 2026-10 snapshot the file ends with FY2025.": "Un valor por año fiscal federal (1 de octubre a 30 de septiembre). Cada año se agrega unas seis semanas después de terminar, a partir del 15 de noviembre. En el corte de datos 2026-10 el archivo termina con el año fiscal 2025 (FY2025).",
+  "One value per federal fiscal year (1 October to 30 September). The observatory treats a year as complete on 15 November, about six weeks after it ends, and adds it then. In the 2026-10 snapshot the file ends with FY2025.": "Un valor por año fiscal federal (1 de octubre a 30 de septiembre). El observatorio da un año por completo el 15 de noviembre, unas seis semanas después de que termina, y lo agrega entonces. En el corte de datos 2026-10 el archivo termina con el año fiscal 2025 (FY2025).",
+  "One value per year that had a disaster declaration with housing assistance records. In the 2026-10 snapshot these years are 2003, 2004, 2008, 2011, 2017, 2020 and 2022. The data are not live: they are downloaded from OpenFEMA when the observatory's data are refreshed and kept until the next refresh. The values in the 2026-10 snapshot come from the download of 2026-10-02 and can change if FEMA revises its records.": "Un valor por año con una declaración de desastre que tiene registros de asistencia de vivienda. En el corte de datos 2026-10 esos años son 2003, 2004, 2008, 2011, 2017, 2020 y 2022. Los datos no son en vivo: se descargan de OpenFEMA cuando se actualizan los datos del observatorio y se conservan hasta la próxima actualización. Los valores del corte de datos 2026-10 provienen de la descarga del 2026-10-02 y pueden cambiar si FEMA revisa sus registros.",
+  "One value per year with a declaration. In the 2026-10 snapshot those years are 2001, 2003, 2004, 2005, 2008, 2009, 2010, 2011, 2017, 2020, 2022 and 2024. Rebuilt with each snapshot.": "Un valor por año con una declaración. En el corte de datos 2026-10 esos años son 2001, 2003, 2004, 2005, 2008, 2009, 2010, 2011, 2017, 2020, 2022 y 2024. Se reconstruye con cada corte de datos.",
+  "Puerto Rico as a whole (one value per declaration year)": "Puerto Rico en su conjunto (un valor por año de declaración)",
+  "US dollars approved, as OpenFEMA records them (not adjusted for inflation), by year of disaster declaration": "Dólares estadounidenses aprobados, según los registra OpenFEMA (no ajustados por inflación), por año de la declaración de desastre",
+  "US dollars in the federal fiscal year: obligations, plus the estimated subsidy cost of loans (not adjusted for inflation)": "Dólares estadounidenses en el año fiscal federal: obligaciones, más el costo estimado del subsidio de los préstamos (no ajustados por inflación)",
+  "US dollars obligated in the federal fiscal year (not adjusted for inflation)": "Dólares estadounidenses obligados en el año fiscal federal (no ajustados por inflación)",
+  "US dollars of federal share obligated, by year of disaster declaration (not adjusted for inflation)": "Dólares estadounidenses de la parte federal obligada, por año de la declaración de desastre (no ajustados por inflación)",
+  "US dollars of subsidy cost (the estimated federal cost of loans and loan guarantees) in the federal fiscal year (not adjusted for inflation)": "Dólares estadounidenses de costo del subsidio (el costo federal estimado de los préstamos y las garantías de préstamo) en el año fiscal federal (no ajustados por inflación)",
+  "households (applicants approved for FEMA assistance), by year of disaster declaration": "hogares (solicitantes aprobados para asistencia de FEMA), por año de la declaración de desastre",
+  "units (count); US dollars as printed in the study (the page gives no price year)": "unidades (conteo); dólares estadounidenses tal como aparecen en el estudio (la página no indica el año de los precios)"
+ }
+}

@@ -1,0 +1,482 @@
+{
+ "roads.network": {
+  "name": "Red de carreteras (grafo de rutas)",
+  "how_to_read": "Úselo para ver qué calles puede seguir una ruta. No es un inventario completo de carreteras: contiene solo las carreteras transitables en vehículo, tal como las cartografiaron personas voluntarias. No lo use para medir el largo total de las carreteras ni su condición. En el corte de datos 2026-10, el archivo contiene 193,507 intersecciones, 226,421 tramos de carretera y 536,209 puntos de curva. Los tramos suman unos 33,100 km, contando ambas direcciones de una carretera dividida. El archivo pesa 6,409,964 bytes. El extracto de OpenStreetMap del que se construyó tiene una marca de tiempo de datos de 2026-10-01 20:22 UTC (tiempo universal coordinado; Puerto Rico está 4 horas detrás).",
+  "_en": {
+   "name": "f40ff87f",
+   "how_to_read": "53360179"
+  }
+ },
+ "roads.class": {
+  "name": "Clase de carretera y velocidad de planificación",
+  "how_to_read": "Lea '90' como 'el motor de rutas trata esta clase como 90 km/h', no como un límite de velocidad. El motor de rutas elige el camino con el menor tiempo de viaje a estas velocidades, así que prefiere las clases de carretera más rápidas, pero evita los desvíos largos. La clase proviene de OpenStreetMap. Las velocidades son valores de planificación que Foundation for Puerto Rico (FPR) escogió en el código del observatorio. No son datos de OpenStreetMap, así que no se le deben atribuir a OpenStreetMap.",
+  "_en": {
+   "name": "4d8b03a4",
+   "how_to_read": "641be6d9"
+  }
+ },
+ "roads.selection": {
+  "name": "Qué carreteras de OpenStreetMap se conservan",
+  "how_to_read": "Use esta ficha para ver por qué el motor de rutas no puede usar una calle conocida. Puede ser una vía de servicio, un sendero, una carretera en construcción o una vía marcada como privada en OpenStreetMap.",
+  "_en": {
+   "name": "de43ab5f",
+   "how_to_read": "cd8109a9"
+  }
+ },
+ "roads.router": {
+  "name": "Cómo el motor de rutas sigue las carreteras",
+  "how_to_read": "La línea dibujada es un camino por carretera posible. Una guagua real puede ir por otra calle.",
+  "_en": {
+   "name": "6b62a2f5",
+   "how_to_read": "fc91f483"
+  }
+ },
+ "roads.transit_snapping": {
+  "name": "Cómo se dibujan a lo largo de las carreteras las rutas de transporte colectivo publicadas",
+  "how_to_read": "Una línea en el mapa que sigue las calles es un estimado de por dónde transita el vehículo. La calle exacta puede ser distinta de la dibujada. Para saber cuántas rutas se dibujan de cada forma en el corte de datos actual, vea la ficha sobre cómo se dibujó la línea de la ruta.",
+  "_en": {
+   "name": "46170aab",
+   "how_to_read": "4fd557c9"
+  }
+ },
+ "data.gazetteer": {
+  "name": "Índice de nombres de lugares",
+  "how_to_read": "El índice contiene nombres con un punto cada uno. No tiene números de casa ni direcciones postales. No contiene los listados turísticos; las páginas los buscan por separado.",
+  "_en": {
+   "name": "9313a432",
+   "how_to_read": "8783965e"
+  }
+ },
+ "data.gazetteer_kinds": {
+  "name": "Tipos de nombres de lugares",
+  "how_to_read": "Los conteos muestran lo que han nombrado las personas voluntarias de OpenStreetMap. Un conteo bajo puede significar que existen pocos elementos o que pocos están cartografiados con nombre. Por ejemplo, el corte de datos 2026-10 tiene 32 filas de aeropuerto.",
+  "_en": {
+   "name": "60dfb8aa",
+   "how_to_read": "6caac61d"
+  }
+ },
+ "data.gazetteer_build": {
+  "name": "Cómo se construye el índice de nombres de lugares",
+  "how_to_read": "Una carretera tiene un punto por cada municipio en el que cae el punto medio de uno de sus tramos cartografiados, colocado en el punto medio de su tramo más largo en ese municipio, así que el punto puede no estar donde se espera. En el corte de datos 2026-10, los límites dan 78 filas de municipio y 901 filas de barrio.",
+  "_en": {
+   "name": "6f8f8c6c",
+   "how_to_read": "03f8fd53"
+  }
+ },
+ "data.gazetteer_search": {
+  "name": "Cómo encuentra coincidencias la búsqueda de nombres de lugares",
+  "how_to_read": "Escriba una parte del nombre. Si un nombre está guardado con una abreviatura, escriba otra palabra del nombre. Si nada coincide, pruebe con menos palabras. Los nombres con la misma puntuación se listan empezando por los más cercanos al centro del mapa, así que mueva el mapa cerca del lugar que busca. Para una dirección postal, use la búsqueda en línea. Para buscar por coordenadas, escriba primero la latitud y luego la longitud, cada una con al menos 2 decimales.",
+  "_en": {
+   "name": "b357c147",
+   "how_to_read": "1c49933d"
+  }
+ },
+ "data.build_info": {
+  "name": "Archivo de información de la compilación (meta.json)",
+  "how_to_read": "Use la etiqueta y la fecha de compilación para indicar de qué corte de datos proviene una cifra. Los conteos describen lo que conservó la compilación; las fichas de datos describen cada conjunto de datos.",
+  "_en": {
+   "name": "b43a8457",
+   "how_to_read": "2aa24a7e"
+  }
+ },
+ "data.build_label": {
+  "name": "Etiqueta del corte de datos",
+  "how_to_read": "La etiqueta nombra la compilación completa. Aparece junto a la marca de verificación en el encabezado de las páginas del mapa, 3D, vivienda y diccionario. No cambia cuando corre la actualización nocturna del transporte colectivo.",
+  "_en": {
+   "name": "dbe06f2a",
+   "how_to_read": "75a63e8c"
+  }
+ },
+ "data.build_generated_at": {
+  "name": "Fecha y hora de la compilación",
+  "how_to_read": "El valor del corte de datos 2026-10 es 2026-10-02T02:31:31+00:00. El mapa muestra solo los primeros diez caracteres, la fecha UTC: como texto emergente en la etiqueta del corte y en la pestaña Info. Esa fecha puede ser un día posterior a la fecha en Puerto Rico.",
+  "_en": {
+   "name": "962a02a4",
+   "how_to_read": "f9217661"
+  }
+ },
+ "data.build_bbox": {
+  "name": "Recuadro del mapa (rectángulo envolvente)",
+  "how_to_read": "Los lugares y las paradas fuera del rectángulo no se solicitan. Un rectángulo también incluye mar abierto, así que es más grande que la tierra.",
+  "_en": {
+   "name": "6383a53f",
+   "how_to_read": "d8983ba9"
+  }
+ },
+ "data.count_overture_places": {
+  "name": "Registros de lugares de Overture en el recuadro del mapa",
+  "how_to_read": "Este es el tamaño bruto de la fuente, no el número de lugares turísticos. Para los lugares turísticos, use la ficha 'Lugares turísticos contados en las estadísticas'. En el corte de datos 2026-10 se descartaron 63,117 registros por no estar relacionados con el turismo (3,388 de ellos no tienen ninguna categoría) y se fusionaron otros 1,088 como duplicados, lo que deja 35,118 listados; 2,577 de ellos no son turísticos (viviendas, servicios de vivienda y de cuidado) y se excluyen, lo que deja 32,541 (desde el 2026-10-18).",
+  "_en": {
+   "name": "7ec2d044",
+   "how_to_read": "e4427ff0"
+  }
+ },
+ "data.count_tourism_places": {
+  "name": "Lugares turísticos contados en las estadísticas",
+  "how_to_read": "Úselo como 'listados en los datos de turismo del observatorio', no como el número de negocios abiertos hoy.",
+  "_en": {
+   "name": "9970b9b9",
+   "how_to_read": "b317f3eb"
+  }
+ },
+ "data.count_tourism_places_all_confidence": {
+  "name": "Lugares turísticos con cualquier nivel de confianza",
+  "how_to_read": "Ponga el filtro de confianza del mapa en 0 para ver este conjunto más amplio. Las estadísticas predeterminadas no lo usan. En el corte de datos 2026-10, 27,509 menos 24,209 deja 3,300 listados por debajo de 0.5.",
+  "_en": {
+   "name": "e0c177f2",
+   "how_to_read": "9a8f954e"
+  }
+ },
+ "data.count_listings_total": {
+  "name": "Listados en el archivo de lugares",
+  "how_to_read": "Este es el tamaño del archivo de lugares, no un conteo de turismo. Para las estadísticas, use 'Lugares turísticos contados en las estadísticas'. En el corte de datos 2026-10, los lugares turísticos con cualquier nivel de confianza (27,509) más los lugares de culto (5,032) suman 32,541.",
+  "_en": {
+   "name": "f26eb6d7",
+   "how_to_read": "8bd135c8"
+  }
+ },
+ "data.count_min_confidence": {
+  "name": "Confianza mínima usada",
+  "how_to_read": "Un umbral más alto conserva menos listados, los que Overture califica con más confianza. En el corte de datos 2026-10, el umbral de 0.5 conserva 24,209 lugares turísticos; sin umbral conservaría 27,509.",
+  "_en": {
+   "name": "517c070e",
+   "how_to_read": "b8c7dc3d"
+  }
+ },
+ "data.count_duplicates_folded": {
+  "name": "Listados duplicados fusionados",
+  "how_to_read": "El valor 'duplicates' de un listado en el archivo de lugares indica cuántos registros absorbió. En el corte de datos 2026-10, estos suman 1,005.",
+  "_en": {
+   "name": "a8c4a97b",
+   "how_to_read": "4f348a40"
+  }
+ },
+ "data.count_worship_places": {
+  "name": "Lugares de culto en el archivo de lugares",
+  "how_to_read": "Se excluyen de las estadísticas de turismo, del conteo de turismo del planificador de rutas y de las proporciones de acceso al transporte colectivo. El conteo de todos los listados de cada municipio (listings_all) y los tres campos de lugares por uso de terrenos (places_on_protected_land, places_on_protected_land_pct y places_urban_pct) son las excepciones: sí los cuentan.",
+  "_en": {
+   "name": "4cfa8532",
+   "how_to_read": "4a559dc4"
+  }
+ },
+ "data.count_flood_polygons": {
+  "name": "Polígonos de inundación de FEMA",
+  "how_to_read": "Cuenta registros de polígonos, no kilómetros cuadrados ni lugares inundados. La zona X incluye áreas de riesgo moderado y mínimo. En el corte de datos 2026-10, los polígonos por zona eran: X 2,368, AE 1,760, VE 539, A 191, AO 25, D 9, AH 1 y A99 1. Los 2,517 de las zonas A, AE, AH, AO, A99 y VE son Áreas Especiales de Riesgo de Inundación.",
+  "_en": {
+   "name": "61a17b51",
+   "how_to_read": "c8a7632a"
+  }
+ },
+ "data.count_protected_units": {
+  "name": "Registros de áreas protegidas",
+  "how_to_read": "Un área protegida no siempre es un área cerrada. La condición de protección describe cómo se maneja el terreno. El campo Pub_Access del archivo publicado indica si el público puede entrar. En el corte de datos 2026-10, 665 registros llevan 640 nombres de unidad distintos. Siete registros son límites de proclamación (designación PROC): cinco refugios nacionales de vida silvestre (Cabo Rojo, Culebra, Desecheo, Laguna Cartagena y Vieques), el Bosque Nacional El Yunque y el Sitio Histórico Nacional de San Juan.",
+  "_en": {
+   "name": "345320c8",
+   "how_to_read": "24e498a5"
+  }
+ },
+ "data.count_municipalities": {
+  "name": "Municipios en la compilación",
+  "how_to_read": "Cada cifra a nivel de municipio del observatorio tiene un valor para cada uno de estos 78.",
+  "_en": {
+   "name": "d7b2f6c3",
+   "how_to_read": "231f89ff"
+  }
+ },
+ "data.count_population_2020": {
+  "name": "Residentes contados en el Censo 2020",
+  "how_to_read": "Es el conteo de 2020, no la población actual. Los estimados posteriores están en la serie de población.",
+  "_en": {
+   "name": "94114245",
+   "how_to_read": "f6a3fa06"
+  }
+ },
+ "data.build_sources": {
+  "name": "Registros de crédito de las fuentes en el archivo de compilación",
+  "how_to_read": "Use el texto 'credit' cuando imprima un mapa o una gráfica. Para un registro sin texto de crédito, use el crédito de la sección Fuentes. Para los términos de la licencia, siga el enlace y lea los términos de la propia fuente. En el archivo del 2026-10-02, 25 de los 30 valores tienen crédito; housing_pep, housing_census, housing_acs, housing_fema y housing_derived no tienen.",
+  "_en": {
+   "name": "c310eb86",
+   "how_to_read": "311eec68"
+  }
+ },
+ "data.build_housing": {
+  "name": "Ajustes de vivienda en el archivo de compilación",
+  "how_to_read": "Las cifras de 5 años de la ACS (Encuesta sobre la Comunidad Estadounidense) son promedios de cinco años de respuestas a la encuesta, no de un solo año.",
+  "_en": {
+   "name": "8ce067b4",
+   "how_to_read": "a6deaf07"
+  }
+ },
+ "data.build_landuse": {
+  "name": "Datos de uso de terrenos en el archivo de compilación",
+  "how_to_read": "El plan describe cómo se pretende usar el terreno según el plan de 2015, no lo que hay construido hoy.",
+  "_en": {
+   "name": "e3a0240f",
+   "how_to_read": "e03cbe60"
+  }
+ },
+ "data.build_barrios": {
+  "name": "Conteo de barrios en el archivo de compilación",
+  "how_to_read": "Los barrios son divisiones de un municipio. El conteo es el número de polígonos, no de vecindarios.",
+  "_en": {
+   "name": "97b7baba",
+   "how_to_read": "a13d900a"
+  }
+ },
+ "data.build_transport": {
+  "name": "Ajustes y conteos de transporte colectivo en el archivo de compilación",
+  "how_to_read": "Las cifras describen la última compilación completa, excepto places_near_transit, que la actualización nocturna vuelve a calcular mediante access.py. La actualización nocturna también actualiza las paradas con horario en el archivo de transporte colectivo, pero no los demás conteos. Los conteos de la tabla de códigos son del corte de datos 2026-10. Para los lugares cerca de una parada con horario vigente, vea la parte de acceso de este archivo.",
+  "_en": {
+   "name": "e51c3edc",
+   "how_to_read": "f32b8d24"
+  }
+ },
+ "data.build_access": {
+  "name": "Datos de acceso al transporte colectivo en el archivo de compilación",
+  "how_to_read": "Úselas como los totales de la isla detrás de los campos municipales. Cada proporción es el número de lugares dividido por todos los lugares contados, no un promedio de las proporciones municipales. En el corte de datos 2026-10, al 2026-10-06: el 47.5% de los 24,209 lugares contados está a 400 m o menos de cualquier parada mapeada, el 32.2% de una parada con horario vigente, el 21.3% de una parada frecuente, el 22.4% de una parada con servicio los sábados y el 6.4% de una con servicio los domingos; el 15.4% está cerca solo de una parada con horario vencido o sin horario.",
+  "_en": {
+   "name": "b564b3a5",
+   "how_to_read": "aed0a8f9"
+  }
+ },
+ "data.build_network": {
+  "name": "Datos de la red de transporte colectivo en el archivo de compilación",
+  "how_to_read": "La pestaña Transporte muestra estas cifras. En el archivo escrito el 2026-10-02, 925,788 de 3,285,874 residentes (28.2%) viven a 400 m o menos de una parada con horario.",
+  "_en": {
+   "name": "d0be4ac1",
+   "how_to_read": "1a78cf7f"
+  }
+ },
+ "data.build_time": {
+  "name": "Datos de las vistas de tiempo en el archivo de compilación",
+  "how_to_read": "Los conteos de tormentas son tormentas que pasaron cerca de la isla, no tormentas que la azotaron.",
+  "_en": {
+   "name": "26fbe846",
+   "how_to_read": "016d7830"
+  }
+ },
+ "data.build_taxonomy_dropped": {
+  "name": "Categorías de Overture que la compilación descartó",
+  "how_to_read": "Úsela para ver qué considera el observatorio fuera del turismo; por ejemplo, si se descartó una categoría que le interesa. En el corte de datos 2026-10, '(none)' tiene 3,388, y los 25 pares suman 28,986 de los 63,117 registros descartados.",
+  "_en": {
+   "name": "81cc2391",
+   "how_to_read": "55a6b6ce"
+  }
+ },
+ "data.registry": {
+  "name": "Inventario de datos (registry.json)",
+  "how_to_read": "Úselo para ver qué contiene el observatorio, cuánto pesa cada archivo y cuándo cambió. La página Gestión de datos lo muestra como una tabla con totales, una gráfica de crecimiento y los conteos de lo que no se publica; el diccionario de datos lo resume. En el chat Preguntar al observatorio del mapa, pregunte '¿qué tamaño tiene la base de datos?' para ver un resumen.",
+  "_en": {
+   "name": "1e3bf0d0",
+   "how_to_read": "b49b3b4d"
+  }
+ },
+ "data.registry_files": {
+  "name": "Inventario de datos: filas de archivos",
+  "how_to_read": "Sume los bytes de varias filas para ver su tamaño combinado; sume registros o valores solo entre los archivos de datos. El título nombra el contenido del archivo y, entre corchetes, su fuente principal cuando el registro la indica.",
+  "_en": {
+   "name": "9c53b28a",
+   "how_to_read": "b9295a66"
+  }
+ },
+ "data.registry_limits": {
+  "name": "Inventario de datos: tamaño y límite de alojamiento web",
+  "how_to_read": "0.062 significa que la carpeta de datos usa el 6.2% del límite del sitio (archivo del 2026-10-04). La línea de planificación está en el 60%, unos 629 millones de bytes. En el archivo del 2026-10-04, el total es de unos 65 millones de bytes, needs_planning es false y el archivo más grande, landuse.geojson (17,741,073 bytes), es el 16.9% del límite por archivo.",
+  "_en": {
+   "name": "ef108a2a",
+   "how_to_read": "61fe43b4"
+  }
+ },
+ "data.wanted": {
+  "name": "Lista de datos deseados (wanted.json)",
+  "how_to_read": "Lea cada fila como una idea con una lista de cosas por confirmar, no como una promesa. Una fila con estado 'candidate' (candidato) no se ha verificado en cuanto a licencia ni cobertura. En el archivo del 2026-11-14, la última edición tiene fecha 2026-11-14 y hay 137 filas.",
+  "_en": {
+   "name": "0bead39e",
+   "how_to_read": "1803e162"
+  }
+ },
+ "data.wanted_item": {
+  "name": "Lista de datos deseados: campos de cada fila",
+  "how_to_read": "'why' indica cómo se usaría el conjunto de datos en el observatorio. 'check' indica lo que hay que confirmar antes de poder agregarlo, como la cobertura de Puerto Rico o los términos de reutilización.",
+  "_en": {
+   "name": "4c393ccf",
+   "how_to_read": "2b80482d"
+  }
+ },
+ "data.wanted_status": {
+  "name": "Lista de datos deseados: estados",
+  "how_to_read": "Conteo de filas por estado en el archivo del 2026-11-20: candidate 26, checked 47, building 0, live 60, blocked 31.",
+  "_en": {
+   "name": "da246058",
+   "how_to_read": "9c5daebf"
+  }
+ },
+ "data.dictionary": {
+  "name": "Archivo del diccionario de datos (dictionary.json)",
+  "how_to_read": "Descárguelo para usar el diccionario en sus propias herramientas. Busque un elemento en 'entries' por su identificador, que también es la parte de la dirección de la página después del signo # (por ejemplo, dictionary.html#roads.network). Los identificadores de la lista 'sources' de una ficha son claves de la parte 'sources'. Cuando cite el archivo, indique su etiqueta 'snapshot' y su fecha 'built'.",
+  "_en": {
+   "name": "8156559c",
+   "how_to_read": "ba91c450"
+  }
+ },
+ "measures.route_length": {
+  "name": "Largo de la ruta",
+  "how_to_read": "Es el largo del camino que dibujó el planificador, no una distancia medida en el terreno. No es la ruta de guagua real más rápida ni la más corta.",
+  "_en": {
+   "name": "98a47e6d",
+   "how_to_read": "08e607f8"
+  }
+ },
+ "measures.route_time": {
+  "name": "Tiempo de recorrido indicativo",
+  "how_to_read": "El número es el tiempo a estas velocidades de planificación, por ejemplo 25 km/h en calles residenciales y 90 km/h en autopistas. Se acerca más a un tiempo de manejo sin congestión que a un horario de guagua: en el ejemplo (corte de datos 2026-10, de Río Piedras a Caguas), la velocidad promedio es de unos 76 km/h (24.3 km en unos 19 min). Un viaje real en guagua es más largo: tiene paradas, abordaje, semáforos y tráfico. Use el número solo para comparar rutas.",
+  "_en": {
+   "name": "4825e55e",
+   "how_to_read": "3c09c929"
+  }
+ },
+ "measures.route_residents": {
+  "name": "Residentes a 400 m o menos de la ruta",
+  "how_to_read": "Úselo como un área de captación: el número de personas cerca de la línea. No es el número de pasajeros ni la demanda.",
+  "_en": {
+   "name": "edeaa874",
+   "how_to_read": "b77e0bc8"
+  }
+ },
+ "measures.route_residents_unserved": {
+  "name": "Residentes a 400 m o menos de la ruta que no tienen ninguna parada con horario a 400 m o menos",
+  "how_to_read": "Compárelo con 'Residentes a 400 m o menos de la ruta'. Una proporción alta significa que la ruta pasa cerca de muchas personas que hoy no tienen una parada cerca. Las distancias se calcularon por última vez el 2026-10-02.",
+  "_en": {
+   "name": "2de96f98",
+   "how_to_read": "3c934c27"
+  }
+ },
+ "measures.route_tourism_places": {
+  "name": "Lugares turísticos a 400 m o menos de la ruta",
+  "how_to_read": "Indica por cuántos lugares para visitantes pasa la ruta. Un lugar es un listado, no un negocio verificado.",
+  "_en": {
+   "name": "43a820cb",
+   "how_to_read": "c15ceb62"
+  }
+ },
+ "measures.route_overlap": {
+  "name": "Proporción de la ruta que corre junto a una ruta existente",
+  "how_to_read": "100% significa que la ruta sigue líneas existentes en todo su largo. 0% significa que no hay cerca ninguna línea de las fuentes de horarios de la ATI (Autoridad de Transporte Integrado) ni de las municipales. No se cuentan los públicos cartografiados en OpenStreetMap ni las lanchas. No dice nada sobre las paradas ni sobre la frecuencia de los vehículos.",
+  "_en": {
+   "name": "4a731bba",
+   "how_to_read": "2848415e"
+  }
+ },
+ "measures.route_flood": {
+  "name": "Proporción de la ruta en una zona de riesgo de inundación",
+  "how_to_read": "Un valor alto significa que gran parte de la ruta está en un riesgo de inundación cartografiado. No indica qué profundidad alcanzaría el agua ni si la carretera está elevada.",
+  "_en": {
+   "name": "d2d76878",
+   "how_to_read": "d4bd23dc"
+  }
+ },
+ "measures.route_protected": {
+  "name": "Proporción de la ruta en áreas protegidas",
+  "how_to_read": "Un valor mayor de 0 significa que la ruta pasa por terrenos con una designación de protección. No indica que la carretera esté cerrada ni que el terreno sea de acceso prohibido. En el corte de datos 2026-10, el archivo de áreas protegidas tiene siete límites de proclamación.",
+  "_en": {
+   "name": "d0c2abf8",
+   "how_to_read": "a077fcdb"
+  }
+ },
+ "measures.route_municipalities": {
+  "name": "Municipios que cruza",
+  "how_to_read": "Úselo para ver qué gobiernos locales abarca una ruta. Una ruta que solo roza un municipio puede no detectarse.",
+  "_en": {
+   "name": "5d9156de",
+   "how_to_read": "a4754a58"
+  }
+ },
+ "measures.route_connections": {
+  "name": "Conexiones en los extremos y paradas a lo largo de la ruta",
+  "how_to_read": "Úselo para ver dónde una ruta nueva podría unirse a una existente. Una parada cerca del extremo es un lugar para conectar, no una prueba de que una persona pueda hacer trasbordo.",
+  "_en": {
+   "name": "dfe21b37",
+   "how_to_read": "511b92d1"
+  }
+ },
+ "measures.route_sampling": {
+  "name": "Cómo el planificador toma muestras de una ruta",
+  "how_to_read": "Un porcentaje es una proporción de puntos, no de kilómetros. Los elementos cortos entre puntos pueden no detectarse.",
+  "_en": {
+   "name": "cc568122",
+   "how_to_read": "1cfdf760"
+  }
+ },
+ "measures.route_export": {
+  "name": "Descarga de la ruta planificada (GeoJSON)",
+  "how_to_read": "Abra el archivo en un programa de mapas para guardar o compartir un plan. Los números son los que se mostraban cuando presionó el botón.",
+  "_en": {
+   "name": "7a5b57c7",
+   "how_to_read": "d3b2f242"
+  }
+ },
+ "measures.distance_rules": {
+  "name": "Distancias que usan el planificador y la pestaña Transporte",
+  "how_to_read": "Lea cada distancia como un área de captación alrededor de una línea o una parada. Una distancia mayor incluye más personas y lugares, y dice menos sobre qué tan fácil es llegar a ellos.",
+  "_en": {
+   "name": "ed03881c",
+   "how_to_read": "2a9250cf"
+  }
+ },
+ "measures.residents_served_400m": {
+  "name": "Residentes a 400 m o menos de una parada con horario",
+  "how_to_read": "Indica cuántas personas tienen una parada cerca de su bloque. No indica con qué frecuencia pasan los vehículos, adónde van ni si las personas pueden llegar a pie a la parada. En los datos del 2026-10-02: 925,788 de 3,285,874 residentes, o el 28.2%, viven a 400 m o menos de una parada con horario, y 729,507 residentes, o el 22.2%, viven a 400 m o menos de una parada de un operador cuyo horario no ha vencido.",
+  "_en": {
+   "name": "70dda1dd",
+   "how_to_read": "55440cff"
+  }
+ },
+ "measures.service_gap": {
+  "name": "Residentes lejos del servicio (regla de brecha de servicio)",
+  "how_to_read": "Los círculos más grandes significan más residentes lejos de una parada. El total cuenta a las personas que viven a más de 800 m, en línea recta, de cualquier parada con horario. En los datos del 2026-10-02: 1,986,126 residentes (60% de 3,285,874) viven a más de 800 m de una parada con horario. Se dibujan 12,790 bloques. Otros 9,808 bloques con menos de 40 residentes están en el total, pero no se dibujan.",
+  "_en": {
+   "name": "9c68cd3b",
+   "how_to_read": "bf81f08e"
+  }
+ },
+ "measures.integration_points": {
+  "name": "Puntos de integración",
+  "how_to_read": "Cada marcador nombra las dos paradas y la distancia entre ellas. Señala un candidato para la coordinación, no un trasbordo que las personas puedan hacer hoy. En los datos del 2026-10-02 hay 366 de estos lugares (1,336 pares de paradas están a 250 m o menos antes de esta depuración), y se dibujan los 366.",
+  "_en": {
+   "name": "872c9ffa",
+   "how_to_read": "3b28f7ee"
+  }
+ },
+ "measures.vehicles_now": {
+  "name": "Vehículos según su horario ahora",
+  "how_to_read": "Los puntos muestran dónde deberían estar los vehículos si siguen el horario. El conteo cambia según la hora y el día.",
+  "_en": {
+   "name": "623f5412",
+   "how_to_read": "262e9ab0"
+  }
+ },
+ "measures.operators_by_status": {
+  "name": "Operadores según el estado de su horario público",
+  "how_to_read": "En la compilación del 2026-10-02, la pestaña decía 'operadores publican un horario (vigentes: 17, por vencer: 1, vencidos: 7)'. La pestaña vuelve a calcular el desglose a partir de la fecha de hoy en Puerto Rico, así que cambia a medida que las fuentes de datos pasan su fecha de fin. Un estado vigente significa que las fechas del horario incluyen el día de hoy, no que el servicio funcione según lo previsto. El archivo del 2026-10-02 lista 44 operadores.",
+  "_en": {
+   "name": "1e17cd95",
+   "how_to_read": "93a2246d"
+  }
+ },
+ "measures.routes_on_map": {
+  "name": "Rutas en el mapa",
+  "how_to_read": "Cuenta rutas, no los viajes que se hacen en ellas. Una ruta puede tener dos líneas dibujadas, una para cada dirección.",
+  "_en": {
+   "name": "5c34eda9",
+   "how_to_read": "15f58d9a"
+  }
+ },
+ "data.catalog": {
+  "name": "Catálogo (catalog.json)",
+  "how_to_read": "Lea una cifra principal como el número de toda la isla para el período que indica. El índice permite que una página encuentre datos sin cargar el diccionario completo (unos 2.4 MB). Los pesos le indican a quien visita cuánto cuesta un módulo antes de que cargue.",
+  "_en": {
+   "name": "5512f117",
+   "how_to_read": "7000d8a4"
+  }
+ }
+}

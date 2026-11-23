@@ -1,0 +1,244 @@
+[
+  {
+    "id": "school_conditions.crdc_absent_pct",
+    "ask": {
+      "en": [
+        "chronic absenteeism",
+        "school absences",
+        "students missing school"
+      ],
+      "es": [
+        "ausentismo cronico",
+        "ausencias escolares",
+        "estudiantes que faltan a la escuela"
+      ]
+    },
+    "name": "Students chronically absent (%)",
+    "domain": "education",
+    "domains": [
+      "education"
+    ],
+    "group": "School conditions",
+    "kind": "variable",
+    "plain": "The share of students who missed 15 or more school days in the year, for any reason.",
+    "definition": "Students absent 15 or more school days in the year, for any reason (excused or not), as a share of the students enrolled. Public schools that answered the Civil Rights Data Collection, placed in a municipio by the NCES school directory; the share is pooled over the schools that report both figures, never an average of school shares. The year is the school year that starts in it (2021 = 2021-22); 2019-20 was not collected.",
+    "unit": "%",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "annual",
+      "first": 2017,
+      "last": 2021,
+      "frequency": "Every two years (2019-20 not collected); school years 2017-18 and 2021-22."
+    },
+    "method": "school_conditions.py reads the all-students rows of the Civil Rights Data Collection for Puerto Rico's public schools, places each school in a municipio by its NCES id in the Common Core of Data directory of the same year, and pools: a municipio's share is the sum of its schools' numerators over the sum of their denominators, over the schools that report both. Negative codes (missing, not applicable, suppressed) are no value.",
+    "sources": [
+      "urban_crdc",
+      "urban_ccd"
+    ],
+    "source_detail": "US Department of Education, Civil Rights Data Collection 2017-18 and 2021-22, public schools, via the Urban Institute's Education Data Portal; pooled by municipio",
+    "how_to_read": "Puerto Rico: 8.9% in 2017-18 and 45.7% in 2021-22, the first year back in school buildings after the pandemic. Lowest in 2021-22: Guaynabo (11.2), Aibonito (12.7), San Juan (20); highest: Las Marías (83.2), Aguadilla (81), San Sebastián (77.6).",
+    "caveats": [
+      "Schools report their own figures; the Office for Civil Rights does not audit them, and how a school counts an absence or a part-time staff member can differ.",
+      "Differences this large between neighbouring municipios may come partly from how each education region recorded absences: read neighbours together.",
+      "Check: the Annie E. Casey Foundation's 2024 KIDS COUNT release for Puerto Rico reports 48% of public school students chronically absent around 2022-23.",
+      "2017-18 was the school year of Hurricane María; schools that did not reopen are not in it."
+    ],
+    "see_also": [
+      "school_conditions.crdc_students_counselor",
+      "school_conditions.crdc_nurse_pct",
+      "school_conditions.crdc_no_counselor_pct"
+    ],
+    "where": {
+      "files": [
+        "school_conditions_series.json:crdc_absent_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Education · School conditions (Civil Rights Data Collection)): Students chronically absent (%)",
+          "href": "index.html#e=crdc_absent_pct.f"
+        }
+      ]
+    },
+    "added": "2026-11-18"
+  },
+  {
+    "id": "school_conditions.crdc_students_counselor",
+    "ask": {
+      "en": [
+        "students per counselor",
+        "school counselors"
+      ],
+      "es": [
+        "estudiantes por consejero",
+        "consejeros escolares"
+      ]
+    },
+    "name": "Students per school counselor",
+    "domain": "education",
+    "domains": [
+      "education"
+    ],
+    "group": "School conditions",
+    "kind": "variable",
+    "plain": "How many students there are for each full-time school counselor.",
+    "definition": "Students enrolled for each full-time school counselor (full-time equivalents). Puerto Rico's staff items are missing in 2017-18. Public schools that answered the Civil Rights Data Collection, placed in a municipio by the NCES school directory; the share is pooled over the schools that report both figures, never an average of school shares. The year is the school year that starts in it (2021 = 2021-22); 2019-20 was not collected.",
+    "unit": "students per counselor",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "annual",
+      "first": 2017,
+      "last": 2021,
+      "frequency": "Every two years (2019-20 not collected); school years 2017-18 and 2021-22."
+    },
+    "method": "school_conditions.py reads the all-students rows of the Civil Rights Data Collection for Puerto Rico's public schools, places each school in a municipio by its NCES id in the Common Core of Data directory of the same year, and pools: a municipio's share is the sum of its schools' numerators over the sum of their denominators, over the schools that report both. Negative codes (missing, not applicable, suppressed) are no value.",
+    "sources": [
+      "urban_crdc",
+      "urban_ccd"
+    ],
+    "source_detail": "US Department of Education, Civil Rights Data Collection 2017-18 and 2021-22, public schools, via the Urban Institute's Education Data Portal; pooled by municipio",
+    "how_to_read": "Puerto Rico: 546 students per counselor in 2021-22. Fewest: Maricao (201), Aibonito (344), Utuado (345); most: Trujillo Alto (3206), Cataño (1923), Sabana Grande (1832).",
+    "caveats": [
+      "Schools report their own figures; the Office for Civil Rights does not audit them, and how a school counts an absence or a part-time staff member can differ.",
+      "Puerto Rico's staff items are missing in the 2017-18 collection, so the staff measures have 2021-22 only.",
+      "A municipio whose schools report no counselor has no value, not an infinite ratio; see the share of schools with no counselor."
+    ],
+    "see_also": [
+      "school_conditions.crdc_absent_pct",
+      "school_conditions.crdc_nurse_pct",
+      "school_conditions.crdc_no_counselor_pct"
+    ],
+    "where": {
+      "files": [
+        "school_conditions_series.json:crdc_students_counselor"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Education · School conditions (Civil Rights Data Collection)): Students per school counselor",
+          "href": "index.html#e=crdc_students_counselor.f"
+        }
+      ]
+    },
+    "added": "2026-11-18"
+  },
+  {
+    "id": "school_conditions.crdc_nurse_pct",
+    "ask": {
+      "en": [
+        "school nurses",
+        "schools with a nurse"
+      ],
+      "es": [
+        "enfermeros escolares",
+        "escuelas con enfermero"
+      ]
+    },
+    "name": "Schools with a nurse (%)",
+    "domain": "education",
+    "domains": [
+      "education"
+    ],
+    "group": "School conditions",
+    "kind": "variable",
+    "plain": "The share of public schools that report any nurse.",
+    "definition": "Schools that report any nurse (full- or part-time), as a share of the schools that report their staff. Puerto Rico's staff items are missing in 2017-18. Public schools that answered the Civil Rights Data Collection, placed in a municipio by the NCES school directory; the share is pooled over the schools that report both figures, never an average of school shares. The year is the school year that starts in it (2021 = 2021-22); 2019-20 was not collected.",
+    "unit": "%",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "annual",
+      "first": 2017,
+      "last": 2021,
+      "frequency": "Every two years (2019-20 not collected); school years 2017-18 and 2021-22."
+    },
+    "method": "school_conditions.py reads the all-students rows of the Civil Rights Data Collection for Puerto Rico's public schools, places each school in a municipio by its NCES id in the Common Core of Data directory of the same year, and pools: a municipio's share is the sum of its schools' numerators over the sum of their denominators, over the schools that report both. Negative codes (missing, not applicable, suppressed) are no value.",
+    "sources": [
+      "urban_crdc",
+      "urban_ccd"
+    ],
+    "source_detail": "US Department of Education, Civil Rights Data Collection 2017-18 and 2021-22, public schools, via the Urban Institute's Education Data Portal; pooled by municipio",
+    "how_to_read": "Puerto Rico: 96.2% of schools in 2021-22. Lowest: Cataño (80), Aguas Buenas (83.3), Ciales (83.3).",
+    "caveats": [
+      "Schools report their own figures; the Office for Civil Rights does not audit them, and how a school counts an absence or a part-time staff member can differ.",
+      "Puerto Rico's staff items are missing in the 2017-18 collection, so the staff measures have 2021-22 only.",
+      "Any nurse counts, full- or part-time."
+    ],
+    "see_also": [
+      "school_conditions.crdc_absent_pct",
+      "school_conditions.crdc_students_counselor",
+      "school_conditions.crdc_no_counselor_pct"
+    ],
+    "where": {
+      "files": [
+        "school_conditions_series.json:crdc_nurse_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Education · School conditions (Civil Rights Data Collection)): Schools with a nurse (%)",
+          "href": "index.html#e=crdc_nurse_pct.f"
+        }
+      ]
+    },
+    "added": "2026-11-18"
+  },
+  {
+    "id": "school_conditions.crdc_no_counselor_pct",
+    "ask": {
+      "en": [
+        "schools without counselor",
+        "no school counselor"
+      ],
+      "es": [
+        "escuelas sin consejero"
+      ]
+    },
+    "name": "Schools with no school counselor (%)",
+    "domain": "education",
+    "domains": [
+      "education"
+    ],
+    "group": "School conditions",
+    "kind": "variable",
+    "plain": "The share of public schools that report no school counselor.",
+    "definition": "Schools that report no school counselor (zero full-time equivalents), as a share of the schools that report their staff. Puerto Rico's staff items are missing in 2017-18. Public schools that answered the Civil Rights Data Collection, placed in a municipio by the NCES school directory; the share is pooled over the schools that report both figures, never an average of school shares. The year is the school year that starts in it (2021 = 2021-22); 2019-20 was not collected.",
+    "unit": "%",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "annual",
+      "first": 2017,
+      "last": 2021,
+      "frequency": "Every two years (2019-20 not collected); school years 2017-18 and 2021-22."
+    },
+    "method": "school_conditions.py reads the all-students rows of the Civil Rights Data Collection for Puerto Rico's public schools, places each school in a municipio by its NCES id in the Common Core of Data directory of the same year, and pools: a municipio's share is the sum of its schools' numerators over the sum of their denominators, over the schools that report both. Negative codes (missing, not applicable, suppressed) are no value.",
+    "sources": [
+      "urban_crdc",
+      "urban_ccd"
+    ],
+    "source_detail": "US Department of Education, Civil Rights Data Collection 2017-18 and 2021-22, public schools, via the Urban Institute's Education Data Portal; pooled by municipio",
+    "how_to_read": "Puerto Rico: 51.5% of schools in 2021-22. Highest: Culebra (100), Trujillo Alto (90), Fajardo (80).",
+    "caveats": [
+      "Schools report their own figures; the Office for Civil Rights does not audit them, and how a school counts an absence or a part-time staff member can differ.",
+      "Puerto Rico's staff items are missing in the 2017-18 collection, so the staff measures have 2021-22 only.",
+      "Small schools often share a counselor with another school; a school with none of its own may still have one part of the week."
+    ],
+    "see_also": [
+      "school_conditions.crdc_absent_pct",
+      "school_conditions.crdc_students_counselor",
+      "school_conditions.crdc_nurse_pct"
+    ],
+    "where": {
+      "files": [
+        "school_conditions_series.json:crdc_no_counselor_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Education · School conditions (Civil Rights Data Collection)): Schools with no school counselor (%)",
+          "href": "index.html#e=crdc_no_counselor_pct.f"
+        }
+      ]
+    },
+    "added": "2026-11-18"
+  }
+]

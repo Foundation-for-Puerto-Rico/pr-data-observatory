@@ -1,0 +1,40 @@
+[
+ {
+  "id": "economy.spending_cdbg",
+  "name": "Yearly community development grants by municipio (CDBG entitlement grants and state program subawards)",
+  "domain": "public-money",
+  "domains": [
+   "public-money"
+  ],
+  "group": "Public spending (Gasto Público)",
+  "kind": "table",
+  "plain": "Where HUD's yearly Community Development Block Grant money went in Puerto Rico, by municipio and federal fiscal year: the entitlement grants HUD pays straight to 27 larger municipios, and the subawards of the CDBG state program that the Puerto Rico Department of Housing passes to the other municipios.",
+  "definition": "spending_cdbg.json holds, for each federal fiscal year (October to September), the obligations of the CDBG entitlement grants (assistance listing 14.218, grant code MC) by the municipio that receives them (entitlement) and for Puerto Rico (entitlement_total), and the first-tier subawards that USAspending.gov reports under the CDBG state program grant (14.228, grant code DC) by the municipio of the place of performance (state_by_muni), those that name no municipio (state_unplaced), their total (state_subawards) and the state grant's obligations (state_prime), in dollars. The grant numbers are in awards.",
+  "unit": "US dollars (not adjusted for inflation)",
+  "value_type": "level",
+  "geography": "Municipio, with the subawards that name no municipio apart",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2019,
+   "last": 2025,
+   "frequency": "Once a year, after a federal fiscal year counts as final (from 15 November) (cdbg_dr.py)"
+  },
+  "method": "cdbg_regular.py reads the entitlement grant numbers from USAspending.gov's award search and asks its API (spending_by_geography) for each final federal fiscal year: the entitlement grants by municipio and for Puerto Rico, the state program's subawards by municipio and for Puerto Rico, and the state grant for Puerto Rico. The disaster grants (CDBG-DR, CDBG-MIT, in spending_cdbgdr.json) and the COVID grants (CDBG-CV) are left out.",
+  "how_to_read": "Each municipio gets either an entitlement grant or state program subawards (Trujillo Alto had both in different years). Compare municipios per resident over the same years, and read the latest year with care: subawards often arrive a year or more after the grant.",
+  "cautions": [
+   "The prime grants are already inside the federal money by function (spending_federal.json): never add the two.",
+   "Only first-tier subawards reported under the federal transparency law (FFATA) are placed; the state program money the Department keeps for administration or has not passed on is not placed.",
+   "Obligated money is not money spent."
+  ],
+  "sources": [
+   "usaspending",
+   "census_pep"
+  ],
+  "added": "2026-11-12",
+  "where": {
+   "files": [
+    "spending_cdbg.json:*"
+   ]
+  }
+ }
+]

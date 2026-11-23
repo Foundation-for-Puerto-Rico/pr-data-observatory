@@ -1,0 +1,258 @@
+[
+  {
+    "id": "svi.svi_overall",
+    "ask": {
+      "en": [
+        "social vulnerability",
+        "svi",
+        "vulnerability index"
+      ],
+      "es": [
+        "vulnerabilidad social",
+        "svi",
+        "indice de vulnerabilidad"
+      ]
+    },
+    "name": "Social vulnerability, overall (CDC/ATSDR SVI rank, 0 to 1)",
+    "domain": "hazards",
+    "domains": [
+      "hazards",
+      "health",
+      "population"
+    ],
+    "group": "Social Vulnerability Index (CDC/ATSDR)",
+    "kind": "variable",
+    "plain": "How socially vulnerable each municipio is, as CDC ranks it among the 78 municipios: 0 is the least vulnerable and 1 the most.",
+    "definition": "CDC's overall rank, from the four themes together: socioeconomic status, household characteristics, racial and ethnic minority status, and housing type and transportation (16 survey measures). A rank of 0 is the least vulnerable municipio and 1 the most vulnerable, among the 78 municipios of Puerto Rico only: it cannot be compared with a state's.",
+    "unit": "rank from 0 to 1",
+    "value_type": "ratio",
+    "geography": "78 municipalities (no value for Puerto Rico as a whole); also 981 census tracts in svi_tract.json, for download",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2022,
+      "last": 2022,
+      "frequency": "One edition: the CDC/ATSDR SVI 2022, built on the American Community Survey 2018-2022. CDC publishes an edition every two years; the observatory rebuilds when a new one comes (python svi.py --refresh)."
+    },
+    "method": "svi.py reads CDC's two Puerto Rico files of the Social Vulnerability Index 2022 (counties and census tracts) and keeps CDC's percentile rank as published. CDC ranks each area on 16 measures of the American Community Survey 2018-2022, adds the ranks within each of four themes, ranks the sums, and does the same across themes for the overall rank. Puerto Rico is ranked apart from the states: a municipio among the 78 municipios, a tract among Puerto Rico's tracts. CDC's no-value code (-999) becomes an empty value, never a zero. Nothing is recomputed.",
+    "sources": [
+      "cdc_svi"
+    ],
+    "source_detail": "CDC/ATSDR Social Vulnerability Index 2022, Puerto Rico: https://svi.cdc.gov/Documents/Data/2022/csv/states_counties/PuertoRico_county.csv (municipios) and https://svi.cdc.gov/Documents/Data/2022/csv/states/PuertoRico.csv (census tracts). CDC says files downloaded between 2022-10-27 and 2026-01-15 were incorrect; these were downloaded on 2026-11-14.",
+    "how_to_read": "Most vulnerable municipios on this rank: Loíza (1.00), Ponce (0.99) and Salinas (0.97). Least: Guaynabo (0.00), Camuy (0.01) and Dorado (0.03). The tract file has a value for 919 of the 981 census tracts.",
+    "caveats": [
+      "The overall rank includes CDC's third theme, racial and ethnic minority status, which cannot tell places apart in Puerto Rico: its largest rank among Puerto Rico's tracts is 0.5223, because in 897 of the 922 tracts with a value 95% or more of the residents are a minority by the national definition.. The observatory does not publish that theme as a dataset.",
+      "FPR's own WCRP vulnerability indicators (wcrp.html) rank barrios with a different method and more local inputs: the two are not the same index.",
+      "It is a rank, not an amount: 0.80 means more vulnerable than 80% of Puerto Rico's municipios (or tracts), not 80% vulnerable. Do not add or average ranks.",
+      "Ranked within Puerto Rico only. A value cannot be compared with a state's, and a municipio's rank is not the average of its tracts' ranks.",
+      "The measures are survey estimates of 2018-2022 with margins of error; CDC publishes no margin for the rank itself. Small differences between ranks mean little."
+    ],
+    "see_also": [
+      "svi.svi_socioeconomic",
+      "svi.svi_household",
+      "housing.poverty_pct",
+      "environment.cre_risk3_pct"
+    ],
+    "where": {
+      "files": [
+        "svi_series.json:svi_overall",
+        "svi_tract.json:svi_overall"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Vulnerability (CDC/ATSDR SVI)): Social vulnerability, overall (CDC/ATSDR SVI rank, 0 to 1)",
+          "href": "index.html#e=svi_overall.f"
+        }
+      ]
+    },
+    "added": "2026-11-14"
+  },
+  {
+    "id": "svi.svi_socioeconomic",
+    "ask": {
+      "en": [
+        "socioeconomic vulnerability",
+        "svi theme 1"
+      ],
+      "es": [
+        "vulnerabilidad socioeconomica",
+        "tema 1 del svi"
+      ]
+    },
+    "name": "Social vulnerability: socioeconomic status (SVI theme 1, 0 to 1)",
+    "domain": "hazards",
+    "domains": [
+      "hazards",
+      "health",
+      "population"
+    ],
+    "group": "Social Vulnerability Index (CDC/ATSDR)",
+    "kind": "variable",
+    "plain": "Where each municipio ranks among the 78 on poverty, unemployment, housing cost, schooling and health insurance together.",
+    "definition": "The rank for theme 1: people below 150% of the poverty level, unemployed, with housing costs of 30% or more of income, without a high school diploma, and without health insurance. A rank of 0 is the least vulnerable municipio and 1 the most vulnerable, among the 78 municipios of Puerto Rico only: it cannot be compared with a state's.",
+    "unit": "rank from 0 to 1",
+    "value_type": "ratio",
+    "geography": "78 municipalities (no value for Puerto Rico as a whole); also 981 census tracts in svi_tract.json, for download",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2022,
+      "last": 2022,
+      "frequency": "One edition: the CDC/ATSDR SVI 2022, built on the American Community Survey 2018-2022. CDC publishes an edition every two years; the observatory rebuilds when a new one comes (python svi.py --refresh)."
+    },
+    "method": "svi.py reads CDC's two Puerto Rico files of the Social Vulnerability Index 2022 (counties and census tracts) and keeps CDC's percentile rank as published. CDC ranks each area on 16 measures of the American Community Survey 2018-2022, adds the ranks within each of four themes, ranks the sums, and does the same across themes for the overall rank. Puerto Rico is ranked apart from the states: a municipio among the 78 municipios, a tract among Puerto Rico's tracts. CDC's no-value code (-999) becomes an empty value, never a zero. Nothing is recomputed.",
+    "sources": [
+      "cdc_svi"
+    ],
+    "source_detail": "CDC/ATSDR Social Vulnerability Index 2022, Puerto Rico: https://svi.cdc.gov/Documents/Data/2022/csv/states_counties/PuertoRico_county.csv (municipios) and https://svi.cdc.gov/Documents/Data/2022/csv/states/PuertoRico.csv (census tracts). CDC says files downloaded between 2022-10-27 and 2026-01-15 were incorrect; these were downloaded on 2026-11-14.",
+    "how_to_read": "Most vulnerable municipios on this rank: Lares (1.00), Manatí (0.99) and Utuado (0.97). Least: Guaynabo (0.00), Humacao (0.01) and Villalba (0.03). The tract file has a value for 919 of the 981 census tracts.",
+    "caveats": [
+      "It is a rank, not an amount: 0.80 means more vulnerable than 80% of Puerto Rico's municipios (or tracts), not 80% vulnerable. Do not add or average ranks.",
+      "Ranked within Puerto Rico only. A value cannot be compared with a state's, and a municipio's rank is not the average of its tracts' ranks.",
+      "The measures are survey estimates of 2018-2022 with margins of error; CDC publishes no margin for the rank itself. Small differences between ranks mean little."
+    ],
+    "see_also": [
+      "svi.svi_overall",
+      "svi.svi_household",
+      "housing.poverty_pct",
+      "environment.cre_risk3_pct"
+    ],
+    "where": {
+      "files": [
+        "svi_series.json:svi_socioeconomic",
+        "svi_tract.json:svi_socioeconomic"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Vulnerability (CDC/ATSDR SVI)): Social vulnerability: socioeconomic status (SVI theme 1, 0 to 1)",
+          "href": "index.html#e=svi_socioeconomic.f"
+        }
+      ]
+    },
+    "added": "2026-11-14"
+  },
+  {
+    "id": "svi.svi_household",
+    "ask": {
+      "en": [
+        "household vulnerability",
+        "svi theme 2"
+      ],
+      "es": [
+        "vulnerabilidad de los hogares",
+        "tema 2 del svi"
+      ]
+    },
+    "name": "Social vulnerability: household characteristics (SVI theme 2, 0 to 1)",
+    "domain": "hazards",
+    "domains": [
+      "hazards",
+      "health",
+      "population"
+    ],
+    "group": "Social Vulnerability Index (CDC/ATSDR)",
+    "kind": "variable",
+    "plain": "Where each municipio ranks among the 78 on older people, children, disability, single-parent households and English ability together.",
+    "definition": "The rank for theme 2: people 65 and older, 17 and younger, with a disability, single-parent households, and people who speak English less than well. A rank of 0 is the least vulnerable municipio and 1 the most vulnerable, among the 78 municipios of Puerto Rico only: it cannot be compared with a state's.",
+    "unit": "rank from 0 to 1",
+    "value_type": "ratio",
+    "geography": "78 municipalities (no value for Puerto Rico as a whole); also 981 census tracts in svi_tract.json, for download",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2022,
+      "last": 2022,
+      "frequency": "One edition: the CDC/ATSDR SVI 2022, built on the American Community Survey 2018-2022. CDC publishes an edition every two years; the observatory rebuilds when a new one comes (python svi.py --refresh)."
+    },
+    "method": "svi.py reads CDC's two Puerto Rico files of the Social Vulnerability Index 2022 (counties and census tracts) and keeps CDC's percentile rank as published. CDC ranks each area on 16 measures of the American Community Survey 2018-2022, adds the ranks within each of four themes, ranks the sums, and does the same across themes for the overall rank. Puerto Rico is ranked apart from the states: a municipio among the 78 municipios, a tract among Puerto Rico's tracts. CDC's no-value code (-999) becomes an empty value, never a zero. Nothing is recomputed.",
+    "sources": [
+      "cdc_svi"
+    ],
+    "source_detail": "CDC/ATSDR Social Vulnerability Index 2022, Puerto Rico: https://svi.cdc.gov/Documents/Data/2022/csv/states_counties/PuertoRico_county.csv (municipios) and https://svi.cdc.gov/Documents/Data/2022/csv/states/PuertoRico.csv (census tracts). CDC says files downloaded between 2022-10-27 and 2026-01-15 were incorrect; these were downloaded on 2026-11-14.",
+    "how_to_read": "Most vulnerable municipios on this rank: Arroyo (1.00), Guánica (0.99) and Salinas (0.97). Least: Culebra (0.00), Trujillo Alto (0.01) and Cabo Rojo (0.03). The tract file has a value for 921 of the 981 census tracts.",
+    "caveats": [
+      "It is a rank, not an amount: 0.80 means more vulnerable than 80% of Puerto Rico's municipios (or tracts), not 80% vulnerable. Do not add or average ranks.",
+      "Ranked within Puerto Rico only. A value cannot be compared with a state's, and a municipio's rank is not the average of its tracts' ranks.",
+      "The measures are survey estimates of 2018-2022 with margins of error; CDC publishes no margin for the rank itself. Small differences between ranks mean little."
+    ],
+    "see_also": [
+      "svi.svi_overall",
+      "svi.svi_socioeconomic",
+      "housing.poverty_pct",
+      "environment.cre_risk3_pct"
+    ],
+    "where": {
+      "files": [
+        "svi_series.json:svi_household",
+        "svi_tract.json:svi_household"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Vulnerability (CDC/ATSDR SVI)): Social vulnerability: household characteristics (SVI theme 2, 0 to 1)",
+          "href": "index.html#e=svi_household.f"
+        }
+      ]
+    },
+    "added": "2026-11-14"
+  },
+  {
+    "id": "svi.svi_housing_transport",
+    "ask": {
+      "en": [
+        "housing and transportation vulnerability",
+        "svi theme 4"
+      ],
+      "es": [
+        "vulnerabilidad de vivienda y transporte",
+        "tema 4 del svi"
+      ]
+    },
+    "name": "Social vulnerability: housing type and transportation (SVI theme 4, 0 to 1)",
+    "domain": "hazards",
+    "domains": [
+      "hazards",
+      "health",
+      "population"
+    ],
+    "group": "Social Vulnerability Index (CDC/ATSDR)",
+    "kind": "variable",
+    "plain": "Where each municipio ranks among the 78 on apartment buildings, mobile homes, crowding, households with no vehicle and group quarters together.",
+    "definition": "The rank for theme 4: homes in buildings of 10 or more units, mobile homes, crowded homes, households with no vehicle, and people in group quarters. A rank of 0 is the least vulnerable municipio and 1 the most vulnerable, among the 78 municipios of Puerto Rico only: it cannot be compared with a state's.",
+    "unit": "rank from 0 to 1",
+    "value_type": "ratio",
+    "geography": "78 municipalities (no value for Puerto Rico as a whole); also 981 census tracts in svi_tract.json, for download",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2022,
+      "last": 2022,
+      "frequency": "One edition: the CDC/ATSDR SVI 2022, built on the American Community Survey 2018-2022. CDC publishes an edition every two years; the observatory rebuilds when a new one comes (python svi.py --refresh)."
+    },
+    "method": "svi.py reads CDC's two Puerto Rico files of the Social Vulnerability Index 2022 (counties and census tracts) and keeps CDC's percentile rank as published. CDC ranks each area on 16 measures of the American Community Survey 2018-2022, adds the ranks within each of four themes, ranks the sums, and does the same across themes for the overall rank. Puerto Rico is ranked apart from the states: a municipio among the 78 municipios, a tract among Puerto Rico's tracts. CDC's no-value code (-999) becomes an empty value, never a zero. Nothing is recomputed.",
+    "sources": [
+      "cdc_svi"
+    ],
+    "source_detail": "CDC/ATSDR Social Vulnerability Index 2022, Puerto Rico: https://svi.cdc.gov/Documents/Data/2022/csv/states_counties/PuertoRico_county.csv (municipios) and https://svi.cdc.gov/Documents/Data/2022/csv/states/PuertoRico.csv (census tracts). CDC says files downloaded between 2022-10-27 and 2026-01-15 were incorrect; these were downloaded on 2026-11-14.",
+    "how_to_read": "Most vulnerable municipios on this rank: Ponce (1.00), Vega Alta (0.99) and Culebra (0.97). Least: Cidra (0.00), Camuy (0.01) and Santa Isabel (0.03). The tract file has a value for 921 of the 981 census tracts.",
+    "caveats": [
+      "It is a rank, not an amount: 0.80 means more vulnerable than 80% of Puerto Rico's municipios (or tracts), not 80% vulnerable. Do not add or average ranks.",
+      "Ranked within Puerto Rico only. A value cannot be compared with a state's, and a municipio's rank is not the average of its tracts' ranks.",
+      "The measures are survey estimates of 2018-2022 with margins of error; CDC publishes no margin for the rank itself. Small differences between ranks mean little."
+    ],
+    "see_also": [
+      "svi.svi_overall",
+      "svi.svi_socioeconomic",
+      "housing.poverty_pct",
+      "environment.cre_risk3_pct"
+    ],
+    "where": {
+      "files": [
+        "svi_series.json:svi_housing_transport",
+        "svi_tract.json:svi_housing_transport"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Vulnerability (CDC/ATSDR SVI)): Social vulnerability: housing type and transportation (SVI theme 4, 0 to 1)",
+          "href": "index.html#e=svi_housing_transport.f"
+        }
+      ]
+    },
+    "added": "2026-11-14"
+  }
+]

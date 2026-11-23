@@ -1,0 +1,263 @@
+[
+ {
+  "kind": "layer",
+  "value_type": "geometry",
+  "unit": "points (longitude and latitude, WGS 84)",
+  "added": "2026-11-14",
+  "id": "layers.bridges",
+  "name": "Bridges and tunnels (map layer)",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility",
+   "infrastructure",
+   "hazards"
+  ],
+  "group": "Bridges",
+  "plain": "Every bridge of 20 feet or more on a public road and the four road tunnels, from FHWA's inventories: the colour is the bridge's condition and the area of each circle is the vehicles that cross it on an average day.",
+  "definition": "bridges.geojson: one point per bridge in the National Bridge Inventory of 2025 (2,426 bridges in the 78 municipios; 8 more have a point outside every municipio and are left out) and per tunnel in the National Tunnel Inventory (4). Each point has name (the road carried), type (Bridge or Tunnel), municipio, geoid, sn (structure or tunnel number), x (the feature crossed, or the road a tunnel carries), c (condition: G good, F fair, P poor, T a tunnel), lr (the lowest of the deck, superstructure, substructure or culvert ratings, 0-9), y (year built), yr (year rebuilt), a (average daily traffic) and ay (its year), t (trucks, % of traffic), d (detour if closed, km), l (length, m), o (status: A open, P posted for load, B should be posted, E or D open with temporary support, K closed), s (1 when scour critical, NBI item 113 codes 0-3), i (last inspection, YYYY-MM) and w (owner: state, toll, municipal, federal, other).",
+  "geography": "Points in the 78 municipios",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2025,
+   "last": 2025,
+   "frequency": "Yearly: FHWA publishes a year's inventory the next spring (refresh unit inventories)."
+  },
+  "method": "transport_inventories.py reads the newest Puerto Rico file of the National Bridge Inventory (records of type 1, one per bridge), turns items 16 and 17 (degrees, minutes, seconds) into a point and places it in the municipio whose outline holds it; it adds the four tunnels of the National Tunnel Inventory (NTAD) at their portal. The condition is FHWA's own (BRIDGE_CONDITION, from the lowest rating). The map draws each circle with an area in proportion to the daily traffic (a radius of 0.024 times its square root, in pixels, at least 2.5); a closed bridge is drawn hollow. The file is sorted busiest first, so the quieter bridges are drawn on top.",
+  "sources": [
+   "fhwa_nbi",
+   "fhwa_nti"
+  ],
+  "source_detail": "NBI delimited file PR25.txt: STRUCTURE_NUMBER_008, RECORD_TYPE_005A, FEATURES_DESC_006A, FACILITY_CARRIED_007, LAT_016, LONG_017, DETOUR_KILOS_019, OWNER_022, YEAR_BUILT_027, ADT_029, YEAR_ADT_030, OPEN_CLOSED_POSTED_041, STRUCTURE_LEN_MT_049, DATE_OF_INSPECT_090, YEAR_RECONSTRUCTED_106, PERCENT_ADT_TRUCK_109, SCOUR_CRITICAL_113, BRIDGE_CONDITION, LOWEST_RATING; NTAD National Tunnel Inventory (state 72).",
+  "how_to_read": "Switch the layer on in the Layers tab of the 2D map or the 3D view (Infrastructure and mobility: Mobility and transit). Dark red circles are bridges in poor condition; the largest circles carry the most traffic, on PR-18, PR-22 and PR-52 in the San Juan area. Click a bridge for its condition, any load limit, scour, year built, detour and last inspection. In 2025: 411 bridges in good condition, 1,671 fair and 344 poor; 24 closed and 695 posted or to be posted for load; 505 scour critical.",
+  "caveats": [
+   "Poor does not mean unsafe: a bridge that is not safe is closed. Poor means a part rated 4 or below needs repair or closer watch.",
+   "Most traffic counts are from 2017; the pop-up gives each count's year.",
+   "The points are FHWA's coordinates; a few fall slightly off the road. Eight bridges with a point outside every municipio are left out."
+  ],
+  "see_also": [
+   "infrastructure.bridges",
+   "infrastructure.bridges_poor",
+   "layers.traffic_roads"
+  ],
+  "where": {
+   "files": [
+    "bridges.geojson:*"
+   ],
+   "view": [
+    {
+     "label": "Map, Layers tab: Bridges and tunnels",
+     "href": "index.html#l=bridges"
+    },
+    {
+     "label": "3D view, Layers tab: Bridges and tunnels",
+     "href": "3d.html"
+    }
+   ]
+  },
+  "ask": {
+   "en": [
+    "bridge map",
+    "map of bridges",
+    "bridges in poor condition map",
+    "where are the bridges",
+    "tunnels"
+   ],
+   "es": [
+    "mapa de puentes",
+    "puentes en mala condicion",
+    "donde estan los puentes",
+    "tuneles"
+   ]
+  }
+ },
+ {
+  "kind": "layer",
+  "value_type": "geometry",
+  "unit": "points (longitude and latitude, WGS 84)",
+  "added": "2026-11-14",
+  "id": "layers.airports",
+  "name": "Airports and heliports (map layer)",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility",
+   "infrastructure"
+  ],
+  "group": "Air and sea gateways",
+  "plain": "The airports open to the public and the heliports owned by a public body, as the Federal Aviation Administration lists them every 28 days; private facilities owned privately are counted, not drawn.",
+  "definition": "airports.geojson: one point per facility in the FAA's airport data for Puerto Rico (through NTAD) that is open to public use or owned by a public body or the military: 17 in the data in effect on 2026-10-29 (3 airports certificated for airline service, 7 other public-use airports, 7 heliports). Each point has name, type (Airport, Heliport, Seaplane base), municipio, geoid, faa (the FAA identifier), cat (commercial, airport, heliport, seaplane), use (public or private), own (public, private, military, other), elev (feet) and tower (1 when it has an air traffic control tower). The 27 private airports, heliports and seaplane bases owned privately are counted in the notes by kind and never drawn or named.",
+  "geography": "Points in the municipios that have one",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "Every 28 days at the FAA; rebuilt with refresh unit inventories."
+  },
+  "method": "transport_inventories.py reads the NTAD copy of the FAA's facility data for Puerto Rico (no key), keeps the operating facilities, and drops the private-use facilities owned privately: a private heliport can be at a home (docs/transport-inventories.md, sensitive places rule). Airports with an FAA Part 139 certificate are marked as certificated for airline service.",
+  "sources": [
+   "faa_airports"
+  ],
+  "source_detail": "NTAD Aviation Facilities (layer 0): EFF_DATE, SITE_TYPE_CODE, ARPT_ID, ARPT_NAME, OWNERSHIP_TYPE_CODE, FACILITY_USE_CODE, LAT_DECIMAL, LONG_DECIMAL, ELEV, ARPT_STATUS, FAR_139_TYPE_CODE, TWR_TYPE_CODE",
+  "how_to_read": "Switch the layer on in the Layers tab of the 2D map or the 3D view. Dark blue: San Juan (Luis Muñoz Marín), Aguadilla (Rafael Hernández) and Ponce (Mercedita), certificated for airline service. Light blue: the other public-use airports, Vieques, Culebra and Ceiba among them. Pink: heliports of hospitals, health centres, the water utility and the Army. Click a point for its FAA identifier, owner, use, elevation and tower.",
+  "caveats": [
+   "Private airports, heliports and seaplane bases owned privately (27 in October 2026) are counted in the note but not drawn.",
+   "The Stations, terminals and airports layer shows airports too, from the same FAA list and OpenStreetMap."
+  ],
+  "see_also": [
+   "municipalities.airports",
+   "infrastructure.air_passengers"
+  ],
+  "where": {
+   "files": [
+    "airports.geojson:*"
+   ],
+   "view": [
+    {
+     "label": "Map, Layers tab: Airports and heliports",
+     "href": "index.html#l=airports"
+    },
+    {
+     "label": "3D view, Layers tab: Airports and heliports",
+     "href": "3d.html"
+    }
+   ]
+  },
+  "ask": {
+   "en": [
+    "airport map",
+    "heliports",
+    "where are the airports"
+   ],
+   "es": [
+    "mapa de aeropuertos",
+    "helipuertos",
+    "donde estan los aeropuertos"
+   ]
+  }
+ },
+ {
+  "kind": "layer",
+  "value_type": "geometry",
+  "unit": "lines (longitude and latitude, WGS 84)",
+  "added": "2026-11-14",
+  "id": "layers.ferries",
+  "name": "Ferry routes and passengers (map layer)",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility",
+   "infrastructure"
+  ],
+  "group": "Air and sea gateways",
+  "plain": "The three ferry crossings of Puerto Rico (San Juan to Cataño, Ceiba to Vieques and Ceiba to Culebra), wider where more passengers travelled in the newest National Census of Ferry Operators.",
+  "definition": "ferry_routes.geojson: one line per pair of terminals with a line in NTAD (3), with name, type, pax (passengers in the census's data year, both directions added), veh (vehicles), trips (trips a year, both directions) and min (minutes a crossing, the average of the two directions). Census of 2024, data year 2024: 1,616,045 passengers on the three crossings. Culebra–Vieques (234 passengers in 2024) has no line in NTAD and is counted in the notes, not drawn.",
+  "geography": "Lines between the ferry terminals",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2024,
+   "last": 2024,
+   "frequency": "Every two years (the census); rebuilt with refresh unit inventories."
+  },
+  "method": "transport_inventories.py reads the newest census on data.bts.gov (the same files gateway_series.py counts by municipio): terminals, segments and the operators' figures for each one-way segment. It adds the two directions of each crossing and draws it with the line NTAD's ferry routes give for that pair of terminals (same terminal ids), simplified to about 20 m.",
+  "sources": [
+   "bts_ncfo"
+  ],
+  "source_detail": "NCFO 2024 on data.bts.gov (terminals difu-6bgs, segments 2ygc-ds4z, operator segments 7umd-qc2k): passengers, vehicles, trips_per_year, average_trip_time; NTAD Ferry Routes (seg_terminal1_id, seg_terminal2_id, line).",
+  "how_to_read": "Switch the layer on in the Layers tab of the 2D map or the 3D view. Ceiba–Vieques carried 641,183 passengers in 2024 and Ceiba–Culebra 546,258, with about 40,000 vehicles each; San Juan–Cataño carried 428,604 passengers and no vehicles. Click a line for its trips and the time of a crossing.",
+  "caveats": [
+   "The census is every two years and reports a year of operation, not today's service; the timetabled ferry trips of today are on the Transit routes layer.",
+   "The operator reports the figures; they are not audited counts."
+  ],
+  "see_also": [
+   "infrastructure.ferry_passengers"
+  ],
+  "where": {
+   "files": [
+    "ferry_routes.geojson:*"
+   ],
+   "view": [
+    {
+     "label": "Map, Layers tab: Ferry routes and passengers",
+     "href": "index.html#l=ferries"
+    },
+    {
+     "label": "3D view, Layers tab: Ferry routes and passengers",
+     "href": "3d.html"
+    }
+   ]
+  },
+  "ask": {
+   "en": [
+    "ferry map",
+    "ferry routes",
+    "ferry passengers"
+   ],
+   "es": [
+    "mapa de lanchas",
+    "rutas de lanchas",
+    "pasajeros de las lanchas"
+   ]
+  }
+ },
+ {
+  "kind": "layer",
+  "value_type": "geometry",
+  "unit": "points (longitude and latitude, WGS 84)",
+  "added": "2026-11-14",
+  "id": "layers.evcharge",
+  "name": "Public EV charging stations (map layer)",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility",
+   "infrastructure.energy"
+  ],
+  "group": "Electric vehicles",
+  "plain": "The public electric vehicle charging stations in the US Department of Energy's Alternative Fuels Data Center: the area of each circle is the charging ports, and green means the station has DC fast charging.",
+  "definition": "ev_stations.geojson: one point per public electric charging station in the Alternative Fuels Data Center that is open or temporarily unavailable (26 on 2026-11-14 in 16 municipios, 53 ports, 2 stations with DC fast charging, 5 temporarily unavailable). Each point has name, type, municipio, geoid, afdc (the station id), kind (dc: has DC fast charging; l2: Level 2 only), ports (all ports), dc, l2 and l1 (ports by level), net (the charging network), conn (connector types), status (open or unavailable) and confirmed (the date the Department last confirmed it). The station's telephone and address are not kept.",
+  "geography": "Points in 16 municipios",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "The Data Center is updated daily; rebuilt with refresh unit inventories."
+  },
+  "method": "transport_inventories.py reads the NTAD copy of the Alternative Fuels Data Center stations for Puerto Rico (fuel type ELEC, public access, status open or temporarily unavailable; no key) and places each station in the municipio whose outline holds it. The map draws each circle with an area in proportion to the ports (a radius of 3.7 times their square root, in pixels, at least 3.5); a station temporarily unavailable is drawn hollow.",
+  "sources": [
+   "afdc_stations"
+  ],
+  "source_detail": "NTAD Alternative Fueling Stations (layer 0): id, station_name, city, latitude, longitude, status_code, access_code, ev_network, ev_dc_fast_num, ev_level2_evse_num, ev_level1_evse_num, ev_connector_types, date_last_confirmed, updated_at",
+  "how_to_read": "Switch the layer on in the Layers tab of the 2D map or the 3D view. Most stations are Level 2 (blue), with two to six ports; only two have DC fast charging (green). Click a station for its ports, network, connectors and the date it was last confirmed. The Taxi stands and EV charging layer shows the chargers volunteers mapped in OpenStreetMap, which can differ.",
+  "caveats": [
+   "Only public stations reported to the Data Center are listed; chargers at homes, workplaces and many businesses are not.",
+   "A station can close or change between confirmations; the pop-up gives the date."
+  ],
+  "see_also": [
+   "municipalities.ev_charging"
+  ],
+  "where": {
+   "files": [
+    "ev_stations.geojson:*"
+   ],
+   "view": [
+    {
+     "label": "Map, Layers tab: Public EV charging stations",
+     "href": "index.html#l=evcharge"
+    },
+    {
+     "label": "3D view, Layers tab: Public EV charging stations",
+     "href": "3d.html"
+    }
+   ]
+  },
+  "ask": {
+   "en": [
+    "ev charging map",
+    "charging stations",
+    "electric vehicle chargers"
+   ],
+   "es": [
+    "estaciones de carga",
+    "cargadores de vehiculos electricos",
+    "mapa de carga electrica"
+   ]
+  }
+ }
+]

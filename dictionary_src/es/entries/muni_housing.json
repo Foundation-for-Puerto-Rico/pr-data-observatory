@@ -1,0 +1,226 @@
+{
+ "municipalities.acs_year": {
+  "name": "Última ventana de la encuesta (año final)",
+  "how_to_read": "Cite la ventana, no un solo año: escriba 'estimados de 5 años de la ACS, 2020-2024'. Una ventana se construye con cinco años de respuestas. No es un conteo tomado en una sola fecha.",
+  "_en": {
+   "name": "d81df1db",
+   "how_to_read": "250303c3"
+  }
+ },
+ "municipalities.median_home_value": {
+  "name": "Valor mediano de la vivienda",
+  "how_to_read": "Una cantidad más alta significa que los propietarios le ponen un precio más alto a su vivienda. Es una opinión sobre el valor, no un precio de venta, y abarca viviendas que ya tienen dueño, no viviendas que están a la venta ahora.",
+  "_en": {
+   "name": "634135aa",
+   "how_to_read": "1f65c079"
+  }
+ },
+ "municipalities.median_gross_rent": {
+  "name": "Alquiler bruto mediano",
+  "how_to_read": "Una cantidad más alta significa que los inquilinos actuales pagan más cada mes. Describe lo que pagan hoy los inquilinos, no lo que pide un arrendador por una vivienda que está en alquiler hoy.",
+  "_en": {
+   "name": "8cae6e78",
+   "how_to_read": "e149aeed"
+  }
+ },
+ "municipalities.housing_units_acs": {
+  "name": "Unidades de vivienda (estimado de encuesta)",
+  "how_to_read": "Úselo como base de las proporciones de desocupación y de uso estacional de la misma ventana. Para el conteo tomado el día del censo de 2020, use 'Unidades de vivienda, Censo 2020'. Es un conteo, así que es mayor donde el municipio es más grande. Para comparar municipios de distinto tamaño, use una proporción, como 'Unidades de vivienda desocupadas (%)'.",
+  "_en": {
+   "name": "89f6935b",
+   "how_to_read": "39d6334a"
+  }
+ },
+ "municipalities.vacant_units": {
+  "name": "Unidades de vivienda desocupadas (cantidad)",
+  "how_to_read": "Una vivienda desocupada no está necesariamente abandonada. Use 'Unidades de uso estacional, recreativo u ocasional (cantidad)' para ver cuántas de las viviendas desocupadas se reservan para uso ocasional. Es un conteo, así que es mayor donde el municipio es más grande. Para comparar municipios, use 'Unidades de vivienda desocupadas (%)'.",
+  "_en": {
+   "name": "35e2e3fa",
+   "how_to_read": "a673a0e7"
+  }
+ },
+ "municipalities.vacancy_pct": {
+  "name": "Unidades de vivienda desocupadas (%)",
+  "how_to_read": "Un valor alto significa que muchas viviendas estaban vacías. Léalo junto con 'Unidades de uso estacional, recreativo u ocasional (%)': en lugares con muchas casas de fin de semana y de vacaciones, gran parte de la desocupación es estacional y no es abandono.",
+  "_en": {
+   "name": "d45d79ff",
+   "how_to_read": "af66add9"
+  }
+ },
+ "municipalities.seasonal_units": {
+  "name": "Unidades de uso estacional, recreativo u ocasional (cantidad)",
+  "how_to_read": "Úselo como una señal indirecta de las casas de fin de semana y las segundas residencias. La página Vivienda lo trata como el indicador público más cercano de las casas de fin de semana y los alquileres a corto plazo, pero el Negociado del Censo no tiene una categoría de alquiler a corto plazo, así que no es un conteo de alquileres a corto plazo. Es un conteo, así que es mayor donde el municipio es más grande. Para comparar municipios, use 'Unidades de uso estacional, recreativo u ocasional (%)'.",
+  "_en": {
+   "name": "f627cba9",
+   "how_to_read": "3e42d647"
+  }
+ },
+ "municipalities.seasonal_pct": {
+  "name": "Unidades de uso estacional, recreativo u ocasional (%)",
+  "how_to_read": "Un valor alto significa que muchas viviendas se reservan para uso ocasional en lugar de habitarse todo el año. No dice quién es su dueño ni si se alquilan a visitantes.",
+  "_en": {
+   "name": "db399721",
+   "how_to_read": "52c25943"
+  }
+ },
+ "municipalities.residents_per_unit": {
+  "name": "Residentes por unidad de vivienda (censo de 2020)",
+  "how_to_read": "No es el tamaño del hogar. Las viviendas vacías están en el denominador, así que un valor bajo puede indicar muchas viviendas vacías o de uso estacional, hogares pequeños, o ambas cosas. El tamaño promedio del hogar (personas por vivienda ocupada) es una medida distinta; vea 'Tamaño promedio del hogar' en las series de la página Vivienda.",
+  "_en": {
+   "name": "befecb81",
+   "how_to_read": "5ff68d67"
+  }
+ },
+ "municipalities.owner_occupied_pct": {
+  "name": "Proporción de viviendas ocupadas por sus propietarios",
+  "how_to_read": "Un valor alto significa que la mayoría de los hogares son dueños de su vivienda. Solo cuenta las viviendas ocupadas, así que no es una proporción de todas las viviendas ni de todas las personas.",
+  "_en": {
+   "name": "dac1f628",
+   "how_to_read": "506bbb7f"
+  }
+ },
+ "municipalities.renter_cost_burden_pct": {
+  "name": "Inquilinos con carga de costos (30% o más del ingreso en alquiler)",
+  "how_to_read": "Un valor alto significa que muchos inquilinos gastan una parte grande de su ingreso en vivienda. Sigue la regla práctica del 30% que usa el estudio de 2023. No dice cuántos inquilinos están atrasados en el pago del alquiler.",
+  "_en": {
+   "name": "e2b903d7",
+   "how_to_read": "0f835fe8"
+  }
+ },
+ "municipalities.owner_cost_burden_pct": {
+  "name": "Propietarios con hipoteca y carga de costos (30% o más del ingreso)",
+  "how_to_read": "Un valor alto significa que muchos propietarios que todavía pagan una hipoteca gastan una parte grande de su ingreso en vivienda. No dice nada sobre los propietarios sin hipoteca.",
+  "_en": {
+   "name": "c6a33200",
+   "how_to_read": "67e7291f"
+  }
+ },
+ "municipalities.max_affordable_loan": {
+  "name": "Préstamo máximo asequible a 30 años",
+  "how_to_read": "Una cantidad más alta significa que un hogar típico del municipio podría tomar prestado más bajo estos supuestos. Compárela con el valor mediano de la vivienda mediante la razón de asequibilidad. Para citarla en el corte de datos 2026-10, escriba: 'Foundation for Puerto Rico, Observatorio de Datos de PR; calculado a partir de los estimados de 5 años de la ACS del Negociado del Censo de EE. UU., 2020-2024, tabla B19013, con el método de asequibilidad de The State of Housing in Puerto Rico (2023).'",
+  "_en": {
+   "name": "16eea79f",
+   "how_to_read": "7c4206be"
+  }
+ },
+ "municipalities.affordability_ratio": {
+  "name": "Razón de asequibilidad de la vivienda propia",
+  "how_to_read": "Una razón de 1.50 significa que la vivienda mediana cuesta una vez y media el préstamo más grande que podría asumir el hogar mediano. Una razón más alta significa que las viviendas están más fuera de alcance. No dice cuántos hogares pueden comprar. Para citarla en el corte de datos 2026-10, escriba: 'Foundation for Puerto Rico, Observatorio de Datos de PR; calculado a partir de los estimados de 5 años de la ACS del Negociado del Censo de EE. UU., 2020-2024, tablas B19013 y B25077, con el método de asequibilidad de The State of Housing in Puerto Rico (2023).'",
+  "_en": {
+   "name": "27e4f422",
+   "how_to_read": "b7941115"
+  }
+ },
+ "municipalities.median_hh_income": {
+  "name": "Ingreso mediano del hogar (archivo de municipios)",
+  "how_to_read": "Un valor más alto significa que un hogar típico del municipio tiene más dinero para gastar. Describe hogares, no personas. Para el ingreso por persona, vea 'Ingreso per cápita' en las series de la página Vivienda.",
+  "_en": {
+   "name": "f9daa709",
+   "how_to_read": "8008d385"
+  }
+ },
+ "municipalities.poverty_pct": {
+  "name": "Población bajo el nivel de pobreza (%)",
+  "how_to_read": "Un valor alto significa que una proporción grande de residentes vive con ingresos muy bajos según la definición federal. Cuenta personas, no hogares.",
+  "_en": {
+   "name": "f3684b2c",
+   "how_to_read": "127fb5a1"
+  }
+ },
+ "municipalities.employment_rate_pct": {
+  "name": "Tasa de empleo, 16 años o más (%)",
+  "how_to_read": "Un valor bajo puede reflejar una proporción grande de personas jubiladas, estudiantes o personas que no buscan trabajo, además de pocos empleos. No es la tasa de desempleo.",
+  "_en": {
+   "name": "de48f510",
+   "how_to_read": "fd7ceca8"
+  }
+ },
+ "municipalities.bachelors_pct": {
+  "name": "Adultos de 25 años o más con bachillerato o grado superior (%)",
+  "how_to_read": "Un valor más alto significa que más adultos tienen un grado de cuatro años o más. Describe a los adultos que viven en el municipio, trabajen allí o no.",
+  "_en": {
+   "name": "209aedd4",
+   "how_to_read": "98f4b0ac"
+  }
+ },
+ "municipalities.median_age": {
+  "name": "Edad mediana",
+  "how_to_read": "Un valor más alto significa una población de más edad. Una mediana es el valor del medio, no el promedio.",
+  "_en": {
+   "name": "5910b22f",
+   "how_to_read": "eb21573d"
+  }
+ },
+ "municipalities.home_value_change_pct": {
+  "name": "Cambio en el valor mediano de la vivienda desde 2008-2012 (%)",
+  "how_to_read": "Un valor positivo significa que los propietarios estiman ahora valores de vivienda más altos que en 2008-2012, en dólares sin ajustar. Un valor cercano al aumento general de precios en esos mismos años significa que los valores de la vivienda siguieron el ritmo de los precios. En el corte de datos 2026-10, 77 de los 78 municipios muestran un cambio menor que el aumento de 36.6% del CPI-U de EE. UU. (índice de precios al consumidor) entre 2012 y 2024, y 15 de ellos muestran una baja en dólares. En la página Vivienda se puede elegir otro año base, y la página muestra entonces una comparación distinta. Este campo siempre compara 2008-2012 con la ventana más reciente. Para citarlo en el corte de datos 2026-10, escriba 'estimados de 5 años de la ACS, 2020-2024 comparado con 2008-2012, tabla B25077, calculado por Foundation for Puerto Rico, Observatorio de Datos de PR'.",
+  "_en": {
+   "name": "4898f3ac",
+   "how_to_read": "eb93c749"
+  }
+ },
+ "municipalities.gross_rent_change_pct": {
+  "name": "Cambio en el alquiler bruto mediano desde 2008-2012 (%)",
+  "how_to_read": "Un valor positivo significa que los inquilinos actuales pagan más al mes que los inquilinos de 2008-2012, en dólares sin ajustar. Un valor cercano al aumento general de precios en esos mismos años significa que los alquileres siguieron el ritmo de los precios. En el corte de datos 2026-10, 54 de los 78 municipios muestran un cambio menor que el aumento de 36.6% del CPI-U de EE. UU. (índice de precios al consumidor) entre 2012 y 2024, y 2 de ellos muestran una baja en dólares. En la página Vivienda se puede elegir otro año base, y la página muestra entonces una comparación distinta. Este campo siempre compara 2008-2012 con la ventana más reciente. Para citarlo en el corte de datos 2026-10, escriba 'estimados de 5 años de la ACS, 2020-2024 comparado con 2008-2012, tabla B25064, calculado por Foundation for Puerto Rico, Observatorio de Datos de PR'.",
+  "_en": {
+   "name": "ad5ba0bd",
+   "how_to_read": "7409dcb9"
+  }
+ },
+ "municipalities.income_change_pct": {
+  "name": "Cambio en el ingreso mediano del hogar desde 2008-2012 (%)",
+  "how_to_read": "Un valor positivo significa que el hogar mediano tiene más dólares de ingreso que en 2008-2012. En el corte de datos 2026-10, todos los municipios muestran más dólares de ingreso que en 2008-2012, pero en 34 de los 78 el aumento fue menor que el aumento de 36.6% del CPI-U de EE. UU. (índice de precios al consumidor) entre 2012 y 2024. Un aumento en dólares no es un aumento del poder adquisitivo. En la página Vivienda se puede elegir otro año base, y la página muestra entonces una comparación distinta. Este campo siempre compara 2008-2012 con la ventana más reciente. Para citarlo en el corte de datos 2026-10, escriba 'estimados de 5 años de la ACS, 2020-2024 comparado con 2008-2012, tabla B19013, calculado por Foundation for Puerto Rico, Observatorio de Datos de PR'.",
+  "_en": {
+   "name": "29602054",
+   "how_to_read": "2201202f"
+  }
+ },
+ "municipalities.bachelors_change_pts": {
+  "name": "Cambio en adultos de 25 años o más con bachillerato o grado superior desde 2008-2012 (puntos)",
+  "how_to_read": "Un valor positivo significa que una proporción mayor de adultos tiene un grado que en 2008-2012. Es una diferencia de proporciones en puntos, no un cambio porcentual. En el corte de datos 2026-10, los 78 municipios muestran un aumento. En la página Vivienda se puede elegir otro año base, y la página muestra entonces una comparación distinta. Este campo siempre compara 2008-2012 con la ventana más reciente. Para citarlo en el corte de datos 2026-10, escriba 'estimados de 5 años de la ACS, 2020-2024 comparado con 2008-2012, tablas B15003 y B15002, calculado por Foundation for Puerto Rico, Observatorio de Datos de PR'.",
+  "_en": {
+   "name": "ccb4abd5",
+   "how_to_read": "59e796e4"
+  }
+ },
+ "municipalities.population_change_2012_pct": {
+  "name": "Cambio en la población total desde 2008-2012 (%)",
+  "how_to_read": "Un valor negativo significa que la encuesta estima menos residentes que en 2008-2012. En el corte de datos 2026-10, todos los municipios menos uno (Rincón, +1.3%) muestran una baja. Para citarlo en el corte de datos 2026-10, escriba 'estimados de 5 años de la ACS, 2020-2024 comparado con 2008-2012, tabla B01003, calculado por Foundation for Puerto Rico, Observatorio de Datos de PR'.",
+  "_en": {
+   "name": "c0cdc10a",
+   "how_to_read": "c96643c9"
+  }
+ },
+ "municipalities.affordability_method": {
+  "name": "Método de asequibilidad: parámetros y reglas de redondeo de los campos municipales",
+  "how_to_read": "Use la razón para comparar municipios entre sí bajo un mismo conjunto de supuestos. No la use para decir si una familia en particular puede comprar una vivienda en particular. Ejemplo calculado con el corte de datos 2026-10 (Guaynabo, ventana 2020-2024): un ingreso mediano del hogar de $46,731 da un presupuesto de vivienda de alrededor de $1,168 al mes, de los cuales alrededor de $915 van a principal e intereses, y un préstamo máximo de $170,456. El valor mediano de la vivienda es $226,800, así que la razón es 1.33.",
+  "_en": {
+   "name": "1826296a",
+   "how_to_read": "58dcf4ea"
+  }
+ },
+ "municipalities.change_method": {
+  "name": "Cómo se calculan los cambios desde 2008-2012",
+  "how_to_read": "Lea un cambio como 'más alto o más bajo que en 2008-2012', no como una tendencia anual medida. Recuerde que los precios en general subieron entre las dos ventanas.",
+  "_en": {
+   "name": "3a87a943",
+   "how_to_read": "40154312"
+  }
+ },
+ "municipalities.acs_table_map": {
+  "name": "Tablas y celdas del Censo detrás de cada campo de vivienda y hogar",
+  "how_to_read": "Para citar una cifra, indique la tabla, la ventana y la geografía, por ejemplo 'Negociado del Censo de EE. UU., estimados de 5 años de la ACS 2020-2024, tabla B25077, Ponce Municipio, Puerto Rico'. Para un campo de cambio, cite ambas ventanas ('2020-2024 comparado con 2008-2012') y ambas tablas. Para un campo calculado, cite las tablas de origen y diga quién hizo el cálculo. Si tomó la cifra de los archivos del observatorio y no del Negociado del Censo, cite también el observatorio (Foundation for Puerto Rico, Observatorio de Datos de PR).",
+  "_en": {
+   "name": "d75c125c",
+   "how_to_read": "91220bbe"
+  }
+ },
+ "municipalities.acs_reliability": {
+  "name": "Qué tan confiables son los campos de vivienda y hogar basados en la encuesta",
+  "how_to_read": "Revise el margen antes de ordenar o comparar. Sume y reste el margen para obtener un intervalo para cada municipio. Si los dos intervalos se solapan, es posible que la encuesta no pueda distinguir entre los municipios. Para una prueba formal, use la fórmula del Negociado del Censo para el margen de una diferencia. En el corte de datos 2026-10, los márgenes son más amplios en los municipios más pequeños, como Culebra, Vieques, Florida y Maricao.",
+  "_en": {
+   "name": "039f34bb",
+   "how_to_read": "5503e62c"
+  }
+ }
+}

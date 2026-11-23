@@ -1,0 +1,172 @@
+[
+ {
+  "id": "infrastructure.transit_links",
+  "name": "Connections between municipios: workers who travel between each pair, and the transit route listed for it (Knowledge Area data)",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility",
+   "economy"
+  ],
+  "group": "Connections between municipios",
+  "kind": "table",
+  "added": "2026-11-13",
+  "plain": "How many workers travel between each pair of municipios, and whether a bus, train or ferry route with a published timetable, or a público route on the 2020 list, joins the two. It shows where many people travel and no timetabled route is listed.",
+  "definition": "transit_links.json: pairs lists every pair of municipios with workers travelling between them (columns in pair_fields): a, b (GEOIDs), ab, ba (workers who live in a and work in b, and the reverse), workers (the two added), moe (the 90 percent margin of error of the sum), low (the margin is as large as the estimate), status (timetable: a route with a current timetable has stops in both; expired: only routes whose timetable expired; publico: only a público route of the 2020 list; none), via (no direct route, but timetabled routes join the pair through other municipios), tt_routes, tt_trips (weekday trips of those routes), tt_ops (their operators), publicos (routes of the 2020 list that join the pair), km and min (the fastest road path between the two town centres and its driving time without traffic), sim (the pair's place among the simulated connections), aadt_med and aadt_max (for a simulated connection, the median and the highest annual average daily traffic of the counted main roads within 25 m of points every 100 m along its line; FHWA HPMS) and counted_pct (the share of those points on a counted road), tt_best, tt_typ and tt_xfers (the fastest trip by the weekday timetables between the two town centres, in either direction, leaving every 15 minutes from 6:00 to 9:00, in minutes; the median over those departures, waiting included; and the transfers on the fastest), tt_why (when there is no trip: 1, a town centre has no stop of the weekday timetables within 1 km; 2, no trip within 3 hours), along_res and along_far (for a simulated connection, the 2020 Census residents of the blocks within 1 km of its line, and those of them beyond 400 m in a straight line of a scheduled stop), bridges_poor and bridges_closed (bridges of the National Bridge Inventory within 50 m of its line in poor condition, or closed). municipios lists the 78 (muni_fields): resident_workers, work_elsewhere and work_elsewhere_pct, come_in, top_dest and top_dest_workers, linked_pct (the share of the workers travelling in or out who do so between pairs with a timetabled route), linked_pairs, sim_links, own_system (the state of the timetable of the municipio's own system), no_vehicle_pct and poverty_pct (households with no vehicle and residents below the poverty level, American Community Survey 2020-2024) and stop_km (straight-line km from the town centre to the nearest stop with weekday service). pr holds Puerto Rico's totals by status, and deaths_5y and walk_bike_5y (the people killed, and the pedestrians and bicyclists among them, in fatal crashes within 100 m of a simulated connection over 2020-2024; NHTSA FARS; five-year totals only).",
+  "unit": "workers 16 and over; pairs of municipios; km; minutes",
+  "value_type": "level",
+  "geography": "The 78 municipios and the 1,084 pairs of municipios with workers travelling between them",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2020,
+   "last": 2026,
+   "frequency": "Workers: American Community Survey 2016-2020. Timetables as of 2026-10-29. Público list of 2020-03-19. Rebuilt when a source changes (refresh unit transit_links)"
+  },
+  "method": "transit_links.py adds the two directions of each pair in the Census Bureau's County-to-County Commuting Flows (the margin of the sum is the root of the sum of the squares). A timetabled link is a route with stops (transport.json) in both municipios in trips.json, trips_sa.json or trips_su.json; for a municipal route whose trips time only their first and last stop, the operator's stops within 35 m of the route's line (transit_routes.geojson) count as its stops. It is current when the operator's timetable still runs (operators.json). A público route joins the municipios where its line ends and those whose town centre it passes within 1 km. Road paths are the fastest between town centres (gazetteer.json) on roads.bin, at the planner's speeds by kind of road. Checks that stop the build: the flows table must be the 2016-2020 release and cover the 78 municipios; every municipio must have a town centre and a road within 1 km of it; the público file must have its four columns. Journey times (step 5 of the upgrade, docs/transit-links.md): a connection scan over the weekday trips of trips.json, walking up to 1 km from and to the town centres and up to 400 m between stops (straight line times 1.3 at 1.2 m/s, plus 2 minutes a transfer). Municipal systems that time only the ends of their trips lose the trips that board or leave at their other stops.",
+  "sources": [
+   "census_commuting_flows",
+   "iepr_publicos",
+   "ati_gtfs",
+   "muni_gtfs",
+   "osm",
+   "fhwa_hpms",
+   "nhtsa_fars",
+   "acs5",
+   "census_decennial",
+   "fhwa_nbi"
+  ],
+  "source_detail": "US Census Bureau, County-to-County Commuting Flows, ACS 2016-2020, Table 1 (https://www2.census.gov/programs-surveys/demo/tables/metro-micro/2020/commuting-flows-2020/table1.xlsx); Instituto de Estadísticas de Puerto Rico and ACT, Mapa de rutas de porteadores públicos (2020-03-19); the observatory's timetable files (ATI and municipal GTFS feeds) and road graph (OpenStreetMap).",
+  "how_to_read": "532,691 of 1,000,096 workers (53.3%) work in a municipio other than the one where they live. A route with a current timetable joins 22 of the 1,084 pairs, which carry 26.8% of those workers; 34.5% travel between pairs with only a público route on the 2020 list, 36.5% between pairs with no route listed and 2.2% between 6 pairs whose only timetable expired.",
+  "caveats": [
+   "Only work trips are counted: not trips to study, to a doctor or to shop, and not people without a job.",
+   "Workers are survey estimates of 2016-2020 with margins of error; small flows are unreliable (the field low marks them).",
+   "Públicos run without timetables, and the 2020 list has not been updated: a pair with no timetabled route is not a pair with no service.",
+   "Only direct routes count as a timetabled link; no journey time with transfers is computed.",
+   "A timetable shows the service an operator publishes, not the service that ran."
+  ],
+  "see_also": [
+   "layers.transit_links",
+   "layers.publicos"
+  ],
+  "where": {
+   "files": [
+    "transit_links.json:*"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Connections between municipios",
+     "href": "transit-links.html"
+    }
+   ]
+  }
+ },
+ {
+  "id": "layers.transit_links",
+  "name": "Simulated connections between municipios (map layer)",
+  "kind": "layer",
+  "value_type": "geometry",
+  "unit": "lines along roads (longitude and latitude, WGS 84)",
+  "added": "2026-11-13",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility",
+   "economy"
+  ],
+  "group": "Connections between municipios",
+  "plain": "A map layer with a dashed line for each pair of municipios where 500 or more workers travel between them and no timetabled transit route joins them. It is a simulation that shows where a connection is missing, not a proposed route.",
+  "definition": "simulated_links.geojson: one line per simulated connection, with type, c (1: no route listed; 2: a público route joined the pair on the 2020 list), rank (1 is the pair with the most workers), name, a and b (the municipios), workers and moe (American Community Survey 2016-2020, both directions), km and min (the fastest road path between the two town centres and its driving time without traffic), publicos (routes of the 2020 list), via (timetabled routes join the pair with a transfer in another municipio), geoid_a and geoid_b, and aadt_med, aadt_max and counted_pct (the traffic on the counted main roads it follows: median, highest, and the share of its length on a counted road; FHWA HPMS), and deaths_5y and walk_bike_5y (the people killed, and the pedestrians and bicyclists among them, in fatal crashes within 100 m of a simulated connection over 2020-2024; NHTSA FARS; five-year totals only), along_res, along_far and bridges_poor (the residents within 1 km of its line, those of them beyond 400 m of a scheduled stop, and the bridges in poor condition within 50 m; 2020 Census, FHWA NBI), and tt_best or tt_why (the fastest trip by the weekday timetables between the two town centres, or why there is none).",
+  "geography": "182 pairs of municipios on the main island",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2020,
+   "last": 2026,
+   "frequency": "Workers: ACS 2016-2020; timetables as of 2026-10-29 (refresh unit transit_links)"
+  },
+  "method": "transit_links.py draws a line for each pair with 500 workers or more, a margin of error smaller than the estimate and no timetabled route (current or expired). The line is the fastest path on the observatory's road graph (roads.bin, OpenStreetMap) between the two town centres, simplified to 12 m. The maps draw it wider where more workers travel.",
+  "sources": [
+   "census_commuting_flows",
+   "iepr_publicos",
+   "ati_gtfs",
+   "muni_gtfs",
+   "osm",
+   "fhwa_hpms",
+   "nhtsa_fars",
+   "census_decennial",
+   "fhwa_nbi"
+  ],
+  "source_detail": "Simulated by Foundation for Puerto Rico from the Census Bureau's commuting flows (ACS 2016-2020), the published timetables of the ATI and the municipal systems, the público routes of the 2020 list and OpenStreetMap roads.",
+  "how_to_read": "Each dashed line joins two town centres along the roads. Orange: no route is listed for the pair (81 lines). Purple: a público route joined the pair on the 2020 list (101 lines). A thicker line means more workers travel between the two municipios. Click a line for the figures.",
+  "caveats": [
+   "A simulation to show where a connection is missing: not a proposed route, a service plan or a demand forecast.",
+   "The line runs between town centres; where a real route would run, stop or end is not studied here.",
+   "Only work trips are counted, from a survey of 2016-2020 with margins of error.",
+   "Públicos run without timetables: a pair on this layer may have service."
+  ],
+  "see_also": [
+   "infrastructure.transit_links",
+   "layers.publicos"
+  ],
+  "where": {
+   "files": [
+    "simulated_links.geojson:*"
+   ],
+   "view": [
+    {
+     "label": "Map, Layers tab: Infrastructure and mobility",
+     "href": "index.html#l=links"
+    },
+    {
+     "label": "Knowledge Area: Connections between municipios",
+     "href": "transit-links.html"
+    }
+   ]
+  }
+ },
+ {
+  "id": "layers.publicos",
+  "name": "Público routes of the 2020 list (map layer)",
+  "kind": "layer",
+  "value_type": "geometry",
+  "unit": "lines (longitude and latitude, WGS 84)",
+  "added": "2026-11-13",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility"
+  ],
+  "group": "Connections between municipios",
+  "plain": "A map layer with the público routes that were listed as active in March 2020, each with its code and name. The list has no timetable and has not been updated, so a route may no longer run.",
+  "definition": "publicos.geojson: one line per route of the list, with type (between municipios or within a municipio), code (the route's code on the list), name and municipio (the municipios the route joins: where its line ends and those whose town centre it passes within 1 km).",
+  "geography": "334 routes; 147 join two municipios or more",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2020,
+   "last": 2020,
+   "frequency": "Published once, on 2020-03-19; the portal is checked every 90 days (refresh unit transit_links)"
+  },
+  "method": "transit_links.py reads the CSV of the Instituto de Estadísticas (361 rows), joins the rows of one code into one route (the list gives some routes as two directions or as pieces), and simplifies the lines to 12 m. Nothing else is changed.",
+  "sources": [
+   "iepr_publicos"
+  ],
+  "source_detail": "Instituto de Estadísticas de Puerto Rico, open data portal, Mapa de rutas de porteadores públicos, with data of the Autoridad de Carreteras y Transportación (https://datos.estadisticas.pr/dataset/mapa-de-rutas-de-porteadores-publicos), published 2020-03-19, Creative Commons Attribution.",
+  "how_to_read": "Each line is a route as it was listed in 2020. Click it for its code, its name and the municipios it joins. Compare it with the Transit routes layer, which shows the routes with a published timetable.",
+  "caveats": [
+   "The list is of March 2020: a route may no longer run, and routes that began later are missing.",
+   "No timetable, fares or operator: the layer says where a route was listed, not when it runs.",
+   "The lines are as the list drew them; some routes are drawn in pieces."
+  ],
+  "see_also": [
+   "infrastructure.transit_links",
+   "layers.transit_links"
+  ],
+  "where": {
+   "files": [
+    "publicos.geojson:*"
+   ],
+   "view": [
+    {
+     "label": "Map, Layers tab: Infrastructure and mobility",
+     "href": "index.html#l=publicos"
+    }
+   ]
+  }
+ }
+]

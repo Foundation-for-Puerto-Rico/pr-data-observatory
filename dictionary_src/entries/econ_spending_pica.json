@@ -1,0 +1,40 @@
+[
+ {
+  "id": "economy.spending_pica",
+  "name": "Capital projects by municipio: the Planning Board's four-year investment program (PICA)",
+  "domain": "public-money",
+  "domains": [
+   "public-money"
+  ],
+  "group": "Public spending (Gasto Público)",
+  "kind": "table",
+  "plain": "Where the government plans to build: the capital improvements the Planning Board recommends for the next four fiscal years, by municipio and agency. It covers the agencies and public corporations in the program, including the Aqueduct and Sewer Authority, the Highways and Transportation Authority, the Department of Education and the University of Puerto Rico. A plan, not money already approved or spent.",
+  "definition": "spending_pica.json holds the adopted Four-Year Investment Program (Programa de Inversiones de Cuatro Años, PICA) of the Junta de Planificación, read project line by project line: by_muni gives the dollars of each fiscal year (years, July to June, named by the year it ends) for each of the 78 municipios (geo.ids); by_agency gives each agency's dollars per municipio over the four years and its dollars not placed in a municipio; unplaced gives, for each year, the dollars of lines that name several municipios as a region, the whole island or no place. population is the Census Bureau's estimate for July 1 2025, for per-resident figures. total_usd is the sum of the lines read, stated_total_usd the program's own total and gap_usd the difference.",
+  "unit": "US dollars (not adjusted for inflation)",
+  "value_type": "level",
+  "geography": "The 78 municipalities; dollars not placed in a municipio separately",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2026,
+   "last": 2029,
+   "frequency": "Once a year, when the Planning Board adopts a new program (pica.py)"
+  },
+  "method": "pica.py finds the adopted program on jp.pr.gov, reads the PDF with pdftotext and takes every line of the agency tables whose four fiscal years add up to its total, in thousands of dollars. The municipio is the name written right before the type of project; a line that lists several municipios is split equally among them; a line for a region, several municipios without names, the whole island or no defined place is not placed. In the 2025-2026 to 2028-2029 program the lines read add up to $11.86 billion of the $11.89 billion the program states; the rest are lines the text does not lay out in full and one agency with no table (the Península de Cantera company, $4.2 million).",
+  "how_to_read": "Per resident, a few municipios stand out because one large project (a water treatment plant, a hospital) falls in them; the map shows where projects are planned, not who benefits, since a regional plant serves several municipios.",
+  "cautions": [
+   "A plan of recommended projects, not appropriations or spending: projects move, shrink or are dropped.",
+   "Part of the program is federal money (FEMA, HUD, EPA revolving funds) and Commonwealth budget capital, which other sources also report: never add the program to them.",
+   "About a seventh of the money names no single municipio (regional water and road works) and is shown apart, not dropped."
+  ],
+  "sources": [
+   "jp_pica",
+   "census_pep"
+  ],
+  "added": "2026-11-04",
+  "where": {
+   "files": [
+    "spending_pica.json:*"
+   ]
+  }
+ }
+]

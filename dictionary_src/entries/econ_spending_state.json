@@ -1,0 +1,40 @@
+[
+ {
+  "id": "economy.spending_state",
+  "name": "Commonwealth budget: spent, approved and proposed by agency, fund, function and concept of expense",
+  "domain": "public-money",
+  "domains": [
+   "public-money"
+  ],
+  "group": "Public spending (Gasto Público)",
+  "kind": "table",
+  "plain": "What the Government of Puerto Rico's agencies spent in recent fiscal years, what the Legislature approved and what the governor proposed, split by agency, by the fund the money comes from (general, special or federal), by what it pays for (payroll, purchased services, transfers, capital works, debt service, other) and by function (education, health, public safety and so on). It is island-wide: the budget does not say in which municipio the money is spent.",
+  "definition": "spending_state.json holds, for the agencies in the fiscal plan, one row for each agency (three-digit OGP code, named in agencies), fund (funds: general = Fondo General, special = Fondos Especiales, federal = Fondos Federales), concept of expense (concepts) and function (functions) that has money, with its whole dollars in each of the columns. A column is a fiscal year (July to June, named by the year it ends) and a stage: actual (OGP's 'Gastado'), approved ('Aprobado') or proposed (the governor's last 'Propuesto'). Each column names the data sheet it comes from and OGP's own total for it (stated_total); total is the sum of the rows. notes say which columns of other sheets were not used and why.",
+  "unit": "US dollars (not adjusted for inflation)",
+  "value_type": "level",
+  "geography": "Puerto Rico as a whole (the budget names no municipio)",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2024,
+   "last": 2027,
+   "frequency": "Twice a year: the proposed budget in the spring and the approved budget at the end of June (ogp_budget.py)"
+  },
+  "method": "ogp_budget.py reads every OGP data sheet (Sábana) linked from www.presupuestos.pr.gov: one line per agency, fund, program, concept and object of expense, in thousands of dollars. Each fiscal year and stage comes from the newest sheet whose lines add up to its stated total within 0.5% (the FY27 approved sheet leaves out lines with no FY27 money, so its FY25 and FY26 columns are not used; a draft marked Privileged & Confidential is not read). Each line's function and concept come from the function crosswalk (dictionary_src/spending_crosswalk.csv): debt amortization and pensions are debt_pensions whatever the agency, a few programs and objects of the custodial accounts have their own function, and every other line takes its agency's. The lines are added up by agency, fund, concept and function.",
+  "how_to_read": "Compare an approved column with the actual one of the same year to see how far spending ran from the budget, and the proposed with the approved to see what the Legislature changed. Never add two columns: they are different stages, or different years, of the same money.",
+  "cautions": [
+   "The function of each line comes from a crosswalk reviewed on 2026-11-09 (UN COFOG); about one dollar in twenty of FY2025 to FY2027 is 'other' (one in nine in FY2024, whose custodial lines use other codes), mostly the lottery, the Gaming Commission and lines of the custodial accounts that mix several purposes.",
+   "The sheets cover the agencies in the fiscal plan, not public corporations with their own budgets (the electric and water utilities, for example).",
+   "Federal funds in the budget are also federal awards in USAspending: never add the two.",
+   "'Actual' is what OGP reports as spent during the budget process; the official close is the Department of the Treasury's (Hacienda) financial statements."
+  ],
+  "sources": [
+   "ogp"
+  ],
+  "added": "2026-11-03",
+  "where": {
+   "files": [
+    "spending_state.json:*"
+   ]
+  }
+ }
+]

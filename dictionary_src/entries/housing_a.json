@@ -1,0 +1,1678 @@
+[
+ {
+  "id": "housing.population",
+  "name": "Resident population",
+  "domain": "population",
+  "domains": ["population"],
+  "group": "Population",
+  "kind": "variable",
+  "plain": "How many people live in the municipality, for each year from 2010 to the latest year (2025 in the 2026-10 snapshot). The 2010 and 2020 values are for April 1. All other years are Census Bureau estimates for July 1. Estimates before 2020 rest on the 2010 census and later ones on the 2020 census, so do not read 2019 to 2020 as one year of growth.",
+  "definition": "People who usually live in the municipality, including people in group housing such as dormitories and care homes. The 2010 value is the April 1, 2010 census count. The 2020 value is for April 1, 2020: it is the base of the latest estimates, which is close to but not always equal to the census count (see the Cautions). All other years are the Census Bureau's population estimates for July 1. A vintage is one annual release of estimates. In the 2026-10 snapshot, 2011-2019 come from Vintage 2020 (built on the 2010 census) and 2021-2025 come from Vintage 2025 (built on the 2020 census).",
+  "unit": "people",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico (island total)",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2010,
+   "last": 2025,
+   "frequency": "One value per year; the Census Bureau updates estimates once a year and the file is rebuilt with each snapshot"
+  },
+  "method": "In the 2026-10 snapshot, the values are read from two Census Bureau files. 2010 and 2011-2019: PRM-EST2020.csv, columns CENSUS2010POP and POPESTIMATE2011 to POPESTIMATE2019. 2020 and 2021-2025: cc-est2025-agesex-72.csv, column POPESTIMATE (YEAR 1 is the April 1, 2020 base; YEAR 3 to 7 are July 1, 2021 to 2025). The July 1, 2020 estimate in the same file (YEAR 2) is not used. The island total for 2010-2019 is the Census Bureau's island row; for 2020 on it is the sum of the 78 municipalities. In the same snapshot, the island total equals the sum of the 78 municipalities in every year.",
+  "sources": [
+   "census_pep"
+  ],
+  "source_detail": "Census Bureau Population Estimates: 2010-2020/municipios/totals/PRM-EST2020.csv (Vintage 2020) and 2020-2025/puerto-rico/asrh/cc-est2025-agesex-72.csv (Vintage 2025), at www2.census.gov/programs-surveys/popest/datasets/",
+  "how_to_read": "This is a level: it says how many people live in a place, not how fast the place is changing. To see change, compare 2010 with 2020 (two census-based values), or compare years inside one base (2011-2019, or 2020-2025). Do not read the difference between 2019 and 2020 as one year of growth. In housing_series.json each year also carries a 'basis' label that says which of these it is (listed under Codes).",
+  "caveats": [
+   "The series steps up in 2020. The Census Bureau built the 2011-2019 estimates on the 2010 census and did not revise them to match the 2020 census, so the two stretches rest on different counts. In the 2026-10 snapshot, the island-wide July 2019 estimate is 3,193,553 and the 2020 value is 3,285,874, a rise of 92,321 people (2.9%). By municipality the step runs from -13.7% (Gurabo) to +16.0% (Lares); 51 municipalities step up and 27 step down. The island population chart on the Housing page marks the change of base with a dashed line. The profile trend lines, the full-data chart and the CSV (comma-separated values) download do not (the full-data panel states the break in a note above the table), so treat 2019 to 2020 as a break there too.",
+   "The 2020 value is the April 1, 2020 base of the Vintage 2025 estimates, not the original census file. In the 2026-10 snapshot, it differs by 1 to 31 people from the 2020 census count in 68 of the 78 municipalities (the census count is from the Census Bureau's TIGERweb map service, 2020 counties layer, field POP100, the total number of residents, stored in municipalities.json:population_2020). The island total is the same in both, 3,285,874. The data files and the Housing page label this value 'census count'; read that label as the April 1, 2020 base described here.",
+   "The 2023 study prints 3,285,694 for Puerto Rico in 2020, which is 180 fewer than this variable's 3,285,874 in the 2026-10 snapshot. Cite this variable's figure for Census Bureau data and the study's figure only for the study's own table (see study.table_2).",
+   "The base date is April 1, 2020 and later values are July 1, so the change from 2020 to 2021 spans 15 months and the change to 2025 spans 5 years and 3 months. Do not read the 2021 value as one year of change, and do not divide a change by a number of years without using the real dates. In the 2026-10 snapshot, the Census Bureau's July 1, 2020 island estimate (3,281,591) is in the same file, but this variable does not use it.",
+   "In the 2026-10 snapshot, the 2011-2019 estimates show the island falling 4.0% between July 2017 and July 2018 (3,325,284 to 3,193,344), a period that includes Hurricane Maria (September 2017), and then staying flat in 2019 (+209 people). The data do not show the cause.",
+   "Cite the vintage with the figure. In the 2026-10 snapshot this file uses Vintage 2020 for 2010-2019 and Vintage 2025 for 2020-2025. The Census Bureau says the latest vintage replaces earlier estimates for the same dates, so the 2021-2025 values can change when the observatory loads a newer vintage.",
+   "Apart from the 2010 census count, these are estimates, not head counts. The Census Bureau's population estimate files have no margin-of-error column.",
+   "The American Community Survey also estimates population (table B01003). This variable does not use it, so the two can differ."
+  ],
+  "see_also": [
+   "housing.pop_change_since_2010_pct",
+   "housing.pop_change_since_2020_pct",
+   "housing.age65_pct",
+   "housing.residents_per_unit",
+   "housing.households",
+   "municipalities.population_2020",
+   "municipalities.population_2010",
+   "boundaries.municipio_pop2020",
+   "municipalities.population_change_2012_pct",
+   "study.table_2",
+   "measures.per_1000_residents",
+   "measures.per_resident",
+   "methods.population_vintage_break"
+  ],
+  "where": {
+   "files": [
+    "housing_series.json:population"
+   ],
+   "view": [
+    {
+     "label": "Housing page: map and ranked chart",
+     "href": "housing.html#population"
+    },
+    {
+     "label": "Housing page: full data for every year and municipality, with CSV download and a link back to this entry",
+     "href": "housing.html?d=population"
+    },
+    {
+     "label": "Housing page: municipality profile, with a small trend line beside the value (the caption under it gives its length in years, '16 yrs' in the 2026-10 snapshot)",
+     "href": "housing.html#profile"
+    },
+    {
+     "label": "Housing page: 'Latest data' card at the top (click it to open the full data)",
+     "href": "housing.html#headline"
+    },
+    {
+     "label": "Housing page: Table 2 and the island population chart",
+     "href": "housing.html#table2"
+    },
+    {
+     "label": "Map, Analysis tab (group People): shade municipalities by",
+     "href": "index.html#e=population.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-02",
+  "example": "In the 2026-10 snapshot, Puerto Rico: 3,725,789 (2010 census count), 3,285,874 (April 1, 2020 base), 3,184,835 (July 1, 2025 estimate).",
+  "values": {
+   "2010 census count": "The April 1, 2010 census count (2010 only).",
+   "2020 census count": "The April 1, 2020 base of the Vintage 2025 estimates, labeled 'census count' in the data; see the Cautions (2020 only).",
+   "estimate, July 1 (Vintage 2020, 2010 census base)": "A July 1 estimate from Vintage 2020, 2011 to 2019.",
+   "estimate, July 1 (Vintage 2025, 2020 census base)": "A July 1 estimate from Vintage 2025, 2021 to 2025."
+  }
+ },
+ {
+  "id": "housing.pop_change_since_2010_pct",
+  "name": "Population change since the 2010 census",
+  "domain": "population",
+  "domains": ["population"],
+  "group": "Population",
+  "kind": "variable",
+  "plain": "How much the population has changed since the April 2010 census, as a percent, for each year from 2011 up to the latest (2025 in the 2026-10 snapshot). A negative value means fewer people live there than in 2010.",
+  "definition": "Population in the selected year minus the 2010 census count, divided by the 2010 census count, times 100. Values exist for each year from 2011 to the latest vintage year (2025 in the 2026-10 snapshot).",
+  "unit": "% change from the 2010 census count",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico (island total)",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2011,
+   "last": 2025,
+   "frequency": "One value per year; rebuilt with each snapshot"
+  },
+  "method": "Computed in housing_series.py from the population variable (housing.population): (population in the year - population in 2010) / population in 2010 x 100, rounded to two decimals. The 2010 population is the census count. In the 2026-10 snapshot, for 2011-2019 the numerator is a Vintage 2020 estimate (the 2020 release of the Census Bureau's yearly estimates, built on the 2010 census); for 2020-2025 it is the 2020 base or a Vintage 2025 estimate (built on the 2020 census). There is no value for 2010 itself. The data file and the CSV (comma-separated values) download keep two decimals; the Housing page shows one (in the 2026-10 snapshot, for example -11.8% for Puerto Rico in 2020).",
+  "sources": [
+   "census_pep"
+  ],
+  "source_detail": "Computed from housing.population (Census Bureau Population Estimates, Vintage 2020 and Vintage 2025)",
+  "how_to_read": "In the 2026-10 snapshot, the island-wide change is -11.81% in 2020 and -14.52% in 2025. In 2025 only one of the 78 municipalities, Rincón (+2.51%), has more people than in 2010; in 2020 none did. The largest losses in 2025 are Guánica (-39.05%) and Maricao (-30.91%). The Housing page shades the map around zero. Each year's 'basis' label in housing_series.json is one of those listed under Codes in housing.population.",
+  "caveats": [
+   "The series steps back up in 2020 because the 2011-2019 estimates were not revised to the 2020 census count. In the 2026-10 snapshot, the island-wide value is -14.29% for 2019 and -11.81% for 2020. Read 2011-2019 and 2020-2025 as two stretches, and use the 2020 value for the census-to-census comparison. Only the island population chart on the Housing page marks this break; the profile trend line, the full-data chart and the CSV download do not (the full-data panel states the break in a note above the table).",
+   "The same number of people is a larger percent in a small municipality. Check the count in housing.population before comparing places of different size.",
+   "The base date is April 1, 2010 and later values are July 1, so the 2011 value spans 15 months, not one year.",
+   "municipalities.json:pop_change_pct is the 2010-to-2020 census change rounded to one decimal. It differs from this variable's 2020 value by at most 0.1 point.",
+   "These values rest on population estimates, and the Census Bureau's estimate files have no margin-of-error column."
+  ],
+  "see_also": [
+   "housing.population",
+   "housing.pop_change_since_2020_pct",
+   "methods.population_vintage_break",
+   "municipalities.pop_change_pct",
+   "municipalities.population_2010",
+   "municipalities.population_2020"
+  ],
+  "where": {
+   "files": [
+    "housing_series.json:pop_change_since_2010_pct"
+   ],
+   "view": [
+    {
+     "label": "Housing page: map and ranked chart",
+     "href": "housing.html#population"
+    },
+    {
+     "label": "Housing page: full data for every year and municipality, with CSV download and a link back to this entry",
+     "href": "housing.html?d=pop_change_since_2010_pct"
+    },
+    {
+     "label": "Housing page: municipality profile, with a small trend line beside the value (the caption under it gives its length in years, '15 yrs' in the 2026-10 snapshot)",
+     "href": "housing.html#profile"
+    },
+    {
+     "label": "Map, Analysis tab (group Housing · Population): shade municipalities by",
+     "href": "index.html#e=pop_change_since_2010_pct.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-02",
+  "example": "In the 2026-10 snapshot, Puerto Rico: -11.81% in 2020 (census to census) and -14.52% in 2025."
+ },
+ {
+  "id": "housing.pop_change_since_2020_pct",
+  "name": "Population change since the 2020 census",
+  "domain": "population",
+  "domains": ["population"],
+  "group": "Population",
+  "kind": "variable",
+  "plain": "How much the population has changed since the 2020 census, as a percent, for each year from 2021 up to the latest (2025 in the 2026-10 snapshot). A negative value means fewer people than in 2020.",
+  "definition": "Population on July 1 of the year minus the 2020 base, divided by the 2020 base, times 100. Values exist from 2021 to the latest vintage year (2025 in the 2026-10 snapshot).",
+  "unit": "% change from the 2020 base",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico (island total)",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2021,
+   "last": 2025,
+   "frequency": "One value per year; rebuilt with each snapshot"
+  },
+  "method": "Computed in housing_series.py from the population variable (housing.population): (population in the year - population in 2020) / population in 2020 x 100, rounded to two decimals, for 2021 onward. In the 2026-10 snapshot, both numbers come from the same Vintage 2025 release (the 2025 release of the Census Bureau's yearly estimates, built on the 2020 census), so there is no change of base inside this variable. The data file and the CSV (comma-separated values) download keep two decimals; the Housing page shows one (in the 2026-10 snapshot, -3.1% for Puerto Rico in 2025).",
+  "sources": [
+   "census_pep"
+  ],
+  "source_detail": "Computed from housing.population (Census Bureau Population Estimates, Vintage 2025, cc-est2025-agesex-72.csv)",
+  "how_to_read": "In the 2026-10 snapshot, the island-wide change is -0.70% in 2021 and -3.07% in 2025. In 2025 six of the 78 municipalities have more people than in 2020, led by Rincón (+2.58%). The largest losses are Guánica (-14.13%) and Loíza (-9.07%). Its 'basis' label in housing_series.json is the Vintage 2025 label listed under Codes in housing.population.",
+  "caveats": [
+   "There is no value for 2020 or earlier years; the file starts in 2021.",
+   "The base is the April 1, 2020 estimates base, which in the 2026-10 snapshot differs by 1 to 31 people from the census count in 68 municipalities (see housing.population).",
+   "The base date is April 1, 2020 and the values are for July 1, so the 2021 value spans 15 months and the 2025 value spans 5 years and 3 months. Do not read the 2021 value as one year of change.",
+   "The same number of people is a larger percent in a small municipality. Check the count in housing.population before comparing places of different size.",
+   "These values rest on population estimates, and the Census Bureau's estimate files have no margin-of-error column."
+  ],
+  "see_also": [
+   "housing.population",
+   "housing.pop_change_since_2010_pct",
+   "methods.population_vintage_break",
+   "municipalities.population_2020"
+  ],
+  "where": {
+   "files": [
+    "housing_series.json:pop_change_since_2020_pct"
+   ],
+   "view": [
+    {
+     "label": "Housing page: full data for every year and municipality, with CSV download and a link back to this entry",
+     "href": "housing.html?d=pop_change_since_2020_pct"
+    },
+    {
+     "label": "Housing page: 'Latest data' card at the top (click it to open the full data)",
+     "href": "housing.html#headline"
+    },
+    {
+     "label": "Map, Analysis tab (group Housing · Population): shade municipalities by",
+     "href": "index.html#e=pop_change_since_2020_pct.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-02",
+  "example": "In the 2026-10 snapshot, Puerto Rico: -3.07% by July 1, 2025."
+ },
+ {
+  "id": "housing.age65_pct",
+  "name": "Residents aged 65 and over",
+  "domain": "population",
+  "domains": ["population"],
+  "group": "Population",
+  "kind": "variable",
+  "plain": "Out of every 100 residents, how many are 65 or older, for each year from 2010 up to the latest (2025 in the 2026-10 snapshot). The 2010 and 2020 values are for April 1; the other years are the Census Bureau's estimates for July 1.",
+  "definition": "Residents aged 65 and over divided by all residents of the municipality, times 100.",
+  "unit": "% of residents",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico (island total)",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2010,
+   "last": 2025,
+   "frequency": "One value per year; the Census Bureau updates estimates once a year and the file is rebuilt with each snapshot"
+  },
+  "method": "From the Census Bureau's age-and-sex files: AGE65PLUS_TOT divided by POPESTIMATE in the same row, times 100, rounded to two decimals, for each municipality and year. The island share is the sum of the 78 municipalities' 65-and-over counts divided by the sum of their populations, taken from the same rows. 2010 uses the 2010 census row and 2011-2019 the July 1 estimate rows of PRM-EST2020-AGESEX.csv (Vintage 2020, the 2020 release of the Census Bureau's yearly estimates, built on the 2010 census). In the 2026-10 snapshot, 2020 uses the April 1, 2020 base row and 2021-2025 the July 1 estimate rows of cc-est2025-agesex-72.csv (Vintage 2025, built on the 2020 census). The data file and the CSV (comma-separated values) download keep two decimals; the Housing page shows one (in the 2026-10 snapshot, for example 26.0% for Puerto Rico in 2025).",
+  "sources": [
+   "census_pep"
+  ],
+  "source_detail": "Census Bureau Population Estimates by age and sex: 2010-2020/municipios/asrh/PRM-EST2020-AGESEX.csv and 2020-2025/puerto-rico/asrh/cc-est2025-agesex-72.csv, at www2.census.gov/programs-surveys/popest/datasets/",
+  "how_to_read": "A higher value means an older population. In the 2026-10 snapshot, the island-wide share rises every year, from 14.55% in 2010 to 26.02% in 2025. In 2025 it runs from 20.72% (Toa Alta) to 33.54% (Hormigueros). Each year's 'basis' label in housing_series.json is one of those listed under Codes in housing.population.",
+  "caveats": [
+   "Like population, this variable uses two estimate series that change base in 2020. In the 2026-10 snapshot, the island-wide rise from 2019 to 2020 (+0.97 points, 21.28% to 22.25%) fits the yearly trend. Individual municipalities move between -2.5 and +3.2 points across that step, so be careful when you compare 2019 with 2020. The profile trend line, the full-data chart and the CSV download do not mark the break (the full-data panel states it in a note above the table).",
+   "These values rest on population estimates, and the Census Bureau's estimate files have no margin-of-error column.",
+   "It comes from a different source than median age (housing.median_age) and measures something different, a share against a middle value, so the two need not move together."
+  ],
+  "see_also": [
+   "housing.population",
+   "housing.median_age",
+   "housing.pop_change_since_2010_pct",
+   "methods.population_vintage_break"
+  ],
+  "where": {
+   "files": [
+    "housing_series.json:age65_pct"
+   ],
+   "view": [
+    {
+     "label": "Housing page: map and ranked chart",
+     "href": "housing.html#population"
+    },
+    {
+     "label": "Housing page: full data for every year and municipality, with CSV download and a link back to this entry",
+     "href": "housing.html?d=age65_pct"
+    },
+    {
+     "label": "Housing page: municipality profile, with a small trend line beside the value (the caption under it gives its length in years, '16 yrs' in the 2026-10 snapshot)",
+     "href": "housing.html#profile"
+    },
+    {
+     "label": "Map, Analysis tab (group People): shade municipalities by",
+     "href": "index.html#e=age65_pct.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-02",
+  "example": "In the 2026-10 snapshot, Puerto Rico: 14.55% (2010) and 26.02% (2025)."
+ },
+ {
+  "id": "housing.census_housing_units",
+  "name": "Housing units, census count (number)",
+  "domain": "housing",
+  "domains": ["housing"],
+  "group": "Housing stock",
+  "kind": "variable",
+  "plain": "How many homes the census counted in each municipality on April 1, 2010 and April 1, 2020. A home counts whether or not people live in it.",
+  "definition": "All housing units counted on census day, from table H1 of the Census Bureau's Public Law 94-171 (PL 94-171) redistricting data. A housing unit is a house, apartment, mobile home or room meant as separate living quarters. It counts whether or not anyone lives there. Dormitories, nursing homes and other group housing are not housing units.",
+  "unit": "housing units",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico (island total)",
+  "coverage": {
+   "timeline": "decennial",
+   "first": 2010,
+   "last": 2020,
+   "frequency": "Every 10 years (April 1, 2010 and April 1, 2020)"
+  },
+  "method": "Read from the Census Bureau's Puerto Rico Public Law 94-171 (PL 94-171) redistricting files (pr2010.pl.zip and pr2020.pl.zip), table H1 (housing occupancy). H1 holds three numbers per area: total housing units, occupied and vacant. Municipality rows are summary level 050 and the island row is level 040. This variable is the total.",
+  "sources": [
+   "census_decennial"
+  ],
+  "source_detail": "Census Bureau Public Law 94-171 (PL 94-171) redistricting files for Puerto Rico, table H1 (housing occupancy): census_2010/01-Redistricting_File--PL_94-171/Puerto_Rico/pr2010.pl.zip and programs-surveys/decennial/2020/data/01-Redistricting_File--PL_94-171/Puerto_Rico/pr2020.pl.zip, at www2.census.gov. On privacy noise: Census Bureau, Disclosure Avoidance for the Demographic and Housing Characteristics File (DHC) and Guidance for Data Users, 2020 Census Brief C2020BR-08 (August 2024). Terms: Census Bureau, American Community Survey 2024 Subject Definitions ('Housing Unit', 'Group Quarters').",
+  "how_to_read": "These are census counts, not a survey sample, so there is no sampling margin of error. The Census Bureau holds the total number of housing units exact in 2020 (it adds no privacy noise to this total). Island-wide: 1,636,946 units in 2010 and 1,598,159 in 2020, a fall of 2.4%. In the 2026-10 snapshot, the same counts appear in municipalities.json as housing_units_2010 and housing_units_2020 (read from the Census Bureau's TIGERweb layers) and match for all 78 municipalities, and the island count equals the sum of the 78 municipality counts in both years.",
+  "caveats": [
+   "Only two years exist (2010 and 2020). Nothing is published for the years between.",
+   "The American Community Survey (ACS) also estimates housing units (housing.housing_units), and its totals differ. The 2006-2010 window is 162,920 units below the 2010 census count (1,474,026 against 1,636,946). The 2016-2020 window is 38,183 below the 2020 count (1,559,976 against 1,598,159). Use one source at a time.",
+   "The count does not say how many of the homes are fit to live in."
+  ],
+  "see_also": [
+   "housing.census_vacant_units",
+   "housing.census_vacancy_pct",
+   "housing.residents_per_unit",
+   "housing.housing_units",
+   "municipalities.housing_units_2010",
+   "municipalities.housing_units_2020"
+  ],
+  "where": {
+   "files": [
+    "housing_series.json:census_housing_units"
+   ],
+   "view": [
+    {
+     "label": "Housing page: full data for every year and municipality, with CSV download and a link back to this entry",
+     "href": "housing.html?d=census_housing_units"
+    },
+    {
+     "label": "Map, Analysis tab (group Housing · Housing stock): shade municipalities by",
+     "href": "index.html#e=census_housing_units.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-02",
+  "example": "Puerto Rico: 1,636,946 (2010) and 1,598,159 (2020)."
+ },
+ {
+  "id": "housing.census_vacant_units",
+  "name": "Vacant units, census count (number)",
+  "domain": "housing",
+  "domains": ["housing"],
+  "group": "Housing stock",
+  "kind": "variable",
+  "plain": "How many homes the census found empty on April 1, 2010 and April 1, 2020. Empty homes include homes for rent or sale, seasonal homes and abandoned homes.",
+  "definition": "Housing units that were vacant on census day, from table H1 of the Census Bureau's Public Law 94-171 (PL 94-171) redistricting data. A unit is vacant when no one usually lives in it. The table does not say why a unit is vacant.",
+  "unit": "housing units",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico (island total)",
+  "coverage": {
+   "timeline": "decennial",
+   "first": 2010,
+   "last": 2020,
+   "frequency": "Every 10 years (April 1, 2010 and April 1, 2020)"
+  },
+  "method": "Read from the Census Bureau's Puerto Rico Public Law 94-171 (PL 94-171) redistricting files (pr2010.pl.zip and pr2020.pl.zip), table H1 (housing occupancy). H1 holds three numbers per area: total housing units, occupied and vacant. Municipality rows are summary level 050 and the island row is level 040. This variable is the vacant count.",
+  "sources": [
+   "census_decennial"
+  ],
+  "source_detail": "Census Bureau Public Law 94-171 (PL 94-171) redistricting files for Puerto Rico, table H1 (housing occupancy): census_2010/01-Redistricting_File--PL_94-171/Puerto_Rico/pr2010.pl.zip and programs-surveys/decennial/2020/data/01-Redistricting_File--PL_94-171/Puerto_Rico/pr2020.pl.zip, at www2.census.gov. On privacy noise: Census Bureau, Disclosure Avoidance for the Demographic and Housing Characteristics File (DHC) and Guidance for Data Users, 2020 Census Brief C2020BR-08 (August 2024). Terms: Census Bureau, American Community Survey 2024 Subject Definitions ('Vacancy Status').",
+  "how_to_read": "A census count, not a survey sample, so it has no sampling margin of error (for 2020, see the privacy-noise caution). Island-wide: 260,415 vacant units in 2010 and 257,625 in 2020. For the reasons behind vacancy (seasonal, other) use the survey variables housing.seasonal_units and housing.other_vacant_units. In the 2026-10 snapshot, the island count equals the sum of the 78 municipality counts in both years.",
+  "caveats": [
+   "For 2020 the Census Bureau added small random changes to its census tables to protect privacy (a method called differential privacy). It kept the total number of housing units exact, but not the split between occupied and vacant homes. The 2020 vacant count therefore carries some noise, which matters most in small municipalities. The 2010 census used older methods. The files carry no margin of error.",
+   "The American Community Survey (ACS) and the census differ, and not always in the same direction. For the 2016-2020 window the survey gives 354,227 vacant units against 257,625 on census day (housing.vacant_units). For 2006-2010 it gives 246,987 against 260,415 counted on April 1, 2010. The Census Bureau advises against comparing ACS and census vacancy because their design, data collection and residency rules differ (ACS 2024 Subject Definitions, 'Other Vacancy Status').",
+   "The Housing page's 'As published in the 2023 study' cards show the study's figure of 370,000 vacant homes, labeled 'Census 2020 · study p.14'. It does not match the 257,625 vacant units in table H1. It is close to the survey's 2015-2019 value of 368,182 (housing.vacant_units), but the observatory cannot show how the study reached it. Do not combine it with this variable (see study.headline_figures).",
+   "Vacant on April 1 does not mean abandoned or available: the count includes homes for rent or sale and seasonal homes, and the table does not say whether a vacant home can be lived in or is on the market."
+  ],
+  "see_also": [
+   "housing.census_housing_units",
+   "housing.census_vacancy_pct",
+   "housing.vacant_units",
+   "housing.vacancy_pct",
+   "housing.seasonal_units",
+   "housing.other_vacant_units",
+   "study.headline_figures"
+  ],
+  "where": {
+   "files": [
+    "housing_series.json:census_vacant_units"
+   ],
+   "view": [
+    {
+     "label": "Housing page: full data for every year and municipality, with CSV download and a link back to this entry",
+     "href": "housing.html?d=census_vacant_units"
+    },
+    {
+     "label": "Map, Analysis tab (group Housing · Housing stock): shade municipalities by",
+     "href": "index.html#e=census_vacant_units.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-02",
+  "example": "Puerto Rico: 260,415 (2010) and 257,625 (2020)."
+ },
+ {
+  "id": "housing.census_vacancy_pct",
+  "name": "Vacancy rate, census count",
+  "domain": "housing",
+  "domains": ["housing"],
+  "group": "Housing stock",
+  "kind": "variable",
+  "plain": "Out of every 100 homes, how many were empty on census day (April 1) in 2010 and 2020.",
+  "definition": "Vacant housing units divided by all housing units on census day, times 100.",
+  "unit": "% of housing units",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico (island total)",
+  "coverage": {
+   "timeline": "decennial",
+   "first": 2010,
+   "last": 2020,
+   "frequency": "Every 10 years (April 1, 2010 and April 1, 2020)"
+  },
+  "method": "Read from the Census Bureau's Puerto Rico Public Law 94-171 (PL 94-171) redistricting files (pr2010.pl.zip and pr2020.pl.zip), table H1 (housing occupancy). H1 holds three numbers per area: total housing units, occupied and vacant. Municipality rows are summary level 050 and the island row is level 040. This variable is the vacant count divided by the total, times 100, rounded to two decimals (computed in housing_series.py). The data file and the CSV (comma-separated values) download keep two decimals; the Housing page shows one (for example 16.1% for Puerto Rico in 2020).",
+  "sources": [
+   "census_decennial"
+  ],
+  "source_detail": "Census Bureau Public Law 94-171 (PL 94-171) redistricting files for Puerto Rico, table H1 (housing occupancy): census_2010/01-Redistricting_File--PL_94-171/Puerto_Rico/pr2010.pl.zip and programs-surveys/decennial/2020/data/01-Redistricting_File--PL_94-171/Puerto_Rico/pr2020.pl.zip, at www2.census.gov. On privacy noise: Census Bureau, Disclosure Avoidance for the Demographic and Housing Characteristics File (DHC) and Guidance for Data Users, 2020 Census Brief C2020BR-08 (August 2024).",
+  "how_to_read": "Island-wide the rate is 15.91% in 2010 and 16.12% in 2020. In 2020 it runs from 8.00% (Aibonito) to 50.16% (Culebra). It comes from census counts, not a survey, so it has no sampling margin of error (for 2020, see the privacy-noise caution).",
+  "caveats": [
+   "The American Community Survey (ACS) gives a higher vacancy rate (housing.vacancy_pct). For 2016-2020 it is 22.71% against 16.12% on census day, and higher in all 78 municipalities. For 2006-2010 it is 16.76% against 15.91%, higher in 51 of the 78. The census records vacancy on April 1; the survey records it when each home is interviewed over five years. The Census Bureau advises against comparing the two, so compare each source only with itself.",
+   "For 2020 the vacant count behind this rate carries small privacy noise (see housing.census_vacant_units), so the 2020 rate is not exact, most of all in small municipalities. Its denominator, the total number of housing units, is exact.",
+   "Vacant includes homes for rent or sale, seasonal homes and homes empty for other reasons. It is not an abandonment rate, and it does not measure how many homes are available to residents.",
+   "The Puerto Rico value is computed from island totals (for a median or an average, it is the Census Bureau's island estimate), not by averaging the 78 municipality values.",
+   "Only two years exist (2010 and 2020)."
+  ],
+  "see_also": [
+   "housing.census_housing_units",
+   "housing.census_vacant_units",
+   "housing.vacancy_pct"
+  ],
+  "where": {
+   "files": [
+    "housing_series.json:census_vacancy_pct"
+   ],
+   "view": [
+    {
+     "label": "Housing page: full data for every year and municipality, with CSV download and a link back to this entry",
+     "href": "housing.html?d=census_vacancy_pct"
+    },
+    {
+     "label": "Map, Analysis tab (group Housing · Housing stock): shade municipalities by",
+     "href": "index.html#e=census_vacancy_pct.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-02",
+  "example": "Puerto Rico: 15.91% (2010) and 16.12% (2020)."
+ },
+ {
+  "id": "housing.residents_per_unit",
+  "name": "Residents per housing unit",
+  "domain": "housing",
+  "domains": ["housing"],
+  "group": "Housing stock",
+  "kind": "variable",
+  "plain": "On average, how many residents there are for each home, lived in or empty, on census day in 2010 and 2020. A lower number means more homes for each resident.",
+  "definition": "Population divided by census housing units in the same year (2010 or 2020).",
+  "unit": "residents per housing unit",
+  "value_type": "ratio",
+  "geography": "78 municipalities and Puerto Rico (island total)",
+  "coverage": {
+   "timeline": "decennial",
+   "first": 2010,
+   "last": 2020,
+   "frequency": "Every 10 years (April 1, 2010 and April 1, 2020)"
+  },
+  "method": "Computed in housing_series.py as population / census housing units, rounded to two decimals. Population is housing.population for 2010 and 2020 (in the 2026-10 snapshot, the 2020 value is the April 1, 2020 base of the Vintage 2025 estimates, the 2025 release of the Census Bureau's yearly estimates, built on the 2020 census). Housing units are the table H1 total (housing.census_housing_units).",
+  "sources": [
+   "census_pep",
+   "census_decennial"
+  ],
+  "source_detail": "Census Bureau Population Estimates files (population: CENSUS2010POP and the April 1, 2020 base) and Public Law 94-171 (PL 94-171) redistricting table H1 (housing units)",
+  "how_to_read": "In the 2026-10 snapshot, the island-wide ratio falls from 2.28 in 2010 to 2.06 in 2020, because the population fell 11.8% while housing units fell 2.4%. Culebra has the lowest ratio (1.13 in 2010, 1.15 in 2020). The 2020 values equal municipalities.json:residents_per_unit.",
+  "caveats": [
+   "This is not household size. It divides by every housing unit, including empty ones, and counts every resident, including people in group housing. Average household size (housing.avg_household_size) divides by occupied homes only.",
+   "A low ratio can come from many empty or seasonal homes, as in Culebra, and not only from small households.",
+   "The population in this ratio comes from the Census Bureau's Population Estimates files (CENSUS2010POP and the April 1, 2020 base), not from table P1 of the redistricting data. In the 2026-10 snapshot, using the census counts in municipalities.json (population_2010, population_2020) instead gives the same ratio to two decimals in every municipality.",
+   "Only two years exist (2010 and 2020). On the Housing page, picking a year with no value shows the nearest earlier one (the 2010 value for 2011 to 2019, the 2020 value for 2021 and later) and labels it 'latest at or before'. A trend line through the two values has two points; its caption reads '11 yrs, 2 values'.",
+   "It is a ratio of two census-based figures and has no margin of error.",
+   "The Puerto Rico value is computed from island totals (for a median or an average, it is the Census Bureau's island estimate), not by averaging the 78 municipality values."
+  ],
+  "see_also": [
+   "housing.population",
+   "housing.census_housing_units",
+   "housing.avg_household_size",
+   "municipalities.residents_per_unit"
+  ],
+  "where": {
+   "files": [
+    "housing_series.json:residents_per_unit"
+   ],
+   "view": [
+    {
+     "label": "Housing page: map and ranked chart",
+     "href": "housing.html#stock"
+    },
+    {
+     "label": "Housing page: full data for every year and municipality, with CSV download and a link back to this entry",
+     "href": "housing.html?d=residents_per_unit"
+    },
+    {
+     "label": "Housing page: municipality profile, with a small trend line beside the value (it joins only the 2010 and 2020 values)",
+     "href": "housing.html#profile"
+    },
+    {
+     "label": "Map, Analysis tab (group Housing · Housing stock): shade municipalities by",
+     "href": "index.html#e=residents_per_unit.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-02",
+  "example": "Puerto Rico: 2.28 (2010) and 2.06 (2020)."
+ },
+ {
+  "id": "housing.housing_units",
+  "name": "Housing units, survey estimate (number)",
+  "domain": "housing",
+  "domains": ["housing"],
+  "group": "Housing stock",
+  "kind": "variable",
+  "plain": "The estimated number of homes in each municipality, lived in or empty. There is one value for each 5-year survey period, from 2006-2010 up to the latest period (2020-2024 in the 2026-10 snapshot).",
+  "definition": "All housing units, occupied or vacant, from American Community Survey (ACS) table B25001. A housing unit is a house, apartment, mobile home or room meant as separate living quarters.",
+  "unit": "housing units",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico (island total); also 901 barrios, 981 census tracts and 2,555 block groups",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "Five-year windows from 2006-2010 to 2020-2024, labeled 2010 to 2024 by their last year; a new window each year; rebuilt with each snapshot"
+  },
+  "method": "ACS 5-year table B25001 (Housing Units), cell 001, taken as the Census Bureau publishes it. Each value pools five years of survey answers, so it describes the whole period, not one date (see methods.acs_windows). It is labeled by the last year: 2024 means 2020-2024. In the data file and the CSV (comma-separated values) download only that last year heads the column, so cite the window in full: 'American Community Survey 5-year estimates, 2020-2024'. The file carries the Census Bureau's margin of error (MOE, 90% confidence; see measures.margin_of_error) for each municipality and window, in housing units.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "ACS 5-year table B25001 (Housing Units), cell B25001_001. Files at www2.census.gov/programs-surveys/acs/summary_file/: windows labeled 2010-2020 are in {year}/data/5_year_seq_by_state/PuertoRico/All_Geographies_Not_Tracts_Block_Groups/ (each table sits in a numbered sequence file, which is located with the Census Bureau's sequence lookup file); windows labeled 2021-2024 are in {year}/table-based-SF/data/5YRData/ as acsdt5y{year}-b25001.dat. Definitions: Census Bureau, American Community Survey 2024 Subject Definitions.",
+  "how_to_read": "Use it for the size of the housing stock and as the base of the vacancy shares. In the 2026-10 snapshot, the island-wide count is 1,474,026 in 2006-2010 and 1,634,357 in 2020-2024 (margin of error 4,364). Compare windows that do not overlap (see methods.acs_windows), and check that the difference is larger than the margins of error. In the same snapshot, the Puerto Rico count equals the sum of the 78 municipality counts in every window.",
+  "caveats": [
+   "ACS totals differ from the census counts. The 2006-2010 window is 162,920 units below the 2010 census count, and the 2016-2020 window is 38,183 below the 2020 count (see housing.census_housing_units). Use one source at a time.",
+   "In the 2026-10 snapshot, the 2020-2024 window is 59,252 units (3.8%) above the 2019-2023 window. Earlier steps between windows ran from -0.4% to +1.9%. The household count also steps up between the same two windows (+4.2%; see housing.households). The observatory shows the figure as the Census Bureau published it. The data do not explain the jump, so do not read the step as new construction.",
+   "It is a survey estimate. In the 2026-10 snapshot, none of the 78 municipalities has a margin of error above 30% of its estimate in the 2020-2024 window.",
+   "Also published for barrios, census tracts and block groups (acs_barrio.json, acs_tract.json and acs_blockgroup.json), each value with its margin of error where the Census Bureau gives one. Below the municipality the figure is rough. In 2020-2024 the margin of error is above 30% of the estimate (the CSV by area marks such values as less reliable; no map or table draws areas below the municipality yet) for 27% of barrios, 6% of census tracts and 29% of block groups that have a value. See methods.small_area_estimates."
+  ],
+  "see_also": [
+   "housing.census_housing_units",
+   "housing.vacant_units",
+   "housing.vacancy_pct",
+   "housing.households",
+   "municipalities.housing_units_acs",
+   "municipalities.acs_year",
+   "municipalities.acs_reliability",
+   "municipalities.acs_table_map",
+   "methods.acs_windows",
+   "measures.margin_of_error",
+   "methods.small_area_estimates"
+  ],
+  "where": {
+   "files": [
+    "housing_series.json:housing_units",
+    "acs_barrio.json:housing_units",
+    "acs_tract.json:housing_units",
+    "acs_blockgroup.json:housing_units"
+   ],
+   "view": [
+    {
+     "label": "Housing page: full data for every year and municipality, with CSV download and a link back to this entry",
+     "href": "housing.html?d=housing_units"
+    },
+    {
+     "label": "Housing page: municipality profile, with a small trend line beside each value (one point per five-year window; the caption, for example '15 yrs', counts window labels)",
+     "href": "housing.html#profile"
+    },
+    {
+     "label": "Housing page: 'Latest data' card at the top (click it to open the full data)",
+     "href": "housing.html#headline"
+    },
+    {
+     "label": "Map, Analysis tab (group Housing · Housing stock): shade municipalities by",
+     "href": "index.html#e=housing_units.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-02",
+  "example": "Puerto Rico, 2020-2024 window: 1,634,357 housing units (margin of error 4,364)."
+ },
+ {
+  "id": "housing.vacant_units",
+  "name": "Vacant housing units, survey estimate (number)",
+  "domain": "housing",
+  "domains": ["housing"],
+  "group": "Housing stock",
+  "kind": "variable",
+  "plain": "The estimated number of homes with nobody living in them, for any reason. There is one value for each 5-year survey period, from 2006-2010 up to the latest period (2020-2024 in the 2026-10 snapshot).",
+  "definition": "Housing units that are vacant, from American Community Survey (ACS) table B25002. Vacant homes include homes for rent or for sale, homes rented or sold but not yet occupied, seasonal or occasional-use homes, homes for migrant workers, and homes vacant for other reasons.",
+  "unit": "housing units",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico (island total)",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "Five-year windows from 2006-2010 to 2020-2024, labeled 2010 to 2024 by their last year; a new window each year; rebuilt with each snapshot"
+  },
+  "method": "ACS 5-year table B25002 (Occupancy Status), cell 003 (Vacant), taken as the Census Bureau publishes it. Each value pools five years of survey answers, so it describes the whole period, not one date (see methods.acs_windows). It is labeled by the last year: 2024 means 2020-2024. In the data file and the CSV (comma-separated values) download only that last year heads the column, so cite the window in full: 'American Community Survey 5-year estimates, 2020-2024'. The file carries the Census Bureau's margin of error (MOE, 90% confidence; see measures.margin_of_error) for each municipality and window, in housing units.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "ACS 5-year table B25002 (Occupancy Status), cell B25002_003. Files at www2.census.gov/programs-surveys/acs/summary_file/: windows labeled 2010-2020 are in {year}/data/5_year_seq_by_state/PuertoRico/All_Geographies_Not_Tracts_Block_Groups/ (each table sits in a numbered sequence file, which is located with the Census Bureau's sequence lookup file); windows labeled 2021-2024 are in {year}/table-based-SF/data/5YRData/ as acsdt5y{year}-b25002.dat. Definitions: Census Bureau, American Community Survey 2024 Subject Definitions.",
+  "how_to_read": "In the 2026-10 snapshot, the island-wide count rises from 246,987 in 2006-2010 to a peak of 368,182 in 2015-2019. It is 354,227 in 2016-2020 and 343,491 in 2020-2024 (margin of error 3,707). In 2020-2024, 64.8% of vacant units were 'other vacant', 22.0% were seasonal, and 13.2% were for rent, for sale, sold or rented but not yet occupied, or for migrant workers. Compare windows that do not overlap (see methods.acs_windows), and check that the difference is larger than the margins of error. In the same snapshot, the Puerto Rico count equals the sum of the 78 municipality counts in every window.",
+  "caveats": [
+   "Vacant does not mean abandoned. The count includes homes for rent or sale and seasonal homes. The two largest parts are in housing.other_vacant_units and housing.seasonal_units. A vacant home is not necessarily for rent or sale, and the survey does not say whether it can be lived in. These figures do not measure how many homes are available to residents.",
+   "The census count of vacant units on April 1, 2020 is 257,625, lower than the 354,227 for the 2016-2020 window. For 2010 the order is reversed: 260,415 on census day against 246,987 for the 2006-2010 window. The two record vacancy at different times and in different ways (see housing.census_vacant_units).",
+   "It is a survey estimate. In the 2026-10 snapshot, 1 of the 78 municipalities has a margin of error above 30% of the estimate in the 2020-2024 window (only the Housing page's full-data table shows it in italics). Treat small differences between municipalities as noise.",
+   "Each window pools five years of interviews, so it does not describe conditions on one date. The windows labeled 2017 to 2021 include the 2017 hurricane season, and those labeled 2020 to 2024 include the pandemic years. The data alone cannot show why a figure changed."
+  ],
+  "see_also": [
+   "housing.vacancy_pct",
+   "housing.seasonal_units",
+   "housing.other_vacant_units",
+   "housing.housing_units",
+   "housing.households",
+   "housing.census_vacant_units",
+   "municipalities.vacant_units",
+   "municipalities.acs_reliability",
+   "municipalities.acs_table_map",
+   "methods.acs_windows",
+   "measures.margin_of_error",
+   "study.headline_figures"
+  ],
+  "where": {
+   "files": [
+    "housing_series.json:vacant_units"
+   ],
+   "view": [
+    {
+     "label": "Housing page: full data for every year and municipality, with CSV download and a link back to this entry",
+     "href": "housing.html?d=vacant_units"
+    },
+    {
+     "label": "Map, Analysis tab (group Housing · Housing stock): shade municipalities by",
+     "href": "index.html#e=vacant_units.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-02",
+  "example": "Puerto Rico, 2020-2024 window: 343,491 vacant units (margin of error 3,707)."
+ },
+ {
+  "id": "housing.vacancy_pct",
+  "name": "Vacancy rate, survey estimate",
+  "domain": "housing",
+  "domains": ["housing"],
+  "group": "Housing stock",
+  "kind": "variable",
+  "plain": "Out of every 100 homes, how many are empty, estimated from a 5-year survey. Empty homes include homes for rent or sale, seasonal homes and abandoned homes. There is one value for each 5-year survey period, from 2006-2010 up to the latest period (2020-2024 in the 2026-10 snapshot).",
+  "definition": "Vacant housing units divided by all housing units, times 100, from American Community Survey (ACS) tables B25002 and B25001.",
+  "unit": "% of housing units",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico (island total); also 901 barrios, 981 census tracts and 2,555 block groups",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "Five-year windows from 2006-2010 to 2020-2024, labeled 2010 to 2024 by their last year; a new window each year; rebuilt with each snapshot"
+  },
+  "method": "Computed in housing_series.py: B25002 cell 003 (vacant) / B25001 cell 001 (all housing units) x 100, rounded to two decimals. Each value pools five years of survey answers, so it describes the whole period, not one date (see methods.acs_windows). It is labeled by the last year: 2024 means 2020-2024. In the data file and the CSV (comma-separated values) download only that last year heads the column, so cite the window in full: 'American Community Survey 5-year estimates, 2020-2024'. The data file and the CSV download keep two decimals; the Housing page shows one (for example Puerto Rico in 2020-2024: 21.0% with a margin of ±0.2 pts). The file also carries a margin of error (MOE, 90% confidence; see measures.margin_of_error) in percentage points, calculated in housing_series.py with the Census Bureau's standard formula for a share. If that formula would need the square root of a negative number, the Census Bureau's ratio formula is used instead.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "ACS 5-year tables B25002 (Occupancy Status) and B25001 (Housing Units). Files at www2.census.gov/programs-surveys/acs/summary_file/: windows labeled 2010-2020 are in {year}/data/5_year_seq_by_state/PuertoRico/All_Geographies_Not_Tracts_Block_Groups/ (each table sits in a numbered sequence file, which is located with the Census Bureau's sequence lookup file); windows labeled 2021-2024 are in {year}/table-based-SF/data/5YRData/ as acsdt5y{year}-b25002.dat and acsdt5y{year}-b25001.dat. Definitions: Census Bureau, American Community Survey 2024 Subject Definitions.",
+  "how_to_read": "In the 2026-10 snapshot, the island-wide rate is 16.76% in 2006-2010, peaks at 23.59% in 2015-2019 and is 21.02% in 2020-2024 (margin of error 0.22 percentage points). In 2020-2024 it runs from 8.94% (Florida) to 65.95% (Culebra); Vieques is at 43.22%. Compare windows that do not overlap (see methods.acs_windows), and check that the difference is larger than the margins of error.",
+  "caveats": [
+   "Census day versus the survey. The census vacancy rate (housing.census_vacancy_pct) is lower: 16.12% in 2020 against 22.71% for the 2016-2020 window, and lower in all 78 municipalities. For 2010 the gap is small (15.91% against 16.76%). The census records vacancy on April 1; the survey records it when each home is interviewed during five years. The Census Bureau advises against comparing the two, so compare each source only with itself.",
+   "The rate mixes homes for rent or sale, seasonal homes and homes vacant for other reasons. It does not measure abandonment; see housing.other_vacant_pct. A vacant home is not necessarily for rent or sale, and the survey does not say whether it can be lived in. These figures do not measure how many homes are available to residents.",
+   "Small places swing widely: in the 2026-10 snapshot, the highest value in any window is 70.46% (Culebra, 2019-2023). In the same snapshot, 1 of the 78 municipalities has a margin of error above 30% of the estimate in the 2020-2024 window (only the Housing page's full-data table shows it in italics). Treat small differences between municipalities as noise.",
+   "The Puerto Rico value is computed from island totals (for a median or an average, it is the Census Bureau's island estimate), not by averaging the 78 municipality values. In the 2026-10 snapshot, the island vacancy rate in 2020-2024 is 21.02%, while the plain average of the 78 municipality rates is 22.26%.",
+   "Each window pools five years of interviews, so it does not describe conditions on one date. The windows labeled 2017 to 2021 include the 2017 hurricane season, and those labeled 2020 to 2024 include the pandemic years. The data alone cannot show why a figure changed.",
+   "Also published for barrios, census tracts and block groups (acs_barrio.json, acs_tract.json and acs_blockgroup.json), each value with its margin of error where the Census Bureau gives one. Below the municipality the figure is rough. In 2020-2024 the margin of error is above 30% of the estimate (the CSV by area marks such values as less reliable; no map or table draws areas below the municipality yet) for 75% of barrios, 66% of census tracts and 93% of block groups that have a value. See methods.small_area_estimates."
+  ],
+  "see_also": [
+   "housing.vacant_units",
+   "housing.seasonal_pct",
+   "housing.other_vacant_pct",
+   "housing.rental_vacancy_pct",
+   "housing.homeowner_vacancy_pct",
+   "housing.census_vacancy_pct",
+   "municipalities.vacancy_pct",
+   "municipalities.acs_reliability",
+   "municipalities.acs_table_map",
+   "methods.acs_windows",
+   "measures.margin_of_error",
+   "study.headline_figures",
+   "methods.small_area_estimates"
+  ],
+  "where": {
+   "files": [
+    "housing_series.json:vacancy_pct",
+    "acs_barrio.json:vacancy_pct",
+    "acs_tract.json:vacancy_pct",
+    "acs_blockgroup.json:vacancy_pct"
+   ],
+   "view": [
+    {
+     "label": "Housing page: map and ranked chart",
+     "href": "housing.html#stock"
+    },
+    {
+     "label": "Housing page: full data for every year and municipality, with CSV download and a link back to this entry",
+     "href": "housing.html?d=vacancy_pct"
+    },
+    {
+     "label": "Housing page: municipality profile, row 'Vacant units' (it shows this percent, not a count), with a small trend line beside the value (one point per five-year window; the caption, for example '15 yrs', counts window labels)",
+     "href": "housing.html#profile"
+    },
+    {
+     "label": "Housing page: 'Latest data' card at the top (click it to open the full data)",
+     "href": "housing.html#headline"
+    },
+    {
+     "label": "Map, Analysis tab (group Housing · Housing stock): shade municipalities by",
+     "href": "index.html#e=vacancy_pct.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-02",
+  "example": "Puerto Rico, 2020-2024 window: 21.02% of housing units vacant (margin of error 0.22 percentage points)."
+ },
+ {
+  "id": "housing.seasonal_units",
+  "name": "Seasonal, recreational or occasional-use units (number)",
+  "domain": "housing",
+  "domains": ["housing"],
+  "group": "Housing stock",
+  "kind": "variable",
+  "plain": "The estimated number of empty homes kept for vacations, weekends or other occasional use. There is one value for each 5-year survey period, from 2006-2010 up to the latest period (2020-2024 in the 2026-10 snapshot).",
+  "definition": "Vacant housing units held for seasonal, recreational or occasional use, from American Community Survey (ACS) table B25004 (Vacancy Status). These are homes used only in certain seasons or for weekends or other occasional use.",
+  "unit": "housing units",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico (island total)",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "Five-year windows from 2006-2010 to 2020-2024, labeled 2010 to 2024 by their last year; a new window each year; rebuilt with each snapshot"
+  },
+  "method": "ACS 5-year table B25004 (Vacancy Status), cell 006 (For seasonal, recreational, or occasional use), taken as the Census Bureau publishes it. Each value pools five years of survey answers, so it describes the whole period, not one date (see methods.acs_windows). It is labeled by the last year: 2024 means 2020-2024. In the data file and the CSV (comma-separated values) download only that last year heads the column, so cite the window in full: 'American Community Survey 5-year estimates, 2020-2024'. The file carries the Census Bureau's margin of error (MOE, 90% confidence; see measures.margin_of_error) for each municipality and window, in housing units.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "ACS 5-year table B25004 (Vacancy Status), cell B25004_006. Files at www2.census.gov/programs-surveys/acs/summary_file/: windows labeled 2010-2020 are in {year}/data/5_year_seq_by_state/PuertoRico/All_Geographies_Not_Tracts_Block_Groups/ (each table sits in a numbered sequence file, which is located with the Census Bureau's sequence lookup file); windows labeled 2021-2024 are in {year}/table-based-SF/data/5YRData/ as acsdt5y{year}-b25004.dat. Definitions: Census Bureau, American Community Survey 2024 Subject Definitions.",
+  "how_to_read": "In the 2026-10 snapshot, the island-wide count is 57,724 in 2006-2010 and 75,416 in 2020-2024 (margin of error 1,612). The largest counts in 2020-2024 are in San Juan (7,203) and Cabo Rojo (5,190). For comparing places of different size use the share (housing.seasonal_pct). Compare windows that do not overlap (see methods.acs_windows), and check that the difference is larger than the margins of error. In the same snapshot, the Puerto Rico count equals the sum of the 78 municipality counts in every window.",
+  "caveats": [
+   "The Census Bureau's vacancy categories (table B25004; see the ACS 2024 Subject Definitions, 'Vacancy Status') have no short-term rental class, so a home rented to visitors has no category of its own here. Do not read this variable as a short-term rental count.",
+   "The count is small in many municipalities, so the margin is large compared with the estimate. In the 2026-10 snapshot, 40 of the 78 municipalities have a margin of error above 30% of the estimate in the 2020-2024 window (only the Housing page's full-data table shows these in italics). Treat small differences between municipalities as noise."
+  ],
+  "see_also": [
+   "housing.seasonal_pct",
+   "housing.vacant_units",
+   "housing.other_vacant_units",
+   "municipalities.seasonal_units",
+   "municipalities.acs_reliability",
+   "municipalities.acs_table_map",
+   "methods.acs_windows",
+   "measures.margin_of_error"
+  ],
+  "where": {
+   "files": [
+    "housing_series.json:seasonal_units"
+   ],
+   "view": [
+    {
+     "label": "Housing page: full data for every year and municipality, with CSV download and a link back to this entry",
+     "href": "housing.html?d=seasonal_units"
+    },
+    {
+     "label": "Map, Analysis tab (group Housing · Housing stock): shade municipalities by",
+     "href": "index.html#e=seasonal_units.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-02",
+  "example": "Puerto Rico, 2020-2024 window: 75,416 seasonal, recreational or occasional-use units (margin of error 1,612)."
+ },
+ {
+  "id": "housing.seasonal_pct",
+  "name": "Seasonal, recreational or occasional-use units, % of all units",
+  "domain": "housing",
+  "domains": ["housing"],
+  "group": "Housing stock",
+  "kind": "variable",
+  "plain": "Out of every 100 homes, how many are empty and kept for vacations, weekends or other occasional use, estimated from a 5-year survey. There is one value for each 5-year survey period, from 2006-2010 up to the latest period (2020-2024 in the 2026-10 snapshot).",
+  "definition": "Vacant housing units held for seasonal, recreational or occasional use divided by all housing units, times 100, from American Community Survey (ACS) tables B25004 and B25001.",
+  "unit": "% of housing units",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico (island total); also 901 barrios and 981 census tracts",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "Five-year windows from 2006-2010 to 2020-2024, labeled 2010 to 2024 by their last year; a new window each year; rebuilt with each snapshot"
+  },
+  "method": "Computed in housing_series.py: B25004 cell 006 (seasonal, recreational or occasional use) / B25001 cell 001 (all housing units) x 100, rounded to two decimals. Each value pools five years of survey answers, so it describes the whole period, not one date (see methods.acs_windows). It is labeled by the last year: 2024 means 2020-2024. In the data file and the CSV (comma-separated values) download only that last year heads the column, so cite the window in full: 'American Community Survey 5-year estimates, 2020-2024'. The data file and the CSV download keep two decimals; the Housing page shows one (for example Puerto Rico in 2020-2024: 4.6% with a margin of ±0.1 pts). The file also carries a margin of error (MOE, 90% confidence; see measures.margin_of_error) in percentage points, calculated in housing_series.py with the Census Bureau's standard formula for a share. If that formula would need the square root of a negative number, the Census Bureau's ratio formula is used instead.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "ACS 5-year tables B25004 (Vacancy Status) and B25001 (Housing Units). Files at www2.census.gov/programs-surveys/acs/summary_file/: windows labeled 2010-2020 are in {year}/data/5_year_seq_by_state/PuertoRico/All_Geographies_Not_Tracts_Block_Groups/ (each table sits in a numbered sequence file, which is located with the Census Bureau's sequence lookup file); windows labeled 2021-2024 are in {year}/table-based-SF/data/5YRData/ as acsdt5y{year}-b25004.dat and acsdt5y{year}-b25001.dat. Definitions: Census Bureau, American Community Survey 2024 Subject Definitions.",
+  "how_to_read": "In the 2026-10 snapshot, the island-wide share is 3.92% in 2006-2010 and 4.61% in 2020-2024 (margin of error 0.10 percentage points). In 2020-2024 Culebra has 40.74% and Vieques 24.13%; the lowest is Sabana Grande (0.54%). The Housing page describes it as the closest public stand-in (a proxy) for weekend homes and short-term rentals; the first caution below gives the limit. Compare windows that do not overlap (see methods.acs_windows), and check that the difference is larger than the margins of error.",
+  "caveats": [
+   "The Census Bureau's vacancy categories (table B25004; see the ACS 2024 Subject Definitions, 'Vacancy Status') have no short-term rental class, so a home rented to visitors has no category of its own here. Do not read this variable as a short-term rental count.",
+   "The share is a share of all housing units, not of vacant units, and the home must be vacant at the time of the survey to be counted. In the 2026-10 snapshot, 39 of the 78 municipalities have a margin of error above 30% of the estimate in the 2020-2024 window (only the Housing page's full-data table shows these in italics). Treat small differences between municipalities as noise.",
+   "The Puerto Rico value is computed from island totals (for a median or an average, it is the Census Bureau's island estimate), not by averaging the 78 municipality values.",
+   "Also published for barrios and census tracts (acs_barrio.json and acs_tract.json), each value with its margin of error where the Census Bureau gives one. Below the municipality the figure is rough. In 2020-2024 the margin of error is above 30% of the estimate (the CSV by area marks such values as less reliable; no map or table draws areas below the municipality yet) for 97% of barrios and 97% of census tracts that have a value. See methods.small_area_estimates."
+  ],
+  "see_also": [
+   "housing.seasonal_units",
+   "housing.vacancy_pct",
+   "housing.other_vacant_pct",
+   "municipalities.seasonal_pct",
+   "municipalities.acs_reliability",
+   "municipalities.acs_table_map",
+   "methods.acs_windows",
+   "measures.margin_of_error",
+   "methods.small_area_estimates"
+  ],
+  "where": {
+   "files": [
+    "housing_series.json:seasonal_pct",
+    "acs_barrio.json:seasonal_pct",
+    "acs_tract.json:seasonal_pct"
+   ],
+   "view": [
+    {
+     "label": "Housing page: map and ranked chart",
+     "href": "housing.html#stock"
+    },
+    {
+     "label": "Housing page: full data for every year and municipality, with CSV download and a link back to this entry",
+     "href": "housing.html?d=seasonal_pct"
+    },
+    {
+     "label": "Housing page: municipality profile, row 'Seasonal / recreational units' (it shows this percent, not a count), with a small trend line beside the value (one point per five-year window; the caption, for example '15 yrs', counts window labels)",
+     "href": "housing.html#profile"
+    },
+    {
+     "label": "Map, Analysis tab (group Housing · Housing stock): shade municipalities by",
+     "href": "index.html#e=seasonal_pct.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-02",
+  "example": "Puerto Rico, 2020-2024 window: 4.61% of housing units (margin of error 0.10 percentage points)."
+ },
+ {
+  "id": "housing.other_vacant_units",
+  "name": "Other vacant units (number)",
+  "domain": "housing",
+  "domains": ["housing"],
+  "group": "Housing stock",
+  "kind": "variable",
+  "plain": "The estimated number of empty homes that are not for rent, for sale or seasonal. It is the usual public stand-in for abandoned housing, but it is not a count of abandoned homes. There is one value for each 5-year survey period, from 2006-2010 up to the latest period (2020-2024 in the 2026-10 snapshot).",
+  "definition": "Vacant housing units whose reason for being vacant is none of the named reasons, from American Community Survey (ACS) table B25004 (Vacancy Status), the 'other vacant' category.",
+  "unit": "housing units",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico (island total)",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "Five-year windows from 2006-2010 to 2020-2024, labeled 2010 to 2024 by their last year; a new window each year; rebuilt with each snapshot"
+  },
+  "method": "ACS 5-year table B25004 (Vacancy Status), cell 008 (Other vacant), taken as the Census Bureau publishes it. Each value pools five years of survey answers, so it describes the whole period, not one date (see methods.acs_windows). It is labeled by the last year: 2024 means 2020-2024. In the data file and the CSV (comma-separated values) download only that last year heads the column, so cite the window in full: 'American Community Survey 5-year estimates, 2020-2024'. The file carries the Census Bureau's margin of error (MOE, 90% confidence; see measures.margin_of_error) for each municipality and window, in housing units.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "ACS 5-year table B25004 (Vacancy Status), cell B25004_008. Files at www2.census.gov/programs-surveys/acs/summary_file/: windows labeled 2010-2020 are in {year}/data/5_year_seq_by_state/PuertoRico/All_Geographies_Not_Tracts_Block_Groups/ (each table sits in a numbered sequence file, which is located with the Census Bureau's sequence lookup file); windows labeled 2021-2024 are in {year}/table-based-SF/data/5YRData/ as acsdt5y{year}-b25004.dat. Definitions: Census Bureau, American Community Survey 2024 Subject Definitions.",
+  "how_to_read": "In the 2026-10 snapshot, the island-wide count is 128,526 in 2006-2010 and 222,697 in 2020-2024 (margin of error 3,086), which is 64.8% of all vacant units in 2020-2024 against 52.0% in 2006-2010. The largest count in 2020-2024 is in San Juan (29,910). Use housing.other_vacant_pct to compare places of different size. Compare windows that do not overlap (see methods.acs_windows), and check that the difference is larger than the margins of error. In the same snapshot, the Puerto Rico count equals the sum of the 78 municipality counts in every window.",
+  "caveats": [
+   "'Other vacant' is the Census Bureau's catch-all: a vacant unit that fits none of the named reasons (for rent, rented not yet occupied, for sale, sold not yet occupied, seasonal or occasional use, for migrant workers). The Census Bureau's definitions sort it further into reasons such as foreclosure, personal or family reasons, legal proceedings including an estate, needs repairs, being repaired, extended absence, and abandoned or possibly condemned (ACS 2024 Subject Definitions, 'Other Vacancy Status'). The observatory's data do not separate these, so it is not a count of abandoned homes.",
+   "The Housing page also quotes the 2023 Foundation for Puerto Rico (FPR) study's estimate of 300,000 dilapidated or abandoned units. That is the study's estimate, not this variable.",
+   "It is a survey estimate. In the 2026-10 snapshot, 4 of the 78 municipalities have a margin of error above 30% of the estimate in the 2020-2024 window (only the Housing page's full-data table shows these in italics). Treat small differences between municipalities as noise."
+  ],
+  "see_also": [
+   "housing.other_vacant_pct",
+   "housing.vacant_units",
+   "housing.seasonal_units",
+   "municipalities.acs_reliability",
+   "municipalities.acs_table_map",
+   "methods.acs_windows",
+   "measures.margin_of_error",
+   "study.headline_figures"
+  ],
+  "where": {
+   "files": [
+    "housing_series.json:other_vacant_units"
+   ],
+   "view": [
+    {
+     "label": "Housing page: full data for every year and municipality, with CSV download and a link back to this entry",
+     "href": "housing.html?d=other_vacant_units"
+    },
+    {
+     "label": "Map, Analysis tab (group Housing · Housing stock): shade municipalities by",
+     "href": "index.html#e=other_vacant_units.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-02",
+  "example": "Puerto Rico, 2020-2024 window: 222,697 other vacant units (margin of error 3,086)."
+ },
+ {
+  "id": "housing.other_vacant_pct",
+  "name": "Other vacant units, % of all units (abandoned-housing proxy)",
+  "domain": "housing",
+  "domains": ["housing"],
+  "group": "Housing stock",
+  "kind": "variable",
+  "plain": "Out of every 100 homes, how many are empty for a reason other than rent, sale or seasonal use, estimated from a 5-year survey. It is the usual public stand-in for abandoned housing, with limits. There is one value for each 5-year survey period, from 2006-2010 up to the latest period (2020-2024 in the 2026-10 snapshot).",
+  "definition": "'Other vacant' housing units divided by all housing units, times 100, from American Community Survey (ACS) tables B25004 and B25001.",
+  "unit": "% of housing units",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico (island total); also 901 barrios, 981 census tracts and 2,555 block groups",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "Five-year windows from 2006-2010 to 2020-2024, labeled 2010 to 2024 by their last year; a new window each year; rebuilt with each snapshot"
+  },
+  "method": "Computed in housing_series.py: B25004 cell 008 (other vacant) / B25001 cell 001 (all housing units) x 100, rounded to two decimals. Each value pools five years of survey answers, so it describes the whole period, not one date (see methods.acs_windows). It is labeled by the last year: 2024 means 2020-2024. In the data file and the CSV (comma-separated values) download only that last year heads the column, so cite the window in full: 'American Community Survey 5-year estimates, 2020-2024'. The data file and the CSV download keep two decimals; the Housing page shows one (for example Puerto Rico in 2020-2024: 13.6% with a margin of ±0.2 pts). The file also carries a margin of error (MOE, 90% confidence; see measures.margin_of_error) in percentage points, calculated in housing_series.py with the Census Bureau's standard formula for a share. If that formula would need the square root of a negative number, the Census Bureau's ratio formula is used instead.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "ACS 5-year tables B25004 (Vacancy Status) and B25001 (Housing Units). Files at www2.census.gov/programs-surveys/acs/summary_file/: windows labeled 2010-2020 are in {year}/data/5_year_seq_by_state/PuertoRico/All_Geographies_Not_Tracts_Block_Groups/ (each table sits in a numbered sequence file, which is located with the Census Bureau's sequence lookup file); windows labeled 2021-2024 are in {year}/table-based-SF/data/5YRData/ as acsdt5y{year}-b25004.dat and acsdt5y{year}-b25001.dat. Definitions: Census Bureau, American Community Survey 2024 Subject Definitions.",
+  "how_to_read": "In the 2026-10 snapshot, the island-wide share is 8.72% in 2006-2010, peaks at 14.75% in 2017-2021, and is 13.63% in 2020-2024 (margin of error 0.19 percentage points). In 2020-2024 the highest values are Guánica (26.98%) and Maricao (26.44%); the lowest is Florida (6.60%). Compare windows that do not overlap (see methods.acs_windows), and check that the difference is larger than the margins of error.",
+  "caveats": [
+   "'Other vacant' is the Census Bureau's catch-all: a vacant unit that fits none of the named reasons (for rent, rented not yet occupied, for sale, sold not yet occupied, seasonal or occasional use, for migrant workers). The Census Bureau's definitions sort it further into reasons such as foreclosure, personal or family reasons, legal proceedings including an estate, needs repairs, being repaired, extended absence, and abandoned or possibly condemned (ACS 2024 Subject Definitions, 'Other Vacancy Status'). The observatory's data do not separate these, so it is not a count of abandoned homes.",
+   "The share is of all housing units, not of vacant units.",
+   "The Housing page also quotes the 2023 Foundation for Puerto Rico (FPR) study's estimate of 300,000 dilapidated or abandoned units. That is the study's estimate, not this variable.",
+   "It is a survey estimate. In the 2026-10 snapshot, 4 of the 78 municipalities have a margin of error above 30% of the estimate in the 2020-2024 window (only the Housing page's full-data table shows these in italics). Treat small differences between municipalities as noise.",
+   "The Puerto Rico value is computed from island totals (for a median or an average, it is the Census Bureau's island estimate), not by averaging the 78 municipality values.",
+   "Each window pools five years of interviews, so it does not describe conditions on one date. The windows labeled 2017 to 2021 include the 2017 hurricane season, and those labeled 2020 to 2024 include the pandemic years. The data alone cannot show why a figure changed.",
+   "Also published for barrios, census tracts and block groups (acs_barrio.json, acs_tract.json and acs_blockgroup.json), each value with its margin of error where the Census Bureau gives one. Below the municipality the figure is rough. In 2020-2024 the margin of error is above 30% of the estimate (the CSV by area marks such values as less reliable; no map or table draws areas below the municipality yet) for 86% of barrios, 89% of census tracts and 99% of block groups that have a value. See methods.small_area_estimates."
+  ],
+  "see_also": [
+   "housing.other_vacant_units",
+   "housing.vacancy_pct",
+   "housing.seasonal_pct",
+   "housing.vacant_units",
+   "municipalities.acs_reliability",
+   "municipalities.acs_table_map",
+   "methods.acs_windows",
+   "measures.margin_of_error",
+   "study.headline_figures",
+   "methods.small_area_estimates"
+  ],
+  "where": {
+   "files": [
+    "housing_series.json:other_vacant_pct",
+    "acs_barrio.json:other_vacant_pct",
+    "acs_tract.json:other_vacant_pct",
+    "acs_blockgroup.json:other_vacant_pct"
+   ],
+   "view": [
+    {
+     "label": "Housing page: map and ranked chart",
+     "href": "housing.html#stock"
+    },
+    {
+     "label": "Housing page: full data for every year and municipality, with CSV download and a link back to this entry",
+     "href": "housing.html?d=other_vacant_pct"
+    },
+    {
+     "label": "Housing page: municipality profile, row \"'Other vacant' units (abandoned proxy)\" (it shows this percent, not a count), with a small trend line beside the value (one point per five-year window; the caption, for example '15 yrs', counts window labels)",
+     "href": "housing.html#profile"
+    },
+    {
+     "label": "Housing page: 'Latest data' card at the top (click it to open the full data)",
+     "href": "housing.html#headline"
+    },
+    {
+     "label": "Map, Analysis tab (group Housing · Housing stock): shade municipalities by",
+     "href": "index.html#e=other_vacant_pct.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-02",
+  "example": "Puerto Rico, 2020-2024 window: 13.63% of housing units (margin of error 0.19 percentage points)."
+ },
+ {
+  "id": "housing.rental_vacancy_pct",
+  "name": "Rental vacancy rate",
+  "domain": "housing",
+  "domains": ["housing"],
+  "group": "Housing stock",
+  "kind": "variable",
+  "plain": "Out of every 100 rental homes, how many are empty and for rent. There is one value for each 5-year survey period, from 2006-2010 up to the latest period (2020-2024 in the 2026-10 snapshot).",
+  "definition": "Units for rent divided by all rental units, times 100. Rental units are units for rent, units rented but not yet occupied, and renter-occupied units. From American Community Survey (ACS) tables B25004 and B25003.",
+  "unit": "% of rental units",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico (island total)",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "Five-year windows from 2006-2010 to 2020-2024, labeled 2010 to 2024 by their last year; a new window each year; rebuilt with each snapshot"
+  },
+  "method": "Computed in housing_series.py: B25004 cell 002 (for rent) / [B25004 cell 002 + B25004 cell 003 (rented, not occupied) + B25003 cell 003 (renter-occupied)] x 100, rounded to two decimals. Each value pools five years of survey answers, so it describes the whole period, not one date (see methods.acs_windows). It is labeled by the last year: 2024 means 2020-2024. In the data file and the CSV (comma-separated values) download only that last year heads the column, so cite the window in full: 'American Community Survey 5-year estimates, 2020-2024'. The data file and the CSV download keep two decimals; the Housing page shows one (for example Puerto Rico in 2020-2024: 5.1% with a margin of ±0.2 pts). The file also carries a margin of error (MOE, 90% confidence; see measures.margin_of_error) in percentage points, calculated in housing_series.py with the Census Bureau's standard formula for a share. The margins of the three cells that make up the denominator are first combined the same way, by taking the square root of the sum of their squares. If that formula would need the square root of a negative number, the Census Bureau's ratio formula is used instead.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "ACS 5-year tables B25004 (Vacancy Status) and B25003 (Tenure). Files at www2.census.gov/programs-surveys/acs/summary_file/: windows labeled 2010-2020 are in {year}/data/5_year_seq_by_state/PuertoRico/All_Geographies_Not_Tracts_Block_Groups/ (each table sits in a numbered sequence file, which is located with the Census Bureau's sequence lookup file); windows labeled 2021-2024 are in {year}/table-based-SF/data/5YRData/ as acsdt5y{year}-b25004.dat and acsdt5y{year}-b25003.dat. Definitions: Census Bureau, American Community Survey 2024 Subject Definitions.",
+  "how_to_read": "In the 2026-10 snapshot, the island-wide rate is 6.97% in 2006-2010, peaks at 8.56% in 2011-2015 and is 5.08% in 2020-2024 (margin of error 0.23 percentage points). It is much lower than overall vacancy because it leaves out seasonal homes, homes for sale and 'other vacant' homes. Compare windows that do not overlap (see methods.acs_windows), and check that the difference is larger than the margins of error.",
+  "caveats": [
+   "Small base, wide swings. Culebra shows 48.4% in 2020-2024 with a margin of error of 5.2 percentage points. In the 2026-10 snapshot, 66 of the 78 municipalities have a margin of error above 30% of a non-zero estimate in the 2020-2024 window (only the Housing page's full-data table shows these in italics). The page does not italicize the three municipalities with an estimate of zero (see the next caution). Treat small differences between municipalities as noise.",
+   "In the 2026-10 snapshot, 3 municipalities have an estimate of zero in the 2020-2024 window. It means the survey found no rental vacancies in its sample, not that none exist. Each zero carries a margin of error (2.14 to 3.75 percentage points).",
+   "It counts only homes the survey classed as 'for rent'. The table has no short-term rental category, so it does not separate homes rented to visitors.",
+   "The Puerto Rico value is computed from island totals (for a median or an average, it is the Census Bureau's island estimate), not by averaging the 78 municipality values.",
+   "Each window pools five years of interviews, so it does not describe conditions on one date. The windows labeled 2017 to 2021 include the 2017 hurricane season, and those labeled 2020 to 2024 include the pandemic years. The data alone cannot show why a figure changed."
+  ],
+  "see_also": [
+   "housing.homeowner_vacancy_pct",
+   "housing.vacancy_pct",
+   "housing.owner_occupied_pct",
+   "housing.seasonal_pct",
+   "municipalities.acs_reliability",
+   "municipalities.acs_table_map",
+   "methods.acs_windows",
+   "measures.margin_of_error"
+  ],
+  "where": {
+   "files": [
+    "housing_series.json:rental_vacancy_pct"
+   ],
+   "view": [
+    {
+     "label": "Housing page: map and ranked chart",
+     "href": "housing.html#stock"
+    },
+    {
+     "label": "Housing page: full data for every year and municipality, with CSV download and a link back to this entry",
+     "href": "housing.html?d=rental_vacancy_pct"
+    },
+    {
+     "label": "Housing page: municipality profile, with a small trend line beside each value (one point per five-year window; the caption, for example '15 yrs', counts window labels)",
+     "href": "housing.html#profile"
+    },
+    {
+     "label": "Map, Analysis tab (group Housing · Housing stock): shade municipalities by",
+     "href": "index.html#e=rental_vacancy_pct.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-02",
+  "example": "Puerto Rico, 2020-2024 window: 5.08% (margin of error 0.23 percentage points)."
+ },
+ {
+  "id": "housing.homeowner_vacancy_pct",
+  "name": "Homeowner vacancy rate",
+  "domain": "housing",
+  "domains": ["housing"],
+  "group": "Housing stock",
+  "kind": "variable",
+  "plain": "Out of every 100 owner homes, how many are empty and for sale. Owner homes are those lived in by their owners, for sale, or sold but not yet occupied. There is one value for each 5-year survey period, from 2006-2010 up to the latest period (2020-2024 in the 2026-10 snapshot).",
+  "definition": "Units for sale only divided by all owner units, times 100. Owner units are units for sale only, units sold but not yet occupied, and owner-occupied units. From American Community Survey (ACS) tables B25004 and B25003.",
+  "unit": "% of owner units",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico (island total)",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "Five-year windows from 2006-2010 to 2020-2024, labeled 2010 to 2024 by their last year; a new window each year; rebuilt with each snapshot"
+  },
+  "method": "Computed in housing_series.py: B25004 cell 004 (for sale only) / [B25004 cell 004 + B25004 cell 005 (sold, not occupied) + B25003 cell 002 (owner-occupied)] x 100, rounded to two decimals. Each value pools five years of survey answers, so it describes the whole period, not one date (see methods.acs_windows). It is labeled by the last year: 2024 means 2020-2024. In the data file and the CSV (comma-separated values) download only that last year heads the column, so cite the window in full: 'American Community Survey 5-year estimates, 2020-2024'. The data file and the CSV download keep two decimals; the Housing page shows one (for example Puerto Rico in 2020-2024: 1.3% with a margin of ±0.1 pts). The file also carries a margin of error (MOE, 90% confidence; see measures.margin_of_error) in percentage points, calculated in housing_series.py with the Census Bureau's standard formula for a share. The margins of the three cells that make up the denominator are first combined the same way, by taking the square root of the sum of their squares. If that formula would need the square root of a negative number, the Census Bureau's ratio formula is used instead.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "ACS 5-year tables B25004 (Vacancy Status) and B25003 (Tenure). Files at www2.census.gov/programs-surveys/acs/summary_file/: windows labeled 2010-2020 are in {year}/data/5_year_seq_by_state/PuertoRico/All_Geographies_Not_Tracts_Block_Groups/ (each table sits in a numbered sequence file, which is located with the Census Bureau's sequence lookup file); windows labeled 2021-2024 are in {year}/table-based-SF/data/5YRData/ as acsdt5y{year}-b25004.dat and acsdt5y{year}-b25003.dat. Definitions: Census Bureau, American Community Survey 2024 Subject Definitions.",
+  "how_to_read": "In the 2026-10 snapshot, the island-wide rate is 2.44% in 2006-2010, peaks at 3.74% in 2011-2015 and is 1.30% in 2020-2024 (margin of error 0.09 percentage points). In 2020-2024 the highest value is Sabana Grande (6.40%). Compare windows that do not overlap (see methods.acs_windows), and check that the difference is larger than the margins of error.",
+  "caveats": [
+   "Small base, wide swings. In the 2026-10 snapshot, 66 of the 78 municipalities have a margin of error above 30% of a non-zero estimate in the 2020-2024 window (only the Housing page's full-data table shows these in italics). The page does not italicize the ten municipalities with an estimate of zero (see the next caution). Treat small differences between municipalities as noise.",
+   "In the 2026-10 snapshot, 10 municipalities have an estimate of zero in the 2020-2024 window. It means the survey found no homes for sale in its sample, not that none exist. Each zero carries a margin of error (0.32 to 1.05 percentage points).",
+   "It leaves out vacant homes that are not for sale, such as seasonal and 'other vacant' homes, so it is far lower than overall vacancy.",
+   "The Puerto Rico value is computed from island totals (for a median or an average, it is the Census Bureau's island estimate), not by averaging the 78 municipality values.",
+   "Each window pools five years of interviews, so it does not describe conditions on one date. The windows labeled 2017 to 2021 include the 2017 hurricane season, and those labeled 2020 to 2024 include the pandemic years. The data alone cannot show why a figure changed."
+  ],
+  "see_also": [
+   "housing.rental_vacancy_pct",
+   "housing.vacancy_pct",
+   "housing.owner_occupied_pct",
+   "municipalities.acs_reliability",
+   "municipalities.acs_table_map",
+   "methods.acs_windows",
+   "measures.margin_of_error"
+  ],
+  "where": {
+   "files": [
+    "housing_series.json:homeowner_vacancy_pct"
+   ],
+   "view": [
+    {
+     "label": "Housing page: full data for every year and municipality, with CSV download and a link back to this entry",
+     "href": "housing.html?d=homeowner_vacancy_pct"
+    },
+    {
+     "label": "Map, Analysis tab (group Housing · Housing stock): shade municipalities by",
+     "href": "index.html#e=homeowner_vacancy_pct.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-02",
+  "example": "Puerto Rico, 2020-2024 window: 1.30% (margin of error 0.09 percentage points)."
+ },
+ {
+  "id": "housing.detached_house_pct",
+  "name": "Single-family detached homes",
+  "domain": "housing",
+  "domains": ["housing"],
+  "group": "Housing stock",
+  "kind": "variable",
+  "plain": "Out of every 100 homes, how many are one-family houses that stand apart from other buildings. There is one value for each 5-year survey period, from 2006-2010 up to the latest period (2020-2024 in the 2026-10 snapshot).",
+  "definition": "Housing units in one-unit detached structures divided by all housing units, times 100, from American Community Survey (ACS) table B25024.",
+  "unit": "% of housing units",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico (island total); also 901 barrios and 981 census tracts",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "Five-year windows from 2006-2010 to 2020-2024, labeled 2010 to 2024 by their last year; a new window each year; rebuilt with each snapshot"
+  },
+  "method": "Computed in housing_series.py: B25024 cell 002 (1, detached) / B25024 cell 001 (all housing units) x 100, rounded to two decimals. Each value pools five years of survey answers, so it describes the whole period, not one date (see methods.acs_windows). It is labeled by the last year: 2024 means 2020-2024. In the data file and the CSV (comma-separated values) download only that last year heads the column, so cite the window in full: 'American Community Survey 5-year estimates, 2020-2024'. The data file and the CSV download keep two decimals; the Housing page shows one (for example Puerto Rico in 2020-2024: 68.0% with a margin of ±0.2 pts). The file also carries a margin of error (MOE, 90% confidence; see measures.margin_of_error) in percentage points, calculated in housing_series.py with the Census Bureau's standard formula for a share. If that formula would need the square root of a negative number, the Census Bureau's ratio formula is used instead.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "ACS 5-year table B25024 (Units in Structure), cells B25024_002 and B25024_001. Files at www2.census.gov/programs-surveys/acs/summary_file/: windows labeled 2010-2020 are in {year}/data/5_year_seq_by_state/PuertoRico/All_Geographies_Not_Tracts_Block_Groups/ (each table sits in a numbered sequence file, which is located with the Census Bureau's sequence lookup file); windows labeled 2021-2024 are in {year}/table-based-SF/data/5YRData/ as acsdt5y{year}-b25024.dat. Definitions: Census Bureau, American Community Survey 2024 Subject Definitions.",
+  "how_to_read": "In the 2026-10 snapshot, the island-wide share is 67.90% in 2006-2010 and 68.03% in 2020-2024 (margin of error 0.24 percentage points), so the mix has barely moved. In 2020-2024 it runs from 39.71% (San Juan) to 90.05% (Florida). Compare windows that do not overlap (see methods.acs_windows), and check that the difference is larger than the margins of error.",
+  "caveats": [
+   "The share is of all housing units, occupied or empty. The rest are attached houses, apartments, mobile homes, and boats, vans or similar units.",
+   "It is a survey estimate. In the 2026-10 snapshot, none of the 78 municipalities has a margin of error above 30% of its estimate in the 2020-2024 window.",
+   "The Puerto Rico value is computed from island totals (for a median or an average, it is the Census Bureau's island estimate), not by averaging the 78 municipality values.",
+   "Also published for barrios and census tracts (acs_barrio.json and acs_tract.json), each value with its margin of error where the Census Bureau gives one. Below the municipality the figure is rough. In 2020-2024 the margin of error is above 30% of the estimate (the CSV by area marks such values as less reliable; no map or table draws areas below the municipality yet) for 8% of barrios and 6% of census tracts that have a value. See methods.small_area_estimates."
+  ],
+  "see_also": [
+   "housing.apartments_5plus_pct",
+   "housing.mobile_home_pct",
+   "housing.housing_units",
+   "municipalities.acs_reliability",
+   "methods.acs_windows",
+   "measures.margin_of_error",
+   "methods.small_area_estimates"
+  ],
+  "where": {
+   "files": [
+    "housing_series.json:detached_house_pct",
+    "acs_barrio.json:detached_house_pct",
+    "acs_tract.json:detached_house_pct"
+   ],
+   "view": [
+    {
+     "label": "Housing page: full data for every year and municipality, with CSV download and a link back to this entry",
+     "href": "housing.html?d=detached_house_pct"
+    },
+    {
+     "label": "Map, Analysis tab (group Housing · Housing stock): shade municipalities by",
+     "href": "index.html#e=detached_house_pct.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-02",
+  "example": "Puerto Rico, 2020-2024 window: 68.03% (margin of error 0.24 percentage points)."
+ },
+ {
+  "id": "housing.apartments_5plus_pct",
+  "name": "Units in buildings of 5 or more",
+  "domain": "housing",
+  "domains": ["housing"],
+  "group": "Housing stock",
+  "kind": "variable",
+  "plain": "Out of every 100 homes, how many are in a building with five or more homes. There is one value for each 5-year survey period, from 2006-2010 up to the latest period (2020-2024 in the 2026-10 snapshot).",
+  "definition": "Housing units in structures with five or more units divided by all housing units, times 100, from American Community Survey (ACS) table B25024.",
+  "unit": "% of housing units",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico (island total); also 901 barrios and 981 census tracts",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "Five-year windows from 2006-2010 to 2020-2024, labeled 2010 to 2024 by their last year; a new window each year; rebuilt with each snapshot"
+  },
+  "method": "Computed in housing_series.py: [B25024 cell 006 (5 to 9 units) + cell 007 (10 to 19) + cell 008 (20 to 49) + cell 009 (50 or more)] / B25024 cell 001 (all housing units) x 100, rounded to two decimals. Each value pools five years of survey answers, so it describes the whole period, not one date (see methods.acs_windows). It is labeled by the last year: 2024 means 2020-2024. In the data file and the CSV (comma-separated values) download only that last year heads the column, so cite the window in full: 'American Community Survey 5-year estimates, 2020-2024'. The data file and the CSV download keep two decimals; the Housing page shows one (for example Puerto Rico in 2020-2024: 13.9% with a margin of ±0.2 pts). The file also carries a margin of error (MOE, 90% confidence; see measures.margin_of_error) in percentage points, calculated in housing_series.py with the Census Bureau's standard formula for a share. The margins of the cells in the numerator are first combined by taking the square root of the sum of their squares. If that formula would need the square root of a negative number, the Census Bureau's ratio formula is used instead.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "ACS 5-year table B25024 (Units in Structure), cells B25024_006 to B25024_009 and B25024_001. Files at www2.census.gov/programs-surveys/acs/summary_file/: windows labeled 2010-2020 are in {year}/data/5_year_seq_by_state/PuertoRico/All_Geographies_Not_Tracts_Block_Groups/ (each table sits in a numbered sequence file, which is located with the Census Bureau's sequence lookup file); windows labeled 2021-2024 are in {year}/table-based-SF/data/5YRData/ as acsdt5y{year}-b25024.dat. Definitions: Census Bureau, American Community Survey 2024 Subject Definitions.",
+  "how_to_read": "In the 2026-10 snapshot, the island-wide share is 12.76% in 2006-2010 and 13.93% in 2020-2024 (margin of error 0.22 percentage points). In 2020-2024 it runs from 0.86% (Peñuelas) to 41.42% (San Juan). A high share means more of the homes, occupied or empty, are in buildings with five or more units. It does not give the share of people who live in them. Compare windows that do not overlap (see methods.acs_windows), and check that the difference is larger than the margins of error.",
+  "caveats": [
+   "Buildings with two to four units are not in this share, so it does not equal 'all apartments'.",
+   "It is a survey estimate. In the 2026-10 snapshot, 38 of the 78 municipalities have a margin of error above 30% of the estimate in the 2020-2024 window (only the Housing page's full-data table shows these in italics). Treat small differences between municipalities as noise.",
+   "The Puerto Rico value is computed from island totals (for a median or an average, it is the Census Bureau's island estimate), not by averaging the 78 municipality values.",
+   "Also published for barrios and census tracts (acs_barrio.json and acs_tract.json), each value with its margin of error where the Census Bureau gives one. Below the municipality the figure is rough. In 2020-2024 the margin of error is above 30% of the estimate (the CSV by area marks such values as less reliable; no map or table draws areas below the municipality yet) for 90% of barrios and 84% of census tracts that have a value. See methods.small_area_estimates."
+  ],
+  "see_also": [
+   "housing.detached_house_pct",
+   "housing.mobile_home_pct",
+   "housing.housing_units",
+   "municipalities.acs_reliability",
+   "methods.acs_windows",
+   "measures.margin_of_error",
+   "methods.small_area_estimates"
+  ],
+  "where": {
+   "files": [
+    "housing_series.json:apartments_5plus_pct",
+    "acs_barrio.json:apartments_5plus_pct",
+    "acs_tract.json:apartments_5plus_pct"
+   ],
+   "view": [
+    {
+     "label": "Housing page: full data for every year and municipality, with CSV download and a link back to this entry",
+     "href": "housing.html?d=apartments_5plus_pct"
+    },
+    {
+     "label": "Map, Analysis tab (group Housing · Housing stock): shade municipalities by",
+     "href": "index.html#e=apartments_5plus_pct.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-02",
+  "example": "Puerto Rico, 2020-2024 window: 13.93% (margin of error 0.22 percentage points)."
+ },
+ {
+  "id": "housing.mobile_home_pct",
+  "name": "Mobile homes",
+  "domain": "housing",
+  "domains": ["housing"],
+  "group": "Housing stock",
+  "kind": "variable",
+  "plain": "Out of every 100 homes, how many are mobile homes. There is one value for each 5-year survey period, from 2006-2010 up to the latest period (2020-2024 in the 2026-10 snapshot).",
+  "definition": "Housing units that are mobile homes divided by all housing units, times 100, from American Community Survey (ACS) table B25024.",
+  "unit": "% of housing units",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico (island total); also 901 barrios and 981 census tracts",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "Five-year windows from 2006-2010 to 2020-2024, labeled 2010 to 2024 by their last year; a new window each year; rebuilt with each snapshot"
+  },
+  "method": "Computed in housing_series.py: B25024 cell 010 (mobile home) / B25024 cell 001 (all housing units) x 100, rounded to two decimals. Each value pools five years of survey answers, so it describes the whole period, not one date (see methods.acs_windows). It is labeled by the last year: 2024 means 2020-2024. In the data file and the CSV (comma-separated values) download only that last year heads the column, so cite the window in full: 'American Community Survey 5-year estimates, 2020-2024'. The data file and the CSV download keep two decimals; the Housing page shows one (for example Puerto Rico in 2020-2024: 0.2%). The file also carries a margin of error (MOE, 90% confidence; see measures.margin_of_error) in percentage points, calculated in housing_series.py with the Census Bureau's standard formula for a share. If that formula would need the square root of a negative number, the Census Bureau's ratio formula is used instead.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "ACS 5-year table B25024 (Units in Structure), cells B25024_010 and B25024_001. Files at www2.census.gov/programs-surveys/acs/summary_file/: windows labeled 2010-2020 are in {year}/data/5_year_seq_by_state/PuertoRico/All_Geographies_Not_Tracts_Block_Groups/ (each table sits in a numbered sequence file, which is located with the Census Bureau's sequence lookup file); windows labeled 2021-2024 are in {year}/table-based-SF/data/5YRData/ as acsdt5y{year}-b25024.dat. Definitions: Census Bureau, American Community Survey 2024 Subject Definitions.",
+  "how_to_read": "In the 2026-10 snapshot, mobile homes are rare in Puerto Rico: 0.21% of housing units in 2006-2010 and 0.22% in 2020-2024 (margin of error 0.02 percentage points). In 2020-2024 the highest share is Cabo Rojo (2.21%). Compare windows that do not overlap (see methods.acs_windows), and check that the difference is larger than the margins of error.",
+  "caveats": [
+   "The numbers are very small, so one more or one fewer home moves the share. In the 2026-10 snapshot, 56 of the 78 municipalities have a margin of error above 30% of a non-zero estimate in the 2020-2024 window (only the Housing page's full-data table shows these in italics). The page does not italicize the 21 municipalities with an estimate of zero (see the next caution). Treat small differences between municipalities as noise.",
+   "In the 2026-10 snapshot, 21 municipalities show 0.00% in the 2020-2024 window. That means the survey estimated none, not that none exist. Each zero carries a margin of error (0.13 to 0.58 percentage points).",
+   "Boats, recreational vehicles and vans (a separate category in the table) are not included.",
+   "The Puerto Rico value is computed from island totals (for a median or an average, it is the Census Bureau's island estimate), not by averaging the 78 municipality values.",
+   "Also published for barrios and census tracts (acs_barrio.json and acs_tract.json), each value with its margin of error where the Census Bureau gives one. Below the municipality the figure is rough. In 2020-2024 the margin of error is above 30% of the estimate (the CSV by area marks such values as less reliable; no map or table draws areas below the municipality yet) for more than 99% of barrios and more than 99% of census tracts that have a value. See methods.small_area_estimates."
+  ],
+  "see_also": [
+   "housing.detached_house_pct",
+   "housing.apartments_5plus_pct",
+   "housing.housing_units",
+   "municipalities.acs_reliability",
+   "methods.acs_windows",
+   "measures.margin_of_error",
+   "methods.small_area_estimates"
+  ],
+  "where": {
+   "files": [
+    "housing_series.json:mobile_home_pct",
+    "acs_barrio.json:mobile_home_pct",
+    "acs_tract.json:mobile_home_pct"
+   ],
+   "view": [
+    {
+     "label": "Housing page: full data for every year and municipality, with CSV download and a link back to this entry",
+     "href": "housing.html?d=mobile_home_pct"
+    },
+    {
+     "label": "Map, Analysis tab (group Housing · Housing stock): shade municipalities by",
+     "href": "index.html#e=mobile_home_pct.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-02",
+  "example": "Puerto Rico, 2020-2024 window: 0.22% (margin of error 0.02 percentage points)."
+ },
+ {
+  "id": "housing.median_year_built",
+  "name": "Median year the home was built",
+  "domain": "housing",
+  "domains": ["housing"],
+  "group": "Housing stock",
+  "kind": "variable",
+  "plain": "The middle year in which the homes in the municipality were built: half were built before it and half after. There is one value for each 5-year survey period, from 2006-2010 up to the latest period (2020-2024 in the 2026-10 snapshot).",
+  "definition": "Median year the structure was built, for all housing units, from American Community Survey (ACS) table B25035. The value is a calendar year, such as 1979.",
+  "unit": "calendar year",
+  "value_type": "level",
+  "geography": "78 municipalities and Puerto Rico (island total); also 901 barrios and 981 census tracts",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "Five-year windows from 2006-2010 to 2020-2024, labeled 2010 to 2024 by their last year; a new window each year; rebuilt with each snapshot"
+  },
+  "method": "ACS 5-year table B25035 (Median Year Structure Built), cell 001, taken as the Census Bureau publishes it. Each value pools five years of survey answers, so it describes the whole period, not one date (see methods.acs_windows). It is labeled by the last year: 2024 means 2020-2024. In the data file and the CSV (comma-separated values) download only that last year heads the column, so cite the window in full: 'American Community Survey 5-year estimates, 2020-2024'. The file carries the Census Bureau's margin of error (MOE, 90% confidence; see measures.margin_of_error) for each municipality and window, in years.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "ACS 5-year table B25035 (Median Year Structure Built), cell B25035_001. Files at www2.census.gov/programs-surveys/acs/summary_file/: windows labeled 2010-2020 are in {year}/data/5_year_seq_by_state/PuertoRico/All_Geographies_Not_Tracts_Block_Groups/ (each table sits in a numbered sequence file, which is located with the Census Bureau's sequence lookup file); windows labeled 2021-2024 are in {year}/table-based-SF/data/5YRData/ as acsdt5y{year}-b25035.dat. Definitions: Census Bureau, American Community Survey 2024 Subject Definitions.",
+  "how_to_read": "In the 2026-10 snapshot, the island-wide median is 1976 in 2006-2010 and 1979 in 2020-2024 (margin of error 1 year). In 2020-2024 it runs from 1967 (San Juan) to 1996 (Culebra). An older year means an older housing stock. The median moves slowly: new homes and demolitions shift it by only a few years between the windows labeled 2010 and 2024. Compare windows that do not overlap (see methods.acs_windows), and check that the difference is larger than the margins of error.",
+  "caveats": [
+   "It describes the year of construction, not the condition of the home. An old home can be well kept, and a newer home can be damaged.",
+   "The year comes from survey answers, not from building records, and it covers occupied and vacant homes together.",
+   "It is a survey estimate. In the 2026-10 snapshot, none of the 78 municipalities has a margin of error above 30% of its estimate in the 2020-2024 window.",
+   "The Puerto Rico value is computed from island totals (for a median or an average, it is the Census Bureau's island estimate), not by averaging the 78 municipality values.",
+   "Also published for barrios and census tracts (acs_barrio.json and acs_tract.json), each value with its margin of error where the Census Bureau gives one. Its margin of error is in years: in 2020-2024 the typical margin is 3 years for a census tract and 5 for a barrio, against 2 for a municipality. A median at the edge of an open-ended interval (the Census Bureau prints the boundary) or equal to 0 is not an estimate and is left empty. See methods.small_area_estimates."
+  ],
+  "see_also": [
+   "housing.housing_units",
+   "housing.detached_house_pct",
+   "housing.apartments_5plus_pct",
+   "municipalities.acs_reliability",
+   "methods.acs_windows",
+   "measures.margin_of_error",
+   "methods.small_area_estimates"
+  ],
+  "where": {
+   "files": [
+    "housing_series.json:median_year_built",
+    "acs_barrio.json:median_year_built",
+    "acs_tract.json:median_year_built"
+   ],
+   "view": [
+    {
+     "label": "Housing page: full data for every year and municipality, with CSV download and a link back to this entry",
+     "href": "housing.html?d=median_year_built"
+    },
+    {
+     "label": "Map, Analysis tab (group Housing · Housing stock): shade municipalities by",
+     "href": "index.html#e=median_year_built.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-02",
+  "example": "Puerto Rico, 2020-2024 window: 1979 (margin of error 1 year)."
+ },
+ {
+  "id": "housing.overcrowded_pct",
+  "name": "Overcrowded homes (more than 1 person per room)",
+  "domain": "housing",
+  "domains": ["housing"],
+  "group": "Housing stock",
+  "kind": "variable",
+  "plain": "Out of every 100 homes where people live, how many have more than one person for every room. There is one value for each 5-year survey period, from 2006-2010 up to the latest period (2020-2024 in the 2026-10 snapshot).",
+  "definition": "Occupied housing units with more than 1.00 occupant per room, owners and renters together, divided by all occupied housing units, times 100, from American Community Survey (ACS) table B25014. Bathrooms, halls and open porches do not count as rooms.",
+  "unit": "% of occupied homes",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico (island total); also 901 barrios, 981 census tracts and 2,555 block groups",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "Five-year windows from 2006-2010 to 2020-2024, labeled 2010 to 2024 by their last year; a new window each year; rebuilt with each snapshot"
+  },
+  "method": "Computed in housing_series.py: [B25014 cells 005, 006, 007 (owner-occupied: 1.01 to 1.50, 1.51 to 2.00, 2.01 or more occupants per room) + cells 011, 012, 013 (renter-occupied, same three bands)] / B25014 cell 001 (all occupied housing units) x 100, rounded to two decimals. Each value pools five years of survey answers, so it describes the whole period, not one date (see methods.acs_windows). It is labeled by the last year: 2024 means 2020-2024. In the data file and the CSV (comma-separated values) download only that last year heads the column, so cite the window in full: 'American Community Survey 5-year estimates, 2020-2024'. The data file and the CSV download keep two decimals; the Housing page shows one (for example Puerto Rico in 2020-2024: 2.3% with a margin of ±0.1 pts). The file also carries a margin of error (MOE, 90% confidence; see measures.margin_of_error) in percentage points, calculated in housing_series.py with the Census Bureau's standard formula for a share. The margins of the cells in the numerator are first combined by taking the square root of the sum of their squares. If that formula would need the square root of a negative number, the Census Bureau's ratio formula is used instead.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "ACS 5-year table B25014 (Tenure by Occupants per Room), cells B25014_005 to B25014_007, B25014_011 to B25014_013 and B25014_001. Files at www2.census.gov/programs-surveys/acs/summary_file/: windows labeled 2010-2020 are in {year}/data/5_year_seq_by_state/PuertoRico/All_Geographies_Not_Tracts_Block_Groups/ (each table sits in a numbered sequence file, which is located with the Census Bureau's sequence lookup file); windows labeled 2021-2024 are in {year}/table-based-SF/data/5YRData/ as acsdt5y{year}-b25014.dat. Definitions: Census Bureau, American Community Survey 2024 Subject Definitions.",
+  "how_to_read": "In the 2026-10 snapshot, the island-wide share falls from 5.79% in 2006-2010 to 2.26% in 2020-2024 (margin of error 0.12 percentage points). In 2020-2024 it runs from 0.25% (Isabela) to 6.87% (Maunabo); Culebra is at 6.30%. Compare windows that do not overlap (see methods.acs_windows), and check that the difference is larger than the margins of error.",
+  "caveats": [
+   "The share is of occupied homes only. Empty homes are not in the denominator.",
+   "The measure counts homes where there is more than one person per room. It does not count the people in them, and it does not say whether a home is in good repair or safe. Rooms follow the Census Bureau's definition: bathrooms, halls and open porches do not count (ACS 2024 Subject Definitions, 'Rooms').",
+   "Small percentages on small bases are noisy. In the 2026-10 snapshot, 72 of the 78 municipalities have a margin of error above 30% of the estimate in the 2020-2024 window (only the Housing page's full-data table shows these in italics). Treat small differences between municipalities as noise.",
+   "The Puerto Rico value is computed from island totals (for a median or an average, it is the Census Bureau's island estimate), not by averaging the 78 municipality values.",
+   "Also published for barrios, census tracts and block groups (acs_barrio.json, acs_tract.json and acs_blockgroup.json), each value with its margin of error where the Census Bureau gives one. Below the municipality the figure is rough. In 2020-2024 the margin of error is above 30% of the estimate (the CSV by area marks such values as less reliable; no map or table draws areas below the municipality yet) for more than 99% of barrios, 100% of census tracts and 100% of block groups that have a value. See methods.small_area_estimates."
+  ],
+  "see_also": [
+   "housing.households",
+   "housing.avg_household_size",
+   "housing.residents_per_unit",
+   "municipalities.acs_reliability",
+   "methods.acs_windows",
+   "measures.margin_of_error",
+   "methods.small_area_estimates"
+  ],
+  "where": {
+   "files": [
+    "housing_series.json:overcrowded_pct",
+    "acs_barrio.json:overcrowded_pct",
+    "acs_tract.json:overcrowded_pct",
+    "acs_blockgroup.json:overcrowded_pct"
+   ],
+   "view": [
+    {
+     "label": "Housing page: map and ranked chart",
+     "href": "housing.html#stock"
+    },
+    {
+     "label": "Housing page: full data for every year and municipality, with CSV download and a link back to this entry",
+     "href": "housing.html?d=overcrowded_pct"
+    },
+    {
+     "label": "Housing page: municipality profile, with a small trend line beside each value (one point per five-year window; the caption, for example '15 yrs', counts window labels)",
+     "href": "housing.html#profile"
+    },
+    {
+     "label": "Map, Analysis tab (group Housing · Housing stock): shade municipalities by",
+     "href": "index.html#e=overcrowded_pct.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-02",
+  "example": "Puerto Rico, 2020-2024 window: 2.26% (margin of error 0.12 percentage points)."
+ },
+ {
+  "id": "housing.households",
+  "name": "Households (occupied housing units)",
+  "domain": "population",
+  "domains": ["population", "housing"],
+  "group": "Households",
+  "kind": "variable",
+  "plain": "The estimated number of homes where people live. Each occupied home is one household. There is one value for each 5-year survey period, from 2006-2010 up to the latest period (2020-2024 in the 2026-10 snapshot).",
+  "definition": "Occupied housing units, from American Community Survey (ACS) table B25003. A household is all the people who live in one housing unit, so households and occupied units are the same count.",
+  "unit": "households",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico (island total); also 901 barrios, 981 census tracts and 2,555 block groups",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "Five-year windows from 2006-2010 to 2020-2024, labeled 2010 to 2024 by their last year; a new window each year; rebuilt with each snapshot"
+  },
+  "method": "ACS 5-year table B25003 (Tenure), cell 001 (all occupied housing units), taken as the Census Bureau publishes it. Each value pools five years of survey answers, so it describes the whole period, not one date (see methods.acs_windows). It is labeled by the last year: 2024 means 2020-2024. In the data file and the CSV (comma-separated values) download only that last year heads the column, so cite the window in full: 'American Community Survey 5-year estimates, 2020-2024'. The file carries the Census Bureau's margin of error (MOE, 90% confidence; see measures.margin_of_error) for each municipality and window, in households.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "ACS 5-year table B25003 (Tenure), cell B25003_001. Files at www2.census.gov/programs-surveys/acs/summary_file/: windows labeled 2010-2020 are in {year}/data/5_year_seq_by_state/PuertoRico/All_Geographies_Not_Tracts_Block_Groups/ (each table sits in a numbered sequence file, which is located with the Census Bureau's sequence lookup file); windows labeled 2021-2024 are in {year}/table-based-SF/data/5YRData/ as acsdt5y{year}-b25003.dat. Definitions: Census Bureau, American Community Survey 2024 Subject Definitions.",
+  "how_to_read": "In the 2026-10 snapshot, the island-wide count is 1,227,039 in 2006-2010 and 1,290,866 in 2020-2024 (margin of error 4,630). In the same snapshot, households plus vacant units (housing.vacant_units) equal housing units (housing.housing_units) in every municipality and window. Compare windows that do not overlap (see methods.acs_windows), and check that the difference is larger than the margins of error. In the same snapshot, the Puerto Rico count equals the sum of the 78 municipality counts in every window.",
+  "caveats": [
+   "In the 2026-10 snapshot, the 2020-2024 window is 51,623 households (4.2%) above the 2019-2023 window. Earlier steps between windows ran from -1.4% to +1.9%. The housing-unit count also steps up between the same two windows (+3.8%; see housing.housing_units). The observatory shows the figure as the Census Bureau published it. The data do not explain the jump, so do not read the step as growth in households.",
+   "It counts households, not people. For people per household use housing.avg_household_size.",
+   "It is a survey estimate. In the 2026-10 snapshot, none of the 78 municipalities has a margin of error above 30% of its estimate in the 2020-2024 window.",
+   "Each window pools five years of interviews, so it does not describe conditions on one date. The windows labeled 2017 to 2021 include the 2017 hurricane season, and those labeled 2020 to 2024 include the pandemic years. The data alone cannot show why a figure changed.",
+   "Also published for barrios, census tracts and block groups (acs_barrio.json, acs_tract.json and acs_blockgroup.json), each value with its margin of error where the Census Bureau gives one. Below the municipality the figure is rough. In 2020-2024 the margin of error is above 30% of the estimate (the CSV by area marks such values as less reliable; no map or table draws areas below the municipality yet) for 37% of barrios, 7% of census tracts and 52% of block groups that have a value. See methods.small_area_estimates."
+  ],
+  "see_also": [
+   "housing.housing_units",
+   "housing.vacant_units",
+   "housing.avg_household_size",
+   "housing.owner_occupied_pct",
+   "housing.population",
+   "municipalities.acs_reliability",
+   "municipalities.acs_table_map",
+   "methods.acs_windows",
+   "measures.margin_of_error",
+   "methods.small_area_estimates"
+  ],
+  "where": {
+   "files": [
+    "housing_series.json:households",
+    "acs_barrio.json:households",
+    "acs_tract.json:households",
+    "acs_blockgroup.json:households"
+   ],
+   "view": [
+    {
+     "label": "Housing page: full data for every year and municipality, with CSV download and a link back to this entry",
+     "href": "housing.html?d=households"
+    },
+    {
+     "label": "Map, Analysis tab (group Housing · Households): shade municipalities by",
+     "href": "index.html#e=households.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-02",
+  "example": "Puerto Rico, 2020-2024 window: 1,290,866 households (margin of error 4,630)."
+ },
+ {
+  "id": "housing.avg_household_size",
+  "name": "Average household size",
+  "domain": "population",
+  "domains": ["population", "housing"],
+  "group": "Households",
+  "kind": "variable",
+  "plain": "The average number of people living in each home where people live. There is one value for each 5-year survey period, from 2006-2010 up to the latest period (2020-2024 in the 2026-10 snapshot).",
+  "definition": "People living in occupied housing units divided by the number of occupied housing units, from American Community Survey (ACS) table B25010. People in group housing are not counted.",
+  "unit": "people per household",
+  "value_type": "level",
+  "geography": "78 municipalities and Puerto Rico (island total); also 901 barrios, 981 census tracts and 2,555 block groups",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "Five-year windows from 2006-2010 to 2020-2024, labeled 2010 to 2024 by their last year; a new window each year; rebuilt with each snapshot"
+  },
+  "method": "ACS 5-year table B25010 (Average Household Size of Occupied Housing Units by Tenure), cell 001 (all occupied housing units), taken as the Census Bureau publishes it, with two decimals. Each value pools five years of survey answers, so it describes the whole period, not one date (see methods.acs_windows). It is labeled by the last year: 2024 means 2020-2024. In the data file and the CSV (comma-separated values) download only that last year heads the column, so cite the window in full: 'American Community Survey 5-year estimates, 2020-2024'. The file carries the Census Bureau's margin of error (MOE, 90% confidence; see measures.margin_of_error) for each municipality and window, in people per household.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "ACS 5-year table B25010 (Average Household Size of Occupied Housing Units by Tenure), cell B25010_001. Files at www2.census.gov/programs-surveys/acs/summary_file/: windows labeled 2010-2020 are in {year}/data/5_year_seq_by_state/PuertoRico/All_Geographies_Not_Tracts_Block_Groups/ (each table sits in a numbered sequence file, which is located with the Census Bureau's sequence lookup file); windows labeled 2021-2024 are in {year}/table-based-SF/data/5YRData/ as acsdt5y{year}-b25010.dat. Definitions: Census Bureau, American Community Survey 2024 Subject Definitions.",
+  "how_to_read": "In the 2026-10 snapshot, the island-wide average falls from 3.03 in 2006-2010 to 2.48 in 2020-2024 (margin of error 0.01). In 2020-2024 it runs from 2.12 (Guayama) to 3.15 (Naranjito). Compare windows that do not overlap (see methods.acs_windows), and check that the difference is larger than the margins of error.",
+  "caveats": [
+   "It is not residents per housing unit (housing.residents_per_unit), which also divides by empty homes and counts people in group housing.",
+   "It is an average, so it hides the mix of one-person and large households.",
+   "It is a survey estimate. In the 2026-10 snapshot, none of the 78 municipalities has a margin of error above 30% of its estimate in the 2020-2024 window.",
+   "The Puerto Rico value is computed from island totals (for a median or an average, it is the Census Bureau's island estimate), not by averaging the 78 municipality values.",
+   "Also published for barrios, census tracts and block groups (acs_barrio.json, acs_tract.json and acs_blockgroup.json), each value with its margin of error where the Census Bureau gives one. Below the municipality the figure is rough. In 2020-2024 the margin of error is above 30% of the estimate (the CSV by area marks such values as less reliable; no map or table draws areas below the municipality yet) for 13% of barrios, less than 1% of census tracts and 10% of block groups that have a value. See methods.small_area_estimates."
+  ],
+  "see_also": [
+   "housing.households",
+   "housing.residents_per_unit",
+   "housing.overcrowded_pct",
+   "housing.population",
+   "municipalities.acs_reliability",
+   "methods.acs_windows",
+   "measures.margin_of_error",
+   "methods.small_area_estimates"
+  ],
+  "where": {
+   "files": [
+    "housing_series.json:avg_household_size",
+    "acs_barrio.json:avg_household_size",
+    "acs_tract.json:avg_household_size",
+    "acs_blockgroup.json:avg_household_size"
+   ],
+   "view": [
+    {
+     "label": "Housing page: full data for every year and municipality, with CSV download and a link back to this entry",
+     "href": "housing.html?d=avg_household_size"
+    },
+    {
+     "label": "Map, Analysis tab (group Housing · Households): shade municipalities by",
+     "href": "index.html#e=avg_household_size.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-02",
+  "example": "Puerto Rico, 2020-2024 window: 2.48 people per household (margin of error 0.01)."
+ },
+ {
+  "id": "housing.owner_occupied_pct",
+  "name": "Owner-occupied share of occupied units",
+  "domain": "housing",
+  "domains": ["housing"],
+  "group": "Owners and renters",
+  "kind": "variable",
+  "plain": "Out of every 100 homes where people live, how many are lived in by their owners. The rest are lived in by renters. There is one value for each 5-year survey period, from 2006-2010 up to the latest period (2020-2024 in the 2026-10 snapshot).",
+  "definition": "Owner-occupied housing units divided by all occupied housing units, times 100, from American Community Survey (ACS) table B25003. Empty homes are not in the denominator.",
+  "unit": "% of occupied homes",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico (island total); also 901 barrios, 981 census tracts and 2,555 block groups",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "Five-year windows from 2006-2010 to 2020-2024, labeled 2010 to 2024 by their last year; a new window each year; rebuilt with each snapshot"
+  },
+  "method": "Computed in housing_series.py: B25003 cell 002 (owner-occupied) / B25003 cell 001 (all occupied housing units) x 100, rounded to two decimals. Each value pools five years of survey answers, so it describes the whole period, not one date (see methods.acs_windows). It is labeled by the last year: 2024 means 2020-2024. In the data file and the CSV (comma-separated values) download only that last year heads the column, so cite the window in full: 'American Community Survey 5-year estimates, 2020-2024'. The data file and the CSV download keep two decimals; the Housing page shows one (for example Puerto Rico in 2020-2024: 67.9% with a margin of ±0.3 pts). The file also carries a margin of error (MOE, 90% confidence; see measures.margin_of_error) in percentage points, calculated in housing_series.py with the Census Bureau's standard formula for a share. If that formula would need the square root of a negative number, the Census Bureau's ratio formula is used instead.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "ACS 5-year table B25003 (Tenure), cells B25003_002 and B25003_001. Files at www2.census.gov/programs-surveys/acs/summary_file/: windows labeled 2010-2020 are in {year}/data/5_year_seq_by_state/PuertoRico/All_Geographies_Not_Tracts_Block_Groups/ (each table sits in a numbered sequence file, which is located with the Census Bureau's sequence lookup file); windows labeled 2021-2024 are in {year}/table-based-SF/data/5YRData/ as acsdt5y{year}-b25003.dat. Definitions: Census Bureau, American Community Survey 2024 Subject Definitions.",
+  "how_to_read": "In the 2026-10 snapshot, the island-wide share falls from 72.43% in 2006-2010 to 67.91% in 2020-2024 (margin of error 0.25 percentage points). In 2020-2024 it runs from 49.77% (Mayagüez) to 80.52% (Toa Alta). Compare windows that do not overlap (see methods.acs_windows), and check that the difference is larger than the margins of error.",
+  "caveats": [
+   "It describes who lives in the home, not who holds the title. A home owned by someone who lives elsewhere and rented out counts as renter-occupied.",
+   "Owner-occupied includes homes with and without a mortgage. Renter-occupied includes homes occupied without payment of rent, which the Census Bureau shows separately as 'No rent paid' (ACS 2024 Subject Definitions, 'Tenure').",
+   "It is a survey estimate. In the 2026-10 snapshot, none of the 78 municipalities has a margin of error above 30% of its estimate in the 2020-2024 window.",
+   "The Puerto Rico value is computed from island totals (for a median or an average, it is the Census Bureau's island estimate), not by averaging the 78 municipality values. In the 2026-10 snapshot, the island share in 2020-2024 is 67.91%, while the plain average of the 78 municipality shares is 70.47%.",
+   "Also published for barrios, census tracts and block groups (acs_barrio.json, acs_tract.json and acs_blockgroup.json), each value with its margin of error where the Census Bureau gives one. Below the municipality the figure is rough. In 2020-2024 the margin of error is above 30% of the estimate (the CSV by area marks such values as less reliable; no map or table draws areas below the municipality yet) for 17% of barrios, 4% of census tracts and 25% of block groups that have a value. See methods.small_area_estimates."
+  ],
+  "see_also": [
+   "housing.households",
+   "housing.rental_vacancy_pct",
+   "housing.homeowner_vacancy_pct",
+   "municipalities.owner_occupied_pct",
+   "municipalities.acs_reliability",
+   "municipalities.acs_table_map",
+   "methods.acs_windows",
+   "measures.margin_of_error",
+   "methods.small_area_estimates"
+  ],
+  "where": {
+   "files": [
+    "housing_series.json:owner_occupied_pct",
+    "acs_barrio.json:owner_occupied_pct",
+    "acs_tract.json:owner_occupied_pct",
+    "acs_blockgroup.json:owner_occupied_pct"
+   ],
+   "view": [
+    {
+     "label": "Housing page: map and ranked chart",
+     "href": "housing.html#tenure"
+    },
+    {
+     "label": "Housing page: full data for every year and municipality, with CSV download and a link back to this entry",
+     "href": "housing.html?d=owner_occupied_pct"
+    },
+    {
+     "label": "Housing page: municipality profile, with a small trend line beside each value (one point per five-year window; the caption, for example '15 yrs', counts window labels)",
+     "href": "housing.html#profile"
+    },
+    {
+     "label": "Map, Analysis tab (group Housing · Households): shade municipalities by",
+     "href": "index.html#e=owner_occupied_pct.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-02",
+  "example": "Puerto Rico, 2020-2024 window: 67.91% (margin of error 0.25 percentage points)."
+ },
+ {
+  "id": "housing.median_age",
+  "name": "Median age",
+  "domain": "population",
+  "domains": ["population"],
+  "group": "Population",
+  "kind": "variable",
+  "plain": "The age that splits residents in half: half are younger and half are older. There is one value, in years, for each 5-year survey period, from 2006-2010 up to the latest period (2020-2024 in the 2026-10 snapshot).",
+  "definition": "Median age of all residents, in years, from American Community Survey (ACS) table B01002.",
+  "unit": "years",
+  "value_type": "level",
+  "geography": "78 municipalities and Puerto Rico (island total); also 901 barrios, 981 census tracts and 2,555 block groups",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "Five-year windows from 2006-2010 to 2020-2024, labeled 2010 to 2024 by their last year; a new window each year; rebuilt with each snapshot"
+  },
+  "method": "ACS 5-year table B01002 (Median Age by Sex), cell 001 (both sexes), taken as the Census Bureau publishes it, with one decimal. Each value pools five years of survey answers, so it describes the whole period, not one date (see methods.acs_windows). It is labeled by the last year: 2024 means 2020-2024. In the data file and the CSV (comma-separated values) download only that last year heads the column, so cite the window in full: 'American Community Survey 5-year estimates, 2020-2024'. The file carries the Census Bureau's margin of error (MOE, 90% confidence; see measures.margin_of_error) for each municipality and window, in years.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "ACS 5-year table B01002 (Median Age by Sex), cell B01002_001. Files at www2.census.gov/programs-surveys/acs/summary_file/: windows labeled 2010-2020 are in {year}/data/5_year_seq_by_state/PuertoRico/All_Geographies_Not_Tracts_Block_Groups/ (each table sits in a numbered sequence file, which is located with the Census Bureau's sequence lookup file); windows labeled 2021-2024 are in {year}/table-based-SF/data/5YRData/ as acsdt5y{year}-b01002.dat. Definitions: Census Bureau, American Community Survey 2024 Subject Definitions.",
+  "how_to_read": "In the 2026-10 snapshot, the island-wide median age rises from 35.9 in 2006-2010 to 44.8 in 2020-2024 (margin of error 0.2 years). In 2020-2024 it runs from 40.0 (Naguabo) to 50.2 (Hormigueros). Compare windows that do not overlap (see methods.acs_windows), and check that the difference is larger than the margins of error.",
+  "caveats": [
+   "It is a survey estimate. In the 2026-10 snapshot, none of the 78 municipalities has a margin of error above 30% of its estimate in the 2020-2024 window.",
+   "On the Analysis tab the margin of error of median age prints as '± ... pts', but it is in years (see measures.margin_of_error).",
+   "It comes from the survey, while the share aged 65 and over (housing.age65_pct) comes from the Census Bureau's population estimates. They measure different things, a middle value and a share, so the two need not move together.",
+   "A median does not show the spread: a place with many children and many older adults can have the same median as a place of middle-aged adults.",
+   "The Puerto Rico value is computed from island totals (for a median or an average, it is the Census Bureau's island estimate), not by averaging the 78 municipality values.",
+   "Also published for barrios, census tracts and block groups (acs_barrio.json, acs_tract.json and acs_blockgroup.json), each value with its margin of error where the Census Bureau gives one. Below the municipality the figure is rough. In 2020-2024 the margin of error is above 30% of the estimate (the CSV by area marks such values as less reliable; no map or table draws areas below the municipality yet) for 23% of barrios, 5% of census tracts and 35% of block groups that have a value. A median at the edge of an open-ended interval (the Census Bureau prints the boundary) or equal to 0 is not an estimate and is left empty. See methods.small_area_estimates."
+  ],
+  "see_also": [
+   "housing.age65_pct",
+   "housing.population",
+   "municipalities.median_age",
+   "study.table_11",
+   "municipalities.acs_reliability",
+   "municipalities.acs_table_map",
+   "methods.acs_windows",
+   "measures.margin_of_error",
+   "methods.small_area_estimates"
+  ],
+  "where": {
+   "files": [
+    "housing_series.json:median_age",
+    "acs_barrio.json:median_age",
+    "acs_tract.json:median_age",
+    "acs_blockgroup.json:median_age"
+   ],
+   "view": [
+    {
+     "label": "Housing page: full data for every year and municipality, with CSV download and a link back to this entry",
+     "href": "housing.html?d=median_age"
+    },
+    {
+     "label": "Housing page: municipality profile, with a small trend line beside each value (one point per five-year window; the caption, for example '15 yrs', counts window labels)",
+     "href": "housing.html#profile"
+    },
+    {
+     "label": "Map, Analysis tab (group People): shade municipalities by",
+     "href": "index.html#e=median_age.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-02",
+  "example": "Puerto Rico, 2020-2024 window: 44.8 years (margin of error 0.2)."
+ }
+]

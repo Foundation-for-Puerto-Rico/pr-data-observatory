@@ -1,0 +1,266 @@
+{
+ "economy.qcew_jobs": {
+  "name": "Empleos (todos los patronos)",
+  "how_to_read": "Úselo para ver dónde está el trabajo. En el corte de datos 2026-10, San Juan tiene más empleos: 253,816 en 2025, el 27% de los 947,557 de la isla. No es el número de residentes con empleo. Un lugar que atrae a personas que vienen de otros municipios a trabajar muestra más empleos que personas trabajadoras residentes; para comparar ambos, use empleos por residente con empleo. La pestaña Análisis puede mostrarlo por cada 1,000 residentes, por kilómetro cuadrado o como proporción del total de la isla. En la ventana de información del conjunto de datos en la pestaña Análisis (se abre con el botón de información junto al conjunto de datos), el botón \"Descargar todos los años (CSV)\" guarda todos los años en un archivo de valores separados por comas llamado pr_economy_qcew_jobs.csv; las celdas en blanco son valores que el BLS suprime o no informa.",
+  "_en": {
+   "name": "470e5c0f",
+   "how_to_read": "edbf7f54"
+  }
+ },
+ "economy.qcew_private_jobs": {
+  "name": "Empleos del sector privado",
+  "how_to_read": "Los empleos privados son los empleos en patronos privados ubicados en el municipio, no las personas residentes que trabajan en el sector privado. Reste los empleos privados del total de empleos para obtener los empleos del gobierno; el observatorio lo hace en la variable de empleos del gobierno. En el corte de datos 2026-10, los empleos privados son el 79.7% de los empleos de la isla en 2025 (755,110 de 947,557).",
+  "_en": {
+   "name": "206c86e1",
+   "how_to_read": "020e16cd"
+  }
+ },
+ "economy.qcew_gov_jobs": {
+  "name": "Empleos del gobierno (federal, estatal, local)",
+  "how_to_read": "Los empleos del gobierno se cuentan donde está la oficina del gobierno, aunque la oficina sirva a toda la isla. En el corte de datos 2026-10, San Juan tiene 59,579 de los 192,447 empleos del gobierno de la isla en 2025 (31%). Un conteo alto en un municipio muestra dónde están ubicados los patronos públicos; no muestra cuántas personas residentes trabajan para el gobierno. Para eso, vea \"Residentes que trabajan para el gobierno\" (economy.gov_worker_pct), de la encuesta del Censo.",
+  "_en": {
+   "name": "37a04641",
+   "how_to_read": "72ad29f5"
+  }
+ },
+ "economy.gov_job_share_pct": {
+  "name": "Proporción de empleos del gobierno",
+  "how_to_read": "Una proporción alta significa que los patronos públicos ofrecen la mayoría de los empleos locales; una proporción baja significa una base de empleos mayormente privada. En el corte de datos 2026-10, la proporción de la isla es 20.3% en 2025, y las proporciones municipales van de 6.1% (Guaynabo) a 76.6% (Maunabo), con un valor del medio de 23.1%. Describe los empleos ubicados en el municipio, no el trabajo de las personas residentes.",
+  "_en": {
+   "name": "866dc7cf",
+   "how_to_read": "46cb19a9"
+  }
+ },
+ "economy.qcew_estabs": {
+  "name": "Establecimientos",
+  "how_to_read": "Divida los empleos entre los establecimientos para obtener el tamaño promedio de un lugar de trabajo. En el corte de datos 2026-10, el promedio de la isla es 18.0 empleos por lugar de trabajo en 2025 (947,557 empleos, 52,582 lugares de trabajo). Cuenta lugares de trabajo, no compañías ni negocios: una cadena con 30 tiendas cuenta 30 veces. No se cuenta a una persona que trabaja sola y no tiene empleados.",
+  "_en": {
+   "name": "9b2f630f",
+   "how_to_read": "4556aa20"
+  }
+ },
+ "economy.qcew_wages": {
+  "name": "Total de salarios pagados",
+  "how_to_read": "En el corte de datos 2026-10, los patronos de San Juan pagaron $11.23 mil millones en 2025, el 32.5% de los $34.51 mil millones de la isla. Salvo por el redondeo, los salarios son los empleos multiplicados por la paga promedio; por eso, la nómina de un municipio depende tanto de cuántos empleos tiene como de cuánto pagan. Muestra dónde se paga el dinero, que no es donde viven las personas que lo ganan. Para comparar años, marque la opción ajustado por inflación en la pestaña Análisis; usa el índice de precios al consumidor de EE. UU. (IPC-U, promedio de las ciudades de EE. UU.) porque las fuentes del observatorio no tienen un índice de Puerto Rico.",
+  "_en": {
+   "name": "88696a37",
+   "how_to_read": "3b31c1fc"
+  }
+ },
+ "economy.qcew_avg_pay": {
+  "name": "Paga anual promedio por empleo",
+  "how_to_read": "En el corte de datos 2026-10, el promedio de la isla subió de $27,097 en 2014 a $36,419 en 2025. Juncos tiene la paga promedio más alta en todos los años de 2014 a 2025 ($60,788 en 2025). La más baja es Las Marías en 2025 ($21,351). Un valor alto significa que los empleos ubicados allí pagan más en promedio; puede reflejar la combinación de industrias, y no significa que las personas residentes ganen más. Para el ingreso de las personas residentes, use las variables de ingreso del hogar.",
+  "_en": {
+   "name": "604611a0",
+   "how_to_read": "edeefca2"
+  }
+ },
+ "economy.jobs_per_employed_resident": {
+  "name": "Empleos por residente con empleo",
+  "how_to_read": "Un valor de 1 significa un empleo cubierto por cada residente con empleo. Compare un municipio con el valor de la isla, no con 1. Un valor muy por encima del de la isla apunta a un lugar que atrae personas trabajadoras; un valor bajo apunta a un lugar donde muchas personas residentes trabajan en otro sitio. No dice dónde trabajan. En el corte de datos 2026-10, el valor de la isla es 0.82 en 2024, menos de 1; una razón es que el conteo de empleos deja fuera el trabajo por cuenta propia y el informal, que el conteo de residentes sí incluye. Ese año, 9 de los 78 municipios están por encima de 1: San Juan (1.91), Mayagüez (1.52), Guaynabo (1.50), Cataño (1.44), Barceloneta (1.27), Aguadilla (1.21), Ponce (1.20), Manatí (1.19), Humacao (1.05). El valor municipal del medio es 0.50, así que un municipio típico tiene cerca de un empleo cubierto por cada dos residentes con empleo. El más bajo es Toa Alta (0.16), y Toa Alta es el más bajo en todos los años de 2014 a 2024.",
+  "_en": {
+   "name": "33b172bd",
+   "how_to_read": "9d216ba2"
+  }
+ },
+ "economy.tourism_jobs": {
+  "name": "Empleos del turismo (artes, entretenimiento, recreación, alojamiento, comida)",
+  "how_to_read": "Mide los empleos en las industrias que usan los visitantes. No dice cuántos de los clientes son visitantes. La vista Economía del turismo de la pestaña Análisis lo muestra como proporción de los empleos del municipio. En el corte de datos 2026-10, los empleos del turismo son el 10.5% de los empleos de la isla en 2025 (99,477), frente a 8.8% en 2014. En 2024, las mayores proporciones de empleos locales entre los municipios con un valor son Rincón (33%), Río Grande (31%), Vieques (26%) y Dorado (26%).",
+  "_en": {
+   "name": "434a80d8",
+   "how_to_read": "9a8c330a"
+  }
+ },
+ "economy.accommodation_jobs": {
+  "name": "Empleos en alojamiento (hoteles, posadas, casas de huéspedes)",
+  "how_to_read": "En el corte de datos 2026-10, la cifra de la isla bajó de 15,291 en 2014 a 8,525 en 2020 y se recuperó a 14,947 en 2025. En 2024, los mayores valores municipales publicados son Carolina (1,369), Dorado (1,198) y Ponce (1,031). En 2024, los valores municipales suman solo el 40% de la cifra de la isla; ese año el BLS ocultó el valor de San Juan (4,983 empleos en 2023) y también otras celdas. Suman el 72% en 2014 y el 63% en 2025. No ordene los municipios según esta variable sin verificar cuáles están en blanco.",
+  "_en": {
+   "name": "93243d1d",
+   "how_to_read": "05754b05"
+  }
+ },
+ "economy.food_service_jobs": {
+  "name": "Empleos en servicios de comida (restaurantes, bares)",
+  "how_to_read": "En el corte de datos 2026-10, la cifra de la isla subió de 61,116 en 2014 a 78,341 en 2025, con una baja a 54,827 en 2020. En 2024, los mayores valores municipales publicados son Carolina (5,527), Ponce (4,047) y Caguas (3,700). Los valores municipales suman el 50% de la cifra de la isla en 2024 (74% en 2014, 68% en 2025); 2024 es bajo porque ese año el BLS ocultó el valor de San Juan (18,054 empleos en 2023). Los restaurantes sirven tanto a residentes como a visitantes, así que esto no es un conteo de empleos ligados a visitantes.",
+  "_en": {
+   "name": "5aad20c6",
+   "how_to_read": "e0db9f95"
+  }
+ },
+ "economy.industry_hhi": {
+  "name": "Concentración de industrias (índice de Herfindahl)",
+  "how_to_read": "Más bajo es más diversificado. Con los empleos repartidos por igual entre los 20 grupos, la puntuación es 500; con todos los empleos en un solo grupo, es 10,000. En el corte de datos 2026-10, los valores municipales de 2024 van de 814 (Guaynabo) a 5,940 (Maunabo), y el valor de la isla es 1,040 (calculado con los 19 sectores). Un valor alto puede venir de un sector privado grande o de una proporción grande de gobierno, porque el gobierno cuenta como un solo grupo. La puntuación compara lugares y años dentro de estos datos. No es una medida de la salud económica. El \"Sector con más empleos\" del inspector no toma en cuenta los sectores ocultos y cuenta el gobierno como un solo grupo, así que puede indicar Gobierno o un sector más pequeño cuando se suprime un sector más grande; vea su ficha.",
+  "_en": {
+   "name": "c37a104f",
+   "how_to_read": "f09308ae"
+  }
+ },
+ "economy.jobs_naics_11": {
+  "name": "Empleos: Agricultura, silvicultura, pesca y caza (NAICS 11)",
+  "how_to_read": "En el corte de datos 2026-10, el total de la isla es 11,565 en 2014 y 7,811 en 2024 (32.5% menos), y 7,602 en 2025. Es el 1.0% de los empleos privados de la isla en 2024. Los mayores valores municipales publicados en 2024 son Lares (590), Santa Isabel (555) y San Sebastián (444). Los valores municipales publicados suman el 67% de la cifra de la isla en 2024, así que el 33% de la cifra de la isla no está en ellos (celdas ocultas, más una diferencia que los archivos del BLS no explican: los empleos privados de la isla según el BLS están 0.5% por encima de la suma de los 78 municipios en 2024). San Juan no tiene un valor publicado en ningún año de 2014 a 2025. En la pestaña Análisis también se puede sombrear como proporción de los empleos locales o como cociente de localización (vea la ficha del método QCEW).",
+  "_en": {
+   "name": "409b56f4",
+   "how_to_read": "91d1a047"
+  }
+ },
+ "economy.jobs_naics_21": {
+  "name": "Empleos: Minería y extracción de canteras (NAICS 21)",
+  "how_to_read": "En el corte de datos 2026-10, el total de la isla es 611 en 2014 y 639 en 2024 (4.6% más), y está en blanco en 2025. Es el 0.1% de los empleos privados de la isla en 2024. El único municipio con un valor publicado en 2024 es Ponce (26 empleos). Ese valor es el 4% de la cifra de la isla, así que el 96% de la cifra de la isla no está en los valores municipales publicados (celdas ocultas, más una diferencia que los archivos del BLS no explican: los empleos privados de la isla según el BLS están 0.5% por encima de la suma de los 78 municipios en 2024). En la pestaña Análisis también se puede sombrear como proporción de los empleos locales o como cociente de localización (vea la ficha del método QCEW).",
+  "_en": {
+   "name": "9087b6d1",
+   "how_to_read": "22844c44"
+  }
+ },
+ "economy.jobs_naics_22": {
+  "name": "Empleos: Servicios públicos (energía, agua, gas) (NAICS 22)",
+  "how_to_read": "En el corte de datos 2026-10, el total de la isla es 308 en 2014 y 3,261 en 2024, y está en blanco en 2025. Es el 0.4% de los empleos privados de la isla en 2024. Los mayores valores municipales publicados en 2024 son San Juan (312), Caguas (300) y Yabucoa (8). Los valores municipales publicados suman el 19% de la cifra de la isla en 2024, así que el 81% de la cifra de la isla no está en ellos (celdas ocultas, más una diferencia que los archivos del BLS no explican: los empleos privados de la isla según el BLS están 0.5% por encima de la suma de los 78 municipios en 2024). En la pestaña Análisis también se puede sombrear como proporción de los empleos locales o como cociente de localización (vea la ficha del método QCEW).",
+  "_en": {
+   "name": "d1a1f9b1",
+   "how_to_read": "fa001948"
+  }
+ },
+ "economy.jobs_naics_23": {
+  "name": "Empleos: Construcción (NAICS 23)",
+  "how_to_read": "En el corte de datos 2026-10, el total de la isla es 26,793 en 2014 y 37,207 en 2024 (38.9% más), y está en blanco en 2025. Es el 5.0% de los empleos privados de la isla en 2024. Los mayores valores municipales publicados en 2024 son San Juan (10,959), Guaynabo (3,154) y Caguas (2,376). Los valores municipales publicados suman el 95% de la cifra de la isla en 2024, así que el 5% de la cifra de la isla no está en ellos (celdas ocultas, más una diferencia que los archivos del BLS no explican: los empleos privados de la isla según el BLS están 0.5% por encima de la suma de los 78 municipios en 2024). En la pestaña Análisis también se puede sombrear como proporción de los empleos locales o como cociente de localización (vea la ficha del método QCEW).",
+  "_en": {
+   "name": "62765e9d",
+   "how_to_read": "b5e12f67"
+  }
+ },
+ "economy.jobs_naics_31_33": {
+  "name": "Empleos: Manufactura (NAICS 31-33)",
+  "how_to_read": "En el corte de datos 2026-10, el total de la isla es 74,418 en 2014 y 82,629 en 2024 (11.0% más), y 80,188 en 2025. Es el 11.0% de los empleos privados de la isla en 2024. Los mayores valores municipales publicados en 2024 son San Juan (4,244), Juncos (4,211) y Arecibo (3,614). Los valores municipales publicados suman el 91% de la cifra de la isla en 2024, así que el 9% de la cifra de la isla no está en ellos (celdas ocultas, más una diferencia que los archivos del BLS no explican: los empleos privados de la isla según el BLS están 0.5% por encima de la suma de los 78 municipios en 2024). En la pestaña Análisis también se puede sombrear como proporción de los empleos locales o como cociente de localización (vea la ficha del método QCEW).",
+  "_en": {
+   "name": "03b81bf3",
+   "how_to_read": "874becd3"
+  }
+ },
+ "economy.jobs_naics_42": {
+  "name": "Empleos: Comercio al por mayor (NAICS 42)",
+  "how_to_read": "En el corte de datos 2026-10, el total de la isla es 31,474 en 2014 y 33,577 en 2024 (6.7% más), y 33,486 en 2025. Es el 4.5% de los empleos privados de la isla en 2024. Los mayores valores municipales publicados en 2024 son San Juan (7,229), Guaynabo (5,328) y Bayamón (4,930). Los valores municipales publicados suman el 87% de la cifra de la isla en 2024, así que el 13% de la cifra de la isla no está en ellos (celdas ocultas, más una diferencia que los archivos del BLS no explican: los empleos privados de la isla según el BLS están 0.5% por encima de la suma de los 78 municipios en 2024). En la pestaña Análisis también se puede sombrear como proporción de los empleos locales o como cociente de localización (vea la ficha del método QCEW).",
+  "_en": {
+   "name": "48ae742f",
+   "how_to_read": "c60f1802"
+  }
+ },
+ "economy.jobs_naics_44_45": {
+  "name": "Empleos: Comercio al por menor (NAICS 44-45)",
+  "how_to_read": "En el corte de datos 2026-10, el total de la isla es 130,221 en 2014 y 132,479 en 2024 (1.7% más), y 133,168 en 2025. Es el 17.6% de los empleos privados de la isla en 2024. Los mayores valores municipales publicados en 2024 son San Juan (22,680), Bayamón (10,657) y Carolina (8,549). Los valores municipales publicados suman el 99% de la cifra de la isla en 2024, así que el 1% de la cifra de la isla no está en ellos (celdas ocultas, más una diferencia que los archivos del BLS no explican: los empleos privados de la isla según el BLS están 0.5% por encima de la suma de los 78 municipios en 2024). En la pestaña Análisis también se puede sombrear como proporción de los empleos locales o como cociente de localización (vea la ficha del método QCEW).",
+  "_en": {
+   "name": "8a088102",
+   "how_to_read": "f0e91d86"
+  }
+ },
+ "economy.jobs_naics_48_49": {
+  "name": "Empleos: Transportación y almacenamiento (NAICS 48-49)",
+  "how_to_read": "En el corte de datos 2026-10, el total de la isla es 14,605 en 2014 y 20,708 en 2024 (41.8% más), y está en blanco en 2025. Es el 2.8% de los empleos privados de la isla en 2024. Los mayores valores municipales publicados en 2024 son Carolina (5,038), San Juan (5,015) y Cataño (1,124). Los valores municipales publicados suman el 72% de la cifra de la isla en 2024, así que el 28% de la cifra de la isla no está en ellos (celdas ocultas, más una diferencia que los archivos del BLS no explican: los empleos privados de la isla según el BLS están 0.5% por encima de la suma de los 78 municipios en 2024). En la pestaña Análisis también se puede sombrear como proporción de los empleos locales o como cociente de localización (vea la ficha del método QCEW).",
+  "_en": {
+   "name": "60f7df4a",
+   "how_to_read": "be479d3a"
+  }
+ },
+ "economy.jobs_naics_51": {
+  "name": "Empleos: Información (NAICS 51)",
+  "how_to_read": "En el corte de datos 2026-10, el total de la isla es 20,014 en 2014 y 13,897 en 2024 (30.6% menos), y está en blanco en 2025. Es el 1.8% de los empleos privados de la isla en 2024. Los mayores valores municipales publicados en 2024 son Guaynabo (3,209), Bayamón (467) y Caguas (429). Los valores municipales publicados suman el 49% de la cifra de la isla en 2024, así que el 51% de la cifra de la isla no está en ellos (celdas ocultas, más una diferencia que los archivos del BLS no explican: los empleos privados de la isla según el BLS están 0.5% por encima de la suma de los 78 municipios en 2024). El valor de San Juan se suprime en 2023, 2024 y 2025. Su último valor publicado fue de 6,221 empleos en 2022, frente a 3,560 de Guaynabo ese año, así que San Juan queda fuera de esta lista de mayores valores. En la pestaña Análisis también se puede sombrear como proporción de los empleos locales o como cociente de localización (vea la ficha del método QCEW).",
+  "_en": {
+   "name": "f661ac6c",
+   "how_to_read": "fbd4498e"
+  }
+ },
+ "economy.jobs_naics_52": {
+  "name": "Empleos: Finanzas y seguros (NAICS 52)",
+  "how_to_read": "En el corte de datos 2026-10, el total de la isla es 30,337 en 2014 y 33,757 en 2024 (11.3% más), y 34,060 en 2025. Es el 4.5% de los empleos privados de la isla en 2024. Los mayores valores municipales publicados en 2024 son San Juan (15,883), Guaynabo (5,750) y Caguas (855). Los valores municipales publicados suman el 95% de la cifra de la isla en 2024, así que el 5% de la cifra de la isla no está en ellos (celdas ocultas, más una diferencia que los archivos del BLS no explican: los empleos privados de la isla según el BLS están 0.5% por encima de la suma de los 78 municipios en 2024). En la pestaña Análisis también se puede sombrear como proporción de los empleos locales o como cociente de localización (vea la ficha del método QCEW).",
+  "_en": {
+   "name": "ee5b6442",
+   "how_to_read": "18e32619"
+  }
+ },
+ "economy.jobs_naics_53": {
+  "name": "Empleos: Bienes raíces, alquiler y arrendamiento (NAICS 53)",
+  "how_to_read": "En el corte de datos 2026-10, el total de la isla es 12,837 en 2014 y 16,009 en 2024 (24.7% más), y 16,557 en 2025. Es el 2.1% de los empleos privados de la isla en 2024. Los mayores valores municipales publicados en 2024 son San Juan (7,381), Ponce (1,497) y Carolina (1,134). Los valores municipales publicados suman el 97% de la cifra de la isla en 2024, así que el 3% de la cifra de la isla no está en ellos (celdas ocultas, más una diferencia que los archivos del BLS no explican: los empleos privados de la isla según el BLS están 0.5% por encima de la suma de los 78 municipios en 2024). En la pestaña Análisis también se puede sombrear como proporción de los empleos locales o como cociente de localización (vea la ficha del método QCEW).",
+  "_en": {
+   "name": "fa6be05c",
+   "how_to_read": "bb466f39"
+  }
+ },
+ "economy.jobs_naics_54": {
+  "name": "Empleos: Servicios profesionales, científicos y técnicos (NAICS 54)",
+  "how_to_read": "En el corte de datos 2026-10, el total de la isla es 29,287 en 2014 y 41,904 en 2024 (43.1% más), y 42,548 en 2025. Es el 5.6% de los empleos privados de la isla en 2024. Los mayores valores municipales publicados en 2024 son San Juan (18,124), Guaynabo (6,086) y Caguas (2,289). Los valores municipales publicados suman el 90% de la cifra de la isla en 2024, así que el 10% de la cifra de la isla no está en ellos (celdas ocultas, más una diferencia que los archivos del BLS no explican: los empleos privados de la isla según el BLS están 0.5% por encima de la suma de los 78 municipios en 2024). En la pestaña Análisis también se puede sombrear como proporción de los empleos locales o como cociente de localización (vea la ficha del método QCEW).",
+  "_en": {
+   "name": "2d0ddec9",
+   "how_to_read": "458de68d"
+  }
+ },
+ "economy.jobs_naics_55": {
+  "name": "Empleos: Gerencia de compañías (NAICS 55)",
+  "how_to_read": "En el corte de datos 2026-10, el total de la isla es 11,681 en 2014 y 18,049 en 2024 (54.5% más), y 18,409 en 2025. Es el 2.4% de los empleos privados de la isla en 2024. Los mayores valores municipales publicados en 2024 son San Juan (12,000), Guaynabo (2,123) y Bayamón (735). Los valores municipales publicados suman el 95% de la cifra de la isla en 2024, así que el 5% de la cifra de la isla no está en ellos (celdas ocultas, más una diferencia que los archivos del BLS no explican: los empleos privados de la isla según el BLS están 0.5% por encima de la suma de los 78 municipios en 2024). En la pestaña Análisis también se puede sombrear como proporción de los empleos locales o como cociente de localización (vea la ficha del método QCEW).",
+  "_en": {
+   "name": "d832d0fc",
+   "how_to_read": "729bdb35"
+  }
+ },
+ "economy.jobs_naics_56": {
+  "name": "Empleos: Servicios administrativos, de apoyo y de manejo de desperdicios (NAICS 56)",
+  "how_to_read": "En el corte de datos 2026-10, el total de la isla es 71,847 en 2014 y 77,201 en 2024 (7.5% más), y 75,235 en 2025. Es el 10.3% de los empleos privados de la isla en 2024. Los mayores valores municipales publicados en 2024 son San Juan (26,940), Guaynabo (9,245) y Carolina (7,917). Los valores municipales publicados suman el 92% de la cifra de la isla en 2024, así que el 8% de la cifra de la isla no está en ellos (celdas ocultas, más una diferencia que los archivos del BLS no explican: los empleos privados de la isla según el BLS están 0.5% por encima de la suma de los 78 municipios en 2024). En la pestaña Análisis también se puede sombrear como proporción de los empleos locales o como cociente de localización (vea la ficha del método QCEW).",
+  "_en": {
+   "name": "3bee2615",
+   "how_to_read": "aa113942"
+  }
+ },
+ "economy.jobs_naics_61": {
+  "name": "Empleos: Servicios educativos (NAICS 61)",
+  "how_to_read": "En el corte de datos 2026-10, el total de la isla es 31,794 en 2014 y 26,511 en 2024 (16.6% menos), y 26,415 en 2025. Es el 3.5% de los empleos privados de la isla en 2024. Los mayores valores municipales publicados en 2024 son San Juan (7,651), Ponce (2,578) y Bayamón (2,095). Los valores municipales publicados suman el 91% de la cifra de la isla en 2024, así que el 9% de la cifra de la isla no está en ellos (celdas ocultas, más una diferencia que los archivos del BLS no explican: los empleos privados de la isla según el BLS están 0.5% por encima de la suma de los 78 municipios en 2024). En la pestaña Análisis también se puede sombrear como proporción de los empleos locales o como cociente de localización (vea la ficha del método QCEW).",
+  "_en": {
+   "name": "2e8d0520",
+   "how_to_read": "45063e1e"
+  }
+ },
+ "economy.jobs_naics_62": {
+  "name": "Empleos: Cuidado de la salud y asistencia social (NAICS 62)",
+  "how_to_read": "En el corte de datos 2026-10, el total de la isla es 84,875 en 2014 y 92,375 en 2024 (8.8% más), y 93,725 en 2025. Es el 12.3% de los empleos privados de la isla en 2024. Los mayores valores municipales publicados en 2024 son San Juan (19,386), Ponce (6,842) y Bayamón (6,671). Los valores municipales publicados suman el 83% de la cifra de la isla en 2024, así que el 17% de la cifra de la isla no está en ellos (celdas ocultas, más una diferencia que los archivos del BLS no explican: los empleos privados de la isla según el BLS están 0.5% por encima de la suma de los 78 municipios en 2024). En la pestaña Análisis también se puede sombrear como proporción de los empleos locales o como cociente de localización (vea la ficha del método QCEW).",
+  "_en": {
+   "name": "7e5af1b6",
+   "how_to_read": "4fac7f07"
+  }
+ },
+ "economy.jobs_naics_71": {
+  "name": "Empleos: Artes, entretenimiento y recreación (NAICS 71)",
+  "how_to_read": "En el corte de datos 2026-10, el total de la isla es 3,391 en 2014 y 5,954 en 2024 (75.6% más), y 6,189 en 2025. Es el 0.8% de los empleos privados de la isla en 2024. Los mayores valores municipales publicados en 2024 son San Juan (1,731), Río Grande (547) y Carolina (382). Los valores municipales publicados suman el 88% de la cifra de la isla en 2024, así que el 12% de la cifra de la isla no está en ellos (celdas ocultas, más una diferencia que los archivos del BLS no explican: los empleos privados de la isla según el BLS están 0.5% por encima de la suma de los 78 municipios en 2024). En la pestaña Análisis también se puede sombrear como proporción de los empleos locales o como cociente de localización (vea la ficha del método QCEW).",
+  "_en": {
+   "name": "c5827050",
+   "how_to_read": "9e197c50"
+  }
+ },
+ "economy.jobs_naics_72": {
+  "name": "Empleos: Alojamiento y servicios de comida (NAICS 72)",
+  "how_to_read": "En el corte de datos 2026-10, el total de la isla es 76,407 en 2014 y 90,930 en 2024 (19.0% más), y 93,288 en 2025. Es el 12.1% de los empleos privados de la isla en 2024. Los mayores valores municipales publicados en 2024 son San Juan (23,751), Carolina (6,896) y Bayamón (5,292). Los valores municipales publicados suman el 85% de la cifra de la isla en 2024, así que el 15% de la cifra de la isla no está en ellos (celdas ocultas, más una diferencia que los archivos del BLS no explican: los empleos privados de la isla según el BLS están 0.5% por encima de la suma de los 78 municipios en 2024). En la pestaña Análisis también se puede sombrear como proporción de los empleos locales o como cociente de localización (vea la ficha del método QCEW).",
+  "_en": {
+   "name": "ace5692d",
+   "how_to_read": "59db8e23"
+  }
+ },
+ "economy.jobs_naics_81": {
+  "name": "Empleos: Otros servicios (excepto administración pública) (NAICS 81)",
+  "how_to_read": "En el corte de datos 2026-10, el total de la isla es 14,962 en 2014 y 16,539 en 2024 (10.5% más), y 16,884 en 2025. Es el 2.2% de los empleos privados de la isla en 2024. Los mayores valores municipales publicados en 2024 son Bayamón (1,138), Guaynabo (996) y Caguas (945). Los valores municipales publicados suman el 52% de la cifra de la isla en 2024, así que el 48% de la cifra de la isla no está en ellos (celdas ocultas, más una diferencia que los archivos del BLS no explican: los empleos privados de la isla según el BLS están 0.5% por encima de la suma de los 78 municipios en 2024). El valor de San Juan se suprime en 2022, 2024 y 2025. Su valor en 2023 fue de 6,037 empleos, frente a 1,115 de Bayamón ese año, así que San Juan queda fuera de esta lista de mayores valores. En la pestaña Análisis también se puede sombrear como proporción de los empleos locales o como cociente de localización (vea la ficha del método QCEW).",
+  "_en": {
+   "name": "53ca2d51",
+   "how_to_read": "0b67db55"
+  }
+ },
+ "economy.qcew_method": {
+  "name": "Cómo se cuentan los empleos, los lugares de trabajo y los salarios (Censo Trimestral de Empleo y Salarios)",
+  "how_to_read": "Lea cada cifra del QCEW como lo que informaron los patronos ubicados en el municipio, no como lo que hacen las personas residentes. Un espacio en blanco no es un cero: significa que el BLS suprimió la cifra o no publica una fila para esa celda. Use el valor de Puerto Rico como la cifra de la isla del BLS; no es la suma de los 78 municipios. Trate el último año (2025 en el corte de datos 2026-10) como preliminar. En la pestaña Análisis, un conteo de empleos se puede mostrar tal como se publicó, por cada 1,000 residentes, por kilómetro cuadrado, como proporción del total de la isla, como proporción de los empleos del municipio o como cociente de localización. Un cociente de localización es la proporción que tiene la industria en los empleos del municipio dividida entre su proporción en los empleos de la isla; más de 1 significa que la industria está más concentrada aquí que en la isla, y menos de 1, que lo está menos. La proporción y el cociente usan como divisor el total de empleos (todos los patronos, incluido el gobierno) del mismo año. El observatorio descargó el archivo de cada año el 3 de octubre de 2026. Conserva cada archivo y lo vuelve a leer solo en una actualización completa, así que una revisión posterior del BLS, incluida la de los datos preliminares de 2025, aparece solo después de una actualización. La fecha \"Datos compilados\" de la ventana de información del conjunto de datos es el día en que se reconstruyó por última vez el archivo de datos del observatorio, que puede ser posterior a la descarga. Al citar una cifra, indique el año, la fila de tipo de propiedad e industria y la fecha de obtención. Los ejemplos de estas fichas vienen del corte de datos 2026-10. Usan 2025 para los totales (empleos, salarios, paga), que tienen un valor para cada municipio, y 2024 para los sectores industriales, porque 2025 tiene menos valores municipales publicados para los sectores.",
+  "_en": {
+   "name": "40603b9a",
+   "how_to_read": "c29e4705"
+  }
+ },
+ "economy.top_sector": {
+  "name": "Sector con más empleos (la industria o el gobierno con más empleos)",
+  "how_to_read": "Léalo como el grupo más grande entre los que muestra el BLS. El gobierno cuenta como un grupo y los sectores privados como 19, así que el gobierno suele ser el más grande. En el corte de datos 2026-10, se indica Gobierno en 49 de los 78 municipios en 2024, y para Puerto Rico (20.3% de los empleos en 2025).",
+  "_en": {
+   "name": "534c9f68",
+   "how_to_read": "e2a071db"
+  }
+ }
+}

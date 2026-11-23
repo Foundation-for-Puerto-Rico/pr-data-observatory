@@ -1,0 +1,36 @@
+{
+ "slope.slope_steep15_pct": {
+  "name": "Terreno con más de 15 % de pendiente (%)",
+  "_en": {
+   "name": "d27a1dc8"
+  }
+ },
+ "slope.slope_steep30_pct": {
+  "name": "Terreno con más de 30 % de pendiente (%)",
+  "_en": {
+   "name": "aeb1071a"
+  }
+ },
+ "slope.slope_mean": {
+  "name": "Pendiente promedio del terreno (%)",
+  "_en": {
+   "name": "d90b53f8"
+  }
+ },
+ "land.slope_layer": {
+  "name": "Pendiente (USGS 3DEP, imagen de bloques de unos 60 m)",
+  "how_to_read": "Claro es llano, marrón oscuro es empinado. Mueva el control deslizante a 15 % o 30 % para ver solo el terreno con más pendiente que eso. Las proporciones por barrio están en Explorar.",
+  "_en": {
+   "name": "540d48bf",
+   "how_to_read": "87f0de73"
+  }
+ },
+ "land.contours_layer": {
+  "name": "Curvas de nivel (trazadas a partir de los mosaicos de terreno)",
+  "how_to_read": "Líneas juntas indican terreno empinado; separadas, terreno suave. Lea las líneas más gruesas para la altura en números redondos.",
+  "_en": {
+   "name": "c0448337",
+   "how_to_read": "3d0c0cf8"
+  }
+ }
+}

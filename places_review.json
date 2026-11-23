@@ -1,0 +1,376 @@
+{
+ "about": "Reviewed list for places_privacy.py (owner rule of 2026-10-18; docs/places-privacy.md). Private residences, residential buildings, listings whose name is a street address, house, lot or unit number, care, shelter and treatment services, and holiday rentals (decision 48) are counted in their municipio but not drawn: their row in places.json keeps only what the counts need. 'categories' says what a name pattern means in each Overture category (with the reason); 'public' lists the listings drawn although their name matches a pattern (name, reason and, for the lodging businesses reviewed on 2026-10-18, the source checked: these are public places); 'withheld' lists listings not drawn although no pattern matches, by Overture id only, never by name. A listing in neither list is decided by the patterns, so an unreviewed match is withheld. Overture ids can change between releases: a refreshed listing then falls back to the patterns, and tests/test_places_privacy.py reports review entries that no longer match a listing.",
+ "reviewed": "2026-10-18",
+ "categories": {
+  "about": "ambiguous: categories Meta users file homes, condominiums, housing estates and subdivisions under; there a home word (Casa, Residencia, Hacienda, Villa, Finca, Home...), an estate or building word, a lot or house number or a postcode withholds the listing unless an accommodation word or a public venue is also named. rental: businesses that rent rooms or units; there home and estate words name the business (a guest house called 'Casa ...'), but a unit or house number, a postcode or 'Urb. ...' first still withholds it. residential: always housing. home_business: services usually run from a home under the owner's name (withheld as residences). holiday_rental: holiday rentals (an entire home, cabin, cottage or apartment rented for short stays; HANDOFF decision 48): always withheld, unless 'public' lists the listing as a hotel, guest house, inn or B&B. lodging_names: the lodging categories, where a rental, stay or getaway word in the name ('... Rentals', '... Stays') names a holiday rental unless a lodging business (hotel, guest house, inn, B&B, hostel, posada, parador, resort) is also named; a holiday-rental phrase ('Vacation Rental', 'Beach House', 'Airbnb', 'Short Term Rental', 'Tiny House') names one there and in the ambiguous and rental categories. sensitive: care, shelter or treatment services (none in the tourism categories today; the name patterns catch them). Every other category is a business or public venue: only a sensitive word, a street address or unit number, or a housing word at the start of the name ('Urb. ...', 'Residencial ...', 'Parcelas ...') withholds it. unit_names: the categories hotels, B&Bs, hostels and campgrounds are filed under, where a name that rents a unit ('... Apartment', 'Casita ...', 'Penthouse ...', 'Villa 12', '... House', '... Home', '... Villa'), a run of units ('... Apartments', 'Condominio ...') or a house called 'Casa' or 'Villa' and one word, alone or followed by a town, barrio or municipio, names a holiday rental unless a lodging business is also named (real aparthotels, rental offices and guest houses are listed in 'public'). Guest houses and inns are left out: the category names the business.",
+  "sensitive": [],
+  "residential": [
+   "mobile_home_park"
+  ],
+  "home_business": [
+   "psychic_advising",
+   "astrological_advising"
+  ],
+  "holiday_rental": [
+   "holiday_rental_home",
+   "cabin",
+   "cottage",
+   "service_apartment"
+  ],
+  "ambiguous": [
+   "lodging",
+   "historic_site",
+   "geographic_entities",
+   "monument",
+   "park",
+   "playground",
+   "mountain",
+   "river",
+   "lake",
+   "island",
+   "beach",
+   "hiking_trail",
+   "skate_park",
+   "dog_park",
+   "landmark_and_historical_building"
+  ],
+  "rental": [
+   "hotel",
+   "motel",
+   "holiday_rental_home",
+   "bed_and_breakfast",
+   "guest_house",
+   "hostel",
+   "inn",
+   "resort",
+   "beach_resort",
+   "cabin",
+   "cottage",
+   "service_apartment",
+   "campground",
+   "rv_park"
+  ],
+  "lodging_names": [
+   "lodging",
+   "hotel",
+   "motel",
+   "resort",
+   "beach_resort",
+   "bed_and_breakfast",
+   "guest_house",
+   "hostel",
+   "inn",
+   "lodge"
+  ],
+  "unit_names": [
+   "hotel",
+   "motel",
+   "bed_and_breakfast",
+   "hostel",
+   "campground",
+   "rv_park",
+   "lodging",
+   "lodge",
+   "resort",
+   "beach_resort"
+  ]
+ },
+ "public": {
+  "6b61565e-cbe7-4df9-8bfd-b297dbb12628": {
+   "name": "Casa Klumb",
+   "reason": "owned by the University of Puerto Rico; reviewed as public in nrhp_review.json (97001307)"
+  },
+  "7e360015-7cdb-4e2e-b332-c4905e50294d": {
+   "name": "Casa Paoli",
+   "reason": "a public cultural centre; nrhp_review.json (09000769)"
+  },
+  "5dc4f39b-0d01-4c0f-9776-8aaaf1f08d9c": {
+   "name": "Casa del Rey",
+   "reason": "a museum run by the municipio of Dorado; nrhp_review.json (89000408)"
+  },
+  "9dff24c7-e609-46f7-8e19-a3f2ccebba06": {
+   "name": "Dr. Agustín Stahl Stamm House",
+   "reason": "acquired by the municipio of Bayamón; nrhp_review.json (10001216, borderline there)"
+  },
+  "34ffb9bc-9dcf-49bb-98a9-566e1d8d2bb7": {
+   "name": "Salazar - Candal House",
+   "reason": "a public museum (Ponce's history museum); nrhp_review.json (88000663)"
+  },
+  "c4874d6b-6bb6-4196-975e-9d583ad2f111": {
+   "name": "Hacienda La Esperanza",
+   "reason": "the manor of a nature reserve open to the public; nrhp_review.json (76002190)"
+  },
+  "fe8c0703-471b-4c15-8686-f2e128ccb56a": {
+   "name": "Residencia Aboy - Lompre",
+   "reason": "a cultural centre open to the public (Casa Aboy); nrhp_review.json (88001304, borderline there)"
+  },
+  "b556b06f-5ef2-4739-a75a-8d92a60d9f70": {
+   "name": "Coco Rio, Hacienda Carabalí",
+   "reason": "a ranch and adventure park open to the public"
+  },
+  "38622cb6-0d20-4300-b344-573ab8a4f434": {
+   "name": "Colmado Bar. El Huérfano",
+   "reason": "a bar's name, not an orphanage"
+  },
+  "0f337ef0-26c3-4646-8f24-6414c8f80c0d": {
+   "name": "El Albergue",
+   "reason": "a bar's name, not a shelter"
+  },
+  "e1f85028-d2e5-4c05-b937-f6696638f21a": {
+   "name": "Cafeteria y Sport Bar “El Albergue”",
+   "reason": "a cafeteria and bar's name, not a shelter"
+  },
+  "f2899382-513f-4440-be9c-f4110aad60ab": {
+   "name": "Dorado Psychiatric Ward.",
+   "reason": "the nickname of a surf break, not a health service"
+  },
+  "24858d3f-d86c-41b4-80df-9914dd146dc7": {
+   "name": "Fiestas de la Calle San Sebastián Festival 2027",
+   "reason": "a street festival; the number is a year"
+  },
+  "b7b3a6ca-73f1-42e9-8c9c-47349a61f99a": {
+   "name": "57 Avenue Llc",
+   "reason": "a coffee shop's business name"
+  },
+  "a63b8c2b-6ec8-447a-ae34-bffbe6c35b42": {
+   "name": "Agencia Hípica #742",
+   "reason": "a betting agency's branch number"
+  },
+  "59dd2638-f6ec-4901-98ff-8046e330e3ff": {
+   "name": "Res al Fuego Restaurant",
+   "reason": "a restaurant ('res' is beef), not a public housing estate"
+  },
+  "fa258812-a0be-4fc9-bc63-5d50ab877a97": {
+   "name": "Villas de Punta Guilarte",
+   "reason": "the cabins of a public vacation centre"
+  },
+  "5d1cc1fc-6a5e-4a79-a054-2adf538564ea": {
+   "name": "Torre De Observaciones. Reservacion Forestal Guajataca",
+   "reason": "an observation tower in a state forest"
+  },
+  "83b7eac1-0233-4aec-9546-5593da676477": {
+   "name": "Torre De Observaciones, Maricao, Pr",
+   "reason": "an observation tower in a state forest"
+  },
+  "d28a692e-778b-4660-874e-8f0af7940d77": {
+   "name": "El Yunque Tower Trail - Halfway Point",
+   "reason": "a trail in El Yunque National Forest"
+  },
+  "d47c9dc4-7896-48a7-909c-5c1bc2a6f66e": {
+   "name": "Alaïa Guest House",
+   "reason": "names a guest house or hotel: a lodging business, drawn under decision 48 although filed as a holiday rental"
+  },
+  "8e8be976-5277-4d5b-959a-3253cd108346": {
+   "name": "Villa Quenepa Guest House",
+   "reason": "names a guest house or hotel: a lodging business, drawn under decision 48 although filed as a holiday rental"
+  },
+  "942acd6b-af68-49c0-a8a8-0cd5eae277ea": {
+   "name": "Isabelle Guest House",
+   "reason": "names a guest house or hotel: a lodging business, drawn under decision 48 although filed as a holiday rental"
+  },
+  "1d926ab7-5130-4e2a-add0-f8367489dd0a": {
+   "name": "Ella Guest House",
+   "reason": "names a guest house or hotel: a lodging business, drawn under decision 48 although filed as a holiday rental"
+  },
+  "f68d32d9-926c-4ba5-a727-640ac641e153": {
+   "name": "Aqua Guesthouse",
+   "reason": "names a guest house or hotel: a lodging business, drawn under decision 48 although filed as a holiday rental"
+  },
+  "1399af45-d3e9-452f-94b9-2090bda17d95": {
+   "name": "Adventures Island Guest House en Combate",
+   "reason": "names a guest house or hotel: a lodging business, drawn under decision 48 although filed as a holiday rental"
+  },
+  "a8160071-b92e-4672-bd4e-0d71bf0a0cfe": {
+   "name": "Aibonito Hotel",
+   "reason": "names a guest house or hotel: a lodging business, drawn under decision 48 although filed as a holiday rental"
+  },
+  "75bd17a7-102f-44a2-85a6-d342f9360603": {
+   "name": "D’ Los Ángeles Guest House",
+   "reason": "names a guest house or hotel: a lodging business, drawn under decision 48 although filed as a holiday rental"
+  },
+  "fcbddbd2-e5de-4734-b9e9-df7d8ac79d32": {
+   "name": "Casa Maria Guesthouse ",
+   "reason": "names a guest house or hotel: a lodging business, drawn under decision 48 although filed as a holiday rental"
+  },
+  "1067de2b-1c4f-454b-970a-da1389a46103": {
+   "name": "Mareo’s Guest House",
+   "reason": "names a guest house or hotel: a lodging business, drawn under decision 48 although filed as a holiday rental"
+  },
+  "b5c6705d-d09a-4e34-ae0a-e6c02b849a43": {
+   "name": "Passiflora Guest House",
+   "reason": "names a guest house or hotel: a lodging business, drawn under decision 48 although filed as a holiday rental"
+  },
+  "6543cd86-79f9-42b1-82c2-d1e5ade3f00c": {
+   "name": "Islabella Guest House",
+   "reason": "names a guest house or hotel: a lodging business, drawn under decision 48 although filed as a holiday rental"
+  },
+  "78e1a20c-a07a-4f0b-bd3f-525e19e1b094": {
+   "name": "Ocean Avenue Guest House PR",
+   "reason": "names a guest house or hotel: a lodging business, drawn under decision 48 although filed as a holiday rental"
+  },
+  "7f12945d-a405-4638-b927-9af0c63ee156": {
+   "name": "Casa de Amistad",
+   "reason": "a guest house with rooms in Isabel Segunda, Vieques, listed by booking sites",
+   "source": "Hotels.com, Expedia and Travelocity listings"
+  },
+  "c9eb7956-4835-4138-86cf-dbebecdb343d": {
+   "name": "Casa Isleña",
+   "reason": "a hotel (an inn) in Rincón with rooms, a pool and a restaurant, listed by booking sites and travel guides",
+   "source": "Trip.com and Expedia listings; Frommer's"
+  },
+  "390495ce-9e88-48e1-b095-5e74dc52e8cb": {
+   "name": "La Casita 152",
+   "reason": "a bar and grill on road PR-152 in Naranjito: the number is the road, not a house",
+   "source": "the listing's own address (road PR-152, Naranjito)"
+  },
+  "62a47c5d-786b-4e38-b69b-a151c8020511": {
+   "name": "Tamarindo Estates Beach Apartments",
+   "reason": "a small resort with rooms in a dozen cottages on Tamarindo beach, Culebra, listed by travel guides",
+   "source": "Frommer's; Lonely Planet"
+  },
+  "b3bc8370-3649-433f-ba63-2ea979124e55": {
+   "name": "Villa Boheme",
+   "reason": "a small waterfront hotel with rooms in Culebra",
+   "source": "Wanderlog; Airbnb room listings of the hotel"
+  },
+  "d923a344-032d-4d58-8143-383bb7061d8a": {
+   "name": "Apartments by Marriott Bonvoy",
+   "reason": "an aparthotel of a hotel chain (Casa Costera, Isla Verde)",
+   "source": "Marriott news release (2023-12-05); Hotel Executive"
+  },
+  "4ccf9bae-6f23-483a-bfea-e627f2b5f827": {
+   "name": "Villa Eshta",
+   "reason": "a hostel with rooms in Santurce, listed by booking sites",
+   "source": "Expedia, Travelocity and Hotels.com listings"
+  },
+  "5ed48253-b444-411b-8de0-55c1b2265239": {
+   "name": "Casa Santurce",
+   "reason": "a hostel with rooms and dormitories in Santurce, listed by booking sites",
+   "source": "Expedia, Travelocity and Hotels.com listings"
+  },
+  "708d3e62-c5ed-4496-9a4f-aba92db07db0": {
+   "name": "Navona Studios",
+   "reason": "a guest house with about 15 rooms in Old San Juan, listed by booking sites and travel guides",
+   "source": "Hotels.com and Kayak listings; Lonely Planet"
+  },
+  "6dd51afa-57f3-4b5a-9443-c1027803d9db": {
+   "name": "Casa Sol",
+   "reason": "a bed and breakfast with rooms in Old San Juan, in the Puerto Rico Tourism Company's B&B programme",
+   "source": "Booking.com and Hotels.com listings; Puerto Rico Tourism Company B&B programme"
+  },
+  "bde3fc24-d6e5-40f0-9c2d-d797a5e10cb9": {
+   "name": "Hix Island House",
+   "reason": "an eco-hotel with about 17 rooms in Vieques",
+   "source": "Hotels.com and Expedia listings; Fodor's hotels of Vieques and Culebra"
+  },
+  "0a91ede5-0a23-48ee-831b-7bf4c18a4e31": {
+   "name": "Malecón House",
+   "reason": "a boutique hotel with 13 rooms on the Esperanza boardwalk, Vieques",
+   "source": "Discover Puerto Rico profile; Kayak listing"
+  },
+  "13aa7585-00c7-4b16-9bb8-7371f7d03743": {
+   "name": "Casa Coral Luquillo",
+   "reason": "a hostel with dormitories and private rooms in Luquillo",
+   "source": "Hostelworld, Hotels.com and Expedia listings"
+  },
+  "10578024-8175-455b-bbb1-84f538c733ae": {
+   "name": "Casa de Playa Hatillo",
+   "reason": "a hotel with rooms, breakfast and a pool in Hatillo",
+   "source": "LateRooms and Expedia listings"
+  },
+  "8fc67f9e-1332-4ddc-aa06-cade43a13f9a": {
+   "name": "Crabs Island Adventures",
+   "reason": "an adventure and tour business filed under lodging, not housing (sample of the lodging fallback, review of PR #62)"
+  },
+  "339c427d-7f44-4766-a246-1b4b64fd6e67": {
+   "name": "Edf. Guayacan En Aibonito",
+   "reason": "a commercial building of medical and professional offices (laboratory, dentists, optometry, law offices) on Calle Julio Cintrón in Aibonito; filed as a historic site, drawn as a business (review of the 'Edificio + name' listings, 2026-10-18)",
+   "source": "Clasificados Online and RE/MAX listings of medical office units in the building; health-provider directories at its address"
+  }
+ },
+ "withheld": {
+  "2ef52b82-1efb-4701-adf8-73d1f9970d22": "residence",
+  "75b387ff-8b82-4ca4-bfd6-24cd77a9bbf5": "residence",
+  "db0b2850-3856-41e0-a7b4-51eab163ca61": "residence",
+  "32fcac22-f83e-4163-a678-54437d7d5c39": "sensitive",
+  "7a7cdf46-2754-4edb-ba78-df2b6a8d54fb": "residence",
+  "cc738838-a352-4168-9462-f42f98d9c34a": "sensitive",
+  "c0a6b574-70c8-4445-8c28-ecbe35284bda": "sensitive",
+  "ed2e5264-afdf-428f-9537-0c21069f5863": "sensitive",
+  "c0f4977d-b163-41a8-8c5a-e3d1d385d26d": "sensitive",
+  "35b5f2e0-b354-408e-a1e4-16aa3736259e": "sensitive",
+  "b1b39ac3-b2cd-4122-b02d-a6bf1e99690c": "address",
+  "1db0c726-5553-4044-b19a-7261f78daa53": "residential",
+  "4b831f07-4599-4ab5-b479-a7ca25b9e42a": "address",
+  "e30fd7df-2421-40ed-9d56-6715a8124606": "holiday_rental",
+  "e9e8e983-6ce6-40cb-9d95-0b6597c16a59": "holiday_rental",
+  "f354e92b-2985-468d-814e-0205436d9cd2": "holiday_rental",
+  "f843f588-a415-4c0f-849a-459a898726b9": "holiday_rental",
+  "576b49f1-2d81-40ff-838d-04e57486b5b4": "holiday_rental",
+  "edc08b19-e859-4562-90ad-6b5295043e93": "holiday_rental",
+  "cef72354-68e5-4f3d-8681-c498a2778fe2": "residence",
+  "70828e39-34b6-4544-a9ac-bb5d9716a98e": "residence",
+  "28d9a4ff-d220-48bb-a69f-1ca01c1a38d7": "residential",
+  "5beb7443-5cde-47e9-aa8e-4b80f37ecfe9": "residential",
+  "9ece8913-98fc-475c-92e5-07f4bb150b9a": "residential",
+  "9f6bb79e-a2d0-4501-932a-defa58d0d530": "residential",
+  "5266e87b-b717-47fc-b199-964fc1023eb0": "residential",
+  "94e89a61-c864-4035-ad47-1bb29c6fae19": "residential",
+  "565dd4fa-4334-48ab-8c49-9934f5ab8268": "holiday_rental",
+  "d828508a-0e83-4adc-a994-249d9cf263bf": "residential",
+  "1b6311b2-840c-4d78-92ed-01a38ec997fe": "residential",
+  "8f733fab-7c19-4f79-a8aa-67e9924a03df": "residential",
+  "fe0ab631-38bb-415b-a487-e5ab65e70460": "residential",
+  "a432d1e3-21d2-4049-9c47-95ca87666c3b": "residential",
+  "f2f8cf86-404f-4c21-9e8f-2ad7ee6039b3": "residential",
+  "f6f36413-6e97-4e02-9ffa-18643b4368cb": "residential",
+  "5d1c3585-39ff-4d06-a46c-088101b0d8be": "residential",
+  "c6941472-bcc8-4f34-b120-431e5589642d": "residential",
+  "c361eaea-9f1d-4b30-b13f-99de12d7969b": "residential",
+  "6da52f85-ddd6-437b-a052-677a3db585d3": "residential",
+  "9b0a61fa-f0ce-442d-9331-f59cc111f00a": "residence"
+ },
+ "withheld_notes": {
+  "about": "Why each 'withheld' entry is there, by Overture id (no names).",
+  "2ef52b82-1efb-4701-adf8-73d1f9970d22": "same name, within 250 m, as a National Register listing reviewed as a private residence (nrhp_review.json 85000043); filed as a bar",
+  "75b387ff-8b82-4ca4-bfd6-24cd77a9bbf5": "same name, within 250 m, as a National Register listing reviewed as a private residence (nrhp_review.json 84003147); filed as a religious organization",
+  "db0b2850-3856-41e0-a7b4-51eab163ca61": "within 20 m of a National Register listing reviewed as a private residence (nrhp_review.json 100008175); filed as an art museum (borderline: may be public; review both lists together)",
+  "32fcac22-f83e-4163-a678-54437d7d5c39": "a boarding house for men under a person's name, filed as lodging (borderline: may be a residential care or shelter service)",
+  "7a7cdf46-2754-4edb-ba78-df2b6a8d54fb": "named only by a person's professional title and name (filed as a buffet restaurant)",
+  "cc738838-a352-4168-9462-f42f98d9c34a": "filed as a Catholic place of worship, but its name is a home ('Hogar ...') with the name of a known shelter ministry; no church of that name found (search, 2026-10-18): withheld as a possible shelter",
+  "c0a6b574-70c8-4445-8c28-ecbe35284bda": "filed as a hotel; its name is a short form of a registered homeless shelter and meal centre (EIN 660574914): a shelter service",
+  "ed2e5264-afdf-428f-9537-0c21069f5863": "a psychosocial ministry whose name is that of a rehabilitation ministry: a possible treatment or recovery home",
+  "c0f4977d-b163-41a8-8c5a-e3d1d385d26d": "a possible shelter (final review of PR #60, 2026-10-18; when in doubt, hidden)",
+  "35b5f2e0-b354-408e-a1e4-16aa3736259e": "a historic poorhouse building on the National Register (85003087), a home for the elderly when listed in 1985; current use not confirmed, so counted, not drawn here and in the National Register layer (nrhp_review.json)",
+  "b1b39ac3-b2cd-4122-b02d-a6bf1e99690c": "a condominium named with a unit number, filed as a park; drawn once the venue-first rule for 'court' applied (review of PR #62), so withheld by id",
+  "1db0c726-5553-4044-b19a-7261f78daa53": "a residential complex named '... Court', filed as a park; when in doubt, hidden (review of PR #62)",
+  "4b831f07-4599-4ab5-b479-a7ca25b9e42a": "a building named with its street number, filed as a historic site (review of PR #62)",
+  "e30fd7df-2421-40ed-9d56-6715a8124606": "a lodging listing named as a romantic getaway: a holiday rental (sample of the lodging fallback, review of PR #62)",
+  "e9e8e983-6ce6-40cb-9d95-0b6597c16a59": "a lodging listing named as a holiday stay (sample of the lodging fallback, review of PR #62)",
+  "f354e92b-2985-468d-814e-0205436d9cd2": "a lodging listing named after its view: a holiday rental (sample of the lodging fallback, review of PR #62)",
+  "f843f588-a415-4c0f-849a-459a898726b9": "a lodging listing named after its view: a holiday rental (sample of the lodging fallback, review of PR #62)",
+  "576b49f1-2d81-40ff-838d-04e57486b5b4": "a named house in a resort community: a holiday rental (sample of the lodging fallback, review of PR #62)",
+  "edc08b19-e859-4562-90ad-6b5295043e93": "a villa complex in a resort community: a holiday rental (sample of the lodging fallback, review of PR #62)",
+  "cef72354-68e5-4f3d-8681-c498a2778fe2": "a building named after a person in a town centre, filed as a historic site; a restaurant on the ground floor, but no public or commercial building of that name found and its listing links a personal e-mail (search, 2026-10-18): use not confirmed, so withheld (when in doubt, hidden)",
+  "70828e39-34b6-4544-a9ac-bb5d9716a98e": "a building named after a person in a town centre, filed as a historic site; no public or commercial building of that name found (search, 2026-10-18): use not confirmed, so withheld (when in doubt, hidden)",
+  "28d9a4ff-d220-48bb-a69f-1ca01c1a38d7": "a housing-for-the-elderly apartment building in the Puerto Rico Housing Finance Authority's (AFV) list of subsidized properties, filed as a historic site (search, 2026-10-18)",
+  "5beb7443-5cde-47e9-aa8e-4b80f37ecfe9": "a subsidized apartment building for residents 62 and older (housing directories), filed as a historic site (search, 2026-10-18)",
+  "9ece8913-98fc-475c-92e5-07f4bb150b9a": "a housing-for-the-elderly apartment building (Section 8) in the Puerto Rico Housing Finance Authority's (AFV) vacant-units report of 2025, filed as a historic site (search, 2026-10-18)",
+  "9f6bb79e-a2d0-4501-932a-defa58d0d530": "a subsidized apartment building in the Puerto Rico Housing Finance Authority's (AFV) property lists, filed as a historic site (search, 2026-10-18)",
+  "5266e87b-b717-47fc-b199-964fc1023eb0": "named as a subdivision that OpenStreetMap maps as a neighbourhood at the listing's point; filed as lodging (review of PR #62 follow-up, 2026-10-18)",
+  "94e89a61-c864-4035-ad47-1bb29c6fae19": "named as an urbanización that OpenStreetMap maps 0.5 km away in the same municipio; filed as lodging (review of PR #62 follow-up, 2026-10-18)",
+  "565dd4fa-4334-48ab-8c49-9934f5ab8268": "named like a residential subdivision that OpenStreetMap maps 0.1 km away, but rented whole to visitors under the same name (Expedia whole-home and Airbnb listings; review of PR #63, 2026-10-18): a holiday rental, counted, not drawn",
+  "d828508a-0e83-4adc-a994-249d9cf263bf": "named as an urbanización that OpenStreetMap maps at the listing's point; filed as lodging (review of PR #62 follow-up, 2026-10-18)",
+  "1b6311b2-840c-4d78-92ed-01a38ec997fe": "named as a public housing estate that OpenStreetMap maps 0.3 km away, followed by the town; filed as lodging (review of PR #62 follow-up, 2026-10-18)",
+  "8f733fab-7c19-4f79-a8aa-67e9924a03df": "named as a community of its barrio (Wikipedia's list of barrios and sectors; a school of the same name 0.1 km away in OpenStreetMap), followed by the barrio; filed as lodging (review of PR #62 follow-up, 2026-10-18)",
+  "fe0ab631-38bb-415b-a487-e5ab65e70460": "named as an urbanización that OpenStreetMap maps 0.2 km away (spelled without its final letter); filed as lodging (review of PR #62 follow-up, 2026-10-18)",
+  "a432d1e3-21d2-4049-9c47-95ca87666c3b": "named as a community that OpenStreetMap maps 0.1 km away, followed by the town; filed as lodging (review of PR #62 follow-up, 2026-10-18)",
+  "f2f8cf86-404f-4c21-9e8f-2ad7ee6039b3": "named as an urbanización that OpenStreetMap maps at the listing's point; filed as lodging (review of PR #62 follow-up, 2026-10-18)",
+  "f6f36413-6e97-4e02-9ffa-18643b4368cb": "named as an urbanización of its barrio (Wikipedia's list of sectors; an avenue of the same name 0.1 km away in OpenStreetMap); filed as lodging (review of PR #62 follow-up, 2026-10-18)",
+  "5d1c3585-39ff-4d06-a46c-088101b0d8be": "an apartment building named as such, filed as lodging; no holiday-rental or booking-site presence found (search, 2026-10-18): long-term apartments (borderline)",
+  "c6941472-bcc8-4f34-b120-431e5589642d": "an apartment building named as such, filed as lodging; no holiday-rental or booking-site presence found (search, 2026-10-18): long-term apartments (borderline)",
+  "c361eaea-9f1d-4b30-b13f-99de12d7969b": "an apartment building named as such, filed as lodging; no holiday-rental or booking-site presence found (search, 2026-10-18): long-term apartments (borderline)",
+  "6da52f85-ddd6-437b-a052-677a3db585d3": "an apartment building named as such near a university campus, filed as lodging; its website no longer resolves and no holiday-rental or booking-site presence found (search, 2026-10-18): long-term apartments (borderline)",
+  "9b0a61fa-f0ce-442d-9331-f59cc111f00a": "a home-services business (not lodging) filed as lodging, at a rural road address with no storefront: a service run from a home, like the home_business categories (review of PR #62 follow-up, 2026-10-18)"
+ }
+}

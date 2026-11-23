@@ -1,0 +1,982 @@
+[
+ {
+  "id": "gii.file",
+  "name": "Global Innovation Index: Puerto Rico profile (gii_profile.json)",
+  "domain": "economy",
+  "domains": [
+   "economy",
+   "education",
+   "infrastructure"
+  ],
+  "group": "Global Innovation Index",
+  "kind": "table",
+  "plain": "FPR's 2021 Global Innovation Index profile of Puerto Rico, kept as printed, with the newest open value of each indicator that can be updated, an arrow that says whether it is better or worse than in 2021 on the GII's scale, the indicator's status in the GII 2026 and, where the sources match, an indicative position among the GII 2026 economies. FPR's calculation, not an official ranking.",
+  "definition": "One record for each of the 80 indicators of the GII 2020 framework (7 pillars, 21 sub-pillars), with the fields gii.*: the 2021 value, rank and marks (frozen), the updated value with its year, source and kind, and the GII 2026 comparison. The pillars block holds the names and descriptions; the texts block holds each indicator's name, definition, FPR method note, corrections and reason for no update, in English and Spanish; the sources block names the update sources; about counts the updated and compared indicators.",
+  "unit": "indicators",
+  "value_type": "level",
+  "geography": "Puerto Rico: the 80 indicators of the Global Innovation Index profile",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2021,
+   "last": 2026,
+   "frequency": "The 2021 values are frozen; gii.py rebuilds the updated values and the GII 2026 comparison when FPR updates the page."
+  },
+  "method": "docs/analysis/gii-2021/gii_original.json is the profile frozen as printed (written once on 2026-10-23); gii.py reads it, fetches the open series (World Bank WGI and WDI, UNESCO UIS, IMF, BLS LAUS and OEWS, US EIA, Census Bureau population estimates; none needs an API key) into cache/gii/, takes the freshest candidate of each, and places the updated value among the GII 2026 economies for the indicators whose source and definition match.",
+  "sources": [
+   "fpr_gii_2021",
+   "wipo_gii2020",
+   "wipo_gii2026",
+   "wb_wgi",
+   "wb_wdi",
+   "unesco_uis",
+   "imf_weo",
+   "bls_laus",
+   "bls_oews",
+   "eia_intl",
+   "census_pep"
+  ],
+  "how_to_read": "Read the 2021 value and rank together. The updated value is not ranked among the GII 2020 economies; its arrow compares it with the 2021 value in the direction of the index. A position X/N among the GII 2026 economies is indicative. No overall, sub-index or pillar score exists for Puerto Rico.",
+  "caveats": [
+   "Puerto Rico is not in the official Global Innovation Index; the ranks are FPR's.",
+   "The printed ranks are out of 132 even where fewer economies had data (rank_n).",
+   "Proprietary 2021 values (IHS Markit, Web of Science, Brand Finance) are not updated.",
+   "Sources revise past years (WGI, UIS, IMF), so an updated value is not a change from the printed one."
+  ],
+  "see_also": [
+   "gii.c26_pos",
+   "gii.c26_status",
+   "gii.changes",
+   "gii.chg",
+   "gii.rank",
+   "gii.upd_value"
+  ],
+  "where": {
+   "files": [],
+   "view": [
+    {
+     "label": "Knowledge Area: Global Innovation Index, country profile",
+     "href": "gii.html#profile"
+    }
+   ]
+  },
+  "added": "2026-10-23"
+ },
+ {
+  "id": "gii.code",
+  "name": "Indicator code",
+  "domain": "economy",
+  "domains": [
+   "economy"
+  ],
+  "group": "Global Innovation Index",
+  "kind": "variable",
+  "plain": "The GII 2020 number of the indicator: pillar, sub-pillar and indicator, such as 1.1.2 for government effectiveness.",
+  "definition": "The code of the indicator in the GII 2020 framework (7 pillars, 21 sub-pillars, 80 indicators), as printed in FPR's profile.",
+  "unit": "code (pillar.sub-pillar.indicator)",
+  "value_type": "code",
+  "geography": "Puerto Rico: the 80 indicators of the Global Innovation Index profile",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2021,
+   "last": 2026,
+   "frequency": "The 2021 values are frozen; gii.py rebuilds the updated values and the GII 2026 comparison when FPR updates the page."
+  },
+  "method": "Copied from the profile.",
+  "sources": [
+   "fpr_gii_2021",
+   "wipo_gii2020"
+  ],
+  "see_also": [
+   "gii.file"
+  ],
+  "where": {
+   "files": [
+    "gii_profile.json:code"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Global Innovation Index, country profile",
+     "href": "gii.html#profile"
+    }
+   ]
+  },
+  "added": "2026-10-23"
+ },
+ {
+  "id": "gii.pillar",
+  "name": "Pillar and sub-pillar",
+  "domain": "economy",
+  "domains": [
+   "economy"
+  ],
+  "group": "Global Innovation Index",
+  "kind": "variable",
+  "plain": "The pillar (1 to 7) and the sub-pillar (such as 1.1) the indicator belongs to; their names and descriptions are in the file's pillars list.",
+  "definition": "pillar: the first digit of the code; sub: the first two parts. The pillars block of the file gives each name and description in English and Spanish.",
+  "unit": "code",
+  "value_type": "code",
+  "geography": "Puerto Rico: the 80 indicators of the Global Innovation Index profile",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2021,
+   "last": 2026,
+   "frequency": "The 2021 values are frozen; gii.py rebuilds the updated values and the GII 2026 comparison when FPR updates the page."
+  },
+  "method": "From the code.",
+  "sources": [
+   "fpr_gii_2021",
+   "wipo_gii2020"
+  ],
+  "see_also": [
+   "gii.file"
+  ],
+  "where": {
+   "files": [
+    "gii_profile.json:pillar",
+    "gii_profile.json:sub"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Global Innovation Index, country profile",
+     "href": "gii.html#profile"
+    }
+   ]
+  },
+  "added": "2026-10-23"
+ },
+ {
+  "id": "gii.value",
+  "name": "Value in 2021 (as printed)",
+  "domain": "economy",
+  "domains": [
+   "economy"
+  ],
+  "group": "Global Innovation Index",
+  "kind": "variable",
+  "plain": "Puerto Rico's raw value of the indicator in FPR's 2021 profile, exactly as printed; empty where the profile says N/D.",
+  "definition": "value: the printed number; shown: the same number as text with the printed decimals (4,920.0). 56 of the 80 indicators have one. Where FPR's working file differs (2.2.1, 2.2.2, 3.1.1, 5.3.5, 6.3.2, 7.2.2) the printed value is kept and the page adds a note.",
+  "unit": "the unit of each indicator (its printed source label)",
+  "value_type": "level",
+  "geography": "Puerto Rico: the 80 indicators of the Global Innovation Index profile",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2021,
+   "last": 2026,
+   "frequency": "The 2021 values are frozen; gii.py rebuilds the updated values and the GII 2026 comparison when FPR updates the page."
+  },
+  "method": "Copied from the profile PDF (created 2021-09-26) into docs/analysis/gii-2021/gii_original.json.",
+  "sources": [
+   "fpr_gii_2021",
+   "wipo_gii2020"
+  ],
+  "see_also": [
+   "gii.file"
+  ],
+  "where": {
+   "files": [
+    "gii_profile.json:value",
+    "gii_profile.json:shown"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Global Innovation Index, country profile",
+     "href": "gii.html#profile"
+    }
+   ]
+  },
+  "added": "2026-10-23"
+ },
+ {
+  "id": "gii.rank",
+  "name": "Rank in 2021 (as printed)",
+  "domain": "economy",
+  "domains": [
+   "economy"
+  ],
+  "group": "Global Innovation Index",
+  "kind": "variable",
+  "plain": "Where FPR placed Puerto Rico's 2021 value among the 131 economies of the GII 2020, printed 'x / 132'. FPR's calculation, not an official ranking.",
+  "definition": "rank: the printed rank; rank_printed_of: the printed denominator, always 132 (131 economies plus Puerto Rico). Four ranks counted missing data as zero (1.2.3, 2.1.5, 4.3.1, 6.2.1); the page keeps the printed rank and gives the corrected one in a note.",
+  "unit": "rank of 132",
+  "value_type": "index",
+  "geography": "Puerto Rico: the 80 indicators of the Global Innovation Index profile",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2021,
+   "last": 2026,
+   "frequency": "The 2021 values are frozen; gii.py rebuilds the updated values and the GII 2026 comparison when FPR updates the page."
+  },
+  "method": "Copied from the profile.",
+  "sources": [
+   "fpr_gii_2021",
+   "wipo_gii2020"
+  ],
+  "see_also": [
+   "gii.file"
+  ],
+  "where": {
+   "files": [
+    "gii_profile.json:rank",
+    "gii_profile.json:rank_printed_of"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Global Innovation Index, country profile",
+     "href": "gii.html#profile"
+    }
+   ]
+  },
+  "added": "2026-10-23"
+ },
+ {
+  "id": "gii.rank_n",
+  "name": "Economies with data in the 2021 comparison",
+  "domain": "economy",
+  "domains": [
+   "economy"
+  ],
+  "group": "Global Innovation Index",
+  "kind": "variable",
+  "plain": "How many economies, Puerto Rico included, actually had data for the indicator in the GII 2020 comparison, often fewer than the printed 132.",
+  "definition": "1 + the GII 2020 economies with a value for the indicator, counted in FPR's working file (missing values left out). Only the count is published, not the values.",
+  "unit": "economies",
+  "value_type": "count",
+  "geography": "Puerto Rico: the 80 indicators of the Global Innovation Index profile",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2021,
+   "last": 2026,
+   "frequency": "The 2021 values are frozen; gii.py rebuilds the updated values and the GII 2026 comparison when FPR updates the page."
+  },
+  "method": "Counted on 2026-10-23 in the GII 2020 block of FPR's working file.",
+  "sources": [
+   "fpr_gii_2021",
+   "wipo_gii2020"
+  ],
+  "see_also": [
+   "gii.file"
+  ],
+  "where": {
+   "files": [
+    "gii_profile.json:rank_n"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Global Innovation Index, country profile",
+     "href": "gii.html#profile"
+    }
+   ]
+  },
+  "added": "2026-10-23"
+ },
+ {
+  "id": "gii.marks",
+  "name": "Marks of the indicator",
+  "domain": "economy",
+  "domains": [
+   "economy"
+  ],
+  "group": "Global Innovation Index",
+  "kind": "variable",
+  "plain": "Whether higher values mean poorer outcomes, whether Puerto Rico's data were older than 2016 in 2021, and whether the indicator is a composite index or comes from a survey.",
+  "definition": "star and hourglass: the profile's printed marks (* higher scores mean poorer outcomes; hourglass, data older than 2016). higher_is_worse, composite and survey: the marks of the indicator in Appendix III of the GII 2020.",
+  "unit": "yes/no",
+  "value_type": "flag",
+  "geography": "Puerto Rico: the 80 indicators of the Global Innovation Index profile",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2021,
+   "last": 2026,
+   "frequency": "The 2021 values are frozen; gii.py rebuilds the updated values and the GII 2026 comparison when FPR updates the page."
+  },
+  "method": "From the profile and from GII 2020 Appendix III.",
+  "sources": [
+   "fpr_gii_2021",
+   "wipo_gii2020"
+  ],
+  "see_also": [
+   "gii.file"
+  ],
+  "where": {
+   "files": [
+    "gii_profile.json:star",
+    "gii_profile.json:hourglass",
+    "gii_profile.json:higher_is_worse",
+    "gii_profile.json:composite",
+    "gii_profile.json:survey"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Global Innovation Index, country profile",
+     "href": "gii.html#profile"
+    }
+   ]
+  },
+  "added": "2026-10-23"
+ },
+ {
+  "id": "gii.year",
+  "name": "Year of the 2021 value",
+  "domain": "economy",
+  "domains": [
+   "economy"
+  ],
+  "group": "Global Innovation Index",
+  "kind": "variable",
+  "plain": "The year or period the 2021 value refers to, as FPR's working file records it; empty when it was not recorded.",
+  "definition": "A year (2015), a period (2017-2019) or a fiscal-year period (FY2016-2018).",
+  "unit": "year or period",
+  "value_type": "text",
+  "geography": "Puerto Rico: the 80 indicators of the Global Innovation Index profile",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2021,
+   "last": 2026,
+   "frequency": "The 2021 values are frozen; gii.py rebuilds the updated values and the GII 2026 comparison when FPR updates the page."
+  },
+  "method": "From FPR's working file and the profile's notes.",
+  "sources": [
+   "fpr_gii_2021",
+   "wipo_gii2020"
+  ],
+  "see_also": [
+   "gii.file"
+  ],
+  "where": {
+   "files": [
+    "gii_profile.json:year"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Global Innovation Index, country profile",
+     "href": "gii.html#profile"
+    }
+   ]
+  },
+  "added": "2026-10-23"
+ },
+ {
+  "id": "gii.proprietary",
+  "name": "Proprietary source",
+  "domain": "economy",
+  "domains": [
+   "economy"
+  ],
+  "group": "Global Innovation Index",
+  "kind": "variable",
+  "plain": "True when the indicator's source is proprietary (IHS Markit, Clarivate Web of Science, Brand Finance, QS): the 2021 value is shown as published and not updated.",
+  "definition": "Set in docs/analysis/gii-2021/gii_original.json for 1.1.1, 2.3.4, 6.1.4, 6.2.3 and 7.1.2; the texts block names the source.",
+  "unit": "yes/no",
+  "value_type": "flag",
+  "geography": "Puerto Rico: the 80 indicators of the Global Innovation Index profile",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2021,
+   "last": 2026,
+   "frequency": "The 2021 values are frozen; gii.py rebuilds the updated values and the GII 2026 comparison when FPR updates the page."
+  },
+  "method": "By hand, from the sources the profile prints.",
+  "sources": [
+   "fpr_gii_2021",
+   "wipo_gii2020"
+  ],
+  "see_also": [
+   "gii.file"
+  ],
+  "where": {
+   "files": [
+    "gii_profile.json:proprietary"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Global Innovation Index, country profile",
+     "href": "gii.html#profile"
+    }
+   ]
+  },
+  "added": "2026-10-23"
+ },
+ {
+  "id": "gii.gii2026",
+  "name": "GII 2026 code it maps to",
+  "domain": "economy",
+  "domains": [
+   "economy"
+  ],
+  "group": "Global Innovation Index",
+  "kind": "variable",
+  "plain": "The code of the same indicator in the GII 2026 framework, or empty when the GII dropped it or replaced it with a different concept.",
+  "definition": "Mapped by hand on 2026-10-23 from the GII 2026 framework (79 indicators); the numbering changed after 2020 (6.2.4 ISO 9001 is 6.3.5 in 2026).",
+  "unit": "code",
+  "value_type": "code",
+  "geography": "Puerto Rico: the 80 indicators of the Global Innovation Index profile",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2021,
+   "last": 2026,
+   "frequency": "The 2021 values are frozen; gii.py rebuilds the updated values and the GII 2026 comparison when FPR updates the page."
+  },
+  "method": "By hand, against the Index Structure sheet of the GII 2026 database.",
+  "sources": [
+   "fpr_gii_2021",
+   "wipo_gii2020",
+   "wipo_gii2026"
+  ],
+  "see_also": [
+   "gii.file"
+  ],
+  "where": {
+   "files": [
+    "gii_profile.json:gii2026"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Global Innovation Index, country profile",
+     "href": "gii.html#profile"
+    }
+   ]
+  },
+  "added": "2026-10-23"
+ },
+ {
+  "id": "gii.upd_value",
+  "name": "Updated value and its year",
+  "domain": "economy",
+  "domains": [
+   "economy"
+  ],
+  "group": "Global Innovation Index",
+  "kind": "variable",
+  "plain": "The newest value an open source publishes for Puerto Rico, in the indicator's unit, with its year. It has no rank.",
+  "definition": "For 16 indicators: the latest year of the freshest candidate series (UPDATES in gii.py; when two sources publish the same series, the newer year wins). upd_year is a year, or the three years averaged for 6.2.1. Empty where no open source that needs no API key covers Puerto Rico; the page says why.",
+  "unit": "the unit of each indicator",
+  "value_type": "level",
+  "geography": "Puerto Rico: the 80 indicators of the Global Innovation Index profile",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2021,
+   "last": 2026,
+   "frequency": "The 2021 values are frozen; gii.py rebuilds the updated values and the GII 2026 comparison when FPR updates the page."
+  },
+  "method": "gii.py, from the World Bank, UNESCO UIS, IMF and BLS APIs and the EIA, Census Bureau and BLS OEWS files, none of which needs an API key (cache/gii/).",
+  "sources": [
+   "wb_wgi",
+   "wb_wdi",
+   "unesco_uis",
+   "imf_weo",
+   "bls_laus",
+   "bls_oews",
+   "eia_intl",
+   "census_pep"
+  ],
+  "see_also": [
+   "gii.file"
+  ],
+  "where": {
+   "files": [
+    "gii_profile.json:upd_value",
+    "gii_profile.json:upd_year"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Global Innovation Index, country profile",
+     "href": "gii.html#profile"
+    }
+   ]
+  },
+  "added": "2026-10-23"
+ },
+ {
+  "id": "gii.upd_kind",
+  "name": "Kind of updated value",
+  "domain": "economy",
+  "domains": [
+   "economy"
+  ],
+  "group": "Global Innovation Index",
+  "kind": "variable",
+  "plain": "'official' when the value is the source's own figure; 'fpr' when FPR's method was applied to open data (shown as 'FPR estimate'). upd_estimate marks a UIS estimate.",
+  "definition": "fpr: 3.2.1 (the EIA's net electricity generation per million people of the Census Bureau's population estimates), 4.3.1 (the tariff of the United States, which applies in Puerto Rico), 5.1.1 (the employment of SOC major groups 11 to 29, taken as ISCO groups 1 to 3, as a share of all employment in the BLS OEWS) and 6.2.1 (growth of real GDP per person employed, IMF and BLS LAUS, three-year average). upd_estimate: true when UIS qualifies the value as its estimate (2.2.3).",
+  "unit": "code",
+  "value_type": "code",
+  "geography": "Puerto Rico: the 80 indicators of the Global Innovation Index profile",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2021,
+   "last": 2026,
+   "frequency": "The 2021 values are frozen; gii.py rebuilds the updated values and the GII 2026 comparison when FPR updates the page."
+  },
+  "method": "Set by gii.py.",
+  "sources": [
+   "wb_wgi",
+   "wb_wdi",
+   "unesco_uis",
+   "imf_weo",
+   "bls_laus",
+   "bls_oews",
+   "eia_intl",
+   "census_pep"
+  ],
+  "see_also": [
+   "gii.file"
+  ],
+  "where": {
+   "files": [
+    "gii_profile.json:upd_kind",
+    "gii_profile.json:upd_estimate"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Global Innovation Index, country profile",
+     "href": "gii.html#profile"
+    }
+   ]
+  },
+  "added": "2026-10-23"
+ },
+ {
+  "id": "gii.upd_source",
+  "name": "Source of the updated value",
+  "domain": "economy",
+  "domains": [
+   "economy"
+  ],
+  "group": "Global Innovation Index",
+  "kind": "variable",
+  "plain": "Which source and series gave the updated value, with a link to the source.",
+  "definition": "upd_source: the id of the source in the file's sources block (two ids joined by + for an FPR estimate); upd_series: the source's code of the series (GOV_WGI_GE.EST, XGDP.FSGOV, PPPGDP; for an FPR estimate the series combined, such as INTL.2-12-PRI-BKWH.A + NST-EST2025); upd_url: the source's page.",
+  "unit": "source id, series code and link",
+  "value_type": "text",
+  "geography": "Puerto Rico: the 80 indicators of the Global Innovation Index profile",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2021,
+   "last": 2026,
+   "frequency": "The 2021 values are frozen; gii.py rebuilds the updated values and the GII 2026 comparison when FPR updates the page."
+  },
+  "method": "Set by gii.py.",
+  "sources": [
+   "wb_wgi",
+   "wb_wdi",
+   "unesco_uis",
+   "imf_weo",
+   "bls_laus",
+   "bls_oews",
+   "eia_intl",
+   "census_pep"
+  ],
+  "see_also": [
+   "gii.file"
+  ],
+  "where": {
+   "files": [
+    "gii_profile.json:upd_source",
+    "gii_profile.json:upd_series",
+    "gii_profile.json:upd_url"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Global Innovation Index, country profile",
+     "href": "gii.html#profile"
+    }
+   ]
+  },
+  "added": "2026-10-23"
+ },
+ {
+  "id": "gii.components",
+  "name": "ICT components (context)",
+  "domain": "economy",
+  "domains": [
+   "economy"
+  ],
+  "group": "Global Innovation Index",
+  "kind": "variable",
+  "plain": "For the two ICT composites (3.1.1 and 3.1.2), the latest values of their main components from the World Bank, as context; they are not a new index value.",
+  "definition": "A list of {series, value, year}: fixed telephone and mobile subscriptions per 100 people (3.1.1), individuals using the internet (%) and fixed broadband subscriptions per 100 people (3.1.2).",
+  "unit": "per 100 people or %",
+  "value_type": "level",
+  "geography": "Puerto Rico: the 80 indicators of the Global Innovation Index profile",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2021,
+   "last": 2026,
+   "frequency": "The 2021 values are frozen; gii.py rebuilds the updated values and the GII 2026 comparison when FPR updates the page."
+  },
+  "method": "gii.py, World Bank WDI.",
+  "sources": [
+   "wb_wdi"
+  ],
+  "see_also": [
+   "gii.file"
+  ],
+  "where": {
+   "files": [
+    "gii_profile.json:components"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Global Innovation Index, country profile",
+     "href": "gii.html#profile"
+    }
+   ]
+  },
+  "added": "2026-10-23"
+ },
+ {
+  "id": "gii.c26_pos",
+  "name": "Indicative position among the GII 2026 economies",
+  "domain": "economy",
+  "domains": [
+   "economy"
+  ],
+  "group": "Global Innovation Index",
+  "kind": "variable",
+  "plain": "Where Puerto Rico's updated value would fall among the GII 2026 economies with data, written c26_pos/c26_of like the profile's ranks. Indicative position calculated by FPR, not an official WIPO rank.",
+  "definition": "c26_pos = 1 + the number of GII 2026 economies whose screened value is strictly better than Puerto Rico's (lower is better where c26_lower_better), so ties share the better place, as WIPO's own ranks do (true for 78 of the 79 indicators of the GII 2026 database); c26_of = the economies with data + 1. Ranking the value gives the place the 0-100 score would give, because min-max and the log transform keep the order; no position is given where the GII winsorizes and Puerto Rico's value lies beyond the capped values. For the 10 indicators whose Puerto Rico source and definition match (COMPARE in gii.py): 1.1.2, 1.2.1, 1.2.2, 2.1.1, 2.1.3, 2.2.1, 2.2.2, 2.2.3, 3.2.3 and 4.3.3. 2.1.5, 4.3.1, 6.2.1 and 6.2.2 get none (NO_POSITION gives the reason in each open row).",
+  "unit": "rank of the economies with data plus Puerto Rico",
+  "value_type": "index",
+  "geography": "Puerto Rico: the 80 indicators of the Global Innovation Index profile",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2021,
+   "last": 2026,
+   "frequency": "The 2021 values are frozen; gii.py rebuilds the updated values and the GII 2026 comparison when FPR updates the page."
+  },
+  "method": "gii.py, from the extract of the GII 2026 database (cache/gii/2026/).",
+  "sources": [
+   "wipo_gii2026",
+   "wb_wgi",
+   "wb_wdi",
+   "unesco_uis",
+   "imf_weo",
+   "bls_laus"
+  ],
+  "see_also": [
+   "gii.file"
+  ],
+  "where": {
+   "files": [
+    "gii_profile.json:c26_pos",
+    "gii_profile.json:c26_of"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Global Innovation Index, country profile",
+     "href": "gii.html#profile"
+    }
+   ]
+  },
+  "added": "2026-10-23"
+ },
+ {
+  "id": "gii.c26_pr_value",
+  "name": "Puerto Rico's value used in the GII 2026 comparison",
+  "domain": "economy",
+  "domains": [
+   "economy"
+  ],
+  "group": "Global Innovation Index",
+  "kind": "variable",
+  "plain": "The Puerto Rico value placed among the GII 2026 economies, and its year, which depends on the indicator: the GII 2026 year for the governance scores and GDP, a three-year average for gross capital formation, Puerto Rico's latest year for the UNESCO indicators.",
+  "definition": "By indicator (COMPARE in gii.py): 1.1.2, 1.2.1 and 1.2.2 (WGI) use Puerto Rico's 2024 value, the year GII 2026 uses, from the current WGI release; 4.3.3 (GDP in PPP dollars) uses 2025, the GII 2026 year; 3.2.3 (gross capital formation) uses the 2023-2025 average, as GII 2026 averages three years; 2.1.1, 2.1.3, 2.2.1, 2.2.2 and 2.2.3 (UNESCO UIS) use Puerto Rico's latest year (2024 for 2.1.1 although most economies use 2023; 2023 for the others, where most use 2024). c26_pr_year names the year or period used.",
+  "unit": "the unit of each indicator",
+  "value_type": "level",
+  "geography": "Puerto Rico: the 80 indicators of the Global Innovation Index profile",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2021,
+   "last": 2026,
+   "frequency": "The 2021 values are frozen; gii.py rebuilds the updated values and the GII 2026 comparison when FPR updates the page."
+  },
+  "method": "Set by gii.py.",
+  "sources": [
+   "wb_wgi",
+   "wb_wdi",
+   "unesco_uis",
+   "imf_weo",
+   "bls_laus"
+  ],
+  "see_also": [
+   "gii.file"
+  ],
+  "where": {
+   "files": [
+    "gii_profile.json:c26_pr_value",
+    "gii_profile.json:c26_pr_year"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Global Innovation Index, country profile",
+     "href": "gii.html#profile"
+    }
+   ]
+  },
+  "added": "2026-10-23"
+ },
+ {
+  "id": "gii.c26_code",
+  "name": "GII 2026 indicator compared",
+  "domain": "economy",
+  "domains": [
+   "economy"
+  ],
+  "group": "Global Innovation Index",
+  "kind": "variable",
+  "plain": "The GII 2026 indicator Puerto Rico is compared with, the year most economies use, how many economies have data, and whether lower is better.",
+  "definition": "c26_code: the database code (IN.1.1.2); c26_year: the most frequent data year; c26_n: the economies with a screened value; c26_lower_better: true for a lower-is-better indicator.",
+  "unit": "code, year and economies",
+  "value_type": "count",
+  "geography": "Puerto Rico: the 80 indicators of the Global Innovation Index profile",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2021,
+   "last": 2026,
+   "frequency": "The 2021 values are frozen; gii.py rebuilds the updated values and the GII 2026 comparison when FPR updates the page."
+  },
+  "method": "From the GII 2026 database (Data and Index Structure sheets).",
+  "sources": [
+   "wipo_gii2026"
+  ],
+  "see_also": [
+   "gii.file"
+  ],
+  "where": {
+   "files": [
+    "gii_profile.json:c26_code",
+    "gii_profile.json:c26_year",
+    "gii_profile.json:c26_n",
+    "gii_profile.json:c26_lower_better"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Global Innovation Index, country profile",
+     "href": "gii.html#profile"
+    }
+   ]
+  },
+  "added": "2026-10-23"
+ },
+ {
+  "id": "gii.c26_q1",
+  "name": "Quartiles of the GII 2026 economies",
+  "domain": "economy",
+  "domains": [
+   "economy"
+  ],
+  "group": "Global Innovation Index",
+  "kind": "variable",
+  "plain": "The 25th percentile, the median and the 75th percentile of the GII 2026 economies' values: half of them fall between the first and the third.",
+  "definition": "Python statistics.quantiles(n=4, method='inclusive') of the screened values of the economies with data. Only these three cut-points are published and no economy is named. A cut-point can coincide with one economy's value (the median in 8 of the 10 compared indicators, all three for gross capital formation, IN.3.2.4), but the file does not say which economy (third-party data are excluded from WIPO's licence).",
+  "unit": "the unit of each indicator",
+  "value_type": "level",
+  "geography": "Puerto Rico: the 80 indicators of the Global Innovation Index profile",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2021,
+   "last": 2026,
+   "frequency": "The 2021 values are frozen; gii.py rebuilds the updated values and the GII 2026 comparison when FPR updates the page."
+  },
+  "method": "gii.py, from the extract of the GII 2026 database.",
+  "sources": [
+   "wipo_gii2026"
+  ],
+  "see_also": [
+   "gii.file"
+  ],
+  "where": {
+   "files": [
+    "gii_profile.json:c26_q1",
+    "gii_profile.json:c26_median",
+    "gii_profile.json:c26_q3"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Global Innovation Index, country profile",
+     "href": "gii.html#profile"
+    }
+   ]
+  },
+  "added": "2026-10-23"
+ },
+ {
+  "id": "gii.dir",
+  "name": "Direction of the indicator (GII scale)",
+  "domain": "economy",
+  "domains": [
+   "economy"
+  ],
+  "group": "Global Innovation Index",
+  "kind": "variable",
+  "plain": "+1 when a higher value is a better outcome on the GII's scale, -1 when it is worse (the indicators marked *). It sets the colour of the change arrow; it follows the index's method, not a value judgement.",
+  "definition": "-1 for 1.1.1, 1.2.3, 2.1.5 and 4.3.1, the indicators the GII 2020 Appendix III marks as 'higher values indicate worse outcomes' (the profile's *); +1 for the other 76. Checked in the data: in the GII 2020 values of FPR's working file and in the GII 2026 database, the score falls as the value rises for exactly these indicators (Spearman rank correlation below -0.97); the GII 2026 adds two new ones, 3.2.2 (aviation dwell time) and 4.3.2 (industry concentration).",
+  "unit": "code",
+  "value_type": "code",
+  "geography": "Puerto Rico: the 80 indicators of the Global Innovation Index profile",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2021,
+   "last": 2026,
+   "frequency": "The 2021 values are frozen; gii.py rebuilds the updated values and the GII 2026 comparison when FPR updates the page."
+  },
+  "method": "gii.py, from higher_is_worse in docs/analysis/gii-2021/gii_original.json.",
+  "sources": [
+   "wipo_gii2020",
+   "wipo_gii2026"
+  ],
+  "see_also": [
+   "gii.file"
+  ],
+  "where": {
+   "files": [
+    "gii_profile.json:dir"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Global Innovation Index, country profile",
+     "href": "gii.html#profile"
+    }
+   ]
+  },
+  "added": "2026-10-23"
+ },
+ {
+  "id": "gii.chg",
+  "name": "Change marker of the updated value",
+  "domain": "economy",
+  "domains": [
+   "economy"
+  ],
+  "group": "Global Innovation Index",
+  "kind": "variable",
+  "plain": "How the updated value compares with the printed 2021 value on the GII's scale: better (green arrow), worse (red arrow), no meaningful change (≈) or not comparable (—). 'Better' follows the index's direction, not a value judgement.",
+  "definition": "chg = 'same' when |upd_value - value| < chg_thr, the threshold: 5% of the interquartile range (inclusive quartiles) of the GII 2026 economies' values for the matching indicator (on the GII's log scale, ln[(max - 1)(x - min)/(max - min) + 1], for the indicators the GII log-transforms: chg_log); otherwise 'better' when (upd_value - value) x dir > 0, else 'worse'. chg = 'na' when the profile has no 2021 value (chg_why 'no_2021', 2.2.3), the two were measured with different sources and definitions (chg_why 'definition': 6.2.1, whose original used the Junta de Planificación's fiscal-year GDP and which the GII 2026 redefined as a five-year average, and 6.2.2), or the source's series changed (chg_why 'series': 2.1.5, UIS's 2024 teacher series), or the method differs from FPR's 2021 one (chg_why 'method': 5.1.1, whose 2021 list of occupations is in FPR's working file, not in the repository; the SOC major groups used now give 29.6% for May 2019 and 30.2% for May 2020, not the printed 32.0). For the WGI (1.1.2, 1.2.1, 1.2.2), whose every release revises all past years, the base is the current release's value for 2018, the data year of the GII 2020 (its Appendix III), not the printed value: chg_base and chg_base_year; the printed value stays as published. chg_delta = upd_value - value (or - chg_base). The arrow points up or down with chg_delta; only the arrow is coloured, and it carries the words as its accessible label.",
+  "unit": "code",
+  "value_type": "code",
+  "geography": "Puerto Rico: the 80 indicators of the Global Innovation Index profile",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2021,
+   "last": 2026,
+   "frequency": "The 2021 values are frozen; gii.py rebuilds the updated values and the GII 2026 comparison when FPR updates the page."
+  },
+  "method": "gii.py (change), from the updated value, the printed value and the GII 2026 database extract.",
+  "sources": [
+   "fpr_gii_2021",
+   "wipo_gii2026",
+   "wb_wgi",
+   "wb_wdi",
+   "unesco_uis",
+   "imf_weo",
+   "bls_laus",
+   "bls_oews",
+   "eia_intl",
+   "census_pep"
+  ],
+  "see_also": [
+   "gii.file"
+  ],
+  "where": {
+   "files": [
+    "gii_profile.json:chg",
+    "gii_profile.json:chg_delta",
+    "gii_profile.json:chg_thr",
+    "gii_profile.json:chg_log",
+    "gii_profile.json:chg_why",
+    "gii_profile.json:chg_base",
+    "gii_profile.json:chg_base_year"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Global Innovation Index, country profile",
+     "href": "gii.html#profile"
+    }
+   ]
+  },
+  "added": "2026-10-23"
+ },
+ {
+  "id": "gii.c26_status",
+  "name": "Status of the indicator in the GII 2026",
+  "domain": "economy",
+  "domains": [
+   "economy"
+  ],
+  "group": "Global Innovation Index",
+  "kind": "variable",
+  "plain": "What became of the GII 2020 indicator in the latest edition, the GII 2026: same, renamed, redefined or dropped, with the GII 2026 code it maps to (c26_full).",
+  "definition": "same: the same concept and definition, perhaps under a new code (49); renamed: the same concept with a new name or data provider (8); redefined: the definition or calculation changed (7: 3.1.1, 3.1.2, 4.2.3, 6.1.2, 6.2.1, 7.3.1 and 7.3.2, the last two merged into one); dropped: not in the GII 2026 (16). c26_full is the GII 2026 database code (IN.x.x.x or OUT.x.x.x). Curated in docs/analysis/gii-2021/gii_crosswalk.json from WIPO's GII 2026 database, its Appendix I and the GII 2025 Appendix I (checked 2026-10-23).",
+  "unit": "code",
+  "value_type": "code",
+  "geography": "Puerto Rico: the 80 indicators of the Global Innovation Index profile",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2021,
+   "last": 2026,
+   "frequency": "The 2021 values are frozen; gii.py rebuilds the updated values and the GII 2026 comparison when FPR updates the page."
+  },
+  "method": "gii.py, from docs/analysis/gii-2021/gii_crosswalk.json.",
+  "sources": [
+   "wipo_gii2026",
+   "wipo_gii2020"
+  ],
+  "see_also": [
+   "gii.file"
+  ],
+  "where": {
+   "files": [
+    "gii_profile.json:c26_status",
+    "gii_profile.json:c26_full"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Global Innovation Index, country profile",
+     "href": "gii.html#profile"
+    }
+   ]
+  },
+  "added": "2026-10-23"
+ },
+ {
+  "id": "gii.changes",
+  "name": "Global Innovation Index: changes since 2020 (gii_changes.json)",
+  "domain": "economy",
+  "domains": [
+   "economy"
+  ],
+  "group": "Global Innovation Index",
+  "kind": "table",
+  "plain": "What changed in the Global Innovation Index between the GII 2020, the method of FPR's 2021 profile, and the GII 2026: the editions, the method, the indicators that changed and the new ones, with whether Puerto Rico data exist.",
+  "definition": "editions: economies, indicators, pillars and sub-pillars of the GII 2020, 2025 and 2026, each with its source; method: the changes in normalization, outlier treatment, weights, coverage, ranks and direction, in English and Spanish, each with its source; crosswalk: the 80 indicators of 2020 with the GII 2026 code and the status (same, renamed, redefined, dropped; their notes are in gii_profile.json's texts); new_2026: the 16 new indicators of the GII 2026 with their source, whether Puerto Rico data exist (yes, no, an FPR estimate possible, an FPR estimate given, proprietary, not verified) and n, the GII 2026 economies with data; for IN.3.3.2 (low-carbon energy use) pr_est holds FPR's estimate: the US EIA's consumption from nuclear, renewables and other as a % of Puerto Rico's total energy consumption, with its year, series, link and source, and no GII 2026 position; sources: the WIPO pages and files, with the date checked.",
+  "unit": "indicators",
+  "value_type": "level",
+  "geography": "Puerto Rico: the 80 indicators of the Global Innovation Index profile",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2021,
+   "last": 2026,
+   "frequency": "The 2021 values are frozen; gii.py rebuilds the updated values and the GII 2026 comparison when FPR updates the page."
+  },
+  "method": "gii.py, from docs/analysis/gii-2021/gii_crosswalk.json, the GII 2026 database extract and, for the FPR estimate of IN.3.3.2, the US EIA's bulk file INTL.zip.",
+  "sources": [
+   "wipo_gii2026",
+   "wipo_gii2020",
+   "eia_intl"
+  ],
+  "see_also": [
+   "gii.file"
+  ],
+  "where": {
+   "files": [
+    "gii_changes.json:*"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Global Innovation Index, changes in the index since 2020",
+     "href": "gii.html#changes"
+    }
+   ]
+  },
+  "added": "2026-10-23"
+ }
+]

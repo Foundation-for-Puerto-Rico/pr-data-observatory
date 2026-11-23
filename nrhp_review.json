@@ -1,0 +1,402 @@
+{
+ "about": "Reviewed list for community_assets.py (decision 44, decided by FPR on 2026-10-18). Private residences on the National Register, and any listing whose name holds a street address or house number, are counted in their municipio but not drawn, and their names are not published. A listing whose name matches community_assets.RESIDENCE_NAME or ADDRESS_NAME must be in 'public' (drawn, with the reason) or in 'residence' (counted only); one in neither is counted only until a person reviews it. 'residence' may also hold listings the patterns miss. Residences are listed by NPS reference number only, so this file does not repeat their names. NPS gives no ownership or use field, so each entry was decided by hand from the name, the resource type and public descriptions; 'borderline' marks the ones to confirm.",
+ "reviewed": "2026-10-18",
+ "public": {
+  "95000836": {
+   "name": "Bridge No. 122",
+   "reason": "a bridge number, not a street address"
+  },
+  "100005741": {
+   "name": "Carretera # 4",
+   "reason": "a road number, not a street address"
+  },
+  "100006919": {
+   "name": "Carretera Num. 6",
+   "reason": "a road number, not a street address"
+  },
+  "86002762": {
+   "name": "Casa Alcaldia de Arecibo",
+   "reason": "a city hall"
+  },
+  "100008050": {
+   "name": "Casa Alcaldia de Maunabo",
+   "reason": "a city hall"
+  },
+  "86003197": {
+   "name": "Casa Alcaldia de Ponce--City Hall",
+   "reason": "a city hall"
+  },
+  "94000174": {
+   "name": "Casa Alcaldia de Vieques",
+   "reason": "a city hall"
+  },
+  "96001491": {
+   "name": "Casa Alonso",
+   "reason": "a museum run by the municipio of Vega Baja"
+  },
+  "84003137": {
+   "name": "Casa Cautino",
+   "reason": "a public museum (Museo Casa Cautiño)"
+  },
+  "85003046": {
+   "name": "Casa Consistorial De Mayaguez",
+   "reason": "a city hall"
+  },
+  "10001216": {
+   "name": "Casa Dr. Agustin Stahl Stamm",
+   "reason": "acquired by the municipio of Bayamón, which plans a museum (borderline: public owner, use not confirmed)"
+  },
+  "11000414": {
+   "name": "Casa Dra. Concha Melendez Ramirez",
+   "reason": "owned by the Government of Puerto Rico, according to its National Register nomination (borderline: use not confirmed)"
+  },
+  "85000113": {
+   "name": "Casa Franceschi Antongiorgi",
+   "reason": "owned by the municipio of Yauco after an expropriation; a museum, closed since the 2020 earthquakes (borderline)"
+  },
+  "97001307": {
+   "name": "Casa Klumb",
+   "reason": "owned by the University of Puerto Rico since 1986; uninhabited and damaged by fire in 2020"
+  },
+  "84003156": {
+   "name": "Casa Natal Dr. Jose Celso Barbosa",
+   "reason": "a birthplace museum"
+  },
+  "84003139": {
+   "name": "Casa Natal de Luis Munoz Rivera",
+   "reason": "a public birthplace museum"
+  },
+  "09000769": {
+   "name": "Casa Paoli",
+   "reason": "a public cultural centre (folklore research centre)"
+  },
+  "77001550": {
+   "name": "Casa Roig",
+   "reason": "a museum of the University of Puerto Rico at Humacao"
+  },
+  "82003822": {
+   "name": "Casa Ulanga",
+   "reason": "a public cultural centre (Casa de la Cultura Arecibeña); formerly municipal offices"
+  },
+  "83002294": {
+   "name": "Casa de Espana",
+   "reason": "an association's club building, not a home"
+  },
+  "05001098": {
+   "name": "Casa de la Masacre",
+   "reason": "a public museum"
+  },
+  "83002295": {
+   "name": "Casa de los Ponce de Leon",
+   "reason": "listed as a site (remains), not a building"
+  },
+  "89000408": {
+   "name": "Casa del Rey",
+   "reason": "a museum run by the municipio of Dorado"
+  },
+  "13000014": {
+   "name": "Cementerio Masonico de la Resp. Logia Igualdad Num. 23 de Sabana Grande",
+   "reason": "a cemetery; the number is a lodge's, not a street address"
+  },
+  "85003194": {
+   "name": "Church, School, Convent and Parish House of San Agustin",
+   "reason": "a church complex"
+  },
+  "00001124": {
+   "name": "Figueroa Apartments",
+   "reason": "an apartment building: the name is the building's and identifies no household (borderline)"
+  },
+  "06000507": {
+   "name": "Gran Logia Espiritual Numero 1",
+   "reason": "a lodge; the number is the lodge's, not a street address"
+  },
+  "76002190": {
+   "name": "Hacienda Azucarera La Esperanza, House",
+    "other_points": [
+     "Hacienda Azucarera La Esperanza, Steam Engine & Mill"
+    ],
+   "reason": "the manor of a nature reserve open to the public"
+  },
+  "91001499": {
+   "name": "Hacienda Buena Vista",
+   "reason": "a heritage site and nature reserve open to the public, run by Para la Naturaleza (Conservation Trust of Puerto Rico); source: Para la Naturaleza, NPS record 91001499"
+  },
+  "95000599": {
+   "name": "Humacao Customs House",
+   "reason": "a government building"
+  },
+  "88000661": {
+   "name": "Logia Union y Amparo No. 44",
+   "reason": "a lodge; the number is the lodge's, not a street address"
+  },
+  "100008052": {
+   "name": "Ponce Public School 1913",
+   "reason": "a public school; the number is a year"
+  },
+  "09000361": {
+   "name": "Puente No. 6",
+   "reason": "a bridge number, not a street address"
+  },
+  "88001304": {
+   "name": "Residencia Aboy--Lompre",
+   "reason": "a cultural centre open to the public (Casa Aboy) (borderline: privately run)"
+  },
+  "11000712": {
+   "name": "Residencia Luis Munoz Marin",
+   "reason": "a museum and archive open to the public (a foundation's)"
+  },
+  "100002695": {
+   "name": "Residencia de Senoritas Universidad de Puerto Rico; Rio Piedras",
+   "reason": "a dormitory of the public university"
+  },
+  "88000663": {
+   "name": "Salazar--Candal House",
+   "reason": "a public museum (Ponce's history museum)"
+  },
+  "75002134": {
+   "name": "Santuario de la Monserate de Hormigueros and Casa de Peregrinos",
+   "reason": "a sanctuary and its pilgrims' house"
+  },
+  "81000694": {
+   "name": "Superintendent of Lighthouses' Dwelling",
+   "reason": "federal quarters on the Coast Guard base in San Juan; the name is an office's, not a household's (borderline)"
+  },
+  "88000073": {
+   "name": "US Custom House",
+   "reason": "a federal building"
+  },
+  "88000075": {
+   "name": "US Custom House",
+   "reason": "a federal building"
+  },
+  "88000076": {
+   "name": "US Custom House",
+   "reason": "a federal building"
+  },
+  "88000077": {
+   "name": "US Custom House",
+   "reason": "a federal building"
+  }
+ },
+ "residence": {
+  "05000257": {
+   "reason": "a family house as the Register names it; no public use found"
+  },
+  "06000028": {
+   "reason": "a family house as the Register names it; no public use found"
+  },
+  "06000896": {
+   "reason": "privately owned when listed (NPS nomination, 2006); vacant and deteriorated; the municipio announced a restoration as its tourism office (El Nuevo Día, 2025-08-07), but public ownership is not confirmed (borderline)"
+  },
+  "100002694": {
+   "reason": "a family house as the Register names it; no public use found"
+  },
+  "100007218": {
+   "reason": "a family's country house"
+  },
+  "100008175": {
+   "reason": "a physician's house; no public use found (borderline)"
+  },
+  "100010033": {
+   "reason": "a family house as the Register names it; no public use found"
+  },
+  "100010382": {
+   "reason": "a family house as the Register names it; no public use found"
+  },
+  "100010389": {
+   "reason": "a plantation house privately owned; a family's private museum, visits by appointment only (Primera Hora, 2021-10-22) (borderline)"
+  },
+  "100011511": {
+   "reason": "a family house as the Register names it; no public use found"
+  },
+  "100011591": {
+   "reason": "a plantation still owned by its founding family; use not confirmed (NPS listing of 2025; family history page)"
+  },
+  "100012628": {
+   "reason": "a family house as the Register names it; no public use found"
+  },
+  "13000013": {
+   "reason": "a family house as the Register names it; no public use found"
+  },
+  "14001135": {
+   "reason": "a family house as the Register names it; no public use found"
+  },
+  "15000311": {
+   "reason": "a family house as the Register names it; no public use found"
+  },
+  "77001548": {
+   "reason": "a plantation house later a guest house; current use not confirmed (borderline)"
+  },
+  "83002293": {
+   "reason": "a house privately owned when listed; in ruins (borderline)"
+  },
+  "83004662": {
+   "reason": "privately owned and abandoned when listed (NPS nomination); ruins with no public visits; current owner not confirmed"
+  },
+  "84003147": {
+   "reason": "privately owned by a religious order and used as its convent and novitiate (NPS nomination, 1984); not open as a heritage site"
+  },
+  "84003151": {
+   "reason": "a family house as the Register names it; no public use found"
+  },
+  "85000040": {
+   "reason": "a family house as the Register names it; no public use found"
+  },
+  "85000043": {
+   "reason": "a family house as the Register names it; no public use found"
+  },
+  "85000114": {
+   "reason": "a family house as the Register names it; no public use found"
+  },
+  "85000115": {
+   "reason": "a family house as the Register names it; no public use found"
+  },
+  "85000116": {
+   "reason": "a family house as the Register names it; no public use found"
+  },
+  "85000295": {
+   "reason": "privately owned and unoccupied when listed (NPS nomination, 1984); current owner and use not confirmed"
+  },
+  "85003087": {
+   "reason": "a home for the elderly when listed (1985 nomination); current use not confirmed, so counted, not drawn"
+  },
+  "86000421": {
+   "reason": "a family house as the Register names it; no public use found"
+  },
+  "86000624": {
+   "reason": "a family house (José de Diego's home); no public use found; not caught by the name patterns because NPS spells it 'Case'"
+  },
+  "86000704": {
+   "reason": "a house; no public use found"
+  },
+  "86000894": {
+   "reason": "a family house as the Register names it; no public use found"
+  },
+  "86002768": {
+   "reason": "a family house as the Register names it; no public use found"
+  },
+  "86003183": {
+   "reason": "the name is a street address"
+  },
+  "86003185": {
+   "reason": "built as a house, later shops and homes (mixed use)"
+  },
+  "86003192": {
+   "reason": "a family house as the Register names it; no public use found"
+  },
+  "86003201": {
+   "reason": "a family house as the Register names it; no public use found"
+  },
+  "86003491": {
+   "reason": "a family house as the Register names it; no public use found"
+  },
+  "87000735": {
+   "reason": "the manor house of a plantation; no public use found"
+  },
+  "87001821": {
+   "reason": "a family house as the Register names it; no public use found"
+  },
+  "87001823": {
+   "reason": "a family house as the Register names it; no public use found"
+  },
+  "87001824": {
+   "reason": "a family house as the Register names it; no public use found"
+  },
+  "87001825": {
+   "reason": "a family house as the Register names it; no public use found"
+  },
+  "87001826": {
+   "reason": "a family house as the Register names it; no public use found"
+  },
+  "88000643": {
+   "reason": "a family house as the Register names it; no public use found"
+  },
+  "88000645": {
+   "reason": "the name is a street address"
+  },
+  "88000655": {
+   "reason": "a family house as the Register names it; no public use found"
+  },
+  "88000656": {
+   "reason": "a family house as the Register names it; no public use found"
+  },
+  "88000682": {
+   "reason": "a family house as the Register names it; no public use found"
+  },
+  "88000686": {
+   "reason": "a family house as the Register names it; no public use found"
+  },
+  "88000961": {
+   "reason": "a family house as the Register names it; no public use found"
+  },
+  "88000962": {
+   "reason": "a family house as the Register names it; no public use found"
+  },
+  "88000965": {
+   "reason": "a family house as the Register names it; no public use found"
+  },
+  "88000966": {
+   "reason": "the house where a religious congregation began; reported in ruins, owner and use not confirmed (borderline)"
+  },
+  "88001180": {
+   "reason": "a family house as the Register names it; no public use found"
+  },
+  "88001306": {
+   "reason": "a family house as the Register names it; no public use found"
+  },
+  "88001847": {
+   "reason": "a family house as the Register names it; no public use found"
+  },
+  "88001848": {
+   "reason": "privately owned; current function a single dwelling (NPS nomination, 1989)"
+  },
+  "89000428": {
+   "reason": "a family house as the Register names it; no public use found"
+  },
+  "90000767": {
+   "reason": "a family house as the Register names it; no public use found"
+  },
+  "91001500": {
+   "reason": "the name is a street address"
+  },
+  "91001501": {
+   "reason": "the name is a street address"
+  },
+  "91001502": {
+   "reason": "the name is a street address"
+  },
+  "91002007": {
+   "reason": "the name is a street address"
+  },
+  "92000379": {
+   "reason": "a family house as the Register names it; no public use found"
+  },
+  "93001205": {
+   "reason": "a family house; the name holds a house number"
+  },
+  "93001554": {
+   "reason": "a family house as the Register names it; no public use found"
+  },
+  "93001555": {
+   "reason": "a family house as the Register names it; no public use found"
+  },
+  "93001556": {
+   "reason": "a family house as the Register names it; no public use found"
+  },
+  "94000249": {
+   "reason": "a family house as the Register names it; no public use found"
+  },
+  "94000363": {
+   "reason": "a family house as the Register names it; no public use found"
+  },
+  "94000624": {
+   "reason": "a family house as the Register names it; no public use found"
+  },
+  "95000287": {
+   "reason": "privately owned; current function a single dwelling (NPS nomination, 1995)"
+  },
+  "95000435": {
+   "reason": "a family house as the Register names it; no public use found"
+  }
+ }
+}

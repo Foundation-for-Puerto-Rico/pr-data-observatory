@@ -1,0 +1,41 @@
+[
+ {
+  "id": "economy.spending_fema_pa",
+  "name": "FEMA Public Assistance by project stage and age",
+  "domain": "public-money",
+  "domains": [
+   "public-money"
+  ],
+  "group": "Public spending (Gasto Público)",
+  "kind": "table",
+  "plain": "How much of FEMA's disaster Public Assistance in Puerto Rico is in projects that are closed out, open or waiting for a review, and how long the open money has been open, for the whole island, each disaster and each municipio. It shows where to ask, not whether a project failed.",
+  "definition": "spending_fema_pa.json holds OpenFEMA's Public Assistance projects in Puerto Rico summed by process step (closed out, open, pending a review), with the federal share obligated in dollars, the dollar-weighted median years since each open project's first obligation, and the dollars open more than five years; island-wide, by disaster, by damage category and by municipio. Projects recorded as Statewide are summed apart.",
+  "unit": "US dollars (not adjusted for inflation); years",
+  "value_type": "level",
+  "geography": "Municipio, with the projects recorded as Statewide apart",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "Monthly, when fema_pa_stage.py --refresh reads OpenFEMA again"
+  },
+  "method": "fema_pa_stage.py reads every Puerto Rico row of OpenFEMA's Public Assistance Funded Projects Details: its process step, federal share obligated, first obligation date, disaster, damage category and county code. Closed is Project Closed Out; open is Obligated; pending is any Pending step. Age counts from the first obligation to the day the data were read.",
+  "how_to_read": "Compare the share closed out and the age of what is open between municipios or disasters. A large share of old open money points to where to ask; large permanent works take years.",
+  "cautions": [
+   "About three quarters of the dollars are recorded as Statewide and name no municipio: a municipio's figure is only the part that names it.",
+   "These are obligations, not payments: OpenFEMA does not publish what was paid on each project.",
+   "Closed out is FEMA's final reconciliation of costs; an open project can be finished on the ground and still waiting for its documents.",
+   "The same money is in the federal awards (assistance listing 97.036) and the FEMA series of the Analysis tab: never add them."
+  ],
+  "sources": [
+   "openfema",
+   "census_pep"
+  ],
+  "added": "2026-11-17",
+  "where": {
+   "files": [
+    "spending_fema_pa.json:*"
+   ]
+  }
+ }
+]

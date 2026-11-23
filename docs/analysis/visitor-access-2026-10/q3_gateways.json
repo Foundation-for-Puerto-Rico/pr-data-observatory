@@ -1,0 +1,2052 @@
+{
+ "inventory_by_kind_source": {
+  "airport|faa_airports": 14,
+  "airport|osm_transport": 11,
+  "bus_station|ati_gtfs": 15,
+  "bus_station|muni_gtfs": 29,
+  "bus_station|osm_transport": 47,
+  "ferry_terminal|ati_gtfs": 6,
+  "ferry_terminal|osm_transport": 7,
+  "rail_station|ati_gtfs": 16
+ },
+ "faa_airports": {
+  "total": 14,
+  "public_use": 10,
+  "codes_public": [
+   "ABO",
+   "BQN",
+   "CPX",
+   "MAZ",
+   "PSE",
+   "RVR",
+   "SIG",
+   "SJU",
+   "VQS",
+   "X63"
+  ]
+ },
+ "osm_airports": [
+  {
+   "name": "Fajardo Harbor Seaplane Base",
+   "municipality": "Fajardo",
+   "iata": null
+  },
+  {
+   "name": "Aeropuerto Histórico de Santa Isabel",
+   "municipality": "Santa Isabel",
+   "iata": null
+  },
+  {
+   "name": "Aeropuerto Militar de Fort Allen",
+   "municipality": "Juana Díaz",
+   "iata": null
+  },
+  {
+   "name": "San Juan Seaplane Base",
+   "municipality": "San Juan",
+   "iata": null
+  },
+  {
+   "name": "Aeropuerto Cocal",
+   "municipality": "Toa Baja",
+   "iata": null
+  },
+  {
+   "name": "Aeropuerto de Patillas (CERRADO)",
+   "municipality": "Patillas",
+   "iata": null
+  },
+  {
+   "name": "Aeropuerto Diego Jiménez Torres",
+   "municipality": "Fajardo",
+   "iata": "FAJ"
+  },
+  {
+   "name": "(no name)",
+   "municipality": "Isabela",
+   "iata": null
+  },
+  {
+   "name": "Aeropuerto de San Sebastián",
+   "municipality": "San Sebastián",
+   "iata": null
+  },
+  {
+   "name": "Aeropuerto Cristóbal Colón",
+   "municipality": "Mayagüez",
+   "iata": null
+  },
+  {
+   "name": "Aeropuerto Histórico del Campamento García",
+   "municipality": "Vieques",
+   "iata": null
+  }
+ ],
+ "bus_stations": {
+  "ati": 15,
+  "muni_gtfs": 29,
+  "osm": 47,
+  "osm_by_municipality": {
+   "Guaynabo": 3,
+   "San Germán": 3,
+   "San Juan": 3,
+   "Bayamón": 2,
+   "Carolina": 2,
+   "Arecibo": 1,
+   "Mayagüez": 1,
+   "Loíza": 1,
+   "Aguadilla": 1,
+   "Quebradillas": 1,
+   "Camuy": 1,
+   "Moca": 1,
+   "Rincón": 1,
+   "Aguada": 1,
+   "Naguabo": 1,
+   "Río Grande": 1,
+   "Adjuntas": 1,
+   "Guayama": 1,
+   "Gurabo": 1,
+   "Cayey": 1,
+   "Santa Isabel": 1,
+   "Aibonito": 1,
+   "Ponce": 1,
+   "Juana Díaz": 1,
+   "Ciales": 1,
+   "Manatí": 1,
+   "Sabana Grande": 1,
+   "Trujillo Alto": 1,
+   "Lares": 1,
+   "Lajas": 1,
+   "Las Piedras": 1,
+   "Comerío": 1,
+   "Naranjito": 1,
+   "Barceloneta": 1,
+   "Dorado": 1,
+   "Toa Baja": 1,
+   "Coamo": 1,
+   "Yabucoa": 1,
+   "Aguas Buenas": 1
+  },
+  "muni_gtfs_by_operator": {
+   "san_lorenzo": 8,
+   "caguas": 3,
+   "humacao": 2,
+   "juncos": 2,
+   "utuado": 2,
+   "vega_baja": 2,
+   "ponce": 1,
+   "vega_alta": 1,
+   "cabo_rojo": 1,
+   "cidra": 1,
+   "fajardo": 1,
+   "guaynabo": 1,
+   "hatillo": 1,
+   "jayuya": 1,
+   "patillas": 1,
+   "bayamon": 1
+  }
+ },
+ "ferry_terminals": [
+  {
+   "source": "osm_transport",
+   "name": "Vieques / Culebra Ferry Service",
+   "municipality": "Ceiba",
+   "operator": null,
+   "routes": null,
+   "trips_weekday": null,
+   "lat": 18.227877,
+   "lng": -65.619799
+  },
+  {
+   "source": "osm_transport",
+   "name": "Acuaexpreso Hato Rey",
+   "municipality": "San Juan",
+   "operator": null,
+   "routes": null,
+   "trips_weekday": null,
+   "lat": 18.430321,
+   "lng": -66.061158
+  },
+  {
+   "source": "osm_transport",
+   "name": "(no name)",
+   "municipality": "Arecibo",
+   "operator": null,
+   "routes": null,
+   "trips_weekday": null,
+   "lat": 18.332464,
+   "lng": -66.670219
+  },
+  {
+   "source": "osm_transport",
+   "name": "(no name)",
+   "municipality": "San Juan",
+   "operator": null,
+   "routes": null,
+   "trips_weekday": null,
+   "lat": 18.459259,
+   "lng": -66.098958
+  },
+  {
+   "source": "osm_transport",
+   "name": "Terminal de Lanchas de Fajardo Ángel \"Tito\" Olmedo Rivera",
+   "municipality": "Fajardo",
+   "operator": null,
+   "routes": null,
+   "trips_weekday": null,
+   "lat": 18.334703,
+   "lng": -65.631115
+  },
+  {
+   "source": "osm_transport",
+   "name": "Carnival CruisePort Muelle 4",
+   "municipality": "San Juan",
+   "operator": null,
+   "routes": null,
+   "trips_weekday": null,
+   "lat": 18.462022,
+   "lng": -66.109838
+  },
+  {
+   "source": "osm_transport",
+   "name": "Servicios de Lanchas",
+   "municipality": "Ceiba",
+   "operator": null,
+   "routes": null,
+   "trips_weekday": null,
+   "lat": 18.227661,
+   "lng": -65.613566
+  },
+  {
+   "source": "ati_gtfs",
+   "name": "Terminal de Lanchas Vieques (Mosquito)",
+   "municipality": null,
+   "operator": "ati",
+   "routes": [
+    "CM"
+   ],
+   "trips_weekday": 4,
+   "lat": 18.14273,
+   "lng": -65.51328
+  },
+  {
+   "source": "ati_gtfs",
+   "name": "Terminal de Lanchas Vieques (Isabel II)",
+   "municipality": null,
+   "operator": "ati",
+   "routes": [
+    "CI"
+   ],
+   "trips_weekday": 12,
+   "lat": 18.15219,
+   "lng": -65.44312
+  },
+  {
+   "source": "ati_gtfs",
+   "name": "Terminal de Lancha Cataño",
+   "municipality": null,
+   "operator": "ati",
+   "routes": [
+    "CSJ"
+   ],
+   "trips_weekday": 32,
+   "lat": 18.44397,
+   "lng": -66.11669
+  },
+  {
+   "source": "ati_gtfs",
+   "name": "Terminal de Lancha San Juan",
+   "municipality": null,
+   "operator": "ati",
+   "routes": [
+    "CSJ"
+   ],
+   "trips_weekday": 32,
+   "lat": 18.46305,
+   "lng": -66.11312
+  },
+  {
+   "source": "ati_gtfs",
+   "name": "Terminal de Lanchas Culebra",
+   "municipality": "Culebra",
+   "operator": "ati",
+   "routes": [
+    "CC"
+   ],
+   "trips_weekday": 16,
+   "lat": 18.30156,
+   "lng": -65.30252
+  },
+  {
+   "source": "ati_gtfs",
+   "name": "Terminal de Lanchas de Ceiba",
+   "municipality": "Ceiba",
+   "operator": "ati",
+   "routes": [
+    "CC",
+    "CI",
+    "CM"
+   ],
+   "trips_weekday": 32,
+   "lat": 18.22928,
+   "lng": -65.61848
+  }
+ ],
+ "rail_stations": {
+  "n": 16,
+  "sources": {
+   "ati_gtfs": 16
+  },
+  "municipalities": {
+   "San Juan": 12,
+   "Bayamón": 3,
+   "Guaynabo": 1
+  }
+ },
+ "port_like_features_in_transport_json": [
+  {
+   "name": "Fajardo Harbor Seaplane Base",
+   "kind": "airport",
+   "source": "osm_transport",
+   "municipality": "Fajardo"
+  },
+  {
+   "name": "Aeropuerto Histórico de Santa Isabel",
+   "kind": "airport",
+   "source": "osm_transport",
+   "municipality": "Santa Isabel"
+  },
+  {
+   "name": "Aeropuerto Militar de Fort Allen",
+   "kind": "airport",
+   "source": "osm_transport",
+   "municipality": "Juana Díaz"
+  },
+  {
+   "name": "San Juan Seaplane Base",
+   "kind": "airport",
+   "source": "osm_transport",
+   "municipality": "San Juan"
+  },
+  {
+   "name": null,
+   "kind": "bus_stop",
+   "source": "osm_transport",
+   "municipality": "San Juan"
+  },
+  {
+   "name": null,
+   "kind": "bus_stop",
+   "source": "osm_transport",
+   "municipality": "Carolina"
+  },
+  {
+   "name": "Aeropuerto Cocal",
+   "kind": "airport",
+   "source": "osm_transport",
+   "municipality": "Toa Baja"
+  },
+  {
+   "name": "Aeropuerto de Patillas (CERRADO)",
+   "kind": "airport",
+   "source": "osm_transport",
+   "municipality": "Patillas"
+  },
+  {
+   "name": "Carnival CruisePort Muelle 4",
+   "kind": "ferry_terminal",
+   "source": "osm_transport",
+   "municipality": "San Juan"
+  },
+  {
+   "name": "Aeropuerto Diego Jiménez Torres",
+   "kind": "airport",
+   "source": "osm_transport",
+   "municipality": "Fajardo"
+  },
+  {
+   "name": "Aeropuerto de San Sebastián",
+   "kind": "airport",
+   "source": "osm_transport",
+   "municipality": "San Sebastián"
+  },
+  {
+   "name": "Aeropuerto Cristóbal Colón",
+   "kind": "airport",
+   "source": "osm_transport",
+   "municipality": "Mayagüez"
+  },
+  {
+   "name": "Aeropuerto Histórico del Campamento García",
+   "kind": "airport",
+   "source": "osm_transport",
+   "municipality": "Vieques"
+  },
+  {
+   "name": null,
+   "kind": "transit_stop",
+   "source": "ati_gtfs",
+   "municipality": "San Juan"
+  },
+  {
+   "name": null,
+   "kind": "transit_stop",
+   "source": "ati_gtfs",
+   "municipality": "Carolina"
+  },
+  {
+   "name": null,
+   "kind": "transit_stop",
+   "source": "ati_gtfs",
+   "municipality": "San Juan"
+  },
+  {
+   "name": null,
+   "kind": "transit_stop",
+   "source": "ati_gtfs",
+   "municipality": "San Juan"
+  },
+  {
+   "name": null,
+   "kind": "transit_stop",
+   "source": "ati_gtfs",
+   "municipality": "San Juan"
+  },
+  {
+   "name": null,
+   "kind": "transit_stop",
+   "source": "ati_gtfs",
+   "municipality": "San Juan"
+  },
+  {
+   "name": null,
+   "kind": "transit_stop",
+   "source": "muni_gtfs",
+   "municipality": "Ponce"
+  },
+  {
+   "name": null,
+   "kind": "transit_stop",
+   "source": "muni_gtfs",
+   "municipality": "Cabo Rojo"
+  },
+  {
+   "name": null,
+   "kind": "transit_stop",
+   "source": "muni_gtfs",
+   "municipality": "Caguas"
+  },
+  {
+   "name": null,
+   "kind": "transit_stop",
+   "source": "muni_gtfs",
+   "municipality": "Fajardo"
+  },
+  {
+   "name": null,
+   "kind": "transit_stop",
+   "source": "muni_gtfs",
+   "municipality": "Fajardo"
+  },
+  {
+   "name": null,
+   "kind": "transit_stop",
+   "source": "muni_gtfs",
+   "municipality": "Fajardo"
+  },
+  {
+   "name": null,
+   "kind": "transit_stop",
+   "source": "muni_gtfs",
+   "municipality": "San Juan"
+  },
+  {
+   "name": null,
+   "kind": "transit_stop",
+   "source": "muni_gtfs",
+   "municipality": "San Juan"
+  },
+  {
+   "name": null,
+   "kind": "transit_stop",
+   "source": "muni_gtfs",
+   "municipality": "Jayuya"
+  }
+ ],
+ "places_port_related_types": {
+  "Marinas": 96,
+  "Transportation": 206
+ },
+ "places_overture_categories_transport_related": {
+  "sports_bar": 159,
+  "airport": 120,
+  "taxi_service": 28,
+  "marina": 26,
+  "bus_station": 24,
+  "ferry_boat_company": 15,
+  "airport_terminal": 13,
+  "heliport": 11,
+  "airport_lounge": 5,
+  "airport_shuttle": 4,
+  "horse_trainer": 3,
+  "sports_museum": 1,
+  "balloon_port": 1
+ },
+ "ferry_routes_from_routes_file": [
+  {
+   "operator": "ati",
+   "route_id": "MA004",
+   "short_name": "CM",
+   "long_name": "Ceiba-Mosquitos",
+   "trips_weekday": 4,
+   "trips_saturday": 0,
+   "trips_sunday": 0,
+   "first": 17100,
+   "last": 69300,
+   "geometry_source": "shape",
+   "first_hhmm": "04:45",
+   "last_hhmm": "19:15",
+   "stops": [
+    "Terminal de Lanchas Vieques (Mosquito)",
+    "Terminal de Lanchas de Ceiba"
+   ]
+  },
+  {
+   "operator": "ati",
+   "route_id": "MA002",
+   "short_name": "CC",
+   "long_name": "Ceiba-Culebra",
+   "trips_weekday": 16,
+   "trips_saturday": 18,
+   "trips_sunday": 18,
+   "first": 12600,
+   "last": 77400,
+   "geometry_source": "shape",
+   "first_hhmm": "03:30",
+   "last_hhmm": "21:30",
+   "stops": [
+    "Terminal de Lanchas Culebra",
+    "Terminal de Lanchas de Ceiba"
+   ]
+  },
+  {
+   "operator": "ati",
+   "route_id": "MA001",
+   "short_name": "CSJ",
+   "long_name": "Cataño-Viejo San Juan",
+   "trips_weekday": 32,
+   "trips_saturday": 30,
+   "trips_sunday": 31,
+   "first": 19800,
+   "last": 79200,
+   "geometry_source": "shape",
+   "first_hhmm": "05:30",
+   "last_hhmm": "22:00",
+   "stops": [
+    "Terminal de Lancha Cataño",
+    "Terminal de Lancha San Juan"
+   ]
+  },
+  {
+   "operator": "ati",
+   "route_id": "MA003",
+   "short_name": "CI",
+   "long_name": "Ceiba-Vieques",
+   "trips_weekday": 12,
+   "trips_saturday": 16,
+   "trips_sunday": 16,
+   "first": 16200,
+   "last": 77400,
+   "geometry_source": "shape",
+   "first_hhmm": "04:30",
+   "last_hhmm": "21:30",
+   "stops": [
+    "Terminal de Lanchas Vieques (Isabel II)",
+    "Terminal de Lanchas de Ceiba"
+   ]
+  }
+ ],
+ "ferry_trips_in_timetable_files": {
+  "wk": {
+   "CC": {
+    "trips": 16,
+    "first": "03:30",
+    "last_departure": "21:30",
+    "median_minutes_first_to_last_stop": 45.0,
+    "stops_per_trip_max": 2
+   },
+   "CI": {
+    "trips": 12,
+    "first": "04:30",
+    "last_departure": "21:30",
+    "median_minutes_first_to_last_stop": 45.0,
+    "stops_per_trip_max": 2
+   },
+   "CM": {
+    "trips": 4,
+    "first": "04:45",
+    "last_departure": "19:15",
+    "median_minutes_first_to_last_stop": 45.0,
+    "stops_per_trip_max": 2
+   },
+   "CSJ": {
+    "trips": 32,
+    "first": "05:30",
+    "last_departure": "22:00",
+    "median_minutes_first_to_last_stop": 12.0,
+    "stops_per_trip_max": 2
+   }
+  },
+  "sa": {
+   "CC": {
+    "trips": 18,
+    "first": "04:00",
+    "last_departure": "21:30",
+    "median_minutes_first_to_last_stop": 45.0,
+    "stops_per_trip_max": 2
+   },
+   "CI": {
+    "trips": 16,
+    "first": "05:00",
+    "last_departure": "21:00",
+    "median_minutes_first_to_last_stop": 45.0,
+    "stops_per_trip_max": 2
+   },
+   "CSJ": {
+    "trips": 30,
+    "first": "07:30",
+    "last_departure": "23:00",
+    "median_minutes_first_to_last_stop": 12.0,
+    "stops_per_trip_max": 2
+   }
+  },
+  "su": {
+   "CC": {
+    "trips": 18,
+    "first": "04:00",
+    "last_departure": "21:30",
+    "median_minutes_first_to_last_stop": 45.0,
+    "stops_per_trip_max": 2
+   },
+   "CI": {
+    "trips": 16,
+    "first": "05:00",
+    "last_departure": "21:00",
+    "median_minutes_first_to_last_stop": 45.0,
+    "stops_per_trip_max": 2
+   },
+   "CSJ": {
+    "trips": 31,
+    "first": "07:30",
+    "last_departure": "23:30",
+    "median_minutes_first_to_last_stop": 12.0,
+    "stops_per_trip_max": 2
+   }
+  }
+ },
+ "ferry_stop_names_in_timetables": [
+  "Terminal de Lancha Cataño",
+  "Terminal de Lancha San Juan",
+  "Terminal de Lanchas Culebra",
+  "Terminal de Lanchas Vieques (Isabel II)",
+  "Terminal de Lanchas Vieques (Mosquito)",
+  "Terminal de Lanchas de Ceiba"
+ ],
+ "gateway_land_links": [
+  {
+   "kind": "airport",
+   "source": "osm_transport",
+   "name": "Fajardo Harbor Seaplane Base",
+   "municipality": "Fajardo",
+   "code": null,
+   "nearest_current_bus_stop_m": 25539.0,
+   "current_bus_stops_within_400m": 0,
+   "max_weekday_trips_at_a_stop_within_400m": 0,
+   "nearest_any_scheduled_stop_m": 717.0
+  },
+  {
+   "kind": "airport",
+   "source": "osm_transport",
+   "name": "Aeropuerto Histórico de Santa Isabel",
+   "municipality": "Santa Isabel",
+   "code": null,
+   "nearest_current_bus_stop_m": 10752.0,
+   "current_bus_stops_within_400m": 0,
+   "max_weekday_trips_at_a_stop_within_400m": 0,
+   "nearest_any_scheduled_stop_m": 10752.0
+  },
+  {
+   "kind": "airport",
+   "source": "osm_transport",
+   "name": "Aeropuerto Militar de Fort Allen",
+   "municipality": "Juana Díaz",
+   "code": null,
+   "nearest_current_bus_stop_m": 15400.0,
+   "current_bus_stops_within_400m": 0,
+   "max_weekday_trips_at_a_stop_within_400m": 0,
+   "nearest_any_scheduled_stop_m": 5934.0
+  },
+  {
+   "kind": "airport",
+   "source": "osm_transport",
+   "name": "San Juan Seaplane Base",
+   "municipality": "San Juan",
+   "code": null,
+   "nearest_current_bus_stop_m": 1199.0,
+   "current_bus_stops_within_400m": 0,
+   "max_weekday_trips_at_a_stop_within_400m": 0,
+   "nearest_any_scheduled_stop_m": 1024.0
+  },
+  {
+   "kind": "ferry_terminal",
+   "source": "osm_transport",
+   "name": "Vieques / Culebra Ferry Service",
+   "municipality": "Ceiba",
+   "code": null,
+   "nearest_current_bus_stop_m": 18006.0,
+   "current_bus_stops_within_400m": 0,
+   "max_weekday_trips_at_a_stop_within_400m": 0,
+   "nearest_any_scheduled_stop_m": 209.0
+  },
+  {
+   "kind": "ferry_terminal",
+   "source": "osm_transport",
+   "name": "Acuaexpreso Hato Rey",
+   "municipality": "San Juan",
+   "code": null,
+   "nearest_current_bus_stop_m": 162.0,
+   "current_bus_stops_within_400m": 7,
+   "max_weekday_trips_at_a_stop_within_400m": 191,
+   "nearest_any_scheduled_stop_m": 141.0
+  },
+  {
+   "kind": "ferry_terminal",
+   "source": "osm_transport",
+   "name": "(no name)",
+   "municipality": "Arecibo",
+   "code": null,
+   "nearest_current_bus_stop_m": 6470.0,
+   "current_bus_stops_within_400m": 0,
+   "max_weekday_trips_at_a_stop_within_400m": 0,
+   "nearest_any_scheduled_stop_m": 6470.0
+  },
+  {
+   "kind": "ferry_terminal",
+   "source": "osm_transport",
+   "name": "(no name)",
+   "municipality": "San Juan",
+   "code": null,
+   "nearest_current_bus_stop_m": 405.0,
+   "current_bus_stops_within_400m": 0,
+   "max_weekday_trips_at_a_stop_within_400m": 0,
+   "nearest_any_scheduled_stop_m": 405.0
+  },
+  {
+   "kind": "airport",
+   "source": "osm_transport",
+   "name": "Aeropuerto Cocal",
+   "municipality": "Toa Baja",
+   "code": null,
+   "nearest_current_bus_stop_m": 3315.0,
+   "current_bus_stops_within_400m": 0,
+   "max_weekday_trips_at_a_stop_within_400m": 0,
+   "nearest_any_scheduled_stop_m": 3315.0
+  },
+  {
+   "kind": "airport",
+   "source": "osm_transport",
+   "name": "Aeropuerto de Patillas (CERRADO)",
+   "municipality": "Patillas",
+   "code": null,
+   "nearest_current_bus_stop_m": 1398.0,
+   "current_bus_stops_within_400m": 0,
+   "max_weekday_trips_at_a_stop_within_400m": 0,
+   "nearest_any_scheduled_stop_m": 1398.0
+  },
+  {
+   "kind": "ferry_terminal",
+   "source": "osm_transport",
+   "name": "Terminal de Lanchas de Fajardo Ángel \"Tito\" Olmedo Rivera",
+   "municipality": "Fajardo",
+   "code": null,
+   "nearest_current_bus_stop_m": 24764.0,
+   "current_bus_stops_within_400m": 0,
+   "max_weekday_trips_at_a_stop_within_400m": 0,
+   "nearest_any_scheduled_stop_m": 82.0
+  },
+  {
+   "kind": "ferry_terminal",
+   "source": "osm_transport",
+   "name": "Carnival CruisePort Muelle 4",
+   "municipality": "San Juan",
+   "code": null,
+   "nearest_current_bus_stop_m": 222.0,
+   "current_bus_stops_within_400m": 3,
+   "max_weekday_trips_at_a_stop_within_400m": 508,
+   "nearest_any_scheduled_stop_m": 222.0
+  },
+  {
+   "kind": "airport",
+   "source": "osm_transport",
+   "name": "Aeropuerto Diego Jiménez Torres",
+   "municipality": "Fajardo",
+   "code": "FAJ",
+   "nearest_current_bus_stop_m": 21451.0,
+   "current_bus_stops_within_400m": 0,
+   "max_weekday_trips_at_a_stop_within_400m": 0,
+   "nearest_any_scheduled_stop_m": 943.0
+  },
+  {
+   "kind": "ferry_terminal",
+   "source": "osm_transport",
+   "name": "Servicios de Lanchas",
+   "municipality": "Ceiba",
+   "code": null,
+   "nearest_current_bus_stop_m": 17437.0,
+   "current_bus_stops_within_400m": 0,
+   "max_weekday_trips_at_a_stop_within_400m": 0,
+   "nearest_any_scheduled_stop_m": 550.0
+  },
+  {
+   "kind": "airport",
+   "source": "osm_transport",
+   "name": "(no name)",
+   "municipality": "Isabela",
+   "code": null,
+   "nearest_current_bus_stop_m": 18251.0,
+   "current_bus_stops_within_400m": 0,
+   "max_weekday_trips_at_a_stop_within_400m": 0,
+   "nearest_any_scheduled_stop_m": 18251.0
+  },
+  {
+   "kind": "airport",
+   "source": "osm_transport",
+   "name": "Aeropuerto de San Sebastián",
+   "municipality": "San Sebastián",
+   "code": null,
+   "nearest_current_bus_stop_m": 1113.0,
+   "current_bus_stops_within_400m": 0,
+   "max_weekday_trips_at_a_stop_within_400m": 0,
+   "nearest_any_scheduled_stop_m": 1113.0
+  },
+  {
+   "kind": "airport",
+   "source": "osm_transport",
+   "name": "Aeropuerto Cristóbal Colón",
+   "municipality": "Mayagüez",
+   "code": null,
+   "nearest_current_bus_stop_m": 76861.0,
+   "current_bus_stops_within_400m": 0,
+   "max_weekday_trips_at_a_stop_within_400m": 0,
+   "nearest_any_scheduled_stop_m": 76861.0
+  },
+  {
+   "kind": "airport",
+   "source": "osm_transport",
+   "name": "Aeropuerto Histórico del Campamento García",
+   "municipality": "Vieques",
+   "code": null,
+   "nearest_current_bus_stop_m": 3080.0,
+   "current_bus_stops_within_400m": 0,
+   "max_weekday_trips_at_a_stop_within_400m": 0,
+   "nearest_any_scheduled_stop_m": 3080.0
+  },
+  {
+   "kind": "airport",
+   "source": "faa_airports",
+   "name": "Rafael Hernandez",
+   "municipality": "Aguadilla",
+   "code": "BQN",
+   "nearest_current_bus_stop_m": 20945.0,
+   "current_bus_stops_within_400m": 0,
+   "max_weekday_trips_at_a_stop_within_400m": 0,
+   "nearest_any_scheduled_stop_m": 20945.0
+  },
+  {
+   "kind": "airport",
+   "source": "faa_airports",
+   "name": "Antonio/Nery/Juarbe Pol",
+   "municipality": "Arecibo",
+   "code": "ABO",
+   "nearest_current_bus_stop_m": 18805.0,
+   "current_bus_stops_within_400m": 0,
+   "max_weekday_trips_at_a_stop_within_400m": 0,
+   "nearest_any_scheduled_stop_m": 10587.0
+  },
+  {
+   "kind": "airport",
+   "source": "faa_airports",
+   "name": "Jose Aponte De La Torre",
+   "municipality": "Ceiba",
+   "code": "RVR",
+   "nearest_current_bus_stop_m": 21138.0,
+   "current_bus_stops_within_400m": 0,
+   "max_weekday_trips_at_a_stop_within_400m": 0,
+   "nearest_any_scheduled_stop_m": 3167.0
+  },
+  {
+   "kind": "airport",
+   "source": "faa_airports",
+   "name": "Dr Hermenegildo Ortiz Quinones",
+   "municipality": "Humacao",
+   "code": "X63",
+   "nearest_current_bus_stop_m": 1960.0,
+   "current_bus_stops_within_400m": 0,
+   "max_weekday_trips_at_a_stop_within_400m": 0,
+   "nearest_any_scheduled_stop_m": 1960.0
+  },
+  {
+   "kind": "airport",
+   "source": "faa_airports",
+   "name": "Benjamin Rivera Noriega",
+   "municipality": "Culebra",
+   "code": "CPX",
+   "nearest_current_bus_stop_m": 23240.0,
+   "current_bus_stops_within_400m": 0,
+   "max_weekday_trips_at_a_stop_within_400m": 0,
+   "nearest_any_scheduled_stop_m": 1269.0
+  },
+  {
+   "kind": "airport",
+   "source": "faa_airports",
+   "name": "Antonio Rivera Rodriguez",
+   "municipality": "Vieques",
+   "code": "VQS",
+   "nearest_current_bus_stop_m": 2076.0,
+   "current_bus_stops_within_400m": 0,
+   "max_weekday_trips_at_a_stop_within_400m": 0,
+   "nearest_any_scheduled_stop_m": 2076.0
+  },
+  {
+   "kind": "airport",
+   "source": "faa_airports",
+   "name": "Eugenio Maria De Hostos",
+   "municipality": "Mayagüez",
+   "code": "MAZ",
+   "nearest_current_bus_stop_m": 11163.0,
+   "current_bus_stops_within_400m": 0,
+   "max_weekday_trips_at_a_stop_within_400m": 0,
+   "nearest_any_scheduled_stop_m": 11163.0
+  },
+  {
+   "kind": "airport",
+   "source": "faa_airports",
+   "name": "Mercedita",
+   "municipality": "Ponce",
+   "code": "PSE",
+   "nearest_current_bus_stop_m": 17909.0,
+   "current_bus_stops_within_400m": 0,
+   "max_weekday_trips_at_a_stop_within_400m": 0,
+   "nearest_any_scheduled_stop_m": 1335.0
+  },
+  {
+   "kind": "airport",
+   "source": "faa_airports",
+   "name": "Fernando Luis Ribas Dominicci",
+   "municipality": "San Juan",
+   "code": "SIG",
+   "nearest_current_bus_stop_m": 677.0,
+   "current_bus_stops_within_400m": 0,
+   "max_weekday_trips_at_a_stop_within_400m": 0,
+   "nearest_any_scheduled_stop_m": 677.0
+  },
+  {
+   "kind": "airport",
+   "source": "faa_airports",
+   "name": "Luis Munoz Marin Intl",
+   "municipality": "Carolina",
+   "code": "SJU",
+   "nearest_current_bus_stop_m": 290.0,
+   "current_bus_stops_within_400m": 1,
+   "max_weekday_trips_at_a_stop_within_400m": 117,
+   "nearest_any_scheduled_stop_m": 290.0
+  },
+  {
+   "kind": "bus_station",
+   "source": "ati_gtfs",
+   "name": "Terminal Sagrado Corazon (descenso)",
+   "municipality": "San Juan",
+   "code": null,
+   "nearest_current_bus_stop_m": 48.0,
+   "current_bus_stops_within_400m": 21,
+   "max_weekday_trips_at_a_stop_within_400m": 244,
+   "nearest_any_scheduled_stop_m": 48.0
+  },
+  {
+   "kind": "bus_station",
+   "source": "ati_gtfs",
+   "name": "Estacion Martinez Nadal (Abordaje/Descenso)",
+   "municipality": "San Juan",
+   "code": null,
+   "nearest_current_bus_stop_m": 7.0,
+   "current_bus_stops_within_400m": 5,
+   "max_weekday_trips_at_a_stop_within_400m": 53,
+   "nearest_any_scheduled_stop_m": 7.0
+  },
+  {
+   "kind": "bus_station",
+   "source": "ati_gtfs",
+   "name": "Estación Centro Medico después Tte. Cesar Gonzaléz",
+   "municipality": "San Juan",
+   "code": null,
+   "nearest_current_bus_stop_m": 42.0,
+   "current_bus_stops_within_400m": 13,
+   "max_weekday_trips_at_a_stop_within_400m": 32,
+   "nearest_any_scheduled_stop_m": 42.0
+  },
+  {
+   "kind": "bus_station",
+   "source": "ati_gtfs",
+   "name": "Terminal de Cataño",
+   "municipality": null,
+   "code": null,
+   "nearest_current_bus_stop_m": 78.0,
+   "current_bus_stops_within_400m": 6,
+   "max_weekday_trips_at_a_stop_within_400m": 84,
+   "nearest_any_scheduled_stop_m": 78.0
+  },
+  {
+   "kind": "bus_station",
+   "source": "ati_gtfs",
+   "name": "Terminal Transporte Publico de Caguas",
+   "municipality": "Caguas",
+   "code": null,
+   "nearest_current_bus_stop_m": 448.0,
+   "current_bus_stops_within_400m": 0,
+   "max_weekday_trips_at_a_stop_within_400m": 0,
+   "nearest_any_scheduled_stop_m": 12.0
+  },
+  {
+   "kind": "rail_station",
+   "source": "ati_gtfs",
+   "name": "Estación Cupey",
+   "municipality": "San Juan",
+   "code": null,
+   "nearest_current_bus_stop_m": 45.0,
+   "current_bus_stops_within_400m": 8,
+   "max_weekday_trips_at_a_stop_within_400m": 367,
+   "nearest_any_scheduled_stop_m": 45.0
+  },
+  {
+   "kind": "bus_station",
+   "source": "ati_gtfs",
+   "name": "Terminal de Piñero",
+   "municipality": "San Juan",
+   "code": null,
+   "nearest_current_bus_stop_m": 155.0,
+   "current_bus_stops_within_400m": 8,
+   "max_weekday_trips_at_a_stop_within_400m": 206,
+   "nearest_any_scheduled_stop_m": 73.0
+  },
+  {
+   "kind": "bus_station",
+   "source": "ati_gtfs",
+   "name": "Terminal Covadonga",
+   "municipality": "San Juan",
+   "code": null,
+   "nearest_current_bus_stop_m": 133.0,
+   "current_bus_stops_within_400m": 6,
+   "max_weekday_trips_at_a_stop_within_400m": 254,
+   "nearest_any_scheduled_stop_m": 133.0
+  },
+  {
+   "kind": "rail_station",
+   "source": "ati_gtfs",
+   "name": "Estación Deportivo",
+   "municipality": "Bayamón",
+   "code": null,
+   "nearest_current_bus_stop_m": 49.0,
+   "current_bus_stops_within_400m": 13,
+   "max_weekday_trips_at_a_stop_within_400m": 43,
+   "nearest_any_scheduled_stop_m": 49.0
+  },
+  {
+   "kind": "bus_station",
+   "source": "ati_gtfs",
+   "name": "Terminal de Carolina",
+   "municipality": "Carolina",
+   "code": null,
+   "nearest_current_bus_stop_m": 165.0,
+   "current_bus_stops_within_400m": 7,
+   "max_weekday_trips_at_a_stop_within_400m": 58,
+   "nearest_any_scheduled_stop_m": 165.0
+  },
+  {
+   "kind": "rail_station",
+   "source": "ati_gtfs",
+   "name": "Estación San Francisco",
+   "municipality": "San Juan",
+   "code": null,
+   "nearest_current_bus_stop_m": 270.0,
+   "current_bus_stops_within_400m": 7,
+   "max_weekday_trips_at_a_stop_within_400m": 19,
+   "nearest_any_scheduled_stop_m": 270.0
+  },
+  {
+   "kind": "rail_station",
+   "source": "ati_gtfs",
+   "name": "Estación Roosevelt",
+   "municipality": "San Juan",
+   "code": null,
+   "nearest_current_bus_stop_m": 15.0,
+   "current_bus_stops_within_400m": 16,
+   "max_weekday_trips_at_a_stop_within_400m": 114,
+   "nearest_any_scheduled_stop_m": 15.0
+  },
+  {
+   "kind": "rail_station",
+   "source": "ati_gtfs",
+   "name": "Estación Martínez Nadal",
+   "municipality": "San Juan",
+   "code": null,
+   "nearest_current_bus_stop_m": 22.0,
+   "current_bus_stops_within_400m": 9,
+   "max_weekday_trips_at_a_stop_within_400m": 53,
+   "nearest_any_scheduled_stop_m": 22.0
+  },
+  {
+   "kind": "bus_station",
+   "source": "ati_gtfs",
+   "name": "Terminal Campanilla",
+   "municipality": "Toa Baja",
+   "code": null,
+   "nearest_current_bus_stop_m": 5715.0,
+   "current_bus_stops_within_400m": 0,
+   "max_weekday_trips_at_a_stop_within_400m": 0,
+   "nearest_any_scheduled_stop_m": 5715.0
+  },
+  {
+   "kind": "bus_station",
+   "source": "ati_gtfs",
+   "name": "Estación Centro Médico después calle 9",
+   "municipality": "San Juan",
+   "code": null,
+   "nearest_current_bus_stop_m": 68.0,
+   "current_bus_stops_within_400m": 13,
+   "max_weekday_trips_at_a_stop_within_400m": 32,
+   "nearest_any_scheduled_stop_m": 68.0
+  },
+  {
+   "kind": "rail_station",
+   "source": "ati_gtfs",
+   "name": "Estación Dómenech",
+   "municipality": "San Juan",
+   "code": null,
+   "nearest_current_bus_stop_m": 81.0,
+   "current_bus_stops_within_400m": 13,
+   "max_weekday_trips_at_a_stop_within_400m": 86,
+   "nearest_any_scheduled_stop_m": 81.0
+  },
+  {
+   "kind": "rail_station",
+   "source": "ati_gtfs",
+   "name": "Estación Piñero",
+   "municipality": "San Juan",
+   "code": null,
+   "nearest_current_bus_stop_m": 73.0,
+   "current_bus_stops_within_400m": 9,
+   "max_weekday_trips_at_a_stop_within_400m": 277,
+   "nearest_any_scheduled_stop_m": 73.0
+  },
+  {
+   "kind": "bus_station",
+   "source": "ati_gtfs",
+   "name": "Terminal Iturregui",
+   "municipality": "Carolina",
+   "code": null,
+   "nearest_current_bus_stop_m": 236.0,
+   "current_bus_stops_within_400m": 4,
+   "max_weekday_trips_at_a_stop_within_400m": 77,
+   "nearest_any_scheduled_stop_m": 236.0
+  },
+  {
+   "kind": "rail_station",
+   "source": "ati_gtfs",
+   "name": "Estación Sagrado Corazón",
+   "municipality": "San Juan",
+   "code": null,
+   "nearest_current_bus_stop_m": 29.0,
+   "current_bus_stops_within_400m": 22,
+   "max_weekday_trips_at_a_stop_within_400m": 244,
+   "nearest_any_scheduled_stop_m": 29.0
+  },
+  {
+   "kind": "ferry_terminal",
+   "source": "ati_gtfs",
+   "name": "Terminal de Lanchas Vieques (Mosquito)",
+   "municipality": null,
+   "code": null,
+   "nearest_current_bus_stop_m": 4010.0,
+   "current_bus_stops_within_400m": 0,
+   "max_weekday_trips_at_a_stop_within_400m": 0,
+   "nearest_any_scheduled_stop_m": 4010.0
+  },
+  {
+   "kind": "rail_station",
+   "source": "ati_gtfs",
+   "name": "Estación Centro Médico",
+   "municipality": "San Juan",
+   "code": null,
+   "nearest_current_bus_stop_m": 28.0,
+   "current_bus_stops_within_400m": 15,
+   "max_weekday_trips_at_a_stop_within_400m": 32,
+   "nearest_any_scheduled_stop_m": 28.0
+  },
+  {
+   "kind": "bus_station",
+   "source": "ati_gtfs",
+   "name": "Estacion Martinez Nadal (Abordaje/Descenso)",
+   "municipality": "San Juan",
+   "code": null,
+   "nearest_current_bus_stop_m": 50.0,
+   "current_bus_stops_within_400m": 6,
+   "max_weekday_trips_at_a_stop_within_400m": 52,
+   "nearest_any_scheduled_stop_m": 39.0
+  },
+  {
+   "kind": "ferry_terminal",
+   "source": "ati_gtfs",
+   "name": "Terminal de Lanchas Vieques (Isabel II)",
+   "municipality": null,
+   "code": null,
+   "nearest_current_bus_stop_m": 407.0,
+   "current_bus_stops_within_400m": 0,
+   "max_weekday_trips_at_a_stop_within_400m": 0,
+   "nearest_any_scheduled_stop_m": 407.0
+  },
+  {
+   "kind": "ferry_terminal",
+   "source": "ati_gtfs",
+   "name": "Terminal de Lancha Cataño",
+   "municipality": null,
+   "code": null,
+   "nearest_current_bus_stop_m": 79.0,
+   "current_bus_stops_within_400m": 6,
+   "max_weekday_trips_at_a_stop_within_400m": 108,
+   "nearest_any_scheduled_stop_m": 79.0
+  },
+  {
+   "kind": "ferry_terminal",
+   "source": "ati_gtfs",
+   "name": "Terminal de Lancha San Juan",
+   "municipality": null,
+   "code": null,
+   "nearest_current_bus_stop_m": 180.0,
+   "current_bus_stops_within_400m": 4,
+   "max_weekday_trips_at_a_stop_within_400m": 508,
+   "nearest_any_scheduled_stop_m": 180.0
+  },
+  {
+   "kind": "rail_station",
+   "source": "ati_gtfs",
+   "name": "Estación Jardines",
+   "municipality": "Bayamón",
+   "code": null,
+   "nearest_current_bus_stop_m": 560.0,
+   "current_bus_stops_within_400m": 0,
+   "max_weekday_trips_at_a_stop_within_400m": 0,
+   "nearest_any_scheduled_stop_m": 560.0
+  },
+  {
+   "kind": "rail_station",
+   "source": "ati_gtfs",
+   "name": "Estación Las Lomas",
+   "municipality": "San Juan",
+   "code": null,
+   "nearest_current_bus_stop_m": 132.0,
+   "current_bus_stops_within_400m": 8,
+   "max_weekday_trips_at_a_stop_within_400m": 21,
+   "nearest_any_scheduled_stop_m": 132.0
+  },
+  {
+   "kind": "ferry_terminal",
+   "source": "ati_gtfs",
+   "name": "Terminal de Lanchas Culebra",
+   "municipality": "Culebra",
+   "code": null,
+   "nearest_current_bus_stop_m": 22364.0,
+   "current_bus_stops_within_400m": 0,
+   "max_weekday_trips_at_a_stop_within_400m": 0,
+   "nearest_any_scheduled_stop_m": 22237.0
+  },
+  {
+   "kind": "bus_station",
+   "source": "ati_gtfs",
+   "name": "Terminal Cupey",
+   "municipality": "San Juan",
+   "code": null,
+   "nearest_current_bus_stop_m": 52.0,
+   "current_bus_stops_within_400m": 7,
+   "max_weekday_trips_at_a_stop_within_400m": 21,
+   "nearest_any_scheduled_stop_m": 52.0
+  },
+  {
+   "kind": "rail_station",
+   "source": "ati_gtfs",
+   "name": "Estación Hato Rey",
+   "municipality": "San Juan",
+   "code": null,
+   "nearest_current_bus_stop_m": 83.0,
+   "current_bus_stops_within_400m": 10,
+   "max_weekday_trips_at_a_stop_within_400m": 191,
+   "nearest_any_scheduled_stop_m": 83.0
+  },
+  {
+   "kind": "rail_station",
+   "source": "ati_gtfs",
+   "name": "Estación Bayamón",
+   "municipality": "Bayamón",
+   "code": null,
+   "nearest_current_bus_stop_m": 66.0,
+   "current_bus_stops_within_400m": 10,
+   "max_weekday_trips_at_a_stop_within_400m": 323,
+   "nearest_any_scheduled_stop_m": 66.0
+  },
+  {
+   "kind": "rail_station",
+   "source": "ati_gtfs",
+   "name": "Estación Torrimar",
+   "municipality": "Guaynabo",
+   "code": null,
+   "nearest_current_bus_stop_m": 142.0,
+   "current_bus_stops_within_400m": 3,
+   "max_weekday_trips_at_a_stop_within_400m": 11,
+   "nearest_any_scheduled_stop_m": 142.0
+  },
+  {
+   "kind": "rail_station",
+   "source": "ati_gtfs",
+   "name": "Estación Rio Piedras",
+   "municipality": "San Juan",
+   "code": null,
+   "nearest_current_bus_stop_m": 11.0,
+   "current_bus_stops_within_400m": 21,
+   "max_weekday_trips_at_a_stop_within_400m": 153,
+   "nearest_any_scheduled_stop_m": 11.0
+  },
+  {
+   "kind": "bus_station",
+   "source": "ati_gtfs",
+   "name": "Terminal Sagrado Corazon (abordaje)",
+   "municipality": "San Juan",
+   "code": null,
+   "nearest_current_bus_stop_m": 28.0,
+   "current_bus_stops_within_400m": 22,
+   "max_weekday_trips_at_a_stop_within_400m": 244,
+   "nearest_any_scheduled_stop_m": 28.0
+  },
+  {
+   "kind": "bus_station",
+   "source": "ati_gtfs",
+   "name": "Terminal de Bayamón",
+   "municipality": "Bayamón",
+   "code": null,
+   "nearest_current_bus_stop_m": 0.0,
+   "current_bus_stops_within_400m": 11,
+   "max_weekday_trips_at_a_stop_within_400m": 134,
+   "nearest_any_scheduled_stop_m": 0.0
+  },
+  {
+   "kind": "rail_station",
+   "source": "ati_gtfs",
+   "name": "Estación Universidad",
+   "municipality": "San Juan",
+   "code": null,
+   "nearest_current_bus_stop_m": 25.0,
+   "current_bus_stops_within_400m": 6,
+   "max_weekday_trips_at_a_stop_within_400m": 206,
+   "nearest_any_scheduled_stop_m": 25.0
+  },
+  {
+   "kind": "ferry_terminal",
+   "source": "ati_gtfs",
+   "name": "Terminal de Lanchas de Ceiba",
+   "municipality": "Ceiba",
+   "code": null,
+   "nearest_current_bus_stop_m": 17971.0,
+   "current_bus_stops_within_400m": 0,
+   "max_weekday_trips_at_a_stop_within_400m": 0,
+   "nearest_any_scheduled_stop_m": 10419.0
+  },
+  {
+   "kind": "bus_station",
+   "source": "muni_gtfs",
+   "name": "Terminal",
+   "municipality": "Ponce",
+   "code": null,
+   "nearest_current_bus_stop_m": 15682.0,
+   "current_bus_stops_within_400m": 0,
+   "max_weekday_trips_at_a_stop_within_400m": 0,
+   "nearest_any_scheduled_stop_m": 167.0
+  },
+  {
+   "kind": "bus_station",
+   "source": "muni_gtfs",
+   "name": "Terminal",
+   "municipality": "Vega Alta",
+   "code": null,
+   "nearest_current_bus_stop_m": 193.0,
+   "current_bus_stops_within_400m": 11,
+   "max_weekday_trips_at_a_stop_within_400m": 11,
+   "nearest_any_scheduled_stop_m": 193.0
+  },
+  {
+   "kind": "bus_station",
+   "source": "muni_gtfs",
+   "name": "Terminal Flores Segarra",
+   "municipality": "Cabo Rojo",
+   "code": null,
+   "nearest_current_bus_stop_m": 159.0,
+   "current_bus_stops_within_400m": 4,
+   "max_weekday_trips_at_a_stop_within_400m": 26,
+   "nearest_any_scheduled_stop_m": 159.0
+  },
+  {
+   "kind": "bus_station",
+   "source": "muni_gtfs",
+   "name": "Terminal Francisco Pancho Pereira Norte/Sur",
+   "municipality": "Caguas",
+   "code": null,
+   "nearest_current_bus_stop_m": 85.0,
+   "current_bus_stops_within_400m": 2,
+   "max_weekday_trips_at_a_stop_within_400m": 54,
+   "nearest_any_scheduled_stop_m": 18.0
+  },
+  {
+   "kind": "bus_station",
+   "source": "muni_gtfs",
+   "name": "Terminal Francisco Pancho Pereira Este",
+   "municipality": "Caguas",
+   "code": null,
+   "nearest_current_bus_stop_m": 12.0,
+   "current_bus_stops_within_400m": 1,
+   "max_weekday_trips_at_a_stop_within_400m": 54,
+   "nearest_any_scheduled_stop_m": 12.0
+  },
+  {
+   "kind": "bus_station",
+   "source": "muni_gtfs",
+   "name": "Terminal Francisco Pancho Pereira C9",
+   "municipality": "Caguas",
+   "code": null,
+   "nearest_current_bus_stop_m": 92.0,
+   "current_bus_stops_within_400m": 1,
+   "max_weekday_trips_at_a_stop_within_400m": 54,
+   "nearest_any_scheduled_stop_m": 18.0
+  },
+  {
+   "kind": "bus_station",
+   "source": "muni_gtfs",
+   "name": "Terminal",
+   "municipality": "Cidra",
+   "code": null,
+   "nearest_current_bus_stop_m": 5808.0,
+   "current_bus_stops_within_400m": 0,
+   "max_weekday_trips_at_a_stop_within_400m": 0,
+   "nearest_any_scheduled_stop_m": 279.0
+  },
+  {
+   "kind": "bus_station",
+   "source": "muni_gtfs",
+   "name": "Terminal de Transportacin de Fajardo",
+   "municipality": "Fajardo",
+   "code": null,
+   "nearest_current_bus_stop_m": 22214.0,
+   "current_bus_stops_within_400m": 0,
+   "max_weekday_trips_at_a_stop_within_400m": 0,
+   "nearest_any_scheduled_stop_m": 200.0
+  },
+  {
+   "kind": "bus_station",
+   "source": "muni_gtfs",
+   "name": "Estacion tren Torrimar",
+   "municipality": "Guaynabo",
+   "code": null,
+   "nearest_current_bus_stop_m": 22.0,
+   "current_bus_stops_within_400m": 2,
+   "max_weekday_trips_at_a_stop_within_400m": 11,
+   "nearest_any_scheduled_stop_m": 22.0
+  },
+  {
+   "kind": "bus_station",
+   "source": "muni_gtfs",
+   "name": "Terminal Público",
+   "municipality": "Hatillo",
+   "code": null,
+   "nearest_current_bus_stop_m": 23731.0,
+   "current_bus_stops_within_400m": 0,
+   "max_weekday_trips_at_a_stop_within_400m": 0,
+   "nearest_any_scheduled_stop_m": 164.0
+  },
+  {
+   "kind": "bus_station",
+   "source": "muni_gtfs",
+   "name": "Terminal Norte",
+   "municipality": "Humacao",
+   "code": null,
+   "nearest_current_bus_stop_m": 126.0,
+   "current_bus_stops_within_400m": 10,
+   "max_weekday_trips_at_a_stop_within_400m": 9,
+   "nearest_any_scheduled_stop_m": 126.0
+  },
+  {
+   "kind": "bus_station",
+   "source": "muni_gtfs",
+   "name": "Terminal Sur",
+   "municipality": "Humacao",
+   "code": null,
+   "nearest_current_bus_stop_m": 193.0,
+   "current_bus_stops_within_400m": 5,
+   "max_weekday_trips_at_a_stop_within_400m": 9,
+   "nearest_any_scheduled_stop_m": 193.0
+  },
+  {
+   "kind": "bus_station",
+   "source": "muni_gtfs",
+   "name": "Terminal",
+   "municipality": "Jayuya",
+   "code": null,
+   "nearest_current_bus_stop_m": 132.0,
+   "current_bus_stops_within_400m": 4,
+   "max_weekday_trips_at_a_stop_within_400m": 30,
+   "nearest_any_scheduled_stop_m": 132.0
+  },
+  {
+   "kind": "bus_station",
+   "source": "muni_gtfs",
+   "name": "Terminal Calle Muñoz Rivera",
+   "municipality": "Juncos",
+   "code": null,
+   "nearest_current_bus_stop_m": 4675.0,
+   "current_bus_stops_within_400m": 0,
+   "max_weekday_trips_at_a_stop_within_400m": 0,
+   "nearest_any_scheduled_stop_m": 38.0
+  },
+  {
+   "kind": "bus_station",
+   "source": "muni_gtfs",
+   "name": "Terminal",
+   "municipality": "Juncos",
+   "code": null,
+   "nearest_current_bus_stop_m": 4702.0,
+   "current_bus_stops_within_400m": 0,
+   "max_weekday_trips_at_a_stop_within_400m": 0,
+   "nearest_any_scheduled_stop_m": 38.0
+  },
+  {
+   "kind": "bus_station",
+   "source": "muni_gtfs",
+   "name": "Terminal",
+   "municipality": "Patillas",
+   "code": null,
+   "nearest_current_bus_stop_m": 59.0,
+   "current_bus_stops_within_400m": 22,
+   "max_weekday_trips_at_a_stop_within_400m": 3,
+   "nearest_any_scheduled_stop_m": 59.0
+  },
+  {
+   "kind": "bus_station",
+   "source": "muni_gtfs",
+   "name": "Terminal",
+   "municipality": "San Lorenzo",
+   "code": null,
+   "nearest_current_bus_stop_m": 9085.0,
+   "current_bus_stops_within_400m": 0,
+   "max_weekday_trips_at_a_stop_within_400m": 0,
+   "nearest_any_scheduled_stop_m": 1.0
+  },
+  {
+   "kind": "bus_station",
+   "source": "muni_gtfs",
+   "name": "Terminal",
+   "municipality": "San Lorenzo",
+   "code": null,
+   "nearest_current_bus_stop_m": 9086.0,
+   "current_bus_stops_within_400m": 0,
+   "max_weekday_trips_at_a_stop_within_400m": 0,
+   "nearest_any_scheduled_stop_m": 0.0
+  },
+  {
+   "kind": "bus_station",
+   "source": "muni_gtfs",
+   "name": "Terminal",
+   "municipality": "San Lorenzo",
+   "code": null,
+   "nearest_current_bus_stop_m": 9085.0,
+   "current_bus_stops_within_400m": 0,
+   "max_weekday_trips_at_a_stop_within_400m": 0,
+   "nearest_any_scheduled_stop_m": 0.0
+  },
+  {
+   "kind": "bus_station",
+   "source": "muni_gtfs",
+   "name": "Terminal",
+   "municipality": "San Lorenzo",
+   "code": null,
+   "nearest_current_bus_stop_m": 9087.0,
+   "current_bus_stops_within_400m": 0,
+   "max_weekday_trips_at_a_stop_within_400m": 0,
+   "nearest_any_scheduled_stop_m": 1.0
+  },
+  {
+   "kind": "bus_station",
+   "source": "muni_gtfs",
+   "name": "Terminal",
+   "municipality": "San Lorenzo",
+   "code": null,
+   "nearest_current_bus_stop_m": 9085.0,
+   "current_bus_stops_within_400m": 0,
+   "max_weekday_trips_at_a_stop_within_400m": 0,
+   "nearest_any_scheduled_stop_m": 0.0
+  },
+  {
+   "kind": "bus_station",
+   "source": "muni_gtfs",
+   "name": "Terminal",
+   "municipality": "San Lorenzo",
+   "code": null,
+   "nearest_current_bus_stop_m": 9085.0,
+   "current_bus_stops_within_400m": 0,
+   "max_weekday_trips_at_a_stop_within_400m": 0,
+   "nearest_any_scheduled_stop_m": 0.0
+  },
+  {
+   "kind": "bus_station",
+   "source": "muni_gtfs",
+   "name": "Terminal",
+   "municipality": "San Lorenzo",
+   "code": null,
+   "nearest_current_bus_stop_m": 9086.0,
+   "current_bus_stops_within_400m": 0,
+   "max_weekday_trips_at_a_stop_within_400m": 0,
+   "nearest_any_scheduled_stop_m": 0.0
+  },
+  {
+   "kind": "bus_station",
+   "source": "muni_gtfs",
+   "name": "Terminal",
+   "municipality": "San Lorenzo",
+   "code": null,
+   "nearest_current_bus_stop_m": 9084.0,
+   "current_bus_stops_within_400m": 0,
+   "max_weekday_trips_at_a_stop_within_400m": 0,
+   "nearest_any_scheduled_stop_m": 1.0
+  },
+  {
+   "kind": "bus_station",
+   "source": "muni_gtfs",
+   "name": "Terminal Carros Pblicos",
+   "municipality": "Utuado",
+   "code": null,
+   "nearest_current_bus_stop_m": 0.0,
+   "current_bus_stops_within_400m": 6,
+   "max_weekday_trips_at_a_stop_within_400m": 5,
+   "nearest_any_scheduled_stop_m": 0.0
+  },
+  {
+   "kind": "bus_station",
+   "source": "muni_gtfs",
+   "name": "Terminal Carros Pblicos",
+   "municipality": "Utuado",
+   "code": null,
+   "nearest_current_bus_stop_m": 0.0,
+   "current_bus_stops_within_400m": 6,
+   "max_weekday_trips_at_a_stop_within_400m": 20,
+   "nearest_any_scheduled_stop_m": 0.0
+  },
+  {
+   "kind": "bus_station",
+   "source": "muni_gtfs",
+   "name": "Terminal Multimodal",
+   "municipality": "Bayamón",
+   "code": null,
+   "nearest_current_bus_stop_m": 0.0,
+   "current_bus_stops_within_400m": 11,
+   "max_weekday_trips_at_a_stop_within_400m": 323,
+   "nearest_any_scheduled_stop_m": 0.0
+  },
+  {
+   "kind": "bus_station",
+   "source": "muni_gtfs",
+   "name": "Terminal Hector Joy Sandin",
+   "municipality": "Vega Baja",
+   "code": null,
+   "nearest_current_bus_stop_m": 335.0,
+   "current_bus_stops_within_400m": 1,
+   "max_weekday_trips_at_a_stop_within_400m": 24,
+   "nearest_any_scheduled_stop_m": 335.0
+  },
+  {
+   "kind": "bus_station",
+   "source": "muni_gtfs",
+   "name": "Terminal Antigua Estacion del Tren",
+   "municipality": "Vega Baja",
+   "code": null,
+   "nearest_current_bus_stop_m": 126.0,
+   "current_bus_stops_within_400m": 2,
+   "max_weekday_trips_at_a_stop_within_400m": 24,
+   "nearest_any_scheduled_stop_m": 126.0
+  }
+ ],
+ "east_porta_del_mar": {
+  "label": "Porta del Mar (PRTC Eastern region, 15 municipalities incl. Vieques and Culebra)",
+  "places_default": 3417,
+  "by_category": {
+   "ACCOMMODATIONS": 553,
+   "ATTRACTIONS": 838,
+   "GASTRONOMY": 1910,
+   "VISITOR_SERVICES": 116
+  },
+  "pct400_any_stop": 39.2,
+  "pct800_any_stop": 49.1,
+  "pct400_current_scheduled": 16.1,
+  "pct800_current_scheduled": 19.8,
+  "pct400_current_trips20": 4.8,
+  "pct800_current_trips20": 6.0,
+  "pct400_rail_or_ferry": 2.2,
+  "pct800_rail_or_ferry": 4.0,
+  "median_km_to_ferry_terminal_any": 17.9,
+  "pct_within_2km_ferry_terminal_any": 9.0,
+  "pct_within_5km_ferry_terminal_any": 21.2,
+  "median_km_to_public_airport_faa": 11.7,
+  "pct_within_2km_public_airport_faa": 5.1,
+  "pct_within_5km_public_airport_faa": 21.6
+ },
+ "east_mainland": {
+  "label": "Porta del Mar without Vieques and Culebra",
+  "places_default": 3030,
+  "by_category": {
+   "ACCOMMODATIONS": 418,
+   "ATTRACTIONS": 717,
+   "GASTRONOMY": 1803,
+   "VISITOR_SERVICES": 92
+  },
+  "pct400_any_stop": 40.2,
+  "pct800_any_stop": 50.4,
+  "pct400_current_scheduled": 14.0,
+  "pct800_current_scheduled": 17.3,
+  "pct400_current_trips20": 5.4,
+  "pct800_current_trips20": 6.8,
+  "pct400_rail_or_ferry": 0.3,
+  "pct800_rail_or_ferry": 0.9,
+  "median_km_to_ferry_terminal_any": 19.6,
+  "pct_within_2km_ferry_terminal_any": 3.5,
+  "pct_within_5km_ferry_terminal_any": 14.3,
+  "median_km_to_public_airport_faa": 12.9,
+  "pct_within_2km_public_airport_faa": 2.3,
+  "pct_within_5km_public_airport_faa": 16.0
+ },
+ "vieques": {
+  "label": "Vieques",
+  "places_default": 247,
+  "by_category": {
+   "ACCOMMODATIONS": 81,
+   "ATTRACTIONS": 76,
+   "GASTRONOMY": 76,
+   "VISITOR_SERVICES": 14
+  },
+  "pct400_any_stop": 34.8,
+  "pct800_any_stop": 40.9,
+  "pct400_current_scheduled": 34.8,
+  "pct800_current_scheduled": 40.9,
+  "pct400_current_trips20": 0.0,
+  "pct800_current_trips20": 0.0,
+  "pct400_rail_or_ferry": 10.9,
+  "pct800_rail_or_ferry": 24.7,
+  "median_km_to_ferry_terminal_any": 2.8,
+  "pct_within_2km_ferry_terminal_any": 41.7,
+  "pct_within_5km_ferry_terminal_any": 64.0,
+  "median_km_to_public_airport_faa": 5.2,
+  "pct_within_2km_public_airport_faa": 4.0,
+  "pct_within_5km_public_airport_faa": 47.4,
+  "places_all_confidence_no_worship": 303
+ },
+ "culebra": {
+  "label": "Culebra",
+  "places_default": 140,
+  "by_category": {
+   "ACCOMMODATIONS": 54,
+   "ATTRACTIONS": 45,
+   "GASTRONOMY": 31,
+   "VISITOR_SERVICES": 10
+  },
+  "pct400_any_stop": 27.1,
+  "pct800_any_stop": 35.0,
+  "pct400_current_scheduled": 27.1,
+  "pct800_current_scheduled": 35.0,
+  "pct400_current_trips20": 0.0,
+  "pct800_current_trips20": 0.0,
+  "pct400_rail_or_ferry": 27.1,
+  "pct800_rail_or_ferry": 35.0,
+  "median_km_to_ferry_terminal_any": 1.2,
+  "pct_within_2km_ferry_terminal_any": 72.1,
+  "pct_within_5km_ferry_terminal_any": 96.4,
+  "median_km_to_public_airport_faa": 1.3,
+  "pct_within_2km_public_airport_faa": 68.6,
+  "pct_within_5km_public_airport_faa": 96.4,
+  "places_all_confidence_no_worship": 151
+ },
+ "mona_island_places_default": 4,
+ "east_rows": [
+  {
+   "municipality": "Canóvanas",
+   "places_default": 211,
+   "scheduled_stops": 117,
+   "of_which_current": 117,
+   "of_which_expired": 0,
+   "osm_stops": 1,
+   "pct400_any_stop": 83.4,
+   "pct400_current_scheduled": 83.4,
+   "feed_status_of_muni_operator": "expiring",
+   "airports_faa": 0,
+   "ferry_terminals": 0
+  },
+  {
+   "municipality": "Ceiba",
+   "places_default": 97,
+   "scheduled_stops": 1,
+   "of_which_current": 1,
+   "of_which_expired": 0,
+   "osm_stops": 2,
+   "pct400_any_stop": 2.1,
+   "pct400_current_scheduled": 2.1,
+   "feed_status_of_muni_operator": "no municipal system",
+   "airports_faa": 1,
+   "ferry_terminals": 3
+  },
+  {
+   "municipality": "Culebra",
+   "places_default": 140,
+   "scheduled_stops": 1,
+   "of_which_current": 1,
+   "of_which_expired": 0,
+   "osm_stops": 0,
+   "pct400_any_stop": 27.1,
+   "pct400_current_scheduled": 27.1,
+   "feed_status_of_muni_operator": "no municipal system",
+   "airports_faa": 1,
+   "ferry_terminals": 1
+  },
+  {
+   "municipality": "Fajardo",
+   "places_default": 433,
+   "scheduled_stops": 81,
+   "of_which_current": 0,
+   "of_which_expired": 81,
+   "osm_stops": 5,
+   "pct400_any_stop": 70.4,
+   "pct400_current_scheduled": 0.0,
+   "feed_status_of_muni_operator": "expired",
+   "airports_faa": 0,
+   "ferry_terminals": 1
+  },
+  {
+   "municipality": "Humacao",
+   "places_default": 414,
+   "scheduled_stops": 18,
+   "of_which_current": 18,
+   "of_which_expired": 0,
+   "osm_stops": 0,
+   "pct400_any_stop": 25.1,
+   "pct400_current_scheduled": 25.1,
+   "feed_status_of_muni_operator": "current",
+   "airports_faa": 1,
+   "ferry_terminals": 0
+  },
+  {
+   "municipality": "Juncos",
+   "places_default": 152,
+   "scheduled_stops": 128,
+   "of_which_current": 0,
+   "of_which_expired": 128,
+   "osm_stops": 0,
+   "pct400_any_stop": 92.8,
+   "pct400_current_scheduled": 0.0,
+   "feed_status_of_muni_operator": "expired",
+   "airports_faa": 0,
+   "ferry_terminals": 0
+  },
+  {
+   "municipality": "Las Piedras",
+   "places_default": 169,
+   "scheduled_stops": 1,
+   "of_which_current": 0,
+   "of_which_expired": 1,
+   "osm_stops": 1,
+   "pct400_any_stop": 15.4,
+   "pct400_current_scheduled": 0.0,
+   "feed_status_of_muni_operator": "no municipal system",
+   "airports_faa": 0,
+   "ferry_terminals": 0
+  },
+  {
+   "municipality": "Loíza",
+   "places_default": 257,
+   "scheduled_stops": 43,
+   "of_which_current": 43,
+   "of_which_expired": 0,
+   "osm_stops": 2,
+   "pct400_any_stop": 59.5,
+   "pct400_current_scheduled": 55.6,
+   "feed_status_of_muni_operator": "no municipal system",
+   "airports_faa": 0,
+   "ferry_terminals": 0
+  },
+  {
+   "municipality": "Luquillo",
+   "places_default": 260,
+   "scheduled_stops": 0,
+   "of_which_current": 0,
+   "of_which_expired": 0,
+   "osm_stops": 2,
+   "pct400_any_stop": 25.0,
+   "pct400_current_scheduled": 0.0,
+   "feed_status_of_muni_operator": "no municipal system",
+   "airports_faa": 0,
+   "ferry_terminals": 0
+  },
+  {
+   "municipality": "Maunabo",
+   "places_default": 90,
+   "scheduled_stops": 0,
+   "of_which_current": 0,
+   "of_which_expired": 0,
+   "osm_stops": 0,
+   "pct400_any_stop": 0.0,
+   "pct400_current_scheduled": 0.0,
+   "feed_status_of_muni_operator": "no municipal system",
+   "airports_faa": 0,
+   "ferry_terminals": 0
+  },
+  {
+   "municipality": "Naguabo",
+   "places_default": 168,
+   "scheduled_stops": 0,
+   "of_which_current": 0,
+   "of_which_expired": 0,
+   "osm_stops": 1,
+   "pct400_any_stop": 25.0,
+   "pct400_current_scheduled": 0.0,
+   "feed_status_of_muni_operator": "no municipal system",
+   "airports_faa": 0,
+   "ferry_terminals": 0
+  },
+  {
+   "municipality": "Río Grande",
+   "places_default": 414,
+   "scheduled_stops": 1,
+   "of_which_current": 1,
+   "of_which_expired": 0,
+   "osm_stops": 1,
+   "pct400_any_stop": 6.5,
+   "pct400_current_scheduled": 0.0,
+   "feed_status_of_muni_operator": "no municipal system",
+   "airports_faa": 0,
+   "ferry_terminals": 0
+  },
+  {
+   "municipality": "San Lorenzo",
+   "places_default": 193,
+   "scheduled_stops": 159,
+   "of_which_current": 0,
+   "of_which_expired": 159,
+   "osm_stops": 0,
+   "pct400_any_stop": 78.2,
+   "pct400_current_scheduled": 0.0,
+   "feed_status_of_muni_operator": "expired",
+   "airports_faa": 0,
+   "ferry_terminals": 0
+  },
+  {
+   "municipality": "Vieques",
+   "places_default": 247,
+   "scheduled_stops": 18,
+   "of_which_current": 18,
+   "of_which_expired": 0,
+   "osm_stops": 0,
+   "pct400_any_stop": 34.8,
+   "pct400_current_scheduled": 34.8,
+   "feed_status_of_muni_operator": "current",
+   "airports_faa": 1,
+   "ferry_terminals": 0
+  },
+  {
+   "municipality": "Yabucoa",
+   "places_default": 172,
+   "scheduled_stops": 0,
+   "of_which_current": 0,
+   "of_which_expired": 0,
+   "osm_stops": 1,
+   "pct400_any_stop": 14.5,
+   "pct400_current_scheduled": 0.0,
+   "feed_status_of_muni_operator": "no municipal system",
+   "airports_faa": 0,
+   "ferry_terminals": 0
+  }
+ ],
+ "vieques_municipal_system": {
+  "status_today": "current",
+  "routes": 1,
+  "stops": 19,
+  "weekday_trips": 4,
+  "feed_end": "2027-12-31"
+ },
+ "culebra_municipal_system": {
+  "operator_row": false,
+  "scheduled_stops_in_municipality": 1,
+  "osm_bus_stops_in_municipality": 0
+ },
+ "east_operators_status": {
+  "fajardo": {
+   "status": "expired",
+   "end": "2026-06-15"
+  },
+  "humacao": {
+   "status": "current",
+   "end": "2027-01-31"
+  },
+  "juncos": {
+   "status": "expired",
+   "end": "2026-07-31"
+  },
+  "san_lorenzo": {
+   "status": "expired",
+   "end": "2026-02-28"
+  },
+  "vieques": {
+   "status": "current",
+   "end": "2027-12-31"
+  }
+ },
+ "sju_stops_within_500m": {
+  "n": 3,
+  "distances_m": [
+   290,
+   465,
+   481
+  ],
+  "routes": [
+   "40",
+   "5",
+   "53"
+  ],
+  "max_weekday_calls": 133,
+  "walk_minutes_min_max": [
+   3.6,
+   6.0
+  ]
+ },
+ "cruise_pier_to_terminal_covadonga_m": 312,
+ "vieques_places_default": 247,
+ "vieques_pct400_municipal_bus_stops": 32.8,
+ "vieques_pct400_ati_ferry_terminals": 10.9,
+ "vieques_pct400_either": 34.8,
+ "vieques_ati_ferry_terminals_counted": 2,
+ "rail_weekday_trips_values": [
+  166
+ ],
+ "osm_ferry_nodes_in_ceiba_m_from_ati_terminal": [
+  209,
+  550
+ ]
+}

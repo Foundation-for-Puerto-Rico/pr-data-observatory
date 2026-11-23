@@ -1,0 +1,170 @@
+{
+ "economy.laus_unemp_rate": {
+  "name": "Tasa de desempleo (BLS)",
+  "how_to_read": "Un valor de 5.6 significa que 5.6 de cada 100 personas en la fuerza laboral no tenían trabajo y lo buscaban. Úselo para seguir un lugar a lo largo del tiempo o para comparar municipios grandes en un mismo año. No interprete como reales las diferencias pequeñas entre municipios pequeños. Para citar un municipio: 'US Bureau of Labor Statistics, Local Area Unemployment Statistics, serie LAUCN721270000000003 (San Juan Municipio, Puerto Rico), promedio anual de 2024, consultado el [fecha].' Los cinco dígitos después de LAUCN son el código Federal Information Processing Standards (FIPS) del municipio (72127 para San Juan), que aparece como GEOID en el CSV del botón de información (i). Indique la fecha en que consultó los datos; el cuadro de información muestra la fecha en que el observatorio compiló su archivo. Para Puerto Rico, el observatorio usa la serie LASST720000000000003 y promedia él mismo sus doce valores mensuales; el BLS no ofrece ese promedio anual en los datos del observatorio. Cite el valor de la isla así: 'Promedio de los doce valores mensuales de la serie LASST720000000000003 (Puerto Rico) del US Bureau of Labor Statistics, promedio anual de 2024, calculado por Foundation for Puerto Rico, Observatorio de Datos de PR, consultado el [fecha].' Si tomó algún número del observatorio, cite también Foundation for Puerto Rico, Observatorio de Datos de PR.",
+  "_en": {
+   "name": "27603c70",
+   "how_to_read": "1913aa4e"
+  }
+ },
+ "economy.laus_labor_force": {
+  "name": "Fuerza laboral",
+  "how_to_read": "Es la base de la tasa de desempleo (tasa = personas desempleadas ÷ fuerza laboral). Como conteo, muestra sobre todo el tamaño de un lugar. En la pestaña Análisis, una capa sombreada la muestra por cada 1,000 residentes de forma predeterminada. Eso divide entre la población total de todas las edades del mismo año, no entre los residentes de 16 años o más, así que no es una tasa de participación, de empleo ni de desempleo; para la tasa de desempleo, use la capa de la tasa. Como símbolos, el área del círculo es proporcional al conteo. No es la cantidad de empleos ni la cantidad de residentes con empleo. Para comparar lugares, use la tasa de desempleo. Para citar un municipio: 'US Bureau of Labor Statistics, Local Area Unemployment Statistics, serie LAUCN721270000000006 (San Juan Municipio, Puerto Rico), promedio anual de 2024, consultado el [fecha].' Los cinco dígitos después de LAUCN son el código Federal Information Processing Standards (FIPS) del municipio, que aparece como GEOID en el CSV del botón de información (i). Para Puerto Rico, el observatorio usa la serie LASST720000000000006 y promedia él mismo sus doce valores mensuales; el BLS no ofrece ese promedio anual en los datos del observatorio. Cite el valor de la isla así: 'Promedio de los doce valores mensuales de la serie LASST720000000000006 (Puerto Rico) del US Bureau of Labor Statistics, promedio anual de 2024, calculado por Foundation for Puerto Rico, Observatorio de Datos de PR, consultado el [fecha].' Si tomó algún número del observatorio, cite también Foundation for Puerto Rico, Observatorio de Datos de PR.",
+  "_en": {
+   "name": "cb063c60",
+   "how_to_read": "c3ecb03d"
+  }
+ },
+ "economy.laus_employed": {
+  "name": "Residentes con empleo (BLS)",
+  "how_to_read": "Compárelo con la fuerza laboral para ver cuántas de las personas en la fuerza laboral tienen trabajo. Para la proporción sin trabajo, use la tasa de desempleo. En la pestaña Análisis, una capa sombreada lo muestra por cada 1,000 residentes de forma predeterminada. Eso divide entre la población total de todas las edades del mismo año, no entre los residentes de 16 años o más, así que no es una tasa de empleo. Para citarlo, nombre al BLS y las dos series de las que sale, e indique que el observatorio lo derivó: 'Derivado por Foundation for Puerto Rico, Observatorio de Datos de PR, a partir de US Bureau of Labor Statistics, Local Area Unemployment Statistics, fuerza laboral y tasa de desempleo, promedio anual de 2024, consultado el [fecha].' Para Puerto Rico, nombre las dos series de la isla (LASST720000000000006 y LASST720000000000003) e indique que el observatorio promedió sus doce valores mensuales.",
+  "_en": {
+   "name": "36538d9a",
+   "how_to_read": "f60ae34c"
+  }
+ },
+ "economy.laus_unemployed": {
+  "name": "Residentes en desempleo (BLS)",
+  "how_to_read": "Úselo para ver cuántas personas están afectadas; use la tasa de desempleo para comparar lugares de distinto tamaño. En la pestaña Análisis, una capa sombreada lo muestra por cada 1,000 residentes de forma predeterminada. Eso divide entre la población total de todas las edades del mismo año, no entre los residentes de 16 años o más, así que no es la tasa de desempleo; para la tasa, use la capa de la tasa. Como símbolos, el área del círculo es proporcional al conteo. Para citarlo, nombre al BLS y las dos series de las que sale, e indique que el observatorio lo derivó: 'Derivado por Foundation for Puerto Rico, Observatorio de Datos de PR, a partir de US Bureau of Labor Statistics, Local Area Unemployment Statistics, fuerza laboral y tasa de desempleo, promedio anual de 2024, consultado el [fecha].' Para Puerto Rico, nombre las dos series de la isla (LASST720000000000006 y LASST720000000000003) e indique que el observatorio promedió sus doce valores mensuales.",
+  "_en": {
+   "name": "da3b3702",
+   "how_to_read": "7f9ce91d"
+  }
+ },
+ "economy.gini": {
+  "name": "Desigualdad del ingreso (índice de Gini)",
+  "how_to_read": "Un valor más alto significa que el ingreso está repartido de forma más desigual. En el corte de datos 2026-10, los 78 municipios van de 0.369 a 0.629 en 2020-2024. Compare lugares dentro de una misma ventana y revise el margen de error. El número después del signo más o menos (±) es el margen de error: con 90% de confianza, el valor real está a esa distancia del estimado o menos. La pestaña Análisis lo muestra en las unidades del propio índice, por ejemplo, ±0.035. Para citar el número de la fuente, indique la tabla, la ventana y el lugar, por ejemplo: 'Negociado del Censo de EE. UU., Encuesta sobre la Comunidad Estadounidense (ACS), estimados de 5 años 2020-2024, tabla B19083 (Gini Index of Income Inequality), Ponce Municipio, Puerto Rico.' Si tomó el número del observatorio, cite también Foundation for Puerto Rico, Observatorio de Datos de PR.",
+  "_en": {
+   "name": "bdffd04b",
+   "how_to_read": "9f7e084a"
+  }
+ },
+ "economy.hh_income_under_25k_pct": {
+  "name": "Hogares con ingresos menores de $25,000",
+  "how_to_read": "Un valor de 48 significa que 48 de cada 100 hogares tuvieron un ingreso menor de $25,000. Cuenta hogares, no personas, y no se ajusta por el tamaño del hogar. No es la tasa de pobreza; para eso, vea 'Población bajo el nivel de pobreza' (housing.poverty_pct). Aquí el ingreso es el ingreso monetario de todas las fuentes regulares, como salarios, trabajo por cuenta propia, Seguro Social, retiro y asistencia pública. El número después del signo más o menos (±) es el margen de error: con 90% de confianza, el valor real está a esa distancia del estimado o menos. La pestaña Análisis lo muestra en puntos porcentuales, por ejemplo, ±0.4 pts. El porcentaje no aparece en la tabla del Negociado del Censo; el observatorio lo calcula a partir de las celdas que se nombran en la definición. Para citarlo: 'Proporción calculada por Foundation for Puerto Rico, Observatorio de Datos de PR, a partir de Negociado del Censo de EE. UU., Encuesta sobre la Comunidad Estadounidense (ACS), estimados de 5 años 2020-2024, tabla B19001 (Household Income in the Past 12 Months), celdas 2 a 5 divididas entre la celda 1, Ponce Municipio, Puerto Rico.' Para citar las cifras propias del Negociado del Censo, cite las celdas de la tabla, no el porcentaje.",
+  "_en": {
+   "name": "306fb000",
+   "how_to_read": "16bd3343"
+  }
+ },
+ "economy.hh_income_75k_plus_pct": {
+  "name": "Hogares con ingresos de $75,000 o más",
+  "how_to_read": "Un valor de 14 significa que 14 de cada 100 hogares tuvieron un ingreso de $75,000 o más. Cuenta hogares, no personas, y no se ajusta por el tamaño del hogar. Úselo junto con la proporción menor de $25,000 para ver los dos extremos de la distribución del ingreso. Aquí el ingreso es el ingreso monetario de todas las fuentes regulares, como salarios, trabajo por cuenta propia, Seguro Social, retiro y asistencia pública. El número después del signo más o menos (±) es el margen de error: con 90% de confianza, el valor real está a esa distancia del estimado o menos. La pestaña Análisis lo muestra en puntos porcentuales, por ejemplo, ±0.4 pts. El porcentaje no aparece en la tabla del Negociado del Censo; el observatorio lo calcula a partir de las celdas que se nombran en la definición. Para citarlo: 'Proporción calculada por Foundation for Puerto Rico, Observatorio de Datos de PR, a partir de Negociado del Censo de EE. UU., Encuesta sobre la Comunidad Estadounidense (ACS), estimados de 5 años 2020-2024, tabla B19001 (Household Income in the Past 12 Months), celdas 13 a 17 divididas entre la celda 1, Ponce Municipio, Puerto Rico.' Para citar las cifras propias del Negociado del Censo, cite las celdas de la tabla, no el porcentaje.",
+  "_en": {
+   "name": "76f5feae",
+   "how_to_read": "95da46f9"
+  }
+ },
+ "economy.workers_16plus": {
+  "name": "Residentes de 16 años o más con empleo (ACS)",
+  "how_to_read": "Cuenta personas, no empleos: alguien con dos empleos cuenta una vez. Cuenta donde viven las personas, así que un residente que trabaja en otro municipio se cuenta en el suyo. Como conteo, muestra sobre todo el tamaño de un lugar. En la pestaña Análisis, una capa sombreada lo muestra por cada 1,000 residentes de forma predeterminada. Eso divide entre la población total de todas las edades del último año de la ventana, no entre los residentes de 16 años o más, así que no es una tasa de empleo. El número después del signo más o menos (±) es el margen de error: con 90% de confianza, el valor real está a esa distancia del estimado o menos. La pestaña Análisis lo muestra en personas, igual que el estimado, por ejemplo, ±1,965. Para citar el número de la fuente, indique la tabla, la ventana y el lugar, por ejemplo: 'Negociado del Censo de EE. UU., Encuesta sobre la Comunidad Estadounidense (ACS), estimados de 5 años 2020-2024, tabla B24080 (Sex by Class of Worker for the Civilian Employed Population 16 Years and Over), Ponce Municipio, Puerto Rico.' Si tomó el número del observatorio, cite también Foundation for Puerto Rico, Observatorio de Datos de PR.",
+  "_en": {
+   "name": "55c51066",
+   "how_to_read": "9ad60f92"
+  }
+ },
+ "economy.gov_worker_pct": {
+  "name": "Residentes que trabajan para el gobierno",
+  "how_to_read": "Un valor de 18 significa que 18 de cada 100 residentes con empleo trabajaban para un gobierno. En el corte de datos 2026-10, bajó en toda la isla de 25.1% en 2006-2010 a 18.4% en 2020-2024. La pestaña Análisis no separa a quienes trabajan para el gobierno local, el estatal y el federal. El número después del signo más o menos (±) es el margen de error: con 90% de confianza, el valor real está a esa distancia del estimado o menos. La pestaña Análisis lo muestra en puntos porcentuales, por ejemplo, ±0.4 pts. El porcentaje no aparece en la tabla del Negociado del Censo; el observatorio lo calcula a partir de las celdas que se nombran en la definición. Para citarlo: 'Proporción calculada por Foundation for Puerto Rico, Observatorio de Datos de PR, a partir de Negociado del Censo de EE. UU., Encuesta sobre la Comunidad Estadounidense (ACS), estimados de 5 años 2020-2024, tabla B24080 (Sex by Class of Worker for the Civilian Employed Population 16 Years and Over), celdas 7, 8, 9, 17, 18 y 19 divididas entre la celda 1, Ponce Municipio, Puerto Rico.' Para citar las cifras propias del Negociado del Censo, cite las celdas de la tabla, no el porcentaje.",
+  "_en": {
+   "name": "bbc5c71f",
+   "how_to_read": "1e1f88da"
+  }
+ },
+ "economy.self_employed_pct": {
+  "name": "Residentes que trabajan por cuenta propia",
+  "how_to_read": "Un valor de 15 significa que 15 de cada 100 residentes con empleo trabajaban por cuenta propia. En el corte de datos 2026-10, subió en toda la isla de 11.8% en 2006-2010 a 14.8% en 2020-2024. Los datos de empleos (Quarterly Census of Employment and Wages, QCEW) dejan fuera a las personas que trabajan por cuenta propia sin incorporar (celdas 10 y 20), así que esa parte de esta proporción apunta a trabajo que los datos de empleos no captan. Los dueños de un negocio incorporado (celdas 5 y 15) pueden estar en una nómina que el QCEW sí cuenta. El número después del signo más o menos (±) es el margen de error: con 90% de confianza, el valor real está a esa distancia del estimado o menos. La pestaña Análisis lo muestra en puntos porcentuales, por ejemplo, ±0.4 pts. El porcentaje no aparece en la tabla del Negociado del Censo; el observatorio lo calcula a partir de las celdas que se nombran en la definición. Para citarlo: 'Proporción calculada por Foundation for Puerto Rico, Observatorio de Datos de PR, a partir de Negociado del Censo de EE. UU., Encuesta sobre la Comunidad Estadounidense (ACS), estimados de 5 años 2020-2024, tabla B24080 (Sex by Class of Worker for the Civilian Employed Population 16 Years and Over), celdas 5, 10, 15, 20 divididas entre la celda 1, Ponce Municipio, Puerto Rico.' Para citar las cifras propias del Negociado del Censo, cite las celdas de la tabla, no el porcentaje.",
+  "_en": {
+   "name": "9fc03488",
+   "how_to_read": "bf4b15f1"
+  }
+ },
+ "economy.nonprofit_worker_pct": {
+  "name": "Residentes que trabajan para organizaciones sin fines de lucro",
+  "how_to_read": "Un valor de 3 significa que 3 de cada 100 residentes con empleo trabajaban para una organización sin fines de lucro. En el corte de datos 2026-10, bajó en toda la isla de 4.1% en 2006-2010 a 3.5% en 2020-2024. Úselo para la isla o para municipios grandes. El número después del signo más o menos (±) es el margen de error: con 90% de confianza, el valor real está a esa distancia del estimado o menos. La pestaña Análisis lo muestra en puntos porcentuales, por ejemplo, ±0.4 pts. El porcentaje no aparece en la tabla del Negociado del Censo; el observatorio lo calcula a partir de las celdas que se nombran en la definición. Para citarlo: 'Proporción calculada por Foundation for Puerto Rico, Observatorio de Datos de PR, a partir de Negociado del Censo de EE. UU., Encuesta sobre la Comunidad Estadounidense (ACS), estimados de 5 años 2020-2024, tabla B24080 (Sex by Class of Worker for the Civilian Employed Population 16 Years and Over), celdas 6 y 16 divididas entre la celda 1, Ponce Municipio, Puerto Rico.' Para citar las cifras propias del Negociado del Censo, cite las celdas de la tabla, no el porcentaje.",
+  "_en": {
+   "name": "e8df09ad",
+   "how_to_read": "7467e377"
+  }
+ },
+ "economy.commute_drive_alone_pct": {
+  "name": "Personas que conducen solas al trabajo",
+  "how_to_read": "Un valor de 83 significa que 83 de cada 100 personas trabajadoras solían ir solas en vehículo al trabajo. En el corte de datos 2026-10, la proporción subió en toda la isla de 76.9% en 2006-2010 a 83.4% en 2015-2019 y fue de 82.6% en 2020-2024. Cuenta a los residentes según donde viven y no dice nada sobre la distancia del viaje. El número después del signo más o menos (±) es el margen de error: con 90% de confianza, el valor real está a esa distancia del estimado o menos. La pestaña Análisis lo muestra en puntos porcentuales, por ejemplo, ±0.4 pts. El porcentaje no aparece en la tabla del Negociado del Censo; el observatorio lo calcula a partir de las celdas que se nombran en la definición. Para citarlo: 'Proporción calculada por Foundation for Puerto Rico, Observatorio de Datos de PR, a partir de Negociado del Censo de EE. UU., Encuesta sobre la Comunidad Estadounidense (ACS), estimados de 5 años 2020-2024, tabla B08301 (Means of Transportation to Work), celda 3 dividida entre la celda 1, Ponce Municipio, Puerto Rico.' Para citar las cifras propias del Negociado del Censo, cite las celdas de la tabla, no el porcentaje.",
+  "_en": {
+   "name": "76db3bdb",
+   "how_to_read": "18b3940a"
+  }
+ },
+ "economy.commute_transit_pct": {
+  "name": "Personas que van al trabajo en transporte colectivo",
+  "how_to_read": "Un valor de 1 significa que 1 de cada 100 personas trabajadoras solía ir al trabajo en transporte colectivo. Describe lo que informan los residentes, no el servicio disponible. Para el servicio, vea la proporción de residentes cerca de una parada con horario. El número después del signo más o menos (±) es el margen de error: con 90% de confianza, el valor real está a esa distancia del estimado o menos. La pestaña Análisis lo muestra en puntos porcentuales, por ejemplo, ±0.4 pts. El porcentaje no aparece en la tabla del Negociado del Censo; el observatorio lo calcula a partir de las celdas que se nombran en la definición. Para citarlo: 'Proporción calculada por Foundation for Puerto Rico, Observatorio de Datos de PR, a partir de Negociado del Censo de EE. UU., Encuesta sobre la Comunidad Estadounidense (ACS), estimados de 5 años 2020-2024, tabla B08301 (Means of Transportation to Work), celda 10 dividida entre la celda 1, Ponce Municipio, Puerto Rico.' Para citar las cifras propias del Negociado del Censo, cite las celdas de la tabla, no el porcentaje.",
+  "_en": {
+   "name": "45733bd6",
+   "how_to_read": "9260e7c0"
+  }
+ },
+ "economy.commute_walk_pct": {
+  "name": "Personas que caminan al trabajo",
+  "how_to_read": "Un valor de 2 significa que 2 de cada 100 personas trabajadoras solían ir caminando al trabajo. En el corte de datos 2026-10, bajó en toda la isla de 3.9% en 2006-2010 a 2.4% en 2020-2024. La bicicleta es una línea aparte y no está incluida. El número después del signo más o menos (±) es el margen de error: con 90% de confianza, el valor real está a esa distancia del estimado o menos. La pestaña Análisis lo muestra en puntos porcentuales, por ejemplo, ±0.4 pts. El porcentaje no aparece en la tabla del Negociado del Censo; el observatorio lo calcula a partir de las celdas que se nombran en la definición. Para citarlo: 'Proporción calculada por Foundation for Puerto Rico, Observatorio de Datos de PR, a partir de Negociado del Censo de EE. UU., Encuesta sobre la Comunidad Estadounidense (ACS), estimados de 5 años 2020-2024, tabla B08301 (Means of Transportation to Work), celda 19 dividida entre la celda 1, Ponce Municipio, Puerto Rico.' Para citar las cifras propias del Negociado del Censo, cite las celdas de la tabla, no el porcentaje.",
+  "_en": {
+   "name": "ff7f22cb",
+   "how_to_read": "6a1909e4"
+  }
+ },
+ "economy.work_from_home_pct": {
+  "name": "Personas que trabajan desde el hogar",
+  "how_to_read": "Un valor de 6 significa que 6 de cada 100 personas trabajadoras trabajaban desde el hogar. En el corte de datos 2026-10, la proporción de la isla se mantiene entre 2.15% y 2.34% en todas las ventanas de 2006-2010 a 2015-2019, y luego sube: 3.1% en 2016-2020 y 6.1% en 2020-2024. Una ventana de cinco años mezcla años anteriores y posteriores, así que, mientras la proporción sube, se queda por detrás del nivel más reciente. El número después del signo más o menos (±) es el margen de error: con 90% de confianza, el valor real está a esa distancia del estimado o menos. La pestaña Análisis lo muestra en puntos porcentuales, por ejemplo, ±0.4 pts. El porcentaje no aparece en la tabla del Negociado del Censo; el observatorio lo calcula a partir de las celdas que se nombran en la definición. Para citarlo: 'Proporción calculada por Foundation for Puerto Rico, Observatorio de Datos de PR, a partir de Negociado del Censo de EE. UU., Encuesta sobre la Comunidad Estadounidense (ACS), estimados de 5 años 2020-2024, tabla B08301 (Means of Transportation to Work), celda 21 dividida entre la celda 1, Ponce Municipio, Puerto Rico.' Para citar las cifras propias del Negociado del Censo, cite las celdas de la tabla, no el porcentaje.",
+  "_en": {
+   "name": "2f8d5fb2",
+   "how_to_read": "d676f07d"
+  }
+ },
+ "economy.commute_45plus_pct": {
+  "name": "Viajes al trabajo de 45 minutos o más",
+  "how_to_read": "Un valor de 19 significa que 19 de cada 100 personas trabajadoras que se trasladan al trabajo tardan 45 minutos o más en llegar. En el corte de datos 2026-10, bajó en toda la isla de 21.8% en 2006-2010 a 18.7% en 2020-2024. La vista 'Centros de empleo y viaje al trabajo' de la pestaña Análisis lo sombrea junto a los empleos por residente con empleo. El número después del signo más o menos (±) es el margen de error: con 90% de confianza, el valor real está a esa distancia del estimado o menos. La pestaña Análisis lo muestra en puntos porcentuales, por ejemplo, ±0.4 pts. El porcentaje no aparece en la tabla del Negociado del Censo; el observatorio lo calcula a partir de las celdas que se nombran en la definición. Para citarlo: 'Proporción calculada por Foundation for Puerto Rico, Observatorio de Datos de PR, a partir de Negociado del Censo de EE. UU., Encuesta sobre la Comunidad Estadounidense (ACS), estimados de 5 años 2020-2024, tabla B08303 (Travel Time to Work), celdas 11 a 13 divididas entre la celda 1, Ponce Municipio, Puerto Rico.' Para citar las cifras propias del Negociado del Censo, cite las celdas de la tabla, no el porcentaje.",
+  "_en": {
+   "name": "cab9279c",
+   "how_to_read": "fa721d29"
+  }
+ },
+ "economy.no_vehicle_hh_pct": {
+  "name": "Hogares sin vehículo",
+  "how_to_read": "Un valor de 13 significa que 13 de cada 100 hogares no tenían un vehículo disponible. Es un conteo de hogares, no de personas, y no dice si un hogar quiere un vehículo ni si tiene transporte colectivo cerca. Para el acceso al transporte colectivo, vea la proporción de residentes cerca de una parada con horario. El número después del signo más o menos (±) es el margen de error: con 90% de confianza, el valor real está a esa distancia del estimado o menos. La pestaña Análisis lo muestra en puntos porcentuales, por ejemplo, ±0.4 pts. El porcentaje no aparece en la tabla del Negociado del Censo; el observatorio lo calcula a partir de las celdas que se nombran en la definición. Para citarlo: 'Proporción calculada por Foundation for Puerto Rico, Observatorio de Datos de PR, a partir de Negociado del Censo de EE. UU., Encuesta sobre la Comunidad Estadounidense (ACS), estimados de 5 años 2020-2024, tabla B25044 (Tenure by Vehicles Available), celdas 3 y 10 divididas entre la celda 1, Ponce Municipio, Puerto Rico.' Para citar las cifras propias del Negociado del Censo, cite las celdas de la tabla, no el porcentaje.",
+  "_en": {
+   "name": "4539f734",
+   "how_to_read": "28cd0c63"
+  }
+ },
+ "economy.internet_subscription_pct": {
+  "name": "Hogares con suscripción a internet",
+  "how_to_read": "Un valor de 81 significa que 81 de cada 100 hogares tenían una suscripción a internet. Un hogar que solo tiene un plan de datos celulares cuenta como suscrito, así que la proporción no indica cuántos hogares tienen banda ancha fija. En el corte de datos 2026-10, el cambio de 53.8% a 81.4% entre 2013-2017 y 2020-2024 es grande en comparación con los márgenes. El número después del signo más o menos (±) es el margen de error: con 90% de confianza, el valor real está a esa distancia del estimado o menos. La pestaña Análisis lo muestra en puntos porcentuales, por ejemplo, ±0.4 pts. El porcentaje no aparece en la tabla del Negociado del Censo; el observatorio lo calcula a partir de las celdas que se nombran en la definición. Para citarlo: 'Proporción calculada por Foundation for Puerto Rico, Observatorio de Datos de PR, a partir de Negociado del Censo de EE. UU., Encuesta sobre la Comunidad Estadounidense (ACS), estimados de 5 años 2020-2024, tabla B28002 (Presence and Types of Internet Subscriptions in Household), celda 2 dividida entre la celda 1, Ponce Municipio, Puerto Rico.' Para citar las cifras propias del Negociado del Censo, cite las celdas de la tabla, no el porcentaje.",
+  "_en": {
+   "name": "985c77bd",
+   "how_to_read": "04857443"
+  }
+ },
+ "economy.no_internet_pct": {
+  "name": "Hogares sin acceso a internet",
+  "how_to_read": "Un valor de 17 significa que 17 de cada 100 hogares no tenían acceso a internet. En el corte de datos 2026-10, bajó en toda la isla de 43.0% en 2013-2017 a 16.9% en 2020-2024. No es lo contrario de la proporción con suscripción: las dos no suman 100. El número después del signo más o menos (±) es el margen de error: con 90% de confianza, el valor real está a esa distancia del estimado o menos. La pestaña Análisis lo muestra en puntos porcentuales, por ejemplo, ±0.4 pts. El porcentaje no aparece en la tabla del Negociado del Censo; el observatorio lo calcula a partir de las celdas que se nombran en la definición. Para citarlo: 'Proporción calculada por Foundation for Puerto Rico, Observatorio de Datos de PR, a partir de Negociado del Censo de EE. UU., Encuesta sobre la Comunidad Estadounidense (ACS), estimados de 5 años 2020-2024, tabla B28002 (Presence and Types of Internet Subscriptions in Household), celda 13 dividida entre la celda 1, Ponce Municipio, Puerto Rico.' Para citar las cifras propias del Negociado del Censo, cite las celdas de la tabla, no el porcentaje.",
+  "_en": {
+   "name": "4188b82b",
+   "how_to_read": "f3e25da4"
+  }
+ },
+ "economy.laus_method": {
+  "name": "Cómo se construyen las cifras de desempleo",
+  "how_to_read": "Use la tasa para comparar lugares y años; use los conteos para mostrar cuántas personas están afectadas. En los municipios pequeños, lea la tendencia de varios años, no un solo año. En la pestaña Análisis, cuando el año elegido no tiene valor, el mapa muestra el último año anterior y lo indica (para 2020, '2019 (último dato hasta 2020)'). La gráfica de tendencia de la mesa de trabajo lista solo los años que tienen datos. En el inspector, la pequeña línea de tendencia espacia los años según el calendario. La leyenda debajo de ella indica la duración de la tendencia en años, la cantidad de valores cuando faltan años, y el primer y el último año: en el corte de datos 2026-10, una serie de desempleo dice '16 años, 15 valores · 2010–25'. El botón de información (i) junto a un conjunto de datos abre su definición y sus fuentes, enlaza a su entrada en este diccionario y ofrece un CSV con todos los años. Para citar datos del BLS, indique el ID de la serie, el año, el programa y la fecha de consulta: 'US Bureau of Labor Statistics, Local Area Unemployment Statistics, serie LAUCN721270000000003 (San Juan Municipio, Puerto Rico), promedio anual de 2024, consultado el [fecha].' Para Puerto Rico, cite el promedio de los doce valores mensuales de la serie LASST720000000000003 e indique que lo calculó el Observatorio de Datos de PR de Foundation for Puerto Rico. Para los conteos de personas con empleo y desempleadas, indique que el observatorio los derivó.",
+  "_en": {
+   "name": "a9c1c8cb",
+   "how_to_read": "83a4e9c7"
+  }
+ },
+ "economy.acs_work_income_tables": {
+  "name": "Tablas del Censo detrás de las cifras de ingreso, trabajo, viaje al trabajo e internet",
+  "how_to_read": "Para citar un número del Negociado del Censo, indique la tabla, la ventana y la geografía, por ejemplo: 'Negociado del Censo de EE. UU., Encuesta sobre la Comunidad Estadounidense (ACS), estimados de 5 años 2020-2024, tabla B25044, Ponce Municipio, Puerto Rico'. Las proporciones en porcentaje no aparecen en las tablas del Negociado del Censo: el observatorio las calcula, así que cite el observatorio para una proporción y las celdas para los conteos propios del Negociado del Censo. En la pestaña Análisis, el botón de información (i) junto a un conjunto de datos abre su definición y sus fuentes, enlaza a su entrada en este diccionario y ofrece un CSV con todos los años, con los márgenes de error. En el CSV descargado, la columna con el encabezado 2024 es la ventana 2020-2024 y la columna '2024 margen de error' contiene su margen. En economy_series.json, busque la variable bajo 'vars' por su clave; 'years' y 'moe' contienen una lista por ventana, en el orden de 'geo.names' (Puerto Rico va al final). La línea de tendencia y la gráfica de tendencia trazan un punto por ventana, identificado por su último año. Debajo de cada línea de tendencia en el inspector, la leyenda indica la duración de la tendencia y la primera y la última etiqueta; en estas series de encuesta cuenta ventanas, no años de datos distintos (en el corte de datos 2026-10, '15 años · 2010–24'). Los puntos vecinos comparten cuatro de sus cinco años de encuesta, así que no son valores anuales independientes.",
+  "_en": {
+   "name": "df7d07df",
+   "how_to_read": "8a5f6d58"
+  }
+ }
+}

@@ -1,0 +1,66 @@
+{
+ "buildings.bld_n": {
+  "name": "Edificios (huellas de Overture)",
+  "how_to_read": "Puerto Rico: 2,157,028. Más altos: San Juan (125,872), Bayamón (86,214), Ponce (80,349). Más bajos: Culebra (2,743), Maricao (4,904), Florida (7,829).",
+  "_en": {
+   "name": "00692225",
+   "how_to_read": "407bd9de"
+  }
+ },
+ "buildings.bld_per_km2": {
+  "name": "Edificios por km² de terreno",
+  "how_to_read": "Puerto Rico: 243.2. Más altos: San Juan (1,014.6), Cataño (971.8), Bayamón (749.1). Más bajos: Maricao (51.7), Las Marías (70.2), Vieques (75.3).",
+  "_en": {
+   "name": "33d1e2e1",
+   "how_to_read": "b60ae31e"
+  }
+ },
+ "buildings.bld_roof_pct": {
+  "name": "Terreno bajo techo (%)",
+  "how_to_read": "Puerto Rico: 3.3%. Más altos: San Juan (20.3%), Cataño (18.1%), Bayamón (13.4%). Más bajos: Maricao (0.5%), Las Marías (0.7%), Vieques (0.8%).",
+  "_en": {
+   "name": "ea0ce265",
+   "how_to_read": "ee3b1e13"
+  }
+ },
+ "buildings.bld_area_med": {
+  "name": "Huella mediana de los edificios (m²)",
+  "how_to_read": "Puerto Rico: 106 m². Más altos: Bayamón (155 m²), San Juan (151 m²), Carolina (143 m²). Más bajos: Adjuntas (73 m²), Moca (77 m²), Las Marías (77 m²).",
+  "_en": {
+   "name": "b9915798",
+   "how_to_read": "9f8b8eea"
+  }
+ },
+ "buildings.bld_sfha_n": {
+  "name": "Edificios en un Área Especial de Riesgo de Inundación de FEMA",
+  "how_to_read": "Puerto Rico: 193,704. Más altos: Ponce (17,947), San Juan (17,308), Carolina (16,732). Más bajos: Florida (0), Quebradillas (2), Las Marías (22).",
+  "_en": {
+   "name": "b465890e",
+   "how_to_read": "c0289ccf"
+  }
+ },
+ "buildings.bld_sfha_pct": {
+  "name": "Edificios en un Área Especial de Riesgo de Inundación de FEMA (%)",
+  "how_to_read": "Puerto Rico: 9.0%. Más altos: Salinas (46.9%), Loíza (42.6%), Cataño (37.2%). Más bajos: Quebradillas (0.0%), Florida (0.0%), Morovis (0.3%).",
+  "_en": {
+   "name": "67fb76d1",
+   "how_to_read": "49202e7f"
+  }
+ },
+ "buildings.bld_ml_pct": {
+  "name": "Edificios trazados con aprendizaje automático (%)",
+  "how_to_read": "Puerto Rico: 30.4%. Más altos: Moca (42.7%), Aguada (42.6%), San Sebastián (42.5%). Más bajos: San Juan (17.7%), Bayamón (22.5%), Ponce (22.7%).",
+  "_en": {
+   "name": "4162ceb6",
+   "how_to_read": "64204486"
+  }
+ },
+ "buildings.gap_tiles": {
+  "name": "Edificios que faltan en el mapa base (teselas de la vista 3D)",
+  "how_to_read": "Active \"Edificios en 3D\" en la vista 3D y acérquese a una calle (zoom 13 o más): los edificios que vienen de este archivo aparecen junto a los del mapa base. En la versión 2026-10-21.0 el archivo tiene 704,061 edificios en el zoom 14 (un edificio en el borde de una tesela cuenta en cada tesela). Los centros de los pueblos ya están cartografiados en OpenStreetMap; los edificios nuevos son sobre todo casas en las afueras y en el campo, como en Cañaboncito, en Caguas, donde 5,115 de 12,354 edificios (41%) se trazaron con aprendizaje automático. El archivo pesa 7.4 MB.",
+  "_en": {
+   "name": "5130b3ee",
+   "how_to_read": "d0b8f8c9"
+  }
+ }
+}

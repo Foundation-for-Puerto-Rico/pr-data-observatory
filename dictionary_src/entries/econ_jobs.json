@@ -1,0 +1,1889 @@
+[
+ {
+  "domain": "economy",
+  "domains": ["economy", "system.docs"],
+  "kind": "method",
+  "geography": "78 municipalities and Puerto Rico (the island figure is BLS's own and is not summed from the 78; the observatory's derived island values are calculated from BLS's island figures)",
+  "sources": [
+   "bls_qcew",
+   "acs5"
+  ],
+  "added": "2026-10-03",
+  "id": "economy.qcew_method",
+  "name": "How jobs, work sites and wages are counted (Quarterly Census of Employment and Wages)",
+  "group": "Jobs and money",
+  "plain": "Jobs, work sites, wages and industries come from a US government count of jobs at employers who pay into the unemployment insurance system, which covers most wage-and-salary work. It counts jobs where the work is done, gives one annual average per year, and hides cells that would identify one employer.",
+  "definition": "The Quarterly Census of Employment and Wages (QCEW) is built by the US Bureau of Labor Statistics (BLS) from the reports that employers file for unemployment insurance. The observatory reads its annual-average files for each of the 78 municipalities and for Puerto Rico. Employment is the average of twelve monthly counts; a monthly count is the number of covered workers who worked or were paid in the pay period that includes the 12th of the month. Establishments are the average of four quarterly counts of work sites. Wages are the total paid in the year. Every figure belongs to the place of the employer's work site, not to the place where the worker lives. Each figure is split by ownership (private or government) and by industry, using the North American Industry Classification System (NAICS).",
+  "unit": "not applicable (method)",
+  "value_type": "text",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2014,
+   "last": 2025,
+   "frequency": "One annual-average file per area and year. When the observatory's data are rebuilt, it checks whether BLS has published a newer year. It downloads each file once and reads it again only on a full refresh. In the 2026-10 snapshot, the files were downloaded on 3 October 2026, and 2025 is the latest year and is preliminary."
+  },
+  "method": "(1) The observatory finds the latest year by asking BLS for the San Juan file of the next year, starting from 2024, and reads every year from 2014 to that latest year. (2) For each year it downloads one file per area: 78 municipality codes and the island code 72000. (3) From each file it keeps the all-industry rows (industry code 10) for ownership codes 0, 1, 2, 3 and 5, and, for ownership 5 only, the 19 two-digit NAICS sectors and the three-digit codes 721 and 722. (4) It reads four columns: annual_avg_estabs, annual_avg_emplvl, total_annual_wages and avg_annual_pay. If the row's disclosure_code is N, all four are left blank. (5) Publication: ownership 0 gives qcew_estabs, qcew_jobs, qcew_wages and qcew_avg_pay. Ownership 5 gives qcew_private_jobs, the 19 industry variables, accommodation_jobs (721) and food_service_jobs (722). qcew_gov_jobs is qcew_jobs minus qcew_private_jobs, and gov_job_share_pct is that difference divided by qcew_jobs times 100. tourism_jobs is sector 72 plus sector 71 (sector 72 alone where 71 is blank). industry_hhi is the Herfindahl index of the published sectors and government. The data file also holds extras.top_sector, the largest employer group of each place and year (see its entry). jobs_per_employed_resident divides qcew_jobs by the American Community Survey count of employed residents of the same year label. BLS values are published as read. The observatory rounds its own calculations: government share to 2 decimals, jobs per employed resident to 3 decimals, and the industry concentration index to a whole number.",
+  "values": {
+   "0": "All ownerships (total covered). Used for jobs, establishments, wages and average pay.",
+   "5": "Private ownership, which includes nonprofit organizations. Used for private jobs and for every industry variable.",
+   "1": "Federal government. The observatory downloads these rows but does not publish them in its data file.",
+   "2": "State government (the Commonwealth in Puerto Rico). The observatory downloads these rows but does not publish them in its data file.",
+   "3": "Local government (municipal). The observatory downloads these rows but does not publish them in its data file.",
+   "disclosure code N": "BLS withholds the figures of the row to protect an employer's confidentiality. The observatory leaves the cell blank."
+  },
+  "source_detail": "BLS QCEW open-data API, annual-average area files: https://data.bls.gov/cew/data/api/<year>/a/area/<area>.csv, where <area> is the five-digit FIPS (Federal Information Processing Standards) code of the municipio (72001 Adjuntas, 72003 Aguada, and so on up to 72153 Yauco; 78 codes in all) or 72000 for Puerto Rico. Columns used: own_code, industry_code, disclosure_code, annual_avg_estabs, annual_avg_emplvl, total_annual_wages, avg_annual_pay. File layout: https://www.bls.gov/cew/additional-resources/open-data/ . Who is covered: https://www.bls.gov/cew/overview.htm . NAICS editions by year: https://www.bls.gov/cew/classifications/industry/home.htm .",
+  "how_to_read": "Read every QCEW figure as what employers located in the municipality reported, not as what the residents do. A blank is not a zero: it means BLS withheld the figure or publishes no row for that cell. Use the Puerto Rico value as BLS's island figure; it is not the sum of the 78 municipalities. Treat the latest year (2025 in the 2026-10 snapshot) as preliminary. On the Analysis tab, a jobs count can be shown as published, per 1,000 residents, per square kilometer, as a share of the island total, as a share of the municipality's jobs, or as a location quotient. A location quotient is the industry's share of the municipality's jobs divided by its share of the island's jobs; above 1 means the industry is more concentrated here than on the island, and below 1 means less. The share and the quotient use total jobs (all employers, including government) of the same year as the divisor. The observatory downloaded every year's file on 3 October 2026. It keeps each file and reads it again only on a full refresh, so a later BLS revision, including to preliminary 2025, shows only after a refresh. The 'Data built' date in the dataset information window is the day the observatory's data file was last rebuilt, which can be later than the download. When you cite a figure, give the year, the ownership and industry row, and the retrieval date. The examples in these entries come from the 2026-10 snapshot. They use 2025 for totals (jobs, wages, pay), which have a value for every municipality, and 2024 for industry sectors, because 2025 has fewer published municipal values for sectors.",
+  "caveats": [
+   "Coverage. BLS says covered employment is about 95% of jobs in the United States. The observatory does not measure the share for Puerto Rico. Not counted: proprietors and other self-employed people, unpaid family workers, informal or off-the-books work, military and National Guard members, elected officials, railroad workers covered by their own system, certain farm and domestic workers, and anyone who did not work or get paid in the pay period that includes the 12th of the month. BLS lists a few further small groups at https://www.bls.gov/cew/overview.htm .",
+   "Jobs, not people. A person with two jobs at two employers counts twice. A job at a company with several sites is counted at the site that the employer reports; if an employer reports all its workers under one site, they appear in that site's municipality. The observatory cannot test how each employer reports.",
+   "Two kinds of blank. In the BLS files, a blank industry cell is either withheld (disclosure code N) or has no row. BLS's file layout notes do not say why a row is absent, so the observatory cannot tell from the files whether a missing row means that the place has no employer in that industry. The published data file does not tell the two kinds apart. In the 2026-10 snapshot, across the 19 sectors and the 78 municipalities in 2024, 769 cells have a value, 527 are withheld and 186 have no row (of 1,482).",
+   "Blanks are most common in small municipalities and in narrow industries. In the 2026-10 snapshot, the 26 municipalities with the fewest jobs in 2024 have a value in 6.5 of the 19 sectors on average; the 26 with the most jobs have 13.0. Some hidden cells look paired: in the same snapshot, 19 municipalities have the sector 72 total (hotels and restaurants) published in 2024 while both of its parts, accommodation (721) and food service (722), are blank.",
+   "The Puerto Rico value is BLS's own island figure. In the 2026-10 snapshot, it is above the sum of the 78 municipalities by 1,681 jobs (0.2%) in 2014 and by 4,555 (0.5%) in 2025. BLS's files do not give the reason. In the same snapshot, for industries the island cell is blank while municipal cells are published (construction in 2025), and it is published while almost every municipal cell is blank (mining in 2024).",
+   "In the 2026-10 snapshot, 2025 is the latest year and is preliminary: BLS can revise it. It is also less complete: 13 of the 19 sectors have fewer municipalities with a published value in 2025 than in 2024, and five sectors (mining, utilities, construction, transportation and warehousing, information) have no island value in 2025.",
+   "Annual averages smooth changes inside a year. An event in September (such as Hurricane Maria in 2017) shows part of its effect in that year and part in the next.",
+   "The sector definitions follow NAICS, which is revised every five years. BLS classified 2014 to 2016 data with NAICS 2012, 2017 to 2021 data with NAICS 2017 and 2022 onward with NAICS 2022 (see the BLS industry classification page). The observatory does not recode earlier years to one edition, so a sector total before and after 2017 or 2022 may not be fully comparable. Check the BLS notes before reading a small change at sector level as real.",
+   "BLS also reports government jobs by level (federal, state, local, ownership codes 1, 2 and 3). The observatory downloads them but publishes only the total minus private, so government jobs cannot be split by level in this data."
+  ],
+  "see_also": [
+   "economy.qcew_jobs",
+   "economy.qcew_private_jobs",
+   "economy.qcew_gov_jobs",
+   "economy.qcew_estabs",
+   "economy.qcew_wages",
+   "economy.qcew_avg_pay",
+   "economy.tourism_jobs",
+   "economy.industry_hhi",
+   "economy.jobs_per_employed_resident",
+   "economy.workers_16plus",
+   "methods.qcew_suppression",
+   "methods.workplace_vs_residence",
+   "methods.citation",
+   "measures.location_quotient",
+   "measures.share_of_jobs",
+   "measures.inflation_adjustment",
+   "economy.self_employed_pct",
+   "economy.top_sector"
+  ],
+  "where": {
+   "files": [],
+   "view": [
+    {
+     "label": "Map, Analysis tab: Jobs and pay view",
+     "href": "index.html#e=qcew_avg_pay.f,qcew_jobs.s"
+    }
+   ]
+  }
+ },
+ {
+  "domain": "economy",
+  "domains": ["economy"],
+  "kind": "variable",
+  "geography": "78 municipalities and Puerto Rico (the island figure is published by the US Bureau of Labor Statistics, not summed from the 78)",
+  "sources": [
+   "bls_qcew"
+  ],
+  "added": "2026-10-03",
+  "id": "economy.qcew_jobs",
+  "name": "Jobs (all employers)",
+  "group": "Jobs and employers",
+  "plain": "How many wage-and-salary jobs exist at employers located in the municipality, averaged over the year. Jobs are counted where the work is done, not where the worker lives.",
+  "definition": "Average number of jobs in the year at employers located in the municipality, private and government, from the Quarterly Census of Employment and Wages (QCEW) of the US Bureau of Labor Statistics (BLS). It covers wage-and-salary jobs that fall under unemployment insurance, which the Bureau says is about 95% of jobs in the United States. The annual average is the mean of twelve monthly counts. It counts jobs, not people, and counts each job at the work site. Self-employed and informal work are not counted.",
+  "unit": "jobs (annual average)",
+  "value_type": "count",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2014,
+   "last": 2025,
+   "frequency": "One value per calendar year. When the observatory's data are rebuilt, it checks whether BLS has published a newer year. In the 2026-10 snapshot, 2025 is the latest year and is preliminary."
+  },
+  "method": "Column annual_avg_emplvl of the BLS annual file for each municipality, ownership code 0 (all ownerships), industry code 10 (all industries). The island value is BLS's own figure for Puerto Rico (area 72000), not the sum of the 78 municipalities.",
+  "source_detail": "BLS QCEW open-data API, annual-average area files: https://data.bls.gov/cew/data/api/<year>/a/area/<area>.csv, where <area> is the five-digit FIPS (Federal Information Processing Standards) code of the municipio (72001 Adjuntas, 72003 Aguada, and so on up to 72153 Yauco; 78 codes in all) or 72000 for Puerto Rico. Row: own_code 0, industry_code 10, column annual_avg_emplvl.",
+  "how_to_read": "Use it to see where the work is. In the 2026-10 snapshot, San Juan has the most jobs: 253,816 in 2025, 27% of the island's 947,557. It is not the number of employed residents. A place that draws commuters shows more jobs than it has workers living there; to compare the two, use jobs per employed resident. The Analysis tab can show it per 1,000 residents, per square kilometer or as a share of the island total. In the dataset information window on the Analysis tab (open it with the info button beside the dataset), the 'Download all years (CSV)' button saves all years as a comma-separated values file named pr_economy_qcew_jobs.csv; blank cells are values that BLS withholds or does not report.",
+  "caveats": [
+   "Covered jobs only: self-employed people, unpaid family workers, informal work and military personnel are not counted. BLS says covered employment is about 95% of jobs in the United States; the observatory does not measure the share for Puerto Rico.",
+   "Jobs are counted at the work site the employer reports. A company that reports all its workers under one site puts them all in that site's municipality.",
+   "In the 2026-10 snapshot, BLS's island figure is above the sum of the 78 municipalities by 1,681 jobs in 2014 (0.2%) and by 4,555 in 2025 (0.5%); BLS's files do not show why. All 78 municipalities have a value in every year.",
+   "In the 2026-10 snapshot, the island total fell from 907,001 in 2014 to 832,754 in 2020 (8.2% lower) and rose to 947,557 in 2025. A year's average mixes the months before and after any shock inside the year.",
+   "In the 2026-10 snapshot, 2025 is the latest year and is preliminary; BLS can revise it. The observatory reads a revision only on a full refresh; these values were downloaded on 3 October 2026.",
+   "Shaded per 1,000 residents (the Analysis tab's default for counts), the map divides the jobs located in a municipality by its residents. It is not an employment rate: places with many jobs for their size score high. In the 2026-10 snapshot, San Juan has about 770 jobs per 1,000 residents in 2025, against about 298 for Puerto Rico."
+  ],
+  "see_also": [
+   "economy.qcew_private_jobs",
+   "economy.qcew_gov_jobs",
+   "economy.qcew_estabs",
+   "economy.jobs_per_employed_resident",
+   "economy.laus_employed",
+   "economy.workers_16plus",
+   "economy.qcew_method",
+   "methods.qcew_suppression",
+   "measures.location_quotient",
+   "methods.workplace_vs_residence",
+   "economy.self_employed_pct",
+   "measures.per_1000_residents"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:qcew_jobs"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: show as sized symbols",
+     "href": "index.html#e=qcew_jobs.s"
+    },
+    {
+     "label": "Map, Analysis tab: shade municipalities by jobs per 1,000 residents",
+     "href": "index.html#e=qcew_jobs.f.per1000"
+    }
+   ]
+  },
+  "example": "From the 2026-10 snapshot. Puerto Rico: 907,001 (2014), 832,754 (2020), 947,557 (2025). San Juan: 253,816 (2025). Culebra: 502 (2025)."
+ },
+ {
+  "domain": "economy",
+  "domains": ["economy"],
+  "kind": "variable",
+  "geography": "78 municipalities and Puerto Rico (the island figure is published by the US Bureau of Labor Statistics, not summed from the 78)",
+  "sources": [
+   "bls_qcew"
+  ],
+  "added": "2026-10-03",
+  "id": "economy.qcew_private_jobs",
+  "name": "Private-sector jobs",
+  "group": "Jobs and employers",
+  "plain": "How many jobs at private employers are located in the municipality, averaged over the year. Jobs at government employers are not included.",
+  "definition": "Average number of jobs in the year at private-ownership employers located in the municipality, all industries, from the Quarterly Census of Employment and Wages (QCEW) of the US Bureau of Labor Statistics (BLS). Private ownership includes nonprofit organizations such as private schools, private hospitals and charities, as well as for-profit firms. Bodies owned by government are not included. The same coverage rules as total jobs apply: wage-and-salary jobs under unemployment insurance, counted at the work site.",
+  "unit": "jobs (annual average)",
+  "value_type": "count",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2014,
+   "last": 2025,
+   "frequency": "One value per calendar year. When the observatory's data are rebuilt, it checks whether BLS has published a newer year. In the 2026-10 snapshot, 2025 is the latest year and is preliminary."
+  },
+  "method": "Column annual_avg_emplvl of the BLS annual file, ownership code 5 (private), industry code 10 (all industries). A value is blank (not zero) where BLS withholds the private figure. The island value is BLS's own figure.",
+  "source_detail": "BLS QCEW open-data API, annual-average area files: https://data.bls.gov/cew/data/api/<year>/a/area/<area>.csv, where <area> is the five-digit FIPS (Federal Information Processing Standards) code of the municipio (72001 Adjuntas, 72003 Aguada, and so on up to 72153 Yauco; 78 codes in all) or 72000 for Puerto Rico. Row: own_code 5, industry_code 10, column annual_avg_emplvl.",
+  "how_to_read": "Private jobs are the jobs at private employers located in the municipality, not residents who work in the private sector. Subtract private jobs from total jobs to get government jobs; the observatory does this in the government jobs variable. In the 2026-10 snapshot, private jobs are 79.7% of island jobs in 2025 (755,110 of 947,557).",
+  "caveats": [
+   "Includes nonprofit employers. A job at a private contractor that serves government counts as private; a job at a government-owned body counts as government.",
+   "Self-employed and informal work are not counted.",
+   "In the 2026-10 snapshot, island private jobs rose from 677,460 in 2014 to 755,110 in 2025 (11.5% higher).",
+   "In the 2026-10 snapshot, 2025 is the latest year and is preliminary: BLS can revise it.",
+   "In the 2026-10 snapshot, BLS withholds Culebra's private figure from 2015 to 2021 (7 years), so Culebra's private jobs, government jobs and government share are blank (not zero) in those years, although its total jobs are published (382 to 462 jobs). The other 77 municipalities have a value in every year."
+  ],
+  "see_also": [
+   "economy.qcew_jobs",
+   "economy.qcew_gov_jobs",
+   "economy.gov_job_share_pct",
+   "economy.qcew_method",
+   "methods.qcew_suppression",
+   "measures.location_quotient"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:qcew_private_jobs"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: show as sized symbols",
+     "href": "index.html#e=qcew_private_jobs.s"
+    },
+    {
+     "label": "Map, Analysis tab: shade municipalities by the share of local jobs",
+     "href": "index.html#e=qcew_private_jobs.f.shareJobs"
+    }
+   ]
+  },
+  "example": "From the 2026-10 snapshot. Puerto Rico: 677,460 (2014), 755,110 (2025). San Juan: 194,237 (2025)."
+ },
+ {
+  "domain": "economy",
+  "domains": ["economy"],
+  "kind": "variable",
+  "geography": "78 municipalities and Puerto Rico (the island value is calculated from BLS's island figures, not summed from the 78)",
+  "sources": [
+   "bls_qcew"
+  ],
+  "added": "2026-10-03",
+  "id": "economy.qcew_gov_jobs",
+  "name": "Government jobs (federal, state, local)",
+  "group": "Jobs and employers",
+  "plain": "How many jobs in the municipality are with federal, Commonwealth or municipal government, averaged over the year. It is total jobs minus private jobs.",
+  "definition": "Total jobs minus private-sector jobs for the same municipality and year. It is the jobs at government employers located in the municipality: federal, Commonwealth (state) and municipal, including municipal agencies and public schools. The US Bureau of Labor Statistics (BLS) reports these jobs under ownership codes 1 (federal), 2 (state) and 3 (local) in the Quarterly Census of Employment and Wages (QCEW); the observatory publishes only the total.",
+  "unit": "jobs (annual average)",
+  "value_type": "count",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2014,
+   "last": 2025,
+   "frequency": "One value per calendar year. When the observatory's data are rebuilt, it checks whether BLS has published a newer year. In the 2026-10 snapshot, 2025 is the latest year and is preliminary."
+  },
+  "method": "Calculated by the observatory as qcew_jobs minus qcew_private_jobs. The value is blank when either of the two is blank. The island value is the same subtraction on BLS's island figures. The BLS files also hold the federal, state and local figures, and the observatory does not publish them.",
+  "source_detail": "BLS QCEW open-data API, annual-average area files: https://data.bls.gov/cew/data/api/<year>/a/area/<area>.csv, where <area> is the five-digit FIPS (Federal Information Processing Standards) code of the municipio (72001 Adjuntas, 72003 Aguada, and so on up to 72153 Yauco; 78 codes in all) or 72000 for Puerto Rico. Rows: own_code 0 minus own_code 5, industry_code 10, column annual_avg_emplvl.",
+  "how_to_read": "Government jobs are counted where the government office is, even if the office serves the whole island. In the 2026-10 snapshot, San Juan holds 59,579 of the island's 192,447 government jobs in 2025 (31%). A high count in a municipality shows where public employers are located; it does not show how many residents work for government. For that, see 'Residents working for government' (economy.gov_worker_pct), from the Census survey.",
+  "caveats": [
+   "In the 2026-10 snapshot, island government jobs fell from 229,541 in 2014 to 192,447 in 2025 (16.2% lower), while private jobs rose 11.5%.",
+   "In the 2026-10 snapshot, Culebra's value is blank in 2015 to 2021 (its private jobs are withheld), so 77 municipalities have a value in those years and 78 in the others. For state and local government, BLS withholds 74 to 76 of the 78 municipalities in each year from 2014 to 2021, and none from 2022.",
+   "The difference is only as exact as the two figures it comes from. Where either is withheld, the result is blank.",
+   "BLS classifies each job by the ownership of the employer. Government-owned bodies are counted here and not in the private industry variables, so, for example, public schools and government-run hospitals are not in the private education and health care variables. The data do not show how BLS classifies each public corporation.",
+   "In the 2026-10 snapshot, BLS's 2025 figures split the island's government jobs into 20,747 federal, 119,858 Commonwealth and 51,842 municipal jobs. The observatory's data file does not carry this split.",
+   "A change of operator moves jobs between government and private without any change in total jobs; the data cannot separate this effect.",
+   "An agency that reports all its staff under its headquarters site puts them all in that municipality; the observatory cannot test how each agency reports."
+  ],
+  "see_also": [
+   "economy.qcew_jobs",
+   "economy.qcew_private_jobs",
+   "economy.gov_job_share_pct",
+   "economy.gov_worker_pct",
+   "economy.qcew_method",
+   "methods.qcew_suppression",
+   "measures.location_quotient"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:qcew_gov_jobs"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: show as sized symbols",
+     "href": "index.html#e=qcew_gov_jobs.s"
+    },
+    {
+     "label": "Map, Analysis tab: shade municipalities by the share of local jobs",
+     "href": "index.html#e=qcew_gov_jobs.f.shareJobs"
+    }
+   ]
+  },
+  "example": "From the 2026-10 snapshot. Puerto Rico: 229,541 (2014), 192,447 (2025). San Juan: 59,579 (2025)."
+ },
+ {
+  "domain": "economy",
+  "domains": ["economy"],
+  "kind": "variable",
+  "geography": "78 municipalities and Puerto Rico (the island value is calculated from BLS's island figures, not summed from the 78)",
+  "sources": [
+   "bls_qcew"
+  ],
+  "added": "2026-10-03",
+  "id": "economy.gov_job_share_pct",
+  "name": "Government share of jobs",
+  "group": "Jobs and employers",
+  "plain": "Out of every 100 jobs located in the municipality, how many are with government.",
+  "definition": "Government jobs divided by all jobs located in the municipality, times 100, in the same year. Both come from the Quarterly Census of Employment and Wages (QCEW) of the US Bureau of Labor Statistics (BLS). Government jobs are total jobs minus private jobs.",
+  "unit": "% of jobs",
+  "value_type": "rate",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2014,
+   "last": 2025,
+   "frequency": "One value per calendar year. When the observatory's data are rebuilt, it checks whether BLS has published a newer year. In the 2026-10 snapshot, 2025 is the latest year and is preliminary."
+  },
+  "method": "Calculated by the observatory: round(government jobs / total jobs x 100, 2). The value is blank (not zero) when private jobs are withheld. The island value is calculated the same way from BLS's island figures.",
+  "source_detail": "BLS QCEW open-data API, annual-average area files: https://data.bls.gov/cew/data/api/<year>/a/area/<area>.csv, where <area> is the five-digit FIPS (Federal Information Processing Standards) code of the municipio (72001 Adjuntas, 72003 Aguada, and so on up to 72153 Yauco; 78 codes in all) or 72000 for Puerto Rico. Rows: own_code 0 and own_code 5, industry_code 10, column annual_avg_emplvl.",
+  "how_to_read": "A high share means public employers provide most of the local jobs; a low share means a mostly private job base. In the 2026-10 snapshot, the island share is 20.3% in 2025, and municipal shares run from 6.1% (Guaynabo) to 76.6% (Maunabo), with a middle value of 23.1%. It describes the jobs located in the municipality, not the work of the residents.",
+  "caveats": [
+   "In the 2026-10 snapshot, the island share fell from 25.3% in 2014 to 20.3% in 2025 as government jobs fell (16.2% lower) and private jobs rose (11.5% higher); BLS's files do not show why. The middle municipal value fell from 31.1% to 23.1%.",
+   "In a small municipality a few jobs move the share by several points.",
+   "Government includes federal, Commonwealth and municipal employers, public schools and other government-owned bodies.",
+   "In the 2026-10 snapshot, 2025 is the latest year and is preliminary: BLS can revise it.",
+   "A change of operator moves jobs between government and private without any change in total jobs; the data cannot separate this effect.",
+   "In the 2026-10 snapshot, Culebra's value is blank in 2015 to 2021 because its private jobs are withheld, although its total jobs are published."
+  ],
+  "see_also": [
+   "economy.qcew_gov_jobs",
+   "economy.qcew_jobs",
+   "economy.gov_worker_pct",
+   "economy.qcew_method",
+   "methods.qcew_suppression",
+   "methods.workplace_vs_residence"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:gov_job_share_pct"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: shade municipalities",
+     "href": "index.html#e=gov_job_share_pct.f"
+    }
+   ]
+  },
+  "example": "From the 2026-10 snapshot. Puerto Rico: 25.31% (2014), 20.31% (2025). Maunabo: 76.62% (2025). Guaynabo: 6.09% (2025)."
+ },
+ {
+  "domain": "economy",
+  "domains": ["economy"],
+  "kind": "variable",
+  "geography": "78 municipalities and Puerto Rico (the island figure is published by the US Bureau of Labor Statistics, not summed from the 78)",
+  "sources": [
+   "bls_qcew"
+  ],
+  "added": "2026-10-03",
+  "id": "economy.qcew_estabs",
+  "name": "Establishments",
+  "group": "Jobs and employers",
+  "plain": "How many work sites with paid employees are located in the municipality, averaged over the year. One firm with ten stores counts as ten.",
+  "definition": "Average number of establishments in the year, from the Quarterly Census of Employment and Wages (QCEW) of the US Bureau of Labor Statistics (BLS). An establishment is one work site of an employer, such as a store, an office or a plant. The annual figure is the average of the four quarterly counts. Private and government work sites with employees under unemployment insurance are included.",
+  "unit": "establishments (annual average)",
+  "value_type": "count",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2014,
+   "last": 2025,
+   "frequency": "One value per calendar year. When the observatory's data are rebuilt, it checks whether BLS has published a newer year. In the 2026-10 snapshot, 2025 is the latest year and is preliminary."
+  },
+  "method": "Column annual_avg_estabs of the BLS annual file, ownership code 0, industry code 10. The island value is BLS's own figure, not the sum of the 78 municipalities.",
+  "source_detail": "BLS QCEW open-data API, annual-average area files: https://data.bls.gov/cew/data/api/<year>/a/area/<area>.csv, where <area> is the five-digit FIPS (Federal Information Processing Standards) code of the municipio (72001 Adjuntas, 72003 Aguada, and so on up to 72153 Yauco; 78 codes in all) or 72000 for Puerto Rico. Row: own_code 0, industry_code 10, column annual_avg_estabs.",
+  "how_to_read": "Divide jobs by establishments to get the average size of a work site. In the 2026-10 snapshot, the island average is 18.0 jobs per site in 2025 (947,557 jobs, 52,582 sites). It counts sites, not companies or businesses: a chain with 30 stores counts 30 times. A person who works alone and has no employees is not counted.",
+  "caveats": [
+   "Counts work sites, not firms. The number of firms is not in this data.",
+   "Only sites that report employees to unemployment insurance are counted. Sole proprietors and informal businesses are not.",
+   "In the 2026-10 snapshot, the island count rose from 46,942 in 2014 to 52,582 in 2025 (12.0% higher).",
+   "In the 2026-10 snapshot, 2025 is the latest year and is preliminary: BLS can revise it.",
+   "In the 2026-10 snapshot, all 78 municipalities have a value in every year. BLS's island figure is above the sum of the 78 municipalities by 318 (0.7%) in 2014 and by 541 (1.0%) in 2025."
+  ],
+  "see_also": [
+   "economy.qcew_jobs",
+   "economy.qcew_method"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:qcew_estabs"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: show as sized symbols",
+     "href": "index.html#e=qcew_estabs.s"
+    },
+    {
+     "label": "Map, Analysis tab: shade municipalities by establishments per 1,000 residents",
+     "href": "index.html#e=qcew_estabs.f.per1000"
+    }
+   ]
+  },
+  "example": "From the 2026-10 snapshot. Puerto Rico: 46,942 (2014), 52,582 (2025). San Juan: 12,036 (2025)."
+ },
+ {
+  "domain": "economy",
+  "domains": ["economy"],
+  "kind": "variable",
+  "geography": "78 municipalities and Puerto Rico (the island figure is published by the US Bureau of Labor Statistics, not summed from the 78)",
+  "sources": [
+   "bls_qcew",
+   "bls_cpi"
+  ],
+  "added": "2026-10-03",
+  "id": "economy.qcew_wages",
+  "name": "Total wages paid",
+  "group": "Jobs and employers",
+  "plain": "All wages paid in the year by employers located in the municipality, in dollars of that year. It is the payroll of the jobs located there, not the income of the people who live there.",
+  "definition": "Total annual wages paid to covered workers by employers located in the municipality, private and government, from the Quarterly Census of Employment and Wages (QCEW) of the US Bureau of Labor Statistics (BLS). As BLS defines wages, they include bonuses, tips and other gratuities and the cash value of meals and lodging. They do not include the employer's contributions to Social Security, health insurance, workers' compensation or pension funds, so they are not the total cost of labor. They are in US dollars of the year paid and are not adjusted for inflation.",
+  "unit": "US dollars of the year paid",
+  "value_type": "level",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2014,
+   "last": 2025,
+   "frequency": "One value per calendar year. When the observatory's data are rebuilt, it checks whether BLS has published a newer year. In the 2026-10 snapshot, 2025 is the latest year and is preliminary."
+  },
+  "method": "Column total_annual_wages of the BLS annual file, ownership code 0, industry code 10. The island value is BLS's own figure, not the sum of the 78 municipalities.",
+  "source_detail": "BLS QCEW open-data API, annual-average area files: https://data.bls.gov/cew/data/api/<year>/a/area/<area>.csv, where <area> is the five-digit FIPS (Federal Information Processing Standards) code of the municipio (72001 Adjuntas, 72003 Aguada, and so on up to 72153 Yauco; 78 codes in all) or 72000 for Puerto Rico. Row: own_code 0, industry_code 10, column total_annual_wages. BLS wage definition: https://www.bls.gov/cew/overview.htm . Inflation comparison: BLS CPI-U, US city average (annual average).",
+  "how_to_read": "In the 2026-10 snapshot, San Juan employers paid $11.23 billion in 2025, 32.5% of the island's $34.51 billion. Wages are, to within rounding, jobs times average pay, so a municipality's payroll depends on both how many jobs it has and how much they pay. It shows where the money is paid out, which is not where the people who earn it live. To compare years, tick the inflation-adjusted option on the Analysis tab; it uses the US consumer price index (CPI-U, US city average) because the observatory's sources hold no Puerto Rico index.",
+  "caveats": [
+   "Dollars are not adjusted. In the 2026-10 snapshot, the island total rose 40.4% from 2014 to 2025 ($24.58 billion to $34.51 billion), while the US consumer price index rose 36.0% over the same years. The US index only approximates Puerto Rico's price changes.",
+   "It does not include the income of self-employed people or informal work.",
+   "It is paid at the work site, so commuters' wages are counted in the municipality of the job.",
+   "In the 2026-10 snapshot, 2025 is the latest year and is preliminary: BLS can revise it.",
+   "Shaded as dollars per resident (the Analysis tab's default for dollar totals), it is the payroll of local employers divided by residents. It is not the income of residents: it is high where jobs are concentrated. In the 2026-10 snapshot, San Juan's payroll is about $34,100 per resident in 2025, against about $10,800 for Puerto Rico.",
+   "In the 2026-10 snapshot, all 78 municipalities have a value in every year. BLS's island figure is above the sum of the 78 municipalities by 0.4% in 2014 and by 0.7% in 2025."
+  ],
+  "see_also": [
+   "economy.qcew_avg_pay",
+   "economy.qcew_jobs",
+   "housing.median_hh_income",
+   "economy.qcew_method",
+   "measures.inflation_adjustment",
+   "measures.per_resident",
+   "methods.workplace_vs_residence"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:qcew_wages"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: show as sized symbols",
+     "href": "index.html#e=qcew_wages.s"
+    }
+   ]
+  },
+  "example": "From the 2026-10 snapshot. Puerto Rico: $24.58 billion (2014), $34.51 billion (2025). San Juan: $11.23 billion (2025)."
+ },
+ {
+  "domain": "economy",
+  "domains": ["economy"],
+  "kind": "variable",
+  "geography": "78 municipalities and Puerto Rico (the island figure is published by the US Bureau of Labor Statistics, not summed from the 78)",
+  "sources": [
+   "bls_qcew",
+   "bls_cpi"
+  ],
+  "added": "2026-10-03",
+  "id": "economy.qcew_avg_pay",
+  "name": "Average annual pay per job",
+  "group": "Jobs and employers",
+  "plain": "What the average job at an employer in the municipality paid in the year, in dollars of that year. It describes the jobs located there, not the incomes of the people who live there.",
+  "definition": "Total annual wages divided by average jobs, from the Quarterly Census of Employment and Wages (QCEW) of the US Bureau of Labor Statistics (BLS). It is a mean per job, not a median. It is not converted to full-time equivalents, so part-time and part-year jobs lower it. It includes private and government jobs and is in US dollars of the year, not adjusted for inflation.",
+  "unit": "US dollars per job, of the year paid",
+  "value_type": "level",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2014,
+   "last": 2025,
+   "frequency": "One value per calendar year. When the observatory's data are rebuilt, it checks whether BLS has published a newer year. In the 2026-10 snapshot, 2025 is the latest year and is preliminary."
+  },
+  "method": "Column avg_annual_pay of the BLS annual file, ownership code 0, industry code 10; the observatory reads it as published and does not compute it.",
+  "source_detail": "BLS QCEW open-data API, annual-average area files: https://data.bls.gov/cew/data/api/<year>/a/area/<area>.csv, where <area> is the five-digit FIPS (Federal Information Processing Standards) code of the municipio (72001 Adjuntas, 72003 Aguada, and so on up to 72153 Yauco; 78 codes in all) or 72000 for Puerto Rico. Row: own_code 0, industry_code 10, column avg_annual_pay. Inflation comparison: BLS CPI-U, US city average (annual average).",
+  "how_to_read": "In the 2026-10 snapshot, the island average rose from $27,097 in 2014 to $36,419 in 2025. Juncos has the highest average pay in every year from 2014 to 2025 ($60,788 in 2025). The lowest is Las Marías in 2025 ($21,351). A high value means the jobs located there pay more on average; it can reflect the mix of industries, and it does not mean that residents earn more. For the income of residents, use the household income variables.",
+  "caveats": [
+   "Dollars are not adjusted. In the 2026-10 snapshot, using the US consumer price index (CPI-U, US city average, an approximation because the observatory's sources hold no Puerto Rico index), the 2025 island average is worth about $26,800 in 2014 dollars, close to the $27,097 of 2014.",
+   "It is a mean, so a few very high pay packages raise it in a small municipality.",
+   "It is pay per job, not per hour or per person. A part-time job counts as one job.",
+   "In the 2026-10 snapshot, 2025 is the latest year and is preliminary: BLS can revise it.",
+   "In the 2026-10 snapshot, all 78 municipalities have a value in every year. In the observatory's file, total wages divided by jobs differs from the published average by no more than $24 in any municipality or year, probably because BLS rounds the job counts it publishes."
+  ],
+  "see_also": [
+   "economy.qcew_wages",
+   "economy.qcew_jobs",
+   "housing.median_hh_income",
+   "housing.per_capita_income",
+   "economy.qcew_method",
+   "measures.inflation_adjustment",
+   "methods.workplace_vs_residence"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:qcew_avg_pay"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: shade municipalities",
+     "href": "index.html#e=qcew_avg_pay.f"
+    }
+   ]
+  },
+  "example": "From the 2026-10 snapshot. Puerto Rico: $27,097 (2014), $36,419 (2025). Juncos: $60,788 (2025)."
+ },
+ {
+  "domain": "economy",
+  "domains": ["economy"],
+  "kind": "variable",
+  "geography": "78 municipalities and Puerto Rico (the island value divides BLS's island jobs by the island's employed residents, which equal the sum of the 78 municipalities' counts)",
+  "sources": [
+   "bls_qcew",
+   "acs5"
+  ],
+  "added": "2026-10-03",
+  "id": "economy.jobs_per_employed_resident",
+  "name": "Jobs per employed resident",
+  "group": "Jobs and employers",
+  "plain": "How many jobs are located in the municipality for each employed resident. Above 1 means more jobs than employed residents live there, so the place may draw workers from elsewhere. Below 1 means fewer jobs than employed residents. Many of those residents may work elsewhere, or in work that the jobs data do not count, such as self-employment.",
+  "definition": "Jobs located in the municipality (annual average, from the Quarterly Census of Employment and Wages (QCEW) of the US Bureau of Labor Statistics (BLS)) divided by employed residents 16 and over (civilian, from the American Community Survey (ACS) 5-year estimates) whose survey window ends in the same year. For 2024 the residents are those of the 2020 to 2024 window. The jobs figure is one year; the residents figure is a five-year window.",
+  "unit": "jobs per employed resident",
+  "value_type": "ratio",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2014,
+   "last": 2024,
+   "frequency": "One value per year when both inputs exist. In the 2026-10 snapshot, 2025 is missing because the ACS window ending in 2025 is not published yet."
+  },
+  "method": "Calculated by the observatory: round(qcew_jobs / workers_16plus, 3) for each year and place where both are above zero. workers_16plus is the ACS count of civilian employed residents 16 and over (table B24080, total), described in the entry for employed residents. The island value divides BLS's island jobs by the ACS island count of employed residents, which equals the sum of the 78 municipalities' counts.",
+  "source_detail": "Jobs: BLS QCEW, ownership 0, industry 10, annual_avg_emplvl. Residents: ACS 5-year estimates, table B24080, total, window ending in the same year (summary files at https://www2.census.gov/programs-surveys/acs/summary_file/).",
+  "how_to_read": "A value of 1 means one covered job for each employed resident. Compare a municipality with the island value, not with 1. A value well above the island value points to a place that draws workers; a low value points to a place where many residents work elsewhere. It does not say where they work. In the 2026-10 snapshot, the island value is 0.82 in 2024, below 1; one reason is that the jobs count leaves out self-employed and informal work, which the resident count includes. That year, 9 of 78 municipalities are above 1: San Juan (1.91), Mayagüez (1.52), Guaynabo (1.50), Cataño (1.44), Barceloneta (1.27), Aguadilla (1.21), Ponce (1.20), Manatí (1.19), Humacao (1.05). The middle municipal value is 0.50, so a typical municipality has about one covered job for every two employed residents. The lowest is Toa Alta (0.16), and Toa Alta is the lowest in every year from 2014 to 2024.",
+  "caveats": [
+   "It compares two different counts. It is consistent with commuting but does not measure it. For commuting itself, see the commute variables from the same survey.",
+   "The years do not match exactly. A QCEW year is divided by a five-year survey window that ends in that year, so the 2020 jobs dip is divided by a window that covers 2016 to 2020.",
+   "The resident count is a survey estimate with a margin of error (90% confidence). In the 2026-10 snapshot, the 2024 margin is about 6% of the estimate in a typical municipality and 19% in Culebra. The margin is not carried into the ratio.",
+   "The jobs are counted at the employer's reporting site, so a company that reports all its workers under one site raises the ratio there.",
+   "Jobs are not people: a person with two jobs counts twice in the numerator and once in the denominator.",
+   "A low value can also reflect self-employed or informal workers, who are in the resident count but not in the jobs count.",
+   "In the 2026-10 snapshot, all 78 municipalities have a value in each year from 2014 to 2024, and the island count of employed residents is 1,150,831 in 2024."
+  ],
+  "see_also": [
+   "economy.qcew_jobs",
+   "economy.workers_16plus",
+   "economy.commute_45plus_pct",
+   "economy.laus_employed",
+   "economy.qcew_method",
+   "methods.workplace_vs_residence",
+   "methods.acs_windows",
+   "measures.margin_of_error"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:jobs_per_employed_resident"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: shade municipalities",
+     "href": "index.html#e=jobs_per_employed_resident.f"
+    }
+   ]
+  },
+  "example": "From the 2026-10 snapshot. Puerto Rico: 0.84 (2014), 0.82 (2024). San Juan: 1.91 (2024). Toa Alta: 0.16 (2024)."
+ },
+ {
+  "domain": "economy",
+  "domains": ["economy", "economy.visitor-economy"],
+  "kind": "variable",
+  "geography": "78 municipalities and Puerto Rico (the island value is calculated from BLS's island figures, not summed from the 78)",
+  "sources": [
+   "bls_qcew"
+  ],
+  "added": "2026-10-03",
+  "id": "economy.tourism_jobs",
+  "name": "Tourism-related jobs (arts, entertainment, recreation, accommodation, food)",
+  "group": "Industries",
+  "plain": "Private jobs in hotels, restaurants, bars, arts and recreation in the municipality. Statisticians use it as a stand-in for the visitor economy. It also counts restaurants that serve residents.",
+  "definition": "Private jobs at employers located in the municipality in two sectors of the North American Industry Classification System (NAICS): accommodation and food services (sector 72) plus arts, entertainment and recreation (sector 71). The figures come from the Quarterly Census of Employment and Wages (QCEW) of the US Bureau of Labor Statistics (BLS). Where BLS withholds sector 71 for a municipality, only sector 72 is counted, so the value is slightly low there. Where BLS withholds sector 72, the value is blank.",
+  "unit": "jobs (annual average)",
+  "value_type": "count",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2014,
+   "last": 2025,
+   "frequency": "One value per calendar year. When the observatory's data are rebuilt, it checks whether BLS has published a newer year. In the 2026-10 snapshot, 2025 is the latest year and is preliminary."
+  },
+  "method": "Calculated by the observatory: sector 72 jobs plus sector 71 jobs where sector 71 has a published value; sector 72 jobs alone where sector 71 is withheld or has no row. If sector 72 is withheld the value is blank, even when sector 71 or the parts of sector 72 (721 and 722) are published. The value exists wherever sector 72 has a value.",
+  "source_detail": "BLS QCEW open-data API, annual-average area files: https://data.bls.gov/cew/data/api/<year>/a/area/<area>.csv, where <area> is the five-digit FIPS (Federal Information Processing Standards) code of the municipio (72001 Adjuntas, 72003 Aguada, and so on up to 72153 Yauco; 78 codes in all) or 72000 for Puerto Rico. Rows: own_code 5, industry_code 72 and industry_code 71, column annual_avg_emplvl.",
+  "how_to_read": "It measures jobs in the industries that visitors use. It does not say how many of the customers are visitors. The Analysis tab's Tourism economy view shows it as a share of the municipality's jobs. In the 2026-10 snapshot, tourism-related jobs are 10.5% of island jobs in 2025 (99,477), up from 8.8% in 2014. In 2024, the highest shares of local jobs among the municipalities with a value are Rincón (33%), Río Grande (31%), Vieques (26%) and Dorado (26%).",
+  "caveats": [
+   "Residents eat out and use recreation too, so part of these jobs serve residents, not visitors.",
+   "Visitor-serving jobs in other sectors are not included: air and ground transport, retail, travel agencies and tour operators, and vacation-rental management companies. Hosts who rent a home and have no employees are not counted at all.",
+   "Slightly low where sector 71 is hidden. In the 2026-10 snapshot, on the island sector 71 is 6% of the 2024 total (5,954 of 96,884), so the shortfall is usually small, but it can be larger where recreation is a big employer.",
+   "Blank where sector 72 is hidden, including some places where food service (722) is published: in the 2026-10 snapshot, 17 municipalities have a food service value but no tourism value in 2024.",
+   "In the 2026-10 snapshot, San Juan's accommodation and food service values are hidden in 2024 only, although its sector 72 total is published, so its tourism value is published in every year.",
+   "In the 2026-10 snapshot, 2025 has fewer published values than any earlier year (39 municipalities, against 44 in 2024), and it is preliminary.",
+   "In the 2026-10 snapshot, 48 municipalities have a value in 2014, 44 in 2024 and 39 in 2025. Of those, 30, 32 and 29 also include sector 71, and 18, 12 and 10 count sector 72 alone."
+  ],
+  "see_also": [
+   "economy.jobs_naics_71",
+   "economy.jobs_naics_72",
+   "economy.accommodation_jobs",
+   "economy.food_service_jobs",
+   "economy.tourism_places",
+   "economy.tourism_supply_layers",
+   "economy.qcew_jobs",
+   "economy.qcew_method",
+   "methods.qcew_suppression",
+   "measures.location_quotient",
+   "measures.share_of_jobs"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:tourism_jobs"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: Tourism economy view (share of local jobs)",
+     "href": "index.html#e=tourism_jobs.f.shareJobs,accommodation_jobs.s"
+    },
+    {
+     "label": "Map, Analysis tab: show as sized symbols",
+     "href": "index.html#e=tourism_jobs.s"
+    }
+   ]
+  },
+  "example": "From the 2026-10 snapshot. Puerto Rico: 79,798 (2014), 66,626 (2020), 99,477 (2025). San Juan: 25,489 (2025)."
+ },
+ {
+  "domain": "economy",
+  "domains": ["economy", "economy.visitor-economy"],
+  "kind": "variable",
+  "geography": "78 municipalities and Puerto Rico (the island figure is published by the US Bureau of Labor Statistics, not summed from the 78)",
+  "sources": [
+   "bls_qcew"
+  ],
+  "added": "2026-10-03",
+  "id": "economy.accommodation_jobs",
+  "name": "Accommodation jobs (hotels, inns, guesthouses)",
+  "group": "Industries",
+  "plain": "Private jobs at hotels, resorts, inns and other places to stay in the municipality. Many municipalities show a blank because the Bureau of Labor Statistics (BLS) hides the figure to protect an employer's privacy, or publishes no figure for them. A blank is not zero.",
+  "definition": "Average private-sector jobs in industry group 721, accommodation, of the North American Industry Classification System (NAICS), at employers located in the municipality. It includes hotels and motels (casino hotels too), resorts, inns, guesthouses, bed-and-breakfasts, recreational-vehicle parks and camps, and rooming houses. It is a part of sector 72, accommodation and food services. Hosts who rent out a home and have no employees are not counted. The data come from the Quarterly Census of Employment and Wages (QCEW) of the US Bureau of Labor Statistics (BLS).",
+  "unit": "jobs (annual average)",
+  "value_type": "count",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2014,
+   "last": 2025,
+   "frequency": "One value per calendar year. When the observatory's data are rebuilt, it checks whether BLS has published a newer year. In the 2026-10 snapshot, 2025 is the latest year and is preliminary."
+  },
+  "method": "Column annual_avg_emplvl of the BLS annual file, ownership code 5 (private), industry code 721. A row that BLS marks as withheld is left blank, and a municipality with no row is also blank.",
+  "source_detail": "BLS QCEW open-data API, annual-average area files: https://data.bls.gov/cew/data/api/<year>/a/area/<area>.csv, where <area> is the five-digit FIPS (Federal Information Processing Standards) code of the municipio (72001 Adjuntas, 72003 Aguada, and so on up to 72153 Yauco; 78 codes in all) or 72000 for Puerto Rico. Row: own_code 5, industry_code 721, column annual_avg_emplvl.",
+  "how_to_read": "In the 2026-10 snapshot, the island figure fell from 15,291 in 2014 to 8,525 in 2020 and recovered to 14,947 in 2025. In 2024 the largest published municipal values are Carolina (1,369), Dorado (1,198), Ponce (1,031). In 2024 the municipal values add up to only 40% of the island figure; BLS hid San Juan's value that year (4,983 jobs in 2023) and other cells too. They add up to 72% in 2014 and 63% in 2025. Do not rank municipalities by this variable without checking which ones are blank.",
+  "caveats": [
+   "A blank means that BLS withheld the figure or published no row. It is not zero. The published data do not tell the two apart.",
+   "BLS hides a cell when it could identify one employer, which is easy where a municipality has only a few hotels. In the 2026-10 snapshot, San Juan, the largest municipality, is hidden in 2024 only.",
+   "Short-term rentals offered by individual hosts are not counted. Only employers with employees under unemployment insurance are. This is employment at those employers, not rental listings or beds.",
+   "In the 2026-10 snapshot, 29 municipalities have the sector 72 total published for 2024 and accommodation blank; in 19 of them food service is blank too, so neither part can be worked out from the total.",
+   "In the 2026-10 snapshot, 2025 has fewer published values than any earlier year (13 municipalities, against 15 in 2024), and it is preliminary.",
+   "In the 2026-10 snapshot, of the 78 municipalities, 17 have a value in 2014, 34 are withheld and 27 have no row; in 2024 the counts are 15, 41 and 22; in 2025 they are 13, 45 and 20. From 2014 to 2024, between 34 and 41 municipalities are withheld each year and between 22 and 27 have no row."
+  ],
+  "see_also": [
+   "economy.food_service_jobs",
+   "economy.jobs_naics_72",
+   "economy.tourism_jobs",
+   "economy.qcew_method",
+   "methods.qcew_suppression",
+   "measures.location_quotient",
+   "economy.lodging_places"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:accommodation_jobs"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: show as sized symbols",
+     "href": "index.html#e=accommodation_jobs.s"
+    },
+    {
+     "label": "Map, Analysis tab: shade municipalities by the share of local jobs",
+     "href": "index.html#e=accommodation_jobs.f.shareJobs"
+    }
+   ]
+  },
+  "example": "From the 2026-10 snapshot. Puerto Rico: 15,291 (2014), 8,525 (2020), 14,947 (2025). Carolina: 1,369 (2024)."
+ },
+ {
+  "domain": "economy",
+  "domains": ["economy", "economy.visitor-economy"],
+  "kind": "variable",
+  "geography": "78 municipalities and Puerto Rico (the island figure is published by the US Bureau of Labor Statistics, not summed from the 78)",
+  "sources": [
+   "bls_qcew"
+  ],
+  "added": "2026-10-03",
+  "id": "economy.food_service_jobs",
+  "name": "Food service jobs (restaurants, bars)",
+  "group": "Industries",
+  "plain": "Private jobs at restaurants, fast-food outlets, cafes, bars and caterers in the municipality. The figure is blank where it is withheld.",
+  "definition": "Average private-sector jobs in industry group 722, food services and drinking places, of the North American Industry Classification System (NAICS), at employers located in the municipality. It includes full-service restaurants, fast-food and counter-service outlets, cafeterias, coffee and snack shops, bars, food trucks and caterers. It is a part of sector 72, accommodation and food services. The data come from the Quarterly Census of Employment and Wages (QCEW) of the US Bureau of Labor Statistics (BLS).",
+  "unit": "jobs (annual average)",
+  "value_type": "count",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2014,
+   "last": 2025,
+   "frequency": "One value per calendar year. When the observatory's data are rebuilt, it checks whether BLS has published a newer year. In the 2026-10 snapshot, 2025 is the latest year and is preliminary."
+  },
+  "method": "Column annual_avg_emplvl of the BLS annual file, ownership code 5 (private), industry code 722. A row that BLS marks as withheld is left blank.",
+  "source_detail": "BLS QCEW open-data API, annual-average area files: https://data.bls.gov/cew/data/api/<year>/a/area/<area>.csv, where <area> is the five-digit FIPS (Federal Information Processing Standards) code of the municipio (72001 Adjuntas, 72003 Aguada, and so on up to 72153 Yauco; 78 codes in all) or 72000 for Puerto Rico. Row: own_code 5, industry_code 722, column annual_avg_emplvl.",
+  "how_to_read": "In the 2026-10 snapshot, the island figure rose from 61,116 in 2014 to 78,341 in 2025, with a dip to 54,827 in 2020. In 2024 the largest published municipal values are Carolina (5,527), Ponce (4,047), Caguas (3,700). The municipal values add up to 50% of the island figure in 2024 (74% in 2014, 68% in 2025); 2024 is low because BLS hid San Juan's value that year (18,054 jobs in 2023). Restaurants serve residents as well as visitors, so this is not a count of visitor jobs.",
+  "caveats": [
+   "A blank means that BLS withheld the figure; it is not zero. In the 2026-10 snapshot, BLS publishes a food service row for every municipality in every year, so a blank is a withheld cell, not a missing industry.",
+   "Food trucks and food stands run by an owner with no paid employees are not counted.",
+   "In the 2026-10 snapshot, only 29 municipalities have a value in 2025, against 42 in 2024, so the 2025 map has far fewer values. The change is mostly in what BLS hides, not in the industry.",
+   "In the 2026-10 snapshot, San Juan's value is hidden in 2024 although its sector 72 total is published.",
+   "In the 2026-10 snapshot, of the 78 municipalities, 44 have a value in 2014 and 34 are withheld; in 2024 the counts are 42 and 36; in 2025 they are 29 and 49. From 2014 to 2024, between 29 and 36 municipalities are withheld each year."
+  ],
+  "see_also": [
+   "economy.accommodation_jobs",
+   "economy.jobs_naics_72",
+   "economy.tourism_jobs",
+   "economy.gastronomy_places",
+   "economy.qcew_method",
+   "methods.qcew_suppression",
+   "measures.location_quotient"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:food_service_jobs"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: show as sized symbols",
+     "href": "index.html#e=food_service_jobs.s"
+    },
+    {
+     "label": "Map, Analysis tab: shade municipalities by the share of local jobs",
+     "href": "index.html#e=food_service_jobs.f.shareJobs"
+    }
+   ]
+  },
+  "example": "From the 2026-10 snapshot. Puerto Rico: 61,116 (2014), 54,827 (2020), 78,341 (2025). Carolina: 5,527 (2024)."
+ },
+ {
+  "domain": "economy",
+  "domains": ["economy"],
+  "kind": "variable",
+  "geography": "78 municipalities and Puerto Rico (the island value is calculated from BLS's island figures, not summed from the 78)",
+  "sources": [
+   "bls_qcew"
+  ],
+  "added": "2026-10-03",
+  "id": "economy.industry_hhi",
+  "name": "Industry concentration (Herfindahl index)",
+  "group": "Industries",
+  "plain": "A score of how concentrated the local jobs are in a few industries. A low score means jobs are spread across many industries; a high score means a few, often government, hold most of them.",
+  "definition": "The Herfindahl-Hirschman index (HHI) of the job shares of the municipality's industries. Each industry's share of all local jobs is squared and the squares are added and multiplied by 10,000. The industries are the 19 private sectors of the North American Industry Classification System (NAICS) that the US Bureau of Labor Statistics (BLS) publishes for the municipality, plus government as one group. It is calculated only where the published sectors and government cover at least 80% of all jobs. It is also blank where private jobs are withheld, because government jobs cannot then be worked out.",
+  "unit": "index points (0 to 10,000)",
+  "value_type": "index",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2014,
+   "last": 2025,
+   "frequency": "One value per calendar year. When the observatory's data are rebuilt, it checks whether BLS has published a newer year. In the 2026-10 snapshot, 2025 is the latest year and is preliminary."
+  },
+  "method": "Calculated by the observatory. For each municipality and year: total jobs T = qcew_jobs. Government G = total jobs minus private jobs. Each published private sector gives S, its jobs. The sectors and government are 'covered' if (sum of S + G) / T is at least 0.8. If so, HHI = round(10,000 x sum of (jobs / T)^2) over the published sectors and government; the shares are of all jobs, including government, and a hidden sector adds nothing. If not, the value is blank. It can be recomputed from the published sector values. The value is also blank where private jobs are withheld, because government jobs cannot then be worked out. The Analysis tab's inspector also names the largest employer group (see its entry). That group uses the same sector values but has no 80% test.",
+  "source_detail": "BLS QCEW open-data API, annual-average area files: https://data.bls.gov/cew/data/api/<year>/a/area/<area>.csv, where <area> is the five-digit FIPS (Federal Information Processing Standards) code of the municipio (72001 Adjuntas, 72003 Aguada, and so on up to 72153 Yauco; 78 codes in all) or 72000 for Puerto Rico. Rows: own_code 5 for the 19 sectors, plus own_code 0 and own_code 5 with industry_code 10 for total and government jobs.",
+  "how_to_read": "Lower is more diversified. With jobs spread evenly over the 20 groups the score is 500; with all jobs in one group it is 10,000. In the 2026-10 snapshot, the 2024 municipal values run from 814 (Guaynabo) to 5,940 (Maunabo), and the island value is 1,040 (built from all 19 sectors). A high value can come from one large private sector or from a large government share, because government counts as one group. The score compares places and years within this data. It is not a measure of economic health. The inspector's 'largest employer group' ignores hidden sectors and counts government as one group, so it can name Government or a smaller sector when a larger sector is withheld; see its entry.",
+  "caveats": [
+   "Government is treated as one group. A municipality where government holds most jobs scores high mainly for that reason. In the 2026-10 snapshot, Maunabo has the highest value in 2024, with a government share of 76%.",
+   "Jobs in hidden sectors are left out, so a score can be too low but not too high, compared with a calculation that had every sector. Up to 20% of jobs can be missing from the calculation, because of the 80% rule.",
+   "In the 2026-10 snapshot, many municipalities have no value: 19 in 2014, 30 in 2024 and 38 in 2025. A municipality can enter or leave the set from one year to the next as BLS hides or shows sectors, so do not read a change that comes with a change in the set of published sectors as a trend.",
+   "It uses only 20 groups, and the private sectors are broad. It does not see concentration inside a sector, such as one large employer.",
+   "In the 2026-10 snapshot, 2025 is the latest year and is preliminary: BLS can revise it.",
+   "In the 2026-10 snapshot, the island value uses all 19 sectors except in 2015 (sector 81 missing), 2022 (sector 51 missing) and 2025 (five sectors missing: mining, utilities, construction, transportation and warehousing, information). In 2025 the published sectors and government cover 91.8% of jobs, and with those five sectors held at their 2024 size the score would be about 1,026, not 1,004. In 2015 and 2022 the gap is about 3 points. 2024 is the latest island value built from all 19 sectors, so do not read the 2024 to 2025 island change as a trend.",
+   "In the 2026-10 snapshot, among the 48 municipalities with a value in 2024, smaller ones tend to score higher: the rank correlation with total jobs is about -0.63 (-1 would mean the order is exactly reversed). The 30 municipalities without a value tend to be small (median 3,036 jobs, against 7,084 for those with a value). A high score is not by itself a sign of a weak economy.",
+   "Do not compare a municipality's score with the island's. In the 2026-10 snapshot, the island figure has almost every sector published in every year; a municipality often does not, and a score built from fewer sectors is lower.",
+   "In the 2026-10 snapshot, the island value exists in every year. Culebra's value is blank in 2015 to 2021 because its private jobs are withheld, and in 2022 to 2025 because the published sectors and government cover less than 80% of its jobs."
+  ],
+  "see_also": [
+   "economy.qcew_gov_jobs",
+   "economy.gov_job_share_pct",
+   "economy.qcew_jobs",
+   "economy.qcew_method",
+   "economy.top_sector",
+   "methods.qcew_suppression"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:industry_hhi"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: shade municipalities",
+     "href": "index.html#e=industry_hhi.f"
+    }
+   ]
+  },
+  "example": "From the 2026-10 snapshot. Puerto Rico: 1,205 (2014), 1,040 (2024), 1,004 (2025; five sectors have no island value in 2025, which lowers the score by about 22 points). Guaynabo: 814 (2024)."
+ },
+ {
+  "domain": "economy",
+  "domains": ["economy"],
+  "kind": "variable",
+  "geography": "78 municipalities and Puerto Rico (the island value is calculated from BLS's island figures, not summed from the 78)",
+  "sources": [
+   "bls_qcew"
+  ],
+  "added": "2026-10-03",
+  "id": "economy.top_sector",
+  "name": "Largest employer group (the sector or government with the most jobs)",
+  "group": "Industries",
+  "plain": "The industry, or government, that holds the most jobs in a municipality in a given year, among the groups the Bureau of Labor Statistics (BLS) publishes there. The Analysis tab shows it, with its share of all local jobs, when you select a municipality.",
+  "definition": "For each place and year, the group with the most jobs among the 19 private sectors of the North American Industry Classification System (NAICS) that the US Bureau of Labor Statistics (BLS) publishes for that place, with government taken as one group. The jobs come from the Quarterly Census of Employment and Wages (QCEW). The data hold three items for each place and year: the group's name, its share of all jobs (private and government) in percent with one decimal, and the share of the place's private jobs that sit in published sectors, as a whole percent.",
+  "unit": "group name; % of all jobs; % of private jobs in published sectors",
+  "value_type": "text",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2014,
+   "last": 2025,
+   "frequency": "One value per calendar year, rebuilt with the jobs data. In the 2026-10 snapshot, 2025 is the latest year and is preliminary."
+  },
+  "method": "Calculated by the observatory together with the industry concentration index. For each place and year where total jobs and private jobs are published, it takes the jobs of each published private sector and of government (total jobs minus private jobs) and keeps the group with the most jobs. Share of all jobs = group jobs / total jobs x 100, rounded to 1 decimal. Share of private jobs in published sectors = sum of the published private sector jobs / private jobs x 100, rounded to a whole number. Unlike the concentration index, it has no 80% test. It is published in economy_series.json under extras.top_sector, a list per year in the same order as the places. The Analysis tab inspector shows the name and the share of all jobs.",
+  "source_detail": "BLS QCEW open-data API, annual-average area files (see the QCEW method entry). Rows: own_code 5 for the 19 sectors, plus own_code 0 and own_code 5 with industry_code 10 for total and government jobs.",
+  "how_to_read": "Read it as the biggest group among those BLS shows. Government counts as one group and the private sectors as 19, so Government is often the largest. In the 2026-10 snapshot, Government is named for 49 of the 78 municipalities in 2024, and for Puerto Rico (20.3% of jobs in 2025).",
+  "caveats": [
+   "A group that BLS hides cannot be named, so the true largest group can be a hidden sector. For example, in the 2026-10 snapshot, Government is named for Maricao in 2024 with 30.1% of jobs, but the published sectors hold only 20% of its private jobs, so a hidden sector could be larger.",
+   "The percentage is the group's share of all jobs, government included. It is not a share of private jobs.",
+   "It has no 80% test, unlike the industry concentration index, so it is shown even where most private jobs are in hidden sectors.",
+   "In the 2026-10 snapshot, 2025 is the latest year and is preliminary: BLS can revise it.",
+   "In the 2026-10 snapshot, every place has a value in every year except Culebra in 2015 to 2021, when its private jobs are withheld (941 of 948 place-years, Puerto Rico included)."
+  ],
+  "see_also": [
+   "economy.industry_hhi",
+   "economy.qcew_gov_jobs",
+   "economy.gov_job_share_pct",
+   "measures.share_of_jobs",
+   "methods.qcew_suppression",
+   "economy.qcew_method"
+  ],
+  "where": {
+   "files": [],
+   "view": [
+    {
+     "label": "Map, Analysis tab: select a municipality to see its largest employer group",
+     "href": "index.html#e=qcew_jobs.s"
+    }
+   ]
+  },
+  "example": "From the 2026-10 snapshot. Puerto Rico: Government, 20.3% of jobs (2025). Maricao: Government, 30.1% of jobs (2024)."
+ },
+ {
+  "domain": "economy",
+  "domains": ["economy"],
+  "kind": "variable",
+  "geography": "78 municipalities and Puerto Rico (the island figure is published by the US Bureau of Labor Statistics, not summed from the 78)",
+  "sources": [
+   "bls_qcew"
+  ],
+  "added": "2026-10-03",
+  "id": "economy.jobs_naics_11",
+  "name": "Jobs: Agriculture, forestry, fishing and hunting (NAICS 11)",
+  "group": "Industries",
+  "plain": "Private jobs on farms, in fishing and in forestry in the municipality. Family farms and self-employed growers are not counted.",
+  "definition": "Annual-average jobs at private employers located in the municipality, in sector 11 of the North American Industry Classification System (NAICS), agriculture, forestry, fishing and hunting. It includes crop farms (coffee, plantains, vegetables, fruit), livestock, dairy and poultry farms, plant nurseries, forestry, commercial fishing, and services to farms such as crop harvesting and soil preparation. The data come from the Quarterly Census of Employment and Wages (QCEW) of the US Bureau of Labor Statistics (BLS). Only wage-and-salary jobs are counted, each at the work site. A blank means that BLS withholds the figure to protect an employer's confidentiality, or publishes no row for the sector there. It does not mean zero.",
+  "unit": "jobs (annual average)",
+  "value_type": "count",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2014,
+   "last": 2025,
+   "frequency": "One value per calendar year. When the observatory's data are rebuilt, it checks whether BLS has published a newer year. In the 2026-10 snapshot, 2025 is the latest year and is preliminary."
+  },
+  "method": "Column annual_avg_emplvl of the BLS annual file for each municipality and year, ownership code 5 (private), industry code 11. A row that BLS marks as withheld (disclosure code N) is left blank. A municipality with no row for the sector is also blank (BLS's file layout does not say why a row is absent). The Puerto Rico value is BLS's own island figure, not a sum of the municipalities.",
+  "source_detail": "BLS QCEW open-data API, annual-average area files: https://data.bls.gov/cew/data/api/<year>/a/area/<area>.csv, where <area> is the five-digit FIPS (Federal Information Processing Standards) code of the municipio (72001 Adjuntas, 72003 Aguada, and so on up to 72153 Yauco; 78 codes in all) or 72000 for Puerto Rico. Row: own_code 5, industry_code 11, column annual_avg_emplvl.",
+  "how_to_read": "In the 2026-10 snapshot, the island total is 11,565 in 2014 and 7,811 in 2024 (32.5% lower), and 7,602 in 2025. It is 1.0% of island private jobs in 2024. The largest published municipal values in 2024 are Lares (590), Santa Isabel (555), San Sebastián (444). The published municipal values add up to 67% of the island figure in 2024, so 33% of the island figure is not in them (hidden cells, plus a gap that BLS's files do not explain: BLS's island private jobs are 0.5% above the sum of the 78 municipalities in 2024). San Juan has no published value in any year from 2014 to 2025. On the Analysis tab you can also shade it as a share of local jobs or as a location quotient (see the QCEW method entry).",
+  "caveats": [
+   "A map of this variable mostly shows where BLS publishes the figure, not only where the jobs are. In the 2026-10 snapshot, 39 of the 78 municipalities have a value in 2024.",
+   "Self-employed farmers and unpaid family workers are not counted, and BLS lists certain farm workers among those not covered, so the figure understates farm work.",
+   "In the 2026-10 snapshot, 2025 is the latest year and is preliminary: BLS can revise it. 21 municipalities have a value in 2025, against 39 in 2024.",
+   "The data do not show how much of the change since 2014 comes from reclassification when BLS moved to a new NAICS edition (with 2017 and 2022 data). See the QCEW method entry.",
+   "In the 2026-10 snapshot, the number of municipalities with a value, by year, is: 2014: 43; 2015: 49; 2016: 44; 2017: 44; 2018: 44; 2019: 45; 2020: 42; 2021: 42; 2022: 44; 2023: 43; 2024: 39; 2025: 21. In 2014, 43 of the 78 municipalities have a value, 32 are withheld and 3 have no row; in 2024 the counts are 39, 37 and 2; in 2025 they are 21, 55 and 2. 60 municipalities have a value in at least one year, and 17 have a value in every year from 2014 to 2025."
+  ],
+  "see_also": [
+   "economy.qcew_private_jobs",
+   "economy.qcew_jobs",
+   "economy.qcew_method",
+   "methods.qcew_suppression",
+   "measures.location_quotient"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:jobs_naics_11"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: show as sized symbols",
+     "href": "index.html#e=jobs_naics_11.s"
+    },
+    {
+     "label": "Map, Analysis tab: shade municipalities by the share of local jobs",
+     "href": "index.html#e=jobs_naics_11.f.shareJobs"
+    }
+   ]
+  },
+  "example": "From the 2026-10 snapshot. Puerto Rico: 11,565 (2014), 7,811 (2024), 7,602 (2025). San Juan: blank (2024)."
+ },
+ {
+  "domain": "economy",
+  "domains": ["economy"],
+  "kind": "variable",
+  "geography": "78 municipalities and Puerto Rico (the island figure is published by the US Bureau of Labor Statistics, not summed from the 78)",
+  "sources": [
+   "bls_qcew"
+  ],
+  "added": "2026-10-03",
+  "id": "economy.jobs_naics_21",
+  "name": "Jobs: Mining and quarrying (NAICS 21)",
+  "group": "Industries",
+  "plain": "Private jobs in quarries and mines in the municipality. It is a very small sector, and in the 2026-10 snapshot almost every municipality shows a blank.",
+  "definition": "Annual-average jobs at private employers located in the municipality, in sector 21 of the North American Industry Classification System (NAICS), mining and quarrying. It includes quarries and pits for crushed stone, sand, gravel and limestone, other mining, and support work for them. The observatory holds only the sector total, so its data do not show which kind of mining or quarrying the jobs are in. The data come from the Quarterly Census of Employment and Wages (QCEW) of the US Bureau of Labor Statistics (BLS). Only wage-and-salary jobs are counted, each at the work site. A blank means that BLS withholds the figure to protect an employer's confidentiality, or publishes no row for the sector there. It does not mean zero.",
+  "unit": "jobs (annual average)",
+  "value_type": "count",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2014,
+   "last": 2024,
+   "frequency": "One value per calendar year, 2014 to 2024. In the 2026-10 snapshot, the observatory has no municipality or island value for 2025."
+  },
+  "method": "Column annual_avg_emplvl of the BLS annual file for each municipality and year, ownership code 5 (private), industry code 21. A row that BLS marks as withheld (disclosure code N) is left blank. A municipality with no row for the sector is also blank (BLS's file layout does not say why a row is absent). The Puerto Rico value is BLS's own island figure, not a sum of the municipalities.",
+  "source_detail": "BLS QCEW open-data API, annual-average area files: https://data.bls.gov/cew/data/api/<year>/a/area/<area>.csv, where <area> is the five-digit FIPS (Federal Information Processing Standards) code of the municipio (72001 Adjuntas, 72003 Aguada, and so on up to 72153 Yauco; 78 codes in all) or 72000 for Puerto Rico. Row: own_code 5, industry_code 21, column annual_avg_emplvl.",
+  "how_to_read": "In the 2026-10 snapshot, the island total is 611 in 2014 and 639 in 2024 (4.6% higher), and blank in 2025. It is 0.1% of island private jobs in 2024. The only municipality with a published value in 2024 is Ponce (26 jobs). That value is 4% of the island figure, so 96% of the island figure is not in the published municipal values (hidden cells, plus a gap that BLS's files do not explain: BLS's island private jobs are 0.5% above the sum of the 78 municipalities in 2024). On the Analysis tab you can also shade it as a share of local jobs or as a location quotient (see the QCEW method entry).",
+  "caveats": [
+   "In the 2026-10 snapshot, almost no municipality has a value (1 of 78 in 2024), so a map of this variable is nearly empty. The island figure is the better guide.",
+   "In the 2026-10 snapshot, the island figure is blank in 2025 and no municipality has a value, so the series ends in 2024. Juana Díaz had the largest visible value in every year from 2014 to 2019 (95 jobs in 2019) and is withheld from 2020; from 2020 only Ponce shows a value.",
+   "In the 2026-10 snapshot, the number of municipalities with a value, by year, is: 2014: 5; 2015: 5; 2016: 2; 2017: 3; 2018: 3; 2019: 3; 2020: 1; 2021: 1; 2022: 1; 2023: 1; 2024: 1. In 2014, 5 of the 78 municipalities have a value, 26 are withheld and 47 have no row; in 2024 the counts are 1, 26 and 51; in 2025 they are 0, 27 and 51. 6 municipalities have a value in at least one year, and 1 has a value in every year from 2014 to 2024. The Puerto Rico value is blank in 2025."
+  ],
+  "see_also": [
+   "economy.qcew_private_jobs",
+   "economy.qcew_jobs",
+   "economy.qcew_method",
+   "methods.qcew_suppression",
+   "measures.location_quotient"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:jobs_naics_21"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: show as sized symbols",
+     "href": "index.html#e=jobs_naics_21.s"
+    },
+    {
+     "label": "Map, Analysis tab: shade municipalities by the share of local jobs",
+     "href": "index.html#e=jobs_naics_21.f.shareJobs"
+    }
+   ]
+  },
+  "example": "From the 2026-10 snapshot. Puerto Rico: 611 (2014), 639 (2024). San Juan: blank (2024)."
+ },
+ {
+  "domain": "economy",
+  "domains": ["economy"],
+  "kind": "variable",
+  "geography": "78 municipalities and Puerto Rico (the island figure is published by the US Bureau of Labor Statistics, not summed from the 78)",
+  "sources": [
+   "bls_qcew"
+  ],
+  "added": "2026-10-03",
+  "id": "economy.jobs_naics_22",
+  "name": "Jobs: Utilities (NAICS 22)",
+  "group": "Industries",
+  "plain": "Private jobs in power, gas, water and sewer services in the municipality. Utilities owned by government are counted as government jobs.",
+  "definition": "Annual-average jobs at private employers located in the municipality, in sector 22 of the North American Industry Classification System (NAICS), utilities. It includes electric power generation, transmission and distribution, natural gas distribution, and water, sewer and steam systems, when the employer is private. The data come from the Quarterly Census of Employment and Wages (QCEW) of the US Bureau of Labor Statistics (BLS). Only wage-and-salary jobs are counted, each at the work site. A blank means that BLS withholds the figure to protect an employer's confidentiality, or publishes no row for the sector there. It does not mean zero.",
+  "unit": "jobs (annual average)",
+  "value_type": "count",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2014,
+   "last": 2025,
+   "frequency": "One value per calendar year. When the observatory's data are rebuilt, it checks whether BLS has published a newer year. In the 2026-10 snapshot, 2025 is the latest year and is preliminary."
+  },
+  "method": "Column annual_avg_emplvl of the BLS annual file for each municipality and year, ownership code 5 (private), industry code 22. A row that BLS marks as withheld (disclosure code N) is left blank. A municipality with no row for the sector is also blank (BLS's file layout does not say why a row is absent). The Puerto Rico value is BLS's own island figure, not a sum of the municipalities.",
+  "source_detail": "BLS QCEW open-data API, annual-average area files: https://data.bls.gov/cew/data/api/<year>/a/area/<area>.csv, where <area> is the five-digit FIPS (Federal Information Processing Standards) code of the municipio (72001 Adjuntas, 72003 Aguada, and so on up to 72153 Yauco; 78 codes in all) or 72000 for Puerto Rico. Row: own_code 5, industry_code 22, column annual_avg_emplvl.",
+  "how_to_read": "In the 2026-10 snapshot, the island total is 308 in 2014 and 3,261 in 2024, and blank in 2025. It is 0.4% of island private jobs in 2024. The largest published municipal values in 2024 are San Juan (312), Caguas (300), Yabucoa (8). The published municipal values add up to 19% of the island figure in 2024, so 81% of the island figure is not in them (hidden cells, plus a gap that BLS's files do not explain: BLS's island private jobs are 0.5% above the sum of the 78 municipalities in 2024). On the Analysis tab you can also shade it as a share of local jobs or as a location quotient (see the QCEW method entry).",
+  "caveats": [
+   "In the 2026-10 snapshot, almost no municipality has a value (3 of 78 in 2024), so a map of this variable is nearly empty. The island figure is the better guide.",
+   "In the 2026-10 snapshot, the island total rises from 360 (2019) to 1,476 (2021) and 3,261 (2024). Do not read this rise as hiring. BLS classifies each job by the ownership of the employer, so government-owned utilities are counted as government jobs, not here, and the rise can reflect a change in who operates a service. The data cannot show which.",
+   "In the 2026-10 snapshot, the island figure is blank in 2025 although municipal values are published (3 in 2025), so that year cannot be checked against an island total, and the Analysis tab cannot show the share of the island total or the location quotient for it.",
+   "In the 2026-10 snapshot, 2025 is the latest year and is preliminary: BLS can revise it. The number of municipalities with a value is the same in 2025 as in 2024 (3).",
+   "The data do not show how much of the change since 2014 comes from reclassification when BLS moved to a new NAICS edition (with 2017 and 2022 data). See the QCEW method entry.",
+   "In the 2026-10 snapshot, the number of municipalities with a value, by year, is: 2014: 1; 2015: 1; 2016: 1; 2017: 1; 2018: 1; 2019: 2; 2020: 2; 2021: 4; 2022: 3; 2023: 4; 2024: 3; 2025: 3. In 2014, 1 of the 78 municipalities has a value, 19 are withheld and 58 have no row; in 2024 the counts are 3, 38 and 37; in 2025 they are 3, 41 and 34. 6 municipalities have a value in at least one year, and 1 has a value in every year from 2014 to 2025. The Puerto Rico value is blank in 2025."
+  ],
+  "see_also": [
+   "economy.qcew_private_jobs",
+   "economy.qcew_jobs",
+   "economy.qcew_method",
+   "economy.qcew_gov_jobs",
+   "methods.qcew_suppression",
+   "measures.location_quotient"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:jobs_naics_22"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: show as sized symbols",
+     "href": "index.html#e=jobs_naics_22.s"
+    },
+    {
+     "label": "Map, Analysis tab: shade municipalities by the share of local jobs",
+     "href": "index.html#e=jobs_naics_22.f.shareJobs"
+    }
+   ]
+  },
+  "example": "From the 2026-10 snapshot. Puerto Rico: 308 (2014), 3,261 (2024). San Juan: 312 (2024)."
+ },
+ {
+  "domain": "economy",
+  "domains": ["economy"],
+  "kind": "variable",
+  "geography": "78 municipalities and Puerto Rico (the island figure is published by the US Bureau of Labor Statistics, not summed from the 78)",
+  "sources": [
+   "bls_qcew"
+  ],
+  "added": "2026-10-03",
+  "id": "economy.jobs_naics_23",
+  "name": "Jobs: Construction (NAICS 23)",
+  "group": "Industries",
+  "plain": "Private jobs in building houses, roads and other works, and in the building trades. Self-employed builders and informal work are not counted.",
+  "definition": "Annual-average jobs at private employers located in the municipality, in sector 23 of the North American Industry Classification System (NAICS), construction. It includes builders of houses and commercial buildings, firms that build roads, bridges, pipelines and power lines, and the building trades: electricians, plumbers, roofers, concrete and painting contractors. The data come from the Quarterly Census of Employment and Wages (QCEW) of the US Bureau of Labor Statistics (BLS). Only wage-and-salary jobs are counted, each at the work site. A blank means that BLS withholds the figure to protect an employer's confidentiality, or publishes no row for the sector there. It does not mean zero.",
+  "unit": "jobs (annual average)",
+  "value_type": "count",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2014,
+   "last": 2025,
+   "frequency": "One value per calendar year. When the observatory's data are rebuilt, it checks whether BLS has published a newer year. In the 2026-10 snapshot, 2025 is the latest year and is preliminary."
+  },
+  "method": "Column annual_avg_emplvl of the BLS annual file for each municipality and year, ownership code 5 (private), industry code 23. A row that BLS marks as withheld (disclosure code N) is left blank. A municipality with no row for the sector is also blank (BLS's file layout does not say why a row is absent). The Puerto Rico value is BLS's own island figure, not a sum of the municipalities.",
+  "source_detail": "BLS QCEW open-data API, annual-average area files: https://data.bls.gov/cew/data/api/<year>/a/area/<area>.csv, where <area> is the five-digit FIPS (Federal Information Processing Standards) code of the municipio (72001 Adjuntas, 72003 Aguada, and so on up to 72153 Yauco; 78 codes in all) or 72000 for Puerto Rico. Row: own_code 5, industry_code 23, column annual_avg_emplvl.",
+  "how_to_read": "In the 2026-10 snapshot, the island total is 26,793 in 2014 and 37,207 in 2024 (38.9% higher), and blank in 2025. It is 5.0% of island private jobs in 2024. The largest published municipal values in 2024 are San Juan (10,959), Guaynabo (3,154), Caguas (2,376). The published municipal values add up to 95% of the island figure in 2024, so 5% of the island figure is not in them (hidden cells, plus a gap that BLS's files do not explain: BLS's island private jobs are 0.5% above the sum of the 78 municipalities in 2024). On the Analysis tab you can also shade it as a share of local jobs or as a location quotient (see the QCEW method entry).",
+  "caveats": [
+   "Self-employed builders and informal repair work are not counted, so construction work is understated.",
+   "In the 2026-10 snapshot, the island figure is blank in 2025 although municipal values are published (46 in 2025), so that year cannot be checked against an island total, and the Analysis tab cannot show the share of the island total or the location quotient for it.",
+   "In the 2026-10 snapshot, 2025 is the latest year and is preliminary: BLS can revise it. 46 municipalities have a value in 2025, against 62 in 2024.",
+   "In the 2026-10 snapshot, the number of municipalities with a value, by year, is: 2014: 65; 2015: 65; 2016: 65; 2017: 59; 2018: 63; 2019: 62; 2020: 66; 2021: 65; 2022: 69; 2023: 67; 2024: 62; 2025: 46. In 2014, 65 of the 78 municipalities have a value, 13 are withheld and 0 have no row; in 2024 the counts are 62, 16 and 0; in 2025 they are 46, 32 and 0. 73 municipalities have a value in at least one year, and 37 have a value in every year from 2014 to 2025. The Puerto Rico value is blank in 2025."
+  ],
+  "see_also": [
+   "economy.qcew_private_jobs",
+   "economy.qcew_jobs",
+   "economy.qcew_method",
+   "methods.qcew_suppression",
+   "measures.location_quotient"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:jobs_naics_23"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: show as sized symbols",
+     "href": "index.html#e=jobs_naics_23.s"
+    },
+    {
+     "label": "Map, Analysis tab: shade municipalities by the share of local jobs",
+     "href": "index.html#e=jobs_naics_23.f.shareJobs"
+    }
+   ]
+  },
+  "example": "From the 2026-10 snapshot. Puerto Rico: 26,793 (2014), 37,207 (2024). San Juan: 10,959 (2024)."
+ },
+ {
+  "domain": "economy",
+  "domains": ["economy"],
+  "kind": "variable",
+  "geography": "78 municipalities and Puerto Rico (the island figure is published by the US Bureau of Labor Statistics, not summed from the 78)",
+  "sources": [
+   "bls_qcew"
+  ],
+  "added": "2026-10-03",
+  "id": "economy.jobs_naics_31_33",
+  "name": "Jobs: Manufacturing (NAICS 31-33)",
+  "group": "Industries",
+  "plain": "Private jobs in factories in the municipality. The sector covers plants that make medicines, medical devices, food and clothing, among many other goods.",
+  "definition": "Annual-average jobs at private employers located in the municipality, in sector 31-33 of the North American Industry Classification System (NAICS), manufacturing. It includes plants that make medicines and medical devices, electronics and electrical equipment, food and beverages (dairy, bakery, rum and soft drinks), clothing, plastics, chemicals, metal products, machinery and aerospace parts. The data come from the Quarterly Census of Employment and Wages (QCEW) of the US Bureau of Labor Statistics (BLS). Only wage-and-salary jobs are counted, each at the work site. A blank means that BLS withholds the figure to protect an employer's confidentiality, or publishes no row for the sector there. It does not mean zero.",
+  "unit": "jobs (annual average)",
+  "value_type": "count",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2014,
+   "last": 2025,
+   "frequency": "One value per calendar year. When the observatory's data are rebuilt, it checks whether BLS has published a newer year. In the 2026-10 snapshot, 2025 is the latest year and is preliminary."
+  },
+  "method": "Column annual_avg_emplvl of the BLS annual file for each municipality and year, ownership code 5 (private), industry code 31-33. A row that BLS marks as withheld (disclosure code N) is left blank. A municipality with no row for the sector is also blank (BLS's file layout does not say why a row is absent). The Puerto Rico value is BLS's own island figure, not a sum of the municipalities.",
+  "source_detail": "BLS QCEW open-data API, annual-average area files: https://data.bls.gov/cew/data/api/<year>/a/area/<area>.csv, where <area> is the five-digit FIPS (Federal Information Processing Standards) code of the municipio (72001 Adjuntas, 72003 Aguada, and so on up to 72153 Yauco; 78 codes in all) or 72000 for Puerto Rico. Row: own_code 5, industry_code 31-33, column annual_avg_emplvl.",
+  "how_to_read": "In the 2026-10 snapshot, the island total is 74,418 in 2014 and 82,629 in 2024 (11.0% higher), and 80,188 in 2025. It is 11.0% of island private jobs in 2024. The largest published municipal values in 2024 are San Juan (4,244), Juncos (4,211), Arecibo (3,614). The published municipal values add up to 91% of the island figure in 2024, so 9% of the island figure is not in them (hidden cells, plus a gap that BLS's files do not explain: BLS's island private jobs are 0.5% above the sum of the 78 municipalities in 2024). On the Analysis tab you can also shade it as a share of local jobs or as a location quotient (see the QCEW method entry).",
+  "caveats": [
+   "In the 2026-10 snapshot, BLS hides more manufacturing cells in 2025 (24 municipalities) than in any earlier year (between 6 and 14 from 2014 to 2024), so the 2025 map has fewer values.",
+   "In the 2026-10 snapshot, 2025 is the latest year and is preliminary: BLS can revise it. 54 municipalities have a value in 2025, against 67 in 2024.",
+   "In the 2026-10 snapshot, the number of municipalities with a value, by year, is: 2014: 69; 2015: 69; 2016: 68; 2017: 64; 2018: 67; 2019: 66; 2020: 69; 2021: 70; 2022: 70; 2023: 70; 2024: 67; 2025: 54. In 2014, 69 of the 78 municipalities have a value, 8 are withheld and 1 has no row; in 2024 the counts are 67, 10 and 1; in 2025 they are 54, 24 and 0. 73 municipalities have a value in at least one year, and 50 have a value in every year from 2014 to 2025."
+  ],
+  "see_also": [
+   "economy.qcew_private_jobs",
+   "economy.qcew_jobs",
+   "economy.qcew_method",
+   "methods.qcew_suppression",
+   "measures.location_quotient"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:jobs_naics_31_33"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: show as sized symbols",
+     "href": "index.html#e=jobs_naics_31_33.s"
+    },
+    {
+     "label": "Map, Analysis tab: shade municipalities by the share of local jobs",
+     "href": "index.html#e=jobs_naics_31_33.f.shareJobs"
+    }
+   ]
+  },
+  "example": "From the 2026-10 snapshot. Puerto Rico: 74,418 (2014), 82,629 (2024), 80,188 (2025). San Juan: 4,244 (2024)."
+ },
+ {
+  "domain": "economy",
+  "domains": ["economy"],
+  "kind": "variable",
+  "geography": "78 municipalities and Puerto Rico (the island figure is published by the US Bureau of Labor Statistics, not summed from the 78)",
+  "sources": [
+   "bls_qcew"
+  ],
+  "added": "2026-10-03",
+  "id": "economy.jobs_naics_42",
+  "name": "Jobs: Wholesale trade (NAICS 42)",
+  "group": "Industries",
+  "plain": "Private jobs at companies that sell goods to other businesses, such as food and drug distributors. They do not sell to the public.",
+  "definition": "Annual-average jobs at private employers located in the municipality, in sector 42 of the North American Industry Classification System (NAICS), wholesale trade. It includes distributors of groceries, beverages, medicines and medical supplies, vehicles and parts, machinery, fuel and building materials, and agents who sell for other companies. They sell to businesses, not to the public. The data come from the Quarterly Census of Employment and Wages (QCEW) of the US Bureau of Labor Statistics (BLS). Only wage-and-salary jobs are counted, each at the work site. A blank means that BLS withholds the figure to protect an employer's confidentiality, or publishes no row for the sector there. It does not mean zero.",
+  "unit": "jobs (annual average)",
+  "value_type": "count",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2014,
+   "last": 2025,
+   "frequency": "One value per calendar year. When the observatory's data are rebuilt, it checks whether BLS has published a newer year. In the 2026-10 snapshot, 2025 is the latest year and is preliminary."
+  },
+  "method": "Column annual_avg_emplvl of the BLS annual file for each municipality and year, ownership code 5 (private), industry code 42. A row that BLS marks as withheld (disclosure code N) is left blank. A municipality with no row for the sector is also blank (BLS's file layout does not say why a row is absent). The Puerto Rico value is BLS's own island figure, not a sum of the municipalities.",
+  "source_detail": "BLS QCEW open-data API, annual-average area files: https://data.bls.gov/cew/data/api/<year>/a/area/<area>.csv, where <area> is the five-digit FIPS (Federal Information Processing Standards) code of the municipio (72001 Adjuntas, 72003 Aguada, and so on up to 72153 Yauco; 78 codes in all) or 72000 for Puerto Rico. Row: own_code 5, industry_code 42, column annual_avg_emplvl.",
+  "how_to_read": "In the 2026-10 snapshot, the island total is 31,474 in 2014 and 33,577 in 2024 (6.7% higher), and 33,486 in 2025. It is 4.5% of island private jobs in 2024. The largest published municipal values in 2024 are San Juan (7,229), Guaynabo (5,328), Bayamón (4,930). The published municipal values add up to 87% of the island figure in 2024, so 13% of the island figure is not in them (hidden cells, plus a gap that BLS's files do not explain: BLS's island private jobs are 0.5% above the sum of the 78 municipalities in 2024). On the Analysis tab you can also shade it as a share of local jobs or as a location quotient (see the QCEW method entry).",
+  "caveats": [
+   "A map of this variable mostly shows where BLS publishes the figure, not only where the jobs are. In the 2026-10 snapshot, 44 of the 78 municipalities have a value in 2024.",
+   "Wholesale is concentrated: in the 2026-10 snapshot, San Juan, Guaynabo and Bayamón hold 52% of island wholesale jobs in 2024.",
+   "In the 2026-10 snapshot, 2025 is the latest year and is preliminary: BLS can revise it. 42 municipalities have a value in 2025, against 44 in 2024.",
+   "In the 2026-10 snapshot, the number of municipalities with a value, by year, is: 2014: 45; 2015: 44; 2016: 45; 2017: 44; 2018: 42; 2019: 50; 2020: 46; 2021: 50; 2022: 45; 2023: 49; 2024: 44; 2025: 42. In 2014, 45 of the 78 municipalities have a value, 31 are withheld and 2 have no row; in 2024 the counts are 44, 30 and 4; in 2025 they are 42, 32 and 4. 63 municipalities have a value in at least one year, and 17 have a value in every year from 2014 to 2025."
+  ],
+  "see_also": [
+   "economy.qcew_private_jobs",
+   "economy.qcew_jobs",
+   "economy.qcew_method",
+   "methods.qcew_suppression",
+   "measures.location_quotient"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:jobs_naics_42"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: show as sized symbols",
+     "href": "index.html#e=jobs_naics_42.s"
+    },
+    {
+     "label": "Map, Analysis tab: shade municipalities by the share of local jobs",
+     "href": "index.html#e=jobs_naics_42.f.shareJobs"
+    }
+   ]
+  },
+  "example": "From the 2026-10 snapshot. Puerto Rico: 31,474 (2014), 33,577 (2024), 33,486 (2025). San Juan: 7,229 (2024)."
+ },
+ {
+  "domain": "economy",
+  "domains": ["economy"],
+  "kind": "variable",
+  "geography": "78 municipalities and Puerto Rico (the island figure is published by the US Bureau of Labor Statistics, not summed from the 78)",
+  "sources": [
+   "bls_qcew"
+  ],
+  "added": "2026-10-03",
+  "id": "economy.jobs_naics_44_45",
+  "name": "Jobs: Retail trade (NAICS 44-45)",
+  "group": "Industries",
+  "plain": "Private jobs in stores that sell to the public, such as supermarkets, pharmacies and car dealers. In the 2026-10 snapshot, it is the largest private sector on the island.",
+  "definition": "Annual-average jobs at private employers located in the municipality, in sector 44-45 of the North American Industry Classification System (NAICS), retail trade. It includes supermarkets and grocery stores, department and discount stores, pharmacies, car and parts dealers, gas stations, hardware, clothing and furniture stores. Restaurants are not in this sector. The data come from the Quarterly Census of Employment and Wages (QCEW) of the US Bureau of Labor Statistics (BLS). Only wage-and-salary jobs are counted, each at the work site. A blank means that BLS withholds the figure to protect an employer's confidentiality, or publishes no row for the sector there. It does not mean zero.",
+  "unit": "jobs (annual average)",
+  "value_type": "count",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2014,
+   "last": 2025,
+   "frequency": "One value per calendar year. When the observatory's data are rebuilt, it checks whether BLS has published a newer year. In the 2026-10 snapshot, 2025 is the latest year and is preliminary."
+  },
+  "method": "Column annual_avg_emplvl of the BLS annual file for each municipality and year, ownership code 5 (private), industry code 44-45. A row that BLS marks as withheld (disclosure code N) is left blank. A municipality with no row for the sector is also blank (BLS's file layout does not say why a row is absent). The Puerto Rico value is BLS's own island figure, not a sum of the municipalities.",
+  "source_detail": "BLS QCEW open-data API, annual-average area files: https://data.bls.gov/cew/data/api/<year>/a/area/<area>.csv, where <area> is the five-digit FIPS (Federal Information Processing Standards) code of the municipio (72001 Adjuntas, 72003 Aguada, and so on up to 72153 Yauco; 78 codes in all) or 72000 for Puerto Rico. Row: own_code 5, industry_code 44-45, column annual_avg_emplvl.",
+  "how_to_read": "In the 2026-10 snapshot, the island total is 130,221 in 2014 and 132,479 in 2024 (1.7% higher), and 133,168 in 2025. It is 17.6% of island private jobs in 2024. The largest published municipal values in 2024 are San Juan (22,680), Bayamón (10,657), Carolina (8,549). The published municipal values add up to 99% of the island figure in 2024, so 1% of the island figure is not in them (hidden cells, plus a gap that BLS's files do not explain: BLS's island private jobs are 0.5% above the sum of the 78 municipalities in 2024). On the Analysis tab you can also shade it as a share of local jobs or as a location quotient (see the QCEW method entry).",
+  "caveats": [
+   "In the 2026-10 snapshot, retail is the least hidden sector: between 2 and 6 municipalities are withheld each year from 2014 to 2025, and every municipality has a row.",
+   "In the 2026-10 snapshot, 2025 is the latest year and is preliminary: BLS can revise it. 72 municipalities have a value in 2025, against 75 in 2024.",
+   "In the 2026-10 snapshot, the number of municipalities with a value, by year, is: 2014: 73; 2015: 73; 2016: 74; 2017: 74; 2018: 75; 2019: 76; 2020: 72; 2021: 76; 2022: 76; 2023: 76; 2024: 75; 2025: 72. In 2014, 73 of the 78 municipalities have a value, 5 are withheld and 0 have no row; in 2024 the counts are 75, 3 and 0; in 2025 they are 72, 6 and 0. 78 municipalities have a value in at least one year, and 66 have a value in every year from 2014 to 2025."
+  ],
+  "see_also": [
+   "economy.qcew_private_jobs",
+   "economy.qcew_jobs",
+   "economy.qcew_method",
+   "methods.qcew_suppression",
+   "measures.location_quotient"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:jobs_naics_44_45"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: show as sized symbols",
+     "href": "index.html#e=jobs_naics_44_45.s"
+    },
+    {
+     "label": "Map, Analysis tab: shade municipalities by the share of local jobs",
+     "href": "index.html#e=jobs_naics_44_45.f.shareJobs"
+    }
+   ]
+  },
+  "example": "From the 2026-10 snapshot. Puerto Rico: 130,221 (2014), 132,479 (2024), 133,168 (2025). San Juan: 22,680 (2024)."
+ },
+ {
+  "domain": "economy",
+  "domains": ["economy"],
+  "kind": "variable",
+  "geography": "78 municipalities and Puerto Rico (the island figure is published by the US Bureau of Labor Statistics, not summed from the 78)",
+  "sources": [
+   "bls_qcew"
+  ],
+  "added": "2026-10-03",
+  "id": "economy.jobs_naics_48_49",
+  "name": "Jobs: Transportation and warehousing (NAICS 48-49)",
+  "group": "Industries",
+  "plain": "Private jobs in moving people and goods, and in storage. Examples are airlines, trucking, delivery, ports and warehouses.",
+  "definition": "Annual-average jobs at private employers located in the municipality, in sector 48-49 of the North American Industry Classification System (NAICS), transportation and warehousing. It includes airlines and airport services, trucking, couriers and delivery, port and marine cargo services, pipelines, taxi and limousine firms, school and charter bus companies, and warehouses and storage. Public transit run directly by a government agency is counted as government; the same service run by a private contractor is counted here. The data come from the Quarterly Census of Employment and Wages (QCEW) of the US Bureau of Labor Statistics (BLS). Only wage-and-salary jobs are counted, each at the work site. A blank means that BLS withholds the figure to protect an employer's confidentiality, or publishes no row for the sector there. It does not mean zero.",
+  "unit": "jobs (annual average)",
+  "value_type": "count",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2014,
+   "last": 2025,
+   "frequency": "One value per calendar year. When the observatory's data are rebuilt, it checks whether BLS has published a newer year. In the 2026-10 snapshot, 2025 is the latest year and is preliminary."
+  },
+  "method": "Column annual_avg_emplvl of the BLS annual file for each municipality and year, ownership code 5 (private), industry code 48-49. A row that BLS marks as withheld (disclosure code N) is left blank. A municipality with no row for the sector is also blank (BLS's file layout does not say why a row is absent). The Puerto Rico value is BLS's own island figure, not a sum of the municipalities.",
+  "source_detail": "BLS QCEW open-data API, annual-average area files: https://data.bls.gov/cew/data/api/<year>/a/area/<area>.csv, where <area> is the five-digit FIPS (Federal Information Processing Standards) code of the municipio (72001 Adjuntas, 72003 Aguada, and so on up to 72153 Yauco; 78 codes in all) or 72000 for Puerto Rico. Row: own_code 5, industry_code 48-49, column annual_avg_emplvl.",
+  "how_to_read": "In the 2026-10 snapshot, the island total is 14,605 in 2014 and 20,708 in 2024 (41.8% higher), and blank in 2025. It is 2.8% of island private jobs in 2024. The largest published municipal values in 2024 are Carolina (5,038), San Juan (5,015), Cataño (1,124). The published municipal values add up to 72% of the island figure in 2024, so 28% of the island figure is not in them (hidden cells, plus a gap that BLS's files do not explain: BLS's island private jobs are 0.5% above the sum of the 78 municipalities in 2024). On the Analysis tab you can also shade it as a share of local jobs or as a location quotient (see the QCEW method entry).",
+  "caveats": [
+   "A map of this variable mostly shows where BLS publishes the figure, not only where the jobs are. In the 2026-10 snapshot, 30 of the 78 municipalities have a value in 2024.",
+   "Public transit run directly by a government agency is counted in government jobs, as BLS classifies jobs by the ownership of the employer. Jobs at private contractors that run transit are here, mixed with airlines and trucking; the data do not separate them.",
+   "In the 2026-10 snapshot, the island figure is blank in 2025 although municipal values are published (30 in 2025), so that year cannot be checked against an island total, and the Analysis tab cannot show the share of the island total or the location quotient for it.",
+   "In the 2026-10 snapshot, 2025 is the latest year and is preliminary: BLS can revise it. The number of municipalities with a value is the same in 2025 as in 2024 (30).",
+   "The data do not show how much of the change since 2014 comes from reclassification when BLS moved to a new NAICS edition (with 2017 and 2022 data). See the QCEW method entry.",
+   "In the 2026-10 snapshot, the number of municipalities with a value, by year, is: 2014: 39; 2015: 38; 2016: 39; 2017: 38; 2018: 42; 2019: 50; 2020: 39; 2021: 33; 2022: 35; 2023: 34; 2024: 30; 2025: 30. In 2014, 39 of the 78 municipalities have a value, 34 are withheld and 5 have no row; in 2024 the counts are 30, 46 and 2; in 2025 they are 30, 46 and 2. 64 municipalities have a value in at least one year, and 10 have a value in every year from 2014 to 2025. The Puerto Rico value is blank in 2025."
+  ],
+  "see_also": [
+   "economy.qcew_private_jobs",
+   "economy.qcew_jobs",
+   "economy.qcew_method",
+   "economy.qcew_gov_jobs",
+   "methods.qcew_suppression",
+   "measures.location_quotient"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:jobs_naics_48_49"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: show as sized symbols",
+     "href": "index.html#e=jobs_naics_48_49.s"
+    },
+    {
+     "label": "Map, Analysis tab: shade municipalities by the share of local jobs",
+     "href": "index.html#e=jobs_naics_48_49.f.shareJobs"
+    }
+   ]
+  },
+  "example": "From the 2026-10 snapshot. Puerto Rico: 14,605 (2014), 20,708 (2024). San Juan: 5,015 (2024)."
+ },
+ {
+  "domain": "economy",
+  "domains": ["economy"],
+  "kind": "variable",
+  "geography": "78 municipalities and Puerto Rico (the island figure is published by the US Bureau of Labor Statistics, not summed from the 78)",
+  "sources": [
+   "bls_qcew"
+  ],
+  "added": "2026-10-03",
+  "id": "economy.jobs_naics_51",
+  "name": "Jobs: Information (NAICS 51)",
+  "group": "Industries",
+  "plain": "Private jobs in newspapers, radio, television, phone and internet companies, and data hosting.",
+  "definition": "Annual-average jobs at private employers located in the municipality, in sector 51 of the North American Industry Classification System (NAICS), information. It includes newspaper, book and software publishers, film and sound studios, radio and television stations, telephone, cable and internet providers, data hosting and processing, and news services. The data come from the Quarterly Census of Employment and Wages (QCEW) of the US Bureau of Labor Statistics (BLS). Only wage-and-salary jobs are counted, each at the work site. A blank means that BLS withholds the figure to protect an employer's confidentiality, or publishes no row for the sector there. It does not mean zero.",
+  "unit": "jobs (annual average)",
+  "value_type": "count",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2014,
+   "last": 2025,
+   "frequency": "One value per calendar year. When the observatory's data are rebuilt, it checks whether BLS has published a newer year. In the 2026-10 snapshot, 2025 is the latest year and is preliminary."
+  },
+  "method": "Column annual_avg_emplvl of the BLS annual file for each municipality and year, ownership code 5 (private), industry code 51. A row that BLS marks as withheld (disclosure code N) is left blank. A municipality with no row for the sector is also blank (BLS's file layout does not say why a row is absent). The Puerto Rico value is BLS's own island figure, not a sum of the municipalities.",
+  "source_detail": "BLS QCEW open-data API, annual-average area files: https://data.bls.gov/cew/data/api/<year>/a/area/<area>.csv, where <area> is the five-digit FIPS (Federal Information Processing Standards) code of the municipio (72001 Adjuntas, 72003 Aguada, and so on up to 72153 Yauco; 78 codes in all) or 72000 for Puerto Rico. Row: own_code 5, industry_code 51, column annual_avg_emplvl.",
+  "how_to_read": "In the 2026-10 snapshot, the island total is 20,014 in 2014 and 13,897 in 2024 (30.6% lower), and blank in 2025. It is 1.8% of island private jobs in 2024. The largest published municipal values in 2024 are Guaynabo (3,209), Bayamón (467), Caguas (429). The published municipal values add up to 49% of the island figure in 2024, so 51% of the island figure is not in them (hidden cells, plus a gap that BLS's files do not explain: BLS's island private jobs are 0.5% above the sum of the 78 municipalities in 2024). San Juan's value is withheld in 2023, 2024 and 2025. Its last published value was 6,221 jobs in 2022, against 3,560 for Guaynabo that year, so the ranking leaves out San Juan. On the Analysis tab you can also shade it as a share of local jobs or as a location quotient (see the QCEW method entry).",
+  "caveats": [
+   "A map of this variable mostly shows where BLS publishes the figure, not only where the jobs are. In the 2026-10 snapshot, 33 of the 78 municipalities have a value in 2024.",
+   "In the 2026-10 snapshot, the island total fell 30.6% from 2014 to 2024, the second-largest fall of the 19 sectors after agriculture. The data do not show which industries inside the sector lost the jobs.",
+   "In the 2026-10 snapshot, the island figure is blank in 2022 and 2025 although municipal values are published (38 in 2022, 18 in 2025), so those years cannot be checked against an island total, and the Analysis tab cannot show the share of the island total or the location quotient for them.",
+   "In the 2026-10 snapshot, 2025 is the latest year and is preliminary: BLS can revise it. 18 municipalities have a value in 2025, against 33 in 2024.",
+   "The data do not show how much of the change since 2014 comes from reclassification when BLS moved to a new NAICS edition (with 2017 and 2022 data). See the QCEW method entry.",
+   "In the 2026-10 snapshot, the number of municipalities with a value, by year, is: 2014: 35; 2015: 34; 2016: 32; 2017: 30; 2018: 30; 2019: 32; 2020: 33; 2021: 31; 2022: 38; 2023: 38; 2024: 33; 2025: 18. In 2014, 35 of the 78 municipalities have a value, 32 are withheld and 11 have no row; in 2024 the counts are 33, 31 and 14; in 2025 they are 18, 45 and 15. 42 municipalities have a value in at least one year, and 8 have a value in every year from 2014 to 2025. The Puerto Rico value is blank in 2022 and 2025."
+  ],
+  "see_also": [
+   "economy.qcew_private_jobs",
+   "economy.qcew_jobs",
+   "economy.qcew_method",
+   "methods.qcew_suppression",
+   "measures.location_quotient"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:jobs_naics_51"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: show as sized symbols",
+     "href": "index.html#e=jobs_naics_51.s"
+    },
+    {
+     "label": "Map, Analysis tab: shade municipalities by the share of local jobs",
+     "href": "index.html#e=jobs_naics_51.f.shareJobs"
+    }
+   ]
+  },
+  "example": "From the 2026-10 snapshot. Puerto Rico: 20,014 (2014), 13,897 (2024). San Juan: blank (2024)."
+ },
+ {
+  "domain": "economy",
+  "domains": ["economy"],
+  "kind": "variable",
+  "geography": "78 municipalities and Puerto Rico (the island figure is published by the US Bureau of Labor Statistics, not summed from the 78)",
+  "sources": [
+   "bls_qcew"
+  ],
+  "added": "2026-10-03",
+  "id": "economy.jobs_naics_52",
+  "name": "Jobs: Finance and insurance (NAICS 52)",
+  "group": "Industries",
+  "plain": "Private jobs at banks, credit unions, insurers and lenders in the municipality.",
+  "definition": "Annual-average jobs at private employers located in the municipality, in sector 52 of the North American Industry Classification System (NAICS), finance and insurance. It includes commercial banks, credit unions and cooperatives, mortgage and consumer lenders, securities and investment firms, and insurance carriers, agents and brokers. The data come from the Quarterly Census of Employment and Wages (QCEW) of the US Bureau of Labor Statistics (BLS). Only wage-and-salary jobs are counted, each at the work site. A blank means that BLS withholds the figure to protect an employer's confidentiality, or publishes no row for the sector there. It does not mean zero.",
+  "unit": "jobs (annual average)",
+  "value_type": "count",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2014,
+   "last": 2025,
+   "frequency": "One value per calendar year. When the observatory's data are rebuilt, it checks whether BLS has published a newer year. In the 2026-10 snapshot, 2025 is the latest year and is preliminary."
+  },
+  "method": "Column annual_avg_emplvl of the BLS annual file for each municipality and year, ownership code 5 (private), industry code 52. A row that BLS marks as withheld (disclosure code N) is left blank. A municipality with no row for the sector is also blank (BLS's file layout does not say why a row is absent). The Puerto Rico value is BLS's own island figure, not a sum of the municipalities.",
+  "source_detail": "BLS QCEW open-data API, annual-average area files: https://data.bls.gov/cew/data/api/<year>/a/area/<area>.csv, where <area> is the five-digit FIPS (Federal Information Processing Standards) code of the municipio (72001 Adjuntas, 72003 Aguada, and so on up to 72153 Yauco; 78 codes in all) or 72000 for Puerto Rico. Row: own_code 5, industry_code 52, column annual_avg_emplvl.",
+  "how_to_read": "In the 2026-10 snapshot, the island total is 30,337 in 2014 and 33,757 in 2024 (11.3% higher), and 34,060 in 2025. It is 4.5% of island private jobs in 2024. The largest published municipal values in 2024 are San Juan (15,883), Guaynabo (5,750), Caguas (855). The published municipal values add up to 95% of the island figure in 2024, so 5% of the island figure is not in them (hidden cells, plus a gap that BLS's files do not explain: BLS's island private jobs are 0.5% above the sum of the 78 municipalities in 2024). On the Analysis tab you can also shade it as a share of local jobs or as a location quotient (see the QCEW method entry).",
+  "caveats": [
+   "In the 2026-10 snapshot, the number of municipalities with a value rose from 49 in 2019 to 64 in 2024 while the number withheld fell from 29 to 14, so part of the change on the map reflects what BLS shows, not only where the jobs are.",
+   "In the 2026-10 snapshot, 2025 is the latest year and is preliminary: BLS can revise it. 59 municipalities have a value in 2025, against 64 in 2024.",
+   "In the 2026-10 snapshot, the number of municipalities with a value, by year, is: 2014: 53; 2015: 47; 2016: 47; 2017: 48; 2018: 49; 2019: 49; 2020: 49; 2021: 51; 2022: 52; 2023: 51; 2024: 64; 2025: 59. In 2014, 53 of the 78 municipalities have a value, 25 are withheld and 0 have no row; in 2024 the counts are 64, 14 and 0; in 2025 they are 59, 19 and 0. 68 municipalities have a value in at least one year, and 35 have a value in every year from 2014 to 2025."
+  ],
+  "see_also": [
+   "economy.qcew_private_jobs",
+   "economy.qcew_jobs",
+   "economy.qcew_method",
+   "methods.qcew_suppression",
+   "measures.location_quotient"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:jobs_naics_52"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: show as sized symbols",
+     "href": "index.html#e=jobs_naics_52.s"
+    },
+    {
+     "label": "Map, Analysis tab: shade municipalities by the share of local jobs",
+     "href": "index.html#e=jobs_naics_52.f.shareJobs"
+    }
+   ]
+  },
+  "example": "From the 2026-10 snapshot. Puerto Rico: 30,337 (2014), 33,757 (2024), 34,060 (2025). San Juan: 15,883 (2024)."
+ },
+ {
+  "domain": "economy",
+  "domains": ["economy"],
+  "kind": "variable",
+  "geography": "78 municipalities and Puerto Rico (the island figure is published by the US Bureau of Labor Statistics, not summed from the 78)",
+  "sources": [
+   "bls_qcew"
+  ],
+  "added": "2026-10-03",
+  "id": "economy.jobs_naics_53",
+  "name": "Jobs: Real estate and rental and leasing (NAICS 53)",
+  "group": "Industries",
+  "plain": "Private jobs in real estate, and in renting out cars, equipment and property. Owners who rent a home and have no employees are not counted.",
+  "definition": "Annual-average jobs at private employers located in the municipality, in sector 53 of the North American Industry Classification System (NAICS), real estate and rental and leasing. It includes real estate agents and brokers, property managers, lessors of homes and offices, self-storage, and rental of cars, equipment and party supplies. A person who rents out a home and has no employees is not counted. The data come from the Quarterly Census of Employment and Wages (QCEW) of the US Bureau of Labor Statistics (BLS). Only wage-and-salary jobs are counted, each at the work site. A blank means that BLS withholds the figure to protect an employer's confidentiality, or publishes no row for the sector there. It does not mean zero.",
+  "unit": "jobs (annual average)",
+  "value_type": "count",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2014,
+   "last": 2025,
+   "frequency": "One value per calendar year. When the observatory's data are rebuilt, it checks whether BLS has published a newer year. In the 2026-10 snapshot, 2025 is the latest year and is preliminary."
+  },
+  "method": "Column annual_avg_emplvl of the BLS annual file for each municipality and year, ownership code 5 (private), industry code 53. A row that BLS marks as withheld (disclosure code N) is left blank. A municipality with no row for the sector is also blank (BLS's file layout does not say why a row is absent). The Puerto Rico value is BLS's own island figure, not a sum of the municipalities.",
+  "source_detail": "BLS QCEW open-data API, annual-average area files: https://data.bls.gov/cew/data/api/<year>/a/area/<area>.csv, where <area> is the five-digit FIPS (Federal Information Processing Standards) code of the municipio (72001 Adjuntas, 72003 Aguada, and so on up to 72153 Yauco; 78 codes in all) or 72000 for Puerto Rico. Row: own_code 5, industry_code 53, column annual_avg_emplvl.",
+  "how_to_read": "In the 2026-10 snapshot, the island total is 12,837 in 2014 and 16,009 in 2024 (24.7% higher), and 16,557 in 2025. It is 2.1% of island private jobs in 2024. The largest published municipal values in 2024 are San Juan (7,381), Ponce (1,497), Carolina (1,134). The published municipal values add up to 97% of the island figure in 2024, so 3% of the island figure is not in them (hidden cells, plus a gap that BLS's files do not explain: BLS's island private jobs are 0.5% above the sum of the 78 municipalities in 2024). On the Analysis tab you can also shade it as a share of local jobs or as a location quotient (see the QCEW method entry).",
+  "caveats": [
+   "A map of this variable mostly shows where BLS publishes the figure, not only where the jobs are. In the 2026-10 snapshot, 57 of the 78 municipalities have a value in 2024.",
+   "In the 2026-10 snapshot, the number of municipalities with a value rose from 49 in 2019 to 57 in 2024 while the number withheld fell from 28 to 20, so part of the change on the map reflects what BLS shows, not only where the jobs are.",
+   "In the 2026-10 snapshot, 2025 is the latest year and is preliminary: BLS can revise it. 55 municipalities have a value in 2025, against 57 in 2024.",
+   "In the 2026-10 snapshot, the number of municipalities with a value, by year, is: 2014: 51; 2015: 46; 2016: 48; 2017: 49; 2018: 49; 2019: 49; 2020: 50; 2021: 53; 2022: 51; 2023: 51; 2024: 57; 2025: 55. In 2014, 51 of the 78 municipalities have a value, 25 are withheld and 2 have no row; in 2024 the counts are 57, 20 and 1; in 2025 they are 55, 22 and 1. 67 municipalities have a value in at least one year, and 31 have a value in every year from 2014 to 2025."
+  ],
+  "see_also": [
+   "economy.qcew_private_jobs",
+   "economy.qcew_jobs",
+   "economy.qcew_method",
+   "methods.qcew_suppression",
+   "measures.location_quotient"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:jobs_naics_53"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: show as sized symbols",
+     "href": "index.html#e=jobs_naics_53.s"
+    },
+    {
+     "label": "Map, Analysis tab: shade municipalities by the share of local jobs",
+     "href": "index.html#e=jobs_naics_53.f.shareJobs"
+    }
+   ]
+  },
+  "example": "From the 2026-10 snapshot. Puerto Rico: 12,837 (2014), 16,009 (2024), 16,557 (2025). San Juan: 7,381 (2024)."
+ },
+ {
+  "domain": "economy",
+  "domains": ["economy"],
+  "kind": "variable",
+  "geography": "78 municipalities and Puerto Rico (the island figure is published by the US Bureau of Labor Statistics, not summed from the 78)",
+  "sources": [
+   "bls_qcew"
+  ],
+  "added": "2026-10-03",
+  "id": "economy.jobs_naics_54",
+  "name": "Jobs: Professional, scientific and technical services (NAICS 54)",
+  "group": "Industries",
+  "plain": "Private jobs in offices of lawyers, accountants, engineers and consultants. It also covers computer services, advertising and research.",
+  "definition": "Annual-average jobs at private employers located in the municipality, in sector 54 of the North American Industry Classification System (NAICS), professional, scientific and technical services. It includes law and accounting offices, engineering and architecture firms, computer programming and systems design, management and technical consulting, scientific research labs, advertising and design, and veterinary and photography services. The data come from the Quarterly Census of Employment and Wages (QCEW) of the US Bureau of Labor Statistics (BLS). Only wage-and-salary jobs are counted, each at the work site. A blank means that BLS withholds the figure to protect an employer's confidentiality, or publishes no row for the sector there. It does not mean zero.",
+  "unit": "jobs (annual average)",
+  "value_type": "count",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2014,
+   "last": 2025,
+   "frequency": "One value per calendar year. When the observatory's data are rebuilt, it checks whether BLS has published a newer year. In the 2026-10 snapshot, 2025 is the latest year and is preliminary."
+  },
+  "method": "Column annual_avg_emplvl of the BLS annual file for each municipality and year, ownership code 5 (private), industry code 54. A row that BLS marks as withheld (disclosure code N) is left blank. A municipality with no row for the sector is also blank (BLS's file layout does not say why a row is absent). The Puerto Rico value is BLS's own island figure, not a sum of the municipalities.",
+  "source_detail": "BLS QCEW open-data API, annual-average area files: https://data.bls.gov/cew/data/api/<year>/a/area/<area>.csv, where <area> is the five-digit FIPS (Federal Information Processing Standards) code of the municipio (72001 Adjuntas, 72003 Aguada, and so on up to 72153 Yauco; 78 codes in all) or 72000 for Puerto Rico. Row: own_code 5, industry_code 54, column annual_avg_emplvl.",
+  "how_to_read": "In the 2026-10 snapshot, the island total is 29,287 in 2014 and 41,904 in 2024 (43.1% higher), and 42,548 in 2025. It is 5.6% of island private jobs in 2024. The largest published municipal values in 2024 are San Juan (18,124), Guaynabo (6,086), Caguas (2,289). The published municipal values add up to 90% of the island figure in 2024, so 10% of the island figure is not in them (hidden cells, plus a gap that BLS's files do not explain: BLS's island private jobs are 0.5% above the sum of the 78 municipalities in 2024). On the Analysis tab you can also shade it as a share of local jobs or as a location quotient (see the QCEW method entry).",
+  "caveats": [
+   "A map of this variable mostly shows where BLS publishes the figure, not only where the jobs are. In the 2026-10 snapshot, 46 of the 78 municipalities have a value in 2024.",
+   "In the 2026-10 snapshot, San Juan and Guaynabo hold 58% of island professional-services jobs in 2024.",
+   "In the 2026-10 snapshot, 2025 is the latest year and is preliminary: BLS can revise it. 43 municipalities have a value in 2025, against 46 in 2024.",
+   "The data do not show how much of the change since 2014 comes from reclassification when BLS moved to a new NAICS edition (with 2017 and 2022 data). See the QCEW method entry.",
+   "In the 2026-10 snapshot, the number of municipalities with a value, by year, is: 2014: 47; 2015: 45; 2016: 48; 2017: 47; 2018: 47; 2019: 46; 2020: 49; 2021: 51; 2022: 49; 2023: 50; 2024: 46; 2025: 43. In 2014, 47 of the 78 municipalities have a value, 31 are withheld and 0 have no row; in 2024 the counts are 46, 31 and 1; in 2025 they are 43, 34 and 1. 68 municipalities have a value in at least one year, and 14 have a value in every year from 2014 to 2025."
+  ],
+  "see_also": [
+   "economy.qcew_private_jobs",
+   "economy.qcew_jobs",
+   "economy.qcew_method",
+   "methods.qcew_suppression",
+   "measures.location_quotient"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:jobs_naics_54"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: show as sized symbols",
+     "href": "index.html#e=jobs_naics_54.s"
+    },
+    {
+     "label": "Map, Analysis tab: shade municipalities by the share of local jobs",
+     "href": "index.html#e=jobs_naics_54.f.shareJobs"
+    }
+   ]
+  },
+  "example": "From the 2026-10 snapshot. Puerto Rico: 29,287 (2014), 41,904 (2024), 42,548 (2025). San Juan: 18,124 (2024)."
+ },
+ {
+  "domain": "economy",
+  "domains": ["economy"],
+  "kind": "variable",
+  "geography": "78 municipalities and Puerto Rico (the island figure is published by the US Bureau of Labor Statistics, not summed from the 78)",
+  "sources": [
+   "bls_qcew"
+  ],
+  "added": "2026-10-03",
+  "id": "economy.jobs_naics_55",
+  "name": "Jobs: Management of companies (NAICS 55)",
+  "group": "Industries",
+  "plain": "Private jobs in company head offices and holding companies. In the 2026-10 snapshot, only a few municipalities show a value.",
+  "definition": "Annual-average jobs at private employers located in the municipality, in sector 55 of the North American Industry Classification System (NAICS), management of companies. It includes the head offices of companies and holding companies that manage other parts of the company. The jobs sit where the head office is, which may not be where the company operates. The data come from the Quarterly Census of Employment and Wages (QCEW) of the US Bureau of Labor Statistics (BLS). Only wage-and-salary jobs are counted, each at the work site. A blank means that BLS withholds the figure to protect an employer's confidentiality, or publishes no row for the sector there. It does not mean zero.",
+  "unit": "jobs (annual average)",
+  "value_type": "count",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2014,
+   "last": 2025,
+   "frequency": "One value per calendar year. When the observatory's data are rebuilt, it checks whether BLS has published a newer year. In the 2026-10 snapshot, 2025 is the latest year and is preliminary."
+  },
+  "method": "Column annual_avg_emplvl of the BLS annual file for each municipality and year, ownership code 5 (private), industry code 55. A row that BLS marks as withheld (disclosure code N) is left blank. A municipality with no row for the sector is also blank (BLS's file layout does not say why a row is absent). The Puerto Rico value is BLS's own island figure, not a sum of the municipalities.",
+  "source_detail": "BLS QCEW open-data API, annual-average area files: https://data.bls.gov/cew/data/api/<year>/a/area/<area>.csv, where <area> is the five-digit FIPS (Federal Information Processing Standards) code of the municipio (72001 Adjuntas, 72003 Aguada, and so on up to 72153 Yauco; 78 codes in all) or 72000 for Puerto Rico. Row: own_code 5, industry_code 55, column annual_avg_emplvl.",
+  "how_to_read": "In the 2026-10 snapshot, the island total is 11,681 in 2014 and 18,049 in 2024 (54.5% higher), and 18,409 in 2025. It is 2.4% of island private jobs in 2024. The largest published municipal values in 2024 are San Juan (12,000), Guaynabo (2,123), Bayamón (735). The published municipal values add up to 95% of the island figure in 2024, so 5% of the island figure is not in them (hidden cells, plus a gap that BLS's files do not explain: BLS's island private jobs are 0.5% above the sum of the 78 municipalities in 2024). On the Analysis tab you can also shade it as a share of local jobs or as a location quotient (see the QCEW method entry).",
+  "caveats": [
+   "A map of this variable mostly shows where BLS publishes the figure, not only where the jobs are. In the 2026-10 snapshot, 9 of the 78 municipalities have a value in 2024.",
+   "Headquarters jobs are counted where the headquarters is, so a company with plants elsewhere shows its management jobs in one municipality. In the 2026-10 snapshot, San Juan holds 66% of the island figure in 2024.",
+   "In the 2026-10 snapshot, 2025 is the latest year and is preliminary: BLS can revise it. The number of municipalities with a value is the same in 2025 as in 2024 (9).",
+   "The data do not show how much of the change since 2014 comes from reclassification when BLS moved to a new NAICS edition (with 2017 and 2022 data). See the QCEW method entry.",
+   "In the 2026-10 snapshot, the number of municipalities with a value, by year, is: 2014: 8; 2015: 8; 2016: 8; 2017: 9; 2018: 10; 2019: 10; 2020: 10; 2021: 9; 2022: 10; 2023: 11; 2024: 9; 2025: 9. In 2014, 8 of the 78 municipalities have a value, 14 are withheld and 56 have no row; in 2024 the counts are 9, 22 and 47; in 2025 they are 9, 21 and 48. 11 municipalities have a value in at least one year, and 7 have a value in every year from 2014 to 2025."
+  ],
+  "see_also": [
+   "economy.qcew_private_jobs",
+   "economy.qcew_jobs",
+   "economy.qcew_method",
+   "methods.qcew_suppression",
+   "measures.location_quotient"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:jobs_naics_55"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: show as sized symbols",
+     "href": "index.html#e=jobs_naics_55.s"
+    },
+    {
+     "label": "Map, Analysis tab: shade municipalities by the share of local jobs",
+     "href": "index.html#e=jobs_naics_55.f.shareJobs"
+    }
+   ]
+  },
+  "example": "From the 2026-10 snapshot. Puerto Rico: 11,681 (2014), 18,049 (2024), 18,409 (2025). San Juan: 12,000 (2024)."
+ },
+ {
+  "domain": "economy",
+  "domains": ["economy"],
+  "kind": "variable",
+  "geography": "78 municipalities and Puerto Rico (the island figure is published by the US Bureau of Labor Statistics, not summed from the 78)",
+  "sources": [
+   "bls_qcew"
+  ],
+  "added": "2026-10-03",
+  "id": "economy.jobs_naics_56",
+  "name": "Jobs: Administrative, support and waste services (NAICS 56)",
+  "group": "Industries",
+  "plain": "Private jobs in staffing agencies, call centers, security, cleaning, landscaping and travel services. Waste services are here too.",
+  "definition": "Annual-average jobs at private employers located in the municipality, in sector 56 of the North American Industry Classification System (NAICS), administrative, support and waste services. It includes temporary-help and staffing agencies, call centers and business-support offices, security guard services, janitorial and building services, landscaping, travel agencies and tour operators, and waste collection and cleanup. The data come from the Quarterly Census of Employment and Wages (QCEW) of the US Bureau of Labor Statistics (BLS). Only wage-and-salary jobs are counted, each at the work site. A blank means that BLS withholds the figure to protect an employer's confidentiality, or publishes no row for the sector there. It does not mean zero.",
+  "unit": "jobs (annual average)",
+  "value_type": "count",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2014,
+   "last": 2025,
+   "frequency": "One value per calendar year. When the observatory's data are rebuilt, it checks whether BLS has published a newer year. In the 2026-10 snapshot, 2025 is the latest year and is preliminary."
+  },
+  "method": "Column annual_avg_emplvl of the BLS annual file for each municipality and year, ownership code 5 (private), industry code 56. A row that BLS marks as withheld (disclosure code N) is left blank. A municipality with no row for the sector is also blank (BLS's file layout does not say why a row is absent). The Puerto Rico value is BLS's own island figure, not a sum of the municipalities.",
+  "source_detail": "BLS QCEW open-data API, annual-average area files: https://data.bls.gov/cew/data/api/<year>/a/area/<area>.csv, where <area> is the five-digit FIPS (Federal Information Processing Standards) code of the municipio (72001 Adjuntas, 72003 Aguada, and so on up to 72153 Yauco; 78 codes in all) or 72000 for Puerto Rico. Row: own_code 5, industry_code 56, column annual_avg_emplvl.",
+  "how_to_read": "In the 2026-10 snapshot, the island total is 71,847 in 2014 and 77,201 in 2024 (7.5% higher), and 75,235 in 2025. It is 10.3% of island private jobs in 2024. The largest published municipal values in 2024 are San Juan (26,940), Guaynabo (9,245), Carolina (7,917). The published municipal values add up to 92% of the island figure in 2024, so 8% of the island figure is not in them (hidden cells, plus a gap that BLS's files do not explain: BLS's island private jobs are 0.5% above the sum of the 78 municipalities in 2024). On the Analysis tab you can also shade it as a share of local jobs or as a location quotient (see the QCEW method entry).",
+  "caveats": [
+   "A map of this variable mostly shows where BLS publishes the figure, not only where the jobs are. In the 2026-10 snapshot, 46 of the 78 municipalities have a value in 2024.",
+   "Temporary-help workers are counted under the staffing agency, in the municipality where the agency reports them, not where they work.",
+   "In the 2026-10 snapshot, 2025 is the latest year and is preliminary: BLS can revise it. 51 municipalities have a value in 2025, against 46 in 2024.",
+   "In the 2026-10 snapshot, the number of municipalities with a value, by year, is: 2014: 47; 2015: 49; 2016: 50; 2017: 43; 2018: 46; 2019: 49; 2020: 49; 2021: 48; 2022: 47; 2023: 51; 2024: 46; 2025: 51. In 2014, 47 of the 78 municipalities have a value, 28 are withheld and 3 have no row; in 2024 the counts are 46, 31 and 1; in 2025 they are 51, 27 and 0. 64 municipalities have a value in at least one year, and 25 have a value in every year from 2014 to 2025."
+  ],
+  "see_also": [
+   "economy.qcew_private_jobs",
+   "economy.qcew_jobs",
+   "economy.qcew_method",
+   "methods.qcew_suppression",
+   "measures.location_quotient"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:jobs_naics_56"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: show as sized symbols",
+     "href": "index.html#e=jobs_naics_56.s"
+    },
+    {
+     "label": "Map, Analysis tab: shade municipalities by the share of local jobs",
+     "href": "index.html#e=jobs_naics_56.f.shareJobs"
+    }
+   ]
+  },
+  "example": "From the 2026-10 snapshot. Puerto Rico: 71,847 (2014), 77,201 (2024), 75,235 (2025). San Juan: 26,940 (2024)."
+ },
+ {
+  "domain": "economy",
+  "domains": ["economy"],
+  "kind": "variable",
+  "geography": "78 municipalities and Puerto Rico (the island figure is published by the US Bureau of Labor Statistics, not summed from the 78)",
+  "sources": [
+   "bls_qcew"
+  ],
+  "added": "2026-10-03",
+  "id": "economy.jobs_naics_61",
+  "name": "Jobs: Educational services (NAICS 61)",
+  "group": "Industries",
+  "plain": "Private jobs in private schools, colleges and training centers. Public schools and the public university are government jobs, not here.",
+  "definition": "Annual-average jobs at private employers located in the municipality, in sector 61 of the North American Industry Classification System (NAICS), educational services. It includes private elementary and high schools, private colleges and universities, technical and trade schools, tutoring and test preparation, and driving and language schools. The data come from the Quarterly Census of Employment and Wages (QCEW) of the US Bureau of Labor Statistics (BLS). Only wage-and-salary jobs are counted, each at the work site. A blank means that BLS withholds the figure to protect an employer's confidentiality, or publishes no row for the sector there. It does not mean zero.",
+  "unit": "jobs (annual average)",
+  "value_type": "count",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2014,
+   "last": 2025,
+   "frequency": "One value per calendar year. When the observatory's data are rebuilt, it checks whether BLS has published a newer year. In the 2026-10 snapshot, 2025 is the latest year and is preliminary."
+  },
+  "method": "Column annual_avg_emplvl of the BLS annual file for each municipality and year, ownership code 5 (private), industry code 61. A row that BLS marks as withheld (disclosure code N) is left blank. A municipality with no row for the sector is also blank (BLS's file layout does not say why a row is absent). The Puerto Rico value is BLS's own island figure, not a sum of the municipalities.",
+  "source_detail": "BLS QCEW open-data API, annual-average area files: https://data.bls.gov/cew/data/api/<year>/a/area/<area>.csv, where <area> is the five-digit FIPS (Federal Information Processing Standards) code of the municipio (72001 Adjuntas, 72003 Aguada, and so on up to 72153 Yauco; 78 codes in all) or 72000 for Puerto Rico. Row: own_code 5, industry_code 61, column annual_avg_emplvl.",
+  "how_to_read": "In the 2026-10 snapshot, the island total is 31,794 in 2014 and 26,511 in 2024 (16.6% lower), and 26,415 in 2025. It is 3.5% of island private jobs in 2024. The largest published municipal values in 2024 are San Juan (7,651), Ponce (2,578), Bayamón (2,095). The published municipal values add up to 91% of the island figure in 2024, so 9% of the island figure is not in them (hidden cells, plus a gap that BLS's files do not explain: BLS's island private jobs are 0.5% above the sum of the 78 municipalities in 2024). On the Analysis tab you can also shade it as a share of local jobs or as a location quotient (see the QCEW method entry).",
+  "caveats": [
+   "A map of this variable mostly shows where BLS publishes the figure, not only where the jobs are. In the 2026-10 snapshot, 30 of the 78 municipalities have a value in 2024.",
+   "Public schools and the public university system are government-owned, so their jobs are in the government jobs variable and not here. BLS classifies each job by the ownership of the employer, and the data do not show how it classified each public body.",
+   "In the 2026-10 snapshot, 2025 is the latest year and is preliminary: BLS can revise it. 31 municipalities have a value in 2025, against 30 in 2024.",
+   "In the 2026-10 snapshot, the number of municipalities with a value, by year, is: 2014: 36; 2015: 36; 2016: 38; 2017: 36; 2018: 38; 2019: 40; 2020: 37; 2021: 41; 2022: 39; 2023: 41; 2024: 30; 2025: 31. In 2014, 36 of the 78 municipalities have a value, 29 are withheld and 13 have no row; in 2024 the counts are 30, 40 and 8; in 2025 they are 31, 38 and 9. 49 municipalities have a value in at least one year, and 23 have a value in every year from 2014 to 2025."
+  ],
+  "see_also": [
+   "economy.qcew_private_jobs",
+   "economy.qcew_jobs",
+   "economy.qcew_method",
+   "economy.qcew_gov_jobs",
+   "methods.qcew_suppression",
+   "measures.location_quotient"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:jobs_naics_61"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: show as sized symbols",
+     "href": "index.html#e=jobs_naics_61.s"
+    },
+    {
+     "label": "Map, Analysis tab: shade municipalities by the share of local jobs",
+     "href": "index.html#e=jobs_naics_61.f.shareJobs"
+    }
+   ]
+  },
+  "example": "From the 2026-10 snapshot. Puerto Rico: 31,794 (2014), 26,511 (2024), 26,415 (2025). San Juan: 7,651 (2024)."
+ },
+ {
+  "domain": "economy",
+  "domains": ["economy"],
+  "kind": "variable",
+  "geography": "78 municipalities and Puerto Rico (the island figure is published by the US Bureau of Labor Statistics, not summed from the 78)",
+  "sources": [
+   "bls_qcew"
+  ],
+  "added": "2026-10-03",
+  "id": "economy.jobs_naics_62",
+  "name": "Jobs: Health care and social assistance (NAICS 62)",
+  "group": "Industries",
+  "plain": "Private jobs in doctors' offices, private hospitals, clinics, nursing homes, child care and social services. Government-run facilities are not here.",
+  "definition": "Annual-average jobs at private employers located in the municipality, in sector 62 of the North American Industry Classification System (NAICS), health care and social assistance. It includes physicians' and dentists' offices, private hospitals and clinics, laboratories and dialysis centers, nursing and elder-care homes, home health care, child day care, and social services run by private or nonprofit groups. The data come from the Quarterly Census of Employment and Wages (QCEW) of the US Bureau of Labor Statistics (BLS). Only wage-and-salary jobs are counted, each at the work site. A blank means that BLS withholds the figure to protect an employer's confidentiality, or publishes no row for the sector there. It does not mean zero.",
+  "unit": "jobs (annual average)",
+  "value_type": "count",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2014,
+   "last": 2025,
+   "frequency": "One value per calendar year. When the observatory's data are rebuilt, it checks whether BLS has published a newer year. In the 2026-10 snapshot, 2025 is the latest year and is preliminary."
+  },
+  "method": "Column annual_avg_emplvl of the BLS annual file for each municipality and year, ownership code 5 (private), industry code 62. A row that BLS marks as withheld (disclosure code N) is left blank. A municipality with no row for the sector is also blank (BLS's file layout does not say why a row is absent). The Puerto Rico value is BLS's own island figure, not a sum of the municipalities.",
+  "source_detail": "BLS QCEW open-data API, annual-average area files: https://data.bls.gov/cew/data/api/<year>/a/area/<area>.csv, where <area> is the five-digit FIPS (Federal Information Processing Standards) code of the municipio (72001 Adjuntas, 72003 Aguada, and so on up to 72153 Yauco; 78 codes in all) or 72000 for Puerto Rico. Row: own_code 5, industry_code 62, column annual_avg_emplvl.",
+  "how_to_read": "In the 2026-10 snapshot, the island total is 84,875 in 2014 and 92,375 in 2024 (8.8% higher), and 93,725 in 2025. It is 12.3% of island private jobs in 2024. The largest published municipal values in 2024 are San Juan (19,386), Ponce (6,842), Bayamón (6,671). The published municipal values add up to 83% of the island figure in 2024, so 17% of the island figure is not in them (hidden cells, plus a gap that BLS's files do not explain: BLS's island private jobs are 0.5% above the sum of the 78 municipalities in 2024). On the Analysis tab you can also shade it as a share of local jobs or as a location quotient (see the QCEW method entry).",
+  "caveats": [
+   "A map of this variable mostly shows where BLS publishes the figure, not only where the jobs are. In the 2026-10 snapshot, 38 of the 78 municipalities have a value in 2024.",
+   "Government-run hospitals and health centers are counted in government jobs, so this variable is not all health care employment. BLS classifies each job by the ownership of the employer, and the data do not show how it classified each public body.",
+   "In the 2026-10 snapshot, the number of municipalities with a value fell from 49 in 2019 to 38 in 2024 while the number withheld rose from 29 to 39.",
+   "In the 2026-10 snapshot, 2025 is the latest year and is preliminary: BLS can revise it. 39 municipalities have a value in 2025, against 38 in 2024.",
+   "In the 2026-10 snapshot, the number of municipalities with a value, by year, is: 2014: 47; 2015: 47; 2016: 48; 2017: 46; 2018: 47; 2019: 49; 2020: 45; 2021: 49; 2022: 47; 2023: 49; 2024: 38; 2025: 39. In 2014, 47 of the 78 municipalities have a value, 31 are withheld and 0 have no row; in 2024 the counts are 38, 39 and 1; in 2025 they are 39, 38 and 1. 63 municipalities have a value in at least one year, and 28 have a value in every year from 2014 to 2025."
+  ],
+  "see_also": [
+   "economy.qcew_private_jobs",
+   "economy.qcew_jobs",
+   "economy.qcew_method",
+   "economy.qcew_gov_jobs",
+   "methods.qcew_suppression",
+   "measures.location_quotient"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:jobs_naics_62"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: show as sized symbols",
+     "href": "index.html#e=jobs_naics_62.s"
+    },
+    {
+     "label": "Map, Analysis tab: shade municipalities by the share of local jobs",
+     "href": "index.html#e=jobs_naics_62.f.shareJobs"
+    }
+   ]
+  },
+  "example": "From the 2026-10 snapshot. Puerto Rico: 84,875 (2014), 92,375 (2024), 93,725 (2025). San Juan: 19,386 (2024)."
+ },
+ {
+  "domain": "economy",
+  "domains": ["economy", "economy.visitor-economy"],
+  "kind": "variable",
+  "geography": "78 municipalities and Puerto Rico (the island figure is published by the US Bureau of Labor Statistics, not summed from the 78)",
+  "sources": [
+   "bls_qcew"
+  ],
+  "added": "2026-10-03",
+  "id": "economy.jobs_naics_71",
+  "name": "Jobs: Arts, entertainment and recreation (NAICS 71)",
+  "group": "Industries",
+  "plain": "Private jobs in the arts, entertainment and recreation: theaters, museums, casinos, golf courses, marinas and gyms. It is one of the two sectors in tourism-related jobs.",
+  "definition": "Annual-average jobs at private employers located in the municipality, in sector 71 of the North American Industry Classification System (NAICS), arts, entertainment and recreation. It includes performing arts companies and theaters, spectator sports, museums and historic sites, amusement and theme parks, casinos, golf courses, marinas, fitness centers and bowling alleys, when the employer is private. The data come from the Quarterly Census of Employment and Wages (QCEW) of the US Bureau of Labor Statistics (BLS). Only wage-and-salary jobs are counted, each at the work site. A blank means that BLS withholds the figure to protect an employer's confidentiality, or publishes no row for the sector there. It does not mean zero.",
+  "unit": "jobs (annual average)",
+  "value_type": "count",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2014,
+   "last": 2025,
+   "frequency": "One value per calendar year. When the observatory's data are rebuilt, it checks whether BLS has published a newer year. In the 2026-10 snapshot, 2025 is the latest year and is preliminary."
+  },
+  "method": "Column annual_avg_emplvl of the BLS annual file for each municipality and year, ownership code 5 (private), industry code 71. A row that BLS marks as withheld (disclosure code N) is left blank. A municipality with no row for the sector is also blank (BLS's file layout does not say why a row is absent). The Puerto Rico value is BLS's own island figure, not a sum of the municipalities.",
+  "source_detail": "BLS QCEW open-data API, annual-average area files: https://data.bls.gov/cew/data/api/<year>/a/area/<area>.csv, where <area> is the five-digit FIPS (Federal Information Processing Standards) code of the municipio (72001 Adjuntas, 72003 Aguada, and so on up to 72153 Yauco; 78 codes in all) or 72000 for Puerto Rico. Row: own_code 5, industry_code 71, column annual_avg_emplvl.",
+  "how_to_read": "In the 2026-10 snapshot, the island total is 3,391 in 2014 and 5,954 in 2024 (75.6% higher), and 6,189 in 2025. It is 0.8% of island private jobs in 2024. The largest published municipal values in 2024 are San Juan (1,731), Río Grande (547), Carolina (382). The published municipal values add up to 88% of the island figure in 2024, so 12% of the island figure is not in them (hidden cells, plus a gap that BLS's files do not explain: BLS's island private jobs are 0.5% above the sum of the 78 municipalities in 2024). On the Analysis tab you can also shade it as a share of local jobs or as a location quotient (see the QCEW method entry).",
+  "caveats": [
+   "A map of this variable mostly shows where BLS publishes the figure, not only where the jobs are. In the 2026-10 snapshot, 32 of the 78 municipalities have a value in 2024.",
+   "Government-owned parks, museums and recreation facilities are in government jobs. BLS classifies each job by the ownership of the employer, and the data do not show how it classified each public body.",
+   "Where this value is blank, tourism-related jobs count sector 72 alone.",
+   "In the 2026-10 snapshot, 2025 is the latest year and is preliminary: BLS can revise it. 29 municipalities have a value in 2025, against 32 in 2024.",
+   "Casinos inside hotels are counted as accommodation (sector 72, group 721), not here.",
+   "The data do not show how much of the change since 2014 comes from reclassification when BLS moved to a new NAICS edition (with 2017 and 2022 data). See the QCEW method entry.",
+   "In the 2026-10 snapshot, the number of municipalities with a value, by year, is: 2014: 30; 2015: 29; 2016: 27; 2017: 28; 2018: 32; 2019: 30; 2020: 29; 2021: 30; 2022: 34; 2023: 33; 2024: 32; 2025: 29. In 2014, 30 of the 78 municipalities have a value, 27 are withheld and 21 have no row; in 2024 the counts are 32, 31 and 15; in 2025 they are 29, 38 and 11. 43 municipalities have a value in at least one year, and 16 have a value in every year from 2014 to 2025."
+  ],
+  "see_also": [
+   "economy.qcew_private_jobs",
+   "economy.qcew_jobs",
+   "economy.qcew_method",
+   "economy.tourism_jobs",
+   "economy.accommodation_jobs",
+   "economy.food_service_jobs",
+   "methods.qcew_suppression",
+   "measures.location_quotient"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:jobs_naics_71"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: show as sized symbols",
+     "href": "index.html#e=jobs_naics_71.s"
+    },
+    {
+     "label": "Map, Analysis tab: shade municipalities by the share of local jobs",
+     "href": "index.html#e=jobs_naics_71.f.shareJobs"
+    }
+   ]
+  },
+  "example": "From the 2026-10 snapshot. Puerto Rico: 3,391 (2014), 5,954 (2024), 6,189 (2025). San Juan: 1,731 (2024)."
+ },
+ {
+  "domain": "economy",
+  "domains": ["economy", "economy.visitor-economy"],
+  "kind": "variable",
+  "geography": "78 municipalities and Puerto Rico (the island figure is published by the US Bureau of Labor Statistics, not summed from the 78)",
+  "sources": [
+   "bls_qcew"
+  ],
+  "added": "2026-10-03",
+  "id": "economy.jobs_naics_72",
+  "name": "Jobs: Accommodation and food services (NAICS 72)",
+  "group": "Industries",
+  "plain": "Private jobs in hotels, inns, restaurants, bars and catering. It is accommodation plus food service, and one of the two sectors in tourism-related jobs.",
+  "definition": "Annual-average jobs at private employers located in the municipality, in sector 72 of the North American Industry Classification System (NAICS), accommodation and food services. It includes hotels, resorts, inns and guesthouses, and restaurants, fast-food outlets, cafes, bars, food trucks and caterers. It is the sum of accommodation (721) and food service (722), to within one job from rounding. The data come from the Quarterly Census of Employment and Wages (QCEW) of the US Bureau of Labor Statistics (BLS). Only wage-and-salary jobs are counted, each at the work site. A blank means that BLS withholds the figure to protect an employer's confidentiality, or publishes no row for the sector there. It does not mean zero.",
+  "unit": "jobs (annual average)",
+  "value_type": "count",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2014,
+   "last": 2025,
+   "frequency": "One value per calendar year. When the observatory's data are rebuilt, it checks whether BLS has published a newer year. In the 2026-10 snapshot, 2025 is the latest year and is preliminary."
+  },
+  "method": "Column annual_avg_emplvl of the BLS annual file for each municipality and year, ownership code 5 (private), industry code 72. A row that BLS marks as withheld (disclosure code N) is left blank. A municipality with no row for the sector is also blank (BLS's file layout does not say why a row is absent). The Puerto Rico value is BLS's own island figure, not a sum of the municipalities.",
+  "source_detail": "BLS QCEW open-data API, annual-average area files: https://data.bls.gov/cew/data/api/<year>/a/area/<area>.csv, where <area> is the five-digit FIPS (Federal Information Processing Standards) code of the municipio (72001 Adjuntas, 72003 Aguada, and so on up to 72153 Yauco; 78 codes in all) or 72000 for Puerto Rico. Row: own_code 5, industry_code 72, column annual_avg_emplvl.",
+  "how_to_read": "In the 2026-10 snapshot, the island total is 76,407 in 2014 and 90,930 in 2024 (19.0% higher), and 93,288 in 2025. It is 12.1% of island private jobs in 2024. The largest published municipal values in 2024 are San Juan (23,751), Carolina (6,896), Bayamón (5,292). The published municipal values add up to 85% of the island figure in 2024, so 15% of the island figure is not in them (hidden cells, plus a gap that BLS's files do not explain: BLS's island private jobs are 0.5% above the sum of the 78 municipalities in 2024). On the Analysis tab you can also shade it as a share of local jobs or as a location quotient (see the QCEW method entry).",
+  "caveats": [
+   "A map of this variable mostly shows where BLS publishes the figure, not only where the jobs are. In the 2026-10 snapshot, 44 of the 78 municipalities have a value in 2024.",
+   "The parts, accommodation (721) and food service (722), are often both blank even when this total is published, so the total cannot be split. In the 2026-10 snapshot, this is so for 19 municipalities in 2024.",
+   "In the 2026-10 snapshot, 2025 is the latest year and is preliminary: BLS can revise it. 39 municipalities have a value in 2025, against 44 in 2024.",
+   "In the 2026-10 snapshot, the number of municipalities with a value, by year, is: 2014: 48; 2015: 49; 2016: 44; 2017: 44; 2018: 48; 2019: 43; 2020: 43; 2021: 45; 2022: 52; 2023: 49; 2024: 44; 2025: 39. In 2014, 48 of the 78 municipalities have a value, 30 are withheld and 0 have no row; in 2024 the counts are 44, 34 and 0; in 2025 they are 39, 39 and 0. 67 municipalities have a value in at least one year, and 20 have a value in every year from 2014 to 2025."
+  ],
+  "see_also": [
+   "economy.qcew_private_jobs",
+   "economy.qcew_jobs",
+   "economy.qcew_method",
+   "economy.tourism_jobs",
+   "economy.accommodation_jobs",
+   "economy.food_service_jobs",
+   "methods.qcew_suppression",
+   "measures.location_quotient"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:jobs_naics_72"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: show as sized symbols",
+     "href": "index.html#e=jobs_naics_72.s"
+    },
+    {
+     "label": "Map, Analysis tab: shade municipalities by the share of local jobs",
+     "href": "index.html#e=jobs_naics_72.f.shareJobs"
+    }
+   ]
+  },
+  "example": "From the 2026-10 snapshot. Puerto Rico: 76,407 (2014), 90,930 (2024), 93,288 (2025). San Juan: 23,751 (2024)."
+ },
+ {
+  "domain": "economy",
+  "domains": ["economy"],
+  "kind": "variable",
+  "geography": "78 municipalities and Puerto Rico (the island figure is published by the US Bureau of Labor Statistics, not summed from the 78)",
+  "sources": [
+   "bls_qcew"
+  ],
+  "added": "2026-10-03",
+  "id": "economy.jobs_naics_81",
+  "name": "Jobs: Other services (except public administration) (NAICS 81)",
+  "group": "Industries",
+  "plain": "Private jobs in repair shops, hair and nail salons, funeral homes, churches and civic groups in the municipality.",
+  "definition": "Annual-average jobs at private employers located in the municipality, in sector 81 of the North American Industry Classification System (NAICS), other services (except public administration). It includes repair and maintenance (cars, appliances, electronics), personal care (hair and nail salons, barber shops, laundries, funeral homes, pet care), religious organizations, grantmaking groups, and civic, social and professional associations. The data come from the Quarterly Census of Employment and Wages (QCEW) of the US Bureau of Labor Statistics (BLS). Only wage-and-salary jobs are counted, each at the work site. A blank means that BLS withholds the figure to protect an employer's confidentiality, or publishes no row for the sector there. It does not mean zero.",
+  "unit": "jobs (annual average)",
+  "value_type": "count",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2014,
+   "last": 2025,
+   "frequency": "One value per calendar year. When the observatory's data are rebuilt, it checks whether BLS has published a newer year. In the 2026-10 snapshot, 2025 is the latest year and is preliminary."
+  },
+  "method": "Column annual_avg_emplvl of the BLS annual file for each municipality and year, ownership code 5 (private), industry code 81. A row that BLS marks as withheld (disclosure code N) is left blank. A municipality with no row for the sector is also blank (BLS's file layout does not say why a row is absent). The Puerto Rico value is BLS's own island figure, not a sum of the municipalities.",
+  "source_detail": "BLS QCEW open-data API, annual-average area files: https://data.bls.gov/cew/data/api/<year>/a/area/<area>.csv, where <area> is the five-digit FIPS (Federal Information Processing Standards) code of the municipio (72001 Adjuntas, 72003 Aguada, and so on up to 72153 Yauco; 78 codes in all) or 72000 for Puerto Rico. Row: own_code 5, industry_code 81, column annual_avg_emplvl.",
+  "how_to_read": "In the 2026-10 snapshot, the island total is 14,962 in 2014 and 16,539 in 2024 (10.5% higher), and 16,884 in 2025. It is 2.2% of island private jobs in 2024. The largest published municipal values in 2024 are Bayamón (1,138), Guaynabo (996), Caguas (945). The published municipal values add up to 52% of the island figure in 2024, so 48% of the island figure is not in them (hidden cells, plus a gap that BLS's files do not explain: BLS's island private jobs are 0.5% above the sum of the 78 municipalities in 2024). San Juan's value is withheld in 2022, 2024 and 2025. Its value in 2023 was 6,037 jobs, against 1,115 for Bayamón that year, so the ranking leaves out San Juan. On the Analysis tab you can also shade it as a share of local jobs or as a location quotient (see the QCEW method entry).",
+  "caveats": [
+   "A map of this variable mostly shows where BLS publishes the figure, not only where the jobs are. In the 2026-10 snapshot, 49 of the 78 municipalities have a value in 2024.",
+   "In the 2026-10 snapshot, the number of municipalities with a value swings between years (67 in 2019, 49 in 2024, 30 in 2025), so changes on the map reflect what BLS shows as well as the economy.",
+   "In the 2026-10 snapshot, the island figure is blank in 2015 although municipal values are published (49 in 2015), so that year cannot be checked against an island total, and the Analysis tab cannot show the share of the island total or the location quotient for it.",
+   "In the 2026-10 snapshot, 2025 is the latest year and is preliminary: BLS can revise it. 30 municipalities have a value in 2025, against 49 in 2024.",
+   "The data do not show whether all religious organizations and other small nonprofit employers report to unemployment insurance. Those that do not are not counted.",
+   "In the 2026-10 snapshot, the number of municipalities with a value, by year, is: 2014: 49; 2015: 49; 2016: 50; 2017: 50; 2018: 52; 2019: 67; 2020: 54; 2021: 60; 2022: 55; 2023: 53; 2024: 49; 2025: 30. In 2014, 49 of the 78 municipalities have a value, 29 are withheld and 0 have no row; in 2024 the counts are 49, 28 and 1; in 2025 they are 30, 48 and 0. 74 municipalities have a value in at least one year, and 12 have a value in every year from 2014 to 2025. The Puerto Rico value is blank in 2015."
+  ],
+  "see_also": [
+   "economy.qcew_private_jobs",
+   "economy.qcew_jobs",
+   "economy.qcew_method",
+   "methods.qcew_suppression",
+   "measures.location_quotient"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:jobs_naics_81"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: show as sized symbols",
+     "href": "index.html#e=jobs_naics_81.s"
+    },
+    {
+     "label": "Map, Analysis tab: shade municipalities by the share of local jobs",
+     "href": "index.html#e=jobs_naics_81.f.shareJobs"
+    }
+   ]
+  },
+  "example": "From the 2026-10 snapshot. Puerto Rico: 14,962 (2014), 16,539 (2024), 16,884 (2025). San Juan: blank (2024)."
+ }
+]

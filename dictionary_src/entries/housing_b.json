@@ -1,0 +1,1929 @@
+[
+ {
+  "id": "housing.poverty_pct",
+  "name": "Population below the poverty level",
+  "domain": "economy",
+  "domains": ["economy", "population"],
+  "group": "Income and poverty",
+  "kind": "variable",
+  "plain": "Out of every 100 people the Census Bureau could classify, how many lived with income below the poverty level in the past 12 months. In Puerto Rico it was 40.5% in the 2020-2024 window.",
+  "definition": "People whose income in the past 12 months was below the Census Bureau's poverty level (American Community Survey, ACS, table B17001, cell 2) divided by all people for whom the Bureau determines poverty status (B17001, cell 1), times 100. The Bureau does not determine poverty status for people in institutions such as prisons and nursing homes, in military group quarters or in college dormitories, or for unrelated children under 15. The poverty level depends on family size and the ages of its members, not on local prices.",
+  "unit": "% of people for whom poverty status is determined",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico; also 901 barrios and 981 census tracts",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "One estimate per five-year window, labeled by its last year (2010 = 2006-2010, 2024 = 2020-2024). A new window is added when the Census Bureau publishes it."
+  },
+  "method": "The observatory reads the table for every window: the per-sequence summary files for 2010-2020 and the table-based summary files for 2021-2024, for the 78 municipio rows and the Puerto Rico row. It divides cell 2 by cell 1. The margin of error of the share is computed by the observatory from the published margins of its parts, with the Census Bureau's formulas for sums (margins added in quadrature) and for a proportion whose numerator is part of the denominator. Puerto Rico's value comes from the island row of the same table.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "US Census Bureau, American Community Survey 5-year estimates, table B17001 (Poverty Status in the Past 12 Months by Sex by Age), cells 001 and 002; windows 2006-2010 to 2020-2024. Files, under https://www2.census.gov/programs-surveys/acs/summary_file/: for windows labeled 2021 to 2024, a table-based file such as 2024/table-based-SF/data/5YRData/acsdt5y2024-b17001.dat; for windows labeled 2010 to 2020, the per-sequence files in {year}/data/5_year_seq_by_state/PuertoRico/All_Geographies_Not_Tracts_Block_Groups/, where {year} is the last year of the window. Definitions follow the Census Bureau's ACS Subject Definitions (2024 edition: https://www2.census.gov/programs-surveys/acs/tech_docs/subject_definitions/2024_ACSSubjectDefinitions.pdf; each earlier year has its own edition).",
+  "how_to_read": "A value of 40 means that 40 of every 100 counted people lived below the poverty level. It counts people, not households, and it does not show how far below the line people are or for how long. The number after the plus-minus sign (±) is the margin of error. At 90% confidence, the true value probably lies within that distance of the estimate.",
+  "caveats": [
+   "Neighboring windows share four of their five years. To judge change, compare windows that do not overlap, for example 2010-2014, 2015-2019 and 2020-2024 (labeled 2014, 2019 and 2024). See the entry on American Community Survey 5-year windows.",
+   "Income is measured over the 12 months before each household was surveyed, and interviews are spread across the five years of a window, so a window blends different years.",
+   "The poverty level is a national threshold. It is not adjusted for the cost of living in Puerto Rico.",
+   "Estimates for small municipalities are imprecise. The municipality profile warns for municipalities with fewer than 25,000 residents. The Full data dialog shows in italics any nonzero value whose margin of error is more than 30% of the estimate. Zero values and values with no published margin are not italicized, so an unmarked value is not proof of precision.",
+   "The Puerto Rico value is the Census Bureau's own island-level estimate, not an average of the 78 municipalities. The Housing page also prints the median of the 78 municipalities above each chart, which is a different number.",
+   "Also published for barrios and census tracts (acs_barrio.json and acs_tract.json), each value with its margin of error where the Census Bureau gives one. Below the municipality the figure is rough. In 2020-2024 the margin of error is above 30% of the estimate (the CSV by area marks such values as less reliable; no map or table draws areas below the municipality yet) for 53% of barrios and 35% of census tracts that have a value. See methods.small_area_estimates."
+  ],
+  "see_also": [
+   "housing.median_hh_income",
+   "housing.per_capita_income",
+   "housing.median_renter_income",
+   "economy.gini",
+   "economy.hh_income_under_25k_pct",
+   "measures.margin_of_error",
+   "methods.acs_windows",
+   "municipalities.poverty_pct",
+   "methods.small_area_estimates"
+  ],
+  "example": "Puerto Rico, 2020-2024: 40.5% (± 0.4 points). Highest of the 78 municipalities in 2020-2024: Guánica, 63.7% (63.65 before rounding). Lowest: Guaynabo, 24.3%.",
+  "where": {
+   "files": [
+    "housing_series.json:poverty_pct",
+    "acs_barrio.json:poverty_pct",
+    "acs_tract.json:poverty_pct"
+   ],
+   "view": [
+    {
+     "label": "Housing page, section 5 (Who owns their home): map and ranked chart",
+     "href": "housing.html#tenure"
+    },
+    {
+     "label": "Housing page, Municipality profile (Population below poverty level)",
+     "href": "housing.html#profile"
+    },
+    {
+     "label": "Housing page, Full data: every year and municipality, margins of error, CSV download",
+     "href": "housing.html?d=poverty_pct"
+    },
+    {
+     "label": "Map, Analysis tab (group Income and poverty): shade municipalities by",
+     "href": "index.html#e=poverty_pct.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-02"
+ },
+ {
+  "id": "housing.employment_rate_pct",
+  "name": "Employment rate, residents 16+ (ACS)",
+  "domain": "economy",
+  "domains": ["economy"],
+  "group": "Labor force",
+  "kind": "variable",
+  "plain": "Out of every 100 residents aged 16 or older, how many had a civilian job. It counts retirees, students and everyone else who is not working, so it is lower than the share of people in the labor force. Puerto Rico: 41.3% in 2020-2024.",
+  "definition": "Employed civilians (American Community Survey, ACS, table B23025, cell 4) divided by all residents 16 and over (B23025, cell 1), times 100: the employment-to-population ratio. A person is employed if they worked for pay or profit, or had a job and were away, in the week before answering the survey. Members of the armed forces are in the base but not in the numerator.",
+  "unit": "% of residents aged 16 and over",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico; also 901 barrios and 981 census tracts",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2011,
+   "last": 2024,
+   "frequency": "One estimate per five-year window, labeled by its last year (2010 = 2006-2010, 2024 = 2020-2024). A new window is added when the Census Bureau publishes it."
+  },
+  "method": "The observatory reads the table for every window: the per-sequence summary files for 2010-2020 and the table-based summary files for 2021-2024, for the 78 municipio rows and the Puerto Rico row. It divides cell 4 by cell 1. The observatory treats table B23025 as unavailable for the 2006-2010 window, so the series starts with 2007-2011 (labeled 2011). The margin of error of the share is computed by the observatory from the published margins of its parts, with the Census Bureau's formulas for sums (margins added in quadrature) and for a proportion whose numerator is part of the denominator.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "US Census Bureau, American Community Survey 5-year estimates, table B23025 (Employment Status for the Population 16 Years and Over), cells 001 and 004; windows 2007-2011 to 2020-2024. Files, under https://www2.census.gov/programs-surveys/acs/summary_file/: for windows labeled 2021 to 2024, a table-based file such as 2024/table-based-SF/data/5YRData/acsdt5y2024-b23025.dat; for windows labeled 2010 to 2020, the per-sequence files in {year}/data/5_year_seq_by_state/PuertoRico/All_Geographies_Not_Tracts_Block_Groups/, where {year} is the last year of the window. Definitions follow the Census Bureau's ACS Subject Definitions (2024 edition: https://www2.census.gov/programs-surveys/acs/tech_docs/subject_definitions/2024_ACSSubjectDefinitions.pdf; each earlier year has its own edition).",
+  "how_to_read": "A value of 41 means that 41 of every 100 residents aged 16 or older had a civilian job. The base includes retirees, students and everyone else who is not in the labor force, so the rate reflects the age mix as well as the number of jobs. It is not the share of job seekers who found work; for that, see the unemployment rate. The number after the plus-minus sign (±) is the margin of error. At 90% confidence, the true value probably lies within that distance of the estimate.",
+  "caveats": [
+   "Neighboring windows share four of their five years. To judge change, compare windows that do not overlap, for example 2010-2014, 2015-2019 and 2020-2024 (labeled 2014, 2019 and 2024). See the entry on American Community Survey 5-year windows.",
+   "The base includes people who are not in the labor force. In Puerto Rico in 2020-2024, 1,495,476 of 2,788,407 residents aged 16 and over (54%) were outside the labor force.",
+   "It counts where people live, not where jobs are. For jobs by workplace, see the Quarterly Census of Employment and Wages (QCEW) jobs series.",
+   "Estimates for small municipalities are imprecise. The municipality profile warns for municipalities with fewer than 25,000 residents. The Full data dialog shows in italics any nonzero value whose margin of error is more than 30% of the estimate. Zero values and values with no published margin are not italicized, so an unmarked value is not proof of precision.",
+   "The Puerto Rico value is the Census Bureau's own island-level estimate, not an average of the 78 municipalities.",
+   "Also published for barrios and census tracts (acs_barrio.json and acs_tract.json), each value with its margin of error where the Census Bureau gives one. Below the municipality the figure is rough. In 2020-2024 the margin of error is above 30% of the estimate (the CSV by area marks such values as less reliable; no map or table draws areas below the municipality yet) for 50% of barrios and 13% of census tracts that have a value. See methods.small_area_estimates."
+  ],
+  "see_also": [
+   "housing.unemployment_rate_pct",
+   "economy.laus_employed",
+   "economy.laus_unemp_rate",
+   "economy.workers_16plus",
+   "economy.qcew_jobs",
+   "measures.margin_of_error",
+   "methods.acs_windows",
+   "methods.workplace_vs_residence",
+   "municipalities.employment_rate_pct",
+   "methods.small_area_estimates"
+  ],
+  "example": "Puerto Rico, 2020-2024: 41.3% (± 0.2 points). Highest of the 78 municipalities in 2020-2024: Culebra, 58.9%. Lowest: Ciales, 31.1%.",
+  "where": {
+   "files": [
+    "housing_series.json:employment_rate_pct",
+    "acs_barrio.json:employment_rate_pct",
+    "acs_tract.json:employment_rate_pct"
+   ],
+   "view": [
+    {
+     "label": "Housing page, Full data: every year and municipality, margins of error, CSV download",
+     "href": "housing.html?d=employment_rate_pct"
+    },
+    {
+     "label": "Housing page, Municipality profile (Employment rate, 16+)",
+     "href": "housing.html#profile"
+    },
+    {
+     "label": "Map, Analysis tab (group Labor force, 'Employment rate, residents 16+ (ACS)'): shade municipalities by",
+     "href": "index.html#e=employment_rate_pct.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-02"
+ },
+ {
+  "id": "housing.unemployment_rate_pct",
+  "name": "Unemployment rate (ACS survey)",
+  "domain": "economy",
+  "domains": ["economy"],
+  "group": "Labor force",
+  "kind": "variable",
+  "plain": "Out of every 100 civilians who have a job or are looking for one, how many are looking and have no job. This is the survey estimate for a five-year window, not the monthly rate the Bureau of Labor Statistics (BLS) publishes. Puerto Rico: 10.7% in 2020-2024.",
+  "definition": "Unemployed civilians (American Community Survey, ACS, table B23025, cell 5) divided by the civilian labor force (B23025, cell 3: employed plus unemployed), times 100. A person is unemployed if they had no job in the week before answering the survey, looked for work in the previous four weeks and were available to start.",
+  "unit": "% of the civilian labor force",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico; also 901 barrios and 981 census tracts",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2011,
+   "last": 2024,
+   "frequency": "One estimate per five-year window, labeled by its last year (2010 = 2006-2010, 2024 = 2020-2024). A new window is added when the Census Bureau publishes it."
+  },
+  "method": "The observatory reads the table for every window: the per-sequence summary files for 2010-2020 and the table-based summary files for 2021-2024, for the 78 municipio rows and the Puerto Rico row. It divides cell 5 by cell 3. The observatory treats table B23025 as unavailable for the 2006-2010 window, so the series starts with 2007-2011 (labeled 2011). The margin of error of the share is computed by the observatory from the published margins of its parts, with the Census Bureau's formulas for sums (margins added in quadrature) and for a proportion whose numerator is part of the denominator.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "US Census Bureau, American Community Survey 5-year estimates, table B23025 (Employment Status for the Population 16 Years and Over), cells 003 and 005; windows 2007-2011 to 2020-2024. Files, under https://www2.census.gov/programs-surveys/acs/summary_file/: for windows labeled 2021 to 2024, a table-based file such as 2024/table-based-SF/data/5YRData/acsdt5y2024-b23025.dat; for windows labeled 2010 to 2020, the per-sequence files in {year}/data/5_year_seq_by_state/PuertoRico/All_Geographies_Not_Tracts_Block_Groups/, where {year} is the last year of the window. Definitions follow the Census Bureau's ACS Subject Definitions (2024 edition: https://www2.census.gov/programs-surveys/acs/tech_docs/subject_definitions/2024_ACSSubjectDefinitions.pdf; each earlier year has its own edition).",
+  "how_to_read": "A value of 10 means that 10 of every 100 people in the labor force were out of work and looking. People who gave up looking are not counted. Use the Local Area Unemployment Statistics (LAUS) series from the BLS for the latest year; use this series to compare municipalities within one window. The number after the plus-minus sign (±) is the margin of error. At 90% confidence, the true value probably lies within that distance of the estimate.",
+  "caveats": [
+   "Not comparable with the BLS series. In the 2026-10 snapshot, the BLS annual average for Puerto Rico is 5.6% for 2024 and between 5.6% and 8.0% for 2021 to 2024, while this survey shows 10.7% for the 2020-2024 window. The two sources use different surveys and methods, and the survey figure blends five years, so the numbers differ.",
+   "Noisy in small municipalities. In the 2026-10 snapshot, 201 of the 1,092 municipality estimates (78 municipalities in 14 windows, 2011 to 2024; about 1 in 5) have a margin of error larger than 30% of the estimate. The three estimates of 0.0 are not among the 201. The Full data dialog shows in italics any nonzero value whose margin of error is more than 30% of the estimate. Zero values and values with no published margin are not italicized, so an unmarked value is not proof of precision.",
+   "A value of 0.0 is a sample result, not proof that nobody is unemployed. In 2020-2024 Culebra shows 0.0% (± 2.1 points) and Maricao 0.0% (± 1.1 points).",
+   "Neighboring windows share four of their five years. To judge change, compare windows that do not overlap, for example 2010-2014, 2015-2019 and 2020-2024 (labeled 2014, 2019 and 2024). See the entry on American Community Survey 5-year windows.",
+   "The Puerto Rico value is the Census Bureau's own island-level estimate, not an average of the 78 municipalities.",
+   "Also published for barrios and census tracts (acs_barrio.json and acs_tract.json), each value with its margin of error where the Census Bureau gives one. Below the municipality the figure is rough. In 2020-2024 the margin of error is above 30% of the estimate (the CSV by area marks such values as less reliable; no map or table draws areas below the municipality yet) for 96% of barrios and more than 99% of census tracts that have a value. See methods.small_area_estimates."
+  ],
+  "see_also": [
+   "economy.laus_unemp_rate",
+   "economy.laus_labor_force",
+   "economy.laus_unemployed",
+   "housing.employment_rate_pct",
+   "measures.margin_of_error",
+   "methods.acs_windows",
+   "economy.laus_method",
+   "methods.small_area_estimates"
+  ],
+  "example": "Puerto Rico, 2020-2024: 10.7% (± 0.2 points). Highest of the 78 municipalities in 2020-2024: Guánica, 22.9%.",
+  "where": {
+   "files": [
+    "housing_series.json:unemployment_rate_pct",
+    "acs_barrio.json:unemployment_rate_pct",
+    "acs_tract.json:unemployment_rate_pct"
+   ],
+   "view": [
+    {
+     "label": "Housing page, Full data: every year and municipality, margins of error, CSV download",
+     "href": "housing.html?d=unemployment_rate_pct"
+    },
+    {
+     "label": "Map, Analysis tab (group Labor force, 'Unemployment rate (ACS survey)'): shade municipalities by",
+     "href": "index.html#e=unemployment_rate_pct.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-02"
+ },
+ {
+  "id": "housing.bachelors_pct",
+  "name": "Adults 25+ with a bachelor's degree or higher",
+  "domain": "education",
+  "domains": ["education", "population"],
+  "group": "Education",
+  "kind": "variable",
+  "plain": "Out of every 100 adults aged 25 or older, how many hold a bachelor's degree or a higher degree (master's, professional or doctorate). Puerto Rico: 29.8% in 2020-2024.",
+  "definition": "Adults 25 and over whose highest degree is a bachelor's, master's, professional school degree or doctorate (American Community Survey, ACS, table B15002, cells 15-18 for men and 32-35 for women) divided by all adults 25 and over (B15002, cell 1), times 100.",
+  "unit": "% of adults aged 25 and over",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico; also 901 barrios and 981 census tracts",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "One estimate per five-year window, labeled by its last year (2010 = 2006-2010, 2024 = 2020-2024). A new window is added when the Census Bureau publishes it."
+  },
+  "method": "The observatory reads the table for every window: the per-sequence summary files for 2010-2020 and the table-based summary files for 2021-2024, for the 78 municipio rows and the Puerto Rico row. It adds cells 15, 16, 17, 18, 32, 33, 34 and 35 and divides by cell 1. The margin of error of the share is computed by the observatory from the published margins of its parts, with the Census Bureau's formulas for sums (margins added in quadrature) and for a proportion whose numerator is part of the denominator.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "US Census Bureau, American Community Survey 5-year estimates, table B15002 (Sex by Educational Attainment for the Population 25 Years and Over); windows 2006-2010 to 2020-2024. Files, under https://www2.census.gov/programs-surveys/acs/summary_file/: for windows labeled 2021 to 2024, a table-based file such as 2024/table-based-SF/data/5YRData/acsdt5y2024-b15002.dat; for windows labeled 2010 to 2020, the per-sequence files in {year}/data/5_year_seq_by_state/PuertoRico/All_Geographies_Not_Tracts_Block_Groups/, where {year} is the last year of the window. Definitions follow the Census Bureau's ACS Subject Definitions (2024 edition: https://www2.census.gov/programs-surveys/acs/tech_docs/subject_definitions/2024_ACSSubjectDefinitions.pdf; each earlier year has its own edition).",
+  "how_to_read": "A value of 30 means that 30 of every 100 adults aged 25 or older hold at least a bachelor's degree. Associate degrees are not counted. The measure follows where people live now, so it reflects who moves in or out as well as who studied there. The number after the plus-minus sign (±) is the margin of error. At 90% confidence, the true value probably lies within that distance of the estimate.",
+  "caveats": [
+   "Margins of error are missing for most municipalities from the 2021 window on. In the 2026-10 snapshot, they are present for 78 of 78 municipalities in every window up to 2020 but for only 7, 10, 6 and 5 of 78 in 2021, 2022, 2023 and 2024. In the Census Bureau's files for 2021 to 2024, the adult total (table B15002, cell 1) has the code -555555555 where a margin of error would be, for most municipalities (73 of the 78 municipality rows in the 2024 file). The observatory leaves a share's margin blank when the margin of its denominator is missing. In the 2010 to 2020 files that margin was a number. The estimates themselves are present for every municipality. For these 284 estimates the Housing page cannot flag unreliable values: the absence of a ± or of italics is not evidence of precision, so treat small-municipality values for 2021 to 2024 with the same caution as earlier years. The Census Bureau uses -555555555 as an annotation code in place of a margin of error; its summary-file documentation lists these codes.",
+   "Neighboring windows share four of their five years. To judge change, compare windows that do not overlap, for example 2010-2014, 2015-2019 and 2020-2024 (labeled 2014, 2019 and 2024). See the entry on American Community Survey 5-year windows.",
+   "Estimates for small municipalities are imprecise. The municipality profile warns for municipalities with fewer than 25,000 residents. The Full data dialog shows in italics any nonzero value whose margin of error is more than 30% of the estimate. Zero values and values with no published margin are not italicized, so an unmarked value is not proof of precision.",
+   "The Puerto Rico value is the Census Bureau's own island-level estimate, not an average of the 78 municipalities.",
+   "Also published for barrios and census tracts (acs_barrio.json and acs_tract.json), each value with its margin of error where the Census Bureau gives one. Below the municipality the figure is rough. In 2020-2024 the margin of error is above 30% of the estimate (the CSV by area marks such values as less reliable; no map or table draws areas below the municipality yet) for 66% of barrios and 38% of census tracts that have a value. See methods.small_area_estimates."
+  ],
+  "see_also": [
+   "housing.poverty_pct",
+   "housing.median_hh_income",
+   "measures.margin_of_error",
+   "methods.acs_windows",
+   "municipalities.bachelors_pct",
+   "methods.small_area_estimates"
+  ],
+  "example": "Puerto Rico, 2020-2024: 29.8% (± 0.3 points). Highest of the 78 municipalities in 2020-2024: Guaynabo, 50.5%. Lowest: Vieques, 12.3%.",
+  "where": {
+   "files": [
+    "housing_series.json:bachelors_pct",
+    "acs_barrio.json:bachelors_pct",
+    "acs_tract.json:bachelors_pct"
+   ],
+   "view": [
+    {
+     "label": "Housing page, Full data: every year and municipality, margins of error, CSV download",
+     "href": "housing.html?d=bachelors_pct"
+    },
+    {
+     "label": "Housing page, Municipality profile (Adults 25+ with bachelor's or higher)",
+     "href": "housing.html#profile"
+    },
+    {
+     "label": "Map, Analysis tab (group Income and poverty): shade municipalities by",
+     "href": "index.html#e=bachelors_pct.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-02"
+ },
+ {
+  "id": "housing.median_hh_income",
+  "name": "Median household income",
+  "domain": "economy",
+  "domains": ["economy"],
+  "group": "Income and poverty",
+  "kind": "variable",
+  "plain": "The middle household income in the area: half of households earn more, half earn less. Puerto Rico: $26,297 a year in the 2020-2024 window, in 2024 dollars.",
+  "definition": "Median income of all households in the past 12 months (American Community Survey, ACS, table B19013, cell 1). Household income adds the income of every household member aged 15 or over. Income means money income before taxes from wages, self-employment, interest, Social Security, retirement, public assistance and similar regular sources; it leaves out capital gains and non-cash benefits.",
+  "unit": "US dollars per year, in the dollars of the last year of each five-year window",
+  "value_type": "level",
+  "geography": "78 municipalities and Puerto Rico; also 901 barrios and 981 census tracts",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "One estimate per five-year window, labeled by its last year (2010 = 2006-2010, 2024 = 2020-2024). A new window is added when the Census Bureau publishes it."
+  },
+  "method": "The observatory reads the table for every window: the per-sequence summary files for 2010-2020 and the table-based summary files for 2021-2024, for the 78 municipio rows and the Puerto Rico row. The value and its margin of error are the Census Bureau's published ones. It is also the income used for the maximum affordable loan and the affordability ratio.",
+  "sources": [
+   "acs5",
+   "bls_cpi"
+  ],
+  "source_detail": "US Census Bureau, American Community Survey 5-year estimates, table B19013 (Median Household Income in the Past 12 Months), cell 001; windows 2006-2010 to 2020-2024. Files, under https://www2.census.gov/programs-surveys/acs/summary_file/: for windows labeled 2021 to 2024, a table-based file such as 2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat; for windows labeled 2010 to 2020, the per-sequence files in {year}/data/5_year_seq_by_state/PuertoRico/All_Geographies_Not_Tracts_Block_Groups/, where {year} is the last year of the window. Definitions follow the Census Bureau's ACS Subject Definitions (2024 edition: https://www2.census.gov/programs-surveys/acs/tech_docs/subject_definitions/2024_ACSSubjectDefinitions.pdf; each earlier year has its own edition). CPI-U, US city average (series CUUR0000SA0), used only for the price comparison in the caveats.",
+  "how_to_read": "Compare it with the cost of housing, not with a single person's pay: one household can have several earners or none. For income per person, see per capita income. The number after the plus-minus sign (±) is the margin of error. At 90% confidence, the true value probably lies within that distance of the estimate.",
+  "caveats": [
+   "Dollars are those of the last year of each five-year window (2024 dollars for 2020-2024), as the Census Bureau states them. Amounts from different windows are not in the same dollars. To compare across windows, use the Analysis tab's Inflation-adjusted option, which restates dollars with the US Consumer Price Index (see the entry on inflation adjustment).",
+   "From 2010 to 2024 the US Consumer Price Index (CPI-U) annual average rose 43.9% (annual average index values: 218.056 in 2010 and 313.689 in 2024). This median rose 40%, from $18,791 to $26,297, so it is not a rise in buying power by that index.",
+   "Neighboring windows share four of their five years. To judge change, compare windows that do not overlap, for example 2010-2014, 2015-2019 and 2020-2024 (labeled 2014, 2019 and 2024). See the entry on American Community Survey 5-year windows.",
+   "A median hides the spread: it says nothing about how many households earn very little or very much.",
+   "Estimates for small municipalities are imprecise. The municipality profile warns for municipalities with fewer than 25,000 residents. The Full data dialog shows in italics any nonzero value whose margin of error is more than 30% of the estimate. Zero values and values with no published margin are not italicized, so an unmarked value is not proof of precision.",
+   "The Puerto Rico value is the Census Bureau's own island-level estimate, not an average of the 78 municipalities. The Housing page also prints the median of the 78 municipalities above each chart, which is a different number.",
+   "Also published for barrios and census tracts (acs_barrio.json and acs_tract.json), each value with its margin of error where the Census Bureau gives one. Below the municipality the figure is rough. In 2020-2024 the margin of error is above 30% of the estimate (the CSV by area marks such values as less reliable; no map or table draws areas below the municipality yet) for 49% of barrios and 36% of census tracts that have a value. A median at the edge of an open-ended interval (the Census Bureau prints the boundary) or equal to 0 is not an estimate and is left empty (1 barrio and 4 census tracts in 2020-2024). See methods.small_area_estimates."
+  ],
+  "see_also": [
+   "housing.per_capita_income",
+   "housing.median_owner_income",
+   "housing.median_renter_income",
+   "housing.max_affordable_loan",
+   "housing.affordability_ratio",
+   "economy.gini",
+   "study.table_6",
+   "measures.inflation_adjustment",
+   "measures.margin_of_error",
+   "methods.acs_windows",
+   "municipalities.median_hh_income",
+   "economy.hh_income_under_25k_pct",
+   "economy.hh_income_75k_plus_pct",
+   "economy.qcew_avg_pay",
+   "methods.small_area_estimates"
+  ],
+  "example": "Puerto Rico, 2020-2024: $26,297 (± $261). Highest of the 78 municipalities in 2020-2024: Guaynabo, $46,731. Lowest: Las Marías, $16,314. For comparison, Puerto Rico in the 2006-2010 window: $18,791, in 2010 dollars.",
+  "where": {
+   "files": [
+    "housing_series.json:median_hh_income",
+    "acs_barrio.json:median_hh_income",
+    "acs_tract.json:median_hh_income"
+   ],
+   "view": [
+    {
+     "label": "Housing page, section 4 (Home ownership affordability): map, ranked chart and scatter",
+     "href": "housing.html#afford"
+    },
+    {
+     "label": "Housing page, Full data: every year and municipality, margins of error, CSV download",
+     "href": "housing.html?d=median_hh_income"
+    },
+    {
+     "label": "Housing page, Municipality profile (Median household income)",
+     "href": "housing.html#profile"
+    },
+    {
+     "label": "Map, Analysis tab (group Income and poverty): shade municipalities by",
+     "href": "index.html#e=median_hh_income.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-02"
+ },
+ {
+  "id": "housing.per_capita_income",
+  "name": "Per capita income",
+  "domain": "economy",
+  "domains": ["economy"],
+  "group": "Income and poverty",
+  "kind": "variable",
+  "plain": "Total income of everyone in the area divided by the number of people, children included. It is an average, so high earners lift it. Puerto Rico: $17,981 a year in the 2020-2024 window, in 2024 dollars.",
+  "definition": "Mean income per person in the past 12 months (American Community Survey, ACS, table B19301, cell 1): the total income of all people 15 and over divided by the total population of all ages. Income means money income before taxes from wages, self-employment, interest, Social Security, retirement, public assistance and similar regular sources; it leaves out capital gains and non-cash benefits.",
+  "unit": "US dollars per person per year, in the dollars of the last year of each five-year window",
+  "value_type": "level",
+  "geography": "78 municipalities and Puerto Rico; also 901 barrios, 981 census tracts and 2,555 block groups",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "One estimate per five-year window, labeled by its last year (2010 = 2006-2010, 2024 = 2020-2024). A new window is added when the Census Bureau publishes it."
+  },
+  "method": "The observatory reads the table for every window: the per-sequence summary files for 2010-2020 and the table-based summary files for 2021-2024, for the 78 municipio rows and the Puerto Rico row. The value and its margin of error are the Census Bureau's published ones.",
+  "sources": [
+   "acs5",
+   "bls_cpi"
+  ],
+  "source_detail": "US Census Bureau, American Community Survey 5-year estimates, table B19301 (Per Capita Income in the Past 12 Months), cell 001; windows 2006-2010 to 2020-2024. Files, under https://www2.census.gov/programs-surveys/acs/summary_file/: for windows labeled 2021 to 2024, a table-based file such as 2024/table-based-SF/data/5YRData/acsdt5y2024-b19301.dat; for windows labeled 2010 to 2020, the per-sequence files in {year}/data/5_year_seq_by_state/PuertoRico/All_Geographies_Not_Tracts_Block_Groups/, where {year} is the last year of the window. Definitions follow the Census Bureau's ACS Subject Definitions (2024 edition: https://www2.census.gov/programs-surveys/acs/tech_docs/subject_definitions/2024_ACSSubjectDefinitions.pdf; each earlier year has its own edition). CPI-U, US city average (series CUUR0000SA0), used only for the price comparison in the caveats.",
+  "how_to_read": "It is lower than median household income mainly because a household's income is shared by about 2.5 people on average (2.48 in Puerto Rico in 2020-2024), and because it is a mean per person that includes children and people with no income. Do not compare the two as if they described the same unit. Do not use it to say what a typical person earns; it is a mean, and a few high incomes raise it. The number after the plus-minus sign (±) is the margin of error. At 90% confidence, the true value probably lies within that distance of the estimate.",
+  "caveats": [
+   "Dollars are those of the last year of each five-year window (2024 dollars for 2020-2024), as the Census Bureau states them. Amounts from different windows are not in the same dollars. To compare across windows, use the Analysis tab's Inflation-adjusted option, which restates dollars with the US Consumer Price Index (see the entry on inflation adjustment).",
+   "From 2010 to 2024 the US Consumer Price Index (CPI-U) annual average rose 43.9% (annual average index values: 218.056 in 2010 and 313.689 in 2024). A rise in dollars smaller than that is not a rise in buying power by that index.",
+   "Neighboring windows share four of their five years. To judge change, compare windows that do not overlap, for example 2010-2014, 2015-2019 and 2020-2024 (labeled 2014, 2019 and 2024). See the entry on American Community Survey 5-year windows.",
+   "A mean is pulled up by high incomes. The median household income is the better guide to a typical household.",
+   "Estimates for small municipalities are imprecise. The Full data dialog shows in italics any nonzero value whose margin of error is more than 30% of the estimate. Zero values and values with no published margin are not italicized, so an unmarked value is not proof of precision.",
+   "The Puerto Rico value is the Census Bureau's own island-level estimate, not an average of the 78 municipalities.",
+   "Also published for barrios, census tracts and block groups (acs_barrio.json, acs_tract.json and acs_blockgroup.json), each value with its margin of error where the Census Bureau gives one. Below the municipality the figure is rough. In 2020-2024 the margin of error is above 30% of the estimate (the CSV by area marks such values as less reliable; no map or table draws areas below the municipality yet) for 35% of barrios, 11% of census tracts and 50% of block groups that have a value. See methods.small_area_estimates."
+  ],
+  "see_also": [
+   "housing.median_hh_income",
+   "housing.poverty_pct",
+   "economy.gini",
+   "measures.inflation_adjustment",
+   "measures.margin_of_error",
+   "methods.acs_windows",
+   "methods.small_area_estimates"
+  ],
+  "example": "Puerto Rico, 2020-2024: $17,981 (± $179). Highest of the 78 municipalities in 2020-2024: Guaynabo, $34,713. Lowest: Adjuntas, $9,682.",
+  "where": {
+   "files": [
+    "housing_series.json:per_capita_income",
+    "acs_barrio.json:per_capita_income",
+    "acs_tract.json:per_capita_income",
+    "acs_blockgroup.json:per_capita_income"
+   ],
+   "view": [
+    {
+     "label": "Housing page, Full data: every year and municipality, margins of error, CSV download",
+     "href": "housing.html?d=per_capita_income"
+    },
+    {
+     "label": "Map, Analysis tab (group Income and poverty): shade municipalities by",
+     "href": "index.html#e=per_capita_income.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-02"
+ },
+ {
+  "id": "housing.median_owner_income",
+  "name": "Median income of owner households",
+  "domain": "economy",
+  "domains": ["economy"],
+  "group": "Income and poverty",
+  "kind": "variable",
+  "plain": "The middle income of households that own their home. Half of owner households earn more, half less. Puerto Rico: $32,125 a year in the 2020-2024 window, in 2024 dollars.",
+  "definition": "Median household income in the past 12 months of owner-occupied housing units (American Community Survey, ACS, table B25119, cell 2, Median Household Income by Tenure). Income means money income before taxes from wages, self-employment, interest, Social Security, retirement, public assistance and similar regular sources; it leaves out capital gains and non-cash benefits.",
+  "unit": "US dollars per year, in the dollars of the last year of each five-year window",
+  "value_type": "level",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "One estimate per five-year window, labeled by its last year (2010 = 2006-2010, 2024 = 2020-2024). A new window is added when the Census Bureau publishes it."
+  },
+  "method": "The observatory reads the table for every window: the per-sequence summary files for 2010-2020 and the table-based summary files for 2021-2024, for the 78 municipio rows and the Puerto Rico row. The value and its margin of error are the Census Bureau's published ones.",
+  "sources": [
+   "acs5",
+   "bls_cpi"
+  ],
+  "source_detail": "US Census Bureau, American Community Survey 5-year estimates, table B25119 (Median Household Income by Tenure of Householder), cell 002; windows 2006-2010 to 2020-2024. Files, under https://www2.census.gov/programs-surveys/acs/summary_file/: for windows labeled 2021 to 2024, a table-based file such as 2024/table-based-SF/data/5YRData/acsdt5y2024-b25119.dat; for windows labeled 2010 to 2020, the per-sequence files in {year}/data/5_year_seq_by_state/PuertoRico/All_Geographies_Not_Tracts_Block_Groups/, where {year} is the last year of the window. Definitions follow the Census Bureau's ACS Subject Definitions (2024 edition: https://www2.census.gov/programs-surveys/acs/tech_docs/subject_definitions/2024_ACSSubjectDefinitions.pdf; each earlier year has its own edition). CPI-U, US city average (series CUUR0000SA0), used only for the price comparison in the caveats.",
+  "how_to_read": "Tenure means whether a household owns or rents its home. It describes the home, not the person: a household is an owner household if someone in it owns or is buying the home. The Census Bureau groups it by the householder, the person in whose name the home is owned or rented. Read it with renter household income to see the gap between the two groups. The number after the plus-minus sign (±) is the margin of error. At 90% confidence, the true value probably lies within that distance of the estimate.",
+  "caveats": [
+   "Dollars are those of the last year of each five-year window (2024 dollars for 2020-2024), as the Census Bureau states them. Amounts from different windows are not in the same dollars. To compare across windows, use the Analysis tab's Inflation-adjusted option, which restates dollars with the US Consumer Price Index (see the entry on inflation adjustment).",
+   "From 2010 to 2024 the US Consumer Price Index (CPI-U) annual average rose 43.9% (annual average index values: 218.056 in 2010 and 313.689 in 2024). A rise in dollars smaller than that is not a rise in buying power by that index.",
+   "Neighboring windows share four of their five years. To judge change, compare windows that do not overlap, for example 2010-2014, 2015-2019 and 2020-2024 (labeled 2014, 2019 and 2024). See the entry on American Community Survey 5-year windows.",
+   "Estimates for small municipalities are imprecise. The Full data dialog shows in italics any nonzero value whose margin of error is more than 30% of the estimate. Zero values and values with no published margin are not italicized, so an unmarked value is not proof of precision.",
+   "The Puerto Rico value is the Census Bureau's own island-level estimate, not an average of the 78 municipalities."
+  ],
+  "see_also": [
+   "housing.median_renter_income",
+   "housing.median_hh_income",
+   "housing.owner_occupied_pct",
+   "measures.inflation_adjustment",
+   "measures.margin_of_error",
+   "methods.acs_windows"
+  ],
+  "example": "Puerto Rico, 2020-2024: $32,125 (± $321); renter households: $16,881.",
+  "where": {
+   "files": [
+    "housing_series.json:median_owner_income"
+   ],
+   "view": [
+    {
+     "label": "Housing page, Full data: every year and municipality, margins of error, CSV download",
+     "href": "housing.html?d=median_owner_income"
+    },
+    {
+     "label": "Map, Analysis tab (group Income and poverty): shade municipalities by",
+     "href": "index.html#e=median_owner_income.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-02"
+ },
+ {
+  "id": "housing.median_renter_income",
+  "name": "Median income of renter households",
+  "domain": "economy",
+  "domains": ["economy"],
+  "group": "Income and poverty",
+  "kind": "variable",
+  "plain": "The middle income of households that rent their home. Half of renter households earn more, half less. Puerto Rico: $16,881 a year in the 2020-2024 window, in 2024 dollars.",
+  "definition": "Median household income in the past 12 months of renter-occupied housing units (American Community Survey, ACS, table B25119, cell 3, Median Household Income by Tenure). Income means money income before taxes from wages, self-employment, interest, Social Security, retirement, public assistance and similar regular sources; it leaves out capital gains and non-cash benefits.",
+  "unit": "US dollars per year, in the dollars of the last year of each five-year window",
+  "value_type": "level",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "One estimate per five-year window, labeled by its last year (2010 = 2006-2010, 2024 = 2020-2024). A new window is added when the Census Bureau publishes it."
+  },
+  "method": "The observatory reads the table for every window: the per-sequence summary files for 2010-2020 and the table-based summary files for 2021-2024, for the 78 municipio rows and the Puerto Rico row. The value and its margin of error are the Census Bureau's published ones.",
+  "sources": [
+   "acs5",
+   "bls_cpi"
+  ],
+  "source_detail": "US Census Bureau, American Community Survey 5-year estimates, table B25119 (Median Household Income by Tenure of Householder), cell 003; windows 2006-2010 to 2020-2024. Files, under https://www2.census.gov/programs-surveys/acs/summary_file/: for windows labeled 2021 to 2024, a table-based file such as 2024/table-based-SF/data/5YRData/acsdt5y2024-b25119.dat; for windows labeled 2010 to 2020, the per-sequence files in {year}/data/5_year_seq_by_state/PuertoRico/All_Geographies_Not_Tracts_Block_Groups/, where {year} is the last year of the window. Definitions follow the Census Bureau's ACS Subject Definitions (2024 edition: https://www2.census.gov/programs-surveys/acs/tech_docs/subject_definitions/2024_ACSSubjectDefinitions.pdf; each earlier year has its own edition). CPI-U, US city average (series CUUR0000SA0), used only for the price comparison in the caveats.",
+  "how_to_read": "In the 2026-10 snapshot, the renter median in Puerto Rico is between 45% and 53% of the owner median in every window from 2010 to 2024 (53% in 2020-2024). In a few municipalities the gap is much smaller: in 30 of 1,169 municipality-window pairs the renter median is at least 80% of the owner median. Use it with median gross rent to see what rent takes from a typical renter's income. The number after the plus-minus sign (±) is the margin of error. At 90% confidence, the true value probably lies within that distance of the estimate.",
+  "caveats": [
+   "Dollars are those of the last year of each five-year window (2024 dollars for 2020-2024), as the Census Bureau states them. Amounts from different windows are not in the same dollars. To compare across windows, use the Analysis tab's Inflation-adjusted option, which restates dollars with the US Consumer Price Index (see the entry on inflation adjustment).",
+   "From 2010 to 2024 the US Consumer Price Index (CPI-U) annual average rose 43.9% (annual average index values: 218.056 in 2010 and 313.689 in 2024). A rise in dollars smaller than that is not a rise in buying power by that index.",
+   "Neighboring windows share four of their five years. To judge change, compare windows that do not overlap, for example 2010-2014, 2015-2019 and 2020-2024 (labeled 2014, 2019 and 2024). See the entry on American Community Survey 5-year windows.",
+   "In the 2026-10 snapshot, one value is missing: Florida has no estimate for the 2014-2018 window (labeled 2018); the Census Bureau file holds a dot instead of a number.",
+   "Noisy in small places. In the 2026-10 snapshot, 143 of the 1,169 municipality estimates (one of the 1,170 is missing) have a margin of error larger than 30% of the estimate (for example Culebra in 2020-2024: $19,509, ± $12,636). The Full data dialog shows in italics any nonzero value whose margin of error is more than 30% of the estimate. Zero values and values with no published margin are not italicized, so an unmarked value is not proof of precision.",
+   "The Puerto Rico value is the Census Bureau's own island-level estimate, not an average of the 78 municipalities."
+  ],
+  "see_also": [
+   "housing.median_owner_income",
+   "housing.median_gross_rent",
+   "housing.renter_cost_burden_pct",
+   "housing.median_hh_income",
+   "measures.inflation_adjustment",
+   "measures.margin_of_error",
+   "methods.acs_windows"
+  ],
+  "example": "Puerto Rico, 2020-2024: $16,881 (± $300); owner households: $32,125. Lowest of the 78 municipalities in 2020-2024: Ponce, $9,515.",
+  "where": {
+   "files": [
+    "housing_series.json:median_renter_income"
+   ],
+   "view": [
+    {
+     "label": "Housing page, Full data: every year and municipality, margins of error, CSV download",
+     "href": "housing.html?d=median_renter_income"
+    },
+    {
+     "label": "Map, Analysis tab (group Income and poverty): shade municipalities by",
+     "href": "index.html#e=median_renter_income.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-02"
+ },
+ {
+  "id": "housing.median_home_value",
+  "name": "Median home value",
+  "domain": "housing",
+  "domains": ["housing"],
+  "group": "Prices and costs",
+  "kind": "variable",
+  "plain": "What owners say their home would sell for: half of owner-occupied homes are valued higher, half lower. Puerto Rico: $131,500 in the 2020-2024 window, in 2024 dollars. It is an owner's estimate, not a sale price.",
+  "definition": "Median value of owner-occupied housing units (American Community Survey, ACS, table B25077, cell 1). Value is the owner's own estimate of what the house and lot would sell for if for sale.",
+  "unit": "US dollars, in the dollars of the last year of each five-year window",
+  "value_type": "level",
+  "geography": "78 municipalities and Puerto Rico; also 901 barrios, 981 census tracts and 2,555 block groups",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "One estimate per five-year window, labeled by its last year (2010 = 2006-2010, 2024 = 2020-2024). A new window is added when the Census Bureau publishes it."
+  },
+  "method": "The observatory reads the table for every window: the per-sequence summary files for 2010-2020 and the table-based summary files for 2021-2024, for the 78 municipio rows and the Puerto Rico row. The value and its margin of error are the Census Bureau's published ones. The affordability ratio divides it by the maximum affordable loan.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "US Census Bureau, American Community Survey 5-year estimates, table B25077 (Median Value (Dollars)), cell 001; windows 2006-2010 to 2020-2024. Files, under https://www2.census.gov/programs-surveys/acs/summary_file/: for windows labeled 2021 to 2024, a table-based file such as 2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat; for windows labeled 2010 to 2020, the per-sequence files in {year}/data/5_year_seq_by_state/PuertoRico/All_Geographies_Not_Tracts_Block_Groups/, where {year} is the last year of the window. Definitions follow the Census Bureau's ACS Subject Definitions (2024 edition: https://www2.census.gov/programs-surveys/acs/tech_docs/subject_definitions/2024_ACSSubjectDefinitions.pdf; each earlier year has its own edition).",
+  "how_to_read": "Use it to compare places and windows, not to price a home. A rise can come from better homes, from owners' changing opinions or from different homes being sampled. The number after the plus-minus sign (±) is the margin of error. At 90% confidence, the true value probably lies within that distance of the estimate.",
+  "caveats": [
+   "It is an owner's opinion, not a recorded sale price, and it covers only owner-occupied homes. Rental homes, vacant homes and homes now on the market are not included, so it says nothing about current asking prices.",
+   "Dollars are those of the last year of each five-year window (2024 dollars for 2020-2024), as the Census Bureau states them. Amounts from different windows are not in the same dollars. To compare across windows, use the Analysis tab's Inflation-adjusted option, which restates dollars with the US Consumer Price Index (see the entry on inflation adjustment).",
+   "Neighboring windows share four of their five years. To judge change, compare windows that do not overlap, for example 2010-2014, 2015-2019 and 2020-2024 (labeled 2014, 2019 and 2024). See the entry on American Community Survey 5-year windows.",
+   "Noisy in small municipalities. For example Culebra in 2020-2024: $104,300 (± $14,624). The municipality profile warns for municipalities with fewer than 25,000 residents. The Full data dialog shows in italics any nonzero value whose margin of error is more than 30% of the estimate. Zero values and values with no published margin are not italicized, so an unmarked value is not proof of precision.",
+   "The Puerto Rico value is the Census Bureau's own island-level estimate, not an average of the 78 municipalities. The Housing page also prints the median of the 78 municipalities above each chart, which is a different number.",
+   "Also published for barrios, census tracts and block groups (acs_barrio.json, acs_tract.json and acs_blockgroup.json), each value with its margin of error where the Census Bureau gives one. Below the municipality the figure is rough. In 2020-2024 the margin of error is above 30% of the estimate (the CSV by area marks such values as less reliable; no map or table draws areas below the municipality yet) for 25% of barrios, 8% of census tracts and 28% of block groups that have a value. A median at the edge of an open-ended interval (the Census Bureau prints the boundary) or equal to 0 is not an estimate and is left empty (1 barrio in 2020-2024). See methods.small_area_estimates."
+  ],
+  "see_also": [
+   "housing.affordability_ratio",
+   "housing.max_affordable_loan",
+   "housing.median_hh_income",
+   "housing.median_gross_rent",
+   "study.table_6",
+   "measures.inflation_adjustment",
+   "municipalities.median_home_value",
+   "municipalities.home_value_change_pct",
+   "methods.acs_windows",
+   "measures.margin_of_error",
+   "municipalities.acs_reliability",
+   "methods.small_area_estimates"
+  ],
+  "example": "Puerto Rico, 2020-2024: $131,500 (± $959); in the 2006-2010 window: $112,600, in 2010 dollars. Highest of the 78 municipalities in 2020-2024: Guaynabo, $226,800. Lowest: Las Marías, $86,500.",
+  "where": {
+   "files": [
+    "housing_series.json:median_home_value",
+    "acs_barrio.json:median_home_value",
+    "acs_tract.json:median_home_value",
+    "acs_blockgroup.json:median_home_value"
+   ],
+   "view": [
+    {
+     "label": "Housing page, section 4 (Home ownership affordability): map and ranked chart",
+     "href": "housing.html#afford"
+    },
+    {
+     "label": "Housing page, Full data: every year and municipality, margins of error, CSV download",
+     "href": "housing.html?d=median_home_value"
+    },
+    {
+     "label": "Housing page, Municipality profile (Median home value)",
+     "href": "housing.html#profile"
+    },
+    {
+     "label": "Map, Analysis tab (group Housing · Prices and incomes): shade municipalities by",
+     "href": "index.html#e=median_home_value.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-02"
+ },
+ {
+  "id": "housing.median_gross_rent",
+  "name": "Median gross rent",
+  "domain": "housing",
+  "domains": ["housing"],
+  "group": "Prices and costs",
+  "kind": "variable",
+  "plain": "The middle monthly rent, with basic utilities included, paid by renters who pay cash rent. Half pay more, half less. Puerto Rico: $578 a month in the 2020-2024 window, in 2024 dollars. It is what current tenants pay, not asking rents.",
+  "definition": "Median gross rent of renter-occupied housing units that pay cash rent (American Community Survey, ACS, table B25064, cell 1). Gross rent is the contract rent plus the estimated monthly cost of utilities and fuels when the renter pays them.",
+  "unit": "US dollars per month, in the dollars of the last year of each five-year window",
+  "value_type": "level",
+  "geography": "78 municipalities and Puerto Rico; also 901 barrios and 981 census tracts",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "One estimate per five-year window, labeled by its last year (2010 = 2006-2010, 2024 = 2020-2024). A new window is added when the Census Bureau publishes it."
+  },
+  "method": "The observatory reads the table for every window: the per-sequence summary files for 2010-2020 and the table-based summary files for 2021-2024, for the 78 municipio rows and the Puerto Rico row. The value and its margin of error are the Census Bureau's published ones.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "US Census Bureau, American Community Survey 5-year estimates, table B25064 (Median Gross Rent (Dollars)), cell 001; windows 2006-2010 to 2020-2024. Files, under https://www2.census.gov/programs-surveys/acs/summary_file/: for windows labeled 2021 to 2024, a table-based file such as 2024/table-based-SF/data/5YRData/acsdt5y2024-b25064.dat; for windows labeled 2010 to 2020, the per-sequence files in {year}/data/5_year_seq_by_state/PuertoRico/All_Geographies_Not_Tracts_Block_Groups/, where {year} is the last year of the window. Definitions follow the Census Bureau's ACS Subject Definitions (2024 edition: https://www2.census.gov/programs-surveys/acs/tech_docs/subject_definitions/2024_ACSSubjectDefinitions.pdf; each earlier year has its own edition).",
+  "how_to_read": "It reflects what current tenants pay, including long-standing tenants. It can differ from the rents asked for homes on the market today. The number after the plus-minus sign (±) is the margin of error. At 90% confidence, the true value probably lies within that distance of the estimate.",
+  "caveats": [
+   "Households that pay no cash rent are not in the median, and the observatory holds no count of them. The nearest figure is the Census Bureau's 'Not computed' group for rent as a share of income: 173,394 of 414,280 renter households in Puerto Rico (42%) in 2020-2024. That group mixes households with no cash rent (left out of the median) and households with no or negative income (kept in it), so 42% is an upper limit for the share of renter households that pay no cash rent.",
+   "It says nothing about asking rents for homes now on the market.",
+   "Dollars are those of the last year of each five-year window (2024 dollars for 2020-2024), as the Census Bureau states them. Amounts from different windows are not in the same dollars. To compare across windows, use the Analysis tab's Inflation-adjusted option, which restates dollars with the US Consumer Price Index (see the entry on inflation adjustment).",
+   "Neighboring windows share four of their five years. To judge change, compare windows that do not overlap, for example 2010-2014, 2015-2019 and 2020-2024 (labeled 2014, 2019 and 2024). See the entry on American Community Survey 5-year windows.",
+   "Noisy in small municipalities. For example Culebra in 2020-2024: $528 (± $240). The municipality profile warns for municipalities with fewer than 25,000 residents. The Full data dialog shows in italics any nonzero value whose margin of error is more than 30% of the estimate. Zero values and values with no published margin are not italicized, so an unmarked value is not proof of precision.",
+   "The Puerto Rico value is the Census Bureau's own island-level estimate, not an average of the 78 municipalities. The Housing page also prints the median of the 78 municipalities above each chart, which is a different number.",
+   "Also published for barrios and census tracts (acs_barrio.json and acs_tract.json), each value with its margin of error where the Census Bureau gives one. Below the municipality the figure is rough. In 2020-2024 the margin of error is above 30% of the estimate (the CSV by area marks such values as less reliable; no map or table draws areas below the municipality yet) for 37% of barrios and 39% of census tracts that have a value. A median at the edge of an open-ended interval (the Census Bureau prints the boundary) or equal to 0 is not an estimate and is left empty. See methods.small_area_estimates."
+  ],
+  "see_also": [
+   "housing.median_rent_pct_income",
+   "housing.renter_cost_burden_pct",
+   "housing.median_renter_income",
+   "housing.median_home_value",
+   "measures.inflation_adjustment",
+   "municipalities.median_gross_rent",
+   "municipalities.gross_rent_change_pct",
+   "methods.acs_windows",
+   "measures.margin_of_error",
+   "municipalities.acs_reliability",
+   "methods.small_area_estimates"
+  ],
+  "example": "Puerto Rico, 2020-2024: $578 a month (± $6); in the 2006-2010 window: $425, in 2010 dollars. Highest of the 78 municipalities in 2020-2024: Guaynabo, $901. Lowest: Guánica, $349.",
+  "where": {
+   "files": [
+    "housing_series.json:median_gross_rent",
+    "acs_barrio.json:median_gross_rent",
+    "acs_tract.json:median_gross_rent"
+   ],
+   "view": [
+    {
+     "label": "Housing page, section 4 (Home ownership affordability): map and ranked chart",
+     "href": "housing.html#afford"
+    },
+    {
+     "label": "Housing page, Full data: every year and municipality, margins of error, CSV download",
+     "href": "housing.html?d=median_gross_rent"
+    },
+    {
+     "label": "Housing page, Municipality profile (Median gross rent)",
+     "href": "housing.html#profile"
+    },
+    {
+     "label": "Map, Analysis tab (group Housing · Prices and incomes): shade municipalities by",
+     "href": "index.html#e=median_gross_rent.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-02"
+ },
+ {
+  "id": "housing.median_owner_costs_mortgage",
+  "name": "Median monthly owner costs, with a mortgage",
+  "domain": "housing",
+  "domains": ["housing"],
+  "group": "Prices and costs",
+  "kind": "variable",
+  "plain": "The middle monthly cost of owning a home that still has a mortgage, including taxes, insurance and utilities. Puerto Rico: $946 a month in the 2020-2024 window, in 2024 dollars.",
+  "definition": "Median selected monthly owner costs of owner-occupied housing units with a mortgage (American Community Survey, ACS, table B25088, cell 2). Selected monthly owner costs add the monthly payments for mortgages and similar debts, property taxes, property insurance, utilities and fuel, plus condominium or mobile-home fees where they apply. They do not include repairs or maintenance.",
+  "unit": "US dollars per month, in the dollars of the last year of each five-year window",
+  "value_type": "level",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "One estimate per five-year window, labeled by its last year (2010 = 2006-2010, 2024 = 2020-2024). A new window is added when the Census Bureau publishes it."
+  },
+  "method": "The observatory reads the table for every window: the per-sequence summary files for 2010-2020 and the table-based summary files for 2021-2024, for the 78 municipio rows and the Puerto Rico row. The value and its margin of error are the Census Bureau's published ones.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "US Census Bureau, American Community Survey 5-year estimates, table B25088 (Median Selected Monthly Owner Costs (Dollars) by Mortgage Status), cell 002; windows 2006-2010 to 2020-2024. Files, under https://www2.census.gov/programs-surveys/acs/summary_file/: for windows labeled 2021 to 2024, a table-based file such as 2024/table-based-SF/data/5YRData/acsdt5y2024-b25088.dat; for windows labeled 2010 to 2020, the per-sequence files in {year}/data/5_year_seq_by_state/PuertoRico/All_Geographies_Not_Tracts_Block_Groups/, where {year} is the last year of the window. Definitions follow the Census Bureau's ACS Subject Definitions (2024 edition: https://www2.census.gov/programs-surveys/acs/tech_docs/subject_definitions/2024_ACSSubjectDefinitions.pdf; each earlier year has its own edition).",
+  "how_to_read": "Compare it with owner costs without a mortgage to see what a mortgage adds. It is bigger than a mortgage payment alone because it includes taxes, insurance, utilities and fuel. The number after the plus-minus sign (±) is the margin of error. At 90% confidence, the true value probably lies within that distance of the estimate.",
+  "caveats": [
+   "Only owners with a mortgage are counted. It is not the cost of buying a home today: it reflects mortgages taken out in many different years and at many different rates.",
+   "It includes utilities, so it is not comparable with the principal-and-interest payment used for the maximum affordable loan.",
+   "In the 2026-10 snapshot, one value is missing: Culebra has no estimate for the 2017-2021 window (labeled 2021); the Census Bureau file gives a code instead of a number.",
+   "Dollars are those of the last year of each five-year window (2024 dollars for 2020-2024), as the Census Bureau states them. Amounts from different windows are not in the same dollars. To compare across windows, use the Analysis tab's Inflation-adjusted option, which restates dollars with the US Consumer Price Index (see the entry on inflation adjustment).",
+   "Neighboring windows share four of their five years. To judge change, compare windows that do not overlap, for example 2010-2014, 2015-2019 and 2020-2024 (labeled 2014, 2019 and 2024). See the entry on American Community Survey 5-year windows.",
+   "Estimates for small municipalities are imprecise. The Full data dialog shows in italics any nonzero value whose margin of error is more than 30% of the estimate. Zero values and values with no published margin are not italicized, so an unmarked value is not proof of precision.",
+   "The Puerto Rico value is the Census Bureau's own island-level estimate, not an average of the 78 municipalities."
+  ],
+  "see_also": [
+   "housing.median_owner_costs_no_mortgage",
+   "housing.owner_cost_burden_pct",
+   "housing.median_owner_income",
+   "housing.max_affordable_loan",
+   "measures.inflation_adjustment",
+   "methods.acs_windows",
+   "measures.margin_of_error",
+   "municipalities.acs_reliability"
+  ],
+  "example": "Puerto Rico, 2020-2024: $946 a month (± $8); owners without a mortgage: $180.",
+  "where": {
+   "files": [
+    "housing_series.json:median_owner_costs_mortgage"
+   ],
+   "view": [
+    {
+     "label": "Housing page, Full data: every year and municipality, margins of error, CSV download",
+     "href": "housing.html?d=median_owner_costs_mortgage"
+    },
+    {
+     "label": "Map, Analysis tab (group Housing · Prices and incomes): shade municipalities by",
+     "href": "index.html#e=median_owner_costs_mortgage.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-02"
+ },
+ {
+  "id": "housing.median_owner_costs_no_mortgage",
+  "name": "Median monthly owner costs, no mortgage",
+  "domain": "housing",
+  "domains": ["housing"],
+  "group": "Prices and costs",
+  "kind": "variable",
+  "plain": "The middle monthly cost of owning a home with no mortgage: taxes, insurance, utilities and fuel. Puerto Rico: $180 a month in the 2020-2024 window, in 2024 dollars.",
+  "definition": "Median selected monthly owner costs of owner-occupied housing units without a mortgage (American Community Survey, ACS, table B25088, cell 3). Selected monthly owner costs add the monthly payments for mortgages and similar debts, property taxes, property insurance, utilities and fuel, plus condominium or mobile-home fees where they apply. They do not include repairs or maintenance.",
+  "unit": "US dollars per month, in the dollars of the last year of each five-year window",
+  "value_type": "level",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "One estimate per five-year window, labeled by its last year (2010 = 2006-2010, 2024 = 2020-2024). A new window is added when the Census Bureau publishes it."
+  },
+  "method": "The observatory reads the table for every window: the per-sequence summary files for 2010-2020 and the table-based summary files for 2021-2024, for the 78 municipio rows and the Puerto Rico row. The value and its margin of error are the Census Bureau's published ones.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "US Census Bureau, American Community Survey 5-year estimates, table B25088 (Median Selected Monthly Owner Costs (Dollars) by Mortgage Status), cell 003; windows 2006-2010 to 2020-2024. Files, under https://www2.census.gov/programs-surveys/acs/summary_file/: for windows labeled 2021 to 2024, a table-based file such as 2024/table-based-SF/data/5YRData/acsdt5y2024-b25088.dat; for windows labeled 2010 to 2020, the per-sequence files in {year}/data/5_year_seq_by_state/PuertoRico/All_Geographies_Not_Tracts_Block_Groups/, where {year} is the last year of the window. Definitions follow the Census Bureau's ACS Subject Definitions (2024 edition: https://www2.census.gov/programs-surveys/acs/tech_docs/subject_definitions/2024_ACSSubjectDefinitions.pdf; each earlier year has its own edition).",
+  "how_to_read": "It shows the running cost of a home with no mortgage. Compare it with owner costs with a mortgage to see what the mortgage adds. The number after the plus-minus sign (±) is the margin of error. At 90% confidence, the true value probably lies within that distance of the estimate.",
+  "caveats": [
+   "Only owners without a mortgage are counted, so the group differs from owners with a mortgage in more ways than the mortgage.",
+   "In the 2026-10 snapshot, Maricao shows $99 with no margin of error in five windows (labeled 2010, 2011, 2019, 2020 and 2021). In the 2017-2021 file the margin is the code -333333333, which the Census Bureau uses when a median falls in an open-ended interval; in the other four files the margin field holds a dot (no value). Treat $99 as a boundary value, not a measured median.",
+   "Dollars are those of the last year of each five-year window (2024 dollars for 2020-2024), as the Census Bureau states them. Amounts from different windows are not in the same dollars. To compare across windows, use the Analysis tab's Inflation-adjusted option, which restates dollars with the US Consumer Price Index (see the entry on inflation adjustment).",
+   "Neighboring windows share four of their five years. To judge change, compare windows that do not overlap, for example 2010-2014, 2015-2019 and 2020-2024 (labeled 2014, 2019 and 2024). See the entry on American Community Survey 5-year windows.",
+   "Estimates for small municipalities are imprecise. The Full data dialog shows in italics any nonzero value whose margin of error is more than 30% of the estimate. Zero values and values with no published margin are not italicized, so an unmarked value is not proof of precision.",
+   "The Puerto Rico value is the Census Bureau's own island-level estimate, not an average of the 78 municipalities."
+  ],
+  "see_also": [
+   "housing.median_owner_costs_mortgage",
+   "housing.median_owner_income",
+   "housing.median_gross_rent",
+   "measures.inflation_adjustment",
+   "methods.acs_windows",
+   "measures.margin_of_error",
+   "municipalities.acs_reliability"
+  ],
+  "example": "Puerto Rico, 2020-2024: $180 a month (± $2); owners with a mortgage: $946.",
+  "where": {
+   "files": [
+    "housing_series.json:median_owner_costs_no_mortgage"
+   ],
+   "view": [
+    {
+     "label": "Housing page, Full data: every year and municipality, margins of error, CSV download",
+     "href": "housing.html?d=median_owner_costs_no_mortgage"
+    },
+    {
+     "label": "Map, Analysis tab (group Housing · Prices and incomes): shade municipalities by",
+     "href": "index.html#e=median_owner_costs_no_mortgage.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-02"
+ },
+ {
+  "id": "housing.median_rent_pct_income",
+  "name": "Median gross rent as a share of household income",
+  "domain": "housing",
+  "domains": ["housing"],
+  "group": "Cost burden",
+  "kind": "variable",
+  "plain": "The middle share of income that renter households spend on rent. Half spend a larger share, half a smaller one. Puerto Rico: 30.4% in the 2020-2024 window.",
+  "definition": "Median, across renter households for which it can be computed, of gross rent divided by household income (American Community Survey, ACS, table B25071, cell 1). Gross rent includes utilities and fuels paid by the renter.",
+  "unit": "% of household income (median across renter households)",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico; also 901 barrios and 981 census tracts",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "One estimate per five-year window, labeled by its last year (2010 = 2006-2010, 2024 = 2020-2024). A new window is added when the Census Bureau publishes it."
+  },
+  "method": "The observatory reads the table for every window: the per-sequence summary files for 2010-2020 and the table-based summary files for 2021-2024, for the 78 municipio rows and the Puerto Rico row. The value and its margin of error are the Census Bureau's published ones.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "US Census Bureau, American Community Survey 5-year estimates, table B25071 (Median Gross Rent as a Percentage of Household Income in the Past 12 Months), cell 001; windows 2006-2010 to 2020-2024. Files, under https://www2.census.gov/programs-surveys/acs/summary_file/: for windows labeled 2021 to 2024, a table-based file such as 2024/table-based-SF/data/5YRData/acsdt5y2024-b25071.dat; for windows labeled 2010 to 2020, the per-sequence files in {year}/data/5_year_seq_by_state/PuertoRico/All_Geographies_Not_Tracts_Block_Groups/, where {year} is the last year of the window. Definitions follow the Census Bureau's ACS Subject Definitions (2024 edition: https://www2.census.gov/programs-surveys/acs/tech_docs/subject_definitions/2024_ACSSubjectDefinitions.pdf; each earlier year has its own edition).",
+  "how_to_read": "A value of 30 means half of renter households pay 30% or more of their income in rent. It is the middle of the households' own ratios. It is not median rent divided by median income. It is not the share of cost-burdened renters (see cost-burdened renters). The number after the plus-minus sign (±) is the margin of error. At 90% confidence, the true value probably lies within that distance of the estimate.",
+  "caveats": [
+   "Households for which the Census Bureau cannot compute the ratio, such as those paying no cash rent or with no or negative income, are left out. The data hold no count of that group for this table. For scale, the 'Not computed' group in table B25070 (a different table, used for the cost-burden shares) is 173,394 of 414,280 renter households in Puerto Rico (42%) in 2020-2024.",
+   "Noisy in small municipalities. In the 2026-10 snapshot, 153 of the 1,165 municipality estimates that have a margin of error (1,170 in all) have a margin larger than 30% of the estimate. The Full data dialog shows in italics any nonzero value whose margin of error is more than 30% of the estimate. Zero values and values with no published margin are not italicized, so an unmarked value is not proof of precision.",
+   "In the 2026-10 snapshot, five municipality estimates have no margin of error: Barranquitas, Florida and Las Marías in 2013-2017 (50.0), Barranquitas in 2014-2018 (51.0) and Naranjito in 2018-2022 (51.0). In the 2013-2017 and 2014-2018 files the margin field holds a dot (no value); in the 2018-2022 file it is the code -333333333, which the Census Bureau uses when a median falls in an open-ended interval (here, 50% or more of income). Read these values as '50% or more'.",
+   "Neighboring windows share four of their five years. To judge change, compare windows that do not overlap, for example 2010-2014, 2015-2019 and 2020-2024 (labeled 2014, 2019 and 2024). See the entry on American Community Survey 5-year windows.",
+   "The Puerto Rico value is the Census Bureau's own island-level estimate, not an average of the 78 municipalities. The Housing page also prints the median of the 78 municipalities above each chart, which is a different number.",
+   "Also published for barrios and census tracts (acs_barrio.json and acs_tract.json), each value with its margin of error where the Census Bureau gives one. Below the municipality the figure is rough. In 2020-2024 the margin of error is above 30% of the estimate (the CSV by area marks such values as less reliable; no map or table draws areas below the municipality yet) for 64% of barrios and 66% of census tracts that have a value. A median at the edge of an open-ended interval (the Census Bureau prints the boundary) or equal to 0 is not an estimate and is left empty (47 barrios and 74 census tracts in 2020-2024). See methods.small_area_estimates."
+  ],
+  "see_also": [
+   "housing.renter_cost_burden_pct",
+   "housing.renter_severe_burden_pct",
+   "housing.median_gross_rent",
+   "housing.median_renter_income",
+   "study.table_3",
+   "methods.acs_windows",
+   "measures.margin_of_error",
+   "municipalities.acs_reliability",
+   "methods.small_area_estimates"
+  ],
+  "example": "Puerto Rico, 2020-2024: 30.4% (± 0.6 points). Highest of the 78 municipalities in 2020-2024: Vega Alta, 39.2%. Lowest: Maricao, 18.1%.",
+  "where": {
+   "files": [
+    "housing_series.json:median_rent_pct_income",
+    "acs_barrio.json:median_rent_pct_income",
+    "acs_tract.json:median_rent_pct_income"
+   ],
+   "view": [
+    {
+     "label": "Housing page, section 3 (The housing cost burden): map and ranked chart",
+     "href": "housing.html#burden"
+    },
+    {
+     "label": "Housing page, Full data: every year and municipality, margins of error, CSV download",
+     "href": "housing.html?d=median_rent_pct_income"
+    },
+    {
+     "label": "Map, Analysis tab (group Housing · Cost burden): shade municipalities by",
+     "href": "index.html#e=median_rent_pct_income.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-02"
+ },
+ {
+  "id": "housing.renter_cost_burden_pct",
+  "name": "Cost-burdened renters (30%+ of income on rent)",
+  "domain": "housing",
+  "domains": ["housing"],
+  "group": "Cost burden",
+  "kind": "variable",
+  "plain": "Out of every 100 renter households for which the Census Bureau could compute it, how many pay 30% or more of their income in rent. Puerto Rico: 50.8% in the 2020-2024 window. Households that pay no cash rent or have no income are not in the count.",
+  "definition": "Renter households paying 30% or more of household income in gross rent (American Community Survey, ACS, table B25070, cells 7 to 10) divided by renter households whose ratio can be computed (cell 1 minus cell 11, 'Not computed'), times 100. Gross rent includes utilities and fuels paid by the renter. The bands start at 30.0%, so a household paying exactly 30% is counted.",
+  "unit": "% of renter households whose rent-to-income ratio can be computed",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "One estimate per five-year window, labeled by its last year (2010 = 2006-2010, 2024 = 2020-2024). A new window is added when the Census Bureau publishes it."
+  },
+  "method": "The observatory reads the table for every window: the per-sequence summary files for 2010-2020 and the table-based summary files for 2021-2024, for the 78 municipio rows and the Puerto Rico row. It adds cells 7, 8, 9 and 10 and divides by cell 1 minus cell 11. The margin of error of the share is computed by the observatory from the published margins of its parts, with the Census Bureau's formulas for sums (margins added in quadrature) and for a proportion whose numerator is part of the denominator. The same arithmetic summed over bands 2 to 10 gives the island-wide distribution in the study's Table 3.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "US Census Bureau, American Community Survey 5-year estimates, table B25070 (Gross Rent as a Percentage of Household Income in the Past 12 Months), cells 001, 007-011; windows 2006-2010 to 2020-2024. Files, under https://www2.census.gov/programs-surveys/acs/summary_file/: for windows labeled 2021 to 2024, a table-based file such as 2024/table-based-SF/data/5YRData/acsdt5y2024-b25070.dat; for windows labeled 2010 to 2020, the per-sequence files in {year}/data/5_year_seq_by_state/PuertoRico/All_Geographies_Not_Tracts_Block_Groups/, where {year} is the last year of the window. Definitions follow the Census Bureau's ACS Subject Definitions (2024 edition: https://www2.census.gov/programs-surveys/acs/tech_docs/subject_definitions/2024_ACSSubjectDefinitions.pdf; each earlier year has its own edition).",
+  "how_to_read": "A value of 50 means that half of the renter households in the base spend 30% or more of income on rent. The 30% line is the common rule of thumb for cost burden, not a measure of hardship. It does not say how much money is left after rent. The number after the plus-minus sign (±) is the margin of error. At 90% confidence, the true value probably lies within that distance of the estimate.",
+  "caveats": [
+   "In Puerto Rico in 2020-2024, 173,394 of 414,280 renter households (42%) are in the Census Bureau's 'Not computed' group, which includes households that pay no cash rent and households with no or negative income. They are left out of the base, so the percentage describes the other 58%.",
+   "Noisy in small municipalities: in the 2026-10 snapshot, 736 of 1,170 municipality estimates have a margin of error larger than 30% of the estimate. Culebra in 2020-2024 shows 22.0% with a margin of ± 24.2 points. The municipality profile warns for municipalities with fewer than 25,000 residents. The Full data dialog shows in italics any nonzero value whose margin of error is more than 30% of the estimate. Zero values and values with no published margin are not italicized, so an unmarked value is not proof of precision.",
+   "Neighboring windows share four of their five years. To judge change, compare windows that do not overlap, for example 2010-2014, 2015-2019 and 2020-2024 (labeled 2014, 2019 and 2024). See the entry on American Community Survey 5-year windows.",
+   "The Puerto Rico value is the Census Bureau's own island-level estimate, not an average of the 78 municipalities. The Housing page also prints the median of the 78 municipalities above each chart, which is a different number."
+  ],
+  "see_also": [
+   "housing.renter_severe_burden_pct",
+   "housing.owner_cost_burden_pct",
+   "housing.median_rent_pct_income",
+   "housing.median_gross_rent",
+   "study.table_3",
+   "municipalities.renter_cost_burden_pct",
+   "methods.acs_windows",
+   "measures.margin_of_error",
+   "municipalities.acs_reliability"
+  ],
+  "example": "Puerto Rico, 2020-2024: 50.8% (± 0.2 points). Highest of the 78 municipalities in 2020-2024: Florida, 65.2%. The study printed 52% for renters (Table 3); the data here do not show which window the study used. For reference, the same arithmetic on the 2017-2021 window gives 52.8%.",
+  "where": {
+   "files": [
+    "housing_series.json:renter_cost_burden_pct"
+   ],
+   "view": [
+    {
+     "label": "Housing page, section 3 (The housing cost burden): map and ranked chart",
+     "href": "housing.html#burden"
+    },
+    {
+     "label": "Housing page, Full data: every year and municipality, margins of error, CSV download",
+     "href": "housing.html?d=renter_cost_burden_pct"
+    },
+    {
+     "label": "Housing page, Municipality profile (Cost-burdened renters)",
+     "href": "housing.html#profile"
+    },
+    {
+     "label": "Map, Analysis tab (group Housing · Cost burden): shade municipalities by",
+     "href": "index.html#e=renter_cost_burden_pct.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-02"
+ },
+ {
+  "id": "housing.renter_severe_burden_pct",
+  "name": "Severely cost-burdened renters (50%+ of income)",
+  "domain": "housing",
+  "domains": ["housing"],
+  "group": "Cost burden",
+  "kind": "variable",
+  "plain": "Out of every 100 renter households for which the Census Bureau could compute it, how many pay half or more of their income in rent. Puerto Rico: 26.9% in the 2020-2024 window.",
+  "definition": "Renter households paying 50% or more of household income in gross rent (American Community Survey, ACS, table B25070, cell 10) divided by renter households whose ratio can be computed (cell 1 minus cell 11, 'Not computed'), times 100.",
+  "unit": "% of renter households whose rent-to-income ratio can be computed",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "One estimate per five-year window, labeled by its last year (2010 = 2006-2010, 2024 = 2020-2024). A new window is added when the Census Bureau publishes it."
+  },
+  "method": "The observatory reads the table for every window: the per-sequence summary files for 2010-2020 and the table-based summary files for 2021-2024, for the 78 municipio rows and the Puerto Rico row. It divides cell 10 by cell 1 minus cell 11. The margin of error of the share is computed by the observatory from the published margins of its parts, with the Census Bureau's formulas for sums (margins added in quadrature) and for a proportion whose numerator is part of the denominator.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "US Census Bureau, American Community Survey 5-year estimates, table B25070 (Gross Rent as a Percentage of Household Income in the Past 12 Months), cells 001, 010 and 011; windows 2006-2010 to 2020-2024. Files, under https://www2.census.gov/programs-surveys/acs/summary_file/: for windows labeled 2021 to 2024, a table-based file such as 2024/table-based-SF/data/5YRData/acsdt5y2024-b25070.dat; for windows labeled 2010 to 2020, the per-sequence files in {year}/data/5_year_seq_by_state/PuertoRico/All_Geographies_Not_Tracts_Block_Groups/, where {year} is the last year of the window. Definitions follow the Census Bureau's ACS Subject Definitions (2024 edition: https://www2.census.gov/programs-surveys/acs/tech_docs/subject_definitions/2024_ACSSubjectDefinitions.pdf; each earlier year has its own edition).",
+  "how_to_read": "It is a subset of the cost-burdened renters: every household counted here is also in the 30% or more group. A value of 27 means that about 27 of every 100 renter households in the base pay half or more of their income in rent. The number after the plus-minus sign (±) is the margin of error. At 90% confidence, the true value probably lies within that distance of the estimate.",
+  "caveats": [
+   "In Puerto Rico in 2020-2024, 173,394 of 414,280 renter households (42%) are in the Census Bureau's 'Not computed' group, which includes households that pay no cash rent and households with no or negative income. They are left out of the base, so the percentage describes the other 58%.",
+   "A value of 0.0 can be a sample result: Culebra shows 0.0% in the 2017-2021 and 2018-2022 windows, with fewer than 200 renter households.",
+   "Noisy in small municipalities: in the 2026-10 snapshot, 469 of the 1,170 municipality estimates have a margin of error larger than 30% of the estimate. The two estimates of 0.0 are not among the 469. The municipality profile warns for municipalities with fewer than 25,000 residents. The Full data dialog shows in italics any nonzero value whose margin of error is more than 30% of the estimate. Zero values and values with no published margin are not italicized, so an unmarked value is not proof of precision.",
+   "Neighboring windows share four of their five years. To judge change, compare windows that do not overlap, for example 2010-2014, 2015-2019 and 2020-2024 (labeled 2014, 2019 and 2024). See the entry on American Community Survey 5-year windows.",
+   "The Puerto Rico value is the Census Bureau's own island-level estimate, not an average of the 78 municipalities. The Housing page also prints the median of the 78 municipalities above each chart, which is a different number."
+  ],
+  "see_also": [
+   "housing.renter_cost_burden_pct",
+   "housing.median_rent_pct_income",
+   "housing.median_renter_income",
+   "study.table_3",
+   "methods.acs_windows",
+   "measures.margin_of_error",
+   "municipalities.acs_reliability"
+  ],
+  "example": "Puerto Rico, 2020-2024: 26.9% (± 0.5 points). Highest of the 78 municipalities in 2020-2024: Mayagüez, 39.4%.",
+  "where": {
+   "files": [
+    "housing_series.json:renter_severe_burden_pct"
+   ],
+   "view": [
+    {
+     "label": "Housing page, section 3 (The housing cost burden): map and ranked chart",
+     "href": "housing.html#burden"
+    },
+    {
+     "label": "Housing page, Full data: every year and municipality, margins of error, CSV download",
+     "href": "housing.html?d=renter_severe_burden_pct"
+    },
+    {
+     "label": "Housing page, Municipality profile (Severely cost-burdened renters)",
+     "href": "housing.html#profile"
+    },
+    {
+     "label": "Map, Analysis tab (group Housing · Cost burden): shade municipalities by",
+     "href": "index.html#e=renter_severe_burden_pct.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-02"
+ },
+ {
+  "id": "housing.owner_cost_burden_pct",
+  "name": "Cost-burdened owners with a mortgage (30%+ of income)",
+  "domain": "housing",
+  "domains": ["housing"],
+  "group": "Cost burden",
+  "kind": "variable",
+  "plain": "Out of every 100 owner households with a mortgage, how many spend 30% or more of their income on owner costs: mortgage, taxes, insurance and utilities. Puerto Rico: 36.4% in the 2020-2024 window. Owners without a mortgage are not counted.",
+  "definition": "Owner households with a mortgage whose selected monthly owner costs are 30% or more of household income (American Community Survey, ACS, table B25091, cells 8 to 11) divided by owner households with a mortgage whose ratio can be computed (cell 2 minus cell 12, 'Not computed'), times 100. Selected monthly owner costs add the monthly payments for mortgages and similar debts, property taxes, property insurance, utilities and fuel, plus condominium or mobile-home fees where they apply. They do not include repairs or maintenance.",
+  "unit": "% of owner households with a mortgage whose cost-to-income ratio can be computed",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "One estimate per five-year window, labeled by its last year (2010 = 2006-2010, 2024 = 2020-2024). A new window is added when the Census Bureau publishes it."
+  },
+  "method": "The observatory reads the table for every window: the per-sequence summary files for 2010-2020 and the table-based summary files for 2021-2024, for the 78 municipio rows and the Puerto Rico row. It adds cells 8, 9, 10 and 11 and divides by cell 2 minus cell 12. The margin of error of the share is computed by the observatory from the published margins of its parts, with the Census Bureau's formulas for sums (margins added in quadrature) and for a proportion whose numerator is part of the denominator. The same arithmetic over bands 3 to 11 gives the island-wide distribution in the study's Table 4.",
+  "sources": [
+   "acs5"
+  ],
+  "source_detail": "US Census Bureau, American Community Survey 5-year estimates, table B25091 (Mortgage Status by Selected Monthly Owner Costs as a Percentage of Household Income in the Past 12 Months), cells 002, 008-012; windows 2006-2010 to 2020-2024. Files, under https://www2.census.gov/programs-surveys/acs/summary_file/: for windows labeled 2021 to 2024, a table-based file such as 2024/table-based-SF/data/5YRData/acsdt5y2024-b25091.dat; for windows labeled 2010 to 2020, the per-sequence files in {year}/data/5_year_seq_by_state/PuertoRico/All_Geographies_Not_Tracts_Block_Groups/, where {year} is the last year of the window. Definitions follow the Census Bureau's ACS Subject Definitions (2024 edition: https://www2.census.gov/programs-surveys/acs/tech_docs/subject_definitions/2024_ACSSubjectDefinitions.pdf; each earlier year has its own edition).",
+  "how_to_read": "A value of 36 means that about 36 of every 100 owners with a mortgage spend 30% or more of income on owner costs. The costs include utilities and taxes, so the share is higher than a mortgage payment alone would give. The number after the plus-minus sign (±) is the margin of error. At 90% confidence, the true value probably lies within that distance of the estimate.",
+  "caveats": [
+   "Owners with no mortgage are outside the base, although they can also be burdened by taxes, insurance and repairs.",
+   "Very noisy in small municipalities. Culebra shows 61.5% in 2020-2024 with a margin of ± 46.3 points; Vieques shows 0.0% in the 2015-2019 and 2016-2020 windows, with about 76 owner households with a mortgage in the first of them (margin ± 73 households). The municipality profile warns for municipalities with fewer than 25,000 residents. The Full data dialog shows in italics any nonzero value whose margin of error is more than 30% of the estimate. Zero values and values with no published margin are not italicized, so an unmarked value is not proof of precision.",
+   "In Puerto Rico in 2020-2024, 4,803 of 324,311 owner households with a mortgage (1.5%) are in the 'Not computed' group and are left out of the base.",
+   "The page also prints 36.5% for 2020-2024 beside the Table 4 chart, because it adds the four rounded bands (7.4 + 5.8 + 6.8 + 16.5). This series divides unrounded counts and gives 36.43, which shows as 36.4%. The two can differ by 0.1 point.",
+   "Neighboring windows share four of their five years. To judge change, compare windows that do not overlap, for example 2010-2014, 2015-2019 and 2020-2024 (labeled 2014, 2019 and 2024). See the entry on American Community Survey 5-year windows.",
+   "The Puerto Rico value is the Census Bureau's own island-level estimate, not an average of the 78 municipalities. The Housing page also prints the median of the 78 municipalities above each chart, which is a different number."
+  ],
+  "see_also": [
+   "housing.renter_cost_burden_pct",
+   "housing.median_owner_costs_mortgage",
+   "housing.median_owner_income",
+   "study.table_4",
+   "municipalities.owner_cost_burden_pct",
+   "methods.acs_windows",
+   "measures.margin_of_error",
+   "municipalities.acs_reliability"
+  ],
+  "example": "Puerto Rico, 2020-2024: 36.4% (± 0.8 points). The study printed 38% for owners with a mortgage (Table 4); the data here do not show which window the study used. For reference, the same arithmetic on the 2017-2021 window gives 41.3%.",
+  "where": {
+   "files": [
+    "housing_series.json:owner_cost_burden_pct"
+   ],
+   "view": [
+    {
+     "label": "Housing page, section 3 (The housing cost burden): map and ranked chart",
+     "href": "housing.html#burden"
+    },
+    {
+     "label": "Housing page, Full data: every year and municipality, margins of error, CSV download",
+     "href": "housing.html?d=owner_cost_burden_pct"
+    },
+    {
+     "label": "Housing page, Municipality profile (Cost-burdened owners, mortgage)",
+     "href": "housing.html#profile"
+    },
+    {
+     "label": "Map, Analysis tab (group Housing · Cost burden): shade municipalities by",
+     "href": "index.html#e=owner_cost_burden_pct.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-02"
+ },
+ {
+  "id": "housing.max_affordable_loan",
+  "name": "Maximum affordable 30-year loan",
+  "domain": "housing",
+  "domains": ["housing"],
+  "group": "Affordability",
+  "kind": "variable",
+  "plain": "The largest 30-year home loan a household with the area's median income could carry. The method assumes the household spends 30% of its income on housing. About 78% of that budget goes to the loan payment, at a fixed 5% interest rate. Puerto Rico: $95,921 in the 2020-2024 window. It is a yardstick, not a lender's limit.",
+  "definition": "A calculation on median household income (American Community Survey, ACS, table B19013). Monthly housing budget = income × 0.30 / 12. Loan payment = budget × 430/549 (about 78.3%, the share of the housing budget that the study's Table 6 puts on principal and interest). Maximum loan = payment × (1 - (1 + r)^-360) / r, with r = 0.05 / 12, rounded to whole dollars.",
+  "unit": "US dollars (loan amount), in the dollars of the last year of each five-year window",
+  "value_type": "level",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "One estimate per five-year window, labeled by its last year (2010 = 2006-2010, 2024 = 2020-2024). A new window is added when the Census Bureau publishes it."
+  },
+  "method": "The observatory applies the formula in the definition to the median household income of each municipality and of Puerto Rico in each window. The 30%, the 430/549 and the rate are fixed. The study prints no interest rate; the 5% is inferred from its Puerto Rico row (see the caveats). It is held fixed in every window, so windows differ only through incomes. No margin of error is calculated.",
+  "sources": [
+   "acs5",
+   "fpr_method"
+  ],
+  "source_detail": "Foundation for Puerto Rico (FPR) calculation (State of Housing 2023, Table 6 method) on US Census Bureau ACS 5-year table B19013, cell 001; windows 2006-2010 to 2020-2024. The study PDF at the link above numbers this table 8; the Housing page and this dictionary call it Table 6. Files, under https://www2.census.gov/programs-surveys/acs/summary_file/: for windows labeled 2021 to 2024, a table-based file such as 2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat; for windows labeled 2010 to 2020, the per-sequence files in {year}/data/5_year_seq_by_state/PuertoRico/All_Geographies_Not_Tracts_Block_Groups/, where {year} is the last year of the window. Definitions follow the Census Bureau's ACS Subject Definitions (2024 edition: https://www2.census.gov/programs-surveys/acs/tech_docs/subject_definitions/2024_ACSSubjectDefinitions.pdf; each earlier year has its own edition).",
+  "how_to_read": "Read it as: the loan size that this method says the typical household can support. If the typical home costs more than that, the typical household is priced out under the method. It is a way to compare places and years, not a prediction of what a bank would lend. The ratio of home value to this loan is the affordability ratio.",
+  "caveats": [
+   "The method makes five assumptions: 30% of income goes to housing; about 78% of that goes to principal and interest (the rest to taxes, insurance and other costs); a 30-year loan; a 5% interest rate in every window; and the median household income is the buyer's income. Change any one and the answer changes. It does not assess whether any household can buy a home or qualify for a loan, and it is not financial advice.",
+   "The study prints no interest rate. The 5% rate is inferred from the study's Puerto Rico row: $21,967 of income and an $80,181 maximum loan imply 4.994%. At exactly 5% the observatory's figures are $19 to $65 below the printed maximums.",
+   "Real mortgage rates changed over the period (the Housing page notes they ranged from under 4% to over 7%), so the figure is not what a lender would have offered in any one year.",
+   "It leaves out down payments, closing costs, other debts, credit history and lender rules. It also ignores that the median household is not necessarily a buyer.",
+   "It carries the sampling error of median household income, but no margin is shown for it.",
+   "Dollars are those of the last year of each five-year window (2024 dollars for 2020-2024), as the Census Bureau states them. Amounts from different windows are not in the same dollars. To compare across windows, use the Analysis tab's Inflation-adjusted option, which restates dollars with the US Consumer Price Index (see the entry on inflation adjustment).",
+   "Neighboring windows share four of their five years. To judge change, compare windows that do not overlap, for example 2010-2014, 2015-2019 and 2020-2024 (labeled 2014, 2019 and 2024). See the entry on American Community Survey 5-year windows."
+  ],
+  "see_also": [
+   "housing.affordability_ratio",
+   "housing.median_hh_income",
+   "housing.median_home_value",
+   "study.table_6",
+   "measures.inflation_adjustment",
+   "municipalities.affordability_method",
+   "municipalities.max_affordable_loan",
+   "layers.housing_affordability_scatter",
+   "methods.acs_windows"
+  ],
+  "example": "Puerto Rico, 2020-2024: median household income $26,297 gives a maximum loan of $95,921. Highest of the 78 municipalities in 2020-2024: Guaynabo, $170,456. Lowest: Las Marías, $59,507.",
+  "where": {
+   "files": [
+    "housing_series.json:max_affordable_loan"
+   ],
+   "view": [
+    {
+     "label": "Housing page, Full data: every year and municipality, CSV download",
+     "href": "housing.html?d=max_affordable_loan"
+    },
+    {
+     "label": "Housing page, Municipality profile (Max affordable 30-year loan)",
+     "href": "housing.html#profile"
+    },
+    {
+     "label": "Map, Analysis tab (group Housing · Affordability): shade municipalities by",
+     "href": "index.html#e=max_affordable_loan.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-02"
+ },
+ {
+  "id": "housing.affordability_ratio",
+  "name": "Home ownership affordability ratio",
+  "domain": "housing",
+  "domains": ["housing"],
+  "group": "Affordability",
+  "kind": "variable",
+  "plain": "How many times the typical home's value is larger than the largest loan the typical household could carry. Above 1.0, the typical home is out of reach for the typical household under the study's method. Puerto Rico: 1.37 in the 2020-2024 window.",
+  "definition": "Median home value (American Community Survey, ACS, table B25077) divided by the maximum affordable 30-year loan (calculated from median household income, ACS table B19013), for the same geography and window, rounded to two decimals.",
+  "unit": "ratio: home value divided by maximum affordable loan",
+  "value_type": "ratio",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "One estimate per five-year window, labeled by its last year (2010 = 2006-2010, 2024 = 2020-2024). A new window is added when the Census Bureau publishes it."
+  },
+  "method": "The observatory divides median home value by the maximum affordable loan and keeps the result only when both exist. The loan uses 30% of income for housing, 78% of that for principal and interest, a 30-year term and a fixed 5% rate. No margin of error is calculated.",
+  "sources": [
+   "acs5",
+   "fpr_method"
+  ],
+  "source_detail": "Foundation for Puerto Rico (FPR) calculation (State of Housing 2023, Table 6 method) on US Census Bureau ACS 5-year tables B25077 and B19013; windows 2006-2010 to 2020-2024. The study PDF at the link above numbers this table 8; the Housing page and this dictionary call it Table 6. Files, under https://www2.census.gov/programs-surveys/acs/summary_file/: for windows labeled 2021 to 2024, a table-based file such as 2024/table-based-SF/data/5YRData/acsdt5y2024-b25077.dat (one file per table: b25077, b19013); for windows labeled 2010 to 2020, the per-sequence files in {year}/data/5_year_seq_by_state/PuertoRico/All_Geographies_Not_Tracts_Block_Groups/, where {year} is the last year of the window. Definitions follow the Census Bureau's ACS Subject Definitions (2024 edition: https://www2.census.gov/programs-surveys/acs/tech_docs/subject_definitions/2024_ACSSubjectDefinitions.pdf; each earlier year has its own edition).",
+  "how_to_read": "A ratio of 1.37 means the typical home is worth 37% more than the largest loan the typical household could carry. Values at or below 1.0 mean it is within reach under the method. The Housing page colors a municipality 'out of reach' when the ratio is above 1.00 and 'within reach' otherwise.",
+  "caveats": [
+   "Both medians describe different groups: home value is for owner-occupied homes and owners' own estimates, while income is for all households, renters included. The ratio is a yardstick, not a measure of what buyers face for homes on the market. It does not assess whether any household can buy a home or qualify for a loan, and it is not financial advice.",
+   "It carries all the assumptions of the maximum affordable loan: 30% of income, 78% to principal and interest, a 30-year loan and a fixed 5% rate.",
+   "In the 2026-10 snapshot, the ratio is above 1.0 in all 78 municipalities in every window from 2010 to 2023. In 2020-2024 it is above 1.0 in 76 of 78; Culebra (0.97) and Guayanilla (1.00) are at or below 1.0.",
+   "Near 1.0 the label is not reliable: no margin is calculated, and the ratio is rounded to two decimals before the page labels it. Guayanilla in 2020-2024 (ratio 1.00 after rounding; $87,400 value against an $87,232 maximum loan) is labeled 'within reach' although its value is slightly above the loan. In the 2026-10 snapshot, four municipalities lie between 0.95 and 1.05 in 2020-2024 (Culebra 0.97, Guayanilla 1.00, Patillas 1.01, Gurabo 1.03). Treat ratios in that range as at the line.",
+   "Value and income come from the same window, so they are in the same dollars. Small municipalities have noisy medians, and the ratio multiplies that noise; no margin is shown.",
+   "Neighboring windows share four of their five years. To judge change, compare windows that do not overlap, for example 2010-2014, 2015-2019 and 2020-2024 (labeled 2014, 2019 and 2024). See the entry on American Community Survey 5-year windows."
+  ],
+  "see_also": [
+   "housing.max_affordable_loan",
+   "housing.median_home_value",
+   "housing.median_hh_income",
+   "study.table_6",
+   "municipalities.affordability_method",
+   "municipalities.affordability_ratio",
+   "layers.housing_affordability_scatter",
+   "methods.acs_windows"
+  ],
+  "example": "Puerto Rico, 2020-2024: median home value $131,500 divided by a maximum loan of $95,921 gives 1.37. Highest of the 78 municipalities in 2020-2024: Aguadilla, 1.92. Lowest: Culebra, 0.97.",
+  "where": {
+   "files": [
+    "housing_series.json:affordability_ratio"
+   ],
+   "view": [
+    {
+     "label": "Housing page, section 4 (Home ownership affordability): map, ranked chart and scatter",
+     "href": "housing.html#afford"
+    },
+    {
+     "label": "Housing page, Full data: every year and municipality, CSV download",
+     "href": "housing.html?d=affordability_ratio"
+    },
+    {
+     "label": "Housing page, Municipality profile (Affordability ratio)",
+     "href": "housing.html#profile"
+    },
+    {
+     "label": "Map, Analysis tab (group Housing · Affordability): shade municipalities by",
+     "href": "index.html#e=affordability_ratio.f.value.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-02"
+ },
+ {
+  "id": "housing.fema_ia_households",
+  "name": "Households approved for FEMA housing assistance",
+  "domain": "public-money",
+  "domains": ["public-money", "housing", "hazards"],
+  "group": "Disaster recovery",
+  "kind": "variable",
+  "plain": "The number of households FEMA (the Federal Emergency Management Agency) approved for help after disasters declared in a given year, by municipality. It counts approvals, not damage. It does not show how many homes were hurt or how much help people needed.",
+  "definition": "Sum, over the disasters declared in a calendar year, of the number of applicants approved for FEMA's Individuals and Households Program (IHP) in the municipality. It adds the OpenFEMA Housing Assistance data for owners and for renters (field approvedForFemaAssistance). The year is the year of the disaster declaration.",
+  "unit": "households (applicants approved for FEMA assistance), by year of disaster declaration",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "event-based",
+   "first": 2003,
+   "last": 2022,
+   "frequency": "One value per year that had a disaster declaration with housing assistance records. In the 2026-10 snapshot these years are 2003, 2004, 2008, 2011, 2017, 2020 and 2022. The data are not live: they are downloaded from OpenFEMA when the observatory's data are refreshed and kept until the next refresh. The values in the 2026-10 snapshot come from the download of 2026-10-02 and can change if FEMA revises its records."
+  },
+  "method": "The observatory reads the OpenFEMA API (v2) entities HousingAssistanceOwners and HousingAssistanceRenters for Puerto Rico, matches each county (the municipality) to the 78 municipalities, takes the year of each disaster from DisasterDeclarationsSummaries (declarationDate), and adds approvedForFemaAssistance for owners and renters and across the disasters of the year. Puerto Rico's value is the sum of the 78 municipalities (the one 'statewide' record holds zero). No margin of error.",
+  "sources": [
+   "openfema"
+  ],
+  "source_detail": "FEMA OpenFEMA, Housing Assistance Program Data, Owners and Renters (v2), field approvedForFemaAssistance; disaster years from OpenFEMA Disaster Declarations Summaries. Years with data in the 2026-10 snapshot: 2003 (severe storms, flooding, mudslides and landslides; disaster no. 1501), 2004 (Tropical Storm Jeanne; 1552), 2008 (severe storms and flooding; 1798), 2011 (Hurricane Irene, 4017, and Tropical Storm Maria, 4040), 2017 (Hurricane Irma, 4336, and Hurricane Maria, 4339), 2020 (the COVID-19 pandemic declaration, 4493; earthquakes, 4473; Hurricane Isaias, 4560; a severe storm and flooding, 4571) and 2022 (Hurricane Fiona, 4671, and a severe storm, flooding and landslides, 4649). API endpoints: https://www.fema.gov/api/open/v2/HousingAssistanceOwners and https://www.fema.gov/api/open/v2/HousingAssistanceRenters (state eq 'PR'). Dataset pages: https://www.fema.gov/openfema-data-page/housing-assistance-program-data-owners-v2 and https://www.fema.gov/openfema-data-page/housing-assistance-program-data-renters-v2. Disaster years: https://www.fema.gov/api/open/v2/DisasterDeclarationsSummaries.",
+  "how_to_read": "Read each value as 'households approved for help after disasters declared in that year'. In the 2026-10 snapshot, the island totals are 475,798 households in 2017 (Irma and Maria) and 741,313 in 2022 (Hurricane Fiona and a severe storm with flooding and landslides). This is a count, so larger municipalities show larger numbers (San Juan is highest in both years). The number of approvals and the dollars do not move together: 2022 has more approvals than 2017 but about half the dollars (see the approved amount). The data do not explain this difference.",
+  "caveats": [
+   "It measures aid approved, not damage, need or the number of homes affected. Who applies and is approved depends on FEMA rules and on people's access to the process.",
+   "OpenFEMA describes the counted field as the number of FEMA applicants approved for assistance. The observatory calls them households; the data the observatory keeps hold no household identifier, so they cannot show whether two applicants share a home.",
+   "Counts are added across the disasters declared in the year. A household approved under two disasters in the same year (for example Irma and Maria in 2017) is counted once for each disaster under which it was approved.",
+   "The Analysis tab's 'Per 1,000 residents' option divides households by residents, so it is not a share of households. Do not divide by the number of households to get a share: for scale, in the 2026-10 snapshot the 2022 approvals equal about 61% of the island's 1,219,658 households in the 2018-2022 American Community Survey (ACS) 5-year estimates (95% in Orocovis), and a household approved under both declarations of a year is counted twice.",
+   "The year is the year of the disaster declaration, not the year of the damage or of the payment. In the 2026-10 snapshot, on the Housing page a year without a declaration shows the most recent earlier year: 2010 shows the 2008 values, 2012 to 2016 show 2011, 2018 and 2019 show 2017, 2021 shows 2020 and 2023 to 2025 show 2022. The data file has no value for those years.",
+   "Values for 2017 and 2020 combine several declarations and cannot be split by disaster in the observatory. A declaration is listed here only because OpenFEMA holds housing assistance records under it.",
+   "A municipality with no value in a declaration year has no approved-assistance record for it in the data; that is not proof that the municipality was untouched. The earliest year in the data is 2003, and OpenFEMA's dataset page says the housing assistance data cover disasters declared from November 2002 onward, so a missing earlier year does not mean there was no aid. In the 2026-10 snapshot, only 21 municipalities have values for 2003 and 2008, 34 for 2011 and 60 for 2004; 2017 and 2022 have all 78, and 2020 has 77.",
+   "In the 2026-10 snapshot, the municipality profile shows the sum of all years in the data (2003 to 2022) with the note 'all disasters'; households approved in more than one disaster are counted more than once.",
+   "Individual Assistance for households only. Other FEMA money (Public Assistance for governments, hazard mitigation), insurance payouts, Small Business Administration loans and disaster-recovery grants from the US Department of Housing and Urban Development (HUD) are not included.",
+   "On its dataset page (https://www.fema.gov/openfema-data-page/housing-assistance-program-data-owners-v2, as of 2026-10-04), OpenFEMA states that the data are self-reported and subject to human error, that the county is inferred by the system and may be overridden by the applicant, and that the financial information comes from FEMA's internal National Emergency Management Information System (NEMIS), not its official financial systems, may differ slightly from usaspending.gov and is not intended for official federal financial reporting.",
+   "OpenFEMA data are US government data under the OpenFEMA terms. The terms ask users to name the data set (Housing Assistance Program Data, Owners and Renters, v2) and the date retrieved (2026-10-02) and to state that the product is not endorsed by FEMA; the credit line under the Cite button includes that statement. Check the OpenFEMA terms before reuse."
+  ],
+  "see_also": [
+   "housing.fema_ia_amount",
+   "economy.fema_pa_obligated",
+   "economy.fed_awards_total",
+   "measures.per_1000_residents",
+   "measures.nearest_year_rule"
+  ],
+  "example": "In the 2026-10 snapshot: 2017 (Irma and Maria), Puerto Rico, 475,798 households approved; 2022 (Hurricane Fiona and a severe storm with flooding and landslides), 741,313. Highest of the 78 municipalities in 2022: San Juan, 68,606.",
+  "where": {
+   "files": [
+    "housing_series.json:fema_ia_households"
+   ],
+   "view": [
+    {
+     "label": "Housing page, section 8 (Disaster recovery): map and ranked chart",
+     "href": "housing.html#recovery"
+    },
+    {
+     "label": "Housing page, Full data: every year and municipality, CSV download",
+     "href": "housing.html?d=fema_ia_households"
+    },
+    {
+     "label": "Housing page, Municipality profile (FEMA housing assistance, households)",
+     "href": "housing.html#profile"
+    },
+    {
+     "label": "Map, Analysis tab (group Public money): shade municipalities by households per 1,000 residents",
+     "href": "index.html#e=fema_ia_households.f.per1000.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-02"
+ },
+ {
+  "id": "housing.fema_ia_amount",
+  "name": "FEMA Individual Assistance approved",
+  "domain": "public-money",
+  "domains": ["public-money", "housing", "hazards"],
+  "group": "Disaster recovery",
+  "kind": "variable",
+  "plain": "The dollars the Federal Emergency Management Agency (FEMA) approved for households after disasters declared in a given year, by municipality. It shows aid approved, not damage and not necessarily money paid out.",
+  "definition": "Sum, over the disasters declared in a calendar year, of the total approved under FEMA's Individuals and Households Program (IHP) in the municipality, for owners and renters together (OpenFEMA field totalApprovedIhpAmount). The year is the year of the disaster declaration.",
+  "unit": "US dollars approved, as OpenFEMA records them (not adjusted for inflation), by year of disaster declaration",
+  "value_type": "level",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "event-based",
+   "first": 2003,
+   "last": 2022,
+   "frequency": "One value per year that had a disaster declaration with housing assistance records. In the 2026-10 snapshot these years are 2003, 2004, 2008, 2011, 2017, 2020 and 2022. The data are not live: they are downloaded from OpenFEMA when the observatory's data are refreshed and kept until the next refresh. The values in the 2026-10 snapshot come from the download of 2026-10-02 and can change if FEMA revises its records."
+  },
+  "method": "The observatory uses the same records and matching as the household count, adding totalApprovedIhpAmount for owners and renters across the disasters of the year, rounded to whole dollars. Puerto Rico's value is the sum of the 78 municipalities. No margin of error.",
+  "sources": [
+   "openfema"
+  ],
+  "source_detail": "FEMA OpenFEMA, Housing Assistance Program Data, Owners and Renters (v2), field totalApprovedIhpAmount; disaster years from OpenFEMA Disaster Declarations Summaries. Years with data in the 2026-10 snapshot: 2003 (severe storms, flooding, mudslides and landslides; disaster no. 1501), 2004 (Tropical Storm Jeanne; 1552), 2008 (severe storms and flooding; 1798), 2011 (Hurricane Irene, 4017, and Tropical Storm Maria, 4040), 2017 (Hurricane Irma, 4336, and Hurricane Maria, 4339), 2020 (the COVID-19 pandemic declaration, 4493; earthquakes, 4473; Hurricane Isaias, 4560; a severe storm and flooding, 4571) and 2022 (Hurricane Fiona, 4671, and a severe storm, flooding and landslides, 4649). API endpoints: https://www.fema.gov/api/open/v2/HousingAssistanceOwners and https://www.fema.gov/api/open/v2/HousingAssistanceRenters (state eq 'PR'). Dataset pages: https://www.fema.gov/openfema-data-page/housing-assistance-program-data-owners-v2 and https://www.fema.gov/openfema-data-page/housing-assistance-program-data-renters-v2. Disaster years: https://www.fema.gov/api/open/v2/DisasterDeclarationsSummaries.",
+  "how_to_read": "In the 2026-10 snapshot, the island totals are $1,348,391,207 in 2017 (Irma and Maria) and $650,531,031 in 2022 (Hurricane Fiona and a severe storm with flooding and landslides). It is a total, so large municipalities show large amounts; divide by residents or households to compare places. On the Analysis tab, a shaded layer starts as dollars per resident (see 'Dollars per resident').",
+  "caveats": [
+   "It measures aid approved under one FEMA program, not damage, need or money received. OpenFEMA labels the field as the total amount approved.",
+   "The amounts are totals approved to FEMA applicants (owners and renters). The observatory calls them households; the data the observatory keeps hold no household identifier, so two applicants who share a home cannot be told apart.",
+   "Amounts are as OpenFEMA records them and are not adjusted for inflation. The data hold no approval date and no price year, so an amount cannot be tied to a price year: values are totals as of the download, grouped by the year of the disaster declaration. The Analysis tab can restate them with the national Consumer Price Index (CPI-U), treating each amount as dollars of the declaration year; this is an approximation, because a national index may not match price changes in Puerto Rico.",
+   "The year is the year of the disaster declaration, not the year of the damage or of the payment. In the 2026-10 snapshot, on the Housing page a year without a declaration shows the most recent earlier year: 2010 shows the 2008 values, 2012 to 2016 show 2011, 2018 and 2019 show 2017, 2021 shows 2020 and 2023 to 2025 show 2022. The data file has no value for those years.",
+   "Values for 2017 and 2020 combine several declarations and cannot be split by disaster in the observatory. A declaration is listed here only because OpenFEMA holds housing assistance records under it.",
+   "A municipality with no value in a declaration year has no approved-assistance record for it in the data; that is not proof that the municipality was untouched. The earliest year in the data is 2003, and OpenFEMA's dataset page says the housing assistance data cover disasters declared from November 2002 onward, so a missing earlier year does not mean there was no aid. In the 2026-10 snapshot, only 21 municipalities have values for 2003 and 2008, 34 for 2011 and 60 for 2004; 2017 and 2022 have all 78, and 2020 has 77.",
+   "Individual Assistance for households only. Other FEMA money (Public Assistance for governments, hazard mitigation), insurance payouts, Small Business Administration loans and disaster-recovery grants from the US Department of Housing and Urban Development (HUD) are not included.",
+   "Some of this money may also be counted in the federal award series ('Federal awards, all types'). The observatory has not reconciled the two, and they use different time bases (the year of the disaster declaration here, the date of each award transaction there). Do not add them.",
+   "On its dataset page (https://www.fema.gov/openfema-data-page/housing-assistance-program-data-owners-v2, as of 2026-10-04), OpenFEMA states that the data are self-reported and subject to human error, that the county is inferred by the system and may be overridden by the applicant, and that the financial information comes from FEMA's internal National Emergency Management Information System (NEMIS), not its official financial systems, may differ slightly from usaspending.gov and is not intended for official federal financial reporting.",
+   "OpenFEMA data are US government data under the OpenFEMA terms. The terms ask users to name the data set (Housing Assistance Program Data, Owners and Renters, v2) and the date retrieved (2026-10-02) and to state that the product is not endorsed by FEMA; the credit line under the Cite button includes that statement. Check the OpenFEMA terms before reuse."
+  ],
+  "see_also": [
+   "housing.fema_ia_households",
+   "economy.fema_pa_obligated",
+   "economy.fed_awards_total",
+   "measures.inflation_adjustment",
+   "measures.per_resident",
+   "measures.nearest_year_rule"
+  ],
+  "example": "In the 2026-10 snapshot: 2017, Puerto Rico, $1,348,391,207 approved; 2022, $650,531,031. Highest of the 78 municipalities in 2022: San Juan, $52,608,424.",
+  "where": {
+   "files": [
+    "housing_series.json:fema_ia_amount"
+   ],
+   "view": [
+    {
+     "label": "Housing page, section 8 (Disaster recovery): map and ranked chart",
+     "href": "housing.html#recovery"
+    },
+    {
+     "label": "Housing page, Full data: every year and municipality, CSV download",
+     "href": "housing.html?d=fema_ia_amount"
+    },
+    {
+     "label": "Map, Analysis tab (group Public money): shade municipalities by dollars per resident",
+     "href": "index.html#e=fema_ia_amount.f.perCapita.blue.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-10-02"
+ },
+ {
+  "id": "study.state_of_housing_2023",
+  "name": "The State of Housing in Puerto Rico (2023): figures and tables on the Housing page",
+  "domain": "housing",
+  "domains": ["housing"],
+  "group": "State of Housing study (2023)",
+  "kind": "table",
+  "plain": "The Housing page reproduces tables and headline figures from the Foundation for Puerto Rico (FPR) 2023 study 'The State of Housing in Puerto Rico'. It also extends many of them to all 78 municipalities with Census Bureau data. This entry describes the data file that holds the published figures. Each table has its own entry.",
+  "definition": "The file housing.json has eight top-level fields: lihtc (Table 10, six projects that use the Low-Income Housing Tax Credit, LIHTC); headline (four figures); citation (the study reference); links (four web addresses); and grapi, smocapi, renters_burdened_pct and owners_burdened_pct (two island-wide cost-burden distributions and their sums, recomputed from the Census Bureau's 2020-2024 data with the method of Tables 3 and 4). Tables 2, 6 and 7 and the study's 52% and 38% cost-burden figures are typed into the page code (site/js/housing.js), not stored in a data file.",
+  "unit": "tables and figures",
+  "value_type": "text",
+  "geography": "Puerto Rico; four municipalities (Table 10)",
+  "coverage": {
+   "timeline": "static",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "The published figures never change. The two recomputed distributions are rebuilt with each snapshot."
+  },
+  "method": "The observatory builds the file with each snapshot: the published figures are typed as printed; the distributions are summed from the American Community Survey (ACS) 5-year tables for the 78 municipalities. Live versions of Tables 2, 3, 4, 6 and 7 are drawn on the page from housing_series.json.",
+  "sources": [
+   "fpr_housing_2023",
+   "acs5",
+   "fpr_method"
+  ],
+  "source_detail": "Foundation for Puerto Rico (2023). The State of Housing in Puerto Rico: An Analysis of the Factors That Impact Housing and Rent Prices in Puerto Rico and Proposed Strategies to Increase Housing Affordability. Advancing Equitable Neighborhood Development grant, funded in part by NALCAB (National Association for Latino Community Asset Builders). Study PDF: https://foundationforpuertorico.org/wp-content/uploads/2023/05/state_of_housing.pdf",
+  "how_to_read": "Items tagged 'as published' on the Housing page come from the study; items tagged 'live' are recomputed from Census Bureau data for the selected year. Read the two as different measurements of the same topic, not as corrections of each other.",
+  "caveats": [
+   "This dictionary and the Housing page number the study's tables 2, 3, 4, 6, 7, 8, 9, 10 and 11. The study PDF at the address in the source line prints different numbers for the same tables. For example, it numbers the population-change table 5 (here Table 2), the gross-rent table 6 (Table 3), the home-ownership affordability table 8 (Table 6), the owner-age table 9 (Table 7), the length-of-stay table 10 (Table 8), the top-ten short-term-rental table 11 (Table 9), the low-income housing tax credit table 12 (Table 10) and the Ceiba table 13 (Table 11).",
+   "The study was produced under the Advancing Equitable Neighborhood Development planning grant, funded in part by NALCAB (National Association for Latino Community Asset Builders).",
+   "Cite the study for the published figures and the Census Bureau for the live ones. The Housing page gives a citation for the page itself."
+  ],
+  "see_also": [
+   "study.table_2",
+   "study.table_3",
+   "study.table_4",
+   "study.table_6",
+   "study.table_7",
+   "study.table_10",
+   "study.table_11",
+   "study.headline_figures",
+   "study.citation_links",
+   "layers.housing_page",
+   "layers.housing_published_tables"
+  ],
+  "where": {
+   "files": [],
+   "view": [
+    {
+     "label": "Housing page: headline figures",
+     "href": "housing.html#headline"
+    },
+    {
+     "label": "Housing page: sources and method",
+     "href": "housing.html#sources"
+    }
+   ]
+  },
+  "added": "2026-10-02",
+  "example": "Suggested citation for the page, as the Housing page gives it: Foundation for Puerto Rico, FPR Research in Data: The State of Housing in Puerto Rico, PR Data Observatory, [snapshot label shown on the page], https://observatory.foundationpr.org/housing.html. For a published figure, cite the study (see the source line of the table)."
+ },
+ {
+  "id": "study.table_2",
+  "name": "Table 2 (Table 5 in the study PDF): Puerto Rico's population change, 2010 to 2020",
+  "domain": "housing",
+  "domains": ["housing"],
+  "group": "State of Housing study (2023)",
+  "kind": "table",
+  "plain": "Puerto Rico's population fell from 3,725,789 at the 2010 census to 3,285,874 at the 2020 census, a loss of 439,915 people (11.8%). The 2023 study prints 3,285,694 for 2020 (180 fewer) and a loss of 440,095; both round to 11.8%. In the 2026-10 snapshot, the page also lets you compare any two years from 2010 to 2025.",
+  "definition": "The study's table of Puerto Rico's resident population at the 2010 and 2020 censuses, with the change in people and the percent change (Table 5 in the study PDF; the Housing page and this dictionary call it Table 2). On the page it has three rows: the study's figures as published; the 2010 census count and the April 2020 base as held in the observatory's data; and the Census Bureau's counts or estimates for two years you choose.",
+  "unit": "people (residents); change in people and in %",
+  "value_type": "count",
+  "geography": "Puerto Rico as a whole",
+  "coverage": {
+   "timeline": "static",
+   "first": 2010,
+   "last": 2025,
+   "frequency": "The study row is fixed. The live rows follow the population series (the 2010 census count, the April 2020 base that the page labels 'census count', and July 1 estimates for other years)."
+  },
+  "method": "The study row is typed into site/js/housing.js as printed (3,725,789; 3,285,694; -440,095; -11.8%). The live rows read Puerto Rico's value from the population series (see 'Resident population'). Change = end value minus start value; percent change = change divided by start value, times 100.",
+  "sources": [
+   "fpr_housing_2023",
+   "census_pep"
+  ],
+  "source_detail": "Foundation for Puerto Rico (2023). The State of Housing in Puerto Rico: An Analysis of the Factors That Impact Housing and Rent Prices in Puerto Rico and Proposed Strategies to Increase Housing Affordability. Advancing Equitable Neighborhood Development grant, funded in part by NALCAB (National Association for Latino Community Asset Builders). Table 2 (US Census Bureau counts). Live rows: US Census Bureau Population Estimates files, which carry the 2010 census count (Vintage 2020), the April 2020 base (Vintage 2025) and the July 1 estimates (Vintage 2020 for 2011-2019, Vintage 2025 for 2021-2025). In the study PDF this table is numbered Table 5. Study PDF: https://foundationforpuertorico.org/wp-content/uploads/2023/05/state_of_housing.pdf",
+  "how_to_read": "Read the first row as the study's own numbers and the next two as the observatory's recomputation. A live row that spans 2019 and 2020 mixes two estimate bases.",
+  "caveats": [
+   "The study's 2020 figure (3,285,694) is 180 people lower than the 2020 island count in the observatory's population series (3,285,874). The observatory's figure equals the island total in the Census Bureau's 2020 redistricting file (Public Law 94-171). The data do not explain the study's lower figure. The page shows both figures as their sources give them; both give a change of -11.8%. For municipalities, the series' 2020 values are the April 2020 base of the Census Bureau's Vintage 2025 estimates. In the 2026-10 snapshot, 68 of the 78 municipal values differ from the census counts by up to 31 people, and the island total is the same. The page labels the 2020 value 'census count'.",
+   "The estimates for 2011-2019 were built on the 2010 census and never revised to the 2020 count, so the series steps in 2020. The page marks the change of base with a dashed segment.",
+   "The page labels each live value as a census count (April 1) or an estimate (July 1)."
+  ],
+  "see_also": [
+   "housing.population",
+   "housing.pop_change_since_2010_pct",
+   "study.headline_figures",
+   "layers.housing_headline_numbers",
+   "municipalities.pop_change_pct",
+   "methods.population_vintage_break",
+   "housing.pop_change_since_2020_pct"
+  ],
+  "where": {
+   "files": [],
+   "view": [
+    {
+     "label": "Housing page, section 1 (Population change)",
+     "href": "housing.html#population"
+    },
+    {
+     "label": "Housing page: headline figures (3,285,694 residents)",
+     "href": "housing.html#headline"
+    },
+    {
+     "label": "Housing page, Full data: Puerto Rico's population, every year and municipality",
+     "href": "housing.html?d=population"
+    }
+   ]
+  },
+  "added": "2026-10-02",
+  "example": "Study: 3,725,789 (2010 census) to 3,285,694 (2020 census), -440,095, -11.8%. The observatory's 2010 census count and April 2020 base (labeled census count): 3,725,789 to 3,285,874, -439,915, -11.8%."
+ },
+ {
+  "id": "study.table_3",
+  "name": "Table 3: Renters by gross rent as a share of income (GRAPI)",
+  "domain": "housing",
+  "domains": ["housing"],
+  "group": "State of Housing study (2023)",
+  "kind": "table",
+  "plain": "How renter households divide into nine bands of rent as a share of income, from under 10% to 50% or more. The study found 52% of renters paying 30% or more. The page redraws it for every five-year window from 2010 to 2024; in 2020-2024 the share paying 30% or more is 50.8%.",
+  "definition": "Distribution of renter households in Puerto Rico by gross rent as a percentage of household income (GRAPI), American Community Survey (ACS) table B25070, in nine bands: under 10%, 10 to 14.9%, 15 to 19.9%, 20 to 24.9%, 25 to 29.9%, 30 to 34.9%, 35 to 39.9%, 40 to 49.9% and 50% or more. Each band is a percent of renter households whose ratio can be computed. The last four bands, from 30% up, are the cost-burdened and are drawn in red.",
+  "unit": "% of renter households whose rent-to-income ratio can be computed, by band",
+  "value_type": "rate",
+  "geography": "Puerto Rico as a whole",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "One distribution per five-year window, labeled by its last year. Rebuilt with each snapshot."
+  },
+  "method": "Live version: the observatory takes the Puerto Rico row of table B25070 for each window, divides cells 2 to 10 by their sum and rounds to one decimal; the result is in housing_series.json under tables.grapi. The observatory does the same for the 2020-2024 window by summing the 78 municipalities and stores it in housing.json as grapi, and the sum of the last four bands as renters_burdened_pct. The study's own 52% is typed into the page text; the study's bands are not stored in the observatory.",
+  "sources": [
+   "fpr_housing_2023",
+   "acs5",
+   "fpr_method"
+  ],
+  "source_detail": "Foundation for Puerto Rico (2023). The State of Housing in Puerto Rico: An Analysis of the Factors That Impact Housing and Rent Prices in Puerto Rico and Proposed Strategies to Increase Housing Affordability. Advancing Equitable Neighborhood Development grant, funded in part by NALCAB (National Association for Latino Community Asset Builders). Table 3. Live: US Census Bureau, ACS 5-year table B25070, cells 002-010. In the study PDF this table is numbered Table 6. Study PDF: https://foundationforpuertorico.org/wp-content/uploads/2023/05/state_of_housing.pdf",
+  "how_to_read": "The data here do not show which ACS window the study used for Tables 3 and 4; the study's 52% is shown for reference, not as a comparable window. Between the 2017-2021 and 2020-2024 windows the live share goes from 52.8% to 50.8%, but those windows share two of their five years. The bands add to 100.0% give or take 0.1 because of rounding.",
+  "caveats": [
+   "The fields grapi and renters_burdened_pct in housing.json are not read by the Housing page, which draws the same figures from housing_series.json. For 2020-2024 the two sources hold identical numbers (5.0, 8.8, 11.7, 11.6, 12.1, 8.5, 6.8, 8.6, 26.9).",
+   "Households in the Census Bureau's 'Not computed' group are left out: in Puerto Rico in 2020-2024, 173,394 of 414,280 renter households (42%).",
+   "The study's published distribution is not reproduced by the page; only its headline 52% is. The 2017-2021 window gives 52.8%.",
+   "The sum of the rounded bands can differ from the cost-burdened renters series, which is computed from unrounded counts, by 0.1 point in some windows (0.2 in 2013). For 2020-2024 both give 50.8%.",
+   "The observatory does not store margins of error for this island-wide live table. The Census Bureau publishes them, and the cost-burdened renters series carries them (50.8%, ± 0.2 points in 2020-2024).",
+   "Neighboring windows share four of their five years. To judge change, compare windows that do not overlap, for example 2010-2014, 2015-2019 and 2020-2024 (labeled 2014, 2019 and 2024). See the entry on American Community Survey 5-year windows."
+  ],
+  "see_also": [
+   "housing.renter_cost_burden_pct",
+   "housing.renter_severe_burden_pct",
+   "study.table_4",
+   "layers.housing_published_tables",
+   "municipalities.renter_cost_burden_pct",
+   "methods.acs_windows"
+  ],
+  "where": {
+   "files": [
+    "housing.json:grapi",
+    "housing.json:renters_burdened_pct"
+   ],
+   "view": [
+    {
+     "label": "Housing page, section 3 (The housing cost burden)",
+     "href": "housing.html#burden"
+    },
+    {
+     "label": "Housing page, Full data: gross rent as a share of income, every ACS window",
+     "href": "housing.html?d=grapilive"
+    }
+   ]
+  },
+  "added": "2026-10-02",
+  "example": "Puerto Rico, 2020-2024, bands from under 10% to 50% or more: 5.0%, 8.8%, 11.7%, 11.6%, 12.1%, 8.5%, 6.8%, 8.6%, 26.9%."
+ },
+ {
+  "id": "study.table_4",
+  "name": "Table 4: Owners with a mortgage by owner costs as a share of income (SMOCAPI)",
+  "domain": "housing",
+  "domains": ["housing"],
+  "group": "State of Housing study (2023)",
+  "kind": "table",
+  "plain": "How owner households with a mortgage divide into nine bands of owner costs as a share of income, from under 10% to 50% or more. The study found 38% paying 30% or more. In 2020-2024 the share is 36.4%; the page prints 36.5% beside the chart because it adds the four rounded bands.",
+  "definition": "Distribution of owner households with a mortgage in Puerto Rico by selected monthly owner costs as a percentage of household income (SMOCAPI), American Community Survey (ACS) table B25091, in the same nine bands as Table 3. Each band is a percent of owner households with a mortgage whose ratio can be computed. The last four bands, from 30% up, are the cost-burdened and are drawn in red.",
+  "unit": "% of owner households with a mortgage whose cost-to-income ratio can be computed, by band",
+  "value_type": "rate",
+  "geography": "Puerto Rico as a whole",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "One distribution per five-year window, labeled by its last year. Rebuilt with each snapshot."
+  },
+  "method": "Live version: the observatory takes the Puerto Rico row of table B25091, divides cells 3 to 11 by their sum and rounds to one decimal (housing_series.json, tables.smocapi). The observatory does the same for 2020-2024 by summing the 78 municipalities and stores it in housing.json as smocapi, and the sum of the last four bands as owners_burdened_pct. The study's own 38% is typed into the page text.",
+  "sources": [
+   "fpr_housing_2023",
+   "acs5",
+   "fpr_method"
+  ],
+  "source_detail": "Foundation for Puerto Rico (2023). The State of Housing in Puerto Rico: An Analysis of the Factors That Impact Housing and Rent Prices in Puerto Rico and Proposed Strategies to Increase Housing Affordability. Advancing Equitable Neighborhood Development grant, funded in part by NALCAB (National Association for Latino Community Asset Builders). Table 4. Live: US Census Bureau, ACS 5-year table B25091, cells 003-011. Study PDF: https://foundationforpuertorico.org/wp-content/uploads/2023/05/state_of_housing.pdf",
+  "how_to_read": "The study's 38% is shown for reference: the data here do not show which ACS window the study used for Tables 3 and 4. The live share is 41.3% for the 2017-2021 window and 36.4% for 2020-2024 (36.5% as the sum of the rounded bands). Owners without a mortgage are not in the table.",
+  "caveats": [
+   "The live 2017-2021 value for owners with a mortgage (41.3%) does not match the study's 38%. The data here do not explain the difference or show which window the study used; the page shows both. The study's published bands are not stored in the observatory.",
+   "The two 2020-2024 figures differ by rounding: 7.4 + 5.8 + 6.8 + 16.5 = 36.5, while the unrounded share of cost-burdened owners with a mortgage is 36.43. Cite 36.4% (± 0.8 points). The chart note adds the rounded bands, so it can differ by 0.1 point from the series in other windows too.",
+   "The observatory does not store margins of error for this island-wide live table. The Census Bureau publishes them, and the series carries them (36.4%, ± 0.8 points in 2020-2024).",
+   "The fields smocapi and owners_burdened_pct in housing.json are not read by the Housing page, which draws the same figures from housing_series.json. For 2020-2024 the two sources hold identical numbers (6.7, 15.2, 16.6, 14.0, 11.0, 7.4, 5.8, 6.8, 16.5).",
+   "Owner costs include utilities and taxes, not only the mortgage payment. Households in the 'Not computed' group are left out: 4,803 of 324,311 in 2020-2024.",
+   "Neighboring windows share four of their five years. To judge change, compare windows that do not overlap, for example 2010-2014, 2015-2019 and 2020-2024 (labeled 2014, 2019 and 2024). See the entry on American Community Survey 5-year windows."
+  ],
+  "see_also": [
+   "housing.owner_cost_burden_pct",
+   "housing.median_owner_costs_mortgage",
+   "study.table_3",
+   "layers.housing_published_tables",
+   "municipalities.owner_cost_burden_pct",
+   "methods.acs_windows"
+  ],
+  "where": {
+   "files": [
+    "housing.json:smocapi",
+    "housing.json:owners_burdened_pct"
+   ],
+   "view": [
+    {
+     "label": "Housing page, section 3 (The housing cost burden)",
+     "href": "housing.html#burden"
+    },
+    {
+     "label": "Housing page, Full data: owner costs as a share of income, every ACS window",
+     "href": "housing.html?d=smocapilive"
+    }
+   ]
+  },
+  "added": "2026-10-02",
+  "example": "Puerto Rico, 2020-2024, bands from under 10% to 50% or more: 6.7%, 15.2%, 16.6%, 14.0%, 11.0%, 7.4%, 5.8%, 6.8%, 16.5%."
+ },
+ {
+  "id": "study.table_6",
+  "name": "Table 6: Home ownership affordability by age of householder",
+  "domain": "housing",
+  "domains": ["housing"],
+  "group": "State of Housing study (2023)",
+  "kind": "table",
+  "plain": "The largest 30-year home loan a Puerto Rico household could carry, by age of the householder (the person in whose name the home is owned or rented), if it spends 30% of its income on housing. For all households the study found a maximum of $80,181 on a median income of $21,967. The page repeats the arithmetic for every five-year window from 2010 to 2024.",
+  "definition": "Table 6 of the study has five rows (all households and four age groups of the householder: 15-24, 25-44, 45-64, 65 and over) and five columns: the age range, the median income of the age group (dollars per year), 30% of income for housing (dollars per month), the part of that paid as principal and interest (dollars per month), and the maximum 30-year mortgage (dollars). The page shows the published table, then the same arithmetic on Census Bureau incomes for the selected window.",
+  "unit": "US dollars (income per year; payments per month; loan amount)",
+  "value_type": "level",
+  "geography": "Puerto Rico as a whole",
+  "coverage": {
+   "timeline": "static",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "The published table is fixed. The live version has one table per five-year window, labeled by its last year."
+  },
+  "method": "Published: typed into site/js/housing.js as printed. Live: the observatory reads American Community Survey (ACS) table B19049 (median household income by age of householder), cells 1 to 5 for Puerto Rico, in housing_series.json under tables.t6_income_by_age. The page then computes in the browser: housing budget = income × 0.30 / 12; principal and interest = budget × 430/549; maximum mortgage = principal and interest × (1 - (1 + r)^-360) / r with r = 0.05 / 12. The same method gives max_affordable_loan for each municipality.",
+  "sources": [
+   "fpr_housing_2023",
+   "acs5",
+   "fpr_method"
+  ],
+  "source_detail": "Foundation for Puerto Rico (2023). The State of Housing in Puerto Rico: An Analysis of the Factors That Impact Housing and Rent Prices in Puerto Rico and Proposed Strategies to Increase Housing Affordability. Advancing Equitable Neighborhood Development grant, funded in part by NALCAB (National Association for Latino Community Asset Builders). Table 6 (US Census 2021). Live: US Census Bureau, ACS 5-year table B19049 (Median Household Income in the Past 12 Months by Age of Householder), cells 001-005. In the study PDF this table is numbered Table 8. Study PDF: https://foundationforpuertorico.org/wp-content/uploads/2023/05/state_of_housing.pdf",
+  "how_to_read": "Read across a row: income, then the monthly budget, then the share for the loan, then the loan. The page notes that the study puts the median value of housing units at $111,800 (study, p. 22) and most homes available at asking prices of $90,000 and up.",
+  "caveats": [
+   "The five published median incomes equal the observatory's values for the 2017-2021 window (labeled 2021) in table B19049, so the study's 'US Census 2021' matches the observatory's 2017-2021 window.",
+   "The page labels the first row 'Puerto Rico avg.'; the value is the median household income of all households (table B19049, cell 1), not an average.",
+   "The study prints no interest rate. The 5% rate is inferred from the study's Puerto Rico row: $21,967 of income and an $80,181 maximum loan imply 4.994%. At exactly 5% the observatory's figures are $19 to $65 below the five printed maximums.",
+   "The 78% share for principal and interest ($430 of $549) is the study's own proportion; the rest of the budget is left for taxes, insurance and other costs.",
+   "Dollars are those of the last year of each five-year window and are not adjusted across windows.",
+   "A maximum loan is a yardstick, not a lender's limit: it ignores down payments, other debts and lending rules.",
+   "The observatory does not store margins of error for the live income figures. Small groups, such as householders aged 15-24 ($7,826 in 2017-2021, $13,337 in 2020-2024), can move a lot between windows.",
+   "Neighboring windows share four of their five years. To judge change, compare windows that do not overlap, for example 2010-2014, 2015-2019 and 2020-2024 (labeled 2014, 2019 and 2024). See the entry on American Community Survey 5-year windows."
+  ],
+  "see_also": [
+   "housing.max_affordable_loan",
+   "housing.affordability_ratio",
+   "housing.median_hh_income",
+   "housing.median_home_value",
+   "municipalities.max_affordable_loan",
+   "layers.housing_affordability_scatter",
+   "methods.acs_windows"
+  ],
+  "where": {
+   "files": [],
+   "view": [
+    {
+     "label": "Housing page, section 4 (Home ownership affordability)",
+     "href": "housing.html#afford"
+    },
+    {
+     "label": "Housing page, Full table: Table 6 as published",
+     "href": "housing.html?d=table6"
+    },
+    {
+     "label": "Housing page, Full data: Table 6 method, every ACS window",
+     "href": "housing.html?d=t6live"
+    }
+   ]
+  },
+  "added": "2026-10-02",
+  "example": "Published: all households, income $21,967, monthly budget $549, loan payment $430, maximum mortgage $80,181. Age 15-24: $7,826, $196, $153, $28,565. Age 25-44: $24,445, $611, $479, $89,226. Age 45-64: $26,052, $651, $510, $95,092. Age 65 and over: $18,687, $467, $366, $68,209."
+ },
+ {
+  "id": "study.table_7",
+  "name": "Table 7: Owner-occupied homes by age of householder",
+  "domain": "housing",
+  "domains": ["housing"],
+  "group": "State of Housing study (2023)",
+  "kind": "table",
+  "plain": "What share of Puerto Rico's owner-occupied homes belongs to householders in each of seven age groups, from under 35 to 85 and over. The householder is the person in whose name the home is owned or rented. The page draws the study's published shares next to a live recomputation from the Census Bureau for the selected window.",
+  "definition": "Table 7 of the study: owner-occupied housing units in Puerto Rico by age of the householder, as a percent of all owner-occupied units, in seven groups: under 35, 35-44, 45-54, 55-64, 65-74, 75-84 and 85 and over. The published shares are 10.7, 16.4, 18.5, 22.1, 19.5, 9.6 and 3.2 (they add to 100.0).",
+  "unit": "% of owner-occupied housing units, by age group of the householder",
+  "value_type": "rate",
+  "geography": "Puerto Rico as a whole",
+  "coverage": {
+   "timeline": "static",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "The published table is fixed. The live version has one distribution per five-year window, labeled by its last year."
+  },
+  "method": "Published: typed into site/js/housing.js. Live: the observatory reads the owner-occupied rows of American Community Survey (ACS) table B25007 for Puerto Rico and groups the age bands (15-34, 35-44, 45-54, 55-64, 65-74, 75-84, 85 and over), then divides by all owner-occupied units and rounds to one decimal (housing_series.json, tables.t7_owner_age).",
+  "sources": [
+   "fpr_housing_2023",
+   "acs5"
+  ],
+  "source_detail": "Foundation for Puerto Rico (2023). The State of Housing in Puerto Rico: An Analysis of the Factors That Impact Housing and Rent Prices in Puerto Rico and Proposed Strategies to Increase Housing Affordability. Advancing Equitable Neighborhood Development grant, funded in part by NALCAB (National Association for Latino Community Asset Builders). Table 7. Live: US Census Bureau, ACS 5-year table B25007 (Tenure by Age of Householder), owner-occupied cells 003-011. In the study PDF this table is numbered Table 9. Study PDF: https://foundationforpuertorico.org/wp-content/uploads/2023/05/state_of_housing.pdf",
+  "how_to_read": "The two bars are different measurements, so do not read the gap between them as a change over time. For example, the live under-35 share is 4.5% in 2017-2021 and 5.2% in 2020-2024, against 10.7% in the study. A group with a large share has many owners of that age; it does not tell you how many people of that age own a home.",
+  "caveats": [
+   "In the 2026-10 snapshot, no window from 2010 to 2024 reproduces the published shares. The published under-35 share is 10.7%, but the live share is between 4.5% and 9.3%; the published 75-84 share is 9.6%, but the live share is between 10.1% and 17.0%. The closest are the 2006-2010 and 2007-2011 windows, where every group is within 1.9 points of the published share. The data do not show which window or table the study used. Read the two as different measurements.",
+   "The first live group is 15-34; the published group is labeled 'under 35'.",
+   "Live shares can add to 99.8% or 100.1% because of rounding.",
+   "Neighboring windows share four of their five years. To judge change, compare windows that do not overlap, for example 2010-2014, 2015-2019 and 2020-2024 (labeled 2014, 2019 and 2024). See the entry on American Community Survey 5-year windows.",
+   "The observatory does not store margins of error for this island-wide live table."
+  ],
+  "see_also": [
+   "housing.owner_occupied_pct",
+   "housing.median_owner_income",
+   "layers.housing_published_tables",
+   "methods.acs_windows"
+  ],
+  "where": {
+   "files": [],
+   "view": [
+    {
+     "label": "Housing page, section 5 (Who owns their home)",
+     "href": "housing.html#tenure"
+    },
+    {
+     "label": "Housing page, Full data: Table 7, published and live",
+     "href": "housing.html?d=table7"
+    }
+   ]
+  },
+  "added": "2026-10-02",
+  "example": "Published: under 35, 10.7%; 35-44, 16.4%; 45-54, 18.5%; 55-64, 22.1%; 65-74, 19.5%; 75-84, 9.6%; 85 and over, 3.2%."
+ },
+ 
+ {
+  "id": "study.table_10",
+  "name": "Table 10: Low-Income Housing Tax Credit projects funded with CDBG-DR",
+  "domain": "housing",
+  "domains": ["housing"],
+  "group": "State of Housing study (2023)",
+  "kind": "table",
+  "plain": "Table 10 lists six housing projects named in the 2023 study. Each uses the Low-Income Housing Tax Credit (LIHTC) and also gets money from the Community Development Block Grant for Disaster Recovery (CDBG-DR), a program of the US Department of Housing and Urban Development (HUD). The projects have 851 units in four municipalities. The study estimates their cost at $242,090,072 and their CDBG-DR grants at $90,532,871.",
+  "definition": "Table 10 of the study, one row per project: project name, municipality, type (multifamily apartments or nursing home), number of units, the groups the project serves, estimated development cost and estimated CDBG-DR grant (dollars). LIHTC is the Low-Income Housing Tax Credit; CDBG-DR is the Community Development Block Grant for Disaster Recovery, a federal HUD (US Department of Housing and Urban Development) grant. The page adds a total row and a map with one circle per municipality sized by units.",
+  "unit": "units (count); US dollars as printed in the study (the page gives no price year)",
+  "value_type": "level",
+  "geography": "Four municipalities: Caguas, San Juan, Humacao and Coamo",
+  "coverage": {
+   "timeline": "static",
+   "first": 2023,
+   "last": 2023,
+   "frequency": "Fixed as published in 2023; not updated."
+  },
+  "method": "Stored in housing.json under lihtc as printed. Each row has the keys name, municipality, type, units, beneficiaries, cost and cdbg_dr. The page sums units, costs and grants for the total row. Circles on the map are placed at the center of each municipality's bounding box, not at the project sites.",
+  "sources": [
+   "fpr_housing_2023"
+  ],
+  "source_detail": "Foundation for Puerto Rico (2023). The State of Housing in Puerto Rico: An Analysis of the Factors That Impact Housing and Rent Prices in Puerto Rico and Proposed Strategies to Increase Housing Affordability. Advancing Equitable Neighborhood Development grant, funded in part by NALCAB (National Association for Latino Community Asset Builders). Table 10. The projects are federally funded under HUD's CDBG-DR program; the observatory holds no HUD or Puerto Rico Department of Housing data for them. In the study PDF this table is numbered Table 12. Study PDF: https://foundationforpuertorico.org/wp-content/uploads/2023/05/state_of_housing.pdf",
+  "how_to_read": "Totals: 851 units, $242,090,072 estimated development cost, $90,532,871 estimated CDBG-DR grant. Three projects are multifamily apartments and three are nursing homes. Caguas and San Juan have two projects each, Humacao and Coamo one each. These are the study's estimates, not figures taken from HUD, and the observatory has not updated them. The study PDF prints this table as Table 12; this dictionary and the Housing page call it Table 10 (see the entry 'The State of Housing in Puerto Rico (2023)').",
+  "caveats": [
+   "These six projects are the ones listed in the study. They are not a complete list of LIHTC or CDBG-DR housing projects in Puerto Rico, and the dollar figures are not totals for any program.",
+   "The costs and grants are estimates as printed in the study. They are not obligations or payments, and the observatory does not check them against HUD or Puerto Rico Department of Housing records.",
+   "The observatory keeps this table as published in 2023. It does not add newer projects and is not refreshed from HUD's current LIHTC database.",
+   "Locations are shown at the municipality; map circles are not the project sites.",
+   "The groups the projects serve are printed as the study describes them."
+  ],
+  "see_also": [
+   "study.state_of_housing_2023",
+   "economy.fed_grants",
+   "economy.fed_awards_total"
+  ],
+  "where": {
+   "files": [
+    "housing.json:lihtc"
+   ],
+   "view": [
+    {
+     "label": "Housing page, section 7 (Low-Income Housing Tax Credit projects)",
+     "href": "housing.html#lihtc"
+    },
+    {
+     "label": "Housing page, Full table: Table 10",
+     "href": "housing.html?d=table10"
+    }
+   ]
+  },
+  "added": "2026-10-02",
+  "example": "Totals: 851 units; $242,090,072 estimated development cost; $90,532,871 estimated CDBG-DR grant.",
+  "values": {
+   "Multifamily apartments": "3 projects, 492 units: Caguas 238, San Juan 94, San Juan 160",
+   "Nursing home": "3 projects, 359 units: Caguas 200, Humacao 90, Coamo 69. The type is as printed in the study, including for a project whose name contains 'Apartments'"
+  }
+ },
+ {
+  "id": "study.table_11",
+  "name": "Table 11 and the municipality profile",
+  "domain": "housing",
+  "domains": ["housing"],
+  "group": "State of Housing study (2023)",
+  "kind": "table",
+  "plain": "A card for any one of the 78 municipalities, based on the study's Table 11 case study of Ceiba. It lists the study's variables and the housing indicators for the selected year, with each value's rank among the 78 and a small trend line.",
+  "definition": "Table 11 of the study is a case study of Ceiba. The Housing page extends its variables to every municipality: the card labeled 'Table 11 variables' shows population, change since the 2010 census, share aged 65 and over, median age, median household income, share of adults with a bachelor's degree or higher, employment rate and poverty rate. The card layout, rank and trend lines are described in the entries 'Housing page: municipality profile' and 'Trend lines (sparklines) and their length label'.",
+  "unit": "mixed (counts, %, US dollars, ratio)",
+  "value_type": "text",
+  "geography": "78 municipalities; Ceiba is the study's case",
+  "coverage": {
+   "timeline": "five-year window",
+   "first": 2010,
+   "last": 2025,
+   "frequency": "Follows the year bar: each value shows the selected year, the latest earlier year if it has none, or its first year. A note shows the year used."
+  },
+  "method": "Built in the browser from housing_series.json and municipalities.json. A rank is shown for most rows, not for the maximum affordable loan or for the households approved for housing assistance from the Federal Emergency Management Agency (FEMA). Population lines run to 2025 (the latest July 1 estimate); lines from the American Community Survey (ACS) end in 2024 in the 2026-10 snapshot.",
+  "sources": [
+   "fpr_housing_2023",
+   "acs5",
+   "census_pep",
+   "census_decennial",
+   "openfema",
+   "jp_put2015",
+   "overture",
+   "fema_nfhl",
+   "census_tiger",
+   "ati_gtfs",
+   "muni_gtfs",
+   "osm"
+  ],
+  "source_detail": "Foundation for Puerto Rico (2023). The State of Housing in Puerto Rico: An Analysis of the Factors That Impact Housing and Rent Prices in Puerto Rico and Proposed Strategies to Increase Housing Affordability. Advancing Equitable Neighborhood Development grant, funded in part by NALCAB (National Association for Latino Community Asset Builders). Table 11 (case study of Ceiba); values come from the series described in each variable's entry. In the study PDF this table is numbered Table 13. Study PDF: https://foundationforpuertorico.org/wp-content/uploads/2023/05/state_of_housing.pdf",
+  "how_to_read": "Click a label to open that dataset in full; the dialog links to the dataset's entry in this dictionary. A rank of #1 means the highest value among the 78 municipalities; whether high is good depends on the measure.",
+  "caveats": [
+   "Values in one card can come from different dates and surveys, for example the July 1 population estimate beside 2020-2024 ACS values and the census-day count for residents per unit. The page prints a year beside a value only when it differs from the selected year. Dollar trends are not adjusted for inflation, and neighboring ACS windows overlap.",
+   "The FEMA row adds all disasters since 2003, so a household approved under more than one disaster is counted more than once.",
+   "The study's Table 11 is a case study of one municipality, Ceiba; the page extends its variables to every municipality and every year."
+  ],
+  "see_also": [
+   "housing.median_hh_income",
+   "housing.poverty_pct",
+   "housing.employment_rate_pct",
+   "housing.bachelors_pct",
+   "housing.affordability_ratio",
+   "housing.fema_ia_households",
+   "municipalities.assets",
+   "municipalities.sfha_pct",
+   "municipalities.transit_pct",
+   "municipalities.urban_pct",
+   "housing.residents_per_unit",
+   "layers.housing_profile",
+   "layers.trend_sparkline",
+   "methods.acs_windows"
+  ],
+  "where": {
+   "files": [],
+   "view": [
+    {
+     "label": "Housing page, section 9 (Municipality profile)",
+     "href": "housing.html#profile"
+    }
+   ]
+  },
+  "added": "2026-10-02",
+  "example": "In the 2026-10 snapshot, Ceiba, median household income: the line spans 15 yrs (2010 to 2024) and the dot marks the selected year. Ceiba, FEMA households: 19 yrs, 4 values (2004, 2017, 2020 and 2022)."
+ },
+ {
+  "id": "study.headline_figures",
+  "name": "Headline figures from the study: housing units, vacancy, abandonment and the yearly housing deficit",
+  "domain": "housing",
+  "domains": ["housing"],
+  "group": "State of Housing study (2023)",
+  "kind": "table",
+  "plain": "The study gives four round numbers. In 2020, Puerto Rico had about 1.6 million housing units and 370,000 vacant homes. The 370,000 is not the 2020 census-day count in the observatory, which is 257,625. The study estimates 300,000 units are dilapidated or abandoned. It cites a government estimate of 20,000 new homes needed each year.",
+  "definition": "Four headline figures shown at the top of the Housing page and quoted in its text: housing units in 2020 (1,600,000), vacant homes in 2020 (370,000), an estimate of dilapidated or abandoned units (300,000) and the annual new-housing deficit (20,000, a government estimate). The same row on the page also shows the study's 2020 resident count of 3,285,694 (see Table 2). The Census Bureau's April 2020 count is 3,285,874, which is 180 higher (see 'Resident population').",
+  "unit": "housing units (count)",
+  "value_type": "count",
+  "geography": "Puerto Rico as a whole",
+  "coverage": {
+   "timeline": "static",
+   "first": 2020,
+   "last": 2024,
+   "frequency": "Fixed as published; not updated."
+  },
+  "method": "Stored in housing.json under headline as printed, rounded. The page labels the first two 'Census 2020, study p.14', the third 'study p.14' and the fourth 'study, regulation brief 2024'.",
+  "sources": [
+   "fpr_housing_2023",
+   "census_decennial",
+   "acs5"
+  ],
+  "source_detail": "Foundation for Puerto Rico (2023). The State of Housing in Puerto Rico: An Analysis of the Factors That Impact Housing and Rent Prices in Puerto Rico and Proposed Strategies to Increase Housing Affordability. Advancing Equitable Neighborhood Development grant, funded in part by NALCAB (National Association for Latino Community Asset Builders). p.14 and the 'regulation brief 2024' that the page cites for the 20,000 figure (the observatory does not hold the brief). Study PDF: https://foundationforpuertorico.org/wp-content/uploads/2023/05/state_of_housing.pdf",
+  "how_to_read": "Use them as orders of magnitude. For exact counts use the live series: census-day housing units and vacant units for 2010 and 2020, and American Community Survey (ACS) housing units and vacant units for every window.",
+  "caveats": [
+   "The observatory's own 2020 census-day count is 1,598,159 housing units (rounds to 1.6 million) but 257,625 vacant units, so the study's 370,000 vacant homes does not match it. The 370,000 is close to the American Community Survey estimates of vacant units: 368,182 for the 2015-2019 window and 354,227 for 2016-2020. The page labels the figure 'Census 2020, study p.14'. Treat it as the study's figure, not as the 2020 census count.",
+   "The 300,000 abandoned or dilapidated units is an estimate, not a count. The nearest public proxy in the observatory is 'other vacant' units (219,965 in the 2016-2020 window).",
+   "The 20,000 homes a year is a government estimate cited by the study. The observatory does not hold the source, and the page labels it \"study, regulation brief 2024\". Cite it as the study's figure."
+  ],
+  "see_also": [
+   "housing.census_housing_units",
+   "housing.census_vacant_units",
+   "housing.vacant_units",
+   "housing.other_vacant_units",
+   "housing.housing_units",
+   "study.table_2",
+   "housing.population",
+   "layers.housing_headline_numbers"
+  ],
+  "where": {
+   "files": [
+    "housing.json:headline"
+   ],
+   "view": [
+    {
+     "label": "Housing page: headline figures",
+     "href": "housing.html#headline"
+    },
+    {
+     "label": "Housing page, section 2 (Housing stock)",
+     "href": "housing.html#stock"
+    }
+   ]
+  },
+  "added": "2026-10-02",
+  "example": "1,600,000 housing units; 370,000 vacant homes; 300,000 dilapidated or abandoned (estimate); 20,000 new homes needed per year."
+ },
+ {
+  "id": "study.citation_links",
+  "name": "Study citation and links",
+  "domain": "housing",
+  "domains": ["housing"],
+  "group": "State of Housing study (2023)",
+  "kind": "table",
+  "plain": "The full citation of the Foundation for Puerto Rico (FPR) 2023 study. It also holds four web links: the study PDF, FPR's housing page, the National Association for Latino Community Asset Builders (NALCAB) and FPR's home page.",
+  "definition": "Two text fields in housing.json: citation, the study's reference line (title, grant and funder, and the tables reproduced: 2, 3, 4, 6, 7, 8, 9, 10 and 11), and links, four web addresses (study PDF, FPR housing page, NALCAB, FPR home).",
+  "unit": "text",
+  "value_type": "text",
+  "geography": "Puerto Rico",
+  "coverage": {
+   "timeline": "static",
+   "first": 2023,
+   "last": 2023,
+   "frequency": "Fixed."
+  },
+  "method": "Stored in housing.json as citation and links. The page prints citation under 'Sources and method'. The links field is not read by the page, which writes the same addresses in its own text.",
+  "sources": [
+   "fpr_housing_2023"
+  ],
+  "source_detail": "Foundation for Puerto Rico (2023). The State of Housing in Puerto Rico: An Analysis of the Factors That Impact Housing and Rent Prices in Puerto Rico and Proposed Strategies to Increase Housing Affordability. Advancing Equitable Neighborhood Development grant, funded in part by NALCAB (National Association for Latino Community Asset Builders). Study PDF: https://foundationforpuertorico.org/wp-content/uploads/2023/05/state_of_housing.pdf",
+  "how_to_read": "Use the citation to refer to the study. NALCAB funded the study in part through its Advancing Equitable Neighborhood Development program.",
+  "caveats": [
+   "The citation lists tables 2, 3, 4, 6, 7, 8, 9, 10 and 11. The page reproduces Tables 2, 6, 7, 8, 9 and 10 as published and shows live versions of Tables 2, 3, 4, 6 and 7.",
+   "Tables 3, 4 and 11 appear on the page only as live recomputations or extensions from Census Bureau data. Cite the Census Bureau for those values, not the study; the study's own 52% and 38% are the only Table 3 and 4 figures the page reproduces."
+  ],
+  "see_also": [
+   "study.state_of_housing_2023",
+   "methods.citation"
+  ],
+  "where": {
+   "files": [
+    "housing.json:citation",
+    "housing.json:links"
+   ],
+   "view": [
+    {
+     "label": "Housing page: sources and method",
+     "href": "housing.html#sources"
+    }
+   ]
+  },
+  "added": "2026-10-02",
+  "example": "Foundation for Puerto Rico (2023). The State of Housing in Puerto Rico: An Analysis of the Factors That Impact Housing and Rent Prices in Puerto Rico and Proposed Strategies to Increase Housing Affordability. Advancing Equitable Neighborhood Development grant, funded in part by NALCAB (National Association for Latino Community Asset Builders). Tables 2, 3, 4, 6, 7, 8, 9, 10, 11."
+ }
+]

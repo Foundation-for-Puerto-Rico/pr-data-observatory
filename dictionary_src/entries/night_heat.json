@@ -1,0 +1,298 @@
+[
+ {
+  "id": "night_heat.night_lst_med",
+  "name": "Median land surface temperature, summer nights (ECOSTRESS, °C)",
+  "ask": {
+   "en": [
+    "night heat",
+    "hot nights",
+    "heat at night",
+    "warm nights"
+   ],
+   "es": [
+    "calor de noche",
+    "calor nocturno",
+    "noches calurosas",
+    "temperatura de noche"
+   ]
+  },
+  "domain": "environment",
+  "domains": [
+   "environment",
+   "health",
+   "hazards"
+  ],
+  "group": "Environment · Night surface heat (ECOSTRESS)",
+  "kind": "variable",
+  "plain": "How warm the ground, roofs and pavement typically stay on clear summer nights, as NASA's ECOSTRESS sees them from the space station: half the area's land is warmer than this.",
+  "definition": "The median, over the area's land, of each 60 m cell's land surface temperature on clear summer nights (the median of the cell's cloud-free ECOSTRESS night views). In degrees Celsius.",
+  "unit": "°C (land surface temperature)",
+  "value_type": "ratio",
+  "geography": "78 municipalities and Puerto Rico; also 901 barrios",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One window of three summers (June to September 2024-2026), the window of surface heat; rebuilt each October when a new summer is complete (refresh unit night_heat)."
+  },
+  "method": "ecostress.py lists every ECOSTRESS tiled land surface temperature granule over Puerto Rico of June to September 2024-2026 that NASA flags as night and that was taken between 21:00 and 06:00 local time (295 granules from 47 passes of the International Space Station), reads its temperature, quality, cloud and water layers at 70 m, only where the barrios' cells fall, and maps them onto heat.py's 60 m grid. An observation counts when the temperature is set, the quality is best or nominal, and the cloud and water masks are clear; where two tiles of one pass overlap, a cell keeps one view. Each cell's value is the median of its clear night views (at least 3; the typical cell has 13). A cell belongs to the barrio whose outline holds its centre; municipios and Puerto Rico pool the cells of their barrios. 99.5% of the 2,485,382 cells have a value. Checks at every build: Puerto Rico's night median between 15 and 35 °C and below its morning median (heat_series.json), San Juan's above it, Jayuya's and Adjuntas's below it.",
+  "sources": [
+   "nasa_ecostress_lste",
+   "census_tiger"
+  ],
+  "source_detail": "NASA ECOSTRESS ECO_L2T_LSTE version 2 (Hook and Hulley 2022, https://doi.org/10.5067/ECOSTRESS/ECO_L2T_LSTE.002), 295 night granules of June to September 2024-2026 between 21:00 and 06:00, read from the LP DAAC at 70 m. Barrio outlines: barrios.geojson; residents: 2020 census blocks.",
+  "how_to_read": "Puerto Rico: 24.0 °C at night (its morning median, from Landsat, is 33.4 °C). Warmest municipios: Culebra (26.5 °C), San Juan (26.4 °C), Loíza (26.4 °C). Coolest: Adjuntas (19.8 °C), Jayuya (19.9 °C), Orocovis (20.0 °C).",
+  "caveats": [
+   "Surface temperature, not air temperature: at night built surfaces give back the heat they stored, so they stay warmer than the air above fields and forest.",
+   "The passes come at different hours of the night, 21:00 to 06:00; each cell mixes them, so a place seen mostly before midnight reads a little warmer than one seen mostly before dawn.",
+   "ECOSTRESS's night cloud mask misses some thin cloud, which reads cold; the median of many nights limits it, and the Cordillera, cloudier, has fewer views.",
+   "The sea stays warm through summer nights, so land near the coast stays warmer too: a warm coastal barrio is not only urban heat. Compare coastal places with each other.",
+   "Elevation cools the land: compare places at similar heights."
+  ],
+  "see_also": [
+   "night_heat.night_lst_p90",
+   "night_heat.night_hot_land_pct",
+   "heat.heat_lst_med"
+  ],
+  "where": {
+   "files": [
+    "night_heat_series.json:night_lst_med",
+    "night_heat_barrio.json:night_lst_med"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Environment · Night surface heat (ECOSTRESS)): shade municipalities, or barrios (Settings > Area), by",
+     "href": "index.html#e=night_lst_med.f.value.red.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-11-04"
+ },
+ {
+  "id": "night_heat.night_lst_p90",
+  "name": "Warmest tenth of the land, surface temperature, summer nights (ECOSTRESS, °C)",
+  "ask": {
+   "en": [
+    "warmest land at night"
+   ],
+   "es": [
+    "terreno mas calido de noche"
+   ]
+  },
+  "domain": "environment",
+  "domains": [
+   "environment",
+   "health",
+   "hazards"
+  ],
+  "group": "Environment · Night surface heat (ECOSTRESS)",
+  "kind": "variable",
+  "plain": "How warm the warmest tenth of the area's land stays on clear summer nights: the places that cool least.",
+  "definition": "The 90th percentile, over the area's land, of each 60 m cell's land surface temperature on clear summer nights. In degrees Celsius.",
+  "unit": "°C (land surface temperature)",
+  "value_type": "ratio",
+  "geography": "78 municipalities and Puerto Rico; also 901 barrios",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One window of three summers (June to September 2024-2026), the window of surface heat; rebuilt each October when a new summer is complete (refresh unit night_heat)."
+  },
+  "method": "ecostress.py lists every ECOSTRESS tiled land surface temperature granule over Puerto Rico of June to September 2024-2026 that NASA flags as night and that was taken between 21:00 and 06:00 local time (295 granules from 47 passes of the International Space Station), reads its temperature, quality, cloud and water layers at 70 m, only where the barrios' cells fall, and maps them onto heat.py's 60 m grid. An observation counts when the temperature is set, the quality is best or nominal, and the cloud and water masks are clear; where two tiles of one pass overlap, a cell keeps one view. Each cell's value is the median of its clear night views (at least 3; the typical cell has 13). A cell belongs to the barrio whose outline holds its centre; municipios and Puerto Rico pool the cells of their barrios. 99.5% of the 2,485,382 cells have a value. Checks at every build: Puerto Rico's night median between 15 and 35 °C and below its morning median (heat_series.json), San Juan's above it, Jayuya's and Adjuntas's below it.",
+  "sources": [
+   "nasa_ecostress_lste",
+   "census_tiger"
+  ],
+  "source_detail": "NASA ECOSTRESS ECO_L2T_LSTE version 2 (Hook and Hulley 2022, https://doi.org/10.5067/ECOSTRESS/ECO_L2T_LSTE.002), 295 night granules of June to September 2024-2026 between 21:00 and 06:00, read from the LP DAAC at 70 m. Barrio outlines: barrios.geojson; residents: 2020 census blocks.",
+  "how_to_read": "Puerto Rico: 26.2 °C (its median is 24.0 °C). Highest: Mayagüez (28.0 °C), Culebra (27.5 °C), San Juan (27.4 °C).",
+  "caveats": [
+   "Surface temperature, not air temperature: at night built surfaces give back the heat they stored, so they stay warmer than the air above fields and forest.",
+   "The passes come at different hours of the night, 21:00 to 06:00; each cell mixes them, so a place seen mostly before midnight reads a little warmer than one seen mostly before dawn.",
+   "ECOSTRESS's night cloud mask misses some thin cloud, which reads cold; the median of many nights limits it, and the Cordillera, cloudier, has fewer views.",
+   "The sea stays warm through summer nights, so land near the coast stays warmer too: a warm coastal barrio is not only urban heat. Compare coastal places with each other.",
+   "Elevation cools the land: compare places at similar heights."
+  ],
+  "see_also": [
+   "night_heat.night_lst_med",
+   "night_heat.night_hot_land_pct",
+   "heat.heat_lst_med"
+  ],
+  "where": {
+   "files": [
+    "night_heat_series.json:night_lst_p90",
+    "night_heat_barrio.json:night_lst_p90"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Environment · Night surface heat (ECOSTRESS)): shade municipalities, or barrios (Settings > Area), by",
+     "href": "index.html#e=night_lst_p90.f.value.red.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-11-04"
+ },
+ {
+  "id": "night_heat.night_hot_land_pct",
+  "name": "Land among Puerto Rico's warmest tenth at night, summer (ECOSTRESS, %)",
+  "domain": "environment",
+  "domains": [
+   "environment",
+   "health",
+   "hazards"
+  ],
+  "group": "Environment · Night surface heat (ECOSTRESS)",
+  "kind": "variable",
+  "plain": "How much of the area's land is among the warmest tenth of Puerto Rico's land on clear summer nights.",
+  "definition": "The share of the area's land cells whose night surface temperature is above Puerto Rico's 90th percentile (26.2 °C), over its cells with a value. Puerto Rico's own share is 10% by construction.",
+  "unit": "% of the land with a value",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico; also 901 barrios",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One window of three summers (June to September 2024-2026), the window of surface heat; rebuilt each October when a new summer is complete (refresh unit night_heat)."
+  },
+  "method": "ecostress.py lists every ECOSTRESS tiled land surface temperature granule over Puerto Rico of June to September 2024-2026 that NASA flags as night and that was taken between 21:00 and 06:00 local time (295 granules from 47 passes of the International Space Station), reads its temperature, quality, cloud and water layers at 70 m, only where the barrios' cells fall, and maps them onto heat.py's 60 m grid. An observation counts when the temperature is set, the quality is best or nominal, and the cloud and water masks are clear; where two tiles of one pass overlap, a cell keeps one view. Each cell's value is the median of its clear night views (at least 3; the typical cell has 13). A cell belongs to the barrio whose outline holds its centre; municipios and Puerto Rico pool the cells of their barrios. 99.5% of the 2,485,382 cells have a value. Checks at every build: Puerto Rico's night median between 15 and 35 °C and below its morning median (heat_series.json), San Juan's above it, Jayuya's and Adjuntas's below it.",
+  "sources": [
+   "nasa_ecostress_lste",
+   "census_tiger"
+  ],
+  "source_detail": "NASA ECOSTRESS ECO_L2T_LSTE version 2 (Hook and Hulley 2022, https://doi.org/10.5067/ECOSTRESS/ECO_L2T_LSTE.002), 295 night granules of June to September 2024-2026 between 21:00 and 06:00, read from the LP DAAC at 70 m. Barrio outlines: barrios.geojson; residents: 2020 census blocks.",
+  "how_to_read": "Puerto Rico: 10.0% (10% by construction). Highest: Culebra (69.7%), Loíza (60.2%), Cataño (59.3%).",
+  "caveats": [
+   "Surface temperature, not air temperature: at night built surfaces give back the heat they stored, so they stay warmer than the air above fields and forest.",
+   "The passes come at different hours of the night, 21:00 to 06:00; each cell mixes them, so a place seen mostly before midnight reads a little warmer than one seen mostly before dawn.",
+   "ECOSTRESS's night cloud mask misses some thin cloud, which reads cold; the median of many nights limits it, and the Cordillera, cloudier, has fewer views.",
+   "The sea stays warm through summer nights, so land near the coast stays warmer too: a warm coastal barrio is not only urban heat. Compare coastal places with each other.",
+   "Elevation cools the land: compare places at similar heights.",
+   "Warm land at night is relative to Puerto Rico: the warmest 10% of its land on these nights (above 26.2 °C), not a health threshold."
+  ],
+  "see_also": [
+   "night_heat.night_lst_p90",
+   "night_heat.night_res_hot_pct",
+   "heat.heat_lst_med"
+  ],
+  "where": {
+   "files": [
+    "night_heat_series.json:night_hot_land_pct",
+    "night_heat_barrio.json:night_hot_land_pct"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Environment · Night surface heat (ECOSTRESS)): shade municipalities, or barrios (Settings > Area), by",
+     "href": "index.html#e=night_hot_land_pct.f.value.red.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-11-04"
+ },
+ {
+  "id": "night_heat.night_res_hot",
+  "name": "Residents on Puerto Rico's warmest tenth of land at night (estimate)",
+  "domain": "environment",
+  "domains": [
+   "environment",
+   "health",
+   "hazards"
+  ],
+  "group": "Environment · Night surface heat (ECOSTRESS)",
+  "kind": "variable",
+  "plain": "About how many people (2020 census) live on the land that stays warmest on clear summer nights: the warmest tenth of Puerto Rico's land.",
+  "definition": "The 2020 census residents whose block's internal point lies on a cell above Puerto Rico's 90th percentile of night land surface temperature (26.2 °C). A count of residents; an estimate.",
+  "unit": "residents (2020 census)",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico; also 901 barrios",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One window of three summers (June to September 2024-2026), the window of surface heat; rebuilt each October when a new summer is complete (refresh unit night_heat)."
+  },
+  "method": "ecostress.py lists every ECOSTRESS tiled land surface temperature granule over Puerto Rico of June to September 2024-2026 that NASA flags as night and that was taken between 21:00 and 06:00 local time (295 granules from 47 passes of the International Space Station), reads its temperature, quality, cloud and water layers at 70 m, only where the barrios' cells fall, and maps them onto heat.py's 60 m grid. An observation counts when the temperature is set, the quality is best or nominal, and the cloud and water masks are clear; where two tiles of one pass overlap, a cell keeps one view. Each cell's value is the median of its clear night views (at least 3; the typical cell has 13). A cell belongs to the barrio whose outline holds its centre; municipios and Puerto Rico pool the cells of their barrios. 99.5% of the 2,485,382 cells have a value. Checks at every build: Puerto Rico's night median between 15 and 35 °C and below its morning median (heat_series.json), San Juan's above it, Jayuya's and Adjuntas's below it.",
+  "sources": [
+   "nasa_ecostress_lste",
+   "census_tiger"
+  ],
+  "source_detail": "NASA ECOSTRESS ECO_L2T_LSTE version 2 (Hook and Hulley 2022, https://doi.org/10.5067/ECOSTRESS/ECO_L2T_LSTE.002), 295 night granules of June to September 2024-2026 between 21:00 and 06:00, read from the LP DAAC at 70 m. Barrio outlines: barrios.geojson; residents: 2020 census blocks.",
+  "how_to_read": "Puerto Rico: 847,717 residents (25.8%). Most: San Juan (260,188), Carolina (105,890), Ponce (58,129).",
+  "caveats": [
+   "An estimate from whole census blocks: rough for a barrio, where the edge of warm land can cut a block.",
+   "Warm land at night is relative to Puerto Rico: the warmest 10% of its land on these nights (above 26.2 °C), not a health threshold.",
+   "Surface temperature, not air temperature: at night built surfaces give back the heat they stored, so they stay warmer than the air above fields and forest.",
+   "The passes come at different hours of the night, 21:00 to 06:00; each cell mixes them, so a place seen mostly before midnight reads a little warmer than one seen mostly before dawn."
+  ],
+  "see_also": [
+   "night_heat.night_res_hot_pct",
+   "night_heat.night_hot_land_pct",
+   "heat.heat_lst_med"
+  ],
+  "where": {
+   "files": [
+    "night_heat_series.json:night_res_hot",
+    "night_heat_barrio.json:night_res_hot"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Environment · Night surface heat (ECOSTRESS)): shade municipalities, or barrios (Settings > Area), by",
+     "href": "index.html#e=night_res_hot.f.value.red.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-11-04"
+ },
+ {
+  "id": "night_heat.night_res_hot_pct",
+  "name": "Residents on Puerto Rico's warmest tenth of land at night (estimate, %)",
+  "domain": "environment",
+  "domains": [
+   "environment",
+   "health",
+   "hazards"
+  ],
+  "group": "Environment · Night surface heat (ECOSTRESS)",
+  "kind": "variable",
+  "plain": "Out of every 100 residents (2020 census), about how many live on the land that stays warmest on clear summer nights.",
+  "definition": "The share of the area's 2020 census residents whose block's internal point lies on a cell above Puerto Rico's 90th percentile of night land surface temperature (26.2 °C). An estimate.",
+  "unit": "% of residents (2020 census)",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico; also 901 barrios",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "One window of three summers (June to September 2024-2026), the window of surface heat; rebuilt each October when a new summer is complete (refresh unit night_heat)."
+  },
+  "method": "ecostress.py lists every ECOSTRESS tiled land surface temperature granule over Puerto Rico of June to September 2024-2026 that NASA flags as night and that was taken between 21:00 and 06:00 local time (295 granules from 47 passes of the International Space Station), reads its temperature, quality, cloud and water layers at 70 m, only where the barrios' cells fall, and maps them onto heat.py's 60 m grid. An observation counts when the temperature is set, the quality is best or nominal, and the cloud and water masks are clear; where two tiles of one pass overlap, a cell keeps one view. Each cell's value is the median of its clear night views (at least 3; the typical cell has 13). A cell belongs to the barrio whose outline holds its centre; municipios and Puerto Rico pool the cells of their barrios. 99.5% of the 2,485,382 cells have a value. Checks at every build: Puerto Rico's night median between 15 and 35 °C and below its morning median (heat_series.json), San Juan's above it, Jayuya's and Adjuntas's below it.",
+  "sources": [
+   "nasa_ecostress_lste",
+   "census_tiger"
+  ],
+  "source_detail": "NASA ECOSTRESS ECO_L2T_LSTE version 2 (Hook and Hulley 2022, https://doi.org/10.5067/ECOSTRESS/ECO_L2T_LSTE.002), 295 night granules of June to September 2024-2026 between 21:00 and 06:00, read from the LP DAAC at 70 m. Barrio outlines: barrios.geojson; residents: 2020 census blocks.",
+  "how_to_read": "Puerto Rico: 25.8% of the residents live on its warmest tenth of land at night, more than 10% because people live where the land is built. Highest: Loíza (82.6%), Culebra (77.4%), San Juan (76.0%).",
+  "caveats": [
+   "An estimate from whole census blocks: rough for a barrio, where the edge of warm land can cut a block.",
+   "Warm land at night is relative to Puerto Rico: the warmest 10% of its land on these nights (above 26.2 °C), not a health threshold.",
+   "Surface temperature, not air temperature: at night built surfaces give back the heat they stored, so they stay warmer than the air above fields and forest.",
+   "The passes come at different hours of the night, 21:00 to 06:00; each cell mixes them, so a place seen mostly before midnight reads a little warmer than one seen mostly before dawn."
+  ],
+  "see_also": [
+   "night_heat.night_res_hot",
+   "night_heat.night_hot_land_pct",
+   "heat.heat_lst_med"
+  ],
+  "where": {
+   "files": [
+    "night_heat_series.json:night_res_hot_pct",
+    "night_heat_barrio.json:night_res_hot_pct"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Environment · Night surface heat (ECOSTRESS)): shade municipalities, or barrios (Settings > Area), by",
+     "href": "index.html#e=night_res_hot_pct.f.value.red.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-11-04"
+ }
+]

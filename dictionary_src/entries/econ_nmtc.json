@@ -1,0 +1,100 @@
+[
+ {
+  "id": "economy.nmtc_qlici",
+  "name": "Investment in low-income communities: New Markets Tax Credit (QLICI)",
+  "domain": "public-money",
+  "domains": [
+   "public-money"
+  ],
+  "group": "Investment in low-income communities (New Markets Tax Credit)",
+  "kind": "variable",
+  "plain": "Dollars invested in businesses and real estate projects in low-income census tracts with New Markets Tax Credits, by the year each investment was made.",
+  "definition": "The sum of the qualified low-income community investments (QLICIs: loans to, or equity in, a business or project) that Community Development Entities made with New Markets Tax Credit allocations in the municipio, by the calendar year of origination, as the CDFI Fund publishes them.",
+  "unit": "US dollars (not adjusted for inflation)",
+  "value_type": "level",
+  "geography": "78 municipalities and Puerto Rico (the sum of the municipios)",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2001,
+   "last": 2023,
+   "frequency": "One value per calendar year 2001 to 2023 (the year each investment was made), from the CDFI Fund's yearly public data release (NMTC_Public_Data_Release_includes_FY2003_FY_2023_Data_Final_08062026.xlsx). The Fund releases a new year each summer, about three years after the investments."
+  },
+  "method": "economy_series.py, function nmtc_values. The build reads the newest NMTC data file listed on the CDFI Fund's data releases page (cache/economy/nmtc), takes the sheet of financial notes (one row per QLICI), keeps the Puerto Rico rows and places each in the municipio of its 2020 census tract (the first five digits). 73 investments in 36 projects. Puerto Rico = the sum of the municipios.",
+  "sources": [
+   "nmtc"
+  ],
+  "source_detail": "CDFI Fund, NMTC public data release (NMTC_Public_Data_Release_includes_FY2003_FY_2023_Data_Final_08062026.xlsx), sheet Financial Notes, QLICI Amount",
+  "how_to_read": "From 2001 to 2023, $219.3 million of NMTC investments reached 23 municipios: San Juan $37.6 million, Manatí $32.5 million, Ponce $25.4 million. Read several years together: one project can be a large share of a year.",
+  "caveats": [
+   "Each investment counts in the municipio of its own census tract; a project with investments in several municipios is counted once, in the municipio of the first one the file lists (none in Puerto Rico does in the 2026-08 release).",
+   "Investments, not the credit: investors claim 39% of each investment as a tax credit over seven years (5% a year for three years, then 6% a year for four).",
+   "Values are in dollars of each year, not adjusted for inflation. Most years have no investment in Puerto Rico; 2018 has the most.",
+   "These are about a federal tax credit program. Their Spanish summaries are held for Finance and Compliance review (HANDOFF decision 21)."
+  ],
+  "see_also": [
+   "economy.nmtc_projects",
+   "economy.fed_awards_total",
+   "measures.inflation_adjustment"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:nmtc_qlici"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Public money): shade municipalities by dollars",
+     "href": "index.html#e=nmtc_qlici.f.value.blue.q.1.1.0.85.0&ey=2023"
+    }
+   ]
+  },
+  "example": "Snapshot 2026-10 (NMTC_Public_Data_Release_includes_FY2003_FY_2023_Data_Final_08062026.xlsx): 2018, Puerto Rico $49.5 million.",
+  "added": "2026-10-31"
+ },
+ {
+  "id": "economy.nmtc_projects",
+  "name": "Investment in low-income communities: New Markets Tax Credit projects",
+  "domain": "public-money",
+  "domains": [
+   "public-money"
+  ],
+  "group": "Investment in low-income communities (New Markets Tax Credit)",
+  "kind": "variable",
+  "plain": "How many projects received their first New Markets Tax Credit investment each year, in the municipio of the project.",
+  "definition": "The number of NMTC projects whose earliest QLICI was made that calendar year, counted in the municipio of the project's census tract.",
+  "unit": "projects",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico (the sum of the municipios)",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2001,
+   "last": 2023,
+   "frequency": "One value per calendar year 2001 to 2023 (the year each investment was made), from the CDFI Fund's yearly public data release (NMTC_Public_Data_Release_includes_FY2003_FY_2023_Data_Final_08062026.xlsx). The Fund releases a new year each summer, about three years after the investments."
+  },
+  "method": "economy_series.py, function nmtc_values. The build reads the newest NMTC data file listed on the CDFI Fund's data releases page (cache/economy/nmtc), takes the sheet of financial notes (one row per QLICI), keeps the Puerto Rico rows and places each in the municipio of its 2020 census tract (the first five digits). 73 investments in 36 projects. Puerto Rico = the sum of the municipios. A project counts once, in the year of its first investment.",
+  "sources": [
+   "nmtc"
+  ],
+  "source_detail": "CDFI Fund, NMTC public data release (NMTC_Public_Data_Release_includes_FY2003_FY_2023_Data_Final_08062026.xlsx), sheet Financial Notes, Project ID",
+  "how_to_read": "From 2001 to 2023, 36 projects in Puerto Rico received NMTC investments. Most years have none or a handful, so add years together before comparing municipios.",
+  "caveats": [
+   "Each investment counts in the municipio of its own census tract; a project with investments in several municipios is counted once, in the municipio of the first one the file lists (none in Puerto Rico does in the 2026-08 release).",
+   "Values are in dollars of each year, not adjusted for inflation. Most years have no investment in Puerto Rico; 2018 has the most.",
+   "These are about a federal tax credit program. Their Spanish summaries are held for Finance and Compliance review (HANDOFF decision 21)."
+  ],
+  "see_also": [
+   "economy.nmtc_qlici"
+  ],
+  "where": {
+   "files": [
+    "economy_series.json:nmtc_projects"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Public money): shade municipalities by projects",
+     "href": "index.html#e=nmtc_projects.f.value.blue.q.1.1.0.85.0&ey=2023"
+    }
+   ]
+  },
+  "added": "2026-10-31"
+ }
+]

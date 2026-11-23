@@ -1,0 +1,66 @@
+{
+ "labor_sex.lfpr_women": {
+  "name": "Participación en la fuerza laboral, mujeres de 16 años o más",
+  "how_to_read": "En 2020-2024, el 41.9% (± 0.3 puntos) de las mujeres de 16 años o más de Puerto Rico estaba en la fuerza laboral, frente al 51.4% (± 0.3) de los hombres; la tasa de las mujeres fue 40.4% en 2010-2014 y 39.8% en 2015-2019. Entre los municipios va de 26.7% (± 5.7) en Maricao a 51.8% (± 2.3) en Trujillo Alto, sin contar Culebra (64.0% ± 10.4), cuyo margen es demasiado amplio para ordenarlo. La tasa cuenta a todas las mujeres de 16 años o más, incluidas las jubiladas, así que un municipio con una población de más edad tiene una tasa más baja solo por eso; la tasa de 25 a 54 años (labor_sex.lfpr_women_prime) y la tasa ajustada por edad de la página del Área de Conocimiento quitan ese efecto.",
+  "_en": {
+   "name": "2c99689d",
+   "how_to_read": "df79823d"
+  }
+ },
+ "labor_sex.lfpr_men": {
+  "name": "Participación en la fuerza laboral, hombres de 16 años o más",
+  "how_to_read": "En 2020-2024, el 51.4% (± 0.3 puntos) de los hombres de 16 años o más de Puerto Rico estaba en la fuerza laboral (51.3% en 2010-2014, 49.8% en 2015-2019). Entre los municipios va de 36.0% (± 4.1) en Ciales a 63.1% (± 2.5) en Gurabo. Léala junto a la tasa de las mujeres (labor_sex.lfpr_women); su diferencia es labor_sex.lfpr_gap.",
+  "_en": {
+   "name": "982e700f",
+   "how_to_read": "1654ab70"
+  }
+ },
+ "labor_sex.lfpr_women_prime": {
+  "name": "Participación en la fuerza laboral, mujeres de 25 a 54 años",
+  "how_to_read": "En 2020-2024, el 69.9% (± 0.5 puntos) de las mujeres de 25 a 54 años de Puerto Rico estaba en la fuerza laboral, frente a 63.0% en 2010-2014 y 64.6% en 2015-2019: un aumento mucho mayor que el de la tasa de 16 años o más, que el número creciente de mujeres de más edad mantiene baja. Entre los municipios va de 52.2% (± 11.1) en Maricao a 81.0% (± 3.6) en Trujillo Alto. Los márgenes son más amplios que los de la tasa de 16 años o más: 51 de los 78 municipios tienen un margen de más de 5 puntos.",
+  "_en": {
+   "name": "88a25e23",
+   "how_to_read": "cbf561a5"
+  }
+ },
+ "labor_sex.lfpr_gap": {
+  "name": "Brecha de participación, hombres menos mujeres (puntos porcentuales)",
+  "how_to_read": "En 2020-2024 la tasa de los hombres en Puerto Rico estaba 9.5 puntos (± 0.4) por encima de la de las mujeres, frente a 10.8 puntos en 2010-2014 y 10.1 en 2015-2019. En 67 de los 78 municipios la brecha es mayor que su margen, así que allí la participación de los hombres es significativamente más alta. Solo Culebra muestra a las mujeres por delante (-10.3 puntos), pero su margen de ± 15.8 puntos indica que la encuesta no puede saberlo; las brechas mayores están en Barranquitas y Comerío (18.5 puntos).",
+  "_en": {
+   "name": "20145706",
+   "how_to_read": "546fec83"
+  }
+ },
+ "labor_sex.unemp_women": {
+  "name": "Tasa de desempleo, mujeres de 16 años o más",
+  "how_to_read": "En 2020-2024, el 10.8% (± 0.3 puntos) de las mujeres en la fuerza laboral civil de Puerto Rico estaba desempleada, frente a 18.2% en 2010-2014 y 16.2% en 2015-2019. Entre los municipios los márgenes son amplios (22 de 78 de más de 5 puntos): el 25.4% de Guánica tiene un margen de ± 8.8 y el 0.0% de Maricao uno de ± 9.4, así que ninguno es un extremo firme. Para la tasa de desempleo anual de todos los residentes use la serie del Negociado de Estadísticas Laborales (economy.laus_unemp_rate), un estimado de modelo.",
+  "_en": {
+   "name": "c440b282",
+   "how_to_read": "8a993901"
+  }
+ },
+ "labor_sex.women_16plus": {
+  "name": "Mujeres de 16 años o más",
+  "how_to_read": "En 2020-2024 Puerto Rico tenía 1,485,977 mujeres de 16 años o más (± 4,535), frente a 1,542,203 en 2010-2014 y 1,465,816 en 2015-2019; los conteos de períodos distintos se ajustan a estimados de población distintos, por lo que parte de un cambio en los conteos viene de esos ajustes. San Juan tiene la mayor cantidad (160,655 ± 1,610) y Culebra la menor (606 ± 129). Úsela para ponderar la tasa de un municipio: una tasa alta entre pocas mujeres son menos trabajadoras que una tasa moderada entre muchas.",
+  "_en": {
+   "name": "5caa463a",
+   "how_to_read": "5328055b"
+  }
+ },
+ "labor_sex.women_in_lf": {
+  "name": "Mujeres en la fuerza laboral",
+  "how_to_read": "En 2020-2024, 623,031 mujeres (± 4,628) estaban en la fuerza laboral de Puerto Rico, casi las mismas que en 2010-2014 (623,522) y más que en 2015-2019 (582,698); los conteos de períodos distintos se ajustan a estimados de población distintos, por lo que parte de un cambio en los conteos viene de esos ajustes. San Juan tiene 75,739 (± 1,603) y Culebra 388 (± 104).",
+  "_en": {
+   "name": "b6732848",
+   "how_to_read": "96afbeaf"
+  }
+ },
+ "labor_sex.women_labor": {
+  "name": "Las mujeres en la fuerza laboral: conteos por sexo y edad, por municipio y región (datos del Área de Conocimiento)",
+  "how_to_read": "En 2020-2024 los 15 municipios de la Región Este tenían 183,952 mujeres de 16 años o más (± 1,752), y el 42.0% (± 0.8 puntos) de ellas estaba en la fuerza laboral, frente al 41.9% del resto de la isla: una diferencia de 0.1 puntos con un margen de ± 0.9, así que no es significativa. Ajustada a la composición por edad del resto de la isla, la tasa de la región es 40.7 %: las mujeres de la región son un poco más jóvenes, lo que sube su tasa sin ajustar en 1.3 puntos, mientras que una participación menor a partir de los 55 años la baja 1.2 puntos en total. El promedio simple de las tasas de los 15 municipios, 42.6%, da a Culebra el mismo peso que a Humacao; la tasa agrupada es la de la región. De 2010-2014 a 2020-2024 la tasa de las mujeres de la región subió 1.3 puntos (± 1.1), un cambio significativo, y la de las mujeres de 25 a 54 años subió 7.8 puntos (± 1.9).",
+  "_en": {
+   "name": "8e17c0f0",
+   "how_to_read": "3433de73"
+  }
+ }
+}

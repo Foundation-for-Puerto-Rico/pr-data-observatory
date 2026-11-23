@@ -1,0 +1,142 @@
+[
+ {
+  "id": "economy.crime_type1",
+  "name": "Type I crimes reported to the Police",
+  "domain": "infrastructure",
+  "domains": ["infrastructure"],
+  "group": "Public safety",
+  "kind": "variable",
+  "plain": "How many of the eight most serious crimes people reported to the Police in a municipality in a year. It counts complaints, not every crime that happened.",
+  "definition": "Complaints (querellas) of the eight Type I crimes that the Policía de Puerto Rico recorded in the municipality from 1 January to 31 December: murder, rape, human trafficking, robbery, aggravated assault, burglary (escalamiento), larceny (apropiación ilegal) and vehicle theft. Type I follows the Uniform Crime Reporting (UCR) model of the FBI as the Police describe it. Taken from the municipality table of the Police's December report, which the Instituto de Estadísticas de Puerto Rico publishes.",
+  "unit": "crimes reported (complaints), calendar year",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico (the TOTAL row of each report, which equals the sum of the 78)",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2017,
+   "last": 2025,
+   "frequency": "One value per calendar year, from the December report of that year. The Police publish a year-to-date report every month; the observatory uses only the December one, so the current year appears after its December report is posted (in January or February)."
+  },
+  "method": "economy_series.py, functions police_table, police and police_values. For each year the build downloads the December report: an Excel file (.xls) for 2017 to 2022, read from the sheet MUNICIPIO or MUNICIPIOS with xlrd, and a ZIP of PDFs from 2023, of which it reads the municipality table with pdftotext. Each row is a municipality name and nine counts. The build finds the total among the nine counts as the one that equals the sum of the other eight (it comes first in 2017 to 2023 and last from 2024). Names are matched to the 78 municipalities ignoring accents and capitals; the 2024 table writes Sabana Grande as SABANA. The build stops if any year does not match all 78 municipalities, if the 78 rows do not add up to the report's TOTAL row in every column, or if a municipality's total is not the sum of its eight crimes. The counts are kept in cache/economy/police_type1.json and written to economy_series.json; `python economy_series.py --police` updates only these series.",
+  "sources": ["ppr_type1"],
+  "source_detail": "Policía de Puerto Rico, División de Estadísticas de la Criminalidad, Delitos Tipo I, municipality table of the December reports for 2017 to 2025, downloaded 2026-10-06 from estadisticas.pr (2017 to 2024) and estadisticas.pr.gov (2025).",
+  "how_to_read": "Puerto Rico had 20,463 Type I crimes reported in 2025 (2026-10 snapshot); San Juan had 4,760 of them. Large municipalities have more crimes because they have more people, so compare places per 1,000 residents (the Analysis tab's 'per resident' option). In 2025, per 1,000 residents, the highest were San Juan (14.4), Culebra (11.5) and Loíza (11.4) and the lowest Sabana Grande (1.7). About two of every three Type I crimes are property crimes, so this total mostly follows economy.crime_property; read economy.crime_violent for violence.",
+  "caveats": [
+   "These are crimes reported to and recorded by the Police. Crimes nobody reports are missing, and how often people report differs by crime and by place, so a low count is not proof of a safe place.",
+   "The island total fell from 28,517 in 2019 to 18,206 in 2020 and has stayed near 20,000 since. Property crimes account for most of the drop. The reports do not explain it: the 2020 pandemic is one likely reason, but a change in how crimes are recorded cannot be ruled out. Compare years before and after 2020 with care.",
+   "A rate per resident counts only the people who live in the municipality. Places with many visitors or commuters, such as San Juan, Culebra and other tourist and shopping areas, look worse per resident than per person present.",
+   "Small municipalities have small counts, so their rates can swing widely from one year to the next.",
+   "Each year comes from the December report as first published. The Police can revise figures later; the observatory does not.",
+   "These figures are not the Police's public crime map (incidenciacriminal.policia.pr.gov), which counts all offences of the National Incident-Based Reporting System (NIBRS) for the current year only. The two do not match and should not be compared.",
+   "The source states no license. Check with the Instituto de Estadísticas or the Police before reusing the figures."
+  ],
+  "see_also": ["economy.crime_violent", "economy.crime_property", "economy.crime_murders", "measures.per_resident"],
+  "where": {
+   "files": ["economy_series.json:crime_type1"],
+   "view": []
+  },
+  "example": "Snapshot 2026-10, 2025: Puerto Rico 20,463; San Juan 4,760; Culebra 20.",
+  "added": "2026-10-06"
+ },
+ {
+  "id": "economy.crime_violent",
+  "name": "Violent Type I crimes (murder, rape, human trafficking, robbery, aggravated assault)",
+  "domain": "infrastructure",
+  "domains": ["infrastructure"],
+  "group": "Public safety",
+  "kind": "variable",
+  "plain": "How many murders, rapes, cases of human trafficking, robberies and aggravated assaults people reported to the Police in a municipality in a year.",
+  "definition": "The sum of five of the eight Type I crimes in the Police's December report: murder, rape, human trafficking, robbery and aggravated assault, recorded in the municipality from 1 January to 31 December. Aggravated assault is most of it.",
+  "unit": "crimes reported (complaints), calendar year",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico (the TOTAL row of each report)",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2017,
+   "last": 2025,
+   "frequency": "One value per calendar year, from the December report of that year."
+  },
+  "method": "economy_series.py, function police_values: the sum of the murder, rape, human trafficking, robbery and aggravated assault columns of the municipality table (see economy.crime_type1 for how the table is read and checked).",
+  "sources": ["ppr_type1"],
+  "how_to_read": "Puerto Rico had 6,432 violent Type I crimes reported in 2025 (2026-10 snapshot), 4,472 of them aggravated assaults. Per 1,000 residents in 2025 the highest were Loíza (4.2) and Guayama (4.2) and the lowest Hormigueros (0.5). For 2018 the island figure (6,407) is within 0.2% of the violent crime count that the FBI's Crime Data Explorer shows for Puerto Rico (6,417).",
+  "caveats": [
+   "Reported crimes only. Rape and other sexual crimes in particular are known to be under-reported everywhere.",
+   "Do not use the FBI's Crime Data Explorer to extend this series: from 2021 its 'violent crime' figure for Puerto Rico equals the number of homicides, so it stops counting the other violent crimes.",
+   "A rate per resident leaves out visitors and commuters, and small municipalities can swing widely from year to year (see economy.crime_type1)."
+  ],
+  "see_also": ["economy.crime_type1", "economy.crime_murders", "measures.per_resident"],
+  "where": {
+   "files": ["economy_series.json:crime_violent"],
+   "view": []
+  },
+  "example": "Snapshot 2026-10, 2025: Puerto Rico 6,432; San Juan 1,208.",
+  "added": "2026-10-06"
+ },
+ {
+  "id": "economy.crime_property",
+  "name": "Property Type I crimes (burglary, larceny, vehicle theft)",
+  "domain": "infrastructure",
+  "domains": ["infrastructure"],
+  "group": "Public safety",
+  "kind": "variable",
+  "plain": "How many burglaries, thefts and stolen vehicles people reported to the Police in a municipality in a year.",
+  "definition": "The sum of three of the eight Type I crimes in the Police's December report: burglary (escalamiento), larceny (apropiación ilegal) and vehicle theft (vehículo hurtado), recorded in the municipality from 1 January to 31 December.",
+  "unit": "crimes reported (complaints), calendar year",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico (the TOTAL row of each report)",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2017,
+   "last": 2025,
+   "frequency": "One value per calendar year, from the December report of that year."
+  },
+  "method": "economy_series.py, function police_values: the sum of the burglary, larceny and vehicle theft columns of the municipality table (see economy.crime_type1 for how the table is read and checked).",
+  "sources": ["ppr_type1"],
+  "how_to_read": "Puerto Rico had 14,031 property Type I crimes reported in 2025 (2026-10 snapshot), 10,001 of them larcenies. Per 1,000 residents in 2025 the highest were San Juan (10.8) and Culebra (10.4), places with many visitors, and the lowest Sabana Grande (0.7).",
+  "caveats": [
+   "Most of the fall in Type I crimes after 2019 is here: 22,152 property crimes in 2019, 13,052 in 2020. The reports do not say why (see economy.crime_type1).",
+   "Thefts are often not reported when nothing is insured or recovered, so reporting rates differ a lot between places and years.",
+   "A rate per resident leaves out visitors and shoppers, who are often the victims of thefts in tourist and shopping areas."
+  ],
+  "see_also": ["economy.crime_type1", "economy.crime_violent", "measures.per_resident"],
+  "where": {
+   "files": ["economy_series.json:crime_property"],
+   "view": []
+  },
+  "example": "Snapshot 2026-10, 2025: Puerto Rico 14,031; San Juan 3,552.",
+  "added": "2026-10-06"
+ },
+ {
+  "id": "economy.crime_murders",
+  "name": "Murders (asesinatos)",
+  "domain": "infrastructure",
+  "domains": ["infrastructure"],
+  "group": "Public safety",
+  "kind": "variable",
+  "plain": "How many murders the Police recorded in a municipality in a year.",
+  "definition": "The murder column (asesinatos) of the Police's December report: murders and non-negligent homicides recorded in the municipality from 1 January to 31 December.",
+  "unit": "murders, calendar year",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico (the TOTAL row of each report)",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2017,
+   "last": 2025,
+   "frequency": "One value per calendar year, from the December report of that year."
+  },
+  "method": "economy_series.py, function police_values: the murder column of the municipality table (see economy.crime_type1 for how the table is read and checked).",
+  "sources": ["ppr_type1"],
+  "how_to_read": "Puerto Rico had 463 murders in 2025 and 679 in 2017 (2026-10 snapshot). San Juan had 82 in 2025, about 18% of the island. The island figures match the homicides that the FBI's Crime Data Explorer shows for Puerto Rico within 5 in every year from 2018 to 2024 (for example 606 in 2019 and 529 in 2020 in both).",
+  "caveats": [
+   "Counts are small in most municipalities: 9 had no murder in 2025. One or two cases change a small municipality's rate a lot, so look at several years before comparing places.",
+   "The year is when the murder happened, as recorded in the December report. A death that the Police reclassify later is not updated here."
+  ],
+  "see_also": ["economy.crime_type1", "economy.crime_violent", "measures.per_resident"],
+  "where": {
+   "files": ["economy_series.json:crime_murders"],
+   "view": []
+  },
+  "example": "Snapshot 2026-10, 2025: Puerto Rico 463; San Juan 82.",
+  "added": "2026-10-06"
+ }
+]

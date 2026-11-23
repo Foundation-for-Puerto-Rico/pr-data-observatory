@@ -1,0 +1,827 @@
+[
+  {
+    "id": "municipalities.municipality",
+    "name": "Municipality name",
+    "domain": "system.geography",
+    "domains": ["system.geography"],
+    "group": "Municipalities and regions",
+    "kind": "boundary",
+    "plain": "The name of one of Puerto Rico's 78 municipalities. It ties every statistic, and every tourism place, to a municipality.",
+    "definition": "The municipality name as Foundation for Puerto Rico (FPR) spells it in its municipality list (municipalities.py), with accents and without the word 'Municipio', for example Bayamón, Río Grande or San Juan. It is also the key of each record in municipalities.json. The 78 names are all different and match the 78 municipality boundaries of the 2020 Census.",
+    "unit": "name",
+    "value_type": "text",
+    "geography": "78 municipalities",
+    "coverage": { "timeline": "static", "first": 2020, "last": 2020, "frequency": "Fixed list. Names match the 2020 Census municipios; the boundaries drawn on the map are from the Census Bureau's generalized 2023-vintage layer" },
+    "method": "FPR keeps a list of the 78 names, with a centre point for each. The build matches each name to the Census municipality boundary after removing accents, capital letters and the word 'Municipio'. Each tourism place is then given a municipality from where its pin (the point where Overture places the listing) sits (see 'How a tourism place is assigned to a municipality').",
+    "sources": ["census_tiger"],
+    "source_detail": "Names and centre points: FPR list in municipalities.py. Boundaries: Census TIGERweb 2020 counties layer 82 (legal boundaries, used for names and counts) and TIGERweb Generalized_ACS2023 State_County layer 11 (500k boundaries clipped to the shoreline, the boundaries drawn on the map and used to place each tourism place).",
+    "how_to_read": "Use the name to link this table to places.json, which spells its municipality field the same way. Names keep their accents, so 'Mayagüez' does not match 'Mayaguez' unless you remove the accents from both.",
+    "caveats": [
+      "A municipio is the Census Bureau's county equivalent. Its boundary covers the whole municipality, not only the town centre.",
+      "Isla de Mona and Monito belong to Mayagüez in these data (barrio 'Isla de Mona e Islote Monito'). Culebra and Vieques are municipalities of their own.",
+      "The map draws a simplified boundary cut at the shoreline. The Census Bureau's legal 2020 boundaries run out to sea, about 3 nautical miles, so they include coastal water."
+    ],
+    "see_also": ["municipalities.region", "municipalities.place_to_municipality", "municipalities.land_km2", "boundaries.municipio_name"],
+    "where": {
+      "files": ["municipalities.json:municipality"],
+      "view": [{ "label": "Map: click a municipality, or search for one, to open its profile (Municipality tab)", "href": "index.html#San%20Juan" }]
+    },
+    "added": "2026-10-01"
+  },
+  {
+    "id": "municipalities.region",
+    "name": "Tourism region (Puerto Rico Tourism Company)",
+    "domain": "system.geography",
+    "domains": ["system.geography"],
+    "group": "Municipalities and regions",
+    "kind": "variable",
+    "plain": "The tourism region the Puerto Rico Tourism Company places the municipality in, such as Porta Capital or Porta del Mar. There are seven regions.",
+    "definition": "The Puerto Rico Tourism Company (PRTC) tourism region of the municipality. Each of the 78 municipalities is in exactly one of seven regions: Porta Atlántico, Porta Capital, Porta Caribe, Porta Cordillera, Porta del Mar, Porta del Sol Norte and Porta del Sol Sur. Foundation for Puerto Rico (FPR) copied the assignment from the PRTC regions page into municipalities.py. It is a fixed list, not calculated from any data.",
+    "unit": "region name",
+    "value_type": "code",
+    "geography": "78 municipalities",
+    "coverage": { "timeline": "static", "frequency": "Fixed list. FPR updates it by hand if the PRTC changes its regions" },
+    "method": "Looked up from the municipality name in municipalities.py (REGION_BY_MUNI in build.py). places.json has no region field: the map shows a place's region through its municipality. FPR compared the seven lists below with the PRTC regions page on 3 October 2026, and all 78 municipalities matched.",
+    "values": {
+      "Porta Atlántico": "11 municipalities: Arecibo, Barceloneta, Camuy, Dorado, Florida, Hatillo, Manatí, Toa Alta, Toa Baja, Vega Alta, Vega Baja.",
+      "Porta Capital": "10 municipalities: Aguas Buenas, Bayamón, Caguas, Carolina, Cataño, Cayey, Guaynabo, Gurabo, San Juan, Trujillo Alto.",
+      "Porta Caribe": "11 municipalities: Arroyo, Coamo, Guayama, Guayanilla, Juana Díaz, Patillas, Peñuelas, Ponce, Salinas, Santa Isabel, Villalba.",
+      "Porta Cordillera": "12 municipalities: Adjuntas, Aibonito, Barranquitas, Ciales, Cidra, Comerío, Corozal, Jayuya, Morovis, Naranjito, Orocovis, Utuado.",
+      "Porta del Mar": "15 municipalities: Canóvanas, Ceiba, Culebra, Fajardo, Humacao, Juncos, Las Piedras, Loíza, Luquillo, Maunabo, Naguabo, Río Grande, San Lorenzo, Vieques, Yabucoa.",
+      "Porta del Sol Norte": "10 municipalities: Aguada, Aguadilla, Añasco, Isabela, Lares, Las Marías, Moca, Quebradillas, Rincón, San Sebastián.",
+      "Porta del Sol Sur": "9 municipalities: Cabo Rojo, Guánica, Hormigueros, Lajas, Maricao, Mayagüez, Sabana Grande, San Germán, Yauco."
+    },
+    "sources": ["prtc_regions"],
+    "source_detail": "Puerto Rico Tourism Company (PRTC), Tourism regions page, https://tourism.pr.gov/regions/ (read 2026-10-03). FPR copied the assignment into municipalities.py (field region of each record in MUNICIPALITIES).",
+    "how_to_read": "The regions follow the PRTC's grouping. The observatory's tourism counts are Overture listings, not PRTC statistics, so do not compare them with PRTC's own inventories or reports. The observatory stores no regional totals: add up the municipality rows if you need them.",
+    "caveats": [
+      "The regions are tourism-promotion regions, not statistical or planning regions, and they do not follow compass areas: Cayey is in Porta Capital and Maunabo is in Porta del Mar.",
+      "The assignment is a fixed copy, checked on 3 October 2026. If the PRTC changes its regions, the observatory keeps the old grouping until FPR updates its list.",
+      "Regions hold 9 to 15 municipalities each, so region totals are not comparable without adjusting for size."
+    ],
+    "see_also": ["municipalities.municipality", "boundaries.municipio_region"],
+    "where": {
+      "files": ["municipalities.json:region"],
+      "view": [
+        { "label": "Map, Municipality tab: the line under the municipality's name", "href": "index.html#San%20Juan" },
+        { "label": "3D view: municipality pop-up, first line", "href": "3d.html" }
+      ]
+    },
+    "added": "2026-10-01"
+  },
+  {
+    "id": "municipalities.land_km2",
+    "name": "Land area (square kilometres)",
+    "domain": "system.geography",
+    "domains": ["system.geography"],
+    "group": "Land area",
+    "kind": "variable",
+    "plain": "How much dry land the municipality covers, in square kilometres, from the 2020 Census. Water is not included.",
+    "definition": "The Census Bureau's 2020 land area of the municipality (field AREALAND, in square metres) divided by 1,000,000 and rounded to one decimal. Land area leaves out water. The 78 values add up to 8,868.5 km² for Puerto Rico.",
+    "unit": "square kilometres (km²)",
+    "value_type": "level",
+    "geography": "78 municipalities",
+    "coverage": { "timeline": "decennial", "first": 2020, "last": 2020, "frequency": "Every 10 years; changes only when the Census Bureau revises it" },
+    "method": "Read from the Census Bureau's TIGERweb (its online map and data service) 2020 counties layer (layer 82). The legal boundaries in that layer run out to sea, about 3 nautical miles, but the land-area field counts land only, so offshore water does not enter the figure. build.py divides by 1,000,000 and rounds to one decimal.",
+    "sources": ["census_tiger"],
+    "source_detail": "Census TIGERweb 2020 counties layer 82, STATE = '72', field AREALAND; downloaded 2026-10-01.",
+    "how_to_read": "In the 2020 Census data, Arecibo is the largest municipality by land (326.4 km²) and Cataño the smallest (12.5 km²). Land area is the denominator of places per km²; the Analysis tab also uses it for its per-km² option. The Municipality tab shows it rounded to whole km².",
+    "caveats": [
+      "It is land only. It leaves out inland water and the sea inside the legal boundary.",
+      "Mayagüez's 200.9 km² includes Isla de Mona and Monito. In the 2026-10 snapshot, only 3 of Mayagüez's 589 counted tourism places sit there, so its places per km² is lower than it would be for its main-island part alone.",
+      "The boundary file municipios.geojson carries its own AREALAND from a different Census layer, cut at the shoreline. In the 2026-10 snapshot files, rounded to one decimal, it differs from this value in 37 municipalities, by up to 1.1 km² (Manatí). Use land_km2 from municipalities.json for density."
+    ],
+    "see_also": ["municipalities.assets_per_km2", "municipalities.municipality", "boundaries.municipio_land_area"],
+    "where": {
+      "files": ["municipalities.json:land_km2"],
+      "view": [
+        { "label": "Map, Municipality tab: header line (whole km²)", "href": "index.html#San%20Juan" },
+        { "label": "Map, Rankings tab: download the municipality table (CSV) for the one-decimal value", "href": "index.html" }
+      ]
+    },
+    "added": "2026-10-01"
+  },
+  {
+    "id": "municipalities.population_2020",
+    "name": "Population, 2020 Census",
+    "domain": "population",
+    "domains": ["population"],
+    "group": "People counted in the census",
+    "kind": "variable",
+    "plain": "How many people lived in the municipality on April 1, 2020, from the 2020 Census count.",
+    "definition": "The 2020 Census resident population count (field POP100) of the municipality, from the Census Bureau's TIGERweb (its online map and data service) 2020 counties layer. The 78 values add up to 3,285,874 people.",
+    "unit": "people (residents counted on April 1, 2020)",
+    "value_type": "count",
+    "geography": "78 municipalities",
+    "coverage": { "timeline": "decennial", "first": 2020, "last": 2020, "frequency": "Every 10 years (2010, 2020)" },
+    "method": "Read from the POP100 field of TIGERweb layer 82 for each municipality and stored without change. It is the denominator of places per 1,000 residents (see 'Tourism places per 1,000 residents') and of residents per housing unit (see 'Residents per housing unit (2020 census)').",
+    "sources": ["census_tiger"],
+    "source_detail": "Census TIGERweb 2020 counties layer 82, STATE = '72', field POP100; downloaded 2026-10-01.",
+    "how_to_read": "In the 2020 Census, San Juan is the largest municipality (342,259 people) and Culebra the smallest (1,792). Compare with population_2010 or pop_change_pct for change over ten years.",
+    "caveats": [
+      "It counts residents, including people in group quarters such as dormitories and care homes, not visitors, seasonal residents or people who commute in to work.",
+      "It is the original 2020 count. The Housing page's 2020 population starts from the Census Bureau's updated April 2020 base (Vintage 2025 estimates). In the 2026-10 snapshot, that base differs from this count by 1 to 31 people in 68 of the 78 municipalities. The island total is the same, 3,285,874.",
+      "It is one date. Later years are estimates and appear in 'Resident population'.",
+      "A census count is not a sample, so it has no sampling margin of error, but it is not exact. The Census Bureau publishes notes on census coverage and data protection; read them before treating small differences between municipalities as real."
+    ],
+    "see_also": ["municipalities.population_2010", "municipalities.pop_change_pct", "municipalities.assets_per_1000_residents", "housing.population", "boundaries.municipio_pop2020", "methods.population_vintage_break", "municipalities.residents_per_unit", "data.count_population_2020"],
+    "where": {
+      "files": ["municipalities.json:population_2020"],
+      "view": [
+        { "label": "Map, Map layers tab: shade municipalities by 'Population 2020'", "href": "index.html#s=population_2020" },
+        { "label": "Map, Rankings tab: rank by 'Population 2020'", "href": "index.html" },
+        { "label": "3D view: Columns by municipality, 'Population 2020'", "href": "3d.html" },
+        { "label": "Map, Municipality tab: header line 'residents (Census 2020)'", "href": "index.html#San%20Juan" }
+      ]
+    },
+    "example": "San Juan in the 2020 Census: 342,259 people.",
+    "added": "2026-10-01"
+  },
+  {
+    "id": "municipalities.population_2010",
+    "name": "Population, 2010 Census",
+    "domain": "population",
+    "domains": ["population"],
+    "group": "People counted in the census",
+    "kind": "variable",
+    "plain": "How many people lived in the municipality on April 1, 2010, from the 2010 Census count.",
+    "definition": "The 2010 Census resident population count (field POP100) of the municipality, from the Census Bureau's TIGERweb (its online map and data service) 2010 counties layer. The 78 values add up to 3,725,789 people.",
+    "unit": "people (residents counted on April 1, 2010)",
+    "value_type": "count",
+    "geography": "78 municipalities",
+    "coverage": { "timeline": "decennial", "first": 2010, "last": 2010, "frequency": "Every 10 years (2010, 2020)" },
+    "method": "Read from the POP100 field of TIGERweb 2010 layer 100 and matched to the 2020 municipalities by the five-digit municipality code (GEOID, the Census Bureau's geographic identifier). It is used only to calculate pop_change_pct.",
+    "sources": ["census_tiger"],
+    "source_detail": "Census TIGERweb 2010 counties layer 100, STATE = '72', field POP100; downloaded 2026-10-01.",
+    "how_to_read": "In the 2010 Census, San Juan was the largest municipality (395,326 people) and Culebra the smallest (1,818). The Housing page's 2010 population is the same count for every municipality.",
+    "caveats": [
+      "The map and the 3D view do not display this field; it is in the data file and in the CSV (comma-separated values) download.",
+      "It counts residents on census day, not visitors or seasonal residents."
+    ],
+    "see_also": ["municipalities.population_2020", "municipalities.pop_change_pct", "housing.population"],
+    "where": {
+      "files": ["municipalities.json:population_2010"],
+      "view": [{ "label": "Map, Rankings tab: download the municipality table (CSV)", "href": "index.html" }]
+    },
+    "added": "2026-10-01"
+  },
+  {
+    "id": "municipalities.pop_change_pct",
+    "name": "Population change, 2010 to 2020 (%)",
+    "domain": "population",
+    "domains": ["population"],
+    "group": "People counted in the census",
+    "kind": "variable",
+    "plain": "How much the population grew or shrank between the 2010 and 2020 Censuses, as a percent of the 2010 population. Between those two counts, every municipality lost people.",
+    "definition": "(population_2020 minus population_2010) divided by population_2010, times 100, rounded to one decimal. A value of -13.4 means the population fell by 13.4% over the ten years.",
+    "unit": "% change between April 1, 2010 and April 1, 2020",
+    "value_type": "rate",
+    "geography": "78 municipalities",
+    "coverage": { "timeline": "decennial", "first": 2010, "last": 2020, "frequency": "Every 10 years" },
+    "method": "Calculated in build.py from the two census counts of the same municipality.",
+    "sources": ["census_tiger"],
+    "source_detail": "Census TIGERweb 2010 layer 100 and 2020 layer 82, field POP100.",
+    "how_to_read": "It is a ten-year change, not a yearly rate. Between the 2010 and 2020 Censuses all 78 values are negative, from -29.0 (Guánica) to -0.1 (Rincón); Maricao (-24.2) and Loíza (-21.2) follow Guánica. Taken together, the 78 municipalities fell from 3,725,789 to 3,285,874 people, which is -11.8% (worked out from the municipal values, not stored in the file). San Juan went from 395,326 to 342,259 people, which is -13.4%. In the 3D view, taller and redder columns mean bigger losses, because every value is a loss.",
+    "caveats": [
+      "It shows how many fewer or more residents were counted. It does not say why: births, deaths and moves are not separated.",
+      "In the 2026-10 snapshot, the Housing page's 2020 population uses the Census Bureau's updated April 2020 base, so its change since 2010 differs from this field by 0.1 percentage point or less (for example Corozal, -7.0 there and -6.9 here).",
+      "The 2D map offers no shading for this field. It appears in the 3D view and in the CSV (comma-separated values) download."
+    ],
+    "see_also": ["municipalities.population_2020", "municipalities.population_2010", "municipalities.population_change_2012_pct", "housing.pop_change_since_2010_pct", "methods.population_vintage_break", "study.table_2"],
+    "where": {
+      "files": ["municipalities.json:pop_change_pct"],
+      "view": [
+        { "label": "3D view: Columns by municipality, 'Population change 2010 → 2020 (%)'", "href": "3d.html" },
+        { "label": "3D view: municipality pop-up, '+/-x% since 2010'", "href": "3d.html" },
+        { "label": "Map, Rankings tab: download the municipality table (CSV)", "href": "index.html" }
+      ]
+    },
+    "example": "Culebra: 1,818 in 2010 and 1,792 in 2020, so -1.4%.",
+    "added": "2026-10-01"
+  },
+  {
+    "id": "municipalities.housing_units_2020",
+    "name": "Housing units, 2020 Census",
+    "domain": "housing",
+    "domains": ["housing"],
+    "group": "Homes counted in the census",
+    "kind": "variable",
+    "plain": "How many homes the 2020 Census counted in the municipality on April 1, 2020, whether or not people lived in them.",
+    "definition": "The 2020 Census count of housing units (field HU100) of the municipality, occupied or vacant. The Census Bureau defines a housing unit as a house, apartment, mobile home, group of rooms or single room meant as separate living quarters. The 78 values add up to 1,598,159 units.",
+    "unit": "housing units on April 1, 2020",
+    "value_type": "count",
+    "geography": "78 municipalities",
+    "coverage": { "timeline": "decennial", "first": 2020, "last": 2020, "frequency": "Every 10 years (2010, 2020)" },
+    "method": "Read from the HU100 field of TIGERweb (the Census Bureau's online map and data service) layer 82 and stored without change. housing.py divides population_2020 by this count to get residents per housing unit.",
+    "sources": ["census_tiger", "census_decennial"],
+    "source_detail": "Census TIGERweb 2020 counties layer 82, STATE = '72', field HU100; downloaded 2026-10-01. The 78 values equal the 2020 Census counts of Public Law 94-171 (PL 94-171) table H1 held in the entry 'Housing units, census count (number)'.",
+    "how_to_read": "In the 2020 Census, San Juan has the most housing units (193,244) and Culebra the fewest (1,563). It counts all homes, including vacant and seasonal ones, so it is larger than the number of households.",
+    "caveats": [
+      "It is a census count, not a sample estimate. The American Community Survey's housing_units (see 'Housing units (number)') is an estimate with a margin of error and will not match it.",
+      "The Housing page's headline of 1.6 million units comes from the 2023 housing study of Foundation for Puerto Rico (FPR), which gives 1,600,000 housing units for 2020. This field is the Census count on April 1, 2020: 1,598,159 on the island.",
+      "The map does not display this field; it is in the data file and in the CSV (comma-separated values) download."
+    ],
+    "see_also": ["municipalities.housing_units_2010", "municipalities.population_2020", "municipalities.housing_units_acs", "municipalities.residents_per_unit", "housing.census_housing_units", "housing.housing_units", "housing.residents_per_unit", "boundaries.municipio_hu2020"],
+    "where": {
+      "files": ["municipalities.json:housing_units_2020"],
+      "view": [{ "label": "Map, Rankings tab: download the municipality table (CSV)", "href": "index.html" }]
+    },
+    "added": "2026-10-01"
+  },
+  {
+    "id": "municipalities.housing_units_2010",
+    "name": "Housing units, 2010 Census",
+    "domain": "housing",
+    "domains": ["housing"],
+    "group": "Homes counted in the census",
+    "kind": "variable",
+    "plain": "How many homes the 2010 Census counted in the municipality on April 1, 2010, whether or not people lived in them.",
+    "definition": "The 2010 Census count of housing units (field HU100) of the municipality, occupied or vacant. The 78 values add up to 1,636,946 units.",
+    "unit": "housing units on April 1, 2010",
+    "value_type": "count",
+    "geography": "78 municipalities",
+    "coverage": { "timeline": "decennial", "first": 2010, "last": 2010, "frequency": "Every 10 years (2010, 2020)" },
+    "method": "Read from the HU100 field of TIGERweb (the Census Bureau's online map and data service) 2010 layer 100 and matched to the 2020 municipalities by the five-digit municipality code (GEOID, the Census Bureau's geographic identifier). The observatory does not calculate a change from it; it is stored beside the 2020 count.",
+    "sources": ["census_tiger", "census_decennial"],
+    "source_detail": "Census TIGERweb 2010 counties layer 100, STATE = '72', field HU100; downloaded 2026-10-01. The 78 values equal the 2010 Census counts of Public Law 94-171 (PL 94-171) table H1 held in the entry 'Housing units, census count (number)'.",
+    "how_to_read": "In the 2010 Census, San Juan had the most housing units (199,915) and Culebra the fewest (1,603). Subtract it from housing_units_2020 for the change in homes. Between the 2010 and 2020 Censuses, 15 municipalities gained housing units and 63 lost them; the island total fell by 2.4% (1,636,946 to 1,598,159). Maricao lost the largest share (15.3%) and Aibonito gained the largest (5.2%); both shares and the 2.4% are worked out from the municipal values, not stored in the file.",
+    "caveats": [
+      "A fall in units can come from demolition, storm damage or a change in how the census counted addresses; the field does not say which.",
+      "The map does not display this field; it is in the data file and in the CSV (comma-separated values) download."
+    ],
+    "see_also": ["municipalities.housing_units_2020", "municipalities.population_2010", "housing.census_housing_units"],
+    "where": {
+      "files": ["municipalities.json:housing_units_2010"],
+      "view": [{ "label": "Map, Rankings tab: download the municipality table (CSV)", "href": "index.html" }]
+    },
+    "added": "2026-10-01"
+  },
+  {
+    "id": "municipalities.assets",
+    "name": "Tourism places (count)",
+    "domain": "economy.visitor-economy",
+    "domains": ["economy.visitor-economy"],
+    "group": "Tourism places counted",
+    "kind": "variable",
+    "plain": "How many tourism places the municipality has: attractions, food and drink, lodging and visitor services. Places of worship are left out. A place counts only if Overture Maps, an open map-data project, gives it a confidence score of 0.50 or higher.",
+    "definition": "Number of de-duplicated Overture Maps listings in the municipality that (1) fall into one of the observatory's four tourism categories (Attractions, Gastronomy, Accommodations, Visitor Services), (2) are not places of worship and (3) have an Overture confidence score of 0.50 or higher. This is the default basis for the tourism statistics in the observatory. In the 2026-10 snapshot, the 78 values add up to 24,209.",
+    "unit": "places (listings)",
+    "value_type": "count",
+    "geography": "78 municipalities",
+    "coverage": { "timeline": "snapshot", "first": 2026, "last": 2026, "frequency": "Rebuilt with each snapshot (this entry describes the 2026-10 snapshot)" },
+    "method": "In the 2026-10 snapshot, Overture had 99,323 places inside Puerto Rico's bounding box. The rules of Foundation for Puerto Rico (FPR) matched 36,206 of them to a tourism category and dropped the rest. Duplicates were folded (1,088), leaving 35,118 listings, and the 2,577 that are not tourism (homes, housing and care services filed under tourism categories) were left out, leaving 32,541 (since 2026-10-18, HANDOFF decision 47). Each listing was attached to a municipality by its pin, the point where Overture places the listing (see 'How a tourism place is assigned to a municipality'). The build then counts, per municipality, the listings that are not places of worship and have confidence of at least 0.50 (MIN_CONF in build.py). See 'Which places each municipality count includes'.",
+    "sources": ["overture", "census_tiger"],
+    "source_detail": "Overture Maps places theme, release 2026-09-23.1, downloaded 2026-10-01 with the overturemaps command-line tool for the box west -67.97, south 17.85, east -65.20, north 18.57. Municipality boundaries: Census TIGERweb Generalized_ACS2023 State_County layer 11 (500k boundaries clipped to the shoreline).",
+    "how_to_read": "In the 2026-10 snapshot, San Juan has the most counted places (3,424) and Maricao the fewest (36). Large municipalities have more, so compare places per 1,000 residents or per km² before ranking places against each other. The Municipality tab's first tile, 'tourism places (current filters)', is counted live from the places the map shows, so it changes when you change the category chips or the confidence slider; this stored value does not. In municipalities.json and in the CSV (comma-separated values) download, this count is the column 'assets'. A snapshot is one build of the observatory. The 2026-10 snapshot (label 'Snapshot 2026-10') was generated on 2 October 2026 (UTC) from Overture release 2026-09-23.1.",
+    "caveats": [
+      "It counts listings, not businesses, rooms, beds or visitors.",
+      "In the 2026-10 snapshot, nearly two thirds of the counted places (17,170 of 24,209) are food and drink places such as restaurants, bars and cafés, which serve residents as well as visitors. 'Tourism places' is FPR's label for the four categories. It does not count only places that visitors use.",
+      "A low count can mean that Overture lists fewer places there. The count is not an inventory and does not match official hotel, room or business counts, which use other records and definitions.",
+      "Overture builds its listings from several sources and some are wrong, closed or missing. In the 2026-10 snapshot, 23,618 of the 24,209 counted places come from Meta, 250 from Foursquare, 238 from Microsoft and 103 from AllThePlaces. The confidence score is Overture's, and FPR has not checked it on the ground.",
+      "In the 2026-10 snapshot, the sources last updated the counted listings between November 2020 and September 2026, so the count does not describe one date.",
+      "Overture records whose category is outside the four groups are not counted at all. Among the most common dropped categories are beauty salons, grocery stores, professional services, auto repair, doctors' offices, gas stations, spas and schools.",
+      "One business can appear twice if its records differ more than the de-duplication rules allow, and two real places can be folded into one.",
+      "In the 2026-10 snapshot, about 1% of the counted places (324 of 24,209) have a pin outside every municipal boundary polygon, such as pins at the shoreline. That build counted them for the municipality with the nearest centre point; the next full build counts them for the municipality whose boundary is nearest.",
+      "Do not read two snapshots as growth or decline. Each snapshot uses a new Overture release and a new run of FPR's matching and de-duplication rules."
+    ],
+    "see_also": ["municipalities.counting_rules", "municipalities.assets_all_confidence", "municipalities.listings_all", "municipalities.by_category", "municipalities.place_to_municipality", "municipalities.assets_per_1000_residents", "places.counting_basis", "places.confidence", "places.classification", "places.dedup", "municipalities.with_website", "economy.tourism_places", "data.count_tourism_places", "boundaries.barrio_assets"],
+    "where": {
+      "files": ["municipalities.json:assets"],
+      "view": [
+        { "label": "Map, Map layers tab: shade municipalities by 'Tourism places'", "href": "index.html#s=assets" },
+        { "label": "Map, Rankings tab: rank by 'Tourism places'", "href": "index.html" },
+        { "label": "3D view: Columns by municipality, 'Tourism places'", "href": "3d.html" },
+        { "label": "Map, Analysis tab: Tourism supply layer 'Tourism places (all categories)'", "href": "index.html" }
+      ]
+    },
+    "example": "In the 2026-10 snapshot, San Juan: 3,424 places; Maricao: 36 places.",
+    "added": "2026-10-01"
+  },
+  {
+    "id": "municipalities.assets_all_confidence",
+    "name": "Tourism places, all confidence levels (count)",
+    "domain": "economy.visitor-economy",
+    "domains": ["economy.visitor-economy"],
+    "group": "Tourism places counted",
+    "kind": "variable",
+    "plain": "Tourism places counted at every confidence score, still without places of worship. It is a larger count that includes the listings Overture is less sure about.",
+    "definition": "Number of de-duplicated listings in the municipality that fall into one of the observatory's four tourism categories and are not places of worship, whatever their Overture confidence score (0 to 1). It is never lower than assets. In the 2026-10 snapshot, the 78 values add up to 27,509, against 24,209 for assets.",
+    "unit": "places (listings)",
+    "value_type": "count",
+    "geography": "78 municipalities",
+    "coverage": { "timeline": "snapshot", "first": 2026, "last": 2026, "frequency": "Rebuilt with each snapshot (this entry describes the 2026-10 snapshot)" },
+    "method": "Same listings and municipality assignment as assets, without the confidence cutoff of 0.50. Places of worship are still left out.",
+    "sources": ["overture", "census_tiger"],
+    "source_detail": "Overture Maps places theme, release 2026-09-23.1, downloaded 2026-10-01; municipality boundaries from Census TIGERweb Generalized_ACS2023 State_County layer 11 (500k boundaries clipped to the shoreline).",
+    "how_to_read": "The gap between this field and assets is the number of listings with confidence below 0.50. In the 2026-10 snapshot it is 3,300 on the whole island, 639 in San Juan and 2 in Maricao. A big gap means the municipality's count depends more on where the cutoff is set.",
+    "caveats": [
+      "Listings below 0.50 are the ones Overture rates as less likely to be real places. The observatory does not use this count for its tourism supply figures.",
+      "The map does not display this field; it is in the data file and in the CSV (comma-separated values) download. The map's confidence slider recounts places in the browser and never changes this stored value."
+    ],
+    "see_also": ["municipalities.assets", "municipalities.listings_all", "municipalities.counting_rules", "municipalities.avg_confidence", "places.confidence"],
+    "where": {
+      "files": ["municipalities.json:assets_all_confidence"],
+      "view": [{ "label": "Map, Rankings tab: download the municipality table (CSV)", "href": "index.html" }]
+    },
+    "added": "2026-10-01"
+  },
+  {
+    "id": "municipalities.listings_all",
+    "name": "All tourism listings (count)",
+    "domain": "economy.visitor-economy",
+    "domains": ["economy.visitor-economy"],
+    "group": "Tourism places counted",
+    "kind": "variable",
+    "plain": "Every tourism listing in the municipality after de-duplication, including places of worship and low-confidence listings. It is the largest of the three place counts.",
+    "definition": "Number of de-duplicated listings attached to the municipality in any of the observatory's four tourism categories, including places of worship (a type of Attractions) and listings of every confidence score. It equals the number of rows of places.json for that municipality. In the 2026-10 snapshot, the 78 values add up to 32,541: 27,509 other places plus 5,032 places of worship.",
+    "unit": "listings",
+    "value_type": "count",
+    "geography": "78 municipalities",
+    "coverage": { "timeline": "snapshot", "first": 2026, "last": 2026, "frequency": "Rebuilt with each snapshot (this entry describes the 2026-10 snapshot)" },
+    "method": "Count of all places attached to the municipality after classification, de-duplication and municipality assignment, with no further filter.",
+    "sources": ["overture", "census_tiger"],
+    "source_detail": "Overture Maps places theme, release 2026-09-23.1, downloaded 2026-10-01; municipality boundaries from Census TIGERweb Generalized_ACS2023 State_County layer 11 (500k boundaries clipped to the shoreline).",
+    "how_to_read": "Use it to reconcile with the full list of places in places.json. In the 2026-10 snapshot, San Juan has 4,597 listings and Maricao 47. For tourism supply use assets.",
+    "caveats": [
+      "It includes churches and other places of worship, which are mapped as landmarks but are mostly not tourism supply, and records Overture rates below 0.50.",
+      "The type Places of Worship comes from the observatory's keyword rule, which also matches the word 'religious'. In the 2026-10 snapshot it holds 5,032 listings: besides churches and other places of worship, 1,169 listings that Overture calls religious organizations and 67 religious schools.",
+      "It does not include every Overture place. Records with no tourism category (for example salons, clinics or gas stations) were dropped before counting.",
+      "The map does not display this field; it is in the data file and in the CSV (comma-separated values) download."
+    ],
+    "see_also": ["municipalities.assets", "municipalities.assets_all_confidence", "municipalities.counting_rules", "places.type.places_of_worship", "places.counting_basis"],
+    "where": {
+      "files": ["municipalities.json:listings_all"],
+      "view": [{ "label": "Map, Rankings tab: download the municipality table (CSV)", "href": "index.html" }]
+    },
+    "added": "2026-10-01"
+  },
+  {
+    "id": "municipalities.by_category",
+    "name": "Tourism places by category (counts)",
+    "domain": "economy.visitor-economy",
+    "domains": ["economy.visitor-economy"],
+    "group": "Tourism places counted",
+    "kind": "variable",
+    "plain": "Four counts for each municipality: its attractions, its food and drink places (gastronomy), its lodging (accommodations) and its visitor services. Together they add up to the municipality's tourism places.",
+    "definition": "An object with four keys, ATTRACTIONS, GASTRONOMY, ACCOMMODATIONS and VISITOR_SERVICES. Each holds the number of the counted places (assets) in that category. Counted places are Overture listings with a confidence score of 0.50 or higher, without places of worship (see 'Which places each municipality count includes'). All four keys are present for all 78 municipalities (the value is 0 when there is none), and the four numbers add up to assets.",
+    "unit": "places per category",
+    "value_type": "count",
+    "geography": "78 municipalities",
+    "coverage": { "timeline": "snapshot", "first": 2026, "last": 2026, "frequency": "Rebuilt with each snapshot (this entry describes the 2026-10 snapshot)" },
+    "method": "The observatory assigns each Overture listing to a category and a type by matching Overture's category names against keyword rules in build.py (RULES). The build then counts the places counted in assets by category. Places of worship, which are Attractions, are excluded.",
+    "values": {
+      "ATTRACTIONS": "Attractions: 4,591 places island-wide in the 2026-10 snapshot. Types present: historic sites, parks, beaches, tourist attractions, cultural attractions (such as galleries, theatres and cinemas), scenic areas, museums and nature reserves. Places of worship are not counted here.",
+      "GASTRONOMY": "Gastronomy, meaning food and drink: 17,170 places island-wide in the 2026-10 snapshot. Types present: restaurants, bars, cafés, bakeries, nightlife and food experiences.",
+      "ACCOMMODATIONS": "Accommodations: 1,831 places island-wide in the 2026-10 snapshot. Types present: lodging (the general type, including campgrounds), hotels, vacation properties, inns, guest houses and resorts.",
+      "VISITOR_SERVICES": "Visitor services: 617 places island-wide in the 2026-10 snapshot. Types present: transportation (such as airports, bus stations and taxi services), adventure operators, tour operators, cultural experience providers, marinas and visitor centers."
+    },
+    "sources": ["overture", "census_tiger"],
+    "source_detail": "Overture Maps places theme, release 2026-09-23.1, downloaded 2026-10-01; categories assigned by the observatory (RULES in build.py).",
+    "how_to_read": "Use it to compare the mix of supply: in the 2026-10 snapshot, 2,421 of San Juan's 3,424 places are Gastronomy, while 51 of Culebra's 136 are Accommodations. In the CSV (comma-separated values) download the object is split into four columns: by_category_ATTRACTIONS, by_category_GASTRONOMY, by_category_ACCOMMODATIONS and by_category_VISITOR_SERVICES. The Analysis tab maps the four counts as separate layers.",
+    "caveats": [
+      "The category comes from the observatory's keyword rules on Overture's category names, not from the business. A place can be put in a category that a visitor would not choose.",
+      "Accommodation listings are not rooms or beds. A hotel with 400 rooms is one place.",
+      "The Municipality tab's 'By category' bars are counted live from the places the map shows. They do not read this object and change with the filters."
+    ],
+    "see_also": ["municipalities.assets", "municipalities.counting_rules", "places.category.attractions", "places.category.gastronomy", "places.category.accommodations", "places.category.visitor_services", "places.classification", "economy.tourism_supply_layers"],
+    "where": {
+      "files": ["municipalities.json:by_category"],
+      "view": [
+        { "label": "Map, Analysis tab: Tourism supply layers (attractions, gastronomy, lodging, visitor services)", "href": "index.html" },
+        { "label": "Map, Rankings tab: download the municipality table (CSV)", "href": "index.html" }
+      ]
+    },
+    "example": "In the 2026-10 snapshot, San Juan: ATTRACTIONS 645, GASTRONOMY 2,421, ACCOMMODATIONS 224, VISITOR_SERVICES 134 (total 3,424).",
+    "added": "2026-10-01"
+  },
+  {
+    "id": "municipalities.with_website",
+    "name": "Tourism places with a website (count)",
+    "domain": "economy.visitor-economy",
+    "domains": ["economy.visitor-economy"],
+    "group": "Tourism places counted",
+    "kind": "variable",
+    "plain": "How many of the counted tourism places list a website in their Overture record.",
+    "definition": "Number of the counted places (assets) whose Overture record lists at least one website. Counted places are Overture listings with a confidence score of 0.50 or higher, without places of worship (see 'Which places each municipality count includes'). The build keeps the first website Overture gives and counts only whether one is present. In the 2026-10 snapshot, the 78 values add up to 7,210, which is 30% of the 24,209 counted places.",
+    "unit": "places",
+    "value_type": "count",
+    "geography": "78 municipalities",
+    "coverage": { "timeline": "snapshot", "first": 2026, "last": 2026, "frequency": "Rebuilt with each snapshot (this entry describes the 2026-10 snapshot)" },
+    "method": "Count of places in assets with a non-empty website field. The website addresses themselves are published in places.json, except that the build removes a few that contain an email address.",
+    "sources": ["overture", "census_tiger"],
+    "source_detail": "Overture Maps places theme, release 2026-09-23.1, downloaded 2026-10-01; first value of the websites field.",
+    "how_to_read": "In the 2026-10 snapshot, San Juan has the most places with a website (1,597) and Florida the fewest (7). As a share of counted places, the range in that snapshot is from about 8% in Maunabo to 47% in San Juan (worked out from the municipal values). Use it as a rough sign of how visible a place is online, not as a measure of quality.",
+    "caveats": [
+      "The address is not checked. It may be out of date or lead to a page that no longer exists.",
+      "A website can be a social page or a booking listing. Before 2026-10-18, among the 7,440 website addresses then published for counted places (26,579 then counted), 527 contained instagram.com or facebook.com and 293 contained airbnb.com (42 more used Airbnb's abnb.me short link). Website addresses are no longer published.",
+      "In the 2026-10 snapshot a recount of has_website in places.json gives the same value for every municipality. Before 2026-10-18 the recount was 1 lower in Ponce, because one website was counted before the build removed an address holding an email address; that listing is no longer counted.",
+      "On the Municipality tab, the 'with a website' tile is counted live from the places the map shows and follows the filters."
+    ],
+    "see_also": ["municipalities.assets", "municipalities.counting_rules", "places.has_website"],
+    "where": {
+      "files": ["municipalities.json:with_website"],
+      "view": [
+        { "label": "Map, Rankings tab: rank by 'Places with a website'", "href": "index.html" },
+        { "label": "Map, Municipality tab: tile 'with a website'", "href": "index.html#San%20Juan" }
+      ]
+    },
+    "added": "2026-10-01"
+  },
+  {
+    "id": "municipalities.avg_confidence",
+    "name": "Average Overture confidence of counted places",
+    "domain": "economy.visitor-economy",
+    "domains": ["economy.visitor-economy"],
+    "group": "Tourism places counted",
+    "kind": "variable",
+    "plain": "The average of Overture's own confidence scores for the municipality's counted tourism places. A score is a number from 0 to 1, and a higher number means Overture is more sure the listing is a real place.",
+    "definition": "Mean of the Overture confidence scores of the places counted in assets, rounded to three decimals. Counted places all score 0.50 or higher, so the mean cannot fall below 0.50. All 78 municipalities have a value.",
+    "unit": "score from 0 to 1 (average)",
+    "value_type": "level",
+    "geography": "78 municipalities",
+    "coverage": { "timeline": "snapshot", "first": 2026, "last": 2026, "frequency": "Rebuilt with each snapshot (this entry describes the 2026-10 snapshot)" },
+    "method": "Sum of the confidence of each counted place divided by the number of counted places, per municipality, rounded to three decimals in build.py. The observatory does not compute the confidence itself.",
+    "sources": ["overture", "census_tiger"],
+    "source_detail": "Overture Maps places theme, release 2026-09-23.1, downloaded 2026-10-01; field confidence of each place.",
+    "how_to_read": "In the 2026-10 snapshot, the averages run from 0.780 (Peñuelas) to 0.850 (San Juan). The range is narrow because only scores of 0.50 or higher are averaged. Treat it as a rough data-quality signal, not as an accuracy rate.",
+    "caveats": [
+      "The score is produced by Overture, and the observatory has not checked it against the real places.",
+      "It is calculated after the 0.50 cutoff, so it cannot show how many weaker listings were left out. See assets_all_confidence for that.",
+      "The map does not display this field; it is in the data file and in the CSV (comma-separated values) download."
+    ],
+    "see_also": ["municipalities.assets", "municipalities.assets_all_confidence", "municipalities.counting_rules", "places.confidence"],
+    "where": {
+      "files": ["municipalities.json:avg_confidence"],
+      "view": [{ "label": "Map, Rankings tab: download the municipality table (CSV)", "href": "index.html" }]
+    },
+    "added": "2026-10-01"
+  },
+  {
+    "id": "municipalities.assets_per_1000_residents",
+    "name": "Tourism places per 1,000 residents",
+    "domain": "economy.visitor-economy",
+    "domains": ["economy.visitor-economy"],
+    "group": "Tourism places relative to people and land",
+    "kind": "variable",
+    "plain": "How many counted tourism places there are for every 1,000 people who live in the municipality.",
+    "definition": "assets divided by population_2020, times 1,000, rounded to two decimals. For comparison, in the 2026-10 snapshot the whole island has about 7.37 (24,209 places for 3,285,874 residents, worked out from the municipal values, not stored in the file).",
+    "unit": "places per 1,000 residents (2020 Census)",
+    "value_type": "ratio",
+    "geography": "78 municipalities",
+    "coverage": { "timeline": "snapshot", "first": 2026, "last": 2026, "frequency": "Rebuilt with each snapshot (places: 2026-10 snapshot; residents: 2020 Census)" },
+    "method": "round(assets / population_2020 x 1000, 2) in build.py. It uses the default places basis (confidence 0.50 or higher, no places of worship) and the 2020 Census population.",
+    "sources": ["overture", "census_tiger"],
+    "source_detail": "Overture Maps places (release 2026-09-23.1) divided by Census TIGERweb 2020 counties layer 82, field POP100.",
+    "how_to_read": "A higher number means more tourism places for each resident. In the 2026-10 snapshot, Culebra (75.89), Rincón (29.10) and Vieques (28.73) are highest. Trujillo Alto (2.73) and Toa Alta (2.92) are lowest. The ratio does not measure visitors or demand. In the 2026-10 snapshot, nearly two thirds of the counted places are food and drink places, which serve residents too.",
+    "caveats": [
+      "It divides by residents on census day 2020. Visitors, seasonal residents and people who work there but live elsewhere are not in the denominator.",
+      "Small populations make the ratio jump. Culebra had 1,792 residents in the 2020 Census.",
+      "The Municipality tab shows this stored value. It does not change with the map's filters, unlike the tiles for the number of places, flood share, protected places and websites.",
+      "The Analysis tab's 'Per 1,000 residents' option for tourism layers divides by the Census Bureau's latest population estimate in the observatory (July 1, 2025), not the 2020 count, so its values differ from this field (in the 2026-10 snapshot, San Juan is 10.38 there and 10.00 here). Do not mix the two.",
+      "Places are from 2026 and residents from 2020. Puerto Rico's July 2025 estimate (3,184,835) is 3.1% below the 2020 count (3,285,874), so island-wide this ratio would be about 3% higher with 2025 residents. Municipalities differ."
+    ],
+    "see_also": ["municipalities.assets", "municipalities.population_2020", "municipalities.assets_per_km2", "measures.per_1000_residents", "economy.tourism_places"],
+    "where": {
+      "files": ["municipalities.json:assets_per_1000_residents"],
+      "view": [
+        { "label": "Map, Map layers tab: shade municipalities by 'Places per 1,000 residents'", "href": "index.html#s=assets_per_1000_residents" },
+        { "label": "Map, Rankings tab: rank by 'Places per 1,000 residents'", "href": "index.html" },
+        { "label": "3D view: Columns by municipality, 'Places per 1,000 residents'", "href": "3d.html" },
+        { "label": "Map, Municipality tab: tile 'places per 1,000 residents'", "href": "index.html#San%20Juan" }
+      ]
+    },
+    "example": "In the 2026-10 snapshot, Culebra: 136 places and 1,792 residents (2020 Census), so 75.89 per 1,000.",
+    "added": "2026-10-01"
+  },
+  {
+    "id": "municipalities.assets_per_km2",
+    "name": "Tourism places per square kilometre of land",
+    "domain": "economy.visitor-economy",
+    "domains": ["economy.visitor-economy"],
+    "group": "Tourism places relative to people and land",
+    "kind": "variable",
+    "plain": "How many counted tourism places there are on each square kilometre of the municipality's land.",
+    "definition": "assets divided by land_km2, rounded to two decimals. In the 2026-10 snapshot, the whole island has about 2.7 (24,209 places on 8,868.5 km², worked out from the municipal values, not stored in the file).",
+    "unit": "places per km² of land",
+    "value_type": "ratio",
+    "geography": "78 municipalities",
+    "coverage": { "timeline": "snapshot", "first": 2026, "last": 2026, "frequency": "Rebuilt with each snapshot (places: 2026-10 snapshot; land: 2020 Census)" },
+    "method": "round(assets / land_km2, 2) in build.py, using the default places basis and the 2020 Census land area.",
+    "sources": ["overture", "census_tiger"],
+    "source_detail": "Overture Maps places (release 2026-09-23.1) divided by Census TIGERweb 2020 counties layer 82, field AREALAND.",
+    "how_to_read": "In the 2026-10 snapshot, San Juan is densest (27.59 places per km²), then Rincón (11.95) and Cataño (11.84). Maricao is least dense (0.38). Places cluster in town centres, so the average over a whole municipality hides how crowded the centre is. The Barrios layer on the map shows places per km² for smaller areas, on a different basis, so do not compare the two values (see 'Tourism places per km² (barrio)').",
+    "caveats": [
+      "It uses land area only. Water inside the boundary does not lower the density.",
+      "Mayagüez's land area includes Isla de Mona and Monito. In the 2026-10 snapshot, only 3 of its 589 counted places sit there, which lowers its density.",
+      "The Municipality tab shows this stored value. It does not change with the map's filters."
+    ],
+    "see_also": ["municipalities.assets", "municipalities.land_km2", "municipalities.assets_per_1000_residents", "boundaries.barrio_assets_per_km2", "measures.per_km2"],
+    "where": {
+      "files": ["municipalities.json:assets_per_km2"],
+      "view": [
+        { "label": "Map, Map layers tab: shade municipalities by 'Places per km²'", "href": "index.html#s=assets_per_km2" },
+        { "label": "Map, Rankings tab: rank by 'Places per km²'", "href": "index.html" },
+        { "label": "3D view: Columns by municipality, 'Places per km²'", "href": "3d.html" },
+        { "label": "Map, Municipality tab: tile 'places per km²'", "href": "index.html#San%20Juan" }
+      ]
+    },
+    "example": "In the 2026-10 snapshot, San Juan: 3,424 places on 124.1 km² of land, so 27.59 per km².",
+    "added": "2026-10-01"
+  },
+  {
+    "id": "municipalities.in_sfha",
+    "name": "Tourism places in a flood hazard area (count)",
+    "domain": "economy.visitor-economy",
+    "domains": ["economy.visitor-economy", "hazards"],
+    "group": "Flood exposure by municipality",
+    "kind": "variable",
+    "plain": "How many counted tourism places sit inside an area that the Federal Emergency Management Agency (FEMA) maps as having a 1% chance of flooding in any year. This is the Special Flood Hazard Area, often called the 100-year floodplain.",
+    "definition": "Number of the counted places (assets) whose pin (the point where Overture places the listing) lies inside a FEMA National Flood Hazard Layer polygon marked as a Special Flood Hazard Area (SFHA_TF = 'T'). Counted places are Overture listings with a confidence score of 0.50 or higher, without places of worship (see 'Which places each municipality count includes'). It is a part of in_flood_zone, which also counts the 0.2% area. In the 2026-10 snapshot, the 78 values add up to 4,468, and the counted places fall in zones A, AE, AO, A99 and VE (AE includes regulatory floodways).",
+    "unit": "places",
+    "value_type": "count",
+    "geography": "78 municipalities",
+    "coverage": { "timeline": "snapshot", "first": 2026, "last": 2026, "frequency": "Rebuilt with each snapshot; flood polygons downloaded 2026-10-01" },
+    "method": "Point-in-polygon test of each place against the FEMA flood polygons, then a count per municipality of the counted places that tested inside. See 'How flood and protected-area exposure is counted' for the rules on overlaps and ignored zones.",
+    "sources": ["overture", "fema_nfhl", "census_tiger"],
+    "source_detail": "Overture Maps places; FEMA NFHL layer 28, DFIRM_ID LIKE '72%', fields FLD_ZONE, ZONE_SUBTY, SFHA_TF; 4,894 polygons in the layer downloaded 2026-10-01.",
+    "how_to_read": "In the 2026-10 snapshot, Ponce has the most places in a flood hazard area (540), then San Juan (473), Carolina (194) and Cabo Rojo (181). Florida has none: in the FEMA layer the observatory used, one polygon of minimal flood hazard covers all of Florida. Use sfha_pct for the share of a municipality's places.",
+    "caveats": [
+      "It tests the pin only. It says nothing about the building's elevation, floor level, flood-proofing or insurance, or about past flooding.",
+      "A 1% annual chance does not mean the area floods once in 100 years. It can flood in any year, and over 30 years the chance is about 26%.",
+      "These flags are a screening count from map pins. They are not a flood zone determination for any property: FEMA's metadata names its Flood Insurance Rate Map, database and Flood Insurance Study as the official designation.",
+      "It uses FEMA's mapped zones only. Flooding outside them, for example from heavy rain, can still happen.",
+      "A pin close to a zone edge can fall on either side, and FEMA revises its maps over time. The 2026-10 snapshot uses the layer downloaded on 1 October 2026.",
+      "Large municipalities have more places, so more places in a hazard area. Compare shares, not only counts."
+    ],
+    "see_also": ["municipalities.sfha_pct", "municipalities.in_flood_zone", "municipalities.exposure_method", "municipalities.assets", "places.sfha", "hazards.sfha", "hazards.flood_limits", "boundaries.barrio_sfha", "hazards.flood_exposure_flag"],
+    "where": {
+      "files": ["municipalities.json:in_sfha"],
+      "view": [
+        { "label": "Map, Map layers tab: shade municipalities by 'Places in flood hazard area'", "href": "index.html#s=in_sfha" },
+        { "label": "Map, Rankings tab: rank by 'Places in flood hazard area'", "href": "index.html" }
+      ]
+    },
+    "added": "2026-10-01"
+  },
+  {
+    "id": "municipalities.in_flood_zone",
+    "name": "Tourism places in a mapped 1% or 0.2% flood zone (count)",
+    "domain": "economy.visitor-economy",
+    "domains": ["economy.visitor-economy", "hazards"],
+    "group": "Flood exposure by municipality",
+    "kind": "variable",
+    "plain": "How many counted tourism places sit in the 1% flood area of the Federal Emergency Management Agency (FEMA) or in its lower-risk 0.2% flood area. It is always at least as large as the count for the 1% area alone.",
+    "definition": "Number of the counted places whose pin (the point where Overture places the listing) lies inside a FEMA Special Flood Hazard Area (the same test as in_sfha) or inside a FEMA polygon whose subtype is '0.2 PCT ANNUAL CHANCE FLOOD HAZARD' (a shaded zone X). Counted places are Overture listings with a confidence score of 0.50 or higher, without places of worship (see 'Which places each municipality count includes'). So in_flood_zone equals in_sfha plus the places that are in the 0.2% area only. In the 2026-10 snapshot, the 78 values add up to 5,668: 4,468 in a Special Flood Hazard Area and 1,200 in the 0.2% area only.",
+    "unit": "places",
+    "value_type": "count",
+    "geography": "78 municipalities",
+    "coverage": { "timeline": "snapshot", "first": 2026, "last": 2026, "frequency": "Rebuilt with each snapshot; flood polygons downloaded 2026-10-01" },
+    "method": "A place gets a flood zone recorded only when its pin is in a Special Flood Hazard Area or in a polygon whose subtype contains '0.2'. The build counts, per municipality, the counted places with a recorded flood zone. Unshaded zone X (minimal hazard) and zone D leave a place with no flood zone. See 'How flood and protected-area exposure is counted'.",
+    "sources": ["overture", "fema_nfhl", "census_tiger"],
+    "source_detail": "Overture Maps places; FEMA NFHL layer 28, DFIRM_ID LIKE '72%', fields FLD_ZONE, ZONE_SUBTY, SFHA_TF.",
+    "how_to_read": "In the 2026-10 snapshot, San Juan has the most (676), and Florida has none. The difference between this field and in_sfha is the number of places in the 0.2% area only. In that snapshot the two counts are equal in 20 municipalities, because no counted place there lies in the 0.2% area alone. The observatory's maps and rankings do not show this field. It is in the data file and the CSV (comma-separated values) download.",
+    "caveats": [
+      "A 0.2% annual chance area is lower risk than the 1% area, but flooding there is still possible.",
+      "It tests the pin only, and it uses FEMA's mapped zones only. It does not describe building elevation, insurance or past flooding.",
+      "Do not add in_flood_zone to in_sfha: the first already contains the second."
+    ],
+    "see_also": ["municipalities.in_sfha", "municipalities.sfha_pct", "municipalities.exposure_method", "places.flood_zone", "hazards.flood_zone", "hazards.flood_subtype"],
+    "where": {
+      "files": ["municipalities.json:in_flood_zone"],
+      "view": [{ "label": "Map, Rankings tab: download the municipality table (CSV)", "href": "index.html" }]
+    },
+    "added": "2026-10-01"
+  },
+  {
+    "id": "municipalities.sfha_pct",
+    "name": "Tourism places in a flood hazard area (%)",
+    "domain": "economy.visitor-economy",
+    "domains": ["economy.visitor-economy", "hazards"],
+    "group": "Flood exposure by municipality",
+    "kind": "variable",
+    "plain": "Out of every 100 counted tourism places in the municipality, this many sit in a high-risk flood area. The US Federal Emergency Management Agency (FEMA) maps that area with a 1% chance of flooding each year.",
+    "definition": "in_sfha divided by assets, times 100, rounded to one decimal. The build leaves it empty when a municipality has no counted places. In the 2026-10 snapshot, all 78 have a value, the island share is about 18.5% (4,468 of 24,209, from the municipality counts) and the median municipality is 14.2%.",
+    "unit": "% of counted tourism places",
+    "value_type": "rate",
+    "geography": "78 municipalities",
+    "coverage": { "timeline": "snapshot", "first": 2026, "last": 2026, "frequency": "Rebuilt with each snapshot; flood polygons downloaded 2026-10-01" },
+    "method": "round(in_sfha / assets x 100, 1) in build.py. Places of worship and listings below confidence 0.50 are excluded from both numbers.",
+    "sources": ["overture", "fema_nfhl", "census_tiger"],
+    "source_detail": "Overture Maps places; FEMA NFHL layer 28, DFIRM_ID LIKE '72%'.",
+    "how_to_read": "A high value means many of the municipality's counted places sit in the mapped 1% flood area. This is the share of counted tourism places with a pin in that area. It is not the share of the municipality's land, homes or residents in a flood area. In the 2026-10 snapshot, Salinas (73.7%), Cataño (73.0%), Guayanilla (63.1%), Loíza (54.5%) and Guánica (52.6%) are highest. Florida is 0%. The Municipality tab also ranks municipalities by this share (1 = highest).",
+    "caveats": [
+      "A municipality with few places can swing widely. In the 2026-10 snapshot, Maricao has 36 counted places and 4 in a flood hazard area (11.1%): one more place in the area would raise its share by about 2.4 points, and one more place outside it would lower the share by about 0.3 points. In Salinas (213 places) one place moves the share by about 0.1 to 0.3 points.",
+      "It describes the mapped hazard at a point, not the building. It says nothing about elevation, flood-proofing or insurance.",
+      "The Municipality tab's 'in flood hazard area' tile is counted live from the places the map shows and follows the filters. The map hover, the shading and the Rankings tab use this stored value."
+    ],
+    "see_also": ["municipalities.in_sfha", "municipalities.in_flood_zone", "municipalities.exposure_method", "municipalities.assets"],
+    "where": {
+      "files": ["municipalities.json:sfha_pct"],
+      "view": [
+        { "label": "Map, Map layers tab: shade municipalities by '% of places in flood hazard area'", "href": "index.html#s=sfha_pct" },
+        { "label": "Map, Rankings tab: rank by '% of places in flood hazard area'", "href": "index.html" },
+        { "label": "3D view: Columns by municipality, '% of places in flood hazard area'", "href": "3d.html" },
+        { "label": "Map, Municipality tab: tile 'in flood hazard area'", "href": "index.html#San%20Juan" }
+      ]
+    },
+    "example": "In the 2026-10 snapshot, Ponce: 540 of 1,041 counted places, so 51.9%.",
+    "added": "2026-10-01"
+  },
+  {
+    "id": "municipalities.in_protected",
+    "name": "Tourism places inside protected areas (count)",
+    "domain": "economy.visitor-economy",
+    "domains": ["economy.visitor-economy", "environment.land"],
+    "group": "Protected-area exposure by municipality",
+    "kind": "variable",
+    "plain": "How many counted tourism places have their map pin (the point where Overture places them) inside a protected area in PAD-US, the US Geological Survey's Protected Areas Database of the United States. Many of these areas are local parks.",
+    "definition": "Number of the counted places (assets) whose pin lies inside a polygon of the US Geological Survey's (USGS) Protected Areas Database of the United States (PAD-US) in Puerto Rico, other than a proclamation boundary (designation type PROC). Counted places are Overture listings with a confidence score of 0.50 or higher, without places of worship (see 'Which places each municipality count includes'). A place that is inside several polygons counts once. In the 2026-10 snapshot, the 78 values add up to 869, and five municipalities have none: Añasco, Las Marías, Maricao, Maunabo and Moca.",
+    "unit": "places",
+    "value_type": "count",
+    "geography": "78 municipalities",
+    "coverage": { "timeline": "snapshot", "first": 2026, "last": 2026, "frequency": "Rebuilt with each snapshot; PAD-US downloaded 2026-10-01" },
+    "method": "Point-in-polygon test of each place against the PAD-US polygons, then a count per municipality of the counted places that tested inside. See 'How flood and protected-area exposure is counted'.",
+    "sources": ["overture", "padus", "census_tiger"],
+    "source_detail": "Overture Maps places; USGS PAD-US 4.1, Protection Mechanism Category layer, State_Nm = 'PR'; 665 polygons in the layer downloaded 2026-10-01.",
+    "how_to_read": "In the 2026-10 snapshot, San Juan has the most (134), then Río Grande (50), Guánica (38) and Ponce (36). Of the 869 counted places inside a protected area in that snapshot, the strictest status of the area is 4 for 509 places, 2 for 252, 1 for 62 and 3 for 46. This is the GAP code of the US Geological Survey's Gap Analysis Project: 1 = managed for biodiversity, natural disturbance allowed; 2 = managed for biodiversity, disturbance held back; 3 = managed for several uses, such as mining or logging; 4 = no known requirement to protect biodiversity. The map words these codes differently (it labels GAP 1 'strict nature reserve'); see 'Protection level, GAP status (GAP_Sts)'.",
+    "caveats": [
+      "'Protected' refers to the land's conservation or management status. It does not mean the place is protected from flooding, storms or other hazards.",
+      "'Protected' here means any area listed in PAD-US. The layer downloaded for the 2026-10 snapshot includes local parks (411 of its 665 polygons), marine protected areas, conservation easements, wildlife refuges and military lands. It does not mean the place is in a nature reserve.",
+      "In the 2026-10 snapshot, one PAD-US record named 'Unknown Local Park' covers 117 of the 869 places (13%), 12 of them in San Juan. That record is a set of 534 separate local-park areas (managing agency unknown), not one park. Counts for municipalities with many local-park places partly reflect it.",
+      "Being inside the polygon does not say whether the public can enter. Access differs by area, and the map pop-up for an area shows it.",
+      "It is not the same as the share of land in 'Suelo Rústico Especialmente Protegido' in the Junta de Planificación's 2015 land-use plan, which is a different source and a different field.",
+      "It tests the pin only and counts places, not hectares."
+    ],
+    "see_also": ["municipalities.exposure_method", "municipalities.assets", "places.protected_area", "places.protected_gap", "land.padus_gap_status", "land.padus_designation", "land.protected_place_flag", "municipalities.protected_land_pct"],
+    "where": {
+      "files": ["municipalities.json:in_protected"],
+      "view": [
+        { "label": "Map, Rankings tab: rank by 'Places inside protected areas'", "href": "index.html" },
+        { "label": "Map, Municipality tab: tile 'inside protected areas'", "href": "index.html#San%20Juan" }
+      ]
+    },
+    "added": "2026-10-01"
+  },
+  {
+    "id": "municipalities.counting_rules",
+    "name": "Which places each municipality count includes",
+    "domain": "economy.visitor-economy",
+    "domains": ["economy.visitor-economy", "system.docs"],
+    "group": "How places and points are built",
+    "kind": "method",
+    "plain": "Three counts describe the tourism listings in a municipality. They differ only in whether places of worship and low-confidence listings are included. The default, assets, leaves out both.",
+    "definition": "All counts start from the same list: Overture listings that fell into the observatory's four tourism categories, after de-duplication, without the listings that are not tourism (homes, housing and care services; since 2026-10-18). listings_all counts every one of them (32,541 on the island in the 2026-10 snapshot). assets_all_confidence drops the places of worship (27,509 in that snapshot). assets also drops the listings with an Overture confidence score below 0.50 (24,209 in that snapshot). The other tourism counts in municipalities.json (by_category, in_sfha, in_flood_zone, in_protected, with_website, avg_confidence, sfha_pct and both density ratios) are calculated from the assets places only.",
+    "unit": "places",
+    "value_type": "count",
+    "geography": "78 municipalities",
+    "coverage": { "timeline": "snapshot", "first": 2026, "last": 2026, "frequency": "Rebuilt with each snapshot" },
+    "method": "Steps in build.py. (1) parse_places keeps Overture records whose category maps to one of the observatory's tourism categories and drops the rest. (2) dedup folds duplicate listings: two listings in the same municipality (at this step the town in the address, or the nearest centre point when the address names none) and the same category are merged when their names are alike and they are close together (within 600 m, or 1,000 m when either listing is a beach, park, nature reserve, scenic area, historic site or tourist attraction, with a tighter limit when the names are only partly alike), or when they share a phone number, have partly matching names and lie within 500 m. The record with the highest confidence and the most complete details is kept. Then the listings that are not tourism (homes, housing, care services and numbered homes filed under tourism categories; places_privacy.not_tourism) are left out of every count (HANDOFF decision 47, 2026-10-18). (3) Each place gets a municipality from its pin. (4) Flood and protected-area flags are added. (5) municipality_stats counts. The confidence cutoff is MIN_CONF = 0.50. A place of worship is any listing of the type 'Places of Worship'.",
+    "sources": ["overture", "census_tiger"],
+    "source_detail": "Overture Maps places theme, release 2026-09-23.1, downloaded 2026-10-01.",
+    "how_to_read": "Use assets for tourism supply. Use assets_all_confidence to see how much a municipality's count depends on the 0.50 cutoff. Use listings_all only to reconcile with the full list of places in places.json (32,541 rows in the 2026-10 snapshot).",
+    "caveats": [
+      "In the 2026-10 snapshot, 99,323 Overture places lay in the bounding box, 36,206 matched a tourism category, and 1,088 of those were folded into other listings as duplicates; 2,577 more are not tourism and were left out (since 2026-10-18). The largest single group of dropped records, 3,388, has no Overture category at all.",
+      "Places of worship are the only type left out by name. All are Attractions. In the 2026-10 snapshot there are 5,032 such listings, of which 4,758 have confidence of 0.50 or higher. Foundation for Puerto Rico's (FPR) keyword rule for this type also matches the word 'religious', so besides churches and other places of worship it holds 1,169 listings that Overture calls religious organizations and 67 religious schools. All 5,032 are left out of assets.",
+      "The map's category chips, confidence slider and worship toggle change what the map draws and what the Municipality tab counts live. They never change the stored counts.",
+      "Transit access (transit_pct, access_n and the acc_ shares) and the barrio counts use the same counted places. The municipality land-use place figures (places_urban_pct, places_on_protected_land and places_on_protected_land_pct) differ: they use all listings in listings_all, including places of worship and listings below 0.50. Each is documented in its own entry."
+    ],
+    "see_also": ["municipalities.assets", "municipalities.assets_all_confidence", "municipalities.listings_all", "municipalities.place_to_municipality", "places.counting_basis", "places.dedup", "places.classification", "places.type.places_of_worship"],
+    "where": { "files": [] },
+    "added": "2026-10-01"
+  },
+  {
+    "id": "municipalities.place_to_municipality",
+    "name": "How a tourism place is assigned to a municipality",
+    "domain": "economy.visitor-economy",
+    "domains": ["economy.visitor-economy", "system.docs"],
+    "group": "How places and points are built",
+    "kind": "method",
+    "plain": "A tourism place belongs to the municipality whose boundary contains its map pin (the point where Overture places the listing). The town named in the address does not decide. If the pin is outside every boundary, the place goes to the municipality whose boundary is nearest.",
+    "definition": "The build tests each listing's pin (the point where Overture places the listing) against the Census Bureau's shoreline-clipped municipality polygons. A pin inside none goes to the municipality whose polygon is nearest (in the 2026-10 snapshot, the one with the nearest centre point). The result is the municipality field of places.json and the basis of every municipality count of tourism places. The full steps are in 'How municipality and barrio are assigned to a place'.",
+    "unit": "municipality name",
+    "value_type": "text",
+    "geography": "78 municipalities",
+    "coverage": { "timeline": "snapshot", "first": 2026, "last": 2026, "frequency": "Rebuilt with each snapshot" },
+    "method": "Function make_muni_locator in build.py, applied to every place after de-duplication. The steps, the part the address town plays while duplicates are folded, and the counts of pins outside every polygon are in 'How municipality and barrio are assigned to a place'.",
+    "sources": ["overture", "census_tiger"],
+    "source_detail": "Overture Maps place coordinates; Census TIGERweb Generalized_ACS2023 State_County layer 11 (500k boundaries clipped to the shoreline); centre points from the observatory's list in municipalities.py.",
+    "how_to_read": "Counts agree with the polygons the map draws. A place counted for San Juan has its pin inside San Juan's boundary unless it was one of the few pins outside every boundary. The town named in a listing's address does not decide: in the 2026-10 snapshot, 863 of the 32,541 listings (2.7%) have an address that names a different municipality from the one their pin falls in. Counts of places by municipality in the observatory all follow the pin.",
+    "caveats": [
+      "A wrong pin in Overture puts a place in the wrong municipality.",
+      "The boundaries are clipped to the shoreline, so pins on piers, marinas and beaches can fall outside. They are then assigned to the nearest polygon. The 2026-10 build still assigned them by nearest centre, which can be a different municipality from the one the pin is next to. In the 2026-10 snapshot, San Juan has the most such counted places (51).",
+      "The boundary drawn on the map is simplified by about 20 metres (0.0002 degrees) for display, so a place very near a border can look as if it is on the wrong side. The build used the same Census generalized 500k layer before this display simplification."
+    ],
+    "see_also": ["municipalities.municipality", "municipalities.counting_rules", "municipalities.assets", "places.municipality_assignment", "places.municipality", "methods.municipality_assignment", "boundaries.municipios"],
+    "where": {
+      "files": [],
+      "view": [{ "label": "Map, Municipality tab: the places counted for a municipality (the 'Tourism places' counts and tiles)", "href": "index.html#San%20Juan" }]
+    },
+    "added": "2026-10-01"
+  },
+  {
+    "id": "municipalities.exposure_method",
+    "name": "How flood and protected-area exposure is counted",
+    "domain": "economy.visitor-economy",
+    "domains": ["economy.visitor-economy", "system.docs"],
+    "group": "How places and points are built",
+    "kind": "method",
+    "plain": "The observatory checks the map point of each counted tourism place against federal flood-zone maps and protected-area maps, then adds up the places that fall inside, for each municipality.",
+    "definition": "Each counted place's pin (the point where Overture places the listing) is tested against the flood polygons of the US Federal Emergency Management Agency (FEMA) National Flood Hazard Layer and the protected-area polygons of the Protected Areas Database of the United States (PAD-US) of the US Geological Survey (USGS). Counted places are Overture listings with a confidence score of 0.50 or higher, without places of worship. The results are added up for each municipality in four fields: in_sfha (places in a Special Flood Hazard Area, the area with a 1% yearly chance of flooding), in_flood_zone (places in that area or in the 0.2% area), sfha_pct (in_sfha as a percent of counted places) and in_protected (places inside a protected area). The tests are described in 'How flood exposure of a place is flagged' and 'How a place is flagged as inside a protected area'.",
+    "unit": "places",
+    "value_type": "count",
+    "geography": "78 municipalities",
+    "coverage": { "timeline": "snapshot", "first": 2026, "last": 2026, "frequency": "Rebuilt with each snapshot; FEMA and PAD-US layers downloaded 2026-10-01" },
+    "method": "Function point_flags in build.py runs the two point-in-polygon tests for every place. Function municipality_stats in build.py then counts, for each municipality, the counted places with each flag. The rules for overlapping polygons, ignored zones and proclamation boundaries are in the two entries named in the definition.",
+    "values": {
+      "A": "FEMA zone in the 1% flood area (Special Flood Hazard Area), with no base flood elevation given. In the 2026-10 snapshot, 210 counted places.",
+      "AE": "Zone in the 1% flood area with base flood elevations. Includes regulatory floodways. In the 2026-10 snapshot, 3,255 counted places, of which 505 in a floodway.",
+      "AO": "Zone in the 1% flood area for shallow flooding that spreads over the ground. In the 2026-10 snapshot, 490 counted places.",
+      "AH": "Zone in the 1% flood area for shallow ponding. The layer downloaded 2026-10-01 holds one such polygon, and no counted place falls in it.",
+      "A99": "Zone in the 1% flood area that FEMA expects a federal flood-protection system under construction to protect. In the 2026-10 snapshot, 68 counted places.",
+      "VE": "Coastal zone in the 1% flood area with extra hazard from storm waves (zone V is not present in the layer downloaded 2026-10-01). In the 2026-10 snapshot, 732 counted places.",
+      "X, 0.2 PCT ANNUAL CHANCE FLOOD HAZARD": "Shaded zone X: area with a 0.2% yearly chance of flooding. Counted in in_flood_zone only. In the 2026-10 snapshot, 1,309 counted places.",
+      "X, AREA OF MINIMAL FLOOD HAZARD": "Unshaded zone X: minimal flood hazard. Not counted as flood exposure. In the 2026-10 snapshot, 20,491 counted places.",
+      "D": "Possible but undetermined flood hazard: FEMA has not determined the hazard, which is not the same as no hazard. Not counted as flood exposure. In the 2026-10 snapshot, 15 counted places.",
+      "No FEMA polygon": "The pin lies outside every FEMA polygon used in the test. Not counted as flood exposure. In the 2026-10 snapshot, 9 counted places."
+    },
+    "sources": ["overture", "fema_nfhl", "padus", "census_tiger"],
+    "source_detail": "FEMA NFHL layer 28, DFIRM_ID LIKE '72%', fields FLD_ZONE, ZONE_SUBTY, SFHA_TF, 4,894 polygons, downloaded 2026-10-01. USGS PAD-US 4.1, Protection Mechanism Category layer, State_Nm = 'PR', 665 polygons, downloaded 2026-10-01. Zone meanings are FEMA's.",
+    "how_to_read": "The test says whether the pin falls inside a mapped hazard area in the layers downloaded for the snapshot (1 October 2026 for the 2026-10 snapshot). It does not say how likely a particular building is to flood. Read the zone letters in the 'values' list as FEMA defines them and check FEMA's own zone definitions for the exact wording.",
+    "caveats": [
+      "The test uses the pin only. It says nothing about building elevation, floor level, flood-proofing, insurance or past flooding.",
+      "The test used the full-detail polygons downloaded from FEMA and USGS. The published flood.geojson and protected.geojson are simplified by about 5 metres (0.00005 degrees) for display, so repeating the test on the published files can give slightly different results for pins near an edge.",
+      "The observatory does not store the effective date of any FEMA map (the build keeps only the zone, subtype, Special Flood Hazard Area flag and base flood elevation of each polygon), so the flags can reflect maps older than the snapshot date.",
+      "A place with no flood flag is not shown to be safe. In the 2026-10 snapshot, 15 counted places are in zone D and 9 are outside every FEMA polygon; none of them is counted as exposed.",
+      "Only FEMA's mapped zones count. Flooding outside them, for example from heavy rain, can still happen.",
+      "Only counted places (confidence 0.50 or higher, no places of worship) enter the municipality figures. Another filter gives other numbers."
+    ],
+    "see_also": ["municipalities.in_sfha", "municipalities.in_flood_zone", "municipalities.sfha_pct", "municipalities.in_protected", "municipalities.counting_rules", "places.point_tests", "hazards.flood_exposure_flag", "hazards.flood_zone", "land.protected_place_flag"],
+    "where": { "files": [] },
+    "added": "2026-10-01"
+  },
+  {
+    "id": "municipalities.quintile_shading",
+    "name": "Quintile shading of municipality statistics",
+    "domain": "system.tools",
+    "domains": ["system.tools"],
+    "group": "2D map: Map layers tab",
+    "kind": "measure",
+    "plain": "The map ranks the 78 municipalities on the chosen statistic and splits them into five groups of about the same size. It shades the groups from light blue (lowest) to dark blue (highest).",
+    "definition": "The municipalities that have a value are sorted from lowest to highest. The class limits are the values found one fifth, two fifths, three fifths and four fifths of the way along the sorted list. On the 2D map a municipality takes the first class whose upper limit is at or above its value. With 78 municipalities each class holds about 15 or 16, fewer or more when several municipalities share a value. The five blues run from light (lowest) to dark (highest). Municipalities with no value are not shaded.",
+    "unit": "class (1 to 5)",
+    "value_type": "index",
+    "geography": "78 municipalities",
+    "coverage": { "timeline": "snapshot", "first": 2026, "last": 2026, "frequency": "Class limits are recalculated each time the page loads" },
+    "method": "Functions breaks and setChoro in site/js/app.js. The legend lists the range and the number of municipalities in each class. The 3D view colours its columns with the same four class limits and sets each column's height in proportion to the value, with the largest value tallest. Population change 2010 to 2020 is drawn as a one-sided scale in the 3D view because all 78 municipalities lost population: taller and redder columns mean bigger losses. The 2D map shades any dataset this way from Explore, the Catalog or Rankings (the 'Shade municipalities by' menu with its 25 options was retired on 2026-11-05); the 3D menu of Columns by municipality has 17 (see '3D view: Columns by municipality').",
+    "sources": ["overture", "census_tiger", "fema_nfhl"],
+    "source_detail": "Inputs are the municipalities.* fields named in the method; the classes are a display choice of the observatory.",
+    "how_to_read": "Read the legend, because the same colour means different numbers for each statistic. Darker means a higher value than most other municipalities, not a good or bad result. Some fields of the municipality table cannot be shaded, such as land area, the housing unit counts, the 2010 population, places by category, the average confidence, the shares of places within 800 m of a stop with a current timetable or within 400 m of a rail station or ferry terminal, and the stop counts by timetable state. Population change 2010 to 2020 is shaded in the 3D view only. Places inside protected areas and places with a website are offered on the Rankings tab, not in the shading menu.",
+    "caveats": [
+      "The groups have equal size, not equal width. A municipality at the top of one class can have almost the same value as one at the bottom of the next.",
+      "The 3D view uses the same four limits, but a municipality whose value equals a limit takes the lower class on the 2D map and the higher class in the 3D view. Its colour can therefore differ by one step between the two views.",
+      "The legend and the Rankings tab round values: whole numbers for counts and most percentages; one decimal for places per 1,000 residents, places per km² and the seasonal share; two decimals for the affordability ratio. The stored values can have more decimals (two for places per 1,000 residents and per km², one for the share in a flood hazard area). Cite the stored value from the CSV (comma-separated values) download.",
+      "Shading shows rank among the 78 municipalities, not distance from any target."
+    ],
+    "see_also": ["municipalities.assets", "municipalities.sfha_pct", "municipalities.assets_per_1000_residents", "municipalities.profile_ranking_download", "layers.shade_by", "layers.columns_3d", "layers.rankings_tab", "measures.class_breaks"],
+    "where": {
+      "files": [],
+      "view": [
+        { "label": "Map, a dataset shaded in five classes (an old 'Shade municipalities by' link)", "href": "index.html#s=assets" },
+        { "label": "3D view: 'Columns by municipality'", "href": "3d.html" }
+      ]
+    },
+    "added": "2026-10-01"
+  },
+  {
+    "id": "municipalities.profile_ranking_download",
+    "name": "Municipality profile, rankings and CSV download",
+    "domain": "system.tools",
+    "domains": ["system.tools"],
+    "group": "2D map: Municipality and Rankings tabs",
+    "kind": "method",
+    "plain": "The Municipality tab, the Rankings tab and the comma-separated values (CSV) download show the municipality statistics in different ways. Some Municipality tab numbers follow your map filters; the Rankings tab and the CSV do not.",
+    "definition": "Municipality tab: the header shows the region, 'residents (Census 2020)' and land area rounded to whole km². The tiles 'tourism places (current filters)', 'in flood hazard area', 'inside protected areas' and 'with a website' are counted live from the places the map is showing, so they follow the category chips, the confidence slider and the worship toggle. The tiles 'places per 1,000 residents' and 'places per km²' show the stored values, which use the default filters. The 'By category' bars and the 'Top types' chips are also live and do not read by_category. The rank note ('#n of 78 by tourism places', '#n by share in flood hazard area') uses the stored assets and sfha_pct and states that ranks use the default filters. Rankings tab: the table lists the stored value of the chosen statistic for every municipality that has one, highest first, with a second column holding assets (except when ranking by tourism places itself); a click on the column heading reverses the order. CSV (comma-separated values): the button 'Download municipality table (CSV)' on the Rankings tab writes one row per municipality with every field of municipalities.json.",
+    "unit": "table",
+    "value_type": "text",
+    "geography": "78 municipalities",
+    "coverage": { "timeline": "snapshot", "first": 2026, "last": 2026, "frequency": "Rebuilt with each snapshot" },
+    "method": "Functions renderMuni, renderRank and downloadCsv in site/js/app.js. In the CSV the object by_category is split into four columns named by_category_ATTRACTIONS, by_category_GASTRONOMY, by_category_ACCOMMODATIONS and by_category_VISITOR_SERVICES (landuse_km2 is split the same way). The file is UTF-8 with a byte-order mark, so Excel shows the accents, and it is named pr_digital_twin_municipalities_ followed by the snapshot label, for example pr_digital_twin_municipalities_Snapshot_2026-10.csv. Rankings options for the fields in this file: Tourism places, % of places in flood hazard area, Places in flood hazard area, Places per 1,000 residents, Places per km², Places inside protected areas, Places with a website and Population 2020.",
+    "sources": ["overture", "fema_nfhl", "padus", "census_tiger"],
+    "source_detail": "Inputs are the fields of municipalities.json documented in the municipalities.* entries.",
+    "how_to_read": "To cite or analyse numbers, use the stored values in the CSV download or in municipalities.json. Numbers read from the Municipality tab tiles can differ from them when you have changed a filter.",
+    "caveats": [
+      "A separate button on the Municipality tab, 'Download <municipality> places (CSV)', exports the places the map is showing, not these statistics.",
+      "The CSV holds every field of municipalities.json, including fields documented in other entries.",
+      "The Rankings tab rounds the numbers it shows (see the entry 'Rankings tab' for the decimals of each measure). The order uses the unrounded value, so two rows can show the same number. Use the CSV for exact values."
+    ],
+    "see_also": ["municipalities.quintile_shading", "municipalities.assets", "municipalities.by_category", "municipalities.sfha_pct", "layers.municipality_profile", "layers.rankings_tab", "layers.csv_downloads"],
+    "where": {
+      "files": [],
+      "view": [
+        { "label": "Map, Municipality tab", "href": "index.html#San%20Juan" },
+        { "label": "Map, Rankings tab", "href": "index.html" }
+      ]
+    },
+    "added": "2026-10-01"
+  }
+]

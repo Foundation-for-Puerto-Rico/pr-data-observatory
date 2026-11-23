@@ -1,0 +1,146 @@
+[
+ {
+  "id": "health.medicare_benes",
+  "ask": {"en": ["medicare", "medicare beneficiaries", "medicare enrollment"], "es": ["medicare", "beneficiarios de medicare"]},
+  "name": "People enrolled in Medicare",
+  "domain": "health",
+  "domains": [
+   "health",
+   "population"
+  ],
+  "group": "Medicare",
+  "kind": "variable",
+  "plain": "How many people in each municipality are enrolled in Medicare, every year since 2013.",
+  "definition": "People with Medicare (65 and older, or younger and entitled by a disability or end-stage renal disease) who live in the municipality: the average of the year's monthly counts.",
+  "unit": "people",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico (CMS's state row; the municipalities add up to it within a few people)",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2013,
+   "last": 2025,
+   "frequency": "One value a year (the average of the year's monthly counts). CMS adds a year after it ends; the observatory adds it when FPR rebuilds the data (python medicare_series.py)."
+  },
+  "method": "medicare_series.py reads the yearly rows (MONTH = Year) of CMS's Medicare Monthly Enrollment dataset for every county-level row of Puerto Rico and the state row. A count CMS suppresses (\"*\") is no value, never a zero. The rows of an unknown municipality (code 72999) are left out of the municipal values and are in the state total.",
+  "sources": [
+   "cms_medicare_enrollment"
+  ],
+  "source_detail": "data.cms.gov data-api dataset d7fabe1e-d19b-4333-9eff-e80e0643f2fd: TOT_BENES, MA_AND_OTH_BENES, DSBLD_TOT_BENES",
+  "how_to_read": "Puerto Rico went from 711,896 people with Medicare in 2013 to 779,295 in 2025. The Analysis tab can show it per 1,000 residents.",
+  "caveats": [
+   "Counts where people live, not where they get care."
+  ],
+  "see_also": [
+   "health.medicare_benes",
+   "population.acs_age65plus_pct"
+  ],
+  "where": {
+   "files": [
+    "medicare_series.json:medicare_benes"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: people enrolled in medicare",
+     "href": "index.html#e=medicare_benes.f"
+    }
+   ]
+  },
+  "added": "2026-10-14"
+ },
+ {
+  "id": "health.medicare_ma_pct",
+  "ask": {"en": ["medicare advantage"], "es": ["medicare advantage", "planes advantage"]},
+  "name": "Medicare Advantage and other plans, % of people with Medicare",
+  "domain": "health",
+  "domains": [
+   "health",
+   "population"
+  ],
+  "group": "Medicare",
+  "kind": "variable",
+  "plain": "Out of every 100 people with Medicare in each municipality, how many get it through Medicare Advantage or another private plan.",
+  "definition": "People enrolled in Medicare Advantage or another health plan, divided by all people with Medicare, times 100.",
+  "unit": "% of people with Medicare",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico (CMS's state row; the municipalities add up to it within a few people)",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2013,
+   "last": 2025,
+   "frequency": "One value a year (the average of the year's monthly counts). CMS adds a year after it ends; the observatory adds it when FPR rebuilds the data (python medicare_series.py)."
+  },
+  "method": "medicare_series.py reads the yearly rows (MONTH = Year) of CMS's Medicare Monthly Enrollment dataset for every county-level row of Puerto Rico and the state row. A count CMS suppresses (\"*\") is no value, never a zero. The rows of an unknown municipality (code 72999) are left out of the municipal values and are in the state total.",
+  "sources": [
+   "cms_medicare_enrollment"
+  ],
+  "source_detail": "data.cms.gov data-api dataset d7fabe1e-d19b-4333-9eff-e80e0643f2fd: TOT_BENES, MA_AND_OTH_BENES, DSBLD_TOT_BENES",
+  "how_to_read": "In Puerto Rico most people with Medicare are in Medicare Advantage: 72.97% in 2013 and 85.93% in 2025.",
+  "caveats": [
+   "Includes people in Medicare Advantage plans that coordinate with Medicaid (dual eligibles)."
+  ],
+  "see_also": [
+   "health.medicare_benes",
+   "population.acs_age65plus_pct"
+  ],
+  "where": {
+   "files": [
+    "medicare_series.json:medicare_ma_pct"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: medicare advantage and other plans, % of people with medicare",
+     "href": "index.html#e=medicare_ma_pct.f"
+    }
+   ]
+  },
+  "added": "2026-10-14"
+ },
+ {
+  "id": "health.medicare_disabled_pct",
+  "ask": {"en": ["medicare disability", "disabled medicare beneficiaries"], "es": ["medicare por incapacidad", "beneficiarios de medicare con incapacidad"]},
+  "name": "Entitled by disability, % of people with Medicare",
+  "domain": "health",
+  "domains": [
+   "health",
+   "population"
+  ],
+  "group": "Medicare",
+  "kind": "variable",
+  "plain": "Out of every 100 people with Medicare in each municipality, how many have it because of a disability rather than age.",
+  "definition": "People entitled to Medicare by a disability or end-stage renal disease (CMS's 'disabled' group, which includes people now 65 and older who were first entitled by disability only when CMS counts them so), divided by all people with Medicare, times 100.",
+  "unit": "% of people with Medicare",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico (CMS's state row; the municipalities add up to it within a few people)",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2013,
+   "last": 2025,
+   "frequency": "One value a year (the average of the year's monthly counts). CMS adds a year after it ends; the observatory adds it when FPR rebuilds the data (python medicare_series.py)."
+  },
+  "method": "medicare_series.py reads the yearly rows (MONTH = Year) of CMS's Medicare Monthly Enrollment dataset for every county-level row of Puerto Rico and the state row. A count CMS suppresses (\"*\") is no value, never a zero. The rows of an unknown municipality (code 72999) are left out of the municipal values and are in the state total.",
+  "sources": [
+   "cms_medicare_enrollment"
+  ],
+  "source_detail": "data.cms.gov data-api dataset d7fabe1e-d19b-4333-9eff-e80e0643f2fd: TOT_BENES, MA_AND_OTH_BENES, DSBLD_TOT_BENES",
+  "how_to_read": "24.84% in 2013 and 15.06% in 2025 for Puerto Rico.",
+  "caveats": [
+   "Follows CMS's own grouping of the reason for entitlement."
+  ],
+  "see_also": [
+   "health.medicare_benes",
+   "population.acs_age65plus_pct"
+  ],
+  "where": {
+   "files": [
+    "medicare_series.json:medicare_disabled_pct"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: entitled by disability, % of people with medicare",
+     "href": "index.html#e=medicare_disabled_pct.f"
+    }
+   ]
+  },
+  "added": "2026-10-14"
+ }
+]

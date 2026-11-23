@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FPR Research in Data · The State of Housing in Puerto Rico</title>
+<meta name="description" content="Every table of Foundation for Puerto Rico's 2023 State of Housing study, visualized and extended to all 78 municipalities with Census data for every year from 2010 to 2025.">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="canonical" href="https://observatory.foundationpr.org/housing.html">
+<meta property="og:site_name" content="Foundation for Puerto Rico">
+<meta property="og:type" content="website">
+<meta property="og:title" content="FPR Research in Data · The State of Housing in Puerto Rico">
+<meta property="og:description" content="Every table of Foundation for Puerto Rico's 2023 State of Housing study, visualized and extended to all 78 municipalities with Census data for every year from 2010 to 2025.">
+<meta property="og:url" content="https://observatory.foundationpr.org/housing.html">
+<meta property="og:image" content="https://observatory.foundationpr.org/img/fpr-logo.png">
+<meta name="twitter:card" content="summary">
+<!-- Held back from search engines until Compliance has reviewed this page (see SHARE.md); remove this line to allow indexing. -->
+<meta name="robots" content="noindex, follow">
+<link rel="icon" href="img/fpr-mark.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" integrity="sha384-c6Rcwz4e4CITMbu/NBmnNS8yN2sC3cUElMEMfP3vqqKFp7GOYaaBBCqmaWBjmkjb" crossorigin="anonymous">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0&icon_names=account_balance,apartment,arrow_back,attach_money,bar_chart,bed,bolt,calendar_month,chat_bubble,chevron_left,chevron_right,close,commute,cyclone,delete,diversity_3,download,elderly,group,groups,help,home,home_work,hourglass_bottom,house,info,landscape,lightbulb,location_city,map,menu,menu_book,open_in_new,pause,payments,percent,place,play_arrow,price_change,real_estate_agent,rocket_launch,route,schedule,school,search,send,table_view,thermostat,trending_down,trending_up,verified,view_in_ar,villa,warning,water,wifi,woman,work&display=block" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0&icon_names=account_balance,apartment,arrow_back,attach_money,bar_chart,bed,bolt,calendar_month,chat_bubble,chevron_left,chevron_right,close,commute,cyclone,delete,diversity_3,download,elderly,group,groups,help,home,home_work,hourglass_bottom,house,info,landscape,lightbulb,location_city,map,menu,menu_book,open_in_new,pause,payments,percent,place,play_arrow,price_change,real_estate_agent,rocket_launch,route,schedule,school,search,send,table_view,thermostat,trending_down,trending_up,verified,view_in_ar,villa,warning,water,wifi,woman,work&display=block"></noscript>
+<link rel="stylesheet" href="css/twin.css?v=63">
+<link rel="stylesheet" href="css/housing.css?v=21">
+<link rel="stylesheet" href="css/chat.css?v=4">
+<script src="js/i18n.js?v=60" data-page="housing"></script>
+</head>
+<body class="research">
+<noscript><div style="padding:16px;background:#FFE9A8;color:#5A3500">This page needs JavaScript to draw its maps and charts.</div></noscript>
+
+<a class="skip" href="#headline">Skip to the content</a>
+<header class="topbar">
+  <a class="logo" href="index.html" title="PR Data Observatory home"><img src="img/fpr-logo.png" alt="Foundation for Puerto Rico. PR Data Observatory home"></a>
+  <div class="brand"><b>FPR Research in Data</b><span>The State of Housing in Puerto Rico · 2023 study, live data 2010–2025</span></div>
+  <div class="spacer"></div>
+  <nav class="views" aria-label="Views">
+    <a class="btn" href="index.html"><span class="ms-icon" aria-hidden="true">map</span><span class="lbl">Map</span></a>
+    <a class="btn" href="3d.html" title="Immersive 3D + time view"><span class="ms-icon" aria-hidden="true">view_in_ar</span><span class="lbl">3D + Time</span></a>
+    <a class="btn" href="knowledge.html" aria-current="page" title="Knowledge: FPR studies, analyses and tools"><span class="ms-icon" aria-hidden="true">lightbulb</span><span class="lbl">Knowledge</span></a>
+    <a class="btn" href="dictionary.html" title="Data dictionary: meanings, sources, licenses, how to cite"><span class="ms-icon" aria-hidden="true">menu_book</span><span class="lbl">Data dictionary</span></a>
+    <a class="btn" href="learn.html" title="Learn: short lessons about maps and spatial analysis"><span class="ms-icon" aria-hidden="true">school</span><span class="lbl">Learn</span></a>
+  </nav>
+  <div class="snapshot"><span class="ms-icon" aria-hidden="true" style="font-size:16px">verified</span><span id="snapshotLabel">—</span></div>
+</header>
+
+<nav class="toc" id="toc" aria-label="On this page">
+  <span class="ka-tabs" role="group" aria-label="Knowledge Area" data-ka="housing"></span><span class="ka-sep" aria-hidden="true"></span>
+  <a href="#headline">Headline</a><a href="#population">Population</a><a href="#stock">Housing stock</a><a href="#burden">Cost burden</a><a href="#afford">Affordability</a><a href="#tenure">Ownership</a><a href="#change">Rent and value change</a><a href="#lihtc">LIHTC</a><a href="#recovery">Recovery</a><a href="#profile">Municipality profile</a><a href="#landuse">Land use</a><a href="#catalog">Data</a><a href="#sources">Sources</a>
+</nav>
+<section class="yearbar" id="yearbar" aria-label="Choose the data year">
+  <span class="yb-label"><span class="ms-icon" aria-hidden="true">calendar_month</span>Year</span>
+  <button type="button" class="icon-btn small" id="yrPrev" aria-label="Previous year"><span class="ms-icon" aria-hidden="true">chevron_left</span></button>
+  <select id="yearSel" aria-label="Data year"></select>
+  <button type="button" class="icon-btn small" id="yrNext" aria-label="Next year"><span class="ms-icon" aria-hidden="true">chevron_right</span></button>
+  <input type="range" id="yearRange" aria-label="Data year slider" value="2025">
+  <button type="button" class="btn small" id="yrPlay"><span class="ms-icon" aria-hidden="true">play_arrow</span><span>Play</span></button>
+  <label class="yb-base" for="baseSel">Change measured from</label><select id="baseSel"></select>
+  <span class="yb-note" id="yearNote" aria-live="polite"></span>
+</section>
+
+<main class="page">
+  <section class="hero" id="headline">
+    <div class="eyebrow">FPR Research in Data · Study 01</div>
+    <h1>The State of Housing in Puerto Rico</h1>
+    <p class="lede"><a href="https://foundationforpuertorico.org/wp-content/uploads/2023/05/state_of_housing.pdf" target="_blank" rel="noopener"><i>An analysis of the factors that impact housing and rent prices in Puerto Rico and proposed strategies to increase housing affordability</i></a>. <a href="https://foundationforpuertorico.org/" target="_blank" rel="noopener">Foundation for Puerto Rico</a>, 2023, <a href="https://foundationforpuertorico.org/en/housing-in-puerto-rico/" target="_blank" rel="noopener">Advancing Equitable Neighborhood Development grant</a>, funded in part by <a href="https://nalcab.org/" target="_blank" rel="noopener">NALCAB</a>, the National Association for Latino Community Asset Builders. Every table in the study is shown below as published, then extended to all 78 municipalities with the Census Bureau's data for every year from 2010 to 2025. Choose a year in the bar above and every map and chart follows; open any dataset to see all of it.</p>
+    <div class="btn-row"><a class="btn primary" href="https://foundationforpuertorico.org/wp-content/uploads/2023/05/state_of_housing.pdf" target="_blank" rel="noopener"><span class="ms-icon" aria-hidden="true">open_in_new</span>Read the study (PDF)</a><a class="btn" href="https://foundationforpuertorico.org/en/housing-in-puerto-rico/" target="_blank" rel="noopener"><span class="ms-icon" aria-hidden="true">home</span>Housing in Puerto Rico at FPR</a><a class="btn" href="https://nalcab.org/" target="_blank" rel="noopener"><span class="ms-icon" aria-hidden="true">open_in_new</span>NALCAB</a><a class="btn" href="#catalog"><span class="ms-icon" aria-hidden="true">table_view</span>All datasets</a></div>
+    <h2 class="kpi-h">Latest data <span class="kpi-sub">(click any number to open its full data)</span></h2>
+    <div class="kpi-row" id="latestKpis"></div>
+    <h2 class="kpi-h">As published in the 2023 study</h2>
+    <div class="kpi-row" id="headlineKpis"></div>
+    <div class="legend-note">Published figures carry the <span class="tag paper">study</span> tag; live figures carry the Census Bureau's survey and year, for example <span class="tag live">ACS 2020–2024</span> or <span class="tag live">Census 2020</span>. Click any municipality on a map to load its profile; the municipality and year are also kept in the page address, so you can share the exact view.</div>
+  </section>
+
+  <section class="block" id="population">
+    <h2><span class="ms-icon" aria-hidden="true">groups</span>1 · Population change</h2>
+    <p id="popLede"></p>
+    <div class="paper-table" id="table2"></div>
+    <div class="card"><div class="card-head"><h3>Puerto Rico resident population, 2010–2025 <span class="tag live">Census Bureau</span></h3></div><div class="chart-box"><canvas id="popTrend"></canvas></div><div class="note" id="popBreak"></div></div>
+    <div class="viz" data-var="pop_change_since_2010_pct"></div>
+    <div class="viz" data-var="population"></div>
+    <div class="viz" data-var="age65_pct"></div>
+  </section>
+
+  <section class="block" id="stock">
+    <h2><span class="ms-icon" aria-hidden="true">home_work</span>2 · Housing stock, vacancy and weekend homes</h2>
+    <p>1.6 million units, over 370,000 vacant, an estimated 300,000 dilapidated or abandoned, and fewer households than homes (Section 2). Vacancy by municipality and year, the share of units the Census classes as "for seasonal, recreational or occasional use" (the closest public proxy for weekend homes and short-term rentals), and the "other vacant" units that are neither for sale or rent nor seasonal: the usual public stand-in for abandoned housing.</p>
+    <div class="viz" data-var="vacancy_pct"></div>
+    <div class="viz" data-var="other_vacant_pct"></div>
+    <div class="viz" data-var="seasonal_pct"></div>
+    <div class="viz" data-var="rental_vacancy_pct"></div>
+    <div class="viz" data-var="overcrowded_pct"></div>
+    <div class="viz" data-var="residents_per_unit"></div>
+  </section>
+
+  <section class="block" id="burden">
+    <h2><span class="ms-icon" aria-hidden="true">payments</span>3 · The housing cost burden</h2>
+    <p>HUD calls a household cost-burdened when it pays more than 30% of income for housing. The study found 52% of renters and 38% of mortgaged owners burdened (Tables 3 and 4). Below, the island-wide distribution for the selected year, rebuilt from the ACS, then each municipality.</p>
+    <div class="two">
+      <div class="card"><div class="card-head"><h3>Gross rent as % of household income <span class="tag paper">Table 3 method</span><span class="tag live">ACS</span></h3><button type="button" class="btn small" data-open="grapilive"><span class="ms-icon" aria-hidden="true">table_view</span>Full data</button></div><canvas id="grapi" height="170"></canvas></div>
+      <div class="card"><div class="card-head"><h3>Owner costs as % of income, with a mortgage <span class="tag paper">Table 4 method</span><span class="tag live">ACS</span></h3><button type="button" class="btn small" data-open="smocapilive"><span class="ms-icon" aria-hidden="true">table_view</span>Full data</button></div><canvas id="smocapi" height="170"></canvas></div>
+    </div>
+    <div class="viz" data-var="renter_cost_burden_pct"></div>
+    <div class="viz" data-var="renter_severe_burden_pct"></div>
+    <div class="viz" data-var="owner_cost_burden_pct"></div>
+    <div class="viz" data-var="median_rent_pct_income"></div>
+  </section>
+
+  <section class="block" id="afford">
+    <h2><span class="ms-icon" aria-hidden="true">real_estate_agent</span>4 · Home ownership affordability</h2>
+    <p>Table 6 of the study converts median income into the largest 30-year mortgage a household can carry at 30% of income. Against a median home value of $111,800 and asking prices of $90,000 and up, most of the population could not buy. The published table, then the same arithmetic for the selected year and for every municipality: the affordability ratio is the median home value divided by that maximum loan (above 1.0 means the typical home is out of reach for the typical household). The loan uses the study's fixed 5% rate in every year, so years differ only through prices and incomes.</p>
+    <div class="paper-table" id="table6"></div>
+    <div class="two">
+      <div class="card"><div class="card-head"><h3>Median income vs median home value by municipality <span class="tag live" id="scatterYear">ACS</span></h3></div><canvas id="scatter" height="260"></canvas><div class="note">Each dot is a municipality. The line is where the median home exactly equals the maximum affordable loan; dots above it are unaffordable for the median household.</div></div>
+      <div class="viz compact" data-var="affordability_ratio"></div>
+    </div>
+    <div class="viz" data-var="median_home_value"></div>
+    <div class="viz" data-var="median_hh_income"></div>
+    <div class="viz" data-var="median_gross_rent"></div>
+  </section>
+
+  <section class="block" id="tenure">
+    <h2><span class="ms-icon" aria-hidden="true">house</span>5 · Who owns their home</h2>
+    <p>Owner-occupied housing by age of householder (Table 7), as published and for the selected year, and the owner-occupied share of occupied units by municipality. Poverty is added as context.</p>
+    <div class="two">
+      <div class="card"><div class="card-head"><h3>Owner-occupied units by age of householder <span class="tag paper">Table 7</span><span class="tag live">live</span></h3><button type="button" class="btn small" data-open="table7"><span class="ms-icon" aria-hidden="true">table_view</span>Full data</button></div><canvas id="table7" height="200"></canvas></div>
+      <div class="viz compact" data-var="owner_occupied_pct"></div>
+    </div>
+    <div class="viz" data-var="poverty_pct"></div>
+  </section>
+
+  <section class="block" id="change">
+    <h2><span class="ms-icon" aria-hidden="true">trending_up</span>6 · Rent, home value and income change</h2>
+    <p>How median gross rent, median home value and median household income changed in each municipality, from the base year's ACS window to the selected year's.</p>
+    <div class="viz" data-var="gross_rent_change_pct"></div>
+    <div class="viz" data-var="home_value_change_pct"></div>
+    <div class="viz" data-var="income_change_pct"></div>
+    <div class="viz" data-var="bachelors_change_pts"></div>
+  </section>
+
+  <section class="block" id="lihtc">
+    <h2><span class="ms-icon" aria-hidden="true">apartment</span>7 · Low-Income Housing Tax Credit projects</h2>
+    <p>Six LIHTC projects funded with CDBG-DR, 851 units, $242 million of development (Table 10, Map 6). Locations are shown at the municipality. HUD's current LIHTC database is not available to automated downloads, so this table stays as published.</p>
+    <div class="two">
+      <div class="card map-card"><div id="lihtcMap" class="mini-map tall"></div></div>
+      <div class="card"><div class="card-head"><h3>LIHTC projects <span class="tag paper">Table 10</span></h3><button type="button" class="btn small" data-open="table10"><span class="ms-icon" aria-hidden="true">table_view</span>Full data</button></div><div id="table10"></div></div>
+    </div>
+  </section>
+
+  <section class="block" id="recovery">
+    <h2><span class="ms-icon" aria-hidden="true">cyclone</span>8 · Disaster recovery: FEMA housing assistance</h2>
+    <p>Households approved for FEMA Individual Assistance (owners and renters) and the dollars approved, by municipality and the year a disaster was declared: Hurricanes Irma and María (2017), the 2020 earthquakes, Hurricane Fiona (2022) and others. Years with no declaration show the most recent earlier year. Source: OpenFEMA Housing Assistance data.</p>
+    <div class="viz" data-var="fema_ia_households"></div>
+    <div class="viz" data-var="fema_ia_amount"></div>
+  </section>
+
+  <section class="block" id="profile">
+    <h2><span class="ms-icon" aria-hidden="true">location_city</span>9 · Municipality profile</h2>
+    <p>The study closes with Ceiba as a case for equitable development (Table 11). The same card for any municipality and the selected year, with the study's variables on the left and the housing indicators on the right. The small line beside each value is its trend from 2010 to the latest year; click a label to open that dataset in full.</p>
+    <div class="profile-pick"><label for="muniPick">Municipality</label><select id="muniPick"></select><span class="pick-hint">or click any map above</span></div>
+    <div id="profileCard"></div>
+  </section>
+
+  <section class="block" id="landuse">
+    <h2><span class="ms-icon" aria-hidden="true">landscape</span>10 · Land use: where housing can go</h2>
+    <p>The study's first strategy is zoning that allows mixed use and density in areas already served by infrastructure (Section 3.1). The Plan de Uso de Terrenos 2015 classifies every hectare as urban, urbanizable, rústico común or especially protected. The share of each municipality already urban, the land set aside for growth, and how much of its tourism supply sits on protected rural land. The plan is a single 2015 snapshot, so these maps do not change with the year. The polygons themselves are a layer in the <a href="index.html">Data Observatory</a>.</p>
+    <div class="viz" data-var="urban_pct"></div>
+    <div class="viz" data-var="urbanizable_pct"></div>
+    <div class="viz" data-var="protected_land_pct"></div>
+    <div class="note" id="zoningNote"></div>
+  </section>
+
+  <section class="block" id="catalog">
+    <h2><span class="ms-icon" aria-hidden="true">table_view</span>11 · Data: every dataset on this page</h2>
+    <p>Each dataset opens in full: every municipality and Puerto Rico as a whole, every year available, margins of error where the Census Bureau publishes them, a trend chart, and a CSV download.</p>
+    <div class="cat-tools"><label for="catFind">Find a dataset</label><input type="search" id="catFind" placeholder="For example: rent, vacancy, income" autocomplete="off"><span id="catCount" class="ds-count" aria-live="polite"></span></div>
+    <div id="catalogList"></div>
+  </section>
+
+  <section class="block" id="sources">
+    <h2><span class="ms-icon" aria-hidden="true">info</span>Sources and method</h2>
+    <div class="note" id="citation"></div>
+    <div class="note"><b>Links.</b> <a href="https://foundationforpuertorico.org/wp-content/uploads/2023/05/state_of_housing.pdf" target="_blank" rel="noopener">Full study (PDF)</a> · <a href="https://foundationforpuertorico.org/en/housing-in-puerto-rico/" target="_blank" rel="noopener">Housing in Puerto Rico, FPR program page</a> · <a href="https://nalcab.org/" target="_blank" rel="noopener">NALCAB, Advancing Equitable Neighborhood Development</a> · <a href="https://foundationforpuertorico.org/" target="_blank" rel="noopener">Foundation for Puerto Rico home</a></div>
+    <div class="note"><b>How to cite this page.</b> Foundation for Puerto Rico, <i>FPR Research in Data: The State of Housing in Puerto Rico</i>, PR Data Observatory, <span class="snap"></span>, https://observatory.foundationpr.org/housing.html. Data: US Census Bureau (decennial census, Population Estimates, American Community Survey), FEMA OpenFEMA; Junta de Planificación PUT 2015; FPR (2023) study tables.</div>
+    <div class="note"><b>Population.</b> The 2010 and 2020 censuses are counts for April 1. Every other year is the Census Bureau's estimate for July 1: 2011–2019 from Vintage 2020 (built on the 2010 census and never revised after the 2020 count, so the series steps up in 2020) and 2021–2025 from Vintage 2025 (built on the 2020 census). Age structure comes from the same estimate files.</div>
+    <div class="note"><b>American Community Survey.</b> Five-year estimates for every window from 2006–2010 to 2020–2024, read directly from the Census Bureau summary files (no API key) and labelled by the last year of the window. Neighbouring windows share four of five years of sample, so for real change compare windows that do not overlap (2012, 2017, 2022). Medians and counts carry the Census Bureau's margin of error at 90% confidence; shares and rates carry margins computed with the Bureau's formulas. The 2021–2025 window arrives in December 2026. Tables used: B01002, B01003, B15002, B17001, B19013, B19049, B19301, B23025, B25001, B25002, B25003, B25004, B25007, B25010, B25014, B25024, B25035, B25064, B25070, B25071, B25077, B25088, B25091, B25119. Incomes and values are in each survey period's dollars, not adjusted for inflation, as in the study.</div>
+    <div class="note"><b>Census-day counts.</b> Housing units, occupied and vacant for 2010 and 2020 come from the PL 94-171 redistricting files (table H1). Residents per unit divides each census's population by its housing units.</div>
+    <div class="note"><b>Affordability method (Table 6).</b> 30% of median income for housing, 78% of that to principal and interest (the study's own proportion, $430 of $549), 30-year loan at 5%, which reproduces the study's $80,181 maximum for Puerto Rico's $21,967 median to within about $60. The rate is held at 5% in every year so that years differ only through prices and incomes; actual mortgage rates ranged from under 4% to over 7% over this period. Ratio = median home value ÷ maximum loan.</div>
+    <div class="note"><b>FEMA.</b> Households approved for Individual Assistance and dollars approved (owners plus renters), summed by municipality and the calendar year of the disaster declaration. Counts are of approvals, not of damaged homes.</div>
+    <div class="note"><b>Published figures.</b> Tables 2, 6, 7 and 10 and the headline numbers are reproduced as printed in the study (© Foundation for Puerto Rico 2023); live versions of Tables 2, 3, 4, 6 and 7 sit beside them. The study was produced under NALCAB’s Advancing Equitable Neighborhood Development planning grant.</div>
+    <div id="sourceList"></div>
+  </section>
+</main>
+
+<dialog id="dataDlg" class="data-dlg" aria-labelledby="dlgTitle">
+  <div class="dlg-head"><h2 id="dlgTitle"></h2><button type="button" class="icon-btn" id="dlgClose" aria-label="Close"><span class="ms-icon" aria-hidden="true">close</span></button></div>
+  <div class="dlg-body" id="dlgBody"></div>
+</dialog>
+<div class="help-pop" id="helpPop" role="dialog" aria-labelledby="helpTitle"><button type="button" class="help-close" id="helpClose" aria-label="Close"><span class="ms-icon" aria-hidden="true">close</span></button><b id="helpTitle"></b><div id="helpBody"></div></div>
+
+<script src="js/core/knowledge.js?v=34"></script>
+<script>Core.knowledge.render(); I18N.apply();</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" integrity="sha384-NElt3Op+9NBMCYaef5HxeJmU4Xeard/Lku8ek6hoPTvYkQPh3zLIrJP7KiRocsxO" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" integrity="sha384-bs/nf9FbdNouRbMiFcrcZfLXYPKiPaGVGplVbv7dLGECccEXDW+S3zjqSKR5ZEaD" crossorigin="anonymous"></script>
+<script src="js/common.js?v=20"></script>
+<script src="js/core/text.js?v=1"></script>
+<script src="js/core/palettes.js?v=2"></script>
+<script src="js/core/stats.js?v=4"></script>
+<script src="js/core/classify.js?v=2"></script>
+<script src="js/core/time.js?v=1"></script>
+<script src="js/core/reliability.js?v=4"></script>
+<script src="js/core/legend.js?v=3"></script>
+<script src="js/icons.js?v=4"></script>
+<script src="js/housing.js?v=30"></script>
+<script src="js/chatboot.js?v=60"></script>
+</body>
+</html>

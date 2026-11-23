@@ -1,0 +1,50 @@
+{
+ "economy.tourism_places": {
+  "name": "Lugares turísticos (todas las categorías)",
+  "how_to_read": "En el corte de datos 2026-10, San Juan tiene la mayor cantidad (3,424, el 14.1% de la isla) y Maricao, la menor (36). Un mapa sombreado con conteos absolutos muestra sobre todo qué municipios son grandes. En la pestaña Análisis, el sombreado comienza en 'Por cada 1,000 residentes', que divide entre el estimado de población más reciente de las series de Vivienda (julio de 2025 en el corte de datos 2026-10); difiere un poco de municipalities.assets_per_1000_residents, que divide entre el conteo del Censo 2020. 'Por km²' divide entre la superficie terrestre en kilómetros cuadrados (municipalities.land_km2).",
+  "_en": {
+   "name": "81f6d07c",
+   "how_to_read": "713e6b6d"
+  }
+ },
+ "economy.lodging_places": {
+  "name": "Listados de alojamiento (hoteles, posadas, alquileres)",
+  "how_to_read": "En el corte de datos 2026-10, San Juan tiene la mayor cantidad (224), seguido de Cabo Rojo con 208 y Rincón con 120; los que menos tienen son Cataño con 0, y Aguas Buenas y Sabana Grande con 1 cada uno. Divida entre los residentes o la superficie terrestre antes de comparar lugares, o compárelo con el total de lugares turísticos del propio municipio para ver qué parte de su oferta es alojamiento.",
+  "_en": {
+   "name": "3e9fe338",
+   "how_to_read": "7fa62627"
+  }
+ },
+ "economy.gastronomy_places": {
+  "name": "Listados de restaurantes, bares y cafés",
+  "how_to_read": "En el corte de datos 2026-10, la isla tiene 17,170 de estos listados, el 71% de todos los lugares turísticos contados. San Juan tiene la mayor cantidad (2,421), seguido de Bayamón con 818 y Ponce con 776; los que menos tienen son Maricao con 17 y Culebra con 31. Muchos de estos lugares sirven tanto a residentes como a visitantes, así que el conteo no mide la demanda de visitantes.",
+  "_en": {
+   "name": "cb8245ae",
+   "how_to_read": "0bfecd15"
+  }
+ },
+ "economy.attractions_places": {
+  "name": "Listados de atracciones",
+  "how_to_read": "En el corte de datos 2026-10, San Juan tiene la mayor cantidad (645), seguido de Ponce con 198 y Carolina con 157; los que menos tienen son Las Marías y Naranjito, con 12 cada uno, y luego Florida con 13. Divida entre los residentes o la superficie terrestre antes de comparar lugares.",
+  "_en": {
+   "name": "ac725461",
+   "how_to_read": "97b16a78"
+  }
+ },
+ "economy.visitor_services_places": {
+  "name": "Listados de servicios al visitante",
+  "how_to_read": "En el corte de datos 2026-10, la isla tiene 617 listados de seis tipos: transporte 173 (aeropuertos 112, estaciones de guaguas 24, terminales de aeropuerto 13, servicios de taxi 10, helipuertos 8, servicios de limosina 3 y servicios de transporte al aeropuerto 3), operadores de aventura 148, operadores turísticos 116, proveedores de experiencias culturales 101, marinas 74 y centros de visitantes 5. San Juan tiene la mayor cantidad (134), seguido de Carolina con 58 y Fajardo con 49. Nueve municipios no tienen ninguno: Aguas Buenas, Barranquitas, Corozal, Florida, Hormigueros, Juana Díaz, Maricao, San Lorenzo y San Sebastián. Un cero aquí significa que Overture no registra ningún lugar de este tipo en el conjunto contado; no significa que los visitantes no puedan encontrar estos servicios allí. Con conteos tan pequeños, un solo listado cambia mucho la posición de un municipio.",
+  "_en": {
+   "name": "57b0d003",
+   "how_to_read": "38f28509"
+  }
+ },
+ "economy.tourism_supply_layers": {
+  "name": "Cómo construye la pestaña Análisis sus capas de oferta turística",
+  "how_to_read": "Use estas capas para ver dónde se concentran los lugares orientados a visitantes, y póngalas junto a las capas de empleos, ingreso o riesgos. Sombréelas por residente o por kilómetro cuadrado, porque los conteos absolutos muestran sobre todo qué municipios son grandes; los conteos absolutos se prestan para símbolos de tamaño variable. El control de año no cambia estas capas: si elige un año anterior para otra capa, la está combinando con los listados del corte de datos 2026-10.",
+  "_en": {
+   "name": "00c048ae",
+   "how_to_read": "df097e50"
+  }
+ }
+}

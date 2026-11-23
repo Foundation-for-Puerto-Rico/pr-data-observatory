@@ -1,0 +1,243 @@
+/* PR Data Observatory: Economy tab (economy.js). Loads after twin.css. */
+
+/* six tabs fit by letting the strip scroll sideways rather than squeezing the labels */
+.tabs { overflow-x: auto; scrollbar-width: thin; scroll-padding-inline: 8px 48px; }
+@media (min-width: 861px) { .tabs button .ms-icon { display: none; } }
+
+/* ── Panel ───────────────────────────────────────────── */
+.ec-lede { margin-top: 0; font-size: 12.5px; }
+.ec-year { display: flex; align-items: center; gap: 6px; margin: 8px 0 2px; }
+.ec-year .ec-yl { font-size: 12px; font-weight: 700; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: .06em; margin-right: 2px; }
+.ec-year select { height: 32px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font: inherit; padding: 0 8px; background: #fff; flex: 1; min-width: 0; }
+.ec-year .icon-btn.small, .ec-layer .icon-btn.small { width: 30px; height: 30px; }
+.ec-year .btn.small { padding: 5px 11px; }
+.ec-range { width: 100%; accent-color: var(--color-primary); margin: 4px 0 2px; }
+.ec-base { margin-top: 2px; }
+.ec-base label { font-size: 12px; color: var(--color-text-muted); flex: 1; }
+.ec-base select { flex: 0 0 90px; }
+.ec-count { font-weight: 400; letter-spacing: 0; text-transform: none; color: var(--color-text-muted); }
+.ec-presets { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 2px; }
+.ec-find { width: 100%; height: 34px; border: 1px solid var(--color-border); border-radius: 17px; padding: 0 14px; font: inherit; background: var(--color-bg); }
+.ec-find:focus { outline: 2px solid var(--color-primary-dark); outline-offset: 1px; background: #fff; }
+
+/* layer stack */
+.ec-layer { border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 6px 8px 4px; margin: 0 0 8px; background: #fff; }
+.ec-layer.off { opacity: .6; }
+.ec-lh { display: flex; align-items: center; gap: 2px; }
+.ec-vis { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; cursor: pointer; }   /* show or hide one layer (panel.js), like the checkboxes of the Layers tab */
+.ec-pick { display: inline-flex; align-items: center; gap: 4px; min-height: 26px; padding: 2px 9px 2px 6px; border-radius: 14px; font-size: 12px; font-weight: 500; cursor: pointer; user-select: none; white-space: nowrap; }   /* Shade / Symbols in the dataset list */
+.ec-pick input { width: 14px; height: 14px; margin: 0; accent-color: currentColor; cursor: pointer; }
+.ec-pick.fill { background: var(--tint-green-bg); color: var(--tint-green-fg); }
+.ec-pick.sym { background: var(--tint-yellow-bg); color: var(--tint-yellow-fg); }
+.ec-pick:focus-within { outline: 2px solid var(--color-primary); outline-offset: 1px; }
+.ec-vis input { width: 18px; height: 18px; margin: 0; accent-color: var(--color-primary); cursor: pointer; }
+.ec-lt { flex: 1; min-width: 0; padding: 0 4px; line-height: 1.25; }
+.ec-lt b { font-size: 12.5px; font-weight: 700; display: block; }
+.ec-lt small { display: block; color: var(--color-text-muted); font-size: 11px; margin-top: 1px; }
+.ec-modes { display: flex; flex-wrap: wrap; gap: 6px; padding: 3px 0 2px 32px; }   /* Shaded / Symbol on a layer card (panel.js): the dataset list's two checkboxes, without scrolling down */
+.ec-mode { min-height: 26px; padding: 2px 10px; border: 1px solid var(--color-border); border-radius: 14px; background: #fff; color: var(--color-text-muted); font: inherit; font-size: 12px; font-weight: 500; cursor: pointer; white-space: nowrap; }
+.ec-mode::before { content: ""; display: inline-block; width: 8px; height: 8px; margin-right: 5px; border: 1.5px solid currentColor; border-radius: 50%; vertical-align: 0; }   /* hollow when off, filled when on: the state is not in the colour alone */
+.ec-mode[aria-pressed="true"]::before { background: currentColor; }
+.ec-mode.fill[aria-pressed="true"] { background: var(--tint-green-bg); color: var(--tint-green-fg); border-color: transparent; }
+.ec-mode.symbol[aria-pressed="true"] { background: var(--tint-yellow-bg); color: var(--tint-yellow-fg); border-color: transparent; }
+.ec-mode:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 1px; }
+@media (max-width: 860px) { .ec-mode { min-height: 32px; } }
+.ec-layer .icon-btn { border-color: transparent; }
+.ec-layer .icon-btn[disabled] { opacity: .3; cursor: default; }
+.ec-layer .icon-btn .ms-icon { font-size: 18px; }
+.ec-set { margin: 2px 0 2px; font-size: 12px; }
+.ec-set summary { cursor: pointer; color: var(--color-primary-dark); padding: 3px 2px; font-weight: 500; }
+.ec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 10px; padding: 6px 2px 4px; }
+.ec-grid label { display: flex; flex-direction: column; gap: 3px; font-size: 11px; color: var(--color-text-muted); }
+.ec-grid label.chk { flex-direction: row; align-items: center; gap: 6px; grid-column: 1 / -1; font-size: 12px; color: var(--color-text); }
+.ec-grid label:first-child { grid-column: 1 / -1; }
+.ec-grid label.wide, .ec-grid .note.wide { grid-column: 1 / -1; }
+.ec-grid input[type=text] { height: 30px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font: inherit; font-size: 12px; padding: 0 8px; min-width: 0; }
+.ec-grid input[aria-invalid=true] { border-color: #B82415; }
+.ec-grid select { height: 30px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font: inherit; font-size: 12px; padding: 0 6px; background: #fff; color: var(--color-text); min-width: 0; }
+.ec-grid input[type=range] { width: 100%; accent-color: var(--color-primary); }
+.ec-grid input[type=checkbox] { accent-color: var(--color-primary); }
+
+/* dataset browser */
+.ec-grp { border-bottom: 1px solid var(--color-border-light); }
+.ec-grp > summary { cursor: pointer; padding: 9px 2px; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: space-between; }
+.ec-grp > summary small { font-weight: 400; color: var(--color-text-muted); font-size: 11.5px; }
+.ec-ds { display: flex; align-items: center; gap: 6px; padding: 6px 0 6px 6px; border-top: 1px solid var(--color-border-light); }
+.ec-dn { flex: 1; min-width: 0; font-size: 12.5px; line-height: 1.3; }
+.ec-dn small { display: block; color: var(--color-text-muted); font-size: 11px; }
+.ec-da { display: flex; align-items: center; gap: 4px; flex: none; }
+.ec-da .chip { padding: 3px 8px; font-size: 11.5px; }
+.ec-da .icon-btn.small { width: 28px; height: 28px; border-color: transparent; }
+.ec-da .icon-btn .ms-icon { font-size: 18px; }
+.ec-ctx { display: flex; align-items: center; gap: 8px; padding: 4px 0; font-size: 12.5px; cursor: pointer; }
+.ec-ctx input { accent-color: var(--color-primary); width: 16px; height: 16px; margin: 0; }
+
+/* ── Map: legend, hover ──────────────────────────────── */
+.econ-legend { position: absolute; left: 12px; bottom: 34px; z-index: 890; max-width: min(320px, 70vw); max-height: calc(100% - 100px); overflow: auto; background: rgba(255,255,255,.86); border-radius: var(--radius-md); box-shadow: var(--shadow-md); font-size: 11.5px; display: none; }
+.econ-legend.show { display: block; }
+.econ-legend.docked { position: static; max-width: none; max-height: none; overflow: visible; background: none; box-shadow: none; border-radius: 0; margin: 0 0 8px; padding-bottom: 8px; border-bottom: 1px solid var(--color-border-light); }   /* at the top of the On the map panel's dock (economy.js ecPlaceLegend) */
+body.econ-fill .map-legend { display: none !important; }
+body.econ-on .map-legend { bottom: var(--ec-stack, 34px); max-height: calc(100% - var(--ec-stack, 34px) - 12px); overflow-y: auto; }   /* symbols only: the places legend (hexagons, pins) stacks above the Economy legend instead of under it, and scrolls when the map is too short for both */
+body.econ-active .hover-info { display: none !important; }
+.el-toggle { width: 100%; border: 0; background: none; display: flex; align-items: center; gap: 6px; padding: 7px 10px; font: inherit; font-weight: 700; font-size: 12px; cursor: pointer; color: var(--color-text); text-align: left; }
+.el-toggle .ms-icon { font-size: 17px; color: var(--color-primary-dark); }
+.el-toggle .el-chev { margin-left: auto; }
+.el-body { padding: 0 10px 8px; }
+.el-block + .el-block { border-top: 1px solid var(--color-border); margin-top: 6px; padding-top: 6px; }
+.el-t { font-weight: 700; font-size: 11.5px; line-height: 1.3; margin-bottom: 3px; }
+.el-t small { font-weight: 400; color: var(--color-text-muted); }
+.econ-legend .row { display: flex; align-items: center; gap: 8px; padding: 1px 0; }
+.econ-legend .row .sw { width: 14px; height: 14px; border-radius: 3px; border: 1px solid rgba(0,0,0,.15); flex: none; }
+.econ-legend .row small { margin-left: auto; color: var(--color-text-muted); padding-left: 8px; }
+/* less reliable values: hatched on the map, so hatched in the legend; a dashed outline for symbols; italics in the tables */
+.econ-legend .row .sw.hatch { background: repeating-linear-gradient(135deg, #2A2E2E 0 1.2px, #fff 1.2px 2.4px, #E6E6E6 2.4px 5px); }
+.econ-legend .row .sw.dash { border: 1.5px dashed #2A2E2E; border-radius: 50%; background: transparent; }
+.el-note { font-size: 11px; color: var(--color-text-muted); line-height: 1.3; margin-top: 3px; }
+.el-note.el-flat, .el-note.el-period { color: var(--color-text); background: #FFF4E0; border-left: 3px solid #FFA600; padding: 4px 6px; margin: 4px 0; }   /* every area has the same value (stack.js flat) */
+table.ec-tbl td.unrel b, table.ec-tbl td.unrel, .eh-row b.unrel { font-style: italic; }
+.rel-note { margin: 6px 0 0; font-size: 11.5px; }
+.ds-cautions { margin: 2px 0 8px; padding-left: 18px; font-size: 12.5px; line-height: 1.4; }
+.ds-cautions li + li { margin-top: 3px; }
+.el-sizes { display: flex; align-items: flex-end; gap: 12px; padding: 2px 0 4px; }
+.el-sizes .sz { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.el-sizes i { display: block; border-radius: 50%; opacity: .75; border: 1px solid #fff; box-shadow: 0 0 0 1px rgba(0,0,0,.2); }
+.el-sizes small { color: var(--color-text-muted); }
+.el-biv { display: flex; gap: 10px; align-items: flex-start; }
+.biv-grid { display: grid; grid-template-columns: repeat(3, 20px); grid-auto-rows: 20px; gap: 1px; flex: none; }
+.biv-axes { display: flex; flex-direction: column; gap: 6px; font-size: 11px; line-height: 1.3; }
+.biv-axes small { display: block; color: var(--color-text-muted); }
+
+.econ-hover { position: absolute; top: 12px; right: 12px;   /* top right: the zoom buttons and scale sit bottom right and would cover the values */
+  z-index: 900; background: rgba(255,255,255,.96); border-radius: var(--radius-md); padding: 8px 12px; box-shadow: var(--shadow-md); font-size: 12px; max-width: 320px; display: none; pointer-events: none; }
+.econ-hover.show { display: block; }
+.econ-hover b { display: block; font-size: 13px; color: var(--color-primary-dark); margin-bottom: 2px; }
+.eh-row { display: flex; align-items: center; gap: 6px; padding: 1px 0; }
+.eh-row span:not(.sw) { flex: 1; min-width: 0; color: var(--color-text-muted); }
+.eh-row b { margin: 0; font-size: 12px; color: var(--color-text); white-space: nowrap; }
+.eh-row b.miss { white-space: normal; text-align: right; max-width: 60%; }   /* the words of an empty place ("Sin designación de escasez por área") wrap instead of leaving the card on a phone */
+.eh-row .sw, .ec-tbl .sw { width: 11px; height: 11px; border-radius: 3px; border: 1px solid rgba(0,0,0,.15); flex: none; display: inline-block; margin-right: 6px; vertical-align: -1px; }
+
+/* ── Inspector and tables ────────────────────────────── */
+.ec-insp h4 { margin: 0 0 6px; font-size: 15px; color: var(--color-primary-dark); }
+table.ec-tbl { width: 100%; border-collapse: collapse; font-size: 12px; }
+table.ec-tbl th, table.ec-tbl td { padding: 5px 6px; border-bottom: 1px solid var(--color-border-light); vertical-align: top; text-align: left; }
+table.ec-tbl thead th { font-size: 10.5px; text-transform: uppercase; letter-spacing: .05em; color: var(--color-text-muted); border-bottom: 1px solid var(--color-border); vertical-align: bottom; position: sticky; top: 0; background: #fff; z-index: 1; }
+table.ec-tbl th[scope=row] { font-weight: 400; }
+table.ec-tbl th small { display: block; color: var(--color-text-muted); font-size: 10.5px; margin-left: 17px; text-transform: none; letter-spacing: 0; font-weight: 400; }
+table.ec-tbl .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+table.ec-tbl td.num.miss { white-space: normal; }   /* the words of an empty place ("Sin designación de escasez por área") wrap in the pop-up table too */
+table.ec-tbl .num small.rk { display: block; color: var(--color-text-muted); margin: 0; font-size: 10.5px; }
+table.ec-tbl .moe { color: var(--color-text-muted); font-size: 10.5px; }
+table.ec-tbl tr.total td, table.ec-tbl tr.total th { background: var(--color-bg); font-weight: 500; }
+table.ec-tbl tr.me td, table.ec-tbl tr.me th { background: var(--tint-blue-bg); }
+table.ec-tbl.wide thead th { white-space: normal; min-width: 110px; }
+table.ec-tbl.wide thead th:first-child { min-width: 130px; text-align: left; }
+.ec-tbl .sp { width: 120px; }
+.sp-cap { display: block; font-size: 10.5px; color: var(--color-text-muted); line-height: 1.25; margin-top: 1px; white-space: nowrap; }
+table.ec-tbl th small.th-sub { display: block; margin: 1px 0 0; font-size: 9.5px; font-weight: 400; text-transform: none; letter-spacing: 0; white-space: nowrap; }
+.sortb { border: 0; background: none; padding: 0; font: inherit; color: inherit; text-transform: inherit; letter-spacing: inherit; font-weight: 700; cursor: pointer; text-align: inherit; }
+.sortb:hover { color: var(--color-primary-dark); }
+.ec-pop .leaflet-popup-content { margin: 12px 14px; width: 340px !important; max-width: 80vw; }
+.ec-pop table.ec-tbl th[scope=row] small { margin-left: 17px; }
+.ec-pop .links { margin-top: 8px; }
+
+/* ── Workbench (docks under the map) ─────────────────── */
+:root { --bench-h: min(42vh, 420px); }
+.econ-bench { position: fixed; left: var(--panel-width); right: 0; bottom: 0; height: var(--bench-h); z-index: 950; background: #fff; border-top: 1px solid var(--color-border); box-shadow: 0 -4px 12px rgba(42,46,46,.12); display: flex; flex-direction: column; }
+.econ-bench[hidden] { display: none; }
+body.bench-open #map { bottom: var(--bench-h); }
+.eb-head { display: flex; align-items: center; gap: 10px; padding: 6px 12px; border-bottom: 1px solid var(--color-border); }
+.eb-tabs { display: flex; gap: 2px; flex: 1; overflow-x: auto; }
+.eb-tabs button { border: 0; background: none; padding: 8px 14px; font: inherit; font-size: 12.5px; font-weight: 500; color: var(--color-text-muted); cursor: pointer; border-bottom: 2px solid transparent; white-space: nowrap; }
+.eb-tabs button.active { color: var(--color-primary-dark); border-bottom-color: var(--color-primary); }
+.eb-year { font-size: 12px; color: var(--color-text-muted); white-space: nowrap; }
+.eb-body { flex: 1; min-height: 0; display: flex; flex-direction: column; padding: 8px 14px 10px; }
+.eb-tools { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; font-size: 12px; margin-bottom: 6px; }
+.eb-tools label { display: inline-flex; align-items: center; gap: 6px; color: var(--color-text-muted); }
+.eb-tools label.chk { color: var(--color-text); }
+.eb-tools select, .eb-tools input[type=search] { height: 30px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font: inherit; padding: 0 8px; background: #fff; max-width: 220px; }
+.eb-tools .note { margin: 0; flex: 1 1 260px; }
+.eb-scroll { flex: 1; min-height: 0; overflow: auto; border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: 4px 8px; }
+.eb-chart { flex: 1; min-height: 0; position: relative; }
+/* the views added in plan item 12: correlations, small multiples, two maps compared, the composite (docs/workbench.md) */
+table.ec-tbl.mx td { text-align: center; min-width: 64px; }
+table.ec-tbl.mx td b { display: block; font-weight: 600; }
+table.ec-tbl.mx td small { display: block; font-size: 10px; opacity: .85; }
+table.ec-tbl.mx td.mx-d { color: var(--color-text-muted); background: var(--color-bg); }
+.mm-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 10px; padding: 4px 0; }
+.mm-cell { margin: 0; }
+.mm-cell svg, .sw-map svg { width: 100%; height: auto; display: block; }
+.mm-cell figcaption { font-size: 12px; display: flex; justify-content: space-between; gap: 6px; }
+.mm-cell figcaption small { color: var(--color-text-muted); }
+.mm-legend { display: flex; flex-wrap: wrap; gap: 4px 10px; font-size: 11px; color: var(--color-text-muted); margin-top: 4px; }
+.mm-legend i { display: inline-block; width: 11px; height: 11px; border-radius: 2px; margin-right: 4px; vertical-align: -1px; border: 1px solid rgba(0,0,0,.12); }
+.mm-key { font-size: 12px; padding: 6px 0 2px; }
+.sw-map { max-width: 900px; }
+.sw-range { width: min(900px, 100%); margin: 6px 0; }
+.sw-keys { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: 12px; max-width: 900px; }
+.sw-keys small { color: var(--color-text-muted); }
+.eb-body.eb-free { overflow: auto; display: block; }
+.eb-body.eb-free .eb-scroll { max-height: 46vh; }
+.ix-warn { display: flex; gap: 8px; align-items: center; background: #FFF7E0; color: #5A3500; border-radius: var(--radius-sm); padding: 6px 10px; font-size: 12.5px; font-weight: 500; margin-bottom: 8px; }
+.ix-warn .ms-icon { font-size: 18px; }
+table.ec-tbl.ix-in { width: auto; margin-bottom: 4px; }
+table.ec-tbl.ix-in select { height: 28px; font: inherit; border: 1px solid var(--color-border); border-radius: var(--radius-sm); }
+.ix-w { width: 72px; height: 28px; font: inherit; border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: 0 6px; }
+.ix-method { background: var(--color-bg); border-radius: var(--radius-sm); padding: 6px 8px; }
+.econ-legend .el-table { display: block; margin-top: 6px; font-size: 12px; }
+.sc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }   /* the scenario workspace (plan item 15) */
+.sc-box { border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: 8px 12px; }
+/* the study areas (plan item 16, C4) */
+.ec-tbl tr.sel th { box-shadow: inset 3px 0 0 var(--color-primary-dark); }
+.eb-scroll.tall { max-height: 420px; }
+.ec-tbl td.sa-how { font-size: 11.5px; color: var(--color-text-muted); min-width: 220px; }
+.sc-f { display: block; font-size: 12.5px; margin: 6px 0; color: var(--color-text-muted); }
+.sc-f input, .sc-f textarea { display: block; width: 100%; box-sizing: border-box; margin-top: 3px; font: inherit; color: var(--color-text); border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: 5px 8px; }
+.sc-box label.btn { cursor: pointer; }
+.sc-ul, .sc-err { margin: 6px 0; padding-left: 18px; font-size: 12.5px; }
+.sc-err { color: #8C180D; }
+.sc-acts { white-space: nowrap; text-align: right; }
+.sc-acts .btn { margin-left: 4px; }
+table.ec-tbl th small.sc-notes { margin-left: 0; white-space: normal; }
+@media (max-width: 860px) {
+  .econ-bench { --bench-h: 52vh; }
+  :root { --bench-h: 52vh; }
+  .econ-legend { max-width: 62vw; bottom: 30px; }
+  .eb-tools select, .eb-tools input[type=search] { max-width: 150px; }
+  .sw-keys { grid-template-columns: 1fr; }
+}
+
+/* ── Dataset information dialog ──────────────────────── */
+dialog.data-dlg { border: 0; border-radius: var(--radius-lg); padding: 0; width: min(760px, 96vw); max-height: 90vh; box-shadow: var(--shadow-lg); color: var(--color-text); }
+dialog.data-dlg::backdrop { background: rgba(20, 30, 40, .55); }
+dialog.data-dlg[open] { display: flex; flex-direction: column; }
+dialog.data-dlg .dlg-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 18px; border-bottom: 1px solid var(--color-border); background: #fff; }
+dialog.data-dlg .dlg-head h2 { margin: 0; font-size: 17px; color: var(--color-primary-dark); line-height: 1.25; }
+dialog.data-dlg .dlg-body { overflow: auto; padding: 14px 18px 18px; }
+#ecDlg .ds-tags .tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; border-radius: 10px; padding: 2px 8px; margin: 0 6px 4px 0; }
+#ecDlg .tag.paper { background: var(--tint-yellow-bg); color: #5A3500; }
+#ecDlg .tag.live { background: var(--tint-green-bg); color: #2E3808; }
+#ecDlg .ds-def { font-size: 13.5px; line-height: 1.55; margin: 6px 0 8px; }
+#ecDlg .ds-meta { font-size: 12px; color: var(--color-text-muted); line-height: 1.5; margin-bottom: 10px; }
+#ecDlg .ds-meta div { margin: 2px 0; }
+#ecDlg .ds-meta b { color: var(--color-text); font-weight: 500; }
+#ecDlg .src a { display: block; }
+@media (max-width: 860px) { dialog.data-dlg { width: 100vw; max-height: 100vh; height: 100vh; border-radius: 0; } }
+.ds-meta .btn[aria-disabled="true"] { opacity: .6; cursor: progress; }   /* a level is loading: the same button, dimmed, with the status line under it */
+/* Area around a point (GIS tools step 1, docs/gis-tools-proposal-2026-11.md): the entry in Tools > Analysis, the box at the top of Study areas, and the map while a point is picked */
+.sa-around { margin-bottom: 14px; }
+.sa-around-row label { display: inline-flex; align-items: center; gap: 6px; }
+.sa-more > summary { cursor: pointer; margin: 6px 0; font-weight: 600; }
+.sa-picking, .sa-picking .leaflet-interactive { cursor: crosshair !important; }
+/* Build my region (GIS tools step 4): the list of municipios or barrios to merge */
+.sa-list { max-height: 180px; overflow: auto; border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: 4px 8px; margin: 6px 0; columns: 2 220px; column-gap: 12px; }
+.sa-chk { display: block; break-inside: avoid; font-size: 13px; padding: 1px 0; }
+a.btn.disabled { opacity: .5; pointer-events: none; }
+/* the legend's histogram of the values with the class breaks (core/stack.js hist; map review 2026-11-05) */
+.el-hist { position: relative; display: flex; align-items: flex-end; gap: 1px; height: 28px; margin: 4px 0 6px; border-bottom: 1px solid var(--color-border); }
+.el-hist i { flex: 1; min-height: 1px; background: #8FCAE8; }
+.el-hist b { position: absolute; top: 0; bottom: 0; width: 2px; margin-left: -1px; background: #2A2E2E; }
+.el-period .linklike { margin-left: 4px; font-weight: 600; }
+/* the ranks a place could hold, given the margins (stats.rankRanges): Rankings tab and the Workbench table */
+table.rank td small, .ec-tbl td small.rk { display: block; font-size: 10px; font-weight: 400; color: var(--color-text-muted); }
+.econ-legend:not(.docked):hover, .econ-legend:not(.docked):focus-within { background: rgba(255,255,255,.97); }   /* see-through at rest, solid in use (twin.css, boxes over the map) */

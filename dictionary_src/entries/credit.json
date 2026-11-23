@@ -1,0 +1,371 @@
+[
+  {
+    "id": "credit.bank_branches",
+    "ask": {
+      "en": [
+        "bank branches",
+        "banks",
+        "bank offices",
+        "branch closures"
+      ],
+      "es": [
+        "sucursales bancarias",
+        "bancos",
+        "oficinas bancarias",
+        "cierre de sucursales"
+      ]
+    },
+    "name": "Bank offices (FDIC-insured banks)",
+    "domain": "economy",
+    "domains": [
+      "economy",
+      "housing"
+    ],
+    "group": "Banks and deposits",
+    "kind": "variable",
+    "plain": "How many offices of FDIC-insured banks each municipio has, every June 30.",
+    "definition": "The offices of FDIC-insured banks in the municipio on June 30: main offices, branches and limited-service offices, as the banks report them to the FDIC each year. Cooperativas de ahorro y crédito are insured by COSSEC, not the FDIC, and are not counted: a municipio with no bank office may still have a cooperativa.",
+    "unit": "count",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "annual",
+      "first": 2000,
+      "last": 2026,
+      "frequency": "Yearly: the FDIC adds June 30 each autumn; HMDA adds a year each spring."
+    },
+    "method": "credit.py reads every office of an FDIC-insured bank in Puerto Rico in the Summary of Deposits, June 30 of each year 2000-2026, and adds them up by the municipio the FDIC gives each office (STCNTYBR). The FDIC's survey covers main offices, branches and limited-service offices of every insured bank; deposits are in thousands of dollars in the file and in dollars here.",
+    "sources": [
+      "fdic_sod"
+    ],
+    "source_detail": "FDIC Summary of Deposits, June 30 of each year, 2000-2026",
+    "how_to_read": "Puerto Rico had 571 bank offices in 2006 and 260 in 2026. Most lost since 2006: San Juan (68), Carolina (24), Ponce (22), Bayamón (21). No FDIC-insured office in 2026: Cataño, Guánica. Per 1,000 residents, the Analysis tab offers the rate.",
+    "caveats": [
+      "Cooperativas de ahorro y crédito are insured by COSSEC, not the FDIC, and are not counted: a municipio with no bank office may still have a cooperativa.",
+      "An office counts the same whether it is a full branch or a limited-service office inside a store.",
+      "The FDIC places about half the offices at the centre of their ZIP code since 2023 (113 of 260 have a street-level location in 2026), so the observatory draws no office points."
+    ],
+    "see_also": [
+      "credit.bank_deposits",
+      "credit.hmda_loans",
+      "credit.hmda_denial_pct"
+    ],
+    "where": {
+      "files": [
+        "credit_series.json:bank_branches"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Economy · Banks and deposits (FDIC)): Bank offices (FDIC-insured banks)",
+          "href": "index.html#e=bank_branches.s"
+        }
+      ]
+    },
+    "added": "2026-11-16"
+  },
+  {
+    "id": "credit.bank_deposits",
+    "ask": {
+      "en": [
+        "bank deposits",
+        "deposits",
+        "savings in banks"
+      ],
+      "es": [
+        "depositos bancarios",
+        "depositos",
+        "ahorros en bancos"
+      ]
+    },
+    "name": "Deposits in bank offices (FDIC-insured banks)",
+    "domain": "economy",
+    "domains": [
+      "economy"
+    ],
+    "group": "Banks and deposits",
+    "kind": "variable",
+    "plain": "How much money FDIC-insured banks hold in deposits at their offices in each municipio, every June 30.",
+    "definition": "The deposits that FDIC-insured banks book at their offices in the municipio on June 30, in dollars of each year (not adjusted for inflation). Deposits are counted where the bank books them, not where the depositors live: a bank's main office books far more than its share, so San Juan holds most of the island's total. Cooperativas de ahorro y crédito are insured by COSSEC, not the FDIC, and are not counted: a municipio with no bank office may still have a cooperativa.",
+    "unit": "$",
+    "value_type": "level",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "annual",
+      "first": 2000,
+      "last": 2026,
+      "frequency": "Yearly: the FDIC adds June 30 each autumn; HMDA adds a year each spring."
+    },
+    "method": "credit.py reads every office of an FDIC-insured bank in Puerto Rico in the Summary of Deposits, June 30 of each year 2000-2026, and adds them up by the municipio the FDIC gives each office (STCNTYBR). The FDIC's survey covers main offices, branches and limited-service offices of every insured bank; deposits are in thousands of dollars in the file and in dollars here.",
+    "sources": [
+      "fdic_sod"
+    ],
+    "source_detail": "FDIC Summary of Deposits, June 30 of each year, 2000-2026",
+    "how_to_read": "Puerto Rico: $85.54 billion in 2026 ($30.35 billion in 2000). Most: San Juan ($56.22 billion), Bayamón ($3.32 billion), Guaynabo ($2.82 billion).",
+    "caveats": [
+      "Deposits are counted where the bank books them, not where the depositors live: a main office books far more than its share, so San Juan holds most of the island's total.",
+      "Dollars of each year, not adjusted for inflation.",
+      "Cooperativas de ahorro y crédito are insured by COSSEC, not the FDIC, and are not counted: a municipio with no bank office may still have a cooperativa."
+    ],
+    "see_also": [
+      "credit.bank_branches",
+      "credit.hmda_loans",
+      "credit.hmda_denial_pct"
+    ],
+    "where": {
+      "files": [
+        "credit_series.json:bank_deposits"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Economy · Banks and deposits (FDIC)): Deposits in bank offices (FDIC-insured banks)",
+          "href": "index.html#e=bank_deposits.s"
+        }
+      ]
+    },
+    "added": "2026-11-16"
+  },
+  {
+    "id": "credit.hmda_loans",
+    "ask": {
+      "en": [
+        "home loans",
+        "mortgages",
+        "mortgage lending",
+        "hmda"
+      ],
+      "es": [
+        "prestamos hipotecarios",
+        "hipotecas",
+        "prestamos para vivienda"
+      ]
+    },
+    "name": "Home loans made (HMDA)",
+    "domain": "housing",
+    "domains": [
+      "housing",
+      "economy"
+    ],
+    "group": "Home loans",
+    "kind": "variable",
+    "plain": "How many home loans lenders made for homes in each municipio during the year.",
+    "definition": "Home loans that reporting lenders made for homes in the municipio during the year: to buy, refinance, improve or borrow against a home of 1 to 4 units or an apartment building. Loans bought from another lender are not counted again. Small lenders that do not have to report are missing, so this is less than all home lending.",
+    "unit": "count",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "annual",
+      "first": 2018,
+      "last": 2025,
+      "frequency": "Yearly: the FDIC adds June 30 each autumn; HMDA adds a year each spring."
+    },
+    "method": "credit.py reads the public HMDA file for Puerto Rico, one row for each application a reporting lender received, 2018-2025, and adds the rows up by the municipio of the home (county_code). Loans bought from another lender (action 6) are left out. A loan made is action 1; a decided application is action 1, 2 (approved, not taken) or 3 (denied). Rows with no municipio count in Puerto Rico's figure only (62 in 2025). The rows describe single borrowers, so nothing below the municipio is published and a municipio-year with fewer than 10 loans or decided applications has no amount or denial share.",
+    "sources": [
+      "hmda"
+    ],
+    "source_detail": "Home Mortgage Disclosure Act data, Puerto Rico, 2018-2025 (FFIEC and CFPB Data Browser)",
+    "how_to_read": "Puerto Rico: 14,269 loans made in 2025 (12,627 in 2018). Most: San Juan (1,851), Bayamón (1,207), Carolina (974). Refinancing rises and falls with interest rates (2020 and 2021 were high), so compare years with care.",
+    "caveats": [
+      "Lenders below HMDA's reporting thresholds are missing, so the counts are less than all home lending.",
+      "Counted where the home is, not where the borrower lives.",
+      "Loans for second homes and rentals are included."
+    ],
+    "see_also": [
+      "credit.bank_branches",
+      "credit.bank_deposits",
+      "credit.hmda_denial_pct"
+    ],
+    "where": {
+      "files": [
+        "credit_series.json:hmda_loans"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Housing · Home loans (HMDA)): Home loans made (HMDA)",
+          "href": "index.html#e=hmda_loans.s"
+        }
+      ]
+    },
+    "added": "2026-11-16"
+  },
+  {
+    "id": "credit.hmda_purchase_loans",
+    "ask": {
+      "en": [
+        "home purchase loans",
+        "loans to buy a home"
+      ],
+      "es": [
+        "prestamos para comprar casa",
+        "prestamos de compra de vivienda"
+      ]
+    },
+    "name": "Home purchase loans made (HMDA)",
+    "domain": "housing",
+    "domains": [
+      "housing",
+      "economy"
+    ],
+    "group": "Home loans",
+    "kind": "variable",
+    "plain": "How many loans to buy a home lenders made in each municipio during the year.",
+    "definition": "The home loans made to buy a home in the municipio during the year (loan purpose: home purchase), without refinancing, home improvement and other purposes.",
+    "unit": "count",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "annual",
+      "first": 2018,
+      "last": 2025,
+      "frequency": "Yearly: the FDIC adds June 30 each autumn; HMDA adds a year each spring."
+    },
+    "method": "credit.py reads the public HMDA file for Puerto Rico, one row for each application a reporting lender received, 2018-2025, and adds the rows up by the municipio of the home (county_code). Loans bought from another lender (action 6) are left out. A loan made is action 1; a decided application is action 1, 2 (approved, not taken) or 3 (denied). Rows with no municipio count in Puerto Rico's figure only (62 in 2025). The rows describe single borrowers, so nothing below the municipio is published and a municipio-year with fewer than 10 loans or decided applications has no amount or denial share.",
+    "sources": [
+      "hmda"
+    ],
+    "source_detail": "Home Mortgage Disclosure Act data, Puerto Rico, 2018-2025 (FFIEC and CFPB Data Browser)",
+    "how_to_read": "Puerto Rico: 12,031 home purchase loans in 2025 (10,193 in 2018). Most: San Juan (1,621), Bayamón (1,038), Carolina (853).",
+    "caveats": [
+      "Lenders below HMDA's reporting thresholds are missing, so the counts are less than all home lending.",
+      "A home bought with cash needs no loan and is not counted."
+    ],
+    "see_also": [
+      "credit.bank_branches",
+      "credit.bank_deposits",
+      "credit.hmda_loans"
+    ],
+    "where": {
+      "files": [
+        "credit_series.json:hmda_purchase_loans"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Housing · Home loans (HMDA)): Home purchase loans made (HMDA)",
+          "href": "index.html#e=hmda_purchase_loans.s"
+        }
+      ]
+    },
+    "added": "2026-11-16"
+  },
+  {
+    "id": "credit.hmda_loan_amount",
+    "ask": {
+      "en": [
+        "mortgage amount",
+        "home loan dollars"
+      ],
+      "es": [
+        "monto de hipotecas",
+        "dinero en prestamos hipotecarios"
+      ]
+    },
+    "name": "Amount of home loans made (HMDA)",
+    "domain": "housing",
+    "domains": [
+      "housing",
+      "economy"
+    ],
+    "group": "Home loans",
+    "kind": "variable",
+    "plain": "How much money in home loans lenders made in each municipio during the year.",
+    "definition": "The sum of the home loans made in the municipio during the year, in dollars of each year. The public file gives each loan as the midpoint of its $10,000 band, so the sum is within $5,000 a loan of the true amount. A municipio with fewer than 10 loans in a year has no value: the observatory does not publish a figure that could describe a few borrowers.",
+    "unit": "$",
+    "value_type": "level",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "annual",
+      "first": 2018,
+      "last": 2025,
+      "frequency": "Yearly: the FDIC adds June 30 each autumn; HMDA adds a year each spring."
+    },
+    "method": "credit.py reads the public HMDA file for Puerto Rico, one row for each application a reporting lender received, 2018-2025, and adds the rows up by the municipio of the home (county_code). Loans bought from another lender (action 6) are left out. A loan made is action 1; a decided application is action 1, 2 (approved, not taken) or 3 (denied). Rows with no municipio count in Puerto Rico's figure only (62 in 2025). The rows describe single borrowers, so nothing below the municipio is published and a municipio-year with fewer than 10 loans or decided applications has no amount or denial share.",
+    "sources": [
+      "hmda"
+    ],
+    "source_detail": "Home Mortgage Disclosure Act data, Puerto Rico, 2018-2025 (FFIEC and CFPB Data Browser)",
+    "how_to_read": "Puerto Rico: $2.86 billion in 2025 ($1.69 billion in 2018). Most: San Juan ($476.3 million), Bayamón ($229.1 million), Carolina ($174.7 million). The Data Browser's own total for 2023 is the same: 13,550 loans and $2.24 billion.",
+    "caveats": [
+      "Dollars of each year, not adjusted for inflation.",
+      "Each loan is the midpoint of its $10,000 band in the public file, so a sum is within $5,000 a loan of the true amount.",
+      "Lenders below HMDA's reporting thresholds are missing, so the counts are less than all home lending."
+    ],
+    "see_also": [
+      "credit.bank_branches",
+      "credit.bank_deposits",
+      "credit.hmda_loans"
+    ],
+    "where": {
+      "files": [
+        "credit_series.json:hmda_loan_amount"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Housing · Home loans (HMDA)): Amount of home loans made (HMDA)",
+          "href": "index.html#e=hmda_loan_amount.s"
+        }
+      ]
+    },
+    "added": "2026-11-16"
+  },
+  {
+    "id": "credit.hmda_denial_pct",
+    "ask": {
+      "en": [
+        "mortgage denials",
+        "loan denial rate",
+        "denied home loans"
+      ],
+      "es": [
+        "hipotecas denegadas",
+        "prestamos denegados",
+        "tasa de denegacion"
+      ]
+    },
+    "name": "Home loan applications denied (HMDA, %)",
+    "domain": "housing",
+    "domains": [
+      "housing",
+      "economy"
+    ],
+    "group": "Home loans",
+    "kind": "variable",
+    "plain": "Out of every 100 home loan applications lenders decided in a municipio, how many they denied.",
+    "definition": "Of the applications for a home loan in the municipio that a lender decided during the year (made, approved but not taken, or denied), the share denied. Applications withdrawn or closed as incomplete are left out. A denial depends on the applicant's income, debts and credit and on the home, which this share does not separate. A municipio with fewer than 10 decided applications in a year has no value: the observatory does not publish a figure that could describe a few borrowers.",
+    "unit": "%",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "annual",
+      "first": 2018,
+      "last": 2025,
+      "frequency": "Yearly: the FDIC adds June 30 each autumn; HMDA adds a year each spring."
+    },
+    "method": "credit.py reads the public HMDA file for Puerto Rico, one row for each application a reporting lender received, 2018-2025, and adds the rows up by the municipio of the home (county_code). Loans bought from another lender (action 6) are left out. A loan made is action 1; a decided application is action 1, 2 (approved, not taken) or 3 (denied). Rows with no municipio count in Puerto Rico's figure only (62 in 2025). The rows describe single borrowers, so nothing below the municipio is published and a municipio-year with fewer than 10 loans or decided applications has no amount or denial share.",
+    "sources": [
+      "hmda"
+    ],
+    "source_detail": "Home Mortgage Disclosure Act data, Puerto Rico, 2018-2025 (FFIEC and CFPB Data Browser)",
+    "how_to_read": "Puerto Rico: 18.5% in 2025 (26.2% in 2018). Highest: Guánica (39.5%), Maunabo (35.5%), Villalba (31.2%). A municipio with few applications moves a lot: read the count of loans beside it.",
+    "caveats": [
+      "A denial depends on the applicant's income, debts and credit and on the home; the share does not separate them and says nothing about why.",
+      "Applications withdrawn or closed as incomplete are not counted as denied.",
+      "Lenders below HMDA's reporting thresholds are missing, so the counts are less than all home lending."
+    ],
+    "see_also": [
+      "credit.bank_branches",
+      "credit.bank_deposits",
+      "credit.hmda_loans"
+    ],
+    "where": {
+      "files": [
+        "credit_series.json:hmda_denial_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Housing · Home loans (HMDA)): Home loan applications denied (HMDA, %)",
+          "href": "index.html#e=hmda_denial_pct.f"
+        }
+      ]
+    },
+    "added": "2026-11-16"
+  }
+]

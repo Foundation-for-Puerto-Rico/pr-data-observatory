@@ -1,0 +1,394 @@
+{
+  "version": 1,
+  "about": "The domain registry. Every list of domains in the observatory (dictionary page, catalog, overview, chat, docs) is read from this file; nothing else may hard-code a domain name or the number of domains. To add a domain, add one object to 'domains' and run: python contract.py. Field rules and the placement guide: docs/adding-data.md. Old ids and names that links may still carry map to the current ids in legacy_names (2026-11-04, decision 81: economy.public-money is public-money, environment.hazards is hazards).",
+  "legacy_names": {
+    "Tourism supply": "economy.visitor-economy", "Population and households": "population", "Housing": "housing", "Economy and work": "economy",
+    "Public money and recovery": "public-money", "Hazards and environment": "hazards", "Land and boundaries": "environment.land",
+    "Mobility and transit": "infrastructure.mobility", "Measures and methods": "system.docs", "Map layers and tools": "system.tools", "economy.public-money": "public-money",
+    "environment.hazards": "hazards", "Public money": "public-money", "Hazards": "hazards"
+  },
+  "domains": [
+    {
+      "id": "population", "parent": null, "order": 10,
+      "name": {"es": "Población y hogares", "en": "Population and households"},
+      "description": {
+        "es": "Quién vive en Puerto Rico: cuántas personas y hogares hay, sus edades y cómo cambian las cifras.",
+        "en": "Who lives in Puerto Rico: how many people and households there are, their ages and how the numbers change."
+      },
+      "icon": "groups", "accent": "--fpr-green",
+      "headline": {"variable": "housing.population", "norm": "value", "label": {"es": "Población residente (estimado del Censo)", "en": "Resident population (Census estimate)"}},
+      "examples": {
+        "es": ["¿Qué municipios perdieron más población?", "¿Cuántas personas viven en cada municipio?"],
+        "en": ["Which municipalities lost the most people?", "How many people live in each municipality?"]
+      },
+      "presets": [
+        {"id": "change", "name": {"es": "Población y su cambio", "en": "Population and its change"},
+         "note": {"es": "Sombreado: cambio de población desde el censo de 2020. Círculos: residentes.", "en": "Shading: population change since the 2020 census. Circles: residents."},
+         "show": [["pop_change_since_2020_pct", "fill"], ["population", "symbol"]], "on": []},
+        {"id": "age", "name": {"es": "Residentes mayores y jóvenes", "en": "Older and younger residents"},
+         "note": {"es": "Dos sombreados: personas de 65 años o más y menores de 18, cada uno como parte de toda la población.", "en": "Two shadings: people 65 and older, and people under 18, each as a share of all people."},
+         "show": [["acs_age65plus_pct", "fill"], ["acs_under18_pct", "fill"]], "on": []}
+      ],
+      "status": "active", "system": false
+    },
+    {
+      "id": "economy", "parent": null, "order": 20,
+      "name": {"es": "Economía", "en": "Economy"},
+      "description": {
+        "es": "Empleos, negocios e ingresos: dónde está el trabajo, cuánto paga, quién lo busca, la pobreza, el viaje al trabajo y lo que aporta la economía del visitante.",
+        "en": "Jobs, businesses and income: where work is, what it pays, who is looking for it, poverty, the commute and what the visitor economy adds."
+      },
+      "icon": "work", "accent": "--fpr-yellow",
+      "headline": {"variable": "economy.qcew_jobs", "norm": "value", "label": {"es": "Empleos (todos los patronos)", "en": "Jobs (all employers)"}},
+      "examples": {
+        "es": ["¿Dónde están los empleos?", "¿Qué municipios tienen más pobreza?"],
+        "en": ["Where are the jobs?", "Which municipalities have the most poverty?"]
+      },
+      "presets": [
+        {"id": "jobs", "name": {"es": "Empleos y paga", "en": "Jobs and pay"},
+         "note": {"es": "Sombreado: paga anual promedio por empleo. Círculos: empleos de todos los patronos.", "en": "Shading: average annual pay per job. Circles: jobs at all employers."},
+         "show": [["qcew_avg_pay", "fill"], ["qcew_jobs", "symbol"]], "on": []},
+        {"id": "poverty", "name": {"es": "Pobreza y desempleo", "en": "Poverty and unemployment"},
+         "note": {"es": "Dos sombreados: personas bajo el nivel de pobreza y la tasa de desempleo. Círculos: residentes desempleados.", "en": "Two shadings: people below the poverty level and the unemployment rate. Circles: unemployed residents."},
+         "show": [["poverty_pct", "fill"], ["laus_unemp_rate", "fill"], ["laus_unemployed", "symbol"]], "on": []},
+        {"id": "commuting", "name": {"es": "Centros de empleo y viaje al trabajo", "en": "Job centres and commuting"},
+         "note": {"es": "Dos sombreados: empleos por residente empleado y viajes al trabajo de 45 minutos o más. Círculos: empleos. Líneas: rutas de transporte colectivo.", "en": "Two shadings: jobs per employed resident and commutes of 45 minutes or more. Circles: jobs. Lines: transit routes."},
+         "show": [["jobs_per_employed_resident", "fill"], ["commute_45plus_pct", "fill"], ["qcew_jobs", "symbol"]], "on": ["routes"]}
+      ],
+      "status": "active", "system": false
+    },
+    {
+      "id": "economy.visitor-economy", "parent": "economy", "order": 21,
+      "name": {"es": "Economía del visitante", "en": "Visitor economy"},
+      "description": {
+        "es": "Lugares y servicios para visitantes: atracciones, alojamiento, comida y bebida y servicios al visitante, contados y mapeados.",
+        "en": "Places and services that serve visitors: attractions, lodging, food and drink and visitor services, counted and mapped."
+      },
+      "icon": "luggage", "accent": "--fpr-yellow",
+      "headline": {"variable": "economy.tourism_places", "norm": "value", "label": {"es": "Lugares turísticos listados", "en": "Tourism places listed"}, "island": {"sum": "assets", "d": 0}},
+      "examples": {
+        "es": ["¿Dónde hay más alojamiento?", "¿Cuántas atracciones hay por municipio?"],
+        "en": ["Where is the most lodging?", "How many attractions are there in each municipality?"]
+      },
+      "presets": [
+        {"id": "tourism", "name": {"es": "Economía del turismo", "en": "Tourism economy"},
+         "note": {"es": "Sombreado: empleos relacionados con el turismo como parte de todos los empleos. Círculos: empleos de alojamiento. Puntos: lugares turísticos.", "en": "Shading: tourism-related jobs as a share of all jobs. Circles: accommodation jobs. Points: tourism places."},
+         "show": [["tourism_jobs", "fill", {"norm": "shareJobs"}], ["accommodation_jobs", "symbol"]], "on": ["places"]}
+      ],
+      "status": "active", "system": false
+    },
+    {
+      "id": "public-money", "parent": null, "order": 30,
+      "name": {"es": "Dinero público", "en": "Public money"},
+      "description": {
+        "es": "Contratos, subvenciones, préstamos y pagos directos federales, y fondos de recuperación por desastres, por lugar y año.",
+        "en": "Federal contracts, grants, loans and direct payments, and disaster recovery money, by place and year."
+      },
+      "icon": "account_balance", "accent": "--fpr-yellow",
+      "headline": null,
+      "examples": {
+        "es": ["¿Cuánto dinero federal recibió cada municipio?"],
+        "en": ["How much federal money did each municipality receive?"]
+      },
+      "presets": [
+        {"id": "per_resident", "name": {"es": "Fondos federales por residente", "en": "Federal money per resident"},
+         "note": {"es": "Sombreado: adjudicaciones federales de todo tipo por residente (USAspending). Círculos: Asistencia Pública de FEMA, fondos obligados (parte federal).", "en": "Shading: federal awards of all types per resident (USAspending). Circles: FEMA Public Assistance obligated (federal share)."},
+         "show": [["fed_awards_total", "fill", {"norm": "perCapita"}], ["fema_pa_obligated", "symbol"]], "on": []},
+        {"id": "fema", "name": {"es": "Fondos de FEMA por desastres", "en": "FEMA disaster funding"},
+         "note": {"es": "Sombreado: Asistencia Pública de FEMA, fondos obligados (parte federal), por residente. Círculos: Asistencia Individual de FEMA aprobada para los hogares.", "en": "Shading: FEMA Public Assistance obligated (federal share), per resident. Circles: FEMA Individual Assistance approved for households."},
+         "show": [["fema_pa_obligated", "fill", {"norm": "perCapita"}], ["fema_ia_amount", "symbol"]], "on": []},
+        {"id": "municipio_spent", "name": {"es": "Fondos federales gastados por el gobierno municipal", "en": "Federal money spent by the municipio government"},
+         "note": {"es": "Sombreado: fondos federales gastados que el gobierno municipal informó en su auditoría única, por residente (Federal Audit Clearinghouse).", "en": "Shading: federal awards the municipio government reported as spent in its single audit, per resident (Federal Audit Clearinghouse)."},
+         "show": [["fac_expended", "fill", {"norm": "perCapita"}]], "on": []}
+      ],
+      "status": "active", "system": false
+    },
+    {
+      "id": "housing", "parent": null, "order": 40,
+      "name": {"es": "Vivienda", "en": "Housing"},
+      "description": {
+        "es": "Las viviendas de Puerto Rico: cuántas hay, quién vive en ellas, cuánto cuestan y qué tan asequibles son.",
+        "en": "Homes in Puerto Rico: how many there are, who lives in them, what they cost and how affordable they are."
+      },
+      "icon": "home_work", "accent": "--fpr-blue",
+      "headline": {"variable": "housing.median_gross_rent", "norm": "value", "label": {"es": "Alquiler bruto mensual mediano", "en": "Median monthly gross rent"}},
+      "examples": {
+        "es": ["¿Dónde es más alto el alquiler?", "¿Qué municipios tienen más viviendas desocupadas?"],
+        "en": ["Where is rent highest?", "Which municipalities have the most vacant homes?"]
+      },
+      "presets": [
+        {"id": "costs", "name": {"es": "Costo de la vivienda", "en": "Housing costs"},
+         "note": {"es": "Dos sombreados: inquilinos que gastan 30% o más de su ingreso en renta, y la renta bruta mediana.", "en": "Two shadings: renters who spend 30% or more of their income on rent, and the median gross rent."},
+         "show": [["renter_cost_burden_pct", "fill"], ["median_gross_rent", "fill"]], "on": []},
+        {"id": "vacant", "name": {"es": "Viviendas vacantes", "en": "Vacant homes"},
+         "note": {"es": "Sombreado: la tasa de vacantes. Círculos: unidades de vivienda vacantes.", "en": "Shading: the vacancy rate. Circles: vacant housing units."},
+         "show": [["vacancy_pct", "fill"], ["vacant_units", "symbol"]], "on": []},
+        {"id": "public", "name": {"es": "Residenciales públicos", "en": "Public housing"},
+         "note": {"es": "Sombreado: hogares con uno o más problemas graves de vivienda. Puntos: residenciales públicos.", "en": "Shading: households with one or more severe housing problems. Points: public housing developments."},
+         "show": [["chas_severe_pct", "fill"]], "on": ["pubhousing"]}
+      ],
+      "status": "active", "system": false
+    },
+    {
+      "id": "health", "parent": null, "order": 50,
+      "name": {"es": "Salud", "en": "Health"},
+      "description": {
+        "es": "Salud y cuidado de la salud: hospitales y clínicas, acceso a servicios, cobertura y condiciones de salud.",
+        "en": "Health and care: hospitals and clinics, access to services, coverage and health conditions."
+      },
+      "icon": "health_and_safety", "accent": "--fpr-red",
+      "headline": {"variable": "health.hc_sites", "norm": "value", "label": {"es": "Sitios permanentes de centros de salud (con o sin subvención federal)", "en": "Permanent sites of health centers (with or without a federal grant)"}},
+      "examples": {
+        "es": ["¿Qué municipios no tienen ningún sitio de un centro de salud?", "¿Dónde faltan más médicos de atención primaria?"],
+        "en": ["Which municipalities have no health center site?", "Where is the shortage of primary care physicians greatest?"]
+      },
+      "presets": [
+        {"id": "primary", "name": {"es": "Acceso a atención primaria", "en": "Access to primary care"},
+         "note": {"es": "Dos sombreados: la puntuación de prioridad HPSA para atención primaria y el tiempo en carro al centro de salud más cercano.", "en": "Two shadings: the HPSA priority score for primary care and the drive time to the nearest health center."},
+         "show": [["hpsa_pc_score", "fill"], ["hc_drive_min", "fill"]], "on": []},
+        {"id": "hospital", "name": {"es": "Distancia a un hospital", "en": "Distance to a hospital"},
+         "note": {"es": "Sombreado: tiempo en carro al hospital general más cercano. Círculos: hospitales con sala de emergencias.", "en": "Shading: drive time to the nearest general hospital. Circles: hospitals with an emergency department."},
+         "show": [["hosp_drive_min", "fill"], ["cms_hospitals_er", "symbol"]], "on": []},
+        {"id": "insurance", "name": {"es": "Seguro de salud", "en": "Health insurance"},
+         "note": {"es": "Sombreado: personas sin seguro de salud, como parte de las personas fuera de instituciones.", "en": "Shading: people without health insurance, as a share of people outside institutions."},
+         "show": [["acs_uninsured_pct", "fill"]], "on": []}
+      ],
+      "status": "partial", "system": false
+    },
+    {
+      "id": "education", "parent": null, "order": 60,
+      "name": {"es": "Educación", "en": "Education"},
+      "description": {
+        "es": "Escuelas, colegios y universidades y lo que ha estudiado la gente: dónde están las escuelas, a cuántos estudiantes sirven y el nivel educativo de los residentes.",
+        "en": "Schools, colleges and what people have studied: where schools are, how many students they serve and the education level of residents."
+      },
+      "icon": "school", "accent": "--fpr-yellow",
+      "headline": {"variable": "housing.bachelors_pct", "norm": "value", "label": {"es": "Adultos de 25 años o más con bachillerato universitario o más", "en": "Adults 25 and older with a bachelor's degree or higher"}},
+      "examples": {
+        "es": ["¿Qué municipios tienen más adultos con bachillerato universitario?"],
+        "en": ["Which municipalities have the most adults with a bachelor's degree?"]
+      },
+      "presets": [
+        {"id": "schools", "name": {"es": "Escuelas públicas", "en": "Public schools"},
+         "note": {"es": "Sombreado: estudiantes por maestro en las escuelas públicas. Círculos: estudiantes de escuelas públicas.", "en": "Shading: students per teacher in public schools. Circles: students in public schools."},
+         "show": [["sch_ptr", "fill"], ["sch_enroll", "symbol"]], "on": []},
+        {"id": "attainment", "name": {"es": "Nivel educativo de los adultos", "en": "Education level of adults"},
+         "note": {"es": "Dos sombreados: adultos de 25 años o más con bachillerato o más, y sin diploma de escuela superior.", "en": "Two shadings: adults 25 and older with a bachelor's degree or higher, and without a high school diploma."},
+         "show": [["bachelors_pct", "fill"], ["acs_no_hs_pct", "fill"]], "on": []}
+      ],
+      "status": "partial", "system": false
+    },
+    {
+      "id": "environment", "parent": null, "order": 70,
+      "name": {"es": "Ambiente y clima", "en": "Environment and climate"},
+      "description": {
+        "es": "La tierra, el agua y el clima: el calor de la superficie de día y de noche, la vegetación, los humedales, las áreas protegidas, el uso del suelo, los sitios regulados y los embalses.",
+        "en": "Land, water and climate: surface heat by day and by night, vegetation, wetlands, protected areas, land use, regulated sites and reservoirs."
+      },
+      "icon": "forest", "accent": "--fpr-green",
+      "headline": null,
+      "examples": {
+        "es": ["¿Qué barrios se mantienen más cálidos de noche?", "¿Dónde hay menos vegetación?"],
+        "en": ["Which barrios stay warmest at night?", "Where is there the least vegetation?"]
+      },
+      "presets": [
+        {"id": "heat", "name": {"es": "Calor de día y de noche", "en": "Day and night heat"},
+         "note": {"es": "Dos sombreados: la temperatura mediana de la superficie en mañanas de verano (Landsat) y en noches de verano (ECOSTRESS).", "en": "Two shadings: the median land surface temperature on summer mornings (Landsat) and on summer nights (ECOSTRESS)."},
+         "show": [["heat_lst_med", "fill", {"ramp": "red"}], ["night_lst_med", "fill", {"ramp": "gold"}]], "on": []},
+        {"id": "green", "name": {"es": "Cobertura verde", "en": "Green cover"},
+         "note": {"es": "Sombreado: terreno con vegetación densa en verano (Sentinel-2). Círculos: residentes en terreno con poca o ninguna vegetación.", "en": "Shading: land with dense vegetation in summer (Sentinel-2). Circles: residents on land with little or no vegetation."},
+         "show": [["veg_dense_pct", "fill", {"ramp": "green"}], ["veg_res_sparse", "symbol"]], "on": []},
+        {"id": "protected", "name": {"es": "Terreno protegido", "en": "Protected land"},
+         "note": {"es": "Sombreado: terreno clasificado como Suelo Rústico Especialmente Protegido (SREP) en el Plan de Uso de Terrenos 2015. Áreas: áreas protegidas.", "en": "Shading: land classed SREP (specially protected rural) in the Plan de Uso de Terrenos 2015. Areas: protected areas."},
+         "show": [["protected_land_pct", "fill", {"ramp": "green"}]], "on": ["prot"]}
+      ],
+      "status": "active", "system": false
+    },
+    {
+      "id": "environment.land", "parent": "environment", "order": 71,
+      "name": {"es": "Suelo y áreas protegidas", "en": "Land and protected areas"},
+      "description": {
+        "es": "El suelo y su protección o uso: áreas protegidas, el plan de uso de terrenos de 2015 y la calificación.",
+        "en": "Land and how it is protected or used: protected areas, the 2015 land-use plan and zoning."
+      },
+      "icon": "terrain", "accent": "--fpr-green",
+      "headline": {"variable": "municipalities.in_protected", "norm": "value", "label": {"es": "Lugares turísticos dentro de áreas protegidas", "en": "Tourism places inside protected areas"}, "island": {"sum": "in_protected", "d": 0}},
+      "examples": {
+        "es": ["¿Qué parte de cada municipio es área protegida?"],
+        "en": ["What share of each municipality is protected land?"]
+      },
+      "status": "active", "system": false
+    },
+    {
+      "id": "hazards", "parent": null, "order": 80,
+      "name": {"es": "Riesgos", "en": "Hazards"},
+      "description": {
+        "es": "Lo que puede dañar a las personas y los bienes: zonas inundables, aumento del nivel del mar, trayectorias de tormentas y los lugares expuestos.",
+        "en": "What could harm people and property: flood zones, sea level rise, storm tracks and the places exposed to them."
+      },
+      "icon": "flood", "accent": "--fpr-green",
+      "headline": {"variable": "municipalities.sfha_pct", "norm": "value", "label": {"es": "Lugares turísticos en zona de riesgo de inundación", "en": "Tourism places in a flood hazard area"}, "island": {"ratio": {"num": "in_sfha", "den": "assets", "scale": 100}, "unit": "%", "d": 1}},
+      "examples": {
+        "es": ["¿Qué municipios tienen más área en zona inundable?", "¿Qué huracanes pasaron cerca de la isla?"],
+        "en": ["Which municipalities have the most land in a flood zone?", "Which hurricanes passed near the island?"]
+      },
+      "presets": [
+        {"id": "flood", "name": {"es": "Inundaciones y nivel del mar", "en": "Flood and sea level"},
+         "note": {"es": "Áreas: zonas inundables de FEMA y el área que inundaría el aumento del nivel del mar.", "en": "Areas: FEMA flood zones and the area flooded by sea level rise."},
+         "show": [], "on": ["flood", "slr"]},
+        {"id": "flood_people", "name": {"es": "Quién vive en una zona inundable", "en": "Who lives in a flood zone"},
+         "note": {"es": "Sombreado: residentes en un área de riesgo de inundación de FEMA, como parte de los residentes del área. Áreas: zonas inundables.", "en": "Shading: residents in a FEMA flood hazard area, as a share of the area's residents. Areas: flood zones."},
+         "show": [["exp_flood_sfha_pop", "fill", {"norm": "shareArea"}]], "on": ["flood"]},
+        {"id": "surge_people", "name": {"es": "Quién vive donde llega la marejada ciclónica", "en": "Who lives where storm surge reaches"},
+         "note": {"es": "Sombreado: residentes en el área que inundaría la marejada ciclónica de un huracán de categoría 3 (casi el peor caso, marea alta; NOAA), como parte de los residentes del área.", "en": "Shading: residents in the area a category 3 hurricane's storm surge would flood (near worst case, high tide; NOAA), as a share of the area's residents."},
+         "show": [["exp_surge_cat3_pop", "fill", {"norm": "shareArea"}]], "on": []},
+        {"id": "landslides", "name": {"es": "Deslizamientos", "en": "Landslides"},
+         "note": {"es": "Sombreado: residentes en terreno de alta susceptibilidad a deslizamientos. Círculos: deslizamientos documentados después del huracán María.", "en": "Shading: residents on land of high landslide susceptibility. Circles: landslides mapped after Hurricane María."},
+         "show": [["ls_res_high_pct", "fill"], ["landslides_maria", "symbol"]], "on": []}
+      ],
+      "status": "active", "system": false
+    },
+    {
+      "id": "infrastructure", "parent": null, "order": 90,
+      "name": {"es": "Infraestructura y movilidad", "en": "Infrastructure and mobility"},
+      "description": {
+        "es": "Las redes e instalaciones de las que depende un lugar: transporte y carreteras, agua, energía, comunicaciones e instalaciones públicas como refugios y estaciones de bomberos.",
+        "en": "The networks and facilities a place depends on: transit and roads, water, power, communications and public facilities such as shelters and fire stations."
+      },
+      "icon": "construction", "accent": "--fpr-green",
+      "headline": {"variable": "broadband.bb_served_pct", "norm": "value", "label": {"es": "Ubicaciones con internet de 100/20 Mbps o más disponible", "en": "Locations where 100/20 Mbps internet is available"}},
+      "examples": {
+        "es": ["¿Qué parte de la población vive cerca de una parada de transporte?"],
+        "en": ["What share of residents live near a transit stop?"]
+      },
+      "presets": [
+        {"id": "broadband", "name": {"es": "Dónde falta banda ancha", "en": "Where broadband is needed"},
+         "note": {"es": "Sombreado: ubicaciones sin servicio (menos de 25/3 Mbps por una tecnología confiable), como parte de las ubicaciones del área. Círculos: ubicaciones por debajo de 100/20 Mbps, las que BEAD puede financiar. Hexágonos: la proporción por debajo de 100/20 Mbps en celdas de unos 0.74 km² (FCC, junio).", "en": "Shading: unserved locations (below 25/3 Mbps over a reliable technology), as a share of the area's locations. Circles: locations below 100/20 Mbps, the ones BEAD can fund. Hexagons: the share below 100/20 Mbps in cells of about 0.74 km² (FCC, June)."},
+         "show": [["bb_unserved_pct", "fill", {"ramp": "red"}], ["bb_below100_n", "symbol"]], "on": ["broadband"]},
+        {"id": "transit", "name": {"es": "Cobertura del transporte colectivo", "en": "Transit coverage"},
+         "note": {"es": "Sombreado: residentes a 400 m o menos a pie de una parada con horario vigente. Líneas y puntos: rutas y paradas.", "en": "Shading: residents within a 400 m walk of a stop with a current timetable. Lines and points: routes and stops."},
+         "show": [["pop_walk_active_pct", "fill"]], "on": ["routes", "stops"]},
+        {"id": "emergency", "name": {"es": "Estaciones de bomberos y de policía", "en": "Fire and police stations"},
+         "note": {"es": "Puntos: estaciones de bomberos y de emergencias médicas, y cuarteles de la policía.", "en": "Points: fire and EMS stations, and police stations."},
+         "show": [], "on": ["fire", "police"]},
+        {"id": "water", "name": {"es": "Puentes y agua potable", "en": "Bridges and drinking water"},
+         "note": {"es": "Sombreado: puentes en mala condición, como parte de los puentes. Círculos: sistemas comunitarios de agua con una violación basada en la salud (EPA ECHO).", "en": "Shading: bridges in poor condition, as a share of bridges. Circles: community water systems with a health-based violation (EPA ECHO)."},
+         "show": [["bridges_poor_pct", "fill"], ["water_health_vio", "symbol"]], "on": []}
+      ],
+      "status": "partial", "system": false
+    },
+    {
+      "id": "infrastructure.mobility", "parent": "infrastructure", "order": 91,
+      "name": {"es": "Movilidad y transporte", "en": "Mobility and transit"},
+      "description": {
+        "es": "Cómo se mueven las personas: paradas, rutas y horarios del transporte público, aeropuertos, carreteras y quién vive cerca del servicio.",
+        "en": "How people move: public transit stops, routes and timetables, airports, roads and who lives near service."
+      },
+      "icon": "directions_bus", "accent": "--fpr-green",
+      "headline": {"variable": "municipalities.pop_walk_active_pct", "norm": "value", "label": {"es": "Residentes a 400 m o menos a pie de una parada con horario vigente", "en": "Residents within a 400 m walk of a stop with a current timetable"}, "island": {"wmean": {"field": "pop_walk_active_pct", "weight": "population_2020"}, "unit": "%", "d": 0}},
+      "examples": {
+        "es": ["¿Dónde hay gente que vive lejos de una parada?", "¿Qué rutas pasan por Ponce?"],
+        "en": ["Where do people live far from a stop?", "Which routes serve Ponce?"]
+      },
+      "status": "active", "system": false
+    },
+    {
+      "id": "infrastructure.energy", "parent": "infrastructure", "order": 92,
+      "name": {"es": "Energía", "en": "Energy"},
+      "description": {
+        "es": "Cómo se produce y se usa la electricidad: las plantas de energía, la red eléctrica, la energía solar en techos y las baterías, la confiabilidad del servicio y su costo.",
+        "en": "How electricity is made and used: power plants, the grid, rooftop solar and batteries, the reliability of service and its cost."
+      },
+      "icon": "bolt", "accent": "--fpr-green",
+      "headline": {"variable": "infrastructure.power_renewable_mw", "norm": "value", "label": {"es": "Capacidad renovable de las plantas de energía (MW)", "en": "Renewable capacity of power plants (MW)"}},
+      "examples": {
+        "es": ["¿Dónde están las plantas de energía?", "¿Cuánta capacidad renovable hay en cada municipio?"],
+        "en": ["Where are the power plants?", "How much renewable capacity is there in each municipality?"]
+      },
+      "status": "active", "system": false
+    },
+    {
+      "id": "communities", "parent": null, "order": 100,
+      "name": {"es": "Comunidades", "en": "Communities"},
+      "description": {
+        "es": "Las comunidades y sus lugares: las Comunidades Especiales, las comunidades del programa WCRP y su vulnerabilidad, las alcaldías y los lugares históricos.",
+        "en": "Communities and their places: the Comunidades Especiales, the communities of the WCRP program and their vulnerability, city halls and historic places."
+      },
+      "icon": "diversity_3", "accent": "--fpr-blue",
+      "headline": {"variable": "community.nrhp_places", "norm": "value", "label": {"es": "Lugares en el Registro Nacional de Lugares Históricos", "en": "Places on the National Register of Historic Places"}},
+      "examples": {
+        "es": ["¿Dónde están las Comunidades Especiales?", "¿Qué municipios tienen más lugares históricos?"],
+        "en": ["Where are the Comunidades Especiales?", "Which municipalities have the most historic places?"]
+      },
+      "presets": [
+        {"id": "wcrp", "name": {"es": "Vulnerabilidad WCRP", "en": "WCRP vulnerability"},
+         "note": {"es": "Sombreado: el índice general de vulnerabilidad de WCRP, actualizado 2020–2024. Puntos: comunidades WCRP.", "en": "Shading: the WCRP overall vulnerability index, updated 2020–2024. Points: WCRP communities."},
+         "show": [["rvi_overall_rebuild", "fill"]], "on": ["wcrp"]},
+        {"id": "especiales", "name": {"es": "Comunidades Especiales", "en": "Comunidades Especiales"},
+         "note": {"es": "Sombreado: personas bajo el nivel de pobreza. Áreas: las Comunidades Especiales de 2006.", "en": "Shading: people below the poverty level. Areas: the Comunidades Especiales of 2006."},
+         "show": [["poverty_pct", "fill"]], "on": ["comunidades"]}
+      ],
+      "status": "partial", "system": false
+    },
+    {
+      "id": "system", "parent": null, "order": 900,
+      "name": {"es": "Sistema del observatorio", "en": "Observatory system"},
+      "description": {
+        "es": "Entradas que no son un campo de datos: la geografía de referencia, los métodos y las herramientas del observatorio. No aparecen en el resumen por campos.",
+        "en": "Entries that are not a field of data: the reference geography, the methods and the observatory's own tools. They never appear in the overview by field."
+      },
+      "icon": "settings", "accent": "--fpr-blue",
+      "headline": null,
+      "examples": {
+        "es": [],
+        "en": []
+      },
+      "status": "active", "system": true
+    },
+    {
+      "id": "system.geography", "parent": "system", "order": 910,
+      "name": {"es": "Geografía de referencia", "en": "Reference geography"},
+      "description": {
+        "es": "Los límites y la superficie de los municipios, barrios, sectores censales y grupos de bloques, y la tabla de equivalencias que los une: la base a la que se unen todos los datos.",
+        "en": "The boundaries and land area of municipalities, barrios, census tracts and block groups, and the crosswalk that ties them together: the base that every dataset joins to."
+      },
+      "icon": "map", "accent": "--fpr-blue",
+      "headline": null,
+      "examples": {
+        "es": [],
+        "en": []
+      },
+      "status": "active", "system": true
+    },
+    {
+      "id": "system.docs", "parent": "system", "order": 920,
+      "name": {"es": "Métodos y documentación", "en": "Methods and documentation"},
+      "description": {
+        "es": "Cómo el observatorio cuenta, reescala y compara sus cifras, información de la compilación y la lista de datos deseados.",
+        "en": "How the observatory counts, rescales and compares its numbers, build information and the list of wanted data."
+      },
+      "icon": "menu_book", "accent": "--fpr-blue",
+      "headline": null,
+      "examples": {
+        "es": [],
+        "en": []
+      },
+      "status": "active", "system": true
+    },
+    {
+      "id": "system.tools", "parent": "system", "order": 930,
+      "name": {"es": "Herramientas del observatorio", "en": "Observatory tools"},
+      "description": {
+        "es": "El mapa 2D, la vista 3D y Tiempo, la página de Vivienda, la búsqueda, el chat y las descargas.",
+        "en": "The 2D map, the 3D and Time view, the Housing page, search, the chat and downloads."
+      },
+      "icon": "build", "accent": "--fpr-blue",
+      "headline": null,
+      "examples": {
+        "es": [],
+        "en": []
+      },
+      "status": "active", "system": true
+    }
+  ]
+}

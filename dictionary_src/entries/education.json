@@ -1,0 +1,337 @@
+[
+ {
+  "id": "education.sch_open",
+  "ask": {"en": ["schools", "public schools", "number of schools"], "es": ["escuelas", "escuelas publicas", "numero de escuelas"]},
+  "name": "Public schools open",
+  "domain": "education",
+  "domains": [
+   "education"
+  ],
+  "group": "Public schools",
+  "kind": "variable",
+  "plain": "How many public schools were open in each municipality each school year, from the federal school directory.",
+  "definition": "Public schools that the NCES Common Core of Data lists as operational in the school year (status open, new, added, changed agency or reopened), counted in the municipality of the school's county code. Private schools are not in this collection.",
+  "unit": "schools",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico (the island value is the sum of the 78 municipal values)",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "One value for each school year (a year is the school year that starts in it: 2024 = 2024-25). NCES publishes a school year about two years after it starts; the observatory adds it when FPR rebuilds the data (python education_series.py)."
+  },
+  "method": "education_series.py reads the CCD school directory for Puerto Rico for each school year from 2010 through the Urban Institute's API and counts the schools whose status is operational in each county code (municipio). Names, addresses, telephone numbers, officers' names and coordinates are dropped as the API is read and are never stored or published.",
+  "sources": [
+   "urban_ccd"
+  ],
+  "source_detail": "Urban Institute Education Data Portal API, schools/ccd/directory/{year}?fips=72: columns ncessch, county_code, school_status, school_type, school_level, enrollment, teachers_fte, charter, virtual",
+  "how_to_read": "Use it to follow the number of public schools over time. Puerto Rico had 1,473 open public schools in 2010-11 and 862 in 2024-25; most of the drop came with the closures of 2017 and 2018 (see education.sch_closed).",
+  "caveats": [
+   "Only public schools: the private schools that many students in Puerto Rico attend are not in this collection.",
+   "A school is a building with its own NCES id; one that serves two levels counts once."
+  ],
+  "see_also": [
+   "education.sch_closed",
+   "education.sch_enroll"
+  ],
+  "where": {
+   "files": [
+    "education_series.json:sch_open"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: public schools open",
+     "href": "index.html#e=sch_open.f"
+    }
+   ]
+  },
+  "added": "2026-10-14"
+ },
+ {
+  "id": "education.sch_enroll",
+  "ask": {"en": ["students", "enrollment", "school enrollment", "pupils"], "es": ["estudiantes", "matricula", "matricula escolar", "alumnos"]},
+  "name": "Students in public schools",
+  "domain": "education",
+  "domains": [
+   "education"
+  ],
+  "group": "Public schools",
+  "kind": "variable",
+  "plain": "How many students were enrolled in the public schools of each municipality each school year.",
+  "definition": "The fall enrollment that each open public school reports to the Common Core of Data, added up for the municipality. A school that reports no count is left out; a municipality whose open schools all lack a count has no value.",
+  "unit": "students",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico (the island value is the sum of the 78 municipal values)",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "One value for each school year (a year is the school year that starts in it: 2024 = 2024-25). NCES publishes a school year about two years after it starts; the observatory adds it when FPR rebuilds the data (python education_series.py)."
+  },
+  "method": "education_series.py adds the enrollment of the operational schools of each county code; negative codes (missing, not applicable, suppressed) are read as no value. Names, addresses, telephone numbers, officers' names and coordinates are dropped as the API is read and are never stored or published.",
+  "sources": [
+   "urban_ccd"
+  ],
+  "source_detail": "Urban Institute Education Data Portal API, schools/ccd/directory/{year}?fips=72: columns ncessch, county_code, school_status, school_type, school_level, enrollment, teachers_fte, charter, virtual",
+  "how_to_read": "Public school enrollment in Puerto Rico fell from 473,410 students in 2010-11 to 235,819 in 2024. In 2024 the largest are San Juan 21,154, Bayamón 12,484, Ponce 10,054.",
+  "caveats": [
+   "Counts students where the school is, not where they live.",
+   "Private school students are not included, so a fall can partly be a move to private schools."
+  ],
+  "see_also": [
+   "education.sch_open",
+   "education.sch_ptr",
+   "population.acs_under18_pct"
+  ],
+  "where": {
+   "files": [
+    "education_series.json:sch_enroll"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: students in public schools",
+     "href": "index.html#e=sch_enroll.f"
+    }
+   ]
+  },
+  "added": "2026-10-14"
+ },
+ {
+  "id": "education.sch_teachers",
+  "ask": {"en": ["teachers", "school teachers"], "es": ["maestros", "maestras", "docentes"]},
+  "name": "Public school teachers (full-time equivalents)",
+  "domain": "education",
+  "domains": [
+   "education"
+  ],
+  "group": "Public schools",
+  "kind": "variable",
+  "plain": "How many classroom teachers worked in the public schools of each municipality, counted as full-time equivalents.",
+  "definition": "Classroom teachers of the open public schools of the municipality, in full-time equivalents (two half-time teachers count as one), as the schools report them to the Common Core of Data.",
+  "unit": "full-time equivalents",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico (the island value is the sum of the 78 municipal values)",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "One value for each school year (a year is the school year that starts in it: 2024 = 2024-25). NCES publishes a school year about two years after it starts; the observatory adds it when FPR rebuilds the data (python education_series.py)."
+  },
+  "method": "education_series.py adds the teachers_fte of the operational schools of each county code; a school that reports no count is left out. Names, addresses, telephone numbers, officers' names and coordinates are dropped as the API is read and are never stored or published.",
+  "sources": [
+   "urban_ccd"
+  ],
+  "source_detail": "Urban Institute Education Data Portal API, schools/ccd/directory/{year}?fips=72: columns ncessch, county_code, school_status, school_type, school_level, enrollment, teachers_fte, charter, virtual",
+  "how_to_read": "Use it with the students to see how staffing changed; the ratio is education.sch_ptr.",
+  "caveats": [
+   "Teachers who serve several schools are counted where each school reports them.",
+   "Specialists without a class of their own can be included in a school's count."
+  ],
+  "see_also": [
+   "education.sch_ptr",
+   "education.sch_enroll"
+  ],
+  "where": {
+   "files": [
+    "education_series.json:sch_teachers"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: public school teachers (full-time equivalents)",
+     "href": "index.html#e=sch_teachers.f"
+    }
+   ]
+  },
+  "added": "2026-10-14"
+ },
+ {
+  "id": "education.sch_ptr",
+  "ask": {"en": ["students per teacher", "pupil teacher ratio", "class size"], "es": ["estudiantes por maestro", "alumnos por maestro"]},
+  "name": "Students per teacher, public schools",
+  "domain": "education",
+  "domains": [
+   "education"
+  ],
+  "group": "Public schools",
+  "kind": "variable",
+  "plain": "On average, how many students there were for each full-time teacher in the public schools of each municipality.",
+  "definition": "Students divided by full-time-equivalent teachers, counting only the open schools that report both numbers. The Puerto Rico value is worked out the same way from all such schools.",
+  "unit": "students per teacher",
+  "value_type": "ratio",
+  "geography": "78 municipalities and Puerto Rico (the island value is the sum of the 78 municipal values)",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "One value for each school year (a year is the school year that starts in it: 2024 = 2024-25). NCES publishes a school year about two years after it starts; the observatory adds it when FPR rebuilds the data (python education_series.py)."
+  },
+  "method": "education_series.py adds, for each county code, the students and the teachers of the schools that report both and divides one by the other. Names, addresses, telephone numbers, officers' names and coordinates are dropped as the API is read and are never stored or published.",
+  "sources": [
+   "urban_ccd"
+  ],
+  "source_detail": "Urban Institute Education Data Portal API, schools/ccd/directory/{year}?fips=72: columns ncessch, county_code, school_status, school_type, school_level, enrollment, teachers_fte, charter, virtual",
+  "how_to_read": "Lower means more teachers for each student. For Puerto Rico it went from 13.0 in 2010-11 to 9.74 in 2024, because enrollment fell faster than the number of teachers.",
+  "caveats": [
+   "It is not class size.",
+   "A municipality with few schools can move a lot from one year to the next."
+  ],
+  "see_also": [
+   "education.sch_teachers",
+   "education.sch_enroll"
+  ],
+  "where": {
+   "files": [
+    "education_series.json:sch_ptr"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: students per teacher, public schools",
+     "href": "index.html#e=sch_ptr.f"
+    }
+   ]
+  },
+  "added": "2026-10-14"
+ },
+ {
+  "id": "education.sch_closed",
+  "ask": {"en": ["school closures", "closed schools", "schools closed"], "es": ["cierre de escuelas", "escuelas cerradas"]},
+  "name": "Public schools closed since the year before",
+  "domain": "education",
+  "domains": [
+   "education"
+  ],
+  "group": "Public schools",
+  "kind": "variable",
+  "plain": "How many public schools that were open the year before were no longer open in each municipality.",
+  "definition": "Public schools that were operational in the municipality in the previous school year and are not operational in this one (by NCES school id). No value for 2010, the first year read.",
+  "unit": "schools",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico (the island value is the sum of the 78 municipal values)",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2011,
+   "last": 2024,
+   "frequency": "One value for each school year (a year is the school year that starts in it: 2024 = 2024-25). NCES publishes a school year about two years after it starts; the observatory adds it when FPR rebuilds the data (python education_series.py)."
+  },
+  "method": "education_series.py compares the operational school ids of each year with those of the year before and counts, in the municipality of the earlier year, the ids that are no longer operational. It also counts how many of them are operational again the next year (notes.closures_reopened_next_year in the file): 0 or 1 a year, so a change of record is rare. Names, addresses, telephone numbers, officers' names and coordinates are dropped as the API is read and are never stored or published.",
+  "sources": [
+   "urban_ccd"
+  ],
+  "source_detail": "Urban Institute Education Data Portal API, schools/ccd/directory/{year}?fips=72: columns ncessch, county_code, school_status, school_type, school_level, enrollment, teachers_fte, charter, virtual",
+  "how_to_read": "Shows the waves of closures: 162 schools in 2017-18 and 277 in 2018-19 for Puerto Rico.",
+  "caveats": [
+   "A school that NCES gives a new id counts as a closure and an opening.",
+   "A merger of two schools shows as one closure."
+  ],
+  "see_also": [
+   "education.sch_open"
+  ],
+  "where": {
+   "files": [
+    "education_series.json:sch_closed"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: public schools closed since the year before",
+     "href": "index.html#e=sch_closed.f"
+    }
+   ]
+  },
+  "added": "2026-10-14"
+ },
+ {
+  "id": "education.he_inst",
+  "ask": {"en": ["colleges", "universities", "higher education"], "es": ["universidades", "colegios universitarios", "educacion superior"]},
+  "name": "Colleges, universities and other postsecondary institutions",
+  "domain": "education",
+  "domains": [
+   "education"
+  ],
+  "group": "Colleges and universities",
+  "kind": "variable",
+  "plain": "How many colleges, universities and technical or vocational schools report to the federal postsecondary survey from each municipality.",
+  "definition": "Institutions in the IPEDS directory for the year, in the municipality of their county code: universities, colleges and technical and vocational schools (beauty, nursing and trade schools among them). The central offices of university systems (IPEDS sector 0) and the directory's records marked \"not applicable\" (sector -1) are not counted.",
+  "unit": "institutions",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico (the island value is the sum of the 78 municipal values)",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "One value for each school year (a year is the school year that starts in it: 2024 = 2024-25). NCES publishes a school year about two years after it starts; the observatory adds it when FPR rebuilds the data (python education_series.py)."
+  },
+  "method": "education_series.py reads the IPEDS directory for Puerto Rico for each year and counts the institutions in each county code whose sector is above 0. Three system offices in San Juan every year and 13 \"not applicable\" records in 2020 are left out; none has fall enrollment. Names, addresses, telephone numbers, officers' names and coordinates are dropped as the API is read and are never stored or published.",
+  "sources": [
+   "urban_ipeds"
+  ],
+  "source_detail": "Urban Institute Education Data Portal API, college-university/ipeds/directory/{year}?fips=72 (unitid, county_fips, sector, control, level) and ipeds/fall-enrollment/{year}/undergraduate and /graduate (totals: race, sex, attendance, degree-seeking and class level 99)",
+  "how_to_read": "Puerto Rico had 152 such institutions in 2010 and 126 in 2024.",
+  "caveats": [
+   "A university with campuses that report separately counts once for each campus; one that reports as a whole counts once, where its main office is."
+  ],
+  "see_also": [
+   "education.he_enroll",
+   "housing.bachelors_pct"
+  ],
+  "where": {
+   "files": [
+    "education_series.json:he_inst"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: colleges, universities and other postsecondary institutions",
+     "href": "index.html#e=he_inst.f"
+    }
+   ]
+  },
+  "added": "2026-10-14"
+ },
+ {
+  "id": "education.he_enroll",
+  "ask": {"en": ["college students", "university students", "college enrollment"], "es": ["estudiantes universitarios", "matricula universitaria"]},
+  "name": "Students in colleges and universities (fall)",
+  "domain": "education",
+  "domains": [
+   "education"
+  ],
+  "group": "Colleges and universities",
+  "kind": "variable",
+  "plain": "How many students were enrolled in the fall at the colleges and universities of each municipality.",
+  "definition": "Undergraduate and graduate students enrolled in the fall at the IPEDS institutions of the municipality, full-time and part-time.",
+  "unit": "students",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico (the island value is the sum of the 78 municipal values)",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2010,
+   "last": 2024,
+   "frequency": "One value for each school year (a year is the school year that starts in it: 2024 = 2024-25). NCES publishes a school year about two years after it starts; the observatory adds it when FPR rebuilds the data (python education_series.py)."
+  },
+  "method": "education_series.py adds the undergraduate and graduate fall enrollment totals of each institution to the municipality of its directory row. Names, addresses, telephone numbers, officers' names and coordinates are dropped as the API is read and are never stored or published.",
+  "sources": [
+   "urban_ipeds"
+  ],
+  "source_detail": "Urban Institute Education Data Portal API, college-university/ipeds/directory/{year}?fips=72 (unitid, county_fips, sector, control, level) and ipeds/fall-enrollment/{year}/undergraduate and /graduate (totals: race, sex, attendance, degree-seeking and class level 99)",
+  "how_to_read": "College enrollment in Puerto Rico fell from 270,920 in fall 2010 to 171,760 in fall 2024. In 2024 the largest are San Juan 43,670, Bayamón 41,648, Ponce 14,130.",
+  "caveats": [
+   "Students are counted where the institution reports: for a university that reports as a whole, its main office, not the campus they attend.",
+   "Online students are counted at their institution, wherever they live."
+  ],
+  "see_also": [
+   "education.he_inst",
+   "housing.bachelors_pct"
+  ],
+  "where": {
+   "files": [
+    "education_series.json:he_enroll"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: students in colleges and universities (fall)",
+     "href": "index.html#e=he_enroll.f"
+    }
+   ]
+  },
+  "added": "2026-10-14"
+ }
+]

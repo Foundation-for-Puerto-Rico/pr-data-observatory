@@ -1,0 +1,1002 @@
+[
+  {
+    "domain": "hazards",
+    "domains": [
+      "hazards",
+      "population"
+    ],
+    "added": "2026-10-06",
+    "id": "exposure.pop_flood",
+    "name": "Residents in a FEMA flood hazard area",
+    "group": "Residents exposed to hazards, protected land and transit",
+    "kind": "variable",
+    "plain": "How many residents are in areas that FEMA maps as flood hazard areas, counted for each municipio, barrio and census tract.",
+    "definition": "Two fields hold the count for each area. flood_sfha: the residents of every census block whose internal point lies inside a Special Flood Hazard Area, the area FEMA maps as having a 1% chance of flooding in any year (the 100-year flood; zones A, AE, AH, AO, A99, V and VE). flood_any: the same for a block inside that area or inside the 0.2% annual chance (500-year) flood area. Both read site/data/flood.geojson. For the whole island, 316,309 residents (9.6%) are in the first and 454,706 (13.8%) in the second, in the 2026-10 snapshot.",
+    "unit": "residents",
+    "value_type": "count",
+    "geography": "78 municipios, 901 barrios and 981 census tracts, in three files",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2020,
+      "last": 2026,
+      "frequency": "Rebuilt with each full build (python exposure.py). Counts are 2020 Census counts; the hazard and protected-area layers are as of the 2026-10 snapshot."
+    },
+    "method": "exposure.py counts each 2020 Census block whole, by its internal point (the Census Bureau's point that always lies inside the block): inside the polygons of a layer, or within 400 m of a stop. It adds the block's 2020 residents up to the municipio, the barrio and the census tract that hold it, so the three files agree and counts add up exactly between levels. It writes nothing unless every area's total equals the crosswalk's and every set lies inside its superset (the area flooded at 2 ft is inside the area flooded at 3 ft; a stop with a current timetable is a stop). A polygon counts as the 1% area when FEMA's SFHA_TF field is T and as the 0.2% area when its subtype says so; unshaded zone X (minimal hazard), open water and unmapped areas are left out, as for tourism places. The outlines in flood.geojson are simplified by about 5 m; with FEMA's full-resolution outlines the island count for the 1% area changes by less than 0.3% (317,290 residents against 316,309).",
+    "sources": [
+      "census_tiger",
+      "fema_nfhl"
+    ],
+    "source_detail": "2020 Census blocks (TIGERweb layer 10); FEMA National Flood Hazard Layer, layer 28, as published in flood.geojson",
+    "how_to_read": "Compare areas by share: divide a count by the area's total (the total field), which puts a small barrio and a large municipio on one scale. To get a share for a group of areas (the island, a region), add the counts and the totals first, then divide; do not average the shares. A high share means many people live where FEMA maps a flood hazard. It says nothing about the elevation, construction or insurance of a particular home.",
+    "caveats": [
+      "A census block is counted whole by one point, so a block that a boundary cuts is counted in or out by its internal point: near an edge the count can be higher or lower than the true number.",
+      "FEMA's maps show the hazard as mapped, with effective dates that differ by community. They are not a forecast, and a hazard FEMA has not mapped is not here.",
+      "Florida (72054) is mapped by FEMA entirely as minimal hazard, so its counts are zero: a result, not a gap."
+    ],
+    "see_also": [
+      "exposure.hu_flood",
+      "exposure.total",
+      "exposure.method",
+      "exposure.share",
+      "hazards.sfha",
+      "hazards.flood_zones_layer",
+      "hazards.flood_exposure_flag"
+    ],
+    "example": "Salinas: 12,227 of its 25,789 residents (47.4%) are in the 1% annual chance flood area; in Cataño, 21,664 of 23,155 (93.6%) are in either flood area",
+    "where": {
+      "files": [
+        "exposure_municipio.json:flood_sfha",
+        "exposure_municipio.json:flood_any",
+        "exposure_barrio.json:flood_sfha",
+        "exposure_barrio.json:flood_any",
+        "exposure_tract.json:flood_sfha",
+        "exposure_tract.json:flood_any"
+      ]
+    }
+  },
+  {
+    "domain": "hazards",
+    "domains": [
+      "hazards",
+      "population"
+    ],
+    "added": "2026-10-06",
+    "id": "exposure.pop_slr",
+    "name": "Residents in the area flooded by 1 to 10 ft of sea level rise",
+    "group": "Residents exposed to hazards, protected land and transit",
+    "kind": "variable",
+    "plain": "How many residents live where NOAA's maps show the ocean flooding the land at high tide if the sea were 1 to 10 feet higher than today, counted for each municipio, barrio and census tract.",
+    "definition": "Ten fields, slr_1ft to slr_10ft, hold the count for each area. A field counts the residents of every census block whose internal point lies inside NOAA's inundation polygon for that many feet of sea level rise above mean higher high water (the average of the higher high tide of each day), in water that is connected to the ocean. Each height includes the lower ones: the area flooded at 3 ft lies inside the area flooded at 4 ft. For the whole island: 11,005 residents (0.3%) at 1 ft, 25,302 (0.8%) at 3 ft and 213,681 (6.5%) at 10 ft.",
+    "unit": "residents",
+    "value_type": "count",
+    "geography": "78 municipios, 901 barrios and 981 census tracts, in three files",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2020,
+      "last": 2026,
+      "frequency": "Rebuilt with each full build (python exposure.py). Counts are 2020 Census counts; the hazard and protected-area layers are as of the 2026-10 snapshot."
+    },
+    "method": "exposure.py counts each 2020 Census block whole, by its internal point (the Census Bureau's point that always lies inside the block): inside the polygons of a layer, or within 400 m of a stop. It adds the block's 2020 residents up to the municipio, the barrio and the census tract that hold it, so the three files agree and counts add up exactly between levels. It writes nothing unless every area's total equals the crosswalk's and every set lies inside its superset (the area flooded at 2 ft is inside the area flooded at 3 ft; a stop with a current timetable is a stop). NOAA's polygons (the layers PR_slr_{n}ft of its Puerto Rico File Geodatabase) are read with GDAL's faster ring handling (OGR_ORGANIZE_POLYGONS=ONLY_CCW); the build was checked against GDAL's default, which takes minutes, on the 3 ft and 10 ft layers: the same blocks (1,392 and 3,936), no difference.",
+    "sources": [
+      "census_tiger",
+      "noaa_slr"
+    ],
+    "source_detail": "2020 Census blocks (TIGERweb layer 10); NOAA Office for Coastal Management, Sea Level Rise Viewer data for Puerto Rico, 0 to 10 ft, 2017 data (file dated 2023-09-27)",
+    "how_to_read": "Compare areas by share: divide a count by the area's total (the total field), which puts a small barrio and a large municipio on one scale. To get a share for a group of areas (the island, a region), add the counts and the totals first, then divide; do not average the shares. Each field is a number of feet above today's mean higher high water, not a year or a forecast: the 3D view turns a year and a NOAA 2022 scenario into the nearest whole foot from 1 to 10, and the same foot here gives the residents in the flooded area on that map.",
+    "caveats": [
+      "Exposed means living where the ground would be under water at high tide with that much sea level rise. It does not say that homes would be damaged or lost.",
+      "NOAA calls the data a screening-level tool. It uses a modified bathtub method that follows tides and hydrological connectivity, and does not include storm surge, rain, groundwater, erosion, subsidence or future construction. The vertical accuracy depends on the elevation data. NOAA's disclaimer says the maps show the scale of potential flooding, not exact locations, and are a planning reference, not for navigation, permitting or legal purposes.",
+      "A census block is counted whole by one point, so a block that a boundary cuts is counted in or out by its internal point: near an edge the count can be higher or lower than the true number."
+    ],
+    "see_also": [
+      "exposure.hu_slr",
+      "exposure.pop_low",
+      "exposure.total",
+      "exposure.method",
+      "exposure.share",
+      "hazards.slr_inundation",
+      "hazards.slr_year_to_feet"
+    ],
+    "example": "Loíza: 15,733 of its 23,693 residents (66.4%) are in the area flooded by 10 ft of sea level rise",
+    "where": {
+      "files": [
+        "exposure_municipio.json:slr_1ft",
+        "exposure_municipio.json:slr_2ft",
+        "exposure_municipio.json:slr_3ft",
+        "exposure_municipio.json:slr_4ft",
+        "exposure_municipio.json:slr_5ft",
+        "exposure_municipio.json:slr_6ft",
+        "exposure_municipio.json:slr_7ft",
+        "exposure_municipio.json:slr_8ft",
+        "exposure_municipio.json:slr_9ft",
+        "exposure_municipio.json:slr_10ft",
+        "exposure_barrio.json:slr_1ft",
+        "exposure_barrio.json:slr_2ft",
+        "exposure_barrio.json:slr_3ft",
+        "exposure_barrio.json:slr_4ft",
+        "exposure_barrio.json:slr_5ft",
+        "exposure_barrio.json:slr_6ft",
+        "exposure_barrio.json:slr_7ft",
+        "exposure_barrio.json:slr_8ft",
+        "exposure_barrio.json:slr_9ft",
+        "exposure_barrio.json:slr_10ft",
+        "exposure_tract.json:slr_1ft",
+        "exposure_tract.json:slr_2ft",
+        "exposure_tract.json:slr_3ft",
+        "exposure_tract.json:slr_4ft",
+        "exposure_tract.json:slr_5ft",
+        "exposure_tract.json:slr_6ft",
+        "exposure_tract.json:slr_7ft",
+        "exposure_tract.json:slr_8ft",
+        "exposure_tract.json:slr_9ft",
+        "exposure_tract.json:slr_10ft"
+      ]
+    }
+  },
+  {
+    "domain": "hazards",
+    "domains": [
+      "hazards",
+      "population"
+    ],
+    "added": "2026-10-06",
+    "id": "exposure.pop_low",
+    "name": "Residents in low-lying areas that may flood with sea level rise",
+    "group": "Residents exposed to hazards, protected land and transit",
+    "kind": "variable",
+    "plain": "How many residents live in low areas that NOAA says may flood with 1 to 10 feet of sea level rise but that its model does not connect to the ocean, counted for each municipio, barrio and census tract.",
+    "definition": "Ten fields, low_1ft to low_10ft, hold the count for each area. NOAA also maps low-lying areas that lie at or below the water height for that many feet of sea level rise but that its model does not connect to the ocean (for example a hollow behind a road or a berm). NOAA says they may flood and shows them apart from the inundation. A field counts the residents of every census block whose internal point lies inside such an area. An area leaves this set when a higher water level connects it to the ocean, so the count does not rise steadily with the height. Only 47 to 72 census blocks lie in these areas at any one height (build of 2026-10-06), so most areas have none and a count is the residents of a few blocks. For the whole island the most is 7,148 residents (0.2%), at 7 ft.",
+    "unit": "residents",
+    "value_type": "count",
+    "geography": "78 municipios, 901 barrios and 981 census tracts, in three files",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2020,
+      "last": 2026,
+      "frequency": "Rebuilt with each full build (python exposure.py). Counts are 2020 Census counts; the hazard and protected-area layers are as of the 2026-10 snapshot."
+    },
+    "method": "exposure.py counts each 2020 Census block whole, by its internal point (the Census Bureau's point that always lies inside the block): inside the polygons of a layer, or within 400 m of a stop. It adds the block's 2020 residents up to the municipio, the barrio and the census tract that hold it, so the three files agree and counts add up exactly between levels. It writes nothing unless every area's total equals the crosswalk's and every set lies inside its superset (the area flooded at 2 ft is inside the area flooded at 3 ft; a stop with a current timetable is a stop). The layers PR_low_{n}ft are read the same way as the inundation layers; for the 3 ft layer the build was checked against GDAL's default: the same 68 blocks, no difference.",
+    "sources": [
+      "census_tiger",
+      "noaa_slr"
+    ],
+    "source_detail": "2020 Census blocks (TIGERweb layer 10); NOAA Sea Level Rise Viewer data for Puerto Rico, layers PR_low_{n}ft, 2017 data",
+    "how_to_read": "Compare areas by share: divide a count by the area's total (the total field), which puts a small barrio and a large municipio on one scale. To get a share for a group of areas (the island, a region), add the counts and the totals first, then divide; do not average the shares. Read it next to the connected area (exposure.pop_slr): a block is in one or the other, not both, at the same height (checked for all ten heights in the build of 2026-10-06: no block is in both).",
+    "caveats": [
+      "Whether such an area floods depends on drainage, pumps and groundwater, which the data do not describe. NOAA does not count it as inundated.",
+      "The same screening-level limits as for the connected area apply: not a forecast, not for navigation, permitting or legal purposes.",
+      "A census block is counted whole by one point, so a block that a boundary cuts is counted in or out by its internal point: near an edge the count can be higher or lower than the true number."
+    ],
+    "see_also": [
+      "exposure.hu_low",
+      "exposure.pop_slr",
+      "exposure.total",
+      "exposure.method",
+      "exposure.share",
+      "hazards.slr_inundation"
+    ],
+    "example": "At 7 ft, Dorado has the largest share: 1,740 of its 35,879 residents (4.8%)",
+    "where": {
+      "files": [
+        "exposure_municipio.json:low_1ft",
+        "exposure_municipio.json:low_2ft",
+        "exposure_municipio.json:low_3ft",
+        "exposure_municipio.json:low_4ft",
+        "exposure_municipio.json:low_5ft",
+        "exposure_municipio.json:low_6ft",
+        "exposure_municipio.json:low_7ft",
+        "exposure_municipio.json:low_8ft",
+        "exposure_municipio.json:low_9ft",
+        "exposure_municipio.json:low_10ft",
+        "exposure_barrio.json:low_1ft",
+        "exposure_barrio.json:low_2ft",
+        "exposure_barrio.json:low_3ft",
+        "exposure_barrio.json:low_4ft",
+        "exposure_barrio.json:low_5ft",
+        "exposure_barrio.json:low_6ft",
+        "exposure_barrio.json:low_7ft",
+        "exposure_barrio.json:low_8ft",
+        "exposure_barrio.json:low_9ft",
+        "exposure_barrio.json:low_10ft",
+        "exposure_tract.json:low_1ft",
+        "exposure_tract.json:low_2ft",
+        "exposure_tract.json:low_3ft",
+        "exposure_tract.json:low_4ft",
+        "exposure_tract.json:low_5ft",
+        "exposure_tract.json:low_6ft",
+        "exposure_tract.json:low_7ft",
+        "exposure_tract.json:low_8ft",
+        "exposure_tract.json:low_9ft",
+        "exposure_tract.json:low_10ft"
+      ]
+    }
+  },
+  {
+    "domain": "hazards",
+    "domains": [
+      "hazards",
+      "population"
+    ],
+    "added": "2026-11-17",
+    "id": "exposure.pop_surge",
+    "name": "Residents in the area flooded by storm surge in a category 1 to 5 hurricane",
+    "group": "Residents exposed to hazards, protected land and transit",
+    "kind": "variable",
+    "plain": "How many residents are where NOAA's maps show storm surge flooding the land in a category 1 to 5 hurricane (the near worst case, at high tide), counted for each municipio, barrio and census tract.",
+    "definition": "Ten fields hold the count for each area. surge_cat1 to surge_cat5: the residents of every census block whose internal point NOAA's storm surge map for a category 1 to 5 hurricane shows under water, at any depth. surge_deep_cat1 to surge_deep_cat5: the same, under 3 ft of water or more. For the whole island: 15,961 (0.5%) at category 1, 46,689 (1.4%) at category 3 and 120,934 (3.7%) at category 5; under 3 ft or more, 14,025 (0.4%) at category 3 and 50,353 (1.5%) at category 5.",
+    "unit": "residents",
+    "value_type": "count",
+    "geography": "78 municipios, 901 barrios and 981 census tracts, in three files",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2020,
+      "last": 2026,
+      "frequency": "Rebuilt with each full build (python exposure.py) or with python exposure.py --surge. Counts are 2020 Census counts; the surge maps are NOAA's of 2018."
+    },
+    "method": "exposure.py counts each 2020 Census block whole, by its internal point (the Census Bureau's point that always lies inside the block), and adds its 2020 residents up to the municipio, the barrio and the census tract that hold it, so the three files agree. For storm surge it reads the cell of NOAA's map under that point: a block counts at a category when the cell has any water, and in the deep field when the water is 3 ft or more above ground (band 4 and up; NHC's own map starts its second colour at 3 ft). The cells are about 10 m. Every deep field lies inside its category's field, and the build checks it. The five categories are not strictly nested: each map is the highest water of its own set of model storms, and five block points in San Juan (247 residents, 124 housing units) are wet at category 4 and dry at category 5. The surge families were added on 2026-11-17 with python exposure.py --surge, which leaves every other family as it was. Check: every resident counted at category 1 is also inside FEMA's 1% annual chance flood area, which includes coastal surge; at category 3, 92.5%; at category 5, 63.0% (84.8% inside the 1% or 0.2% area).",
+    "sources": [
+      "census_tiger",
+      "nhc_slosh"
+    ],
+    "source_detail": "2020 Census blocks (TIGERweb layer 10); NOAA National Hurricane Center, SLOSH Maximum of MEOWs storm surge maps for Puerto Rico, category 1 to 5 at high tide (PR_SLOSH_MOM_Inundation.zip, November 2018)",
+    "how_to_read": "Compare areas by share: divide a count by the area's total (the total field). To get a share for a group of areas, add the counts and the totals first, then divide. Highest shares at category 3: Cataño 21.8%, Santa Isabel 10.2%, Loíza 9.2%; at category 5: Cataño 52.3%, Loíza 36.4%, Carolina 15.0%. 39 of the 78 municipios have none at category 5, most of them inland. Read the category as a what-if: the stronger the hurricane, the farther inland the water may reach.",
+    "caveats": [
+      "Near worst case, not a forecast. Each category's map is NOAA's Maximum of MEOWs: the highest water at each place among many hypothetical storms of that category with different tracks, speeds and sizes, at high tide. No single storm floods all of it.",
+      "NOAA says the maps show the scale of potential flooding at a city or community level, not at a parcel or a single cell, and do not account for erosion, subsidence or future construction. Areas outside the SLOSH model's grids show no surge even where surge could reach.",
+      "Exposed means living where the ground would be under water in that scenario. It does not say a home would be damaged: floor height and construction are not known.",
+      "These are not evacuation zones. Puerto Rico's evacuation zones are set by the emergency management bureau (NMEAD).",
+      "A census block is counted whole by one point, so a block that the edge of the surge cuts is counted in or out by its internal point."
+    ],
+    "see_also": [
+      "exposure.hu_surge",
+      "exposure.pop_slr",
+      "exposure.pop_flood",
+      "exposure.total",
+      "exposure.method",
+      "exposure.share"
+    ],
+    "example": "Cataño: 12,101 of its 23,155 residents (52.3%) are in the area flooded by storm surge in a category 5 hurricane",
+    "where": {
+      "files": [
+        "exposure_municipio.json:surge_cat3",
+        "exposure_municipio.json:surge_cat1",
+        "exposure_municipio.json:surge_cat2",
+        "exposure_municipio.json:surge_cat4",
+        "exposure_municipio.json:surge_cat5",
+        "exposure_municipio.json:surge_deep_cat1",
+        "exposure_municipio.json:surge_deep_cat2",
+        "exposure_municipio.json:surge_deep_cat3",
+        "exposure_municipio.json:surge_deep_cat4",
+        "exposure_municipio.json:surge_deep_cat5",
+        "exposure_barrio.json:surge_cat1",
+        "exposure_barrio.json:surge_cat2",
+        "exposure_barrio.json:surge_cat3",
+        "exposure_barrio.json:surge_cat4",
+        "exposure_barrio.json:surge_cat5",
+        "exposure_barrio.json:surge_deep_cat1",
+        "exposure_barrio.json:surge_deep_cat2",
+        "exposure_barrio.json:surge_deep_cat3",
+        "exposure_barrio.json:surge_deep_cat4",
+        "exposure_barrio.json:surge_deep_cat5",
+        "exposure_tract.json:surge_cat1",
+        "exposure_tract.json:surge_cat2",
+        "exposure_tract.json:surge_cat3",
+        "exposure_tract.json:surge_cat4",
+        "exposure_tract.json:surge_cat5",
+        "exposure_tract.json:surge_deep_cat1",
+        "exposure_tract.json:surge_deep_cat2",
+        "exposure_tract.json:surge_deep_cat3",
+        "exposure_tract.json:surge_deep_cat4",
+        "exposure_tract.json:surge_deep_cat5"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Residents · Storm surge · NOAA NHC (near worst case, high tide)): Residents: surge at category 3",
+          "href": "index.html#e=exp_surge_cat3_pop.f"
+        }
+      ]
+    }
+  },
+  {
+    "domain": "environment.land",
+    "domains": [
+      "environment.land",
+      "population"
+    ],
+    "added": "2026-10-06",
+    "id": "exposure.pop_protected",
+    "name": "Residents inside protected areas",
+    "group": "Residents exposed to hazards, protected land and transit",
+    "kind": "variable",
+    "plain": "How many residents are inside the outline of a protected area such as a park, forest or reserve, counted for each municipio, barrio and census tract.",
+    "definition": "Two fields hold the count for each area. protected: the residents of every census block whose internal point lies inside a USGS PAD-US protected area, other than a proclamation boundary (which outlines whole islands or refuges and is not managed land). protected_strict: the same inside areas with GAP status 1 or 2 (a strict nature reserve, or land managed for biodiversity). Both read site/data/protected.geojson. For the whole island, 58,220 residents (1.8%) are inside a protected area and 30,716 (0.9%) inside a strictly protected one.",
+    "unit": "residents",
+    "value_type": "count",
+    "geography": "78 municipios, 901 barrios and 981 census tracts, in three files",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2020,
+      "last": 2026,
+      "frequency": "Rebuilt with each full build (python exposure.py). Counts are 2020 Census counts; the hazard and protected-area layers are as of the 2026-10 snapshot."
+    },
+    "method": "exposure.py counts each 2020 Census block whole, by its internal point (the Census Bureau's point that always lies inside the block): inside the polygons of a layer, or within 400 m of a stop. It adds the block's 2020 residents up to the municipio, the barrio and the census tract that hold it, so the three files agree and counts add up exactly between levels. It writes nothing unless every area's total equals the crosswalk's and every set lies inside its superset (the area flooded at 2 ft is inside the area flooded at 3 ft; a stop with a current timetable is a stop).",
+    "sources": [
+      "census_tiger",
+      "padus"
+    ],
+    "source_detail": "2020 Census blocks (TIGERweb layer 10); USGS PAD-US 4.1, as published in protected.geojson",
+    "how_to_read": "Compare areas by share: divide a count by the area's total (the total field), which puts a small barrio and a large municipio on one scale. To get a share for a group of areas (the island, a region), add the counts and the totals first, then divide; do not average the shares. It shows where homes lie within the outline of conserved land, which matters for planning, not how many people live on managed public land.",
+    "caveats": [
+      "PAD-US includes parks, forests, refuges, local recreation areas and conservation lands, so an urban park counts. An outline can also include private land inside the boundary of a reserve.",
+      "A census block is counted whole by one point, so a block that a boundary cuts is counted in or out by its internal point: near an edge the count can be higher or lower than the true number."
+    ],
+    "see_also": [
+      "exposure.hu_protected",
+      "exposure.total",
+      "exposure.method",
+      "exposure.share",
+      "land.protected_layer",
+      "land.protected_place_flag"
+    ],
+    "example": "Florida: 948 of its 11,692 residents (8.1%) are inside a protected area",
+    "where": {
+      "files": [
+        "exposure_municipio.json:protected",
+        "exposure_municipio.json:protected_strict",
+        "exposure_barrio.json:protected",
+        "exposure_barrio.json:protected_strict",
+        "exposure_tract.json:protected",
+        "exposure_tract.json:protected_strict"
+      ]
+    }
+  },
+  {
+    "domain": "infrastructure.mobility",
+    "domains": [
+      "infrastructure.mobility",
+      "population"
+    ],
+    "added": "2026-10-06",
+    "id": "exposure.pop_transit",
+    "name": "Residents within 400 m of a transit stop",
+    "group": "Residents exposed to hazards, protected land and transit",
+    "kind": "variable",
+    "plain": "How many residents are a quarter mile (400 m) or less from a transit stop, by kind of stop, counted for each municipio, barrio and census tract.",
+    "definition": "Six fields hold the count for each area. stop_any: within 400 m of any mapped stop, station or terminal, including stops that volunteers mapped in OpenStreetMap and stops whose timetable has expired. stop_sched: within 400 m of a stop with a timetable on file (expired timetables included). stop_cur: within 400 m of a stop whose operator's timetable has not ended on the as_of date of the file. stop_freq: within 400 m of a current stop with 20 or more weekday departures. stop_sat and stop_sun: within 400 m of a current stop with Saturday or Sunday service. Each set lies inside the one before it: a frequent stop is a current stop, a current stop is a scheduled stop, a scheduled stop is a stop. Since 2026-10-16 two more fields measure by walking along mapped roads (walknet.py, site/data/roads.bin): walk_cur, within a 400 m walk of a stop with a current timetable, and walk_freq, within a 400 m walk of a frequent stop. walk_cur lies inside stop_cur and walk_freq inside both walk_cur and stop_freq. A block with no walkable road within 150 m keeps its straight-line test. Island-wide in the 2026-10 snapshot: walk_cur 403,421 residents (12.3%) against stop_cur 729,507 (22.2%).",
+    "unit": "residents",
+    "value_type": "count",
+    "geography": "78 municipios, 901 barrios and 981 census tracts, in three files",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2020,
+      "last": 2026,
+      "frequency": "Recomputed every night with the transit feeds (python exposure.py --transit). Counts are 2020 Census counts; as_of in each file is the date a timetable is judged current."
+    },
+    "method": "exposure.py counts each 2020 Census block whole, by its internal point (the Census Bureau's point that always lies inside the block): inside the polygons of a layer, or within 400 m of a stop. It adds the block's 2020 residents up to the municipio, the barrio and the census tract that hold it, so the three files agree and counts add up exactly between levels. It writes nothing unless every area's total equals the crosswalk's and every set lies inside its superset (the area flooded at 2 ft is inside the area flooded at 3 ft; a stop with a current timetable is a stop). Distances are straight lines measured as access.py measures them for tourism places and the Transit tab for residents. The block points are the Census Bureau's internal points rounded to 4 decimals (about 11 m), as the Transit tab's coverage uses them, so stop_cur equals the Transit tab's residents near a stop with a current timetable in every municipio (to the one decimal its percentage shows). exposure.py --transit recomputes these six fields every night with the transit feeds; the other families change only with a full build.",
+    "sources": [
+      "census_tiger",
+      "ati_gtfs",
+      "muni_gtfs",
+      "osm"
+    ],
+    "source_detail": "2020 Census blocks (TIGERweb layer 10); stops in transport.json; timetable end dates in operators.json",
+    "how_to_read": "Compare areas by share: divide a count by the area's total (the total field), which puts a small barrio and a large municipio on one scale. To get a share for a group of areas (the island, a region), add the counts and the totals first, then divide; do not average the shares. It is a measure of schedule access: where a stop is within a short walk, and whether a timetable covers today.",
+    "caveats": [
+      "Schedule-based, and straight-line except walk_cur and walk_freq: it does not know real-time service, hours, fares, stairs, traffic or whether the walk is safe, and públicos, taxis and ride-hailing are in no timetable. The walking fields follow mapped roads only (no footpaths); see municipalities.pop_walk_active_pct for how much the joining of blocks to roads moves them.",
+      "An expired timetable means the timetable on file no longer covers today, not that service has stopped. A stop with no feed (OpenStreetMap) has no timetable at all.",
+      "stop_sat and stop_sun are low mostly because few feeds list weekend trips: on 2026-10-06, 3 of the 18 operators whose timetable had not ended (ATI, Guaynabo and Vega Alta) list Saturday departures and 1 (ATI) lists Sunday departures. A low count does not show that there is no weekend service.",
+      "stop_sched can differ from the Transit tab's residents near a scheduled stop (municipalities.json, pop_served_400m) by up to 0.5% of a municipio's residents (287 residents in Vega Baja; 0.02% on the island): the Transit tab measures to the stop nearest in degrees and drops the fraction of a metre, and this series measures to every stop in metres.",
+      "A census block is counted whole by one point, so a block that a boundary cuts is counted in or out by its internal point: near an edge the count can be higher or lower than the true number."
+    ],
+    "see_also": [
+      "exposure.hu_transit",
+      "exposure.total",
+      "exposure.method",
+      "exposure.share",
+      "municipalities.pop_served_active_pct",
+      "municipalities.pop_served_400m",
+      "place_access.ts_m"
+    ],
+    "where": {
+      "files": [
+        "exposure_municipio.json:stop_any",
+        "exposure_municipio.json:stop_sched",
+        "exposure_municipio.json:stop_cur",
+        "exposure_municipio.json:stop_freq",
+        "exposure_municipio.json:stop_sat",
+        "exposure_municipio.json:stop_sun",
+        "exposure_barrio.json:stop_any",
+        "exposure_barrio.json:stop_sched",
+        "exposure_barrio.json:stop_cur",
+        "exposure_barrio.json:stop_freq",
+        "exposure_barrio.json:stop_sat",
+        "exposure_barrio.json:stop_sun",
+        "exposure_tract.json:stop_any",
+        "exposure_tract.json:stop_sched",
+        "exposure_tract.json:stop_cur",
+        "exposure_tract.json:stop_freq",
+        "exposure_tract.json:stop_sat",
+        "exposure_tract.json:stop_sun",
+        "exposure_municipio.json:walk_cur",
+        "exposure_municipio.json:walk_freq",
+        "exposure_barrio.json:walk_cur",
+        "exposure_barrio.json:walk_freq",
+        "exposure_tract.json:walk_cur",
+        "exposure_tract.json:walk_freq"
+      ]
+    }
+  },
+  {
+    "domain": "hazards",
+    "domains": [
+      "hazards",
+      "housing"
+    ],
+    "added": "2026-10-06",
+    "id": "exposure.hu_flood",
+    "name": "Housing units in a FEMA flood hazard area",
+    "group": "Homes exposed to hazards, protected land and transit",
+    "kind": "variable",
+    "plain": "How many housing units are in areas that FEMA maps as flood hazard areas, counted for each municipio, barrio and census tract.",
+    "definition": "Two fields hold the count for each area. flood_sfha: the housing units of every census block whose internal point lies inside a Special Flood Hazard Area, the area FEMA maps as having a 1% chance of flooding in any year (the 100-year flood; zones A, AE, AH, AO, A99, V and VE). flood_any: the same for a block inside that area or inside the 0.2% annual chance (500-year) flood area. Both read site/data/flood.geojson. For the whole island, 172,281 housing units (10.8%) are in the first and 243,227 (15.2%) in the second, in the 2026-10 snapshot.",
+    "unit": "housing units",
+    "value_type": "count",
+    "geography": "78 municipios, 901 barrios and 981 census tracts, in three files",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2020,
+      "last": 2026,
+      "frequency": "Rebuilt with each full build (python exposure.py). Counts are 2020 Census counts; the hazard and protected-area layers are as of the 2026-10 snapshot."
+    },
+    "method": "exposure.py counts each 2020 Census block whole, by its internal point (the Census Bureau's point that always lies inside the block): inside the polygons of a layer, or within 400 m of a stop. It adds the block's 2020 housing units up to the municipio, the barrio and the census tract that hold it, so the three files agree and counts add up exactly between levels. It writes nothing unless every area's total equals the crosswalk's and every set lies inside its superset (the area flooded at 2 ft is inside the area flooded at 3 ft; a stop with a current timetable is a stop). A polygon counts as the 1% area when FEMA's SFHA_TF field is T and as the 0.2% area when its subtype says so; unshaded zone X (minimal hazard), open water and unmapped areas are left out, as for tourism places. The outlines in flood.geojson are simplified by about 5 m; with FEMA's full-resolution outlines the island count for the 1% area changes by less than 0.3% (317,290 residents against 316,309).",
+    "sources": [
+      "census_tiger",
+      "fema_nfhl"
+    ],
+    "source_detail": "2020 Census blocks (TIGERweb layer 10); FEMA National Flood Hazard Layer, layer 28, as published in flood.geojson",
+    "how_to_read": "Compare areas by share: divide a count by the area's total (the total field), which puts a small barrio and a large municipio on one scale. To get a share for a group of areas (the island, a region), add the counts and the totals first, then divide; do not average the shares. A high share means many homes live where FEMA maps a flood hazard. It says nothing about the elevation, construction or insurance of a particular home.",
+    "caveats": [
+      "A census block is counted whole by one point, so a block that a boundary cuts is counted in or out by its internal point: near an edge the count can be higher or lower than the true number.",
+      "FEMA's maps show the hazard as mapped, with effective dates that differ by community. They are not a forecast, and a hazard FEMA has not mapped is not here.",
+      "Florida (72054) is mapped by FEMA entirely as minimal hazard, so its counts are zero: a result, not a gap.",
+      "A housing unit is a house, an apartment, a mobile home or a room meant as separate living quarters; people in group quarters (a dormitory, a nursing home) are not in housing units."
+    ],
+    "see_also": [
+      "exposure.pop_flood",
+      "exposure.total",
+      "exposure.method",
+      "exposure.share",
+      "hazards.sfha",
+      "hazards.flood_zones_layer",
+      "hazards.flood_exposure_flag"
+    ],
+    "example": "Salinas: 6,669 of its 13,496 housing units (49.4%) are in the 1% annual chance flood area; in Cataño, 10,231 of 10,890 (93.9%) are in either flood area",
+    "where": {
+      "files": [
+        "exposure_municipio.json:flood_sfha",
+        "exposure_municipio.json:flood_any",
+        "exposure_barrio.json:flood_sfha",
+        "exposure_barrio.json:flood_any",
+        "exposure_tract.json:flood_sfha",
+        "exposure_tract.json:flood_any"
+      ]
+    }
+  },
+  {
+    "domain": "hazards",
+    "domains": [
+      "hazards",
+      "housing"
+    ],
+    "added": "2026-10-06",
+    "id": "exposure.hu_slr",
+    "name": "Housing units in the area flooded by 1 to 10 ft of sea level rise",
+    "group": "Homes exposed to hazards, protected land and transit",
+    "kind": "variable",
+    "plain": "How many housing units live where NOAA's maps show the ocean flooding the land at high tide if the sea were 1 to 10 feet higher than today, counted for each municipio, barrio and census tract.",
+    "definition": "Ten fields, slr_1ft to slr_10ft, hold the count for each area. A field counts the housing units of every census block whose internal point lies inside NOAA's inundation polygon for that many feet of sea level rise above mean higher high water (the average of the higher high tide of each day), in water that is connected to the ocean. Each height includes the lower ones: the area flooded at 3 ft lies inside the area flooded at 4 ft. For the whole island: 7,143 housing units (0.4%) at 1 ft, 17,018 (1.1%) at 3 ft and 128,658 (8.1%) at 10 ft.",
+    "unit": "housing units",
+    "value_type": "count",
+    "geography": "78 municipios, 901 barrios and 981 census tracts, in three files",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2020,
+      "last": 2026,
+      "frequency": "Rebuilt with each full build (python exposure.py). Counts are 2020 Census counts; the hazard and protected-area layers are as of the 2026-10 snapshot."
+    },
+    "method": "exposure.py counts each 2020 Census block whole, by its internal point (the Census Bureau's point that always lies inside the block): inside the polygons of a layer, or within 400 m of a stop. It adds the block's 2020 housing units up to the municipio, the barrio and the census tract that hold it, so the three files agree and counts add up exactly between levels. It writes nothing unless every area's total equals the crosswalk's and every set lies inside its superset (the area flooded at 2 ft is inside the area flooded at 3 ft; a stop with a current timetable is a stop). NOAA's polygons (the layers PR_slr_{n}ft of its Puerto Rico File Geodatabase) are read with GDAL's faster ring handling (OGR_ORGANIZE_POLYGONS=ONLY_CCW); the build was checked against GDAL's default, which takes minutes, on the 3 ft and 10 ft layers: the same blocks (1,392 and 3,936), no difference.",
+    "sources": [
+      "census_tiger",
+      "noaa_slr"
+    ],
+    "source_detail": "2020 Census blocks (TIGERweb layer 10); NOAA Office for Coastal Management, Sea Level Rise Viewer data for Puerto Rico, 0 to 10 ft, 2017 data (file dated 2023-09-27)",
+    "how_to_read": "Compare areas by share: divide a count by the area's total (the total field), which puts a small barrio and a large municipio on one scale. To get a share for a group of areas (the island, a region), add the counts and the totals first, then divide; do not average the shares. Each field is a number of feet above today's mean higher high water, not a year or a forecast: the 3D view turns a year and a NOAA 2022 scenario into the nearest whole foot from 1 to 10, and the same foot here gives the housing units in the flooded area on that map.",
+    "caveats": [
+      "Exposed means living where the ground would be under water at high tide with that much sea level rise. It does not say that homes would be damaged or lost.",
+      "NOAA calls the data a screening-level tool. It uses a modified bathtub method that follows tides and hydrological connectivity, and does not include storm surge, rain, groundwater, erosion, subsidence or future construction. The vertical accuracy depends on the elevation data. NOAA's disclaimer says the maps show the scale of potential flooding, not exact locations, and are a planning reference, not for navigation, permitting or legal purposes.",
+      "A census block is counted whole by one point, so a block that a boundary cuts is counted in or out by its internal point: near an edge the count can be higher or lower than the true number.",
+      "A housing unit is a house, an apartment, a mobile home or a room meant as separate living quarters; people in group quarters (a dormitory, a nursing home) are not in housing units."
+    ],
+    "see_also": [
+      "exposure.pop_slr",
+      "exposure.hu_low",
+      "exposure.total",
+      "exposure.method",
+      "exposure.share",
+      "hazards.slr_inundation",
+      "hazards.slr_year_to_feet"
+    ],
+    "example": "Cataño: 7,377 of its 10,890 housing units (67.7%) are in the area flooded by 10 ft of sea level rise",
+    "where": {
+      "files": [
+        "exposure_municipio.json:slr_1ft",
+        "exposure_municipio.json:slr_2ft",
+        "exposure_municipio.json:slr_3ft",
+        "exposure_municipio.json:slr_4ft",
+        "exposure_municipio.json:slr_5ft",
+        "exposure_municipio.json:slr_6ft",
+        "exposure_municipio.json:slr_7ft",
+        "exposure_municipio.json:slr_8ft",
+        "exposure_municipio.json:slr_9ft",
+        "exposure_municipio.json:slr_10ft",
+        "exposure_barrio.json:slr_1ft",
+        "exposure_barrio.json:slr_2ft",
+        "exposure_barrio.json:slr_3ft",
+        "exposure_barrio.json:slr_4ft",
+        "exposure_barrio.json:slr_5ft",
+        "exposure_barrio.json:slr_6ft",
+        "exposure_barrio.json:slr_7ft",
+        "exposure_barrio.json:slr_8ft",
+        "exposure_barrio.json:slr_9ft",
+        "exposure_barrio.json:slr_10ft",
+        "exposure_tract.json:slr_1ft",
+        "exposure_tract.json:slr_2ft",
+        "exposure_tract.json:slr_3ft",
+        "exposure_tract.json:slr_4ft",
+        "exposure_tract.json:slr_5ft",
+        "exposure_tract.json:slr_6ft",
+        "exposure_tract.json:slr_7ft",
+        "exposure_tract.json:slr_8ft",
+        "exposure_tract.json:slr_9ft",
+        "exposure_tract.json:slr_10ft"
+      ]
+    }
+  },
+  {
+    "domain": "hazards",
+    "domains": [
+      "hazards",
+      "housing"
+    ],
+    "added": "2026-10-06",
+    "id": "exposure.hu_low",
+    "name": "Housing units in low-lying areas that may flood with sea level rise",
+    "group": "Homes exposed to hazards, protected land and transit",
+    "kind": "variable",
+    "plain": "How many housing units live in low areas that NOAA says may flood with 1 to 10 feet of sea level rise but that its model does not connect to the ocean, counted for each municipio, barrio and census tract.",
+    "definition": "Ten fields, low_1ft to low_10ft, hold the count for each area. NOAA also maps low-lying areas that lie at or below the water height for that many feet of sea level rise but that its model does not connect to the ocean (for example a hollow behind a road or a berm). NOAA says they may flood and shows them apart from the inundation. A field counts the housing units of every census block whose internal point lies inside such an area. An area leaves this set when a higher water level connects it to the ocean, so the count does not rise steadily with the height. Only 47 to 72 census blocks lie in these areas at any one height (build of 2026-10-06), so most areas have none and a count is the residents of a few blocks. For the whole island the most is 4,109 housing units (0.3%), at 7 ft.",
+    "unit": "housing units",
+    "value_type": "count",
+    "geography": "78 municipios, 901 barrios and 981 census tracts, in three files",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2020,
+      "last": 2026,
+      "frequency": "Rebuilt with each full build (python exposure.py). Counts are 2020 Census counts; the hazard and protected-area layers are as of the 2026-10 snapshot."
+    },
+    "method": "exposure.py counts each 2020 Census block whole, by its internal point (the Census Bureau's point that always lies inside the block): inside the polygons of a layer, or within 400 m of a stop. It adds the block's 2020 housing units up to the municipio, the barrio and the census tract that hold it, so the three files agree and counts add up exactly between levels. It writes nothing unless every area's total equals the crosswalk's and every set lies inside its superset (the area flooded at 2 ft is inside the area flooded at 3 ft; a stop with a current timetable is a stop). The layers PR_low_{n}ft are read the same way as the inundation layers; for the 3 ft layer the build was checked against GDAL's default: the same 68 blocks, no difference.",
+    "sources": [
+      "census_tiger",
+      "noaa_slr"
+    ],
+    "source_detail": "2020 Census blocks (TIGERweb layer 10); NOAA Sea Level Rise Viewer data for Puerto Rico, layers PR_low_{n}ft, 2017 data",
+    "how_to_read": "Compare areas by share: divide a count by the area's total (the total field), which puts a small barrio and a large municipio on one scale. To get a share for a group of areas (the island, a region), add the counts and the totals first, then divide; do not average the shares. Read it next to the connected area (exposure.hu_slr): a block is in one or the other, not both, at the same height (checked for all ten heights in the build of 2026-10-06: no block is in both).",
+    "caveats": [
+      "Whether such an area floods depends on drainage, pumps and groundwater, which the data do not describe. NOAA does not count it as inundated.",
+      "The same screening-level limits as for the connected area apply: not a forecast, not for navigation, permitting or legal purposes.",
+      "A census block is counted whole by one point, so a block that a boundary cuts is counted in or out by its internal point: near an edge the count can be higher or lower than the true number.",
+      "A housing unit is a house, an apartment, a mobile home or a room meant as separate living quarters; people in group quarters (a dormitory, a nursing home) are not in housing units."
+    ],
+    "see_also": [
+      "exposure.pop_low",
+      "exposure.hu_slr",
+      "exposure.total",
+      "exposure.method",
+      "exposure.share",
+      "hazards.slr_inundation"
+    ],
+    "example": "At 7 ft, Dorado has the largest share: 1,056 of its 16,288 housing units (6.5%)",
+    "where": {
+      "files": [
+        "exposure_municipio.json:low_1ft",
+        "exposure_municipio.json:low_2ft",
+        "exposure_municipio.json:low_3ft",
+        "exposure_municipio.json:low_4ft",
+        "exposure_municipio.json:low_5ft",
+        "exposure_municipio.json:low_6ft",
+        "exposure_municipio.json:low_7ft",
+        "exposure_municipio.json:low_8ft",
+        "exposure_municipio.json:low_9ft",
+        "exposure_municipio.json:low_10ft",
+        "exposure_barrio.json:low_1ft",
+        "exposure_barrio.json:low_2ft",
+        "exposure_barrio.json:low_3ft",
+        "exposure_barrio.json:low_4ft",
+        "exposure_barrio.json:low_5ft",
+        "exposure_barrio.json:low_6ft",
+        "exposure_barrio.json:low_7ft",
+        "exposure_barrio.json:low_8ft",
+        "exposure_barrio.json:low_9ft",
+        "exposure_barrio.json:low_10ft",
+        "exposure_tract.json:low_1ft",
+        "exposure_tract.json:low_2ft",
+        "exposure_tract.json:low_3ft",
+        "exposure_tract.json:low_4ft",
+        "exposure_tract.json:low_5ft",
+        "exposure_tract.json:low_6ft",
+        "exposure_tract.json:low_7ft",
+        "exposure_tract.json:low_8ft",
+        "exposure_tract.json:low_9ft",
+        "exposure_tract.json:low_10ft"
+      ]
+    }
+  },
+  {
+    "domain": "hazards",
+    "domains": [
+      "hazards",
+      "housing"
+    ],
+    "added": "2026-11-17",
+    "id": "exposure.hu_surge",
+    "name": "Housing units in the area flooded by storm surge in a category 1 to 5 hurricane",
+    "group": "Homes exposed to hazards, protected land and transit",
+    "kind": "variable",
+    "plain": "How many housing units are where NOAA's maps show storm surge flooding the land in a category 1 to 5 hurricane (the near worst case, at high tide), counted for each municipio, barrio and census tract.",
+    "definition": "Ten fields hold the count for each area. surge_cat1 to surge_cat5: the housing units of every census block whose internal point NOAA's storm surge map for a category 1 to 5 hurricane shows under water, at any depth. surge_deep_cat1 to surge_deep_cat5: the same, under 3 ft of water or more. For the whole island: 10,129 (0.6%) at category 1, 30,751 (1.9%) at category 3 and 73,273 (4.6%) at category 5; under 3 ft or more, 8,888 (0.6%) at category 3 and 32,683 (2.0%) at category 5.",
+    "unit": "housing units",
+    "value_type": "count",
+    "geography": "78 municipios, 901 barrios and 981 census tracts, in three files",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2020,
+      "last": 2026,
+      "frequency": "Rebuilt with each full build (python exposure.py) or with python exposure.py --surge. Counts are 2020 Census counts; the surge maps are NOAA's of 2018."
+    },
+    "method": "exposure.py counts each 2020 Census block whole, by its internal point (the Census Bureau's point that always lies inside the block), and adds its 2020 housing units up to the municipio, the barrio and the census tract that hold it, so the three files agree. For storm surge it reads the cell of NOAA's map under that point: a block counts at a category when the cell has any water, and in the deep field when the water is 3 ft or more above ground (band 4 and up; NHC's own map starts its second colour at 3 ft). The cells are about 10 m. Every deep field lies inside its category's field, and the build checks it. The five categories are not strictly nested: each map is the highest water of its own set of model storms, and five block points in San Juan (247 residents, 124 housing units) are wet at category 4 and dry at category 5. The surge families were added on 2026-11-17 with python exposure.py --surge, which leaves every other family as it was. Check: every resident counted at category 1 is also inside FEMA's 1% annual chance flood area, which includes coastal surge; at category 3, 92.5%; at category 5, 63.0% (84.8% inside the 1% or 0.2% area).",
+    "sources": [
+      "census_tiger",
+      "nhc_slosh"
+    ],
+    "source_detail": "2020 Census blocks (TIGERweb layer 10); NOAA National Hurricane Center, SLOSH Maximum of MEOWs storm surge maps for Puerto Rico, category 1 to 5 at high tide (PR_SLOSH_MOM_Inundation.zip, November 2018)",
+    "how_to_read": "Compare areas by share: divide a count by the area's total (the total field). To get a share for a group of areas, add the counts and the totals first, then divide. Highest shares at category 3: Cataño 26.2%, Salinas 11.3%, Santa Isabel 11.3%; at category 5: Cataño 55.2%, Loíza 36.6%, Carolina 17.3%. 39 of the 78 municipios have none at category 5, most of them inland. Read the category as a what-if: the stronger the hurricane, the farther inland the water may reach.",
+    "caveats": [
+      "Near worst case, not a forecast. Each category's map is NOAA's Maximum of MEOWs: the highest water at each place among many hypothetical storms of that category with different tracks, speeds and sizes, at high tide. No single storm floods all of it.",
+      "NOAA says the maps show the scale of potential flooding at a city or community level, not at a parcel or a single cell, and do not account for erosion, subsidence or future construction. Areas outside the SLOSH model's grids show no surge even where surge could reach.",
+      "Exposed means standing where the ground would be under water in that scenario. It does not say a home would be damaged: floor height and construction are not known.",
+      "These are not evacuation zones. Puerto Rico's evacuation zones are set by the emergency management bureau (NMEAD).",
+      "A census block is counted whole by one point, so a block that the edge of the surge cuts is counted in or out by its internal point."
+    ],
+    "see_also": [
+      "exposure.pop_surge",
+      "exposure.hu_slr",
+      "exposure.hu_flood",
+      "exposure.total",
+      "exposure.method",
+      "exposure.share"
+    ],
+    "example": "Cataño: 6,006 of its 10,890 housing units (55.2%) are in the area flooded by storm surge in a category 5 hurricane",
+    "where": {
+      "files": [
+        "exposure_municipio.json:surge_cat3",
+        "exposure_municipio.json:surge_cat1",
+        "exposure_municipio.json:surge_cat2",
+        "exposure_municipio.json:surge_cat4",
+        "exposure_municipio.json:surge_cat5",
+        "exposure_municipio.json:surge_deep_cat1",
+        "exposure_municipio.json:surge_deep_cat2",
+        "exposure_municipio.json:surge_deep_cat3",
+        "exposure_municipio.json:surge_deep_cat4",
+        "exposure_municipio.json:surge_deep_cat5",
+        "exposure_barrio.json:surge_cat1",
+        "exposure_barrio.json:surge_cat2",
+        "exposure_barrio.json:surge_cat3",
+        "exposure_barrio.json:surge_cat4",
+        "exposure_barrio.json:surge_cat5",
+        "exposure_barrio.json:surge_deep_cat1",
+        "exposure_barrio.json:surge_deep_cat2",
+        "exposure_barrio.json:surge_deep_cat3",
+        "exposure_barrio.json:surge_deep_cat4",
+        "exposure_barrio.json:surge_deep_cat5",
+        "exposure_tract.json:surge_cat1",
+        "exposure_tract.json:surge_cat2",
+        "exposure_tract.json:surge_cat3",
+        "exposure_tract.json:surge_cat4",
+        "exposure_tract.json:surge_cat5",
+        "exposure_tract.json:surge_deep_cat1",
+        "exposure_tract.json:surge_deep_cat2",
+        "exposure_tract.json:surge_deep_cat3",
+        "exposure_tract.json:surge_deep_cat4",
+        "exposure_tract.json:surge_deep_cat5"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Housing units · Storm surge · NOAA NHC (near worst case, high tide)): Housing units: surge at category 3",
+          "href": "index.html#e=exp_surge_cat3_hu.f"
+        }
+      ]
+    }
+  },
+  {
+    "domain": "environment.land",
+    "domains": [
+      "environment.land",
+      "housing"
+    ],
+    "added": "2026-10-06",
+    "id": "exposure.hu_protected",
+    "name": "Housing units inside protected areas",
+    "group": "Homes exposed to hazards, protected land and transit",
+    "kind": "variable",
+    "plain": "How many housing units are inside the outline of a protected area such as a park, forest or reserve, counted for each municipio, barrio and census tract.",
+    "definition": "Two fields hold the count for each area. protected: the housing units of every census block whose internal point lies inside a USGS PAD-US protected area, other than a proclamation boundary (which outlines whole islands or refuges and is not managed land). protected_strict: the same inside areas with GAP status 1 or 2 (a strict nature reserve, or land managed for biodiversity). Both read site/data/protected.geojson. For the whole island, 30,778 housing units (1.9%) are inside a protected area and 16,046 (1.0%) inside a strictly protected one.",
+    "unit": "housing units",
+    "value_type": "count",
+    "geography": "78 municipios, 901 barrios and 981 census tracts, in three files",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2020,
+      "last": 2026,
+      "frequency": "Rebuilt with each full build (python exposure.py). Counts are 2020 Census counts; the hazard and protected-area layers are as of the 2026-10 snapshot."
+    },
+    "method": "exposure.py counts each 2020 Census block whole, by its internal point (the Census Bureau's point that always lies inside the block): inside the polygons of a layer, or within 400 m of a stop. It adds the block's 2020 housing units up to the municipio, the barrio and the census tract that hold it, so the three files agree and counts add up exactly between levels. It writes nothing unless every area's total equals the crosswalk's and every set lies inside its superset (the area flooded at 2 ft is inside the area flooded at 3 ft; a stop with a current timetable is a stop).",
+    "sources": [
+      "census_tiger",
+      "padus"
+    ],
+    "source_detail": "2020 Census blocks (TIGERweb layer 10); USGS PAD-US 4.1, as published in protected.geojson",
+    "how_to_read": "Compare areas by share: divide a count by the area's total (the total field), which puts a small barrio and a large municipio on one scale. To get a share for a group of areas (the island, a region), add the counts and the totals first, then divide; do not average the shares. It shows where homes lie within the outline of conserved land, which matters for planning, not how many people live on managed public land.",
+    "caveats": [
+      "PAD-US includes parks, forests, refuges, local recreation areas and conservation lands, so an urban park counts. An outline can also include private land inside the boundary of a reserve.",
+      "A census block is counted whole by one point, so a block that a boundary cuts is counted in or out by its internal point: near an edge the count can be higher or lower than the true number.",
+      "A housing unit is a house, an apartment, a mobile home or a room meant as separate living quarters; people in group quarters (a dormitory, a nursing home) are not in housing units."
+    ],
+    "see_also": [
+      "exposure.pop_protected",
+      "exposure.total",
+      "exposure.method",
+      "exposure.share",
+      "land.protected_layer",
+      "land.protected_place_flag"
+    ],
+    "example": "Luquillo: 966 of its 10,812 housing units (8.9%) are inside a protected area",
+    "where": {
+      "files": [
+        "exposure_municipio.json:protected",
+        "exposure_municipio.json:protected_strict",
+        "exposure_barrio.json:protected",
+        "exposure_barrio.json:protected_strict",
+        "exposure_tract.json:protected",
+        "exposure_tract.json:protected_strict"
+      ]
+    }
+  },
+  {
+    "domain": "infrastructure.mobility",
+    "domains": [
+      "infrastructure.mobility",
+      "housing"
+    ],
+    "added": "2026-10-06",
+    "id": "exposure.hu_transit",
+    "name": "Housing units within 400 m of a transit stop",
+    "group": "Homes exposed to hazards, protected land and transit",
+    "kind": "variable",
+    "plain": "How many housing units are a quarter mile (400 m) or less from a transit stop, by kind of stop, counted for each municipio, barrio and census tract.",
+    "definition": "Six fields hold the count for each area. stop_any: within 400 m of any mapped stop, station or terminal, including stops that volunteers mapped in OpenStreetMap and stops whose timetable has expired. stop_sched: within 400 m of a stop with a timetable on file (expired timetables included). stop_cur: within 400 m of a stop whose operator's timetable has not ended on the as_of date of the file. stop_freq: within 400 m of a current stop with 20 or more weekday departures. stop_sat and stop_sun: within 400 m of a current stop with Saturday or Sunday service. Each set lies inside the one before it: a frequent stop is a current stop, a current stop is a scheduled stop, a scheduled stop is a stop. Since 2026-10-16 two more fields measure by walking along mapped roads (walknet.py, site/data/roads.bin): walk_cur, within a 400 m walk of a stop with a current timetable, and walk_freq, within a 400 m walk of a frequent stop. walk_cur lies inside stop_cur and walk_freq inside both walk_cur and stop_freq. A block with no walkable road within 150 m keeps its straight-line test. Island-wide in the 2026-10 snapshot: walk_cur 403,421 residents (12.3%) against stop_cur 729,507 (22.2%).",
+    "unit": "housing units",
+    "value_type": "count",
+    "geography": "78 municipios, 901 barrios and 981 census tracts, in three files",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2020,
+      "last": 2026,
+      "frequency": "Recomputed every night with the transit feeds (python exposure.py --transit). Counts are 2020 Census counts; as_of in each file is the date a timetable is judged current."
+    },
+    "method": "exposure.py counts each 2020 Census block whole, by its internal point (the Census Bureau's point that always lies inside the block): inside the polygons of a layer, or within 400 m of a stop. It adds the block's 2020 housing units up to the municipio, the barrio and the census tract that hold it, so the three files agree and counts add up exactly between levels. It writes nothing unless every area's total equals the crosswalk's and every set lies inside its superset (the area flooded at 2 ft is inside the area flooded at 3 ft; a stop with a current timetable is a stop). Distances are straight lines measured as access.py measures them for tourism places and the Transit tab for residents. The block points are the Census Bureau's internal points rounded to 4 decimals (about 11 m), as the Transit tab's coverage uses them, so stop_cur equals the Transit tab's residents near a stop with a current timetable in every municipio (to the one decimal its percentage shows). exposure.py --transit recomputes these six fields every night with the transit feeds; the other families change only with a full build.",
+    "sources": [
+      "census_tiger",
+      "ati_gtfs",
+      "muni_gtfs",
+      "osm"
+    ],
+    "source_detail": "2020 Census blocks (TIGERweb layer 10); stops in transport.json; timetable end dates in operators.json",
+    "how_to_read": "Compare areas by share: divide a count by the area's total (the total field), which puts a small barrio and a large municipio on one scale. To get a share for a group of areas (the island, a region), add the counts and the totals first, then divide; do not average the shares. It is a measure of schedule access: where a stop is within a short walk, and whether a timetable covers today.",
+    "caveats": [
+      "Schedule-based, and straight-line except walk_cur and walk_freq: it does not know real-time service, hours, fares, stairs, traffic or whether the walk is safe, and públicos, taxis and ride-hailing are in no timetable. The walking fields follow mapped roads only (no footpaths); see municipalities.pop_walk_active_pct for how much the joining of blocks to roads moves them.",
+      "An expired timetable means the timetable on file no longer covers today, not that service has stopped. A stop with no feed (OpenStreetMap) has no timetable at all.",
+      "stop_sat and stop_sun are low mostly because few feeds list weekend trips: on 2026-10-06, 3 of the 18 operators whose timetable had not ended (ATI, Guaynabo and Vega Alta) list Saturday departures and 1 (ATI) lists Sunday departures. A low count does not show that there is no weekend service.",
+      "stop_sched can differ from the Transit tab's residents near a scheduled stop (municipalities.json, pop_served_400m) by up to 0.5% of a municipio's residents (287 residents in Vega Baja; 0.02% on the island): the Transit tab measures to the stop nearest in degrees and drops the fraction of a metre, and this series measures to every stop in metres.",
+      "A census block is counted whole by one point, so a block that a boundary cuts is counted in or out by its internal point: near an edge the count can be higher or lower than the true number.",
+      "A housing unit is a house, an apartment, a mobile home or a room meant as separate living quarters; people in group quarters (a dormitory, a nursing home) are not in housing units."
+    ],
+    "see_also": [
+      "exposure.pop_transit",
+      "exposure.total",
+      "exposure.method",
+      "exposure.share",
+      "municipalities.pop_served_active_pct",
+      "municipalities.pop_served_400m",
+      "place_access.ts_m"
+    ],
+    "where": {
+      "files": [
+        "exposure_municipio.json:stop_any",
+        "exposure_municipio.json:stop_sched",
+        "exposure_municipio.json:stop_cur",
+        "exposure_municipio.json:stop_freq",
+        "exposure_municipio.json:stop_sat",
+        "exposure_municipio.json:stop_sun",
+        "exposure_barrio.json:stop_any",
+        "exposure_barrio.json:stop_sched",
+        "exposure_barrio.json:stop_cur",
+        "exposure_barrio.json:stop_freq",
+        "exposure_barrio.json:stop_sat",
+        "exposure_barrio.json:stop_sun",
+        "exposure_tract.json:stop_any",
+        "exposure_tract.json:stop_sched",
+        "exposure_tract.json:stop_cur",
+        "exposure_tract.json:stop_freq",
+        "exposure_tract.json:stop_sat",
+        "exposure_tract.json:stop_sun",
+        "exposure_municipio.json:walk_cur",
+        "exposure_municipio.json:walk_freq",
+        "exposure_barrio.json:walk_cur",
+        "exposure_barrio.json:walk_freq",
+        "exposure_tract.json:walk_cur",
+        "exposure_tract.json:walk_freq"
+      ]
+    }
+  },
+  {
+    "domain": "population",
+    "domains": [
+      "population",
+      "housing"
+    ],
+    "added": "2026-10-06",
+    "id": "exposure.total",
+    "name": "Residents and housing units of each area (the base of every exposure share)",
+    "group": "Residents exposed to hazards, protected land and transit",
+    "kind": "variable",
+    "plain": "The number of residents and the number of housing units of each municipio, barrio and census tract in the 2020 Census, repeated in each exposure file so a share can be worked out from the file alone.",
+    "definition": "The total field of each exposure file holds two lists, pop and hu, one value for each area in the order of geo.ids: the 2020 Census residents and housing units of the area, the sum of its census blocks. They equal the geography crosswalk's values. For the whole island, 3,285,874 residents and 1,598,159 housing units.",
+    "unit": "residents; housing units",
+    "value_type": "count",
+    "geography": "78 municipios, 901 barrios and 981 census tracts, in three files",
+    "coverage": {
+      "timeline": "decennial",
+      "first": 2020,
+      "last": 2020,
+      "frequency": "2020 Census; rebuilt only with a full build"
+    },
+    "method": "Copied from the crosswalk's pop and hu (geo.py), after the build has checked that the blocks add up to them for every area.",
+    "sources": [
+      "census_tiger"
+    ],
+    "source_detail": "2020 Census blocks (TIGERweb layer 10)",
+    "how_to_read": "Divide an exposure count by the matching total to get a share. Counts add up between levels; shares do not.",
+    "caveats": [
+      "A 2020 count, not today's population or housing stock.",
+      "The Census Bureau adds statistical noise to resident counts of small areas to protect privacy; housing-unit counts are not changed at block level."
+    ],
+    "see_also": [
+      "geo.crosswalk",
+      "geo.unit_pop2020",
+      "geo.unit_hu2020",
+      "exposure.share",
+      "exposure.pop_surge",
+      "exposure.hu_surge"
+    ],
+    "where": {
+      "files": [
+        "exposure_municipio.json:total",
+        "exposure_barrio.json:total",
+        "exposure_tract.json:total"
+      ]
+    }
+  },
+  {
+    "domain": "system.docs",
+    "domains": [
+      "system.docs"
+    ],
+    "added": "2026-10-06",
+    "id": "exposure.method",
+    "name": "How exposure is counted (census blocks counted whole by their internal point)",
+    "group": "Exposure series",
+    "kind": "method",
+    "plain": "The observatory counts how many residents and homes are inside a hazard or protected land, or near transit, by giving each census block to the layer that holds its one internal point. The results are computed from open layers, not measured.",
+    "definition": "A census block is the smallest area of the 2020 Census (41,987 in Puerto Rico, 36,570 with residents). Its internal point is a point the Census Bureau guarantees lies inside the block. A block is in a layer if its point is inside a polygon of the layer, or within 400 m of a stop, and then all of its 2020 residents and housing units are counted as exposed. Counts are added up to the municipio, the barrio and the census tract that hold the block, so they add up exactly between levels. Residents are the 2020 Census count; the Census Bureau adds noise to small counts to protect privacy, and does not for housing units at block level.",
+    "unit": "method",
+    "value_type": "text",
+    "geography": "78 municipios, 901 barrios and 981 census tracts, in three files",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2020,
+      "last": 2026,
+      "frequency": "Rebuilt with each full build (python exposure.py). Counts are 2020 Census counts; the hazard and protected-area layers are as of the 2026-10 snapshot."
+    },
+    "method": "Checks made when the files are built: every area's total equals the geography crosswalk's; every set lies inside its superset for every block (sea level steps, flood areas, protected areas, the transit classes); the three files add up to the same municipio and island figures. Checks made once, on the data: counting from the simplified flood outlines instead of FEMA's full-resolution ones changes the island count of residents in the 1% flood area by 0.3% (316,309 against 317,290); NOAA's polygons read the fast way give the same blocks as GDAL's default on three layers (inundation at 3 ft and at 10 ft, low-lying areas at 3 ft); the six transit fields match the Transit tab (stop_cur to the decimal in all 78 municipios; stop_sched within 0.5% of a municipio's residents and 0.02% on the island). Whole-block counting was also compared with spreading each block's residents evenly over its outline, on the blocks with no water (98.9% of residents; docs/analysis/exposure-2026-10). For the island the two differ by 1.1 points of the island's residents or less in every layer tested: the 1% flood area 9.5% by internal point against 10.5% by area; sea level rise at 3 ft 0.7% against 0.8%; protected areas 1.7% against 1.5%. For a municipio the middle difference is 1.1 points or less and the largest 11.2 points. The counts that assume nothing about where people live inside a block (only the blocks wholly inside a layer, and every block the layer touches) are far apart: for the 1% flood area 5.1% to 24.1% of the island's residents, against 9.6% counted.",
+    "sources": [
+      "census_tiger",
+      "fema_nfhl",
+      "noaa_slr",
+      "padus",
+      "ati_gtfs",
+      "muni_gtfs",
+      "osm"
+    ],
+    "source_detail": "See each exposure entry. Method note and results: docs/exposure.md.",
+    "how_to_read": "Read each figure as 'residents (or homes) in blocks whose internal point is inside the layer', a close estimate of how many are in the layer. Treat small differences between areas as noise.",
+    "caveats": [
+      "A block cut by a boundary is counted whole in or out, so a count near an edge can be too high or too low. Large areas average this out; a single barrio or tract does not: one barrio or tract in ten differs from an area-weighted count by more than 6 points of its residents in the 1% flood area, 4 points for sea level rise at 10 ft and 3 points for protected areas, and the largest difference is 74 points. Read small-area counts as rough and look at the total beside them.",
+      "Computed, not measured: no one counted the people inside the polygons.",
+      "Not included yet: storm surge (NHC SLOSH), and distance to schools, hospitals and shelters. They need data that the observatory has not harvested yet (listed in wanted.json); the method adds a layer without changing the files above."
+    ],
+    "see_also": [
+      "exposure.pop_flood",
+      "exposure.pop_slr",
+      "exposure.pop_protected",
+      "exposure.pop_transit",
+      "exposure.share",
+      "geo.block_table",
+      "geo.crosswalk",
+      "exposure.pop_surge",
+      "exposure.hu_surge"
+    ],
+    "where": {
+      "files": []
+    }
+  },
+  {
+    "domain": "system.docs",
+    "domains": [
+      "system.docs"
+    ],
+    "added": "2026-10-06",
+    "id": "exposure.share",
+    "name": "Share of residents or housing units exposed",
+    "group": "Exposure series",
+    "kind": "measure",
+    "plain": "Out of every 100 residents (or homes) in an area, how many are exposed. It is the count divided by the area's total, times 100.",
+    "definition": "share = 100 x exposure count / total of the same measure (residents or housing units) for the same area. For a group of areas, add the counts and add the totals, then divide. The files hold counts and totals, not shares, so any group of areas gets an exact share.",
+    "unit": "% of residents or housing units",
+    "value_type": "rate",
+    "geography": "78 municipios, 901 barrios and 981 census tracts, in three files",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2020,
+      "last": 2026,
+      "frequency": "Rebuilt with each full build (python exposure.py). Counts are 2020 Census counts; the hazard and protected-area layers are as of the 2026-10 snapshot."
+    },
+    "method": "Worked out wherever it is shown, from the counts and totals of the exposure files (never stored, never averaged across areas).",
+    "sources": [
+      "census_tiger"
+    ],
+    "how_to_read": "A share is for comparing areas of different size. A share of 100% means every resident (or home) counted in the area is exposed; an area with a total of zero has no share.",
+    "caveats": [
+      "A small area has a share that swings with one block: look at the count as well.",
+      "Shares of different layers overlap: a resident can be in a flood area and in a protected area at once, so they cannot be added."
+    ],
+    "see_also": [
+      "exposure.total",
+      "exposure.method",
+      "exposure.pop_surge",
+      "exposure.hu_surge"
+    ],
+    "where": {
+      "files": []
+    }
+  }
+]

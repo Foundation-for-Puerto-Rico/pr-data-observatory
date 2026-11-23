@@ -1,0 +1,429 @@
+[
+ {
+  "id": "infrastructure.traffic_vkt",
+  "ask": {
+   "en": [
+    "vehicle kilometres",
+    "vehicle km",
+    "vmt",
+    "vehicle miles travelled",
+    "traffic volume"
+   ],
+   "es": [
+    "vehiculo kilometros",
+    "kilometros recorridos",
+    "volumen de transito"
+   ]
+  },
+  "name": "Vehicle-kilometres a day (HPMS)",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility",
+   "infrastructure"
+  ],
+  "group": "Traffic",
+  "kind": "variable",
+  "plain": "How many kilometres all vehicles drive in a day on the municipio's roads, added up.",
+  "definition": "The vehicle-kilometres driven on an average day on the municipio's public roads: each road section's annual average daily traffic times its length, added up. Local streets are included with the traffic the Department of Transportation and Public Works estimates for them; ramps are left out.",
+  "unit": "vehicle-km a day",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2025,
+   "last": 2025,
+   "frequency": "One data year (Puerto Rico reports to FHWA every year; 2025 published in 2026); refresh unit traffic"
+  },
+  "method": "traffic.py reads every section of FHWA's HPMS full join for Puerto Rico, data year 2025 (geo.dot.gov), keeps facility types 1 and 2 (one-way and two-way roads; the non-inventory direction of a divided road repeats its line and ramps are left out), places each section in its municipio by county_id, and adds up. Checks that stop the build: every county code is a municipio; the downloaded pages hold as many records as the service counts.",
+  "sources": [
+   "fhwa_hpms"
+  ],
+  "source_detail": "FHWA Highway Performance Monitoring System, HPMS_FULL_PR_2025 (https://geo.dot.gov/server/rest/services/Hosted/HPMS_FULL_PR_2025/FeatureServer/0): aadt, aadt_vd, aadt_single_unit, aadt_combination, f_system, facility_type, section_length (miles), iri, county_id.",
+  "how_to_read": "Puerto Rico: 75,159,323 vehicle-km a day in 2025. Most: San Juan (9,072,431), Caguas (3,802,640), Carolina (3,565,001).",
+  "caveats": [
+   "Traffic is what Puerto Rico reports to FHWA: counts on the main roads, taken in different years (each section has its date), and estimates on local streets.",
+   "A municipio's roads carry everyone who drives through it, not only its residents."
+  ],
+  "see_also": [
+   "layers.traffic_roads"
+  ],
+  "where": {
+   "files": [
+    "traffic_series.json:traffic_vkt"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: Vehicle-kilometres a day (HPMS)",
+     "href": "index.html#e=traffic_vkt.s"
+    }
+   ]
+  },
+  "added": "2026-11-13"
+ },
+ {
+  "id": "infrastructure.traffic_vkt_pc",
+  "ask": {
+   "en": [
+    "vehicle kilometres per resident",
+    "traffic per resident",
+    "how much driving"
+   ],
+   "es": [
+    "vehiculo kilometros por residente",
+    "transito por residente"
+   ]
+  },
+  "name": "Vehicle-kilometres a day per resident (HPMS)",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility",
+   "infrastructure"
+  ],
+  "group": "Traffic",
+  "kind": "variable",
+  "plain": "The daily vehicle-kilometres on the municipio's roads for each resident: high where much traffic passes through.",
+  "definition": "The daily vehicle-kilometres on the municipio's roads over its residents in the 2020 Census. It counts every vehicle on those roads, also those of people who live elsewhere, so it is high where through traffic is heavy.",
+  "unit": "vehicle-km a day per resident",
+  "value_type": "ratio",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2025,
+   "last": 2025,
+   "frequency": "One data year (Puerto Rico reports to FHWA every year; 2025 published in 2026); refresh unit traffic"
+  },
+  "method": "traffic.py reads every section of FHWA's HPMS full join for Puerto Rico, data year 2025 (geo.dot.gov), keeps facility types 1 and 2 (one-way and two-way roads; the non-inventory direction of a divided road repeats its line and ramps are left out), places each section in its municipio by county_id, and adds up. Checks that stop the build: every county code is a municipio; the downloaded pages hold as many records as the service counts.",
+  "sources": [
+   "fhwa_hpms",
+   "census_decennial"
+  ],
+  "source_detail": "FHWA Highway Performance Monitoring System, HPMS_FULL_PR_2025 (https://geo.dot.gov/server/rest/services/Hosted/HPMS_FULL_PR_2025/FeatureServer/0): aadt, aadt_vd, aadt_single_unit, aadt_combination, f_system, facility_type, section_length (miles), iri, county_id.",
+  "how_to_read": "Puerto Rico: 22.9 in 2025. Highest: Salinas (56.1), Santa Isabel (41.3), Cayey (37.1); lowest: Florida (11.2), Toa Alta (11.2), Loíza (13.0).",
+  "caveats": [
+   "Traffic is what Puerto Rico reports to FHWA: counts on the main roads, taken in different years (each section has its date), and estimates on local streets.",
+   "A municipio's roads carry everyone who drives through it, not only its residents.",
+   "Residents are those of the 2020 Census."
+  ],
+  "see_also": [
+   "layers.traffic_roads"
+  ],
+  "where": {
+   "files": [
+    "traffic_series.json:traffic_vkt_pc"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: Vehicle-kilometres a day per resident (HPMS)",
+     "href": "index.html#e=traffic_vkt_pc.f"
+    }
+   ]
+  },
+  "added": "2026-11-13"
+ },
+ {
+  "id": "infrastructure.traffic_main_km",
+  "ask": {
+   "en": [
+    "main roads",
+    "arterials",
+    "road length",
+    "km of roads"
+   ],
+   "es": [
+    "carreteras principales",
+    "arterias",
+    "largo de carreteras"
+   ]
+  },
+  "name": "Arterials and major collectors, km (HPMS)",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility",
+   "infrastructure"
+  ],
+  "group": "Traffic",
+  "kind": "variable",
+  "plain": "How many kilometres of freeways, arterials and major collectors the municipio has.",
+  "definition": "The length of the municipio's main roads: freeways and expressways, principal and minor arterials and major collectors (functional classes 1 to 5), each road counted once.",
+  "unit": "km",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2025,
+   "last": 2025,
+   "frequency": "One data year (Puerto Rico reports to FHWA every year; 2025 published in 2026); refresh unit traffic"
+  },
+  "method": "traffic.py reads every section of FHWA's HPMS full join for Puerto Rico, data year 2025 (geo.dot.gov), keeps facility types 1 and 2 (one-way and two-way roads; the non-inventory direction of a divided road repeats its line and ramps are left out), places each section in its municipio by county_id, and adds up. Checks that stop the build: every county code is a municipio; the downloaded pages hold as many records as the service counts.",
+  "sources": [
+   "fhwa_hpms"
+  ],
+  "source_detail": "FHWA Highway Performance Monitoring System, HPMS_FULL_PR_2025 (https://geo.dot.gov/server/rest/services/Hosted/HPMS_FULL_PR_2025/FeatureServer/0): aadt, aadt_vd, aadt_single_unit, aadt_combination, f_system, facility_type, section_length (miles), iri, county_id.",
+  "how_to_read": "Puerto Rico: 5,418.9 km in 2025. Most: San Juan (236.1), Ponce (231.7), Arecibo (181.3).",
+  "caveats": [
+   "Traffic is what Puerto Rico reports to FHWA: counts on the main roads, taken in different years (each section has its date), and estimates on local streets.",
+   "A municipio's roads carry everyone who drives through it, not only its residents.",
+   "Local streets are not counted here."
+  ],
+  "see_also": [
+   "layers.traffic_roads"
+  ],
+  "where": {
+   "files": [
+    "traffic_series.json:traffic_main_km"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: Arterials and major collectors, km (HPMS)",
+     "href": "index.html#e=traffic_main_km.s"
+    }
+   ]
+  },
+  "added": "2026-11-13"
+ },
+ {
+  "id": "infrastructure.traffic_max_aadt",
+  "ask": {
+   "en": [
+    "busiest road",
+    "most traffic",
+    "heaviest traffic"
+   ],
+   "es": [
+    "carretera con mas transito",
+    "mas trafico"
+   ]
+  },
+  "name": "Busiest road, vehicles a day (HPMS)",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility",
+   "infrastructure"
+  ],
+  "group": "Traffic",
+  "kind": "variable",
+  "plain": "The traffic on the busiest stretch of main road in the municipio, in vehicles a day.",
+  "definition": "The highest annual average daily traffic on any section of the municipio's arterials and major collectors.",
+  "unit": "vehicles a day",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2025,
+   "last": 2025,
+   "frequency": "One data year (Puerto Rico reports to FHWA every year; 2025 published in 2026); refresh unit traffic"
+  },
+  "method": "traffic.py reads every section of FHWA's HPMS full join for Puerto Rico, data year 2025 (geo.dot.gov), keeps facility types 1 and 2 (one-way and two-way roads; the non-inventory direction of a divided road repeats its line and ramps are left out), places each section in its municipio by county_id, and adds up. Checks that stop the build: every county code is a municipio; the downloaded pages hold as many records as the service counts.",
+  "sources": [
+   "fhwa_hpms"
+  ],
+  "source_detail": "FHWA Highway Performance Monitoring System, HPMS_FULL_PR_2025 (https://geo.dot.gov/server/rest/services/Hosted/HPMS_FULL_PR_2025/FeatureServer/0): aadt, aadt_vd, aadt_single_unit, aadt_combination, f_system, facility_type, section_length (miles), iri, county_id.",
+  "how_to_read": "Highest in Puerto Rico: 266,200 vehicles a day. By municipio: San Juan (266,200), Guaynabo (196,600), Toa Baja (141,900).",
+  "caveats": [
+   "Traffic is what Puerto Rico reports to FHWA: counts on the main roads, taken in different years (each section has its date), and estimates on local streets.",
+   "A municipio's roads carry everyone who drives through it, not only its residents.",
+   "One stretch decides the value; the map layer shows them all."
+  ],
+  "see_also": [
+   "layers.traffic_roads"
+  ],
+  "where": {
+   "files": [
+    "traffic_series.json:traffic_max_aadt"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: Busiest road, vehicles a day (HPMS)",
+     "href": "index.html#e=traffic_max_aadt.s"
+    }
+   ]
+  },
+  "added": "2026-11-13"
+ },
+ {
+  "id": "infrastructure.traffic_truck_pct",
+  "ask": {
+   "en": [
+    "truck traffic",
+    "share of trucks",
+    "heavy vehicles"
+   ],
+   "es": [
+    "camiones",
+    "transito de camiones",
+    "vehiculos pesados"
+   ]
+  },
+  "name": "Trucks, % of traffic on the main roads (HPMS)",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility",
+   "infrastructure"
+  ],
+  "group": "Traffic",
+  "kind": "variable",
+  "plain": "Out of every 100 vehicles on the municipio's main roads, how many are trucks.",
+  "definition": "Single-unit and combination trucks as a share of all vehicles, in vehicle-kilometres, on the arterials and major collectors whose sections report trucks.",
+  "unit": "% of vehicle-km",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2025,
+   "last": 2025,
+   "frequency": "One data year (Puerto Rico reports to FHWA every year; 2025 published in 2026); refresh unit traffic"
+  },
+  "method": "traffic.py reads every section of FHWA's HPMS full join for Puerto Rico, data year 2025 (geo.dot.gov), keeps facility types 1 and 2 (one-way and two-way roads; the non-inventory direction of a divided road repeats its line and ramps are left out), places each section in its municipio by county_id, and adds up. Checks that stop the build: every county code is a municipio; the downloaded pages hold as many records as the service counts.",
+  "sources": [
+   "fhwa_hpms"
+  ],
+  "source_detail": "FHWA Highway Performance Monitoring System, HPMS_FULL_PR_2025 (https://geo.dot.gov/server/rest/services/Hosted/HPMS_FULL_PR_2025/FeatureServer/0): aadt, aadt_vd, aadt_single_unit, aadt_combination, f_system, facility_type, section_length (miles), iri, county_id.",
+  "how_to_read": "Puerto Rico: 5.2% in 2025. Highest: Barranquitas (12.4), Culebra (9.0), Cataño (8.7).",
+  "caveats": [
+   "Traffic is what Puerto Rico reports to FHWA: counts on the main roads, taken in different years (each section has its date), and estimates on local streets.",
+   "A municipio's roads carry everyone who drives through it, not only its residents.",
+   "Only the sections that report trucks are counted; a municipio with few such sections can swing widely."
+  ],
+  "see_also": [
+   "layers.traffic_roads"
+  ],
+  "where": {
+   "files": [
+    "traffic_series.json:traffic_truck_pct"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: Trucks, % of traffic on the main roads (HPMS)",
+     "href": "index.html#e=traffic_truck_pct.f"
+    }
+   ]
+  },
+  "added": "2026-11-13"
+ },
+ {
+  "id": "infrastructure.traffic_poor_pct",
+  "ask": {
+   "en": [
+    "rough roads",
+    "pavement condition",
+    "bad roads",
+    "potholes"
+   ],
+   "es": [
+    "pavimento",
+    "carreteras en mal estado",
+    "condicion del pavimento",
+    "hoyos"
+   ]
+  },
+  "name": "Main roads with rough pavement, % of km measured (HPMS)",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility",
+   "infrastructure"
+  ],
+  "group": "Traffic",
+  "kind": "variable",
+  "plain": "Out of every 100 measured kilometres of main road, how many have rough pavement by the roughness index FHWA uses.",
+  "definition": "The share of the measured kilometres of arterials and major collectors whose International Roughness Index is over 170 inches per mile, FHWA's threshold for poor pavement.",
+  "unit": "% of km",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2025,
+   "last": 2025,
+   "frequency": "One data year (Puerto Rico reports to FHWA every year; 2025 published in 2026); refresh unit traffic"
+  },
+  "method": "traffic.py reads every section of FHWA's HPMS full join for Puerto Rico, data year 2025 (geo.dot.gov), keeps facility types 1 and 2 (one-way and two-way roads; the non-inventory direction of a divided road repeats its line and ramps are left out), places each section in its municipio by county_id, and adds up. Checks that stop the build: every county code is a municipio; the downloaded pages hold as many records as the service counts.",
+  "sources": [
+   "fhwa_hpms"
+  ],
+  "source_detail": "FHWA Highway Performance Monitoring System, HPMS_FULL_PR_2025 (https://geo.dot.gov/server/rest/services/Hosted/HPMS_FULL_PR_2025/FeatureServer/0): aadt, aadt_vd, aadt_single_unit, aadt_combination, f_system, facility_type, section_length (miles), iri, county_id.",
+  "how_to_read": "Puerto Rico: 77.4% of the measured km in 2025. Highest: Comerío (100.0), Aguas Buenas (99.4), Maricao (99.0); lowest: Salinas (35.7), Juana Díaz (55.0), Santa Isabel (56.3).",
+  "caveats": [
+   "Traffic is what Puerto Rico reports to FHWA: counts on the main roads, taken in different years (each section has its date), and estimates on local streets.",
+   "A municipio's roads carry everyone who drives through it, not only its residents.",
+   "Roughness alone: FHWA's full pavement rating also uses cracking and rutting or faulting, so this share is not FHWA's 'poor' rating.",
+   "Roughness was measured in 2024 and 2025 on the main roads only."
+  ],
+  "see_also": [
+   "layers.traffic_roads"
+  ],
+  "where": {
+   "files": [
+    "traffic_series.json:traffic_poor_pct"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: Main roads with rough pavement, % of km measured (HPMS)",
+     "href": "index.html#e=traffic_poor_pct.f"
+    }
+   ]
+  },
+  "added": "2026-11-13"
+ },
+ {
+  "id": "layers.traffic_roads",
+  "name": "Traffic on the main roads (map layer)",
+  "kind": "layer",
+  "value_type": "geometry",
+  "unit": "lines (longitude and latitude, WGS 84)",
+  "added": "2026-11-13",
+  "ask": {
+   "en": [
+    "traffic map",
+    "traffic counts",
+    "busy roads",
+    "aadt map"
+   ],
+   "es": [
+    "mapa de transito",
+    "conteos de transito",
+    "carreteras congestionadas"
+   ]
+  },
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility",
+   "infrastructure"
+  ],
+  "group": "Traffic",
+  "plain": "A map layer of the main roads drawn by how many vehicles pass each stretch on an average day: wider and darker where traffic is heavier.",
+  "definition": "traffic_roads.geojson: one line per stretch of a route with one count, with c (colour class: 1 fewer than 2,000 vehicles a day, 2 2,000-5,000, 3 5,000-10,000, 4 10,000-20,000, 5 20,000-40,000, 6 40,000 or more), a (annual average daily traffic), r (route), f (functional class: 1 interstate, 2 other freeway or expressway, 3 other principal arterial, 4 minor arterial, 5 major collector), y (year of the count or estimate), l (through lanes), km, t (trucks as % of vehicles, where reported), s (speed limit, mph) and o (one direction of a divided road).",
+  "geography": "3,829 stretches, 5,396.1 km of arterials and major collectors",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2025,
+   "last": 2025,
+   "frequency": "Data year 2025; counts taken from 2017 to 2026 (refresh unit traffic)"
+  },
+  "method": "traffic.py keeps the sections of functional classes 1 to 5 and facility types 1 and 2 with a count, joins consecutive sections of one route and direction with the same count, lanes, speed limit and date, and simplifies the lines to 12 m. Local streets are left out: their values are a few repeated low figures, estimates rather than counts.",
+  "sources": [
+   "fhwa_hpms"
+  ],
+  "source_detail": "FHWA Highway Performance Monitoring System, HPMS_FULL_PR_2025 (https://geo.dot.gov/server/rest/services/Hosted/HPMS_FULL_PR_2025/FeatureServer/0): aadt, aadt_vd, aadt_single_unit, aadt_combination, f_system, facility_type, section_length (miles), iri, county_id.",
+  "how_to_read": "Wider, darker lines carry more vehicles a day. Click a stretch for its count, the year of the count, trucks, lanes and speed limit. Turn on the Simulated connections between municipios with it to see the traffic on the roads a missing connection would follow.",
+  "caveats": [
+   "Counts are of different years: a stretch counted in 2017 shows 2017's traffic.",
+   "Annual average daily traffic is both directions on a two-way road and one direction on each side of a divided road.",
+   "Traffic is not congestion: the layer says how many vehicles pass, not how fast."
+  ],
+  "see_also": [
+   "infrastructure.traffic_vkt",
+   "infrastructure.traffic_max_aadt",
+   "layers.transit_links"
+  ],
+  "where": {
+   "files": [
+    "traffic_roads.geojson:*"
+   ],
+   "view": [
+    {
+     "label": "Map, Layers tab: Infrastructure and mobility",
+     "href": "index.html#l=traffic"
+    }
+   ]
+  }
+ }
+]

@@ -1,0 +1,106 @@
+{
+ "geo.crosswalk": {
+  "name": "Tabla de equivalencias geográficas (4,523 unidades en seis niveles)",
+  "how_to_read": "Una un conjunto de datos a la tabla de equivalencias por id, nunca por nombre. Un archivo cuyas filas llevan el id de una unidad se puede mostrar en ese nivel, sumar a la unidad superior cuando cuenta personas o cosas, o pasar con los pesos a un nivel que no encaja dentro de él. Reglas y ejemplos: docs/geography.md.",
+  "_en": {
+   "name": "c81fbc76",
+   "how_to_read": "0435ebc3"
+  }
+ },
+ "geo.unit_id": {
+  "name": "Id de la unidad (el código de un área)",
+  "how_to_read": "Guarde los ids como texto. Empiezan con 72, y el id de un sector censal tiene 11 dígitos, más de los que una hoja de cálculo conserva como número. Los primeros 5 dígitos del id de un barrio, un sector censal o un grupo de bloques son su municipio; los primeros 11 dígitos del id de un grupo de bloques son su sector censal.",
+  "_en": {
+   "name": "634aae2a",
+   "how_to_read": "13646988"
+  }
+ },
+ "geo.unit_parent": {
+  "name": "Unidad superior de una unidad",
+  "how_to_read": "Sume las unidades que contiene para obtener la unidad superior cuando se trata de conteos de personas, unidades de vivienda o lugares. No sume porcentajes, medianas ni promedios: vuelva a calcularlos a partir de sus partes.",
+  "_en": {
+   "name": "ce9e0d27",
+   "how_to_read": "9c95883b"
+  }
+ },
+ "geo.unit_names": {
+  "name": "Nombres de una unidad (name_es, name_en, norm)",
+  "how_to_read": "Muestre el municipio junto al nombre de un barrio, porque los nombres se repiten.",
+  "_en": {
+   "name": "118eec4d",
+   "how_to_read": "7a8590e7"
+  }
+ },
+ "geo.unit_km2": {
+  "name": "Superficie terrestre de una unidad (km²)",
+  "how_to_read": "Úsela como base de una densidad (residentes, unidades de vivienda o lugares por km²). Se mide sobre los límites propios del Negociado del Censo, no sobre los contornos simplificados que dibujan los mapas.",
+  "_en": {
+   "name": "6906665e",
+   "how_to_read": "c279e100"
+  }
+ },
+ "geo.unit_pop2020": {
+  "name": "Residentes de una unidad (Censo 2020)",
+  "how_to_read": "Es un conteo de 2020, no una cifra del presente. No lo compare con un estimado de encuesta de la misma área como si ambos midieran lo mismo: la encuesta es una muestra con margen de error.",
+  "_en": {
+   "name": "f130c1c7",
+   "how_to_read": "e6383f77"
+  }
+ },
+ "geo.unit_hu2020": {
+  "name": "Unidades de vivienda de una unidad (Censo 2020)",
+  "how_to_read": "Úselo como base de un conteo de viviendas o de una proporción de viviendas, y como peso en geo.weights_barrio_tract.",
+  "_en": {
+   "name": "7e128479",
+   "how_to_read": "3f44c152"
+  }
+ },
+ "geo.unit_point": {
+  "name": "Punto interno de una unidad (lat, lng)",
+  "how_to_read": "Úselo para poner una etiqueta en una unidad o para llevar el mapa hasta ella. No es el centro de la unidad ni el lugar donde vive la mayoría de las personas.",
+  "_en": {
+   "name": "ed0e7075",
+   "how_to_read": "24933d4b"
+  }
+ },
+ "geo.weights_barrio_tract": {
+  "name": "Pesos de barrio a sector censal (2,057 pares)",
+  "how_to_read": "Para repartir un conteo de los sectores censales entre los barrios, divida el conteo de cada sector entre sus barrios en proporción a las unidades de vivienda que cada barrio tiene en ese sector (las unidades de vivienda de la fila entre las unidades de vivienda del sector), y luego sume por barrio. Para pasar de barrios a sectores censales, haga lo mismo con los papeles invertidos. Identifique el resultado como 'estimado a partir de sectores censales con las unidades de vivienda de 2020' y no muestre margen de error para él. Cuando una tabla de la encuesta tenga las filas de barrio del propio Negociado del Censo, use esas.",
+  "_en": {
+   "name": "ad5c13e2",
+   "how_to_read": "7cede5cb"
+  }
+ },
+ "geo.tracts_layer": {
+  "name": "Contornos de los sectores censales (939 de 981; solo para dibujar)",
+  "how_to_read": "Únalos a la tabla de equivalencias por GEOID para nombrar un sector censal y dar sus conteos. Dibuje los contornos; no los mida.",
+  "_en": {
+   "name": "3d2939e5",
+   "how_to_read": "3a1af3be"
+  }
+ },
+ "geo.blockgroups_layer": {
+  "name": "Contornos de los grupos de bloques (2,513 de 2,555; solo para dibujar)",
+  "how_to_read": "Únalos a la tabla de equivalencias por GEOID para nombrar un grupo de bloques y dar sus conteos. Dibuje los contornos; no los mida.",
+  "_en": {
+   "name": "0e36b049",
+   "how_to_read": "18831bc7"
+  }
+ },
+ "geo.block_table": {
+  "name": "Tabla de bloques censales (41,987 bloques, la guarda el proceso de compilación)",
+  "how_to_read": "No es para mostrar. Para contar algo dentro de un área (residentes cerca de una parada, en una zona inundable, en un barrio), asigne cada bloque al área que contiene su punto interno y luego sume los residentes o las unidades de vivienda.",
+  "_en": {
+   "name": "42dcc2fa",
+   "how_to_read": "845f0588"
+  }
+ },
+ "methods.small_area_estimates": {
+  "name": "Cómo leer estimados de encuesta para áreas pequeñas (sectores censales, grupos de bloques, barrios)",
+  "how_to_read": "Compare áreas solo cuando sus márgenes sean pequeños en comparación con la diferencia. Margen de error típico como proporción del estimado en 2020-2024 (la mediana de las áreas que tienen ambos): valor mediano de la vivienda: 5% para un municipio, 17% para un barrio, 12% para un sector censal y 19% para un grupo de bloques; ingreso mediano del hogar: 9% para un municipio, 30% para un barrio y 25% para un sector censal (no se publica para grupos de bloques); alquiler bruto mediano: 9% para un municipio, 23% para un barrio y 24% para un sector censal; personas menores de 18 años: 7% para un municipio, 40% para un barrio, 32% para un sector censal y 57% para un grupo de bloques; tasa de vacancia: 12% para un municipio, 42% para un barrio, 34% para un sector censal y 58% para un grupo de bloques; tasa de desempleo: 28% para un municipio, 82% para un barrio y 72% para un sector censal. El CSV por área marca como menos confiable un valor cuyo margen de error supera el 30% del estimado (todavía ningún mapa ni tabla muestra las áreas por debajo del municipio); docs/small-area.md da la proporción de áreas marcadas para cada variable y nivel. El alquiler bruto mediano no tiene estimado para el 41% de los barrios y el 13% de los sectores censales (el 45% de los grupos de bloques en la tabla del Negociado del Censo, que el observatorio no publica). Para la proporción de hogares inquilinos que pagan 30% o más de su ingreso, que no se publica por debajo del municipio, el margen típico es de unos 18 puntos más o menos para un municipio, 36 para un sector censal y 55 para un grupo de bloques, entre las unidades con 20 hogares inquilinos o más.",
+  "_en": {
+   "name": "82e48d8e",
+   "how_to_read": "185d79cb"
+  }
+ }
+}

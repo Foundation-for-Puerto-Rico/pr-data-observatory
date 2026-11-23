@@ -1,0 +1,940 @@
+[
+  {
+    "id": "economy.fed_awards_total",
+    "name": "Federal awards, all types",
+    "domain": "public-money",
+    "domains": ["public-money"],
+    "group": "Federal awards by place of performance",
+    "kind": "variable",
+    "plain": "Federal money promised for work or benefits in a municipality in one fiscal year (October to September). It adds contracts, grants, direct payments, loans (at their estimated cost) and other aid. It is not money spent and does not measure need. San Juan's figure can include money meant for the whole island. The Puerto Rico figure also counts awards that name no municipality.",
+    "definition": "Sum of the five federal award groups in this dictionary (economy.fed_contracts, economy.fed_grants, economy.fed_direct_payments, economy.fed_loans and economy.fed_other) for one place and one federal fiscal year (FY), in dollars of that year. For a municipality, each group is the amount USAspending.gov reports for prime awards (awards made directly to the first recipient, not passed on) whose place of performance (where the awarding agency says the work is done or the benefit goes) is in the municipality, summed over the transactions dated from 1 October of the previous calendar year to 30 September of the year shown. For contracts, grants, direct payments and other assistance the amount is the money obligated. For loans it is the estimated subsidy cost, not the amount lent (see economy.fed_loans). A group with no amount for a municipality counts as zero. The Puerto Rico value is USAspending's total for the whole territory, by the same rules. It includes awards that name no municipality, so the 78 municipalities add up to less than the Puerto Rico value.",
+    "unit": "US dollars in the federal fiscal year: obligations, plus the estimated subsidy cost of loans (not adjusted for inflation)",
+    "value_type": "level",
+    "geography": "78 municipalities and Puerto Rico (USAspending's territory total, which includes awards that name no municipality)",
+    "coverage": {
+      "timeline": "annual",
+      "first": 2008,
+      "last": 2025,
+      "frequency": "One value per federal fiscal year (1 October to 30 September). The observatory treats a year as complete on 15 November, about six weeks after it ends, and adds it then. In the 2026-10 snapshot the file ends with FY2025."
+    },
+    "method": "economy_series.py, functions usaspending and last_fy, and the build step after them. For each fiscal year from 2008 and each of the five award groups, the build sends two requests to the USAspending 'spending by geography' service, both by place of performance with subawards off. The county layer, filtered to the 78 municipality codes, gives each municipality's amount. The state layer, filtered to the code PR (the postal code under which USAspending keys the territory), gives the amount for the whole territory; this is the Puerto Rico value of that group. The total adds the five group values for each place and rounds to whole dollars; it differs from the sum of the group values by at most $0.50. The Puerto Rico value is not the sum of the 78 municipalities. See economy.fed_place_of_performance for the full request, the dates and how the share that names no municipality is calculated (stored in economy_series.json under extras.fed_unplaced_share). Each year is downloaded once and kept until the data are next refreshed for a new snapshot.",
+    "sources": [
+      "usaspending"
+    ],
+    "source_detail": "USAspending.gov, search service 'spending by geography' (api.usaspending.gov/api/v2/search/spending_by_geography/): scope place_of_performance, county layer for the 78 municipality codes and state layer for the code PR, prime awards only (subawards off), federal fiscal years 2008 to 2025, retrieved 2026-10-03 to 2026-10-04.",
+    "how_to_read": "Compare municipalities per resident or as a share, not in raw dollars. In the 2026-10 snapshot, San Juan has 10.4% of the island's residents (Census 2020) and between 25.9% (FY2012) and 70.6% (FY2010) of the Puerto Rico value, or between 31.9% and 76.9% of the dollars that name a municipality. The data show that San Juan's share is high; they do not show how much of it serves other places. Also in the 2026-10 snapshot, the Puerto Rico value was $11.9 billion in FY2008, peaked at $65.2 billion in FY2021 and was $38.4 billion in FY2025. Between 3.4% (FY2011) and 24.7% (FY2024) of each year's Puerto Rico value names no municipality (the 'unplaced' share), so the 78 municipalities add up to less than the island; the share is 21.6% ($8.3 billion) in FY2025. In the same snapshot, grants hold the largest unplaced amount in 11 of the 18 years and direct payments in the other seven. Direct payments are 80% of the Puerto Rico value in FY2008 and 73% in FY2025. Grants drive the peak years: $22.3 billion in FY2020 and $35.0 billion in FY2021. A municipality's value is money recorded to its place, not what its residents received. In the same snapshot, FY2009 to FY2013 totals include $1.3 to $5.6 billion a year of other assistance, mostly recorded to Adjuntas (in FY2011, other assistance is 27% of the Puerto Rico value and Adjuntas alone is 25%; see economy.fed_other). Compare the totals without that group, or compare other years, before reading a trend.",
+    "caveats": [
+      "These are obligations: amounts the federal government committed to pay. They are not outlays, which are the dollars actually paid out. Some obligated money is paid in later years and some is never paid.",
+      "The loans part of this total is the estimated cost to the government of loans and loan guarantees (subsidy cost), not the amount lent, and it can be negative (see economy.fed_loans). It is small next to the other groups: in the 2026-10 snapshot, at most 4.1% of the Puerto Rico value in any year (FY2020). The total is therefore not the sum of all federal money lent, granted and paid.",
+      "The Analysis tab's description of this dataset states that awards to the Commonwealth government for statewide programs are often attributed to San Juan. San Juan's figures can therefore include money that serves other places, and other municipalities' figures can be low. The data cannot separate money spent in San Juan from money only recorded there.",
+      "Place of performance is what the awarding agency reports, and the observatory does not check it.",
+      "The Puerto Rico value is USAspending's total for the territory (state layer, code PR), not the sum of the 78 municipalities. It includes awards that name no municipality. In the 2026-10 snapshot, for FY2025 those awards are about $8.3 billion, or 21.6% of the all-types value: $38.4 billion for Puerto Rico against $30.1 billion in the 78 municipalities (grants $9.4 billion against $4.2 billion; direct payments $28.0 billion against $25.0 billion; contracts the same). The share for every year is in economy_series.json under extras.fed_unplaced_share and in the information window of the dataset on the Analysis tab. In the same snapshot, San Juan's FY2025 value is 36.1% of the Puerto Rico value and 46.0% of the sum of the 78 municipalities.",
+      "Because the Puerto Rico value includes unplaced awards (awards that name no municipality), a Puerto Rico value per resident is not comparable with a municipality's, and the municipalities' '% of the Puerto Rico total' add up to less than 100% (between 75.3% and 96.6% in the 2026-10 snapshot, depending on the year).",
+      "Only prime awards of the types listed in the five group entries are requested. Subawards, which are amounts a recipient passes on to others, are not included.",
+      "Dollars are those of each year, not adjusted for inflation. The Analysis tab can restate them in dollars of the latest year of the US Consumer Price Index for All Urban Consumers (CPI-U) in the file (2025 in the 2026-10 snapshot; see measures.inflation_adjustment). The observatory holds no Puerto Rico price index, so adjusted dollars are an approximation. The index in the file starts in 2000, so every federal fiscal year (FY2008 onward) is adjusted with its own year's index. The population series behind 'per resident' (see measures.per_resident) starts in 2010, so FY2008 and FY2009 use the 2010 population.",
+      "The Analysis tab's year control, trend chart and small trend lines start at 2010, so FY2008 and FY2009 are not shown on the map. They are in the all-years comma-separated values (CSV) download and in economy_series.json, in dollars of each year. In the inspector, a caption under each small trend line gives its length and span (for example '16 yrs · 2010–25') and, when some years have no value, how many values it holds.",
+      "The population series behind 'per resident' steps up at 2020 (about 3% for Puerto Rico) because the 2011 to 2019 estimates were not revised to the 2020 census (see methods.population_vintage_break). A per-resident change from FY2019 to FY2020 includes that step.",
+      "On the Analysis tab a federal award year is labelled with its end year: 2025 means 1 October 2024 to 30 September 2025. Jobs series are calendar years, American Community Survey (ACS) income and poverty are five-year windows, and Federal Emergency Management Agency (FEMA) values are declaration years. The year control applies one number to all of them.",
+      "A negative amount is a reduction of an earlier amount (for loans, a lower estimated cost). Some groups have negative values for some places and years (see the group entries). In the 2026-10 snapshot no municipality's total is negative; the smallest is Culebra in FY2010 ($903,484).",
+      "Some jumps come from one group or one municipality, for example Adjuntas in FY2009 to FY2013 under 'other assistance' (see economy.fed_other). See the group entries before reading a change as a trend.",
+      "The 2026-10 snapshot does not include FY2026, which ended on 30 September 2026. The observatory adds a year when it treats it as complete, on 15 November, about six weeks after the year ends. USAspending can still correct earlier records, and the observatory keeps a year after one download, so an older year can differ from the live USAspending site until the data are downloaded again.",
+      "USAspending.gov states no license for these data (see the source record). Check its terms before reuse."
+    ],
+    "see_also": [
+      "economy.fed_contracts",
+      "economy.fed_grants",
+      "economy.fed_direct_payments",
+      "economy.fed_loans",
+      "economy.fed_other",
+      "economy.fed_place_of_performance",
+      "economy.fema_pa_obligated",
+      "housing.fema_ia_amount",
+      "measures.inflation_adjustment",
+      "measures.per_resident",
+      "methods.citation",
+      "methods.population_vintage_break"
+    ],
+    "where": {
+      "files": [
+        "economy_series.json:fed_awards_total"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Public money): shade municipalities by dollars per resident",
+          "href": "index.html#e=fed_awards_total.f.perCapita.blue.q.1.1.0.85.0&ey=2025"
+        }
+      ]
+    },
+    "example": "Snapshot 2026-10, FY2025: Puerto Rico value $38,433,551,211; the 78 municipalities add up to $30,131,755,392; San Juan $13,873,934,425 (36.1% of the Puerto Rico value, 46.0% of the municipalities' sum); Culebra $8,420,343.",
+    "added": "2026-10-03"
+  },
+  {
+    "id": "economy.fed_contracts",
+    "name": "Federal contracts",
+    "domain": "public-money",
+    "domains": ["public-money"],
+    "group": "Federal awards by place of performance",
+    "kind": "variable",
+    "plain": "A federal contract is an agreement to pay a company or agency for goods or services. This is the money the government promised for contract work in the municipality in one fiscal year (October to September). It is money promised, not money spent. It can be negative when an earlier contract amount is cut.",
+    "definition": "Obligations for prime contract awards (awards made directly to the first recipient, not passed on) of types A, B, C and D whose place of performance (where the awarding agency says the work is done or the benefit goes) is in the municipality, summed over transactions dated in the federal fiscal year (FY, 1 October to 30 September), in dollars of that year. A later change that lowers an earlier contract amount is a negative transaction, so a municipality's yearly value can be negative. The Puerto Rico value is USAspending's territory total for the same award types; it also counts awards that name no municipality.",
+    "unit": "US dollars obligated in the federal fiscal year (not adjusted for inflation)",
+    "value_type": "level",
+    "geography": "78 municipalities and Puerto Rico (USAspending's territory total, which includes awards that name no municipality)",
+    "coverage": {
+      "timeline": "annual",
+      "first": 2008,
+      "last": 2025,
+      "frequency": "One value per federal fiscal year (1 October to 30 September). A year is added about six weeks after it ends, from 15 November. In the 2026-10 snapshot the file ends with FY2025."
+    },
+    "method": "Same request as economy.fed_awards_total, with award type codes A, B, C and D (AWARD_TYPES['contracts'] in economy_series.py). The value for each municipality is the 'aggregated_amount' that the USAspending 'spending by geography' service returns at the county layer for that year; the Puerto Rico value is the amount it returns at the state layer for the code PR. The source describes these amounts as obligations by federal fiscal year. Values keep cents.",
+    "values": {
+      "A": "BPA Call: an order placed under a blanket purchase agreement",
+      "B": "Purchase Order",
+      "C": "Delivery Order: an order placed under an existing contract vehicle",
+      "D": "Definitive Contract"
+    },
+    "sources": [
+      "usaspending"
+    ],
+    "source_detail": "USAspending.gov, search service 'spending by geography' (api.usaspending.gov/api/v2/search/spending_by_geography/): scope place_of_performance, county layer for the 78 municipality codes and state layer for the code PR, prime awards only (subawards off), federal fiscal years 2008 to 2025, retrieved 2026-10-03 to 2026-10-04. Award type codes A, B, C, D.",
+    "how_to_read": "Use it to see where federal purchases are recorded, and compare places per resident. In the 2026-10 snapshot, San Juan's share of the Puerto Rico contract value runs from 18.4% (FY2021) to 64.8% (FY2023). Contracts are almost all placed in a municipality: 0.0% to 3.3% of each year's Puerto Rico contract value names no municipality. A blank cell means USAspending returned no amount for that municipality and year; the data cannot tell a missing record from no activity.",
+    "caveats": [
+      "In the 2026-10 snapshot, of the 1,404 municipality-year cells (78 municipalities, 18 years), 245 are blank, 27 are zero and 63 are negative.",
+      "In the same snapshot, negative values appear in every year. The largest are Caguas in FY2018 (minus $60.5 million) and Dorado in FY2023 (minus $16.9 million). They are reductions of earlier commitments, not money taken from the municipality.",
+      "In the same snapshot, the Puerto Rico value is $4.6 billion in FY2018, more than four times FY2017 ($987.6 million). The data do not show which contracts account for the rise.",
+      "Place of performance is where the awarding agency says the work is done. It is not the contractor's address. Work for the whole island can be recorded in the capital (see economy.fed_awards_total).",
+      "These are obligations (amounts the federal government committed to pay), not outlays (money actually paid out).",
+      "Dollars are those of each year, not adjusted for inflation. The Analysis tab's year control, trend chart and small trend lines start at 2010, so FY2008 and FY2009 are not shown on the map; they are in the all-years comma-separated values (CSV) download and in economy_series.json. For the tab's inflation and per-resident options, see economy.fed_awards_total.",
+      "Do not use the tab's 'Change since the base year' option for this series: a negative or near-zero base year gives meaningless percentages (see economy.fed_loans)."
+    ],
+    "see_also": [
+      "economy.fed_awards_total",
+      "economy.fed_place_of_performance",
+      "economy.fed_grants",
+      "economy.fed_loans",
+      "measures.inflation_adjustment",
+      "measures.per_resident",
+      "methods.citation",
+      "measures.change_since_base_year"
+    ],
+    "where": {
+      "files": [
+        "economy_series.json:fed_contracts"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Public money): shade municipalities by dollars per resident",
+          "href": "index.html#e=fed_contracts.f.perCapita.blue.q.1.1.0.85.0&ey=2025"
+        }
+      ]
+    },
+    "example": "Snapshot 2026-10, FY2018: Puerto Rico $4,596,416,402; San Juan $2,865,672,795; Caguas minus $60,492,902.",
+    "added": "2026-10-03"
+  },
+  {
+    "id": "economy.fed_grants",
+    "name": "Federal grants",
+    "domain": "public-money",
+    "domains": ["public-money"],
+    "group": "Federal awards by place of performance",
+    "kind": "variable",
+    "plain": "Federal grants, which give money for a public purpose instead of buying goods or services, recorded for places in the municipality in a fiscal year. They are money promised, not money spent. In the 2026-10 snapshot, San Juan holds most of the grant dollars that name a municipality, and in some years more than half of the island's grant dollars name no municipality.",
+    "definition": "Obligations for prime grant awards (awards made directly to the first recipient, not passed on) of types 02, 03, 04 and 05 whose place of performance (where the awarding agency says the work is done or the benefit goes) is in the municipality, summed over transactions dated in the federal fiscal year (FY, 1 October to 30 September), in dollars of that year. The Analysis tab's description of the dataset states that disaster-recovery grants and block grants are included. A later change that lowers an earlier award is a negative transaction. The Puerto Rico value is USAspending's territory total for grants; it also counts grants that name no municipality.",
+    "unit": "US dollars obligated in the federal fiscal year (not adjusted for inflation)",
+    "value_type": "level",
+    "geography": "78 municipalities and Puerto Rico (USAspending's territory total, which includes awards that name no municipality)",
+    "coverage": {
+      "timeline": "annual",
+      "first": 2008,
+      "last": 2025,
+      "frequency": "One value per federal fiscal year (1 October to 30 September). A year is added about six weeks after it ends, from 15 November. In the 2026-10 snapshot the file ends with FY2025."
+    },
+    "method": "Same request as economy.fed_awards_total, with award type codes 02, 03, 04 and 05 (AWARD_TYPES['grants'] in economy_series.py). The value for each municipality is the 'aggregated_amount' that the USAspending 'spending by geography' service returns at the county layer for that year; the Puerto Rico value is the amount it returns at the state layer for the code PR. The source describes these amounts as obligations by federal fiscal year.",
+    "values": {
+      "02": "Block Grant",
+      "03": "Formula Grant",
+      "04": "Project Grant",
+      "05": "Cooperative Agreement"
+    },
+    "sources": [
+      "usaspending"
+    ],
+    "source_detail": "USAspending.gov, search service 'spending by geography' (api.usaspending.gov/api/v2/search/spending_by_geography/): scope place_of_performance, county layer for the 78 municipality codes and state layer for the code PR, prime awards only (subawards off), federal fiscal years 2008 to 2025, retrieved 2026-10-03 to 2026-10-04. Award type codes 02, 03, 04, 05.",
+    "how_to_read": "In the 2026-10 snapshot, the Puerto Rico value is $1.5 billion in FY2008, $22.3 billion in FY2020, $35.0 billion in FY2021 and $9.4 billion in FY2025. Between 5.2% (FY2014) and 61.6% (FY2017) of each year's Puerto Rico grant value names no municipality; in FY2025 it is 55.6% ($9.4 billion against $4.2 billion in the 78 municipalities). San Juan holds 83.5% (FY2017) to 96.8% (FY2008) of the grant dollars that name a municipality, and 32.0% (FY2017) to 88.5% (FY2014) of the Puerto Rico value. San Juan's share is the recording pattern described in economy.fed_awards_total, so a map of grants per resident mostly lights up the capital. The data do not show which programs make up the FY2020 and FY2021 peak.",
+    "caveats": [
+      "In the 2026-10 snapshot, of the 1,404 municipality-year cells (78 municipalities, 18 years), 327 are blank, 36 are zero and 31 are negative.",
+      "In the same snapshot, more municipalities have a recorded amount in later years: 20 of 78 in FY2008 and 71 of 78 in FY2025. The data do not say whether this reflects new grants or fuller reporting.",
+      "The Analysis tab's description of the all-types series (economy.fed_awards_total) states that awards to the Commonwealth government for statewide programs are often attributed to San Juan. San Juan's figures can therefore include money that serves other places, and other municipalities' figures can be low. The data cannot separate money spent in San Juan from money only recorded there.",
+      "The Puerto Rico grant value is USAspending's territory total, so it includes grants that name no municipality. In the 2026-10 snapshot that is $9.4 billion for Puerto Rico against $4.2 billion in the 78 municipalities in FY2025, and $4.8 billion against $1.9 billion in FY2017. The 78 municipalities therefore show only part of the island's grant money (see economy.fed_place_of_performance).",
+      "Federal Emergency Management Agency (FEMA) Public Assistance (see economy.fema_pa_obligated) is itself a federal grant program, so some of that money may also be counted here. The observatory does not reconcile the two series, which use different time bases (the date of each award transaction here, the year of the disaster declaration there). Do not add them.",
+      "These are obligations (amounts the federal government committed to pay), not outlays (money actually paid out).",
+      "Dollars are those of each year, not adjusted for inflation. The Analysis tab's year control, trend chart and small trend lines start at 2010, so FY2008 and FY2009 are not shown on the map; they are in the all-years comma-separated values (CSV) download and in economy_series.json. For the tab's inflation and per-resident options, see economy.fed_awards_total.",
+      "Do not use the tab's 'Change since the base year' option for this series: a negative or near-zero base year gives meaningless percentages (see economy.fed_loans)."
+    ],
+    "see_also": [
+      "economy.fed_awards_total",
+      "economy.fed_place_of_performance",
+      "economy.fema_pa_obligated",
+      "economy.fed_loans",
+      "measures.inflation_adjustment",
+      "measures.per_resident",
+      "methods.citation",
+      "measures.change_since_base_year",
+      "study.table_10"
+    ],
+    "where": {
+      "files": [
+        "economy_series.json:fed_grants"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Public money): shade municipalities by dollars per resident",
+          "href": "index.html#e=fed_grants.f.perCapita.blue.q.1.1.0.85.0&ey=2025"
+        }
+      ]
+    },
+    "example": "Snapshot 2026-10, FY2021: Puerto Rico $34,963,552,362; San Juan $28,052,369,084 (80.2% of the Puerto Rico value, 94.2% of the sum of the 78 municipalities).",
+    "added": "2026-10-03"
+  },
+  {
+    "id": "economy.fed_direct_payments",
+    "name": "Federal direct payments",
+    "domain": "public-money",
+    "domains": ["public-money"],
+    "group": "Federal awards by place of performance",
+    "kind": "variable",
+    "plain": "Money the federal government committed to pay straight to recipients, for example through benefit programs rather than a grant or a loan, recorded for places in the municipality in a fiscal year. It is money promised, not money spent. In the 2026-10 snapshot it is the largest of the five groups in 17 of the 18 years.",
+    "definition": "Obligations for prime direct payment awards (awards made directly to the first recipient, not passed on) of types 06 and 10 whose place of performance (where the awarding agency says the work is done or the benefit goes) is in the municipality, summed over transactions dated in the federal fiscal year (FY, 1 October to 30 September), in dollars of that year. The Analysis tab's description of the dataset calls them federal direct payments to individuals, for example benefit programs. The Puerto Rico value is USAspending's territory total for these award types; it also counts payments that name no municipality.",
+    "unit": "US dollars obligated in the federal fiscal year (not adjusted for inflation)",
+    "value_type": "level",
+    "geography": "78 municipalities and Puerto Rico (USAspending's territory total, which includes awards that name no municipality)",
+    "coverage": {
+      "timeline": "annual",
+      "first": 2008,
+      "last": 2025,
+      "frequency": "One value per federal fiscal year (1 October to 30 September). A year is added about six weeks after it ends, from 15 November. In the 2026-10 snapshot the file ends with FY2025."
+    },
+    "method": "Same request as economy.fed_awards_total, with award type codes 06 and 10 (AWARD_TYPES['direct_payments'] in economy_series.py). The value for each municipality is the 'aggregated_amount' that the USAspending 'spending by geography' service returns at the county layer for that year; the Puerto Rico value is the amount it returns at the state layer for the code PR. The source describes these amounts as obligations by federal fiscal year.",
+    "values": {
+      "06": "Direct Payment for Specified Use",
+      "10": "Direct Payment with Unrestricted Use"
+    },
+    "sources": [
+      "usaspending"
+    ],
+    "source_detail": "USAspending.gov, search service 'spending by geography' (api.usaspending.gov/api/v2/search/spending_by_geography/): scope place_of_performance, county layer for the 78 municipality codes and state layer for the code PR, prime awards only (subawards off), federal fiscal years 2008 to 2025, retrieved 2026-10-03 to 2026-10-04. Award type codes 06, 10.",
+    "how_to_read": "In the 2026-10 snapshot, every municipality has a positive value in every year (no blank, zero or negative cells), and the Puerto Rico value rises from $9.5 billion in FY2008 to $28.0 billion in FY2025. It is 80% of the all-types Puerto Rico value in FY2008 and 73% in FY2025; only in FY2021 are grants larger. Use it per resident to compare places. A municipality's value is money recorded to its place, not a count of people who received a payment.",
+    "caveats": [
+      "The capital's share changes sharply between years. In the 2026-10 snapshot, San Juan holds 85.8% of the Puerto Rico direct-payment value in FY2010, 59.6% in FY2011, 22.1% in FY2012 and 19.3% in FY2016. Between FY2011 and FY2012 San Juan's dollars fall from $6.7 billion to $3.5 billion while the dollars that name a municipality stay between $11.2 billion and $11.7 billion. The data do not say why. Do not read changes in a municipality's value across those years as changes in what its residents received.",
+      "The amount that names no municipality jumps in the same years. In the 2026-10 snapshot, USAspending's Puerto Rico total for direct payments is $11.2 billion in FY2011 and $15.8 billion in FY2012, while the 78 municipalities add up to $11.2 billion and $11.7 billion. The part that names no municipality rises from $0.5 million (0.0%) in FY2011 to $4.1 billion (26.1%) in FY2012, and is $4.5 billion in FY2013 and $5.2 billion (28.7%) in FY2016. The timing matches the fall in San Juan's share; the data do not show whether the same awards moved.",
+      "Payments of types 06 and 10 are recorded by place of performance as the awarding agency reports it. The data do not say whether an agency recorded a payment by the recipient's home or by its own office.",
+      "These are obligations (amounts the federal government committed to pay), not outlays (money actually paid out).",
+      "Dollars are those of each year, not adjusted for inflation. The Analysis tab's year control, trend chart and small trend lines start at 2010, so FY2008 and FY2009 are not shown on the map; they are in the all-years comma-separated values (CSV) download and in economy_series.json. For the tab's inflation and per-resident options, see economy.fed_awards_total."
+    ],
+    "see_also": [
+      "economy.fed_awards_total",
+      "economy.fed_place_of_performance",
+      "economy.fed_grants",
+      "measures.inflation_adjustment",
+      "measures.per_resident",
+      "methods.citation"
+    ],
+    "where": {
+      "files": [
+        "economy_series.json:fed_direct_payments"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Public money): shade municipalities by dollars per resident",
+          "href": "index.html#e=fed_direct_payments.f.perCapita.blue.q.1.1.0.85.0&ey=2025"
+        }
+      ]
+    },
+    "example": "Snapshot 2026-10, FY2025: Puerto Rico $28,046,924,302; San Juan $10,002,989,216 (35.7% of the Puerto Rico value, 40.0% of the sum of the 78 municipalities).",
+    "added": "2026-10-03"
+  },
+  {
+    "id": "economy.fed_loans",
+    "name": "Federal loans (estimated cost to the government)",
+    "domain": "public-money",
+    "domains": ["public-money"],
+    "group": "Federal awards by place of performance",
+    "kind": "variable",
+    "plain": "This is what the federal government expects its loans and loan guarantees to cost, for loans recorded in a municipality in one fiscal year (October to September). A loan guarantee is a promise to repay a lender if a borrower does not pay. The value is not the amount lent. It can be negative: in the 2026-10 snapshot the Puerto Rico value is negative in four of the 18 years.",
+    "definition": "For prime loan awards (awards made directly to the first recipient, not passed on) of types 07 (direct loan) and 08 (guaranteed or insured loan) whose place of performance (where the awarding agency says the work is done or the benefit goes) is in the municipality: the sum, over transactions dated in the federal fiscal year (FY, 1 October to 30 September), of the amount that USAspending's 'spending by geography' service returns. For loans that amount is the transaction's subsidy cost, not the loan's face value. The subsidy cost is the government's estimate of what a loan will cost it over its life after repayments and expected defaults. The Puerto Rico value is USAspending's territory total of the same amount; it also counts loans that name no municipality.",
+    "unit": "US dollars of subsidy cost (the estimated federal cost of loans and loan guarantees) in the federal fiscal year (not adjusted for inflation)",
+    "value_type": "level",
+    "geography": "78 municipalities and Puerto Rico (USAspending's territory total, which includes awards that name no municipality)",
+    "coverage": {
+      "timeline": "annual",
+      "first": 2008,
+      "last": 2025,
+      "frequency": "One value per federal fiscal year (1 October to 30 September). A year is added about six weeks after it ends, from 15 November. In the 2026-10 snapshot the file ends with FY2025."
+    },
+    "method": "Same request as economy.fed_awards_total, with award type codes 07 and 08 (AWARD_TYPES['loans'] in economy_series.py). The value for each municipality is the amount the county layer returns; the Puerto Rico value is the amount the state layer returns for the code PR. A check against the USAspending transaction search (2026-10-04): for San Juan in FY2023 the series value (minus $22,611,464.66) equals, to the cent, the sum of the Subsidy Cost field over the 6,266 loan transactions listed for that place and year. The sum of their Loan Value field (the face value) is $915,747,493.98 and is not what the series holds. To repeat the check, POST to api.usaspending.gov/api/v2/search/spending_by_transaction_count/ with award_type_codes 07 and 08, place of performance state PR and county 127 and action dates 2022-10-01 to 2023-09-30 (it returns 6,266 loan transactions), then add up the Subsidy Cost and Loan Value fields of the same transactions from search/spending_by_transaction/, 100 rows per page.",
+    "values": {
+      "07": "Direct Loan",
+      "08": "Guaranteed/Insured Loan"
+    },
+    "sources": [
+      "usaspending"
+    ],
+    "source_detail": "USAspending.gov, search service 'spending by geography' (api.usaspending.gov/api/v2/search/spending_by_geography/): scope place_of_performance, county layer for the 78 municipality codes and state layer for the code PR, prime awards only (subawards off), federal fiscal years 2008 to 2025, retrieved 2026-10-03 to 2026-10-04. Award type codes 07, 08.",
+    "how_to_read": "Read it as a rough signal of the federal cost of loan programs in a place, not of how much credit people or firms received. In the 2026-10 snapshot, the Puerto Rico value is between $1.5 million and $7.6 million a year from FY2009 to FY2017, then $159.2 million in FY2018, $2.0 billion in FY2020, $1.0 billion in FY2021, and negative in FY2008, FY2019, FY2023 and FY2025.",
+    "caveats": [
+      "In the 2026-10 snapshot, of the 1,404 municipality-year cells (78 municipalities, 18 years), 25 are blank, 76 are zero and 187 are negative.",
+      "Shares of the Puerto Rico value mean little when it is near zero or negative. In the 2026-10 snapshot, San Juan's FY2023 value (minus $22.6 million) is 199.0% of the Puerto Rico value (minus $11.4 million). For that reason the Analysis tab does not offer '% of the Puerto Rico total' for this series.",
+      "Do not use the tab's 'Change since the base year' option for this series: with a negative or near-zero base year the percentages are meaningless (a move from minus $10 million to minus $5 million shows as minus 50%). On a symbol layer, the blue 'increase' and red 'decrease' labels mean positive and negative amounts, not change over time.",
+      "In the same snapshot, the largest negative values are in San Juan: minus $21.5 million in FY2019, minus $22.6 million in FY2023 and minus $10.8 million in FY2025. A negative value means the government's estimated cost went down, for example because an estimate was revised or a loan was reduced. It is not a payment from the municipality.",
+      "USAspending places loans by the place of performance that the awarding agency reports. San Juan holds a large share in some years (30.4% of the Puerto Rico value in FY2021 in the 2026-10 snapshot), and the data do not say how much of it serves other places.",
+      "The Puerto Rico value is USAspending's territory total, not the sum of the 78 municipalities. Because loan amounts are small and can be negative, the two can differ by a few million dollars (FY2025 in the 2026-10 snapshot: minus $8.7 million for Puerto Rico against minus $10.5 million in the 78 municipalities).",
+      "These values are the estimated cost of loans, not the amount lent and not outlays (money actually paid out).",
+      "Dollars are those of each year, not adjusted for inflation. The Analysis tab's year control, trend chart and small trend lines start at 2010, so FY2008 and FY2009 are not shown on the map; they are in the all-years comma-separated values (CSV) download and in economy_series.json. For the tab's inflation and per-resident options, see economy.fed_awards_total."
+    ],
+    "see_also": [
+      "economy.fed_awards_total",
+      "economy.fed_place_of_performance",
+      "economy.fed_other",
+      "measures.inflation_adjustment",
+      "measures.per_resident",
+      "methods.citation",
+      "measures.change_since_base_year"
+    ],
+    "where": {
+      "files": [
+        "economy_series.json:fed_loans"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Public money): shade municipalities by dollars per resident",
+          "href": "index.html#e=fed_loans.f.perCapita.blue.q.1.1.0.85.0&ey=2025"
+        }
+      ]
+    },
+    "example": "Snapshot 2026-10, FY2023: Puerto Rico minus $11,361,406; the 78 municipalities add up to minus $13,498,606; San Juan minus $22,611,465.",
+    "added": "2026-10-03"
+  },
+  {
+    "id": "economy.fed_other",
+    "name": "Federal other assistance",
+    "domain": "public-money",
+    "domains": ["public-money"],
+    "group": "Federal awards by place of performance",
+    "kind": "variable",
+    "plain": "Federal insurance and other aid that is not a contract, grant, direct payment or loan, recorded for places in the municipality in a fiscal year. In the 2026-10 snapshot, Adjuntas holds about 90% to 94% of this group's dollars from FY2009 to FY2013, and the data do not say why.",
+    "definition": "Obligations for prime awards (awards made directly to the first recipient, not passed on) of types 09 (insurance), 11 (other financial assistance) and -1 (type not specified; it adds nothing in this file) whose place of performance (where the awarding agency says the work is done or the benefit goes) is in the municipality, summed over transactions dated in the federal fiscal year (FY, 1 October to 30 September), in dollars of that year. The Puerto Rico value is USAspending's territory total for these types; it also counts awards that name no municipality.",
+    "unit": "US dollars obligated in the federal fiscal year (not adjusted for inflation)",
+    "value_type": "level",
+    "geography": "78 municipalities and Puerto Rico (USAspending's territory total, which includes awards that name no municipality)",
+    "coverage": {
+      "timeline": "annual",
+      "first": 2008,
+      "last": 2025,
+      "frequency": "One value per federal fiscal year (1 October to 30 September). A year is added about six weeks after it ends, from 15 November. In the 2026-10 snapshot the file ends with FY2025."
+    },
+    "method": "Same request as economy.fed_awards_total, with award type codes 09, 11 and -1 (AWARD_TYPES['other'] in economy_series.py). The value for each municipality is the 'aggregated_amount' that the USAspending 'spending by geography' service returns at the county layer for that year; the Puerto Rico value is the amount it returns at the state layer for the code PR. The source describes these amounts as obligations by federal fiscal year.",
+    "values": {
+      "09": "Insurance",
+      "11": "Other Financial Assistance",
+      "-1": "Type not specified. The code is requested, but USAspending returned no transactions with it for Puerto Rico in any year from FY2008 to FY2025 (checked 2026-10-04), so it adds nothing."
+    },
+    "sources": [
+      "usaspending"
+    ],
+    "source_detail": "USAspending.gov, search service 'spending by geography' (api.usaspending.gov/api/v2/search/spending_by_geography/): scope place_of_performance, county layer for the 78 municipality codes and state layer for the code PR, prime awards only (subawards off), federal fiscal years 2008 to 2025, retrieved 2026-10-03 to 2026-10-04. Award type codes 09, 11, -1.",
+    "how_to_read": "Treat this group with care: it holds what the other four groups do not, and its yearly values change by large steps. In the 2026-10 snapshot, the Puerto Rico value is $7.2 million in FY2008, $2.3 billion in FY2009, between $1.3 billion and $5.6 billion in FY2010 to FY2013, about $594.1 million in FY2014, $239.2 million in FY2023 and $26.3 million in FY2025. In FY2009 to FY2013 it is 7% to 27% of the all-types Puerto Rico value in economy.fed_awards_total (27% in FY2011, 20% in FY2012). The data do not show which awards cause these steps.",
+    "caveats": [
+      "In the 2026-10 snapshot, of the 1,404 municipality-year cells (78 municipalities, 18 years), 131 are blank, 0 are zero and 15 are negative. The blank cells are mostly in FY2008 (68 of 78) and FY2009 (62 of 78). The 15 negative cells are all in FY2024 (7) and FY2025 (8).",
+      "In the same snapshot, Adjuntas shows $2.2 billion in FY2009, $1.2 billion in FY2010, $5.1 billion in FY2011, $4.6 billion in FY2012 and $4.4 billion in FY2013. That is 89.9% to 93.5% of the Puerto Rico value in this group, and it puts Adjuntas second only to San Juan in the all-types total (7.0% to 25.0% of the Puerto Rico value). In FY2014 Adjuntas falls to $2.1 million. Adjuntas had 18,020 residents in the 2020 Census. The data do not say which award this is. Check USAspending before using Adjuntas or the Puerto Rico value for these five years.",
+      "The Puerto Rico value is USAspending's territory total. For this group it is close to the sum of the 78 municipalities in most years. In the 2026-10 snapshot, 11.5% (FY2024) and 7.9% (FY2025) of it names no municipality, and in FY2008 the 78 municipalities add up to $1.6 million more than the Puerto Rico value ($8.8 million against $7.2 million). The data do not say why.",
+      "These are obligations (amounts the federal government committed to pay), not outlays (money actually paid out).",
+      "Dollars are those of each year, not adjusted for inflation. The Analysis tab's year control, trend chart and small trend lines start at 2010, so FY2008 and FY2009 are not shown on the map; they are in the all-years comma-separated values (CSV) download and in economy_series.json. For the tab's inflation and per-resident options, see economy.fed_awards_total.",
+      "Do not use the tab's 'Change since the base year' option for this series: a negative or near-zero base year gives meaningless percentages (see economy.fed_loans)."
+    ],
+    "see_also": [
+      "economy.fed_awards_total",
+      "economy.fed_place_of_performance",
+      "economy.fed_loans",
+      "measures.inflation_adjustment",
+      "measures.per_resident",
+      "methods.citation"
+    ],
+    "where": {
+      "files": [
+        "economy_series.json:fed_other"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Public money): shade municipalities by dollars per resident",
+          "href": "index.html#e=fed_other.f.perCapita.blue.q.1.1.0.85.0&ey=2025"
+        }
+      ]
+    },
+    "example": "Snapshot 2026-10, FY2011: Puerto Rico $5,585,227,884; Adjuntas $5,089,909,411.",
+    "added": "2026-10-03"
+  },
+  {
+    "id": "economy.fed_place_of_performance",
+    "name": "How federal award dollars are placed in a municipality",
+    "domain": "public-money",
+    "domains": ["public-money"],
+    "group": "Federal awards by place of performance",
+    "kind": "method",
+    "plain": "USAspending records each award where the awarding agency says the work is done or the benefit goes. Awards for the whole island are often recorded in San Juan, so San Juan's figures can include money meant for other places and other municipalities' figures can be low. The Puerto Rico figure is the territory total, which also counts awards that name no municipality.",
+    "definition": "The six federal award series in the observatory (economy.fed_awards_total and its five groups) come from one USAspending.gov service, 'spending by geography', asked by place of performance. Place of performance is a field on each award record, filled in by the awarding agency. The service adds up the amounts of the award transactions dated in a period, by place. The observatory asks for each federal fiscal year (FY, 1 October of the previous calendar year to 30 September) and for five groups of award types, at two layers: by municipality (county layer) and for Puerto Rico as a whole (state layer). It then adds the groups to make the total.",
+    "unit": "US dollars obligated in the federal fiscal year (not adjusted for inflation)",
+    "value_type": "level",
+    "geography": "78 municipalities and Puerto Rico (USAspending's territory total, which includes awards that name no municipality)",
+    "coverage": {
+      "timeline": "annual",
+      "first": 2008,
+      "last": 2025,
+      "frequency": "One value per federal fiscal year (1 October to 30 September). A year is added about six weeks after it ends, from 15 November. In the 2026-10 snapshot the file ends with FY2025."
+    },
+    "method": "economy_series.py, functions usaspending, last_fy and the build step after them. Request: POST to api.usaspending.gov/api/v2/search/spending_by_geography/ with scope place_of_performance, geo_layer county, the 78 municipality codes (72001 to 72153) as filters, subawards false, time period from 1 October of the previous year to 30 September of the fiscal year, and the award type codes of one group. The service treats the dates as the action date of each transaction (its default; checked on 2026-10-03 by comparing the totals with and without the setting). Groups: contracts A, B, C, D; grants 02, 03, 04, 05; direct payments 06, 10; loans 07, 08; other 09, 11, -1. Search dates start on 2007-10-01, so FY2008 is the first year. The observatory treats a year as complete on 15 November (the code's last_fy, about six weeks after the year ends), and USAspending can still change it later. A municipality the service does not list for a group and year is stored as blank. The build sends the same request at the state layer (geo_layer state) with the code PR, the postal code under which USAspending keys the territory. The amount it returns is the Puerto Rico value of that group: USAspending's total for the territory, which includes awards that name no municipality. The Puerto Rico value is therefore not the sum of the 78 municipalities. The total is the sum of the five groups for each place, rounded to whole dollars. For each fiscal year the build also stores the part of the all-types Puerto Rico value that no municipality holds: (Puerto Rico value minus the sum of the 78 municipalities) divided by the Puerto Rico value, times 100, rounded to 0.1 (economy_series.json, extras.fed_unplaced_share). The Analysis tab shows these shares in the information window of every federal award series. Each year and group is downloaded once and kept until the data are next refreshed for a new snapshot.",
+    "sources": [
+      "usaspending"
+    ],
+    "source_detail": "USAspending.gov, search service 'spending by geography' (api.usaspending.gov/api/v2/search/spending_by_geography/): scope place_of_performance, county layer for the 78 municipality codes and state layer for the code PR, prime awards only (subawards off), federal fiscal years 2008 to 2025, retrieved 2026-10-03 to 2026-10-04.",
+    "how_to_read": "Step 1: use per resident or share values, not raw dollars. Step 2: look at the group, because the groups behave differently (in the 2026-10 snapshot, San Juan holds 83.5% to 96.8% of the grant dollars that name a municipality but 27.0% to 86.2% of the direct-payment dollars that do). Step 3: for the capital, treat the number as recorded there, not spent there. San Juan holds 10.4% of the island's residents (Census 2020). In the 2026-10 snapshot it holds 25.9% to 70.6% of the all-types Puerto Rico value, depending on the year, and 31.9% to 76.9% of the dollars that name a municipality. Step 4: check the cells you quote for blank, zero or negative values. Step 5: remember that the Puerto Rico value includes awards that name no municipality; check the share that names no municipality for your year (in the 2026-10 snapshot, 3.4% to 24.7% of the all-types value). Step 6: when you cite, use the Cite button (see methods.citation). Name USAspending.gov as the source, say 'obligations by place of performance, federal fiscal year' (for loans, subsidy cost) and give the snapshot label. The USAspending data in the 2026-10 snapshot were retrieved from 2026-10-03 to 2026-10-04.",
+    "caveats": [
+      "Blank and zero differ. Blank means the service listed no amount for that municipality, group and year. Zero means it listed an amount of exactly zero (for example, net of reductions). Neither proves that no money reached residents.",
+      "Negative values are reductions of earlier commitments (de-obligations or lowered estimates). They are real entries in the source, not errors, but they can make a municipality's group value negative.",
+      "Only prime awards are requested, and only the award type codes listed above. Subawards are not included. A test request on 2026-10-03 for the codes F001 to F010 and for IDV_A and IDV_B returned nothing for Puerto Rico's municipalities in FY2025, so those codes add nothing to that year.",
+      "Awards that name no municipality, only Puerto Rico, are in USAspending's Puerto Rico total and so in the Puerto Rico value, but in no municipality value. In the 2026-10 snapshot that is about $8.3 billion in FY2025, 21.6% of the all-types value. By group, the share that names no municipality runs from 5.2% to 61.6% of grants (FY2014 and FY2017), 0.0% to 28.7% of direct payments (FY2011 and FY2016) and 0.0% to 3.3% of contracts. In three group-year cells the 78 municipalities add up to slightly more than the territory value: other assistance in FY2008 (by $1.6 million) and FY2014 (by $2,049), and loans in FY2016 (by $23,384). The data do not say why.",
+      "A Puerto Rico value per resident includes the money that names no municipality, so it is not comparable with a municipality's value per resident.",
+      "The Analysis tab's description of the all-types series (economy.fed_awards_total) states that awards to the Commonwealth government for statewide programs are often attributed to San Juan. San Juan's figures can therefore include money that serves other places, and other municipalities' figures can be low. The data cannot separate money spent in San Juan from money only recorded there.",
+      "Place of performance is a different field from the recipient's address. It can differ from where the people who benefit live.",
+      "These are obligations: amounts the federal government committed to pay. They are not outlays, which are the dollars actually paid out. Some obligated money is paid in later years and some is never paid.",
+      "On the Analysis tab a federal award year is labelled with its end year: 2025 means 1 October 2024 to 30 September 2025. Jobs series are calendar years, American Community Survey (ACS) income and poverty are five-year windows, and Federal Emergency Management Agency (FEMA) values are declaration years. The year control applies one number to all of them.",
+      "USAspending.gov states no license for these data (see the source record). Check its terms before reuse."
+    ],
+    "see_also": [
+      "economy.fed_awards_total",
+      "economy.fed_contracts",
+      "economy.fed_grants",
+      "economy.fed_direct_payments",
+      "economy.fed_loans",
+      "economy.fed_other",
+      "measures.inflation_adjustment",
+      "measures.per_resident",
+      "methods.citation"
+    ],
+    "where": {
+      "files": [],
+      "view": [
+        {
+          "label": "Map, Analysis tab: preset 'Public money' (federal awards per resident and FEMA Public Assistance symbols)",
+          "href": "index.html#e=fed_awards_total.f.perCapita.blue.q.1.1.0.85.0,fema_pa_obligated.s.value.green.q.1.1.0.75.1"
+        }
+      ]
+    },
+    "added": "2026-10-03",
+    "values": {
+      "A": "Contracts: BPA Call (an order placed under a blanket purchase agreement)",
+      "B": "Contracts: Purchase Order",
+      "C": "Contracts: Delivery Order (an order placed under an existing contract vehicle)",
+      "D": "Contracts: Definitive Contract",
+      "02": "Grants: Block Grant",
+      "03": "Grants: Formula Grant",
+      "04": "Grants: Project Grant",
+      "05": "Grants: Cooperative Agreement",
+      "06": "Direct payments: Direct Payment for Specified Use",
+      "10": "Direct payments: Direct Payment with Unrestricted Use",
+      "07": "Loans: Direct Loan",
+      "08": "Loans: Guaranteed/Insured Loan",
+      "09": "Other: Insurance",
+      "11": "Other: Other Financial Assistance",
+      "-1": "Other: Not Specified. The code is requested, but USAspending returned no transactions with it for Puerto Rico in any year from FY2008 to FY2025 (checked 2026-10-04), so it adds nothing."
+    }
+  },
+  {
+    "id": "economy.fema_pa_obligated",
+    "name": "FEMA Public Assistance obligated (federal share)",
+    "domain": "public-money",
+    "domains": ["public-money", "hazards"],
+    "group": "Disaster recovery",
+    "kind": "variable",
+    "plain": "After a disaster, the Federal Emergency Management Agency (FEMA) approves money to clear debris and repair public buildings, roads and utilities. This is the federal share of that money, by municipality and by the year the disaster was declared. It is money approved. It does not show damage, need, finished repairs or spending. In the 2026-10 snapshot, 11% to 88% of each year's money is recorded as statewide. No municipality is named for that money.",
+    "definition": "Sum of the federal share obligated (OpenFEMA field federalShareObligated) for Public Assistance projects in Puerto Rico, by the project's county field and by the calendar year of the disaster declaration date, in dollars rounded to whole numbers. Public Assistance pays public bodies and some nonprofits to clear debris, protect people and repair or replace facilities such as roads, schools, power and water systems. OpenFEMA describes the county field as the applicant's location, which for Puerto Rico is a municipality name. A project whose county text does not match one of the 78 municipality names, ignoring accents, capitals and any text in parentheses, goes into a statewide group. The Puerto Rico value is the sum of the 78 municipalities plus the statewide group.",
+    "unit": "US dollars of federal share obligated, by year of disaster declaration (not adjusted for inflation)",
+    "value_type": "level",
+    "geography": "78 municipalities and Puerto Rico (the 78 plus the statewide group)",
+    "coverage": {
+      "timeline": "event-based",
+      "first": 2001,
+      "last": 2024,
+      "frequency": "One value per calendar year that had a disaster declaration with Public Assistance projects. In the 2026-10 snapshot those years are 2001, 2003, 2004, 2005, 2008, 2009, 2010, 2011, 2017, 2020, 2022 and 2024. Rebuilt from OpenFEMA with each snapshot."
+    },
+    "method": "economy_series.py, function fema_pa and the build step after it. The build pages through every record of the OpenFEMA PublicAssistanceFundedProjectsDetails data set with state code 72 (23,052 projects when downloaded on 2026-10-30) and keeps the declaration date, the county and the federal share obligated. Each project's amount is added to its municipality and declaration year, or to the statewide group for that year if the county does not match a municipality. The Puerto Rico value for a year is the 78 municipalities plus the statewide group. Share recorded as statewide = statewide dollars / (municipality dollars + statewide dollars) x 100, rounded to 0.1 (see economy.fema_pa_statewide_share). A municipality with no project in a year is blank, not zero; a municipality with projects but no federal share obligated shows zero (Dorado in 2020). The same download also gives the eight damage-category series (economy.fema_pa_cat_a to economy.fema_pa_cat_z), which add up to this one, and the Section 406 mitigation series. The records are downloaded once for each snapshot (2026-10-30 for the 2026-10 snapshot, refreshed with python economy_series.py --fema --refresh) and kept until the data are next refreshed.",
+    "sources": [
+      "openfema"
+    ],
+    "source_detail": "FEMA OpenFEMA, Public Assistance Funded Projects Details (v2 API, api path /api/open/v2/PublicAssistanceFundedProjectsDetails), filter stateNumberCode eq '72', fields declarationDate, county, damageCategoryCode, federalShareObligated, mitigationAmount; downloaded 2026-10-30. OpenFEMA updates this data set daily, so a later download can differ.",
+    "how_to_read": "Look at the Puerto Rico value and the statewide share together. In the 2026-10 snapshot, the share recorded as statewide varies by year from 11.0% to 88.3% and is above half in 4 of the 12 years (2004, 2009, 2017 and 2020); it is 80.9% for 2017. Over all years combined it is 77.9% ($30.4 billion of $39.1 billion), almost entirely because of 2017. In the same snapshot, for the 2017 declarations the Puerto Rico value is $35,606,846,160; $28,818,895,705 (80.9%) is statewide and $6.8 billion is in the 78 municipalities (San Juan $625,986,512). A municipality's value is only the part of the money that FEMA tied to an applicant in that municipality. It is not the money spent there and not the damage there. On the Analysis tab a year without a declaration shows the latest earlier year in the file (labelled 'latest at or before'), so 2018 and 2019 show the 2017 values. The year control and the small trend lines in the inspector start at 2010; earlier years are in the trend chart and in the comma-separated values (CSV) download. In the 'Public money' view with the year set to Latest, the FEMA layer shows declaration year 2024 (in the 2026-10 snapshot, a Puerto Rico value of $176.1 million, with 43 municipalities holding a value), not the 2017 hurricanes.",
+    "caveats": [
+      "This is money obligated, meaning approved and made available. It is not money paid, not a measure of damage or need, and not a sign that repairs are finished.",
+      "Projects recorded as statewide cannot be placed in a municipality. The share for each declaration year is in economy.fema_pa_statewide_share.",
+      "In the data downloaded on 2026-10-30, 5,816 projects carry the county 'Statewide' and one project has no county. No other county text failed to match a municipality. OpenFEMA defines the county field as the applicant location and warns that counties may not be available for territories or for applicants without a stated headquarters location. The data do not say why each project is recorded as Statewide.",
+      "The Puerto Rico value includes the statewide part, so it is larger than the sum of the municipalities (in the 2026-10 snapshot, for the 2017 declarations, by a factor of 5.2). A Puerto Rico value per resident is not comparable with a municipality's value per resident, and the municipalities' '% of the Puerto Rico total' do not add to 100%.",
+      "The year is the year of the disaster declaration, not the year of the money or of the work. FEMA keeps obligating money for a disaster for years, so a year's value can still grow. The 12 years hold 20 disaster declarations (counted in the OpenFEMA download of 2026-10-30). The file keeps only the year, not the disaster number.",
+      "A year can hold several unrelated declarations. In the OpenFEMA download of 2026-10-30, the 2020 value includes the January 2020 earthquakes (declaration DR-4473, $1.11 billion) and the COVID-19 pandemic declaration (DR-4493, $154 million); the 2017 value is almost all Hurricane Maria (DR-4339, $35.57 billion of $35.61 billion). Public Assistance also pays for emergency measures, so not all of it is repair.",
+      "A blank municipality means no project was recorded for it in that declaration year. In the 2026-10 snapshot, the number of municipalities with a value is 28 in 2001, 21 in 2003, 74 in 2004, 17 in 2005, 25 in 2008, 5 in 2009, 32 in 2010, 65 in 2011, 78 in 2017, 45 in 2020, 78 in 2022, 43 in 2024. A blank is not proof that a place was untouched. Dorado shows $0 for 2020: it has a project, but none with a federal share obligated. About 4% of projects (927 of 23,052 in the download of 2026-10-30) have a zero or missing federal share.",
+      "County is the applicant's location, not necessarily where the damage or the work was.",
+      "In the download of 2026-10-30, three project records have a federal share of minus one cent (-$0.01) each, all in the 2011 declarations. They are counted in the sums and change no figure shown.",
+      "Dollars are those recorded by FEMA, not adjusted for inflation. The Analysis tab can restate them with the US Consumer Price Index for All Urban Consumers (CPI-U), using the declaration year (see measures.inflation_adjustment). The index in the file runs from 2000 to 2025, so declaration years 2001 to 2009 are adjusted with their own year's index. The tab's 'per resident' option uses the population of the declaration year (see measures.per_resident); the population series starts in 2010, so per-resident values for 2001 to 2009 use the 2010 population. A per-resident change across 2019 to 2020 includes the population step described in methods.population_vintage_break.",
+      "Do not use the tab's 'Change since the base year' option here: each year is a different set of disasters, and the latest years have had less time to be obligated.",
+      "FEMA Public Assistance is a federal grant program, so some of this money may also be counted in economy.fed_grants. The observatory does not reconcile the two series and they use different time bases. Do not add them. FEMA says its project figures come from its case systems, not its official financial systems, so they can differ from USAspending (see the OpenFEMA source record).",
+      "OpenFEMA data are US government data under the OpenFEMA terms. The terms ask users to name the data set (PublicAssistanceFundedProjectsDetails, v2) and the date retrieved (2026-10-30) and to state that the product is not endorsed by FEMA; the credit line shown under the Cite button includes that statement. Check the OpenFEMA terms before reuse."
+    ],
+    "see_also": [
+      "economy.fema_pa_statewide_share",
+      "housing.fema_ia_amount",
+      "housing.fema_ia_households",
+      "economy.fed_grants",
+      "economy.fed_awards_total",
+      "measures.inflation_adjustment",
+      "measures.per_resident",
+      "methods.citation",
+      "methods.population_vintage_break",
+      "measures.nearest_year_rule",
+      "layers.economy_presets",
+      "measures.share_of_pr_total",
+      "measures.change_since_base_year"
+    ],
+    "where": {
+      "files": [
+        "economy_series.json:fema_pa_obligated"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Public money): shade municipalities by dollars per resident, declaration year 2017",
+          "href": "index.html#e=fema_pa_obligated.f.perCapita.blue.q.1.1.0.85.0&ey=2017"
+        }
+      ]
+    },
+    "example": "Snapshot 2026-10 (OpenFEMA download of 2026-10-30), 2017 declarations: Puerto Rico $35,606,846,160; statewide $28,818,895,705; San Juan $625,986,512.",
+    "added": "2026-10-03"
+  },
+  {
+    "id": "economy.fema_pa_statewide_share",
+    "name": "FEMA Public Assistance: share recorded as statewide",
+    "domain": "public-money",
+    "domains": ["public-money", "hazards"],
+    "group": "Disaster recovery",
+    "kind": "variable",
+    "plain": "Out of every 100 dollars of Federal Emergency Management Agency (FEMA) Public Assistance federal share for a year's disasters, how many are recorded as statewide and so cannot be placed in a municipality. In the 2026-10 snapshot it ranges from 11.0% to 88.3%, and is 80.9% for 2017.",
+    "definition": "For each year of disaster declaration: the federal share obligated that OpenFEMA records under the county 'Statewide' (or with no county), as a percent of the federal share obligated for all of Puerto Rico that year. It is the 'statewide' dollars of economy.fema_pa_obligated divided by the Puerto Rico value of that series, times 100.",
+    "unit": "% of the year's Puerto Rico federal share obligated",
+    "value_type": "rate",
+    "geography": "Puerto Rico as a whole (one value per declaration year)",
+    "coverage": {
+      "timeline": "event-based",
+      "first": 2001,
+      "last": 2024,
+      "frequency": "One value per year with a declaration. In the 2026-10 snapshot those years are 2001, 2003, 2004, 2005, 2008, 2009, 2010, 2011, 2017, 2020, 2022 and 2024. Rebuilt with each snapshot."
+    },
+    "method": "economy_series.py, build step after fema_pa: round(statewide / (sum of municipalities + statewide) x 100, 1) for each year that has either. The numbers are stored in economy_series.json under extras.fema_pa_statewide_share, not as a data set of their own, and the Analysis tab shows them in the information window of the FEMA Public Assistance dataset. The statewide dollar amounts listed with this entry are the sums from the OpenFEMA download of 2026-10-30. economy_series.json stores only the percentages. The dollar amounts can differ by a few dollars from the Puerto Rico value minus the sum of the 78 municipality values in economy_series.json, because those values are rounded to whole dollars (for 2017 the difference is a few dollars). The percentages are the same either way.",
+    "values": {
+      "2001": "34.3% (statewide $3,309,228 of $9,643,453)",
+      "2003": "34.4% (statewide $2,362,794 of $6,870,351)",
+      "2004": "61.5% (statewide $24,761,377 of $40,270,032)",
+      "2005": "36.5% (statewide $4,177,231 of $11,451,686)",
+      "2008": "40.5% (statewide $9,790,030 of $24,194,794)",
+      "2009": "88.3% (statewide $2,614,862 of $2,961,508)",
+      "2010": "11.0% (statewide $2,449,517 of $22,254,279)",
+      "2011": "31.3% (statewide $19,483,703 of $62,327,854)",
+      "2017": "80.9% (statewide $28,818,895,705 of $35,606,846,160)",
+      "2020": "81.4% (statewide $1,026,105,000 of $1,260,276,562)",
+      "2022": "26.2% (statewide $486,027,187 of $1,852,756,142)",
+      "2024": "13.1% (statewide $23,153,029 of $176,148,192)"
+    },
+    "sources": [
+      "openfema"
+    ],
+    "source_detail": "FEMA OpenFEMA, Public Assistance Funded Projects Details (v2 API), downloaded 2026-10-30.",
+    "how_to_read": "A high share means the municipal values for that year show only a small part of the money. The year-by-year figures listed with this entry are from the 2026-10 snapshot. In 2009 (88.3%), 2017 (80.9%) and 2020 (81.4%) most of the money cannot be placed. In 2010 (11.0%) and 2024 (13.1%) most of it can. Use it before you rank municipalities by economy.fema_pa_obligated. Check the dollar amount beside each share: 88.3% for 2009 is $2.6 million of $3.0 million.",
+    "caveats": [
+      "A statewide record is a record without an applicant municipality. It does not say the money was spent on the whole island.",
+      "The share depends on the download date. FEMA obligates money for years after a declaration and updates the data daily."
+    ],
+    "see_also": [
+      "economy.fema_pa_obligated"
+    ],
+    "where": {
+      "files": [],
+      "view": [
+        {
+          "label": "Map, Analysis tab: information window of 'FEMA Public Assistance obligated (federal share)'",
+          "href": "index.html#e=fema_pa_obligated.f.perCapita.blue.q.1.1.0.85.0&ey=2017"
+        }
+      ]
+    },
+    "added": "2026-10-03"
+  },
+  {
+    "domain": "economy.visitor-economy",
+    "domains": ["economy.visitor-economy"],
+    "group": "Tourism supply layers on the Analysis tab",
+    "kind": "variable",
+    "unit": "places (listings)",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico (the sum of the 78)",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "One snapshot, rebuilt with each snapshot (current: Snapshot 2026-10). The tab shows the same snapshot whichever year is chosen."
+    },
+    "sources": [
+      "overture",
+      "census_tiger"
+    ],
+    "added": "2026-10-03",
+    "id": "economy.tourism_places",
+    "name": "Tourism places (all categories)",
+    "plain": "How many tourism places Overture Maps lists in each municipality: attractions, restaurants and bars, lodging and visitor services. A place is one listing, not a business, a room or a visitor.",
+    "definition": "The Analysis tab's 'Tourism places (all categories)' dataset. It reads the field assets of municipalities.json: de-duplicated Overture listings in the four categories (attractions, gastronomy, accommodations, visitor services), not places of worship, with an Overture confidence score of 0.50 or higher. The Puerto Rico value is the sum of the 78 municipalities.",
+    "method": "site/js/economy.js, function ecLoad, helper snap. When the Analysis tab opens, the browser reads municipalities.json (field assets) and builds a one-year series for each of the 78 municipalities. The Puerto Rico value is the sum of the 78 values. The only year is the year of the snapshot date in meta.json (2026 in the 2026-10 snapshot). Nothing is stored in economy_series.json. The observatory assigns each listing to the municipality whose boundary contains its map pin; a pin outside every boundary, such as one offshore, goes to the municipality whose boundary is nearest (see methods.municipality_assignment). See economy.tourism_supply_layers.",
+    "source_detail": "Overture Maps Foundation, Places theme, release 2026-09-23.1, downloaded 2026-10-01; classified and de-duplicated by the observatory (build.py); placed in municipalities by map pin with Census TIGERweb generalized 500k boundaries. The Analysis tab reads the field assets of municipalities.json in the browser (Snapshot 2026-10).",
+    "how_to_read": "In the 2026-10 snapshot, San Juan has the most (3,424, 14.1% of the island) and Maricao the fewest (36). A shaded map of raw counts mostly shows which municipalities are big. On the Analysis tab, shading starts at 'per 1,000 residents', which divides by the latest population estimate in the Housing series (July 2025 in the 2026-10 snapshot); it differs slightly from municipalities.assets_per_1000_residents, which divides by the 2020 Census count. 'Per km²' divides by land area in square kilometres (municipalities.land_km2).",
+    "caveats": [
+      "It counts listings, not businesses, rooms, beds or visitors. Overture builds its listings from several sources, and some are closed, moved, wrong or missing; the confidence score is Overture's and has not been checked on the ground.",
+      "Places of worship and listings with a confidence below 0.50 are left out, so the count is lower than the number of all listings (see municipalities.counting_rules).",
+      "In the 2026-10 snapshot, about two in three counted places are restaurants, bars and cafés (17,170 of 24,209), so this is not a measure of visitor demand. In the same snapshot, per-resident values are highest in small, visitor-heavy municipalities (Culebra 78.4, Vieques 30.1 and Rincón 28.4 per 1,000 residents, against 7.6 for Puerto Rico) because visitors and second-home owners are not in the denominator.",
+      "The data come from Overture release 2026-09-23.1, downloaded on 1 October 2026. Listings were last updated by their sources between November 2020 and September 2026, so the count does not describe a single date.",
+      "There is only one snapshot, so these layers show no growth or decline. The tab's year control does not change them, and they have no 'change since the base year' option, no trend chart and no small trend line. The '% of the Puerto Rico total' option compares municipalities within the same snapshot.",
+      "The source record states Overture's licenses as CDLA-Permissive 2.0 (Meta, Microsoft and others), Apache 2.0 (Foursquare) and CC0 1.0 (AllThePlaces); which applies depends on who contributed the record. Check the source's terms and credit line before reuse.",
+      "These counts and the tourism jobs series (economy.tourism_jobs) measure different things: listings in a snapshot versus employees at covered employers over a year."
+    ],
+    "see_also": [
+      "municipalities.assets",
+      "municipalities.counting_rules",
+      "municipalities.assets_per_1000_residents",
+      "municipalities.assets_per_km2",
+      "economy.tourism_jobs",
+      "economy.tourism_supply_layers",
+      "places.counting_basis",
+      "places.confidence",
+      "places.dedup",
+      "measures.per_1000_residents",
+      "methods.snapshot_labelling"
+    ],
+    "where": {
+      "files": [
+        "municipalities.json:assets"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Tourism supply): shade municipalities per 1,000 residents",
+          "href": "index.html#e=tourism_places.f.per1000.blue.q.1.0.0.85.0"
+        }
+      ]
+    },
+    "example": "Snapshot 2026-10: San Juan 3,424 places; Maricao 36; Puerto Rico 24,209."
+  },
+  {
+    "domain": "economy.visitor-economy",
+    "domains": ["economy.visitor-economy"],
+    "group": "Tourism supply layers on the Analysis tab",
+    "kind": "variable",
+    "unit": "places (listings)",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico (the sum of the 78)",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "One snapshot, rebuilt with each snapshot (current: Snapshot 2026-10). The tab shows the same snapshot whichever year is chosen."
+    },
+    "sources": [
+      "overture",
+      "census_tiger"
+    ],
+    "added": "2026-10-03",
+    "id": "economy.lodging_places",
+    "name": "Lodging listings (hotels, inns, rentals)",
+    "plain": "How many places to stay (hotels, inns, guest houses, resorts, vacation properties and campgrounds) Overture Maps lists in each municipality. A hotel with 400 rooms counts as one.",
+    "definition": "The Analysis tab's 'Lodging listings' dataset. It reads the key ACCOMMODATIONS of the field by_category in municipalities.json: counted places (not places of worship, confidence 0.50 or higher) that the observatory's keyword rules (RULES in build.py) put in the Accommodations category. Types present: lodging (the general type, which includes campgrounds), hotels, vacation properties, inns, guest houses and resorts. The Puerto Rico value is the sum of the 78 municipalities.",
+    "method": "site/js/economy.js, function ecLoad, helper snap. When the Analysis tab opens, the browser reads municipalities.json (key ACCOMMODATIONS of by_category) and builds a one-year series for each of the 78 municipalities. The Puerto Rico value is the sum of the 78 values. The only year is the year of the snapshot date in meta.json (2026 in the 2026-10 snapshot). Nothing is stored in economy_series.json. The observatory assigns each listing to the municipality whose boundary contains its map pin; a pin outside every boundary, such as one offshore, goes to the municipality whose boundary is nearest (see methods.municipality_assignment). See economy.tourism_supply_layers.",
+    "source_detail": "Overture Maps Foundation, Places theme, release 2026-09-23.1, downloaded 2026-10-01; classified and de-duplicated by the observatory (build.py); placed in municipalities by map pin with Census TIGERweb generalized 500k boundaries. The Analysis tab reads the key ACCOMMODATIONS of the field by_category of municipalities.json in the browser (Snapshot 2026-10).",
+    "how_to_read": "In the 2026-10 snapshot, San Juan has the most (224), then Cabo Rojo 208, Rincón 120; the fewest are Cataño 0, Aguas Buenas 1 and Sabana Grande 1. Divide by residents or land area before comparing places, or compare with the municipality's own total of tourism places to see how much of its supply is lodging.",
+    "caveats": [
+      "It counts listings, not businesses, rooms, beds or visitors. Overture builds its listings from several sources, and some are closed, moved, wrong or missing; the confidence score is Overture's and has not been checked on the ground.",
+      "The layer covers the whole Accommodations category (1,831 counted listings in the 2026-10 snapshot). The place type called Lodging (234 counted listings) is only one of its six types: see places.type.lodging.",
+      "The tab's title says 'hotels, inns, rentals', but the category also holds campgrounds and general lodging, and it holds only the rental listings that Overture has. It is not a count of short-term rentals.",
+      "Listings are not rooms or beds. A municipality with few listings can have large hotels.",
+      "In the 2026-10 snapshot, per-resident values are highest in small, visitor-heavy municipalities: Culebra has 29.4 lodging listings per 1,000 residents against 0.6 for Puerto Rico, because visitors and second-home owners are not in the denominator.",
+      "The data come from Overture release 2026-09-23.1, downloaded on 1 October 2026. Listings were last updated by their sources between November 2020 and September 2026, so the count does not describe a single date.",
+      "There is only one snapshot, so these layers show no growth or decline. The tab's year control does not change them, and they have no 'change since the base year' option, no trend chart and no small trend line. The '% of the Puerto Rico total' option compares municipalities within the same snapshot.",
+      "The source record states Overture's licenses as CDLA-Permissive 2.0 (Meta, Microsoft and others), Apache 2.0 (Foursquare) and CC0 1.0 (AllThePlaces); which applies depends on who contributed the record. Check the source's terms and credit line before reuse."
+    ],
+    "see_also": [
+      "municipalities.by_category",
+      "municipalities.assets",
+      "economy.accommodation_jobs",
+      "economy.tourism_supply_layers",
+      "places.category.accommodations",
+      "places.type.lodging",
+      "places.type.hotels",
+      "places.counting_basis",
+      "places.confidence",
+      "places.dedup",
+      "measures.per_1000_residents",
+      "methods.snapshot_labelling"
+    ],
+    "where": {
+      "files": [
+        "municipalities.json:by_category"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Tourism supply): shade municipalities per 1,000 residents",
+          "href": "index.html#e=lodging_places.f.per1000.blue.q.1.0.0.85.0"
+        }
+      ]
+    },
+    "example": "Snapshot 2026-10: San Juan 224; Cabo Rojo 208; Maricao 3; Puerto Rico 1,831."
+  },
+  {
+    "domain": "economy.visitor-economy",
+    "domains": ["economy.visitor-economy"],
+    "group": "Tourism supply layers on the Analysis tab",
+    "kind": "variable",
+    "unit": "places (listings)",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico (the sum of the 78)",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "One snapshot, rebuilt with each snapshot (current: Snapshot 2026-10). The tab shows the same snapshot whichever year is chosen."
+    },
+    "sources": [
+      "overture",
+      "census_tiger"
+    ],
+    "added": "2026-10-03",
+    "id": "economy.gastronomy_places",
+    "name": "Restaurant, bar and café listings",
+    "plain": "How many places to eat and drink (restaurants, bars, cafés, bakeries and similar) Overture Maps lists in each municipality. In the 2026-10 snapshot it is the largest of the four tourism categories.",
+    "definition": "The Analysis tab's 'Restaurant, bar and café listings' dataset. It reads the key GASTRONOMY of the field by_category in municipalities.json: counted places (not places of worship, confidence 0.50 or higher) that the observatory's keyword rules (RULES in build.py) put in the Gastronomy category. Types present: restaurants, bars, cafés, bakeries, nightlife and food experiences. The Puerto Rico value is the sum of the 78 municipalities.",
+    "method": "site/js/economy.js, function ecLoad, helper snap. When the Analysis tab opens, the browser reads municipalities.json (key GASTRONOMY of by_category) and builds a one-year series for each of the 78 municipalities. The Puerto Rico value is the sum of the 78 values. The only year is the year of the snapshot date in meta.json (2026 in the 2026-10 snapshot). Nothing is stored in economy_series.json. The observatory assigns each listing to the municipality whose boundary contains its map pin; a pin outside every boundary, such as one offshore, goes to the municipality whose boundary is nearest (see methods.municipality_assignment). See economy.tourism_supply_layers.",
+    "source_detail": "Overture Maps Foundation, Places theme, release 2026-09-23.1, downloaded 2026-10-01; classified and de-duplicated by the observatory (build.py); placed in municipalities by map pin with Census TIGERweb generalized 500k boundaries. The Analysis tab reads the key GASTRONOMY of the field by_category of municipalities.json in the browser (Snapshot 2026-10).",
+    "how_to_read": "In the 2026-10 snapshot, the island has 17,170 of these listings, 71% of all counted tourism places. San Juan has the most (2,421), then Bayamón 818, Ponce 776; the fewest are Maricao 17, Culebra 31. Many of these places serve residents as much as visitors, so the count is not a measure of visitor demand.",
+    "caveats": [
+      "It counts listings, not businesses, rooms, beds or visitors. Overture builds its listings from several sources, and some are closed, moved, wrong or missing; the confidence score is Overture's and has not been checked on the ground.",
+      "The category includes fast-food outlets (the observatory's rules put fast-food restaurants under Restaurants), so it is not limited to places that visitors choose.",
+      "The tab's title leaves out bakeries, nightlife and food experiences, which are also in the category.",
+      "It is not the number of jobs in restaurants and bars; for that see economy.food_service_jobs.",
+      "The data come from Overture release 2026-09-23.1, downloaded on 1 October 2026. Listings were last updated by their sources between November 2020 and September 2026, so the count does not describe a single date.",
+      "There is only one snapshot, so these layers show no growth or decline. The tab's year control does not change them, and they have no 'change since the base year' option, no trend chart and no small trend line. The '% of the Puerto Rico total' option compares municipalities within the same snapshot.",
+      "The source record states Overture's licenses as CDLA-Permissive 2.0 (Meta, Microsoft and others), Apache 2.0 (Foursquare) and CC0 1.0 (AllThePlaces); which applies depends on who contributed the record. Check the source's terms and credit line before reuse."
+    ],
+    "see_also": [
+      "municipalities.by_category",
+      "municipalities.assets",
+      "economy.food_service_jobs",
+      "economy.tourism_supply_layers",
+      "places.category.gastronomy",
+      "places.counting_basis",
+      "places.confidence",
+      "places.dedup",
+      "measures.per_1000_residents",
+      "methods.snapshot_labelling"
+    ],
+    "where": {
+      "files": [
+        "municipalities.json:by_category"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Tourism supply): shade municipalities per 1,000 residents",
+          "href": "index.html#e=gastronomy_places.f.per1000.blue.q.1.0.0.85.0"
+        }
+      ]
+    },
+    "example": "Snapshot 2026-10: San Juan 2,421; Maricao 17; Puerto Rico 17,170."
+  },
+  {
+    "domain": "economy.visitor-economy",
+    "domains": ["economy.visitor-economy"],
+    "group": "Tourism supply layers on the Analysis tab",
+    "kind": "variable",
+    "unit": "places (listings)",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico (the sum of the 78)",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "One snapshot, rebuilt with each snapshot (current: Snapshot 2026-10). The tab shows the same snapshot whichever year is chosen."
+    },
+    "sources": [
+      "overture",
+      "census_tiger"
+    ],
+    "added": "2026-10-03",
+    "id": "economy.attractions_places",
+    "name": "Attraction listings",
+    "plain": "How many attractions (historic sites, parks, beaches, museums, venues and similar) Overture Maps lists in each municipality. Places of worship are not counted.",
+    "definition": "The Analysis tab's 'Attraction listings' dataset. It reads the key ATTRACTIONS of the field by_category in municipalities.json: counted places (confidence 0.50 or higher) that the observatory's keyword rules (RULES in build.py) put in the Attractions category, with places of worship left out. Types present: historic sites, parks, beaches, tourist attractions, cultural attractions (galleries, theatres, cinemas), scenic areas, museums and nature reserves. The Puerto Rico value is the sum of the 78 municipalities.",
+    "method": "site/js/economy.js, function ecLoad, helper snap. When the Analysis tab opens, the browser reads municipalities.json (key ATTRACTIONS of by_category) and builds a one-year series for each of the 78 municipalities. The Puerto Rico value is the sum of the 78 values. The only year is the year of the snapshot date in meta.json (2026 in the 2026-10 snapshot). Nothing is stored in economy_series.json. The observatory assigns each listing to the municipality whose boundary contains its map pin; a pin outside every boundary, such as one offshore, goes to the municipality whose boundary is nearest (see methods.municipality_assignment). See economy.tourism_supply_layers.",
+    "source_detail": "Overture Maps Foundation, Places theme, release 2026-09-23.1, downloaded 2026-10-01; classified and de-duplicated by the observatory (build.py); placed in municipalities by map pin with Census TIGERweb generalized 500k boundaries. The Analysis tab reads the key ATTRACTIONS of the field by_category of municipalities.json in the browser (Snapshot 2026-10).",
+    "how_to_read": "In the 2026-10 snapshot, San Juan has the most (645), then Ponce 198, Carolina 157; the fewest are Las Marías and Naranjito, 12 each, then Florida 13. Divide by residents or land area before comparing places.",
+    "caveats": [
+      "It counts listings, not businesses, rooms, beds or visitors. Overture builds its listings from several sources, and some are closed, moved, wrong or missing; the confidence score is Overture's and has not been checked on the ground.",
+      "Listings whose Overture category contains words such as church, chapel, temple or religious are left out of every count, even when a visitor would count a church as a sight. In the 2026-10 snapshot, that is 5,032 listings island-wide, including 1,169 religious organizations and 67 religious schools (see municipalities.counting_rules).",
+      "In the same snapshot, the type Tourist Attractions (783 listings) is a catch-all that includes, among the counted listings, arts and entertainment venues (234), stadiums and arenas (159), dance clubs (81), bridges (38) and casinos (26). The type Historic Sites is 22% of the category (1,010 listings), almost all of them Overture's generic 'historic site' label (952). The 24 counted listings that Overture classes as marinas (26 in the places file) are filed here, not under visitor services.",
+      "The de-duplication rules can leave two listings for one place (see municipalities.counting_rules), so the count is not a count of distinct sites.",
+      "The data come from Overture release 2026-09-23.1, downloaded on 1 October 2026. Listings were last updated by their sources between November 2020 and September 2026, so the count does not describe a single date.",
+      "There is only one snapshot, so these layers show no growth or decline. The tab's year control does not change them, and they have no 'change since the base year' option, no trend chart and no small trend line. The '% of the Puerto Rico total' option compares municipalities within the same snapshot.",
+      "The source record states Overture's licenses as CDLA-Permissive 2.0 (Meta, Microsoft and others), Apache 2.0 (Foursquare) and CC0 1.0 (AllThePlaces); which applies depends on who contributed the record. Check the source's terms and credit line before reuse."
+    ],
+    "see_also": [
+      "municipalities.by_category",
+      "municipalities.assets",
+      "municipalities.counting_rules",
+      "economy.tourism_supply_layers",
+      "places.category.attractions",
+      "places.counting_basis",
+      "places.confidence",
+      "places.dedup",
+      "measures.per_1000_residents",
+      "methods.snapshot_labelling",
+      "places.type.tourist_attractions",
+      "places.type.marinas"
+    ],
+    "where": {
+      "files": [
+        "municipalities.json:by_category"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Tourism supply): shade municipalities per 1,000 residents",
+          "href": "index.html#e=attractions_places.f.per1000.blue.q.1.0.0.85.0"
+        }
+      ]
+    },
+    "example": "Snapshot 2026-10: San Juan 645; Florida 13; Puerto Rico 4,591."
+  },
+  {
+    "domain": "economy.visitor-economy",
+    "domains": ["economy.visitor-economy"],
+    "group": "Tourism supply layers on the Analysis tab",
+    "kind": "variable",
+    "unit": "places (listings)",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico (the sum of the 78)",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "One snapshot, rebuilt with each snapshot (current: Snapshot 2026-10). The tab shows the same snapshot whichever year is chosen."
+    },
+    "sources": [
+      "overture",
+      "census_tiger"
+    ],
+    "added": "2026-10-03",
+    "id": "economy.visitor_services_places",
+    "name": "Visitor service listings",
+    "plain": "How many listings for services that visitors use (tour and adventure operators, airports and other transport, boat services, visitor centers) Overture Maps lists in each municipality. In the 2026-10 snapshot it is the smallest of the four tourism categories.",
+    "definition": "The Analysis tab's 'Visitor service listings' dataset. It reads the key VISITOR_SERVICES of the field by_category in municipalities.json: counted places (not places of worship, confidence 0.50 or higher) that the observatory's keyword rules (RULES in build.py) put in the Visitor Services category. The Puerto Rico value is the sum of the 78 municipalities. The category has six types: transportation (airports, bus stations, airport terminals, taxi services, heliports, limousine services and airport shuttles), adventure operators, tour operators, cultural experience providers, marinas and visitor centers.",
+    "method": "site/js/economy.js, function ecLoad, helper snap. When the Analysis tab opens, the browser reads municipalities.json (key VISITOR_SERVICES of by_category) and builds a one-year series for each of the 78 municipalities. The Puerto Rico value is the sum of the 78 values. The only year is the year of the snapshot date in meta.json (2026 in the 2026-10 snapshot). Nothing is stored in economy_series.json. The observatory assigns each listing to the municipality whose boundary contains its map pin; a pin outside every boundary, such as one offshore, goes to the municipality whose boundary is nearest (see methods.municipality_assignment). See economy.tourism_supply_layers.",
+    "source_detail": "Overture Maps Foundation, Places theme, release 2026-09-23.1, downloaded 2026-10-01; classified and de-duplicated by the observatory (build.py); placed in municipalities by map pin with Census TIGERweb generalized 500k boundaries. The Analysis tab reads the key VISITOR_SERVICES of the field by_category of municipalities.json in the browser (Snapshot 2026-10).",
+    "how_to_read": "In the 2026-10 snapshot, the island has 617 listings of six types: transportation 173 (airports 112, bus stations 24, airport terminals 13, taxi services 10, heliports 8, limousine services 3 and airport shuttles 3), adventure operators 148, tour operators 116, cultural experience providers 101, marinas 74 and visitor centers 5. San Juan has the most (134), then Carolina 58, Fajardo 49. Nine municipalities have none: Aguas Buenas, Barranquitas, Corozal, Florida, Hormigueros, Juana Díaz, Maricao, San Lorenzo, San Sebastián. A zero here means Overture lists no such place in the counted set; it does not mean visitors cannot find these services there. With counts this small, one listing changes a municipality's rank a lot.",
+    "caveats": [
+      "It counts listings, not businesses, rooms, beds or visitors. Overture builds its listings from several sources, and some are closed, moved, wrong or missing; the confidence score is Overture's and has not been checked on the ground.",
+      "The type names are the observatory's labels. In the 2026-10 snapshot, among the counted listings, all 101 cultural experience providers are dance studios; the 74 marinas are boat services (32), boat dealers (20), boat parts stores (14) and ferry companies (8); the 148 adventure operators include 23 surf stores (25 in the places file) and 21 equestrian facilities and horse trainers. Check the type before reading this layer as visitor demand.",
+      "The tab's description of this layer says 'tour operators, rentals, travel services'. The category holds the six types listed above. The counted set holds no car-rental listings: the observatory's classification rules read the word 'rental' as a vacation property first, and rentals that are not lodging are then left out (see places.classification). In the same snapshot, the transportation type is mostly airports, airport terminals and heliports (133 of 173). The observatory's rules put travel agencies under tour operators (4 of the 116 tour-operator listings). Lodging rentals are in the lodging layer, not here, and the 24 counted listings that Overture classes as marinas (26 in the places file) are filed under attractions.",
+      "Small counts: in the 2026-10 snapshot the island has only 617 listings, and 9 municipalities show 0.",
+      "The data come from Overture release 2026-09-23.1, downloaded on 1 October 2026. Listings were last updated by their sources between November 2020 and September 2026, so the count does not describe a single date.",
+      "There is only one snapshot, so these layers show no growth or decline. The tab's year control does not change them, and they have no 'change since the base year' option, no trend chart and no small trend line. The '% of the Puerto Rico total' option compares municipalities within the same snapshot.",
+      "The source record states Overture's licenses as CDLA-Permissive 2.0 (Meta, Microsoft and others), Apache 2.0 (Foursquare) and CC0 1.0 (AllThePlaces); which applies depends on who contributed the record. Check the source's terms and credit line before reuse."
+    ],
+    "see_also": [
+      "municipalities.by_category",
+      "municipalities.assets",
+      "economy.tourism_supply_layers",
+      "places.category.visitor_services",
+      "places.counting_basis",
+      "places.confidence",
+      "places.dedup",
+      "measures.per_1000_residents",
+      "methods.snapshot_labelling",
+      "places.classification",
+      "places.type.marinas",
+      "places.type.adventure_operators"
+    ],
+    "where": {
+      "files": [
+        "municipalities.json:by_category"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Tourism supply): shade municipalities per 1,000 residents",
+          "href": "index.html#e=visitor_services_places.f.per1000.blue.q.1.0.0.85.0"
+        }
+      ]
+    },
+    "example": "Snapshot 2026-10: San Juan 134; Carolina 58; Aguas Buenas 0; Puerto Rico 619."
+  },
+  {
+    "id": "economy.tourism_supply_layers",
+    "name": "How the Analysis tab builds its tourism supply layers",
+    "domain": "economy.visitor-economy",
+    "domains": ["economy.visitor-economy"],
+    "group": "Tourism supply layers on the Analysis tab",
+    "kind": "method",
+    "plain": "The five tourism supply layers on the Analysis tab count Overture Maps listings in each municipality. The page works them out from the municipality data when the tab opens. They are not stored with the other Economy series.",
+    "definition": "Five datasets in the Analysis tab's 'Tourism supply' group: economy.tourism_places (field assets), and economy.lodging_places, economy.gastronomy_places, economy.attractions_places and economy.visitor_services_places (the keys ACCOMMODATIONS, GASTRONOMY, ATTRACTIONS and VISITOR_SERVICES of the field by_category). Each is a count of listings per municipality in one snapshot. Each is marked 'static' in the code: it has one year, the year of the snapshot date, and the tab shows it whichever year is chosen.",
+    "unit": "places (listings)",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico (the sum of the 78)",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "One snapshot, rebuilt with each snapshot (current: Snapshot 2026-10)."
+    },
+    "method": "site/js/economy.js, function ecLoad, helper snap. Municipality values come from S.muni, which is municipalities.json read by the map page; the Puerto Rico value is the sum of the 78. The year of the series is the first four characters of generated_at in meta.json (2026 in the 2026-10 snapshot). Because each layer is static, the year control does not change it; 'change since the base year', the trend chart and the small trend line are not offered; and 'same classes in every year' does not apply. Options for counts: as published; per 1,000 residents (the default when shading; population from the Housing series for the latest year at or before the snapshot year, which is 2025 in the 2026-10 snapshot); per km² (land_km2 of municipalities.json); % of the Puerto Rico total; percentile among municipalities. The 'location quotient' and '% of the municipality's jobs' options are offered for jobs series only, not for these counts.",
+    "sources": [
+      "overture",
+      "census_tiger"
+    ],
+    "source_detail": "Overture Maps Foundation, Places theme, release 2026-09-23.1, downloaded 2026-10-01; classified and de-duplicated by the observatory (build.py); placed in municipalities by map pin with Census TIGERweb generalized 500k boundaries. The Analysis tab reads the fields assets and by_category of municipalities.json in the browser (Snapshot 2026-10).",
+    "how_to_read": "Use these layers to see where visitor-facing places are concentrated, and put them next to jobs, income or hazard layers. Shade them per resident or per square kilometre, because raw counts mostly show which municipalities are big; raw counts suit sized symbols. The year control does not change these layers: when you pick an earlier year for another layer, you are pairing it with the listings of the 2026-10 snapshot.",
+    "caveats": [
+      "They are not jobs, sales or visitors. For visitor-economy jobs see economy.tourism_jobs.",
+      "In the 2026-10 snapshot, the four category layers add up to the tourism places layer in every municipality.",
+      "The observatory holds one snapshot, so these layers have no earlier value to compare with. If a later snapshot is added, a change between snapshots will partly reflect changes in Overture's sources and in the observatory's rules, not only places opening or closing.",
+      "A listing is placed by its map pin; in the 2026-10 snapshot, 324 of the 24,209 counted listings have pins outside every municipal boundary and went to the municipality with the nearest centre; the next full build gives them the municipality whose boundary is nearest (see methods.municipality_assignment and municipalities.counting_rules).",
+      "The data come from Overture release 2026-09-23.1, downloaded on 1 October 2026. Listings were last updated by their sources between November 2020 and September 2026, so the count does not describe a single date.",
+      "The source record states Overture's licenses as CDLA-Permissive 2.0 (Meta, Microsoft and others), Apache 2.0 (Foursquare) and CC0 1.0 (AllThePlaces); which applies depends on who contributed the record. Check the source's terms and credit line before reuse."
+    ],
+    "see_also": [
+      "economy.tourism_places",
+      "economy.lodging_places",
+      "economy.gastronomy_places",
+      "economy.attractions_places",
+      "economy.visitor_services_places",
+      "municipalities.counting_rules",
+      "places.counting_basis",
+      "places.confidence",
+      "places.dedup",
+      "measures.per_1000_residents",
+      "methods.snapshot_labelling"
+    ],
+    "where": {
+      "files": [],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Tourism supply): tourism places per 1,000 residents",
+          "href": "index.html#e=tourism_places.f.per1000.blue.q.1.0.0.85.0"
+        }
+      ]
+    },
+    "added": "2026-10-03"
+  }
+]

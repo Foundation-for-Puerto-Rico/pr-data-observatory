@@ -1,0 +1,131 @@
+/* Knowledge Area · WCRP (wcrp.html). The page uses housing.css for the frame (top bar, section bar, sections); this adds the two maps, the levels legend and the collapsible explanations. */
+body.wcrp .page { padding-top: calc(var(--topbar-height) + 56px); }
+@media print { body.wcrp .page { padding-top: 0; } }   /* housing.css's print reset, which the rule above outranks */
+body.wcrp .block, body.wcrp .hero { scroll-margin-top: calc(var(--topbar-height) + 50px); }
+html:has(body.wcrp) { scroll-padding-top: calc(var(--topbar-height) + 50px); }
+.wm-controls { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: end; margin-bottom: 10px; font-size: 13px; }
+.wm-controls label { display: flex; flex-direction: column; gap: 3px; font-weight: 600; color: var(--color-text-muted); font-size: 12px; }
+.wm-controls select { font: inherit; font-size: 13px; padding: 5px 8px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: #fff; color: var(--color-text); max-width: 220px; }
+.wm-controls .wm-check { flex-direction: row; align-items: center; gap: 6px; font-weight: 500; color: var(--color-text); font-size: 13px; padding-bottom: 6px; }
+.wm-seg { border: 0; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0; }
+.wm-seg legend { font-weight: 600; color: var(--color-text-muted); font-size: 12px; padding: 0; margin-bottom: 3px; }
+.wm-seg label { flex-direction: row; font-weight: 500; }
+.wm-seg input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.wm-seg span { display: inline-block; padding: 6px 11px; border: 1px solid var(--color-border); background: #fff; color: var(--color-text); font-size: 12.5px; cursor: pointer; }
+.wm-seg label:first-of-type span { border-radius: var(--radius-sm) 0 0 var(--radius-sm); }
+.wm-seg label:last-of-type span { border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
+.wm-seg label + label span { border-left: 0; }
+.wm-seg input:checked + span { background: var(--color-primary-strong); color: #fff; border-color: var(--color-primary-strong); }
+.wm-seg input:focus-visible + span { outline: 3px solid var(--color-primary-dark); outline-offset: 1px; }
+.wm-map-wrap { position: relative; }
+.wm-card > .note:empty { display: none; }   /* a status line with nothing to say */
+.wm-change { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; background: var(--tint-blue-bg); color: var(--tint-blue-fg); border-radius: var(--radius-sm); padding: 8px 10px; margin: 0 0 10px; font-size: 13px; }
+.wm-change[hidden] { display: none; }
+.wm-change:focus { outline: 3px solid var(--color-primary-dark); outline-offset: 1px; }
+/* The vulnerability map and its one legend ("What the levels mean"): beside the map on a wide screen, under it on a phone */
+.wm-vis { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 16px; align-items: start; }
+.wm-key { font-size: 13px; line-height: 1.45; color: var(--color-text); }
+.wm-key h3 { margin: 0 0 6px; font-size: 15px; color: var(--color-primary-dark); }
+.wm-key p { margin: 8px 0; color: var(--color-text-muted); }
+.wm-key .wm-key-lines p { color: var(--color-text); }
+.wm-key-sub { font-size: 12px; }
+.wm-key-sub[hidden] { display: none; }
+.wm-levels { list-style: none; margin: 0; padding: 0; }
+.wm-levels li { display: grid; grid-template-columns: 26px minmax(0, 1fr) auto; gap: 8px; align-items: start; padding: 4px 0; border-bottom: 1px solid var(--color-border-light); }
+.wm-levels .rk { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 22px; border-radius: 4px; font-weight: 700; font-size: 12.5px; border: 1px solid rgba(0,0,0,.15); box-sizing: border-box; }
+.wm-levels .nm { display: block; font-weight: 700; }
+.wm-levels .ds { display: block; color: var(--color-text-muted); font-size: 12px; }
+.wm-levels .n { color: var(--color-text-muted); font-size: 11.5px; white-space: nowrap; font-variant-numeric: tabular-nums; padding-top: 3px; }
+.wm-levels .n:empty { display: none; }
+.wm-map { height: 560px; border-radius: var(--radius-md); background: #DCEBF2; }
+.wm-legend { position: absolute; left: 10px; bottom: 10px; z-index: 500; background: rgba(255,255,255,.95); border-radius: var(--radius-sm); box-shadow: var(--shadow-sm); padding: 8px 10px; font-size: 12px; max-width: 250px; }
+.wm-legend b { display: block; margin-bottom: 4px; font-size: 12px; }
+.wm-legend .row { display: flex; align-items: center; gap: 6px; margin: 2px 0; }
+.wm-legend .row small { margin-left: auto; color: var(--color-text-muted); padding-left: 8px; font-variant-numeric: tabular-nums; }
+.wm-legend i { width: 14px; height: 14px; border-radius: 3px; border: 1px solid rgba(0,0,0,.15); flex: none; }
+.wm-legend .sub { color: var(--color-text-muted); font-size: 11px; margin-top: 4px; }
+.wm-p { font-size: 13px; line-height: 1.55; color: var(--color-text-muted); margin: 6px 0 10px; max-width: 900px; }
+.wm-scroll { overflow-x: auto; }
+.wm-scroll table.pt { min-width: 560px; }
+table.pt td.miss { color: var(--tint-yellow-fg); background: var(--tint-yellow-bg); }
+.wm-steps { font-size: 14px; line-height: 1.6; color: var(--color-text); max-width: 900px; padding-left: 22px; margin: 0 0 16px; }
+.wm-steps li { margin-bottom: 6px; }
+.wm-list { font-size: 13.5px; line-height: 1.6; margin: 0; padding-left: 20px; max-width: 900px; }
+.wm-list li { margin-bottom: 6px; }
+.wm-h4 { font-size: 13px; margin: 14px 0 6px; color: var(--color-text); }
+#inputsDiff { font-size: 13px; }
+.wm-pop { font-size: 12.5px; min-width: 230px; }
+.wm-pop h4 { margin: 0 0 2px; font-size: 14px; }
+.wm-pop .meta { color: var(--color-text-muted); margin-bottom: 6px; }
+.wm-pop table { border-collapse: collapse; width: 100%; margin: 4px 0; }
+.wm-pop th, .wm-pop td { padding: 2px 4px; border-bottom: 1px solid var(--color-border-light); text-align: left; font-weight: 500; }
+.wm-pop th { font-size: 10.5px; text-transform: uppercase; letter-spacing: .04em; color: var(--color-text-light); }
+.wm-pop td.num, .wm-pop th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.wm-pop tr.on td { font-weight: 700; background: var(--tint-blue-bg); }
+.wm-pop .rk { display: inline-block; min-width: 18px; text-align: center; border-radius: 3px; font-weight: 700; padding: 0 3px; }
+.wm-pop .src { color: var(--color-text-light); font-size: 11px; margin-top: 6px; }
+@media (max-width: 560px) {   /* a phone's pop-up is as wide as its map allows (capPopups): plain-case headers, so the last column stays inside */
+  .wm-pop th { text-transform: none; letter-spacing: 0; font-size: 11px; }
+  .wm-pop th, .wm-pop td { padding: 2px 3px; }
+}
+@media (max-width: 860px) {
+  .wm-map { height: 430px; }
+  .wm-vis { grid-template-columns: minmax(0, 1fr); }
+  .wm-legend { position: static; max-width: none; margin-top: 8px; box-shadow: none; padding: 6px 0; background: transparent; }
+  .wm-controls select { max-width: 100%; }
+}
+/* Social Capital map (js/wcrp_social.js) */
+.sc-themes { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.sc-themes label { display: inline-flex; align-items: center; gap: 6px; padding: 5px 10px; border: 1px solid var(--color-border); border-radius: 999px; background: #fff; font-size: 12.5px; cursor: pointer; }
+.sc-themes label:has(input:checked) { background: var(--tint-blue-bg); border-color: var(--color-primary-strong); }
+.sc-themes input:focus-visible { outline: 3px solid var(--color-primary-dark); outline-offset: 1px; }
+.sc-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 8px; }
+.sc-head .wm-controls { margin-bottom: 0; }
+.sc-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 16px; align-items: start; }
+table.sc-table { width: 100%; }
+table.sc-table caption { text-align: left; font-weight: 700; font-size: 13px; padding: 4px 0 6px; }
+table.sc-table th[scope="row"] small { color: var(--color-text-light); font-weight: 500; margin-left: 4px; }
+table.sc-table tr.sc-theme th { background: var(--color-border-light); font-size: 11px; text-transform: uppercase; letter-spacing: .04em; color: var(--color-text-muted); }
+table.sc-table tr.sc-total th, table.sc-table tr.sc-total td { font-weight: 700; border-top: 2px solid var(--color-border); }
+.sc-bar { display: flex; width: 130px; height: 12px; border-radius: 3px; overflow: hidden; border: 1px solid rgba(0,0,0,.12); margin-bottom: 2px; }
+.sc-bar i { display: block; height: 100%; }
+#scRanks td small { color: var(--color-text-muted); font-size: 11.5px; }
+.sc-tall { max-height: 420px; overflow-y: auto; }
+.sc-assets { margin: 6px 0 2px; font-size: 12px; }
+.sc-assets b { display: block; margin-bottom: 3px; font-size: 11.5px; }
+.sc-assets span { display: inline-block; min-width: 92px; font-weight: 600; }
+.sc-yes { color: #1F6B3A; }
+.sc-no { color: var(--color-text-muted); }
+.sc-nd { color: var(--color-text-light); }
+@media (max-width: 860px) { .sc-grid { grid-template-columns: 1fr; } }
+table.sc-table tbody th { text-transform: none; letter-spacing: 0; font-size: 13px; font-weight: 600; color: var(--color-text); }
+/* Collapsible explanations (<details>, closed by default; js/wcrp.js opens one when a link points to it). Its <summary> holds a real heading, so the outline of the page keeps it. */
+details.more > summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 10px; border-radius: var(--radius-md); }
+details.more > summary::-webkit-details-marker { display: none; }
+details.more > summary::after { content: ''; flex: none; width: 8px; height: 8px; margin: -4px 6px 0 auto; border-right: 2px solid var(--color-primary-dark); border-bottom: 2px solid var(--color-primary-dark); transform: rotate(45deg); transition: transform .15s; }
+details.more[open] > summary::after { transform: rotate(-135deg); margin-top: 4px; }
+details.more > summary:focus-visible { outline: 3px solid var(--color-primary-dark); outline-offset: 2px; }
+details.more > summary > h2, details.more > summary > h3, details.more > summary > h4 { margin: 0; }
+details.more-bar { margin-bottom: 12px; }
+details.more-bar[open] { margin-bottom: 36px; }
+details.more-bar > summary { background: var(--color-surface); box-shadow: var(--shadow-sm); padding: 14px 18px; }
+details.more-bar > summary:hover { background: var(--tint-blue-bg); }
+details.more-bar[open] > summary { margin-bottom: 14px; }
+details.more-bar > summary h2 { font-size: 20px; }
+details.more-bar > summary h3 { font-size: 16px; color: var(--color-primary-dark); }
+details.more-bar > .wm-list { background: var(--color-surface); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); padding: 14px 18px 14px 36px; max-width: none; }
+details.more-sm { margin: 8px 0 10px; }
+details.more-sm > summary { padding: 6px 2px; color: var(--color-primary-dark); }
+details.more-sm > summary:hover { text-decoration: underline; text-underline-offset: 2px; }
+details.more-sm > summary h3, details.more-sm > summary h4 { font-size: 13.5px; font-weight: 700; color: inherit; }
+details.more-sm > summary::after { margin-left: 0; }
+@media print { details.more > summary::after { display: none; } }
+/* the version slider: Original 2022, then each survey window of the updated version (wcrp.js syncVer) */
+.wm-ver { display: grid; grid-template-columns: auto 1fr; align-items: baseline; gap: 2px 8px; min-width: 260px; flex: 1 1 300px; max-width: 460px; }
+.wm-ver > label { font-weight: 600; color: var(--color-text-muted); font-size: 12px; }
+.wm-ver output { font-weight: 700; font-size: 13px; color: var(--color-primary-strong); }
+.wm-ver input[type=range] { grid-column: 1 / -1; width: 100%; margin: 4px 0 0; accent-color: var(--color-primary-strong); min-height: 24px; }
+.wm-ticks { grid-column: 1 / -1; display: flex; justify-content: space-between; font-size: 10.5px; color: var(--color-text-muted); }
+.wm-ticks span { flex: 1; text-align: center; }
+.wm-ticks span:first-child { text-align: left; } .wm-ticks span:last-child { text-align: right; }
+.wm-vernote { font-size: 12px; color: var(--color-text-muted); margin: 6px 0 0; }

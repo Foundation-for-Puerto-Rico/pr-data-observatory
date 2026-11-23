@@ -1,0 +1,42 @@
+{
+ "night_heat.night_lst_med": {
+  "name": "Temperatura mediana de la superficie terrestre, noches de verano (ECOSTRESS, °C)",
+  "how_to_read": "Puerto Rico: 24.0 °C de noche (su mediana de la mañana, de Landsat, es 33.4 °C). Municipios más cálidos: Culebra (26.5 °C), San Juan (26.4 °C), Loíza (26.4 °C). Más frescos: Adjuntas (19.8 °C), Jayuya (19.9 °C), Orocovis (20.0 °C).",
+  "_en": {
+   "name": "c3efe75c",
+   "how_to_read": "cd62ddce"
+  }
+ },
+ "night_heat.night_lst_p90": {
+  "name": "Décima parte más cálida del terreno, temperatura de superficie, noches de verano (ECOSTRESS, °C)",
+  "how_to_read": "Puerto Rico: 26.2 °C (su mediana es 24.0 °C). Más altos: Mayagüez (28.0 °C), Culebra (27.5 °C), San Juan (27.4 °C).",
+  "_en": {
+   "name": "994460e3",
+   "how_to_read": "031655f5"
+  }
+ },
+ "night_heat.night_hot_land_pct": {
+  "name": "Terreno entre la décima parte más cálida de Puerto Rico de noche, verano (ECOSTRESS, %)",
+  "how_to_read": "Puerto Rico: 10.0% (10% por construcción). Más altos: Culebra (69.7%), Loíza (60.2%), Cataño (59.3%).",
+  "_en": {
+   "name": "2e5e95b8",
+   "how_to_read": "cb2825d0"
+  }
+ },
+ "night_heat.night_res_hot": {
+  "name": "Residentes en la décima parte más cálida del terreno de Puerto Rico de noche (estimado)",
+  "how_to_read": "Puerto Rico: 847,717 residentes (25.8%). Más: San Juan (260,188), Carolina (105,890), Ponce (58,129).",
+  "_en": {
+   "name": "2db9f2f5",
+   "how_to_read": "4dce20ab"
+  }
+ },
+ "night_heat.night_res_hot_pct": {
+  "name": "Residentes en la décima parte más cálida del terreno de Puerto Rico de noche (estimado, %)",
+  "how_to_read": "Puerto Rico: 25.8% de los residentes viven en su décima parte más cálida del terreno de noche, más de 10% porque la gente vive donde el terreno está construido. Más altos: Loíza (82.6%), Culebra (77.4%), San Juan (76.0%).",
+  "_en": {
+   "name": "961b84e6",
+   "how_to_read": "c491cc68"
+  }
+ }
+}

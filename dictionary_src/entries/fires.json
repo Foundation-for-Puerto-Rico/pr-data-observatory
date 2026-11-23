@@ -1,0 +1,193 @@
+[
+ {
+  "id": "fires.fire_n",
+  "name": "Vegetation fire detections from satellite (NASA FIRMS)",
+  "ask": {
+   "en": [
+    "fires",
+    "brush fires",
+    "grass fires",
+    "wildfires",
+    "fire detections"
+   ],
+   "es": [
+    "fuegos",
+    "incendios",
+    "fuegos de pastos",
+    "incendios forestales",
+    "quemas"
+   ]
+  },
+  "domain": "hazards",
+  "domains": [
+   "hazards",
+   "environment"
+  ],
+  "group": "Environment · Fires (NASA FIRMS)",
+  "kind": "variable",
+  "plain": "How many times a satellite saw a grass or brush fire burning in the area during the year.",
+  "definition": "The number of VIIRS active fire detections on NOAA-20 in the area in the calendar year that FIRMS tags as presumed vegetation fires with nominal or high confidence.",
+  "unit": "detections a year",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2019,
+   "last": 2025,
+   "frequency": "Yearly; a finished year's file appears in the first months of the next (refresh unit fires)."
+  },
+  "method": "fires.py downloads FIRMS's yearly country files for Puerto Rico for NOAA-20 (VIIRS 375 m, standard processing; 2019-2025) and keeps the detections FIRMS tags as presumed vegetation fires (type 0) with nominal or high confidence. A detection belongs to the municipio of the barrio that holds its pixel's centre, or the nearest within about 500 m; farther ones (at sea) are left out. For the last 12 months the build, in GitHub Actions with FPR's MAP_KEY, reads the FIRMS area API for the Puerto Rico box in 5-day windows (standard processing where it reaches, near real time after); near-real-time detections carry no type, so those within 400 m of a place the yearly files mark as a static land source are left out. Checks at every build: each complete year 50 to 2,000 detections, and more than half in the dry south and southwest (68% in this build).",
+  "sources": [
+   "nasa_firms",
+   "census_tiger"
+  ],
+  "source_detail": "NASA FIRMS (https://firms.modaps.eosdis.nasa.gov/), VIIRS 375 m active fire detections on NOAA-20: yearly country files 2019-2025 and the area API for 2025-11-10 to 2026-11-09. Credit: NASA FIRMS. Municipio land area: Census (crosswalk).",
+  "how_to_read": "Puerto Rico had 103 detections in 2025, the fewest since 2019; the most were in 2019 (408). Over 2019-2025 (1,393 in all), most were in Salinas (273), Ponce (111) and Juana Díaz (106). About 64% of all detections fall in January to April, the dry season.",
+  "caveats": [
+   "A detection is a hot 375 m pixel, not a fire: one fire seen on two passes counts twice, a large fire fills several pixels, and a small fire or one under clouds is not seen.",
+   "NOAA-20 passes about 1:30 in the afternoon and 1:30 at night; fires that start and end between passes are missed.",
+   "Only detections FIRMS tags as presumed vegetation fires count; industry and power plants (static sources) are left out.",
+   "Counts of a small municipio change a lot from year to year: read several years together."
+  ],
+  "see_also": [
+   "fires.fire_per100km2",
+   "fires.fire_n_12m",
+   "vegetation.veg_ndvi_med"
+  ],
+  "where": {
+   "files": [
+    "fires_series.json:fire_n"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Environment · Fires (NASA FIRMS)): shade municipalities by",
+     "href": "index.html#e=fire_n.f.value.red.j.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-11-10"
+ },
+ {
+  "id": "fires.fire_per100km2",
+  "name": "Vegetation fire detections per 100 km² of land (NASA FIRMS)",
+  "ask": {
+   "en": [
+    "fire density",
+    "fires per area"
+   ],
+   "es": [
+    "densidad de fuegos",
+    "fuegos por area"
+   ]
+  },
+  "domain": "hazards",
+  "domains": [
+   "hazards",
+   "environment"
+  ],
+  "group": "Environment · Fires (NASA FIRMS)",
+  "kind": "variable",
+  "plain": "How often fires were seen in the area for its size: detections in the year for every 100 km² of land.",
+  "definition": "Fire detections in the year divided by the area's land area (Census, km²), times 100.",
+  "unit": "detections per 100 km² a year",
+  "value_type": "rate",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2019,
+   "last": 2025,
+   "frequency": "Yearly; a finished year's file appears in the first months of the next (refresh unit fires)."
+  },
+  "method": "fires.py downloads FIRMS's yearly country files for Puerto Rico for NOAA-20 (VIIRS 375 m, standard processing; 2019-2025) and keeps the detections FIRMS tags as presumed vegetation fires (type 0) with nominal or high confidence. A detection belongs to the municipio of the barrio that holds its pixel's centre, or the nearest within about 500 m; farther ones (at sea) are left out. For the last 12 months the build, in GitHub Actions with FPR's MAP_KEY, reads the FIRMS area API for the Puerto Rico box in 5-day windows (standard processing where it reaches, near real time after); near-real-time detections carry no type, so those within 400 m of a place the yearly files mark as a static land source are left out. Checks at every build: each complete year 50 to 2,000 detections, and more than half in the dry south and southwest (68% in this build).",
+  "sources": [
+   "nasa_firms",
+   "census_tiger"
+  ],
+  "source_detail": "NASA FIRMS (https://firms.modaps.eosdis.nasa.gov/), VIIRS 375 m active fire detections on NOAA-20: yearly country files 2019-2025 and the area API for 2025-11-10 to 2026-11-09. Credit: NASA FIRMS. Municipio land area: Census (crosswalk).",
+  "how_to_read": "2025: Puerto Rico 1.2 detections per 100 km². Highest: Salinas (15.6), Cabo Rojo (8.2), Añasco (7.9).",
+  "caveats": [
+   "A detection is a hot 375 m pixel, not a fire: one fire seen on two passes counts twice, a large fire fills several pixels, and a small fire or one under clouds is not seen.",
+   "NOAA-20 passes about 1:30 in the afternoon and 1:30 at night; fires that start and end between passes are missed.",
+   "Only detections FIRMS tags as presumed vegetation fires count; industry and power plants (static sources) are left out.",
+   "Counts of a small municipio change a lot from year to year: read several years together."
+  ],
+  "see_also": [
+   "fires.fire_n"
+  ],
+  "where": {
+   "files": [
+    "fires_series.json:fire_per100km2"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Environment · Fires (NASA FIRMS)): shade municipalities by",
+     "href": "index.html#e=fire_per100km2.f.value.red.q.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-11-10"
+ },
+ {
+  "id": "fires.fire_n_12m",
+  "name": "Vegetation fire detections, last 12 months (NASA FIRMS)",
+  "ask": {
+   "en": [
+    "recent fires",
+    "fires this year",
+    "fires last 12 months"
+   ],
+   "es": [
+    "fuegos recientes",
+    "incendios este ano",
+    "fuegos ultimos 12 meses"
+   ]
+  },
+  "domain": "hazards",
+  "domains": [
+   "hazards",
+   "environment"
+  ],
+  "group": "Environment · Fires (NASA FIRMS)",
+  "kind": "variable",
+  "plain": "How many times a satellite saw a grass or brush fire burning in the area in the last 12 months.",
+  "definition": "The number of VIIRS active fire detections on NOAA-20 in the area from 2025-11-10 to 2026-11-09, from FIRMS's area service (standard processing where it reaches, near real time after), with nominal or high confidence and not near a static land source.",
+  "unit": "detections",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "The 12 months to the day before the build; rebuilt monthly in GitHub Actions (refresh unit fires)."
+  },
+  "method": "fires.py downloads FIRMS's yearly country files for Puerto Rico for NOAA-20 (VIIRS 375 m, standard processing; 2019-2025) and keeps the detections FIRMS tags as presumed vegetation fires (type 0) with nominal or high confidence. A detection belongs to the municipio of the barrio that holds its pixel's centre, or the nearest within about 500 m; farther ones (at sea) are left out. For the last 12 months the build, in GitHub Actions with FPR's MAP_KEY, reads the FIRMS area API for the Puerto Rico box in 5-day windows (standard processing where it reaches, near real time after); near-real-time detections carry no type, so those within 400 m of a place the yearly files mark as a static land source are left out. Checks at every build: each complete year 50 to 2,000 detections, and more than half in the dry south and southwest (68% in this build).",
+  "sources": [
+   "nasa_firms",
+   "census_tiger"
+  ],
+  "source_detail": "NASA FIRMS (https://firms.modaps.eosdis.nasa.gov/), VIIRS 375 m active fire detections on NOAA-20: yearly country files 2019-2025 and the area API for 2025-11-10 to 2026-11-09. Credit: NASA FIRMS. Municipio land area: Census (crosswalk).",
+  "how_to_read": "From 2025-11-10 to 2026-11-09: Puerto Rico 279, almost three times the 103 of 2025. Most: Salinas (85), Santa Isabel (34), Lajas (26).",
+  "caveats": [
+   "A detection is a hot 375 m pixel, not a fire: one fire seen on two passes counts twice, a large fire fills several pixels, and a small fire or one under clouds is not seen.",
+   "NOAA-20 passes about 1:30 in the afternoon and 1:30 at night; fires that start and end between passes are missed.",
+   "Only detections FIRMS tags as presumed vegetation fires count; industry and power plants (static sources) are left out.",
+   "Counts of a small municipio change a lot from year to year: read several years together.",
+   "Near-real-time detections (the most recent weeks) can still change when FIRMS reprocesses them; the figure moves with each monthly rebuild."
+  ],
+  "see_also": [
+   "fires.fire_n"
+  ],
+  "where": {
+   "files": [
+    "fires_series.json:fire_n_12m"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab (group Environment · Fires (NASA FIRMS)): shade municipalities by",
+     "href": "index.html#e=fire_n_12m.f.value.red.j.1.1.0.85.0"
+    }
+   ]
+  },
+  "added": "2026-11-10"
+ }
+]

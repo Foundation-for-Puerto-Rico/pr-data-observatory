@@ -1,0 +1,454 @@
+{
+ "transit.transport_features": {
+  "name": "Puntos de transporte: paradas, estaciones, terminales, aeropuertos, paradas de taxis y estaciones de carga",
+  "how_to_read": "Mire primero el campo source. Un punto de ati_gtfs o muni_gtfs aparece en el horario publicado de un operador. Un punto de osm_transport solo muestra que alguien mapeó una parada en ese lugar; no muestra que un vehículo pase por ahí hoy. Un punto de faa_airports es un registro de aeropuerto, no una parada de transporte colectivo.",
+  "_en": {
+   "name": "4b9464a9",
+   "how_to_read": "f6a7a5b1"
+  }
+ },
+ "transit.scheduled_vs_mapped": {
+  "name": "Puntos de transporte colectivo con horario frente a puntos mapeados",
+  "how_to_read": "Las herramientas que necesitan un horario usan solo las paradas con horario: la cobertura del servicio (residentes a 400 m o menos), las brechas de servicio, los puntos de integración, los conteos de rutas y la reproducción de los vehículos según su horario. Las herramientas que solo necesitan saber dónde está físicamente una parada usan juntas las paradas con horario y las mapeadas: los aros de 400 m a pie en el mapa y la proporción de lugares turísticos a 400 m o menos de cualquier parada mapeada (tipos transit_stop, bus_stop, bus_station, rail_station y ferry_terminal). El acceso de los lugares turísticos a una parada con horario vigente (place_access.json y los campos acc_ de municipalities.json) usa solo paradas con horario, y solo aquellas cuyo operador tiene una fuente de datos que no ha terminado.",
+  "_en": {
+   "name": "e5026bb5",
+   "how_to_read": "8fecc962"
+  }
+ },
+ "transit.stop_id": {
+  "name": "Identificador del punto de transporte",
+  "how_to_read": "Use el identificador para referirse a un registro de este corte de datos.",
+  "_en": {
+   "name": "4726321d",
+   "how_to_read": "a360a83f"
+  }
+ },
+ "transit.stop_name": {
+  "name": "Nombre del punto de transporte",
+  "_en": {
+   "name": "e25398b7"
+  }
+ },
+ "transit.stop_kind": {
+  "name": "Tipo de punto de transporte",
+  "how_to_read": "El tipo dice qué es el punto, no si tiene horario. Combínelo con el campo source.",
+  "_en": {
+   "name": "31f1b4da",
+   "how_to_read": "62f6170c"
+  }
+ },
+ "transit.stop_location": {
+  "name": "Ubicación del punto de transporte (latitud y longitud)",
+  "_en": {
+   "name": "30e9096c"
+  }
+ },
+ "transit.stop_source": {
+  "name": "Fuente del punto de transporte",
+  "how_to_read": "El campo source indica cuánto se puede confiar en que un punto tenga servicio: vea Puntos de transporte colectivo con horario frente a puntos mapeados.",
+  "_en": {
+   "name": "1169cef1",
+   "how_to_read": "b7960e48"
+  }
+ },
+ "transit.stop_operator": {
+  "name": "Operador del punto de transporte",
+  "how_to_read": "Relacione una parada con horario con su operador mediante la lista de operadores. Trate el texto de OSM como una etiqueta, no como el nombre oficial de un operador.",
+  "_en": {
+   "name": "d8307560",
+   "how_to_read": "96afd00d"
+  }
+ },
+ "transit.stop_operator_name": {
+  "name": "Nombre del operador de la parada con horario",
+  "_en": {
+   "name": "43638904"
+  }
+ },
+ "transit.stop_modes": {
+  "name": "Modos de transporte que sirven la parada",
+  "_en": {
+   "name": "5a8ab1ff"
+  }
+ },
+ "transit.stop_routes": {
+  "name": "Rutas que pasan por la parada",
+  "_en": {
+   "name": "3c817c0c"
+  }
+ },
+ "transit.stop_trips_weekday": {
+  "name": "Pasadas programadas de lunes a viernes por la parada (en el mapa: salidas de lunes a viernes)",
+  "how_to_read": "Un número más alto significa más salidas programadas. En el corte de datos 2026-10, el mayor es Terminal Covadonga, con 508 salidas. No dice cuán llenos van los vehículos ni si llegan a tiempo. Un horario cubre las fechas desde feed.start hasta feed.end del operador en operators.json, no la fecha de compilación. En la compilación del 2026-10-02, el inicio más temprano es 2023-01-01 y el final más tardío es 2029-12-31; la fuente de datos de Ponce terminó el 2024-12-31. Cite tanto la fecha de compilación como las fechas de las fuentes de datos.",
+  "_en": {
+   "name": "e8b23423",
+   "how_to_read": "79b1be34"
+  }
+ },
+ "transit.stop_calls_sat": {
+  "name": "Pasadas programadas del sábado por la parada (en el mapa: salidas del sábado)",
+  "how_to_read": "Un número más alto significa más salidas programadas en sábado. Si falta el campo, el horario no indica ninguna salida en sábado por la parada. Eso no prueba que no pase ningún vehículo. En el corte de datos 2026-10, solo cuatro fuentes de datos indican alguna salida en sábado: ATI (Autoridad de Transporte Integrado; 1,369 paradas), Guaynabo (273), Vega Alta (135) y Juncos (133; su fuente de datos terminó el 2026-07-31). Las otras 21 fuentes de datos solo indican servicio de lunes a viernes. Los campos ts_we (place_access.json) y acc_sat400_pct se construyen a partir de este campo.",
+  "_en": {
+   "name": "8b12000c",
+   "how_to_read": "3d784c24"
+  }
+ },
+ "transit.stop_calls_sun": {
+  "name": "Pasadas programadas del domingo por la parada (en el mapa: salidas del domingo)",
+  "how_to_read": "Un número más alto significa más salidas programadas en domingo. Si falta el campo, el horario no indica ninguna salida en domingo por la parada. Eso no prueba que no pase ningún vehículo. En el corte de datos 2026-10, solo la fuente de datos de la ATI (Autoridad de Transporte Integrado) indica salidas en domingo, en 94 de sus 1,437 paradas: las 16 estaciones de tren, 5 terminales de lanchas y 73 paradas y estaciones de guaguas. Las otras 24 fuentes de datos no indican ninguna. Los campos ts_we (place_access.json) y acc_sun400_pct se construyen a partir de este campo.",
+  "_en": {
+   "name": "f06bddf8",
+   "how_to_read": "a0a44a0c"
+  }
+ },
+ "transit.stop_feed_end": {
+  "name": "Fecha final de la fuente de datos de horarios de la parada",
+  "how_to_read": "Compare la fecha con la de hoy. Una fecha pasada significa que el horario publicado terminó: puede que la parada todavía tenga servicio, pero el archivo ya no lo dice. Una fecha muy lejana es la que puso quien publica, no una promesa: Bayamón y Jayuya terminan el 2029-12-31.",
+  "_en": {
+   "name": "155c080b",
+   "how_to_read": "12db7e49"
+  }
+ },
+ "transit.stop_wheelchair": {
+  "name": "Abordaje en silla de ruedas indicado para la parada",
+  "how_to_read": "Use true como una afirmación positiva. No interprete false como no accesible.",
+  "_en": {
+   "name": "7e8d67f4",
+   "how_to_read": "394eb2bf"
+  }
+ },
+ "transit.stop_shelter": {
+  "name": "Caseta marcada en la parada",
+  "_en": {
+   "name": "307a1e39"
+  }
+ },
+ "transit.stop_municipality": {
+  "name": "Municipio del punto de transporte",
+  "_en": {
+   "name": "433676b4"
+  }
+ },
+ "transit.airport_public_use": {
+  "name": "Aeropuerto de uso público (lista de la Administración Federal de Aviación)",
+  "_en": {
+   "name": "0a504c69"
+  }
+ },
+ "transit.airport_city": {
+  "name": "Ciudad del aeropuerto (lista de la Administración Federal de Aviación)",
+  "_en": {
+   "name": "05a5f0a6"
+  }
+ },
+ "transit.airport_code": {
+  "name": "Código del aeropuerto (identificador de ubicación de la Administración Federal de Aviación)",
+  "_en": {
+   "name": "43524580"
+  }
+ },
+ "transit.airport_iata_icao": {
+  "name": "Códigos de aeropuerto de la Asociación Internacional de Transporte Aéreo y de la Organización de Aviación Civil Internacional (OpenStreetMap)",
+  "_en": {
+   "name": "2296747e"
+  }
+ },
+ "transit.taxi_ev_charging": {
+  "name": "Paradas de taxis y carga de vehículos eléctricos",
+  "how_to_read": "Use la capa para ver dónde se conocen estos puntos. No es una lista de todos los taxis ni de todas las estaciones de carga.",
+  "_en": {
+   "name": "d6531418",
+   "how_to_read": "d7d2abf3"
+  }
+ },
+ "transit.routes": {
+  "name": "Rutas de transporte colectivo",
+  "how_to_read": "Abra una ruta para ver su operador, los viajes por día, la primera y la última salida, y si su horario está vigente, por vencer o vencido.",
+  "_en": {
+   "name": "8c51a51d",
+   "how_to_read": "0aa68fc5"
+  }
+ },
+ "transit.route_drawing": {
+  "name": "Cómo se dibujan las líneas de las rutas",
+  "how_to_read": "En el mapa, una línea continua sigue el trazado del operador o las carreteras; una línea discontinua más clara es una ruta con el orden de paradas deducido; una línea punteada une las paradas en línea recta, y una línea discontinua dorada es una ruta de OpenStreetMap. Las lanchas se muestran con una línea discontinua verde azulada.",
+  "_en": {
+   "name": "413a4faf",
+   "how_to_read": "d5e7b4a2"
+  }
+ },
+ "transit.osm_routes": {
+  "name": "Públicos y otras rutas mapeadas en OpenStreetMap",
+  "how_to_read": "Trate estas líneas como un mapa voluntario de por dónde se sabe que pasan los públicos, no como una garantía de servicio.",
+  "_en": {
+   "name": "8d623c5b",
+   "how_to_read": "0ccf315f"
+  }
+ },
+ "transit.route_operator": {
+  "name": "Identificador del operador de la ruta",
+  "how_to_read": "Únalo con operators.json por id para encontrar el estado y las fechas de la fuente de datos.",
+  "_en": {
+   "name": "4bfcd7ac",
+   "how_to_read": "ca0fe4a8"
+  }
+ },
+ "transit.route_operator_name": {
+  "name": "Nombre del operador de la ruta",
+  "_en": {
+   "name": "0d75c64d"
+  }
+ },
+ "transit.route_id": {
+  "name": "Identificador de la ruta de transporte colectivo",
+  "how_to_read": "Use operator y route_id juntos para referirse a una ruta.",
+  "_en": {
+   "name": "a3b0ac26",
+   "how_to_read": "bf7e4acd"
+  }
+ },
+ "transit.route_short_name": {
+  "name": "Número o nombre corto de la ruta de transporte colectivo",
+  "_en": {
+   "name": "ece35012"
+  }
+ },
+ "transit.route_long_name": {
+  "name": "Nombre de la ruta de transporte colectivo",
+  "_en": {
+   "name": "953caac7"
+  }
+ },
+ "transit.route_mode": {
+  "name": "Modo de la ruta de transporte colectivo",
+  "_en": {
+   "name": "ec84068e"
+  }
+ },
+ "transit.route_label": {
+  "name": "Etiqueta de la ruta de transporte colectivo",
+  "_en": {
+   "name": "567c197e"
+  }
+ },
+ "transit.route_color": {
+  "name": "Color de la ruta de transporte colectivo en la fuente de datos",
+  "how_to_read": "Úselo solo si quiere el esquema de colores propio del operador.",
+  "_en": {
+   "name": "8f621eb9",
+   "how_to_read": "418cab20"
+  }
+ },
+ "transit.route_trips": {
+  "name": "Viajes programados por día en la ruta",
+  "how_to_read": "Compare rutas del mismo operador. Una ruta con más viajes tiene más servicio programado. El mapa dibuja líneas más anchas cuando hay más viajes de lunes a viernes. Un horario cubre las fechas desde feed.start hasta feed.end del operador en operators.json, no la fecha de compilación. En la compilación del 2026-10-02, el inicio más temprano es 2023-01-01 y el final más tardío es 2029-12-31; la fuente de datos de Ponce terminó el 2024-12-31. Cite tanto la fecha de compilación como las fechas de las fuentes de datos.",
+  "_en": {
+   "name": "9ff6b376",
+   "how_to_read": "9510bd38"
+  }
+ },
+ "transit.route_first_last": {
+  "name": "Primera y última salida de lunes a viernes en la ruta",
+  "how_to_read": "Divida entre 3600 para obtener horas. last es cuando el último viaje sale de su primera parada, no cuando llega. Un horario cubre las fechas desde feed.start hasta feed.end del operador en operators.json, no la fecha de compilación. En la compilación del 2026-10-02, el inicio más temprano es 2023-01-01 y el final más tardío es 2029-12-31; la fuente de datos de Ponce terminó el 2024-12-31. Cite tanto la fecha de compilación como las fechas de las fuentes de datos.",
+  "_en": {
+   "name": "23b60f0b",
+   "how_to_read": "d257105b"
+  }
+ },
+ "transit.route_geometry_source": {
+  "name": "Cómo se dibujó la línea de la ruta",
+  "how_to_read": "Confíe más en shape. Trate roads como un buen estimado, roads_inferred como una aproximación burda y osm como un mapa voluntario.",
+  "_en": {
+   "name": "6d2832bc",
+   "how_to_read": "27e13a75"
+  }
+ },
+ "transit.route_sig": {
+  "name": "Huella de la línea de la ruta",
+  "how_to_read": "No lo tome en cuenta para el análisis. Un sig distinto significa que cambiaron las paradas de la ruta o el método de ajuste.",
+  "_en": {
+   "name": "798883c8",
+   "how_to_read": "544cf3dc"
+  }
+ },
+ "transit.route_order_note": {
+  "name": "Nota sobre el orden de paradas de una fuente de datos",
+  "how_to_read": "Cuando hay una nota, lea la línea como un trayecto posible, no como la ruta real.",
+  "_en": {
+   "name": "9d3e71bf",
+   "how_to_read": "08d5a35e"
+  }
+ },
+ "transit.route_network": {
+  "name": "Nombre de la red (rutas de OpenStreetMap)",
+  "_en": {
+   "name": "4df14684"
+  }
+ },
+ "transit.operators_file": {
+  "name": "Archivo de operadores: operadores, fuentes de datos, verificaciones en tiempo real, cobertura y puntos de integración",
+  "how_to_read": "Comience con el registro de cada operador para ver el estado de su fuente de datos; luego, vea los registros de cobertura para los residentes cerca de paradas.",
+  "_en": {
+   "name": "c0fea9c9",
+   "how_to_read": "314f8bcb"
+  }
+ },
+ "transit.operator_discovery": {
+  "name": "Cómo se arma la lista de operadores",
+  "how_to_read": "La lista es la lista federal más la ATI, las fuentes de datos encontradas y las rutas de OpenStreetMap. No es un censo de todos los servicios de vehículos de la isla.",
+  "_en": {
+   "name": "1afd4b93",
+   "how_to_read": "c09a1ae1"
+  }
+ },
+ "transit.operator_record": {
+  "name": "Registro del operador de transporte colectivo",
+  "how_to_read": "Filtre por feed.status para ver quién tiene datos vigentes. Use routes, stops y trips_weekday para comparar el tamaño de los sistemas.",
+  "_en": {
+   "name": "fdaf4a46",
+   "how_to_read": "5ee24c92"
+  }
+ },
+ "transit.operator_type": {
+  "name": "Tipo de operador de transporte colectivo",
+  "_en": {
+   "name": "caff6ac9"
+  }
+ },
+ "transit.feed_status": {
+  "name": "Estado de la fuente de datos de horarios",
+  "how_to_read": "Use un horario vigente para planificar solo después de revisar la fecha final. Trate los horarios vencidos como historia.",
+  "_en": {
+   "name": "17a4b41d",
+   "how_to_read": "3e6aaada"
+  }
+ },
+ "transit.feed_dates": {
+  "name": "Fechas, versión y agencia de la fuente de datos de horarios",
+  "how_to_read": "feed.end es la fecha después de la cual el horario publicado ya no aplica.",
+  "_en": {
+   "name": "e5fd943c",
+   "how_to_read": "c1ae73b7"
+  }
+ },
+ "transit.feed_flags": {
+  "name": "Indicadores de la fuente de datos de horarios: trazados, servicio de fin de semana y problemas de orden",
+  "how_to_read": "has_shapes false significa que el observatorio dibuja las líneas del operador en el mapa siguiendo las carreteras.",
+  "_en": {
+   "name": "8c8ba384",
+   "how_to_read": "3828069c"
+  }
+ },
+ "transit.real_time": {
+  "name": "Datos de vehículos en tiempo real: qué existe y qué no",
+  "how_to_read": "Donde el observatorio muestra vehículos en movimiento, está reproduciendo un horario. Vea Vehículos según su horario ahora.",
+  "_en": {
+   "name": "e03acfdc",
+   "how_to_read": "35a63762"
+  }
+ },
+ "transit.coverage_pop": {
+  "name": "Residentes contados para la cobertura (por municipio)",
+  "how_to_read": "Úselo como denominador de la proporción de residentes cerca de una parada.",
+  "_en": {
+   "name": "7483199f",
+   "how_to_read": "e086e732"
+  }
+ },
+ "transit.coverage_served": {
+  "name": "Residentes a 400 m o menos de una parada con horario (registros de cobertura del archivo de operadores)",
+  "how_to_read": "Una proporción más alta significa que más residentes tienen cerca una parada con horario. No dice nada sobre la frecuencia de los vehículos ni sobre adónde van. Personas: Censo 2020. Paradas y horarios: compilación del 2026-10-02.",
+  "_en": {
+   "name": "3751aa4a",
+   "how_to_read": "70c99319"
+  }
+ },
+ "transit.coverage_active": {
+  "name": "Residentes a 400 m o menos de una parada con horario, sin los horarios vencidos",
+  "how_to_read": "Compárela con la medida de todas las paradas. El mapa llama a esto una parada con horario vigente; para los lugares turísticos, la medida equivalente es municipalities.acc_cur400_pct. La diferencia muestra cuánto del acceso medido depende de horarios que ya terminaron. Personas: Censo 2020. Paradas y horarios: compilación del 2026-10-02. Por ejemplo, en la compilación del 2026-10-02, Ponce muestra 56.6% con todas las paradas y 0.0% solo con los horarios activos, porque su fuente de datos terminó el 2024-12-31.",
+  "_en": {
+   "name": "f096e98e",
+   "how_to_read": "fa2bccfa"
+  }
+ },
+ "transit.coverage_systems": {
+  "name": "Residentes a 400 m o menos de paradas de la Autoridad de Transporte Integrado (ATI), de paradas municipales o de ambas",
+  "how_to_read": "served_both muestra dónde se superponen los dos tipos de sistema, que es donde importa la coordinación. Personas: Censo 2020. Paradas y horarios: compilación del 2026-10-02.",
+  "_en": {
+   "name": "463d2eba",
+   "how_to_read": "dd02a2a2"
+  }
+ },
+ "transit.population_blocks": {
+  "name": "Población por bloque censal, con la distancia a la parada con horario más cercana",
+  "how_to_read": "Sume los residentes de los bloques que cumplen una regla de distancia. Por ejemplo, los bloques con un valor de metres de 400 o menos contienen a los residentes que se cuentan como cerca de una parada.",
+  "_en": {
+   "name": "565700ae",
+   "how_to_read": "e7f86257"
+  }
+ },
+ "transit.block_stop_distance": {
+  "name": "Distancia de un bloque censal a la parada con horario más cercana",
+  "how_to_read": "Un valor pequeño significa que hay una parada cerca. Use 400 m para la medida de acceso a pie y 800 m para la capa de brechas de servicio.",
+  "_en": {
+   "name": "bbbb1e2b",
+   "how_to_read": "67ed5252"
+  }
+ },
+ "transit.service_gaps": {
+  "name": "Residentes lejos del servicio (capa del mapa)",
+  "how_to_read": "Los círculos grandes en áreas con poco servicio muestran muchos residentes lejos de una parada con horario. Personas: Censo 2020. Paradas y horarios: compilación del 2026-10-02.",
+  "_en": {
+   "name": "912574d6",
+   "how_to_read": "2ba9d6f1"
+  }
+ },
+ "transit.integration_points": {
+  "name": "Puntos de integración: paradas cercanas de operadores distintos",
+  "how_to_read": "Una distancia corta significa que las paradas de los dos sistemas están casi en el mismo lugar.",
+  "_en": {
+   "name": "78e67d82",
+   "how_to_read": "cea68d78"
+  }
+ },
+ "transit.distance_rules": {
+  "name": "Distancias que se usan para caminar, brechas, trasbordos y eliminar duplicados",
+  "how_to_read": "Todas las distancias son en línea recta, no rutas a pie.",
+  "_en": {
+   "name": "70545779",
+   "how_to_read": "5c940555"
+  }
+ },
+ "transit.typical_weekday": {
+  "name": "Servicio típico de lunes a viernes, sábado y domingo",
+  "how_to_read": "Lea los conteos de lunes a viernes como el número de viajes de un miércoles normal, no como un promedio de la semana.",
+  "_en": {
+   "name": "57a81d17",
+   "how_to_read": "8eb35695"
+  }
+ },
+ "transit.trips_files": {
+  "name": "Archivos de reproducción de horarios: viajes de lunes a viernes, sábado y domingo",
+  "how_to_read": "Cada viaje es un recorrido programado, trazado a lo largo de la línea de su ruta. En el corte de datos 2026-10, 3,191 de los 3,297 viajes de lunes a viernes siguen la línea de su ruta; los otros 106 (16 patrones de paradas cuyas paradas no encajan en ninguna línea de su ruta) unen sus paradas con líneas rectas y se marcan como 'stops' en path_kind. Las velocidades entre paradas salen del horario, así que un vehículo mantiene sus horas programadas, pero se mueve a velocidad pareja entre dos paradas. Un horario cubre las fechas desde feed.start hasta feed.end del operador en operators.json, no la fecha de compilación. En la compilación del 2026-10-02, el inicio más temprano es 2023-01-01 y el final más tardío es 2029-12-31; la fuente de datos de Ponce terminó el 2024-12-31. Cite tanto la fecha de compilación como las fechas de las fuentes de datos.",
+  "_en": {
+   "name": "267652e9",
+   "how_to_read": "8454a622"
+  }
+ },
+ "transit.trip_record": {
+  "name": "Registro de viaje: ruta, modo, operador, patrón de paradas y horas en las paradas",
+  "how_to_read": "La lista de valores muestra los códigos de m. La etiqueta de ruta r se puede relacionar con el nombre corto o largo de una ruta del mismo operador. Las horas en las paradas t son el horario mismo: úselas, y no los puntos del trayecto, para contar salidas, medir intervalos de paso o encontrar trasbordos. Los viajes que comparten k son un mismo patrón de servicio de una ruta, que es la unidad para comparar la oferta entre rutas.",
+  "_en": {
+   "name": "c02e0ed3",
+   "how_to_read": "1cfd289e"
+  }
+ },
+ "transit.vehicles_now": {
+  "name": "Vehículos según su horario ahora (reproducción del horario)",
+  "how_to_read": "Léala como dónde dice el horario que están los vehículos, no dónde están. El número se calcula en su navegador cada 5 segundos y no se guarda en ningún archivo. Para citarlo, indique la fecha, la hora de Puerto Rico que aparece en la nota de la capa, la fecha de compilación de los horarios y las fechas de las fuentes de datos. Un horario cubre las fechas desde feed.start hasta feed.end del operador en operators.json, no la fecha de compilación. En la compilación del 2026-10-02, el inicio más temprano es 2023-01-01 y el final más tardío es 2029-12-31; la fuente de datos de Ponce terminó el 2024-12-31.",
+  "_en": {
+   "name": "3e4ced9a",
+   "how_to_read": "936cfa38"
+  }
+ }
+}

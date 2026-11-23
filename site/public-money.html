@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Knowledge Area · Disaster funding and need</title>
+<meta name="description" content="Federal disaster and community development money per resident by municipio, set next to two measures of need: expected loss from natural hazards and residents with three or more risk factors. Facts only, with what the data can and cannot place.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="icon" href="img/fpr-mark.png">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0&icon_names=account_balance,bolt,chat_bubble,close,commute,delete,diversity_3,download,home_work,hourglass_bottom,info,lightbulb,map,menu_book,payments,pie_chart,price_change,rocket_launch,route,scatter_plot,school,send,table_view,thermostat,view_in_ar,warning,water,wifi,woman,work&display=block">
+<link rel="stylesheet" href="css/twin.css?v=63">
+<link rel="stylesheet" href="css/housing.css?v=21">
+<link rel="stylesheet" href="css/public_money.css?v=1">
+<link rel="stylesheet" href="css/chat.css?v=4">
+<script src="js/i18n.js?v=85" data-page="publicmoney"></script>
+</head>
+<body class="research">
+<a class="skip" href="#compare">Skip to the content</a>
+<header class="topbar">
+  <a class="logo" href="index.html" title="PR Data Observatory home"><img src="img/fpr-logo.png" alt="Foundation for Puerto Rico. PR Data Observatory home"></a>
+  <div class="brand"><b>Knowledge Area · Disaster funding and need</b><span>Federal disaster and community development money and two measures of need, by municipio</span></div>
+  <div class="spacer"></div>
+  <nav class="views" aria-label="Views">
+    <a class="btn" href="index.html"><span class="ms-icon" aria-hidden="true">map</span><span class="lbl">Map</span></a>
+    <a class="btn" href="3d.html" title="Immersive 3D + time view"><span class="ms-icon" aria-hidden="true">view_in_ar</span><span class="lbl">3D + Time</span></a>
+    <a class="btn" href="knowledge.html" aria-current="page" title="Knowledge: FPR studies, analyses and tools"><span class="ms-icon" aria-hidden="true">lightbulb</span><span class="lbl">Knowledge</span></a>
+    <a class="btn" href="dictionary.html" title="Data dictionary: meanings, sources, licenses, how to cite"><span class="ms-icon" aria-hidden="true">menu_book</span><span class="lbl">Data dictionary</span></a>
+    <a class="btn" href="learn.html" title="Learn: short lessons about maps and spatial analysis"><span class="ms-icon" aria-hidden="true">school</span><span class="lbl">Learn</span></a>
+  </nav>
+</header>
+
+<nav class="toc" id="toc" aria-label="On this page">
+  <span class="ka-tabs" role="group" aria-label="Knowledge Area" data-ka="publicmoney"></span><span class="ka-sep" aria-hidden="true"></span>
+  <a href="#compare">Money and need</a><a href="#scatter">Municipio by municipio</a><a href="#placed">What the map can show</a><a href="#mitigation">Hazard Mitigation</a><a href="#hud">HUD grants</a><a href="#method">Method</a><a href="#sources">Sources</a>
+</nav>
+
+<main class="page">
+  <div class="note caution review-note" role="note" data-ka-note></div>
+
+  <section class="hero" id="compare">
+    <div class="eyebrow">Knowledge Area · Public money</div>
+    <h1>Disaster funding and need by municipio</h1>
+    <p class="lede">Where federal disaster money per resident and two measures of need line up, and where they do not. The FEMA money is what FEMA obligated or approved for disasters declared, or grants of fiscal years, 2017 to 2025; it is divided by each municipio's residents in the 2020 Census. COVID-19 relief is not included.</p>
+    <p class="pm-p">The page also shows HUD's Community Development Block Grants (CDBG): the disaster recovery and mitigation grants (CDBG-DR and CDBG-MIT) and the yearly grants, as obligated in federal fiscal years 2019 to 2025. HUD's money is never added to FEMA's: the years are counted differently. Pick it under Money, or see section 4.</p>
+    <div class="pm-controls">
+      <label>Money <select id="pmMoney"></select></label>
+      <label>Need <select id="pmNeed"></select></label>
+      <button type="button" class="btn" id="pmCsv"><span class="ms-icon" aria-hidden="true">download</span>Download CSV</button>
+    </div>
+    <div class="pm-maprow">
+      <div class="card pm-map"><div id="pmMap"></div><div class="pm-keyrow"><div id="pmKey"></div></div></div>
+      <div class="card pm-place" id="pmPlace" aria-live="polite"></div>
+    </div>
+    <p class="pm-small">Each municipio falls in a third (tercile) of the 78 by money per resident and in a third by need, so the map has nine colours. Dark red: more need and less money than most; blue: more money and less need; dark brown: high in both. The colour compares municipios with each other, not with a standard of what is enough.</p>
+    <div class="note caution"><b>Read with care.</b> This page states facts and draws no conclusions. Money obligated or approved is not money spent. Most FEMA Public Assistance cannot be placed in a municipio: 22% of it is on this map, the rest is recorded as statewide (power, water and Commonwealth agencies). Expected annual loss is a model estimate, not a record of losses. A municipio can rank high on money because of one large project.</div>
+  </section>
+
+  <section class="block" id="scatter">
+    <h2><span class="ms-icon" aria-hidden="true">scatter_plot</span>1 · Municipio by municipio</h2>
+    <p class="pm-p">Each dot is a municipio, in the colour it has on the map. Need runs across and money per resident runs up, on a scale where each step is ten times the one below, because a few municipios have many times the median; values under $10 are drawn at $10. The dashed lines are the medians of the 78. Select a dot to see the municipio's figures.</p>
+    <div class="card pm-chart"><div id="pmScatter"></div></div>
+    <div class="note" id="pmRead" data-t="skip"></div>
+  </section>
+
+  <section class="block" id="placed">
+    <h2><span class="ms-icon" aria-hidden="true">pie_chart</span>2 · What a municipio map can show</h2>
+    <p class="pm-p">FEMA records Public Assistance by the applicant. When the applicant is the Puerto Rico Electric Power Authority, the Aqueduct and Sewer Authority or another Commonwealth agency, the money is recorded for the whole island and cannot be placed in a municipio. Individual Assistance is placed by the household's address. Hazard Mitigation is placed by the municipios a project benefits; a project that benefits several is split equally among them. Each bar shows its own years:</p>
+    <div class="card pm-chart"><div id="pmPlaced"></div></div>
+    <p class="pm-small">HUD's grants are placed through the subawards the Puerto Rico Department of Housing reports, and the yearly entitlement grants through the municipio that receives them. Money the Department keeps for its own programs, has not passed on yet, or reports with no municipio is not placed.</p>
+  </section>
+
+  <section class="block" id="mitigation">
+    <h2><span class="ms-icon" aria-hidden="true">table_view</span>3 · Hazard Mitigation: approved, obligated and awaiting a decision</h2>
+    <p class="pm-p">Hazard Mitigation pays for projects and plans that reduce future disaster losses. For fiscal years 2017 to 2025, FEMA approved a federal share of $3.67 billion for Puerto Rico and has obligated $0.77 billion of it (21%); FEMA obligates money in steps as projects meet their milestones. Another $1.06 billion has been requested and awaits a FEMA decision. Of the 1,134 Hazard Mitigation subapplications FEMA lists for Puerto Rico in all years and statuses, it reports a payment for 163, too few to show money paid. Select a column heading to sort.</p>
+    <div class="card pm-tablebox" id="pmHma"></div>
+  </section>
+
+  <section class="block" id="hud">
+    <h2><span class="ms-icon" aria-hidden="true">home_work</span>4 · HUD grants: CDBG-DR, CDBG-MIT and yearly CDBG</h2>
+    <p class="pm-p">HUD's Community Development Block Grants reach Puerto Rico in three ways. The disaster recovery and mitigation grants (CDBG-DR and CDBG-MIT) go to the Puerto Rico Department of Housing: HUD obligated $19.10 billion of them in federal fiscal years 2019 to 2025, and the Department reported $4.90 billion in subawards to municipalities, contractors and nonprofits, $4.33 billion of it with a municipio. The yearly grants go straight from HUD to 27 larger municipios (entitlement grants, $222 million) and, for the other municipios, to the Department of Housing as the CDBG state program ($160 million), which passes it on as subawards. Subawards often arrive a year or more after the grant, so the latest year can show little. Obligated is not spent. Select a column heading to sort.</p>
+    <div class="card pm-tablebox" id="pmHud"></div>
+  </section>
+
+  <section class="block" id="method">
+    <h2><span class="ms-icon" aria-hidden="true">info</span>Method</h2>
+    <div class="note"><b>Money per resident.</b> For each municipio, the dollars of each program from 2017 to 2025 are added, then divided by its residents in the 2020 Census. Public Assistance: federal share obligated, by applicant and the year the disaster was declared. Individual Assistance: dollars approved for owners and renters, by the year the disaster was declared. Hazard Mitigation: federal share approved, by benefiting municipio and fiscal year of the grant. The three FEMA programs together add the three; approved and obligated are different steps, so the sum is a rough total.</div>
+    <div class="note"><b>HUD money per resident.</b> The same 2020 Census residents, over federal fiscal years 2019 to 2025 (October to September), by the year HUD obligated the money. CDBG-DR and CDBG-MIT: the subawards of the Department of Housing's disaster grants, by the municipio where the work is done. Yearly CDBG: the entitlement grants by the municipio that receives them, plus the CDBG state program's subawards by municipio; COVID-19 grants (CDBG-CV) are left out. Subawards are part of the prime grants and are never added to them, nor to FEMA's money.</div>
+    <div class="note"><b>Need.</b> Expected annual loss: FEMA's National Risk Index (December 2025) estimate of the average dollars lost each year to buildings, agriculture and lives from 18 natural hazards, divided by residents. It is higher where there is more to lose, so it reflects the value of what is exposed as well as the hazard. Residents with three or more risk factors: the Census Bureau's Community Resilience Estimates (2024), the share of residents with three or more of ten factors such as poverty, disability, no vehicle or no health insurance. The two measures are never combined.</div>
+    <div class="note"><b>Thirds and medians.</b> The 78 municipios are ranked on each measure and cut into three groups of 26 (terciles). The rank correlation (Spearman) compares the two orders: 1 when they agree, 0 when they are unrelated, below 0 when they run opposite. The medians split the 78 into two halves of 39.</div>
+    <div class="note"><b>What the page does not do.</b> It does not say how much money a municipio should have received, rank municipios as better or worse, or explain why the money went where it did.</div>
+  </section>
+
+  <section class="block" id="sources">
+    <h2><span class="ms-icon" aria-hidden="true">menu_book</span>Sources and licenses</h2>
+    <div class="note"><b>OpenFEMA.</b> Public Assistance Funded Projects Details, Hazard Mitigation Assistance Subapplications and Housing Assistance Data (owners and renters), as published on the map (Explore) and the Housing page. US Government work; OpenFEMA terms apply.</div>
+    <div class="note"><b>USAspending.gov.</b> HUD's CDBG grants to Puerto Rico (assistance listings 14.218 and 14.228) and the subawards reported under the federal transparency law (FFATA), read from USAspending's API by cdbg_dr.py and cdbg_regular.py, as published on the Public spending page. US Government work; USAspending states no license for the data.</div>
+    <div class="note"><b>FEMA National Risk Index.</b> County table, expected annual loss, as published on the map's Environment tab. US Government work.</div>
+    <div class="note"><b>Census Bureau Community Resilience Estimates.</b> Municipio table, as published on the map's Environment tab. US Government work.</div>
+    <div class="note"><b>Data and method.</b> The data file is data/public_money_need.json (public_money_need.py), built only from the observatory's published data files; the method is in docs/analysis/public-money-v2-2026-10/ of the project repository.</div>
+    <div class="note"><b>How to cite this page.</b> Foundation for Puerto Rico, Knowledge Area: Disaster funding and need, PR Data Observatory, Snapshot 2026-11 (draft). Data: FEMA (OpenFEMA, National Risk Index), USAspending.gov and U.S. Census Bureau (Community Resilience Estimates, 2020 Census).</div>
+  </section>
+</main>
+<script src="js/core/knowledge.js?v=34"></script>
+<script>Core.knowledge.render(); I18N.apply();</script>
+<script src="js/common.js?v=20"></script>
+<script src="js/public_money.js?v=3"></script>
+<script src="js/chatboot.js?v=60"></script>
+</body>
+</html>

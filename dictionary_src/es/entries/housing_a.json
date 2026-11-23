@@ -1,0 +1,210 @@
+{
+ "housing.population": {
+  "name": "Población residente",
+  "how_to_read": "Es un nivel: dice cuántas personas viven en un lugar, no qué tan rápido cambia el lugar. Para ver el cambio, compare 2010 con 2020 (dos valores basados en el censo), o compare años dentro de una misma base (2011-2019, o 2020-2025). No lea la diferencia entre 2019 y 2020 como un año de crecimiento. En housing_series.json, cada año también lleva una etiqueta 'basis' que indica cuál de estos es (se listan en Códigos).",
+  "_en": {
+   "name": "9510f9e2",
+   "how_to_read": "b00c2587"
+  }
+ },
+ "housing.pop_change_since_2010_pct": {
+  "name": "Cambio de población desde el censo de 2010",
+  "how_to_read": "En el corte de datos 2026-10, el cambio para toda la isla es -11.81% en 2020 y -14.52% en 2025. En 2025, solo uno de los 78 municipios, Rincón (+2.51%), tiene más personas que en 2010; en 2020, ninguno las tenía. Las mayores pérdidas en 2025 son las de Guánica (-39.05%) y Maricao (-30.91%). La página Vivienda colorea el mapa en torno a cero. La etiqueta 'basis' de cada año en housing_series.json es una de las que se listan en Códigos en housing.population.",
+  "_en": {
+   "name": "2ee692f9",
+   "how_to_read": "61c500be"
+  }
+ },
+ "housing.pop_change_since_2020_pct": {
+  "name": "Cambio de población desde el censo de 2020",
+  "how_to_read": "En el corte de datos 2026-10, el cambio para toda la isla es -0.70% en 2021 y -3.07% en 2025. En 2025, seis de los 78 municipios tienen más personas que en 2020, encabezados por Rincón (+2.58%). Las mayores pérdidas son las de Guánica (-14.13%) y Loíza (-9.07%). Su etiqueta 'basis' en housing_series.json es la etiqueta de Vintage 2025 que se lista en Códigos en housing.population.",
+  "_en": {
+   "name": "ccada75f",
+   "how_to_read": "455e8375"
+  }
+ },
+ "housing.age65_pct": {
+  "name": "Residentes de 65 años o más",
+  "how_to_read": "Un valor más alto significa una población de más edad. En el corte de datos 2026-10, la proporción para toda la isla sube todos los años, de 14.55% en 2010 a 26.02% en 2025. En 2025 va de 20.72% (Toa Alta) a 33.54% (Hormigueros). La etiqueta 'basis' de cada año en housing_series.json es una de las que se listan en Códigos en housing.population.",
+  "_en": {
+   "name": "f82d8fb8",
+   "how_to_read": "c249e0a8"
+  }
+ },
+ "housing.census_housing_units": {
+  "name": "Unidades de vivienda, conteo del censo (cantidad)",
+  "how_to_read": "Son conteos del censo, no una muestra de encuesta, así que no tienen margen de error de muestreo. El Negociado del Censo mantiene exacto el total de unidades de vivienda de 2020 (no le agrega ruido de privacidad a este total). Para toda la isla: 1,636,946 unidades en 2010 y 1,598,159 en 2020, una baja de 2.4%. En el corte de datos 2026-10, los mismos conteos aparecen en municipalities.json como housing_units_2010 y housing_units_2020 (tomados de las capas TIGERweb del Negociado del Censo) y coinciden en los 78 municipios, y el conteo de la isla es igual a la suma de los conteos de los 78 municipios en ambos años.",
+  "_en": {
+   "name": "e6b07372",
+   "how_to_read": "92fd046b"
+  }
+ },
+ "housing.census_vacant_units": {
+  "name": "Unidades desocupadas, conteo del censo (cantidad)",
+  "how_to_read": "Es un conteo del censo, no una muestra de encuesta, así que no tiene margen de error de muestreo (para 2020, vea la precaución sobre el ruido de privacidad). Para toda la isla: 260,415 unidades desocupadas en 2010 y 257,625 en 2020. Para conocer los motivos de la desocupación (uso estacional, otros), use las variables de la encuesta housing.seasonal_units y housing.other_vacant_units. En el corte de datos 2026-10, el conteo de la isla es igual a la suma de los conteos de los 78 municipios en ambos años.",
+  "_en": {
+   "name": "918303f8",
+   "how_to_read": "df0386ea"
+  }
+ },
+ "housing.census_vacancy_pct": {
+  "name": "Tasa de desocupación, conteo del censo",
+  "how_to_read": "Para toda la isla, la tasa es 15.91% en 2010 y 16.12% en 2020. En 2020 va de 8.00% (Aibonito) a 50.16% (Culebra). Proviene de conteos del censo, no de una encuesta, así que no tiene margen de error de muestreo (para 2020, vea la precaución sobre el ruido de privacidad).",
+  "_en": {
+   "name": "801db158",
+   "how_to_read": "40adfef0"
+  }
+ },
+ "housing.residents_per_unit": {
+  "name": "Residentes por unidad de vivienda",
+  "how_to_read": "En el corte de datos 2026-10, la razón para toda la isla baja de 2.28 en 2010 a 2.06 en 2020, porque la población bajó 11.8% mientras las unidades de vivienda bajaron 2.4%. Culebra tiene la razón más baja (1.13 en 2010, 1.15 en 2020). Los valores de 2020 son iguales a municipalities.json:residents_per_unit.",
+  "_en": {
+   "name": "f19f593b",
+   "how_to_read": "aab979bf"
+  }
+ },
+ "housing.housing_units": {
+  "name": "Unidades de vivienda, estimado de encuesta (cantidad)",
+  "how_to_read": "Úselo para conocer el tamaño del inventario de viviendas y como base de las proporciones de desocupación. En el corte de datos 2026-10, el conteo para toda la isla es 1,474,026 en 2006-2010 y 1,634,357 en 2020-2024 (margen de error de 4,364). Compare ventanas que no se solapen (vea methods.acs_windows) y verifique que la diferencia sea mayor que los márgenes de error. En el mismo corte, el conteo de Puerto Rico es igual a la suma de los conteos de los 78 municipios en todas las ventanas.",
+  "_en": {
+   "name": "2ec178c0",
+   "how_to_read": "62992787"
+  }
+ },
+ "housing.vacant_units": {
+  "name": "Unidades de vivienda desocupadas, estimado de encuesta (cantidad)",
+  "how_to_read": "En el corte de datos 2026-10, el conteo para toda la isla sube de 246,987 en 2006-2010 a un máximo de 368,182 en 2015-2019. Es 354,227 en 2016-2020 y 343,491 en 2020-2024 (margen de error de 3,707). En 2020-2024, el 64.8% de las unidades desocupadas eran 'otras desocupadas', el 22.0% eran de uso estacional y el 13.2% estaban en alquiler, a la venta, vendidas o alquiladas pero aún sin ocupar, o destinadas a trabajadores migrantes. Compare ventanas que no se solapen (vea methods.acs_windows) y verifique que la diferencia sea mayor que los márgenes de error. En el mismo corte, el conteo de Puerto Rico es igual a la suma de los conteos de los 78 municipios en todas las ventanas.",
+  "_en": {
+   "name": "d20c3904",
+   "how_to_read": "15a076b0"
+  }
+ },
+ "housing.vacancy_pct": {
+  "name": "Tasa de desocupación, estimado de encuesta",
+  "how_to_read": "En el corte de datos 2026-10, la tasa para toda la isla es 16.76% en 2006-2010, llega a un máximo de 23.59% en 2015-2019 y es 21.02% en 2020-2024 (margen de error de 0.22 puntos porcentuales). En 2020-2024 va de 8.94% (Florida) a 65.95% (Culebra); Vieques está en 43.22%. Compare ventanas que no se solapen (vea methods.acs_windows) y verifique que la diferencia sea mayor que los márgenes de error.",
+  "_en": {
+   "name": "11cc0bdb",
+   "how_to_read": "df4ae2b3"
+  }
+ },
+ "housing.seasonal_units": {
+  "name": "Unidades de uso estacional, recreativo u ocasional (cantidad)",
+  "how_to_read": "En el corte de datos 2026-10, el conteo para toda la isla es 57,724 en 2006-2010 y 75,416 en 2020-2024 (margen de error de 1,612). Los conteos más altos en 2020-2024 están en San Juan (7,203) y Cabo Rojo (5,190). Para comparar lugares de distinto tamaño, use la proporción (housing.seasonal_pct). Compare ventanas que no se solapen (vea methods.acs_windows) y verifique que la diferencia sea mayor que los márgenes de error. En el mismo corte, el conteo de Puerto Rico es igual a la suma de los conteos de los 78 municipios en todas las ventanas.",
+  "_en": {
+   "name": "f627cba9",
+   "how_to_read": "75ed40f7"
+  }
+ },
+ "housing.seasonal_pct": {
+  "name": "Unidades de uso estacional, recreativo u ocasional, % del total",
+  "how_to_read": "En el corte de datos 2026-10, la proporción para toda la isla es 3.92% en 2006-2010 y 4.61% en 2020-2024 (margen de error de 0.10 puntos porcentuales). En 2020-2024, Culebra tiene 40.74% y Vieques 24.13%; la más baja es Sabana Grande (0.54%). La página Vivienda la describe como el indicador público más cercano (un sustituto) de las casas de fin de semana y los alquileres a corto plazo; la primera precaución, más abajo, explica su límite. Compare ventanas que no se solapen (vea methods.acs_windows) y verifique que la diferencia sea mayor que los márgenes de error.",
+  "_en": {
+   "name": "e1f9e164",
+   "how_to_read": "72c4c555"
+  }
+ },
+ "housing.other_vacant_units": {
+  "name": "Otras unidades desocupadas (cantidad)",
+  "how_to_read": "En el corte de datos 2026-10, el conteo para toda la isla es 128,526 en 2006-2010 y 222,697 en 2020-2024 (margen de error de 3,086), lo que equivale al 64.8% de todas las unidades desocupadas en 2020-2024, frente al 52.0% en 2006-2010. El conteo más alto en 2020-2024 está en San Juan (29,910). Use housing.other_vacant_pct para comparar lugares de distinto tamaño. Compare ventanas que no se solapen (vea methods.acs_windows) y verifique que la diferencia sea mayor que los márgenes de error. En el mismo corte, el conteo de Puerto Rico es igual a la suma de los conteos de los 78 municipios en todas las ventanas.",
+  "_en": {
+   "name": "47a30ac3",
+   "how_to_read": "6dc2577c"
+  }
+ },
+ "housing.other_vacant_pct": {
+  "name": "Otras unidades desocupadas, % del total (indicador de viviendas abandonadas)",
+  "how_to_read": "En el corte de datos 2026-10, la proporción para toda la isla es 8.72% en 2006-2010, llega a un máximo de 14.75% en 2017-2021 y es 13.63% en 2020-2024 (margen de error de 0.19 puntos porcentuales). En 2020-2024, los valores más altos son los de Guánica (26.98%) y Maricao (26.44%); el más bajo es el de Florida (6.60%). Compare ventanas que no se solapen (vea methods.acs_windows) y verifique que la diferencia sea mayor que los márgenes de error.",
+  "_en": {
+   "name": "7611b0b0",
+   "how_to_read": "b5314b9d"
+  }
+ },
+ "housing.rental_vacancy_pct": {
+  "name": "Tasa de desocupación de viviendas de alquiler",
+  "how_to_read": "En el corte de datos 2026-10, la tasa para toda la isla es 6.97% en 2006-2010, llega a un máximo de 8.56% en 2011-2015 y es 5.08% en 2020-2024 (margen de error de 0.23 puntos porcentuales). Es mucho más baja que la desocupación general porque deja fuera las viviendas de uso estacional, las que están a la venta y las 'otras desocupadas'. Compare ventanas que no se solapen (vea methods.acs_windows) y verifique que la diferencia sea mayor que los márgenes de error.",
+  "_en": {
+   "name": "391aa9f5",
+   "how_to_read": "b7b133dd"
+  }
+ },
+ "housing.homeowner_vacancy_pct": {
+  "name": "Tasa de desocupación de viviendas propias",
+  "how_to_read": "En el corte de datos 2026-10, la tasa para toda la isla es 2.44% en 2006-2010, llega a un máximo de 3.74% en 2011-2015 y es 1.30% en 2020-2024 (margen de error de 0.09 puntos porcentuales). En 2020-2024, el valor más alto es el de Sabana Grande (6.40%). Compare ventanas que no se solapen (vea methods.acs_windows) y verifique que la diferencia sea mayor que los márgenes de error.",
+  "_en": {
+   "name": "3c8a1068",
+   "how_to_read": "fb9f085a"
+  }
+ },
+ "housing.detached_house_pct": {
+  "name": "Casas unifamiliares independientes",
+  "how_to_read": "En el corte de datos 2026-10, la proporción para toda la isla es 67.90% en 2006-2010 y 68.03% en 2020-2024 (margen de error de 0.24 puntos porcentuales), así que la composición casi no ha cambiado. En 2020-2024 va de 39.71% (San Juan) a 90.05% (Florida). Compare ventanas que no se solapen (vea methods.acs_windows) y verifique que la diferencia sea mayor que los márgenes de error.",
+  "_en": {
+   "name": "3cb37efa",
+   "how_to_read": "d2a31a39"
+  }
+ },
+ "housing.apartments_5plus_pct": {
+  "name": "Unidades en edificios de 5 o más",
+  "how_to_read": "En el corte de datos 2026-10, la proporción para toda la isla es 12.76% en 2006-2010 y 13.93% en 2020-2024 (margen de error de 0.22 puntos porcentuales). En 2020-2024 va de 0.86% (Peñuelas) a 41.42% (San Juan). Una proporción alta significa que más viviendas, ocupadas o vacías, están en edificios con cinco unidades o más. No indica la proporción de personas que viven en ellas. Compare ventanas que no se solapen (vea methods.acs_windows) y verifique que la diferencia sea mayor que los márgenes de error.",
+  "_en": {
+   "name": "8023f562",
+   "how_to_read": "81da1e28"
+  }
+ },
+ "housing.mobile_home_pct": {
+  "name": "Casas móviles",
+  "how_to_read": "En el corte de datos 2026-10, las casas móviles son escasas en Puerto Rico: 0.21% de las unidades de vivienda en 2006-2010 y 0.22% en 2020-2024 (margen de error de 0.02 puntos porcentuales). En 2020-2024, la proporción más alta es la de Cabo Rojo (2.21%). Compare ventanas que no se solapen (vea methods.acs_windows) y verifique que la diferencia sea mayor que los márgenes de error.",
+  "_en": {
+   "name": "e928cd98",
+   "how_to_read": "aa2e6841"
+  }
+ },
+ "housing.median_year_built": {
+  "name": "Año mediano de construcción de la vivienda",
+  "how_to_read": "En el corte de datos 2026-10, la mediana para toda la isla es 1976 en 2006-2010 y 1979 en 2020-2024 (margen de error de 1 año). En 2020-2024 va de 1967 (San Juan) a 1996 (Culebra). Un año más antiguo significa un inventario de viviendas más viejo. La mediana se mueve despacio: las viviendas nuevas y las demoliciones la desplazan apenas unos pocos años entre las ventanas identificadas como 2010 y 2024. Compare ventanas que no se solapen (vea methods.acs_windows) y verifique que la diferencia sea mayor que los márgenes de error.",
+  "_en": {
+   "name": "5b19f513",
+   "how_to_read": "16d94c0d"
+  }
+ },
+ "housing.overcrowded_pct": {
+  "name": "Viviendas con hacinamiento (más de 1 persona por habitación)",
+  "how_to_read": "En el corte de datos 2026-10, la proporción para toda la isla baja de 5.79% en 2006-2010 a 2.26% en 2020-2024 (margen de error de 0.12 puntos porcentuales). En 2020-2024 va de 0.25% (Isabela) a 6.87% (Maunabo); Culebra está en 6.30%. Compare ventanas que no se solapen (vea methods.acs_windows) y verifique que la diferencia sea mayor que los márgenes de error.",
+  "_en": {
+   "name": "938578c2",
+   "how_to_read": "499bd140"
+  }
+ },
+ "housing.households": {
+  "name": "Hogares (viviendas ocupadas)",
+  "how_to_read": "En el corte de datos 2026-10, el conteo para toda la isla es 1,227,039 en 2006-2010 y 1,290,866 en 2020-2024 (margen de error de 4,630). En el mismo corte, los hogares más las unidades desocupadas (housing.vacant_units) son iguales a las unidades de vivienda (housing.housing_units) en todos los municipios y ventanas. Compare ventanas que no se solapen (vea methods.acs_windows) y verifique que la diferencia sea mayor que los márgenes de error. En el mismo corte, el conteo de Puerto Rico es igual a la suma de los conteos de los 78 municipios en todas las ventanas.",
+  "_en": {
+   "name": "d55e7692",
+   "how_to_read": "bde504b9"
+  }
+ },
+ "housing.avg_household_size": {
+  "name": "Tamaño promedio del hogar",
+  "how_to_read": "En el corte de datos 2026-10, el promedio para toda la isla baja de 3.03 en 2006-2010 a 2.48 en 2020-2024 (margen de error de 0.01). En 2020-2024 va de 2.12 (Guayama) a 3.15 (Naranjito). Compare ventanas que no se solapen (vea methods.acs_windows) y verifique que la diferencia sea mayor que los márgenes de error.",
+  "_en": {
+   "name": "649bb8ca",
+   "how_to_read": "42040992"
+  }
+ },
+ "housing.owner_occupied_pct": {
+  "name": "Proporción de viviendas ocupadas por sus propietarios",
+  "how_to_read": "En el corte de datos 2026-10, la proporción para toda la isla baja de 72.43% en 2006-2010 a 67.91% en 2020-2024 (margen de error de 0.25 puntos porcentuales). En 2020-2024 va de 49.77% (Mayagüez) a 80.52% (Toa Alta). Compare ventanas que no se solapen (vea methods.acs_windows) y verifique que la diferencia sea mayor que los márgenes de error.",
+  "_en": {
+   "name": "dac1f628",
+   "how_to_read": "5d32eb55"
+  }
+ },
+ "housing.median_age": {
+  "name": "Edad mediana",
+  "how_to_read": "En el corte de datos 2026-10, la edad mediana para toda la isla sube de 35.9 en 2006-2010 a 44.8 en 2020-2024 (margen de error de 0.2 años). En 2020-2024 va de 40.0 (Naguabo) a 50.2 (Hormigueros). Compare ventanas que no se solapen (vea methods.acs_windows) y verifique que la diferencia sea mayor que los márgenes de error.",
+  "_en": {
+   "name": "5910b22f",
+   "how_to_read": "87e06b95"
+  }
+ }
+}

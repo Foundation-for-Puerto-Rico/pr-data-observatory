@@ -1,0 +1,70 @@
+[
+ {
+  "id": "econ_inflation.inflation",
+  "ask": {
+   "en": [
+    "inflation puerto rico",
+    "inflation rate puerto rico united states",
+    "consumer price index puerto rico",
+    "inflation projection",
+    "cost of living increase"
+   ],
+   "es": [
+    "inflacion puerto rico",
+    "indice de precios al consumidor puerto rico",
+    "proyeccion de inflacion",
+    "aumento del costo de vida"
+   ]
+  },
+  "name": "Inflation in Puerto Rico and the United States: price indexes, 12-month rates, the five-year projection and what it means for households (Knowledge Area data)",
+  "domain": "economy",
+  "domains": [
+   "economy"
+  ],
+  "group": "Prices and inflation",
+  "kind": "table",
+  "plain": "The data behind the Inflation page: Puerto Rico's official consumer price index (DTRH) and the US CPI-U (BLS) by month since 2000, their 12-month inflation rates, the average of each year, the 8 major groups, a projection to five years ahead with 80% and 95% bands, the test of five forecasting methods, median household income in current and constant dollars, and Social Security's cost-of-living adjustments.",
+  "definition": "inflation.json holds: latest (the newest month of each source); headline (the latest 12-month rates of Puerto Rico and the US for the same month, the rise of prices since January 2000, December 2006 and January 2020, and the average yearly rate since December 2006); monthly (from start, January 2000: pr_yoy and us_yoy, the 12-month change of each index in percent, null when a month is missing, and pr_index and us_index, the index values; Puerto Rico's base is December 2006 = 100, the US base 1982-84 = 100); annual (the change of the yearly average index over the year before); projection (origin, the month each path starts after; end; expected, the Cleveland Fed's expected US inflation over 1 to 10 years; forwards, the expected rate of each single year ahead; spf, the Survey of Professional Forecasters' latest median CPI forecasts; pr_path and us_path, rows of [month, central, lo80, hi80, lo95, hi95] of the 12-month rate; pr_years and us_years, the same for calendar-year averages, with the months already observed; rmse_year, the method's error over each year ahead); backtest (rmse and bias of five methods at 1 to 5 years, the origins and their count); ardl (the fitted model of Puerto Rico's monthly change: months used, long-run pass-through, constant in points a year); groups (each of the 8 major groups: its weight in DTRH's 2000-01 basket, the 12-month change and the change since January 2020 in Puerto Rico and the US, and Puerto Rico's monthly index from January 2007); power (what $100 of January 2000, December 2006 and January 2020 costs at the latest month, and what $100 of today is projected to cost at the end, with Puerto Rico's 80% range); income (median household income, ACS 1-year, with margins at 90%, in current dollars and in the dollars of ref_year by each place's own index); cola (Social Security's adjustment effective each December, computed from the CPI-W, and a benefit of $1,000 in January 2007 followed to the latest month in current dollars and at Puerto Rico's and US prices); checks (the cross-checks of the sources); sources.",
+  "unit": "index points; % (12-month change, yearly average change); percentage points (errors); dollars (income, budget)",
+  "value_type": "rate",
+  "geography": "Puerto Rico and the United States (island and nation; no municipio detail exists for either index)",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2000,
+   "last": 2031,
+   "frequency": "Monthly from January 2000 to the latest month (Puerto Rico about four weeks after the month, the US about two weeks); the projection runs to December five years after the latest year. Income is yearly from 2010 (no standard 1-year release for 2020)."
+  },
+  "method": "inflation.py reads DTRH's 'Serie Histórica' workbook (2007 on, all items and the 8 groups) and DTRH's CSV on indicadores.pr (1999 to 2006, and the basket weights), checks the two against each other in every shared month, and reads the BLS CPI-U, CPI-W and the CPI-U major groups from the public API (not seasonally adjusted). A month BLS did not publish (October 2025) is left empty in the rates and read by the model as the geometric mean of its neighbours. The projection carries each index forward from its latest month at the Cleveland Fed's expected US inflation, turned into the rate of each single year, plus the index's own seasonal pattern of the last ten years; the bands are the central path plus or minus 1.28 (80%) and 1.96 (95%) times the method's root mean square error in a backtest over 44 quarterly origins from 2011 to 2021 for Puerto Rico and 88 from 2000 to 2021 for the US, at each horizon. The backtest compares, at 1 to 5 years, the US expectation, an ARDL of Puerto Rico's monthly change on its last month, US inflation this and last month and month dummies (from 2008), the last 12 months, Puerto Rico's own average since 2008, and the US expectation plus the last ten years' gap; each method sees only data up to its origin. Income in constant dollars divides by each place's yearly average index. The cost-of-living adjustments follow Social Security's rule (the July to September CPI-W average over that of the last year with an adjustment, rounded to 0.1%) and match the announced adjustments of 2007 to 2025. The plan is docs/inflation-plan-2026-11.md.",
+  "sources": [
+   "dtrh_cpi",
+   "bls_cpi",
+   "frbc_inflation_expectations",
+   "frbp_spf",
+   "acs1"
+  ],
+  "source_detail": "DTRH Serie Histórica (mercadolaboral.pr.gov/lmi/Excel/IPC/), DTRH on indicadores.pr (CKAN indice-de-precios-al-consumidor), BLS Public Data API v1 series CUUR0000SA0, CWUR0000SA0 and CUUR0000SAF, SAH, SAA, SAT, SAM, SAR, SAE, SAG; Cleveland Fed inflation-expectations.xlsx; Philadelphia Fed SPF Inflation.xlsx; ACS 1-year B19013.",
+  "how_to_read": "In September 2026 Puerto Rico's prices were 3.8% higher than a year before and US prices 3.7%. From January 2000 to September 2026 prices rose 74.9% in Puerto Rico and 99.6% in the US. The projection's central path is about 2.8% a year for both from 2027 to 2031; the 80% band of the next year is about ±2.6 points, because forecasts of yearly inflation have missed by about 2 points on average since 2011, mostly in 2021 and 2022.",
+  "caveats": [
+   "The two indexes are measured differently: DTRH averages prices within items with a geometric mean (since 2010), weights its basket from a 2000-01 survey and gives rent and owners' rent-equivalent much less weight than BLS; part of the long-run gap is measurement.",
+   "Puerto Rico's index before 2007 is DTRH's earlier method joined to the current base.",
+   "An index measures the change of prices over time, not their level: it cannot say whether Puerto Rico is cheaper or dearer than the United States.",
+   "The bands come from a short history and assume the future misses like the past.",
+   "Median household income is a survey estimate with a margin of error."
+  ],
+  "see_also": [
+   "measures.inflation_adjustment"
+  ],
+  "where": {
+   "files": [
+    "inflation.json:*"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Inflation",
+     "href": "inflation.html"
+    }
+   ]
+  },
+  "added": "2026-11-10"
+ }
+]

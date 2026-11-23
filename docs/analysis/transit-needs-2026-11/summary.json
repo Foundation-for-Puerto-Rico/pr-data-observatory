@@ -1,0 +1,49 @@
+{
+ "as_of": "2026-11-10",
+ "acs_window": "2020-2024",
+ "residents_2020": 3284650,
+ "served_useful_pct": 7.9,
+ "served_current_pct": 21.5,
+ "carfree_hh": 167247,
+ "carfree_unserved": 143806,
+ "barrios": 901,
+ "ranked": 746,
+ "connection_pairs": 26,
+ "connection_places": 19,
+ "current_operators": 18,
+ "stops_with_service": 3669,
+ "stops_estimated": 856,
+ "top_with_timetable_gap": 14,
+ "inputs": {
+  "acs_barrio.json": "4f44113ee1c84bfe",
+  "barrios.geojson": "c5ac71738d36d8fa",
+  "operators.json": "7ec8eda8cedfa94e",
+  "transport.json": "ddfe44aa359b9184",
+  "transit_supply.json": "5c356e1582231631",
+  "population_blocks.json": "8fbbd377bf64e04d",
+  "transit_routes.geojson": "98caabd53c9a4a69"
+ },
+ "rules": {
+  "useful_per_hour": 2,
+  "day": [
+   7,
+   19
+  ],
+  "served_m": 400,
+  "min_residents": 500,
+  "near_m": 1500,
+  "link_m": [
+   250,
+   800
+  ],
+  "stop_pair_m": 250,
+  "catch_m": 800,
+  "need_weights": {
+   "no_vehicle_hh_pct": 2,
+   "poverty_pct": 1,
+   "acs_age65plus_pct": 1,
+   "acs_disability_pct": 1,
+   "density": 1
+  }
+ }
+}

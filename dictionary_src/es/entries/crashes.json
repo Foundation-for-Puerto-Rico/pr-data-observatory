@@ -1,0 +1,50 @@
+{
+ "infrastructure.crash_deaths": {
+  "name": "Personas muertas en choques de tránsito (FARS)",
+  "how_to_read": "Puerto Rico: 288 muertes en 2024 (242 en 2020). Más en 2024: San Juan (35), Bayamón (16), Carolina (11).",
+  "_en": {
+   "name": "9a61738c",
+   "how_to_read": "dcb50d76"
+  }
+ },
+ "infrastructure.crash_fatal": {
+  "name": "Choques de tránsito fatales (FARS)",
+  "how_to_read": "Puerto Rico: 275 choques fatales en 2024. Más: San Juan (34), Bayamón (16), Caguas (10).",
+  "_en": {
+   "name": "2919cadc",
+   "how_to_read": "d198118c"
+  }
+ },
+ "infrastructure.crash_walk_bike": {
+  "name": "Peatones y ciclistas muertos (FARS)",
+  "how_to_read": "Puerto Rico: 89 en 2024, el 31 % de las muertes. Más: San Juan (19), Bayamón (6), Caguas (4).",
+  "_en": {
+   "name": "77baddd5",
+   "how_to_read": "cd23e81d"
+  }
+ },
+ "infrastructure.crash_moto": {
+  "name": "Motociclistas muertos (FARS)",
+  "how_to_read": "Puerto Rico: 69 en 2024 (50 en 2020). Más: San Juan (6), Bayamón (5), Toa Alta (4).",
+  "_en": {
+   "name": "7c6c4263",
+   "how_to_read": "0fe58fc0"
+  }
+ },
+ "infrastructure.crash_rate_5y": {
+  "name": "Muertes de tránsito por cada 100,000 residentes, 2020-2024 (FARS)",
+  "how_to_read": "Puerto Rico: 8.9 por cada 100,000 al año en 2020-2024. Más alta: Santa Isabel (22.1), Guánica (21.7), Salinas (21.5); más baja: Culebra (0.0), Guayanilla (2.3), Las Marías (2.3).",
+  "_en": {
+   "name": "e0878e37",
+   "how_to_read": "c8bbb3bf"
+  }
+ },
+ "infrastructure.crash_per_vkm": {
+  "name": "Muertes de tránsito por cada 100 millones de vehículo-km, 2020-2024 (FARS, HPMS)",
+  "how_to_read": "Puerto Rico: 1.05 en 2020-2024 (unas 1.69 por cada 100 millones de vehículo-millas). Más alta: Rincón (2.34), Yabucoa (2.16), Loíza (2.13); más baja: Culebra (0.00), Guayanilla (0.20), Aibonito (0.33).",
+  "_en": {
+   "name": "f12807ec",
+   "how_to_read": "61fdff1b"
+  }
+ }
+}

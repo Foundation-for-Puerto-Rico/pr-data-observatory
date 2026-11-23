@@ -1,0 +1,1060 @@
+[
+  {
+    "id": "facility_exposure.fx_flood_n",
+    "ask": {
+      "en": [
+        "facilities in flood zones",
+        "buildings in the flood area"
+      ],
+      "es": [
+        "instalaciones en zona inundable",
+        "edificios en zona de inundacion"
+      ]
+    },
+    "name": "Public facilities in the 1% flood area (overlaid)",
+    "domain": "hazards",
+    "domains": [
+      "hazards",
+      "infrastructure",
+      "education"
+    ],
+    "group": "Facilities and roads in hazard zones",
+    "kind": "variable",
+    "plain": "How many public facilities in each municipio stand inside FEMA's 1% flood area.",
+    "definition": "How many of the municipio's fire and EMS stations, police stations, city halls, libraries, public housing developments, power plants, airports and public schools stand inside FEMA's 1% annual chance flood area. It says where the building stands, not that it floods: floor heights are not known.",
+    "unit": "count",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "One snapshot, rebuilt with the build: the flood layer and facility layers as published, and the public schools of school year 2024."
+    },
+    "method": "facility_exposure.py lays points and lines on FEMA's 1% annual chance flood area (the Special Flood Hazard Area of the observatory's flood layer, flood.geojson; the rule of the exposure series). It is an overlaid figure (decision 107): one published layer laid on another, with nothing assumed. The points are the layers the map draws (fire and EMS stations, police stations, city halls, libraries, public housing developments, power plants, airports) and the public schools open in school year 2024. A point on the edge of a polygon counts as outside. Bridges are left out: a bridge over a river stands in the flood area by design. Library points within 150 m of an open public school may be the same building; both are counted. 234 points that share their coordinates with another point of the same layer (libraries 216, public housing developments 18) are left out: several facilities listed at one address are not where the buildings stand.",
+    "sources": [
+      "fema_nfhl",
+      "urban_ccd",
+      "usgs_structures",
+      "osm",
+      "hud_public_housing",
+      "eia_860m",
+      "usac_erate"
+    ],
+    "source_detail": "The observatory's own layers and files: flood.geojson (FEMA National Flood Hazard Layer), the facility layers, traffic_roads.geojson (FHWA HPMS) and the NCES school directory, https://educationdata.urban.org/api/v1/schools/ccd/directory/2024/?fips=72.",
+    "how_to_read": "In Puerto Rico, 327 of the 2,274 facilities tested stand in the 1% flood area (14.4%): airports and heliports 3 of 17; city halls 10 of 65; fire and ems stations 10 of 94; libraries 145 of 883; police stations 27 of 141; power plants 13 of 68; public housing developments 23 of 144; public schools 96 of 862. Most: Ponce (42), San Juan (32), Carolina (21).",
+    "caveats": [
+      "It says where a building or a road stands, not that it floods: the floor height of a building and the height of a road are not known, and the flood layer is a simplified copy of FEMA's map.",
+      "FEMA's 1% area is the regulatory flood map: it does not include sea level rise, and some areas flood that it does not show."
+    ],
+    "see_also": [
+      "exposure.pop_flood",
+      "hazards.flood_zones_layer",
+      "buildings.bld_sfha_n"
+    ],
+    "where": {
+      "files": [
+        "facility_exposure_series.json:fx_flood_n"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Hazards · Facilities and roads in hazard areas): Public facilities in the 1% flood area (overlaid)",
+          "href": "index.html#e=fx_flood_n.s"
+        }
+      ]
+    },
+    "added": "2026-11-16"
+  },
+  {
+    "id": "facility_exposure.fx_flood_pct",
+    "ask": {
+      "en": [
+        "share of facilities in flood zones"
+      ],
+      "es": [
+        "por ciento de instalaciones en zona inundable"
+      ]
+    },
+    "name": "Public facilities in the 1% flood area, % of facilities (overlaid)",
+    "domain": "hazards",
+    "domains": [
+      "hazards",
+      "infrastructure",
+      "education"
+    ],
+    "group": "Facilities and roads in hazard zones",
+    "kind": "variable",
+    "plain": "Out of every 100 public facilities in a municipio, how many stand inside FEMA's 1% flood area.",
+    "definition": "The share of the municipio's fire and EMS stations, police stations, city halls, libraries, public housing developments, power plants, airports and public schools that stand inside FEMA's 1% annual chance flood area. It says where the building stands, not that it floods: floor heights are not known.",
+    "unit": "%",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "One snapshot, rebuilt with the build: the flood layer and facility layers as published, and the public schools of school year 2024."
+    },
+    "method": "facility_exposure.py lays points and lines on FEMA's 1% annual chance flood area (the Special Flood Hazard Area of the observatory's flood layer, flood.geojson; the rule of the exposure series). It is an overlaid figure (decision 107): one published layer laid on another, with nothing assumed. The points are the layers the map draws (fire and EMS stations, police stations, city halls, libraries, public housing developments, power plants, airports) and the public schools open in school year 2024. A point on the edge of a polygon counts as outside. Bridges are left out: a bridge over a river stands in the flood area by design. Library points within 150 m of an open public school may be the same building; both are counted. 234 points that share their coordinates with another point of the same layer (libraries 216, public housing developments 18) are left out: several facilities listed at one address are not where the buildings stand.",
+    "sources": [
+      "fema_nfhl",
+      "urban_ccd",
+      "usgs_structures",
+      "osm",
+      "hud_public_housing",
+      "eia_860m",
+      "usac_erate"
+    ],
+    "source_detail": "The observatory's own layers and files: flood.geojson (FEMA National Flood Hazard Layer), the facility layers, traffic_roads.geojson (FHWA HPMS) and the NCES school directory, https://educationdata.urban.org/api/v1/schools/ccd/directory/2024/?fips=72.",
+    "how_to_read": "Puerto Rico: 14.4%. Highest: Cataño (63.6%), Barceloneta (61.1%), Salinas (53.1%). A municipio with few facilities moves a lot with one building: read the count beside the share.",
+    "caveats": [
+      "It says where a building or a road stands, not that it floods: the floor height of a building and the height of a road are not known, and the flood layer is a simplified copy of FEMA's map.",
+      "FEMA's 1% area is the regulatory flood map: it does not include sea level rise, and some areas flood that it does not show."
+    ],
+    "see_also": [
+      "exposure.pop_flood",
+      "hazards.flood_zones_layer",
+      "buildings.bld_sfha_n"
+    ],
+    "where": {
+      "files": [
+        "facility_exposure_series.json:fx_flood_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Hazards · Facilities and roads in hazard areas): Public facilities in the 1% flood area, % of facilities (overlaid)",
+          "href": "index.html#e=fx_flood_pct.f"
+        }
+      ]
+    },
+    "added": "2026-11-16"
+  },
+  {
+    "id": "facility_exposure.fx_schools_flood_n",
+    "ask": {
+      "en": [
+        "schools in flood zones",
+        "schools that flood"
+      ],
+      "es": [
+        "escuelas en zona inundable",
+        "escuelas en zona de inundacion"
+      ]
+    },
+    "name": "Public schools in the 1% flood area (overlaid)",
+    "domain": "hazards",
+    "domains": [
+      "hazards",
+      "infrastructure",
+      "education"
+    ],
+    "group": "Facilities and roads in hazard zones",
+    "kind": "variable",
+    "plain": "How many open public schools in each municipio stand inside FEMA's 1% flood area.",
+    "definition": "How many of the municipio's open public schools stand inside FEMA's 1% annual chance flood area. It says where the building stands, not that it floods: floor heights are not known.",
+    "unit": "count",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "One snapshot, rebuilt with the build: the flood layer and facility layers as published, and the public schools of school year 2024."
+    },
+    "method": "facility_exposure.py lays points and lines on FEMA's 1% annual chance flood area (the Special Flood Hazard Area of the observatory's flood layer, flood.geojson; the rule of the exposure series). It is an overlaid figure (decision 107): one published layer laid on another, with nothing assumed. The schools are the open public schools of the NCES Common Core of Data directory for school year 2024 (Urban Institute Education Data API), each at its published point with its enrolment. 0 open schools had no point.",
+    "sources": [
+      "fema_nfhl",
+      "urban_ccd"
+    ],
+    "source_detail": "The observatory's own layers and files: flood.geojson (FEMA National Flood Hazard Layer), the facility layers, traffic_roads.geojson (FHWA HPMS) and the NCES school directory, https://educationdata.urban.org/api/v1/schools/ccd/directory/2024/?fips=72.",
+    "how_to_read": "In Puerto Rico, 96 of the 862 open public schools stand in the 1% flood area. Most: San Juan (15), Ponce (14), Carolina (10).",
+    "caveats": [
+      "It says where a building or a road stands, not that it floods: the floor height of a building and the height of a road are not known, and the flood layer is a simplified copy of FEMA's map.",
+      "FEMA's 1% area is the regulatory flood map: it does not include sea level rise, and some areas flood that it does not show."
+    ],
+    "see_also": [
+      "exposure.pop_flood",
+      "hazards.flood_zones_layer",
+      "buildings.bld_sfha_n"
+    ],
+    "where": {
+      "files": [
+        "facility_exposure_series.json:fx_schools_flood_n"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Hazards · Facilities and roads in hazard areas): Public schools in the 1% flood area (overlaid)",
+          "href": "index.html#e=fx_schools_flood_n.s"
+        }
+      ]
+    },
+    "added": "2026-11-16"
+  },
+  {
+    "id": "facility_exposure.fx_students_flood_n",
+    "ask": {
+      "en": [
+        "students in flood zones"
+      ],
+      "es": [
+        "estudiantes en zona inundable"
+      ]
+    },
+    "name": "Students of public schools in the 1% flood area (overlaid)",
+    "domain": "hazards",
+    "domains": [
+      "hazards",
+      "infrastructure",
+      "education"
+    ],
+    "group": "Facilities and roads in hazard zones",
+    "kind": "variable",
+    "plain": "How many public school students are enrolled in schools that stand inside FEMA's 1% flood area.",
+    "definition": "The students enrolled in the public schools that stand inside FEMA's 1% annual chance flood area. It says where the building stands, not that it floods: floor heights are not known.",
+    "unit": "count",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "One snapshot, rebuilt with the build: the flood layer and facility layers as published, and the public schools of school year 2024."
+    },
+    "method": "facility_exposure.py lays points and lines on FEMA's 1% annual chance flood area (the Special Flood Hazard Area of the observatory's flood layer, flood.geojson; the rule of the exposure series). It is an overlaid figure (decision 107): one published layer laid on another, with nothing assumed. The schools are the open public schools of the NCES Common Core of Data directory for school year 2024 (Urban Institute Education Data API), each at its published point with its enrolment. 0 open schools had no point.",
+    "sources": [
+      "fema_nfhl",
+      "urban_ccd"
+    ],
+    "source_detail": "The observatory's own layers and files: flood.geojson (FEMA National Flood Hazard Layer), the facility layers, traffic_roads.geojson (FHWA HPMS) and the NCES school directory, https://educationdata.urban.org/api/v1/schools/ccd/directory/2024/?fips=72.",
+    "how_to_read": "In Puerto Rico, 27,178 students are enrolled in those schools (11.5% of public school students). Most: Ponce (4,246), Carolina (3,318), San Juan (3,132).",
+    "caveats": [
+      "It says where a building or a road stands, not that it floods: the floor height of a building and the height of a road are not known, and the flood layer is a simplified copy of FEMA's map.",
+      "FEMA's 1% area is the regulatory flood map: it does not include sea level rise, and some areas flood that it does not show."
+    ],
+    "see_also": [
+      "exposure.pop_flood",
+      "hazards.flood_zones_layer",
+      "buildings.bld_sfha_n"
+    ],
+    "where": {
+      "files": [
+        "facility_exposure_series.json:fx_students_flood_n"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Hazards · Facilities and roads in hazard areas): Students of public schools in the 1% flood area (overlaid)",
+          "href": "index.html#e=fx_students_flood_n.s"
+        }
+      ]
+    },
+    "added": "2026-11-16"
+  },
+  {
+    "id": "facility_exposure.fx_students_flood_pct",
+    "ask": {
+      "en": [
+        "share of students in flood zones"
+      ],
+      "es": [
+        "por ciento de estudiantes en zona inundable"
+      ]
+    },
+    "name": "Students of public schools in the 1% flood area, % of students (overlaid)",
+    "domain": "hazards",
+    "domains": [
+      "hazards",
+      "infrastructure",
+      "education"
+    ],
+    "group": "Facilities and roads in hazard zones",
+    "kind": "variable",
+    "plain": "Out of every 100 public school students in a municipio, how many are enrolled in a school inside FEMA's 1% flood area.",
+    "definition": "The share of the municipio's public school students who are enrolled in a school that stands inside FEMA's 1% annual chance flood area. It says where the building stands, not that it floods: floor heights are not known.",
+    "unit": "%",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "One snapshot, rebuilt with the build: the flood layer and facility layers as published, and the public schools of school year 2024."
+    },
+    "method": "facility_exposure.py lays points and lines on FEMA's 1% annual chance flood area (the Special Flood Hazard Area of the observatory's flood layer, flood.geojson; the rule of the exposure series). It is an overlaid figure (decision 107): one published layer laid on another, with nothing assumed. The schools are the open public schools of the NCES Common Core of Data directory for school year 2024 (Urban Institute Education Data API), each at its published point with its enrolment. 0 open schools had no point.",
+    "sources": [
+      "fema_nfhl",
+      "urban_ccd"
+    ],
+    "source_detail": "The observatory's own layers and files: flood.geojson (FEMA National Flood Hazard Layer), the facility layers, traffic_roads.geojson (FHWA HPMS) and the NCES school directory, https://educationdata.urban.org/api/v1/schools/ccd/directory/2024/?fips=72.",
+    "how_to_read": "Puerto Rico: 11.5%. Highest: Salinas (50.0%), Guánica (45.1%), Cataño (44.0%). It counts where the school stands, not where the students live.",
+    "caveats": [
+      "It says where a building or a road stands, not that it floods: the floor height of a building and the height of a road are not known, and the flood layer is a simplified copy of FEMA's map.",
+      "FEMA's 1% area is the regulatory flood map: it does not include sea level rise, and some areas flood that it does not show."
+    ],
+    "see_also": [
+      "exposure.pop_flood",
+      "hazards.flood_zones_layer",
+      "buildings.bld_sfha_n"
+    ],
+    "where": {
+      "files": [
+        "facility_exposure_series.json:fx_students_flood_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Hazards · Facilities and roads in hazard areas): Students of public schools in the 1% flood area, % of students (overlaid)",
+          "href": "index.html#e=fx_students_flood_pct.f"
+        }
+      ]
+    },
+    "added": "2026-11-16"
+  },
+  {
+    "id": "facility_exposure.fx_road_flood_km",
+    "ask": {
+      "en": [
+        "roads in flood zones",
+        "roads that flood"
+      ],
+      "es": [
+        "carreteras en zona inundable",
+        "carreteras que se inundan"
+      ]
+    },
+    "name": "Main roads in the 1% flood area, km (overlaid)",
+    "domain": "hazards",
+    "domains": [
+      "hazards",
+      "infrastructure",
+      "education"
+    ],
+    "group": "Facilities and roads in hazard zones",
+    "kind": "variable",
+    "plain": "How many kilometres of each municipio's main roads run inside FEMA's 1% flood area.",
+    "definition": "The kilometres of the municipio's main roads (arterials and major collectors with a traffic count) that run inside FEMA's 1% annual chance flood area. It says where the road runs, not that it floods: a road may be raised.",
+    "unit": "km",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "One snapshot, rebuilt with the build: the flood layer and facility layers as published, and the public schools of school year 2024."
+    },
+    "method": "facility_exposure.py lays points and lines on FEMA's 1% annual chance flood area (the Special Flood Hazard Area of the observatory's flood layer, flood.geojson; the rule of the exposure series). It is an overlaid figure (decision 107): one published layer laid on another, with nothing assumed. The roads are the main roads of the traffic layer (traffic_roads.geojson: arterials and major collectors with a traffic count, FHWA HPMS). Each line is cut by the municipio outlines and each piece by the flood polygons it meets; lengths are measured in metres on a local flat projection.",
+    "sources": [
+      "fema_nfhl",
+      "fhwa_hpms"
+    ],
+    "source_detail": "The observatory's own layers and files: flood.geojson (FEMA National Flood Hazard Layer), the facility layers, traffic_roads.geojson (FHWA HPMS) and the NCES school directory, https://educationdata.urban.org/api/v1/schools/ccd/directory/2024/?fips=72.",
+    "how_to_read": "In Puerto Rico, 596.3 of the 5,346.1 km of main roads run in the 1% flood area (11.2%). Most: Ponce (50.3 km), Arecibo (32.1 km), San Juan (28.8 km).",
+    "caveats": [
+      "It says where a building or a road stands, not that it floods: the floor height of a building and the height of a road are not known, and the flood layer is a simplified copy of FEMA's map.",
+      "FEMA's 1% area is the regulatory flood map: it does not include sea level rise, and some areas flood that it does not show."
+    ],
+    "see_also": [
+      "exposure.pop_flood",
+      "hazards.flood_zones_layer",
+      "buildings.bld_sfha_n"
+    ],
+    "where": {
+      "files": [
+        "facility_exposure_series.json:fx_road_flood_km"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Hazards · Facilities and roads in hazard areas): Main roads in the 1% flood area, km (overlaid)",
+          "href": "index.html#e=fx_road_flood_km.s"
+        }
+      ]
+    },
+    "added": "2026-11-16"
+  },
+  {
+    "id": "facility_exposure.fx_road_flood_pct",
+    "ask": {
+      "en": [
+        "share of roads in flood zones"
+      ],
+      "es": [
+        "por ciento de carreteras en zona inundable"
+      ]
+    },
+    "name": "Main roads in the 1% flood area, % of main road km (overlaid)",
+    "domain": "hazards",
+    "domains": [
+      "hazards",
+      "infrastructure",
+      "education"
+    ],
+    "group": "Facilities and roads in hazard zones",
+    "kind": "variable",
+    "plain": "Out of every 100 km of main road in a municipio, how many run inside FEMA's 1% flood area.",
+    "definition": "The share of the kilometres of the municipio's main roads that run inside FEMA's 1% annual chance flood area. A road may be raised above it.",
+    "unit": "%",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "One snapshot, rebuilt with the build: the flood layer and facility layers as published, and the public schools of school year 2024."
+    },
+    "method": "facility_exposure.py lays points and lines on FEMA's 1% annual chance flood area (the Special Flood Hazard Area of the observatory's flood layer, flood.geojson; the rule of the exposure series). It is an overlaid figure (decision 107): one published layer laid on another, with nothing assumed. The roads are the main roads of the traffic layer (traffic_roads.geojson: arterials and major collectors with a traffic count, FHWA HPMS). Each line is cut by the municipio outlines and each piece by the flood polygons it meets; lengths are measured in metres on a local flat projection.",
+    "sources": [
+      "fema_nfhl",
+      "fhwa_hpms"
+    ],
+    "source_detail": "The observatory's own layers and files: flood.geojson (FEMA National Flood Hazard Layer), the facility layers, traffic_roads.geojson (FHWA HPMS) and the NCES school directory, https://educationdata.urban.org/api/v1/schools/ccd/directory/2024/?fips=72.",
+    "how_to_read": "Puerto Rico: 11.2%. Highest: Loíza (58.2%), Cataño (53.6%), Hormigueros (47.4%). A raised road or a bridge approach inside the area is counted like any other stretch.",
+    "caveats": [
+      "It says where a building or a road stands, not that it floods: the floor height of a building and the height of a road are not known, and the flood layer is a simplified copy of FEMA's map.",
+      "FEMA's 1% area is the regulatory flood map: it does not include sea level rise, and some areas flood that it does not show."
+    ],
+    "see_also": [
+      "exposure.pop_flood",
+      "hazards.flood_zones_layer",
+      "buildings.bld_sfha_n"
+    ],
+    "where": {
+      "files": [
+        "facility_exposure_series.json:fx_road_flood_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Hazards · Facilities and roads in hazard areas): Main roads in the 1% flood area, % of main road km (overlaid)",
+          "href": "index.html#e=fx_road_flood_pct.f"
+        }
+      ]
+    },
+    "added": "2026-11-16"
+  },
+  {
+    "id": "facility_exposure.fx_slr_n",
+    "ask": {
+      "en": [
+        "facilities and sea level rise",
+        "buildings threatened by sea level rise"
+      ],
+      "es": [
+        "instalaciones y aumento del nivel del mar"
+      ]
+    },
+    "name": "Public facilities in the 3 ft sea level rise area (overlaid)",
+    "domain": "hazards",
+    "domains": [
+      "hazards",
+      "infrastructure",
+      "education"
+    ],
+    "group": "Facilities and roads in hazard zones",
+    "kind": "variable",
+    "plain": "How many public facilities in each municipio stand inside the area 3 ft of sea level rise would flood.",
+    "definition": "How many of the municipio's fire and EMS stations, police stations, city halls, libraries, public housing developments, power plants, airports and public schools stand inside NOAA's area flooded by 3 ft of sea level rise above today's high tide (connected to the ocean). It says where the building stands today, not when or whether the sea reaches it.",
+    "unit": "count",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "One snapshot, rebuilt with the build: the hazard maps and facility layers as published, and the public schools of school year 2024."
+    },
+    "method": "facility_exposure.py lays points and lines on NOAA's extent of 3 ft of sea level rise above mean higher high water, connected to the ocean (the height the observatory's exposure series headline; low-lying areas not connected to the ocean are left out). It is an overlaid figure (decision 107): one published layer laid on another, with nothing assumed. The points are the layers the map draws (fire and EMS stations, police stations, city halls, libraries, public housing developments, power plants, airports) and the public schools open in school year 2024, each with its students. Bridges are left out. 234 points that share their coordinates with another point of the same layer (libraries 216, public housing developments 18) are left out: several facilities listed at one address are not where the buildings stand.",
+    "sources": [
+      "noaa_slr",
+      "urban_ccd",
+      "usgs_structures",
+      "osm",
+      "hud_public_housing",
+      "eia_860m",
+      "usac_erate"
+    ],
+    "source_detail": "The observatory's own layers and files: NOAA's sea level rise extents (cache/slr), the USGS landslide susceptibility tiles (landslide.py), the facility layers, traffic_roads.geojson (FHWA HPMS) and the NCES school directory.",
+    "how_to_read": "In Puerto Rico, 17 of the 2,274 facilities tested stand in the 3 ft sea level rise area (0.7%): airports and heliports 0 of 17; city halls 0 of 65; fire and ems stations 0 of 94; libraries 12 of 883; police stations 2 of 141; power plants 1 of 68; public housing developments 0 of 144; public schools 2 of 862. Most: Cataño (4), Salinas (3), Cabo Rojo (2).",
+    "caveats": [
+      "It says where a building or road stands today, not when or whether the sea reaches it: NOAA's extent is a picture of a water level, not a forecast, and it does not include waves, storm surge or erosion.",
+      "Low-lying areas that 3 ft of sea level rise would leave cut off from the ocean are not counted.",
+      "Roads are read every 20 m, so a stretch shorter than that may be missed or counted whole."
+    ],
+    "see_also": [
+      "facility_exposure.fx_flood_n",
+      "exposure.pop_slr"
+    ],
+    "where": {
+      "files": [
+        "facility_exposure_series.json:fx_slr_n"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Hazards · Facilities and roads in hazard areas): Public facilities in the 3 ft sea level rise area (overlaid)",
+          "href": "index.html#e=fx_slr_n.s"
+        }
+      ]
+    },
+    "added": "2026-11-16"
+  },
+  {
+    "id": "facility_exposure.fx_slr_pct",
+    "ask": {
+      "en": [
+        "share of facilities in the sea level rise area"
+      ],
+      "es": [
+        "por ciento de instalaciones en el área de aumento del nivel del mar"
+      ]
+    },
+    "name": "Public facilities in the 3 ft sea level rise area, % of facilities (overlaid)",
+    "domain": "hazards",
+    "domains": [
+      "hazards",
+      "infrastructure",
+      "education"
+    ],
+    "group": "Facilities and roads in hazard zones",
+    "kind": "variable",
+    "plain": "Out of every 100 public facilities in a municipio, how many stand inside the area 3 ft of sea level rise would flood.",
+    "definition": "The share of the municipio's fire and EMS stations, police stations, city halls, libraries, public housing developments, power plants, airports and public schools that stand inside NOAA's area flooded by 3 ft of sea level rise above today's high tide (connected to the ocean). It says where the building stands today, not when or whether the sea reaches it.",
+    "unit": "%",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "One snapshot, rebuilt with the build: the hazard maps and facility layers as published, and the public schools of school year 2024."
+    },
+    "method": "facility_exposure.py lays points and lines on NOAA's extent of 3 ft of sea level rise above mean higher high water, connected to the ocean (the height the observatory's exposure series headline; low-lying areas not connected to the ocean are left out). It is an overlaid figure (decision 107): one published layer laid on another, with nothing assumed. The points are the layers the map draws (fire and EMS stations, police stations, city halls, libraries, public housing developments, power plants, airports) and the public schools open in school year 2024, each with its students. Bridges are left out. 234 points that share their coordinates with another point of the same layer (libraries 216, public housing developments 18) are left out: several facilities listed at one address are not where the buildings stand.",
+    "sources": [
+      "noaa_slr",
+      "urban_ccd",
+      "usgs_structures",
+      "osm",
+      "hud_public_housing",
+      "eia_860m",
+      "usac_erate"
+    ],
+    "source_detail": "The observatory's own layers and files: NOAA's sea level rise extents (cache/slr), the USGS landslide susceptibility tiles (landslide.py), the facility layers, traffic_roads.geojson (FHWA HPMS) and the NCES school directory.",
+    "how_to_read": "Puerto Rico: 0.7%. Highest: Cataño (18.2%), Salinas (9.4%), Cabo Rojo (7.7%). A municipio with few facilities moves a lot with one building: read the count beside the share.",
+    "caveats": [
+      "It says where a building or road stands today, not when or whether the sea reaches it: NOAA's extent is a picture of a water level, not a forecast, and it does not include waves, storm surge or erosion.",
+      "Low-lying areas that 3 ft of sea level rise would leave cut off from the ocean are not counted.",
+      "Roads are read every 20 m, so a stretch shorter than that may be missed or counted whole."
+    ],
+    "see_also": [
+      "facility_exposure.fx_flood_n",
+      "exposure.pop_slr"
+    ],
+    "where": {
+      "files": [
+        "facility_exposure_series.json:fx_slr_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Hazards · Facilities and roads in hazard areas): Public facilities in the 3 ft sea level rise area, % of facilities (overlaid)",
+          "href": "index.html#e=fx_slr_pct.f"
+        }
+      ]
+    },
+    "added": "2026-11-16"
+  },
+  {
+    "id": "facility_exposure.fx_students_slr_pct",
+    "ask": {
+      "en": [
+        "schools and sea level rise",
+        "students in the sea level rise area"
+      ],
+      "es": [
+        "escuelas y aumento del nivel del mar"
+      ]
+    },
+    "name": "Students of public schools in the 3 ft sea level rise area, % of students (overlaid)",
+    "domain": "hazards",
+    "domains": [
+      "hazards",
+      "infrastructure",
+      "education"
+    ],
+    "group": "Facilities and roads in hazard zones",
+    "kind": "variable",
+    "plain": "Out of every 100 public school students in a municipio, how many are enrolled in a school inside the area 3 ft of sea level rise would flood.",
+    "definition": "The share of the municipio's public school students who are enrolled in a school that stands inside NOAA's area flooded by 3 ft of sea level rise above today's high tide (connected to the ocean). It says where the building stands today, not when or whether the sea reaches it.",
+    "unit": "%",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "One snapshot, rebuilt with the build: the hazard maps and facility layers as published, and the public schools of school year 2024."
+    },
+    "method": "facility_exposure.py lays points and lines on NOAA's extent of 3 ft of sea level rise above mean higher high water, connected to the ocean (the height the observatory's exposure series headline; low-lying areas not connected to the ocean are left out). It is an overlaid figure (decision 107): one published layer laid on another, with nothing assumed. The points are the layers the map draws (fire and EMS stations, police stations, city halls, libraries, public housing developments, power plants, airports) and the public schools open in school year 2024, each with its students. Bridges are left out.",
+    "sources": [
+      "noaa_slr",
+      "urban_ccd"
+    ],
+    "source_detail": "The observatory's own layers and files: NOAA's sea level rise extents (cache/slr), the USGS landslide susceptibility tiles (landslide.py), the facility layers, traffic_roads.geojson (FHWA HPMS) and the NCES school directory.",
+    "how_to_read": "Puerto Rico: 0.1%. Highest: Salinas (5.5%), San Juan (0.9%), Yauco (0.0%). It counts where the school stands, not where the students live.",
+    "caveats": [
+      "It says where a building or road stands today, not when or whether the sea reaches it: NOAA's extent is a picture of a water level, not a forecast, and it does not include waves, storm surge or erosion.",
+      "Low-lying areas that 3 ft of sea level rise would leave cut off from the ocean are not counted.",
+      "Roads are read every 20 m, so a stretch shorter than that may be missed or counted whole."
+    ],
+    "see_also": [
+      "facility_exposure.fx_flood_n",
+      "exposure.pop_slr"
+    ],
+    "where": {
+      "files": [
+        "facility_exposure_series.json:fx_students_slr_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Hazards · Facilities and roads in hazard areas): Students of public schools in the 3 ft sea level rise area, % of students (overlaid)",
+          "href": "index.html#e=fx_students_slr_pct.f"
+        }
+      ]
+    },
+    "added": "2026-11-16"
+  },
+  {
+    "id": "facility_exposure.fx_road_slr_km",
+    "ask": {
+      "en": [
+        "roads and sea level rise",
+        "coastal roads at risk"
+      ],
+      "es": [
+        "carreteras y aumento del nivel del mar"
+      ]
+    },
+    "name": "Main roads in the 3 ft sea level rise area, km (overlaid)",
+    "domain": "hazards",
+    "domains": [
+      "hazards",
+      "infrastructure",
+      "education"
+    ],
+    "group": "Facilities and roads in hazard zones",
+    "kind": "variable",
+    "plain": "How many kilometres of each municipio's main roads run inside the area 3 ft of sea level rise would flood.",
+    "definition": "The kilometres of the municipio's main roads (arterials and major collectors with a traffic count) that run inside NOAA's area flooded by 3 ft of sea level rise above today's high tide (connected to the ocean), read every 20 m. It says where the road runs today, not that it will be under water: a road may be raised.",
+    "unit": "km",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "One snapshot, rebuilt with the build: the hazard maps and facility layers as published, and the public schools of school year 2024."
+    },
+    "method": "facility_exposure.py lays points and lines on NOAA's extent of 3 ft of sea level rise above mean higher high water, connected to the ocean (the height the observatory's exposure series headline; low-lying areas not connected to the ocean are left out). It is an overlaid figure (decision 107): one published layer laid on another, with nothing assumed. The roads are the main roads of the traffic layer (traffic_roads.geojson: arterials and major collectors with a traffic count, FHWA HPMS), cut by the municipio outlines and read every 20 m: each 20 m step counts with the point at its middle.",
+    "sources": [
+      "noaa_slr",
+      "fhwa_hpms"
+    ],
+    "source_detail": "The observatory's own layers and files: NOAA's sea level rise extents (cache/slr), the USGS landslide susceptibility tiles (landslide.py), the facility layers, traffic_roads.geojson (FHWA HPMS) and the NCES school directory.",
+    "how_to_read": "In Puerto Rico, 17.0 of the 5,346.1 km of main roads run in the 3 ft sea level rise area (0.3%). Most: San Juan (2.8 km), Cataño (2.5 km), Carolina (1.5 km).",
+    "caveats": [
+      "It says where a building or road stands today, not when or whether the sea reaches it: NOAA's extent is a picture of a water level, not a forecast, and it does not include waves, storm surge or erosion.",
+      "Low-lying areas that 3 ft of sea level rise would leave cut off from the ocean are not counted.",
+      "Roads are read every 20 m, so a stretch shorter than that may be missed or counted whole."
+    ],
+    "see_also": [
+      "facility_exposure.fx_flood_n",
+      "exposure.pop_slr"
+    ],
+    "where": {
+      "files": [
+        "facility_exposure_series.json:fx_road_slr_km"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Hazards · Facilities and roads in hazard areas): Main roads in the 3 ft sea level rise area, km (overlaid)",
+          "href": "index.html#e=fx_road_slr_km.s"
+        }
+      ]
+    },
+    "added": "2026-11-16"
+  },
+  {
+    "id": "facility_exposure.fx_road_slr_pct",
+    "ask": {
+      "en": [
+        "share of roads in the sea level rise area"
+      ],
+      "es": [
+        "por ciento de carreteras en el área de aumento del nivel del mar"
+      ]
+    },
+    "name": "Main roads in the 3 ft sea level rise area, % of main road km (overlaid)",
+    "domain": "hazards",
+    "domains": [
+      "hazards",
+      "infrastructure",
+      "education"
+    ],
+    "group": "Facilities and roads in hazard zones",
+    "kind": "variable",
+    "plain": "Out of every 100 km of main road in a municipio, how many run inside the area 3 ft of sea level rise would flood.",
+    "definition": "The share of the kilometres of the municipio's main roads that run inside NOAA's area flooded by 3 ft of sea level rise above today's high tide (connected to the ocean), read every 20 m. A road may be raised above it.",
+    "unit": "%",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "One snapshot, rebuilt with the build: the hazard maps and facility layers as published, and the public schools of school year 2024."
+    },
+    "method": "facility_exposure.py lays points and lines on NOAA's extent of 3 ft of sea level rise above mean higher high water, connected to the ocean (the height the observatory's exposure series headline; low-lying areas not connected to the ocean are left out). It is an overlaid figure (decision 107): one published layer laid on another, with nothing assumed. The roads are the main roads of the traffic layer (traffic_roads.geojson: arterials and major collectors with a traffic count, FHWA HPMS), cut by the municipio outlines and read every 20 m: each 20 m step counts with the point at its middle.",
+    "sources": [
+      "noaa_slr",
+      "fhwa_hpms"
+    ],
+    "source_detail": "The observatory's own layers and files: NOAA's sea level rise extents (cache/slr), the USGS landslide susceptibility tiles (landslide.py), the facility layers, traffic_roads.geojson (FHWA HPMS) and the NCES school directory.",
+    "how_to_read": "Puerto Rico: 0.3%. Highest: Cataño (13.2%), Loíza (11.1%), Guánica (2.8%). A raised road inside the area is counted like any other stretch.",
+    "caveats": [
+      "It says where a building or road stands today, not when or whether the sea reaches it: NOAA's extent is a picture of a water level, not a forecast, and it does not include waves, storm surge or erosion.",
+      "Low-lying areas that 3 ft of sea level rise would leave cut off from the ocean are not counted.",
+      "Roads are read every 20 m, so a stretch shorter than that may be missed or counted whole."
+    ],
+    "see_also": [
+      "facility_exposure.fx_flood_n",
+      "exposure.pop_slr"
+    ],
+    "where": {
+      "files": [
+        "facility_exposure_series.json:fx_road_slr_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Hazards · Facilities and roads in hazard areas): Main roads in the 3 ft sea level rise area, % of main road km (overlaid)",
+          "href": "index.html#e=fx_road_slr_pct.f"
+        }
+      ]
+    },
+    "added": "2026-11-16"
+  },
+  {
+    "id": "facility_exposure.fx_ls_n",
+    "ask": {
+      "en": [
+        "facilities and landslides",
+        "buildings on landslide-prone land"
+      ],
+      "es": [
+        "instalaciones y deslizamientos",
+        "instalaciones en zona de derrumbes"
+      ]
+    },
+    "name": "Public facilities on high landslide susceptibility land (overlaid)",
+    "domain": "hazards",
+    "domains": [
+      "hazards",
+      "infrastructure",
+      "education"
+    ],
+    "group": "Facilities and roads in hazard zones",
+    "kind": "variable",
+    "plain": "How many public facilities in each municipio stand on land the USGS rates highly susceptible to landslides.",
+    "definition": "How many of the municipio's fire and EMS stations, police stations, city halls, libraries, public housing developments, power plants, airports and public schools stand on land the USGS map rates High, Very High or Extremely High for landslides triggered by intense rainfall (the most susceptible 30% of the main island). It says what the ground under it is rated, not that a slide will happen there; Vieques and Culebra are not in the map.",
+    "unit": "count",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "One snapshot, rebuilt with the build: the hazard maps and facility layers as published, and the public schools of school year 2024."
+    },
+    "method": "facility_exposure.py reads the USGS map of susceptibility to landslides triggered by intense rainfall (Hughes and Schulz, 2020) under each point, from the same zoom-15 tiles as landslide.py (about 4.5 m a pixel). A point counts when its cell is High, Very High or Extremely High, the most susceptible 30% of the main island. It is an overlaid figure (decision 107). The points are the layers the map draws (fire and EMS stations, police stations, city halls, libraries, public housing developments, power plants, airports) and the public schools open in school year 2024, each with its students. Bridges are left out. 234 points that share their coordinates with another point of the same layer (libraries 216, public housing developments 18) are left out: several facilities listed at one address are not where the buildings stand.",
+    "sources": [
+      "usgs_landslide_map",
+      "urban_ccd",
+      "usgs_structures",
+      "osm",
+      "hud_public_housing",
+      "eia_860m",
+      "usac_erate"
+    ],
+    "source_detail": "The observatory's own layers and files: NOAA's sea level rise extents (cache/slr), the USGS landslide susceptibility tiles (landslide.py), the facility layers, traffic_roads.geojson (FHWA HPMS) and the NCES school directory.",
+    "how_to_read": "On the main island, 26 of the 2,249 facilities tested stand on High or higher landslide susceptibility land (1.2%): airports and heliports 0 of 14; city halls 0 of 63; fire and ems stations 0 of 92; libraries 23 of 876; police stations 0 of 140; power plants 3 of 66; public housing developments 0 of 143; public schools 0 of 855. Most: Barranquitas (4), Yauco (3), Utuado (3).",
+    "caveats": [
+      "It says what the ground under a building or road is rated, not that a slide will happen there; the map is not a substitute for a site-specific slope-stability study.",
+      "A building stands on a levelled pad, and the 5 m map rates the pad by its own gentle slope: the point under a building reads Low far more often than the slope around it. 94% of public schools read Low, while 11.5% of residents (census block points, landslide.py) live on High or higher land. Read a low count as 'the building's own cell is not rated high', not as 'safe from slides': a slope above or below it, or the road to it, may be.",
+      "Vieques and Culebra are not in the USGS map: they have no value, and Puerto Rico's figure is of the main island.",
+      "2 points of the main island fall on a cell with no class (water or the edge of the map) and count as not high.",
+      "Roads are read every 20 m, so a stretch shorter than that may be missed or counted whole."
+    ],
+    "see_also": [
+      "facility_exposure.fx_flood_n",
+      "landslide.ls_land_high_pct"
+    ],
+    "where": {
+      "files": [
+        "facility_exposure_series.json:fx_ls_n"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Hazards · Facilities and roads in hazard areas): Public facilities on high landslide susceptibility land (overlaid)",
+          "href": "index.html#e=fx_ls_n.s"
+        }
+      ]
+    },
+    "added": "2026-11-16"
+  },
+  {
+    "id": "facility_exposure.fx_ls_pct",
+    "ask": {
+      "en": [
+        "share of facilities on landslide-prone land"
+      ],
+      "es": [
+        "por ciento de instalaciones en zona de derrumbes"
+      ]
+    },
+    "name": "Public facilities on high landslide susceptibility land, % of facilities (overlaid)",
+    "domain": "hazards",
+    "domains": [
+      "hazards",
+      "infrastructure",
+      "education"
+    ],
+    "group": "Facilities and roads in hazard zones",
+    "kind": "variable",
+    "plain": "Out of every 100 public facilities in a municipio, how many stand on land the USGS rates highly susceptible to landslides.",
+    "definition": "The share of the municipio's fire and EMS stations, police stations, city halls, libraries, public housing developments, power plants, airports and public schools that stand on land the USGS map rates High, Very High or Extremely High for landslides triggered by intense rainfall (the most susceptible 30% of the main island). It says what the ground under it is rated, not that a slide will happen there; Vieques and Culebra are not in the map.",
+    "unit": "%",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "One snapshot, rebuilt with the build: the hazard maps and facility layers as published, and the public schools of school year 2024."
+    },
+    "method": "facility_exposure.py reads the USGS map of susceptibility to landslides triggered by intense rainfall (Hughes and Schulz, 2020) under each point, from the same zoom-15 tiles as landslide.py (about 4.5 m a pixel). A point counts when its cell is High, Very High or Extremely High, the most susceptible 30% of the main island. It is an overlaid figure (decision 107). The points are the layers the map draws (fire and EMS stations, police stations, city halls, libraries, public housing developments, power plants, airports) and the public schools open in school year 2024, each with its students. Bridges are left out. 234 points that share their coordinates with another point of the same layer (libraries 216, public housing developments 18) are left out: several facilities listed at one address are not where the buildings stand.",
+    "sources": [
+      "usgs_landslide_map",
+      "urban_ccd",
+      "usgs_structures",
+      "osm",
+      "hud_public_housing",
+      "eia_860m",
+      "usac_erate"
+    ],
+    "source_detail": "The observatory's own layers and files: NOAA's sea level rise extents (cache/slr), the USGS landslide susceptibility tiles (landslide.py), the facility layers, traffic_roads.geojson (FHWA HPMS) and the NCES school directory.",
+    "how_to_read": "Main island: 1.2%. Highest: Las Marías (18.2%), Barranquitas (14.3%), Patillas (10.5%). A municipio with few facilities moves a lot with one building: read the count beside the share.",
+    "caveats": [
+      "It says what the ground under a building or road is rated, not that a slide will happen there; the map is not a substitute for a site-specific slope-stability study.",
+      "A building stands on a levelled pad, and the 5 m map rates the pad by its own gentle slope: the point under a building reads Low far more often than the slope around it. 94% of public schools read Low, while 11.5% of residents (census block points, landslide.py) live on High or higher land. Read a low count as 'the building's own cell is not rated high', not as 'safe from slides': a slope above or below it, or the road to it, may be.",
+      "Vieques and Culebra are not in the USGS map: they have no value, and Puerto Rico's figure is of the main island.",
+      "2 points of the main island fall on a cell with no class (water or the edge of the map) and count as not high.",
+      "Roads are read every 20 m, so a stretch shorter than that may be missed or counted whole."
+    ],
+    "see_also": [
+      "facility_exposure.fx_flood_n",
+      "landslide.ls_land_high_pct"
+    ],
+    "where": {
+      "files": [
+        "facility_exposure_series.json:fx_ls_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Hazards · Facilities and roads in hazard areas): Public facilities on high landslide susceptibility land, % of facilities (overlaid)",
+          "href": "index.html#e=fx_ls_pct.f"
+        }
+      ]
+    },
+    "added": "2026-11-16"
+  },
+  {
+    "id": "facility_exposure.fx_students_ls_pct",
+    "ask": {
+      "en": [
+        "schools and landslides",
+        "schools on landslide-prone land"
+      ],
+      "es": [
+        "escuelas y deslizamientos",
+        "escuelas en zona de derrumbes"
+      ]
+    },
+    "name": "Students of public schools on high landslide susceptibility land, % of students (overlaid)",
+    "domain": "hazards",
+    "domains": [
+      "hazards",
+      "infrastructure",
+      "education"
+    ],
+    "group": "Facilities and roads in hazard zones",
+    "kind": "variable",
+    "plain": "Out of every 100 public school students in a municipio, how many are enrolled in a school on land the USGS rates highly susceptible to landslides.",
+    "definition": "The share of the municipio's public school students who are enrolled in a school that stands on land the USGS map rates High, Very High or Extremely High for landslides triggered by intense rainfall (the most susceptible 30% of the main island). It says what the ground under it is rated, not that a slide will happen there; Vieques and Culebra are not in the map.",
+    "unit": "%",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "One snapshot, rebuilt with the build: the hazard maps and facility layers as published, and the public schools of school year 2024."
+    },
+    "method": "facility_exposure.py reads the USGS map of susceptibility to landslides triggered by intense rainfall (Hughes and Schulz, 2020) under each point, from the same zoom-15 tiles as landslide.py (about 4.5 m a pixel). A point counts when its cell is High, Very High or Extremely High, the most susceptible 30% of the main island. It is an overlaid figure (decision 107). The points are the layers the map draws (fire and EMS stations, police stations, city halls, libraries, public housing developments, power plants, airports) and the public schools open in school year 2024, each with its students. Bridges are left out.",
+    "sources": [
+      "usgs_landslide_map",
+      "urban_ccd"
+    ],
+    "source_detail": "The observatory's own layers and files: NOAA's sea level rise extents (cache/slr), the USGS landslide susceptibility tiles (landslide.py), the facility layers, traffic_roads.geojson (FHWA HPMS) and the NCES school directory.",
+    "how_to_read": "Main island: 0.0%. Highest: Yauco (0.0%), Yabucoa (0.0%), Villalba (0.0%). It counts where the school stands, not the road to it.",
+    "caveats": [
+      "It says what the ground under a building or road is rated, not that a slide will happen there; the map is not a substitute for a site-specific slope-stability study.",
+      "A building stands on a levelled pad, and the 5 m map rates the pad by its own gentle slope: the point under a building reads Low far more often than the slope around it. 94% of public schools read Low, while 11.5% of residents (census block points, landslide.py) live on High or higher land. Read a low count as 'the building's own cell is not rated high', not as 'safe from slides': a slope above or below it, or the road to it, may be.",
+      "Vieques and Culebra are not in the USGS map: they have no value, and Puerto Rico's figure is of the main island.",
+      "2 points of the main island fall on a cell with no class (water or the edge of the map) and count as not high.",
+      "Roads are read every 20 m, so a stretch shorter than that may be missed or counted whole."
+    ],
+    "see_also": [
+      "facility_exposure.fx_flood_n",
+      "landslide.ls_land_high_pct"
+    ],
+    "where": {
+      "files": [
+        "facility_exposure_series.json:fx_students_ls_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Hazards · Facilities and roads in hazard areas): Students of public schools on high landslide susceptibility land, % of students (overlaid)",
+          "href": "index.html#e=fx_students_ls_pct.f"
+        }
+      ]
+    },
+    "added": "2026-11-16"
+  },
+  {
+    "id": "facility_exposure.fx_road_ls_km",
+    "ask": {
+      "en": [
+        "roads and landslides",
+        "roads on landslide-prone land"
+      ],
+      "es": [
+        "carreteras y deslizamientos",
+        "carreteras en zona de derrumbes"
+      ]
+    },
+    "name": "Main roads on high landslide susceptibility land, km (overlaid)",
+    "domain": "hazards",
+    "domains": [
+      "hazards",
+      "infrastructure",
+      "education"
+    ],
+    "group": "Facilities and roads in hazard zones",
+    "kind": "variable",
+    "plain": "How many kilometres of each municipio's main roads run on land the USGS rates highly susceptible to landslides.",
+    "definition": "The kilometres of the municipio's main roads (arterials and major collectors with a traffic count) that run on land the USGS map rates High, Very High or Extremely High for landslides triggered by intense rainfall (the most susceptible 30% of the main island), read every 20 m. It says what the ground under it is rated, not that a slide will happen there; Vieques and Culebra are not in the map.",
+    "unit": "km",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "One snapshot, rebuilt with the build: the hazard maps and facility layers as published, and the public schools of school year 2024."
+    },
+    "method": "facility_exposure.py reads the USGS map of susceptibility to landslides triggered by intense rainfall (Hughes and Schulz, 2020) under each point, from the same zoom-15 tiles as landslide.py (about 4.5 m a pixel). A point counts when its cell is High, Very High or Extremely High, the most susceptible 30% of the main island. It is an overlaid figure (decision 107). The roads are the main roads of the traffic layer (traffic_roads.geojson: arterials and major collectors with a traffic count, FHWA HPMS), cut by the municipio outlines and read every 20 m: each 20 m step counts with the point at its middle.",
+    "sources": [
+      "usgs_landslide_map",
+      "fhwa_hpms"
+    ],
+    "source_detail": "The observatory's own layers and files: NOAA's sea level rise extents (cache/slr), the USGS landslide susceptibility tiles (landslide.py), the facility layers, traffic_roads.geojson (FHWA HPMS) and the NCES school directory.",
+    "how_to_read": "On the main island, 474.3 km of main road run on High or higher landslide susceptibility land (8.9%). Most: Utuado (32.4 km), Orocovis (22.7 km), Adjuntas (22.7 km).",
+    "caveats": [
+      "It says what the ground under a building or road is rated, not that a slide will happen there; the map is not a substitute for a site-specific slope-stability study.",
+      "A building stands on a levelled pad, and the 5 m map rates the pad by its own gentle slope: the point under a building reads Low far more often than the slope around it. 94% of public schools read Low, while 11.5% of residents (census block points, landslide.py) live on High or higher land. Read a low count as 'the building's own cell is not rated high', not as 'safe from slides': a slope above or below it, or the road to it, may be.",
+      "Vieques and Culebra are not in the USGS map: they have no value, and Puerto Rico's figure is of the main island.",
+      "2 points of the main island fall on a cell with no class (water or the edge of the map) and count as not high.",
+      "Roads are read every 20 m, so a stretch shorter than that may be missed or counted whole."
+    ],
+    "see_also": [
+      "facility_exposure.fx_flood_n",
+      "landslide.ls_land_high_pct"
+    ],
+    "where": {
+      "files": [
+        "facility_exposure_series.json:fx_road_ls_km"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Hazards · Facilities and roads in hazard areas): Main roads on high landslide susceptibility land, km (overlaid)",
+          "href": "index.html#e=fx_road_ls_km.s"
+        }
+      ]
+    },
+    "added": "2026-11-16"
+  },
+  {
+    "id": "facility_exposure.fx_road_ls_pct",
+    "ask": {
+      "en": [
+        "share of roads on landslide-prone land"
+      ],
+      "es": [
+        "por ciento de carreteras en zona de derrumbes"
+      ]
+    },
+    "name": "Main roads on high landslide susceptibility land, % of main road km (overlaid)",
+    "domain": "hazards",
+    "domains": [
+      "hazards",
+      "infrastructure",
+      "education"
+    ],
+    "group": "Facilities and roads in hazard zones",
+    "kind": "variable",
+    "plain": "Out of every 100 km of main road in a municipio, how many run on land the USGS rates highly susceptible to landslides.",
+    "definition": "The share of the kilometres of the municipio's main roads that run on land the USGS map rates High, Very High or Extremely High for landslides triggered by intense rainfall (the most susceptible 30% of the main island), read every 20 m. It says what the ground under it is rated, not that a slide will happen there; Vieques and Culebra are not in the map.",
+    "unit": "%",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "One snapshot, rebuilt with the build: the hazard maps and facility layers as published, and the public schools of school year 2024."
+    },
+    "method": "facility_exposure.py reads the USGS map of susceptibility to landslides triggered by intense rainfall (Hughes and Schulz, 2020) under each point, from the same zoom-15 tiles as landslide.py (about 4.5 m a pixel). A point counts when its cell is High, Very High or Extremely High, the most susceptible 30% of the main island. It is an overlaid figure (decision 107). The roads are the main roads of the traffic layer (traffic_roads.geojson: arterials and major collectors with a traffic count, FHWA HPMS), cut by the municipio outlines and read every 20 m: each 20 m step counts with the point at its middle.",
+    "sources": [
+      "usgs_landslide_map",
+      "fhwa_hpms"
+    ],
+    "source_detail": "The observatory's own layers and files: NOAA's sea level rise extents (cache/slr), the USGS landslide susceptibility tiles (landslide.py), the facility layers, traffic_roads.geojson (FHWA HPMS) and the NCES school directory.",
+    "how_to_read": "Main island: 8.9%. Highest: Maricao (42.2%), Orocovis (28.5%), Utuado (28.3%). A road cut into a slope is rated by the ground under its middle line.",
+    "caveats": [
+      "It says what the ground under a building or road is rated, not that a slide will happen there; the map is not a substitute for a site-specific slope-stability study.",
+      "A building stands on a levelled pad, and the 5 m map rates the pad by its own gentle slope: the point under a building reads Low far more often than the slope around it. 94% of public schools read Low, while 11.5% of residents (census block points, landslide.py) live on High or higher land. Read a low count as 'the building's own cell is not rated high', not as 'safe from slides': a slope above or below it, or the road to it, may be.",
+      "Vieques and Culebra are not in the USGS map: they have no value, and Puerto Rico's figure is of the main island.",
+      "2 points of the main island fall on a cell with no class (water or the edge of the map) and count as not high.",
+      "Roads are read every 20 m, so a stretch shorter than that may be missed or counted whole."
+    ],
+    "see_also": [
+      "facility_exposure.fx_flood_n",
+      "landslide.ls_land_high_pct"
+    ],
+    "where": {
+      "files": [
+        "facility_exposure_series.json:fx_road_ls_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Hazards · Facilities and roads in hazard areas): Main roads on high landslide susceptibility land, % of main road km (overlaid)",
+          "href": "index.html#e=fx_road_ls_pct.f"
+        }
+      ]
+    },
+    "added": "2026-11-16"
+  }
+]

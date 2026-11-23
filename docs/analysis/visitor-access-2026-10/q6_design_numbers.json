@@ -1,0 +1,246 @@
+{
+ "access_classes_island": {
+  "frequent: current scheduled stop within 400 m with at least 20 weekday calls": {
+   "n": 5664,
+   "pct": 21.3
+  },
+  "basic: current scheduled stop within 400 m (fewer than 20 calls at every such stop)": {
+   "n": 2860,
+   "pct": 10.8
+  },
+  "near: current scheduled stop 400-800 m away": {
+   "n": 1122,
+   "pct": 4.2
+  },
+  "paper only: no current scheduled stop within 800 m, but an expired-feed or volunteer-mapped stop within 800 m": {
+   "n": 5100,
+   "pct": 19.2
+  },
+  "none: no stop of any kind within 800 m": {
+   "n": 11833,
+   "pct": 44.5
+  }
+ },
+ "access_classes_by_category": {
+  "ACCOMMODATIONS": {
+   "1": 14.7,
+   "2": 9.9,
+   "3": 5.6,
+   "4": 14.1,
+   "5": 55.7
+  },
+  "ATTRACTIONS": {
+   "1": 20.7,
+   "2": 9.4,
+   "3": 5.2,
+   "4": 16.1,
+   "5": 48.6
+  },
+  "GASTRONOMY": {
+   "1": 22.4,
+   "2": 11.5,
+   "3": 3.7,
+   "4": 21.1,
+   "5": 41.3
+  },
+  "VISITOR_SERVICES": {
+   "1": 29.2,
+   "2": 7.1,
+   "3": 4.2,
+   "4": 19.1,
+   "5": 40.4
+  }
+ },
+ "access_classes_by_region": {
+  "Porta Atlántico": {
+   "1": 7.5,
+   "2": 15.5,
+   "3": 4.8,
+   "4": 14.7,
+   "5": 57.5
+  },
+  "Porta Capital": {
+   "1": 58.0,
+   "2": 12.7,
+   "3": 6.8,
+   "4": 11.1,
+   "5": 11.4
+  },
+  "Porta Caribe": {
+   "1": 2.8,
+   "2": 3.3,
+   "3": 1.3,
+   "4": 39.5,
+   "5": 53.0
+  },
+  "Porta Cordillera": {
+   "1": 5.7,
+   "2": 10.8,
+   "3": 3.7,
+   "4": 17.5,
+   "5": 62.2
+  },
+  "Porta del Mar": {
+   "1": 4.8,
+   "2": 11.3,
+   "3": 3.7,
+   "4": 29.4,
+   "5": 50.9
+  },
+  "Porta del Sol Norte": {
+   "1": 0.0,
+   "2": 3.8,
+   "3": 0.4,
+   "4": 17.8,
+   "5": 77.9
+  },
+  "Porta del Sol Sur": {
+   "1": 3.7,
+   "2": 14.8,
+   "3": 4.6,
+   "4": 17.1,
+   "5": 59.8
+  }
+ },
+ "hub_proximity_default": {
+  "counts": {
+   "public_airport": 11,
+   "ferry_terminal_any": 13,
+   "rail_station": 16,
+   "bus_terminal_scheduled_or_osm": 91
+  },
+  "public_airport": {
+   "pct_within_1000m": 1.3,
+   "pct_within_2000m": 4.6,
+   "pct_within_5000m": 20.1,
+   "pct_within_10000m": 42.5,
+   "pct_within_25000m": 82.4,
+   "median_km": 12.2
+  },
+  "ferry_terminal_any": {
+   "pct_within_1000m": 3.7,
+   "pct_within_2000m": 6.9,
+   "pct_within_5000m": 16.8,
+   "pct_within_10000m": 28.1,
+   "pct_within_25000m": 55.3,
+   "median_km": 22.5
+  },
+  "rail_station": {
+   "pct_within_1000m": 4.0,
+   "pct_within_2000m": 8.9,
+   "pct_within_5000m": 18.9,
+   "pct_within_10000m": 27.3,
+   "pct_within_25000m": 41.4,
+   "median_km": 34.6
+  },
+  "bus_terminal_scheduled_or_osm": {
+   "pct_within_1000m": 23.8,
+   "pct_within_2000m": 41.2,
+   "pct_within_5000m": 70.6,
+   "pct_within_10000m": 91.0,
+   "pct_within_25000m": 98.6,
+   "median_km": 2.7
+  },
+  "any_gateway": {
+   "pct_within_1000m": 26.9,
+   "pct_within_2000m": 44.6,
+   "pct_within_5000m": 74.8,
+   "pct_within_10000m": 93.2,
+   "pct_within_25000m": 100.0
+  },
+  "places_without_current_scheduled_stop_within_800m": {
+   "n": 16933,
+   "pct_within_2000m_of_any_gateway": 34.0,
+   "pct_within_5000m_of_any_gateway": 66.9,
+   "pct_within_10000m_of_any_gateway": 91.0,
+   "pct_within_25000m_of_any_gateway": 100.0
+  }
+ },
+ "size_check": {
+  "places_json_on_disk_bytes": 16697939,
+  "re_serialised_bytes": 16697939,
+  "identical_length": true
+ },
+ "places_json_raw_mb": 16.7,
+ "places_json_gzip6_mb": 2.881,
+ "places_json_added_size": {
+  "tier1_ts_m_ts_calls_ts_we_hub_m_hub": {
+   "raw_added_kb": 1388.0,
+   "gzip6_added_kb": 286.0,
+   "raw_total_mb": 18.12,
+   "gzip6_total_mb": 3.173
+  },
+  "tier1_plus_tw_m": {
+   "raw_added_kb": 1516.0,
+   "gzip6_added_kb": 326.0,
+   "raw_total_mb": 18.25,
+   "gzip6_total_mb": 3.215
+  },
+  "tier1_plus_tw_m_plus_sju_t_sju_b_sju_d": {
+   "raw_added_kb": 2051.0,
+   "gzip6_added_kb": 393.0,
+   "raw_total_mb": 18.8,
+   "gzip6_total_mb": 3.283
+  },
+  "minimal_ts_m_and_ts_calls": {
+   "raw_added_kb": 559.0,
+   "gzip6_added_kb": 132.0
+  },
+  "core3_ts_m_ts_calls_ts_we": {
+   "raw_added_kb": 636.0,
+   "gzip6_added_kb": 135.0
+  }
+ },
+ "binary_core3_columns": {
+  "raw_kb": 171.0,
+  "gzip6_kb": 66.0
+ },
+ "binary_columns_alternative": {
+  "columns": [
+   "ts_m",
+   "ts_calls",
+   "ts_we",
+   "hub_m",
+   "hub",
+   "tw_m",
+   "sju_t",
+   "sju_b",
+   "sju_d"
+  ],
+  "raw_kb": 514.0,
+  "gzip6_kb": 180.0,
+  "n_places": 35118
+ },
+ "binary_columns_gzip_kb_each": {
+  "ts_m": 59.0,
+  "ts_calls": 5.3,
+  "ts_we": 1.5,
+  "hub_m": 63.5,
+  "hub": 2.4,
+  "tw_m": 19.3,
+  "sju_t": 7.2,
+  "sju_b": 1.5,
+  "sju_d": 18.1
+ },
+ "municipalities_json_added": {
+  "fields": 26,
+  "raw_added_kb": 45.8,
+  "gzip6_added_kb": 8.9
+ },
+ "barrios_geojson_added": {
+  "features": 901,
+  "fields": 4,
+  "raw_added_kb": 69.0,
+  "gzip6_added_kb": 14.5
+ },
+ "transport_json_added_for_scheduled_stops": {
+  "fields": "calls_sat, calls_sun, feed",
+  "raw_added_kb": 148.3,
+  "gzip6_added_kb": 3.8
+ },
+ "gateways_json_estimate": {
+  "records": 141,
+  "raw_kb": 29.4,
+  "gzip6_kb": 5.0
+ }
+}

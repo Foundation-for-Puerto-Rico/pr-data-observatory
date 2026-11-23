@@ -1,0 +1,1424 @@
+[
+ {
+  "id": "route_compare.file",
+  "name": "Route analysis: bus routes compared (route_compare.json)",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility",
+   "population"
+  ],
+  "group": "Route analysis",
+  "kind": "table",
+  "plain": "One row for each of 97 bus routes of the ATI and of the municipal systems of the San Juan metro area and eastern Puerto Rico, compared on five measures from their weekday timetables: service, route, peak-hour intersections, connections and nearby residents. It describes the scheduled service, not the service observed on the street.",
+  "definition": "route_compare.json has two tables. routes: one record per operator and route label with a bus trip in the weekday timetable (typical Wednesday) of the ATI or of San Juan, Bayamón, Guaynabo, Caguas, Canóvanas (the metro area: a stop within 250 m of an ATI stop), Fajardo, Humacao, Juncos, San Lorenzo, Patillas or Vieques (the east), with the 30 fields of route_compare.*. operators: the 12 systems, with their name and the end date of their timetable (feed_end). The Tren Urbano is left out (its own track).",
+  "unit": "routes",
+  "value_type": "count",
+  "geography": "Each bus route of the Route analysis (97 routes of 12 systems)",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "Rebuilt when the route analysis is rebuilt (docs/analysis/route-analysis-2026-10/); weekday timetables of 2026-10-19."
+  },
+  "method": "docs/analysis/route-analysis-2026-10/route_compare.py reads site/data (trips.json, transport.json, transit_routes.geojson, population_blocks.json) and four inputs from the road-features analysis, committed beside it: road_features.geojson (OpenStreetMap junctions and footbridges), road_flow.csv (their estimated design-hour volume from FHWA HPMS 2024: AADT x K factor), transit_exposure.csv and transit_runtime.csv (when each route's trips pass them, and its scheduled run times); make_page.py publishes the result as this file and writes the page.",
+  "sources": [
+   "ati_gtfs",
+   "muni_gtfs",
+   "osm",
+   "fhwa_hpms",
+   "census_tiger"
+  ],
+  "how_to_read": "Compare routes within the same kind of timetable. A route with a full timetable (a time at every stop) is measured on its timed path; a timetable-only route (two timed stops) on the operator's line, so its length, speed and crossings are marked with an asterisk on the page.",
+  "caveats": [
+   "Timetables, not observed service: delays and skipped trips are not seen.",
+   "The flow that defines a high-volume intersection is an estimate of the design-hour volume (AADT x K factor: the 30th-busiest hour of the year), not a count and not a typical weekday peak; 48% of the junctions use the observatory's class-median K, which HPMS guidance does not endorse.",
+   "Four timetables had expired on 2026-10-19 (Caguas, Fajardo, Juncos, San Lorenzo) and Canóvanas's ends on 2026-10-31.",
+   "Cataño and Toa Baja publish no GTFS timetable, so their routes are missing."
+  ],
+  "see_also": [
+   "transit.supply_file",
+   "measures.wait_between_departures"
+  ],
+  "where": {
+   "files": [],
+   "view": [
+    {
+     "label": "Knowledge Area: Route analysis",
+     "href": "route-analysis.html"
+    }
+   ]
+  },
+  "added": "2026-10-21"
+ },
+ {
+  "id": "route_compare.operator",
+  "name": "System (operator id)",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility"
+  ],
+  "group": "Route analysis",
+  "kind": "variable",
+  "plain": "The short id of the transit system that runs the route, the same id the observatory's other transit files use.",
+  "definition": "Operator id of the GTFS feed: ati, san_juan, bayamon, guaynabo, caguas, canovanas, fajardo, humacao, juncos, san_lorenzo, patillas, vieques. It is a field of both tables (routes and operators) and joins them.",
+  "unit": "code",
+  "value_type": "code",
+  "geography": "Each bus route of the Route analysis (97 routes of 12 systems)",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "Rebuilt when the route analysis is rebuilt (docs/analysis/route-analysis-2026-10/); weekday timetables of 2026-10-19."
+  },
+  "method": "The id the build gives each feed (transport.py), copied from trips.json.",
+  "sources": [
+   "ati_gtfs",
+   "muni_gtfs"
+  ],
+  "values": {
+   "ati": "Autoridad de Transporte Integrado (AMA buses)",
+   "san_juan": "San Juan",
+   "bayamon": "Bayamón",
+   "guaynabo": "Guaynabo",
+   "caguas": "Caguas",
+   "canovanas": "Canóvanas",
+   "fajardo": "Fajardo",
+   "humacao": "Humacao",
+   "juncos": "Juncos",
+   "san_lorenzo": "San Lorenzo",
+   "patillas": "Patillas",
+   "vieques": "Vieques"
+  },
+  "see_also": [
+   "route_compare.file"
+  ],
+  "where": {
+   "files": [
+    "route_compare.json:operator"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Route analysis, route comparison",
+     "href": "route-analysis.html#compare"
+    }
+   ]
+  },
+  "added": "2026-10-21"
+ },
+ {
+  "id": "route_compare.operator_name",
+  "name": "System name",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility"
+  ],
+  "group": "Route analysis",
+  "kind": "variable",
+  "plain": "The name of the transit system as the page shows it.",
+  "definition": "The display name of the operator (ATI (AMA), San Juan, Bayamón, ...). A field of both tables.",
+  "unit": "name",
+  "value_type": "text",
+  "geography": "Each bus route of the Route analysis (97 routes of 12 systems)",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "Rebuilt when the route analysis is rebuilt (docs/analysis/route-analysis-2026-10/); weekday timetables of 2026-10-19."
+  },
+  "method": "Fixed list in route_compare.py (OPERATORS).",
+  "sources": [
+   "ati_gtfs",
+   "muni_gtfs"
+  ],
+  "see_also": [
+   "route_compare.file"
+  ],
+  "where": {
+   "files": [
+    "route_compare.json:operator_name"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Route analysis, route comparison",
+     "href": "route-analysis.html#compare"
+    }
+   ]
+  },
+  "added": "2026-10-21"
+ },
+ {
+  "id": "route_compare.region",
+  "name": "Region",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility"
+  ],
+  "group": "Route analysis",
+  "kind": "variable",
+  "plain": "Whether the route belongs to the metro area (its system has a stop within 250 m of an ATI stop) or to the east (its system does not meet the ATI network).",
+  "definition": "metro: the ATI, San Juan, Bayamón, Guaynabo, Caguas and Canóvanas; este: Fajardo, Humacao, Juncos, San Lorenzo, Patillas and Vieques.",
+  "unit": "code",
+  "value_type": "code",
+  "geography": "Each bus route of the Route analysis (97 routes of 12 systems)",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "Rebuilt when the route analysis is rebuilt (docs/analysis/route-analysis-2026-10/); weekday timetables of 2026-10-19."
+  },
+  "method": "Set by system in route_compare.py (EAST). The 250 m test was made on the stops of transport.json.",
+  "sources": [
+   "ati_gtfs",
+   "muni_gtfs"
+  ],
+  "values": {
+   "metro": "San Juan metro area (meets the ATI network)",
+   "este": "Eastern Puerto Rico (does not meet the ATI network)"
+  },
+  "see_also": [
+   "route_compare.file"
+  ],
+  "where": {
+   "files": [
+    "route_compare.json:region"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Route analysis, route comparison",
+     "href": "route-analysis.html#compare"
+    }
+   ]
+  },
+  "added": "2026-10-21"
+ },
+ {
+  "id": "route_compare.route",
+  "name": "Route",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility"
+  ],
+  "group": "Route analysis",
+  "kind": "variable",
+  "plain": "The route's label as its timetable gives it (a number for the ATI, a code or a colour for some municipal systems).",
+  "definition": "The GTFS route label (route_short_name, or route_id when it has none), copied from trips.json (field r).",
+  "unit": "label",
+  "value_type": "code",
+  "geography": "Each bus route of the Route analysis (97 routes of 12 systems)",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "Rebuilt when the route analysis is rebuilt (docs/analysis/route-analysis-2026-10/); weekday timetables of 2026-10-19."
+  },
+  "method": "From trips.json.",
+  "sources": [
+   "ati_gtfs",
+   "muni_gtfs"
+  ],
+  "see_also": [
+   "route_compare.file"
+  ],
+  "where": {
+   "files": [
+    "route_compare.json:route"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Route analysis, route comparison",
+     "href": "route-analysis.html#compare"
+    }
+   ]
+  },
+  "added": "2026-10-21"
+ },
+ {
+  "id": "route_compare.name",
+  "name": "Route name",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility"
+  ],
+  "group": "Route analysis",
+  "kind": "variable",
+  "plain": "The route's long name, usually its two ends.",
+  "definition": "route_long_name of the GTFS feed (or the short name, or the label, when it has none), from transit_routes.geojson.",
+  "unit": "name",
+  "value_type": "text",
+  "geography": "Each bus route of the Route analysis (97 routes of 12 systems)",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "Rebuilt when the route analysis is rebuilt (docs/analysis/route-analysis-2026-10/); weekday timetables of 2026-10-19."
+  },
+  "method": "Looked up by operator and route label in transit_routes.geojson.",
+  "sources": [
+   "ati_gtfs",
+   "muni_gtfs"
+  ],
+  "see_also": [
+   "route_compare.file"
+  ],
+  "where": {
+   "files": [
+    "route_compare.json:name"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Route analysis, route comparison",
+     "href": "route-analysis.html#compare"
+    }
+   ]
+  },
+  "added": "2026-10-21"
+ },
+ {
+  "id": "route_compare.timetable_expired",
+  "name": "Expired timetable",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility"
+  ],
+  "group": "Route analysis",
+  "kind": "variable",
+  "plain": "Whether the system's timetable had ended (its end date had passed) on 2026-10-19, so it may not be the service that runs today.",
+  "definition": "true when the operator's feed_end (operators table) is before as_of (2026-10-19). The page computes the flag again from feed_end and the date it is read, so a timetable that ends later is flagged from that day.",
+  "unit": "yes/no",
+  "value_type": "flag",
+  "geography": "Each bus route of the Route analysis (97 routes of 12 systems)",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "Rebuilt when the route analysis is rebuilt (docs/analysis/route-analysis-2026-10/); weekday timetables of 2026-10-19."
+  },
+  "method": "route_compare.py: feed_end < TODAY; route_analysis.js: feed_end < the viewer's date.",
+  "sources": [
+   "ati_gtfs",
+   "muni_gtfs"
+  ],
+  "caveats": [
+   "On 2026-10-19: Caguas, Fajardo, Juncos and San Lorenzo. Canóvanas's timetable ends on 2026-10-31."
+  ],
+  "see_also": [
+   "route_compare.file",
+   "route_compare.feed_end"
+  ],
+  "where": {
+   "files": [
+    "route_compare.json:timetable_expired"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Route analysis, route comparison",
+     "href": "route-analysis.html#compare"
+    }
+   ]
+  },
+  "added": "2026-10-21"
+ },
+ {
+  "id": "route_compare.weekday_trips",
+  "name": "Weekday trips",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility"
+  ],
+  "group": "Route analysis",
+  "kind": "variable",
+  "plain": "How many trips the route makes on a typical weekday, both directions added.",
+  "definition": "Number of bus trips of the operator and route label in trips.json (a typical Wednesday).",
+  "unit": "trips",
+  "value_type": "count",
+  "geography": "Each bus route of the Route analysis (97 routes of 12 systems)",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "Rebuilt when the route analysis is rebuilt (docs/analysis/route-analysis-2026-10/); weekday timetables of 2026-10-19."
+  },
+  "method": "Count of trips.json trips with the route's operator and label and mode bus.",
+  "sources": [
+   "ati_gtfs",
+   "muni_gtfs"
+  ],
+  "see_also": [
+   "route_compare.file"
+  ],
+  "where": {
+   "files": [
+    "route_compare.json:weekday_trips"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Route analysis, route comparison",
+     "href": "route-analysis.html#compare"
+    }
+   ]
+  },
+  "added": "2026-10-21"
+ },
+ {
+  "id": "route_compare.first",
+  "name": "First departure",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility"
+  ],
+  "group": "Route analysis",
+  "kind": "variable",
+  "plain": "The time the first trip of the day leaves its first stop.",
+  "definition": "Earliest scheduled departure from the first stop among the route's weekday trips, as H:MM on a 24-hour clock.",
+  "unit": "time (H:MM, 24-hour)",
+  "value_type": "text",
+  "geography": "Each bus route of the Route analysis (97 routes of 12 systems)",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "Rebuilt when the route analysis is rebuilt (docs/analysis/route-analysis-2026-10/); weekday timetables of 2026-10-19."
+  },
+  "method": "min of the trips' first stop times, written as H:MM.",
+  "sources": [
+   "ati_gtfs",
+   "muni_gtfs"
+  ],
+  "see_also": [
+   "route_compare.file"
+  ],
+  "where": {
+   "files": [
+    "route_compare.json:first"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Route analysis, route comparison",
+     "href": "route-analysis.html#compare"
+    }
+   ]
+  },
+  "added": "2026-10-21"
+ },
+ {
+  "id": "route_compare.last",
+  "name": "Last departure",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility"
+  ],
+  "group": "Route analysis",
+  "kind": "variable",
+  "plain": "The time the last trip of the day leaves its first stop.",
+  "definition": "Latest scheduled departure from the first stop among the route's weekday trips, as H:MM on a 24-hour clock.",
+  "unit": "time (H:MM, 24-hour)",
+  "value_type": "text",
+  "geography": "Each bus route of the Route analysis (97 routes of 12 systems)",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "Rebuilt when the route analysis is rebuilt (docs/analysis/route-analysis-2026-10/); weekday timetables of 2026-10-19."
+  },
+  "method": "max of the trips' first stop times, written as H:MM.",
+  "sources": [
+   "ati_gtfs",
+   "muni_gtfs"
+  ],
+  "see_also": [
+   "route_compare.file"
+  ],
+  "where": {
+   "files": [
+    "route_compare.json:last"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Route analysis, route comparison",
+     "href": "route-analysis.html#compare"
+    }
+   ]
+  },
+  "added": "2026-10-21"
+ },
+ {
+  "id": "route_compare.peak_trips_one_direction",
+  "name": "Morning peak trips, busiest direction",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility"
+  ],
+  "group": "Route analysis",
+  "kind": "variable",
+  "plain": "How many trips leave from 6:00 to 9:00 a.m. on the route's busiest stop pattern (one direction).",
+  "definition": "Largest number, over the route's stop patterns, of trips whose first departure is at or after 6:00 and before 9:00.",
+  "unit": "trips",
+  "value_type": "count",
+  "geography": "Each bus route of the Route analysis (97 routes of 12 systems)",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "Rebuilt when the route analysis is rebuilt (docs/analysis/route-analysis-2026-10/); weekday timetables of 2026-10-19."
+  },
+  "method": "route_compare.py: max of Counter(pattern of trips leaving 6:00-9:00).",
+  "sources": [
+   "ati_gtfs",
+   "muni_gtfs"
+  ],
+  "see_also": [
+   "route_compare.file",
+   "route_compare.peak_headway_min"
+  ],
+  "where": {
+   "files": [
+    "route_compare.json:peak_trips_one_direction"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Route analysis, route comparison",
+     "href": "route-analysis.html#compare"
+    }
+   ]
+  },
+  "added": "2026-10-21"
+ },
+ {
+  "id": "route_compare.peak_headway_min",
+  "name": "Morning peak headway",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility"
+  ],
+  "group": "Route analysis",
+  "kind": "variable",
+  "plain": "Every how many minutes, on average, the route runs from 6:00 to 9:00 a.m. in its busiest direction.",
+  "definition": "180 minutes divided by peak_trips_one_direction, rounded to the minute. Blank when no trip leaves in that period.",
+  "unit": "minutes",
+  "value_type": "level",
+  "geography": "Each bus route of the Route analysis (97 routes of 12 systems)",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "Rebuilt when the route analysis is rebuilt (docs/analysis/route-analysis-2026-10/); weekday timetables of 2026-10-19."
+  },
+  "method": "round(180 / peak_trips_one_direction).",
+  "sources": [
+   "ati_gtfs",
+   "muni_gtfs"
+  ],
+  "how_to_read": "Planners often treat 15 minutes or less as service people can use without a timetable.",
+  "caveats": [
+   "An average over three hours: two trips that leave together still count as two."
+  ],
+  "see_also": [
+   "route_compare.file",
+   "measures.wait_between_departures"
+  ],
+  "where": {
+   "files": [
+    "route_compare.json:peak_headway_min"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Route analysis, route comparison",
+     "href": "route-analysis.html#compare"
+    }
+   ]
+  },
+  "added": "2026-10-21"
+ },
+ {
+  "id": "route_compare.length_km",
+  "name": "Route length",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility"
+  ],
+  "group": "Route analysis",
+  "kind": "variable",
+  "plain": "The length of the route's main stop pattern, in kilometres. For a timetable-only route it is the length of the line the operator draws, which can hold both directions.",
+  "definition": "Metres along the path of the stop pattern with most trips (trips.json paths), in km to one decimal. For a timetable-only route (timepoints_only: Bayamón, Caguas, Juncos and San Lorenzo, and ATI express route 20), the operator's route line in transit_routes.geojson is used instead of the timed path. Its longest part is measured, and it may draw the outbound and return trips as one line (Bayamón BR-1: 32.1 km of line, 16.0 km between its two timed stops).",
+  "unit": "km",
+  "value_type": "level",
+  "geography": "Each bus route of the Route analysis (97 routes of 12 systems)",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "Rebuilt when the route analysis is rebuilt (docs/analysis/route-analysis-2026-10/); weekday timetables of 2026-10-19."
+  },
+  "method": "route_compare.py: path[-1][2] / 1000, or the route line's length for a timetable-only route.",
+  "sources": [
+   "ati_gtfs",
+   "muni_gtfs"
+  ],
+  "caveats": [
+   "Marked with an asterisk on the page for timetable-only routes: it is the line drawn, not one trip."
+  ],
+  "see_also": [
+   "route_compare.file",
+   "route_compare.timepoints_only"
+  ],
+  "where": {
+   "files": [
+    "route_compare.json:length_km"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Route analysis, route comparison",
+     "href": "route-analysis.html#compare"
+    }
+   ]
+  },
+  "added": "2026-10-21"
+ },
+ {
+  "id": "route_compare.speed_kmh",
+  "name": "Scheduled speed",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility"
+  ],
+  "group": "Route analysis",
+  "kind": "variable",
+  "plain": "The average speed the timetable plans for the route's main stop pattern, from its first to its last timed stop.",
+  "definition": "Length of the timed path divided by the median scheduled time from first to last stop of the main pattern's trips, in km/h. Blank for a timetable-only route whose timed path is under half its route line (the timed stretch is not the whole trip).",
+  "unit": "km/h",
+  "value_type": "level",
+  "geography": "Each bus route of the Route analysis (97 routes of 12 systems)",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "Rebuilt when the route analysis is rebuilt (docs/analysis/route-analysis-2026-10/); weekday timetables of 2026-10-19."
+  },
+  "method": "route_compare.py: path_km / (median run / 3600); set blank when timepoints_only and path_km < 0.5 x line length.",
+  "sources": [
+   "ati_gtfs",
+   "muni_gtfs"
+  ],
+  "caveats": [
+   "Scheduled, not observed.",
+   "A timetable with long waits at stops gives a low speed.",
+   "Marked with an asterisk on the page for timetable-only routes: the speed of the stretch between their two timed stops."
+  ],
+  "see_also": [
+   "route_compare.file",
+   "route_compare.timepoints_only"
+  ],
+  "where": {
+   "files": [
+    "route_compare.json:speed_kmh"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Route analysis, route comparison",
+     "href": "route-analysis.html#compare"
+    }
+   ]
+  },
+  "added": "2026-10-21"
+ },
+ {
+  "id": "route_compare.busy_junctions",
+  "name": "High-volume intersections on the path",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility"
+  ],
+  "group": "Route analysis",
+  "kind": "variable",
+  "plain": "How many signalised junctions and roundabouts with an estimated 2,000 or more vehicles an hour in the design hour (one of the busiest hours of the year) lie on the route's path.",
+  "definition": "Signalised junctions and roundabouts (OpenStreetMap, road_features.geojson) within 20 m of the route's paths whose estimated design-hour volume (road_flow.csv: AADT x K factor of the busiest FHWA HPMS road within 30 m; K is the 30th-busiest hour of the year as a percentage of AADT, HPMS Field Manual item 26; for 48% of the junctions the observatory's class-median K) is 2,000 vehicles an hour or more. For a timetable-only route (timepoints_only: Bayamón, Caguas, Juncos and San Lorenzo, and ATI express route 20), the operator's route line in transit_routes.geojson is used instead of the timed path.",
+  "unit": "intersections",
+  "value_type": "count",
+  "geography": "Each bus route of the Route analysis (97 routes of 12 systems)",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "Rebuilt when the route analysis is rebuilt (docs/analysis/route-analysis-2026-10/); weekday timetables of 2026-10-19."
+  },
+  "method": "transit_exposure.csv (busy_junctions_on_path, written by the road-features analysis's transit_exposure.py), or a 20 m buffer of the route line for a timetable-only route.",
+  "sources": [
+   "ati_gtfs",
+   "muni_gtfs",
+   "osm",
+   "fhwa_hpms"
+  ],
+  "caveats": [
+   "The flow is an estimate from annual averages, not a count at the hour.",
+   "20 m can catch a junction the route passes over or under.",
+   "The flow is that of the busiest road at the junction, not necessarily the one the bus uses."
+  ],
+  "see_also": [
+   "route_compare.file",
+   "route_compare.busy_passes_6_9"
+  ],
+  "where": {
+   "files": [
+    "route_compare.json:busy_junctions"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Route analysis, route comparison",
+     "href": "route-analysis.html#compare"
+    }
+   ]
+  },
+  "added": "2026-10-21"
+ },
+ {
+  "id": "route_compare.busy_per_10km",
+  "name": "High-volume intersections per 10 km",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility"
+  ],
+  "group": "Route analysis",
+  "kind": "variable",
+  "plain": "High-volume intersections on the path for every 10 km of route.",
+  "definition": "busy_junctions x 10 / length_km, to one decimal.",
+  "unit": "intersections per 10 km",
+  "value_type": "ratio",
+  "geography": "Each bus route of the Route analysis (97 routes of 12 systems)",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "Rebuilt when the route analysis is rebuilt (docs/analysis/route-analysis-2026-10/); weekday timetables of 2026-10-19."
+  },
+  "method": "route_compare.py.",
+  "sources": [
+   "ati_gtfs",
+   "muni_gtfs",
+   "osm",
+   "fhwa_hpms"
+  ],
+  "see_also": [
+   "route_compare.file"
+  ],
+  "where": {
+   "files": [
+    "route_compare.json:busy_per_10km"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Route analysis, route comparison",
+     "href": "route-analysis.html#compare"
+    }
+   ]
+  },
+  "added": "2026-10-21"
+ },
+ {
+  "id": "route_compare.busy_passes_6_9",
+  "name": "Morning peak crossings of high-volume intersections",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility"
+  ],
+  "group": "Route analysis",
+  "kind": "variable",
+  "plain": "How many times, added over all its trips, the route's buses pass a high-volume intersection from 6:00 to 9:00 a.m.",
+  "definition": "Each weekday trip is placed on its path by its stop times (time between two stops spread by distance), which gives the time it passes each high-volume intersection; the passes between 6:00 and 9:00 are counted. For a timetable-only route it is estimated as the trips leaving 6:00-9:00 times busy_junctions (passes_estimated).",
+  "unit": "crossings",
+  "value_type": "count",
+  "geography": "Each bus route of the Route analysis (97 routes of 12 systems)",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "Rebuilt when the route analysis is rebuilt (docs/analysis/route-analysis-2026-10/); weekday timetables of 2026-10-19."
+  },
+  "method": "transit_exposure.csv (busy_passes_6_9), or route_compare.py's estimate.",
+  "sources": [
+   "ati_gtfs",
+   "muni_gtfs",
+   "osm",
+   "fhwa_hpms"
+  ],
+  "how_to_read": "A measure of expected exposure to congestion, not of delay: the timetables do not say how long a bus waits at a junction.",
+  "caveats": [
+   "Marked with an asterisk on the page when estimated."
+  ],
+  "see_also": [
+   "route_compare.file",
+   "route_compare.busy_passes_16_19",
+   "route_compare.passes_estimated"
+  ],
+  "where": {
+   "files": [
+    "route_compare.json:busy_passes_6_9"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Route analysis, route comparison",
+     "href": "route-analysis.html#compare"
+    }
+   ]
+  },
+  "added": "2026-10-21"
+ },
+ {
+  "id": "route_compare.busy_passes_16_19",
+  "name": "Afternoon peak crossings of high-volume intersections",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility"
+  ],
+  "group": "Route analysis",
+  "kind": "variable",
+  "plain": "How many times, added over all its trips, the route's buses pass a high-volume intersection from 4:00 to 7:00 p.m.",
+  "definition": "As busy_passes_6_9, for the passes between 16:00 and 19:00 (trips leaving 16:00-19:00 for a timetable-only route).",
+  "unit": "crossings",
+  "value_type": "count",
+  "geography": "Each bus route of the Route analysis (97 routes of 12 systems)",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "Rebuilt when the route analysis is rebuilt (docs/analysis/route-analysis-2026-10/); weekday timetables of 2026-10-19."
+  },
+  "method": "transit_exposure.csv (busy_passes_16_19), or route_compare.py's estimate.",
+  "sources": [
+   "ati_gtfs",
+   "muni_gtfs",
+   "osm",
+   "fhwa_hpms"
+  ],
+  "caveats": [
+   "Marked with an asterisk on the page when estimated."
+  ],
+  "see_also": [
+   "route_compare.file",
+   "route_compare.busy_passes_6_9",
+   "route_compare.passes_estimated"
+  ],
+  "where": {
+   "files": [
+    "route_compare.json:busy_passes_16_19"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Route analysis, route comparison",
+     "href": "route-analysis.html#compare"
+    }
+   ]
+  },
+  "added": "2026-10-21"
+ },
+ {
+  "id": "route_compare.passes_estimated",
+  "name": "Crossings estimated",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility"
+  ],
+  "group": "Route analysis",
+  "kind": "variable",
+  "plain": "Whether the crossings are estimated from the number of trips, because the timetable gives times at only two stops.",
+  "definition": "true for a timetable-only route with a route line: busy_passes_6_9 and busy_passes_16_19 are trips leaving in the period times busy_junctions.",
+  "unit": "yes/no",
+  "value_type": "flag",
+  "geography": "Each bus route of the Route analysis (97 routes of 12 systems)",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "Rebuilt when the route analysis is rebuilt (docs/analysis/route-analysis-2026-10/); weekday timetables of 2026-10-19."
+  },
+  "method": "route_compare.py.",
+  "sources": [
+   "ati_gtfs",
+   "muni_gtfs"
+  ],
+  "see_also": [
+   "route_compare.file",
+   "route_compare.timepoints_only"
+  ],
+  "where": {
+   "files": [
+    "route_compare.json:passes_estimated"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Route analysis, route comparison",
+     "href": "route-analysis.html#compare"
+    }
+   ]
+  },
+  "added": "2026-10-21"
+ },
+ {
+  "id": "route_compare.timepoints_only",
+  "name": "Timetable only (two timed stops)",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility"
+  ],
+  "group": "Route analysis",
+  "kind": "variable",
+  "plain": "Whether the route's timetable gives a time only at the first and the last stop of each trip.",
+  "definition": "true when the main stop pattern of trips.json has two stops or fewer: every route of Bayamón, Caguas, Juncos and San Lorenzo, and ATI express route 20 (two stops). Their length, speed and crossings come from the operator's route line.",
+  "unit": "yes/no",
+  "value_type": "flag",
+  "geography": "Each bus route of the Route analysis (97 routes of 12 systems)",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "Rebuilt when the route analysis is rebuilt (docs/analysis/route-analysis-2026-10/); weekday timetables of 2026-10-19."
+  },
+  "method": "route_compare.py: len(path_stops[main pattern]) <= 2.",
+  "sources": [
+   "ati_gtfs",
+   "muni_gtfs"
+  ],
+  "caveats": [
+   "On the page, the length, speed and crossings of these routes carry an asterisk."
+  ],
+  "see_also": [
+   "route_compare.file",
+   "route_compare.length_km",
+   "route_compare.speed_kmh",
+   "route_compare.express_two_stops"
+  ],
+  "where": {
+   "files": [
+    "route_compare.json:timepoints_only"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Route analysis, route comparison",
+     "href": "route-analysis.html#compare"
+    }
+   ]
+  },
+  "added": "2026-10-21"
+ },
+ {
+  "id": "route_compare.express_two_stops",
+  "name": "Express with two stops",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility"
+  ],
+  "group": "Route analysis",
+  "kind": "variable",
+  "plain": "Whether the route is an express with only two stops whose timed path covers the whole trip, so its speed is kept.",
+  "definition": "true for a timetable-only route whose speed was kept (timed path at least half its route line): ATI 20, Bayamón BT-2 and BT-3, and the Caguas, Juncos and San Lorenzo routes whose two timed stops are the two ends.",
+  "unit": "yes/no",
+  "value_type": "flag",
+  "geography": "Each bus route of the Route analysis (97 routes of 12 systems)",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "Rebuilt when the route analysis is rebuilt (docs/analysis/route-analysis-2026-10/); weekday timetables of 2026-10-19."
+  },
+  "method": "route_compare.py: timepoints_only and speed is not blank.",
+  "sources": [
+   "ati_gtfs",
+   "muni_gtfs"
+  ],
+  "caveats": [
+   "The name is the script's: besides ATI 20, the routes it marks are timetable-only routes timed at both ends, not express services."
+  ],
+  "see_also": [
+   "route_compare.file",
+   "route_compare.timepoints_only"
+  ],
+  "where": {
+   "files": [
+    "route_compare.json:express_two_stops"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Route analysis, route comparison",
+     "href": "route-analysis.html#compare"
+    }
+   ]
+  },
+  "added": "2026-10-21"
+ },
+ {
+  "id": "route_compare.minutes_peak",
+  "name": "Scheduled run time, morning peak",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility"
+  ],
+  "group": "Route analysis",
+  "kind": "variable",
+  "plain": "The median time the timetable gives the main stop pattern, first to last stop, for trips leaving from 6:00 to 9:00 a.m.",
+  "definition": "Median scheduled time from first to last stop of the main pattern's trips starting 6:00-9:00, in minutes to one decimal. Blank when none.",
+  "unit": "minutes",
+  "value_type": "level",
+  "geography": "Each bus route of the Route analysis (97 routes of 12 systems)",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "Rebuilt when the route analysis is rebuilt (docs/analysis/route-analysis-2026-10/); weekday timetables of 2026-10-19."
+  },
+  "method": "transit_runtime.csv (from the road-features analysis's transit_exposure.py), the row of the route's main pattern.",
+  "sources": [
+   "ati_gtfs",
+   "muni_gtfs"
+  ],
+  "see_also": [
+   "route_compare.file",
+   "route_compare.peak_extra_pct"
+  ],
+  "where": {
+   "files": [
+    "route_compare.json:minutes_peak"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Route analysis, route comparison",
+     "href": "route-analysis.html#compare"
+    }
+   ]
+  },
+  "added": "2026-10-21"
+ },
+ {
+  "id": "route_compare.minutes_midday",
+  "name": "Scheduled run time, midday",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility"
+  ],
+  "group": "Route analysis",
+  "kind": "variable",
+  "plain": "The median time the timetable gives the main stop pattern, first to last stop, for trips leaving from 10:00 a.m. to 2:00 p.m.",
+  "definition": "Median scheduled time from first to last stop of the main pattern's trips starting 10:00-14:00, in minutes to one decimal. Blank when none.",
+  "unit": "minutes",
+  "value_type": "level",
+  "geography": "Each bus route of the Route analysis (97 routes of 12 systems)",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "Rebuilt when the route analysis is rebuilt (docs/analysis/route-analysis-2026-10/); weekday timetables of 2026-10-19."
+  },
+  "method": "transit_runtime.csv (from the road-features analysis's transit_exposure.py).",
+  "sources": [
+   "ati_gtfs",
+   "muni_gtfs"
+  ],
+  "see_also": [
+   "route_compare.file",
+   "route_compare.peak_extra_pct"
+  ],
+  "where": {
+   "files": [
+    "route_compare.json:minutes_midday"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Route analysis, route comparison",
+     "href": "route-analysis.html#compare"
+    }
+   ]
+  },
+  "added": "2026-10-21"
+ },
+ {
+  "id": "route_compare.peak_extra_pct",
+  "name": "Extra scheduled time at the morning peak",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility"
+  ],
+  "group": "Route analysis",
+  "kind": "variable",
+  "plain": "How much longer (or shorter, when negative) the timetable makes the trip at the morning peak than at midday.",
+  "definition": "(minutes_peak - minutes_midday) / minutes_midday x 100, to one decimal.",
+  "unit": "% of the midday time",
+  "value_type": "rate",
+  "geography": "Each bus route of the Route analysis (97 routes of 12 systems)",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "Rebuilt when the route analysis is rebuilt (docs/analysis/route-analysis-2026-10/); weekday timetables of 2026-10-19."
+  },
+  "method": "transit_runtime.csv (from the road-features analysis's transit_exposure.py).",
+  "sources": [
+   "ati_gtfs",
+   "muni_gtfs"
+  ],
+  "how_to_read": "Zero means the operator plans no extra time for rush hour; it does not mean there is no congestion.",
+  "caveats": [
+   "The operator's own plan, not observed times."
+  ],
+  "see_also": [
+   "route_compare.file"
+  ],
+  "where": {
+   "files": [
+    "route_compare.json:peak_extra_pct"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Route analysis, route comparison",
+     "href": "route-analysis.html#compare"
+    }
+   ]
+  },
+  "added": "2026-10-21"
+ },
+ {
+  "id": "route_compare.reaches_tren_urbano",
+  "name": "Reaches the Tren Urbano",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility"
+  ],
+  "group": "Route analysis",
+  "kind": "variable",
+  "plain": "Whether one of the route's stops is within 300 m of a Tren Urbano station.",
+  "definition": "true when any stop of any of the route's patterns (or listed for the route in transport.json) is within 300 m in a straight line of a rail station.",
+  "unit": "yes/no",
+  "value_type": "flag",
+  "geography": "Each bus route of the Route analysis (97 routes of 12 systems)",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "Rebuilt when the route analysis is rebuilt (docs/analysis/route-analysis-2026-10/); weekday timetables of 2026-10-19."
+  },
+  "method": "route_compare.py, on the points of transport.json.",
+  "sources": [
+   "ati_gtfs",
+   "muni_gtfs"
+  ],
+  "caveats": [
+   "Straight-line distance, not a walk."
+  ],
+  "see_also": [
+   "route_compare.file"
+  ],
+  "where": {
+   "files": [
+    "route_compare.json:reaches_tren_urbano"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Route analysis, route comparison",
+     "href": "route-analysis.html#compare"
+    }
+   ]
+  },
+  "added": "2026-10-21"
+ },
+ {
+  "id": "route_compare.other_operators",
+  "name": "Other systems nearby",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility"
+  ],
+  "group": "Route analysis",
+  "kind": "variable",
+  "plain": "How many other transit systems have a stop within 250 m of one of the route's stops.",
+  "definition": "Number of distinct operators, other than the route's own, with a transit stop, bus stop, bus station or ferry terminal within 250 m in a straight line of one of the route's stops (transport.json).",
+  "unit": "systems",
+  "value_type": "count",
+  "geography": "Each bus route of the Route analysis (97 routes of 12 systems)",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "Rebuilt when the route analysis is rebuilt (docs/analysis/route-analysis-2026-10/); weekday timetables of 2026-10-19."
+  },
+  "method": "route_compare.py.",
+  "sources": [
+   "ati_gtfs",
+   "muni_gtfs",
+   "osm"
+  ],
+  "see_also": [
+   "route_compare.file",
+   "route_compare.other_operator_names"
+  ],
+  "where": {
+   "files": [
+    "route_compare.json:other_operators"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Route analysis, route comparison",
+     "href": "route-analysis.html#compare"
+    }
+   ]
+  },
+  "added": "2026-10-21"
+ },
+ {
+  "id": "route_compare.other_operator_names",
+  "name": "Names of the other systems nearby",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility"
+  ],
+  "group": "Route analysis",
+  "kind": "variable",
+  "plain": "The names of the other systems with a stop within 250 m of the route's stops.",
+  "definition": "The operator names, as transport.json gives them, of the systems counted in other_operators, separated by semicolons.",
+  "unit": "names",
+  "value_type": "text",
+  "geography": "Each bus route of the Route analysis (97 routes of 12 systems)",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "Rebuilt when the route analysis is rebuilt (docs/analysis/route-analysis-2026-10/); weekday timetables of 2026-10-19."
+  },
+  "method": "route_compare.py.",
+  "sources": [
+   "ati_gtfs",
+   "muni_gtfs",
+   "osm"
+  ],
+  "see_also": [
+   "route_compare.file"
+  ],
+  "where": {
+   "files": [
+    "route_compare.json:other_operator_names"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Route analysis, route comparison",
+     "href": "route-analysis.html#compare"
+    }
+   ]
+  },
+  "added": "2026-10-21"
+ },
+ {
+  "id": "route_compare.stops",
+  "name": "Stops",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility"
+  ],
+  "group": "Route analysis",
+  "kind": "variable",
+  "plain": "How many distinct stops the route uses.",
+  "definition": "Distinct stop ids of every stop pattern of the route in trips.json, plus the stops transport.json lists for the route (so a timetable-only route counts all its stops, not only the two timed ones).",
+  "unit": "stops",
+  "value_type": "count",
+  "geography": "Each bus route of the Route analysis (97 routes of 12 systems)",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "Rebuilt when the route analysis is rebuilt (docs/analysis/route-analysis-2026-10/); weekday timetables of 2026-10-19."
+  },
+  "method": "route_compare.py.",
+  "sources": [
+   "ati_gtfs",
+   "muni_gtfs"
+  ],
+  "see_also": [
+   "route_compare.file"
+  ],
+  "where": {
+   "files": [
+    "route_compare.json:stops"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Route analysis, route comparison",
+     "href": "route-analysis.html#compare"
+    }
+   ]
+  },
+  "added": "2026-10-21"
+ },
+ {
+  "id": "route_compare.residents_400m",
+  "name": "Residents within 400 m of a stop",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility",
+   "population"
+  ],
+  "group": "Route analysis",
+  "kind": "variable",
+  "plain": "How many people (2020 Census) live within 400 m of one of the route's stops, each person counted once for the route.",
+  "definition": "Sum of the 2020 Census population of the blocks (population_blocks.json) whose point lies within 400 m in a straight line of any of the route's stops; each block is counted once per route.",
+  "unit": "people (2020 Census)",
+  "value_type": "count",
+  "geography": "Each bus route of the Route analysis (97 routes of 12 systems)",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "Rebuilt when the route analysis is rebuilt (docs/analysis/route-analysis-2026-10/); weekday timetables of 2026-10-19."
+  },
+  "method": "route_compare.py, on population_blocks.json.",
+  "sources": [
+   "census_tiger",
+   "ati_gtfs",
+   "muni_gtfs",
+   "osm"
+  ],
+  "caveats": [
+   "Straight-line distance, not a walk.",
+   "Block population is noise-injected by the Census Bureau.",
+   "Two routes that share stops count the same residents: the figures do not add up across routes."
+  ],
+  "see_also": [
+   "route_compare.file"
+  ],
+  "where": {
+   "files": [
+    "route_compare.json:residents_400m"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Route analysis, route comparison",
+     "href": "route-analysis.html#compare"
+    }
+   ]
+  },
+  "added": "2026-10-21"
+ },
+ {
+  "id": "route_compare.footbridges_30m",
+  "name": "Pedestrian bridges near the path",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility"
+  ],
+  "group": "Route analysis",
+  "kind": "variable",
+  "plain": "How many pedestrian bridges (OpenStreetMap) lie within 30 m of the route's path.",
+  "definition": "Footbridges of road_features.geojson (ways for people tagged bridge, joined into one bridge when they share a node; the point is the middle of the line) within 30 m of any of the route's paths. For a timetable-only route (timepoints_only: Bayamón, Caguas, Juncos and San Lorenzo, and ATI express route 20), the operator's route line in transit_routes.geojson is used instead of the timed path.",
+  "unit": "bridges",
+  "value_type": "count",
+  "geography": "Each bus route of the Route analysis (97 routes of 12 systems)",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "Rebuilt when the route analysis is rebuilt (docs/analysis/route-analysis-2026-10/); weekday timetables of 2026-10-19."
+  },
+  "method": "route_compare.py.",
+  "sources": [
+   "osm",
+   "ati_gtfs",
+   "muni_gtfs"
+  ],
+  "caveats": [
+   "Volunteer mapping: a bridge nobody drew is not counted."
+  ],
+  "see_also": [
+   "route_compare.file"
+  ],
+  "where": {
+   "files": [
+    "route_compare.json:footbridges_30m"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Route analysis, route comparison",
+     "href": "route-analysis.html#compare"
+    }
+   ]
+  },
+  "added": "2026-10-21"
+ },
+ {
+  "id": "route_compare.km_to_ati",
+  "name": "Distance to the ATI network",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility"
+  ],
+  "group": "Route analysis",
+  "kind": "variable",
+  "plain": "The straight-line distance from the route's nearest stop to the nearest ATI stop, in kilometres (0 for ATI routes).",
+  "definition": "Minimum, over the route's stops, of the straight-line distance to the nearest ATI transit stop, in km to one decimal.",
+  "unit": "km",
+  "value_type": "level",
+  "geography": "Each bus route of the Route analysis (97 routes of 12 systems)",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "Rebuilt when the route analysis is rebuilt (docs/analysis/route-analysis-2026-10/); weekday timetables of 2026-10-19."
+  },
+  "method": "route_compare.py.",
+  "sources": [
+   "ati_gtfs",
+   "muni_gtfs",
+   "osm"
+  ],
+  "see_also": [
+   "route_compare.file"
+  ],
+  "where": {
+   "files": [
+    "route_compare.json:km_to_ati"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Route analysis, route comparison",
+     "href": "route-analysis.html#compare"
+    }
+   ]
+  },
+  "added": "2026-10-21"
+ },
+ {
+  "id": "route_compare.feed_end",
+  "name": "Timetable end date",
+  "domain": "infrastructure.mobility",
+  "domains": [
+   "infrastructure.mobility"
+  ],
+  "group": "Route analysis",
+  "kind": "variable",
+  "plain": "The last day the system's published timetable covers.",
+  "definition": "The end date of the operator's GTFS feed (its calendar's last service day), as transport.json gives it. Field of the operators table.",
+  "unit": "date (YYYY-MM-DD)",
+  "value_type": "date",
+  "geography": "Each bus route of the Route analysis (97 routes of 12 systems)",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2026,
+   "last": 2026,
+   "frequency": "Rebuilt when the route analysis is rebuilt (docs/analysis/route-analysis-2026-10/); weekday timetables of 2026-10-19."
+  },
+  "method": "route_compare.py: feed_end of the operator's stops in transport.json.",
+  "sources": [
+   "ati_gtfs",
+   "muni_gtfs"
+  ],
+  "see_also": [
+   "route_compare.file",
+   "route_compare.timetable_expired"
+  ],
+  "where": {
+   "files": [
+    "route_compare.json:feed_end"
+   ],
+   "view": [
+    {
+     "label": "Knowledge Area: Route analysis, route comparison",
+     "href": "route-analysis.html#compare"
+    }
+   ]
+  },
+  "added": "2026-10-21"
+ }
+]

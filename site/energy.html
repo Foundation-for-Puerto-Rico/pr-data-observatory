@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Knowledge Area · Energy in Puerto Rico</title>
+<meta name="description" content="Where Puerto Rico's electricity comes from, how much of it is renewable, the rooftop solar and batteries of homes and businesses by municipio, reliability, price and the grid's exposure to floods, from LUMA's filings with the Energy Bureau, EIA and FEMA.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="icon" href="img/fpr-mark.png">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0&icon_names=account_balance,arrow_downward,arrow_upward,battery_charging_full,bolt,cable,chat_bubble,check,close,commute,delete,diversity_3,download,eco,flood,grid_on,history,home_work,hourglass_bottom,info,lightbulb,location_city,location_on,map,menu_book,open_in_new,payments,price_change,remove,rocket_launch,route,scatter_plot,school,send,show_chart,signal_cellular_alt_2_bar,signal_cellular_off,solar_power,table_view,thermostat,view_in_ar,warning,water,water_drop,wifi,woman,work&display=block">
+<link rel="stylesheet" href="css/twin.css?v=63">
+<link rel="stylesheet" href="css/housing.css?v=21">
+<link rel="stylesheet" href="css/public_money.css?v=1">
+<link rel="stylesheet" href="css/broadband.css?v=1">
+<link rel="stylesheet" href="css/energy.css?v=1">
+<link rel="stylesheet" href="css/chat.css?v=4">
+<script src="js/i18n.js?v=62" data-page="energy"></script>
+</head>
+<body class="research">
+<a class="skip" href="#now">Skip to the content</a>
+<header class="topbar">
+  <a class="logo" href="index.html" title="PR Data Observatory home"><img src="img/fpr-logo.png" alt="Foundation for Puerto Rico. PR Data Observatory home"></a>
+  <div class="brand"><b>Knowledge Area · Energy in Puerto Rico</b><span>Plants, rooftop solar, batteries, reliability and price</span></div>
+  <div class="spacer"></div>
+  <nav class="views" aria-label="Views">
+    <a class="btn" href="index.html#l=powerlines,plants"><span class="ms-icon" aria-hidden="true">map</span><span class="lbl">Map</span></a>
+    <a class="btn" href="3d.html" title="Immersive 3D + time view"><span class="ms-icon" aria-hidden="true">view_in_ar</span><span class="lbl">3D + Time</span></a>
+    <a class="btn" href="knowledge.html" aria-current="page" title="Knowledge: FPR studies, analyses and tools"><span class="ms-icon" aria-hidden="true">lightbulb</span><span class="lbl">Knowledge</span></a>
+    <a class="btn" href="dictionary.html" title="Data dictionary: meanings, sources, licenses, how to cite"><span class="ms-icon" aria-hidden="true">menu_book</span><span class="lbl">Dictionary</span></a>
+    <a class="btn" href="learn.html" title="Learn: short lessons about maps and spatial analysis"><span class="ms-icon" aria-hidden="true">school</span><span class="lbl">Learn</span></a>
+  </nav>
+</header>
+
+<nav class="toc" id="toc" aria-label="On this page">
+  <span class="ka-tabs" role="group" aria-label="Knowledge Area" data-ka="energy"></span><span class="ka-sep" aria-hidden="true"></span>
+  <a href="#now">Now</a><a href="#mix">Sources</a><a href="#rooftop">Rooftop solar</a><a href="#municipios">Municipios</a><a href="#reliability">Reliability</a><a href="#price">Price</a><a href="#hazards">Floods</a><a href="#method">Method</a><a href="#sources">Data sources</a>
+</nav>
+
+<main class="page">
+  <div class="note caution review-note" role="note" data-ka-note></div>
+
+  <section class="hero" id="now">
+    <div class="eyebrow">Knowledge Area · Energy</div>
+    <h1>Energy in Puerto Rico</h1>
+    <p class="lede">In 2025, 92.5% of Puerto Rico's electricity came from oil, natural gas and coal. Renewables were 7.5% of production, and more than half of that was rooftop solar sent to the grid (4.8%); the renewable plants alone gave 2.8%. Rooftop systems now add up to 1,622 MW, 4.1 times the 398 MW of renewable power plants, and homes and businesses have 189,459 batteries.</p>
+    <div id="enNow" aria-live="polite"></div>
+    <div class="note caution"><b>Read with care.</b> Rooftop solar that a home uses itself is not counted as production anywhere: the production figures include only what rooftop systems send to the grid. Capacity (MW) is what equipment is built to produce, not what it produces.</div>
+  </section>
+
+  <section class="block" id="mix">
+    <h2><span class="ms-icon" aria-hidden="true">show_chart</span>1 · Where the electricity comes from</h2>
+    <p class="pm-p">The share of each source in the electricity produced every full year since 2010, as LUMA reports it to the Energy Bureau: the utility's and its contractors' plants, plus what rooftop systems send to the grid. Hover over or tap a bar for the figures.</p>
+    <div class="card" id="enMix" data-t="skip"></div>
+    <p class="pm-small" id="enMixNote" data-t="skip"></p>
+  </section>
+
+  <section class="block" id="rooftop">
+    <h2><span class="ms-icon" aria-hidden="true">solar_power</span>2 · Rooftop solar and batteries</h2>
+    <p class="pm-p">The capacity of the solar systems registered for net metering, every month since they began, against the renewable power plants in EIA's inventory. Most of these systems now come with a battery.</p>
+    <div class="card" id="enRooftop" data-t="skip"></div>
+    <p class="pm-small" id="enRooftopNote" data-t="skip"></p>
+  </section>
+
+  <section class="block" id="municipios">
+    <h2><span class="ms-icon" aria-hidden="true">location_city</span>3 · By municipio and district</h2>
+    <p class="pm-p">Batteries, electricity use and smart meters by municipio, from LUMA's monthly metrics. Batteries per 100 housing units use the 2020 Census; electricity sales cover homes, businesses, industry and government, so a municipio with large plants or malls uses more per resident. Smart meters are being installed: LUMA reports no share yet where the column is empty.</p>
+    <div class="card pm-tablebox bb-tablebox" id="enMunis" data-t="skip"></div>
+    <h3 class="bb-h3">Rooftop solar by LUMA district</h3>
+    <p class="pm-p">LUMA reports rooftop solar by its 34 commercial districts, not by municipio.</p>
+    <div class="card pm-tablebox bb-tablebox" id="enDistricts" data-t="skip"></div>
+  </section>
+
+  <section class="block" id="reliability">
+    <h2><span class="ms-icon" aria-hidden="true">bolt</span>4 · Reliability</h2>
+    <p class="pm-p">SAIDI is the average number of minutes each customer is without power. LUMA's monthly figure counts outages of the transmission and distribution system it runs; outages caused by a lack of generation are not in it.</p>
+    <div class="card" id="enSaidi" data-t="skip"></div>
+    <p class="pm-small" id="enSaidiNote" data-t="skip"></p>
+    <div class="card pm-tablebox bb-tablebox" id="enSaidiD" data-t="skip"></div>
+  </section>
+
+  <section class="block" id="price">
+    <h2><span class="ms-icon" aria-hidden="true">payments</span>5 · Price</h2>
+    <p class="pm-p">The average residential price: what residential customers paid in the month divided by the electricity they bought, from what utilities report to EIA. It includes the fuel charge, which moves with oil and gas prices.</p>
+    <div class="card" id="enPrice" data-t="skip"></div>
+  </section>
+
+  <section class="block" id="hazards">
+    <h2><span class="ms-icon" aria-hidden="true">flood</span>6 · The grid and floods</h2>
+    <p class="pm-p">The transmission lines of the map (OpenStreetMap, simplified) and the power plants (EIA) inside FEMA's 1% annual chance flood area and its coastal high-hazard V zones. The 38 kV network is about half mapped (1,052 km), so its figures are a lower bound.</p>
+    <div class="card pm-tablebox bb-tablebox" id="enHazLines" data-t="skip"></div>
+    <div id="enHazPlants" data-t="skip"></div>
+    <p class="pm-small"><a href="index.html#l=powerlines,plants,flood">See the lines, plants and flood areas on the map</a></p>
+  </section>
+
+  <section class="block" id="method">
+    <h2><span class="ms-icon" aria-hidden="true">info</span>Method</h2>
+    <div class="note"><b>Production by source.</b> LUMA's monthly net production of the utility's and its contractors' plants by fuel, plus the energy rooftop systems export to the grid. Solar, wind and landfill gas are read from the file's contracted renewable production; the file's second set of columns for these fuels holds other quantities before October 2017. A year is shown when it has its twelve months.</div>
+    <div class="note"><b>Rooftop solar and batteries.</b> The capacity and the customers registered for net metering in LUMA's distributed generation filing; batteries by municipio from its monthly metrics, where LUMA splits San Juan into San Juan, Río Piedras and Santurce, added back together here.</div>
+    <div class="note"><b>Floods.</b> The lines and plant points are intersected with the observatory's FEMA flood layer (zones in the 1% annual chance Special Flood Hazard Area; V zones are its coastal high-hazard part). Sea level rise and landslides are not counted yet.</div>
+    <div class="note"><b>What the page does not say.</b> It does not judge the utility, the operators or the policy, and it does not name any customer, address or installation. The full method and the code are in docs/energy.md of the project repository; each figure has an entry in the data dictionary.</div>
+  </section>
+
+  <section class="block" id="sources">
+    <h2><span class="ms-icon" aria-hidden="true">menu_book</span>Data sources and licenses</h2>
+    <div class="note"><b>LUMA Energy, filed with the Puerto Rico Energy Bureau.</b> Distributed generation data, Exhibit 2 (case NEPR-MI-2019-0016), monthly from 2010 to June 2026; monthly metrics workbook (case NEPR-MI-2019-0007), monthly from June 2021 to September 2026. Public filings; no license is stated.</div>
+    <div class="note"><b>US Energy Information Administration (EIA).</b> Form EIA-860M (power plants, September 2026), Form EIA-861M (residential revenue and sales) and Form EIA-861 (reliability, 2025). US Government data, public domain.</div>
+    <div class="note"><b>FEMA, OpenStreetMap and the Census Bureau.</b> FEMA's National Flood Hazard Layer; transmission lines © OpenStreetMap contributors (ODbL); 2020 Census residents and housing units.</div>
+    <div class="note"><b>Laws.</b> Act 17-2019 (Puerto Rico Energy Public Policy Act) and Act 1-2025, which removed the 2025 and 2040 renewable targets, kept 100% for 2050 and moved the end of coal to December 31, 2032.</div>
+    <div class="note"><b>Data file.</b> data/energy.json (energy_series.py), rebuilt when LUMA files new reports and EIA publishes a new month.</div>
+    <div class="note"><b>How to cite this page.</b> Foundation for Puerto Rico, Knowledge Area: Energy in Puerto Rico, PR Data Observatory, data to September 2026 (draft). Data: LUMA Energy filings with the Puerto Rico Energy Bureau; US EIA; FEMA; OpenStreetMap contributors.</div>
+  </section>
+</main>
+<script src="js/core/knowledge.js?v=34"></script>
+<script>Core.knowledge.render(); I18N.apply();</script>
+<script src="js/common.js?v=20"></script>
+<script src="js/energy_page.js?v=1"></script>
+<script src="js/chatboot.js?v=60"></script>
+</body>
+</html>

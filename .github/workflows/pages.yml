@@ -1,0 +1,50 @@
+name: Publish site
+
+on:
+  push:
+    branches: [main]
+    paths: ["site/**", "pages-redirect/**", "connector/**", ".github/workflows/pages.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: publish
+  cancel-in-progress: true
+
+jobs:
+  # The site: observatory.foundationpr.org on Azure Static Web Apps (docs/azure.md), published only after the privacy checks pass.
+  azure:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read   # the deploy token is the only credential this job needs
+    steps:
+      - uses: actions/checkout@v4
+      - name: Privacy check (no contact fields in the published data)
+        run: |
+          python3 - <<'PY'
+          import json, sys
+          places = json.load(open("site/data/places.json", encoding="utf-8"))
+          fields = {k for p in places for k in p}
+          banned = fields & {"phone", "email", "socials", "address", "website", "postcode"}
+          if banned:
+              sys.exit(f"places.json publishes contact fields: {sorted(banned)}")
+          print(f"places.json OK: {len(places):,} places, {len(fields)} fields")
+          PY
+      - name: Privacy check (no private home, address-named or care place drawn; values, not only field names)
+        run: python3 places_privacy.py --check
+      # The Claude connector (connector/README.md) runs as the site's managed function at /api/mcp. It reads its own copy
+      # of the data files it needs, deployed with the site, so its answers always match the published site.
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"   # the managed function's runtime (site/staticwebapp.config.json)
+      - name: Bundle the connector's data and check it
+        run: bash connector/bundle_data.sh
+      - uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          action: upload
+          app_location: site
+          api_location: connector
+          skip_app_build: true

@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Knowledge Area · Opportunity Zones 2.0</title>
+<meta name="description" content="The census tracts of Puerto Rico that the US Treasury designated as Opportunity Zones for 2027 to 2036, rural or not, with the tracts that were eligible, the residents in zones by municipio and barrio, and the first round.">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="icon" href="img/fpr-mark.png">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0&icon_names=account_balance,arrow_downward,arrow_upward,bolt,chat_bubble,check,close,commute,delete,diversity_3,download,grid_on,history,home_work,hourglass_bottom,info,lightbulb,location_city,map,menu_book,open_in_new,payments,price_change,remove,rocket_launch,route,savings,scatter_plot,school,send,show_chart,table_view,thermostat,view_in_ar,warning,water,water_drop,wifi,woman,work&display=block">
+<link rel="stylesheet" href="css/twin.css?v=63">
+<link rel="stylesheet" href="css/housing.css?v=21">
+<link rel="stylesheet" href="css/public_money.css?v=1">
+<link rel="stylesheet" href="css/oz.css?v=3">
+<link rel="stylesheet" href="css/chat.css?v=4">
+<script src="js/i18n.js?v=63" data-page="oppzones"></script>
+</head>
+<body class="research">
+<a class="skip" href="#now">Skip to the content</a>
+<header class="topbar">
+  <a class="logo" href="index.html" title="PR Data Observatory home"><img src="img/fpr-logo.png" alt="Foundation for Puerto Rico. PR Data Observatory home"></a>
+  <div class="brand" data-gloss="off"><b>Knowledge Area · Opportunity Zones 2.0</b><span>Where the federal investment incentive applies from 2027</span></div>
+  <div class="spacer"></div>
+  <nav class="views" aria-label="Views">
+    <a class="btn" href="index.html"><span class="ms-icon" aria-hidden="true">map</span><span class="lbl">Map</span></a>
+    <a class="btn" href="3d.html" title="Immersive 3D + time view"><span class="ms-icon" aria-hidden="true">view_in_ar</span><span class="lbl">3D + Time</span></a>
+    <a class="btn" href="knowledge.html" aria-current="page" title="Knowledge: FPR studies, analyses and tools"><span class="ms-icon" aria-hidden="true">lightbulb</span><span class="lbl">Knowledge</span></a>
+    <a class="btn" href="dictionary.html" title="Data dictionary: meanings, sources, licenses, how to cite"><span class="ms-icon" aria-hidden="true">menu_book</span><span class="lbl">Data dictionary</span></a>
+    <a class="btn" href="learn.html" title="Learn: short lessons about maps and spatial analysis"><span class="ms-icon" aria-hidden="true">school</span><span class="lbl">Learn</span></a>
+  </nav>
+</header>
+
+<nav class="toc" id="toc" aria-label="On this page">
+  <span class="ka-tabs" role="group" aria-label="Knowledge Area" data-ka="oppzones"></span><span class="ka-sep" aria-hidden="true"></span>
+  <a href="#intro">Introduction</a><a href="#now">Now</a><a href="#zones">Map</a><a href="#municipios">Municipios</a><a href="#barrios">Barrios</a><a href="#eligibility">Eligibility</a><a href="#rounds">Two rounds</a><a href="#incentive">The incentive</a><a href="#method">Method</a><a href="#sources">Sources</a>
+</nav>
+
+<main class="page">
+  <div class="note caution review-note" role="note" data-ka-note></div>
+
+  <section class="hero" id="now">
+    <div class="eyebrow">Knowledge Area · Economy</div>
+    <h1>Opportunity Zones 2.0 in Puerto Rico</h1>
+    <div class="oz-intro" id="intro">
+      <h2 class="oz-h2">What Opportunity Zones are and why they matter</h2>
+      <p class="pm-p">An Opportunity Zone is a census tract with low incomes or high poverty where federal tax law rewards long-term private investment. A person or company that sells an asset at a profit (a capital gain) can put that money into a Qualified Opportunity Fund, which invests in businesses, housing or buildings in the zones. In exchange, the federal tax on that gain is deferred for up to five years and can be reduced, and the growth of the investment itself is not taxed if it is held ten years or more. Congress created the zones in 2017 and made them permanent in 2025, with a new round every ten years.</p>
+      <p class="pm-p">The incentive exists to bring private capital to places that have trouble attracting it: the IRS describes the zones as designed to spur economic development and job creation in distressed communities. Because the benefit goes to investors who stay for years, it favours long-term projects, such as new or larger businesses, housing, commercial buildings and infrastructure, that can create jobs and services where they are scarce. For municipios, community organizations and entrepreneurs, a project inside a zone can offer investors a tax advantage that a project elsewhere cannot.</p>
+      <p class="pm-p">A designation alone does not bring investment. Treasury's Office of Tax Analysis counts $112 billion invested through Opportunity Funds through 2024, reaching 77% of the zones in the states; more than half of it was in real estate, and more of it went to less distressed areas and to areas that were already growing. In Puerto Rico, where over 90% of census tracts were zones in the first round, only 7% of those zones had received investment by 2024. From 2027 there are fewer zones, 178, and rural zones offer larger benefits, so knowing exactly where they are helps plan projects and bring investors to them.</p>
+    </div>
+    <h2 class="oz-h2">The 2026 designation</h2>
+    <p class="lede">On November 5, 2026, the US Treasury designated 178 census tracts of Puerto Rico as Opportunity Zones for ten years from January 1, 2027: 96 not rural and 82 rural. They were home to 676,727 people, 20.6% of Puerto Rico's residents in the 2020 Census, and each of the 78 municipios has at least one. In the first round, 863 tracts were zones, with 97.5% of the residents of the 2010 Census; those zones end on December 31, 2027.</p>
+    <div id="ozNow" aria-live="polite"></div>
+    <div class="note caution"><b>What a zone is not.</b> It is not a grant: no public money is paid to the zone or to its residents. This page describes the federal designation; it does not judge which tracts were chosen.</div>
+  </section>
+
+  <section class="block" id="zones">
+    <h2><span class="ms-icon" aria-hidden="true">map</span>1 · The zones, tract by tract</h2>
+    <p class="pm-p">Each 2020 census tract is shaded by its status: a zone made entirely of rural area (orange), a zone that is not rural (purple), a tract that was eligible but was not designated (sand) or a tract that was not eligible (light grey). Of the 712 eligible tracts, 243 were rural. Select a tract for its residents, barrios and the figures Treasury used.</p>
+    <div class="card pm-map oz-map" id="ozMap" data-t="skip"></div>
+    <p class="pm-small" id="ozMapNote" data-t="skip"></p>
+    <div class="oz-tract" id="ozTract" aria-live="polite" data-t="skip"></div>
+  </section>
+
+  <section class="block" id="municipios">
+    <h2><span class="ms-icon" aria-hidden="true">table_view</span>2 · By municipio</h2>
+    <p class="pm-p">Every municipio has between 1 and 7 zones: Ponce has 7, and 16 municipios have one. The municipios with the most residents in zones are Ponce (27,555), Juana Díaz (20,657), Vega Alta (19,728). The table is sorted by the residents in zones; select a heading to sort by another column. The first row is Puerto Rico.</p>
+    <div class="card pm-tablebox oz-tablebox" id="ozMunis" data-t="skip"></div>
+  </section>
+
+  <section class="block" id="barrios">
+    <h2><span class="ms-icon" aria-hidden="true">location_city</span>3 · By barrio</h2>
+    <p class="pm-p">A barrio can lie in several census tracts, some in a zone and some not, so part of its residents can live in a zone. The residents are counted by census block, so the barrios add up exactly to the municipios. Pick a municipio to see all its barrios.</p>
+    <div class="oz-pick" id="ozBarrioPick" data-t="skip"></div>
+    <div class="card pm-tablebox oz-tablebox" id="ozBarrios" data-t="skip"></div>
+  </section>
+
+  <section class="block" id="eligibility">
+    <h2><span class="ms-icon" aria-hidden="true">scatter_plot</span>4 · How a tract qualified</h2>
+    <p class="pm-p">A tract was eligible if it was a low-income community under the law as amended in 2025: a median family income of at most 70% of its area's, or a poverty rate of 20% or more with a median family income of at most 125% of its area's. The area is the metropolitan or micropolitan area the tract is in, or Puerto Rico outside them. Treasury used the American Community Survey of 2020-2024. 712 of Puerto Rico's tracts were eligible, with 76.0% of its residents. Puerto Rico's government could nominate a quarter of them, rounded up: 178. It nominated 178 and Treasury designated all of them.</p>
+    <div class="card pm-map" id="ozScatter" data-t="skip"></div>
+    <p class="pm-small" id="ozScatterNote" data-t="skip"></p>
+    <p class="pm-p">The medians of each group, from the figures Treasury published. They describe the tracts; they do not explain why a tract was or was not nominated.</p>
+    <div class="card pm-tablebox oz-tablebox" id="ozGroups" data-t="skip"></div>
+  </section>
+
+  <section class="block" id="rounds">
+    <h2><span class="ms-icon" aria-hidden="true">history</span>5 · The first round and the second</h2>
+    <p class="pm-p">In 2018, a rule for Puerto Rico alone made every low-income tract a zone, so nearly the whole island was one. The 2025 law ended that rule: from 2027, Puerto Rico follows the same limit as the states. The first round's zones stay in effect until December 31, 2027, so during 2027 both sets apply. The two rounds use different census tracts (2010 and 2020), so they are compared by counts and shares, not tract by tract.</p>
+    <div class="card pm-tablebox oz-tablebox" id="ozRounds" data-t="skip"></div>
+  </section>
+
+  <section class="block" id="incentive">
+    <h2><span class="ms-icon" aria-hidden="true">savings</span>6 · What the incentive offers investors</h2>
+    <div class="note"><b>For investments made after December 31, 2026.</b> A taxpayer who invests a capital gain in a Qualified Opportunity Fund pays the federal tax on that gain when the investment is sold, or five years after it was made, whichever comes first. If the investment is held five years, the gain taxed then is 10% smaller (30% smaller for a fund that invests in rural zones). If it is held ten years or more, the growth of the investment itself is not taxed, up to 30 years. A fund must hold at least 90% of its assets in property, stock or partnership interests in zones.</div>
+    <div class="note"><b>Rural zones.</b> A zone is rural when it lies entirely outside any city or town of more than 50,000 inhabitants and the urban areas joined to it; in Puerto Rico, Treasury used the census designated places of more than 50,000 inhabitants as the cities. Besides the larger tax cut, a building bought in a rural zone qualifies when it is improved by half of what it cost, not counting the land, instead of by all of it (IRS Notice 2025-50).</div>
+    <div class="note"><b>What the page does not show.</b> Where Opportunity Fund money has gone: Treasury publishes the investment in zones only in aggregate studies, not by tract. Nor Puerto Rico's own incentives, or how federal tax applies to a resident of Puerto Rico; ask a tax adviser for that.</div>
+  </section>
+
+  <section class="block" id="method">
+    <h2><span class="ms-icon" aria-hidden="true">info</span>Method</h2>
+    <div class="note"><b>The lists.</b> The designated tracts, their rural status and the figures of every tract are Treasury's (Data Transparency files of October 30, 2026), checked against the CDFI Fund's full list of November 5, 2026: Puerto Rico's 178 tracts and their rural status are the same in both. Some announcements gave 97 tracts that are not rural; both lists have 96, for 178 in all.</div>
+    <div class="note"><b>Eligibility.</b> The law's test, applied to Treasury's published poverty rate and median family income, gives exactly Treasury's list of eligible tracts; tracts with no income figure were judged by the poverty test alone. The figures are survey estimates with margins of error, and Treasury's file is the official list.</div>
+    <div class="note"><b>Residents.</b> Residents and housing units are those of the 2020 Census. Each census block is counted whole in its tract and, by its internal point, in its barrio, so tracts, barrios and municipios add up exactly. The first round's residents are those of the 2010 Census in its 2010 tracts.</div>
+    <div class="note"><b>More detail.</b> The method, the checks and the code are in docs/opportunity-zones.md of the project repository; each figure has an entry in the data dictionary (search for 'Opportunity Zones'). The zones are also a layer of the map and of the 3D view, in the group Economy.</div>
+  </section>
+
+  <section class="block" id="sources">
+    <h2><span class="ms-icon" aria-hidden="true">menu_book</span>Sources and licenses</h2>
+    <div class="note"><b>US Department of the Treasury.</b> Office of Tax Policy, Data Transparency for Qualified Opportunity Zones: the 2027 designations and the tracts eligible for nomination, with their methodology; CDFI Fund, the full list of designated zones (2027) and the 2018 list; IRS Revenue Procedure 2026-14. US Government works, no US copyright.</div>
+    <div class="note"><b>Treasury, Office of Tax Analysis.</b> David Coyne and Craig Johnson, Use of the Opportunity Zone Tax Incentive through 2024: An Update, Working Paper 128, June 2026: investment through Opportunity Funds by zone and state, from tax returns (the figures of the introduction).</div>
+    <div class="note"><b>Internal Revenue Service (IRS).</b> Opportunity Zones Frequently Asked Questions: what a zone is and what it is for.</div>
+    <div class="note"><b>The law.</b> 26 U.S.C. 1400Z-1 and 1400Z-2, as amended by section 70421 of Public Law 119-21 (July 4, 2025).</div>
+    <div class="note"><b>US Census Bureau.</b> 2020 Census residents and housing units by block, the barrio and tract outlines, and the 2010 Census residents of the 2010 tracts (TIGERweb). US Government work.</div>
+    <div class="note"><b>Data files.</b> data/opportunity_zones.json and the map layer data/oz_tracts.geojson (opportunity_zones.py), rebuilt when Treasury publishes a new file; data/geo/tracts.geojson for the map.</div>
+    <div class="note"><b>How to cite this page.</b> Foundation for Puerto Rico, Knowledge Area: Opportunity Zones 2.0, PR Data Observatory, designations of November 5, 2026. Data: US Department of the Treasury; US Census Bureau.</div>
+  </section>
+</main>
+<script src="js/core/knowledge.js?v=34"></script>
+<script>Core.knowledge.render(); I18N.apply();</script>
+<script src="js/common.js?v=20"></script>
+<script src="js/oz_page.js?v=2"></script>
+<script src="js/chatboot.js?v=60"></script>
+</body>
+</html>

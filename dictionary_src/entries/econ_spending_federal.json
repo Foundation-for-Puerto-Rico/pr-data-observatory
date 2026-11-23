@@ -1,0 +1,42 @@
+[
+ {
+  "id": "economy.spending_federal",
+  "name": "Federal money in Puerto Rico by function, program and award type",
+  "domain": "public-money",
+  "domains": [
+   "public-money"
+  ],
+  "group": "Public spending (Gasto Público)",
+  "kind": "table",
+  "plain": "What federal agencies committed to spend on work or benefits in Puerto Rico in each federal fiscal year: Social Security and Medicare payments, Medicaid and nutrition grants, education and housing grants, federal contracts and more. Each program is sorted by what it pays for (health, social services, education and so on). It is island-wide: the municipio figures are in the federal awards series of the Analysis tab.",
+  "definition": "spending_federal.json holds, for each federal fiscal year (October to September, named by the year it ends), USAspending.gov's obligations with place of performance Puerto Rico. Each row is one assistance listing (program) and award type (grants, direct payments, loans, other) or, for contracts, one awarding agency, with its function, the confidence of that function and its whole dollars in each year. Programs under $1 million in every year are added into one 'Other programs' row per agency, award type and function. totals is USAspending's own sum per year and award type; the rows add up to it.",
+  "unit": "US dollars (not adjusted for inflation)",
+  "value_type": "level",
+  "geography": "Puerto Rico as a whole (place of performance Puerto Rico)",
+  "coverage": {
+   "timeline": "annual",
+   "first": 2008,
+   "last": 2025,
+   "frequency": "Once a year, after a federal fiscal year counts as final (from 15 November) (federal_awards.py)"
+  },
+  "method": "federal_awards.py asks USAspending.gov's API (spending_by_category) for the obligations with place of performance Puerto Rico in each finished federal fiscal year, once for each award type: assistance by assistance listing, contracts by awarding agency. Each listing takes its function from the function crosswalk (dictionary_src/spending_crosswalk.csv), or else its agency's default function (low confidence); a contract takes its awarding agency's default. Loans are the estimated cost to the government, not the amount lent.",
+  "how_to_read": "Compare the functions of one year, or one function across years. An obligation is a commitment to pay, recorded when the award is made or changed, so a large multi-year grant can show up in a single year.",
+  "cautions": [
+   "Never add these figures to the Commonwealth budget: the budget's federal funds are federal grants here too.",
+   "FEMA Public Assistance and Hazard Mitigation are also in the FEMA disaster funding page, from OpenFEMA; do not add the two.",
+   "The function of each program comes from a crosswalk reviewed on 2026-11-09 (UN COFOG); programs without their own row take their agency's function.",
+   "Direct payments are mostly Social Security and Medicare benefits paid to people, not money the government of Puerto Rico manages.",
+   "Loans are the estimated subsidy cost to the government and can be negative when an earlier estimate is revised.",
+   "Years before 2017 are less complete: agencies reported less to USAspending before the DATA Act (FY2008 grants look especially low)."
+  ],
+  "sources": [
+   "usaspending"
+  ],
+  "added": "2026-11-05",
+  "where": {
+   "files": [
+    "spending_federal.json:*"
+   ]
+  }
+ }
+]
