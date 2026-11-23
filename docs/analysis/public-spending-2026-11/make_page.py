@@ -650,7 +650,7 @@ def build():
         "Foundation for Puerto Rico, Área de conocimiento: Gasto público, Observatorio de Datos de PR, Snapshot 2026-11. Datos: Oficina de Gerencia y Presupuesto y Junta de Planificación, Gobierno de Puerto Rico; USAspending.gov.")}</div>
   </section>
 </main>
-<script src="js/core/knowledge.js?v=34"></script>
+<script src="js/core/knowledge.js?v=35"></script>
 <script>Core.knowledge.render(); I18N.apply();</script>
 <script src="js/common.js?v=20"></script>
 <script src="js/public_spending.js?v=27"></script>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Knowledge Area · Existing route analysis</title>
+<title>Knowledge Area · Public transit route profile: crossings at high-volume intersections</title>
 <meta name="description" content="An exploratory, comparative analysis of the bus routes of the ATI and of the municipal systems of the San Juan metro area and eastern Puerto Rico: service, route, peak-hour intersections, connections and nearby residents.">
 <meta name="theme-color" content="#FFFFFF">
 <!-- Published with the "In review" marker kept, like WCRP: held back from search engines while the marker is on (docs/knowledge-areas.md). -->
@@ -21,7 +21,7 @@
 <a class="skip" href="#about">Skip to the content</a>
 <header class="topbar">
   <a class="logo" href="index.html" title="PR Data Observatory home"><img src="img/fpr-logo.png" alt="Foundation for Puerto Rico. PR Data Observatory home"></a>
-  <div class="brand"><b>Knowledge Area · Route analysis</b><span>Public transit that connects with the metro area</span></div>
+  <div class="brand"><b>Knowledge Area · Transit congestion</b><span>Bus routes of the metro area and the east, one by one</span></div>
   <div class="spacer"></div>
   <nav class="views" aria-label="Views">
     <a class="btn" href="index.html"><span class="ms-icon" aria-hidden="true">map</span><span class="lbl">Map</span></a>
@@ -34,7 +34,7 @@
 
 <nav class="toc" id="toc" aria-label="On this page">
   <span class="ka-tabs" role="group" aria-label="Knowledge Area" data-ka="routes"></span><span class="ka-sep" aria-hidden="true"></span>
-  <a href="#about">Summary</a><a href="#exposure">Exposure to congestion</a><a href="#compare">Route comparison</a><a href="#sources">Sources and licenses</a>
+  <a href="#about">Summary</a><a href="#exposure">Busy intersections</a><a href="#compare">Route comparison</a><a href="#sources">Sources and licenses</a>
 </nav>
 
 <main class="page">
@@ -42,8 +42,8 @@
 
   <section class="hero" id="about">
     <div class="eyebrow">Knowledge Area · Research</div>
-    <h1>Analysis of existing routes: public transit that connects with the metro area</h1>
-    <p class="lede">This exploratory, comparative analysis examines the public transit routes that run in the San Juan metropolitan area and in the municipios of eastern Puerto Rico. Using the official weekday timetables (GTFS), each route is analysed on five dimensions: the level of service, the route, the intersections it travels through at peak hours, the integration with other services and the population near its stops. The results describe the scheduled service, not the performance observed on the street.</p>
+    <h1>Public transit route profile: crossings at high-volume intersections</h1>
+    <p class="lede">This exploratory, comparative analysis examines, one by one, the bus routes that run in the San Juan metropolitan area and in the municipios of eastern Puerto Rico. Using the official weekday timetables (GTFS), each route is analysed on five dimensions: the level of service, the route, the intersections with heavy traffic on its path at peak hours, the integration with other services and the population near its stops. The analysis focuses on crossings at high-volume intersections; the other four dimensions help compare the routes.</p>
     <div class="kpi-row">
       <div class="kpi"><b>74</b><span>bus routes in the metropolitan area: the ATI and 5 municipal systems</span></div>
       <div class="kpi"><b>2,407</b><span>scheduled trips on a weekday on those routes</span></div>
@@ -56,8 +56,8 @@
   </section>
 
   <section class="block" id="exposure">
-    <h2><span class="ms-icon" aria-hidden="true">directions_bus</span>1 · The 12 routes most exposed to congestion at peak hours</h2>
-    <p class="ra-p">A bus loses time at intersections with heavy traffic: here, an estimated 2,000 or more vehicles an hour (note 1). Using each route's weekday timetable, the two charts count those intersections on its path. The Tren Urbano is left out: it does not share the street.</p>
+    <h2><span class="ms-icon" aria-hidden="true">directions_bus</span>1 · The 12 routes that cross busy intersections most often at peak hours</h2>
+    <p class="ra-p">Here an intersection with heavy traffic is one where an estimated 2,000 or more vehicles pass in an hour, in one of the busiest hours of the year (note 1). A bus can lose time there, but this analysis does not measure it: using each route's weekday timetable, the two charts count those intersections on its path. The Tren Urbano is left out: it does not share the street.</p>
     <div class="card ra-chart"><div class="card-head"><h3>How many times do the buses of each route go through those intersections at peak hours?</h3></div>
     <p class="ra-p rc-foot"><b>How to read it:</b> each bar is a route. The number at the end of the bar is the total times the buses of that route go through an intersection with heavy traffic, from 6 to 9 a.m. and from 4 to 7 p.m. For example, a route with 10 trips in those hours, each going through 5 of those intersections, adds up to 50.</p><div id="rcChart"></div></div>
     <p class="ra-p rc-foot"><b>Morning and afternoon.</b> In the afternoon, routes 2 (+20%), 9 (+23%) and 4 (+20%) add up to more than in the morning; in the other 9 routes the difference is under 15%.</p>
@@ -101,10 +101,10 @@
     <div class="note"><b>Timetables.</b> Autoridad de Transporte Integrado (ATI) and the municipal systems of San Juan, Bayamón, Guaynabo, Caguas, Canóvanas, Fajardo, Humacao, Juncos, San Lorenzo, Patillas and Vieques: the GTFS timetables the PR Data Observatory already uses.</div>
     <div class="note"><b>Residents.</b> 2020 Census, population by block (U.S. Census Bureau, US Government work).</div>
     <div class="note"><b>Method.</b> The results and how they were made are in docs/analysis/route-analysis-2026-10/ of the project repository.</div>
-    <div class="note"><b>How to cite this page.</b> Foundation for Puerto Rico, <i>Knowledge Area: Existing route analysis</i>, PR Data Observatory, Snapshot 2026-10 (draft).</div>
+    <div class="note"><b>How to cite this page.</b> Foundation for Puerto Rico, <i>Knowledge Area: Public transit route profile: crossings at high-volume intersections</i>, PR Data Observatory, Snapshot 2026-10 (draft).</div>
   </section>
 </main>
-<script src="js/core/knowledge.js?v=34"></script>
+<script src="js/core/knowledge.js?v=35"></script>
 <script>Core.knowledge.render(); I18N.apply();</script>
 <script src="js/common.js?v=20"></script>
 <script src="js/route_analysis.js?v=7"></script>

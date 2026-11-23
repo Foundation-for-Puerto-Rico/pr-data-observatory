@@ -1,7 +1,7 @@
 {
  "built": "2026-11-23",
  "snapshot": "Snapshot 2026-10",
- "total_bytes": 144966795,
+ "total_bytes": 144966817,
  "limits": {
   "site_bytes": 1048576000,
   "file_bytes": 104857600,
@@ -12,7 +12,7 @@
  "growth_note": "Every harvested dataset stays and new ones are added, so the data folder only grows. Each dataset is its own lazily loaded file. When the total passes the planning line, move the large files to object storage as Parquet or PMTiles and query them in the browser (for example with DuckDB-WASM) while the small summaries stay on the page.",
  "totals": {
   "files": 195,
-  "bytes": 144966795,
+  "bytes": 144966817,
   "records": 8935234,
   "fields": 2504,
   "values": 12896932,
@@ -387,7 +387,7 @@
   {
    "date": "2026-11-23",
    "files": 195,
-   "bytes": 144966795,
+   "bytes": 144966817,
    "records": 8935234,
    "fields": 2504,
    "values": 12896932,
@@ -1116,8 +1116,8 @@
   {
    "file": "catalog.json",
    "title": "Catalog: domains and headline figures, read first",
-   "bytes": 30388,
-   "gzip_bytes": 9126,
+   "bytes": 30410,
+   "gzip_bytes": 9133,
    "loaded_by": [
     {
      "route": "map",
@@ -1144,7 +1144,7 @@
    "vertices": null,
    "first_published": "2026-10-06",
    "last_updated": "2026-11-23",
-   "versions": 262,
+   "versions": 263,
    "documented_by": 1,
    "review": {
     "status": "unstated",
