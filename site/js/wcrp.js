@@ -1,4 +1,4 @@
-/* PR Data Observatory · Knowledge Area · WCRP (wcrp.html). Two maps (2026-10-19, Francis: Social Capital first): 1, the Social Capital map (js/wcrp_social.js), which
+/* PR Data Observatory · Knowledge Area · WCRP (wcrp.html). Two maps (2026-10-19, the project lead: Social Capital first): 1, the Social Capital map (js/wcrp_social.js), which
    loads with the page, and 2, the vulnerability map: the Risk and Vulnerability Indicators by barrio, the original as published (2022) and the observatory's
    updated version with the same method ("Updated 2020–2024" on the page, 'rebuild' in ids, data keys and the address; wcrp_rvi.py), drawn by js/wcrp_vuln.js, which loads with its Spanish and the barrio outlines (barrios.geojson) when its section
    comes near, when one of its explanations opens, or at once for an address that names a view of it (#a=, #v=). This file holds what both maps share: the

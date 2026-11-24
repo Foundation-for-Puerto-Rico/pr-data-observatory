@@ -7,7 +7,7 @@
 //    chart's tooltip shows and a screen reader hears (aria-valuetext); the tooltip closes when the focus leaves;
 //  - the search box of the 2D map and the 3D view shows its long hint ("Search a place or street") only where it fits, the short one ("Search") otherwise;
 //  - a clean console and no Spanish missing.
-// And the three decisions of 2026-10-29 (Francis, from the list "Para decidir" of PR #100; HANDOFF decision 65), at every width given (the fixes above at 360 px and up):
+// And the three decisions of 2026-10-29 (the project lead, from the list "Para decidir" of PR #100; HANDOFF decision 65), at every width given (the fixes above at 360 px and up):
 //  - the top bar up to 860 px: every button and link answers in a 44 x 44 px square around it (elementFromPoint at 25 points of the square, so the squares of
 //    two neighbours never overlap); nothing leaves the screen or the bar; no sideways scroll; on a phone, two rows in 92 px with Ask beside the language switch.
 //    Every page with the top bar, at the width given, and at 360 px with 390;

@@ -40,7 +40,7 @@ The pooled pairs (`POOL` in `site/js/profile_region.js`) were checked on 2026-10
 
 ## The region filter of the Layers tab (2026-11-24, HANDOFF decision 113)
 
-Francis asked to filter by region from the Layers tab, in the Reference group. The 2D map and the 3D view both have a **Region** menu there (under the base map in 2D, first in Reference in 3D): "All of Puerto Rico", then the FPR planning regions and the tourism regions of `regions.json`, each with its number of municipios. No region is defined anywhere else.
+The project lead asked to filter by region from the Layers tab, in the Reference group. The 2D map and the 3D view both have a **Region** menu there (under the base map in 2D, first in Reference in 3D): "All of Puerto Rico", then the FPR planning regions and the tourism regions of `regions.json`, each with its number of municipios. No region is defined anywhere else.
 
 - **What it does:** it outlines each of the region's municipios, lays a white veil (55% opacity) over the other municipios and frames the map on the region. The note under the menu says how many municipios are outlined and links to the regional profile.
 - **What it does not do (the choice of decision 113):** it does not cut the data layers. A layer still draws the whole island (faded outside the region), and every legend, count, ranking, Explore panel and download still covers all of Puerto Rico. Cutting each layer to a region would change what its numbers mean in every panel without saying so; the Region tab and the regional profile already give a region's own figures, built by the rules above. The filter is a way of looking, not a new geography.

@@ -304,7 +304,7 @@ class Held(unittest.TestCase):
         self.assertNotIn("until the Puerto Rico Department of Housing confirms", js)
 
     def test_the_page_is_published_with_its_in_review_marker_and_the_spanish_is_released(self):
-        # Francis, 2026-10-19 (HANDOFF decision 51): the page is published and keeps its "In review" marker; while the marker is on, it is not indexed
+        # The project lead, 2026-10-19 (HANDOFF decision 51): the page is published and keeps its "In review" marker; while the marker is on, it is not indexed
         html = (ROOT / "site" / "wcrp.html").read_text(encoding="utf-8")
         self.assertIn('<meta name="robots" content="noindex, nofollow">', html)
         self.assertEqual(html.count('<div class="note caution review-note" role="note" data-ka-note></div>'), 1, "one In review notice, written by core/knowledge.js")
@@ -333,7 +333,7 @@ class Held(unittest.TestCase):
         for eid in ("wcrp.rvi_overall_orig", "wcrp.rvi_overall_rebuild", "methods.wcrp_rvi"):
             self.assertIn(eid, {e for r in releases for e in r["dictionary_plain"]})
             self.assertNotIn(eid, held["dictionary_plain"])
-        # the program description in Francis's wording; never "oversees" or "supervises"
+        # the program description in the project lead's wording; never "oversees" or "supervises"
         spanish = " ".join(spanish)
         self.assertIn("Foundation for Puerto Rico administra el programa en colaboración con el Departamento de la Vivienda de Puerto Rico (PRDOH)", spanish)
         for text in (html, spanish):
@@ -341,7 +341,7 @@ class Held(unittest.TestCase):
 
 
 class Page(unittest.TestCase):
-    """wcrp.html after the plain-language rework (Francis, 2026-10-19; docs/wcrp.md, "What it is"): the Social Capital map first, the vulnerability map second with
+    """wcrp.html after the plain-language rework (the project lead, 2026-10-19; docs/wcrp.md, "What it is"): the Social Capital map first, the vulnerability map second with
     one legend of the five levels, Original 2022 and Updated 2020–2024 as the only versions to choose, every other explanation in a closed <details>."""
 
     @classmethod
@@ -361,7 +361,7 @@ class Page(unittest.TestCase):
             self.assertRegex(self.html, rf'\sid="{i}"', f"#{i} links to nothing")
 
     def test_the_version_is_a_slider_from_the_original_through_each_survey_window(self):
-        self.assertRegex(self.html, r'<input type="range" id="wmVer" min="0"', "Francis, 2026-11-04: a slider, the original 2022 first")
+        self.assertRegex(self.html, r'<input type="range" id="wmVer" min="0"', "the project lead, 2026-11-04: a slider, the original 2022 first")
         self.assertIn('<label for="wmVer">Version</label>', self.html)
         self.assertIn('class="wm-vernote"', self.html, "the slider says that neighbouring windows share years")
         self.assertIn('id="cmpShow"', self.html, "Change opens from the comparison section, not from the slider")

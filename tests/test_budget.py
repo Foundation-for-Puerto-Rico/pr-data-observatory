@@ -80,7 +80,7 @@ class Routes(unittest.TestCase):
         self.assertIn("api.page = page;", (SITE / "js" / "askpage.js").read_text(encoding="utf-8"))
 
     def test_every_page_has_the_ask_button_and_loads_the_chat_on_first_use(self):
-        """The Ask button on every page (Francis, 2026-10-26): chatboot.js and the chat's style and icons; chat.js, ask.js and askpage.js are never in a page's first load."""
+        """The Ask button on every page (the project lead, 2026-10-26): chatboot.js and the chat's style and icons; chat.js, ask.js and askpage.js are never in a page's first load."""
         boot = (SITE / "js" / "chatboot.js").read_text(encoding="utf-8")
         self.assertRegex(boot, r"PAGE = !MAP && 'js/askpage\.js\?v=\d+'")
         for r in budget.load_routes()["routes"].values():

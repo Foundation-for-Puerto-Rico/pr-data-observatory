@@ -353,7 +353,7 @@ class Links(unittest.TestCase):
         for f in glob.glob(str(ROOT / "i18n_src" / "es" / "*.json")):
             d = json.loads(Path(f).read_text(encoding="utf-8"))
             if "Learn" in d:
-                self.assertEqual(d["Learn"], "Aprende", f"{Path(f).name}: Francis 2026-11-16")
+                self.assertEqual(d["Learn"], "Aprende", f"{Path(f).name}: the project lead 2026-11-16")
 
 
 class Page(unittest.TestCase):

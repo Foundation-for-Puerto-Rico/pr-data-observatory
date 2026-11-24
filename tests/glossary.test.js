@@ -64,7 +64,7 @@ test('the longest form first, and white space of any kind between words', () => 
   assert.deepStrictEqual(found(m, 'the margin of\n  error and the margin of error'), [['margin of\n  error', 'moe'], ['margin of error', 'moe']]);
 });
 
-test('the real glossary: the words Francis named are found in both languages, and a term that is not highlighted never is', () => {
+test('the real glossary: the words the project lead named are found in both languages, and a term that is not highlighted never is', () => {
   for (const [lang, text, want] of [
     ['es', 'El margen de error del estimado, por grupo de bloques, en el SFHA; un archivo de datos GeoJSON (flood.geojson); Dominio', ['moe', 'estimate', 'block-group', 'sfha', 'data-file', 'geojson', 'domain-in-the-dictionary']],
     ['en', 'The margin of error of the estimate, by block group, in the SFHA; a GeoJSON data file (flood.geojson); Domain', ['moe', 'estimate', 'block-group', 'sfha', 'geojson', 'data-file', 'domain-in-the-dictionary']]]) {
