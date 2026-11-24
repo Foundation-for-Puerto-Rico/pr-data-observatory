@@ -2,12 +2,12 @@
  "overture": {
   "access": "La herramienta de línea de comandos overturemaps descarga el tema Places de los archivos públicos de Overture alojados en la nube, recortado a un recuadro alrededor de Puerto Rico (oeste -67.97, sur 17.85, este -65.20, norte 18.57). El corte de datos actual es la versión 2026-09-23.1 de Overture, descargada el 1 de octubre de 2026.",
   "cadence": "Overture publica el tema Places cada mes. El observatorio conserva un corte de datos y lo renueva solo cuando FPR reconstruye los datos (un nuevo corte de datos).",
-  "used_for": "Cada lugar turístico en los mapas (nombre, categoría, ubicación, dirección, sitio web, puntuación de confianza y conjunto de datos de origen) y cada conteo, densidad y cifra de exposición que se calcula a partir de esos lugares. También la distancia por carretera desde donde vive la gente hasta el supermercado, la tienda de alimentos, la farmacia y el banco o la cooperativa más cercanos, por barrio y municipio (essentials_series.json, essentials_barrio.json; solo las distancias, nunca los comercios).",
+  "used_for": "Cada lugar turístico en los mapas (nombre, categoría, ubicación, dirección, sitio web, puntuación de confianza y conjunto de datos de origen) y cada conteo, densidad y cifra de exposición que se calcula a partir de esos lugares. También la distancia por carretera desde donde vive la gente hasta el supermercado, la tienda de alimentos, la farmacia y el banco o la cooperativa más cercanos, por barrio y municipio (essentials_series.json, essentials_barrio.json; solo las distancias, nunca los comercios). También, para repartir los empleos de cada municipio entre sus lugares de negocio en el estimado de empleos al alcance (jobs_reach_series.json; no se publica ningún lugar).",
   "terms_note": "La licencia depende de quién aportó el registro: CDLA-Permissive-2.0 para Meta, Microsoft y otros; Apache 2.0 para Foursquare, y CC0 1.0 para AllThePlaces. En el corte de datos 2026-10, el observatorio publica 32,541 lugares. La fuente indicada es Meta para 31,945, Foursquare para 252, Microsoft para 241 y AllThePlaces para 103. Los otros temas de Overture (Buildings, Divisions, Transportation) usan la ODbL; el observatorio también usa Buildings, con su propia ficha de fuente (overture_buildings). Overture sugiere citar 'Overture Maps Foundation, overturemaps.org' con la fecha de consulta. El aviso de Foursquare pide a quien use sus registros que mantenga la atribución a Foursquare (incluido el texto completo de su NOTICE.txt), que entregue a quienes los reciban una copia de la licencia Apache 2.0 y que indique cualquier cambio; la página de atribución de Overture incluye la línea de derechos de autor de Foursquare. Los listados son registros comerciales de terceros, no un registro oficial. FPR los clasifica y elimina los duplicados. No se publican números de teléfono, correos electrónicos ni enlaces a redes sociales.",
   "_en": {
    "access": "e1996f29",
    "cadence": "3e3b37a6",
-   "used_for": "ad96ba68",
+   "used_for": "97dae326",
    "terms_note": "9fed88d6"
   }
  },
@@ -122,12 +122,12 @@
  "bls_qcew": {
   "access": "Archivos CSV de datos abiertos del QCEW, sin clave: https://data.bls.gov/cew/data/api/{year}/a/area/{area}.csv para cada una de las 78 áreas municipales y para Puerto Rico (área 72000), promedios anuales. La compilación también comprueba si existe el archivo del año siguiente.",
   "cadence": "El BLS publica el QCEW cada trimestre y publica los promedios anuales después de que termina el año. Al 28 de agosto de 2026, la publicación más reciente cubría el primer trimestre de 2026; la del segundo trimestre se espera el 2 de diciembre de 2026. En el corte de datos 2026-10, el observatorio tiene los años 2014 a 2025. Vuelve a leer los archivos cuando FPR reconstruye los datos (un nuevo corte de datos).",
-  "used_for": "Empleos, establecimientos, salarios, empleos por industria, empleos relacionados con el turismo y concentración industrial por municipio y año (economy_series.json).",
+  "used_for": "Empleos, establecimientos, salarios, empleos por industria, empleos relacionados con el turismo y concentración industrial por municipio y año (economy_series.json). También los empleos del estimado de empleos al alcance en carro (jobs_reach_series.json).",
   "terms_note": "El BLS indica que todo lo que publica es de dominio público y pide citarlo como fuente. Las celdas que identificarían a un solo patrono se suprimen, y el observatorio las deja en blanco, así que en los municipios pequeños faltan muchas industrias. Los empleos se cuentan donde se realiza el trabajo. El BLS indica que el QCEW cubre más del 95 por ciento de los empleos de EE. UU. El observatorio no mide esa proporción para Puerto Rico. El QCEW excluye a las personas que trabajan por cuenta propia sin haberse incorporado, a quienes trabajan sin paga en negocios familiares y a algunos otros grupos.",
   "_en": {
    "access": "e9a8fed7",
    "cadence": "b8041583",
-   "used_for": "d2cab034",
+   "used_for": "fe5b9cd8",
    "terms_note": "96989ce7"
   }
  },

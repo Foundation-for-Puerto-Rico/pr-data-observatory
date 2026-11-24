@@ -1,0 +1,259 @@
+[
+  {
+    "id": "jobs_reach.jobs_reach_30",
+    "ask": {
+      "en": [
+        "jobs within reach",
+        "job access",
+        "jobs nearby",
+        "access to jobs"
+      ],
+      "es": [
+        "empleos al alcance",
+        "acceso a empleos",
+        "empleos cerca"
+      ]
+    },
+    "name": "Jobs within 30 minutes by car (estimate)",
+    "domain": "economy",
+    "domains": [
+      "economy",
+      "infrastructure.mobility",
+      "population"
+    ],
+    "group": "Jobs within reach",
+    "kind": "variable",
+    "plain": "How many jobs the residents can reach within 30 minutes by car, on average.",
+    "definition": "The average number of jobs that the municipio's residents can reach within 30 minutes by car. An estimate: QCEW's 2025 jobs of each municipio, spread over its business places (Overture), reached over the mapped roads at free-flow planning speeds with a car, from where residents live (2020 Census blocks, each weighted by its residents). No traffic, parking or transit is assumed. QCEW counts jobs where they are, not who holds them, and leaves out the self-employed.",
+    "unit": "jobs",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Rebuilt by hand with python jobs_reach.py (QCEW 2025, Overture release 2026-10-21.0)."
+    },
+    "method": "jobs_reach.py searches the road graph the map uses (roads.bin, from OpenStreetMap), one-way streets one way, at the observatory's planning speeds for each road class (free flow: no traffic, stops or parking), from every road node where 2020 Census blocks with residents start, up to an hour. Each municipio's QCEW jobs are spread over its business places (Overture places, confidence 0.5 or more) and placed on their nearest roads. A municipio's figure is the average over its residents of the jobs whose place is within the time. Vieques and Culebra reach only their own island's jobs.",
+    "sources": [
+      "bls_qcew",
+      "overture",
+      "osm",
+      "census_tiger"
+    ],
+    "source_detail": "Estimated by the observatory: QCEW jobs by municipio spread over Overture business places, reached by car over the OpenStreetMap road graph (roads.bin) at planning speeds from each 2020 Census block with residents (jobs_reach.py)",
+    "how_to_read": "Puerto Rico: 236,860 jobs on average. Most: Guaynabo (540,462), San Juan (538,985), Cataño (533,484). Fewest: Culebra (502), Vieques (1,507), Jayuya (5,487). Range for the island: 224,304 jobs with each municipio's jobs spread over where its residents live instead; 236,860 as published.",
+    "caveats": [
+      "A drive time, not a commute: it assumes a car, free-flowing roads and no parking; in Puerto Rico 13.0% of households have no vehicle (ACS 2020-2024, the economy series no_vehicle_hh_pct).",
+      "QCEW says how many jobs a municipio has, not where in it; spreading them over business places is the model's assumption, so only municipio figures are published.",
+      "QCEW counts jobs at employers covered by unemployment insurance: the self-employed and informal work are not in it.",
+      "Check: in the Census Bureau's commuting flows of 2016-2020, 95.9% of the workers who live and work in Puerto Rico work in a municipio within 45 minutes of theirs in the model (92.3% of those who work in another municipio)."
+    ],
+    "see_also": [
+      "jobs_reach.jobs_reach_30_pct",
+      "jobs_reach.jobs_reach_45",
+      "jobs_reach.jobs_reach_45_pct",
+      "economy.qcew_jobs"
+    ],
+    "where": {
+      "files": [
+        "jobs_reach_series.json:jobs_reach_30"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Economy · Jobs within reach (estimate)): Jobs within 30 minutes by car (estimate)",
+          "href": "index.html#e=jobs_reach_30.f"
+        }
+      ]
+    },
+    "added": "2026-11-24"
+  },
+  {
+    "id": "jobs_reach.jobs_reach_30_pct",
+    "ask": {
+      "en": [
+        "share of jobs within 30 minutes"
+      ],
+      "es": [
+        "parte de los empleos a 30 minutos"
+      ]
+    },
+    "name": "Share of Puerto Rico's jobs within 30 minutes by car (estimate, %)",
+    "domain": "economy",
+    "domains": [
+      "economy",
+      "infrastructure.mobility",
+      "population"
+    ],
+    "group": "Jobs within reach",
+    "kind": "variable",
+    "plain": "The share of all of Puerto Rico's jobs the residents can reach within 30 minutes by car, on average.",
+    "definition": "The jobs the municipio's residents can reach within 30 minutes by car, on average, as a share of all of Puerto Rico's 943,002 jobs. An estimate: QCEW's 2025 jobs of each municipio, spread over its business places (Overture), reached over the mapped roads at free-flow planning speeds with a car, from where residents live (2020 Census blocks, each weighted by its residents). No traffic, parking or transit is assumed. QCEW counts jobs where they are, not who holds them, and leaves out the self-employed.",
+    "unit": "%",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Rebuilt by hand with python jobs_reach.py (QCEW 2025, Overture release 2026-10-21.0)."
+    },
+    "method": "jobs_reach.py searches the road graph the map uses (roads.bin, from OpenStreetMap), one-way streets one way, at the observatory's planning speeds for each road class (free flow: no traffic, stops or parking), from every road node where 2020 Census blocks with residents start, up to an hour. Each municipio's QCEW jobs are spread over its business places (Overture places, confidence 0.5 or more) and placed on their nearest roads. A municipio's figure is the average over its residents of the jobs whose place is within the time. Vieques and Culebra reach only their own island's jobs.",
+    "sources": [
+      "bls_qcew",
+      "overture",
+      "osm",
+      "census_tiger"
+    ],
+    "source_detail": "Estimated by the observatory: QCEW jobs by municipio spread over Overture business places, reached by car over the OpenStreetMap road graph (roads.bin) at planning speeds from each 2020 Census block with residents (jobs_reach.py)",
+    "how_to_read": "Puerto Rico: 25.1% of 943,002 jobs. Highest: Guaynabo (57.3%), San Juan (57.2%), Cataño (56.6%).",
+    "caveats": [
+      "A drive time, not a commute: it assumes a car, free-flowing roads and no parking; in Puerto Rico 13.0% of households have no vehicle (ACS 2020-2024, the economy series no_vehicle_hh_pct).",
+      "QCEW says how many jobs a municipio has, not where in it; spreading them over business places is the model's assumption, so only municipio figures are published."
+    ],
+    "see_also": [
+      "jobs_reach.jobs_reach_30",
+      "jobs_reach.jobs_reach_45",
+      "jobs_reach.jobs_reach_45_pct",
+      "economy.qcew_jobs"
+    ],
+    "where": {
+      "files": [
+        "jobs_reach_series.json:jobs_reach_30_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Economy · Jobs within reach (estimate)): Share of Puerto Rico's jobs within 30 minutes by car (estimate, %)",
+          "href": "index.html#e=jobs_reach_30_pct.f"
+        }
+      ]
+    },
+    "added": "2026-11-24"
+  },
+  {
+    "id": "jobs_reach.jobs_reach_45",
+    "ask": {
+      "en": [
+        "jobs within 45 minutes"
+      ],
+      "es": [
+        "empleos a 45 minutos"
+      ]
+    },
+    "name": "Jobs within 45 minutes by car (estimate)",
+    "domain": "economy",
+    "domains": [
+      "economy",
+      "infrastructure.mobility",
+      "population"
+    ],
+    "group": "Jobs within reach",
+    "kind": "variable",
+    "plain": "How many jobs the residents can reach within 45 minutes by car, on average.",
+    "definition": "The average number of jobs that the municipio's residents can reach within 45 minutes by car. An estimate: QCEW's 2025 jobs of each municipio, spread over its business places (Overture), reached over the mapped roads at free-flow planning speeds with a car, from where residents live (2020 Census blocks, each weighted by its residents). No traffic, parking or transit is assumed. QCEW counts jobs where they are, not who holds them, and leaves out the self-employed.",
+    "unit": "jobs",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Rebuilt by hand with python jobs_reach.py (QCEW 2025, Overture release 2026-10-21.0)."
+    },
+    "method": "jobs_reach.py searches the road graph the map uses (roads.bin, from OpenStreetMap), one-way streets one way, at the observatory's planning speeds for each road class (free flow: no traffic, stops or parking), from every road node where 2020 Census blocks with residents start, up to an hour. Each municipio's QCEW jobs are spread over its business places (Overture places, confidence 0.5 or more) and placed on their nearest roads. A municipio's figure is the average over its residents of the jobs whose place is within the time. Vieques and Culebra reach only their own island's jobs.",
+    "sources": [
+      "bls_qcew",
+      "overture",
+      "osm",
+      "census_tiger"
+    ],
+    "source_detail": "Estimated by the observatory: QCEW jobs by municipio spread over Overture business places, reached by car over the OpenStreetMap road graph (roads.bin) at planning speeds from each 2020 Census block with residents (jobs_reach.py)",
+    "how_to_read": "Puerto Rico: 371,661 jobs on average. Most: San Juan (634,669), Cataño (634,092), Guaynabo (632,281). Fewest: Culebra (502), Vieques (1,514), Jayuya (32,209). Range for the island: 360,639 jobs with each municipio's jobs spread over where its residents live instead; 371,661 as published.",
+    "caveats": [
+      "A drive time, not a commute: it assumes a car, free-flowing roads and no parking; in Puerto Rico 13.0% of households have no vehicle (ACS 2020-2024, the economy series no_vehicle_hh_pct).",
+      "QCEW says how many jobs a municipio has, not where in it; spreading them over business places is the model's assumption, so only municipio figures are published.",
+      "QCEW counts jobs at employers covered by unemployment insurance: the self-employed and informal work are not in it.",
+      "Check: in the Census Bureau's commuting flows of 2016-2020, 95.9% of the workers who live and work in Puerto Rico work in a municipio within 45 minutes of theirs in the model (92.3% of those who work in another municipio)."
+    ],
+    "see_also": [
+      "jobs_reach.jobs_reach_30",
+      "jobs_reach.jobs_reach_30_pct",
+      "jobs_reach.jobs_reach_45_pct",
+      "economy.qcew_jobs"
+    ],
+    "where": {
+      "files": [
+        "jobs_reach_series.json:jobs_reach_45"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Economy · Jobs within reach (estimate)): Jobs within 45 minutes by car (estimate)",
+          "href": "index.html#e=jobs_reach_45.f"
+        }
+      ]
+    },
+    "added": "2026-11-24"
+  },
+  {
+    "id": "jobs_reach.jobs_reach_45_pct",
+    "ask": {
+      "en": [
+        "share of jobs within 45 minutes"
+      ],
+      "es": [
+        "parte de los empleos a 45 minutos"
+      ]
+    },
+    "name": "Share of Puerto Rico's jobs within 45 minutes by car (estimate, %)",
+    "domain": "economy",
+    "domains": [
+      "economy",
+      "infrastructure.mobility",
+      "population"
+    ],
+    "group": "Jobs within reach",
+    "kind": "variable",
+    "plain": "The share of all of Puerto Rico's jobs the residents can reach within 45 minutes by car, on average.",
+    "definition": "The jobs the municipio's residents can reach within 45 minutes by car, on average, as a share of all of Puerto Rico's 943,002 jobs. An estimate: QCEW's 2025 jobs of each municipio, spread over its business places (Overture), reached over the mapped roads at free-flow planning speeds with a car, from where residents live (2020 Census blocks, each weighted by its residents). No traffic, parking or transit is assumed. QCEW counts jobs where they are, not who holds them, and leaves out the self-employed.",
+    "unit": "%",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2026,
+      "last": 2026,
+      "frequency": "Rebuilt by hand with python jobs_reach.py (QCEW 2025, Overture release 2026-10-21.0)."
+    },
+    "method": "jobs_reach.py searches the road graph the map uses (roads.bin, from OpenStreetMap), one-way streets one way, at the observatory's planning speeds for each road class (free flow: no traffic, stops or parking), from every road node where 2020 Census blocks with residents start, up to an hour. Each municipio's QCEW jobs are spread over its business places (Overture places, confidence 0.5 or more) and placed on their nearest roads. A municipio's figure is the average over its residents of the jobs whose place is within the time. Vieques and Culebra reach only their own island's jobs.",
+    "sources": [
+      "bls_qcew",
+      "overture",
+      "osm",
+      "census_tiger"
+    ],
+    "source_detail": "Estimated by the observatory: QCEW jobs by municipio spread over Overture business places, reached by car over the OpenStreetMap road graph (roads.bin) at planning speeds from each 2020 Census block with residents (jobs_reach.py)",
+    "how_to_read": "Puerto Rico: 39.4% of 943,002 jobs. Highest: San Juan (67.3%), Cataño (67.2%), Guaynabo (67.0%).",
+    "caveats": [
+      "A drive time, not a commute: it assumes a car, free-flowing roads and no parking; in Puerto Rico 13.0% of households have no vehicle (ACS 2020-2024, the economy series no_vehicle_hh_pct).",
+      "QCEW says how many jobs a municipio has, not where in it; spreading them over business places is the model's assumption, so only municipio figures are published."
+    ],
+    "see_also": [
+      "jobs_reach.jobs_reach_30",
+      "jobs_reach.jobs_reach_30_pct",
+      "jobs_reach.jobs_reach_45",
+      "economy.qcew_jobs"
+    ],
+    "where": {
+      "files": [
+        "jobs_reach_series.json:jobs_reach_45_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Economy · Jobs within reach (estimate)): Share of Puerto Rico's jobs within 45 minutes by car (estimate, %)",
+          "href": "index.html#e=jobs_reach_45_pct.f"
+        }
+      ]
+    },
+    "added": "2026-11-24"
+  }
+]
