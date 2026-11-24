@@ -1,7 +1,7 @@
 {
  "built": "2026-11-24",
  "snapshot": "Snapshot 2026-10",
- "total_bytes": 145074686,
+ "total_bytes": 145150486,
  "limits": {
   "site_bytes": 1048576000,
   "file_bytes": 104857600,
@@ -11,14 +11,14 @@
  "needs_planning": false,
  "growth_note": "Every harvested dataset stays and new ones are added, so the data folder only grows. Each dataset is its own lazily loaded file. When the total passes the planning line, move the large files to object storage as Parquet or PMTiles and query them in the browser (for example with DuckDB-WASM) while the small summaries stay on the page.",
  "totals": {
-  "files": 197,
-  "bytes": 145074686,
-  "records": 8935413,
-  "fields": 2532,
-  "values": 12898874,
+  "files": 198,
+  "bytes": 145150486,
+  "records": 8936392,
+  "fields": 2560,
+  "values": 12913325,
   "items": 1164,
   "vertices": 4047669,
-  "counted_files": 158,
+  "counted_files": 159,
   "documenting_items": 844,
   "first_published": "2026-10-01",
   "last_updated": "2026-11-24"
@@ -395,11 +395,11 @@
   },
   {
    "date": "2026-11-24",
-   "files": 197,
-   "bytes": 145074686,
-   "records": 8935413,
-   "fields": 2532,
-   "values": 12898874,
+   "files": 198,
+   "bytes": 145150486,
+   "records": 8936392,
+   "fields": 2560,
+   "values": 12913325,
    "items": 1164
   }
  ],
@@ -1125,8 +1125,8 @@
   {
    "file": "catalog.json",
    "title": "Catalog: domains and headline figures, read first",
-   "bytes": 30476,
-   "gzip_bytes": 9155,
+   "bytes": 30688,
+   "gzip_bytes": 9204,
    "loaded_by": [
     {
      "route": "map",
@@ -1153,7 +1153,7 @@
    "vertices": null,
    "first_published": "2026-10-06",
    "last_updated": "2026-11-24",
-   "versions": 269,
+   "versions": 272,
    "documented_by": 1,
    "review": {
     "status": "unstated",
@@ -1826,8 +1826,8 @@
   {
    "file": "dictionary.json",
    "title": "Data dictionary: entries, sources, glossary and descriptions",
-   "bytes": 5608811,
-   "gzip_bytes": 1236556,
+   "bytes": 5609756,
+   "gzip_bytes": 1236729,
    "loaded_by": [],
    "title_es": "Diccionario de datos: entradas, fuentes, glosario y descripciones",
    "domains": [
@@ -1846,7 +1846,7 @@
    "vertices": null,
    "first_published": "2026-10-05",
    "last_updated": "2026-11-24",
-   "versions": 227,
+   "versions": 228,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -7509,6 +7509,43 @@
    "last_updated": "2026-11-14",
    "versions": 6,
    "documented_by": 1,
+   "review": {
+    "status": "unstated",
+    "flags": [
+     "licence-unstated"
+    ],
+    "licence_from": [
+     {
+      "id": "muni_gtfs",
+      "en": "municipal GTFS feeds",
+      "es": "GTFS municipales"
+     }
+    ]
+   }
+  },
+  {
+   "file": "transit_reach.json",
+   "title": "Transit by barrio: stops with a current timetable, other service, or none",
+   "bytes": 74643,
+   "gzip_bytes": 25733,
+   "loaded_by": [],
+   "title_es": "Transporte por barrio: paradas con horario vigente, otro servicio o nada",
+   "domains": [
+    "infrastructure.mobility"
+   ],
+   "licence_class": "unstated",
+   "tier": "small",
+   "geography": "barrio",
+   "time": "snapshot",
+   "kind": "data",
+   "records": 979,
+   "fields": 28,
+   "values": 14451,
+   "vertices": null,
+   "first_published": "2026-11-24",
+   "last_updated": "2026-11-24",
+   "versions": 1,
+   "documented_by": 0,
    "review": {
     "status": "unstated",
     "flags": [

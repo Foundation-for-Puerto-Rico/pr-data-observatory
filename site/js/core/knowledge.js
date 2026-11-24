@@ -11,7 +11,7 @@
   const AREAS = [
     { id: 'housing', label: { en: 'Housing', es: 'Vivienda' }, icon: 'home_work', page: 'housing.html', status: 'published', updated: '2026-10', domain: 'housing' },
     { id: 'wcrp', label: { en: 'WCRP', es: 'WCRP' }, icon: 'diversity_3', page: 'wcrp.html', status: 'published', review: true, updated: '2026-11', domain: 'communities' },
-    { id: 'routes', label: { en: 'Route analysis', es: 'Análisis de ruta' }, icon: 'commute', page: 'route-analysis.html', status: 'published', review: true, ai: true, updated: '2026-10', domain: 'infrastructure.mobility' },
+    { id: 'routes', label: { en: 'Transit congestion', es: 'Congestión en las rutas' }, icon: 'commute', page: 'route-analysis.html', status: 'published', review: true, ai: true, updated: '2026-10', domain: 'infrastructure.mobility' },
     { id: 'gii', label: { en: 'Global Innovation Index', es: 'Índice Global de Innovación' }, icon: 'rocket_launch', page: 'gii.html', status: 'published', review: true, ai: true, updated: '2026-10', domain: 'economy' },
     { id: 'women', label: { en: 'Women in the labor force', es: 'Mujeres en la fuerza laboral' }, icon: 'woman', page: 'women-labor.html', status: 'published', ai: true, updated: '2026-10', domain: 'economy' },
     { id: 'moneycycle', label: { en: 'How public money moves', es: 'Cómo se mueve el dinero público' }, icon: 'route', page: 'money-cycle.html', status: 'published', review: true, ai: true, reviewer: ['leadership'], updated: '2026-11', domain: 'public-money' },
@@ -25,6 +25,7 @@
     { id: 'energy', label: { en: 'Energy', es: 'Energía' }, icon: 'bolt', page: 'energy.html', status: 'published', review: true, ai: true, updated: '2026-11', domain: 'infrastructure.energy' },
     { id: 'oppzones', label: { en: 'Opportunity Zones 2.0', es: 'Zonas de Oportunidad 2.0' }, icon: 'work', page: 'opportunity-zones.html', status: 'published', ai: true, updated: '2026-11', domain: 'economy' },
     { id: 'tlinks', label: { en: 'Connections between municipios', es: 'Conexiones entre municipios' }, icon: 'commute', page: 'transit-links.html', status: 'published', review: true, ai: true, updated: '2026-11', domain: 'infrastructure' },
+    { id: 'treach', label: { en: 'Transit, barrio by barrio', es: 'Transporte colectivo, barrio por barrio' }, icon: 'directions_bus', page: 'transit-reach.html', status: 'published', review: true, ai: true, reviewer: ['leadership', 'compliance'], updated: '2026-11', domain: 'infrastructure' },
   ];
   const TOPICS = { communities: { es: 'Comunidades', en: 'Communities' }, economy: { es: 'Economía', en: 'Economy' }, environment: { es: 'Ambiente y clima', en: 'Environment and climate' }, housing: { es: 'Vivienda', en: 'Housing' }, infrastructure: { es: 'Infraestructura y movilidad', en: 'Infrastructure and mobility' }, 'public-money': { es: 'Dinero público', en: 'Public money' } };
   const REVIEWER_NAMES = { compliance: { en: 'Compliance', es: 'Cumplimiento' }, leadership: { en: 'leadership', es: 'la dirección' } };

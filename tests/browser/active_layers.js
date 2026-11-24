@@ -45,7 +45,7 @@ function agree(s, label, page) {   // the chip, the shared list and the open lis
   check(s.n === s.items.length && s.shown === s.n > 0 && (!s.shown || s.num === String(s.n)), `${label}: chip ${s.num} "${s.words}" = ${s.items.length} in the list`);
   check(!s.shown || new RegExp(`^${s.n}\\b`).test(s.words) && (s.lang === 'es' ? (s.n === 1 ? /capa activa$/ : /capas activas$/) : (s.n === 1 ? /layer on$/ : /layers on$/)).test(s.words), `${label}: words "${s.words}"`);
   if (s.rows != null) check(s.rows === s.n && s.note === s.items.includes('plan') && s.all === s.items.some(i => i !== 'plan'), `${label}: ${s.rows} rows, the route note ${s.note ? 'shown' : 'not shown'}, Turn all off ${s.all ? 'shown' : 'hidden'}`);
-  check(s.muni && !s.items.includes('lyMuni'), `${label}: Límites on and not counted`);   // the reference layer of both views (3D since phase B of the layer menus)
+  check(!s.items.includes('lyMuni'), `${label}: Límites not counted`);   // the reference layer of both views (3D since phase B of the layer menus); off when they open since 2026-11-13
   if (page === '3d') check(s.scene === 'true,true' && !s.items.some(i => i === 'lyTerrain' || i === 'lyBuildings'), `${label}: Scene settings kept and not counted`);
 }
 // the 2D map writes its hash 250 ms after a change, and a route plan moves the map when it is computed: wait until the hash holds for a second
