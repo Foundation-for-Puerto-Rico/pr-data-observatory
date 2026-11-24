@@ -55,7 +55,7 @@ async function run(lang) {
     const cam = await p.eval(`(() => { const c = map.getCenter(); return { lat: c.lat, lng: c.lng, z: map.getZoom() }; })()`);
     check(tag('3D'), 'the camera where the 2D map was, the zoom one less', near(cam.lat, P2.c.lat, 0.002) && near(cam.lng, P2.c.lng, 0.002) && near(cam.z, P2.c.z - 1, 0.05), [cam, P2.c]);
     const ly = await p.eval(`Object.fromEntries(['lyFlood', 'lyRoutes', 'lyStops', 'lyTrips', 'lyTerrain', 'lyBuildings', 'lyMuni', 'lyCols'].map(id => [id, document.getElementById(id).checked]))`);
-    check(tag('3D'), 'the same layers; the 3D-only vehicles and terrain as by default', ly.lyFlood && ly.lyRoutes && !ly.lyStops && ly.lyTrips && ly.lyTerrain && ly.lyBuildings && ly.lyMuni, ly);
+    check(tag('3D'), 'the same layers; the 3D-only vehicles and terrain as by default', ly.lyFlood && ly.lyRoutes && !ly.lyStops && ly.lyTrips && ly.lyTerrain && ly.lyBuildings && ly.lyMuni === (P2.l || []).includes('muni'), ly);   // Límites as the 2D map had it (off when it opens since 2026-11-13)
     check(tag('3D'), 'the columns: height from the Symbol layer, colour from the Shaded one', await p.waitFor(`document.getElementById('lyCols').checked && metricKey === '__any' && ENG.filled && ENG.h === '${k2}' && ENG.c === '${k1}' && document.getElementById('engH').value === '${k2}' && ENG.y === 2020 && document.getElementById('engY').value === '2020'`, 60000),
       await p.eval(`({ cols: document.getElementById('lyCols').checked, metricKey, h: ENG.h, c: ENG.c })`));
     check(tag('3D'), 'the municipality\'s card is open', await p.waitFor(`VS.muni === 'Ponce' && !!document.querySelector('.maplibregl-popup .pop h4') && /Ponce/.test(document.querySelector('.maplibregl-popup .pop h4').textContent)`, 10000));

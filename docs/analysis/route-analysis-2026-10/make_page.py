@@ -152,7 +152,7 @@ def main():
             "day": rc["day"], "as_of": rc["as_of"],
             "operators": [{"operator": k, "operator_name": v, "feed_end": rc["feed_end"][k]} for k, v in rc["operators"].items()],
             "routes": [{k: r[k] for k in FIELDS} for r in R]}
-    title = t("Knowledge Area · Existing route analysis", "Área de conocimiento · Análisis de rutas existentes")
+    title = t("Knowledge Area · Public transit route profile: crossings at high-volume intersections", "Área de conocimiento · Perfil de rutas de transporte colectivo: cruces por intersecciones de alto volumen vehicular")
     desc = ("An exploratory, comparative analysis of the bus routes of the ATI and of the municipal systems of the San Juan metro area and "
             "eastern Puerto Rico: service, route, peak-hour intersections, connections and nearby residents.")
     icons = "account_balance,bolt,chat_bubble,close,commute,compare_arrows,delete,directions_bus,diversity_3,home_work,hourglass_bottom,info,lightbulb,map,menu_book,payments,price_change,rocket_launch,route,school,send,thermostat,view_in_ar,warning,water,wifi,woman,work"
@@ -179,7 +179,7 @@ def main():
 <a class="skip" href="#about">Skip to the content</a>
 <header class="topbar">
   <a class="logo" href="index.html" title="PR Data Observatory home"><img src="img/fpr-logo.png" alt="Foundation for Puerto Rico. PR Data Observatory home"></a>
-  <div class="brand"><b>{t("Knowledge Area · Route analysis", "Área de conocimiento · Análisis de ruta")}</b><span>{t("Public transit that connects with the metro area", "Transporte público que conecta con el área metro")}</span></div>
+  <div class="brand"><b>{t("Knowledge Area · Transit congestion", "Área de conocimiento · Congestión en las rutas")}</b><span>{t("Bus routes of the metro area and the east, one by one", "Rutas de autobús del área metro y del este, una por una")}</span></div>
   <div class="spacer"></div>
   <nav class="views" aria-label="Views">
     <a class="btn" href="index.html"><span class="ms-icon" aria-hidden="true">map</span><span class="lbl">Map</span></a>
@@ -192,7 +192,7 @@ def main():
 
 <nav class="toc" id="toc" aria-label="On this page">
   <span class="ka-tabs" role="group" aria-label="Knowledge Area" data-ka="routes"></span><span class="ka-sep" aria-hidden="true"></span>
-  <a href="#about">{t("Summary", "Resumen")}</a><a href="#exposure">{t("Exposure to congestion", "Exposición a la congestión")}</a><a href="#compare">{t("Route comparison", "Comparación de rutas")}</a><a href="#sources">{t("Sources and licenses", "Fuentes y licencias")}</a>
+  <a href="#about">{t("Summary", "Resumen")}</a><a href="#exposure">{t("Busy intersections", "Intersecciones con mucho tránsito")}</a><a href="#compare">{t("Route comparison", "Comparación de rutas")}</a><a href="#sources">{t("Sources and licenses", "Fuentes y licencias")}</a>
 </nav>
 
 <main class="page">
@@ -200,14 +200,14 @@ def main():
 
   <section class="hero" id="about">
     <div class="eyebrow">{t("Knowledge Area · Research", "Área de conocimiento · Investigación")}</div>
-    <h1>{t("Analysis of existing routes: public transit that connects with the metro area", "Análisis de rutas existentes: transporte público que conecta con el área metro")}</h1>
+    <h1>{t("Public transit route profile: crossings at high-volume intersections", "Perfil de rutas de transporte colectivo: cruces por intersecciones de alto volumen vehicular")}</h1>
     <p class="lede">{t(
-        "This exploratory, comparative analysis examines the public transit routes that run in the San Juan metropolitan area and in the municipios of eastern Puerto Rico. "
-        "Using the official weekday timetables (GTFS), each route is analysed on five dimensions: the level of service, the route, the intersections it travels through at peak hours, "
-        "the integration with other services and the population near its stops. The results describe the scheduled service, not the performance observed on the street.",
-        "Este análisis exploratorio y comparativo examina las rutas de transporte público colectivo que operan en el área metropolitana de San Juan y en los municipios del este de Puerto Rico. "
-        "A partir de los horarios oficiales de un día de semana (GTFS), cada ruta se analiza en cinco dimensiones: el nivel de servicio, el recorrido, las intersecciones que transita en horas pico, "
-        "la integración con otros servicios y la población cercana a sus paradas. Los resultados describen el servicio programado, no el desempeño observado en la calle.")}</p>
+        "This exploratory, comparative analysis examines, one by one, the bus routes that run in the San Juan metropolitan area and in the municipios of eastern Puerto Rico. "
+        "Using the official weekday timetables (GTFS), each route is analysed on five dimensions: the level of service, the route, the intersections with heavy traffic on its path at peak hours, "
+        "the integration with other services and the population near its stops. The analysis focuses on crossings at high-volume intersections; the other four dimensions help compare the routes.",
+        "Este análisis exploratorio y comparativo examina, una por una, las rutas de autobús que operan en el área metropolitana de San Juan y en los municipios del este de Puerto Rico. "
+        "A partir de los horarios oficiales de un día de semana (GTFS), cada ruta se analiza en cinco dimensiones: el nivel de servicio, el recorrido, las intersecciones con mucho tránsito en su camino en horas pico, "
+        "la integración con otros servicios y la población cercana a sus paradas. El análisis se centra en los cruces por intersecciones de alto volumen vehicular; las otras cuatro dimensiones ayudan a comparar las rutas.")}</p>
     <div class="kpi-row">
       <div class="kpi"><b>{len(M)}</b><span>{t("bus routes in the metropolitan area: the ATI and 5 municipal systems", "rutas de autobús en el área metropolitana: ATI y 5 sistemas municipales")}</span></div>
       <div class="kpi"><b>{n_trips:,}</b><span>{t("scheduled trips on a weekday on those routes", "viajes programados en un día de semana en esas rutas")}</span></div>
@@ -226,12 +226,14 @@ def main():
   </section>
 
   <section class="block" id="exposure">
-    <h2><span class="ms-icon" aria-hidden="true">directions_bus</span>{t("1 · The 12 routes most exposed to congestion at peak hours", "1 · Las 12 rutas con mayor exposición a la congestión en hora pico")}</h2>
+    <h2><span class="ms-icon" aria-hidden="true">directions_bus</span>{t("1 · The 12 routes that cross busy intersections most often at peak hours", "1 · Las 12 rutas que más veces cruzan intersecciones con mucho tránsito en horas pico")}</h2>
     <p class="ra-p">{t(
-        "A bus loses time at intersections with heavy traffic: here, an estimated 2,000 or more vehicles an hour (note 1). "
-        "Using each route's weekday timetable, the two charts count those intersections on its path. The Tren Urbano is left out: it does not share the street.",
-        "Un autobús pierde tiempo en las intersecciones con mucho tránsito: aquí, un estimado de 2,000 vehículos por hora o más (nota 1). "
-        "Con el horario de un día de semana de cada ruta, las dos gráficas cuentan esas intersecciones en su camino. El Tren Urbano no se incluye porque no comparte la calle.")}</p>
+        "Here an intersection with heavy traffic is one where an estimated 2,000 or more vehicles pass in an hour, in one of the busiest hours of the year (note 1). "
+        "A bus can lose time there, but this analysis does not measure it: using each route's weekday timetable, the two charts count those intersections on its path. "
+        "The Tren Urbano is left out: it does not share the street.",
+        "Aquí, una intersección con mucho tránsito es una por donde pasan un estimado de 2,000 vehículos por hora o más, en una de las horas más cargadas del año (nota 1). "
+        "Un autobús puede perder tiempo allí, pero este análisis no lo mide: con el horario de un día de semana de cada ruta, las dos gráficas cuentan esas intersecciones en su camino. "
+        "El Tren Urbano no se incluye porque no comparte la calle.")}</p>
     <div class="card ra-chart"><div class="card-head"><h3>{t("How many times do the buses of each route go through those intersections at peak hours?", "¿Cuántas veces pasan los autobuses de cada ruta por esas intersecciones en horas pico?")}</h3></div>
     <p class="ra-p rc-foot">{t(
         "<b>How to read it:</b> each bar is a route. The number at the end of the bar is the total times the buses of that route go through an intersection with heavy traffic, from 6 to 9 a.m. and from 4 to 7 p.m. "
@@ -356,11 +358,11 @@ def main():
         "<b>Method.</b> The results and how they were made are in docs/analysis/route-analysis-2026-10/ of the project repository.",
         "<b>Metodología.</b> Los resultados y cómo se calcularon están en docs/analysis/route-analysis-2026-10/ del repositorio del proyecto.")}</div>
     <div class="note">{t(
-        "<b>How to cite this page.</b> Foundation for Puerto Rico, <i>Knowledge Area: Existing route analysis</i>, PR Data Observatory, Snapshot 2026-10 (draft).",
-        "<b>Cómo citar esta página.</b> Foundation for Puerto Rico, <i>Área de conocimiento: Análisis de rutas existentes</i>, Observatorio de Datos de PR, Corte 2026-10 (borrador).")}</div>
+        "<b>How to cite this page.</b> Foundation for Puerto Rico, <i>Knowledge Area: Public transit route profile: crossings at high-volume intersections</i>, PR Data Observatory, Snapshot 2026-10 (draft).",
+        "<b>Cómo citar esta página.</b> Foundation for Puerto Rico, <i>Área de conocimiento: Perfil de rutas de transporte colectivo: cruces por intersecciones de alto volumen vehicular</i>, Observatorio de Datos de PR, Corte 2026-10 (borrador).")}</div>
   </section>
 </main>
-<script src="js/core/knowledge.js?v=34"></script>
+<script src="js/core/knowledge.js?v=35"></script>
 <script>Core.knowledge.render(); I18N.apply();</script>
 <script src="js/common.js?v=20"></script>
 <script src="js/route_analysis.js?v=7"></script>
