@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Alcance en 15 minutos</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<style>
+  :root { --bg: #fcfcfb; --ink: #0b0b0b; --ink2: #52514e; --muted: #6f6d68; --line: #e1e0d9; --bar: #2a78d6; --theory: #9a7fd1; --warn: #8a5a00; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #151515; --ink: #f0efec; --ink2: #c3c2b7; --muted: #a3a19a; --line: #2c2c2a; --bar: #3987e5; --theory: #9a7fd1; --warn: #f2c063; } }
+  :root[data-theme="dark"] { --bg: #151515; --ink: #f0efec; --ink2: #c3c2b7; --muted: #a3a19a; --line: #2c2c2a; --bar: #3987e5; --theory: #9a7fd1; --warn: #f2c063; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 1100px; margin: 0 auto; padding: 16px; }
+  h1 { font-size: 22px; font-weight: 600; margin: 8px 0 4px; }
+  p { margin: 4px 0 12px; color: var(--ink2); }
+  .grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; }
+  @media (max-width: 800px) { .grid { grid-template-columns: minmax(0, 1fr); } }
+  #map { height: 460px; border-radius: 8px; border: 1px solid var(--line); }
+  .ctl { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--ink2); margin: 8px 0 14px; flex-wrap: wrap; }
+  .ctl input { flex: 1; min-width: 140px; }
+  .row { display: grid; grid-template-columns: 150px minmax(0, 1fr); align-items: center; gap: 10px; margin: 8px 0; font-size: 14px; }
+  .row b { font-weight: 500; } .row small { display: block; color: var(--muted); font-size: 12px; }
+  .track { display: flex; align-items: center; gap: 8px; min-width: 0; }
+  .bar { height: 22px; border-radius: 0 4px 4px 0; background: var(--bar); min-width: 2px; flex: none; }
+  .bar.theory { background: repeating-linear-gradient(45deg, var(--theory) 0 5px, transparent 5px 8px); border: 1px solid var(--theory); box-sizing: border-box; }
+  .val { white-space: nowrap; font-variant-numeric: tabular-nums; color: var(--ink2); }
+  .row b i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: 0; }
+  #now { display: flex; justify-content: space-between; gap: 8px; font-size: 15px; margin: 8px 0 0; min-height: 1.6em; font-variant-numeric: tabular-nums; }
+  #now b { font-weight: 500; } #now span { color: var(--ink2); }
+  .anim { display: flex; gap: 8px; margin-top: 8px; } .anim button { font: inherit; font-size: 14px; padding: 4px 12px; border-radius: 6px; border: 1px solid var(--line); background: transparent; color: var(--ink); cursor: pointer; }
+  #status { font-size: 14px; color: var(--muted); min-height: 1.6em; }
+  #status.warn { color: var(--warn); }
+  .notes { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line); margin-top: 20px; padding-top: 10px; }
+  .notes li { margin: 4px 0; }
+</style>
+</head>
+<body>
+<main>
+  <h1>El mismo punto, 15 minutos, seis maneras de moverse</h1>
+  <p>Seleccione un punto en el mapa. La gráfica muestra los km² de calles que se alcanzan en 15 minutos un martes a las 5:00 p. m., y cuántas veces es eso lo que se alcanza a pie. Prototipo interno, no publicado.</p>
+  <div class="grid">
+    <div><div id="map" role="application" aria-label="Mapa de San Juan: seleccione un punto de partida. Las áreas alcanzadas se dibujan y crecen de 0 a 15 minutos, un medio a la vez."></div>
+      <div id="now" aria-live="off"></div>
+      <div class="anim"><button id="play" type="button">Pausar</button><button id="replay" type="button">Repetir</button></div></div>
+    <div>
+      <div class="ctl"><label for="rush">Factor de hora pico del carro</label><input id="rush" type="range" min="0.3" max="1" step="0.05" value="0.55"><output id="rushOut">0.55</output></div>
+      <div id="status" role="status">Cargando la red vial y el horario…</div>
+      <div id="chart" aria-live="polite"></div>
+    </div>
+  </div>
+  <ul class="notes">
+    <li><b>Supuestos de velocidad.</b> A pie 4.8 km/h; bicicleta 14.5 km/h; e-scooter 12 km/h (los mismos valores del mapa de Viena; no hay datos de Puerto Rico). Carro: velocidad libre por tipo de vía (roads.py), y en hora pico esa velocidad por el factor de arriba. TomTom no publica datos de San Juan; el valor inicial, 0.55, es el cociente de Viena (16.5 ÷ 29.2 km/h). No se cuenta el tiempo de estacionar ni los semáforos.</li>
+    <li><b>Reglas de la red.</b> Bicicleta, e-scooter y carro respetan las vías de un solo sentido; a pie se camina en ambos sentidos. A pie, en bicicleta y en e-scooter no se usan autopistas. La red es la de roads.bin (OpenStreetMap): no incluye aceras, veredas ni escaleras, así que caminar es un estimado.</li>
+    <li><b>Transporte público.</b> Horario planificado de ATI (guaguas de la AMA, Tren Urbano y lanchas) para el martes 24 de noviembre de 2026, de 5:00 a 5:15 p. m., de puerta a puerta: caminar a la parada, esperar, viajar, transbordar (hasta 250 m en línea recta) y caminar al final. No incluye retrasos, públicos ni sistemas municipales.</li>
+    <li><b>Área.</b> Celdas de 25 m a 50 m o menos de un tramo de calle alcanzado (menos si queda menos tiempo para caminar fuera de la vía). Datos: © colaboradores de OpenStreetMap (ODbL); ATI, GTFS. Idea: el mapa de Viena de Milan Janosov.</li>
+  </ul>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="../../../site/js/roads.js"></script>
+<script src="reach.js"></script>
+<script>
+(async () => {
+  const $ = (s) => document.querySelector(s), status = $('#status'), fmt = (v, d = 1) => v.toLocaleString('es-PR', { minimumFractionDigits: d, maximumFractionDigits: d });
+  const map = L.map('map').setView([18.399, -66.0505], 13);
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '© colaboradores de <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>' }).addTo(map);
+  const pin = L.circleMarker([18.399, -66.0505], { radius: 7, color: '#d7301f', weight: 3, fillOpacity: 0.9 }).addTo(map);
+  let R, TT, SN, at = [-66.0505, 18.399];
+  // the reached cells on a canvas over the map, redrawn on every frame and every pan or zoom
+  const cv = L.DomUtil.create('canvas', ''), ctx = cv.getContext('2d');
+  map.getPanes().overlayPane.appendChild(cv); cv.style.pointerEvents = 'none';
+  const A = { modes: [], k: 0, t: 0, playing: true, last: 0 };   // modes in reveal order (smallest area first); k: the mode growing; t: its clock in seconds
+  const GROW_MS = 2200, HOLD_MS = 500, END_MS = 2500, BUDGET = 900;
+  function draw() {
+    const sz = map.getSize(), dpr = devicePixelRatio || 1;
+    if (cv.width !== sz.x * dpr || cv.height !== sz.y * dpr) { cv.width = sz.x * dpr; cv.height = sz.y * dpr; cv.style.width = sz.x + 'px'; cv.style.height = sz.y + 'px'; }
+    L.DomUtil.setPosition(cv, map.containerPointToLayerPoint([0, 0]));
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, sz.x, sz.y);
+    if (!A.modes.length) return;
+    const p0 = map.latLngToContainerPoint([at[1], at[0]]), px = map.latLngToContainerPoint([at[1], at[0] + 0.01]).x - p0.x, py = map.latLngToContainerPoint([at[1] + 0.01, at[0]]).y - p0.y;
+    const sx = px / 0.01, sy = py / 0.01;   // ponytail: linear lng/lat to pixels around the point; fine at city scale
+    const shown = A.modes.slice(0, A.k + 1).map((m, i) => [m, i < A.k ? BUDGET : A.t]).reverse();   // larger first, so smaller ones sit on top
+    for (const [m, until] of shown) {
+      const { x, y, t, cellM } = m.cells, w = Math.abs(cellM / (111320 * Math.cos(at[1] * Math.PI / 180)) * sx) + 0.6, h = Math.abs(cellM / 110574 * sy) + 0.6;
+      ctx.globalAlpha = 0.82; ctx.fillStyle = m.color;
+      for (let i = 0; i < t.length; i++) if (t[i] <= until) ctx.fillRect(p0.x + (x[i] - at[0]) * sx - w / 2, p0.y + (y[i] - at[1]) * sy - h / 2, w, h);
+    }
+    ctx.globalAlpha = 1;
+    const m = A.modes[A.k];
+    $('#now').innerHTML = `<b><i style="display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;background:${m.color}"></i>${m.es}</b><span>${fmt(Math.min(A.t, BUDGET) / 60)} min</span>`;
+  }
+  function tick(now) {
+    if (!A.playing || !A.modes.length) { A.running = false; return; }
+    const dt = A.last ? now - A.last : 0; A.last = now;
+    A.t += dt / GROW_MS * BUDGET;
+    const last = A.k === A.modes.length - 1, hold = (last ? END_MS : HOLD_MS) / GROW_MS * BUDGET;
+    if (A.t > BUDGET + hold) { if (last) { A.k = 0; } else A.k++; A.t = 0; }
+    draw(); requestAnimationFrame(tick);
+  }
+  function play(on) { A.playing = on; $('#play').textContent = on ? 'Pausar' : 'Reanudar'; if (on) start(); }
+  function start() { if (!A.running) { A.running = true; A.last = 0; requestAnimationFrame(tick); } }
+  map.on('move zoom viewreset resize', draw);
+  $('#play').addEventListener('click', () => play(!A.playing));
+  $('#replay').addEventListener('click', () => { A.k = 0; A.t = 0; draw(); if (!A.playing) play(true); });
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) A.playing = false;
+  try {
+    const [buf, tt] = await Promise.all([fetch('../../../site/data/roads.bin').then(r => { if (!r.ok) throw new Error(r.status); return r.arrayBuffer(); }), fetch('timetable.json').then(r => r.json())]);
+    R = new Roads(buf); TT = tt; SN = Reach.stopNodes(R, TT);
+  } catch (e) { status.textContent = `No se pudieron cargar los datos (${e.message}). Sirva la carpeta raíz del repositorio y vuelva a cargar.`; status.className = 'warn'; return; }
+
+  function run() {
+    const rush = +$('#rush').value; $('#rushOut').textContent = rush.toFixed(2);
+    const t = performance.now(), r = Reach.reachAll(R, at[0], at[1], 15, { rush }, TT, SN);
+    if (!r) { status.textContent = 'No hay una calle a 300 m o menos de ese punto. Seleccione otro.'; status.className = 'warn'; $('#chart').innerHTML = ''; return; }
+    status.className = ''; status.textContent = `Punto ${at[1].toFixed(4)}, ${at[0].toFixed(4)} · a ${Math.round(r.snapM)} m de la calle más cercana · ${Math.round(performance.now() - t)} ms`;
+    const walk = r.modes[0].km2, max = Math.max(...r.modes.map(m => m.km2)), rows = [...r.modes].sort((a, b) => a.km2 - b.km2);
+    $('#chart').innerHTML = rows.map(m => {
+      const note = m.id === 'car_rush' ? `libre × ${rush.toFixed(2)}` : m.transit ? `horario ATI · ${m.stops} ${m.stops === 1 ? 'parada' : 'paradas'}` : m.note;
+      return `<div class="row"><div><b><i style="background:${m.color}"></i>${m.es}</b><small>${note}</small></div><div class="track"><div class="bar${m.theory ? ' theory' : ''}" style="${m.theory ? '' : `background:${m.color};`}width:calc((100% - 160px) *${(m.km2 / max).toFixed(4)})"></div><span class="val">${fmt(m.km2)} km² · ×${fmt(m.km2 / walk)}</span></div></div>`;
+    }).join('');
+    const big = rows[rows.length - 1].cells; let w = Infinity, e = -Infinity, s = Infinity, n = -Infinity;
+    for (let i = 0; i < big.x.length; i++) { const x = big.x[i], y = big.y[i]; if (x < w) w = x; if (x > e) e = x; if (y < s) s = y; if (y > n) n = y; }
+    if (big.x.length) map.fitBounds([[s, w], [n, e]], { padding: [10, 10], animate: false });
+    A.modes = rows; A.k =A.playing ? 0 : rows.length - 1; A.t = A.playing ? 0 : BUDGET; draw();
+    if (A.playing) start();
+  }
+  map.on('click', (e) => { at = [e.latlng.lng, e.latlng.lat]; pin.setLatLng(e.latlng); status.textContent = 'Calculando…'; setTimeout(run, 10); });
+  $('#rush').addEventListener('change', run);
+  $('#rush').addEventListener('input', () => { $('#rushOut').textContent = (+$('#rush').value).toFixed(2); });
+  run();
+})();
+</script>
+</body>
+</html>

@@ -13,7 +13,8 @@ sys.path.insert(0, str(ROOT))
 import power_plants as pp  # noqa: E402
 
 FILE = ROOT / "site" / "data" / "power_plants.geojson"
-KEYS = {"name", "type", "municipio", "geoid", "eia", "tech", "mw", "bat_mw", "bat_mwh", "by", "sb", "out", "units", "y0", "y1", "plan", "plan_ym", "status"}
+KEYS = {"name", "type", "municipio", "geoid", "eia", "tech", "mw", "bat_mw", "bat_mwh", "by", "sb", "out", "units", "y0", "y1", "plan", "plan_ym", "status",
+        "stage", "as_of", "src", "url", "osm"}   # the last five: a built plant added from energy_src/plants_added.json
 
 
 class Rules(unittest.TestCase):
@@ -39,7 +40,7 @@ class File(unittest.TestCase):
         for p in self.p:
             self.assertLessEqual(set(p), KEYS, p["name"])
             self.assertEqual(p["type"], "Power plant")
-            self.assertIn(p["status"], ("op", "planned"))
+            self.assertIn(p["status"], ("op", "planned", "built"))
             self.assertIn(p["tech"], set(pp.TECH.values()))
 
     def test_points_are_in_puerto_rico_and_in_a_municipio(self):
@@ -67,6 +68,27 @@ class File(unittest.TestCase):
             if gen:
                 self.assertEqual(gen[p["tech"]], max(gen.values()), p["name"])
                 self.assertAlmostEqual(p["mw"], sum(gen.values()), delta=0.1 * len(gen))
+
+    def test_built_plants_are_added_apart_from_eias_totals(self):
+        built = [p for p in self.p if p["status"] == "built"]
+        added = json.loads(pp.ADDED.read_text(encoding="utf-8"))["plants"]
+        n = self.d["notes"]
+        self.assertEqual(len(built) + len(n["built_absorbed"]), len(added), "every added plant is in the file, or EIA lists it now")
+        self.assertEqual(n["built_plants"], len(built))
+        self.assertAlmostEqual(n["built_mw"], sum(p["mw"] for p in built), delta=0.1 * max(1, len(built)))
+        for p in built:
+            self.assertNotIn("eia", p)
+            self.assertIn(p["stage"], ("connected", "complete"))
+            self.assertRegex(p["as_of"], r"^20\d\d-\d\d$")
+            self.assertTrue(p["url"].startswith("https://") and p["src"] and p["osm"], p["name"])
+            self.assertEqual(p["tech"], "solar")
+
+    def test_an_added_plant_leaves_the_file_once_eia_lists_it(self):
+        M = pp.fac.Munis()
+        none_yet, _ = pp.added({}, M)
+        listed, absorbed = pp.added({"1": {"name": "CIRO One Salinas LLC"}}, M)
+        self.assertEqual(len(listed), len(none_yet) - 1)
+        self.assertEqual(absorbed, ["CIRO One Salinas"])
 
     def test_sorted_largest_first(self):
         mw = [p["mw"] or p.get("bat_mw", 0) for p in self.p]

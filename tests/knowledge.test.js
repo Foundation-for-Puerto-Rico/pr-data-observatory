@@ -145,7 +145,7 @@ test('the pages: one notice box on each published page with a notice, written by
     if (boxes.length) assert.ok(/icon_names=([a-z0-9_,]+)/.exec(html)[1].split(',').includes('warning'), `${a.page}: the icon font has the notice's icon`);
   }
   for (const f of fs.readdirSync(SITE).filter(f => f.endsWith('.html'))) assert.doesNotMatch(read(f), /In review:<\/b>|En revisión:<\/b>/, `${f}: the notice's words live in core/knowledge.js only`);
-  assert.deepStrictEqual(K.AREAS.filter(a => a.ai).map(a => a.id), ['routes', 'gii', 'women', 'moneycycle', 'publicmoney', 'publicspending', 'unusedfunds', 'urbanheat', 'inflation', 'reservoirs', 'broadband', 'energy', 'oppzones', 'tlinks'], 'the areas drafted with AI help (Route analysis, GII, Women in the labor force, FEMA disaster funding and need, Urban heat) keep their disclosure');
+  assert.deepStrictEqual(K.AREAS.filter(a => a.ai).map(a => a.id), ['routes', 'gii', 'women', 'moneycycle', 'publicmoney', 'publicspending', 'unusedfunds', 'urbanheat', 'inflation', 'reservoirs', 'broadband', 'energy', 'oppzones', 'tlinks', 'treach'], 'the areas drafted with AI help (Route analysis, GII, Women in the labor force, FEMA disaster funding and need, Urban heat) keep their disclosure');
 });
 
 test('the registry: unique ids, a known status, a name in both languages, and a page that draws its tabs from the registry', () => {

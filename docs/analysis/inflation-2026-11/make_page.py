@@ -272,7 +272,7 @@ def build():
     <div class="note"><b>{t("How to cite this page.", "Cómo citar esta página.")}</b> {t(f"Foundation for Puerto Rico, Knowledge Area: Inflation, PR Data Observatory, {men(lpr)} data (draft). Data: DTRH, US Bureau of Labor Statistics, Federal Reserve Banks of Cleveland and Philadelphia, U.S. Census Bureau.", f"Foundation for Puerto Rico, Área de conocimiento: Inflación, Observatorio de Datos de PR, datos de {mes(lpr)} (borrador). Datos: DTRH, Negociado de Estadísticas Laborales de EE. UU., Reservas Federales de Cleveland y Filadelfia, Negociado del Censo de EE. UU.")}</div>
   </section>
 </main>
-<script src="js/core/knowledge.js?v=34"></script>
+<script src="js/core/knowledge.js?v=35"></script>
 <script>Core.knowledge.render(); I18N.apply();</script>
 <script src="js/common.js?v=20"></script>
 <script src="js/inflation.js?v=2"></script>

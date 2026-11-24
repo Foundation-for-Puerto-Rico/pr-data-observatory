@@ -195,7 +195,7 @@ def build():
     <div class="note"><b>{t("How to cite this page.", "Cómo citar esta página.")}</b> {t("Foundation for Puerto Rico, Knowledge Area: Urban heat, PR Data Observatory, Snapshot 2026-10 (draft). Data: USGS (Landsat), NASA (ECOSTRESS), Copernicus (Sentinel-2) and U.S. Census Bureau.", "Foundation for Puerto Rico, Área de conocimiento: Calor urbano, Observatorio de Datos de PR, Snapshot 2026-10 (borrador). Datos: USGS (Landsat), NASA (ECOSTRESS), Copernicus (Sentinel-2) y Negociado del Censo de EE. UU.")}</div>
   </section>
 </main>
-<script src="js/core/knowledge.js?v=34"></script>
+<script src="js/core/knowledge.js?v=35"></script>
 <script>Core.knowledge.render(); I18N.apply();</script>
 <script src="js/common.js?v=20"></script>
 <script src="js/urban_heat.js?v=1"></script>
