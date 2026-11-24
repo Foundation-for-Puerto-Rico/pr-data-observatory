@@ -25,7 +25,8 @@
         "labels_conditions",
         "labels_community",
         "activelayers",
-        "osmtoggle"
+        "osmtoggle",
+        "regionfilter"
       ],
       "scripts": [
         "common.js",
@@ -37,6 +38,7 @@
         "core/legend.js",
         "core/stack.js",
         "core/activelayers.js",
+        "core/regionfilter.js",
         "icons.js",
         "access.js",
         "roads.js",
@@ -234,7 +236,8 @@
         "labels_places",
         "chat",
         "activelayers",
-        "osmtoggle"
+        "osmtoggle",
+        "regionfilter"
       ],
       "scripts": [
         "common.js",
@@ -243,6 +246,7 @@
         "core/classify.js",
         "core/legend.js",
         "core/activelayers.js",
+        "core/regionfilter.js",
         "icons.js",
         "access.js",
         "roads.js",

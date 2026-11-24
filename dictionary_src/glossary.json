@@ -14244,5 +14244,35 @@
   "case_sensitive": false,
   "highlight": true,
   "priority": 2
+ },
+ {
+  "id": "ersv",
+  "term": "ERSV",
+  "expansion": "Eastern Region Strategic Vision",
+  "expansion_es": "Visión Estratégica de la Región Este",
+  "plain": "Foundation for Puerto Rico's strategic plan for the east of the island. Its Eastern Region is a fixed set of 15 whole municipios: Canóvanas, Ceiba, Culebra, Fajardo, Humacao, Juncos, Las Piedras, Loíza, Luquillo, Maunabo, Naguabo, Río Grande, San Lorenzo, Vieques and Yabucoa. A regional figure is the sum of its municipios, or a pooled rate (the sum of the parts over the sum of the base), never an average of municipio rates.",
+  "plain_es": "Plan estratégico de Foundation for Puerto Rico para el este de la isla. Su Región Este es un conjunto fijo de 15 municipios completos: Canóvanas, Ceiba, Culebra, Fajardo, Humacao, Juncos, Las Piedras, Loíza, Luquillo, Maunabo, Naguabo, Río Grande, San Lorenzo, Vieques y Yabucoa. Una cifra regional es la suma de sus municipios, o una tasa agrupada (la suma de las partes sobre la suma de la base), nunca un promedio de las tasas municipales.",
+  "source": {
+   "name": "PR Data Observatory, data dictionary: Regions (groups of whole municipios)",
+   "url": "https://observatory.foundationpr.org/dictionary.html#geo.regions",
+   "name_es": "Observatorio de Datos de PR, diccionario de datos: Regiones (grupos de municipios completos)",
+   "checked": "2026-11-24"
+  },
+  "match": {
+   "en": [
+    "ERSV",
+    "Eastern Region Strategic Vision"
+   ],
+   "es": [
+    "ERSV",
+    "Visión Estratégica de la Región Este"
+   ]
+  },
+  "case_sensitive": true,
+  "highlight": true,
+  "priority": 3,
+  "see_also": [
+   "geo.regions"
+  ]
  }
 ]

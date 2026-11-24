@@ -20,13 +20,14 @@ Before this change, the 2D→3D link carried only the camera's centre and zoom (
 | Route plan | yes | yes | `r=` | both ways (unchanged) |
 | Sea level rise | feet, 1 to 10 | NOAA year and scenario | `slr=` | 2D only; kept by 3D. The 3D view's year and scenario are not in the address: they do not convert to one height |
 | Base map | `bm=` (decision 62; nine names since decision 102: positron, liberty, bright, dark, fiord, imagery, topo, relief, none) | `bm=` | `bm=` | both ways (unchanged) |
+| Region filter (Reference) | the Region menu (`core/regionfilter.js`, decision 113) | the Region menu | `rg=<id>` (an id of `data/geo/regions.json`) | both ways; the regional profile's link `#rg=<id>` without `c=` also opens the 2D Region tab (`docs/regions.md`) |
 | Time bar (vehicles' clock, storm years) | none | the time bar | none | not shared |
 | A pop-up of a point or area | Leaflet pop-up | MapLibre card | none | not shared; only the municipality's card is a selection |
 | One-time requests | `wb=`, `wc=` (open a workbench view or the composite builder, from the 3D chat); `mt=` (open a tool of Tools › Map tools by its `data-mt` code, from a lesson of the Learn page: `app.js` `MT_LINK` and `openToolLink`, only for a code a button of the pane has; `docs/learn.md`) | `ask=` (a question handed over by the 2D chat); `topic=` (open a topic of Explore: a Knowledge Area page's link back, `catalog.js` reads it before the map rewrites the address) | | read once, never written again |
 
 ## 2. The schema
 
-`#<municipality>&c=lat,lng,zoom&b=bearing&p=pitch&l=key,key,-key&s=measure&pv=…&r=…&e=…&ey=yyyy&eb=yyyy&ix=…&sc=…&slr=n&bm=name`, in that order, then any other key as it came. Every key is optional.
+`#<municipality>&c=lat,lng,zoom&b=bearing&p=pitch&l=key,key,-key&s=measure&pv=…&r=…&e=…&ey=yyyy&eb=yyyy&ix=…&sc=…&slr=n&bm=name&rg=id`, in that order, then any other key as it came. Every key is optional.
 
 - **The keys the 2D map has always written keep their names and formats.** `e=`, `ix=` and `sc=` stay URI-encoded (`encodeURIComponent`), and the municipality stays the bare first part. Every old link reads as before.
 - **`c=`**: latitude and longitude to 4 decimals (about 10 m) and the zoom to 2 decimals, in Leaflet units. The 3D view subtracts one level when it reads (`toMapLibre`) and adds it back when it writes (`fromMapLibre`). This is the ±1 rule both views already used.

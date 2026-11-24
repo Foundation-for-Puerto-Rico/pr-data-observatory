@@ -531,6 +531,7 @@ function writeHash() {
       ix: ex.ix || null, sc: ex.sc || null,
       slr: $('#lySlr').checked ? $('#slr').value : null,
       bm: bmLink || null,
+      rg: rgLink || null,   // the region filter of Reference (decision 113)
     });
     history.replaceState(null, '', hash || location.pathname + location.search);
     const l3 = document.querySelector('.views a[href^="3d.html"]'); if (l3) l3.href = '3d.html' + location.search + hash;   // the whole state (docs/view-state.md)
@@ -556,6 +557,7 @@ function applyHash() {
     const name = Object.keys(S.muni).find(k => norm(k) === norm(h.muni));
     if (name) selectMuni(name, { fly: !h.c }); else toast(T('No municipality named "{name}". Pick one from the search box.', { name: h.muni }), 6000);
   }
+  if (rfCtl && (h.rg || null) !== rfCtl.value()) rgLink = rfCtl.set(h.rg || null);   // a pasted address with another region, or none
   if (BM_NAMES.test(h.bm || '') && h.bm !== bmLink) { bmLink = h.bm; if (bmH) { bmH.set(bmLink); bmCtl.set(bmLink); } }   // a pasted address with another base map
   const c = h.c && h.c.split(',').map(Number);
   if (c && c.length === 3 && c.every(Number.isFinite)) { const h = mapHome.split(',').map(Number); map.setView([c[0], c[1]], c[2], { animate: false }); if (c[2] === h[2] && Math.abs(c[0] - h[0]) < 1e-3) mapHome = viewKey(); }   // a link at the whole-island view (perhaps shifted beside the panel) is still home
@@ -623,6 +625,7 @@ $('#rankBy').onchange = () => { rankDesc = true; renderRank(); }; $('#rankNorm')
 $('#dlCsv').onclick = () => downloadCsv(Object.values(S.muni), `pr_digital_twin_municipalities_${(S.meta.label || 'snapshot').replace(/[^0-9A-Za-z-]+/g, '_')}.csv`);
 initPanel(); initTabs(); initFolds($('#tab-layers'));
 const regionWanted = (/[#&]rg=([\w-]+)/.exec(location.hash) || [])[1];   // a regional profile's "Open on the map" sends #rg=<id> (docs/regions.md); read now, before the map rewrites the address
+const regionTab = !!regionWanted && !/[#&]c=/.test(location.hash);   // only that link opens the Region tab: an address the map wrote (it always has c=) keeps rg= for the region filter of Reference
 // The "layers on" chip at the top of the map (core/activelayers.js). Límites, the municipality boundaries, is the reference layer: it stays on and is never counted.
 Core.activelayers.mount(Core.activelayers.combine(
   Core.activelayers.switches(Object.entries(LAYER_KEYS).filter(([k]) => k !== 'muni').map(([, id]) => $('#' + id)), { walkRings: () => T('Walk rings') }, { walkRings: () => map.hasLayer(ringLayer) }),   // the rings count while they are drawn (zoom 14 and stops or stations on)
@@ -791,7 +794,7 @@ async function loadProt() {
     rebuildPlaces();   // the pins are off at the start and the listings are not loaded: this only writes the size hint beside the switch
     ready = true;
     applyHash();
-    if (regionWanted) showTab('region');   // a regional profile's "Open on the map": once the municipalities are in
+    if (regionTab) showTab('region');   // a regional profile's "Open on the map": once the municipalities are in
     if (!location.hash) writeHash();
     if (document.readyState === 'loading') await new Promise(r => document.addEventListener('DOMContentLoaded', r, { once: true }));   // the scripts after this one (transit, economy, chat) must have run before their start hook is called
     if (typeof onMapReady === 'function') onMapReady();
@@ -803,6 +806,7 @@ async function loadProt() {
   $('#loader').classList.add('hide'); performance.mark('ready');   // the ready moment (tests/browser/throttle.js)
   if (MT_LINK) openToolLink(MT_LINK);
   startBasemap();
+  startRegionFilter();
   Promise.all([addJs('js/mapextras.js?v=4'), I18N.load('mapextras')]).then(() => MapExtras.init(), () => { /* the extras are optional: the map works without them */ });   // town names, Islands (js/mapextras.js)
 })();
 /** The base map, after ready: js/core/basemap.js loads MapLibre and its Leaflet bridge and draws OpenFreeMap under the panes; without WebGL, or when the
@@ -816,6 +820,24 @@ function startBasemap() {
     // a pick is kept as the viewer's default only once its style has loaded (keep), as in 3D; a style that loads also takes away a pending failure notice
     bmCtl = B.control($('#basemap'), { value: bmH.name, onPick: n => { bmLink = n; bmH.set(n, { keep: true }); writeHash(); } });
   }, () => { off(); osmiSync('off'); });
+}
+// The region filter of Reference (js/core/regionfilter.js and data/geo/regions.json, loaded on use: when the Reference group is first opened, or at ready when
+// the address has rg=; docs/regions.md, "The region filter"; decision 113):
+// a region's municipios outlined, the rest of the island faded, the map framed on it; the data layers are not cut. Kept in the address (rg=) and the 3D link.
+let rgLink = Core.viewstate.parse(location.hash).rg, rfCtl = null;
+/** Runs go() once el can be seen: now when `now` is set or el is not in a closed group of the Layers tab (common.js initFolds), else when its group opens. */
+function whenShown(el, now, go) {
+  const body = el && el.closest('.fold-body');
+  if (now || !body || !body.hidden) return go();
+  const mo = new MutationObserver(() => { if (!body.hidden) { mo.disconnect(); go(); } });
+  mo.observe(body, { attributes: true, attributeFilter: ['hidden'] });
+}
+function startRegionFilter() {
+  const fit = !/[#&]c=/.test(location.hash) || regionTab;   // an address with its own camera keeps it; the regional profile's link frames the region
+  whenShown($('#regionFilter'), rgLink, () => (window.Core.regionfilter ? Promise.resolve() : addJs('js/core/regionfilter.js?v=1')).then(() => fetchJson('data/geo/regions.json')).then(d => {
+    rfCtl = Core.regionfilter.control($('#regionFilter'), { regions: d.regions, features: S.muniFc.features, view: Core.regionfilter.leaflet(map, L), value: rgLink, fit, onPick: id => { rgLink = id; writeHash(); } });
+    rgLink = rfCtl.value(); writeHash();   // an unknown region in the address is dropped
+  }, () => { $('#regionFilterNote').textContent = T('The regions could not be loaded. Check your connection and reload the page.'); }));
 }
 // The OSM inspector: the "Inspect map" toggle under the base map; core/osminspect.js and its Spanish load the first time it is used (docs/basemap.md, section 8).
 // It works only while an OpenStreetMap base map is drawn (not the USGS pictures); while it is on it takes the map's clicks before the observatory's layers.

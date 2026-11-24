@@ -224,3 +224,12 @@ test('3D follows the chip\'s x and "Turn all off" (change events that do not bub
   assert.match(read('js/wcrp.js'), /try \{ id = decodeURIComponent\(/); assert.match(read('js/datamgmt.js'), /try \{ h = decodeURIComponent\(location\.hash\.slice\(1\)\); \} catch/);
   assert.ok(+/js\/wcrp\.js\?v=(\d+)/.exec(read('wcrp.html'))[1] >= 10, 'wcrp.js at v=10 or later'); assert.ok(+/js\/datamgmt\.js\?v=(\d+)/.exec(read('data-management.html'))[1] >= 2, 'datamgmt.js at v=2 or later');
 });
+
+test('rg= (the region filter of Reference, decision 113): read, written after bm=, kept by the other view, a bad id ignored', () => {
+  assert.strictEqual(V.parse('#c=18.2,-66.5,9&rg=ersv').rg, 'ersv');
+  assert.strictEqual(V.parse('#rg=reg-sol-norte').rg, 'reg-sol-norte');
+  for (const bad of ['#rg=Ersv', '#rg=a%26b', '#rg=__proto__', '#rg=' + 'x'.repeat(41)]) assert.strictEqual(V.parse(bad).rg, null, bad);
+  assert.strictEqual(V.write('2d', '', { c: V.cOf(18.2, -66.5, 9), bm: 'dark', rg: 'ersv' }), '#c=18.2000,-66.5000,9&bm=dark&rg=ersv');
+  assert.strictEqual(V.write('3d', '#c=18.2000,-66.5000,9&rg=ersv', { b: '10' }), '#c=18.2000,-66.5000,9&b=10&rg=ersv', 'the 3D view keeps the 2D pick');
+  assert.strictEqual(V.write('2d', '#c=18.2000,-66.5000,9&rg=ersv', { rg: null }), '#c=18.2000,-66.5000,9', '"All of Puerto Rico" takes it out');
+});
