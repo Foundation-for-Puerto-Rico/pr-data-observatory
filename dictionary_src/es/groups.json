@@ -52,7 +52,8 @@
    "Population": "Cuántas personas viven en cada municipio y en Puerto Rico cada año desde 2010, cuánto ha cambiado esa cifra desde los censos de 2010 y 2020, y qué edad tienen las personas residentes (la proporción de 65 años o más y la mediana de edad, que es la edad que divide a las personas residentes en dos mitades).",
    "Residents exposed to hazards, protected land and transit": "Cuántas personas residentes viven dentro de una zona de riesgo de inundación de FEMA, en el área que inundaría un aumento del nivel del mar de 1 a 10 pies, dentro de un área protegida o a 400 m o menos de una parada de transporte colectivo, para cada municipio, barrio y sector censal, contadas a partir de los bloques del Censo 2020.",
    "Language": "La proporción de personas de 5 años o más que dicen hablar inglés menos que \"muy bien\", según estimados de la encuesta con márgenes de error, para municipios, barrios y sectores censales.",
-   "Daytime population": "Cuántas personas hay en cada municipio en un día de trabajo, cuánto suman o restan los viajes al trabajo a sus residentes, y la proporción de sus personas trabajadoras que trabajan en otro municipio: calculado con los flujos de viaje al trabajo de 2016-2020 del Negociado del Censo y el Censo 2020, con márgenes de error."
+   "Daytime population": "Cuántas personas hay en cada municipio en un día de trabajo, cuánto suman o restan los viajes al trabajo a sus residentes, y la proporción de sus personas trabajadoras que trabajan en otro municipio: calculado con los flujos de viaje al trabajo de 2016-2020 del Negociado del Censo y el Censo 2020, con márgenes de error.",
+   "Net migration by age": "Cuántas personas ganó o perdió cada municipio por la migración entre los censos de 2010 y 2020, por grupo de edad (estimados por el método residual)."
   },
   "_en": {
    "summary": "1612f96c",
@@ -62,7 +63,8 @@
    "groups.Population": "fac7e61c",
    "groups.Residents exposed to hazards, protected land and transit": "6f60d022",
    "groups.Language": "fd656d98",
-   "groups.Daytime population": "dd4db6cb"
+   "groups.Daytime population": "dd4db6cb",
+   "groups.Net migration by age": "9ff8ac81"
   }
  },
  "housing": {

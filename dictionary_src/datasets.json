@@ -3108,6 +3108,38 @@
    "note": "4 estimates for the 78 municipios and Puerto Rico (the key list ends with 72; decision 107, step 9, fifth part; jobs_reach.py): the average number of jobs, and the share of Puerto Rico's jobs, the residents can reach within 30 and 45 minutes by car. QCEW 2025 jobs spread over business places (Overture), free-flow planning speeds over roads.bin, from 2020 Census blocks. Only municipio figures are published. docs/jobs-reach.md."
   },
   {
+   "id": "netmig_age_series",
+   "file": "netmig_age_series.json",
+   "title": {
+    "en": "Net migration by age, 2010-2020 (estimate), by municipio",
+    "es": "Migración neta por edad, 2010-2020 (estimado), por municipio"
+   },
+   "geography": {
+    "level": "municipio",
+    "key": "geo.ids"
+   },
+   "time": {
+    "type": "period",
+    "first": 2020,
+    "last": 2020,
+    "years_path": "years"
+   },
+   "domains": [
+    "population",
+    "economy"
+   ],
+   "sources": [
+    "census_pep",
+    "un_wpp"
+   ],
+   "licence_class": "open-with-conditions",
+   "cadence": "as-needed",
+   "published": "2026-11",
+   "review": [],
+   "tier": "small",
+   "note": "7 estimates for the 78 municipios and Puerto Rico (the key list ends with 72; decision 107, step 9, sixth part; netmig_age.py): net migration between the 2010 and 2020 censuses of the people aged 10 and over in 2020, by age group, per 100 expected, and the number of people, by the residual (cohort survival) method with Puerto Rico's UN life table. Labelled 2020, the end of the window. docs/net-migration-age.md."
+  },
+  {
    "id": "upstream",
    "file": "upstream.json",
    "title": {

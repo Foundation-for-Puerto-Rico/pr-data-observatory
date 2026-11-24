@@ -1,7 +1,7 @@
 {
  "built": "2026-11-24",
  "snapshot": "Snapshot 2026-10",
- "total_bytes": 145066757,
+ "total_bytes": 145161596,
  "limits": {
   "site_bytes": 1048576000,
   "file_bytes": 104857600,
@@ -11,15 +11,15 @@
  "needs_planning": false,
  "growth_note": "Every harvested dataset stays and new ones are added, so the data folder only grows. Each dataset is its own lazily loaded file. When the total passes the planning line, move the large files to object storage as Parquet or PMTiles and query them in the browser (for example with DuckDB-WASM) while the small summaries stay on the page.",
  "totals": {
-  "files": 197,
-  "bytes": 145066757,
-  "records": 8935409,
-  "fields": 2527,
-  "values": 12898802,
-  "items": 1164,
+  "files": 198,
+  "bytes": 145161596,
+  "records": 8935488,
+  "fields": 2534,
+  "values": 12899355,
+  "items": 1171,
   "vertices": 4047665,
-  "counted_files": 158,
-  "documenting_items": 844,
+  "counted_files": 159,
+  "documenting_items": 851,
   "first_published": "2026-10-01",
   "last_updated": "2026-11-24"
  },
@@ -395,12 +395,12 @@
   },
   {
    "date": "2026-11-24",
-   "files": 197,
-   "bytes": 145066757,
-   "records": 8935409,
-   "fields": 2527,
-   "values": 12898802,
-   "items": 1164
+   "files": 198,
+   "bytes": 145161596,
+   "records": 8935488,
+   "fields": 2534,
+   "values": 12899355,
+   "items": 1171
   }
  ],
  "domain_names": {
@@ -1125,8 +1125,8 @@
   {
    "file": "catalog.json",
    "title": "Catalog: domains and headline figures, read first",
-   "bytes": 30476,
-   "gzip_bytes": 9150,
+   "bytes": 30525,
+   "gzip_bytes": 9161,
    "loaded_by": [
     {
      "route": "map",
@@ -1153,7 +1153,7 @@
    "vertices": null,
    "first_published": "2026-10-06",
    "last_updated": "2026-11-24",
-   "versions": 268,
+   "versions": 270,
    "documented_by": 1,
    "review": {
     "status": "unstated",
@@ -1172,8 +1172,8 @@
   {
    "file": "catalog_domains.json",
    "title": "Catalog: the domain of each dictionary entry, for the area profile",
-   "bytes": 30642,
-   "gzip_bytes": 7697,
+   "bytes": 30854,
+   "gzip_bytes": 7740,
    "loaded_by": [
     {
      "route": "profile",
@@ -1196,7 +1196,7 @@
    "vertices": null,
    "first_published": "2026-11-16",
    "last_updated": "2026-11-24",
-   "versions": 20,
+   "versions": 21,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -1206,8 +1206,8 @@
   {
    "file": "catalog_es.json",
    "title": "Catalog: words of the Spanish summaries, for the search",
-   "bytes": 160004,
-   "gzip_bytes": 41369,
+   "bytes": 160791,
+   "gzip_bytes": 41468,
    "loaded_by": [],
    "title_es": "Catálogo: palabras de los resúmenes en español, para la búsqueda",
    "domains": [
@@ -1218,7 +1218,7 @@
    "geography": "none",
    "time": "snapshot",
    "built": "2026-10-02T02:31:31+00:00",
-   "items": 1068,
+   "items": 1075,
    "kind": "documentation",
    "records": null,
    "fields": null,
@@ -1226,7 +1226,7 @@
    "vertices": null,
    "first_published": "2026-10-18",
    "last_updated": "2026-11-24",
-   "versions": 92,
+   "versions": 93,
    "documented_by": 1,
    "review": {
     "status": "none",
@@ -1236,8 +1236,8 @@
   {
    "file": "catalog_index.json",
    "title": "Catalog: index of the dictionary, read on first use",
-   "bytes": 281196,
-   "gzip_bytes": 47405,
+   "bytes": 283950,
+   "gzip_bytes": 47802,
    "loaded_by": [],
    "title_es": "Catálogo: índice del diccionario, que se lee al usarlo",
    "domains": [
@@ -1248,7 +1248,7 @@
    "geography": "none",
    "time": "snapshot",
    "built": "2026-10-02T02:31:31+00:00",
-   "items": 1164,
+   "items": 1171,
    "kind": "documentation",
    "records": null,
    "fields": null,
@@ -1256,7 +1256,7 @@
    "vertices": null,
    "first_published": "2026-10-18",
    "last_updated": "2026-11-24",
-   "versions": 105,
+   "versions": 106,
    "documented_by": 1,
    "review": {
     "status": "none",
@@ -1826,8 +1826,8 @@
   {
    "file": "dictionary.json",
    "title": "Data dictionary: entries, sources, glossary and descriptions",
-   "bytes": 5606673,
-   "gzip_bytes": 1235751,
+   "bytes": 5637862,
+   "gzip_bytes": 1240526,
    "loaded_by": [],
    "title_es": "Diccionario de datos: entradas, fuentes, glosario y descripciones",
    "domains": [
@@ -1838,7 +1838,7 @@
    "geography": "none",
    "time": "snapshot",
    "built": "2026-11-24",
-   "items": 1164,
+   "items": 1171,
    "kind": "documentation",
    "records": null,
    "fields": null,
@@ -1846,7 +1846,7 @@
    "vertices": null,
    "first_published": "2026-10-05",
    "last_updated": "2026-11-24",
-   "versions": 226,
+   "versions": 228,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -2320,8 +2320,8 @@
   {
    "file": "dictionary_detail_population.json",
    "title": "Data dictionary page: the full entries of the Population and households domain, read when one is opened",
-   "bytes": 141821,
-   "gzip_bytes": 24035,
+   "bytes": 163001,
+   "gzip_bytes": 26329,
    "loaded_by": [],
    "title_es": "Página del diccionario de datos: las entradas completas del dominio Población y hogares, que se leen al abrir una",
    "domains": [
@@ -2331,15 +2331,15 @@
    "tier": "medium",
    "geography": "none",
    "time": "snapshot",
-   "items": 44,
+   "items": 51,
    "kind": "documentation",
    "records": null,
    "fields": null,
    "values": null,
    "vertices": null,
    "first_published": "2026-10-18",
-   "last_updated": "2026-11-23",
-   "versions": 11,
+   "last_updated": "2026-11-24",
+   "versions": 12,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -2436,8 +2436,8 @@
   {
    "file": "dictionary_detail_system.json",
    "title": "Data dictionary page: the full entries of the Observatory system domain, read when one is opened",
-   "bytes": 717637,
-   "gzip_bytes": 214645,
+   "bytes": 718001,
+   "gzip_bytes": 214778,
    "loaded_by": [],
    "title_es": "Página del diccionario de datos: las entradas completas del dominio Sistema del observatorio, que se leen al abrir una",
    "domains": [
@@ -2455,7 +2455,7 @@
    "vertices": null,
    "first_published": "2026-10-18",
    "last_updated": "2026-11-24",
-   "versions": 110,
+   "versions": 111,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -2466,7 +2466,7 @@
    "file": "dictionary_detail_system_es.json",
    "title": "Data dictionary page in Spanish: how to read each entry of the Observatory system domain, read when one is opened",
    "bytes": 60244,
-   "gzip_bytes": 18935,
+   "gzip_bytes": 18934,
    "loaded_by": [],
    "title_es": "Página del diccionario de datos en español: cómo leer cada entrada del dominio Sistema del observatorio, que se lee al abrir una",
    "domains": [
@@ -2484,7 +2484,7 @@
    "vertices": null,
    "first_published": "2026-10-21",
    "last_updated": "2026-11-24",
-   "versions": 57,
+   "versions": 58,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -2494,8 +2494,8 @@
   {
    "file": "dictionary_list.json",
    "title": "Data dictionary page: the list, filters and search words, read first",
-   "bytes": 1918979,
-   "gzip_bytes": 429899,
+   "bytes": 1929778,
+   "gzip_bytes": 431875,
    "loaded_by": [
     {
      "route": "dictionary",
@@ -2511,7 +2511,7 @@
    "geography": "none",
    "time": "snapshot",
    "built": "2026-11-24",
-   "items": 1164,
+   "items": 1171,
    "kind": "documentation",
    "records": null,
    "fields": null,
@@ -2519,7 +2519,7 @@
    "vertices": null,
    "first_published": "2026-10-18",
    "last_updated": "2026-11-24",
-   "versions": 173,
+   "versions": 175,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -2529,8 +2529,8 @@
   {
    "file": "dictionary_list_es.json",
    "title": "Data dictionary page in Spanish: the names, labels, source cards and area texts, read right after the page is ready",
-   "bytes": 426929,
-   "gzip_bytes": 118633,
+   "bytes": 427978,
+   "gzip_bytes": 118983,
    "loaded_by": [
     {
      "route": "dictionary",
@@ -2553,7 +2553,7 @@
    "vertices": null,
    "first_published": "2026-10-21",
    "last_updated": "2026-11-24",
-   "versions": 75,
+   "versions": 76,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -2582,7 +2582,7 @@
    "vertices": null,
    "first_published": "2026-10-05",
    "last_updated": "2026-11-24",
-   "versions": 126,
+   "versions": 127,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -2592,8 +2592,8 @@
   {
    "file": "dictionary_words.json",
    "title": "Data dictionary search words: the words of each entry's definition, method, geography, source notes, how to read it and cautions, for the page's search",
-   "bytes": 1312706,
-   "gzip_bytes": 354080,
+   "bytes": 1320814,
+   "gzip_bytes": 355612,
    "loaded_by": [
     {
      "route": "dictionary",
@@ -2616,7 +2616,7 @@
    "vertices": null,
    "first_published": "2026-11-16",
    "last_updated": "2026-11-24",
-   "versions": 27,
+   "versions": 28,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -3836,8 +3836,8 @@
   {
    "file": "glossary_defs_en.json",
    "title": "Glossary highlighter: the English definitions and sources, read the first time a reader points at a word",
-   "bytes": 195684,
-   "gzip_bytes": 66074,
+   "bytes": 196892,
+   "gzip_bytes": 66505,
    "loaded_by": [],
    "title_es": "Resaltador del glosario: las definiciones en inglés y sus fuentes, que se leen la primera vez que alguien señala una palabra",
    "domains": [
@@ -3854,7 +3854,7 @@
    "vertices": null,
    "first_published": "2026-10-19",
    "last_updated": "2026-11-24",
-   "versions": 79,
+   "versions": 81,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -3864,8 +3864,8 @@
   {
    "file": "glossary_defs_es.json",
    "title": "Glossary highlighter: the Spanish definitions and sources, read the first time a reader points at a word",
-   "bytes": 211617,
-   "gzip_bytes": 72971,
+   "bytes": 212905,
+   "gzip_bytes": 73422,
    "loaded_by": [],
    "title_es": "Resaltador del glosario: las definiciones en español y sus fuentes, que se leen la primera vez que alguien señala una palabra",
    "domains": [
@@ -3882,7 +3882,7 @@
    "vertices": null,
    "first_published": "2026-10-19",
    "last_updated": "2026-11-24",
-   "versions": 79,
+   "versions": 81,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -3892,8 +3892,8 @@
   {
    "file": "glossary_forms_en.json",
    "title": "Glossary highlighter: the English forms of the highlighted terms, read just after a page is ready",
-   "bytes": 26650,
-   "gzip_bytes": 8505,
+   "bytes": 26814,
+   "gzip_bytes": 8554,
    "loaded_by": [],
    "title_es": "Resaltador del glosario: las formas en inglés de los términos que se resaltan, que se leen justo después de que la página está lista",
    "domains": [
@@ -3910,7 +3910,7 @@
    "vertices": null,
    "first_published": "2026-10-19",
    "last_updated": "2026-11-24",
-   "versions": 76,
+   "versions": 78,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -3920,8 +3920,8 @@
   {
    "file": "glossary_forms_es.json",
    "title": "Glossary highlighter: the Spanish forms of the highlighted terms, read just after a page is ready",
-   "bytes": 27310,
-   "gzip_bytes": 9748,
+   "bytes": 27493,
+   "gzip_bytes": 9801,
    "loaded_by": [
     {
      "route": "map",
@@ -4031,7 +4031,7 @@
    "vertices": null,
    "first_published": "2026-10-19",
    "last_updated": "2026-11-24",
-   "versions": 76,
+   "versions": 78,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -5255,6 +5255,50 @@
       "es": "regiones de la Compañía de Turismo"
      }
     ]
+   }
+  },
+  {
+   "file": "netmig_age_series.json",
+   "title": "Net migration by age, 2010-2020 (estimate), by municipio",
+   "bytes": 15247,
+   "gzip_bytes": 3760,
+   "loaded_by": [
+    {
+     "route": "profile",
+     "when": "first"
+    }
+   ],
+   "title_es": "Migración neta por edad, 2010-2020 (estimado), por municipio",
+   "domains": [
+    "population",
+    "economy"
+   ],
+   "licence_class": "open-with-conditions",
+   "tier": "small",
+   "geography": "municipio",
+   "time": "period",
+   "datasets": 7,
+   "years": [
+    2020,
+    2020
+   ],
+   "built": "2026-11-24",
+   "kind": "data",
+   "records": 79,
+   "fields": 7,
+   "values": 553,
+   "vertices": null,
+   "first_published": "2026-11-24",
+   "last_updated": "2026-11-24",
+   "versions": 1,
+   "documented_by": 7,
+   "review": {
+    "status": "none",
+    "flags": []
+   },
+   "map": {
+    "e": "netmig_10_plus_pct",
+    "n": 7
    }
   },
   {
@@ -7946,8 +7990,8 @@
   {
    "file": "wanted.json",
    "title": "Datasets wanted: candidate sources not yet harvested",
-   "bytes": 184929,
-   "gzip_bytes": 54724,
+   "bytes": 185187,
+   "gzip_bytes": 54833,
    "loaded_by": [],
    "title_es": "Datos deseados: fuentes candidatas aún no recolectadas",
    "domains": [
@@ -7965,7 +8009,7 @@
    "vertices": null,
    "first_published": "2026-10-05",
    "last_updated": "2026-11-24",
-   "versions": 63,
+   "versions": 64,
    "documented_by": 3,
    "review": {
     "status": "none",

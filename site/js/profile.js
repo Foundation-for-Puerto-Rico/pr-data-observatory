@@ -7,7 +7,7 @@
 
 const P = { E: Core.engine.create(), rows: [], area: null, complete: false };
 const getJson = (path) => fetchJson(path);
-const FIRST = ['econ', 'hous', 'popu', 'commuting', 'expo', 'facilities', 'conditions'];   // names in Core.datasets.FILES
+const FIRST = ['econ', 'hous', 'popu', 'commuting', 'netmig', 'expo', 'facilities', 'conditions'];   // names in Core.datasets.FILES
 const LEFT_OUT = ['wcrp'];   // barrio values only (WCRP vulnerability ranks), so no municipio has one: the profile does not fetch them
 
 async function profLoad() {

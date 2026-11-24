@@ -1,0 +1,443 @@
+[
+  {
+    "id": "netmig_age.netmig_10_19_pct",
+    "ask": {
+      "en": [
+        "net migration 10 to 19",
+        "migration by age",
+        "who left"
+      ],
+      "es": [
+        "migración neta 10 a 19",
+        "migración por edad"
+      ]
+    },
+    "name": "Net migration, ages 10 to 19 in 2020, 2010-2020 (estimate, % of expected)",
+    "domain": "population",
+    "domains": [
+      "population",
+      "economy"
+    ],
+    "group": "Net migration by age",
+    "kind": "variable",
+    "plain": "How many people aged 10 to 19 in 2020 each municipio gained or lost to migration since 2010, per 100 it would have had with no migration.",
+    "definition": "Net migration between the 2010 and 2020 censuses of the people aged 10 to 19 in 2020 (aged 0 to 9 in 2010), per 100 of the people of that age the municipio would have had with no migration: positive, more came than left; negative, more left. An estimate by the residual method: the 2020 census count of each age group minus the survivors of the same people in the 2010 census, by sex, with Puerto Rico's life table (UN World Population Prospects 2024, 2010-2019). It counts moves to and from the rest of Puerto Rico and abroad together, net; errors in either census land in it, and in small municipios a few hundred people can move the figure.",
+    "unit": "%",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2020,
+      "last": 2020,
+      "frequency": "The window 2010-2020, census to census; the next window needs the 2030 census."
+    },
+    "method": "netmig_age.py compares, for each municipio, sex and five-year age group, the people aged a to a+4 in the 2010 census with the same generation, aged a+10 to a+14, in the 2020 census. Puerto Rico's life table (UN World Population Prospects 2024, the person-years lived by age and sex averaged over 2010-2019) says how many of them would still be alive; the 2020 count minus those survivors is the net migration of the group. Children under 10 in 2020, born during the decade, are left out.",
+    "sources": [
+      "census_pep",
+      "un_wpp"
+    ],
+    "source_detail": "Estimated by the observatory: the 2010 and 2020 census counts by municipio, age and sex (Census Bureau estimates files, census bases) and Puerto Rico's life table (UN WPP 2024), by the residual method (netmig_age.py)",
+    "how_to_read": "Puerto Rico: -17.6%. Lowest: Guánica (-35.4%), Arroyo (-29.8%), Yabucoa (-29.3%). Highest: Isabela (-6.3%), Camuy (-7.0%), Rincón (-7.1%).",
+    "caveats": [
+      "Net: people who moved within Puerto Rico and people who left for or came from abroad are counted together, and arrivals cancel departures.",
+      "Errors in either census land in the estimate, and the 2020 census added noise to protect privacy: in small municipios a few hundred people move a rate by several points.",
+      "One life table for the whole island: a municipio where people die younger than average shows a little more out-migration than it had."
+    ],
+    "see_also": [
+      "netmig_age.netmig_20_29_pct",
+      "netmig_age.netmig_30_44_pct",
+      "netmig_age.netmig_45_64_pct"
+    ],
+    "where": {
+      "files": [
+        "netmig_age_series.json:netmig_10_19_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Population · Net migration by age, 2010-2020 (estimate)): Net migration, ages 10 to 19 in 2020, 2010-2020 (estimate, % of expected)",
+          "href": "index.html#e=netmig_10_19_pct.f"
+        }
+      ]
+    },
+    "added": "2026-11-24"
+  },
+  {
+    "id": "netmig_age.netmig_20_29_pct",
+    "ask": {
+      "en": [
+        "net migration 20 to 29",
+        "migration by age",
+        "who left"
+      ],
+      "es": [
+        "migración neta 20 a 29",
+        "migración por edad"
+      ]
+    },
+    "name": "Net migration, ages 20 to 29 in 2020, 2010-2020 (estimate, % of expected)",
+    "domain": "population",
+    "domains": [
+      "population",
+      "economy"
+    ],
+    "group": "Net migration by age",
+    "kind": "variable",
+    "plain": "How many people aged 20 to 29 in 2020 each municipio gained or lost to migration since 2010, per 100 it would have had with no migration.",
+    "definition": "Net migration between the 2010 and 2020 censuses of the people aged 20 to 29 in 2020 (aged 10 to 19 in 2010), per 100 of the people of that age the municipio would have had with no migration: positive, more came than left; negative, more left. An estimate by the residual method: the 2020 census count of each age group minus the survivors of the same people in the 2010 census, by sex, with Puerto Rico's life table (UN World Population Prospects 2024, 2010-2019). It counts moves to and from the rest of Puerto Rico and abroad together, net; errors in either census land in it, and in small municipios a few hundred people can move the figure.",
+    "unit": "%",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2020,
+      "last": 2020,
+      "frequency": "The window 2010-2020, census to census; the next window needs the 2030 census."
+    },
+    "method": "netmig_age.py compares, for each municipio, sex and five-year age group, the people aged a to a+4 in the 2010 census with the same generation, aged a+10 to a+14, in the 2020 census. Puerto Rico's life table (UN World Population Prospects 2024, the person-years lived by age and sex averaged over 2010-2019) says how many of them would still be alive; the 2020 count minus those survivors is the net migration of the group. Children under 10 in 2020, born during the decade, are left out.",
+    "sources": [
+      "census_pep",
+      "un_wpp"
+    ],
+    "source_detail": "Estimated by the observatory: the 2010 and 2020 census counts by municipio, age and sex (Census Bureau estimates files, census bases) and Puerto Rico's life table (UN WPP 2024), by the residual method (netmig_age.py)",
+    "how_to_read": "Puerto Rico: -28.1%. Lowest: Guánica (-50.2%), Maricao (-44.1%), Salinas (-43.4%). Highest: Culebra (-12.6%), San Juan (-12.7%), Bayamón (-19.1%).",
+    "caveats": [
+      "Net: people who moved within Puerto Rico and people who left for or came from abroad are counted together, and arrivals cancel departures.",
+      "College towns show a loss in the ages that were students in 2010: the census counts students where they study (Mayagüez's university, for one), and most leave after graduating.",
+      "Errors in either census land in the estimate, and the 2020 census added noise to protect privacy: in small municipios a few hundred people move a rate by several points.",
+      "One life table for the whole island: a municipio where people die younger than average shows a little more out-migration than it had.",
+      "Check: the residual for every age (ages 10 and over, -384,100, plus about -44,868 children born in the decade) is -428,968, 6.1% from the demographic balance of the two censuses (-456,866: the change in population minus births plus deaths). The UN's net migration for 2010-2019 is -408,407; the Census Bureau's estimate made before the 2020 census, -583,765, overstated the loss."
+    ],
+    "see_also": [
+      "netmig_age.netmig_10_19_pct",
+      "netmig_age.netmig_30_44_pct",
+      "netmig_age.netmig_45_64_pct"
+    ],
+    "where": {
+      "files": [
+        "netmig_age_series.json:netmig_20_29_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Population · Net migration by age, 2010-2020 (estimate)): Net migration, ages 20 to 29 in 2020, 2010-2020 (estimate, % of expected)",
+          "href": "index.html#e=netmig_20_29_pct.f"
+        }
+      ]
+    },
+    "added": "2026-11-24"
+  },
+  {
+    "id": "netmig_age.netmig_30_44_pct",
+    "ask": {
+      "en": [
+        "net migration 30 to 44",
+        "migration by age",
+        "who left"
+      ],
+      "es": [
+        "migración neta 30 a 44",
+        "migración por edad"
+      ]
+    },
+    "name": "Net migration, ages 30 to 44 in 2020, 2010-2020 (estimate, % of expected)",
+    "domain": "population",
+    "domains": [
+      "population",
+      "economy"
+    ],
+    "group": "Net migration by age",
+    "kind": "variable",
+    "plain": "How many people aged 30 to 44 in 2020 each municipio gained or lost to migration since 2010, per 100 it would have had with no migration.",
+    "definition": "Net migration between the 2010 and 2020 censuses of the people aged 30 to 44 in 2020 (aged 20 to 34 in 2010), per 100 of the people of that age the municipio would have had with no migration: positive, more came than left; negative, more left. An estimate by the residual method: the 2020 census count of each age group minus the survivors of the same people in the 2010 census, by sex, with Puerto Rico's life table (UN World Population Prospects 2024, 2010-2019). It counts moves to and from the rest of Puerto Rico and abroad together, net; errors in either census land in it, and in small municipios a few hundred people can move the figure.",
+    "unit": "%",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2020,
+      "last": 2020,
+      "frequency": "The window 2010-2020, census to census; the next window needs the 2030 census."
+    },
+    "method": "netmig_age.py compares, for each municipio, sex and five-year age group, the people aged a to a+4 in the 2010 census with the same generation, aged a+10 to a+14, in the 2020 census. Puerto Rico's life table (UN World Population Prospects 2024, the person-years lived by age and sex averaged over 2010-2019) says how many of them would still be alive; the 2020 count minus those survivors is the net migration of the group. Children under 10 in 2020, born during the decade, are left out.",
+    "sources": [
+      "census_pep",
+      "un_wpp"
+    ],
+    "source_detail": "Estimated by the observatory: the 2010 and 2020 census counts by municipio, age and sex (Census Bureau estimates files, census bases) and Puerto Rico's life table (UN WPP 2024), by the residual method (netmig_age.py)",
+    "how_to_read": "Puerto Rico: -20.5%. Lowest: Mayagüez (-44.0%), Guánica (-39.7%), Maricao (-34.2%). Highest: Culebra (3.9%), Rincón (-3.7%), Dorado (-5.0%).",
+    "caveats": [
+      "Net: people who moved within Puerto Rico and people who left for or came from abroad are counted together, and arrivals cancel departures.",
+      "College towns show a loss in the ages that were students in 2010: the census counts students where they study (Mayagüez's university, for one), and most leave after graduating.",
+      "Errors in either census land in the estimate, and the 2020 census added noise to protect privacy: in small municipios a few hundred people move a rate by several points.",
+      "One life table for the whole island: a municipio where people die younger than average shows a little more out-migration than it had."
+    ],
+    "see_also": [
+      "netmig_age.netmig_10_19_pct",
+      "netmig_age.netmig_20_29_pct",
+      "netmig_age.netmig_45_64_pct"
+    ],
+    "where": {
+      "files": [
+        "netmig_age_series.json:netmig_30_44_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Population · Net migration by age, 2010-2020 (estimate)): Net migration, ages 30 to 44 in 2020, 2010-2020 (estimate, % of expected)",
+          "href": "index.html#e=netmig_30_44_pct.f"
+        }
+      ]
+    },
+    "added": "2026-11-24"
+  },
+  {
+    "id": "netmig_age.netmig_45_64_pct",
+    "ask": {
+      "en": [
+        "net migration 45 to 64",
+        "migration by age",
+        "who left"
+      ],
+      "es": [
+        "migración neta 45 a 64",
+        "migración por edad"
+      ]
+    },
+    "name": "Net migration, ages 45 to 64 in 2020, 2010-2020 (estimate, % of expected)",
+    "domain": "population",
+    "domains": [
+      "population",
+      "economy"
+    ],
+    "group": "Net migration by age",
+    "kind": "variable",
+    "plain": "How many people aged 45 to 64 in 2020 each municipio gained or lost to migration since 2010, per 100 it would have had with no migration.",
+    "definition": "Net migration between the 2010 and 2020 censuses of the people aged 45 to 64 in 2020 (aged 35 to 54 in 2010), per 100 of the people of that age the municipio would have had with no migration: positive, more came than left; negative, more left. An estimate by the residual method: the 2020 census count of each age group minus the survivors of the same people in the 2010 census, by sex, with Puerto Rico's life table (UN World Population Prospects 2024, 2010-2019). It counts moves to and from the rest of Puerto Rico and abroad together, net; errors in either census land in it, and in small municipios a few hundred people can move the figure.",
+    "unit": "%",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2020,
+      "last": 2020,
+      "frequency": "The window 2010-2020, census to census; the next window needs the 2030 census."
+    },
+    "method": "netmig_age.py compares, for each municipio, sex and five-year age group, the people aged a to a+4 in the 2010 census with the same generation, aged a+10 to a+14, in the 2020 census. Puerto Rico's life table (UN World Population Prospects 2024, the person-years lived by age and sex averaged over 2010-2019) says how many of them would still be alive; the 2020 count minus those survivors is the net migration of the group. Children under 10 in 2020, born during the decade, are left out.",
+    "sources": [
+      "census_pep",
+      "un_wpp"
+    ],
+    "source_detail": "Estimated by the observatory: the 2010 and 2020 census counts by municipio, age and sex (Census Bureau estimates files, census bases) and Puerto Rico's life table (UN WPP 2024), by the residual method (netmig_age.py)",
+    "how_to_read": "Puerto Rico: -1.5%. Lowest: Maricao (-16.1%), Guánica (-14.1%), Loíza (-9.5%). Highest: Culebra (17.5%), Rincón (15.2%), Vieques (9.4%).",
+    "caveats": [
+      "Net: people who moved within Puerto Rico and people who left for or came from abroad are counted together, and arrivals cancel departures.",
+      "Errors in either census land in the estimate, and the 2020 census added noise to protect privacy: in small municipios a few hundred people move a rate by several points.",
+      "One life table for the whole island: a municipio where people die younger than average shows a little more out-migration than it had."
+    ],
+    "see_also": [
+      "netmig_age.netmig_10_19_pct",
+      "netmig_age.netmig_20_29_pct",
+      "netmig_age.netmig_30_44_pct"
+    ],
+    "where": {
+      "files": [
+        "netmig_age_series.json:netmig_45_64_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Population · Net migration by age, 2010-2020 (estimate)): Net migration, ages 45 to 64 in 2020, 2010-2020 (estimate, % of expected)",
+          "href": "index.html#e=netmig_45_64_pct.f"
+        }
+      ]
+    },
+    "added": "2026-11-24"
+  },
+  {
+    "id": "netmig_age.netmig_65_plus_pct",
+    "ask": {
+      "en": [
+        "net migration 65 and over",
+        "migration by age",
+        "who left"
+      ],
+      "es": [
+        "migración neta 65 o más",
+        "migración por edad"
+      ]
+    },
+    "name": "Net migration, ages 65 and over in 2020, 2010-2020 (estimate, % of expected)",
+    "domain": "population",
+    "domains": [
+      "population",
+      "economy"
+    ],
+    "group": "Net migration by age",
+    "kind": "variable",
+    "plain": "How many people aged 65 and over in 2020 each municipio gained or lost to migration since 2010, per 100 it would have had with no migration.",
+    "definition": "Net migration between the 2010 and 2020 censuses of the people aged 65 and over in 2020 (aged 55 to over in 2010), per 100 of the people of that age the municipio would have had with no migration: positive, more came than left; negative, more left. An estimate by the residual method: the 2020 census count of each age group minus the survivors of the same people in the 2010 census, by sex, with Puerto Rico's life table (UN World Population Prospects 2024, 2010-2019). It counts moves to and from the rest of Puerto Rico and abroad together, net; errors in either census land in it, and in small municipios a few hundred people can move the figure.",
+    "unit": "%",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2020,
+      "last": 2020,
+      "frequency": "The window 2010-2020, census to census; the next window needs the 2030 census."
+    },
+    "method": "netmig_age.py compares, for each municipio, sex and five-year age group, the people aged a to a+4 in the 2010 census with the same generation, aged a+10 to a+14, in the 2020 census. Puerto Rico's life table (UN World Population Prospects 2024, the person-years lived by age and sex averaged over 2010-2019) says how many of them would still be alive; the 2020 count minus those survivors is the net migration of the group. Children under 10 in 2020, born during the decade, are left out.",
+    "sources": [
+      "census_pep",
+      "un_wpp"
+    ],
+    "source_detail": "Estimated by the observatory: the 2010 and 2020 census counts by municipio, age and sex (Census Bureau estimates files, census bases) and Puerto Rico's life table (UN WPP 2024), by the residual method (netmig_age.py)",
+    "how_to_read": "Puerto Rico: 2.7%. Lowest: Guánica (-12.2%), Maricao (-8.8%), Loíza (-7.3%). Highest: Las Marías (16.3%), Aibonito (15.4%), Rincón (15.2%).",
+    "caveats": [
+      "Net: people who moved within Puerto Rico and people who left for or came from abroad are counted together, and arrivals cancel departures.",
+      "Errors in either census land in the estimate, and the 2020 census added noise to protect privacy: in small municipios a few hundred people move a rate by several points.",
+      "One life table for the whole island: a municipio where people die younger than average shows a little more out-migration than it had."
+    ],
+    "see_also": [
+      "netmig_age.netmig_10_19_pct",
+      "netmig_age.netmig_20_29_pct",
+      "netmig_age.netmig_30_44_pct"
+    ],
+    "where": {
+      "files": [
+        "netmig_age_series.json:netmig_65_plus_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Population · Net migration by age, 2010-2020 (estimate)): Net migration, ages 65 and over in 2020, 2010-2020 (estimate, % of expected)",
+          "href": "index.html#e=netmig_65_plus_pct.f"
+        }
+      ]
+    },
+    "added": "2026-11-24"
+  },
+  {
+    "id": "netmig_age.netmig_10_plus_pct",
+    "ask": {
+      "en": [
+        "net migration",
+        "migration 2010-2020",
+        "emigration",
+        "who left puerto rico"
+      ],
+      "es": [
+        "migración neta",
+        "emigración",
+        "quiénes se fueron"
+      ]
+    },
+    "name": "Net migration, ages 10 and over in 2020, 2010-2020 (estimate, % of expected)",
+    "domain": "population",
+    "domains": [
+      "population",
+      "economy"
+    ],
+    "group": "Net migration by age",
+    "kind": "variable",
+    "plain": "How many people aged 10 and over in 2020 each municipio gained or lost to migration since 2010, per 100 it would have had with no migration.",
+    "definition": "Net migration between the 2010 and 2020 censuses of the people aged 10 and over in 2020 (aged 0 to over in 2010), per 100 of the people of that age the municipio would have had with no migration: positive, more came than left; negative, more left. An estimate by the residual method: the 2020 census count of each age group minus the survivors of the same people in the 2010 census, by sex, with Puerto Rico's life table (UN World Population Prospects 2024, 2010-2019). It counts moves to and from the rest of Puerto Rico and abroad together, net; errors in either census land in it, and in small municipios a few hundred people can move the figure.",
+    "unit": "%",
+    "value_type": "rate",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2020,
+      "last": 2020,
+      "frequency": "The window 2010-2020, census to census; the next window needs the 2030 census."
+    },
+    "method": "netmig_age.py compares, for each municipio, sex and five-year age group, the people aged a to a+4 in the 2010 census with the same generation, aged a+10 to a+14, in the 2020 census. Puerto Rico's life table (UN World Population Prospects 2024, the person-years lived by age and sex averaged over 2010-2019) says how many of them would still be alive; the 2020 count minus those survivors is the net migration of the group. Children under 10 in 2020, born during the decade, are left out.",
+    "sources": [
+      "census_pep",
+      "un_wpp"
+    ],
+    "source_detail": "Estimated by the observatory: the 2010 and 2020 census counts by municipio, age and sex (Census Bureau estimates files, census bases) and Puerto Rico's life table (UN WPP 2024), by the residual method (netmig_age.py)",
+    "how_to_read": "Puerto Rico: -11.3%. Lowest: Guánica (-28.0%), Maricao (-25.0%), Loíza (-22.8%). Highest: Rincón (3.2%), Culebra (-0.3%), Hormigueros (-4.4%). Range for the island, ages 10 and over: -362,347 with the life table of 2010 alone, -406,137 with that of 2019.",
+    "caveats": [
+      "Net: people who moved within Puerto Rico and people who left for or came from abroad are counted together, and arrivals cancel departures.",
+      "College towns show a loss in the ages that were students in 2010: the census counts students where they study (Mayagüez's university, for one), and most leave after graduating.",
+      "Errors in either census land in the estimate, and the 2020 census added noise to protect privacy: in small municipios a few hundred people move a rate by several points.",
+      "One life table for the whole island: a municipio where people die younger than average shows a little more out-migration than it had.",
+      "Check: the residual for every age (ages 10 and over, -384,100, plus about -44,868 children born in the decade) is -428,968, 6.1% from the demographic balance of the two censuses (-456,866: the change in population minus births plus deaths). The UN's net migration for 2010-2019 is -408,407; the Census Bureau's estimate made before the 2020 census, -583,765, overstated the loss."
+    ],
+    "see_also": [
+      "netmig_age.netmig_10_19_pct",
+      "netmig_age.netmig_20_29_pct",
+      "netmig_age.netmig_30_44_pct"
+    ],
+    "where": {
+      "files": [
+        "netmig_age_series.json:netmig_10_plus_pct"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Population · Net migration by age, 2010-2020 (estimate)): Net migration, ages 10 and over in 2020, 2010-2020 (estimate, % of expected)",
+          "href": "index.html#e=netmig_10_plus_pct.f"
+        }
+      ]
+    },
+    "added": "2026-11-24"
+  },
+  {
+    "id": "netmig_age.netmig_10_plus",
+    "ask": {
+      "en": [
+        "people who left",
+        "net migrants"
+      ],
+      "es": [
+        "personas que se fueron",
+        "migrantes netos"
+      ]
+    },
+    "name": "Net migration, ages 10 and over in 2020, 2010-2020 (estimate, people)",
+    "domain": "population",
+    "domains": [
+      "population",
+      "economy"
+    ],
+    "group": "Net migration by age",
+    "kind": "variable",
+    "plain": "How many people aged 10 and over each municipio gained or lost to migration between 2010 and 2020, net.",
+    "definition": "The number of people aged 10 and over in 2020 that the municipio gained (positive) or lost (negative) to migration between the 2010 and 2020 censuses, net. An estimate by the residual method: the 2020 census count of each age group minus the survivors of the same people in the 2010 census, by sex, with Puerto Rico's life table (UN World Population Prospects 2024, 2010-2019). It counts moves to and from the rest of Puerto Rico and abroad together, net; errors in either census land in it, and in small municipios a few hundred people can move the figure.",
+    "unit": "people",
+    "value_type": "count",
+    "geography": "78 municipalities and Puerto Rico",
+    "coverage": {
+      "timeline": "snapshot",
+      "first": 2020,
+      "last": 2020,
+      "frequency": "The window 2010-2020, census to census; the next window needs the 2030 census."
+    },
+    "method": "netmig_age.py compares, for each municipio, sex and five-year age group, the people aged a to a+4 in the 2010 census with the same generation, aged a+10 to a+14, in the 2020 census. Puerto Rico's life table (UN World Population Prospects 2024, the person-years lived by age and sex averaged over 2010-2019) says how many of them would still be alive; the 2020 count minus those survivors is the net migration of the group. Children under 10 in 2020, born during the decade, are left out.",
+    "sources": [
+      "census_pep",
+      "un_wpp"
+    ],
+    "source_detail": "Estimated by the observatory: the 2010 and 2020 census counts by municipio, age and sex (Census Bureau estimates files, census bases) and Puerto Rico's life table (UN WPP 2024), by the residual method (netmig_age.py)",
+    "how_to_read": "Puerto Rico: -384,100 people. Lowest: San Juan (-40,123), Ponce (-25,280), Bayamón (-18,046). Range for the island, ages 10 and over: -362,347 with the life table of 2010 alone, -406,137 with that of 2019.",
+    "caveats": [
+      "Net: people who moved within Puerto Rico and people who left for or came from abroad are counted together, and arrivals cancel departures.",
+      "College towns show a loss in the ages that were students in 2010: the census counts students where they study (Mayagüez's university, for one), and most leave after graduating.",
+      "Errors in either census land in the estimate, and the 2020 census added noise to protect privacy: in small municipios a few hundred people move a rate by several points.",
+      "Check: the residual for every age (ages 10 and over, -384,100, plus about -44,868 children born in the decade) is -428,968, 6.1% from the demographic balance of the two censuses (-456,866: the change in population minus births plus deaths). The UN's net migration for 2010-2019 is -408,407; the Census Bureau's estimate made before the 2020 census, -583,765, overstated the loss."
+    ],
+    "see_also": [
+      "netmig_age.netmig_10_19_pct",
+      "netmig_age.netmig_20_29_pct",
+      "netmig_age.netmig_30_44_pct"
+    ],
+    "where": {
+      "files": [
+        "netmig_age_series.json:netmig_10_plus"
+      ],
+      "view": [
+        {
+          "label": "Map, Analysis tab (group Population · Net migration by age, 2010-2020 (estimate)): Net migration, ages 10 and over in 2020, 2010-2020 (estimate, people)",
+          "href": "index.html#e=netmig_10_plus.f"
+        }
+      ]
+    },
+    "added": "2026-11-24"
+  }
+]

@@ -86,12 +86,12 @@
  "census_pep": {
   "access": "Archivos CSV públicos en www2.census.gov, sin clave: PRM-EST2020.csv (totales) y PRM-EST2020-AGESEX.csv para 2010-2019 (Vintage 2020), y cc-est2025-agesex-72.csv para 2020-2025 (Vintage 2025). gii.py lee la fila de Puerto Rico del archivo de totales por estado más reciente (NST-EST2025-ALLDATA.csv) y la guarda en cache/gii/.",
   "cadence": "El Negociado del Censo publica una nueva edición (vintage) cada año (Vintage 2025 salió en junio de 2026) e indica que la edición más reciente sustituye los estimados anteriores para las mismas fechas. El observatorio lee la edición más reciente que tenga un archivo de Puerto Rico cuando FPR reconstruye los datos (un nuevo corte de datos).",
-  "used_for": "La población residente por municipio y la proporción de residentes de 65 años o más, de 2010 a 2025 en el corte de datos 2026-10 (housing_series.json), que se muestran en la página de Vivienda y en la pestaña Análisis; y la población de Puerto Rico, el denominador del estimado de FPR de la producción de electricidad por millón de habitantes (indicador 3.2.1 de la página del Índice Global de Innovación, gii_profile.json).",
+  "used_for": "La población residente por municipio y la proporción de residentes de 65 años o más, de 2010 a 2025 en el corte de datos 2026-10 (housing_series.json), que se muestran en la página de Vivienda y en la pestaña Análisis; y la población de Puerto Rico, el denominador del estimado de FPR de la producción de electricidad por millón de habitantes (indicador 3.2.1 de la página del Índice Global de Innovación, gii_profile.json). También los conteos de los censos de 2010 y 2020 por municipio, edad y sexo, y los nacimientos y muertes de la isla de 2010 a 2020, para el estimado de migración neta por edad (netmig_age_series.json).",
   "terms_note": "Los estimados corresponden al 1 de julio. Los valores de 2010 y 2020 son conteos censales del 1 de abril. Los estimados de 2011 a 2019 se basaron en el censo de 2010 y no se revisaron según el conteo de 2020, así que la serie da un salto en 2020. Las páginas del producto no indican ninguna licencia. La documentación de TIGER/Line del Negociado del Censo, que cubre un producto distinto, indica que la protección de derechos de autor no aplica a las obras del Gobierno de EE. UU. La página de citas del Negociado pide citarlo como fuente e indica que las conclusiones de cualquier análisis de los datos son responsabilidad exclusiva de quien lo realiza. El Negociado del Censo no respalda el uso que FPR hace de estos datos.",
   "_en": {
    "access": "15519a7c",
    "cadence": "9d59f17c",
-   "used_for": "1cf15caf",
+   "used_for": "b47c8985",
    "terms_note": "e9e72ba1"
   }
  },
@@ -789,6 +789,18 @@
    "cadence": "8027aa3b",
    "used_for": "ae3a35b7",
    "terms_note": "1b966aee"
+  }
+ },
+ "un_wpp": {
+  "access": "Dos archivos CSV públicos, sin clave: las tablas de vida abreviadas (unos 145 MB) y los indicadores demográficos (unos 17 MB); la compilación los lee en flujo y conserva las filas de Puerto Rico (ubicación 630).",
+  "cadence": "Una revisión nueva cada dos años (la próxima en 2026); correcciones provisionales entre revisiones.",
+  "used_for": "La tabla de vida de Puerto Rico por sexo, 2010-2019, para el estimado de migración neta por edad (netmig_age_series.json), y la migración neta de la ONU para su comprobación.",
+  "terms_note": "Las cifras de la ONU para Puerto Rico son sus propios estimados; difieren de las de la Oficina del Censo.",
+  "_en": {
+   "access": "d9ae1554",
+   "cadence": "98553aff",
+   "used_for": "64080f41",
+   "terms_note": "b8c2c00e"
   }
  }
 }
