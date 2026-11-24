@@ -220,7 +220,7 @@ def build():
     <div class="note"><b>{t("How to cite this page.", "Cómo citar esta página.")}</b> {t("Foundation for Puerto Rico, Knowledge Area: Disaster funding and need, PR Data Observatory, Snapshot 2026-11 (draft). Data: FEMA (OpenFEMA, National Risk Index), USAspending.gov and U.S. Census Bureau (Community Resilience Estimates, 2020 Census).", "Foundation for Puerto Rico, Área de conocimiento: Fondos por desastres y necesidad, Observatorio de Datos de PR, Snapshot 2026-11 (borrador). Datos: FEMA (OpenFEMA, Índice Nacional de Riesgo), USAspending.gov y Negociado del Censo de EE. UU. (Estimaciones de Resiliencia Comunitaria, Censo 2020).")}</div>
   </section>
 </main>
-<script src="js/core/knowledge.js?v=35"></script>
+<script src="js/core/knowledge.js?v=36"></script>
 <script>Core.knowledge.render(); I18N.apply();</script>
 <script src="js/common.js?v=20"></script>
 <script src="js/public_money.js?v=3"></script>

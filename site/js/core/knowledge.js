@@ -66,7 +66,7 @@
   // ── The header of an area page (Knowledge plan, decision 90, PR 2): it replaces the strip of tabs, so the page's own sections fit in the bar ──
   // ── The header of an area page (decision 90, PR 2), in place of the strip of tabs. TOPICS and REVIEWER_NAMES (generated above) carry no program
   // terms. The menu's panel and the foot are js/core/knowledge_more.js, loaded with js/knowledge_items.js after the page is ready. ──
-  const ITEMS_V = 20, MORE_V = 1;   // ?v= of js/knowledge_items.js (as on knowledge.html) and of js/core/knowledge_more.js
+  const ITEMS_V = 21, MORE_V = 1;   // ?v= of js/knowledge_items.js (as on knowledge.html) and of js/core/knowledge_more.js
   const DOMAINS = TOPICS, REVIEWERS = REVIEWER_NAMES;
   const top = (a) => String(a.domain || '').split('.')[0];
   const named = (o, l) => (o && (o[l] || o.en)) || '';
