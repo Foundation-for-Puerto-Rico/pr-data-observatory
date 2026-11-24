@@ -31,10 +31,10 @@ STAGES = [
      ("An agency works out what it needs the money for and writes its request, with its plan of work.", "Una agencia define para qué necesita el dinero y escribe su petición, con su plan de trabajo."),
      ("The agency", "La agencia")),
     ("outgoing_mail", ("Request", "Solicitud"),
-     ("The Office of Management and Budget puts the requests together into the Governor's proposed budget, which goes to the Oversight Board.", "La Oficina de Gerencia y Presupuesto reúne las peticiones en el presupuesto propuesto del Gobernador, que va a la Junta de Supervisión Fiscal."),
+     ("The Office of Management and Budget puts the requests together into the Governor's proposed budget, which goes to the Oversight Board. The Board approves it or sends it back to be corrected.", "La Oficina de Gerencia y Presupuesto reúne las peticiones en el presupuesto propuesto del Gobernador, que va a la Junta de Supervisión Fiscal. La Junta lo aprueba o lo devuelve para que se corrija."),
      ("Office of Management and Budget, Governor", "Oficina de Gerencia y Presupuesto, Gobernador")),
     ("how_to_vote", ("Approval", "Aprobación"),
-     ("The Legislature adopts a budget, and the Oversight Board certifies it when it follows the fiscal plan. If it does not, the Board can write the budget itself.", "La Asamblea Legislativa adopta un presupuesto, y la Junta de Supervisión Fiscal lo certifica cuando cumple con el plan fiscal. Si no cumple, la Junta puede redactar el presupuesto."),
+     ("The version the Board approved goes to the Legislature, which evaluates and adopts a budget. The Governor signs it, and the Oversight Board certifies it when it follows the fiscal plan. If it does not, the Board can write the budget itself.", "La versión que aprobó la Junta va a la Asamblea Legislativa, que evalúa y adopta un presupuesto. El Gobernador lo firma, y la Junta de Supervisión Fiscal lo certifica cuando cumple con el plan fiscal. Si no cumple, la Junta puede redactar el presupuesto."),
      ("Legislature, Oversight Board", "Asamblea Legislativa, Junta de Supervisión Fiscal")),
     ("assignment", ("Assignment", "Asignación"),
      ("Each agency receives its share of the certified budget for the fiscal year, by fund and by concept of expense.", "Cada agencia recibe su parte del presupuesto certificado para el año fiscal, por fondo y por concepto de gasto."),
@@ -110,7 +110,7 @@ EXAMPLE = [
 # Pairs that are often read as the same thing: (what is not what, why).
 CONFUSED = [
     (("Approved is not spent", "Aprobado no es gastado"),
-     ("A budget gives permission to spend up to an amount. It does not say the money was used.", "Un presupuesto da permiso para gastar hasta un monto. No dice que el dinero se usó.")),
+     ("A budget gives permission to spend up to an amount. It does not say the money was used. The permission ends with the fiscal year: in the General Fund, money of an earlier year cannot be used unless the certified budget says so. Special funds are different: their income of earlier years can be used, under the rules of each fund.", "Un presupuesto da permiso para gastar hasta un monto. No dice que el dinero se usó. El permiso termina con el año fiscal: en el Fondo General, el dinero de un año anterior no se puede usar a menos que el presupuesto certificado lo disponga. Los fondos especiales son distintos: sus ingresos de años anteriores se pueden usar, según las reglas de cada fondo.")),
     (("Obligated is not paid", "Obligado no es pagado"),
      ("A signed contract commits the money. The payment comes later, as the work is done and billed.", "Un contrato firmado compromete el dinero. El pago llega después, según se hace y se factura el trabajo.")),
     (("Paid is not in service", "Pagado no es en servicio"),
@@ -182,6 +182,9 @@ SOURCES = [
     (("PROMESA, section 202 (Public Law 114-187; 48 U.S.C. 2142).", "PROMESA, sección 202 (Ley Pública 114-187; 48 U.S.C. 2142)."),
      ("How the Commonwealth budget is proposed, adopted and certified, and what the Oversight Board can do when a budget does not follow the fiscal plan.", "Cómo se propone, se adopta y se certifica el presupuesto del Gobierno de Puerto Rico, y lo que puede hacer la Junta de Supervisión Fiscal cuando un presupuesto no cumple con el plan fiscal."),
      "https://www.govinfo.gov/content/pkg/PLAW-114publ187/html/PLAW-114publ187.htm"),
+    (("Office of Management and Budget, Manual of the Budget Process (updated 18 November 2025).", "Oficina de Gerencia y Presupuesto, Manual del Proceso Presupuestario (actualizado el 18 de noviembre de 2025)."),
+     ("The ten stages of the budget process, the meaning of proposed, approved and spent budget, the reserves, and the rule on money of earlier fiscal years by kind of fund.", "Las diez etapas del proceso presupuestario, lo que significan presupuesto propuesto, aprobado y gastado, las reservas, y la regla sobre el dinero de años fiscales anteriores según la clase de fondo."),
+     "https://gestion-presupuestaria.ogp.pr.gov/"),
     (("Act 147 of 1980, Organic Act of the Office of Management and Budget.", "Ley 147 de 1980, Ley Orgánica de la Oficina de Gerencia y Presupuesto."),
      ("The Office prepares the Governor's budget request and follows how the budget is carried out.", "La Oficina prepara la petición presupuestaria del Gobernador y da seguimiento a la ejecución del presupuesto."),
      "https://bvirtualogp.pr.gov/ogp/Bvirtual/LeyesOrganicas/PDF/147-1980.pdf"),
@@ -212,7 +215,7 @@ MONTHS = [("Jul", "jul"), ("Aug", "ago"), ("Sep", "sep"), ("Oct", "oct"), ("Nov"
 def build():
     ref = (ROOT / "site" / "unused-funds.html").read_text(encoding="utf-8")
     ver = lambda name: re.search(re.escape(name) + r"\?v=(\d+)", ref).group(1)
-    I18N_V = 67   # the ?v= of js/i18n.js also versions this page's Spanish bundle: raise it when the page's strings change (docs/i18n.md, rule 12)
+    I18N_V = 68   # the ?v= of js/i18n.js also versions this page's Spanish bundle: raise it when the page's strings change (docs/i18n.md, rule 12)
     icons = sorted(set(re.search(r"icon_names=([a-z0-9_,]+)", ref).group(1).split(",")) | {s[0] for s in STAGES} | {"route", "groups", "account_balance", "calendar_month", "compare_arrows", "help", "map", "menu_book", "arrow_downward", "school", "footprint", "rule", "quiz", "query_stats", "difference"})
     title = t("Knowledge Area · How public money moves", "Área de conocimiento · Cómo se mueve el dinero público")
 

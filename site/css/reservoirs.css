@@ -57,3 +57,8 @@
 .pm-legend span { margin-right:14px; }
 .rv-tip { position:absolute; z-index:50; background:#fff; border:1px solid var(--color-border); border-radius:var(--radius-sm); box-shadow:var(--shadow-md); padding:6px 9px; font-size:12px; line-height:1.4; pointer-events:none; max-width:260px; }
 .sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+/* section 4, what drains into each reservoir (reservoirs_upstream.js) */
+.rv-up-flag { display: inline-block; margin-left: .3em; padding: 0 .35em; border-radius: 4px; font-size: .8em; background: var(--warn-bg, #FFF4E0); color: var(--warn-ink, #7A4B00); white-space: nowrap; }
+.rv-up-off { color: var(--muted, #5B6472); font-style: italic; }
+.rv-up-more { margin-top: .8rem; }
+.rv-up-more > summary { cursor: pointer; font-weight: 600; padding: .4rem 0; }

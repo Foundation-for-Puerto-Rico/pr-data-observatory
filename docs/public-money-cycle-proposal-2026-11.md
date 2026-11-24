@@ -1,6 +1,6 @@
 # Proposal: the public money cycle, and what the meeting of 2026-11-19 asked for (decision 112)
 
-Date: 2026-11-19. Status: **approved by Francis on 2026-11-19 (decision 112 in HANDOFF.md), choices (a) to (g) as proposed. Step 1, the cycle page, built on 2026-11-19 (`docs/money-cycle.md`); step 2, approved and reported spent by agency and fund, built on 2026-11-20 (`docs/spending.md`); step 3, the notes and corrections, built on 2026-11-20; step 4 next.**
+Date: 2026-11-19. Status: **approved by Francis on 2026-11-19 (decision 112 in HANDOFF.md), choices (a) to (g) as proposed. Step 1, the cycle page, built on 2026-11-19 (`docs/money-cycle.md`); step 2, approved and reported spent by agency and fund, built on 2026-11-20 (`docs/spending.md`); step 3, the notes and corrections, merged on 2026-11-20; step 4, five grants rebuilt, built on 2026-11-20 (`docs/unused-funds.md`).**
 
 **In one paragraph.** On 2026-11-19 Francis and two colleagues who have worked inside the Commonwealth's budget process went through the Budget and public spending page for an hour and twenty minutes. Many ideas came out, and Francis asked how to organize them, and whether an explanation of the budget cycle belongs in the page or apart. This document sorts the ideas into five groups, recommends the cycle as **a page of its own**, tests the one new analysis the data already allow (money approved and not spent, by agency), and proposes an order. It carries ideas only: no name and no quotation from the meeting.
 

@@ -138,6 +138,8 @@ def compute(refresh=False, offline=False):
         if not f:
             continue
         names[i] = f.get("gnis_name") or ""
+        if f.get("terminalfl") == 1:   # a river's last reach: NHDPlus links mouths to each other along the coast, which is not water draining downstream
+            continue
         d = by_seq.get(f.get("dnhydroseq"))
         while d is not None and int(d["nhdplusid"]) not in idx:   # a downstream flowline with no catchment of its own (a short connector): go on down
             d = by_seq.get(d.get("dnhydroseq"))
@@ -218,6 +220,11 @@ def compute(refresh=False, offline=False):
     for name, nhd, ours in mouths:
         if abs(ours / nhd - 1) > MOUTH_TOL:
             bad.append(f"{name}: the network drains {ours:,.1f} km2 to its mouth, NHDPlus says {nhd:,.1f}")
+    biggest = max(float(f.get("totdasqkm") or 0) for f in flow)   # no catchment drains more land than the largest river: mouths are not chained along the coast
+    tops = [i for i in range(n) if dn[i] < 0]
+    widest = max((drains_to(i) for i in tops), default=0)
+    if widest > biggest * (1 + MOUTH_TOL):
+        bad.append(f"an outlet drains {widest:,.1f} km2, more than the largest river ({biggest:,.1f} km2): river mouths are chained")
     if not HUC12_RANGE[0] <= len(h12) <= HUC12_RANGE[1]:
         bad.append(f"{len(h12)} HUC-12 subwatersheds (expected {HUC12_RANGE[0]} to {HUC12_RANGE[1]})")
 

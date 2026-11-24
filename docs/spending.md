@@ -375,7 +375,7 @@ Section 1 of the page has a part "By agency and fund". The reader chooses a fund
 - **The funds are never mixed.** General Fund, federal funds and special funds each have their own table and their own caution: federal money is often awarded for several years, and special funds depend on their own revenue.
 - **Agency codes that moved are joined** (`JOIN` in the module). One so far: the data sheets approve the Police inside code 045 through fiscal year 2026, and the fiscal year 2027 sheets, which also give what was spent in 2025, report it under its own code 040. Read apart, 040 shows spending with no budget and 045 a budget barely spent. The joined row carries both names and a mark. Add a pair to `JOIN` only when the data sheets show the same move; a test checks that no agency with more than $20 million has only one of the two stages.
 - **Wording.** "Difference" and "reported spent". Never a surplus, a loss or money left over: the data sheets give the budget as approved, not as amended, and "spent" is what each agency told OGP in the next budget process, not the audited close.
-- **What it does not say.** Why a difference exists, and what happened to it afterwards (carried to the next year, kept in its fund or released by the Oversight Board). The rule is not explained on the page, because no source was verified for it.
+- **What it does not say.** Why a difference exists, and what was done with each one. **The rule is explained since 2026-11-23,** from OGP's Manual of the Budget Process (https://gestion-presupuestaria.ogp.pr.gov/, section "Reasignaciones y reprogramaciones"): in the General Fund, money of an earlier fiscal year cannot be used unless the certified budget says so; in special revenue funds, the income of earlier years can be used under the rules that apply; federal money follows each grant. The note under the tables gives the one that fits the fund chosen.
 
 Tests: `tests/public_spending_agencies.test.js`.
 
@@ -395,3 +395,14 @@ Short notes where readers stumble, each in the place where its figure is. They a
 **Weight.** The notes carry `data-t-wait`, so their Spanish is in the after-ready module (`public_spending_after`), not in the first load (42.4 of 43 KB). The page's after-ready limit (`deferred_kb` in `dictionary_src/routes.json`) went from 25 to 27 KB; 26.2 is used.
 
 Tests: `tests/public_spending.test.js` (the last test).
+
+## OGP's Manual of the Budget Process as a source (2026-11-23)
+
+https://gestion-presupuestaria.ogp.pr.gov/ is OGP's own manual of the budget process (six chapters; updated 2025-11-18; the whole text is also a PDF there). Read on 2026-11-23: the stages (chapter 2.3), the glossary (1.3.1), reserves (3.2), reassignments and reprogramming (3.5) and special revenue funds (3.6).
+
+- **Stages.** Ten: the Board's calendar; OGP's budget letter; the multi-year financial plan; the agencies' requests; target meetings; the Governor sends the proposed budget to the Board; the Board approves it or notifies violations; the approved version goes to the Legislature; the Legislature evaluates; the Governor signs the joint resolution and the Board issues the certification. The paragraph of the stages chart and the cycle page follow this order.
+- **What the three columns are** (the manual's glossary): proposed is the budget the Governor presents to the Board and the Legislature; approved is the budget the Board certified; spent is the budget used during the fiscal year (July 1 to June 30).
+- **Money of earlier years** (reassignments and reprogramming): not in the General Fund unless the certified budget says so; allowed in special revenue funds. The same section says a move from one agency to another is allowed with OGP's approval, which is why an agency can report more than its approved budget.
+- **Reserves:** OGP may hold back resources during the year, with the Board; the Legislature may add reserves in the joint resolution.
+- **Citing it.** The number in a section's address is not the number its own menu shows, so cite a section by its title.
+- **A word the pages do not take.** The manual says "sobrantes" for differences in operating and payroll lines. The pages keep "difference": their figures compare two data sheets and are not the manual's measure (decision 112 (c)).
