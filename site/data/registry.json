@@ -1135,6 +1135,14 @@
     {
      "route": "profile",
      "when": "first"
+    },
+    {
+     "route": "explore",
+     "when": "first"
+    },
+    {
+     "route": "data",
+     "when": "first"
     }
    ],
    "title_es": "Catálogo: dominios y cifras principales, que se leen primero",
@@ -1238,7 +1246,12 @@
    "title": "Catalog: index of the dictionary, read on first use",
    "bytes": 284755,
    "gzip_bytes": 47910,
-   "loaded_by": [],
+   "loaded_by": [
+    {
+     "route": "data",
+     "when": "first"
+    }
+   ],
    "title_es": "Catálogo: índice del diccionario, que se lee al usarlo",
    "domains": [
     "system.docs"
@@ -1268,7 +1281,12 @@
    "title": "Catalog: the ready-made views of each topic",
    "bytes": 13970,
    "gzip_bytes": 4520,
-   "loaded_by": [],
+   "loaded_by": [
+    {
+     "route": "explore",
+     "when": "first"
+    }
+   ],
    "title_es": "Catálogo: las vistas listas de cada tema",
    "domains": [
     "system.docs"
@@ -3952,6 +3970,18 @@
      "when": "later"
     },
     {
+     "route": "explore",
+     "when": "later"
+    },
+    {
+     "route": "data",
+     "when": "later"
+    },
+    {
+     "route": "workflows",
+     "when": "later"
+    },
+    {
      "route": "knowledge",
      "when": "later"
     },
@@ -5211,6 +5241,10 @@
     },
     {
      "route": "women",
+     "when": "first"
+    },
+    {
+     "route": "workflows",
      "when": "first"
     },
     {

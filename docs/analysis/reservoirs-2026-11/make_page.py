@@ -114,7 +114,7 @@ def build():
     heat = (ROOT / "site" / "urban-heat.html").read_text(encoding="utf-8")
     ver = lambda name: re.search(re.escape(name) + r"\?v=(\d+)", heat).group(1)
     I18N_V = 63   # the ?v= of js/i18n.js also versions this page's Spanish bundle: raise it when the page's strings change (docs/i18n.md, rule 12)
-    icons = sorted(set(re.search(r"icon_names=([a-z0-9_,]+)", heat).group(1).split(",")) | {"school", "water", "water_drop", "arrow_downward", "arrow_upward", "check", "remove", "open_in_new", "show_chart", "history", "park"})
+    icons = sorted(set(re.search(r"icon_names=([a-z0-9_,]+)", heat).group(1).split(",")) | {"school", "water", "water_drop", "arrow_downward", "arrow_upward", "check", "remove", "open_in_new", "show_chart", "history", "park", "account_tree", "dark_mode", "explore", "grid_view", "light_mode"})
 
     page = f"""<!doctype html>
 <html lang="en">
@@ -134,6 +134,7 @@ def build():
 <link rel="stylesheet" href="css/urban_heat.css?v={ver("css/urban_heat.css")}">
 <link rel="stylesheet" href="css/reservoirs.css?v=2">
 <link rel="stylesheet" href="css/chat.css?v={ver("css/chat.css")}">
+<link rel="stylesheet" href="css/ws.css?v=1">
 <script src="js/i18n.js?v={max(int(ver("js/i18n.js")), I18N_V)}" data-page="reservoirs"></script>
 </head>
 <body class="research">
@@ -143,7 +144,10 @@ def build():
   <div class="brand"><b>{t("Knowledge Area · Reservoirs", "Área de conocimiento · Embalses")}</b><span>{t("How much water Puerto Rico's reservoirs hold now, compared with their own history", "Cuánta agua tienen los embalses de Puerto Rico ahora, comparada con su propia historia")}</span></div>
   <div class="spacer"></div>
   <nav class="views" aria-label="{t("Views", "Vistas")}">
+    <a class="btn" href="explore.html" title="{t("Explore: start from a question, a topic or a saved map", "Explorar: comience con una pregunta, un tema o un mapa guardado")}"><span class="ms-icon" aria-hidden="true">explore</span><span class="lbl">{t("Explore", "Explorar")}</span></a>
+    <a class="btn" href="data.html" title="{t("Data: every dataset, map layer and set of places", "Datos: todos los conjuntos de datos, capas del mapa y grupos de lugares")}"><span class="ms-icon" aria-hidden="true">grid_view</span><span class="lbl">{t("Data", "Datos")}</span></a>
     <a class="btn" href="index.html"><span class="ms-icon" aria-hidden="true">map</span><span class="lbl">{t("Map", "Mapa")}</span></a>
+    <a class="btn" href="workflows.html" title="{t("Workflows: steps that turn data into a result on the map", "Flujos de trabajo: pasos que convierten datos en un resultado en el mapa")}"><span class="ms-icon" aria-hidden="true">account_tree</span><span class="lbl">{t("Workflows", "Flujos")}</span></a>
     <a class="btn" href="3d.html" title="{t("Immersive 3D + time view", "Vista inmersiva en 3D y tiempo")}"><span class="ms-icon" aria-hidden="true">view_in_ar</span><span class="lbl">{t("3D + Time", "3D + Tiempo")}</span></a>
     <a class="btn" href="knowledge.html" aria-current="page" title="{t("Knowledge: FPR studies, analyses and tools", "Conocimiento: estudios, análisis y herramientas de FPR")}"><span class="ms-icon" aria-hidden="true">lightbulb</span><span class="lbl">{t("Knowledge", "Conocimiento")}</span></a>
     <a class="btn" href="dictionary.html" title="{t("Data dictionary: meanings, sources, licenses, how to cite", "Diccionario de datos: significados, fuentes, licencias y cómo citar")}"><span class="ms-icon" aria-hidden="true">menu_book</span><span class="lbl">{t("Data dictionary", "Diccionario de datos")}</span></a>

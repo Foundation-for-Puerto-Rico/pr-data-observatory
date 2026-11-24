@@ -119,8 +119,8 @@
   // ── The widgets ──────────────────────────────────────────────────────────────
   const W = { key: null, regions: new Set(), range: null, view: false, closed: new Set(store.get('twin.ws.closed', [])), drag: null };
   const places = () => { const a = engine(); return a ? a.places() : []; };
-  const regionOf = (() => { let m = null; return (name) => { if (!m && window.S && S.muniFc) { m = {}; S.muniFc.features.forEach(f => { m[f.properties.municipality] = f.properties.region || ''; }); } return m ? m[name] || '' : ''; }; })();
-  const inView = () => { if (!window.S || !S.muniFc || typeof map === 'undefined') return null; const b = map.getBounds(), s = new Set(); S.muniFc.features.forEach(f => { const c = typeof ecCentroid === 'function' ? ecCentroid(f.geometry) : null; if (c && b.contains(c)) s.add(f.properties.municipality); }); return s; };
+  const regionOf = (() => { let m = null; return (name) => { if (!m && typeof S !== 'undefined' && S.muniFc) { m = {}; S.muniFc.features.forEach(f => { m[f.properties.municipality] = f.properties.region || ''; }); } return m ? m[name] || '' : ''; }; })();
+  const inView = () => { if (typeof S === 'undefined' || !S.muniFc || typeof map === 'undefined') return null; const b = map.getBounds(), s = new Set(); S.muniFc.features.forEach(f => { const c = typeof ecCentroid === 'function' ? ecCentroid(f.geometry) : null; if (c && b.contains(c)) s.add(f.properties.municipality); }); return s; };
   function focusLayer() { const ls = state().layers; if (!ls.length) return null; return ls.find(l => l.key === W.key) || ls.find(l => l.mode === 'fill') || ls[0]; }
   /** The values of the widgets' dataset for the year of the timeline: { v: [per municipio], pr: Puerto Rico's own published value, year, names }. */
   function read(L, year) {
@@ -252,11 +252,11 @@
     }
   }
   function rightWire() {
-    const set = (open) => { document.body.classList.toggle('ws-noright', !open); el('wsRightShow').hidden = open; store.set('twin.ws.right', open); setTimeout(() => { if (typeof map !== 'undefined') map.invalidateSize(); }, 220); };
-    el('wsRightHide').onclick = () => set(false); el('wsRightShow').onclick = () => set(true);
-    set(store.get('twin.ws.right', window.innerWidth >= 1280));
+    const set = (open, keep) => { document.body.classList.toggle('ws-noright', !open); el('wsRightShow').hidden = open; if (keep && window.innerWidth > 1100) store.set('twin.ws.right', open); setTimeout(() => { if (typeof map !== 'undefined') map.invalidateSize(); }, 220); };
+    el('wsRightHide').onclick = () => set(false, true); el('wsRightShow').onclick = () => set(true, true);
+    set(window.innerWidth > 1100 ? store.get('twin.ws.right', window.innerWidth >= 1280) : false);   // a drawer over the map on a narrow screen: it starts shut
     let t = 0; const later = () => { clearTimeout(t); t = setTimeout(() => { if (W.view) widgets(); }, 200); };
-    const hook = () => { if (typeof map === 'undefined' || !map || !map.on) return setTimeout(hook, 400); map.on('moveend', later); }; hook();
+    const hook = () => { if (typeof map === 'undefined' || !map || !map.on) return setTimeout(hook, 400); map.on('moveend', () => { later(); keep(); }); }; hook();
   }
 
   // ── The workbench's edge ─────────────────────────────────────────────────────
@@ -301,7 +301,7 @@
     const all = maps(), names = Object.keys(all).sort((p, q) => String(all[q].saved).localeCompare(String(all[p].saved))), dlg = el('wsMaps');
     el('wsMapsBody').innerHTML = `<p class="note">${html(T('Saved maps are kept in this browser, on this computer. Nothing is sent anywhere and nobody else can open them. To pass one on, copy its link or download it.'))}</p>
       <div class="ws-save"><input type="text" id="wsSaveName" maxlength="80" value="${html(H.name)}" placeholder="${html(T('Name this map'))}" aria-label="${html(T('Name this map'))}"><button type="button" class="btn primary" id="wsSaveGo">${icon('save')}${html(T('Save this map'))}</button></div>
-      ${names.length ? `<ul class="ws-maps">${names.map(n => `<li><span><b>${html(n)}</b><i>${html(I18N.date(new Date(all[n].saved), { dateStyle: 'medium', timeStyle: 'short' }))}</i></span><button type="button" class="btn small" data-open="${html(n)}">${html(T('Open'))}</button><button type="button" class="icon-btn small" data-copy="${html(n)}" aria-label="${html(T('Copy the link of {name}', { name: n }))}">${icon('link')}</button><button type="button" class="icon-btn small" data-del="${html(n)}" aria-label="${html(T('Delete {name}', { name: n }))}">${icon('delete')}</button></li>`).join('')}</ul>` : `<p class="ws-none">${html(T('No saved maps yet.'))}</p>`}
+      ${names.length ? `<ul class="ws-maps">${names.map(n => `<li><span><b>${html(n)}</b><i>${html(I18N.date(new Date(all[n].saved), { dateStyle: 'medium' }))}</i></span><button type="button" class="btn small" data-open="${html(n)}">${html(T('Open'))}</button><button type="button" class="icon-btn small" data-copy="${html(n)}" aria-label="${html(T('Copy the link of {name}', { name: n }))}">${icon('link')}</button><button type="button" class="icon-btn small" data-del="${html(n)}" aria-label="${html(T('Delete {name}', { name: n }))}">${icon('delete')}</button></li>`).join('')}</ul>` : `<p class="ws-none">${html(T('No saved maps yet.'))}</p>`}
       <div class="btn-row"><button type="button" class="btn small" id="wsExport">${icon('download')}${html(T('Download my maps (JSON)'))}</button><label class="btn small">${icon('upload')}${html(T('Open a maps file'))}<input type="file" id="wsImport" accept="application/json,.json" hidden></label></div>`;
     const url = (h) => location.origin + location.pathname + location.search + h;
     el('wsSaveGo').onclick = async () => { const n = el('wsSaveName').value.trim(); if (!n) { el('wsSaveName').focus(); return; } const all2 = maps(); all2[n] = { saved: new Date().toISOString(), hash: await here() }; if (!store.set(MAPS, all2)) { say(T('This browser did not let the map be saved.'), 5000); return; } H.name = n; store.set('twin.ws.name', n); bar(); mapsDialog(); say(T('Saved in this browser: {name}', { name: n })); };
@@ -325,7 +325,9 @@
 
   // ── When something changes ───────────────────────────────────────────────────
   let queued = false;
-  function onChange() { if (queued) return; queued = true; Promise.resolve().then(() => { queued = false; if (engine() && !years.length) tlBuild(); else if (ready) { tlTicks(); tlSync(); } else tlSync(); widgets(); track(); }); }
+  function onChange() { if (queued) return; queued = true; Promise.resolve().then(() => { queued = false; if (engine() && !years.length) tlBuild(); else if (ready) { tlTicks(); tlSync(); } else tlSync(); widgets(); track(); keep(); }); }
+  // the map as it is, for Explore's "Continue where you left off" and for Data's "Add to my map" (the address is written 250 ms after a change)
+  let kt = 0; function keep() { clearTimeout(kt); kt = setTimeout(() => store.set('twin.ws.last', location.hash), 600); }
   function start() {
     if (!el('wsTime')) return;
     tlWire(); rightWire(); gripWire(); barWire(); widgets();

@@ -1031,6 +1031,104 @@
           ]
         }
       }
+    },
+    "explore": {
+      "file": "explore.html",
+      "scopes": [
+        "common",
+        "workspace_pages",
+        "chat"
+      ],
+      "scripts": [
+        "common.js",
+        "knowledge_items.js",
+        "ws_explore.js",
+        "chatboot.js"
+      ],
+      "pick": [
+        "chat"
+      ],
+      "modules": {
+        "glossary": {
+          "scopes": [
+            "glossary"
+          ],
+          "scripts": [
+            "core/glossary.js"
+          ]
+        }
+      }
+    },
+    "data": {
+      "file": "data.html",
+      "scopes": [
+        "common",
+        "workspace_pages",
+        "chat"
+      ],
+      "scripts": [
+        "common.js",
+        "ws_data.js",
+        "chatboot.js"
+      ],
+      "pick": [
+        "chat"
+      ],
+      "modules": {
+        "glossary": {
+          "scopes": [
+            "glossary"
+          ],
+          "scripts": [
+            "core/glossary.js"
+          ]
+        },
+        "catalog": {
+          "scopes": [
+            "catalog",
+            "labels_places",
+            "labels_economy",
+            "labels_exposure",
+            "labels_health",
+            "labels_housing",
+            "labels_population",
+            "labels_education",
+            "labels_infrastructure",
+            "labels_environment",
+            "labels_facilities",
+            "labels_wcrp",
+            "labels_conditions",
+            "labels_community"
+          ],
+          "scripts": []
+        }
+      }
+    },
+    "workflows": {
+      "file": "workflows.html",
+      "scopes": [
+        "common",
+        "workspace_pages",
+        "chat"
+      ],
+      "scripts": [
+        "common.js",
+        "ws_flows.js",
+        "chatboot.js"
+      ],
+      "pick": [
+        "chat"
+      ],
+      "modules": {
+        "glossary": {
+          "scopes": [
+            "glossary"
+          ],
+          "scripts": [
+            "core/glossary.js"
+          ]
+        }
+      }
     }
   },
   "data_labels": [

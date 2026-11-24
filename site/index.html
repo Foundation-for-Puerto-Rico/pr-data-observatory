@@ -597,11 +597,11 @@
     <button type="button" class="icon-btn small" id="wtPrev" aria-label="Previous year" title="Previous year" disabled><span class="ms-icon" aria-hidden="true">chevron_left</span></button>
     <button type="button" class="icon-btn small wt-play" id="wtPlay" aria-label="Play the years" title="Play the years" aria-pressed="false" disabled><span class="ms-icon" aria-hidden="true">play_arrow</span></button>
     <button type="button" class="icon-btn small" id="wtNext" aria-label="Next year" title="Next year" disabled><span class="ms-icon" aria-hidden="true">chevron_right</span></button>
-    <div class="wt-track"><input type="range" id="wtRange" min="0" max="0" step="1" value="0" aria-label="Timeline: the year of the data on the map" aria-describedby="wtLayers" disabled><div class="wt-ticks" id="wtTicks" aria-hidden="true"></div></div>
     <label class="wt-speed"><span>Speed</span> <select id="wtSpeed" aria-label="Playback speed" disabled><option value="2000">Slow</option><option value="1200" selected>Normal</option><option value="600">Fast</option></select></label>
     <button type="button" class="btn small" id="wtLatest" aria-pressed="false" title="Show the latest data of every dataset" disabled>Latest</button>
+    <div class="wt-layers" id="wtLayers"></div>
   </div>
-  <div class="wt-layers" id="wtLayers"></div>
+  <div class="wt-track"><input type="range" id="wtRange" min="0" max="0" step="1" value="0" aria-label="Timeline: the year of the data on the map" aria-describedby="wtLayers" disabled><div class="wt-ticks" id="wtTicks" aria-hidden="true"></div></div>
   <div class="wt-modes" id="wtModes" hidden></div>
 </section>
 <aside class="ws-right" id="wsRight" aria-label="Widgets">

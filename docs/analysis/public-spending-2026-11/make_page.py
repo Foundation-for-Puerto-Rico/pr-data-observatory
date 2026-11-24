@@ -371,11 +371,12 @@ def build():
 <meta name="theme-color" content="#FFFFFF">
 <link rel="icon" href="img/fpr-mark.png">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0&icon_names=account_balance,arrow_back,bar_chart,bolt,chat_bubble,close,commute,compare_arrows,delete,diversity_3,download,home_work,hourglass_bottom,info,lightbulb,location_city,map,menu_book,payments,pie_chart,price_change,rocket_launch,route,school,send,table_view,thermostat,view_in_ar,warning,water,wifi,woman,work&display=block">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0&icon_names=account_balance,account_tree,arrow_back,bar_chart,bolt,chat_bubble,close,commute,compare_arrows,dark_mode,delete,diversity_3,download,explore,grid_view,home_work,hourglass_bottom,info,light_mode,lightbulb,location_city,map,menu_book,payments,pie_chart,price_change,rocket_launch,route,school,send,table_view,thermostat,view_in_ar,warning,water,wifi,woman,work&display=block">
 <link rel="stylesheet" href="css/twin.css?v=62">
 <link rel="stylesheet" href="css/housing.css?v=21">
 <link rel="stylesheet" href="css/public_spending.css?v=15">
 <link rel="stylesheet" href="css/chat.css?v=4">
+<link rel="stylesheet" href="css/ws.css?v=1">
 <script src="js/i18n.js?v=65" data-page="publicspending"></script>
 </head>
 <body class="research">
@@ -385,7 +386,10 @@ def build():
   <div class="brand"><b>{T("Knowledge Area · Budget and public spending", "Área de conocimiento · Presupuesto y gasto público")}</b><span>{T("The Government of Puerto Rico's budget: approved, proposed and spent", "El presupuesto del Gobierno de Puerto Rico: aprobado, propuesto y gastado")}</span></div>
   <div class="spacer"></div>
   <nav class="views" aria-label="{T("Views", "Vistas")}">
+    <a class="btn" href="explore.html" title="{T("Explore: start from a question, a topic or a saved map", "Explorar: comience con una pregunta, un tema o un mapa guardado")}"><span class="ms-icon" aria-hidden="true">explore</span><span class="lbl">{T("Explore", "Explorar")}</span></a>
+    <a class="btn" href="data.html" title="{T("Data: every dataset, map layer and set of places", "Datos: todos los conjuntos de datos, capas del mapa y grupos de lugares")}"><span class="ms-icon" aria-hidden="true">grid_view</span><span class="lbl">{T("Data", "Datos")}</span></a>
     <a class="btn" href="index.html"><span class="ms-icon" aria-hidden="true">map</span><span class="lbl">{T("Map", "Mapa")}</span></a>
+    <a class="btn" href="workflows.html" title="{T("Workflows: steps that turn data into a result on the map", "Flujos de trabajo: pasos que convierten datos en un resultado en el mapa")}"><span class="ms-icon" aria-hidden="true">account_tree</span><span class="lbl">{T("Workflows", "Flujos")}</span></a>
     <a class="btn" href="3d.html" title="{T("Immersive 3D + time view", "Vista inmersiva en 3D + tiempo")}"><span class="ms-icon" aria-hidden="true">view_in_ar</span><span class="lbl">{T("3D + Time", "3D + Tiempo")}</span></a>
     <a class="btn" href="knowledge.html" aria-current="page" title="{T("Knowledge: FPR studies, analyses and tools", "Conocimiento: estudios, análisis y herramientas de FPR")}"><span class="ms-icon" aria-hidden="true">lightbulb</span><span class="lbl">{T("Knowledge", "Conocimiento")}</span></a>
     <a class="btn" href="dictionary.html" title="{T("Data dictionary: meanings, sources, licenses, how to cite", "Diccionario de datos: significados, fuentes, licencias, cómo citar")}"><span class="ms-icon" aria-hidden="true">menu_book</span><span class="lbl">{T("Data dictionary", "Diccionario de datos")}</span></a>

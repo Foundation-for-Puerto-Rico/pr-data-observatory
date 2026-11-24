@@ -155,7 +155,7 @@ def main():
     title = t("Knowledge Area · Public transit route profile: crossings at high-volume intersections", "Área de conocimiento · Perfil de rutas de transporte colectivo: cruces por intersecciones de alto volumen vehicular")
     desc = ("An exploratory, comparative analysis of the bus routes of the ATI and of the municipal systems of the San Juan metro area and "
             "eastern Puerto Rico: service, route, peak-hour intersections, connections and nearby residents.")
-    icons = "account_balance,bolt,chat_bubble,close,commute,compare_arrows,delete,directions_bus,diversity_3,home_work,hourglass_bottom,info,lightbulb,map,menu_book,payments,price_change,rocket_launch,route,school,send,thermostat,view_in_ar,warning,water,wifi,woman,work"
+    icons = "account_balance,account_tree,bolt,chat_bubble,close,commute,compare_arrows,dark_mode,delete,directions_bus,diversity_3,explore,grid_view,home_work,hourglass_bottom,info,light_mode,lightbulb,map,menu_book,payments,price_change,rocket_launch,route,school,send,thermostat,view_in_ar,warning,water,wifi,woman,work"
     page = f"""<!doctype html>
 <html lang="en">
 <head>
@@ -173,6 +173,7 @@ def main():
 <link rel="stylesheet" href="css/housing.css?v=21">
 <link rel="stylesheet" href="css/route_analysis.css?v=5">
 <link rel="stylesheet" href="css/chat.css?v=4">
+<link rel="stylesheet" href="css/ws.css?v=1">
 <script src="js/i18n.js?v=69" data-page="routes"></script>
 </head>
 <body class="research">
@@ -182,7 +183,10 @@ def main():
   <div class="brand"><b>{t("Knowledge Area · Transit congestion", "Área de conocimiento · Congestión en las rutas")}</b><span>{t("Bus routes of the metro area and the east, one by one", "Rutas de autobús del área metro y del este, una por una")}</span></div>
   <div class="spacer"></div>
   <nav class="views" aria-label="Views">
+    <a class="btn" href="explore.html" title="Explore: start from a question, a topic or a saved map"><span class="ms-icon" aria-hidden="true">explore</span><span class="lbl">Explore</span></a>
+    <a class="btn" href="data.html" title="Data: every dataset, map layer and set of places"><span class="ms-icon" aria-hidden="true">grid_view</span><span class="lbl">Data</span></a>
     <a class="btn" href="index.html"><span class="ms-icon" aria-hidden="true">map</span><span class="lbl">Map</span></a>
+    <a class="btn" href="workflows.html" title="Workflows: steps that turn data into a result on the map"><span class="ms-icon" aria-hidden="true">account_tree</span><span class="lbl">Workflows</span></a>
     <a class="btn" href="3d.html" title="Immersive 3D + time view"><span class="ms-icon" aria-hidden="true">view_in_ar</span><span class="lbl">3D + Time</span></a>
     <a class="btn" href="knowledge.html" aria-current="page" title="Knowledge: FPR studies, analyses and tools"><span class="ms-icon" aria-hidden="true">lightbulb</span><span class="lbl">Knowledge</span></a>
     <a class="btn" href="dictionary.html" title="Data dictionary: meanings, sources, licenses, how to cite"><span class="ms-icon" aria-hidden="true">menu_book</span><span class="lbl">Data dictionary</span></a>
