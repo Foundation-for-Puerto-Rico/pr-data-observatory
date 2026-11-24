@@ -115,6 +115,14 @@ The top bar's **Knowledge Area** holds FPR research and program tools as tabs: H
 
 Each data section says when its file was built and is marked when the file is older than two of its update cycles. The sources are never added together: the rules (fiscal-year bases, stages, dedup groups, one population basis) are in `spending.py` and `docs/spending.md`; the function of each budget line comes from `dictionary_src/spending_crosswalk.csv`, a draft under review.
 
+## The workspace
+
+Since November 2026 every page shares one look: a compact top bar, a rail of areas (Explore, Data, Map, Workflows, 3D + Time, Knowledge, Data dictionary, Learn), and a light and a dark theme. The map has a layers panel, widgets, a workbench that resizes and a **timeline slider** for the year of every dataset on it. `docs/workspace.md` explains how it is built, how new data appears in it and how a change reaches production; `docs/workspace-feature-parity.md` lists what was kept and what is only partly done.
+
+- **`explore.html`**: ready-made views, the topics, the maps saved in the browser and every topic page.
+- **`data.html`**: the whole catalog as cards, with a search and filters.
+- **`workflows.html`**: steps that run in the browser on the published files, for example the public schools that stand in the 1% flood area.
+
 ## Two views
 
 - **`index.html` — 2D analysis.** Leaflet over an OpenFreeMap vector base map of OpenStreetMap data (`site/js/core/basemap.js`, `docs/basemap.md`): layers, municipality profiles, rankings, CSV export.

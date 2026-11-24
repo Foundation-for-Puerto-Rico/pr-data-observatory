@@ -177,12 +177,12 @@ def build():
 <link rel="icon" href="img/fpr-mark.png">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0&icon_names=account_balance,account_tree,bolt,chat_bubble,close,commute,compare_arrows,dark_mode,delete,diversity_3,download,elderly_woman,explore,family_restroom,grid_view,groups,home_work,hourglass_bottom,info,light_mode,lightbulb,location_city,map,menu_book,payments,price_change,rocket_launch,route,school,send,thermostat,timeline,view_in_ar,warning,water,wifi,woman,work&display=block">
-<link rel="stylesheet" href="css/twin.css?v=62">
-<link rel="stylesheet" href="css/housing.css?v=21">
-<link rel="stylesheet" href="css/women_labor.css?v=4">
-<link rel="stylesheet" href="css/chat.css?v=4">
+<link rel="stylesheet" href="css/twin.css?v=63">
+<link rel="stylesheet" href="css/housing.css?v=22">
+<link rel="stylesheet" href="css/women_labor.css?v=5">
+<link rel="stylesheet" href="css/chat.css?v=5">
 <link rel="stylesheet" href="css/ws.css?v=1">
-<script src="js/i18n.js?v=60" data-page="women"></script>
+<script src="js/i18n.js?v=61" data-page="women"></script>
 </head>
 <body class="research">
 <a class="skip" href="#region">{t("Skip to the content", "Ir al contenido")}</a>

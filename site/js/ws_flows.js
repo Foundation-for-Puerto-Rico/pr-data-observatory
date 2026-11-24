@@ -42,7 +42,7 @@
     const dx = m / (111320 * Math.cos(y * Math.PI / 180)), dy = m / 110540; let best = Infinity;
     ix.forEach(o => { if (x < o.b[0] - dx || x > o.b[2] + dx || y < o.b[1] - dy || y > o.b[3] + dy) return;
       o.poly.forEach(r => { for (let i = 0, j = r.length - 1; i < r.length; j = i++) { const ax = (r[j][0] - x) / dx * m, ay = (r[j][1] - y) / dy * m, bx = (r[i][0] - x) / dx * m, by = (r[i][1] - y) / dy * m, vx = bx - ax, vy = by - ay, t = Math.max(0, Math.min(1, -(ax * vx + ay * vy) / ((vx * vx + vy * vy) || 1))), d = Math.hypot(ax + t * vx, ay + t * vy); if (d < best) best = d; } }); });
-    return best;
+    return best <= m ? best : Infinity;
   }
   const muniOf = (x, y) => { const h = S.muni ? hit(S.muni, x, y) : null; return h ? h.p.GEOID : null; };
   const muniName = (id) => { const o = S.muni && S.muni.find(m => m.p.GEOID === id); return o ? o.p.municipality : id; };

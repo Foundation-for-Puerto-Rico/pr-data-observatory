@@ -125,7 +125,7 @@
     host.insertAdjacentHTML('afterbegin', `<div class="al" id="alWrap" data-no-glossary hidden><button type="button" class="al-chip" id="alChip" aria-expanded="false" aria-controls="alPanel"><span class="ms-icon" aria-hidden="true">layers</span><span class="al-n" aria-hidden="true"></span><span class="al-t"></span><span class="ms-icon al-chev" aria-hidden="true">keyboard_arrow_down</span></button><div class="al-panel" id="alPanel" hidden><p class="al-h">${esc(T('On the map'))}</p><div class="al-items"></div><div class="al-dock" id="alDock" hidden></div></div></div>`);
     const wrap = doc.getElementById('alWrap'), chip = doc.getElementById('alChip'), panel = doc.getElementById('alPanel'), box = panel.querySelector('.al-items'), dockEl = doc.getElementById('alDock');
     // On a wide screen the list stays open while a layer is on (navigation plan, decision 81: the "On the map" panel), unless folded with the chip this visit
-    const wide = () => !!(root.matchMedia && root.matchMedia('(min-width: 1100px)').matches);
+    const wide = () => !!(root.matchMedia && root.matchMedia('(min-width: 1100px)').matches) && !(host.clientWidth && host.clientWidth < 820);   // and the map itself has the room: beside the widgets of the map workspace (css/ws.css) a 1,440 px window leaves it about 680 px, where the open list would cover half of it
     let folded = false; try { folded = root.sessionStorage.getItem('alFolded') === '1'; } catch { /* storage blocked: open by default */ }
     let queued = false, sig = null;
     stopMap(wrap);

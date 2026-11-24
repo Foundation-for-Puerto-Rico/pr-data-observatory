@@ -143,7 +143,10 @@
   const view = (v) => VIEWS[v] || VIEWS['2d'];
   const valid = (n) => NAMES.includes(n);
   /** The default style of a view ('2d' or '3d'): its name in OPTIONS. */
-  const defaultOf = (v) => view(v).style;
+  // In the dark theme (css/ws.css, html[data-theme=dark]) the 2D maps open on the dark style, so the map does not glare between charcoal panels. A viewer's own
+  // choice still comes first (bm= in the address, then the default kept in this browser: pick() below). The 3D view keeps Liberty, whose buildings it extrudes.
+  const darkTheme = () => { try { return root.document.documentElement.dataset.theme === 'dark'; } catch (e) { return false; } };
+  const defaultOf = (v) => (v === '2d' && darkTheme() ? 'dark' : view(v).style);
   /** The provider of a view's style, or of the named one (null for "none"). */
   const provider = (v, n) => { const o = OPTIONS[valid(n) ? n : defaultOf(v)]; return o.provider ? PROVIDERS[o.provider] : null; };
   const keyOf = (p) => (p.key ? ((root.BASEMAP_LOCAL || {})[p.key.name] || '') : '');
@@ -308,6 +311,8 @@
             attributionControl: { customAttribution: credits(v, null, name) } }).addTo(map);
         } catch (e) { clearTimeout(timer); fail(g, 'webgl'); return; }   // MapLibre could not create a WebGL context
         const gl = layer.getMaplibreMap();
+        // A style can name an icon its sprite does not hold (the Dark style asks for "circle-11"): give it an empty one, so the label draws without it and the console stays clean.
+        gl.on('styleimagemissing', (e) => { try { if (e && e.id && !gl.hasImage(e.id)) gl.addImage(e.id, { width: 1, height: 1, data: new Uint8Array(4) }); } catch (err) { /* the style changed meanwhile */ } });
         gl.on('load', () => { if (g !== gen) return; loaded = true; clearTimeout(timer); mark('on'); status('', ''); taken(g); tell('on'); });
         gl.on('error', (e) => {
           if (g !== gen) return;

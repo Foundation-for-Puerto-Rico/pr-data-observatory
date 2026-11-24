@@ -64,7 +64,7 @@ const script = (src) => new Promise((ok, fail) => { const s = document.createEle
 // off the first load; with no WebGL or no answer from the provider, a map goes on over a plain background with a notice in its credits line (docs/basemap.md) ──
 let readyNow = null; const readyP = new Promise(r => { readyNow = r; });
 let basemapJs = null;
-W.basemap = (map) => readyP.then(() => basemapJs || (basemapJs = window.Core.basemap ? Promise.resolve() : script('js/core/basemap.js?v=7').catch(e => { basemapJs = null; throw e; })))
+W.basemap = (map) => readyP.then(() => basemapJs || (basemapJs = window.Core.basemap ? Promise.resolve() : script('js/core/basemap.js?v=8').catch(e => { basemapJs = null; throw e; })))
   .then(() => Core.basemap.leaflet(map), () => { map.getContainer().dataset.basemap = 'off'; });
 let vulnP = null, vulnJs = null;
 function loadVuln() {

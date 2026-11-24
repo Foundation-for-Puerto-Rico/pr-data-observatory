@@ -338,9 +338,12 @@
       Core.activelayers.dock = function () { dk.apply(this, arguments); tlBuild(); onChange(); };
     }
     document.addEventListener('change', (e) => { if (e.target && /^(ly|slr$|walkRings)/.test(e.target.id || '')) onChange(); }, true);
-    document.addEventListener('themechange', () => widgets());
+    document.addEventListener('themechange', () => {   // the base map follows the theme unless the viewer chose one (bm= in the address, or a default kept in this browser)
+      try { if (typeof bmH !== 'undefined' && bmH && bmH.set && !bmLink && window.Core && Core.basemap && !Core.basemap.stored()) { const n = Core.basemap.defaultOf('2d'); bmH.set(n); if (bmCtl) bmCtl.set(n); } } catch (e) { /* the base map has not loaded: it will pick the theme's style when it does */ }
+      widgets();
+    });
     if (engine()) { tlBuild(); onChange(); }
   }
-  window.Workspace = { start, timeline: { set: tlSet, step: tlStep, play: tlPlay, stop: tlStop, years: () => years.slice(), sync: tlSync }, widgets, filters: W, history: H, period };
+  window.Workspace = { start, timeline: { set: tlSet, step: tlStep, play: tlPlay, stop: tlStop, years: () => years.slice(), sync: tlSync }, widgets, filters: W, history: H, period, _test: { aggregate, median } };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
 })();

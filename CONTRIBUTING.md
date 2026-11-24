@@ -22,4 +22,4 @@ La regla no tiene excepciones. El workflow nocturno `refresh-transit.yml` tambi�
 
 ## Publicación
 
-Cada fusión a `main` publica el sitio en GitHub Pages (`pages.yml`). Si tu PR no debe salir todavía, déjalo abierto o márcalo como borrador (**Draft**).
+Cada fusión a `main` que toca `site/` o `connector/` publica el sitio en Azure Static Web Apps (`pages.yml`; `docs/azure.md`). Para deshacer una publicación, abre un PR que revierta la fusión (`docs/workspace.md`, "From GitHub to production"). Si tu PR no debe salir todavía, déjalo abierto o márcalo como borrador (**Draft**).

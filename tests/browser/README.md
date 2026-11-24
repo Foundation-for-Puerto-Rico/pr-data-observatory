@@ -222,3 +222,15 @@ node tests/browser/usability.js http://127.0.0.1:8041 es,en 1400,390
 ```
 
 It exits 2 on an error, 1 when a check fails and 0 when all pass.
+
+## The workspace (`workspace.js`)
+
+`workspace.js` walks the redesigned pages (`docs/workspace.md`): the map's timeline (enabled with the engine's years, Previous, Latest, 41 rapid moves that end on the last, play and pause, each layer's own period, a snapshot layer alone, sea level rise named as a scenario), undo and redo, the eight tabs of the panel, the ten workbench views and the grip, Ask, the widgets and their filters, a saved map, the map at four widths in Spanish, and twelve other pages (the rail's eight areas, the light/dark switch, no console error, no sideways scroll). 55 checks; it found 0 problems on the branch that added it.
+
+```
+chrome --headless=new --remote-debugging-port=9333 --user-data-dir=<a scratch folder> --use-angle=swiftshader --enable-unsafe-swiftshader
+python -m http.server 8151 --bind 127.0.0.1 --directory site
+node tests/browser/workspace.js http://127.0.0.1:8151/ <screenshots folder>
+```
+
+`usability.js` and `bars.js` were written for the earlier top bar (a row of view buttons, and two rows on a phone). The views are now a rail (`css/ws.css`), so both need their expectations updated before they are used again.

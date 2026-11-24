@@ -169,12 +169,12 @@ def main():
 <link rel="icon" href="img/fpr-mark.png">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0&icon_names={icons}&display=block">
-<link rel="stylesheet" href="css/twin.css?v=62">
-<link rel="stylesheet" href="css/housing.css?v=21">
-<link rel="stylesheet" href="css/route_analysis.css?v=5">
-<link rel="stylesheet" href="css/chat.css?v=4">
+<link rel="stylesheet" href="css/twin.css?v=63">
+<link rel="stylesheet" href="css/housing.css?v=22">
+<link rel="stylesheet" href="css/route_analysis.css?v=6">
+<link rel="stylesheet" href="css/chat.css?v=5">
 <link rel="stylesheet" href="css/ws.css?v=1">
-<script src="js/i18n.js?v=69" data-page="routes"></script>
+<script src="js/i18n.js?v=70" data-page="routes"></script>
 </head>
 <body class="research">
 <a class="skip" href="#about">Skip to the content</a>

@@ -815,7 +815,7 @@ async function loadProt() {
  *  tab (#basemap): a pick changes only the base map, is kept in the address (bm=) and the 3D link, and in this browser as the viewer's default. */
 function startBasemap() {
   const off = () => map.getContainer().dataset.basemap = 'off';
-  (window.Core.basemap ? Promise.resolve() : addJs('js/core/basemap.js?v=7')).then(() => {
+  (window.Core.basemap ? Promise.resolve() : addJs('js/core/basemap.js?v=8')).then(() => {
     const B = Core.basemap;
     bmH = Core.basemap.leaflet(map, { style: bmLink || B.stored(), onState: (st, msg) => { osmiSync(st); if (st === 'off') Core.basemap.notice(map.getContainer(), msg); } });   // its own notice: the message bar may hold an Undo
     // a pick is kept as the viewer's default only once its style has loaded (keep), as in 3D; a style that loads also takes away a pending failure notice

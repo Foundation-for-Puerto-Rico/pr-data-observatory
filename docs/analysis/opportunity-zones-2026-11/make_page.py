@@ -116,7 +116,7 @@ def build():
 <link rel="stylesheet" href="css/twin.css?v={ver("css/twin.css")}">
 <link rel="stylesheet" href="css/housing.css?v={ver("css/housing.css")}">
 <link rel="stylesheet" href="css/public_money.css?v={ver("css/public_money.css")}">
-<link rel="stylesheet" href="css/oz.css?v=3">
+<link rel="stylesheet" href="css/oz.css?v=4">
 <link rel="stylesheet" href="css/chat.css?v={ver("css/chat.css")}">
 <link rel="stylesheet" href="css/ws.css?v=1">
 <script src="js/i18n.js?v={max(int(ver("js/i18n.js")), I18N_V)}" data-page="oppzones"></script>

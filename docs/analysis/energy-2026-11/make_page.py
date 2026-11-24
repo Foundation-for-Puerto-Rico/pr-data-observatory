@@ -119,7 +119,7 @@ def build():
 <link rel="stylesheet" href="css/housing.css?v={ver("css/housing.css")}">
 <link rel="stylesheet" href="css/public_money.css?v={ver("css/public_money.css")}">
 <link rel="stylesheet" href="css/broadband.css?v={ver("css/broadband.css")}">
-<link rel="stylesheet" href="css/energy.css?v=1">
+<link rel="stylesheet" href="css/energy.css?v=2">
 <link rel="stylesheet" href="css/chat.css?v={ver("css/chat.css")}">
 <link rel="stylesheet" href="css/ws.css?v=1">
 <script src="js/i18n.js?v={ver("js/i18n.js")}" data-page="energy"></script>

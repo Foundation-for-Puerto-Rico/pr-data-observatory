@@ -372,12 +372,12 @@ def build():
 <link rel="icon" href="img/fpr-mark.png">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0&icon_names=account_balance,account_tree,arrow_back,bar_chart,bolt,chat_bubble,close,commute,compare_arrows,dark_mode,delete,diversity_3,download,explore,grid_view,home_work,hourglass_bottom,info,light_mode,lightbulb,location_city,map,menu_book,payments,pie_chart,price_change,rocket_launch,route,school,send,table_view,thermostat,view_in_ar,warning,water,wifi,woman,work&display=block">
-<link rel="stylesheet" href="css/twin.css?v=62">
-<link rel="stylesheet" href="css/housing.css?v=21">
-<link rel="stylesheet" href="css/public_spending.css?v=15">
-<link rel="stylesheet" href="css/chat.css?v=4">
+<link rel="stylesheet" href="css/twin.css?v=63">
+<link rel="stylesheet" href="css/housing.css?v=22">
+<link rel="stylesheet" href="css/public_spending.css?v=16">
+<link rel="stylesheet" href="css/chat.css?v=5">
 <link rel="stylesheet" href="css/ws.css?v=1">
-<script src="js/i18n.js?v=65" data-page="publicspending"></script>
+<script src="js/i18n.js?v=66" data-page="publicspending"></script>
 </head>
 <body class="research">
 <a class="skip" href="#budget">{T("Skip to the content", "Saltar al contenido")}</a>
