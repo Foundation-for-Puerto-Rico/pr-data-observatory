@@ -1,6 +1,6 @@
 # Opportunity Zones 2.0
 
-HANDOFF decision 103 (2026-11-13). Francis asked for a Knowledge Area page and a map layer that show "las 178 áreas de Puerto Rico designadas bajo Opportunity Zones 2.0". This settles option 3 of `PUBLIC_MONEY_V2_PLAN_2026-10-30.md` (decision 71 (f) left Opportunity Zones out "until plan decision 3 is settled"): the nominations are over and the designations are final, so the layer shows the designated zones and the page shows the eligible tracts beside them.
+HANDOFF decision 103 (2026-11-13). The project lead asked for a Knowledge Area page and a map layer that show "las 178 áreas de Puerto Rico designadas bajo Opportunity Zones 2.0". This settles option 3 of `PUBLIC_MONEY_V2_PLAN_2026-10-30.md` (decision 71 (f) left Opportunity Zones out "until plan decision 3 is settled"): the nominations are over and the designations are final, so the layer shows the designated zones and the page shows the eligible tracts beside them.
 
 ## What the program is
 

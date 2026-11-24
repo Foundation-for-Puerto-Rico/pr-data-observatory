@@ -1,12 +1,12 @@
 # Proposal: terrain and climate (urban heat, slope, line of sight)
 
-Date: 2026-11-04. Status: **approved by Francis on 2026-11-04 (decision 80 in HANDOFF.md); step 0 in progress.** This pull request changes no page and builds no data. It adds two rows to the wanted-data list (`ecostress-lst`, `urban-microclimate-sim`), extends three rows (`landsat-lst`, `lidar-terrain`, `towers`) with the uses below, and adds four glossary terms (land surface temperature, PET, UTCI, lidar).
+Date: 2026-11-04. Status: **approved by the project lead on 2026-11-04 (decision 80 in HANDOFF.md); step 0 in progress.** This pull request changes no page and builds no data. It adds two rows to the wanted-data list (`ecostress-lst`, `urban-microclimate-sim`), extends three rows (`landsat-lst`, `lidar-terrain`, `towers`) with the uses below, and adds four glossary terms (land surface temperature, PET, UTCI, lidar).
 
 **In one paragraph.** Puerto Rico's heat and its terrain shape who is exposed and who can get where. The observatory already has most of the pieces: the landslide susceptibility map (live), a 3D view with terrain and an exaggeration slider, a walking network that measures 400 m walks to transit stops, the registered towers and two checked satellite sources (Landsat surface temperature, Sentinel-2 vegetation). The proposal puts them together in six steps, cheapest first. The first four use open data and FPR's own build. The last two need more: a line-of-sight model and, for street-level heat, a research partner.
 
 ## Where the idea came from
 
-Two LinkedIn posts Francis shared on 2026-11-03:
+Two LinkedIn posts the project lead shared on 2026-11-03:
 
 - **friGIS, Phase 2 (EcoRestoration Alliance):** a city digital twin first, then PALM-4U simulations of air temperature, thermal comfort (PET, UTCI), surface temperature and wind, day and night, made explorable for non-experts. The lesson: model output only helps when a non-expert can explore it, which is the observatory's purpose too.
 - **A browser 3D terrain tool (built for defence planning):** elevation profiles, slope and climb, line of sight, sun direction and vertical exaggeration. The terrain methods have civilian uses here. **The defence features (own and enemy positions, cover and concealment, fire sectors) are out of scope** and are not proposed.

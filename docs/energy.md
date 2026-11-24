@@ -1,6 +1,6 @@
 # Energy (HANDOFF decision 104)
 
-The plan is `docs/energy-proposal-2026-11.md`, approved by Francis on 2026-11-13 ("Approve, start step 1"), choices (a) to (g) as proposed. This page describes what is built.
+The plan is `docs/energy-proposal-2026-11.md`, approved by the project lead on 2026-11-13 ("Approve, start step 1"), choices (a) to (g) as proposed. This page describes what is built.
 
 ## Step 1: the Power plants layer (`power_plants.py`)
 
@@ -71,7 +71,7 @@ The plan is `docs/energy-proposal-2026-11.md`, approved by Francis on 2026-11-13
 
 ## Built solar plants that EIA does not list yet (`energy_src/plants_added.json`, 2026-11-17)
 
-Francis on 2026-11-17: the energy map was missing some solar projects. EIA-860M lists a plant only once it is in commercial operation (or reported as planned), so in its September 2026 file Puerto Rico's renewable plants were 397.7 MW, and the largest new solar farms were missing.
+The project lead on 2026-11-17: the energy map was missing some solar projects. EIA-860M lists a plant only once it is in commercial operation (or reported as planned), so in its September 2026 file Puerto Rico's renewable plants were 397.7 MW, and the largest new solar farms were missing.
 
 **What was found.** OpenStreetMap had 48 solar plant outlines in Puerto Rico. Four groups of large unnamed outlines, all traced from Esri World Imagery in 2025 and 2026, were not in EIA. Esri's Wayback imagery dates each one, and the Energy Bureau's filings and the press name them:
 
@@ -96,7 +96,7 @@ Together: 322.1 MW of solar and 336.5 MW of batteries, about four-fifths of the 
 
 **To keep it current.** Check the list when EIA publishes a new month, and when the Energy Bureau's monthly collaborative report (NEPR-MI-2024-0005) changes a project's status. Update `stage`, `as_of` and the source, or remove an entry once EIA lists the plant (the build does this by itself).
 
-## Next steps (each its own pull request, on Francis's word)
+## Next steps (each its own pull request, on the project lead's word)
 
 5. Solar and wind potential.
 6. Outages (EAGLE-I, by LUMA region).

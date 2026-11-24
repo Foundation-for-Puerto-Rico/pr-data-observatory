@@ -1,6 +1,6 @@
 # The layer menu: groups, order and the 2D and 3D views
 
-The "Layers" tab of the 2D map (`site/index.html`) and of the 3D view (`site/3d.html`) share one menu: the same groups, in the same order, with the same names, in both languages. The list is `site/js/core/layers.js`. Francis asked for it on 2026-10-19 (HANDOFF decision 55): the same organisation in 2D and 3D, and every layer in both views where it can be drawn. Since navigation PR 5 the groups are the topics of the Explore tab (decision 81 (e)).
+The "Layers" tab of the 2D map (`site/index.html`) and of the 3D view (`site/3d.html`) share one menu: the same groups, in the same order, with the same names, in both languages. The list is `site/js/core/layers.js`. The project lead asked for it on 2026-10-19 (HANDOFF decision 55): the same organisation in 2D and 3D, and every layer in both views where it can be drawn. Since navigation PR 5 the groups are the topics of the Explore tab (decision 81 (e)).
 
 ## The groups
 

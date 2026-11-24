@@ -1,8 +1,8 @@
 # Proposal: the Tools tab becomes the map's toolbox
 
-Date: 2026-11-10. Status: **approved by Francis on 2026-11-11 ("Aprobar y construir"), choices (a) to (e) as proposed (decision 97 in HANDOFF.md). Step 1 built on branch `tools/map-tools-list`.**
+Date: 2026-11-10. Status: **approved by the project lead on 2026-11-11 ("Aprobar y construir"), choices (a) to (e) as proposed (decision 97 in HANDOFF.md). Step 1 built on branch `tools/map-tools-list`.**
 
-**In one paragraph.** On 2026-11-10 Francis said the Tools tab (Herramientas) opens on a ranking of municipalities, and that it should hold the mapping tools people can use instead, with the ranking kept wherever it fits best. Checked against main (`1f407f6`): the observatory already has **15 tools a visitor can use on the map**, but only one of them, "Area around a point", has a button in Tools. The others are switches in Map layers, views of the workbench under the map, a panel of their own or sections of Transit. The proposal builds no new analysis in its first step. It gathers the tools that exist into one list in Tools, each with one button that opens it where it already works, moves the ranking to Place, and fixes an English button on the Spanish page. New tools come after, one at a time.
+**In one paragraph.** On 2026-11-10 the project lead said the Tools tab (Herramientas) opens on a ranking of municipalities, and that it should hold the mapping tools people can use instead, with the ranking kept wherever it fits best. Checked against main (`1f407f6`): the observatory already has **15 tools a visitor can use on the map**, but only one of them, "Area around a point", has a button in Tools. The others are switches in Map layers, views of the workbench under the map, a panel of their own or sections of Transit. The proposal builds no new analysis in its first step. It gathers the tools that exist into one list in Tools, each with one button that opens it where it already works, moves the ranking to Place, and fixes an English button on the Spanish page. New tools come after, one at a time.
 
 ## 1. What Tools holds today
 
@@ -12,7 +12,7 @@ Date: 2026-11-10. Status: **approved by Francis on 2026-11-11 ("Aprobar y constr
 | Transit | Planning layers, what is live, operators, **Plan a route** | `#tab-transit`, `network.js`, `plan_route.js` |
 | Analysis | One "Area around a point" button, then the Economy tab's datasets (`#econRoot`) that feed the workbench | `#tab-economy`, `economy.js` |
 
-**A bug seen in Francis's screenshot.** The ranking's button reads "Show on the map" in English on the Spanish page. The Spanish text exists only in `i18n_src/es/studyareas.json` and `wcrp.json`, which load later; `map.json` lacks it.
+**A bug seen in the project lead's screenshot.** The ranking's button reads "Show on the map" in English on the Spanish page. The Spanish text exists only in `i18n_src/es/studyareas.json` and `wcrp.json`, which load later; `map.json` lacks it.
 
 ## 2. The tools the observatory already has
 
@@ -70,7 +70,7 @@ Not proposed before, and expected by most map users:
 
 Each loads on first use, like the workbench.
 
-## 5. Choices for Francis
+## 5. Choices for the project lead
 
 - **(a)** Tools opens on **Map tools**, grouped as in section 2; Transit and Analysis stay as subtabs.
 - **(b)** The ranking moves to **Place › Rankings** (PR #186, which changed it, is merged).
@@ -87,4 +87,4 @@ Effort as in `docs/proposal-2026-10.md`: **S** under 1 day, **M** 2-4 days.
 3. **Save the map as an image (S).** **Built 2026-11-11** (branch `tools/map-image`, `docs/map-image.md`): a PNG of the map on screen with its legends, scale bar, sources, date and address.
 4. Decision 93 steps 3 to 6, each on his word, each adding its row.
 
-One pull request per step, each on Francis's go-ahead.
+One pull request per step, each on the project lead's go-ahead.

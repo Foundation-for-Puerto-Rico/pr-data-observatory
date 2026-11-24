@@ -1,6 +1,6 @@
 # Ready-made views for the Public money topic: draft for Finance and Compliance review
 
-**Status: approved and published 2026-11-05.** Francis answered "approved" and, asked what it covered, "Both, publish them": the Finance/Compliance approval of the wording and his approval of the set (HANDOFF decision 86). The views are in `dictionary_src/domains.json` as written below. This file keeps the draft as it was reviewed.
+**Status: approved and published 2026-11-05.** the project lead answered "approved" and, asked what it covered, "Both, publish them": the Finance/Compliance approval of the wording and their approval of the set (HANDOFF decision 86). The views are in `dictionary_src/domains.json` as written below. This file keeps the draft as it was reviewed.
 
 Prepared 2026-11-05 for Finance and Compliance review (decision 20: Spanish text about federal grant money is reviewed before it is published).
 
@@ -11,7 +11,7 @@ The Explore tab gives each topic two to four ready-made views (navigation plan P
 ## What is needed
 
 - **Finance and Compliance:** approve or correct the English and Spanish names and notes below.
-- **Francis:** approve the set of views (which datasets, how they are drawn).
+- **The project lead:** approve the set of views (which datasets, how they are drawn).
 
 Once both are approved, the views go into `dictionary_src/domains.json` (`presets` of `public-money`). `catalog.py` checks them, and `tests/presets.test.js` checks each dataset and scale against the engine.
 

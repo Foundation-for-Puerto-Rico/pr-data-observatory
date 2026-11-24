@@ -1,7 +1,7 @@
 # Data management: what is published, how much of it, since when, and under what review
 
 The Data management page (`site/data-management.html`, "Gestión de datos") is the public account of every data file the observatory publishes. It grew out
-of the "Published data files" table of the data dictionary (Francis, 2026-10-19). For each file it gives what the file holds, its domain, its **records**,
+of the "Published data files" table of the data dictionary (the project lead, 2026-10-19). For each file it gives what the file holds, its domain, its **records**,
 **fields** and **values** (data points), its size, the date it was **first published** and **last updated**, the dictionary items that **document** it and
 the state of its **compliance review**; for the whole folder it gives the totals, how they grew, and what is **not published**, as counts only.
 
@@ -183,7 +183,7 @@ that gives it. No name and no location appears.
   a time as a step line, with a crosshair readout by pointer and arrow keys, and the table of every date), what is not published, and the definitions.
 - **Language**: page `datamgmt` in `i18n_src/pages.json` (scopes `common` and `datamgmt`), Spanish released. "License not stated" is "Licencia sin declarar"
   everywhere now (the common scope said "Licencia no indicada").
-- **Public and indexable** (Francis, 2026-10-20, HANDOFF decision 56(a): "La página de gestión de datos debe aparecer a todo el mundo para ser
+- **Public and indexable** (the project lead, 2026-10-20, HANDOFF decision 56(a): "La página de gestión de datos debe aparecer a todo el mundo para ser
   transparentes (pero solamente nosotros podemos hacer cambios)."): the page has no robots tag, and its canonical link and share tags (`og:*`,
   `twitter:card`) are those of the other pages. The site has no sitemap or `robots.txt`, so nothing else lists it. The dictionary, the Housing page and the
   area profile stay `noindex, follow` until Compliance reviews the pages that describe grant-funded and federal-award data (decision 13), and the WCRP page

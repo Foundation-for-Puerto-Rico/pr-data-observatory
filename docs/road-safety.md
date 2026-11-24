@@ -1,6 +1,6 @@
 # Road deaths
 
-HANDOFF decision 105, step 3 (2026-11-13). Francis approved step 3 of `docs/transportation-upgrade-2026-11.md` ("Sí, paso 3"): fatal crashes by municipio and year, counts only.
+HANDOFF decision 105, step 3 (2026-11-13). The project lead approved step 3 of `docs/transportation-upgrade-2026-11.md` ("Sí, paso 3"): fatal crashes by municipio and year, counts only.
 
 ## Files
 

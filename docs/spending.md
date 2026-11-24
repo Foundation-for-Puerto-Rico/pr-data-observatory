@@ -1,6 +1,6 @@
 # Public spending (Gasto Público): record schema, allocation tiers and the rules for adding up
 
-Where public money goes in Puerto Rico: Commonwealth agencies (state), municipio governments (municipal) and federal money that reaches the island (federal to PR), by sector and type of expense, placed in the 78 municipios when the source allows it. HANDOFF decision 73 records the plan and Francis's approvals; the Phase 0 audit is `PUBLIC_SPENDING_PHASE0_2026-11-01.md` in the VIEWPR folder.
+Where public money goes in Puerto Rico: Commonwealth agencies (state), municipio governments (municipal) and federal money that reaches the island (federal to PR), by sector and type of expense, placed in the 78 municipios when the source allows it. HANDOFF decision 73 records the plan and the project lead's approvals; the Phase 0 audit is `PUBLIC_SPENDING_PHASE0_2026-11-01.md` in the VIEWPR folder.
 
 This page describes the schema (PR 1). The ingestors, the function crosswalk and the views come in later PRs, one at a time.
 
@@ -24,7 +24,7 @@ This page describes the schema (PR 1). The ingestors, the function crosswalk and
 | `stage` | `proposed`, `approved`, `obligated`, `disbursed`, `actual` | `actual` = spent (OGP "Gastado", single audits) |
 | `fund_origin` | `general`, `federal`, `special`, `bond_other` | OGP: Fondo General, Fondos Federales, Fondos Especiales |
 | `agency_or_entity`, `program` | text | As the source writes them (OGP: "081 Departamento de Educación") |
-| `function_category` | `education`, `health`, `public_safety`, `transportation`, `housing`, `parks_recreation`, `environment_natural_resources`, `economic_development`, `utilities_energy`, `social_services`, `debt_pensions`, `general_government`, `other` | From the function crosswalk (PR 2, reviewed by Francis before use) |
+| `function_category` | `education`, `health`, `public_safety`, `transportation`, `housing`, `parks_recreation`, `environment_natural_resources`, `economic_development`, `utilities_energy`, `social_services`, `debt_pensions`, `general_government`, `other` | From the function crosswalk (PR 2, reviewed by the project lead before use) |
 | `concept_of_expense` | `payroll`, `purchased_services`, `transfers`, `capex`, `debt_service`, `other` | OGP's concept codes map onto these |
 | `recipient_type` | `agency`, `municipality`, `nonprofit`, `private`, `individual_aggregate` | Never an individual: people are only ever a total |
 | `allocation_tier`, `allocation_driver`, `allocation_confidence` | see below | |
@@ -86,7 +86,7 @@ Federal and CDBG-DR content stays under the decision 21 hold: no headline figure
 
 ## The function crosswalk (HANDOFF decision 76, reviewed in decision 92)
 
-`dictionary_src/spending_crosswalk.csv` maps every code a source uses to a `function_category`, and where it applies to a `concept_of_expense` and an `allocation`. It is a **draft until Francis reviews it**: the 40 rows flagged `review` are listed, largest money first, in `docs/analysis/public-spending-2026-11/crosswalk_review.md`. Edit the CSV, then run the tests.
+`dictionary_src/spending_crosswalk.csv` maps every code a source uses to a `function_category`, and where it applies to a `concept_of_expense` and an `allocation`. It is a **draft until the project lead reviews it**: the 40 rows flagged `review` are listed, largest money first, in `docs/analysis/public-spending-2026-11/crosswalk_review.md`. Edit the CSV, then run the tests.
 
 | Kind | Code | What it covers |
 |---|---|---|
@@ -147,7 +147,7 @@ The tests check the crosswalk against them. To rebuild after a new data sheet:
 | Approved | | $31.34 B | $33.28 B | $32.71 B | $33.58 B |
 | Proposed | | | $33.47 B | $32.61 B | $33.57 B |
 
-FY2023 spent, FY2024 approved and FY2025 proposed come from the 2025 budget's own site (`presupuesto2025.pr.gov/Sabana_Files/`, added 2026-11-17 after Francis saw that FY2024 had no approved figure). The home page links that site, and the site links its sheets by a relative address. It does not send its intermediate certificate, so the certificate list that `requests` ships cannot check it. `ogp_budget.get` then tries again with the operating system's certificates, which can. Verification is never turned off: on a computer that cannot check the site, its sheets are skipped, the log says so, and those three columns are missing from the file.
+FY2023 spent, FY2024 approved and FY2025 proposed come from the 2025 budget's own site (`presupuesto2025.pr.gov/Sabana_Files/`, added 2026-11-17 after the project lead saw that FY2024 had no approved figure). The home page links that site, and the site links its sheets by a relative address. It does not send its intermediate certificate, so the certificate list that `requests` ships cannot check it. `ogp_budget.get` then tries again with the operating system's certificates, which can. Verification is never turned off: on a computer that cannot check the site, its sheets are skipped, the log says so, and those three columns are missing from the file.
 
 Every column equals OGP's own total (`stated_total`); `tests/test_ogp_budget.py` checks that.
 
@@ -285,7 +285,7 @@ Per resident, Culebra, San Juan and Vieques lead. A subaward is placed where the
 
 ## The crosswalk review, 2026-11-09
 
-Francis asked for the 40 flagged rows to be decided (HANDOFF decision 92). Each row was decided against the UN Classification of the Functions of Government (COFOG), mapped to the crosswalk's functions, with one rule for rows of the same kind. The decisions are in `docs/analysis/public-spending-2026-11/crosswalk_decisions.py`, with the list in `crosswalk_decisions.md`. `make_crosswalk.py` applies them before it writes the CSV, so a rebuild keeps them. A decided row has flag `reviewed` (added to `spending.FLAGS`) and its decision after its reason.
+The project lead asked for the 40 flagged rows to be decided (HANDOFF decision 92). Each row was decided against the UN Classification of the Functions of Government (COFOG), mapped to the crosswalk's functions, with one rule for rows of the same kind. The decisions are in `docs/analysis/public-spending-2026-11/crosswalk_decisions.py`, with the list in `crosswalk_decisions.md`. `make_crosswalk.py` applies them before it writes the CSV, so a rebuild keeps them. A decided row has flag `reviewed` (added to `spending.FLAGS`) and its decision after its reason.
 
 **Three functions changed:**
 - the Public-Private Partnerships Authority (OGP agency 276), from other to utilities_energy: its budget is the energy system's contracts;
@@ -360,7 +360,7 @@ Plan: `docs/spending-questions-2026-11.md`, step 5. Section 9 of the page has a 
 
 ## Section 3 opens, clearer titles, federal money from FY2008 (2026-11-17)
 
-Francis on 2026-11-17: section 3 should say more and open item by item; chart titles were hard to tell from the text; "the ten municipios with the most dollars" did not say dollars of what; could the federal money go back to 2000?
+The project lead on 2026-11-17: section 3 should say more and open item by item; chart titles were hard to tell from the text; "the ten municipios with the most dollars" did not say dollars of what; could the federal money go back to 2000?
 - **Section 3:** each concept of expense is a `<details>` row (first-load markup in `public_spending.js`); opening it calls `PSCharts.concept` (`public_spending_charts.js` v4): a definition of the concept, its split by function and its six largest agencies in the budget chosen.
 - **Titles:** `.ps-head` and card titles have a left accent bar, 16 px bold in the primary dark colour; card subtitles (`h4`) are small capitals. `housing.css` (v21, every Knowledge Area page) makes `.card-head h3` and a card's first `h3` 16 px bold in the same colour.
 - **Rankings:** "Capital projects planned (per resident | in dollars): the ten highest municipios" and "Disaster recovery subawards (per resident | in dollars): the ten highest municipios".
