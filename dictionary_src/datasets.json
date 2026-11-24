@@ -3073,6 +3073,41 @@
    "note": "The same 5 estimates for the 901 barrios, by the same method (cutoff.py; docs/cutoff.md). A barrio with no residents, and those of Vieques and Culebra, have no value."
   },
   {
+   "id": "jobs_reach_series",
+   "file": "jobs_reach_series.json",
+   "title": {
+    "en": "Jobs within 30 and 45 minutes by car (estimate), by municipio",
+    "es": "Empleos a 30 y 45 minutos en carro (estimado), por municipio"
+   },
+   "geography": {
+    "level": "municipio",
+    "key": "geo.ids"
+   },
+   "time": {
+    "type": "period",
+    "first": 2026,
+    "last": 2026,
+    "years_path": "years"
+   },
+   "domains": [
+    "economy",
+    "infrastructure.mobility",
+    "population"
+   ],
+   "sources": [
+    "bls_qcew",
+    "overture",
+    "osm",
+    "census_tiger"
+   ],
+   "licence_class": "open-with-conditions",
+   "cadence": "as-needed",
+   "published": "2026-11",
+   "review": [],
+   "tier": "small",
+   "note": "4 estimates for the 78 municipios and Puerto Rico (the key list ends with 72; decision 107, step 9, fifth part; jobs_reach.py): the average number of jobs, and the share of Puerto Rico's jobs, the residents can reach within 30 and 45 minutes by car. QCEW 2025 jobs spread over business places (Overture), free-flow planning speeds over roads.bin, from 2020 Census blocks. Only municipio figures are published. docs/jobs-reach.md."
+  },
+  {
    "id": "upstream",
    "file": "upstream.json",
    "title": {

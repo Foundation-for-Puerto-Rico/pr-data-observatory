@@ -97,6 +97,7 @@ import drought
 import storm_recovery
 import essentials
 import cutoff
+import jobs_reach
 import degrees
 import school_conditions
 import proficiency
@@ -740,6 +741,7 @@ def main():
     drought.build(args.refresh)   # drought by municipio and year from the weekly US Drought Monitor (docs/drought.md)
     storm_recovery.build()   # months for night-time light to come back after María and Fiona, from nightlights_monthly.json (docs/storm_recovery.md)
     essentials.build()   # road distance to essentials, from cache/essentials/points.json (python essentials.py --refresh makes it; docs/essentials.md)
+    jobs_reach.build()   # jobs within 30 and 45 minutes by car, by municipio, from QCEW jobs, roads.bin and cache/jobs_reach (docs/jobs-reach.md)
     cutoff.build()   # residents cut off from every hospital when flooded roads or poor bridges close, from roads.bin, flood.geojson and bridges.geojson (docs/cutoff.md)
     degrees.build()   # degrees awarded by level and field, IPEDS (docs/degrees.md)
     school_conditions.build()   # school conditions from the Civil Rights Data Collection (docs/school_conditions.md)

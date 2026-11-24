@@ -268,6 +268,13 @@ Building step 1 changed four things in the plan above. Each is a finding, not a 
 - **Checks.** The land found is within 25% of USGS's own drainage area for 73 of 87 sites (median ratio 1.03); the rest are marked.
 - **Changed from the plan:** six off-stream reservoirs have no figures; impaired waters are left out (not in the cache). Building it fixed the catchment network, which chained river mouths along the coast (`watersheds.py`).
 
+### Step 9 as built, fifth part (2026-11-24)
+
+- **Built: jobs within reach** (`jobs_reach.py`, `docs/jobs-reach.md`), by municipio: the jobs residents can reach within 30 and 45 minutes by car, and their share of Puerto Rico's jobs.
+- **What it shows.** 236,860 jobs within 30 minutes on average (25.1% of 943,002); over half of Puerto Rico's jobs from Guaynabo, San Juan and Cataño, a few thousand from the mountain municipios.
+- **Checks.** 95.9% of the workers in the commuting flows work in a municipio the model puts within 45 minutes of home.
+- **Changed from the plan:** QCEW has no jobs below the municipio, so they are spread over business places to start the search; only municipio figures are published.
+
 ### Already planned under other decisions, not repeated here
 
 - Rooftop solar potential by barrio and power outages: decision 104 (energy), steps 5 and 6.
