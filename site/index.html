@@ -23,7 +23,7 @@
 <link rel="stylesheet" href="css/twin.css?v=64">
 <link rel="stylesheet" href="css/economy.css?v=25">
 <link rel="stylesheet" href="css/chat.css?v=4">
-<script src="js/i18n.js?v=91" data-page="map"></script>
+<script src="js/i18n.js?v=92" data-page="map"></script>
 </head>
 <body>
 <noscript><div style="padding:16px;background:#FFE9A8;color:#5A3500;position:relative;z-index:3000">This map needs JavaScript. The Housing page lists its tables without it.</div></noscript>
@@ -94,6 +94,7 @@
   <section class="tab-page" id="tab-layers" role="tabpanel" aria-labelledby="s-layers">
     <h2 class="sec"><span class="ms-icon" aria-hidden="true" style="font-size:14px">map</span>Reference</h2>
     <div class="ctrl"><label for="basemap">Base map</label><select id="basemap" aria-describedby="basemapDesc" disabled><optgroup label="OpenStreetMap maps" data-group="osm"><option value="positron" selected>Light (Positron)</option><option value="liberty">Detailed (Liberty)</option><option value="bright">Colorful (Bright)</option><option value="dark">Dark</option><option value="fiord">Dark blue (Fiord)</option></optgroup><optgroup label="USGS maps" data-group="usgs"><option value="imagery">Aerial imagery</option><option value="topo">Topographic</option><option value="relief">Shaded relief</option></optgroup><option value="none">No base map</option></select><p class="note" id="basemapDesc">A light map style that keeps the data in front: soft colors, few labels.</p> <button type="button" class="btn osmi-btn" id="osmInspect" aria-pressed="false" aria-describedby="osmInspectNote" data-no-glossary disabled><span class="ms-icon" aria-hidden="true">info</span>Inspect map</button><p class="note" id="osmInspectNote">Available once the base map has loaded.</p></div>
+    <div class="ctrl"><label for="regionFilter">Region</label><select id="regionFilter" aria-describedby="regionFilterNote" disabled><option value="">All of Puerto Rico</option></select><p class="note" id="regionFilterNote">Frame the map on a group of municipios: the Eastern Region of FPR's strategic vision or a tourism region. The data layers stay whole.</p></div>
     <div class="layer nocount">
       <label><input type="checkbox" id="lyMuni"><span class="sw line" style="background:#205D7B"></span><span class="ly-name">Municipal boundaries <small class="src">Census 2020</small></span></label>
       <button type="button" class="help-btn" data-help="muni" aria-label="What is this?"><span class="ms-icon" aria-hidden="true">help</span></button>
@@ -588,12 +589,12 @@
 <script src="js/core/legend.js?v=3"></script>
 <script src="js/core/stack.js?v=11"></script>
 <script src="js/core/activelayers.js?v=9"></script>
-<script src="js/core/viewstate.js?v=24"></script>
+<script src="js/core/viewstate.js?v=25"></script>
 <script src="js/access.js?v=8"></script>
 <script src="js/roads.js?v=2"></script>
 <script src="js/plan.js?v=10"></script>
 <script src="js/core/cleanview.js?v=1"></script>
-<script src="js/app.js?v=119"></script>
+<script src="js/app.js?v=120"></script>
 <script src="js/network.js?v=18"></script>
 <script src="js/econ_shell.js?v=31"></script>
 <script src="js/chatboot.js?v=63"></script>
