@@ -1,7 +1,7 @@
 {
  "built": "2026-11-24",
  "snapshot": "Snapshot 2026-10",
- "total_bytes": 145065943,
+ "total_bytes": 145066757,
  "limits": {
   "site_bytes": 1048576000,
   "file_bytes": 104857600,
@@ -12,12 +12,12 @@
  "growth_note": "Every harvested dataset stays and new ones are added, so the data folder only grows. Each dataset is its own lazily loaded file. When the total passes the planning line, move the large files to object storage as Parquet or PMTiles and query them in the browser (for example with DuckDB-WASM) while the small summaries stay on the page.",
  "totals": {
   "files": 197,
-  "bytes": 145065943,
+  "bytes": 145066757,
   "records": 8935409,
   "fields": 2527,
   "values": 12898802,
   "items": 1164,
-  "vertices": 4047648,
+  "vertices": 4047665,
   "counted_files": 158,
   "documenting_items": 844,
   "first_published": "2026-10-01",
@@ -396,7 +396,7 @@
   {
    "date": "2026-11-24",
    "files": 197,
-   "bytes": 145065943,
+   "bytes": 145066757,
    "records": 8935409,
    "fields": 2527,
    "values": 12898802,
@@ -1153,7 +1153,7 @@
    "vertices": null,
    "first_published": "2026-10-06",
    "last_updated": "2026-11-24",
-   "versions": 267,
+   "versions": 268,
    "documented_by": 1,
    "review": {
     "status": "unstated",
@@ -5557,8 +5557,8 @@
   {
    "file": "operators.json",
    "title": "Transit operators and the state of their data",
-   "bytes": 96588,
-   "gzip_bytes": 18257,
+   "bytes": 96558,
+   "gzip_bytes": 18267,
    "loaded_by": [
     {
      "route": "map",
@@ -5573,15 +5573,15 @@
    "tier": "small",
    "geography": "none",
    "time": "snapshot",
-   "built": "2026-11-20",
+   "built": "2026-11-24",
    "kind": "data",
    "records": 484,
    "fields": 36,
    "values": 3386,
    "vertices": 362,
    "first_published": "2026-10-02",
-   "last_updated": "2026-11-18",
-   "versions": 8,
+   "last_updated": "2026-11-24",
+   "versions": 9,
    "documented_by": 1,
    "review": {
     "status": "unstated",
@@ -7526,8 +7526,8 @@
   {
    "file": "transit_routes.geojson",
    "title": "Transit routes, all operators",
-   "bytes": 721076,
-   "gzip_bytes": 147584,
+   "bytes": 720615,
+   "gzip_bytes": 147623,
    "loaded_by": [
     {
      "route": "3d",
@@ -7546,10 +7546,10 @@
    "records": 169,
    "fields": 17,
    "values": 2313,
-   "vertices": 31359,
+   "vertices": 31338,
    "first_published": "2026-10-01",
-   "last_updated": "2026-11-20",
-   "versions": 13,
+   "last_updated": "2026-11-24",
+   "versions": 14,
    "documented_by": 14,
    "review": {
     "status": "unstated",
@@ -7568,8 +7568,8 @@
   {
    "file": "transit_supply.json",
    "title": "Transit supply: scheduled service by stop pattern, route and stop, hour by hour",
-   "bytes": 874665,
-   "gzip_bytes": 81205,
+   "bytes": 874664,
+   "gzip_bytes": 81163,
    "loaded_by": [],
    "title_es": "Oferta de transporte colectivo: servicio programado por patrón de paradas, ruta y parada, hora por hora",
    "domains": [
@@ -7579,15 +7579,15 @@
    "tier": "medium",
    "geography": "none",
    "time": "snapshot",
-   "built": "2026-11-18",
+   "built": "2026-11-24",
    "kind": "data",
    "records": 5362,
    "fields": 44,
    "values": 167972,
    "vertices": null,
    "first_published": "2026-10-09",
-   "last_updated": "2026-11-18",
-   "versions": 4,
+   "last_updated": "2026-11-24",
+   "versions": 5,
    "documented_by": 1,
    "review": {
     "status": "unstated",
@@ -7607,7 +7607,7 @@
    "file": "transport.json",
    "title": "Transit stops, stations, taxi stands, EV charging",
    "bytes": 1489739,
-   "gzip_bytes": 127594,
+   "gzip_bytes": 127768,
    "loaded_by": [],
    "title_es": "Paradas, estaciones, paradas de taxi y carga de vehículos eléctricos",
    "domains": [
@@ -7623,8 +7623,8 @@
    "values": 54278,
    "vertices": 4486,
    "first_published": "2026-10-01",
-   "last_updated": "2026-11-18",
-   "versions": 8,
+   "last_updated": "2026-11-24",
+   "versions": 9,
    "documented_by": 20,
    "review": {
     "status": "unstated",
@@ -7643,8 +7643,8 @@
   {
    "file": "trips.json",
    "title": "Transit timetables (weekday)",
-   "bytes": 1512823,
-   "gzip_bytes": 287227,
+   "bytes": 1513476,
+   "gzip_bytes": 287593,
    "loaded_by": [
     {
      "route": "3d",
@@ -7663,10 +7663,10 @@
    "records": 3562,
    "fields": 8,
    "values": 177132,
-   "vertices": 20680,
+   "vertices": 20699,
    "first_published": "2026-10-01",
-   "last_updated": "2026-11-18",
-   "versions": 8,
+   "last_updated": "2026-11-24",
+   "versions": 9,
    "documented_by": 1,
    "review": {
     "status": "unstated",
@@ -7685,8 +7685,8 @@
   {
    "file": "trips_sa.json",
    "title": "Transit timetables (Saturday)",
-   "bytes": 802299,
-   "gzip_bytes": 144002,
+   "bytes": 802952,
+   "gzip_bytes": 144361,
    "loaded_by": [],
    "title_es": "Horarios de transporte (sábado)",
    "domains": [
@@ -7700,10 +7700,10 @@
    "records": 1741,
    "fields": 8,
    "values": 103184,
-   "vertices": 9596,
+   "vertices": 9615,
    "first_published": "2026-10-02",
-   "last_updated": "2026-11-18",
-   "versions": 5,
+   "last_updated": "2026-11-24",
+   "versions": 6,
    "documented_by": 1,
    "review": {
     "status": "unstated",
@@ -7723,7 +7723,7 @@
    "file": "trips_su.json",
    "title": "Transit timetables (Sunday)",
    "bytes": 90992,
-   "gzip_bytes": 17541,
+   "gzip_bytes": 17562,
    "loaded_by": [],
    "title_es": "Horarios de transporte (domingo)",
    "domains": [
@@ -7739,8 +7739,8 @@
    "values": 12545,
    "vertices": 837,
    "first_published": "2026-10-02",
-   "last_updated": "2026-11-18",
-   "versions": 4,
+   "last_updated": "2026-11-24",
+   "versions": 5,
    "documented_by": 1,
    "review": {
     "status": "unstated",
