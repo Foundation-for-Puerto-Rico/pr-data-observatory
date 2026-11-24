@@ -99,16 +99,16 @@
   /* PROTECTED-BEGIN (tests/ask_words.js) */
   const PROTECTED = new Set(('acercan adultas alquilar antillas arenas arroyos attracting ayudan ayudar bajas bajura barcelona bares barros batches berrios bimbas bonito boquern botija botijas brenas bridle bright ' +
     'busque cables caguabo caidos calida caller cambie caminan candal capitan cargan cargar caribe caridad carlos carola carolinas casey casillas catalina catolica causas cayano cdbgdr ' +
-    'cellular centra cerraran changa charge charters charting chivos ciara ciclos cidral cierra cifra colina collections collective combinando comercio compran conditioners conductivity connecting connectors constructor ' +
-    'contributing contribution convention conventions conversation coralina coroza corrections cresta critically cuales cuarta cubones cuebas cuenta cuentan cuentas cueste cuesten culebras culebrina culebrinas curras curves ' +
-    'desarrollado desserts divida diving dorados electronic electronica electronico electronicos electronics escobar especially essentially estacionales estadio extensive fares fatalidades fatalities finest floors founding frames garage ' +
-    'generativa generative gentle gravel grazes guaonica guayabo guayabos horses hostel hostels immigrants incentivos inmigrantes intentarlo interaction interruptions inundarian irlandes islanders jaguas juntas juntos landfall ' +
-    'landuse lanes latas leading lijas lindas lineal linear listan listar llanos llegan llenar llevar lucero lylibraries maestria maestrias maneja manejada mangoes manzanas mapper maraguez ' +
-    'marcados marcas mareas mares marinas marini marino markers matias mediation medidas medinas mexico morado naranjo negron neighbourhood neighbourhoods numera nutritional obrera oceano padilla pagada ' +
-    'pagados paints pajilla palmar palomas panell papeles parana pardas pardos pares parquet paseos pasillos pastor pavimentado pavimentar penones pequenas personales pezuela piensa pilones planillas ' +
-    'pointy policiales policy polluters ponche prados preciso precisos prints programado propia puerca puerco qualify quemaos recortados rectas refuse refuses relied rellenados reproduction rescale resiliency ' +
-    'restate rivera rivero roofers router sabalos seguida segura senala sports stopping storey storeys suites tariff tariffs terminalfl terminan terminar terminated toledo topics traces transfiere ' +
-    'transformation transforms transportan traves turabo urbina vailla valles varias varios vegano vender ventaja viales writes writing yaguez').split(' '));
+    'cellular centra cerraran changa charge charters charting chivos ciara ciclos cidral cierra cifra colina collections collective combinando comentarios comercio compran conditioners conductivity connecting connectors ' +
+    'constructor contributing contribution convention conventions conversation coralina coroza corrections cresta critically cuales cuarta cubones cuebas cuenta cuentan cuentas cueste cuesten culebras culebrina culebrinas curras ' +
+    'curves desarrollado desserts divida diving dorados electronic electronica electronico electronicos electronics escobar especially essentially estacionales estadio extensive fares fatalidades fatalities finest floors founding frames ' +
+    'garage generativa generative gentle gravel grazes guaonica guayabo guayabos horses hostel hostels immigrants incentivos inmigrantes intentarlo interaction interruptions inundarian irlandes islanders jaguas juntas juntos ' +
+    'landfall landuse lanes latas leading lijas lindas lineal linear listan listar llanos llegan llenar llevar lucero lylibraries maestria maestrias maneja manejada mangoes manzanas mapper ' +
+    'maraguez marcados marcas mareas mares marinas marini marino markers matias mediation medidas medinas mexico morado naranjo negron neighbourhood neighbourhoods numera nutritional obrera oceano padilla ' +
+    'pagada pagados paints pajilla palmar palomas panell papeles parana pardas pardos pares parquet paseos pasillos pastor pavimentado pavimentar penones pequenas personales pezuela piensa pilones ' +
+    'planillas pointy policiales policy polluters ponche prados preciso precisos prints programado propia puerca puerco qualify quemaos recortados rectas refuse refuses relied rellenados reproduction rescale ' +
+    'resiliency restate rivera rivero roofers router sabalos seguida segura senala sports stopping storey storeys suites tariff tariffs terminalfl terminan terminar terminated toledo topics traces ' +
+    'transfiere transformation transforms transportan traves turabo urbina vailla valles varias varios vegano vender ventaja viales writes writing yaguez').split(' '));
   /* PROTECTED-END */
 
   // ── Lexicon: everyday words → what the observatory can show ─────────────────
