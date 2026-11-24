@@ -39,7 +39,7 @@ test('decision 112, step 3: the Oversight Board, the way back from a function, w
   const es = JSON.parse(fs.readFileSync(path.join(ROOT, 'i18n_src/es/public_spending.json'), 'utf8'));
   const after = JSON.parse(fs.readFileSync(path.join(ROOT, 'i18n_src/es/public_spending_after.json'), 'utf8'));
   const gap = html.slice(html.indexOf('id="gap"'), html.indexOf('id="funds"'));
-  assert.ok(/the Oversight Board certifies the budget that follows the fiscal plan/.test(gap), 'the Board is in the stages');
+  assert.ok(/the Board certifies the budget that follows the fiscal plan/.test(gap) && /the approved budget is the one the Board certified/.test(gap), 'the Board is in the stages');
   assert.ok(gap.includes('href="money-cycle.html#stages"') && fs.readFileSync(path.join(ROOT, 'site/money-cycle.html'), 'utf8').includes('id="stages"'));
   // the second "All functions" control sits in the head of the stages chart, and the script shows it only while a function is chosen
   assert.ok(/id="psBack2" hidden>.*?<\/button><span id="psPipeHead"/.test(gap));
@@ -58,6 +58,6 @@ test('decision 112, step 3: the Oversight Board, the way back from a function, w
   assert.ok(html.includes(`debt: $${bn(debt)} billion in the approved budget for fiscal year ${D.columns[ci].year}`), 'debt service');
   // every new note has Spanish, and none of it is held back
   const all = Object.assign({}, es, after);
-  for (const k of Object.keys(all)) if (/Names that are easy to confuse|Debt service is the payment|A grant is not repaid|Why one municipio shows|Where “spent” comes from|Law and roles|The budget in force is the one the Board certifies/.test(k)) assert.notStrictEqual(all[k], k, k.slice(0, 60));
-  assert.strictEqual(Object.keys(all).filter((k) => /Names that are easy to confuse|Debt service is the payment|A grant is not repaid|Why one municipio shows|Where “spent” comes from|Law and roles|The budget in force is the one the Board certifies/.test(k)).length, 7);
+  for (const k of Object.keys(all)) if (/Names that are easy to confuse|Debt service is the payment|A grant is not repaid|Why one municipio shows|Where “spent” comes from|Law and roles|the approved budget is the one the Board certified/.test(k)) assert.notStrictEqual(all[k], k, k.slice(0, 60));
+  assert.strictEqual(Object.keys(all).filter((k) => /Names that are easy to confuse|Debt service is the payment|A grant is not repaid|Why one municipio shows|Where “spent” comes from|Law and roles|the approved budget is the one the Board certified/.test(k)).length, 7);
 });

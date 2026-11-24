@@ -261,6 +261,13 @@ Building step 1 changed four things in the plan above. Each is a finding, not a 
 - **Checks.** 5 of the 8 WCRP communities whose plans say they are cut off come out cut off, against 16 of the other 67.
 - **Changed from the plan:** the test is a hospital, not the town centre (a town centre in the flood area is often itself cut off); expressways and sound bridges stay open; landslides are left out.
 
+### Step 9 as built, fourth part (2026-11-23)
+
+- **Built: what lies upstream of each reservoir and river gauge** (`upstream.py`, `docs/upstream.md`, Reservoirs page section 4): the land that drains to each of 25 reservoirs and 71 gauges, with its residents, buildings, wastewater treatment plants and protected land.
+- **What it shows.** Carraízo (Lago Loíza) has the most people upstream: 281,551 residents on 530 km², with 3 wastewater plants.
+- **Checks.** The land found is within 25% of USGS's own drainage area for 73 of 87 sites (median ratio 1.03); the rest are marked.
+- **Changed from the plan:** six off-stream reservoirs have no figures; impaired waters are left out (not in the cache). Building it fixed the catchment network, which chained river mouths along the coast (`watersheds.py`).
+
 ### Already planned under other decisions, not repeated here
 
 - Rooftop solar potential by barrio and power outages: decision 104 (energy), steps 5 and 6.

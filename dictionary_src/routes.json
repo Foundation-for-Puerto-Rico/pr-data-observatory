@@ -27,7 +27,7 @@
     "broadband": {"page": "broadband.html", "first": ["broadband_series.json", "broadband_barrio.json"], "later": ["barrios.geojson", "glossary_forms_es.json"], "on_use": ["glossary_defs_es.json"], "budget": {"script_kb": 36, "data_kb": 50}},
     "unusedfunds": {"page": "unused-funds.html", "first": [], "later": ["glossary_forms_es.json"], "on_use": ["glossary_defs_es.json", "unused_funds.json", "taken_back.json", "audit_findings.json"], "budget": {"script_kb": 36, "data_kb": 10}},
     "moneycycle": {"page": "money-cycle.html", "first": [], "later": ["glossary_forms_es.json"], "on_use": ["glossary_defs_es.json"], "budget": {"script_kb": 36, "data_kb": 10}},
-    "reservoirs": {"page": "reservoirs.html", "first": ["reservoir_history.json"], "later": ["glossary_forms_es.json"], "on_use": ["glossary_defs_es.json"], "budget": {"script_kb": 35, "data_kb": 80}},
+    "reservoirs": {"page": "reservoirs.html", "first": ["reservoir_history.json"], "later": ["glossary_forms_es.json"], "on_use": ["glossary_defs_es.json", "upstream.json"], "budget": {"script_kb": 35, "data_kb": 80}},
     "urbanheat": {"page": "urban-heat.html", "first": ["urban_heat.json"], "later": ["glossary_forms_es.json"], "on_use": ["glossary_defs_es.json"], "budget": {"script_kb": 35, "data_kb": 40}},
     "inflation": {"page": "inflation.html", "first": ["inflation.json"], "later": ["glossary_forms_es.json"], "on_use": ["glossary_defs_es.json"], "budget": {"script_kb": 40, "data_kb": 20}},
     "gii": {"page": "gii.html", "first": ["gii_profile.json"], "later": ["glossary_forms_es.json"], "on_use": ["glossary_defs_es.json", "gii_changes.json"], "budget": {"script_kb": 33, "data_kb": 30}},
