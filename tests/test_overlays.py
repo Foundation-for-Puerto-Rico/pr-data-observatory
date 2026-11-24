@@ -63,7 +63,7 @@ class Overlays(unittest.TestCase):
         css = read("css/twin.css")
         self.assertIn(".map-legend { background: rgba(255,255,255,.86);", css)
         self.assertRegex(css, r"\.map-legend:hover, \.map-legend:focus-within \{ background: rgba\(255,255,255,\.9\d\); \}")
-        self.assertRegex(css, r"\.al-panel \{[^}]*background: #fff;", "the On the map panel (read) stays solid")
+        self.assertRegex(css, r"\.al-panel \{[^}]*background: (#fff|var\(--color-surface\));", "the On the map panel (read) stays solid: white, or the surface token that is white in the light theme and charcoal in the dark one (css/ws.css)")
         self.assertNotIn("backdrop-filter", css + read("css/twin3d.css"), "no frosted glass (FPR brand)")
 
 

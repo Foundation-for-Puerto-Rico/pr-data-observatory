@@ -43,15 +43,15 @@ button { font-family: inherit; }
 .topbar .snapshot b { color: var(--color-text); font-weight: 500; }
 .search { position: relative; }
 .search input { width: 260px; height: 36px; border: 1px solid var(--color-border); border-radius: 18px; padding: 0 12px 0 36px; font: inherit; background: var(--color-bg); }
-.search input:focus { outline: 2px solid var(--color-primary-dark); outline-offset: 1px; border-color: var(--color-primary-dark); background: #fff; }
+.search input:focus { outline: 2px solid var(--color-primary-dark); outline-offset: 1px; border-color: var(--color-primary-dark); background: var(--color-surface); }
 .search .ms-icon { position: absolute; left: 11px; top: 9px; color: var(--color-text-light); font-size: 18px; }
-.search-results { position: absolute; top: 40px; left: 0; width: 360px; max-height: 320px; overflow: auto; background: #fff; border: 1px solid var(--color-border); border-radius: var(--radius-md); box-shadow: var(--shadow-lg); display: none; z-index: 1200; }
+.search-results { position: absolute; top: 40px; left: 0; width: 360px; max-height: 320px; overflow: auto; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); box-shadow: var(--shadow-lg); display: none; z-index: 1200; }
 .search-results.open { display: block; }
-.search-results .item { display: flex; gap: 10px; align-items: center; padding: 8px 12px; cursor: pointer; border: 0; border-bottom: 1px solid var(--color-border-light); width: 100%; text-align: left; background: #fff; font: inherit; color: inherit; }
+.search-results .item { display: flex; gap: 10px; align-items: center; padding: 8px 12px; cursor: pointer; border: 0; border-bottom: 1px solid var(--color-border-light); width: 100%; text-align: left; background: var(--color-surface); font: inherit; color: inherit; }
 .search-results .item.none { cursor: default; }
 .search-results .item:hover, .search-results .item:focus-visible { background: var(--tint-blue-bg); }
 .search-results .item small { display: block; color: var(--color-text-muted); }
-.icon-btn { border: 1px solid var(--color-border); background: #fff; border-radius: 50%; width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; color: var(--color-text-muted); }
+.icon-btn { border: 1px solid var(--color-border); background: var(--color-surface); border-radius: 50%; width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; color: var(--color-text-muted); }
 .icon-btn:hover { color: var(--color-primary-dark); border-color: var(--color-primary-light); }
 .menu-btn { display: none; }
 
@@ -78,7 +78,7 @@ html[lang="es"] .tabs button { padding-left: 3px; padding-right: 3px; }
 /* Tools › Map tools (decision 97, js/maptools.js): a button with the tool's name, then one sentence (outside the button, so the glossary can mark its terms) */
 .mt-h { margin-top: 14px; }
 .mt-list { list-style: none; margin: 0 0 4px; padding: 0; display: grid; gap: 4px; }
-.mt-item { background: #fff; border: 1px solid #e3e6e8; border-radius: 6px; padding: 6px 10px 8px; }
+.mt-item { background: var(--color-surface); border: 1px solid #e3e6e8; border-radius: 6px; padding: 6px 10px 8px; }
 .mt-item:hover, .mt-item:focus-within { border-color: var(--color-primary); background: #f5fafd; }
 .mt-tool { display: flex; align-items: center; gap: 10px; width: 100%; text-align: left; font: inherit; font-weight: 600; color: var(--color-primary-dark); background: none; border: 0; padding: 2px 0; cursor: pointer; }
 .mt-tool:hover { text-decoration: underline; }
@@ -86,7 +86,7 @@ html[lang="es"] .tabs button { padding-left: 3px; padding-right: 3px; }
 .mt-tool > .ms-icon { font-size: 20px; flex: none; }
 .mt-desc { margin: 2px 0 0 30px; font-size: 12px; color: var(--color-text-muted); line-height: 1.35; }
 /* Measure distance and area / Draw an area (decision 97 step 2, js/measure.js): a box at the top left of the map */
-.ms-box { background: #fff; border: 1px solid #d5dadd; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,.15); padding: 8px 10px; width: 280px; max-width: calc(100vw - 80px); font-size: 13px; color: var(--color-text); }
+.ms-box { background: var(--color-surface); border: 1px solid #d5dadd; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,.15); padding: 8px 10px; width: 280px; max-width: calc(100vw - 80px); font-size: 13px; color: var(--color-text); }
 .ms-box .ms-head { display: flex; align-items: center; justify-content: space-between; gap: 6px; }
 .ms-box .ms-modes { display: flex; gap: 4px; }
 .ms-box .ms-modes [aria-pressed="true"] { background: var(--color-primary-dark); border-color: var(--color-primary-dark); color: #fff; }
@@ -135,7 +135,7 @@ h2.sec:first-child, h3.sec:first-child { margin-top: 2px; }
 .ctrl label { display: flex; justify-content: space-between; font-size: 12px; color: var(--color-text-muted); margin-bottom: 4px; }
 .ctrl label b { color: var(--color-text); font-weight: 500; }
 .ctrl input[type=range] { width: 100%; accent-color: var(--color-primary); }
-.ctrl select { width: 100%; height: 32px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font: inherit; padding: 0 8px; background: #fff; }
+.ctrl select { width: 100%; height: 32px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font: inherit; padding: 0 8px; background: var(--color-surface); }
 /* the columns from any dataset of the Economy tab (plan item 16, B7): height, colour and year */
 .eng-ctl { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 6px 8px; align-items: center; margin-top: 8px; }
 .eng-ctl[hidden] { display: none; }
@@ -153,7 +153,7 @@ h2.sec:first-child, h3.sec:first-child { margin-top: 2px; }
 .ramp-labels { display: flex; justify-content: space-between; font-size: 10px; color: var(--color-text-light); }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0; }
 .chip { font-family: inherit; display: inline-flex; align-items: center; gap: 5px; border-radius: 14px; padding: 4px 10px 4px 7px; font-size: 12px; font-weight: 500; cursor: pointer; border: 1px solid transparent; user-select: none; }
-.chip.off { background: #fff !important; color: #666 !important; border: 1px dashed #B3B3B3; }
+.chip.off { background: var(--color-surface) !important; color: var(--color-text-muted) !important; border: 1px dashed #B3B3B3; }
 .chip .ms-icon { font-size: 15px; }
 
 /* KPIs */
@@ -183,7 +183,7 @@ table.rank td.num { text-align: right; font-variant-numeric: tabular-nums; }
 table.rank tr.row { cursor: pointer; }
 table.rank tr.row:hover td { background: var(--color-bg); }
 table.rank tr.me td { background: var(--tint-blue-bg); font-weight: 500; }
-.btn { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--color-border); background: #fff; border-radius: 18px; padding: 7px 14px; font-size: 12px; font-weight: 500; cursor: pointer; color: var(--color-text); }
+.btn { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--color-border); background: var(--color-surface); border-radius: 18px; padding: 7px 14px; font-size: 12px; font-weight: 500; cursor: pointer; color: var(--color-text); }
 .btn:hover { border-color: var(--color-primary-light); color: var(--color-primary-dark); }
 .osmi-btn { margin-top: 6px; }
 .osmi-btn:disabled { opacity: .55; cursor: not-allowed; }
@@ -231,7 +231,7 @@ table.rank tr.me td { background: var(--tint-blue-bg); font-weight: 500; }
 /* The base map writes the town names itself: the municipio labels show only when there is no base map (none chosen, or it failed), so no name is written twice.
    While it loads its names can already be drawn, so the labels wait then too. */
 #map[data-basemap="on"] .muni-label, #map[data-basemap="loading"] .muni-label { display: none; }
-.map-toast { position: absolute; top: 12px; left: 50%; transform: translateX(-50%); background: #fff; border-radius: 20px; padding: 8px 16px; box-shadow: var(--shadow-md); font-size: 12px; z-index: 900; display: none; align-items: center; gap: 8px; }
+.map-toast { position: absolute; top: 12px; left: 50%; transform: translateX(-50%); background: var(--color-surface); border-radius: 20px; padding: 8px 16px; box-shadow: var(--shadow-md); font-size: 12px; z-index: 900; display: none; align-items: center; gap: 8px; }
 .map-toast.show { display: flex; }
 .map-toast .ms-icon { color: var(--color-primary); }
 .leaflet-bar a { color: var(--color-text); }
@@ -240,7 +240,7 @@ table.rank tr.me td { background: var(--tint-blue-bg); font-weight: 500; }
 .hover-info b { display: block; font-size: 13px; color: var(--color-primary-dark); }
 
 /* Help popover */
-.help-pop { position: fixed; z-index: 1300; max-width: 300px; background: #fff; border: 1px solid var(--color-border); border-radius: var(--radius-md); box-shadow: var(--shadow-lg); padding: 12px 14px; font-size: 12.5px; line-height: 1.5; display: none; }
+.help-pop { position: fixed; z-index: 1300; max-width: 300px; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); box-shadow: var(--shadow-lg); padding: 12px 14px; font-size: 12.5px; line-height: 1.5; display: none; }
 .help-pop.show { display: block; }
 .help-learn, .mt-learn { display: inline-block; margin-top: 6px; font-size: 12px; font-weight: 600; color: var(--color-primary-dark); text-decoration: underline; text-underline-offset: 2px; }
 .help-learn[hidden] { display: none; }
@@ -292,7 +292,7 @@ table.rank tr.me td { background: var(--tint-blue-bg); font-weight: 500; }
 
 /* ── Accessibility and shared controls (QA pass 2026-10-01) ─────────────── */
 .sr-only, .skip:not(:focus) { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
-.skip:focus { position: fixed; top: 8px; left: 8px; z-index: 3000; background: #fff; color: var(--color-primary-dark); padding: 8px 14px; border-radius: 8px; box-shadow: var(--shadow-md); }
+.skip:focus { position: fixed; top: 8px; left: 8px; z-index: 3000; background: var(--color-surface); color: var(--color-primary-dark); padding: 8px 14px; border-radius: 8px; box-shadow: var(--shadow-md); }
 :focus-visible { outline: 3px solid var(--color-primary-dark); outline-offset: 2px; }
 .topbar h1, .brand h1 { margin: 0; font-size: 15px; font-weight: 700; letter-spacing: .01em; line-height: 1.1; }
 .topbar .logo { display: inline-flex; flex: none; }
@@ -386,7 +386,7 @@ a.btn { text-decoration: none; }
 .plan-dot.z, .plan-marker.z { background: #B82415; }
 .plan-dot.v, .plan-marker.v { background: #205D7B; }
 .plan-field { position: relative; flex: 1; min-width: 0; }
-.plan-in { width: 100%; height: 34px; border: 1px solid var(--color-border); border-radius: 17px; padding: 0 12px; font: inherit; font-size: 13px; background: #fff; }
+.plan-in { width: 100%; height: 34px; border: 1px solid var(--color-border); border-radius: 17px; padding: 0 12px; font: inherit; font-size: 13px; background: var(--color-surface); }
 .plan-in:focus { outline: 2px solid var(--color-primary-dark); outline-offset: 1px; border-color: var(--color-primary-dark); }
 .search-results.plan-list { top: 38px; left: 0; width: 100%; max-height: 260px; }
 .icon-btn.small { width: 28px; height: 28px; flex: none; }
@@ -490,7 +490,7 @@ kbd { font: 11px ui-monospace, Consolas, monospace; background: var(--color-bg);
 .ov-lead { background: var(--tint-blue-bg); border-radius: var(--radius-md); padding: 12px 14px; margin-bottom: 12px; }
 .ov-lead h2 { margin: 0 0 6px; font-size: 16px; color: var(--tint-blue-fg); }
 .ov-lead p { margin: 0; font-size: 12.5px; line-height: 1.5; }
-.dom-card { --tb: var(--tint-blue-bg); --tf: var(--tint-blue-fg); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 12px 14px 10px; margin: 0 0 10px; background: #fff; }
+.dom-card { --tb: var(--tint-blue-bg); --tf: var(--tint-blue-fg); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 12px 14px 10px; margin: 0 0 10px; background: var(--color-surface); }
 .dom-card[data-tint="green"] { --tb: var(--tint-green-bg); --tf: var(--tint-green-fg); }
 .dom-card[data-tint="yellow"] { --tb: var(--tint-yellow-bg); --tf: var(--tint-yellow-fg); }
 .dom-card[data-tint="red"] { --tb: var(--tint-red-bg); --tf: var(--tint-red-fg); }
@@ -524,7 +524,7 @@ kbd { font: 11px ui-monospace, Consolas, monospace; background: var(--color-bg);
 .cat-filters label { display: flex; flex-direction: column; gap: 3px; font-size: 11px; color: var(--color-text-muted); min-width: 0; }
 .cat-filters label.wide { grid-column: 1 / -1; }
 .cat-filters label.chk { flex-direction: row; align-items: center; gap: 6px; color: var(--color-text); font-size: 12px; }
-.cat-filters select, #catQ { width: 100%; min-width: 0; font: inherit; font-size: 12px; padding: 6px 8px; border: 1px solid var(--color-border); border-radius: 8px; background: #fff; color: var(--color-text); }
+.cat-filters select, #catQ { width: 100%; min-width: 0; font: inherit; font-size: 12px; padding: 6px 8px; border: 1px solid var(--color-border); border-radius: 8px; background: var(--color-surface); color: var(--color-text); }
 .cat-filters select:focus-visible, #catQ:focus-visible { outline: 2px solid var(--color-primary-dark); outline-offset: 1px; }
 .cat-row { display: flex; gap: 10px; justify-content: space-between; align-items: flex-start; padding: 9px 0; border-top: 1px solid var(--color-border-light); }
 .cr-main { min-width: 0; }
@@ -570,14 +570,14 @@ kbd { font: 11px ui-monospace, Consolas, monospace; background: var(--color-bg);
 .al[hidden] { display: none; }
 .al.open { z-index: 1010; }   /* open, above the map's own buttons too (Leaflet's corners are at 1000) until it closes */
 .al > * { pointer-events: auto; }
-.al-chip { flex-shrink: 0; display: inline-flex; align-items: center; gap: 6px; height: 34px; padding: 0 8px 0 11px; border: 1px solid var(--color-border); border-radius: 17px; background: #fff; color: var(--color-text); font: 600 12.5px var(--font); box-shadow: var(--shadow-md); cursor: pointer; white-space: nowrap; }
+.al-chip { flex-shrink: 0; display: inline-flex; align-items: center; gap: 6px; height: 34px; padding: 0 8px 0 11px; border: 1px solid var(--color-border); border-radius: 17px; background: var(--color-surface); color: var(--color-text); font: 600 12.5px var(--font); box-shadow: var(--shadow-md); cursor: pointer; white-space: nowrap; }
 .al-chip:hover { border-color: var(--color-primary-light); }
 .al-chip .ms-icon { font-size: 18px; color: var(--color-primary-dark); }
 .al-chip[aria-expanded="true"] { background: var(--tint-blue-bg); border-color: var(--color-primary-dark); color: var(--tint-blue-fg); }
 .al-chev { transition: transform .15s; }
 .al-chip[aria-expanded="true"] .al-chev { transform: rotate(180deg); }
 .al-n { display: none; }
-.al-panel { margin-top: 6px; width: 320px; max-width: 100%; min-height: 0; overflow-y: auto; background: #fff; border: 1px solid var(--color-border); border-radius: var(--radius-md); box-shadow: var(--shadow-lg); padding: 4px 0 10px; }
+.al-panel { margin-top: 6px; width: 320px; max-width: 100%; min-height: 0; overflow-y: auto; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); box-shadow: var(--shadow-lg); padding: 4px 0 10px; }
 .al-list { list-style: none; margin: 0; padding: 0; }
 .al-list li { display: flex; align-items: center; gap: 8px; padding: 6px 8px 6px 14px; border-bottom: 1px solid var(--color-border-light); }
 .al-name { flex: 1; min-width: 0; font-size: 12.5px; line-height: 1.3; color: var(--color-text); overflow-wrap: anywhere; }
@@ -603,22 +603,22 @@ body.three .al { max-height: calc(100% - 96px); }   /* clear of the time bar */
 .surf-min { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 2px 8px; margin: 6px 0 2px; font-size: 12px; } .surf-min input[type=range] { width: 100%; min-width: 0; } .surf-min output { grid-column: 1 / -1; color: var(--color-text-muted); font-size: 11px; }   /* the threshold slider of the heat and slope legends (core/surfscale.js) */
 /* Map extras (js/mapextras.js): town names above the shading (map review 2026-11-05) */
 .town-name { width: 0; height: 0; }
-.town-name span { display: block; transform: translate(-50%, -50%); white-space: nowrap; font: 600 11px/1.1 var(--font-sans, system-ui, sans-serif); color: #2A2E2E; text-shadow: 0 0 2px #fff, 0 0 3px #fff, 0 0 4px #fff; pointer-events: none; }
+.town-name span { display: block; transform: translate(-50%, -50%); white-space: nowrap; font: 600 11px/1.1 var(--font-sans, system-ui, sans-serif); color: var(--color-text); text-shadow: 0 0 2px #fff, 0 0 3px #fff, 0 0 4px #fff; pointer-events: none; }
 .town-few .town-name:not(.town-big) { display: none; }
 /* Boxes over the map (2026-11-11): the ones that only show status are a little see-through at rest and solid when pointed at or used; panels, pop-ups and
    menus people read stay solid (FPR brand: no frosted glass; dark text keeps far more than 4.5:1 contrast at 85% white over any map) */
 .map-legend { background: rgba(255,255,255,.86); transition: background-color .15s ease; }
 .map-legend:hover, .map-legend:focus-within { background: rgba(255,255,255,.97); }
 .al-chip[aria-expanded="false"] { background: rgba(255,255,255,.88); }
-.al-chip[aria-expanded="false"]:hover, .al-chip[aria-expanded="false"]:focus-visible { background: #fff; }
+.al-chip[aria-expanded="false"]:hover, .al-chip[aria-expanded="false"]:focus-visible { background: var(--color-surface); }
 @media (prefers-reduced-motion: reduce) { .map-legend { transition: none; } }
 /* Clean view (core/cleanview.js): the boxes over the map hide, every map control included (so a new one hides too); the scale and the map credits stay, as their licences ask */
-.cv-btn { width: 30px; height: 30px; border: 0; background: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--color-text); }
+.cv-btn { width: 30px; height: 30px; border: 0; background: var(--color-surface); cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--color-text); }
 .cv-btn .ms-icon { font-size: 18px; }
 .cv-btn:hover { background: var(--color-bg); }
 .maplibregl-ctrl-group .cv-btn { width: 29px; height: 29px; }
 body.clean-view .al, body.clean-view .map-legend, body.clean-view .econ-legend:not(.docked), body.clean-view .map-toast, body.clean-view .timebar, body.clean-view .series,
 body.clean-view .leaflet-control:not(.leaflet-control-scale):not(.leaflet-control-attribution), body.clean-view .maplibregl-ctrl:not(.maplibregl-ctrl-scale):not(.maplibregl-ctrl-attrib), body.clean-view .navpad, body.clean-view .nav-help, body.clean-view .leaflet-popup, body.clean-view .maplibregl-popup { display: none !important; }
 .cv-show { position: absolute; top: 12px; right: 12px; z-index: 1100; display: inline-flex; align-items: center; gap: 6px; height: 36px; padding: 0 14px 0 10px; border: 1px solid var(--color-border); border-radius: 18px; background: rgba(255,255,255,.92); box-shadow: var(--shadow-md); font: inherit; font-size: 13px; font-weight: 600; color: var(--color-primary-dark); cursor: pointer; }
-.cv-show:hover, .cv-show:focus-visible { background: #fff; }
+.cv-show:hover, .cv-show:focus-visible { background: var(--color-surface); }
 .cv-show[hidden] { display: none; }

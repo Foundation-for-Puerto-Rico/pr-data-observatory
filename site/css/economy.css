@@ -8,7 +8,7 @@
 .ec-lede { margin-top: 0; font-size: 12.5px; }
 .ec-year { display: flex; align-items: center; gap: 6px; margin: 8px 0 2px; }
 .ec-year .ec-yl { font-size: 12px; font-weight: 700; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: .06em; margin-right: 2px; }
-.ec-year select { height: 32px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font: inherit; padding: 0 8px; background: #fff; flex: 1; min-width: 0; }
+.ec-year select { height: 32px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font: inherit; padding: 0 8px; background: var(--color-surface); flex: 1; min-width: 0; }
 .ec-year .icon-btn.small, .ec-layer .icon-btn.small { width: 30px; height: 30px; }
 .ec-year .btn.small { padding: 5px 11px; }
 .ec-range { width: 100%; accent-color: var(--color-primary); margin: 4px 0 2px; }
@@ -18,10 +18,10 @@
 .ec-count { font-weight: 400; letter-spacing: 0; text-transform: none; color: var(--color-text-muted); }
 .ec-presets { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 2px; }
 .ec-find { width: 100%; height: 34px; border: 1px solid var(--color-border); border-radius: 17px; padding: 0 14px; font: inherit; background: var(--color-bg); }
-.ec-find:focus { outline: 2px solid var(--color-primary-dark); outline-offset: 1px; background: #fff; }
+.ec-find:focus { outline: 2px solid var(--color-primary-dark); outline-offset: 1px; background: var(--color-surface); }
 
 /* layer stack */
-.ec-layer { border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 6px 8px 4px; margin: 0 0 8px; background: #fff; }
+.ec-layer { border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 6px 8px 4px; margin: 0 0 8px; background: var(--color-surface); }
 .ec-layer.off { opacity: .6; }
 .ec-lh { display: flex; align-items: center; gap: 2px; }
 .ec-vis { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; cursor: pointer; }   /* show or hide one layer (panel.js), like the checkboxes of the Layers tab */
@@ -35,7 +35,7 @@
 .ec-lt b { font-size: 12.5px; font-weight: 700; display: block; }
 .ec-lt small { display: block; color: var(--color-text-muted); font-size: 11px; margin-top: 1px; }
 .ec-modes { display: flex; flex-wrap: wrap; gap: 6px; padding: 3px 0 2px 32px; }   /* Shaded / Symbol on a layer card (panel.js): the dataset list's two checkboxes, without scrolling down */
-.ec-mode { min-height: 26px; padding: 2px 10px; border: 1px solid var(--color-border); border-radius: 14px; background: #fff; color: var(--color-text-muted); font: inherit; font-size: 12px; font-weight: 500; cursor: pointer; white-space: nowrap; }
+.ec-mode { min-height: 26px; padding: 2px 10px; border: 1px solid var(--color-border); border-radius: 14px; background: var(--color-surface); color: var(--color-text-muted); font: inherit; font-size: 12px; font-weight: 500; cursor: pointer; white-space: nowrap; }
 .ec-mode::before { content: ""; display: inline-block; width: 8px; height: 8px; margin-right: 5px; border: 1.5px solid currentColor; border-radius: 50%; vertical-align: 0; }   /* hollow when off, filled when on: the state is not in the colour alone */
 .ec-mode[aria-pressed="true"]::before { background: currentColor; }
 .ec-mode.fill[aria-pressed="true"] { background: var(--tint-green-bg); color: var(--tint-green-fg); border-color: transparent; }
@@ -54,7 +54,7 @@
 .ec-grid label.wide, .ec-grid .note.wide { grid-column: 1 / -1; }
 .ec-grid input[type=text] { height: 30px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font: inherit; font-size: 12px; padding: 0 8px; min-width: 0; }
 .ec-grid input[aria-invalid=true] { border-color: #B82415; }
-.ec-grid select { height: 30px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font: inherit; font-size: 12px; padding: 0 6px; background: #fff; color: var(--color-text); min-width: 0; }
+.ec-grid select { height: 30px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font: inherit; font-size: 12px; padding: 0 6px; background: var(--color-surface); color: var(--color-text); min-width: 0; }
 .ec-grid input[type=range] { width: 100%; accent-color: var(--color-primary); }
 .ec-grid input[type=checkbox] { accent-color: var(--color-primary); }
 
@@ -91,9 +91,9 @@ body.econ-active .hover-info { display: none !important; }
 .econ-legend .row small { margin-left: auto; color: var(--color-text-muted); padding-left: 8px; }
 /* less reliable values: hatched on the map, so hatched in the legend; a dashed outline for symbols; italics in the tables */
 .econ-legend .row .sw.hatch { background: repeating-linear-gradient(135deg, #2A2E2E 0 1.2px, #fff 1.2px 2.4px, #E6E6E6 2.4px 5px); }
-.econ-legend .row .sw.dash { border: 1.5px dashed #2A2E2E; border-radius: 50%; background: transparent; }
+.econ-legend .row .sw.dash { border: 1.5px dashed var(--color-text); border-radius: 50%; background: transparent; }
 .el-note { font-size: 11px; color: var(--color-text-muted); line-height: 1.3; margin-top: 3px; }
-.el-note.el-flat, .el-note.el-period { color: var(--color-text); background: #FFF4E0; border-left: 3px solid #FFA600; padding: 4px 6px; margin: 4px 0; }   /* every area has the same value (stack.js flat) */
+.el-note.el-flat, .el-note.el-period { color: var(--color-text); background: var(--ws-n-warn); border-left: 3px solid #FFA600; padding: 4px 6px; margin: 4px 0; }   /* every area has the same value (stack.js flat) */
 table.ec-tbl td.unrel b, table.ec-tbl td.unrel, .eh-row b.unrel { font-style: italic; }
 .rel-note { margin: 6px 0 0; font-size: 11.5px; }
 .ds-cautions { margin: 2px 0 8px; padding-left: 18px; font-size: 12.5px; line-height: 1.4; }
@@ -121,7 +121,7 @@ table.ec-tbl td.unrel b, table.ec-tbl td.unrel, .eh-row b.unrel { font-style: it
 .ec-insp h4 { margin: 0 0 6px; font-size: 15px; color: var(--color-primary-dark); }
 table.ec-tbl { width: 100%; border-collapse: collapse; font-size: 12px; }
 table.ec-tbl th, table.ec-tbl td { padding: 5px 6px; border-bottom: 1px solid var(--color-border-light); vertical-align: top; text-align: left; }
-table.ec-tbl thead th { font-size: 10.5px; text-transform: uppercase; letter-spacing: .05em; color: var(--color-text-muted); border-bottom: 1px solid var(--color-border); vertical-align: bottom; position: sticky; top: 0; background: #fff; z-index: 1; }
+table.ec-tbl thead th { font-size: 10.5px; text-transform: uppercase; letter-spacing: .05em; color: var(--color-text-muted); border-bottom: 1px solid var(--color-border); vertical-align: bottom; position: sticky; top: 0; background: var(--color-surface); z-index: 1; }
 table.ec-tbl th[scope=row] { font-weight: 400; }
 table.ec-tbl th small { display: block; color: var(--color-text-muted); font-size: 10.5px; margin-left: 17px; text-transform: none; letter-spacing: 0; font-weight: 400; }
 table.ec-tbl .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
@@ -143,7 +143,7 @@ table.ec-tbl th small.th-sub { display: block; margin: 1px 0 0; font-size: 9.5px
 
 /* ── Workbench (docks under the map) ─────────────────── */
 :root { --bench-h: min(42vh, 420px); }
-.econ-bench { position: fixed; left: var(--panel-width); right: 0; bottom: 0; height: var(--bench-h); z-index: 950; background: #fff; border-top: 1px solid var(--color-border); box-shadow: 0 -4px 12px rgba(42,46,46,.12); display: flex; flex-direction: column; }
+.econ-bench { position: fixed; left: var(--panel-width); right: 0; bottom: 0; height: var(--bench-h); z-index: 950; background: var(--color-surface); border-top: 1px solid var(--color-border); box-shadow: 0 -4px 12px rgba(42,46,46,.12); display: flex; flex-direction: column; }
 .econ-bench[hidden] { display: none; }
 body.bench-open #map { bottom: var(--bench-h); }
 .eb-head { display: flex; align-items: center; gap: 10px; padding: 6px 12px; border-bottom: 1px solid var(--color-border); }
@@ -155,7 +155,7 @@ body.bench-open #map { bottom: var(--bench-h); }
 .eb-tools { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; font-size: 12px; margin-bottom: 6px; }
 .eb-tools label { display: inline-flex; align-items: center; gap: 6px; color: var(--color-text-muted); }
 .eb-tools label.chk { color: var(--color-text); }
-.eb-tools select, .eb-tools input[type=search] { height: 30px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font: inherit; padding: 0 8px; background: #fff; max-width: 220px; }
+.eb-tools select, .eb-tools input[type=search] { height: 30px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font: inherit; padding: 0 8px; background: var(--color-surface); max-width: 220px; }
 .eb-tools .note { margin: 0; flex: 1 1 260px; }
 .eb-scroll { flex: 1; min-height: 0; overflow: auto; border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: 4px 8px; }
 .eb-chart { flex: 1; min-height: 0; position: relative; }
@@ -178,7 +178,7 @@ table.ec-tbl.mx td.mx-d { color: var(--color-text-muted); background: var(--colo
 .sw-keys small { color: var(--color-text-muted); }
 .eb-body.eb-free { overflow: auto; display: block; }
 .eb-body.eb-free .eb-scroll { max-height: 46vh; }
-.ix-warn { display: flex; gap: 8px; align-items: center; background: #FFF7E0; color: #5A3500; border-radius: var(--radius-sm); padding: 6px 10px; font-size: 12.5px; font-weight: 500; margin-bottom: 8px; }
+.ix-warn { display: flex; gap: 8px; align-items: center; background: var(--ws-n-warn); color: var(--tint-yellow-fg); border-radius: var(--radius-sm); padding: 6px 10px; font-size: 12.5px; font-weight: 500; margin-bottom: 8px; }
 .ix-warn .ms-icon { font-size: 18px; }
 table.ec-tbl.ix-in { width: auto; margin-bottom: 4px; }
 table.ec-tbl.ix-in select { height: 28px; font: inherit; border: 1px solid var(--color-border); border-radius: var(--radius-sm); }
@@ -195,7 +195,7 @@ table.ec-tbl.ix-in select { height: 28px; font: inherit; border: 1px solid var(-
 .sc-f input, .sc-f textarea { display: block; width: 100%; box-sizing: border-box; margin-top: 3px; font: inherit; color: var(--color-text); border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: 5px 8px; }
 .sc-box label.btn { cursor: pointer; }
 .sc-ul, .sc-err { margin: 6px 0; padding-left: 18px; font-size: 12.5px; }
-.sc-err { color: #8C180D; }
+.sc-err { color: var(--tint-red-fg); }
 .sc-acts { white-space: nowrap; text-align: right; }
 .sc-acts .btn { margin-left: 4px; }
 table.ec-tbl th small.sc-notes { margin-left: 0; white-space: normal; }
@@ -211,12 +211,12 @@ table.ec-tbl th small.sc-notes { margin-left: 0; white-space: normal; }
 dialog.data-dlg { border: 0; border-radius: var(--radius-lg); padding: 0; width: min(760px, 96vw); max-height: 90vh; box-shadow: var(--shadow-lg); color: var(--color-text); }
 dialog.data-dlg::backdrop { background: rgba(20, 30, 40, .55); }
 dialog.data-dlg[open] { display: flex; flex-direction: column; }
-dialog.data-dlg .dlg-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 18px; border-bottom: 1px solid var(--color-border); background: #fff; }
+dialog.data-dlg .dlg-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 18px; border-bottom: 1px solid var(--color-border); background: var(--color-surface); }
 dialog.data-dlg .dlg-head h2 { margin: 0; font-size: 17px; color: var(--color-primary-dark); line-height: 1.25; }
 dialog.data-dlg .dlg-body { overflow: auto; padding: 14px 18px 18px; }
 #ecDlg .ds-tags .tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; border-radius: 10px; padding: 2px 8px; margin: 0 6px 4px 0; }
-#ecDlg .tag.paper { background: var(--tint-yellow-bg); color: #5A3500; }
-#ecDlg .tag.live { background: var(--tint-green-bg); color: #2E3808; }
+#ecDlg .tag.paper { background: var(--tint-yellow-bg); color: var(--tint-yellow-fg); }
+#ecDlg .tag.live { background: var(--tint-green-bg); color: var(--tint-green-fg); }
 #ecDlg .ds-def { font-size: 13.5px; line-height: 1.55; margin: 6px 0 8px; }
 #ecDlg .ds-meta { font-size: 12px; color: var(--color-text-muted); line-height: 1.5; margin-bottom: 10px; }
 #ecDlg .ds-meta div { margin: 2px 0; }

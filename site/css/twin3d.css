@@ -64,7 +64,7 @@ body.three .topbar .views .btn[aria-current="page"] { background: var(--tint-blu
 .navpad button { display: flex; align-items: center; justify-content: center; color: var(--color-text); }
 .navpad button .ms-icon { font-size: 20px; font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24; }
 .navpad button[aria-expanded="true"] { background: var(--tint-blue-bg); color: var(--tint-blue-fg); }
-.nav-help { position: fixed; right: 54px; bottom: 96px; width: min(350px, calc(100vw - 24px)); background: #fff; border-radius: var(--radius-md); box-shadow: var(--shadow-lg); padding: 12px 36px 12px 14px; z-index: 1300; font-size: 12.5px; line-height: 1.45; }
+.nav-help { position: fixed; right: 54px; bottom: 96px; width: min(350px, calc(100vw - 24px)); background: var(--color-surface); border-radius: var(--radius-md); box-shadow: var(--shadow-lg); padding: 12px 36px 12px 14px; z-index: 1300; font-size: 12.5px; line-height: 1.45; }
 .nav-help[hidden] { display: none; }
 .nav-help dl { margin: 0; }
 .nav-help dt { font-weight: 700; margin-top: 8px; color: var(--color-primary-dark); }
@@ -122,7 +122,7 @@ table.rp-dirs td { padding: 6px; border-bottom: 1px solid var(--color-border-lig
 .sr-pills { margin-left: auto; display: flex; align-items: center; gap: 6px; flex: none; }
 .sr-pills select, .sr-pills button { height: 28px; border-radius: 6px; border: 1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.04); color: var(--sr-text); font: 500 11.5px var(--sr-mono); padding: 0 9px; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; }
 .sr-pills select { max-width: 180px; }
-.sr-pills select option, .sr-pills select optgroup { background: #fff; color: var(--color-text); }
+.sr-pills select option, .sr-pills select optgroup { background: var(--color-surface); color: var(--color-text); }
 .sr-pills button:hover, .sr-pills select:hover { background: rgba(255,255,255,.1); }
 .sr-pills button[hidden] { display: none; }
 .sr-pills .sr-x { width: 28px; padding: 0; justify-content: center; border-color: transparent; background: none; }

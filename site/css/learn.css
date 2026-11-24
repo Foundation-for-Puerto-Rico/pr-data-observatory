@@ -40,7 +40,7 @@ body.research .page a.ln-card:not(.btn) { display: flex; flex-direction: column;
 /* the parts drawn from real data */
 .ln-real { border-left: 4px solid var(--color-primary-light); padding: 2px 0 2px 16px; }
 .ln-switch { display: flex; gap: 6px; flex-wrap: wrap; margin: 4px 0 12px; }
-.ln-chip { font: inherit; font-size: 13px; padding: 8px 14px; min-height: 40px; border-radius: 999px; border: 1px solid var(--color-border); background: #fff; color: var(--color-text); cursor: pointer; }
+.ln-chip { font: inherit; font-size: 13px; padding: 8px 14px; min-height: 40px; border-radius: 999px; border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); cursor: pointer; }
 .ln-chip[aria-pressed="true"] { background: var(--color-text); border-color: var(--color-text); color: #fff; }
 .ln-chip:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(51, 140, 179, .45); }
 .ln-body .ln-cap { font-size: 13px; font-weight: 700; margin: 0 0 6px; }
@@ -92,10 +92,10 @@ body.research .page a.ln-card:not(.btn) { display: flex; flex-direction: column;
 .ln-strip svg{width:100%;height:auto;display:block}
 /* step 5: the parts of a GEOID, and the workshop guide, which prints alone (learn_page.js marks the body while the browser prints) */
 .ln-geoids{display:flex;flex-wrap:wrap;gap:8px}
-.ln-geoid{display:inline-flex;flex-direction:column;align-items:center;padding:6px 10px;border:1px solid #BDE0F2;border-radius:6px;background:#F3F9FC}
-.ln-geoid b{font-family:ui-monospace,Consolas,monospace;font-size:16px;color:#205D7B}
-.ln-geoid small{font-size:11px;color:#5C5E5E}
-.ln-handout{margin-top:18px;padding:14px 16px;border:2px solid #205D7B;border-radius:8px}
+.ln-geoid{display:inline-flex;flex-direction:column;align-items:center;padding:6px 10px;border:1px solid #BDE0F2;border-radius:6px;background:var(--ws-n-info)}
+.ln-geoid b{font-family:ui-monospace,Consolas,monospace;font-size:16px;color:var(--color-primary-dark)}
+.ln-geoid small{font-size:11px;color:var(--color-text-muted)}
+.ln-handout{margin-top:18px;padding:14px 16px;border:2px solid var(--color-primary-dark);border-radius:8px}
 @media print {
   body.ln-print-guide main > :not(#guide) { display: none !important; }
   body.ln-print-guide .ln-noprint { display: none !important; }

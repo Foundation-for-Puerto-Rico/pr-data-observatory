@@ -1,20 +1,20 @@
 /* The How public money moves page (money-cycle.html, Knowledge Area): the path of stages, the two calendars and the two kinds of program. */
 .mc-path { list-style:none; margin:14px 0; padding:0; counter-reset:mc; max-width:760px; }
-.mc-step, .mc-fstep { position:relative; display:flex; gap:12px; align-items:flex-start; background:#fff; border:1px solid #dfe3ea; border-radius:10px; padding:12px 14px; margin:0 0 26px; counter-increment:mc; }
+.mc-step, .mc-fstep { position:relative; display:flex; gap:12px; align-items:flex-start; background:var(--color-surface); border:1px solid var(--ws-n-line2); border-radius:10px; padding:12px 14px; margin:0 0 26px; counter-increment:mc; }
 .mc-step:not(:last-child)::after, .mc-fstep:not(:last-child)::after { content:""; position:absolute; left:26px; bottom:-27px; height:26px; border-left:3px solid #3b73bd; }
-.mc-step .ms-icon { font-size:26px; color:#3b73bd; flex:none; }
+.mc-step .ms-icon { font-size:26px; color:var(--ws-n-link); flex:none; }
 .mc-step b, .mc-fstep b { font-size:16px; }
-.mc-step b::before, .mc-fstep b::before { content:counter(mc) " · "; color:#5b6475; font-weight:600; }
+.mc-step b::before, .mc-fstep b::before { content:counter(mc) " · "; color:var(--ws-n-muted); font-weight:600; }
 .mc-step p, .mc-fstep p { margin:3px 0 4px; font-size:14px; }
-.mc-step small { color:#5b6475; font-size:12.5px; }
-.mc-gap { border-style:dashed; border-color:#b0892b; background:#fffaf0; }
+.mc-step small { color:var(--ws-n-muted); font-size:12.5px; }
+.mc-gap { border-style:dashed; border-color:#b0892b; background:var(--ws-n-warn); }
 .mc-gap .ms-icon { color:#b0892b; }
 .mc-fed .mc-fstep { padding-left:44px; }
 .mc-all { max-height:none; }
-.mc-table caption { text-align:left; font-size:13px; color:#5b6475; padding:6px 10px; caption-side:top; }
+.mc-table caption { text-align:left; font-size:13px; color:var(--ws-n-muted); padding:6px 10px; caption-side:top; }
 .mc-table th[scope="row"] { font-weight:600; white-space:normal; min-width:150px; }
 .mc-cal { padding:14px; margin:12px 0; overflow-x:auto; }
-.mc-months { display:grid; grid-template-columns:repeat(15, minmax(34px, 1fr)); font-size:12px; color:#5b6475; text-align:center; min-width:520px; }
+.mc-months { display:grid; grid-template-columns:repeat(15, minmax(34px, 1fr)); font-size:12px; color:var(--ws-n-muted); text-align:center; min-width:520px; }
 .mc-bar { display:grid; grid-template-columns:repeat(15, minmax(34px, 1fr)); margin-top:8px; min-width:520px; }
 .mc-bar span { color:#fff; font-size:12.5px; font-weight:600; padding:6px 8px; border-radius:6px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 .mc-pr span { grid-column:1 / span 12; background:#1f5e7a; }
@@ -30,7 +30,7 @@
 .mc-learn ul { margin:0; padding-left:20px; font-size:14.5px; }
 .mc-learn li { margin:3px 0; }
 .mc-steps tbody { counter-reset:mcs; }
-.mc-steps tbody td:first-child::before { counter-increment:mcs; content:counter(mcs) " · "; color:#5b6475; font-weight:600; }
+.mc-steps tbody td:first-child::before { counter-increment:mcs; content:counter(mcs) " · "; color:var(--ws-n-muted); font-weight:600; }
 .mc-none { color:#7a5a10; }
 .mc-not { border-left:4px solid #b0892b; }
 .mc-ask { max-width:760px; padding-left:22px; }

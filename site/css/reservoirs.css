@@ -15,7 +15,7 @@
 .rv-tank .rv-glass { fill:#F4F9FC; stroke:#8C8E8E; stroke-width:1; }
 .rv-tank .rv-water { fill:var(--ramp-4); }
 .rv-tank .rv-wave { fill:var(--ramp-3); animation:rvwave 6s ease-in-out infinite alternate; }
-.rv-tank .rv-band { fill:#2A2E2E; opacity:.12; }
+.rv-tank .rv-band { fill:var(--color-text); opacity:.12; }
 .rv-tank .rv-bandline { stroke:#2A2E2E; stroke-width:1.2; stroke-dasharray:4 3; }
 .rv-tank .rv-tankp { font-size:22px; font-weight:700; fill:#fff; paint-order:stroke; stroke:var(--ramp-5); stroke-width:3px; }
 @keyframes rvwave { from { transform:translateX(-18px); } to { transform:translateX(0); } }
@@ -27,7 +27,7 @@
 .rv-table tbody tr[data-r] { cursor:pointer; }
 .rv-table tbody tr[data-r]:hover, .rv-table tbody tr[data-r]:focus-visible { background:#F2F8FB; outline:none; }
 .rv-table tbody tr.sel { background:#E5F2F9; }
-.rv-table tr.rv-overall { background:#F6F7F9; font-weight:600; }
+.rv-table tr.rv-overall { background:var(--ws-n-paper); font-weight:600; }
 .rv-table tr.rv-overall th { font-weight:700; }
 .rv-tablebox { max-height:none; }
 .rv-detail { display:grid; grid-template-columns:auto 1fr; gap:18px; align-items:start; }
@@ -55,10 +55,10 @@
 .pm-legend i.rv-key-band { width:14px; height:10px; background:var(--ramp-1); }
 .pm-legend i.rv-key-now { width:9px; height:9px; border-radius:50% !important; background:var(--ramp-5); }
 .pm-legend span { margin-right:14px; }
-.rv-tip { position:absolute; z-index:50; background:#fff; border:1px solid var(--color-border); border-radius:var(--radius-sm); box-shadow:var(--shadow-md); padding:6px 9px; font-size:12px; line-height:1.4; pointer-events:none; max-width:260px; }
+.rv-tip { position:absolute; z-index:50; background:var(--color-surface); border:1px solid var(--color-border); border-radius:var(--radius-sm); box-shadow:var(--shadow-md); padding:6px 9px; font-size:12px; line-height:1.4; pointer-events:none; max-width:260px; }
 .sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
 /* section 4, what drains into each reservoir (reservoirs_upstream.js) */
-.rv-up-flag { display: inline-block; margin-left: .3em; padding: 0 .35em; border-radius: 4px; font-size: .8em; background: var(--warn-bg, #FFF4E0); color: var(--warn-ink, #7A4B00); white-space: nowrap; }
+.rv-up-flag { display: inline-block; margin-left: .3em; padding: 0 .35em; border-radius: 4px; font-size: .8em; background: var(--warn-bg, var(--ws-n-warn)); color: var(--warn-ink, #7A4B00); white-space: nowrap; }
 .rv-up-off { color: var(--muted, #5B6472); font-style: italic; }
 .rv-up-more { margin-top: .8rem; }
 .rv-up-more > summary { cursor: pointer; font-weight: 600; padding: .4rem 0; }
