@@ -14246,6 +14246,58 @@
   "priority": 2
  },
  {
+  "id": "job-accessibility",
+  "term": "Job accessibility",
+  "term_es": "Accesibilidad a empleos",
+  "plain": "How many jobs can be reached from a place within a set travel time, such as 30 minutes by car: a count of the opportunities within reach, not the distance to the nearest one.",
+  "plain_es": "Cuántos empleos se pueden alcanzar desde un lugar en un tiempo de viaje dado, como 30 minutos en carro: un conteo de las oportunidades al alcance, no la distancia a la más cercana.",
+  "source": {
+   "name": "University of Minnesota Accessibility Observatory, Access Across America: Methodology 2024",
+   "url": "https://conservancy.umn.edu/items/b324cfca-bdd3-4f39-98b9-201b9630b526",
+   "checked": "2026-11-24"
+  },
+  "match": {
+   "en": [
+    "job accessibility",
+    "jobs within reach"
+   ],
+   "es": [
+    "accesibilidad a empleos",
+    "empleos al alcance"
+   ]
+  },
+  "case_sensitive": false,
+  "highlight": true,
+  "priority": 2,
+  "see_also": [
+   "jobs_reach.jobs_reach_30"
+  ]
+ },
+ {
+  "id": "free-flow",
+  "term": "Free flow",
+  "term_es": "Flujo libre",
+  "plain": "Traffic moving at the speed the road allows, with no congestion slowing it. A free-flow drive time is a lower bound: real trips at rush hour take longer.",
+  "plain_es": "Tránsito que se mueve a la velocidad que la carretera permite, sin congestión que lo retrase. Un tiempo de viaje en flujo libre es un límite inferior: los viajes reales en hora pico toman más tiempo.",
+  "source": {
+   "name": "FHWA, Traffic Data Applications: what traffic data are (travel time relative to free-flow conditions)",
+   "url": "https://www.fhwa.dot.gov/policyinformation/pubs/traffic-data-applications-highlights/what-traffic-data-are.cfm",
+   "checked": "2026-11-24"
+  },
+  "match": {
+   "en": [
+    "free flow",
+    "free-flow"
+   ],
+   "es": [
+    "flujo libre"
+   ]
+  },
+  "case_sensitive": false,
+  "highlight": true,
+  "priority": 2
+ },
+ {
   "id": "ersv",
   "term": "ERSV",
   "expansion": "Eastern Region Strategic Vision",

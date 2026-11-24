@@ -1921,6 +1921,25 @@
       "pages": [
         "map"
       ]
+    },
+    {
+      "file": "jobs_reach_series.json",
+      "paths": [
+        "vars[].label",
+        "vars[].unit"
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "jobs_reach_series.json",
+      "paths": [
+        "vars[].group"
+      ],
+      "pages": [
+        "map"
+      ]
     }
   ]
 }

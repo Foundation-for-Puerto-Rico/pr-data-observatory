@@ -1061,8 +1061,8 @@
   "es": "Cada fila de la lista de datos deseados dice qué es el conjunto de datos y por qué ayudaría. Da quién lo publica, la licencia, la geografía, cada cuánto se actualiza, el tamaño, el estado y qué revisar primero."
  },
  "data.wanted_status": {
-  "en": "Every candidate dataset has a status. On 2026-11-23, 25 rows are 'candidate', 47 'checked', 31 'blocked', 61 'live' and 0 'building'.",
-  "es": "Cada conjunto de datos candidato tiene un estado. El 2026-11-23, 25 filas están en \"Candidato\", 47 en \"Verificado\", 31 en \"Bloqueado\", 61 en \"En vivo\" y 0 en \"En construcción\"."
+  "en": "Every candidate dataset has a status. On 2026-11-24, 24 rows are 'candidate', 47 'checked', 31 'blocked', 62 'live' and 0 'building'.",
+  "es": "Cada conjunto de datos candidato tiene un estado. El 2026-11-24, 24 filas están en \"Candidato\", 47 en \"Verificado\", 31 en \"Bloqueado\", 62 en \"En vivo\" y 0 en \"En construcción\"."
  },
  "data.dictionary": {
   "en": "The whole data dictionary in one file: every entry, source record and glossary term. The data dictionary page reads smaller files made from it. You can download it and use the dictionary in your own tools.",
@@ -4263,5 +4263,21 @@
  "cutoff.cut_flood_res": {
   "en": "How many residents would have no road to a hospital that stays out of the flood area, in a 1% annual chance flood.",
   "es": "Cuántos residentes se quedarían sin una carretera hasta un hospital que no pase por el área inundable, en una inundación con 1% de probabilidad anual."
+ },
+ "jobs_reach.jobs_reach_30": {
+  "en": "How many jobs the residents can reach within 30 minutes by car, on average.",
+  "es": "Cuántos empleos pueden alcanzar en promedio los residentes en 30 minutos en carro."
+ },
+ "jobs_reach.jobs_reach_30_pct": {
+  "en": "The share of all of Puerto Rico's jobs the residents can reach within 30 minutes by car, on average.",
+  "es": "La parte de todos los empleos de Puerto Rico que los residentes pueden alcanzar en promedio en 30 minutos en carro."
+ },
+ "jobs_reach.jobs_reach_45": {
+  "en": "How many jobs the residents can reach within 45 minutes by car, on average.",
+  "es": "Cuántos empleos pueden alcanzar en promedio los residentes en 45 minutos en carro."
+ },
+ "jobs_reach.jobs_reach_45_pct": {
+  "en": "The share of all of Puerto Rico's jobs the residents can reach within 45 minutes by car, on average.",
+  "es": "La parte de todos los empleos de Puerto Rico que los residentes pueden alcanzar en promedio en 45 minutos en carro."
  }
 }

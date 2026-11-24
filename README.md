@@ -4,9 +4,13 @@ A free, open model of Puerto Rico. It brings public information from many fields
 
 The fields ("domains") are defined in `dictionary_src/domains.json` and grow as data are added; `docs/domains.md` lists the current set.
 
+**About "HANDOFF decision N".** This README, the guides in `docs/` and comments in the code cite numbered decisions in `HANDOFF.md`. That file is Foundation for Puerto Rico's internal decision log and is not part of this repository. What each decision changed is described where it is cited and in the guides in `docs/`.
+
 # Observatorio de Datos de PR (PR Data Observatory)
 
 Un modelo abierto y gratuito de Puerto Rico. Reúne información pública de muchos campos en un mismo mapa y una misma línea de tiempo, para que pueda compararla y combinarla: el alquiler frente al ingreso, las zonas inundables frente a dónde vive la gente, el acceso a transporte frente a los empleos y cómo ha cambiado cada cosa. Creado por Foundation for Puerto Rico como herramienta para el uso y beneficio del público. Solo datos abiertos y públicos. El sitio no necesita claves de API ni cuentas; la compilación usa una cuenta gratuita de NASA Earthdata, para las luces nocturnas, guardada solo como secreto de GitHub (decisión 75 de HANDOFF; nueve fuentes no declaran licencia: el diccionario dice cuáles). No se publican datos personales a sabiendas; los lugares incluyen el nombre, la dirección y el sitio web de cada negocio tal como los publica Overture Maps, y hay una revisión abierta de esos campos (`HANDOFF.md`, decisión 19).
+
+**Sobre "decisión N de HANDOFF".** Este README, las guías en `docs/` y los comentarios del código citan decisiones numeradas de `HANDOFF.md`. Ese archivo es la bitácora interna de decisiones de Foundation for Puerto Rico y no forma parte de este repositorio. Lo que cambió cada decisión se describe donde se cita y en las guías de `docs/`.
 
 **What it holds today** (it grows as data are added): tourism places (Overture Maps) · FEMA flood zones · NOAA sea level rise scenarios (live) · USGS protected areas · 2020 Census municipalities and population · mobility (ATI transit routes and stops, OpenStreetMap stops, stations, terminals, taxi stands, EV charging, FAA airports, Uber service listing) · per-municipality exposure and access analytics.
 
