@@ -1,6 +1,6 @@
 # Transportation upgrade: what the observatory has, what open data can add, and the order to build it (2026-11)
 
-HANDOFF decision 105. Francis, 2026-11-13: "Check the information on transportation the observatory has, then search what additional information we can add to the map. There has to be more information about transportation and ways to display it. This is very important for gap analysis we need to conduct." And: "make visible the gaps where transportation routes can be added. Maybe this is a simulated layer that we can add in a knowledge area and connect the transportation systems between municipalities."
+HANDOFF decision 105. The project lead, 2026-11-13: "Check the information on transportation the observatory has, then search what additional information we can add to the map. There has to be more information about transportation and ways to display it. This is very important for gap analysis we need to conduct." And: "make visible the gaps where transportation routes can be added. Maybe this is a simulated layer that we can add in a knowledge area and connect the transportation systems between municipalities."
 
 Prepared with Claude (AI). Every source below was opened and counted on 2026-11-13, without a key.
 
@@ -67,7 +67,7 @@ Each step is one pull request that shows on the site.
 
 ## 4. Data gaps that open data cannot close (no requests will be sent)
 
-**Retired 2026-11-16.** Francis: "I don't want to send data requests and just use the data available on the internet." The observatory works only from data a script can read from the internet. The gaps below stay as limits, stated on the pages (the Connections page's last finding and its notes); they are not pending work. If one of these sources is published openly later, the refresh checks of `refresh/sources.json` are the place to add it.
+**Retired 2026-11-16.** the project lead: "I don't want to send data requests and just use the data available on the internet." The observatory works only from data a script can read from the internet. The gaps below stay as limits, stated on the pages (the Connections page's last finding and its notes); they are not pending work. If one of these sources is published openly later, the refresh checks of `refresh/sources.json` are the place to add it.
 
 
 | Missing data | Who holds it | What it leaves open |

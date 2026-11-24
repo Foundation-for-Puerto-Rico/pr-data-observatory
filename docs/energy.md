@@ -1,6 +1,6 @@
 # Energy (HANDOFF decision 104)
 
-The plan is `docs/energy-proposal-2026-11.md`, approved by Francis on 2026-11-13 ("Approve, start step 1"), choices (a) to (g) as proposed. This page describes what is built.
+The plan is `docs/energy-proposal-2026-11.md`, approved by the project lead on 2026-11-13 ("Approve, start step 1"), choices (a) to (g) as proposed. This page describes what is built.
 
 ## Step 1: the Power plants layer (`power_plants.py`)
 
@@ -69,7 +69,7 @@ The plan is `docs/energy-proposal-2026-11.md`, approved by Francis on 2026-11-13
 
 **Dictionary page.** The six entries pushed the dictionary page's first data past its budget, so `registry.json` (the geography filter, the file count and the files summary) now loads right after the first paint instead of before the page is ready (`later` in `routes.json`; `loadRegistry()` in `dictionary.js`). A link that names a geography level waits for it. The area profile's script budget is now 122 KB (`docs/performance.md`).
 
-## Next steps (each its own pull request, on Francis's word)
+## Next steps (each its own pull request, on the project lead's word)
 
 5. Solar and wind potential.
 6. Outages (EAGLE-I, by LUMA region).

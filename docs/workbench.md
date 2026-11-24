@@ -52,7 +52,7 @@ The tab takes up to eight visible layers, each as the map shows it (year, rescal
 
 ## Composite builder
 
-A person picks 2 to 12 datasets, a direction for each (higher is better or worse), a weight from 0.1 to 100 and one scale. A new input starts with no direction ("Choose…"): nothing is assumed about what is better, and "Put on the map" stays off until each input has one (Francis, 2026-10-15).
+A person picks 2 to 12 datasets, a direction for each (higher is better or worse), a weight from 0.1 to 100 and one scale. A new input starts with no direction ("Choose…"): nothing is assumed about what is better, and "Put on the map" stays off until each input has one (the project lead, 2026-10-15).
 
 1. **Read each input** as a shaded map starts it: counts per 1,000 residents, dollar totals per resident, the rest as published. The year is the one the year control picks; with "Latest", each input's latest year.
 2. **Put each input on the chosen scale** across the 78 municipios:

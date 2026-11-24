@@ -1,4 +1,4 @@
-# Night-time lights: set up the NASA login (for Francis)
+# Night-time lights: set up the NASA login (for the project lead)
 
 The night-time lights harvester (`nightlights.py`) downloads NASA's Black Marble monthly files. NASA lists them openly but asks for a free Earthdata login to download them. This guide covers the four things only a person at FPR can do: make the account, approve LAADS, make a token and save it in GitHub. It takes about 15 minutes.
 

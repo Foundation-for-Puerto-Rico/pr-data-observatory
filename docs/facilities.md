@@ -5,7 +5,7 @@ Two harvesters add four point layers to the 2D map and 17 datasets for the 78 mu
 - `facilities.py` writes `public_housing.geojson`, `fire_stations.geojson`, `police_stations.geojson`, `libraries.geojson` and `facility_series.json` (counts by municipio).
 - `nonprofits.py` writes `nonprofit_series.json` (counts only).
 
-Francis approved points with a name, a type and a location only. A pop-up shows the name, type, municipio and source, nothing else.
+The project lead approved points with a name, a type and a location only. A pop-up shows the name, type, municipio and source, nothing else.
 
 ## Sources
 
@@ -65,7 +65,7 @@ Each source is read through its live service, never a static copy, except HUD's 
   - the public housing file's title;
   - two dictionary summaries.
 
-  This follows the repository's safety net (`tests/test_held_for_review.py`). Public housing is not grant money, so Francis or Compliance can release them.
+  This follows the repository's safety net (`tests/test_held_for_review.py`). Public housing is not grant money, so the project lead or Compliance can release them.
 
 ## Refresh
 

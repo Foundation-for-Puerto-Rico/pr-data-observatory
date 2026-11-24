@@ -1,8 +1,8 @@
 # Proposal: GIS tools on the map (buffer, dissolve, watersheds and more)
 
-Date: 2026-11-09. Status: **approved by Francis on 2026-11-09 (decision 93 in HANDOFF.md), all five choices as proposed; nothing built yet.** This pull request changes no page and builds no data.
+Date: 2026-11-09. Status: **approved by the project lead on 2026-11-09 (decision 93 in HANDOFF.md), all five choices as proposed; nothing built yet.** This pull request changes no page and builds no data.
 
-**In one paragraph.** Francis shared a list of 15 basic GIS tools on 2026-11-09 and asked which ones the observatory lacks and could add, kept simple for most visitors but open to a power user. Measured against main (`6aeeca5`): **3 are there**, mostly inside the build, **7 are partly there** (they run in the build or inside one feature, but a visitor cannot use them on their own data), and **5 are missing**. The proposal adds no GIS toolbox. It adds a few tools that feed the summary the observatory already has (the Study areas summary), so one engine serves all of them: a ring around a place, a merged region, a watershed and a travel-time area all become study areas. Interpolation (IDW, kriging) is left out for now.
+**In one paragraph.** the project lead shared a list of 15 basic GIS tools on 2026-11-09 and asked which ones the observatory lacks and could add, kept simple for most visitors but open to a power user. Measured against main (`6aeeca5`): **3 are there**, mostly inside the build, **7 are partly there** (they run in the build or inside one feature, but a visitor cannot use them on their own data), and **5 are missing**. The proposal adds no GIS toolbox. It adds a few tools that feed the summary the observatory already has (the Study areas summary), so one engine serves all of them: a ring around a place, a merged region, a watershed and a travel-time area all become study areas. Interpolation (IDW, kriging) is left out for now.
 
 ## 1. The 15 tools against what the observatory has
 
@@ -88,7 +88,7 @@ Everything runs in two places only: **the build** (Python, heavy raster work, do
 
 Each step's PR adds its terms to `dictionary_src/glossary.json` in English and Spanish with a source: buffer, zonal statistics, dissolve, spatial join, slope, contour line, watershed (HUC), catchment, stream order, travel-time area (isochrone). The wanted-data list gets rows for WBD and NHDPlus HR in step 3.
 
-## 6. Decisions for Francis (93)
+## 6. Decisions for the project lead (93)
 
 - **(a)** The order: step 1 (Area around + richer summary, first visible), 2 elevation, 3 watersheds, 4 region and points, 5 download, 6 travel time.
 - **(b)** The split: three one-click tools for everyone, every setting in a "GIS tools" drawer for power users.
@@ -96,4 +96,4 @@ Each step's PR adds its terms to `dictionary_src/glossary.json` in English and S
 - **(d)** Step 2 publishes a slope image like the heat surface (decision 88), and coordinates with Zoralis's PR #161 on how the two slopes are labelled.
 - **(e)** Count my points keeps visitor files in the browser, shows counts only, and hides counts below a minimum (proposed: fewer than 5).
 
-**Approved by Francis on 2026-11-09 ("Approve and merge"): (a) to (e) as proposed.** Each step is its own PR, merged only on Francis's word; step 1 next.
+**Approved by the project lead on 2026-11-09 ("Approve and merge"): (a) to (e) as proposed.** Each step is its own PR, merged only on the project lead's word; step 1 next.

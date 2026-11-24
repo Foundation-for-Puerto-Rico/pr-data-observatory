@@ -1,6 +1,6 @@
 # Landslide susceptibility by barrio and municipio (2026-10-18, branch `age-landslide`)
 
-Francis approved this dataset on 2026-10-18. It is general observatory data from an official, current source.
+The project lead approved this dataset on 2026-10-18. It is general observatory data from an official, current source.
 
 `landslide.py` writes two files:
 

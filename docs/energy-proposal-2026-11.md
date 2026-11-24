@@ -1,8 +1,8 @@
 # Proposal: energy in Puerto Rico (plants, grid, rooftop solar, reliability and cost)
 
-Date: 2026-11-13. Status: **approved by Francis on 2026-11-13 ("Approve, start step 1"): decision 104 (a) to (g) as proposed. Step 1 is being built on branch `data/power-plants`.** This pull request changes no page and publishes no data. It adds this document and a preview map made from the real data (`docs/analysis/energy-2026-11/preview.svg`, built by `make_preview.py` in the same folder).
+Date: 2026-11-13. Status: **approved by the project lead on 2026-11-13 ("Approve, start step 1"): decision 104 (a) to (g) as proposed. Step 1 is being built on branch `data/power-plants`.** This pull request changes no page and publishes no data. It adds this document and a preview map made from the real data (`docs/analysis/energy-2026-11/preview.svg`, built by `make_preview.py` in the same folder).
 
-**In one paragraph.** On 2026-11-13 Francis shared a #30DayMapChallenge map of Romania's power grid: OpenStreetMap plants as glowing dots sized by MW and coloured by fuel, over the 400 kV and 220 kV lines. Drawn the same way, Puerto Rico's map would miss most of its solar power. Utility plants hold 398 MW of renewable capacity (EIA-860M, September 2026). Rooftop systems already hold **1,666 MW at 209,404 installations, with 189,459 batteries** (LUMA, September 2026). The rooftop figure is 4.2 times the utility-scale renewable capacity and 26% of the capacity of every utility plant together (6,436 MW). This proposal maps four things together:
+**In one paragraph.** On 2026-11-13 the project lead shared a #30DayMapChallenge map of Romania's power grid: OpenStreetMap plants as glowing dots sized by MW and coloured by fuel, over the 400 kV and 220 kV lines. Drawn the same way, Puerto Rico's map would miss most of its solar power. Utility plants hold 398 MW of renewable capacity (EIA-860M, September 2026). Rooftop systems already hold **1,666 MW at 209,404 installations, with 189,459 batteries** (LUMA, September 2026). The rooftop figure is 4.2 times the utility-scale renewable capacity and 26% of the capacity of every utility plant together (6,436 MW). This proposal maps four things together:
 
 - where power is made;
 - how it moves;
@@ -109,7 +109,7 @@ LUMA's own website bars automated access, so the `power` row of the wanted-data 
 
 ## The steps, first visible result first
 
-Effort as in `docs/proposal-2026-10.md`: **S** under 1 day, **M** 2-4 days, **L** 1-2 weeks. Each step is its own pull request, merged only on Francis's word.
+Effort as in `docs/proposal-2026-10.md`: **S** under 1 day, **M** 2-4 days, **L** 1-2 weeks. Each step is its own pull request, merged only on the project lead's word.
 
 1. **Power plants on the map (S-M). Shows on the site first.**
    - Build: `energy.py` reads EIA-860M `Operating_PR` and `Planned_PR`, finding the newest file's link on EIA's page, and writes `power_plants.geojson`. Each plant is one point: EIA id, plant name, MW by technology, main technology, standby MW, first and last operating year, and status (operating or planned).
@@ -162,7 +162,7 @@ Effort as in `docs/proposal-2026-10.md`: **S** under 1 day, **M** 2-4 days, **L*
 - **DOE's Puerto Rico Energy Resilience Fund (Acceso Solar):** more than 6,000 households received systems (DOE, 2026-03-04), but there is no dataset and nothing by municipio. Its eight awards were cancelled on 2026-01-09. It can be a sentence on the page.
 - **LUMA's battery demand-response program:** about 115,000 customers enrolled (LUMA filing of 2026-10-06), in PDF filings only. It can be a sentence on the page.
 
-## Decisions for Francis (decision 104)
+## Decisions for the project lead (decision 104)
 
 - **(a)** Approve the order: 1 plants (first visible), 2 lines, 3 page, 4 municipio datasets, 5 potential, 6 outages.
 - **(b)** Publish EIA's plant points with plant name, MW by technology, status and years, but not the owner. This reverses item 10's choice of keeping the points in the cache. EIA publishes them; every plant is 1 MW or more, and none is a home. Recommended: yes.

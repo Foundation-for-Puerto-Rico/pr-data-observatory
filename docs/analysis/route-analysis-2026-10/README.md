@@ -1,6 +1,6 @@
 # Route analysis (draft Knowledge Area tab), 2026-10
 
-The data behind `site/route-analysis.html`, the "Análisis de ruta" (Route analysis) tab of the Knowledge Area. The tab was agreed with Francis on
+The data behind `site/route-analysis.html`, the "Análisis de ruta" (Route analysis) tab of the Knowledge Area. The tab was agreed with the project lead on
 2026-10-19 as an area of its own (nothing added to Vivienda or WCRP). It is published with the "In review" marker kept and `noindex`, like
 WCRP. Prepared by Zoralis Alicea with Claude (AI).
 

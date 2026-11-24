@@ -1,6 +1,6 @@
 # Women in the labor force: the Eastern Region and Puerto Rico (Knowledge Area analysis, 2026-10-30)
 
-**Question (Francis Pérez, 2026-10-30):** for the Human Capital chapter of FPR's Eastern Region Strategic Vision (ERSV), what is the women's labor force participation rate of the region, rather than the island-wide figure, and what is behind it (how many women are of working age, how many people the survey interviewed)?
+**Question (the project lead, 2026-10-30):** for the Human Capital chapter of FPR's Eastern Region Strategic Vision (ERSV), what is the women's labor force participation rate of the region, rather than the island-wide figure, and what is behind it (how many women are of working age, how many people the survey interviewed)?
 
 **The region:** the 15 municipios of the ERSV: Canóvanas, Ceiba, Culebra, Fajardo, Humacao, Juncos, Las Piedras, Loíza, Luquillo, Maunabo, Naguabo, Río Grande, San Lorenzo, Vieques, Yabucoa (FPR, Eastern Region Economic Development Council, *Human Capital Demographic Profile*, 2025). Not Patillas, Gurabo, Caguas or Carolina.
 

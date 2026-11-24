@@ -1,6 +1,6 @@
 # Function crosswalk: the review decisions
 
-Francis asked on 2026-11-09 for the flagged rows to be decided (HANDOFF decision 92). Each row was decided against the UN Classification of the Functions of Government (COFOG),
+The project lead asked on 2026-11-09 for the flagged rows to be decided (HANDOFF decision 92). Each row was decided against the UN Classification of the Functions of Government (COFOG),
 mapped to the crosswalk's functions, with one rule for rows of the same kind. Three functions changed; the other rows keep the draft's choice, now reviewed.
 
 | Kind | Code | Name | Function | Decision |

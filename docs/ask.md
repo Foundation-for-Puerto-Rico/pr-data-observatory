@@ -4,7 +4,7 @@ The chat answers in the browser, with no language model and nothing sent anywher
 
 ## How Ask understands a question (2026-10-20)
 
-Francis, 2026-10-20: "Tienes que trabajar en mejorar la utilidad de 'ask'. Esto es muy importante porque la mayoría de los usuarios pueden navegar el mapa con el ask y no está funcionando correctamente. Si alguien escribe algo en el ask, tienes que poder visibilizar lo más próximo posible y encender las capas correspondientes."
+The project lead, 2026-10-20: "Tienes que trabajar en mejorar la utilidad de 'ask'. Esto es muy importante porque la mayoría de los usuarios pueden navegar el mapa con el ask y no está funcionando correctamente. Si alguien escribe algo en el ask, tienes que poder visibilizar lo más próximo posible y encender las capas correspondientes."
 
 ### Why "Transportation and housing" dead-ended
 
@@ -216,7 +216,7 @@ The measurement found two regressions against main, and both are fixed. They are
 
 ### Línea PAS (2026-10-21; HANDOFF decision 57)
 
-Francis, 2026-10-21: "Añade la información que tengas de Línea PAS de ASSMCA. Lo importante es que esté documentado el source correctamente." Part of HANDOFF decision 57, approved by Francis on 2026-10-21.
+The project lead, 2026-10-21: "Añade la información que tengas de Línea PAS de ASSMCA. Lo importante es que esté documentado el source correctamente." Part of HANDOFF decision 57, approved by the project lead on 2026-10-21.
 
 **The replies.** The crisis reply and the treatment answer to "near me" (`SENS_TEXT.crisis` and `SENS_TEXT.nearMeTx` in `site/js/ask.js`) now add, after the 988 line:
 
@@ -239,7 +239,7 @@ Both replies end with a source line (`chPasNote` in `site/js/chat.js`) that cite
 
 ### Transit stops, from PR #8 (2026-10-21)
 
-Maite Barragán's PR #8 (branch `fix/chat-show-asked-data`) found that the chat did not answer three kinds of question about transit stops. Its rules are ported here onto the current Ask engine, with credit to her. The rest of PR #8 (the closest-match note and the 3D hand-over) is not part of this change: main already has its own versions of both.
+A colleague's PR #8 (branch `fix/chat-show-asked-data`) found that the chat did not answer three kinds of question about transit stops. Its rules are ported here onto the current Ask engine, with credit to its author. The rest of PR #8 (the closest-match note and the 3D hand-over) is not part of this change: main already has its own versions of both.
 
 - **A count of stops.** "Número de paradas de transporte colectivo en San Juan" or "how many bus stops in Caguas" now gives the count of stops and stations (`transit_stops`), with its rank: "1,186 (puesto 1 de 78…)". The stops layer is switched on too. Before, the chat only switched the layer on and moved the map. The count needs a word that asks for a count or a ranking before it: "número de", "cuántas", "how many", "most", "más". "muestra las paradas" still only switches the layer on.
 - **Residents near a stop.** "How many people live near a bus stop in Caguas?" or "¿cuántos residentes viven cerca de una parada?" now gives the share of residents within a 400 m walk of a stop with a current timetable (`pop_walk_active_pct`), with the stops layer on. It does not use the straight-line share (`pop_served_active_pct`). The cause of the old answer: the datasets' own words in `ask.js` (`understand`) scored the word "near" alone. "near" is one of the `ask` words of the dataset "Residents within 10 km of a health center by road" ("near a health center"), so the chat answered with that dataset. Now words of distance (`NEARW`: near, close, cerca, cercano, lejos, far…) are never scored as a topic. A side effect, also better: "far by walking" no longer adds the road distance to a health centre.
@@ -258,7 +258,7 @@ The rules are in `CONCEPTS` in `site/js/chat.js`, before the jobs rule. They loa
 
 ## Pages without a map (2026-10-26)
 
-Francis (2026-10-26): "The Ask button should always be available so people can ask questions even when in the data dictionary or in a knowledge area." The "Preguntar / Ask" button is now in the same place in the top bar (just before the views) on every page: the data dictionary, Data management, every Knowledge Area page (Housing, WCRP, route analysis, GII) and the area profiles, as on the 2D map and the 3D view.
+The project lead (2026-10-26): "The Ask button should always be available so people can ask questions even when in the data dictionary or in a knowledge area." The "Preguntar / Ask" button is now in the same place in the top bar (just before the views) on every page: the data dictionary, Data management, every Knowledge Area page (Housing, WCRP, route analysis, GII) and the area profiles, as on the 2D map and the 3D view.
 
 **First load.** Each page carries only `chatboot.js` (about 1.3 KB compressed) and the button; `chat.css` and four icon names join the page's styles. `chat.js`, `ask.js`, the layer registry and, on these pages, `askpage.js` load when the pointer goes over the button, it gets the focus or it is touched, as on the map; the shared engine and the datasets load when the chat opens. No budget line was raised, but each page without a map gained about 1.3 KB of first-load script (the starter and the Spanish of its button: GII 28.1 → 29.4 of 30 KB, WCRP 76.0 → 77.3 of 80, dictionary 33.4 → 34.7 of 40, LF copy, `budget.py`); the map and the 3D view lost about 0.2 KB (a shorter starter).
 

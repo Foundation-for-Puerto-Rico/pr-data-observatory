@@ -1,6 +1,6 @@
 # Local conditions by barrio and municipio (2026-10-17, branch `vuln-inputs`)
 
-Francis approved these datasets on 2026-10-17 (HANDOFF decision 41). They are general observatory data from official sources. They also hold the inputs that the WCRP vulnerability index lacked in its rebuild (the held branch `wcrp-area`, `docs/wcrp.md`, "The rebuild"), but nothing here is WCRP content.
+The project lead approved these datasets on 2026-10-17 (HANDOFF decision 41). They are general observatory data from official sources. They also hold the inputs that the WCRP vulnerability index lacked in its rebuild (the held branch `wcrp-area`, `docs/wcrp.md`, "The rebuild"), but nothing here is WCRP content.
 
 `conditions.py` writes two files:
 
@@ -62,7 +62,7 @@ The licence of each source is recorded in `dictionary_src/sources.json`. EPA's d
 
 - Only the columns in `conditions.KEEP` reach the cache (`cache/conditions/`). No street address, telephone, e-mail, contact, owner, parent company or web link is requested or kept.
 - Site names and points, and hospital points, stay in the local cache. The published files hold counts, shares and times only. Hospital names, addresses and certification numbers are never cached (`tests/test_conditions.py` checks this).
-- **No map layer of EPA sites was added.** Point layers were optional. The map's startup scripts are at 248.1 of 250 KB after this change; a layer would add its switch, its Spanish and its loader there. It would also publish the names and points of chemical facilities, which the index inputs do not need. Francis can ask for it later: `facilities.js` would take it as a fifth layer.
+- **No map layer of EPA sites was added.** Point layers were optional. The map's startup scripts are at 248.1 of 250 KB after this change; a layer would add its switch, its Spanish and its loader there. It would also publish the names and points of chemical facilities, which the index inputs do not need. The project lead can ask for it later: `facilities.js` would take it as a fifth layer.
 
 ## On the map
 
@@ -74,7 +74,7 @@ The licence of each source is recorded in `dictionary_src/sources.json`. EPA's d
 - Labels and groups: `i18n_src/es/labels_conditions.json` (map and area profile).
 - The barrio legend's two new sentences: `econ_level.json`.
 - Dictionary summaries: `dictionary_plain.json`.
-- **Held for review** (`held_for_review.json`), because the repository holds Spanish that names HUD: the two CHAS labels, the Spanish titles of both files and the two CHAS dictionary summaries. CHAS is HUD planning data, not grant money, so Francis or Compliance can release them as public housing was.
+- **Held for review** (`held_for_review.json`), because the repository holds Spanish that names HUD: the two CHAS labels, the Spanish titles of both files and the two CHAS dictionary summaries. CHAS is HUD planning data, not grant money, so the project lead or Compliance can release them as public housing was.
 
 ## Refresh
 
