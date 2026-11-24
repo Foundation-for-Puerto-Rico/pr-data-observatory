@@ -51,6 +51,7 @@ CONTRACT = {
     "school_conditions_series.json": {"urban_crdc": "urban_crdc", "urban_ccd": "urban_ccd"},
     "proficiency_series.json": {"urban_edfacts": "urban_edfacts", "urban_ccd": "urban_ccd"},
     "providers_series.json": {"cms_nppes": "cms_nppes", "census_zcta_county": "census_zcta_county"},
+    "jobs_reach_series.json": {"bls_qcew": "bls_qcew", "overture": "overture", "osm": "osm", "census_tiger": "census_tiger"},
     "cutoff_series.json": {"osm": "osm", "fema_nfhl": "fema_nfhl", "fhwa_nbi": "fhwa_nbi", "census_tiger": "census_tiger"},
     "essentials_series.json": {"overture": "overture", "usac_erate": "usac_erate", "usgs_structures": "usgs_structures", "osm": "osm", "census_tiger": "census_tiger"},
     "facility_exposure_series.json": {"fema_nfhl": "fema_nfhl", "noaa_slr": "noaa_slr", "usgs_landslide_map": "usgs_landslide_map", "fx_layers": "fpr_twin"},

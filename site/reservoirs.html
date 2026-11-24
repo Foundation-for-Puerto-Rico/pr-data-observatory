@@ -9,14 +9,14 @@
 <meta name="theme-color" content="#FFFFFF">
 <link rel="icon" href="img/fpr-mark.png">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0&icon_names=account_balance,arrow_downward,arrow_upward,bolt,chat_bubble,check,close,commute,delete,diversity_3,download,grid_on,history,home_work,hourglass_bottom,info,lightbulb,map,menu_book,open_in_new,payments,price_change,remove,rocket_launch,route,scatter_plot,school,send,show_chart,table_view,thermostat,view_in_ar,warning,water,water_drop,wifi,woman,work&display=block">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0&icon_names=account_balance,arrow_downward,arrow_upward,bolt,chat_bubble,check,close,commute,delete,diversity_3,download,grid_on,history,home_work,hourglass_bottom,info,lightbulb,map,menu_book,open_in_new,park,payments,price_change,remove,rocket_launch,route,scatter_plot,school,send,show_chart,table_view,thermostat,view_in_ar,warning,water,water_drop,wifi,woman,work&display=block">
 <link rel="stylesheet" href="css/twin.css?v=63">
 <link rel="stylesheet" href="css/housing.css?v=21">
 <link rel="stylesheet" href="css/public_money.css?v=1">
-<link rel="stylesheet" href="css/urban_heat.css?v=1">
-<link rel="stylesheet" href="css/reservoirs.css?v=1">
+<link rel="stylesheet" href="css/urban_heat.css?v=2">
+<link rel="stylesheet" href="css/reservoirs.css?v=2">
 <link rel="stylesheet" href="css/chat.css?v=4">
-<script src="js/i18n.js?v=62" data-page="reservoirs"></script>
+<script src="js/i18n.js?v=63" data-page="reservoirs"></script>
 </head>
 <body class="research">
 <a class="skip" href="#now">Skip to the content</a>
@@ -35,7 +35,7 @@
 
 <nav class="toc" id="toc" aria-label="On this page">
   <span class="ka-tabs" role="group" aria-label="Knowledge Area" data-ka="reservoirs"></span><span class="ka-sep" aria-hidden="true"></span>
-  <a href="#now">Now</a><a href="#ranking">Ranking</a><a href="#detail">One reservoir</a><a href="#history">Over time</a><a href="#method">Method</a><a href="#sources">Sources</a>
+  <a href="#now">Now</a><a href="#ranking">Ranking</a><a href="#detail">One reservoir</a><a href="#history">Over time</a><a href="#upstream">Upstream</a><a href="#method">Method</a><a href="#sources">Sources</a>
 </nav>
 
 <main class="page">
@@ -75,12 +75,18 @@
     <p class="pm-small" id="rvPRread" data-t="skip"></p>
   </section>
 
+  <section class="block" id="upstream">
+    <h2><span class="ms-icon" aria-hidden="true">park</span>4 · What drains into each reservoir</h2>
+    <div id="rvUpBox" data-t="skip"><p class="pm-small">Loading what drains into each reservoir…</p></div>
+  </section>
+
   <section class="block" id="method">
     <h2><span class="ms-icon" aria-hidden="true">info</span>Method</h2>
     <div class="note"><b>The level.</b> The water-surface elevation of each reservoir, in metres above local mean sea level (USGS parameter 72376), read live from USGS when the page opens, with the daily values since the file was built. On 2 November 2026 these matched AAA's morning chart to within 0.08 m for 18 of its 19 reservoirs (the check is in docs/facilities.md of the project repository).</div>
     <div class="note"><b>Usual for this time of year.</b> For each week of the year, the mean level of that week in each year from 2011 to 2025. Lower than usual is below the 10th percentile of those yearly values, higher than usual above the 90th, usual in between, at least 8 years. The ranking is the share of those years with a lower level than today. The map's Reservoir levels layer uses the same rule.</div>
     <div class="note"><b>The water in the tanks.</b> Where today's level sits between the reservoir's lowest and highest daily level of 2011 to 2025: 0% at its lowest, 100% at its highest. The shaded band in a large tank is the usual range for this week. Puerto Rico's tank is the median of the 19 reservoirs in AAA's report. It is not a share of the reservoir's volume.</div>
     <div class="note"><b>The history.</b> The monthly mean level since each gauge's first daily value (the oldest in 1987); a month needs 15 days of readings. Older years on another reference, or while a reservoir was still filling, are left out: Toa Vaca reported a depth, not an elevation, until 2005, and Cerrillos was filling in 1991-1992.</div>
+    <div id="rvUpMethod" data-t="skip"></div>
     <div class="note"><b>What the page does not do.</b> It does not say whether there will be water rationing, how many days of water are left, or how much water a reservoir holds. AAA decides rationing with its own alert levels, and its daily report is on its website. A reservoir can be lowered on purpose for repairs, dredging or before a storm.</div>
   </section>
 
@@ -89,6 +95,7 @@
     <div class="note"><b>US Geological Survey.</b> Water Data for the Nation, through its Water Data API: lake and reservoir water-surface elevation, the latest readings and daily values. US Government work, public domain. Recent data are provisional and subject to revision.</div>
     <div class="note"><b>Aqueduct and Sewer Authority (AAA).</b> The list of the 19 reservoirs in its daily report. Its alert levels are not reproduced here; each reservoir links to AAA's page.</div>
     <div class="note"><b>Data and method.</b> The data file is data/reservoir_history.json (reservoirs.py), rebuilt once a month; the page adds the latest readings itself. The method is in docs/facilities.md of the project repository.</div>
+    <div id="rvUpSource" data-t="skip"></div>
     <div class="note"><b>How to cite this page.</b> Foundation for Puerto Rico, Knowledge Area: Reservoirs, PR Data Observatory, Snapshot 2026-11 (draft). Data: US Geological Survey.</div>
   </section>
 </main>
@@ -96,7 +103,7 @@
 <script src="js/core/knowledge.js?v=34"></script>
 <script>Core.knowledge.render(); I18N.apply();</script>
 <script src="js/common.js?v=20"></script>
-<script src="js/reservoirs_page.js?v=1"></script>
-<script src="js/chatboot.js?v=60"></script>
+<script src="js/reservoirs_page.js?v=2"></script>
+<script src="js/chatboot.js?v=61"></script>
 </body>
 </html>

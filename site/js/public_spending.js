@@ -198,7 +198,7 @@
     sel.addEventListener('change', () => {
       if (root.PSAgencies) return PSAgencies.show(sel.value);
       if (asked) return; asked = true;
-      const go = () => { const s = doc.createElement('script'); s.src = 'js/public_spending_agencies.js?v=1'; s.onload = () => PSAgencies.start({ $, T, esc, big, pct, usd, D, FUND, CONCEPT }, sel.value); doc.body.appendChild(s); };
+      const go = () => { const s = doc.createElement('script'); s.src = 'js/public_spending_agencies.js?v=2'; s.onload = () => PSAgencies.start({ $, T, esc, big, pct, usd, D, FUND, CONCEPT }, sel.value); doc.body.appendChild(s); };
       I18N.load('agencies').then(go, go);
     });
   }

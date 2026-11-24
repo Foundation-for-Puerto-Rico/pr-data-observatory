@@ -876,6 +876,15 @@
           "scripts": [
             "core/glossary.js"
           ]
+        },
+        "upstream": {
+          "scopes": [
+            "reservoirs_upstream"
+          ],
+          "scripts": [
+            "reservoirs_upstream.js"
+          ],
+          "html": []
         }
       }
     },
@@ -1902,6 +1911,25 @@
     },
     {
       "file": "cutoff_series.json",
+      "paths": [
+        "vars[].group"
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "jobs_reach_series.json",
+      "paths": [
+        "vars[].label",
+        "vars[].unit"
+      ],
+      "pages": [
+        "map"
+      ]
+    },
+    {
+      "file": "jobs_reach_series.json",
       "paths": [
         "vars[].group"
       ],

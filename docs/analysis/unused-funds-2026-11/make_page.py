@@ -223,9 +223,86 @@ def build():
     h_unp = (t("Unpaid ($ millions)", "Sin pagar (millones de $)"), N)
     h_bar = (f'<span class="sr-only">{t("Unpaid, as a bar", "Sin pagar, en barra")}</span>', "")
 
+    # ── Five grants rebuilt (decision 112, step 4; decision 111 (d)): awards_rebuilt.json beside this file, from rebuild_awards.py ──
+    RB = json.loads((HERE / "awards_rebuilt.json").read_text(encoding="utf-8"))
+
+    def day(iso):
+        y, m, d = (int(x) for x in iso.split("-"))
+        return f"{months_en[m - 1]} {d}, {y}", f"{d} de {months_es[m - 1]} de {y}"
+
+    RB_NAME = {
+        "17.258/17.259/17.278": t("WIOA: adult, youth and dislocated worker programs (one combined grant)", "WIOA: programas de adultos, jóvenes y trabajadores desplazados (una subvención combinada)"),
+        "93.767": t("Children's Health Insurance Program (CHIP)", "Programa de Seguro Médico para Niños (CHIP)"),
+        "84.425": t("Education Stabilization Fund (pandemic relief for schools)", "Fondo de Estabilización Educativa (alivio por la pandemia para las escuelas)"),
+        "84.010": t("Title I grants to local educational agencies", "Subvenciones del Título I a agencias educativas locales"),
+        "84.287": t("Twenty-First Century Community Learning Centers", "Centros Comunitarios de Aprendizaje del Siglo XXI"),
+    }
+
+    def rb_note(g):
+        """What the record shows for one grant, in words. Each text holds only while the record reads as it did; the checks stop the build when it changes."""
+        k, yrs, efy = "/".join(g["listings"]), g["paid_by_year"], g["end_fiscal_year"]
+        paid_years = [y[0] for y in yrs if y[2]]
+        share_after = round(100 * g["paid_after_end_year"] / g["paid"]) if g["paid"] > 0 else 0
+        if k == "17.258/17.259/17.278":
+            assert max(paid_years) < efy - 1 and g["last_period"][0] < efy, g
+            return t(f"The record shows payments in fiscal years {paid_years[0]} and {paid_years[-1]} and none after, although the grant ran until fiscal year {efy}. After fiscal year {g['last_period'][0]} the grant is no longer in the account reports the federal agency files. The record does not say why, so the balance cannot be read as money not paid.",
+                     f"El registro muestra pagos en los años fiscales {paid_years[0]} y {paid_years[-1]} y ninguno después, aunque la subvención duró hasta el año fiscal {efy}. Después del año fiscal {g['last_period'][0]} la subvención ya no está en los informes de cuentas que presenta la agencia federal. El registro no dice por qué, así que el saldo no se puede leer como dinero sin pagar.")
+        if k == "93.767":
+            cut = min(c for c in g["changes"] if c[2] < 0)
+            assert min(paid_years) > efy and cut[0] > g["end"], g
+            return t(f"The amount committed was lowered by ${mil(-cut[2])} million on {day(cut[0])[0]}, after the end date. Payments are on record only from fiscal year {min(paid_years)}: none for fiscal years {fiscal(g['start'])} and {efy}, the years of the grant. For this grant the record of payments begins after the grant's own period.",
+                     f"El monto comprometido se redujo en ${mil(-cut[2])} millones el {day(cut[0])[1]}, después de la fecha de fin. Solo hay pagos en el registro desde el año fiscal {min(paid_years)}: ninguno en los años fiscales {fiscal(g['start'])} y {efy}, los de la subvención. En esta subvención el registro de pagos empieza después del período de la propia subvención.")
+        if k == "84.425":
+            assert share_after > 50 and g["record_changed"] < g["end"], g
+            return t(f"${mil(g['paid_after_end_year'])} million, {share_after}% of everything paid, was paid in the fiscal years after the end date on record. That end date was last changed on {day(g['record_changed'])[0]}: the record shows no later end date, and payments went on for three more fiscal years.",
+                     f"${mil(g['paid_after_end_year'])} millones, el {share_after} % de todo lo pagado, se pagaron en los años fiscales posteriores a la fecha de fin del registro. Esa fecha de fin se cambió por última vez el {day(g['record_changed'])[1]}: el registro no muestra una fecha de fin posterior, y los pagos siguieron tres años fiscales más.")
+        if k == "84.010":
+            assert share_after > 50 and yrs[-1][2] > 0 and yrs[-1][0] > fiscal(g['start']) + 2, g   # the last year paid is after the 27 months
+            return t(f"{share_after}% of everything paid was paid after the fiscal year of the end date. The law of this program keeps the money available for 27 months, longer than the end date on record. Payments went on after those 27 months too: ${mil(yrs[-1][2])} million in fiscal year {yrs[-1][0]}. The record does not say under what rule, and the balance was still going down when the data were read.",
+                     f"El {share_after} % de todo lo pagado se pagó después del año fiscal de la fecha de fin. La ley de este programa mantiene el dinero disponible 27 meses, más que la fecha de fin del registro. Los pagos siguieron también después de esos 27 meses: ${mil(yrs[-1][2])} millones en el año fiscal {yrs[-1][0]}. El registro no dice bajo qué regla, y el saldo todavía bajaba cuando se leyeron los datos.")
+        if k == "84.287":
+            up = sum(y[2] for y in yrs if y[2] > 0)
+            assert yrs[-1][2] < 0 and g["paid"] < 0.05 * g["obligated"], g
+            return t(f"Payments of ${mil(up)} million through fiscal year {yrs[-2][0]} were followed in fiscal year {yrs[-1][0]} by corrections that lowered the total by ${mil(-yrs[-1][2])} million. A total that goes down means earlier payments were reversed or corrected; the record does not say which.",
+                     f"A pagos de ${mil(up)} millones hasta el año fiscal {yrs[-2][0]} les siguieron en el año fiscal {yrs[-1][0]} correcciones que bajaron el total en ${mil(-yrs[-1][2])} millones. Un total que baja significa que pagos anteriores se revirtieron o se corrigieron; el registro no dice cuál de las dos.")
+        raise SystemExit(f"no text for the rebuilt grant {k}: write one in rb_note")
+
+    def fiscal(iso):
+        return int(iso[:4]) + (1 if iso[5:7] >= "10" else 0)
+
+    rb_cards = []
+    for g in RB["grants"]:
+        k = "/".join(g["listings"])
+        share = round(100 * g["paid"] / g["obligated"])
+        rows = "".join(f'<tr><th scope="row" data-t="skip">{y[0]}</th>{skip(mil(y[2]))}<td>{t("after the year of the end date", "después del año de la fecha de fin") if y[0] > g["end_fiscal_year"] else ""}</td></tr>' for y in g["paid_by_year"] if y[2])
+        ch = "".join(f'<tr><th scope="row" data-t="skip">{c[0]}</th>{skip(mil(c[2]))}</tr>' for c in g["changes"] if c[2])
+        rb_cards.append(f"""    <div class="card uf-rb">
+      <h3 class="uf-h3">{RB_NAME[k]}</h3>
+      <p class="pm-small"><span data-t="skip">{k}</span> · <span>{agency(g["agency"])}</span></p>
+      <p class="pm-p">{t(f"Signed on {day(g['signed'])[0]}. Period on record: {day(g['start'])[0]} to {day(g['end'])[0]}. Committed: ${mil(g['obligated'])} million. Paid out on record: ${mil(g['paid'])} million ({share}%).",
+                         f"Firmada el {day(g['signed'])[1]}. Período en el registro: del {day(g['start'])[1]} al {day(g['end'])[1]}. Comprometido: ${mil(g['obligated'])} millones. Desembolsado en el registro: ${mil(g['paid'])} millones ({share} %).")}</p>
+      <p class="pm-p">{rb_note(g)}</p>
+      <div class="pm-tablebox uf-all"><table class="pm-table uf-table">
+        <caption>{t("Paid out, by federal fiscal year", "Desembolsado, por año fiscal federal")}</caption>
+        {head((t("Fiscal year", "Año fiscal"), ""), (t("Paid out ($ millions)", "Desembolsado (millones de $)"), N), ("", ""))}
+        <tbody>{rows}</tbody>
+      </table></div>
+      <details class="uf-more"><summary>{t("See each change of the amount committed", "Ver cada cambio del monto comprometido")}</summary>
+      <div class="pm-tablebox uf-all"><table class="pm-table uf-table">
+        <caption>{t("Changes of the amount committed, by day", "Cambios del monto comprometido, por día")}</caption>
+        {head((t("Date", "Fecha"), ""), (t("Change ($ millions)", "Cambio (millones de $)"), N))}
+        <tbody>{ch}</tbody>
+      </table></div></details>
+    </div>""")
+    rb_cards = "\n".join(rb_cards)
+    rb_read_en, rb_read_es = day(RB["read"])
+    rb_n = len(RB["grants"])
+    rb_late = sum(1 for g in RB["grants"] if g["paid"] > 0 and g["paid_after_end_year"] > 0.5 * g["paid"])
+    assert rb_n == 5 and rb_late == 3, (rb_n, rb_late)
+
     ref = (ROOT / "site" / "broadband.html").read_text(encoding="utf-8")
     ver = lambda name: re.search(re.escape(name) + r"\?v=(\d+)", ref).group(1)
-    I18N_V = 66   # the ?v= of js/i18n.js also versions this page's Spanish bundle: raise it when the page's strings change (docs/i18n.md, rule 12)
+    I18N_V = 67   # the ?v= of js/i18n.js also versions this page's Spanish bundle: raise it when the page's strings change (docs/i18n.md, rule 12)
     icons = sorted(set(re.search(r"icon_names=([a-z0-9_,]+)", ref).group(1).split(",")) | {"school", "hourglass_bottom", "account_balance", "category", "event", "call_split", "help", "info", "menu_book", "undo", "fact_check"})
     title = t("Knowledge Area · Federal grants: balances, reductions and audit findings", "Área de conocimiento · Subvenciones federales: saldos, reducciones y hallazgos de auditoría")
 
@@ -244,7 +321,7 @@ def build():
 <link rel="stylesheet" href="css/twin.css?v={ver("css/twin.css")}">
 <link rel="stylesheet" href="css/housing.css?v={ver("css/housing.css")}">
 <link rel="stylesheet" href="css/public_money.css?v={ver("css/public_money.css")}">
-<link rel="stylesheet" href="css/unused_funds.css?v=4">
+<link rel="stylesheet" href="css/unused_funds.css?v=5">
 <link rel="stylesheet" href="css/chat.css?v={ver("css/chat.css")}">
 <script src="js/i18n.js?v={max(int(ver("js/i18n.js")), I18N_V)}" data-page="unusedfunds"></script>
 </head>
@@ -265,7 +342,7 @@ def build():
 
 <nav class="toc" id="toc" aria-label="{t("On this page", "En esta página")}">
   <span class="ka-tabs" role="group" aria-label="{t("Knowledge Area", "Área de conocimiento")}" data-ka="unusedfunds"></span><span class="ka-sep" aria-hidden="true"></span>
-  <a href="#now">{t("Now", "Ahora")}</a><a href="#agencies">{t("By agency", "Por agencia")}</a><a href="#programs">{t("By program", "Por programa")}</a><a href="#years">{t("By end year", "Por año de cierre")}</a><a href="#apart">{t("Shown apart", "Aparte")}</a><a href="#taken">{t("Reductions", "Reducciones")}</a><a href="#findings">{t("Audit findings", "Hallazgos de auditoría")}</a><a href="#limits">{t("What is missing", "Lo que falta")}</a><a href="#method">{t("Method", "Método")}</a><a href="#sources">{t("Sources", "Fuentes")}</a>
+  <a href="#now">{t("Now", "Ahora")}</a><a href="#agencies">{t("By agency", "Por agencia")}</a><a href="#programs">{t("By program", "Por programa")}</a><a href="#years">{t("By end year", "Por año de cierre")}</a><a href="#apart">{t("Shown apart", "Aparte")}</a><a href="#taken">{t("Reductions", "Reducciones")}</a><a href="#findings">{t("Audit findings", "Hallazgos de auditoría")}</a><a href="#rebuilt">{t("Five grants rebuilt", "Cinco subvenciones")}</a><a href="#limits">{t("What is missing", "Lo que falta")}</a><a href="#method">{t("Method", "Método")}</a><a href="#sources">{t("Sources", "Fuentes")}</a>
 </nav>
 
 <main class="page">
@@ -288,6 +365,7 @@ def build():
     <p class="pm-p"><a href="#taken">{t("Go to reductions of the amount committed", "Ir a las reducciones del monto comprometido")}</a></p>
     <p class="pm-p">{t(f"A third measure answers a different question: when a yearly audit finds a problem in a federal program, is it corrected? From {a0} to {a_done}, auditors reported {num(af_find)} findings in the audits of bodies in Puerto Rico, and marked {num(af_rep)} of them ({af_share}%) as repeated from the audit before.", f"Una tercera medida contesta otra pregunta: cuando una auditoría anual encuentra un problema en un programa federal, ¿se corrige? De {a0} a {a_done}, los auditores informaron {num(af_find)} hallazgos en las auditorías de entidades de Puerto Rico, y marcaron {num(af_rep)} de ellos ({af_share} %) como repetidos de la auditoría anterior.")}</p>
     <p class="pm-p"><a href="#findings">{t("Go to audit findings that repeat", "Ir a los hallazgos de auditoría que se repiten")}</a></p>
+    <p class="pm-p"><a href="#rebuilt">{t("See five grants rebuilt one by one, and what they say about these balances", "Vea cinco subvenciones reconstruidas una por una, y lo que dicen sobre estos saldos")}</a></p>
     <p class="pm-p"><a href="money-cycle.html">{t("How public money moves: the stages behind these figures", "Cómo se mueve el dinero público: las etapas detrás de estas cifras")}</a></p>
     <div class="note caution"><b>{t("Read with care.", "Lea con cuidado.")}</b> {t("An unpaid balance is not proof that money was lost or that anyone did something wrong. The federal record of payments can be late or incomplete, a grant's end date can be extended after the data were read, and some programs pay through other accounts. The page counts grants and dollars; it does not say why a balance exists.", "Un saldo sin pagar no prueba que el dinero se perdió ni que alguien hizo algo mal. El registro federal de pagos puede estar atrasado o incompleto, la fecha de cierre de una subvención se puede extender después de leídos los datos, y algunos programas pagan por otras cuentas. La página cuenta subvenciones y dólares; no dice por qué existe un saldo.")}</div>
     <div class="note"><b>{t("Every program.", "Todos los programas.")}</b> {t("The page reads every federal grant program and singles none out. Programs that appear in news reports, such as the workforce grants, are here like any other: one line among many.", "La página lee todos los programas federales de subvenciones y no destaca ninguno. Los programas que salen en las noticias, como las subvenciones de desarrollo laboral, están aquí como cualquier otro: una línea entre muchas.")}</div>
@@ -470,6 +548,19 @@ def build():
 {af_rest}
       </tbody>
     </table></div></details>
+  </section>
+
+  <section class="block" id="rebuilt">
+    <h2><span class="ms-icon" aria-hidden="true">payments</span>{t("Five grants rebuilt, one by one", "Cinco subvenciones reconstruidas, una por una")}</h2>
+    <p class="pm-p">{t(f"Before building any new measure, the page follows five large grants through everything the open record gives: each change of the amount committed and each year's payments. It is a test of the source: how far can a balance on record be trusted? The five were not chosen by hand. They are the grants with the largest balance on record among those that ended more than a year ago, one for each of the first five programs, read on {rb_read_en}.",
+                       f"Antes de construir cualquier medida nueva, la página sigue cinco subvenciones grandes por todo lo que da el registro abierto: cada cambio del monto comprometido y los pagos de cada año. Es una prueba de la fuente: ¿cuánto se puede confiar en un saldo del registro? Las cinco no se escogieron a mano. Son las subvenciones con el mayor saldo en el registro entre las que vencieron hace más de un año, una por cada uno de los primeros cinco programas, leídas el {rb_read_es}.")}</p>
+    <div class="note"><b>{t("What the five show.", "Lo que muestran las cinco.")}</b> {t(f"In {rb_late} of the {rb_n}, more than half of everything paid was paid after the fiscal year of the end date. In one, payments stop in the record two years before the grant ended. In one, the total paid went down. None of the five has a closing date, an approved extension or a decision of the federal agency in the record: USAspending does not publish them.",
+                       f"En {rb_late} de las {rb_n}, más de la mitad de todo lo pagado se pagó después del año fiscal de la fecha de fin. En una, los pagos se detienen en el registro dos años antes de que venciera la subvención. En una, el total pagado bajó. Ninguna de las cinco tiene en el registro una fecha de cierre, una extensión aprobada o una decisión de la agencia federal: USAspending no las publica.")}</div>
+    <div class="note caution"><b>{t("What follows from it.", "Lo que se desprende.")}</b> {t("A balance after the end date tells where to ask, not how much money went without use. The end date on record is often not the last day to pay, and the record of payments can begin late, stop early or be corrected. For that reason the page builds no indicator from these balances, and the figures of sections 1 to 4 are a count of what the record shows, with these limits.",
+                       "Un saldo después de la fecha de fin dice dónde preguntar, no cuánto dinero quedó sin uso. La fecha de fin del registro muchas veces no es el último día para pagar, y el registro de pagos puede empezar tarde, detenerse antes o corregirse. Por eso la página no construye ningún indicador con estos saldos, y las cifras de las secciones 1 a 4 son un conteo de lo que muestra el registro, con estos límites.")}</div>
+{rb_cards}
+    <p class="pm-small">{t("The recipient of each grant is not read and no grant number is published; a grant is told apart by its program, its federal agency and its dates. Payments are the ones the federal agency reported to USAspending for each fiscal year, and they add up to the grant's total paid out on record.",
+                           "No se lee el receptor de cada subvención ni se publica ningún número de subvención; una subvención se distingue por su programa, su agencia federal y sus fechas. Los pagos son los que la agencia federal informó a USAspending para cada año fiscal, y suman el total desembolsado de la subvención en el registro.")}</p>
   </section>
 
   <section class="block" id="limits">

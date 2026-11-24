@@ -250,5 +250,17 @@
     $('#rvPR').dataset.done = '1';
   }
 
+  // ── section 4, what drains into each reservoir: its script and Spanish module 'upstream' load when the section comes near (decision 107, step 9, fourth part) ──
+  function loadUpstream() {
+    if (loadUpstream.done) return;
+    loadUpstream.done = true;
+    const add = () => { const s = doc.createElement('script'); s.src = 'js/reservoirs_upstream.js?v=1'; doc.body.appendChild(s); };
+    I18N.load('upstream').then(add, add);
+  }
+  if (doc && $('#upstream')) {
+    if (/^#(upstream|method|sources)$/.test(root.location.hash) || !('IntersectionObserver' in root)) loadUpstream();
+    else new IntersectionObserver((es, o) => { if (es.some(x => x.isIntersecting)) { o.disconnect(); loadUpstream(); } }, { rootMargin: '800px' }).observe($('#upstream'));
+  }
+
   root.ReservoirsPage = { figures, quantile, weekOf };
 })(typeof window !== 'undefined' ? window : globalThis);
