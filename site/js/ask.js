@@ -107,8 +107,8 @@
     'marcados marcas mareas mares marinas marini marino markers matias mediation medidas medinas mexico morado naranjo negron neighbourhood neighbourhoods numera nutritional obrera oceano padilla pagada ' +
     'pagados paints pajilla palmar palomas panell papeles parana pardas pardos pares parquet paseos pasillos pastor pavimentado pavimentar penones pequenas personales pezuela piensa pilones planillas ' +
     'pointy policiales policy polluters ponche prados preciso precisos prints programado propia puerca puerco qualify quemaos recortados rectas refuse refuses relied rellenados reproduction rescale resiliency ' +
-    'restate rivera rivero roofers router sabalos seguida segura senala sports stopping storey storeys suites tariff tariffs terminan terminar terminated toledo topics traces transfiere transformation ' +
-    'transforms transportan traves turabo urbina vailla valles varias varios vegano vender ventaja viales writes writing yaguez').split(' '));
+    'restate rivera rivero roofers router sabalos seguida segura senala sports stopping storey storeys suites tariff tariffs terminalfl terminan terminar terminated toledo topics traces transfiere ' +
+    'transformation transforms transportan traves turabo urbina vailla valles varias varios vegano vender ventaja viales writes writing yaguez').split(' '));
   /* PROTECTED-END */
 
   // ── Lexicon: everyday words → what the observatory can show ─────────────────

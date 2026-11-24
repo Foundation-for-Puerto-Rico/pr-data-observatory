@@ -77,3 +77,16 @@ test('wording: a difference is never called a surplus, a loss or money left over
   }
   for (const v of Object.values(es)) assert.ok(!/sobrante|perdid|devuelt|desperdici/i.test(v), v);
 });
+
+test('the rule on money not spent is said for the fund chosen, from the manual of the budget process', () => {
+  const mod = fs.readFileSync(path.join(ROOT, 'site/js/public_spending_agencies.js'), 'utf8');
+  const es = JSON.parse(fs.readFileSync(path.join(ROOT, 'i18n_src/es/public_spending_agencies.json'), 'utf8'));
+  const rules = Object.keys(es).filter((k) => k.startsWith('What happens to money not spent:'));
+  assert.strictEqual(rules.length, 3);
+  for (const k of rules) { assert.ok(mod.includes(`'${k}'`), k); assert.ok(/The data sheets do not show what was done with each difference\.$/.test(k)); assert.notStrictEqual(es[k], k); }
+  assert.ok(rules.some((k) => /General Fund, an agency cannot use money of an earlier fiscal year unless the certified budget says so/.test(k)));
+  assert.ok(rules.some((k) => /special revenue funds, the income of earlier fiscal years can be used/.test(k)));
+  assert.ok(/fund === 'federal' \? 'What happens/.test(mod) && /fund === 'special' \? 'What happens/.test(mod));
+  const html = fs.readFileSync(path.join(ROOT, 'site/public-spending.html'), 'utf8'), cycle = fs.readFileSync(path.join(ROOT, 'site/money-cycle.html'), 'utf8');
+  assert.ok(html.includes('gestion-presupuestaria.ogp.pr.gov') && cycle.includes('href="https://gestion-presupuestaria.ogp.pr.gov/"'));
+});
