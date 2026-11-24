@@ -1,6 +1,6 @@
 # Regions: the map's Region tab and the regional area profile (2026-10-31)
 
-Francis asked for a regional profile view "just like the municipality view". A region is a **group of whole municipios**. The observatory now offers:
+The project lead asked for a regional profile view "just like the municipality view". A region is a **group of whole municipios**. The observatory now offers:
 
 - the **Eastern Region** of FPR's Eastern Region Strategic Vision (ERSV): Canóvanas, Ceiba, Culebra, Fajardo, Humacao, Juncos, Las Piedras, Loíza, Luquillo, Maunabo, Naguabo, Río Grande, San Lorenzo, Vieques and Yabucoa;
 - the Puerto Rico Tourism Company's **seven tourism regions** (from the crosswalk, `docs/geography.md`).

@@ -22,7 +22,7 @@ The data come in two parts:
 | Complete years, 2019 to 2025 | FIRMS's yearly country files, `data/country/viirs-jpss1/<year>/viirs-jpss1_<year>_Puerto_Rico.csv` (standard processing; NOAA-20's files start on 2018-04-01, so 2019 is the first complete year) | none |
 | The last 12 months | The FIRMS area API for the box -67.95, 17.85, -65.2, 18.55, in 5-day windows (the API accepts 1 to 5 days): `VIIRS_NOAA20_SP` up to the last date it reaches, `VIIRS_NOAA20_NRT` after | FPR's MAP_KEY, only as the GitHub Actions secret `FIRMS_MAP_KEY` |
 
-The key is read from the environment and goes only into request addresses. It is never printed, cached or published. Francis set the secret himself on 2026-11-10.
+The key is read from the environment and goes only into request addresses. It is never printed, cached or published. The project lead set the secret himself on 2026-11-10.
 
 ## How it is made
 

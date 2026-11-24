@@ -1,6 +1,6 @@
 # Community assets: historic places, city halls, treatment facilities and non-PRASA water (2026-10-18, branch `community-assets`)
 
-Francis approved these four datasets on 2026-10-18. They come from official, current sources (not WCRP).
+The project lead approved these four datasets on 2026-10-18. They come from official, current sources (not WCRP).
 
 - `community_assets.py` writes `historic_places.geojson`, `town_halls.geojson` and `community_series.json` (counts by municipio).
 - `infrastructure_series.py` adds two datasets on water systems outside PRASA to `infrastructure_series.json`.

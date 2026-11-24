@@ -1,14 +1,14 @@
 # Organizing the observatory by domain: navigation plan (2026-11)
 
-Date: 2026-11-04. Status: **approved by Francis on 2026-11-04 ("Approve and merge"; HANDOFF decision 81).** Option A, the ten domains and the PR order of section 9 are approved; PR 1 and PR 2 are next. This document changes no code and no data.
+Date: 2026-11-04. Status: **approved by the project lead on 2026-11-04 ("Approve and merge"; HANDOFF decision 81).** Option A, the ten domains and the PR order of section 9 are approved; PR 1 and PR 2 are next. This document changes no code and no data.
 
 **In short.** Today the map sorts data by *kind of data* (a "layer" in the Layers tab, a "dataset" in the Economy tab, a "measure" in the shading menu and in Rankings), not by *topic*. That is why night heat sits under Economy. The plan recommends **Option A**: one **Explore** tab that lists ten domains (heat goes under *Environment and climate*), and one **"On the map" panel** on the map itself that always shows what is on, its legend, the year and the area level, whatever tab is open. It ships in seven small pull requests. The first one that changes what visitors see is PR 2 (the "On the map" panel). Old links keep working.
 
-## 1. What Francis asked
+## 1. What the project lead asked
 
-Francis, 2026-11-04: the heat data sits in the Economy section, and that is not intuitive. It must be intuitive yet powerful, organized by domain, and the active layers must stay clear while browsing other datasets. He asked for a plan and for the questions that would let him give direction.
+The project lead, 2026-11-04: the heat data sits in the Economy section, and that is not intuitive. It must be intuitive yet powerful, organized by domain, and the active layers must stay clear while browsing other datasets. They asked for a plan and for the questions that would let them give direction.
 
-## 2. Francis's answers (2026-11-04)
+## 2. The project lead's answers (2026-11-04)
 
 | # | Question | Answer |
 |---|---|---|
@@ -23,7 +23,7 @@ Francis, 2026-11-04: the heat data sits in the Economy section, and that is not 
 | 9 | Mobile | Rare. A phone must not break; no extra phone work. |
 | 10 | Models | PolicyMap / Social Explorer (topic, then variable) and ArcGIS Hub / Living Atlas (catalog by theme, a "contents" panel). |
 | 11 | What may move | Tabs may move and be renamed; every old link must still open the same map. |
-| 12 | Who approves | Francis only. |
+| 12 | Who approves | the project lead only. |
 
 ## 3. What the site has today (main at 823ddaf)
 
@@ -155,7 +155,7 @@ Plus **Referencia / Reference**, not a domain: municipio lines, barrios, base ma
 - **The Economy tab** disappears as a tab. Its datasets move to their domains; its layer stack, year bar and links move to the panel; its workbench, composite and scenarios move to Tools. *Economy* stays as domain 2.
 - **"Shade municipalities by"** (`#choro`) is retired: its 35 measures are datasets already, or become datasets. `s=` links open the same dataset.
 - **3D:** its Layers tab uses the same ten domains for its switches and its columns' dataset menus; it shares the panel.
-- **Trade-offs:** fixes both of Francis's points and follows the PolicyMap and ArcGIS models he picked. Most work of the three (seven PRs). Tests that read the layer menu (`tests/layers_menu.test.js`) and the chip's tests must be rewritten for the domain order.
+- **Trade-offs:** fixes both of the project lead's points and follows the PolicyMap and ArcGIS models they picked. Most work of the three (seven PRs). Tests that read the layer menu (`tests/layers_menu.test.js`) and the chip's tests must be rewritten for the domain order.
 
 ### Option B: rename and regroup, keep the tabs
 
@@ -165,7 +165,7 @@ Plus **Referencia / Reference**, not a domain: municipio lines, barrios, base ma
 ### Option C: a GIS-style "Add data" catalog and a Contents panel
 
 - The left panel becomes **Contents** (what is on, with legends and styling), **Place**, **Tools**, **About**. An **Add data** window searches and filters everything (domains as facets), in the style of ArcGIS Map Viewer.
-- **Trade-offs:** the most powerful for analysts, easy on the budget (the window loads on demand). But a visitor who does not know what to look for faces an empty map and a search box: weak for residents and funders, and Francis also chose the PolicyMap model. The biggest rebuild.
+- **Trade-offs:** the most powerful for analysts, easy on the budget (the window loads on demand). But a visitor who does not know what to look for faces an empty map and a search box: weak for residents and funders, and the project lead also chose the PolicyMap model. The biggest rebuild.
 
 ### Comparison
 
@@ -185,19 +185,19 @@ Plus **Referencia / Reference**, not a domain: municipio lines, barrios, base ma
 
 ## 9. Migration in small pull requests (Option A)
 
-Each PR: browser test in Spanish and English at desktop and phone widths, `i18n.py --check`, `budget.py` on an LF copy, a glossary definition for every new technical word, `?v=` bumps, HANDOFF entry. Merged only on Francis's word.
+Each PR: browser test in Spanish and English at desktop and phone widths, `i18n.py --check`, `budget.py` on an LF copy, a glossary definition for every new technical word, `?v=` bumps, HANDOFF entry. Merged only on the project lead's word.
 
 | PR | What it does | What visitors see after it | Map scripts |
 |---|---|---|---|
 | 1. Registry | The ten domains in `domains.json` (old ids kept as aliases); a home domain and "also in" for every engine dataset (the 64 exposure ones included) and every layer of `layers.js`; Knowledge Area pages get a domain; the dictionary and `catalog.json` rebuilt | The Overview cards and the Catalog's domain filter show the ten domains; heat appears under Environment and climate in the Catalog | 0 (data and docs only) |
-| 2. Make room, then "On the map" | First move code that is not needed at load into on-demand modules (candidates: the route planner `plan.js`, 14.6 KB, loaded with a small stub that still reads `r=`; the Catalog list; the Spanish dataset labels of each domain, as `econ_terrain` does). Then the chip becomes the panel: all layers, the Economy layer cards, legends, the year bar, the area level | **The first visible change.** One panel on the map lists everything on, with its legend and year, and stays while any tab is open. Francis's "layers active are clear" is met here | -12 to -14 KB, then +3 to +4 KB |
+| 2. Make room, then "On the map" | First move code that is not needed at load into on-demand modules (candidates: the route planner `plan.js`, 14.6 KB, loaded with a small stub that still reads `r=`; the Catalog list; the Spanish dataset labels of each domain, as `econ_terrain` does). Then the chip becomes the panel: all layers, the Economy layer cards, legends, the year bar, the area level | **The first visible change.** One panel on the map lists everything on, with its legend and year, and stays while any tab is open. The project lead's "layers active are clear" is met here | -12 to -14 KB, then +3 to +4 KB |
 | 3. Explore tab | A new first tab: the ten domain cards (from Overview), each domain page with per-area figures by sub-topic and its points and lines. The point and line switches appear as proxies of the Layers tab's switches (the pattern of the Economy tab's "Also show on the map"), so no id changes yet. Search across datasets, layers and Knowledge Area pages | Heat is found under Environment and climate on the map. Economy and Layers tabs still there, for comparison | +5 to +7 KB (new `explore.js`), domain pages' Spanish loaded on demand |
 | 4. Retire the old tabs | Layer rows move into the domain pages with the same ids; the tabs become Explore · Place · Tools · About; Rankings uses the dataset picker; `#choro` retired with `s=` mapped to datasets; `showTab('economy')`, `'layers'`, `'catalog'`, `'muni'`, `'region'`, `'rank'`, `'transit'` aliased to the new tabs; `layers_menu` tests rewritten for the domain order | Four tabs. No more "Economy" tab | -3 to -6 KB (one shading path fewer, Overview merged) |
 | 5. 3D | The 3D Layers tab and the columns' dataset menus by domain; the shared panel | 2D and 3D look the same in organization | 3D: +1 to +2 KB of 700 |
 | 6. Presets per domain | Two to four views per domain (for example Environment and climate: "Day and night heat", "Green cover"; Hazards: "Flood and sea level", "Who lives in a flood zone"), each with sources and defined terms; Knowledge Area pages link back to their domain on the map | Each domain opens with ready views | +1 KB, or on demand with the domain page |
 | 7. Help and docs | Help pop-ups, About, `docs/layers.md`, `docs/domains.md`, `docs/adding-data.md` ("pick a home domain"), the presentation brief | Up-to-date help in both languages | 0 |
 
-**Order and checkpoints.** PR 1 and PR 2 do not depend on each other and can be built at the same time. PR 3 needs PR 1. PR 4 needs PR 2 and PR 3. Francis can stop after PR 2 (the panel alone) or after PR 3 (both old and new) if a test with staff suggests so.
+**Order and checkpoints.** PR 1 and PR 2 do not depend on each other and can be built at the same time. PR 3 needs PR 1. PR 4 needs PR 2 and PR 3. The project lead can stop after PR 2 (the panel alone) or after PR 3 (both old and new) if a test with staff suggests so.
 
 **Links.** No published link names a tab. `e=` (dataset keys), `l=` (`LAYER_KEYS`), `ey=`, `eb=`, `ix=`, `sc=`, `r=`, `rg=`, `bm=`, `c=` and the municipio name keep their meaning; `s=` opens the same measure as a dataset. A link test (old links from `tests/browser`, the dictionary's ~270 view links, the Knowledge Area "Open on the map" links) runs in PR 2 and PR 4.
 
@@ -209,9 +209,9 @@ Each PR: browser test in Spanish and English at desktop and phone widths, `i18n.
 - **Spanish.** Domain and tab names are new Spanish strings; a native reader should check them with the rest (decision 8).
 - **Not in this plan:** new data, a merged 2D/3D page, a phone-first design, municipal-staff tasks (not chosen as a main user).
 
-## 12. Ask everywhere (Francis, 2026-11-04)
+## 12. Ask everywhere (the project lead, 2026-11-04)
 
-Francis, after approving the plan: "Ask needs to be across the board available. Like a chat popup. So it helps people navigate the data, display it in the map and even analyze it. In general help answer questions."
+The project lead, after approving the plan: "Ask needs to be across the board available. Like a chat popup. So it helps people navigate the data, display it in the map and even analyze it. In general help answer questions."
 
 **What exists (docs/ask.md).** The "Preguntar / Ask" button is in the top bar of every page but the 404 page; the chat loads on first use (`chatboot.js`, about 1.3 KB). On the 2D map and the 3D view it shades datasets, switches layers, moves the map and opens the workbench. On pages without a map (`askpage.js`) it answers in the chat (definitions, sources, numbers, rankings, trends, comparisons, patterns) and hands anything that needs the map to it with "Show on the map" (`index.html#ask=`).
 
@@ -231,13 +231,13 @@ Francis, after approving the plan: "Ask needs to be across the board available. 
 
 ## 11. Decision 81 (in HANDOFF.md)
 
-Approved by Francis on 2026-11-04, (a) to (g); (h) added the same day at his request:
+Approved by the project lead on 2026-11-04, (a) to (g); (h) added the same day at their request:
 
 - (a) **Option A**: Explore · Place · Tools · About on the left; the "On the map" panel on the map; the Economy tab retired as a tab.
 - (b) **The ten domains** of section 6, with the old ids `economy.public-money` and `environment.hazards` kept as aliases.
 - (c) **Heat's home** is Environment and climate, also in Health and Hazards. WCRP vulnerability's home is Communities (today Population).
 - (d) **"Shade municipalities by" retired**; its measures become datasets and `s=` links still open them.
 - (e) **Rankings** ranks any dataset, from Tools.
-- (f) **The order of the PRs** in section 9, with PR 2 (the panel) as the first visible change, each merged only on Francis's word.
+- (f) **The order of the PRs** in section 9, with PR 2 (the panel) as the first visible change, each merged only on the project lead's word.
 - (g) **Names:** "Explorar / Explore", "Lugar / Place", "Herramientas / Tools", "En el mapa / On the map".
-- (h) **Ask everywhere** (added 2026-11-04 at Francis's request, section 12): one Ask pop-up on every page that helps people find data, put it on the map and analyze it.
+- (h) **Ask everywhere** (added 2026-11-04 at the project lead's request, section 12): one Ask pop-up on every page that helps people find data, put it on the map and analyze it.

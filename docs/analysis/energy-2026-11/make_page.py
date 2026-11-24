@@ -30,6 +30,7 @@ JS = [   # the strings of site/js/energy_page.js
     ("Landfill gas", "Gas de vertedero"), ("Rooftop solar sent to the grid", "Solar en techos enviada a la red"),
     ("The data could not be loaded ({error}). Check your connection and reload.", "No se pudieron cargar los datos ({error}). Verifique su conexión y vuelva a cargar la página."),
     ("Power plants of 1 MW or more", "Plantas de energía de 1 MW o más"), ("{v} MW", "{v} MW"), ("{r} MW renewable; EIA, {m}", "{r} MW renovables; EIA, {m}"),
+    ("{r} MW renewable; EIA, {m}. Another {b} MW of solar is built, not yet in commercial operation", "{r} MW renovables; EIA, {m}. Otros {b} MW solares están construidos, aún sin operación comercial"),
     ("Rooftop solar", "Solar en techos"), ("{n} customers; LUMA, {m}", "{n} clientes; LUMA, {m}"),
     ("Home and business batteries", "Baterías en hogares y negocios"), ("installations; LUMA, {m}", "instalaciones; LUMA, {m}"),
     ("Renewable share of production, {y}", "Parte renovable de la producción, {y}"), ("{p} from the plants alone", "{p} solo de las plantas"),
@@ -220,7 +221,7 @@ def build():
 <script src="js/core/knowledge.js?v={ver("js/core/knowledge.js")}"></script>
 <script>Core.knowledge.render(); I18N.apply();</script>
 <script src="js/common.js?v={ver("js/common.js")}"></script>
-<script src="js/energy_page.js?v=1"></script>
+<script src="js/energy_page.js?v=2"></script>
 <script src="js/chatboot.js?v={ver("js/chatboot.js")}"></script>
 </body>
 </html>

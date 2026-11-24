@@ -1,8 +1,8 @@
 # Proposal: federal funds returned and unused (decision 110)
 
-Date: 2026-11-17. Status: **approved by Francis on 2026-11-18 (decision 110 in HANDOFF.md), choices (a) to (h) as proposed. All four steps were built, merged and live on 2026-11-18 (#292, #294, #297, #299; `docs/unused-funds.md`). Francis approved the eighteen choices made in the work on 2026-11-19.**
+Date: 2026-11-17. Status: **approved by the project lead on 2026-11-18 (decision 110 in HANDOFF.md), choices (a) to (h) as proposed. All four steps were built, merged and live on 2026-11-18 (#292, #294, #297, #299; `docs/unused-funds.md`). The project lead approved the eighteen choices made in the work on 2026-11-19.**
 
-**In one paragraph.** Francis shared an opinion column on 2026-11-17 about federal money Puerto Rico loses: funds the federal government takes back, funds that expire, and funds still waiting to be paid. The column says no public inventory brings these together by program. Francis asked whether the observatory can measure or monitor it, and said "Sí, prepárala" to a proposal. He also asked that it be clear that **WIOA is only an example**: the column uses the workforce program to make its point, and the page must cover every federal program. This document tests three measures on every grant program with data a script can read today. All three work. None of them is "money lost" by itself, and the raw totals are dominated by routine accounting in a few very large programs, so each measure needs a stated rule before it is published. The proposal is a new Knowledge Area page under Public money, built in four steps, the first of which shows on the site.
+**In one paragraph.** the project lead shared an opinion column on 2026-11-17 about federal money Puerto Rico loses: funds the federal government takes back, funds that expire, and funds still waiting to be paid. The column says no public inventory brings these together by program. The project lead asked whether the observatory can measure or monitor it, and said "Sí, prepárala" to a proposal. They also asked that it be clear that **WIOA is only an example**: the column uses the workforce program to make its point, and the page must cover every federal program. This document tests three measures on every grant program with data a script can read today. All three work. None of them is "money lost" by itself, and the raw totals are dominated by routine accounting in a few very large programs, so each measure needs a stated rule before it is published. The proposal is a new Knowledge Area page under Public money, built in four steps, the first of which shows on the site.
 
 ## 1. What the observatory already answers
 
@@ -112,7 +112,7 @@ The page says this in its scope note instead of leaving a silence.
 
 ## 5. Steps
 
-Each step is its own pull request, merged only on Francis's word.
+Each step is its own pull request, merged only on the project lead's word.
 
 1. **Ended grants with an unpaid balance, and the page** (first visible). `federal_outlays.py` keeps each award's end date; a new file by program and federal agency; the page with its scope note, section 2.2 and Medicaid apart.
 2. **Money taken back.** A new script for the net reduction per ended award; by program, agency and year; disaster programs apart; the two WIOA figures as a test of the method.
@@ -129,7 +129,7 @@ Glossary terms come with each step (deobligation, recapture, period of performan
 - Contracts: a reduced contract is a purchasing matter, not a lost grant. Loans and direct payments to people are out for the same reason.
 - Any judgement on an agency. The page states amounts, dates and rules, and recommends no policy.
 
-## 7. Choices for Francis
+## 7. Choices for the project lead
 
 - **(a) A page of its own** under Public money, named "Federal funds returned and unused" / "Fondos federales devueltos y sin usar".
 - **(b) Three measures, never added up:** taken back (net reduction per ended award), at risk (ended with an unpaid balance), and findings that repeat. Each figure says which it is.

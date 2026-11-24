@@ -82,7 +82,7 @@ Three rules keep them right:
 - **A walk moves with its start.** From points 3 m apart on the plaza, a 10-minute walk reached between 2,648 and 3,012 residents (the area is traced in cells of 25 m and a block is in or out). The lesson gives the figure for the plaza's own point and says the tool will come close, not repeat it. The ring of B3 does repeat.
 - **B4 and B6 are computed by the map's own code.** `learn.py` runs `learn_src/figures.js` with Node, which calls `Core.study.walkArea` on the road graph of `js/roads.js` (the Walking time tool, 80 m a minute) and `Core.hexbin.bin` (Places in hexagons). `learn.py` and the build therefore need Node, as the tests already do.
 - **B5 is read live.** The rain gauges are in a file an automated rebuild writes, so their count cannot be kept in `learn_items.js` (first rule). The page fetches the layer's own file and counts: the figure is always the day's. It is the page's only request, and it sends nothing.
-- **The two bases are different on purpose, and the page says which it uses.** Approved by Francis on 2026-11-17 (decision 106, step-1 choice 3). The map draws and counts tourism places at confidence 0.50 or more without places of worship (A1, A5). The Area around a point tool counts every listing with a point (B3). Around the plaza of Ponce, 800 m holds 230 on the first basis and 321 on the second.
+- **The two bases are different on purpose, and the page says which it uses.** Approved by the project lead on 2026-11-17 (decision 106, step-1 choice 3). The map draws and counts tourism places at confidence 0.50 or more without places of worship (A1, A5). The Area around a point tool counts every listing with a point (B3). Around the plaza of Ponce, 800 m holds 230 on the first basis and 321 on the second.
 
 ## The link that opens a map tool
 
@@ -130,7 +130,7 @@ The file is never part of a first load: the map asks for it the first time a hel
 6. **Check yourself:** two questions answered on the page (`<details>`). Nothing is stored or sent.
 7. **Go further:** one outside source, checked when the lesson is written.
 
-Rules (decision 106 (e) and (g)): a lesson states methods and facts, recommends no policy and judges no agency; no example draws or names a private home; no lesson uses a dataset whose Spanish is held for review (`i18n_src/held_for_review.json`). The page keeps its "In review" notice, the AI sentence and `noindex` until Francis takes them off.
+Rules (decision 106 (e) and (g)): a lesson states methods and facts, recommends no policy and judges no agency; no example draws or names a private home; no lesson uses a dataset whose Spanish is held for review (`i18n_src/held_for_review.json`). The page keeps its "In review" notice, the AI sentence and `noindex` until the project lead takes them off.
 
 ## How to add a lesson
 
@@ -146,10 +146,10 @@ Rules (decision 106 (e) and (g)): a lesson states methods and facts, recommends 
 - `tests/learn.test.js`: `learn_page.js` run on a page of its named elements (the cards in both languages, the figures, both demos, the links); `mt=` is read once, dropped on write and opens only a tool the pane has.
 - By hand on 2026-11-14 (headless and in the preview): the page in English and Spanish, the three "Try it" links on a fresh load, and the tool's summary against the lesson's figures.
 
-## Decided in the work, for Francis's OK
+## Decided in the work, for the project lead's OK
 
-- **"Aprende" (settled).** Step 1 used "Aprender" because the site's Spanish rule (`docs/i18n.md`, "Address") asks for the infinitive on menu items. Francis chose "Aprende" on 2026-11-16, as decision 106 (a) said; `docs/i18n.md` records the exception.
-- **The figures are in `js/learn_items.js`, not `site/data/learn.json`.** Approved by Francis on 2026-11-17. The proposal named a data file. A script file (as the Knowledge registry does) needs no dataset record, licence or ledger entry, and holds nothing that is not already published.
+- **"Aprende" (settled).** Step 1 used "Aprender" because the site's Spanish rule (`docs/i18n.md`, "Address") asks for the infinitive on menu items. The project lead chose "Aprende" on 2026-11-16, as decision 106 (a) said; `docs/i18n.md` records the exception.
+- **The figures are in `js/learn_items.js`, not `site/data/learn.json`.** Approved by the project lead on 2026-11-17. The proposal named a data file. A script file (as the Knowledge registry does) needs no dataset record, licence or ledger entry, and holds nothing that is not already published.
 - **Six page generators were behind their pages.** Making the pages again would have set `chatboot.js?v=45` back to 35 or 36 on all six, and on two of them (Inflation, Route analysis) dropped three icons the pages list for the "All areas" menu (`bolt`, `price_change`, `wifi`). The generators now write what their pages already said. A test caught the icons; nothing checks the versions.
 
 ## Step 3, decided in the work

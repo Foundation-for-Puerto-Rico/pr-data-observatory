@@ -27,7 +27,7 @@ CONTRACT = {
     "environment_series.json": {"fema_nri": "fema_nri", "usgs_slope_failures": "usgs_slope_failures", "usfws_nwi": "usfws_nwi"},
     "hazard_series.json": {"census_cre": "census_cre", "usgs_comcat": "usgs_comcat"},
     "gateway_series.json": {"bts_t100": "bts_t100", "faa_enplanements": "faa_enplanements", "bts_ncfo": "bts_ncfo"},
-    "community_series.json": {"nps_nrhp": "nps_nrhp", "samhsa_nsumhss": "samhsa_nsumhss"},
+    "community_series.json": {"nps_nrhp": "nps_nrhp", "samhsa_nsumhss": "samhsa_nsumhss", "jp_comunidades_especiales": "jp_comunidades_especiales"},
     "facility_series.json": {"hud_public_housing": "hud_public_housing", "hud_lihtc": "hud_lihtc", "usgs_structures": "usgs_structures", "osm": "osm", "usac_erate": "usac_erate"},
     "nonprofit_series.json": {"irs_eo_bmf": "irs_eo_bmf", "census_zcta_county": "census_zcta_county"},
     "conditions_series.json": {k: k for k in ("epa_tri", "epa_frs", "epa_attains", "epa_greenbook", "epa_lmop", "hud_chas", "census_tiger_lines", "cms_provider_data", "hhs_hospital_capacity", "osm", "census_tiger")},

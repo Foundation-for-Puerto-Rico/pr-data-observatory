@@ -1,5 +1,118 @@
 [
  {
+  "id": "community.ce_n",
+  "ask": {
+   "en": [
+    "special communities",
+    "comunidades especiales"
+   ],
+   "es": [
+    "comunidades especiales"
+   ]
+  },
+  "name": "Comunidades Especiales (2006 delimitation)",
+  "domain": "communities",
+  "domains": [
+   "communities",
+   "housing"
+  ],
+  "group": "Comunidades Especiales",
+  "kind": "variable",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2006,
+   "last": 2006,
+   "frequency": "One delimitation (2006). Rebuilt with python comunidades.py, then python community_assets.py."
+  },
+  "sources": [
+   "jp_comunidades_especiales"
+  ],
+  "source_detail": "Comunidades_Especiales FeatureServer layer 0 (Junta de Planificación), through comunidades.geojson",
+  "caveats": [
+   "A 2006 delimitation: communities designated later may be missing, and some outlines may no longer match what is on the ground.",
+   "A Comunidad Especial is a program designation, not a Census unit, so there are no population or ACS figures for it."
+  ],
+  "see_also": [
+   "boundaries.comunidades_especiales",
+   "boundaries.comunidades_viviendas"
+  ],
+  "added": "2026-11-17",
+  "plain": "How many Comunidades Especiales each municipio has: the low-income communities the Government of Puerto Rico designated for its special communities program.",
+  "definition": "Communities in the Junta de Planificación's 2006 delimitation of the Comunidades Especiales, counted in the municipio the Junta gives each one. Puerto Rico's value is the 713 communities.",
+  "unit": "communities",
+  "method": "community_assets.py counts the shapes of comunidades.geojson (one per community) by their municipio field; every name matches one of the 78 municipios.",
+  "how_to_read": "Puerto Rico has 713 Comunidades Especiales, and every municipio has at least one.",
+  "where": {
+   "files": [
+    "community_series.json:ce_n"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: Comunidades Especiales",
+     "href": "index.html#e=ce_n.value"
+    }
+   ]
+  }
+ },
+ {
+  "id": "community.ce_viviendas",
+  "ask": {
+   "en": [
+    "homes in special communities"
+   ],
+   "es": [
+    "viviendas en comunidades especiales"
+   ]
+  },
+  "name": "Housing units in Comunidades Especiales (2006 inventory)",
+  "domain": "communities",
+  "domains": [
+   "communities",
+   "housing"
+  ],
+  "group": "Comunidades Especiales",
+  "kind": "variable",
+  "value_type": "count",
+  "geography": "78 municipalities and Puerto Rico",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2006,
+   "last": 2006,
+   "frequency": "One delimitation (2006). Rebuilt with python comunidades.py, then python community_assets.py."
+  },
+  "sources": [
+   "jp_comunidades_especiales"
+  ],
+  "source_detail": "Comunidades_Especiales FeatureServer layer 0 (Junta de Planificación), through comunidades.geojson",
+  "caveats": [
+   "A 2006 delimitation: communities designated later may be missing, and some outlines may no longer match what is on the ground.",
+   "A Comunidad Especial is a program designation, not a Census unit, so there are no population or ACS figures for it."
+  ],
+  "see_also": [
+   "boundaries.comunidades_especiales",
+   "boundaries.comunidades_viviendas"
+  ],
+  "added": "2026-11-17",
+  "plain": "How many homes the 2006 inventory counted inside the Comunidades Especiales of each municipio.",
+  "definition": "Housing units (viviendas) the Junta de Planificación's 2006 inventory counted inside each Comunidad Especial, added up by municipio. Puerto Rico's value is 208,633.",
+  "unit": "housing units",
+  "method": "community_assets.py adds the viviendas field of comunidades.geojson by municipio.",
+  "how_to_read": "The 2006 inventory counted 208,633 housing units in the Comunidades Especiales. Compare with the municipio's housing units for a share.",
+  "where": {
+   "files": [
+    "community_series.json:ce_viviendas"
+   ],
+   "view": [
+    {
+     "label": "Map, Analysis tab: housing units in Comunidades Especiales",
+     "href": "index.html#e=ce_viviendas.value"
+    }
+   ]
+  }
+ },
+ {
   "id": "community.nrhp_places",
   "ask": {
    "en": [

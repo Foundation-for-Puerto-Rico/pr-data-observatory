@@ -1,8 +1,8 @@
 # Public spending: the question test and the next upgrade (decision 109)
 
-Date: 2026-11-17. Status: **choices decided by Claude under Francis's standing delegation (open plan choices: decide and record), recorded in HANDOFF decision 109; nothing built yet.** This pull request changes no page and builds no data.
+Date: 2026-11-17. Status: **choices decided by Claude under the project lead's standing delegation (open plan choices: decide and record), recorded in HANDOFF decision 109; nothing built yet.** This pull request changes no page and builds no data.
 
-**In one paragraph.** A CPA colleague reviewed the Public spending page a second time (2026-11-17). They liked the stage lines and the obligated-and-paid-out card, and suggested choosing one or two concrete questions and testing whether the platform can answer them before adding indicators. Francis then said "Sí, empieza". This document runs that test for three municipios (San Juan, Utuado and Yabucoa) with the observatory's published files and OpenFEMA. It also answers two points Francis and the colleague raised: whether to link to ABRE Tu Municipio for municipal finances (yes, and copy nothing), and how much of the budget takes its function from the agency instead of its own program. It ends with the upgrade plan, ordered by what improves the answers most.
+**In one paragraph.** A CPA colleague reviewed the Public spending page a second time (2026-11-17). They liked the stage lines and the obligated-and-paid-out card, and suggested choosing one or two concrete questions and testing whether the platform can answer them before adding indicators. The project lead then said "Sí, empieza". This document runs that test for three municipios (San Juan, Utuado and Yabucoa) with the observatory's published files and OpenFEMA. It also answers two points the project lead and the colleague raised: whether to link to ABRE Tu Municipio for municipal finances (yes, and copy nothing), and how much of the budget takes its function from the agency instead of its own program. It ends with the upgrade plan, ordered by what improves the answers most.
 
 ## 1. The questions
 
@@ -49,7 +49,7 @@ ABRE Puerto Rico's ABRE Tu Municipio (abretumunicipio.org) publishes a yearly Fi
 - **It is a different question.** ABRE answers how healthy a municipal government's finances are. The observatory answers what public money, mostly federal and Commonwealth, is assigned in the municipio's territory, and how far it has gone. They complement each other.
 - **Their compilation is theirs.** ABRE's website disclaimer (section 7) says the site's design, text, graphics and data compilation are its property, protected by copyright. The underlying public records keep their original terms.
 - **Their CSV is not a stable source.** The download is labelled `data_export_test_DEV.csv` and has one year (2023) for 78 municipios.
-- **Lean open data.** Copying would duplicate a maintained product, which Francis asked to avoid.
+- **Lean open data.** Copying would duplicate a maintained product, which the project lead asked to avoid.
 
 So the Public spending page's scope note, which says municipal budgets are outside, would link to ABRE Tu Municipio for municipal finances. The municipio view (step 5) would link to that municipio's ABRE report. Municipal budgets and public corporations stay outside the observatory's figures.
 
@@ -70,7 +70,7 @@ Leaving debt and pensions aside, only nine agencies split their money across mor
 
 ## 5. The upgrade plan
 
-Each step is its own PR, merged only on Francis's word. Every step must improve the answer to at least one of the four questions, or say plainly why it cannot.
+Each step is its own PR, merged only on the project lead's word. Every step must improve the answer to at least one of the four questions, or say plainly why it cannot.
 
 1. **Paid out by signing year, visible.**
    - A column chart of the share paid out per signing year, in the "Obligated and paid out" card. Today it is in a hidden table.

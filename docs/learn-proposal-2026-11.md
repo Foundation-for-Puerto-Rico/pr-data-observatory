@@ -1,8 +1,8 @@
 # Proposal: Learn, a section that teaches maps and spatial analysis with the observatory's own data and tools
 
-Date: 2026-11-14. Status: **approved by Francis on 2026-11-14 ("Approve, start step 1"): decision 106 (a) to (h) as proposed. Step 1 is being built on branch `learn/first-lessons`.** This pull request changes no page and builds no data.
+Date: 2026-11-14. Status: **approved by the project lead on 2026-11-14 ("Approve, start step 1"): decision 106 (a) to (h) as proposed. Step 1 is being built on branch `learn/first-lessons`.** This pull request changes no page and builds no data.
 
-**In one paragraph.** Francis asked on 2026-11-14 for an education section that teaches people about mapping, mapping tools and analysis, with visual explanations like a "Spatial data analysis in GIS" infographic he shared, and with the observatory's real data and tools as the examples. Checked against main (`023d38b`): the observatory already has what a course needs as examples (**25 map tools, 48 layers with a help text, 434 glossary terms**), but nothing that teaches the ideas behind them or the order in which to learn them. Of the nine concepts in the infographic, **seven have a real tool or layer to teach with; two (spatial interpolation, hot spots) have no tool of their own** and are taught with what exists. The proposal is a **Learn** page ("Aprende"): 17 short lessons in four parts. Each lesson has a diagram drawn for the observatory, a button that opens the live map on a real example, and its terms linked to the glossary. It is not a general GIS course: others teach that well, and the lessons link to them.
+**In one paragraph.** the project lead asked on 2026-11-14 for an education section that teaches people about mapping, mapping tools and analysis, with visual explanations like a "Spatial data analysis in GIS" infographic they shared, and with the observatory's real data and tools as the examples. Checked against main (`023d38b`): the observatory already has what a course needs as examples (**25 map tools, 48 layers with a help text, 434 glossary terms**), but nothing that teaches the ideas behind them or the order in which to learn them. Of the nine concepts in the infographic, **seven have a real tool or layer to teach with; two (spatial interpolation, hot spots) have no tool of their own** and are taught with what exists. The proposal is a **Learn** page ("Aprende"): 17 short lessons in four parts. Each lesson has a diagram drawn for the observatory, a button that opens the live map on a real example, and its terms linked to the glossary. It is not a general GIS course: others teach that well, and the lessons link to them.
 
 ![Preview of the Learn overview page: nine cards, each with a diagram, the GIS term and the observatory's own tools](analysis/learn-2026-11/preview.svg)
 
@@ -152,15 +152,15 @@ Effort as in `docs/proposal-2026-10.md`: **S** under 1 day, **M** 2-4 days, **L*
 - **Lessons as Knowledge Area items.** The Knowledge Area holds FPR's research and program tools. A lesson is neither, so Learn has its own page and registry; the Knowledge home page links to it.
 - **Video, accounts, certificates, tracked quizzes** (section 1).
 
-## 9. Decisions for Francis (106)
+## 9. Decisions for the project lead (106)
 
 - **(a) Name and place.** "Learn" / "Aprende", its own page `learn.html`, and a fifth button in the top bar of every page (Map, 3D + Time, Knowledge, Data dictionary, Learn). The map's tabs (Explore, Place, Tools, About: decision 81) do not change. The other option is a group inside the Knowledge home page.
 - **(b) The lessons and the order.** The 17 lessons of section 4 and the five steps of section 7, with A1, B3 and A5 first.
 - **(c) The visuals.** Diagrams drawn for the observatory in the style of the preview. The shared infographic is the model for the layout and is not reused.
 - **(d) The two gaps.** Interpolation and hot spots are taught with what exists. No new tool now.
-- **(e) Publication.** The Spanish is published with each lesson and not held for Compliance: a lesson is teaching material, not grant work. To keep it so, no lesson uses as its example a dataset whose text is held (`i18n_src/held_for_review.json`). The page keeps the "In review" marker, the AI notice and `noindex` until Francis takes them off, as in decision 103.
+- **(e) Publication.** The Spanish is published with each lesson and not held for Compliance: a lesson is teaching material, not grant work. To keep it so, no lesson uses as its example a dataset whose text is held (`i18n_src/held_for_review.json`). The page keeps the "In review" marker, the AI notice and `noindex` until the project lead takes them off, as in decision 103.
 - **(f) Check yourself.** Two or three questions per lesson, answered on the page. Nothing is stored or sent.
 - **(g) What a lesson may say.** Methods and facts only. A lesson recommends no policy and judges no agency, and no example draws or names a private home (lesson C3 explains the rule).
 - **(h) Review before the marker goes.** A native Spanish reader on the team reads each lesson, and a person who teaches workshops reads the facilitator guide.
 
-**Approved by Francis on 2026-11-14 ("Approve, start step 1"): (a) to (h) as proposed.** Each step is its own pull request, merged only on Francis's word; step 1 next. Next free decision: 107.
+**Approved by the project lead on 2026-11-14 ("Approve, start step 1"): (a) to (h) as proposed.** Each step is its own pull request, merged only on the project lead's word; step 1 next. Next free decision: 107.

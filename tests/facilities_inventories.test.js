@@ -67,6 +67,6 @@ test('the power plants keep their legend and their planned circle', () => {
   const d = read('power_plants.geojson');
   const html = F.legendHtml('plants', d);
   assert.match(html, /MW, by circle area/);
-  assert.match(html, /planned or under construction/);
+  assert.match(html, /planned, under construction, or not yet in commercial operation/);
   assert.match(html, /fill="#F0E442"/);
 });

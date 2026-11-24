@@ -137,7 +137,7 @@
         "en": "Health and care: hospitals and clinics, access to services, coverage and health conditions."
       },
       "icon": "health_and_safety", "accent": "--fpr-red",
-      "headline": {"variable": "health.hc_sites", "norm": "value", "label": {"es": "Sitios permanentes de centros de salud (con o sin subvención federal)", "en": "Permanent sites of health centers (with or without a federal grant)"}},
+      "headline": {"variable": "health.hpsa_pc_short", "norm": "value", "label": {"es": "Médicos de atención primaria que faltan en áreas de escasez (equivalentes a tiempo completo)", "en": "Primary care physicians still needed in shortage areas (full-time equivalents)"}},
       "examples": {
         "es": ["¿Qué municipios no tienen ningún sitio de un centro de salud?", "¿Dónde faltan más médicos de atención primaria?"],
         "en": ["Which municipalities have no health center site?", "Where is the shortage of primary care physicians greatest?"]
@@ -212,7 +212,7 @@
         "en": "Land and how it is protected or used: protected areas, the 2015 land-use plan and zoning."
       },
       "icon": "terrain", "accent": "--fpr-green",
-      "headline": {"variable": "municipalities.in_protected", "norm": "value", "label": {"es": "Lugares turísticos dentro de áreas protegidas", "en": "Tourism places inside protected areas"}, "island": {"sum": "in_protected", "d": 0}},
+      "headline": {"variable": "municipalities.protected_land_pct", "norm": "value", "label": {"es": "Suelo rústico especialmente protegido (plan de usos del terreno)", "en": "Specially protected rural land (land use plan)"}, "island": {"ratio": {"num": "landuse_km2.protected", "den": "landuse_km2", "scale": 100}, "unit": "%", "d": 1}},
       "examples": {
         "es": ["¿Qué parte de cada municipio es área protegida?"],
         "en": ["What share of each municipality is protected land?"]
@@ -227,7 +227,7 @@
         "en": "What could harm people and property: flood zones, sea level rise, storm tracks and the places exposed to them."
       },
       "icon": "flood", "accent": "--fpr-green",
-      "headline": {"variable": "municipalities.sfha_pct", "norm": "value", "label": {"es": "Lugares turísticos en zona de riesgo de inundación", "en": "Tourism places in a flood hazard area"}, "island": {"ratio": {"num": "in_sfha", "den": "assets", "scale": 100}, "unit": "%", "d": 1}},
+      "headline": {"variable": "buildings.bld_sfha_pct", "norm": "value", "label": {"es": "Edificios en zona especial de riesgo de inundación (FEMA)", "en": "Buildings in a FEMA Special Flood Hazard Area"}},
       "examples": {
         "es": ["¿Qué municipios tienen más área en zona inundable?", "¿Qué huracanes pasaron cerca de la isla?"],
         "en": ["Which municipalities have the most land in a flood zone?", "Which hurricanes passed near the island?"]
@@ -315,7 +315,7 @@
         "en": "Communities and their places: the Comunidades Especiales, the communities of the WCRP program and their vulnerability, city halls and historic places."
       },
       "icon": "diversity_3", "accent": "--fpr-blue",
-      "headline": {"variable": "community.nrhp_places", "norm": "value", "label": {"es": "Lugares en el Registro Nacional de Lugares Históricos", "en": "Places on the National Register of Historic Places"}},
+      "headline": {"variable": "community.ce_n", "norm": "count", "label": {"es": "Comunidades Especiales (delimitación de 2006)", "en": "Comunidades Especiales (2006 delimitation)"}},
       "examples": {
         "es": ["¿Dónde están las Comunidades Especiales?", "¿Qué municipios tienen más lugares históricos?"],
         "en": ["Where are the Comunidades Especiales?", "Which municipalities have the most historic places?"]

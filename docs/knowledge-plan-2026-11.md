@@ -1,14 +1,14 @@
 # Knowledge that is easy to find and share: plan (2026-11)
 
-Date: 2026-11-09. Status: **approved by Francis on 2026-11-09 ("Approve and merge"; HANDOFF decision 90).** Option A, (a) to (f) of section 13 as proposed; PR 1 (registry fields and the Knowledge home page) is merged (#168); PR 2 (one header on each area page) is built on branch `knowledge/header`. This document changes no code and no data.
+Date: 2026-11-09. Status: **approved by the project lead on 2026-11-09 ("Approve and merge"; HANDOFF decision 90).** Option A, (a) to (f) of section 13 as proposed; PR 1 (registry fields and the Knowledge home page) is merged (#168); PR 2 (one header on each area page) is built on branch `knowledge/header`. This document changes no code and no data.
 
 **In short.** The Knowledge Area has eight pages, and the only way between them is a strip of tabs at the top of each page. It already overflows: at 1440 px it holds 2,251 px of tabs in 1,415 px of space, so the current page's own tab and sections start off screen. The plan gives Knowledge a **home page** and a single **header** on each page, and it moves the list of pages into the **registry** the map and the dictionary already read. Then the map, the dictionary, Ask and the home page can all point to the same pieces of work. Each piece of work also records **who may see it** (public or internal) and **how far it is in review**, so FPR can build analysis internally and publish it by changing one field after review. It ships in five small pull requests. The first one visitors see is PR 1 (the home page).
 
 The design boards are on the review canvas (private Design artifact `RD7raXGVsfaFNBHZBzazms`, row 3: "Knowledge Area today", "How it fits together", "Proposed Knowledge home").
 
-## 1. What Francis asked
+## 1. What the project lead asked
 
-Francis, 2026-11-09: navigating the knowledge areas should be easier. Analyze it, and think about how it all fits together, because FPR will integrate a lot of analysis and share knowledge internally and with others.
+The project lead, 2026-11-09: navigating the knowledge areas should be easier. Analyze it, and think about how it all fits together, because FPR will integrate a lot of analysis and share knowledge internally and with others.
 
 ## 2. What the site has today (live site and main at 4032ecb, checked 2026-11-09)
 
@@ -103,17 +103,17 @@ The review notice of decision 65 stays where it is, near the top of the page.
 4. **Sharing kit.** Copy link, Cite, the print stylesheet, the embed guide.
 5. **Internal track.** The same format in `fpr-platform` with the gate, after IT creates the repository and the staff site.
 
-Each PR merges only on Francis's word. Every new word visitors see gets a sourced Spanish and English definition where it is technical, and goes through the Spanish string layer (`i18n_src/`).
+Each PR merges only on the project lead's word. Every new word visitors see gets a sourced Spanish and English definition where it is technical, and goes through the Spanish string layer (`i18n_src/`).
 
 ## 12. Risks and limits
 
-- **Summaries and dates must be checked.** The cards' one-line summaries and month dates on the canvas are drafts. PR 1 takes each from its page, and Francis or the page's owner confirms them.
+- **Summaries and dates must be checked.** The cards' one-line summaries and month dates on the canvas are drafts. PR 1 takes each from its page, and the project lead or the page's owner confirms them.
 - **Program terms.** The home page lists published items only, including those that keep the "In review" marker (they are published). Items that are `in_review` or `hidden` never get a card, so the ban on program terms is unchanged.
 - **Spanish.** "Conocimiento", the kinds and the new buttons need a native reader, as every Spanish string does.
 - **Weight.** Area pages get a small header script; each page's budget is checked in each PR.
 - **Old links.** Every area keeps its page name. Links to `housing.html` from the old top bar keep working.
 
-## 13. Decision 90 (approved by Francis on 2026-11-09: "Approve and merge", (a) to (f) as proposed)
+## 13. Decision 90 (approved by the project lead on 2026-11-09: "Approve and merge", (a) to (f) as proposed)
 
 - (a) **Option A**, B or C.
 - (b) **The kinds:** study, analysis, program tool, index profile. Names in Spanish: estudio, análisis, herramienta del programa, perfil de índice.

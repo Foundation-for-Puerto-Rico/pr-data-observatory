@@ -1,6 +1,6 @@
 # Night-time lights by barrio and municipio (NASA Black Marble; 2026-11-02, branch `data/nightlights-black-marble`)
 
-Live since 2026-11-04 (HANDOFF decision 75, approved 2026-11-03). The first full run (GitHub Actions run 41771300885, 18 minutes) read all 177 months from January 2012 to September 2026. The build uses one free NASA Earthdata token, kept only as the GitHub secret `EARTHDATA_TOKEN`; Francis made the account and the secret with `docs/nightlights-setup.md`, and Claude never saw the token.
+Live since 2026-11-04 (HANDOFF decision 75, approved 2026-11-03). The first full run (GitHub Actions run 41771300885, 18 minutes) read all 177 months from January 2012 to September 2026. The build uses one free NASA Earthdata token, kept only as the GitHub secret `EARTHDATA_TOKEN`; the project lead made the account and the secret with `docs/nightlights-setup.md`, and Claude never saw the token.
 
 ## The source
 

@@ -148,7 +148,7 @@ A **new window** comes with the next vintage: add its year to `small_area.VINTAG
 
 ## 9. Age bands and age groups (2026-10-18)
 
-Francis approved the age data on 2026-10-18. The source is the same: ACS 5-year table B01001 (Sex by Age), plus B09001 (Population Under 18 Years by Age) for the youngest children, read by `acs_small.py` for the four windows, with the cell labels checked against the Census Bureau's in every vintage (`check_labels`; the B09001 labels are committed in `tests/fixtures/acs_labels`).
+The project lead approved the age data on 2026-10-18. The source is the same: ACS 5-year table B01001 (Sex by Age), plus B09001 (Population Under 18 Years by Age) for the youngest children, read by `acs_small.py` for the four windows, with the cell labels checked against the Census Bureau's in every vintage (`check_labels`; the B09001 labels are committed in `tests/fixtures/acs_labels`).
 
 - **Five-year bands.** 0 to 4, 5 to 9 ... 80 to 84 and 85 and over: 18 bands. B01001's own groups are not all five years wide, so a band adds the groups inside it (15 to 19 is 15-17 plus 18-19; 20 to 24 is 20, 21 and 22-24; 60 to 64 is 60-61 plus 62-64; 65 to 69 is 65-66 plus 67-69); the cells are worked out from the labels (`small_area.age_cells`), never typed.
 - **Age groups.** Under 3 and 3 to 4 (B09001: children in households only; in Puerto Rico they add up to B01001's children under 5 in the island row), 5 to 17, 18 to 24, 25 to 44, 45 to 64 and 65 and older, and the broad groups under 18 and 18 to 44.
