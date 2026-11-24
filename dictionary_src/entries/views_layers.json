@@ -1063,6 +1063,57 @@
   "added": "2026-10-03"
  },
  {
+  "id": "layers.region_filter",
+  "name": "Region filter (2D map and 3D view, Layers tab, Reference)",
+  "domain": "system.tools",
+  "domains": [
+   "system.tools"
+  ],
+  "group": "2D map: Map layers tab",
+  "kind": "layer",
+  "plain": "The 'Region' filter of the Reference group outlines a region's municipios, fades the rest of the island and frames the map on it, in the 2D map and the 3D view. The data layers are not cut.",
+  "definition": "The menu lists 'All of Puerto Rico', then the FPR planning regions (the Eastern Region of the Eastern Region Strategic Vision, ERSV, 15 municipios) and the Puerto Rico Tourism Company's seven tourism regions, each with its number of municipios. They are the regions of geo/regions.json, the same list as the 2D map's Region tab and the regional profile. Picking one draws a dark outline around each of its municipios, lays a white veil (55% opacity) over the other municipios and frames the map on the region (in 3D the camera tilts to at least 45 degrees). The veil sits above the data layers and under the markers and pop-ups, and nothing in it takes a click, so every layer still answers a click everywhere. The note under the menu says how many municipios are outlined and links to the regional profile. 'All of Puerto Rico' takes the outline and the veil away. The pick is kept in the address as rg=<id> and travels in the links between the 2D map and the 3D view.",
+  "unit": "map control",
+  "value_type": "geometry",
+  "geography": "8 regions, each a set of whole municipios",
+  "coverage": {
+   "timeline": "snapshot",
+   "first": 2020,
+   "last": 2026,
+   "frequency": "The regions change only when regions.py changes. The outlines are the municipal boundaries of municipios.geojson."
+  },
+  "method": "core/regionfilter.js (split, leaflet, maplibre, control), loaded by app.js and twin3d.js on use (the first time the Reference group opens, or at ready when the address has rg=), with geo/regions.json. The address key rg= is read and written by core/viewstate.js. HANDOFF decision 113.",
+  "sources": [
+   "census_tiger",
+   "prtc_regions"
+  ],
+  "source_detail": "geo/regions.json (regions.py) and municipios.geojson.",
+  "how_to_read": "Use it to look at one region with any layer on: the region stands out, and the faded rest of the island gives context. For a region's own figures, open the Region tab or the regional profile.",
+  "caveats": [
+   "The filter frames the map; it does not filter the data. Legends, counts, rankings, the Explore panel and every download still cover all of Puerto Rico.",
+   "Markers (the tourism places' pins and clusters) are drawn above the veil, so they are not faded outside the region."
+  ],
+  "see_also": [
+   "geo.regions",
+   "layers.boundaries_control",
+   "layers.share_link_2d"
+  ],
+  "where": {
+   "files": [],
+   "view": [
+    {
+     "label": "2D map, Layers tab: Reference, Region (Eastern Region)",
+     "href": "index.html#rg=ersv"
+    },
+    {
+     "label": "3D view, Layers tab: Reference, Region (Eastern Region)",
+     "href": "3d.html#rg=ersv"
+    }
+   ]
+  },
+  "added": "2026-11-24"
+ },
+ {
   "id": "layers.click_popup",
   "name": "Click on the 2D map: what opens",
   "domain": "system.tools",

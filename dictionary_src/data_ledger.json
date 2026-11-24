@@ -185,9 +185,9 @@
   "catalog.json": {
    "first_published": "2026-10-06",
    "last_updated": "2026-11-24",
-   "versions": 273,
+   "versions": 274,
    "kind": "documentation",
-   "hash": "j5c7175066e474ce7",
+   "hash": "jac52e316e83a2ad4",
    "bytes": 30782,
    "records": null,
    "fields": null,
@@ -198,10 +198,10 @@
   "catalog_domains.json": {
    "first_published": "2026-11-16",
    "last_updated": "2026-11-24",
-   "versions": 21,
+   "versions": 22,
    "kind": "documentation",
-   "hash": "jaa3a42307aec8fd9",
-   "bytes": 30684,
+   "hash": "jdbccfd9054adc930",
+   "bytes": 30707,
    "records": null,
    "fields": null,
    "values": null,
@@ -211,28 +211,28 @@
   "catalog_es.json": {
    "first_published": "2026-10-18",
    "last_updated": "2026-11-24",
-   "versions": 93,
+   "versions": 94,
    "kind": "documentation",
-   "hash": "j6631e1f0ce2b2be2",
-   "bytes": 160230,
+   "hash": "j9de9f9fe5c471a80",
+   "bytes": 160369,
    "records": null,
    "fields": null,
    "values": null,
    "vertices": null,
-   "items": 1070
+   "items": 1071
   },
   "catalog_index.json": {
    "first_published": "2026-10-18",
    "last_updated": "2026-11-24",
-   "versions": 107,
+   "versions": 108,
    "kind": "documentation",
-   "hash": "jbc17796ecab1a371",
-   "bytes": 281817,
+   "hash": "jef7c2dbb5630d83c",
+   "bytes": 282001,
    "records": null,
    "fields": null,
    "values": null,
    "vertices": null,
-   "items": 1166
+   "items": 1167
   },
   "catalog_views.json": {
    "first_published": "2026-11-05",
@@ -406,15 +406,15 @@
   "dictionary.json": {
    "first_published": "2026-10-05",
    "last_updated": "2026-11-24",
-   "versions": 229,
+   "versions": 230,
    "kind": "documentation",
-   "hash": "j8423e11d14236000",
-   "bytes": 5614029,
+   "hash": "j1e3855010bb899a8",
+   "bytes": 5618674,
    "records": null,
    "fields": null,
    "values": null,
    "vertices": null,
-   "items": 1166
+   "items": 1167
   },
   "dictionary_detail_communities.json": {
    "first_published": "2026-11-04",
@@ -679,15 +679,15 @@
   "dictionary_detail_system.json": {
    "first_published": "2026-10-18",
    "last_updated": "2026-11-24",
-   "versions": 111,
+   "versions": 112,
    "kind": "documentation",
-   "hash": "jc6779b600830df5a",
-   "bytes": 717871,
+   "hash": "j668b5b9ffea209c3",
+   "bytes": 720535,
    "records": null,
    "fields": null,
    "values": null,
    "vertices": null,
-   "items": 216
+   "items": 217
   },
   "dictionary_detail_system_es.json": {
    "first_published": "2026-10-21",
@@ -705,15 +705,15 @@
   "dictionary_list.json": {
    "first_published": "2026-10-18",
    "last_updated": "2026-11-24",
-   "versions": 175,
+   "versions": 176,
    "kind": "documentation",
-   "hash": "j782b908f9ed8ef4c",
-   "bytes": 1920827,
+   "hash": "ja4ecfa760b5830d6",
+   "bytes": 1923313,
    "records": null,
    "fields": null,
    "values": null,
    "vertices": null,
-   "items": 1166
+   "items": 1167
   },
   "dictionary_list_es.json": {
    "first_published": "2026-10-21",
@@ -731,9 +731,9 @@
   "dictionary_summary.json": {
    "first_published": "2026-10-05",
    "last_updated": "2026-11-24",
-   "versions": 127,
+   "versions": 128,
    "kind": "documentation",
-   "hash": "j31aaf4381d2d13cb",
+   "hash": "jb28d739aba014563",
    "bytes": 84,
    "records": null,
    "fields": null,
@@ -744,10 +744,10 @@
   "dictionary_words.json": {
    "first_published": "2026-11-16",
    "last_updated": "2026-11-24",
-   "versions": 29,
+   "versions": 30,
    "kind": "documentation",
-   "hash": "j0ddb34e09817c038",
-   "bytes": 1314569,
+   "hash": "j47d020368a1f0b60",
+   "bytes": 1315603,
    "records": null,
    "fields": null,
    "values": null,
@@ -1106,10 +1106,10 @@
   "glossary_defs_en.json": {
    "first_published": "2026-10-19",
    "last_updated": "2026-11-24",
-   "versions": 79,
+   "versions": 80,
    "kind": "documentation",
-   "hash": "j67ac462ece98abd5",
-   "bytes": 195684,
+   "hash": "jb7b2570328266695",
+   "bytes": 196326,
    "records": null,
    "fields": null,
    "values": null,
@@ -1119,10 +1119,10 @@
   "glossary_defs_es.json": {
    "first_published": "2026-10-19",
    "last_updated": "2026-11-24",
-   "versions": 79,
+   "versions": 80,
    "kind": "documentation",
-   "hash": "jbcebf622755b7247",
-   "bytes": 211617,
+   "hash": "j2fbb182eaa0951a1",
+   "bytes": 212302,
    "records": null,
    "fields": null,
    "values": null,
@@ -1132,10 +1132,10 @@
   "glossary_forms_en.json": {
    "first_published": "2026-10-19",
    "last_updated": "2026-11-24",
-   "versions": 76,
+   "versions": 77,
    "kind": "documentation",
-   "hash": "j06b3c1e7f80fe3d3",
-   "bytes": 26650,
+   "hash": "j30722e63d4558b66",
+   "bytes": 26708,
    "records": null,
    "fields": null,
    "values": null,
@@ -1145,10 +1145,10 @@
   "glossary_forms_es.json": {
    "first_published": "2026-10-19",
    "last_updated": "2026-11-24",
-   "versions": 76,
+   "versions": 77,
    "kind": "documentation",
-   "hash": "j1a71e7759366b1d4",
-   "bytes": 27310,
+   "hash": "jad478071c14f108e",
+   "bytes": 27376,
    "records": null,
    "fields": null,
    "values": null,
@@ -2792,11 +2792,11 @@
   {
    "date": "2026-11-24",
    "files": 198,
-   "bytes": 145163971,
+   "bytes": 145176597,
    "records": 8936471,
    "fields": 2562,
    "values": 12913483,
-   "items": 1166
+   "items": 1167
   }
  ]
 }

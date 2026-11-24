@@ -7,7 +7,7 @@
   if (typeof module === 'object' && module.exports) module.exports = api; else { root.Core = root.Core || {}; root.Core[name] = api; }
 })('viewstate', typeof window !== 'undefined' ? window : globalThis, function () {
   'use strict';
-  const ORDER = ['c', 'b', 'p', 'l', 's', 'pv', 'r', 'e', 'ey', 'eb', 'ix', 'sc', 'slr', 'bm'];   // after the bare municipality; any other key follows, as it came
+  const ORDER = ['c', 'b', 'p', 'l', 's', 'pv', 'r', 'e', 'ey', 'eb', 'ix', 'sc', 'slr', 'bm', 'rg'];   // after the bare municipality; any other key follows, as it came
   const ENCODED = new Set(['e', 'ix', 'sc']);   // written with encodeURIComponent, as the 2D map always has
   const ONCE = new Set(['ask', 'wb', 'wc', 'topic', 'mt']);   // topic: open a topic in Explore (catalog.js, from a Knowledge Area page); mt: open a map tool (app.js openToolLink, from a lesson of the Learn page)
   const VIEWS = ['2d', '3d'];
@@ -41,7 +41,7 @@
     const [lat, lng, z] = a;
     return Math.abs(lat) <= 90 && Math.abs(lng) <= 180 && z >= 0 && z <= 24 ? { lat, lng, z } : null;
   }
-  /** A hash → { muni, c, b, p, l, s, pv, r, e, ey, eb, ix, sc, slr, bm } (null when absent or not read), raw (each key's text as it came) and order. */
+  /** A hash → { muni, c, b, p, l, s, pv, r, e, ey, eb, ix, sc, slr, bm, rg } (null when absent or not read), raw (each key's text as it came) and order. */
   function parse(hash) {
     const raw = Object.create(null), order = []; let muni = null;
     for (const part of String(hash || '').replace(/^#/, '').split('&')) {
@@ -53,12 +53,12 @@
     }
     const g = (k) => (k in raw ? dec(raw[k]) : null);   // decoded: an address rebuilt by URLSearchParams (commas as %2C) still reads
     const l = 'l' in raw ? g('l').split(',').filter(t => KEY_RE.test(t.replace(/^-/, ''))) : null;
-    const b = num(g('b')), p = num(g('p')), ey = g('ey'), eb = g('eb'), slr = num(g('slr')), s = g('s'), bm = g('bm'), pv = g('pv');
+    const b = num(g('b')), p = num(g('p')), ey = g('ey'), eb = g('eb'), slr = num(g('slr')), s = g('s'), bm = g('bm'), pv = g('pv'), rg = g('rg');
     return {
       muni: muni || null, c: readC(g('c')), b: b != null && Math.abs(b) <= 360 ? b : null, p: p != null && p >= 0 && p <= 85 ? p : null, l,
       s: s && KEY_RE.test(s) ? s : null, pv: pv && /^[a-z0-9]+$/.test(pv) ? pv : null, r: g('r') || null, e: g('e') || null,
       ey: ey && /^\d{4}$/.test(ey) ? +ey : null, eb: eb && /^\d{4}$/.test(eb) ? +eb : null, ix: g('ix') || null, sc: g('sc') || null,
-      slr: slr != null && slr >= 1 && slr <= 10 && Number.isInteger(slr) ? slr : null, bm: bm && /^[a-z]+$/.test(bm) ? bm : null, raw, order,
+      slr: slr != null && slr >= 1 && slr <= 10 && Number.isInteger(slr) ? slr : null, bm: bm && /^[a-z]+$/.test(bm) ? bm : null, rg: rg && /^[a-z0-9-]{1,40}$/.test(rg) ? rg : null, raw, order,
     };
   }
   // A value is always written encoded: e=, ix= and sc= whole (as the 2D map always has); the others where a character would end the part or the address

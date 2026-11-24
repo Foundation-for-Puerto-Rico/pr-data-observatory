@@ -1129,6 +1129,7 @@ function writeNow() {
       muni: VS.muni, c: V.cOf(c.lat, c.lng, V.fromMapLibre(map.getZoom())), b: String(+map.getBearing().toFixed(1)), p: String(+map.getPitch().toFixed(1)),
       l: V.layerTokens('3d', id => !!(el(id) && el(id).checked), id => !!(el(id) && el(id).defaultChecked)),
       r: (typeof Plan !== 'undefined' && Plan.encode()) || null, bm: BM.chosen ? BM.name : null,
+      rg: RF.id || null,   // the region filter of Reference (decision 113)
     };
     if (VS.measure) {   // the columns, once changed here: a measure of the 2D shading (s=), or the Economy datasets (e=, ey=), or nothing
       const any = $('#lyCols').checked && metricKey === '__any', one = $('#lyCols').checked && metricKey && metricKey !== '__any';
@@ -1174,6 +1175,24 @@ function applyState() {
   } finally { VS.applying = false; VS.ready = true; }
   if (map.isMoving()) map.once('moveend', () => writeState(true));   // a flight begun before ready (the planned route's fit of an old r= link): the camera where it ends
   writeState(true);
+}
+// The region filter of Reference (js/core/regionfilter.js and data/geo/regions.json, loaded on use: when the Reference group is first opened, or at ready when the
+// address has rg=; docs/regions.md, "The region filter"; decision 113), as on
+// the 2D map: a region's municipios outlined, the rest of the island faded, the camera framed on it; the data layers are not cut. Kept in the address (rg=).
+const RF = { id: IN.rg, ctl: null };
+/** Runs go() once el can be seen: now when `now` is set or el is not in a closed group of the Layers tab (common.js initFolds), else when its group opens. */
+function whenShown(el, now, go) {
+  const body = el && el.closest('.fold-body');
+  if (now || !body || !body.hidden) return go();
+  const mo = new MutationObserver(() => { if (!body.hidden) { mo.disconnect(); go(); } });
+  mo.observe(body, { attributes: true, attributeFilter: ['hidden'] });
+}
+function startRegionFilter() {
+  whenShown($('#regionFilter'), RF.id, () => (window.Core.regionfilter ? Promise.resolve() : addJs('js/core/regionfilter.js?v=1')).then(() => loadJson('data/geo/regions.json')).then(d => {
+    const view = Core.regionfilter.maplibre(map, { before: firstSymbolLayer, fit: b => fitTo(b, { padding: 60 }) });
+    RF.ctl = Core.regionfilter.control($('#regionFilter'), { regions: d.regions, features: S.muniFc.features, view, value: RF.id, fit: !IN.c, onPick: id => { RF.id = id; writeState(true); } });
+    RF.id = RF.ctl.value(); writeState(true);   // an unknown region in the address is dropped
+  }, () => { $('#regionFilterNote').textContent = T('The regions could not be loaded. Check your connection and reload the page.'); }));
 }
 function syncViewLinks() {
   const l2d = document.querySelector('.views a[href^="index.html"]');
@@ -1287,6 +1306,7 @@ async function start() {
     initPlanner();
     $('#loader').classList.add('hide'); performance.mark('ready');   // the ready moment, noted before the files asked for just after it in this same step (tests/browser/throttle.js)
     applyState();   // the layers, the columns and the municipality of the address
+    startRegionFilter();
     if ($('#lyPlaces').checked) loadPlaces().catch(() => {});   // the tourism places (about 2.2 MB compressed) start switched off (an owner decision of 2026-10-15) and load when the layer is first switched on; a failure is shown beside the layer and in a message (docs/performance.md)
     // animated data loads after first paint, and deck.gl, which draws it
     deckLoad();

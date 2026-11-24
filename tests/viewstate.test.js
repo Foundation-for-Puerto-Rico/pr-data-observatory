@@ -243,3 +243,12 @@ test('Límites (municipal boundaries) is off when either view opens; a link stil
     assert.deepStrictEqual(V.layerTokens(view, () => false, off).filter(t => /muni/.test(t)), [], `${view}: off, it is not written`);
   }
 });
+
+test('rg= (the region filter of Reference, decision 113): read, written after bm=, kept by the other view, a bad id ignored', () => {
+  assert.strictEqual(V.parse('#c=18.2,-66.5,9&rg=ersv').rg, 'ersv');
+  assert.strictEqual(V.parse('#rg=reg-sol-norte').rg, 'reg-sol-norte');
+  for (const bad of ['#rg=Ersv', '#rg=a%26b', '#rg=__proto__', '#rg=' + 'x'.repeat(41)]) assert.strictEqual(V.parse(bad).rg, null, bad);
+  assert.strictEqual(V.write('2d', '', { c: V.cOf(18.2, -66.5, 9), bm: 'dark', rg: 'ersv' }), '#c=18.2000,-66.5000,9&bm=dark&rg=ersv');
+  assert.strictEqual(V.write('3d', '#c=18.2000,-66.5000,9&rg=ersv', { b: '10' }), '#c=18.2000,-66.5000,9&b=10&rg=ersv', 'the 3D view keeps the 2D pick');
+  assert.strictEqual(V.write('2d', '#c=18.2000,-66.5000,9&rg=ersv', { rg: null }), '#c=18.2000,-66.5000,9', '"All of Puerto Rico" takes it out');
+});
