@@ -87,6 +87,7 @@ import buildings
 import climb
 import slope
 import watersheds
+import upstream
 import ecostress
 import community_assets
 import commuting
@@ -747,6 +748,7 @@ def main():
     facility_exposure.build(args.refresh)   # public facilities, students and main roads inside FEMA's 1% flood area, by municipio (needs flood.geojson, the facility layers and traffic_roads.geojson; docs/facility-exposure.md)
     exposure.build(refresh=args.refresh)   # residents and housing units exposed to flood, sea level rise and protected land and near transit, by municipio, barrio and tract (needs flood.geojson, protected.geojson, transport.json, operators.json and the crosswalk, all written above)
     watersheds.build(args.refresh)   # subwatersheds, streams and the catchments of What drains here (USGS WBD and NHDPlus HR; docs/watersheds.md)
+    upstream.build()   # what lies upstream of each reservoir and river gauge, from catchments.geojson and cache/upstream (python upstream.py --refresh fills it; docs/upstream.md)
     slope.build()   # the slope of the land by barrio and municipio, and the slope image of the maps (USGS 3DEP 10 m; docs/slope.md)
     climb.build()   # the climb on the walk to a current stop, by barrio and municipio (USGS 3DEP 10 m; the walkers of exposure.py; docs/climb.md)
     housing_series.build(args.refresh)   # every year of the housing variables (needs municipios.geojson, written above)
