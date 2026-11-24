@@ -2,7 +2,7 @@
 
 Three views of the observatory, as a statistician, a digital-twin builder and a GIS analyst would read it, turned into work items. The views are Claude's reading of the code and documentation on 2026-10-16 (main at `89d4223`), **not a review by outside experts**; item X1 asks for one.
 
-Each item says what already exists (checked in the code), what is missing, and when it counts as done. Status: **open**, **in progress** (a branch or pull request exists), **done**, or **decision** (waits on Francis, leadership or Compliance). Nothing here changes data or code; each item gets its own branch and pull request, one at a time, in the usual flow.
+Each item says what already exists (checked in the code), what is missing, and when it counts as done. Status: **open**, **in progress** (a branch or pull request exists), **done**, or **decision** (waits on the project lead, leadership or Compliance). Nothing here changes data or code; each item gets its own branch and pull request, one at a time, in the usual flow.
 
 ## Order
 

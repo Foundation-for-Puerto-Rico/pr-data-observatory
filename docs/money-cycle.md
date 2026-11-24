@@ -9,7 +9,7 @@ The Knowledge Area page `site/money-cycle.html` ("How public money moves" / "Có
 - **Every statement has a public source.** The sources are a list in the generator (`SOURCES`): the name, what it supports and its address. A statement with no source there does not go on the page.
 - **No opinion on how the process should work.** The page says what each body does by law, not whether it does it well.
 - **No example from a private conversation.** An example of something paid for and not in service is used only with a public record (decision 112 (e)); the page has none yet.
-- **In review.** It keeps the "In review" marker, the AI notice and `noindex` until Francis takes them off. Reviewer: leadership.
+- **In review.** It keeps the "In review" marker, the AI notice and `noindex` until the project lead takes them off. Reviewer: leadership.
 
 **What is on it**
 
@@ -27,7 +27,7 @@ The Knowledge Area page `site/money-cycle.html` ("How public money moves" / "Có
 | 10 See it in the data | Links to the exact section of the other pages where each stage shows, then the three pages and their stages. |
 | 11 Check what you learned | Four cases with the answer folded (`<details>`, no script). |
 
-**It teaches (2026-11-20).** Francis asked that the page be "bien educativa". The hero says what the reader can do after it (`LEARN`), and sections 6 and 8 to 11 are lists in the generator: `EXAMPLE`, `CONFUSED`, `QUESTIONS`, `SEE` and `CHECK`. Rules for them:
+**It teaches (2026-11-20).** the project lead asked that the page be "bien educativa". The hero says what the reader can do after it (`LEARN`), and sections 6 and 8 to 11 are lists in the generator: `EXAMPLE`, `CONFUSED`, `QUESTIONS`, `SEE` and `CHECK`. Rules for them:
 - The example is marked as made up and has no amount. A real case goes in only with a public record (decision 112 (e)).
 - A link into another page names a section that exists; a test checks every one.
 - The wording rule of the grants page (decision 111) holds: the page names a confusion only to deny it ("a balance is not money lost").

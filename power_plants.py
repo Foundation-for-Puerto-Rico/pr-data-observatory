@@ -23,10 +23,18 @@ One point per plant (EIA's point; all of a plant's generators share it), placed 
   sb, out  MW on standby, and MW out of service (EIA's OA and OS), when any
   units    operating generators; y0, y1: the first and last operating year among them
   plan     {technology: MW} planned or under construction; plan_ym: the earliest planned month (YYYY-MM)
-  status   "op" (at least one operating generator) or "planned"
+  status   "op" (at least one operating generator), "planned", or "built" (an added plant, below)
+
+Added plants (energy_src/plants_added.json, kept by hand with a source for each): solar plants of 1 MW or more that are built but not yet in EIA-860M,
+because they are not yet in commercial operation (CIRO One, the two Marahú farms, Yabucoa Solar in November 2026). Each gets status "built", no eia id, and
+  stage    "connected" (connected to the grid, commercial operation not yet declared) or "complete" (construction complete, not yet connected)
+  as_of    the month of that status (YYYY-MM); src, url: the source; osm: the OpenStreetMap ways whose outlines place the point
+An added plant leaves the file by itself, with a line in the log, once EIA lists a plant whose name matches its eia_match. The notes' totals (plants, mw,
+renewable_mw, battery_mw) stay EIA's operating plants; built_plants, built_mw and built_battery_mw count the added ones.
 """
 
 import json
+import re
 import sys
 from collections import Counter
 from datetime import date
@@ -41,6 +49,7 @@ ROOT = Path(__file__).resolve().parent
 CACHE = ROOT / "cache" / "energy"
 RAW = CACHE / "eia860m_plants.pr.json"
 OUT = hs.OUT / "power_plants.geojson"
+ADDED = ROOT / "energy_src" / "plants_added.json"
 log = hs.log
 MONTHS = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"]
 OP_COLS = ["Plant ID", "Plant Name", "Technology", "Nameplate Capacity (MW)", "Nameplate Energy Capacity (MWh)", "Status", "Operating Year", "Latitude", "Longitude"]
@@ -162,7 +171,9 @@ def build(refresh=False, check=False):
             if p["plan_ym"]:
                 extra["plan_ym"] = min(p["plan_ym"])
         feats.append(fac.feature(p["lon"], p["lat"], p["name"], "Power plant", geoid, M, **extra))
-    feats.sort(key=lambda f: (-(f["properties"]["mw"] or f["properties"].get("bat_mw", 0)), f["properties"]["eia"]))
+    built, absorbed = added(plants, M)
+    feats += built
+    feats.sort(key=lambda f: (-(f["properties"]["mw"] or f["properties"].get("bat_mw", 0)), f["properties"].get("eia") or "", f["properties"]["name"]))
     opf = [f["properties"] for f in feats if f["properties"]["status"] == "op"]
     if len(opf) < FLOOR:
         raise SystemExit(f"power_plants: only {len(opf)} plants with an operating generator (67 in September 2026); not written")
@@ -173,7 +184,9 @@ def build(refresh=False, check=False):
              "mw": r1(sum(q["mw"] for q in opf)), "battery_mw": r1(by_tech["battery"]), "battery_mwh": r1(sum(q.get("bat_mwh", 0) for q in opf)),
              "renewable_mw": r1(sum(v for k, v in by_tech.items() if k in RENEWABLE)), "standby_mw": r1(sum(q.get("sb", 0) for q in opf)),
              "out_of_service_mw": r1(sum(q.get("out", 0) for q in opf)), "planned_mw": r1(sum(sum(f["properties"].get("plan", {}).values()) for f in feats)),
-             "by_tech": {k: r1(v) for k, v in sorted(by_tech.items(), key=lambda kv: -kv[1])}, "municipios": len({q["geoid"] for q in opf}), "left_out": left_out}
+             "by_tech": {k: r1(v) for k, v in sorted(by_tech.items(), key=lambda kv: -kv[1])}, "municipios": len({q["geoid"] for q in opf}), "left_out": left_out,
+             "built_plants": len(built), "built_mw": r1(sum(f["properties"]["mw"] for f in built)), "built_battery_mw": r1(sum(f["properties"].get("bat_mw", 0) for f in built)),
+             "built_absorbed": absorbed}
     out = {"type": "FeatureCollection", "source": "eia_860m", "vintage": d["month"], "built": d["fetched"], "notes": notes, "features": feats}
     text = json.dumps(out, ensure_ascii=False, separators=(",", ":"))
     if check:
@@ -182,8 +195,34 @@ def build(refresh=False, check=False):
         return 0 if same else 1
     OUT.write_text(text, encoding="utf-8", newline="\n")
     log(f"wrote {OUT.name}: {notes['plants']} plants in {notes['municipios']} municipios, {notes['mw']:,} MW without batteries, {notes['battery_mw']} MW of batteries, "
-        f"{notes['renewable_mw']} MW renewable; {notes['planned_plants']} planned plants ({notes['planned_mw']} MW planned in all); {len(left_out)} left out; {len(text) // 1024} KB")
+        f"{notes['renewable_mw']} MW renewable; {notes['planned_plants']} planned plants ({notes['planned_mw']} MW planned in all); "
+        f"{len(built)} built plants added ({notes['built_mw']} MW){'; now in EIA, no longer added: ' + ', '.join(absorbed) if absorbed else ''}; {len(left_out)} left out; {len(text) // 1024} KB")
     return 0
+
+
+def added(plants, M):
+    """The built plants of energy_src/plants_added.json that EIA does not list yet, as features; and the names of those EIA now lists (eia_match)."""
+    names = [p["name"].lower() for p in plants.values()]
+    feats, absorbed = [], []
+    for a in json.loads(ADDED.read_text(encoding="utf-8"))["plants"]:
+        if a["stage"] not in ("connected", "complete") or a["tech"] not in set(TECH.values()):
+            raise SystemExit(f"power_plants: {ADDED.name}: {a['key']} has stage {a['stage']!r} or technology {a['tech']!r}")
+        if any(re.search(a["eia_match"], n) for n in names):
+            absorbed.append(a["name"])
+            continue
+        geoid = M.at(a["lon"], a["lat"])
+        if geoid is None:
+            raise SystemExit(f"power_plants: {ADDED.name}: {a['key']} is outside every municipio")
+        by = {a["tech"]: r1(a["mw"])}
+        extra = {"tech": a["tech"], "mw": r1(a["mw"]), "status": "built", "stage": a["stage"], "as_of": a["as_of"]}
+        if a.get("bat_mw"):
+            by["battery"] = r1(a["bat_mw"])
+            extra["bat_mw"] = r1(a["bat_mw"])
+            if a.get("bat_mwh"):
+                extra["bat_mwh"] = r1(a["bat_mwh"])
+        extra.update(by=dict(sorted(by.items(), key=lambda kv: (-kv[1], kv[0]))), src=a["source"]["name"], url=a["source"]["url"], osm=a["osm"])
+        feats.append(fac.feature(a["lon"], a["lat"], a["name"], "Power plant", geoid, M, **extra))
+    return feats, absorbed
 
 
 if __name__ == "__main__":

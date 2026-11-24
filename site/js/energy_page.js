@@ -52,7 +52,7 @@
     const c = D.capacity, s = D.series, [cust, ci] = lastOf(s.rooftop_customers), y = lastYear(), sh = shares(D.annual_gwh[y]), m = D.municipios;
     const bess = m.bess.reduce((a, b) => a + b, 0), p = D.price, pi = p.months.length - 1;
     $('#enNow').innerHTML = `<div class="bb-cards">${[
-      card('bolt', T('Power plants of 1 MW or more'), T('{v} MW', { v: fmt(c.mw) }), T('{r} MW renewable; EIA, {m}', { r: fmt(c.renewable_mw), m: MON(c.as_of) })),
+      card('bolt', T('Power plants of 1 MW or more'), T('{v} MW', { v: fmt(c.mw) }), T(c.built_mw ? '{r} MW renewable; EIA, {m}. Another {b} MW of solar is built, not yet in commercial operation' : '{r} MW renewable; EIA, {m}', { r: fmt(c.renewable_mw), m: MON(c.as_of), b: fmt(c.built_mw) })),   // built: solar plants EIA does not list yet (power_plants.py)
       card('solar_power', T('Rooftop solar'), T('{v} MW', { v: fmt(c.rooftop_mw) }), T('{n} customers; LUMA, {m}', { n: fmt(cust), m: MON(s.months[ci]) })),
       card('battery_charging_full', T('Home and business batteries'), fmt(bess), T('installations; LUMA, {m}', { m: MON(m.as_of) })),
       card('eco', T('Renewable share of production, {y}', { y }), pct(sh.withRooftop), T('{p} from the plants alone', { p: pct(sh.plants) })),

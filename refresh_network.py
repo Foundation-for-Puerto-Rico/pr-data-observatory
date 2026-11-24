@@ -60,6 +60,15 @@ def refresh_exposure():
         print(f"  exposure series not refreshed: {type(e).__name__}: {e}")   # str(e) names the file; repr(e) does not
 
 
+def refresh_reach():
+    """transit_reach.json (transit-reach.html) follows the stops and the timetable end dates, after the exposure series it reads. Like them it must never stop the transit refresh."""
+    try:
+        import transit_reach
+        transit_reach.main([])
+    except BaseException as e:
+        print(f"  transit by barrio not refreshed: {type(e).__name__}: {e}")
+
+
 def refresh_climb():
     """The climb on the walk to a stop follows the same walkers as the exposure files (climb.py). Like them it must never stop the transit refresh."""
     try:
@@ -137,6 +146,7 @@ def main():
         print("No transit feed changed; nothing written.")
         access.apply_files(OUT, date.today())   # still recomputed: it writes only when a value changed
         refresh_exposure()                      # residents and housing units near a stop, in the exposure files, only when a value changed
+        refresh_reach()                         # transit_reach.json: the class of each barrio, written only when it changed
         catalog.apply()                         # the Overview headline of residents near a stop follows municipalities.json
         supply.apply(OUT)                       # transit_supply.json: whether each timetable is current changes with the date, so it is recomputed (written only when it changed)
         registry.apply()                        # the ledger and registry.json, last: only the files whose content changed get a new last-updated date
@@ -174,6 +184,7 @@ def main():
     dump("meta.json", meta)
     access.apply_files(OUT, date.today())   # place_access.json, the access fields of municipalities.json and meta.json, the transit_* fields of places.json
     refresh_exposure()                      # the transit families of the three exposure files
+    refresh_reach()                         # transit_reach.json: the class of each barrio, after the exposure files
     refresh_climb()                         # the climb on the walk to a current stop (climb.py), after the walkers above
     catalog.apply()                         # catalog.json: the headline figure of residents near a stop and the file weights, only when something changed
     supply.apply(OUT)                       # transit_supply.json: service by stop pattern, route and stop, hour by hour

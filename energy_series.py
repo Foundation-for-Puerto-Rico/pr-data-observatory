@@ -311,7 +311,7 @@ def build(refresh=False, check=False):
     plants = json.loads((hs.OUT / "power_plants.geojson").read_text(encoding="utf-8"))
     lines = json.loads((hs.OUT / "power_lines.geojson").read_text(encoding="utf-8"))
     pn = plants["notes"]
-    cap = {"as_of": plants["vintage"], "by_tech": pn["by_tech"], "mw": pn["mw"], "renewable_mw": pn["renewable_mw"], "battery_mw": pn["battery_mw"], "plants": pn["plants"],
+    cap = {"as_of": plants["vintage"], "by_tech": pn["by_tech"], "mw": pn["mw"], "renewable_mw": pn["renewable_mw"], "battery_mw": pn["battery_mw"], "plants": pn["plants"], "built_mw": pn.get("built_mw", 0), "built_plants": pn.get("built_plants", 0),
            "rooftop_mw": next((v for v in reversed(series["rooftop_mw"]) if v), None), "rooftop_month": next((m for m, v in zip(reversed(series["months"]), reversed(series["rooftop_mw"])) if v), None)}
     out = {"source": "luma_bureau", "built": src.get("checked") or datetime.date.today().isoformat(),
            "files": {"dg": src["dg"], "metrics": src["metrics"]},

@@ -1,6 +1,6 @@
 # The federal transportation inventories as map layers
 
-HANDOFF decision 105, step 4 (2026-11-14). Francis approved step 4 of `docs/transportation-upgrade-2026-11.md` ("Sí, paso 4"): bridges with their condition, airports, ferry routes with passengers, EV charging stations and tunnels, from the federal inventories, completing the points volunteers mapped.
+HANDOFF decision 105, step 4 (2026-11-14). The project lead approved step 4 of `docs/transportation-upgrade-2026-11.md` ("Sí, paso 4"): bridges with their condition, airports, ferry routes with passengers, EV charging stations and tunnels, from the federal inventories, completing the points volunteers mapped.
 
 ## Files
 

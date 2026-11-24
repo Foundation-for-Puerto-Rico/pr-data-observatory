@@ -1,6 +1,6 @@
 # Traffic on the main roads
 
-HANDOFF decision 105, step 2 (2026-11-13). Francis approved step 2 of `docs/transportation-upgrade-2026-11.md` ("Sí, paso 2"): traffic on the roads, from the Federal Highway Administration's Highway Performance Monitoring System (HPMS), and the traffic on the roads each simulated connection between municipios follows.
+HANDOFF decision 105, step 2 (2026-11-13). The project lead approved step 2 of `docs/transportation-upgrade-2026-11.md` ("Sí, paso 2"): traffic on the roads, from the Federal Highway Administration's Highway Performance Monitoring System (HPMS), and the traffic on the roads each simulated connection between municipios follows.
 
 ## Files
 

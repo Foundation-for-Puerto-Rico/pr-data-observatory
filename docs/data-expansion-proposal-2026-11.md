@@ -1,8 +1,8 @@
 # Proposal: more dimensions for the observatory (new sources, and layers computed from data it already holds)
 
-Date: 2026-11-14. Status: **approved by Francis on 2026-11-14 ("Approve, start step 1"): decision 107 (a) to (h) as proposed. Step 1 is being built on branch `data/people-movement`.** This pull request changes no page and publishes no data. It adds this document and 27 rows to the wanted-data list (`site/data/wanted.json`), and moves one row (`fdic`) from candidate to checked.
+Date: 2026-11-14. Status: **approved by the project lead on 2026-11-14 ("Approve, start step 1"): decision 107 (a) to (h) as proposed. Step 1 is being built on branch `data/people-movement`.** This pull request changes no page and publishes no data. It adds this document and 27 rows to the wanted-data list (`site/data/wanted.json`), and moves one row (`fdic`) from candidate to checked.
 
-**In one paragraph.** On 2026-11-14 Francis asked what data the observatory could add, as map layers and in the catalogue, to support multidimensional analysis of Puerto Rico. He then asked for layers that do not exist yet but can be computed from data the observatory already holds, "like in algebra when you get the value of X based on the other variables". This proposal answers both. Track A adds sources: seven were tested that day and returned Puerto Rico rows with no key, and ten are still to confirm. Track B adds nine computed layers that need no new source. The observatory has room: it holds 140 MB of data against a limit of 1,000 MB (13%).
+**In one paragraph.** On 2026-11-14 the project lead asked what data the observatory could add, as map layers and in the catalogue, to support multidimensional analysis of Puerto Rico. They then asked for layers that do not exist yet but can be computed from data the observatory already holds, "like in algebra when you get the value of X based on the other variables". This proposal answers both. Track A adds sources: seven were tested that day and returned Puerto Rico rows with no key, and ten are still to confirm. Track B adds nine computed layers that need no new source. The observatory has room: it holds 140 MB of data against a limit of 1,000 MB (13%).
 
 ## What the observatory holds today (main, 2026-11-14)
 
@@ -80,7 +80,7 @@ These rows were tested on 2026-10-05 or later and wait only for a decision to bu
 
 ## Track B: layers computed from data the observatory already holds
 
-Francis's question was whether gaps can be filled the way algebra solves for X. They can, in three ways. The three differ in how far the result can be trusted, so each layer says which kind it is.
+The project lead's question was whether gaps can be filled the way algebra solves for X. They can, in three ways. The three differ in how far the result can be trusted, so each layer says which kind it is.
 
 | Kind | What it is | What it may claim |
 |---|---|---|
@@ -116,7 +116,7 @@ Many simple ratios need no new layer. The Analysis tab's "Show as" options alrea
 
 ## The steps, first visible result first
 
-Effort as in `docs/proposal-2026-10.md`: **S** under 1 day, **M** 2-4 days, **L** 1-2 weeks. Each step is its own pull request, merged only on Francis's word.
+Effort as in `docs/proposal-2026-10.md`: **S** under 1 day, **M** 2-4 days, **L** 1-2 weeks. Each step is its own pull request, merged only on the project lead's word.
 
 1. **People and movement (M). Shows on the site first.** ACS tables by municipio, barrio and tract, each with its margin of error: language and English ability, nutrition assistance (PAN), poverty by age, race and ethnicity, migration. Daytime population by municipio. All appear in Explore, the Analysis tab and the area profiles. What was built, and what the data did not allow, is in "Step 1 as built" below.
 2. **Vulnerability and walkability (S).** The Social Vulnerability Index by tract and the walkability index by block group.
@@ -128,7 +128,7 @@ Effort as in `docs/proposal-2026-10.md`: **S** under 1 day, **M** 2-4 days, **L*
 8. **Health providers by specialty (M).** Counts by municipio.
 9. **The hexagon grid (L), then the layers that build on it or on the road network:** residents who can be cut off (L), upstream of each reservoir (M), jobs within reach (S-M), net migration by age (M).
 
-The sources not yet confirmed are tested when Francis picks them in (g).
+The sources not yet confirmed are tested when the project lead picks them in (g).
 
 ### Step 1 as built (2026-11-14)
 
@@ -298,7 +298,7 @@ Building step 1 changed four things in the plan above. Each is a finding, not a 
 - Every technical term a reader sees gets a sourced definition in Spanish and English.
 - Each data step adds dictionary entries and profile figures. Measured on this branch (`budget.py`, 2026-11-14): the area profile's data is at 656.9 of 660 KB and its scripts at 120.1 of 122 KB; the dictionary page's data is at 727.5 of 760 KB; the map's scripts are at 190.2 of 250 KB. The area profile has the least room, so each step starts by measuring it and makes room if needed.
 
-## Decisions for Francis (decision 107)
+## Decisions for the project lead (decision 107)
 
 - **(a) The order of the steps.** Proposed: 1 to 9 as above.
 - **(b) The three kinds of computed layer and their labels** (calculated, overlaid, estimate), and the rule that an estimate is published only with a check and a range.
@@ -307,7 +307,7 @@ Building step 1 changed four things in the plan above. Each is a finding, not a 
 - **(e) Species records.** Proposed: use only the datasets under CC0 and CC BY, and leave the non-commercial ones out.
 - **(f) The hexagon grid** as the observatory's unit below barrio. Proposed: yes, after steps 1 to 8.
 - **(g) Which unconfirmed sources to test next.** Proposed: the ACS tables first (step 1 needs them), then flood insurance and rainfall.
-- **(h) Tsunami zones.** If no open copy is found, asking the Red Sísmica in writing is a request to an outside body. Nothing is sent without Francis's word.
+- **(h) Tsunami zones.** If no open copy is found, asking the Red Sísmica in writing is a request to an outside body. Nothing is sent without the project lead's word.
 
 ## Sources checked on 2026-11-14
 

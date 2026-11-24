@@ -1,8 +1,8 @@
 # Proposal: new satellite, building and places sources (GeoAI list)
 
-Date: 2026-11-09. Status: **approved by Francis on 2026-11-09 (decision 91 in HANDOFF.md), all five choices as proposed; nothing built yet.** This pull request changes no page and builds no data. It adds eight rows to the wanted-data list (`site/data/wanted.json`), rewrites the `buildings` row with what was measured, and adds five glossary terms (building footprint, land cover, tree cover loss, active fire detection, HLS).
+Date: 2026-11-09. Status: **approved by the project lead on 2026-11-09 (decision 91 in HANDOFF.md), all five choices as proposed; nothing built yet.** This pull request changes no page and builds no data. It adds eight rows to the wanted-data list (`site/data/wanted.json`), rewrites the `buildings` row with what was measured, and adds five glossary terms (building footprint, land cover, tree cover loss, active fire detection, HLS).
 
-**In one paragraph.** Francis shared a list of 30 open geospatial sources on 2026-11-09. Six are already in the observatory (Sentinel-2, Landsat, OpenStreetMap, Overture places, Planetary Computer, and better elevation than SRTM). Fifteen are machine-learning training sets, tools or not about Puerto Rico. Nine would add something, and they are tested and ranked below. The first and largest gain is **buildings**: Overture adds 656,964 buildings from Google and Microsoft that the 3D view does not draw today. Next comes **land cover change since María**, then **fires**, a denser **greenness series**, and a second **places** source.
+**In one paragraph.** the project lead shared a list of 30 open geospatial sources on 2026-11-09. Six are already in the observatory (Sentinel-2, Landsat, OpenStreetMap, Overture places, Planetary Computer, and better elevation than SRTM). Fifteen are machine-learning training sets, tools or not about Puerto Rico. Nine would add something, and they are tested and ranked below. The first and largest gain is **buildings**: Overture adds 656,964 buildings from Google and Microsoft that the 3D view does not draw today. Next comes **land cover change since María**, then **fires**, a denser **greenness series**, and a second **places** source.
 
 ## What was tested (2026-11-09, no key needed for any test)
 
@@ -37,14 +37,14 @@ Effort as in `docs/proposal-2026-10.md`: **S** under 1 day, **M** 2-4 days, **L*
 The yearly 10 m land cover 2017-2023, with ESA WorldCover as a check where the two overlap, and Hansen tree cover loss by year since 2001. Summaries by barrio and municipio and a Knowledge Area page, "How the land changed". Hansen needs a small addition to `raster.py` (read striped files; the strip index works with range requests like tiles) or a one-time download into the cache. Labels: modelled land cover changes include model noise; tree cover loss includes hurricane damage that regrows, so it is not called deforestation.
 
 ### C. Fires (S-M)
-**Built on 2026-11-10 (branch `data/active-fires`): `fires.py`, `fires_series.json` (detections by municipio 2019-2025, per 100 km², and the last 12 months), workflow `fires.yml`; `docs/fires.md`. The complete years come from FIRMS's yearly country files, which need no key; the key (secret `FIRMS_MAP_KEY`, set by Francis on 2026-11-10) is used only for the last 12 months.**
-NASA FIRMS active fire detections (VIIRS 375 m), counted by municipio and month, refreshed daily by the bot. **Francis needs to request the free MAP_KEY** (it is sent by email), and we store it as a GitHub Actions secret, as with ECOSTRESS. Detections are counted, never drawn as burned areas.
+**Built on 2026-11-10 (branch `data/active-fires`): `fires.py`, `fires_series.json` (detections by municipio 2019-2025, per 100 km², and the last 12 months), workflow `fires.yml`; `docs/fires.md`. The complete years come from FIRMS's yearly country files, which need no key; the key (secret `FIRMS_MAP_KEY`, set by the project lead on 2026-11-10) is used only for the last 12 months.**
+NASA FIRMS active fire detections (VIIRS 375 m), counted by municipio and month, refreshed daily by the bot. **The project lead needs to request the free MAP_KEY** (it is sent by email), and we store it as a GitHub Actions secret, as with ECOSTRESS. Detections are counted, never drawn as burned areas.
 
 ### D. Greenness through the seasons (M)
 HLS every 2 to 3 days at 30 m, made into monthly greenness by barrio, so drought and recovery after storms show over time. It extends the live vegetation layer (`vegetation.py`), which has one summer composite.
 
 ### E. A second places source (S to check)
-Foursquare Open Source Places, to measure how complete Overture's places are in Puerto Rico, and to test whether its dates say anything about businesses opening and closing. Downloading it means sharing FPR's contact details with Foursquare on Hugging Face, which needs Francis's OK. Every point goes through `places_privacy.py`, as Overture's do.
+Foursquare Open Source Places, to measure how complete Overture's places are in Puerto Rico, and to test whether its dates say anything about businesses opening and closing. Downloading it means sharing FPR's contact details with Foursquare on Hugging Face, which needs the project lead's OK. Every point goes through `places_privacy.py`, as Overture's do.
 
 ### Later, each a proposal of its own
 - **Disaster imagery** (Maxar Open Data, Copernicus EMS) for Fiona, María and the 2020 earthquakes: coverage, whether the Maxar program still runs, and Compliance on non-commercial terms first.
@@ -53,7 +53,7 @@ Foursquare Open Source Places, to measure how complete Overture's places are in 
 ## Not taken, and why
 - **Training sets for machine learning:** DSTL (Kaggle), SEN12MS, DeepSat SAT-4/SAT-6, SATIN, LandCover Aerial, xView2, Sen1Floods11. They train models; they are not maps of Puerto Rico. They only matter if the Prithvi work goes ahead.
 - **Scottish lidar:** not Puerto Rico. **SRTM:** the USGS 3DEP lidar and 1/3 arc-second elevation are sharper.
-- **Dynamic World and the Google Earth Engine catalogue:** both need an Earth Engine account and an export step, against Francis's rule of 2026-11-04 that the observatory builds only from sources a script can read directly. Planetary Computer covers the same sources.
+- **Dynamic World and the Google Earth Engine catalogue:** both need an Earth Engine account and an export step, against the project lead's rule of 2026-11-04 that the observatory builds only from sources a script can read directly. Planetary Computer covers the same sources.
 - **Google Dataset Search, the IBM-NASA Hugging Face collection:** tools to find datasets for this list, not layers.
 - **Google Open Buildings, Microsoft footprints, OpenStreetMap buildings separately:** Overture already merges them.
 
@@ -63,7 +63,7 @@ Foursquare Open Source Places, to measure how complete Overture's places are in 
 - **Summaries, not images,** unless a step says otherwise; caches in `C:/t/cache`, never in the synced folder.
 - **Credit lines:** "© Overture Maps Foundation, © OpenStreetMap contributors" (ODbL); "Impact Observatory, Esri" (CC BY 4.0); "Source: Hansen/UMD/Google/USGS/NASA"; "NASA FIRMS"; "ESA WorldCover"; HLS from NASA LP DAAC through Microsoft Planetary Computer.
 
-## Decisions for Francis (decision 91)
+## Decisions for the project lead (decision 91)
 - (a) Approve the order: A1, A2, then B, C, D, E; A3 and the later items wait on Compliance or their own proposal.
 - (b) A1 adds DuckDB to the refresh environment (`requirements-refresh.txt`) to read Overture's GeoParquet. It is one Python package with no GDAL.
 - (c) A2 hosting: measure options 2 and 3 first, and use option 1 only if neither fits.

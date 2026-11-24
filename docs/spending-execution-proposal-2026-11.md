@@ -1,8 +1,8 @@
 # Proposal: from where public money is assigned to how far it has gone (Public spending)
 
-Date: 2026-11-10. Status: **approved by Francis on 2026-11-12 (decision 96 in HANDOFF.md), choices (a) to (e) as proposed. Step 1 merged as #199 on 2026-11-11 and live; steps 2 to 4 next, each its own PR.**
+Date: 2026-11-10. Status: **approved by the project lead on 2026-11-12 (decision 96 in HANDOFF.md), choices (a) to (e) as proposed. Step 1 merged as #199 on 2026-11-11 and live; steps 2 to 4 next, each its own PR.**
 
-**In one paragraph.** A CPA colleague of Francis checked the Public spending page on 2026-11-10. They found that it brings together sources usually read apart and says what cannot be added. They also found that it shows where money is *assigned*, not how far it has gone: approved, obligated, contracted, disbursed, spent. They asked whether the tool is for distribution only or also for execution and results. This proposal keeps the page a **distribution tool that states the stage of every figure**. It adds execution only where a script can read the stage directly: federal **outlays** from USAspending, and **FEMA Public Assistance** by project from OpenFEMA, with each project's stage. Results (what the money achieved) are left out: they need program data no source here has. The first step is notes only and shows on the site.
+**In one paragraph.** A CPA colleague of the project lead checked the Public spending page on 2026-11-10. They found that it brings together sources usually read apart and says what cannot be added. They also found that it shows where money is *assigned*, not how far it has gone: approved, obligated, contracted, disbursed, spent. They asked whether the tool is for distribution only or also for execution and results. This proposal keeps the page a **distribution tool that states the stage of every figure**. It adds execution only where a script can read the stage directly: federal **outlays** from USAspending, and **FEMA Public Assistance** by project from OpenFEMA, with each project's stage. Results (what the money achieved) are left out: they need program data no source here has. The first step is notes only and shows on the site.
 
 ## 1. What the colleague asked, against the page today
 
@@ -21,7 +21,7 @@ Measured on `main` (`bcaab7c`), page `site/public-spending.html`, generator `doc
 | FEMA Public Assistance, the largest recovery program, is missing | **Used only to avoid double counting** (dedup group `fema_pa`) | Its own section and map, by project stage (step 3) |
 | CDBG-DR actual spending (DRGR quarterly reports) | **Missing** | Draws from USAspending outlays, checked against HUD's monthly report (step 4) |
 | COR3 project data | **Dropped** (its API does not answer a plain script, and it is not worked around; its map layers have no licence and repeat OpenFEMA) | Stays out |
-| Contralor contract register (who receives the money) | **Dropped** by Francis on 2026-11-04 (lean open data: no letter, no scraping) | Stays out unless Francis reopens it |
+| Contralor contract register (who receives the money) | **Dropped** by the project lead on 2026-11-04 (lean open data: no letter, no scraping) | Stays out unless the project lead reopens it |
 
 ## 2. What the sources give, tested on 2026-11-10 with plain scripts
 
@@ -38,7 +38,7 @@ Measured on `main` (`bcaab7c`), page `site/public-spending.html`, generator `doc
 
 ## 3. Steps
 
-Each step is its own PR, merged only on Francis's word. Every new technical word gets a sourced es/en definition with its tooltip.
+Each step is its own PR, merged only on the project lead's word. Every new technical word gets a sourced es/en definition with its tooltip.
 
 1. **Notes and labels (first visible on the site).** No new data.
    - A stage and basis label on every figure: *proposed*, *approved*, *spent (reported by agencies)*, *obligated*, *subawarded*, and later *outlaid*. Each label says "reported" or "audited".
@@ -58,7 +58,7 @@ Each step is its own PR, merged only on Francis's word. Every new technical word
 - **COR3 project data** and **DRGR activity reports**: see sections 1 and 2.
 - **A budget-to-actual from the audited statements**: PDF tables, on another accounting basis.
 
-## 5. Choices for Francis
+## 5. Choices for the project lead
 
 - (a) **Scope**: distribution with stage labels, plus execution only where a script reads the stage (this proposal). The alternative is a full execution analysis, which needs the sources in section 4.
 - (b) **Order**: 1 notes, 2 federal outlays, 3 FEMA Public Assistance, 4 CDBG-DR draws.

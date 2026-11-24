@@ -129,7 +129,7 @@ function page3d() {
 
 test('3D: data layers and the columns count; the Scene settings and Límites never do', () => {
   const p = page3d(), KEPT = ['lyTerrain', 'lyBuildings', 'lyMuni'], data = p.ids.map(([id]) => id).filter(id => !KEPT.includes(id));
-  assert.ok(p.els.lyMuni && p.els.lyMuni.checked, 'Límites is on when the view opens');
+  assert.ok(p.els.lyMuni && !p.els.lyMuni.checked, 'Límites is off when the view opens (2026-11-13)');
   assert.deepStrictEqual(p.adapter.list().map(i => i.id).sort(), ['lyRoutes', 'lyTrips'], 'on at the start: routes and the scheduled vehicles');
   for (let k = 0; k < 400; k++) {
     Object.values(p.els).forEach(e => { if ('checked' in e) e.checked = rnd() < .4; });

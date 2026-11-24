@@ -1,6 +1,6 @@
 # Palettes of the data layers, and how they read for people with colour-vision deficiency
 
-Plan item 6 (2026-10-06). Every colour that a data layer uses is defined once, in `site/js/core/palettes.js`, so a map, its legend and a chart agree. This page says where each palette comes from, what it is used for, and what a colour-vision test found. **No palette was changed.** Changing one is a design decision (and changes the golden test of the Economy tab); the findings below are for Francis and the design owner to decide on.
+Plan item 6 (2026-10-06). Every colour that a data layer uses is defined once, in `site/js/core/palettes.js`, so a map, its legend and a chart agree. This page says where each palette comes from, what it is used for, and what a colour-vision test found. **No palette was changed.** Changing one is a design decision (and changes the golden test of the Economy tab); the findings below are for the project lead and the design owner to decide on.
 
 ## The palettes
 

@@ -1,4 +1,4 @@
-"""The review of the function crosswalk's 40 flagged rows (HANDOFF decision 92). Francis on 2026-11-09: "Decide optimally about crosswalk"; Claude
+"""The review of the function crosswalk's 40 flagged rows (HANDOFF decision 92). The project lead on 2026-11-09: "Decide optimally about crosswalk"; Claude
 decided each row against the UN Classification of the Functions of Government (COFOG), mapped to the crosswalk's functions, keeping one rule across
 rows of the same kind. make_crosswalk.py applies these decisions before it writes dictionary_src/spending_crosswalk.csv, so a rebuild keeps them;
 `python crosswalk_decisions.py` applies them to the CSV as it is (no download) and writes crosswalk_review.md and crosswalk_decisions.md.
@@ -93,7 +93,7 @@ def write_lists(rows):
     (HERE / "crosswalk_review.md").write_text(nl.join(review) + nl, encoding="utf-8", newline=nl)
     done = [r for r in rows if r["flag"] == "reviewed"]
     dec = ["# Function crosswalk: the review decisions", "",
-           f"Francis asked on {DATE} for the flagged rows to be decided (HANDOFF decision {DECISION}). Each row was decided against the UN Classification of the Functions of Government (COFOG),",
+           f"the project lead asked on {DATE} for the flagged rows to be decided (HANDOFF decision {DECISION}). Each row was decided against the UN Classification of the Functions of Government (COFOG),",
            "mapped to the crosswalk's functions, with one rule for rows of the same kind. Three functions changed; the other rows keep the draft's choice, now reviewed.", "",
            "| Kind | Code | Name | Function | Decision |", "|---|---|---|---|---|"]
     dec += [f"| {r['kind']} | {r['code']} | {r['name']} | {r['function_category'] or '(from the entity)'} | {DECISIONS[(r['kind'], r['code'])][1]} |" for r in done]

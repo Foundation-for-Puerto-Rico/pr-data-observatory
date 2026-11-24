@@ -10,9 +10,9 @@ The Knowledge Area page `site/unused-funds.html` ("Federal funds returned and un
 - **Nothing is called "lost".** The data do not support it. A test checks the page's words.
 - **No private recipient is named.** Step 1 names no recipient at all: it counts by federal agency and by program.
 - **The page states amounts, dates and rules.** It draws no conclusion about an agency and recommends no policy.
-- **In review.** The page keeps the "In review" marker, the AI notice and `noindex` until the Compliance review of federal grant content (decision 21) is done and Francis takes them off.
+- **In review.** The page keeps the "In review" marker, the AI notice and `noindex` until the Compliance review of federal grant content (decision 21) is done and the project lead takes them off.
 
-**Status (2026-11-19):** the four steps are merged and live (#292, #294, #297, #299), and Francis approved the eighteen choices made in the work (HANDOFF decision 110, (1) to (18)). Open: the Compliance review, a "returned" line in the Budget and public spending page's stage notes, and the other pages that still call that page "Public spending".
+**Status (2026-11-19):** the four steps are merged and live (#292, #294, #297, #299), and the project lead approved the eighteen choices made in the work (HANDOFF decision 110, (1) to (18)). Open: the Compliance review, a "returned" line in the Budget and public spending page's stage notes, and the other pages that still call that page "Public spending".
 
 ## The review of 2026-11-19 and what it changed (decision 111)
 
@@ -147,7 +147,7 @@ A program is apart only for a reason that holds for the whole program. The workf
 
 **Source:** the Federal Audit Clearinghouse API, the source of the municipio audit series (decision 70). It reads three tables: the single audits filed by bodies in Puerto Rico from audit year 2019 (`general`), their findings (`findings`) and their award lines with a finding (`federal_awards`).
 
-**The key.** The API needs a free api.data.gov key in `FAC_API_KEY`. Without it the script uses the public `DEMO_KEY`, which allows ten calls an hour. A full read is seventeen calls, because the service refuses long addresses and the audits are asked for in eight chunks. With the public key the script stops at the limit, keeps the published file, and a rerun an hour later resumes from the cache. `build.py` never refreshes this file: refresh it by hand. The key was set on Francis's computer on 2026-11-18 (user level); it is never written to the repository, the cache or the site.
+**The key.** The API needs a free api.data.gov key in `FAC_API_KEY`. Without it the script uses the public `DEMO_KEY`, which allows ten calls an hour. A full read is seventeen calls, because the service refuses long addresses and the audits are asked for in eight chunks. With the public key the script stops at the limit, keeps the published file, and a rerun an hour later resumes from the cache. `build.py` never refreshes this file: refresh it by hand. The key was set on the project lead's computer on 2026-11-18 (user level); it is never written to the repository, the cache or the site.
 
 **How a finding is counted**
 - The API lists a finding once for each award line it touches. Here a finding is one (audit, reference number).

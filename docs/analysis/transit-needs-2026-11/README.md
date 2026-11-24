@@ -1,7 +1,7 @@
 # Where a new route or connection is most needed (phase 5, first version), 2026-11
 
 Phase 5 of [the transit analysis plan](../../transit-network-analysis-plan-2026-10.md): a ranked list of barrios and of places between routes to look at
-first, with the reasons behind each, for FPR's review. Open data only, nothing requested from operators, no key. Asked for by Maite Barragan on
+first, with the reasons behind each, for FPR's review. Open data only, nothing requested from operators, no key. Asked for by a colleague on
 2026-11-10; prepared with Claude (AI).
 
 **This is a planning aid, not a demand forecast or an engineering study.** It is not on the public site. A public recommendation of new routes or
@@ -74,7 +74,7 @@ It brings together the parts of phases 2 to 4 that open data allow, at the barri
   less coverage, and the road file has no footpaths.
 - **The ACS has margins of error.** Small barrios swing, which is why only barrios with 500 residents or more are ranked and the no-vehicle
   share carries a reliability flag. The window is 2020-2024.
-- **No ridership or origin-destination data.** Phase 4's requests are not made (Maite, 2026-10-09: open data only for now). Need is
+- **No ridership or origin-destination data.** Phase 4's requests are not made (a colleague, 2026-10-09: open data only for now). Need is
   measured by proxies.
 - **Phase 3 is only partly built.** Timed transfers (the wait between an arrival and the next departure) and journey times from the hubs are
   not computed, and the hubs are FPR's to choose (the plan's decision 3).

@@ -51,7 +51,7 @@ The 2024 release has no geostationary satellite file for Puerto Rico; the locati
 
 ## The FCC account (done once)
 
-The public data API needs a free FCC account and an API token. Francis created them on 2026-11-10 (CORES username, no FRN needed: an FRN is only for filers), and the
+The public data API needs a free FCC account and an API token. The project lead created them on 2026-11-10 (CORES username, no FRN needed: an FRN is only for filers), and the
 two values are the repository secrets `FCC_BDC_USERNAME` (the CORES email) and `FCC_BDC_HASH` (the token from broadbandmap.fcc.gov > username > Manage API Access).
 They are never printed, written to the repository, the cache or the site. To renew the token: sign in at broadbandmap.fcc.gov, Manage API Access, generate a new token,
 and replace the secret `FCC_BDC_HASH` (Settings > Secrets and variables > Actions).

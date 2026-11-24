@@ -32,7 +32,7 @@ test('circle AREA is in proportion to MW, with a smallest radius; a planned plan
 });
 
 test('the pop-up gives MW by technology, years and EIA\'s number, never an owner; the 3D view\'s text values are read from the file', () => {
-  const p = d.features.find(f => Object.keys(f.properties.by || {}).length > 1).properties;
+  const p = d.features.find(f => f.properties.eia && Object.keys(f.properties.by || {}).length > 1).properties;
   const html = F.popup('plants', p, d);
   for (const k of Object.keys(p.by)) assert.ok(html.includes(F.LAYERS.plants.sized.labels[k]), `the pop-up names ${k}`);
   assert.ok(html.includes(`plant/${p.eia}`), 'a link to the plant at EIA');
@@ -49,4 +49,20 @@ test('the legend shows only the technologies in the file, the sizes and the plan
   const note = F.noteText('plants', d, 'Explore tab');
   assert.ok(note.includes(String(d.notes.plants)) && /not in this inventory/.test(note));
   assert.ok(F.tip('plants', d.features[0].properties).includes(' MW'));
+});
+
+test('a built plant that EIA does not list yet (power_plants.py, energy_src/plants_added.json) is drawn dashed, says its stage and names its source, not EIA', () => {
+  const built = d.features.filter(f => f.properties.status === 'built').map(f => f.properties);
+  assert.ok(built.length >= 1, 'the file holds the built plants');
+  for (const p of built) {
+    assert.strictEqual(F.sizedStyle('plants', p).planned, true, `${p.name} is drawn dashed`);
+    const html = F.popup('plants', p, d);
+    assert.ok(html.includes('not yet in commercial operation'), p.name);
+    assert.ok(p.stage === 'connected' ? html.includes('Connected to the grid') : html.includes('Construction complete'), p.name);
+    assert.ok(html.includes(p.url.replace(/&/g, '&amp;')) && html.includes('OpenStreetMap'), 'the source and the outline');
+    assert.ok(!html.includes('eia.gov'), 'no EIA link: EIA does not list it');
+  }
+  const note = F.noteText('plants', d, 'Explore tab');
+  assert.ok(note.includes('built but not yet in commercial operation') && note.includes(String(d.notes.built_plants)), 'the note counts them apart from EIA\'s totals');
+  assert.ok(/OpenStreetMap/.test(F.LAYERS.plants.attribution), 'OpenStreetMap is credited');
 });

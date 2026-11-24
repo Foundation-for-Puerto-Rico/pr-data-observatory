@@ -1,6 +1,6 @@
 # Inflation in Puerto Rico and the United States: plan (HANDOFF decision 95)
 
-Francis on 2026-11-10: add an inflation analysis to the Knowledge areas, filed under Economy; track inflation in Puerto Rico and the US, compare them, and project the next five years. The first thing a visitor sees is Puerto Rico's inflation rate beside the US rate, from 2000 to the latest month, with the projection. The page ends with what it means for an individual and a family. Prepared with Claude (AI) for FPR; the analysis was written as a data scientist and economist would, and every figure is read from the data file the build writes.
+The project lead on 2026-11-10: add an inflation analysis to the Knowledge areas, filed under Economy; track inflation in Puerto Rico and the US, compare them, and project the next five years. The first thing a visitor sees is Puerto Rico's inflation rate beside the US rate, from 2000 to the latest month, with the projection. The page ends with what it means for an individual and a family. Prepared with Claude (AI) for FPR; the analysis was written as a data scientist and economist would, and every figure is read from the data file the build writes.
 
 ## 1. Categories for the Knowledge areas
 
@@ -64,6 +64,6 @@ The bands are that method's own past errors: for each horizon, the errors of the
 - The basket weights are from the 2000-01 survey of DTRH; families differ.
 - The projection is not a forecast of FPR or of any agency; it shows what the US expectation implies for Puerto Rico and how wrong this method has been.
 
-## 7. Decision 95 (for Francis)
+## 7. Decision 95 (for the project lead)
 
-(a) Categories = the home domain (no new taxonomy; Inflation under Economy). (b) The six sources above. (c) The central path = expected US inflation, bands from the method's own backtest errors. (d) The page `inflation.html` published with `review: true` and `ai: true` (the marker and `noindex` stay until Francis takes them off). (e) One PR on `knowledge/inflation`, merged only on his word; it conflicts with Knowledge PR 2 and PR #180 in generated files and HANDOFF, fixed by whichever merges second. Follow-up, not in this PR: the Economy tab's real-dollar series deflate with the US CPI-U today (`economy_series.py`, source `cpi`, "an approximation of the island's inflation"); they could use Puerto Rico's index.
+(a) Categories = the home domain (no new taxonomy; Inflation under Economy). (b) The six sources above. (c) The central path = expected US inflation, bands from the method's own backtest errors. (d) The page `inflation.html` published with `review: true` and `ai: true` (the marker and `noindex` stay until the project lead takes them off). (e) One PR on `knowledge/inflation`, merged only on their word; it conflicts with Knowledge PR 2 and PR #180 in generated files and HANDOFF, fixed by whichever merges second. Follow-up, not in this PR: the Economy tab's real-dollar series deflate with the US CPI-U today (`economy_series.py`, source `cpi`, "an approximation of the island's inflation"); they could use Puerto Rico's index.
