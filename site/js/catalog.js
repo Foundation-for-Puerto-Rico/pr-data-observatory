@@ -30,7 +30,7 @@ const Catalog = (() => {
     if (!canMap(a) || (a[0] === 'econ' && typeof ECON === 'undefined')) return false;
     if (a[0] === 'econ') {
       if (ECON.api.state().layers.some(l => l.key === a[1])) { toast(T('That is already on the map. Change it in the On the map panel.'), 5000); return true; }   // a second copy would only stack on the first
-      const r = await ECON.api.show({ clear: false, stay: true, layers: [{ key: a[1], mode: 'fill', ...(a[2] && a[2] !== 'value' ? { norm: a[2] } : {}) }] });   // 'value' is the headline's own scale: the Economy tab picks the shading that suits the series
+      const r = await ECON.api.show({ clear: false, stay: true, layers: [{ key: a[1], mode: 'fill', ...(a[2] === 'count' ? { norm: 'value' } : a[2] && a[2] !== 'value' ? { norm: a[2] } : {}) }] });   // 'value': the Economy tab picks the shading that suits the series; 'count': the count as published (Comunidades Especiales: per resident means little)
       if (!r.applied.length) toast(T('That could not be put on the map. Find it in Explore to add it.'), 5000);
       return r.applied.length > 0;
     }
