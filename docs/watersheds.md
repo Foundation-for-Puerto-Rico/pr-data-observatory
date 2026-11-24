@@ -33,3 +33,7 @@ Plan: `docs/gis-tools-proposal-2026-11.md`, step 3 (HANDOFF decision 93). Code: 
 - Canals and pipes that move water between basins (the network routes water down each river's main path).
 - The watersheds layer in the 3D view.
 - HUC-10 outlines and flood-zone shares by subwatershed.
+
+## River mouths are not chained along the coast (2026-11-23)
+
+NHDPlus links each river's last reach to the next mouth along the coast. Until 2026-11-23 the network kept those links, so 12,202 of the 13,809 catchments drained to one outlet and What drains here, clicked near the coast, returned most of the island. `watersheds.py` now stops each river at its last reach (NHDPlus `terminalfl`), and the build stops if any outlet drains more land than the largest river. Found while building `upstream.py` (docs/upstream.md).
