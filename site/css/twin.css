@@ -424,7 +424,7 @@ kbd { font: 11px ui-monospace, Consolas, monospace; background: var(--color-bg);
 .topbar .brand span { max-width: 300px; white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 @media (max-width: 1519px) { .topbar .brand span { display: none; } }
 @media (max-width: 1599px) { html[lang="es"] .topbar .brand span { display: none; } }
-/* On a PC (wider than 860 px) the view buttons always say what they are: Map, 3D + Time, Knowledge, Data dictionary (2026-11-14, Francis: people could not find the Knowledge
+/* On a PC (wider than 860 px) the view buttons always say what they are: Map, 3D + Time, Knowledge, Data dictionary (2026-11-14, the project lead: people could not find the Knowledge
    areas or tell the icons apart). Room comes from the search box, which narrows, and the snapshot date, which leaves the bar below 1,400 px (it is on the About tab). */
 @media (min-width: 861px) and (max-width: 1400px) { .topbar .snapshot, .topbar .brand { display: none; } .search input { width: 180px; } }   /* the logo names the site; the page says where you are */
 @media (min-width: 1401px) and (max-width: 1779px) { html[lang="es"] .topbar .snapshot { display: none; } }
@@ -467,7 +467,7 @@ kbd { font: 11px ui-monospace, Consolas, monospace; background: var(--color-bg);
   .topbar { padding: 4px 6px; }
   .topbar img { height: 22px; }
 }
-/* Touch targets on a phone or a tablet (Francis, 2026-10-29; HANDOFF decision 65): every button and link of the top bar answers in a 44 x 44 px square (WCAG 2.5.5),
+/* Touch targets on a phone or a tablet (the project lead, 2026-10-29; HANDOFF decision 65): every button and link of the top bar answers in a 44 x 44 px square (WCAG 2.5.5),
    while the visible circles stay 36 px. An invisible ::after makes the square; 8 px between the circles keep the squares apart (no tap lands on two). The pages'
    own ".topbar .btn { height: 34px }" (housing.css, twin3d.css, dictionary.css) is outdone by the doubled class. tests/browser/usability.js measures it. */
 @media (max-width: 860px) {

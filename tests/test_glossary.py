@@ -89,7 +89,7 @@ class Glossary(unittest.TestCase):
 
     def test_federal_grant_terms_are_held(self):
         # a safety net like tests/test_held_for_review.py: Spanish that names CDBG-DR or LIHTC waits for Finance and Compliance
-        # Released on purpose: Francis approved the WCRP wording, its CDBG-DR and HUD funding line included, on 2026-10-19 (HANDOFF decision 51)
+        # Released on purpose: the project lead approved the WCRP wording, its CDBG-DR and HUD funding line included, on 2026-10-19 (HANDOFF decision 51)
         released_decision_51 = {"cdbg-dr", "hud", "wcrp"}
         pat = re.compile(r"CDBG|LIHTC")
         for t in self.g:

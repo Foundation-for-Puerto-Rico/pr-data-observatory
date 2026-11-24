@@ -85,7 +85,7 @@ It exits 2 on an error, 1 when a check fails and 0 when all pass.
 - a Leaflet pop-up (2D map) and a MapLibre pop-up (3D view) opened after load get their marks, and so does a fire station's pop-up of the 3D view's facilities module, which loads on first use;
 - a clean console, no missing Spanish, no sideways scroll, and no slice of the first pass of 50 ms or more;
 - on the 2D map, two seconds of panning: no glossary work meanwhile, and frames no slower than on the same map with the underlines off;
-- across the pages, the words Francis named (margin of error, block group, SFHA, GeoJSON, domain, data file, estimate) are marked in each language.
+- across the pages, the words the project lead named (margin of error, block group, SFHA, GeoJSON, domain, data file, estimate) are marked in each language.
 
 It prints the marks and the first pass's main-thread time of each page, and a JSON report. Pass a folder to save a screenshot of each tooltip.
 
