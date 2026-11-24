@@ -339,7 +339,7 @@ class ReadyMadeViews(unittest.TestCase):
                 self.assertTrue(v["sources"] and all(x in self.sources for x in v["sources"]), f"{k}.{v['id']}: its sources are named in the index")
 
     def test_every_topic_has_two_to_four(self):
-        """Public money's three views were released on 2026-11-05 (HANDOFF decision 86: Francis, with the Finance/Compliance approval of their wording). The visitor
+        """Public money's three views were released on 2026-11-05 (HANDOFF decision 86: the project lead, with the Finance/Compliance approval of their wording). The visitor
         economy's view is shown after the economy's (catalog.js viewsOf: a sub-topic after its topic), so tourism stays last."""
         for k, d in self.reg.items():
             if d["parent"] or d["system"]:

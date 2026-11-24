@@ -10,7 +10,7 @@ const fs = require('fs'), path = require('path');
 const base = process.argv[2] || 'http://127.0.0.1:8041', shots = process.argv[3] || '', langs = (process.argv[4] || 'es,en').split(','), widths = (process.argv[5] || '1400,390').split(',').map(Number);
 const ALL = [['map', 'index.html'], ['3d', '3d.html'], ['profile', 'profile.html?area=72127'], ['housing', 'housing.html'], ['wcrp', 'wcrp.html'], ['routes', 'route-analysis.html'], ['gii', 'gii.html'], ['dictionary', 'dictionary.html'], ['datamgmt', 'data-management.html']];
 const pages = process.argv[6] ? ALL.filter(p => process.argv[6].split(',').includes(p[0])) : ALL;
-const WANT = ['moe', 'block-group', 'sfha', 'geojson', 'domain-in-the-dictionary', 'data-file', 'estimate'];   // the words Francis named: each must be marked somewhere
+const WANT = ['moe', 'block-group', 'sfha', 'geojson', 'domain-in-the-dictionary', 'data-file', 'estimate'];   // the words the project lead named: each must be marked somewhere
 let fails = 0; const seen = {}, report = [];
 const check = (ok, msg) => { if (!ok) { fails++; console.log('  FAIL ' + msg); } return ok; };
 const sleep = (ms) => new Promise(r => setTimeout(r, ms));
@@ -209,7 +209,7 @@ async function panCheck(p, label) {
   for (const lang of langs) for (const width of widths) for (const [name, file] of pages) {
     try { await onePage(name, file, lang, width); } catch (e) { fails++; console.log(`  FAIL ${name} ${lang} ${width}: ${e.message}`); }
   }
-  if (pages.length === ALL.length) for (const lang of langs) check(WANT.every(i => seen[lang] && seen[lang].has(i)), `${lang}: the words Francis named are marked (${WANT.filter(i => !(seen[lang] && seen[lang].has(i))).join(', ') || 'all'})`);
+  if (pages.length === ALL.length) for (const lang of langs) check(WANT.every(i => seen[lang] && seen[lang].has(i)), `${lang}: the words the project lead named are marked (${WANT.filter(i => !(seen[lang] && seen[lang].has(i))).join(', ') || 'all'})`);
   console.log(JSON.stringify(report));
   console.log(fails ? `${fails} checks failed` : 'all checks passed');
   process.exit(fails ? 1 : 0);

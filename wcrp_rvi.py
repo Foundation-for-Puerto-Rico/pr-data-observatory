@@ -492,7 +492,7 @@ def make_files(ids, orig, reb, reb_values, reb_pop, window, h, checks, context):
                               "the barrio's percentile among the 887 barrios with residents, times 100 (higher is more vulnerable). Ranks are its fifths: 1 (0–20) low to 5 (above 80) high. Not recomputed.")
                 sources = ["wcrp_rvi", "acs"]
             else:
-                label = f"WCRP vulnerability, {AREA_LABEL[a].lower()}: updated {window - 4}–{window}"   # the version's name on the page (Francis, 2026-10-19): Updated 2020–2024
+                label = f"WCRP vulnerability, {AREA_LABEL[a].lower()}: updated {window - 4}–{window}"   # the version's name on the page (the project lead, 2026-10-19): Updated 2020–2024
                 local = CONDITIONS_IN.get(a, "")
                 definition = (f"The {AREA_LABEL[a].lower()} index updated by the observatory with the RVI white paper's method on ACS {window - 4}–{window}{' and ' + local if local else ''}: "
                               "percentiles of each input among barrios, summed within the area and ranked again (the overall index sums the six areas). Times 100; ranks are fifths."
@@ -568,7 +568,7 @@ def definitions(ids, orig, reb, values):
 
 
 def levels_by_window(ids, refresh, reb, window):
-    """The updated version's level (1 to 5) of each area in every five-year window the survey publishes for barrios, for the page's slider (Francis,
+    """The updated version's level (1 to 5) of each area in every five-year window the survey publishes for barrios, for the page's slider (the project lead,
     2026-11-04: "see how it changes each year, with 2022 as the original"). Each window is rebuilt with the same method; the inputs that do not come from
     the survey keep their own vintage, so only the survey moves. A level list is a string of digits in the order of geo.ids, 0 for no level.
     Windows that share years are not independent: `steps` gives the share of barrios whose overall level changes from one window to the next."""

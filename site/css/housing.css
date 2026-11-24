@@ -74,7 +74,7 @@ body.research .topbar .btn { text-decoration: none; height: 34px; }
 .card { background: var(--color-surface); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); padding: 16px 18px; margin-bottom: 16px; }
 .card-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 8px; flex-wrap: wrap; }
 .card-head h3 { margin: 0; font-size: 16px; font-weight: 700; color: var(--color-primary-dark); }
-/* a chart's or card's title stands out from the text around it, on every Knowledge Area page (Francis, 2026-11-17) */
+/* a chart's or card's title stands out from the text around it, on every Knowledge Area page (the project lead, 2026-11-17) */
 .block .card > h3:first-child { margin: 0 0 8px; font-size: 16px; font-weight: 700; color: var(--color-primary-dark); }
 .card-head .stats { font-size: 11.5px; color: var(--color-text-muted); }
 .two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
