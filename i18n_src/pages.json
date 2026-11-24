@@ -876,6 +876,15 @@
           "scripts": [
             "core/glossary.js"
           ]
+        },
+        "upstream": {
+          "scopes": [
+            "reservoirs_upstream"
+          ],
+          "scripts": [
+            "reservoirs_upstream.js"
+          ],
+          "html": []
         }
       }
     },

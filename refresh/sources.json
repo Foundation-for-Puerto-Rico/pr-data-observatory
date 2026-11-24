@@ -476,6 +476,14 @@
     "cutoff_barrio.json"
    ],
    "where": "local"
+  },
+  "upstream": {
+   "how": "python upstream.py --refresh (reads EPA's wastewater plants and USGS's drainage areas, a few seconds; the rest is published layers and the census block cache)",
+   "runs": [],
+   "files": [
+    "upstream.json"
+   ],
+   "where": "local"
   }
  },
  "sources": [

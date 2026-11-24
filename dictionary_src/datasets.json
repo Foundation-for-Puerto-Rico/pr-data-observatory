@@ -3073,6 +3073,42 @@
    "note": "The same 5 estimates for the 901 barrios, by the same method (cutoff.py; docs/cutoff.md). A barrio with no residents, and those of Vieques and Culebra, have no value."
   },
   {
+   "id": "upstream",
+   "file": "upstream.json",
+   "title": {
+    "en": "What lies upstream of each reservoir and river gauge: land, residents, buildings, wastewater plants and protected land",
+    "es": "Qué hay aguas arriba de cada embalse y medidor de río: terreno, residentes, edificios, plantas de aguas residuales y terreno protegido"
+   },
+   "geography": {
+    "level": "point",
+    "key": "sites[].usgs"
+   },
+   "time": {
+    "type": "snapshot",
+    "first": 2026,
+    "last": 2026
+   },
+   "domains": [
+    "environment",
+    "infrastructure",
+    "hazards"
+   ],
+   "sources": [
+    "usgs_nhdplus_hr",
+    "usgs_water",
+    "epa_frs",
+    "padus",
+    "census_tiger",
+    "overture_buildings"
+   ],
+   "licence_class": "open-with-conditions",
+   "cadence": "as-needed",
+   "published": "2026-11",
+   "review": [],
+   "tier": "small",
+   "note": "25 reservoirs and 71 river gauges (decision 107, step 9, fourth part; upstream.py): the land that drains to each, from the NHDPlus HR catchments of What drains here, and the residents, housing units, buildings, wastewater treatment plants in force (EPA POTW, named) and protected land on it. Check: 73 of the 87 sites with a USGS drainage area are within 25% of it. Six off-stream reservoirs have no figures. docs/upstream.md."
+  },
+  {
    "id": "degrees_series",
    "file": "degrees_series.json",
    "title": {
