@@ -306,7 +306,7 @@ def build():
     <div class="note"><b>{t("How to cite this page.", "Cómo citar esta página.")}</b> {t("Foundation for Puerto Rico, Knowledge Area: Women in the labor force, PR Data Observatory, Snapshot 2026-10 (draft). Data: U.S. Census Bureau, American Community Survey 5-year estimates.", "Foundation for Puerto Rico, Área de conocimiento: Las mujeres en la fuerza laboral, Observatorio de Datos de PR, Snapshot 2026-10 (borrador). Datos: Negociado del Censo de los EE. UU., estimados de 5 años de la Encuesta sobre la Comunidad Estadounidense.")}</div>
   </section>
 </main>
-<script src="js/core/knowledge.js?v=34"></script>
+<script src="js/core/knowledge.js?v=35"></script>
 <script>Core.knowledge.render(); I18N.apply();</script>
 <script src="js/common.js?v=20"></script>
 <script src="js/women_labor.js?v=8"></script>

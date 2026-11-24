@@ -27,11 +27,11 @@
       "datasets": ["wcrp_rvi_barrio", "wcrp_rvi_inputs", "wcrp_social", "wcrp"], "related": [], "reviewer": []
     },
     {
-      "id": "routes", "label": { "en": "Route analysis", "es": "Análisis de ruta" }, "icon": "commute", "page": "route-analysis.html", "status": "published", "review": true, "ai": true,
-      "title": { "en": "Existing route analysis", "es": "Análisis de las rutas existentes" },
+      "id": "routes", "label": { "en": "Transit congestion", "es": "Congestión en las rutas" }, "icon": "commute", "page": "route-analysis.html", "status": "published", "review": true, "ai": true,
+      "title": { "en": "Public transit route profile: crossings at high-volume intersections", "es": "Perfil de rutas de transporte colectivo: cruces por intersecciones de alto volumen vehicular" },
       "kind": "analysis", "domains": ["infrastructure.mobility", "population"], "audience": "public", "updated": "2026-10", "cite": "#sources",
       "summary": { "en": "The bus routes of the ATI and of the municipal systems of the San Juan metro area and eastern Puerto Rico, compared: service, peak-hour crossings, connections and nearby residents.", "es": "Las rutas de autobús de la ATI y de los sistemas municipales del área metropolitana de San Juan y del este de Puerto Rico, comparadas: servicio, cruces en hora pico, conexiones y residentes cercanos." },
-      "datasets": ["route_compare", "transit_routes", "operators"], "related": [], "reviewer": []
+      "datasets": ["route_compare", "transit_routes", "operators"], "related": ["tlinks"], "reviewer": []
     },
     {
       "id": "gii", "label": { "en": "Global Innovation Index", "es": "Índice Global de Innovación" }, "icon": "rocket_launch", "page": "gii.html", "status": "published", "review": true, "ai": true,
