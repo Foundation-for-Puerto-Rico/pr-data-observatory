@@ -351,7 +351,7 @@ function setMetric(key) {
 // same), each normalised as a shaded map of the Economy tab starts it (counts per 1,000 residents, dollar totals per resident, the rest as published), in the year chosen.
 // The shared engine, its data files and, in Spanish, the map page's names of the datasets load only then, so the 3D view's first load does not carry them (docs/engine.md).
 const ENG = { E: null, loading: null, filled: false, h: 'poverty_pct', c: '', y: null, ho: {}, co: {}, failed: [] };   // ho, co: the rescaling the chat asked for (ask3d.js); the menus reset them
-const ENGINE_JS = ['core/stats.js?v=4', 'core/time.js?v=1', 'core/format.js?v=2', 'core/normalize.js?v=4', 'core/reliability.js?v=4', 'core/engine.js?v=11', 'core/hexbin.js?v=1', 'core/adapters.js?v=15', 'core/datasets.js?v=27'];   // the versions index.html loads, so the browser can reuse them
+const ENGINE_JS = ['core/stats.js?v=4', 'core/time.js?v=1', 'core/format.js?v=2', 'core/normalize.js?v=4', 'core/reliability.js?v=4', 'core/engine.js?v=11', 'core/hexbin.js?v=1', 'core/adapters.js?v=15', 'core/datasets.js?v=28'];   // the versions index.html loads, so the browser can reuse them
 function engineLoad() {
   if (ENG.E) return Promise.resolve(ENG.E);
   return ENG.loading || (ENG.loading = (async () => {

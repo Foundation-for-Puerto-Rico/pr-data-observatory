@@ -468,6 +468,14 @@
    ],
    "where": "local"
   },
+  "jobs_reach": {
+   "how": "python jobs_reach.py --refresh (reads the Census Bureau's commuting flows, about 6 MB; needs scipy and the Overture places of cache/essentials; about 20 minutes)",
+   "runs": [],
+   "files": [
+    "jobs_reach_series.json"
+   ],
+   "where": "local"
+  },
   "cutoff": {
    "how": "python cutoff.py (no download: reads roads.bin, flood.geojson, bridges.geojson, gazetteer.json and wcrp.geojson, and the census block cache; about a minute)",
    "runs": [],
