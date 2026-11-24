@@ -16,3 +16,7 @@
 .uf-h3 { font-size:17px; margin:20px 0 6px; }
 .uf-table .tb-code { white-space:nowrap; font-variant-numeric:tabular-nums; color:#5b6475; }
 .uf-table .af-code { white-space:nowrap; font-variant-numeric:tabular-nums; color:#5b6475; }
+.uf-rb { margin:14px 0; padding:12px 14px; }
+.uf-rb .uf-h3 { margin-top:0; }
+.uf-rb .uf-table { min-width:0; }
+.uf-more summary { cursor:pointer; margin:8px 0; }

@@ -14165,5 +14165,136 @@
    "cutoff.cut_flood_pct",
    "cutoff.cut_bridge_pct"
   ]
+ },
+ {
+  "id": "drainage-area",
+  "term": "Drainage area",
+  "term_es": "Área de drenaje",
+  "plain": "The area of land whose rain and streams flow to a given point of a river or reservoir, measured flat on the map. USGS publishes it for each of its gauges.",
+  "plain_es": "El área de terreno cuya lluvia y quebradas fluyen hacia un punto dado de un río o embalse, medida en plano sobre el mapa. USGS la publica para cada uno de sus medidores.",
+  "source": {
+   "name": "USGS Water Services, Site Service (drain_area_va: drainage area)",
+   "url": "https://waterservices.usgs.gov/docs/site-service/",
+   "checked": "2026-11-23"
+  },
+  "match": {
+   "en": [
+    "drainage area",
+    "drainage areas"
+   ],
+   "es": [
+    "área de drenaje",
+    "áreas de drenaje"
+   ]
+  },
+  "case_sensitive": false,
+  "highlight": true,
+  "priority": 2,
+  "see_also": [
+   "glossary.catchment-nhdplus"
+  ]
+ },
+ {
+  "id": "wastewater-treatment-plant-potw",
+  "term": "Wastewater treatment plant (POTW)",
+  "term_es": "Planta de tratamiento de aguas residuales",
+  "plain": "A plant that treats the sewage of a town before it is discharged to a river or the sea. In EPA's records a publicly owned one is a POTW (publicly owned treatment works); in Puerto Rico most are run by the Aqueduct and Sewer Authority (AAA).",
+  "plain_es": "Una planta que trata las aguas usadas de un pueblo antes de descargarlas a un río o al mar. En los registros de la EPA una de propiedad pública es una POTW (planta pública de tratamiento); en Puerto Rico la mayoría las opera la Autoridad de Acueductos y Alcantarillados (AAA).",
+  "source": {
+   "name": "EPA, National Pollutant Discharge Elimination System: Municipal Wastewater",
+   "url": "https://www.epa.gov/npdes/municipal-wastewater",
+   "checked": "2026-11-23"
+  },
+  "match": {
+   "en": [
+    "wastewater treatment plant",
+    "wastewater treatment plants",
+    "POTW",
+    "publicly owned treatment works"
+   ],
+   "es": [
+    "planta de tratamiento de aguas residuales",
+    "plantas de tratamiento de aguas residuales"
+   ]
+  },
+  "case_sensitive": false,
+  "highlight": true,
+  "priority": 2
+ },
+ {
+  "id": "karst",
+  "term": "Karst",
+  "term_es": "Carso",
+  "plain": "Land on limestone that water dissolves, with sinkholes, caves and streams that run underground. About a fifth of Puerto Rico, mostly in the north, is karst, so water there does not follow the surface streams alone.",
+  "plain_es": "Terreno sobre piedra caliza que el agua disuelve, con sumideros, cuevas y quebradas que corren bajo tierra. Cerca de una quinta parte de Puerto Rico, sobre todo en el norte, es carso, así que allí el agua no sigue solo los cauces de la superficie.",
+  "source": {
+   "name": "Giusti, E. V. (1978), Hydrogeology of the karst of Puerto Rico, USGS Professional Paper 1012",
+   "url": "https://www.usgs.gov/publications/hydrogeology-karst-puerto-rico",
+   "checked": "2026-11-23"
+  },
+  "match": {
+   "en": [
+    "karst"
+   ],
+   "es": [
+    "carso",
+    "karst"
+   ]
+  },
+  "case_sensitive": false,
+  "highlight": true,
+  "priority": 2
+ },
+ {
+  "id": "job-accessibility",
+  "term": "Job accessibility",
+  "term_es": "Accesibilidad a empleos",
+  "plain": "How many jobs can be reached from a place within a set travel time, such as 30 minutes by car: a count of the opportunities within reach, not the distance to the nearest one.",
+  "plain_es": "Cuántos empleos se pueden alcanzar desde un lugar en un tiempo de viaje dado, como 30 minutos en carro: un conteo de las oportunidades al alcance, no la distancia a la más cercana.",
+  "source": {
+   "name": "University of Minnesota Accessibility Observatory, Access Across America: Methodology 2024",
+   "url": "https://conservancy.umn.edu/items/b324cfca-bdd3-4f39-98b9-201b9630b526",
+   "checked": "2026-11-24"
+  },
+  "match": {
+   "en": [
+    "job accessibility",
+    "jobs within reach"
+   ],
+   "es": [
+    "accesibilidad a empleos",
+    "empleos al alcance"
+   ]
+  },
+  "case_sensitive": false,
+  "highlight": true,
+  "priority": 2,
+  "see_also": [
+   "jobs_reach.jobs_reach_30"
+  ]
+ },
+ {
+  "id": "free-flow",
+  "term": "Free flow",
+  "term_es": "Flujo libre",
+  "plain": "Traffic moving at the speed the road allows, with no congestion slowing it. A free-flow drive time is a lower bound: real trips at rush hour take longer.",
+  "plain_es": "Tránsito que se mueve a la velocidad que la carretera permite, sin congestión que lo retrase. Un tiempo de viaje en flujo libre es un límite inferior: los viajes reales en hora pico toman más tiempo.",
+  "source": {
+   "name": "FHWA, Traffic Data Applications: what traffic data are (travel time relative to free-flow conditions)",
+   "url": "https://www.fhwa.dot.gov/policyinformation/pubs/traffic-data-applications-highlights/what-traffic-data-are.cfm",
+   "checked": "2026-11-24"
+  },
+  "match": {
+   "en": [
+    "free flow",
+    "free-flow"
+   ],
+   "es": [
+    "flujo libre"
+   ]
+  },
+  "case_sensitive": false,
+  "highlight": true,
+  "priority": 2
  }
 ]

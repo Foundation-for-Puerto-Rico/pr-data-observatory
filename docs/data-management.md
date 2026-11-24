@@ -199,7 +199,7 @@ that gives it. No name and no location appears.
   nor these docs name anyone.
 - **Links**: the dictionary's "Published data files" section (anchor `#files`, kept) is now a summary with a link; the About texts of the map and the 3D view
   name the page; no top-bar button.
-- **Weight** (`dictionary_src/routes.json`, route `datamgmt`: first `registry.json`; budget 35 KB of scripts, 25 KB of data, compressed).
+- **Weight** (`dictionary_src/routes.json`, route `datamgmt`: first `registry.json`; budget 35 KB of scripts, 33 KB of data, compressed). `registry.json` grows by one row for each published file: the data line went from 25 to 30 KB and, on 2026-11-24 with the jobs within reach series (30.1 KB), to 33 KB.
 
 ## 8. Glossary terms
 

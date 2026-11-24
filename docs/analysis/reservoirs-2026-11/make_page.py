@@ -72,6 +72,35 @@ JS = [
     ("The months with the largest share below usual: {list}.", "Los meses con la mayor parte bajo lo usual: {list}."),
     ("{month} {y} ({low} of {n})", "{month} de {y} ({low} de {n})"),
 ]
+# Section 4 (js/reservoirs_upstream.js, on first use with its Spanish module 'upstream'; decision 107, step 9, fourth part): written to
+# i18n_src/es/reservoirs_upstream.json, so neither counts against the page's first load.
+UP = [
+    ("Reservoir", "Embalse"), ("River gauge", "Medidor de río"), ("Land that drains to it (km²)", "Terreno que drena hacia él (km²)"),
+    ("USGS's drainage area (km²)", "Área de drenaje según USGS (km²)"), ("Residents", "Residentes"), ("Buildings", "Edificios"),
+    ("Wastewater treatment plants", "Plantas de tratamiento de aguas residuales"), ("Protected land (%)", "Terreno protegido (%)"),
+    ("not checked", "sin comprobar"), ("{d}% apart", "{d} % de diferencia"),
+    ("USGS publishes no drainage area for this site, so the land found here is not checked.", "USGS no publica un área de drenaje para este lugar, así que el terreno hallado aquí no se comprueba."),
+    ("The land found here differs from USGS's drainage area by more than a quarter.", "El terreno hallado aquí difiere del área de drenaje de USGS en más de una cuarta parte."),
+    ("Off the stream, fed by a canal or pumps: the stream network cannot say what drains into it, and USGS publishes no drainage area.",
+     "Fuera del cauce, alimentado por un canal o por bombeo: la red de ríos no puede decir qué drena hacia él, y USGS no publica un área de drenaje."),
+    ("What lies upstream of each river gauge", "Qué hay aguas arriba de cada medidor de río"), ("What lies upstream of each reservoir", "Qué hay aguas arriba de cada embalse"),
+    ("The river gauges", "Los medidores de río"),
+    ("The data could not be loaded ({error}). Check your connection and reload.", "No se pudieron cargar los datos ({error}). Verifique su conexión y vuelva a cargar la página."),
+    ("{most} has the most people upstream: {n} residents on {km} km². {p} of the {r} reservoirs on a stream have a wastewater treatment plant upstream. The land found here is within a quarter of USGS's own drainage area for {w} of the {u} sites USGS gives one.",
+     "{most} tiene la mayor cantidad de gente aguas arriba: {n} residentes en {km} km². {p} de los {r} embalses en un cauce tienen una planta de tratamiento de aguas residuales aguas arriba. El terreno hallado aquí está dentro de una cuarta parte del área de drenaje de USGS en {w} de los {u} lugares para los que USGS da una."),
+    ("The land whose rain runs into each reservoir and past each river gauge, and what is on it: residents, buildings, wastewater treatment plants and protected land. The land comes from the US Geological Survey's map of small catchments linked downstream, the same one as the map's tool What drains here. Select a column heading to sort; hold the pointer on a number of plants to read their names.",
+     "El terreno cuya lluvia corre hacia cada embalse y pasa por cada medidor de río, y lo que hay en él: residentes, edificios, plantas de tratamiento de aguas residuales y terreno protegido. El terreno viene del mapa de pequeñas cuencas enlazadas aguas abajo del Servicio Geológico de los Estados Unidos, el mismo de la herramienta Qué drena aquí del mapa. Seleccione el encabezado de una columna para ordenar; deje el puntero sobre un número de plantas para leer sus nombres."),
+    ("Read the figures upstream with care.", "Lea con cuidado las cifras aguas arriba."),
+    ("A count on the land upstream says what is there, not what reaches the water: a wastewater plant may discharge below the reservoir, and most homes are not on a sewer. In the northern karst water also moves underground, so the land that drains on the surface is not all the water that arrives. Some reservoirs also receive water piped or channelled from another basin, and six are off the stream, fed by canals or pumps: for those the page gives no figures.",
+     "Un conteo en el terreno aguas arriba dice qué hay allí, no qué llega al agua: una planta de aguas residuales puede descargar más abajo del embalse, y la mayoría de las viviendas no están conectadas al alcantarillado. En el carso del norte el agua también se mueve bajo tierra, así que el terreno que drena por la superficie no es toda el agua que llega. Algunos embalses reciben además agua por tubería o canal desde otra cuenca, y seis están fuera del cauce, alimentados por canales o bombeo: para esos la página no da cifras."),
+    ("What drains into it.", "Qué drena hacia él."),
+    ("Each reservoir and gauge is placed on the catchment of its own stream: within 300 m, the catchment whose stream bears its name and drains the most land; else, within 150 m, the one that drains the most land. Its land is that catchment and every catchment upstream of it. A split in a river is followed only when both branches reach the same mouth, and river mouths are not linked along the coast. Residents and housing units are the 2020 census blocks whose point is on that land; buildings, the footprints of the map's building layer; wastewater plants, EPA's publicly owned treatment works whose permit is in force; protected land, the areas of PAD-US. The check is USGS's own drainage area for each site; the sites more than a quarter apart are marked. The method and the check are in docs/upstream.md of the project repository.",
+     "Cada embalse y medidor se ubica en la cuenca pequeña de su propio río: a menos de 300 m, la que lleva su nombre y drena más terreno; si no, a menos de 150 m, la que drena más terreno. Su terreno es esa cuenca y todas las que están aguas arriba. Una bifurcación de un río se sigue solo cuando ambas ramas llegan a la misma desembocadura, y las desembocaduras no se enlazan a lo largo de la costa. Los residentes y las unidades de vivienda son los bloques censales de 2020 cuyo punto está en ese terreno; los edificios, las huellas de la capa de edificios del mapa; las plantas de aguas residuales, las plantas públicas de tratamiento de la EPA con permiso vigente; el terreno protegido, las áreas de PAD-US. La comprobación es el área de drenaje que USGS publica para cada lugar; se marcan los lugares que difieren en más de una cuarta parte. El método y la comprobación están en docs/upstream.md del repositorio del proyecto."),
+    ("What drains into each reservoir.", "Qué drena hacia cada embalse."),
+    ("USGS NHDPlus High Resolution catchments and USGS's drainage areas (NWIS site service); EPA Facility Registry Service, publicly owned treatment works; USGS PAD-US protected areas; US Census Bureau 2020 blocks; Overture Maps buildings (ODbL). The data file is data/upstream.json (upstream.py).",
+     "Cuencas pequeñas de USGS NHDPlus High Resolution y áreas de drenaje de USGS (servicio de sitios de NWIS); Registro de Instalaciones de la EPA, plantas públicas de tratamiento; áreas protegidas de PAD-US de USGS; bloques de 2020 de la Oficina del Censo de EE. UU.; edificios de Overture Maps (ODbL). El archivo de datos es data/upstream.json (upstream.py)."),
+    ("Loading what drains into each reservoir…", "Cargando qué drena hacia cada embalse…"),
+]
 for en, es in JS:
     t(en, es)
 
@@ -84,8 +113,8 @@ def build():
     other = n - n_aaa
     heat = (ROOT / "site" / "urban-heat.html").read_text(encoding="utf-8")
     ver = lambda name: re.search(re.escape(name) + r"\?v=(\d+)", heat).group(1)
-    I18N_V = 62   # the ?v= of js/i18n.js also versions this page's Spanish bundle: raise it when the page's strings change (docs/i18n.md, rule 12)
-    icons = sorted(set(re.search(r"icon_names=([a-z0-9_,]+)", heat).group(1).split(",")) | {"school", "water", "water_drop", "arrow_downward", "arrow_upward", "check", "remove", "open_in_new", "show_chart", "history"})
+    I18N_V = 63   # the ?v= of js/i18n.js also versions this page's Spanish bundle: raise it when the page's strings change (docs/i18n.md, rule 12)
+    icons = sorted(set(re.search(r"icon_names=([a-z0-9_,]+)", heat).group(1).split(",")) | {"school", "water", "water_drop", "arrow_downward", "arrow_upward", "check", "remove", "open_in_new", "show_chart", "history", "park"})
 
     page = f"""<!doctype html>
 <html lang="en">
@@ -103,7 +132,7 @@ def build():
 <link rel="stylesheet" href="css/housing.css?v={ver("css/housing.css")}">
 <link rel="stylesheet" href="css/public_money.css?v={ver("css/public_money.css")}">
 <link rel="stylesheet" href="css/urban_heat.css?v={ver("css/urban_heat.css")}">
-<link rel="stylesheet" href="css/reservoirs.css?v=1">
+<link rel="stylesheet" href="css/reservoirs.css?v=2">
 <link rel="stylesheet" href="css/chat.css?v={ver("css/chat.css")}">
 <script src="js/i18n.js?v={max(int(ver("js/i18n.js")), I18N_V)}" data-page="reservoirs"></script>
 </head>
@@ -124,7 +153,7 @@ def build():
 
 <nav class="toc" id="toc" aria-label="{t("On this page", "En esta página")}">
   <span class="ka-tabs" role="group" aria-label="{t("Knowledge Area", "Área de conocimiento")}" data-ka="reservoirs"></span><span class="ka-sep" aria-hidden="true"></span>
-  <a href="#now">{t("Now", "Ahora")}</a><a href="#ranking">{t("Ranking", "Orden")}</a><a href="#detail">{t("One reservoir", "Un embalse")}</a><a href="#history">{t("Over time", "En el tiempo")}</a><a href="#method">{t("Method", "Método")}</a><a href="#sources">{t("Sources", "Fuentes")}</a>
+  <a href="#now">{t("Now", "Ahora")}</a><a href="#ranking">{t("Ranking", "Orden")}</a><a href="#detail">{t("One reservoir", "Un embalse")}</a><a href="#history">{t("Over time", "En el tiempo")}</a><a href="#upstream">{t("Upstream", "Aguas arriba")}</a><a href="#method">{t("Method", "Método")}</a><a href="#sources">{t("Sources", "Fuentes")}</a>
 </nav>
 
 <main class="page">
@@ -164,12 +193,18 @@ def build():
     <p class="pm-small" id="rvPRread" data-t="skip"></p>
   </section>
 
+  <section class="block" id="upstream">
+    <h2><span class="ms-icon" aria-hidden="true">park</span>{t("4 · What drains into each reservoir", "4 · Qué drena hacia cada embalse")}</h2>
+    <div id="rvUpBox" data-t="skip"><p class="pm-small">{t("Loading what drains into each reservoir…", "Cargando qué drena hacia cada embalse…")}</p></div>
+  </section>
+
   <section class="block" id="method">
     <h2><span class="ms-icon" aria-hidden="true">info</span>{t("Method", "Método")}</h2>
     <div class="note"><b>{t("The level.", "El nivel.")}</b> {t("The water-surface elevation of each reservoir, in metres above local mean sea level (USGS parameter 72376), read live from USGS when the page opens, with the daily values since the file was built. On 2 November 2026 these matched AAA's morning chart to within 0.08 m for 18 of its 19 reservoirs (the check is in docs/facilities.md of the project repository).", "La elevación de la superficie del agua de cada embalse, en metros sobre el nivel medio del mar local (parámetro 72376 de USGS), leída en vivo de USGS al abrir la página, con los valores diarios desde que se preparó el archivo. El 2 de noviembre de 2026 coincidieron con la gráfica matutina de la AAA con una diferencia de 0.08 m o menos en 18 de sus 19 embalses (la comprobación está en docs/facilities.md del repositorio del proyecto).")}</div>
     <div class="note"><b>{t("Usual for this time of year.", "Usual para esta época del año.")}</b> {t(f"For each week of the year, the mean level of that week in each year from {y0} to {y1}. Lower than usual is below the 10th percentile of those yearly values, higher than usual above the 90th, usual in between, at least 8 years. The ranking is the share of those years with a lower level than today. The map's Reservoir levels layer uses the same rule.", f"Para cada semana del año, el nivel promedio de esa semana en cada año de {y0} a {y1}. Más bajo de lo usual es por debajo del percentil 10 de esos valores anuales, más alto de lo usual por encima del 90, y usual entre ambos, con al menos 8 años. El orden es la parte de esos años con un nivel más bajo que el de hoy. La capa Niveles de los embalses del mapa usa la misma regla.")}</div>
     <div class="note"><b>{t("The water in the tanks.", "El agua en los tanques.")}</b> {t(f"Where today's level sits between the reservoir's lowest and highest daily level of {y0} to {y1}: 0% at its lowest, 100% at its highest. The shaded band in a large tank is the usual range for this week. Puerto Rico's tank is the median of the {n_aaa} reservoirs in AAA's report. It is not a share of the reservoir's volume.", f"Dónde está el nivel de hoy entre el nivel diario más bajo y el más alto del embalse de {y0} a {y1}: 0 % en su nivel más bajo, 100 % en el más alto. La franja sombreada en un tanque grande es el rango usual de esta semana. El tanque de Puerto Rico es la mediana de los {n_aaa} embalses del informe de la AAA. No es una parte del volumen del embalse.")}</div>
     <div class="note"><b>{t("The history.", "La historia.")}</b> {t(f"The monthly mean level since each gauge's first daily value (the oldest in {oldest}); a month needs 15 days of readings. Older years on another reference, or while a reservoir was still filling, are left out: Toa Vaca reported a depth, not an elevation, until 2005, and Cerrillos was filling in 1991-1992.", f"El nivel promedio mensual desde el primer valor diario de cada medidor (el más antiguo en {oldest}); un mes necesita 15 días de lecturas. Se excluyen los años antiguos medidos con otra referencia o mientras un embalse se estaba llenando: Toa Vaca reportó una profundidad, no una elevación, hasta 2005, y Cerrillos se estaba llenando en 1991-1992.")}</div>
+    <div id="rvUpMethod" data-t="skip"></div>
     <div class="note"><b>{t("What the page does not do.", "Lo que la página no hace.")}</b> {t("It does not say whether there will be water rationing, how many days of water are left, or how much water a reservoir holds. AAA decides rationing with its own alert levels, and its daily report is on its website. A reservoir can be lowered on purpose for repairs, dredging or before a storm.", "No dice si habrá racionamiento de agua, cuántos días de agua quedan ni cuánta agua tiene un embalse. La AAA decide el racionamiento con sus propios niveles de alerta, y su informe diario está en su sitio web. Un embalse puede bajarse a propósito para reparaciones, dragado o antes de una tormenta.")}</div>
   </section>
 
@@ -178,6 +213,7 @@ def build():
     <div class="note"><b>{t("US Geological Survey.", "Servicio Geológico de los Estados Unidos (USGS).")}</b> {t("Water Data for the Nation, through its Water Data API: lake and reservoir water-surface elevation, the latest readings and daily values. US Government work, public domain. Recent data are provisional and subject to revision.", "Water Data for the Nation, mediante su Water Data API: elevación de la superficie del agua de lagos y embalses, las lecturas más recientes y los valores diarios. Obra del Gobierno de EE. UU., dominio público. Los datos recientes son provisionales y pueden revisarse.")}</div>
     <div class="note"><b>{t("Aqueduct and Sewer Authority (AAA).", "Autoridad de Acueductos y Alcantarillados (AAA).")}</b> {t("The list of the 19 reservoirs in its daily report. Its alert levels are not reproduced here; each reservoir links to AAA's page.", "La lista de los 19 embalses de su informe diario. Sus niveles de alerta no se reproducen aquí; cada embalse enlaza a la página de la AAA.")}</div>
     <div class="note"><b>{t("Data and method.", "Datos y método.")}</b> {t("The data file is data/reservoir_history.json (reservoirs.py), rebuilt once a month; the page adds the latest readings itself. The method is in docs/facilities.md of the project repository.", "El archivo de datos es data/reservoir_history.json (reservoirs.py), que se prepara de nuevo cada mes; la página añade por sí misma las lecturas más recientes. El método está en docs/facilities.md del repositorio del proyecto.")}</div>
+    <div id="rvUpSource" data-t="skip"></div>
     <div class="note"><b>{t("How to cite this page.", "Cómo citar esta página.")}</b> {t("Foundation for Puerto Rico, Knowledge Area: Reservoirs, PR Data Observatory, Snapshot 2026-11 (draft). Data: US Geological Survey.", "Foundation for Puerto Rico, Área de conocimiento: Embalses, Observatorio de Datos de PR, Edición 2026-11 (borrador). Datos: Servicio Geológico de los Estados Unidos.")}</div>
   </section>
 </main>
@@ -185,7 +221,7 @@ def build():
 <script src="js/core/knowledge.js?v={ver("js/core/knowledge.js")}"></script>
 <script>Core.knowledge.render(); I18N.apply();</script>
 <script src="js/common.js?v={ver("js/common.js")}"></script>
-<script src="js/reservoirs_page.js?v=1"></script>
+<script src="js/reservoirs_page.js?v=2"></script>
 <script src="js/chatboot.js?v={ver("js/chatboot.js")}"></script>
 </body>
 </html>
@@ -200,7 +236,10 @@ def build():
     es = {"_about": "The Reservoirs page of the Knowledge Area (reservoirs.html) and site/js/reservoirs_page.js. Written by docs/analysis/reservoirs-2026-11/make_page.py from its (English, Spanish) pairs: edit them there, not here."}
     es.update(ES)
     (ROOT / "i18n_src" / "es" / "reservoirs.json").write_text(json.dumps(es, ensure_ascii=False, indent=1) + "\n", encoding="utf-8", newline="\n")
-    print(f"wrote site/reservoirs.html and i18n_src/es/reservoirs.json ({len(ES)} strings)")
+    up = {"_about": "Section 4 of the Reservoirs page (site/js/reservoirs_upstream.js, the on-use module 'upstream'). Written by docs/analysis/reservoirs-2026-11/make_page.py from its (English, Spanish) pairs: edit them there, not here."}
+    up.update({" ".join(en.split()): " ".join(es.split()) for en, es in UP})
+    (ROOT / "i18n_src" / "es" / "reservoirs_upstream.json").write_text(json.dumps(up, ensure_ascii=False, indent=1) + "\n", encoding="utf-8", newline="\n")
+    print(f"wrote site/reservoirs.html and i18n_src/es/reservoirs.json ({len(ES)} strings), reservoirs_upstream.json ({len(UP)})")
 
 
 if __name__ == "__main__":
