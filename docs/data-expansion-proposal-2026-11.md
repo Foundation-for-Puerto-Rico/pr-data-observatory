@@ -275,6 +275,13 @@ Building step 1 changed four things in the plan above. Each is a finding, not a 
 - **Checks.** 95.9% of the workers in the commuting flows work in a municipio the model puts within 45 minutes of home.
 - **Changed from the plan:** QCEW has no jobs below the municipio, so they are spread over business places to start the search; only municipio figures are published.
 
+### Step 9 as built, sixth part (2026-11-24)
+
+- **Built: net migration by age** (`netmig_age.py`, `docs/net-migration-age.md`), by municipio, 2010-2020: the residual method on the two censuses with Puerto Rico's UN life table.
+- **What it shows.** The island lost 384,100 people aged 10 and over (-11.3% of expected); -28.1% of its people aged 20 to 29; a small gain at 65 and over.
+- **Checks.** Within 6.1% of the demographic balance of the two censuses.
+- **Changed from the plan:** census to census, not the yearly estimates (their age detail rests on the Census Bureau's own migration assumptions); the Census API needs a key, so the public CSV files are read. Step 9 is complete.
+
 ### Already planned under other decisions, not repeated here
 
 - Rooftop solar potential by barrio and power outages: decision 104 (energy), steps 5 and 6.

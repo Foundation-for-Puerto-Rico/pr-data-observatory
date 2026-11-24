@@ -1045,7 +1045,7 @@ test('the Economy tab and the area profiles load the datasets of js/core/dataset
   assert.match(src('profile.js'), /Core\.datasets\.fetchFiles\(getJson, FIRST\)/, 'the profile fetches the files of its first field first (tests/profile_first.test.js)');
   assert.match(src('profile.js'), /Core\.datasets\.apply\(X, \{ \.\.\.P\.docs, \.\.\.rest\.docs \}, P\.muni, P\.year\)/, 'then every file, in the order of datasets.js');
   const ds = src('core/datasets.js'), applyBody = ds.slice(ds.indexOf('function apply('), ds.indexOf('async function load('));
-  assert.deepStrictEqual([...applyBody.matchAll(/A\.(\w+)\(E,/g)].map(m => m[1]), ['series',  'tourism',  'snapshot',  'exposure',  'seriesFile',  'seriesFile',  'snapshotFile',  'snapshotFile',  'snapshotFile',  'snapshotFile',  'seriesFile',  'seriesFile',  'seriesFile',  'seriesFile',  'seriesFile',  'seriesFile',  'seriesFile',  'seriesFile',  'seriesFile',  'seriesFile',  'seriesFile',  'seriesFile',  'seriesFile',  'seriesFile',  'seriesFile',  'seriesFile',  'seriesFile',  'snapshotFile',  'seriesFile',  'seriesFile',  'seriesFile',  'snapshotFile',  'seriesFile',  'seriesFile',  'snapshotFile',  'snapshotFile',  'snapshotFile',  'snapshotFile',  'snapshotFile',  'snapshotFile',  'snapshotFile',  'snapshotFile',  'snapshotFile',  'snapshotFile',  'snapshotFile',  'snapshotFile',  'levelFile']);
+  assert.deepStrictEqual([...applyBody.matchAll(/A\.(\w+)\(E,/g)].map(m => m[1]), ['series',  'tourism',  'snapshot',  'exposure',  'seriesFile',  'seriesFile',  'snapshotFile',  'snapshotFile',  'snapshotFile',  'snapshotFile',  'seriesFile',  'seriesFile',  'seriesFile',  'seriesFile',  'seriesFile',  'seriesFile',  'seriesFile',  'seriesFile',  'seriesFile',  'seriesFile',  'seriesFile',  'seriesFile',  'seriesFile',  'seriesFile',  'seriesFile',  'seriesFile',  'seriesFile',  'seriesFile',  'snapshotFile',  'seriesFile',  'seriesFile',  'seriesFile',  'snapshotFile',  'seriesFile',  'seriesFile',  'snapshotFile',  'snapshotFile',  'snapshotFile',  'snapshotFile',  'snapshotFile',  'snapshotFile',  'snapshotFile',  'snapshotFile',  'snapshotFile',  'snapshotFile',  'snapshotFile',  'snapshotFile',  'levelFile']);
   for (const f of datasets.FILES) assert.ok(fs.existsSync(path.join(__dirname, '..', 'site', 'data', f.file)), f.file);
 });
 test('dictionary: the numbers it gives for the Economy tab (datasets, yearly series, one-year datasets, groups, margins of error) are the tab\'s', () => {
@@ -1237,6 +1237,16 @@ test('jobs within reach: four estimates by municipio, shaded as they are, more j
   const a = X.series({ key: 'jobs_reach_30' }, y).values, b = X.series({ key: 'jobs_reach_45' }, y).values;
   assert.ok(a.every((x, i) => x == null || b[i] >= x), 'what is within 30 minutes is within 45');
   assert.strictEqual(X.V.jobs_reach_30.dictId, 'jobs_reach.jobs_reach_30');
+});
+test('net migration by age: six rates and a count by municipio, shaded as they are, the young left the most', { skip: !haveData('netmig_age_series.json') }, () => {
+  const X = realEngine(), doc = readData('netmig_age_series.json'), y = doc.years[0];
+  adapters.seriesFile(X, doc, { dict: 'netmig_age.', group: '' });
+  assert.strictEqual(doc.vars.length, 7);
+  for (const v of doc.vars) assert.ok(/\(estimate, (% of expected|people)\)$/.test(v.label), v.key + ': the word estimate in its name');
+  assert.strictEqual(normalize.defaultNorm(X.V.netmig_20_29_pct, 'fill'), 'value', 'a rate is shaded as it is');
+  const pr = (k) => X.series({ key: k }, y).values.slice(-1)[0];
+  assert.ok(pr('netmig_20_29_pct') < pr('netmig_65_plus_pct'), 'the island lost more of its young adults than of its elders');
+  assert.strictEqual(X.V.netmig_10_plus_pct.dictId, 'netmig_age.netmig_10_plus_pct');
 });
 test('levelTable on the real tract and barrio files: a row for each area, three columns for each window, the marks as the rule gives them', { skip: !haveData('population_series.json', 'acs_tract.json', 'acs_barrio.json') }, () => {
   const X = realEngine(); adapters.seriesFile(X, readData('population_series.json'), { dict: 'population.', group: 'Population · ' });

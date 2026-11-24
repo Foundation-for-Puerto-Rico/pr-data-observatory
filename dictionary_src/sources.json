@@ -317,7 +317,7 @@
   "credit": "Source: US Census Bureau, Population Estimates Program (Vintage 2020 for 2010-2019, Vintage 2025 for 2020-2025)",
   "access": "Public CSV files on www2.census.gov, no key: PRM-EST2020.csv (totals) and PRM-EST2020-AGESEX.csv for 2010-2019 (Vintage 2020), and cc-est2025-agesex-72.csv for 2020-2025 (Vintage 2025). gii.py reads Puerto Rico's row of the newest state totals file (NST-EST2025-ALLDATA.csv) and keeps it in cache/gii/.",
   "cadence": "The Census Bureau issues a new vintage every year (Vintage 2025 appeared in June 2026) and says the latest vintage replaces earlier estimates for the same dates. The observatory reads the newest vintage that has a Puerto Rico file when FPR rebuilds the data (a new snapshot).",
-  "used_for": "Resident population by municipality and the share of residents aged 65 and over, 2010 to 2025 in the 2026-10 snapshot (housing_series.json), shown on the Housing page and the Analysis tab; and Puerto Rico's population, the denominator of the FPR estimate of electricity output per million people (indicator 3.2.1 of the Global Innovation Index page, gii_profile.json).",
+  "used_for": "Resident population by municipality and the share of residents aged 65 and over, 2010 to 2025 in the 2026-10 snapshot (housing_series.json), shown on the Housing page and the Analysis tab; and Puerto Rico's population, the denominator of the FPR estimate of electricity output per million people (indicator 3.2.1 of the Global Innovation Index page, gii_profile.json). Also the 2010 and 2020 census counts by municipio, age and sex (the census bases of PRM-EST2020-AGESEX and CC-EST2025-AGESEX-72) and the island's births and deaths 2010-2020, for the estimate of net migration by age (netmig_age_series.json).",
   "terms_note": "Estimates are for July 1. The 2010 and 2020 values are census counts for April 1. Estimates for 2011 to 2019 were built on the 2010 census and were not revised to the 2020 count, so the series jumps at 2020. The product pages state no license. The Census Bureau's TIGER/Line documentation, which covers a different product, says copyright protection is not available for works of the US Government. The Bureau's citation page asks users to cite it as the source and says conclusions drawn from any analysis of the data are the sole responsibility of the performing party. FPR's use of these data is not endorsed by the Census Bureau.",
   "verified": {
    "date": "2026-10-03",
@@ -4032,5 +4032,30 @@
   },
   "credit": "Data courtesy of NDMC, via https://droughtmonitor.unl.edu",
   "access": "The Drought Monitor's data service, no key: usdmdataservices.unl.edu/api/CountyStatistics/GetDroughtSeverityStatisticsByAreaPercent with aoi=<municipio code> and statisticsType=1 (cumulative shares), one request a municipio, every week since January 2000; StateStatistics with aoi=72 gives Puerto Rico. The JSON answer needs the header Accept: application/json (without it the service answers CSV)."
+ },
+ "un_wpp": {
+  "id": "un_wpp",
+  "kind": "data",
+  "name": "United Nations, World Population Prospects 2024",
+  "publisher": "United Nations, Department of Economic and Social Affairs, Population Division",
+  "url": "https://population.un.org/wpp/",
+  "more_links": [
+   {
+    "label": "Methodology report (states the CC BY 3.0 IGO licence)",
+    "url": "https://www.un.org/development/desa/pd/node/4326"
+   }
+  ],
+  "licence": "CC BY 3.0 IGO",
+  "licence_class": "open-with-conditions",
+  "licence_url": "https://creativecommons.org/licenses/by/3.0/igo/",
+  "credit": "United Nations, Department of Economic and Social Affairs, Population Division (2024). World Population Prospects 2024.",
+  "access": "Two public CSV files, no key: the abridged life tables (WPP2024_Life_Table_Abridged_Medium_1950-2023.csv.gz, about 145 MB) and the demographic indicators (about 17 MB); the build streams them and keeps Puerto Rico's rows (location 630).",
+  "cadence": "A new revision every two years (the next in 2026); interim corrections between revisions.",
+  "used_for": "Puerto Rico's life table by sex, 2010-2019, for the estimate of net migration by age (netmig_age_series.json), and the UN's net migration for its check.",
+  "terms_note": "The UN's figures for Puerto Rico are its own estimates; they differ from the Census Bureau's.",
+  "verified": {
+   "date": "2026-11-24",
+   "status": "link-works-licence-stated"
+  }
  }
 }

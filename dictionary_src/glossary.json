@@ -14326,5 +14326,81 @@
   "see_also": [
    "geo.regions"
   ]
+ },
+ {
+  "id": "net-migration",
+  "term": "Net migration",
+  "term_es": "Migración neta",
+  "plain": "The people who moved into a place minus the people who moved out of it over a period. Negative means more left than arrived; it says nothing of how many moved each way.",
+  "plain_es": "Las personas que llegaron a un lugar menos las que se fueron de él en un período. Negativa quiere decir que se fueron más de las que llegaron; no dice cuántas se movieron en cada dirección.",
+  "source": {
+   "name": "United Nations, World Population Prospects 2024: Methodology report (definitions)",
+   "url": "https://www.un.org/development/desa/pd/node/4326",
+   "checked": "2026-11-24"
+  },
+  "match": {
+   "en": [
+    "net migration"
+   ],
+   "es": [
+    "migración neta"
+   ]
+  },
+  "case_sensitive": false,
+  "highlight": true,
+  "priority": 2,
+  "see_also": [
+   "netmig_age.netmig_10_plus_pct"
+  ]
+ },
+ {
+  "id": "life-table",
+  "term": "Life table",
+  "term_es": "Tabla de vida",
+  "plain": "A table of the chance of dying at each age and, from it, how many of a group of people would still be alive at each later age. It lets a count of people at one date be carried forward to the next.",
+  "plain_es": "Una tabla de la probabilidad de morir a cada edad y, a partir de ella, cuántas personas de un grupo seguirían vivas a cada edad posterior. Permite llevar un conteo de personas de una fecha a la siguiente.",
+  "source": {
+   "name": "United Nations, World Population Prospects 2024: Methodology report (life tables)",
+   "url": "https://www.un.org/development/desa/pd/node/4326",
+   "checked": "2026-11-24"
+  },
+  "match": {
+   "en": [
+    "life table",
+    "life tables"
+   ],
+   "es": [
+    "tabla de vida",
+    "tablas de vida"
+   ]
+  },
+  "case_sensitive": false,
+  "highlight": true,
+  "priority": 2
+ },
+ {
+  "id": "residual-method-migration",
+  "term": "Residual method (migration)",
+  "term_es": "Método residual (migración)",
+  "plain": "Estimating migration as what is left after deaths: the people counted at the end, minus the survivors of those counted at the start. Errors in either count end up in the estimate.",
+  "plain_es": "Estimar la migración como lo que queda después de las muertes: las personas contadas al final menos las sobrevivientes de las contadas al principio. Los errores de cualquiera de los conteos terminan en el estimado.",
+  "source": {
+   "name": "United Nations, Manual VI: Methods of Measuring Internal Migration (1970), chapter on the survival ratio method",
+   "url": "https://www.un.org/development/desa/pd/content/manual-vi-methods-measuring-internal-migration",
+   "checked": "2026-11-24"
+  },
+  "match": {
+   "en": [
+    "residual method",
+    "cohort survival"
+   ],
+   "es": [
+    "método residual",
+    "supervivencia de cohortes"
+   ]
+  },
+  "case_sensitive": false,
+  "highlight": true,
+  "priority": 2
  }
 ]

@@ -468,6 +468,14 @@
    ],
    "where": "local"
   },
+  "netmig_age": {
+   "how": "python netmig_age.py --refresh (reads three Census Bureau CSV files, under 1 MB, and the UN's life tables, about 160 MB streamed and filtered to Puerto Rico)",
+   "runs": [],
+   "files": [
+    "netmig_age_series.json"
+   ],
+   "where": "local"
+  },
   "jobs_reach": {
    "how": "python jobs_reach.py --refresh (reads the Census Bureau's commuting flows, about 6 MB; needs scipy and the Overture places of cache/essentials; about 20 minutes)",
    "runs": [],
@@ -2043,6 +2051,10 @@
   }
  ],
  "static": [
+  {
+   "id": "un_wpp",
+   "why": "A revision every two years (the next in 2026); the estimate of net migration by age uses its life table for 2010-2019, which a new revision barely moves. Rebuild by hand: python netmig_age.py --refresh."
+  },
   {
    "id": "usda_ssurgo",
    "why": "Rebuilt by hand: NRCS releases SSURGO once a year (October); run python soils.py --refresh and check the layer."
