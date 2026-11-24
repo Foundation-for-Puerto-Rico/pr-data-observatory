@@ -1,6 +1,6 @@
 /* PR Data Observatory: the Route analysis page (route-analysis.html, Knowledge Area).
    Loads the routes from data/route_compare.json (written by docs/analysis/route-analysis-2026-10/make_page.py; registered in the data contract and the
-   data dictionary as route_compare.*), then draws the 12 routes most exposed to peak-hour congestion (#rcChart), the comparison table (#rcTable) with its
+   data dictionary as route_compare.*), then draws the 12 routes that cross busy intersections most often at peak hours (#rcChart), the comparison table (#rcTable) with its
    system filter, and the card of the chosen route. The page's headline figures are static text, written by make_page.py.
    Every visible string goes through T(): its Spanish is in i18n_src/es/routes.json. Route and system names are proper names and stay as they are. */
 (function () {

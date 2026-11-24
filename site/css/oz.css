@@ -34,3 +34,10 @@
 .oz-intro { margin:6px 0 4px; }
 .oz-intro p { font-size:15px; line-height:1.6; margin:0 0 10px; }
 .oz-h2 { font-size:19px; margin:16px 0 6px; }
+/* The page "Transit, barrio by barrio" (transit-reach.html) shares the layout above. */
+.tr-toggle { margin:4px 0 10px; }
+.tr-tab[aria-pressed="true"] { background:#1d2433; color:#fff; }
+.tr-edge path { fill:none; stroke:#e0a800; stroke-width:1.6; pointer-events:none; }
+.tr-lines path { fill:none; stroke:#d7301f; stroke-width:2; stroke-linecap:round; }
+.oz-legend i.tr-passkey { background:#fff; border:2px solid #e0a800; }
+.oz-legend i.tr-linekey { height:0; border:0; border-top:3px solid #d7301f; vertical-align:3px; }

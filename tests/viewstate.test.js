@@ -224,3 +224,22 @@ test('3D follows the chip\'s x and "Turn all off" (change events that do not bub
   assert.match(read('js/wcrp.js'), /try \{ id = decodeURIComponent\(/); assert.match(read('js/datamgmt.js'), /try \{ h = decodeURIComponent\(location\.hash\.slice\(1\)\); \} catch/);
   assert.ok(+/js\/wcrp\.js\?v=(\d+)/.exec(read('wcrp.html'))[1] >= 10, 'wcrp.js at v=10 or later'); assert.ok(+/js\/datamgmt\.js\?v=(\d+)/.exec(read('data-management.html'))[1] >= 2, 'datamgmt.js at v=2 or later');
 });
+test('Límites (municipal boundaries) is off when either view opens; a link still turns it on or off (2026-11-13)', () => {
+  for (const f of ['index.html', '3d.html']) {
+    assert.match(read(f), /<input type="checkbox" id="lyMuni">/, `${f}: Límites starts unticked`);
+    assert.doesNotMatch(read(f), /id="lyMuni" checked/, `${f}: not ticked by default`);
+  }
+  const app = read('js/app.js'), t3 = read('js/twin3d.js');
+  assert.match(app, /\}\);\r?\n\s*if \(\$\('#lyMuni'\)\.checked\) map\.addLayer\(muniLayer\);/, '2D: the boundaries are drawn at load only when the switch is on');
+  assert.doesNotMatch(app, /muniLayer = L\.geoJSON\([^;]*\}\)\.addTo\(map\)/, '2D: not added to the map unconditionally');
+  assert.match(t3, /id: 'muni-line', type: 'line', source: 'munis', layout: \{ visibility: \$\('#lyMuni'\)\.checked \? 'visible' : 'none' \}/, '3D: the line follows the switch');
+  const off = () => false;   // byDefault: Límites is no longer on by default
+  for (const view of ['2d', '3d']) {
+    assert.strictEqual(V.layerPlan(view, ['muni'], off).lyMuni, true, `${view}: l=muni turns it on`);
+    assert.strictEqual(V.layerPlan(view, ['-muni'], off).lyMuni, false, `${view}: an older link's -muni keeps it off`);
+    assert.strictEqual(V.layerPlan(view, ['flood'], off).lyMuni, false, `${view}: a link that does not name it leaves it off`);
+    assert.deepStrictEqual(V.layerPlan(view, null, off), {}, `${view}: no l= changes nothing, so the default (off) holds`);
+    assert.deepStrictEqual(V.layerTokens(view, id => id === 'lyMuni', off).filter(t => /muni/.test(t)), ['muni'], `${view}: on, it is written as muni`);
+    assert.deepStrictEqual(V.layerTokens(view, () => false, off).filter(t => /muni/.test(t)), [], `${view}: off, it is not written`);
+  }
+});

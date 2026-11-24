@@ -30,7 +30,7 @@
       { id: 'lyBuildings', domain: null, en: '3D buildings', es: 'Edificios en 3D', counted: false, src: { en: 'OpenStreetMap and Overture', es: 'OpenStreetMap y Overture' }, views: D3, why: 'a setting of the 3D scene: building heights need the 3D camera; the 2D map is flat' },
     ] },
     { id: 'reference', en: 'Reference', es: 'Referencia', icon: 'map', rows: [   // the reference layers: no topic (navigation plan, section 6)
-      { id: 'lyMuni', domain: null, key: 'muni', en: 'Municipal boundaries', es: 'Límites municipales', src: CENSUS, views: B, counted: false },   // the reference layer: on when the page opens
+      { id: 'lyMuni', domain: null, key: 'muni', en: 'Municipal boundaries', es: 'Límites municipales', src: CENSUS, views: B, counted: false },   // the reference layer: off when the page opens (2026-11-13), never counted
       { id: 'lyBarrios', domain: null, key: 'barrios', en: 'Barrios', es: 'Barrios', src: CENSUS, views: B },
       { id: 'lyHexgrid', domain: null, key: 'hexgrid', en: 'Hexagon grid (1 km²)', es: 'Cuadrícula de hexágonos (1 km²)', src: CENSUS, views: B },
       { id: 'lyCols', domain: null, en: 'Columns by municipality', es: 'Columnas por municipio', views: D3, why: 'a column is a height, which a flat map cannot show; the 2D map shades the municipios with the same datasets instead (Explore, On the map)' },   // and columns in 3D (#metric picks the measure)

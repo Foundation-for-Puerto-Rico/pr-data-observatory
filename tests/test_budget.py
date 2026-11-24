@@ -145,7 +145,7 @@ class Routes(unittest.TestCase):
         for s in ("facilities3d.js", "core/facilities.js"):
             self.assertNotIn(s, html, "the facility layers' scripts load on first use")
             self.assertIn(f"addJs('js/{s}?v=", js)
-        self.assertRegex(html, r'<input type="checkbox" id="lyMuni" checked>', "Límites is on, as on the 2D map")
+        self.assertRegex(html, r'<input type="checkbox" id="lyMuni">', "Límites is off when the view opens, as on the 2D map (2026-11-13)")
         for i in ("lyBarrios", "lyStops", "lyTaxi", "walkRings", "lyOz", "lyPubHousing", "lyLihtc", "lyReservoirs", "lyBroadband", "lyRivers", "lyGroundwater", "lyRain", "lyFire", "lyPolice", "lyTownhalls", "lyLibraries", "lySchools", "lyHistoric", "lyDumping", "lyFprRoutes", "lyPublicos", "lyLinks", "lyTraffic", "lyBridges", "lyAirports", "lyFerries", "lyEvCharge", "lyGaps", "lyXfer"):
             self.assertRegex(html, rf'<input type="checkbox" id="{i}">', f"{i} starts switched off")
         for i in ("lyTerrain", "lyBuildings", "lyRoutes", "lyTrips"):

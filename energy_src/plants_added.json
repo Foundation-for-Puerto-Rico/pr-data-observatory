@@ -1,0 +1,68 @@
+{
+ "about": "Solar plants of 1 MW or more that are built in Puerto Rico but not yet in EIA-860M, added to power_plants.geojson by power_plants.py (HANDOFF decision 104, docs/energy.md). Each is drawn hollow (not in commercial operation) and leaves the file by itself once EIA lists a plant whose name matches eia_match. Points: the area-weighted centre of the plant's OpenStreetMap outlines (ODbL), which mappers traced from Esri World Imagery; the build dates were read on Esri's Wayback imagery. Capacity, batteries and status: the source named for each. No owner is kept (decision 104 (b)).",
+ "checked": "2026-11-17",
+ "plants": [
+  {
+   "key": "ciro_one",
+   "name": "CIRO One Salinas",
+   "tech": "solar",
+   "mw": 90.0,
+   "bat_mw": 51.5,
+   "bat_mwh": 206.0,
+   "lon": -66.22979,
+   "lat": 17.99052,
+   "osm": [1388058176, 1388058177],
+   "stage": "connected",
+   "as_of": "2026-08",
+   "eia_match": "ciro",
+   "source": {"name": "PV Tech, 13 January 2026 (LUMA connects 90 MW); Puerto Rico Energy Bureau, resolution of 10 August 2026, case NEPR-AP-2021-0001 (commercial operation date not set)", "url": "https://energia.pr.gov/wp-content/uploads/sites/7/2026/08/20260810-AP20210001-Resolution-and-Order.pdf"},
+   "why_here": "108.9 ha of panels north of Salinas, built between June 2024 and September 2025 on Esri Wayback imagery; the project is 280 acres (113 ha) in Salinas, construction began late 2023."
+  },
+  {
+   "key": "marahu_salinas",
+   "name": "Marahú solar, Salinas site",
+   "tech": "solar",
+   "mw": 120.0,
+   "bat_mw": 175.0,
+   "bat_mwh": 700.0,
+   "lon": -66.20161,
+   "lat": 17.97197,
+   "osm": [1546774319, 1546774320, 1546774321],
+   "stage": "complete",
+   "as_of": "2026-10",
+   "eia_match": "marah|clean flexible",
+   "source": {"name": "San Juan Daily Star, 5 October 2026 (built, not yet connected to LUMA's grid); Telemundo Puerto Rico, 24 September 2025 (120 MW solar and 175 MW of four-hour batteries in Salinas)", "url": "https://www.sanjuandailystar.com/post/capitol-summit-called-to-resolve-clean-energy-interconnection-delays"},
+   "why_here": "164.4 ha of panels at the Salinas–Guayama line (most of it inside Guayama's census outline), built between September 2025 and October 2026. AES gives 120 MW for its Salinas site and 80 MW for Jobos; this is the larger of the two new farms, so it is taken as the Salinas site."
+  },
+  {
+   "key": "marahu_jobos",
+   "name": "Marahú solar, Jobos site",
+   "tech": "solar",
+   "mw": 80.0,
+   "bat_mw": 110.0,
+   "bat_mwh": 440.0,
+   "lon": -66.15266,
+   "lat": 17.95531,
+   "osm": [1546769482, 1546769483, 1546769484, 1546769485],
+   "stage": "complete",
+   "as_of": "2026-10",
+   "eia_match": "marah|clean flexible",
+   "source": {"name": "San Juan Daily Star, 5 October 2026 (built, not yet connected to LUMA's grid); Telemundo Puerto Rico, 24 September 2025 (80 MW solar and 110 MW of four-hour batteries in Jobos, Guayama)", "url": "https://www.sanjuandailystar.com/post/capitol-summit-called-to-resolve-clean-energy-interconnection-delays"},
+   "why_here": "113.7 ha of panels next to the AES plant in Jobos, Guayama, built between September 2025 and October 2026."
+  },
+  {
+   "key": "yabucoa_solar",
+   "name": "Yabucoa Solar",
+   "tech": "solar",
+   "mw": 32.1,
+   "lon": -65.84589,
+   "lat": 18.04347,
+   "osm": [1561767793, 1561767794, 1561767795, 1561767796, 1561767797, 1561767802],
+   "stage": "complete",
+   "as_of": "2026-08",
+   "eia_match": "yabucoa solar",
+   "source": {"name": "Puerto Rico Energy Bureau, LUMA's monthly report of August 2026, case NEPR-MI-2024-0005 (construction 100% complete, first synchronization scheduled for September 2026; 32.1 MW under its 2022 contract)", "url": "https://energia.pr.gov/wp-content/uploads/sites/7/2026/09/20260827-MI20240005-Motion-to-Submit-August-2026-Monthly-Collaborative-Report-in-Compliance-with-Resolutions-and-Orders-of-March-2028-2025-and-February-18-2026-and-Request-for-Clarification-and-Exhibits.pdf"},
+   "why_here": "33.5 ha outlined in OpenStreetMap in September 2026 south of the Yabucoa fuel terminal; Esri's public imagery of the site still predates the panels."
+  }
+ ]
+}
