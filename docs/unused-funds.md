@@ -54,7 +54,7 @@ A reviewer with long experience in federal funds read both pages. Their main poi
 - These three texts did not fit: the page's budgets went from 42 to 43 KB (first load) and from 24 to 25 KB (after ready).
 
 **Not done yet, in the order the reviewer suggests**
-1. **Rebuild a few large awards from obligation to closing** (extensions, payments, the agency's determinations) before adding any indicator. This says how much the data can support.
+1. **Rebuild a few large awards from obligation to closing** (extensions, payments, the agency's determinations) before adding any indicator. This says how much the data can support. **Done on 2026-11-20: see "Five grants rebuilt" below.**
 2. Findings by compliance requirement (the field is already read), lateness by submission date against the due date with the COVID extensions, and FEMA's Section 428 projects apart.
 3. COR3 stays out (decision 96 (d)): its system does not answer scripts and its data carry no licence.
 
@@ -186,3 +186,42 @@ A program is apart only for a reason that holds for the whole program. The workf
 - **Other pages still say "Public spending"** where they mention the page in a sentence (the FEMA disaster funding page and others). Their generators are behind their pages on script versions, so they are left for a pass of their own.
 
 **Tests:** `tests/test_audit_findings.py` (the match and the three-year count; the My municipio file carries the same figures).
+
+## Five grants rebuilt (decision 112, step 4; decision 111 (d); built 2026-11-20)
+
+**Why.** The reviewer asked for this before any new indicator: follow a few large grants through everything the open record gives, to see how far a balance on record can be trusted. It is a study of the source, done once.
+
+**Files.** `docs/analysis/unused-funds-2026-11/rebuild_awards.py` writes `awards_rebuilt.json` beside it, and `make_page.py` reads that file for the section "Five grants rebuilt, one by one". The file is an input of the page, not a data file of the site, so it is not in the catalog and `build.py` does not refresh it.
+
+| Command | What it does |
+|---|---|
+| `python docs/analysis/unused-funds-2026-11/rebuild_awards.py` | Reads USAspending (cached in `cache/spending/awards`, or `AWARDS_CACHE`) and writes the file. |
+| `python docs/analysis/unused-funds-2026-11/rebuild_awards.py --check` | Rebuilds from the cache and fails when the file differs. No network. |
+
+**The rule that picks the grants.** Grants with place of performance Puerto Rico signed in federal fiscal years 2020 to 2024 (the 300 largest of each year), ended more than one year before the read, outside the programs the page keeps apart or leaves out; ordered by the balance on record; the first grant of each of the first five programs. No grant is chosen by hand.
+
+**What is read for each grant** (USAspending.gov, no key)
+- The award: the dates, the amount, the total paid out (`/api/v2/awards/<key>/`).
+- Its transactions: each change of the amount committed (`/api/v2/transactions/`). The changes of one day are added, as in the reductions.
+- Its funding by reporting period: the payments the federal agency reported (`/api/v2/awards/funding/`). **They are year to date for each account line**, so a fiscal year's payments are the sum over lines at the last month reported that year. The script stops when those years do not add up to the award's own total paid out; for the five they agree to the dollar.
+- The recipient is not written to the file, and no grant number is published. The cache holds the source's answers as they came and is not in the repository.
+
+**What the five show** (read 2026-11-20)
+
+| Program | Committed | Paid on record | What the record shows |
+|---|---|---|---|
+| WIOA, combined grant (17.258, 17.259, 17.278) | $121.9 M | $15.6 M | Payments in fiscal years 2021 and 2022 and none after; the grant ran to June 2024 and leaves the agency's account reports after 2022. |
+| Children's Health Insurance Program (93.767) | $109.3 M | $9.3 M | Committed $192.8 M, lowered by $83.6 M in May 2022. Payments on record only from fiscal year 2022, for a grant of 2020 and 2021. |
+| Education Stabilization Fund (84.425) | $2,968.1 M | $2,883.4 M | $2,081.8 M (72% of the paid) paid after the fiscal year of the end date; the end date was never changed. |
+| Title I (84.010) | $447.7 M | $392.7 M | 92% of the paid came after the fiscal year of the end date; $109.6 M in fiscal year 2026, after the 27 months of the Tydings Amendment. |
+| 21st Century Community Learning Centers (84.287) | $35.3 M | $0.6 M | $4.1 M paid through fiscal year 2025, then the total lowered by $3.4 M in 2026. |
+
+**What follows**
+- The end date on record is often not the last day to pay, and it is not updated.
+- The record of payments can begin late, stop early or be corrected.
+- USAspending publishes no closing date, no approved extension and no decision of the federal agency.
+- So a balance after the end date tells where to ask. The page builds no indicator from these balances and says so beside the five.
+
+**Open question, not on the page.** $665 M of the $1.21 B of balances of step 1 (55%) is in grants that began in fiscal years 2020 and 2021: 332 of the 564 grants. The one grant rebuilt from fiscal year 2020 has no payment on record before fiscal year 2022. One grant is not enough to say the same of the other 331; counting the first year with a payment for every grant of those two years would settle it (one call per grant).
+
+Tests: class `Rebuilt` in `tests/test_unused_funds.py`.
