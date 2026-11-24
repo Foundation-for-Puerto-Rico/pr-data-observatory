@@ -34,7 +34,7 @@ There is one list (`adapter.list()`). The chip's number is its length, so the nu
 - The route plan, while it has a point on the map.
 
 **Not counted on the 2D map:**
-- Límites, the municipality boundaries. It is the reference layer and stays on.
+- Límites, the municipality boundaries. It is the reference layer: off when the map opens (since 2026-11-13), and "Turn all off" leaves it as it is.
 - The base map.
 - Filters such as the place categories, the confidence slider and the land-use classes. They change a layer; they are not layers.
 
@@ -44,7 +44,7 @@ There is one list (`adapter.list()`). The chip's number is its length, so the nu
 - The municipality columns (`#lyCols`), named by the measure they show.
 - The route plan, as on the 2D map.
 
-**Not counted on the 3D view:** Límites, the municipal lines (since 2026-10-19 a switch, on when the view opens, as on the 2D map); the 3D scene group (3D terrain and 3D buildings), the time bar and the camera. These are settings of the view, not data. "Turn all off" leaves them as they are, and since 2026-10-19 the group's own count leaves them out too (their rows have class `nocount`, like Límites on the 2D map).
+**Not counted on the 3D view:** Límites, the municipal lines (since 2026-10-19 a switch; off when the view opens since 2026-11-13, as on the 2D map); the 3D scene group (3D terrain and 3D buildings), the time bar and the camera. These are settings of the view, not data. "Turn all off" leaves them as they are, and since 2026-10-19 the group's own count leaves them out too (their rows have class `nocount`, like Límites on the 2D map).
 
 **Order of the list:** since 2026-10-19 the list follows the layer menu (`js/core/layers.js`, `docs/layers.md`): a row whose switch or menu is on the page comes where it stands there, then the Economy tab's layers and the route plan. Each row's group is the menu group's title.
 
