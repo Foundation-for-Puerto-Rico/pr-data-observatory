@@ -789,7 +789,8 @@ async function loadProt() {
         const c = l.getBounds().getCenter();
         labelLayer.addLayer(L.marker(c, { icon: L.divIcon({ className: 'muni-label', html: esc(n), iconSize: [100, 14], iconAnchor: [50, 7] }), interactive: false, pane: 'muni' }));
       },
-    }).addTo(map);
+    });
+    if ($('#lyMuni').checked) map.addLayer(muniLayer);   // off when the map opens (2026-11-13); a link with l=muni, or the Municipality tab, turns it on
     map.on('zoomend', () => { map.getZoom() >= 10 && $('#lyMuni').checked ? map.addLayer(labelLayer) : map.removeLayer(labelLayer); });
     rebuildPlaces();   // the pins are off at the start and the listings are not loaded: this only writes the size hint beside the switch
     ready = true;
