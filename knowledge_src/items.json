@@ -123,6 +123,13 @@
       "kind": "analysis", "domains": ["infrastructure", "economy"], "audience": "public", "updated": "2026-11", "cite": "#sources",
       "summary": { "en": "The findings of the transportation gap analysis first, then: how many workers travel between each pair of municipios, which pairs a timetabled route or a público route of the 2020 list joins, how long a trip takes by timetable, and simulated connections along the roads for the pairs with many workers and no timetabled route.", "es": "Primero los hallazgos del análisis de brechas de transporte y luego: cuántas personas viajan entre cada par de municipios para trabajar, qué pares tienen una ruta con horario o una ruta de públicos de la lista de 2020, cuánto toma un viaje por horario, y conexiones simuladas por las carreteras para los pares con muchas personas y sin ruta con horario." },
       "datasets": ["transit_links", "simulated_links", "publicos", "traffic_roads"], "related": ["routes", "broadband"], "reviewer": []
+    },
+    {
+      "id": "treach", "label": { "en": "Transit, barrio by barrio", "es": "Transporte colectivo, barrio por barrio" }, "icon": "directions_bus", "page": "transit-reach.html", "status": "published", "review": true, "ai": true,
+      "title": { "en": "Transit in Puerto Rico, barrio by barrio", "es": "El transporte colectivo en Puerto Rico, barrio por barrio" },
+      "kind": "analysis", "domains": ["infrastructure"], "audience": "public", "updated": "2026-11", "cite": "#sources",
+      "summary": { "en": "Which of the 901 barrios have a bus, train or ferry stop with a current timetable, which have only público routes, ended timetables or stops mapped by volunteers, and which have nothing on file, with the barrios a route crosses with no stop, the residents and the households with no vehicle.", "es": "Cuáles de los 901 barrios tienen una parada de guagua, tren o lancha con horario vigente, cuáles solo tienen rutas de públicos, horarios vencidos o paradas cartografiadas por voluntarios y cuáles no tienen nada en las listas, con los barrios que una ruta cruza sin parada, los residentes y los hogares sin vehículo." },
+      "datasets": ["transit_reach", "barrios", "publicos"], "related": ["tlinks", "routes"], "reviewer": ["leadership", "compliance"]
     }
   ]
 }

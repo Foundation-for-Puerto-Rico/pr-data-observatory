@@ -6387,6 +6387,40 @@
    "note": "The data of the Knowledge Area page transit-links.html (HANDOFF decision 105). pairs: the 1,084 pairs of municipios with workers travelling between them (pair_fields: a and b (GEOIDs), ab and ba (workers in each direction), workers (both), moe (90 percent margin of the sum), low (margin as large as the estimate), status (timetable, expired, publico, none), via (joined by timetabled routes with a transfer), tt_routes, tt_trips (weekday) and tt_ops (the operators), publicos (routes of the 2020 list), km and min (fastest road path between the town centres), sim (its place among the simulated connections)); municipios: the 78 (muni_fields: geoid, name, town centre, resident_workers, work_elsewhere and its share, come_in, top_dest, linked_pct, linked_pairs, sim_links, own_system); pr: the totals by status. Workers: ACS 2016-2020; timetables as of 2026-10-29; público list of 2020-03-19. Built by transit_links.py; docs/transit-links.md. Step 5 (2026-11-14): pairs also carry tt_best, tt_typ, tt_xfers and tt_why (trips by the weekday timetables between the town centres) and, for simulated connections, along_res, along_far, bridges_poor and bridges_closed; municipios carry no_vehicle_pct, poverty_pct (ACS 2020-2024) and stop_km."
   },
   {
+   "id": "transit_reach",
+   "file": "transit_reach.json",
+   "title": {
+    "en": "Transit by barrio: stops with a current timetable, other service, or none",
+    "es": "Transporte por barrio: paradas con horario vigente, otro servicio o nada"
+   },
+   "domains": [
+    "infrastructure.mobility"
+   ],
+   "geography": {
+    "level": "barrio",
+    "key": "rows:barrios:barrio_fields:geoid"
+   },
+   "time": {
+    "type": "snapshot",
+    "first": 2026,
+    "last": 2026
+   },
+   "sources": [
+    "ati_gtfs",
+    "muni_gtfs",
+    "iepr_publicos",
+    "osm",
+    "acs5",
+    "census_tiger"
+   ],
+   "licence_class": "unstated",
+   "cadence": "daily",
+   "tier": "small",
+   "published": "2026-11",
+   "review": [],
+   "note": "The data of the Knowledge Area page transit-reach.html. barrios: the 901 barrios (barrio_fields: geoid, name, municipio GEOID, cls 3 a stop with a current timetable / 2 only a stop whose timetable has ended, a stop mapped in OpenStreetMap or a público route of the 2020 list / 1 nothing on file, passes (a route with a current timetable crosses the barrio with no stop), the counts of current, expired and OpenStreetMap stops and of público routes, 2020 residents, residents within 400 m of a current stop (exposure_barrio.json), households, the percent of households with no vehicle and its margin (ACS 2020-2024, B25044), low (fewer than 500 residents or a margin as large as the estimate)); municipios: barrios and residents by class, the municipal system's timetable (current, expired, none: reports to the NTD with no timetable); pr: the totals; lines: Tren Urbano and the ferries for the map. A timetable is current when its GTFS feed ends on or after as_of. Built by transit_reach.py from files in site/data; rebuilt with the nightly transit refresh."
+  },
+  {
    "id": "simulated_links",
    "file": "simulated_links.geojson",
    "title": {
