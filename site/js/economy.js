@@ -219,7 +219,7 @@ function ecRenderBrowse() {
   $('#ecBrowse').innerHTML = r.html; $('#ecDsCount').textContent = `(${r.n})`;
 }
 function ecRenderContext() {
-  const items = [['lyMuni', T('Municipal boundaries')], ['lyBarrios', 'Barrios'], ['lyProt', T('Protected areas')], ['lyLanduse', T('Land use 2015')], ['lyFlood', T('Flood zones')], ['lyRoutes', T('Transit routes')], ['lyStops', T('Transit stops')], ['lyPlaces', T('Tourism places')]];   // the Layers tab's names, in its order (js/core/layers.js)
+  const items = [['lyMuni', T('Municipal boundaries')], ['lyBarrios', 'Barrios'], ['lyProt', T('Protected areas')], ['lyFlood', T('Flood zones')], ['lyRoutes', T('Transit routes')], ['lyStops', T('Transit stops')], ['lyPlaces', T('Tourism places')]];   // the Layers tab's names, in its order (js/core/layers.js)
   $('#ecContext').innerHTML = items.map(([id, label]) => `<label class="ec-ctx"><input type="checkbox" data-proxy="${id}" ${$('#' + id) && $('#' + id).checked ? 'checked' : ''}> ${esc(label)}</label>`).join('');
   $('#ecContext').onchange = e => { const c = e.target.closest('[data-proxy]'); if (!c) return; const el = $('#' + c.dataset.proxy); if (el) { el.checked = c.checked; el.dispatchEvent(new Event('change')); } };
 }

@@ -1048,7 +1048,7 @@ function chAskModule() {
     const api = chApi(), es = I18N.lang === 'es', boot = typeof ChatBoot !== 'undefined' && ChatBoot.extra ? ChatBoot.extra() : null;   // chatboot.js starts ask.js and the layer registry beside chat.js
     // the Spanish summaries of the datasets (catalog_es.json, 33 KB) only on a Spanish page: an English page's index has no Spanish dataset names to match them with
     const files = Promise.all([...(es ? ['data/catalog_es.json'] : []), 'data/glossary_forms_en.json', 'data/glossary_forms_es.json'].map(f => Data.json(f).catch(() => null)));
-    await (boot || Promise.all([typeof Ask === 'undefined' ? chScript('js/ask.js?v=15') : null, !(typeof Core !== 'undefined' && Core.layers) ? chScript('js/core/layers.js?v=19').catch(() => null) : null]));
+    await (boot || Promise.all([typeof Ask === 'undefined' ? chScript('js/ask.js?v=15') : null, !(typeof Core !== 'undefined' && Core.layers) ? chScript('js/core/layers.js?v=20').catch(() => null) : null]));
     if (typeof Ask === 'undefined') await chScript('js/ask.js?v=15');
     // the index needs the page's datasets and municipios, and the dictionary's ask words: built before them (the chat opens before the Economy tab has loaded), it held no
     // municipio and no dataset, so a misspelt municipio was never read and the datasets' own words never matched (docs/ask.md, round 4)

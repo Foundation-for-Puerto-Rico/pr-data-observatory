@@ -56,7 +56,7 @@
       { id: 'lyDumping', domain: 'environment', also: ['infrastructure'], key: 'dumping', en: 'Illegal dumping sites', es: 'Vertederos clandestinos', src: { en: 'FPR field survey', es: 'Encuesta de campo de FPR' }, views: B },
       { head: { en: 'Land and protected areas', es: 'Suelo y áreas protegidas' } },
       { id: 'lyProt', domain: 'environment.land', key: 'prot', en: 'Protected areas', es: 'Áreas protegidas', src: 'USGS PAD-US', views: B },
-      { id: 'lyLanduse', domain: 'environment.land', also: ['housing'], key: 'landuse', en: 'Land use 2015', es: 'Uso de terrenos 2015', src: 'Junta de Planificación', views: B },
+      { id: 'lyLanduse', domain: 'environment.land', also: ['housing'], key: 'landuse', en: 'Land Use Plan (2015)', es: 'Plan de Uso de Terrenos (2015)', src: 'Junta de Planificación', views: B },
       { id: 'lySoil', domain: 'environment.land', also: ['hazards'], key: 'soil', en: 'Soils', es: 'Suelos', src: 'USDA NRCS SSURGO', views: B },
       { id: 'lySlope', domain: 'environment.land', also: ['hazards'], key: 'slope', en: 'Slope', es: 'Pendiente', src: 'USGS 3DEP', views: D2, why: 'a preview on the 2D map first: the 3D view shows the terrain itself' },
       { id: 'lyContours', domain: 'environment.land', key: 'contours', en: 'Contour lines', es: 'Curvas de nivel', src: 'USGS 3DEP', views: D2, why: 'a preview on the 2D map first: the 3D view shows the terrain itself' },

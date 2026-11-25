@@ -11,6 +11,11 @@ Plan item 6 (2026-10-06). Every color that a data layer uses is defined once, in
 | `RAMPS.gold` | `#FFE9A8 #FFD96E #FFC83C #FFA600 #B56D00` | the Colors menu | yellow 100, 200, 300, 500, 700 |
 | `RAMPS.red` | `#FFD0C9 #FFAB9F #FF8270 #E03220 #8C180D` | the Colors menu | red 100, 200, 300, 600, 800 |
 | `RAMPS.gray` | `#E6E6E6 #CCCCCC #B3B3B3 #8C8E8E #2A2E2E` | the Colors menu | the Pantone Cool Gray scale and the charcoal of the design system |
+| `RAMPS.teal` | `#D1EEEA #96D0D1 #5BA7B8 #3B7E9A #2A5674` | the Colors menu (since 25 Nov 2026) | not a brand color; a light-to-dark gradient in the manner of CARTO's sequential schemes |
+| `RAMPS.purple` | `#F3E0F7 #D4B5E8 #B28FD6 #8B6BBE #5B3F94` | the Colors menu | as above |
+| `RAMPS.sunset` | `#F3E79B #FAC484 #EB7F86 #B95E9A #5C53A5` | the Colors menu | as above: yellow to purple |
+| `RAMPS.pinkteal` | `#F9C6DA #DBA1CE #A68BC6 #4F93B5 #0E7C86` | the Colors menu | as above: pink to turquoise |
+| `RAMPS.yelblue` | `#F7FEAE #B7E6A5 #46AEA0 #089099 #045275` | the Colors menu | as above: yellow to blue |
 | `DIVERGING` | `#B82415 #FF8270 #F2F2F2 #8FCAE8 #205D7B` | scales around a center: index, difference from Puerto Rico, change, location quotient; below in red, above in blue | red 700 and 300, off-white, blue 200 and 700 |
 | `BIVARIATE` | 3 × 3 grid from `#e8e8e8` through teal and purple to `#3b4994` | two shaded layers together | the common teal and purple bivariate scheme (not a brand color) |
 | `SYMBOLS` | `#B82415 #205D7B #B56D00 #47560F #2A2E2E` | the color of a layer of sized symbols; decreases in a symbol layer of changes | the 700 and 800 steps of red, blue, yellow and green, and charcoal |

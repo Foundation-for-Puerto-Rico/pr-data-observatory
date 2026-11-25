@@ -16,7 +16,10 @@ const reliability = core('reliability'), palettes = core('palettes'), classify =
 
 // ── palettes ────────────────────────────────────────────────────────────────
 test('palettes: five classes in every ramp, and an unknown name falls back to blue', () => {
-  for (const r of palettes.RAMP_ORDER) assert.strictEqual(palettes.RAMPS[r].length, 5, r);
+  for (const r of palettes.RAMP_MENU) assert.strictEqual(palettes.RAMPS[r].length, 5, r);
+  assert.deepStrictEqual(palettes.RAMP_MENU.slice(0, 5), palettes.RAMP_ORDER, 'the Colors menu opens with the five brand ramps'); assert.deepStrictEqual([...palettes.RAMP_MENU].sort(), Object.keys(palettes.RAMPS).sort(), 'the menu offers every ramp');
+  const lum = (c) => 0.2126 * parseInt(c.slice(1, 3), 16) + 0.7152 * parseInt(c.slice(3, 5), 16) + 0.0722 * parseInt(c.slice(5, 7), 16);
+  for (const r of palettes.RAMP_MENU) for (let i = 1; i < 5; i++) assert.ok(lum(palettes.RAMPS[r][i]) < lum(palettes.RAMPS[r][i - 1]), `${r}: each class is darker than the one before, so more is always darker`);
   assert.strictEqual(palettes.DIVERGING.length, 5);
   assert.strictEqual(palettes.BIVARIATE.length, 3);
   assert.ok(palettes.BIVARIATE.every(r => r.length === 3));
@@ -372,7 +375,7 @@ test('engine: every value of every dataset under every normalization, year and p
 // the stacks of layers, as api.show builds them
 const stripRel = (h) => h.replace(/<div class="el-hist"[^>]*>.*?<\/div>/g, '').replace(/box-sizing:border-box;opacity:1;background:none;border:2px solid (#[0-9A-Fa-f]+);box-shadow:0 0 0 1\.5px #fff/g, 'background:$1').replace(/<div class="row rel">.*?<\/div>/g, '').replace(/<div class="el-note">.*?<\/div>/g, '').replace(/<div class="el-note el-period"[^>]*>.*?<\/div>/g, '');   // the lines reliability.js adds under a layer, and the note on layers of different periods (added 2026-11-10)
 const noWindow = (h) => h.replace(/\b(\d{4})–(\d{4})\b/g, (m, a, b) => +b - +a === 4 ? b : m);   // a survey year is now written as its window
-const noManual = (h) => noWindow(h).replace(/ My own limits/g, '').replace(/ Per 1,000 housing units/g, '').replace(/ close Shaded Symbol /g, ' close ');   // the two options the menus gained and the card's Shaded / Symbol switches (the golden is the text of the card)
+const noManual = (h) => noWindow(h).replace(/ Teal Purple Sunset: yellow to purple Pink to turquoise Yellow to blue/g, '').replace(/ My own limits/g, '').replace(/ Per 1,000 housing units/g, '').replace(/ close Shaded Symbol /g, ' close ');   // the two options the menus gained and the card's Shaded / Symbol switches (the golden is the text of the card)
 function stack(cfg) {
   E.year = cfg.year; E.base = cfg.base; E.cache = {};
   const layers = []; let seq = 0;
