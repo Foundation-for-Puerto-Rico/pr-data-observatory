@@ -141,7 +141,7 @@
   const filterCount = () => W.regions.size + (W.range ? 1 : 0) + (W.view ? 1 : 0);
   const median = (a) => { const s = a.slice().sort((x, y) => x - y), n = s.length; return n ? (n % 2 ? s[(n - 1) / 2] : (s[n / 2 - 1] + s[n / 2]) / 2) : null; };
   /** One figure for a set of municipios, with the words that say what it is. A count or a dollar total as published is added up; anything else is the
-      median of the municipal values and is labelled as that: it is not a population-weighted rate. With no filter the figure is Puerto Rico's own published value. */
+      median of the municipal values and is labeled as that: it is not a population-weighted rate. With no filter the figure is Puerto Rico's own published value. */
   function aggregate(L, d, idx) {
     const v = meta(L.key), xs = idx.map(i => d.v[i]).filter(x => x != null && isFinite(x));
     if (!xs.length) return { v: null, how: T('No value') };

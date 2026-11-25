@@ -69,7 +69,7 @@ test('the theme is set before the first paint, kept in the browser, and told to 
   const css = read('site/css/ws.css');
   assert.match(css, /html\[data-theme=dark\] \{[^}]*--color-surface: var\(--ws-surface\)/, "the dark theme replaces twin.css's tokens");
   assert.doesNotMatch(css, /backdrop-filter/, 'no frosted glass (FPR brand, as tests/test_overlays.py asks of twin.css)');
-  assert.doesNotMatch(css, /--ramp-|--flood-|--cat-|--protected/, "the data's own colours are never themed: a legend must keep matching its map");
+  assert.doesNotMatch(css, /--ramp-|--flood-|--cat-|--protected/, "the data's own colors are never themed: a legend must keep matching its map");
 });
 
 test('the map has the timeline, named for a screen reader, and loads the workspace after the engine shell', () => {

@@ -34,8 +34,8 @@ python check_refresh.py
 
 | Piece | File | What it does |
 |---|---|---|
-| The look | `site/css/ws.css` | Loaded last on every page. Tokens for the two themes, the top bar and the rail, the parts (buttons, fields, cards), the map workspace, and the three workspace pages. It holds no data and no behaviour |
-| Light or dark | `site/js/i18n.js` (`theme`, `setTheme`) | Sets `html[data-theme]` before the first paint and adds the switch beside ES / EN. The choice is kept in the browser as `twin.theme`. Without one the pages open dark: change `theme()` to change that. A page that draws with colours of its own listens for `themechange` on the document |
+| The look | `site/css/ws.css` | Loaded last on every page. Tokens for the two themes, the top bar and the rail, the parts (buttons, fields, cards), the map workspace, and the three workspace pages. It holds no data and no behavior |
+| Light or dark | `site/js/i18n.js` (`theme`, `setTheme`) | Sets `html[data-theme]` before the first paint and adds the switch beside ES / EN. The choice is kept in the browser as `twin.theme`. Without one the pages open dark: change `theme()` to change that. A page that draws with colors of its own listens for `themechange` on the document |
 | The rail | The `<nav class="views">` of each page | Plain links, in the page's HTML. `ws.css` places them down the left side, or along the bottom under 900 px |
 | The map workspace | `site/js/ws_map.js` | The project bar, the timeline, the widgets, the workbench grip, undo and redo, saved maps |
 | Explore | `site/explore.html`, `site/js/ws_explore.js` | Ready-made views, topics, saved maps, topic pages |
@@ -44,13 +44,13 @@ python check_refresh.py
 
 Everything else is as it was: the Leaflet map (`app.js`), the shared engine (`site/js/core/`, `docs/engine.md`), the topic pages, the 3D view and the connector. The redesign changed no renderer, no data file and no calculation.
 
-### Themes and colours
+### Themes and colors
 
 - The dark theme replaces the tokens of `twin.css` (`--color-surface`, `--color-text`, the tints…) under `html[data-theme=dark]`. A rule written against a token follows the theme with no further work.
-- White grounds and neutral greys that were written as fixed colours in the page stylesheets are now tokens (`--color-surface`, `--ws-n-ink`, `--ws-n-paper`, `--ws-n-line`…) with the same values in the light theme.
-- **The data's own colours are never themed**: ramps, categories, hazard zones. A legend must keep matching its map.
+- White grounds and neutral grays that were written as fixed colors in the page stylesheets are now tokens (`--color-surface`, `--ws-n-ink`, `--ws-n-paper`, `--ws-n-line`…) with the same values in the light theme.
+- **The data's own colors are never themed**: ramps, categories, hazard zones. A legend must keep matching its map.
 - No blur behind panels (`backdrop-filter`): `tests/test_overlays.py` keeps the FPR rule.
-- A new page loads `css/ws.css` after its own stylesheets and uses tokens, not fixed greys.
+- A new page loads `css/ws.css` after its own stylesheets and uses tokens, not fixed grays.
 
 ### The timeline
 
@@ -66,7 +66,7 @@ The timeline is a control for the year the engine already had (`EC.year`; `ey=` 
 
 ### Widgets and their figures
 
-The widgets compute no statistic of their own, with one rule that is theirs. A figure for several municipios (a region, a filtered set) is the **sum** when the dataset is a count or a dollar total as published, and otherwise the **median of the municipal values**, labelled with those words. It is not a pooled rate. With no filter the key figure is Puerto Rico's own published value.
+The widgets compute no statistic of their own, with one rule that is theirs. A figure for several municipios (a region, a filtered set) is the **sum** when the dataset is a count or a dollar total as published, and otherwise the **median of the municipal values**, labeled with those words. It is not a pooled rate. With no filter the key figure is Puerto Rico's own published value.
 
 A filter in the widgets changes the widgets only, and the panel says so.
 

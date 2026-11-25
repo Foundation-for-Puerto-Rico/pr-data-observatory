@@ -37,7 +37,7 @@
     return out;
   }
   const hit = (ix, x, y) => ix.find(o => x >= o.b[0] && x <= o.b[2] && y >= o.b[1] && y <= o.b[3] && inPoly(x, y, o.poly)) || null;
-  /** Metres from a point to the nearest edge of the outlines within `m` metres of it (Infinity when none is that near): a place this close to an edge can fall on either side. */
+  /** Meters from a point to the nearest edge of the outlines within `m` meters of it (Infinity when none is that near): a place this close to an edge can fall on either side. */
   function edge(ix, x, y, m) {
     const dx = m / (111320 * Math.cos(y * Math.PI / 180)), dy = m / 110540; let best = Infinity;
     ix.forEach(o => { if (x < o.b[0] - dx || x > o.b[2] + dx || y < o.b[1] - dy || y > o.b[3] + dy) return;

@@ -1,12 +1,12 @@
 /* PR Data Observatory: the workspace look, shared by every page (docs/workspace.md).
-   Loaded last on each page. It changes how the pages look and where their parts sit; it holds no data and no behaviour.
+   Loaded last on each page. It changes how the pages look and where their parts sit; it holds no data and no behavior.
 
    1. Tokens      the light theme refines twin.css's tokens; html[data-theme=dark] replaces them (js/i18n.js sets the attribute before the first paint)
    2. Shell       a compact top bar and a narrow rail of areas down the left side (a bar along the bottom on a narrow screen)
    3. Parts       buttons, fields, cards, tables and panels in the two themes
    4. Pages       what each kind of page needs: the map, the 3D view, the reading pages, the dictionary pages
 
-   The data's own colours (ramps, categories, hazard zones) are never changed here: a legend must keep matching its map. */
+   The data's own colors (ramps, categories, hazard zones) are never changed here: a legend must keep matching its map. */
 
 /* ── 1. Tokens ─────────────────────────────────────── */
 :root {
@@ -157,7 +157,7 @@ html[data-theme=dark] .maplibregl-ctrl-group button + button { border-top-color:
 html[data-theme=dark] .maplibregl-ctrl button .maplibregl-ctrl-icon, html[data-theme=dark] .maplibregl-ctrl-attrib-button { filter: invert(1); }
 html[data-theme=dark] .marker-cluster div { color: #14181C; }
 
-/* Text that was written dark on a pale chip keeps its pale chip: it is a data colour or an inline style. Everything else follows the tokens. */
+/* Text that was written dark on a pale chip keeps its pale chip: it is a data color or an inline style. Everything else follows the tokens. */
 html[data-theme=dark] .chip.off { color: var(--ws-ink-3) !important; border-color: var(--ws-line-2); }
 html[data-theme=dark] kbd { background: var(--ws-paper); border-color: var(--ws-line-2); color: var(--ws-ink); }
 html[data-theme=dark] ::-webkit-scrollbar { width: 10px; height: 10px; }
@@ -166,7 +166,7 @@ html[data-theme=dark] ::-webkit-scrollbar-track { background: transparent; }
 html[data-theme=dark] canvas.chartjs, html[data-theme=dark] .chart-light { background: transparent; }
 
 /* ── 4. The map workspace (index.html, body.ws-map) ───────────────────
-   Left: the layers panel (the page's own panel, foldable). Centre: the project bar, the map, the timeline, the workbench. Right: the widgets.
+   Left: the layers panel (the page's own panel, foldable). Center: the project bar, the map, the timeline, the workbench. Right: the widgets.
    Each strip takes its own room, so nothing sits on top of the map's buttons, scale or credits. */
 body.ws-map { --ws-bar-h: 44px; --ws-time-h: 92px; --ws-right-w: 332px; --ws-x0: calc(var(--ws-rail) + var(--panel-width)); --ws-bench: 0px; }
 body.ws-map.bench-open { --ws-bench: var(--bench-h); }
@@ -317,7 +317,7 @@ body.ws-resizing { user-select: none; cursor: ns-resize; }
 /* The timeline replaces the year menu and slider that the engine docks in the "On the map" panel. They stay in the page, with their handlers, for the
    code and the captures that read them (economy.js, tests/browser/capture_economy.js); "Change measured from" stays visible there. */
 body.ws-map #alDock .ec-year:not(.ec-base), body.ws-map #alDock #ecRange { display: none; }
-/* Names drawn on the map sit on the data's colours, not on a surface of the theme, so they do not follow it: dark ink with a firm white outline in both
+/* Names drawn on the map sit on the data's colors, not on a surface of the theme, so they do not follow it: dark ink with a firm white outline in both
    themes, which reads on the palest and on the darkest class of any ramp. (In the dark theme the text tokens are light; light text in a white halo cannot be read.) */
 .town-name span, .muni-label { color: #1F2426; text-shadow: -1px 0 #fff, 1px 0 #fff, 0 -1px #fff, 0 1px #fff, -1px -1px #fff, 1px 1px #fff, -1px 1px #fff, 1px -1px #fff, 0 0 3px #fff, 0 0 5px #fff; }
 .town-name span { font-weight: 700; }

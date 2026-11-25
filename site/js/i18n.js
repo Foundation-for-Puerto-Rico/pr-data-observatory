@@ -229,7 +229,7 @@
     }
     // ── Light or dark ───────────────────────────────────────────────────────────
     // The choice is kept in this browser (twin.theme); without one the pages open dark. html[data-theme] is set before the first paint, and a page that draws
-    // with colours of its own (a base map, a canvas) listens for the "themechange" event on the document.
+    // with colors of its own (a base map, a canvas) listens for the "themechange" event on the document.
     function theme() { try { return env.storage && env.storage.getItem('twin.theme') === 'light' ? 'light' : 'dark'; } catch (e) { return 'dark'; } }
     function setTheme(t) {
       try { if (env.storage) env.storage.setItem('twin.theme', t); } catch (e) { /* private window: the choice lasts for this page */ }

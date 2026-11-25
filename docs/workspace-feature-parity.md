@@ -130,4 +130,4 @@ Each keeps its route, scripts and data. Each gained the shell and both themes.
 5. No screen-reader or keyboard-only walk-through was done by a person.
 6. `tests/browser/usability.js` (manual) expects the old two-row phone top bar, and `tests/browser/bars.js` the old button bar. Both need updating before they are used again.
 7. The base-map tiles, the icons and the fonts still come from other hosts, as before.
-8. Charts that draw with fixed light colours inside a page (for example the projection band on the inflation page) were not all restyled for the dark theme.
+8. Charts that draw with fixed light colors inside a page (for example the projection band on the inflation page) were not all restyled for the dark theme.
