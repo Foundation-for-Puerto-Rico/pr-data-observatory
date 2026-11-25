@@ -87,7 +87,7 @@ bus_cur_idx = np.array([i for i in cur_idx if d.t_kind[i] in ("transit_stop", "b
 for i, f in enumerate(T):
     if f["kind"] in ("airport", "ferry_terminal", "rail_station", "bus_station") and (f["source"] != "faa_airports" or f.get("public_use")):
         if f["source"] == "osm_transport" and f["kind"] == "bus_station":
-            continue   # many OSM bus stations; summarised separately
+            continue   # many OSM bus stations; summarized separately
         # nearest OTHER current scheduled bus-type stop (not itself, not another ferry/rail record at this hub)
         mask = bus_cur_idx != i
         xx, yy = d.t_x[bus_cur_idx[mask]], d.t_y[bus_cur_idx[mask]]

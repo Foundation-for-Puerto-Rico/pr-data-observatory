@@ -1,5 +1,5 @@
-/* PR Data Observatory core: normalisation. A count of jobs shaded on a map only shows which municipality is big; a rate shows something about the place. A dataset offers the
-   normalisations that make sense for its kind (extensive: a count or a dollar total; intensive: a rate, a ratio or a typical value), as the Economy tab always did:
+/* PR Data Observatory core: normalization. A count of jobs shaded on a map only shows which municipality is big; a rate shows something about the place. A dataset offers the
+   normalizations that make sense for its kind (extensive: a count or a dollar total; intensive: a rate, a ratio or a typical value), as the Economy tab always did:
 
    value      as published                           per1000    per 1,000 residents                    perkm2     per km² of land
    perCapita  $ per resident (dollar totals)         sharePR    % of the Puerto Rico total             shareJobs  % of the municipality's jobs
@@ -44,7 +44,7 @@
     return extensive(v) ? (v.type === 'total$' ? 'perCapita' : 'per1000') : 'value';
   }
 
-  function describe(v, n) {   // unit, decimals and whether the scale is diverging, after normalisation
+  function describe(v, n) {   // unit, decimals and whether the scale is diverging, after normalization
     if (n === 'value') return { unit: v.unit, d: v.d, div: false };
     if (n === 'per1000') return { unit: '', d: v.dPer ?? 1, div: false, suffix: ' ' + T('per 1,000') };
     if (n === 'perHU') return { unit: '', d: v.dPer ?? 1, div: false, suffix: ' ' + T('per 1,000 housing units') };

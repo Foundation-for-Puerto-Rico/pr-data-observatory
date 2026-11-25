@@ -1,4 +1,4 @@
-// Reduces a piece of markup to what a person sees and the colours and sizes that matter, so markup written by a template and markup read back from the page's DOM
+// Reduces a piece of markup to what a person sees and the colors and sizes that matter, so markup written by a template and markup read back from the page's DOM
 // (whose attributes are written differently: selected="", checked="") can be compared. Used by tests/browser/make_golden.js and tests/core.test.js.
 const NAMED = { '&amp;': '&', '&lt;': '<', '&gt;': '>', '&quot;': '"', '&#39;': "'", '&nbsp;': ' ' };
 function flat(html) {

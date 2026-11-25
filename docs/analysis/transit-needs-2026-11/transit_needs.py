@@ -49,7 +49,7 @@ NEED_WEIGHTS = {"no_vehicle_hh_pct": 2, "poverty_pct": 1, "acs_age65plus_pct": 1
 TOP = 25
 
 
-# ── geometry (metres on a local plane: Puerto Rico spans 1.3 degrees of latitude) ───────────────────────────────────────────────
+# ── geometry (meters on a local plane: Puerto Rico spans 1.3 degrees of latitude) ───────────────────────────────────────────────
 KX, KY = 111320 * math.cos(math.radians(18.2)), 110574
 
 
@@ -98,7 +98,7 @@ def polygons(geom):
 
 
 def sample_line(coords, step):
-    """Points every `step` metres along a line of lon, lat pairs, both ends included."""
+    """Points every `step` meters along a line of lon, lat pairs, both ends included."""
     pts = [xy(*coords[0])]
     for a, b in zip(coords, coords[1:]):
         pa, pb = xy(*a), xy(*b)
@@ -243,7 +243,7 @@ def barrios(acs, bar, stops, sup, blocks, cur_ops):
         unserved = 1 - a["served"] / a["pop"] if a["pop"] else None
         carfree = hh * nv / 100 if hh is not None and nv is not None else None
         nv_moe = moe("no_vehicle_hh_pct")[i]
-        # where the unserved live (residents' centre) and the nearest useful stop from there
+        # where the unserved live (residents' center) and the nearest useful stop from there
         near = None
         if a["unserved_pts"]:
             w = sum(pp for _, pp in a["unserved_pts"])

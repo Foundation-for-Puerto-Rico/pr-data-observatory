@@ -9,10 +9,10 @@ The ground. USGS 3D Elevation Program, 1/3 arc-second (about 10 m) seamless elev
 climb.py reads, listed in cache/dem/tiles.json), read with raster.py in windows of 0.1 degree. Public domain.
 
 How it is made (docs/slope.md):
-  - Slope: at every 10 m cell, by Horn's method (the 3 x 3 neighbourhood, as GDAL, QGIS and ArcGIS compute it), with the cell's size in metres at its latitude,
+  - Slope: at every 10 m cell, by Horn's method (the 3 x 3 neighborhood, as GDAL, QGIS and ArcGIS compute it), with the cell's size in meters at its latitude,
     as a percent (rise over run x 100: 100% is 45 degrees). A cell next to one with no height (the sea) has no slope.
   - Blocks: the 10 m cells are counted in blocks of 6 x 6 (2 arc-seconds, about 60 m): how many have a slope, how many are steeper than 15% and than 30%, and their
-    mean slope. A block belongs to the barrio that holds its centre (the nearest within 100 m off the coast); a block across a barrio's edge counts whole on one side.
+    mean slope. A block belongs to the barrio that holds its center (the nearest within 100 m off the coast); a block across a barrio's edge counts whole on one side.
     Blocks in no barrio (the sea, which the elevation model also covers) are left out of the figures and of the image. The block grids are kept in
     cache/slope/blocks_<tile version>.npz, so --check and a rebuild read no elevation again.
   - Areas: the share of the area's cells with a slope that are steeper than 15% and than 30%, and their mean slope; municipios and Puerto Rico pool their barrios.
@@ -51,7 +51,7 @@ BLK = 6                          # cells per block side: 2 arc-seconds, about 60
 BOX = (-68.0, 17.8, -65.2, 18.6)  # the windows looked at: Mona to Culebra (windows with no barrio are skipped)
 STEEP = (15, 30)                 # percent
 NODATA = -1000                   # heights at or below this are no data (USGS uses -999999 over the sea)
-NEAR_DEG = 0.001                 # about 100 m: a block centre just off the coast goes to the nearest barrio within this
+NEAR_DEG = 0.001                 # about 100 m: a block center just off the coast goes to the nearest barrio within this
 SCALE = (0.0, 60.0)              # the image's scale, percent
 STOPS = ["#F7F4EA", "#E9D7A5", "#C9A05A", "#8C5A2B", "#3E2410"]   # pale to dark earth: no blue (FEMA), no red or yellow-orange (landslides, heat)
 SURFACE_MIN_LON = -67.35         # as heat.py: the image leaves out Mona, Monito and Desecheo
@@ -62,13 +62,13 @@ COVER = (0.97, 1.10)            # the cells with a slope over the barrios' land 
 
 
 def deg_m(lat):
-    """Metres per degree of longitude and of latitude at a latitude (WGS 84, series to the second order)."""
+    """Meters per degree of longitude and of latitude at a latitude (WGS 84, series to the second order)."""
     p = math.radians(lat)
     return 111412.84 * math.cos(p) - 93.5 * math.cos(3 * p), 111132.954 - 559.822 * math.cos(2 * p) + 1.175 * math.cos(4 * p)
 
 
 def horn(z, dx, dy):
-    """Slope in percent of the inner cells of a padded height array z (one cell of padding on every side), by Horn's method; NaN where a neighbour has no height."""
+    """Slope in percent of the inner cells of a padded height array z (one cell of padding on every side), by Horn's method; NaN where a neighbor has no height."""
     import numpy as np
     a, b, c = z[:-2, :-2], z[:-2, 1:-1], z[:-2, 2:]
     d, f = z[1:-1, :-2], z[1:-1, 2:]
@@ -120,7 +120,7 @@ def read_window(dem, w, n):
 
 
 def owners(B, lon, lat):
-    """The barrio index of each block centre (-1 when none within NEAR_DEG): inside an outline first (the lowest index on a shared edge), then the nearest."""
+    """The barrio index of each block center (-1 when none within NEAR_DEG): inside an outline first (the lowest index on a shared edge), then the nearest."""
     import numpy as np
     import buildings
     return buildings.place(B, lon, lat) if len(lon) else np.zeros(0, dtype="int32")
@@ -209,7 +209,7 @@ def compute(offline=False):
     REF = (f"USGS 3D Elevation Program (3DEP), 1/3 arc-second (about 10 m) seamless elevation model, tiles of {version[:4]}-{version[4:6]}-{version[6:]}; slope of "
            "every 10 m cell by Horn's method, counted by barrio; municipios and Puerto Rico pool their barrios")
     WHAT = ("Slope is the rise over the run, as a percent: 10% climbs 10 m in 100 m, and 100% is 45 degrees. It is computed for every 10 m cell of the USGS "
-            "elevation model (bare ground, not buildings or trees) from its eight neighbours (Horn's method). A cell counts in the barrio that holds the centre of "
+            "elevation model (bare ground, not buildings or trees) from its eight neighbors (Horn's method). A cell counts in the barrio that holds the center of "
             "its 60 m block; municipios and Puerto Rico pool their barrios. Coastal cells next to the sea have no slope.")
     LIM = {"15": "15% is where building and farming begin to need terraces or special design.",
            "30": "30% is where ground is generally treated as too steep to build on without engineering, and where landslide susceptibility rises."}
@@ -257,7 +257,7 @@ def surface_png(mean, version, ref):
         raise SystemExit(f"slope: the image would be {W} px wide (more than {surface_image.MAX_PX})")
     px = math.radians(e - w) / W                                         # a pixel's width in Web Mercator units (radians of longitude)
     H = int(math.ceil((mercY(n) - mercY(s)) / px))
-    # each pixel centre, back into the block grid; the block under it gives its value (nearest: nothing is invented between blocks)
+    # each pixel center, back into the block grid; the block under it gives its value (nearest: nothing is invented between blocks)
     pc_lon = w + (np.arange(W) + 0.5) * (e - w) / W
     pc_lat = np.degrees(2 * np.arctan(np.exp(mercY(n) - (np.arange(H) + 0.5) * px)) - math.pi / 2)
     ci = np.floor((pc_lon - BOX[0]) / step).astype(np.int64)

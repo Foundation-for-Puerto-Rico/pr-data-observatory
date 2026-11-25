@@ -70,7 +70,7 @@
   "ask": {
    "en": [
     "building density",
-    "buildings per square kilometre",
+    "buildings per square kilometer",
     "how built up"
    ],
    "es": [
@@ -86,7 +86,7 @@
   ],
   "group": "Housing · Buildings (Overture)",
   "kind": "variable",
-  "plain": "How closely packed the buildings are: buildings for each square kilometre of land.",
+  "plain": "How closely packed the buildings are: buildings for each square kilometer of land.",
   "definition": "The number of buildings divided by the area's land area in km² (Census land area, water left out).",
   "unit": "buildings per km²",
   "value_type": "rate",
@@ -210,7 +210,7 @@
   "group": "Housing · Buildings (Overture)",
   "kind": "variable",
   "plain": "The size on the ground of a typical building: half the area's buildings are smaller.",
-  "definition": "The median footprint area of the area's buildings, in m² on an equal-area plane. A footprint is the ground area, not the floor area: a three-storey building counts once.",
+  "definition": "The median footprint area of the area's buildings, in m² on an equal-area plane. A footprint is the ground area, not the floor area: a three-story building counts once.",
   "unit": "m²",
   "value_type": "ratio",
   "geography": "78 municipalities and Puerto Rico; also 901 barrios",
@@ -228,7 +228,7 @@
   "source_detail": "Overture Maps Foundation, Buildings theme, release 2026-10-21.0 (https://docs.overturemaps.org/guides/buildings/): OpenStreetMap (1,500,399 buildings), Google Open Buildings (536,571) and Microsoft ML Buildings (120,393). © OpenStreetMap contributors, Overture Maps Foundation, ODbL 1.0. Barrio outlines and land area: barrios.geojson and the crosswalk (Census).",
   "how_to_read": "Puerto Rico: 106 m². Highest: Bayamón (155 m²), San Juan (151 m²), Carolina (143 m²). Lowest: Adjuntas (73 m²), Moca (77 m²), Las Marías (77 m²).",
   "caveats": [
-   "Ground area, not floor area: storeys are not counted (Overture has a height for fewer than 1 in 10 buildings in Puerto Rico).",
+   "Ground area, not floor area: stories are not counted (Overture has a height for fewer than 1 in 10 buildings in Puerto Rico).",
    "Footprints traced by machine learning (about 3 in 10 in Puerto Rico) can include sheds, carports and ruins and miss buildings under trees; see the share traced by machine learning.",
    "Most buildings are homes, so nothing is published per building: only counts, areas and shares by barrio and larger areas."
   ],
@@ -443,8 +443,8 @@
   "group": "Housing · Buildings (Overture)",
   "kind": "table",
   "plain": "The outlines and heights of the buildings that Google and Microsoft traced from satellite images and OpenStreetMap does not have, so the 3D view shows the whole island's buildings and not only the ones volunteers have mapped.",
-  "definition": "Vector tiles (PMTiles, layer b, zooms 13 and 14) of the building footprints in Overture's buildings theme whose geometry source is not OpenStreetMap (Google Open Buildings and Microsoft ML Buildings), each with its height and base height in metres when Overture has them, and no other attribute.",
-  "unit": "Building outlines (polygons); heights in metres",
+  "definition": "Vector tiles (PMTiles, layer b, zooms 13 and 14) of the building footprints in Overture's buildings theme whose geometry source is not OpenStreetMap (Google Open Buildings and Microsoft ML Buildings), each with its height and base height in meters when Overture has them, and no other attribute.",
+  "unit": "Building outlines (polygons); heights in meters",
   "value_type": "geometry",
   "geography": "Puerto Rico, Vieques, Culebra and Mona (the box -67.97, 17.85 to -65.20, 18.57)",
   "coverage": {
@@ -458,7 +458,7 @@
    "overture_buildings"
   ],
   "source_detail": "Overture Maps Foundation, buildings theme, release 2026-10-21.0, its PMTiles (tiles/2026-10-21.0/buildings.pmtiles on the overturemaps-extras-us-west-2 bucket). © OpenStreetMap contributors, Overture Maps Foundation, ODbL 1.0.",
-  "how_to_read": "Turn on \"3D buildings\" in the 3D view and zoom in to a street (zoom 13 or closer): the buildings that come from this file stand beside the base map's. In release 2026-10-21.0 the file holds 704,061 buildings at zoom 14 (a building on a tile edge counts in each tile). Town centres are already mapped in OpenStreetMap; the new buildings are mostly houses on the outskirts and in the countryside, such as Cañaboncito in Caguas, where 5,115 of 12,354 buildings (41%) were traced by machine learning. The file is 7.4 MB.",
+  "how_to_read": "Turn on \"3D buildings\" in the 3D view and zoom in to a street (zoom 13 or closer): the buildings that come from this file stand beside the base map's. In release 2026-10-21.0 the file holds 704,061 buildings at zoom 14 (a building on a tile edge counts in each tile). Town centers are already mapped in OpenStreetMap; the new buildings are mostly houses on the outskirts and in the countryside, such as Cañaboncito in Caguas, where 5,115 of 12,354 buildings (41%) were traced by machine learning. The file is 7.4 MB.",
   "caveats": [
    "No building in this file has a height in Overture's release 2026-10-21.0 (Google's and Microsoft's footprints carry none), so all are drawn 6 m tall, as the base map draws its own buildings without a height. The file keeps the fields so a later release's heights are used.",
    "Footprints traced by machine learning can include sheds, carports and ruins and miss buildings under trees.",

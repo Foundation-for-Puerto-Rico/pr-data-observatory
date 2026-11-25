@@ -51,7 +51,7 @@ class Tiles(unittest.TestCase):
 
 @unittest.skipIf(np is None, "numpy and shapely are needed")
 class Zonal(unittest.TestCase):
-    """A 4 x 6 raster of 1-degree pixels from (0, 4) at the north-west corner: outline A holds the centres of the 2 x 2 block at the west, outline B the 2 x 2 block
+    """A 4 x 6 raster of 1-degree pixels from (0, 4) at the north-west corner: outline A holds the centers of the 2 x 2 block at the west, outline B the 2 x 2 block
     next to it, outline C is smaller than a pixel inside column 5 of row 0, the rest is sea."""
 
     def setUp(self):
@@ -71,7 +71,7 @@ class Zonal(unittest.TestCase):
         own, extra = nl.owners(self.geoms, self.lon, self.lat)
         self.assertEqual(own[:2, :2].tolist(), [[0, 0], [0, 0]])
         self.assertEqual(own[:2, 2:4].tolist(), [[1, 1], [1, 1]])
-        self.assertTrue((own[2:] == -1).all() and (own[:, 4:] == -1).all())   # sea, and C holds no centre
+        self.assertTrue((own[2:] == -1).all() and (own[:, 4:] == -1).all())   # sea, and C holds no center
         self.assertEqual(extra, [(2, 0, 5)])   # C takes the pixel under it
 
     def test_sums_means_and_quality_share(self):
@@ -211,7 +211,7 @@ class Login(unittest.TestCase):
     LADS = "https://ladsweb.modaps.eosdis.nasa.gov/archive/allData/5200/VNP46A3/2012/001/x.h5"
 
     def test_the_earthdata_round_trip_carries_the_token_to_nasa_only(self):
-        """LAADS -> its licence check -> Earthdata Login -> LAADS's callback -> the file on a download host (where no token goes)."""
+        """LAADS -> its license check -> Earthdata Login -> LAADS's callback -> the file on a download host (where no token goes)."""
         secret = "not-a-real-token-123"
         body = nl.HDF5_MAGIC + b"rest"
         chain = [self.resp(303, "/profiles/licenses/archive/allData/5200/VNP46A3/2012/001/x.h5"),

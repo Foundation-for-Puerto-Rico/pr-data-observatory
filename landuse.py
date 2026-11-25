@@ -23,7 +23,7 @@ UA = "pr-digital-twin/1.0 (Foundation for Puerto Rico)"
 PUT_URL = "https://services6.arcgis.com/a523XM128lX5Nsff/arcgis/rest/services/Puerto_Rico_Land_Use_Plan/FeatureServer/0"
 CALIF_URL = "https://sige.pr.gov/server/rest/services/MIPR/Calificacion/MapServer"
 
-# Barrios = Census county subdivisions (public domain). CRIM's Catastro layer is not used: its licence text restricts republishing.
+# Barrios = Census county subdivisions (public domain). CRIM's Catastro layer is not used: its license text restricts republishing.
 BARRIOS_URL = "https://tigerweb.geo.census.gov/arcgis/rest/services/Generalized_ACS2023/Places_CouSub_ConCity_SubMCD/MapServer/7"   # layer 7 answers at every scale (layer 1 returns no geometry)
 
 SOURCES = {
@@ -68,14 +68,14 @@ SHARE_EXCLUDED = ("water", "road")   # shares of land leave out water bodies and
 
 
 def class_key(cls):
-    """The display class of a CLASIPUT code: the code itself when it has its own colour (GROUPS), else its prefix (SREP-AE, SREP-EP ... draw as SREP), else OTRO."""
+    """The display class of a CLASIPUT code: the code itself when it has its own color (GROUPS), else its prefix (SREP-AE, SREP-EP ... draw as SREP), else OTRO."""
     cls = (cls or "").upper()
     return cls if cls in GROUPS else cls.split("-")[0] if cls.split("-")[0] in GROUPS else "OTRO"
 
 
 def class_summary(props, muni_norm, version):
     """landuse_summary.json: km² of each display class by municipality and for Puerto Rico, from the full-resolution polygons' Shape_Area
-    (square metres in the projected CRS), the areas behind landuse_km2 and the *_pct fields. Polygons with no municipality are kept apart."""
+    (square meters in the projected CRS), the areas behind landuse_km2 and the *_pct fields. Polygons with no municipality are kept apart."""
     areas, unassigned = defaultdict(lambda: defaultdict(float)), defaultdict(float)
     for p in props:
         k, m, a = class_key(p.get("CLASIPUT")), muni_norm(p.get("Municipio") or ""), (p.get("Shape_Area") or 0) / 1e6
@@ -271,7 +271,7 @@ def build_landuse(cache: Path, refresh: bool, places: list, stats: dict, muni_no
             counts[pl["municipality"]][p["group"]] += 1
         else:
             pl["land_use"], pl["land_group"] = None, None
-    # municipality area shares (Shape_Area is in the projected CRS, square metres)
+    # municipality area shares (Shape_Area is in the projected CRS, square meters)
     area = defaultdict(lambda: defaultdict(float))
     for p in props:
         m = muni_norm(p.get("Municipio") or "")

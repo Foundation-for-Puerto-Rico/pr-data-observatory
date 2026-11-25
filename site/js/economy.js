@@ -4,14 +4,14 @@
    The idea: any number of economic datasets on the map at once, the way an analyst would want them.
    - Shaded (choropleth) layers for rates and levels; two shaded layers together become a bivariate map.
    - Sized symbols for counts (jobs, dollars), which a shaded map would misrepresent.
-   - Per-layer normalisation (per 1,000 residents, per km², share of Puerto Rico, share of jobs, location quotient, index, change since a base year),
-     inflation adjustment for dollars, quantile / equal-interval / natural-breaks classes, colours fixed across years.
+   - Per-layer normalization (per 1,000 residents, per km², share of Puerto Rico, share of jobs, location quotient, index, change since a base year),
+     inflation adjustment for dollars, quantile / equal-interval / natural-breaks classes, colors fixed across years.
    - One year control for everything; a workbench (inspector, table, scatter, trend) linked to the map; every dataset's sources one click away.
    Data: data/economy_series.json (economy_series.py) plus the population, income and poverty series from data/housing_series.json.
    Language: every visible text goes through T / Tn / Th (docs/i18n.md). The labels and groups that come from the data files stay English in EC.V and are translated where they are shown
    (T(v.label), T(v.group)); ids, the URL state and sorting never depend on the language. */
 
-const E = Core.engine.create();   // the shared layer engine (js/core, docs/engine.md): the datasets, the period each shows, normalisation, classes, legend and pop-up text. This file is the tab's screen and its handlers.
+const E = Core.engine.create();   // the shared layer engine (js/core, docs/engine.md): the datasets, the period each shows, normalization, classes, legend and pop-up text. This file is the tab's screen and its handlers.
 const EC = { ready: false, loading: null, layers: [], seq: 0, selected: null, bench: { open: false, tab: 'inspect' }, charts: {}, trend: new Set(), centroids: [], panes: false };
 // the engine's state is read and written through EC, so the rest of this file reads as it always did
 ['V', 'extras', 'sources', 'notes', 'built', 'snapYear', 'cpi', 'cpiRef', 'cache', 'year', 'base'].forEach(k => Object.defineProperty(EC, k, { get: () => E[k], set: (v) => { E[k] = v; }, enumerable: true }));
@@ -42,13 +42,13 @@ const ecArr = (key, y) => E.arr(key, y);
 const cpiFactor = (y) => E.cpiFactor(y);
 const popAt = (y) => E.pop(y);
 
-// ── Normalisation and formats: Core.normalize and Core.format ────────────────
+// ── Normalization and formats: Core.normalize and Core.format ────────────────
 const ecNormOptions = (v) => Core.normalize.options(v);
 const ecOut = (L) => E.out(L);
 const ecCalc = (L, y) => E.calc(L, y);
 const ecFmt = (L, x, compact) => E.fmt(L, x, compact);
 
-// ── Classes and colours: Core.classify and Core.palettes ─────────────────────
+// ── Classes and colors: Core.classify and Core.palettes ─────────────────────
 const ecPool = (L, current) => E.pool(L, current);
 const ecBreaks = (L, current, classes = 5) => E.breaks(L, current, classes);
 const ecClass = (b, v, classes = 5) => Core.classify.classOf(b, v, classes);
@@ -81,7 +81,7 @@ function ecRenderMap() {
   let fills = ecFills();
   const bar = ecBar();
   ecLevelDraw(bar); if (bar) fills = [];
-  // shaded layer: one sheet whose colours come from the first (or the first two, as a bivariate map) visible shaded layers
+  // shaded layer: one sheet whose colors come from the first (or the first two, as a bivariate map) visible shaded layers
   const colors = {};
   if (fills.length) E.fillColors(fills, EC.eval).forEach((c, i) => { colors[EC.NM[i]] = c; });
   if (fills.length) {
@@ -89,12 +89,12 @@ function ecRenderMap() {
     if (!map.hasLayer(EC.fillLayer)) EC.fillLayer.addTo(map);
     EC.fillLayer.setStyle(f => ({ color: '#fff', weight: .8, fillColor: colors[f.properties.municipality] || Core.palettes.NOVAL, fillOpacity: fills[0].opacity }));
   } else if (EC.fillLayer && map.hasLayer(EC.fillLayer)) map.removeLayer(EC.fillLayer);
-  ecHatch(fills.length ? E.flagged(fills.slice(0, 2), EC.eval) : []);   // places whose value is less reliable are hatched over their colour
+  ecHatch(fills.length ? E.flagged(fills.slice(0, 2), EC.eval) : []);   // places whose value is less reliable are hatched over their color
   // symbols
   EC.symGroup.clearLayers();
   EC.layers.filter(l => l.mode === 'symbol' && l.visible && EC.eval[l.id] && EC.eval[l.id].a).forEach(L => {
     const rel = E.reliability(L, EC.eval[L.id]).flagged;   // a less reliable value gets a dashed dark outline
-    const ring = ecFills().length > 0;   // over a shaded map (municipio or barrio) the symbols are hollow rings with a white halo, so the colours under them stay readable (review 2026-11-05); alone they are filled
+    const ring = ecFills().length > 0;   // over a shaded map (municipio or barrio) the symbols are hollow rings with a white halo, so the colors under them stay readable (review 2026-11-05); alone they are filled
     E.symbols(L, EC.eval[L.id], isMobile()).rows.filter(r => EC.centroids[r.i]).forEach(r => {
       const o = { pane: 'econsym', interactive: false, radius: r.r, dashArray: rel[r.i] ? '3 3' : null };
       if (ring) EC.symGroup.addLayer(window.L.circleMarker(EC.centroids[r.i], { ...o, color: '#fff', weight: 4.5, fill: false, dashArray: null }));
@@ -113,7 +113,7 @@ function ecLevelDraw(L) {   // a shaded layer by barrio: js/econ_level.js and it
   if (typeof EconLevel !== 'undefined' && (EC.lvOk || !L)) return EconLevel.draw(L);
   if (L) (EC.lvP = EC.lvP || allIn([I18N.load('econ_level'), ecScripts(['js/econ_level.js?v=8'])]).then(() => { EC.lvOk = true; }, e => { EC.lvP = null; throw e; })).then(ecRender, () => toast(T('The barrio values could not be loaded. Check your connection and try again.')));
 }
-// Places whose value is less reliable (reliability.js) are hatched over their colour: a pattern and not a colour, so it reads in any colour vision and in print; a dark line with a white one beside it, so it shows on pale and dark colours alike. `places` are indexes.
+// Places whose value is less reliable (reliability.js) are hatched over their color: a pattern and not a color, so it reads in any color vision and in print; a dark line with a white one beside it, so it shows on pale and dark colors alike. `places` are indexes.
 function ecHatch(places) {
   if (!places.length) { if (EC.hatchLayer && map.hasLayer(EC.hatchLayer)) map.removeLayer(EC.hatchLayer); return; }
   const names = new Set(places.map(i => EC.NM[i]));
@@ -185,7 +185,7 @@ function ecSkeleton() {
     <div class="ctrl"><label for="ecFind" class="sr-only">${esc(T('Find a dataset'))}</label><input type="search" id="ecFind" class="ec-find" placeholder="${esc(T('Find a dataset: jobs, pay, poverty…'))}" autocomplete="off"></div>
     <div id="ecBrowse"></div>
     <h2 class="sec">${esc(T('Reading these maps'))}</h2>
-    <div class="note">${Th('<b>Shade rates, size counts.</b> A shaded map of jobs would mostly show how big a municipality is. Counts start as sized symbols; shade them per 1,000 residents, per km² or as a share to compare places. Classes stay fixed across years so a colour means the same thing in every year.')}</div>
+    <div class="note">${Th('<b>Shade rates, size counts.</b> A shaded map of jobs would mostly show how big a municipality is. Counts start as sized symbols; shade them per 1,000 residents, per km² or as a share to compare places. Classes stay fixed across years so a color means the same thing in every year.')}</div>
     <div class="note">${Th('<b>Where the work is versus where people live.</b> Jobs, wages and establishments are counted at the workplace (QCEW); income, poverty and commuting describe residents (ACS). San Juan and Guaynabo look rich in jobs partly because workers commute in. “Jobs per employed resident” shows it.')}</div>
     <div class="note">${Th('<b>Dollars.</b> Tick “inflation-adjusted” on a dollar layer to compare years in {year} dollars. The index is the US one, not a Puerto Rico index, so it is only an approximation of how prices changed on the island. ACS dollars are already in the final year of each five-year window.', { year: EC.cpiRef || T('recent') })}</div>
     <div class="note">${Th('<b>Small places and withheld data.</b> Survey figures (ACS, LAUS) are noisy for small municipalities; margins of error (±) are shown where published. The jobs data hide cells that would identify one employer, so some sectors are blank in small municipalities. The informal economy is not in the jobs data; self-employed residents are a rough window on it.')}</div>
@@ -193,7 +193,7 @@ function ecSkeleton() {
     <h2 class="sec">${esc(T('Sources'))}</h2><div id="ecSources"></div>`;
 }
 function ecRenderPresets() {
-  const P = [[T('Jobs and pay'), [['qcew_avg_pay', 'fill', {}], ['qcew_jobs', 'symbol', {}]]], [T('Poverty and unemployment'), [['poverty_pct', 'fill', {}], ['laus_unemp_rate', 'fill', {}], ['laus_unemployed', 'symbol', {}]]], [T('Job centres and commuting'), [['jobs_per_employed_resident', 'fill', {}], ['commute_45plus_pct', 'fill', {}], ['qcew_jobs', 'symbol', {}]], ['lyRoutes']], [T('Public money'), [['fed_awards_total', 'fill', { norm: 'perCapita' }], ['fema_pa_obligated', 'symbol', {}]]], [T('Government and self-employment'), [['gov_job_share_pct', 'fill', {}], ['self_employed_pct', 'fill', {}]]], [T('Tourism economy'), [['tourism_jobs', 'fill', { norm: 'shareJobs' }], ['accommodation_jobs', 'symbol', {}]], ['lyPlaces']]];   // the visitor economy last, as everywhere
+  const P = [[T('Jobs and pay'), [['qcew_avg_pay', 'fill', {}], ['qcew_jobs', 'symbol', {}]]], [T('Poverty and unemployment'), [['poverty_pct', 'fill', {}], ['laus_unemp_rate', 'fill', {}], ['laus_unemployed', 'symbol', {}]]], [T('Job centers and commuting'), [['jobs_per_employed_resident', 'fill', {}], ['commute_45plus_pct', 'fill', {}], ['qcew_jobs', 'symbol', {}]], ['lyRoutes']], [T('Public money'), [['fed_awards_total', 'fill', { norm: 'perCapita' }], ['fema_pa_obligated', 'symbol', {}]]], [T('Government and self-employment'), [['gov_job_share_pct', 'fill', {}], ['self_employed_pct', 'fill', {}]]], [T('Tourism economy'), [['tourism_jobs', 'fill', { norm: 'shareJobs' }], ['accommodation_jobs', 'symbol', {}]], ['lyPlaces']]];   // the visitor economy last, as everywhere
   $('#ecPresets').innerHTML = P.map((p, i) => `<button type="button" class="chip" data-preset="${i}" style="background:#BDE0F2;color:#205D7B">${esc(p[0])}</button>`).join('');
   $('#ecPresets').onclick = e => { const b = e.target.closest('[data-preset]'); if (!b) return; const p = P[+b.dataset.preset]; ecIxApply(null); EC.layers = []; p[1].forEach(([k, m, o]) => { if (EC.V[k]) ecAdd(k, m, o); }); ecSetContext(p[2] || []); ecRender(); toast(Tn(EC.layers.length, '{name}: {n} layer. Click the map to see them all at a place.', '{name}: {n} layers. Click the map to see them all at a place.', { name: p[0] }), 5000); };
 }
@@ -346,7 +346,7 @@ function ecBenchLater(tab) {   // "Loading…" until the view's script is in, th
 const TK = (s) => s;   // an English text that is translated where it is shown, with T(): the language tool reads it like T()
 const IX = 'user_composite', IX_LABEL = TK('User-built composite, not an official index');
 const IX_T = { z: TK('z-scores (standard deviations from the average municipality)'), mm: TK('0 to 100 between the lowest and the highest municipality'), pct: TK('percentile rank (0 to 100)') };
-function ecIxInputs(spec) {   // each input as its shaded layer would show it: the normalisation a shaded map starts with, in the year the year control picks
+function ecIxInputs(spec) {   // each input as its shaded layer would show it: the normalization a shaded map starts with, in the year the year control picks
   return spec.items.map(it => { const v = EC.V[it.key], n = Core.normalize.defaultNorm(v, 'fill'), r = E.values(it.key, { year: E.year, norm: n }); return { v, norm: n, normLabel: E.normLabel({ key: it.key, norm: n }), year: r ? r.year : null, a: r ? r.values : new Array(EC.PR + 1).fill(null) }; });
 }
 function ecIxMethod(spec, ins) {

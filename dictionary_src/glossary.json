@@ -3166,7 +3166,7 @@
   "term": "Class break",
   "term_es": "Límite de clase",
   "expansion": "",
-  "plain": "A value that separates one colour class from the next on a shaded map.",
+  "plain": "A value that separates one color class from the next on a shaded map.",
   "plain_es": "Valor que separa una clase de color de la siguiente en un mapa coloreado.",
   "source": {
    "name": "Esri ArcGIS Pro documentation, Data classification methods",
@@ -3226,7 +3226,7 @@
   "term": "Bivariate map",
   "term_es": "Mapa bivariado",
   "expansion": "",
-  "plain": "A map that colours each place by two datasets at once, with three classes of each, so there are nine colours.",
+  "plain": "A map that colors each place by two datasets at once, with three classes of each, so there are nine colors.",
   "plain_es": "Mapa que colorea cada lugar según dos conjuntos de datos a la vez, con tres clases de cada uno: nueve colores en total.",
   "source": {
    "name": "Esri ArcGIS Pro documentation, Bivariate colors symbology",
@@ -3286,7 +3286,7 @@
   "term": "Diverging scale",
   "term_es": "Escala divergente",
   "expansion": "",
-  "plain": "A colour scale that shows distance from a natural centre: one colour above it, another below it, and pale grey near it.",
+  "plain": "A color scale that shows distance from a natural center: one color above it, another below it, and pale gray near it.",
   "plain_es": "Escala de color que muestra la distancia a un centro natural: un color por encima, otro por debajo y gris claro cerca de él.",
   "source": {
    "name": "ColorBrewer 2.0 (Brewer, Penn State), color advice for maps",
@@ -3404,7 +3404,7 @@
   "term": "Fitted line",
   "term_es": "Recta ajustada",
   "expansion": "",
-  "plain": "The ordinary least-squares line: the straight line that minimises the sum of the squared vertical distances to the points of a scatter plot. The vertical distance from each point to it is that point's residual.",
+  "plain": "The ordinary least-squares line: the straight line that minimizes the sum of the squared vertical distances to the points of a scatter plot. The vertical distance from each point to it is that point's residual.",
   "plain_es": "La recta de mínimos cuadrados: la que minimiza la suma de los cuadrados de las distancias verticales a los puntos de un diagrama de dispersión. La distancia de cada punto a ella es su residuo.",
   "source": {
    "name": "NIST/SEMATECH e-Handbook of Statistical Methods, Linear least squares regression",
@@ -3463,7 +3463,7 @@
   "term": "Residual",
   "term_es": "Residuo",
   "expansion": "",
-  "plain": "The difference between a place's observed value and the value the fitted line predicts. A standardised residual divides it by the standard deviation of the residuals.",
+  "plain": "The difference between a place's observed value and the value the fitted line predicts. A standardized residual divides it by the standard deviation of the residuals.",
   "plain_es": "La diferencia entre el valor observado de un lugar y el que predice la recta ajustada. Un residuo estandarizado lo divide entre la desviación estándar de los residuos.",
   "source": {
    "name": "NIST/SEMATECH e-Handbook of Statistical Methods, Residuals",
@@ -3608,7 +3608,7 @@
   "term": "Rescaling",
   "term_es": "Normalización",
   "expansion": "",
-  "plain": "Changing a number into a comparable form, such as per 1,000 residents or as a share. It is also called normalisation. The 'Show as' menu offers it.",
+  "plain": "Changing a number into a comparable form, such as per 1,000 residents or as a share. It is also called normalization. The 'Show as' menu offers it.",
   "plain_es": "Convertir un número a una forma comparable, como por cada 1,000 residentes o como proporción (normalización). Lo ofrece el menú “Mostrar como”.",
   "source": {
    "name": "PR Data Observatory, data dictionary: The 'Show as' menu: ways to rescale a dataset",
@@ -3619,7 +3619,7 @@
   "match": {
    "en": [
     "rescaling",
-    "normalisation",
+    "normalization",
     "normalization"
    ],
    "es": [
@@ -4240,7 +4240,7 @@
   "match": {
    "en": [
     "labor force",
-    "labour force"
+    "labor force"
    ],
    "es": [
     "fuerza laboral"
@@ -4879,7 +4879,7 @@
   "term": "Centroid",
   "term_es": "Centroide",
   "expansion": "",
-  "plain": "The geometric centre (centre of mass) of a polygon. The observatory puts each sized symbol at the area-weighted centroid of the municipality's largest polygon, so detached islands do not pull it into the sea.",
+  "plain": "The geometric center (center of mass) of a polygon. The observatory puts each sized symbol at the area-weighted centroid of the municipality's largest polygon, so detached islands do not pull it into the sea.",
   "plain_es": "El centro geométrico (centro de masa) de un polígono. El observatorio coloca cada símbolo proporcional en el centroide ponderado por área del polígono más grande del municipio, para que las islas separadas no lo desplacen al mar.",
   "source": {
    "name": "PR Data Observatory, data dictionary: Sized symbols (proportional circles)",
@@ -4891,7 +4891,7 @@
    "en": [
     "centroid",
     "centroids",
-    "centre point"
+    "center point"
    ],
    "es": [
     "centroide",
@@ -5372,7 +5372,7 @@
   "term": "1% annual chance flood",
   "term_es": "Inundación con 1% de probabilidad anual",
   "expansion": "",
-  "plain": "A flood with a 1% chance of being equalled or exceeded in any year (the base flood, sometimes called a 100-year flood). It is not once in 100 years: over 30 years the chance of at least one is 1 − 0.99^30 ≈ 26%.",
+  "plain": "A flood with a 1% chance of being equaled or exceeded in any year (the base flood, sometimes called a 100-year flood). It is not once in 100 years: over 30 years the chance of at least one is 1 − 0.99^30 ≈ 26%.",
   "plain_es": "Inundación con 1% de probabilidad de igualarse o superarse en cualquier año (inundación base o “de 100 años”). No significa una vez cada 100 años: en 30 años la probabilidad de al menos una es de cerca de 26% (1 − 0.99^30).",
   "source": {
    "name": "USGS Water Science School, The 100-year flood",
@@ -6390,7 +6390,7 @@
   "term": "Social capital (WCRP)",
   "term_es": "Capital social (WCRP)",
   "expansion": "",
-  "plain": "The community assets that a place can draw on, such as community centres, libraries, parks and organizations. The WCRP Social Capital map counts them for each Comunidad Especial and per resident by municipio.",
+  "plain": "The community assets that a place can draw on, such as community centers, libraries, parks and organizations. The WCRP Social Capital map counts them for each Comunidad Especial and per resident by municipio.",
   "plain_es": "Los activos comunitarios con los que cuenta un lugar, como centros comunales, bibliotecas, parques y organizaciones. El mapa de capital social de WCRP los cuenta para cada Comunidad Especial y por residente en cada municipio.",
   "source": {
    "name": "PR Data Observatory, WCRP page",
@@ -6875,7 +6875,7 @@
   "term_es": "Línea PAS",
   "expansion": "Línea de Primera Ayuda Sicosocial (psychosocial first aid line) of ASSMCA",
   "expansion_es": "Línea de Primera Ayuda Sicosocial de la ASSMCA",
-  "plain": "The crisis intervention line of ASSMCA (Administración de Servicios de Salud Mental y Contra la Adicción), Puerto Rico's mental health and addiction services agency: 1-800-981-0023, listed with 988, answered 24 hours a day, 7 days a week, by a multidisciplinary team of mental health professionals, with a chat at lineapas.assmca.pr.gov and sign-language video relay (VRS) at 787-615-4112. It offers crisis counselling and emotional support, a preliminary psychosocial screening, coordination of psychiatric and psychological evaluation and of drug and alcohol rehabilitation, and referrals.",
+  "plain": "The crisis intervention line of ASSMCA (Administración de Servicios de Salud Mental y Contra la Adicción), Puerto Rico's mental health and addiction services agency: 1-800-981-0023, listed with 988, answered 24 hours a day, 7 days a week, by a multidisciplinary team of mental health professionals, with a chat at lineapas.assmca.pr.gov and sign-language video relay (VRS) at 787-615-4112. It offers crisis counseling and emotional support, a preliminary psychosocial screening, coordination of psychiatric and psychological evaluation and of drug and alcohol rehabilitation, and referrals.",
   "plain_es": "La línea de intervención en crisis de la ASSMCA (Administración de Servicios de Salud Mental y Contra la Adicción): 1-800-981-0023, junto al 988, atendida las 24 horas, los 7 días de la semana, por un equipo multidisciplinario de profesionales de la salud mental, con chat en lineapas.assmca.pr.gov y videollamada en lenguaje de señas (VRS) al 787-615-4112. Ofrece consejería en crisis y apoyo emocional, cernimiento preliminar psicosocial, coordinación de evaluación psiquiátrica y psicológica y de rehabilitación de drogas y alcohol, y referidos.",
   "source": {
    "name": "ASSMCA, Línea PAS (Programa Integrado de Intervención en Crisis)",
@@ -7151,10 +7151,10 @@
  },
  {
   "id": "licence",
-  "term": "Licence",
+  "term": "License",
   "term_es": "Licencia",
   "expansion": "",
-  "plain": "The terms under which a source lets others use, share and change its data. The observatory records each source's licence, and a dictionary entry carries the strictest licence among its sources; licence text is what each source states, not legal advice.",
+  "plain": "The terms under which a source lets others use, share and change its data. The observatory records each source's license, and a dictionary entry carries the strictest license among its sources; license text is what each source states, not legal advice.",
   "plain_es": "Los términos con que una fuente permite que otros usen, compartan y modifiquen sus datos. El observatorio registra la licencia de cada fuente, y cada ficha del diccionario lleva la más restrictiva de sus fuentes; el texto de la licencia es lo que dice cada fuente, no asesoría legal.",
   "source": {
    "name": "Open Knowledge Foundation, The Open Definition 2.1",
@@ -7163,8 +7163,8 @@
   },
   "match": {
    "en": [
-    "licence",
-    "licences",
+    "license",
+    "licenses",
     "license",
     "licenses"
    ],
@@ -7195,7 +7195,7 @@
    "en": [
     "open data",
     "open license",
-    "open licence"
+    "open license"
    ],
    "es": [
     "datos abiertos",
@@ -7771,7 +7771,7 @@
   "term": "Internal point",
   "term_es": "Punto interno",
   "expansion": "",
-  "plain": "A point that the Census Bureau places inside each area (INTPTLAT, INTPTLON), at or near its geographic centre and always within the area. The observatory assigns a census block to a hazard or district by this point.",
+  "plain": "A point that the Census Bureau places inside each area (INTPTLAT, INTPTLON), at or near its geographic center and always within the area. The observatory assigns a census block to a hazard or district by this point.",
   "plain_es": "Un punto que el Negociado del Censo ubica dentro de cada área (INTPTLAT, INTPTLON), en su centro geográfico o cerca de él y siempre dentro del área. El observatorio asigna un bloque censal a un riesgo o distrito según este punto.",
   "source": {
    "name": "US Census Bureau, Geography glossary",
@@ -7830,7 +7830,7 @@
   "term": "Type I crimes",
   "term_es": "Delitos Tipo I",
   "expansion": "",
-  "plain": "The eight Type I offences in the Puerto Rico Police's municipal tables, following the FBI's Uniform Crime Reporting model: murder, rape, human trafficking, robbery and aggravated assault (violent), and burglary, larceny and vehicle theft (property). The counts are complaints recorded (querellas), not every crime that happened.",
+  "plain": "The eight Type I offenses in the Puerto Rico Police's municipal tables, following the FBI's Uniform Crime Reporting model: murder, rape, human trafficking, robbery and aggravated assault (violent), and burglary, larceny and vehicle theft (property). The counts are complaints recorded (querellas), not every crime that happened.",
   "plain_es": "Los ocho delitos Tipo I de las tablas por municipio de la Policía de Puerto Rico, según el modelo de Uniform Crime Reporting del FBI: asesinato, violación, trata humana, robo y agresión agravada (violentos), y escalamiento, apropiación ilegal y vehículo hurtado (contra la propiedad). Los conteos son querellas registradas, no todos los delitos que ocurrieron.",
   "source": {
    "name": "Policía de Puerto Rico, Delitos Tipo I, informe de diciembre de 2022, tabla por municipio (Instituto de Estadísticas de Puerto Rico)",
@@ -8340,7 +8340,7 @@
   "term_es": "Intersección de alto volumen",
   "expansion": "",
   "expansion_es": "",
-  "plain": "In the Route analysis, a signalised junction or roundabout (OpenStreetMap) where the busiest road within 30 m carries an estimated 2,000 or more vehicles an hour in the design hour (HPMS 2024: AADT x K factor, the 30th-busiest hour of the year; the class median K where the road has none). An estimate of volume, not a measure of delay.",
+  "plain": "In the Route analysis, a signalized junction or roundabout (OpenStreetMap) where the busiest road within 30 m carries an estimated 2,000 or more vehicles an hour in the design hour (HPMS 2024: AADT x K factor, the 30th-busiest hour of the year; the class median K where the road has none). An estimate of volume, not a measure of delay.",
   "plain_es": "En el Análisis de ruta, un cruce con semáforo o una rotonda (OpenStreetMap) donde la carretera más cargada a 30 m o menos lleva un estimado de 2,000 o más vehículos por hora en la hora de diseño (HPMS 2024: AADT x factor K, la trigésima hora de más tránsito del año; la mediana de su clase donde la carretera no tiene factor K). Es un estimado de volumen, no una medida de atraso.",
   "source": {
    "name": "PR Data Observatory, data dictionary: High-volume intersections on the path",
@@ -8400,7 +8400,7 @@
  },
  {
   "id": "signalised-junction",
-  "term": "Signalised junction",
+  "term": "Signalized junction",
   "term_es": "Cruce con semáforo",
   "expansion": "",
   "expansion_es": "",
@@ -8413,8 +8413,8 @@
   },
   "match": {
    "en": [
-    "signalised junction",
-    "signalised junctions",
+    "signalized junction",
+    "signalized junctions",
     "signalized intersection",
     "signalized intersections",
     "traffic signal",
@@ -8724,7 +8724,7 @@
   "term_es": "Efectividad del gobierno",
   "expansion": "",
   "expansion_es": "",
-  "plain": "A WGI dimension: perceptions of the quality of public services, of the civil service and its independence from political pressure, and of the quality of policy formulation and implementation and the credibility of the government's commitment to it. A standardized estimate centred on 0.",
+  "plain": "A WGI dimension: perceptions of the quality of public services, of the civil service and its independence from political pressure, and of the quality of policy formulation and implementation and the credibility of the government's commitment to it. A standardized estimate centered on 0.",
   "plain_es": "Una dimensión de los WGI: la percepción de la calidad de los servicios públicos, del servicio civil y de su independencia de las presiones políticas, y de la calidad de la formulación y la ejecución de la política pública y de la credibilidad del compromiso del gobierno con ella. Es un estimado estandarizado centrado en 0.",
   "source": {
    "name": "World Bank, Worldwide Governance Indicators: documentation (2026 update)",
@@ -8752,7 +8752,7 @@
   "term_es": "Calidad regulatoria",
   "expansion": "",
   "expansion_es": "",
-  "plain": "A WGI dimension: perceptions of the government's ability to formulate and implement sound policies and regulations that permit and promote private-sector development. A standardized estimate centred on 0.",
+  "plain": "A WGI dimension: perceptions of the government's ability to formulate and implement sound policies and regulations that permit and promote private-sector development. A standardized estimate centered on 0.",
   "plain_es": "Una dimensión de los WGI: la percepción de la capacidad del gobierno para formular y aplicar políticas y reglamentos sólidos que permitan y promuevan el desarrollo del sector privado. Es un estimado estandarizado centrado en 0.",
   "source": {
    "name": "World Bank, Worldwide Governance Indicators: documentation (2026 update)",
@@ -8780,7 +8780,7 @@
   "term_es": "Estado de derecho",
   "expansion": "",
   "expansion_es": "",
-  "plain": "A WGI dimension: perceptions of the extent to which people have confidence in and abide by the rules of society, in particular contract enforcement, property rights, the police and the courts, and the likelihood of crime and violence. A standardized estimate centred on 0.",
+  "plain": "A WGI dimension: perceptions of the extent to which people have confidence in and abide by the rules of society, in particular contract enforcement, property rights, the police and the courts, and the likelihood of crime and violence. A standardized estimate centered on 0.",
   "plain_es": "Una dimensión de los WGI: la percepción de cuánto confían las personas en las reglas de la sociedad y las cumplen, en particular el cumplimiento de los contratos, los derechos de propiedad, la policía y los tribunales, y la probabilidad de delito y violencia. Es un estimado estandarizado centrado en 0.",
   "source": {
    "name": "World Bank, Worldwide Governance Indicators: documentation (2026 update)",
@@ -8864,11 +8864,11 @@
  },
  {
   "id": "gross-enrolment-ratio",
-  "term": "Gross enrolment ratio",
+  "term": "Gross enrollment ratio",
   "term_es": "Tasa bruta de matrícula",
   "expansion": "",
   "expansion_es": "",
-  "plain": "Enrolment in a level of education, whatever the students' age, as a percentage of the population of the official age for that level (for tertiary, the five years after secondary school). It can exceed 100% because of late entrants, repeaters and older students.",
+  "plain": "Enrollment in a level of education, whatever the students' age, as a percentage of the population of the official age for that level (for tertiary, the five years after secondary school). It can exceed 100% because of late entrants, repeaters and older students.",
   "plain_es": "La matrícula en un nivel de educación, sea cual sea la edad de los estudiantes, como por ciento de la población en la edad oficial de ese nivel (en postsecundaria, los cinco años después de la secundaria). Puede pasar de 100% por quienes entran tarde, repiten o estudian a mayor edad.",
   "source": {
    "name": "UNESCO Institute for Statistics, Glossary (UIS Data Browser)",
@@ -8877,8 +8877,8 @@
   },
   "match": {
    "en": [
-    "gross enrolment ratio",
-    "tertiary enrolment"
+    "gross enrollment ratio",
+    "tertiary enrollment"
    ],
    "es": [
     "tasa bruta de matrícula",
@@ -8898,7 +8898,7 @@
   "term_es": "Esperanza de vida escolar",
   "expansion": "",
   "expansion_es": "",
-  "plain": "The total number of years of schooling, from primary to tertiary, that a child of school-entrance age can expect to receive if current age-specific enrolment rates persist; the sum of those rates.",
+  "plain": "The total number of years of schooling, from primary to tertiary, that a child of school-entrance age can expect to receive if current age-specific enrollment rates persist; the sum of those rates.",
   "plain_es": "El total de años de escolaridad, de primaria a postsecundaria, que un niño en edad de entrar a la escuela puede esperar recibir si se mantienen las tasas de matrícula por edad actuales; la suma de esas tasas.",
   "source": {
    "name": "UNESCO Institute for Statistics, Glossary (UIS Data Browser)",
@@ -9228,7 +9228,7 @@
   "term": "Vector tile",
   "term_es": "Mosaico vectorial",
   "expansion": "",
-  "plain": "A square piece of a map at one zoom level that holds the map's features as geometry (points, lines, polygons) with attributes, not as a picture; the browser draws it with a style, so labels stay sharp and colours can change without new downloads.",
+  "plain": "A square piece of a map at one zoom level that holds the map's features as geometry (points, lines, polygons) with attributes, not as a picture; the browser draws it with a style, so labels stay sharp and colors can change without new downloads.",
   "plain_es": "Pieza cuadrada de un mapa en un nivel de zoom que guarda los elementos del mapa como geometría (puntos, líneas, polígonos) con atributos, no como imagen; el navegador la dibuja con un estilo, así que los rótulos se ven nítidos y los colores pueden cambiar sin nuevas descargas.",
   "source": {
    "name": "OpenStreetMap Wiki, Vector tiles",
@@ -9392,7 +9392,7 @@
   "term": "Terrain tile",
   "term_es": "Mosaico de terreno",
   "expansion": "",
-  "plain": "A map tile that stores the ground's elevation instead of a picture, encoded in the colours of its pixels; the 3D view reads it to raise the ground. The observatory uses the open Terrain Tiles first published by Mapzen and hosted by Amazon Web Services.",
+  "plain": "A map tile that stores the ground's elevation instead of a picture, encoded in the colors of its pixels; the 3D view reads it to raise the ground. The observatory uses the open Terrain Tiles first published by Mapzen and hosted by Amazon Web Services.",
   "plain_es": "Mosaico del mapa que guarda la elevación del suelo en vez de una imagen, codificada en los colores de sus píxeles; la vista 3D lo lee para levantar el terreno. El observatorio usa los Terrain Tiles abiertos que publicó primero Mapzen y que aloja Amazon Web Services.",
   "source": {
    "name": "Registry of Open Data on AWS, Terrain Tiles",
@@ -9447,7 +9447,7 @@
   "term": "Map style",
   "term_es": "Estilo de mapa",
   "expansion": "",
-  "plain": "A JSON document, in the MapLibre Style Specification, that says which vector tiles to read and how to draw each layer (colours, line widths, labels, the zoom levels at which each appears), with the addresses of its fonts and icons. The same tiles can be drawn in several styles, such as OpenFreeMap's Liberty and Positron. A style can also point to raster tiles, as the observatory's USGS base maps do.",
+  "plain": "A JSON document, in the MapLibre Style Specification, that says which vector tiles to read and how to draw each layer (colors, line widths, labels, the zoom levels at which each appears), with the addresses of its fonts and icons. The same tiles can be drawn in several styles, such as OpenFreeMap's Liberty and Positron. A style can also point to raster tiles, as the observatory's USGS base maps do.",
   "plain_es": "Documento JSON, en la especificación de estilos de MapLibre, que indica qué mosaicos vectoriales leer y cómo dibujar cada capa (colores, grosores de línea, rótulos, los niveles de zoom en que aparece cada una), con las direcciones de sus fuentes e íconos. Los mismos mosaicos se pueden dibujar con varios estilos, como Liberty y Positron de OpenFreeMap. Un estilo también puede apuntar a mosaicos ráster, como los mapas base del USGS del observatorio.",
   "source": {
    "name": "MapLibre Style Specification",
@@ -9474,7 +9474,7 @@
   "id": "openmaptiles",
   "term": "OpenMapTiles",
   "expansion": "",
-  "plain": "An open schema for vector tiles made from OpenStreetMap: it fixes the tile layers (transportation, building, water, place, poi and others) and their fields. Its licence asks maps that use it to show '© OpenMapTiles'.",
+  "plain": "An open schema for vector tiles made from OpenStreetMap: it fixes the tile layers (transportation, building, water, place, poi and others) and their fields. Its license asks maps that use it to show '© OpenMapTiles'.",
   "plain_es": "Esquema abierto para mosaicos vectoriales hechos con OpenStreetMap: fija las capas de los mosaicos (transportation, building, water, place, poi y otras) y sus campos. Su licencia pide que los mapas que lo usan muestren '© OpenMapTiles'.",
   "source": {
    "name": "OpenMapTiles, Vector tile schema",
@@ -9611,7 +9611,7 @@
     "age-adjusted",
     "age adjusted",
     "direct standardization",
-    "direct standardisation"
+    "direct standardization"
    ],
    "es": [
     "tasa ajustada por edad",
@@ -10431,7 +10431,7 @@
   "term_es": "Elevación de la superficie del agua",
   "expansion": "",
   "expansion_es": "",
-  "plain": "The height of a lake's or reservoir's water above a reference level, here local mean sea level, in metres. A reservoir's level falls in a drought and rises after rain; it is not the volume of water, because sediment fills part of a reservoir over time.",
+  "plain": "The height of a lake's or reservoir's water above a reference level, here local mean sea level, in meters. A reservoir's level falls in a drought and rises after rain; it is not the volume of water, because sediment fills part of a reservoir over time.",
   "plain_es": "La altura del agua de un lago o embalse sobre un nivel de referencia, aquí el nivel medio del mar local, en metros. El nivel baja en una sequía y sube después de la lluvia; no es el volumen de agua, porque el sedimento llena parte del embalse con el tiempo.",
   "source": {
    "name": "USGS, Water Data for the Nation: parameter 72376, lake or reservoir elevation above local mean sea level",
@@ -10464,7 +10464,7 @@
   "term_es": "Nivel medio del mar local",
   "expansion": "",
   "expansion_es": "",
-  "plain": "The average height of the sea at a place, worked out from hourly tide readings over many years, used as the zero from which heights there are measured. A reservoir's level in metres above local mean sea level is the height of its water surface above that zero, not the depth of the water.",
+  "plain": "The average height of the sea at a place, worked out from hourly tide readings over many years, used as the zero from which heights there are measured. A reservoir's level in meters above local mean sea level is the height of its water surface above that zero, not the depth of the water.",
   "plain_es": "La altura promedio del mar en un lugar, calculada con lecturas horarias de la marea durante muchos años, que se usa como el cero desde el cual se miden las alturas allí. El nivel de un embalse en metros sobre el nivel medio del mar local es la altura de la superficie del agua sobre ese cero, no la profundidad del agua.",
   "source": {
    "name": "NOAA Tides and Currents, Datum options: Mean Sea Level (MSL), the arithmetic mean of hourly heights over the National Tidal Datum Epoch",
@@ -10525,7 +10525,7 @@
   "term_es": "Radiancia",
   "expansion": "",
   "expansion_es": "",
-  "plain": "The power of light that leaves a surface in one direction, per unit of area and per unit of solid angle (watts per square metre per steradian), as a satellite sensor measures it from above the atmosphere. Night-time lights give it in nanowatts per square centimetre per steradian (nW/cm²/sr): a higher value means a brighter place, not more lamps or more people.",
+  "plain": "The power of light that leaves a surface in one direction, per unit of area and per unit of solid angle (watts per square meter per steradian), as a satellite sensor measures it from above the atmosphere. Night-time lights give it in nanowatts per square centimeter per steradian (nW/cm²/sr): a higher value means a brighter place, not more lamps or more people.",
   "plain_es": "La potencia de la luz que sale de una superficie en una dirección, por unidad de área y por unidad de ángulo sólido (vatios por metro cuadrado por estereorradián), tal como la mide un sensor satelital desde encima de la atmósfera. Las luces nocturnas la dan en nanovatios por centímetro cuadrado por estereorradián (nW/cm²/sr): un valor más alto significa un lugar más brillante, no más lámparas ni más personas.",
   "source": {
    "name": "NASA, VIIRS Black Marble Product User Guide, version 2.0 (October 2024)",
@@ -10581,9 +10581,9 @@
   "id": "nw-cm-sr",
   "term": "nW/cm²/sr",
   "term_es": "nW/cm²/sr",
-  "expansion": "nanowatts per square centimetre per steradian",
+  "expansion": "nanowatts per square centimeter per steradian",
   "expansion_es": "nanovatios por centímetro cuadrado por estereorradián",
-  "plain": "The unit of night-time light radiance (written nW·cm⁻²·sr⁻¹ by NASA): billionths of a watt (10⁻⁹ W) of light per square centimetre of ground per steradian, the SI unit of solid angle (the cone of directions the sensor looks through). It measures brightness, not the number of lights.",
+  "plain": "The unit of night-time light radiance (written nW·cm⁻²·sr⁻¹ by NASA): billionths of a watt (10⁻⁹ W) of light per square centimeter of ground per steradian, the SI unit of solid angle (the cone of directions the sensor looks through). It measures brightness, not the number of lights.",
   "plain_es": "La unidad de la radiancia de las luces nocturnas (la NASA la escribe nW·cm⁻²·sr⁻¹): milmillonésimas de vatio (10⁻⁹ W) de luz por centímetro cuadrado de suelo por estereorradián, la unidad del SI de ángulo sólido (el cono de direcciones por el que mira el sensor). Mide el brillo, no la cantidad de luces.",
   "source": {
    "name": "NASA LAADS DAAC, VNP46A3 product page (units of the radiance layers)",
@@ -10594,7 +10594,7 @@
    "en": [
     "nW/cm²/sr",
     "nW·cm⁻²·sr⁻¹",
-    "nanowatts per square centimetre per steradian"
+    "nanowatts per square centimeter per steradian"
    ],
    "es": [
     "nW/cm²/sr",
@@ -10985,7 +10985,7 @@
   "term": "Active fire detection",
   "term_es": "Detección de fuego activo",
   "expansion": "",
-  "plain": "A satellite pixel that held one or more fires or other heat sources when the satellite passed. NASA FIRMS gives the pixel's centre (about 375 m across for VIIRS), not the fire's exact place or size, so detections are counted, not drawn as burned areas.",
+  "plain": "A satellite pixel that held one or more fires or other heat sources when the satellite passed. NASA FIRMS gives the pixel's center (about 375 m across for VIIRS), not the fire's exact place or size, so detections are counted, not drawn as burned areas.",
   "plain_es": "Un píxel de satélite que tenía uno o más fuegos u otras fuentes de calor cuando pasó el satélite. NASA FIRMS da el centro del píxel (unos 375 m de lado en VIIRS), no el lugar ni el tamaño exacto del fuego, así que las detecciones se cuentan y no se dibujan como áreas quemadas.",
   "source": {
    "name": "NASA Earthdata, FIRMS frequently asked questions",
@@ -11153,7 +11153,7 @@
   "term_es": "Método de Horn",
   "expansion": "",
   "expansion_es": "",
-  "plain": "The usual way to compute slope from an elevation grid: the east-west and north-south change in height at a cell are taken from its eight neighbours, the nearest ones counting twice. GDAL, QGIS and ArcGIS use it by default.",
+  "plain": "The usual way to compute slope from an elevation grid: the east-west and north-south change in height at a cell are taken from its eight neighbors, the nearest ones counting twice. GDAL, QGIS and ArcGIS use it by default.",
   "plain_es": "La forma usual de calcular la pendiente a partir de una cuadrícula de elevación: el cambio de altura de este a oeste y de norte a sur en una celda se toma de sus ocho vecinas, y las más cercanas cuentan doble. GDAL, QGIS y ArcGIS lo usan por omisión.",
   "source": {
    "name": "GDAL documentation, gdaldem (slope, Horn's formula)",
@@ -11635,7 +11635,7 @@
   "term": "Root mean square error",
   "term_es": "Raíz del error cuadrático medio",
   "expansion": "",
-  "plain": "The square root of the average squared error of a set of forecasts, in the units of the forecast. Large misses weigh more than small ones. For errors centred on zero and roughly normal, about 80% fall within 1.28 times it.",
+  "plain": "The square root of the average squared error of a set of forecasts, in the units of the forecast. Large misses weigh more than small ones. For errors centered on zero and roughly normal, about 80% fall within 1.28 times it.",
   "plain_es": "La raíz cuadrada del promedio de los errores al cuadrado de un conjunto de pronósticos, en las unidades del pronóstico. Los fallos grandes pesan más que los pequeños. Para errores centrados en cero y aproximadamente normales, cerca del 80 % cae dentro de 1.28 veces ese valor.",
   "source": {
    "name": "Hyndman, R. J. and Athanasopoulos, G., Forecasting: Principles and Practice, 3rd edition (OTexts), section 5.8, Evaluating point forecast accuracy",
@@ -11782,7 +11782,7 @@
   "id": "river-flow-discharge",
   "term": "River flow (discharge)",
   "term_es": "Caudal",
-  "plain": "The volume of water that passes one point of a river each second. The observatory gives it in cubic metres per second (m³/s): one cubic metre is 1,000 litres. USGS calls it discharge or streamflow and measures it in cubic feet per second.",
+  "plain": "The volume of water that passes one point of a river each second. The observatory gives it in cubic meters per second (m³/s): one cubic meter is 1,000 liters. USGS calls it discharge or streamflow and measures it in cubic feet per second.",
   "plain_es": "El volumen de agua que pasa por un punto de un río cada segundo. El observatorio lo da en metros cúbicos por segundo (m³/s): un metro cúbico son 1,000 litros. USGS lo llama descarga o flujo y lo mide en pies cúbicos por segundo.",
   "source": {
    "name": "USGS, Water Science School: How streamflow is measured",
@@ -11955,7 +11955,7 @@
   "term_es": "PNG",
   "expansion": "Portable Network Graphics",
   "expansion_es": "Portable Network Graphics (gráficos de red portátiles)",
-  "plain": "An image file format that keeps every pixel exactly (lossless compression), so lines, labels and the colours of a map stay sharp. Any device, browser or office program opens it.",
+  "plain": "An image file format that keeps every pixel exactly (lossless compression), so lines, labels and the colors of a map stay sharp. Any device, browser or office program opens it.",
   "plain_es": "Un formato de archivo de imagen que conserva cada píxel tal cual (compresión sin pérdida), así que las líneas, las etiquetas y los colores de un mapa se ven nítidos. Cualquier dispositivo, navegador o programa de oficina lo abre.",
   "source": {
    "name": "W3C, Portable Network Graphics (PNG) Specification (Third Edition)",
@@ -12577,7 +12577,7 @@
   "term_es": "Conexión simulada",
   "expansion": "",
   "expansion_es": "",
-  "plain": "A line the observatory draws between two municipios where 500 or more workers travel between them and no timetabled transit route joins them. It follows the fastest roads between the two town centres. It shows where a connection is missing; it is not a proposed route.",
+  "plain": "A line the observatory draws between two municipios where 500 or more workers travel between them and no timetabled transit route joins them. It follows the fastest roads between the two town centers. It shows where a connection is missing; it is not a proposed route.",
   "plain_es": "Una línea que el observatorio dibuja entre dos municipios cuando 500 personas o más viajan entre ellos para trabajar y ninguna ruta de transporte colectivo con horario los une. Sigue las carreteras más rápidas entre los dos centros de pueblo. Muestra dónde falta una conexión; no es una ruta propuesta.",
   "source": {
    "name": "PR Data Observatory, data dictionary: Simulated connections between municipios",
@@ -12633,11 +12633,11 @@
  },
  {
   "id": "vehicle-kilometre",
-  "term": "Vehicle-kilometre",
+  "term": "Vehicle-kilometer",
   "term_es": "Vehículo-kilómetro",
   "expansion": "",
   "expansion_es": "",
-  "plain": "One vehicle driving one kilometre. Adding them up over a road network measures how much driving happens on it: 1,000 cars each driving 10 km make 10,000 vehicle-km.",
+  "plain": "One vehicle driving one kilometer. Adding them up over a road network measures how much driving happens on it: 1,000 cars each driving 10 km make 10,000 vehicle-km.",
   "plain_es": "Un vehículo que recorre un kilómetro. Sumarlos en una red de carreteras mide cuánto se conduce en ella: 1,000 carros que recorren 10 km cada uno suman 10,000 vehículo-km.",
   "source": {
    "name": "FHWA, Highway Statistics: vehicle-miles of travel",
@@ -12646,8 +12646,8 @@
   },
   "match": {
    "en": [
-    "vehicle-kilometre",
-    "vehicle-kilometres",
+    "vehicle-kilometer",
+    "vehicle-kilometers",
     "vehicle-km"
    ],
    "es": [
@@ -12701,7 +12701,7 @@
   "term_es": "Clasificación funcional",
   "expansion": "",
   "expansion_es": "",
-  "plain": "The role a road plays in the network: freeways and arterials carry long trips at higher speeds, collectors gather traffic from neighbourhoods, local streets give access to homes. Arterials and major collectors are classes 1 to 5.",
+  "plain": "The role a road plays in the network: freeways and arterials carry long trips at higher speeds, collectors gather traffic from neighborhoods, local streets give access to homes. Arterials and major collectors are classes 1 to 5.",
   "plain_es": "El papel de una carretera en la red: las autopistas y arterias llevan viajes largos a más velocidad, las colectoras recogen el tránsito de los vecindarios y las calles locales dan acceso a las casas. Las arterias y colectoras principales son las clases 1 a 5.",
   "source": {
    "name": "FHWA, Highway Functional Classification Concepts, Criteria and Procedures (2023)",
@@ -12986,7 +12986,7 @@
   "term_es": "Leyenda",
   "expansion": "",
   "expansion_es": "",
-  "plain": "The key to a map's symbols and colours. It says what each one stands for and, on a shaded map, which values each colour covers.",
+  "plain": "The key to a map's symbols and colors. It says what each one stands for and, on a shaded map, which values each color covers.",
   "plain_es": "La clave de los símbolos y colores de un mapa. Dice qué representa cada uno y, en un mapa sombreado, qué valores cubre cada color.",
   "source": {
    "name": "QGIS Documentation, A Gentle Introduction to GIS: Map Production",
@@ -13014,7 +13014,7 @@
   "term_es": "Escala del mapa",
   "expansion": "",
   "expansion_es": "",
-  "plain": "How much smaller the map is than the ground. On a map at 1:25,000, one centimetre stands for 250 metres. The scale bar on a map shows a real distance at the current zoom.",
+  "plain": "How much smaller the map is than the ground. On a map at 1:25,000, one centimeter stands for 250 meters. The scale bar on a map shows a real distance at the current zoom.",
   "plain_es": "Cuánto más pequeño es el mapa que el terreno. En un mapa a escala 1:25,000, un centímetro representa 250 metros. La barra de escala de un mapa muestra una distancia real según cuánto se haya acercado el mapa.",
   "source": {
    "name": "QGIS Documentation, A Gentle Introduction to GIS: Map Production",
@@ -13165,7 +13165,7 @@
   "term_es": "Superposición",
   "expansion": "",
   "expansion_es": "",
-  "plain": "A figure made by laying one published map layer on another and counting what falls inside: the schools inside a flood area, for example. Nothing is assumed or modelled. It tells where things are, not what will happen to them.",
+  "plain": "A figure made by laying one published map layer on another and counting what falls inside: the schools inside a flood area, for example. Nothing is assumed or modeled. It tells where things are, not what will happen to them.",
   "plain_es": "Cifra que se obtiene al superponer una capa publicada del mapa sobre otra y contar lo que queda dentro: por ejemplo, las escuelas dentro de un área de inundación. No se supone ni se modela nada. Indica dónde están las cosas, no qué les ocurrirá.",
   "source": {
    "name": "PR Data Observatory, data dictionary: Public facilities in the 1% flood area",
@@ -13563,7 +13563,7 @@
   "term_es": "Proyección cartográfica",
   "expansion": "",
   "expansion_es": "",
-  "plain": "A way of flattening the round Earth onto a map. Each projection keeps some things true and stretches others. To measure distances and areas in metres, use a projection made for the place, such as NAD83 / Puerto Rico & Virgin Is. (EPSG:32161).",
+  "plain": "A way of flattening the round Earth onto a map. Each projection keeps some things true and stretches others. To measure distances and areas in meters, use a projection made for the place, such as NAD83 / Puerto Rico & Virgin Is. (EPSG:32161).",
   "plain_es": "Una forma de aplanar la Tierra redonda en un mapa. Cada proyección mantiene algunas cosas fieles y estira otras. Para medir distancias y áreas en metros, use una proyección hecha para el lugar, como NAD83 / Puerto Rico & Virgin Is. (EPSG:32161).",
   "source": {
    "name": "QGIS, A Gentle Introduction to GIS, Coordinate reference systems",
@@ -13852,7 +13852,7 @@
   "id": "colmado",
   "term": "Colmado",
   "term_es": "Colmado",
-  "plain": "A small neighbourhood grocery, the corner store of Puerto Rico and the Dominican Republic. The observatory counts it as a food store but not as a supermarket.",
+  "plain": "A small neighborhood grocery, the corner store of Puerto Rico and the Dominican Republic. The observatory counts it as a food store but not as a supermarket.",
   "plain_es": "Tienda de comestibles pequeña de barrio, la tienda de la esquina de Puerto Rico y la República Dominicana. El observatorio la cuenta como tienda de alimentos, pero no como supermercado.",
   "source": {
    "name": "Asociación de Academias de la Lengua Española, Diccionario de americanismos: colmado",
@@ -13970,7 +13970,7 @@
   "term_es": "CRDC",
   "expansion": "Civil Rights Data Collection",
   "expansion_es": "Recopilación de Datos de Derechos Civiles",
-  "plain": "A survey the US Department of Education's Office for Civil Rights runs every two years in every public school: enrolment, absences, discipline, courses and staff.",
+  "plain": "A survey the US Department of Education's Office for Civil Rights runs every two years in every public school: enrollment, absences, discipline, courses and staff.",
   "plain_es": "Una encuesta que la Oficina de Derechos Civiles del Departamento de Educación de EE. UU. hace cada dos años en todas las escuelas públicas: matrícula, ausencias, disciplina, cursos y personal.",
   "source": {
    "name": "US Department of Education, Office for Civil Rights, Civil Rights Data Collection",
@@ -14112,7 +14112,7 @@
   "id": "equal-area-hexagon",
   "term": "Equal-area hexagon",
   "term_es": "Hexágono de igual área",
-  "plain": "A cell of a grid in which every hexagon covers the same ground area, so counts in different hexagons compare directly as densities. The observatory draws its hexagons on an equal-area map projection centred on Puerto Rico.",
+  "plain": "A cell of a grid in which every hexagon covers the same ground area, so counts in different hexagons compare directly as densities. The observatory draws its hexagons on an equal-area map projection centered on Puerto Rico.",
   "plain_es": "Una celda de una cuadrícula en la que cada hexágono cubre la misma área de terreno, así que los conteos de hexágonos distintos se comparan directamente como densidades. El observatorio traza sus hexágonos sobre una proyección de igual área centrada en Puerto Rico.",
   "source": {
    "name": "Snyder, J. P. (1987), Map Projections: A Working Manual, USGS Professional Paper 1395 (Lambert azimuthal equal-area projection)",

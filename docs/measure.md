@@ -6,7 +6,7 @@ Plan: `docs/map-tools-proposal-2026-11.md`, step 2 (HANDOFF decision 97). Code: 
 
 - **Tools › Map tools › Measure distance and area** opens a box at the top left of the map, on Distance. **Draw an area** opens the same box on Area.
 - Click the map to add points. Double-click, or press **Finish**, to end. **Undo the last point** and **Clear** do what they say; **Esc** clears, and a second Esc closes the box.
-- **Distance:** the length of the path, in metres or kilometres and in miles. Lines are straight between the points (straight-line distance), not along the roads; for a walk along the roads, use Walking time.
+- **Distance:** the length of the path, in meters or kilometers and in miles. Lines are straight between the points (straight-line distance), not along the roads; for a walk along the roads, use Walking time.
 - **Area:** the area the points outline, in m² or km², hectares, cuerdas and acres, and its perimeter. When two edges cross, the box says so and offers no area to add.
 - **Add as a study area:** a finished area that does not cross itself goes into the set "Drawn areas" of Study areas, named by its size, and Study areas opens with its summary (residents, transit and, on request, flood zones, heat, greenness, landslides and slope). It is kept in this browser like any study area; nothing is uploaded.
 - On a phone the side panel closes so the map shows. Double-tap does not zoom while the box is open; press Finish to end.

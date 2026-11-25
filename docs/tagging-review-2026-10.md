@@ -1,6 +1,6 @@
 # Tagging review: 594 dictionary entries to domains (2026-10-05)
 
-Phase 3, item 1. Every dictionary entry now has a primary `domain` and a `domains` list (primary first, then secondary domains). The old ten 'areas' were mapped by the rules below. Rows marked **review** are judgement calls: tell me which to change and I will edit the rule, not the entries one by one.
+Phase 3, item 1. Every dictionary entry now has a primary `domain` and a `domains` list (primary first, then secondary domains). The old ten 'areas' were mapped by the rules below. Rows marked **review** are judgment calls: tell me which to change and I will edit the rule, not the entries one by one.
 
 ## Rules
 
@@ -95,7 +95,7 @@ Phase 3, item 1. Every dictionary entry now has a primary `domain` and a `domain
 | Measures and methods | Build information | 1 | `system.docs` | `housing` |  |
 | Measures and methods | Build information | 1 | `system.docs` | `environment.land` |  |
 | Measures and methods | Build information | 1 | `system.docs` | `infrastructure.mobility`, `environment.hazards` |  |
-| Measures and methods | Classes and colours | 5 | `system.docs` | - |  |
+| Measures and methods | Classes and colors | 5 | `system.docs` | - |  |
 | Measures and methods | Dollars and prices | 1 | `system.docs` | - |  |
 | Measures and methods | Housing methods | 2 | `housing` | `system.docs` | **review** |
 | Measures and methods | How places and points are built | 4 | `economy.visitor-economy` | `system.docs` | **review** |

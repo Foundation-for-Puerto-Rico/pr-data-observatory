@@ -6,7 +6,7 @@ Not part of the build. It reads three downloads made during the research of 2026
   --osm   Overpass answer for Puerto Rico with power=line ways and their geometry (out geom)
   --luma  LUMA's "Resumen Metricas Master" workbook filed with the Puerto Rico Energy Bureau (docket NEPR-MI-2019-0007), sheet T&D
 
-Plants are EIA's points summed by plant id, coloured by the technology with the most MW, circle AREA proportional to MW.
+Plants are EIA's points summed by plant id, colored by the technology with the most MW, circle AREA proportional to MW.
 Lines are OpenStreetMap power=line by voltage tag. Municipios are shaded by LUMA's battery installations (BESS) per 100 housing
 units of the 2020 Census (HU100 in site/data/municipios.geojson); LUMA splits San Juan into San Juan, Rio Piedras and Santurce,
 which are added back together. Mona is left out (no grid). Standard library only.
@@ -33,7 +33,7 @@ TOP = 126
 MAP_H = (LAT1 - LAT0) * S
 H = int(TOP + MAP_H + 190)
 
-FUEL = [   # category, colour (Okabe-Ito, safe for colour-vision deficiency), label
+FUEL = [   # category, color (Okabe-Ito, safe for color-vision deficiency), label
     ('oil', '#E69F00', 'Oil (petroleum)'),
     ('gas', '#CC79A7', 'Natural gas'),
     ('coal', '#BDBDBD', 'Coal'),
@@ -242,7 +242,7 @@ def main():
                    f'<text x="{x + 32}" y="{ly3 + 4}" fill="#c9d2ea" font-size="12.5">{lab}</text>')
         x += 40 + 7 * len(lab) + 14
     svg.append(f'<text x="{PAD}" y="{H - 30}" fill="#6f7aa0" font-size="11.5">Preview for HANDOFF decision 104, not on the site. '
-               'Plants: US EIA-860M (September 2026), circle area proportional to MW, colour = technology with the most MW. Mona not shown.</text>')
+               'Plants: US EIA-860M (September 2026), circle area proportional to MW, color = technology with the most MW. Mona not shown.</text>')
     svg.append(f'<text x="{PAD}" y="{H - 13}" fill="#6f7aa0" font-size="11.5">Lines: © OpenStreetMap contributors (ODbL), '
                '2026-11-13. Batteries: LUMA metrics filed with the Puerto Rico Energy Bureau. Housing units: 2020 Census.</text>')
     svg.append('</svg>')

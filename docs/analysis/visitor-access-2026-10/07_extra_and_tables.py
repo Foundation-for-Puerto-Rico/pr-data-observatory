@@ -121,7 +121,7 @@ tabs["walk_sample"] = md(["Measure (sample of 1,000 default places within 800 m 
     ["Ratio: 90th percentile", S["ratio_net_best_over_sl_nearest"]["p90"]],
     ["Ratio: 95th percentile", S["ratio_net_best_over_sl_nearest"]["p95"]],
     ["Detour factor to the same (straight-line nearest) stop: median / 90th", f"{S['detour_factor_to_same_stop']['median']} / {S['detour_factor_to_same_stop']['p90']}"],
-    ["Extra metres (network minus straight line): median / 90th percentile", f"{S['extra_metres_net_minus_sl_median']} / {S['extra_metres_p90']}"],
+    ["Extra meters (network minus straight line): median / 90th percentile", f"{S['extra_metres_net_minus_sl_median']} / {S['extra_metres_p90']}"],
     ["Share of places with ratio above 1.5 / above 2", f"{S['share_ratio_gt_1_5']}% / {S['share_ratio_gt_2']}%"],
     ["Places within 400 m straight line", S["places_sl_le_400"]],
     ["of which beyond 400 m on the network (road within 150 m)", f"{S['sl_le_400_and_net_gt_400_snapped_only']} ({S['flip_share_of_sl_le_400_pct']}%)"],

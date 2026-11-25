@@ -152,7 +152,7 @@
   "how_to_read": "Puerto Rico has 342 listings: San Juan 66, Ponce 45, Mayagüez 17, Arecibo 16. Four municipios have none. The municipal values add up to more than Puerto Rico's because a historic road or irrigation system counts in each municipio it crosses.",
   "caveats": [
    "A listing is a federal recognition, not a measure of all heritage: many historic places were never nominated, and Puerto Rico's own register (Instituto de Cultura Puertorriqueña, Junta de Planificación) is not included.",
-   "Most points come from the nomination's coordinates and can be off by tens of metres; NPS says the data are for general reference only.",
+   "Most points come from the nomination's coordinates and can be off by tens of meters; NPS says the data are for general reference only.",
    "A listing may no longer stand: NPS marks most Puerto Rico points 'existence unknown'."
   ],
   "see_also": [
@@ -213,7 +213,7 @@
   "caveats": [
    "Counts only. These are sensitive services, so no facility's name, address or point is published.",
    "The directories list the facilities that answered SAMHSA's yearly survey and agreed to be listed. Facilities that did not answer, most individual practitioners and private offices are missing, so a 0 does not mean no care is offered there.",
-   "The survey describes 2024. SAMHSA's live locator (FindTreatment.gov) is more current but states no licence for reuse, so it is not used.",
+   "The survey describes 2024. SAMHSA's live locator (FindTreatment.gov) is more current but states no license for reuse, so it is not used.",
    "A facility is counted where its address is; people travel to care, often to another municipio."
   ],
   "see_also": [
@@ -272,7 +272,7 @@
   "caveats": [
    "Counts only. These are sensitive services, so no facility's name, address or point is published.",
    "The directories list the facilities that answered SAMHSA's yearly survey and agreed to be listed. Facilities that did not answer, most individual practitioners and private offices are missing, so a 0 does not mean no care is offered there.",
-   "The survey describes 2024. SAMHSA's live locator (FindTreatment.gov) is more current but states no licence for reuse, so it is not used.",
+   "The survey describes 2024. SAMHSA's live locator (FindTreatment.gov) is more current but states no license for reuse, so it is not used.",
    "A facility is counted where its address is; people travel to care, often to another municipio."
   ],
   "see_also": [
@@ -331,7 +331,7 @@
   "caveats": [
    "Counts only. These are sensitive services, so no facility's name, address or point is published.",
    "The directories list the facilities that answered SAMHSA's yearly survey and agreed to be listed. Facilities that did not answer, most individual practitioners and private offices are missing, so a 0 does not mean no care is offered there.",
-   "The survey describes 2024. SAMHSA's live locator (FindTreatment.gov) is more current but states no licence for reuse, so it is not used.",
+   "The survey describes 2024. SAMHSA's live locator (FindTreatment.gov) is more current but states no license for reuse, so it is not used.",
    "A facility is counted where its address is; people travel to care, often to another municipio."
   ],
   "see_also": [
@@ -390,7 +390,7 @@
   "caveats": [
    "Counts only. These are sensitive services, so no facility's name, address or point is published.",
    "The directories list the facilities that answered SAMHSA's yearly survey and agreed to be listed. Facilities that did not answer, most individual practitioners and private offices are missing, so a 0 does not mean no care is offered there.",
-   "The survey describes 2024. SAMHSA's live locator (FindTreatment.gov) is more current but states no licence for reuse, so it is not used.",
+   "The survey describes 2024. SAMHSA's live locator (FindTreatment.gov) is more current but states no license for reuse, so it is not used.",
    "A facility is counted where its address is; people travel to care, often to another municipio."
   ],
   "see_also": [
@@ -435,14 +435,14 @@
    "last": 2026,
    "frequency": "One snapshot: NPS edits up to 2026-08-07 (read 2026-10-18). Rebuilt with python community_assets.py --refresh nps."
   },
-  "method": "community_assets.py reads layers 0 and 1 of the NPS service for Puerto Rico, keeps listed properties, places each point by point in polygon and keeps one point per listing and municipio. The address is never requested. NPS gives no ownership or use field: names that match a pattern (Casa, House, Residencia, Residence, Home, Villa, Chalet, Quinta, Hacienda, a number or a street word) are reviewed by hand in nrhp_review.json, which keeps public buildings, museums, public heritage sites and numbered bridges drawn and counts private residences only (decided by FPR on 2026-10-18). The 2D map (facilities.js) and the 3D view (facilities3d.js) draw it with core/facilities.js, which holds its file, colour, pop-up and note.",
+  "method": "community_assets.py reads layers 0 and 1 of the NPS service for Puerto Rico, keeps listed properties, places each point by point in polygon and keeps one point per listing and municipio. The address is never requested. NPS gives no ownership or use field: names that match a pattern (Casa, House, Residencia, Residence, Home, Villa, Chalet, Quinta, Hacienda, a number or a street word) are reviewed by hand in nrhp_review.json, which keeps public buildings, museums, public heritage sites and numbered bridges drawn and counts private residences only (decided by FPR on 2026-10-18). The 2D map (facilities.js) and the 3D view (facilities3d.js) draw it with core/facilities.js, which holds its file, color, pop-up and note.",
   "sources": [
    "nps_nrhp"
   ],
   "source_detail": "NPS nrhp_locations MapServer, layers 0 and 1",
   "how_to_read": "Switch the layer on in the Map layers tab of the 2D map or the 3D view (Community services, Education and culture: Historic places). Both views draw the same points, with the same note on what is counted but not drawn and the same pop-up. Click a point for the place's name, type, municipio, listing date and source.",
   "caveats": [
-   "Points can be off by tens of metres, and a listing may no longer stand.",
+   "Points can be off by tens of meters, and a listing may no longer stand.",
    "Private homes are counted, not drawn, and their names are not published; the review is by name and public descriptions, so a few borderline buildings (listed in nrhp_review.json) may be on the wrong side.",
    "Sensitive listings, such as archaeological sites, are not public."
   ],
@@ -484,7 +484,7 @@
   ],
   "group": "Public buildings",
   "plain": "City halls (alcaldías) as volunteers mapped them in OpenStreetMap, with their name, type and municipio.",
-  "definition": "town_halls.geojson: one point per OpenStreetMap feature tagged amenity=townhall (a building outline is drawn at its centre), with name (3 have none), type (city hall, or city hall annex when the name says Anexo), municipio, geoid and osm (the OpenStreetMap element, such as w123). 65 features on 2026-10-18: 63 city halls in 62 municipios and 2 annexes.",
+  "definition": "town_halls.geojson: one point per OpenStreetMap feature tagged amenity=townhall (a building outline is drawn at its center), with name (3 have none), type (city hall, or city hall annex when the name says Anexo), municipio, geoid and osm (the OpenStreetMap element, such as w123). 65 features on 2026-10-18: 63 city halls in 62 municipios and 2 annexes.",
   "geography": "Points in 62 municipios",
   "coverage": {
    "timeline": "snapshot",
@@ -492,7 +492,7 @@
    "last": 2026,
    "frequency": "OpenStreetMap data of 2026-10-18. Refreshed by hand (python community_assets.py --refresh townhall): a runner cannot reach Overpass."
   },
-  "method": "community_assets.py asks the Overpass API for every amenity=townhall node, way and relation in Puerto Rico's bounding box and places each by point in polygon. A node and its building with the same name within 30 m would count once (none on 2026-10-18). The 2D map (facilities.js) and the 3D view (facilities3d.js) draw it with core/facilities.js, which holds its file, colour, pop-up and note.",
+  "method": "community_assets.py asks the Overpass API for every amenity=townhall node, way and relation in Puerto Rico's bounding box and places each by point in polygon. A node and its building with the same name within 30 m would count once (none on 2026-10-18). The 2D map (facilities.js) and the 3D view (facilities3d.js) draw it with core/facilities.js, which holds its file, color, pop-up and note.",
   "sources": [
    "osm"
   ],

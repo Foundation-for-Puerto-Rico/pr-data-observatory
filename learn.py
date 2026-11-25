@@ -30,7 +30,7 @@ HELP_KEYS = {"rings": "walk", "prot": "protected"}   # a layer whose help button
 HEAD = "/* PR Data Observatory: the Learn page's lessons and figures. Written by learn.py from learn_src/lessons.json and the published data files: edit that file, then run python learn.py. */\n"
 
 STATUSES = ("built", "planned")
-M_PER_DEG_LNG, M_PER_DEG_LAT = 111320, 110574   # metres per degree on the flat projection of the map's own tool (Core.study.ring in site/js/core/study.js)
+M_PER_DEG_LNG, M_PER_DEG_LAT = 111320, 110574   # meters per degree on the flat projection of the map's own tool (Core.study.ring in site/js/core/study.js)
 MIN_CONFIDENCE = 0.5   # the map's own basis for tourism places: confidence 0.50 or more, places of worship left out (build.py; municipalities.json "assets")
 WORSHIP = "Places of Worship"
 
@@ -44,8 +44,8 @@ def bilingual(v):
 
 
 def metres(lat0, lng0, lat, lng):
-    """Distance from (lat0, lng0) to a point, in metres, on the flat projection at lat0 that the map's Area around a point tool draws its ring on
-    (Core.study.ring), so the tool gives the figures the lesson quotes. Good for the few kilometres a ring covers."""
+    """Distance from (lat0, lng0) to a point, in meters, on the flat projection at lat0 that the map's Area around a point tool draws its ring on
+    (Core.study.ring), so the tool gives the figures the lesson quotes. Good for the few kilometers a ring covers."""
     return math.hypot((lng - lng0) * M_PER_DEG_LNG * math.cos(math.radians(lat0)), (lat - lat0) * M_PER_DEG_LAT)
 
 
@@ -167,7 +167,7 @@ def fig_near(spec, data=DATA):
     if len(centre) != 1:
         raise ValueError(f"near: {len(centre)} places named {spec['place']!r} in {spec['municipality']} (one expected)")
     c = centre[0]
-    blocks = load_json(data / "population_blocks.json")   # [lon, lat, residents, metres to the nearest scheduled stop]: the first three are read
+    blocks = load_json(data / "population_blocks.json")   # [lon, lat, residents, meters to the nearest scheduled stop]: the first three are read
     d_places = sorted(metres(c["lat"], c["lng"], p["lat"], p["lng"]) for p in places)   # the plaza is a listed place too: the tool counts it
     d_blocks = [(metres(c["lat"], c["lng"], b[1], b[0]), b[2]) for b in blocks]
     rings = []

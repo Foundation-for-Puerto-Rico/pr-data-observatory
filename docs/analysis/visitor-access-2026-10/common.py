@@ -29,7 +29,7 @@ ACCESS_KINDS = {"transit_stop", "bus_stop", "bus_station", "rail_station", "ferr
 SCHEDULED_SOURCES = {"ati_gtfs", "muni_gtfs"}
 CATS = ["ACCOMMODATIONS", "ATTRACTIONS", "GASTRONOMY", "VISITOR_SERVICES"]
 
-_to_xy = Transformer.from_crs("EPSG:4326", "EPSG:32161", always_xy=True)   # NAD83 / Puerto Rico & Virgin Is. (metres)
+_to_xy = Transformer.from_crs("EPSG:4326", "EPSG:32161", always_xy=True)   # NAD83 / Puerto Rico & Virgin Is. (meters)
 
 
 def to_xy(lng, lat):
@@ -120,7 +120,7 @@ class Data:
 
 
 def nearest_dist(px, py, sx, sy):
-    """Distance in metres from each point to the nearest of the stops (arrays of projected coordinates); inf when the set is empty."""
+    """Distance in meters from each point to the nearest of the stops (arrays of projected coordinates); inf when the set is empty."""
     out = np.full(len(px), np.inf)
     if len(sx) == 0:
         return out, np.full(len(px), -1)

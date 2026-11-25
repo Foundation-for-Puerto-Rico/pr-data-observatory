@@ -16,7 +16,7 @@
   function wrapText(s, n) { const out = []; let line = ''; for (const w of String(s).split(/\s+/)) { if ((line + ' ' + w).trim().length > n && line) { out.push(line); line = w; } else line = (line + ' ' + w).trim(); } if (line) out.push(line); return out; }
 
   // ── Proposed, approved and spent for each fiscal year ──
-  // o: { years: [..], stages: [[key, label, colour], ..], value(year, stage) -> number|null, money(v), short(v), label: aria label, t: {none} }
+  // o: { years: [..], stages: [[key, label, color], ..], value(year, stage) -> number|null, money(v), short(v), label: aria label, t: {none} }
   function pipeline(box, o) {
     const W = width(box), H = 210, top = 26, base = H - 30, n = o.years.length, ns = o.stages.length;
     const vals = o.years.map((y) => o.stages.map(([s]) => o.value(y, s)));
@@ -43,7 +43,7 @@
   }
 
   // ── One budget column from fund to function ──
-  // o: { left: [[key, label, colour, value]], right: [[key, label, value]], flows: [[leftKey, rightKey, value]], money(v), label, minLabel }
+  // o: { left: [[key, label, color, value]], right: [[key, label, value]], flows: [[leftKey, rightKey, value]], money(v), label, minLabel }
   function sankey(box, o) {
     const W = width(box), narrow = W < 560, gap = 6, nodeW = 14;
     const xL0 = narrow ? 0 : 150, xR0 = narrow ? W * 0.22 : W * 0.5, perLine = Math.max(12, Math.floor((W - xR0 - nodeW - 10) / 7));

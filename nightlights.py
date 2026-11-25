@@ -3,8 +3,8 @@
 
     python nightlights.py              # download the months missing from cache/nightlights/ and build the three files below (needs EARTHDATA_TOKEN)
     python nightlights.py --since 2024 # only the months from January 2024 on (a quick first run)
-    python nightlights.py --refresh    # download every month again, even the ones already summarised
-    python nightlights.py --keep       # keep the downloaded HDF5 files in cache/nightlights/h5/ (by default each is deleted once it is summarised: about 70 MB a month)
+    python nightlights.py --refresh    # download every month again, even the ones already summarized
+    python nightlights.py --keep       # keep the downloaded HDF5 files in cache/nightlights/h5/ (by default each is deleted once it is summarized: about 70 MB a month)
     python nightlights.py --check      # rebuild from the cached summaries and exit 1 when a published file is not what they give (no network, no token, nothing written)
 
 The login. LAADS lists its files to anyone, but a download without a login answers 303 and sends the browser to a sign-in page. The build reads a NASA Earthdata user
@@ -28,8 +28,8 @@ How each figure is made (docs/nightlights.md):
     own scale_factor, add_offset and _FillValue are used when it has them, and a negative value is no value (the valid range is 0 and up). Its quality layer,
     AllAngle_Composite_Snow_Free_Quality (table 12): 0 good (more than three clear observations in the month), 1 poor (three or fewer), 2 gap-filled (none: the
     value comes from earlier data), 255 no value. Clouds are the usual reason for few clear nights over Puerto Rico.
-  - Pixels: each pixel counts in the barrio whose outline (site/data/barrios.geojson) holds its centre. A barrio smaller than a pixel that holds no centre takes
-    the pixel under its representative point, for its own figure only. Pixels whose centre is over the sea count nowhere.
+  - Pixels: each pixel counts in the barrio whose outline (site/data/barrios.geojson) holds its center. A barrio smaller than a pixel that holds no center takes
+    the pixel under its representative point, for its own figure only. Pixels whose center is over the sea count nowhere.
   - Mean radiance: the sum of the radiance of the area's pixels that have a value over their number (a pooled mean, so a municipio's and Puerto Rico's are over
     all their pixels, not averages of barrios). A year's value pools the pixels of its twelve months; a year with fewer than twelve months is in the monthly
     file only.
@@ -126,7 +126,7 @@ def window(tile, bounds):
 
 
 def centres(tile, win):
-    """Longitude and latitude of the centre of each pixel of a window (2-D arrays)."""
+    """Longitude and latitude of the center of each pixel of a window (2-D arrays)."""
     import numpy as np
     x0, y0 = tile_origin(tile)
     r0, r1, c0, c1 = win
@@ -136,7 +136,7 @@ def centres(tile, win):
 
 
 def owners(geoms, lon, lat):
-    """The index of the outline that holds each pixel's centre (-1: none), and [(outline, row, col)] for the outlines that hold no centre: the pixel under their
+    """The index of the outline that holds each pixel's center (-1: none), and [(outline, row, col)] for the outlines that hold no center: the pixel under their
     representative point, so a barrio smaller than a pixel still has a value. `geoms` are shapely polygons in longitude and latitude."""
     import numpy as np
     import shapely
@@ -282,7 +282,7 @@ NASA_HOSTS = {"ladsweb.modaps.eosdis.nasa.gov", "urs.earthdata.nasa.gov"}   # th
 
 
 def open_file(url, tok, session=None):
-    """(response, hops) for one file. LAADS answers a download with a redirect to its licence check (/profiles/licenses/...), which sends it to Earthdata Login;
+    """(response, hops) for one file. LAADS answers a download with a redirect to its license check (/profiles/licenses/...), which sends it to Earthdata Login;
     with the token, Earthdata sends it back to LAADS, which sets a session cookie and sends it to the file. The redirects are followed by hand so that the token
     goes to LAADS and Earthdata Login only (a download host elsewhere gets no token), and hops lists the pages passed (host and path, never a query string)."""
     from urllib.parse import urljoin, urlsplit
@@ -384,7 +384,7 @@ def summaries():
 
 
 def summarise(B, files, keep=False, tok=None):
-    """Summarise each (month, tile) file into cache/nightlights/summary/YYYY-MM.json: the four sums of zonal() for each barrio (its own figure), each municipio and
+    """Summarize each (month, tile) file into cache/nightlights/summary/YYYY-MM.json: the four sums of zonal() for each barrio (its own figure), each municipio and
     Puerto Rico (each pixel once)."""
     import numpy as np
     bounds = tuple(np.array([g.bounds for g in B.geoms]).min(axis=0)[:2]) + tuple(np.array([g.bounds for g in B.geoms]).max(axis=0)[2:])
@@ -453,14 +453,14 @@ def assemble(B, S):
     CAV = (" Light is a proxy for activity and for power: it rises with streetlights, buildings and traffic and falls in a blackout, but it is not a count of people, "
            "jobs or homes with power. The product removes moonlight (lunar BRDF correction) and screens out clouds; a month with many clouds rests on fewer nights "
            "or is gap-filled from an earlier month (the quality share says how much).")
-    MEAN = (" The mean of the area's pixels with a value, each pixel in the barrio that holds its centre; a municipio's and Puerto Rico's means are over all their pixels "
+    MEAN = (" The mean of the area's pixels with a value, each pixel in the barrio that holds its center; a municipio's and Puerto Rico's means are over all their pixels "
             "(pooled, not an average of barrios). A year's value pools the pixels of its twelve months.")
 
     def var(key, label, unit, d, definition, vals, **extra):
         return {"key": key, "group": G, "label": label, "unit": unit, "d": d, "type": "rate", "sources": ["nasa_black_marble", "census_tiger"], "ref": REF,
                 "definition": definition, "family": "nightlights", "counted": False, "noPerHU": True, "barrioFile": OUT_BARRIO.name, **extra, "years": vals}
     vs = [var("ntl_radiance", "Night-time light, mean radiance (NASA Black Marble, nW/cm²/sr)", UNIT, 2,
-              "The mean brightness of the area at night that the VIIRS Day/Night Band records, in nanowatts per square centimetre per steradian (nW/cm²/sr)." + MEAN + CAV, mr),
+              "The mean brightness of the area at night that the VIIRS Day/Night Band records, in nanowatts per square centimeter per steradian (nW/cm²/sr)." + MEAN + CAV, mr),
           var("ntl_poor_pct", "Night-time light, pixels of poor quality or gap-filled (%)", "%", 1,
               "The share of the area's pixels that the product flags as poor quality (three or fewer clear observations in the month) or gap-filled (none), over all its pixels with a quality value, "
               "pooled over the year's twelve months. A high share means the area's light figure rests on few clear nights." + CAV, mq)]
@@ -491,7 +491,7 @@ def build(refresh=False, check=False, keep=False, since=FIRST_YEAR):
         if len(tiles) != 1:   # one summary a month: a second tile would need its sums added to the first's
             raise SystemExit(f"nightlights: the barrios fall in {tiles}; this script reads one tile")
         have = summaries()
-        if have and not refresh:   # a monthly run lists only the latest summarised year and later (a few requests instead of about 200); --refresh lists every year again
+        if have and not refresh:   # a monthly run lists only the latest summarized year and later (a few requests instead of about 200); --refresh lists every year again
             since = max(since, int(max(have)[:4]))
         files = list_months(tiles, since)
         todo = {k: v for k, v in files.items() if refresh or k[0] not in have or have[k[0]]["files"] != [v[0]]}   # a month NASA reprocessed has a new file name
@@ -499,7 +499,7 @@ def build(refresh=False, check=False, keep=False, since=FIRST_YEAR):
         summarise(B, todo, keep, tok)
     S = summaries()
     if not S:
-        print("nightlights: no month is summarised in cache/nightlights/summary/: nothing to build")
+        print("nightlights: no month is summarized in cache/nightlights/summary/: nothing to build")
         return 1 if check else 0
     status = 0
     for path, d in zip((OUT_SERIES, OUT_BARRIO, OUT_MONTHLY), assemble(B, S)):

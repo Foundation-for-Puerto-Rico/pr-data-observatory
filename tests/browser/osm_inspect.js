@@ -106,7 +106,7 @@ async function run(v, lang, width) {
     if (mobile) check(await p.eval(`!document.body.classList.contains('panel-open') && (document.getElementById('panel') ? getComputedStyle(document.getElementById('panel')).visibility !== 'hidden' || true : true)`), 'on a phone the panel makes way for the map');
     await p.waitFor(`${GL(v)}.loaded()`, 60000); await sleep(500);
     const before = v === '2d' ? await p.eval(`S.selected || null`) : null;
-    // a named place: one whose label is drawn clear of the panel and the map's controls; else the map is centred on one place after another until a label is drawn
+    // a named place: one whose label is drawn clear of the panel and the map's controls; else the map is centered on one place after another until a label is drawn
     let pl = await p.eval(PLACE(v));
     const cands = await p.eval(`(() => { const gl = ${GL(v)}, is = (f) => f.properties.name && f.geometry.type === 'Point', seen = new Set();
       return [...gl.queryRenderedFeatures().filter(f => f.sourceLayer === 'place' && is(f)), ...gl.querySourceFeatures('openmaptiles', { sourceLayer: 'place' }).filter(is)]

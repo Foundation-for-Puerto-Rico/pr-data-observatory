@@ -20,7 +20,7 @@ Measured on `main` (`bcaab7c`), page `site/public-spending.html`, generator `doc
 | "By sector" compares Puerto Rico's fiscal year (July to June) with the federal one (October to September) | **No note** (checked in `site/js/public_spending_sectors.js`) | A short note (step 1) |
 | FEMA Public Assistance, the largest recovery program, is missing | **Used only to avoid double counting** (dedup group `fema_pa`) | Its own section and map, by project stage (step 3) |
 | CDBG-DR actual spending (DRGR quarterly reports) | **Missing** | Draws from USAspending outlays, checked against HUD's monthly report (step 4) |
-| COR3 project data | **Dropped** (its API does not answer a plain script, and it is not worked around; its map layers have no licence and repeat OpenFEMA) | Stays out |
+| COR3 project data | **Dropped** (its API does not answer a plain script, and it is not worked around; its map layers have no license and repeat OpenFEMA) | Stays out |
 | Contralor contract register (who receives the money) | **Dropped** by the project lead on 2026-11-04 (lean open data: no letter, no scraping) | Stays out unless the project lead reopens it |
 
 ## 2. What the sources give, tested on 2026-11-10 with plain scripts

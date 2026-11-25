@@ -8,7 +8,7 @@
 // ── Geometry ─────────────────────────────────────────────────────────────────
 const rad = (d) => d * Math.PI / 180;
 const distM = (a, b) => Math.hypot((b[1] - a[1]) * Math.cos(rad((a[0] + b[0]) / 2)) * 111320, (b[0] - a[0]) * 110574);   // [lat, lng] pairs
-function segDistM(p, a, b) {   // metres from point p to segment a-b, all [lat, lng]
+function segDistM(p, a, b) {   // meters from point p to segment a-b, all [lat, lng]
   const k = Math.cos(rad(p[0])) * 111320, ky = 110574;
   const px = (p[1] - a[1]) * k, py = (p[0] - a[0]) * ky, bx = (b[1] - a[1]) * k, by = (b[0] - a[0]) * ky, l2 = bx * bx + by * by;
   const t = l2 ? Math.max(0, Math.min(1, (px * bx + py * by) / l2)) : 0;
@@ -34,7 +34,7 @@ function simplifyLine(pts, tolM) {   // Douglas-Peucker on [lat, lng] points
   }
   return pts.filter((_, i) => keep[i]);
 }
-function nearLine(pts) {   // (lat, lng, metres) => is the point within that distance of the line? skips segments whose box is too far
+function nearLine(pts) {   // (lat, lng, meters) => is the point within that distance of the line? skips segments whose box is too far
   const segs = [];
   for (let i = 1; i < pts.length; i++) { const a = pts[i - 1], b = pts[i]; segs.push([a, b, Math.min(a[0], b[0]), Math.max(a[0], b[0]), Math.min(a[1], b[1]), Math.max(a[1], b[1])]); }
   return (lat, lng, d) => {
@@ -125,7 +125,7 @@ const Gaz = {
     for (const o of out) { const k = norm(o.name) + '|' + o.kind; perName[k] = (perName[k] || 0) + 1; if (perName[k] <= (o.kind === 'road' || o.kind === 'route' ? 4 : 6)) kept.push(o); if (kept.length >= limit) break; }
     return kept;
   },
-  /** The closest named thing to a point, for labelling a spot picked on the map. */
+  /** The closest named thing to a point, for labeling a spot picked on the map. */
   nearest(lat, lng, maxM = 400) {
     if (!this.items) return null;
     let best = null, bd = maxM;

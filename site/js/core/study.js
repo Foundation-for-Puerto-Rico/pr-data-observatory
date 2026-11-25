@@ -5,7 +5,7 @@
      Study.check(obj) / Study.read(text)  problems with a stored or imported set ([] when none); read parses a file and checks it
      Study.toGeoJSON(set)                 the file "Export" writes: a FeatureCollection any GIS opens, with the set's description in a "study" member
      Study.inside(g, x, y), Study.areaKm2(g), Study.sample(g, n)   point in polygon, area, and a grid of points inside (longitude, latitude)
-     Study.ring(lng, lat, r, r0)          the area around a point (a buffer, GIS tools step 1, docs/gis-tools-proposal-2026-11.md): a circle of r metres, or the ring from r0 to r metres
+     Study.ring(lng, lat, r, r0)          the area around a point (a buffer, GIS tools step 1, docs/gis-tools-proposal-2026-11.md): a circle of r meters, or the ring from r0 to r meters
      Study.raster(steps, W, H, bounds, low, high, n)   a reader of a surface image's steps (Core.surfscale): (lng, lat) -> its value, or null
      Study.locate(list)                   (lng, lat) -> the index of the polygon of the list that holds the point, or -1 (a grid index, built once per list)
      Study.upstream(dn, i, via)           the indices that drain to i through a network where dn[k] is the next one downstream (-1 at an outlet) and via[k] (optional)
@@ -13,7 +13,7 @@
      Study.merge(geoms)                   one MultiPolygon of a list of polygons (no dissolve: the parts are kept, which the measures handle)
      Study.points(text, name, max)        the points of a CSV or GeoJSON file, with the rows that have none or fall outside Puerto Rico
      Study.overlaps(g, geoms)             the indices of the polygons that overlap area g (whole outlines: no clipping)
-     Study.walkArea(roads, lng, lat, m)   the area within a walk of m metres along mapped roads (js/roads.js's graph), as cells of 25 m
+     Study.walkArea(roads, lng, lat, m)   the area within a walk of m meters along mapped roads (js/roads.js's graph), as cells of 25 m
      Study.measure(g, ctx)                what one area holds: { km2, residents, far, stops, munis: [{ i, km2, residents }], places?, flood?, protected?, surf?, zone? }
      Study.estimate(E, m, key, year, pop) one dataset of the engine for one area, from the values of the municipios it covers: { value, y, method, coverage }
 
@@ -101,7 +101,7 @@
   }
   const anyInside = (list) => { const w = which(list); return (x, y) => w(x, y) >= 0; };
 
-  /** The area around a point: a circle of r metres, or with r0 > 0 the ring between r0 and r metres (a hole of r0), as a Polygon of n corners on the flat projection
+  /** The area around a point: a circle of r meters, or with r0 > 0 the ring between r0 and r meters (a hole of r0), as a Polygon of n corners on the flat projection
       at the point's latitude. Each edge is pushed out a little (by the ratio of a circle's area to its n-gon's) so the polygon's area equals the circle's: with 128 corners
       the plain polygon would be 0.04% short. Corners are rounded to 6 decimals (about 0.1 m). */
   function ring(lng, lat, r, r0 = 0, n = 128) {
@@ -216,7 +216,7 @@
   }
 
   // ── what an area holds ─────────────────────────────────────────────────
-  /** ctx: { blocks: [[lng, lat, residents, metres to the nearest scheduled stop]], munis: [geometry, in the engine's order of places], stops: [[lng, lat]],
+  /** ctx: { blocks: [[lng, lat, residents, meters to the nearest scheduled stop]], munis: [geometry, in the engine's order of places], stops: [[lng, lat]],
              places: [[lng, lat]] | null, mine: [[lng, lat]] | null (the visitor's own points), flood: [geometry] | null, protected: [geometry] | null,
              surfaces: [{ key, at: (lng, lat) -> value | null }] | null, zones: { geoms: [geometry], vals: { key: [value | null, one per geometry] } } | null }.
              The last five are measured only when given; flood is the special flood hazard areas only (FEMA's A and V zones, not zone X). Shares are of the area's land:
@@ -327,7 +327,7 @@
   function walkArea(R, lng, lat, metres, o = {}) {
     const P = { ...WALK, ...o };
     let A = walkAdj.get(R);
-    if (!A) {   // the walkable roads, both ways: node -> (neighbour, edge)
+    if (!A) {   // the walkable roads, both ways: node -> (neighbor, edge)
       const deg = new Int32Array(R.nN + 1);
       for (let e = 0; e < R.nE; e++) if (!P.NO_WALK.has(R.cls[e])) { deg[R.eu[e] + 1]++; deg[R.ev[e] + 1]++; }
       for (let i = 0; i < R.nN; i++) deg[i + 1] += deg[i];
@@ -357,11 +357,11 @@
       for (let k = A.start[n]; k < A.start[n + 1]; k++) relax(A.to[k], d + len(A.ed[k]));
     }
     // the reached stretches: from each reached end of an edge, as far along it as the walk has left; and the start's own edge from the snapped point
-    const rows = new Map(), stamp = (x, y, r) => {   // the cells (column i, row j) whose centre is within r of (x, y), or within half a cell's diagonal of it
+    const rows = new Map(), stamp = (x, y, r) => {   // the cells (column i, row j) whose center is within r of (x, y), or within half a cell's diagonal of it
       const c = P.CELL_M, x0 = Math.floor((x - r) / c), x1 = Math.floor((x + r) / c), y0 = Math.floor((y - r) / c), y1 = Math.floor((y + r) / c);
       for (let j = y0; j <= y1; j++) { let row = rows.get(j); for (let i = x0; i <= x1; i++) { const cx = (i + 0.5) * c - x, cy = (j + 0.5) * c - y; if (cx * cx + cy * cy <= r * r + c * c / 2) { if (!row) rows.set(j, row = new Set()); row.add(i); } } }
     };
-    const walkEdge = (e, from, d0, startAt) => {   // along edge e from its end `from` (0: u, 1: v), the walk having used d0, starting `startAt` metres along from that end
+    const walkEdge = (e, from, d0, startAt) => {   // along edge e from its end `from` (0: u, 1: v), the walk having used d0, starting `startAt` meters along from that end
       const p = R.poly(e), pts = []; for (let i = 0; i < p.length; i += 2) pts.push([(p[i] - lng) * kx, (p[i + 1] - lat) * ky]);
       if (from === 1) pts.reverse();
       const total = len(e), seg = []; let geo = 0; for (let i = 1; i < pts.length; i++) { const l = Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]); seg.push(l); geo += l; }

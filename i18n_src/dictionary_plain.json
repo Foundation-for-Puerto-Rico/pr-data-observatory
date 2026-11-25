@@ -613,11 +613,11 @@
   "es": "Mosaicos de mapa que se transmiten en vivo desde NOAA (Administración Nacional Oceánica y Atmosférica) y que muestran los terrenos que quedarían bajo agua en marea alta si el mar subiera de 1 a 10 pies. El observatorio no los guarda."
  },
  "hazards.slr_year_to_feet": {
-  "en": "The 3D view picks a layer of the US National Oceanic and Atmospheric Administration (NOAA) from a year and a scenario. It reads the scenario's rise in metres for that year, converts it to feet, rounds to a whole foot and keeps it between 1 and 10.",
+  "en": "The 3D view picks a layer of the US National Oceanic and Atmospheric Administration (NOAA) from a year and a scenario. It reads the scenario's rise in meters for that year, converts it to feet, rounds to a whole foot and keeps it between 1 and 10.",
   "es": "La vista 3D escoge una capa de NOAA (Administración Nacional Oceánica y Atmosférica) a partir de un año y un escenario. Lee el aumento del nivel del mar del escenario en metros para ese año, lo convierte a pies, lo redondea a un pie entero y lo mantiene entre 1 y 10."
  },
  "hazards.storm_selection": {
-  "en": "The observatory keeps every Atlantic storm from 1851 to 2025 that had a recorded position within 250 km (155 miles) of the centre of Puerto Rico. The storms come from the Hurricane Database, 2nd generation (HURDAT2) of the US National Oceanic and Atmospheric Administration (NOAA). In the 2026-10 snapshot that is 157 storms.",
+  "en": "The observatory keeps every Atlantic storm from 1851 to 2025 that had a recorded position within 250 km (155 miles) of the center of Puerto Rico. The storms come from the Hurricane Database, 2nd generation (HURDAT2) of the US National Oceanic and Atmospheric Administration (NOAA). In the 2026-10 snapshot that is 157 storms.",
   "es": "El observatorio conserva toda tormenta del Atlántico de 1851 a 2025 que tuvo una posición registrada a 250 km (155 millas) o menos del centro de Puerto Rico. Las tormentas provienen de la Base de Datos de Huracanes, 2.ª generación (HURDAT2) de NOAA (Administración Nacional Oceánica y Atmosférica). En el corte de datos de 2026-10 son 157 tormentas."
  },
  "hazards.storm_id": {
@@ -637,15 +637,15 @@
   "es": "El mejor estimado de NOAA (Administración Nacional Oceánica y Atmosférica) del viento sostenido más alto de la tormenta en cualquier punto de toda su trayectoria, en nudos. No es el viento que llegó a Puerto Rico."
  },
  "hazards.storm_wind_near_pr": {
-  "en": "The highest sustained wind of the storm, in knots, among its best-track positions within 250 km of the centre of Puerto Rico.",
+  "en": "The highest sustained wind of the storm, in knots, among its best-track positions within 250 km of the center of Puerto Rico.",
   "es": "El viento sostenido más alto de la tormenta, en nudos, entre sus posiciones de mejor trayectoria a 250 km o menos del centro de Puerto Rico."
  },
  "hazards.storm_cat_near_pr": {
-  "en": "The storm's hurricane category, 1 to 5, based on its peak wind while within 250 km of the centre of Puerto Rico. 0 means below hurricane strength.",
+  "en": "The storm's hurricane category, 1 to 5, based on its peak wind while within 250 km of the center of Puerto Rico. 0 means below hurricane strength.",
   "es": "La categoría de huracán de la tormenta, de 1 a 5, según su viento máximo mientras estuvo a 250 km o menos del centro de Puerto Rico. 0 significa que no llegó a fuerza de huracán."
  },
  "hazards.storm_min_dist_km": {
-  "en": "How close the storm's nearest recorded position came to the centre of Puerto Rico, in kilometres. It is never more than 250.",
+  "en": "How close the storm's nearest recorded position came to the center of Puerto Rico, in kilometers. It is never more than 250.",
   "es": "Cuán cerca del centro de Puerto Rico llegó la posición registrada más cercana de la tormenta, en kilómetros. Nunca es más de 250."
  },
  "hazards.storm_track": {
@@ -657,7 +657,7 @@
   "es": "La escala que clasifica los huracanes por su viento sostenido, de la categoría 1 a la 5. El observatorio agrega la categoría 0 para las tormentas que no llegan a fuerza de huracán."
  },
  "hazards.storm_layer": {
-  "en": "A 3D map layer that draws the path of storms near Puerto Rico since 1851, coloured by category near the island. At first it shows only category 3 and higher; you can filter by years and strength and play it through time.",
+  "en": "A 3D map layer that draws the path of storms near Puerto Rico since 1851, colored by category near the island. At first it shows only category 3 and higher; you can filter by years and strength and play it through time.",
   "es": "Una capa del mapa 3D que traza la ruta de las tormentas cerca de Puerto Rico desde 1851, con colores según su categoría cerca de la isla. Al principio muestra solo la categoría 3 o más; se puede filtrar por años y por fuerza, y reproducir en el tiempo."
  },
  "hazards.storm_limits": {
@@ -933,7 +933,7 @@
   "es": "Una lista de lugares con nombre, calles, números de carretera y puntos de referencia (48,450 nombres en el corte de datos de 2026-10), cada uno con un punto en el mapa. Los buscadores y el planificador de rutas buscan los nombres en ella, dentro del propio navegador."
  },
  "data.gazetteer_kinds": {
-  "en": "Each name in the place-name index has one of 19 types, such as municipality, street, highway number, hospital or beach. The type sets how the name is ranked and labelled in search results.",
+  "en": "Each name in the place-name index has one of 19 types, such as municipality, street, highway number, hospital or beach. The type sets how the name is ranked and labeled in search results.",
   "es": "Cada nombre del índice de lugares tiene uno de 19 tipos, como municipio, calle, número de carretera, hospital o playa. El tipo decide en qué orden aparece el nombre en los resultados de búsqueda y cómo se rotula."
  },
  "data.gazetteer_build": {
@@ -1069,7 +1069,7 @@
   "es": "Todo el diccionario de datos en un archivo: cada entrada, cada registro de fuente y cada término del glosario. La página del diccionario de datos lee archivos más pequeños hechos a partir de él. Se puede descargar para usar el diccionario en herramientas propias."
  },
  "measures.route_length": {
-  "en": "How long the planned route is, in kilometres, along the roads it follows. The label under the number says 'by road', 'partly by road' or 'straight line'.",
+  "en": "How long the planned route is, in kilometers, along the roads it follows. The label under the number says 'by road', 'partly by road' or 'straight line'.",
   "es": "Cuánto mide la ruta planificada, en kilómetros, por las carreteras que sigue. La etiqueta debajo del número dice \"por carretera\", \"en parte por carretera\" o \"en línea recta\"."
  },
  "measures.route_time": {
@@ -1077,7 +1077,7 @@
   "es": "Un tiempo aproximado de manejo para la ruta, en minutos, a velocidades fijas de planificación según la clase de carretera. No incluye paradas, tráfico ni esperas. Sirve para comparar rutas, no como horario de guaguas."
  },
  "measures.route_residents": {
-  "en": "How many people live in census blocks whose point is within 400 metres of the planned route. It shows who lives near the line, not who would ride it.",
+  "en": "How many people live in census blocks whose point is within 400 meters of the planned route. It shows who lives near the line, not who would ride it.",
   "es": "Cuántas personas viven en bloques censales cuyo punto está a 400 metros o menos de la ruta planificada. Muestra quién vive cerca de la línea, no quién la usaría."
  },
  "measures.route_residents_unserved": {
@@ -1117,7 +1117,7 @@
   "es": "El botón \"GeoJSON\" guarda la ruta planificada como planned_route.geojson. El archivo tiene la línea, los puntos escogidos y seis de los resultados que se muestran."
  },
  "measures.distance_rules": {
-  "en": "The route planner and the Transit tab use a few fixed distances, all in a straight line: 150, 250, 300, 400, 500 and 800 metres. This entry says what each is for.",
+  "en": "The route planner and the Transit tab use a few fixed distances, all in a straight line: 150, 250, 300, 400, 500 and 800 meters. This entry says what each is for.",
   "es": "El planificador de rutas y la pestaña \"Transporte\" usan unas pocas distancias fijas, todas en línea recta: 150, 250, 300, 400, 500 y 800 metros. Esta entrada explica para qué sirve cada una."
  },
  "measures.residents_served_400m": {
@@ -1149,7 +1149,7 @@
   "es": "El archivo pequeño que el mapa lee primero y los tres que lee al usarlos. catalog.json tiene los temas del registro, una cifra principal y una tendencia para cada uno, y el tamaño de cada archivo publicado; catalog_index.json tiene un índice de todo lo que documenta el diccionario, catalog_es.json las palabras de los resúmenes en español, para buscar en español, y catalog_views.json las vistas listas de cada tema."
  },
  "measures.show_as": {
-  "en": "Each layer on the Analysis tab can show a dataset as published or rescaled. Rescaled views include per resident, per square kilometre, share of the island, comparison with Puerto Rico, change since a base year and percentile. The options offered depend on the kind of number.",
+  "en": "Each layer on the Analysis tab can show a dataset as published or rescaled. Rescaled views include per resident, per square kilometer, share of the island, comparison with Puerto Rico, change since a base year and percentile. The options offered depend on the kind of number.",
   "es": "Cada capa de la pestaña Análisis puede mostrar un conjunto de datos tal como se publicó o en otra escala. Las otras escalas incluyen por residente, por kilómetro cuadrado, proporción de la isla, comparación con Puerto Rico, cambio desde un año base y percentil. Las opciones que aparecen dependen del tipo de número."
  },
  "measures.per_1000_residents": {
@@ -1161,7 +1161,7 @@
   "es": "Un total en dólares dividido entre las personas residentes del municipio. Permite comparar un municipio grande con uno pequeño en salarios, fondos federales o ayuda por desastres."
  },
  "measures.per_km2": {
-  "en": "A count or a dollar total divided by the municipality's land area in square kilometres. It shows how tightly something is packed on the land.",
+  "en": "A count or a dollar total divided by the municipality's land area in square kilometers. It shows how tightly something is packed on the land.",
   "es": "Un conteo o un total en dólares dividido entre el área de terreno del municipio en kilómetros cuadrados. Muestra qué tan concentrado está algo en el terreno."
  },
  "measures.share_of_pr_total": {
@@ -1205,23 +1205,23 @@
   "es": "Al marcar \"Ajustado por inflación\", los dólares de distintos años se expresan en dólares del año más reciente, con el Índice de Precios al Consumidor de EE. UU. Así se puede comparar el dinero entre años. El observatorio no usa un índice de precios de Puerto Rico, así que el resultado es una aproximación."
  },
  "measures.class_breaks": {
-  "en": "A shaded map sorts the municipalities into five colour classes. The Analysis tab sets the class limits one of four ways: the same number of municipalities in each class (quantiles), classes of equal width (equal intervals), limits at gaps in the data (natural breaks), or four limits that the user types.",
+  "en": "A shaded map sorts the municipalities into five color classes. The Analysis tab sets the class limits one of four ways: the same number of municipalities in each class (quantiles), classes of equal width (equal intervals), limits at gaps in the data (natural breaks), or four limits that the user types.",
   "es": "Un mapa sombreado reparte los municipios en cinco clases de color. La pestaña Análisis fija los límites de las clases de una de cuatro maneras: la misma cantidad de municipios en cada clase (cuantiles), clases del mismo ancho (intervalos iguales), límites donde hay saltos en los datos (cortes naturales) o cuatro límites que escribe quien usa el mapa."
  },
  "measures.fixed_classes": {
-  "en": "By default the colour limits are set from all years of a dataset together, so a colour means the same range in every year. When you move the year slider you see real change, not a map that re-sorts itself.",
+  "en": "By default the color limits are set from all years of a dataset together, so a color means the same range in every year. When you move the year slider you see real change, not a map that re-sorts itself.",
   "es": "De forma predeterminada, los límites de color se fijan con todos los años de un conjunto de datos a la vez, para que un color signifique el mismo rango en cada año. Al mover la barra de años se ve el cambio real, no un mapa que se reordena solo."
  },
  "measures.diverging_scale": {
-  "en": "When a value has a natural centre, the map shades distance from that centre instead of equal-count classes. Red means below the centre, blue means above, and pale grey means near it.",
+  "en": "When a value has a natural center, the map shades distance from that center instead of equal-count classes. Red means below the center, blue means above, and pale gray means near it.",
   "es": "Cuando un valor tiene un centro natural, el mapa sombrea la distancia a ese centro en lugar de usar clases con la misma cantidad de municipios. El rojo indica que está por debajo del centro, el azul que está por encima y el gris claro que está cerca."
  },
  "measures.bivariate_map": {
-  "en": "When two shaded layers are visible, the map colours each municipality by both at once: three classes for each dataset, nine colours in all. It shows where two things are high together, low together, or differ.",
+  "en": "When two shaded layers are visible, the map colors each municipality by both at once: three classes for each dataset, nine colors in all. It shows where two things are high together, low together, or differ.",
   "es": "Cuando hay dos capas sombreadas visibles, el mapa colorea cada municipio por ambas a la vez: tres clases por cada conjunto de datos, nueve colores en total. Muestra dónde dos cosas son altas a la vez, bajas a la vez o no coinciden."
  },
  "measures.proportional_symbols": {
-  "en": "A sized-symbol layer draws one circle per municipality whose area is proportional to the value. Counts, such as jobs, are better shown this way than as shaded colour.",
+  "en": "A sized-symbol layer draws one circle per municipality whose area is proportional to the value. Counts, such as jobs, are better shown this way than as shaded color.",
   "es": "Una capa de símbolos de tamaño variable dibuja un círculo por municipio, con un área proporcional al valor. Los conteos, como los empleos, se muestran mejor así que con color sombreado."
  },
  "measures.nearest_year_rule": {
@@ -1321,7 +1321,7 @@
   "es": "La región turística en la que la Compañía de Turismo de Puerto Rico ubica el municipio, como Porta Capital o Porta del Mar. Hay siete regiones."
  },
  "municipalities.land_km2": {
-  "en": "How much dry land the municipality covers, in square kilometres, from the 2020 Census. Water is not included.",
+  "en": "How much dry land the municipality covers, in square kilometers, from the 2020 Census. Water is not included.",
   "es": "Cuánta tierra firme cubre el municipio, en kilómetros cuadrados, según el Censo de 2020. No incluye el agua."
  },
  "municipalities.population_2020": {
@@ -1373,7 +1373,7 @@
   "es": "Cuántos lugares turísticos contados hay por cada 1,000 personas que viven en el municipio."
  },
  "municipalities.assets_per_km2": {
-  "en": "How many counted tourism places there are on each square kilometre of the municipality's land.",
+  "en": "How many counted tourism places there are on each square kilometer of the municipality's land.",
   "es": "Cuántos lugares turísticos contados hay en cada kilómetro cuadrado de tierra del municipio."
  },
  "municipalities.in_sfha": {
@@ -1649,23 +1649,23 @@
   "es": "Cuántas rutas incluye el sistema de transporte colectivo propio del municipio en su fuente pública de horarios. Es 0 cuando el municipio no tiene esa fuente."
  },
  "municipalities.landuse_km2": {
-  "en": "How many square kilometres of the municipality the 2015 land use plan puts in each of four groups: urban, urbanizable, ordinary rural and especially protected rural. Water and roads are left out.",
+  "en": "How many square kilometers of the municipality the 2015 land use plan puts in each of four groups: urban, urbanizable, ordinary rural and especially protected rural. Water and roads are left out.",
   "es": "Cuántos kilómetros cuadrados del municipio coloca el Plan de Uso de Terrenos 2015 en cada uno de cuatro grupos: urbano, urbanizable, rústico común y rústico especialmente protegido. El agua y las vías quedan fuera."
  },
  "municipalities.urban_pct": {
-  "en": "Out of every 100 square kilometres of classified land in the municipality, how many the 2015 land use plan marks as urban land (Suelo Urbano). Water and roads are left out.",
+  "en": "Out of every 100 square kilometers of classified land in the municipality, how many the 2015 land use plan marks as urban land (Suelo Urbano). Water and roads are left out.",
   "es": "De cada 100 kilómetros cuadrados de terreno clasificado en el municipio, cuántos marca el Plan de Uso de Terrenos 2015 como suelo urbano (Suelo Urbano). El agua y las vías quedan fuera."
  },
  "municipalities.urbanizable_pct": {
-  "en": "Out of every 100 square kilometres of classified land in the municipality, how many the 2015 land use plan reserves for future urban growth (Suelo Urbanizable). Water and roads are left out.",
+  "en": "Out of every 100 square kilometers of classified land in the municipality, how many the 2015 land use plan reserves for future urban growth (Suelo Urbanizable). Water and roads are left out.",
   "es": "De cada 100 kilómetros cuadrados de terreno clasificado en el municipio, cuántos reserva el Plan de Uso de Terrenos 2015 para el crecimiento urbano futuro (Suelo Urbanizable). El agua y las vías quedan fuera."
  },
  "municipalities.rustic_common_pct": {
-  "en": "Out of every 100 square kilometres of classified land in the municipality, how many the 2015 land use plan marks as ordinary rural land (Suelo Rústico Común). Water and roads are left out.",
+  "en": "Out of every 100 square kilometers of classified land in the municipality, how many the 2015 land use plan marks as ordinary rural land (Suelo Rústico Común). Water and roads are left out.",
   "es": "De cada 100 kilómetros cuadrados de terreno clasificado en el municipio, cuántos marca el Plan de Uso de Terrenos 2015 como suelo rústico común (Suelo Rústico Común). El agua y las vías quedan fuera."
  },
  "municipalities.protected_land_pct": {
-  "en": "Out of every 100 square kilometres of classified land in the municipality, how many the 2015 land use plan marks as specially protected rural land. Water and roads are left out.",
+  "en": "Out of every 100 square kilometers of classified land in the municipality, how many the 2015 land use plan marks as specially protected rural land. Water and roads are left out.",
   "es": "De cada 100 kilómetros cuadrados de terreno clasificado en el municipio, cuántos marca el Plan de Uso de Terrenos 2015 como suelo rústico especialmente protegido. El agua y las vías quedan fuera."
  },
  "municipalities.places_on_protected_land": {
@@ -2109,7 +2109,7 @@
   "es": "La etiqueta que el mapa muestra para el tipo de ruta: \"Guagua\", \"Público\", \"Lancha\" o \"Tren Urbano\"."
  },
  "transit.route_color": {
-  "en": "The colour the operator gave the route in its feed, as a hex code such as #0000FF. The map does not use it.",
+  "en": "The color the operator gave the route in its feed, as a hex code such as #0000FF. The map does not use it.",
   "es": "El color que el operador le dio a la ruta en su fuente de horarios, como código hexadecimal, por ejemplo #0000FF. El mapa no lo usa."
  },
  "transit.route_trips": {
@@ -2173,7 +2173,7 @@
   "es": "Cuántos residentes tiene cada municipio en las cifras de cobertura: el conteo del Censo de 2020 para los bloques con al menos un residente. Para todo Puerto Rico son 3,285,874 personas."
  },
  "transit.coverage_served": {
-  "en": "How many residents live in blocks within 400 metres (about a quarter mile, in a straight line) of a scheduled stop. Using 2020 Census counts and the stops of the 2026-10-02 build, it is 925,788 of 3,285,874 residents in Puerto Rico: 28.2% counting every scheduled stop, 22.2% counting only operators whose timetable has not ended.",
+  "en": "How many residents live in blocks within 400 meters (about a quarter mile, in a straight line) of a scheduled stop. Using 2020 Census counts and the stops of the 2026-10-02 build, it is 925,788 of 3,285,874 residents in Puerto Rico: 28.2% counting every scheduled stop, 22.2% counting only operators whose timetable has not ended.",
   "es": "Cuántos residentes viven en bloques a 400 metros o menos (cerca de un cuarto de milla, en línea recta) de una parada con horario. Con los conteos del Censo de 2020 y las paradas de la compilación del 2026-10-02, son 925,788 de 3,285,874 residentes en Puerto Rico: 28.2% si se cuentan todas las paradas con horario, 22.2% si solo se cuentan los operadores cuyo horario no ha terminado."
  },
  "transit.coverage_active": {
@@ -2181,7 +2181,7 @@
   "es": "Igual que la medida de 400 m, pero deja fuera las paradas de operadores cuyo horario había terminado. Con los conteos del Censo de 2020 y las paradas de la compilación del 2026-10-02, son 729,507 residentes (22.2%) en Puerto Rico, frente a 28.2% cuando cuentan todas las paradas."
  },
  "transit.coverage_systems": {
-  "en": "How many residents live within 400 metres of a stop of Autoridad de Transporte Integrado (ATI), of a municipal system, or of both. With 2020 Census counts and the stops of the 2026-10-02 build, 487,026 residents of Puerto Rico are near an ATI stop, 609,383 are near a municipal stop and 171,389 are near both.",
+  "en": "How many residents live within 400 meters of a stop of Autoridad de Transporte Integrado (ATI), of a municipal system, or of both. With 2020 Census counts and the stops of the 2026-10-02 build, 487,026 residents of Puerto Rico are near an ATI stop, 609,383 are near a municipal stop and 171,389 are near both.",
   "es": "Cuántos residentes viven a 400 metros o menos de una parada de la Autoridad de Transporte Integrado (ATI), de un sistema municipal o de ambos. Con los conteos del Censo de 2020 y las paradas de la compilación del 2026-10-02, 487,026 residentes de Puerto Rico están cerca de una parada de la ATI, 609,383 cerca de una parada municipal y 171,389 cerca de ambas."
  },
  "transit.population_blocks": {
@@ -2189,7 +2189,7 @@
   "es": "Una lista de los 36,570 bloques censales que tenían residentes en el Censo de 2020. Cada fila da la posición del bloque, su población de 2020 y a qué distancia está de la parada con horario más cercana."
  },
  "transit.block_stop_distance": {
-  "en": "How many metres in a straight line from the block to the closest scheduled stop. Values above 9,999 are shown as 9,999.",
+  "en": "How many meters in a straight line from the block to the closest scheduled stop. Values above 9,999 are shown as 9,999.",
   "es": "Cuántos metros hay en línea recta desde el bloque hasta la parada con horario más cercana. Los valores mayores de 9,999 se muestran como 9,999."
  },
  "transit.service_gaps": {
@@ -2197,7 +2197,7 @@
   "es": "Los residentes que viven a más de 800 m, en línea recta, de cualquier parada con horario. La capa del mapa dibuja un círculo para cada bloque censal con 40 residentes o más que está a más de 800 m de una parada. Con los conteos del Censo de 2020 y las paradas de la compilación del 2026-10-02, 1,986,126 residentes (60%) en Puerto Rico viven a más de 800 m de cualquier parada de un horario publicado; el total cuenta todos los bloques, incluso los pequeños."
  },
  "transit.integration_points": {
-  "en": "Places where a stop of one transit system lies within 250 metres of a stop of another system, a starting point for looking at possible transfers. There are 366 in the 2026-10 snapshot.",
+  "en": "Places where a stop of one transit system lies within 250 meters of a stop of another system, a starting point for looking at possible transfers. There are 366 in the 2026-10 snapshot.",
   "es": "Lugares donde una parada de un sistema de transporte colectivo está a 250 metros o menos de una parada de otro sistema, un punto de partida para estudiar posibles transbordos. Hay 366 en el corte de datos de 2026-10."
  },
  "transit.distance_rules": {
@@ -2205,7 +2205,7 @@
   "es": "El observatorio usa distancias fijas en línea recta. 400 m es una caminata hasta una parada, 800 m marca una brecha de servicio y 250 m, un punto de integración. Las distancias de 30 m a 2 km sirven para eliminar puntos duplicados."
  },
  "transit.typical_weekday": {
-  "en": "Weekday trip counts show one reference day, usually Wednesday, so trips that run only on other weekdays are not included. Saturday and Sunday use their own timetables. Holidays are not modelled.",
+  "en": "Weekday trip counts show one reference day, usually Wednesday, so trips that run only on other weekdays are not included. Saturday and Sunday use their own timetables. Holidays are not modeled.",
   "es": "Los conteos de viajes de lunes a viernes muestran un día de referencia, por lo general el miércoles, así que no incluyen los viajes que solo se dan otros días de la semana. El sábado y el domingo usan sus propios horarios. Los días feriados no se modelan."
  },
  "transit.trips_files": {
@@ -2233,7 +2233,7 @@
   "es": "Un botón redondo \"?\" junto a una capa, un recuadro o una gráfica abre una cajita con una explicación breve de lo que muestra y de dónde proviene."
  },
  "layers.tourism_places": {
-  "en": "Tourism places are the pins on the map: attractions, restaurants and bars, places to stay and visitor services listed by Overture Maps. Pins are coloured by category, and a dark ring marks a place inside a high-risk flood area mapped by the Federal Emergency Management Agency (FEMA).",
+  "en": "Tourism places are the pins on the map: attractions, restaurants and bars, places to stay and visitor services listed by Overture Maps. Pins are colored by category, and a dark ring marks a place inside a high-risk flood area mapped by the Federal Emergency Management Agency (FEMA).",
   "es": "Los lugares turísticos son los marcadores del mapa: atracciones, restaurantes y bares, lugares para hospedarse y servicios para visitantes que lista Overture Maps. Cada marcador tiene el color de su categoría, y un anillo oscuro señala un lugar dentro de una zona de alto riesgo de inundación según los mapas de FEMA (Agencia Federal para el Manejo de Emergencias)."
  },
  "layers.place_categories": {
@@ -2273,7 +2273,7 @@
   "es": "El interruptor \"Paradas de taxis y carga de vehículos eléctricos\" muestra las paradas de taxis y los cargadores de vehículos eléctricos que personas voluntarias trazaron en OpenStreetMap. Hay 9 paradas de taxis y 11 cargadores en el corte de datos de 2026-10."
  },
  "layers.walk_rings": {
-  "en": "'Show 400 m walk radius around stops' draws a circle of 400 metres around each stop, bus station, Tren Urbano station and ferry terminal. The circles appear only when you are zoomed in and the stops or stations layer is on.",
+  "en": "'Show 400 m walk radius around stops' draws a circle of 400 meters around each stop, bus station, Tren Urbano station and ferry terminal. The circles appear only when you are zoomed in and the stops or stations layer is on.",
   "es": "\"Mostrar radio de 400 m a pie alrededor de las paradas\" dibuja un círculo de 400 metros alrededor de cada parada, estación de guaguas, estación del Tren Urbano y terminal de lanchas. Los círculos solo aparecen al acercar el mapa y cuando la capa de paradas o la de estaciones está activada."
  },
  "layers.protected_control": {
@@ -2301,7 +2301,7 @@
   "es": "Un clic en el mapa 2D abre una ventana emergente con las capas superpuestas que están activadas en ese lugar. Si ninguna tiene datos ahí, un clic en un municipio abre su perfil."
  },
  "layers.shade_by": {
-  "en": "A menu of the 2D map that coloured the 78 municipalities by one of 35 measures. It was retired on 2026-11-05 (navigation plan, decision 81): each measure is now a dataset, shaded from Explore, the Catalog or Rankings, and an old link with s=<field> opens the same measure as that dataset.",
+  "en": "A menu of the 2D map that colored the 78 municipalities by one of 35 measures. It was retired on 2026-11-05 (navigation plan, decision 81): each measure is now a dataset, shaded from Explore, the Catalog or Rankings, and an old link with s=<field> opens the same measure as that dataset.",
   "es": "Un menú del mapa 2D que coloreaba los 78 municipios según una de 35 medidas. Se retiró el 2026-11-05 (plan de navegación, decisión 81): cada medida es ahora un conjunto de datos que se colorea desde Explorar, el Catálogo o Posiciones, y un enlace antiguo con s=<campo> abre la misma medida como ese conjunto de datos."
  },
  "layers.municipality_profile": {
@@ -2313,7 +2313,7 @@
   "es": "La pestaña Posiciones ordena los 78 municipios según una medida, de mayor a menor. Elija la medida en el menú, invierta el orden con un clic y descargue la tabla completa de municipios como archivo CSV (valores separados por comas)."
  },
  "layers.transit_tab_summary": {
-  "en": "The top of the Transit tab shows four figures. Two count operators: those that publish a schedule and those that publish none. One counts the routes on the map. One gives the share of residents who live within 400 metres of a scheduled stop.",
+  "en": "The top of the Transit tab shows four figures. Two count operators: those that publish a schedule and those that publish none. One counts the routes on the map. One gives the share of residents who live within 400 meters of a scheduled stop.",
   "es": "La parte superior de la pestaña Transporte muestra cuatro cifras. Dos cuentan operadores: los que publican un horario y los que no publican ninguno. Una cuenta las rutas del mapa. Otra da la proporción de residentes que viven a 400 metros o menos de una parada con horario."
  },
  "layers.live_status_box": {
@@ -2329,11 +2329,11 @@
   "es": "\"Vehículos según su horario ahora\" dibuja un punto por cada vehículo con horario que debería estar en servicio en este momento, en la hora de Puerto Rico. Reproduce los horarios. No es un rastreo por GPS (sistema de posicionamiento global)."
  },
  "layers.service_gaps_control": {
-  "en": "'Residents far from service' draws a circle for each census block with at least 40 residents whose nearest scheduled stop is more than 800 metres away. Bigger circles mean more residents.",
+  "en": "'Residents far from service' draws a circle for each census block with at least 40 residents whose nearest scheduled stop is more than 800 meters away. Bigger circles mean more residents.",
   "es": "\"Residentes lejos del servicio\" dibuja un círculo por cada bloque censal con al menos 40 residentes cuya parada con horario más cercana queda a más de 800 metros. Los círculos más grandes indican más residentes."
  },
  "layers.integration_points_control": {
-  "en": "'Integration points' marks the places where a stop of one transit system lies within 250 metres of a stop of another system. These are natural places to line up timetables, fares and signs.",
+  "en": "'Integration points' marks the places where a stop of one transit system lies within 250 meters of a stop of another system. These are natural places to line up timetables, fares and signs.",
   "es": "\"Puntos de integración\" marca los lugares donde una parada de un sistema de transporte colectivo queda a 250 metros o menos de una parada de otro sistema. Son lugares naturales para coordinar horarios, tarifas y rótulos."
  },
  "layers.route_planner": {
@@ -2349,7 +2349,7 @@
   "es": "La lista de conjuntos de datos de la pestaña Análisis muestra todos los conjuntos por grupos. Escriba en el buscador para encontrar uno y oprima \"Sombrear\" o \"Símbolos\" para ponerlo en el mapa, o el botón de información para leer su definición y sus fuentes."
  },
  "layers.economy_shaded": {
-  "en": "A shaded layer colours each municipality by one dataset. The Analysis tab allows two shaded layers at a time. Colours run from light to dark in five groups.",
+  "en": "A shaded layer colors each municipality by one dataset. The Analysis tab allows two shaded layers at a time. Colors run from light to dark in five groups.",
   "es": "Una capa sombreada colorea cada municipio según un conjunto de datos. La pestaña Análisis permite dos capas sombreadas a la vez. Los colores van de claro a oscuro en cinco grupos."
  },
  "layers.economy_symbols": {
@@ -2357,11 +2357,11 @@
   "es": "Una capa de símbolos dibuja un círculo en cada municipio. El área del círculo muestra el valor, así que los círculos grandes son cantidades grandes. Los símbolos sirven para conteos y totales, como empleos o dólares."
  },
  "layers.economy_bivariate": {
-  "en": "When two shaded layers are on, the map shows both at once with nine colours. Each layer is cut into three classes: low, middle and high.",
+  "en": "When two shaded layers are on, the map shows both at once with nine colors. Each layer is cut into three classes: low, middle and high.",
   "es": "Cuando hay dos capas sombreadas activadas, el mapa muestra ambas a la vez con nueve colores. Cada capa se divide en tres clases: baja, media y alta."
  },
  "layers.economy_normalisation": {
-  "en": "Each layer has a 'Show as' menu. It changes the number behind the colour or circle. Choices include as published, per resident, per km², share, index, change and percentile.",
+  "en": "Each layer has a 'Show as' menu. It changes the number behind the color or circle. Choices include as published, per resident, per km², share, index, change and percentile.",
   "es": "Cada capa tiene un menú \"Mostrar como\". Cambia el número que hay detrás del color o del círculo. Las opciones incluyen tal como se publicó, por residente, por km², proporción, índice, cambio y percentil."
  },
  "layers.economy_inflation": {
@@ -2385,7 +2385,7 @@
   "es": "Haga clic en un municipio con la pestaña Análisis abierta. Una tarjeta muestra el valor de cada capa visible en ese lugar y su posición entre los 78. También muestra el margen de error cuando la fuente lo publica."
  },
  "layers.trend_sparkline": {
-  "en": "A small grey line with a blue dot shows how a value changed over the years for one municipality. The label under it says how many years the line covers, for example '12 yrs'.",
+  "en": "A small gray line with a blue dot shows how a value changed over the years for one municipality. The label under it says how many years the line covers, for example '12 yrs'.",
   "es": "Una pequeña línea gris con un punto azul muestra cómo cambió un valor a lo largo de los años en un municipio. La etiqueta debajo indica cuántos años abarca la línea, por ejemplo \"12 años\"."
  },
  "layers.workbench": {
@@ -2437,7 +2437,7 @@
   "es": "La pestaña Análisis escribe sus capas, el año y el año base en la dirección de la página. El botón \"Copiar enlace\" copia la dirección, y al abrirla vuelven las mismas capas."
  },
  "layers.share_link_3d": {
-  "en": "The 3D view reads two items from the page address: the camera centre and zoom (c) and a planned route (r). Layers and clocks are not kept in the address.",
+  "en": "The 3D view reads two items from the page address: the camera center and zoom (c) and a planned route (r). Layers and clocks are not kept in the address.",
   "es": "La vista 3D lee dos datos de la dirección de la página: el centro y el acercamiento de la cámara (c) y una ruta planificada (r). Las capas y los relojes no se guardan en la dirección."
  },
  "layers.share_link_housing": {
@@ -2461,7 +2461,7 @@
   "es": "El interruptor \"Terreno en 3D\" levanta el mapa en relieve. El control deslizante \"Exageración del terreno\" estira las alturas de 1 a 3 veces, para que las lomas se vean mejor."
  },
  "layers.buildings_3d": {
-  "en": "The '3D buildings' switch raises building footprints to the height stored in the OpenFreeMap map tiles, which draw OpenStreetMap data. A building with no height value is drawn 6 metres tall.",
+  "en": "The '3D buildings' switch raises building footprints to the height stored in the OpenFreeMap map tiles, which draw OpenStreetMap data. A building with no height value is drawn 6 meters tall.",
   "es": "El interruptor \"Edificios en 3D\" levanta la huella de cada edificio hasta la altura guardada en los mosaicos de mapa de OpenFreeMap, que dibujan datos de OpenStreetMap. Un edificio sin valor de altura se dibuja con 6 metros de alto."
  },
  "layers.navigation_3d": {
@@ -2469,7 +2469,7 @@
   "es": "La vista 3D se mueve con el ratón, con el tacto, con el teclado o con los botones de la derecha. Cuatro botones de vista rápida llevan la cámara en vuelo a San Juan, El Yunque, Ponce y toda la isla."
  },
  "layers.places_3d": {
-  "en": "The 3D 'Tourism places' layer shows tourism places as a heat map from far away and as coloured points when you zoom in. Four category buttons filter them.",
+  "en": "The 3D 'Tourism places' layer shows tourism places as a heat map from far away and as colored points when you zoom in. Four category buttons filter them.",
   "es": "La capa \"Lugares turísticos\" de la vista 3D muestra los lugares turísticos como un mapa de calor desde lejos y como puntos de colores al acercar el mapa. Cuatro botones de categoría los filtran."
  },
  "layers.columns_3d": {
@@ -2493,7 +2493,7 @@
   "es": "Una barra en la parte inferior de la vista 3D tiene un botón para reproducir, una etiqueta, un control deslizante y tres botones que eligen el reloj: \"Día\", \"Años\" o \"Tormentas\"."
  },
  "layers.transit_replay_3d": {
-  "en": "'A day of transit' replays every scheduled weekday trip of the Autoridad de Transporte Integrado (ATI) and municipal timetables as a coloured trail that moves across the map. It is a timetable replay, not tracking by Global Positioning System (GPS).",
+  "en": "'A day of transit' replays every scheduled weekday trip of the Autoridad de Transporte Integrado (ATI) and municipal timetables as a colored trail that moves across the map. It is a timetable replay, not tracking by Global Positioning System (GPS).",
   "es": "\"Un día de transporte colectivo\" reproduce cada viaje con horario de un día de semana de la ATI (Autoridad de Transporte Integrado) y de los horarios municipales como una estela de color que avanza por el mapa. Es una reproducción de horarios, no un rastreo por GPS (sistema de posicionamiento global)."
  },
  "layers.sea_level_clock_3d": {
@@ -2501,7 +2501,7 @@
   "es": "Los controles de \"Nivel del mar por año\" convierten un año y un escenario de NOAA (Administración Nacional Oceánica y Atmosférica) en la capa de nivel del mar. Elija un año de 2020 a 2150 y uno de los cuatro escenarios, y el mapa muestra la capa de NOAA correspondiente."
  },
  "layers.storm_controls_3d": {
-  "en": "The Hurricane controls draw the tracks of storms that came within 250 kilometres of Puerto Rico since 1851. You can filter by years and strength, play them through time and open any storm from a list.",
+  "en": "The Hurricane controls draw the tracks of storms that came within 250 kilometers of Puerto Rico since 1851. You can filter by years and strength, play them through time and open any storm from a list.",
   "es": "Los controles de huracanes dibujan las trayectorias de las tormentas que pasaron a 250 kilómetros o menos de Puerto Rico desde 1851. Se puede filtrar por años y por fuerza, reproducirlas en el tiempo y abrir cualquier tormenta desde una lista."
  },
  "layers.route_planner_3d": {
@@ -2521,7 +2521,7 @@
   "es": "La barra de años en la parte superior de la página de Vivienda lleva cada mapa, gráfica y tabla al año elegido. \"Cambio medido desde\" fija el año base de los mapas de cambio."
  },
  "layers.housing_maps": {
-  "en": "Each housing variable has a map of the 78 municipalities and a ranked bar chart. Colours show five groups whose limits come from all years together, so the same colour means the same number in every year.",
+  "en": "Each housing variable has a map of the 78 municipalities and a ranked bar chart. Colors show five groups whose limits come from all years together, so the same color means the same number in every year.",
   "es": "Cada variable de vivienda tiene un mapa de los 78 municipios y una gráfica de barras ordenada. Los colores muestran cinco grupos cuyos límites salen de todos los años juntos, así que el mismo color significa el mismo número en todos los años."
  },
  "layers.housing_change_measure": {
@@ -2817,7 +2817,7 @@
   "es": "Una puntuación que usted construye en la mesa de trabajo con varios conjuntos de datos, con sus propias direcciones y pesos. Es su propio índice, no uno oficial."
  },
  "measures.peer_municipios": {
-  "en": "For each municipio, the five municipios most like it in population and in residents per square kilometre.",
+  "en": "For each municipio, the five municipios most like it in population and in residents per square kilometer.",
   "es": "Para cada municipio, los cinco municipios más parecidos en población y en residentes por kilómetro cuadrado."
  },
  "layers.scenarios": {
@@ -2829,7 +2829,7 @@
   "es": "Cifras que produjo un modelo externo y que una persona cargó en la mesa de trabajo. Son resultados de un modelo, no datos observados, y el observatorio solo verifica su formato."
  },
  "layers.study_areas": {
-  "en": "Load your own polygons, such as a neighbourhood or a service area, and see what each holds: residents, transit stops and, on request, tourism places and flood and protected land, plus every dataset of the Analysis tab estimated for each area.",
+  "en": "Load your own polygons, such as a neighborhood or a service area, and see what each holds: residents, transit stops and, on request, tourism places and flood and protected land, plus every dataset of the Analysis tab estimated for each area.",
   "es": "Cargue sus propios polígonos, como un vecindario o un área de servicio, y vea qué contiene cada uno: residentes, paradas de transporte y, si lo pide, lugares turísticos y terreno inundable o protegido, además de cada conjunto de datos de la pestaña Análisis estimado para cada área."
  },
  "place_access.tw_m": {
@@ -2881,7 +2881,7 @@
   "es": "De cada 100 residentes, cuántos viven a 400 m o menos a pie, por las calles mapeadas, de una parada con horario cuyo operador no ha dejado vencer su horario. Es la medida principal del observatorio del acceso de los residentes al transporte colectivo."
  },
  "environment.landuse_class_areas": {
-  "en": "How many square kilometres of each municipality, and of all of Puerto Rico, the 2015 land use plan puts in each of its classes: urban, land for planned or reserve growth, ordinary rural, and the kinds of specially protected rural land. It is the data behind the land-use analysis.",
+  "en": "How many square kilometers of each municipality, and of all of Puerto Rico, the 2015 land use plan puts in each of its classes: urban, land for planned or reserve growth, ordinary rural, and the kinds of specially protected rural land. It is the data behind the land-use analysis.",
   "es": "Cuántos kilómetros cuadrados de cada municipio, y de todo Puerto Rico, pone el plan de uso de terrenos de 2015 en cada una de sus clases: urbano, suelo para crecimiento programado o de reserva, rústico común y los tipos de rústico especialmente protegido. Son los datos del análisis de uso de terrenos."
  },
  "layers.landuse_analysis": {
@@ -2917,7 +2917,7 @@
   "es": "Cuántos cuarteles de la policía han trazado los voluntarios de OpenStreetMap en cada municipio."
  },
  "facilities.libraries": {
-  "en": "How many libraries in each municipio are registered as public libraries in the federal E-Rate program, including community technology centres.",
+  "en": "How many libraries in each municipio are registered as public libraries in the federal E-Rate program, including community technology centers.",
   "es": "Cuántas bibliotecas de cada municipio están inscritas como bibliotecas públicas en el programa federal E-Rate, incluidos los centros tecnológicos comunitarios."
  },
  "nonprofits.npo_all": {
@@ -3037,7 +3037,7 @@
   "es": "Cuántos minutos, más o menos, toma ir en auto, sin tráfico, desde donde vive la gente de un barrio hasta el hospital general con sala de emergencias más cercano. Es un estimado del observatorio."
  },
  "conditions.hosp_road_km": {
-  "en": "How many kilometres of road separate where a barrio's people live from the nearest general hospital with an emergency room. An estimate made by the observatory.",
+  "en": "How many kilometers of road separate where a barrio's people live from the nearest general hospital with an emergency room. An estimate made by the observatory.",
   "es": "Cuántos kilómetros de carretera separan el lugar donde vive la gente de un barrio del hospital general con sala de emergencias más cercano. Es un estimado del observatorio."
  },
  "conditions.chas_severe_hh": {
@@ -3197,7 +3197,7 @@
   "es": "Si el Departamento de la Vivienda (PRDOH) aprobó el plan de resiliencia de la comunidad o si todavía está en proceso."
  },
  "boundaries.wcrp_subrecipiente": {
-  "en": "The organisation that leads the community's planning work for the program: a municipality, a university or a nonprofit.",
+  "en": "The organization that leads the community's planning work for the program: a municipality, a university or a nonprofit.",
   "es": "La organización que dirige el trabajo de planificación de la comunidad en el programa: un municipio, una universidad o una organización sin fines de lucro."
  },
  "boundaries.wcrp_ubicacion": {
@@ -3325,7 +3325,7 @@
   "es": "Si la ruta pertenece al área metropolitana (su sistema tiene una parada a 250 m o menos de una parada de la ATI) o al este (su sistema no se une a la red de la ATI)."
  },
  "route_compare.route": {
-  "en": "The route's label as its timetable gives it (a number for the ATI, a code or a colour for some municipal systems).",
+  "en": "The route's label as its timetable gives it (a number for the ATI, a code or a color for some municipal systems).",
   "es": "La identificación de la ruta según su horario (un número en la ATI, un código o un color en algunos sistemas municipales)."
  },
  "route_compare.name": {
@@ -3357,7 +3357,7 @@
   "es": "Cada cuántos minutos, en promedio, pasa la ruta de 6:00 a 9:00 a.m. en su dirección con más viajes."
  },
  "route_compare.length_km": {
-  "en": "The length of the route's main stop pattern, in kilometres. For a timetable-only route it is the length of the line the operator draws, which can hold both directions.",
+  "en": "The length of the route's main stop pattern, in kilometers. For a timetable-only route it is the length of the line the operator draws, which can hold both directions.",
   "es": "El largo del patrón principal de paradas de la ruta, en kilómetros. En una ruta con solo horario de punto a punto es el largo de la línea que dibuja el operador, que puede incluir las dos direcciones."
  },
  "route_compare.speed_kmh": {
@@ -3365,7 +3365,7 @@
   "es": "La velocidad promedio que el horario planifica para el patrón principal de la ruta, de su primera a su última parada con hora."
  },
  "route_compare.busy_junctions": {
-  "en": "How many signalised junctions and roundabouts with an estimated 2,000 or more vehicles an hour in the design hour (one of the busiest hours of the year) lie on the route's path.",
+  "en": "How many signalized junctions and roundabouts with an estimated 2,000 or more vehicles an hour in the design hour (one of the busiest hours of the year) lie on the route's path.",
   "es": "Cuántos cruces con semáforo y rotondas con un estimado de 2,000 o más vehículos por hora en la hora de diseño (una de las horas de más tránsito del año) hay en el camino de la ruta."
  },
  "route_compare.busy_per_10km": {
@@ -3429,7 +3429,7 @@
   "es": "Cuántos puentes peatonales (OpenStreetMap) hay a 30 m o menos del camino de la ruta."
  },
  "route_compare.km_to_ati": {
-  "en": "The straight-line distance from the route's nearest stop to the nearest ATI stop, in kilometres (0 for ATI routes).",
+  "en": "The straight-line distance from the route's nearest stop to the nearest ATI stop, in kilometers (0 for ATI routes).",
   "es": "La distancia en línea recta de la parada más cercana de la ruta a la parada de la ATI más cercana, en kilómetros (0 en las rutas de la ATI)."
  },
  "route_compare.feed_end": {
@@ -3509,11 +3509,11 @@
   "es": "El percentil 25, la mediana y el percentil 75 de los valores de las economías del GII 2026: la mitad de ellas queda entre el primero y el tercero."
  },
  "gii.dir": {
-  "en": "+1 when a higher value is a better outcome on the GII's scale, -1 when it is worse (the indicators marked *). It sets the colour of the change arrow; it follows the index's method, not a value judgement.",
+  "en": "+1 when a higher value is a better outcome on the GII's scale, -1 when it is worse (the indicators marked *). It sets the color of the change arrow; it follows the index's method, not a value judgment.",
   "es": "+1 cuando un valor más alto es un mejor resultado en la escala del GII, -1 cuando es peor (los indicadores marcados con *). Fija el color de la flecha de cambio; sigue el método del índice, no es un juicio de valor."
  },
  "gii.chg": {
-  "en": "How the updated value compares with the printed 2021 value on the GII's scale: better (green arrow), worse (red arrow), no meaningful change (≈) or not comparable (—). 'Better' follows the index's direction, not a value judgement.",
+  "en": "How the updated value compares with the printed 2021 value on the GII's scale: better (green arrow), worse (red arrow), no meaningful change (≈) or not comparable (—). 'Better' follows the index's direction, not a value judgment.",
   "es": "Cómo se compara el valor actualizado con el valor publicado de 2021 en la escala del GII: mejor (flecha verde), peor (flecha roja), sin cambio apreciable (≈) o no comparable (—). «Mejor» sigue la dirección del índice; no es un juicio de valor."
  },
  "gii.c26_status": {
@@ -3661,7 +3661,7 @@
   "es": "Cuántas personas, aproximadamente, viven a 400 m o menos a pie de una parada con horario vigente pero tienen en el camino un tramo más empinado de lo que puede ser una rampa para silla de ruedas."
  },
  "heat.surface_layer": {
-  "en": "A map layer that colours every 60 m of land by how hot its surface gets on clear summer mornings, or, with the legend's switch, how warm it stays on clear summer nights, from blue (cooler) to red (hotter). In the 3D view it is draped on the terrain under the 3D buildings.",
+  "en": "A map layer that colors every 60 m of land by how hot its surface gets on clear summer mornings, or, with the legend's switch, how warm it stays on clear summer nights, from blue (cooler) to red (hotter). In the 3D view it is draped on the terrain under the 3D buildings.",
   "es": "Una capa del mapa que colorea cada 60 m de terreno según lo caliente que se pone su superficie en mañanas despejadas de verano o, con el interruptor de la leyenda, lo cálida que se mantiene en noches despejadas de verano, de azul (más fresca) a rojo (más caliente). En la vista 3D se extiende sobre el relieve, debajo de los edificios en 3D."
  },
  "buildings.bld_n": {
@@ -3669,7 +3669,7 @@
   "es": "Cuántos edificios tiene el área, contados a partir de contornos de edificios trazados desde arriba."
  },
  "buildings.bld_per_km2": {
-  "en": "How closely packed the buildings are: buildings for each square kilometre of land.",
+  "en": "How closely packed the buildings are: buildings for each square kilometer of land.",
   "es": "Cuán juntos están los edificios: edificios por cada kilómetro cuadrado de terreno."
  },
  "buildings.bld_roof_pct": {
@@ -3821,7 +3821,7 @@
   "es": "Las subcuencas de Puerto Rico, las áreas cuya lluvia drena a un tramo de río, con las quebradas y ríos principales."
  },
  "water.what_drains_here": {
-  "en": "A tool that traces the land whose rain flows to a point you pick, down the USGS stream network, and summarises it like any study area.",
+  "en": "A tool that traces the land whose rain flows to a point you pick, down the USGS stream network, and summarizes it like any study area.",
   "es": "Una herramienta que traza el terreno cuya lluvia corre hasta un punto que usted escoge, por la red de quebradas del USGS, y lo resume como cualquier área de estudio."
  },
  "layers.broadband_hex": {
@@ -3849,15 +3849,15 @@
   "es": "Una capa del mapa con las rutas de públicos que aparecían activas en marzo de 2020, cada una con su código y su nombre. La lista no tiene horarios y no se ha actualizado, así que una ruta puede que ya no opere."
  },
  "infrastructure.traffic_vkt": {
-  "en": "How many kilometres all vehicles drive in a day on the municipio's roads, added up.",
+  "en": "How many kilometers all vehicles drive in a day on the municipio's roads, added up.",
   "es": "Cuántos kilómetros recorren en total todos los vehículos en un día por las carreteras del municipio."
  },
  "infrastructure.traffic_vkt_pc": {
-  "en": "The daily vehicle-kilometres on the municipio's roads for each resident: high where much traffic passes through.",
+  "en": "The daily vehicle-kilometers on the municipio's roads for each resident: high where much traffic passes through.",
   "es": "Los vehículo-kilómetros diarios en las carreteras del municipio por cada residente: alto donde pasa mucho tránsito."
  },
  "infrastructure.traffic_main_km": {
-  "en": "How many kilometres of freeways, arterials and major collectors the municipio has.",
+  "en": "How many kilometers of freeways, arterials and major collectors the municipio has.",
   "es": "Cuántos kilómetros de autopistas, arterias y colectoras principales tiene el municipio."
  },
  "infrastructure.traffic_max_aadt": {
@@ -3869,7 +3869,7 @@
   "es": "De cada 100 vehículos en las carreteras principales del municipio, cuántos son camiones."
  },
  "infrastructure.traffic_poor_pct": {
-  "en": "Out of every 100 measured kilometres of main road, how many have rough pavement by the roughness index FHWA uses.",
+  "en": "Out of every 100 measured kilometers of main road, how many have rough pavement by the roughness index FHWA uses.",
   "es": "De cada 100 kilómetros medidos de carretera principal, cuántos tienen pavimento áspero según el índice de rugosidad que usa la FHWA."
  },
  "layers.traffic_roads": {
@@ -3897,15 +3897,15 @@
   "es": "Cuántas personas murieron en choques de tránsito en el municipio cada año por cada 100,000 residentes, en promedio en 2020-2024."
  },
  "infrastructure.crash_per_vkm": {
-  "en": "How many people died in traffic crashes for every 100 million kilometres driven on the municipio's roads, over 2020-2024: the risk per kilometre driven.",
+  "en": "How many people died in traffic crashes for every 100 million kilometers driven on the municipio's roads, over 2020-2024: the risk per kilometer driven.",
   "es": "Cuántas personas murieron en choques de tránsito por cada 100 millones de kilómetros recorridos en las carreteras del municipio, en 2020-2024: el riesgo por kilómetro recorrido."
  },
  "layers.plants": {
-  "en": "Every power plant of 1 MW or more on the map, as the US Energy Information Administration lists them each month: the area of each circle is the plant's capacity and its colour is the technology with the most capacity.",
+  "en": "Every power plant of 1 MW or more on the map, as the US Energy Information Administration lists them each month: the area of each circle is the plant's capacity and its color is the technology with the most capacity.",
   "es": "Todas las plantas de energía de 1 MW o más en el mapa, como las lista cada mes la Administración de Información Energética de EE. UU.: el área de cada círculo es la capacidad de la planta y su color es la tecnología con más capacidad."
  },
  "layers.powerlines": {
-  "en": "OpenStreetMap's high-voltage lines on the map, coloured and sized by voltage (230, 115 and 38 kV) and drawn simplified to about 100 m; substations are counted, not drawn.",
+  "en": "OpenStreetMap's high-voltage lines on the map, colored and sized by voltage (230, 115 and 38 kV) and drawn simplified to about 100 m; substations are counted, not drawn.",
   "es": "Las líneas de alto voltaje de OpenStreetMap en el mapa, con color y grosor según el voltaje (230, 115 y 38 kV) y dibujadas simplificadas a unos 100 m; las subestaciones se cuentan, no se dibujan."
  },
  "energy.page": {
@@ -3913,7 +3913,7 @@
   "es": "Las cifras de la página Energía en Puerto Rico: de dónde viene la electricidad desde 2010, la solar en techos y las baterías, el consumo y los contadores inteligentes por municipio, la confiabilidad, el precio y la exposición de la red a las inundaciones."
  },
  "layers.bridges": {
-  "en": "Every bridge of 20 feet or more on a public road and the four road tunnels, from FHWA's inventories: the colour is the bridge's condition and the area of each circle is the vehicles that cross it on an average day.",
+  "en": "Every bridge of 20 feet or more on a public road and the four road tunnels, from FHWA's inventories: the color is the bridge's condition and the area of each circle is the vehicles that cross it on an average day.",
   "es": "Todos los puentes de 20 pies o más en una vía pública y los cuatro túneles de carretera, según los inventarios de la FHWA: el color es la condición del puente y el área de cada círculo, los vehículos que lo cruzan en un día promedio."
  },
  "layers.airports": {
@@ -3921,7 +3921,7 @@
   "es": "Los aeropuertos abiertos al público y los helipuertos que son propiedad de una entidad pública, como los lista la Administración Federal de Aviación cada 28 días; las instalaciones privadas de dueños privados se cuentan, pero no se dibujan."
  },
  "layers.ferries": {
-  "en": "The three ferry crossings of Puerto Rico (San Juan to Cataño, Ceiba to Vieques and Ceiba to Culebra), wider where more passengers travelled in the newest National Census of Ferry Operators.",
+  "en": "The three ferry crossings of Puerto Rico (San Juan to Cataño, Ceiba to Vieques and Ceiba to Culebra), wider where more passengers traveled in the newest National Census of Ferry Operators.",
   "es": "Los tres cruces en lancha de Puerto Rico (San Juan a Cataño, Ceiba a Vieques y Ceiba a Culebra), más anchos donde viajaron más pasajeros según el censo nacional de operadores de lanchas más reciente."
  },
  "layers.evcharge": {
@@ -4017,7 +4017,7 @@
   "es": "De cada 100 estudiantes de escuelas públicas de un municipio, cuántos están matriculados en una escuela dentro del área de inundación de 1% de FEMA."
  },
  "facility_exposure.fx_road_flood_km": {
-  "en": "How many kilometres of each municipio's main roads run inside FEMA's 1% flood area.",
+  "en": "How many kilometers of each municipio's main roads run inside FEMA's 1% flood area.",
   "es": "Cuántos kilómetros de las carreteras principales de cada municipio pasan por el área de inundación de 1% de FEMA."
  },
  "facility_exposure.fx_road_flood_pct": {
@@ -4037,7 +4037,7 @@
   "es": "De cada 100 estudiantes de escuelas públicas de un municipio, cuántos están matriculados en una escuela dentro del área que inundarían 3 pies de aumento del nivel del mar."
  },
  "facility_exposure.fx_road_slr_km": {
-  "en": "How many kilometres of each municipio's main roads run inside the area 3 ft of sea level rise would flood.",
+  "en": "How many kilometers of each municipio's main roads run inside the area 3 ft of sea level rise would flood.",
   "es": "Cuántos kilómetros de las carreteras principales de cada municipio pasan por el área que inundarían 3 pies de aumento del nivel del mar."
  },
  "facility_exposure.fx_road_slr_pct": {
@@ -4057,7 +4057,7 @@
   "es": "De cada 100 estudiantes de escuelas públicas de un municipio, cuántos están matriculados en una escuela en terreno que el USGS clasifica con alta susceptibilidad a deslizamientos."
  },
  "facility_exposure.fx_road_ls_km": {
-  "en": "How many kilometres of each municipio's main roads run on land the USGS rates highly susceptible to landslides.",
+  "en": "How many kilometers of each municipio's main roads run on land the USGS rates highly susceptible to landslides.",
   "es": "Cuántos kilómetros de las carreteras principales de cada municipio pasan por terreno que el USGS clasifica con alta susceptibilidad a deslizamientos."
  },
  "facility_exposure.fx_road_ls_pct": {
@@ -4177,7 +4177,7 @@
   "es": "Cuántos títulos de bachillerato o más en ciencias, tecnología, ingeniería y matemáticas otorgaron las universidades de un área en un año académico."
  },
  "degrees.deg_field_social": {
-  "en": "How many bachelor's or higher degrees colleges in an area awarded in an academic year in social and behavioural sciences.",
+  "en": "How many bachelor's or higher degrees colleges in an area awarded in an academic year in social and behavioral sciences.",
   "es": "Cuántos títulos de bachillerato o más en ciencias sociales y de la conducta otorgaron las universidades de un área en un año académico."
  },
  "degrees.deg_field_arts": {

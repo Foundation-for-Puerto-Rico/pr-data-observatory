@@ -11,7 +11,7 @@ operator's own shape, or the road network that network.snap_routes snaps to). Th
 Trips that stop at the same places in the same order share one path (a stop pattern: one variant of a route), so the file stores each
 path once. trips*.json, format 2:
 
-  "paths":     [[[lng, lat, metres from the start], ...], ...]   one per stop pattern
+  "paths":     [[[lng, lat, meters from the start], ...], ...]   one per stop pattern
   "path_kind": ["line" | "stops", ...]   "line" follows the route line; "stops" joins the stops in straight lines (no line fitted)
   "path_stops": [["gtfs:<operator>:<stop_id>", ...], ...]   the stop of each "s" position, per pattern (the ids of transport.json)
   "trips":     [{"r": route, "m": mode, "o": operator, "k": path index, "s": [path index of each stop], "t": [seconds after midnight at each stop]}]
@@ -29,9 +29,9 @@ from pathlib import Path
 
 LAT0 = 18.2                                        # Puerto Rico: a local flat projection is accurate to well under 1% here
 KX, KY = 111320 * math.cos(math.radians(LAT0)), 110540
-TOL = 250                                          # metres: a stop farther than this from every part of a line is not on that line
-SIMPLIFY = 5                                       # metres: Douglas-Peucker tolerance for the path between two stops
-AHEAD = 0.05                                       # cost per metre of skipping ahead along the line, so a loop that passes the stop again later loses
+TOL = 250                                          # meters: a stop farther than this from every part of a line is not on that line
+SIMPLIFY = 5                                       # meters: Douglas-Peucker tolerance for the path between two stops
+AHEAD = 0.05                                       # cost per meter of skipping ahead along the line, so a loop that passes the stop again later loses
 MAX_SPEED = 35                                     # m/s (126 km/h): faster than any bus, train or ferry here
 MIN_SPEED = 0.5                                    # m/s: slower than this over three minutes or more means the vehicle is not where we placed it
 FORMAT = 2
@@ -47,7 +47,7 @@ def _dist(a, b):
 
 
 class _Line:
-    """One polyline of a route, in metres, with the distance along it at each vertex."""
+    """One polyline of a route, in meters, with the distance along it at each vertex."""
     def __init__(self, coords):
         self.ll = [c[:2] for c in coords]
         self.xy = [_xy(c) for c in self.ll]
@@ -93,7 +93,7 @@ class _Line:
                     c = d + 0.01 * at                              # the first stop: nearest, and early on the line
                 else:
                     run = at - prev
-                    if run < -1:                                   # going backwards along the line
+                    if run < -1:                                   # going backward along the line
                         continue
                     if run > 3 * straight + 1500 and dt is not None and run > MAX_SPEED * max(dt, 1):
                         continue                                   # a far longer trip than the stops make, at an impossible speed: wrong pass
@@ -122,7 +122,7 @@ class _Line:
 
 
 def _simplify(pts):
-    """Douglas-Peucker in metres; keeps the ends."""
+    """Douglas-Peucker in meters; keeps the ends."""
     if len(pts) < 3:
         return pts
     xy = [_xy(p) for p in pts]

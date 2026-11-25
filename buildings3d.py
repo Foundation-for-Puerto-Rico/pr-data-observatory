@@ -19,7 +19,7 @@ How (HANDOFF decision 91 (c): hosting measured first; docs/buildings3d.md):
     base map's.
   - Checks that stop the build: the file has between 550,000 and 800,000 features at zoom 14 (a building on a tile edge counts in each tile; 704,061 on
     2026-11-10), it is under 20 MB, and no feature comes from OpenStreetMap.
-Licence: ODbL 1.0 (Overture's buildings theme), credit "© OpenStreetMap contributors, Overture Maps Foundation"; the file is offered under ODbL 1.0.
+License: ODbL 1.0 (Overture's buildings theme), credit "© OpenStreetMap contributors, Overture Maps Foundation"; the file is offered under ODbL 1.0.
 Private homes: the file holds outlines and heights, as any base map does; no name, address, use or value is attached to a building.
 """
 

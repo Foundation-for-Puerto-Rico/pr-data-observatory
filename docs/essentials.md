@@ -25,8 +25,8 @@ The code is `essentials.py`, the tests are `tests/test_essentials.py`, the files
 | Supermarket | Overture places, release 2026-10-21.0 (confidence 0.5 or more), and OpenStreetMap supermarkets Overture lacks | A grocery or warehouse-club place whose name is a supermarket's: "supermercado", "supermarket" or a chain (Econo, Selectos, Pueblo, SuperMax, Amigo, Mr. Special, Ralph's, Famcoop, Agranel, Centro Ahorros, Plaza Loíza, Mi Gente, Mega Fresh, Freshmart, Hatillo Kash, Napo, Pitusa, Super Ahorros, Superdescuentos, P&G Cada Día); Walmart, Costco and Sam's Club in a store category. "Colmado", "mini market" and "to go" names are left out. "Pueblo" and "Amigo" count only at the start of a name. |
 | Any food store | The same, plus every Overture place of a grocery category | Colmados included. |
 | Pharmacy | Overture (pharmacy, drugstore) and OpenStreetMap pharmacies Overture lacks | |
-| Bank or cooperativa | Overture (bank, credit union) and OpenStreetMap banks Overture lacks | ATMs are not counted. FDIC branches are not used: since 2023 half sit at the centre of their ZIP code (`docs/credit.md`). |
-| Library | `libraries.geojson` (USAC E-Rate list, `facilities.py`) | In Puerto Rico the list also holds community, church and university libraries and municipal technology centres, so the label says "a library", not "a public library". |
+| Bank or cooperativa | Overture (bank, credit union) and OpenStreetMap banks Overture lacks | ATMs are not counted. FDIC branches are not used: since 2023 half sit at the center of their ZIP code (`docs/credit.md`). |
+| Library | `libraries.geojson` (USAC E-Rate list, `facilities.py`) | In Puerto Rico the list also holds community, church and university libraries and municipal technology centers, so the label says "a library", not "a public library". |
 | Fire or EMS station | `fire_stations.geojson` (USGS), and OpenStreetMap fire stations with no USGS point within 300 m | USGS lacks Jayuya's station. |
 
 "Lacks" means no point of the same kind within 300 m. OpenStreetMap is Geofabrik's Puerto Rico extract (puerto-rico-261117.osm.pbf), read with `osmium`.

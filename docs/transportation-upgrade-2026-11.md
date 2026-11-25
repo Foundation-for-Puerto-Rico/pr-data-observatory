@@ -30,7 +30,7 @@ Prepared with Claude (AI). Every source below was opened and counted on 2026-11-
 
 ## 2. What open data can add (checked 2026-11-13)
 
-| # | Source | What it gives for Puerto Rico | Licence | Status |
+| # | Source | What it gives for Puerto Rico | License | Status |
 |---|---|---|---|---|
 | 1 | Census Bureau, County-to-County Commuting Flows, ACS 2016-2020 | Workers by municipio of residence and of work: 1,626 one-way flows, 532,691 workers between municipios, with margins of error | US Government work | **Built in this change** |
 | 2 | Instituto de Estadísticas and ACT, Mapa de rutas de porteadores públicos (2020-03-19) | 361 rows, 334 público routes with their lines, codes and names | CC BY | **Built in this change** |
@@ -39,7 +39,7 @@ Prepared with Claude (AI). Every source below was opened and counted on 2026-11-
 | 5 | FHWA National Bridge Inventory (NTAD) | 2,433 bridges as points, with condition, year built, daily traffic and detour length | US Government work | Step 4 (the municipio counts are already live) |
 | 6 | FAA aviation facilities (NTAD) | 47 airports, heliports and seaplane bases | US Government work | Step 4 |
 | 7 | BTS National Census of Ferry Operators (NTAD) | 5 terminals and 6 route segments, with passengers and vehicles carried | US Government work | Step 4 |
-| 8 | US DOE Alternative Fuels Data Center (NTAD copy) | 26 fuelling stations (EV chargers with their connectors and power); OpenStreetMap has 11 | US Government work | Step 4 (drop the telephone field) |
+| 8 | US DOE Alternative Fuels Data Center (NTAD copy) | 26 fueling stations (EV chargers with their connectors and power); OpenStreetMap has 11 | US Government work | Step 4 (drop the telephone field) |
 | 9 | FHWA National Highway System, National Highway Freight Network, Strategic Highway Network (NTAD) | 9,598 NHS segments, 38 freight-network segments, 3,612 STRAHNET segments | US Government work | Step 2, as classes of the traffic layer |
 | 10 | FHWA Travel Monitoring stations (NTAD) | 31 continuous count stations | US Government work | Step 2, as points |
 | 11 | FHWA National Tunnel Inventory (NTAD) | 4 tunnels | US Government work | Step 4 |
@@ -47,7 +47,7 @@ Prepared with Claude (AI). Every source below was opened and counted on 2026-11-
 
 **Looked for and not usable today:**
 
-- **All crashes, not only fatal ones.** The Observatorio de Seguridad Vial (CST and UPR) has dashboards; no open download or licence was found. Ask: CST.
+- **All crashes, not only fatal ones.** The Observatorio de Seguridad Vial (CST and UPR) has dashboards; no open download or license was found. Ask: CST.
 - **Live bus positions (GTFS-Realtime).** ATI still lists it as in development. The request draft is in `OUTREACH_TRANSIT_DATA.md`, not sent.
 - **Jobs by block (LEHD LODES).** Does not cover Puerto Rico.
 - **USDOT transportation cost burden and disadvantage indexes.** The tract files have no Puerto Rico rows.
@@ -63,7 +63,7 @@ Each step is one pull request that shows on the site.
 2. **Traffic on the roads (built 2026-11-13, `docs/traffic.md`).** A line layer of the roads with a traffic count (HPMS 2025), wider where more vehicles pass, with trucks, lanes and speed limit in the pop-up, and the count stations. Then the simulated connections can say how much traffic the road they follow carries.
 3. **Road safety (built 2026-11-13, `docs/road-safety.md`).** Fatal crashes by municipio and year (FARS 2020-2024), with pedestrian deaths, as indicators and on the page. No points.
 4. **The federal inventories as layers (built 2026-11-14, `docs/transport-inventories.md`).** Bridges and tunnels with their condition, airports and heliports, ferry routes with passengers (2024 census), public EV charging stations, completing the volunteer-mapped points.
-5. **Gap analysis, second pass (built 2026-11-14, `docs/transit-links.md`, last section: time by timetable, need at each end, residents and bridges along each simulated connection; no ranking published).** Join steps 1 to 4 with what exists: households with no vehicle and poverty at each end of a connection, the barrio ranking of `docs/analysis/transit-needs-2026-11/`, journey time by timetable between town centres (with transfers), and the residents along each simulated connection. Publishing a ranking of where service should be added is a policy position: it needs leadership's approval first (plan decision 4).
+5. **Gap analysis, second pass (built 2026-11-14, `docs/transit-links.md`, last section: time by timetable, need at each end, residents and bridges along each simulated connection; no ranking published).** Join steps 1 to 4 with what exists: households with no vehicle and poverty at each end of a connection, the barrio ranking of `docs/analysis/transit-needs-2026-11/`, journey time by timetable between town centers (with transfers), and the residents along each simulated connection. Publishing a ranking of where service should be added is a policy position: it needs leadership's approval first (plan decision 4).
 
 ## 4. Data gaps that open data cannot close (no requests will be sent)
 

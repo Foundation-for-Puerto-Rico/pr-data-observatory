@@ -5,7 +5,7 @@
    (spending_federal.json), the capital projects of the four-year program (spending_pica.json, by the function of each agency) and dollars per
    resident (one population basis: the Census Bureau's estimate for July 1 2025, the one the capital projects map uses). For Education it adds the
    Department of Education's spending per public school student and an estimate by municipio (decision 73 (5)): the Department's spending split by
-   each municipio's share of the students, labelled as an estimate and never added into any total. */
+   each municipio's share of the students, labeled as an estimate and never added into any total. */
 (function (root) {
   'use strict';
   let EDU = null, eduAsked = false, LAST = null;   // LAST: the newest call, redrawn when the student counts arrive

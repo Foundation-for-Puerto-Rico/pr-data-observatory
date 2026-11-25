@@ -161,7 +161,7 @@ class DatasetTests(unittest.TestCase):
 
     def test_licensed_not_open_needs_a_licence_review(self):
         r = dict(self.rec, sources=["study"], licence_class="licensed-not-open")
-        self.assertIn("needs a 'licence' review", messages(self.check(r, self.geo_rec)[0]))
+        self.assertIn("needs a 'license' review", messages(self.check(r, self.geo_rec)[0]))
         r["review"] = [{"type": "licence", "status": "open", "note": "permission needed", "fields": ["x"]}]
         ps, reviews = self.check(r, self.geo_rec)
         self.assertEqual(errors(ps), [])

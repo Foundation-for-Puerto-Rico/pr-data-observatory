@@ -9,7 +9,7 @@ Sources, none needing an API key:
   Census housing  2010 and 2020 PL 94-171 redistricting files, table H1: housing units, occupied, vacant.
   ACS 5-year      Every vintage 2010-2024 (2006-2010 ... 2020-2024) from the Census summary files: per-sequence files for
                   2010-2020, table-based files for 2021-2024. About 40 variables, each with its margin of error where the
-                  Census Bureau publishes one. Labelled by the last year of the five-year window.
+                  Census Bureau publishes one. Labeled by the last year of the five-year window.
   FEMA            OpenFEMA Housing Assistance (owners and renters): households approved for Individual Assistance and dollars,
                   by municipality and year of the disaster declaration.
 

@@ -8,7 +8,7 @@ Date: 2026-11-09. Status: **approved by the project lead on 2026-11-09 (decision
 
 | Source | Result |
 |---|---|
-| Overture buildings, release 2026-10-21.0 (GeoParquet on S3, read with DuckDB) | Puerto Rico, Mona to Culebra: **2,157,363 buildings**. 1,500,399 from OpenStreetMap (what the 3D view already draws, through OpenFreeMap), 536,571 from Google, 120,393 from Microsoft. **203,060 (9.4%) have a height**, 8,499 a number of floors. Licence ODbL. |
+| Overture buildings, release 2026-10-21.0 (GeoParquet on S3, read with DuckDB) | Puerto Rico, Mona to Culebra: **2,157,363 buildings**. 1,500,399 from OpenStreetMap (what the 3D view already draws, through OpenFreeMap), 536,571 from Google, 120,393 from Microsoft. **203,060 (9.4%) have a height**, 8,499 a number of floors. License ODbL. |
 | Overture building tiles (PMTiles) | `tiles/2026-10-21.0/buildings.pmtiles` on the `overturemaps-extras-us-west-2` bucket: 180 GB worldwide, answers range requests from any website (CORS `*`). Overture says the tiles are for inspection, not production, and each release has a new path. |
 | Esri / Impact Observatory 10 m land cover (Planetary Computer `io-lulc-annual-v02`) | Years 2017 to 2023, 14 tiles over Puerto Rico, CC BY 4.0. **`raster.py` reads it** (UTM 20N). |
 | ESA WorldCover 10 m (Planetary Computer `esa-worldcover`) | 2020 and 2021 only, CC BY 4.0. **`raster.py` reads it.** |
@@ -31,10 +31,10 @@ Effort as in `docs/proposal-2026-10.md`: **S** under 1 day, **M** 2-4 days, **L*
   3. our own tiles of only the 656,964 buildings that OpenStreetMap lacks, the smallest option, on top of the base map's buildings.
 
   Buildings without a height get one flat default height and the popup says "height unknown". The PMTiles reader loads only when the 3D buildings are switched on, so the map's first-load scripts do not grow.
-- **A3. A height for every building (M), after Compliance.** GlobalBuildingAtlas heights joined to the footprints, checked against the 3DEP lidar (surface minus terrain). Its CC BY-NC licence needs Compliance's OK first.
+- **A3. A height for every building (M), after Compliance.** GlobalBuildingAtlas heights joined to the footprints, checked against the 3DEP lidar (surface minus terrain). Its CC BY-NC license needs Compliance's OK first.
 
 ### B. Land cover change since María (L)
-The yearly 10 m land cover 2017-2023, with ESA WorldCover as a check where the two overlap, and Hansen tree cover loss by year since 2001. Summaries by barrio and municipio and a Knowledge Area page, "How the land changed". Hansen needs a small addition to `raster.py` (read striped files; the strip index works with range requests like tiles) or a one-time download into the cache. Labels: modelled land cover changes include model noise; tree cover loss includes hurricane damage that regrows, so it is not called deforestation.
+The yearly 10 m land cover 2017-2023, with ESA WorldCover as a check where the two overlap, and Hansen tree cover loss by year since 2001. Summaries by barrio and municipio and a Knowledge Area page, "How the land changed". Hansen needs a small addition to `raster.py` (read striped files; the strip index works with range requests like tiles) or a one-time download into the cache. Labels: modeled land cover changes include model noise; tree cover loss includes hurricane damage that regrows, so it is not called deforestation.
 
 ### C. Fires (S-M)
 **Built on 2026-11-10 (branch `data/active-fires`): `fires.py`, `fires_series.json` (detections by municipio 2019-2025, per 100 km², and the last 12 months), workflow `fires.yml`; `docs/fires.md`. The complete years come from FIRMS's yearly country files, which need no key; the key (secret `FIRMS_MAP_KEY`, set by the project lead on 2026-11-10) is used only for the last 12 months.**
@@ -53,7 +53,7 @@ Foursquare Open Source Places, to measure how complete Overture's places are in 
 ## Not taken, and why
 - **Training sets for machine learning:** DSTL (Kaggle), SEN12MS, DeepSat SAT-4/SAT-6, SATIN, LandCover Aerial, xView2, Sen1Floods11. They train models; they are not maps of Puerto Rico. They only matter if the Prithvi work goes ahead.
 - **Scottish lidar:** not Puerto Rico. **SRTM:** the USGS 3DEP lidar and 1/3 arc-second elevation are sharper.
-- **Dynamic World and the Google Earth Engine catalogue:** both need an Earth Engine account and an export step, against the project lead's rule of 2026-11-04 that the observatory builds only from sources a script can read directly. Planetary Computer covers the same sources.
+- **Dynamic World and the Google Earth Engine catalog:** both need an Earth Engine account and an export step, against the project lead's rule of 2026-11-04 that the observatory builds only from sources a script can read directly. Planetary Computer covers the same sources.
 - **Google Dataset Search, the IBM-NASA Hugging Face collection:** tools to find datasets for this list, not layers.
 - **Google Open Buildings, Microsoft footprints, OpenStreetMap buildings separately:** Overture already merges them.
 
@@ -71,7 +71,7 @@ Foursquare Open Source Places, to measure how complete Overture's places are in 
 - (e) E: OK to share FPR's contact details with Foursquare on Hugging Face, or skip E.
 
 ## Sources checked
-- Overture: [Buildings guide](https://docs.overturemaps.org/guides/buildings/), [cloud sources](https://docs.overturemaps.org/getting-data/cloud-sources/), [Overture + PMTiles](https://docs.overturemaps.org/examples/overture-tiles/), [STAC catalogue](https://stac.overturemaps.org/catalog.json)
+- Overture: [Buildings guide](https://docs.overturemaps.org/guides/buildings/), [cloud sources](https://docs.overturemaps.org/getting-data/cloud-sources/), [Overture + PMTiles](https://docs.overturemaps.org/examples/overture-tiles/), [STAC catalog](https://stac.overturemaps.org/catalog.json)
 - [Microsoft Planetary Computer STAC API](https://planetarycomputer.microsoft.com/api/stac/v1/collections)
 - [Hansen Global Forest Change v1.12](https://storage.googleapis.com/earthenginepartners-hansen/GFC-2024-v1.12/download.html)
 - [NASA HLS project](https://hls.gsfc.nasa.gov/)

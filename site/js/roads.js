@@ -3,7 +3,7 @@
    The build snaps every transit route to it; this is the same router, so a planned route lines up with the published ones.
 
      const roads = await Roads.load('data/roads.bin');
-     roads.path([[lng, lat], [lng, lat], ...])  ->  { coords, metres, secs, legs: [{ok, metres, secs}], legAt: [index in coords where each leg starts], allOnRoads }
+     roads.path([[lng, lat], [lng, lat], ...])  ->  { coords, meters, secs, legs: [{ok, meters, secs}], legAt: [index in coords where each leg starts], allOnRoads }
 
    Speeds are planning speeds by road class (only their ratios decide which way is "fastest"); the time is indicative:
    it counts neither stops nor traffic. File layout is documented in roads.py. */
@@ -52,7 +52,7 @@ const Roads = (() => {
       this.shape = new Int16Array(buf, off, nS * 2);
       this.cost = new Float64Array(nE);   // seconds to drive the whole edge
       for (let i = 0; i < nE; i++) this.cost[i] = this.len[i] * 2 / SPEED_MS[this.cls[i]];
-      // adjacency in compressed rows: node -> (neighbour, edge, travelled forward?)
+      // adjacency in compressed rows: node -> (neighbor, edge, traveled forward?)
       const deg = new Int32Array(nN + 1);
       for (let i = 0; i < nE; i++) { deg[this.eu[i] + 1]++; if (!this.oneway[i]) deg[this.ev[i] + 1]++; }
       for (let i = 0; i < nN; i++) deg[i + 1] += deg[i];
@@ -109,7 +109,7 @@ const Roads = (() => {
       return best;
     }
 
-    /** The nearest point on a road within maxM metres of the given position, or null. */
+    /** The nearest point on a road within maxM meters of the given position, or null. */
     snap(lng, lat, maxM = 300) {
       if (!this.grid) this._buildGrid();
       const cx = Math.floor((lng + 70) / CELL), cy = Math.floor((lat - 17) / CELL), r = maxM <= 220 ? 1 : maxM <= 450 ? 2 : maxM <= 900 ? 4 : 8;
@@ -121,7 +121,7 @@ const Roads = (() => {
       return best && best.dist <= maxM ? best : null;
     }
 
-    /** Points of edge e between two distances along it (metres of its drawn length), in the direction lo -> hi, or hi -> lo when reversed. */
+    /** Points of edge e between two distances along it (meters of its drawn length), in the direction lo -> hi, or hi -> lo when reversed. */
     _slice(e, a, lo, hi, reverse) {
       const p = this.poly(e), kx = KX(a.lat);
       const out = []; let run = 0;
@@ -139,7 +139,7 @@ const Roads = (() => {
       return reverse ? out.reverse() : out;
     }
 
-    /** Fastest road path between two snapped points: {secs, metres, coords: [[lng, lat], ...]} or null. */
+    /** Fastest road path between two snapped points: {secs, meters, coords: [[lng, lat], ...]} or null. */
     route(a, b) {
       const spd = (e) => SPEED_MS[this.cls[e]], eCost = this.cost;
       const ea = a.edge, eb = b.edge, fa = a.along / (a.total || 1), fb = b.along / (b.total || 1);

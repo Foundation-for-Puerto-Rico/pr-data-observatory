@@ -326,7 +326,7 @@ def stem(w):
 
 
 def named_hospital(name):
-    """True when an OpenStreetMap name says hospital or medical centre ("Hospital del Maestro", "Manatí Medical Center"), not a clinic, a plaza or a laboratory."""
+    """True when an OpenStreetMap name says hospital or medical center ("Hospital del Maestro", "Manatí Medical Center"), not a clinic, a plaza or a laboratory."""
     import unicodedata
     return bool(HOSPITAL_NAME.search(unicodedata.normalize("NFKD", name or "").encode("ascii", "ignore").decode().lower()))
 
@@ -343,7 +343,7 @@ def osm_hospitals():
 
 
 def near_hhs(words, point, osm):
-    """The second rule: the OpenStreetMap hospital (named a hospital or medical centre) within NEAR_HHS_KM of HHS's point whose name shares the most words with
+    """The second rule: the OpenStreetMap hospital (named a hospital or medical center) within NEAR_HHS_KM of HHS's point whose name shares the most words with
     CMS's (after stem(), at least one), when no other one there shares as many. Two independent signs (the name and HHS's address) must agree. (lon, lat) or None."""
     st = {stem(w) for w in words}
     near = sorted(((len(st & s) / len(st | s), lon, lat) for w, m, lon, lat, named in osm for s in [{stem(x) for x in w}]

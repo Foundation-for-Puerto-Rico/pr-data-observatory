@@ -72,9 +72,9 @@ class Published(unittest.TestCase):
         self.assertLessEqual(set(self.doc["assets"]["poly"]), keys)
 
     def test_published_in_review_and_released(self):
-        # FPR's approval of 2026-10-19 (HANDOFF decision 51): published with the "In review" marker; the compliance review records the approval, and the licence
+        # FPR's approval of 2026-10-19 (HANDOFF decision 51): published with the "In review" marker; the compliance review records the approval, and the license
         # review is cleared: the approval covers republishing the list (decision 54). The list states no open license, so the class stays 'unstated' and the
-        # dictionary tells others to ask PRDOH and FPR before re-use; no licence is invented and no staff member is named
+        # dictionary tells others to ask PRDOH and FPR before re-use; no license is invented and no staff member is named
         rec = next(r for r in load(ROOT / "dictionary_src" / "datasets.json")["datasets"] if r["file"] == "wcrp_social.json")
         kinds = {(r["type"], r["status"]) for r in rec["review"]}
         self.assertIn(("compliance", "cleared"), kinds)

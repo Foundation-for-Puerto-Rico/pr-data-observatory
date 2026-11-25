@@ -2,7 +2,7 @@
    so a value, its margin of error, its rank and its trend look the same in all three (docs/engine.md, "Legend and popup").
 
      Popup.value(E, L, ev, i)              { txt, moe, rank, y, a } for place i under layer L (ev is the layer's evaluation: { y, a, exact, early })
-     Popup.swatch(E, L)                    the little colour mark in front of a layer's name
+     Popup.swatch(E, L)                    the little color mark in front of a layer's name
      Popup.spark(E, L, ev, i)              the trend of place i over the years, as a small line with the shown year marked
      Popup.inspect(E, layers, evals, i, compact, footer)   the table of every visible layer for place i (beside Puerto Rico and with the trend unless `compact`)
      Popup.hover(E, layers, evals, i)      the hover card: one line for each visible layer

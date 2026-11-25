@@ -101,7 +101,7 @@ test('the layer keys are the published ones: app.js LAYER_KEYS and core/layers.j
   for (const L of Object.values(V.LAYERS)) if (L['3d']) assert.ok(ids3.includes(L['3d']), L['3d'] + ' in 3d.html');
 });
 
-test('the 3D columns from the Economy layers: height from the Symbol layer (else the Shaded), colour from the Shaded; and back', () => {
+test('the 3D columns from the Economy layers: height from the Symbol layer (else the Shaded), color from the Shaded; and back', () => {
   assert.deepStrictEqual(V.econColumns('poverty_pct.f.value.blues'), { h: 'poverty_pct', c: '', hNorm: 'value', cNorm: null });
   assert.deepStrictEqual(V.econColumns('income_pc.f.pc,jobs.s.per1000'), { h: 'jobs', c: 'income_pc', hNorm: 'per1000', cNorm: 'pc' });
   assert.deepStrictEqual(V.econColumns('a.b,b.f'), { h: 'a', c: '', hNorm: null, cNorm: null }, 'by barrio counts as Shaded; the second Shaded is not used');
@@ -109,7 +109,7 @@ test('the 3D columns from the Economy layers: height from the Symbol layer (else
   for (const e of ['', null, ',', '<b>.f']) assert.strictEqual(V.econColumns(e), null, String(e));
   const prev = 'income_pc.f.pc.reds.q.1.1.0.85.0,jobs.s.per1000.x.q.1.1.0.75.2';
   assert.strictEqual(V.econOf('jobs', 'income_pc', prev), prev, 'the same columns: the 2D map\'s layers stay as they were');
-  assert.strictEqual(V.econOf('rent', 'income_pc', prev), 'income_pc.f.pc.reds.q.1.1.0.85.0,rent.s', 'a new height: the colour keeps its token');
+  assert.strictEqual(V.econOf('rent', 'income_pc', prev), 'income_pc.f.pc.reds.q.1.1.0.85.0,rent.s', 'a new height: the color keeps its token');
   assert.strictEqual(V.econOf('rent', '', prev), 'rent.f');
   assert.strictEqual(V.econOf('rent', 'rent', null, { h: 'pc' }), 'rent.f.pc');
   for (const [h, c] of [['a', ''], ['a', 'b']]) assert.deepStrictEqual(V.econColumns(V.econOf(h, c, '')), { h, c, hNorm: null, cNorm: null }, `${h}/${c} round trip`);

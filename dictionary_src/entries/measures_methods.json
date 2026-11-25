@@ -8,7 +8,7 @@
   ],
   "group": "Rescaling a value",
   "kind": "measure",
-  "plain": "Each layer on the Analysis tab can show a dataset as published or rescaled. Rescaled views include per resident, per square kilometre, share of the island, comparison with Puerto Rico, change since a base year and percentile. The options offered depend on the kind of number.",
+  "plain": "Each layer on the Analysis tab can show a dataset as published or rescaled. Rescaled views include per resident, per square kilometer, share of the island, comparison with Puerto Rico, change since a base year and percentile. The options offered depend on the kind of number.",
   "definition": "The 'Show as' list in each layer's Settings. The kind of dataset decides the options. Counts (people, jobs, places, households, work sites): As published, Per 1,000 residents, Per 1,000 housing units (not for jobs, for exposure counts or for housing units themselves), Per km², % of the Puerto Rico total. Exposure counts (residents or housing units inside a hazard, a protected area or near transit) also get % of the area's own residents or housing units, which is how they start. Counts of jobs (25 datasets in the 2026-10 snapshot: total, private-sector and government jobs; tourism-related jobs; accommodation jobs; food service jobs; and the 19 sector jobs) also get % of the municipality's jobs and Location quotient. Dollar totals (total wages, federal awards by type, Federal Emergency Management Agency (FEMA) dollars): As published, $ per resident, $ per km² and % of the Puerto Rico total (not offered for federal loans). All other datasets (rates, dollar levels such as medians and average pay, and ratios): As published, Index (Puerto Rico = 100), Difference from Puerto Rico. Every dataset that is not a one-time snapshot also gets Change since the base year, and every dataset gets Percentile among municipalities.",
   "unit": "one of 13 menu options (each dataset offers 4 to 8)",
   "value_type": "code",
@@ -53,12 +53,12 @@
   "values": {
    "As published": "The dataset's own number in its own unit.",
    "Per 1,000 residents": "Count ÷ residents × 1,000.",
-   "Per km²": "Count (or dollars) ÷ land area in square kilometres.",
+   "Per km²": "Count (or dollars) ÷ land area in square kilometers.",
    "% of the Puerto Rico total": "Value ÷ Puerto Rico value × 100. Not offered for federal loans.",
    "% of the municipality's jobs": "Jobs in a sector ÷ all jobs in the municipality × 100.",
    "Location quotient (Puerto Rico = 1)": "The sector's share of local jobs ÷ its share of island jobs.",
    "$ per resident": "Dollar total ÷ residents.",
-   "$ per km²": "Dollar total ÷ land area in square kilometres.",
+   "$ per km²": "Dollar total ÷ land area in square kilometers.",
    "Index (Puerto Rico = 100)": "Value ÷ Puerto Rico value × 100.",
    "Difference from Puerto Rico": "Value − Puerto Rico value.",
    "Change since the base year": "Percent change for counts and dollars; difference for rates and ratios.",
@@ -107,7 +107,7 @@
   "caveats": [
    "The population series steps up in 2020 because of a change of estimate base, so a per-1,000 value for 2019 and one for 2020 are not on the same basis.",
    "The denominator counts residents only. Visitors, commuters and people who live in a municipality part of the year are in the numerator (jobs, places, households) but not in the denominator.",
-   "For survey series labelled by the last year of a five-year window, the denominator is that one year's population, not an average over the window.",
+   "For survey series labeled by the last year of a five-year window, the denominator is that one year's population, not an average over the window.",
    "For the five tourism-place datasets the Analysis tab divides by the latest population estimate (2025 in the 2026-10 snapshot), while municipalities.json:assets_per_1000_residents divides by the 2020 census count. In the 2026-10 snapshot San Juan shows 10.4 places per 1,000 residents in one and 10.0 in the other.",
    "A small municipality can swing widely when a few units change."
   ],
@@ -187,14 +187,14 @@
  },
  {
   "id": "measures.per_km2",
-  "name": "Per square kilometre",
+  "name": "Per square kilometer",
   "domain": "system.docs",
   "domains": [
    "system.docs"
   ],
   "group": "Rescaling a value",
   "kind": "measure",
-  "plain": "A count or a dollar total divided by the municipality's land area in square kilometres. It shows how tightly something is packed on the land.",
+  "plain": "A count or a dollar total divided by the municipality's land area in square kilometers. It shows how tightly something is packed on the land.",
   "definition": "Value ÷ land area in km². The unit is the dataset's unit per km² of land (jobs per km², dollars per km²). The option is offered for counts and for dollar totals. The land area is the Census Bureau's 2020 land area, the same for every year.",
   "unit": "per km² of land",
   "value_type": "ratio",
@@ -212,10 +212,10 @@
    "overture"
   ],
   "source_detail": "Denominator: land area (AREALAND) from the Census Bureau's 2020 boundary layer. Numerators: any count or dollar total in the Analysis tab.",
-  "how_to_read": "In the 2026-10 snapshot, 2025 data show about 2,045 jobs per km² of land in San Juan, against 107 for Puerto Rico, whose land area is the sum of the 78 municipalities (8,868.5 km²). A high value marks a dense job centre.",
+  "how_to_read": "In the 2026-10 snapshot, 2025 data show about 2,045 jobs per km² of land in San Juan, against 107 for Puerto Rico, whose land area is the sum of the 78 municipalities (8,868.5 km²). A high value marks a dense job center.",
   "caveats": [
    "Land area only, from the 2020 Census. Water is not in the denominator, and the area does not change from year to year.",
-   "An average over the whole municipality. Jobs and places cluster in town centres, so a municipality with large rural or protected areas looks sparse even where its centre is dense.",
+   "An average over the whole municipality. Jobs and places cluster in town centers, so a municipality with large rural or protected areas looks sparse even where its center is dense.",
    "The areas are rounded to 0.1 km² in municipalities.json, which matters little except for very small areas."
   ],
   "see_also": [
@@ -358,7 +358,7 @@
    "timeline": "static",
    "frequency": "Calculated in your browser each time the map redraws"
   },
-  "method": "Case lq of ecCalc in site/js/economy.js: (x ÷ jobs[i]) ÷ (pr ÷ jobs[Puerto Rico]), shown with two decimals. The result is blank when a denominator is missing or zero. Jobs data start in 2014; an earlier chosen year shows 2014. Colours use the diverging scale centred on 1.",
+  "method": "Case lq of ecCalc in site/js/economy.js: (x ÷ jobs[i]) ÷ (pr ÷ jobs[Puerto Rico]), shown with two decimals. The result is blank when a denominator is missing or zero. Jobs data start in 2014; an earlier chosen year shows 2014. Colors use the diverging scale centered on 1.",
   "sources": [
    "bls_qcew"
   ],
@@ -407,7 +407,7 @@
    "timeline": "static",
    "frequency": "Calculated in your browser each time the map redraws"
   },
-  "method": "Case index of ecCalc in site/js/economy.js: x ÷ a[Puerto Rico] × 100, shown with no decimals. The layer title reads 'index (puerto rico = 100)'. Colours use the diverging scale centred on 100. The Puerto Rico value is the dataset's own island figure (for survey series, the Census Bureau's island estimate), not the average of the 78 municipalities.",
+  "method": "Case index of ecCalc in site/js/economy.js: x ÷ a[Puerto Rico] × 100, shown with no decimals. The layer title reads 'index (puerto rico = 100)'. Colors use the diverging scale centered on 100. The Puerto Rico value is the dataset's own island figure (for survey series, the Census Bureau's island estimate), not the average of the 78 municipalities.",
   "sources": [
    "bls_qcew",
    "bls_laus",
@@ -458,7 +458,7 @@
    "timeline": "static",
    "frequency": "Calculated in your browser each time the map redraws"
   },
-  "method": "Case diff of ecCalc in site/js/economy.js: x − a[Puerto Rico]. A percent rate is labelled 'pts'. Dollars are shown with no decimals, and negative values carry a minus sign. Colours use the diverging scale centred on 0.",
+  "method": "Case diff of ecCalc in site/js/economy.js: x − a[Puerto Rico]. A percent rate is labeled 'pts'. Dollars are shown with no decimals, and negative values carry a minus sign. Colors use the diverging scale centered on 0.",
   "sources": [
    "bls_qcew",
    "bls_laus",
@@ -509,7 +509,7 @@
    "timeline": "static",
    "frequency": "Calculated in your browser each time the map redraws"
   },
-  "method": "Case change of ecCalc in site/js/economy.js. The default base year is 2014 on the Analysis tab and 2012 on the Housing page. 'Change measured from' lists every year from 2010 to the year before the latest one (on the Analysis tab, the latest year on the year bar; on the Housing page, the latest survey window), so any of them can be chosen. With 'Inflation-adjusted' ticked, both ends are first restated to the same Consumer Price Index (CPI) dollars. The legend title shows the span, for example '(2014 → 2024)'. Colours use the diverging scale centred on 0.",
+  "method": "Case change of ecCalc in site/js/economy.js. The default base year is 2014 on the Analysis tab and 2012 on the Housing page. 'Change measured from' lists every year from 2010 to the year before the latest one (on the Analysis tab, the latest year on the year bar; on the Housing page, the latest survey window), so any of them can be chosen. With 'Inflation-adjusted' ticked, both ends are first restated to the same Consumer Price Index (CPI) dollars. The legend title shows the span, for example '(2014 → 2024)'. Colors use the diverging scale centered on 0.",
   "sources": [
    "bls_qcew",
    "bls_laus",
@@ -521,13 +521,13 @@
   "source_detail": "Any dataset with more than one year in the Analysis tab, or a Housing page series.",
   "how_to_read": "In the 2026-10 snapshot, Puerto Rico's poverty rate fell 4.72 percentage points between the 2010-2014 window (2014) and the 2020-2024 window (2024); San Juan's fell 2.10 points. In the same snapshot, median gross rent for Puerto Rico rose 25.1% in nominal dollars over the same span. The 'Change measured from' list ends in 2024 on the Analysis tab and in 2023 on the Housing page.",
   "caveats": [
-   "Survey windows that share years overlap. Windows labelled 2022 and 2024 share three survey years, so their difference understates real change. The Census Bureau advises comparing windows that do not overlap.",
+   "Survey windows that share years overlap. Windows labeled 2022 and 2024 share three survey years, so their difference understates real change. The Census Bureau advises comparing windows that do not overlap.",
    "A base year before 2020 and a year after it cross the population estimate break, which can move per-1,000 values and population change.",
    "Percent change from a small base is large. The Ask the observatory chat leaves out municipalities whose starting value is below a minimum for this reason.",
    "Percent change is not meaningful when the base is near zero or negative, as it can be for federal loans (an estimated cost).",
    "No margin of error is calculated for a change. Both ends are estimates.",
    "Dollar changes are in the dollars of each year unless 'Inflation-adjusted' is ticked. The Housing page's change fields are never adjusted for inflation.",
-   "Median age is a 'rate' in the Analysis tab, so its change is labelled 'pts' although it is in years."
+   "Median age is a 'rate' in the Analysis tab, so its change is labeled 'pts' although it is in years."
   ],
   "see_also": [
    "measures.inflation_adjustment",
@@ -640,7 +640,7 @@
    "On the 2D map, the Municipality tab note ('Rank #n of 78 by tourism places') and the Rankings tab give the position in the sorted list, so tied municipalities get consecutive ranks, not one shared rank. The Ask the observatory chat's municipality profile does the same.",
    "The 'of n' shrinks when some municipalities have no value, so ranks from different datasets are out of different totals.",
    "Ranks use the unrounded values. Two municipalities that show the same rounded number can have different ranks.",
-   "A rank hides the size of the gap between neighbours. Use the value, and its margin of error for survey series."
+   "A rank hides the size of the gap between neighbors. Use the value, and its margin of error for survey series."
   ],
   "see_also": [
    "measures.percentile",
@@ -744,7 +744,7 @@
   "caveats": [
    "The observatory uses the US city average and no Puerto Rico price index. Prices in Puerto Rico can move differently from the US average, so adjusted values are an approximation.",
    "The CPI table starts in 2000, so every year of every dollar dataset has its own factor, including the years 2001 to 2009 of the Federal Emergency Management Agency (FEMA) series that the Trend chart shows.",
-   "American Community Survey (ACS) dollar figures are labelled by the last year of a five-year window, and the factor uses that last year. The Census Bureau's documentation of the 2013-2017 Puerto Rico Community Survey 5-year estimates says monetary values are adjusted to the dollars of the final year of the period with the national CPI. The observatory applies no adjustment of its own to ACS dollars, so they are the figures the Bureau published. The Analysis tab describes them as dollars of each window's last year, and the Housing page describes them as 'not adjusted for inflation' (the observatory itself adds no adjustment). Check the Bureau's documentation for the window you cite.",
+   "American Community Survey (ACS) dollar figures are labeled by the last year of a five-year window, and the factor uses that last year. The Census Bureau's documentation of the 2013-2017 Puerto Rico Community Survey 5-year estimates says monetary values are adjusted to the dollars of the final year of the period with the national CPI. The observatory applies no adjustment of its own to ACS dollars, so they are the figures the Bureau published. The Analysis tab describes them as dollars of each window's last year, and the Housing page describes them as 'not adjusted for inflation' (the observatory itself adds no adjustment). Check the Bureau's documentation for the window you cite.",
    "Federal fiscal-year awards (October to September) use the CPI of the calendar year with the same number. Quarterly Census of Employment and Wages (QCEW) wages are for the calendar year.",
    "The adjustment is one national index applied to every municipality and every kind of spending."
   ],
@@ -780,10 +780,10 @@
   "domains": [
    "system.docs"
   ],
-  "group": "Classes and colours",
+  "group": "Classes and colors",
   "kind": "measure",
-  "plain": "A shaded map sorts the municipalities into five colour classes. The Analysis tab sets the class limits one of four ways: the same number of municipalities in each class (quantiles), classes of equal width (equal intervals), limits at gaps in the data (natural breaks), or four limits that the user types.",
-  "definition": "Class limits for a shaded layer whose values have no natural centre. The values of the 78 municipalities are pooled (all years together when 'Same classes in every year' is on) and sorted. Quantiles: the limits are the values one fifth, two fifths, three fifths and four fifths of the way along the sorted list, so each class holds about the same number of values. Equal intervals: the range from the lowest to the highest value is cut into five equal widths. Natural breaks (Jenks): the limits are chosen so that values inside a class are as alike as possible and classes are as different as possible. A value equal to a limit goes in the lower class. My own limits: four numbers in rising order typed in the layer's Settings, which start from the classes the layer has at that moment; text that is not four rising numbers is ignored (the classes stay quantiles until it is fixed). Typed limits apply to a layer shaded alone: two shaded layers together use three classes each, and a scale around a centre (index, difference, change, location quotient) keeps its own cut-offs. A municipality with no value is grey and listed as 'No data'.",
+  "plain": "A shaded map sorts the municipalities into five color classes. The Analysis tab sets the class limits one of four ways: the same number of municipalities in each class (quantiles), classes of equal width (equal intervals), limits at gaps in the data (natural breaks), or four limits that the user types.",
+  "definition": "Class limits for a shaded layer whose values have no natural center. The values of the 78 municipalities are pooled (all years together when 'Same classes in every year' is on) and sorted. Quantiles: the limits are the values one fifth, two fifths, three fifths and four fifths of the way along the sorted list, so each class holds about the same number of values. Equal intervals: the range from the lowest to the highest value is cut into five equal widths. Natural breaks (Jenks): the limits are chosen so that values inside a class are as alike as possible and classes are as different as possible. A value equal to a limit goes in the lower class. My own limits: four numbers in rising order typed in the layer's Settings, which start from the classes the layer has at that moment; text that is not four rising numbers is ignored (the classes stay quantiles until it is fixed). Typed limits apply to a layer shaded alone: two shaded layers together use three classes each, and a scale around a center (index, difference, change, location quotient) keeps its own cut-offs. A municipality with no value is gray and listed as 'No data'.",
   "unit": "class (1 to 5)",
   "value_type": "index",
   "geography": "78 municipalities and Puerto Rico",
@@ -791,7 +791,7 @@
    "timeline": "static",
    "frequency": "Calculated in your browser each time the map redraws"
   },
-  "method": "The functions make, classOf, jenks and parseBreaks of Core.classify (site/js/core/classify.js), with pool and breaks of the layer engine (site/js/core/engine.js). Quantile limits take pool[floor(n × i ÷ 5)] for i = 1 to 4. Natural breaks use the Fisher-Jenks dynamic programme; when the pool has more than 1,500 values the code runs it on every nth value to keep the page fast. The Puerto Rico row is not in the pool. Bivariate maps use three classes instead of five (see the bivariate entry). The Map layers tab's municipality shading uses quintiles only (see the quintile entry).",
+  "method": "The functions make, classOf, jenks and parseBreaks of Core.classify (site/js/core/classify.js), with pool and breaks of the layer engine (site/js/core/engine.js). Quantile limits take pool[floor(n × i ÷ 5)] for i = 1 to 4. Natural breaks use the Fisher-Jenks dynamic program; when the pool has more than 1,500 values the code runs it on every nth value to keep the page fast. The Puerto Rico row is not in the pool. Bivariate maps use three classes instead of five (see the bivariate entry). The Map layers tab's municipality shading uses quintiles only (see the quintile entry).",
   "sources": [
    "bls_qcew",
    "bls_laus",
@@ -803,7 +803,7 @@
   "source_detail": "Any shaded dataset in the Analysis tab. The class methods are a display choice by Foundation for Puerto Rico (FPR).",
   "how_to_read": "In the 2026-10 snapshot, the same poverty data give three different sets of limits (percent, all years pooled): quantiles 41.3, 46.4, 50.5 and 54.9; equal intervals 30.1, 39.3, 48.6 and 57.8; natural breaks 33.5, 41.3, 48.2 and 55.0. All three describe the same data. The legend lists each range and how many municipalities fall in it.",
   "caveats": [
-   "A colour class is not a verdict. Dark does not mean good or bad, only higher than the limit.",
+   "A color class is not a verdict. Dark does not mean good or bad, only higher than the limit.",
    "With quantiles, two municipalities with almost the same value can sit in different classes, and with equal intervals a class can have no municipality.",
    "With 'Same classes in every year' on, the five classes are not equal-sized in any single year. In the 2026-10 snapshot, the 2024 poverty map has 28, 21, 15, 9 and 5 municipalities in its five classes.",
    "Values for years that are not on screen shape the limits when classes are fixed across years.",
@@ -853,10 +853,10 @@
   "domains": [
    "system.docs"
   ],
-  "group": "Classes and colours",
+  "group": "Classes and colors",
   "kind": "measure",
-  "plain": "By default the colour limits are set from all years of a dataset together, so a colour means the same range in every year. When you move the year slider you see real change, not a map that re-sorts itself.",
-  "definition": "The checkbox 'Same classes in every year' in a layer's Settings. On (the default): class limits, the diverging scale's span and the size of the largest symbol are calculated from the values of all municipalities in every year the dataset has, with the layer's own settings (rescaling, inflation adjustment, base year). Off: they are calculated from the year on screen only, so every year uses all five colours but colours are not comparable between years. The box is not shown for one-time snapshot datasets, which have a single year.",
+  "plain": "By default the color limits are set from all years of a dataset together, so a color means the same range in every year. When you move the year slider you see real change, not a map that re-sorts itself.",
+  "definition": "The checkbox 'Same classes in every year' in a layer's Settings. On (the default): class limits, the diverging scale's span and the size of the largest symbol are calculated from the values of all municipalities in every year the dataset has, with the layer's own settings (rescaling, inflation adjustment, base year). Off: they are calculated from the year on screen only, so every year uses all five colors but colors are not comparable between years. The box is not shown for one-time snapshot datasets, which have a single year.",
   "unit": "setting (on or off)",
   "value_type": "flag",
   "geography": "78 municipalities and Puerto Rico",
@@ -874,7 +874,7 @@
    "openfema"
   ],
   "source_detail": "Any shaded or symbol dataset with more than one year.",
-  "how_to_read": "In the 2026-10 snapshot, the poverty rate has 78 municipalities × 15 windows = 1,170 values, and they set the limits. With the box on, a map for 2014 and a map for 2024 use the same limits, so a change of colour between the two maps reflects a change in the data. With the box off, the inner limits for 2024 alone would be 37.2, 42.2, 46.1 and 50.3, against 41.3, 46.4, 50.5 and 54.9 when pooled.",
+  "how_to_read": "In the 2026-10 snapshot, the poverty rate has 78 municipalities × 15 windows = 1,170 values, and they set the limits. With the box on, a map for 2014 and a map for 2024 use the same limits, so a change of color between the two maps reflects a change in the data. With the box off, the inner limits for 2024 alone would be 37.2, 42.2, 46.1 and 50.3, against 41.3, 46.4, 50.5 and 54.9 when pooled.",
   "caveats": [
    "A rate that moves across the whole period can leave most municipalities in the lowest or highest classes in the first or last years.",
    "The legend counts show how many municipalities fall in each class in the year on screen. They are not equal.",
@@ -911,10 +911,10 @@
   "domains": [
    "system.docs"
   ],
-  "group": "Classes and colours",
+  "group": "Classes and colors",
   "kind": "measure",
-  "plain": "When a value has a natural centre, the map shades distance from that centre instead of equal-count classes. Red means below the centre, blue means above, and pale grey means near it.",
-  "definition": "Used for 'Index' (centre 100), 'Difference from Puerto Rico' (centre 0), 'Location quotient' (centre 1) and 'Change since the base year' (centre 0). The span is the largest distance from the centre among all values in the pool. Five classes follow from t = (value − centre) ÷ span: t below −0.5 (strongly below), −0.5 up to −0.1 (below), −0.1 to +0.1 (near the centre), +0.1 up to +0.5 (above), above +0.5 (strongly above). The classes are not equal-count and not chosen by the quantile, equal-interval or natural-breaks setting.",
+  "plain": "When a value has a natural center, the map shades distance from that center instead of equal-count classes. Red means below the center, blue means above, and pale gray means near it.",
+  "definition": "Used for 'Index' (center 100), 'Difference from Puerto Rico' (center 0), 'Location quotient' (center 1) and 'Change since the base year' (center 0). The span is the largest distance from the center among all values in the pool. Five classes follow from t = (value − center) ÷ span: t below −0.5 (strongly below), −0.5 up to −0.1 (below), −0.1 to +0.1 (near the center), +0.1 up to +0.5 (above), above +0.5 (strongly above). The classes are not equal-count and not chosen by the quantile, equal-interval or natural-breaks setting.",
   "unit": "class (1 to 5)",
   "value_type": "index",
   "geography": "78 municipalities and Puerto Rico",
@@ -922,7 +922,7 @@
    "timeline": "static",
    "frequency": "Calculated in your browser each time the map redraws"
   },
-  "method": "Function ecBreaks (branch for a diverging output with five classes) and ecClass in site/js/economy.js. The colours run dark red, light red, pale grey, light blue, dark blue. In a bivariate map a diverging layer is cut into three classes by the layer's class method instead. The Housing page uses the same rule around 0 for its change maps.",
+  "method": "Function ecBreaks (branch for a diverging output with five classes) and ecClass in site/js/economy.js. The colors run dark red, light red, pale gray, light blue, dark blue. In a bivariate map a diverging layer is cut into three classes by the layer's class method instead. The Housing page uses the same rule around 0 for its change maps.",
   "sources": [
    "bls_qcew",
    "bls_laus",
@@ -935,7 +935,7 @@
   "how_to_read": "In the 2026-10 snapshot, for poverty as an index (Puerto Rico = 100) the largest distance from 100 among the pooled values is 57.2, so the limits sit at 71.4, 94.3, 105.7 and 128.6. A municipality at 100 is the same as the island; one at 130 is in the highest class.",
   "caveats": [
    "One extreme value stretches the span and pushes most municipalities into the pale middle class.",
-   "Red and blue show direction from the centre, not good and bad.",
+   "Red and blue show direction from the center, not good and bad.",
    "The legend lists only classes that hold at least one municipality."
   ],
   "see_also": [
@@ -950,7 +950,7 @@
    "files": [],
    "view": [
     {
-     "label": "Map, Analysis tab: poverty rate as an index (diverging colours)",
+     "label": "Map, Analysis tab: poverty rate as an index (diverging colors)",
      "href": "index.html#e=poverty_pct.f.index.blue.q.1.1.0.85.0&ey=2024"
     }
    ]
@@ -964,10 +964,10 @@
   "domains": [
    "system.docs"
   ],
-  "group": "Classes and colours",
+  "group": "Classes and colors",
   "kind": "measure",
-  "plain": "When two shaded layers are visible, the map colours each municipality by both at once: three classes for each dataset, nine colours in all. It shows where two things are high together, low together, or differ.",
-  "definition": "The first shaded layer runs left to right (→) and the second runs upward (↑). Each is cut into three classes (low, middle, high), and a municipality's colour is the pair of its two classes. Each layer's three classes follow its own class method. With quantiles (the default) the cut-offs are terciles. The legend title says 'terciles of each' only when both layers use quantile classes; if either layer uses equal intervals or natural breaks, it says 'three classes of each'. With the default 'Same classes in every year', the terciles are thirds of all municipality values from every year pooled, not thirds of the 78 municipalities in the year shown, so one year can have far more places in one class. Untick 'Same classes in every year' on a layer to cut the year on screen into thirds. A municipality with no value in either layer is grey. A map can shade at most two datasets; further datasets must be shown as symbols.",
+  "plain": "When two shaded layers are visible, the map colors each municipality by both at once: three classes for each dataset, nine colors in all. It shows where two things are high together, low together, or differ.",
+  "definition": "The first shaded layer runs left to right (→) and the second runs upward (↑). Each is cut into three classes (low, middle, high), and a municipality's color is the pair of its two classes. Each layer's three classes follow its own class method. With quantiles (the default) the cut-offs are terciles. The legend title says 'terciles of each' only when both layers use quantile classes; if either layer uses equal intervals or natural breaks, it says 'three classes of each'. With the default 'Same classes in every year', the terciles are thirds of all municipality values from every year pooled, not thirds of the 78 municipalities in the year shown, so one year can have far more places in one class. Untick 'Same classes in every year' on a layer to cut the year on screen into thirds. A municipality with no value in either layer is gray. A map can shade at most two datasets; further datasets must be shown as symbols.",
   "unit": "class pair (3 × 3)",
   "value_type": "index",
   "geography": "78 municipalities and Puerto Rico",
@@ -975,7 +975,7 @@
    "timeline": "static",
    "frequency": "Calculated in your browser each time the map redraws"
   },
-  "method": "Function ecRenderMap in site/js/economy.js calls ecBreaks with three classes for each layer and picks a colour from a 3 × 3 palette. Each layer keeps its own year, rescaling and 'Same classes in every year' setting. The legend title names the kind of classes and the legend gives the cut-offs of each axis.",
+  "method": "Function ecRenderMap in site/js/economy.js calls ecBreaks with three classes for each layer and picks a color from a 3 × 3 palette. Each layer keeps its own year, rescaling and 'Same classes in every year' setting. The legend title names the kind of classes and the legend gives the cut-offs of each axis.",
   "sources": [
    "bls_qcew",
    "bls_laus",
@@ -985,7 +985,7 @@
    "openfema"
   ],
   "source_detail": "Any two shaded datasets in the Analysis tab.",
-  "how_to_read": "Shade poverty first and median household income second. Each municipality's colour then shows its poverty class along the horizontal axis (→) and its income class along the vertical axis (↑). Read the two axes of the legend, and their cut-offs, before the colours. In the 2026-10 snapshot, with all years pooled, the poverty axis reads 'up to 45.0%' for low and 'above 51.8%' for high.",
+  "how_to_read": "Shade poverty first and median household income second. Each municipality's color then shows its poverty class along the horizontal axis (→) and its income class along the vertical axis (↑). Read the two axes of the legend, and their cut-offs, before the colors. In the 2026-10 snapshot, with all years pooled, the poverty axis reads 'up to 45.0%' for low and 'above 51.8%' for high.",
   "caveats": [
    "'High' and 'low' are relative, not absolute. With the default settings they compare a municipality with the values of all years pooled, not only with the other municipalities in the year shown. In the 2026-10 snapshot, the 2024 poverty classes (low, middle, high) hold 44, 21 and 13 municipalities. Median household income, in the dollars of each year, holds 1, 13 and 64.",
    "The legend title says 'terciles of each' only when both layers use quantile classes. Otherwise it says 'three classes of each', and each layer's classes follow its own method (equal intervals or natural breaks). With the default settings, terciles are terciles of all years pooled (see the definition), not thirds of the year on screen.",
@@ -1017,10 +1017,10 @@
   "domains": [
    "system.docs"
   ],
-  "group": "Classes and colours",
+  "group": "Classes and colors",
   "kind": "measure",
-  "plain": "A sized-symbol layer draws one circle per municipality whose area is proportional to the value. Counts, such as jobs, are better shown this way than as shaded colour.",
-  "definition": "A circle is drawn at the area-weighted centre of each municipality's largest polygon, so islands and detached parts do not pull it into the sea. The radius is 30 px × √(|value| ÷ largest |value|) (20 px on a phone), with a minimum of 2.5 px. Because area grows with the square of the radius, the circle's area is proportional to the value. The largest |value| comes from all years when classes are fixed. Circles are drawn from the largest to the smallest so small ones stay visible. When the layer has negative values, as change layers do, blue circles mark increases and red circles mark decreases, and size follows the absolute value.",
+  "plain": "A sized-symbol layer draws one circle per municipality whose area is proportional to the value. Counts, such as jobs, are better shown this way than as shaded color.",
+  "definition": "A circle is drawn at the area-weighted center of each municipality's largest polygon, so islands and detached parts do not pull it into the sea. The radius is 30 px × √(|value| ÷ largest |value|) (20 px on a phone), with a minimum of 2.5 px. Because area grows with the square of the radius, the circle's area is proportional to the value. The largest |value| comes from all years when classes are fixed. Circles are drawn from the largest to the smallest so small ones stay visible. When the layer has negative values, as change layers do, blue circles mark increases and red circles mark decreases, and size follows the absolute value.",
   "unit": "circle area",
   "value_type": "geometry",
   "geography": "78 municipalities and Puerto Rico",
@@ -1043,7 +1043,7 @@
   "caveats": [
    "Below the minimum size the circle is larger than proportional. A value under about 0.7% of the largest is drawn at 2.5 px (about 1,800 jobs when the largest value is 255,426, as in the 2026-10 snapshot).",
    "The eye reads area poorly. Check the numbers in the inspector.",
-   "Circles sit at the centre of the municipality's largest polygon, not at the places where the activity happens, and large circles overlap in the San Juan area.",
+   "Circles sit at the center of the municipality's largest polygon, not at the places where the activity happens, and large circles overlap in the San Juan area.",
    "Symbols can be added for any dataset, but they suit counts and dollar totals. The page advises shading rates."
   ],
   "see_also": [
@@ -1300,7 +1300,7 @@
  },
  {
   "id": "measures.outliers",
-  "name": "Outliers (standardised residuals)",
+  "name": "Outliers (standardized residuals)",
   "domain": "system.docs",
   "domains": [
    "system.docs"
@@ -1308,7 +1308,7 @@
   "group": "Relationships between datasets",
   "kind": "measure",
   "plain": "When you use the Ask the observatory chat to compare two datasets, it names the municipalities that sit farthest from the usual pattern. Each gets a score: the bigger the score, positive or negative, the bigger the exception.",
-  "definition": "For two datasets A (first) and B (second), the observatory fits the straight line B = intercept + slope × A across the municipalities by least squares. A municipality's residual e is its actual B minus the B the line predicts from its A. The standard deviation of the residuals is s = √(Σe² ÷ (n − 2)). The standardised residual is z = e ÷ s, in standard deviations. The municipalities with the largest |z| are the 'biggest exceptions': three in a comparison (listed only when |r| is at least 0.3) and two in each pattern. A positive z means B is higher than the line predicts.",
+  "definition": "For two datasets A (first) and B (second), the observatory fits the straight line B = intercept + slope × A across the municipalities by least squares. A municipality's residual e is its actual B minus the B the line predicts from its A. The standard deviation of the residuals is s = √(Σe² ÷ (n − 2)). The standardized residual is z = e ÷ s, in standard deviations. The municipalities with the largest |z| are the 'biggest exceptions': three in a comparison (listed only when |r| is at least 0.3) and two in each pattern. A positive z means B is higher than the line predicts.",
   "unit": "standard deviations",
   "value_type": "ratio",
   "geography": "78 municipalities and Puerto Rico",
@@ -1359,7 +1359,7 @@
   "group": "Relationships between datasets",
   "kind": "measure",
   "plain": "When asked for the most interesting patterns, the Ask the observatory chat compares many pairs of datasets from different areas of life, ranks them by how closely they move together and shows up to five. It starts with a note on where jobs concentrate.",
-  "definition": "Step 1: 26 datasets (listed in INSIGHT_KEYS in site/js/chat.js) are taken in their default view at their latest year: counts per 1,000 residents, dollar totals per resident, tourism jobs as a share of jobs, everything else as published. Step 2: the chat compares every pair of datasets except two kinds. It skips pairs in the same area, because Foundation for Puerto Rico (FPR) puts each dataset in one area: welfare, housing, work, mobility, tourism, money or people. It also skips pairs that are linked by definition, such as the employment rate and the unemployment rate (the code lists eight such pairs; seven involve datasets in this list). Step 3: it keeps pairs with at least 60 municipalities and |r| of at least 0.4, and sorts them by |r|. Step 4: it picks the strongest pairs, with no dataset used twice and no pair of areas used twice, until five are chosen. The answer starts with the municipality that has the most jobs: its share of the island's jobs, its share of residents and the share held by the five biggest job centres. It then adds a fixed sentence that many people cross municipal lines to work. That sentence is not calculated. It is an inference from jobs counted at the workplace and people counted at home, not a measured commuting flow.",
+  "definition": "Step 1: 26 datasets (listed in INSIGHT_KEYS in site/js/chat.js) are taken in their default view at their latest year: counts per 1,000 residents, dollar totals per resident, tourism jobs as a share of jobs, everything else as published. Step 2: the chat compares every pair of datasets except two kinds. It skips pairs in the same area, because Foundation for Puerto Rico (FPR) puts each dataset in one area: welfare, housing, work, mobility, tourism, money or people. It also skips pairs that are linked by definition, such as the employment rate and the unemployment rate (the code lists eight such pairs; seven involve datasets in this list). Step 3: it keeps pairs with at least 60 municipalities and |r| of at least 0.4, and sorts them by |r|. Step 4: it picks the strongest pairs, with no dataset used twice and no pair of areas used twice, until five are chosen. The answer starts with the municipality that has the most jobs: its share of the island's jobs, its share of residents and the share held by the five biggest job centers. It then adds a fixed sentence that many people cross municipal lines to work. That sentence is not calculated. It is an inference from jobs counted at the workplace and people counted at home, not a measured commuting flow.",
   "unit": "ranked list",
   "value_type": "text",
   "geography": "78 municipalities and Puerto Rico",
@@ -1467,7 +1467,7 @@
   "group": "How places and points are built",
   "kind": "method",
   "plain": "A tourism place or a transit stop belongs to the municipality whose boundary contains its map point. If the point is outside every boundary, such as on a pier, the municipality whose boundary is nearest takes it. Census blocks and barrios use their Census county code.",
-  "definition": "The observatory assigns a municipality in four ways, by kind of record. (1) Tourism places and transport features (stops, stations, terminals, airports, taxi stands, electric vehicle (EV) charging points): the full build tests the point against the Census Bureau's shoreline-clipped municipio polygons (a generalized 1:500,000 layer, boundaries as of January 1, 2023); a point inside no polygon takes the municipality whose polygon is nearest (muni_locate.py). The published tourism places still carry the earlier rule, the nearest centre point listed in municipalities.py, until the next full build. (2) Scheduled transit stops after a nightly transit refresh: tested against the published municipios.geojson, a simplified copy of the polygons; a stop outside every polygon takes the municipality whose polygon is nearest, as in the full build. (3) Census blocks: the municipality comes from the county code in the block's ID. (4) Barrios: the municipality comes from the county code in the barrio's GEOID, and a tourism place gets its barrio from a point-in-polygon test against the barrio polygons. Only counted places (confidence 0.50 or higher, no places of worship) get a barrio, and only when their point falls inside a barrio polygon.",
+  "definition": "The observatory assigns a municipality in four ways, by kind of record. (1) Tourism places and transport features (stops, stations, terminals, airports, taxi stands, electric vehicle (EV) charging points): the full build tests the point against the Census Bureau's shoreline-clipped municipio polygons (a generalized 1:500,000 layer, boundaries as of January 1, 2023); a point inside no polygon takes the municipality whose polygon is nearest (muni_locate.py). The published tourism places still carry the earlier rule, the nearest center point listed in municipalities.py, until the next full build. (2) Scheduled transit stops after a nightly transit refresh: tested against the published municipios.geojson, a simplified copy of the polygons; a stop outside every polygon takes the municipality whose polygon is nearest, as in the full build. (3) Census blocks: the municipality comes from the county code in the block's ID. (4) Barrios: the municipality comes from the county code in the barrio's GEOID, and a tourism place gets its barrio from a point-in-polygon test against the barrio polygons. Only counted places (confidence 0.50 or higher, no places of worship) get a barrio, and only when their point falls inside a barrio polygon.",
   "unit": "municipality name",
   "value_type": "text",
   "geography": "78 municipalities",
@@ -1486,12 +1486,12 @@
    "osm"
   ],
   "source_detail": "Overture Maps place coordinates; Census Bureau TIGERweb generalized county boundaries (layer 11) and 2020 blocks; transit stops from the Autoridad de Transporte Integrado (ATI) and municipal General Transit Feed Specification (GTFS) feeds and from OpenStreetMap.",
-  "how_to_read": "A municipal count agrees with the polygon drawn on the map. A place counted for San Juan has its point inside San Juan's boundary, unless it is one of the few points outside every boundary. The town named in an address does not decide. In the 2026-10 snapshot, 348 of the 32,541 place listings (324 of the 24,209 counted places) lie outside every polygon and took the nearest centre point (the next full build gives them the nearest polygon, which moves 60 listings, 59 of them counted); for all the others the point-in-polygon result is the published municipality. Of the counted places, 23,884 fall inside a barrio polygon and have a barrio.",
+  "how_to_read": "A municipal count agrees with the polygon drawn on the map. A place counted for San Juan has its point inside San Juan's boundary, unless it is one of the few points outside every boundary. The town named in an address does not decide. In the 2026-10 snapshot, 348 of the 32,541 place listings (324 of the 24,209 counted places) lie outside every polygon and took the nearest center point (the next full build gives them the nearest polygon, which moves 60 listings, 59 of them counted); for all the others the point-in-polygon result is the published municipality. Of the counted places, 23,884 fall inside a barrio polygon and have a barrio.",
   "caveats": [
    "A wrong point in the source puts a place in the wrong municipality.",
-   "Boundaries are clipped to the shoreline, so points on piers, marinas and beaches can fall outside. They then go to the municipality whose polygon is nearest. Until the 2026-11 fix they went to the nearest centre point, which can be a different municipality from the one the point is next to: it put the Cataño ferry and bus terminals in San Juan. Scheduled stops follow the new rule since that fix, tourism places from the next full build.",
-   "The boundary drawn on the map is simplified for display (about 22 metres, 0.0002 degrees), so a place very near a border can look as if it is on the wrong side.",
-   "The nightly refresh tests stops against the simplified copy of the boundaries and the full build against the full-detail ones, so a stop within about 22 metres of a border can land in a different municipality in the two. Both give a stop outside every polygon the municipality whose polygon is nearest. Until the 2026-10 access update the nightly refresh left such a stop without a municipality."
+   "Boundaries are clipped to the shoreline, so points on piers, marinas and beaches can fall outside. They then go to the municipality whose polygon is nearest. Until the 2026-11 fix they went to the nearest center point, which can be a different municipality from the one the point is next to: it put the Cataño ferry and bus terminals in San Juan. Scheduled stops follow the new rule since that fix, tourism places from the next full build.",
+   "The boundary drawn on the map is simplified for display (about 22 meters, 0.0002 degrees), so a place very near a border can look as if it is on the wrong side.",
+   "The nightly refresh tests stops against the simplified copy of the boundaries and the full build against the full-detail ones, so a stop within about 22 meters of a border can land in a different municipality in the two. Both give a stop outside every polygon the municipality whose polygon is nearest. Until the 2026-10 access update the nightly refresh left such a stop without a municipality."
   ],
   "see_also": [
    "places.municipality_assignment",
@@ -1517,7 +1517,7 @@
   "group": "Transit access of tourism places",
   "kind": "method",
   "plain": "The observatory describes a tourism place's access to transport as a profile, not a score: the nearest stop whose timetable has not ended, how many weekday departures it has and whether it has weekend service. Walking distance and gateways such as airports and ferry terminals are planned and not published yet.",
-  "definition": "The profile has three layers. Layer 1 is published: the straight-line distance to the nearest stop with a current timetable (ts_m), the most weekday calls at such a stop within 400 m (ts_calls) and the Saturday and Sunday service at those stops (ts_we). The stops come from the GTFS (General Transit Feed Specification) timetable feeds of ATI (Autoridad de Transporte Integrado) and of the municipal transit systems. Layer 2, the walking distance along mapped roads, and layer 3, the nearest gateways (airport, ferry terminal, rail station and bus terminal) and scheduled journey times from a gateway, are planned. They are not published, and nothing in the map or the data files measures them yet. From layer 1 each place falls in one of five access classes, which use the distances 400 m and 800 m and the threshold of 20 weekday calls (see Codes). The older measure, within 400 m of any mapped stop (transit_m, transit_400m and transit_pct), stays and is labelled as what it is: it also counts stops whose timetable has ended and stops that volunteers mapped. The pop-up of a place shows the class as a badge, then the line 'Nearest stop with a current timetable' with its distance (and, within 400 m, the weekday departures and the weekend service). A third line, 'Any mapped stop (expired timetables and volunteer-mapped stops included)', appears when such a stop is closer than the nearest stop with a current timetable.",
+  "definition": "The profile has three layers. Layer 1 is published: the straight-line distance to the nearest stop with a current timetable (ts_m), the most weekday calls at such a stop within 400 m (ts_calls) and the Saturday and Sunday service at those stops (ts_we). The stops come from the GTFS (General Transit Feed Specification) timetable feeds of ATI (Autoridad de Transporte Integrado) and of the municipal transit systems. Layer 2, the walking distance along mapped roads, and layer 3, the nearest gateways (airport, ferry terminal, rail station and bus terminal) and scheduled journey times from a gateway, are planned. They are not published, and nothing in the map or the data files measures them yet. From layer 1 each place falls in one of five access classes, which use the distances 400 m and 800 m and the threshold of 20 weekday calls (see Codes). The older measure, within 400 m of any mapped stop (transit_m, transit_400m and transit_pct), stays and is labeled as what it is: it also counts stops whose timetable has ended and stops that volunteers mapped. The pop-up of a place shows the class as a badge, then the line 'Nearest stop with a current timetable' with its distance (and, within 400 m, the weekday departures and the weekend service). A third line, 'Any mapped stop (expired timetables and volunteer-mapped stops included)', appears when such a stop is closer than the nearest stop with a current timetable.",
   "unit": "not applicable (method)",
   "value_type": "text",
   "geography": "Puerto Rico (78 municipalities)",
@@ -1527,7 +1527,7 @@
    "last": 2026,
    "frequency": "Recomputed at each full build and at each run of the nightly transit refresh (access.py). In the 2026-10 snapshot the access is as of 2026-10-06 and the stops were read on 2026-10-02."
   },
-  "method": "access.py computes the profile from places.json, transport.json and operators.json. A stop has a current timetable when it is a scheduled stop (source ATI or a municipal GTFS feed) and its operator's feed end date is on or after the as-of date; a feed with no end date does not count. For every place it finds the nearest such stop (ts_m, rounded up to whole metres), the largest number of weekday calls at such stops within 400 m (ts_calls) and the Saturday and Sunday flags (ts_we). It also finds the nearest mapped stop of any kind (transit_m, cut to whole metres, and the flag transit_400m). Distances are straight lines from the flat-earth formula that the observatory has always used. Against a computation in projected metres the formula is about 0.6% long north to south, so a share can read up to 0.1 point lower than a projected computation (32.0% instead of 32.1% of places within 400 m of a stop with a current timetable). Shares count the default basis: tourism places with confidence 0.50 or higher and no places of worship. The municipal fields, the barrio counts and the access part of meta.json add up the same flags. The class of a place follows access_class in access.py, and the map applies the same rule in site/js/access.js.",
+  "method": "access.py computes the profile from places.json, transport.json and operators.json. A stop has a current timetable when it is a scheduled stop (source ATI or a municipal GTFS feed) and its operator's feed end date is on or after the as-of date; a feed with no end date does not count. For every place it finds the nearest such stop (ts_m, rounded up to whole meters), the largest number of weekday calls at such stops within 400 m (ts_calls) and the Saturday and Sunday flags (ts_we). It also finds the nearest mapped stop of any kind (transit_m, cut to whole meters, and the flag transit_400m). Distances are straight lines from the flat-earth formula that the observatory has always used. Against a computation in projected meters the formula is about 0.6% long north to south, so a share can read up to 0.1 point lower than a projected computation (32.0% instead of 32.1% of places within 400 m of a stop with a current timetable). Shares count the default basis: tourism places with confidence 0.50 or higher and no places of worship. The municipal fields, the barrio counts and the access part of meta.json add up the same flags. The class of a place follows access_class in access.py, and the map applies the same rule in site/js/access.js.",
   "sources": [
    "overture",
    "ati_gtfs",
@@ -1617,14 +1617,14 @@
    "last": 2024,
    "frequency": "A new window is added when the Census Bureau publishes it"
   },
-  "method": "housing_series.py reads the per-sequence summary files for the windows labelled 2010-2020 and the table-based files for 2021 onward, and finds the next window by itself. economy_series.py reads further tables from the same windows. The Housing page spells out the window ('ACS 2020-2024'), and so does the Analysis tab's year chip ('2020–2024'): a series made only from ACS tables is a window in Core.adapters and Core.time, and a series that mixes a yearly count into a survey (jobs per employed resident) is not. A table the survey did not yet have is skipped for early windows: the internet questions start with the 2013-2017 window, labelled 2017.",
+  "method": "housing_series.py reads the per-sequence summary files for the windows labeled 2010-2020 and the table-based files for 2021 onward, and finds the next window by itself. economy_series.py reads further tables from the same windows. The Housing page spells out the window ('ACS 2020-2024'), and so does the Analysis tab's year chip ('2020–2024'): a series made only from ACS tables is a window in Core.adapters and Core.time, and a series that mixes a yearly count into a survey (jobs per employed resident) is not. A table the survey did not yet have is skipped for early windows: the internet questions start with the 2013-2017 window, labeled 2017.",
   "sources": [
    "acs5"
   ],
   "source_detail": "US Census Bureau, American Community Survey 5-year estimates, summary files 2006-2010 through 2020-2024; US Census Bureau, Puerto Rico Community Survey, Multiyear Accuracy of the Data (5-year 2013-2017), for the dollar adjustment.",
-  "how_to_read": "Read a figure labelled 2024 as 'the typical value over 2020-2024'. To judge real change, compare windows that do not overlap, for example 2014, 2019 and 2024.",
+  "how_to_read": "Read a figure labeled 2024 as 'the typical value over 2020-2024'. To judge real change, compare windows that do not overlap, for example 2014, 2019 and 2024.",
   "caveats": [
-   "Because windows overlap, a change between neighbouring labels mostly reflects one year of new responses and understates real change.",
+   "Because windows overlap, a change between neighboring labels mostly reflects one year of new responses and understates real change.",
    "A window pools years before and after an event, so it smooths sudden changes. The 2020-2024 window mixes the pandemic years with later years.",
    "Windows that include 2017 or 2020 carry survey disruption. The Census Bureau halted Puerto Rico Community Survey data collection from October to December 2017 after Hurricane María. It also says margins of error for 5-year estimates that include 2020 data rose because fewer interviews were completed in 2020. The windows ending 2017 to 2021 include 2017, and the windows ending 2020 to 2024 include 2020. The observatory makes no adjustment. See 'Census tables behind the income, worker, commuting and internet figures' (economy.acs_work_income_tables) for the Census sources.",
    "Small municipalities have small samples, so figures are noisy. Margins of error are published (90% confidence) and shown where they exist.",
@@ -1751,7 +1751,7 @@
    "Federal Emergency Management Agency (FEMA) Public Assistance (OpenFEMA)": "2024, the latest declaration year with funded projects in the OpenFEMA file at build time",
    "FEMA Individual Assistance (OpenFEMA)": "2022, the latest declaration year with approved housing assistance in the OpenFEMA file at build time",
    "Consumer Price Index": "2025, the reference year for inflation adjustment",
-   "Tourism places (Overture)": "One snapshot, labelled 2026"
+   "Tourism places (Overture)": "One snapshot, labeled 2026"
   }
  },
  {
@@ -1879,7 +1879,7 @@
    "overture"
   ],
   "source_detail": "The definition of each series in the source's own documentation.",
-  "how_to_read": "A municipality with more jobs than employed residents is a job centre that draws commuters. One with far fewer is a place where many residents work elsewhere. The ratio does not say where they work. San Juan shows the difference: in the 2026-10 snapshot it holds 253,816 jobs in 2025 (26.8% of the island's jobs) but 329,737 residents (10.4% of the island's residents), and in 2024 it has 1.91 jobs for each employed resident.",
+  "how_to_read": "A municipality with more jobs than employed residents is a job center that draws commuters. One with far fewer is a place where many residents work elsewhere. The ratio does not say where they work. San Juan shows the difference: in the 2026-10 snapshot it holds 253,816 jobs in 2025 (26.8% of the island's jobs) but 329,737 residents (10.4% of the island's residents), and in 2024 it has 1.91 jobs for each employed resident.",
   "caveats": [
    "Do not use jobs per 1,000 residents as an employment rate. It counts jobs located in the municipality, not jobs held by residents.",
    "Jobs are placed in the municipality where the employer reports each work site. The observatory does not check those reports.",
@@ -1924,7 +1924,7 @@
   "group": "Using the observatory",
   "kind": "method",
   "plain": "The observatory keeps more decimals than it shows. Maps, legends and tables round numbers for reading. Downloads and data files keep the stored precision. Cite the stored value with its unit and year.",
-  "definition": "Display: numbers use US format (commas for thousands, points for decimals). A missing value shows as a dash on the page, 'No data' in grey on the map, and an empty cell in downloads. Legend and axis labels, negative dollar amounts, the Ask the observatory chat's changes and the Housing page's signed changes use a true minus sign (−). Other negative figures, such as those in the Analysis tab inspector and table, use a plain hyphen (-). The Analysis tab gives each dataset its own number of decimals (counts none, most percentages one, the Gini index three). A rescaling overrides it: per 1,000 one decimal; per km² one decimal (none for dollars); dollars per resident none; difference from Puerto Rico the dataset's own decimals (none for dollars); share of Puerto Rico two; share of jobs one; location quotient two; index none; percentile none; change one (two for ratios). Margins of error (±) print with one decimal for rates, in percentage points. Legend and axis labels are shortened (255K, 1.5K, 12M). Median year built shows as a whole year. The Housing page shows dollars to the whole dollar. Stored precision: place coordinates six decimals, confidence three, tourism places per 1,000 residents and per km² two, flood share one, land area one, survey shares two, Gini three.",
+  "definition": "Display: numbers use US format (commas for thousands, points for decimals). A missing value shows as a dash on the page, 'No data' in gray on the map, and an empty cell in downloads. Legend and axis labels, negative dollar amounts, the Ask the observatory chat's changes and the Housing page's signed changes use a true minus sign (−). Other negative figures, such as those in the Analysis tab inspector and table, use a plain hyphen (-). The Analysis tab gives each dataset its own number of decimals (counts none, most percentages one, the Gini index three). A rescaling overrides it: per 1,000 one decimal; per km² one decimal (none for dollars); dollars per resident none; difference from Puerto Rico the dataset's own decimals (none for dollars); share of Puerto Rico two; share of jobs one; location quotient two; index none; percentile none; change one (two for ratios). Margins of error (±) print with one decimal for rates, in percentage points. Legend and axis labels are shortened (255K, 1.5K, 12M). Median year built shows as a whole year. The Housing page shows dollars to the whole dollar. Stored precision: place coordinates six decimals, confidence three, tourism places per 1,000 residents and per km² two, flood share one, land area one, survey shares two, Gini three.",
   "unit": "decimals",
   "value_type": "text",
   "geography": "Puerto Rico",
@@ -1945,9 +1945,9 @@
   "how_to_read": "Round only in your own text, and say the year and the unit. If two numbers look equal on screen, check the stored values in a download.",
   "caveats": [
    "Rounded shares may not add up to 100%.",
-   "Ranks and colour classes use unrounded values. Two municipalities that show the same rounded number can have different ranks or colours.",
+   "Ranks and color classes use unrounded values. Two municipalities that show the same rounded number can have different ranks or colors.",
    "Per-1,000 values are calculated to three decimals and shown with one.",
-   "The legend limits are rounded labels. A value shown as 41.3 may sit on either side of a limit labelled 41.3."
+   "The legend limits are rounded labels. A value shown as 41.3 may sit on either side of a limit labeled 41.3."
   ],
   "see_also": [
    "municipalities.quintile_shading",
@@ -1971,7 +1971,7 @@
   "group": "Using the observatory",
   "kind": "method",
   "plain": "A link from the map or the housing page stores your view settings in the web address: where the map is looking, which layers are on and the year. It holds no table of data and no name or account. If you plan a route, the link also holds the route's map coordinates, so check it before you share it.",
-  "definition": "The 2D map writes #Municipality&c=lat,lng,zoom&l=layers&s=shading&r=route&e=economy layers&ey=year&eb=base year&slr=feet into the address as you work. The 'e' part lists each Economy layer as ten values joined by dots: dataset key, mode (shaded or symbols), rescaling, colour ramp, class method, visible, same classes in every year, inflation-adjusted, opacity and symbol colour. 'ey' is written only when you choose a year ('Latest' has none) and 'eb' only when the base year is not 2014. The 3D view writes #c=lat,lng,zoom and r. The housing page writes ?m=municipality, then y=year only when you choose a year ('Latest' has none) and c=base year only when it is not 2012 (and ?d=dataset for an open dataset). The dictionary writes #entry and its filters as ?q=, domain, source, kind, time, file and moe.",
+  "definition": "The 2D map writes #Municipality&c=lat,lng,zoom&l=layers&s=shading&r=route&e=economy layers&ey=year&eb=base year&slr=feet into the address as you work. The 'e' part lists each Economy layer as ten values joined by dots: dataset key, mode (shaded or symbols), rescaling, color ramp, class method, visible, same classes in every year, inflation-adjusted, opacity and symbol color. 'ey' is written only when you choose a year ('Latest' has none) and 'eb' only when the base year is not 2014. The 3D view writes #c=lat,lng,zoom and r. The housing page writes ?m=municipality, then y=year only when you choose a year ('Latest' has none) and c=base year only when it is not 2012 (and ?d=dataset for an open dataset). The dictionary writes #entry and its filters as ?q=, domain, source, kind, time, file and moe.",
   "unit": "web address",
   "value_type": "text",
   "geography": "Puerto Rico",
@@ -1987,7 +1987,7 @@
   "source_detail": "Map position and zoom come from the Leaflet (2D) and MapLibre (3D) maps.",
   "how_to_read": "A shared link shares a view, not a table of numbers. If the data were rebuilt after you made the link, the same view can show different numbers. To fix numbers in a report, cite the snapshot label and the date and keep the downloaded data file.",
   "caveats": [
-   "Route points are saved as coordinates with four decimals (about 11 metres). A route that starts at a home would put that location in the link. The link also holds the map centre (four decimals) and the municipality you selected. Check a link before sharing it.",
+   "Route points are saved as coordinates with four decimals (about 11 meters). A route that starts at a home would put that location in the link. The link also holds the map center (four decimals) and the municipality you selected. Check a link before sharing it.",
    "A link without a year opens at 'Latest', which moves when the data are rebuilt.",
    "Not everything is stored: an open workbench tab, the Ask the observatory chat and the selected municipality in the Analysis tab are not in the link."
   ],
@@ -2181,7 +2181,7 @@
    "timeline": "static",
    "frequency": "Calculated in your browser each time the map redraws"
   },
-  "method": "Core.reliability (site/js/core/reliability.js). isUnreliable(value, moe) is true when moe is above zero and either the value is zero or moe ÷ |value| is above 0.3. assess() applies it to the published estimates of the year shown and the small-count rule to the layer's counts, and the layer engine keeps the result (E.reliability). The 2D map draws the hatch as a pattern over the municipality (a dark line beside a white one, so it shows on pale and dark colours and in print), the legend lists each flag in words with the number of municipalities, and the pop-up, the workbench table and the hover card set the value in italics with a sentence below. The Housing page uses the same rule and the same sentence.",
+  "method": "Core.reliability (site/js/core/reliability.js). isUnreliable(value, moe) is true when moe is above zero and either the value is zero or moe ÷ |value| is above 0.3. assess() applies it to the published estimates of the year shown and the small-count rule to the layer's counts, and the layer engine keeps the result (E.reliability). The 2D map draws the hatch as a pattern over the municipality (a dark line beside a white one, so it shows on pale and dark colors and in print), the legend lists each flag in words with the number of municipalities, and the pop-up, the workbench table and the hover card set the value in italics with a sentence below. The Housing page uses the same rule and the same sentence.",
   "sources": [
    "acs5",
    "bls_qcew"
@@ -2228,7 +2228,7 @@
   "group": "How places and points are built",
   "kind": "method",
   "plain": "The Map layers tab can draw the tourism places that pass its filters as hexagons instead of pins. Every hexagon covers the same area, so the number in it also says how crowded the place is. Three more shading choices count the places that pass the filters in each municipality.",
-  "definition": "Hexagons: the map points of the places are projected with a Lambert azimuthal equal-area projection centred on Puerto Rico and counted in a grid of regular hexagons of 2, 10 or 50 square kilometres, as the user chooses. In that projection equal areas on the plane are equal areas on the ground, so every hexagon covers the same ground area (to about 0.3% on the real earth). The legend gives five classes of the counts, with the number of hexagons in each, and states the method. Municipalities: the same places counted in each municipality, as a total, per 1,000 residents (2020 Census) and per square kilometre of land. Both follow the filters of the Map layers tab (categories, minimum confidence, places of worship) and change when a filter changes; the fixed counts in the shading menu (tourism places, per 1,000 residents, per km²) stay as they were built.",
+  "definition": "Hexagons: the map points of the places are projected with a Lambert azimuthal equal-area projection centered on Puerto Rico and counted in a grid of regular hexagons of 2, 10 or 50 square kilometers, as the user chooses. In that projection equal areas on the plane are equal areas on the ground, so every hexagon covers the same ground area (to about 0.3% on the real earth). The legend gives five classes of the counts, with the number of hexagons in each, and states the method. Municipalities: the same places counted in each municipality, as a total, per 1,000 residents (2020 Census) and per square kilometer of land. Both follow the filters of the Map layers tab (categories, minimum confidence, places of worship) and change when a filter changes; the fixed counts in the shading menu (tourism places, per 1,000 residents, per km²) stay as they were built.",
   "unit": "places per hexagon; places per municipality, per 1,000 residents and per km²",
   "value_type": "count",
   "geography": "hexagons of 2, 10 or 50 km² and 78 municipalities",
@@ -2244,7 +2244,7 @@
    "census_decennial"
   ],
   "source_detail": "The places are the Overture Maps listings that the observatory classifies (places.json). Residents and land area are the municipal fields of municipalities.json.",
-  "how_to_read": "In the 2026-10 snapshot with the default filters (confidence 0.50 or higher, places of worship left out), the 23,467 places with a pin (the 24,209 counted places less the 742 holiday rentals and numbered units, which are counted but not drawn) fall in 950 hexagons of 10 square kilometres: the busiest holds 447 and half hold 8 or fewer. In hexagons of 2 km² they fall in 2,833 (busiest 309) and in hexagons of 50 km² in 231 (busiest 1,988). By municipality, San Juan has 3,424 counted places, Vieques 237 and Culebra 136.",
+  "how_to_read": "In the 2026-10 snapshot with the default filters (confidence 0.50 or higher, places of worship left out), the 23,467 places with a pin (the 24,209 counted places less the 742 holiday rentals and numbered units, which are counted but not drawn) fall in 950 hexagons of 10 square kilometers: the busiest holds 447 and half hold 8 or fewer. In hexagons of 2 km² they fall in 2,833 (busiest 309) and in hexagons of 50 km² in 231 (busiest 1,988). By municipality, San Juan has 3,424 counted places, Vieques 237 and Culebra 136.",
   "caveats": [
    "A hexagon is a counting unit, not a place: it ignores municipal and barrio borders, and a busy hexagon can straddle two municipalities.",
    "Counts depend on the size of the hexagon. Compare hexagons of the same size only; the legend names the size.",
@@ -2305,7 +2305,7 @@
   "how_to_read": "A higher score means more of what you marked as better, relative to the other municipalities. Read the contributions to see which inputs drive a place's score.",
   "caveats": [
    "User-built composite, not an official index: the result depends entirely on the inputs, directions and weights chosen.",
-   "Standardising across municipalities compares places with each other, not with a target.",
+   "Standardizing across municipalities compares places with each other, not with a target.",
    "Inputs from different years and from surveys with margins of error are combined without carrying the margins."
   ],
   "see_also": [
@@ -2333,7 +2333,7 @@
   ],
   "group": "Relationships between datasets",
   "kind": "measure",
-  "plain": "For each municipio, the five municipios most like it in population and in residents per square kilometre.",
+  "plain": "For each municipio, the five municipios most like it in population and in residents per square kilometer.",
   "definition": "The latest population of each municipio (Census Bureau estimates) and its residents per km² of land are each put on a log scale and then on z-scores across the 78 municipios. The five municipios at the shortest straight-line distance on those two numbers are the peers, nearest first.",
   "unit": "list of 5 municipios",
   "value_type": "text",
@@ -2377,7 +2377,7 @@
   "group": "Relationships between datasets",
   "kind": "measure",
   "plain": "Figures that an outside model produced and that a person loaded in the workbench. They are model results, not observed data, and the observatory checks only their format.",
-  "definition": "A CSV file with a header of lines starting with '#' (model_name, model_version, run_id, date, assumptions_url, licence, contact_label) and the columns geography_key, geography_level, period, variable, value, unit and, optionally, lower and upper; or a GeoJSON FeatureCollection with a 'model' member holding the header and the same fields in each feature's properties. geography_level is 'municipio' (the five-digit code; 72 is Puerto Rico as a whole); period is a year. Each variable becomes a dataset of the Analysis tab labelled 'Model output (not observed data)', with the header in its definition. lower and upper must bracket the value; the map shows the value.",
+  "definition": "A CSV file with a header of lines starting with '#' (model_name, model_version, run_id, date, assumptions_url, license, contact_label) and the columns geography_key, geography_level, period, variable, value, unit and, optionally, lower and upper; or a GeoJSON FeatureCollection with a 'model' member holding the header and the same fields in each feature's properties. geography_level is 'municipio' (the five-digit code; 72 is Puerto Rico as a whole); period is a year. Each variable becomes a dataset of the Analysis tab labeled 'Model output (not observed data)', with the header in its definition. lower and upper must bracket the value; the map shows the value.",
   "unit": "the file's own unit",
   "value_type": "ratio",
   "geography": "78 municipalities and Puerto Rico",
@@ -2396,7 +2396,7 @@
   "how_to_read": "Read it as what a model says under its assumptions (the header's assumptions_url), not as a measurement.",
   "caveats": [
    "Not observed data: the observatory checks the format, not the numbers.",
-   "The header names a team or organisation as the contact; e-mail addresses and telephone numbers are refused."
+   "The header names a team or organization as the contact; e-mail addresses and telephone numbers are refused."
   ],
   "see_also": [
    "layers.scenarios"

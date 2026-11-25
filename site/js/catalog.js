@@ -180,7 +180,7 @@ const Catalog = (() => {
     }, () => { box.innerHTML = `<div class="note">${esc(T('The list could not be loaded. Try again in a moment.'))}</div>`; });
   }
 
-  // What is planned: the wanted datasets of a field (site/data/wanted.json, a candidate list: source, licence and terms are still to be confirmed before anything is harvested).
+  // What is planned: the wanted datasets of a field (site/data/wanted.json, a candidate list: source, license and terms are still to be confirmed before anything is harvested).
   const WANTED_STATUS = () => ({ candidate: T('Candidate'), checked: T('Checked'), building: T('Building'), blocked: T('Blocked') });   // a dataset already live is not listed as planned
   async function togglePlanned(btn) {
     const box = $('#pl-' + btn.dataset.planned), open = box.hidden;

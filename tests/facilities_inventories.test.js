@@ -21,13 +21,13 @@ test('the four layers have a switch, a file, a help text and the types their fil
   assert.ok(F.LAYERS.ferries.line && !F.LAYERS.ferries.sized, 'the ferries are lines');
 });
 
-test('a bridge: area by daily traffic, colour by condition, a closed bridge hollow; a tunnel grey', () => {
+test('a bridge: area by daily traffic, color by condition, a closed bridge hollow; a tunnel gray', () => {
   const r = (p) => F.sizedStyle('bridges', p).r;
   assert.ok(Math.abs((r({ a: 160000, c: 'F' }) / r({ a: 40000, c: 'F' })) ** 2 - 4) < 1e-9, 'four times the traffic, four times the area');
   assert.strictEqual(r({ a: 0, c: 'G' }), F.LAYERS.bridges.sized.min);
   assert.strictEqual(F.sizedStyle('bridges', { a: 100, c: 'P', o: 'K' }).planned, true);
   assert.strictEqual(F.sizedStyle('bridges', { a: 100, c: 'P', o: 'A' }).planned, false);
-  for (const f of B.features) assert.ok(F.LAYERS.bridges.sized.colors[f.properties.c], `no colour for condition ${f.properties.c}`);
+  for (const f of B.features) assert.ok(F.LAYERS.bridges.sized.colors[f.properties.c], `no color for condition ${f.properties.c}`);
   const closed = B.features.find(f => f.properties.o === 'K').properties;
   assert.match(F.popup('bridges', closed, B), /Closed/);
   const scour = B.features.find(f => f.properties.s).properties;
@@ -38,7 +38,7 @@ test('a bridge: area by daily traffic, colour by condition, a closed bridge holl
   assert.match(F.noteText('bridges', B, 'Explore tab'), new RegExp(`${B.notes.poor} in poor condition`));
 });
 
-test('airports: one radius, colour by kind; the private facilities owned privately are only counted', () => {
+test('airports: one radius, color by kind; the private facilities owned privately are only counted', () => {
   assert.strictEqual(F.sizedStyle('airports', { cat: 'heliport' }).r, F.LAYERS.airports.sized.r);
   assert.ok(A.features.every(f => !(f.properties.use === 'private' && f.properties.own === 'private')), 'no private facility owned privately is drawn');
   assert.strictEqual(A.features.filter(f => f.properties.cat === 'commercial').length, 3, 'San Juan, Aguadilla and Ponce');

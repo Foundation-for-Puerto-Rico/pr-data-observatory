@@ -35,13 +35,13 @@ Sentinel-2 passes at about 10:30 local solar time (about 11:00 Atlantic Standard
 **Scenes.** Every Sentinel-2 Level-2A scene over Puerto Rico from June to September of the three summers, with less than 70% cloud cover.
 - This build found 984 scenes (2024: 265, 2025: 341, 2026: 378) in 241 passes; 230 passes had at least one clear cell.
 - They come from eight 110 km MGRS tiles (19QFA, 19QFV, 19QGA, 19QGV, 19QHA, 19QHV, 20QKE, 20QKF), in UTM zones 19 and 20.
-- They are **Collection 1**: ESA reprocessed the archive with one processing baseline, so a 2024 scene and a 2026 scene compare. The reflectance is the stored number × 0.0001 − 0.1 (each scene's own scale and offset are read from the catalogue).
+- They are **Collection 1**: ESA reprocessed the archive with one processing baseline, so a 2024 scene and a 2026 scene compare. The reflectance is the stored number × 0.0001 − 0.1 (each scene's own scale and offset are read from the catalog).
 - They are read from **Earth Search** on AWS (Element 84, collection `sentinel-2-c1-l2a`), whose files are public and need no key.
 **Reading.** `raster.py` (`docs/raster.md`) reads three files of each scene at **40 m**: the red band (B04) and the near-infrared band (B08) at their second overview, and the scene classification (SCL) at its first.
 - The files' overviews are made with GDAL and say how (`OVR_RESAMPLING_ALG`): the bands' are averaged from the 10 m pixels and the classification's keep the most common class, so a class is never averaged. The build stops if the two overviews are not one grid.
 - Only the tiles under the barrios are read, by HTTP range requests (`COG.values_at`).
 
-**Grid.** `heat.py`'s 60 m grid in UTM zone 20 (EPSG:32620): 2,485,382 cells whose centre is in a barrio. Each cell takes the 40 m pixel under its centre; scenes in zone 19 are mapped onto the grid with pyproj.
+**Grid.** `heat.py`'s 60 m grid in UTM zone 20 (EPSG:32620): 2,485,382 cells whose center is in a barrio. Each cell takes the 40 m pixel under its center; scenes in zone 19 are mapped onto the grid with pyproj.
 
 **Clear observations.** An observation counts when the scene classification says **vegetation (4)** or **not vegetated (5)** and both reflectances are above zero. Clouds (8, 9), thin cirrus (10), cloud shadow (3), dark area or terrain shadow (2), water (6), unclassified (7), saturated or defective (1) and no data (0) are left out.
 
@@ -51,7 +51,7 @@ Sentinel-2 passes at about 10:30 local solar time (about 11:00 Atlantic Standard
 
 **Cache.** The build keeps, for each scene, the cells it saw clear and their NDVI (`cache/vegetation/values/`), not the image tiles. It holds 197 MB for the 984 scenes, against several GB for the tiles, which keeps the nightly rebuild's cache small; a rebuild from it takes about 90 seconds. A rebuild from the cache needs no network. The folder's name holds the reading rule (`RULE` in `vegetation.py`): a change in how a scene is read must change it, so old values are never mixed with new ones.
 
-**Areas.** A cell belongs to the barrio whose outline holds its centre. Municipios and Puerto Rico **pool the cells** of their barrios.
+**Areas.** A cell belongs to the barrio whose outline holds its center. Municipios and Puerto Rico **pool the cells** of their barrios.
 
 **Classes.** USGS reads NDVI this way: barren rock, sand or snow at 0.1 or less; sparse vegetation such as shrubs and grassland at about 0.2 to 0.5; dense vegetation such as forests and crops at their peak at about 0.6 to 0.9. The build uses:
 - **dense vegetation:** NDVI 0.6 or more;
@@ -87,6 +87,6 @@ The build stops when any of these fails:
 - **Review.** A person reads the rebuild (review `human`), because a new summer moves every barrio's figures.
 - **Cache.** `rebuild.yml` caches `cache/vegetation`, so a run reads only the new summer's scenes.
 
-## Licence
+## License
 
 Copernicus Sentinel data are free, full and open to use, including for commercial use, with the credit "Contains modified Copernicus Sentinel data [year]" for modified data such as these figures. The source card is `copernicus_sentinel2_l2a` in `dictionary_src/sources.json`. Earth Search and the AWS Registry of Open Data serve the copy; their terms cover access, not the data. No image is published, only figures by area.

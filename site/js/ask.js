@@ -6,7 +6,7 @@
      build(src)                one index over what Ask can show: the datasets of the Economy tab (their names in English and Spanish, groups, dictionary
                                "ask" words and Spanish summary words), the map layers of the registry (core/layers.js) and their everyday names, the 3D
                                column measures, the glossary terms (both languages), the municipios and a list of well-known place names
-     understand(n, ix, o)      a question (normalised as chat.js's chParse does) cut into topics (concepts of the lexicon, datasets, layers), a place, a time
+     understand(n, ix, o)      a question (normalized as chat.js's chParse does) cut into topics (concepts of the lexicon, datasets, layers), a place, a time
                                and an operation, with typos corrected against the index's vocabulary; o.rest is chParse's question with the words its rules took blanked
      words(c, lang) ...        the texts the answers use (proxy and sensitive notes, layer names)
 
@@ -23,7 +23,7 @@
   // ── Text ─────────────────────────────────────────────────────────────────────
   const nrm = (s) => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();   // common.js norm(), without the trim
   const split = (s) => s.split('|').map(x => x.trim()).filter(Boolean);
-  /** The words of a normalised text, with where each one starts and ends. */
+  /** The words of a normalized text, with where each one starts and ends. */
   function toks(n) { const out = [], re = /[a-z0-9]+(?:-[a-z0-9]+)*/g; let m; while ((m = re.exec(n))) out.push({ w: m[0], a: m.index, b: m.index + m[0].length }); return out; }
   const SUF = ['aciones', 'iciones', 'ciones', 'amientos', 'imientos', 'amiento', 'imiento', 'idades', 'acion', 'icion', 'cion', 'idad', 'ations', 'ation', 'ities', 'ments', 'ment', 'ados', 'adas', 'idos', 'idas', 'ado', 'ada', 'ido', 'ida', 'ed', 'es', 's'];
   /** A light stem for Spanish and English: plurals and the common endings of nouns and participles, then a final e ("transporte", "transportation" and
@@ -104,11 +104,11 @@
     'curves desarrollado desserts divida diving dorados electronic electronica electronico electronicos electronics escobar especially essentially estacionales estadio extensive fares fatalidades fatalities finest floors founding frames ' +
     'garage generativa generative gentle gravel grazes guaonica guayabo guayabos horses hostel hostels immigrants incentivos inmigrantes intentarlo interaction interruptions inundarian irlandes islanders jaguas juntas juntos ' +
     'landfall landuse lanes latas leading lijas lindas lineal linear listan listar llanos llegan llenar llevar lucero lylibraries maestria maestrias maneja manejada mangoes manzanas mapper ' +
-    'maraguez marcados marcas mareas mares marinas marini marino markers matias mediation medidas medinas mexico morado naranjo negron neighbourhood neighbourhoods numera nutritional obrera oceano padilla ' +
-    'pagada pagados paints pajilla palmar palomas panell papeles parana pardas pardos pares parquet paseos pasillos pastor pavimentado pavimentar penones pequenas personales pezuela piensa pilones ' +
-    'planillas pointy policiales policy polluters ponche prados preciso precisos prints programado propia puerca puerco qualify quemaos recortados rectas refuse refuses relied rellenados reproduction rescale ' +
-    'resiliency restate rivera rivero roofers router sabalos seguida segura senala sports stopping storey storeys suites tariff tariffs terminalfl terminan terminar terminated toledo topics traces ' +
-    'transfiere transformation transforms transportan traves turabo urbina vailla valles varias varios vegano vencen vender ventaja viales writes writing yaguez').split(' '));
+    'maraguez marcados marcas mareas mares marinas marini marino markers matias mediation medidas medinas mexico morado naranjo negron neighbourhood numera nutritional obrera oceano padilla pagada ' +
+    'pagados paints pajilla palmar palomas panell papeles parana pardas pardos pares parquet paseos pasillos pastor pavimentado pavimentar penones pequenas personales pezuela piensa pilones planillas ' +
+    'pointy policiales policy polluters ponche prados preciso precisos prints programado propia puerca puerco qualify quemaos recortados rectas refuse refuses relied rellenados reproduction rescale resiliency ' +
+    'restate rivera rivero roofers router sabalos seguida segura senala sports stopping suites tariff tariffs terminalfl terminan terminar terminated toledo topics traces transfiere transformation transforms ' +
+    'transportan traves turabo urbina vailla valles varias varios vegano vencen vender ventaja viales writes writing yaguez').split(' '));
   /* PROTECTED-END */
 
   // ── Lexicon: everyday words → what the observatory can show ─────────────────
@@ -157,7 +157,7 @@
     ['children', 'nenes|nenas|chamacos|chamaquitos|infantes|bebes|menores', 'kids|babies|infants|children', 'acs_under18_pct|acs_age_under3_pct|acs_age5to17_pct', '', { group: { es: 'los niños', en: 'children' } }],
     ['young_children', 'menores de 5|menores de cinco|ninos pequenos|ninos de edad preescolar|bebes|infantes|primera infancia', 'under 5|under five|young children|toddlers|preschoolers|babies|infants|early childhood', 'acs_age_under3_pct|acs_age3to4_pct', '', { group: { es: 'los niños pequeños', en: 'young children' } }],
     ['youth', 'jovenes|juventud|juvenil|juveniles|adolescentes', 'youth|young people|young adults|teens|teenagers', 'acs_age18to24_pct|acs_age5to17_pct', '', { group: { es: 'los jóvenes', en: 'young people' } }],
-    ['childcare', 'cuido|cuidos|cuido de ninos|guarderia*|centros de cuido|cuidado infantil|cuidado de ninos|head start|preescolar|pre escolar', 'child care|childcare|daycare|day care|preschool*|head start|nursery school*', 'acs_age_under3_pct|acs_age3to4_pct|acs_under18_pct', '', { proxy: { es: 'no hay datos de centros de cuido ni de su capacidad; muestro la proporción de niños pequeños, que es la población que lo necesita', en: 'there are no data on child care centres or their capacity; the share of young children, who need it, stands in' } }],
+    ['childcare', 'cuido|cuidos|cuido de ninos|guarderia*|centros de cuido|cuidado infantil|cuidado de ninos|head start|preescolar|pre escolar', 'child care|childcare|daycare|day care|preschool*|head start|nursery school*', 'acs_age_under3_pct|acs_age3to4_pct|acs_under18_pct', '', { proxy: { es: 'no hay datos de centros de cuido ni de su capacidad; muestro la proporción de niños pequeños, que es la población que lo necesita', en: 'there are no data on child care centers or their capacity; the share of young children, who need it, stands in' } }],
     // economy
     ['quality_of_life', 'calidad de vida|bienestar|como se vive|condiciones de vida', 'quality of life|well-being|wellbeing|living conditions|livability', 'poverty_pct|median_hh_income|laus_unemp_rate', '', { profile: true }],
     ['economy', 'economia|economic*|desarrollo economico|actividad economica|crecimiento economico', 'economy|economic*|economic development', 'qcew_jobs|laus_unemp_rate|median_hh_income|qcew_avg_pay|qcew_estabs', '', { domain: 'economy' }],
@@ -185,7 +185,7 @@
     ['pharmacy', 'farmacia*|botica*|medicamentos|medicinas', 'pharmac*|drugstore*|medication*|prescription*', '', '', { missing: { es: 'el observatorio no tiene datos de farmacias', en: 'the observatory has no pharmacy data' }, near: 'hc_sites|hc_drive_min' }],
     ['disease', 'diabetes|asma|cancer|obesidad|hipertension|presion alta|enfermedad*|dengue|covid*|mortalidad|esperanza de vida|natalidad|nacimientos|epidemia*|vacunacion|vacunas|vih|sida', 'diabetes|asthma|cancer|obesity|hypertension|disease*|illness*|dengue|covid*|mortality|life expectancy|birth rate|births|vaccin*|hiv|aids', '', '', { missing: { es: 'el observatorio no tiene datos de enfermedades, nacimientos ni muertes por municipio', en: 'the observatory has no data on disease, births or deaths by municipio' }, near: 'hpsa_pc_short|acs_uninsured_pct|hc_drive_min' }],
     ['insurance', 'plan de salud|planes de salud|seguro medico|seguro de salud|sin seguro|sin plan medico', 'health insurance|uninsured|insurance coverage|without insurance', 'acs_uninsured_pct', ''],
-    ['medicaid', 'la reforma|plan vital|medicaid|plan del gobierno|tarjeta de salud', 'medicaid', '', '', { missing: { es: 'el observatorio no tiene la matrícula del Plan Vital (Medicaid) por municipio', en: 'the observatory has no Plan Vital (Medicaid) enrolment data by municipio' }, near: 'acs_uninsured_pct|poverty_pct' }],
+    ['medicaid', 'la reforma|plan vital|medicaid|plan del gobierno|tarjeta de salud', 'medicaid', '', '', { missing: { es: 'el observatorio no tiene la matrícula del Plan Vital (Medicaid) por municipio', en: 'the observatory has no Plan Vital (Medicaid) enrollment data by municipio' }, near: 'acs_uninsured_pct|poverty_pct' }],
     ['medicare', 'medicare', 'medicare', 'medicare_benes|medicare_ma_pct', ''],
     ['mental', 'mental|psicolog*|psiquiatr*|depresion|ansiedad', 'mental|psycholog*|psychiatr*|depression|anxiety', 'hpsa_mh_short|bh_mh|bh_all', ''],
     ['addiction', 'tratamiento de drogas|tratamiento de adiccion*|rehabilitacion|centros de rehabilitacion|metadona|clinicas de metadona|clinica de metadona|centros de metadona|clinicas de tratamiento|centros de tratamiento', 'drug treatment|addiction treatment|rehab|rehabilitation|methadone|methadone clinic*|treatment facilit*|treatment centers|treatment centres', 'bh_su|bh_all|bh_both', '', { sens: 'count' }],
@@ -496,7 +496,7 @@
     return { text: text + String(q || '').slice(at), fixes };
   }
   /**
-   * n: the question as chParse normalises it; o: { rest (chParse's question with what its rules and the places took blanked), lang, places (municipios chParse found) }.
+   * n: the question as chParse normalizes it; o: { rest (chParse's question with what its rules and the places took blanked), lang, places (municipios chParse found) }.
    * Returns { tokens, hits: [{ kind, id, a, b, words, fuzzy, covered }], concepts, layers, places, dataset (from the index), metric, time: { since, until, years }, trend,
    *           explain: { target, glossary, layer } | null, sens: [{ kind }], fresh, countData, showVerb, relate, unknown: [words] }.
    */
@@ -562,7 +562,7 @@
       }
     }
     // the words left: matched against the datasets' own words, and the 3D view's column measures
-    // a word of distance ("near", "cerca") says where, not what: alone it took the 10 km to a health centre, whose own words have "near a health center" (PR #8)
+    // a word of distance ("near", "cerca") says where, not what: alone it took the 10 km to a health center, whose own words have "near a health center" (PR #8)
     const left = T.filter(t => !t.used && !t.taken && !t.time && t.w.length > 2 && !STOPW.has(t.w) && !KNOWN.has(t.w) && !NEARW.has(t.w) && !/^\d+$/.test(t.w));
     let dataset = null, metric = null;
     if (left.length) {
@@ -610,7 +610,7 @@
     else if (/\b(?:donde|where)\s+(?:vive|reside|lives|does\s+[a-z]+(?:\s+[a-z]+)?\s+live)\b/.test(n) && !/\b(?:mas|menos|gente|personas|mayoria|most|more|fewer|people|families|familias|los|las|ricos|pobres|rich|poor)\b/.test(n)) sens.push({ kind: 'pii' });
     if (SENS.locate.test(n) && SENS.facility.test(n) && !SENS.abortion.test(n)) sens.push({ kind: 'facility' });
     if (SENS.homes.test(n)) sens.push({ kind: 'homes' });
-    if (SENS.abortion.test(n)) sens.push({ kind: 'abortion' });   // before 'facility': a reason of its own, and no list of health centres
+    if (SENS.abortion.test(n)) sens.push({ kind: 'abortion' });   // before 'facility': a reason of its own, and no list of health centers
     if (SENS.vacant.test(n)) sens.push({ kind: 'vacant' });   // before 'addresses': the owners or addresses of abandoned homes, with the vacancy counts
     if (SENS.rentalHosts.test(n)) sens.push({ kind: 'rentals' });
     if ((SENS.aid.test(n) || (SENS.aidWho.test(n) && SENS.aidWhat.test(n) && SENS.aidGet.test(n))) && !SENS.aggregate.test(n)) sens.push({ kind: 'aid', food: SENS.aidFood.test(n) && !/\bfema\b/.test(n) });   // who receives aid or where they live; "cuántos hogares reciben el PAN" is a count

@@ -11,7 +11,7 @@ How it is made (docs/climb.md):
   - The walkers: each 2020 census block whose point is within a 400 m walk along mapped roads of a stop with a current timetable, by the rule of access.py and
     exposure.py (the same blocks as walk_cur), on the date of the published exposure files (their as_of), so the residents here are those residents.
   - The walk: the shortest walk along mapped roads from the block's point to its nearest current stop (walknet.nearest_paths). The climb is read along the
-    roads only, from the point of the road nearest the block's point to the point nearest the stop: the block's point is a geometric centre, not a door, and the
+    roads only, from the point of the road nearest the block's point to the point nearest the stop: the block's point is a geometric center, not a door, and the
     straight line from it to the road can cross ground nobody walks. A block whose point or stop is on no walkable road, which access.py measures in a straight
     line, walks the straight line here too.
   - The ground: USGS 3D Elevation Program, 1/3 arc-second (about 10 m) seamless elevation, the newest version of each one-degree tile over Puerto Rico, read with
@@ -70,7 +70,7 @@ SOURCES = {
 # ── Elevation ────────────────────────────────────────────────────────────────
 
 def dem_tiles(offline=False):
-    """{tile name: url} of the newest 3DEP 1/3 arc-second tile of each one-degree cell over Puerto Rico (from USGS's catalogue, kept in cache/dem/tiles.json)."""
+    """{tile name: url} of the newest 3DEP 1/3 arc-second tile of each one-degree cell over Puerto Rico (from USGS's catalog, kept in cache/dem/tiles.json)."""
     p = CACHE / "dem" / "tiles.json"
     if p.exists():
         return json.loads(p.read_text(encoding="utf-8"))
@@ -116,7 +116,7 @@ class Dem:
             if cog is None:
                 continue
             a, _, c, _, e, f = cog.level_transform(0)
-            fx, fy = (lon[k] - c) / a - 0.5, (lat[k] - f) / e - 0.5        # pixel centres
+            fx, fy = (lon[k] - c) / a - 0.5, (lat[k] - f) / e - 0.5        # pixel centers
             x0, y0 = np.floor(fx).astype(np.int64), np.floor(fy).astype(np.int64)
             tx, ty = fx - x0, fy - y0
             vals = {}
@@ -133,7 +133,7 @@ class Dem:
 # ── Walks ────────────────────────────────────────────────────────────────────
 
 def samples(pieces):
-    """Points every STEP_M along each piece of a walk (both ends kept), in local metres: [(n, 2) array per piece]."""
+    """Points every STEP_M along each piece of a walk (both ends kept), in local meters: [(n, 2) array per piece]."""
     import numpy as np
     import shapely
     out = []
@@ -282,7 +282,7 @@ def compute(offline=False):
             "the ground's height (USGS 3DEP, about 10 m) is read every 10 m along the roads, from the road nearest the block to the stop. Where few residents live "
             "within a walk, one block moves the figure a lot. Heights are of the bare ground: a walk over a bridge or an embankment reads the "
             "valley or the slope below, and steps, sidewalks and footpaths are not on the map. A block counts whole, in the barrio the crosswalk gives it.")
-    CLIMB = " The round-trip climb is the sum of the rises and falls along the walk: the metres climbed going to the stop and coming back."
+    CLIMB = " The round-trip climb is the sum of the rises and falls along the walk: the meters climbed going to the stop and coming back."
     STEEP_ = (" A steep stretch is a 30 m stretch that rises or falls more than 1 in 12 (8.33%), the steepest running slope a ramp may have under the 2010 ADA "
               "Standards for Accessible Design (405.2).")
 

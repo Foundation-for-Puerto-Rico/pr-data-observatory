@@ -19,7 +19,7 @@
       "last": 2020,
       "frequency": "One model, published in 2020 (its GIS layer in 2021). The build checks the first author's copy for an edit (refresh unit landslide)."
     },
-    "method": "landslide.py reads the 7,294 PNG tiles of zoom 15 that cover the main island (4.8 m a pixel in Web Mercator, about 4.5 m on the ground), turns each pixel's colour back into its class (grey Low, yellow Moderate, orange High, red Very High, blue-violet Extremely High; the build stops on any other colour) and counts each pixel's ground area in the barrio whose outline holds its centre (or the nearest within about 1 km, for the generalised coast). No raster library is used: the PNGs are decoded with zlib and numpy. Checks against the report, run at every build: the classes cover 40.0, 30.0, 20.0, 9.0 and 1.0% of the 8,739 km2 classified (the report: 40, 30, 20, 9 and 1% of 8,700 km2), and the 71,431 slope failures of Hurricane María fall 1.2, 10.2, 29.4, 44.4 and 14.7% in the five classes (the report's table 5: 1.2, 10.0, 29.4, 44.6 and 14.9%), so the tiles are the published map. A barrio's share is the area of the three classes over all its classified area; a municipio's and Puerto Rico's shares come from the areas of their barrios. The share of each of the five classes is a dataset of its own (landslide.ls_cls_low_pct to landslide.ls_cls_extremely_high_pct).",
+    "method": "landslide.py reads the 7,294 PNG tiles of zoom 15 that cover the main island (4.8 m a pixel in Web Mercator, about 4.5 m on the ground), turns each pixel's color back into its class (gray Low, yellow Moderate, orange High, red Very High, blue-violet Extremely High; the build stops on any other color) and counts each pixel's ground area in the barrio whose outline holds its center (or the nearest within about 1 km, for the generalized coast). No raster library is used: the PNGs are decoded with zlib and numpy. Checks against the report, run at every build: the classes cover 40.0, 30.0, 20.0, 9.0 and 1.0% of the 8,739 km2 classified (the report: 40, 30, 20, 9 and 1% of 8,700 km2), and the 71,431 slope failures of Hurricane María fall 1.2, 10.2, 29.4, 44.4 and 14.7% in the five classes (the report's table 5: 1.2, 10.0, 29.4, 44.6 and 14.9%), so the tiles are the published map. A barrio's share is the area of the three classes over all its classified area; a municipio's and Puerto Rico's shares come from the areas of their barrios. The share of each of the five classes is a dataset of its own (landslide.ls_cls_low_pct to landslide.ls_cls_extremely_high_pct).",
     "sources": [
       "usgs_landslide_map",
       "census_tiger"
@@ -72,7 +72,7 @@
       "last": 2020,
       "frequency": "One model, published in 2020 (its GIS layer in 2021). The build checks the first author's copy for an edit (refresh unit landslide)."
     },
-    "method": "landslide.py reads the 7,294 PNG tiles of zoom 15 that cover the main island (4.8 m a pixel in Web Mercator, about 4.5 m on the ground), turns each pixel's colour back into its class (grey Low, yellow Moderate, orange High, red Very High, blue-violet Extremely High; the build stops on any other colour) and counts each pixel's ground area in the barrio whose outline holds its centre (or the nearest within about 1 km, for the generalised coast). No raster library is used: the PNGs are decoded with zlib and numpy. Checks against the report, run at every build: the classes cover 40.0, 30.0, 20.0, 9.0 and 1.0% of the 8,739 km2 classified (the report: 40, 30, 20, 9 and 1% of 8,700 km2), and the 71,431 slope failures of Hurricane María fall 1.2, 10.2, 29.4, 44.4 and 14.7% in the five classes (the report's table 5: 1.2, 10.0, 29.4, 44.6 and 14.9%), so the tiles are the published map. Computed as for the share in the three highest classes, with the two highest.",
+    "method": "landslide.py reads the 7,294 PNG tiles of zoom 15 that cover the main island (4.8 m a pixel in Web Mercator, about 4.5 m on the ground), turns each pixel's color back into its class (gray Low, yellow Moderate, orange High, red Very High, blue-violet Extremely High; the build stops on any other color) and counts each pixel's ground area in the barrio whose outline holds its center (or the nearest within about 1 km, for the generalized coast). No raster library is used: the PNGs are decoded with zlib and numpy. Checks against the report, run at every build: the classes cover 40.0, 30.0, 20.0, 9.0 and 1.0% of the 8,739 km2 classified (the report: 40, 30, 20, 9 and 1% of 8,700 km2), and the 71,431 slope failures of Hurricane María fall 1.2, 10.2, 29.4, 44.4 and 14.7% in the five classes (the report's table 5: 1.2, 10.0, 29.4, 44.6 and 14.9%), so the tiles are the published map. Computed as for the share in the three highest classes, with the two highest.",
     "sources": [
       "usgs_landslide_map",
       "census_tiger"
@@ -126,7 +126,7 @@
       "last": 2020,
       "frequency": "One model, published in 2020 (its GIS layer in 2021). The build checks the first author's copy for an edit (refresh unit landslide)."
     },
-    "method": "landslide.py reads the 7,294 PNG tiles of zoom 15 that cover the main island (4.8 m a pixel in Web Mercator, about 4.5 m on the ground), turns each pixel's colour back into its class (grey Low, yellow Moderate, orange High, red Very High, blue-violet Extremely High; the build stops on any other colour) and counts each pixel's ground area in the barrio whose outline holds its centre (or the nearest within about 1 km, for the generalised coast). No raster library is used: the PNGs are decoded with zlib and numpy. Checks against the report, run at every build: the classes cover 40.0, 30.0, 20.0, 9.0 and 1.0% of the 8,739 km2 classified (the report: 40, 30, 20, 9 and 1% of 8,700 km2), and the 71,431 slope failures of Hurricane María fall 1.2, 10.2, 29.4, 44.4 and 14.7% in the five classes (the report's table 5: 1.2, 10.0, 29.4, 44.6 and 14.9%), so the tiles are the published map. Each 2020 census block with residents counts whole in the class of the pixel under its internal point (the point the Census Bureau guarantees lies inside the block), in the barrio whose outline holds the point; a municipio is the sum of its barrios. A block that a class edge crosses is counted on one side, so a barrio's figure is rough (the same rule as the exposure series). 1,080 residents live in blocks whose point falls on a pixel the map leaves unclassified (the coast) and count as not in these classes.",
+    "method": "landslide.py reads the 7,294 PNG tiles of zoom 15 that cover the main island (4.8 m a pixel in Web Mercator, about 4.5 m on the ground), turns each pixel's color back into its class (gray Low, yellow Moderate, orange High, red Very High, blue-violet Extremely High; the build stops on any other color) and counts each pixel's ground area in the barrio whose outline holds its center (or the nearest within about 1 km, for the generalized coast). No raster library is used: the PNGs are decoded with zlib and numpy. Checks against the report, run at every build: the classes cover 40.0, 30.0, 20.0, 9.0 and 1.0% of the 8,739 km2 classified (the report: 40, 30, 20, 9 and 1% of 8,700 km2), and the 71,431 slope failures of Hurricane María fall 1.2, 10.2, 29.4, 44.4 and 14.7% in the five classes (the report's table 5: 1.2, 10.0, 29.4, 44.6 and 14.9%), so the tiles are the published map. Each 2020 census block with residents counts whole in the class of the pixel under its internal point (the point the Census Bureau guarantees lies inside the block), in the barrio whose outline holds the point; a municipio is the sum of its barrios. A block that a class edge crosses is counted on one side, so a barrio's figure is rough (the same rule as the exposure series). 1,080 residents live in blocks whose point falls on a pixel the map leaves unclassified (the coast) and count as not in these classes.",
     "sources": [
       "usgs_landslide_map",
       "census_tiger"
@@ -182,7 +182,7 @@
       "last": 2020,
       "frequency": "One model, published in 2020 (its GIS layer in 2021). The build checks the first author's copy for an edit (refresh unit landslide)."
     },
-    "method": "landslide.py reads the 7,294 PNG tiles of zoom 15 that cover the main island (4.8 m a pixel in Web Mercator, about 4.5 m on the ground), turns each pixel's colour back into its class (grey Low, yellow Moderate, orange High, red Very High, blue-violet Extremely High; the build stops on any other colour) and counts each pixel's ground area in the barrio whose outline holds its centre (or the nearest within about 1 km, for the generalised coast). No raster library is used: the PNGs are decoded with zlib and numpy. Checks against the report, run at every build: the classes cover 40.0, 30.0, 20.0, 9.0 and 1.0% of the 8,739 km2 classified (the report: 40, 30, 20, 9 and 1% of 8,700 km2), and the 71,431 slope failures of Hurricane María fall 1.2, 10.2, 29.4, 44.4 and 14.7% in the five classes (the report's table 5: 1.2, 10.0, 29.4, 44.6 and 14.9%), so the tiles are the published map. Residents are counted as for the number of residents in these classes, over all the 2020 census residents of the area (geo/crosswalk.json).",
+    "method": "landslide.py reads the 7,294 PNG tiles of zoom 15 that cover the main island (4.8 m a pixel in Web Mercator, about 4.5 m on the ground), turns each pixel's color back into its class (gray Low, yellow Moderate, orange High, red Very High, blue-violet Extremely High; the build stops on any other color) and counts each pixel's ground area in the barrio whose outline holds its center (or the nearest within about 1 km, for the generalized coast). No raster library is used: the PNGs are decoded with zlib and numpy. Checks against the report, run at every build: the classes cover 40.0, 30.0, 20.0, 9.0 and 1.0% of the 8,739 km2 classified (the report: 40, 30, 20, 9 and 1% of 8,700 km2), and the 71,431 slope failures of Hurricane María fall 1.2, 10.2, 29.4, 44.4 and 14.7% in the five classes (the report's table 5: 1.2, 10.0, 29.4, 44.6 and 14.9%), so the tiles are the published map. Residents are counted as for the number of residents in these classes, over all the 2020 census residents of the area (geo/crosswalk.json).",
     "sources": [
       "usgs_landslide_map",
       "census_tiger"
@@ -238,7 +238,7 @@
       "last": 2020,
       "frequency": "One model, published in 2020 (its GIS layer in 2021). The build checks the first author's copy for an edit (refresh unit landslide)."
     },
-    "method": "landslide.py reads the map as for landslide.ls_land_high_pct (the first author's tiles at zoom 15, each pixel's colour turned back into its class, checked against the report at every build) and divides the area of the Low class in each barrio by all its classified area; a municipio's and Puerto Rico's shares come from the areas of their barrios.",
+    "method": "landslide.py reads the map as for landslide.ls_land_high_pct (the first author's tiles at zoom 15, each pixel's color turned back into its class, checked against the report at every build) and divides the area of the Low class in each barrio by all its classified area; a municipio's and Puerto Rico's shares come from the areas of their barrios.",
     "sources": [
       "usgs_landslide_map",
       "census_tiger"
@@ -292,7 +292,7 @@
       "last": 2020,
       "frequency": "One model, published in 2020 (its GIS layer in 2021). The build checks the first author's copy for an edit (refresh unit landslide)."
     },
-    "method": "landslide.py reads the map as for landslide.ls_land_high_pct (the first author's tiles at zoom 15, each pixel's colour turned back into its class, checked against the report at every build) and divides the area of the Moderate class in each barrio by all its classified area; a municipio's and Puerto Rico's shares come from the areas of their barrios.",
+    "method": "landslide.py reads the map as for landslide.ls_land_high_pct (the first author's tiles at zoom 15, each pixel's color turned back into its class, checked against the report at every build) and divides the area of the Moderate class in each barrio by all its classified area; a municipio's and Puerto Rico's shares come from the areas of their barrios.",
     "sources": [
       "usgs_landslide_map",
       "census_tiger"
@@ -346,7 +346,7 @@
       "last": 2020,
       "frequency": "One model, published in 2020 (its GIS layer in 2021). The build checks the first author's copy for an edit (refresh unit landslide)."
     },
-    "method": "landslide.py reads the map as for landslide.ls_land_high_pct (the first author's tiles at zoom 15, each pixel's colour turned back into its class, checked against the report at every build) and divides the area of the High class in each barrio by all its classified area; a municipio's and Puerto Rico's shares come from the areas of their barrios.",
+    "method": "landslide.py reads the map as for landslide.ls_land_high_pct (the first author's tiles at zoom 15, each pixel's color turned back into its class, checked against the report at every build) and divides the area of the High class in each barrio by all its classified area; a municipio's and Puerto Rico's shares come from the areas of their barrios.",
     "sources": [
       "usgs_landslide_map",
       "census_tiger"
@@ -400,7 +400,7 @@
       "last": 2020,
       "frequency": "One model, published in 2020 (its GIS layer in 2021). The build checks the first author's copy for an edit (refresh unit landslide)."
     },
-    "method": "landslide.py reads the map as for landslide.ls_land_high_pct (the first author's tiles at zoom 15, each pixel's colour turned back into its class, checked against the report at every build) and divides the area of the Very High class in each barrio by all its classified area; a municipio's and Puerto Rico's shares come from the areas of their barrios.",
+    "method": "landslide.py reads the map as for landslide.ls_land_high_pct (the first author's tiles at zoom 15, each pixel's color turned back into its class, checked against the report at every build) and divides the area of the Very High class in each barrio by all its classified area; a municipio's and Puerto Rico's shares come from the areas of their barrios.",
     "sources": [
       "usgs_landslide_map",
       "census_tiger"
@@ -454,7 +454,7 @@
       "last": 2020,
       "frequency": "One model, published in 2020 (its GIS layer in 2021). The build checks the first author's copy for an edit (refresh unit landslide)."
     },
-    "method": "landslide.py reads the map as for landslide.ls_land_high_pct (the first author's tiles at zoom 15, each pixel's colour turned back into its class, checked against the report at every build) and divides the area of the Extremely High class in each barrio by all its classified area; a municipio's and Puerto Rico's shares come from the areas of their barrios.",
+    "method": "landslide.py reads the map as for landslide.ls_land_high_pct (the first author's tiles at zoom 15, each pixel's color turned back into its class, checked against the report at every build) and divides the area of the Extremely High class in each barrio by all its classified area; a municipio's and Puerto Rico's shares come from the areas of their barrios.",
     "sources": [
       "usgs_landslide_map",
       "census_tiger"

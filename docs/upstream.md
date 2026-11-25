@@ -69,7 +69,7 @@ Building this step found that NHDPlus links each river's last reach to the next 
 
 - A count is not a load: a wastewater plant may discharge below the reservoir, and most homes outside the towns are not on a sewer.
 - In the northern karst, water also moves underground: the surface land is not all the water that arrives.
-- Some reservoirs also receive water piped or channelled from another basin.
+- Some reservoirs also receive water piped or channeled from another basin.
 - Impaired waters (EPA ATTAINS) were in the plan but are not added: the ATTAINS file is not in the local cache.
 
 ## 6. Rebuilding

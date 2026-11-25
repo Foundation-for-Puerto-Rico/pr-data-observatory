@@ -2,18 +2,18 @@
 
 The 2D map (`index.html`) and the 3D view (`3d.html`) write what they show in the address's hash, and their links to each other carry the whole hash. Switching views keeps the place, the extent, the layers, the measure, the Economy layers and their year, the selected municipality, the route and the base map. One file sets the schema for both views: `site/js/core/viewstate.js` (since 2026-10-26, branch `view-state`, HANDOFF decision 63).
 
-Before this change, the 2D→3D link carried only the camera's centre and zoom (`c=`), the route (`r=`) and the base map (`bm=`). The 3D view never wrote its own state to the address: MapLibre's `hash: false`, and only the route planner and the base-map switcher wrote `c=`, `r=` and `bm=`.
+Before this change, the 2D→3D link carried only the camera's center and zoom (`c=`), the route (`r=`) and the base map (`bm=`). The 3D view never wrote its own state to the address: MapLibre's `hash: false`, and only the route planner and the base-map switcher wrote `c=`, `r=` and `bm=`.
 
-## 1. What each view has, and what it honours
+## 1. What each view has, and what it honors
 
 | State | 2D map | 3D view | Hash key | Shared |
 |---|---|---|---|---|
 | Selected municipality | its card (`S.selected`, `selectMuni`) | its card (`muniCard`), opened on load | bare first part (`#Ponce&…`) | both ways |
-| Camera centre and zoom | Leaflet centre and zoom | MapLibre centre and zoom (one level less for the same scale: its tiles are 512 px) | `c=lat,lng,zoom` (zoom in Leaflet units) | both ways |
+| Camera center and zoom | Leaflet center and zoom | MapLibre center and zoom (one level less for the same scale: its tiles are 512 px) | `c=lat,lng,zoom` (zoom in Leaflet units) | both ways |
 | Bearing and pitch | none (flat, north up) | MapLibre bearing and pitch | `b=`, `p=` | 3D only; the 2D map keeps them in the address so a return to 3D finds them |
 | Layers | 23 switches (`LAYER_KEYS`) | 28 switches, the 3D scene's two settings among them | `l=` | the 22 layers of both views both ways; one-view layers are kept and not drawn |
 | Measure of the municipios | the shading (`#choro`) | the columns (`#lyCols`, `#metric`: the 2D measures but the three "shown" ones, which count what the 2D filters let through, and a few more) | `s=` | both ways |
-| Economy layers and their mode | Shaded (`f`, or `b` by barrio) or Symbol (`s`), with ramp, classes and opacity | the columns' "Any dataset" option: a height dataset and a colour dataset | `e=` | both ways (section 3) |
+| Economy layers and their mode | Shaded (`f`, or `b` by barrio) or Symbol (`s`), with ramp, classes and opacity | the columns' "Any dataset" option: a height dataset and a color dataset | `e=` | both ways (section 3) |
 | Economy year | the year bar | the columns' Year menu (`#engY`) | `ey=` | both ways |
 | Dollars' base year, composite, scenario | yes | none | `eb=`, `ix=`, `sc=` | 2D only; kept by 3D |
 | Places view | pins or hexagons | none (points or heat map, not in the address) | `pv=` | 2D only; kept by 3D |
@@ -42,16 +42,16 @@ Before this change, the 2D→3D link carried only the camera's centre and zoom (
 
 ## 3. The Economy layers and the 3D columns
 
-The 2D map's Economy tab draws up to two Shaded layers and any number of Symbol layers. The 3D columns show one dataset as the height and one as the colour. `econColumns` reads `e=` this way:
+The 2D map's Economy tab draws up to two Shaded layers and any number of Symbol layers. The 3D columns show one dataset as the height and one as the color. `econColumns` reads `e=` this way:
 - **Height:** the first Symbol layer (the size of a symbol is a quantity, like a column's height), or else the first Shaded layer.
-- **Colour:** the first Shaded layer, when it is another dataset.
+- **Color:** the first Shaded layer, when it is another dataset.
 - Each takes the rescaling its token names, when the dataset offers it.
 
 `econOf` writes them back:
-- the colour as a Shaded layer and the height as a Symbol layer;
-- or one Shaded layer when the colour is the height.
+- the color as a Shaded layer and the height as a Symbol layer;
+- or one Shaded layer when the color is the height.
 
-Tokens that still say the same thing are kept whole, with their ramp, classes, opacity and colour. A round trip that changes nothing gives back the 2D map's `e=` unchanged.
+Tokens that still say the same thing are kept whole, with their ramp, classes, opacity and color. A round trip that changes nothing gives back the 2D map's `e=` unchanged.
 
 The 3D view writes `s=`, `e=` and `ey=` only once its columns have been changed in this view (`VS.measure`). Until then, the three stay as the address had them.
 - **A measure picked in 3D:** writes `s=` and takes `e=` and `ey=` out. The 2D map draws its Economy layers over the shading, so keeping them would hide the measure picked.

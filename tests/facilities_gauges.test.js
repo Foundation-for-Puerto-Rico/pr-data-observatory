@@ -47,7 +47,7 @@ test('the live reading of a river: one request with every gauge, cubic feet per 
     global.fetch = async (url) => { asked.push(url); return answer([{ monitoring_location_id: r0.usgs, time: '2026-11-11T14:30:00+00:00', value: '41.5' }])(); };
     await F.live('reservoirs', r);
     assert.ok(asked[asked.length - 1].includes('parameter_code=72376'));
-    assert.strictEqual(r0.live.level, 41.5, 'a reservoir level is in metres already');
+    assert.strictEqual(r0.live.level, 41.5, 'a reservoir level is in meters already');
     await F.live('fire', {});
     assert.strictEqual(asked.length, 3, 'the other layers ask nothing: the river flows, the river levels and the reservoirs');
   } finally { global.fetch = old; }
@@ -58,7 +58,7 @@ test('the pop-up of every river gauge: the flow, its unit, the usual range, the 
   for (const f of d.features) {
     const p = f.properties, html = F.popup('rivers', { usgs: p.usgs }, d);   // the 3D view hands over the id; the pop-up reads the file's feature
     assert.ok(html.includes(p.name.replace(/&/g, '&amp;')), p.usgs);
-    assert.match(html, /m³\/s \(cubic metres of water per second\)/);
+    assert.match(html, /m³\/s \(cubic meters of water per second\)/);
     assert.match(html, /A flow higher than usual is not a flood warning\./);
     assert.ok(html.includes('https://waterdata.usgs.gov/monitoring-location/' + p.usgs + '/'));
     assert.match(html, /(Lower than usual|Usual|Higher than usual) for this time of year|No usual range for this week/);
@@ -79,7 +79,7 @@ test('a flow of zero or far above the usual range still draws (the chart\'s scal
   assert.match(F.popup('rivers', p, d), /Higher than usual for this time of year/);
 });
 
-test('the reservoir pop-up is what it was: metres above mean sea level, a 7-day change, a linear chart', () => {
+test('the reservoir pop-up is what it was: meters above mean sea level, a 7-day change, a linear chart', () => {
   const d = load('reservoirs.geojson'), p = d.features[0].properties, html = F.popup('reservoirs', p, d);
   assert.match(html, /m above mean sea level/);
   assert.ok(!/m³\/s|flood warning/.test(html));
@@ -120,7 +120,7 @@ test('Groundwater levels is a layer of its own: a switch, a file, a help text, a
   assert.ok(F.TYPES.includes('Groundwater well'), 'the type the file holds is translated');
 });
 
-test('the live reading of a well: one request, feet turned into metres; a failure keeps the depths of the file', async () => {
+test('the live reading of a well: one request, feet turned into meters; a failure keeps the depths of the file', async () => {
   const d = load('groundwater.geojson'), a = d.features[0].properties;
   const asked = [], old = global.fetch;
   try {
@@ -186,7 +186,7 @@ test('Rainfall is a layer of its own: a switch, a file, a help text, and a live 
   assert.ok(F.TYPES.includes('Rain gauge'), 'the type the file holds is translated');
 });
 
-test('the live rain: the last 24 hours added up from CSV, inches turned into millimetres, then the daily totals; a failure is said', async () => {
+test('the live rain: the last 24 hours added up from CSV, inches turned into millimeters, then the daily totals; a failure is said', async () => {
   const d = load('rain_gauges.geojson'), a = d.features[0].properties, b = d.features[1].properties;
   const asked = [], old = global.fetch;
   try {

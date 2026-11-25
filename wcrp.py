@@ -11,7 +11,7 @@ is points, not outlines, and each point says where it comes from (column ubicaci
     comunidad_especial  a point inside the Comunidad Especial with the same name in the same municipality (comunidades.geojson)
     osm                 the OpenStreetMap place or landmark with the same name, or one the plan names (gazetteer.json)
     barrio_censo        the Census barrio with the same name, or the one the plan names (gazetteer.json)
-    pueblo              the town centre, for the Centro Urbano and Casco Urbano plans
+    pueblo              the town center, for the Centro Urbano and Casco Urbano plans
     manual              coordinates the plan itself gives; nota cites the page
 
 Plans for a population group rather than an area (people without a home in Ponce, immigrant and vulnerable populations in
@@ -41,7 +41,7 @@ CSV = ROOT / "wcrp_comunidades.csv"
 COLS = ["comunidad", "municipio", "region", "estado", "subrecipiente", "ubicacion", "referencia", "lat", "lng", "nota"]
 UBICACION = {"comunidad_especial", "osm", "barrio_censo", "pueblo", "manual"}
 PUBLISH = ["comunidad", "municipio", "region", "estado", "subrecipiente", "ubicacion", "referencia"]
-CE_MATCH = 0.8   # ponytail: difflib ratio on normalised names; every match is reviewed in the CSV, so a looser cut is fine
+CE_MATCH = 0.8   # ponytail: difflib ratio on normalized names; every match is reviewed in the CSV, so a looser cut is fine
 PREFIX = re.compile(r"^(barrio|barriada|parcelas|sector|comunidad|la|el|los|las) ")
 
 
@@ -55,7 +55,7 @@ def norm(s):
 
 
 def candidates():
-    """{municipio: {kind: [(normalised name, name, lat, lng)]}} from the Comunidades Especiales and the gazetteer."""
+    """{municipio: {kind: [(normalized name, name, lat, lng)]}} from the Comunidades Especiales and the gazetteer."""
     idx = {}
     for f in json.loads((OUT / "comunidades.geojson").read_text(encoding="utf-8"))["features"]:
         p, pt = f["properties"], shape(f["geometry"]).representative_point()

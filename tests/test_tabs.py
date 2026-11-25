@@ -3,7 +3,7 @@
   python -m unittest tests.test_tabs
 
 Every old pane keeps its id (tab-<name>) and its name for showTab, so links, Ask and the code that opens a tab by name keep working; each pane sits under one
-main tab and is labelled by its sub-tab; the 3D view keeps its own tabs; the About tab's first steps name the new tabs, not the old ones.
+main tab and is labeled by its sub-tab; the 3D view keeps its own tabs; the About tab's first steps name the new tabs, not the old ones.
 """
 import re
 import unittest

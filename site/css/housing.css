@@ -17,7 +17,7 @@ body.research .topbar .btn { text-decoration: none; height: 34px; }
 .toc a.ka-tab[aria-current="page"] { background: var(--color-primary-strong); color: #fff; }
 .toc .ka-sep { flex: none; width: 1px; align-self: stretch; margin: 8px 6px; background: var(--color-border); }
 /* an area in review (js/core/knowledge.js): its tab carries a small marker, and its page only the in-review message */
-/* the tab of an area in review looks exactly like the others (size, weight, colour, spacing, and the active style on its own page); only the badge inside it differs */
+/* the tab of an area in review looks exactly like the others (size, weight, color, spacing, and the active style on its own page); only the badge inside it differs */
 .ka-mark { display: inline-block; font-size: 10px; line-height: 14px; font-weight: 600; background: var(--tint-yellow-bg); color: var(--tint-yellow-fg); border-radius: 8px; padding: 0 6px; margin-left: 2px; white-space: nowrap; }
 /* the header of an area page (Knowledge plan PR 2): Knowledge › its topic on the map, the "All areas" menu, its status and date; the page's sections follow the divider */
 .toc .ka-tabs { align-items: center; gap: 4px; }

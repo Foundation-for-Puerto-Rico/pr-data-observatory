@@ -1,4 +1,4 @@
-/* The Power plants layer of core/facilities.js (HANDOFF decision 104, step 1): circle area by MW, colour by main technology, a planned plant hollow, the pop-up and
+/* The Power plants layer of core/facilities.js (HANDOFF decision 104, step 1): circle area by MW, color by main technology, a planned plant hollow, the pop-up and
    the legend, on the published file (power_plants.py).
      node --test tests/facilities_plants.test.js */
 const test = require('node:test');
@@ -9,15 +9,15 @@ const path = require('path');
 const F = require('../site/js/core/facilities.js');
 const d = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'site', 'data', 'power_plants.geojson'), 'utf8'));
 
-test('Power plants is a sized layer with a switch, a file, a help text and a colour for every technology the file holds', () => {
+test('Power plants is a sized layer with a switch, a file, a help text and a color for every technology the file holds', () => {
   const L = F.LAYERS.plants;
   assert.strictEqual(L.id, 'lyPlants');
   assert.strictEqual(L.file, 'power_plants.geojson');
   assert.ok(L.sized && !L.area && !L.line);
   assert.ok(F.HELP_TEXT.fac_plants && /owners are not shown/.test(F.HELP_TEXT.fac_plants[1]) && /Rooftop solar/.test(F.HELP_TEXT.fac_plants[1]));
   assert.ok(F.TYPES.includes('Power plant'), 'the type the file holds is translated');
-  for (const f of d.features) assert.ok(L.sized.colors[f.properties.tech], `no colour for ${f.properties.tech}`);
-  assert.strictEqual(new Set(Object.values(L.sized.colors)).size, L.sized.cats.length, 'one colour per technology');
+  for (const f of d.features) assert.ok(L.sized.colors[f.properties.tech], `no color for ${f.properties.tech}`);
+  assert.strictEqual(new Set(Object.values(L.sized.colors)).size, L.sized.cats.length, 'one color per technology');
 });
 
 test('circle AREA is in proportion to MW, with a smallest radius; a planned plant is drawn hollow', () => {

@@ -276,7 +276,7 @@
     "group": "Stops, stations and terminals",
     "kind": "variable",
     "plain": "Where the point is, as latitude and longitude in decimal degrees.",
-    "definition": "Latitude (lat, degrees north) and longitude (lng, degrees east, so negative in Puerto Rico) in the World Geodetic System 1984 (WGS 84), the reference system used by satellite navigation. Scheduled stops: the feed's coordinates rounded to 5 decimals (about 1 m). OpenStreetMap (OSM) points: 6 decimals; for areas such as a station building, the centre point. Federal Aviation Administration (FAA) airports: the position in the FAA layer, 6 decimals. In the 2026-10 snapshot, latitudes run from 17.965554 to 18.507643 and longitudes from -67.931886 to -65.30252.",
+    "definition": "Latitude (lat, degrees north) and longitude (lng, degrees east, so negative in Puerto Rico) in the World Geodetic System 1984 (WGS 84), the reference system used by satellite navigation. Scheduled stops: the feed's coordinates rounded to 5 decimals (about 1 m). OpenStreetMap (OSM) points: 6 decimals; for areas such as a station building, the center point. Federal Aviation Administration (FAA) airports: the position in the FAA layer, 6 decimals. In the 2026-10 snapshot, latitudes run from 17.965554 to 18.507643 and longitudes from -67.931886 to -65.30252.",
     "unit": "decimal degrees (WGS 84)",
     "value_type": "geometry",
     "geography": "Puerto Rico, point locations",
@@ -293,9 +293,9 @@
       "osm",
       "faa_airports"
     ],
-    "source_detail": "GTFS stops.txt fields stop_lat and stop_lon; OpenStreetMap node position or way centre; FAA Aviation Facilities layer 0 of the National Transportation Atlas Database, point geometry",
+    "source_detail": "GTFS stops.txt fields stop_lat and stop_lon; OpenStreetMap node position or way center; FAA Aviation Facilities layer 0 of the National Transportation Atlas Database, point geometry",
     "caveats": [
-      "Positions are as precise as the source. A scheduled stop can sit some metres from the real pole or shelter.",
+      "Positions are as precise as the source. A scheduled stop can sit some meters from the real pole or shelter.",
       "The sign correction is a rule on the longitude only; it does not test whether the stop is on a road."
     ],
     "see_also": [
@@ -816,7 +816,7 @@
     "how_to_read": "Use true as a positive statement. Do not read false as not accessible.",
     "caveats": [
       "In the Autoridad de Transporte Integrado (ATI) feed read on 2026-10-02, 1,317 stops have an empty wheelchair_boarding value, 86 have 0 (no information in the GTFS standard) and 34 have 1. In the municipal feeds of the same date, most stops that are not true have an empty value, and Ponce's feed has no such column. The OSM points are true only when tagged yes.",
-      "The observatory does not check vehicles, ramps or kerbs.",
+      "The observatory does not check vehicles, ramps or curbs.",
       "True is the publisher's own statement, not checked on the ground. In the 2026-10 snapshot, seven municipal feeds mark every stop true (Bayamón, Coamo, Jayuya, Orocovis, Patillas, Utuado and Vieques), while 16 of the 25 feeds have no true stop. Counts or shares of true stops therefore compare how the feeds were filled in, not how accessible each place is. Do not compare across operators or municipalities."
     ],
     "see_also": [
@@ -904,7 +904,7 @@
       "last": 2026,
       "frequency": "Scheduled stops: re-read every night at 04:17 Puerto Rico time and rewritten only when a feed changes. OpenStreetMap points and FAA airports: read at each full build, a rebuild of all the observatory's data (the 2026-10 snapshot used OpenStreetMap data of 2026-10-01)."
     },
-    "method": "At a full build, each point is tested against the Census Bureau's generalized (1:500,000) municipality boundaries, clipped to the shoreline (the legal boundaries run 3 nautical miles into the sea, so they are not used). A point outside every polygon is given the municipality whose polygon is nearest (muni_locate.py), so no point is null. The nightly refresh re-tests only the scheduled stops, against the web-simplified copy of those boundaries (municipios.geojson), with the same nearest-centre fallback.",
+    "method": "At a full build, each point is tested against the Census Bureau's generalized (1:500,000) municipality boundaries, clipped to the shoreline (the legal boundaries run 3 nautical miles into the sea, so they are not used). A point outside every polygon is given the municipality whose polygon is nearest (muni_locate.py), so no point is null. The nightly refresh re-tests only the scheduled stops, against the web-simplified copy of those boundaries (municipios.geojson), with the same nearest-center fallback.",
     "sources": [
       "census_tiger",
       "ati_gtfs",
@@ -917,7 +917,7 @@
       "The municipality of the point is not necessarily the municipality of the operator.",
       "The nightly refresh tests scheduled stops against boundaries simplified for the web (about 20 m), so a stop right on a boundary can fall on either side of the full-detail boundary that a full build uses.",
       "The city field of the Federal Aviation Administration (FAA) airport list can differ: the main San Juan airport (SJU) has city San Juan but lies in the municipality of Carolina.",
-      "Until the 2026-10 access update the nightly refresh left a stop outside every polygon without a municipality (11 scheduled stops, 4 of them ferry terminals, were null). It then used the nearest centre point, as the full build did. Since the 2026-11 fix both use the nearest polygon, which moved 7 scheduled stops: 5 on Cataño's waterfront from San Juan to Cataño, one from Carolina to Loíza and one from Maunabo to Patillas."
+      "Until the 2026-10 access update the nightly refresh left a stop outside every polygon without a municipality (11 scheduled stops, 4 of them ferry terminals, were null). It then used the nearest center point, as the full build did. Since the 2026-11 fix both use the nearest polygon, which moved 7 scheduled stops: 5 on Cataño's waterfront from San Juan to Cataño, one from Carolina to Loíza and one from Maunabo to Patillas."
     ],
     "see_also": [
       "transit.airport_city",
@@ -1169,7 +1169,7 @@
     "group": "Routes",
     "kind": "layer",
     "plain": "The lines of public transit routes: the Tren Urbano, buses and ferries of Autoridad de Transporte Integrado (ATI), municipal routes, and públicos and trolley routes that volunteers mapped. The 2026-10 snapshot has 165 routes. Of these, only 50 lines come from an operator's own route shape; the rest were drawn by the observatory along roads, or by volunteers.",
-    "definition": "The file transit_routes.geojson has one feature per route. Each is one line made of one or more parts (GeoJSON type MultiLineString; 1 to 94 parts in the 2026-10 snapshot) with properties for the operator, names, mode, trips per day, first and last departure and how the line was drawn. In the 2026-10 snapshot, 38 routes come from the ATI feed, 111 from 24 municipal feeds and 16 from OpenStreetMap (OSM). On the map, line colour follows the mode and the type of operator, line width grows with weekday trips, and the line style shows how the line was drawn.",
+    "definition": "The file transit_routes.geojson has one feature per route. Each is one line made of one or more parts (GeoJSON type MultiLineString; 1 to 94 parts in the 2026-10 snapshot) with properties for the operator, names, mode, trips per day, first and last departure and how the line was drawn. In the 2026-10 snapshot, 38 routes come from the ATI feed, 111 from 24 municipal feeds and 16 from OpenStreetMap (OSM). On the map, line color follows the mode and the type of operator, line width grows with weekday trips, and the line style shows how the line was drawn.",
     "unit": "routes (lines)",
     "value_type": "geometry",
     "geography": "165 routes (2026-10 snapshot)",
@@ -1222,7 +1222,7 @@
     "group": "Routes",
     "kind": "method",
     "plain": "A route line is the operator's own shape when the feed has one, otherwise a path along roads between the stops. If the stop order looks wrong the observatory infers one, and if nothing works it joins the stops with straight dotted lines.",
-    "definition": "The counts below are for the 2026-10 snapshot. 1. Feed shape: if the feed lists a route shape (the line the operator publishes for the path of a route), the observatory keeps up to the two most used shapes of the route (usually one per direction). 50 routes are drawn this way, including every Autoridad de Transporte Integrado (ATI) route. 2. Road-snapped: with no shape, the observatory takes the stops of the longest trip in each direction and links each pair of neighbouring stops by the fastest road path in the OpenStreetMap road network (roads.bin). 94 routes are drawn this way. 3. Inferred order: if a feed lists its stops out of travel order, the observatory picks a plausible order and then snaps it to roads. 5 routes are drawn this way, all from Patillas. 4. Straight dotted: if too little of a route can be snapped, the stops are joined by straight lines and drawn dotted. No route uses this in the 2026-10 snapshot. 5. OpenStreetMap: the 16 públicos and trolley routes are drawn from the lines volunteers mapped.",
+    "definition": "The counts below are for the 2026-10 snapshot. 1. Feed shape: if the feed lists a route shape (the line the operator publishes for the path of a route), the observatory keeps up to the two most used shapes of the route (usually one per direction). 50 routes are drawn this way, including every Autoridad de Transporte Integrado (ATI) route. 2. Road-snapped: with no shape, the observatory takes the stops of the longest trip in each direction and links each pair of neighboring stops by the fastest road path in the OpenStreetMap road network (roads.bin). 94 routes are drawn this way. 3. Inferred order: if a feed lists its stops out of travel order, the observatory picks a plausible order and then snaps it to roads. 5 routes are drawn this way, all from Patillas. 4. Straight dotted: if too little of a route can be snapped, the stops are joined by straight lines and drawn dotted. No route uses this in the 2026-10 snapshot. 5. OpenStreetMap: the 16 públicos and trolley routes are drawn from the lines volunteers mapped.",
     "unit": "not a measured value (a method)",
     "value_type": "text",
     "geography": "165 routes (2026-10 snapshot)",
@@ -1232,7 +1232,7 @@
       "last": 2026,
       "frequency": "Feeds are re-read every night at 04:17 Puerto Rico time and the files are rewritten only when a feed changes. Snapshot built 2026-10-02."
     },
-    "method": "Road snapping: each stop is moved to the nearest road within 500 m; a leg is accepted if the road path is no longer than 3 times the straight distance plus 400 m; stops less than 25 m apart are joined directly. A route is kept as road-snapped only if at least 60% of the legs in each direction follow a road; otherwise it falls back to straight lines. The line is then simplified (tolerance about 3 m). Inferred order: a feed is flagged when the stop order has a zig-zag ratio above 2.5 (the length of the path through the stops in listed order divided by the length of a nearest-neighbour tour; real routes sit near 1 to 2) or when the stop names are in alphabetical order. The order is then rebuilt from the terminal or first stop by always going to the nearest unvisited stop by road, improved by reversing stretches of the order while that shortens the road distance, and the line returns to its start; for more than 45 distinct stops the order is not rebuilt and the route falls back to straight lines. A route whose stops did not change keeps its previous line (see the entry on the route line fingerprint).",
+    "method": "Road snapping: each stop is moved to the nearest road within 500 m; a leg is accepted if the road path is no longer than 3 times the straight distance plus 400 m; stops less than 25 m apart are joined directly. A route is kept as road-snapped only if at least 60% of the legs in each direction follow a road; otherwise it falls back to straight lines. The line is then simplified (tolerance about 3 m). Inferred order: a feed is flagged when the stop order has a zig-zag ratio above 2.5 (the length of the path through the stops in listed order divided by the length of a nearest-neighbor tour; real routes sit near 1 to 2) or when the stop names are in alphabetical order. The order is then rebuilt from the terminal or first stop by always going to the nearest unvisited stop by road, improved by reversing stretches of the order while that shortens the road distance, and the line returns to its start; for more than 45 distinct stops the order is not rebuilt and the route falls back to straight lines. A route whose stops did not change keeps its previous line (see the entry on the route line fingerprint).",
     "sources": [
       "ati_gtfs",
       "muni_gtfs",
@@ -1242,7 +1242,7 @@
     "caveats": [
       "Only a feed shape is the operator's own alignment. A road-snapped line is an estimate and the real street may differ.",
       "A route with an inferred order shows a plausible path, not the route the operator runs. Its times are left out of the timetable replay.",
-      "The feed's route colour is not used on the map; line colour follows the mode and the type of operator.",
+      "The feed's route color is not used on the map; line color follows the mode and the type of operator.",
       "Road-snapped lines are derived from OpenStreetMap roads, which are under the Open Database License. Credit OpenStreetMap contributors and check the license terms before reuse."
     ],
     "see_also": [
@@ -1638,7 +1638,7 @@
     ],
     "source_detail": "Set by network.py from the route mode (ROUTE_LABEL); for OpenStreetMap routes from the tags route and network",
     "caveats": [
-      "Any rail route would be labelled Tren Urbano. In the 2026-10 snapshot the only rail route is Tren Urbano."
+      "Any rail route would be labeled Tren Urbano. In the 2026-10 snapshot the only rail route is Tren Urbano."
     ],
     "see_also": [
       "transit.route_mode",
@@ -1665,14 +1665,14 @@
   },
   {
     "id": "transit.route_color",
-    "name": "Transit route colour in the feed",
+    "name": "Transit route color in the feed",
     "domain": "infrastructure.mobility",
     "domains": ["infrastructure.mobility"],
     "group": "Routes",
     "kind": "variable",
-    "plain": "The colour the operator gave the route in its feed, as a hex code such as #0000FF. The map does not use it.",
-    "definition": "The route_color of the Autoridad de Transporte Integrado (ATI) or municipal feed written as # and six hex digits, when the feed gives a valid one. In the 2026-10 snapshot it is present on 113 routes (67 different colours) and null for the other 52, including every OpenStreetMap (OSM) route.",
-    "unit": "hex colour code",
+    "plain": "The color the operator gave the route in its feed, as a hex code such as #0000FF. The map does not use it.",
+    "definition": "The route_color of the Autoridad de Transporte Integrado (ATI) or municipal feed written as # and six hex digits, when the feed gives a valid one. In the 2026-10 snapshot it is present on 113 routes (67 different colors) and null for the other 52, including every OpenStreetMap (OSM) route.",
+    "unit": "hex color code",
     "value_type": "code",
     "geography": "165 routes (2026-10 snapshot)",
     "coverage": {
@@ -1687,9 +1687,9 @@
       "muni_gtfs"
     ],
     "source_detail": "GTFS routes.txt field route_color",
-    "how_to_read": "Use it only if you want the operator's own colour scheme.",
+    "how_to_read": "Use it only if you want the operator's own color scheme.",
     "caveats": [
-      "The map and the 3D view colour lines by mode and type of operator and ignore this field: rail red, ferries teal, ATI buses blue, municipal buses green and OSM routes gold."
+      "The map and the 3D view color lines by mode and type of operator and ignore this field: rail red, ferries teal, ATI buses blue, municipal buses green and OSM routes gold."
     ],
     "see_also": [
       "transit.route_drawing"
@@ -1977,7 +1977,7 @@
       "transit.route_label"
     ],
     "values": {
-      "Carros Públicos": "9 routes in the 2026-10 snapshot, all labelled Público.",
+      "Carros Públicos": "9 routes in the 2026-10 snapshot, all labeled Público.",
       "Línea de San Juan": "2 routes in the 2026-10 snapshot.",
       "San Juan Trolley": "1 route in the 2026-10 snapshot."
     },
@@ -2477,7 +2477,7 @@
     "domains": ["infrastructure.mobility"],
     "group": "Service coverage and planning",
     "kind": "measure",
-    "plain": "How many residents live in blocks within 400 metres (about a quarter mile, in a straight line) of a scheduled stop. Using 2020 Census counts and the stops of the 2026-10-02 build, it is 925,788 of 3,285,874 residents in Puerto Rico: 28.2% counting every scheduled stop, 22.2% counting only operators whose timetable has not ended.",
+    "plain": "How many residents live in blocks within 400 meters (about a quarter mile, in a straight line) of a scheduled stop. Using 2020 Census counts and the stops of the 2026-10-02 build, it is 925,788 of 3,285,874 residents in Puerto Rico: 28.2% counting every scheduled stop, 22.2% counting only operators whose timetable has not ended.",
     "definition": "Fields served and served_pct in each municipality record of operators.json coverage. served: residents of census blocks whose nearest scheduled stop (any operator, any feed status) is 400 m or less away in a straight line. served_pct: served divided by pop, times 100, one decimal. In the 2026-10 snapshot, 40 of 78 municipalities have 0 residents within 400 m of a scheduled stop. The same values are copied into municipalities.json as pop_served_400m and pop_served_pct.",
     "unit": "residents (2020 Census); % of residents",
     "value_type": "count",
@@ -2501,7 +2501,7 @@
       "Only scheduled stops count. Stops mapped only in OpenStreetMap are not used.",
       "Stops of expired timetables still count here. In the 2026-10 snapshot, the active figures leave them out: 729,507 residents (22.2%).",
       "A block is counted at one point, so a block that straddles the 400 m line is all in or all out.",
-      "If you recompute this from the published block and stop files, the total differs by under 0.1% in the 2026-10 snapshot. Block positions in the file are rounded, and the observatory finds the nearest stop in degrees rather than metres.",
+      "If you recompute this from the published block and stop files, the total differs by under 0.1% in the 2026-10 snapshot. Block positions in the file are rounded, and the observatory finds the nearest stop in degrees rather than meters.",
       "A low or zero share can mean that the observatory found no timetable, not that no service runs. In the 2026-10 snapshot, no timetable feed was found in the registry the observatory reads for 15 municipal systems and the públicos authority, and públicos are never counted. Do not rank municipalities by this share without checking each operator's feed status.",
       "Census Bureau data are a US Government work; the Bureau asks to be cited as the source. The stop data carry the terms described in the entry on transit routes."
     ],
@@ -2585,7 +2585,7 @@
     "domains": ["infrastructure.mobility"],
     "group": "Service coverage and planning",
     "kind": "measure",
-    "plain": "How many residents live within 400 metres of a stop of Autoridad de Transporte Integrado (ATI), of a municipal system, or of both. With 2020 Census counts and the stops of the 2026-10-02 build, 487,026 residents of Puerto Rico are near an ATI stop, 609,383 are near a municipal stop and 171,389 are near both.",
+    "plain": "How many residents live within 400 meters of a stop of Autoridad de Transporte Integrado (ATI), of a municipal system, or of both. With 2020 Census counts and the stops of the 2026-10-02 build, 487,026 residents of Puerto Rico are near an ATI stop, 609,383 are near a municipal stop and 171,389 are near both.",
     "definition": "Fields served_ati, served_muni and served_both in each municipality record of operators.json coverage. served_ati: residents of blocks with at least one ATI stop within 400 m. served_muni: residents with at least one stop of a municipal operator (any scheduled stop that is not ATI's) within 400 m. served_both: residents with both. Copied into municipalities.json as pop_served_ati and pop_served_muni.",
     "unit": "residents (2020 Census)",
     "value_type": "count",
@@ -2629,8 +2629,8 @@
     "group": "Service coverage and planning",
     "kind": "variable",
     "plain": "A list of the 36,570 census blocks that had residents in the 2020 Census. Each row gives the block's position, its 2020 population and how far it is from the nearest scheduled stop.",
-    "definition": "The file population_blocks.json is a list of 36,570 rows, one for each 2020 Census block that has residents. Each row is [longitude, latitude, residents, metres], described under Codes. The rows hold 3,285,874 residents in total (2020 Census). The 2D map uses the file for service gaps and the route planner, and the 3D view uses it for the route planner. The coverage figures in operators.json are computed from the same blocks.",
-    "unit": "rows of [degrees, degrees, residents, metres]",
+    "definition": "The file population_blocks.json is a list of 36,570 rows, one for each 2020 Census block that has residents. Each row is [longitude, latitude, residents, meters], described under Codes. The rows hold 3,285,874 residents in total (2020 Census). The 2D map uses the file for service gaps and the route planner, and the 3D view uses it for the route planner. The coverage figures in operators.json are computed from the same blocks.",
+    "unit": "rows of [degrees, degrees, residents, meters]",
     "value_type": "count",
     "geography": "36,570 census blocks (2020 Census)",
     "coverage": {
@@ -2646,7 +2646,7 @@
       "muni_gtfs"
     ],
     "source_detail": "US Census Bureau TIGERweb, 2020 Census Blocks (tigerWMS_Census2020 MapServer layer 10), STATE=72, fields GEOID, POP100, INTPTLAT and INTPTLON, blocks with POP100 above 0; distances use the scheduled stops in transport.json (sources ati_gtfs and muni_gtfs)",
-    "how_to_read": "Add up residents for blocks that meet a distance rule. For example, blocks with metres of 400 or less hold the residents counted as near a stop.",
+    "how_to_read": "Add up residents for blocks that meet a distance rule. For example, blocks with meters of 400 or less hold the residents counted as near a stop.",
     "caveats": [
       "The 2020 Census applies privacy protection to block counts, so small blocks are not exact.",
       "Positions are rounded, and the distance is a straight line from the block's internal point, not from where people live in the block.",
@@ -2659,10 +2659,10 @@
       "transit.coverage_pop"
     ],
     "values": {
-      "1st value: longitude": "Longitude of the block's internal point, in decimal degrees, rounded to 4 decimals (about 11 m). The internal point is a point the Census Bureau places inside the block, usually near its centre.",
+      "1st value: longitude": "Longitude of the block's internal point, in decimal degrees, rounded to 4 decimals (about 11 m). The internal point is a point the Census Bureau places inside the block, usually near its center.",
       "2nd value: latitude": "Latitude of the block's internal point, in decimal degrees, rounded to 4 decimals.",
       "3rd value: residents": "The 2020 Census population of the block (the Census field POP100, total people counted in the block). Blocks with 0 residents are left out.",
-      "4th value: metres": "Straight-line distance in whole metres from the internal point to the nearest scheduled stop, capped at 9,999. Stops of expired timetables count. It is a distance, not a count of housing units."
+      "4th value: meters": "Straight-line distance in whole meters from the internal point to the nearest scheduled stop, capped at 9,999. Stops of expired timetables count. It is a distance, not a count of housing units."
     },
     "where": {
       "files": [
@@ -2684,9 +2684,9 @@
     "domains": ["infrastructure.mobility"],
     "group": "Service coverage and planning",
     "kind": "variable",
-    "plain": "How many metres in a straight line from the block to the closest scheduled stop. Values above 9,999 are shown as 9,999.",
-    "definition": "The fourth value of each row in population_blocks.json, in whole metres (the decimals are cut off). It uses every scheduled stop in the Autoridad de Transporte Integrado (ATI) and municipal feeds, whatever the state of the feed. In the build of 2026-10-02, values run from 2 to 9999; 6,419 blocks are capped at 9999; and 925,788 residents (28.2%) are in blocks at 400 m or less.",
-    "unit": "metres (straight line, capped at 9,999)",
+    "plain": "How many meters in a straight line from the block to the closest scheduled stop. Values above 9,999 are shown as 9,999.",
+    "definition": "The fourth value of each row in population_blocks.json, in whole meters (the decimals are cut off). It uses every scheduled stop in the Autoridad de Transporte Integrado (ATI) and municipal feeds, whatever the state of the feed. In the build of 2026-10-02, values run from 2 to 9999; 6,419 blocks are capped at 9999; and 925,788 residents (28.2%) are in blocks at 400 m or less.",
+    "unit": "meters (straight line, capped at 9,999)",
     "value_type": "level",
     "geography": "36,570 census blocks (2020 Census)",
     "coverage": {
@@ -2695,7 +2695,7 @@
       "last": 2026,
       "frequency": "Feeds are re-read every night at 04:17 Puerto Rico time and the files are rewritten only when a feed changes. Snapshot built 2026-10-02."
     },
-    "method": "network.coverage uses a spatial index to find the nearest stop and converts the degree difference to metres (111,320 m per degree of latitude, shortened for longitude).",
+    "method": "network.coverage uses a spatial index to find the nearest stop and converts the degree difference to meters (111,320 m per degree of latitude, shortened for longitude).",
     "sources": [
       "census_tiger",
       "ati_gtfs",
@@ -2773,7 +2773,7 @@
     "domains": ["infrastructure.mobility"],
     "group": "Service coverage and planning",
     "kind": "layer",
-    "plain": "Places where a stop of one transit system lies within 250 metres of a stop of another system, a starting point for looking at possible transfers. There are 366 in the 2026-10 snapshot.",
+    "plain": "Places where a stop of one transit system lies within 250 meters of a stop of another system, a starting point for looking at possible transfers. There are 366 in the 2026-10 snapshot.",
     "definition": "The transfers list in operators.json has one record for each pair of nearby stops of different operators; its keys are listed under Codes. In the 2026-10 snapshot the total found is 366 (transfers_total) and the list is cut at 600, so all are present. Most pairs involve Autoridad de Transporte Integrado (ATI): 362 of 366.",
     "unit": "pairs of stops",
     "value_type": "geometry",
@@ -2807,7 +2807,7 @@
       "bn": "Name of the second stop.",
       "lat": "Latitude of the midpoint of the two stops (5 decimals).",
       "lng": "Longitude of the midpoint of the two stops (5 decimals).",
-      "d": "Distance between the two stops in whole metres (0 to 249 in the 2026-10 snapshot)."
+      "d": "Distance between the two stops in whole meters (0 to 249 in the 2026-10 snapshot)."
     },
     "where": {
       "files": [],
@@ -2829,7 +2829,7 @@
     "kind": "method",
     "plain": "The observatory uses fixed straight-line distances. 400 m is a walk to a stop, 800 m is a service gap and 250 m is an integration point. Distances from 30 m to 2 km remove duplicate points.",
     "definition": "400 m: about a quarter mile, used for the walk rings on the map, the shares of tourism places near any mapped stop and near a stop with a current timetable, and the resident coverage. 800 m: a service gap, and the outer limit of the 'Stop 400–800 m away' and 'Only expired or unscheduled stops within 800 m' classes of the access profile. 250 m: two stops of different operators count as an integration point. 30 m: an OpenStreetMap (OSM) stop that close to a scheduled stop is treated as the same stop. 200 m (rail stations and ferry terminals) and 100 m (bus stations): OSM station points that close to a same-kind point are folded together. 2 km: an OSM aerodrome that close to a Federal Aviation Administration (FAA) airport is dropped. 500 m: how far a stop may be moved to reach a road when a route line is snapped.",
-    "unit": "metres (straight line)",
+    "unit": "meters (straight line)",
     "value_type": "level",
     "geography": "Puerto Rico",
     "coverage": {
@@ -2871,7 +2871,7 @@
     "domains": ["infrastructure.mobility"],
     "group": "Timetable replay",
     "kind": "method",
-    "plain": "Weekday trip counts show one reference day, usually Wednesday, so trips that run only on other weekdays are not included. Saturday and Sunday use their own timetables. Holidays are not modelled.",
+    "plain": "Weekday trip counts show one reference day, usually Wednesday, so trips that run only on other weekdays are not included. Saturday and Sunday use their own timetables. Holidays are not modeled.",
     "definition": "The reference weekday is Wednesday, or the first of Tuesday, Thursday, Monday or Friday that the feed actually serves. A trip counts as weekday service if its service pattern runs on that day, as Saturday service if its pattern runs on Saturday and as Sunday service if it runs on Sunday. A pattern that runs on several day types counts in each. If a trip names a service that the feed does not define, it counts as weekday service. If a feed has no calendar.txt, every service listed in calendar_dates.txt counts as running on every day type.",
     "unit": "not a measured value (a method)",
     "value_type": "text",
@@ -2890,7 +2890,7 @@
     "how_to_read": "Read weekday counts as the number of trips on a normal Wednesday, not an average of the week.",
     "caveats": [
       "The Autoridad de Transporte Integrado (ATI) feed read on 2026-10-02 has a pattern named Holiday_Service_Route_1. Its calendar covers every Monday to Friday from 2026-07-27 to 2027-05-31, but for its Monday and Wednesday pattern the feed's exceptions file removes 87 dates and adds 6. The observatory does not apply exceptions, so the 30 trips of that pattern count as ordinary weekday trips on route 1: 81 in the file, 51 without them.",
-      "Service on public holidays, school breaks or special events is not modelled.",
+      "Service on public holidays, school breaks or special events is not modeled.",
       "A feed whose patterns cover different date ranges is counted as if all ran together."
     ],
     "see_also": [
@@ -2913,7 +2913,7 @@
     "group": "Timetable replay",
     "kind": "layer",
     "plain": "Three files that hold every scheduled trip as its stops and times along its route's line, so the map and the 3D view can show vehicles on their timetable, following the roads. They are not Global Positioning System (GPS) data.",
-    "definition": "A trip is one scheduled run of a vehicle along a route, as listed in a feed (the set of GTFS files in which an operator publishes its stops, routes, trips and times). In the 2026-10 snapshot, trips.json (weekday, typical Wednesday service) holds 3,297 trips from 25 operators. trips_sa.json (Saturday) holds 1,648 trips from 4 operators: Autoridad de Transporte Integrado (ATI), Guaynabo, Juncos and Vega Alta. trips_su.json (Sunday) holds 381 trips from 1 operator, ATI. Each file has five keys: day (a label, which reads 'weekday (typical Wednesday service)' in trips.json, 'Saturday' in trips_sa.json and 'Sunday' in trips_su.json); format (2); paths (one path for each stop pattern, that is each set of trips that stop at the same places in the same order: a list of [longitude, latitude, metres from the start of the path] along the route's line, at 5 decimals); path_kind (for each path, 'line' when it follows the route's line, or 'stops' when no line fits the stops and the path joins them in straight lines); and trips (the list; see Trip record). In the 2026-10 snapshot, the 3,297 weekday trips share 222 stop patterns, 206 of them along their route's line. Only trips with at least two stop times are kept. Trips of the five Patillas routes with an inferred stop order are left out: in the 2026-10 snapshot the operator trips_weekday values in operators.json add up to 3,312, while trips.json holds 3,297 (15 Patillas trips left out). Trips of expired and expiring operators remain in the files: in the 2026-10 snapshot, 372 weekday trips belong to expired operators.",
+    "definition": "A trip is one scheduled run of a vehicle along a route, as listed in a feed (the set of GTFS files in which an operator publishes its stops, routes, trips and times). In the 2026-10 snapshot, trips.json (weekday, typical Wednesday service) holds 3,297 trips from 25 operators. trips_sa.json (Saturday) holds 1,648 trips from 4 operators: Autoridad de Transporte Integrado (ATI), Guaynabo, Juncos and Vega Alta. trips_su.json (Sunday) holds 381 trips from 1 operator, ATI. Each file has five keys: day (a label, which reads 'weekday (typical Wednesday service)' in trips.json, 'Saturday' in trips_sa.json and 'Sunday' in trips_su.json); format (2); paths (one path for each stop pattern, that is each set of trips that stop at the same places in the same order: a list of [longitude, latitude, meters from the start of the path] along the route's line, at 5 decimals); path_kind (for each path, 'line' when it follows the route's line, or 'stops' when no line fits the stops and the path joins them in straight lines); and trips (the list; see Trip record). In the 2026-10 snapshot, the 3,297 weekday trips share 222 stop patterns, 206 of them along their route's line. Only trips with at least two stop times are kept. Trips of the five Patillas routes with an inferred stop order are left out: in the 2026-10 snapshot the operator trips_weekday values in operators.json add up to 3,312, while trips.json holds 3,297 (15 Patillas trips left out). Trips of expired and expiring operators remain in the files: in the 2026-10 snapshot, 372 weekday trips belong to expired operators.",
     "unit": "trips (lists of timed stops)",
     "value_type": "geometry",
     "geography": "Puerto Rico",
@@ -3018,7 +3018,7 @@
       "timeline": "live",
       "frequency": "Recalculated every 5 seconds in your browser while the layer is on, from timetable files rewritten when a feed changes (last write: 2026-10-02)"
     },
-    "method": "updateNow in network.js. Trips of operators whose feed is expired on today's date are skipped. Holidays are not modelled.",
+    "method": "updateNow in network.js. Trips of operators whose feed is expired on today's date are skipped. Holidays are not modeled.",
     "sources": [
       "ati_gtfs",
       "muni_gtfs"
@@ -3027,7 +3027,7 @@
     "caveats": [
       "Real-time bus positions do not exist in the data; see Real-time data.",
       "The position is a straight line between stops, so a vehicle can appear off the road.",
-      "A late or cancelled vehicle is shown as on time. On a Monday or Friday the weekday file still shows the reference weekday's timetable, usually Wednesday's.",
+      "A late or canceled vehicle is shown as on time. On a Monday or Friday the weekday file still shows the reference weekday's timetable, usually Wednesday's.",
       "Only operators with a published timetable appear. Operators with no feed, públicos and OpenStreetMap routes are absent.",
       "Each marker is one scheduled trip in progress, not an identified vehicle: the trip files hold no vehicle ids. In the 2026-10 snapshot, on Saturday only 4 operators, and on Sunday only ATI, have timetable files, so a lower weekend count does not show how much service runs."
     ],

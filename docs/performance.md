@@ -237,7 +237,7 @@ The other pages are unchanged: 3D 645.4, area profile 99.5, Housing 164.4, data 
 
 The first and later files match `routes.json` on both pages.
 
-**Unchanged behaviour, checked:** the browser tests (`wcrp_page.js` 90 checks; `active_layers.js`, `ask_chat.js`, `click_order.js`, `glossary.js` and `datamgmt_page.js` all pass), `I18N.missed` stays empty after the modules load, and the About tab gets the same 33 glossary marks as on `main`.
+**Unchanged behavior, checked:** the browser tests (`wcrp_page.js` 90 checks; `active_layers.js`, `ask_chat.js`, `click_order.js`, `glossary.js` and `datamgmt_page.js` all pass), `I18N.missed` stays empty after the modules load, and the About tab gets the same 33 glossary marks as on `main`.
 
 ## Make room 4: the Economy tab and the 3D animation load on use (2026-10-29, branch `make-room-4`)
 
@@ -279,7 +279,7 @@ A colleague (2026-10-29): before adding layers, move what the first view does no
 - Which data files were fetched before and after ready. It compares this with `routes.json` and exits 2 when they differ.
   - The script logs each data file's `fetch()` call in the page, on the page's own clock. The map and the 3D view set `performance.mark('ready')` where they hide the loader, and the script notes where that mark falls in the list of calls, so before and after are decided by order, not by time (the page clock is rounded to 0.1 ms, so a call in the same step can share the mark's timestamp): files asked for later in that step (the 3D view's trips and hurricanes) count as after. The other pages use a 10 ms poller with 20 ms of slack.
 
-Lighthouse was installed afterwards (the project lead, 2026-10-15) and run; see the next section.
+Lighthouse was installed afterward (the project lead, 2026-10-15) and run; see the next section.
 
 ## Lighthouse
 

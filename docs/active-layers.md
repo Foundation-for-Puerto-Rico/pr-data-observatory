@@ -91,7 +91,7 @@ The 2D map now reads the route plan of a link (`r=`) when `network.js` loads (`p
 
 ## Layout and accessibility
 
-- **Placement:** centred at the top of the map's own element, so it moves with the map when the chat or the workbench takes part of the screen. Its layer (z-index 870) is under the legends (880 and 890) and the message (900), so it never covers them. While the chip shows, the message moves below it.
+- **Placement:** centered at the top of the map's own element, so it moves with the map when the chat or the workbench takes part of the screen. Its layer (z-index 870) is under the legends (880 and 890) and the message (900), so it never covers them. While the chip shows, the message moves below it.
 - **Open list:** above the legends and the map's buttons until it closes. Its height is set each time it opens or changes, and when the window is resized; it scrolls inside.
   - It ends 8 px above anything lower on the map in its column: the zoom buttons, the scale, the credits, the MapLibre buttons and, on the 3D view, the time bar. It is fitted again when one of them changes size while the list is open (the credits grow as the layers' sources load).
   - It also ends above a legend in its column when that leaves it at least 140 px.
@@ -101,7 +101,7 @@ The 2D map now reads the route plan of a link (`r=`) when `network.js` loads (`p
 - **Chip:** it does not shrink, so it keeps its height while a long list is open.
 - **Pattern:** the WAI-ARIA disclosure pattern. The chip is a button with `aria-expanded` and `aria-controls`. Escape, a press outside the list or the chip closes it, and Escape gives the focus back to the chip. When a layer's button removes its row, the next row's button takes the focus.
 - **Map events:** a press, scroll or double click on the chip, the list or the message does not reach the map under it.
-- **Colours:** charcoal on white; the open chip uses the blue tint (`--tint-blue-bg`, `--tint-blue-fg`). Every pair passes WCAG AA. The site has no dark mode.
+- **Colors:** charcoal on white; the open chip uses the blue tint (`--tint-blue-bg`, `--tint-blue-fg`). Every pair passes WCAG AA. The site has no dark mode.
 
 ## Weight
 

@@ -6,15 +6,15 @@ historic places and of substance use and mental health treatment facilities (cou
     python community_assets.py --refresh nps,samhsa     # download only these sources again (nps, townhall, samhsa); the others come from the cache
     python community_assets.py --check                  # rebuild from the cache and exit 1 when a published file is not what the cache gives (no network, nothing written)
 
-Sources, no key, each labelled with its own vintage:
+Sources, no key, each labeled with its own vintage:
   nps       National Park Service, National Register of Historic Places, the public (non-restricted) locations map service: layer 0 (points) and layer 1 (polygons, used
-            only for the listings that have no point; each is placed at a point inside its outline). The service's licence field says "For general public
+            only for the listings that have no point; each is placed at a point inside its outline). The service's license field says "For general public
             distribution"; a US Government work, public domain (decided by FPR on 2026-10-18). Restricted and sensitive listings (such as archaeological sites) are not in the service.
   townhall  OpenStreetMap through the Overpass API (amenity=townhall; Open Database License 1.0, credit "(c) OpenStreetMap contributors"). Refreshed by hand, as the
             police stations are: a runner cannot reach Overpass, so a clean runner keeps the published file.
   samhsa    SAMHSA, the National Directories of the National Substance Use and Mental Health Services Survey (N-SUMHSS): the substance use and the mental health
             directory, Excel files of the newest edition (found on SAMHSA's National Directories page). The directories carry SAMHSA's Public Domain Notice.
-            FindTreatment.gov's locator API states no licence, so it is not used.
+            FindTreatment.gov's locator API states no license, so it is not used.
 
 What is kept. Only the columns in KEEP reach the cache.
   - Historic places: the listing's reference number, name, resource type, city, listing date and status, and one point. The street address is never requested.
@@ -78,7 +78,7 @@ RES_TYPE = {"building": "Historic building", "structure": "Historic structure", 
 
 SOURCES = {
     "nps_nrhp": {"name": "National Park Service — National Register of Historic Places, public locations (map service)", "url": "https://www.nps.gov/subjects/nationalregister/data-downloads.htm",
-                 "license": "Public domain (US Government work; the service's licence field says 'For general public distribution')",
+                 "license": "Public domain (US Government work; the service's license field says 'For general public distribution')",
                  "note": "Listed historic places of Puerto Rico. The observatory publishes each listing's name, type, municipio, listing date and point, not its address; private residences, and listings named by a street address, are counted but not drawn. Restricted and sensitive listings are not in the service."},
     "osm": {"name": "OpenStreetMap", "url": "https://www.openstreetmap.org/copyright", "license": "Open Database License (ODbL) 1.0; © OpenStreetMap contributors",
             "note": "City halls as volunteers mapped them (amenity=townhall), read through the Overpass API. The observatory publishes each one's name, type, municipio and point, not its address, telephone or website."},

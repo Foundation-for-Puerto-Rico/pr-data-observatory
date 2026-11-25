@@ -11,7 +11,7 @@ river_gauges.py and groundwater.py.
   latest-continuous     parameter 00045, precipitation, inches: every gauge inside Puerto Rico's box that has a reading, and its point
   monitoring-locations  the name USGS gives each of those sites. Some are rain gauges of their own; many are the rain gauge of a river or reservoir station.
   daily                 parameter 00045, statistic 00006 (the sum of the day), one value a day: the history
-Rain is converted to millimetres (x 25.4).
+Rain is converted to millimeters (x 25.4).
 
 Which gauges. Every site whose precipitation reading is less than 30 days old. A gauge with fewer than 8 years of daily totals in 2011-2025 is drawn too,
 without a usual range.
@@ -41,7 +41,7 @@ import river_gauges as rg
 ROOT = Path(__file__).resolve().parent
 CACHE = ROOT / "cache" / "rain_gauges"
 OUT = hs.OUT / "rain_gauges.geojson"
-MM = 25.4              # inches to millimetres
+MM = 25.4              # inches to millimeters
 PARAM = "00045"        # precipitation, inches
 STAT = "00006"         # the sum of the day
 BBOX = "-68.0,17.6,-65.1,18.6"   # Puerto Rico with Mona, Vieques and Culebra; a site outside Puerto Rico's municipios is left out
@@ -117,7 +117,7 @@ def fetch(refresh=False):
 
 
 def mm(v):
-    """Inches to millimetres, one decimal."""
+    """Inches to millimeters, one decimal."""
     return round(float(v) * MM, 1)
 
 

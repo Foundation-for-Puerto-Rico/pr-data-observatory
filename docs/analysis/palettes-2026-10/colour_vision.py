@@ -1,17 +1,17 @@
-"""Can the colours of the twin's data layers be told apart by people with colour-vision deficiency? (plan item 6, 2026-10-06)
+"""Can the colors of the twin's data layers be told apart by people with color-vision deficiency? (plan item 6, 2026-10-06)
 
     python docs/analysis/palettes-2026-10/colour_vision.py          # prints the tables and writes colour_vision.json next to this file
 
 It reads every palette from site/js/core/palettes.js (through Node, so the numbers are always those the pages draw), simulates the three kinds of dichromacy
-(protanopia, deuteranopia, tritanopia; Machado, Oliveira and Fernandes 2009, severity 1.0) and measures how far apart colours are with CIEDE2000, a
-standard colour difference (about 2 is the smallest difference an observer notices side by side, 5 is clear, 10 or more tells a legend's classes apart at a glance).
+(protanopia, deuteranopia, tritanopia; Machado, Oliveira and Fernandes 2009, severity 1.0) and measures how far apart colors are with CIEDE2000, a
+standard color difference (about 2 is the smallest difference an observer notices side by side, 5 is clear, 10 or more tells a legend's classes apart at a glance).
 
 What is compared, for each palette and each vision (normal, protan, deutan, tritan):
-  sequential ramps     every pair of neighbouring classes, and the lightest and darkest class (the classes must stay in order)
-  diverging scale      every pair of neighbouring classes, and the two ends
+  sequential ramps     every pair of neighboring classes, and the lightest and darkest class (the classes must stay in order)
+  diverging scale      every pair of neighboring classes, and the two ends
   bivariate grid       every pair of the nine cells that share an edge, and the three corners that must stay apart
-  symbols and lines    every pair of colours (they are told apart by colour alone in a legend or a chart)
-  map background       the "no value" grey against the lightest class of each ramp
+  symbols and lines    every pair of colors (they are told apart by color alone in a legend or a chart)
+  map background       the "no value" gray against the lightest class of each ramp
 Only the numbers are computed here. What to do about a weak pair is a design decision: docs/palettes.md records the results and what was decided.
 """
 import itertools
@@ -114,7 +114,7 @@ def distance(a, b, kind):
 
 
 def pairs_of(p):
-    """{palette name: [(label, colour a, colour b)]}: what must stay apart."""
+    """{palette name: [(label, color a, color b)]}: what must stay apart."""
     out = {}
     for name, ramp in p["RAMPS"].items():
         out[f"ramp {name}"] = [(f"class {i + 1} and {i + 2}", ramp[i], ramp[i + 1]) for i in range(4)] + [("lightest and darkest", ramp[0], ramp[4]), ("lightest and the map background", ramp[0], p["NOVAL"])]

@@ -32,7 +32,7 @@ class Overlay(unittest.TestCase):
                {"kind": "City halls", "geoid": "B", "x": -66.02, "y": 18.20}]         # outside
         schools = [{"geoid": "A", "x": -66.07, "y": 18.02, "students": 300},           # inside
                    {"geoid": "A", "x": -66.30, "y": 18.02, "students": 100},           # outside
-                   {"geoid": "B", "x": -66.01, "y": 18.01, "students": None}]          # inside, enrolment not given
+                   {"geoid": "B", "x": -66.01, "y": 18.01, "students": None}]          # inside, enrollment not given
         self.fig, self.counts = fx.figures(pts, schools, {"A": [10.0, 2.5], "B": [0.0, 0.0]}, FLOOD, ["A", "B"])
 
     def test_a_point_inside_counts_and_one_outside_does_not(self):
@@ -44,7 +44,7 @@ class Overlay(unittest.TestCase):
         self.assertEqual(self.fig["fx_schools_flood_n"], [1, 1, 2])
         self.assertEqual(self.fig["fx_students_flood_n"], [300, 0, 300])
         self.assertEqual(self.fig["fx_students_flood_pct"][0], 75.0)
-        self.assertIsNone(self.fig["fx_students_flood_pct"][1], "no enrolment is known in B: no share, never a zero")
+        self.assertIsNone(self.fig["fx_students_flood_pct"][1], "no enrollment is known in B: no share, never a zero")
 
     def test_road_shares_are_of_the_municipios_own_roads_and_none_without_roads(self):
         self.assertEqual(self.fig["fx_road_flood_km"], [2.5, 0.0, 2.5])
@@ -78,7 +78,7 @@ class Overlay(unittest.TestCase):
 
     def test_a_road_is_read_every_20_m_on_the_landslide_map(self):
         from shapely.geometry import LineString
-        line = LineString([(0, 0), (1000, 0)])   # 1 km, in metres; the west half is on high ground
+        line = LineString([(0, 0), (1000, 0)])   # 1 km, in meters; the west half is on high ground
         km = fx.road_ls_km([("A", line)], lambda lon, lat: (lon * fx.KX < 500).astype(int) * 4)
         self.assertAlmostEqual(km["A"], 0.5, places=3)
 

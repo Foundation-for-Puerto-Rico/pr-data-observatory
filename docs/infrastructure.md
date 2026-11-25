@@ -145,7 +145,7 @@ The source is the yearly delimited file of Puerto Rico, 2016 to 2025.
 - **FAA and T-100 agree.** For 2023 to 2025 the two island totals differ by less than 1%. FAA adds Ceiba's airport (RVR, 23,214 boardings in 2025), which T-100 does not have. FAA files from before 2024 are under other names that no longer answer.
 - **Ferries.** Each census reports passengers on one-way segments. A segment's passengers board at its first terminal. The 2020 census gives data year 2019, and since 2022 BTS names each census for the year of its data. The 2018 census is left out: it does not state its data year, and its routes start at Fajardo, before the move to Ceiba.
 - **Results.** 7.2 million air boardings in 2025 (6.7 million at SJU) and 2.5 million in 2020. Ferry boardings were 1.64 million in 2019, 1.15 million in 2022 and 1.62 million in 2024.
-- **Not included.** Cruise passengers: the Tourism Company's and the cruise port's figures state no licence (`wanted.json`, `cruise`). Arrivals by airport (Ports Authority report) and ferry vessels and trips are also not included.
+- **Not included.** Cruise passengers: the Tourism Company's and the cruise port's figures state no license (`wanted.json`, `cruise`). Arrivals by airport (Ports Authority report) and ferry vessels and trips are also not included.
 
 `python gateway_series.py` downloads only what is missing from the cache. `--refresh` downloads again, and `--check` rebuilds the file from the cache and exits 1 if the published file differs. `build.py` runs it after the infrastructure series, because it needs `transport.json`.
 
@@ -153,7 +153,7 @@ The source is the yearly delimited file of Puerto Rico, 2016 to 2025.
 
 - **Dams (USACE National Inventory of Dams):** the download API answered HTTP 403 to automated requests on 2026-10-14 (noted in `wanted.json`).
 - **Power outages:** LUMA's outage map bars automated access without written permission. EAGLE-I reports Puerto Rico only as six regions.
-- **Grid assets, shelters, police and fire stations (island geoserver):** no licence is stated, and the police layer holds officers' names and phones. These are not harvested.
+- **Grid assets, shelters, police and fire stations (island geoserver):** no license is stated, and the police layer holds officers' names and phones. These are not harvested.
 - **Wastewater permits, antenna towers, landfills:** still `checked` in `wanted.json`.
 - **Broadband:** the ACS internet shares are already published (`internet_subscription_pct`, `no_internet_pct`). The FCC's map refuses automated requests.
 

@@ -1,5 +1,5 @@
 /* The Reservoirs page (reservoirs.html, Knowledge Area): what it adds to public_money.css and urban_heat.css (controls, charts, sortable tables).
-   Water is the site's blue ramp; the three states use the site's tints with an icon and a word, never colour alone. */
+   Water is the site's blue ramp; the three states use the site's tints with an icon and a word, never color alone. */
 .rv-now-row { display:flex; flex-wrap:wrap; gap:18px; align-items:center; margin:10px 0 4px; }
 .rv-now-row > div:last-child { flex:1 1 320px; min-width:0; }
 .rv-counts { display:flex; flex-wrap:wrap; gap:10px; }

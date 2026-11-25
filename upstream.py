@@ -15,7 +15,7 @@ How (an overlay of published layers along the stream network, docs/upstream.md):
   - Wastewater plants: the publicly owned treatment works (interest type POTW) of EPA's Facility Registry Service in Puerto Rico whose permit is in force
     (status effective or administratively continued), on that land. They are public facilities and are named.
 The check: USGS's own drainage area for each site (NWIS site service, drain_area_va), against the area of the land found here. In the northern karst
-water also moves underground, and some reservoirs receive water piped or channelled from another basin: the land that drains to a site on the surface is
+water also moves underground, and some reservoirs receive water piped or channeled from another basin: the land that drains to a site on the surface is
 not all the water that reaches it. Both are said wherever the figures appear.
 """
 
@@ -307,7 +307,7 @@ def build(refresh=False, check=False):
     rows, notes = assemble(cat, sites, blocks, bld, potw["rows"], prot, nwis["sites"])
     notes.update({"buildings_release": release, "potw_read": potw["read"], "nwis_read": nwis["read"],
                   "limits": ["In the northern karst, water also moves underground: the land that drains to a site on the surface is not all the water that reaches it.",
-                             "Some reservoirs receive water piped or channelled from another basin, which the land upstream does not show.",
+                             "Some reservoirs receive water piped or channeled from another basin, which the land upstream does not show.",
                              "A count on the land upstream is not a load: it says what is there, not what reaches the water."]})
     doc = {"as_of": date.today().isoformat(), "sources": SOURCES, "notes": notes, "sites": rows}
     if check:

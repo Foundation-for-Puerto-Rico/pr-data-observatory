@@ -42,7 +42,7 @@ const helpBtn = (key) => `<button type="button" class="help-btn" data-help="${ke
 const snapshotLabel = (label) => { const m = /^Snapshot\s+(.+)$/.exec(label || ''); return m ? T('Snapshot {date}', { date: m[1] }) : (label || '—'); };
 
 // ── Vocabulary of the data contract, for the catalog tab and the dictionary filters ───────────────────────────
-// Geography levels and licence classes are the ids of dictionary_src/datasets.json (contract.py). A class is the strictest of the sources an entry uses.
+// Geography levels and license classes are the ids of dictionary_src/datasets.json (contract.py). A class is the strictest of the sources an entry uses.
 const LEVEL_LABEL = () => ({ island: T('Whole island'), region: T('Region'), municipio: T('Municipality'), barrio: T('Barrio'), tract: T('Census tract'), 'block-group': T('Census block group'), block: T('Census block'), point: T('Points (places, stops)'), line: T('Lines (routes)'), polygon: T('Areas'), raster: T('Grid'), network: T('Network') });
 const LICENCE_LABEL = () => ({ open: T('Open license'), 'open-with-conditions': T('Open license, with conditions'), own: T("FPR's own"), unstated: T('License not stated'), 'licensed-not-open': T('Licensed, not open') });
 const LICENCE_RANK = { own: 0, open: 0, 'open-with-conditions': 1, unstated: 2, 'licensed-not-open': 3 };
@@ -52,7 +52,7 @@ const yearOptions = (snapYear) => [['future', T('Projections (after {year})', { 
 const coversYear = (years, y, snapYear) => !y || (!!years && (y === 'future' ? years[1] > snapYear : y === 'past' ? years[0] < 2000 : years[0] <= +y && +y <= years[1]));
 
 // ── Timetable replay (trips*.json), shared by the 2D "vehicles now" layer and the 3D view ──
-// Format 2 (trip_paths.py): each trip names a stop pattern ("k": a path along the route line, [lng, lat, metres]), where its stops are on it ("s")
+// Format 2 (trip_paths.py): each trip names a stop pattern ("k": a path along the route line, [lng, lat, meters]), where its stops are on it ("s")
 // and its timetable ("t": seconds after midnight). tripPoints() gives [lng, lat, seconds] for every point of the path, the time between two stops
 // spread by distance, so a vehicle follows the roads. Format 1 files (a straight "p" list of stops) still work.
 function tripPoints(doc, t) {
@@ -76,7 +76,7 @@ const WCRP_UBICACION = {   // where the point comes from (wcrp.py); the plans dr
   comunidad_especial: T('Point inside the Comunidad Especial (Junta de Planificación, 2006)'),
   osm: T('Point at the OpenStreetMap place or landmark'),
   barrio_censo: T('Point inside the Census barrio'),
-  pueblo: T('Point at the town centre'),
+  pueblo: T('Point at the town center'),
   manual: T('Point at coordinates the plan gives'),
 };
 function wcrpPopup(list) {   // one marker can hold several plans at the same point (for example Villa Calma 1 and 2)

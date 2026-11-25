@@ -49,18 +49,18 @@ Everything runs in two places only: **the build** (Python, heavy raster work, do
 - **Power user:** any distance, a ring around a line (a road) or around a study area, and an outer ring only (800 m to 1.6 km).
 - **The summary gains measures** (zonal statistics on the same 8,000-point grid): mean surface heat, greenness (NDVI), % in each landslide class, % in *any* polygon layer the visitor picks (intersect). Each measure says whether it is counted, measured on a grid or estimated, as the summary does today.
 - Code: a new on-use module (`core/gistools.js`, with the Spanish in its own file). Nothing added to the map's first load.
-- What a raster measure needs in the browser is measured in this step: the heat image's colour steps, or a small grid of values per layer (size checked against the on-use total before it is published).
+- What a raster measure needs in the browser is measured in this step: the heat image's color steps, or a small grid of values per layer (size checked against the on-use total before it is published).
 
 ### Step 2. Elevation pack: slope, contours, threshold (M).
 - **Build:** one elevation step reads 3DEP 10 m once and writes (a) slope as a Web Mercator image like the heat surface (decision 88), (b) contour lines at 10, 50 and 100 m as simplified lines by zoom, (c) % of land steeper than 15% and 30% by barrio and municipio.
 - **Simple:** "Slope" and "Contours" in Explore › Environment and climate.
-- **Power user:** a threshold slider on slope and heat ("show only cells above X"), which repaints the image's colour steps (reclassify).
+- **Power user:** a threshold slider on slope and heat ("show only cells above X"), which repaints the image's color steps (reclassify).
 - Coordinated with colleague PR #161 (SSURGO soils and slope classes): this step is measured slope from elevation, PR #161 is the soil survey's mapped slope class. The legend says which is which.
 
 ### Step 3. Watersheds and "What drains here" (M-L).
 - **Build:** read USGS WBD (HUC-8, HUC-10, HUC-12) and NHDPlus HR streams and catchments; publish watershed outlines, the main streams by size (stream order replaces a computed flow accumulation), and for each catchment the list of catchments upstream of it.
 - **Simple:** "Watersheds" layer in Explore › Environment and climate, with residents and flood-zone share per HUC-12.
-- **Power user:** "What drains here": click a point and the land upstream is drawn and summarised (residents, % impervious if land cover is built, % steep). The upstream area becomes a study area.
+- **Power user:** "What drains here": click a point and the land upstream is drawn and summarized (residents, % impervious if land cover is built, % steep). The upstream area becomes a study area.
 - No flow model is run: USGS's own network is the source (freshest-sources rule).
 
 ### Step 4. Build my region and Count my points (M).
@@ -68,7 +68,7 @@ Everything runs in two places only: **the build** (Python, heavy raster work, do
 - **Count my points (spatial join):** load a CSV with latitude and longitude (or a GeoJSON of points). The browser counts them by barrio, municipio or study area and shades the map. **The file is never uploaded**, as with study areas today. Only counts are shown: the points are not drawn when a column suggests homes or people (the sensitive-places rule), and an area with fewer than a set number of points shows "fewer than N".
 
 ### Step 5. Download what's inside (S).
-- For a study area (or ring, region, watershed): download the summary as CSV, and the features inside of each open layer as GeoJSON or CSV (clip). Withheld places stay withheld; the file carries each source's licence and citation.
+- For a study area (or ring, region, watershed): download the summary as CSV, and the features inside of each open layer as GeoJSON or CSV (clip). Withheld places stay withheld; the file carries each source's license and citation.
 
 ### Step 6. Travel time (M), after step 1.
 - Walking time along mapped roads from a point (5, 10, 15 minutes), computed in the browser on `roads.bin` with the method of `walknet.py`. The area becomes a study area. It is "along mapped roads", like every walking figure in the observatory; driving and transit times come later, if at all.
@@ -93,7 +93,7 @@ Each step's PR adds its terms to `dictionary_src/glossary.json` in English and S
 - **(a)** The order: step 1 (Area around + richer summary, first visible), 2 elevation, 3 watersheds, 4 region and points, 5 download, 6 travel time.
 - **(b)** The split: three one-click tools for everyone, every setting in a "GIS tools" drawer for power users.
 - **(c)** IDW and kriging left out for now.
-- **(d)** Step 2 publishes a slope image like the heat surface (decision 88), and coordinates with Zoralis's PR #161 on how the two slopes are labelled.
+- **(d)** Step 2 publishes a slope image like the heat surface (decision 88), and coordinates with Zoralis's PR #161 on how the two slopes are labeled.
 - **(e)** Count my points keeps visitor files in the browser, shows counts only, and hides counts below a minimum (proposed: fewer than 5).
 
 **Approved by the project lead on 2026-11-09 ("Approve and merge"): (a) to (e) as proposed.** Each step is its own PR, merged only on the project lead's word; step 1 next.

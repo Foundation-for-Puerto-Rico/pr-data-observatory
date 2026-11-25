@@ -98,7 +98,7 @@ class Published(unittest.TestCase):
         self.assertGreaterEqual(n["with_gauge_height"], 40)
         for p in self.props:
             if "stage" in p:
-                self.assertTrue(-5 < p["stage"] < 40 and p["stage_time"], p["usgs"])   # metres on the gauge's own scale
+                self.assertTrue(-5 < p["stage"] < 40 and p["stage_time"], p["usgs"])   # meters on the gauge's own scale
             for r in p.get("refs", []):
                 self.assertEqual(set(r), {"kind", "label", "level"})
                 self.assertIn(r["kind"], {"bank", "chord", "deck", "hwm", "other"})
@@ -151,7 +151,7 @@ class NwsStages(unittest.TestCase):
             self.assertIn("stage", p, "a stage is only given beside the water's own level")
             self.assertRegex(p["nws"]["lid"], r"^[A-Z0-9]{5}$")
             levels = [p["nws"][k] for k in rg.STAGES if k in p["nws"]]
-            self.assertTrue(levels and levels == sorted(levels) and 0 < levels[0] and levels[-1] < 20, p["usgs"])   # metres on the gauge
+            self.assertTrue(levels and levels == sorted(levels) and 0 < levels[0] and levels[-1] < 20, p["usgs"])   # meters on the gauge
             self.assertFalse(set(p["nws"]) - {"lid", *rg.STAGES})
 
 

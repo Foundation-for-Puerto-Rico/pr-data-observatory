@@ -17,7 +17,7 @@ How it is made (docs/watersheds.md):
     not followed: water is routed down the main path, as NHDPlus's own drainage areas are.
   - Minor branches: where a river splits, NHDPlus routes the water down the main path, so the minor branch (Divergence 2) has nothing upstream through DnHydroSeq.
     Its catchment gets `via`, the catchment of the reach it splits from (the flowline whose DnMinorHyd is it), so the land upstream of the split drains to it too.
-  - Upstream: the land that drains to a catchment is it and every catchment whose chain of dn (and via) reaches it. The browser walks the chain backwards
+  - Upstream: the land that drains to a catchment is it and every catchment whose chain of dn (and via) reaches it. The browser walks the chain backward
     (Core.study.upstream).
   - Subwatersheds: WBD HUC-12 outlines simplified to about 20 m, with their HUC-8 subbasin's name, their area (WBD) and their residents (2020 census blocks whose
     point is inside, as the study areas count them).

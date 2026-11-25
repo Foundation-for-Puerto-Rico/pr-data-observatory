@@ -219,7 +219,7 @@ def search_norm(s):
 
 
 def es_words(text):
-    """The words of an entry's Spanish summary (plain_es), for the Catalog search of a Spanish page: normalised as the page does, each once, in order, leaving out
+    """The words of an entry's Spanish summary (plain_es), for the Catalog search of a Spanish page: normalized as the page does, each once, in order, leaving out
     words of one or two letters and common little words. None when the entry has no Spanish summary."""
     words = [w for w in re.findall(r"[a-z0-9]+", search_norm(text)) if len(w) > 2 and w not in ES_STOP]
     return " ".join(dict.fromkeys(words)) or None
@@ -305,7 +305,7 @@ def presets(d, srcs, sources):
     out = []
     for p in ps:
         ramps = set(re.findall(r"^\s+(\w+): \[", (ROOT / "site" / "js" / "core" / "palettes.js").read_text(encoding="utf-8").split("const RAMPS = {")[1].split("};")[0], re.M))
-        opt = lambda s: s[2] if len(s) > 2 else {}   # {norm, ramp}: the scale (checked against the engine in tests/presets.test.js) and the colour ramp (core/palettes.js RAMPS)
+        opt = lambda s: s[2] if len(s) > 2 else {}   # {norm, ramp}: the scale (checked against the engine in tests/presets.test.js) and the color ramp (core/palettes.js RAMPS)
         bad = [s[0] for s in p["show"] if ("econ", s[0]) not in srcs or s[1] not in ("fill", "symbol") or not isinstance(opt(s), dict) or set(opt(s)) - {"norm", "ramp"} or opt(s).get("ramp", "blue") not in ramps] + [k for k in p["on"] if k not in keys]
         if bad or sum(s[1] == "fill" for s in p["show"]) > 2 or not (p["show"] or p["on"]) or not all(p["name"].get(l) and p["note"].get(l) for l in ("en", "es")):
             raise SystemExit(f"catalog: ready-made view {d['id']}.{p['id']}: unknown or misused {bad}, more than two shaded layers, nothing to show, or a name or note missing a language")

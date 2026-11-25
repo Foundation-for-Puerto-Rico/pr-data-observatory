@@ -1,6 +1,6 @@
 """Road distance to essentials for the PR Data Observatory: how far residents live, along the roads, from the nearest supermarket, pharmacy, bank or
 cooperativa, public library and fire or EMS station, by barrio and municipio. HANDOFF decision 107, step 6 (row derived-access-essentials);
-docs/essentials.md. An estimate (decision 107 b): a road-network model, labelled so, with a check and a range.
+docs/essentials.md. An estimate (decision 107 b): a road-network model, labeled so, with a check and a range.
 
     python essentials.py --refresh   # read the newest Overture places and OpenStreetMap extract into cache/essentials/points.json, then build
     python essentials.py             # build site/data/essentials_series.json and essentials_barrio.json from the cached points (no network)
@@ -14,7 +14,7 @@ What is measured from what:
   pharmacy      Overture places of the categories pharmacy and drugstore (confidence 0.5 or more).
   bank          Overture places of the categories bank, credit union and bank or credit union (confidence 0.5 or more): banks and cooperativas. ATMs are not.
   library       the libraries the map draws (libraries.geojson: USAC's E-Rate list of public libraries, facilities.py). In Puerto Rico the list also holds
-                community, church and university libraries and municipal technology centres (centros tecnológicos), so it counts more places than the
+                community, church and university libraries and municipal technology centers (centros tecnológicos), so it counts more places than the
                 municipal public libraries alone; the label says "a library", not "a public library".
   grocery       any food store: every Overture place of a grocery category (colmados included) and the supermarkets above. Small towns often have no
                 supermarket by the rule, only colmados and "super colmados"; this measure shows the difference.
@@ -221,7 +221,7 @@ def haversine_m(lon1, lat1, lon2, lat2):
 
 
 def matched_share(osm, ours, m=MATCH_M):
-    """The share of `osm` points ([lon, lat]) with a point of `ours` within m metres."""
+    """The share of `osm` points ([lon, lat]) with a point of `ours` within m meters."""
     if not osm:
         return None
     cell = 0.01
@@ -322,7 +322,7 @@ def assemble(kinds_points, blocks, block_muni, block_barrio, muni_ids, muni_name
                                 "not_measured_by_municipio": {muni_ids[i]: sum(p for (_, p, _, _), u, x in zip(blocks, um, v) if u == i and x is None) for i in range(len(muni_ids))
                                                               if any(u == i and x is None and p > 0 for (_, p, _, _), u, x in zip(blocks, um, v))}}
         defin = (f"The average road distance from where the area's residents live to the nearest {LABEL[kind][2:] if LABEL[kind].startswith('a ') else LABEL[kind]}, "
-                 f"in kilometres, each 2020 Census block weighted by its residents. " + DEF_TAIL[kind] + COMMON)
+                 f"in kilometers, each 2020 Census block weighted by its residents. " + DEF_TAIL[kind] + COMMON)
         vars_.append({"key": KEY[kind], "group": G, "label": f"Road distance to {LABEL[kind]} (estimate, km)", "unit": "km", "d": 1, "type": "rate",
                       "sources": SRC[kind] + ["osm", "census_tiger"], "ref": REF, "definition": defin, "family": "essentials", "counted": False, "noPerHU": True,
                       "barrioFile": OUT_BARRIO.name, "estimate": True, "years": {str(year): [*m, pr[0]]}})
@@ -365,7 +365,7 @@ DEF_TAIL = {
     "pharmacy": "Pharmacies are Overture's places in the pharmacy and drugstore categories, and OpenStreetMap's pharmacies that Overture lacks.",
     "bank": "Banks and cooperativas are Overture's places in the bank and credit union categories, and OpenStreetMap's banks that Overture lacks; ATMs are not counted.",
     "library": ("Libraries are the ones the map draws: USAC's E-Rate list of public libraries, which in Puerto Rico also holds community, church and university "
-                "libraries and municipal technology centres, so it counts more places than the municipal libraries alone."),
+                "libraries and municipal technology centers, so it counts more places than the municipal libraries alone."),
     "fire": "Stations are the fire and EMS stations the map draws (USGS), and OpenStreetMap's fire stations that USGS lacks (Jayuya's, on 2026-11-18).",
     "grocery": ("Food stores are every place in Overture's grocery categories, colmados (corner stores) included, and the supermarkets above. In small towns "
                 "the nearest food store is often a colmado or a 'super colmado' that the supermarket rule leaves out."),
@@ -373,7 +373,7 @@ DEF_TAIL = {
 
 
 def combined(pts_doc, m=MATCH_M):
-    """{kind: [[lon, lat]]} for the shops: every Overture point, and each OpenStreetMap point with no Overture point of its kind within m metres (the places
+    """{kind: [[lon, lat]]} for the shops: every Overture point, and each OpenStreetMap point with no Overture point of its kind within m meters (the places
     Overture misses: 13% to 24% of OpenStreetMap's on 2026-11-18, and the only pharmacy of Vieques and supermarkets of Culebra)."""
     out = {}
     for k in ("supermarket", "pharmacy", "bank"):

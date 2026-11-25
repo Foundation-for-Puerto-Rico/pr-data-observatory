@@ -8,7 +8,7 @@
   'use strict';
   const { T, num } = dep('text');
 
-  /** A short form for a legend or an axis: 1.2K, 3.4M, $5.6B. `unit` is the unit of the dataset after normalisation ('$', '%', ' pts' or ''). */
+  /** A short form for a legend or an axis: 1.2K, 3.4M, $5.6B. `unit` is the unit of the dataset after normalization ('$', '%', ' pts' or ''). */
   function compact(v, unit, d) {   // d: the decimals of a dataset that says how many a small number needs (dPer); the others keep two
     const s = Math.abs(v), sign = v < 0 ? '−' : '';
     const body = s >= 1e9 ? T('{n}B', { n: (s / 1e9).toFixed(s >= 1e10 ? 0 : 1) }) : s >= 1e6 ? T('{n}M', { n: (s / 1e6).toFixed(s >= 1e7 ? 0 : 1) }) : s >= 1e4 ? T('{n}K', { n: Math.round(s / 1e3) }) : s >= 1000 ? T('{n}K', { n: (s / 1e3).toFixed(1) }) : s >= 100 ? Math.round(s) : d != null ? s.toFixed(d) : s >= 10 ? s.toFixed(1) : s.toFixed(2);

@@ -35,7 +35,7 @@ FPR's own WCRP vulnerability indicators (`wcrp.html`) rank **barrios** with a di
 ## Source, terms and edition
 
 - CDC/ATSDR Social Vulnerability Index 2022, Puerto Rico: the county file and the tract file, CSV, no key (`svi.cdc.gov/Documents/Data/2022/csv/`).
-- A US federal dataset. The page states no licence and asks for its suggested citation, which the source card carries.
+- A US federal dataset. The page states no license and asks for its suggested citation, which the source card carries.
 - 2022 is the newest edition; the address of a 2024 edition answered "not found" on 2026-11-14.
 - CDC says files downloaded between 2022-10-27 and 2026-01-15 were incorrect. These were downloaded on 2026-11-14.
 - Rebuilt by hand when a new edition comes: change `EDITION` in `svi.py`, run `python svi.py --refresh`.

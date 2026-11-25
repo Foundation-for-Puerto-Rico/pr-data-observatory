@@ -9,7 +9,7 @@
   const BUSWAY = 14;
   const P = { SNAP_M: 300, OFF_M: 50, CELL_M: 25, STEP_M: 20, WALK_MS: KMH(4.8) };
 
-  // id, legend, metres-per-second of an edge class (null: not allowed), follows one-way rules
+  // id, legend, meters-per-second of an edge class (null: not allowed), follows one-way rules
   const MODES = [
     { id: 'walk', es: 'A pie', note: '4.8 km/h', color: '#7cc3e8', ms: (c) => NO_MOTORWAY(c) ? null : P.WALK_MS, oneway: false },
     { id: 'transit', es: 'Transporte público', note: 'horario ATI', color: '#3fa7a0', transit: true },
@@ -19,7 +19,7 @@
     { id: 'car_free', es: 'Carro, calles vacías', note: 'velocidad libre', color: '#9a7fd1', ms: (c) => c === BUSWAY ? null : KMH(ROAD_KMH[c]), oneway: true, theory: true },
   ];
 
-  // adjacency of a mode: node -> (neighbour, edge, seconds), kept per graph and mode
+  // adjacency of a mode: node -> (neighbor, edge, seconds), kept per graph and mode
   const adjCache = new WeakMap();
   function adjacency(R, mode, o) {
     const key = mode.id + (mode.id === 'car_rush' ? o.rush : '');
@@ -70,7 +70,7 @@
         const e = A.ed[k], p = R.poly(e), fwd = R.eu[e] === n, pts = [];
         for (let i = 0; i < p.length; i += 2) pts.push([p[i], p[i + 1]]);
         if (!fwd) pts.reverse();
-        const per = A.sec[k] / (R.len[e] * 2);   // seconds per metre on this edge
+        const per = A.sec[k] / (R.len[e] * 2);   // seconds per meter on this edge
         let run = 0;
         for (let i = 1; i < pts.length; i++) {
           const l = Math.hypot((pts[i][0] - pts[i - 1][0]) * kx, (pts[i][1] - pts[i - 1][1]) * ky), steps = Math.max(1, Math.ceil(l / P.STEP_M));
@@ -82,7 +82,7 @@
         }
       }
     }
-    // km², and the cells as arrays for drawing: centre lng, lat and the second each is first reached
+    // km², and the cells as arrays for drawing: center lng, lat and the second each is first reached
     const n = cells.size, x = new Float64Array(n), y = new Float64Array(n), t = new Float32Array(n); let k = 0;
     for (const [key, s] of cells) { const i = Math.floor(key / 1e7), j = key - i * 1e7; x[k] = (i + 0.5) * C / kx; y[k] = (j + 0.5) * C / ky; t[k++] = s; }
     return { km2: n * C * C / 1e6, cells: { x, y, t, cellM: C } };

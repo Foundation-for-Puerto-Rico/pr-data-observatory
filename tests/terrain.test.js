@@ -62,7 +62,7 @@ test('the threshold: paint leaves out the steps below it, and each legend slider
   const SS = require(path.join(SITE, 'js', 'core', 'surfscale.js'));
   const src = read('js/core/surfscale.js');
   assert.match(src, /min != null && value\(k\) < min - 1e-9 \? 0 :/, 'a step below the threshold is transparent');
-  assert.match(src, /const key = \[scale\.low, scale\.centre, scale\.high, min\]\.join\(\)/, 'a new threshold paints again');
+  assert.match(src, /const key = \[scale\.low, scale.centre, scale.high, min]\.join\(\)/, 'a new threshold paints again');
   assert.match(src, /data-surf-min="\$\{me\}"/, 'the slider names its image');
   assert.match(src, /images\[\+r\.dataset\.surfMin\]/, 'and the handler finds it by that name');
   assert.match(src, /data-surf-own|surfOwn/, 'the slope layer repaints its own image');

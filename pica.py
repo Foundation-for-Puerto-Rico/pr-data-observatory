@@ -228,7 +228,7 @@ def write_records(rows, years, url, at):
                             "function_category": fn, "concept_of_expense": "capex", "recipient_type": "agency",
                             "allocation_tier": "direct" if placed else "island_wide", "allocation_driver": "", "allocation_confidence": "high",
                             "amount_usd": round(x), "population_basis": "", "per_capita_usd": "", "dedup_group": "", "retrieved_at": today, "source_url": url,
-                            "terms_of_use": "Public record of the Government of Puerto Rico (Junta de Planificación); no licence stated"})
+                            "terms_of_use": "Public record of the Government of Puerto Rico (Junta de Planificación); no license stated"})
 
 
 def main(argv=None):

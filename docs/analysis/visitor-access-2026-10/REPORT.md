@@ -19,7 +19,7 @@ Decision-relevant numbers:
 
 **Recommended method in brief** (details in section 8):
 
-- Treat access as a **profile, not a score**. For each place publish: distance to the nearest *current scheduled* stop, the weekday calls and weekend flags at stops within 400 m, and (for walking) the network distance. Show the old "any stop" figure only as a labelled legacy field.
+- Treat access as a **profile, not a score**. For each place publish: distance to the nearest *current scheduled* stop, the weekday calls and weekend flags at stops within 400 m, and (for walking) the network distance. Show the old "any stop" figure only as a labeled legacy field.
 - **Tier 1 (cheap, robust, no road graph):** `ts_m`, `ts_calls`, `ts_we` per place and shares at 400 m and 800 m per municipality, region and barrio. Checked two independent ways to within 0.1 point.
 - **Tier 2 (needs the road graph):** `tw_m`, the walking distance along mapped roads (bounded to 1,000 m). Use it for the 400 m flag; label it an estimate that ignores footpaths, sidewalks, fences and crossings.
 - **Tier 3 (prototype now, needs better timetable data to scale):** scheduled journey times and a driving comparator from named gateways. Only gateways inside the San Juan metro area (SJU, Old San Juan, the Cataño ferry, Tren Urbano and ATI terminals) have a current scheduled stop within 400 m; for every other airport and ferry terminal publish "no scheduled link in the data", not a time.
@@ -32,7 +32,7 @@ Decision-relevant numbers:
 - **Default basis:** places with confidence 0.50 or higher and no places of worship, the rule in `site/js/app.js` `visible(p)` with the initial state (`conf: 0.5`, `worship: false`). 26,579 of 35,118 places: Accommodations 3,106, Attractions 5,676, Gastronomy 17,178, Visitor services 619.
 - **Stop sets** (all from `transport.json`): *any stop* = the twin's own set (kinds transit_stop, bus_stop, bus_station, rail_station, ferry_terminal from every source and feed: 4,360 features); *scheduled* = ATI and municipal GTFS stops (3,847); *current* = scheduled stops whose operator feed has not ended on 2026-10-05 (2,881; includes 92 Canóvanas stops whose feed ends 2026-10-31); *expired* = 966 stops of 7 operators; *OSM-only* = 513 volunteer-mapped stops with no timetable.
 - **Weekday calls** = `trips_weekday` of a stop: scheduled calls on a typical Wednesday, both directions if the stop serves both. A one-direction stop shows about half of a two-way stop with the same headway.
-- **Distances** are straight-line metres in EPSG:32161 (Puerto Rico State Plane), computed with a spatial index. The twin's own flat-earth formula gives the same shares to within 0.1 point (checked by brute force, section 3.7).
+- **Distances** are straight-line meters in EPSG:32161 (Puerto Rico State Plane), computed with a spatial index. The twin's own flat-earth formula gives the same shares to within 0.1 point (checked by brute force, section 3.7).
 - **Eastern region** = the Puerto Rico Tourism Company region *Porta del Mar* (15 municipalities, including Vieques and Culebra); the app has no region called "East".
 
 ## 3. Question 1: baseline today, and what changes with real service
@@ -55,7 +55,7 @@ Reading: the first row is what the twin shows now. Each further condition remove
 
 If expired feeds are also counted (scheduled stops of any feed), the shares within 400 m are 29.4% / 22.5% / 15.2% for 10 / 20 / 40 or more weekday calls and 22.6% / 6.1% for Saturday / Sunday service (Sunday is ATI only, so it does not change). Of the 29 rail and ferry features, 22 are scheduled in current feeds (the other seven are OpenStreetMap ferry nodes); counting only those gives 2.7% within 400 m.
 
-Residents, same stop sets (Census block centres, 3,285,874 people): within 400 m of any stop 30.3%, of a current scheduled stop 22.2%, with 20 or more weekday calls 13.3%, with Saturday service 16.4%, next to rail or ferry 0.6%. Places are better served than residents, probably because listings concentrate in town centres where stops are (not tested).
+Residents, same stop sets (Census block centers, 3,285,874 people): within 400 m of any stop 30.3%, of a current scheduled stop 22.2%, with 20 or more weekday calls 13.3%, with Saturday service 16.4%, next to rail or ferry 0.6%. Places are better served than residents, probably because listings concentrate in town centers where stops are (not tested).
 
 ### 3.2 By category, within 400 m (percent of places)
 
@@ -219,7 +219,7 @@ Sample: 1,000 places drawn at random (seed 20261005) from the 12,271 default pla
 | Ratio: 90th percentile | 2.36 |
 | Ratio: 95th percentile | 2.93 |
 | Detour factor to the same (straight-line nearest) stop: median / 90th | 1.45 / 2.69 |
-| Extra metres (network minus straight line): median / 90th percentile | 52.4 / 204.4 |
+| Extra meters (network minus straight line): median / 90th percentile | 52.4 / 204.4 |
 | Share of places with ratio above 1.5 / above 2 | 42.5% / 17.7% |
 | Places within 400 m straight line | 870 |
 | of which beyond 400 m on the network (road within 150 m) | 122 (14.3%) |
@@ -245,7 +245,7 @@ On the default basis 1,467 places drop out at 400 m when walking is measured aga
 
 I built a second graph from the same OpenStreetMap extract with every pedestrian-usable way (309,829 nodes, 365,729 edges, 43,666 km) and repeated the island run. Island share within 400 m of a current scheduled stop: roads-only 26.6%, full walking network 27.0%, straight line 32.1%. 284 of the 1,467 places lost on the roads-only graph come back inside 400 m on the full network, and places with no walkable road within 150 m fall from 1,095 to 358. Where both graphs find a path, the full-network distance has a median ratio 1.0 to the roads-only one (10th to 90th percentile 0.907 to 1.134).
 
-**Conclusion:** the roads-only graph is reliable enough for an *aggregate* walking-access share (about 0.4 point on the island; municipal shares differ from the full-network ones by a median 0.0 points, 90th percentile 0.99, largest 11.3 (Hormigueros), over 73 municipalities with 100 or more places) and for flagging places where a detour is likely. It is less reliable for one individual place: 19.4% of the places lost on the roads-only graph come back within 400 m once footpaths, tracks, steps and service roads are added. Neither graph can see rivers without bridges, highways without crossings, fences, hills or missing sidewalks, so every walking figure must be labelled an estimate.
+**Conclusion:** the roads-only graph is reliable enough for an *aggregate* walking-access share (about 0.4 point on the island; municipal shares differ from the full-network ones by a median 0.0 points, 90th percentile 0.99, largest 11.3 (Hormigueros), over 73 municipalities with 100 or more places) and for flagging places where a detour is likely. It is less reliable for one individual place: 19.4% of the places lost on the roads-only graph come back within 400 m once footpaths, tracks, steps and service roads are added. Neither graph can see rivers without bridges, highways without crossings, fences, hills or missing sidewalks, so every walking figure must be labeled an estimate.
 
 ### 4.5 Run time (measured on this machine, single-threaded Python)
 
@@ -327,7 +327,7 @@ Tren Urbano: 15 of 16 stations have current bus stops within 400 m (3 to 22 stop
 
 ### 5.4 Cruise and port facilities, and what is missing
 
-- **Cruise:** one feature, a pier in Old San Juan mapped as `amenity=ferry_terminal`. No cruise or port facility is recorded elsewhere on the island. The build's OpenStreetMap query asks only for stops, stations, ferry terminals, taxi stands, bicycle rental, charging stations, aerodromes and helipads, so port, harbour and pier features are not captured. Old San Juan has good last-mile data: Terminal Covadonga is 312 m from the pier and has 508 weekday calls on the busiest stop within 400 m of it.
+- **Cruise:** one feature, a pier in Old San Juan mapped as `amenity=ferry_terminal`. No cruise or port facility is recorded elsewhere on the island. The build's OpenStreetMap query asks only for stops, stations, ferry terminals, taxi stands, bicycle rental, charging stations, aerodromes and helipads, so port, harbor and pier features are not captured. Old San Juan has good last-mile data: Terminal Covadonga is 312 m from the pier and has 508 weekday calls on the busiest stop within 400 m of it.
 - **Passenger counts:** none in the data (no FAA enplanements, port statistics or ferry ridership), so gateways cannot be weighted by visitor volume.
 - **Ferries without a timetable:** none of the 7 OpenStreetMap ferry terminals carries a timetable: Fajardo's terminal (82 m from a stop of Fajardo's municipal feed, which has expired), an unnamed San Juan node, an unnamed node on a reservoir in Arecibo, the AcuaExpreso node at Hato Rey (no service in the ATI feed), the cruise pier, and two nodes in Ceiba that are 209 m and 550 m from the ATI Ceiba terminal and probably the same facility.
 - **Públicos (carros públicos):** the main non-metro mode is not in any timetable. Only the 47 volunteer-mapped bus stations exist; 26 municipalities have no bus station in any source.
@@ -377,7 +377,7 @@ Transport links in the data:
 ### 6.1 Method and what the data allow
 
 - **Algorithm:** earliest-arrival scan in rounds (connection scan with RAPTOR-style rounds): at most 3 boardings (2 transfers), walking links up to 400 m straight line at 4.8 km/h between stops, 180 s buffer on every boarding after the first, no buffer for the first boarding. Start 10:00 on a typical weekday. Horizon 4 hours. Places are reached from stops within 400 m (arrival at the stop plus walking); a place needs at least one vehicle leg.
-- **Origin:** the 3 scheduled stops within 500 m of the FAA reference point of SJU (290, 465, 481 m; walking 3.6 to 6 minutes). The reference point is the airfield centre, not the terminal door; I widened the radius from 400 m to 500 m so the curbside stops count.
+- **Origin:** the 3 scheduled stops within 500 m of the FAA reference point of SJU (290, 465, 481 m; walking 3.6 to 6 minutes). The reference point is the airfield center, not the terminal door; I widened the radius from 400 m to 500 m so the curbside stops count.
 - **Timetable used:** weekday file, current feeds only: 2,925 trips, 71,258 stop-to-stop connections, 2,408 stops with calls. The 7 expired feeds are left out (372 trips); including them changes nothing because none of their stops is reachable.
 - **What the files do not support, exactly:** trips have no stop ID, trip ID or route-pattern ID (a stop is a coordinate, a trip a list position), calls without a time are absent (so on routes that publish only timepoints the intermediate stops are missing), five Patillas routes are removed, there are no calendar exceptions or holidays, no frequency-based trips and no fare or transfer rules. The best this data can do is what is shown here: a schedule-based, timepoint-level estimate. Cross-feed transfers rely on a 400 m walk between coordinates.
 - **Verification:** a brute-force computation of 1, 2 and 3 boardings gives the same earliest arrival at all 1,581 reached stops (0 mismatches).
@@ -461,10 +461,10 @@ Where transit reaches a place within 120 minutes, it takes a median 58 minutes a
 | Route/stop mismatches | 5 Patillas routes have a non-geographic stop order and 0 trips in the file; 103 of 118,782 bus hops are implausible (zero or negative time over 500 m, or over 100 km/h in a straight line); 1 stop with no route and no weekday trip | Small; they affect individual connections, not shares | Keep the `order_note` rule; reject hops above a speed limit in `parse_gtfs` |
 | Zero-trip stops | 1 scheduled stop. 1,777 of 2,881 current stops have Saturday service, 94 have Sunday service | Weekend access is almost entirely ATI, Guaynabo and Vega Alta | Carry Saturday and Sunday calls per stop |
 | No timetable at all | 15 municipal systems in the NTD list and the públicos authority publish no feed; 24 municipal systems do; públicos are in no feed; 41 of 78 municipalities have no scheduled stop | Absence of a stop is not absence of transport | Say so in every label |
-| Municipality of stops and places | 11 scheduled features have no municipality (piers and shoreline stops, up to 1.0 km from a polygon); 331 default places (1.2%) fall outside every polygon and take the nearest centre | Municipal stop counts miss the Vieques, Cataño and San Juan ferry terminals; a few places may be assigned to the wrong municipality | Use nearest-polygon assignment with a distance limit |
-| Resident file | `population_blocks.json` column 4 is metres to the nearest scheduled stop (capped at 9,999; 6,419 of 36,570 blocks capped), not housing units as the brief assumes; it includes expired feeds | A reader taking it for housing units would get nonsense; the distance ignores feed status | Document it; add a current-feeds distance |
+| Municipality of stops and places | 11 scheduled features have no municipality (piers and shoreline stops, up to 1.0 km from a polygon); 331 default places (1.2%) fall outside every polygon and take the nearest center | Municipal stop counts miss the Vieques, Cataño and San Juan ferry terminals; a few places may be assigned to the wrong municipality | Use nearest-polygon assignment with a distance limit |
+| Resident file | `population_blocks.json` column 4 is meters to the nearest scheduled stop (capped at 9,999; 6,419 of 36,570 blocks capped), not housing units as the brief assumes; it includes expired feeds | A reader taking it for housing units would get nonsense; the distance ignores feed status | Document it; add a current-feeds distance |
 | Airports list | FAA public-use list has 10; FAJ (Fajardo) is only in OpenStreetMap; HANDOFF says the old 14-record airports file is still published | Gateway tables are incomplete | Next full build (already fixed in code) |
-| Personal data check | `places.json` carries business name for all 35,118 places, address for 28,810 and website for 9,683; some may identify individuals (sole traders). Stop names can embed business or organisation names. No email pattern in `transport.json` or `operators.json`; no personal cloud link in `operators.json` | Not printed here. Anything published from this analysis must stay aggregate | Keep access series aggregate; do not add names to new files |
+| Personal data check | `places.json` carries business name for all 35,118 places, address for 28,810 and website for 9,683; some may identify individuals (sole traders). Stop names can embed business or organization names. No email pattern in `transport.json` or `operators.json`; no personal cloud link in `operators.json` | Not printed here. Anything published from this analysis must stay aggregate | Keep access series aggregate; do not add names to new files |
 
 A further caution on places: 1,501 default places share a map point with another place (up to 18 at one point), so their distances are identical; counts of places near transit are counts of listings, not of businesses or visitors.
 
@@ -472,7 +472,7 @@ A further caution on places: 1,501 default places share a map point with another
 
 ### 8.1 Principle
 
-Link each tourism place to transport in three layers, from most to least certain: (1) the nearest *scheduled stop with a current timetable* and what it offers; (2) a walking-distance check on the road graph; (3) hub and gateway proximity and journey times. Publish the layers as separate, labelled fields. Do not merge them into one score: the weights would be a policy choice that FPR has not made, and a score would hide that 64% of places have no current scheduled stop within 800 m.
+Link each tourism place to transport in three layers, from most to least certain: (1) the nearest *scheduled stop with a current timetable* and what it offers; (2) a walking-distance check on the road graph; (3) hub and gateway proximity and journey times. Publish the layers as separate, labeled fields. Do not merge them into one score: the weights would be a policy choice that FPR has not made, and a score would hide that 64% of places have no current scheduled stop within 800 m.
 
 Access classes for the default basis (computed from the Tier 1 distances; a candidate legend):
 
@@ -500,10 +500,10 @@ The 16,933 places in the last two rows are where a hub connection matters: 66.9%
 
 | Field | Unit | Definition | Tier |
 |---|---|---|---|
-| `ts_m` | metres (integer, 99,999 cap) | Straight-line distance to the nearest scheduled stop whose operator feed has not ended on the build date. Scheduled = ATI or municipal GTFS. Excludes OpenStreetMap-only stops, airports, taxi stands and chargers. Replaces the use of `transit_m` for access statements. | 1 |
+| `ts_m` | meters (integer, 99,999 cap) | Straight-line distance to the nearest scheduled stop whose operator feed has not ended on the build date. Scheduled = ATI or municipal GTFS. Excludes OpenStreetMap-only stops, airports, taxi stands and chargers. Replaces the use of `transit_m` for access statements. | 1 |
 | `ts_calls` | calls per weekday (integer; missing = none within 400 m) | Largest `trips_weekday` among current scheduled stops within 400 m: scheduled stop events on a typical Wednesday, both directions if served. A frequency proxy, not a headway. | 1 |
 | `ts_we` | bit flags (1 = Saturday, 2 = Sunday; missing = none in the data) | OR of the Saturday and Sunday flags of current scheduled stops within 400 m, taken from the feed calendar inside `parse_gtfs` (not by coordinate matching). Missing means no weekend service in the published feed. | 1 |
-| `tw_m` | metres (integer; missing = more than 1,000 m or no road within 150 m) | Walking distance along mapped roads (`roads.bin`, motorways excluded, one-way rules ignored) from the place to the nearest current scheduled stop, including connectors. An estimate: no footways, sidewalks, stairs or crossings. | 2 |
+| `tw_m` | meters (integer; missing = more than 1,000 m or no road within 150 m) | Walking distance along mapped roads (`roads.bin`, motorways excluded, one-way rules ignored) from the place to the nearest current scheduled stop, including connectors. An estimate: no footways, sidewalks, stairs or crossings. | 2 |
 | `transit_m`, `transit_400m`, `nearest_stop` | unchanged | Keep for continuity; relabel as "nearest mapped stop of any kind, including expired timetables and volunteer-mapped stops". | 0 |
 | `gw_t_<id>`, `gw_b_<id>`, `gw_d_<id>` | minutes; boardings (1 to 3); minutes | Per gateway `<id>` from `gateways.json`: earliest scheduled-transit arrival minutes (weekday 10:00, at most 3 boardings, walking links up to 400 m at 4.8 km/h, 3-minute buffer; missing = not reached within 240 minutes), boardings, and free-flow driving minutes (planning speeds, no traffic; missing = no road path). Start with SJU and Old San Juan. | 3 |
 
@@ -523,7 +523,7 @@ All are shares of default-basis tourism places in the area unless stated. Publis
 | `acc_walk400_pct` | % of places | Walking distance (Tier 2) of 400 m or less to a current scheduled stop. Estimate. |
 | `acc_paper_pct` | % of places | Places whose only stop within 400 m comes from an expired timetable or from OpenStreetMap: the "served on paper" gap. Together with `acc_cur400_pct` it explains the difference from `acc_any400_pct`. |
 | `stops_current`, `stops_expired`, `stops_osm` | count | Stops by feed state in the area, with `feed_end` (latest end date of the operators serving it). |
-| `pop_served_freq_pct`, `pop_served_sat_pct` | % of residents | Same tests for residents (Census block centres), next to the existing `pop_served_*` fields. |
+| `pop_served_freq_pct`, `pop_served_sat_pct` | % of residents | Same tests for residents (Census block centers), next to the existing `pop_served_*` fields. |
 | `gw_<id>_t60_pct`, `_t90_pct`, `_t120_pct`, `_d60_pct`, `_d90_pct`, `_d120_pct` | % of places | Share reachable within 60 / 90 / 120 minutes from a gateway by scheduled transit (`_t`) and by car estimate (`_d`). Publish only where the transit scan reaches the area; otherwise show "no scheduled link in the data". |
 | `access_n`, `access_as_of` | count; date | Denominator and the build or feed date. |
 
@@ -544,7 +544,7 @@ All are shares of default-basis tourism places in the area unless stated. Publis
 | `transport.json`: `calls_sat`, `calls_sun`, `feed` on 3,847 stops | 148 KB | 4 KB |
 | `gateways.json` (new, 141 records) | 29 KB | 5 KB |
 
-The figures come from re-serialising the real file in memory with the real values added (same JSON settings as `build.py`; the re-serialised baseline has exactly the same length in bytes as the published file) and gzip level 6. The values used for the per-area fields are random numbers with one decimal, which is why their gzip size is not trivially small. Load time on a throttled connection was not measured.
+The figures come from re-serializing the real file in memory with the real values added (same JSON settings as `build.py`; the re-serialized baseline has exactly the same length in bytes as the published file) and gzip level 6. The values used for the per-area fields are random numbers with one decimal, which is why their gzip size is not trivially small. Load time on a throttled connection was not measured.
 
 Build time: each figure in the tier table is the measured time of the step on this machine, and timings vary two to three times between runs with machine load. None needs more than a minute, so adding Tiers 1 to 3 to `build.py` and Tier 1 plus Tier 3 to the nightly refresh is practical. The refresh currently never touches `places.json`; either call the access computation from `refresh_network.py` or compute Tier 1 in the browser from the nightly `transport.json` and `operators.json`.
 
@@ -556,7 +556,7 @@ Build time: each figure in the tier table is the measured time of the step on th
 
 ### 8.7 Labels the app must show
 
-- **Schedule-based, not real-time.** Every transit figure comes from published timetables (a typical Wednesday, Saturday or Sunday); no live positions exist. Holidays and calendar exceptions are not modelled.
+- **Schedule-based, not real-time.** Every transit figure comes from published timetables (a typical Wednesday, Saturday or Sunday); no live positions exist. Holidays and calendar exceptions are not modeled.
 - **Feed coverage and date.** "24 of 39 municipal systems publish a feed; 7 feeds have expired (list); 15 publish none; públicos are not included." Always show the feed end date next to a stop or area and the build or refresh date.
 - **Straight line versus walking.** Say which one a number uses. Walking figures read "estimated walking distance along mapped roads; excludes footpaths, sidewalks, stairs, crossings and barriers."
 - **Estimates and proxies.** `ts_calls` is a frequency proxy, not a headway. Journey times read "scheduled estimate, weekday 10:00, up to 3 boardings, walking up to 400 m at 4.8 km/h, 3-minute transfer buffer; not door to door." Driving times read "free-flow estimate at planning speeds; no traffic, signals or parking."
@@ -571,7 +571,7 @@ Build time: each figure in the tier table is the measured time of the step on th
 2. In `parse_gtfs`, store per stop: feed state, Saturday and Sunday calls, first and last weekday departure. This replaces the coordinate matching used in this spike.
 3. Write untimed calls to the trip files (interpolate between timepoints) and keep stop IDs, so municipal feeds are not understated by up to 96%.
 4. Fold OpenStreetMap stops within 100 m of scheduled stops, mark cross-operator duplicates, correct the 1 Jayuya stop 44 km off, and give every pier stop a municipality.
-5. Add port, harbour and cruise-pier features to the stop inventory (OpenStreetMap `harbour`, `landuse=port`, `amenity=ferry_terminal`) and take the FAJ airport from OpenStreetMap until the FAA file is refreshed.
+5. Add port, harbor and cruise-pier features to the stop inventory (OpenStreetMap `harbour`, `landuse=port`, `amenity=ferry_terminal`) and take the FAJ airport from OpenStreetMap until the FAA file is refreshed.
 6. Renew or replace the 7 expired municipal feeds; a Ponce feed alone would move about 921 places from "on paper" to "served" if the service still runs.
 
 ### 8.9 What I would not claim
@@ -623,5 +623,5 @@ Wall-clock time per script on this machine (12 cores, Python 3.12, numpy 2.5, sh
 
 - Three files that were in this folder at first were not created by this analysis and were not used: `ati_gtfs.zip`, `ati_open.html`, `ati_urbana.html` (they appeared at 17:10 to 17:11 on 2026-10-05, after the folder was created, from some other process, and were gone again by the end of the work). The brief says no network use; the GTFS zip (2,234,433 bytes) has the same size as the repository's cached ATI feed.
 - While this analysis ran, other files in the repository changed: a check at the end found 42 files modified since 17:00 (the Spanish-interface work: `i18n.py`, `i18n_src/`, `site/index.html`, `site/js/app.js`, `README.md`, `docs/` and others) and a git commit had appeared. None is in `site/data`, `cache` or `__pycache__`. They come from another process; this analysis only read `site/data/*`, the cached OpenStreetMap extract and the repository's `roads.py` and `municipalities.py` (imported with bytecode writing off).
-- A privacy scan (`99_privacy_scan.py`) compared every text output in this folder with the business names, addresses and websites in `places.json` and with e-mail patterns. No website or e-mail matched; the only name and address matches are generic phrases and public place names (for example the neighbourhood names Old San Juan and Río Piedras, the Ceiba ferry terminal and the phrase "rest stop"). `q3_gateways.json` keeps names only for airports, ferry terminals and stations.
+- A privacy scan (`99_privacy_scan.py`) compared every text output in this folder with the business names, addresses and websites in `places.json` and with e-mail patterns. No website or e-mail matched; the only name and address matches are generic phrases and public place names (for example the neighborhood names Old San Juan and Río Piedras, the Ceiba ferry terminal and the phrase "rest stop"). `q3_gateways.json` keeps names only for airports, ferry terminals and stations.
 - One `git status --short` was run early, to check that no stray files had been written. It is read-only in effect but can refresh the index's timestamps, so strictly it touched git state. It showed one untracked file (`site/js/i18n.js`) that is not from this analysis. No other git command was run, and these scripts wrote no file, cache or git state inside the repository.

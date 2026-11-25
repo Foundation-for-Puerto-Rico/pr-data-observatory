@@ -13,7 +13,7 @@ The inflation item takes `domains: ["economy"]`, so it lands under Economy in bo
 
 ## 2. Data sources (all read by a script, no key)
 
-| Source | What | Span | Licence |
+| Source | What | Span | License |
 |---|---|---|---|
 | Puerto Rico Department of Labor and Human Resources (DTRH), Negociado de Estadísticas del Trabajo: workbook "Serie Histórica Índice de Precios al Consumidor" (`mercadolaboral.pr.gov/lmi/Excel/IPC/Serie Historica a Publicar.xls`) | Official CPI of Puerto Rico, all items and the 8 major groups, monthly, base December 2006 = 100 (2010 revision, geometric means) | January 2007 to the latest month (September 2026, published 2026-10-26) | Government of Puerto Rico public information |
 | DTRH on `indicadores.pr` (CKAN dataset `indice-de-precios-al-consumidor`), CSV | The same index concatenated back to January 1984, about 78 items, and the 2000-01 basket weights | 1984 to April 2026 | Creative Commons Attribution |

@@ -13,7 +13,7 @@ Produces a static dataset under site/data/ from open sources only:
   protected.geojson    USGS PAD-US protected areas (simplified for display)
   municipalities.json  per-municipality statistics (supply, risk exposure, density)
   place_access.json    per tourism place: distance to the nearest stop with a current timetable, its weekday departures, weekend service (access.py)
-  meta.json            snapshot label/date, source credits and licences, counts
+  meta.json            snapshot label/date, source credits and licenses, counts
   catalog.json         what the map reads first: the domains with a headline figure each, an index of the dictionary, the weight of every file (catalog.py)
 
 Everything downloaded is cached in cache/ so re-builds are fast; --refresh re-downloads.
@@ -658,7 +658,7 @@ def main():
     print("Land use")
     landuse_summary = {}
     landuse_fc, landuse_meta = build_landuse(CACHE, args.refresh, places, stats, lambda n: MUNI_BY_NORM.get(norm(n)), summary_out=landuse_summary)
-    # Barrios: CRIM's Catastro licence text restricts republishing; publish only after swapping the source to Census
+    # Barrios: CRIM's Catastro license text restricts republishing; publish only after swapping the source to Census
     # TIGERweb County Subdivisions (public domain, same GEOIDs) or with CRIM's written authorization. See CATASTRO_ASSESSMENT_2026-10-01.md.
     PUBLISH_BARRIOS = True   # Census county subdivisions (public domain); the CRIM copy is no longer used
     fips_to_muni = {g[:5]: n for n, g in geoid_by_name.items()}
@@ -681,7 +681,7 @@ def main():
                                   "live": {"checked": LIVE_CHECKED, "sources": LIVE_SOURCES},
                                   "coverage": cov, "transfers": xfers, "transfers_total": n_xfers})
     supply.apply(OUT)   # transit_supply.json: scheduled service by stop pattern, route and stop (reads the trips files and operators.json above)
-    dump(OUT / "population_blocks.json", blocks)   # [lon, lat, residents, metres to the nearest scheduled stop]
+    dump(OUT / "population_blocks.json", blocks)   # [lon, lat, residents, meters to the nearest scheduled stop]
     dump(OUT / "hurricanes.json", storms)
     dump(OUT / "housing.json", housing_paper)
     dump(OUT / "landuse.geojson", landuse_fc)

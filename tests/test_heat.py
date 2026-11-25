@@ -53,7 +53,7 @@ class SceneReader(unittest.TestCase):
         self.dir.cleanup()
 
     def cells(self, n=4, x0=500000.0, y0=2050000.0):
-        """The centres of the first n x n cells of a 60 m grid that starts at the scene's corner."""
+        """The centers of the first n x n cells of a 60 m grid that starts at the scene's corner."""
         cc, rr = np.meshgrid(np.arange(n), np.arange(n))
         return (x0 + (cc.ravel() + 0.5) * 60, y0 - (rr.ravel() + 0.5) * 60)
 

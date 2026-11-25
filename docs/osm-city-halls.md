@@ -6,7 +6,7 @@ On 2026-10-18 these 16 municipios have no city hall in OSM: Adjuntas, Aguas Buen
 
 ## 1. What you may copy, and what you may not
 
-OSM accepts only data it may legally republish under its licence (ODbL).
+OSM accepts only data it may legally republish under its license (ODbL).
 
 - **Never copy from Google Maps**, Google Street View, Apple Maps, Waze, Yelp, tourism directories, Wikipedia coordinates or any other copyrighted map, not even one point or one street name. OSM's rule: "Do not use data from copyrighted maps or any other proprietary data", and "If unsure, do not use" ([Copyright](https://wiki.openstreetmap.org/wiki/Copyright)). The [Legal FAQ, section 2.1](https://wiki.openstreetmap.org/wiki/Legal_FAQ) answers "Can I trace data from Google Maps?" with no.
 - **Allowed:**
@@ -18,7 +18,7 @@ OSM accepts only data it may legally republish under its licence (ODbL).
 
 ## 2. The sources for each municipio
 
-**Primary source: USGS National Structures Dataset** (US Geological Survey, public domain), layer 4 "City/Town Halls" (feature code 83044) of the map service [carto.nationalmap.gov/arcgis/rest/services/structures/MapServer](https://carto.nationalmap.gov/arcgis/rest/services/structures/MapServer/4). The point is placed at the centre of the building. It has all 16 halls. We read them on 2026-10-18 with this query (a plain web address; anyone can open it):
+**Primary source: USGS National Structures Dataset** (US Geological Survey, public domain), layer 4 "City/Town Halls" (feature code 83044) of the map service [carto.nationalmap.gov/arcgis/rest/services/structures/MapServer](https://carto.nationalmap.gov/arcgis/rest/services/structures/MapServer/4). The point is placed at the center of the building. It has all 16 halls. We read them on 2026-10-18 with this query (a plain web address; anyone can open it):
 
 `https://carto.nationalmap.gov/arcgis/rest/services/structures/MapServer/4/query?geometry=-67.97,17.85,-65.20,18.57&geometryType=esriGeometryEnvelope&inSR=4326&outSR=4326&outFields=*&f=json`
 
@@ -79,4 +79,4 @@ python community_assets.py --check
 - The first command downloads the city halls again and rewrites `site/data/town_halls.geojson`. Its `notes.municipios_without_a_city_hall_mapped` should no longer list the municipios you mapped, and `notes.municipios_with_a_city_hall` should grow by as many.
 - The second rebuilds from the new cache and should print "matches the cache" for the three files.
 - Update the counts written in text (the `town_halls` note in `dictionary_src/datasets.json`, the city-hall rows of `docs/community.md` and `README.md`), run `python dictionary.py`, `python catalog.py`, the checks and the tests (`python -m unittest discover -s tests`), and open the map's Layers tab, Infrastructure · City halls, to see the new points.
-- A hall mapped without `amenity=townhall`, or outside every municipio's outline, will not appear; a second hall within about 30 metres of one already mapped with the same name is counted once.
+- A hall mapped without `amenity=townhall`, or outside every municipio's outline, will not appear; a second hall within about 30 meters of one already mapped with the same name is counted once.

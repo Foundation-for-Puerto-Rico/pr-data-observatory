@@ -37,7 +37,7 @@ drops them before any count (not_tourism()). Dropped: 'residential' (subdivision
 recorded as 'holiday_rental').
 A listing that matches 'holiday_rental' and a weaker housing signal (the lodging category naming no accommodation, "... Apartments", "... Condo", a
 home word) is recorded as 'holiday_rental' too; 'residential' stays only for clear housing (clear_housing(): a subdivision or estate word, a named
-condominium or apartment building, a neighbourhood of the gazetteer within 3 km). Review of PR #62. Kept, counted and not drawn: 'holiday_rental' (decision 48: tourism supply), and an 'address' listing filed as a hotel, B&B, holiday rental,
+condominium or apartment building, a neighborhood of the gazetteer within 3 km). Review of PR #62. Kept, counted and not drawn: 'holiday_rental' (decision 48: tourism supply), and an 'address' listing filed as a hotel, B&B, holiday rental,
 cabin or campground (a numbered unit rented to visitors) or as a business (a restaurant or bar named by its address).
 
 places_review.json is the reviewed list: listings drawn although their name matches ('public', each with a reason and its name, which is a
@@ -76,9 +76,9 @@ def conf_step(c):
     return round(math.floor((c or 0) / CONF_STEP + 1e-6) * CONF_STEP, 2)
 
 
-# Distances and departures of a withheld place, coarsened to one value per class (HANDOFF decision 49, 2026-10-18): the metre-exact distance to a stop
+# Distances and departures of a withheld place, coarsened to one value per class (HANDOFF decision 49, 2026-10-18): the meter-exact distance to a stop
 # singled almost every withheld row out. Each value keeps the side of every threshold a reader uses, so every count and share is unchanged:
-#   transit_m (places.json; any mapped stop, cut to whole metres): transit_400m says <= 400 m (access._carry), the map's class rule reads < 800
+#   transit_m (places.json; any mapped stop, cut to whole meters): transit_400m says <= 400 m (access._carry), the map's class rule reads < 800
 #             (access.js accessClass) and the nightly refresh <= 800 (access.flags any800): 400 / 700 / 800 (exactly 800) / 1000 (more than 800)
 #   ts_m (place_access.json; current stop, straight line, rounded up): <= 400 and <= 800 (cur400, cur800, accessClass), and the walk bound for the
 #             places walked in a straight line (tw_straight, where tw_m is ts_m): 400 / 800 / 1000 / the cap (99,999, beyond the bound)
@@ -130,7 +130,7 @@ def _canonical(row):
 
 def publish_order(rows):
     """The order to publish the rows in: the drawn places as built (Overture's order, which follows location), then the withheld places sorted by
-    their own published fields. In Overture's order a withheld row sat between drawn rows a few hundred metres from it, so its position gave its
+    their own published fields. In Overture's order a withheld row sat between drawn rows a few hundred meters from it, so its position gave its
     place away (decision 49). rows: the published rows (public_row). Returns the permutation (new position -> old index)."""
     drawn = [i for i, r in enumerate(rows) if not r.get("withheld")]
     return drawn + sorted((i for i, r in enumerate(rows) if r.get("withheld")), key=lambda i: _canonical(rows[i]))
@@ -242,8 +242,8 @@ BUILDING = _rx([
 # housing (review of PR #62). "Court" names a housing complex unless a public venue is named first ("Supreme Court ...").
 BUILDING_WEAK = _rx([r"edificio", r"edif", r"edf", r"building", r"bldg"])
 # What still says housing when a name also says holiday rental (reason()): a subdivision, urbanización, residencial, housing estate, a condominium or
-# apartment building named as such ("Condominio Ejemplo", "Edificio Ejemplo", "Torres de Ejemplo"), or a neighbourhood, sector or barrio name from the
-# gazetteer ("Villa Ejemplo" when Villa Ejemplo is a neighbourhood). A weaker housing signal (the lodging category naming no accommodation, "... Apartments",
+# apartment building named as such ("Condominio Ejemplo", "Edificio Ejemplo", "Torres de Ejemplo"), or a neighborhood, sector or barrio name from the
+# gazetteer ("Villa Ejemplo" when Villa Ejemplo is a neighborhood). A weaker housing signal (the lodging category naming no accommodation, "... Apartments",
 # "... Condo", a home word) gives way to the holiday rental: it is counted, not drawn (decision 48).
 CLEAR_HOUSING = _rx([r"condominios?", r"condominiums?", r"cond", r"edificio", r"edif", r"edf", r"torres?", r"multifamiliar", r"walk ups?", r"row houses"])
 ESTATE = _rx([
@@ -296,7 +296,7 @@ _places = None
 
 
 def place_names():
-    """Normalised names of the municipios, towns, villages, barrios and neighbourhoods (sectors, urbanizaciones) in site/data/gazetteer.json, for
+    """Normalized names of the municipios, towns, villages, barrios and neighborhoods (sectors, urbanizaciones) in site/data/gazetteer.json, for
     HOUSE_ONE_WORD."""
     global _places
     if _places is None:
@@ -310,7 +310,7 @@ def place_names():
 
 
 def house_one_word(n):
-    """n (normalised) is a house called Casa or Villa and one word, optionally followed by a town, barrio or municipio."""
+    """n (normalized) is a house called Casa or Villa and one word, optionally followed by a town, barrio or municipio."""
     m = HOUSE_ONE_WORD.match(re.sub(r" (pr|puerto rico)$", "", n))
     return bool(m) and (m.group(5) is None or m.group(5) in place_names())
 # A home word followed by a unit or house number ("Casa Ejemplo 28", "Cluster 2 - 39B"): an address in any category. Not a year, and not when the name
@@ -380,7 +380,7 @@ def matches(name, category, rv):
 
 
 def home_number(n, homes_filed):
-    """A home word followed by a unit or house number (HOME_NUMBER) in the normalised name n; homes_filed: a category where homes are filed or rented."""
+    """A home word followed by a unit or house number (HOME_NUMBER) in the normalized name n; homes_filed: a category where homes are filed or rented."""
     if any(m.group(1) not in NATURAL for m in PUBLIC_VENUE.finditer(n)) or LODGING_BUSINESS.search(n) or SHOP.search(n):
         return False   # a beach or river word does not make a public venue here ("Rio Ejemplo Cluster 2 - 39B")
     return any(homes_filed or len(m.group(2)) > 1 or m.group(3) for m in HOME_NUMBER.finditer(n))
@@ -406,7 +406,7 @@ _hoods = None
 
 
 def neighbourhood_name(n, lat=None, lng=None):
-    """n (normalised) starts with the name (two words or more) of a neighbourhood, sector, urbanización, barrio, village, town or municipio of the
+    """n (normalized) starts with the name (two words or more) of a neighborhood, sector, urbanización, barrio, village, town or municipio of the
     gazetteer that lies within 3 km of the place ("Villa Ejemplo" is a subdivision only where a Villa Ejemplo is mapped nearby); anywhere when the place
     has no point."""
     global _hoods
@@ -430,7 +430,7 @@ def neighbourhood_name(n, lat=None, lng=None):
 
 def clear_housing(name, category, rv, lat=None, lng=None):
     """The name says housing clearly (CLEAR_HOUSING): a subdivision or estate word, a condominium or apartment building named as such, or a
-    neighbourhood from the gazetteer; or the category is residential."""
+    neighborhood from the gazetteer; or the category is residential."""
     n = norm(name)
     estate = ESTATE.search(n)
     if estate and re.fullmatch(r"villa del?", estate.group(0)):

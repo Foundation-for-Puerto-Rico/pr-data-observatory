@@ -36,7 +36,7 @@ The Annie E. Casey Foundation's 2024 KIDS COUNT release for Puerto Rico (with th
 
 ## 6. Reading the numbers
 
-- Chronic absence in 2021-22 ranges from 11% (Guaynabo) to 83% (Las Marías), and three western municipios are above 77%. Differences this large between neighbours may come partly from how each education region recorded absences: read neighbours together.
+- Chronic absence in 2021-22 ranges from 11% (Guaynabo) to 83% (Las Marías), and three western municipios are above 77%. Differences this large between neighbors may come partly from how each education region recorded absences: read neighbors together.
 - 2017-18 was the school year of Hurricane María; schools that did not reopen are not in it.
 - Schools report their own figures; the Office for Civil Rights does not audit them.
 

@@ -8,11 +8,11 @@ Step A1 of the GeoAI sources plan (docs/geoai-sources-proposal-2026-11.md, HANDO
 
 The source. The Overture Maps Foundation's buildings theme, which joins building footprints from OpenStreetMap (first, so volunteers' edits win), Google Open
 Buildings, Microsoft's ML building footprints, Esri Community Maps and others into one set, released every month as GeoParquet on public cloud storage (no key).
-Licence: ODbL 1.0, because it holds OpenStreetMap data; credit "© OpenStreetMap contributors, Overture Maps Foundation". The overturemaps package (already used for
+License: ODbL 1.0, because it holds OpenStreetMap data; credit "© OpenStreetMap contributors, Overture Maps Foundation". The overturemaps package (already used for
 places) reads the files for a box around Puerto Rico.
 
 How it is made (docs/buildings.md):
-  - The download keeps, for each building, one point inside its outline (shapely's point on surface), its footprint area in square metres (on the same Lambert
+  - The download keeps, for each building, one point inside its outline (shapely's point on surface), its footprint area in square meters (on the same Lambert
     equal-area plane as conditions.Barrios), the dataset of its first source, and its height when Overture has one. Not the outlines, and not the ids. The cache is
     cache/buildings/<release>.npz, a few tens of MB, never published.
   - Areas: a building belongs to the barrio whose outline holds its point; a point just off the coast (a pier, a building on a reef) goes to the nearest barrio
@@ -235,11 +235,11 @@ def compute(refresh=False, offline=False):
                 "definition": definition, "family": "buildings", "counted": False, "barrioFile": OUT_BARRIO.name, **extra,
                 "years": {Y_: [None if mrows[f] is None else mrows[f][field] for f in B.mids] + [isl[field]]}}
     vs = [var("bld_n", "Buildings (Overture footprints)", "", 0, "count", "The number of buildings in the area. " + WHAT, "n", classes="jenks"),
-          var("bld_per_km2", "Buildings per km² of land", "", 1, "rate", "Buildings per square kilometre of the area's land (Census land area). " + WHAT, "per_km2"),
+          var("bld_per_km2", "Buildings per km² of land", "", 1, "rate", "Buildings per square kilometer of the area's land (Census land area). " + WHAT, "per_km2"),
           var("bld_roof_pct", "Land under roofs (%)", "%", 1, "rate",
               "The footprints' area as a share of the area's land area (Census). A footprint traced from above is the roof's outline, so eaves count. " + WHAT, "roof_pct"),
           var("bld_area_med", "Median building footprint (m²)", "m²", 0, "ratio",
-              "The middle footprint area of the area's buildings, in square metres on an equal-area plane: half are smaller. " + WHAT, "area_med"),
+              "The middle footprint area of the area's buildings, in square meters on an equal-area plane: half are smaller. " + WHAT, "area_med"),
           var("bld_sfha_n", "Buildings in a FEMA Special Flood Hazard Area", "", 0, "count", "The number of buildings in a Special Flood Hazard Area." + FLOOD + " " + WHAT,
               "sfha_n", classes="jenks"),
           var("bld_sfha_pct", "Buildings in a FEMA Special Flood Hazard Area (%)", "%", 1, "rate",

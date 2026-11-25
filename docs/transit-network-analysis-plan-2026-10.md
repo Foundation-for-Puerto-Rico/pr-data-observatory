@@ -54,7 +54,7 @@ Where routes meet, where they could feed each other, and whether a transfer work
 - **Timetable-aware transfers.** For each pair of stops of different routes within a short walk (start with 250 m, as today), measure the waits: for each arrival, the time until the next departure on the other route. Report the share of arrivals with a wait under 10 and under 20 minutes, by hour.
 - **Near misses.** Routes that end or pass within 250 to 800 m of another operator's route with no stop near the other: candidates for a short extension or a new stop.
 - **Feeder candidates.** Municipal routes whose ends are not near a frequent ATI line, Tren Urbano or a terminal, and frequent lines whose stops have no local route nearby.
-- **Journey times.** Promote the journey-time prototype (`csa.py`: up to 3 boardings, 400 m walking links, 180 s transfer buffer) to answer "how long from each barrio to the main job and service centres, at 7:00 on a weekday". The visitor-access study found 18.3% of tourism places reachable from the airport (SJU) within 120 minutes by transit, against 86.1% by car.
+- **Journey times.** Promote the journey-time prototype (`csa.py`: up to 3 boardings, 400 m walking links, 180 s transfer buffer) to answer "how long from each barrio to the main job and service centers, at 7:00 on a weekday". The visitor-access study found 18.3% of tourism places reachable from the airport (SJU) within 120 minutes by transit, against 86.1% by car.
 - **Outputs.** A transfers file with waits, a "connections" layer, and journey-time maps from a short list of hubs (agreed with FPR).
 - **Size:** medium to large.
 
@@ -84,7 +84,7 @@ Bring phases 1 to 4 together into a short list of places and corridors to look a
 **First version built 2026-11-10** (`docs/analysis/transit-needs-2026-11/`, not on the site): the 746 barrios with 500 residents or more ranked by need (ACS proxies) and by the share of residents beyond 400 m of a stop with a bus every 30 minutes, and 19 places where routes of different operators come within 250 to 800 m without sharing a stop. It builds the parts of phases 2 to 4 it needs from open data; timed transfers, journey times and ridership are still to come.
 
 - **Need:** residents (and later riders) with high proxies of transit need, such as no-vehicle households, density and long commutes.
-- **Supply:** low or no current, useful service (phase 2), or long journey times to centres (phase 3).
+- **Supply:** low or no current, useful service (phase 2), or long journey times to centers (phase 3).
 - **Connection value:** a gap between existing routes that a short link or a timed transfer would close (phase 3).
 - **Test candidates** with the route planner, which already reports residents, places, overlap with existing routes and nearby stops of other operators. Add frequency, run time and the transfers each candidate creates.
 - **Output:** a ranked list of areas and corridors with the reasons behind each, for FPR's review. The ranking is a planning aid, not a demand forecast or an engineering study.
@@ -95,7 +95,7 @@ Bring phases 1 to 4 together into a short list of places and corridors to look a
 
 1. **FPR:** confirm the purpose and audience of the analysis (internal planning, partners, or the public site), because that decides how findings are worded and reviewed.
 2. **FPR:** approve data requests to ATI and the municipal operators, and name who sends them.
-3. **FPR:** choose the hubs for journey-time maps (for example SJU, Río Piedras, Bayamón, Caguas, Ponce, Mayagüez centres).
+3. **FPR:** choose the hubs for journey-time maps (for example SJU, Río Piedras, Bayamón, Caguas, Ponce, Mayagüez centers).
 4. **FPR leadership:** a public recommendation for new routes or service changes is a policy position. It needs leadership approval before it is published.
 5. **Development:** phases 1 to 3 can start now, in that order.
 

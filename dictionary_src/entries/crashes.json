@@ -328,8 +328,8 @@
   ],
   "group": "Road safety",
   "kind": "variable",
-  "plain": "How many people died in traffic crashes for every 100 million kilometres driven on the municipio's roads, over 2020-2024: the risk per kilometre driven.",
-  "definition": "The people killed in traffic crashes in the municipio over 2020-2024, divided by the vehicle-kilometres driven on its roads in those years, times 100 million. The vehicle-kilometres are those of HPMS data year 2025 (traffic_series.json), counted for each of the 5 years: a measure of risk per kilometre driven, where the rate per resident is high because much traffic passes through.",
+  "plain": "How many people died in traffic crashes for every 100 million kilometers driven on the municipio's roads, over 2020-2024: the risk per kilometer driven.",
+  "definition": "The people killed in traffic crashes in the municipio over 2020-2024, divided by the vehicle-kilometers driven on its roads in those years, times 100 million. The vehicle-kilometers are those of HPMS data year 2025 (traffic_series.json), counted for each of the 5 years: a measure of risk per kilometer driven, where the rate per resident is high because much traffic passes through.",
   "unit": "deaths per 100 million vehicle-km",
   "value_type": "ratio",
   "geography": "78 municipalities and Puerto Rico",
@@ -351,7 +351,7 @@
    "2024 is NHTSA's first release and can change when the final file comes out.",
    "A municipio has few deaths a year, so a year-to-year change can be chance; the five-year rates are steadier.",
    "FARS can differ from the Puerto Rico Traffic Safety Commission's own count.",
-   "The vehicle-kilometres are those of HPMS data year 2025, used for each of the five years; traffic changed over the period."
+   "The vehicle-kilometers are those of HPMS data year 2025, used for each of the five years; traffic changed over the period."
   ],
   "see_also": [
    "infrastructure.crash_rate_5y",

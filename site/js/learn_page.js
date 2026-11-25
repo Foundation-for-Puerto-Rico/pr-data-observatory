@@ -82,7 +82,7 @@
     gloss(el);
   }
 
-  // ---- A4 Colours and classes: the same 78 values in five classes by three methods ----
+  // ---- A4 Colors and classes: the same 78 values in five classes by three methods ----
   let classM = 'quantile';
   const RAMP = ['#BDE0F2', '#8FCAE8', '#5FAFDA', '#338CB3', '#205D7B'];
   function drawClasses() {
@@ -91,7 +91,7 @@
     const m = c.methods[classM], e = m.edges, lim = (v) => fmt(+v.toFixed(1), 1),   // a limit rounded as the map's legend rounds it
       lo = e[0], hi = e[e.length - 1], W = 600, X = (v) => 20 + (v - lo) / (hi - lo) * (W - 40);
     const chip = (k, label) => `<button type="button" class="ln-chip" data-classes="${k}" aria-pressed="${classM === k}">${esc(label)}</button>`;
-    // one dot for each municipio along the scale of values, stacked where values are close; a band of colour for each class under it
+    // one dot for each municipio along the scale of values, stacked where values are close; a band of color for each class under it
     const order = c.values.map((v, i) => [v, i]).filter(x => x[0] != null).sort((p, q) => p[0] - q[0]);
     const lastX = [];
     const dots = order.map(([v, i]) => {
@@ -102,7 +102,7 @@
     }).join('');
     const bands = e.slice(0, -1).map((a, k) => `<rect x="${X(a).toFixed(1)}" y="96" width="${Math.max(1, X(e[k + 1]) - X(a)).toFixed(1)}" height="14" fill="${RAMP[k]}"/>`).join('');
     const ticks = e.map(v => `<line x1="${X(v).toFixed(1)}" y1="92" x2="${X(v).toFixed(1)}" y2="114" stroke="#2A2E2E" stroke-width="1"/><text x="${X(v).toFixed(1)}" y="128" font-size="11" text-anchor="middle" fill="#2A2E2E">${esc(lim(v))}</text>`).join('');
-    const svg = `<svg viewBox="0 0 ${W} 136" role="img" aria-label="${esc(T('The poverty rate of the {n} municipios on a scale, coloured by class; the limits of the five classes below', { n: fmt(c.n) }))}">${dots}${bands}${ticks}</svg>`;
+    const svg = `<svg viewBox="0 0 ${W} 136" role="img" aria-label="${esc(T('The poverty rate of the {n} municipios on a scale, colored by class; the limits of the five classes below', { n: fmt(c.n) }))}">${dots}${bands}${ticks}</svg>`;
     const rows = m.counts.map((n, k) => `<tr><th scope="row"><span class="ln-sw" style="background:${RAMP[k]}"></span>${esc(T('{a} to {b}%', { a: lim(e[k]), b: lim(e[k + 1]) }))}</th><td>${fmt(n)}</td></tr>`).join('');
     el.innerHTML =
       `<p>${Th('The share of residents below the poverty level, for the {n} municipios, in the survey that ends in {y}. Choose how to cut the classes:', { n: fmt(c.n), y: c.year })}</p>` +
@@ -252,7 +252,7 @@
       `<p>${Th('<b>{f}</b> has {n} barrios in {kb} KB. <b>{m}</b> has {mn} municipios in {mkb} KB. Both store longitude and latitude in degrees (GeoJSON, RFC 7946).', { f: q.barrios.file, n: fmt(q.barrios.features), kb: fmt(q.barrios.kb), m: q.municipios.file, mn: fmt(q.municipios.features), mkb: fmt(q.municipios.kb) })}</p>` +
       `<p>${Th('The GEOID of {b}, in {m}, read in three parts:', { b: g.barrio, m: g.municipality })}</p>` +
       `<p class="ln-geoids">${part(g.state, T('Puerto Rico'))}${part(g.county, T('municipio'))}${part(g.subdivision, T('barrio'))}</p>` +
-      `<p>${Th('To measure in metres, reproject to <b>NAD83 / Puerto Rico &amp; Virgin Is.</b> (EPSG:32161).')}</p>`;
+      `<p>${Th('To measure in meters, reproject to <b>NAD83 / Puerto Rico &amp; Virgin Is.</b> (EPSG:32161).')}</p>`;
     gloss(el);
   }
 

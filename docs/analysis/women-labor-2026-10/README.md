@@ -31,7 +31,7 @@ Checks made on 2026-10-30: the sum of men and women over the seven age groups eq
 - **Pooled rates.** A group's rate is the sum of its municipios' counts, divided. The simple average of the municipio rates is shown only to explain why it is wrong for a region (it gives Culebra the weight of Humacao).
 - **Margins of error** (90%): sums by the square root of the summed squares (every zero estimate's margin is kept, which is slightly conservative: the Handbook keeps only the largest); proportions by the Census Bureau's formula, with the ratio formula when the root is negative (ACS General Handbook, chapter 8).
 - **Significance:** a difference is significant when it is larger than its margin, the square root of the sum of the two squared margins (z = 1.645). An area is compared with **the rest of Puerto Rico**, never with the island total that contains it.
-- **Age-adjusted rate** (direct standardisation) with the age mix of the women in the rest of the island, and the **Kitagawa (1955) split** of the gap into age mix and participation within each age. The two parts add up to the gap exactly; they carry no margin of error.
+- **Age-adjusted rate** (direct standardization) with the age mix of the women in the rest of the island, and the **Kitagawa (1955) split** of the gap into age mix and participation within each age. The two parts add up to the gap exactly; they carry no margin of error.
 - **Reliability:** coefficient of variation = (margin / 1.645) / estimate; over 30% is flagged, the observatory's rule, and so is a zero estimate with a margin.
 
 ## Results (2020-2024, as the file gives them on 2026-10-30)
@@ -51,8 +51,8 @@ Checks made on 2026-10-30: the sum of men and women over the seven age groups eq
 
 1. **A region builder with honest arithmetic.** Any group of municipios gets pooled rates, margins of error and a significance test against the rest of the island, in the page and in the CSV. The arithmetic lives in one script per language and a test keeps them equal.
 2. **The denominator and the sample on screen.** Every rate shows how many people it divides by and how many people the survey interviewed, so a reader can judge it.
-3. **Age adjustment and decomposition.** A crude rate compares populations of different ages; the page separates the age mix from behaviour.
+3. **Age adjustment and decomposition.** A crude rate compares populations of different ages; the page separates the age mix from behavior.
 4. **Comparable windows only.** Trends use windows that share no year.
 5. **Map datasets.** `labor_sex_series.json` puts seven variables on the map's Economy tab and area profiles (women's and men's participation, prime age, gap, women's unemployment, counts), with margins, so they combine with every other layer.
 
-Next analyses of the same kind can reuse `women_labor.py`'s helpers (`esum`, `prop`, `diff`, `combine`, `age_adjust`) and the page's region builder. Candidates that the same tables or their neighbours answer: earnings by sex (B20017), education by sex (B15002), occupation by sex (C24010), poverty by sex and age (B17001), disability and employment (C18120), commuting by sex (B08006).
+Next analyses of the same kind can reuse `women_labor.py`'s helpers (`esum`, `prop`, `diff`, `combine`, `age_adjust`) and the page's region builder. Candidates that the same tables or their neighbors answer: earnings by sex (B20017), education by sex (B15002), occupation by sex (C24010), poverty by sex and age (B17001), disability and employment (C18120), commuting by sex (B08006).

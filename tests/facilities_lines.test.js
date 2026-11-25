@@ -1,4 +1,4 @@
-/* The Transmission lines layer of core/facilities.js (HANDOFF decision 104, step 2): colour and width by voltage, a cable dashed, the pop-up, legend and note.
+/* The Transmission lines layer of core/facilities.js (HANDOFF decision 104, step 2): color and width by voltage, a cable dashed, the pop-up, legend and note.
      node --test tests/facilities_lines.test.js */
 const test = require('node:test');
 const assert = require('node:assert');
@@ -14,7 +14,7 @@ test('Transmission lines is a line layer styled by voltage, with a switch, a fil
   assert.strictEqual(L.file, 'power_lines.geojson');
   assert.ok(L.line && L.line.colors && L.line.widths && !L.sized && !L.area);
   assert.ok(/not drawn/.test(F.HELP_TEXT.fac_powerlines[1]) && /about half mapped/.test(F.HELP_TEXT.fac_powerlines[1]));
-  for (const f of d.features) assert.ok(L.line.colors[f.properties.kv], `no colour for ${f.properties.kv} kV`);
+  for (const f of d.features) assert.ok(L.line.colors[f.properties.kv], `no color for ${f.properties.kv} kV`);
 });
 
 test('the higher the voltage, the wider the line; a cable is dashed', () => {

@@ -1,8 +1,8 @@
 /* PR Data Observatory core: the parts of "Save the map as an image" that need no page (Tools › Map tools, decision 97 step 3; docs/map-image.md).
 
-     MapImage.niceScale(mPerPx, maxPx)   the longest round length (1, 2 or 5 × 10^n metres) whose bar fits in maxPx pixels: { m, px, label }
+     MapImage.niceScale(mPerPx, maxPx)   the longest round length (1, 2 or 5 × 10^n meters) whose bar fits in maxPx pixels: { m, px, label }
      MapImage.fileName(date)            pr-data-observatory-map-YYYY-MM-DD.png
-     MapImage.swatch(style)             how a legend swatch is drawn, from its classes and computed colours: { kind: 'fill'|'line'|'pin'|'ramp', colors: [...] }
+     MapImage.swatch(style)             how a legend swatch is drawn, from its classes and computed colors: { kind: 'fill'|'line'|'pin'|'ramp', colors: [...] }
      MapImage.columns(blocks, width, colW)   legend blocks laid out in columns across the band under the map: [{ x, y, block }] and the band's height
    site/js/mapimage.js draws the image with these. Tested in Node by tests/mapimage.test.js. */
 (function (name, root, factory) {
@@ -18,7 +18,7 @@
   }
   const pad = (n) => String(n).padStart(2, '0');
   const fileName = (d = new Date()) => `pr-data-observatory-map-${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}.png`;
-  // the colours a CSS value holds, in order: rgb()/rgba() and #hex
+  // the colors a CSS value holds, in order: rgb()/rgba() and #hex
   const colorsIn = (s) => (String(s || '').match(/rgba?\([^)]*\)|#[0-9a-fA-F]{3,8}\b/g) || []);
   const clear = (c) => !c || c === 'transparent' || /rgba\([^)]*,\s*0\)$/.test(c);
   function swatch({ cls = '', bg = '', bgImage = '', border = '' }) {

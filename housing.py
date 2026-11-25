@@ -1,4 +1,4 @@
-"""Housing dimension for the PR Data Observatory, modelled on FPR's "The State of Housing in Puerto Rico:
+"""Housing dimension for the PR Data Observatory, modeled on FPR's "The State of Housing in Puerto Rico:
 An Analysis of the Factors That Impact Housing and Rent Prices" (2023, Advancing Equitable
 Neighborhood Development grant).
 

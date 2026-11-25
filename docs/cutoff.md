@@ -15,7 +15,7 @@ The code is `cutoff.py`, the tests are `tests/test_cutoff.py` and a test in `tes
 | Bridges in poor condition or closed (`cut_bridge_pct`) | 4,478 | 0.1% |
 | Both (`cut_both_pct`) | 554,342 | 16.9% |
 
-Shares of the 3,275,791 residents measured. Left out: Vieques (8,245) and Culebra (1,792), which have no road to a hospital with nothing closed (their health centres are not hospitals by the rule below), and 46 residents with no road within 2 km.
+Shares of the 3,275,791 residents measured. Left out: Vieques (8,245) and Culebra (1,792), which have no road to a hospital with nothing closed (their health centers are not hospitals by the rule below), and 46 residents with no road within 2 km.
 
 Half of those cut off by floods live on a street that stays dry: a flood map alone does not show them. The 1% flood area holds 316,309 residents (the exposure series); 255,628 of them live on a stretch of road that closes, the rest near a raised road or one that stays out of the water.
 
@@ -44,7 +44,7 @@ The two closures together cut off more than each alone where a poor bridge sits 
    - the span of each bridge the National Bridge Inventory rates good or fair (its point, half its length and 15 m either side): a sound bridge carries the road over the water.
    23,477 road edges have at least one closed point.
 3. **Bridge closures.** The road under the point of each bridge rated poor, or listed as closed (status K), within 60 m: 355 bridges, 339 road edges (6 bridges have no road within 60 m).
-4. **Hospitals.** The hospitals and medical centres of OpenStreetMap in the observatory's place index (`gazetteer.json`, the rule of `conditions.py`): 73, all on a road. CMS's hospital list is the better source but its API answered 403 on 2026-11-17; OpenStreetMap's list needs no download.
+4. **Hospitals.** The hospitals and medical centers of OpenStreetMap in the observatory's place index (`gazetteer.json`, the rule of `conditions.py`): 73, all on a road. CMS's hospital list is the better source but its API answered 403 on 2026-11-17; OpenStreetMap's list needs no download.
 5. **Who is cut off.** Each 2020 Census block with residents is placed on its nearest road joined to the network within 2 km. With the stretches closed, the roads split into pieces (roads read in both directions); a block is cut off when its piece holds no hospital it can reach. Along its own edge, a block reaches an end only if no closed point lies between it and that end; a block whose own stretch is closed is cut off and counted as on a street that floods.
 6. A barrio's and a municipio's figure is the share of its residents.
 
@@ -70,7 +70,7 @@ The two closures together cut off more than each alone where a poor bridge sits 
 ## 4. Reading notes
 
 - A worst case, not a forecast: in a real storm only some rivers rise, for a few hours, and some flooded roads can still be crossed.
-- The town centre is not the test: a town centre in the flood area is often itself cut off. The test is a hospital.
+- The town center is not the test: a town center in the flood area is often itself cut off. The test is a hospital.
 - Landslides, fallen trees and power lines also close roads (Hurricane María); they are not in the model. Private and unmapped roads are missing from OpenStreetMap.
 - Poor condition is the National Bridge Inventory's rating of a bridge's parts: it does not mean the bridge will fail. A bridge over another road may close the wrong road.
 - The count (`cut_flood_res`) is shaded per 1,000 residents by default on the map: the share times ten.

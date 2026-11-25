@@ -146,7 +146,7 @@ class Rule(unittest.TestCase):
         self.assertIsNone(why("Ejemplo Cottage Inn", "hotel"))
         for cat in ("restaurant", "bar", "museum", "guest_house", "inn"):
             self.assertIsNone(why("Ejemplo Cabin", cat), cat)
-        # "Casa/Villa" and one word followed by a neighbourhood, sector or urbanización (gazetteer kind 'neighborhood')
+        # "Casa/Villa" and one word followed by a neighborhood, sector or urbanización (gazetteer kind 'neighborhood')
         self.assertIn("isla verde", pp.place_names())
         for name in ("Casa Ejemplo Isla Verde", "Casa Ejemplo Castañer PR", "Villa Ejemplo, Isla Verde"):
             self.assertEqual(why(name, "hotel"), "holiday_rental", name)
@@ -335,7 +335,7 @@ class Row(unittest.TestCase):
         self.assertEqual(pp.public_row({**self.FULL, "transit_m": 333})["transit_m"], 333)   # a drawn place keeps its distance
 
     def test_the_withheld_rows_go_last_in_an_order_of_their_own(self):
-        """In Overture's order a withheld row sits next to drawn rows a few hundred metres away: they are published last instead (decision 49)."""
+        """In Overture's order a withheld row sits next to drawn rows a few hundred meters away: they are published last instead (decision 49)."""
         rows = [{"n": 1}, {"withheld": "residence", "municipality": "B"}, {"n": 2}, {"withheld": "address", "municipality": "A"}]
         perm = pp.publish_order(rows)
         self.assertEqual(perm, [0, 2, 3, 1])
@@ -430,7 +430,7 @@ REGISTERS = ["site/data/" + f for f in ("gazetteer.json", "barrios.geojson", "co
 
 
 def ngrams(words, wanted, firsts, longest):
-    """The runs of words in `words` that are in `wanted` (a set of normalised names whose first words are `firsts`)."""
+    """The runs of words in `words` that are in `wanted` (a set of normalized names whose first words are `firsts`)."""
     out = set()
     for i, w in enumerate(words):
         if w in firsts:

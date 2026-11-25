@@ -42,8 +42,8 @@ Landsat passes Puerto Rico at about **10:30 local time**. The figures are mid-mo
 - It uses HTTP range requests and only the tiles that hold land cells (`COG.values_at`): about 2 MB a scene for these two bands. The gap fill reads six more bands where USGS has no value, so the cache in `cache/heat/` holds 1.6 GB for the 246 scenes (measured 2026-11-04; this page first said 250 MB, which left out the gap fill's bands). Keep it outside a synced folder.
 - A rebuild from the cache takes under 3 minutes and needs no network.
 
-**Grid.** One 60 m grid in UTM zone 20 (EPSG:32620): 2,485,382 cells whose centre is in a barrio.
-- Each cell takes the scene pixel under its centre.
+**Grid.** One 60 m grid in UTM zone 20 (EPSG:32620): 2,485,382 cells whose center is in a barrio.
+- Each cell takes the scene pixel under its center.
 - Scenes in zone 19 are mapped onto the grid with pyproj.
 
 **Clear observations.** An observation counts when all of these hold:
@@ -60,14 +60,14 @@ There are 83.8 million clear observations in all.
 - A mean clipped at 2.5 standard deviations was tried first and dropped. With fewer than 8 views, one outlier widens the spread so much that it can never be clipped. The test `test_composite_median_and_minimum_views` covers this case.
 
 **Areas.**
-- A cell belongs to the barrio whose outline (`barrios.geojson`) holds its centre, as in `landslide.py`.
+- A cell belongs to the barrio whose outline (`barrios.geojson`) holds its center, as in `landslide.py`.
 - Municipios and Puerto Rico **pool the cells** of their barrios. They are not averages of barrio figures.
 
 **Hot land.** The cells above Puerto Rico's 90th percentile of the composite: 40.5 °C in this build.
 
 **Residents.** Each 2020 census block with residents counts whole on the cell under its internal point.
 - It counts in the barrio that the geography crosswalk gives it (`network.load_block_table` and `geo.block_barrios`, the rule of `exposure.py`). So the barrios' residents never exceed the crosswalk's and add up to the municipios'.
-- 1,983 residents live in blocks whose point falls on water or off the generalised outlines. They count as not on hot land.
+- 1,983 residents live in blocks whose point falls on water or off the generalized outlines. They count as not on hot land.
 - These are estimates, rough for a barrio, where the edge of hot land can cut a block.
 
 ## Where USGS has no surface temperature (the gap fill)
@@ -101,11 +101,11 @@ So there, and only there, `heat.py` computes the surface temperature itself with
 
 The 60 m composite is also drawn as one picture, so a visitor sees every cell, not only the averages by area. In the 3D view it is draped on the terrain under the 3D buildings, which gives the look of a city's heat map seen at an angle; on the 2D map it lies under every other layer. Switch: Explore › Map layers › Environment and climate › "Surface heat, summer mornings" (`l=surfheat`), and the same row in the 3D view's Layers tab.
 
-- **Files.** `heat.py` writes `heat_surface.png` (an indexed PNG of 64 colour steps, transparent where there is no value; about 1.1 MB) and `heat_surface.json` (its corners, size, pixel size and scale), with `surface_image.py`. Both pages read them only when the switch is turned on.
-- **Pixels.** One pixel is about one 60 m cell, in Web Mercator (the projection both maps stretch an image in). Each pixel takes the cell under its centre, so nothing is invented between cells. The image is 3,649 × 1,210 pixels, under the 4,096 that every phone's WebGL can hold as one texture; Mona, Monito and Desecheo are left out because the sea between them and the main island would make it wider.
-- **Scale.** Diverging, from `core/palettes.js` DIVERGING: grey at Puerto Rico's median (33.4 °C in this build), dark blue and dark red at the median minus and plus the larger distance to the 2nd and 98th percentiles, rounded up (21.4 to 45.4 °C); values beyond are drawn at the ends. A rainbow scale like many city heat maps was not used: it is hard to read for people with colour blindness and has no neutral middle.
-- **Colours that follow the view (decision 88, 2026-11-06).** By default the colours are recomputed for the land in view after each move (`site/js/core/surfscale.js`, loaded with the image): grey at the median of the land in view, the darkest blue and red at the larger distance from it to the 2nd and 98th percentiles (at least 1 °C). Over San Juan, where most land is above the island's median, the city then shows its own hot and cool places instead of one red. In the 3D view the ground in view is the lower 60% of the screen, so a tilted camera's horizon does not count. The legend's switch goes back to Puerto Rico's fixed scale, and its numbers always say which scale is drawn. No value changes: each pixel keeps its measured step (64 steps of 0.38 °C); only the colour given to a step changes. `tests/surfscale.test.js` checks that the page reads the steps with the image's own palette.
-- **Morning and night (decision 88, 2026-11-06).** The legend's "Hora: Mañana / Noche" switch shows the night composite of `ecostress.py` instead: `night_heat_surface.png` and `.json`, drawn the same way on the same grid (ECOSTRESS read at 70 m), with its own scale around Puerto Rico's night median (24.0 °C; 19 to 29 °C). At night elevation dominates: the Cordillera and El Yunque stay coolest, the coasts and the San Juan metro area warmest. The Colours switch works on either image. `ecostress.py --from-cache` writes the night image without the NASA token, and the ECOSTRESS workflow keeps it with its files.
+- **Files.** `heat.py` writes `heat_surface.png` (an indexed PNG of 64 color steps, transparent where there is no value; about 1.1 MB) and `heat_surface.json` (its corners, size, pixel size and scale), with `surface_image.py`. Both pages read them only when the switch is turned on.
+- **Pixels.** One pixel is about one 60 m cell, in Web Mercator (the projection both maps stretch an image in). Each pixel takes the cell under its center, so nothing is invented between cells. The image is 3,649 × 1,210 pixels, under the 4,096 that every phone's WebGL can hold as one texture; Mona, Monito and Desecheo are left out because the sea between them and the main island would make it wider.
+- **Scale.** Diverging, from `core/palettes.js` DIVERGING: gray at Puerto Rico's median (33.4 °C in this build), dark blue and dark red at the median minus and plus the larger distance to the 2nd and 98th percentiles, rounded up (21.4 to 45.4 °C); values beyond are drawn at the ends. A rainbow scale like many city heat maps was not used: it is hard to read for people with color blindness and has no neutral middle.
+- **Colors that follow the view (decision 88, 2026-11-06).** By default the colors are recomputed for the land in view after each move (`site/js/core/surfscale.js`, loaded with the image): gray at the median of the land in view, the darkest blue and red at the larger distance from it to the 2nd and 98th percentiles (at least 1 °C). Over San Juan, where most land is above the island's median, the city then shows its own hot and cool places instead of one red. In the 3D view the ground in view is the lower 60% of the screen, so a tilted camera's horizon does not count. The legend's switch goes back to Puerto Rico's fixed scale, and its numbers always say which scale is drawn. No value changes: each pixel keeps its measured step (64 steps of 0.38 °C); only the color given to a step changes. `tests/surfscale.test.js` checks that the page reads the steps with the image's own palette.
+- **Morning and night (decision 88, 2026-11-06).** The legend's "Hora: Mañana / Noche" switch shows the night composite of `ecostress.py` instead: `night_heat_surface.png` and `.json`, drawn the same way on the same grid (ECOSTRESS read at 70 m), with its own scale around Puerto Rico's night median (24.0 °C; 19 to 29 °C). At night elevation dominates: the Cordillera and El Yunque stay coolest, the coasts and the San Juan metro area warmest. The Colors switch works on either image. `ecostress.py --from-cache` writes the night image without the NASA token, and the ECOSTRESS workflow keeps it with its files.
 - **What the picture cannot show.** Landsat's thermal sensor sees about 100 m, so a street or a single roof is not resolved; a 10 m estimate by thermal sharpening with Sentinel-2 was tried (branch `data/heat-sharpen`, `heat_sharpen.py`) and not published: degrading the measured heat and sharpening it back beat plain smoothing only for targets of 180 m and coarser, so detail under that is not supported by the data (decision 88).
 - **Check.** `python heat.py --check` also compares the image and its description with what the cache gives.
 
@@ -135,6 +135,6 @@ The build stops when any of these fails:
 - **Cache.** `rebuild.yml` caches `cache/heat`, so a run downloads only the new summer's scenes.
 - **Inputs.** The block table and the block-to-barrio table (`cache/network`, `cache/geo`) come from `network.py` and `geo.py`, as for `exposure.py`.
 
-## Licence
+## License
 
 USGS Landsat data are US Government work in the public domain; USGS asks for credit ("courtesy of the U.S. Geological Survey"). The source card is `usgs_landsat_c2_st` in `dictionary_src/sources.json`. Planetary Computer's terms cover access to its copy, not the data. No image is published, only figures by area.

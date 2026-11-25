@@ -65,7 +65,7 @@ Largest gaps in FY2025: the Department of Education ($1.43 B), the Department of
 - **It must not be read as money left over.** Most of the FY2025 gap is federal money (disaster recovery in Housing and Emergency Management), which is spent over several years. The useful view separates the General Fund from federal and special funds.
 - **Agency codes move.** In FY2025 the Police show $0 approved and $867 M spent, because the budget was approved under another body. The view needs the agencies joined before any ranking.
 - **"Spent" is what agencies report,** not what Hacienda certifies (section 3). The view says so beside the figure.
-- **What happens to the money afterwards is not in the data:** whether it is carried forward, returned to the Treasury or released by the Board. The page can explain the rule in words, with a source, and say that no figure follows it.
+- **What happens to the money afterward is not in the data:** whether it is carried forward, returned to the Treasury or released by the Board. The page can explain the rule in words, with a source, and say that no figure follows it.
 
 ## 5. What needs data the observatory does not have
 

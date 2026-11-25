@@ -318,7 +318,7 @@ class PublishedLedger(unittest.TestCase):
         self.assertEqual(rows["transport.json"]["status"], "unstated")
 
     def test_a_restrictive_licence_class_names_the_sources_that_set_it(self):
-        # a file takes the most restrictive class of its sources: "License not stated" must never read as "none of its sources has a licence"
+        # a file takes the most restrictive class of its sources: "License not stated" must never read as "none of its sources has a license"
         srcs, aliases = registry.sources()
         for f in self.reg["files"]:
             if f.get("licence_class") in ("unstated", "licensed-not-open"):

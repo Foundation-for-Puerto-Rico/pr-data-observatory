@@ -1,8 +1,8 @@
 """The municipality of a point: the outline that holds it, else the outline nearest to it.
 
-A pier, a ferry terminal or a shoreline stop can sit a few metres outside every municipal outline (the outlines follow the shore).
-Such a point belongs to the municipality whose outline is nearest, not to the one whose town centre is nearest: the Cataño ferry
-terminal is 50 m from Cataño's shore but closer to San Juan's town centre than to Cataño's. build.py (places, stops, airports) and
+A pier, a ferry terminal or a shoreline stop can sit a few meters outside every municipal outline (the outlines follow the shore).
+Such a point belongs to the municipality whose outline is nearest, not to the one whose town center is nearest: the Cataño ferry
+terminal is 50 m from Cataño's shore but closer to San Juan's town center than to Cataño's. build.py (places, stops, airports) and
 refresh_network.py (scheduled stops) both use this rule, so a full build and the nightly refresh place a stop the same way.
 
     locate = Locator(geoms, names)   # shapely geometries in longitude/latitude, and the municipality of each
@@ -29,7 +29,7 @@ class Locator:
         return self.names[hits[0]] if len(hits) else self.names[self.nearest(lat, lng)[0]]
 
     def nearest(self, lat, lng):
-        """(index, metres) of the outline nearest to the point. Distances are measured with longitude scaled by cos(latitude), as everywhere in the observatory."""
+        """(index, meters) of the outline nearest to the point. Distances are measured with longitude scaled by cos(latitude), as everywhere in the observatory."""
         pt = Point(lng, lat)
         k = cos(radians(lat))
         here = Point(lng * k, lat)

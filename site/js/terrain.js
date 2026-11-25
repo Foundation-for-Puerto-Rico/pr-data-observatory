@@ -51,7 +51,7 @@ window.slopeAt = slopeAt;
 
 // ── Contour lines ────────────────────────────────────────────────────────────
 const TERRARIUM = 'https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png', TERRAIN_MAX_Z = 15;
-const contourStep = (z) => z <= 11 ? 100 : z === 12 ? 50 : z === 13 ? 20 : 10;   // metres between lines at a zoom; every fifth line is thicker
+const contourStep = (z) => z <= 11 ? 100 : z === 12 ? 50 : z === 13 ? 20 : 10;   // meters between lines at a zoom; every fifth line is thicker
 /** Heights (m) of a 256 x 256 Terrarium tile: (R x 256 + G + B / 256) - 32768. */
 function heights(img) {
   const cv = document.createElement('canvas'); cv.width = cv.height = 256;
@@ -60,7 +60,7 @@ function heights(img) {
   for (let i = 0, p = 0; i < 65536; i++, p += 4) h[i] = d[p] * 256 + d[p + 1] + d[p + 2] / 256 - 32768;
   return h;
 }
-/** The contour segments of a height grid (N x N, values at pixel centres) at every multiple of `step` above 0, by marching squares (the saddle cases split by
+/** The contour segments of a height grid (N x N, values at pixel centers) at every multiple of `step` above 0, by marching squares (the saddle cases split by
     the cell's mean): [[level, x0, y0, x1, y1], ...] in pixels. Pure, so the tests run it. */
 function marching(h, N, step) {
   const out = [];

@@ -61,7 +61,7 @@ The observatory reads about 30 sources that publish on very different rhythms. T
 - Today every unit a runner rebuilds reads at least one source that is reviewed, so **every automatic rebuild opens a `[review]` pull request**. Only the nightly transit refresh merges by itself. A unit becomes automatic when all of its sources are routine.
 - **Sources that are always reviewed.** These include:
   - a new annual vintage that moves headline figures (ACS, population estimates, QCEW jobs);
-  - sources whose licence is under review (HRSA, the Police reports);
+  - sources whose license is under review (HRSA, the Police reports);
   - **public money** (USAspending, OpenFEMA), whose headline is held for Compliance (HANDOFF decision 21).
 
   Their pull request title starts with `[review]`, and a person merges it after reading it. When a newer rebuild of the same unit comes before the older pull request is merged, the newer one closes and replaces it.

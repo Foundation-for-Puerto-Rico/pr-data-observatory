@@ -350,10 +350,10 @@
       "usgs_slope_failures"
     ],
     "source_detail": "Hughes and others (2019), USGS data release doi:10.5066/P9BVMD74, read from the first author's copy at UPRM (DERRUMBES_HURACAN_MARIA): point locations only",
-    "how_to_read": "71,431 for Puerto Rico; the most in Utuado 17,762, Maricao 5,806, Jayuya 4,874: the steep, wet centre-west of the island.",
+    "how_to_read": "71,431 for Puerto Rico; the most in Utuado 17,762, Maricao 5,806, Jayuya 4,874: the steep, wet center-west of the island.",
     "caveats": [
       "A record of one storm, not a forecast of where slides will happen.",
-      "Read from a copy of the USGS data release kept by its first author at UPRM, because the USGS catalogue refuses scripts."
+      "Read from a copy of the USGS data release kept by its first author at UPRM, because the USGS catalog refuses scripts."
     ],
     "see_also": [
       "environment.landslides_maria_km2",
@@ -383,7 +383,7 @@
     "group": "Landslides",
     "kind": "variable",
     "plain": "How densely landslides covered each municipio after Hurricane María.",
-    "definition": "The landslides mapped after Hurricane María divided by the municipio's land area in square kilometres (Census).",
+    "definition": "The landslides mapped after Hurricane María divided by the municipio's land area in square kilometers (Census).",
     "unit": "landslides per km²",
     "value_type": "ratio",
     "geography": "78 municipalities and Puerto Rico",
@@ -431,7 +431,7 @@
     "group": "Wetlands",
     "kind": "variable",
     "plain": "How much of each municipio is wetland: marshes, swamps, mangroves and tidal flats.",
-    "definition": "The area of the wetlands the National Wetlands Inventory maps in the municipio: estuarine and marine wetlands (mangroves, beaches, tidal flats), freshwater marshes and freshwater swamps and shrub wetlands, in square kilometres. Lakes, ponds, rivers and open water are left out.",
+    "definition": "The area of the wetlands the National Wetlands Inventory maps in the municipio: estuarine and marine wetlands (mangroves, beaches, tidal flats), freshwater marshes and freshwater swamps and shrub wetlands, in square kilometers. Lakes, ponds, rivers and open water are left out.",
     "unit": "km²",
     "value_type": "count",
     "geography": "78 municipalities and Puerto Rico",
@@ -441,7 +441,7 @@
       "last": 1983,
       "frequency": "One snapshot of the inventory, read in October 2026; almost all of the wetland area lies in the parts mapped from aerial photographs of 1983 (the coasts)."
     },
-    "method": "environment_series.py reads the inventory's polygons of Puerto Rico from its map service and keeps the three wetland types (estuarine and marine wetland, freshwater emergent, freshwater forested and shrub). Each polygon is split among the municipal boundaries in metres (NAD83 Puerto Rico); the part beyond the drawn coast goes to the municipio with the largest share. Mangroves are the polygons coded E2FO3 or E2SS3.",
+    "method": "environment_series.py reads the inventory's polygons of Puerto Rico from its map service and keeps the three wetland types (estuarine and marine wetland, freshwater emergent, freshwater forested and shrub). Each polygon is split among the municipal boundaries in meters (NAD83 Puerto Rico); the part beyond the drawn coast goes to the municipio with the largest share. Mangroves are the polygons coded E2FO3 or E2SS3.",
     "sources": [
       "usfws_nwi"
     ],
@@ -490,7 +490,7 @@
       "last": 1983,
       "frequency": "One snapshot of the inventory, read in October 2026; almost all of the wetland area lies in the parts mapped from aerial photographs of 1983 (the coasts)."
     },
-    "method": "environment_series.py reads the inventory's polygons of Puerto Rico from its map service and keeps the three wetland types (estuarine and marine wetland, freshwater emergent, freshwater forested and shrub). Each polygon is split among the municipal boundaries in metres (NAD83 Puerto Rico); the part beyond the drawn coast goes to the municipio with the largest share. Mangroves are the polygons coded E2FO3 or E2SS3.",
+    "method": "environment_series.py reads the inventory's polygons of Puerto Rico from its map service and keeps the three wetland types (estuarine and marine wetland, freshwater emergent, freshwater forested and shrub). Each polygon is split among the municipal boundaries in meters (NAD83 Puerto Rico); the part beyond the drawn coast goes to the municipio with the largest share. Mangroves are the polygons coded E2FO3 or E2SS3.",
     "sources": [
       "usfws_nwi",
       "census_tiger"
@@ -529,7 +529,7 @@
     "group": "Wetlands",
     "kind": "variable",
     "plain": "How much mangrove forest each municipio has.",
-    "definition": "The area of the inventory's estuarine intertidal forested and scrub-shrub wetlands with broad-leaved evergreen plants (codes E2FO3 and E2SS3), which in Puerto Rico are mangroves, in square kilometres.",
+    "definition": "The area of the inventory's estuarine intertidal forested and scrub-shrub wetlands with broad-leaved evergreen plants (codes E2FO3 and E2SS3), which in Puerto Rico are mangroves, in square kilometers.",
     "unit": "km²",
     "value_type": "count",
     "geography": "78 municipalities and Puerto Rico",
@@ -539,7 +539,7 @@
       "last": 1983,
       "frequency": "One snapshot of the inventory, read in October 2026; almost all of the wetland area lies in the parts mapped from aerial photographs of 1983 (the coasts)."
     },
-    "method": "environment_series.py reads the inventory's polygons of Puerto Rico from its map service and keeps the three wetland types (estuarine and marine wetland, freshwater emergent, freshwater forested and shrub). Each polygon is split among the municipal boundaries in metres (NAD83 Puerto Rico); the part beyond the drawn coast goes to the municipio with the largest share. Mangroves are the polygons coded E2FO3 or E2SS3.",
+    "method": "environment_series.py reads the inventory's polygons of Puerto Rico from its map service and keeps the three wetland types (estuarine and marine wetland, freshwater emergent, freshwater forested and shrub). Each polygon is split among the municipal boundaries in meters (NAD83 Puerto Rico); the part beyond the drawn coast goes to the municipio with the largest share. Mangroves are the polygons coded E2FO3 or E2SS3.",
     "sources": [
       "usfws_nwi"
     ],
@@ -593,7 +593,7 @@
     "source_detail": "Census Bureau Community Resilience Estimates for Puerto Rico, files CRE{yy}_PR_MUNICIPIO.csv and CRE{yy}_PR.csv, 2019 and 2021, 2022, 2023, 2024",
     "how_to_read": "Puerto Rico: 14.74% in 2019 and 18.09% in 2024 (± 0.55 points). Highest in 2024: Dorado 27.0%, Guaynabo 26.5%, Barceloneta 24.3%.",
     "caveats": [
-      "Modelled estimates with margins of error: read the margin before comparing two places.",
+      "Modeled estimates with margins of error: read the margin before comparing two places.",
       "The ten factors are the same in every release, but from 2023 the Census Bureau computes municipio margins a new way (smaller), so compare margins across 2022 and 2023 with care.",
       "One factor is a household where no one speaks English very well (or no one has a high-school diploma), so in Puerto Rico it counts many Spanish-speaking households and raises the shares with risk factors."
     ],
@@ -642,7 +642,7 @@
     "source_detail": "Census Bureau Community Resilience Estimates for Puerto Rico, files CRE{yy}_PR_MUNICIPIO.csv and CRE{yy}_PR.csv, 2019 and 2021, 2022, 2023, 2024",
     "how_to_read": "Puerto Rico: 39.19% in 2019 and 41.75% in 2024 (± 0.69 points). Highest in 2024: Jayuya 48.8%, Toa Alta 48.6%, Naguabo 48.5%.",
     "caveats": [
-      "Modelled estimates with margins of error: read the margin before comparing two places.",
+      "Modeled estimates with margins of error: read the margin before comparing two places.",
       "The ten factors are the same in every release, but from 2023 the Census Bureau computes municipio margins a new way (smaller), so compare margins across 2022 and 2023 with care.",
       "One factor is a household where no one speaks English very well (or no one has a high-school diploma), so in Puerto Rico it counts many Spanish-speaking households and raises the shares with risk factors."
     ],
@@ -691,7 +691,7 @@
     "source_detail": "Census Bureau Community Resilience Estimates for Puerto Rico, files CRE{yy}_PR_MUNICIPIO.csv and CRE{yy}_PR.csv, 2019 and 2021, 2022, 2023, 2024",
     "how_to_read": "Puerto Rico: 46.07% in 2019 and 40.16% in 2024 (± 0.68 points). Highest in 2024: Maricao 54.8%, Las Marías 54.1%, Vieques 52.9%.",
     "caveats": [
-      "Modelled estimates with margins of error: read the margin before comparing two places.",
+      "Modeled estimates with margins of error: read the margin before comparing two places.",
       "The ten factors are the same in every release, but from 2023 the Census Bureau computes municipio margins a new way (smaller), so compare margins across 2022 and 2023 with care.",
       "One factor is a household where no one speaks English very well (or no one has a high-school diploma), so in Puerto Rico it counts many Spanish-speaking households and raises the shares with risk factors."
     ],
@@ -722,7 +722,7 @@
     "group": "Earthquakes",
     "kind": "variable",
     "plain": "How many earthquakes of magnitude 2.5 or more struck in or just off each municipio, every year.",
-    "definition": "Earthquakes of magnitude 2.5 or more in USGS's catalogue whose epicenter is in the municipio or, offshore, nearest to it and within 25 km of its coast.",
+    "definition": "Earthquakes of magnitude 2.5 or more in USGS's catalog whose epicenter is in the municipio or, offshore, nearest to it and within 25 km of its coast.",
     "unit": "earthquakes",
     "value_type": "count",
     "geography": "78 municipalities and Puerto Rico",
@@ -740,7 +740,7 @@
     "how_to_read": "Puerto Rico: 153 in 2000, 6,297 in 2020 (the southwest sequence; strongest 6.4) and 522 in 2025.",
     "caveats": [
       "A count of events, not of damage: most are felt little or not at all.",
-      "The catalogue records more small earthquakes in later years as the seismic network grew."
+      "The catalog records more small earthquakes in later years as the seismic network grew."
     ],
     "see_also": [
       "environment.quakes_m4"
@@ -769,7 +769,7 @@
     "group": "Earthquakes",
     "kind": "variable",
     "plain": "How many earthquakes of magnitude 4.0 or more struck in or just off each municipio, every year.",
-    "definition": "Earthquakes of magnitude 4.0 or more in USGS's catalogue, placed the same way.",
+    "definition": "Earthquakes of magnitude 4.0 or more in USGS's catalog, placed the same way.",
     "unit": "earthquakes",
     "value_type": "count",
     "geography": "78 municipalities and Puerto Rico",

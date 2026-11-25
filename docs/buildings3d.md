@@ -11,9 +11,9 @@ The "3D buildings" switch now draws both:
 - the base map's buildings, as before;
 - the new file `site/data/buildings_gap.pmtiles`, with the buildings that OpenStreetMap lacks.
 
-Town centres are already mapped in OpenStreetMap; the new buildings are mostly houses on the outskirts and in the countryside. In Moca, Overture counts 31,987 buildings, of which 13,672 (43%) were traced by machine learning; the barrios with the most are Higuillar in Dorado (6,789) and Cañaboncito in Caguas (5,115, 41%), from `buildings_barrio.json`.
+Town centers are already mapped in OpenStreetMap; the new buildings are mostly houses on the outskirts and in the countryside. In Moca, Overture counts 31,987 buildings, of which 13,672 (43%) were traced by machine learning; the barrios with the most are Higuillar in Dorado (6,789) and Cañaboncito in Caguas (5,115, 41%), from `buildings_barrio.json`.
 
-**Correction (2026-11-11).** This page and the dictionary first said that in the centre of Moca the base map draws a handful of buildings and the new layer about 500. That was wrong: the counts came from MapLibre's `queryRenderedFeatures`, which miscounts 3D buildings drawn on terrain. On the live site, with each layer shown alone, the centre of Moca draws its buildings from OpenStreetMap and the new layer adds houses around it.
+**Correction (2026-11-11).** This page and the dictionary first said that in the center of Moca the base map draws a handful of buildings and the new layer about 500. That was wrong: the counts came from MapLibre's `queryRenderedFeatures`, which miscounts 3D buildings drawn on terrain. On the live site, with each layer shown alone, the center of Moca draws its buildings from OpenStreetMap and the new layer adds houses around it.
 
 ## Hosting: measured first (decision 91 (c))
 
@@ -47,7 +47,7 @@ Checks that stop the build:
 ## How the 3D view draws it
 
 - **The library.** `3d.html` loads the PMTiles library (4.4.0, from unpkg, with an integrity hash; 7.7 KB compressed). The About page's list of outside services now names it.
-- **The layer.** `twin3d.js` adds the source `bgap` and the layer `buildings-3d-gap` just above the base map's `buildings-3d`, with the same colours.
+- **The layer.** `twin3d.js` adds the source `bgap` and the layer `buildings-3d-gap` just above the base map's `buildings-3d`, with the same colors.
 - **Heights.** A building without a height is drawn 6 m tall, as the base map's own. In this release none of the new buildings has a height.
 - **The switch.** `showBuildings()` sets both layers from the "3D buildings" switch: when it is changed, after a base map change, and when a failed base map comes back.
 - **Credit.** The source carries the credit "© Overture Maps Foundation", which MapLibre adds to the credit line while the layer is on.

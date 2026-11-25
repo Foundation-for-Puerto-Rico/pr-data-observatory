@@ -15,7 +15,7 @@ The code is `providers.py`, the tests are `tests/test_providers.py`, the file is
 | `prov_mental_other` | Psychologists, counselors and social workers | 7,539 | 4,107 |
 | `prov_pharmacists` | Pharmacists | 3,462 | 1,128 |
 
-The number practising is likely between the two columns: the registry keeps providers who left or retired, and many who still practise never update a record that is still right.
+The number practicing is likely between the two columns: the registry keeps providers who left or retired, and many who still practice never update a record that is still right.
 
 ## 2. Source
 
@@ -35,8 +35,8 @@ The NPPES monthly full replacement file (about 1.1 GB zipped, 9,891,116 national
 ## 5. Reading the numbers
 
 - 14,018 of the 25,740 records counted were last updated more than five years ago.
-- One person who practises in several municipios is counted once, at the primary practice location; San Juan gathers many offices.
-- No outside count of active physicians by municipio was found to check against; Puerto Rico's practising physicians, commonly put at about 9,000 to 10,000, fall inside the physicians' range here (5,406 to 12,375).
+- One person who practices in several municipios is counted once, at the primary practice location; San Juan gathers many offices.
+- No outside count of active physicians by municipio was found to check against; Puerto Rico's practicing physicians, commonly put at about 9,000 to 10,000, fall inside the physicians' range here (5,406 to 12,375).
 
 ## 6. Rebuilding
 

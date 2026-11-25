@@ -3,7 +3,7 @@
     python gazetteer.py        # rebuild site/data/gazetteer.json from the OpenStreetMap extract (reads the file roads.py downloads)
 
 One compact file with everything that has a name and a place on the map, apart from the tourism listings (the pages already
-hold those): the 78 municipalities, barrios, towns, villages and neighbourhoods, named roads and PR route numbers (one entry
+hold those): the 78 municipalities, barrios, towns, villages and neighborhoods, named roads and PR route numbers (one entry
 per road per municipality), and civic landmarks (hospitals, schools, town halls, terminals, parks, beaches, peaks, ...).
 The browser searches it locally; nothing a visitor types leaves the page.
 
@@ -68,7 +68,7 @@ def read(pbf: Path):
     try:
         keys = ("place", "highway", "amenity", "leisure", "natural", "historic", "aeroway", "shop")
         fp = osmium.FileProcessor(pbf.name, osmium.osm.NODE | osmium.osm.WAY).with_locations().with_filter(osmium.filter.KeyFilter(*keys))
-        points, ways = [], []   # points: (name, lon, lat, kind, note); ways: (name, ref, class, lon, lat, metres)
+        points, ways = [], []   # points: (name, lon, lat, kind, note); ways: (name, ref, class, lon, lat, meters)
         for o in fp:
             t = o.tags
             name = clean_name(t.get("name"))
@@ -151,7 +151,7 @@ def main():
         seen.add(key)
         items.append([name, round(lat, 5), round(lng, 5), KIND[kind], m, extra] if extra else [name, round(lat, 5), round(lng, 5), KIND[kind], m])
 
-    # municipalities: the town of the same name when OpenStreetMap has one (its centre is where people mean), else a point inside the polygon
+    # municipalities: the town of the same name when OpenStreetMap has one (its center is where people mean), else a point inside the polygon
     town_at = {}
     for name, lon, lat, kind, note in points:
         if kind == "town":

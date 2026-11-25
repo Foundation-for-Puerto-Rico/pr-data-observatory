@@ -1,5 +1,5 @@
 """The timetable replay follows the route lines (trip_paths.py): stops land on the line in travel order, stop times are kept, a loop is
-travelled rather than skipped, and a trip that fits no line keeps its straight stop-to-stop path."""
+traveled rather than skipped, and a trip that fits no line keeps its straight stop-to-stop path."""
 import json
 import sys
 import unittest

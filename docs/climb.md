@@ -26,12 +26,12 @@ A flat 400 m and a 400 m up a hill in Barranquitas are not the same walk, especi
 **The walkers.** Each 2020 census block whose point is within a 400 m walk along mapped roads of a stop with a current timetable, by the rule of `access.py` (the walking rule of the exposure files), on the date of the published exposure files (`as_of`). The build stops if their residents do not add up to the published `walk_cur` residents.
 
 **The walk.** The shortest walk along mapped roads (`roads.bin`, without motorways) from the block's point to its nearest current stop. `walknet.nearest_paths` is the same bounded search as `walknet.from_stops`, keeping each node's parent so the walk can be drawn; a test checks that the length of the drawn walk is the searched distance.
-- The climb is read **along the roads only**, from the point of the road nearest the block's point to the point nearest the stop. The block's point is a geometric centre, not a door, and the straight line from it to the road can cross ground nobody walks. (The first build included those connectors: the median was 4.4 m and 19.9% of walks were steep. Arroyo's walks showed why: a straight line climbing 23 m over a hill between a block's point and its road.)
+- The climb is read **along the roads only**, from the point of the road nearest the block's point to the point nearest the stop. The block's point is a geometric center, not a door, and the straight line from it to the road can cross ground nobody walks. (The first build included those connectors: the median was 4.4 m and 19.9% of walks were steep. Arroyo's walks showed why: a straight line climbing 23 m over a hill between a block's point and its road.)
 - 99 walks whose block or stop is on no walkable road are read along the straight line, as `access.py` measures them.
 
 **The ground.** USGS 3D Elevation Program, 1/3 arc-second seamless DEM (about 10 m; public domain), the newest version of each one-degree tile over Puerto Rico (2026-07-22), read with `raster.py`. The height is read every 10 m along the walk, interpolated between the four nearest cells: 128,339 points.
 
-**Round-trip climb.** The sum of the rises and the falls along the walk: the metres climbed going to the stop and coming back. It is the same whichever way the walk is read.
+**Round-trip climb.** The sum of the rises and the falls along the walk: the meters climbed going to the stop and coming back. It is the same whichever way the walk is read.
 
 **Steep stretch.** A 30 m stretch whose rise or fall is more than 1 in 12 (8.33%): the steepest **running slope** a ramp may have under the 2010 ADA Standards for Accessible Design (405.2). A walk with one such stretch counts as steep. It is a reference for what a wheelchair user can be expected to manage, not a rule for streets.
 
@@ -61,6 +61,6 @@ The stops with a current timetable change with the timetables. The nightly trans
 
 To keep the map under its 250 KB script budget, the Spanish names of the terrain and climate groups (surface heat, vegetation, night heat and this one) are in a module of the map page, `econ_terrain`, loaded with the Economy tab's data instead of with the page (`economy.js`, `ecLoad`; `docs/i18n.md`, rule 15). This freed 0.6 KB on the map.
 
-## Licence
+## License
 
 USGS 3DEP data are public domain; USGS asks for credit. The source card is `usgs_3dep_13`. No elevation image is published, only figures by area.

@@ -10,7 +10,7 @@
     "group": "Night-time lights (NASA Black Marble)",
     "kind": "method",
     "plain": "How bright each barrio and municipio is at night, every month since 2012, from NASA's Black Marble satellite product. Light follows activity and electric power, so it can show growth, decline and blackouts after storms, but it does not count people or homes.",
-    "definition": "Mean radiance (nW/cm²/sr) of the VNP46A3 pixels whose centre falls in the area, and the share of the area's pixels that the product flags as poor quality (three or fewer clear observations in the month) or gap-filled (none). A municipio's and Puerto Rico's figures pool all their pixels; a year's pools its twelve months.",
+    "definition": "Mean radiance (nW/cm²/sr) of the VNP46A3 pixels whose center falls in the area, and the share of the area's pixels that the product flags as poor quality (three or fewer clear observations in the month) or gap-filled (none). A municipio's and Puerto Rico's figures pool all their pixels; a year's pools its twelve months.",
     "unit": "nW/cm²/sr (mean radiance); % of pixels (quality share)",
     "value_type": "level",
     "geography": "901 barrios, 78 municipios and Puerto Rico",
@@ -20,7 +20,7 @@
       "last": 2025,
       "frequency": "Monthly from NASA (2012-01 to 2026-09 in this build); a year is published when its twelve months are in"
     },
-    "method": "nightlights.py lists NASA's LAADS archive of VNP46A3 collection 2 (no login needed), downloads the monthly HDF5 file of tile h11v07 (all of Puerto Rico; h10v07 holds no barrio) with a NASA Earthdata token read from EARTHDATA_TOKEN, and reads the layers AllAngle_Composite_Snow_Free (32-bit radiance, fill value -999.9) and AllAngle_Composite_Snow_Free_Quality (0 good, 1 poor, 2 gap-filled, 255 no value). Each 15 arc-second pixel (about 460 m) counts in the barrio whose outline holds its centre; the three barrios smaller than a pixel take the pixel under them. It keeps a summary per month and deletes the file, and publishes only means and shares, no images. Without the token it stops and changes nothing (docs/nightlights.md).",
+    "method": "nightlights.py lists NASA's LAADS archive of VNP46A3 collection 2 (no login needed), downloads the monthly HDF5 file of tile h11v07 (all of Puerto Rico; h10v07 holds no barrio) with a NASA Earthdata token read from EARTHDATA_TOKEN, and reads the layers AllAngle_Composite_Snow_Free (32-bit radiance, fill value -999.9) and AllAngle_Composite_Snow_Free_Quality (0 good, 1 poor, 2 gap-filled, 255 no value). Each 15 arc-second pixel (about 460 m) counts in the barrio whose outline holds its center; the three barrios smaller than a pixel take the pixel under them. It keeps a summary per month and deletes the file, and publishes only means and shares, no images. Without the token it stops and changes nothing (docs/nightlights.md).",
     "sources": [
       "nasa_black_marble",
       "census_tiger"
@@ -61,8 +61,8 @@
     "group": "Economy · Night-time lights (NASA Black Marble)",
     "kind": "variable",
     "plain": "How bright the area is at night, as NASA's satellite sees it: the average light of the area's pixels over the year. Brighter usually means more activity and power; a sudden drop can mean a blackout.",
-    "definition": "The mean of the VNP46A3 monthly radiance (AllAngle_Composite_Snow_Free, nW/cm²/sr) of the 15 arc-second pixels whose centre lies in the area, pooled over the twelve months of the calendar year. A municipio's and Puerto Rico's means are over all their pixels.",
-    "unit": "nW/cm²/sr (nanowatts per square centimetre per steradian)",
+    "definition": "The mean of the VNP46A3 monthly radiance (AllAngle_Composite_Snow_Free, nW/cm²/sr) of the 15 arc-second pixels whose center lies in the area, pooled over the twelve months of the calendar year. A municipio's and Puerto Rico's means are over all their pixels.",
+    "unit": "nW/cm²/sr (nanowatts per square centimeter per steradian)",
     "value_type": "level",
     "geography": "78 municipalities and Puerto Rico; also 901 barrios",
     "coverage": {
@@ -71,7 +71,7 @@
       "last": 2025,
       "frequency": "Each complete calendar year; NASA adds a month about seven weeks after it ends"
     },
-    "method": "nightlights.py (methods.nightlights): each monthly HDF5 file of tile h11v07 is read with h5py, each pixel goes to the barrio holding its centre, and the year's mean pools the twelve months' pixels with a value.",
+    "method": "nightlights.py (methods.nightlights): each monthly HDF5 file of tile h11v07 is read with h5py, each pixel goes to the barrio holding its center, and the year's mean pools the twelve months' pixels with a value.",
     "sources": [
       "nasa_black_marble",
       "census_tiger"
@@ -137,7 +137,7 @@
       "last": 2025,
       "frequency": "Each complete calendar year; NASA adds a month about seven weeks after it ends"
     },
-    "method": "nightlights.py (methods.nightlights): each monthly HDF5 file of tile h11v07 is read with h5py, each pixel goes to the barrio holding its centre, and the year's mean pools the twelve months' pixels with a value.",
+    "method": "nightlights.py (methods.nightlights): each monthly HDF5 file of tile h11v07 is read with h5py, each pixel goes to the barrio holding its center, and the year's mean pools the twelve months' pixels with a value.",
     "sources": [
       "nasa_black_marble",
       "census_tiger"

@@ -7,7 +7,7 @@ in all, the 501(c)(3) charities among them, and by NTEE major group. Counts only
 
 Sources, no key:
   IRS, Exempt Organizations Business Master File Extract (EO BMF), the Puerto Rico file (https://www.irs.gov/pub/irs-soi/eo_pr.csv), renewed by the IRS about
-      monthly (its Last-Modified date is the vintage). US federal government work, public domain (17 U.S.C. 105); the IRS page states no licence.
+      monthly (its Last-Modified date is the vintage). US federal government work, public domain (17 U.S.C. 105); the IRS page states no license.
   US Census Bureau, 2020 ZCTA to county relationship file: the municipio of a ZIP code whose city is not a municipio's name (public domain).
 
 What is kept. Only CITY, the first five digits of ZIP, SUBSECTION and NTEE_CD reach the cache (cache/nonprofits/): names, EINs, street addresses and financial
@@ -63,7 +63,7 @@ POSTAL = {"saint just": "Trujillo Alto", "palmer": "Río Grande", "santurce": "S
 
 SOURCES = {
     "irs_eo_bmf": {"name": "IRS — Exempt Organizations Business Master File Extract (EO BMF), Puerto Rico", "url": "https://www.irs.gov/charities-non-profits/exempt-organizations-business-master-file-extract-eo-bmf",
-                   "license": "US federal government work (public domain, 17 U.S.C. 105); the IRS page states no licence",
+                   "license": "US federal government work (public domain, 17 U.S.C. 105); the IRS page states no license",
                    "note": "Every organization the IRS recognizes as tax-exempt with a Puerto Rico address. The observatory publishes counts for each municipio, never a name, EIN or address."},
     "census_zcta_county": {"name": "US Census Bureau — 2020 ZCTA to county relationship file", "url": "https://www.census.gov/geographies/reference-files/time-series/geo/relationship-files.2020.html", "license": "US federal government data (public domain)",
                            "note": "Places an organization in the municipio holding most of the land of its ZIP code when its city is not a municipio's name."},

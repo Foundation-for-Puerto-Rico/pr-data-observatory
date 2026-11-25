@@ -85,7 +85,7 @@ class PublishedFile(unittest.TestCase):
         for v in self.doc["vars"]:
             self.assertEqual(list(v["years"]), [self.y])
             self.assertEqual((len(v["years"][self.y]), len(v["moe"][self.y])), (79, 79), v["key"])
-            self.assertEqual(v["time"], {"type": "window", "windowYears": 5}, "the flows are a five-year window, labelled by its last year")
+            self.assertEqual(v["time"], {"type": "window", "windowYears": 5}, "the flows are a five-year window, labeled by its last year")
             self.assertTrue(all(m is not None and m >= 0 for m in v["moe"][self.y]), v["key"])
 
     def test_the_municipios_add_up_to_the_island(self):

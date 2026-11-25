@@ -11,7 +11,7 @@ SPEC.loader.exec_module(tn)
 LAT = 18.4
 
 
-def lon_at(m):   # a longitude m metres east of -66.0 at the test latitude
+def lon_at(m):   # a longitude m meters east of -66.0 at the test latitude
     return -66.0 + m / tn.KX
 
 

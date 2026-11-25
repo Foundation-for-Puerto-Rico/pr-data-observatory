@@ -15,7 +15,7 @@ Every dataset the observatory holds is reduced to numbers for a list of areas. T
   block         41,987 15-digit GEOID: used only as weights, never published
 
 Written to site/data/geo/:
-  crosswalk.json      one row per unit (id, parent, names in Spanish and English, normalised name, land area, 2020 residents and housing units, internal point),
+  crosswalk.json      one row per unit (id, parent, names in Spanish and English, normalized name, land area, 2020 residents and housing units, internal point),
                       and the weights that carry numbers between areas that do not nest (barrio to tract), counted from blocks
   tracts.geojson      display outlines (Census cartographic boundary file 1:500,000, shoreline-clipped): for drawing only, never for area or distance
   blockgroups.geojson the same for block groups
@@ -387,7 +387,7 @@ def check(out=OUT):
                 P.append(f"{parent} {r[0]}: land area {r[5]} km2 differs from the sum of its {child}s ({n_km2:.4f})")
         for r in units[child]:
             if not (r[2] and r[3] and r[4] == norm(r[2])):
-                P.append(f"{child} {r[0]}: names or normalised name missing or inconsistent")
+                P.append(f"{child} {r[0]}: names or normalized name missing or inconsistent")
     for child, parent in (("region", "island"), ("municipio", "region"), ("barrio", "municipio"), ("tract", "municipio"), ("block-group", "tract")):
         sums(child, parent)
     w = cw["weights"]["barrio_tract"]["rows"]

@@ -85,7 +85,7 @@
  "Saturday timetables": "horarios del sábado",
  "weekday timetables": "horarios de lunes a viernes",
  "<b>{route}</b> · {operator}<br><small>on its timetable, not a GPS position</small>": "<b>{route}</b> · {operator}<br><small>según su horario, no es una posición GPS</small>",
- "<b>{n}</b> {vehicles} in service on {timetables} at {time} Puerto Rico time{top}. Positions are interpolated from the timetable, not GPS. Expired timetables are left out; holidays are not modelled.": "<b>{n}</b> {vehicles} en servicio a las {time}, hora de Puerto Rico, según los {timetables}{top}. Las posiciones se interpolan a partir del horario, no del GPS. Los horarios vencidos no se incluyen; los días feriados no se modelan.",
+ "<b>{n}</b> {vehicles} in service on {timetables} at {time} Puerto Rico time{top}. Positions are interpolated from the timetable, not GPS. Expired timetables are left out; holidays are not modeled.": "<b>{n}</b> {vehicles} en servicio a las {time}, hora de Puerto Rico, según los {timetables}{top}. Las posiciones se interpolan a partir del horario, no del GPS. Los horarios vencidos no se incluyen; los días feriados no se modelan.",
  "vehicle": [
   "vehículo",
   "vehículos"

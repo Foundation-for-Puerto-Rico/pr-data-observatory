@@ -3,7 +3,7 @@
    Comunidades Especiales). Needs common.js and icons.js. */
 
 // ── Access of tourism places to transport (access.py; docs/visitor-transport-access-2026-10.md) ──
-// place_access.json holds one value per place, in the order of places.json: ts_m (metres, straight line, to the nearest stop with a current timetable),
+// place_access.json holds one value per place, in the order of places.json: ts_m (meters, straight line, to the nearest stop with a current timetable),
 // ts_calls (weekday departures at the busiest such stop within 400 m; 0 = none) and ts_we (1 = Saturday, 2 = Sunday service at those stops),
 // and the same three by walking along mapped roads: tw_m (99,999 past walk_bound_m), tw_calls, tw_we, with tw_straight listing the places that have no
 // mapped road within 150 m and keep their straight-line values (walknet.py). The classes use walking when the file has it. Everything is schedule-based:
@@ -35,9 +35,9 @@ function accessClass(p) {   // the same rule as access.py access_class(), on the
   if (m <= ACCESS.near) return walkCalls(p) >= ACCESS.frequent ? 'frequent' : 'basic';
   if (m <= ACCESS.far) return 'near';
   if (p.tw_m != null && p.ts_m <= ACCESS.far) return 'detour';   // a current stop close in a straight line but more than 800 m on foot (access.py: straight_m)
-  return p.transit_m != null && p.transit_m < ACCESS.far ? 'paper' : 'none';   // transit_m is cut to whole metres: 800.x m reads 800 and is outside 800 m (access.py: any_m <= 800 on the exact distance)
+  return p.transit_m != null && p.transit_m < ACCESS.far ? 'paper' : 'none';   // transit_m is cut to whole meters: 800.x m reads 800 and is outside 800 m (access.py: any_m <= 800 on the exact distance)
 }
-const ACCESS_CLASS = () => ({   // words and an icon on every badge: colour alone never carries the class
+const ACCESS_CLASS = () => ({   // words and an icon on every badge: color alone never carries the class
   frequent: { label: T('Frequent stop within 400 m'), icon: 'directions_bus', tone: 'prot' },
   basic: { label: T('Stop within 400 m'), icon: 'directions_bus', tone: 'prot' },
   near: { label: T('Stop 400–800 m away'), icon: 'directions_bus', tone: 'conf' },
@@ -45,7 +45,7 @@ const ACCESS_CLASS = () => ({   // words and an icon on every badge: colour alon
   paper: { label: T('Only expired or unscheduled stops within 800 m'), icon: 'warning', tone: 'low' },
   none: { label: T('No stop within 800 m'), icon: 'cancel', tone: 'conf' },
 });
-// The access block of a place pop-up: a badge (the class) and two lines. Without the access file only the old measure is shown, labelled as what it is.
+// The access block of a place pop-up: a badge (the class) and two lines. Without the access file only the old measure is shown, labeled as what it is.
 function accessPopup(p) {
   const any = p.transit_m != null ? T('Any mapped stop (expired timetables and volunteer-mapped stops included): {distance}', { distance: distText(p.transit_m) }) : '';
   const cls = accessClass(p);
@@ -65,7 +65,7 @@ function accessPopup(p) {
   }
   const title = esc(p.tw_m == null ? T('Schedule-based, straight line. A stop counts when its timetable has not ended; “frequent” means 20 or more departures on a typical weekday. Real-time service, walking distance, públicos and taxis are not included.')
     : T('Schedule-based. Distances are walked along mapped roads, which leave out footpaths, sidewalks, steps and crossings, so they are an estimate; a straight line is used where the place has no mapped road nearby. A stop counts when its timetable has not ended; “frequent” means 20 or more departures on a typical weekday. Real-time service, públicos and taxis are not included.'));
-  const closer = p.transit_m != null && p.transit_m + 1 < p.ts_m;   // the any-mapped-stop line only when a stop without a current timetable is closer (ts_m is rounded up, transit_m cut, so one metre is the same stop)
+  const closer = p.transit_m != null && p.transit_m + 1 < p.ts_m;   // the any-mapped-stop line only when a stop without a current timetable is closer (ts_m is rounded up, transit_m cut, so one meter is the same stop)
   return { badge: `<span class="badge wrap ${c.tone}" title="${title}">${icon(c.icon, { size: 14 })}${esc(c.label)}</span>`,
            lines: `<div class="meta">${esc(first)}</div>${closer ? `<div class="meta" title="${esc(p.nearest_stop || '')}">${esc(any)}</div>` : ''}` };
 }

@@ -13,7 +13,7 @@ and frozen as printed: 80 indicators, the raw values, the ranks "x / 132" and th
     same series, the one with the most recent year wins; a tie keeps the first listed);
       World Bank WGI (api.worldbank.org, source 3)   government effectiveness, regulatory quality, rule of law
       World Bank WDI (api.worldbank.org)             gross capital formation, new business density, the US tariff (FPR's method), ICT components
-      UNESCO UIS Data API (api.uis.unesco.org)       education spending, school life expectancy, pupils per qualified teacher, tertiary enrolment,
+      UNESCO UIS Data API (api.uis.unesco.org)       education spending, school life expectancy, pupils per qualified teacher, tertiary enrollment,
                                                      STEM graduates, inbound mobility
       IMF DataMapper (imf.org)                       GDP in PPP dollars; real GDP growth for 6.2.1
       BLS LAUS (api.bls.gov, v1, no key)             employment in Puerto Rico for 6.2.1
@@ -148,7 +148,7 @@ NO_POSITION = {
               "Las series de maestros del UIS para Puerto Rico cambiaron en 2024 (vea el valor actualizado), así que la razón simple de estudiantes por maestro del GII no se puede derivar con confianza y no se da posición."),
     "3.2.1": ("The GII 2026 takes gross electricity production from the International Energy Agency; the EIA publishes Puerto Rico's net generation, which leaves out what the plants use themselves, so no position is given.",
               "El GII 2026 toma la producción bruta de electricidad de la Agencia Internacional de Energía; la EIA publica la generación neta de Puerto Rico, que excluye lo que consumen las propias plantas, así que no se da posición."),
-    "5.1.1": ("The GII 2026 takes this share from the ILO's labour force surveys, which count every employed person by ISCO group; the BLS OEWS counts jobs in establishments by SOC group and leaves out the self-employed, so no position is given.",
+    "5.1.1": ("The GII 2026 takes this share from the ILO's labor force surveys, which count every employed person by ISCO group; the BLS OEWS counts jobs in establishments by SOC group and leaves out the self-employed, so no position is given.",
               "El GII 2026 toma esta proporción de las encuestas de fuerza laboral de la OIT, que cuentan a toda persona empleada por grupo de la CIUO; OEWS del BLS cuenta empleos en establecimientos por grupo del SOC y excluye a los trabajadores por cuenta propia, así que no se da posición."),
     "4.3.1": ("The GII 2026 uses the WTO's 2024 figure for the United States; the newest open figure FPR can read (World Bank) is for 2022, so no position is given.",
               "El GII 2026 usa la cifra de 2024 de la OMC para los Estados Unidos; la cifra abierta más reciente que FPR puede leer (Banco Mundial) es de 2022, así que no se da posición."),

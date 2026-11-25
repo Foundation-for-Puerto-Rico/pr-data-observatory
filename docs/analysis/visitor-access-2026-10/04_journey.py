@@ -192,7 +192,7 @@ t = timer()
 net = from_roads_bin(exclude_classes=(), keep_all=True)     # all classes
 R = net.R
 SPD = np.array(roads_mod.SPEED_MS)
-length = net.len                       # projected metres of every edge (all classes)
+length = net.len                       # projected meters of every edge (all classes)
 n_nodes = R.n_nodes
 eu, ev = R.eu, R.ev
 ow = R.oneway

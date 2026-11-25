@@ -3,7 +3,7 @@
     python docs/analysis/learn-2026-11/make_preview.py     # writes preview.svg beside this file
 
 A drawing for the proposal, not a page of the site. It reads no data: the diagrams are schematic and carry no figure of Puerto Rico. The tools and
-layers named on the cards are the ones on main (023d38b, 2026-11-14): site/index.html (Tools > Map tools, Map layers). The colours are the site's
+layers named on the cards are the ones on main (023d38b, 2026-11-14): site/index.html (Tools > Map tools, Map layers). The colors are the site's
 (site/css/twin.css). The file is written with LF line ends, as the repository stores it.
 """
 import math

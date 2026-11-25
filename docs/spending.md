@@ -9,7 +9,7 @@ This page describes the schema (PR 1). The ingestors, the function crosswalk and
 - **Domain:** `public-money` (a sub-domain of economy until the navigation plan, decision 81, made it a domain of its own). No new domain. Gasto Público gets its own Knowledge Area page in a later PR; `public-money.html`, renamed "FEMA disaster funding and need" on 2026-11-03, stays a FEMA page.
 - **Code:** `spending.py` (schema, checks, the rules for adding up, the tags of the published series) and `muni_names.py` (municipio names to FIPS ids).
 - **Raw downloads:** `cache/spending/<source>/`, untouched and git-ignored, like every other source.
-- **Normalised records:** `cache/spending/records/<source>.csv`, one row per record, never published. Check them with `python spending.py --check <file>`.
+- **Normalized records:** `cache/spending/records/<source>.csv`, one row per record, never published. Check them with `python spending.py --check <file>`.
 - **Published files:** aggregates only, built from the records, in the series shape of `economy_series.json` (municipio × year), plus a state table (agency × fund × concept × year × stage) for the budget views.
 
 ## The record
@@ -38,7 +38,7 @@ This page describes the schema (PR 1). The ingestors, the function crosswalk and
 ## Allocation tiers
 
 - **direct:** the source places the money in a municipio (capital projects with a location, contracts with a place of execution, federal place of performance, FEMA applicants, municipal audits).
-- **apportioned:** an estimate. An agency's operating spend is spread across municipios by a stated driver already in the repository: Education by school enrollment, and later Health by facilities, Transportation by road-km and Environment by protected area once those drivers exist. **Only operating spend is apportioned, never capital spending or federal awards** (`validate()` refuses it). When a driver is missing, the gap is recorded and no proxy is used. Parks has no driver today. Apportioned figures appear only on sector pages, labelled as estimates. They are never added into the municipio totals: `add_up()` leaves them out unless they are asked for alone.
+- **apportioned:** an estimate. An agency's operating spend is spread across municipios by a stated driver already in the repository: Education by school enrollment, and later Health by facilities, Transportation by road-km and Environment by protected area once those drivers exist. **Only operating spend is apportioned, never capital spending or federal awards** (`validate()` refuses it). When a driver is missing, the gap is recorded and no proxy is used. Parks has no driver today. Apportioned figures appear only on sector pages, labeled as estimates. They are never added into the municipio totals: `add_up()` leaves them out unless they are asked for alone.
 - **island_wide:** debt service, pensions, central administration, and anything without a defensible driver. Shown next to every map ("no geography"), never dropped: `add_up()` keeps it under an empty municipio.
 
 ## Rules for adding up (`spending.add_up`)
@@ -151,7 +151,7 @@ FY2023 spent, FY2024 approved and FY2025 proposed come from the 2025 budget's ow
 
 Every column equals OGP's own total (`stated_total`); `tests/test_ogp_budget.py` checks that.
 
-**Records.** Every line also becomes a normalised record in `cache/spending/records/ogp.csv` (112,146 on 2026-11-17), checked against the schema:
+**Records.** Every line also becomes a normalized record in `cache/spending/records/ogp.csv` (112,146 on 2026-11-17), checked against the schema:
 - level `state`, fiscal-year basis `pr_jul_jun`, tier `island_wide`, recipient `agency`
 - function and concept from the crosswalk
 - dedup group `ogp_federal` for federal funds
@@ -167,12 +167,12 @@ Every column equals OGP's own total (`stated_total`); `tests/test_ogp_budget.py`
 `site/public-spending.html` is the first page that shows this dimension. It is a Knowledge Area page (area id `publicspending`, icon `account_balance`), published with the "In review" marker, the AI notice and `noindex`, like the FEMA disaster funding page. It reads only `spending_state.json`.
 
 - **The budget:** pick a column (a fiscal year and a stage). The tiles show the total and the three funds, and a treemap shows the money by function; select a function to see its agencies. A table holds the same figures.
-- **Approved and spent:** a dot plot by function for the latest year that has both columns (FY2025: $29.23 B spent of $33.28 B approved, 88%). Approved is a hollow dot and spent a filled one, so the two are told apart by shape, not by a second colour.
-- **Where the money comes from:** every column by fund, as labelled stacked bars.
+- **Approved and spent:** a dot plot by function for the latest year that has both columns (FY2025: $29.23 B spent of $33.28 B approved, 88%). Approved is a hollow dot and spent a filled one, so the two are told apart by shape, not by a second color.
+- **Where the money comes from:** every column by fund, as labeled stacked bars.
 - **What it pays for:** the chosen column by concept of expense.
 - **CSV:** every row of the file, with agency names and one column per year and stage.
 
-The fund colours are general `#338CB3`, federal `#D17F00` and special `#7A5BA6`, in that order. They pass the palette validator against the light surface (lightness band, chroma, colour-blind and normal-vision separation, 3:1 contrast). The treemap uses one blue, because identity there is carried by the labels.
+The fund colors are general `#338CB3`, federal `#D17F00` and special `#7A5BA6`, in that order. They pass the palette validator against the light surface (lightness band, chroma, color-blind and normal-vision separation, 3:1 contrast). The treemap uses one blue, because identity there is carried by the labels.
 
 The page and its Spanish are written by `docs/analysis/public-spending-2026-11/make_page.py` from (English, Spanish) pairs, with every figure in the text read from the data. A string the site already translates keeps that Spanish. Dollars are written with the sign first in both languages ($29.23 mil millones). Tests: `tests/public_spending.test.js`.
 
@@ -196,7 +196,7 @@ The page and its Spanish are written by `docs/analysis/public-spending-2026-11/m
 
 **On the page.** Section 4 of the Public spending page maps it:
 - dollars per resident (the Census Bureau's 2025 estimate) or in total, for all agencies or one;
-- five classes of equal count among the municipios with projects, in one blue ramp, and "no projects" in grey;
+- five classes of equal count among the municipios with projects, in one blue ramp, and "no projects" in gray;
 - the money not placed in a municipio beside the map, so nothing silently disappears;
 - the ten municipios with the most, or one municipio's agencies when it is selected;
 - a table.
@@ -233,7 +233,7 @@ Step 7 of the Phase 0 build order: three drawings from data the page already has
 - **From fund to function (section 2).** The budget chosen at the top, as bands from the fund the money comes from (General Fund, federal, special) to the function it pays for; a band's width is its dollars. Every function keeps room for its label; on a phone the names wrap and a legend names the funds.
 - **Equal hexagons (section 4).** A "View" choice draws the capital projects map as 78 equal hexagons with a short label each, so a small municipio counts on the screen as much as a large one. The choice is kept in the address (`pv=hex`).
 
-**The hex layout.** `docs/analysis/public-spending-2026-11/make_hex.py` writes it into the script from `site/data/municipios.geojson`: each municipio's centroid is scaled to a 13-column grid (from the main island's width), each takes the free cell nearest its centroid, farthest from the centre first, then pairs swap cells while that lowers the total squared distance. Vieques and Culebra keep their place east of the main island. Labels are the initials of a name of several words, else its first three letters, with another pick on a clash. `tests/test_spending_hex.py` checks that the script's layout is what the generator makes now and that the island keeps its shape; `tests/public_spending_charts.test.js` checks one hexagon per municipio, distinct labels and no overlap.
+**The hex layout.** `docs/analysis/public-spending-2026-11/make_hex.py` writes it into the script from `site/data/municipios.geojson`: each municipio's centroid is scaled to a 13-column grid (from the main island's width), each takes the free cell nearest its centroid, farthest from the center first, then pairs swap cells while that lowers the total squared distance. Vieques and Culebra keep their place east of the main island. Labels are the initials of a name of several words, else its first three letters, with another pick on a clash. `tests/test_spending_hex.py` checks that the script's layout is what the generator makes now and that the island keeps its shape; `tests/public_spending_charts.test.js` checks one hexagon per municipio, distinct labels and no overlap.
 
 ## Sector view, data age and README, PR 8
 
@@ -248,7 +248,7 @@ Step 8 of the Phase 0 build order (HANDOFF decision 87).
 
 The lines are never added together, and the section says so.
 
-**Education.** It adds the Department of Education's (OGP agency 081) spending in the last spent fiscal year, divided by public school students in the matching school year (`sch_enroll` in `education_series.json`, loaded on first use: FY2025 = the 2024-25 school year). FY2025: $3.88 B for 235,819 students, $16,465 per student. The estimate by municipio is the apportioned tier of decision 73 (5): that spending split by each municipio's share of the students. It is labelled an estimate, sits in a closed table, and is never added into any total. A test checks the estimates add up to the spending they split.
+**Education.** It adds the Department of Education's (OGP agency 081) spending in the last spent fiscal year, divided by public school students in the matching school year (`sch_enroll` in `education_series.json`, loaded on first use: FY2025 = the 2024-25 school year). FY2025: $3.88 B for 235,819 students, $16,465 per student. The estimate by municipio is the apportioned tier of decision 73 (5): that spending split by each municipio's share of the students. It is labeled an estimate, sits in a closed table, and is never added into any total. A test checks the estimates add up to the spending they split.
 
 **Data age.** Each data section says when its file was built (the file's `built` date) and is marked when the file is older than two update cycles. The cycle comes from the dataset's `cadence` in `dictionary_src/datasets.json` (annual = 365 days), written into the page by `make_page.py` (`data-age`, `data-cycle`).
 
@@ -257,8 +257,8 @@ The lines are never added together, and the section says so.
 ## Disaster recovery subawards by municipio, PR 9
 
 Step 6 of the Phase 0 build order, built from the one source that met the lean rule (HANDOFF decision 89). The 2026-11-05 check:
-- **COR3 (recovery.pr.gov).** Its data comes from the portal's own API, which did not answer a plain script, and it is not worked around. The public ArcGIS layers (arcgis.recovery.pr) can be read, but they state no licence and hold FEMA Public Assistance projects that OpenFEMA already gives the site.
-- **Vivienda (recuperacion.pr.gov).** The transparency portal has report pages and dashboards, but no CSV or Excel file and no licence.
+- **COR3 (recovery.pr.gov).** Its data comes from the portal's own API, which did not answer a plain script, and it is not worked around. The public ArcGIS layers (arcgis.recovery.pr) can be read, but they state no license and hold FEMA Public Assistance projects that OpenFEMA already gives the site.
+- **Vivienda (recuperacion.pr.gov).** The transparency portal has report pages and dashboards, but no CSV or Excel file and no license.
 
 `cdbg_dr.py` writes `site/data/spending_cdbgdr.json` from USAspending's `spending_by_geography`, filtered to the Puerto Rico Department of Housing's disaster grant numbers (`DR_AWARDS`: DM, DP, DE, DF, DZ, DN, DI; the yearly block grants, DC, and the COVID grant, DW, are left out). Final federal fiscal years since 2019 are covered. For each year it reads subawards by municipio, subawards for Puerto Rico as a whole and the prime grants for Puerto Rico as a whole. Subawards for Puerto Rico that name no municipio are kept as `unplaced`.
 
@@ -362,7 +362,7 @@ Plan: `docs/spending-questions-2026-11.md`, step 5. Section 9 of the page has a 
 
 The project lead on 2026-11-17: section 3 should say more and open item by item; chart titles were hard to tell from the text; "the ten municipios with the most dollars" did not say dollars of what; could the federal money go back to 2000?
 - **Section 3:** each concept of expense is a `<details>` row (first-load markup in `public_spending.js`); opening it calls `PSCharts.concept` (`public_spending_charts.js` v4): a definition of the concept, its split by function and its six largest agencies in the budget chosen.
-- **Titles:** `.ps-head` and card titles have a left accent bar, 16 px bold in the primary dark colour; card subtitles (`h4`) are small capitals. `housing.css` (v21, every Knowledge Area page) makes `.card-head h3` and a card's first `h3` 16 px bold in the same colour.
+- **Titles:** `.ps-head` and card titles have a left accent bar, 16 px bold in the primary dark color; card subtitles (`h4`) are small capitals. `housing.css` (v21, every Knowledge Area page) makes `.card-head h3` and a card's first `h3` 16 px bold in the same color.
 - **Rankings:** "Capital projects planned (per resident | in dollars): the ten highest municipios" and "Disaster recovery subawards (per resident | in dollars): the ten highest municipios".
 - **Federal money from FY2008:** `federal_awards.FIRST_YEAR` is 2008, the first year USAspending's search API answers (FY2001 to FY2007 exist only in its bulk archives; FY2000 not at all). Older years have assistance with no listing, kept as one "none" row with function "other". Years before the DATA Act (2017) are less complete (FY2008 grants $1.1 B against $3 B to $4 B after); the chart says so. FY2026 is left out of this build (its grants were $3.9 B against $9.4 B in FY2025 on 2026-11-17, still being reported); the next refresh adds it.
 

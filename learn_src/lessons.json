@@ -118,7 +118,7 @@
    "part": "read",
    "status": "built",
    "title": {
-    "en": "Colours and classes",
+    "en": "Colors and classes",
     "es": "Colores y clases"
    },
    "term": {
@@ -401,7 +401,7 @@
     "es": "Lo que un mapa deja fuera, y por qué"
    },
    "term": {
-    "en": "Privacy, suppression and licences",
+    "en": "Privacy, suppression and licenses",
     "es": "Privacidad, supresión y licencias"
    },
    "tools": [],
@@ -458,7 +458,7 @@
   }
  ],
  "figures": {
-  "_about": "What learn.py reads to compute the figures. Every file is one that only the local build writes (refresh/sources.json lists the files the automated rebuilds write: none of these), so a figure cannot go stale behind a bot's pull request; tests/test_learn.py checks it. The nightly transit refresh rewrites three of them, but not what learn.py reads: places.json (only its transit columns; the names, points, types and confidence stay), municipalities.json (only its transit part; the places, residents and flood counts stay) and population_blocks.json (only its fourth column, metres to the nearest stop).",
+  "_about": "What learn.py reads to compute the figures. Every file is one that only the local build writes (refresh/sources.json lists the files the automated rebuilds write: none of these), so a figure cannot go stale behind a bot's pull request; tests/test_learn.py checks it. The nightly transit refresh rewrites three of them, but not what learn.py reads: places.json (only its transit columns; the names, points, types and confidence stay), municipalities.json (only its transit part; the places, residents and flood counts stay) and population_blocks.json (only its fourth column, meters to the nearest stop).",
   "near": {
    "place": "Plaza Pública de Ponce Federico Degetau",
    "municipality": "Ponce",

@@ -1,9 +1,9 @@
-"""A surface draped on the maps: the cells of a grid (heat.py's 60 m land surface temperature) as one Web Mercator image, coloured on a fixed diverging scale
+"""A surface draped on the maps: the cells of a grid (heat.py's 60 m land surface temperature) as one Web Mercator image, colored on a fixed diverging scale
 around Puerto Rico's median, with its corners and scale for the pages (docs/heat.md, "The surface on the map"; navigation plan follow-up, HANDOFF decision 88).
 
     mercator_png(values, X, Y, epsg, res, ...) -> (png bytes, meta)
 
-The image is an indexed PNG written with zlib alone (no imaging library): index 0 is transparent (water, no value, outside the area), indices 1..N are the colour
+The image is an indexed PNG written with zlib alone (no imaging library): index 0 is transparent (water, no value, outside the area), indices 1..N are the color
 steps of the scale. One pixel is about one grid cell, so nothing is invented between cells. The 2D map lays it with L.imageOverlay and the 3D view with a
 MapLibre image source; both stretch an image linearly between its corners in Web Mercator, which is how it is resampled here. The width stays under 4,096
 pixels, the largest texture every phone's WebGL can hold.
@@ -16,8 +16,8 @@ import numpy as np
 
 import raster
 
-STEPS = 64                                          # colour steps: a smooth ramp in one byte per pixel
-STOPS = ["#205D7B", "#8FCAE8", "#F2F2F2", "#FF8270", "#B82415"]   # core/palettes.js DIVERGING, cool to hot: blue below the median, grey at it, red above
+STEPS = 64                                          # color steps: a smooth ramp in one byte per pixel
+STOPS = ["#205D7B", "#8FCAE8", "#F2F2F2", "#FF8270", "#B82415"]   # core/palettes.js DIVERGING, cool to hot: blue below the median, gray at it, red above
 MAX_PX = 4096
 
 
@@ -26,7 +26,7 @@ def _rgb(h):
 
 
 def ramp(steps=STEPS, stops=STOPS):
-    """[(r, g, b)] of `steps` colours from the first stop to the last, linear in sRGB between the stops."""
+    """[(r, g, b)] of `steps` colors from the first stop to the last, linear in sRGB between the stops."""
     cs = [_rgb(s) for s in stops]
     out = []
     for k in range(steps):
@@ -48,8 +48,8 @@ def png_indexed(idx, palette):
 
 
 def mercator_png(values, X, Y, epsg, res, centre, half, min_lon=None, pad_deg=0.01):
-    """values at the cell centres X, Y (EPSG `epsg`, a square grid of `res` m) as a Web Mercator image of about one cell per pixel.
-    centre: the value drawn grey (Puerto Rico's median); half: the distance from it to each end of the scale (values beyond are drawn at the ends).
+    """values at the cell centers X, Y (EPSG `epsg`, a square grid of `res` m) as a Web Mercator image of about one cell per pixel.
+    center: the value drawn gray (Puerto Rico's median); half: the distance from it to each end of the scale (values beyond are drawn at the ends).
     min_lon: leave out the cells west of it (Mona, Monito and Desecheo, which would widen the image past MAX_PX with open sea)."""
     values = np.asarray(values, float); X = np.asarray(X, float); Y = np.asarray(Y, float)
     lon, lat = raster.transform_points(X, Y, epsg, 4326)
@@ -57,7 +57,7 @@ def mercator_png(values, X, Y, epsg, res, centre, half, min_lon=None, pad_deg=0.
     w, e = float(lon[keep].min()) - pad_deg, float(lon[keep].max()) + pad_deg
     s, n = float(lat[keep].min()) - pad_deg, float(lat[keep].max()) + pad_deg
     (mx0, mx1), (my0, my1) = raster.transform_points([w, e], [s, n], 4326, 3857)
-    px = res / math.cos(math.radians((s + n) / 2))                                    # one cell, in Web Mercator metres at the middle latitude
+    px = res / math.cos(math.radians((s + n) / 2))                                    # one cell, in Web Mercator meters at the middle latitude
     W, H = int(math.ceil((mx1 - mx0) / px)), int(math.ceil((my1 - my0) / px))
     if W > MAX_PX:
         px = (mx1 - mx0) / MAX_PX; W, H = MAX_PX, int(math.ceil((my1 - my0) / px))
@@ -65,7 +65,7 @@ def mercator_png(values, X, Y, epsg, res, centre, half, min_lon=None, pad_deg=0.
     c = np.rint((X - X.min()) / res).astype(np.int64); r = np.rint((Y.max() - Y) / res).astype(np.int64)
     full = np.full((int(r.max()) + 1, int(c.max()) + 1), np.nan, dtype=np.float32)
     full[r[keep], c[keep]] = values[keep]
-    # each pixel centre, back into the grid; the cell under it gives its value (nearest: nothing is invented between cells)
+    # each pixel center, back into the grid; the cell under it gives its value (nearest: nothing is invented between cells)
     cols, rows = np.meshgrid(np.arange(W), np.arange(H))
     gx, gy = raster.transform_points(mx0 + (cols.ravel() + 0.5) * px, my1 - (rows.ravel() + 0.5) * px, 3857, epsg)
     ci = np.floor((gx - (X.min() - res / 2)) / res).astype(np.int64); ri = np.floor(((Y.max() + res / 2) - gy) / res).astype(np.int64)

@@ -4,7 +4,7 @@
 
 Each municipio gets one cell of a pointy-top hex grid (odd rows shifted right by half a cell). The cell is chosen so the grid keeps the island's shape:
 the centroids (area-weighted, of each municipio's largest ring) are scaled to the grid, every municipio first takes the free cell nearest its scaled
-centroid (those farthest from the island's centre first), then pairs of municipios swap cells while a swap lowers the total squared distance between
+centroid (those farthest from the island's center first), then pairs of municipios swap cells while a swap lowers the total squared distance between
 cells and centroids. Vieques and Culebra keep their places east of the main island. The result is deterministic.
 """
 import json
@@ -38,7 +38,7 @@ def centroid(geom):
 
 
 def cell_xy(q, r):
-    """Centre of cell (column q, row r) in cell units: odd rows shift half a cell right; rows are sqrt(3)/2 apart."""
+    """Center of cell (column q, row r) in cell units: odd rows shift half a cell right; rows are sqrt(3)/2 apart."""
     return q + (0.5 if r % 2 else 0.0), r * math.sqrt(3) / 2
 
 

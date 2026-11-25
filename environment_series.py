@@ -10,9 +10,9 @@ Five sources, no key, US federal data (public domain):
   Census Bureau Community Resilience Estimates for Puerto Rico (2019, 2021-2024): the share of residents with no, one or two, or three or more risk factors, with
       the margin of error, for each municipality and the island.
   USGS data release "Map of slope-failure locations in Puerto Rico after Hurricane Maria" (Hughes and others, 2019), read from the copy its first author keeps at
-      UPRM (the USGS catalogue refuses scripts): 71,431 points, each placed in the municipality whose boundary holds it. The barrio names of the copy are not used.
+      UPRM (the USGS catalog refuses scripts): 71,431 points, each placed in the municipality whose boundary holds it. The barrio names of the copy are not used.
   US Fish and Wildlife Service National Wetlands Inventory (its map service): the wetland polygons of Puerto Rico, split among the municipal boundaries.
-  USGS ComCat earthquake catalogue: earthquakes of magnitude 2.5 or more around Puerto Rico each year, each placed in the municipality that holds its epicenter or,
+  USGS ComCat earthquake catalog: earthquakes of magnitude 2.5 or more around Puerto Rico each year, each placed in the municipality that holds its epicenter or,
       offshore, the nearest municipality within 25 km of the coast.
 
 Outputs:
@@ -49,12 +49,12 @@ SLIDES = "https://services5.arcgis.com/TQ9qkk0dURXSP7LQ/arcgis/rest/services/DER
 NWI = "https://fwspublicservices.wim.usgs.gov/wetlandsmapservice/rest/services/Wetlands/MapServer/0/query"
 NWI_BOX = "-67.95,17.85,-65.2,18.55"   # Puerto Rico with Mona, Desecheo, Vieques and Culebra; the US Virgin Islands start east of -65.1
 WETLAND = {"Estuarine and Marine Wetland", "Freshwater Emergent Wetland", "Freshwater Forested/Shrub Wetland"}   # NWI's wetland types (deepwater, lakes, ponds and rivers left out)
-NWI_PHOTO_YEAR = 1983   # almost all of the wetland area lies in the inventory's projects mapped from colour-infrared photographs of February 1983 (the coasts); most of the interior is its scalable product (Data_Source service); see docs/environment.md
+NWI_PHOTO_YEAR = 1983   # almost all of the wetland area lies in the inventory's projects mapped from color-infrared photographs of February 1983 (the coasts); most of the interior is its scalable product (Data_Source service); see docs/environment.md
 MANGROVE = ("E2FO3", "E2SS3")   # estuarine intertidal forested or scrub-shrub, broad-leaved evergreen: Puerto Rico's mangroves
 QUAKES = "https://earthquake.usgs.gov/fdsnws/event/1/query"
 QUAKE_BOX = {"minlatitude": 17.4, "maxlatitude": 19.0, "minlongitude": -68.4, "maxlongitude": -64.9}   # wide enough for 25 km around every coast
 QUAKE_FIRST, QUAKE_KM = 2000, 25
-PR_CRS = "EPSG:32161"   # NAD83 / Puerto Rico and Virgin Islands, metres: areas and distances
+PR_CRS = "EPSG:32161"   # NAD83 / Puerto Rico and Virgin Islands, meters: areas and distances
 FLOORS = {"nri": 78, "slides": 70000, "wetlands": 12000}   # the 2026-10 sources have 78 municipios, 71,431 slope failures and about 16,000 polygons of all types
 
 SOURCES = {
@@ -63,10 +63,10 @@ SOURCES = {
     "census_cre": {"name": "Census Bureau — Community Resilience Estimates for Puerto Rico", "url": "https://www.census.gov/programs-surveys/community-resilience-estimates.html", "license": "US federal government data (public domain); cite the Census Bureau",
                    "note": "Share of residents with no, one or two, or three or more risk factors, with margins of error at 90% confidence."},
     "usgs_slope_failures": {"name": "USGS — Map of slope-failure locations in Puerto Rico after Hurricane María (Hughes and others, 2019)", "url": "https://doi.org/10.5066/P9BVMD74", "license": "US federal government data (public domain)",
-                            "note": "Read from the copy the data release's first author keeps at the University of Puerto Rico at Mayagüez (the USGS catalogue refuses scripts). Counted by point in the municipal boundary."},
+                            "note": "Read from the copy the data release's first author keeps at the University of Puerto Rico at Mayagüez (the USGS catalog refuses scripts). Counted by point in the municipal boundary."},
     "usfws_nwi": {"name": "US Fish and Wildlife Service — National Wetlands Inventory", "url": "https://www.fws.gov/program/national-wetlands-inventory", "license": "US federal government data (public domain)",
                   "note": "Wetland polygons of Puerto Rico from the inventory's map service, split among the municipal boundaries."},
-    "usgs_comcat": {"name": "USGS — ComCat earthquake catalogue", "url": "https://earthquake.usgs.gov/fdsnws/event/1/", "license": "US federal government data (public domain)",
+    "usgs_comcat": {"name": "USGS — ComCat earthquake catalog", "url": "https://earthquake.usgs.gov/fdsnws/event/1/", "license": "US federal government data (public domain)",
                     "note": "Earthquakes of magnitude 2.5 or more around Puerto Rico, by year."},
 }
 
@@ -185,7 +185,7 @@ def quake_rows(y):
 # ── Geometry ─────────────────────────────────────────────────────────────────
 
 class Munis:
-    """The municipal boundaries (site/data/municipios.geojson), projected to metres, with land areas from the Census."""
+    """The municipal boundaries (site/data/municipios.geojson), projected to meters, with land areas from the Census."""
 
     def __init__(self, ids):
         import shapely
@@ -308,7 +308,7 @@ def compute(refresh=False, offline=False, floors=FLOORS):
                   "Slope failures (landslides, debris flows and rock falls) that USGS and UPRM geologists mapped from aerial images taken after Hurricane María, by the municipal boundary that holds each one's point. It shows where the 2017 rains set off slides, a record of one storm, not a forecast.",
                   {"2017": column(slides)}, noPerHU=True, classes="jenks"))
     vs.append(var("landslides_maria_km2", G2, "Landslides mapped after Hurricane María, per km² of land", "", 1, "ratio", ["usgs_slope_failures", "census_tiger"], SL,
-                  "The same slope failures divided by the municipio's land area in square kilometres (Census).",
+                  "The same slope failures divided by the municipio's land area in square kilometers (Census).",
                   {"2017": [round(slides.get(f, 0) / M.land[f], 1) for f in ids] + [round(sum(slides.values()) / sum(M.land.values()), 1)]}, noPerHU=True))
 
     # wetlands
@@ -341,17 +341,17 @@ def compute(refresh=False, offline=False, floors=FLOORS):
             if mg:
                 mang[k] += a / 1e6
     notes["wetlands"] = {"polygons_in_box": wd["in_box"], "wetland_polygons": len(wd["polys"]), "unreadable": skipped, "km2_more_than_2_km_offshore": round(outside / 1e6, 2),
-                         "retrieved": wd["retrieved"], "mapped_from": "colour-infrared aerial photographs of February 1983 for the coasts (about a third of the island, holding almost all of the wetland area); most of the interior is the inventory's interim scalable product, and a few small areas come from later photographs", "wetland_types": sorted(WETLAND), "mangrove_codes": list(MANGROVE)}
+                         "retrieved": wd["retrieved"], "mapped_from": "color-infrared aerial photographs of February 1983 for the coasts (about a third of the island, holding almost all of the wetland area); most of the interior is the inventory's interim scalable product, and a few small areas come from later photographs", "wetland_types": sorted(WETLAND), "mangrove_codes": list(MANGROVE)}
     G3, NW = "Wetlands", "USFWS National Wetlands Inventory"
     ny = str(NWI_PHOTO_YEAR)
     vs.append(var("wetland_km2", G3, "Wetlands, km²", "km²", 1, "count", ["usfws_nwi"], NW,
-                  "The area of the wetlands the National Wetlands Inventory maps in the municipio, almost all of it from aerial photographs of 1983 (estuarine and marine wetlands, among them mangroves, beaches and tidal flats; freshwater marshes; freshwater swamps and shrub wetlands), in square kilometres. Lakes, ponds, rivers and open water are left out. A wetland across a boundary is split; the part beyond the drawn coast goes to the municipio with the largest share.",
+                  "The area of the wetlands the National Wetlands Inventory maps in the municipio, almost all of it from aerial photographs of 1983 (estuarine and marine wetlands, among them mangroves, beaches and tidal flats; freshwater marshes; freshwater swamps and shrub wetlands), in square kilometers. Lakes, ponds, rivers and open water are left out. A wetland across a boundary is split; the part beyond the drawn coast goes to the municipio with the largest share.",
                   {ny: column(wet, 2)}, noPerHU=True, classes="jenks"))
     vs.append(var("wetland_pct", G3, "Wetlands, % of land area", "%", 1, "rate", ["usfws_nwi", "census_tiger"], NW,
                   "Wetland area divided by the municipio's land area (Census), in percent. Coastal wetlands can lie partly on what the Census counts as water.",
                   {ny: [round(wet.get(f, 0) / M.land[f] * 100, 2) for f in ids] + [round(sum(wet.values()) / sum(M.land.values()) * 100, 2)]}))
     vs.append(var("mangrove_km2", G3, "Mangroves, km²", "km²", 1, "count", ["usfws_nwi"], NW,
-                  "The area of the inventory's estuarine intertidal forested and scrub-shrub wetlands with broad-leaved evergreen plants (codes E2FO3 and E2SS3), which in Puerto Rico are mangroves, in square kilometres, as mapped from photographs of 1983.",
+                  "The area of the inventory's estuarine intertidal forested and scrub-shrub wetlands with broad-leaved evergreen plants (codes E2FO3 and E2SS3), which in Puerto Rico are mangroves, in square kilometers, as mapped from photographs of 1983.",
                   {ny: column(mang, 2)}, noPerHU=True, classes="jenks"))
 
     # yearly: resilience and earthquakes
@@ -370,7 +370,7 @@ def compute(refresh=False, offline=False, floors=FLOORS):
             raise SystemExit(f"environment_series: CRE {y}: the three shares do not add up to 100 for some place")
         cnotes[y] = {"population_covered": int(float(rb["72"]["POPUNI"]))}
     G4, CR = "Community resilience", "Census Bureau Community Resilience Estimates for Puerto Rico"
-    crdef = "The Census Bureau counts, for each resident, ten risk factors that make it harder to withstand and recover from a disaster: household income below 130% of the poverty line, only one or no adults aged 18 to 64 in the household, more than 0.75 people per room, limited English or no one with a high-school diploma in the household, no one employed full-time year-round, a disability, no health insurance, age 65 or over, no vehicle and no broadband. Modelled from the Puerto Rico Community Survey and other records. The ten factors are the same in every release, but from 2023 the Census Bureau computes municipio margins a new way (smaller), so compare margins across 2022 and 2023 with care."
+    crdef = "The Census Bureau counts, for each resident, ten risk factors that make it harder to withstand and recover from a disaster: household income below 130% of the poverty line, only one or no adults aged 18 to 64 in the household, more than 0.75 people per room, limited English or no one with a high-school diploma in the household, no one employed full-time year-round, a disability, no health insurance, age 65 or over, no vehicle and no broadband. Modeled from the Puerto Rico Community Survey and other records. The ten factors are the same in every release, but from 2023 the Census Bureau computes municipio margins a new way (smaller), so compare margins across 2022 and 2023 with care."
     hz = [var("cre_risk0_pct", G4, "Residents with no risk factors, % (Community Resilience Estimates)", "%", 1, "rate", ["census_cre"], CR, "Residents with none of the risk factors, in percent of the residents the estimates cover. " + crdef, hv["cre_risk0_pct"], moe=hm["cre_risk0_pct"], tag="estimate"),
           var("cre_risk12_pct", G4, "Residents with one or two risk factors, %", "%", 1, "rate", ["census_cre"], CR, "Residents with one or two of the risk factors, in percent. " + crdef, hv["cre_risk12_pct"], moe=hm["cre_risk12_pct"], tag="estimate"),
           var("cre_risk3_pct", G4, "Residents with three or more risk factors, %", "%", 1, "rate", ["census_cre"], CR, "Residents with three or more of the risk factors, in percent: the Census Bureau's measure of the population least able to recover from a disaster. " + crdef, hv["cre_risk3_pct"], moe=hm["cre_risk3_pct"], tag="estimate")]
@@ -386,8 +386,8 @@ def compute(refresh=False, offline=False, floors=FLOORS):
                 b[w] += r[2] >= 4
         q25[str(y)], q4[str(y)] = column(a), column(b)
         qnotes[str(y)] = {"in_box": len(rows), "placed": sum(a.values()), "strongest": max((r[2] for r, w in zip(rows, where) if w), default=None)}
-    G5, QC = "Earthquakes", "USGS ComCat earthquake catalogue"
-    qdef = f"Earthquakes in USGS's catalogue whose epicenter is in the municipio or, offshore, closer to it than to any other municipio and within {QUAKE_KM} km of its coast. Each earthquake counts once, so the municipal values add up to Puerto Rico's. A count of events, not of damage: most are felt little or not at all."
+    G5, QC = "Earthquakes", "USGS ComCat earthquake catalog"
+    qdef = f"Earthquakes in USGS's catalog whose epicenter is in the municipio or, offshore, closer to it than to any other municipio and within {QUAKE_KM} km of its coast. Each earthquake counts once, so the municipal values add up to Puerto Rico's. A count of events, not of damage: most are felt little or not at all."
     hz += [var("quakes_m25", G5, "Earthquakes of magnitude 2.5 or more", "", 0, "count", ["usgs_comcat"], QC, qdef, q25, noPerHU=True),
            var("quakes_m4", G5, "Earthquakes of magnitude 4.0 or more", "", 0, "count", ["usgs_comcat"], QC, qdef.replace("Earthquakes in", "Earthquakes of magnitude 4.0 or more in"), q4, noPerHU=True)]
     geo = {"ids": ids + ["72"], "names": names + ["Puerto Rico"]}

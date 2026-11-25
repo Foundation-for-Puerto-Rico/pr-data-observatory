@@ -1,5 +1,5 @@
 // Tests for the shared engine in site/js/core/ (plan item 6). Run: node --test tests/core.test.js   (python -m unittest discover runs it too when node is installed)
-//  - unit tests of the pure parts: palettes, classification, time, normalisation, statistics, formats
+//  - unit tests of the pure parts: palettes, classification, time, normalization, statistics, formats
 //  - the engine on the real published series, against tests/golden/economy.json (made from the Economy tab as it was before the engine was shared: tests/browser/make_golden.js)
 const test = require('node:test');
 const assert = require('node:assert');
@@ -22,7 +22,7 @@ test('palettes: five classes in every ramp, and an unknown name falls back to bl
   assert.ok(palettes.BIVARIATE.every(r => r.length === 3));
   assert.strictEqual(palettes.ramp('nope'), palettes.RAMPS.blue);
   const all = [...Object.values(palettes.RAMPS).flat(), ...palettes.DIVERGING, ...palettes.BIVARIATE.flat(), ...palettes.SYMBOLS, ...palettes.LINES, palettes.NOVAL];
-  assert.ok(all.every(c => /^#[0-9a-fA-F]{6}$/.test(c)), 'every colour is a six-digit hex colour');
+  assert.ok(all.every(c => /^#[0-9a-fA-F]{6}$/.test(c)), 'every color is a six-digit hex color');
 });
 
 // ── classification ──────────────────────────────────────────────────────────
@@ -42,7 +42,7 @@ test('classify: a value on a break belongs to the lower class, no value is -1', 
   assert.strictEqual(classify.classOf(b, NaN), -1);
   assert.strictEqual(classify.classOf(b, Infinity), -1);
 });
-test('classify: diverging scales cut at 0.1 and 0.5 of the largest distance from the centre', () => {
+test('classify: diverging scales cut at 0.1 and 0.5 of the largest distance from the center', () => {
   const b = classify.make([-10, -2, 0, 1, 5], { div: true, center: 0 });
   assert.deepStrictEqual([b.div, b.center, b.span], [true, 0, 10]);
   assert.deepStrictEqual([-10, -5.1, -5, -1.1, -1, 0, 1, 1.1, 5, 5.1, 10].map(v => classify.classOf(b, v)), [0, 0, 1, 1, 2, 2, 2, 3, 3, 4, 4]);
@@ -204,7 +204,7 @@ test('format: compact numbers and values', () => {
   assert.strictEqual(format.value({}, { unit: '', d: 0 }, NaN), '—');
 });
 
-// ── normalisation ───────────────────────────────────────────────────────────
+// ── normalization ───────────────────────────────────────────────────────────
 test('normalize: the options a kind of dataset offers', () => {
   const ids = (v) => normalize.options(v).map(o => o[0]);
   assert.deepStrictEqual(ids({ type: 'count' }), ['value', 'per1000', 'perHU', 'perkm2', 'sharePR', 'change', 'pctile']);
@@ -227,7 +227,7 @@ test('normalize: the options a kind of dataset offers', () => {
   assert.deepStrictEqual(normalize.describe({ unit: '$', d: 0, type: 'level$' }, 'change'), { unit: '%', d: 1, div: true, center: 0 });
   assert.strictEqual(normalize.describe({ unit: '', d: 0 }, 'index').center, 100);
 });
-test('normalize: each normalisation on a small invented island', () => {
+test('normalize: each normalization on a small invented island', () => {
   // three municipalities and the island; population 100, 200, 700; jobs 10, 20, 70
   const years = { 2020: [10, 40, 100, 150], 2022: [20, 60, 120, 200] };
   const V = { x: { key: 'x', type: 'count', unit: '', d: 0, ys: [2020, 2022], years }, population: { key: 'population', ys: [2020], years: { 2020: [100, 200, 700, 1000] } }, qcew_jobs: { key: 'qcew_jobs', ys: [2020], years: { 2020: [10, 20, 70, 100] } } };
@@ -352,7 +352,7 @@ test('engine: every dataset offers, defaults and writes what the Economy tab did
   }
 });
 function norm_default(k, mode) { return normalize.defaultNorm(E.V[k], mode); }
-test('engine: every value of every dataset under every normalisation, year and price basis is what the Economy tab computed', () => {
+test('engine: every value of every dataset under every normalization, year and price basis is what the Economy tab computed', () => {
   let n = 0;
   for (const [k, g] of Object.entries(golden.perKey)) {
     for (const [c, want] of Object.entries(g.values)) {
@@ -386,7 +386,7 @@ function stack(cfg) {
   return { layers, evals: E.evaluate(layers) };
 }
 const configs = JSON.parse(fs.readFileSync(path.join(__dirname, 'browser', 'economy_configs.json'), 'utf8'));
-test('engine: the legend, the layer cards, the colours and the symbols of 26 layer stacks are what the Economy tab drew', () => {
+test('engine: the legend, the layer cards, the colors and the symbols of 26 layer stacks are what the Economy tab drew', () => {
   for (const cfg of configs) {
     const g = golden.configs[cfg.id], { layers, evals } = stack(cfg);
     assert.deepStrictEqual(layers.map(l => ({ key: l.key, mode: l.mode })), g.applied.map(a => ({ key: a.key, mode: a.mode })), `${cfg.id}: layers`);
@@ -394,7 +394,7 @@ test('engine: the legend, the layer cards, the colours and the symbols of 26 lay
     assert.strictEqual(noWindow(flat(stripRel(stackLegend.blocks(E, layers, evals, false).join('')))), g.legend, `${cfg.id}: legend`);
     assert.strictEqual(noManual(flat(layers.map((L, k) => panel.layerCard(E, L, k, layers.length, evals[L.id])).join(''))), g.cards, `${cfg.id}: layer cards`);
     const fills = layers.filter(l => l.mode === 'fill' && l.visible && evals[l.id] && evals[l.id].a);
-    if (g.fills) { assert.ok(fills.length, `${cfg.id}: a shaded layer`); assert.deepStrictEqual(E.fillColors(fills, evals), g.fills, `${cfg.id}: colours`); assert.strictEqual(fills[0].opacity, g.opacity); }
+    if (g.fills) { assert.ok(fills.length, `${cfg.id}: a shaded layer`); assert.deepStrictEqual(E.fillColors(fills, evals), g.fills, `${cfg.id}: colors`); assert.strictEqual(fills[0].opacity, g.opacity); }
     else assert.strictEqual(fills.length, 0, `${cfg.id}: no shaded layer`);
     const syms = layers.filter(l => l.mode === 'symbol' && l.visible && evals[l.id] && evals[l.id].a).flatMap(L => E.symbols(L, evals[L.id], false).rows.map(r => [+r.r.toFixed(3), r.fill, L.opacity]));
     assert.deepStrictEqual(syms, g.symbols.map(s => [s[0], s[1], s[2]]), `${cfg.id}: symbols`);
@@ -408,7 +408,7 @@ test('engine: a layer stack survives the trip through a link', () => {
   }
   assert.deepStrictEqual(E.restore('nope.f.value.blue.q.1.1.0.85.0'), [], 'a dataset the engine does not have is skipped');
   assert.strictEqual(E.restore('qcew_jobs.f.sharePR.blue.q.1.1.0.85.0,qcew_jobs.f.lq.blue.q.1.1.0.85.0,qcew_jobs.f.value.blue.q.1.1.0.85.0').length, 2, 'a third shaded layer is left out');
-  assert.strictEqual(E.restore('poverty_pct.f.lq.blue.q.1.1.0.85.0')[0].norm, 'value', 'a normalisation the dataset does not offer becomes "as published"');
+  assert.strictEqual(E.restore('poverty_pct.f.lq.blue.q.1.1.0.85.0')[0].norm, 'value', 'a normalization the dataset does not offer becomes "as published"');
   const m = E.restore('poverty_pct.f.value.blue.m.1.1.0.85.0.1~2~3~4');
   assert.deepStrictEqual([m[0].classes, m[0].breaks], ['manual', '1, 2, 3, 4']);
   // a shaded layer drawn on the barrios (js/econ_level.js) keeps its level in the link: mode code 'b'; a symbol layer has no level
@@ -442,7 +442,7 @@ test('engine: the contract returns ids, names, values, margins and flags', () =>
 test('engine: a margin of error follows the layer it belongs to', () => {
   const L = { key: 'median_gross_rent', norm: 'value', real: false }, y = 2020;
   assert.ok(E.moe(L, y).some(x => x != null));
-  assert.strictEqual(E.moe({ ...L, norm: 'per1000' }, y), null, 'a normalised layer has no published margin');
+  assert.strictEqual(E.moe({ ...L, norm: 'per1000' }, y), null, 'a normalized layer has no published margin');
   const real = E.moe({ ...L, real: true }, y), f = E.cpiFactor(y);
   assert.ok(real.every((x, i) => x == null || Math.abs(x - E.moe(L, y)[i] * f) < 1e-9));
 });
@@ -654,7 +654,7 @@ test('classes: limits typed by a user cut the five classes; anything else falls 
   const text = X.manualDefault({ ...L, classes: 'quantile', breaks: undefined }, ev.y);
   assert.deepStrictEqual(classify.parseBreaks(text, 5).length, 4, text);
   assert.deepStrictEqual(classify.parseBreaks(text, 5), q.slice(1, -1).map(x => +x.toPrecision(3)), 'it starts from the classes the layer has now');
-  assert.strictEqual(X.manualDefault({ ...L, norm: 'index' }, ev.y), '', 'a scale around a centre has fixed cut-offs');
+  assert.strictEqual(X.manualDefault({ ...L, norm: 'index' }, ev.y), '', 'a scale around a center has fixed cut-offs');
   // the legend uses them, and a link keeps them
   const html = stackLegend.blocks(X, [L], { 1: ev }, false).join('');
   assert.ok(html.includes('20.0% to 30.0%'), html.slice(0, 400));
@@ -675,7 +675,7 @@ const hexbin = core('hexbin');
 const sphArea = (ring) => { let s = 0; for (let i = 0; i < ring.length; i++) { const [la1, lo1] = ring[i], [la2, lo2] = ring[(i + 1) % ring.length]; s += (lo2 - lo1) * Math.PI / 180 * (2 + Math.sin(la1 * Math.PI / 180) + Math.sin(la2 * Math.PI / 180)); } return Math.abs(s) * 6371.0088 ** 2 / 2; };   // km², a polygon whose sides run along parallels and meridians (Chamberlain and Duquette)
 test('hexbin: the projection is equal-area and can be undone', () => {
   for (const [la, lo] of [[18.2, -66.45], [18.45, -65.25], [17.95, -67.2], [18.33, -64.9]]) { const [x, y] = hexbin.project(la, lo), [la2, lo2] = hexbin.unproject(x, y); assert.ok(Math.abs(la - la2) < 1e-9 && Math.abs(lo - lo2) < 1e-9, `${la},${lo}`); }
-  assert.ok(hexbin.project(18.2, -66.45).every(v => Math.abs(v) < 1e-9), 'the centre of the island is the origin');
+  assert.ok(hexbin.project(18.2, -66.45).every(v => Math.abs(v) < 1e-9), 'the center of the island is the origin');
   const flat = (ring) => { const p = ring.map(([la, lo]) => hexbin.project(la, lo)); let s = 0; for (let i = 0; i < p.length; i++) { const [x1, y1] = p[i], [x2, y2] = p[(i + 1) % p.length]; s += x1 * y2 - x2 * y1; } return Math.abs(s) / 2; };
   for (const [la, lo] of [[18.0, -67.1], [18.45, -65.3], [18.2, -66.45], [18.35, -64.95]]) {
     const q = [[la, lo], [la, lo + .1], [la + .1, lo + .1], [la + .1, lo]];
@@ -706,7 +706,7 @@ test('hexbin: counts are conserved, ids are unique and a larger hexagon means fe
   assert.strictEqual(hexbin.bin([{ lat: 18.2, lng: -66.45 }]).cells[0].id, '0,0', 'the hexagon at the origin is 0,0 and not -0,0');
   assert.strictEqual(hexbin.bin([{ lat: 18.2, lng: -66.45, w: 5 }, { lat: 18.2, lng: -66.45 }]).cells[0].w, 6, 'a weight counts for what it says');
 });
-test('hexbin: a point belongs to the hexagon whose centre is nearest, and neighbours are the same distance apart', () => {
+test('hexbin: a point belongs to the hexagon whose center is nearest, and neighbors are the same distance apart', () => {
   const s = hexbin.size(10), at = (x, y) => { const [la, lo] = hexbin.unproject(x, y); return hexbin.bin([{ lat: la, lng: lo }], { area: 10 }).cells[0].id; };
   const c = (q, r) => [s * Math.sqrt(3) * (q + r / 2), s * 1.5 * r];
   for (const [q, r] of [[0, 0], [3, -2], [-5, 4], [10, 1]]) {
@@ -715,7 +715,7 @@ test('hexbin: a point belongs to the hexagon whose centre is nearest, and neighb
     for (const a of [0, 60, 120, 180, 240, 300]) assert.strictEqual(at(x + .8 * s * Math.sqrt(3) / 2 * Math.cos(a * Math.PI / 180), y + .8 * s * Math.sqrt(3) / 2 * Math.sin(a * Math.PI / 180)), `${q},${r}`, `inside the inscribed circle at ${a} degrees`);
   }
   const d = (p, q) => Math.hypot(c(...p)[0] - c(...q)[0], c(...p)[1] - c(...q)[1]);
-  assert.ok([[1, 0], [0, 1], [-1, 1], [-1, 0], [0, -1], [1, -1]].every(n => Math.abs(d([0, 0], n) - s * Math.sqrt(3)) < 1e-9), 'six neighbours at the same distance');
+  assert.ok([[1, 0], [0, 1], [-1, 1], [-1, 0], [0, -1], [1, -1]].every(n => Math.abs(d([0, 0], n) - s * Math.sqrt(3)) < 1e-9), 'six neighbors at the same distance');
   assert.ok(Math.abs(3 * Math.sqrt(3) / 2 * s * s - 10) < 1e-9, 'the area of the hexagon is the one asked for');
 });
 test('adapters: a list of points becomes a count for each municipality and, as the hex level, a count for each hexagon', () => {
@@ -755,7 +755,7 @@ test('time: a survey year is named by its whole window, a count by its year', ()
 });
 
 // ── the derived adapter ─────────────────────────────────────────────────────
-test('adapters: a dataset computed from two others keeps its formula and is labelled as derived', () => {
+test('adapters: a dataset computed from two others keeps its formula and is labeled as derived', () => {
   const X = realEngine();
   const r = adapters.derived(X, { key: 'jobs_per_1000_x', label: 'Jobs per 1,000 residents (derived)', group: 'Derived', of: ['qcew_jobs', 'population'], op: 'ratio', scale: 1000, unit: '', d: 1, definition: 'Jobs at employers in the municipality for every 1,000 residents.' });
   assert.ok(r && r.derived.formula === 'Jobs (all employers) ÷ Resident population × 1000', r && r.derived.formula);
@@ -836,7 +836,7 @@ test('health series: a layer of it goes into a link and comes back', () => {
   assert.ok(s.startsWith('hpsa_mh_met.f.value.'), s);
   assert.deepStrictEqual(back.map(b => b.key), ['hpsa_mh_met']);
   const r = X.restore('hpsa_pc_score.f.index.blue.q.1.0.0.80.0', []);
-  assert.strictEqual(r[0].norm, 'value', 'a normalisation the dataset does not offer becomes "as published"');
+  assert.strictEqual(r[0].norm, 'value', 'a normalization the dataset does not offer becomes "as published"');
 });
 test('health series: the legend says an empty place has no shortage designation, and "No data" stays for the other datasets', () => {
   const X = healthEngine(), html = (key) => { const L = X.makeLayer(key, 'fill', {}, []); L.id = 1; return stackLegend.blocks(X, [L], X.evaluate([L]), false).join(''); };
@@ -1153,7 +1153,7 @@ test('levelTable: the CSV by area marks the less reliable values and says why a 
     { key: 'acs_n', years: { 2023: [100, 100, 5, 5], 2024: [100, 100, 5, 5] }, moe: { 2023: [null, null, 1, 1], 2024: [null, null, 1, 1] } }] }, { names });
   const it = adapters.levelTable(X, 'acs_x', 'tract', { name: (n) => n && n.es, municipality: (id) => ({ '72001': 'Uno', '72003': 'Dos', '72005': 'Tres' })[id.slice(0, 5)] });
   assert.deepStrictEqual(it.header, ['GEOID', 'Area', 'Municipality', '2019–2023', '2019–2023 margin of error', '2019–2023 less reliable', '2020–2024', '2020–2024 margin of error', '2020–2024 less reliable', 'Variable', 'Unit', 'Dictionary entry', 'Source', 'Note']);
-  const src = 'US Census Bureau, American Community Survey 5-year estimates; margins of error at 90% confidence; neighbouring windows share four of their five years', why = it.rows[1][13];
+  const src = 'US Census Bureau, American Community Survey 5-year estimates; margins of error at 90% confidence; neighboring windows share four of their five years', why = it.rows[1][13];
   assert.ok(/blank margin of error means that none is published/.test(why));
   assert.deepStrictEqual(it.rows[0], ['72001a', 'Sector 1', 'Uno', 10, 1, '', 20, 9, 'yes', 'X', 'percent', 'acs_x', src, ''], 'a margin above 30% of the estimate marks the window; the other window is not marked');
   assert.deepStrictEqual(it.rows[1], ['72003b', 'Sector 2', 'Dos', 100, null, 'yes', 100, null, 'yes', 'X', 'percent', 'acs_x', src, why], 'a share of exactly 100% has no margin: it is marked, and the note says why the margin is blank');
@@ -2468,7 +2468,7 @@ test('study areas: an area drawn on a municipio gives that municipio back; a box
   const box = { type: 'Polygon', coordinates: [[[-66.12, 18.38], [-66.02, 18.38], [-66.02, 18.45], [-66.12, 18.45], [-66.12, 18.38]]] }, b = S.measure(box, { blocks, munis, stops: [] });
   assert.ok(b.munis.length >= 3, 'the box crosses several municipios');
   const given = b.munis.reduce((a, p) => a + p.residents, 0);
-  assert.ok(given <= b.residents && given / b.residents > 0.999, `the residents inside are given to their municipio, but for blocks whose centre is off the coast (${given} of ${b.residents})`);
+  assert.ok(given <= b.residents && given / b.residents > 0.999, `the residents inside are given to their municipio, but for blocks whose center is off the coast (${given} of ${b.residents})`);
   const p = S.estimate(X, b, 'population', null, pop), pv = S.estimate(X, b, 'poverty_pct', null, pop), j = S.estimate(X, b, 'qcew_jobs', null, pop);
   assert.deepStrictEqual([p.method, pv.method, j.method], ['residents', 'avg-residents', 'residents']);
   const share = b.munis.reduce((a, q) => a + X.values('population', {}).values[q.i] * q.residents / pop[q.i], 0);
@@ -2486,9 +2486,9 @@ test('study areas: the area around a point is a circle or a ring of the right ar
   for (const [r, r0] of [[400, 0], [800, 0], [5000, 0], [1600, 800], [20000, 0]]) {
     const g = S.ring(-66.06, 18.40, r, r0), want = Math.PI * (r * r - r0 * r0) / 1e6;
     assert.ok(Math.abs(S.areaKm2(g) / want - 1) < 1e-4, `${r0}-${r} m: ${S.areaKm2(g)} km² against ${want}`);
-    assert.strictEqual(S.inside(g, -66.06, 18.40), r0 === 0, 'the centre is in a circle and in the hole of a ring');
+    assert.strictEqual(S.inside(g, -66.06, 18.40), r0 === 0, 'the center is in a circle and in the hole of a ring');
   }
-  const off = S.ring(-66.06, 18.40, 1000);   // 1 km east and north of the centre: just inside and just outside the edge
+  const off = S.ring(-66.06, 18.40, 1000);   // 1 km east and north of the center: just inside and just outside the edge
   const kx = 111320 * Math.cos(18.40 * Math.PI / 180);
   assert.deepStrictEqual([S.inside(off, -66.06 + 990 / kx, 18.40), S.inside(off, -66.06 + 1010 / kx, 18.40), S.inside(off, -66.06, 18.40 + 1010 / 110574)], [true, false, false]);
   const set = S.make({ name: 'Areas around points', source: 'Drawn in this browser (Area around a point)', areas: [{ name: '800 m around 18.4000, -66.0600 (San Juan)', geometry: S.ring(-66.06, 18.40, 800) }, { name: '800 m to 1.6 km around 18.4000, -66.0600', geometry: S.ring(-66.06, 18.40, 1600, 800) }] });
@@ -2547,7 +2547,7 @@ test('study areas: a small area keeps its share, and a whole municipio plus a pi
   const names = X.geo.names.slice(0, X.geo.pr), munis = names.map(n => at.get(n)), pop = names.map(n => muni[n].population_2020), ctx = { blocks: readData('population_blocks.json'), munis, stops: [] };
   const sq = { type: 'Polygon', coordinates: [[[-66.06, 18.40], [-66.055, 18.40], [-66.055, 18.405], [-66.06, 18.405], [-66.06, 18.40]]] }, sj = names.indexOf('San Juan');
   const m = S.measure(sq, ctx), inSJ = m.munis.find(p => p.i === sj).residents;
-  assert.ok(m.residents > 500 && inSJ / pop[sj] < 0.01, `a neighbourhood-size square: ${m.residents} residents, ${(inSJ / pop[sj] * 100).toFixed(2)}% of San Juan`);
+  assert.ok(m.residents > 500 && inSJ / pop[sj] < 0.01, `a neighborhood-size square: ${m.residents} residents, ${(inSJ / pop[sj] * 100).toFixed(2)}% of San Juan`);
   for (const k of ['population', 'qcew_jobs', 'qcew_wages']) {
     const e = S.estimate(X, m, k, null, pop);
     assert.ok(e && e.method === 'residents', `${k}: a small area keeps its share (${e && e.method})`);
@@ -2630,7 +2630,7 @@ test('classify: when the lowest value fills two classes or more, it gets one cla
   assert.deepStrictEqual(one.edges, [0, 0, 14, 14, 14, 14]);
   assert.deepStrictEqual([0, 1, 2, 3, 4].map(i => classify.single(one, i)), [true, false, true, true, true]);
   assert.deepStrictEqual([0, 1, 2, 3, 4].map(i => classify.hidden(one, i)), [false, false, true, true, true], 'a legend leaves out the classes no value can fall in');
-  assert.strictEqual(classify.single(classify.make([-2, 3], { div: true, center: 0 }), 0), false, 'a scale around a centre has no single-value class');
+  assert.strictEqual(classify.single(classify.make([-2, 3], { div: true, center: 0 }), 0), false, 'a scale around a center has no single-value class');
 });
 test('legend: the non-attainment datasets name a class of 0 once and show no empty "0.00% to 0.00%" class, by municipio and by barrio', () => {
   const X = tabEngine();

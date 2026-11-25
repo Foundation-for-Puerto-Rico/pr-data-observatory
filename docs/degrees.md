@@ -15,7 +15,7 @@ The code is `degrees.py`, the tests are `tests/test_degrees.py`, the file is `si
 | `deg_field_business` | Bachelor's or higher degrees in business | 6,126 | 5,155 | 3,808 |
 | `deg_field_education` | Bachelor's or higher degrees in education | 2,758 | 1,878 | 1,183 |
 | `deg_field_stem` | Bachelor's or higher degrees in science, technology, engineering and mathematics (STEM) | 4,959 | 5,209 | 5,082 |
-| `deg_field_social` | Bachelor's or higher degrees in social and behavioural sciences | 3,460 | 2,929 | 2,375 |
+| `deg_field_social` | Bachelor's or higher degrees in social and behavioral sciences | 3,460 | 2,929 | 2,375 |
 | `deg_field_arts` | Bachelor's or higher degrees in arts and humanities | 1,640 | 1,737 | 1,544 |
 | `deg_field_other` | Bachelor's or higher degrees in other fields | 2,872 | 2,863 | 2,149 |
 
@@ -37,7 +37,7 @@ NCES's IPEDS complete data files, read straight from NCES (US Government work, p
 | Business | 52 |
 | Education | 13 |
 | Science, technology, engineering and mathematics | 01, 03, 11, 14, 15, 26, 27, 40, 41 |
-| Social and behavioural sciences | 42, 44, 45 |
+| Social and behavioral sciences | 42, 44, 45 |
 | Arts and humanities | 05, 09, 16, 23, 24, 38, 39, 50, 54 |
 | Other | everything else |
 
@@ -60,7 +60,7 @@ Most systems report campus by campus (the University of Puerto Rico, Ana G. Mén
 | 2023 | NUC University | 10,526 | 23.6% |
 | 2024 | NUC University | 14,321 | 29.4% |
 
-NUC University reports all of its campuses and online programmes from Bayamón, mostly certificates, so Bayamón's count is far above where its students study. The island figures are not affected. The dictionary entries and the dataset definitions say so.
+NUC University reports all of its campuses and online programs from Bayamón, mostly certificates, so Bayamón's count is far above where its students study. The island figures are not affected. The dictionary entries and the dataset definitions say so.
 
 ## 5. Checks
 

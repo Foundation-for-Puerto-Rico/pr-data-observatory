@@ -36,7 +36,7 @@ const CATEGORY_META = {
 };
 
 /* Shades within a hue for the subcategories of one category, alternating dark and light so
-   neighbouring slices separate while the family stays recognisable. */
+   neighboring slices separate while the family stays recognizable. */
 const CATEGORY_SCALES = {
   ATTRACTIONS:      [FPR.blue[500],   FPR.blue[700],   FPR.blue[300],   FPR.blue[200],   FPR.blue[100]],
   GASTRONOMY:       [FPR.green[600],  FPR.green[800],  FPR.green[400],  FPR.green[300],  FPR.green[100]],
@@ -49,7 +49,7 @@ function categoryOfSubcategory(subcategory) {
   return Object.keys(TYPE_GROUPS).find(c => TYPE_GROUPS[c].includes(subcategory)) || null;
 }
 
-/** A subcategory's colour: its parent category's hue, stepped so siblings stay distinct. */
+/** A subcategory's color: its parent category's hue, stepped so siblings stay distinct. */
 function subcategoryColor(subcategory) {
   const cat = categoryOfSubcategory(subcategory);
   if (!cat) return FPR.gray.neutral;           // 'Other' and anything off-taxonomy

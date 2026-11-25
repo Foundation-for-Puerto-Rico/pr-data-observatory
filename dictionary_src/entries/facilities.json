@@ -37,7 +37,7 @@
   "how_to_read": "Puerto Rico has 304 public housing developments: San Juan 61, Ponce 22, Mayagüez 17. Three municipios have none. Shade it per 1,000 residents to compare places of different size.",
   "caveats": [
    "A count of developments, not of buildings or people: a development may hold 20 units or 1,000. Use the units for the size.",
-   "HUD's list covers federally assisted public housing only; other subsidised housing (Section 8, LIHTC) is not in it."
+   "HUD's list covers federally assisted public housing only; other subsidized housing (Section 8, LIHTC) is not in it."
   ],
   "see_also": [
    "facilities.ph_units",
@@ -152,7 +152,7 @@
   "how_to_read": "In HUD's 2026-04-30 release, Puerto Rico has 245 LIHTC projects in 63 municipios: San Juan 46, Ponce 13, Caguas 10. Read it with the units: projects range from 16 to more than 300 units.",
   "caveats": [
    "A project counts from the year it was placed in service; projects placed in service since the release are missing until HUD's next one.",
-   "Where HUD has no census tract for a project (163 of 245), the project counts in the municipio of the city HUD lists, which may be a mailing city: a few projects may count in a neighbouring municipio.",
+   "Where HUD has no census tract for a project (163 of 245), the project counts in the municipio of the city HUD lists, which may be a mailing city: a few projects may count in a neighboring municipio.",
    "9 projects are no longer monitored for the credit's rules (their affordability period ended or another reason); they still count, and their units may no longer be rent-restricted.",
    "These are about a federal tax credit program. Their Spanish summaries are held for Finance and Compliance review (HANDOFF decision 21)."
   ],
@@ -213,7 +213,7 @@
   "how_to_read": "Puerto Rico's LIHTC projects hold 23,075 units: San Juan 5,100, Ponce 1,642, Caguas 1,297. Per 1,000 housing units it shows how much of a municipio's housing was financed with the credit.",
   "caveats": [
    "Almost every unit in Puerto Rico's projects is a low-income unit (facilities.lihtc_li_units); the two differ only where a project mixes in market-rate units.",
-   "Where HUD has no census tract for a project (163 of 245), the project counts in the municipio of the city HUD lists, which may be a mailing city: a few projects may count in a neighbouring municipio.",
+   "Where HUD has no census tract for a project (163 of 245), the project counts in the municipio of the city HUD lists, which may be a mailing city: a few projects may count in a neighboring municipio.",
    "9 projects are no longer monitored for the credit's rules (their affordability period ended or another reason); they still count, and their units may no longer be rent-restricted.",
    "Per 1,000 housing units uses the survey's count of housing units, an estimate with a margin of error.",
    "These are about a federal tax credit program. Their Spanish summaries are held for Finance and Compliance review (HANDOFF decision 21)."
@@ -276,7 +276,7 @@
   "how_to_read": "Puerto Rico's LIHTC projects hold 22,890 low-income units: San Juan 5,032, Ponce 1,641, Caguas 1,251. Compare per 1,000 housing units, and beside public housing units (facilities.ph_units).",
   "caveats": [
    "The rent cap applies for the project's compliance period (15 years) and an extended use period (at least 15 more); a unit can leave the program after that.",
-   "Where HUD has no census tract for a project (163 of 245), the project counts in the municipio of the city HUD lists, which may be a mailing city: a few projects may count in a neighbouring municipio.",
+   "Where HUD has no census tract for a project (163 of 245), the project counts in the municipio of the city HUD lists, which may be a mailing city: a few projects may count in a neighboring municipio.",
    "9 projects are no longer monitored for the credit's rules (their affordability period ended or another reason); they still count, and their units may no longer be rent-restricted.",
    "Per 1,000 housing units uses the survey's count of housing units, an estimate with a margin of error.",
    "These are about a federal tax credit program. Their Spanish summaries are held for Finance and Compliance review (HANDOFF decision 21)."
@@ -390,7 +390,7 @@
    "last": 2026,
    "frequency": "One snapshot, each count in its source's vintage (HUD coverage 2026-09, USGS loads to 2026-07-17, OpenStreetMap 2026-10-17, USAC 2026-11-07). Rebuilt with python facilities.py --refresh."
   },
-  "method": "facilities.py asks the Overpass API for every amenity=police node, way and relation in Puerto Rico's bounding box (a building's centre stands for it) and places each by point in polygon. 144 features gave 141 stations on 2026-10-17.",
+  "method": "facilities.py asks the Overpass API for every amenity=police node, way and relation in Puerto Rico's bounding box (a building's center stands for it) and places each by point in polygon. 144 features gave 141 stations on 2026-10-17.",
   "sources": [
    "osm"
   ],
@@ -437,8 +437,8 @@
   ],
   "group": "Libraries",
   "kind": "variable",
-  "plain": "How many libraries in each municipio are registered as public libraries in the federal E-Rate program, including community technology centres.",
-  "definition": "Active libraries in USAC's E-Rate entity list that USAC marks as public libraries, in the municipio of their address (else of their point). In Puerto Rico the list includes community technology centres and other community libraries registered as public libraries, not only municipal libraries.",
+  "plain": "How many libraries in each municipio are registered as public libraries in the federal E-Rate program, including community technology centers.",
+  "definition": "Active libraries in USAC's E-Rate entity list that USAC marks as public libraries, in the municipio of their address (else of their point). In Puerto Rico the list includes community technology centers and other community libraries registered as public libraries, not only municipal libraries.",
   "unit": "libraries",
   "value_type": "count",
   "geography": "78 municipalities and Puerto Rico",
@@ -456,7 +456,7 @@
   "how_to_read": "USAC lists 1,228 placed public libraries in Puerto Rico: San Juan 94, Guaynabo 75, Ponce 48. Every municipio has at least one.",
   "caveats": [
    "A registration for federal internet discounts, not a census of libraries: a library that never applied is missing and one that closed may still be listed as active.",
-   "Most entries are community technology centres, school-community libraries or church-run centres registered as public libraries; the type says only whether USAC marks it a main library, kiosk or bookmobile.",
+   "Most entries are community technology centers, school-community libraries or church-run centers registered as public libraries; the type says only whether USAC marks it a main library, kiosk or bookmobile.",
    "IMLS's Public Libraries Survey, the usual national source, has no Puerto Rico rows."
   ],
   "see_also": [
@@ -1184,7 +1184,7 @@
    "last": 2026,
    "frequency": "One snapshot, each count in its source's vintage (HUD coverage 2026-09, USGS loads to 2026-07-17, OpenStreetMap 2026-10-17, USAC 2026-11-07). Rebuilt with python facilities.py --refresh."
   },
-  "method": "facilities.py keeps the developments whose LVL2KX is R (rooftop) or 4 (ZIP+4 centroid), as HUD says to map, and whose point lies within 1 km of the municipio HUD gives. The 132 others sit at the centre of a block group or tract in HUD's layer; they are counted in the municipio figures but not drawn. The 2D map (facilities.js) and the 3D view (facilities3d.js) draw it with core/facilities.js, which holds its file, colour, pop-up and note.",
+  "method": "facilities.py keeps the developments whose LVL2KX is R (rooftop) or 4 (ZIP+4 centroid), as HUD says to map, and whose point lies within 1 km of the municipio HUD gives. The 132 others sit at the center of a block group or tract in HUD's layer; they are counted in the municipio figures but not drawn. The 2D map (facilities.js) and the 3D view (facilities3d.js) draw it with core/facilities.js, which holds its file, color, pop-up and note.",
   "sources": [
    "hud_public_housing"
   ],
@@ -1299,7 +1299,7 @@
    "last": 2026,
    "frequency": "One snapshot, each count in its source's vintage (HUD coverage 2026-09, USGS loads to 2026-07-17, OpenStreetMap 2026-10-17, USAC 2026-11-07). Rebuilt with python facilities.py --refresh."
   },
-  "method": "facilities.py reads USGS layer 51 for Puerto Rico and places each station in the municipio that holds its point. The 2D map (facilities.js) and the 3D view (facilities3d.js) draw it with core/facilities.js, which holds its file, colour, pop-up and note.",
+  "method": "facilities.py reads USGS layer 51 for Puerto Rico and places each station in the municipio that holds its point. The 2D map (facilities.js) and the 3D view (facilities3d.js) draw it with core/facilities.js, which holds its file, color, pop-up and note.",
   "sources": [
    "usgs_structures"
   ],
@@ -1344,7 +1344,7 @@
   ],
   "group": "Emergency services",
   "plain": "Police stations as volunteers mapped them in OpenStreetMap, with their name, type and municipio.",
-  "definition": "police_stations.geojson: one point per OpenStreetMap police feature (amenity=police; a building outline is drawn at its centre), with name (15 have none), type (municipal police, state police, or agency not stated, read from the name and operator tags), municipio, geoid and osm (the OpenStreetMap element, such as n123 for a node or w456 for a way). 141 stations on 2026-10-17.",
+  "definition": "police_stations.geojson: one point per OpenStreetMap police feature (amenity=police; a building outline is drawn at its center), with name (15 have none), type (municipal police, state police, or agency not stated, read from the name and operator tags), municipio, geoid and osm (the OpenStreetMap element, such as n123 for a node or w456 for a way). 141 stations on 2026-10-17.",
   "geography": "Points in 63 municipios",
   "coverage": {
    "timeline": "snapshot",
@@ -1352,7 +1352,7 @@
    "last": 2026,
    "frequency": "One snapshot, each count in its source's vintage (HUD coverage 2026-09, USGS loads to 2026-07-17, OpenStreetMap 2026-10-17, USAC 2026-11-07). Rebuilt with python facilities.py --refresh."
   },
-  "method": "facilities.py asks the Overpass API for amenity=police in Puerto Rico, places each feature by point in polygon and counts a station mapped twice (same name, within 30 m) once. The type is 'Municipal police' when the name or operator says municipal, 'State police' when it names the Policía de Puerto Rico or the state police, else 'agency not stated'. The 2D map (facilities.js) and the 3D view (facilities3d.js) draw it with core/facilities.js, which holds its file, colour, pop-up and note.",
+  "method": "facilities.py asks the Overpass API for amenity=police in Puerto Rico, places each feature by point in polygon and counts a station mapped twice (same name, within 30 m) once. The type is 'Municipal police' when the name or operator says municipal, 'State police' when it names the Policía de Puerto Rico or the state police, else 'agency not stated'. The 2D map (facilities.js) and the 3D view (facilities3d.js) draw it with core/facilities.js, which holds its file, color, pop-up and note.",
   "sources": [
    "osm"
   ],
@@ -1407,14 +1407,14 @@
    "last": 2026,
    "frequency": "One snapshot, each count in its source's vintage (HUD coverage 2026-09, USGS loads to 2026-07-17, OpenStreetMap 2026-10-17, USAC 2026-11-07). Rebuilt with python facilities.py --refresh."
   },
-  "method": "facilities.py keeps USAC's active Puerto Rico libraries marked public. A library whose point falls more than 1 km outside the municipio of its address (107) or that has no point (21) is counted there but not drawn. Any telephone number written into a name is removed. The 2D map (facilities.js) and the 3D view (facilities3d.js) draw it with core/facilities.js, which holds its file, colour, pop-up and note.",
+  "method": "facilities.py keeps USAC's active Puerto Rico libraries marked public. A library whose point falls more than 1 km outside the municipio of its address (107) or that has no point (21) is counted there but not drawn. Any telephone number written into a name is removed. The 2D map (facilities.js) and the 3D view (facilities3d.js) draw it with core/facilities.js, which holds its file, color, pop-up and note.",
   "sources": [
    "usac_erate"
   ],
   "source_detail": "USAC open data 7i5i-83qf",
   "how_to_read": "Switch the layer on in the Map layers tab of the 2D map or the 3D view (Community services, Education and culture: Public libraries). Both views draw the same points, with the same note on what is counted but not drawn and the same pop-up. Click a point for the library's name, type, municipio and source.",
   "caveats": [
-   "Most entries are community technology centres and community libraries registered as public libraries, not municipal libraries.",
+   "Most entries are community technology centers and community libraries registered as public libraries, not municipal libraries.",
    "USAC's points are entered by the applicants; some are off by a street or more."
   ],
   "see_also": [
@@ -1461,7 +1461,7 @@
    "last": 2026,
    "frequency": "One snapshot, the newest school year with its students in the NCES directory (2024-25); rebuilt with python facility_exposure.py."
   },
-  "method": "facility_exposure.py reads the NCES Common Core of Data directory through the Urban Institute's Education Data API (no key), keeps the open schools (status open, new, added, changed agency or reopened) that have a point, and tests each point against FEMA's 1% flood area, NOAA's 3 ft sea level rise area and the USGS landslide susceptibility map. The 2D map (facilities.js) and the 3D view (facilities3d.js) draw it with core/facilities.js, which holds its colour, pop-up and note.",
+  "method": "facility_exposure.py reads the NCES Common Core of Data directory through the Urban Institute's Education Data API (no key), keeps the open schools (status open, new, added, changed agency or reopened) that have a point, and tests each point against FEMA's 1% flood area, NOAA's 3 ft sea level rise area and the USGS landslide susceptibility map. The 2D map (facilities.js) and the 3D view (facilities3d.js) draw it with core/facilities.js, which holds its color, pop-up and note.",
   "sources": [
    "urban_ccd",
    "fema_nfhl",
@@ -1473,7 +1473,7 @@
   "caveats": [
    "Private schools are not in the NCES public school directory.",
    "The point is the one NCES publishes; a school with several buildings has one point.",
-   "A school on land the USGS rates highly susceptible to landslides is rare on the map because a building stands on a levelled pad, which the 5 m map rates by its own slope (docs/facility-exposure.md)."
+   "A school on land the USGS rates highly susceptible to landslides is rare on the map because a building stands on a leveled pad, which the 5 m map rates by its own slope (docs/facility-exposure.md)."
   ],
   "see_also": [
    "facility_exposure.fx_schools_flood_n",
@@ -1511,7 +1511,7 @@
   ],
   "group": "Water supply",
   "plain": "Every reservoir with a live USGS gauge on the map: how high its water is now, how it changed in a week, and whether that is usual for this time of year.",
-  "definition": "reservoirs.geojson: one point per reservoir with a USGS water-level gauge that reported in the last 30 days and has at least 8 years of daily values in 2011-2025 (25 on 2026-11-02, 19 of them in the Aqueduct and Sewer Authority's daily report). Each point has name, type, municipio, geoid, usgs (the monitoring location), aaa (true for the 19), level and level_time (the latest reading when the file was built), recent_start and recent (120 daily levels in metres, null where missing) and p10, p25, p50, p75, p90 (the usual level for each of the 53 weeks of the year, metres).",
+  "definition": "reservoirs.geojson: one point per reservoir with a USGS water-level gauge that reported in the last 30 days and has at least 8 years of daily values in 2011-2025 (25 on 2026-11-02, 19 of them in the Aqueduct and Sewer Authority's daily report). Each point has name, type, municipio, geoid, usgs (the monitoring location), aaa (true for the 19), level and level_time (the latest reading when the file was built), recent_start and recent (120 daily levels in meters, null where missing) and p10, p25, p50, p75, p90 (the usual level for each of the 53 weeks of the year, meters).",
   "geography": "Points in 20 municipios",
   "coverage": {
    "timeline": "snapshot",
@@ -1519,7 +1519,7 @@
    "last": 2026,
    "frequency": "The latest reading is live: the page asks USGS for it each time the layer is switched on (at most every 10 minutes). The daily values and the usual levels are rebuilt once a month (python reservoirs.py --refresh)."
   },
-  "method": "reservoirs.py reads the USGS Water Data API (no key): the lakes and reservoirs of Puerto Rico, the latest water-surface elevation (parameter 72376, metres above local mean sea level) and the daily values since 2011 (parameter 72375, feet, converted to metres). For each week of the year it takes the mean of that week in each year 2011-2025 and the 10th, 25th, 50th, 75th and 90th percentile of those yearly means (at least 8 years). The pop-up says where the latest reading falls: below the 10th percentile is lower than usual for the time of year, above the 90th higher, and between them usual (the level of about 8 years in 10). The chart shades the 10th to 90th percentile and, darker, the 25th to 75th. A finer cut was tried and dropped: where a reservoir is usually kept full, its middle half can be 10 cm wide, so a few centimetres read as 'lower than usual'. On 2026-11-02 the USGS reading matched the level in AAA's 05:00 chart to within 0.08 m for 18 of the 19 reservoirs AAA reports. The 2D map (facilities.js) and the 3D view (facilities3d.js) draw it with core/facilities.js.",
+  "method": "reservoirs.py reads the USGS Water Data API (no key): the lakes and reservoirs of Puerto Rico, the latest water-surface elevation (parameter 72376, meters above local mean sea level) and the daily values since 2011 (parameter 72375, feet, converted to meters). For each week of the year it takes the mean of that week in each year 2011-2025 and the 10th, 25th, 50th, 75th and 90th percentile of those yearly means (at least 8 years). The pop-up says where the latest reading falls: below the 10th percentile is lower than usual for the time of year, above the 90th higher, and between them usual (the level of about 8 years in 10). The chart shades the 10th to 90th percentile and, darker, the 25th to 75th. A finer cut was tried and dropped: where a reservoir is usually kept full, its middle half can be 10 cm wide, so a few centimeters read as 'lower than usual'. On 2026-11-02 the USGS reading matched the level in AAA's 05:00 chart to within 0.08 m for 18 of the 19 reservoirs AAA reports. The 2D map (facilities.js) and the 3D view (facilities3d.js) draw it with core/facilities.js.",
   "sources": [
    "usgs_water"
   ],
@@ -1529,7 +1529,7 @@
    "A level is not a volume: sediment has filled part of several reservoirs, so the same level holds less water than it did when the reservoir was built.",
    "'Usual' means the same week in 2011-2025, a period that includes the droughts of 2015 and 2019-2020 and the years after Hurricane María. An operator can lower a reservoir on purpose, for repairs, dredging or before a storm.",
    "The live reading is provisional, as USGS publishes it; USGS may revise it.",
-   "AAA's alert levels (desborde, seguridad, observación, ajustes, control) are not published here: AAA states no licence for them. The pop-up links to AAA's own page.",
+   "AAA's alert levels (desborde, seguridad, observación, ajustes, control) are not published here: AAA states no license for them. The pop-up links to AAA's own page.",
    "When the layer is switched on, the visitor's browser asks USGS's server for the latest readings, as the sea level rise layer asks NOAA's for its tiles."
   ],
   "see_also": [
@@ -1597,7 +1597,7 @@
   ],
   "group": "Water: map layers",
   "plain": "Every river and stream with a live USGS gauge on the map: how much water is passing now, how that compares with a week ago, and whether it is usual for this time of year.",
-  "definition": "river_gauges.geojson: one point per stream gauge of the US Geological Survey that reported a discharge in the last 30 days and has at least 8 years of daily values in 2011-2025 (71 gauges on 54 rivers and streams on 2026-11-11). Discharge is the volume of water that passes the gauge each second, here in cubic metres per second (m³/s). Each point has name (the river or stream), type, municipio, geoid, usgs (the monitoring location), station (the name USGS gives the gauge), flow and flow_time (the latest reading when the file was built), recent_start and recent (120 daily mean flows, null where missing) and p10, p25, p50, p75, p90 (the usual flow for each of the 53 weeks of the year). Since 2026-11-12 each gauge also carries its gauge height (how high the water stands on the gauge's own scale, in metres), and, where USGS has surveyed them, flood reference levels: the top of the riverbank, the lowest beam and the deck of a bridge, a past flood's high-water mark (1 gauge on 2026-11-12: Río de la Plata at Comerío).",
+  "definition": "river_gauges.geojson: one point per stream gauge of the US Geological Survey that reported a discharge in the last 30 days and has at least 8 years of daily values in 2011-2025 (71 gauges on 54 rivers and streams on 2026-11-11). Discharge is the volume of water that passes the gauge each second, here in cubic meters per second (m³/s). Each point has name (the river or stream), type, municipio, geoid, usgs (the monitoring location), station (the name USGS gives the gauge), flow and flow_time (the latest reading when the file was built), recent_start and recent (120 daily mean flows, null where missing) and p10, p25, p50, p75, p90 (the usual flow for each of the 53 weeks of the year). Since 2026-11-12 each gauge also carries its gauge height (how high the water stands on the gauge's own scale, in meters), and, where USGS has surveyed them, flood reference levels: the top of the riverbank, the lowest beam and the deck of a bridge, a past flood's high-water mark (1 gauge on 2026-11-12: Río de la Plata at Comerío).",
   "geography": "Points in 46 municipios",
   "coverage": {
    "timeline": "snapshot",
@@ -1605,7 +1605,7 @@
    "last": 2026,
    "frequency": "The latest reading is live: the page asks USGS for it each time the layer is switched on (at most every 10 minutes). The daily values and the usual flows are rebuilt once a month (python river_gauges.py --refresh)."
   },
-  "method": "river_gauges.py reads the USGS Water Data API (no key): the stream sites of Puerto Rico, the latest discharge (parameter 00060, cubic feet per second) and the daily mean discharge since 2011 (statistic 00003), both converted to cubic metres per second (x 0.0283168). For each week of the year it takes the mean of that week in each year 2011-2025 and the 10th, 25th, 50th, 75th and 90th percentile of those yearly means (at least 8 years), the method of the Reservoir levels layer. The pop-up says where the latest reading falls: below the 10th percentile is lower than usual for the time of year, above the 90th higher, and between them usual (the flow of about 8 years in 10). The latest reading is one moment and the usual range is made of weekly means, so a short burst of rain can read as higher than usual. The chart draws the last 120 days over the shaded 10th to 90th percentile (darker: 25th to 75th) on a logarithmic scale, because a storm's flow can be hundreds of times a dry week's. The river's name is the start of the USGS station name, with its accents restored; the pop-up gives the station name as USGS writes it and links to the gauge's USGS page. The 2D map (facilities.js) and the 3D view (facilities3d.js) draw it with core/facilities.js. The gauge height (parameter 00065, feet, kept in metres) is the latest reading of each gauge. The flood reference levels come from USGS Real-Time Flood Impacts; each is a gauge height, so the pop-up can say how far the water is from it. A gauge height is measured from the gauge's own zero, not from sea level, so two gauges cannot be compared. The flood stages come from the National Weather Service's National Water Prediction Service: each NWS gauge names its USGS site, and its stages are gauge heights in feet on that site's scale, converted to metres. A gauge keeps them only where they are in feet, rise from action to major and, when both agencies' latest readings were taken within an hour, the two agree to half a foot.",
+  "method": "river_gauges.py reads the USGS Water Data API (no key): the stream sites of Puerto Rico, the latest discharge (parameter 00060, cubic feet per second) and the daily mean discharge since 2011 (statistic 00003), both converted to cubic meters per second (x 0.0283168). For each week of the year it takes the mean of that week in each year 2011-2025 and the 10th, 25th, 50th, 75th and 90th percentile of those yearly means (at least 8 years), the method of the Reservoir levels layer. The pop-up says where the latest reading falls: below the 10th percentile is lower than usual for the time of year, above the 90th higher, and between them usual (the flow of about 8 years in 10). The latest reading is one moment and the usual range is made of weekly means, so a short burst of rain can read as higher than usual. The chart draws the last 120 days over the shaded 10th to 90th percentile (darker: 25th to 75th) on a logarithmic scale, because a storm's flow can be hundreds of times a dry week's. The river's name is the start of the USGS station name, with its accents restored; the pop-up gives the station name as USGS writes it and links to the gauge's USGS page. The 2D map (facilities.js) and the 3D view (facilities3d.js) draw it with core/facilities.js. The gauge height (parameter 00065, feet, kept in meters) is the latest reading of each gauge. The flood reference levels come from USGS Real-Time Flood Impacts; each is a gauge height, so the pop-up can say how far the water is from it. A gauge height is measured from the gauge's own zero, not from sea level, so two gauges cannot be compared. The flood stages come from the National Weather Service's National Water Prediction Service: each NWS gauge names its USGS site, and its stages are gauge heights in feet on that site's scale, converted to meters. A gauge keeps them only where they are in feet, rise from action to major and, when both agencies' latest readings were taken within an hour, the two agree to half a foot.",
   "sources": [
    "usgs_water",
    "nws_nwps"
@@ -1691,7 +1691,7 @@
   ],
   "group": "Water: map layers",
   "plain": "Every well with a live USGS gauge on the map: how far below the ground the water stands now, how that changed in a week, and whether it is usual for this time of year.",
-  "definition": "groundwater.geojson: one point per well of the US Geological Survey that reported a depth to water in the last 30 days (34 wells in 24 municipios on 2026-11-12). Depth to water is how far below the ground the water stands in the well, here in metres: a larger number is lower water. Each point has name, type, municipio, geoid, usgs (the monitoring location), station (the name USGS gives the well), depth and depth_time (the latest reading when the file was built), well_depth (how deep the well was built, where USGS records it), recent_start and recent (120 daily depths, null where missing) and p10, p25, p50, p75, p90 (the usual depth for each of the 53 weeks of the year; null where the well has fewer than 8 years of daily values).",
+  "definition": "groundwater.geojson: one point per well of the US Geological Survey that reported a depth to water in the last 30 days (34 wells in 24 municipios on 2026-11-12). Depth to water is how far below the ground the water stands in the well, here in meters: a larger number is lower water. Each point has name, type, municipio, geoid, usgs (the monitoring location), station (the name USGS gives the well), depth and depth_time (the latest reading when the file was built), well_depth (how deep the well was built, where USGS records it), recent_start and recent (120 daily depths, null where missing) and p10, p25, p50, p75, p90 (the usual depth for each of the 53 weeks of the year; null where the well has fewer than 8 years of daily values).",
   "geography": "Points in 24 municipios",
   "coverage": {
    "timeline": "snapshot",
@@ -1699,7 +1699,7 @@
    "last": 2026,
    "frequency": "The latest reading is live: the page asks USGS for it each time the layer is switched on (at most every 10 minutes). The daily values and the usual depths are rebuilt once a month (python groundwater.py --refresh)."
   },
-  "method": "groundwater.py reads the USGS Water Data API (no key): the wells of Puerto Rico, the latest depth to water (parameter 72019, feet below land surface) and the daily values since 2011, converted to metres (x 0.3048). USGS keeps one daily statistic per well, the mean of the day or the reading at noon; the build takes the mean where the well has it. For each week of the year it takes the mean of that week in each year 2011-2025 and the 10th, 25th, 50th, 75th and 90th percentile of those yearly means (at least 8 years), the method of the Reservoir levels layer. The pop-up says where the latest reading falls: deeper than the 90th percentile is water lower than usual for the time of year, shallower than the 10th is water higher than usual, and between them usual (the depth of about 8 years in 10). The chart draws the last 120 days over the shaded 10th to 90th percentile, with the ground towards the top.",
+  "method": "groundwater.py reads the USGS Water Data API (no key): the wells of Puerto Rico, the latest depth to water (parameter 72019, feet below land surface) and the daily values since 2011, converted to meters (x 0.3048). USGS keeps one daily statistic per well, the mean of the day or the reading at noon; the build takes the mean where the well has it. For each week of the year it takes the mean of that week in each year 2011-2025 and the 10th, 25th, 50th, 75th and 90th percentile of those yearly means (at least 8 years), the method of the Reservoir levels layer. The pop-up says where the latest reading falls: deeper than the 90th percentile is water lower than usual for the time of year, shallower than the 10th is water higher than usual, and between them usual (the depth of about 8 years in 10). The chart draws the last 120 days over the shaded 10th to 90th percentile, with the ground toward the top.",
   "sources": [
    "usgs_water"
   ],
@@ -1781,7 +1781,7 @@
   ],
   "group": "Water: map layers",
   "plain": "Every USGS rain gauge that is reporting now on the map: how much rain fell in the last 24 hours and the last 7 days, and whether that week is usual for this time of year.",
-  "definition": "rain_gauges.geojson: one point per site of the US Geological Survey that reported precipitation in the last 30 days (54 gauges in 30 municipios on 2026-11-12; 20 are rain gauges of their own and the others are the rain gauge of a river, reservoir or well station). Rain is given in millimetres (25.4 mm is one inch). Each point has name, type, municipio, geoid, usgs (the monitoring location), station (the name USGS gives the site), recent_start and recent (120 daily totals, null where missing) and p10, p25, p50, p75, p90 (the usual rain of a week for each of the 53 weeks of the year; null where the gauge has fewer than 8 years of daily totals).",
+  "definition": "rain_gauges.geojson: one point per site of the US Geological Survey that reported precipitation in the last 30 days (54 gauges in 30 municipios on 2026-11-12; 20 are rain gauges of their own and the others are the rain gauge of a river, reservoir or well station). Rain is given in millimeters (25.4 mm is one inch). Each point has name, type, municipio, geoid, usgs (the monitoring location), station (the name USGS gives the site), recent_start and recent (120 daily totals, null where missing) and p10, p25, p50, p75, p90 (the usual rain of a week for each of the 53 weeks of the year; null where the gauge has fewer than 8 years of daily totals).",
   "geography": "Points in 30 municipios",
   "coverage": {
    "timeline": "snapshot",
@@ -1789,14 +1789,14 @@
    "last": 2026,
    "frequency": "The last 24 hours and the last 7 days are live: the page asks USGS for them each time the layer is switched on (at most every 10 minutes). The 120 daily totals and the usual weeks are rebuilt once a month (python rain_gauges.py --refresh)."
   },
-  "method": "rain_gauges.py reads the USGS Water Data API (no key): every site inside Puerto Rico's box with a precipitation reading (parameter 00045, inches), its name, and its daily totals since 2011 (statistic 00006, the sum of the day), converted to millimetres (x 25.4). For each week of the year it takes the rain of that week in each year 2011-2025 (the mean of its daily totals times seven; a week needs six of its days) and the 10th, 25th, 50th, 75th and 90th percentile of those yearly weeks (at least 8 years). When the layer is switched on, the page asks USGS for the 15-minute readings of the last 24 hours, which it adds up, and for the daily totals of the last 8 days. The pop-up gives the 24-hour total, the total of the last 7 whole days, and where that falls: below the 10th percentile is drier than usual for the time of year, above the 90th wetter, and between them usual. The chart draws one bar for each of the 120 days before the file was built.",
+  "method": "rain_gauges.py reads the USGS Water Data API (no key): every site inside Puerto Rico's box with a precipitation reading (parameter 00045, inches), its name, and its daily totals since 2011 (statistic 00006, the sum of the day), converted to millimeters (x 25.4). For each week of the year it takes the rain of that week in each year 2011-2025 (the mean of its daily totals times seven; a week needs six of its days) and the 10th, 25th, 50th, 75th and 90th percentile of those yearly weeks (at least 8 years). When the layer is switched on, the page asks USGS for the 15-minute readings of the last 24 hours, which it adds up, and for the daily totals of the last 8 days. The pop-up gives the 24-hour total, the total of the last 7 whole days, and where that falls: below the 10th percentile is drier than usual for the time of year, above the 90th wetter, and between them usual. The chart draws one bar for each of the 120 days before the file was built.",
   "sources": [
    "usgs_water"
   ],
   "source_detail": "USGS Water Data API (api.waterdata.usgs.gov/ogcapi/v1): latest-continuous (00045, by bounding box), monitoring-locations (names), daily (00045, statistic 00006) and, from the page, continuous (00045, the last 24 hours)",
   "how_to_read": "Switch the layer on in the Map layers tab of the 2D map or the 3D view (Environment and climate: Rainfall). Click a gauge for the rain of the last 24 hours, the rain of the last 7 days, how that compares with the same time of year in 2011-2025, a bar for each of the last 120 days and a link to the gauge's page at USGS. Turn on River flow to see how the rivers answered.",
   "caveats": [
-   "A gauge measures the rain at one spot. A shower a kilometre wide can miss it, so the rain over a barrio or a watershed can be very different from the gauge's.",
+   "A gauge measures the rain at one spot. A shower a kilometer wide can miss it, so the rain over a barrio or a watershed can be very different from the gauge's.",
    "This is not a flood warning or a forecast. The National Weather Service issues warnings and forecasts, and maps rain between the gauges with radar.",
    "The readings are provisional, as USGS publishes them. A gauge can clog, be damaged or stop reporting during a storm, which reads as less rain than fell.",
    "The 7-day total is compared with calendar weeks of 2011-2025; in the dry season the usual range of some gauges starts at or near zero, so a week without rain reads as usual. 9 of the 54 gauges have fewer than 8 years of daily totals and show no usual range.",
@@ -1928,7 +1928,7 @@
    "last": 2025,
    "frequency": "FPR's 2025 baseline, kept by hand. Rebuilt with python fpr_baseline.py after the traced routes are exported again."
   },
-  "method": "FPR traced the routes in ArcGIS Pro (Municipalroutes_ExportFeatures). fpr_baseline.py measures, in metres (Puerto Rico State Plane), how much of each stretch lies within 75 m of a route in transit_routes.geojson and publishes those under half.",
+  "method": "FPR traced the routes in ArcGIS Pro (Municipalroutes_ExportFeatures). fpr_baseline.py measures, in meters (Puerto Rico State Plane), how much of each stretch lies within 75 m of a route in transit_routes.geojson and publishes those under half.",
   "sources": [
    "fpr_baseline"
   ],
@@ -1963,7 +1963,7 @@
  {
   "kind": "variable",
   "value_type": "level",
-  "unit": "metres above local mean sea level",
+  "unit": "meters above local mean sea level",
   "added": "2026-11-10",
   "id": "facilities.reservoir_history",
   "name": "Reservoir levels: history",
@@ -1982,7 +1982,7 @@
    "last": 2026,
    "frequency": "Rebuilt once a month with the map layer (python reservoirs.py --refresh); the Reservoirs page adds the latest readings and daily values from USGS when it opens."
   },
-  "method": "reservoirs.py converts USGS daily values (parameter 72375, feet above local mean sea level) to metres. A month's mean needs 15 days with a value. The history of a gauge starts the year after the last year before 2011 whose median lies more than one 2011-2025 range outside it (another reference, or a reservoir still filling: Toa Vaca reported a depth until 2005, Cerrillos was filling in 1991-1992); after that, a single value more than three ranges below the low or one above the high is left out as a gauge error. The page's 'usual' is the map layer's: the 10th and 90th percentile of the same week's yearly means in 2011-2025, at least 8 years.",
+  "method": "reservoirs.py converts USGS daily values (parameter 72375, feet above local mean sea level) to meters. A month's mean needs 15 days with a value. The history of a gauge starts the year after the last year before 2011 whose median lies more than one 2011-2025 range outside it (another reference, or a reservoir still filling: Toa Vaca reported a depth until 2005, Cerrillos was filling in 1991-1992); after that, a single value more than three ranges below the low or one above the high is left out as a gauge error. The page's 'usual' is the map layer's: the 10th and 90th percentile of the same week's yearly means in 2011-2025, at least 8 years.",
   "sources": [
    "usgs_water"
   ],
@@ -1990,7 +1990,7 @@
   "how_to_read": "Open Knowledge › Reservoirs. The ranking orders the reservoirs by the share of the years 2011-2025 with a lower level in the same week; the tanks show where each level sits between its lowest and highest level of 2011-2025, not a volume.",
   "caveats": [
    "A level is not a volume: USGS publishes no volumes, and sediment has filled part of several reservoirs.",
-   "'Usual' compares a reservoir with its own past (2011-2025), not with AAA's alert levels, which are not published here (no licence stated).",
+   "'Usual' compares a reservoir with its own past (2011-2025), not with AAA's alert levels, which are not published here (no license stated).",
    "Recent values are provisional, as USGS publishes them."
   ],
   "see_also": [

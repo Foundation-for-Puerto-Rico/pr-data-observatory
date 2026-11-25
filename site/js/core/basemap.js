@@ -8,7 +8,7 @@
      4. the observatory's own data, drawn by each page on top. This file holds none of it.
    Terrain is a source of its own (AWS Terrain Tiles, Terrarium encoding), used by the 3D view only.
 
-   Each source carries its licence, its link and the credit lines the map must show, in English and Spanish. To change provider or style, edit PROVIDERS and
+   Each source carries its license, its link and the credit lines the map must show, in English and Spanish. To change provider or style, edit PROVIDERS and
    VIEWS below (docs/basemap.md, "Switching providers"): the pages read everything from here. Nothing here is a credential. A future provider that needs a
    key names it in its `key` field; the key itself goes in site/js/basemap.local.js, which git ignores (.gitignore), as
    window.BASEMAP_LOCAL = { <key name>: '<key>' }, and is loaded before the style is asked for. A key in a web page is public, so prefer providers without one.

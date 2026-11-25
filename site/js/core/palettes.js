@@ -1,11 +1,11 @@
-/* PR Data Observatory core: palettes. Every colour a data layer uses is defined here, once, so a map, a legend and a chart agree. docs/palettes.md says where each comes from
-   and how it was tested for colour-vision deficiency.
+/* PR Data Observatory core: palettes. Every color a data layer uses is defined here, once, so a map, a legend and a chart agree. docs/palettes.md says where each comes from
+   and how it was tested for color-vision deficiency.
 
    Core.palettes.RAMPS      sequential, five classes, light to dark: blue, green, gold, red, gray
-   Core.palettes.DIVERGING  five classes around a centre: below (red) to above (blue)
+   Core.palettes.DIVERGING  five classes around a center: below (red) to above (blue)
    Core.palettes.BIVARIATE  3 x 3 grid, [class of B][class of A], for two layers shaded together
-   Core.palettes.SYMBOLS    colours for sized symbols; Core.palettes.LINES colours for chart lines (the first is Puerto Rico)
-   Core.palettes.NOVAL      colour of a place with no value
+   Core.palettes.SYMBOLS    colors for sized symbols; Core.palettes.LINES colors for chart lines (the first is Puerto Rico)
+   Core.palettes.NOVAL      color of a place with no value
 */
 (function (name, root, factory) {
   const dep = (n) => (typeof module === 'object' && module.exports ? require('./' + n + '.js') : root.Core[n]);   // the other core modules, in Node or in a page

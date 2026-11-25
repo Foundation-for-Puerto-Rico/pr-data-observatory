@@ -207,7 +207,7 @@ def main():
     <h1>{t("Public transit route profile: crossings at high-volume intersections", "Perfil de rutas de transporte colectivo: cruces por intersecciones de alto volumen vehicular")}</h1>
     <p class="lede">{t(
         "This exploratory, comparative analysis examines, one by one, the bus routes that run in the San Juan metropolitan area and in the municipios of eastern Puerto Rico. "
-        "Using the official weekday timetables (GTFS), each route is analysed on five dimensions: the level of service, the route, the intersections with heavy traffic on its path at peak hours, "
+        "Using the official weekday timetables (GTFS), each route is analyzed on five dimensions: the level of service, the route, the intersections with heavy traffic on its path at peak hours, "
         "the integration with other services and the population near its stops. The analysis focuses on crossings at high-volume intersections; the other four dimensions help compare the routes.",
         "Este análisis exploratorio y comparativo examina, una por una, las rutas de autobús que operan en el área metropolitana de San Juan y en los municipios del este de Puerto Rico. "
         "A partir de los horarios oficiales de un día de semana (GTFS), cada ruta se analiza en cinco dimensiones: el nivel de servicio, el recorrido, las intersecciones con mucho tránsito en su camino en horas pico, "

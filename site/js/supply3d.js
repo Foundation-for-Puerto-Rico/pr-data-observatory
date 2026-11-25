@@ -6,7 +6,7 @@
    click on these layers. Timetables, not observed service. */
 const Supply = (() => {
   const FILES = { wk: 'data/trips.json', sa: 'data/trips_sa.json', su: 'data/trips_su.json' };
-  const BINS = [[6, '#205D7B', 7], [4, '#338CB3', 5], [2, '#5FAFDA', 3.5], [1, '#8FCAE8', 2]];   // trips (or departures) in the hour → colour, width in px
+  const BINS = [[6, '#205D7B', 7], [4, '#338CB3', 5], [2, '#5FAFDA', 3.5], [1, '#8FCAE8', 2]];   // trips (or departures) in the hour → color, width in px
   const bin = (n) => BINS.find(b => n >= b[0]);
   const rgb = (h) => [parseInt(h.slice(1, 3), 16), parseInt(h.slice(3, 5), 16), parseInt(h.slice(5, 7), 16)];
   const hhmm = (s) => `${pad2(Math.floor(s / 3600))}:${pad2(Math.floor(s % 3600 / 60))}`;
@@ -187,5 +187,5 @@ const Supply = (() => {
 })();
 window.Supply = Supply;
 // Without WebGL twin3d.js stops before it creates the map and its helpers (webglOk), so there is nothing to wire: init would throw on transportData. The check is a try, as in
-// series3d.js: a binding that does not exist, or exists uninitialised, throws a ReferenceError.
+// series3d.js: a binding that does not exist, or exists uninitialized, throws a ReferenceError.
 if ((() => { try { return !!map && typeof map.on === 'function'; } catch { return false; } })()) Supply.init();

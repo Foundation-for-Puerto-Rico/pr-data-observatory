@@ -5,7 +5,7 @@
 
 The page follows the site's language rule (docs/i18n.md) and the pattern of the Broadband gaps page: every string is written once, as an (English, Spanish)
 pair, and every figure in the static text is read from the data file. HANDOFF decision 104, step 3. Facts only: the page reports what LUMA, EIA and the law
-say, with no judgement of the utility, the operators or the policy. Prepared with Claude (AI) for FPR, 2026-11-14.
+say, with no judgment of the utility, the operators or the policy. Prepared with Claude (AI) for FPR, 2026-11-14.
 """
 import html
 import json

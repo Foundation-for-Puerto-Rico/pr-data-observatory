@@ -2,10 +2,10 @@
 //  1. 2D: a municipality selected, flood zones and routes on, the municipios shaded, two Economy layers (one Shaded, one Symbol) and a year. The address says so,
 //     and the 3D link is 3d.html + that address.
 //  2. 3D, opened from that link: the camera where the 2D map was (the zoom one less), the same layers (the vehicles and the terrain, 3D only, as by default), the
-//     columns from the Economy layers (height from the Symbol one, colour from the Shaded one, the year), the municipality's card open; the address kept the
+//     columns from the Economy layers (height from the Symbol one, color from the Shaded one, the year), the municipality's card open; the address kept the
 //     2D map's s= and e= as they were and added the camera's b= and p=. Then: flood zones off, storm tracks on, vehicles off, the camera turned and tilted, the
 //     columns' height on another dataset. The address follows with replaceState (no new history entry), and the 2D link is index.html + that address.
-//  3. 2D, opened from that link: flood zones off, routes on, the shading off (the 3D columns, changed there, show the Economy datasets only), the colour layer kept, the new height as a Symbol layer, the municipality, the camera
+//  3. 2D, opened from that link: flood zones off, routes on, the shading off (the 3D columns, changed there, show the Economy datasets only), the color layer kept, the new height as a Symbol layer, the municipality, the camera
 //     where the 3D view was; the 3D-only layers and the camera's b= and p= kept in the address.
 //  4. Old and bogus links: the 3D view on an address from before (c, bm) keeps its defaults; on one with bogus values and a dataset it does not have, it opens with
 //     no columns and a clean console, and keeps the unknown parts in the address.
@@ -56,7 +56,7 @@ async function run(lang) {
     check(tag('3D'), 'the camera where the 2D map was, the zoom one less', near(cam.lat, P2.c.lat, 0.002) && near(cam.lng, P2.c.lng, 0.002) && near(cam.z, P2.c.z - 1, 0.05), [cam, P2.c]);
     const ly = await p.eval(`Object.fromEntries(['lyFlood', 'lyRoutes', 'lyStops', 'lyTrips', 'lyTerrain', 'lyBuildings', 'lyMuni', 'lyCols'].map(id => [id, document.getElementById(id).checked]))`);
     check(tag('3D'), 'the same layers; the 3D-only vehicles and terrain as by default', ly.lyFlood && ly.lyRoutes && !ly.lyStops && ly.lyTrips && ly.lyTerrain && ly.lyBuildings && ly.lyMuni === (P2.l || []).includes('muni'), ly);   // Límites as the 2D map had it (off when it opens since 2026-11-13)
-    check(tag('3D'), 'the columns: height from the Symbol layer, colour from the Shaded one', await p.waitFor(`document.getElementById('lyCols').checked && metricKey === '__any' && ENG.filled && ENG.h === '${k2}' && ENG.c === '${k1}' && document.getElementById('engH').value === '${k2}' && ENG.y === 2020 && document.getElementById('engY').value === '2020'`, 60000),
+    check(tag('3D'), 'the columns: height from the Symbol layer, color from the Shaded one', await p.waitFor(`document.getElementById('lyCols').checked && metricKey === '__any' && ENG.filled && ENG.h === '${k2}' && ENG.c === '${k1}' && document.getElementById('engH').value === '${k2}' && ENG.y === 2020 && document.getElementById('engY').value === '2020'`, 60000),
       await p.eval(`({ cols: document.getElementById('lyCols').checked, metricKey, h: ENG.h, c: ENG.c })`));
     check(tag('3D'), 'the municipality\'s card is open', await p.waitFor(`VS.muni === 'Ponce' && !!document.querySelector('.maplibregl-popup .pop h4') && /Ponce/.test(document.querySelector('.maplibregl-popup .pop h4').textContent)`, 10000));
     await sleep(600);
@@ -91,7 +91,7 @@ async function run(lang) {
   p = await openPage(`${base}/${link2}`, { width, height: 900, noCache: true });
   try {
     check(tag('2D back'), 'ready', await p.waitFor(READY, 90000));
-    check(tag('2D back'), 'the Economy layers: the colour kept, the new height as a Symbol layer', await p.waitFor(`typeof ECON === 'object' && ECON.api.state().layers.map(l => l.key + ':' + l.mode).join() === '${k1}:fill,${k3}:symbol'`, 60000),
+    check(tag('2D back'), 'the Economy layers: the color kept, the new height as a Symbol layer', await p.waitFor(`typeof ECON === 'object' && ECON.api.state().layers.map(l => l.key + ':' + l.mode).join() === '${k1}:fill,${k3}:symbol'`, 60000),
       await p.eval(`typeof ECON === 'object' ? ECON.api.state().layers : null`));
     check(tag('2D back'), 'the year kept', await p.eval('ECON.api.state().year') === 2020, await p.eval('ECON.api.state().year'));
     const s = await p.eval(`({ flood: document.getElementById('lyFlood').checked, routes: document.getElementById('lyRoutes').checked, choro: document.getElementById('choro').value, sel: S.selected,

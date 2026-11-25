@@ -9,7 +9,7 @@
    outside PRASA (EPA ECHO) and historic places that are private homes (community_assets.py leaves them out of the points file). docs/wcrp.md. */
 const Social = (() => {
   const TK = (t) => t;   // translated where it is shown, with T()
-  const PTS = {   // the 2D map's facility layers (facilities.js): same files, colours and pop-up
+  const PTS = {   // the 2D map's facility layers (facilities.js): same files, colors and pop-up
     libraries: { file: 'libraries.geojson', color: '#0F7B6C', label: TK('Public libraries'), source: TK('USAC, E-Rate Supplemental Entity Information (updated {date})') },
     fire: { file: 'fire_stations.geojson', color: '#C62828', label: TK('Fire and EMS stations'), source: TK('USGS, National Structures Dataset (loaded up to {date})') },
     police: { file: 'police_stations.geojson', color: '#1F3A93', label: TK('Police stations'), source: TK('© OpenStreetMap contributors, ODbL (data of {date})') },

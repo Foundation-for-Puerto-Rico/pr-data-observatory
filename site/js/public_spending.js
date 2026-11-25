@@ -29,7 +29,7 @@
     capex: 'Capital works and equipment', debt_service: 'Debt service', other: 'Other expenses' };
   const FUND = { general: 'General Fund', federal: 'Federal funds', special: 'Special funds' };
   const STAGE = { actual: 'spent', approved: 'approved', proposed: 'proposed' };
-  // Funds in this order: adjacent colours pass the palette checks (light surface; colour-blind separation), and every segment is also labelled
+  // Funds in this order: adjacent colors pass the palette checks (light surface; color-blind separation), and every segment is also labeled
   const FUND_ORDER = ['general', 'federal', 'special'];
   const FUND_COLOR = { general: '#338CB3', federal: '#D17F00', special: '#7A5BA6' };
   const TILE = '#338CB3', TILE_DRILL = '#205D7B';
@@ -270,7 +270,7 @@
     $('#psFlowKey').innerHTML = FUND_ORDER.map((f) => `<span><i style="background:${FUND_COLOR[f]}" aria-hidden="true"></i>${esc(T(FUND[f]))}</span>`).join('');
   }
 
-  // ── Funds of every column (stacked bars, labelled), and concepts of the chosen column ──
+  // ── Funds of every column (stacked bars, labeled), and concepts of the chosen column ──
   function drawFunds() {
     const box = $('#psFunds'), W = Math.max(320, box.clientWidth || 800), narrow = true, LW = 0, rowH = 50;   // each column's name sits above its bar, at every width
     const cols = D.columns.map((c, i) => ({ c, i })).sort((a, b) => a.c.year - b.c.year || ['actual', 'approved', 'proposed'].indexOf(a.c.stage) - ['actual', 'approved', 'proposed'].indexOf(b.c.stage));
@@ -416,7 +416,7 @@
     $('#psFedTable').innerHTML = `<table class="ps-table"><caption>${esc(T('The 15 largest programs, federal fiscal year {year}', { year: S.fy }))}</caption><thead><tr><th scope="col">${esc(T('Program'))}</th><th scope="col">${esc(T('Award type'))}</th><th scope="col">${esc(T('Function'))}</th><th scope="col">${esc(T('Dollars'))}</th></tr></thead><tbody>${
       top.map((r) => `<tr><th scope="row">${esc(r[0].startsWith('contracts:') ? r[1] : `${r[0]} ${r[1]}`)}</th><td>${esc(T(GROUP[F.groups[r[2]]]))}</td><td>${esc(T(FUNCTION[F.functions[r[3]]]))}</td><td>${esc(usd(r[5][yi]))}</td></tr>`).join('')}</tbody></table>`;
   }
-  function drawFedYears() {   // one column per year; the chosen year is darker and every column is labelled
+  function drawFedYears() {   // one column per year; the chosen year is darker and every column is labeled
     const box = $('#psFedYears'), W = Math.max(320, box.clientWidth || 800), H = 170, top = 22, base = H - 22, n = F.years.length;
     const tot = F.years.map((y, i) => fedTotal(i)), max = Math.max(...tot), cw = (W - 8) / n, bw = Math.min(56, cw * 0.7);
     box.innerHTML = '';

@@ -61,10 +61,10 @@ LAYERS = {"fire_stations.geojson": "Fire and EMS stations", "police_stations.geo
 GROUP = "Hazards · Facilities and roads in hazard areas"
 SLR_FT = 3                                    # feet of sea level rise: the height the exposure series headline (exp_slr_3ft_pop)
 LS_HIGH = 3                                   # landslide classes: High (3), Very High (4) and Extremely High (5) count
-LS_STEP_M = 20                                # metres between the points read along a road on the landslide map
+LS_STEP_M = 20                                # meters between the points read along a road on the landslide map
 LS_NOT_MAPPED = {"72049", "72147"}            # Culebra and Vieques: the USGS landslide map covers the main island only
 LAT0 = 18.2
-KX, KY = 111320 * math.cos(math.radians(LAT0)), 110574   # metres per degree at Puerto Rico's latitude
+KX, KY = 111320 * math.cos(math.radians(LAT0)), 110574   # meters per degree at Puerto Rico's latitude
 REF = "FEMA National Flood Hazard Layer (the observatory's flood layer) laid on the observatory's facility layers, the NCES school directory and the FHWA main roads"
 REF_SLR = "NOAA Office for Coastal Management sea level rise extents (3 ft, connected to the ocean) laid on the observatory's facility layers, the NCES school directory and the FHWA main roads"
 REF_LS = "USGS landslide susceptibility map of Puerto Rico (Hughes and Schulz, 2020) laid on the observatory's facility layers, the NCES school directory and the FHWA main roads"
@@ -131,7 +131,7 @@ STACKED = {}   # {kind: points left out because two or more points of the layer 
 
 def facility_points():
     """[{kind, layer, geoid, x, y}] of the point layers the map draws. Points that share their coordinates with another point of the same layer are left out
-    (STACKED): several facilities listed at one address (for example a municipio's technology centres at its main library, as E-Rate lists them) are not where
+    (STACKED): several facilities listed at one address (for example a municipio's technology centers at its main library, as E-Rate lists them) are not where
     the buildings stand, and counting each would multiply one spot's hazard by the size of the stack."""
     from collections import Counter
     out = []
@@ -187,7 +187,7 @@ def to_m(geom):
 
 
 def road_pieces(roads_fc, muni_fc):
-    """[(geoid, line in metres)]: each road line cut by the municipio outlines."""
+    """[(geoid, line in meters)]: each road line cut by the municipio outlines."""
     munis = [(f["properties"]["GEOID"], to_m(shape(f["geometry"]))) for f in muni_fc["features"]]
     mtree = STRtree([g for _, g in munis])
     out = []
@@ -201,7 +201,7 @@ def road_pieces(roads_fc, muni_fc):
 
 
 def road_samples(pieces):
-    """(geoids, km of each step, lon, lat): each piece read every LS_STEP_M metres, at the middle of each step."""
+    """(geoids, km of each step, lon, lat): each piece read every LS_STEP_M meters, at the middle of each step."""
     geo, step, xs, ys = [], [], [], []
     for g, piece in pieces:
         for line in shapely.get_parts(piece):
@@ -231,7 +231,7 @@ def road_sampled_km(samples, flag):
 
 
 def road_ls_km(pieces, classify):
-    """{geoid: km of main road on High or higher landslide susceptibility}, read every LS_STEP_M metres. `classify(lon, lat)` gives the class of each point (0 where the map has none)."""
+    """{geoid: km of main road on High or higher landslide susceptibility}, read every LS_STEP_M meters. `classify(lon, lat)` gives the class of each point (0 where the map has none)."""
     return road_sampled_km(road_samples(pieces), lambda x, y: classify(x, y) >= LS_HIGH)
 
 
@@ -410,18 +410,18 @@ def document(refresh=False, offline=False):
         var("fx_schools_flood_n", "Public schools in the 1% flood area (overlaid)", "", 0, "count", "How many of the municipio's open public schools stand inside FEMA's 1% annual chance flood area." + place, classes="jenks"),
         var("fx_students_flood_n", "Students of public schools in the 1% flood area (overlaid)", "", 0, "count", "The students enrolled in the public schools that stand inside FEMA's 1% annual chance flood area." + place, classes="jenks"),
         var("fx_students_flood_pct", "Students of public schools in the 1% flood area, % of students (overlaid)", "%", 1, "rate", "The share of the municipio's public school students who are enrolled in a school that stands inside FEMA's 1% annual chance flood area." + place),
-        var("fx_road_flood_km", "Main roads in the 1% flood area, km (overlaid)", "km", 1, "count", "The kilometres of the municipio's main roads (arterials and major collectors with a traffic count) that run inside FEMA's 1% annual chance flood area. It says where the road runs, not that it floods: a road may be raised.", classes="jenks", noShare=True),
-        var("fx_road_flood_pct", "Main roads in the 1% flood area, % of main road km (overlaid)", "%", 1, "rate", "The share of the kilometres of the municipio's main roads that run inside FEMA's 1% annual chance flood area. A road may be raised above it."),
+        var("fx_road_flood_km", "Main roads in the 1% flood area, km (overlaid)", "km", 1, "count", "The kilometers of the municipio's main roads (arterials and major collectors with a traffic count) that run inside FEMA's 1% annual chance flood area. It says where the road runs, not that it floods: a road may be raised.", classes="jenks", noShare=True),
+        var("fx_road_flood_pct", "Main roads in the 1% flood area, % of main road km (overlaid)", "%", 1, "rate", "The share of the kilometers of the municipio's main roads that run inside FEMA's 1% annual chance flood area. A road may be raised above it."),
         slr("fx_slr_n", "Public facilities in the 3 ft sea level rise area (overlaid)", "", 0, "count", f"How many of the municipio's {kinds} stand inside {slr_area}." + slr_place, classes="jenks"),
         slr("fx_slr_pct", "Public facilities in the 3 ft sea level rise area, % of facilities (overlaid)", "%", 1, "rate", f"The share of the municipio's {kinds} that stand inside {slr_area}." + slr_place),
         slr("fx_students_slr_pct", "Students of public schools in the 3 ft sea level rise area, % of students (overlaid)", "%", 1, "rate", f"The share of the municipio's public school students who are enrolled in a school that stands inside {slr_area}." + slr_place),
-        slr("fx_road_slr_km", "Main roads in the 3 ft sea level rise area, km (overlaid)", "km", 1, "count", f"The kilometres of the municipio's main roads (arterials and major collectors with a traffic count) that run inside {slr_area}, read every 20 m. It says where the road runs today, not that it will be under water: a road may be raised.", classes="jenks", noShare=True),
-        slr("fx_road_slr_pct", "Main roads in the 3 ft sea level rise area, % of main road km (overlaid)", "%", 1, "rate", f"The share of the kilometres of the municipio's main roads that run inside {slr_area}, read every 20 m. A road may be raised above it."),
+        slr("fx_road_slr_km", "Main roads in the 3 ft sea level rise area, km (overlaid)", "km", 1, "count", f"The kilometers of the municipio's main roads (arterials and major collectors with a traffic count) that run inside {slr_area}, read every 20 m. It says where the road runs today, not that it will be under water: a road may be raised.", classes="jenks", noShare=True),
+        slr("fx_road_slr_pct", "Main roads in the 3 ft sea level rise area, % of main road km (overlaid)", "%", 1, "rate", f"The share of the kilometers of the municipio's main roads that run inside {slr_area}, read every 20 m. A road may be raised above it."),
         ls("fx_ls_n", "Public facilities on high landslide susceptibility land (overlaid)", "", 0, "count", f"How many of the municipio's {kinds} stand on {ls_area}." + ls_place, classes="jenks"),
         ls("fx_ls_pct", "Public facilities on high landslide susceptibility land, % of facilities (overlaid)", "%", 1, "rate", f"The share of the municipio's {kinds} that stand on {ls_area}." + ls_place),
         ls("fx_students_ls_pct", "Students of public schools on high landslide susceptibility land, % of students (overlaid)", "%", 1, "rate", f"The share of the municipio's public school students who are enrolled in a school that stands on {ls_area}." + ls_place),
-        ls("fx_road_ls_km", "Main roads on high landslide susceptibility land, km (overlaid)", "km", 1, "count", f"The kilometres of the municipio's main roads (arterials and major collectors with a traffic count) that run on {ls_area}, read every 20 m." + ls_place, classes="jenks", noShare=True),
-        ls("fx_road_ls_pct", "Main roads on high landslide susceptibility land, % of main road km (overlaid)", "%", 1, "rate", f"The share of the kilometres of the municipio's main roads that run on {ls_area}, read every 20 m." + ls_place),
+        ls("fx_road_ls_km", "Main roads on high landslide susceptibility land, km (overlaid)", "km", 1, "count", f"The kilometers of the municipio's main roads (arterials and major collectors with a traffic count) that run on {ls_area}, read every 20 m." + ls_place, classes="jenks", noShare=True),
+        ls("fx_road_ls_pct", "Main roads on high landslide susceptibility land, % of main road km (overlaid)", "%", 1, "rate", f"The share of the kilometers of the municipio's main roads that run on {ls_area}, read every 20 m." + ls_place),
     ]
     total_km = sum(r[0] for r in roads.values())
     return side, {"built": datetime.date.today().isoformat(), "as_of": datetime.date.today().isoformat(), "years": [int(y)], "geo": {"ids": ids + ["72"], "names": names + ["Puerto Rico"]}, "vars": vs,

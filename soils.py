@@ -20,7 +20,7 @@ and, as technical detail, its main soil (the component with the largest share of
   order    the soil order of US Soil Taxonomy, its most general class (Ultisols, Oxisols, Inceptisols ...)   component.taxorder
   origin   the kind of material the soil formed in (alluvium, residuum, colluvium, marine deposits ...)       copm.pmkind, pmorigin
 
-A map unit is a survey generalisation: it names the typical soil of the polygon, and other soils (`share` says how much of the unit is the
+A map unit is a survey generalization: it names the typical soil of the polygon, and other soils (`share` says how much of the unit is the
 main one) sit inside it. Miscellaneous areas (rock outcrop, urban land, water) have no order. A complex led by one of them (most of the San
 Juan metro area is mapped as Urban land-<soil> complexes) is described by its largest classified soil when that soil is at least MIN_SHARE
 of the unit, and `cover` names the miscellaneous area on top (Urban land) with its share. A unit that is Urban land alone has no soil

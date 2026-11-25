@@ -38,8 +38,8 @@ DUMP_CSV = ROOT / "fpr_vertederos_clandestinos.csv"
 DUMP_COLS = ["punto", "activo_cercano", "municipio", "tamano", "residuos", "quema", "lat", "lng", "nota"]
 ROUTES_SRC = ROOT / "fpr_rutas_municipales.geojson"
 ROUTE_PROPS = ["tramo", "nombre", "operador", "fuente", "nota"]
-NEAR_ROUTE, COVERED = 75, 0.5   # metres from an observatory route, and the share of a segment within it that counts as covered
-TO_M = Transformer.from_crs(4326, 32161, always_xy=True)   # Puerto Rico State Plane, metres
+NEAR_ROUTE, COVERED = 75, 0.5   # meters from an observatory route, and the share of a segment within it that counts as covered
+TO_M = Transformer.from_crs(4326, 32161, always_xy=True)   # Puerto Rico State Plane, meters
 SIZES = {"pequeño": "Small (about 13 gallons, a kitchen bag)", "mediano": "Medium (about 30 gallons, a yard bag)", "grande": "Large (more than 50 gallons)"}
 WASTE = {"reciclables": "recyclables", "orgánicos": "organic", "generales": "general waste", "escombros": "construction debris", "enseres": "appliances", "peligrosos": "hazardous materials"}
 

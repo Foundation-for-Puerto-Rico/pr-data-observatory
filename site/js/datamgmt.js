@@ -66,8 +66,8 @@ const DM = (() => {
   /** Days from the first date, for a time axis of calendar dates (YYYY-MM-DD). */
   const dayNo = (d) => Date.UTC(+d.slice(0, 4), +d.slice(5, 7) - 1, +d.slice(8, 10)) / 864e5;
 
-  /** The review filter: a flag (federal-grant, counts-only) or a status; "unstated" keeps every file whose licence class is unstated, also those with a
-      review (their status is open or cleared and they carry the licence-unstated flag). */
+  /** The review filter: a flag (federal-grant, counts-only) or a status; "unstated" keeps every file whose license class is unstated, also those with a
+      review (their status is open or cleared and they carry the license-unstated flag). */
   function reviewMatch(r, want) {
     r = r || {};
     const flags = r.flags || [];
@@ -128,7 +128,7 @@ else (() => {
   const title = (f) => LANG === 'es' && f.title_es ? f.title_es : f.title;
 
   // ── The Compliance review column, in words ───────────────────────────────
-  // a file takes the most restrictive licence class of its sources: "License not stated" and "Licensed, not open" name the sources that set it
+  // a file takes the most restrictive license class of its sources: "License not stated" and "Licensed, not open" name the sources that set it
   const fromText = (r) => I18N.list((r.licence_from || []).map(x => x[LANG] || x.en));
   const withFrom = (label, r) => (r.licence_from || []).length ? T('{label}: {sources}', { label, sources: fromText(r) }) : label;
   function reviewParts(f) {
@@ -295,7 +295,7 @@ else (() => {
     hrsa_sites: [TK('Health center service sites'), TK('Counted by municipio and used to measure distances. The points of the sites are kept in the build’s local cache and never published.')],
     shelters: [TK('Shelters'), TK('None is published. Hurricane-shelter lists state no license, so they are not harvested (the wish list marks them blocked); domestic-violence and children’s shelters are never published.')],
     nrhp_private_homes: [TK('National Register listings that are private homes'), TK('Counted in their municipio; they have no point and their names are published nowhere.')],
-    public_housing_approximate: [TK('Public housing developments at an approximate location'), TK('The source places them at the centre of a block group or a census tract, not at the building: counted by municipio, not drawn.')],
+    public_housing_approximate: [TK('Public housing developments at an approximate location'), TK('The source places them at the center of a block group or a census tract, not at the building: counted by municipio, not drawn.')],
     lihtc_not_drawn: [TK('Tax credit housing projects not drawn'), TK('Counted by municipio, not drawn: most have only a city in the source, and those that serve people who are homeless or living with HIV, and care homes for older adults, are never drawn or named.')],
     treatment_facilities: [TK('Substance use and mental health treatment facilities'), TK('Counted by municipio and type of care; no names and no points.')],
     nonprofits: [TK('Tax-exempt organizations'), TK('Counted by municipio and type of activity; no names and no addresses.')],

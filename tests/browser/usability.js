@@ -9,7 +9,7 @@
 //  - a clean console and no Spanish missing.
 // And the three decisions of 2026-10-29 (the project lead, from the list "Para decidir" of PR #100; HANDOFF decision 65), at every width given (the fixes above at 360 px and up):
 //  - the top bar up to 860 px: every button and link answers in a 44 x 44 px square around it (elementFromPoint at 25 points of the square, so the squares of
-//    two neighbours never overlap); nothing leaves the screen or the bar; no sideways scroll; on a phone, two rows in 92 px with Ask beside the language switch.
+//    two neighbors never overlap); nothing leaves the screen or the bar; no sideways scroll; on a phone, two rows in 92 px with Ask beside the language switch.
 //    Every page with the top bar, at the width given, and at 360 px with 390;
 //  - the map credits on a phone (under 700 px): the 2D map, the 3D view and both WCRP maps show the full credits when they open, fold them behind a round "i"
 //    button after 5 s or at the first touch of the map, and the button (a 44 x 44 px target, named "Créditos del mapa" / "Map credits", aria-expanded) opens
@@ -105,7 +105,7 @@ async function trendKeys(lang, w) {
 // ── The three decisions of 2026-10-29 ── (ONLY=bar,credits,notice,pr100 in the environment runs some parts only; all by default)
 const ONLY = (process.env.ONLY || '').split(',').filter(Boolean), on = (k) => !ONLY.length || ONLY.includes(k);
 const BAR_PAGES = ['index.html', '3d.html', 'housing.html', 'wcrp.html', 'route-analysis.html', 'gii.html', 'dictionary.html', 'data-management.html', 'profile.html'];
-// every clickable thing of the top bar: the 44 px square around its centre (or its own box where that is larger) must answer to it at 25 points; the current page's
+// every clickable thing of the top bar: the 44 px square around its center (or its own box where that is larger) must answer to it at 25 points; the current page's
 // view link takes no clicks on some pages (pointer-events: none) and is left out, like the search box (a text field, not a button)
 const BAR = `(() => { const bar = document.querySelector('.topbar'), B = bar.getBoundingClientRect(), out = { bad: [], n: 0, sw: document.documentElement.scrollWidth, w: innerWidth };
   for (const t of [...bar.querySelectorAll('button, a, input')].filter(e => e.getClientRects().length && getComputedStyle(e).visibility !== 'hidden')) {
