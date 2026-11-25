@@ -241,7 +241,7 @@ async function onMapReady() {
   $('#lyNow').onchange = e => { setNow(e.target.checked); writeHash(); };
   $('#lyGaps').onchange = async e => { try { await setGaps(e.target.checked); } catch { e.target.checked = false; } writeHash(); };
   $('#lyXfer').onchange = e => { setXfer(e.target.checked); writeHash(); };
-  $('#tvOnly').onclick = () => { for (const [id, on] of [['lyPlaces', false], ['lyRoutes', true]]) { const el = $('#' + id); if (el.checked !== on) { el.checked = on; el.dispatchEvent(new Event('change')); } } toast(T('Showing transit only. Turn tourism places back on in Explore › Map layers.'), 5000); };
+  $('#tvOnly').onclick = () => { for (const [id, on] of [['lyPlaces', false], ['lyRoutes', true]]) { const el = $('#' + id); if (el.checked !== on) { el.checked = on; el.dispatchEvent(new Event('change')); } } toast(T('Showing transit only. Turn tourism places back on in Home › Map layers.'), 5000); };
   const planHead = $('#planBox').closest('.fold-body'), planToggle = planHead && planHead.previousElementSibling.querySelector('.fold-toggle');
   if (planToggle) planToggle.addEventListener('click', () => { planLoad().catch(() => { $('#planBox').innerHTML = `<div class="note">${esc(T('The route planner could not be loaded. Check your connection and open the section again.'))}</div>`; }); });   // the planner loads when its section opens
   map.on('click', e => { if (typeof Plan === 'undefined' || !Plan.root) return; if (Plan.picking >= 0) Plan.mapPick(e.latlng.lat, e.latlng.lng); else if (Plan.clickMode) Plan.appendPoint(e.latlng.lat, e.latlng.lng); });

@@ -34,7 +34,7 @@ async function slopePaint() {
     + `<div class="surf-bar" style="background:linear-gradient(90deg,${stops.join(',')})"></div>`
     + `<div class="surf-ticks"><span>${pct(sc.low)}</span><span>${pct(sc.centre)}</span><span>${esc(T('{v} or more', { v: pct(sc.high) }))}</span></div>`
     + o.threshold(sc.low, sc.high, 5, (v) => v == null ? T('All the land') : T('Only the land at {v} or steeper', { v: pct(v) }))
-    + `<div class="note">${esc(SLOPE_MARKS.map(([v, what]) => T('{v}: {what}', { v: pct(v), what: T(what) })).join(' · '))}. ${esc(T('USGS 3DEP 10 m elevation, the mean slope of each block of about {m} m; Mona and Desecheo are not drawn. The share of steep land by barrio is in Explore (Environment and climate).', { m: fmt(o.meta.pixel_m, 0) }))}</div></div>`;
+    + `<div class="note">${esc(SLOPE_MARKS.map(([v, what]) => T('{v}: {what}', { v: pct(v), what: T(what) })).join(' · '))}. ${esc(T('USGS 3DEP 10 m elevation, the mean slope of each block of about {m} m; Mona and Desecheo are not drawn. The share of steep land by barrio is in Home (Environment and climate).', { m: fmt(o.meta.pixel_m, 0) }))}</div></div>`;
 }
 window.slopePaint = slopePaint;
 /** The slope under a point, for the map's pop-up: from the image's step (within half a step, about 0.5%). */

@@ -1,4 +1,4 @@
-/* PR Data Observatory: the Explore area (explore.html; docs/workspace.md). A way in: ready-made views, the topics, the maps saved in this browser,
+/* PR Data Observatory: Map Gallery (explore.html; docs/workspace.md). A way in: ready-made views, the topics, the maps saved in this browser,
    and every topic page and tool. Nothing here is a list kept by hand: the views come from data/catalog_views.json, the topics from data/catalog.json
    (both written by catalog.py) and the Knowledge pages from js/knowledge_items.js (written by knowledge.py), so a new one appears on its own. */
 (function () {

@@ -121,7 +121,7 @@ def build():
 <link rel="stylesheet" href="css/broadband.css?v={ver("css/broadband.css")}">
 <link rel="stylesheet" href="css/energy.css?v=2">
 <link rel="stylesheet" href="css/chat.css?v={ver("css/chat.css")}">
-<link rel="stylesheet" href="css/ws.css?v=1">
+<link rel="stylesheet" href="css/ws.css?v=2">
 <script src="js/i18n.js?v={ver("js/i18n.js")}" data-page="energy"></script>
 </head>
 <body class="research">
@@ -131,14 +131,14 @@ def build():
   <div class="brand"><b>{t("Knowledge Area · Energy in Puerto Rico", "Área de conocimiento · Energía en Puerto Rico")}</b><span>{t("Plants, rooftop solar, batteries, reliability and price", "Plantas, solar en techos, baterías, confiabilidad y precio")}</span></div>
   <div class="spacer"></div>
   <nav class="views" aria-label="{t("Views", "Vistas")}">
-    <a class="btn" href="explore.html" title="{t("Explore: start from a question, a topic or a saved map", "Explorar: comience con una pregunta, un tema o un mapa guardado")}"><span class="ms-icon" aria-hidden="true">explore</span><span class="lbl">{t("Explore", "Explorar")}</span></a>
+    <a class="btn" href="index.html#l=powerlines,plants" title="{t("Map: every layer and tool, in 2D or 3D", "Mapa: todas las capas y herramientas, en 2D o 3D")}"><span class="ms-icon" aria-hidden="true">map</span><span class="lbl">{t("Map", "Mapa")}</span></a>
+    <a class="btn" href="explore.html" title="{t("Map Gallery: ready-made maps, topics and your saved maps", "Galería de mapas: mapas preparados, temas y sus mapas guardados")}"><span class="ms-icon" aria-hidden="true">explore</span><span class="lbl">{t("Map Gallery", "Galería de mapas")}</span></a>
     <a class="btn" href="data.html" title="{t("Data: every dataset, map layer and set of places", "Datos: todos los conjuntos de datos, capas del mapa y grupos de lugares")}"><span class="ms-icon" aria-hidden="true">grid_view</span><span class="lbl">{t("Data", "Datos")}</span></a>
-    <a class="btn" href="index.html#l=powerlines,plants"><span class="ms-icon" aria-hidden="true">map</span><span class="lbl">{t("Map", "Mapa")}</span></a>
     <a class="btn" href="workflows.html" title="{t("Workflows: steps that turn data into a result on the map", "Flujos de trabajo: pasos que convierten datos en un resultado en el mapa")}"><span class="ms-icon" aria-hidden="true">account_tree</span><span class="lbl">{t("Workflows", "Flujos")}</span></a>
-    <a class="btn" href="3d.html" title="{t("Immersive 3D + time view", "Vista inmersiva en 3D y tiempo")}"><span class="ms-icon" aria-hidden="true">view_in_ar</span><span class="lbl">{t("3D + Time", "3D + Tiempo")}</span></a>
     <a class="btn" href="knowledge.html" aria-current="page" title="{t("Knowledge: FPR studies, analyses and tools", "Conocimiento: estudios, análisis y herramientas de FPR")}"><span class="ms-icon" aria-hidden="true">lightbulb</span><span class="lbl">{t("Knowledge", "Conocimiento")}</span></a>
-    <a class="btn" href="dictionary.html" title="{t("Data dictionary: meanings, sources, licenses, how to cite", "Diccionario de datos: significados, fuentes, licencias y cómo citar")}"><span class="ms-icon" aria-hidden="true">menu_book</span><span class="lbl">{t("Dictionary", "Diccionario")}</span></a>
+    <a class="btn" href="dictionary.html" title="{t("Data dictionary: meanings, sources, licenses, how to cite", "Diccionario de datos: significados, fuentes, licencias y cómo citar")}"><span class="ms-icon" aria-hidden="true">menu_book</span><span class="lbl">{t("Data dictionary", "Diccionario de datos")}</span></a>
     <a class="btn" href="learn.html" title="{t("Learn: short lessons about maps and spatial analysis", "Aprende: lecciones cortas sobre mapas y análisis espacial")}"><span class="ms-icon" aria-hidden="true">school</span><span class="lbl">{t("Learn", "Aprende")}</span></a>
+    <a class="btn" href="about.html" title="{t("About: this initiative, how to use the Observatory, terms", "Acerca de: esta iniciativa, cómo usar el Observatorio y los términos")}"><span class="ms-icon" aria-hidden="true">info</span><span class="lbl">{t("About", "Acerca de")}</span></a>
   </nav>
 </header>
 

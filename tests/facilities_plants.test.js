@@ -46,7 +46,7 @@ test('the legend shows only the technologies in the file, the sizes and the plan
   const html = F.legendHtml('plants', d), have = new Set(d.features.map(f => f.properties.tech));
   for (const c of F.LAYERS.plants.sized.cats) assert.strictEqual(html.includes(`>${F.LAYERS.plants.sized.labels[c]}</span>`), have.has(c), c);
   assert.ok(html.includes('stroke-dasharray'));
-  const note = F.noteText('plants', d, 'Explore tab');
+  const note = F.noteText('plants', d, 'Home tab');
   assert.ok(note.includes(String(d.notes.plants)) && /not in this inventory/.test(note));
   assert.ok(F.tip('plants', d.features[0].properties).includes(' MW'));
 });
@@ -62,7 +62,7 @@ test('a built plant that EIA does not list yet (power_plants.py, energy_src/plan
     assert.ok(html.includes(p.url.replace(/&/g, '&amp;')) && html.includes('OpenStreetMap'), 'the source and the outline');
     assert.ok(!html.includes('eia.gov'), 'no EIA link: EIA does not list it');
   }
-  const note = F.noteText('plants', d, 'Explore tab');
+  const note = F.noteText('plants', d, 'Home tab');
   assert.ok(note.includes('built but not yet in commercial operation') && note.includes(String(d.notes.built_plants)), 'the note counts them apart from EIA\'s totals');
   assert.ok(/OpenStreetMap/.test(F.LAYERS.plants.attribution), 'OpenStreetMap is credited');
 });

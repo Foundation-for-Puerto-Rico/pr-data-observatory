@@ -190,13 +190,6 @@
             "core/glossary.js"
           ]
         },
-        "about": {
-          "scopes": [],
-          "scripts": [],
-          "html": [
-            "tab-about"
-          ]
-        },
         "osminspect": {
           "scopes": [
             "osminspect"
@@ -239,7 +232,8 @@
         "chat",
         "activelayers",
         "osmtoggle",
-        "regionfilter"
+        "regionfilter",
+        "workspace"
       ],
       "scripts": [
         "common.js",
@@ -259,7 +253,8 @@
         "supply3d.js",
         "chatboot.js",
         "chat.js",
-        "ask3d.js"
+        "ask3d.js",
+        "ws_mode3d.js"
       ],
       "modules": {
         "facilities": {
@@ -296,7 +291,10 @@
             "soil3d.js"
           ]
         }
-      }
+      },
+      "pick": [
+        "workspace"
+      ]
     },
     "housing": {
       "file": "housing.html",
@@ -1114,6 +1112,61 @@
       "scripts": [
         "common.js",
         "ws_flows.js",
+        "chatboot.js"
+      ],
+      "pick": [
+        "chat"
+      ],
+      "modules": {
+        "glossary": {
+          "scopes": [
+            "glossary"
+          ],
+          "scripts": [
+            "core/glossary.js"
+          ]
+        }
+      }
+    },
+    "about": {
+      "file": "about.html",
+      "scopes": [
+        "common",
+        "about_page",
+        "workspace",
+        "map",
+        "chat"
+      ],
+      "scripts": [
+        "common.js",
+        "ws_about.js",
+        "chatboot.js"
+      ],
+      "pick": [
+        "workspace",
+        "map",
+        "chat"
+      ],
+      "modules": {
+        "glossary": {
+          "scopes": [
+            "glossary"
+          ],
+          "scripts": [
+            "core/glossary.js"
+          ]
+        }
+      }
+    },
+    "terms": {
+      "file": "terms.html",
+      "scopes": [
+        "common",
+        "about_page",
+        "chat"
+      ],
+      "scripts": [
+        "common.js",
         "chatboot.js"
       ],
       "pick": [

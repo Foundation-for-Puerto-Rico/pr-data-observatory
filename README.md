@@ -117,7 +117,7 @@ Each data section says when its file was built and is marked when the file is ol
 
 ## The workspace
 
-Since November 2026 every page shares one look: a compact top bar, a rail of areas (Explore, Data, Map, Workflows, 3D + Time, Knowledge, Data dictionary, Learn), and a light and a dark theme. The map has a layers panel, widgets, a workbench that resizes and a **timeline slider** for the year of every dataset on it. `docs/workspace.md` explains how it is built, how new data appears in it and how a change reaches production; `docs/workspace-feature-parity.md` lists what was kept and what is only partly done.
+Since November 2026 every page shares one look: a compact top bar, a rail of areas (Map, Map Gallery, Data, Workflows, Knowledge, Data dictionary, Learn, About), and a light and a dark theme. The map has a layers panel, widgets, a workbench that resizes and a **timeline slider** for the year of every dataset on it. `docs/workspace.md` explains how it is built, how new data appears in it and how a change reaches production; `docs/workspace-feature-parity.md` lists what was kept and what is only partly done.
 
 - **`explore.html`**: ready-made views, the topics, the maps saved in the browser and every topic page.
 - **`data.html`**: the whole catalog as cards, with a search and filters.

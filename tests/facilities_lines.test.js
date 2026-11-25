@@ -30,7 +30,7 @@ test('the pop-up, legend and note give voltages and lengths, never a name or cir
   assert.ok(html.includes('38 kV') && /about half mapped/.test(html));
   const leg = F.legendHtml('powerlines', d);
   for (const kv of ['230 kV', '115 kV', '38 kV']) assert.ok(leg.includes(kv));
-  const note = F.noteText('powerlines', d, 'Explore tab');
+  const note = F.noteText('powerlines', d, 'Home tab');
   assert.ok(note.includes(String(d.notes.substations)) && /not drawn/.test(note));
   assert.strictEqual(F.tip('powerlines', p), '38 kV transmission line');
 });

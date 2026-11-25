@@ -22,7 +22,7 @@
   "facilities": {
    "HUD, National LIHTC Database (release of {date})": "HUD, base de datos nacional de LIHTC (publicación de {date})",
    "Tax credit housing: HUD LIHTC Database": "Vivienda con crédito contributivo: base de datos LIHTC de HUD",
-   "Rental housing built or rehabilitated with Low-Income Housing Tax Credits (LIHTC), as the Puerto Rico Housing Finance Authority reports it to HUD: every project placed in service since 1987, including a few no longer monitored for the credit's rules. HUD placed only some projects at a point; the others are counted in their municipio (a dataset in Explore) but not drawn. Projects for people who are homeless or living with HIV, and care homes for older adults, are counted, never drawn or named. The pop-up gives the name, municipio, units, low-income units, year placed in service and source, never the address.": "Vivienda de alquiler construida o rehabilitada con Créditos Contributivos por Vivienda de Bajos Ingresos (LIHTC), según la Autoridad para el Financiamiento de la Vivienda de Puerto Rico la informa a HUD: cada proyecto puesto en servicio desde 1987, incluidos unos pocos que ya no se fiscalizan bajo las reglas del crédito. HUD ubicó en un punto solo algunos proyectos; los demás se cuentan en su municipio (un conjunto de datos en Explorar) pero no se dibujan. Los proyectos para personas sin hogar o que viven con VIH, y los hogares de cuido para personas mayores, se cuentan, pero nunca se dibujan ni se nombran. La ventana emergente muestra el nombre, el municipio, las unidades, las unidades de bajos ingresos, el año en que se puso en servicio y la fuente, nunca la dirección.",
+   "Rental housing built or rehabilitated with Low-Income Housing Tax Credits (LIHTC), as the Puerto Rico Housing Finance Authority reports it to HUD: every project placed in service since 1987, including a few no longer monitored for the credit's rules. HUD placed only some projects at a point; the others are counted in their municipio (a dataset in Home) but not drawn. Projects for people who are homeless or living with HIV, and care homes for older adults, are counted, never drawn or named. The pop-up gives the name, municipio, units, low-income units, year placed in service and source, never the address.": "Vivienda de alquiler construida o rehabilitada con Créditos Contributivos por Vivienda de Bajos Ingresos (LIHTC), según la Autoridad para el Financiamiento de la Vivienda de Puerto Rico la informa a HUD: cada proyecto puesto en servicio desde 1987, incluidos unos pocos que ya no se fiscalizan bajo las reglas del crédito. HUD ubicó en un punto solo algunos proyectos; los demás se cuentan en su municipio (un conjunto de datos en Explorar) pero no se dibujan. Los proyectos para personas sin hogar o que viven con VIH, y los hogares de cuido para personas mayores, se cuentan, pero nunca se dibujan ni se nombran. La ventana emergente muestra el nombre, el municipio, las unidades, las unidades de bajos ingresos, el año en que se puso en servicio y la fuente, nunca la dirección.",
    "Low-Income Housing Tax Credit project": "Proyecto con crédito contributivo para vivienda de bajos ingresos"
   },
   "labels_facilities": {
@@ -138,7 +138,7 @@
     "facilities": [
      "HUD, Public Housing Developments (date of coverage {date})",
      "Public housing: HUD",
-     "Public housing developments in HUD's list, each at the building with the most units. HUD says to map only the developments it could place at the building or the ZIP+4 area; the others are counted in their municipio (a dataset in Explore) but not drawn. The pop-up gives the name, type, municipio and source."
+     "Public housing developments in HUD's list, each at the building with the most units. HUD says to map only the developments it could place at the building or the ZIP+4 area; the others are counted in their municipio (a dataset in Home) but not drawn. The pop-up gives the name, type, municipio and source."
     ]
    },
    "titles": [
@@ -221,7 +221,7 @@
      "<b>WCRP communities.</b> Foundation for Puerto Rico, Whole Community Resilience Planning program, list of communities of 2026-10-06 (the observatory's WCRP layer).",
      "<b>Base map.</b> © OpenStreetMap contributors (ODbL). Barrio outlines: US Census Bureau, TIGERweb county subdivisions.",
      "<b>How to cite this page.</b> Foundation for Puerto Rico, <i>Knowledge Area: Whole Community Resilience Planning, vulnerability by barrio</i>, PR Data Observatory, <span class=\"snap\"></span>, https://observatory.foundationpr.org/wcrp.html. Original index: Hunter College for Foundation for Puerto Rico, Risk and Vulnerability Indicators (2022).",
-     "Every dataset on this page has an entry in the <a href=\"dictionary.html#wcrp.rvi_overall_orig\">data dictionary</a>. The vulnerability ranks can also be put on the main map, with other data, from Explore (topic Communities, group \"Vulnerability (WCRP)\").",
+     "Every dataset on this page has an entry in the <a href=\"dictionary.html#wcrp.rvi_overall_orig\">data dictionary</a>. The vulnerability ranks can also be put on the main map, with other data, from Home (topic Communities, group \"Vulnerability (WCRP)\").",
      "The overall index adds the six area percentiles. Choose an area to see its inputs.",
      "Survey estimates for one barrio are rough: read them with care.",
      "Source: WCRP Risk and Vulnerability Indicators (Hunter College for Foundation for Puerto Rico, 2022), as published; rebuild by the PR Data Observatory with the same method on ACS {window}. In review; the original states no license.",
@@ -387,7 +387,7 @@
      "Show on the map the barrios whose level changes",
      "barrios on the vulnerability map",
      "The vulnerability map could not be loaded. Check your connection, then scroll away and back to try again.",
-     "Every dataset on this page has an entry in the <a href=\"dictionary.html#wcrp.rvi_overall_orig\">data dictionary</a>. The vulnerability levels can also be put on the main map, with other data, from Explore (topic Communities, group \"Vulnerability (WCRP)\").",
+     "Every dataset on this page has an entry in the <a href=\"dictionary.html#wcrp.rvi_overall_orig\">data dictionary</a>. The vulnerability levels can also be put on the main map, with other data, from Home (topic Communities, group \"Vulnerability (WCRP)\").",
      "The observatory's estimate along OpenStreetMap roads at free-flow speeds, from each barrio's population-weighted point to the nearest general hospital with an emergency department (CMS list); 0 where the barrio holds one. Vieques, Culebra and Isla de Mona have no road to a hospital and no value: their health level uses the other two inputs.",
      "The observatory now has the residents' age groups by barrio and a current landslide susceptibility map. The white paper's method uses neither as an input, so the index and its levels did not change. Both are shown as context: choose Overall and click a barrio to see them.",
      "Read with care",

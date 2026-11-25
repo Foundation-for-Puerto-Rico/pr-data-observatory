@@ -721,7 +721,7 @@ const Tools = {
 };
 
 // ── Chat messages ────────────────────────────────────────────────────────────
-/** A dataset's home topic in Explore (navigation plan PR 3, decision 81 h): "Abrir su tema / Open its topic" on the 2D map, where the Explore tab is. */
+/** A dataset's home topic in Explore (navigation plan PR 3, decision 81 h): "Abrir su tema / Open its topic" on the 2D map, where the Home tab is. */
 function chTopic(k, lang) {
   const api = chApi(); if (chMapless() || typeof Catalog === 'undefined' || !Catalog.openDomain || !api || !api.dictId) return null;
   const id = api.dictId(k); if (!id) return null;

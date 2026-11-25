@@ -31,7 +31,10 @@
  "No ready-made views yet.": "Todavía no hay vistas preparadas.",
  "Open on the map": "Abrir en el mapa",
  "{n} topics. {snapshot}.": "{n} temas. {snapshot}.",
- "Browse {n} dataset": ["Explorar {n} conjunto de datos", "Explorar {n} conjuntos de datos"],
+ "Browse {n} dataset": [
+  "Explorar {n} conjunto de datos",
+  "Explorar {n} conjuntos de datos"
+ ],
  "Every dataset, map layer and set of places": "Todos los conjuntos de datos, capas del mapa y grupos de lugares",
  "Every dataset, map layer and set of places the observatory documents.": "Todos los conjuntos de datos, capas del mapa y grupos de lugares que documenta el observatorio.",
  "Show or hide the filters": "Mostrar u ocultar los filtros",
@@ -105,13 +108,22 @@
  "{n} of {m} places kept.": "Se conservan {n} de {m} lugares.",
  "Choose the areas.": "Elija las áreas.",
  "{n} of {m} places lie inside: {area} ({k} outlines tested). Each place got two new columns, \"inside\" and \"zone\".": "{n} de {m} lugares quedan dentro de: {area} (se probaron {k} contornos). Cada lugar recibió dos columnas nuevas, «inside» y «zone».",
- "{n} place stands within 5 m of an edge, closer than either file can be trusted: {names}.": ["{n} lugar está a menos de 5 m de un borde, más cerca de lo que permite confiar cualquiera de los dos archivos: {names}.", "{n} lugares están a menos de 5 m de un borde, más cerca de lo que permite confiar cualquiera de los dos archivos: {names}."],
- "{n} municipio has at least one place.": ["{n} municipio tiene al menos un lugar.", "{n} municipios tienen al menos un lugar."],
+ "{n} place stands within 5 m of an edge, closer than either file can be trusted: {names}.": [
+  "{n} lugar está a menos de 5 m de un borde, más cerca de lo que permite confiar cualquiera de los dos archivos: {names}.",
+  "{n} lugares están a menos de 5 m de un borde, más cerca de lo que permite confiar cualquiera de los dos archivos: {names}."
+ ],
+ "{n} municipio has at least one place.": [
+  "{n} municipio tiene al menos un lugar.",
+  "{n} municipios tienen al menos un lugar."
+ ],
  "In all: {n} places.": "En total: {n} lugares.",
  "{n} inside.": "{n} adentro.",
  "{column}: {sum}.": "{column}: {sum}.",
  "{sum} of it at the places inside.": "{sum} de ese total en los lugares de adentro.",
- "{n} place in no municipio was left out.": ["Se dejó fuera {n} lugar que no está en ningún municipio.", "Se dejaron fuera {n} lugares que no están en ningún municipio."],
+ "{n} place in no municipio was left out.": [
+  "Se dejó fuera {n} lugar que no está en ningún municipio.",
+  "Se dejaron fuera {n} lugares que no están en ningún municipio."
+ ],
  "An output needs a summary by municipio before it.": "Un resultado necesita antes un resumen por municipio.",
  "Give the output a name.": "Póngale un nombre al resultado.",
  "The table is ready to download.": "La tabla está lista para descargar.",
@@ -160,5 +172,9 @@
  "My workflow": "Mi flujo de trabajo",
  "Loading the list of files…": "Cargando la lista de archivos…",
  "The list of files could not be loaded.": "No se pudo cargar la lista de archivos.",
- "{n} step": ["{n} paso", "{n} pasos"]
+ "{n} step": [
+  "{n} paso",
+  "{n} pasos"
+ ],
+ "Ready-made maps, topics and your saved maps": "Mapas preparados, temas y sus mapas guardados"
 }

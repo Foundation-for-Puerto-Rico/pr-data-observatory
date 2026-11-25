@@ -20,6 +20,8 @@
     "explore": {"page": "explore.html", "first": ["catalog.json", "catalog_views.json"], "later": ["glossary_forms_es.json"], "on_use": ["glossary_defs_es.json"], "budget": {"script_kb": 36, "data_kb": 16}},
     "data": {"page": "data.html", "first": ["catalog.json", "catalog_index.json"], "later": ["glossary_forms_es.json"], "on_use": ["catalog_es.json", "glossary_defs_es.json"], "budget": {"script_kb": 30, "data_kb": 65}},
     "workflows": {"page": "workflows.html", "first": ["registry.json", "municipios.geojson"], "later": ["glossary_forms_es.json"], "on_use": ["glossary_defs_es.json", "public_schools.geojson", "flood.geojson", "protected.geojson", "watersheds.geojson", "comunidades.geojson", "oz_tracts.geojson"], "budget": {"script_kb": 32, "data_kb": 145}},
+    "about": {"page": "about.html", "first": [], "later": ["glossary_forms_es.json"], "on_use": ["glossary_defs_es.json", "meta.json", "dictionary_summary.json", "catalog.json"], "budget": {"script_kb": 40, "data_kb": 1}},
+    "terms": {"page": "terms.html", "first": [], "later": ["glossary_forms_es.json"], "on_use": ["glossary_defs_es.json"], "budget": {"script_kb": 30, "data_kb": 1}},
     "knowledge": {"page": "knowledge.html", "first": [], "later": ["glossary_forms_es.json"], "on_use": ["glossary_defs_es.json"], "budget": {"script_kb": 40, "data_kb": 1}},
     "learn": {"page": "learn.html", "first": [], "later": ["glossary_forms_es.json"], "on_use": ["glossary_defs_es.json", "rain_gauges.geojson"], "budget": {"script_kb": 64, "data_kb": 1}},
     "publicmoney": {"page": "public-money.html", "first": ["municipios.geojson", "public_money_need.json"], "later": ["glossary_forms_es.json"], "on_use": ["glossary_defs_es.json"], "budget": {"script_kb": 36, "data_kb": 110}},

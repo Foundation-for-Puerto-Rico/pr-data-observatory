@@ -35,14 +35,14 @@ test('a bridge: area by daily traffic, color by condition, a closed bridge hollo
   const tun = B.features.find(f => f.properties.type === 'Tunnel').properties;
   assert.match(F.popup('bridges', tun, B), /Tunnel number/);
   assert.strictEqual(F.tip('bridges', tun), tun.name);
-  assert.match(F.noteText('bridges', B, 'Explore tab'), new RegExp(`${B.notes.poor} in poor condition`));
+  assert.match(F.noteText('bridges', B, 'Home tab'), new RegExp(`${B.notes.poor} in poor condition`));
 });
 
 test('airports: one radius, color by kind; the private facilities owned privately are only counted', () => {
   assert.strictEqual(F.sizedStyle('airports', { cat: 'heliport' }).r, F.LAYERS.airports.sized.r);
   assert.ok(A.features.every(f => !(f.properties.use === 'private' && f.properties.own === 'private')), 'no private facility owned privately is drawn');
   assert.strictEqual(A.features.filter(f => f.properties.cat === 'commercial').length, 3, 'San Juan, Aguadilla and Ponce');
-  assert.match(F.noteText('airports', A, 'Explore tab'), new RegExp(`${A.notes.private_not_drawn} private`));
+  assert.match(F.noteText('airports', A, 'Home tab'), new RegExp(`${A.notes.private_not_drawn} private`));
   assert.ok(!/<svg width/.test(F.legendHtml('airports', A)), 'one radius: no size key');
   assert.match(F.popup('airports', A.features[0].properties, A), /FAA identifier/);
 });

@@ -1,4 +1,4 @@
-"""The 2D map's four tabs (navigation plan PR 4, decision 81 (a) and (g)): Explore, Place, Tools and About, each main tab holding sub-tabs for the old panes.
+"""The 2D map's main tabs (navigation plan PR 4, decision 81 (a) and (g); since 2026-11-25 three: Home, Place and Tools, with About a page of its own), each main tab holding sub-tabs for the old panes.
 
   python -m unittest tests.test_tabs
 
@@ -23,7 +23,7 @@ class Tabs(unittest.TestCase):
     def test_four_main_tabs_in_order(self):
         bar = re.search(r'<div class="tabs" role="tablist"[^>]*>(.*?)</div>', self.html, re.S).group(1)
         mains = re.findall(r'id="t-(\w+)"', bar)
-        self.assertEqual(mains, ["explore", "place", "tools", "about"])
+        self.assertEqual(mains, ["explore", "place", "tools"])   # About is about.html since 2026-11-25
         for g, subs in GROUPS.items():
             self.assertRegex(bar, rf'data-main="{g}" data-tab="{subs[0]}"', g)
 
@@ -34,7 +34,7 @@ class Tabs(unittest.TestCase):
             self.assertEqual(re.findall(r'data-tab="(\w+)"', row.group(1)), subs, g)
             for t in subs:
                 self.assertIn(f'id="tab-{t}" role="tabpanel" aria-labelledby="s-{t}"', self.html, t)
-        self.assertIn('id="tab-about" role="tabpanel" aria-labelledby="t-about"', self.html)
+        self.assertNotIn('id="tab-about"', self.html)
 
     def test_show_tab_takes_old_names_and_main_names(self):
         self.assertIn("const m = document.querySelector(`.tabs [data-main=\"${name}\"]`); if (m) name = tabLast[name] || m.dataset.tab;", self.common)
@@ -52,12 +52,14 @@ class Tabs(unittest.TestCase):
         self.assertRegex(h, r'data-tab="layers"')
 
     def test_help_names_the_new_tabs(self):
-        about = self.html[self.html.index('<ol class="about-steps">'):]
-        about = about[:about.index("</ol>")]
-        for old in ("<i>Overview</i>", "<i>Layers</i> tab", "<i>Economy</i>", "<i>Municipality</i> tab"):
-            self.assertNotIn(old, about)
-        for new in ("<i>Explore</i>", "<i>On the map</i>", "<i>Place</i>", "<i>Tools</i>"):
-            self.assertIn(new, about)
+        about = (SITE / "about.html").read_text(encoding="utf-8")
+        tour = about[about.index('<ol class="tour-steps"'):]
+        tour = tour[:tour.index("</ol>")]
+        self.assertEqual(tour.count('<li class="tour-step">'), 8)
+        for old in ("Overview tab", "Explore tab", "Widgets", "3D + Time"):
+            self.assertNotIn(old, tour)
+        for new in ("Home tab", "On the map", "Place tab", "Tools tab", "Insights", "2D / 3D switch", "Map Gallery"):
+            self.assertIn(new, tour)
 
 
 class MapTools(unittest.TestCase):

@@ -428,7 +428,7 @@ class Page(unittest.TestCase):
         self.assertIn('id="files"', d, "dictionary.html#files still lands on the files section")
         self.assertIn('href="data-management.html', d)
         self.assertNotIn('id="filesTbl"', d)
-        for page in ("index.html", "3d.html"):
+        for page in ("about.html", "3d.html"):   # the map's About text is about.html since 2026-11-25
             self.assertIn('href="data-management.html"', (SITE / page).read_text(encoding="utf-8"), f"the About text of {page} names the page")
         self.assertNotIn('href="data-management.html"', re.search(r'<nav class="views".*?</nav>', (SITE / "index.html").read_text(encoding="utf-8"), re.S).group(0), "no top-bar button")
 

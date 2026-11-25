@@ -89,7 +89,7 @@
     return { failed };
   }
 
-  /* The order of the dataset groups wherever a page lists them (the Analysis tab's datasets, Rankings, the 3D columns' menus): the ten topics of the Explore tab, in
+  /* The order of the dataset groups wherever a page lists them (the Analysis tab's datasets, Rankings, the 3D columns' menus): the ten topics of the Home tab, in
      the order of dictionary_src/domains.json, as the layer menu has them (js/core/layers.js, docs/layers.md; decision 81 (e)). A group goes where the longest of these
      beginnings it starts with stands; a group none matches comes after the listed ones, in the order it was added. The visitor economy is always last. */
   const ORDER = ['People', 'Population · ',   // population and households

@@ -132,7 +132,7 @@ def build():
 <link rel="stylesheet" href="css/housing.css?v=22">
 <link rel="stylesheet" href="css/public_money.css?v=2">
 <link rel="stylesheet" href="css/chat.css?v=5">
-<link rel="stylesheet" href="css/ws.css?v=1">
+<link rel="stylesheet" href="css/ws.css?v=2">
 <script src="js/i18n.js?v=86" data-page="publicmoney"></script>
 </head>
 <body class="research">
@@ -142,14 +142,14 @@ def build():
   <div class="brand"><b>{t("Knowledge Area · Disaster funding and need", "Área de conocimiento · Fondos por desastres y necesidad")}</b><span>{t("Federal disaster and community development money and two measures of need, by municipio", "El dinero federal para desastres y desarrollo comunitario y dos medidas de necesidad, por municipio")}</span></div>
   <div class="spacer"></div>
   <nav class="views" aria-label="{t("Views", "Vistas")}">
-    <a class="btn" href="explore.html" title="{t("Explore: start from a question, a topic or a saved map", "Explorar: comience con una pregunta, un tema o un mapa guardado")}"><span class="ms-icon" aria-hidden="true">explore</span><span class="lbl">{t("Explore", "Explorar")}</span></a>
+    <a class="btn" href="index.html" title="{t("Map: every layer and tool, in 2D or 3D", "Mapa: todas las capas y herramientas, en 2D o 3D")}"><span class="ms-icon" aria-hidden="true">map</span><span class="lbl">{t("Map", "Mapa")}</span></a>
+    <a class="btn" href="explore.html" title="{t("Map Gallery: ready-made maps, topics and your saved maps", "Galería de mapas: mapas preparados, temas y sus mapas guardados")}"><span class="ms-icon" aria-hidden="true">explore</span><span class="lbl">{t("Map Gallery", "Galería de mapas")}</span></a>
     <a class="btn" href="data.html" title="{t("Data: every dataset, map layer and set of places", "Datos: todos los conjuntos de datos, capas del mapa y grupos de lugares")}"><span class="ms-icon" aria-hidden="true">grid_view</span><span class="lbl">{t("Data", "Datos")}</span></a>
-    <a class="btn" href="index.html"><span class="ms-icon" aria-hidden="true">map</span><span class="lbl">{t("Map", "Mapa")}</span></a>
     <a class="btn" href="workflows.html" title="{t("Workflows: steps that turn data into a result on the map", "Flujos de trabajo: pasos que convierten datos en un resultado en el mapa")}"><span class="ms-icon" aria-hidden="true">account_tree</span><span class="lbl">{t("Workflows", "Flujos")}</span></a>
-    <a class="btn" href="3d.html" title="{t("Immersive 3D + time view", "Vista inmersiva en 3D y tiempo")}"><span class="ms-icon" aria-hidden="true">view_in_ar</span><span class="lbl">{t("3D + Time", "3D + Tiempo")}</span></a>
     <a class="btn" href="knowledge.html" aria-current="page" title="{t("Knowledge: FPR studies, analyses and tools", "Conocimiento: estudios, análisis y herramientas de FPR")}"><span class="ms-icon" aria-hidden="true">lightbulb</span><span class="lbl">{t("Knowledge", "Conocimiento")}</span></a>
     <a class="btn" href="dictionary.html" title="{t("Data dictionary: meanings, sources, licenses, how to cite", "Diccionario de datos: significados, fuentes, licencias y cómo citar")}"><span class="ms-icon" aria-hidden="true">menu_book</span><span class="lbl">{t("Data dictionary", "Diccionario de datos")}</span></a>
     <a class="btn" href="learn.html" title="{t("Learn: short lessons about maps and spatial analysis", "Aprende: lecciones cortas sobre mapas y análisis espacial")}"><span class="ms-icon" aria-hidden="true">school</span><span class="lbl">{t("Learn", "Aprende")}</span></a>
+    <a class="btn" href="about.html" title="{t("About: this initiative, how to use the Observatory, terms", "Acerca de: esta iniciativa, cómo usar el Observatorio y los términos")}"><span class="ms-icon" aria-hidden="true">info</span><span class="lbl">{t("About", "Acerca de")}</span></a>
   </nav>
 </header>
 
@@ -216,7 +216,7 @@ def build():
 
   <section class="block" id="sources">
     <h2><span class="ms-icon" aria-hidden="true">menu_book</span>{t("Sources and licenses", "Fuentes y licencias")}</h2>
-    <div class="note"><b>{t("OpenFEMA.", "OpenFEMA.")}</b> {t("Public Assistance Funded Projects Details, Hazard Mitigation Assistance Subapplications and Housing Assistance Data (owners and renters), as published on the map (Explore) and the Housing page. US Government work; OpenFEMA terms apply.", "Public Assistance Funded Projects Details, Hazard Mitigation Assistance Subapplications y Housing Assistance Data (dueños e inquilinos), tal como se publican en el mapa (Explorar) y en la página de Vivienda. Obra del Gobierno de EE. UU.; aplican los términos de OpenFEMA.")}</div>
+    <div class="note"><b>{t("OpenFEMA.", "OpenFEMA.")}</b> {t("Public Assistance Funded Projects Details, Hazard Mitigation Assistance Subapplications and Housing Assistance Data (owners and renters), as published on the map (Home) and the Housing page. US Government work; OpenFEMA terms apply.", "Public Assistance Funded Projects Details, Hazard Mitigation Assistance Subapplications y Housing Assistance Data (dueños e inquilinos), tal como se publican en el mapa (Explorar) y en la página de Vivienda. Obra del Gobierno de EE. UU.; aplican los términos de OpenFEMA.")}</div>
     <div class="note"><b>{t("USAspending.gov.", "USAspending.gov.")}</b> {t("HUD's CDBG grants to Puerto Rico (assistance listings 14.218 and 14.228) and the subawards reported under the federal transparency law (FFATA), read from USAspending's API by cdbg_dr.py and cdbg_regular.py, as published on the Public spending page. US Government work; USAspending states no license for the data.", "Las subvenciones CDBG de HUD a Puerto Rico (listados de asistencia 14.218 y 14.228) y las subadjudicaciones informadas bajo la ley federal de transparencia (FFATA), leídas de la API de USAspending con cdbg_dr.py y cdbg_regular.py, tal como se publican en la página de Gasto público. Obra del Gobierno de EE. UU.; USAspending no declara una licencia para los datos.")}</div>
     <div class="note"><b>{t("FEMA National Risk Index.", "Índice Nacional de Riesgo de FEMA.")}</b> {t("County table, expected annual loss, as published on the map's Environment tab. US Government work.", "Tabla por condado, pérdida anual esperada, tal como se publica en la pestaña Ambiente del mapa. Obra del Gobierno de EE. UU.")}</div>
     <div class="note"><b>{t("Census Bureau Community Resilience Estimates.", "Estimaciones de Resiliencia Comunitaria del Negociado del Censo.")}</b> {t("Municipio table, as published on the map's Environment tab. US Government work.", "Tabla por municipio, tal como se publica en la pestaña Ambiente del mapa. Obra del Gobierno de EE. UU.")}</div>

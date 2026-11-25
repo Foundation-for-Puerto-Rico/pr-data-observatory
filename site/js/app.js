@@ -455,7 +455,7 @@ function openToolLink(spec) {
 }
 function onTabShown(name) { if (name === 'muni' && !S.selected && !$('#lyMuni').checked) $('#lyMuni').click();   // show where to click
   if (name === 'region') regionOpen(); else if (typeof Region !== 'undefined') Region.hide();
-  if (name === 'rank') renderRank(); if (name === 'maptools') mtP = mtP || addJs('js/maptools.js?v=5').catch(() => { mtP = null; $('#tab-maptools').removeAttribute('data-t-wait'); }); if (name === 'about') { loadAboutText(); loadAboutNumbers(); } if (typeof econShown === 'function') econShown(name); if (typeof Catalog !== 'undefined') Catalog.shown(name); }
+  if (name === 'rank') renderRank(); if (name === 'maptools') mtP = mtP || addJs('js/maptools.js?v=5').catch(() => { mtP = null; $('#tab-maptools').removeAttribute('data-t-wait'); }); if (typeof econShown === 'function') econShown(name); if (typeof Catalog !== 'undefined') Catalog.shown(name); }
 function toast(msg, ms = 3500) { Core.activelayers.toast(msg, ms); }   // core/activelayers.js: the same message, which can also carry an Undo button
 initHelp(k => HELP[k]);
 
@@ -470,37 +470,13 @@ function renderCatChips() {
 function renderAbout() {
   const m = S.meta, c = m.counts || {}, t = m.transport || {}, kd = t.kinds || {};
   const stopsAndStations = (kd.transit_stop || 0) + (kd.bus_stop || 0) + (kd.bus_station || 0) + (kd.rail_station || 0) + (kd.ferry_terminal || 0);
-  $('#aboutKpis').innerHTML = [[c.municipalities || 78, T('municipalities')], [c.population_2020, T('residents (2020 Census)')], [c.tourism_places, T('tourism places')], [(m.network || {}).routes, T('transit routes, all operators')], [stopsAndStations, T('stops and stations')]]
+  if ($('#aboutKpis')) $('#aboutKpis').innerHTML = [[c.municipalities || 78, T('municipalities')], [c.population_2020, T('residents (2020 Census)')], [c.tourism_places, T('tourism places')], [(m.network || {}).routes, T('transit routes, all operators')], [stopsAndStations, T('stops and stations')]]
     .map(([v, l]) => `<div class="kpi"><div class="v">${fmt(v)}</div><div class="l">${esc(l)}</div></div>`).join('');
   $('#snapshotLabel').innerHTML = `<b>${esc(snapshotLabel(m.label))}</b>`; $('#snapshotLabel').title = T('Built {date}', { date: (m.generated_at || '').slice(0, 10) });
-  $('#aboutBuilt').innerHTML = Th('Current snapshot: <b>{label}</b>, built {date}.', { label: snapshotLabel(m.label), date: (m.generated_at || '').slice(0, 10) });
+  if ($('#aboutBuilt')) $('#aboutBuilt').innerHTML = Th('Current snapshot: <b>{label}</b>, built {date}.', { label: snapshotLabel(m.label), date: (m.generated_at || '').slice(0, 10) });
   document.title = T('PR Data Observatory · Foundation for Puerto Rico');
   document.querySelectorAll('.snap').forEach(e => e.textContent = m.label ? snapshotLabel(m.label) : '');
 }
-let aboutText = null;
-/** The About tab's own text: its Spanish (es.map.about.js, module "about" in i18n_src/pages.json) loads the first time the tab opens, so the map's first load does
-    not carry it. Until then the tab's content waits unseen (data-t-wait: twin.css; aria-hidden, which the glossary leaves alone), then it is translated and the glossary reads it. */
-function loadAboutText() {
-  const tab = $('#tab-about');
-  return aboutText || (aboutText = I18N.load('about').then(() => {
-    const snap = (tab.querySelector('.snap') || {}).textContent || '';
-    tab.querySelectorAll('.snap').forEach(e => { e.textContent = ''; });   // a sentence is translated as written in the page, with its snapshot label still empty
-    I18N.apply(tab);
-    tab.querySelectorAll('.snap').forEach(e => { e.textContent = snap; });
-  }, e => { aboutText = null; console.error(e); }).finally(() => {
-    tab.removeAttribute('data-t-wait'); tab.removeAttribute('aria-hidden');
-    if (window.Core && Core.glossary && Core.glossary.mark) Core.glossary.mark(tab);
-  }));
-}
-let aboutNumbers = null;
-async function loadAboutNumbers() {   // the dictionary's size, fetched once when the About tab is first opened
-  if (aboutNumbers) return; aboutNumbers = true;
-  try {
-    const d = await fetchJson('data/dictionary_summary.json');
-    $('#aboutKpis').insertAdjacentHTML('beforeend', [[d.entries, T('documented datasets, variables and measures')], [d.data_sources, T('data sources, each with its license')]].map(([v, l]) => `<div class="kpi"><div class="v">${fmt(v)}</div><div class="l">${esc(l)}</div></div>`).join(''));
-  } catch { /* the dictionary is optional here */ }
-}
-
 // ── Shareable state: #Municipality&c=lat,lng,zoom&l=layers&s=shading ──────────
 // The schema is shared with the 3D view (js/core/viewstate.js, docs/view-state.md): what this map does not use (the 3D camera's b= and p=, a layer or a measure
 // of the 3D view only, a key of a later version) is kept as it came, and the 3D link carries the whole address.

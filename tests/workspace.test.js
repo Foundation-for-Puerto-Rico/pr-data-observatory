@@ -15,8 +15,8 @@ const vm = require('node:vm');
 const ROOT = path.join(__dirname, '..'), SITE = path.join(ROOT, 'site');
 const read = (f) => fs.readFileSync(path.join(ROOT, f), 'utf8').replace(/\r\n/g, '\n');
 const pages = fs.readdirSync(SITE).filter(f => f.endsWith('.html')).sort();
-const RAIL = ['explore.html', 'data.html', 'index.html', 'workflows.html', '3d.html', 'knowledge.html', 'dictionary.html', 'learn.html'];
-const ICONS = ['account_tree', 'dark_mode', 'explore', 'grid_view', 'light_mode'];
+const RAIL = ['index.html', 'explore.html', 'data.html', 'workflows.html', 'knowledge.html', 'dictionary.html', 'learn.html', 'about.html'];   // 2026-11-25: Map first, About last; the 3D view is a mode of Map
+const ICONS = ['account_tree', 'dark_mode', 'explore', 'grid_view', 'info', 'light_mode'];
 
 /** A browser script run in a bare context: enough of a page for the script to define itself without starting. */
 function load(file, extra = {}) {
@@ -43,6 +43,7 @@ test('every page loads the workspace stylesheet last and has the eight areas in 
     assert.deepStrictEqual(hrefs, RAIL, `${p}: the rail's areas, in order`);
     const cur = [...nav[1].matchAll(/href="([a-z0-9\-]+\.html)[^"]*" aria-current="page"/g)].map(m => m[1]);
     if (RAIL.includes(p)) assert.deepStrictEqual(cur, [p], `${p} marks itself in the rail`);
+    if (p === '3d.html') assert.deepStrictEqual(cur, ['index.html'], 'the 3D view is a mode of Map');
     for (const names of html.matchAll(/icon_names=([a-z0-9_,]+)/g)) for (const i of ICONS) assert.ok(names[1].split(',').includes(i), `${p}: the icon font holds ${i} (the rail and the light/dark switch)`);
     assert.match(html, /<script src="js\/i18n\.js\?v=\d+" data-page="\w+"><\/script>/, `${p}: i18n.js sets the theme before the first paint`);
   }
@@ -54,8 +55,9 @@ test('the generators of the generated pages write the same header', () => {
   for (const g of gens) {
     const s = read(g);
     if (!s.includes('<nav class="views"')) continue;
-    for (const h of ['explore.html', 'data.html', 'workflows.html']) assert.strictEqual(s.split(`<a class="btn" href="${h}"`).length - 1, 1, `${g}: one ${h} link`);
-    assert.ok(s.indexOf('href="explore.html"') < s.indexOf('href="data.html"') && s.indexOf('href="data.html"') < s.indexOf('href="workflows.html"'), g);
+    for (const h of ['explore.html', 'data.html', 'workflows.html', 'about.html']) assert.strictEqual(s.split(`<a class="btn" href="${h}"`).length - 1, 1, `${g}: one ${h} link`);
+    assert.ok(s.indexOf('href="explore.html"') < s.indexOf('href="data.html"') && s.indexOf('href="data.html"') < s.indexOf('href="workflows.html"') && s.indexOf('href="workflows.html"') < s.indexOf('href="about.html"'), g);
+    assert.ok(!/<a class="btn" href="3d\.html/.test(s), `${g}: no 3D link in the rail`);
     assert.match(s, /<link rel="stylesheet" href="css\/ws\.css\?v=\d+">/, `${g}: css/ws.css`);
     for (const i of ICONS) assert.ok(s.includes(i), `${g}: the icon ${i}`);
   }
@@ -158,4 +160,20 @@ test('the Spanish of the workspace keeps every placeholder', () => {
       for (const s of [].concat(v)) assert.strictEqual((s.match(/\{\w+\}/g) || []).sort().join(), want, `${f}: ${k}`);
     }
   }
+});
+
+test('2026-11-25: Insights, the 2D / 3D switch, About and the terms', () => {
+  const map = read('site/index.html'), d3 = read('site/3d.html'), about = read('site/about.html'), terms = read('site/terms.html');
+  assert.match(map, /<aside class="ws-right" id="wsRight" aria-label="Insights">/); assert.doesNotMatch(map, /[Ww]idgets/, 'the map page says Insights');
+  assert.doesNotMatch(read('site/js/ws_map.js'), /T\('[^']*[Ww]idget/, 'no text shown to people says widget');
+  assert.match(map, /id="wsMode" role="group" aria-label="Map view"><button type="button" id="wsMode2d" aria-pressed="true"[^>]*>2D<\/button><a id="wsMode3d" href="3d\.html"/, 'the switch on the 2D map');
+  assert.match(d3, /<script src="js\/ws_mode3d\.js\?v=\d+"><\/script>/, 'the switch on the 3D view');
+  assert.match(read('site/js/ws_mode3d.js'), /They are kept and come back in 2D/);
+  assert.doesNotMatch(map, /id="t-about"|id="tab-about"/, 'About is a page, not a tab of the map');
+  for (const id of ['initiative', 'how', 'terms']) assert.match(about, new RegExp(`<section class="ws-sec[^"]*" id="${id}"`), id);
+  assert.match(about, /By using the PR Data Observatory, you agree to its <a href="terms\.html">Terms &amp; Conditions<\/a>\./);
+  assert.match(terms, /Draft for FPR\/legal review/); assert.match(terms, /<meta name="robots" content="noindex, nofollow">/);
+  for (const bad of [/arbitrat/i, /indemnif/i, /governing law/i, /\bcookies?\b/i]) assert.doesNotMatch(terms.replace(/<nav[\s\S]*?<\/nav>/, ''), bad, String(bad));
+  for (const page of [map, about, terms]) assert.doesNotMatch(page, /log ?in|sign ?in/i, 'no login in this release');
+  assert.match(read('site/explore.html'), /<title>Map Gallery · PR Data Observatory<\/title>[\s\S]*<h1>Map Gallery<\/h1>/);
 });
