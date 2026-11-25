@@ -28,7 +28,7 @@
   "how_to_read": "En el corte de datos 2026-10 la isla tiene 966 paradas de este tipo, en 10 municipios: Caguas 291, Ponce 276, San Lorenzo 159, Juncos 128, Fajardo 81, Cidra 14, Hatillo 11, Gurabo 4, Carolina 1 y Las Piedras 1. Pertenecen a 7 operadores cuyas fuentes de horarios terminaron: Ponce el 2024-12-31, Hatillo el 2025-12-31, Cidra el 2026-01-15, Caguas el 2026-01-31, San Lorenzo el 2026-02-28, Fajardo el 2026-06-15 y Juncos el 2026-07-31. Una parada puede estar en un municipio vecino: Gurabo no tiene una fuente de horarios propia. Una fuente de horarios puede quedarse sin fechas mientras las guaguas siguen circulando, así que un conteo alto no prueba que el servicio se haya detenido.",
   "_en": {
    "name": "f09de908",
-   "how_to_read": "a7c9ea6f"
+   "how_to_read": "9794a057"
   }
  },
  "municipalities.stops_osm": {
@@ -108,7 +108,7 @@
   "how_to_read": "Cuenta los lugares cerca de una parada mapeada. Muestra dónde hay paradas, no dónde circula el servicio hoy, porque cuenta paradas cuyo horario ya terminó y paradas que mapearon personas voluntarias. Las versiones anteriores del observatorio lo llamaban 'a 400 m o menos del transporte colectivo'. Para los lugares cerca de una parada con un horario en vigor, use acc_cur400_pct. Para comparar municipios de distinto tamaño, use transit_pct, que divide este conteo entre los lugares turísticos de assets. No dice nada sobre la frecuencia del servicio, las horas de servicio ni el camino que recorrería una persona a pie. El recuadro \"lugares a 400 m o menos de cualquier parada mapeada\" de la pestaña Municipio del mapa es un porcentaje en vivo de los lugares filtrados, no este conteo guardado. En el corte de datos 2026-10 el total de la isla es 11,507 de 24,209 lugares turísticos.",
   "_en": {
    "name": "bf64c24d",
-   "how_to_read": "29c6b9dc"
+   "how_to_read": "e0fc92ea"
   }
  },
  "municipalities.transit_pct": {
@@ -116,7 +116,7 @@
   "how_to_read": "Un valor alto significa que la mayoría de los lugares para visitantes del municipio están cerca de una parada mapeada. Es una medida de dónde hay paradas, no del servicio: una parada con una guagua al día cuenta igual que una estación, y también cuenta una parada cuyo horario ya terminó. Para los lugares cerca de una parada cuyo horario no ha terminado, use acc_cur400_pct; la diferencia entre ambos es acc_paper_pct. En el mapa 2D, un municipio sin paradas mapeadas no tiene color ni posición, ni para esta proporción ni para las proporciones de acceso; el 0.0 que se guarda para él no es un 0% medido. El panel del municipio en el mapa vuelve a calcular la proporción con los lugares que pasan los filtros actuales, así que puede diferir de este campo. En el corte de datos 2026-10 el archivo va de 0.0 a 95.4 (San Juan); en toda la isla, 47.5%.",
   "_en": {
    "name": "b3e8faab",
-   "how_to_read": "b46ff690"
+   "how_to_read": "ff2f0767"
   }
  },
  "municipalities.acc_cur400_pct": {
@@ -252,7 +252,7 @@
   "how_to_read": "Use las superficies cuando necesite kilómetros cuadrados. Para las proporciones, use urban_pct, urbanizable_pct, rustic_common_pct y protected_land_pct. En la descarga en CSV (valores separados por comas, para hojas de cálculo), el objeto se convierte en cuatro columnas: landuse_km2_urban, landuse_km2_urbanizable, landuse_km2_rustic y landuse_km2_protected. Una columna queda en blanco cuando el municipio no tiene ningún polígono de ese grupo. En el plan de 2015 falta el suelo urbanizable en 27 municipios y el suelo rústico común en Cataño, y los cuatro valores suman 8,409.1 km² para la isla, alrededor del 95% de la superficie terrestre del Censo (8,868.5 km²).",
   "_en": {
    "name": "238d170e",
-   "how_to_read": "316c5d20"
+   "how_to_read": "70db9d1e"
   }
  },
  "municipalities.urban_pct": {
@@ -308,7 +308,7 @@
   "how_to_read": "Un valor alto significa que la mayoría de los listados están en suelo urbano. En el corte de datos 2026-10 el valor va de 29.8% (Maricao) a 81.6% (Guaynabo), y el 66.2% de los listados de toda la isla (21,418 de 32,369) están en suelo urbano. Los listados en un polígono de calle (5,858 de esos 32,369, 18.1%) no se cuentan como urbanos, ni siquiera en un casco urbano. Por eso el valor subestima la proporción de listados en áreas construidas.",
   "_en": {
    "name": "1ac1cd08",
-   "how_to_read": "df74787b"
+   "how_to_read": "61119975"
   }
  },
  "municipalities.stop_kinds": {

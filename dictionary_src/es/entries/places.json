@@ -156,7 +156,7 @@
   "how_to_read": "Un número más pequeño significa que hay alguna parada más cerca. 400 m (un cuarto de milla) es la distancia de planificación para caminar hasta una parada de guagua. Esta es la distancia a cualquier parada mapeada, que puede ser una parada cuyo horario terminó o una que mapearon personas voluntarias. Para la parada más cercana con horario vigente, use ts_m en place_access.json. La ventana emergente del mapa la muestra en la línea \"Cualquier parada mapeada (con horarios vencidos y paradas mapeadas por voluntarios)\", en metros o kilómetros, cuando una parada sin horario vigente está más cerca que la parada con horario vigente más cercana. Al pasar el cursor sobre esa línea se ve el nombre de la parada. Versiones anteriores del observatorio llamaban a este campo \"distancia a la parada de transporte colectivo más cercana\".",
   "_en": {
    "name": "2b65e1df",
-   "how_to_read": "a07547e2"
+   "how_to_read": "a03be3f4"
   }
  },
  "places.nearest_stop": {
@@ -172,7 +172,7 @@
   "how_to_read": "Es una señal, del lado de la oferta, de acceso sin carro a una parada, no al servicio: cuenta paradas cuyo horario terminó y paradas que mapearon personas voluntarias. Para una parada con horario vigente, use un ts_m de 400 o menos en place_access.json. No toma en cuenta con qué frecuencia pasan los vehículos, las horas de servicio ni si el camino a pie es seguro. La base predeterminada son los lugares con una puntuación de confianza de 0.50 o más, sin los lugares de culto. Versiones anteriores del observatorio llamaban a este campo \"a 400 m o menos del transporte colectivo\".",
   "_en": {
    "name": "e7d03ce9",
-   "how_to_read": "e18e4968"
+   "how_to_read": "aa23b5e3"
   }
  },
  "place_access.ts_m": {
