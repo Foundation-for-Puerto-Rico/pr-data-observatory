@@ -70,7 +70,7 @@ async function main() {
   const block = BEGIN + "\n  const PROTECTED = new Set(('" + lines.join(" ' +\n    '") + "').split(' '));\n  " + END;
   const now = s.slice(a, b + END.length);
   if (process.argv.includes('--check')) { if (now !== block) { console.log(`ask.js's protected words are not current (${words.length} now): run node tests/ask_words.js`); process.exitCode = 1; } else console.log(`protected words current (${words.length})`); return { words, current: now === block }; }
-  fs.writeFileSync(file, (s.slice(0, a) + block + s.slice(b + END.length)).replace(/\n/g, '\r\n'));
+  fs.writeFileSync(file, s.slice(0, a) + block + s.slice(b + END.length));
   console.log(`wrote ${words.length} protected words into site/js/ask.js`);
   return { words };
 }

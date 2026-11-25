@@ -362,7 +362,7 @@ def main():
         "<b>Cómo citar esta página.</b> Foundation for Puerto Rico, <i>Área de conocimiento: Perfil de rutas de transporte colectivo: cruces por intersecciones de alto volumen vehicular</i>, Observatorio de Datos de PR, Corte 2026-10 (borrador).")}</div>
   </section>
 </main>
-<script src="js/core/knowledge.js?v=35"></script>
+<script src="js/core/knowledge.js?v=36"></script>
 <script>Core.knowledge.render(); I18N.apply();</script>
 <script src="js/common.js?v=20"></script>
 <script src="js/route_analysis.js?v=7"></script>
