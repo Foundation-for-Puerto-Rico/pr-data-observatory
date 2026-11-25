@@ -51,7 +51,7 @@ DECISIONS = {
     ("ogp_concept", "081"): (KEEP, "Kept 'other': a lump-sum appropriation's concept is what its object of expense says"),
     ("ogp_concept", "082"): (KEEP, "Kept transfers: the state match moves money into federal programs"),
     ("ogp_concept", "089"): (KEEP, "Kept 'other': prior-year bills are not bond debt service"),
-    ("ogp_object", "017-E9761"): (KEEP, "Kept 'other' and transfers: a transfer within one fund; OGP's totals include it, so it stays and is labelled"),
+    ("ogp_object", "017-E9761"): (KEEP, "Kept 'other' and transfers: a transfer within one fund; OGP's totals include it, so it stays and is labeled"),
     ("ogp_object", "025-E6170"): (KEEP, "Kept 'other': grants to 15 named entities of several functions"),
     ("ogp_object", "025-E6390"): (KEEP, "Kept 'other' for the years and funds no budget resolution names"),
     ("ogp_object", "025-E9760"): (KEEP, "Kept 'other' for FY2025, which mixes transit transfers and rum cover-over payments; FY2026 and FY2027 keep transportation"),

@@ -64,7 +64,7 @@ Already approved in **decision 93** (GIS tools); all four were built on 2026-11-
 - Step 6: **Walking travel time** on the published road network.
 
 Not proposed before, and expected by most map users:
-- **Measure distance and area**: click points on the map, read metres or km² (on the local flat projection `core/study.js` already uses).
+- **Measure distance and area**: click points on the map, read meters or km² (on the local flat projection `core/study.js` already uses).
 - **Save the map as an image** (PNG), with its legend, source line and date.
 - **Draw an area** and send it to Study areas, so a visitor does not need a GeoJSON file.
 

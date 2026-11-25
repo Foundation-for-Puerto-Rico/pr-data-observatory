@@ -192,5 +192,5 @@ test('the help texts load on a map where the Analysis engine has not loaded (no 
   vm.runInNewContext(read('js/help.js'), ctx);
   assert.strictEqual(HELP.flood[0], 'Flood zones');
   assert.strictEqual(vm.runInContext('typeof TK', vm.createContext(ctx)), 'undefined', 'TK stays inside help.js');
-  assert.match(read('js/app.js'), /js\/help\.js\?v=12/);
+  assert.match(read('js/app.js'), /js\/help\.js\?v=13/);
 });

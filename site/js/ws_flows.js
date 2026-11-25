@@ -103,7 +103,7 @@
   /** The same table in the file form the map reads (docs/scenarios.md, "Model outputs"): open it on the map under Tools, Scenarios, "Add a model output". The map labels it as computed, not observed. */
   function mapCsv(t, name) {
     const yr = new Date().getFullYear(), v = (s) => (name + ' ' + s).replace(/[^A-Za-z0-9_ .\-]/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 60);
-    const lines = ['# model_name: ' + name.replace(/[\r\n#]/g, ' ').slice(0, 100), '# model_version: 1', '# run_id: ' + new Date().toISOString().slice(0, 10), '# date: ' + new Date().toISOString().slice(0, 10), '# assumptions_url: https://observatory.foundationpr.org/workflows.html', '# licence: as the source files', '# contact_label: PR Data Observatory workflow', 'geography_key,geography_level,period,variable,value,unit'];
+    const lines = ['# model_name: ' + name.replace(/[\r\n#]/g, ' ').slice(0, 100), '# model_version: 1', '# run_id: ' + new Date().toISOString().slice(0, 10), '# date: ' + new Date().toISOString().slice(0, 10), '# assumptions_url: https://observatory.foundationpr.org/workflows.html', '# license: as the source files', '# contact_label: PR Data Observatory workflow', 'geography_key,geography_level,period,variable,value,unit'];
     Object.entries(t.by).forEach(([id, o]) => { lines.push([id, 'municipio', yr, v('places'), o.n, 'places'].map(csvCell).join(',')); if (t.marked) lines.push([id, 'municipio', yr, v('places inside'), o.n_in, 'places'].map(csvCell).join(',')); if (t.fld) lines.push([id, 'municipio', yr, v(t.fld), o.sum, ''].map(csvCell).join(',')); });
     download(slug(name) + '-for-the-map.csv', lines.join('\n') + '\n');
   }

@@ -18,17 +18,17 @@ resolves to the ScienceBase item, and the item's JSON (?format=json) and its fil
 SI_raster_for_SMAP.zip, the susceptibility index before its soil-moisture term, not the published classes). The freshness check watches the copy and the release's
 DOI record at DataCite (refresh/sources.json, usgs_landslide_map). So the build reads the map the way the repository reads that
 inventory: from the copy the first author (K. S. Hughes, University of Puerto Rico at Mayaguez) publishes on ArcGIS Online, a tile service of the 5 m raster
-("Susceptibilidad_Derrumbe_PR", item ae6770d5b81e4a0e918d58b001948cb3): 256-pixel PNG tiles with one flat colour per class (grey Low, yellow Moderate, orange High,
+("Susceptibilidad_Derrumbe_PR", item ae6770d5b81e4a0e918d58b001948cb3): 256-pixel PNG tiles with one flat color per class (gray Low, yellow Moderate, orange High,
 red Very High, blue-violet Extremely High; transparent where there is no data). The tiles of zoom level 15 (4.8 m a pixel in Web Mercator, about 4.5 m on the
 ground at Puerto Rico's latitude, finer than the 5 m cells) are decoded with zlib and numpy (no raster library: rasterio is not in the project's environment), each
-pixel's colour is turned back into its class, and the build stops if a tile holds any other colour. Two checks against the report prove that the tiles are the
+pixel's color is turned back into its class, and the build stops if a tile holds any other color. Two checks against the report prove that the tiles are the
 published map: the area of each class must be the report's share of the island (40, 30, 20, 9 and 1%, within 1 point) and its total about 8,700 km2; and the
 71,431 slope failures of the Hurricane Maria inventory (cache/environment, environment_series.py) must fall in the classes as the report's table 5 says (1.2, 10.0,
 29.4, 44.6 and 14.9%, within 2 points).
 
 How each figure is made (docs/landslide.md):
   - Land: each classified pixel is counted, with its ground area (Web Mercator pixels shrink by the square of the cosine of the latitude), in the barrio whose
-    outline (site/data/barrios.geojson) holds its centre, or the nearest outline within about 1 km (the generalised coast). A barrio's share of land in a class is the
+    outline (site/data/barrios.geojson) holds its center, or the nearest outline within about 1 km (the generalized coast). A barrio's share of land in a class is the
     classified area of the class over all the classified area of the barrio. A municipio's and Puerto Rico's shares come from the areas of their barrios.
   - Residents: each 2020 census block with residents (site/data/population_blocks.json) counts whole in the class of the pixel under its internal point, in the
     barrio whose outline holds the point. A share is over all the 2020 residents of the barrio (geo/crosswalk.json). Rough below the municipio: a block that a class
@@ -64,7 +64,7 @@ SERVICE = "https://tiles.arcgis.com/tiles/TQ9qkk0dURXSP7LQ/arcgis/rest/services/
 ITEM = "https://www.arcgis.com/sharing/rest/content/items/ae6770d5b81e4a0e918d58b001948cb3"
 Z = 15                                   # zoom level read: 4.78 m a pixel in Web Mercator, about 4.5 m on the ground at 18 degrees north
 BOX = (-67.30, 17.86, -65.56, 18.54)     # the main island (lon, lat); Vieques, Culebra and Mona are not in the model
-NEAR_DEG = 0.01                          # a classified pixel outside every barrio outline (the generalised coast) goes to the nearest outline within this distance (about 1 km)
+NEAR_DEG = 0.01                          # a classified pixel outside every barrio outline (the generalized coast) goes to the nearest outline within this distance (about 1 km)
 EARTH = 6378137.0
 CLASSES = ["low", "moderate", "high", "very_high", "extremely_high"]
 CLASS_VARS = [   # the share of the land in each class, one dataset each (added 2026-10-18, when the catalog had room): key, label, what the class is
@@ -74,7 +74,7 @@ CLASS_VARS = [   # the share of the land in each class, one dataset each (added 
     ("ls_cls_very_high_pct", "Land in the Very High landslide susceptibility class (USGS, %)", "Very High: the next 9%"),
     ("ls_cls_extremely_high_pct", "Land in the Extremely High landslide susceptibility class (USGS, %)", "Extremely High: the most susceptible 1%"),
 ]
-COLOURS = {(204, 204, 204): 1, (255, 255, 0): 2, (255, 170, 0): 3, (255, 0, 0): 4, (0, 92, 230): 5}   # the service's legend: grey, yellow, orange, red, blue-violet
+COLOURS = {(204, 204, 204): 1, (255, 255, 0): 2, (255, 170, 0): 3, (255, 0, 0): 4, (0, 92, 230): 5}   # the service's legend: gray, yellow, orange, red, blue-violet
 REPORT_AREA_PCT = [40, 30, 20, 9, 1]                 # Hughes and Schulz (2020), table 5: share of the island in each class
 REPORT_AREA_KM2 = 8700.2                             # table 5, total
 REPORT_SLIDES_PCT = [1.2, 10.0, 29.4, 44.6, 14.9]    # table 5: share of the 71,431 Hurricane Maria slope failures in each class
@@ -195,7 +195,7 @@ def item_info(refresh=False, offline=False):
 # ── PNG tiles to classes ─────────────────────────────────────────────────────
 
 def png_indexed(b):
-    """(palette indexes as a 2-D uint8 array, palette [(r, g, b)], alpha of each palette entry or None) of a palette PNG (colour type 3, not interlaced)."""
+    """(palette indexes as a 2-D uint8 array, palette [(r, g, b)], alpha of each palette entry or None) of a palette PNG (color type 3, not interlaced)."""
     import numpy as np
     if b[:8] != b"\x89PNG\r\n\x1a\n":
         raise ValueError("not a PNG")
@@ -216,7 +216,7 @@ def png_indexed(b):
             break
     w, h, depth, ctype, _, _, inter = hdr
     if ctype != 3 or inter != 0 or depth not in (1, 2, 4, 8):
-        raise ValueError(f"PNG colour type {ctype}, depth {depth}, interlace {inter}: only non-interlaced palette images are read")
+        raise ValueError(f"PNG color type {ctype}, depth {depth}, interlace {inter}: only non-interlaced palette images are read")
     raw = zlib.decompress(b"".join(idat))
     stride = (w * depth + 7) // 8
     rows = np.zeros((h, stride), dtype=np.uint8)
@@ -256,7 +256,7 @@ def png_indexed(b):
 
 
 def tile_classes(b):
-    """The class of each pixel of a tile (0 no data, 1 Low ... 5 Extremely High); a colour outside the legend stops the build."""
+    """The class of each pixel of a tile (0 no data, 1 Low ... 5 Extremely High); a color outside the legend stops the build."""
     import numpy as np
     idx, plte, trns = png_indexed(b)
     lut = np.zeros(256, dtype=np.uint8)
@@ -265,13 +265,13 @@ def tile_classes(b):
         if alpha == 0:
             continue
         if alpha != 255 or rgb not in COLOURS:
-            raise SystemExit(f"landslide: a tile holds the colour {rgb} (alpha {alpha}), which is not in the map's legend: the service changed; read it again by hand")
+            raise SystemExit(f"landslide: a tile holds the color {rgb} (alpha {alpha}), which is not in the map's legend: the service changed; read it again by hand")
         lut[k] = COLOURS[rgb]
     return lut[idx]
 
 
 def pixel_grid(x, y):
-    """Longitude and latitude of the centre of every pixel of a tile (256 x 256), and each pixel's ground area in m2."""
+    """Longitude and latitude of the center of every pixel of a tile (256 x 256), and each pixel's ground area in m2."""
     import numpy as np
     n = 256 * 2 ** Z
     c = (np.arange(256) + 0.5)

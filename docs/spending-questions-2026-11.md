@@ -48,7 +48,7 @@ ABRE Puerto Rico's ABRE Tu Municipio (abretumunicipio.org) publishes a yearly Fi
 **Recommendation: link, do not copy.**
 - **It is a different question.** ABRE answers how healthy a municipal government's finances are. The observatory answers what public money, mostly federal and Commonwealth, is assigned in the municipio's territory, and how far it has gone. They complement each other.
 - **Their compilation is theirs.** ABRE's website disclaimer (section 7) says the site's design, text, graphics and data compilation are its property, protected by copyright. The underlying public records keep their original terms.
-- **Their CSV is not a stable source.** The download is labelled `data_export_test_DEV.csv` and has one year (2023) for 78 municipios.
+- **Their CSV is not a stable source.** The download is labeled `data_export_test_DEV.csv` and has one year (2023) for 78 municipios.
 - **Lean open data.** Copying would duplicate a maintained product, which the project lead asked to avoid.
 
 So the Public spending page's scope note, which says municipal budgets are outside, would link to ABRE Tu Municipio for municipal finances. The municipio view (step 5) would link to that municipio's ABRE report. Municipal budgets and public corporations stay outside the observatory's figures.

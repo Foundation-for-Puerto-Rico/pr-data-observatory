@@ -209,7 +209,7 @@
   "group": "Regulated sites (EPA)",
   "kind": "variable",
   "plain": "How many municipal solid waste landfills, open or closed, EPA's landfill gas program lists in each barrio and municipio.",
-  "definition": "Municipal solid waste landfills in EPA's Landfill Methane Outreach Program (LMOP) database, open or closed. LMOP does not list every landfill, and lists no open dumps, transfer stations, recycling centres, industrial or hazardous waste landfills.",
+  "definition": "Municipal solid waste landfills in EPA's Landfill Methane Outreach Program (LMOP) database, open or closed. LMOP does not list every landfill, and lists no open dumps, transfer stations, recycling centers, industrial or hazardous waste landfills.",
   "unit": "landfills",
   "value_type": "count",
   "geography": "901 barrios, 78 municipalities and Puerto Rico",
@@ -341,7 +341,7 @@
    "last": 2024,
    "frequency": "One snapshot; each dataset in its source's vintage (TRI reporting year 2024; FRS, Green Book and CMS read 2026-10-17; ATTAINS 2024 cycle; LMOP data of 2024-09; HUD CHAS 2016-2020; TIGER/Line 2026). Rebuilt with python conditions.py --refresh."
   },
-  "method": "conditions.py projects the areas and the barrio outlines (barrios.geojson) on an equal-area plane centred on Puerto Rico, and measures the share of each barrio's area inside the union of the areas; a municipio's and Puerto Rico's shares are worked out from the areas of their barrios. The units are the 179 of 336 Puerto Rico units with on303dlist = Y.",
+  "method": "conditions.py projects the areas and the barrio outlines (barrios.geojson) on an equal-area plane centered on Puerto Rico, and measures the share of each barrio's area inside the union of the areas; a municipio's and Puerto Rico's shares are worked out from the areas of their barrios. The units are the 179 of 336 Puerto Rico units with on303dlist = Y.",
   "sources": [
    "epa_attains",
    "census_tiger"
@@ -404,7 +404,7 @@
    "last": 2026,
    "frequency": "One snapshot; each dataset in its source's vintage (TRI reporting year 2024; FRS, Green Book and CMS read 2026-10-17; ATTAINS 2024 cycle; LMOP data of 2024-09; HUD CHAS 2016-2020; TIGER/Line 2026). Rebuilt with python conditions.py --refresh."
   },
-  "method": "conditions.py projects the areas and the barrio outlines (barrios.geojson) on an equal-area plane centred on Puerto Rico, and measures the share of each barrio's area inside the union of the areas; a municipio's and Puerto Rico's shares are worked out from the areas of their barrios.",
+  "method": "conditions.py projects the areas and the barrio outlines (barrios.geojson) on an equal-area plane centered on Puerto Rico, and measures the share of each barrio's area inside the union of the areas; a municipio's and Puerto Rico's shares are worked out from the areas of their barrios.",
   "sources": [
    "epa_greenbook",
    "census_tiger"
@@ -464,7 +464,7 @@
    "last": 2026,
    "frequency": "One snapshot; each dataset in its source's vintage (TRI reporting year 2024; FRS, Green Book and CMS read 2026-10-17; ATTAINS 2024 cycle; LMOP data of 2024-09; HUD CHAS 2016-2020; TIGER/Line 2026). Rebuilt with python conditions.py --refresh."
   },
-  "method": "conditions.py projects the areas and the barrio outlines (barrios.geojson) on an equal-area plane centred on Puerto Rico, and measures the share of each barrio's area inside the union of the areas; a municipio's and Puerto Rico's shares are worked out from the areas of their barrios.",
+  "method": "conditions.py projects the areas and the barrio outlines (barrios.geojson) on an equal-area plane centered on Puerto Rico, and measures the share of each barrio's area inside the union of the areas; a municipio's and Puerto Rico's shares are worked out from the areas of their barrios.",
   "sources": [
    "epa_greenbook",
    "census_tiger"
@@ -590,7 +590,7 @@
   "source_detail": "HUD CHAS 2016-2020 by census tract (HUD eGIS): (T2_EST3 + T2_EST127) / T2_EST1",
   "how_to_read": "16.1% in Puerto Rico; San Juan and Salinas 20.6%, Guánica 7.4%. Barrio estimates run from 3% to 31% (median 14%).",
   "caveats": [
-   "The barrio values are estimates spread from tracts, so neighbouring barrios that share a tract look alike.",
+   "The barrio values are estimates spread from tracts, so neighboring barrios that share a tract look alike.",
    "No margins of error are published in HUD's layer; read small differences as noise."
   ],
   "see_also": [
@@ -704,7 +704,7 @@
    "census_tiger"
   ],
   "source_detail": "US Census Bureau TIGER/Line 2026 EDGES; 2020 Census land area",
-  "how_to_read": "34 per square mile for Puerto Rico; San Juan 159, Cataño 131, Bayamón 117; Culebra 9. Town-centre barrios pass 600 (Gurabo pueblo 741); the median barrio has 31.",
+  "how_to_read": "34 per square mile for Puerto Rico; San Juan 159, Cataño 131, Bayamón 117; Culebra 9. Town-center barrios pass 600 (Gurabo pueblo 741); the median barrio has 31.",
   "caveats": [
    "Land area includes forests and farms, so a rural barrio with a dense village still reads low.",
    "The original WCRP index gave 124.5 for Puerto Rico with TIGER 2020; it does not say which roads or nodes it counted, so the two are not comparable."
@@ -776,7 +776,7 @@
   "how_to_read": "10.9 minutes on average for Puerto Rico's residents with a road link; San Juan 1.9, Orocovis 37.6. The farthest barrio is Cacaos in Orocovis (48.6). 41 barrios hold a general hospital.",
   "caveats": [
    "Free-flow speeds: no traffic, lights or stops, so real trips take longer; the road distance is the firmer figure.",
-   "A hospital point can be a few hundred metres off where OpenStreetMap or HHS placed it; HHS's points are the rougher ones.",
+   "A hospital point can be a few hundred meters off where OpenStreetMap or HHS placed it; HHS's points are the rougher ones.",
    "Which barrios show 0 is uncertain near the 15 hospitals placed at HHS's geocoded address, not at their OpenStreetMap building: for 13 of the 27 hospitals placed by name that HHS also places, HHS's point falls in another barrio.",
    "The original WCRP index measured from each barrio's centroid; this measures from where its residents live.",
    "Vieques and Culebra have no value: the trip needs a ferry or a flight. Two uninhabited barrios (Isla de Mona, Santa Rosa in Utuado) have none either."
@@ -818,7 +818,7 @@
   ],
   "group": "Distance to a general hospital",
   "kind": "variable",
-  "plain": "How many kilometres of road separate where a barrio's people live from the nearest general hospital with an emergency room. An estimate made by the observatory.",
+  "plain": "How many kilometers of road separate where a barrio's people live from the nearest general hospital with an emergency room. An estimate made by the observatory.",
   "definition": "The road distance from a barrio's population-weighted point to the nearest general acute care hospital with emergency services in CMS's Hospital General Information list, along the observatory's OpenStreetMap roads in either direction. 0 when the barrio holds a hospital. A municipio's figure is the average of its barrios weighted by 2020 residents. Vieques and Culebra have no road link to a hospital and no value.",
   "unit": "km",
   "value_type": "ratio",

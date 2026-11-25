@@ -5,7 +5,7 @@
      margin of error   a survey estimate (ACS) whose published margin (90% confidence) is above 30% of the estimate; an estimate of zero with any margin counts
      small number      a rate or a share built on fewer than 10 counted: one more or one less moves it a lot (a dataset of administrative counts, such as the health center sites HRSA lists, says `counted: false`: a site is a site, the count is not an estimate from a few cases)
      withheld          the source hides a figure that could identify one employer (QCEW), so the place has no value
-   The flags describe the published estimates. Margins of error are not carried through a normalisation (per 1,000 residents, index, change ...); the layer says so.
+   The flags describe the published estimates. Margins of error are not carried through a normalization (per 1,000 residents, index, change ...); the layer says so.
 
      Reliability.isUnreliable(value, moe)    true when a margin of error is above 30% of the estimate
      Reliability.assess(E, L, ev)            { moe, small, flagged, withheld, notCarried, n }: for each place (the island is not among them) whether a flag applies, and how many places each flag marks
@@ -49,7 +49,7 @@
     return out;
   }
 
-  /** The lines under a layer in a legend. A shaded layer is hatched where it is flagged, a layer of symbols has a dashed outline; both are also written, so colour is never the only cue. */
+  /** The lines under a layer in a legend. A shaded layer is hatched where it is flagged, a layer of symbols has a dashed outline; both are also written, so color is never the only cue. */
   function notes(E, L, ev) {
     const r = assess(E, L, ev), fill = L.mode !== 'symbol', swatch = fill ? 'hatch' : 'dash', out = [];
     if (r.n.moe) out.push({ kind: 'moe', n: r.n.moe, swatch, label: fill ? T('Hatched: margin of error above 30% of the estimate') : T('Dashed outline: margin of error above 30% of the estimate') });

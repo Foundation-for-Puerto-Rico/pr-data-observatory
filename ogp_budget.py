@@ -17,7 +17,7 @@ have no FY27 money, so its FY25 and FY26 columns fall short of its totals and ar
 are not read. A sheet marked "Privileged & Confidential" is skipped even when it is posted publicly (the draft FY27 proposal of 2026-03-17).
 
 Every line goes through the function crosswalk (dictionary_src/spending_crosswalk.csv, reviewed on 2026-11-09, HANDOFF decision 92; spending.ogp_function), and its
-normalised records (spending.FIELDS: level state, fiscal-year basis July to June, island-wide, no municipio) are written to
+normalized records (spending.FIELDS: level state, fiscal-year basis July to June, island-wide, no municipio) are written to
 cache/spending/records/ogp.csv and checked with spending.validate. A new agency or concept code stops the build instead of landing in "other".
 
 output: site/data/spending_state.json. years: the fiscal years present; columns: one per fiscal year and stage, with the sheet it came from and OGP's stated total; agencies: code to name;
@@ -55,7 +55,7 @@ LOCAL_SHEET = re.compile(r"href=\"((?!https?:)[^\"?#]*Sab[a-z]+[^\"?#]*\.xlsx)\"
 STAGE = {"gastado": "actual", "aprobado": "approved", "propuesto": "proposed"}
 FUNDS = {"fondo general": "general", "fondos especiales": "special", "fondos federales": "federal"}
 TOLERANCE = 0.005
-TERMS = "Public record of the Government of Puerto Rico (OGP); no licence stated"
+TERMS = "Public record of the Government of Puerto Rico (OGP); no license stated"
 log = hs.log
 
 

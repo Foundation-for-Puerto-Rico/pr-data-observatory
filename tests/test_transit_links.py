@@ -16,7 +16,7 @@ DATA = ROOT / "site" / "data"
 
 
 def muni(geoid, name, x0, x1):
-    """A made-up municipio: a 10 km square, its centre in the middle."""
+    """A made-up municipio: a 10 km square, its center in the middle."""
     k = 10000
     lng, lat = (x0 + x1) / 2 * k / tl.KX, 0.5 * k / tl.KY
     return {"geoid": geoid, "name": name, "lat": lat, "lng": lng, "geom_m": box(x0 * k, 0, x1 * k, k)}
@@ -35,12 +35,12 @@ class Rules(unittest.TestCase):
     MUNIS = [muni("72001", "A", 0, 1), muni("72003", "B", 1, 2), muni("72005", "C", 2, 3)]
 
     def test_a_route_joins_where_it_ends_and_the_centres_it_passes(self):
-        through = wkt([(5000, 5000), (15000, 5000), (25000, 5000)])   # ends in A and C, passes B's centre
-        bypass = wkt([(5000, 9500), (15000, 9500), (25000, 9500)])    # ends in A and C, crosses B 4.5 km from its centre
+        through = wkt([(5000, 5000), (15000, 5000), (25000, 5000)])   # ends in A and C, passes B's center
+        bypass = wkt([(5000, 9500), (15000, 9500), (25000, 9500)])    # ends in A and C, crosses B 4.5 km from its center
         local = wkt([(5000, 5000), (5000, 8000)])
         r = {x["code"]: x for x in tl.publicos(csv_bytes([(through, "A - C via B", "I-1"), (bypass, "A - C", "I-2"), (local, "A - Bo. X", "L-1")]), self.MUNIS)}
         self.assertEqual(r["I-1"]["munis"], ["72001", "72003", "72005"])
-        self.assertEqual(r["I-2"]["munis"], ["72001", "72005"], "a route that only crosses a municipio far from its centre does not join it")
+        self.assertEqual(r["I-2"]["munis"], ["72001", "72005"], "a route that only crosses a municipio far from its center does not join it")
         self.assertEqual(r["L-1"]["munis"], ["72001"])
         self.assertEqual(tl.publico_pairs(list(r.values())), {("72001", "72003"): ["I-1"], ("72001", "72005"): ["I-1", "I-2"], ("72003", "72005"): ["I-1"]})
 
@@ -56,8 +56,8 @@ class Rules(unittest.TestCase):
 
 class TransitTimes(unittest.TestCase):
     def test_a_direct_trip_and_one_with_a_transfer(self):
-        """Two municipios 10 km apart: a bus from A's centre to a stop on the way (7:00 to 7:10), a second bus from a stop 100 m away to B's centre
-        (7:20 to 7:40). Leaving A at 7:00 arrives at 7:40: 40 minutes, one transfer. A third municipio with no stop near its centre has no trip."""
+        """Two municipios 10 km apart: a bus from A's center to a stop on the way (7:00 to 7:10), a second bus from a stop 100 m away to B's center
+        (7:20 to 7:40). Leaving A at 7:00 arrives at 7:40: 40 minutes, one transfer. A third municipio with no stop near its center has no trip."""
         from unittest import mock
         k = 10000
         a, b, c = muni("72001", "A", 0, 1), muni("72003", "B", 1, 2), muni("72005", "C", 2, 3)
@@ -177,7 +177,7 @@ class Published(unittest.TestCase):
             self.assertEqual(have[k]["properties"]["mode"], "ferry")
 
     def test_a_stop_counts_where_its_point_is(self):
-        """transport.json puts the Cataño terminal in San Juan (nearest town centre); place_stops puts it in Cataño, whose outline is nearest."""
+        """transport.json puts the Cataño terminal in San Juan (nearest town center); place_stops puts it in Cataño, whose outline is nearest."""
         munis = [muni("72033", "Cataño", 0, 1), muni("72127", "San Juan", 1.05, 2)]
         stops = [{"id": "pier", "lng": 0.5 * 10000 / tl.KX, "lat": -50 / tl.KY, "municipality": "San Juan"},   # 50 m off Cataño's shore
                  {"id": "in", "lng": 1.5 * 10000 / tl.KX, "lat": 0.5 * 10000 / tl.KY}]

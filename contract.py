@@ -1,7 +1,7 @@
 """Domain registry and data contract: validation.
 
   python contract.py             check dictionary_src/domains.json and dictionary_src/datasets.json against the files in site/data/
-  python contract.py --reviews   also list every open review (personal data, licence, compliance)
+  python contract.py --reviews   also list every open review (personal data, license, compliance)
 
 The build (build.py) runs this first and stops on any error. Rules and the checklist for adding data: docs/adding-data.md.
 
@@ -354,7 +354,7 @@ def validate_datasets(ds, reg, sources, aliases, data_dir=DATA, scan=True):
             err(f"time.type '{t.get('type')}' is not one of {TIME_TYPES}")
         if t.get("type") in ("period", "window", "vintage", "event") and not t.get("years_path"):
             err(f"time.type '{t.get('type')}' needs time.years_path so the years can be checked against the file", "warn")
-        # sources and licence
+        # sources and license
         sl = r.get("sources")
         worst = 0
         if not (isinstance(sl, list) and sl):
@@ -400,7 +400,7 @@ def validate_datasets(ds, reg, sources, aliases, data_dir=DATA, scan=True):
             elif rv.get("date") is None and rv["status"] == "cleared":
                 err(f"the cleared {rv['type']} review has no date: the Data management page shows 'Cleared' without one", "warn")
         if lc == "licensed-not-open" and not any(rv.get("type") == "licence" for rv in revs if isinstance(rv, dict)):
-            err("a licensed-not-open dataset needs a 'licence' review entry stating what permission is needed")
+            err("a licensed-not-open dataset needs a 'license' review entry stating what permission is needed")
         fl = r.get("flags")
         if fl is not None:
             if not (isinstance(fl, list) and all(x in FLAGS for x in fl) and len(set(fl)) == len(fl)):

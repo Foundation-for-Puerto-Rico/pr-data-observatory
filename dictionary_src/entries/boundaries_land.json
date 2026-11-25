@@ -1195,7 +1195,7 @@
       "A map unit names its typical soil; other soils, up to a large share of the unit (see share), sit inside it. Do not use it to decide what is under a single lot.",
       "NRCS ratings are made at the scale of the survey and do not replace a study of the site by a licensed professional.",
       "The flooding answer is the soil's own record of flooding and wetness, not a flood zone. The official flood zones are the FEMA ones (hazards.flood_zones_layer).",
-      "Under Urban land alone the answer comes from a geologic map at 1:100,000 made in 1998, not from the soil survey: it says what kind of ground the neighbourhood stands on, not how often it floods.",
+      "Under Urban land alone the answer comes from a geologic map at 1:100,000 made in 1998, not from the soil survey: it says what kind of ground the neighborhood stands on, not how often it floods.",
       "Water, quarries, landfills, made land and areas NRCS marks as not public information have no soil described and are shown as not rated."
     ],
     "see_also": [
@@ -1473,7 +1473,7 @@
     "group": "Soils: map layer",
     "kind": "variable",
     "plain": "How steep the ground is where the soil lies, in percent: the typical value and its range.",
-    "definition": "The representative slope gradient of the main soil (component.slope_r) and its low and high values (slope_l, slope_h), in percent: metres of rise for every 100 m across.",
+    "definition": "The representative slope gradient of the main soil (component.slope_r) and its low and high values (slope_l, slope_h), in percent: meters of rise for every 100 m across.",
     "unit": "percent",
     "value_type": "level",
     "geography": "Puerto Rico, Vieques, Culebra and Mona: each soil map unit",
@@ -1520,7 +1520,7 @@
     "group": "Soils: map layer",
     "kind": "variable",
     "plain": "The acidity, organic matter, salinity and lime of the top 30 cm of the soil.",
-    "definition": "Thickness-weighted means over the horizons of the main soil in the top 30 cm: ph is the pH in water (1:1, ph1to1h2o_r), om the organic matter in percent of weight (om_r), ec the electrical conductivity in decisiemens per metre, a measure of salinity (ec_r), and caco3 the calcium carbonate equivalent in percent, the lime (caco3_r). Empty for land types with no soil.",
+    "definition": "Thickness-weighted means over the horizons of the main soil in the top 30 cm: ph is the pH in water (1:1, ph1to1h2o_r), om the organic matter in percent of weight (om_r), ec the electrical conductivity in decisiemens per meter, a measure of salinity (ec_r), and caco3 the calcium carbonate equivalent in percent, the lime (caco3_r). Empty for land types with no soil.",
     "unit": "pH; percent; dS/m; percent",
     "value_type": "level",
     "geography": "Puerto Rico, Vieques, Culebra and Mona: each soil map unit",
@@ -3216,7 +3216,7 @@
       "last": 2006,
       "frequency": "2006 delimitation; downloaded once"
     },
-    "method": "comunidades.py pages the public copy of the layer, checks that every municipality name matches the observatory's list, simplifies each shape for display (tolerance 0.00005 degrees, about 5 m) and rounds coordinates to 5 decimals. Barrio names are changed from capitals to title case. km2 is the layer's Shape_Area (square metres in the Junta's State Plane projection) divided by 1,000,000, so it is measured on the original shape.",
+    "method": "comunidades.py pages the public copy of the layer, checks that every municipality name matches the observatory's list, simplifies each shape for display (tolerance 0.00005 degrees, about 5 m) and rounds coordinates to 5 decimals. Barrio names are changed from capitals to title case. km2 is the layer's Shape_Area (square meters in the Junta's State Plane projection) divided by 1,000,000, so it is measured on the original shape.",
     "sources": [
       "jp_comunidades_especiales"
     ],
@@ -3415,7 +3415,7 @@
       "last": 2026,
       "frequency": "Community outlines from 2006; flood zones as of the FEMA download (2026-10-06). Recomputed each time comunidades.py runs."
     },
-    "method": "comunidades.py intersects the full-detail community polygon with the full-detail SFHA polygons (not the simplified copies the maps draw), merges the overlapping pieces so no area counts twice, and divides by the community's area. Both areas are measured in degrees², which over one community gives the same ratio as true areas. km² uses the Junta's Shape_Area, so sfha_km2 and km2 agree. A check against the simplified map copy of the flood zones, measured in kilometres, differs by more than 1 percentage point for 8 communities, at most 3.7 points (on a 0.03 km² community).",
+    "method": "comunidades.py intersects the full-detail community polygon with the full-detail SFHA polygons (not the simplified copies the maps draw), merges the overlapping pieces so no area counts twice, and divides by the community's area. Both areas are measured in degrees², which over one community gives the same ratio as true areas. km² uses the Junta's Shape_Area, so sfha_km2 and km2 agree. A check against the simplified map copy of the flood zones, measured in kilometers, differs by more than 1 percentage point for 8 communities, at most 3.7 points (on a 0.03 km² community).",
     "sources": [
       "jp_comunidades_especiales",
       "fema_nfhl"
@@ -3466,7 +3466,7 @@
       "last": 2026,
       "frequency": "List copied on 2026-10-06; updated by hand"
     },
-    "method": "wcrp.py reads wcrp_comunidades.csv: 72 rows from the WCRP-RAG list and 7 phase-1 communities from FPR's Smartsheet tracker, which the WCRP-RAG does not list yet. For each row without a point it looks, in the same municipality, for a Comunidad Especial with a similar name, then an OpenStreetMap place with the same name, then a Census barrio with the same name; Centro Urbano and Casco Urbano plans go to the town centre. FPR placed the other 29 by hand, from what each plan says about its location or, for communities without a plan yet, from the program's tracker; the CSV cites the source. The script checks that every point lies within about 100 m of its municipality.",
+    "method": "wcrp.py reads wcrp_comunidades.csv: 72 rows from the WCRP-RAG list and 7 phase-1 communities from FPR's Smartsheet tracker, which the WCRP-RAG does not list yet. For each row without a point it looks, in the same municipality, for a Comunidad Especial with a similar name, then an OpenStreetMap place with the same name, then a Census barrio with the same name; Centro Urbano and Casco Urbano plans go to the town center. FPR placed the other 29 by hand, from what each plan says about its location or, for communities without a plan yet, from the program's tracker; the CSV cites the source. The script checks that every point lies within about 100 m of its municipality.",
     "sources": [
       "fpr_wcrp",
       "jp_comunidades_especiales",
@@ -3474,12 +3474,12 @@
       "census_tiger"
     ],
     "source_detail": "wcrp_comunidades.csv (columns comunidad, municipio, region); comunidades.geojson and gazetteer.json for the points",
-    "how_to_read": "Use it to see where the program works and to compare with other layers, such as flood zones or the Comunidades Especiales. Do not read the dot as the community's boundary or its centre.",
+    "how_to_read": "Use it to see where the program works and to compare with other layers, such as flood zones or the Comunidades Especiales. Do not read the dot as the community's boundary or its center.",
     "caveats": [
       "Each dot is approximate. The plans draw the community's area only in a PDF map, so the observatory has no outlines yet.",
       "Three plans of the program serve a population group, not an area (people without a home in Ponce, and immigrant and vulnerable populations in Río Piedras). They are not on the map: on 2026-11-23 FPR decided that groups of people are not shown as points on a public map.",
       "One community, Ceiba Carmelita, also reaches into Vega Baja; its dot is in Vega Alta.",
-      "El Cerro (Naranjito) has a provisional point at the town centre: no source gives its location yet."
+      "El Cerro (Naranjito) has a provisional point at the town center: no source gives its location yet."
     ],
     "see_also": [
       "boundaries.wcrp_estado",
@@ -3535,7 +3535,7 @@
       "plan_aprobado": "The Puerto Rico Department of Housing approved the community's resilience plan.",
       "en_proceso": "The community is still writing its plan."
     },
-    "how_to_read": "On the map, each community is marked with the centre figure of the WCRP program logo: solid orange for an approved plan and an orange outline for a plan in progress. When several plans share a point, the marker is solid if any of them is approved; the popup lists each one with its own marker.",
+    "how_to_read": "On the map, each community is marked with the center figure of the WCRP program logo: solid orange for an approved plan and an orange outline for a plan in progress. When several plans share a point, the marker is solid if any of them is approved; the popup lists each one with its own marker.",
     "caveats": [
       "A snapshot of 2026-10-06. Plans approved later show as in progress until FPR updates the CSV."
     ],
@@ -3563,9 +3563,9 @@
     "id": "boundaries.wcrp_subrecipiente",
     "name": "WCRP subrecipient",
     "kind": "variable",
-    "plain": "The organisation that leads the community's planning work for the program: a municipality, a university or a nonprofit.",
-    "definition": "The subrecipiente field, copied as written. 16 organisations appear in the 76 rows.",
-    "unit": "organisation name",
+    "plain": "The organization that leads the community's planning work for the program: a municipality, a university or a nonprofit.",
+    "definition": "The subrecipiente field, copied as written. 16 organizations appear in the 76 rows.",
+    "unit": "organization name",
     "value_type": "text",
     "geography": "76 WCRP communities",
     "coverage": {
@@ -3579,9 +3579,9 @@
       "fpr_wcrp"
     ],
     "source_detail": "wcrp_comunidades.csv, column subrecipiente",
-    "how_to_read": "Use it to see which organisation to ask about a community's plan.",
+    "how_to_read": "Use it to see which organization to ask about a community's plan.",
     "caveats": [
-      "Names are copied as written, so the same organisation could appear under two spellings if the list changes."
+      "Names are copied as written, so the same organization could appear under two spellings if the list changes."
     ],
     "see_also": [
       "boundaries.wcrp_comunidades"
@@ -3628,12 +3628,12 @@
     "source_detail": "wcrp_comunidades.csv, columns ubicacion and referencia",
     "values": {
       "comunidad_especial": "A point inside the Comunidad Especial with that name (Junta de Planificación, 2006).",
-      "osm": "The OpenStreetMap place or landmark with that name: a barrio or sector label, a school, a park or a community centre.",
+      "osm": "The OpenStreetMap place or landmark with that name: a barrio or sector label, a school, a park or a community center.",
       "barrio_censo": "A point inside the Census barrio with that name.",
-      "pueblo": "The town centre of the municipality.",
+      "pueblo": "The town center of the municipality.",
       "manual": "Coordinates that the plan itself gives."
     },
-    "how_to_read": "A comunidad_especial point is usually inside the community. An osm or barrio_censo point can be a kilometre or more away when the community is one sector of a large barrio.",
+    "how_to_read": "A comunidad_especial point is usually inside the community. An osm or barrio_censo point can be a kilometer or more away when the community is one sector of a large barrio.",
     "caveats": [
       "None of these places is the community's own boundary. Some landmarks, such as a school the plan names, may sit just outside it."
     ],

@@ -214,7 +214,7 @@
       "census_tiger"
     ],
     "source_detail": "transport.json (ATI and municipal GTFS feeds read on 2026-10-02) and feed end dates from operators.json; municipality boundaries from Census TIGERweb Generalized_ACS2023 State_County layer 11 (500k, shoreline-clipped)",
-    "how_to_read": "In the 2026-10 snapshot the island has 966 such stops, in 10 municipalities: Caguas 291, Ponce 276, San Lorenzo 159, Juncos 128, Fajardo 81, Cidra 14, Hatillo 11, Gurabo 4, Carolina 1 and Las Piedras 1. They belong to 7 operators whose feeds ended: Ponce on 2024-12-31, Hatillo on 2025-12-31, Cidra on 2026-01-15, Caguas on 2026-01-31, San Lorenzo on 2026-02-28, Fajardo on 2026-06-15 and Juncos on 2026-07-31. A stop can lie in a neighbouring municipality: Gurabo has no feed of its own. A feed can run out of dates while buses still run, so a large count is not proof that service stopped.",
+    "how_to_read": "In the 2026-10 snapshot the island has 966 such stops, in 10 municipalities: Caguas 291, Ponce 276, San Lorenzo 159, Juncos 128, Fajardo 81, Cidra 14, Hatillo 11, Gurabo 4, Carolina 1 and Las Piedras 1. They belong to 7 operators whose feeds ended: Ponce on 2024-12-31, Hatillo on 2025-12-31, Cidra on 2026-01-15, Caguas on 2026-01-31, San Lorenzo on 2026-02-28, Fajardo on 2026-06-15 and Juncos on 2026-07-31. A stop can lie in a neighboring municipality: Gurabo has no feed of its own. A feed can run out of dates while buses still run, so a large count is not proof that service stopped.",
     "caveats": [
       "The state is judged on the as-of date. Renewing a feed moves its stops to stops_current at the next run.",
       "Stop records are not merged, so one physical stop with two records counts twice (see municipalities.gtfs_stops).",
@@ -334,7 +334,7 @@
       "The scheduled-stop rule rests on the stop name alone. A stop named Terminal counts as a station whatever it looks like, and a station with another name is missed. In some municipal feeds the accented letter is missing from the name. Examples from the 2026-10 snapshot: San Lorenzo's feed has 8 stops, all named \"Terminal\" and all at one location, so all 8 count. In Canóvanas, \"Estacin Multimodal\" stays an ordinary stop. In Guaynabo, \"Estacion tren Torrimar\" counts as a bus station about 160 m from the rail station \"Estación Torrimar\", so one place counts twice.",
       "Counts records, not buildings. In the 2026-10 snapshot, San Juan's 13 include a boarding record and an alighting record of the same terminal (Sagrado Corazón) and two records with the same name, \"Estacion Martinez Nadal\".",
       "In the 2026-10 snapshot, 39 of the 47 OpenStreetMap bus stations have público or pública in the name (33 say Carros Públicos, shared-taxi terminals); the observatory holds no timetable for them.",
-      "Until the 2026-11 fix, the ATI terminal named Terminal de Cataño was counted in San Juan: it falls just outside every municipal boundary, and the build gave such a point the municipality with the nearest centre point, so Cataño showed 0. It now takes the nearest boundary and counts in Cataño.",
+      "Until the 2026-11 fix, the ATI terminal named Terminal de Cataño was counted in San Juan: it falls just outside every municipal boundary, and the build gave such a point the municipality with the nearest center point, so Cataño showed 0. It now takes the nearest boundary and counts in Cataño.",
       "OpenStreetMap is mapped by volunteers, so coverage is uneven. Its data carry the ODbL (Open Database License); read the license before reusing them.",
       "The nightly refresh counts the stations again from transport.json, so the scheduled stations follow the feeds. The OpenStreetMap stations change only at a full build (see municipalities.transit_data_updates)."
     ],
@@ -447,7 +447,7 @@
     "how_to_read": "A ferry terminal marks a boat connection. This is a count, not a rate, and it does not tell which routes or how many sailings serve the terminal. In the 2026-10 snapshot the island has 13 ferry terminals: 6 from the ATI feed and 7 from OpenStreetMap.",
     "caveats": [
       "OpenStreetMap ferry terminals can include other piers. In the 2026-10 snapshot they include a cruise-ship pier in San Juan and two terminals with no name.",
-      "A terminal over water belongs to the municipality whose boundary is nearest. Until the 2026-11 fix it went to the municipality with the nearest centre point, which can differ from the municipality the service is named for: the Cataño ferry terminal (and the Cataño bus terminal) was counted in San Juan, and Cataño showed 0 ferry terminals. Both now count in Cataño.",
+      "A terminal over water belongs to the municipality whose boundary is nearest. Until the 2026-11 fix it went to the municipality with the nearest center point, which can differ from the municipality the service is named for: the Cataño ferry terminal (and the Cataño bus terminal) was counted in San Juan, and Cataño showed 0 ferry terminals. Both now count in Cataño.",
       "OpenStreetMap is mapped by volunteers, so coverage is uneven. Its data carry the ODbL (Open Database License); read the license before reusing them.",
       "The nightly refresh counts the terminals again from transport.json, so the scheduled terminals follow the feeds. The OpenStreetMap terminals change only at a full build (see municipalities.transit_data_updates)."
     ],
@@ -719,7 +719,7 @@
       "One page on one date. Uber can change its list without notice, and the observatory does not update it between builds. It was not re-checked after 2026-10-01.",
       "Uber's page says its service reaches beyond the places it lists, so a municipality that is not listed may still have Uber service.",
       "The source is a company's public web page, and the observatory records only a yes/no per municipality. Check Uber's terms before reusing the list.",
-      "The map shades listed municipalities in one colour and the others in grey; the legend repeats that this is a listing, not measured coverage."
+      "The map shades listed municipalities in one color and the others in gray; the legend repeats that this is a listing, not measured coverage."
     ],
     "see_also": [
       "municipalities.taxi_stands"
@@ -763,7 +763,7 @@
       "last": 2026,
       "frequency": "Recomputed at each full build and at each run of the nightly transit refresh (access.py); the files are rewritten only when a value changes."
     },
-    "method": "access.py measures the straight-line distance from every place to every stop of kind transit stop, bus stop, bus station, rail station or ferry terminal, takes the nearest in metres and flags the place when it is 400 m or less (the flag is transit_400m in places.json). A place belongs to the municipality where its point falls. The field counts the flagged places among the municipality's counted tourism places.",
+    "method": "access.py measures the straight-line distance from every place to every stop of kind transit stop, bus stop, bus station, rail station or ferry terminal, takes the nearest in meters and flags the place when it is 400 m or less (the flag is transit_400m in places.json). A place belongs to the municipality where its point falls. The field counts the flagged places among the municipality's counted tourism places.",
     "sources": [
       "overture",
       "ati_gtfs",
@@ -772,10 +772,10 @@
       "census_tiger"
     ],
     "source_detail": "Overture Maps places (release 2026-09-23.1, downloaded 1 October 2026; tourism places as classified by Foundation for Puerto Rico (FPR)); stops from transport.json: ATI and municipal GTFS (General Transit Feed Specification) feeds, and OpenStreetMap extract of 1 October 2026; municipality boundaries from Census TIGERweb Generalized_ACS2023 State_County layer 11 (500k, shoreline-clipped)",
-    "how_to_read": "It counts places near a mapped stop. It shows where stops are, not where service runs today, because it counts stops whose timetable has ended and stops that volunteers mapped. Earlier versions of the observatory labelled it 'within 400 m of transit'. For places near a stop with a timetable in force, use acc_cur400_pct. To compare municipalities of different size, use transit_pct, which divides this count by the tourism places in assets. It says nothing about service frequency, hours or the route a person would walk. The Municipality tab's \"places within 400 m of any mapped stop\" tile in the map is a live percentage of the places you have filtered, not this stored count. In the 2026-10 snapshot the island total is 11,507 of 24,209 tourism places.",
+    "how_to_read": "It counts places near a mapped stop. It shows where stops are, not where service runs today, because it counts stops whose timetable has ended and stops that volunteers mapped. Earlier versions of the observatory labeled it 'within 400 m of transit'. For places near a stop with a timetable in force, use acc_cur400_pct. To compare municipalities of different size, use transit_pct, which divides this count by the tourism places in assets. It says nothing about service frequency, hours or the route a person would walk. The Municipality tab's \"places within 400 m of any mapped stop\" tile in the map is a live percentage of the places you have filtered, not this stored count. In the 2026-10 snapshot the island total is 11,507 of 24,209 tourism places.",
     "caveats": [
       "Straight-line distance ignores hills, fences, rivers and street crossings. See municipalities.walk_rule_400m.",
-      "A stop in a neighbouring municipality counts for a place near the border.",
+      "A stop in a neighboring municipality counts for a place near the border.",
       "It counts stops of timetables that have ended and volunteer-mapped stops. In the 2026-10 snapshot 3,717 of the 11,507 places have no stop with a current timetable within 400 m (see acc_paper_pct). OpenStreetMap coverage is uneven.",
       "Licenses differ by source: volunteer-mapped OpenStreetMap stops carry the ODbL (Open Database License), the municipal feeds state no license, and the feed of the Autoridad de Transporte Integrado (ATI) is provided as is. Check each source's terms before reusing the stops.",
       "The values are recomputed from the stops file at each full build and at each run of the nightly refresh, which also updates the places' own nearest-stop fields. The barrio counts are rebuilt only at a full build.",
@@ -813,7 +813,7 @@
     "group": "Transit access of tourism places",
     "kind": "variable",
     "plain": "Out of every 100 tourism places in the municipality, how many stand within 400 m (a quarter mile), in a straight line, of any mapped stop, station or terminal, including stops whose timetable has ended and stops that volunteers mapped. It measures places, not residents.",
-    "definition": "places_near_transit divided by assets (the tourism places counted in the municipality: confidence 0.50 or higher, places of worship left out), times 100, rounded to one decimal. The denominator is tourism places, not residents. In the file the value is never empty: a municipality with no transit stops (transit_stops = 0) holds 0.0, or a small value when a place lies near a stop in a neighbouring municipality.",
+    "definition": "places_near_transit divided by assets (the tourism places counted in the municipality: confidence 0.50 or higher, places of worship left out), times 100, rounded to one decimal. The denominator is tourism places, not residents. In the file the value is never empty: a municipality with no transit stops (transit_stops = 0) holds 0.0, or a small value when a place lies near a stop in a neighboring municipality.",
     "unit": "% of tourism places",
     "value_type": "rate",
     "geography": "78 municipalities",
@@ -832,9 +832,9 @@
       "census_tiger"
     ],
     "source_detail": "Overture Maps places (release 2026-09-23.1, downloaded 1 October 2026); stops from transport.json: ATI and municipal GTFS (General Transit Feed Specification) feeds, and OpenStreetMap extract of 1 October 2026; municipality boundaries from Census TIGERweb Generalized_ACS2023 State_County layer 11 (500k, shoreline-clipped)",
-    "how_to_read": "A high value means most of the municipality's visitor places are close to a mapped stop. It is a measure of where stops are, not of service: a stop with one bus a day counts the same as a station, and a stop whose timetable has ended counts as well. For places near a stop whose timetable has not ended, use acc_cur400_pct; the difference between the two is acc_paper_pct. In the 2D map a municipality with no mapped stops has no colour or rank, for this share and for the access shares; the 0.0 stored for it is not a measured 0%. The municipality panel in the map recomputes the share from the places that pass your current filters, so it can differ from this field. In the 2026-10 snapshot the file ranges from 0.0 to 95.4 (San Juan); island-wide, 47.5%.",
+    "how_to_read": "A high value means most of the municipality's visitor places are close to a mapped stop. It is a measure of where stops are, not of service: a stop with one bus a day counts the same as a station, and a stop whose timetable has ended counts as well. For places near a stop whose timetable has not ended, use acc_cur400_pct; the difference between the two is acc_paper_pct. In the 2D map a municipality with no mapped stops has no color or rank, for this share and for the access shares; the 0.0 stored for it is not a measured 0%. The municipality panel in the map recomputes the share from the places that pass your current filters, so it can differ from this field. In the 2026-10 snapshot the file ranges from 0.0 to 95.4 (San Juan); island-wide, 47.5%.",
     "caveats": [
-      "In the 2026-10 snapshot, the 14 municipalities with transit_stops = 0 hold 0.0 in the file, except Toa Alta (0.5) and Arroyo (0.9), where one place lies near a stop in a neighbouring municipality. The 2D map and the downloaded municipality table show these as no data; the Housing page profile and the 3D map show the stored values, which are not a measured transit share.",
+      "In the 2026-10 snapshot, the 14 municipalities with transit_stops = 0 hold 0.0 in the file, except Toa Alta (0.5) and Arroyo (0.9), where one place lies near a stop in a neighboring municipality. The 2D map and the downloaded municipality table show these as no data; the Housing page profile and the 3D map show the stored values, which are not a measured transit share.",
       "A municipality with only one or two mapped stops still gets a percentage. In the 2026-10 snapshot, 24 municipalities have exactly one stop. In 20 of them it is a single volunteer-mapped bus station, mostly a carros públicos (shared taxi) terminal (for example Sabana Grande 40.7%, Camuy 16.0%). Read such values as \"near that one terminal\", not as transit coverage.",
       "transit_pct counts volunteer-mapped stops and stops of ended timetables; pop_served_pct counts scheduled stops only. In the 2026-10 snapshot Mayagüez shows 23.9% and 0.2%. Do not compare the two. For a like-for-like comparison use acc_cur400_pct (places) with pop_served_active_pct (residents): both need a timetable that has not ended.",
       "Straight-line distance, not a walking route. See municipalities.walk_rule_400m.",
@@ -924,8 +924,8 @@
       "The values change on the day a feed ends. In the 2026-10 snapshot 9 of the 18 current feeds end between 2026-10-31 and 2027-01-31, among them San Juan's municipal feed (see methods.access_profile).",
       "A municipality with few places can swing widely: the smallest has 36 places, so one place is 2.8 points. Check access_n before you compare shares.",
       "Counts are listings from Overture Maps, not businesses, rooms or visitors.",
-      "The nearest stop can lie in a neighbouring municipality. In the 2026-10 snapshot Mayagüez shows 4.8% although it has no stop with a current timetable inside its border.",
-      "A municipality with no stop counted inside its border (14 in the 2026-10 snapshot) holds the stored value: 0.0, or a small value where a place lies near a stop in a neighbouring municipality (for example 0.5 for Toa Alta). That is not a measured 0%. The 2D map leaves it unshaded and unranked, and the downloaded municipality table leaves it blank."
+      "The nearest stop can lie in a neighboring municipality. In the 2026-10 snapshot Mayagüez shows 4.8% although it has no stop with a current timetable inside its border.",
+      "A municipality with no stop counted inside its border (14 in the 2026-10 snapshot) holds the stored value: 0.0, or a small value where a place lies near a stop in a neighboring municipality (for example 0.5 for Toa Alta). That is not a measured 0%. The 2D map leaves it unshaded and unranked, and the downloaded municipality table leaves it blank."
     ],
     "see_also": [
       "municipalities.acc_cur800_pct",
@@ -1060,7 +1060,7 @@
       "Públicos (shared taxis and vans), taxis, ride-hailing, rental cars and tour shuttles are in no timetable, so they are not counted.",
       "The values change on the day a feed ends. In the 2026-10 snapshot 9 of the 18 current feeds end between 2026-10-31 and 2027-01-31, among them San Juan's municipal feed (see methods.access_profile).",
       "A municipality with few places can swing widely: the smallest has 36 places, so one place is 2.8 points. Check access_n before you compare shares.",
-      "A municipality with no stop counted inside its border (14 in the 2026-10 snapshot) holds the stored value: 0.0, or a small value where a place lies near a stop in a neighbouring municipality (for example 0.5 for Toa Alta). That is not a measured 0%. The 2D map leaves it unshaded and unranked, and the downloaded municipality table leaves it blank."
+      "A municipality with no stop counted inside its border (14 in the 2026-10 snapshot) holds the stored value: 0.0, or a small value where a place lies near a stop in a neighboring municipality (for example 0.5 for Toa Alta). That is not a measured 0%. The 2D map leaves it unshaded and unranked, and the downloaded municipality table leaves it blank."
     ],
     "see_also": [
       "municipalities.acc_cur400_pct",
@@ -1133,7 +1133,7 @@
       "A stop with a current timetable is not proof of service. It shows that a schedule is published, not that vehicles run on time or at all. The observatory has no real-time data.",
       "The values change on the day a feed ends. In the 2026-10 snapshot 9 of the 18 current feeds end between 2026-10-31 and 2027-01-31, among them San Juan's municipal feed (see methods.access_profile).",
       "A municipality with few places can swing widely: the smallest has 36 places, so one place is 2.8 points. Check access_n before you compare shares.",
-      "A municipality with no stop counted inside its border (14 in the 2026-10 snapshot) holds the stored value: 0.0, or a small value where a place lies near a stop in a neighbouring municipality (for example 0.5 for Toa Alta). That is not a measured 0%. The 2D map leaves it unshaded and unranked, and the downloaded municipality table leaves it blank."
+      "A municipality with no stop counted inside its border (14 in the 2026-10 snapshot) holds the stored value: 0.0, or a small value where a place lies near a stop in a neighboring municipality (for example 0.5 for Toa Alta). That is not a measured 0%. The 2D map leaves it unshaded and unranked, and the downloaded municipality table leaves it blank."
     ],
     "see_also": [
       "municipalities.acc_sun400_pct",
@@ -1198,7 +1198,7 @@
       "A stop with a current timetable is not proof of service. It shows that a schedule is published, not that vehicles run on time or at all. The observatory has no real-time data.",
       "The values change on the day a feed ends. In the 2026-10 snapshot 9 of the 18 current feeds end between 2026-10-31 and 2027-01-31, among them San Juan's municipal feed (see methods.access_profile).",
       "A municipality with few places can swing widely: the smallest has 36 places, so one place is 2.8 points. Check access_n before you compare shares.",
-      "A municipality with no stop counted inside its border (14 in the 2026-10 snapshot) holds the stored value: 0.0, or a small value where a place lies near a stop in a neighbouring municipality (for example 0.5 for Toa Alta). That is not a measured 0%. The 2D map leaves it unshaded and unranked, and the downloaded municipality table leaves it blank."
+      "A municipality with no stop counted inside its border (14 in the 2026-10 snapshot) holds the stored value: 0.0, or a small value where a place lies near a stop in a neighboring municipality (for example 0.5 for Toa Alta). That is not a measured 0%. The 2D map leaves it unshaded and unranked, and the downloaded municipality table leaves it blank."
     ],
     "see_also": [
       "municipalities.acc_sat400_pct",
@@ -1320,7 +1320,7 @@
       "Públicos (shared taxis and vans), taxis, ride-hailing, rental cars and tour shuttles are in no timetable, so they are not counted.",
       "Straight-line distance, not a walking route (see municipalities.walk_rule_400m). The share by walking along mapped roads is in the acc_walk fields (acc_walk400_pct, acc_walk800_pct, acc_wfreq400_pct).",
       "A municipality with few places can swing widely: the smallest has 36 places, so one place is 2.8 points. Check access_n before you compare shares.",
-      "A municipality with no stop counted inside its border (14 in the 2026-10 snapshot) holds the stored value: 0.0, or a small value where a place lies near a stop in a neighbouring municipality (for example 0.5 for Toa Alta). That is not a measured 0%. The 2D map leaves it unshaded and unranked, and the downloaded municipality table leaves it blank."
+      "A municipality with no stop counted inside its border (14 in the 2026-10 snapshot) holds the stored value: 0.0, or a small value where a place lies near a stop in a neighboring municipality (for example 0.5 for Toa Alta). That is not a measured 0%. The 2D map leaves it unshaded and unranked, and the downloaded municipality table leaves it blank."
     ],
     "see_also": [
       "municipalities.acc_cur400_pct",
@@ -1386,7 +1386,7 @@
     "how_to_read": "Read it before you compare shares: a share of a municipality with few places can swing widely. In the 2026-10 snapshot the values add up to 24,209 and range from 36 to 3,424 (San Juan). Multiply a share by this number and divide by 100 to get the number of places, to the nearest place. The Municipality tab's live tiles use the places that pass your filters, not this number.",
     "caveats": [
       "Counts are listings from Overture Maps, not businesses, rooms or visitors.",
-      "A place outside every municipality boundary takes the municipality whose boundary is nearest (in the 2026-10 snapshot, the nearest centre; see methods.municipality_assignment)."
+      "A place outside every municipality boundary takes the municipality whose boundary is nearest (in the 2026-10 snapshot, the nearest center; see methods.municipality_assignment)."
     ],
     "see_also": [
       "municipalities.assets",
@@ -1457,7 +1457,7 @@
     "group": "Transit access of residents",
     "kind": "variable",
     "plain": "How many residents of the municipality live within 400 m (a quarter mile), in a straight line, of a scheduled transit stop. It uses 2020 Census counts.",
-    "definition": "Number of residents (2020 Census) who live in a Census block whose internal point (the point inside the block that the Census Bureau stores for it) is less than 401 m in a straight line from the nearest scheduled stop: the build rounds the distance down to whole metres, so a block up to 400.9 m away counts (see municipalities.pop_served_method). Scheduled stops are the boarding points in the timetable feeds of the Autoridad de Transporte Integrado (ATI) and the municipal systems (field gtfs_stops), including feeds whose timetable has expired. The stop may lie in another municipality.",
+    "definition": "Number of residents (2020 Census) who live in a Census block whose internal point (the point inside the block that the Census Bureau stores for it) is less than 401 m in a straight line from the nearest scheduled stop: the build rounds the distance down to whole meters, so a block up to 400.9 m away counts (see municipalities.pop_served_method). Scheduled stops are the boarding points in the timetable feeds of the Autoridad de Transporte Integrado (ATI) and the municipal systems (field gtfs_stops), including feeds whose timetable has expired. The stop may lie in another municipality.",
     "unit": "residents (2020 Census)",
     "value_type": "count",
     "geography": "78 municipalities",
@@ -1467,7 +1467,7 @@
       "last": 2026,
       "frequency": "Recomputed in each full build and by the nightly transit refresh when a feed changes (transit data built 2026-10-02)."
     },
-    "method": "network.py places each of the 36,570 populated 2020 Census blocks at its internal point (fields INTPTLAT and INTPTLON), finds the nearest scheduled stop (nearest by latitude and longitude) and adds the block's population to the municipality's total when the straight-line distance, rounded down to whole metres, is 400 or less. The municipality comes from the county code in the block's ID. See municipalities.pop_served_method.",
+    "method": "network.py places each of the 36,570 populated 2020 Census blocks at its internal point (fields INTPTLAT and INTPTLON), finds the nearest scheduled stop (nearest by latitude and longitude) and adds the block's population to the municipality's total when the straight-line distance, rounded down to whole meters, is 400 or less. The municipality comes from the county code in the block's ID. See municipalities.pop_served_method.",
     "sources": [
       "census_tiger",
       "ati_gtfs",
@@ -1846,8 +1846,8 @@
     "domains": ["environment.land"],
     "group": "Land use plan: area",
     "kind": "variable",
-    "plain": "How many square kilometres of the municipality the 2015 land use plan puts in each of four groups: urban, urbanizable, ordinary rural and especially protected rural. Water and roads are left out.",
-    "definition": "An object with up to four numbers, in square kilometres rounded to one decimal: urban, urbanizable, rustic (ordinary rural) and protected. Each is the summed area of the plan polygons of that group that the plan assigns to the municipality. A group is missing when the municipality has no polygon of that class. A value of 0.0 means a polygon exists but its area rounds to 0.0 km² (under 0.05 km²). Class codes: see municipalities.landuse_classes.",
+    "plain": "How many square kilometers of the municipality the 2015 land use plan puts in each of four groups: urban, urbanizable, ordinary rural and especially protected rural. Water and roads are left out.",
+    "definition": "An object with up to four numbers, in square kilometers rounded to one decimal: urban, urbanizable, rustic (ordinary rural) and protected. Each is the summed area of the plan polygons of that group that the plan assigns to the municipality. A group is missing when the municipality has no polygon of that class. A value of 0.0 means a polygon exists but its area rounds to 0.0 km² (under 0.05 km²). Class codes: see municipalities.landuse_classes.",
     "unit": "km² of land by plan group",
     "value_type": "level",
     "geography": "78 municipalities",
@@ -1857,7 +1857,7 @@
       "last": 2015,
       "frequency": "Fixed to the 2015 plan; recomputed only if the plan or the municipal list changes."
     },
-    "method": "landuse.py reads the Plan de Uso de Terrenos 2015 polygons, maps each class to a group, and sums each polygon's Shape_Area (square metres in the plan's projected coordinates) divided by 1,000,000 per municipality and group, using the municipality named in the plan. Water and road polygons are not summed. See land.put_statistics.",
+    "method": "landuse.py reads the Plan de Uso de Terrenos 2015 polygons, maps each class to a group, and sums each polygon's Shape_Area (square meters in the plan's projected coordinates) divided by 1,000,000 per municipality and group, using the municipality named in the plan. Water and road polygons are not summed. See land.put_statistics.",
     "sources": [
       "jp_put2015"
     ],
@@ -1868,7 +1868,7 @@
       "rustic": "Land classed Suelo Rústico Común (SRC), ordinary rural land.",
       "protected": "Land classed Suelo Rústico Especialmente Protegido (SREP and its subtypes)."
     },
-    "how_to_read": "Use the areas when you need square kilometres. For shares, use urban_pct, urbanizable_pct, rustic_common_pct and protected_land_pct. In the CSV (comma-separated values, spreadsheet) download the object becomes four columns: landuse_km2_urban, landuse_km2_urbanizable, landuse_km2_rustic and landuse_km2_protected. A column is blank where the municipality has no polygon of that group. In the 2015 plan, urbanizable land is missing for 27 municipalities and ordinary rural land for Cataño, and the four values add to 8,409.1 km² for the island, about 95% of the Census land area (8,868.5 km²).",
+    "how_to_read": "Use the areas when you need square kilometers. For shares, use urban_pct, urbanizable_pct, rustic_common_pct and protected_land_pct. In the CSV (comma-separated values, spreadsheet) download the object becomes four columns: landuse_km2_urban, landuse_km2_urbanizable, landuse_km2_rustic and landuse_km2_protected. A column is blank where the municipality has no polygon of that group. In the 2015 plan, urbanizable land is missing for 27 municipalities and ordinary rural land for Cataño, and the four values add to 8,409.1 km² for the island, about 95% of the Census land area (8,868.5 km²).",
     "caveats": [
       "A plan designation from 2015: it shows how the Junta de Planificación classified the land, not today's land cover or what stands on it.",
       "The classified area can be well under the Census land area. In the 2015 plan, Mayagüez covers 134.0 of 200.9 km²: the plan has no polygon on Isla de Mona, which the Census boundary places in Mayagüez, so Mayagüez's figures leave Mona out.",
@@ -1902,7 +1902,7 @@
     "domains": ["environment.land"],
     "group": "Land use plan: area",
     "kind": "variable",
-    "plain": "Out of every 100 square kilometres of classified land in the municipality, how many the 2015 land use plan marks as urban land (Suelo Urbano). Water and roads are left out.",
+    "plain": "Out of every 100 square kilometers of classified land in the municipality, how many the 2015 land use plan marks as urban land (Suelo Urbano). Water and roads are left out.",
     "definition": "Area of plan polygons of class SU (Suelo Urbano) divided by the area of all urban, urbanizable, ordinary rural and protected polygons of the municipality, times 100.",
     "unit": "% of classified land area",
     "value_type": "rate",
@@ -1968,7 +1968,7 @@
     "domains": ["environment.land"],
     "group": "Land use plan: area",
     "kind": "variable",
-    "plain": "Out of every 100 square kilometres of classified land in the municipality, how many the 2015 land use plan reserves for future urban growth (Suelo Urbanizable). Water and roads are left out.",
+    "plain": "Out of every 100 square kilometers of classified land in the municipality, how many the 2015 land use plan reserves for future urban growth (Suelo Urbanizable). Water and roads are left out.",
     "definition": "Area of plan polygons of classes SURP (Suelo Urbanizable Programado, programmed) and SURNP (Suelo Urbanizable No Programado, not programmed) divided by the area of all urban, urbanizable, ordinary rural and protected polygons of the municipality, times 100.",
     "unit": "% of classified land area",
     "value_type": "rate",
@@ -2025,7 +2025,7 @@
     "domains": ["environment.land"],
     "group": "Land use plan: area",
     "kind": "variable",
-    "plain": "Out of every 100 square kilometres of classified land in the municipality, how many the 2015 land use plan marks as ordinary rural land (Suelo Rústico Común). Water and roads are left out.",
+    "plain": "Out of every 100 square kilometers of classified land in the municipality, how many the 2015 land use plan marks as ordinary rural land (Suelo Rústico Común). Water and roads are left out.",
     "definition": "Area of plan polygons of class SRC (Suelo Rústico Común, ordinary rural land) divided by the area of all urban, urbanizable, ordinary rural and protected polygons of the municipality, times 100.",
     "unit": "% of classified land area",
     "value_type": "rate",
@@ -2073,7 +2073,7 @@
     "domains": ["environment.land"],
     "group": "Land use plan: area",
     "kind": "variable",
-    "plain": "Out of every 100 square kilometres of classified land in the municipality, how many the 2015 land use plan marks as specially protected rural land. Water and roads are left out.",
+    "plain": "Out of every 100 square kilometers of classified land in the municipality, how many the 2015 land use plan marks as specially protected rural land. Water and roads are left out.",
     "definition": "Area of plan polygons of class SREP (Suelo Rústico Especialmente Protegido) and its subtypes (SREP-A, SREP-E, SREP-H, SREP-AE, SREP-AH, SREP-AP, SREP-EA, SREP-EH, SREP-EP, SREP-P) divided by the area of all urban, urbanizable, ordinary rural and protected polygons of the municipality, times 100.",
     "unit": "% of classified land area",
     "value_type": "rate",
@@ -2184,7 +2184,7 @@
       ],
       "view": [
         {
-          "label": "Housing page: municipality profile (labelled \"Tourism places on protected rural land\")",
+          "label": "Housing page: municipality profile (labeled \"Tourism places on protected rural land\")",
           "href": "housing.html#profile"
         }
       ]
@@ -2237,7 +2237,7 @@
       ],
       "view": [
         {
-          "label": "Housing page: municipality profile (labelled \"Tourism places on protected rural land\")",
+          "label": "Housing page: municipality profile (labeled \"Tourism places on protected rural land\")",
           "href": "housing.html#profile"
         }
       ]
@@ -2270,7 +2270,7 @@
       "census_tiger"
     ],
     "source_detail": "Overture Maps places (release 2026-09-23.1, downloaded 1 October 2026); Junta de Planificación, Plan de Uso de Terrenos (PUT 2015); municipality boundaries from Census TIGERweb Generalized_ACS2023 State_County layer 11 (500k, shoreline-clipped)",
-    "how_to_read": "A high value means most listings stand on urban land. In the 2026-10 snapshot the value ranges from 29.8% (Maricao) to 81.6% (Guaynabo), and 66.2% of listings island-wide (21,418 of 32,369) stand on urban land. Listings on a street polygon (5,858 of those 32,369, 18.1%) are not counted as urban, even in a town centre. The value therefore understates the share of listings in built-up areas.",
+    "how_to_read": "A high value means most listings stand on urban land. In the 2026-10 snapshot the value ranges from 29.8% (Maricao) to 81.6% (Guaynabo), and 66.2% of listings island-wide (21,418 of 32,369) stand on urban land. Listings on a street polygon (5,858 of those 32,369, 18.1%) are not counted as urban, even in a town center. The value therefore understates the share of listings in built-up areas.",
     "caveats": [
       "This count uses every place listing in the municipality (32,541 on the island in the 2026-10 snapshot), including places of worship and listings below confidence 0.50, not only the tourism places counted in assets. See municipalities.counting_rules.",
       "Not the same as urban_pct, which is a share of land area.",
@@ -2411,7 +2411,7 @@
     "group": "Transit methods and categories",
     "kind": "method",
     "plain": "The observatory treats a place or a block as near transit when a stop lies within 400 m (a quarter mile) in a straight line. This entry says which stops each measure uses.",
-    "definition": "The observatory counts a place or a block as near transit when a stop lies 400 m or less away in a straight line. The distance is a planning assumption, not a measure of how far people walk. All fixed distances are listed in transit.distance_rules. The distance is measured to a stop in any municipality. The measures use the rule with different stop sets. The walking measures for tourism places (tw_m in place_access.json; acc_walk400_pct, acc_walk800_pct and acc_wfreq400_pct; the barrio counts acc_walk400 and acc_wfreq400) apply the same 400 m and 800 m to the distance walked along mapped roads instead of the straight line (see place_access.tw_m). Tourism places near any mapped stop (places_near_transit, transit_pct): the nearest stop, bus station, rail station or ferry terminal of transit_stops, scheduled or volunteer-mapped, from any feed including those that have ended. Tourism places near a stop with a current timetable (acc_cur400_pct, acc_freq400_pct, acc_sat400_pct and acc_sun400_pct; acc_cur800_pct uses 800 m): scheduled stops of operators whose feed has not ended on access_as_of, with the distance rounded up to whole metres. Residents (pop_served_400m, pop_served_pct, pop_served_active_pct, pop_served_ati, pop_served_muni): scheduled stops only, measured from each Census block's internal point; pop_served_active_pct skips expired feeds. The overall resident share rounds the distance down to whole metres before it tests 400 m (see municipalities.pop_served_method).",
+    "definition": "The observatory counts a place or a block as near transit when a stop lies 400 m or less away in a straight line. The distance is a planning assumption, not a measure of how far people walk. All fixed distances are listed in transit.distance_rules. The distance is measured to a stop in any municipality. The measures use the rule with different stop sets. The walking measures for tourism places (tw_m in place_access.json; acc_walk400_pct, acc_walk800_pct and acc_wfreq400_pct; the barrio counts acc_walk400 and acc_wfreq400) apply the same 400 m and 800 m to the distance walked along mapped roads instead of the straight line (see place_access.tw_m). Tourism places near any mapped stop (places_near_transit, transit_pct): the nearest stop, bus station, rail station or ferry terminal of transit_stops, scheduled or volunteer-mapped, from any feed including those that have ended. Tourism places near a stop with a current timetable (acc_cur400_pct, acc_freq400_pct, acc_sat400_pct and acc_sun400_pct; acc_cur800_pct uses 800 m): scheduled stops of operators whose feed has not ended on access_as_of, with the distance rounded up to whole meters. Residents (pop_served_400m, pop_served_pct, pop_served_active_pct, pop_served_ati, pop_served_muni): scheduled stops only, measured from each Census block's internal point; pop_served_active_pct skips expired feeds. The overall resident share rounds the distance down to whole meters before it tests 400 m (see municipalities.pop_served_method).",
     "unit": "not applicable",
     "value_type": "text",
     "geography": "Puerto Rico (78 municipalities)",
@@ -2421,7 +2421,7 @@
       "last": 2026,
       "frequency": "Recomputed in each full build and by the nightly transit refresh when a feed changes (transit data built 2026-10-02)."
     },
-    "method": "Distance in metres = square root of (dlat × 111,320)² plus (dlng × 111,320 × cos(mean latitude))², with dlat and dlng in degrees. A place is near when its nearest stop is 400 m or less away; for the nearest stop with a current timetable the distance is rounded up to whole metres (ts_m), so ts_m of 400 or less is the test. Against a computation in projected metres the formula is about 0.6% long north to south, so a share can read up to 0.1 point lower. For the overall resident share, a block is near when the distance to its nearest stop, rounded down to whole metres, is 400 or less. For the resident figures that count the Autoridad de Transporte Integrado (ATI) feed, the municipal feeds or active feeds, a block is near when any stop of that group is 400 m or less away.",
+    "method": "Distance in meters = square root of (dlat × 111,320)² plus (dlng × 111,320 × cos(mean latitude))², with dlat and dlng in degrees. A place is near when its nearest stop is 400 m or less away; for the nearest stop with a current timetable the distance is rounded up to whole meters (ts_m), so ts_m of 400 or less is the test. Against a computation in projected meters the formula is about 0.6% long north to south, so a share can read up to 0.1 point lower. For the overall resident share, a block is near when the distance to its nearest stop, rounded down to whole meters, is 400 or less. For the resident figures that count the Autoridad de Transporte Integrado (ATI) feed, the municipal feeds or active feeds, a block is near when any stop of that group is 400 m or less away.",
     "sources": [
       "ati_gtfs",
       "muni_gtfs",
@@ -2464,7 +2464,7 @@
     "group": "Transit methods and categories",
     "kind": "method",
     "plain": "Residents are placed by 2020 Census block, and a block counts as served when a scheduled stop lies within 400 m. This entry gives the steps and the known limits.",
-    "definition": "The observatory takes the 36,570 Census blocks of Puerto Rico that had at least one resident in 2020 (3,285,874 people). Each block's population sits at the block's internal point, the point inside the block that the Census Bureau stores (fields INTPTLAT and INTPTLON). The block's municipality is read from the county code in its ID, so each municipality's total equals population_2020 in all 78 municipalities. For each block: served is true when the nearest scheduled stop, from any feed, any municipality, is less than 401 m away (the distance is rounded down to whole metres); active is true when a stop of an operator whose feed has not expired is 400 m or less away; ATI is true when a stop of the Autoridad de Transporte Integrado (ATI) feed is 400 m or less away; municipal is true when a stop of any other feed is 400 m or less away. Each field adds the populations of the blocks with the flag.",
+    "definition": "The observatory takes the 36,570 Census blocks of Puerto Rico that had at least one resident in 2020 (3,285,874 people). Each block's population sits at the block's internal point, the point inside the block that the Census Bureau stores (fields INTPTLAT and INTPTLON). The block's municipality is read from the county code in its ID, so each municipality's total equals population_2020 in all 78 municipalities. For each block: served is true when the nearest scheduled stop, from any feed, any municipality, is less than 401 m away (the distance is rounded down to whole meters); active is true when a stop of an operator whose feed has not expired is 400 m or less away; ATI is true when a stop of the Autoridad de Transporte Integrado (ATI) feed is 400 m or less away; municipal is true when a stop of any other feed is 400 m or less away. Each field adds the populations of the blocks with the flag.",
     "unit": "not applicable",
     "value_type": "text",
     "geography": "Puerto Rico (78 municipalities)",
@@ -2474,7 +2474,7 @@
       "last": 2026,
       "frequency": "Recomputed in each full build and by the nightly transit refresh when a feed changes (transit data built 2026-10-02)."
     },
-    "method": "network.coverage() runs in build.py and again in refresh_network.py. The overall served flag looks up the single nearest stop by latitude and longitude and rounds its distance in metres down to a whole number. The active, ATI and municipal flags look at every stop in a small search window around the block and then test the exact distance against 400 m, so the two tests can differ slightly.",
+    "method": "network.coverage() runs in build.py and again in refresh_network.py. The overall served flag looks up the single nearest stop by latitude and longitude and rounds its distance in meters down to a whole number. The active, ATI and municipal flags look at every stop in a small search window around the block and then test the exact distance against 400 m, so the two tests can differ slightly.",
     "sources": [
       "census_tiger",
       "ati_gtfs",
@@ -2484,7 +2484,7 @@
     "how_to_read": "The counts are estimates of how many people live near a stop. They treat everyone in a block as living at one point, so a large rural block with people spread along a road is approximated.",
     "caveats": [
       "ATI plus municipal can exceed the overall count because people near both are counted in both. In the transit data built 2026-10-02, San Juan has 255,093 + 133,352 against 276,909 served.",
-      "The overall test and the other three tests differ slightly. In the transit data built 2026-10-02, recounting with exact distances gives 925,020 residents served island-wide instead of 925,788. 14 blocks (1,219 residents) count in the overall test only because their distance rounds down to 400 m. 4 blocks (451 residents) are missed because the nearest stop by coordinates is not the nearest in metres. The difference is under 1 percentage point in every municipality; the largest is Vega Baja (287 residents, 0.5 points).",
+      "The overall test and the other three tests differ slightly. In the transit data built 2026-10-02, recounting with exact distances gives 925,020 residents served island-wide instead of 925,788. 14 blocks (1,219 residents) count in the overall test only because their distance rounds down to 400 m. 4 blocks (451 residents) are missed because the nearest stop by coordinates is not the nearest in meters. The difference is under 1 percentage point in every municipality; the largest is Vega Baja (287 residents, 0.5 points).",
       "In the transit data built 2026-10-02, pop_served_active_pct is higher than pop_served_pct in Carolina (58.1 against 57.9) and Manatí (30.4 against 30.3) for the same reason: it uses the exact distance.",
       "Expired feeds count in the overall, ATI and municipal figures."
     ],
@@ -2692,7 +2692,7 @@
       "last": 2015,
       "frequency": "Fixed to the 2015 plan; recomputed only if the plan or the municipal list changes."
     },
-    "method": "landuse.py reads the plan polygons from the Junta de Planificación's official shapefile (reprojected to WGS84) or from the plan's hosted ArcGIS Online copy. Area is the plan's Shape_Area (square metres in the plan's projected coordinates) divided by 1,000,000. A polygon belongs to the municipality named in its Municipio attribute, matched to the 78 names ignoring accents and capitals. A listing belongs to the first polygon that contains its point. The statistics use the full polygons; landuse.geojson is a simplified display copy.",
+    "method": "landuse.py reads the plan polygons from the Junta de Planificación's official shapefile (reprojected to WGS84) or from the plan's hosted ArcGIS Online copy. Area is the plan's Shape_Area (square meters in the plan's projected coordinates) divided by 1,000,000. A polygon belongs to the municipality named in its Municipio attribute, matched to the 78 names ignoring accents and capitals. A listing belongs to the first polygon that contains its point. The statistics use the full polygons; landuse.geojson is a simplified display copy.",
     "sources": [
       "jp_put2015",
       "overture",
@@ -2949,7 +2949,7 @@
     "group": "Transit access of residents",
     "kind": "variable",
     "plain": "How many residents of the municipality live within a 400 m (quarter mile) walk, along mapped roads, of a scheduled transit stop. It uses 2020 Census counts. It is an estimate: the road map has no footpaths.",
-    "definition": "Number of residents (2020 Census) who live in a Census block whose internal point is a walk of 400 m or less, along mapped roads, from the nearest scheduled stop (rounded up to whole metres). Scheduled stops are the boarding points in the timetable feeds of ATI and the municipal systems, including feeds whose timetable has expired. It is pop_served_400m measured by walking instead of a straight line. The stop may lie in another municipality.",
+    "definition": "Number of residents (2020 Census) who live in a Census block whose internal point is a walk of 400 m or less, along mapped roads, from the nearest scheduled stop (rounded up to whole meters). Scheduled stops are the boarding points in the timetable feeds of ATI and the municipal systems, including feeds whose timetable has expired. It is pop_served_400m measured by walking instead of a straight line. The stop may lie in another municipality.",
     "unit": "residents (2020 Census)",
     "value_type": "count",
     "geography": "78 municipalities",
@@ -2959,7 +2959,7 @@
       "last": 2026,
       "frequency": "Recomputed in each full build and by the nightly transit refresh when a feed changes, from the road file the site publishes (roads.bin)."
     },
-    "method": "network.py (coverage) joins each of the 36,570 populated 2020 Census blocks, at its internal point, to the nearest walkable road within 150 m, and searches the walking network of walknet.py (every road of roads.bin except motorways and motorway links, both directions) from every scheduled stop up to 1,000 m. The walk is the connector, the path along the roads and the stop's connector, rounded up to whole metres, and never shorter than the straight line. A block with no walkable road within 150 m keeps its straight-line test: 4,002 of the 36,570 blocks, with 455,383 residents (13.9%), in the 2026-10 snapshot. A stop with no walkable road nearby counts at its straight-line distance.",
+    "method": "network.py (coverage) joins each of the 36,570 populated 2020 Census blocks, at its internal point, to the nearest walkable road within 150 m, and searches the walking network of walknet.py (every road of roads.bin except motorways and motorway links, both directions) from every scheduled stop up to 1,000 m. The walk is the connector, the path along the roads and the stop's connector, rounded up to whole meters, and never shorter than the straight line. A block with no walkable road within 150 m keeps its straight-line test: 4,002 of the 36,570 blocks, with 455,383 residents (13.9%), in the 2026-10 snapshot. A stop with no walkable road nearby counts at its straight-line distance.",
     "sources": [
       "census_tiger",
       "ati_gtfs",
@@ -3138,8 +3138,8 @@
     ],
     "group": "Land use plan: area",
     "kind": "variable",
-    "plain": "How many square kilometres of each municipality, and of all of Puerto Rico, the 2015 land use plan puts in each of its classes: urban, land for planned or reserve growth, ordinary rural, and the kinds of specially protected rural land. It is the data behind the land-use analysis.",
-    "definition": "landuse_summary.json holds one field per class (SU, SURP, SURNP, SRC, SREP, SREP-E, SREP-A, SREP-H, SREP-EH, SREP-AH, AGUA, VIAL): the km² of that class in each municipio (municipios, keyed by name, listed in names), in Puerto Rico (puerto_rico, the sum of the municipios) and in polygons with no municipio (unassigned). classes gives each class its label, group (urban, urbanizable, rustic, protected, water, road), colour (the map's) and in_share: false for water (AGUA) and road rights-of-way (VIAL), which shares of land leave out. SREP covers the specially protected rural land with no sub-class of its own colour (codes such as SREP-AE, SREP-EP, SREP-EA, SREP-P, SREP-AP), as the map draws it.",
+    "plain": "How many square kilometers of each municipality, and of all of Puerto Rico, the 2015 land use plan puts in each of its classes: urban, land for planned or reserve growth, ordinary rural, and the kinds of specially protected rural land. It is the data behind the land-use analysis.",
+    "definition": "landuse_summary.json holds one field per class (SU, SURP, SURNP, SRC, SREP, SREP-E, SREP-A, SREP-H, SREP-EH, SREP-AH, AGUA, VIAL): the km² of that class in each municipio (municipios, keyed by name, listed in names), in Puerto Rico (puerto_rico, the sum of the municipios) and in polygons with no municipio (unassigned). classes gives each class its label, group (urban, urbanizable, rustic, protected, water, road), color (the map's) and in_share: false for water (AGUA) and road rights-of-way (VIAL), which shares of land leave out. SREP covers the specially protected rural land with no sub-class of its own color (codes such as SREP-AE, SREP-EP, SREP-EA, SREP-P, SREP-AP), as the map draws it.",
     "unit": "km²",
     "value_type": "level",
     "geography": "78 municipalities and Puerto Rico",
@@ -3149,7 +3149,7 @@
       "last": 2015,
       "frequency": "Fixed to the 2015 plan; recomputed only if the plan or the municipal list changes."
     },
-    "method": "landuse.py (class_summary) adds the Shape_Area of the full-resolution polygons (square metres in the projected CRS, divided by 1,000,000), by class and by municipio, before the display copy is simplified. Rounded to 0.001 km². The four groups add up to the landuse_km2 of municipalities.json, which the urban_pct, protected_land_pct and the other share fields divide by.",
+    "method": "landuse.py (class_summary) adds the Shape_Area of the full-resolution polygons (square meters in the projected CRS, divided by 1,000,000), by class and by municipio, before the display copy is simplified. Rounded to 0.001 km². The four groups add up to the landuse_km2 of municipalities.json, which the urban_pct, protected_land_pct and the other share fields divide by.",
     "sources": [
       "jp_put2015"
     ],

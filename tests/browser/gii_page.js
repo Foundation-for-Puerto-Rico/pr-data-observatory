@@ -1,6 +1,6 @@
 // The Global Innovation Index page (site/gii.html; docs/analysis/gii-2021/README.md) in a real browser, in each language and width: the profile drawn as the
 // 2021 PDF (7 pillars, 21 sub-pillars, 80 indicators), every row a <details> that opens and closes, the printed values and ranks, updated values with their
-// year and its change arrow (only the arrow coloured, with words as its label), the indicative GII 2026 position "X/N" with its † note, the GII 2026
+// year and its change arrow (only the arrow colored, with words as its label), the indicative GII 2026 position "X/N" with its † note, the GII 2026
 // status badges, "Changes in the index since 2020" loaded only when opened, a link to one indicator, the Knowledge Area tabs all alike, no horizontal
 // scroll, no missing Spanish and a clean console.
 //   chrome --headless=new --remote-debugging-port=9333 --user-data-dir=<a scratch folder> --no-first-run     (or your own port in CDP_PORT)
@@ -45,17 +45,17 @@ async function page(lang, width) {
     check(tag, 'the * and hourglass marks, N/D, the FPR estimate label', marks.star && marks.hg && marks.nd === 'N/D' && marks.f.includes(W.fpr), marks);
     const printed = await p.eval("[...document.querySelectorAll('.gp-ind')].filter(d => d.querySelector('.gp-rank b').textContent.includes('/ 132')).length");
     check(tag, '56 printed ranks', printed === 56, printed);
-    // the change arrow: shape, colour on the arrow only, words as its label
+    // the change arrow: shape, color on the arrow only, words as its label
     const a = await p.eval(`(() => { const s = ${sum('1.1.2')}, g = s.querySelector('.gp-chg'), b = ${sum('2.1.3')}.querySelector('.gp-chg'), cs = (e) => getComputedStyle(e).color;
       return { g: g.textContent, gl: g.getAttribute('aria-label'), role: g.getAttribute('role'), gc: cs(g), bl: b.getAttribute('aria-label'), b: b.textContent, bc: cs(b),
                upd: cs(s.querySelector('.gp-upd')), val: cs(s.querySelector('.gp-val')), bg: getComputedStyle(s.querySelector('.gp-upd')).backgroundColor,
                r26: s.querySelector('.gp-r26 b').textContent, r26bg: s.querySelector('.gp-r26 b').style.background, rankbg: s.querySelector('.gp-rank b').style.background,
                fn: s.querySelector('.gp-fn').title, sr: s.querySelector('.gp-r26 .sr-only').textContent }; })()`);
-    check(tag, '1.1.2: ≈ within one WGI release, labelled, grey', a.g === '≈' && a.gl === W.same && a.role === 'img' && a.gc === 'rgb(102, 102, 102)', a);
+    check(tag, '1.1.2: ≈ within one WGI release, labeled, gray', a.g === '≈' && a.gl === W.same && a.role === 'img' && a.gc === 'rgb(102, 102, 102)', a);
     const w = await p.eval(`(() => { const g = ${sum('1.2.1')}.querySelector('.gp-chg'); return { g: g.textContent, gl: g.getAttribute('aria-label'), gc: getComputedStyle(g).color }; })()`);
-    check(tag, '1.2.1: a red ▼ labelled worse than 2021', w.g === '▼' && w.gl === W.worse && w.gc === 'rgb(184, 36, 21)', w);
-    check(tag, '2.1.3: a green ▲ labelled better than 2021', a.b === '▲' && a.bl === W.better && a.bc === 'rgb(71, 86, 15)', a);
-    check(tag, 'only the arrow is coloured: the value and the cell keep the normal colour', a.upd === a.val && a.upd === 'rgb(42, 46, 46)' && a.bg === 'rgba(0, 0, 0, 0)', a);
+    check(tag, '1.2.1: a red ▼ labeled worse than 2021', w.g === '▼' && w.gl === W.worse && w.gc === 'rgb(184, 36, 21)', w);
+    check(tag, '2.1.3: a green ▲ labeled better than 2021', a.b === '▲' && a.bl === W.better && a.bc === 'rgb(71, 86, 15)', a);
+    check(tag, 'only the arrow is colored: the value and the cell keep the normal color', a.upd === a.val && a.upd === 'rgb(42, 46, 46)' && a.bg === 'rgba(0, 0, 0, 0)', a);
     check(tag, '1.1.2: indicative position 104/140 styled like the 2021 rank, with the † note', a.r26 === '104/140' && a.r26bg === a.rankbg && a.fn === W.fn && a.sr.includes(W.fn), a);
     const cnt = await p.eval("({ pos: document.querySelectorAll('.gp-r26 b').length, badges: document.querySelectorAll('.gp-ind > summary .gp-st').length, arrows: document.querySelectorAll('.gp-upd .gp-chg').length, drop: " + sum('1.2.3') + ".querySelector('.gp-upd').textContent, st: " + sum('1.2.3') + ".querySelector('.gp-st').className, eq: " + sum('3.2.3') + ".querySelector('.gp-chg').textContent, na: " + sum('6.2.2') + ".querySelector('.gp-chg').textContent })");
     check(tag, '10 indicative positions, 80 status badges, 14 change markers', cnt.pos === 10 && cnt.badges === 80 && cnt.arrows === 14, cnt);

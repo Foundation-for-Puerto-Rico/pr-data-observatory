@@ -1,7 +1,7 @@
 /* PR Data Observatory: the Ask button; the chat loads on first use (docs/ask.md). */
 const ChatBoot = (() => {
   const PG = (document.querySelector('script[data-page]') || { dataset: {} }).dataset.page, MAP = PG === 'map' || PG === 'threed';
-  const SRC = 'js/chat.js?v=63', EXTRA = ['js/ask.js?v=16', 'js/core/layers.js?v=19'], PAGE = !MAP && 'js/askpage.js?v=29';
+  const SRC = 'js/chat.js?v=64', EXTRA = ['js/ask.js?v=16', 'js/core/layers.js?v=20'], PAGE = !MAP && 'js/askpage.js?v=30';
   let asked = PG === 'map' && new URLSearchParams(location.hash.slice(1)).get('ask'), loading = null, extra = null;
   const script = (src) => new Promise((ok, fail) => { const s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = () => { s.remove(); fail(new Error(src)); }; document.body.appendChild(s); });
   const more = () => extra || (extra = Promise.all(EXTRA.filter(src => !(src.includes('ask.js') ? typeof Ask !== 'undefined' : typeof Core !== 'undefined' && Core.layers)).map(src => script(src).catch(() => null))));

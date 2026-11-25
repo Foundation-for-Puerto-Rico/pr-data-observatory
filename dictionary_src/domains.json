@@ -51,7 +51,7 @@
         {"id": "poverty", "name": {"es": "Pobreza y desempleo", "en": "Poverty and unemployment"},
          "note": {"es": "Dos sombreados: personas bajo el nivel de pobreza y la tasa de desempleo. Círculos: residentes desempleados.", "en": "Two shadings: people below the poverty level and the unemployment rate. Circles: unemployed residents."},
          "show": [["poverty_pct", "fill"], ["laus_unemp_rate", "fill"], ["laus_unemployed", "symbol"]], "on": []},
-        {"id": "commuting", "name": {"es": "Centros de empleo y viaje al trabajo", "en": "Job centres and commuting"},
+        {"id": "commuting", "name": {"es": "Centros de empleo y viaje al trabajo", "en": "Job centers and commuting"},
          "note": {"es": "Dos sombreados: empleos por residente empleado y viajes al trabajo de 45 minutos o más. Círculos: empleos. Líneas: rutas de transporte colectivo.", "en": "Two shadings: jobs per employed resident and commutes of 45 minutes or more. Circles: jobs. Lines: transit routes."},
          "show": [["jobs_per_employed_resident", "fill"], ["commute_45plus_pct", "fill"], ["qcew_jobs", "symbol"]], "on": ["routes"]}
       ],

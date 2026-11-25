@@ -4,7 +4,7 @@ dark on clear summer nights, from NASA's ECOSTRESS, and how many residents live 
 
     python ecostress.py --diagnose   # what the LP DAAC answers for one night granule, and the layout and values of its layers (never prints the token)
     python ecostress.py              # build site/data/night_heat_series.json and night_heat_barrio.json (reads only the granules missing from cache/ecostress/; needs EARTHDATA_TOKEN)
-    python ecostress.py --refresh    # search the catalogue again
+    python ecostress.py --refresh    # search the catalog again
     python ecostress.py --from-cache # write the files again from the cache (no network, no token): after a change of wording
     python ecostress.py --check      # rebuild from the cache and exit 1 when a published file is not what it gives (no network, no token, nothing written)
 
@@ -74,7 +74,7 @@ def local_hour(iso):
 
 
 def granules(start, end):
-    """The ECO_L2T_LSTE granules over Puerto Rico between two dates, from NASA's open catalogue (CMR): [{id, time, tile, night, files {layer: url}}]."""
+    """The ECO_L2T_LSTE granules over Puerto Rico between two dates, from NASA's open catalog (CMR): [{id, time, tile, night, files {layer: url}}]."""
     out, page = [], 1
     while True:
         for attempt in range(6):
@@ -208,7 +208,7 @@ SOURCES = {
 
 
 def night_granules(years, refresh=False, offline=False):
-    """The night granules of the summers (NIGHT flag and 21:00-05:59 local time, June to September), from the cache or the catalogue."""
+    """The night granules of the summers (NIGHT flag and 21:00-05:59 local time, June to September), from the cache or the catalog."""
     p = CACHE / f"granules_{years[0]}_{years[-1]}.json"
     if p.exists() and not refresh:
         return json.loads(p.read_text(encoding="utf-8"))
@@ -393,7 +393,7 @@ def compute(refresh=False, offline=False, today=None):
            "this is what keeps a city from cooling down. ECOSTRESS flies on the International Space Station, which passes at a different hour each time; these are the "
            f"passes between 21:00 and 06:00 on clear nights of {win}. Each 60 m cell's value is the median of its cloud-free night views (at least {MIN_OBS}; the "
            f"typical cell has {isl['obs']}), whatever the hour, so a place seen mostly before midnight reads a little warmer than one seen mostly before dawn. "
-           "A cell belongs to the barrio that holds its centre; a municipio's and Puerto Rico's figures pool the cells of their barrios. Water is left out. The sea "
+           "A cell belongs to the barrio that holds its center; a municipio's and Puerto Rico's figures pool the cells of their barrios. Water is left out. The sea "
            "stays warm at night, so land near the coast stays warmer too, and elevation cools the land: compare coastal places with each other and the Cordillera with itself.")
     HOT = f" Warm land at night is the land above Puerto Rico's {HOT_PCT}th percentile of the cells ({thr:.1f} °C), so Puerto Rico's share is 10% by construction."
     RES_ = (" Each 2020 census block with residents counts whole on the cell under its internal point, in the barrio the crosswalk gives it; the share is over all "

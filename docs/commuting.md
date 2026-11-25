@@ -25,7 +25,7 @@ The Census Bureau calls the daytime population the *commuter-adjusted population
 - **Puerto Rico** changes only at its edge: inside it, every worker who leaves one municipio comes in to another. The 78 municipios add up to the island's figure exactly, and a test checks it.
 - **`work_elsewhere_pct`** is the figure of the Connections between municipios page (`transit_links.json`), here with its margin of error: it leaves the workers who work outside Puerto Rico out of both sides. A test checks that the two files agree for every municipio. For Puerto Rico the page says 53.3% because it divides by all workers; this dataset says 53.4%.
 - **Margins of error** are at 90 percent. The margin of a sum of flows is the square root of the sum of the squares of their margins; the census count has none; the share uses the Census Bureau's proportion formula. A sum of many small flows has a wide margin, and it is published as it comes out.
-- **The period** is the flows' five-year window, 2016-2020, labelled by its last year. The residents are those of 2020.
+- **The period** is the flows' five-year window, 2016-2020, labeled by its last year. The residents are those of 2020.
 
 ## What it shows (2016-2020)
 

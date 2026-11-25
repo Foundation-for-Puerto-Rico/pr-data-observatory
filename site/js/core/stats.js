@@ -85,7 +85,7 @@
     return a.map((x, i) => i >= places || !finite(x) || !sd ? null : (x - m) / sd);
   }
 
-  /** The k places most like place i: the shortest distance over standardised features (each feature an array of values, island excluded, put on z-scores first).
+  /** The k places most like place i: the shortest distance over standardized features (each feature an array of values, island excluded, put on z-scores first).
       A place with a missing feature is left out. Returns [{ i, d }] nearest first, ties broken by index. */
   function peers(i, features, places, k = 5) {
     const Z = features.map(f => zscores(f, places)), ok = (j) => Z.every(z => z[j] != null);

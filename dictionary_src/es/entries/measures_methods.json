@@ -27,8 +27,8 @@
   "name": "Por kilómetro cuadrado",
   "how_to_read": "En el corte de datos 2026-10, los datos de 2025 muestran unos 2,045 empleos por km² de tierra en San Juan, frente a 107 para Puerto Rico, cuya área de tierra es la suma de los 78 municipios (8,868.5 km²). Un valor alto señala un centro de empleo denso.",
   "_en": {
-   "name": "9542a74a",
-   "how_to_read": "88bfb1df"
+   "name": "f19beb9d",
+   "how_to_read": "b6ad456c"
   }
  },
  "measures.share_of_pr_total": {
@@ -124,7 +124,7 @@
   "how_to_read": "En el corte de datos 2026-10, la tasa de pobreza tiene 78 municipios × 15 ventanas = 1,170 valores, y estos fijan los límites. Con la casilla marcada, un mapa de 2014 y uno de 2024 usan los mismos límites, así que un cambio de color entre los dos mapas refleja un cambio en los datos. Con la casilla sin marcar, los límites interiores para 2024 solo serían 37.2, 42.2, 46.1 y 50.3, frente a 41.3, 46.4, 50.5 y 54.9 con todos los años juntos.",
   "_en": {
    "name": "2cae0b80",
-   "how_to_read": "661001d9"
+   "how_to_read": "186c5657"
   }
  },
  "measures.diverging_scale": {
@@ -140,7 +140,7 @@
   "how_to_read": "Sombree primero la pobreza y luego el ingreso mediano del hogar. El color de cada municipio muestra entonces su clase de pobreza en el eje horizontal (→) y su clase de ingreso en el eje vertical (↑). Lea los dos ejes de la leyenda, y sus cortes, antes que los colores. En el corte de datos 2026-10, con todos los años juntos, el eje de pobreza dice 'hasta 45.0%' para bajo y 'más de 51.8%' para alto.",
   "_en": {
    "name": "a93da14a",
-   "how_to_read": "1dba5e51"
+   "how_to_read": "f585e07e"
   }
  },
  "measures.proportional_symbols": {
@@ -187,7 +187,7 @@
   "name": "Valores atípicos (residuos estandarizados)",
   "how_to_read": "En el corte de datos 2026-10, para la pobreza (primero) frente al ingreso mediano del hogar (segundo), ventana 2020-2024: Guaynabo tiene z = +3.95, Gurabo +3.30 y Culebra −2.38. Los ingresos de Guaynabo y Gurabo son mucho más altos de lo que predicen sus tasas de pobreza, y el de Culebra es más bajo.",
   "_en": {
-   "name": "bbe79f66",
+   "name": "6b8cab57",
    "how_to_read": "9fbe5649"
   }
  },
@@ -228,7 +228,7 @@
   "how_to_read": "Lea una cifra rotulada 2024 como 'el valor típico de 2020-2024'. Para juzgar un cambio real, compare ventanas que no se solapen, por ejemplo 2014, 2019 y 2024.",
   "_en": {
    "name": "e8bde5d1",
-   "how_to_read": "3e409815"
+   "how_to_read": "112c7533"
   }
  },
  "methods.population_vintage_break": {
@@ -268,7 +268,7 @@
   "how_to_read": "Un municipio con más empleos que residentes con empleo es un centro de empleo que atrae a personas de otros municipios. Uno con muchos menos es un lugar donde muchas personas residentes trabajan en otra parte. La razón no indica dónde trabajan. San Juan muestra la diferencia: en el corte de datos 2026-10 tiene 253,816 empleos en 2025 (26.8% de los empleos de la isla), pero 329,737 residentes (10.4% de los residentes de la isla), y en 2024 tiene 1.91 empleos por cada residente con empleo.",
   "_en": {
    "name": "32c05f2b",
-   "how_to_read": "e1f3ff21"
+   "how_to_read": "b629d906"
   }
  },
  "methods.rounding_display": {
@@ -324,7 +324,7 @@
   "how_to_read": "En el corte de datos 2026-10, con los filtros predeterminados (confianza de 0.50 o más, sin lugares de culto), los 23,467 lugares con marcador (los 24,209 lugares contados menos los 742 alquileres vacacionales y unidades numeradas, que se cuentan pero no se dibujan) caen en 950 hexágonos de 10 kilómetros cuadrados: el más concurrido tiene 447 y la mitad tiene 8 o menos. En hexágonos de 2 km² caen en 2,833 (el más concurrido, 309) y en hexágonos de 50 km², en 231 (el más concurrido, 1,988). Por municipio, San Juan tiene 3,424 lugares contados, Vieques 237 y Culebra 136.",
   "_en": {
    "name": "a338d7be",
-   "how_to_read": "8ae81521"
+   "how_to_read": "5bcd03f6"
   }
  }
 }

@@ -29,8 +29,8 @@ Output, site/data/wcrp_social.json (arrays follow geo.ids, the 78 municipios the
   polygons, housing_units   Comunidades Especiales and their housing units (Junta 2006 inventory) in each municipio, from comunidades.geojson
   assets            the list's rows by municipio (listed, matched), the count of "si" of each flag and of "nd", the match counts, and each matched
                     polygon's nine flags as one code ("1" si, "0" no, "-" nd), keyed "municipio|nombre|barrio" as comunidades.geojson writes them
-WCRP is a HUD CDBG-DR program: the file's compliance review records FPR's approval of 2026-10-19 (HANDOFF decision 51) and its licence review, cleared the same
-day, that this approval covers republishing the list on the observatory; the list states no open licence, so others should ask PRDOH and FPR before re-use
+WCRP is a HUD CDBG-DR program: the file's compliance review records FPR's approval of 2026-10-19 (HANDOFF decision 51) and its license review, cleared the same
+day, that this approval covers republishing the list on the observatory; the list states no open license, so others should ask PRDOH and FPR before re-use
 (dictionary_src/datasets.json; HANDOFF decision 54); the page keeps an "In review" marker (docs/wcrp.md).
 """
 import csv

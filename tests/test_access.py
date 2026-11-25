@@ -23,7 +23,7 @@ LAT, LNG = 18.2, -66.2
 
 
 def at(north_m=0.0, east_m=0.0):
-    """(lat, lng) a given number of metres north and east of the origin, on the scale the observatory uses (111,320 m per degree of latitude)."""
+    """(lat, lng) a given number of meters north and east of the origin, on the scale the observatory uses (111,320 m per degree of latitude)."""
     lat = LAT + north_m / 111_320
     lng = LNG + east_m / (111_320 * math.cos(math.radians(LAT + north_m / 222_640)))
     return round(lat, 7), round(lng, 7)
@@ -256,7 +256,7 @@ class Published(unittest.TestCase):
         self.assertTrue(all(0 <= w <= 3 for w in cols["ts_we"]))
 
     def test_island_shares_match_the_exploratory_run_within_a_fifth_of_a_point(self):
-        # docs/visitor-transport-access-2026-10.md (projected metres, EPSG:32161): any 47.0, current 32.1, frequent 21.3, Saturday 22.5, Sunday 6.1, rail or ferry 2.8.
+        # docs/visitor-transport-access-2026-10.md (projected meters, EPSG:32161): any 47.0, current 32.1, frequent 21.3, Saturday 22.5, Sunday 6.1, rail or ferry 2.8.
         # The observatory's own flat-earth distance is about 0.6% long north to south, so the shares read up to 0.1 point lower.
         # Pinned to the stops of the exploratory run and to its date: once the nightly job brings new feeds (meta.network.built moves) the figures legitimately change and the test steps aside.
         if self.meta["network"]["built"] != "2026-10-02":

@@ -12,7 +12,7 @@ river_gauges.py.
   latest-continuous     parameter 72019, depth to water level (how far below the ground the water stands in the well), feet: the latest reading
   daily                 parameter 72019, one value a day: the history. USGS keeps one daily statistic per well (the mean of the day, or the reading at noon);
                         the build takes the mean where the well has it and otherwise the statistic with the most days.
-Depths are converted to metres (x 0.3048).
+Depths are converted to meters (x 0.3048).
 
 Which wells. Every well whose reading is less than 30 days old. A well with fewer than 8 years of daily values in 2011-2025 is drawn too, without a usual range.
 
@@ -24,9 +24,9 @@ What this is not. A well shows the water at one point of one aquifer; pumping ne
 layer says nothing about the quality of the water or how much can be pumped. USGS marks recent readings provisional.
 
 Output: site/data/groundwater.geojson. Each point: name, type, municipio, geoid, usgs (the monitoring location id), station (the name USGS gives the well, as
-written), depth and depth_time (the latest reading at build time, metres below the ground; the page replaces them with a live one), well_depth (how deep the well
-was built, metres, where USGS records it), recent (daily depths in metres from recent_start, 120 values, null where missing), and p10, p25, p50, p75, p90 (53
-weekly values each, metres).
+written), depth and depth_time (the latest reading at build time, meters below the ground; the page replaces them with a live one), well_depth (how deep the well
+was built, meters, where USGS records it), recent (daily depths in meters from recent_start, 120 values, null where missing), and p10, p25, p50, p75, p90 (53
+weekly values each, meters).
 """
 
 import json
@@ -43,7 +43,7 @@ import river_gauges as rg
 ROOT = Path(__file__).resolve().parent
 CACHE = ROOT / "cache" / "groundwater"
 OUT = hs.OUT / "groundwater.geojson"
-FT = 0.3048            # feet to metres
+FT = 0.3048            # feet to meters
 PARAM = "72019"        # depth to water level, feet below land surface
 BBOX = "-68.0,17.6,-65.1,18.6"   # Puerto Rico with Mona, Vieques and Culebra; a well outside the list of Puerto Rico's wells is dropped
 STATS = ("00003", "00008", "31200", "32400", "00001", "00002")   # the daily statistic taken, in this order: mean, median, the reading at noon, at midnight, maximum, minimum
@@ -111,12 +111,12 @@ def fetch(refresh=False):
 
 
 def metres(v):
-    """Feet to metres, two decimals."""
+    """Feet to meters, two decimals."""
     return round(float(v) * FT, 2)
 
 
 def normals(daily):
-    """p10..p90 of the yearly mean of each week, metres below the ground, or None where fewer than MIN_YEARS years have a value; and the years with any value."""
+    """p10..p90 of the yearly mean of each week, meters below the ground, or None where fewer than MIN_YEARS years have a value; and the years with any value."""
     by = {}
     for t, v in daily.items():
         d = date.fromisoformat(t)

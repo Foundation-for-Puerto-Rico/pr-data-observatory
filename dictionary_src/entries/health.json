@@ -9,7 +9,7 @@
     "group": "Health centers",
     "kind": "variable",
     "plain": "How many permanent sites of community health centers are in each municipality. The list is from the Health Resources and Services Administration (HRSA), a federal agency.",
-    "definition": "Active sites in HRSA's list of Health Center Service Delivery and Look-Alike Sites that deliver care (their type is \"Service Delivery Site\" or \"Administrative/Service Delivery Site\") and whose location type is \"Permanent\", counted in the municipality that holds the site's county code. A federally funded health center (a Federally Qualified Health Center, FQHC) holds a federal health center grant; a look-alike meets the same requirements without the grant. Only sites whose status is \"Active\" are counted: HRSA uses that status for a site whose organisation has a current health center grant and that is itself open for business. The Puerto Rico value is the sum of the 78 municipal values.",
+    "definition": "Active sites in HRSA's list of Health Center Service Delivery and Look-Alike Sites that deliver care (their type is \"Service Delivery Site\" or \"Administrative/Service Delivery Site\") and whose location type is \"Permanent\", counted in the municipality that holds the site's county code. A federally funded health center (a Federally Qualified Health Center, FQHC) holds a federal health center grant; a look-alike meets the same requirements without the grant. Only sites whose status is \"Active\" are counted: HRSA uses that status for a site whose organization has a current health center grant and that is itself open for business. The Puerto Rico value is the sum of the 78 municipal values.",
     "unit": "sites",
     "value_type": "count",
     "geography": "78 municipalities and Puerto Rico (the island value is the sum of the 78 municipal values)",
@@ -24,7 +24,7 @@
       "hrsa_sites"
     ],
     "source_detail": "HRSA Data Warehouse, Health Center Service Delivery and Look-Alike Sites (CSV): columns Site State Abbreviation, Site Status Description, Health Center Type, Health Center Type Description, Health Center Location Type Description and State and County Federal Information Processing Standard Code.",
-    "how_to_read": "Use it to see where the community health center sites are. In the 2026-11 snapshot San Juan has 7 permanent sites, Bayamón 7, and Mayagüez, Ponce, San Sebastián and Toa Alta 4 each; 8 municipalities have none (Añasco, Cataño, Fajardo, Guayanilla, Juana Díaz, Manatí, Sabana Grande and San Germán). On the Analysis tab the layer is shaded per 1,000 residents by default, so that a small municipality can be compared with a large one. A site is a place, not an organisation, and not a measure of care: it says nothing about hours, services, staff or how many people a site serves.",
+    "how_to_read": "Use it to see where the community health center sites are. In the 2026-11 snapshot San Juan has 7 permanent sites, Bayamón 7, and Mayagüez, Ponce, San Sebastián and Toa Alta 4 each; 8 municipalities have none (Añasco, Cataño, Fajardo, Guayanilla, Juana Díaz, Manatí, Sabana Grande and San Germán). On the Analysis tab the layer is shaded per 1,000 residents by default, so that a small municipality can be compared with a large one. A site is a place, not an organization, and not a measure of care: it says nothing about hours, services, staff or how many people a site serves.",
     "caveats": [
       "HRSA lists only health centers that hold a federal grant or look-alike status. Hospitals, private clinics, doctors' offices and the island's own public health system are not in this file.",
       "A zero is a real zero in HRSA's list. It does not mean residents have no care nearby: a site in the next municipality, a hospital or a private clinic can serve them.",
@@ -577,7 +577,7 @@
     "group": "Health centers",
     "kind": "method",
     "plain": "The sites come from the public list of the Health Resources and Services Administration (HRSA) of health centers with a federal grant or look-alike status (a look-alike meets the same rules without the grant). The observatory counts permanent sites that deliver care, counts mobile vans apart and publishes only the counts.",
-    "definition": "HRSA's Health Center Service Delivery and Look-Alike Sites file lists each site of a health center that holds a federal Health Center Program grant (FQHC) or look-alike status, with the county that holds the site. A site's status says whether its organisation holds a current grant and the site is open; its type says whether it offers direct patient care, works as an administrative office or both; its location type says whether it is permanent, a mobile van, seasonal or unknown.",
+    "definition": "HRSA's Health Center Service Delivery and Look-Alike Sites file lists each site of a health center that holds a federal Health Center Program grant (FQHC) or look-alike status, with the county that holds the site. A site's status says whether its organization holds a current grant and the site is open; its type says whether it offers direct patient care, works as an administrative office or both; its location type says whether it is permanent, a mobile van, seasonal or unknown.",
     "unit": "not applicable (method)",
     "value_type": "text",
     "geography": "78 municipalities and Puerto Rico (the island value is the sum of the 78 municipal values)",
@@ -591,7 +591,7 @@
     "sources": [
       "hrsa_sites"
     ],
-    "how_to_read": "A count is the number of places HRSA lists, not the number of clinics (one organisation can run many sites) or the number of people served. HRSA says that, for domestic violence shelters, the building number, street and ZIP Code are removed; the observatory drops every address as each row is read, before anything is saved. The file does not say which sites accept which patients or what services they offer.",
+    "how_to_read": "A count is the number of places HRSA lists, not the number of clinics (one organization can run many sites) or the number of people served. HRSA says that, for domestic violence shelters, the building number, street and ZIP Code are removed; the observatory drops every address as each row is read, before anything is saved. The file does not say which sites accept which patients or what services they offer.",
     "caveats": [
       "The list covers only health centers in HRSA's Health Center Program. It leaves out hospitals, private practices and the island's public health facilities.",
       "The county code is the one HRSA registers for the site; a site on a municipal boundary is counted once, in that municipality."
@@ -634,7 +634,7 @@
     "caveats": [
       "HRSA's formulas count primary care physicians only (not nurse practitioners or physician assistants), dentists only, and, for every mental health designation in Puerto Rico, psychiatrists only.",
       "Designations are reviewed on HRSA's schedule: the area designations read here were set between 2012 and 2024 and last updated between 2016 and 2024, so a figure can be years behind the present.",
-      "The Medically Underserved Area (MUA/P) file is not used: its 72 Puerto Rico rows are all from 1978, and the underservice score, which HRSA builds from four indicators that are empty in those rows, reads 0.00 for 71 of them and 50.00 for one. The Area Health Resources File is not used because its documentation does not authorise re-use without the Bureau's permission."
+      "The Medically Underserved Area (MUA/P) file is not used: its 72 Puerto Rico rows are all from 1978, and the underservice score, which HRSA builds from four indicators that are empty in those rows, reads 0.00 for 71 of them and 50.00 for one. The Area Health Resources File is not used because its documentation does not authorize re-use without the Bureau's permission."
     ],
     "see_also": [
       "health.hpsa_pc_short",

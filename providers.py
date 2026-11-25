@@ -20,7 +20,7 @@ Privacy (decision 107 d): the rows are about single people, so a municipio's cou
 so); 0 and counts of 10 or more are. The island's totals are exact.
 
 It is a registry, not a head count: a provider who left Puerto Rico, retired or works part-time may still be listed at a Puerto Rico address, and one
-person can practise in several municipios but is counted once, at the primary practice location. The notes give how many records were last updated more
+person can practice in several municipios but is counted once, at the primary practice location. The notes give how many records were last updated more
 than five years ago, and for each type the count of records updated within five years: the registered count is the top of a range and the
 recently updated count its bottom (many providers never update a record that is still right).
 """

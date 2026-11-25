@@ -24,7 +24,7 @@ test('hex grid: hexagons do not overlap and stay inside the drawing', () => {
   for (const p of m.paths) assert.ok(p.x > 0 && p.y > 0 && p.x < m.W && p.y < m.H);
   for (let i = 0; i < m.paths.length; i++) for (let j = i + 1; j < m.paths.length; j++) {
     const a = m.paths[i], b = m.paths[j];
-    assert.ok(Math.hypot(a.x - b.x, a.y - b.y) > 50, `${a.id} and ${b.id} are too close`);   // neighbouring centres are sqrt(3) * 30 = 52 apart
+    assert.ok(Math.hypot(a.x - b.x, a.y - b.y) > 50, `${a.id} and ${b.id} are too close`);   // neighboring centers are sqrt(3) * 30 = 52 apart
   }
 });
 

@@ -3,12 +3,12 @@
    chat.js talks to a page through window.ECON.api, as on the 2D map (economy.js) and the 3D view (ask3d.js). Here the interface has the same datasets (the shared engine,
    js/core/engine.js, over the files of js/core/datasets.js, fetched when the chat opens) and no map: api.mapless tells chat.js to answer in the chat and to give an
    answer that needs the map a "Show on the map" button, which opens index.html (3d.html for the 3D view's own layers) with the question (#ask=, chatHandOver in chat.js).
-   A button of an answer pressed afterwards (the workbench, the scatter plot, a pattern) opens the 2D map with those datasets, as the 3D view does.
+   A button of an answer pressed afterward (the workbench, the scatter plot, a pattern) opens the 2D map with those datasets, as the 3D view does.
    api.page gives the chat what this page shows: its own greeting and questions, "what is this?" answered from the open dictionary entry or the page's own summary, and
    "this" or "here" read as that entry's dataset or the profile's municipio. Nothing typed leaves the browser. */
 const AskPage = (() => {
   const PG = (document.querySelector('script[data-page]') || { dataset: {} }).dataset.page || '';
-  const ENGINE_JS = ['core/text.js?v=1', 'core/palettes.js?v=2', 'core/classify.js?v=2', 'core/stats.js?v=4', 'core/time.js?v=1', 'core/format.js?v=2', 'core/normalize.js?v=4', 'core/reliability.js?v=4', 'core/engine.js?v=11', 'core/hexbin.js?v=1', 'core/adapters.js?v=15', 'core/datasets.js?v=29'];   // the versions index.html loads, so the browser can reuse them
+  const ENGINE_JS = ['core/text.js?v=1', 'core/palettes.js?v=3', 'core/classify.js?v=2', 'core/stats.js?v=4', 'core/time.js?v=1', 'core/format.js?v=2', 'core/normalize.js?v=4', 'core/reliability.js?v=4', 'core/engine.js?v=11', 'core/hexbin.js?v=1', 'core/adapters.js?v=15', 'core/datasets.js?v=29'];   // the versions index.html loads, so the browser can reuse them
   const G = { E: null, loading: null, failed: [] }, cur = { layers: [], select: null, year: null };
   // what chat.js needs from a map page and a page without a map lacks: one download per file (plan.js Data), the page's message (activelayers.js toast), the catalog (S.catalog)
   if (typeof Data === 'undefined') window.Data = (() => { const cache = {}; return { json(p) { if (!cache[p]) cache[p] = fetchJson(p).catch(e => { delete cache[p]; throw e; }); return cache[p]; } }; })();

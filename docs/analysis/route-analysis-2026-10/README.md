@@ -8,8 +8,8 @@ WCRP. Prepared by Zoralis Alicea with Claude (AI).
 |---|---|
 | `make_page.py` | Writes `site/route-analysis.html` (English), `site/data/route_compare.json` (the routes the page loads) and `i18n_src/es/routes.json` (the Spanish of the page and of `site/js/route_analysis.js`) from (English, Spanish) pairs. Run it, then the steps under "The published data file". |
 | `route_compare.py` | Computes `route_compare.csv` and `route_compare.json` from `site/data` (trips.json, transit_routes.geojson, transport.json, population_blocks.json) and the four input files below. About 1 minute, no download. |
-| `road_features.geojson` | One point per signalised junction, roundabout and pedestrian bridge (OpenStreetMap, Geofabrik extract of 2026-10-15; © OpenStreetMap contributors, ODbL). Only what `route_compare.py` reads is kept: `kind` and the OpenStreetMap ids it was built from (`osm_ids`, the key of `road_flow.csv`); names and the other tags were removed on 2026-10-21. |
-| `road_flow.csv` | Estimated design-hour volume at each signalised junction and roundabout: the AADT of the busiest road that reaches it times its K factor, the design-hour volume (30th-busiest hour of the year) as a percentage of AADT (FHWA HPMS 2024, Field Manual item 26; US Government work). An estimate: `k_imputed` marks the 764 of 1,582 junctions (48%) whose road has no K, given the median K of their road class. |
+| `road_features.geojson` | One point per signalized junction, roundabout and pedestrian bridge (OpenStreetMap, Geofabrik extract of 2026-10-15; © OpenStreetMap contributors, ODbL). Only what `route_compare.py` reads is kept: `kind` and the OpenStreetMap ids it was built from (`osm_ids`, the key of `road_flow.csv`); names and the other tags were removed on 2026-10-21. |
+| `road_flow.csv` | Estimated design-hour volume at each signalized junction and roundabout: the AADT of the busiest road that reaches it times its K factor, the design-hour volume (30th-busiest hour of the year) as a percentage of AADT (FHWA HPMS 2024, Field Manual item 26; US Government work). An estimate: `k_imputed` marks the 764 of 1,582 junctions (48%) whose road has no K, given the median K of their road class. |
 | `transit_exposure.csv`, `transit_runtime.csv` | For each bus route, the busy junctions on its path and how often its trips pass them (6-9 and 16-19), and its scheduled time at peak and midday, from the same weekday timetables. |
 | `route_compare.csv`, `route_compare.json` | 97 bus routes, one row each: the ATI and the municipal systems with a stop within 250 m of an ATI stop (San Juan, Bayamón, Guaynabo, Caguas, Canóvanas), and the eastern systems, which do not meet the ATI network (Fajardo, Humacao, Juncos, San Lorenzo, Patillas, Vieques). |
 
@@ -17,7 +17,7 @@ The measures, from the weekday timetables in `site/data/trips.json` (typical Wed
 
 1. Service: weekday trips, first and last departure, and the 6:00-9:00 headway on the busiest stop pattern.
 2. Route: length of the main stop pattern and its scheduled speed (see "Timetable-only routes" below).
-3. Peak-hour junctions: signalised junctions and roundabouts on its path with an estimated design-hour volume (AADT x K factor) of 2,000 vehicles an hour or more
+3. Peak-hour junctions: signalized junctions and roundabouts on its path with an estimated design-hour volume (AADT x K factor) of 2,000 vehicles an hour or more
    (OpenStreetMap and FHWA HPMS 2024), per 10 km, and how often its trips pass them 6:00-9:00 and 16:00-19:00
    (`passes_estimated` when only two stops are timed).
 4. Connections: a stop within 300 m of a Tren Urbano station, and the other systems with a stop within 250 m.
@@ -60,7 +60,7 @@ figures are written into the page. The file is registered like every other data 
 
 - the data contract (`dictionary_src/datasets.json`, record `route_compare`): domains `infrastructure.mobility` and `population`, sources
   `ati_gtfs`, `muni_gtfs`, `osm` (ODbL, credit "OpenStreetMap contributors"), `fhwa_hpms` (new source record: US Government work) and
-  `census_tiger`; licence class `unstated`, that of the municipal GTFS feeds;
+  `census_tiger`; license class `unstated`, that of the municipal GTFS feeds;
 - the data dictionary (`dictionary_src/entries/route_analysis.json`, group "Route analysis"): `route_compare.file` and one entry for each of its
   31 fields (`route_compare.<field>`), with their Spanish summaries in `i18n_src/dictionary_plain.json`;
 - the ledger (`ledger.py`, adapter `a_route_compare`: a route or an operator is a record), so it appears on the Data management page;

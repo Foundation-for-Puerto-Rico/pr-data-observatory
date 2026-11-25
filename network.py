@@ -564,7 +564,7 @@ def _straight_m(a, b):
 def order_quality(seq):
     """Is the stop order geographic? Returns (ok, ratio, alphabetical).
 
-    ratio = length of the path through the stops in the listed order / length of a nearest-neighbour tour. Real routes sit
+    ratio = length of the path through the stops in the listed order / length of a nearest-neighbor tour. Real routes sit
     near 1-2; a feed that lists stops alphabetically (Patillas) sits at 3-5."""
     pts = [(lng, lat) for _, lng, lat in seq]
     if len(pts) < 4:
@@ -730,7 +730,7 @@ def snap_routes(routes, roads, previous=None, cache_path=None):
 # ── Assembly ─────────────────────────────────────────────────────────────────
 
 def build_network(cache: Path, refresh: bool, muni_names: dict, today: date = None, roads=None, previous=None):
-    """Download and normalise every feed. Returns a dict with operators, stops, routes_fc, trips, blocks."""
+    """Download and normalize every feed. Returns a dict with operators, stops, routes_fc, trips, blocks."""
     today = today or date.today()
     gcache = cache / "network"
     gcache.mkdir(exist_ok=True)
@@ -816,11 +816,11 @@ def build_network(cache: Path, refresh: bool, muni_names: dict, today: date = No
 def coverage(blocks, stops, muni_by_fips, inactive_ops=frozenset(), net=None):
     """Residents within WALK_M of a scheduled stop, overall and per operator group, per municipality.
 
-    Each block becomes [lon, lat, residents, metres to the nearest scheduled stop (straight line, capped at 9,999)]. With a walking network
-    (walknet.load()), a 5th value is the metres walked along mapped roads to the nearest scheduled stop (9,999 past WALK_BOUND_M), and each
+    Each block becomes [lon, lat, residents, meters to the nearest scheduled stop (straight line, capped at 9,999)]. With a walking network
+    (walknet.load()), a 5th value is the meters walked along mapped roads to the nearest scheduled stop (9,999 past WALK_BOUND_M), and each
     municipality gets walk_served (any scheduled stop) and walk_served_active (a stop of a feed that has not expired) within a 400 m walk.
     A block with no walkable road within 150 m keeps its straight-line values; a stop on no walkable road counts at its straight line
-    (walknet.walk_to_stops); a walk is never shorter than the straight line. A walk is rounded up to whole metres, as access.py rounds tw_m, so the
+    (walknet.walk_to_stops); a walk is never shorter than the straight line. A walk is rounded up to whole meters, as access.py rounds tw_m, so the
     residents within a 400 m walk of an active stop here equal exposure.py's walk_cur (the straight-line distance stays cut, as it always was).
     """
     print("  service coverage (residents within 400 m of a scheduled stop)")

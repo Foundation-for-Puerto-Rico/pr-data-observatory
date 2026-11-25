@@ -35,7 +35,7 @@ file's low-latency flag (100 ms or less). Geostationary and low-orbit satellite 
 
 Check against another copy of the same data (2026-11-10): for June 2025 the build counts 1,108,862 served locations in Puerto Rico; Esri's Living Atlas layer "FCC
 Broadband Data Collection December 2025", built from the same FCC files with the same BEAD tiers, gives 1,109,321 for six months before December 2025 (0.04% apart).
-Esri's copy is not used as a source because its licence is Esri's, not the public domain.
+Esri's copy is not used as a source because its license is Esri's, not the public domain.
 
 ## Results in the first build (2026-11-10)
 
@@ -69,7 +69,7 @@ and replace the secret `FCC_BDC_HASH` (Settings > Secrets and variables > Action
 locations below 100/20 Mbps (or unserved, or with fiber), the municipios and barrios with the largest gaps, and each municipio's share in each year. It is
 written by `docs/analysis/broadband-2026-11/make_page.py`; rerun it and `python i18n.py` after a new release.
 
-## Privacy and licence
+## Privacy and license
 
 The FCC files are works of the US Government (no US copyright). The location list behind them (the Fabric) is licensed by CostQuest Associates and is not used: the
 public files carry each location's census block, and the observatory publishes no location id, address, coordinate or provider list, only counts and shares by area.

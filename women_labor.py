@@ -25,7 +25,7 @@ Method (docs/analysis/women-labor-2026-10/README.md):
     Census Bureau's formulas (ACS General Handbook, chapter 8). A difference is called significant when it is larger than its own margin (90%).
   - A region is compared with the rest of the island, not with the island total that contains it, so the two estimates do not share people.
   - Age-adjusted rate: the region's rates for each age group applied to the age mix of the rest of the island's women 16 and over (direct
-    standardisation). The gap with the rest of the island then splits into a part due to age mix and a part due to participation within each age (Kitagawa, 1955).
+    standardization). The gap with the rest of the island then splits into a part due to age mix and a part due to participation within each age (Kitagawa, 1955).
 """
 import argparse
 import json
@@ -202,7 +202,7 @@ def measures(rec):
 
 
 def age_adjust(region, standard):
-    """Direct standardisation of the region's women's rate to the standard's age mix, and the Kitagawa split of the gap (points)."""
+    """Direct standardization of the region's women's rate to the standard's age mix, and the Kitagawa split of the gap (points)."""
     ra = [region["f"][a][1][0] / region["f"][a][0][0] for a in range(len(AGES))]
     sa = [standard["f"][a][1][0] / standard["f"][a][0][0] for a in range(len(AGES))]
     rt, st = sum(region["f"][a][0][0] for a in range(len(AGES))), sum(standard["f"][a][0][0] for a in range(len(AGES)))

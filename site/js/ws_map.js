@@ -4,7 +4,7 @@
 
      the project bar   the map's name, Undo and Redo, Copy link, Save and My maps (kept in this browser only)
      the timeline      one slider for the year of every dataset on the map; each layer says the period it really shows
-     the widgets       key figure, over time, spread, by region, highest and lowest, for one dataset on the map, with filters that say what they count
+     the Insights      key figure, over time, spread, by region, highest and lowest, for one dataset on the map, with filters that say what they count
      the grip          drag the top edge of the workbench to resize it
 
    The engine loads on first use (js/econ_shell.js), so the timeline and the widgets wait for it: until a dataset is on the map they say what to do.
@@ -118,6 +118,8 @@
 
   // ── The widgets ──────────────────────────────────────────────────────────────
   const W = { key: null, regions: new Set(), range: null, view: false, closed: new Set(store.get('twin.ws.closed', [])), drag: null };
+  // Back from the 3D view: the Insights' filters as they were left (the address carries the rest).
+  try { const t = JSON.parse(sessionStorage.getItem('twin.ws.trip') || 'null'); sessionStorage.removeItem('twin.ws.trip'); if (t && /3d\.html/.test(document.referrer)) { W.key = t.key || null; W.regions = new Set(t.regions || []); W.range = Array.isArray(t.range) ? t.range : null; W.view = !!t.view; } } catch (x) { /* none kept */ }
   const places = () => { const a = engine(); return a ? a.places() : []; };
   const regionOf = (() => { let m = null; return (name) => { if (!m && typeof S !== 'undefined' && S.muniFc) { m = {}; S.muniFc.features.forEach(f => { m[f.properties.municipality] = f.properties.region || ''; }); } return m ? m[name] || '' : ''; }; })();
   const inView = () => { if (typeof S === 'undefined' || !S.muniFc || typeof map === 'undefined') return null; const b = map.getBounds(), s = new Set(); S.muniFc.features.forEach(f => { const c = typeof ecCentroid === 'function' ? ecCentroid(f.geometry) : null; if (c && b.contains(c)) s.add(f.properties.municipality); }); return s; };
@@ -178,7 +180,7 @@
     const a = engine(), L = a ? focusLayer() : null;
     if (!L) {
       bar.innerHTML = '';
-      body.innerHTML = `<div class="ws-empty">${icon('bar_chart')}<p>${html(T('Widgets show figures and charts for a dataset on the map. They follow the timeline.'))}</p><button type="button" class="btn primary" id="wsAdd">${icon('add')}${html(T('Add a dataset'))}</button></div>`;
+      body.innerHTML = `<div class="ws-empty">${icon('bar_chart')}<p>${html(T('Insights show figures and charts for a dataset on the map. They follow the timeline.'))}</p><button type="button" class="btn primary" id="wsAdd">${icon('add')}${html(T('Add a dataset'))}</button></div>`;
       el('wsAdd').onclick = () => { if (typeof showTab === 'function') showTab('economy'); };
       return;
     }
@@ -314,6 +316,8 @@
   }
   function copy(text) { (navigator.clipboard && navigator.clipboard.writeText ? navigator.clipboard.writeText(text) : Promise.reject()).then(() => say(T('Link copied')), () => say(T('The link is in the address bar: copy it from there.'), 5000)); }
   function barWire() {
+    // 2D / 3D: the same analysis in the other view. The address carries it (js/core/viewstate.js): the place, the layers, the datasets and the year.
+    const m3 = el('wsMode3d'); if (m3) m3.onclick = async (e) => { e.preventDefault(); tlStop(); try { sessionStorage.setItem('twin.ws.trip', JSON.stringify({ key: W.key, regions: [...W.regions], range: W.range, view: W.view })); } catch (x) { /* the filters are an extra */ } const h = await here(); location.href = '3d.html' + location.search + h; };
     el('wsUndo').onclick = () => go(H.undo, H.redo); el('wsRedo').onclick = () => go(H.redo, H.undo);
     el('wsLink').onclick = async () => { const h = await here(); copy(location.origin + location.pathname + location.search + h); };
     el('wsSave').onclick = mapsDialog; el('wsOpen').onclick = mapsDialog;

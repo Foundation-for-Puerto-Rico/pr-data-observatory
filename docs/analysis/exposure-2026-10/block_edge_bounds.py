@@ -81,7 +81,7 @@ def block_outlines(pages=None):
 
 
 def sample_points(feats, blocks):
-    """(x, y, block index, used, outline area in m2) of sample points inside each block that has residents or housing units: a grid of about GRID_M metres plus the block's internal point."""
+    """(x, y, block index, used, outline area in m2) of sample points inside each block that has residents or housing units: a grid of about GRID_M meters plus the block's internal point."""
     where = {g: i for i, g in enumerate(blocks.ids)}
     xs, ys, bi = [], [], []
     used = np.zeros(len(blocks), dtype=bool)

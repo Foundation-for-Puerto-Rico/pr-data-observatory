@@ -87,7 +87,7 @@ body.research .page a.ln-card:not(.btn) { display: flex; flex-direction: column;
   .ln-check > p { display: block; }
   .lesson { break-inside: avoid-page; }
 }
-/* step 3: the colour of a class in a table, and the scale of values of "Colours and classes" */
+/* step 3: the color of a class in a table, and the scale of values of "Colors and classes" */
 .ln-sw{display:inline-block;width:12px;height:12px;border-radius:2px;margin-right:6px;vertical-align:-1px;border:1px solid rgba(0,0,0,.15)}
 .ln-strip svg{width:100%;height:auto;display:block}
 /* step 5: the parts of a GEOID, and the workshop guide, which prints alone (learn_page.js marks the body while the browser prints) */

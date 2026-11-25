@@ -60,7 +60,7 @@ test('the two layers are in the shared list, drawn as lines, and their texts say
   assert.notStrictEqual(wide.color, thin.color);
   assert.ok(wide.weight > thin.weight && thin.weight >= 2 && wide.weight <= 9 && more.weight === wide.weight, 'wider where more workers travel, within the layer\'s limits');
   assert.ok(Array.isArray(wide.dash), 'a simulated connection is dashed');
-  assert.strictEqual(P.STATUS.none.color, F.LAYERS.links.line.colors[1], 'the page and the map layer use the same colours');
+  assert.strictEqual(P.STATUS.none.color, F.LAYERS.links.line.colors[1], 'the page and the map layer use the same colors');
   assert.strictEqual(P.STATUS.publico.color, F.LAYERS.links.line.colors[2]);
   const pub = F.lineStyle('publicos', {}), fpr = F.lineStyle('fprroutes', {});
   assert.deepStrictEqual([pub.color, pub.dash], [F.LAYERS.publicos.color, null]);

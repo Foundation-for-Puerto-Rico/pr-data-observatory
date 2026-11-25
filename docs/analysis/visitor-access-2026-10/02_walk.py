@@ -257,7 +257,7 @@ for pi in ex:
         dd_.append((sn["dist"], float(p_conn[pi])))
 a = np.array(dd_)
 chk["snap_distance_roads_py_vs_walknet"] = {"n": len(a), "median_abs_diff_m": round(float(np.median(np.abs(a[:, 0] - a[:, 1]))), 2), "share_within_2m": pct(int((np.abs(a[:, 0] - a[:, 1]) <= 2).sum()), len(a))}
-# router pairs: place -> its walking-nearest scheduled stop; compare router length (fastest drive path, one-way rules) with walking metres
+# router pairs: place -> its walking-nearest scheduled stop; compare router length (fastest drive path, one-way rules) with walking meters
 pairs = [r for r in found if r["net_all"] is not None and r["net_all"] > 150][:200]
 sel_pairs = rng.choice(len(pairs), 40, replace=False)
 comp = []

@@ -4,13 +4,13 @@
    This script, the core file and their Spanish load the first time one of these layers or help buttons is used (twin3d.js facLoad); each file loads the first time
    its layer is switched on. The points go above the areas and under the base map's labels (twin3d.js slotBefore); an area layer (the FCC's broadband
    hexagons, `area` in core/facilities.js) is filled by class under the 3D buildings, with its legend under the layer's note. A sized layer (EIA's power plants,
-   `sized`) draws each circle with the radius and colour core/facilities.js gives it, largest underneath; a planned plant is hollow (MapLibre has no dashed circles). */
+   `sized`) draws each circle with the radius and color core/facilities.js gives it, largest underneath; a planned plant is hollow (MapLibre has no dashed circles). */
 const Facilities3D = (() => {
   const F = Core.facilities, docs = {};
   const sw = (k) => $('#' + F.LAYERS[k].id);
   let hz = null;   // facility_hazards.json, loaded with the first tested layer
   const stepOf = (k) => { const a = F.areaSpec(k); return ['step', ['to-number', ['get', a.prop], -1], '#e0e0e0', 0, a.colors[0], ...a.breaks.flatMap((b, i) => [b, a.colors[i + 1]])]; };
-  document.addEventListener('change', (e) => {   // an area layer's measure picker (the hexagon grid): new fill colours and legend
+  document.addEventListener('change', (e) => {   // an area layer's measure picker (the hexagon grid): new fill colors and legend
     const k = e.target && e.target.dataset && e.target.dataset.facMeasure; if (!k || !F.LAYERS[k] || !F.LAYERS[k].area) return;
     F.LAYERS[k].area.pick = +e.target.value;
     if (map.getLayer('fac-' + k)) map.setPaintProperty('fac-' + k, 'fill-color', stepOf(k));
@@ -28,7 +28,7 @@ const Facilities3D = (() => {
         map.addLayer({ id, type: 'fill', source: id, paint: { 'fill-color': step, 'fill-opacity': .72, 'fill-outline-color': 'rgba(255,255,255,.6)' } }, map.getLayer('buildings-3d') ? 'buildings-3d' : slotBefore('fac-'));
       } else if (L0.sized) map.addLayer({ id, type: 'circle', source: id, layout: { 'circle-sort-key': ['-', 0, ['get', '_r']] }, paint: { 'circle-color': ['get', '_c'], 'circle-radius': ['get', '_r'],
         'circle-opacity': ['case', ['==', ['get', '_p'], 1], .25, .85], 'circle-stroke-color': ['case', ['==', ['get', '_p'], 1], ['get', '_c'], '#424242'], 'circle-stroke-width': ['case', ['==', ['get', '_p'], 1], 2, 1] } }, slotBefore('fac-'));
-      else if (L0.line) {   // FPR's traced routes; the público routes; the simulated connections, coloured by class, wider where more workers travel, dashed
+      else if (L0.line) {   // FPR's traced routes; the público routes; the simulated connections, colored by class, wider where more workers travel, dashed
         const l = L0.line === true ? {} : L0.line, w = l.width;
         const color = l.colors ? ['match', ['to-string', ['get', l.prop]], ...Object.entries(l.colors).flat(), L0.color] : L0.color;
         const byClass = l.widths && ['match', ['to-string', ['get', l.prop]], ...Object.entries(l.widths).flat(), 1.5];   // the transmission lines: a width for each voltage

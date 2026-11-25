@@ -137,7 +137,7 @@ async function updateNow() {
   for (const v of pts) L.circleMarker(v.ll, { pane: 'now', radius: 6, color: '#fff', weight: 1.5, fillColor: v.t.m === 'rail' ? '#B82415' : v.t.m === 'ferry' ? '#338CB3' : v.o.type === 'regional' ? '#205D7B' : '#607316', fillOpacity: 1, interactive: true })
     .bindTooltip(Th('<b>{route}</b> · {operator}<br><small>on its timetable, not a GPS position</small>', { route: v.t.r, operator: v.o.short || v.o.name })).addTo(NET.nowLayer);
   const top = Object.entries(perOp).sort((a, b) => b[1] - a[1]).slice(0, 6).map(([k, n]) => `${k} ${fmt(n)}`).join(' · ');
-  $('#nowNote').innerHTML = Th('<b>{n}</b> {vehicles} in service on {timetables} at {time} Puerto Rico time{top}. Positions are interpolated from the timetable, not GPS. Expired timetables are left out; holidays are not modelled.', { n: fmt(pts.length), vehicles: Tn(pts.length, 'vehicle', 'vehicles'), timetables: label, time: hms(sec), top: top ? `: ${top}` : '' });
+  $('#nowNote').innerHTML = Th('<b>{n}</b> {vehicles} in service on {timetables} at {time} Puerto Rico time{top}. Positions are interpolated from the timetable, not GPS. Expired timetables are left out; holidays are not modeled.', { n: fmt(pts.length), vehicles: Tn(pts.length, 'vehicle', 'vehicles'), timetables: label, time: hms(sec), top: top ? `: ${top}` : '' });
 }
 function setNow(on) {
   clearInterval(NET.nowTimer);
@@ -153,7 +153,7 @@ async function setGaps(on) {
   if (!on) { $('#gapNote').textContent = ''; return; }
   const blocks = await loadBlocks();
   if (!$('#lyGaps').checked) return;
-  const walk = blocks.length > 0 && blocks[0].length > 4, dist = b => walk ? b[4] : b[3];   // [lon, lat, residents, metres straight, metres walked along mapped roads]
+  const walk = blocks.length > 0 && blocks[0].length > 4, dist = b => walk ? b[4] : b[3];   // [lon, lat, residents, meters straight, meters walked along mapped roads]
   const far = blocks.filter(b => dist(b) > 800 && b[2] >= 40), people = blocks.filter(b => dist(b) > 800).reduce((a, b) => a + b[2], 0), all = blocks.reduce((a, b) => a + b[2], 0);
   NET.gapLayer = L.layerGroup(far.map(b => L.circleMarker([b[1], b[0]], { pane: 'gaps', radius: Math.min(14, 2 + Math.sqrt(b[2]) * .45), color: '#B56D00', weight: .6, fillColor: '#FFA600', fillOpacity: .45 })
     .bindTooltip(walk ? Th(b[4] >= 9999 ? '<b>{n}</b> residents · more than 1 km walking to the nearest scheduled stop ({s} m in a straight line)' : '<b>{n}</b> residents · {m} m walking to the nearest scheduled stop ({s} m in a straight line)', { n: fmt(b[2]), m: fmt(b[4]), s: fmt(b[3]) })
@@ -241,7 +241,7 @@ async function onMapReady() {
   $('#lyNow').onchange = e => { setNow(e.target.checked); writeHash(); };
   $('#lyGaps').onchange = async e => { try { await setGaps(e.target.checked); } catch { e.target.checked = false; } writeHash(); };
   $('#lyXfer').onchange = e => { setXfer(e.target.checked); writeHash(); };
-  $('#tvOnly').onclick = () => { for (const [id, on] of [['lyPlaces', false], ['lyRoutes', true]]) { const el = $('#' + id); if (el.checked !== on) { el.checked = on; el.dispatchEvent(new Event('change')); } } toast(T('Showing transit only. Turn tourism places back on in Explore › Map layers.'), 5000); };
+  $('#tvOnly').onclick = () => { for (const [id, on] of [['lyPlaces', false], ['lyRoutes', true]]) { const el = $('#' + id); if (el.checked !== on) { el.checked = on; el.dispatchEvent(new Event('change')); } } toast(T('Showing transit only. Turn tourism places back on in Home › Map layers.'), 5000); };
   const planHead = $('#planBox').closest('.fold-body'), planToggle = planHead && planHead.previousElementSibling.querySelector('.fold-toggle');
   if (planToggle) planToggle.addEventListener('click', () => { planLoad().catch(() => { $('#planBox').innerHTML = `<div class="note">${esc(T('The route planner could not be loaded. Check your connection and open the section again.'))}</div>`; }); });   // the planner loads when its section opens
   map.on('click', e => { if (typeof Plan === 'undefined' || !Plan.root) return; if (Plan.picking >= 0) Plan.mapPick(e.latlng.lat, e.latlng.lng); else if (Plan.clickMode) Plan.appendPoint(e.latlng.lat, e.latlng.lng); });

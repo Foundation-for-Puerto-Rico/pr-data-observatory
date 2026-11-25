@@ -1,4 +1,4 @@
-/* PR Data Observatory core: the layer engine. One object that holds the datasets of every domain, resolves what period each shows, normalises, classifies and describes them, so that
+/* PR Data Observatory core: the layer engine. One object that holds the datasets of every domain, resolves what period each shows, normalizes, classifies and describes them, so that
    the map, the legend, the popup, the workbench, the chat and the 3D view all ask the same thing and get the same answer (docs/engine.md).
 
      const E = Core.engine.create();                  // an engine; the page keeps one
@@ -39,7 +39,7 @@
     E.arr = (key, y) => { const v = E.V[key]; return v && v.years[y] ? v.years[y] : null; };
     E.placeIndex = (name) => { const n = (name || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim(); return E.geo.names.findIndex(x => x.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim() === n); };
 
-    // ── What the normalisations divide by ────────────────────────────────────
+    // ── What the normalizations divide by ────────────────────────────────────
     E.pop = (y) => { const v = E.V[E.denominators.pop]; let k = v.ys[0]; for (const x of v.ys) if (x <= y) k = x; return v.years[k]; };
     E.jobs = (y) => { const v = E.V[E.denominators.jobs]; if (!v) return null; let k = v.ys[0]; for (const x of v.ys) if (x <= y) k = x; if (y < v.ys[0]) return null; return v.years[k]; };
     E.hu = (y) => { const v = E.V[E.denominators.hu]; if (!v) return null; let k = v.ys[0]; for (const x of v.ys) if (x <= y) k = x; return v.years[k]; };   // housing units (ACS): the latest year at or before y
@@ -65,7 +65,7 @@
     };
     E.ramp = (L) => palettes.ramp(L.ramp);
     E.evaluate = (layers) => { const ev = {}; for (const L of layers) { const r = E.resolve(L.key), a = r.y == null ? null : E.calc(L, r.y); ev[L.id] = { ...r, a }; } return ev; };
-    /** The margins of error (90% confidence) of the values a layer shows, scaled like the values; null when the dataset has none or the layer is normalised. */
+    /** The margins of error (90% confidence) of the values a layer shows, scaled like the values; null when the dataset has none or the layer is normalized. */
     E.moe = (L, y) => { const v = E.V[L.key]; const m = L.norm === 'value' && v.moe ? v.moe[y] : null; if (!m) return null; const f = v.unit === '$' && L.real ? E.cpiFactor(y) : 1; return f === 1 ? m : m.map(x => x == null ? null : x * f); };
 
     // ── How far the values can be trusted (reliability.js) ───────────────────
@@ -92,8 +92,8 @@
       return time.isFixed(v) ? T('snapshot {year}', { year: ev.y }) : ev.exact ? lab : ev.early ? T('first data {year}', { year: lab }) : T('{year} (latest at or before {max})', { year: lab, max: E.year });
     };
 
-    // ── Colours of a shaded layer or two, and the sizes of symbols ───────────
-    /** One colour for each place (island excluded) from the first visible shaded layer, or the first two together as a bivariate map (three classes each). */
+    // ── Colors of a shaded layer or two, and the sizes of symbols ───────────
+    /** One color for each place (island excluded) from the first visible shaded layer, or the first two together as a bivariate map (three classes each). */
     E.fillColors = (fills, evals) => {
       const A = fills[0], B = fills[1], ea = evals[A.id], ba = E.breaks(A, ea.y), eb = B && evals[B.id], bb = B && E.breaks(B, eb.y, 3), ba3 = B && E.breaks(A, ea.y, 3);
       return Array.from({ length: E.geo.pr }, (_, i) => {
@@ -121,7 +121,7 @@
       return L;
     };
     E.encode = (layers) => layers.map(l => [l.key, l.level === 'barrio' ? 'b' : MODE_CODE[l.mode], l.norm, l.ramp, CLASS_CODE[l.classes] || 'q', l.visible ? 1 : 0, l.fixed ? 1 : 0, l.real ? 1 : 0, Math.round(l.opacity * 100), palettes.SYMBOLS.indexOf(l.color), ...(l.classes === 'manual' && l.breaks ? [String(l.breaks).replace(/[\s,]+/g, '~')] : [])].join('.')).join(',');
-    E.decode = (str) => {   // a list of layers from a link; datasets this engine does not have are skipped, a normalisation the dataset does not offer becomes its own start in restore() ("as published" for a rate or a score); a link with no class field takes the dataset's own start (makeLayer: natural breaks for the zero-heavy health counts, quantiles for the rest)
+    E.decode = (str) => {   // a list of layers from a link; datasets this engine does not have are skipped, a normalization the dataset does not offer becomes its own start in restore() ("as published" for a rate or a score); a link with no class field takes the dataset's own start (makeLayer: natural breaks for the zero-heavy health counts, quantiles for the rest)
       const out = [];
       String(str || '').split(',').forEach(t => {
         const f = t.split('.'), [key, m, n, ramp, cl, vis, fixed, real, op, col] = f, br = f.slice(10).join('.'); if (!E.V[key]) return;   // the limits come last and may hold decimal points (1.79~2.6): everything after the tenth field is theirs

@@ -7,9 +7,9 @@ listed público route joins the pair, and a simulated connection along the roads
 
 Writes
   site/data/publicos.geojson       the público routes of the 2020 list, as lines (map layer publicos)
-  site/data/transit_links.json     every pair of municipios with workers travelling between them, the municipios and Puerto Rico's totals
+  site/data/transit_links.json     every pair of municipios with workers traveling between them, the municipios and Puerto Rico's totals
   site/data/simulated_links.geojson  the simulated connections, as lines along the roads (map layer links)
-  site/data/timetabled_links.geojson the pairs joined by a current timetable, each as the stretch of its busiest route between the two town centres
+  site/data/timetabled_links.geojson the pairs joined by a current timetable, each as the stretch of its busiest route between the two town centers
 The Knowledge Area page transit-links.html reads the last three (docs/transit-links.md, HANDOFF decision 105).
 
 The sources (no key):
@@ -21,7 +21,7 @@ The sources (no key):
     The list has no timetable, no fares and no date of each route; a route on it may no longer run.
   - The observatory's own files, already built: trips.json, trips_sa.json and trips_su.json (the timetabled trips of the ATI and the municipal systems, from
     their GTFS feeds), transport.json (each stop's municipio), operators.json (whether each timetable is still current), roads.bin (OpenStreetMap roads,
-    ODbL), gazetteer.json (each town centre) and municipios.geojson.
+    ODbL), gazetteer.json (each town center) and municipios.geojson.
 
 How each figure is made (docs/transit-links.md):
   - Workers between two municipios: the two directions added (A to B and B to A). The margin of error of the sum is the root of the sum of the squares.
@@ -29,16 +29,16 @@ How each figure is made (docs/transit-links.md):
   - Timetabled link: a route of a published timetable with stops in both municipios (each stop in the municipio whose outline holds it), on a weekday, Saturday or Sunday. Direct routes only: a trip with a
     transfer is not counted. "Current" when the operator's timetable still runs on the day operators.json was built. Some municipal systems time only
     the first and last stop of each trip: for them, the operator's stops within 35 m of the route's line are the route's stops.
-  - Público link (2020 list): a route of the list joins the municipios where its line ends and those whose town centre it passes within 1 km. A long
+  - Público link (2020 list): a route of the list joins the municipios where its line ends and those whose town center it passes within 1 km. A long
     route on an expressway does not join the municipios it only crosses.
   - Reachable with a transfer: no direct route, but the two municipios are joined by a chain of current timetabled links through other municipios. No
     journey time is computed, so the chain can be long.
   - Status of a pair, the first that applies: current timetable; expired timetable only; público route on the 2020 list only; none listed.
   - Line of a timetabled pair (the page's map): the stretch of the pair's route with the most weekday trips, as the transit routes layer draws it (the
-    ferries' crossings included), from its point in one municipio nearest that town centre to its point in the other nearest the other centre. When no
-    route of the pair has a line inside both, the fastest path along the roads between the two centres. Never a straight line.
+    ferries' crossings included), from its point in one municipio nearest that town center to its point in the other nearest the other center. When no
+    route of the pair has a line inside both, the fastest path along the roads between the two centers. Never a straight line.
   - Simulated connection: for the pairs with 500 workers or more, not low reliability, and no timetabled route (current or expired), the fastest path along
-    the roads between the two town centres, with its length and driving time without traffic. It is a line drawn by a program to show where a connection
+    the roads between the two town centers, with its length and driving time without traffic. It is a line drawn by a program to show where a connection
     is missing; it is not a proposed route, a service plan or a demand forecast.
 """
 import csv
@@ -76,13 +76,13 @@ PUBLICOS_URL = "https://datos.estadisticas.pr/dataset/01e93527-86bc-42c1-a85f-38
 PUBLICOS_PAGE = "https://datos.estadisticas.pr/dataset/mapa-de-rutas-de-porteadores-publicos"
 PUBLICOS_AS_OF = "2020-03-19"   # the day the Instituto published the file (its only date)
 NEAR_LINE_M = 35        # a stop of an operator that times only the ends of its trips is on a route when it is this close to its line
-NEAR_CENTRE_M = 1000    # a público route joins a municipio when it ends there or passes this close to its town centre
+NEAR_CENTRE_M = 1000    # a público route joins a municipio when it ends there or passes this close to its town center
 SIM_MIN_WORKERS = 500   # a simulated connection is drawn for a pair with this many workers or more (both directions)
 SAFETY_NEAR_M = 100     # a fatal crash counts for a simulated connection when it is this close to its line (FARS coordinates are approximate)
-# the second pass of the gap analysis (step 5): journey time by timetable between town centres, and what lies along each simulated connection
-TT_FROM, TT_TO, TT_STEP = 6 * 3600, 9 * 3600, 900   # leaving a town centre every 15 minutes from 6:00 to 9:00 on a weekday (13 departures)
+# the second pass of the gap analysis (step 5): journey time by timetable between town centers, and what lies along each simulated connection
+TT_FROM, TT_TO, TT_STEP = 6 * 3600, 9 * 3600, 900   # leaving a town center every 15 minutes from 6:00 to 9:00 on a weekday (13 departures)
 TT_MAX = 3 * 3600       # a journey longer than three hours is not counted
-TT_WALK_M = 1000        # from a town centre to a stop, and from a stop to a town centre: up to 1 km in a straight line
+TT_WALK_M = 1000        # from a town center to a stop, and from a stop to a town center: up to 1 km in a straight line
 TT_XFER_M = 400         # a transfer walks up to 400 m between stops, plus TT_XFER_S to make the connection
 TT_XFER_S = 120
 WALK_MS, DETOUR = 1.2, 1.3   # walking speed (m/s) and the factor from a straight line to the streets
@@ -96,7 +96,7 @@ STATUSES = ["timetable", "expired", "publico", "none"]
 SIM_TYPES = {"none": "Simulated connection, no route listed", "publico": "Simulated connection, público route on the 2020 list"}   # the layers' types, as core/facilities.js names them
 PUBLICO_TYPES = {True: "Público route between municipios", False: "Público route within a municipio"}
 LAT0 = 18.2
-KX, KY = 111320 * math.cos(math.radians(LAT0)), 110574   # metres per degree at Puerto Rico's latitude
+KX, KY = 111320 * math.cos(math.radians(LAT0)), 110574   # meters per degree at Puerto Rico's latitude
 
 
 def fetch(url, timeout=300):
@@ -126,7 +126,7 @@ def read(name):
 
 
 def to_m(geom):
-    """A shapely geometry in degrees, in local metres (equirectangular at 18.2° N: good to about 0.1% across Puerto Rico)."""
+    """A shapely geometry in degrees, in local meters (equirectangular at 18.2° N: good to about 0.1% across Puerto Rico)."""
     from shapely import transform
     return transform(geom, lambda a: a * [KX, KY])
 
@@ -150,7 +150,7 @@ def line_coords(geom):
 # ---------------------------------------------------------------------------------------------------------------------------------------------------------
 
 def municipios():
-    """[{geoid, name, lat, lng (town centre), geom_m (outline in metres)}] in GEOID order."""
+    """[{geoid, name, lat, lng (town center), geom_m (outline in meters)}] in GEOID order."""
     fc = read("municipios.geojson")
     gz = read("gazetteer.json")
     centre = {gz["munis"][i[4]]: (i[1], i[2]) for i in gz["items"] if gz["kinds"][i[3]] == "municipio"}
@@ -159,7 +159,7 @@ def municipios():
         p = f["properties"]
         name = p["municipality"]
         if name not in centre:
-            raise SystemExit(f"transit links: {name} has no town centre in gazetteer.json")
+            raise SystemExit(f"transit links: {name} has no town center in gazetteer.json")
         out.append({"geoid": p["GEOID"], "name": name, "lat": centre[name][0], "lng": centre[name][1], "geom_m": to_m(shape(f["geometry"]))})
     out.sort(key=lambda m: m["geoid"])
     if len(out) != 78:
@@ -205,7 +205,7 @@ def flows(data, munis):
 
 def place_stops(stops, munis):
     """{stop id: geoid}: the municipio whose outline holds the stop, or whose outline is nearest when the point is just outside every outline (a pier).
-    transport.json's municipality follows the same rule since the 2026-11 fix (muni_locate.py); before it, the nearest town centre put five stops of
+    transport.json's municipality follows the same rule since the 2026-11 fix (muni_locate.py); before it, the nearest town center put five stops of
     Cataño's waterfront in San Juan. This page still places every stop by its point, so it never depends on when transport.json was last rebuilt."""
     shapes = [(m["geoid"], prep(m["geom_m"]), m["geom_m"]) for m in munis]
     out = {}
@@ -281,7 +281,7 @@ def timetabled(munis):
 
 def publicos(data, munis):
     """The routes of the list, one per code (the list gives some routes as several rows: each direction, or pieces): [{code, name, rows, munis: [geoid],
-    geom (degrees, simplified)}]. A route joins the municipios where it ends (the two ends of its line that are farthest apart) and those whose town centre
+    geom (degrees, simplified)}]. A route joins the municipios where it ends (the two ends of its line that are farthest apart) and those whose town center
     it passes within NEAR_CENTRE_M: a long route on an expressway does not join the municipios it only crosses."""
     csv.field_size_limit(10 ** 9)
     rows = list(csv.DictReader(io.StringIO(data.decode("utf-8-sig"))))
@@ -305,7 +305,7 @@ def publicos(data, munis):
         far = max(((p.distance(q), i, j) for i, p in enumerate(ends) for j, q in enumerate(ends) if i < j), default=(0, 0, 0))
         termini = [ends[far[1]], ends[far[2]]]
         inside = [geoid for geoid, poly, pp, centre in prepared if any(pp.contains(t) for t in termini) or gm.distance(centre) <= NEAR_CENTRE_M]
-        if not inside:   # a short route that ends outside every outline (a pier) and passes no centre: the municipio that holds most of it
+        if not inside:   # a short route that ends outside every outline (a pier) and passes no center: the municipio that holds most of it
             inside = [max(prepared, key=lambda m: gm.intersection(m[1]).length)[0]]
         out.append({"code": r["code"], "name": r["name"], "rows": len(r["parts"]), "munis": sorted(inside), "geom": to_deg(gm.simplify(SIMPLIFY_M))})
     return out
@@ -322,7 +322,7 @@ def publico_pairs(routes):
 
 
 # ---------------------------------------------------------------------------------------------------------------------------------------------------------
-# roads: the fastest path between two town centres
+# roads: the fastest path between two town centers
 # ---------------------------------------------------------------------------------------------------------------------------------------------------------
 
 def tree(R, source):
@@ -342,16 +342,16 @@ def tree(R, source):
 
 
 def centre_node(R, m):
-    """The road node nearest a town centre: an end of the nearest road within 1 km."""
+    """The road node nearest a town center: an end of the nearest road within 1 km."""
     s = R.snap(m["lng"], m["lat"], 1000)
     if s is None:
-        raise SystemExit(f"transit links: no road within 1 km of the centre of {m['name']}")
+        raise SystemExit(f"transit links: no road within 1 km of the center of {m['name']}")
     e = s["edge"]
     return int(R.eu[e]) if s["along"] <= R.cum[e][-1] / 2 else int(R.ev[e])
 
 
 def road_path(R, prev, a, b):
-    """The path from node a (the tree's source) to node b as (metres, [(lon, lat)...]), from the tree's previous-node table."""
+    """The path from node a (the tree's source) to node b as (meters, [(lon, lat)...]), from the tree's previous-node table."""
     seq, n = [], b
     while n != a:
         p, e = prev[n]
@@ -366,7 +366,7 @@ def road_path(R, prev, a, b):
 
 
 def route_lines():
-    """{(operator, route): (line in metres, mode, label)} for the timetabled routes, from the transit routes layer (transit_routes.geojson), keyed as a
+    """{(operator, route): (line in meters, mode, label)} for the timetabled routes, from the transit routes layer (transit_routes.geojson), keyed as a
     trip's route is (its short name, or its long name)."""
     out = {}
     for f in read("transit_routes.geojson")["features"]:
@@ -381,8 +381,8 @@ def route_lines():
 
 def stretch(line, ma, mb):
     """The part of a route's line between the two municipios it joins: from the point of the line inside municipio A (its outline widened by TT_EDGE_M)
-    nearest A's town centre to the point inside B nearest B's centre. None when the line does not enter one of the two, or the stretch is shorter than
-    TT_MIN_M. A route that serves San Juan in Río Piedras is drawn to Río Piedras, not to the centre of Old San Juan."""
+    nearest A's town center to the point inside B nearest B's center. None when the line does not enter one of the two, or the stretch is shorter than
+    TT_MIN_M. A route that serves San Juan in Río Piedras is drawn to Río Piedras, not to the center of Old San Juan."""
     parts = list(line.geoms) if line.geom_type == "MultiLineString" else [line]
     best = None
     for part in parts:
@@ -459,11 +459,11 @@ def road_traffic(links):
 
 
 def transit_times(pairs, munis):
-    """The fastest journey by the published weekday timetables between the town centres of each pair (both ways), with transfers: a connection scan over
+    """The fastest journey by the published weekday timetables between the town centers of each pair (both ways), with transfers: a connection scan over
     trips.json for departures every TT_STEP from TT_FROM to TT_TO. Walks TT_WALK_M at most to and from the stops, TT_XFER_M between stops (plus TT_XFER_S).
     Sets tt_best (the fastest journey, minutes), tt_typ (the median over the departures, waiting included) and tt_xfers (transfers on the fastest) on each
-    pair that has a journey within TT_MAX, and tt_why on the others: 1 when a town centre has no stop of the weekday timetables within TT_WALK_M, 2 when
-    both have one but no journey within TT_MAX joins them. Returns the rule, the counts and {geoid: km from the town centre to the nearest stop with
+    pair that has a journey within TT_MAX, and tt_why on the others: 1 when a town center has no stop of the weekday timetables within TT_WALK_M, 2 when
+    both have one but no journey within TT_MAX joins them. Returns the rule, the counts and {geoid: km from the town center to the nearest stop with
     weekday service}."""
     from bisect import bisect_left
     from shapely import STRtree
@@ -538,12 +538,12 @@ def transit_times(pairs, munis):
         p["tt_best"], p["tt_typ"], p["tt_xfers"] = round(fast[0] / 60), round(js[len(js) // 2] / 60), fast[1] - 1
         done += 1
     return {"source": "The published weekday timetables (trips.json), as the observatory reads them on " + str(doc.get("day")),
-            "rule": "The fastest journey by timetable between the two town centres, in either direction, leaving every 15 minutes from 6:00 to 9:00 on a weekday: "
+            "rule": "The fastest journey by timetable between the two town centers, in either direction, leaving every 15 minutes from 6:00 to 9:00 on a weekday: "
                     "walking up to 1 km to and from a stop and up to 400 m between stops (straight line times 1.3, at 1.2 m/s, plus 2 minutes to transfer); "
                     "tt_best is the fastest, tt_typ the median over the departures (waiting included), tt_xfers the transfers on the fastest. No journey over 3 hours.",
             "day": doc.get("day"), "departures": [TT_FROM, TT_TO, TT_STEP], "walk_m": TT_WALK_M, "transfer_m": TT_XFER_M, "max_min": TT_MAX // 60,
             "pairs_with_a_journey": done, "connections": len(conns), "centres_without_a_stop": sum(1 for g in access if not access[g]),
-            "why": {"1": "a town centre has no stop of the weekday timetables within 1 km", "2": "no journey within 3 hours joins the two centres"}}, stop_km
+            "why": {"1": "a town center has no stop of the weekday timetables within 1 km", "2": "no journey within 3 hours joins the two centers"}}, stop_km
 
 
 def along_links(links):
@@ -736,8 +736,8 @@ def assemble(flows_doc, pub_data):
     layer = {
         "type": "FeatureCollection", "vintage": FLOWS_PERIOD,
         "notes": {"source": "Simulated by Foundation for Puerto Rico from the Census Bureau's commuting flows " + FLOWS_PERIOD + ", the published timetables and OpenStreetMap roads",
-                  "what": "The fastest path along the roads between two town centres, for each pair of municipios with " + str(SIM_MIN_WORKERS)
-                          + " workers or more travelling between them and no timetabled route. Not a proposed route or a demand forecast.",
+                  "what": "The fastest path along the roads between two town centers, for each pair of municipios with " + str(SIM_MIN_WORKERS)
+                          + " workers or more traveling between them and no timetabled route. Not a proposed route or a demand forecast.",
                   "flows_period": FLOWS_PERIOD, "timetables_as_of": tt_as_of, "publicos_as_of": PUBLICOS_AS_OF, "min_workers": SIM_MIN_WORKERS,
                   "links": len(links), "with_publico_2020": sum(1 for p, _ in links if p["status"] == "publico"), "none_listed": pr["simulated_none"],
                   "workers": pr["simulated_workers"]},
@@ -752,7 +752,7 @@ def assemble(flows_doc, pub_data):
     tt_layer = {
         "type": "FeatureCollection", "vintage": tt_as_of,
         "notes": {"what": "Each pair of municipios joined by a current timetabled route, as the stretch of its route with the most weekday trips between its point "
-                          "in each municipio nearest that town centre (transit routes layer); the fastest road path when no route has a line inside both.",
+                          "in each municipio nearest that town center (transit routes layer); the fastest road path when no route has a line inside both.",
                   "timetables_as_of": tt_as_of, "pairs": len(tt_lines), "by": {k: sum(1 for x in tt_lines if x[2] == k) for k in sorted({x[2] for x in tt_lines})},
                   "edge_m": TT_EDGE_M, "min_m": TT_MIN_M},
         "features": [{"type": "Feature", "geometry": line_coords(g),

@@ -5,10 +5,10 @@
     python education_series.py --check     # rebuild from the cache and exit 1 when site/data/education_series.json is not what it gives (no network, nothing written)
 
 Source, no key: the Urban Institute's Education Data Portal API (https://educationdata.urban.org), which republishes two US federal collections of the National Center for
-Education Statistics (NCES) under the Open Data Commons Attribution licence (ODC-By 1.0): credit "Urban Institute, Education Data Portal" and NCES.
+Education Statistics (NCES) under the Open Data Commons Attribution license (ODC-By 1.0): credit "Urban Institute, Education Data Portal" and NCES.
   schools/ccd/directory/{year}                        the Common Core of Data (CCD) school directory: one row for each public school, with its county, status, students and teachers
   college-university/ipeds/directory/{year}           IPEDS, the directory of colleges, universities and other postsecondary institutions, with the county of each
-  college-university/ipeds/fall-enrollment/{year}/... IPEDS fall enrolment (undergraduate and graduate totals of each institution)
+  college-university/ipeds/fall-enrollment/{year}/... IPEDS fall enrollment (undergraduate and graduate totals of each institution)
 A year is the school year that starts in it (2023 = 2023-24 for schools, fall 2023 for colleges).
 
 What is kept. Only the columns listed in KEEP reach the cache (cache/education/) and only counts for each municipality reach the output: school and college names,
@@ -132,7 +132,7 @@ def years_available(refresh=False, offline=False):
 # ── Aggregation ──────────────────────────────────────────────────────────────
 
 def schools(rows, ids):
-    """For one year: {fips: [open, enrolment or None, teachers or None, students counted for the ratio, teachers counted for the ratio]} and the open school ids, with notes."""
+    """For one year: {fips: [open, enrollment or None, teachers or None, students counted for the ratio, teachers counted for the ratio]} and the open school ids, with notes."""
     by, seen, notes = defaultdict(lambda: [0, None, None, 0.0, 0.0]), set(), Counter()
     for r in rows:
         st = r["school_status"]
@@ -149,7 +149,7 @@ def schools(rows, ids):
         if e is not None:
             a[1] = (a[1] or 0) + e
         else:
-            notes["open, no enrolment"] += 1
+            notes["open, no enrollment"] += 1
         if t is not None:
             a[2] = (a[2] or 0) + t
         else:
@@ -161,10 +161,10 @@ def schools(rows, ids):
 
 
 def colleges(dir_rows, fall_rows, ids):
-    """For one year: {fips: institutions} and {fips: fall enrolment or None}, with notes. An institution's enrolment goes to the municipality of its directory row."""
+    """For one year: {fips: institutions} and {fips: fall enrollment or None}, with notes. An institution's enrollment goes to the municipality of its directory row."""
     where, inst, notes = {}, Counter(), Counter()
     for r in dir_rows:
-        if (num(r["sector"]) or 0) <= 0:   # sector 0: the administrative office of a university system (3 in San Juan every year); -1: "not applicable" records (13 in 2020); neither is an institution and neither has fall enrolment
+        if (num(r["sector"]) or 0) <= 0:   # sector 0: the administrative office of a university system (3 in San Juan every year); -1: "not applicable" records (13 in 2020); neither is an institution and neither has fall enrollment
             notes[f"not an institution (sector {r['sector']})"] += 1
             continue
         fips = str(r["county_fips"] or "")

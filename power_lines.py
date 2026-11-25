@@ -1,5 +1,5 @@
 """Transmission lines for the PR Data Observatory: OpenStreetMap's 230, 115 and 38 kV lines and cables, simplified to about 100 m, for the "Transmission lines"
-layer of the 2D map and the 3D view (core/facilities.js draws it, coloured and sized by voltage). HANDOFF decision 104, step 2; docs/energy.md.
+layer of the 2D map and the 3D view (core/facilities.js draws it, colored and sized by voltage). HANDOFF decision 104, step 2; docs/energy.md.
 
     python power_lines.py              # build site/data/power_lines.geojson (asks Overpass only when cache/energy/osm_power.json is missing)
     python power_lines.py --refresh    # ask Overpass again

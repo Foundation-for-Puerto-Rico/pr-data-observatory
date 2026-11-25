@@ -323,7 +323,7 @@ def build(refresh=False, check=False):
             summarise(sec, a, with_hex=a == newest)
     S = summaries()
     if not S:
-        print("broadband: no release is summarised in cache/broadband/: nothing to build")
+        print("broadband: no release is summarized in cache/broadband/: nothing to build")
         return 1 if check else 0
     docs = list(assemble(S, *places()))
     paths = [OUT_SERIES, OUT_BARRIO]

@@ -1,5 +1,5 @@
-// The colours of the surface heat image (site/js/core/surfscale.js, decision 88): the page reads each pixel's step from its colour, so the palette it rebuilds from
-// heat_surface.json must be the PNG's own palette, colour for colour (surface_image.py writes it with Python's rounding; a mismatch would drop those pixels).
+// The colors of the surface heat image (site/js/core/surfscale.js, decision 88): the page reads each pixel's step from its color, so the palette it rebuilds from
+// heat_surface.json must be the PNG's own palette, color for color (surface_image.py writes it with Python's rounding; a mismatch would drop those pixels).
 // Run: node --test tests/surfscale.test.js
 const test = require('node:test');
 const assert = require('node:assert');
@@ -26,6 +26,6 @@ for (const name of ['heat_surface.json', 'night_heat_surface.json']) test(`${nam
   for (let k = 0; k < SS.STEPS; k++) assert.deepStrictEqual(SS.at(meta.scale.stops, k / (SS.STEPS - 1)).map(SS.roundEven), pal[k + 1], `step ${k + 1}`);
 });
 
-test('roundEven is Python\'s round(): halves go to the even neighbour', () => {
+test('roundEven is Python\'s round(): halves go to the even neighbor', () => {
   assert.deepStrictEqual([0.5, 1.5, 2.5, 3.5, 2.4, 2.6, 7].map(SS.roundEven), [0, 2, 2, 4, 2, 3, 7]);
 });

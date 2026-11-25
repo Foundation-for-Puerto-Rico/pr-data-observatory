@@ -24,7 +24,7 @@
 <link rel="stylesheet" href="css/twin.css?v=65">
 <link rel="stylesheet" href="css/housing.css?v=22">
 <link rel="stylesheet" href="css/chat.css?v=5">
-<link rel="stylesheet" href="css/ws.css?v=1">
+<link rel="stylesheet" href="css/ws.css?v=2">
 <script src="js/i18n.js?v=61" data-page="housing"></script>
 </head>
 <body class="research">
@@ -36,14 +36,14 @@
   <div class="brand"><b>FPR Research in Data</b><span>The State of Housing in Puerto Rico · 2023 study, live data 2010–2025</span></div>
   <div class="spacer"></div>
   <nav class="views" aria-label="Views">
-    <a class="btn" href="explore.html" title="Explore: start from a question, a topic or a saved map"><span class="ms-icon" aria-hidden="true">explore</span><span class="lbl">Explore</span></a>
+    <a class="btn" href="index.html" title="Map: every layer and tool, in 2D or 3D"><span class="ms-icon" aria-hidden="true">map</span><span class="lbl">Map</span></a>
+    <a class="btn" href="explore.html" title="Map Gallery: ready-made maps, topics and your saved maps"><span class="ms-icon" aria-hidden="true">explore</span><span class="lbl">Map Gallery</span></a>
     <a class="btn" href="data.html" title="Data: every dataset, map layer and set of places"><span class="ms-icon" aria-hidden="true">grid_view</span><span class="lbl">Data</span></a>
-    <a class="btn" href="index.html"><span class="ms-icon" aria-hidden="true">map</span><span class="lbl">Map</span></a>
     <a class="btn" href="workflows.html" title="Workflows: steps that turn data into a result on the map"><span class="ms-icon" aria-hidden="true">account_tree</span><span class="lbl">Workflows</span></a>
-    <a class="btn" href="3d.html" title="Immersive 3D + time view"><span class="ms-icon" aria-hidden="true">view_in_ar</span><span class="lbl">3D + Time</span></a>
     <a class="btn" href="knowledge.html" aria-current="page" title="Knowledge: FPR studies, analyses and tools"><span class="ms-icon" aria-hidden="true">lightbulb</span><span class="lbl">Knowledge</span></a>
-    <a class="btn" href="dictionary.html" title="Data dictionary: meanings, sources, licenses, how to cite"><span class="ms-icon" aria-hidden="true">menu_book</span><span class="lbl">Data dictionary</span></a>
+    <a class="btn" href="dictionary.html" title="Data Dictionary: meanings, sources, licenses, how to cite"><span class="ms-icon" aria-hidden="true">menu_book</span><span class="lbl">Data Dictionary</span></a>
     <a class="btn" href="learn.html" title="Learn: short lessons about maps and spatial analysis"><span class="ms-icon" aria-hidden="true">school</span><span class="lbl">Learn</span></a>
+    <a class="btn" href="about.html" title="About: this initiative, how to use the Observatory, terms"><span class="ms-icon" aria-hidden="true">info</span><span class="lbl">About</span></a>
   </nav>
   <div class="snapshot"><span class="ms-icon" aria-hidden="true" style="font-size:16px">verified</span><span id="snapshotLabel">—</span></div>
 </header>
@@ -187,7 +187,7 @@
     <div class="note"><b>Links.</b> <a href="https://foundationforpuertorico.org/wp-content/uploads/2023/05/state_of_housing.pdf" target="_blank" rel="noopener">Full study (PDF)</a> · <a href="https://foundationforpuertorico.org/en/housing-in-puerto-rico/" target="_blank" rel="noopener">Housing in Puerto Rico, FPR program page</a> · <a href="https://nalcab.org/" target="_blank" rel="noopener">NALCAB, Advancing Equitable Neighborhood Development</a> · <a href="https://foundationforpuertorico.org/" target="_blank" rel="noopener">Foundation for Puerto Rico home</a></div>
     <div class="note"><b>How to cite this page.</b> Foundation for Puerto Rico, <i>FPR Research in Data: The State of Housing in Puerto Rico</i>, PR Data Observatory, <span class="snap"></span>, https://observatory.foundationpr.org/housing.html. Data: US Census Bureau (decennial census, Population Estimates, American Community Survey), FEMA OpenFEMA; Junta de Planificación PUT 2015; FPR (2023) study tables.</div>
     <div class="note"><b>Population.</b> The 2010 and 2020 censuses are counts for April 1. Every other year is the Census Bureau's estimate for July 1: 2011–2019 from Vintage 2020 (built on the 2010 census and never revised after the 2020 count, so the series steps up in 2020) and 2021–2025 from Vintage 2025 (built on the 2020 census). Age structure comes from the same estimate files.</div>
-    <div class="note"><b>American Community Survey.</b> Five-year estimates for every window from 2006–2010 to 2020–2024, read directly from the Census Bureau summary files (no API key) and labelled by the last year of the window. Neighbouring windows share four of five years of sample, so for real change compare windows that do not overlap (2012, 2017, 2022). Medians and counts carry the Census Bureau's margin of error at 90% confidence; shares and rates carry margins computed with the Bureau's formulas. The 2021–2025 window arrives in December 2026. Tables used: B01002, B01003, B15002, B17001, B19013, B19049, B19301, B23025, B25001, B25002, B25003, B25004, B25007, B25010, B25014, B25024, B25035, B25064, B25070, B25071, B25077, B25088, B25091, B25119. Incomes and values are in each survey period's dollars, not adjusted for inflation, as in the study.</div>
+    <div class="note"><b>American Community Survey.</b> Five-year estimates for every window from 2006–2010 to 2020–2024, read directly from the Census Bureau summary files (no API key) and labeled by the last year of the window. Neighboring windows share four of five years of sample, so for real change compare windows that do not overlap (2012, 2017, 2022). Medians and counts carry the Census Bureau's margin of error at 90% confidence; shares and rates carry margins computed with the Bureau's formulas. The 2021–2025 window arrives in December 2026. Tables used: B01002, B01003, B15002, B17001, B19013, B19049, B19301, B23025, B25001, B25002, B25003, B25004, B25007, B25010, B25014, B25024, B25035, B25064, B25070, B25071, B25077, B25088, B25091, B25119. Incomes and values are in each survey period's dollars, not adjusted for inflation, as in the study.</div>
     <div class="note"><b>Census-day counts.</b> Housing units, occupied and vacant for 2010 and 2020 come from the PL 94-171 redistricting files (table H1). Residents per unit divides each census's population by its housing units.</div>
     <div class="note"><b>Affordability method (Table 6).</b> 30% of median income for housing, 78% of that to principal and interest (the study's own proportion, $430 of $549), 30-year loan at 5%, which reproduces the study's $80,181 maximum for Puerto Rico's $21,967 median to within about $60. The rate is held at 5% in every year so that years differ only through prices and incomes; actual mortgage rates ranged from under 4% to over 7% over this period. Ratio = median home value ÷ maximum loan.</div>
     <div class="note"><b>FEMA.</b> Households approved for Individual Assistance and dollars approved (owners plus renters), summed by municipality and the calendar year of the disaster declaration. Counts are of approvals, not of damaged homes.</div>
@@ -208,7 +208,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" integrity="sha384-bs/nf9FbdNouRbMiFcrcZfLXYPKiPaGVGplVbv7dLGECccEXDW+S3zjqSKR5ZEaD" crossorigin="anonymous"></script>
 <script src="js/common.js?v=20"></script>
 <script src="js/core/text.js?v=1"></script>
-<script src="js/core/palettes.js?v=2"></script>
+<script src="js/core/palettes.js?v=3"></script>
 <script src="js/core/stats.js?v=4"></script>
 <script src="js/core/classify.js?v=2"></script>
 <script src="js/core/time.js?v=1"></script>

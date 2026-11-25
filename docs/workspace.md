@@ -110,3 +110,26 @@ So adding a dataset is what it was (`docs/adding-data.md`): once the build has r
 3. **Merging publishes.** `pages.yml` runs on every push to `main` that touches `site/` or `connector/` and deploys them to Azure Static Web Apps, which serves `observatory.foundationpr.org` (`docs/azure.md`). It first runs the privacy checks and bundles the connector's data. Keep a pull request as a draft if it must not go out yet.
 4. **To undo a release**, open a pull request that reverts the merge (`git revert -m 1 <merge commit>`) and merge it. The site is published again from the reverted `main`. Do not rewrite the history of `main`.
 5. Files are cached for 10 minutes (`staticwebapp.config.json`). A changed script or stylesheet needs its `?v=` raised in every page that loads it, and in the generator of a generated page.
+
+## Navigation and names since 25 November 2026
+
+Older parts of this file and of `docs/workspace-feature-parity.md` use the earlier names. These are the names people see now.
+
+| Before | Now | Where |
+|---|---|---|
+| Rail: Explore, Data, Map, Workflows, 3D + Time, Knowledge, Data dictionary, Learn | Map, Map Gallery, Data, Workflows, Knowledge, Data dictionary, Learn, About. About sits at the foot of the rail | The `<nav class="views">` of every page and of the 14 page generators |
+| The page Explore (`explore.html`) | Map Gallery. The address is the same | `site/explore.html` |
+| The map panel's Explore tab | Home. In code it is still `data-main="explore"` and `showTab('explore')` | `site/index.html` |
+| Widgets | Insights. In code the names are unchanged (`Workspace.widgets`, `#wsRight`) | `site/index.html`, `site/js/ws_map.js` |
+| The map panel's About tab | The page About (`about.html`): About this initiative, How to use the Observatory, Terms & Conditions | `site/about.html`, `site/js/ws_about.js` |
+| 3D + Time in the rail | A 2D / 3D switch in the map's project bar and at the top of the 3D view | `site/index.html`, `site/js/ws_map.js`, `site/js/ws_mode3d.js` |
+
+**The 2D / 3D switch.** Both views read and write one address (`docs/view-state.md`). The switch writes the address of the moment and opens the other view with it, so the place, the datasets, the layers, the region and the year go across. A layer that a view cannot draw stays in the address and is back on the return trip; the 3D view names those layers under its switch. `3d.html` keeps its address, so old links open as before. Insights, the timeline slider, the workbench, undo and saved-map buttons are in 2D only; the 3D view sets the year in its Time tab.
+
+**The tutorial.** `about.html#how` holds eight steps. With the script it shows one step at a time (Back, Next, Start again, All steps; the left and right arrow keys); without the script every step is listed. It does not open by itself.
+
+**The terms.** `terms.html` is a draft for FPR and legal review, marked as a draft on the page and kept out of search engines (`noindex`). The About page links to it with the sentence "By using the PR Data Observatory, you agree to its Terms & Conditions." There is no pop-up and no checkbox.
+
+**Not built: accounts.** The site has no login. A tutorial that opens after a person's first login waits for accounts; until then the tutorial is opened from About.
+
+**Not renamed.** The data dictionary's own texts and the older documents still say "Explore" in a few places for the map's first tab.

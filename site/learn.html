@@ -9,12 +9,12 @@
 <meta name="theme-color" content="#FFFFFF">
 <link rel="icon" href="img/fpr-mark.png">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0&icon_names=account_tree,calculate,chat_bubble,close,computer,dark_mode,delete,draw,explore,grain,grid_view,groups,hexagon,history,join_inner,layers,light_mode,lightbulb,map,menu_book,my_location,open_in_new,palette,percent,polyline,print,quiz,route,scatter_plot,school,send,table_chart,upload_file,view_in_ar,visibility_off,warning&display=block">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0&icon_names=account_tree,calculate,chat_bubble,close,computer,dark_mode,delete,draw,explore,grain,grid_view,groups,hexagon,history,info,join_inner,layers,light_mode,lightbulb,map,menu_book,my_location,open_in_new,palette,percent,polyline,print,quiz,route,scatter_plot,school,send,table_chart,upload_file,view_in_ar,visibility_off,warning&display=block">
 <link rel="stylesheet" href="css/twin.css?v=65">
 <link rel="stylesheet" href="css/housing.css?v=22">
 <link rel="stylesheet" href="css/learn.css?v=5">
 <link rel="stylesheet" href="css/chat.css?v=5">
-<link rel="stylesheet" href="css/ws.css?v=1">
+<link rel="stylesheet" href="css/ws.css?v=2">
 <script src="js/i18n.js?v=63" data-page="learn"></script>
 </head>
 <body class="research">
@@ -24,14 +24,14 @@
   <div class="brand"><b>Learn</b><span>How a map answers a question</span></div>
   <div class="spacer"></div>
   <nav class="views" aria-label="Views">
-    <a class="btn" href="explore.html" title="Explore: start from a question, a topic or a saved map"><span class="ms-icon" aria-hidden="true">explore</span><span class="lbl">Explore</span></a>
+    <a class="btn" href="index.html" title="Map: every layer and tool, in 2D or 3D"><span class="ms-icon" aria-hidden="true">map</span><span class="lbl">Map</span></a>
+    <a class="btn" href="explore.html" title="Map Gallery: ready-made maps, topics and your saved maps"><span class="ms-icon" aria-hidden="true">explore</span><span class="lbl">Map Gallery</span></a>
     <a class="btn" href="data.html" title="Data: every dataset, map layer and set of places"><span class="ms-icon" aria-hidden="true">grid_view</span><span class="lbl">Data</span></a>
-    <a class="btn" href="index.html"><span class="ms-icon" aria-hidden="true">map</span><span class="lbl">Map</span></a>
     <a class="btn" href="workflows.html" title="Workflows: steps that turn data into a result on the map"><span class="ms-icon" aria-hidden="true">account_tree</span><span class="lbl">Workflows</span></a>
-    <a class="btn" href="3d.html" title="Immersive 3D + time view"><span class="ms-icon" aria-hidden="true">view_in_ar</span><span class="lbl">3D + Time</span></a>
     <a class="btn" href="knowledge.html" title="Knowledge: FPR studies, analyses and tools"><span class="ms-icon" aria-hidden="true">lightbulb</span><span class="lbl">Knowledge</span></a>
-    <a class="btn" href="dictionary.html" title="Data dictionary: meanings, sources, licenses, how to cite"><span class="ms-icon" aria-hidden="true">menu_book</span><span class="lbl">Data dictionary</span></a>
+    <a class="btn" href="dictionary.html" title="Data Dictionary: meanings, sources, licenses, how to cite"><span class="ms-icon" aria-hidden="true">menu_book</span><span class="lbl">Data Dictionary</span></a>
     <a class="btn" href="learn.html" aria-current="page" title="Learn: short lessons about maps and spatial analysis"><span class="ms-icon" aria-hidden="true">school</span><span class="lbl">Learn</span></a>
+    <a class="btn" href="about.html" title="About: this initiative, how to use the Observatory, terms"><span class="ms-icon" aria-hidden="true">info</span><span class="lbl">About</span></a>
   </nav>
 </header>
 
@@ -268,13 +268,13 @@
 
   <section class="block lesson" id="lesson-classes" data-lesson="classes">
     <div class="eyebrow" data-gloss="off">Read a map · Classification</div>
-    <h2><span class="ms-icon" aria-hidden="true">palette</span>Colours and classes</h2>
+    <h2><span class="ms-icon" aria-hidden="true">palette</span>Colors and classes</h2>
     <div class="card ln-body">
       <p class="ln-q">Why is this municipio dark on one map and light on another?</p>
-      <p>A shaded map cannot give every value its own colour, so it sorts the values into a few classes and gives each class a colour. Where the classes start and end is a choice, and the same data can look very different.</p>
+      <p>A shaded map cannot give every value its own color, so it sorts the values into a few classes and gives each class a color. Where the classes start and end is a choice, and the same data can look very different.</p>
       <ul class="ln-list">
-        <li><b>Quantiles</b> put the same number of places in each class. Every colour is used equally, but two places with almost the same value can land in different classes.</li>
-        <li><b>Equal intervals</b> cut the range of values into equal steps. The steps are easy to read, but most places can end up in one or two colours.</li>
+        <li><b>Quantiles</b> put the same number of places in each class. Every color is used equally, but two places with almost the same value can land in different classes.</li>
+        <li><b>Equal intervals</b> cut the range of values into equal steps. The steps are easy to read, but most places can end up in one or two colors.</li>
         <li><b>Natural breaks</b> look for gaps in the values and cut there, so places with close values share a class.</li>
       </ul>
 
@@ -285,7 +285,7 @@
       <p class="ln-try"><a class="btn primary" href="index.html#e=poverty_pct.f.value.blue.q.1.0"><span class="ms-icon" aria-hidden="true">map</span>Poverty in quantiles</a><a class="btn" href="index.html#e=poverty_pct.f.value.blue.e.1.0"><span class="ms-icon" aria-hidden="true">map</span>Poverty in equal intervals</a><a class="btn" href="index.html#e=poverty_pct.f.value.blue.j.1.0"><span class="ms-icon" aria-hidden="true">map</span>Poverty in natural breaks</a></p>
       <p class="ln-small">In the Analysis tab, each shaded layer has a "Classes" choice. Change it and watch the legend's limits move. These links also turn off "Same classes in every year", so the classes are cut from the newest year alone, as above.</p>
 
-      <div class="note caution"><b>Watch out.</b> Before you read the colours, read the legend. A dark colour means "in the top class", and the top class can start at very different values.</div>
+      <div class="note caution"><b>Watch out.</b> Before you read the colors, read the legend. A dark color means "in the top class", and the top class can start at very different values.</div>
 
       <h3><span class="ms-icon" aria-hidden="true">quiz</span>Check yourself</h3>
       <details class="ln-check"><summary>On a map in quantiles of five classes, about how many places are in the darkest class?</summary><p>About a fifth of them, whatever their values. Quantiles fill every class equally.</p></details>
@@ -301,7 +301,7 @@
     <div class="card ln-body">
       <p class="ln-q">Where is the most, and where is it most common?</p>
       <p>A map of counts mostly shows where people are. The largest city has the most restaurants, the most cars and the most of almost everything, because it has the most people.</p>
-      <p>To compare places fairly, divide the count by something: the residents, the land, the homes. The result is a rate. A count answers "where is the most?". A rate answers "where is it most common?". Neither is wrong. Decide which question you are asking before you read the colours.</p>
+      <p>To compare places fairly, divide the count by something: the residents, the land, the homes. The result is a rate. A count answers "where is the most?". A rate answers "where is it most common?". Neither is wrong. Decide which question you are asking before you read the colors.</p>
 
       <h3>In the observatory</h3>
       <div class="ln-real" id="lnRatesFig" aria-live="polite" data-t="skip"></div>
@@ -327,7 +327,7 @@
       <p class="ln-q">When was this measured, and how close is it to the truth?</p>
       <p>Every value on a map was measured at some time, in some way. Before you compare two places, ask two questions.</p>
       <ul class="ln-list">
-        <li><b>How old is it?</b> Many social figures come from the American Community Survey. Its estimates for small places pool five years of answers, so a figure labelled with one year describes the five years that end in it.</li>
+        <li><b>How old is it?</b> Many social figures come from the American Community Survey. Its estimates for small places pool five years of answers, so a figure labeled with one year describes the five years that end in it.</li>
         <li><b>How sure is it?</b> A survey asks a sample of homes, not all of them. Its estimates come with a margin of error: the true value is probably within that distance of the estimate. The fewer people a place has, the fewer answers it gets and the wider its margin.</li>
       </ul>
 
@@ -379,7 +379,7 @@
     <div class="card ln-body">
       <p class="ln-q">What falls inside what?</p>
       <p>Put one layer on top of another and ask where they meet. Which places are inside a flood zone? How much of this barrio is protected land? The answer is a count or a share, and sometimes a new layer cut along both sets of edges. This is an overlay.</p>
-      <p>An overlay is only as good as its two layers. A point drawn a few metres off, or a zone drawn at a coarse scale, moves things across the line.</p>
+      <p>An overlay is only as good as its two layers. A point drawn a few meters off, or a zone drawn at a coarse scale, moves things across the line.</p>
 
       <h3>In the observatory</h3>
       <div class="ln-real" id="lnOverlayFig" aria-live="polite" data-t="skip"></div>
@@ -411,7 +411,7 @@
 
       <h3>Try it on the map</h3>
       <p class="ln-try"><a class="btn primary" id="lnNearTry" href="index.html#l=places&amp;mt=b:study:saAroundH"><span class="ms-icon" aria-hidden="true">my_location</span>Open Area around a point</a><a class="btn" id="lnNearRings" href="index.html#l=stops,rings"><span class="ms-icon" aria-hidden="true">map</span>See the 400 m walk radius around transit stops</a></p>
-      <p class="ln-small">The first button opens the tool with the map centred on the plaza. Press "Use the centre of the map" and pick a distance: the summary gives the area and the residents. "Also count tourism places" adds the places. The figures match the ones above.</p>
+      <p class="ln-small">The first button opens the tool with the map centered on the plaza. Press "Use the center of the map" and pick a distance: the summary gives the area and the residents. "Also count tourism places" adds the places. The figures match the ones above.</p>
 
       <div class="note caution"><b>Watch out.</b> A ring measures distance in a straight line. It crosses rivers, highways and hills as if they were not there. For the distance a person really walks, use Walking time in the Map tools, which follows the roads.</div>
 
@@ -436,7 +436,7 @@
 
       <h3>Try it on the map</h3>
       <p class="ln-try"><a class="btn primary" id="lnWalkTry" href="index.html#mt=b:study:saWalkH"><span class="ms-icon" aria-hidden="true">route</span>Open Walking time</a><a class="btn" href="index.html#mt=l:lyGaps"><span class="ms-icon" aria-hidden="true">map</span>See residents far from service</a></p>
-      <p class="ln-small">The first button opens the tool with the map centred on the plaza. Choose the minutes and press "Use the centre of the map". The summary will be close to the figures above, not equal: a walk changes by several percent when its start moves a few metres.</p>
+      <p class="ln-small">The first button opens the tool with the map centered on the plaza. Choose the minutes and press "Use the center of the map". The summary will be close to the figures above, not equal: a walk changes by several percent when its start moves a few meters.</p>
 
       <div class="note caution"><b>Watch out.</b> The answer is only as complete as the network. This one has roads, not footpaths, stairs or a shortcut across a plaza, and it does not know a fence or a street that is too dangerous to cross. The walking speed is a planning value: an older adult or a child covers less ground.</div>
 
@@ -454,7 +454,7 @@
     <div class="card ln-body">
       <p class="ln-q">What is the value where nobody measured?</p>
       <p>Rain, groundwater and air quality are measured at a few stations. Interpolation estimates the value everywhere else from the stations around each spot. It produces a smooth, convincing map.</p>
-      <p>That is the danger. The colours between the stations are estimates, and the map does not show how unsure they are. With few stations, far apart, in mountains where rain changes over a short distance, the surface can be badly wrong and still look exact. This is why the observatory draws its stations as points and paints no surface between them.</p>
+      <p>That is the danger. The colors between the stations are estimates, and the map does not show how unsure they are. With few stations, far apart, in mountains where rain changes over a short distance, the surface can be badly wrong and still look exact. This is why the observatory draws its stations as points and paints no surface between them.</p>
       <p>A surface is sound when it starts from a measurement in every cell. The height of the ground in Puerto Rico was measured from the air in cells of about 10 m. Slope and Contour lines are worked out from that grid, not guessed between points that are far apart.</p>
 
       <h3>In the observatory</h3>
@@ -464,7 +464,7 @@
       <p class="ln-try"><a class="btn primary" href="index.html#l=rain,groundwater"><span class="ms-icon" aria-hidden="true">map</span>See the stations</a><a class="btn" href="index.html#mt=l:lyContours"><span class="ms-icon" aria-hidden="true">map</span>Open Contour lines</a><a class="btn" href="index.html#mt=l:lySlope"><span class="ms-icon" aria-hidden="true">map</span>Open Slope</a></p>
       <p class="ln-small">Zoom in on the stations and look at the land between two of them. Then turn on Slope: it has a value everywhere.</p>
 
-      <div class="note caution"><b>Watch out.</b> A smooth map hides its gaps. Before you trust a surface, ask how many measurements are under it and where they are. If the map cannot show you its points, treat the colours between them as a guess.</div>
+      <div class="note caution"><b>Watch out.</b> A smooth map hides its gaps. Before you trust a surface, ask how many measurements are under it and where they are. If the map cannot show you its points, treat the colors between them as a guess.</div>
 
       <h3><span class="ms-icon" aria-hidden="true">quiz</span>Check yourself</h3>
       <details class="ln-check"><summary>Two rain gauges 15 km apart both recorded 20 mm. How much rain fell halfway between them?</summary><p>Nobody knows. Interpolation would say 20 mm, but a mountain between them could have had three times that, or none.</p></details>
@@ -489,10 +489,10 @@
       <p class="ln-try"><a class="btn primary" href="index.html#l=places&amp;pv=hex10"><span class="ms-icon" aria-hidden="true">map</span>See places in hexagons</a><a class="btn" href="index.html#l=broadband"><span class="ms-icon" aria-hidden="true">map</span>See the broadband gaps in hexagons</a></p>
       <p class="ln-small">On the map, the Tourism places layer has a "Show places as" menu: change the size of the hexagons and watch the pattern change.</p>
 
-      <div class="note caution"><b>Watch out.</b> Most concentration maps redraw the population. Restaurants, crashes and clinics are all densest where people are. To learn something new, compare each cell with what you would expect there: per resident, per home, per kilometre of road.</div>
+      <div class="note caution"><b>Watch out.</b> Most concentration maps redraw the population. Restaurants, crashes and clinics are all densest where people are. To learn something new, compare each cell with what you would expect there: per resident, per home, per kilometer of road.</div>
 
       <h3><span class="ms-icon" aria-hidden="true">quiz</span>Check yourself</h3>
-      <details class="ln-check"><summary>A hexagon holds 300 restaurants. Is it a hot spot?</summary><p>It is a concentration. To call it a hot spot you need a test that compares it and its neighbours with the rest of the map.</p></details>
+      <details class="ln-check"><summary>A hexagon holds 300 restaurants. Is it a hot spot?</summary><p>It is a concentration. To call it a hot spot you need a test that compares it and its neighbors with the rest of the map.</p></details>
       <details class="ln-check"><summary>Why count in hexagons of equal area and not in barrios?</summary><p>Barrios differ in size, so a large one collects more points just by being large. Equal cells make the counts comparable.</p></details>
 
       <p class="ln-more"><b>Go further.</b> <a href="https://doi.org/10.1111/j.1538-4632.1992.tb00261.x" target="_blank" rel="noopener">The Analysis of Spatial Association by Use of Distance Statistics</a>, by Getis and Ord (1992), is the paper behind the most used hot spot test.</p>
@@ -512,9 +512,9 @@
 
       <h3>Try it on the map</h3>
       <p class="ln-try"><a class="btn primary" href="index.html#e=poverty_pct.f.value.blue.q.1.0"><span class="ms-icon" aria-hidden="true">map</span>Poverty by municipio</a><a class="btn" href="index.html#e=poverty_pct.b"><span class="ms-icon" aria-hidden="true">map</span>Poverty by barrio</a><a class="btn" href="index.html#l=places&amp;pv=hex10"><span class="ms-icon" aria-hidden="true">map</span>Places in hexagons</a></p>
-      <p class="ln-small">Open the poverty rate by municipio, then by barrio, and look at one municipio: one colour becomes many.</p>
+      <p class="ln-small">Open the poverty rate by municipio, then by barrio, and look at one municipio: one color becomes many.</p>
 
-      <div class="note caution"><b>Watch out.</b> A municipio's figure is an average of very different places. Before you describe a neighbourhood with it, look for a figure for a smaller area.</div>
+      <div class="note caution"><b>Watch out.</b> A municipio's figure is an average of very different places. Before you describe a neighborhood with it, look for a figure for a smaller area.</div>
 
       <h3><span class="ms-icon" aria-hidden="true">quiz</span>Check yourself</h3>
       <details class="ln-check"><summary>A municipio is in the lightest class. Can one of its barrios be in the darkest?</summary><p>Yes. The municipio's rate averages all its barrios, so one barrio can be far above it while the others pull the average down.</p></details>
@@ -537,7 +537,7 @@
 
       <h3>Try it on the map</h3>
       <p class="ln-try"><a class="btn primary" href="index.html#e=bachelors_pct.f,poverty_pct.f"><span class="ms-icon" aria-hidden="true">map</span>See the two together</a></p>
-      <p class="ln-small">With two shaded layers, the map draws them together in nine colours: a bivariate map. Its legend shows which places are high in one, the other, or both.</p>
+      <p class="ln-small">With two shaded layers, the map draws them together in nine colors: a bivariate map. Its legend shows which places are high in one, the other, or both.</p>
 
       <div class="note caution"><b>Watch out.</b> A strong correlation across municipios does not tell you what happens inside a home. To learn about people, you need data about people, not about areas.</div>
 
@@ -550,7 +550,7 @@
   </section>
 
   <section class="block lesson" id="lesson-leftout" data-lesson="leftout">
-    <div class="eyebrow" data-gloss="off">Judge a map · Privacy, suppression and licences</div>
+    <div class="eyebrow" data-gloss="off">Judge a map · Privacy, suppression and licenses</div>
     <h2><span class="ms-icon" aria-hidden="true">visibility_off</span>What a map leaves out, and why</h2>
     <div class="card ln-body">
       <p class="ln-q">What is missing from this map, and on purpose?</p>
@@ -558,7 +558,7 @@
       <ul class="ln-list">
         <li><b>Privacy.</b> A home is never drawn or named. A holiday rental is counted in its barrio and municipio, but has no point on the map.</li>
         <li><b>Suppression.</b> A source may hold back a figure that is too unsure, or that could identify one person or one employer. The place shows "no data".</li>
-        <li><b>Licences.</b> Some data can be read but not published again. The observatory links to it instead of copying it.</li>
+        <li><b>Licenses.</b> Some data can be read but not published again. The observatory links to it instead of copying it.</li>
       </ul>
 
       <h3>In the observatory</h3>
@@ -572,7 +572,7 @@
 
       <h3><span class="ms-icon" aria-hidden="true">quiz</span>Check yourself</h3>
       <details class="ln-check"><summary>You count the points of a layer in a barrio and get fewer than the barrio's own count. Is one of them wrong?</summary><p>Not necessarily. Places counted and not drawn are in the barrio's count but have no point to count.</p></details>
-      <details class="ln-check"><summary>A barrio shows "no data" for income. Should you colour it as the poorest?</summary><p>No. Leave it blank and say why. Filling it with a guess would draw a fact that nobody measured.</p></details>
+      <details class="ln-check"><summary>A barrio shows "no data" for income. Should you color it as the poorest?</summary><p>No. Leave it blank and say why. Filling it with a guess would draw a fact that nobody measured.</p></details>
 
       <p class="ln-more"><b>Go further.</b> <a href="https://www.census.gov/programs-surveys/acs/library/handbooks/general.html" target="_blank" rel="noopener">Understanding and Using American Community Survey Data</a>, by the US Census Bureau, explains why some estimates are not published.</p>
     </div>
@@ -587,7 +587,7 @@
       <p>Your file is read in your browser. It is never uploaded and never kept, and the points you load are not drawn on the shared map. Close the page and it is gone.</p>
       <ul class="ln-list">
         <li><b>Points:</b> a CSV with a latitude and a longitude column (named lat and lon, latitude and longitude, or latitud and longitud), or a GeoJSON of points.</li>
-        <li><b>Areas:</b> a GeoJSON of polygons, such as the outline of a neighbourhood or a project.</li>
+        <li><b>Areas:</b> a GeoJSON of polygons, such as the outline of a neighborhood or a project.</li>
       </ul>
 
       <h3>In the observatory</h3>
@@ -612,12 +612,12 @@
     <h2><span class="ms-icon" aria-hidden="true">computer</span>From the observatory to QGIS</h2>
     <div class="card ln-body">
       <p class="ln-q">How do I take this data further than the website goes?</p>
-      <p>Every layer of the observatory is a file you can download from the Data dictionary, with its source and licence. QGIS is a free, open-source GIS program for your computer. With it you can open those files, join your own tables to them, and make your own maps.</p>
+      <p>Every layer of the observatory is a file you can download from the Data dictionary, with its source and license. QGIS is a free, open-source GIS program for your computer. With it you can open those files, join your own tables to them, and make your own maps.</p>
       <ol class="ln-list">
         <li>Download a layer, such as the barrios, from its entry in the Data dictionary.</li>
         <li>In QGIS, drag the file into the map. Open its attribute table to see each barrio's row.</li>
         <li>To join a table of your own, give it a column with the same GEOID, then use the layer's Joins properties.</li>
-        <li>Before you measure distances or areas, choose a map projection in metres for Puerto Rico.</li>
+        <li>Before you measure distances or areas, choose a map projection in meters for Puerto Rico.</li>
       </ol>
 
       <h3>In the observatory</h3>
@@ -625,9 +625,9 @@
 
       <h3>Try it on the map</h3>
       <p class="ln-try"><a class="btn primary" href="index.html#l=barrios"><span class="ms-icon" aria-hidden="true">map</span>See the barrios</a><a class="btn" href="dictionary.html"><span class="ms-icon" aria-hidden="true">menu_book</span>Open the Data dictionary</a><a class="btn" href="https://qgis.org/" target="_blank" rel="noopener"><span class="ms-icon" aria-hidden="true">open_in_new</span>Get QGIS</a></p>
-      <p class="ln-small">Each entry of the Data dictionary lists its files, how to cite it and its licence. Keep the credit when you use the data.</p>
+      <p class="ln-small">Each entry of the Data dictionary lists its files, how to cite it and its license. Keep the credit when you use the data.</p>
 
-      <div class="note caution"><b>Watch out.</b> The files store longitude and latitude in degrees. A degree of longitude is not the same length as a degree of latitude, so measure areas and distances only after you reproject the layer to a projection in metres.</div>
+      <div class="note caution"><b>Watch out.</b> The files store longitude and latitude in degrees. A degree of longitude is not the same length as a degree of latitude, so measure areas and distances only after you reproject the layer to a projection in meters.</div>
 
       <h3><span class="ms-icon" aria-hidden="true">quiz</span>Check yourself</h3>
       <details class="ln-check"><summary>A GEOID starts with 72. What does that tell you?</summary><p>That the place is in Puerto Rico: 72 is Puerto Rico's code in the Census Bureau's system. The next three digits name the municipio.</p></details>

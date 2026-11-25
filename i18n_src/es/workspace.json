@@ -21,7 +21,7 @@
  "Line chart by year": "Gráfica de línea por año",
  "Histogram: municipios by value": "Histograma: municipios según su valor",
  "Show or hide: {name}": "Mostrar u ocultar: {name}",
- "Widgets show figures and charts for a dataset on the map. They follow the timeline.": "Los widgets muestran cifras y gráficas de un conjunto de datos del mapa. Siguen la línea de tiempo.",
+ "Insights show figures and charts for a dataset on the map. They follow the timeline.": "Las Perspectivas muestran cifras y gráficas de un conjunto de datos del mapa. Siguen la línea de tiempo.",
  "Add a dataset": "Añadir un conjunto de datos",
  "This dataset has no values for the chosen year.": "Este conjunto de datos no tiene valores para el año elegido.",
  "{n} of {m} municipios": "{n} de {m} municipios",
@@ -64,10 +64,22 @@
  "That file is not a saved-maps file of the observatory.": "Ese archivo no es un archivo de mapas guardados del observatorio.",
  "Link copied": "Enlace copiado",
  "The link is in the address bar: copy it from there.": "El enlace está en la barra de direcciones: cópielo de ahí.",
- "Sum of {n} municipio": ["Suma de {n} municipio", "Suma de {n} municipios"],
- "Median of the values of {n} municipio": ["Mediana de los valores de {n} municipio", "Mediana de los valores de {n} municipios"],
- "{n} municipio": ["{n} municipio", "{n} municipios"],
- "{n} map added from the file": ["{n} mapa añadido desde el archivo", "{n} mapas añadidos desde el archivo"],
+ "Sum of {n} municipio": [
+  "Suma de {n} municipio",
+  "Suma de {n} municipios"
+ ],
+ "Median of the values of {n} municipio": [
+  "Mediana de los valores de {n} municipio",
+  "Mediana de los valores de {n} municipios"
+ ],
+ "{n} municipio": [
+  "{n} municipio",
+  "{n} municipios"
+ ],
+ "{n} map added from the file": [
+  "{n} mapa añadido desde el archivo",
+  "{n} mapas añadidos desde el archivo"
+ ],
  "{lo} to {hi}": "{lo} a {hi}",
  "This map": "Este mapa",
  "Name and save this map": "Nombrar y guardar este mapa",
@@ -76,9 +88,9 @@
  "Copy link": "Copiar enlace",
  "Save": "Guardar",
  "My maps": "Mis mapas",
- "Show the widgets": "Mostrar los widgets",
- "Hide the widgets": "Ocultar los widgets",
- "Widgets": "Widgets",
+ "Show the Insights": "Mostrar las Perspectivas",
+ "Hide the Insights": "Ocultar las Perspectivas",
+ "Insights": "Perspectivas",
  "Previous year": "Año anterior",
  "Next year": "Año siguiente",
  "Timeline: the year of the data on the map": "Línea de tiempo: el año de los datos del mapa",
@@ -91,5 +103,18 @@
  "Show the latest data of every dataset": "Mostrar el dato más reciente de cada conjunto de datos",
  "Resize the workbench: drag, or use the up and down arrows": "Cambiar el tamaño de la mesa de trabajo: arrastre, o use las flechas hacia arriba y hacia abajo",
  "Drag to resize the workbench. Double-click to reset.": "Arrastre para cambiar el tamaño de la mesa de trabajo. Doble clic para restablecer.",
- "Close": "Cerrar"
+ "Close": "Cerrar",
+ "Map view": "Vista del mapa",
+ "This is the 2D view": "Esta es la vista 2D",
+ "See this map in 3D: terrain, buildings and time": "Ver este mapa en 3D: terreno, edificios y tiempo",
+ "Back to the 2D view of this map": "Volver a la vista 2D de este mapa",
+ "This is the 3D view": "Esta es la vista 3D",
+ "Not drawn in 3D: {layers}. They are kept and come back in 2D.": "No se dibujan en 3D: {layers}. Se conservan y regresan en 2D.",
+ "Insights, the timeline slider and the workbench are in 2D. Here the Time tab sets the year, the day of transit and the storms.": "Las Perspectivas, la línea de tiempo y la mesa de trabajo están en 2D. Aquí la pestaña Tiempo fija el año, el día de transporte y las tormentas.",
+ "Watersheds and streams": "Cuencas y quebradas",
+ "Slope": "Pendiente",
+ "Contour lines": "Curvas de nivel",
+ "Transit vehicles now": "Vehículos de transporte ahora",
+ "All {n} steps": "Los {n} pasos",
+ "Step {n} of {m}": "Paso {n} de {m}"
 }

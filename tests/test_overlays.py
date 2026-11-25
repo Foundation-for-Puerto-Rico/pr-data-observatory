@@ -1,5 +1,5 @@
 """Boxes over the map (2026-11-11): the time bar folds, status boxes are see-through at rest and solid in use, and Clean view hides the boxes but keeps
-the scale and the map credits (their licences ask for them). Static checks of site/3d.html, site/index.html, the CSS and the scripts."""
+the scale and the map credits (their licenses ask for them). Static checks of site/3d.html, site/index.html, the CSS and the scripts."""
 import re
 import unittest
 from pathlib import Path

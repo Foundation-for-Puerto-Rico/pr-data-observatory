@@ -13,11 +13,11 @@ for every year so the years compare (Suomi NPP stopped sending FIRMS data on 202
     real time (VIIRS_NOAA20_NRT) after, in 5-day windows. It needs a free MAP_KEY, read only from the FIRMS_MAP_KEY environment variable (a GitHub Actions
     secret; .github/workflows/fires.yml). Near-real-time rows have no type, so a detection within 400 m of a place the yearly files tag as a static land
     source is left out.
-Licence: NASA open data, no restriction; credit "NASA FIRMS" (LANCE).
+License: NASA open data, no restriction; credit "NASA FIRMS" (LANCE).
 
 How it is made (docs/fires.md):
   - A detection counts when its type is 0 (or, for the last 12 months, it is not near a static source) and its confidence is nominal or high (low is left out).
-  - A detection belongs to the municipio of the barrio whose outline holds its point (the pixel's centre), or the nearest barrio within about 500 m; farther
+  - A detection belongs to the municipio of the barrio whose outline holds its point (the pixel's center), or the nearest barrio within about 500 m; farther
     ones (at sea) are left out.
   - Per 100 km² of land uses the Census land area.
   - Checks that stop the build: each complete year between 50 and 2,000 detections in Puerto Rico, and more than half of all detections in the dry south and
@@ -241,7 +241,7 @@ def compute(refresh=False, offline=False, today=None):
            "confidence nominal or high)" + (f"; the area API for {l12[1][0]} to {l12[1][1]} (VIIRS_NOAA20_SP and _NRT)" if l12 else "") + ". Credit: NASA FIRMS")
     WHAT = ("A detection is a 375 m pixel that held one or more fires when NOAA-20 passed (about 1:30 in the afternoon and at night), as NASA FIRMS records it; "
             "only those FIRMS tags as presumed vegetation fires, with nominal or high confidence. One fire seen on two passes counts twice; a small fire, or one "
-            "under clouds, is not seen. A detection belongs to the municipio that holds its pixel's centre. Mostly grass and brush fires, most of them in the dry "
+            "under clouds, is not seen. A detection belongs to the municipio that holds its pixel's center. Mostly grass and brush fires, most of them in the dry "
             "south in the first months of the year.")
     ys = sorted(yrs)
     Y = [str(y) for y in ys]

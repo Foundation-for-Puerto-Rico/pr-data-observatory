@@ -143,7 +143,7 @@ def _finish(nodes_xy, edges):
     nodes_xy = list(nodes_xy)
     for u, v, cls, ow, interior in edges:
         pts = [nodes_xy[u]] + interior + [nodes_xy[v]]
-        # simplify: drop points closer than 2 units to the chord of their neighbours (about 2 m)
+        # simplify: drop points closer than 2 units to the chord of their neighbors (about 2 m)
         keep = [pts[0]]
         for p in pts[1:-1]:
             a, b = keep[-1], pts[-1]
@@ -214,7 +214,7 @@ class Roads:
         self.cls = (ed["flags"] & 15).astype(np.int64)
         self.oneway = (ed["flags"] & 16) != 0
         starts = np.concatenate([[0], np.cumsum(ed["n"].astype(np.int64))])
-        # polylines as lists of (lon, lat), and cumulative metres
+        # polylines as lists of (lon, lat), and cumulative meters
         self.poly, self.cum = [], []
         for i in range(n_edges):
             x, y = int(nodes[ed["u"][i], 0]), int(nodes[ed["u"][i], 1])
@@ -230,7 +230,7 @@ class Roads:
                 c.append(c[-1] + hav(a[1], a[0], bb[1], bb[0]))
             self.poly.append(ll)
             self.cum.append(c)
-        self.adj = [[] for _ in range(n_nodes)]   # node -> [(neighbour, edge, forward?)]
+        self.adj = [[] for _ in range(n_nodes)]   # node -> [(neighbor, edge, forward?)]
         for i in range(n_edges):
             u, v = int(self.eu[i]), int(self.ev[i])
             self.adj[u].append((v, i, True))
@@ -279,7 +279,7 @@ class Roads:
         return best if best and best["dist"] <= max_m else None
 
     def route(self, a, b, limit_s=None):
-        """Fastest path between two snapped points. Returns (seconds, [(lon, lat)...], metres) or None."""
+        """Fastest path between two snapped points. Returns (seconds, [(lon, lat)...], meters) or None."""
         def spd(e):
             return SPEED_MS[self.cls[e]]
         total = lambda e: self.cum[e][-1]

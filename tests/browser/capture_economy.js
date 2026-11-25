@@ -14,7 +14,7 @@
   if (!(await api.ready())) return { error: 'the economy data did not load' };
   const out = { tag: TAG, lang: LANG, env: { width: innerWidth, mobile: typeof isMobile === 'function' ? isMobile() : null }, years: api.years(), base: api.base(), places: api.places(), datasets: api.datasets(), perKey: {}, configs: {}, ui: {} };
 
-  // 1. every dataset: its options, defaults, units and values under every normalisation, for three years
+  // 1. every dataset: its options, defaults, units and values under every normalization, for three years
   const NUMS = [0, 1.2345, 1234567.891, -5.5, 0.04];
   for (const d of out.datasets) {
     const k = d.key, opts = api.normOptions(k), e = { norm: opts, defaultFill: api.defaultNorm(k, 'fill'), defaultSymbol: api.defaultNorm(k, 'symbol'), dictId: api.dictId(k), units: {}, fmt: {}, values: {} };

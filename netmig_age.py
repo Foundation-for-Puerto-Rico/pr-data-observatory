@@ -1,6 +1,6 @@
 """Net migration by age for the PR Data Observatory: how many people each municipio gained or lost to migration between the 2010 and 2020 censuses, by age
 group, measured by the residual (cohort survival) method. HANDOFF decision 107, step 9, sixth part (row derived-net-migration-age); docs/net-migration-age.md.
-An estimate (decision 107 b): a demographic model, labelled so, with a check and a range.
+An estimate (decision 107 b): a demographic model, labeled so, with a check and a range.
 
     python netmig_age.py --refresh   # read the Census Bureau's municipio files by age and sex and the UN's life tables into cache/netmig/, then build
     python netmig_age.py             # build site/data/netmig_age_series.json from the cache (no network)

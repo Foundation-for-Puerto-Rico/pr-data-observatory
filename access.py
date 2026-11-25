@@ -9,13 +9,13 @@ Three stop sets, all schedule-based, measured by straight line (and the current 
   any mapped stop   a stop, station or terminal of kind transit_stop, bus_stop, bus_station, rail_station or ferry_terminal from any source:
                     scheduled feeds (expired timetables included) and volunteer-mapped OpenStreetMap stops. This is the measure the observatory
                     published until 2026-10 as "within 400 m of transit". It is kept (places.json: transit_m, transit_400m, nearest_stop;
-                    municipalities.json: places_near_transit, transit_pct) and labelled as what it is.
+                    municipalities.json: places_near_transit, transit_pct) and labeled as what it is.
   current stop      a scheduled stop (ATI or a municipal GTFS feed) whose operator's feed has not ended on the as-of date.
   frequent stop     a current stop with 20 or more calls on a typical weekday.
 
 Fields written (place_access.json holds the per-place columns; the rest update published files):
 
-  ts_m      metres to the nearest current stop, rounded up (so ts_m <= 400 is exactly the test used for the shares), 99,999 at most
+  ts_m      meters to the nearest current stop, rounded up (so ts_m <= 400 is exactly the test used for the shares), 99,999 at most
   ts_calls  most weekday calls at any current stop within 400 m (0 when there is none): a frequency proxy, not a headway
   ts_we     1 = a current stop within 400 m has Saturday service, 2 = Sunday service (0 = neither in the published feeds)
   tw_m, tw_calls, tw_we   the same three by walking along mapped roads (walknet.py), searched up to 1,000 m (99,999 beyond). The map's
@@ -50,7 +50,7 @@ SATURDAY, SUNDAY = 1, 2
 WALK_BOUND_M = 1_000   # a walking search goes this far from each stop: past FAR_M, so a distance shown up to 1 km is measured, not capped
 
 # Distances use the flat-earth formula the observatory has always used (network.py _dist_m): 111,320 m per degree of latitude, longitude shortened by the
-# cosine of the mean latitude of the two points. Against a projected-metre computation (EPSG:32161) it is about 0.6% long north to south, so a share
+# cosine of the mean latitude of the two points. Against a projected-meter computation (EPSG:32161) it is about 0.6% long north to south, so a share
 # reads up to 0.1 point lower (32.0% instead of 32.1% of places near a current stop). Using the same formula keeps places, residents and the
 # route planner on one scale.
 M_PER_DEG = 111_320.0
@@ -136,7 +136,7 @@ def _carry(sub, places, located, prev):
         return a
     res.ts_m, res.ts_calls, res.ts_we = col("ts_m", CAP_M, np.int64), col("ts_calls", 0, np.int64), col("ts_we", 0, np.int64)
     res.any_m = np.array([float(p.get("transit_m", np.inf)) for p in places])
-    for i, p in enumerate(places):   # transit_m is cut to whole metres; transit_400m says on which side of 400 m the exact distance fell
+    for i, p in enumerate(places):   # transit_m is cut to whole meters; transit_400m says on which side of 400 m the exact distance fell
         if not p.get("transit_400m") and res.any_m[i] <= NEAR_M:
             res.any_m[i] = NEAR_M + 0.5
     res.any_idx = np.full(n, -1, dtype=np.int64)
@@ -241,7 +241,7 @@ def walking(res, places, cur_stops, cur_calls, cur_sat, cur_sun, net):
 def legacy_fields(places, res):
     """Set transit_m, transit_400m and nearest_stop on each place as build_transport always did. Returns how many places changed.
 
-    As in places_privacy.public_row(), a false flag is left out of the record, and a distance is cut (not rounded) to whole metres."""
+    As in places_privacy.public_row(), a false flag is left out of the record, and a distance is cut (not rounded) to whole meters."""
     changed = 0
     for i, p in enumerate(places):
         if p.get("lat") is None:   # withheld from the map (places_privacy.py): keeps the transit_m and transit_400m of the last full build, and has no nearest_stop
@@ -354,7 +354,7 @@ def columns_doc(res, built):
 def access_class(ts_m, ts_calls, transit_m, straight_m=None):
     """frequent / basic / near / detour / paper / none. The same rule is in js/access.js (accessClass), and takes the same published fields: a distance to the
     nearest current stop and its calls (the map passes the walking pair tw_m, tw_calls when place_access.json has them, else ts_m, ts_calls; both
-    rounded up), and transit_m (the nearest mapped stop of any kind, straight line, cut to whole metres, so 800.x m reads 800 and is outside 800 m).
+    rounded up), and transit_m (the nearest mapped stop of any kind, straight line, cut to whole meters, so 800.x m reads 800 and is outside 800 m).
     With the walking pair, straight_m is ts_m: a current stop within 800 m in a straight line but more than 800 m on foot is a 'detour', not a place
     near only expired or unscheduled stops."""
     if ts_m <= NEAR_M:

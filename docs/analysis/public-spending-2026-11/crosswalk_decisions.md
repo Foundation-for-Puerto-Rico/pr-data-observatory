@@ -26,7 +26,7 @@ mapped to the crosswalk's functions, with one rule for rows of the same kind. Th
 | ogp_object | 025-E9760 | Transferencia operacional (salida) | other | Kept 'other' for FY2025, which mixes transit transfers and rum cover-over payments; FY2026 and FY2027 keep transportation |
 | ogp_object | 025-E9761 | Transferencia mismo fondo | other | Kept 'other': compulsory auto insurance premiums passed to the insurers, a pass-through |
 | ogp_object | 025-E6170 | Donativos y aportaciones a entidades privadas | other | Kept 'other': grants to 15 named entities of several functions |
-| ogp_object | 017-E9761 | Transferencia mismo fondo | other | Kept 'other' and transfers: a transfer within one fund; OGP's totals include it, so it stays and is labelled |
+| ogp_object | 017-E9761 | Transferencia mismo fondo | other | Kept 'other' and transfers: a transfer within one fund; OGP's totals include it, so it stays and is labeled |
 | cfda | 11.035 | Broadband Equity, Access, and Deployment Program | utilities_energy | Kept utilities_energy: broadband is communications (COFOG 04.6) |
 | cfda | 14.228 | Community Development Block Grants/State's program and Non-Entitlement Grants in Hawaii | housing | Kept housing: CDBG is housing and community development (COFOG 06), its largest use in Puerto Rico |
 | cfda | 21.019 | Coronavirus Relief Fund | general_government | Kept general_government: general fiscal relief (COFOG 01.8) |

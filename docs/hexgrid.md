@@ -5,7 +5,7 @@ The code is `hexgrid.py`, the tests are `tests/test_hexgrid.py`, the file is `si
 
 ## 1. Why these hexagons
 
-The map's own grid (`site/js/core/hexbin.js`, which already counts tourism places): a Lambert azimuthal equal-area projection centred on Puerto Rico (18.2 N, 66.45 W), pointy-topped hexagons laid on the plane. Every cell covers the same ground area (to about 0.3%), so with cells of 1 km² a count is a density per km². `hexgrid.py` ports `hexbin.js`'s functions; a test runs both on 2,000 points and gets the same cell ids.
+The map's own grid (`site/js/core/hexbin.js`, which already counts tourism places): a Lambert azimuthal equal-area projection centered on Puerto Rico (18.2 N, 66.45 W), pointy-topped hexagons laid on the plane. Every cell covers the same ground area (to about 0.3%), so with cells of 1 km² a count is a density per km². `hexgrid.py` ports `hexbin.js`'s functions; a test runs both on 2,000 points and gets the same cell ids.
 
 **Changed from the plan:** the plan named H3 resolution 8, the FCC's hexagons. H3 cells differ in area across the island, and the FCC publishes only the H3 cell of each location, so broadband cannot be moved to another grid; it stays on its own layer (Broadband gaps).
 
@@ -29,7 +29,7 @@ The map's own grid (`site/js/core/hexbin.js`, which already counts tourism place
 
 - The cells add up exactly to the island: 3,285,874 residents, 1,598,159 housing units, 2,157,363 buildings.
 - Residents in the flood area (316,309) equal the exposure series' `flood_sfha` total.
-- The surfaces follow the barrio files' physics checks: a hexagon in Hato Rey (San Juan) is hotter (43.3 °C) and less green (NDVI 0.11) than one in the centre of Jayuya (36.4 °C, 0.54); El Yunque reads 28.9 °C, 0.83 and a 38% slope.
+- The surfaces follow the barrio files' physics checks: a hexagon in Hato Rey (San Juan) is hotter (43.3 °C) and less green (NDVI 0.11) than one in the center of Jayuya (36.4 °C, 0.54); El Yunque reads 28.9 °C, 0.83 and a 38% slope.
 - Across the hexagons: surface temperature 25.2 to 49.3 °C (median 33.5), NDVI 0.01 to 0.89 (median 0.79), slope 0 to 97% (median 29%).
 
 ## 4. Reading the numbers

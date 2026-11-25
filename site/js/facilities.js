@@ -20,15 +20,15 @@ const Facilities = (() => {
           style: (f) => f.geometry.type === 'Point' ? {} : L0.area ? { renderer: st.renderer, pane: 'facilities', color: '#ffffff', weight: .4, opacity: .8, fillColor: F.areaSpec(k).colors[F.areaClass(k, f.properties[F.areaSpec(k).prop])] || '#e0e0e0', fillOpacity: .72, bubblingMouseEvents: false }   // areas (L0.area: the FCC's broadband hexagons), filled by class
             : (ls => ({ renderer: low ? st.lineRenderer : st.renderer, pane: low ? 'facLines' : 'facilities', color: ls.color, weight: ls.weight, opacity: ls.opacity, dashArray: ls.dash ? ls.dash.join(' ') : null, bubblingMouseEvents: false }))(F.lineStyle(k, f.properties)),   // lines only (L0.line: FPR's traced routes, público routes, simulated connections); GeoJSON restyles every layer with it, the points too
           pointToLayer: (f, ll) => { if (!L0.sized) return window.L.circleMarker(ll, { renderer: st.renderer, pane: 'facilities', radius: 5, weight: 1.2, color: '#fff', fillColor: L0.color, fillOpacity: .95, bubblingMouseEvents: false });
-            const z = F.sizedStyle(k, f.properties);   // power plants: area by MW, colour by technology, a planned plant hollow and dashed (the file is sorted largest first, so small circles are drawn on top)
+            const z = F.sizedStyle(k, f.properties);   // power plants: area by MW, color by technology, a planned plant hollow and dashed (the file is sorted largest first, so small circles are drawn on top)
             return window.L.circleMarker(ll, { renderer: st.renderer, pane: 'facilities', radius: z.r, weight: z.planned ? 1.8 : 1, color: '#424242', dashArray: z.planned ? '4 3' : null, fillColor: z.color, fillOpacity: z.planned ? .25 : .85, bubblingMouseEvents: false }); },
           onEachFeature: (f, lyr) => lyr.bindPopup(() => F.popup(k, f.properties, d), { maxWidth: 300 }).bindTooltip(() => { const t = F.tip(k, f.properties); return esc(t != null ? t : f.properties.name || T(f.properties.type)); }, { direction: 'top', sticky: !!low }) });
       }
-      F.noteEl(k, document).innerHTML = esc(F.noteText(k, d, T('Explore tab'))) + F.legendHtml(k, d);   // an area or sized layer's legend under its note
+      F.noteEl(k, document).innerHTML = esc(F.noteText(k, d, T('Home tab'))) + F.legendHtml(k, d);   // an area or sized layer's legend under its note
     }
     const on = sw(k).checked; if (on) st.layers[k].addTo(map);
     F.noteEl(k, document).hidden = !on;
-    if (on && F.GAUGE[k]) F.live(k, st.docs[k]).then(() => { F.noteEl(k, document).textContent = F.noteText(k, st.docs[k], T('Explore tab')); });   // the latest USGS readings, each time the layer is switched on (at most every 10 minutes)
+    if (on && F.GAUGE[k]) F.live(k, st.docs[k]).then(() => { F.noteEl(k, document).textContent = F.noteText(k, st.docs[k], T('Home tab')); });   // the latest USGS readings, each time the layer is switched on (at most every 10 minutes)
   }
   function hide(k) { if (st.layers[k]) map.removeLayer(st.layers[k]); const el = document.getElementById(`facNote-${k}`); if (el) el.hidden = true; }
 
@@ -36,7 +36,7 @@ const Facilities = (() => {
     const k = e.target && e.target.dataset && e.target.dataset.facMeasure; if (!k || !F.LAYERS[k] || !F.LAYERS[k].area) return;
     F.LAYERS[k].area.pick = +e.target.value;
     if (st.layers[k]) st.layers[k].setStyle(st.layers[k].options.style);
-    if (st.docs[k]) F.noteEl(k, document).innerHTML = esc(F.noteText(k, st.docs[k], T('Explore tab'))) + F.legendHtml(k, st.docs[k]);
+    if (st.docs[k]) F.noteEl(k, document).innerHTML = esc(F.noteText(k, st.docs[k], T('Home tab'))) + F.legendHtml(k, st.docs[k]);
   });
   F.addHelp(HELP);   // the help buttons of these layers (app.js loads this script on the first click)
   return { show, hide, LAYERS: F.LAYERS, TYPES: F.TYPES };

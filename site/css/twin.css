@@ -136,7 +136,7 @@ h2.sec:first-child, h3.sec:first-child { margin-top: 2px; }
 .ctrl label b { color: var(--color-text); font-weight: 500; }
 .ctrl input[type=range] { width: 100%; accent-color: var(--color-primary); }
 .ctrl select { width: 100%; height: 32px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font: inherit; padding: 0 8px; background: var(--color-surface); }
-/* the columns from any dataset of the Economy tab (plan item 16, B7): height, colour and year */
+/* the columns from any dataset of the Economy tab (plan item 16, B7): height, color and year */
 .eng-ctl { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 6px 8px; align-items: center; margin-top: 8px; }
 .eng-ctl[hidden] { display: none; }
 .eng-ctl label { font-size: 12px; }
@@ -473,7 +473,7 @@ kbd { font: 11px ui-monospace, Consolas, monospace; background: var(--color-bg);
 @media (max-width: 860px) {
   .topbar .menu-btn, .topbar .btn.chat-btn.btn, .topbar .views .btn.btn, .topbar .lang-switch button, .topbar .logo { position: relative; }
   .topbar .btn.chat-btn.btn, .topbar .views .btn.btn { width: 36px; height: 36px; }
-  .topbar .menu-btn::after, .topbar .chat-btn::after, .topbar .views .btn::after, .topbar .lang-switch button::after, .topbar .logo::after {   /* 44 px around the centre, or the element's own size where it is larger */
+  .topbar .menu-btn::after, .topbar .chat-btn::after, .topbar .views .btn::after, .topbar .lang-switch button::after, .topbar .logo::after {   /* 44 px around the center, or the element's own size where it is larger */
     content: ""; position: absolute; top: calc(50% - 22px); bottom: calc(50% - 22px); left: min(0px, calc(50% - 22px)); right: min(0px, calc(50% - 22px)); }
   .topbar .views { gap: 8px; }
   .topbar .lang-switch { overflow: visible; }
@@ -590,7 +590,7 @@ kbd { font: 11px ui-monospace, Consolas, monospace; background: var(--color-bg);
 @media (min-width: 1100px) { .al.pinned { align-items: flex-end; } .al.pinned .al-panel { width: 380px; } }   /* the On the map panel: on the right of the map, open while a layer is on */
 .al.open ~ .map-toast { z-index: 1011; }   /* a message shown while the list is open sits above it; the list starts below it */
 #map.al-on .map-toast { top: 52px; }
-.map-toast { width: max-content; max-width: calc(100% - 24px); box-sizing: border-box; }   /* centred on the map, it would otherwise wrap at half its width */
+.map-toast { width: max-content; max-width: calc(100% - 24px); box-sizing: border-box; }   /* centered on the map, it would otherwise wrap at half its width */
 .toast-sep { color: var(--color-text-muted); }
 .toast-act { border: 0; background: none; padding: 2px 4px; margin: -2px 0; font: inherit; font-weight: 700; color: var(--color-primary-dark); text-decoration: underline; cursor: pointer; }
 body.three .al { max-height: calc(100% - 96px); }   /* clear of the time bar */
@@ -612,7 +612,7 @@ body.three .al { max-height: calc(100% - 96px); }   /* clear of the time bar */
 .al-chip[aria-expanded="false"] { background: rgba(255,255,255,.88); }
 .al-chip[aria-expanded="false"]:hover, .al-chip[aria-expanded="false"]:focus-visible { background: var(--color-surface); }
 @media (prefers-reduced-motion: reduce) { .map-legend { transition: none; } }
-/* Clean view (core/cleanview.js): the boxes over the map hide, every map control included (so a new one hides too); the scale and the map credits stay, as their licences ask */
+/* Clean view (core/cleanview.js): the boxes over the map hide, every map control included (so a new one hides too); the scale and the map credits stay, as their licenses ask */
 .cv-btn { width: 30px; height: 30px; border: 0; background: var(--color-surface); cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--color-text); }
 .cv-btn .ms-icon { font-size: 18px; }
 .cv-btn:hover { background: var(--color-bg); }

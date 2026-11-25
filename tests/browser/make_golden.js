@@ -1,7 +1,7 @@
 // Makes tests/golden/economy.json from a capture of the Economy tab (capture_economy.js) taken on code you trust.
 //   node tests/browser/make_golden.js <captures dir>/old_economy_en.json tests/golden/economy.json
 // tests/core.test.js (python -m unittest discover runs it) checks the shared engine against this file. It holds fingerprints of the values the tab computed (a SHA-1 of each
-// array, so the file stays small), the options and formats of every dataset, and, for 26 layer stacks, the text of the legend and the layer cards, the colour of each
+// array, so the file stays small), the options and formats of every dataset, and, for 26 layer stacks, the text of the legend and the layer cards, the color of each
 // municipality and the symbols. Aggregates of published series only.
 const fs = require('fs'), crypto = require('crypto');
 const [, , inFile, outFile] = process.argv;

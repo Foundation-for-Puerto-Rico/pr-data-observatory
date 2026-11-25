@@ -13,7 +13,7 @@
    "hazards"
   ],
   "group": "Bridges",
-  "plain": "Every bridge of 20 feet or more on a public road and the four road tunnels, from FHWA's inventories: the colour is the bridge's condition and the area of each circle is the vehicles that cross it on an average day.",
+  "plain": "Every bridge of 20 feet or more on a public road and the four road tunnels, from FHWA's inventories: the color is the bridge's condition and the area of each circle is the vehicles that cross it on an average day.",
   "definition": "bridges.geojson: one point per bridge in the National Bridge Inventory of 2025 (2,426 bridges in the 78 municipios; 8 more have a point outside every municipio and are left out) and per tunnel in the National Tunnel Inventory (4). Each point has name (the road carried), type (Bridge or Tunnel), municipio, geoid, sn (structure or tunnel number), x (the feature crossed, or the road a tunnel carries), c (condition: G good, F fair, P poor, T a tunnel), lr (the lowest of the deck, superstructure, substructure or culvert ratings, 0-9), y (year built), yr (year rebuilt), a (average daily traffic) and ay (its year), t (trucks, % of traffic), d (detour if closed, km), l (length, m), o (status: A open, P posted for load, B should be posted, E or D open with temporary support, K closed), s (1 when scour critical, NBI item 113 codes 0-3), i (last inspection, YYYY-MM) and w (owner: state, toll, municipal, federal, other).",
   "geography": "Points in the 78 municipios",
   "coverage": {
@@ -97,7 +97,7 @@
    "faa_airports"
   ],
   "source_detail": "NTAD Aviation Facilities (layer 0): EFF_DATE, SITE_TYPE_CODE, ARPT_ID, ARPT_NAME, OWNERSHIP_TYPE_CODE, FACILITY_USE_CODE, LAT_DECIMAL, LONG_DECIMAL, ELEV, ARPT_STATUS, FAR_139_TYPE_CODE, TWR_TYPE_CODE",
-  "how_to_read": "Switch the layer on in the Layers tab of the 2D map or the 3D view. Dark blue: San Juan (Luis Muñoz Marín), Aguadilla (Rafael Hernández) and Ponce (Mercedita), certificated for airline service. Light blue: the other public-use airports, Vieques, Culebra and Ceiba among them. Pink: heliports of hospitals, health centres, the water utility and the Army. Click a point for its FAA identifier, owner, use, elevation and tower.",
+  "how_to_read": "Switch the layer on in the Layers tab of the 2D map or the 3D view. Dark blue: San Juan (Luis Muñoz Marín), Aguadilla (Rafael Hernández) and Ponce (Mercedita), certificated for airline service. Light blue: the other public-use airports, Vieques, Culebra and Ceiba among them. Pink: heliports of hospitals, health centers, the water utility and the Army. Click a point for its FAA identifier, owner, use, elevation and tower.",
   "caveats": [
    "Private airports, heliports and seaplane bases owned privately (27 in October 2026) are counted in the note but not drawn.",
    "The Stations, terminals and airports layer shows airports too, from the same FAA list and OpenStreetMap."
@@ -147,7 +147,7 @@
    "infrastructure"
   ],
   "group": "Air and sea gateways",
-  "plain": "The three ferry crossings of Puerto Rico (San Juan to Cataño, Ceiba to Vieques and Ceiba to Culebra), wider where more passengers travelled in the newest National Census of Ferry Operators.",
+  "plain": "The three ferry crossings of Puerto Rico (San Juan to Cataño, Ceiba to Vieques and Ceiba to Culebra), wider where more passengers traveled in the newest National Census of Ferry Operators.",
   "definition": "ferry_routes.geojson: one line per pair of terminals with a line in NTAD (3), with name, type, pax (passengers in the census's data year, both directions added), veh (vehicles), trips (trips a year, both directions) and min (minutes a crossing, the average of the two directions). Census of 2024, data year 2024: 1,616,045 passengers on the three crossings. Culebra–Vieques (234 passengers in 2024) has no line in NTAD and is counted in the notes, not drawn.",
   "geography": "Lines between the ferry terminals",
   "coverage": {

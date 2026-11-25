@@ -32,7 +32,7 @@ It brings together the parts of phases 2 to 4 that open data allow, at the barri
    car-free households times that share, which assumes they are spread like everyone else.
 4. **Priority.** Half the percentile of need × gap (how intense), half the percentile of car-free households without useful service (how
    many). The list is sorted by it.
-5. **What the gap points to,** read from where the unserved residents live (their weighted centre):
+5. **What the gap points to,** read from where the unserved residents live (their weighted center):
    - **More frequency:** 20 points or more of residents are near a current stop that has less than a bus every 30 minutes.
    - **Extension or feeder:** a stop with a bus every 30 minutes is within 1.5 km. The line names it and its routes.
    - **New service:** neither of the above.
@@ -58,7 +58,7 @@ It brings together the parts of phases 2 to 4 that open data allow, at the barri
   the 25** have no known timetable. There the first step is to learn what runs: the gap may be in the data, not in the service.
 - Route pairs whose lines cross or come closer than 250 m without a pair of stops within 250 m are left out of the connection candidates by
   design (`transit_needs.py`, the 250 m rule); such crossings may still be good places for a new shared stop.
-- **Where the timetables are current, the most common gap is frequency, not coverage.** The town centres of Manatí, Coamo, Utuado and Humacao,
+- **Where the timetables are current, the most common gap is frequency, not coverage.** The town centers of Manatí, Coamo, Utuado and Humacao,
   and Monacillo (San Juan), have stops near most residents but less than a bus every 30 minutes. Pájaros (Bayamón), the two Medianías (Loíza),
   Quebrada Negrito (Trujillo Alto) and Bajura Adentro (Manatí) have almost no current stop near.
 - **The connection places are in the metro area.** Most are ATI routes and San Juan's municipal routes that run 400 to 700 m apart and never
@@ -67,7 +67,7 @@ It brings together the parts of phases 2 to 4 that open data allow, at the barri
 
 ## Limits to state with every result
 
-- **Públicos are in no timetable.** They are a large part of transit in Puerto Rico, especially in the town centres that top this list. "No
+- **Públicos are in no timetable.** They are a large part of transit in Puerto Rico, especially in the town centers that top this list. "No
   useful service" means none in the published timetables.
 - **Timetables are not service delivered.** They are what operators publish, not what ran.
 - **Distances are straight lines.** This is how the site's `stop_*` measures work. The walking measures (`walk_*`, along mapped roads) would give

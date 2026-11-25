@@ -55,7 +55,7 @@ test('download what\'s inside: outlines that overlap an area are found whole, sm
   const sa = read('js/studyareas.js');
   assert.match(sa, /filter\(p => !p\.withheld && isFinite\(p\.lng\) && isFinite\(p\.lat\)\)/, 'withheld places are never in a file');
   assert.match(sa, /ST\.overlaps\(g, feats\.map\(f => f\.g\)\)/);
-  assert.match(sa, /source = T\('PR Data Observatory, data\/\{file\}; licence and credit in the data dictionary/, 'every file names its source');
+  assert.match(sa, /source = T\('PR Data Observatory, data\/\{file\}; license and credit in the data dictionary/, 'every file names its source');
 });
 
 test('walking time: the area within a walk along the real roads is inside the straight-line reach, smaller than the circle, and none at sea', () => {
@@ -86,5 +86,5 @@ test('property parcels (CRIM): only a link to CRIM\'s own viewer at the point, n
   assert.ok(!/catastro\.crimpr\.net/.test(js), 'the view builds no CRIM address of its own: Core.study.crimUrl is the only one');
   const files = fs.readdirSync(path.join(SITE, 'js')).filter(f => f.endsWith('.js')).map(f => 'js/' + f).concat(fs.readdirSync(path.join(SITE, 'js', 'core')).map(f => 'js/core/' + f));
   const reads = files.filter(f => /catastro\.crimpr\.net\/(server|portal|proxy)/.test(read(f)));
-  assert.deepStrictEqual(reads, [], 'no script calls CRIM\'s services (its licence lets the parcels be seen only in its viewer)');
+  assert.deepStrictEqual(reads, [], 'no script calls CRIM\'s services (its license lets the parcels be seen only in its viewer)');
 });

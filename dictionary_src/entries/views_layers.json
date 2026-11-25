@@ -54,7 +54,7 @@
   "added": "2026-10-03",
   "values": {
    "Panel and keyboard": "The panel's tabs change with a click or with the left and right arrow keys. Press / to jump to the search box.",
-   "Phone": "On a phone the panel stays hidden until you press the menu button. It closes with its close button, a tap on the grey backdrop or the Escape key.",
+   "Phone": "On a phone the panel stays hidden until you press the menu button. It closes with its close button, a tap on the gray backdrop or the Escape key.",
    "Top bar links": "Map (this page), 3D + Time, Housing and Data dictionary. The Data dictionary link opens dictionary.html, the page for definitions, sources, licenses and citations.",
    "Files and loading": "The page opens with only the municipal boundaries. Its first load is the build information, the municipality statistics, the boundaries and the catalog (about 0.16 MB compressed in Snapshot 2026-10). Every layer, the tourism places included, loads its data file the first time you switch it on (1 MB is 1 million bytes). In Snapshot 2026-10 the largest are land use (about 17.7 MB), the tourism place listings (about 16.7 MB, plus a 0.3 MB file of transit access), flood zones (about 8.0 MB) and protected areas (about 1.5 MB). If a file cannot be loaded, the layer's switch turns itself off and a message appears.",
    "Inside another page": "When the map sits inside another web page, the mouse wheel scrolls that page until you click the map."
@@ -71,7 +71,7 @@
   "group": "2D map: page and controls",
   "kind": "method",
   "plain": "The About tab explains what the PR Data Observatory is, who it is for, how to start and how to cite it. It says that Foundation for Puerto Rico (FPR) developed the observatory as a tool for public use and benefit. It also shows seven headline counts.",
-  "definition": "The 2D map's About tab has these parts, in order. An introduction says what the observatory is and that it is free, needs no account and is built from open and public data. Seven counts follow. Then come a list of the fields the observatory covers (written from the registry, so it grows with the observatory); a list of four groups the observatory is for; six 'Start here' steps, with buttons for the chat and the data dictionary; five example questions for the chat; a guide to the eight tabs and to the top bar; a note on where the data come from; six 'Keep in mind' points; and a privacy note. The tab ends with a closing section that gives the citation line and the current snapshot, and says where to send a correction or a dataset to add. Five of the seven counts come from meta.json when the page loads. The other two come from dictionary_summary.json when the tab is first opened. The 3D + Time view has its own About tab. It has a short description, a 'How to use it' list of five items (move around, pick a clock, turn layers on and off, plan a route, see it in 2D) and a 'Sources, licenses and how to cite' section with a button that opens the data dictionary. The codes below list the counts and summarise each part.",
+  "definition": "The 2D map's About tab has these parts, in order. An introduction says what the observatory is and that it is free, needs no account and is built from open and public data. Seven counts follow. Then come a list of the fields the observatory covers (written from the registry, so it grows with the observatory); a list of four groups the observatory is for; six 'Start here' steps, with buttons for the chat and the data dictionary; five example questions for the chat; a guide to the eight tabs and to the top bar; a note on where the data come from; six 'Keep in mind' points; and a privacy note. The tab ends with a closing section that gives the citation line and the current snapshot, and says where to send a correction or a dataset to add. Five of the seven counts come from meta.json when the page loads. The other two come from dictionary_summary.json when the tab is first opened. The 3D + Time view has its own About tab. It has a short description, a 'How to use it' list of five items (move around, pick a clock, turn layers on and off, plan a route, see it in 2D) and a 'Sources, licenses and how to cite' section with a button that opens the data dictionary. The codes below list the counts and summarize each part.",
   "unit": "tab",
   "value_type": "text",
   "geography": "Puerto Rico, 78 municipalities",
@@ -246,7 +246,7 @@
   ],
   "group": "2D map: Map layers tab",
   "kind": "layer",
-  "plain": "Tourism places are the pins on the map: attractions, restaurants and bars, places to stay and visitor services listed by Overture Maps. Pins are coloured by category, and a dark ring marks a place inside a high-risk flood area mapped by the Federal Emergency Management Agency (FEMA).",
+  "plain": "Tourism places are the pins on the map: attractions, restaurants and bars, places to stay and visitor services listed by Overture Maps. Pins are colored by category, and a dark ring marks a place inside a high-risk flood area mapped by the Federal Emergency Management Agency (FEMA).",
   "definition": "The switch 'Tourism places' is off when the page opens, and the listings are not loaded yet. The label beside the switch says how much they weigh (about 3.0 MB compressed in Snapshot 2026-10, the listings and their transit access columns together). The first time you switch the layer on, download a municipality's places, search the listings or press 'Load the place listings' in the Municipality tab, the page fetches places.json and place_access.json. The pins are the listings in places.json that pass the current filters: the four category buttons, the minimum confidence slider and the places-of-worship switch. With the defaults the map counts 24,209 of the 32,541 listings in Snapshot 2026-10 (built 2026-10-02) and draws 23,467 of them as pins (holiday rentals are counted, not drawn), and the label beside the switch says how many are shown. Pins join into numbered clusters until zoom level 16. A click on a pin opens a card with the name, the type, the municipality and region, the street address when there is one, badges, links and a source line. The badges are listed below. Links go to the place's website, when it has one, and to OpenStreetMap at the place's location.",
   "unit": "map layer",
   "value_type": "geometry",
@@ -308,7 +308,7 @@
    "Flood hazard area, zone <code>": "The pin lies in a Special Flood Hazard Area. The badge prints the FEMA zone letter: AE, VE, AO, A or A99. It is a mapped hazard at a point, not an official flood determination (see the flood zone entry).",
    "Zone X (0.2% annual chance)": "The pin lies in the lighter 0.2% annual chance zone. This is not a Special Flood Hazard Area.",
    "Protected area": "The badge gives the name of the protected area that holds the pin.",
-   "Transit access (class and distances)": "A badge names the place's access class: 'Frequent stop within 400 m', 'Stop within 400 m', 'Stop 400–800 m away', 'Only expired or unscheduled stops within 800 m' or 'No stop within 800 m'. Each badge has an icon as well as a colour, and hovering over it gives a note: the figures are schedule-based and in a straight line, a stop counts when its timetable has not ended, and real-time service, walking distance, públicos and taxis are not included. Under the badge, the line 'Nearest stop with a current timetable: <distance>' gives the distance and, within 400 m, the weekday departures and the Saturday and Sunday service. When a stop without a current timetable is closer than that stop, a line 'Any mapped stop (expired timetables and volunteer-mapped stops included): <distance>' follows, and hovering over it shows the stop's name. If the access file is missing or does not match the places file, the card shows only the badge 'any mapped stop <distance>'. The classes are described in methods.access_profile.",
+   "Transit access (class and distances)": "A badge names the place's access class: 'Frequent stop within 400 m', 'Stop within 400 m', 'Stop 400–800 m away', 'Only expired or unscheduled stops within 800 m' or 'No stop within 800 m'. Each badge has an icon as well as a color, and hovering over it gives a note: the figures are schedule-based and in a straight line, a stop counts when its timetable has not ended, and real-time service, walking distance, públicos and taxis are not included. Under the badge, the line 'Nearest stop with a current timetable: <distance>' gives the distance and, within 400 m, the weekday departures and the Saturday and Sunday service. When a stop without a current timetable is closer than that stop, a line 'Any mapped stop (expired timetables and volunteer-mapped stops included): <distance>' follows, and hovering over it shows the stop's name. If the access file is missing or does not match the places file, the card shows only the badge 'any mapped stop <distance>'. The classes are described in methods.access_profile.",
    "Confidence": "Overture's confidence score for the listing, from 0 to 1.",
    "Duplicates folded": "How many duplicate listings were folded into the place.",
    "Source line": "Names Overture Maps, the contributing source and the original Overture category."
@@ -324,7 +324,7 @@
   "group": "2D map: Map layers tab",
   "kind": "method",
   "plain": "Four buttons under the Tourism places switch turn each tourism category on or off: Attractions, Gastronomy, Accommodations and Visitor Services. All four are on when the page opens.",
-  "definition": "Each button shows or hides every place of one category. A pressed button is on. A button that is off looks faded. The buttons change the pins, the live tiles and tables of the Municipality tab, the tourism results of the search box and the places file in comma-separated values (CSV) form. The 3D view has the same four buttons. The statistics of each municipality (Rankings tab, shading) do not follow the buttons. Pin and button colours: Attractions blue, Gastronomy green, Accommodations gold, Visitor Services red.",
+  "definition": "Each button shows or hides every place of one category. A pressed button is on. A button that is off looks faded. The buttons change the pins, the live tiles and tables of the Municipality tab, the tourism results of the search box and the places file in comma-separated values (CSV) form. The 3D view has the same four buttons. The statistics of each municipality (Rankings tab, shading) do not follow the buttons. Pin and button colors: Attractions blue, Gastronomy green, Accommodations gold, Visitor Services red.",
   "unit": "filter",
   "value_type": "code",
   "geography": "Puerto Rico",
@@ -334,14 +334,14 @@
    "last": 2026,
    "frequency": "Rebuilt with each snapshot. Transit data are refreshed every night."
   },
-  "method": "app.js (renderCatChips) keeps a set of the categories that are on and rebuilds the pins when a button is pressed. Colours and icons are defined once in icons.js. Pressing a button sets aria-pressed for screen readers.",
+  "method": "app.js (renderCatChips) keeps a set of the categories that are on and rebuilds the pins when a button is pressed. Colors and icons are defined once in icons.js. Pressing a button sets aria-pressed for screen readers.",
   "sources": [
    "overture"
   ],
   "how_to_read": "A category is a group of Overture categories that Foundation for Puerto Rico (FPR) assigned. See the entry on classification for how the groups were made.",
   "caveats": [
    "Places of Worship belong to Attractions, so they show only when the Attractions button and the worship switch are both on.",
-   "Colour is not the only cue. The pin icon and the type in the card also say what a place is."
+   "Color is not the only cue. The pin icon and the type in the card also say what a place is."
   ],
   "see_also": [
    "places.category",
@@ -485,7 +485,7 @@
    "fema_nfhl"
   ],
   "source_detail": "flood.geojson. Credit line on the map: 'Flood zones: FEMA NFHL'.",
-  "how_to_read": "Read the colour as the FEMA zone family, not as depth. An unshaded area is not proof of safety.",
+  "how_to_read": "Read the color as the FEMA zone family, not as depth. An unshaded area is not proof of safety.",
   "caveats": [
    "This is FEMA's mapped hazard at a location. It is not a forecast for any year and it says nothing about a building's elevation or insurance.",
    "Drawn outlines are simplified. See the flood layer entry for the effect at zone edges.",
@@ -567,7 +567,7 @@
   "group": "2D map: Map layers tab",
   "kind": "layer",
   "plain": "The 'Transit routes' switch draws every public route in the observatory's data. These are the Tren Urbano, buses and ferries of the Autoridad de Transporte Integrado (ATI, the Integrated Transport Authority), municipal buses and trolleys, and routes mapped in OpenStreetMap. Thicker lines have more weekday trips.",
-  "definition": "Width grows with the weekday trips of the route, from 2 to 7 pixels. The Tren Urbano is one pixel wider than a bus line with the same trips. Routes mapped in OpenStreetMap are 2.5 pixels wide and ferries 3. Pointing at a line thickens it. A click opens a card with the route name, the operator and network, weekday, Saturday and Sunday trips, the first and last weekday departure, how the line was drawn, the state of the timetable with its dates, and a credit line. The routes load from transit_routes.geojson (about 1.0 MB in Snapshot 2026-10) the first time the switch is on. The colours and line styles are listed below.",
+  "definition": "Width grows with the weekday trips of the route, from 2 to 7 pixels. The Tren Urbano is one pixel wider than a bus line with the same trips. Routes mapped in OpenStreetMap are 2.5 pixels wide and ferries 3. Pointing at a line thickens it. A click opens a card with the route name, the operator and network, weekday, Saturday and Sunday trips, the first and last weekday departure, how the line was drawn, the state of the timetable with its dates, and a credit line. The routes load from transit_routes.geojson (about 1.0 MB in Snapshot 2026-10) the first time the switch is on. The colors and line styles are listed below.",
   "unit": "map layer",
   "value_type": "geometry",
   "geography": "Puerto Rico",
@@ -630,7 +630,7 @@
   "group": "2D map: Map layers tab",
   "kind": "layer",
   "plain": "The 'Transit stops' switch shows boarding points: scheduled stops from the Autoridad de Transporte Integrado (ATI) and from municipal timetable feeds in General Transit Feed Specification (GTFS) form, plus bus stops that volunteers mapped in OpenStreetMap. The number beside the switch counts them.",
-  "definition": "The layer holds the points of kind transit_stop (scheduled stops, 3,781 in Snapshot 2026-10) and bus_stop (OpenStreetMap stops that are not within 30 metres of a scheduled stop, 459), 4,240 in all. The 3,781 are the scheduled stops that are not stations. In Snapshot 2026-10 there are 3,847 scheduled stops in all. The other 66 are bus stations, ferry terminals and Tren Urbano stations, and they appear on the stations layer. The first time you switch it on, the page downloads transport.json (about 1.3 MB in Snapshot 2026-10), which the stations and taxi layers share. Points join into numbered blue clusters until zoom 15. A click opens a card with the stop's name, kind and municipality, the routes and modes that call there, weekday departures, a weekend line ('Weekend departures: Saturday N · Sunday N', with 'none listed' for a day that has no departures, or 'No weekend departures in the published timetable' when neither day has any; scheduled stops only), the end date of the stop's timetable ('Timetable valid until' a date, or 'Timetable ended' with a warning sign when the date has passed), the operator, a note when the source says wheelchair boarding is possible, and a source line. The 400 m walk rings use these points. The 3D view has the same switch, in the same group: the same points, in blue clusters that give their count up to zoom 14 and as single dots from zoom 15, with the same card (a click on a cluster zooms in).",
+  "definition": "The layer holds the points of kind transit_stop (scheduled stops, 3,781 in Snapshot 2026-10) and bus_stop (OpenStreetMap stops that are not within 30 meters of a scheduled stop, 459), 4,240 in all. The 3,781 are the scheduled stops that are not stations. In Snapshot 2026-10 there are 3,847 scheduled stops in all. The other 66 are bus stations, ferry terminals and Tren Urbano stations, and they appear on the stations layer. The first time you switch it on, the page downloads transport.json (about 1.3 MB in Snapshot 2026-10), which the stations and taxi layers share. Points join into numbered blue clusters until zoom 15. A click opens a card with the stop's name, kind and municipality, the routes and modes that call there, weekday departures, a weekend line ('Weekend departures: Saturday N · Sunday N', with 'none listed' for a day that has no departures, or 'No weekend departures in the published timetable' when neither day has any; scheduled stops only), the end date of the stop's timetable ('Timetable valid until' a date, or 'Timetable ended' with a warning sign when the date has passed), the operator, a note when the source says wheelchair boarding is possible, and a source line. The 400 m walk rings use these points. The 3D view has the same switch, in the same group: the same points, in blue clusters that give their count up to zoom 14 and as single dots from zoom 15, with the same card (a click on a cluster zooms in).",
   "unit": "map layer",
   "value_type": "geometry",
   "geography": "Puerto Rico",
@@ -747,7 +747,7 @@
   "group": "2D map: Map layers tab",
   "kind": "layer",
   "plain": "The 'Taxi stands & EV charging' switch shows taxi stands and electric vehicle (EV) chargers that volunteers mapped in OpenStreetMap. There are 9 taxi stands and 11 chargers in Snapshot 2026-10.",
-  "definition": "The layer reads points of kind taxi, ev_charging, bike_rental and helipad. Snapshot 2026-10 holds only taxi stands and chargers. Click for a card with the name, the kind and the municipality. Ride-hailing is not drawn here. Whether Uber lists a municipality is a yes or no, shown by shading the map by 'Uber lists service' or by the chip on the Municipality tab. The 3D view has the same switch and card; its dots take the colour of their kind (taxi stands amber, chargers green).",
+  "definition": "The layer reads points of kind taxi, ev_charging, bike_rental and helipad. Snapshot 2026-10 holds only taxi stands and chargers. Click for a card with the name, the kind and the municipality. Ride-hailing is not drawn here. Whether Uber lists a municipality is a yes or no, shown by shading the map by 'Uber lists service' or by the chip on the Municipality tab. The 3D view has the same switch and card; its dots take the color of their kind (taxi stands amber, chargers green).",
   "unit": "map layer",
   "value_type": "geometry",
   "geography": "Puerto Rico",
@@ -797,8 +797,8 @@
   ],
   "group": "2D map: Map layers tab",
   "kind": "layer",
-  "plain": "'Show 400 m walk radius around stops' draws a circle of 400 metres around each stop, bus station, Tren Urbano station and ferry terminal. The circles appear only when you are zoomed in and the stops or stations layer is on.",
-  "definition": "400 metres is about a quarter mile, a common planning distance for walking to a stop. It is a choice made for the observatory, not a measure of how far people walk. The rings are thin blue circles with a very light blue fill and a 400 m radius, drawn in Snapshot 2026-10 for 4,360 points (the 4,240 stops and the 120 stations and terminals, airports excluded). They show when the switch is on, the map zoom is 14 or higher, and 'Transit stops' or 'Stations, terminals & airports' is on. If only one of those two layers is on, the rings of both kinds still appear. Rings overlap where stops are close. The same distance defines 'within 400 m of any mapped stop' and 'within 400 m of a stop with a current timetable' in the statistics. The 3D view has the same switch, under the same conditions: the rings lie flat on the ground with a radius of 400 metres at every zoom (a MapLibre circle whose radius in pixels doubles at each zoom level, set from each point's latitude), and the chip counts them while they are drawn.",
+  "plain": "'Show 400 m walk radius around stops' draws a circle of 400 meters around each stop, bus station, Tren Urbano station and ferry terminal. The circles appear only when you are zoomed in and the stops or stations layer is on.",
+  "definition": "400 meters is about a quarter mile, a common planning distance for walking to a stop. It is a choice made for the observatory, not a measure of how far people walk. The rings are thin blue circles with a very light blue fill and a 400 m radius, drawn in Snapshot 2026-10 for 4,360 points (the 4,240 stops and the 120 stations and terminals, airports excluded). They show when the switch is on, the map zoom is 14 or higher, and 'Transit stops' or 'Stations, terminals & airports' is on. If only one of those two layers is on, the rings of both kinds still appear. Rings overlap where stops are close. The same distance defines 'within 400 m of any mapped stop' and 'within 400 m of a stop with a current timetable' in the statistics. The 3D view has the same switch, under the same conditions: the rings lie flat on the ground with a radius of 400 meters at every zoom (a MapLibre circle whose radius in pixels doubles at each zoom level, set from each point's latitude), and the chip counts them while they are drawn.",
   "unit": "map layer",
   "value_type": "geometry",
   "geography": "Puerto Rico",
@@ -906,7 +906,7 @@
   "group": "2D map: Map layers tab",
   "kind": "layer",
   "plain": "The 'Land use 2015' switch shades the whole island by the Junta de Planificación's land-use plan: urban, urbanizable, ordinary rural and specially protected rural land. It is off when the page opens.",
-  "definition": "The legend has ten rows with their colours. Suelo Urbano (urban) is gray. Urbanizable programado (planned growth) is orange. Urbanizable no programado (reserve growth) is light gold. Rústico común (ordinary rural) is light green. Rústico especialmente protegido (protected rural) is green. The five special protection classes (ecological, agricultural, hydric, ecological and hydric, agricultural and hydric) are dark green, lime and blues. Other protection combinations in the data use the colour stored in the file. Water and road polygons are not drawn. Polygons are drawn at 50% opacity. A click adds a section to the popup with the class name, the class code and the municipio of the first polygon under the click. The first time you switch it on, the page downloads landuse.geojson (about 17.7 MB in Snapshot 2026-10), the largest file of the map. A note under the legend says that zoning districts (Calificación) are not shown, because the Junta's service did not answer when Snapshot 2026-10 was built. Since 2026-10-16 every class of the legend has a tick box, ticked when the layer opens: unticking a class hides it on the map and in the click pop-up. The button above the legend opens the land-use analysis (layers.landuse_analysis).",
+  "definition": "The legend has ten rows with their colors. Suelo Urbano (urban) is gray. Urbanizable programado (planned growth) is orange. Urbanizable no programado (reserve growth) is light gold. Rústico común (ordinary rural) is light green. Rústico especialmente protegido (protected rural) is green. The five special protection classes (ecological, agricultural, hydric, ecological and hydric, agricultural and hydric) are dark green, lime and blues. Other protection combinations in the data use the color stored in the file. Water and road polygons are not drawn. Polygons are drawn at 50% opacity. A click adds a section to the popup with the class name, the class code and the municipio of the first polygon under the click. The first time you switch it on, the page downloads landuse.geojson (about 17.7 MB in Snapshot 2026-10), the largest file of the map. A note under the legend says that zoning districts (Calificación) are not shown, because the Junta's service did not answer when Snapshot 2026-10 was built. Since 2026-10-16 every class of the legend has a tick box, ticked when the layer opens: unticking a class hides it on the map and in the click pop-up. The button above the legend opens the land-use analysis (layers.landuse_analysis).",
   "unit": "map layer",
   "value_type": "geometry",
   "geography": "Puerto Rico",
@@ -916,7 +916,7 @@
    "last": 2015,
    "frequency": "A single plan version, dated 30 November 2015."
   },
-  "method": "app.js (loadLanduse, landusePopup). The layer filters out the groups water and road. Colours are stored in the file.",
+  "method": "app.js (loadLanduse, landusePopup). The layer filters out the groups water and road. Colors are stored in the file.",
   "sources": [
    "jp_put2015",
    "jp_calificacion"
@@ -1010,7 +1010,7 @@
   "group": "2D map: Map layers tab",
   "kind": "layer",
   "plain": "The 'Barrios' switch draws the 901 barrios of the Census Bureau's January 2023 layer, the districts inside each municipality, as dashed outlines. Click inside one for its counts.",
-  "definition": "Barrios are dashed blue outlines. The layer is off when the page opens. The first time you switch it on, the page downloads barrios.geojson (about 1.0 MB in Snapshot 2026-10). With the switch on, a click adds a section to the popup. It gives the barrio's name, its municipality and its area in square kilometres. It also gives the number of tourism places, the places per square kilometre, how many of those places are in a flood hazard area, and how many are within 400 m of a stop with a current timetable (and how many of those are near a frequent stop) and within 400 m of any mapped stop. The 3D view has the same switch: the same dashed outlines and, for a click inside a barrio, the same section, last in the card after the other areas under the click, as on the 2D map.",
+  "definition": "Barrios are dashed blue outlines. The layer is off when the page opens. The first time you switch it on, the page downloads barrios.geojson (about 1.0 MB in Snapshot 2026-10). With the switch on, a click adds a section to the popup. It gives the barrio's name, its municipality and its area in square kilometers. It also gives the number of tourism places, the places per square kilometer, how many of those places are in a flood hazard area, and how many are within 400 m of a stop with a current timetable (and how many of those are near a frequent stop) and within 400 m of any mapped stop. The 3D view has the same switch: the same dashed outlines and, for a click inside a barrio, the same section, last in the card after the other areas under the click, as on the 2D map.",
   "unit": "map layer",
   "value_type": "geometry",
   "geography": "901 barrios",
@@ -1030,9 +1030,9 @@
    "osm"
   ],
   "source_detail": "barrios.geojson. Credit line on the map: 'Barrios: US Census Bureau'.",
-  "how_to_read": "Compare barrios by places per square kilometre, not by raw counts, because their areas differ a great deal.",
+  "how_to_read": "Compare barrios by places per square kilometer, not by raw counts, because their areas differ a great deal.",
   "caveats": [
-   "A barrio is a Census statistical unit. It is not a neighbourhood or an electoral unit.",
+   "A barrio is a Census statistical unit. It is not a neighborhood or an electoral unit.",
    "Barrio names repeat across municipalities. Read the municipality in the popup.",
    "Barrio counts use the default filters (confidence 0.50, no places of worship). The confidence slider, the category buttons and the worship switch do not change them. The counts are rebuilt only at a full build, so between full builds they can lag the municipality figures.",
    "Cite the outlines as the Census Bureau's generalized county-subdivision boundaries as of January 1, 2023, cut at the shoreline."
@@ -1170,8 +1170,8 @@
   ],
   "group": "2D map: Map layers tab",
   "kind": "layer",
-  "plain": "A menu of the 2D map that coloured the 78 municipalities by one of 35 measures. It was retired on 2026-11-05 (navigation plan, decision 81): each measure is now a dataset, shaded from Explore, the Catalog or Rankings, and an old link with s=<field> opens the same measure as that dataset.",
-  "definition": "app.js SHADE_DS lists the 35 fields the menu had and the dataset each now opens, with its scale where the menu used one (tourism places per 1,000 residents or per square kilometre). An address with s=<field> is read when the data of the Analysis tab load (economy.js econInit): the dataset is shaded in five classes, the tab does not change, and the address is rewritten with e=. Eleven of the fields became datasets for this (core/adapters.js SNAPSHOT_FIELDS): nine shares of tourism places near transit, the change in median gross rent since 2008-2012 and Uber's listing (1 or 0).",
+  "plain": "A menu of the 2D map that colored the 78 municipalities by one of 35 measures. It was retired on 2026-11-05 (navigation plan, decision 81): each measure is now a dataset, shaded from Explore, the Catalog or Rankings, and an old link with s=<field> opens the same measure as that dataset.",
+  "definition": "app.js SHADE_DS lists the 35 fields the menu had and the dataset each now opens, with its scale where the menu used one (tourism places per 1,000 residents or per square kilometer). An address with s=<field> is read when the data of the Analysis tab load (economy.js econInit): the dataset is shaded in five classes, the tab does not change, and the address is rewritten with e=. Eleven of the fields became datasets for this (core/adapters.js SNAPSHOT_FIELDS): nine shares of tourism places near transit, the change in median gross rent since 2008-2012 and Uber's listing (1 or 0).",
   "unit": "retired menu (35 measures)",
   "value_type": "code",
   "geography": "78 municipalities",
@@ -1259,7 +1259,7 @@
   "values": {
    "assets": "Tourism places. Count of places in Snapshot 2026-10 (confidence 0.50 or more, no places of worship).",
    "assets_per_1000_residents": "Places per 1,000 residents. Places divided by 2020 Census residents, times 1,000.",
-   "assets_per_km2": "Places per km². Places divided by land area in square kilometres.",
+   "assets_per_km2": "Places per km². Places divided by land area in square kilometers.",
    "sfha_pct": "% of places in flood hazard area. Share of the municipality's places inside a Special Flood Hazard Area.",
    "in_sfha": "Places in flood hazard area. Count of places.",
    "in_protected": "Places inside protected areas. Count of places.",
@@ -1271,7 +1271,7 @@
    "acc_paper_pct": "% of places near only an expired or unscheduled stop. A mapped stop is 400 m or less away but none with a current timetable: its timetable has ended, or volunteers mapped it and there is none. Municipalities with no stop counted are left unshaded.",
    "transit_pct": "% of places within 400 m of any mapped stop. The nearest stop, station or terminal of any kind is 400 m or less away in a straight line, including stops whose timetable has ended and stops that volunteers mapped. Municipalities with no stop counted are left unshaded.",
    "transit_stops": "Transit stops and stations. Count of scheduled stops, OpenStreetMap bus stops, bus stations, Tren Urbano stations and ferry terminals inside the municipality. Airports, taxi stands and electric vehicle chargers are not counted.",
-   "uber_listed": "Uber lists service (yes or no). Two colours: listed or not listed. It is a hand-typed copy of Uber's Puerto Rico cities page checked 2026-10-01 (57 of 78 municipalities listed). A listing, not measured coverage. 'Not listed' does not mean Uber is absent, because Uber says its service reaches beyond the places it lists.",
+   "uber_listed": "Uber lists service (yes or no). Two colors: listed or not listed. It is a hand-typed copy of Uber's Puerto Rico cities page checked 2026-10-01 (57 of 78 municipalities listed). A listing, not measured coverage. 'Not listed' does not mean Uber is absent, because Uber says its service reaches beyond the places it lists.",
    "affordability_ratio": "Housing: affordability ratio. Median home value divided by the largest 30-year loan a household with the median income can carry (30% of income for housing, 78% of that for principal and interest, 5% rate). American Community Survey (ACS) 2020-2024. Above 1 means out of reach.",
    "median_home_value": "Housing: median home value, in dollars, ACS 2020-2024.",
    "median_gross_rent": "Housing: median gross rent, in dollars a month, ACS 2020-2024.",
@@ -1298,7 +1298,7 @@
   "group": "2D map: Municipality and Rankings tabs",
   "kind": "method",
   "plain": "The Municipality tab is a one-page profile of one municipality: tourism places, flood and protected-area exposure, transit access, housing and land use. Click a municipality on the map, or pick one in the search box or the Rankings tab.",
-  "definition": "The tab opens when you click a municipality on the map, pick one in the search box or the Rankings tab, or follow a link such as index.html#San%20Juan. The first block is headed 'Visitor economy'. Once the tourism place listings are loaded, its tiles are counted from the places the map is showing, so they follow the category buttons, the confidence slider and the worship switch. Before that (the listings are not part of the first load) the tiles show the figures stored for the default filters, a line says so and offers a button 'Load the place listings', and the top types and the list of places in a flood hazard area wait for the listings. Places per 1,000 residents and per square kilometre are the stored values, which use the default filters. The rank line uses the stored values too. The housing section is headed 'ACS 2024', the 2020-2024 window of the American Community Survey (ACS). The parts of the tab are listed below.",
+  "definition": "The tab opens when you click a municipality on the map, pick one in the search box or the Rankings tab, or follow a link such as index.html#San%20Juan. The first block is headed 'Visitor economy'. Once the tourism place listings are loaded, its tiles are counted from the places the map is showing, so they follow the category buttons, the confidence slider and the worship switch. Before that (the listings are not part of the first load) the tiles show the figures stored for the default filters, a line says so and offers a button 'Load the place listings', and the top types and the list of places in a flood hazard area wait for the listings. Places per 1,000 residents and per square kilometer are the stored values, which use the default filters. The rank line uses the stored values too. The housing section is headed 'ACS 2024', the 2020-2024 window of the American Community Survey (ACS). The parts of the tab are listed below.",
   "unit": "tab",
   "value_type": "text",
   "geography": "78 municipalities",
@@ -1353,10 +1353,10 @@
   },
   "added": "2026-10-03",
   "values": {
-   "Header": "The municipality's name, its tourism region, its residents (2020 Census) and its land area in square kilometres.",
-   "Tourism tiles": "Tourism places, the share in a flood hazard area, places per 1,000 residents, places per square kilometre, places inside protected areas and places with a website.",
+   "Header": "The municipality's name, its tourism region, its residents (2020 Census) and its land area in square kilometers.",
+   "Tourism tiles": "Tourism places, the share in a flood hazard area, places per 1,000 residents, places per square kilometer, places inside protected areas and places with a website.",
    "Mobility tiles": "There are up to five mobility tiles. The first two are shares of the places shown and appear when the access file has loaded: places within 400 m of a stop with a current timetable, and places with frequent service (20+ weekday departures). The third is the share of the places shown within 400 m of any mapped stop. The first three tiles show a dash when the municipality has no stop counted. The fourth is the number of stops and stations. The fifth is the share of residents within 400 m of a stop with a current timetable (the share for any scheduled stop, expired timetables included, if the field is missing). A line under the tiles gives the stops by state: 'Stops: N with a current timetable · N with an expired timetable · N mapped by volunteers (no timetable)'.",
-   "Tile colours": "Three tiles change colour. The flood tile warns when more than 25% of the places shown are in a flood hazard area. The residents-served tile warns when fewer than 25% of residents live within 400 m of a stop with a current timetable. The affordability tile warns when the ratio, rounded to two decimals, is above 1, and is green otherwise. These are the observatory's own signals, not standards. The tile for places inside protected areas is always green.",
+   "Tile colors": "Three tiles change color. The flood tile warns when more than 25% of the places shown are in a flood hazard area. The residents-served tile warns when fewer than 25% of residents live within 400 m of a stop with a current timetable. The affordability tile warns when the ratio, rounded to two decimals, is above 1, and is green otherwise. These are the observatory's own signals, not standards. The tile for places inside protected areas is always green.",
    "Chips": "Tren Urbano stations, bus stations, ferry terminals, airports (with the number open to the public), scheduled stops, taxi stands, electric vehicle (EV) charging points, the state of the municipal bus schedule, and whether Uber lists the municipality.",
    "Rank line": "The rank among the 78 by tourism places and by share in a flood hazard area, with the default filters. It ignores your filters and says so.",
    "Housing section": "Headed 'ACS 2024'. It shows the affordability ratio, the median home value and rent, the share of renters who are cost-burdened and the share of seasonal or recreational units.",
@@ -1374,7 +1374,7 @@
   "group": "2D map: Municipality and Rankings tabs",
   "kind": "method",
   "plain": "The Rankings tab lists the 78 municipalities in order of one measure, highest first. Pick the measure from the menu, reverse the order with a click, and download the whole municipality table as a comma-separated values (CSV) file.",
-  "definition": "The menu 'Rank municipalities by' has 26 options, listed below with the field they read. It starts on 'Tourism places'. The table has the rank, the municipality and the value, and a second column with the number of tourism places (not shown when you rank by tourism places). Only municipalities with a value are listed. A click on the column title reverses the order, and the arrow shows the direction. A click on a row selects the municipality and opens the Municipality tab. Numbers are rounded: whole numbers for counts and most percentages, one decimal for places per 1,000 residents, places per square kilometre and the seasonal share, and two decimals for the affordability ratio. The button 'Download municipality table (CSV)' saves one row per municipality.",
+  "definition": "The menu 'Rank municipalities by' has 26 options, listed below with the field they read. It starts on 'Tourism places'. The table has the rank, the municipality and the value, and a second column with the number of tourism places (not shown when you rank by tourism places). Only municipalities with a value are listed. A click on the column title reverses the order, and the arrow shows the direction. A click on a row selects the municipality and opens the Municipality tab. Numbers are rounded: whole numbers for counts and most percentages, one decimal for places per 1,000 residents, places per square kilometer and the seasonal share, and two decimals for the affordability ratio. The button 'Download municipality table (CSV)' saves one row per municipality.",
   "unit": "table",
   "value_type": "text",
   "geography": "78 municipalities",
@@ -1465,7 +1465,7 @@
   ],
   "group": "2D map: Transit tab",
   "kind": "method",
-  "plain": "The top of the Transit tab shows four figures. Two count operators: those that publish a schedule and those that publish none. One counts the routes on the map. One gives the share of residents who live within 400 metres of a scheduled stop.",
+  "plain": "The top of the Transit tab shows four figures. Two count operators: those that publish a schedule and those that publish none. One counts the routes on the map. One gives the share of residents who live within 400 meters of a scheduled stop.",
   "definition": "The first figure counts operators whose timetable is current, expiring or expired, with the three counts in brackets. The second counts operators with no public schedule data. The third is the number of routes on the map (165 in Snapshot 2026-10). The fourth divides the residents within 400 m of a scheduled stop, summed over the municipalities, by all residents, and adds the same share counting only operators whose timetable has not expired. The state of each operator is worked out in your browser from the end date of its timetable and today's date in Puerto Rico, so the counts can differ from those on the build date. The button 'Show transit only on the map' switches tourism places off and transit routes on. Other layers stay as they are.",
   "unit": "four figures",
   "value_type": "count",
@@ -1519,7 +1519,7 @@
   "group": "2D map: Transit tab",
   "kind": "method",
   "plain": "The 'What is live' box says that real-time bus positions are not available to the public and lists what exists, with a status for each source and a link.",
-  "definition": "The box opens with 'Real-time bus positions are not available to the public' and the date of the check. Below it each source has a coloured status and a one-line detail. There are six sources in Snapshot 2026-10: the real-time feed of the Autoridad de Transporte Integrado (ATI), the Autoridad Metropolitana de Autobuses (AMA) Móvil app, ATI express buses, municipal systems, the AcuaExpreso ferries and aircraft near Puerto Rico.",
+  "definition": "The box opens with 'Real-time bus positions are not available to the public' and the date of the check. Below it each source has a colored status and a one-line detail. There are six sources in Snapshot 2026-10: the real-time feed of the Autoridad de Transporte Integrado (ATI), the Autoridad Metropolitana de Autobuses (AMA) Móvil app, ATI express buses, municipal systems, the AcuaExpreso ferries and aircraft near Puerto Rico.",
   "unit": "list of checks",
   "value_type": "code",
   "geography": "Puerto Rico",
@@ -1570,7 +1570,7 @@
   "group": "2D map: Transit tab",
   "kind": "method",
   "plain": "The Operators list names every transit operator in the observatory and the state of its public timetable: current, expiring, expired or none. Press 'Show' to highlight an operator's routes on the map.",
-  "definition": "In Snapshot 2026-10 the list has 44 operators. The menu 'Show' filters it (see the codes below). Each row has a coloured dot for the type of operator, a short name with a status pill, and the full name. A line of details gives the routes, stops, weekday trips and the last date of the timetable. It adds flags such as 'no route shapes (drawn along roads)' and 'N routes list stops out of order'. An operator with no timetable feed (a General Transit Feed Specification, or GTFS, file) shows 'No GTFS feed found' (or 'Públicos run without a published schedule') and, when it has one, its number in the federal National Transit Database. 'Show' switches the routes layer on, dims every other operator's lines and zooms to that operator. Press it again to clear. An operator without routes but with a municipality has an 'Open <municipality>' button. The codes below give the filter menu, the status pills and the operator types, with their counts on 4 October 2026.",
+  "definition": "In Snapshot 2026-10 the list has 44 operators. The menu 'Show' filters it (see the codes below). Each row has a colored dot for the type of operator, a short name with a status pill, and the full name. A line of details gives the routes, stops, weekday trips and the last date of the timetable. It adds flags such as 'no route shapes (drawn along roads)' and 'N routes list stops out of order'. An operator with no timetable feed (a General Transit Feed Specification, or GTFS, file) shows 'No GTFS feed found' (or 'Públicos run without a published schedule') and, when it has one, its number in the federal National Transit Database. 'Show' switches the routes layer on, dims every other operator's lines and zooms to that operator. Press it again to clear. An operator without routes but with a municipality has an 'Open <municipality>' button. The codes below give the filter menu, the status pills and the operator types, with their counts on 4 October 2026.",
   "unit": "list of operators",
   "value_type": "code",
   "geography": "Puerto Rico",
@@ -1641,7 +1641,7 @@
   "group": "2D map: Transit tab",
   "kind": "layer",
   "plain": "'Vehicles on their timetable now' draws a dot for each scheduled vehicle that should be in service at this moment, in Puerto Rico time. It replays timetables. It is not tracking by Global Positioning System (GPS).",
-  "definition": "The switch is off when the page opens. When it is on, the dots update every 5 seconds. The map picks the Sunday, Saturday or weekday file for today in Puerto Rico. A dot is red for the Tren Urbano, teal for ferries, blue for buses of the Autoridad de Transporte Integrado (ATI) and green for municipal buses. Pointing at a dot names the route and the operator and repeats that the position is not GPS. A note under the switch gives the number of vehicles, the day type, the time, and the six operators with the most vehicles. Trips of operators whose timetable has expired are left out. Holidays are not modelled. The first time you switch it on, the page downloads the timetable file for the day type (the weekday file is about 2.2 MB in Snapshot 2026-10).",
+  "definition": "The switch is off when the page opens. When it is on, the dots update every 5 seconds. The map picks the Sunday, Saturday or weekday file for today in Puerto Rico. A dot is red for the Tren Urbano, teal for ferries, blue for buses of the Autoridad de Transporte Integrado (ATI) and green for municipal buses. Pointing at a dot names the route and the operator and repeats that the position is not GPS. A note under the switch gives the number of vehicles, the day type, the time, and the six operators with the most vehicles. Trips of operators whose timetable has expired are left out. Holidays are not modeled. The first time you switch it on, the page downloads the timetable file for the day type (the weekday file is about 2.2 MB in Snapshot 2026-10).",
   "unit": "map layer",
   "value_type": "geometry",
   "geography": "Puerto Rico",
@@ -1656,7 +1656,7 @@
   ],
   "how_to_read": "Read a dot as where the schedule says a vehicle is, not where it is.",
   "caveats": [
-   "No public real-time bus feed exists, so a late or cancelled vehicle is shown as on time.",
+   "No public real-time bus feed exists, so a late or canceled vehicle is shown as on time.",
    "The position follows the route line between stops at an even speed. A trip whose stops fit no line of its route (106 of 3,297 weekday trips in Snapshot 2026-10) moves in a straight line, so its dot can sit off the road.",
    "Operators with no published timetable, públicos and OpenStreetMap routes are absent.",
    "In Snapshot 2026-10, on Saturday only 4 operators have a timetable file (ATI, Guaynabo, Juncos and Vega Alta). On Sunday only ATI does, so municipal buses are absent on those days even where they run.",
@@ -1692,7 +1692,7 @@
   ],
   "group": "2D map: Transit tab",
   "kind": "layer",
-  "plain": "'Residents far from service' draws a circle for each census block with at least 40 residents whose nearest scheduled stop is more than 800 metres away. Bigger circles mean more residents.",
+  "plain": "'Residents far from service' draws a circle for each census block with at least 40 residents whose nearest scheduled stop is more than 800 meters away. Bigger circles mean more residents.",
   "definition": "The switch is off when the page opens. The layer has 14,405 circles in Snapshot 2026-10 (distances walked along mapped roads). Circle radius grows with the square root of the residents, from about 5 pixels at 40 residents to at most 14 pixels. Pointing at a circle gives its residents and its distance to the nearest scheduled stop. A note under the switch says how many residents live more than an 800 m walk from any scheduled stop (2,251,110 in Snapshot 2026-10, about 69%) and that circles show blocks with 40 or more residents. The note counts blocks of every size. The circles show only the larger ones. The 3D view has the same switch in its Route tab, under Planning layers, with the same circles and note; there a click on a circle gives what pointing at it gives on the 2D map.",
   "unit": "map layer",
   "value_type": "geometry",
@@ -1735,7 +1735,7 @@
    ]
   },
   "added": "2026-10-03",
-  "source_detail": "population_blocks.json, Snapshot 2026-10: 36,570 rows of 2020 Census blocks, each with longitude, latitude, residents and metres to the nearest scheduled stop. The circles carry no credit line of their own."
+  "source_detail": "population_blocks.json, Snapshot 2026-10: 36,570 rows of 2020 Census blocks, each with longitude, latitude, residents and meters to the nearest scheduled stop. The circles carry no credit line of their own."
  },
  {
   "id": "layers.integration_points_control",
@@ -1747,7 +1747,7 @@
   ],
   "group": "2D map: Transit tab",
   "kind": "layer",
-  "plain": "'Integration points' marks the places where a stop of one transit system lies within 250 metres of a stop of another system. These are natural places to line up timetables, fares and signs.",
+  "plain": "'Integration points' marks the places where a stop of one transit system lies within 250 meters of a stop of another system. These are natural places to line up timetables, fares and signs.",
   "definition": "The switch is off when the page opens. Each point is a white circle with a blue outline, placed midway between the two stops. There are 366 in Snapshot 2026-10, and all are drawn. Pointing at a point names the two operators, the two stops and the distance between them. A note under the switch gives the number found and, when some are left out, says how many are drawn. The 3D view has the same switch in its Route tab, under Planning layers; there a click on a point gives what pointing at it gives on the 2D map.",
   "unit": "map layer",
   "value_type": "geometry",
@@ -1801,7 +1801,7 @@
   "group": "2D map: Transit tab",
   "kind": "method",
   "plain": "The route planner draws a route between places you name or click, along roads, and then counts the residents and places it would reach. It is on the Transit tab of the 2D map and on the Route tab of the 3D view.",
-  "definition": "The planner draws a route between up to eight points and scores it against the open data. Drag a lettered marker to move a point. The route follows roads unless you switch 'Follow roads' off. The card shows the length and an indicative running time, then what the route would reach. The parts are listed below. The chosen points are kept in the page address as r=lat,lng;lat,lng, to 4 decimals (about 11 metres).",
+  "definition": "The planner draws a route between up to eight points and scores it against the open data. Drag a lettered marker to move a point. The route follows roads unless you switch 'Follow roads' off. The card shows the length and an indicative running time, then what the route would reach. The parts are listed below. The chosen points are kept in the page address as r=lat,lng;lat,lng, to 4 decimals (about 11 meters).",
   "unit": "tool",
   "value_type": "geometry",
   "geography": "Puerto Rico",
@@ -1825,7 +1825,7 @@
    "The running time uses planning speeds without stops or traffic. When some legs cannot follow roads (for example between islands), the length and the time still include them, as straight lines timed at 8 m/s (28.8 km/h).",
    "The place boxes can offer an online address lookup. That sends the text you typed to OpenStreetMap Nominatim. See the search entry.",
    "The GeoJSON file carries the licenses of its inputs. Check each before you publish it.",
-   "The address holds the exact coordinates of every point, to about 11 metres. If a start, end or stop is your home or workplace, anyone with the link can see it. Remove the r= part before you share a link, or use points that are not private.",
+   "The address holds the exact coordinates of every point, to about 11 meters. If a start, end or stop is your home or workplace, anyone with the link can see it. Remove the r= part before you share a link, or use points that are not private.",
    "Tourism places within 400 m of the route are counted only when the tourism place listings are loaded (switch on 'Tourism places' in the Map layers tab, then plan again). Otherwise that tile shows a dash and says so; it is never a zero.",
    "Tourism places are offered as start, stop or end points only once the tourism place listings are loaded; until then the place boxes search the town, street, landmark, stop and route index only."
   ],
@@ -1903,7 +1903,7 @@
   ],
   "how_to_read": "Start from a ready-made view, then change one thing at a time. Each layer says which year it shows.",
   "caveats": [
-   "Jobs, pay and establishments count the workplace (Quarterly Census of Employment and Wages, QCEW). Income, poverty and commuting describe residents (American Community Survey, ACS). In the 2024 data of Snapshot 2026-10, 9 of the 78 municipalities have more jobs than employed residents; San Juan (1.9 jobs per employed resident) and Mayagüez (1.5) have the most. This fits commuting into job centres, but the ratio does not measure commuting.",
+   "Jobs, pay and establishments count the workplace (Quarterly Census of Employment and Wages, QCEW). Income, poverty and commuting describe residents (American Community Survey, ACS). In the 2024 data of Snapshot 2026-10, 9 of the 78 municipalities have more jobs than employed residents; San Juan (1.9 jobs per employed resident) and Mayagüez (1.5) have the most. This fits commuting into job centers, but the ratio does not measure commuting.",
    "Survey figures (ACS, Local Area Unemployment Statistics, LAUS) are noisy for small municipalities. Margins of error are shown where the source publishes them. The jobs data hide cells that would identify one employer, so some sectors are blank in small municipalities.",
    "The informal economy is not in the jobs data. The share of self-employed residents points to some work the jobs data miss, but it is not a measure of the informal economy.",
    "Federal awards are placed where the work is done, as the awarding agency reports it. The awarding agency often records awards for statewide programs under the capital, so San Juan's total can include money that serves other places. See the entry on federal awards, all types.",
@@ -2006,7 +2006,7 @@
    "Population · Poverty and assistance": "3 datasets in Snapshot 2026-10, from the American Community Survey (5-year windows 2017-2021 to 2020-2024): the share of households that received nutrition assistance (PAN), and the shares of children under 18 and of people 65 and older below the poverty level.",
    "Population · Daytime population": "3 datasets in Snapshot 2026-10, calculated from the Census Bureau's commuting flows of 2016-2020 and the 2020 Census: the daytime population, the daytime change as a percent of residents, and the share of resident workers who work in another municipio.",
    "Vulnerability (CDC/ATSDR SVI)": "4 datasets in Snapshot 2026-10, each for a single year (2022): CDC's Social Vulnerability Index rank among the 78 municipios, overall and for three themes (socioeconomic status, household characteristics, housing type and transportation).",
-   "Hazards · Facilities and roads in hazard areas": "17 datasets in Snapshot 2026-10, each for a single year (2026): the public facilities, the public schools and their students, and the kilometres of main road inside FEMA's 1% flood area, NOAA's 3 ft sea level rise area and the USGS high landslide susceptibility classes, as counts and as shares.",
+   "Hazards · Facilities and roads in hazard areas": "17 datasets in Snapshot 2026-10, each for a single year (2026): the public facilities, the public schools and their students, and the kilometers of main road inside FEMA's 1% flood area, NOAA's 3 ft sea level rise area and the USGS high landslide susceptibility classes, as counts and as shares.",
    "Hazards · Drought (US Drought Monitor)": "3 datasets in Snapshot 2026-10, yearly 2000-2026, from the weekly US Drought Monitor: the average share of the area in drought, and the weeks with drought, and with severe drought, over half the area.",
    "Hazards · Storm recovery (night-time light)": "2 datasets in Snapshot 2026-10, for Hurricanes María (2017) and Fiona (2022), calculated from the monthly night-time light: the months until light came back and the darkest month after each storm.",
    "Hazards · Cut off from hospitals (estimate)": "5 datasets in Snapshot 2026-10, estimates for the current year: the share of residents with no open road to a hospital when the roads in FEMA's 1% flood area close (and of them, those on a dry street), when the bridges in poor condition close, and both, and the residents cut off by floods.",
@@ -2096,7 +2096,7 @@
    "Vulnerability (WCRP) · Original 2022 (ACS 2015–2019)": "7 datasets in Snapshot 2026-10, each for a single period and for barrios only (no municipio has a value): the overall index and the six area indices of the WCRP Risk and Vulnerability Indicators as published in 2022 by Hunter College for FPR. In review.",
    "Vulnerability (WCRP) · Updated 2020–2024": "7 datasets in Snapshot 2026-10, each for a single period and for barrios only (no municipio has a value): the same indices updated by the observatory with the WCRP method on ACS 2020–2024 and current local conditions (Updated 2020–2024). In review.",
    "Tourism supply": "18 datasets in Snapshot 2026-10, each for a single year (2026): five counts of tourism places by kind, then the places in a flood hazard area (as a count and as a share), the places inside a protected area, the places with a website, and nine shares of the places near transit: within 400 m of any mapped stop, of a stop with a current timetable, of a frequent stop and of a stop with Saturday or Sunday service, within a 400 m or 800 m walk, and near only an expired or unscheduled stop.",
-   "Infrastructure · Traffic (FHWA HPMS)": "6 datasets in Snapshot 2026-10, data year 2025 of FHWA's Highway Performance Monitoring System: daily vehicle-kilometres, per resident, km of arterials and major collectors, the busiest count, trucks and main roads with rough pavement.",
+   "Infrastructure · Traffic (FHWA HPMS)": "6 datasets in Snapshot 2026-10, data year 2025 of FHWA's Highway Performance Monitoring System: daily vehicle-kilometers, per resident, km of arterials and major collectors, the busiest count, trucks and main roads with rough pavement.",
    "Infrastructure · Road safety (NHTSA FARS)": "6 datasets in Snapshot 2026-10, from NHTSA's Fatality Analysis Reporting System: people killed, fatal crashes, pedestrians and bicyclists killed and motorcyclists killed each year from 2020, and deaths per 100,000 residents and per 100 million vehicle-km over five years. Counts only.",
    "Infrastructure · Energy (LUMA)": "4 datasets: home and business batteries, their storage in MWh, electricity sales and the share of customers with smart meters, by municipio (LUMA's monthly metrics filed with the Energy Bureau).",
    "Infrastructure · Energy (ACS)": "2 datasets: the households paying $250 or more a month for electricity, as a share and a count, by municipio and barrio (ACS 5-year B25132, with margins of error)."
@@ -2113,8 +2113,8 @@
   ],
   "group": "2D map: Analysis tab",
   "kind": "layer",
-  "plain": "A shaded layer colours each municipality by one dataset. The Analysis tab allows two shaded layers at a time. Colours run from light to dark in five groups.",
-  "definition": "A third shaded layer is refused with a message that says to remove one or to show the new dataset as symbols. Open 'Settings' on a layer's card to change its options. The class limits are set from the values of the 78 municipalities, not from the Puerto Rico figure. With 'Same classes in every year' on, which is the start setting, the limits use the values of all years together, so one colour means the same number in every year. Turn it off to use only the year on screen. The legend lists the range of each class and how many municipalities fall in it. A municipality with no value is grey (#EDEDED), and the legend counts it as 'No data'. The settings are listed below.",
+  "plain": "A shaded layer colors each municipality by one dataset. The Analysis tab allows two shaded layers at a time. Colors run from light to dark in five groups.",
+  "definition": "A third shaded layer is refused with a message that says to remove one or to show the new dataset as symbols. Open 'Settings' on a layer's card to change its options. The class limits are set from the values of the 78 municipalities, not from the Puerto Rico figure. With 'Same classes in every year' on, which is the start setting, the limits use the values of all years together, so one color means the same number in every year. Turn it off to use only the year on screen. The legend lists the range of each class and how many municipalities fall in it. A municipality with no value is gray (#EDEDED), and the legend counts it as 'No data'. The settings are listed below.",
   "unit": "map layer",
   "value_type": "geometry",
   "geography": "78 municipalities",
@@ -2135,9 +2135,9 @@
    "bls_cpi",
    "overture"
   ],
-  "how_to_read": "With 'Same classes in every year' on (the start setting) a colour is a class among all municipalities in all years pooled, so one year can have uneven group sizes. Read the legend counts for the numbers. On the diverging scale red means below the centre (below Puerto Rico, or below zero change) and blue means above. Neither means better or worse: a red unemployment rate is a lower rate.",
+  "how_to_read": "With 'Same classes in every year' on (the start setting) a color is a class among all municipalities in all years pooled, so one year can have uneven group sizes. Read the legend counts for the numbers. On the diverging scale red means below the center (below Puerto Rico, or below zero change) and blue means above. Neither means better or worse: a red unemployment rate is a lower rate.",
   "caveats": [
-   "With 'Same classes in every year' on, some colours may not appear in a year whose values cover a narrower range.",
+   "With 'Same classes in every year' on, some colors may not appear in a year whose values cover a narrower range.",
    "Equal intervals can put most municipalities in one class when one or two are very large.",
    "Shading rates and levels suits comparison between places. Shading a raw count mostly shows how big the municipality is."
   ],
@@ -2165,11 +2165,11 @@
   "values": {
    "Show as": "Described in the entry on the 'Show as' options.",
    "Classes": "Quantiles with equal counts, Equal intervals or Natural breaks.",
-   "Colours": "Blue, Green, Gold, Red or Gray. Each ramp has five colours.",
+   "Colours": "Blue, Green, Gold, Red or Gray. Each ramp has five colors.",
    "Opacity": "From 20% to 100%. It starts at 85%. The opacity of the first shaded layer sets the opacity of the sheet.",
    "Same classes in every year": "A checkbox, on at the start.",
    "Inflation-adjusted": "A checkbox on dollar datasets.",
-   "Diverging scale": "Options that compare with a centre (index, difference, location quotient and change) use a diverging scale of five classes: dark red, light red, pale grey, light blue and dark blue. The limits are set as shares of the largest distance from the centre: below −50%, −50% to −10%, within ±10%, +10% to +50% and above +50%. Red means below the centre and blue means above. Neither means worse or better.",
+   "Diverging scale": "Options that compare with a center (index, difference, location quotient and change) use a diverging scale of five classes: dark red, light red, pale gray, light blue and dark blue. The limits are set as shares of the largest distance from the center: below −50%, −50% to −10%, within ±10%, +10% to +50% and above +50%. Red means below the center and blue means above. Neither means worse or better.",
    "Layer card buttons": "Hide, move up or down, open information and remove the layer."
   },
   "source_detail": "economy_series.json and housing_series.json. Each dataset's source reference is in its information window. The map draws no credit line for this layer."
@@ -2185,7 +2185,7 @@
   "group": "2D map: Analysis tab",
   "kind": "layer",
   "plain": "A symbol layer draws a circle on each municipality. The circle's area shows the value, so big circles are big amounts. Symbols suit counts and totals such as jobs or dollars.",
-  "definition": "Each circle is centred on the municipality's centre. The circle for the largest value has a radius of 30 pixels (20 on a phone). Other radii shrink with the square root of the value, so the area is proportional to the value, down to a minimum of 2.5 pixels. Larger circles are drawn first so small ones stay visible. The largest value is taken over all years when 'Same classes in every year' is on, and over the year on screen otherwise. Colours: Red, Blue, Gold, Green or Charcoal. If a dataset can be negative, for example a change since the base year, increases are blue and decreases red. The legend shows three circles at the largest value, at half of it and at a tenth of it. No circle is drawn for Puerto Rico as a whole or for a municipality with no value. The centre is the area-weighted centre of the municipality's largest part, so islands do not pull the point into the sea.",
+  "definition": "Each circle is centered on the municipality's center. The circle for the largest value has a radius of 30 pixels (20 on a phone). Other radii shrink with the square root of the value, so the area is proportional to the value, down to a minimum of 2.5 pixels. Larger circles are drawn first so small ones stay visible. The largest value is taken over all years when 'Same classes in every year' is on, and over the year on screen otherwise. Colors: Red, Blue, Gold, Green or Charcoal. If a dataset can be negative, for example a change since the base year, increases are blue and decreases red. The legend shows three circles at the largest value, at half of it and at a tenth of it. No circle is drawn for Puerto Rico as a whole or for a municipality with no value. The center is the area-weighted center of the municipality's largest part, so islands do not pull the point into the sea.",
   "unit": "map layer",
   "value_type": "geometry",
   "geography": "78 municipalities",
@@ -2208,7 +2208,7 @@
   ],
   "how_to_read": "Compare circle sizes between municipalities in the same layer. Do not compare sizes between two different layers.",
   "caveats": [
-   "The centre of a long or crescent-shaped municipality can fall away from its towns.",
+   "The center of a long or crescent-shaped municipality can fall away from its towns.",
    "Circles overlap in the San Juan area and may hide each other."
   ],
   "see_also": [
@@ -2240,8 +2240,8 @@
   ],
   "group": "2D map: Analysis tab",
   "kind": "layer",
-  "plain": "When two shaded layers are on, the map shows both at once with nine colours. Each layer is cut into three classes: low, middle and high.",
-  "definition": "The first visible shaded layer in the list is the horizontal axis of the legend, which increases to the right. The second is the vertical axis, which increases upward. Each layer is cut into three classes, using the class method set on its card: equal counts (terciles), equal intervals or natural breaks. The nine colours run from light grey (low on both), through teal (high on the first only) and magenta (high on the second only), to dark blue (high on both). The legend shows the three-by-three grid and, for each axis, the layer, its year, and the limits of 'low' and 'high'. The legend title says 'terciles of each' only when both layers use equal-count classes. Otherwise it says 'three classes of each'. A municipality with no value in either layer is grey (#EDEDED). In this mode the diverging scale is not used: every layer is cut into three classes.",
+  "plain": "When two shaded layers are on, the map shows both at once with nine colors. Each layer is cut into three classes: low, middle and high.",
+  "definition": "The first visible shaded layer in the list is the horizontal axis of the legend, which increases to the right. The second is the vertical axis, which increases upward. Each layer is cut into three classes, using the class method set on its card: equal counts (terciles), equal intervals or natural breaks. The nine colors run from light gray (low on both), through teal (high on the first only) and magenta (high on the second only), to dark blue (high on both). The legend shows the three-by-three grid and, for each axis, the layer, its year, and the limits of 'low' and 'high'. The legend title says 'terciles of each' only when both layers use equal-count classes. Otherwise it says 'three classes of each'. A municipality with no value in either layer is gray (#EDEDED). In this mode the diverging scale is not used: every layer is cut into three classes.",
   "unit": "map layer",
   "value_type": "code",
   "geography": "78 municipalities",
@@ -2251,7 +2251,7 @@
    "last": 2025,
    "frequency": "Series are rebuilt with each snapshot. In Snapshot 2026-10 the year control runs from 2010 to 2025."
   },
-  "method": "economy.js (ecRenderMap, ecRenderLegend, EC_BIV). The colour table is indexed by the class of the second layer and then by the class of the first.",
+  "method": "economy.js (ecRenderMap, ecRenderLegend, EC_BIV). The color table is indexed by the class of the second layer and then by the class of the first.",
   "sources": [
    "bls_qcew",
    "bls_laus",
@@ -2262,7 +2262,7 @@
    "bls_cpi",
    "overture"
   ],
-  "how_to_read": "Find the dark cells (both high) and the pale ones (both low). Colours that mix show where the two layers disagree.",
+  "how_to_read": "Find the dark cells (both high) and the pale ones (both low). Colors that mix show where the two layers disagree.",
   "caveats": [
    "The map shows where two things are high or low together. It does not show that one causes the other.",
    "The three classes are relative to the 78 municipalities (all years pooled when 'Same classes in every year' is on). They are not thresholds of any standard.",
@@ -2299,7 +2299,7 @@
   ],
   "group": "2D map: Analysis tab",
   "kind": "measure",
-  "plain": "Each layer has a 'Show as' menu. It changes the number behind the colour or circle. Choices include as published, per resident, per km², share, index, change and percentile.",
+  "plain": "Each layer has a 'Show as' menu. It changes the number behind the color or circle. Choices include as published, per resident, per km², share, index, change and percentile.",
   "definition": "The options depend on the kind of dataset. Counts (people, jobs, places) can be shown as published, per 1,000 residents, per km² and as a share of the Puerto Rico total. The jobs datasets (25 in Snapshot 2026-10) can also be shown as a share of the municipality's jobs and as a location quotient. Dollar totals (wages, federal money, recovery money of the Federal Emergency Management Agency, FEMA) can be shown as published, per resident, per km² and, except for federal loans, as a share of the Puerto Rico total. Everything else (rates, ratios and dollar levels such as median income) can be shown as published, as an index or as a difference from Puerto Rico. Every dataset with more than one year also offers 'change since the base year', and every dataset offers 'percentile among municipalities'. The codes below are the ones written in a shared link.",
   "unit": "choice per layer",
   "value_type": "code",
@@ -2358,14 +2358,14 @@
   "values": {
    "value": "As published. The dataset's own number in its own unit. Offered for every dataset. The start choice for symbols and for rates, ratios and dollar levels.",
    "per1000": "Per 1,000 residents. The count divided by the municipality's population, times 1,000, rounded to three decimals. Counts only. The start choice when a count is shaded. Population is the value of the population series for the year shown, or for the latest earlier year, or for its first year when the year shown is earlier. The population series changes basis in 2020 (the 2011-2019 estimates were not revised to the 2020 Census), so in Snapshot 2026-10 the island's population steps up 2.9% from 2019 to 2020 (3.1% for the median municipality), and per-resident values drop by about 3% for that reason alone. Changes that cross 2019 to 2020 include the same jump.",
-   "perkm2": "Per km². The value divided by the municipality's land area in square kilometres. Counts and dollar totals.",
+   "perkm2": "Per km². The value divided by the municipality's land area in square kilometers. Counts and dollar totals.",
    "sharePR": "% of the Puerto Rico total. The value divided by the dataset's Puerto Rico figure, times 100. Counts and dollar totals. It is not offered for federal loans. Shares can add up to less than 100% when the island figure holds amounts that belong to no municipality, for example FEMA Public Assistance recorded as statewide, federal awards that name no municipality, or jobs hidden in withheld cells.",
    "shareJobs": "% of the municipality's jobs. Jobs in an industry divided by all jobs in the same municipality (QCEW), times 100. Only the jobs datasets (25 in Snapshot 2026-10), from 2014.",
-   "lq": "Location quotient (Puerto Rico = 1). The industry's share of the municipality's jobs divided by its share of Puerto Rico's jobs. Above 1 means the industry is more concentrated here than on the island as a whole. Only the jobs datasets. Diverging scale centred on 1.",
+   "lq": "Location quotient (Puerto Rico = 1). The industry's share of the municipality's jobs divided by its share of Puerto Rico's jobs. Above 1 means the industry is more concentrated here than on the island as a whole. Only the jobs datasets. Diverging scale centered on 1.",
    "perCapita": "$ per resident. The dollar total divided by the municipality's population. Dollar totals only. The start choice when a dollar total is shaded. The same break in the population series in 2020 applies. For FEMA Public Assistance and for federal awards the Puerto Rico per-resident value includes money recorded as statewide or naming no municipality, so it is not comparable with a municipality's value.",
-   "index": "Index (Puerto Rico = 100). The value divided by the Puerto Rico value, times 100. Rates, ratios and dollar levels. Diverging scale centred on 100.",
-   "diff": "Difference from Puerto Rico. The value minus the Puerto Rico value, in the dataset's unit (percentage points for percentages). Rates, ratios and dollar levels. Diverging scale centred on 0.",
-   "change": "Change since the base year. For rates and ratios, the value minus the value in the base year (points for percentages). For counts and dollars, the percent change from the base year, blank where the base value is 0. The base year is chosen in 'Change measured from' (2014 at the start). The dataset's latest year at or before it is used. Blank for years up to the base year. Not offered for the five tourism snapshots. Diverging scale centred on 0. Windows of the American Community Survey (ACS) that overlap share most of their sample, so choose a base year at least five years before the year shown.",
+   "index": "Index (Puerto Rico = 100). The value divided by the Puerto Rico value, times 100. Rates, ratios and dollar levels. Diverging scale centered on 100.",
+   "diff": "Difference from Puerto Rico. The value minus the Puerto Rico value, in the dataset's unit (percentage points for percentages). Rates, ratios and dollar levels. Diverging scale centered on 0.",
+   "change": "Change since the base year. For rates and ratios, the value minus the value in the base year (points for percentages). For counts and dollars, the percent change from the base year, blank where the base value is 0. The base year is chosen in 'Change measured from' (2014 at the start). The dataset's latest year at or before it is used. Blank for years up to the base year. Not offered for the five tourism snapshots. Diverging scale centered on 0. Windows of the American Community Survey (ACS) that overlap share most of their sample, so choose a base year at least five years before the year shown.",
    "pctile": "Percentile among municipalities. The place of the municipality among the 78 when they are sorted from the lowest value (0) to the highest (100). Municipalities with equal values share the lowest of their places. Puerto Rico as a whole has none."
   },
   "added": "2026-10-03",
@@ -2462,7 +2462,7 @@
   "how_to_read": "Check each layer's year chip before comparing two layers. Layers can show different years under one control.",
   "caveats": [
    "In Snapshot 2026-10, 'Latest' and '2025' are not the same: survey datasets end in 2024, so choosing 2025 shows their 2024 value with a note.",
-   "American Community Survey (ACS) years are five-year windows labelled by their last year, so neighbouring years share most of their sample. Compare windows that do not overlap for real change.",
+   "American Community Survey (ACS) years are five-year windows labeled by their last year, so neighboring years share most of their sample. Compare windows that do not overlap for real change.",
    "On Latest, a pair of layers can come from different years (in Snapshot 2026-10, jobs 2025 and ACS 2024). Check each year chip before you compare two layers, read them as a pair or correlate them. In Snapshot 2026-10 the unemployment rate has no 2020 value, so choosing 2020 shows 2019."
   ],
   "see_also": [
@@ -2543,7 +2543,7 @@
   "values": {
    "Jobs and pay": "Shaded: average pay (qcew_avg_pay). Symbols: jobs (qcew_jobs). No extra layers.",
    "Poverty and unemployment": "Two shaded layers, so a bivariate map: poverty rate (poverty_pct) and unemployment rate (laus_unemp_rate). Symbols: unemployed residents (laus_unemployed).",
-   "Job centres and commuting": "Two shaded layers, so a bivariate map: jobs per employed resident (jobs_per_employed_resident) and commuters with 45 minutes or more (commute_45plus_pct). Symbols: jobs (qcew_jobs). Also shows transit routes.",
+   "Job centers and commuting": "Two shaded layers, so a bivariate map: jobs per employed resident (jobs_per_employed_resident) and commuters with 45 minutes or more (commute_45plus_pct). Symbols: jobs (qcew_jobs). Also shows transit routes.",
    "Public money": "Shaded: federal awards per resident (fed_awards_total, 'perCapita'). Symbols: Public Assistance of the Federal Emergency Management Agency (FEMA), amounts obligated (fema_pa_obligated). These are federal amounts obligated (committed). They are not money paid, not damage and not need. In the 2026-10 snapshot, over all years combined, 77.9% of FEMA Public Assistance money is recorded as statewide and is not in the municipality values (80.9% for the 2017 declarations, 13.1% for 2024, the year this view shows on Latest). Awards that serve the whole island are often booked to the capital.",
    "Government and self-employment": "Two shaded layers, so a bivariate map: government jobs as a share of all jobs (gov_job_share_pct) and self-employed workers (self_employed_pct).",
    "Tourism economy": "Shaded: tourism jobs as a share of the municipality's jobs (tourism_jobs, 'shareJobs'). Symbols: accommodation jobs (accommodation_jobs). Also shows the tourism places pins."
@@ -2582,7 +2582,7 @@
    "jp_put2015",
    "census_tiger"
   ],
-  "how_to_read": "Add one context layer at a time. Several overlays together make the economy colours hard to read.",
+  "how_to_read": "Add one context layer at a time. Several overlays together make the economy colors hard to read.",
   "caveats": [
    "The sea level and transit planning layers are not in this list. Use the Layers and Transit tabs for them."
   ],
@@ -2672,7 +2672,7 @@
   ],
   "group": "2D map: Analysis tab",
   "kind": "measure",
-  "plain": "A small grey line with a blue dot shows how a value changed over the years for one municipality. The label under it says how many years the line covers, for example '12 yrs'.",
+  "plain": "A small gray line with a blue dot shows how a value changed over the years for one municipality. The label under it says how many years the line covers, for example '12 yrs'.",
   "definition": "The blue dot marks the year on screen. The label under the line gives the length of the trend: 'N yrs' ('yrs' means years) is the number of calendar years from the first to the last year drawn, both included. If some years have no value, the label adds how many values were drawn, for example '12 yrs, 9 values'. On the Analysis tab the label also gives the first and last year, for example '12 yrs · 2014–25'. The column header of the lines in the workbench's Inspector tab (the map popup has no trend lines) reads 'Trend', with the note 'years shown; dot = chosen year'. The label itself starts with the number of years. The Housing profile has no header. A line needs at least two yearly values, so datasets with one year have none. The line scales from the lowest to the highest value drawn, so a flat-looking line can hold a large change. Economy lines start in 2010 at the earliest. Housing profile lines use every year the dataset has.",
   "unit": "small chart",
   "value_type": "text",
@@ -2809,7 +2809,7 @@
    "bls_cpi",
    "overture"
   ],
-  "how_to_read": "Use the table to look up exact values. Use the CSV to analyse them.",
+  "how_to_read": "Use the table to look up exact values. Use the CSV to analyze them.",
   "caveats": [
    "The CSV holds the values as currently shown, after any 'Show as' option or inflation adjustment. The file does not repeat the margins of error.",
    "Download all years of one dataset, with margins, from its information dialog."
@@ -2955,7 +2955,7 @@
   "group": "2D map: Analysis tab",
   "kind": "method",
   "plain": "The info button beside a dataset opens a window with its definition, years, sources and licenses. It also links to the dataset's dictionary entry and lets you download all its years as a comma-separated values (CSV) file.",
-  "definition": "The window shows the dataset's group and type (count, dollar total, dollar level, rate or ratio) and a definition. Jobs (qcew_jobs) and the unemployment rate (laus_unemp_rate) have an extra note. Next come the source reference and the years the dataset covers (for example '2014–2025 (12 years)', with 'margins of error at 90% confidence are published' when they are). Then come the geography, the build date and a note on dollars where they apply. A line 'Full entry' links to the dataset's entry in the data dictionary, where you find its meaning, method, cautions and how to cite it. For Public Assistance of the Federal Emergency Management Agency (FEMA) the window also gives the share of money recorded as statewide for each declaration year. For the federal award datasets it gives the share of awards that name no municipality, by fiscal year. Below are the sources with their license text and links. Buttons add the dataset to the map as a shaded layer or as symbols. 'Download all years (CSV)' saves pr_economy_<dataset>.csv with the columns GEOID (the geographic identifier code), Municipality and one column for each year, plus a margin-of-error column for each year when the source publishes one. Values are as published. Nothing is normalised or inflation-adjusted.",
+  "definition": "The window shows the dataset's group and type (count, dollar total, dollar level, rate or ratio) and a definition. Jobs (qcew_jobs) and the unemployment rate (laus_unemp_rate) have an extra note. Next come the source reference and the years the dataset covers (for example '2014–2025 (12 years)', with 'margins of error at 90% confidence are published' when they are). Then come the geography, the build date and a note on dollars where they apply. A line 'Full entry' links to the dataset's entry in the data dictionary, where you find its meaning, method, cautions and how to cite it. For Public Assistance of the Federal Emergency Management Agency (FEMA) the window also gives the share of money recorded as statewide for each declaration year. For the federal award datasets it gives the share of awards that name no municipality, by fiscal year. Below are the sources with their license text and links. Buttons add the dataset to the map as a shaded layer or as symbols. 'Download all years (CSV)' saves pr_economy_<dataset>.csv with the columns GEOID (the geographic identifier code), Municipality and one column for each year, plus a margin-of-error column for each year when the source publishes one. Values are as published. Nothing is normalized or inflation-adjusted.",
   "unit": "window",
   "value_type": "text",
   "geography": "78 municipalities and Puerto Rico",
@@ -3133,7 +3133,7 @@
    "value": "A dataset and a municipality, for example 'Unemployment in Ponce': the municipality's value, its place among the 78 (highest first) and the Puerto Rico value. For counts it also gives the per-resident view.",
    "rank": "Words such as highest, lowest, top, best, worst or 'where is': a table of the top municipalities and the Puerto Rico value. The table has 5 rows at the start. A number in the question ('top 10') sets the length, up to 15. For counts a second table gives the per-resident ranking. Words such as lowest, least, bottom or fewest turn the table around. The words best and worst do not change the order. Both return the highest values, so 'where is unemployment best?' returns the highest unemployment rates. Use lowest or least for the other end. With one municipality named ('¿dónde en Bayamón es más alto el alquiler?'), the table ranks its barrios when the dataset has barrio values, and the map is shaded by barrio; otherwise the answer gives the municipality's place among the 78 first.",
    "compare": "Two or more datasets with words such as related, versus, together or compare, for example 'Show poverty and unemployment together' or 'poverty vs rent': the correlation of the first two across municipalities, the biggest exceptions and a scatter plot.",
-   "trend": "One dataset with words such as changed, since, trend or over time: Puerto Rico's change between the first and last year (or the years you name) and the three municipalities that rose most and fell most. Municipalities that start with a count below 50 or a dollar total below $100,000 are not ranked in these two lists. The numbers in the text use the dollars of each year, but for dollar datasets the map the chat opens is inflation-adjusted, so its colours and the sentences can disagree. If no municipality fell, the second list is headed 'Rose least'. The map shows the change since the first year and the trend chart opens. With one municipality named, the answer gives that municipality's change first and its place among the 78 by change, and selects it on the map.",
+   "trend": "One dataset with words such as changed, since, trend or over time: Puerto Rico's change between the first and last year (or the years you name) and the three municipalities that rose most and fell most. Municipalities that start with a count below 50 or a dollar total below $100,000 are not ranked in these two lists. The numbers in the text use the dollars of each year, but for dollar datasets the map the chat opens is inflation-adjusted, so its colors and the sentences can disagree. If no municipality fell, the second list is headed 'Rose least'. The map shows the change since the first year and the trend chart opens. With one municipality named, the answer gives that municipality's change first and its place among the 78 by change, and selects it on the map.",
    "municipality": "A municipality name alone: a table of 12 indicators (population, poverty, median household income, unemployment rate, jobs, average pay, jobs per employed resident, government job share, tourism jobs share, long commutes, median rent and federal awards per resident) with its value, the Puerto Rico value and its place among the 78, and a line naming the ones where it is in the top or bottom five.",
    "sources": "Words such as sources, license, definition, 'what does X mean' or 'how is X measured' with one to three datasets: the definition, the years, source links with licenses, a button 'Open the full source details' for each dataset and a button 'Entry in the data dictionary' (in Spanish 'Entrada en el diccionario de datos') that opens the dictionary entry of the first dataset.",
    "catalog": "'What data do you have?': the dataset groups with their counts, or the datasets on a topic you name (up to 14 listed). Buttons offer 'See everything that is missing' and 'Open the data dictionary'.",
@@ -3322,7 +3322,7 @@
   },
   "added": "2026-10-03",
   "values": {
-   "Places and areas": "Municipalities and the place-name index. The index holds towns, communities, barrios, neighbourhoods, PR highways, named streets, hospitals, schools, colleges, public buildings, terminals, parks, beaches, mountains, water, landmarks, airports and shopping centres.",
+   "Places and areas": "Municipalities and the place-name index. The index holds towns, communities, barrios, neighborhoods, PR highways, named streets, hospitals, schools, colleges, public buildings, terminals, parks, beaches, mountains, water, landmarks, airports and shopping centers.",
    "Tourism places": "Searched by name or type. On the 2D map the box follows the current category, confidence and worship filters. In the 3D view it follows the category buttons, confidence 0.50 and no places of worship.",
    "Transit": "Scheduled stops, stations, terminals and airports by name. The header box also searches transit routes by number, name or operator. The planner's boxes search the same list without routes.",
    "A pick on the 2D map": "A municipality opens its profile, a tourism place opens its card, a stop opens its card and a route fits on the screen.",
@@ -3363,7 +3363,7 @@
   "caveats": [
    "Layer settings other than those listed, such as the category buttons, the confidence slider, the worship switch and the open tab, are not kept in the address.",
    "A link records choices, not data. If the observatory's data change after a new snapshot, the same link can show different numbers.",
-   "The r= part holds the exact coordinates of every point of a planned route, to about 11 metres. If a start, end or stop is your home or workplace, anyone with the link can see it. Remove the r= part before you share a link, or use points that are not private."
+   "The r= part holds the exact coordinates of every point of a planned route, to about 11 meters. If a start, end or stop is your home or workplace, anyone with the link can see it. Remove the r= part before you share a link, or use points that are not private."
   ],
   "see_also": [
    "layers.share_link_economy",
@@ -3389,7 +3389,7 @@
   },
   "values": {
    "#<Municipality>": "A municipality name, URL-encoded, such as #San%20Juan. It is matched ignoring accents and capitals. An unknown name gives a message. A link with a municipality opens the Municipality tab.",
-   "c": "c=<latitude>,<longitude>,<zoom>: the map centre (4 decimals) and the zoom level, a whole number on the 2D map's scale. When c is present the map does not fly to the municipality.",
+   "c": "c=<latitude>,<longitude>,<zoom>: the map center (4 decimals) and the zoom level, a whole number on the 2D map's scale. When c is present the map does not fly to the municipality.",
    "l": "l=<layers>: the layers that are ON, separated by commas. The list is complete: a layer that is not named is switched off, including tourism places (places) and boundaries (muni). A link with l=flood therefore shows no pins and no boundaries.",
    "l=places": "Tourism places.",
    "l=flood": "Flood zones.",
@@ -3423,7 +3423,7 @@
   "group": "Search, links and downloads",
   "kind": "method",
   "plain": "The Analysis tab writes its layers, year and base year into the page address. The 'Copy link' button copies the address, and opening it brings the same layers back.",
-  "definition": "The part e= holds the layers, in list order, separated by commas (written %2C in the address). Each layer is ten items joined by dots: <dataset>.<mode>.<show-as>.<ramp>.<classes>.<visible>.<fixed>.<inflation>.<opacity>.<colour>. For example poverty_pct.f.value.blue.q.1.1.0.85.0 is a shaded poverty rate, as published, in blue, with equal-count classes, visible, the same classes in every year, not inflation-adjusted, at 85% opacity. A link with an e= part opens the Analysis tab. These parts are read only when the page loads. If you change them in a page that is already open, reload it. To keep other map layers out of the way, add l=muni (see the 2D link entry). The first two shaded layers form the bivariate map.",
+  "definition": "The part e= holds the layers, in list order, separated by commas (written %2C in the address). Each layer is ten items joined by dots: <dataset>.<mode>.<show-as>.<ramp>.<classes>.<visible>.<fixed>.<inflation>.<opacity>.<color>. For example poverty_pct.f.value.blue.q.1.1.0.85.0 is a shaded poverty rate, as published, in blue, with equal-count classes, visible, the same classes in every year, not inflation-adjusted, at 85% opacity. A link with an e= part opens the Analysis tab. These parts are read only when the page loads. If you change them in a page that is already open, reload it. To keep other map layers out of the way, add l=muni (see the 2D link entry). The first two shaded layers form the bivariate map.",
   "unit": "page address",
   "value_type": "code",
   "geography": "78 municipalities and Puerto Rico",
@@ -3473,7 +3473,7 @@
    "<fixed>": "1 for 'Same classes in every year', 0 for off.",
    "<inflation>": "1 for 'Inflation-adjusted', 0 for off.",
    "<opacity>": "Whole percent, 20 to 100.",
-   "<colour>": "A number 0 to 4 for the symbol colour: 0 Red, 1 Blue, 2 Gold, 3 Green, 4 Charcoal.",
+   "<colour>": "A number 0 to 4 for the symbol color: 0 Red, 1 Blue, 2 Gold, 3 Green, 4 Charcoal.",
    "ey": "ey=<year>: the year. Left out when the year control is on 'Latest'.",
    "eb": "eb=<year>: the base year of 'Change measured from'. Left out when it is 2014."
   },
@@ -3488,7 +3488,7 @@
   ],
   "group": "Search, links and downloads",
   "kind": "method",
-  "plain": "The 3D view reads two items from the page address: the camera centre and zoom (c) and a planned route (r). Layers and clocks are not kept in the address.",
+  "plain": "The 3D view reads two items from the page address: the camera center and zoom (c) and a planned route (r). Layers and clocks are not kept in the address.",
   "definition": "The form is 3d.html#c=<lat>,<lng>,<zoom>&r=<lat>,<lng>;<lat>,<lng>. The zoom number is on the 2D map's scale: the 3D view subtracts 1 when it opens the link and adds 1 when it writes one. The 3D page writes the address when it opens and again whenever the route changes. It does not follow the camera as you move. The 'Map' link in the header carries the camera and route to the 2D map. An address with r= opens the Route tab and plans the route.",
   "unit": "page address",
   "value_type": "code",
@@ -3507,10 +3507,10 @@
    "fema_nfhl",
    "padus"
   ],
-  "how_to_read": "Open the link to check it. Tilt and rotation are not in the link, so the camera opens at the page's usual angle. Example: 3d.html#c=18.4400,-66.0900,14 opens near the centre of San Juan.",
+  "how_to_read": "Open the link to check it. Tilt and rotation are not in the link, so the camera opens at the page's usual angle. Example: 3d.html#c=18.4400,-66.0900,14 opens near the center of San Juan.",
   "caveats": [
    "The tilt, rotation, open tab, switches and the clock settings are not saved in the address.",
-   "The r= part holds the exact coordinates of every point of a planned route, to about 11 metres. If a start, end or stop is your home or workplace, anyone with the link can see it. Remove the r= part before you share a link, or use points that are not private."
+   "The r= part holds the exact coordinates of every point of a planned route, to about 11 meters. If a start, end or stop is your home or workplace, anyone with the link can see it. Remove the r= part before you share a link, or use points that are not private."
   ],
   "see_also": [
    "layers.share_link_2d",
@@ -3959,8 +3959,8 @@
   ],
   "group": "3D + Time view",
   "kind": "layer",
-  "plain": "The '3D buildings' switch raises building footprints to the height stored in the OpenFreeMap map tiles, which draw OpenStreetMap data. A building with no height value is drawn 6 metres tall.",
-  "definition": "The switch is on at the start. Buildings appear from zoom level 13. Each is a prism standing on the terrain. Its height is the render_height value in the OpenFreeMap tiles, and 6 metres where the tile has none. A building part raised above the ground starts at its minimum render height. Colour runs from light beige at 0 metres through grey-beige at 30 metres to darker brown-grey at 90 metres. Buildings are 85% opaque.",
+  "plain": "The '3D buildings' switch raises building footprints to the height stored in the OpenFreeMap map tiles, which draw OpenStreetMap data. A building with no height value is drawn 6 meters tall.",
+  "definition": "The switch is on at the start. Buildings appear from zoom level 13. Each is a prism standing on the terrain. Its height is the render_height value in the OpenFreeMap tiles, and 6 meters where the tile has none. A building part raised above the ground starts at its minimum render height. Color runs from light beige at 0 meters through gray-beige at 30 meters to darker brown-gray at 90 meters. Buildings are 85% opaque.",
   "unit": "map layer",
   "value_type": "geometry",
   "geography": "Puerto Rico",
@@ -3978,7 +3978,7 @@
   "source_detail": "Credit line on the map: '© OpenStreetMap contributors · © OpenMapTiles · OpenFreeMap'.",
   "how_to_read": "Use it to see the scale of the built area. A tall prism means a height value in the tile, not a measured height.",
   "caveats": [
-   "Buildings that nobody mapped are missing. A mapped building with no height value is drawn at the default 6 metres, so a tall building can look low.",
+   "Buildings that nobody mapped are missing. A mapped building with no height value is drawn at the default 6 meters, so a tall building can look low.",
    "The heights come from the OpenFreeMap tiles. The observatory has not checked how OpenFreeMap sets the render_height value, so it cannot say whether a height was recorded by volunteers or estimated. The heights are not surveyed and must not be used for engineering."
   ],
   "see_also": [
@@ -4043,10 +4043,10 @@
    "Buttons": "Buttons at the right zoom in and out, and a compass resets north and shows the tilt. Other buttons rotate left and right (30 degrees each press), tilt up and down (10 degrees), look straight down or return, show the whole island, show keyboard help and 'find my location'.",
    "Find my location": "Asks your browser for your position when you press it. The observatory does not store or send it.",
    "Reduced motion": "If your device asks for reduced motion, camera moves are instant and the replay does not start by itself.",
-   "San Juan": "Quick view: centre 18.44 N, 66.09 W, zoom 12.6, tilt 62°, rotated −20°.",
-   "El Yunque": "Quick view: centre 18.30 N, 65.79 W, zoom 11.5, tilt 68°, rotated 30°.",
-   "Ponce": "Quick view: centre 18.00 N, 66.61 W, zoom 12.5, tilt 60°, rotated 10°.",
-   "Island": "Quick view of the whole island: centre 18.20 N, 66.45 W, zoom 8.4 (6.6 on a phone), tilt 50° (35° on a phone), rotated −8°."
+   "San Juan": "Quick view: center 18.44 N, 66.09 W, zoom 12.6, tilt 62°, rotated −20°.",
+   "El Yunque": "Quick view: center 18.30 N, 65.79 W, zoom 11.5, tilt 68°, rotated 30°.",
+   "Ponce": "Quick view: center 18.00 N, 66.61 W, zoom 12.5, tilt 60°, rotated 10°.",
+   "Island": "Quick view of the whole island: center 18.20 N, 66.45 W, zoom 8.4 (6.6 on a phone), tilt 50° (35° on a phone), rotated −8°."
   },
   "added": "2026-10-03"
  },
@@ -4059,8 +4059,8 @@
   ],
   "group": "3D + Time view",
   "kind": "layer",
-  "plain": "The 3D 'Tourism places' layer shows tourism places as a heat map from far away and as coloured points when you zoom in. Four category buttons filter them.",
-  "definition": "The layer holds the same places as the 2D map with confidence 0.50 or more and no places of worship (23,467 with a pin in Snapshot 2026-10, shown beside the switch once loaded; holiday rentals are counted but not drawn). The layer starts switched off: its file (about 2.8 MB compressed) loads the first time it is switched on, and from then the place search also lists tourism places. The 'Render as' menu offers 'Heat at island scale, points when zoomed' (start), 'Points' and 'Heat'. Points show from zoom level 10.5 (everywhere in 'Points' mode), grow as you zoom and take the category colour. A point inside a Special Flood Hazard Area of the Federal Emergency Management Agency (FEMA) has a dark blue rim. The heat map adds one unit for each place and fades out between zoom levels 11 and 13. A click on a point opens a card with the name, the type, the municipality, the flood zone when the place is in a hazard area, the access badge and the distance to the nearest stop with a current timetable (the same lines as the 2D pop-up), and the credit 'Overture Maps'.",
+  "plain": "The 3D 'Tourism places' layer shows tourism places as a heat map from far away and as colored points when you zoom in. Four category buttons filter them.",
+  "definition": "The layer holds the same places as the 2D map with confidence 0.50 or more and no places of worship (23,467 with a pin in Snapshot 2026-10, shown beside the switch once loaded; holiday rentals are counted but not drawn). The layer starts switched off: its file (about 2.8 MB compressed) loads the first time it is switched on, and from then the place search also lists tourism places. The 'Render as' menu offers 'Heat at island scale, points when zoomed' (start), 'Points' and 'Heat'. Points show from zoom level 10.5 (everywhere in 'Points' mode), grow as you zoom and take the category color. A point inside a Special Flood Hazard Area of the Federal Emergency Management Agency (FEMA) has a dark blue rim. The heat map adds one unit for each place and fades out between zoom levels 11 and 13. A click on a point opens a card with the name, the type, the municipality, the flood zone when the place is in a hazard area, the access badge and the distance to the nearest stop with a current timetable (the same lines as the 2D pop-up), and the credit 'Overture Maps'.",
   "unit": "map layer",
   "value_type": "geometry",
   "geography": "Puerto Rico",
@@ -4115,7 +4115,7 @@
   "group": "3D + Time view",
   "kind": "layer",
   "plain": "'Columns by municipality' raises each municipality into a column whose height shows one measure. The menu has 33 measures (the 35 of the 2D map's shading less its three 'shown' measures, plus population change 2010 to 2020) and any dataset of the Analysis tab. The columns start off.",
-  "definition": "With a measure chosen, each municipality rises as a column standing on its own area. The column height is proportional to the value, starting at zero. The largest value reaches 14,000 display metres (12,000 for population change). These are map heights, not real heights. Colour follows five groups of about equal size, in the same light-to-dark blue as the 2D map. The legend under the menu shows three numbers: the lowest value, the second class limit (the value two fifths of the way along the sorted list) and the highest value. A click on a column, or on the municipality when columns are off, opens a card with a link to the 2D map. The codes below list the 33 measures and the card. A yes/no measure (whether Uber lists the municipality) raises the listed municipalities to one height and leaves the others as a flat grey sheet; rent change, which can fall, uses the red-to-blue scale of population change.",
+  "definition": "With a measure chosen, each municipality rises as a column standing on its own area. The column height is proportional to the value, starting at zero. The largest value reaches 14,000 display meters (12,000 for population change). These are map heights, not real heights. Color follows five groups of about equal size, in the same light-to-dark blue as the 2D map. The legend under the menu shows three numbers: the lowest value, the second class limit (the value two fifths of the way along the sorted list) and the highest value. A click on a column, or on the municipality when columns are off, opens a card with a link to the 2D map. The codes below list the 33 measures and the card. A yes/no measure (whether Uber lists the municipality) raises the listed municipalities to one height and leaves the others as a flat gray sheet; rent change, which can fall, uses the red-to-blue scale of population change.",
   "unit": "map layer",
   "value_type": "geometry",
   "geography": "78 municipalities",
@@ -4142,10 +4142,10 @@
   "how_to_read": "Read heights as 'more or less than other municipalities'. The tallest column is the largest value, not a target.",
   "caveats": [
    "A value that equals a class limit takes the lower class in both the 3D view and the 2D map. The limits themselves can still differ for the shares of places near stops (see the caveat on municipalities with no stop counted).",
-   "In Snapshot 2026-10, 14 municipalities have no stop counted. The 3D view uses the stored shares of places near stops (any mapped stop, a stop with a current timetable, a frequent stop, only an expired or unscheduled stop) for every municipality, in the columns and on the card. For those 14 the stored value is 0% or close to it (0.5% for Toa Alta and 0.9% for Arroyo, for the shares near any mapped stop and near a stop with a current timetable), which means not measured. The 2D map leaves those 14 unshaded for those shares and works out their class limits from the other 64 municipalities, while 3D keeps all 78 in the limits, so the limits and a few colours of these shares can differ between the two views.",
+   "In Snapshot 2026-10, 14 municipalities have no stop counted. The 3D view uses the stored shares of places near stops (any mapped stop, a stop with a current timetable, a frequent stop, only an expired or unscheduled stop) for every municipality, in the columns and on the card. For those 14 the stored value is 0% or close to it (0.5% for Toa Alta and 0.9% for Arroyo, for the shares near any mapped stop and near a stop with a current timetable), which means not measured. The 2D map leaves those 14 unshaded for those shares and works out their class limits from the other 64 municipalities, while 3D keeps all 78 in the limits, so the limits and a few colors of these shares can differ between the two views.",
    "Tall columns hide what is behind them. Rotate or tilt the view.",
    "Heights start at zero, so a column twice as tall is not twice as different when the values of all municipalities are close together. In Snapshot 2026-10 the affordability ratio, for example, runs only from 0.97 to 1.92.",
-   "When many municipalities share a value, several class limits are equal, and the classes between them stay empty, as in the 2D map. In Snapshot 2026-10 this happens for the measure 'Transit: % of residents within 400 m of a scheduled stop (incl. expired timetables)' (40 of the 78 municipalities have 0%), for residents near a stop with a current timetable (46 at 0%) and for the shares of places near a stop with a current timetable (47), near a frequent stop (59) and near only an expired or unscheduled stop (33). The legend then repeats a number (for the first of these measures it reads 0%, 0% and 81%), but the colours and the heights follow the measure."
+   "When many municipalities share a value, several class limits are equal, and the classes between them stay empty, as in the 2D map. In Snapshot 2026-10 this happens for the measure 'Transit: % of residents within 400 m of a scheduled stop (incl. expired timetables)' (40 of the 78 municipalities have 0%), for residents near a stop with a current timetable (46 at 0%) and for the shares of places near a stop with a current timetable (47), near a frequent stop (59) and near only an expired or unscheduled stop (33). The legend then repeats a number (for the first of these measures it reads 0%, 0% and 81%), but the colors and the heights follow the measure."
   ],
   "see_also": [
    "municipalities.quintile_shading",
@@ -4190,7 +4190,7 @@
    "pop_walk_active_pct": "Transit: % of residents within a 400 m walk of a stop with a current timetable.",
    "pop_walk_pct": "Transit: % of residents within a 400 m walk of a scheduled stop (incl. expired timetables).",
    "transit_stops": "Transit stops and stations.",
-   "uber_listed": "Uber lists service (yes/no). Listed municipalities stand at one height; the others stay flat and grey. A listing on Uber's cities page, not measured coverage.",
+   "uber_listed": "Uber lists service (yes/no). Listed municipalities stand at one height; the others stay flat and gray. A listing on Uber's cities page, not measured coverage.",
    "in_sfha": "Places in flood hazard area.",
    "in_protected": "Places inside protected areas.",
    "with_website": "Places with a website.",
@@ -4214,7 +4214,7 @@
   "group": "3D + Time view",
   "kind": "layer",
   "plain": "In the 3D group Hazards and environment, 'Flood zones' drapes the flood zones of the Federal Emergency Management Agency (FEMA) on the terrain. 'Sea level rise' draws a sea level layer whose height comes from the Time tab. Both are off when the page opens.",
-  "definition": "Flood zones are filled at 45% opacity with the same four colours as the 2D map. Red is for floodways, darkest blue for V and VE zones, mid blue for other Special Flood Hazard Area zones and light blue for the 0.2% annual chance zone. A click opens the 2D map's section for up to two zones under the click: the zone, whether it is a Special Flood Hazard Area (1% annual chance) or a 0.2% annual chance zone, the subtype spelled out and the credit 'FEMA National Flood Hazard Layer'. Where other areas are under the click too (land use, a protected area, a Comunidad Especial, a barrio), the same card has a section for each, as on the 2D map. The flood file (about 8 MB) downloads the first time you switch it on. The 'Sea level rise' switch draws the tile layer of the National Oceanic and Atmospheric Administration (NOAA) at 70% opacity below the flood zones. The label beside it gives the feet and the year, for example '1 ft · 2050' (the start setting: Intermediate scenario, year 2050). The height comes from the year and scenario set in the Time tab. Choosing the Years clock switches this layer on by itself.",
+  "definition": "Flood zones are filled at 45% opacity with the same four colors as the 2D map. Red is for floodways, darkest blue for V and VE zones, mid blue for other Special Flood Hazard Area zones and light blue for the 0.2% annual chance zone. A click opens the 2D map's section for up to two zones under the click: the zone, whether it is a Special Flood Hazard Area (1% annual chance) or a 0.2% annual chance zone, the subtype spelled out and the credit 'FEMA National Flood Hazard Layer'. Where other areas are under the click too (land use, a protected area, a Comunidad Especial, a barrio), the same card has a section for each, as on the 2D map. The flood file (about 8 MB) downloads the first time you switch it on. The 'Sea level rise' switch draws the tile layer of the National Oceanic and Atmospheric Administration (NOAA) at 70% opacity below the flood zones. The label beside it gives the feet and the year, for example '1 ft · 2050' (the start setting: Intermediate scenario, year 2050). The height comes from the year and scenario set in the Time tab. Choosing the Years clock switches this layer on by itself.",
   "unit": "map layers",
   "value_type": "geometry",
   "geography": "Puerto Rico",
@@ -4267,7 +4267,7 @@
   "group": "3D + Time view",
   "kind": "layer",
   "plain": "The 3D Mobility section draws transit routes (on at the start) and, if you switch them on, stops, stations, terminals and airports, taxi stands and EV chargers and the 400 m walk rings, as the 2D map does. Another switch controls the vehicle replay.",
-  "definition": "Routes use the operator colours of the 2D map: Tren Urbano red (4 pixels), buses of the Autoridad de Transporte Integrado (ATI) blue, municipal systems green, públicos gold and ferries teal (2.5 pixels). All other lines are 2 pixels. Dashed lines mean the feed lists stops out of order. Dotted lines mean no road path was found. Width does not change with trips. A click opens a card with the route name, the operator, the route label, weekday trips, how the line was drawn and the credit. Stations show as dots: Tren Urbano red, ferry terminals teal, bus stations and airports charcoal, with airports slightly larger. A click on a station opens the same card as on the 2D map (name, kind, municipality, routes, modes, departures, timetable dates, operator and source). Stops, taxi stands and EV chargers and the walk rings are the 2D map's layers, with the same cards: see the entries of their switches, which both views share.",
+  "definition": "Routes use the operator colors of the 2D map: Tren Urbano red (4 pixels), buses of the Autoridad de Transporte Integrado (ATI) blue, municipal systems green, públicos gold and ferries teal (2.5 pixels). All other lines are 2 pixels. Dashed lines mean the feed lists stops out of order. Dotted lines mean no road path was found. Width does not change with trips. A click opens a card with the route name, the operator, the route label, weekday trips, how the line was drawn and the credit. Stations show as dots: Tren Urbano red, ferry terminals teal, bus stations and airports charcoal, with airports slightly larger. A click on a station opens the same card as on the 2D map (name, kind, municipality, routes, modes, departures, timetable dates, operator and source). Stops, taxi stands and EV chargers and the walk rings are the 2D map's layers, with the same cards: see the entries of their switches, which both views share.",
   "unit": "map layers",
   "value_type": "geometry",
   "geography": "Puerto Rico",
@@ -4322,7 +4322,7 @@
   "group": "3D + Time view",
   "kind": "layer",
   "plain": "The 3D view can drape the Plan de Uso de Terrenos 2015 and the protected areas of the US Geological Survey (USGS) on the terrain. Both are off when the page opens.",
-  "definition": "Land use is drawn from the class colours stored in the file at 45% opacity, with water and road polygons left out. A click opens the 2D map's section: the class name, code and municipio, and the credit. In Snapshot 2026-10 the land-use file is about 17.7 MB and loads the first time you switch the layer on. Protected areas are green at 35% opacity with a dark green outline. A click opens the 2D map's section for up to two records under the click: the name, the designation spelled out (Local Park for LP, for example; a code the card does not know is shown as stored), the manager, the public access, the acres and the Gap Analysis Project (GAP) status. Overlapping areas share one card, with a section for each, as on the 2D map.",
+  "definition": "Land use is drawn from the class colors stored in the file at 45% opacity, with water and road polygons left out. A click opens the 2D map's section: the class name, code and municipio, and the credit. In Snapshot 2026-10 the land-use file is about 17.7 MB and loads the first time you switch the layer on. Protected areas are green at 35% opacity with a dark green outline. A click opens the 2D map's section for up to two records under the click: the name, the designation spelled out (Local Park for LP, for example; a code the card does not know is shown as stored), the manager, the public access, the acres and the Gap Analysis Project (GAP) status. Overlapping areas share one card, with a section for each, as on the 2D map.",
   "unit": "map layers",
   "value_type": "geometry",
   "geography": "Puerto Rico",
@@ -4419,8 +4419,8 @@
   ],
   "group": "3D + Time view",
   "kind": "layer",
-  "plain": "'A day of transit' replays every scheduled weekday trip of the Autoridad de Transporte Integrado (ATI) and municipal timetables as a coloured trail that moves across the map. It is a timetable replay, not tracking by Global Positioning System (GPS).",
-  "definition": "The switch 'Scheduled vehicles' is on at the start. The clock runs from 00:00 to 23:59 and starts at 07:00. Speeds are 30×, 60× (one minute of clock each second, the start setting), 180× and 600×. The clock wraps around at midnight. A trail shows the last 7 minutes of each trip, fading behind the head. The colours are red for the Tren Urbano, gold for ATI buses, green for municipal buses and teal for ferries. These are not the route colours of the 3D map, where ATI buses are blue. The label beside the controls says 'N vehicles in service', counted once a minute of the clock as trips whose first stop time is at or before the clock and whose last stop time is at or after it. On a computer the replay starts by itself. On a phone, or when your device asks for reduced motion, it waits for Play.",
+  "plain": "'A day of transit' replays every scheduled weekday trip of the Autoridad de Transporte Integrado (ATI) and municipal timetables as a colored trail that moves across the map. It is a timetable replay, not tracking by Global Positioning System (GPS).",
+  "definition": "The switch 'Scheduled vehicles' is on at the start. The clock runs from 00:00 to 23:59 and starts at 07:00. Speeds are 30×, 60× (one minute of clock each second, the start setting), 180× and 600×. The clock wraps around at midnight. A trail shows the last 7 minutes of each trip, fading behind the head. The colors are red for the Tren Urbano, gold for ATI buses, green for municipal buses and teal for ferries. These are not the route colors of the 3D map, where ATI buses are blue. The label beside the controls says 'N vehicles in service', counted once a minute of the clock as trips whose first stop time is at or before the clock and whose last stop time is at or after it. On a computer the replay starts by itself. On a phone, or when your device asks for reduced motion, it waits for Play.",
   "unit": "map layer",
   "value_type": "geometry",
   "geography": "Puerto Rico",
@@ -4439,8 +4439,8 @@
   "how_to_read": "Read the trails as where the timetable says vehicles are at that time. A quiet map at night is a quiet timetable.",
   "caveats": [
    "The replay includes trips of operators whose timetable has expired. In Snapshot 2026-10, 372 of the 3,297 weekday trips belong to operators whose feed had ended by the build date. The 2D map leaves them out.",
-   "Only the weekday file is used. The Saturday and Sunday files are not replayed in 3D, and holidays are not modelled.",
-   "No public real-time bus feed exists, so late or cancelled vehicles run on time here.",
+   "Only the weekday file is used. The Saturday and Sunday files are not replayed in 3D, and holidays are not modeled.",
+   "No public real-time bus feed exists, so late or canceled vehicles run on time here.",
    "The credit line on the map names ATI only. In Snapshot 2026-10, 1,168 of the 3,297 weekday trips come from municipal feeds (ATI has 2,129), so credit the municipalities too when you cite."
   ],
   "see_also": [
@@ -4514,7 +4514,7 @@
    ]
   },
   "values": {
-   "Scenario curves": "The four curves (metres above the 2000 level for 2020, 2050, 2100 and 2150) are listed in the entry 'Sea level rise by year and scenario'.",
+   "Scenario curves": "The four curves (meters above the 2000 level for 2020, 2050, 2100 and 2150) are listed in the entry 'Sea level rise by year and scenario'.",
    "int_low": "Intermediate-Low scenario.",
    "int": "Intermediate scenario (the start choice).",
    "int_high": "Intermediate-High scenario.",
@@ -4532,8 +4532,8 @@
   ],
   "group": "3D + Time view",
   "kind": "layer",
-  "plain": "The Hurricane controls draw the tracks of storms that came within 250 kilometres of Puerto Rico since 1851. You can filter by years and strength, play them through time and open any storm from a list.",
-  "definition": "The switch 'Storm tracks within 250 km' is off at the start and shows the number of storms drawn. Two sliders set a year window from 1851 to 2025 (all years at the start). The menu 'Minimum category near PR' (Puerto Rico) offers All (including tropical storms), Hurricane (Category 1 or more), Major (Category 3 or more, the start setting) and Category 4 or more. In Snapshot 2026-10, at the start (Major), the map shows 29 of the 157 storms. Lines are coloured by the category near the island, and line width grows with the category. Dots mark recorded positions, coloured and sized by wind. Pointing at a line shows the name, the year, the category near Puerto Rico, the peak wind in knots and the closest approach in kilometres; a click on a line shows the same in a card (on a phone, which has no pointing). 'Strongest in window' lists up to 25 storms by category, then wind, then newest. A click on a row fits the map to that storm's whole track.",
+  "plain": "The Hurricane controls draw the tracks of storms that came within 250 kilometers of Puerto Rico since 1851. You can filter by years and strength, play them through time and open any storm from a list.",
+  "definition": "The switch 'Storm tracks within 250 km' is off at the start and shows the number of storms drawn. Two sliders set a year window from 1851 to 2025 (all years at the start). The menu 'Minimum category near PR' (Puerto Rico) offers All (including tropical storms), Hurricane (Category 1 or more), Major (Category 3 or more, the start setting) and Category 4 or more. In Snapshot 2026-10, at the start (Major), the map shows 29 of the 157 storms. Lines are colored by the category near the island, and line width grows with the category. Dots mark recorded positions, colored and sized by wind. Pointing at a line shows the name, the year, the category near Puerto Rico, the peak wind in knots and the closest approach in kilometers; a click on a line shows the same in a card (on a phone, which has no pointing). 'Strongest in window' lists up to 25 storms by category, then wind, then newest. A click on a row fits the map to that storm's whole track.",
   "unit": "map layer",
   "value_type": "geometry",
   "geography": "Atlantic storms within 250 km of Puerto Rico",
@@ -4574,7 +4574,7 @@
    ]
   },
   "values": {
-   "0": "Category 0, grey: tropical storm or depression strength near the island. 92 storms in Snapshot 2026-10.",
+   "0": "Category 0, gray: tropical storm or depression strength near the island. 92 storms in Snapshot 2026-10.",
    "1": "Category 1, blue. 21 storms in Snapshot 2026-10.",
    "2": "Category 2, green. 15 storms in Snapshot 2026-10.",
    "3": "Category 3, orange. 16 storms in Snapshot 2026-10.",
@@ -4594,7 +4594,7 @@
   "group": "3D + Time view",
   "kind": "method",
   "plain": "The Route tab of the 3D view plans a route like the 2D planner, drapes it on the terrain and can fly the camera along it.",
-  "definition": "The boxes, buttons and results are the same as in the 2D planner. The route is drawn as a dark line with a white edge. A leg that cannot follow roads is a red dotted line. Lettered markers can be dragged. After a route is planned a button 'Fly along the route' appears. The camera then follows the line at tilt 64 degrees and zoom 14.8, turning to face ahead, and covers the route in about 45 seconds, at a speed between 120 and 1,500 metres per second. A mouse press, a touch, the wheel or Escape stops the flight, and the button reads 'Stop flying' while it runs. If your device asks for reduced motion, the flight does not start and a message says why. The chosen points are kept in the page address as r=.",
+  "definition": "The boxes, buttons and results are the same as in the 2D planner. The route is drawn as a dark line with a white edge. A leg that cannot follow roads is a red dotted line. Lettered markers can be dragged. After a route is planned a button 'Fly along the route' appears. The camera then follows the line at tilt 64 degrees and zoom 14.8, turning to face ahead, and covers the route in about 45 seconds, at a speed between 120 and 1,500 meters per second. A mouse press, a touch, the wheel or Escape stops the flight, and the button reads 'Stop flying' while it runs. If your device asks for reduced motion, the flight does not start and a message says why. The chosen points are kept in the page address as r=.",
   "unit": "tool",
   "value_type": "geometry",
   "geography": "Puerto Rico",
@@ -4617,7 +4617,7 @@
   "caveats": [
    "A flight is a visual aid. It is not a drive time. The running time on the card uses planning speeds.",
    "The planner's other limits apply. See the route planner entry.",
-   "The address holds the exact coordinates of every point, to about 11 metres. If a start, end or stop is your home or workplace, anyone with the link can see it. Remove the r= part before you share a link, or use points that are not private."
+   "The address holds the exact coordinates of every point, to about 11 meters. If a start, end or stop is your home or workplace, anyone with the link can see it. Remove the r= part before you share a link, or use points that are not private."
   ],
   "see_also": [
    "layers.route_planner",
@@ -4701,7 +4701,7 @@
   },
   "values": {
    "study": "Tag on a published figure: reproduced as printed in the 2023 study (© Foundation for Puerto Rico 2023).",
-   "ACS 2020-2024": "Tag on a survey figure: the American Community Survey 5-year window shown, labelled by its last year. Windows run from 2006-2010 to 2020-2024.",
+   "ACS 2020-2024": "Tag on a survey figure: the American Community Survey 5-year window shown, labeled by its last year. Windows run from 2006-2010 to 2020-2024.",
    "Census 2020": "Tag on an April 1 figure. For housing units and for the 2010 population it is the census count. For population in 2020 it is the Census Bureau's April 1, 2020 estimates base, not the census file (see the entry on resident population).",
    "Estimate 2025": "Tag on a Census Bureau population estimate for July 1.",
    "FEMA 2022": "Tag on a FEMA figure: the year of the disaster declaration.",
@@ -4805,7 +4805,7 @@
   ],
   "how_to_read": "Read the chip next to a map title for the year it really shows.",
   "caveats": [
-   "American Community Survey (ACS) years are five-year windows labelled by their last year. Neighbouring windows share four of five years of sample, so compare windows that do not overlap (2012, 2017, 2022) for real change.",
+   "American Community Survey (ACS) years are five-year windows labeled by their last year. Neighboring windows share four of five years of sample, so compare windows that do not overlap (2012, 2017, 2022) for real change.",
    "In Snapshot 2026-10 the 2021–2025 window is not published yet (the page expects it in December 2026), so 2025 shows the 2020-2024 window for ACS data.",
    "Population is the 2010 census count (April 1, 2010), the April 1, 2020 base of the Census Bureau's latest estimates (the page tags it 'Census 2020') and July 1 estimates in other years. The 2020 base equals the census count for the island but differs from it by 1 to 31 people in 68 of the 78 municipalities in the 2026-10 snapshot."
   ],
@@ -4843,8 +4843,8 @@
   ],
   "group": "Housing page",
   "kind": "layer",
-  "plain": "Each housing variable has a map of the 78 municipalities and a ranked bar chart. Colours show five groups whose limits come from all years together, so the same colour means the same number in every year.",
-  "definition": "Each block has a title with a year chip, the source tag, a '?' help button and a 'Full data' button. A line gives the median, lowest and highest of the 78 municipalities and the Puerto Rico value. Below are a map, a readout for the selected municipality with its rank, a bar chart of all 78 municipalities (highest first) and a legend with the number of municipalities in each class. The class limits are the quintiles of the 78 municipalities over every year of the variable together, except on the five diverging maps (see the codes below). Because of that, the groups are not equal in size in one year: in Snapshot 2026-10, for median gross rent in 2024, the five groups hold 1, 3, 9, 26 and 39 municipalities. Municipalities with no value are pale grey. The maps have no base map, do not zoom with the wheel and, on a touch device, do not drag. The codes below list the 28 maps by section, the diverging maps and the selection.",
+  "plain": "Each housing variable has a map of the 78 municipalities and a ranked bar chart. Colors show five groups whose limits come from all years together, so the same color means the same number in every year.",
+  "definition": "Each block has a title with a year chip, the source tag, a '?' help button and a 'Full data' button. A line gives the median, lowest and highest of the 78 municipalities and the Puerto Rico value. Below are a map, a readout for the selected municipality with its rank, a bar chart of all 78 municipalities (highest first) and a legend with the number of municipalities in each class. The class limits are the quintiles of the 78 municipalities over every year of the variable together, except on the five diverging maps (see the codes below). Because of that, the groups are not equal in size in one year: in Snapshot 2026-10, for median gross rent in 2024, the five groups hold 1, 3, 9, 26 and 39 municipalities. Municipalities with no value are pale gray. The maps have no base map, do not zoom with the wheel and, on a touch device, do not drag. The codes below list the 28 maps by section, the diverging maps and the selection.",
   "unit": "map and chart",
   "value_type": "geometry",
   "geography": "78 municipalities",
@@ -4866,7 +4866,7 @@
    "leaflet",
    "chartjs"
   ],
-  "how_to_read": "Read the legend for the numbers. The colour classes do not change with the year, so a municipality can change colour as its value moves.",
+  "how_to_read": "Read the legend for the numbers. The color classes do not change with the year, so a municipality can change color as its value moves.",
   "caveats": [
    "Ranks and medians count only municipalities with a value. Tied values share the first of their places.",
    "Survey estimates for small municipalities carry large margins of error. The readout shows the margin (±) when the survey publishes one."
@@ -4920,7 +4920,7 @@
   },
   "added": "2026-10-03",
   "values": {
-   "Selection and hover": "A click on a municipality on the map, or on a bar, selects it. The selected municipality is outlined in dark grey on every map, and the profile and readouts follow. Pointing at a municipality shows its name, value, rank and the source tag.",
+   "Selection and hover": "A click on a municipality on the map, or on a bar, selects it. The selected municipality is outlined in dark gray on every map, and the profile and readouts follow. Pointing at a municipality shows its name, value, rank and the source tag.",
    "Diverging maps": "Five maps use a diverging scale around 0: the four change maps (home value, gross rent, household income and bachelor's share) and the population-change map. The class limits are −50%, −10%, +10% and +50% of the largest absolute value over all years: below −50%, −50% to −10%, within ±10%, +10% to +50% and above +50% of that value. For population change the largest value is 39.05% in the 2026-10 snapshot. Blue is an increase and red is a decrease. Neither means better or worse. The limits of the four change maps depend on the base year chosen in the year bar.",
    "Section 1, population change": "pop_change_since_2010_pct (diverging scale), population, age65_pct.",
    "Section 2, housing stock": "vacancy_pct, other_vacant_pct, seasonal_pct, rental_vacancy_pct, overcrowded_pct, residents_per_unit.",
@@ -5326,7 +5326,7 @@
   "caveats": [
    "Printed estimates (abandoned units, new homes needed) are the study's own estimates. They are not recalculated.",
    "The printed 2020 residents figure (3,285,694) is 180 lower than the 2020 census count in the live series (3,285,874). The page shows both figures as their sources give them.",
-   "The printed 370,000 vacant homes is labelled Census 2020 on the page, but the 2020 census-day count of vacant units in the observatory's data is 257,625. The printed figure is close to survey estimates (368,182 for the 2015-2019 window). Treat it as the study's figure."
+   "The printed 370,000 vacant homes is labeled Census 2020 on the page, but the 2020 census-day count of vacant units in the observatory's data is 257,625. The printed figure is close to survey estimates (368,182 for the 2015-2019 window). Treat it as the study's figure."
   ],
   "see_also": [
    "study.headline_figures",
@@ -5468,7 +5468,7 @@
   "name": "Workbench: Correlations tab (correlation matrix)",
   "kind": "method",
   "plain": "A table of the correlation between every pair of visible layers, so you can see at a glance which ones move together across the municipalities.",
-  "definition": "Up to eight visible layers, each as it is on the map (its year, rescaling and settings). Each cell gives r and n, the number of municipalities that have a value for both layers of the pair; each pair uses its own municipalities (pairwise complete), so n can differ between cells. Pearson measures a straight-line pattern; Spearman (rank order) measures whether the ranks rise or fall together, which a few very large values do not dominate. A pair with fewer than 3 municipalities gets no r. Colours: dark red below −0.5, light red −0.5 to −0.1, grey −0.1 to 0.1, light blue 0.1 to 0.5, dark blue above 0.5.",
+  "definition": "Up to eight visible layers, each as it is on the map (its year, rescaling and settings). Each cell gives r and n, the number of municipalities that have a value for both layers of the pair; each pair uses its own municipalities (pairwise complete), so n can differ between cells. Pearson measures a straight-line pattern; Spearman (rank order) measures whether the ranks rise or fall together, which a few very large values do not dominate. A pair with fewer than 3 municipalities gets no r. Colors: dark red below −0.5, light red −0.5 to −0.1, gray −0.1 to 0.1, light blue 0.1 to 0.5, dark blue above 0.5.",
   "unit": "r (−1 to +1) and n",
   "value_type": "ratio",
   "method": "economy.js (ecBenchMatrix) with Core.stats.matrix and Core.stats.correlation (site/js/core/stats.js; Spearman is Pearson on the ranks, ties sharing the mean of their ranks).",
@@ -5516,13 +5516,13 @@
   "name": "Workbench: Small multiples tab",
   "kind": "method",
   "plain": "Many small maps side by side: one map for each year of a layer, or one map for each visible layer, so changes and differences show at a glance.",
-  "definition": "'One map for each year of one layer' draws the chosen layer in each of its last 12 years that have values, with one set of classes for every map (worked out from all the years together), so a colour means the same in each year; the Puerto Rico value is under each map. 'One map for each visible layer' draws up to eight visible layers at the year each shows, each with its own classes, so colours are not comparable between maps. Hover a municipality for its value. The maps have no base map.",
+  "definition": "'One map for each year of one layer' draws the chosen layer in each of its last 12 years that have values, with one set of classes for every map (worked out from all the years together), so a color means the same in each year; the Puerto Rico value is under each map. 'One map for each visible layer' draws up to eight visible layers at the year each shows, each with its own classes, so colors are not comparable between maps. Hover a municipality for its value. The maps have no base map.",
   "unit": "maps",
   "value_type": "text",
   "method": "economy.js (ecBenchMultiples, ecClassFill) with Core.minimap (site/js/core/minimap.js), which draws the 78 municipal outlines as SVG.",
   "how_to_read": "In the maps by year, a municipality that darkens from map to map is rising against the same classes.",
   "caveats": [
-   "In the maps by layer each map has its own classes: compare where values are high or low, not the colours."
+   "In the maps by layer each map has its own classes: compare where values are high or low, not the colors."
   ],
   "see_also": [
    "layers.workbench",
@@ -5568,7 +5568,7 @@
   "method": "economy.js (ecBenchSwipe): one SVG with the second layer clipped at the divider.",
   "how_to_read": "Move the divider slowly over a region to see whether the two layers are high in the same places.",
   "caveats": [
-   "The two sides have different classes: a dark colour on each side means high for that layer, not the same number."
+   "The two sides have different classes: a dark color on each side means high for that layer, not the same number."
   ],
   "see_also": [
    "layers.workbench_multiples",
@@ -5641,7 +5641,7 @@
   "group": "2D map: Analysis tab",
   "kind": "method",
   "plain": "Save what the map shows as a scenario, compare two scenarios figure by figure, and load the results of an outside model as a layer marked as model output, not observed data.",
-  "definition": "A scenario keeps the map's link (layers, year, composite, planned route), the figures it produced (the planned route's measures and Puerto Rico's value of each visible layer, with its year and settings) and any model output loaded with it. Scenarios stay in the browser (IndexedDB); 'Export' saves one as a JSON file and 'Import a scenario' reads it back after checking it. 'Open scenario' restores the view, and its model outputs, from the link. 'Compare two scenarios' lists every figure with A, B, B − A and the change in percent; when both scenarios hold a model output of the same variable, 'Map B − A' shades the difference. Names, labels and notes refuse e-mail addresses and telephone numbers: a scenario names a team or organisation, not a person's contact.",
+  "definition": "A scenario keeps the map's link (layers, year, composite, planned route), the figures it produced (the planned route's measures and Puerto Rico's value of each visible layer, with its year and settings) and any model output loaded with it. Scenarios stay in the browser (IndexedDB); 'Export' saves one as a JSON file and 'Import a scenario' reads it back after checking it. 'Open scenario' restores the view, and its model outputs, from the link. 'Compare two scenarios' lists every figure with A, B, B − A and the change in percent; when both scenarios hold a model output of the same variable, 'Map B − A' shades the difference. Names, labels and notes refuse e-mail addresses and telephone numbers: a scenario names a team or organization, not a person's contact.",
   "unit": "view",
   "value_type": "text",
   "geography": "78 municipalities and Puerto Rico",
@@ -5678,14 +5678,14 @@
  },
  {
   "id": "layers.study_areas",
-  "name": "Workbench: Study areas tab (your own polygons, summarised)",
+  "name": "Workbench: Study areas tab (your own polygons, summarized)",
   "domain": "system.tools",
   "domains": [
    "system.tools"
   ],
   "group": "2D map: Analysis tab",
   "kind": "method",
-  "plain": "Load your own polygons, such as a neighbourhood or a service area, and see what each holds: residents, transit stops and, on request, tourism places and flood and protected land, plus every dataset of the Analysis tab estimated for each area.",
+  "plain": "Load your own polygons, such as a neighborhood or a service area, and see what each holds: residents, transit stops and, on request, tourism places and flood and protected land, plus every dataset of the Analysis tab estimated for each area.",
   "definition": "A GeoJSON file of polygons in longitude and latitude, up to 200 areas, is read in the browser and never uploaded; only each area's name and shape are kept, with the set's name, source and description, in IndexedDB. For each area: its km², residents by Census 2020 block centroid, residents more than 800 m from a scheduled stop, scheduled transit stops and, on request, tourism places and the share of its land in a FEMA flood hazard area (zones A and V) and in a protected area. Every dataset of the Analysis tab is estimated for each area from the municipios it covers: totals by the share of each municipio's residents inside (land, for totals measured in km²), an exact sum when the area holds whole municipios; rates and levels as an average weighted by the residents inside. Each row names its method.",
   "unit": "view",
   "value_type": "text",
@@ -5708,7 +5708,7 @@
   "caveats": [
    "Study areas live in this browser only: clearing the browser's data deletes them. Export the ones to keep.",
    "Survey margins of error are not carried into the estimates.",
-   "Residents are placed at the centre of their census block, so a block cut by an edge counts wholly on the side of its centre."
+   "Residents are placed at the center of their census block, so a block cut by an edge counts wholly on the side of its center."
   ],
   "see_also": [
    "layers.workbench",
@@ -5793,7 +5793,7 @@
    "last": 2024,
    "frequency": "The survey windows of acs_barrio.json."
   },
-  "method": "js/econ_level.js, loaded the first time a layer asks for it, reads the engine's contract for the layer at the barrio level (E.series with level 'barrio', from acs_barrio.json via economy.js ecLoadLevel), cuts five classes from the barrio values with the layer's own method (quantiles, equal intervals, natural breaks or own limits) and colours barrios.geojson by them.",
+  "method": "js/econ_level.js, loaded the first time a layer asks for it, reads the engine's contract for the layer at the barrio level (E.series with level 'barrio', from acs_barrio.json via economy.js ecLoadLevel), cuts five classes from the barrio values with the layer's own method (quantiles, equal intervals, natural breaks or own limits) and colors barrios.geojson by them.",
   "sources": [
    "acs",
    "census_tiger"

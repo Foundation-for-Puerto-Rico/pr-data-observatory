@@ -24,7 +24,7 @@ function judge(c, o) {
   if (c.not) { const bad = expand(c.not).filter(k => shown.has(k)); if (bad.length) why.push('shows ' + bad.join(',')); }
   const words = [o.text, ...o.actions, ...o.follow].join(' ');
   if (c.note && !new RegExp(c.note, 'i').test(words)) why.push(`note /${c.note}/ missing`);
-  if (c.proxy && !/aproximaci[oó]n|approximation|proxy/i.test(words)) why.push('not labelled as an approximation');
+  if (c.proxy && !/aproximaci[oó]n|approximation|proxy/i.test(words)) why.push('not labeled as an approximation');
   if (c.lang && c.lang !== 'any' && o.lang !== c.lang) why.push(`lang ${o.lang} ≠ ${c.lang}`);
   if (!c.text && !shown.size) why.push('nothing on the map');
   if (c.text && !o.text) why.push('no answer');

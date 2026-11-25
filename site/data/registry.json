@@ -1,7 +1,7 @@
 {
- "built": "2026-11-24",
+ "built": "2026-11-25",
  "snapshot": "Snapshot 2026-10",
- "total_bytes": 145271458,
+ "total_bytes": 145269994,
  "limits": {
   "site_bytes": 1048576000,
   "file_bytes": 104857600,
@@ -12,7 +12,7 @@
  "growth_note": "Every harvested dataset stays and new ones are added, so the data folder only grows. Each dataset is its own lazily loaded file. When the total passes the planning line, move the large files to object storage as Parquet or PMTiles and query them in the browser (for example with DuckDB-WASM) while the small summaries stay on the page.",
  "totals": {
   "files": 199,
-  "bytes": 145271458,
+  "bytes": 145269994,
   "records": 8936550,
   "fields": 2569,
   "values": 12914036,
@@ -21,7 +21,7 @@
   "counted_files": 160,
   "documenting_items": 853,
   "first_published": "2026-10-01",
-  "last_updated": "2026-11-24"
+  "last_updated": "2026-11-25"
  },
  "history": [
   {
@@ -397,6 +397,15 @@
    "date": "2026-11-24",
    "files": 199,
    "bytes": 145271458,
+   "records": 8936550,
+   "fields": 2569,
+   "values": 12914036,
+   "items": 1174
+  },
+  {
+   "date": "2026-11-25",
+   "files": 199,
+   "bytes": 145269994,
    "records": 8936550,
    "fields": 2569,
    "values": 12914036,
@@ -1037,7 +1046,7 @@
    "file": "buildings_series.json",
    "title": "Buildings by municipio: counts, buildings per km², land under roofs, median footprint, buildings in a FEMA Special Flood Hazard Area and the share traced by machine learning (Overture)",
    "bytes": 14556,
-   "gzip_bytes": 3767,
+   "gzip_bytes": 3769,
    "loaded_by": [],
    "title_es": "Edificios por municipio: conteos, edificios por km², terreno bajo techo, huella mediana, edificios en un Área Especial de Riesgo de Inundación de FEMA y la proporción trazada con aprendizaje automático (Overture)",
    "domains": [
@@ -1060,8 +1069,8 @@
    "values": 553,
    "vertices": null,
    "first_published": "2026-11-09",
-   "last_updated": "2026-11-09",
-   "versions": 1,
+   "last_updated": "2026-11-25",
+   "versions": 2,
    "documented_by": 7,
    "review": {
     "status": "none",
@@ -1126,7 +1135,7 @@
    "file": "catalog.json",
    "title": "Catalog: domains and headline figures, read first",
    "bytes": 30831,
-   "gzip_bytes": 9305,
+   "gzip_bytes": 9293,
    "loaded_by": [
     {
      "route": "map",
@@ -1160,8 +1169,8 @@
    "values": null,
    "vertices": null,
    "first_published": "2026-10-06",
-   "last_updated": "2026-11-24",
-   "versions": 275,
+   "last_updated": "2026-11-25",
+   "versions": 277,
    "documented_by": 1,
    "review": {
     "status": "unstated",
@@ -1244,8 +1253,8 @@
   {
    "file": "catalog_index.json",
    "title": "Catalog: index of the dictionary, read on first use",
-   "bytes": 284755,
-   "gzip_bytes": 47910,
+   "bytes": 284747,
+   "gzip_bytes": 47911,
    "loaded_by": [
     {
      "route": "data",
@@ -1268,8 +1277,8 @@
    "values": null,
    "vertices": null,
    "first_published": "2026-10-18",
-   "last_updated": "2026-11-24",
-   "versions": 108,
+   "last_updated": "2026-11-25",
+   "versions": 109,
    "documented_by": 1,
    "review": {
     "status": "none",
@@ -1280,7 +1289,7 @@
    "file": "catalog_views.json",
    "title": "Catalog: the ready-made views of each topic",
    "bytes": 13970,
-   "gzip_bytes": 4520,
+   "gzip_bytes": 4516,
    "loaded_by": [
     {
      "route": "explore",
@@ -1302,8 +1311,8 @@
    "values": null,
    "vertices": null,
    "first_published": "2026-11-05",
-   "last_updated": "2026-11-17",
-   "versions": 6,
+   "last_updated": "2026-11-25",
+   "versions": 7,
    "documented_by": 1,
    "review": {
     "status": "none",
@@ -1403,8 +1412,8 @@
    "values": 90,
    "vertices": null,
    "first_published": "2026-11-04",
-   "last_updated": "2026-11-04",
-   "versions": 1,
+   "last_updated": "2026-11-25",
+   "versions": 2,
    "documented_by": 3,
    "review": {
     "status": "none",
@@ -1419,7 +1428,7 @@
    "file": "community_series.json",
    "title": "Historic places and treatment facilities by municipio (NPS, SAMHSA)",
    "bytes": 11378,
-   "gzip_bytes": 3448,
+   "gzip_bytes": 3446,
    "loaded_by": [
     {
      "route": "profile",
@@ -1452,8 +1461,8 @@
    "values": 553,
    "vertices": null,
    "first_published": "2026-10-18",
-   "last_updated": "2026-11-24",
-   "versions": 3,
+   "last_updated": "2026-11-25",
+   "versions": 4,
    "documented_by": 7,
    "review": {
     "status": "none",
@@ -1469,8 +1478,8 @@
   {
    "file": "commuting_series.json",
    "title": "Daytime population and commuting by municipio, calculated from the Census Bureau's commuting flows of 2016-2020 and the 2020 Census",
-   "bytes": 7882,
-   "gzip_bytes": 3375,
+   "bytes": 7881,
+   "gzip_bytes": 3374,
    "loaded_by": [
     {
      "route": "profile",
@@ -1499,8 +1508,8 @@
    "values": 474,
    "vertices": null,
    "first_published": "2026-11-14",
-   "last_updated": "2026-11-14",
-   "versions": 1,
+   "last_updated": "2026-11-25",
+   "versions": 2,
    "documented_by": 3,
    "review": {
     "status": "none",
@@ -1672,8 +1681,8 @@
    "values": 1738,
    "vertices": null,
    "first_published": "2026-11-14",
-   "last_updated": "2026-11-14",
-   "versions": 1,
+   "last_updated": "2026-11-25",
+   "versions": 2,
    "documented_by": 6,
    "review": {
     "status": "none",
@@ -1688,7 +1697,7 @@
    "file": "credit_series.json",
    "title": "Insured bank offices and deposits (2000-2026) and home loans made and denied (2018-2025), by municipio and year (FDIC Summary of Deposits; HMDA)",
    "bytes": 46788,
-   "gzip_bytes": 16857,
+   "gzip_bytes": 16856,
    "loaded_by": [],
    "title_es": "Oficinas y depósitos de bancos asegurados (2000-2026) y préstamos hipotecarios otorgados y denegados (2018-2025), por municipio y año (Resumen de Depósitos de la FDIC; HMDA)",
    "domains": [
@@ -1711,8 +1720,8 @@
    "values": 6769,
    "vertices": null,
    "first_published": "2026-11-16",
-   "last_updated": "2026-11-16",
-   "versions": 1,
+   "last_updated": "2026-11-25",
+   "versions": 2,
    "documented_by": 6,
    "review": {
     "status": "none",
@@ -1767,7 +1776,7 @@
    "file": "cutoff_series.json",
    "title": "Residents cut off from every hospital when flooded roads or bridges in poor condition close (estimate), by municipio",
    "bytes": 11895,
-   "gzip_bytes": 3493,
+   "gzip_bytes": 3492,
    "loaded_by": [],
    "title_es": "Residentes incomunicados de todos los hospitales cuando cierran las carreteras inundables o los puentes en malas condiciones (estimado), por municipio",
    "domains": [
@@ -1791,8 +1800,8 @@
    "values": 385,
    "vertices": null,
    "first_published": "2026-11-20",
-   "last_updated": "2026-11-20",
-   "versions": 1,
+   "last_updated": "2026-11-25",
+   "versions": 2,
    "documented_by": 5,
    "review": {
     "status": "none",
@@ -1806,8 +1815,8 @@
   {
    "file": "degrees_series.json",
    "title": "Degrees and certificates awarded by colleges, by level and broad field, by municipio",
-   "bytes": 35869,
-   "gzip_bytes": 8584,
+   "bytes": 35844,
+   "gzip_bytes": 8583,
    "loaded_by": [],
    "title_es": "Títulos y certificados otorgados por las universidades, por nivel y campo amplio, por municipio",
    "domains": [
@@ -1829,8 +1838,8 @@
    "values": 8690,
    "vertices": null,
    "first_published": "2026-11-18",
-   "last_updated": "2026-11-18",
-   "versions": 1,
+   "last_updated": "2026-11-25",
+   "versions": 2,
    "documented_by": 11,
    "review": {
     "status": "none",
@@ -1844,8 +1853,8 @@
   {
    "file": "dictionary.json",
    "title": "Data dictionary: entries, sources, glossary and descriptions",
-   "bytes": 5649863,
-   "gzip_bytes": 1243522,
+   "bytes": 5649337,
+   "gzip_bytes": 1243298,
    "loaded_by": [],
    "title_es": "Diccionario de datos: entradas, fuentes, glosario y descripciones",
    "domains": [
@@ -1855,7 +1864,7 @@
    "tier": "medium",
    "geography": "none",
    "time": "snapshot",
-   "built": "2026-11-24",
+   "built": "2026-11-25",
    "items": 1174,
    "kind": "documentation",
    "records": null,
@@ -1863,8 +1872,8 @@
    "values": null,
    "vertices": null,
    "first_published": "2026-10-05",
-   "last_updated": "2026-11-24",
-   "versions": 231,
+   "last_updated": "2026-11-25",
+   "versions": 233,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -1874,8 +1883,8 @@
   {
    "file": "dictionary_detail_communities.json",
    "title": "Data dictionary page: the full entries of the Communities domain, read when one is opened",
-   "bytes": 118776,
-   "gzip_bytes": 19532,
+   "bytes": 118759,
+   "gzip_bytes": 19528,
    "loaded_by": [],
    "title_es": "Página del diccionario de datos: las entradas completas del dominio Comunidades, que se leen al abrir una",
    "domains": [
@@ -1892,8 +1901,8 @@
    "values": null,
    "vertices": null,
    "first_published": "2026-11-04",
-   "last_updated": "2026-11-24",
-   "versions": 5,
+   "last_updated": "2026-11-25",
+   "versions": 6,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -1921,8 +1930,8 @@
    "values": null,
    "vertices": null,
    "first_published": "2026-11-04",
-   "last_updated": "2026-11-04",
-   "versions": 1,
+   "last_updated": "2026-11-25",
+   "versions": 3,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -1932,8 +1941,8 @@
   {
    "file": "dictionary_detail_economy.json",
    "title": "Data dictionary page: the full entries of the Economy domain, read when one is opened",
-   "bytes": 828244,
-   "gzip_bytes": 163533,
+   "bytes": 828217,
+   "gzip_bytes": 163496,
    "loaded_by": [],
    "title_es": "Página del diccionario de datos: las entradas completas del dominio Economía, que se leen al abrir una",
    "domains": [
@@ -1950,8 +1959,8 @@
    "values": null,
    "vertices": null,
    "first_published": "2026-10-18",
-   "last_updated": "2026-11-24",
-   "versions": 27,
+   "last_updated": "2026-11-25",
+   "versions": 28,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -1979,8 +1988,8 @@
    "values": null,
    "vertices": null,
    "first_published": "2026-10-21",
-   "last_updated": "2026-11-14",
-   "versions": 10,
+   "last_updated": "2026-11-25",
+   "versions": 12,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -1990,8 +1999,8 @@
   {
    "file": "dictionary_detail_education.json",
    "title": "Data dictionary page: the full entries of the Education domain, read when one is opened",
-   "bytes": 72917,
-   "gzip_bytes": 13684,
+   "bytes": 72865,
+   "gzip_bytes": 13674,
    "loaded_by": [],
    "title_es": "Página del diccionario de datos: las entradas completas del dominio Educación, que se leen al abrir una",
    "domains": [
@@ -2008,8 +2017,8 @@
    "values": null,
    "vertices": null,
    "first_published": "2026-10-18",
-   "last_updated": "2026-11-23",
-   "versions": 11,
+   "last_updated": "2026-11-25",
+   "versions": 12,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -2048,8 +2057,8 @@
   {
    "file": "dictionary_detail_environment.json",
    "title": "Data dictionary page: the full entries of the Environment and climate domain, read when one is opened",
-   "bytes": 249657,
-   "gzip_bytes": 50585,
+   "bytes": 249641,
+   "gzip_bytes": 50581,
    "loaded_by": [],
    "title_es": "Página del diccionario de datos: las entradas completas del dominio Ambiente y clima, que se leen al abrir una",
    "domains": [
@@ -2066,8 +2075,8 @@
    "values": null,
    "vertices": null,
    "first_published": "2026-10-18",
-   "last_updated": "2026-11-13",
-   "versions": 20,
+   "last_updated": "2026-11-25",
+   "versions": 21,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -2095,8 +2104,8 @@
    "values": null,
    "vertices": null,
    "first_published": "2026-10-21",
-   "last_updated": "2026-11-11",
-   "versions": 10,
+   "last_updated": "2026-11-25",
+   "versions": 12,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -2106,8 +2115,8 @@
   {
    "file": "dictionary_detail_hazards.json",
    "title": "Data dictionary page: the full entries of the Hazards domain, read when one is opened",
-   "bytes": 245653,
-   "gzip_bytes": 45766,
+   "bytes": 245607,
+   "gzip_bytes": 45759,
    "loaded_by": [],
    "title_es": "Página del diccionario de datos: las entradas completas del dominio Riesgos, que se leen al abrir una",
    "domains": [
@@ -2124,8 +2133,8 @@
    "values": null,
    "vertices": null,
    "first_published": "2026-11-04",
-   "last_updated": "2026-11-23",
-   "versions": 15,
+   "last_updated": "2026-11-25",
+   "versions": 16,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -2153,8 +2162,8 @@
    "values": null,
    "vertices": null,
    "first_published": "2026-11-04",
-   "last_updated": "2026-11-17",
-   "versions": 4,
+   "last_updated": "2026-11-25",
+   "versions": 6,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -2165,7 +2174,7 @@
    "file": "dictionary_detail_health.json",
    "title": "Data dictionary page: the full entries of the Health domain, read when one is opened",
    "bytes": 106727,
-   "gzip_bytes": 18642,
+   "gzip_bytes": 18643,
    "loaded_by": [],
    "title_es": "Página del diccionario de datos: las entradas completas del dominio Salud, que se leen al abrir una",
    "domains": [
@@ -2182,8 +2191,8 @@
    "values": null,
    "vertices": null,
    "first_published": "2026-10-18",
-   "last_updated": "2026-11-18",
-   "versions": 5,
+   "last_updated": "2026-11-25",
+   "versions": 6,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -2222,8 +2231,8 @@
   {
    "file": "dictionary_detail_housing.json",
    "title": "Data dictionary page: the full entries of the Housing domain, read when one is opened",
-   "bytes": 283441,
-   "gzip_bytes": 53116,
+   "bytes": 283435,
+   "gzip_bytes": 53106,
    "loaded_by": [],
    "title_es": "Página del diccionario de datos: las entradas completas del dominio Vivienda, que se leen al abrir una",
    "domains": [
@@ -2240,8 +2249,8 @@
    "values": null,
    "vertices": null,
    "first_published": "2026-10-18",
-   "last_updated": "2026-11-23",
-   "versions": 14,
+   "last_updated": "2026-11-25",
+   "versions": 15,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -2269,8 +2278,8 @@
    "values": null,
    "vertices": null,
    "first_published": "2026-10-21",
-   "last_updated": "2026-11-23",
-   "versions": 6,
+   "last_updated": "2026-11-25",
+   "versions": 8,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -2280,8 +2289,8 @@
   {
    "file": "dictionary_detail_infrastructure.json",
    "title": "Data dictionary page: the full entries of the Infrastructure and mobility domain, read when one is opened",
-   "bytes": 546407,
-   "gzip_bytes": 134092,
+   "bytes": 546366,
+   "gzip_bytes": 134069,
    "loaded_by": [],
    "title_es": "Página del diccionario de datos: las entradas completas del dominio Infraestructura y movilidad, que se leen al abrir una",
    "domains": [
@@ -2298,8 +2307,8 @@
    "values": null,
    "vertices": null,
    "first_published": "2026-10-18",
-   "last_updated": "2026-11-24",
-   "versions": 39,
+   "last_updated": "2026-11-25",
+   "versions": 40,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -2310,7 +2319,7 @@
    "file": "dictionary_detail_infrastructure_es.json",
    "title": "Data dictionary page in Spanish: how to read each entry of the Infrastructure and mobility domain, read when one is opened",
    "bytes": 49873,
-   "gzip_bytes": 15002,
+   "gzip_bytes": 15003,
    "loaded_by": [],
    "title_es": "Página del diccionario de datos en español: cómo leer cada entrada del dominio Infraestructura y movilidad, que se lee al abrir una",
    "domains": [
@@ -2327,8 +2336,8 @@
    "values": null,
    "vertices": null,
    "first_published": "2026-10-21",
-   "last_updated": "2026-11-14",
-   "versions": 17,
+   "last_updated": "2026-11-25",
+   "versions": 19,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -2339,7 +2348,7 @@
    "file": "dictionary_detail_population.json",
    "title": "Data dictionary page: the full entries of the Population and households domain, read when one is opened",
    "bytes": 163001,
-   "gzip_bytes": 26329,
+   "gzip_bytes": 26327,
    "loaded_by": [],
    "title_es": "Página del diccionario de datos: las entradas completas del dominio Población y hogares, que se leen al abrir una",
    "domains": [
@@ -2356,8 +2365,8 @@
    "values": null,
    "vertices": null,
    "first_published": "2026-10-18",
-   "last_updated": "2026-11-24",
-   "versions": 12,
+   "last_updated": "2026-11-25",
+   "versions": 13,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -2396,8 +2405,8 @@
   {
    "file": "dictionary_detail_public-money.json",
    "title": "Data dictionary page: the full entries of the Public money domain, read when one is opened",
-   "bytes": 230672,
-   "gzip_bytes": 37152,
+   "bytes": 230668,
+   "gzip_bytes": 37150,
    "loaded_by": [],
    "title_es": "Página del diccionario de datos: las entradas completas del dominio Dinero público, que se leen al abrir una",
    "domains": [
@@ -2414,8 +2423,8 @@
    "values": null,
    "vertices": null,
    "first_published": "2026-11-04",
-   "last_updated": "2026-11-19",
-   "versions": 15,
+   "last_updated": "2026-11-25",
+   "versions": 16,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -2454,8 +2463,8 @@
   {
    "file": "dictionary_detail_system.json",
    "title": "Data dictionary page: the full entries of the Observatory system domain, read when one is opened",
-   "bytes": 720899,
-   "gzip_bytes": 215816,
+   "bytes": 720788,
+   "gzip_bytes": 215747,
    "loaded_by": [],
    "title_es": "Página del diccionario de datos: las entradas completas del dominio Sistema del observatorio, que se leen al abrir una",
    "domains": [
@@ -2472,8 +2481,8 @@
    "values": null,
    "vertices": null,
    "first_published": "2026-10-18",
-   "last_updated": "2026-11-24",
-   "versions": 114,
+   "last_updated": "2026-11-25",
+   "versions": 115,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -2501,8 +2510,8 @@
    "values": null,
    "vertices": null,
    "first_published": "2026-10-21",
-   "last_updated": "2026-11-24",
-   "versions": 59,
+   "last_updated": "2026-11-25",
+   "versions": 61,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -2512,8 +2521,8 @@
   {
    "file": "dictionary_list.json",
    "title": "Data dictionary page: the list, filters and search words, read first",
-   "bytes": 1934112,
-   "gzip_bytes": 432897,
+   "bytes": 1933973,
+   "gzip_bytes": 432791,
    "loaded_by": [
     {
      "route": "dictionary",
@@ -2528,7 +2537,7 @@
    "tier": "medium",
    "geography": "none",
    "time": "snapshot",
-   "built": "2026-11-24",
+   "built": "2026-11-25",
    "items": 1174,
    "kind": "documentation",
    "records": null,
@@ -2536,8 +2545,8 @@
    "values": null,
    "vertices": null,
    "first_published": "2026-10-18",
-   "last_updated": "2026-11-24",
-   "versions": 177,
+   "last_updated": "2026-11-25",
+   "versions": 179,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -2547,8 +2556,8 @@
   {
    "file": "dictionary_list_es.json",
    "title": "Data dictionary page in Spanish: the names, labels, source cards and area texts, read right after the page is ready",
-   "bytes": 427974,
-   "gzip_bytes": 118983,
+   "bytes": 427866,
+   "gzip_bytes": 118948,
    "loaded_by": [
     {
      "route": "dictionary",
@@ -2563,15 +2572,15 @@
    "tier": "medium",
    "geography": "none",
    "time": "snapshot",
-   "built": "2026-11-24",
+   "built": "2026-11-25",
    "kind": "documentation",
    "records": null,
    "fields": null,
    "values": null,
    "vertices": null,
    "first_published": "2026-10-21",
-   "last_updated": "2026-11-24",
-   "versions": 77,
+   "last_updated": "2026-11-25",
+   "versions": 79,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -2592,7 +2601,7 @@
    "tier": "small",
    "geography": "none",
    "time": "snapshot",
-   "built": "2026-11-24",
+   "built": "2026-11-25",
    "kind": "documentation",
    "records": null,
    "fields": null,
@@ -2610,8 +2619,8 @@
   {
    "file": "dictionary_words.json",
    "title": "Data dictionary search words: the words of each entry's definition, method, geography, source notes, how to read it and cautions, for the page's search",
-   "bytes": 1323715,
-   "gzip_bytes": 356619,
+   "bytes": 1323408,
+   "gzip_bytes": 356485,
    "loaded_by": [
     {
      "route": "dictionary",
@@ -2626,15 +2635,15 @@
    "tier": "medium",
    "geography": "none",
    "time": "snapshot",
-   "built": "2026-11-24",
+   "built": "2026-11-25",
    "kind": "documentation",
    "records": null,
    "fields": null,
    "values": null,
    "vertices": null,
    "first_published": "2026-11-16",
-   "last_updated": "2026-11-24",
-   "versions": 31,
+   "last_updated": "2026-11-25",
+   "versions": 32,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -2644,8 +2653,8 @@
   {
    "file": "drought_series.json",
    "title": "Drought by municipio and year, 2000-2026 (US Drought Monitor)",
-   "bytes": 25061,
-   "gzip_bytes": 5285,
+   "bytes": 25058,
+   "gzip_bytes": 5284,
    "loaded_by": [],
    "title_es": "Sequía por municipio y año, 2000-2026 (Monitor de Sequía de EE. UU.)",
    "domains": [
@@ -2668,8 +2677,8 @@
    "values": 6399,
    "vertices": null,
    "first_published": "2026-11-16",
-   "last_updated": "2026-11-17",
-   "versions": 2,
+   "last_updated": "2026-11-25",
+   "versions": 3,
    "documented_by": 3,
    "review": {
     "status": "none",
@@ -2683,8 +2692,8 @@
   {
    "file": "economy_series.json",
    "title": "Economy and public-safety variables by year, 78 municipalities (BLS, Census, USAspending, FEMA, Federal Audit Clearinghouse, CDFI Fund, Police)",
-   "bytes": 754686,
-   "gzip_bytes": 254649,
+   "bytes": 754685,
+   "gzip_bytes": 254648,
    "loaded_by": [
     {
      "route": "profile",
@@ -2715,8 +2724,8 @@
    "values": 89995,
    "vertices": null,
    "first_published": "2026-10-05",
-   "last_updated": "2026-11-09",
-   "versions": 14,
+   "last_updated": "2026-11-25",
+   "versions": 15,
    "documented_by": 91,
    "review": {
     "status": "open",
@@ -2754,8 +2763,8 @@
   {
    "file": "education_series.json",
    "title": "Public schools and colleges every school year since 2010, by municipio (NCES via the Urban Institute)",
-   "bytes": 43113,
-   "gzip_bytes": 14033,
+   "bytes": 43126,
+   "gzip_bytes": 14032,
    "loaded_by": [
     {
      "route": "profile",
@@ -2782,8 +2791,8 @@
    "values": 8210,
    "vertices": null,
    "first_published": "2026-10-14",
-   "last_updated": "2026-10-14",
-   "versions": 1,
+   "last_updated": "2026-11-25",
+   "versions": 2,
    "documented_by": 7,
    "review": {
     "status": "none",
@@ -2929,8 +2938,8 @@
   {
    "file": "environment_series.json",
    "title": "Natural hazard loss, landslides and wetlands, by municipio (FEMA NRI, USGS, USFWS NWI)",
-   "bytes": 16712,
-   "gzip_bytes": 6082,
+   "bytes": 16709,
+   "gzip_bytes": 6080,
    "loaded_by": [
     {
      "route": "profile",
@@ -2958,8 +2967,8 @@
    "values": 914,
    "vertices": null,
    "first_published": "2026-10-14",
-   "last_updated": "2026-10-14",
-   "versions": 1,
+   "last_updated": "2026-11-25",
+   "versions": 2,
    "documented_by": 12,
    "review": {
     "status": "none",
@@ -3014,7 +3023,7 @@
    "file": "essentials_series.json",
    "title": "Road distance to a supermarket, food store, pharmacy, bank or cooperativa, library and fire or EMS station (estimate), by municipio",
    "bytes": 16209,
-   "gzip_bytes": 4224,
+   "gzip_bytes": 4225,
    "loaded_by": [],
    "title_es": "Distancia por carretera a un supermercado, tienda de alimentos, farmacia, banco o cooperativa, biblioteca y estación de bomberos o emergencias médicas (estimado), por municipio",
    "domains": [
@@ -3038,8 +3047,8 @@
    "values": 552,
    "vertices": null,
    "first_published": "2026-11-18",
-   "last_updated": "2026-11-18",
-   "versions": 1,
+   "last_updated": "2026-11-25",
+   "versions": 2,
    "documented_by": 7,
    "review": {
     "status": "none",
@@ -3248,7 +3257,7 @@
    "file": "facility_exposure_series.json",
    "title": "Public facilities, public school students and main roads inside FEMA's 1% flood area, NOAA's 3 ft sea level rise area and the USGS high landslide susceptibility classes, by municipio (overlaid from the observatory's layers)",
    "bytes": 24576,
-   "gzip_bytes": 4856,
+   "gzip_bytes": 4855,
    "loaded_by": [],
    "title_es": "Instalaciones públicas, estudiantes de escuelas públicas y carreteras principales dentro del área de inundación de 1% de FEMA, el área de aumento del nivel del mar de 3 pies de NOAA y las clases de alta susceptibilidad a deslizamientos del USGS, por municipio (superposición de capas del observatorio)",
    "domains": [
@@ -3272,8 +3281,8 @@
    "values": 1333,
    "vertices": null,
    "first_published": "2026-11-16",
-   "last_updated": "2026-11-16",
-   "versions": 4,
+   "last_updated": "2026-11-25",
+   "versions": 5,
    "documented_by": 17,
    "review": {
     "status": "unstated",
@@ -3335,7 +3344,7 @@
    "file": "facility_series.json",
    "title": "Public facilities by municipio: public housing, tax credit housing, fire and police stations, libraries",
    "bytes": 10711,
-   "gzip_bytes": 3715,
+   "gzip_bytes": 3713,
    "loaded_by": [
     {
      "route": "profile",
@@ -3368,8 +3377,8 @@
    "values": 632,
    "vertices": null,
    "first_published": "2026-10-17",
-   "last_updated": "2026-11-09",
-   "versions": 5,
+   "last_updated": "2026-11-25",
+   "versions": 6,
    "documented_by": 8,
    "review": {
     "status": "open",
@@ -3490,8 +3499,8 @@
    "values": 1185,
    "vertices": null,
    "first_published": "2026-11-10",
-   "last_updated": "2026-11-10",
-   "versions": 1,
+   "last_updated": "2026-11-25",
+   "versions": 2,
    "documented_by": 3,
    "review": {
     "status": "none",
@@ -3809,8 +3818,8 @@
   {
    "file": "gii_profile.json",
    "title": "Global Innovation Index: FPR's 2021 profile of Puerto Rico (GII 2020 method), with updated values and an indicative GII 2026 comparison",
-   "bytes": 132544,
-   "gzip_bytes": 28803,
+   "bytes": 132548,
+   "gzip_bytes": 28800,
    "loaded_by": [
     {
      "route": "gii",
@@ -3834,8 +3843,8 @@
    "values": 1603,
    "vertices": null,
    "first_published": "2026-10-23",
-   "last_updated": "2026-11-09",
-   "versions": 3,
+   "last_updated": "2026-11-25",
+   "versions": 4,
    "documented_by": 20,
    "review": {
     "status": "open",
@@ -3854,8 +3863,8 @@
   {
    "file": "glossary_defs_en.json",
    "title": "Glossary highlighter: the English definitions and sources, read the first time a reader points at a word",
-   "bytes": 197534,
-   "gzip_bytes": 66774,
+   "bytes": 197527,
+   "gzip_bytes": 66754,
    "loaded_by": [],
    "title_es": "Resaltador del glosario: las definiciones en inglés y sus fuentes, que se leen la primera vez que alguien señala una palabra",
    "domains": [
@@ -3871,8 +3880,8 @@
    "values": null,
    "vertices": null,
    "first_published": "2026-10-19",
-   "last_updated": "2026-11-24",
-   "versions": 82,
+   "last_updated": "2026-11-25",
+   "versions": 84,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -3882,8 +3891,8 @@
   {
    "file": "glossary_defs_es.json",
    "title": "Glossary highlighter: the Spanish definitions and sources, read the first time a reader points at a word",
-   "bytes": 213590,
-   "gzip_bytes": 73701,
+   "bytes": 213591,
+   "gzip_bytes": 73703,
    "loaded_by": [],
    "title_es": "Resaltador del glosario: las definiciones en español y sus fuentes, que se leen la primera vez que alguien señala una palabra",
    "domains": [
@@ -3899,8 +3908,8 @@
    "values": null,
    "vertices": null,
    "first_published": "2026-10-19",
-   "last_updated": "2026-11-24",
-   "versions": 82,
+   "last_updated": "2026-11-25",
+   "versions": 83,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -3910,8 +3919,8 @@
   {
    "file": "glossary_forms_en.json",
    "title": "Glossary highlighter: the English forms of the highlighted terms, read just after a page is ready",
-   "bytes": 26872,
-   "gzip_bytes": 8582,
+   "bytes": 26874,
+   "gzip_bytes": 8568,
    "loaded_by": [],
    "title_es": "Resaltador del glosario: las formas en inglés de los términos que se resaltan, que se leen justo después de que la página está lista",
    "domains": [
@@ -3927,8 +3936,8 @@
    "values": null,
    "vertices": null,
    "first_published": "2026-10-19",
-   "last_updated": "2026-11-24",
-   "versions": 79,
+   "last_updated": "2026-11-25",
+   "versions": 81,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -3938,7 +3947,7 @@
   {
    "file": "glossary_forms_es.json",
    "title": "Glossary highlighter: the Spanish forms of the highlighted terms, read just after a page is ready",
-   "bytes": 27559,
+   "bytes": 27560,
    "gzip_bytes": 9832,
    "loaded_by": [
     {
@@ -3979,6 +3988,14 @@
     },
     {
      "route": "workflows",
+     "when": "later"
+    },
+    {
+     "route": "about",
+     "when": "later"
+    },
+    {
+     "route": "terms",
      "when": "later"
     },
     {
@@ -4060,8 +4077,8 @@
    "values": null,
    "vertices": null,
    "first_published": "2026-10-19",
-   "last_updated": "2026-11-24",
-   "versions": 79,
+   "last_updated": "2026-11-25",
+   "versions": 80,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -4104,8 +4121,8 @@
   {
    "file": "hazard_series.json",
    "title": "Community resilience (2019-2024) and earthquakes (2000-2025), by municipio (Census CRE, USGS ComCat)",
-   "bytes": 30465,
-   "gzip_bytes": 9499,
+   "bytes": 30452,
+   "gzip_bytes": 9497,
    "loaded_by": [
     {
      "route": "profile",
@@ -4133,8 +4150,8 @@
    "values": 6478,
    "vertices": null,
    "first_published": "2026-10-14",
-   "last_updated": "2026-10-14",
-   "versions": 1,
+   "last_updated": "2026-11-25",
+   "versions": 2,
    "documented_by": 5,
    "review": {
     "status": "none",
@@ -4181,8 +4198,8 @@
    "values": 611,
    "vertices": null,
    "first_published": "2026-10-12",
-   "last_updated": "2026-11-12",
-   "versions": 3,
+   "last_updated": "2026-11-25",
+   "versions": 4,
    "documented_by": 11,
    "review": {
     "status": "open",
@@ -4270,8 +4287,8 @@
    "values": 395,
    "vertices": null,
    "first_published": "2026-11-04",
-   "last_updated": "2026-11-04",
-   "versions": 2,
+   "last_updated": "2026-11-25",
+   "versions": 3,
    "documented_by": 5,
    "review": {
     "status": "none",
@@ -4284,7 +4301,7 @@
   },
   {
    "file": "heat_surface.json",
-   "title": "Surface heat image: its corners, size and colour scale",
+   "title": "Surface heat image: its corners, size and color scale",
    "bytes": 724,
    "gzip_bytes": 503,
    "loaded_by": [],
@@ -5043,8 +5060,8 @@
   {
    "file": "medicare_series.json",
    "title": "Medicare enrollment every year since 2013, by municipio (CMS)",
-   "bytes": 21650,
-   "gzip_bytes": 9411,
+   "bytes": 21653,
+   "gzip_bytes": 9410,
    "loaded_by": [
     {
      "route": "profile",
@@ -5071,8 +5088,8 @@
    "values": 3081,
    "vertices": null,
    "first_published": "2026-10-14",
-   "last_updated": "2026-10-14",
-   "versions": 1,
+   "last_updated": "2026-11-25",
+   "versions": 2,
    "documented_by": 3,
    "review": {
     "status": "none",
@@ -5376,7 +5393,7 @@
    "file": "night_heat_series.json",
    "title": "Night surface heat by municipio: land surface temperature on clear summer nights, and land and residents among Puerto Rico's warmest tenth at night (NASA ECOSTRESS)",
    "bytes": 15306,
-   "gzip_bytes": 3716,
+   "gzip_bytes": 3718,
    "loaded_by": [],
    "title_es": "Calor de superficie de noche por municipio: temperatura de la superficie terrestre en noches despejadas de verano, y terreno y residentes entre la décima parte más cálida de Puerto Rico de noche (NASA ECOSTRESS)",
    "domains": [
@@ -5401,8 +5418,8 @@
    "values": 395,
    "vertices": null,
    "first_published": "2026-11-04",
-   "last_updated": "2026-11-04",
-   "versions": 1,
+   "last_updated": "2026-11-25",
+   "versions": 2,
    "documented_by": 5,
    "review": {
     "status": "none",
@@ -5415,7 +5432,7 @@
   },
   {
    "file": "night_heat_surface.json",
-   "title": "Night surface heat image: its corners, size and colour scale",
+   "title": "Night surface heat image: its corners, size and color scale",
    "bytes": 746,
    "gzip_bytes": 508,
    "loaded_by": [],
@@ -5574,8 +5591,8 @@
    "values": 2212,
    "vertices": null,
    "first_published": "2026-11-04",
-   "last_updated": "2026-11-04",
-   "versions": 1,
+   "last_updated": "2026-11-25",
+   "versions": 2,
    "documented_by": 2,
    "review": {
     "status": "none",
@@ -5590,7 +5607,7 @@
    "file": "nonprofit_series.json",
    "title": "Tax-exempt organizations by municipio and NTEE major group (IRS)",
    "bytes": 10470,
-   "gzip_bytes": 2868,
+   "gzip_bytes": 2867,
    "loaded_by": [
     {
      "route": "profile",
@@ -5618,8 +5635,8 @@
    "values": 948,
    "vertices": null,
    "first_published": "2026-10-17",
-   "last_updated": "2026-11-15",
-   "versions": 2,
+   "last_updated": "2026-11-25",
+   "versions": 3,
    "documented_by": 12,
    "review": {
     "status": "none",
@@ -6568,7 +6585,7 @@
   },
   {
    "file": "simulated_links.geojson",
-   "title": "Simulated connections between municipios: the fastest road path between the town centres of each pair with 500 workers or more and no timetabled route (FPR simulation), map layer",
+   "title": "Simulated connections between municipios: the fastest road path between the town centers of each pair with 500 workers or more and no timetabled route (FPR simulation), map layer",
    "bytes": 377512,
    "gzip_bytes": 93316,
    "loaded_by": [
@@ -6651,8 +6668,8 @@
   {
    "file": "slope_series.json",
    "title": "Slope of the land by municipio: land steeper than 15% and than 30%, and the mean slope (USGS 3DEP 10 m)",
-   "bytes": 6905,
-   "gzip_bytes": 2512,
+   "bytes": 6902,
+   "gzip_bytes": 2513,
    "loaded_by": [],
    "title_es": "Pendiente del terreno por municipio: terreno con más de 15 % y de 30 % de pendiente, y la pendiente promedio (USGS 3DEP 10 m)",
    "domains": [
@@ -6676,8 +6693,8 @@
    "values": 237,
    "vertices": null,
    "first_published": "2026-11-10",
-   "last_updated": "2026-11-10",
-   "versions": 1,
+   "last_updated": "2026-11-25",
+   "versions": 2,
    "documented_by": 3,
    "review": {
     "status": "none",
@@ -6690,7 +6707,7 @@
   },
   {
    "file": "slope_surface.json",
-   "title": "Slope image: its corners, size and colour scale",
+   "title": "Slope image: its corners, size and color scale",
    "bytes": 654,
    "gzip_bytes": 465,
    "loaded_by": [],
@@ -7363,8 +7380,8 @@
   {
    "file": "taken_back.json",
    "title": "Federal grant money taken back in Puerto Rico: net reduction of each grant, by federal agency and program (USAspending)",
-   "bytes": 49357,
-   "gzip_bytes": 14209,
+   "bytes": 49356,
+   "gzip_bytes": 14208,
    "loaded_by": [],
    "title_es": "Dinero de subvenciones federales retirado en Puerto Rico: reducción neta de cada subvención, por agencia federal y programa (USAspending)",
    "domains": [
@@ -7381,8 +7398,8 @@
    "values": 2110,
    "vertices": null,
    "first_published": "2026-11-18",
-   "last_updated": "2026-11-19",
-   "versions": 2,
+   "last_updated": "2026-11-25",
+   "versions": 3,
    "documented_by": 1,
    "review": {
     "status": "open",
@@ -7520,9 +7537,9 @@
   },
   {
    "file": "traffic_series.json",
-   "title": "Traffic, main roads and pavement by municipio: daily vehicle-kilometres, per resident, km of arterials and major collectors, the busiest count, trucks and rough pavement (FHWA HPMS)",
+   "title": "Traffic, main roads and pavement by municipio: daily vehicle-kilometers, per resident, km of arterials and major collectors, the busiest count, trucks and rough pavement (FHWA HPMS)",
    "bytes": 8364,
-   "gzip_bytes": 3308,
+   "gzip_bytes": 3309,
    "loaded_by": [],
    "title_es": "Tránsito, carreteras principales y pavimento por municipio: vehículo-kilómetros diarios, por residente, km de arterias y colectoras principales, el conteo más alto, camiones y pavimento áspero (HPMS de la FHWA)",
    "domains": [
@@ -7545,8 +7562,8 @@
    "values": 471,
    "vertices": null,
    "first_published": "2026-11-14",
-   "last_updated": "2026-11-14",
-   "versions": 1,
+   "last_updated": "2026-11-25",
+   "versions": 2,
    "documented_by": 6,
    "review": {
     "status": "none",
@@ -7584,8 +7601,8 @@
    "values": 19273,
    "vertices": 78,
    "first_published": "2026-11-13",
-   "last_updated": "2026-11-14",
-   "versions": 6,
+   "last_updated": "2026-11-25",
+   "versions": 7,
    "documented_by": 1,
    "review": {
     "status": "unstated",
@@ -7874,8 +7891,8 @@
   {
    "file": "unused_funds.json",
    "title": "Federal grants in Puerto Rico that ended with an unpaid balance, by federal agency and program (USAspending)",
-   "bytes": 28608,
-   "gzip_bytes": 9314,
+   "bytes": 28607,
+   "gzip_bytes": 9312,
    "loaded_by": [],
    "title_es": "Subvenciones federales en Puerto Rico que vencieron con un saldo sin pagar, por agencia federal y programa (USAspending)",
    "domains": [
@@ -7892,8 +7909,8 @@
    "values": 1095,
    "vertices": null,
    "first_published": "2026-11-18",
-   "last_updated": "2026-11-19",
-   "versions": 2,
+   "last_updated": "2026-11-25",
+   "versions": 3,
    "documented_by": 1,
    "review": {
     "status": "open",
@@ -7921,8 +7938,8 @@
   {
    "file": "upstream.json",
    "title": "What lies upstream of each reservoir and river gauge: land, residents, buildings, wastewater plants and protected land",
-   "bytes": 39019,
-   "gzip_bytes": 6675,
+   "bytes": 39018,
+   "gzip_bytes": 6674,
    "loaded_by": [],
    "title_es": "Qué hay aguas arriba de cada embalse y medidor de río: terreno, residentes, edificios, plantas de aguas residuales y terreno protegido",
    "domains": [
@@ -7941,8 +7958,8 @@
    "values": 1554,
    "vertices": null,
    "first_published": "2026-11-24",
-   "last_updated": "2026-11-24",
-   "versions": 1,
+   "last_updated": "2026-11-25",
+   "versions": 2,
    "documented_by": 0,
    "review": {
     "status": "none",
@@ -8022,8 +8039,8 @@
   {
    "file": "vegetation_series.json",
    "title": "Vegetation by municipio: greenness (NDVI) on clear summer days, land with dense vegetation and with little or none, and residents on land with little or none (Sentinel-2)",
-   "bytes": 14110,
-   "gzip_bytes": 3669,
+   "bytes": 14098,
+   "gzip_bytes": 3668,
    "loaded_by": [],
    "title_es": "Vegetación por municipio: verdor (NDVI) en días despejados de verano, terreno con vegetación densa y con poca o ninguna, y residentes en terreno con poca o ninguna (Sentinel-2)",
    "domains": [
@@ -8046,8 +8063,8 @@
    "values": 395,
    "vertices": null,
    "first_published": "2026-11-04",
-   "last_updated": "2026-11-04",
-   "versions": 1,
+   "last_updated": "2026-11-25",
+   "versions": 2,
    "documented_by": 5,
    "review": {
     "status": "none",
@@ -8061,8 +8078,8 @@
   {
    "file": "wanted.json",
    "title": "Datasets wanted: candidate sources not yet harvested",
-   "bytes": 185205,
-   "gzip_bytes": 54837,
+   "bytes": 185196,
+   "gzip_bytes": 54819,
    "loaded_by": [],
    "title_es": "Datos deseados: fuentes candidatas aún no recolectadas",
    "domains": [
@@ -8079,8 +8096,8 @@
    "values": null,
    "vertices": null,
    "first_published": "2026-10-05",
-   "last_updated": "2026-11-24",
-   "versions": 65,
+   "last_updated": "2026-11-25",
+   "versions": 66,
    "documented_by": 3,
    "review": {
     "status": "none",

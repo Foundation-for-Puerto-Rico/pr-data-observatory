@@ -5,7 +5,7 @@ Plan: `docs/gis-tools-proposal-2026-11.md`, step 3 (HANDOFF decision 93). Code: 
 ## What visitors get
 
 - **Explore › Environment and climate › Watersheds and streams** (2D map): the 227 subwatersheds (HUC-12) of the USGS Watershed Boundary Dataset as dashed outlines, and the 3,992 streams of NHDPlus High Resolution that drain 5 km² or more, wider for larger rivers. A click on the map names the subwatershed there, its subbasin, area and 2020 residents.
-- **Tools › Map tools › What drains here:** pick a point (or use the centre of the map) and the land whose rain flows to it becomes a study area, in the set "Areas that drain to points", with the full study-area summary (residents, transit, and on request flood zones, heat, greenness, landslides, slope). The stream network (`catchments.geojson`, about 2.1 MB compressed) loads the first time.
+- **Tools › Map tools › What drains here:** pick a point (or use the center of the map) and the land whose rain flows to it becomes a study area, in the set "Areas that drain to points", with the full study-area summary (residents, transit, and on request flood zones, heat, greenness, landslides, slope). The stream network (`catchments.geojson`, about 2.1 MB compressed) loads the first time.
 
 ## How it is made (`watersheds.py`)
 

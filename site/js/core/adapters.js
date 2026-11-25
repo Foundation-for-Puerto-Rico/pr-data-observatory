@@ -174,7 +174,7 @@
   // ── A series file, and the finer levels of a dataset (plan item 7) ───────────
   /** The datasets of a file in the shape of economy_series.json: { years: [..], geo: { ids }, vars: [{ key, group, label, unit, d, type, sources, ref, definition, family, years: {window: array}, moe }] },
       for the 78 municipios and Puerto Rico (the last id). The arrays are put in the order of the engine's places (the order of the file is looked up, not assumed); an empty value stays empty.
-      A dataset made only from survey tables is a five-year window (labelled by the years it covers), as in series(). o = { dict: prefix of the dictionary ids ('population.'), group: text put before each
+      A dataset made only from survey tables is a five-year window (labeled by the years it covers), as in series(). o = { dict: prefix of the dictionary ids ('population.'), group: text put before each
       group ('Population · ') }. Run after series(), which sets the places. */
   function seriesFile(E, doc, o = {}) {
     const at = new Map(E.geo.ids.map((id, i) => [id, i])), n = E.geo.pr + 1;
@@ -223,7 +223,7 @@
     const rough = (s, i) => { const x = s.values[i]; return x != null && (reliability.isUnreliable(x, marginOf(s, i)) || (share && x === 100 && marginOf(s, i) == null)); };
     const blank = (i) => hasM && per.some(s => s.values[i] != null && marginOf(s, i) == null);
     const header = ['GEOID', T('Area'), T('Municipality'), ...lv.ys.flatMap(y => hasM ? [win(y), T('{year} margin of error', { year: win(y) }), T('{year} less reliable', { year: win(y) })] : [win(y)]), T('Variable'), T('Unit'), T('Dictionary entry'), T('Source'), ...(hasM ? [T('Note')] : [])];
-    const unit = v.unit === '%' ? T('percent') : v.unit === '$' ? T('US dollars of the last year of each window') : T(UNIT_WORDS[key] || TK('count')), src = T('US Census Bureau, American Community Survey 5-year estimates; margins of error at 90% confidence; neighbouring windows share four of their five years'), why = T('A blank margin of error means that none is published: the Census Bureau controls the figure, or the share is exactly 100%, or its margin works out to zero (which would read as exact).');
+    const unit = v.unit === '%' ? T('percent') : v.unit === '$' ? T('US dollars of the last year of each window') : T(UNIT_WORDS[key] || TK('count')), src = T('US Census Bureau, American Community Survey 5-year estimates; margins of error at 90% confidence; neighboring windows share four of their five years'), why = T('A blank margin of error means that none is published: the Census Bureau controls the figure, or the share is exactly 100%, or its margin works out to zero (which would read as exact).');
     const rows = first.ids.map((id, i) => [id, name(first.names && first.names[i]) || '', mun(id), ...per.flatMap(s => hasM ? [s.values[i], marginOf(s, i), rough(s, i) ? T('yes') : ''] : [s.values[i]]), T(v.label), unit, v.dictId || '', src, ...(hasM ? [blank(i) ? why : ''] : [])]);
     return { header, rows };
   }

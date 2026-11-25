@@ -34,7 +34,7 @@
    "timeline": "five-year window",
    "first": 2014,
    "last": 2024,
-   "frequency": "Three five-year windows that share no year: 2010-2014, 2015-2019 and 2020-2024, labelled 2014, 2019 and 2024. Because they do not overlap, a change from one to the next can be read and tested against its margin. The next window that shares no year with these is 2025-2029; women_labor.py adds a window only when its list of windows names it."
+   "frequency": "Three five-year windows that share no year: 2010-2014, 2015-2019 and 2020-2024, labeled 2014, 2019 and 2024. Because they do not overlap, a change from one to the next can be read and tested against its margin. The next window that shares no year with these is 2025-2029; women_labor.py adds a window only when its list of windows names it."
   },
   "method": "women_labor.py reads ACS 5-year table B23001 (Sex by Age by Employment Status for the Population 16 Years and Over) for each window: the per-sequence summary files for 2010-2014 and 2015-2019 and the table-based files for 2020-2024. For each sex it adds the cells of seven age groups (16-19, 20-24, 25-34, 35-44, 45-54, 55-64, 65 and over) into four counts: population, labor force (civilian and Armed Forces), civilian labor force and unemployed. The margin of a sum is the square root of the sum of the squared margins of its cells (a cell the Census Bureau controls to its own estimate has no printed margin and adds none). The rate is the women's labor force over the women's population, both summed over the seven age groups, and its margin follows the Census Bureau's formula for a proportion (ACS General Handbook, chapter 8). The value for a group of municipios is pooled: summed counts over summed counts, never an average of the municipio rates.",
   "sources": [
@@ -105,7 +105,7 @@
    "timeline": "five-year window",
    "first": 2014,
    "last": 2024,
-   "frequency": "Three five-year windows that share no year: 2010-2014, 2015-2019 and 2020-2024, labelled 2014, 2019 and 2024. Because they do not overlap, a change from one to the next can be read and tested against its margin. The next window that shares no year with these is 2025-2029; women_labor.py adds a window only when its list of windows names it."
+   "frequency": "Three five-year windows that share no year: 2010-2014, 2015-2019 and 2020-2024, labeled 2014, 2019 and 2024. Because they do not overlap, a change from one to the next can be read and tested against its margin. The next window that shares no year with these is 2025-2029; women_labor.py adds a window only when its list of windows names it."
   },
   "method": "women_labor.py reads ACS 5-year table B23001 (Sex by Age by Employment Status for the Population 16 Years and Over) for each window: the per-sequence summary files for 2010-2014 and 2015-2019 and the table-based files for 2020-2024. For each sex it adds the cells of seven age groups (16-19, 20-24, 25-34, 35-44, 45-54, 55-64, 65 and over) into four counts: population, labor force (civilian and Armed Forces), civilian labor force and unemployed. The margin of a sum is the square root of the sum of the squared margins of its cells (a cell the Census Bureau controls to its own estimate has no printed margin and adds none). The rate is the men's labor force over the men's population, with the Census Bureau's margin formula for a proportion.",
   "sources": [
@@ -175,7 +175,7 @@
    "timeline": "five-year window",
    "first": 2014,
    "last": 2024,
-   "frequency": "Three five-year windows that share no year: 2010-2014, 2015-2019 and 2020-2024, labelled 2014, 2019 and 2024. Because they do not overlap, a change from one to the next can be read and tested against its margin. The next window that shares no year with these is 2025-2029; women_labor.py adds a window only when its list of windows names it."
+   "frequency": "Three five-year windows that share no year: 2010-2014, 2015-2019 and 2020-2024, labeled 2014, 2019 and 2024. Because they do not overlap, a change from one to the next can be read and tested against its margin. The next window that shares no year with these is 2025-2029; women_labor.py adds a window only when its list of windows names it."
   },
   "method": "women_labor.py reads ACS 5-year table B23001 (Sex by Age by Employment Status for the Population 16 Years and Over) for each window: the per-sequence summary files for 2010-2014 and 2015-2019 and the table-based files for 2020-2024. For each sex it adds the cells of seven age groups (16-19, 20-24, 25-34, 35-44, 45-54, 55-64, 65 and over) into four counts: population, labor force (civilian and Armed Forces), civilian labor force and unemployed. The margin of a sum is the square root of the sum of the squared margins of its cells (a cell the Census Bureau controls to its own estimate has no printed margin and adds none). The rate adds the female 25-34, 35-44 and 45-54 groups (cells 110 to 137) and divides their labor force by their population, with the Census Bureau's margin formula for a proportion.",
   "sources": [
@@ -248,7 +248,7 @@
    "timeline": "five-year window",
    "first": 2014,
    "last": 2024,
-   "frequency": "Three five-year windows that share no year: 2010-2014, 2015-2019 and 2020-2024, labelled 2014, 2019 and 2024. Because they do not overlap, a change from one to the next can be read and tested against its margin. The next window that shares no year with these is 2025-2029; women_labor.py adds a window only when its list of windows names it."
+   "frequency": "Three five-year windows that share no year: 2010-2014, 2015-2019 and 2020-2024, labeled 2014, 2019 and 2024. Because they do not overlap, a change from one to the next can be read and tested against its margin. The next window that shares no year with these is 2025-2029; women_labor.py adds a window only when its list of windows names it."
   },
   "method": "women_labor.py reads ACS 5-year table B23001 (Sex by Age by Employment Status for the Population 16 Years and Over) for each window: the per-sequence summary files for 2010-2014 and 2015-2019 and the table-based files for 2020-2024. For each sex it adds the cells of seven age groups (16-19, 20-24, 25-34, 35-44, 45-54, 55-64, 65 and over) into four counts: population, labor force (civilian and Armed Forces), civilian labor force and unemployed. The margin of a sum is the square root of the sum of the squared margins of its cells (a cell the Census Bureau controls to its own estimate has no printed margin and adds none). The two rates are worked out as in labor_sex.lfpr_men and labor_sex.lfpr_women and subtracted; the margin of the difference treats the two rates as independent, as the Census Bureau's formula for a difference does.",
   "sources": [
@@ -318,7 +318,7 @@
    "timeline": "five-year window",
    "first": 2014,
    "last": 2024,
-   "frequency": "Three five-year windows that share no year: 2010-2014, 2015-2019 and 2020-2024, labelled 2014, 2019 and 2024. Because they do not overlap, a change from one to the next can be read and tested against its margin. The next window that shares no year with these is 2025-2029; women_labor.py adds a window only when its list of windows names it."
+   "frequency": "Three five-year windows that share no year: 2010-2014, 2015-2019 and 2020-2024, labeled 2014, 2019 and 2024. Because they do not overlap, a change from one to the next can be read and tested against its margin. The next window that shares no year with these is 2025-2029; women_labor.py adds a window only when its list of windows names it."
   },
   "method": "women_labor.py reads ACS 5-year table B23001 (Sex by Age by Employment Status for the Population 16 Years and Over) for each window: the per-sequence summary files for 2010-2014 and 2015-2019 and the table-based files for 2020-2024. For each sex it adds the cells of seven age groups (16-19, 20-24, 25-34, 35-44, 45-54, 55-64, 65 and over) into four counts: population, labor force (civilian and Armed Forces), civilian labor force and unemployed. The margin of a sum is the square root of the sum of the squared margins of its cells (a cell the Census Bureau controls to its own estimate has no printed margin and adds none). The rate is the women's unemployed over the women's civilian labor force, with the Census Bureau's margin formula for a proportion.",
   "sources": [
@@ -386,7 +386,7 @@
    "timeline": "five-year window",
    "first": 2014,
    "last": 2024,
-   "frequency": "Three five-year windows that share no year: 2010-2014, 2015-2019 and 2020-2024, labelled 2014, 2019 and 2024. Because they do not overlap, a change from one to the next can be read and tested against its margin. The next window that shares no year with these is 2025-2029; women_labor.py adds a window only when its list of windows names it."
+   "frequency": "Three five-year windows that share no year: 2010-2014, 2015-2019 and 2020-2024, labeled 2014, 2019 and 2024. Because they do not overlap, a change from one to the next can be read and tested against its margin. The next window that shares no year with these is 2025-2029; women_labor.py adds a window only when its list of windows names it."
   },
   "method": "women_labor.py reads ACS 5-year table B23001 (Sex by Age by Employment Status for the Population 16 Years and Over) for each window: the per-sequence summary files for 2010-2014 and 2015-2019 and the table-based files for 2020-2024. For each sex it adds the cells of seven age groups (16-19, 20-24, 25-34, 35-44, 45-54, 55-64, 65 and over) into four counts: population, labor force (civilian and Armed Forces), civilian labor force and unemployed. The margin of a sum is the square root of the sum of the squared margins of its cells (a cell the Census Bureau controls to its own estimate has no printed margin and adds none). The count is the sum of the seven female age groups.",
   "sources": [
@@ -455,7 +455,7 @@
    "timeline": "five-year window",
    "first": 2014,
    "last": 2024,
-   "frequency": "Three five-year windows that share no year: 2010-2014, 2015-2019 and 2020-2024, labelled 2014, 2019 and 2024. Because they do not overlap, a change from one to the next can be read and tested against its margin. The next window that shares no year with these is 2025-2029; women_labor.py adds a window only when its list of windows names it."
+   "frequency": "Three five-year windows that share no year: 2010-2014, 2015-2019 and 2020-2024, labeled 2014, 2019 and 2024. Because they do not overlap, a change from one to the next can be read and tested against its margin. The next window that shares no year with these is 2025-2029; women_labor.py adds a window only when its list of windows names it."
   },
   "method": "women_labor.py reads ACS 5-year table B23001 (Sex by Age by Employment Status for the Population 16 Years and Over) for each window: the per-sequence summary files for 2010-2014 and 2015-2019 and the table-based files for 2020-2024. For each sex it adds the cells of seven age groups (16-19, 20-24, 25-34, 35-44, 45-54, 55-64, 65 and over) into four counts: population, labor force (civilian and Armed Forces), civilian labor force and unemployed. The margin of a sum is the square root of the sum of the squared margins of its cells (a cell the Census Bureau controls to its own estimate has no printed margin and adds none). The count is the women's labor force summed over the seven age groups.",
   "sources": [
@@ -522,7 +522,7 @@
    "timeline": "five-year window",
    "first": 2014,
    "last": 2024,
-   "frequency": "Three five-year windows that share no year: 2010-2014, 2015-2019 and 2020-2024, labelled 2014, 2019 and 2024. Because they do not overlap, a change from one to the next can be read and tested against its margin. The next window that shares no year with these is 2025-2029; women_labor.py adds a window only when its list of windows names it."
+   "frequency": "Three five-year windows that share no year: 2010-2014, 2015-2019 and 2020-2024, labeled 2014, 2019 and 2024. Because they do not overlap, a change from one to the next can be read and tested against its margin. The next window that shares no year with these is 2025-2029; women_labor.py adds a window only when its list of windows names it."
   },
   "method": "women_labor.py reads ACS 5-year table B23001 (Sex by Age by Employment Status for the Population 16 Years and Over) for each window: the per-sequence summary files for 2010-2014 and 2015-2019 and the table-based files for 2020-2024. For each sex it adds the cells of seven age groups (16-19, 20-24, 25-34, 35-44, 45-54, 55-64, 65 and over) into four counts: population, labor force (civilian and Armed Forces), civilian labor force and unemployed. The margin of a sum is the square root of the sum of the squared margins of its cells (a cell the Census Bureau controls to its own estimate has no printed margin and adds none). B23003 (Presence of Own Children Under 18 Years by Age of Own Children by Employment Status for Females 20 to 64 Years) is read the same way. A group's counts are the sums of its municipios' counts (margins added in quadrature) and its rates are pooled: summed labor force over summed population, never an average of rates. A region is compared with the rest of the island, not with the island total that contains it. A difference is significant when it is larger than its own 90% margin. The age-adjusted rate applies the region's rate in each age group to the age mix of the women 16 and over in the rest of the island (direct standardization); the gap with the rest of the island splits into a part due to the age mix and a part due to the rates within each age group (Kitagawa, 1955). The method is in women_labor.py and docs/analysis/women-labor-2026-10/README.md.",
   "sources": [

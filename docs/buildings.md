@@ -17,7 +17,7 @@ The Overture Maps Foundation's **buildings theme** joins building footprints fro
 2. Google Open Buildings and Microsoft ML Buildings, traced from satellite images by machine learning;
 3. Esri Community Maps and other sources (none in Puerto Rico in this release).
 
-Overture publishes a new release every month as GeoParquet on public cloud storage, with no key. The licence is **ODbL 1.0** because the theme holds OpenStreetMap data. Credit: "© OpenStreetMap contributors, Overture Maps Foundation". Our two files are counts and shares derived from it, so they are offered under ODbL 1.0 too (source card `overture_buildings`).
+Overture publishes a new release every month as GeoParquet on public cloud storage, with no key. The license is **ODbL 1.0** because the theme holds OpenStreetMap data. Credit: "© OpenStreetMap contributors, Overture Maps Foundation". Our two files are counts and shares derived from it, so they are offered under ODbL 1.0 too (source card `overture_buildings`).
 
 The build reads the theme with the `overturemaps` package, which was already in `requirements.txt` for places. It reads a box around Puerto Rico (west -67.97, south 17.85, east -65.20, north 18.57; Saint Thomas begins at about -65.09). This takes about 3.5 minutes. HANDOFF decision 91 (b) had planned to use DuckDB; the package already in use reads the same files, so no new dependency was needed.
 
@@ -81,13 +81,13 @@ Highlights by municipio:
 
 - **One building is one footprint.** A row of attached houses may be one footprint or several, depending on who traced it.
 - **Footprints traced by machine learning** can include sheds, carports and ruins, and miss buildings under trees.
-- **Ground area, not floor area.** A three-storey building counts once.
+- **Ground area, not floor area.** A three-story building counts once.
 - **Flood counts use one point per building.** A building partly inside a flood area may count as outside, and the reverse. FEMA's outlines in `flood.geojson` are simplified by about 5 m.
 - **The date is Overture's release, not a census date.**
 
 ## Refresh
 
-The refresh unit `buildings` runs `python buildings.py --refresh` and then `python buildings3d.py --refresh` (`docs/buildings3d.md`). The source `overture_buildings` checks Overture's release catalogue every 90 days, and a person reviews each rebuild. The GitHub Actions cache keeps `cache/buildings/`. A new release is downloaded once and replaces the old one.
+The refresh unit `buildings` runs `python buildings.py --refresh` and then `python buildings3d.py --refresh` (`docs/buildings3d.md`). The source `overture_buildings` checks Overture's release catalog every 90 days, and a person reviews each rebuild. The GitHub Actions cache keeps `cache/buildings/`. A new release is downloaded once and replaces the old one.
 
 ## Next
 

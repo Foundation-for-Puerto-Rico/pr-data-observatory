@@ -149,7 +149,7 @@ Rules (decision 106 (e) and (g)): a lesson states methods and facts, recommends 
 ## Decided in the work, for the project lead's OK
 
 - **"Aprende" (settled).** Step 1 used "Aprender" because the site's Spanish rule (`docs/i18n.md`, "Address") asks for the infinitive on menu items. The project lead chose "Aprende" on 2026-11-16, as decision 106 (a) said; `docs/i18n.md` records the exception.
-- **The figures are in `js/learn_items.js`, not `site/data/learn.json`.** Approved by the project lead on 2026-11-17. The proposal named a data file. A script file (as the Knowledge registry does) needs no dataset record, licence or ledger entry, and holds nothing that is not already published.
+- **The figures are in `js/learn_items.js`, not `site/data/learn.json`.** Approved by the project lead on 2026-11-17. The proposal named a data file. A script file (as the Knowledge registry does) needs no dataset record, license or ledger entry, and holds nothing that is not already published.
 - **Six page generators were behind their pages.** Making the pages again would have set `chatboot.js?v=45` back to 35 or 36 on all six, and on two of them (Inflation, Route analysis) dropped three icons the pages list for the "All areas" menu (`bolt`, `price_change`, `wifi`). The generators now write what their pages already said. A test caught the icons; nothing checks the versions.
 
 ## Step 3, decided in the work
@@ -174,8 +174,8 @@ The section `#guide` of `learn.html`, after the lessons: a plan for 60 to 90 min
 ## Step 5, decided in the work
 
 - **The guide is a section of the Learn page, not a separate page.** The plan asked for a printable guide in Spanish and English: the page's language switch gives both, and a separate page would have needed its own top bar, route, budget and Spanish scope.
-- **D1's exercise needs no practice file.** A new sample data file would need a dataset record and a licence. Instead the exercise draws an area, downloads the tourism places inside it as a CSV from Study areas (which writes `lat` and `lon`) and loads that file into Count my points.
-- **D2 recommends EPSG:32161** (NAD83 / Puerto Rico & Virgin Is.) to measure in metres, and says the published files are GeoJSON in longitude and latitude (RFC 7946; `learn.py` fails if a file names another `crs`).
+- **D1's exercise needs no practice file.** A new sample data file would need a dataset record and a license. Instead the exercise draws an area, downloads the tourism places inside it as a CSV from Study areas (which writes `lat` and `lon`) and loads that file into Count my points.
+- **D2 recommends EPSG:32161** (NAD83 / Puerto Rico & Virgin Is.) to measure in meters, and says the published files are GeoJSON in longitude and latitude (RFC 7946; `learn.py` fails if a file names another `crs`).
 
 ## Not yet
 

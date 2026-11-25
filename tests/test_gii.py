@@ -358,8 +358,8 @@ class Page(unittest.TestCase):
 
     def test_the_legend_and_labels_of_the_markers(self):
         self.assertIn("Indicative position calculated by FPR, not an official WIPO rank.", self.HTML)
-        self.assertIn('"Better" follows the direction of the index, not a value judgement.', self.HTML)
-        self.assertIn("only the arrow is coloured", self.HTML)
+        self.assertIn('"Better" follows the direction of the index, not a value judgment.', self.HTML)
+        self.assertIn("only the arrow is colored", self.HTML)
         js = (ROOT / "site" / "js" / "gii.js").read_text(encoding="utf-8")
         for k in ("better than 2021", "worse than 2021", "no meaningful change from 2021", "not comparable with 2021"):
             self.assertIn("T('" + k + "')", js)

@@ -20,12 +20,12 @@ A reviewer with long experience in federal funds read both pages. Their main poi
 
 **The name.** The page is now "Federal grants: balances, reductions and audit findings" / "Subvenciones federales: saldos, reducciones y hallazgos de auditoría". Its tab in the Knowledge menu is "Balances, reductions and findings" / "Saldos, reducciones y hallazgos". The address `unused-funds.html` and the file names do not change.
 
-**Four different things, kept apart:** balances not yet paid out; reductions of the amount committed (de-obligations); programs the federal government cancelled; and documented losses, for which the page has no figure because no open source records a loss as such.
+**Four different things, kept apart:** balances not yet paid out; reductions of the amount committed (de-obligations); programs the federal government canceled; and documented losses, for which the page has no figure because no open source records a loss as such.
 
 **Corrections to the data**
 - **Only grants that began in the years read.** USAspending's search returns every award with an action signed in a year, so it also returned older awards that were only amended then (the reviewer found one that ended in 2018). `unused_funds.in_universe` keeps an award when its start date is on or after October 1, 2019. 1,250 older awards are left out.
 - **TANF (93.558) is apart:** a State or territory may carry unspent TANF money forward without a deadline (42 U.S.C. 604(e)).
-- **Programs the federal government ended are apart:** Solar for All (66.959), terminated by the Environmental Protection Agency on 2025-08-07, and the Community Change Grants (66.616), cancelled in 2025. In the reductions, the same two plus Grid Infrastructure Deployment and Resilience (81.254): its $365.0 M reduction is three transactions of 2025-05-21, when the Department of Energy redirected the solar funds of the Puerto Rico Energy Resilience Fund.
+- **Programs the federal government ended are apart:** Solar for All (66.959), terminated by the Environmental Protection Agency on 2025-08-07, and the Community Change Grants (66.616), canceled in 2025. In the reductions, the same two plus Grid Infrastructure Deployment and Resilience (81.254): its $365.0 M reduction is three transactions of 2025-05-21, when the Department of Energy redirected the solar funds of the Puerto Rico Energy Resilience Fund.
 - **Title I (84.010) stays, with a note:** the Tydings Amendment gives 27 months, and the Department of Education can extend the time to pay out.
 - **Ended grants with no payment on record** are listed by federal agency in section 4, and are still in no total.
 - **Audit findings by kind of body** count only the audit years that have mostly arrived.
@@ -56,7 +56,7 @@ A reviewer with long experience in federal funds read both pages. Their main poi
 **Not done yet, in the order the reviewer suggests**
 1. **Rebuild a few large awards from obligation to closing** (extensions, payments, the agency's determinations) before adding any indicator. This says how much the data can support. **Done on 2026-11-20: see "Five grants rebuilt" below.**
 2. Findings by compliance requirement (the field is already read), lateness by submission date against the due date with the COVID extensions, and FEMA's Section 428 projects apart.
-3. COR3 stays out (decision 96 (d)): its system does not answer scripts and its data carry no licence.
+3. COR3 stays out (decision 96 (d)): its system does not answer scripts and its data carry no license.
 
 ## Step 1: grants that ended with an unpaid balance (built 2026-11-18)
 

@@ -36,7 +36,7 @@ D0 is not counted as drought here: it marks areas going into or coming out of dr
 ## What it shows
 
 - **Most years before 2014 had little or no drought.** Puerto Rico's yearly average reached 10% or more only in 2015, 2016, 2019, 2021, 2022 and 2026.
-- **2015 was the worst whole year:** on average 28.5% of the island was in drought. The east and centre were hit hardest: Caguas (67.1%), Gurabo (66.2%) and Guayama (65.9%). Arroyo, Caguas, Guayama, Salinas and San Lorenzo had 35 weeks with drought over half their area. 22 municipios had none.
+- **2015 was the worst whole year:** on average 28.5% of the island was in drought. The east and center were hit hardest: Caguas (67.1%), Gurabo (66.2%) and Guayama (65.9%). Arroyo, Caguas, Guayama, Salinas and San Lorenzo had 35 weeks with drought over half their area. 22 municipios had none.
 - **2025 was wet:** 0.1% on average.
 - **2026 so far (to the map of November 10):** 26.5% on average, and the south-west leads: Lajas and Santa Isabel had 24 weeks with drought over half their area, Salinas 23. On the map of August 25, 44.5% of the island was in extreme drought (D3), the most since the series began; on November 10, 34.7% was in drought and 8.8% in severe drought.
 
@@ -48,7 +48,7 @@ D0 is not counted as drought here: it marks areas going into or coming out of dr
 
 ## What it does not say
 
-- **It is a judgement, not a measurement.** The authors draw the map from rainfall, soil moisture, stream flow, reservoir levels and local reports. Its lines do not follow municipio borders.
+- **It is a judgment, not a measurement.** The authors draw the map from rainfall, soil moisture, stream flow, reservoir levels and local reports. Its lines do not follow municipio borders.
 - **Drought is not water rationing.** Rationing depends on the reservoirs and the pipes that serve each place; read the reservoir layer beside it.
 - **2026 is not a whole year.** Compare it with past years by the average share, not by the count of weeks.
 

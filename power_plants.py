@@ -1,5 +1,5 @@
 """Power plants for the PR Data Observatory: one point per plant in EIA's monthly generator inventory, for the "Power plants" layer of the 2D map and the 3D
-view (core/facilities.js draws it: circle area by capacity, colour by main technology). HANDOFF decision 104, step 1; docs/energy.md.
+view (core/facilities.js draws it: circle area by capacity, color by main technology). HANDOFF decision 104, step 1; docs/energy.md.
 
     python power_plants.py              # build site/data/power_plants.geojson (downloads EIA-860M only when cache/energy/ has no copy)
     python power_plants.py --refresh    # download the newest EIA-860M file again
@@ -56,7 +56,7 @@ OP_COLS = ["Plant ID", "Plant Name", "Technology", "Nameplate Capacity (MW)", "N
 PL_COLS = ["Plant ID", "Plant Name", "Technology", "Nameplate Capacity (MW)", "Status", "Planned Operation Month", "Planned Operation Year", "Latitude", "Longitude"]
 FLOOR = 40   # 67 plants with operating generators in the September 2026 file: fewer than 40 means a sheet was cut short
 
-# EIA's technologies, in the eight groups the layer colours (the same groups as docs/energy-proposal-2026-11.md); a technology not listed stops the build
+# EIA's technologies, in the eight groups the layer colors (the same groups as docs/energy-proposal-2026-11.md); a technology not listed stops the build
 TECH = {"Petroleum Liquids": "oil", "Petroleum Coke": "oil",
         "Natural Gas Steam Turbine": "gas", "Natural Gas Fired Combined Cycle": "gas", "Natural Gas Internal Combustion Engine": "gas",
         "Natural Gas Fired Combustion Turbine": "gas", "Other Natural Gas": "gas",

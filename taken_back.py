@@ -46,7 +46,7 @@ APART = {
                  "listings": ["20.205"]},
     "disaster": {"why": "Disaster programs, whose projects are re-versioned many times; FEMA Public Assistance is counted by project on the Public spending page",
                  "listings": ["97.036", "97.039", "97.050", "14.228"]},
-    "federal": {"why": "Money the federal government withdrew by its own decision in 2025: the Department of Energy redirected the solar funds of the Puerto Rico Energy Resilience Fund, and the Environmental Protection Agency terminated Solar for All and cancelled the Community Change Grants",
+    "federal": {"why": "Money the federal government withdrew by its own decision in 2025: the Department of Energy redirected the solar funds of the Puerto Rico Energy Resilience Fund, and the Environmental Protection Agency terminated Solar for All and canceled the Community Change Grants",
                 "listings": ["81.254", "66.959", "66.616"]},
 }
 log = hs.log

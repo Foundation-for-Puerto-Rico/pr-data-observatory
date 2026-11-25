@@ -1,7 +1,7 @@
 /* PR Data Observatory core: the legends that only the map page draws.
      Stack.blocks(E, layers, evals, small)  the legend of the layer stack on the Economy tab's map: one block for one shaded layer, one for two shaded layers together (a bivariate map),
                                             and one for each layer of sized symbols; `small` is true on a phone (smaller symbols)
-     Stack.box(title, rows, note, unit)     a titled box of colour rows with a note (the shading menu of the Layers tab); unit(n) says what is counted in a row (municipalities unless told otherwise)
+     Stack.box(title, rows, note, unit)     a titled box of color rows with a note (the shading menu of the Layers tab); unit(n) says what is counted in a row (municipalities unless told otherwise)
      Stack.mini(title, rows)                the same rows without the note (the legend on the map itself) */
 (function (name, root, factory) {
   const dep = (n) => (typeof module === 'object' && module.exports ? require('./' + n + '.js') : root.Core[n]);   // the other core modules, in Node or in a page
@@ -27,7 +27,7 @@
     const v = e.a.slice(0, E.geo.pr).filter(x => x != null && isFinite(x));
     return v.length > 1 && v.every(x => x === v[0]) ? `<div class="el-note el-flat" role="note">${esc(prefix + T("Every area has the same value in this view, so the map shows no differences. Choose another view in the layer's Settings."))}</div>` : '';
   }
-  function divLabels(E, L, b) {   // the five classes of a scale around a centre, in words
+  function divLabels(E, L, b) {   // the five classes of a scale around a center, in words
     const sp = b.span, c = b.center, f = (x) => E.fmt(L, x, true);
     return [T('below {v}', { v: f(c - .5 * sp) }), T('{from} to {to}', { from: f(c - .5 * sp), to: f(c - .1 * sp) }), T('near {v}', { v: f(c) }), T('{from} to {to}', { from: f(c + .1 * sp), to: f(c + .5 * sp) }), T('above {v}', { v: f(c + .5 * sp) })];
   }
@@ -76,7 +76,7 @@
   function box(title, rows, note, unit = placesLabel) {
     return `<div class="legend-box" role="group" aria-label="${esc(T('{label} legend', { label: title }))}"><div class="legend-title">${esc(title)}</div>${rows.map(r => `<div class="row"><span class="sw" style="background:${r.color}"></span>${esc(r.label)}${r.n != null ? ` <small>${esc(unit(r.n))}</small>` : ''}</div>`).join('')}<div class="note">${note}</div></div>`;
   }
-  function mini(title, rows) {   // the legend drawn on the map itself: colours and words only
+  function mini(title, rows) {   // the legend drawn on the map itself: colors and words only
     return `<div class="legend-title">${esc(title)}</div>${rows.map(r => `<div class="row"><span class="sw" style="background:${r.color}"></span>${esc(r.label)}</div>`).join('')}`;
   }
   return { divLabels, blocks, box, mini, placesLabel };

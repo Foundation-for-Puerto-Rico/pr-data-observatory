@@ -1,14 +1,14 @@
 # Blocked data: requests to send (drafts, not sent)
 
-Plan item 17 (`docs/proposal-2026-10.md`, J row 17). The PR Data Observatory checked these sources with live requests on 2026-10-05 and 2026-10-06 and did **not** harvest the blocked ones. The one exception is the Police's December municipal reports of Type I crimes, which are live while their terms are confirmed (letters 1 and 2; HANDOFF decision 24). Each blocked source is held back by terms that require written permission, by personal data in the files, by a missing licence, or because no open file exists. The status of each is in `site/data/wanted.json` (its "check" and "who_to_ask" fields).
+Plan item 17 (`docs/proposal-2026-10.md`, J row 17). The PR Data Observatory checked these sources with live requests on 2026-10-05 and 2026-10-06 and did **not** harvest the blocked ones. The one exception is the Police's December municipal reports of Type I crimes, which are live while their terms are confirmed (letters 1 and 2; HANDOFF decision 24). Each blocked source is held back by terms that require written permission, by personal data in the files, by a missing license, or because no open file exists. The status of each is in `site/data/wanted.json` (its "check" and "who_to_ask" fields).
 
 **Nothing here has been sent, and Claude will not contact anyone.** Before any request goes out:
 
 1. **Review.** FPR leadership and Compliance review the text. They decide who signs and which address each request goes to; every address below is a placeholder.
 2. **Requests that need leadership approval first.**
-   - Section 1, Police: crime counts by barrio. HANDOFF decision 24 approved crime counts only by municipio, and warned that a crime map under FPR's name can stigmatise communities, some of them WCRP communities.
+   - Section 1, Police: crime counts by barrio. HANDOFF decision 24 approved crime counts only by municipio, and warned that a crime map under FPR's name can stigmatize communities, some of them WCRP communities.
    - Section 3, Comisión Estatal de Elecciones: it asks only for registered voters and votes cast, but it touches elections.
-3. **No harvesting before permission.** Nothing is downloaded from a blocked source until its written permission or licence is on file. Record it in `wanted.json` and `dictionary_src/sources.json`.
+3. **No harvesting before permission.** Nothing is downloaded from a blocked source until its written permission or license is on file. Record it in `wanted.json` and `dictionary_src/sources.json`.
 
 None of these requests is part of federal grant work (HUD CDBG-DR/MIT, USDA, EDA). If one comes to support such work, it also goes through Finance and Compliance review before it is sent. Letters 4 and 5 refer to the site's public money data (federal funds), whose headline is held for Compliance (decision 21): Compliance should see them with that in mind.
 
@@ -17,7 +17,7 @@ None of these requests is part of federal grant work (HUD CDBG-DR/MIT, USDA, EDA
 Most letters say what FPR will not use (personal data, names, addresses); letters 6b and 7 say what FPR would publish. The commitments below are FPR's to approve (leadership, at the review step). Once approved, offer them when an agency replies, so every agency gets the same terms:
 
 - **Aggregated or facility-level figures only.** No names, addresses, case narratives or person-level records, and small cells suppressed by the agency's rule.
-- **Credit and accuracy.** The agency is credited as the source, with the date of the data. Figures are shown as the agency gives them, and derived figures (rates per 1,000 residents, for example) are labelled as such.
+- **Credit and accuracy.** The agency is credited as the source, with the date of the data. Figures are shown as the agency gives them, and derived figures (rates per 1,000 residents, for example) are labeled as such.
 - **Terms.** The agency's terms of use are followed, and FPR takes the data off the site if the agency asks. Copies that people have already downloaded cannot be recalled.
 - **A copy back.** The agency gets a link to how its data are shown. Help with formats (CSV, GTFS, GeoJSON) at no cost is an offer of staff time, so leadership decides whether to make it.
 
@@ -25,16 +25,16 @@ Most letters say what FPR will not use (personal data, names, addresses); letter
 
 | # | To | What we ask | Why it is blocked today |
 |---|---|---|---|
-| 1 | Negociado de la Policía (leadership approval first) | Incidents counted by barrio and month, small cells suppressed; a licence for the December municipal reports | The public incident feed holds addresses and narratives (personal data) and states no terms |
-| 2 | Instituto de Estadísticas | A working portal certificate; vital statistics after 2020 by municipio; a licence for the Type I crime reports | The portal fails its TLS certificate check; the annual report stops at 2020 (PDF) |
-| 3 | Comisión Estatal de Elecciones (leadership approval first) | Registered voters and votes cast by precinct, in a file | The site blocks automated access; no licence stated |
-| 4 | ABRE Puerto Rico | Permission to reuse the municipal index, a version without officials' names, and other years | No licence; the file names mayors; one year only |
-| 5 | Oficina del Contralor | Contract totals by entity, municipio and fiscal year, after fiscal 2022-23; a licence | No licence; contractor names are personal data; stale since 2022-23 |
+| 1 | Negociado de la Policía (leadership approval first) | Incidents counted by barrio and month, small cells suppressed; a license for the December municipal reports | The public incident feed holds addresses and narratives (personal data) and states no terms |
+| 2 | Instituto de Estadísticas | A working portal certificate; vital statistics after 2020 by municipio; a license for the Type I crime reports | The portal fails its TLS certificate check; the annual report stops at 2020 (PDF) |
+| 3 | Comisión Estatal de Elecciones (leadership approval first) | Registered voters and votes cast by precinct, in a file | The site blocks automated access; no license stated |
+| 4 | ABRE Puerto Rico | Permission to reuse the municipal index, a version without officials' names, and other years | No license; the file names mayors; one year only |
+| 5 | Oficina del Contralor | Contract totals by entity, municipio and fiscal year, after fiscal 2022-23; a license | No license; contractor names are personal data; stale since 2022-23 |
 | 6 | LUMA Energy and Negociado de Energía | Service interruptions by municipio and month, or written permission to read the outage data | LUMA's terms bar automated access without written permission |
 | 7 | Autoridad de Acueductos y Alcantarillados | Service interruptions by municipio or service area | The interruptions page returned 404; no open dataset |
 | 8 | Departamento de Salud | Written consent to republish aggregated surveillance series | The terms bar republishing without written consent; some files are person-level |
-| 9 | Office of Head Start (HHS) | Reuse terms for the service location file; earlier snapshots | The licence is not stated |
-| 10 | Departamento de Educación, and ACUDEN or the Departamento de la Familia | School list with openings and closings; licensed child-care centres and capacity | Portals in maintenance or behind a token; no child-care file found |
+| 9 | Office of Head Start (HHS) | Reuse terms for the service location file; earlier snapshots | The license is not stated |
+| 10 | Departamento de Educación, and ACUDEN or the Departamento de la Familia | School list with openings and closings; licensed child-care centers and capacity | Portals in maintenance or behind a token; no child-care file found |
 | — | HRSA, Area Health Resources File | Permission to reuse | Draft already in `docs/health.md` |
 
 ---
@@ -60,7 +60,7 @@ Con gusto coordinamos una reunión breve.
 Atentamente,
 [Nombre y cargo — a completar por FPR]
 
-**English summary.** Leadership approves before this is sent: a map of crime by barrio under FPR's name can stigmatise communities (decision 24). We ask the Police Bureau for incident counts by barrio and month and by offence type, with small cells suppressed, and for the reuse terms of the December municipal reports already shown on the site. We would not use or publish addresses, narratives or any personal data. That is why we did not use the public incident map, which holds them.
+**English summary.** Leadership approves before this is sent: a map of crime by barrio under FPR's name can stigmatize communities (decision 24). We ask the Police Bureau for incident counts by barrio and month and by offense type, with small cells suppressed, and for the reuse terms of the December municipal reports already shown on the site. We would not use or publish addresses, narratives or any personal data. That is why we did not use the public incident map, which holds them.
 
 ## 2. Instituto de Estadísticas de Puerto Rico
 
@@ -249,11 +249,11 @@ Los portales datos.pr.gov y Busca tu Escuela estaban en mantenimiento o requerí
 Atentamente,
 [Nombre y cargo — a completar por FPR]
 
-**English summary.** We ask the Department of Education for the school list with status and closing dates, and the agency that licenses child-care centres (ACUDEN or the Department of the Family: confirm before sending) for licensed centres with capacity, both by municipio and with reuse terms. Only facility data would be shown.
+**English summary.** We ask the Department of Education for the school list with status and closing dates, and the agency that licenses child-care centers (ACUDEN or the Department of the Family: confirm before sending) for licensed centers with capacity, both by municipio and with reuse terms. Only facility data would be shown.
 
 ---
 
 ## After a reply
 
-- **Written permission or licence:** save it with FPR's records (not in this repo if it names people). Set the row in `site/data/wanted.json` to **checked** with the date and the terms, and add the licence to `dictionary_src/sources.json`. The harvest then becomes a normal data item, with tests and a dictionary entry.
+- **Written permission or license:** save it with FPR's records (not in this repo if it names people). Set the row in `site/data/wanted.json` to **checked** with the date and the terms, and add the license to `dictionary_src/sources.json`. The harvest then becomes a normal data item, with tests and a dictionary entry.
 - **No reply or a refusal:** note the date in the row's "check" field and keep it **blocked**.

@@ -1,7 +1,7 @@
 """Q1/Q5: how stale is places.json (transit_m, transit_400m, nearest_stop) compared with the CURRENT transport.json?
 Replicates the twin's own distance formula (transport.py _dist_m: 111,320 m per degree latitude, longitude shortened by cos(mean lat))
 and its stop set (kinds transit_stop, bus_stop, bus_station, rail_station, ferry_terminal; any source, any feed status), by brute force
-(true nearest in metres, not nearest in degrees).
+(true nearest in meters, not nearest in degrees).
 """
 from common import *
 
@@ -25,7 +25,7 @@ for a in range(0, d.n_places, CH):
 
 pub = d.p_transit_m
 dm = d.default
-new_i = np.floor(best)          # the twin cuts to whole metres for transit_m
+new_i = np.floor(best)          # the twin cuts to whole meters for transit_m
 res = {}
 res["twin_formula_pct400_default_current_stops"] = pct(((best <= 400) & dm).sum(), dm.sum())
 res["published_pct400_default"] = pct((d.p_t400 & dm).sum(), dm.sum())

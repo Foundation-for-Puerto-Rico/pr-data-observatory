@@ -170,7 +170,7 @@ class Checker(unittest.TestCase):
     def test_names_must_be_there_and_norm_must_follow_them(self):
         cw = copy.deepcopy(self.cw)
         cw["units"]["barrio"][0][4] = "something else"
-        self.assertIn("names or normalised name", self.problems(cw))
+        self.assertIn("names or normalized name", self.problems(cw))
 
     def test_outlines_must_belong_to_the_crosswalk(self):
         self.assertIn("are not tracts of the crosswalk", self.problems(tracts=("72001000100", "72001999999")))

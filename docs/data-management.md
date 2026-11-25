@@ -26,13 +26,13 @@ them as terms (section 8).
   record is a group of fields (`by_category.ATTRACTIONS`). A cell that holds a list (24 hourly counts, the stop times of a trip) is one field. A field is
   counted when at least one record has a value in it; in a file with several tables, the fields of each table are counted (`(table, field)` pairs).
 - **Value (data point)**: a non-null scalar in a field of a record. A list cell counts its non-null elements. **Missing**: `null`, an absent key, the empty
-  string, NaN. A coded value (99,999 metres: beyond the search limit) is a value.
+  string, NaN. A coded value (99,999 meters: beyond the search limit) is a value.
 - **Not values**: metadata (titles, labels, units, definitions, notes, sources, about, build stamps, method and check blocks, the `type` members of GeoJSON);
   geometry coordinates (counted as vertices); the keys a file stores once as a lookup (`geo.ids`, `geo.names`, the `years` list), which identify a record but
   are not observations of it; and lookup tables (the land-use legend, the CPI deflator of `economy_series.json`, the gazetteer). A key stored *inside* each
   record (a GeoJSON `geoid` property, a place's Overture id) is a value: the record carries it.
 - **Vertex**: a position of a geometry: a GeoJSON coordinate pair (the closing position of each ring counts), a point's latitude and longitude in a table, a
-  point of a route path (with its metres along the path, a measure coordinate), a node or interior shape point of `roads.bin`. Reported apart; a file
+  point of a route path (with its meters along the path, a measure coordinate), a node or interior shape point of `roads.bin`. Reported apart; a file
   without geometry has none.
 - **Kind**: `data` (counted); `documentation`, a file whose primary domain is `system.docs` (the dictionary files, the catalog files, `meta.json`,
   `wanted.json`); `index`, `system.tools` (`gazetteer.json`, a search lookup of names already in other files). Documentation and index files are listed and
@@ -51,7 +51,7 @@ them as terms (section 8).
 | GeoJSON | every `.geojson` (also `geo/`) | feature | properties | the collection's `source`, `vintage`, `notes`, `built`; geometry → vertices |
 | Series | `*_series.json`, `acs_*.json`, `conditions_barrio.json`, `landslide_barrio.json`, `population_age.json` (three tables: municipio, barrio, tract), `wcrp_rvi_barrio.json` | area × period with a value | each variable, each margin of error; `economy_series.json` also `top_sector` (per area and year) and the island's `fed_unplaced_share` and `fema_pa_statewide_share`; `housing_series.json` the island's four cost-burden distributions (`tables.*`) | `geo`, `years`, `vars[].label/unit/definition/basis…`, `notes`, `sources`, `deflator` |
 | Columnar | `exposure_*.json`, `wcrp_rvi_inputs.json`, `place_access.json` (with `tw_straight`, a flag stored as the list of the records that have it), `wcrp_social.json` (and its 710 communities, whose code has one character per asset flag: `1`, `0`, `-` missing) | position with a value | every list of one value per record, by its path | labels, parameters (`near_m`, `cap_m`), `geo` |
-| Lists of records | `places.json` (the 1,005 rows counted but not drawn are records), `transport.json`, `municipalities.json` (keyed by name), `hurricanes.json` (a storm; its track is one field: each fix gives a vertex and three values: time, wind, status), `population_blocks.json` (a block: residents, metres to a stop, metres walking) | object | keys | latitude and longitude → vertices |
+| Lists of records | `places.json` (the 1,005 rows counted but not drawn are records), `transport.json`, `municipalities.json` (keyed by name), `hurricanes.json` (a storm; its track is one field: each fix gives a vertex and three values: time, wind, status), `population_blocks.json` (a block: residents, meters to a stop, meters walking) | object | keys | latitude and longitude → vertices |
 | Own tables | `transit_supply.json` (patterns, routes, stops for each day, and one island row per day), `trips*.json` (trips; paths with their kind and stops; path points → vertices), `operators.json` (operators, coverage, transfers), `geo/crosswalk.json` (units of every level; barrio–tract weights), `housing.json` (the study's island figures, the LIHTC table), `landuse_summary.json` (78 municipios, Puerto Rico, unassigned) | row of each table | columns | parameters, legends, live-feed notes, totals already in the rows |
 | Binary | `roads.bin` | road edge (header `n_edges`) | length, road class, one-way | end nodes (topology); nodes and shape points → vertices (header `n_nodes + n_shape`) |
 | Not counted | documentation and index files | — | — | entries are shown instead |
@@ -134,20 +134,20 @@ From the file's record in `dictionary_src/datasets.json` (`registry.review_of`):
 |---|---|---|
 | `open` | Pendiente: *reason* / Open: *reason* (one line per open review) | a review is open; *reason* is the review's `summary` (`en`, `es`) |
 | `cleared` | Aprobada AAAA-MM-DD / Cleared YYYY-MM-DD | every review was cleared; the latest `date` |
-| `unstated` | Licencia sin declarar: *sources* / License not stated: *sources* | no review, and at least one source states no licence: a file takes the most restrictive licence class of its sources (`contract.py` enforces it), so the cell names the sources that set it (`review.licence_from`, from their `short` names in `sources.json`) |
+| `unstated` | Licencia sin declarar: *sources* / License not stated: *sources* | no review, and at least one source states no license: a file takes the most restrictive license class of its sources (`contract.py` enforces it), so the cell names the sources that set it (`review.licence_from`, from their `short` names in `sources.json`) |
 | `none` | No requiere / Not required | nothing to review |
 
 Flags beside it: **Contenido de fondos federales / Federal grant content** (`flags: ["federal-grant"]`: HUD CDBG-DR, FEMA assistance, federal awards; the
-contract fails a file so flagged that has no compliance review), **Solo conteos / Counts only** (`counts-only`), **Licencia sin declarar: *sources*** (licence
+contract fails a file so flagged that has no compliance review), **Solo conteos / Counts only** (`counts-only`), **Licencia sin declarar: *sources*** (license
 class `unstated`, when the status is not already that) and **Con licencia, no abierta: *sources*** (`licensed-not-open`). A file's other sources may well be
 licensed: `barrios.geojson` takes "License not stated" from the municipal GTFS feeds alone. The review filter's "License not stated" keeps every file of that
 class (status `unstated` or the `licence-unstated` flag: 24 files). `contract.py` checks the flags and warns about an open
 review with no summary or a cleared one with no date. The Spanish summaries of federal grant reviews say only "revisión de Finanzas y Cumplimiento del
 contenido de fondos federales": Spanish that names the programs waits for Finance and Compliance (`i18n_src/held_for_review.json`, decisions 20 and 21).
 
-On 2026-10-19: **7 open reviews in 6 files**: `places.json` (personal data: names of drawn places), `municipalities.json` and `housing.json` (licence: the
+On 2026-10-19: **7 open reviews in 6 files**: `places.json` (personal data: names of drawn places), `municipalities.json` and `housing.json` (license: the
 short-term rental figures licensed to FPR; withdrawn on 2026-11-23 with the figures), `housing.json`, `housing_series.json` and `economy_series.json` (federal grant content), `health_series.json`
-(licence: HRSA's terms). Cleared: the four WCRP files (2026-10-19), `historic_places.geojson` (2026-10-18), `public_housing.geojson`,
+(license: HRSA's terms). Cleared: the four WCRP files (2026-10-19), `historic_places.geojson` (2026-10-18), `public_housing.geojson`,
 `facility_series.json`, `conditions_series.json`, `conditions_barrio.json` (2026-10-17). Federal grant content: the four WCRP files, `housing.json`,
 `housing_series.json`, `economy_series.json`. Counts only: `places.json`, `historic_places.geojson`, `community_series.json`, `public_housing.geojson`,
 `facility_series.json`, `health_series.json`, `care_series.json`, `nonprofit_series.json`. License not stated: 24 files, from 9 sources (the municipal GTFS
@@ -169,7 +169,7 @@ that gives it. No name and no location appears.
 | Tourism places counted but not drawn | 1,005 of 32,541 (holiday rentals 971, named by a street address 34) | rows of `places.json` with `withheld` | `places.withheld` |
 | Listings that are not tourism, left out | 2,577 | `meta.json` `counts.not_tourism_dropped` | `places.withheld` |
 | Health center service sites (points kept in the local cache) | 160 (127 permanent, 33 mobile vans) | `health_series.json` `notes.sites` | `health.sites_method` |
-| Shelters | 0 published (hurricane lists state no licence: `wanted.json` row `shelters`, blocked; domestic-violence and children's shelters never) | `wanted.json` | `data.wanted` |
+| Shelters | 0 published (hurricane lists state no license: `wanted.json` row `shelters`, blocked; domestic-violence and children's shelters never) | `wanted.json` | `data.wanted` |
 | National Register listings that are private homes | 73 of 342 | `community_series.json` `notes.historic_places` | `layers.historic_places` |
 | Public housing at an approximate location | 132 of 304 | `facility_series.json` `notes.public_housing` | `layers.public_housing` |
 | Treatment facilities (counts by municipio only) | 87 | `community_series.json` `notes.treatment_facilities` | `community.bh_all` |
@@ -194,7 +194,7 @@ that gives it. No name and no location appears.
   the site only through a pull request to the repository, which is private: Azure Static Web Apps publishes what reaches `main` (`pages.yml`, on push to `main`),
   and a ruleset on `main`, with no bypass, requires a pull request and the `checks` job of `tests.yml`, and blocks force pushes and deleting the branch.
   The ruleset sets no required number of approving reviews; the team reviews the pull requests people open before merging them. The automatic refreshes
-  (`refresh-transit.yml`, `rebuild.yml`) open pull requests too: a routine source merges itself once the same `checks` pass, and a new vintage, a licence
+  (`refresh-transit.yml`, `rebuild.yml`) open pull requests too: a routine source merges itself once the same `checks` pass, and a new vintage, a license
   under review or public money waits for a person (`docs/automation.md`). Who can write to the repository is set in its GitHub settings; neither the page
   nor these docs name anyone.
 - **Links**: the dictionary's "Published data files" section (anchor `#files`, kept) is now a summary with a link; the About texts of the map and the 3D view

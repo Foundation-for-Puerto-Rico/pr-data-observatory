@@ -1,7 +1,7 @@
 """A small walking-network engine used by the access spike.
 
-A WalkNet is an undirected graph of edges (u, v, polyline in EPSG:32161 metres). Points (places, stops) are snapped to the nearest edge
-(vectorised with shapely), and bounded Dijkstra gives network walking distance in metres:
+A WalkNet is an undirected graph of edges (u, v, polyline in EPSG:32161 meters). Points (places, stops) are snapped to the nearest edge
+(vectorized with shapely), and bounded Dijkstra gives network walking distance in meters:
 
     distance(place, stop) = connector(place -> edge) + path along the network + connector(edge -> stop)
 
@@ -65,7 +65,7 @@ class WalkNet:
 
     # ---- search ------------------------------------------------------------------------------------------------
     def search(self, e, a, c, bound, node_reg, edge_reg, want_nodes=False):
-        """Bounded Dijkstra from a point on edge e at offset a (connector c). Returns {target id: metres} for targets within bound."""
+        """Bounded Dijkstra from a point on edge e at offset a (connector c). Returns {target id: meters} for targets within bound."""
         L = self.len[e]
         u, v = int(self.eu[e]), int(self.ev[e])
         dist = {}

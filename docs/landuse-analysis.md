@@ -4,7 +4,7 @@ The Plan de Uso de Terrenos 2015 of the Junta de Planificación (PUT-2014, adopt
 
 ## Classes on the map
 
-Each of the ten classes in the legend has a tick box. All are ticked when the layer opens; unticking a class hides its polygons on the map and in the click pop-up (`app.js`: `LU_KEYS`, `luStyle`, `luShown`). Codes without a colour of their own (SREP-AE, SREP-EP, SREP-EA, SREP-P, SREP-AP) draw and count as "Rústico especialmente protegido" (`landuse.class_key`), as before. The choice is not kept in the map's link.
+Each of the ten classes in the legend has a tick box. All are ticked when the layer opens; unticking a class hides its polygons on the map and in the click pop-up (`app.js`: `LU_KEYS`, `luStyle`, `luShown`). Codes without a color of their own (SREP-AE, SREP-EP, SREP-EA, SREP-P, SREP-AP) draw and count as "Rústico especialmente protegido" (`landuse.class_key`), as before. The choice is not kept in the map's link.
 
 ## The analysis
 

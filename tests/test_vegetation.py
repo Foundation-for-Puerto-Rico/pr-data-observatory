@@ -42,7 +42,7 @@ def scene(d, name, red, nir, scl, x0=500000.0, y0=2050000.0, epsg=32620, date="2
 
 
 def cells(n=4, x0=500000.0, y0=2050000.0):
-    """The centres of the 40 m pixels of an n x n scene (one grid cell on each)."""
+    """The centers of the 40 m pixels of an n x n scene (one grid cell on each)."""
     cc, rr = np.meshgrid(np.arange(n), np.arange(n))
     return x0 + (cc.ravel() + 0.5) * 40, y0 - (rr.ravel() + 0.5) * 40
 

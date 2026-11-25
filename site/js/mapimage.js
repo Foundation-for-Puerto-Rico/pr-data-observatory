@@ -3,7 +3,7 @@
    The image is the map as it is on screen, drawn in this browser and saved as a PNG; nothing is sent anywhere. It stacks, in the order the map draws them:
      - the base map (MapLibre's canvas, kept readable by preserveDrawingBuffer in core/basemap.js) and every Leaflet canvas (the map uses preferCanvas);
      - the images on the map (heat, slope, night lights...): all served by this site, so the image can be saved;
-     - the markers drawn as boxes (place clusters, stop symbols): their colours, shapes and numbers;
+     - the markers drawn as boxes (place clusters, stop symbols): their colors, shapes and numbers;
    then, under the map, a band with the title, the legends on screen (the Analysis layers' legend and each switched-on layer's legend), a scale bar, the
    sources (the map's credit line) and the date and address of the view. Pop-ups and the map's buttons are left out. */
 const MapImage = (() => {
@@ -13,7 +13,7 @@ const MapImage = (() => {
 
   // ── the legends on screen, as { title, rows: [{ label, sw }] } ─────────────
   function rowsOf(box) {
-    const bar = box.querySelector('.surf-bar');   // a continuous surface (slope, heat, greenness: core/surfscale.js): its colour ramp, its ends and the threshold if one is set
+    const bar = box.querySelector('.surf-bar');   // a continuous surface (slope, heat, greenness: core/surfscale.js): its color ramp, its ends and the threshold if one is set
     if (bar) {
       const ticks = [...box.querySelectorAll('.surf-ticks span')].map(x => x.textContent.trim()).filter(Boolean), rows = [{ label: ticks.join(' … ') || txt(box.querySelector('.legend-title')), sw: K.swatch({ bgImage: getComputedStyle(bar).backgroundImage }) }];
       const mn = box.querySelector('.surf-min input'), out = box.querySelector('.surf-min output');
@@ -103,7 +103,7 @@ const MapImage = (() => {
     y += lay.height ? lay.height + 4 : 0;
     g.font = `12px ${FONT}`; g.fillStyle = '#666';
     if (lay.left) { g.fillText(Tn(lay.left, '{n} more legend is on the map page.', '{n} more legends are on the map page.', { n: lay.left }), M, y); y += 18; }
-    // scale bar at the map's centre latitude
+    // scale bar at the map's center latitude
     const ctr = map.getSize().divideBy(2), a = map.containerPointToLatLng(ctr), b = map.containerPointToLatLng(ctr.add([100, 0])), sc = K.niceScale(a.distanceTo(b) / 100, 160);
     if (sc) { g.strokeStyle = '#2A2E2E'; g.lineWidth = 2; g.beginPath(); g.moveTo(M, y + 14); g.lineTo(M, y + 20); g.lineTo(M + sc.px, y + 20); g.lineTo(M + sc.px, y + 14); g.stroke(); g.fillStyle = '#2A2E2E'; g.fillText(sc.label, M + sc.px + 8, y + 12); }
     y += 30; g.fillStyle = '#666';

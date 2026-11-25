@@ -24,7 +24,7 @@ class Method(unittest.TestCase):
         import slope
         dx, dy = 9.78, 10.29
         r, c = np.mgrid[0:14, 0:14].astype(float)
-        for gx, gy in ((0.10, 0.0), (0.0, -0.25), (0.3, 0.4)):          # rise per metre east and north
+        for gx, gy in ((0.10, 0.0), (0.0, -0.25), (0.3, 0.4)):          # rise per meter east and north
             z = gx * c * dx - gy * r * dy                                # rows run south
             s = slope.horn(z, dx, dy)
             self.assertEqual(s.shape, (12, 12))

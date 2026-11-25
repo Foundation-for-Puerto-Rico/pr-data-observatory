@@ -1,6 +1,6 @@
 /* PR Data Observatory core: Clean view, on the 2D map and the 3D view (2026-11-11). One button in the map's controls, or the V key, hides the boxes over
    the map (the layer list, legends, the time bar, the map's buttons and messages) for a clear look, a presentation or a screenshot; the scale and the
-   map credits stay, as their licences ask. A "Show controls" button, Escape or V brings them back. What is hidden is one list in twin.css (body.clean-view).
+   map credits stay, as their licenses ask. A "Show controls" button, Escape or V brings them back. What is hidden is one list in twin.css (body.clean-view).
    The page calls CleanView.button() and puts the button in its map's controls. */
 (function (root) {
   'use strict';

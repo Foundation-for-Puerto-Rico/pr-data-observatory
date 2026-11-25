@@ -318,7 +318,7 @@ class PublishedLedger(unittest.TestCase):
         self.assertEqual(rows["transport.json"]["status"], "unstated")
 
     def test_a_restrictive_licence_class_names_the_sources_that_set_it(self):
-        # a file takes the most restrictive class of its sources: "License not stated" must never read as "none of its sources has a licence"
+        # a file takes the most restrictive class of its sources: "License not stated" must never read as "none of its sources has a license"
         srcs, aliases = registry.sources()
         for f in self.reg["files"]:
             if f.get("licence_class") in ("unstated", "licensed-not-open"):
@@ -428,7 +428,7 @@ class Page(unittest.TestCase):
         self.assertIn('id="files"', d, "dictionary.html#files still lands on the files section")
         self.assertIn('href="data-management.html', d)
         self.assertNotIn('id="filesTbl"', d)
-        for page in ("index.html", "3d.html"):
+        for page in ("about.html", "3d.html"):   # the map's About text is about.html since 2026-11-25
             self.assertIn('href="data-management.html"', (SITE / page).read_text(encoding="utf-8"), f"the About text of {page} names the page")
         self.assertNotIn('href="data-management.html"', re.search(r'<nav class="views".*?</nav>', (SITE / "index.html").read_text(encoding="utf-8"), re.S).group(0), "no top-bar button")
 

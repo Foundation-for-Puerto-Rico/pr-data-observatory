@@ -31,7 +31,7 @@ const Catalog = (() => {
     if (a[0] === 'econ') {
       if (ECON.api.state().layers.some(l => l.key === a[1])) { toast(T('That is already on the map. Change it in the On the map panel.'), 5000); return true; }   // a second copy would only stack on the first
       const r = await ECON.api.show({ clear: false, stay: true, layers: [{ key: a[1], mode: 'fill', ...(a[2] === 'count' ? { norm: 'value' } : a[2] && a[2] !== 'value' ? { norm: a[2] } : {}) }] });   // 'value': the Economy tab picks the shading that suits the series; 'count': the count as published (Comunidades Especiales: per resident means little)
-      if (!r.applied.length) toast(T('That could not be put on the map. Find it in Explore to add it.'), 5000);
+      if (!r.applied.length) toast(T('That could not be put on the map. Find it in Home to add it.'), 5000);
       return r.applied.length > 0;
     }
     let n = 0;
@@ -60,7 +60,7 @@ const Catalog = (() => {
     const v = ((S.catalog.presets || {})[dom] || []).find(x => x.id === id);
     if (!v || typeof ECON === 'undefined') return false;
     const r = await ECON.api.show({ clear: true, stay: true, layers: v.show.map(([key, mode, o]) => ({ key, mode, ...(o || {}) })) });
-    if (v.show.length && !r.applied.length) { toast(T('That could not be put on the map. Find it in Explore to add it.'), 5000); return false; }
+    if (v.show.length && !r.applied.length) { toast(T('That could not be put on the map. Find it in Home to add it.'), 5000); return false; }
     const want = new Set(v.on);
     for (const k of VIEW_OFF()) { const el = $('#' + LAYER_KEYS[k]); if (el && el.checked !== want.has(k)) { el.checked = want.has(k); el.dispatchEvent(new Event('change')); } }
     refreshFolds();
@@ -180,7 +180,7 @@ const Catalog = (() => {
     }, () => { box.innerHTML = `<div class="note">${esc(T('The list could not be loaded. Try again in a moment.'))}</div>`; });
   }
 
-  // What is planned: the wanted datasets of a field (site/data/wanted.json, a candidate list: source, licence and terms are still to be confirmed before anything is harvested).
+  // What is planned: the wanted datasets of a field (site/data/wanted.json, a candidate list: source, license and terms are still to be confirmed before anything is harvested).
   const WANTED_STATUS = () => ({ candidate: T('Candidate'), checked: T('Checked'), building: T('Building'), blocked: T('Blocked') });   // a dataset already live is not listed as planned
   async function togglePlanned(btn) {
     const box = $('#pl-' + btn.dataset.planned), open = box.hidden;

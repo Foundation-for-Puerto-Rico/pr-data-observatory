@@ -92,7 +92,7 @@ def build(refresh: bool):
         assert muni in MUNICIPALITY_NAMES, f"unknown municipio {muni!r}"
         full = make_valid(shape(ft["geometry"]))
         pct = sfha_pct(full, sfha, tree)
-        km2 = round((p.get("Shape_Area") or 0) / 1e6, 3)   # Shape_Area is in the JP's State Plane metres, not Web Mercator
+        km2 = round((p.get("Shape_Area") or 0) / 1e6, 3)   # Shape_Area is in the JP's State Plane meters, not Web Mercator
         g = shape(ft["geometry"]).simplify(0.00005, preserve_topology=True)   # ~5 m; display copy (make_valid can return a GeometryCollection)
         if g.is_empty:
             continue

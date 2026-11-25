@@ -1,16 +1,16 @@
 /* PR Data Observatory: the workbench's "Study areas" view (plan item 16, section C4; docs/study-areas.md). Loaded the first time the view opens.
-   A person loads a GeoJSON file of polygons (a neighbourhood, a corridor, a programme's service area). It is read in this browser and never uploaded; only each polygon's
+   A person loads a GeoJSON file of polygons (a neighborhood, a corridor, a program's service area). It is read in this browser and never uploaded; only each polygon's
    name and shape are kept, with the set's name, source and description, in IndexedDB, and "Export" writes it back as GeoJSON. For every area the view gives what it holds
    (residents by census block centroid, residents far from a scheduled stop, transit stops; on request tourism places and the share in flood and protected areas) and an
    estimate of every dataset of the Economy tab from the municipios it covers, each with its method.
-   "Area around a point" (GIS tools step 1, HANDOFF decision 93, docs/gis-tools-proposal-2026-11.md): a circle or a ring around a point picked on the map, the map's centre or
+   "Area around a point" (GIS tools step 1, HANDOFF decision 93, docs/gis-tools-proposal-2026-11.md): a circle or a ring around a point picked on the map, the map's center or
    typed coordinates, kept as an area of the set "Areas around points" and measured like any other. "Also measure surface heat, greenness and landslide susceptibility" adds
    zonal statistics of the summer heat images and estimates from the barrios covered.
    "What drains here" (GIS tools step 3, docs/watersheds.md): the land that drains to a point, from the USGS NHDPlus HR catchments (catchments.geojson, loaded on
    first use) walked upstream (Core.study.upstream), kept as an area of the set "Areas that drain to points".
    "Build my region" and "Count my points" (GIS tools step 4): municipios or barrios merged into one area (and the regional profile of two or more municipios);
    the points of a CSV or GeoJSON counted by barrio, municipio and study area, in this browser, never drawn, counts under 5 shown as "fewer than 5".
-   "Download what's inside" (GIS tools step 5): for every area of the set summarised, the points of a dataset inside it or the outlines that overlap it, as
+   "Download what's inside" (GIS tools step 5): for every area of the set summarized, the points of a dataset inside it or the outlines that overlap it, as
    GeoJSON or CSV, each row naming its area and source.
    "Walking time" (GIS tools step 6): the area within a walk of 5 to 20 minutes along mapped roads from a point, as a study area.
    Uses the Economy tab's engine (E, EC, ecSaveCsv), the map's state (S, map, Data) and Core.study. Text goes through T / Tn / Th. */
@@ -18,7 +18,7 @@ const StudyAreas = (() => {
   const DB = 'pr-twin-studyareas', STORE = 'sets', ST = Core.study;
   let mem = null;   // when the browser keeps no IndexedDB (a private window), the sets of this visit only
   const st = { sel: '', msg: '', err: [], persistent: true, y: null, q: '', extra: false, land: false, busy: false, res: null, shown: '', page: 0, r: 800, r0: 0, around: '', drawn: '', drain: '', picking: false, pickMode: 'around', rlev: 'muni', rsel: new Set(), rq: '', myreg: '', pts: null, plev: 'barrio', dl: 'stops', dlf: 'geojson', walk: '', wmin: 10 };
-  const DIST = [400, 800, 1000, 1600, 5000], MAX_R = 20000;   // the distances offered in one click (metres); "More settings" takes any outer distance up to 20 km and an inner one for a ring
+  const DIST = [400, 800, 1000, 1600, 5000], MAX_R = 20000;   // the distances offered in one click (meters); "More settings" takes any outer distance up to 20 km and an inner one for a ring
   const PAGE = 12;   // areas shown side by side; the CSV holds them all
   let layer = null;
 
@@ -83,7 +83,7 @@ const StudyAreas = (() => {
   const dist = (m) => m >= 1000 ? T('{n} km', { n: fmt(m / 1000, m % 1000 ? 1 : 0) }) : T('{n} m', { n: fmt(m, 0) });
   /** Adds the circle (or ring) of the distances chosen around (lng, lat) to the set "Areas around points" of this visit (made on the first point), selects it and shows it.
       Returns the message for the view. */
-  /** An area drawn with Tools › Map tools › Draw an area (js/measure.js), added to the set "Drawn areas" and summarised like any other. Returns the message to show. */
+  /** An area drawn with Tools › Map tools › Draw an area (js/measure.js), added to the set "Drawn areas" and summarized like any other. Returns the message to show. */
   async function addDrawn(geometry, name) {
     const area = { name: String(name || T('Drawn area')).slice(0, 80), geometry };
     let set = (await list()).find(x => x.id === st.drawn);
@@ -262,7 +262,7 @@ const StudyAreas = (() => {
   async function downloadInside(set, id, kind) {
     const d = DL.find(x => x.id === id); if (!d) return '';
     let rows; try { rows = await inside(set, d); } catch { return T('The data could not be loaded. Check your connection and try again.'); }
-    const stem = `pr_${norm(set.name).replace(/[^a-z0-9]+/g, '_').slice(0, 30) || 'areas'}_${d.id}`, source = T('PR Data Observatory, data/{file}; licence and credit in the data dictionary (dictionary.html)', { file: d.file });
+    const stem = `pr_${norm(set.name).replace(/[^a-z0-9]+/g, '_').slice(0, 30) || 'areas'}_${d.id}`, source = T('PR Data Observatory, data/{file}; license and credit in the data dictionary (dictionary.html)', { file: d.file });
     if (kind === 'csv') {
       const keys = rows.length ? Object.keys(rows[0].f.p) : [];
       ecSaveCsv(stem + '.csv', [T('Area'), ...keys, ...(d.kind === 'pt' ? ['lat', 'lon'] : []), T('Source')], rows.map(({ area, f }) => [area, ...keys.map(k => f.p[k]), ...(d.kind === 'pt' ? [f.lat, f.lng] : []), source]));
@@ -274,7 +274,7 @@ const StudyAreas = (() => {
     return Tn(rows.length, 'Downloaded {n} feature of "{data}".', 'Downloaded {n} features of "{data}".', { data: T(d.label) });
   }
   // ── walking time (GIS tools step 6, docs/study-areas.md) ───────────────
-  // The area within a walk of some minutes along mapped roads (Core.study.walkArea on js/roads.js's graph, roads.bin, loaded on first use), at WALK_MPM metres a
+  // The area within a walk of some minutes along mapped roads (Core.study.walkArea on js/roads.js's graph, roads.bin, loaded on first use), at WALK_MPM meters a
   // minute, kept as an area of the set "Walking areas".
   const WALK_MPM = 80, WALK_MIN = [5, 10, 15, 20];   // 4.8 km/h, a common planning pace for adults (slower for older adults and children)
   let roadsP = null;
@@ -315,7 +315,7 @@ const StudyAreas = (() => {
     if (body) { st.msg = st.pickMode === 'drain' ? T('Tracing the land upstream…') : st.pickMode === 'walk' ? T('Walking the roads…') : ''; render(body); }
     (st.pickMode === 'drain' ? addDrain : st.pickMode === 'walk' ? addWalk : addAround)(ll.lng, ll.lat).then(m => { st.msg = m; st.err = []; if (body) render(body); });
   }
-  function onPickKey(e) { if (e.key === 'Escape' && st.picking) { stopPick(); st.msg = T('Picking a point was cancelled.'); st.err = []; if (pickBody) render(pickBody); } }
+  function onPickKey(e) { if (e.key === 'Escape' && st.picking) { stopPick(); st.msg = T('Picking a point was canceled.'); st.err = []; if (pickBody) render(pickBody); } }
   function startPick(body) {
     pickBody = body; if (st.picking) return;
     st.picking = true; map.getContainer().classList.add('sa-picking');
@@ -346,16 +346,16 @@ const StudyAreas = (() => {
     const all = await list();
     if (st.sel && !all.some(s => s.id === st.sel)) { st.sel = ''; st.res = null; }
     const rows = all.map(s => `<tr${s.id === st.sel ? ' class="sel"' : ''}><th scope="row">${esc(s.name)}<small>${esc(Tn(s.areas.length, '{n} area', '{n} areas'))} · ${esc(date(s.created))} · ${esc(T('Source: {source}', { source: s.source }))}</small>${s.description ? `<small class="sc-notes">${esc(s.description)}</small>` : ''}</th>
-      <td class="sc-acts"><button type="button" class="btn small${s.id === st.sel ? ' primary' : ''}" data-sum="${esc(s.id)}">${esc(T('Summarise'))}</button><button type="button" class="btn small" data-show="${esc(s.id)}">${esc(st.shown === s.id ? T('Hide from the map') : T('Show on the map'))}</button><button type="button" class="btn small" data-export="${esc(s.id)}"><span class="ms-icon" aria-hidden="true">download</span>${esc(T('Export'))}</button><button type="button" class="icon-btn small" data-del="${esc(s.id)}" aria-label="${esc(T('Delete {name}', { name: s.name }))}"><span class="ms-icon" aria-hidden="true">delete</span></button></td></tr>`).join('');
+      <td class="sc-acts"><button type="button" class="btn small${s.id === st.sel ? ' primary' : ''}" data-sum="${esc(s.id)}">${esc(T('Summarize'))}</button><button type="button" class="btn small" data-show="${esc(s.id)}">${esc(st.shown === s.id ? T('Hide from the map') : T('Show on the map'))}</button><button type="button" class="btn small" data-export="${esc(s.id)}"><span class="ms-icon" aria-hidden="true">download</span>${esc(T('Export'))}</button><button type="button" class="icon-btn small" data-del="${esc(s.id)}" aria-label="${esc(T('Delete {name}', { name: s.name }))}"><span class="ms-icon" aria-hidden="true">delete</span></button></td></tr>`).join('');
     const custom = !DIST.includes(st.r) || st.r0 > 0;
     body.innerHTML = `<section class="sc-box sa-around" aria-labelledby="saAroundH"><h3 class="sec" id="saAroundH">${esc(T('Area around a point'))}</h3>
         <div class="note">${esc(T('Pick a point and a distance. The circle around it (a buffer) is measured like any study area: who lives there and how far they are from transit, and on request flood zones, surface heat, greenness and landslide susceptibility. It is drawn in this browser and kept with your study areas.'))}</div>
         <div class="btn-row sa-around-row"><label>${esc(T('Distance'))} <select id="saR">${DIST.map(m => `<option value="${m}"${m === st.r && !custom ? ' selected' : ''}>${esc(dist(m))}</option>`).join('')}${custom ? `<option value="" selected>${esc(st.r0 ? T('{inner} to {outer}', { inner: dist(st.r0), outer: dist(st.r) }) : dist(st.r))}</option>` : ''}</select></label>
           <button type="button" class="btn primary" data-pick aria-pressed="${st.picking && st.pickMode === 'around'}"><span class="ms-icon" aria-hidden="true">add_location_alt</span>${esc(st.picking && st.pickMode === 'around' ? T('Click the map (Esc to cancel)') : T('Pick a point on the map'))}</button>
-          <button type="button" class="btn" data-centre><span class="ms-icon" aria-hidden="true">my_location</span>${esc(T('Use the centre of the map'))}</button></div>
+          <button type="button" class="btn" data-centre><span class="ms-icon" aria-hidden="true">my_location</span>${esc(T('Use the center of the map'))}</button></div>
         <details class="sa-more"${custom ? ' open' : ''}><summary>${esc(T('More settings'))}</summary>
-          <div class="sc-grid"><label class="sc-f">${esc(T('Outer distance (metres, 50 to 20,000)'))} <input type="number" id="saRo" min="50" max="20000" step="10" value="${custom ? st.r : ''}" placeholder="${st.r}"></label>
-          <label class="sc-f">${esc(T('Inner distance for a ring (metres; empty for a full circle)'))} <input type="number" id="saRi" min="0" max="19990" step="10" value="${st.r0 || ''}"></label>
+          <div class="sc-grid"><label class="sc-f">${esc(T('Outer distance (meters, 50 to 20,000)'))} <input type="number" id="saRo" min="50" max="20000" step="10" value="${custom ? st.r : ''}" placeholder="${st.r}"></label>
+          <label class="sc-f">${esc(T('Inner distance for a ring (meters; empty for a full circle)'))} <input type="number" id="saRi" min="0" max="19990" step="10" value="${st.r0 || ''}"></label>
           <label class="sc-f">${esc(T('Latitude'))} <input type="text" inputmode="decimal" id="saLat" placeholder="18.4655"></label>
           <label class="sc-f">${esc(T('Longitude'))} <input type="text" inputmode="decimal" id="saLng" placeholder="-66.1057"></label></div>
           <div class="btn-row"><button type="button" class="btn small" data-coords>${esc(T('Add the area around these coordinates'))}</button><button type="button" class="btn small" data-newaround>${esc(T('Start a new set of areas around points'))}</button></div>
@@ -364,16 +364,16 @@ const StudyAreas = (() => {
       <section class="sc-box sa-around" aria-labelledby="saDrainH"><h3 class="sec" id="saDrainH">${esc(T('What drains here'))}</h3>
         <div class="note">${esc(T('Pick a point: the land whose rain flows to it, down the streams of the USGS network (its watershed), becomes a study area, with the same summary: residents, transit and, on request, flood zones, heat, greenness, landslides and slope. The stream network downloads once, about {mb} MB.', { mb: fmt(gz('catchments.geojson') / 1048576 || 3.2, 1) }))}</div>
         <div class="btn-row"><button type="button" class="btn primary" data-drainpick aria-pressed="${st.picking && st.pickMode === 'drain'}"><span class="ms-icon" aria-hidden="true">water</span>${esc(st.picking && st.pickMode === 'drain' ? T('Click the map (Esc to cancel)') : T('Pick a point on the map'))}</button>
-          <button type="button" class="btn" data-draincentre><span class="ms-icon" aria-hidden="true">my_location</span>${esc(T('Use the centre of the map'))}</button></div></section>
+          <button type="button" class="btn" data-draincentre><span class="ms-icon" aria-hidden="true">my_location</span>${esc(T('Use the center of the map'))}</button></div></section>
       <section class="sc-box sa-around" aria-labelledby="saWalkH"><h3 class="sec" id="saWalkH">${esc(T('Walking time'))}</h3>
         <div class="note">${esc(T('Pick a point: the area within a walk of so many minutes along mapped roads (a travel-time area) becomes a study area, with the same summary. At 4.8 km/h, on every road but motorways, both ways, and up to 100 m off the road; footpaths and steps are not on the map, so a walk is an estimate. The road network downloads once, about {mb} MB.', { mb: fmt(gz('roads.bin') / 1048576 || 3.3, 1) }))}</div>
         <div class="btn-row sa-around-row"><label>${esc(T('Minutes'))} <select id="saWm">${WALK_MIN.map(m => `<option value="${m}"${m === st.wmin ? ' selected' : ''}>${m}</option>`).join('')}</select></label>
           <button type="button" class="btn primary" data-walkpick aria-pressed="${st.picking && st.pickMode === 'walk'}"><span class="ms-icon" aria-hidden="true">hiking</span>${esc(st.picking && st.pickMode === 'walk' ? T('Click the map (Esc to cancel)') : T('Pick a point on the map'))}</button>
-          <button type="button" class="btn" data-walkcentre><span class="ms-icon" aria-hidden="true">my_location</span>${esc(T('Use the centre of the map'))}</button></div></section>
+          <button type="button" class="btn" data-walkcentre><span class="ms-icon" aria-hidden="true">my_location</span>${esc(T('Use the center of the map'))}</button></div></section>
       <section class="sc-box sa-around" aria-labelledby="saCrimH"><h3 class="sec" id="saCrimH">${esc(T('Property parcels (CRIM)'))}</h3>
         <div class="note">${esc(T('Pick a point to open the CRIM Catastro Digital at that spot, in a new tab: the cadastre of every property in Puerto Rico, with its parcel outlines, numbers and aerial photos. CRIM lets its parcels be seen only in its own viewer, so the observatory copies nothing from it and draws no parcel. CRIM shows its own notice first; it is a tax record, not a survey.'))}</div>
         <div class="btn-row"><button type="button" class="btn primary" data-crimpick aria-pressed="${st.picking && st.pickMode === 'crim'}"><span class="ms-icon" aria-hidden="true">open_in_new</span>${esc(st.picking && st.pickMode === 'crim' ? T('Click the map (Esc to cancel)') : T('Pick a point on the map'))}</button>
-          <button type="button" class="btn" data-crimcentre><span class="ms-icon" aria-hidden="true">my_location</span>${esc(T('Use the centre of the map'))}</button></div></section>
+          <button type="button" class="btn" data-crimcentre><span class="ms-icon" aria-hidden="true">my_location</span>${esc(T('Use the center of the map'))}</button></div></section>
       <section class="sc-box sa-around" aria-labelledby="saRegH"><h3 class="sec" id="saRegH">${esc(T('Build my region'))}</h3>
         <div class="note">${esc(T('Choose municipios or barrios, or start from a ready-made region, and add them as one study area (a dissolve). Two or more whole municipios also open the regional profile, where rates are pooled from their parts when those are published.'))}</div>
         <div class="btn-row sa-around-row"><label>${esc(T('Level'))} <select id="saRegL"><option value="muni"${st.rlev === 'muni' ? ' selected' : ''}>${esc(T('Municipios'))}</option><option value="barrio"${st.rlev === 'barrio' ? ' selected' : ''}>${esc(T('Barrios'))}</option></select></label>
@@ -396,7 +396,7 @@ const StudyAreas = (() => {
         <div class="note">${esc(T('A file exported from this view keeps its name, source and description: load it with the fields empty.'))}</div>
       </section>
       <section class="sc-box" aria-labelledby="saHowH"><h3 class="sec" id="saHowH">${esc(T('How an area is measured'))}</h3>
-        <ul class="sc-ul"><li>${esc(T('Residents: the Census 2020 blocks whose centre is inside the area. Far from a stop: more than an 800 m walk from a scheduled stop, along mapped roads (a straight line where a block has no mapped road nearby).'))}</li>
+        <ul class="sc-ul"><li>${esc(T('Residents: the Census 2020 blocks whose center is inside the area. Far from a stop: more than an 800 m walk from a scheduled stop, along mapped roads (a straight line where a block has no mapped road nearby).'))}</li>
         <li>${esc(T('Most datasets are published by municipio. For an area they are estimated from the municipios it covers: totals by the share of each municipio\'s residents (or land) inside, rates and levels as an average weighted by the residents inside.'))}</li>
         <li>${esc(T('An estimate assumes a municipio is the same throughout. A small area inside one municipio gets that municipio\'s rate. Survey margins of error are not carried into the estimate.'))}</li></ul>
       </section></div>
@@ -456,20 +456,20 @@ const StudyAreas = (() => {
     body.onclick = async (e) => {
       const b = e.target.closest('[data-sum],[data-show],[data-export],[data-del],[data-extra],[data-land],[data-csv],[data-pick],[data-centre],[data-coords],[data-newaround],[data-drainpick],[data-draincentre],[data-regadd],[data-regclear],[data-ptsshade],[data-ptscsv],[data-ptsclear],[data-walkpick],[data-walkcentre],[data-crimpick],[data-crimcentre]'); if (!b) return;
       if (b.dataset.pick != null || b.dataset.centre != null || b.dataset.coords != null) {
-        if (b.dataset.pick != null && st.picking) { const was = st.pickMode; stopPick(); if (was !== 'around') { st.pickMode = 'around'; startPick(body); return say(T('Click the map where the area should be centred. Press Esc to cancel.')); } return say(T('Picking a point was cancelled.')); }
+        if (b.dataset.pick != null && st.picking) { const was = st.pickMode; stopPick(); if (was !== 'around') { st.pickMode = 'around'; startPick(body); return say(T('Click the map where the area should be centered. Press Esc to cancel.')); } return say(T('Picking a point was canceled.')); }
         const bad = readDist(body); if (bad) return say(bad);
-        if (b.dataset.pick != null) { st.pickMode = 'around'; startPick(body); return say(T('Click the map where the area should be centred. Press Esc to cancel.')); }
+        if (b.dataset.pick != null) { st.pickMode = 'around'; startPick(body); return say(T('Click the map where the area should be centered. Press Esc to cancel.')); }
         if (b.dataset.centre != null) { const c = map.getCenter(); return say(await addAround(c.lng, c.lat)); }
         const num = (id) => parseFloat(String(body.querySelector(id).value).replace(',', '.').trim());
         return say(await addAround(num('#saLng'), num('#saLat')));
       }
       if (b.dataset.walkpick != null) {
-        if (st.picking) { const was = st.pickMode; stopPick(); if (was === 'walk') return say(T('Picking a point was cancelled.')); }
+        if (st.picking) { const was = st.pickMode; stopPick(); if (was === 'walk') return say(T('Picking a point was canceled.')); }
         st.pickMode = 'walk'; startPick(body); return say(T('Click the map where the walk should start. Press Esc to cancel.'));
       }
       if (b.dataset.walkcentre != null) { const c = map.getCenter(); say(T('Walking the roads…')); return say(await addWalk(c.lng, c.lat)); }
       if (b.dataset.crimpick != null) {
-        if (st.picking) { const was = st.pickMode; stopPick(); if (was === 'crim') return say(T('Picking a point was cancelled.')); }
+        if (st.picking) { const was = st.pickMode; stopPick(); if (was === 'crim') return say(T('Picking a point was canceled.')); }
         st.pickMode = 'crim'; startPick(body); return say(T('Click the map where the CRIM viewer should open. Press Esc to cancel.'));
       }
       if (b.dataset.crimcentre != null) { const c = map.getCenter(); return say(openCrim(c.lng, c.lat)); }
@@ -479,7 +479,7 @@ const StudyAreas = (() => {
       if (b.dataset.ptscsv != null) return pointsCsv();
       if (b.dataset.ptsclear != null) { st.pts = null; st.res = null; await shadePoints(false); return say(T('The file of points was forgotten.')); }
       if (b.dataset.drainpick != null) {
-        if (st.picking) { const was = st.pickMode; stopPick(); if (was === 'drain') return say(T('Picking a point was cancelled.')); }
+        if (st.picking) { const was = st.pickMode; stopPick(); if (was === 'drain') return say(T('Picking a point was canceled.')); }
         st.pickMode = 'drain'; startPick(body); return say(T('Click the map where the water should end up. Press Esc to cancel.'));
       }
       if (b.dataset.draincentre != null) { const c = map.getCenter(); say(T('Tracing the land upstream…')); return say(await addDrain(c.lng, c.lat)); }
@@ -536,7 +536,7 @@ const StudyAreas = (() => {
   async function results(body, set) {
     const box = body.querySelector('#saRes'); if (!box) return;
     box.innerHTML = `<div class="empty" role="status">${esc(st.land ? T('Loading the summer heat images and the barrio values, and measuring…') : st.extra ? T('Loading the tourism places, flood and protected areas, and measuring…') : T('Loading the census blocks and transit stops, and measuring…'))}</div>`;
-    let R; try { R = await measureAll(set); if (!R) return; } catch { box.innerHTML = `<div class="empty" role="status">${esc(T('The data for the measures could not be loaded. Check your connection and press Summarise again.'))}</div>`; return; }
+    let R; try { R = await measureAll(set); if (!R) return; } catch { box.innerHTML = `<div class="empty" role="status">${esc(T('The data for the measures could not be loaded. Check your connection and press Summarize again.'))}</div>`; return; }
     if (st.sel !== set.id || !body.contains(box)) return;   // another set was chosen meanwhile
     const A = set.areas, pages = Math.ceil(A.length / PAGE); if (st.page >= pages) st.page = 0;
     const p0 = st.page * PAGE, on = (list) => list.slice(p0, p0 + PAGE), shown = on(A);
@@ -564,7 +564,7 @@ const StudyAreas = (() => {
       <div class="eb-tools sa-dl"><label>${esc(T('Download what\'s inside'))} <select id="saDl">${DL.map(d => `<option value="${d.id}"${d.id === st.dl ? ' selected' : ''}>${esc(T(d.label))}</option>`).join('')}</select></label>
         <select id="saDlF" aria-label="${esc(T('Format'))}"><option value="geojson"${st.dlf !== 'csv' ? ' selected' : ''}>GeoJSON</option><option value="csv"${st.dlf === 'csv' ? ' selected' : ''}>CSV</option></select>
         <button type="button" class="btn small" data-dl><span class="ms-icon" aria-hidden="true">download</span>${esc(T('Download'))}</button><span class="note" id="saDlN" role="status"></span></div>
-      <div class="note">${esc(T('For every area of the set: the points of the dataset inside it, cut at its edge, or the outlines that overlap it, whole. Each row names its area and its source; licences and credits are in the data dictionary.'))}</div>
+      <div class="note">${esc(T('For every area of the set: the points of the dataset inside it, cut at its edge, or the outlines that overlap it, whole. Each row names its area and its source; licenses and credits are in the data dictionary.'))}</div>
       ${st.extra ? `<div class="note">${esc(T('Holiday rentals and rented units named by an address are counted by municipio, not drawn, so they are not in the tourism places count.'))}</div>` : ''}
       ${st.land ? `<div class="note">${esc(T('Surface temperature is measured on the summer images at the same grid of points as the flood share (zonal statistics): Landsat at 60 m in the morning, ECOSTRESS at night. It is the temperature of the ground, not the air. Greenness and landslide susceptibility are the barrio values ({veg} and {slide}) averaged, weighted by each barrio\'s land inside the area: estimates that take a barrio as the same throughout. An asterisk marks an area where part of the land has no value: the heat images leave out Mona and Desecheo, and the landslide map covers the main island only.', { veg: R.land.years.veg, slide: R.land.years.slide }))}</div>` : ''}
       ${st.extra && st.land ? '' : `<div class="btn-row">${st.extra ? '' : `<button type="button" class="btn small" data-extra>${esc(T('Also count tourism places and measure flood and protected areas (downloads about {mb} MB)', { mb: fmt((gz('places.json') + gz('flood.geojson') + gz('protected.geojson')) / 1048576 || 5.5, 1) }))}</button>`}${st.land ? '' : `<button type="button" class="btn small" data-land>${esc(T('Also measure surface heat, greenness and landslide susceptibility (downloads about {mb} MB)', { mb: fmt((gz('heat_surface.png') + gz('night_heat_surface.png') + gz('barrios.geojson') + gz('vegetation_barrio.json') + gz('landslide_barrio.json')) / 1048576 || 3, 1) }))}</button>`}</div>`}
@@ -587,7 +587,7 @@ const StudyAreas = (() => {
   function csv(set) {
     const c = st.csv; if (!c || c.set !== set) return;
     const names = c.A.map(a => a.name), rows = [
-      [T('Area (km²)'), '', ...c.held.map(m => +m.km2.toFixed(3)), ''], [T('Residents (Census 2020, by block)'), '', ...c.held.map(m => m.residents), T('Census 2020 blocks whose centre is inside')],
+      [T('Area (km²)'), '', ...c.held.map(m => +m.km2.toFixed(3)), ''], [T('Residents (Census 2020, by block)'), '', ...c.held.map(m => m.residents), T('Census 2020 blocks whose center is inside')],
       [T('of them, more than an 800 m walk from a scheduled stop'), '', ...c.held.map(m => m.far), ''], [T('Scheduled transit stops'), '', ...c.held.map(m => m.stops), ''],
       ...(st.extra ? [[T('Tourism places'), '', ...c.held.map(m => m.places), ''], [T('% of the land in a FEMA flood hazard area'), '', ...c.held.map(m => m.flood == null ? null : +m.flood.toFixed(2)), T('share of a grid of points on land')], [T('% of the land in a protected area'), '', ...c.held.map(m => m.protected == null ? null : +m.protected.toFixed(2)), T('share of a grid of points on land')]] : []),
       ...(st.pts ? [[T('Your points ({file})', { file: st.pts.file }), '', ...c.held.map(m => m.mine == null ? null : m.mine > 0 && m.mine < MIN_SHOWN ? T('fewer than {n}', { n: MIN_SHOWN }) : m.mine), T('points of your file inside (counts under 5 not shown)')]] : []),

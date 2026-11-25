@@ -6,7 +6,7 @@ by hexagon of 1 km². HANDOFF decision 107, step 9, parts 1 and 2 (row derived-h
     python hexgrid.py --check   # rebuild and exit 1 when the published file is not what it gives (nothing written)
 
 Why these hexagons and not H3. The grid is the one the map already uses to count places (site/js/core/hexbin.js): a Lambert azimuthal equal-area projection
-centred on Puerto Rico (18.2 N, 66.45 W) with pointy-topped hexagons laid on the plane, so every cell holds the same ground area (to about 0.3%). H3 cells,
+centered on Puerto Rico (18.2 N, 66.45 W) with pointy-topped hexagons laid on the plane, so every cell holds the same ground area (to about 0.3%). H3 cells,
 which the FCC's broadband hexagons use, differ in area across the island. With cells of exactly 1 km², a count per cell is also a density per km². This module
 ports hexbin.js's project, cell and corner functions; a test checks that both give the same cell ids. Cell ids are "q,r" (axial coordinates).
 
@@ -18,10 +18,10 @@ What each cell holds (only cells with at least one resident, housing unit or bui
   bf   footprint area, % of the cell's 1 km²: how built up it is
   pf   residents in FEMA's 1% annual chance flood area (the Special Flood Hazard Area of flood.geojson), as % of the cell's residents; empty where p is 0.
        A block is in the area when its internal point is (exposure.py's rule).
-  t    surface temperature of summer mornings, °C: the median of the 60 m cells of heat.py's composite whose centre is in the hexagon (Landsat, the last three
+  t    surface temperature of summer mornings, °C: the median of the 60 m cells of heat.py's composite whose center is in the hexagon (Landsat, the last three
        summers; land surface, not air)
   g    greenness (NDVI): the median of the 60 m cells of vegetation.py's composite (Sentinel-2, the same summers)
-  s    slope of the ground, %: the mean of the 10 m cells of slope.py's blocks of about 60 m whose centre is in the hexagon (USGS 3DEP)
+  s    slope of the ground, %: the mean of the 10 m cells of slope.py's blocks of about 60 m whose center is in the hexagon (USGS 3DEP)
        Each of t, g and s is empty when less than a tenth of the hexagon has a value (the sea, a coast); a hexagon with only land and none of the counts is
        kept for them, so the three cover the whole island.
 Nothing about a single home is published: census blocks are public counts, and a building is counted, never drawn or named.
@@ -52,7 +52,7 @@ def size(km2=KM2):
 
 
 def project(lat, lng):
-    """km east and north of the centre (numpy arrays or floats), as hexbin.js project()."""
+    """km east and north of the center (numpy arrays or floats), as hexbin.js project()."""
     f, lam = np.radians(lat), np.radians(lng) - LON0
     k = np.sqrt(2 / (1 + S0 * np.sin(f) + C0 * np.cos(f) * np.cos(lam)))
     return R * k * np.cos(f) * np.sin(lam), R * k * (C0 * np.sin(f) - S0 * np.cos(f) * np.cos(lam))
@@ -188,7 +188,7 @@ def assemble():
     got = {"residents": sum(f["properties"]["p"] for f in feats), "housing_units": sum(f["properties"]["h"] for f in feats), "buildings": sum(f["properties"]["b"] for f in feats)}
     if got != tot:
         raise SystemExit(f"hexgrid: the cells do not add up to the inputs: {got} against {tot}")
-    notes = {"km2": KM2, "projection": "Lambert azimuthal equal-area centred on 18.2 N, 66.45 W (site/js/core/hexbin.js)", "cells": len(feats),
+    notes = {"km2": KM2, "projection": "Lambert azimuthal equal-area centered on 18.2 N, 66.45 W (site/js/core/hexbin.js)", "cells": len(feats),
              "cells_with_residents": sum(1 for f in feats if f["properties"]["p"]), "totals": tot, "buildings_release": release,
              "residents_in_flood_area": int(pop[wet].sum()), "surfaces": {**snotes, "cells_with": {k: sum(1 for f in feats if f["properties"][k] is not None) for k in "tgs"}}}
     return {"type": "FeatureCollection", "as_of": date.today().isoformat(), "notes": notes, "features": feats}

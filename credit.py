@@ -16,7 +16,7 @@ Sources, no key:
 
 Output: credit_series.json (the shape of nightlights_series.json: yearly values for the 78 municipios and Puerto Rico, which is the last value).
 
-No points layer: since 2023 the FDIC places about half the offices at the centre of their ZIP code (geocode "M", the same point as the 2022 "US_Zipcode"
+No points layer: since 2023 the FDIC places about half the offices at the center of their ZIP code (geocode "M", the same point as the 2022 "US_Zipcode"
 match), so only 113 of the 260 offices of June 2026 have a street-level location. A map of the other half would put banks where they are not.
 The notes give the count; the offices' addresses could be geocoded later (step 6 of decision 107 needs bank points).
 """
@@ -42,7 +42,7 @@ UA = {"User-Agent": "pr-digital-twin/1.0 (Foundation for Puerto Rico; open-data 
 SOD_URL = "https://api.fdic.gov/banks/sod"
 SOD_FIRST = 2000
 SOD_FIELDS = "YEAR,UNINUMBR,CERT,NAMEFULL,NAMEBR,CITYBR,STCNTYBR,DEPSUMBR,BRSERTYP,SIMS_LATITUDE,SIMS_LONGITUDE,SIMS_PROJECTION"
-# the FDIC's geocode codes that place an office at its address or street (the others place it at a ZIP code or town centre, or give a match score)
+# the FDIC's geocode codes that place an office at its address or street (the others place it at a ZIP code or town center, or give a match score)
 STREET_LEVEL = {"EXACT", "StreetAddress", "StreetAddressExt", "PointAddress", "POINTADDRESS", "StreetName", "STREETNAME", "StreetInt", "STREETINT",
                 "DistanceMarker", "ROADKM", "POI", "US_Streets", "US_STREETS"}
 HMDA_URL = "https://ffiec.cfpb.gov/v2/data-browser-api/view/csv?states=PR&years={y}"
@@ -234,7 +234,7 @@ def documents(sod_rows, hmda_paths):
            "vars": vs, "sources": SOURCES, "notes": notes}
     last_rows = [x for x in sod_rows if int(x["YEAR"]) == last]
     notes["located_at_street"] = {"year": last, "offices": len(last_rows), "street_level": sum(1 for x in last_rows if x.get("SIMS_PROJECTION") in STREET_LEVEL),
-                                  "why_no_points": "The FDIC places the other offices at the centre of their ZIP code or town, so the observatory draws no office points"}
+                                  "why_no_points": "The FDIC places the other offices at the center of their ZIP code or town, so the observatory draws no office points"}
     return doc
 
 

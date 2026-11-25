@@ -8,8 +8,8 @@ is switched on).
 
 Source, no key: the USGS Water Data API (https://api.waterdata.usgs.gov/ogcapi/v1/; US government work, public domain).
   monitoring-locations  the lakes and reservoirs of Puerto Rico (site_type_code LK) and their points
-  latest-continuous     parameter 72376, lake or reservoir water-surface elevation above local mean sea level, metres: the latest reading, every 15 minutes or so
-  daily                 parameter 72375, the same elevation in feet, one value a day since 1987: the history (converted to metres, x 0.3048)
+  latest-continuous     parameter 72376, lake or reservoir water-surface elevation above local mean sea level, meters: the latest reading, every 15 minutes or so
+  daily                 parameter 72375, the same elevation in feet, one value a day since 1987: the history (converted to meters, x 0.3048)
 
 Which reservoirs. Every lake or reservoir whose 72376 reading is less than 30 days old and that has at least 8 years of daily values in 2011-2025. On 2026-11-02:
 the 19 that the Puerto Rico Aqueduct and Sewer Authority (AAA) reports every morning, and a few others (irrigation and flood-control reservoirs). `aaa` marks the 19.
@@ -20,12 +20,12 @@ values of that week in each year 2011-2025, then the 10th, 25th, 50th, 75th and 
 says where today's reading falls: below the 10th percentile is "lower than usual for this time of year", above the 90th "higher", between them "usual". A level is not a volume: sediment has
 filled part of several reservoirs, and an operator can draw a reservoir down on purpose.
 
-What is not here. AAA's alert levels (desborde, seguridad, observación, ajustes, control) are not published: AAA states no licence, and FPR asked it in writing
+What is not here. AAA's alert levels (desborde, seguridad, observación, ajustes, control) are not published: AAA states no license, and FPR asked it in writing
 (HANDOFF). The pop-up links to AAA's page for them.
 
 Output: site/data/reservoirs.geojson. Each point: name, type, municipio, geoid, usgs (the monitoring location id), aaa (true for the 19), level and level_time
-(the latest reading at build time; the page replaces them with a live one), recent (daily levels in metres from recent_start, 120 values, null where missing),
-and p10, p25, p50, p75, p90 (53 weekly values each, metres).
+(the latest reading at build time; the page replaces them with a live one), recent (daily levels in meters from recent_start, 120 values, null where missing),
+and p10, p25, p50, p75, p90 (53 weekly values each, meters).
 """
 
 import json
@@ -153,7 +153,7 @@ def quantile(xs, q):
 
 
 def normals(daily):
-    """p10..p90 of the yearly mean of each week, metres, or None where fewer than MIN_YEARS years have a value."""
+    """p10..p90 of the yearly mean of each week, meters, or None where fewer than MIN_YEARS years have a value."""
     by = {}
     for t, v in daily.items():
         d = date.fromisoformat(t)
@@ -169,7 +169,7 @@ def normals(daily):
 
 
 def history(daily, built):
-    """One reservoir's history for the Reservoirs page, metres: its range in YEARS (lowest and highest daily value), its record low, the mean of each week
+    """One reservoir's history for the Reservoirs page, meters: its range in YEARS (lowest and highest daily value), its record low, the mean of each week
     of the year in each year of YEARS (for the percentile of today's level among the same week's years), its monthly means since its first daily value
     (a month needs 15 days with a value) and its last HIST_DAYS daily values."""
     m = {t: round(float(v) * FT, 3) for t, v in daily.items() if v not in (None, "")}

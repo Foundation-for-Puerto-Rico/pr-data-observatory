@@ -30,7 +30,7 @@ This list was made from the code, the registered datasets, the routes and the te
 | Feature | Before | Now | Status | Checked |
 |---|---|---|---|---|
 | Top bar: logo, page name, search (map, 3D), Ask, ES / EN | Static header in each page | Same markup, compact style from `css/ws.css` | Kept | C, E |
-| Navigation between views | Five buttons in the top bar | A rail down the left side (a bar along the bottom under 900 px): Explore, Data, Map, Workflows, 3D + Time, Knowledge, Data dictionary, Learn | New | C: eight links on every page |
+| Navigation between views | Five buttons in the top bar | A rail down the left side (a bar along the bottom under 900 px): Map, Map Gallery, Data, Workflows, Knowledge, Data dictionary, Learn, About (since 25 Nov 2026; the 3D view is reached from the 2D / 3D switch on the map) | New | C: eight links on every page |
 | Light and dark | Light only | Both. A switch beside ES / EN; the choice is kept in the browser (`twin.theme`); pages open dark without one | New | C, E |
 | English and Spanish | `i18n.js` and bundles | Same. New text is in `i18n_src/es/workspace.json`, `workspace_pages.json` and `common.json` | Kept, extended | D; C in Spanish. The new Spanish was written with Claude and needs a native speaker |
 | Glossary underlines, help buttons, lesson links | `core/glossary.js`, `help.js` | Unchanged | Kept | D |

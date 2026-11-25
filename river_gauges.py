@@ -9,8 +9,8 @@ Source, no key: the USGS Water Data API (https://api.waterdata.usgs.gov/ogcapi/v
   monitoring-locations  the streams of Puerto Rico (site_type_code ST) and their points
   latest-continuous     parameter 00060, discharge (the volume of water passing the gauge each second), cubic feet per second: the latest reading, every 15 minutes or so
   daily                 parameter 00060, statistic 00003 (the mean of the day), one value a day: the history
-Both are converted to cubic metres per second (x 0.0283168).
-  latest-continuous     parameter 00065, gauge height (how high the water stands on the gauge's own scale, in feet; kept in metres), and parameter 00010, water
+Both are converted to cubic meters per second (x 0.0283168).
+  latest-continuous     parameter 00065, gauge height (how high the water stands on the gauge's own scale, in feet; kept in meters), and parameter 00010, water
                         temperature (degrees Celsius), for the gauges that report them: the latest reading at build time, which the page replaces with a live one
 Also, from USGS Real-Time Flood Impacts (https://api.waterdata.usgs.gov/rtfi-api/, the same agency, public domain): the flood reference levels USGS has surveyed
 at a gauge (the top of the riverbank, the lowest beam and the deck of a bridge, a past flood's high-water mark), each a gauge height. On 2026-11-12 Puerto Rico
@@ -33,9 +33,9 @@ operator releases, not what the rain brings.
 Output: site/data/river_gauges.geojson. Each point: name (the river, with its accents), type, municipio, geoid, usgs (the monitoring location id), station (the
 name USGS gives the gauge, as written), flow and flow_time (the latest reading at build time; the page replaces them with a live one), recent (daily flows in
 m³/s from recent_start, 120 values, null where missing), and p10, p25, p50, p75, p90 (53 weekly values each, m³/s). Where the gauge reports them: stage and
-stage_time (gauge height, metres), temp and temp_time (water temperature, °C), and refs (the flood reference levels: kind, label as USGS writes it, level in
-metres of gauge height, lowest first), and nws (the National Weather Service's flood stages: lid, the id NWS gives the gauge, and action, minor, moderate,
-major, each in metres of gauge height, only the ones NWS has set).
+stage_time (gauge height, meters), temp and temp_time (water temperature, °C), and refs (the flood reference levels: kind, label as USGS writes it, level in
+meters of gauge height, lowest first), and nws (the National Weather Service's flood stages: lid, the id NWS gives the gauge, and action, minor, moderate,
+major, each in meters of gauge height, only the ones NWS has set).
 """
 
 import json
@@ -54,8 +54,8 @@ import reservoirs as rv
 ROOT = Path(__file__).resolve().parent
 CACHE = ROOT / "cache" / "river_gauges"
 OUT = hs.OUT / "river_gauges.geojson"
-CFS = 0.0283168        # cubic feet per second to cubic metres per second
-FT = 0.3048            # feet to metres
+CFS = 0.0283168        # cubic feet per second to cubic meters per second
+FT = 0.3048            # feet to meters
 MORE = {"00065": ("stage", FT, 2), "00010": ("temp", 1.0, 1)}   # the other readings a gauge may report: its key in the file, what turns the unit into the file's, decimals
 RTFI = "https://api.waterdata.usgs.gov/rtfi-api/referencepoints/state/46"   # USGS Real-Time Flood Impacts; 46 is Puerto Rico in the service's own list of states
 REF_KIND = {"BANK": "bank", "CHORD": "chord", "DECK": "deck", "HWM": "hwm"}   # the service's names of a reference point; any other is kept as "other"
@@ -236,7 +236,7 @@ def more_fields(usgs, X):
 
 
 def flow(v):
-    """Cubic feet per second to cubic metres per second, three decimals (a small stream runs at a few hundredths)."""
+    """Cubic feet per second to cubic meters per second, three decimals (a small stream runs at a few hundredths)."""
     return round(float(v) * CFS, 3)
 
 

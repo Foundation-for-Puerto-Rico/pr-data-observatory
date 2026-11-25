@@ -24,7 +24,7 @@
   const IND = () => T('Indicative position calculated by FPR, not an official WIPO rank');
   const short = (c) => c.replace(/^(IN|OUT)\./, '');
 
-  // The arrow beside an updated value: its shape says up or down, its colour better or worse in the GII's direction, its label says it in words
+  // The arrow beside an updated value: its shape says up or down, its color better or worse in the GII's direction, its label says it in words
   function arrow(r) {
     if (!r.chg) return '';
     const [glyph, cls, label] = r.chg === 'na' ? ['—', 'na', T('not comparable with 2021')]

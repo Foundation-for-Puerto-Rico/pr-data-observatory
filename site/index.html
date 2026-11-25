@@ -23,7 +23,7 @@
 <link rel="stylesheet" href="css/twin.css?v=65">
 <link rel="stylesheet" href="css/economy.css?v=26">
 <link rel="stylesheet" href="css/chat.css?v=5">
-<link rel="stylesheet" href="css/ws.css?v=1">
+<link rel="stylesheet" href="css/ws.css?v=2">
 <script src="js/i18n.js?v=93" data-page="map"></script>
 </head>
 <body class="ws-map">
@@ -43,14 +43,14 @@
     <div class="search-results" id="searchResults" role="listbox" aria-label="Search results"></div>
   </div>
   <nav class="views" aria-label="Views">
-    <a class="btn" href="explore.html" title="Explore: start from a question, a topic or a saved map"><span class="ms-icon" aria-hidden="true">explore</span><span class="lbl">Explore</span></a>
+    <a class="btn" href="index.html" aria-current="page" title="Map: every layer and tool, in 2D or 3D"><span class="ms-icon" aria-hidden="true">map</span><span class="lbl">Map</span></a>
+    <a class="btn" href="explore.html" title="Map Gallery: ready-made maps, topics and your saved maps"><span class="ms-icon" aria-hidden="true">explore</span><span class="lbl">Map Gallery</span></a>
     <a class="btn" href="data.html" title="Data: every dataset, map layer and set of places"><span class="ms-icon" aria-hidden="true">grid_view</span><span class="lbl">Data</span></a>
-    <a class="btn" href="index.html" aria-current="page"><span class="ms-icon" aria-hidden="true">map</span><span class="lbl">Map</span></a>
     <a class="btn" href="workflows.html" title="Workflows: steps that turn data into a result on the map"><span class="ms-icon" aria-hidden="true">account_tree</span><span class="lbl">Workflows</span></a>
-    <a class="btn" href="3d.html" title="Immersive 3D + time view"><span class="ms-icon" aria-hidden="true">view_in_ar</span><span class="lbl">3D + Time</span></a>
     <a class="btn" href="knowledge.html" title="Knowledge: FPR studies, analyses and tools"><span class="ms-icon" aria-hidden="true">lightbulb</span><span class="lbl">Knowledge</span></a>
-    <a class="btn" href="dictionary.html" title="Data dictionary: meanings, sources, licenses, how to cite"><span class="ms-icon" aria-hidden="true">menu_book</span><span class="lbl">Data dictionary</span></a>
+    <a class="btn" href="dictionary.html" title="Data Dictionary: meanings, sources, licenses, how to cite"><span class="ms-icon" aria-hidden="true">menu_book</span><span class="lbl">Data Dictionary</span></a>
     <a class="btn" href="learn.html" title="Learn: short lessons about maps and spatial analysis"><span class="ms-icon" aria-hidden="true">school</span><span class="lbl">Learn</span></a>
+    <a class="btn" href="about.html" title="About: this initiative, how to use the Observatory, terms"><span class="ms-icon" aria-hidden="true">info</span><span class="lbl">About</span></a>
   </nav>
   <div class="snapshot"><span class="ms-icon" aria-hidden="true" style="font-size:16px">verified</span><span id="snapshotLabel">—</span></div>
 </header>
@@ -59,12 +59,11 @@
 <aside class="panel" id="panel" aria-label="Layers and municipality information">
   <button type="button" class="icon-btn panel-close" id="panelClose" aria-label="Close the panel"><span class="ms-icon" aria-hidden="true">close</span></button>
   <div class="tabs" role="tablist" aria-label="Panel sections">
-    <button type="button" role="tab" id="t-explore" aria-controls="tab-overview" aria-selected="true" class="active" data-main="explore" data-tab="overview"><span class="ms-icon" aria-hidden="true">explore</span>Explore</button>
+    <button type="button" role="tab" id="t-explore" aria-controls="tab-overview" aria-selected="true" class="active" data-main="explore" data-tab="overview"><span class="ms-icon" aria-hidden="true">home</span>Home</button>
     <button type="button" role="tab" id="t-place" aria-controls="tab-muni" aria-selected="false" tabindex="-1" data-main="place" data-tab="muni"><span class="ms-icon" aria-hidden="true">place</span>Place</button>
     <button type="button" role="tab" id="t-tools" aria-controls="tab-maptools" aria-selected="false" tabindex="-1" data-main="tools" data-tab="maptools"><span class="ms-icon" aria-hidden="true">construction</span>Tools</button>
-    <button type="button" role="tab" id="t-about" aria-controls="tab-about" aria-selected="false" tabindex="-1" data-tab="about"><span class="ms-icon" aria-hidden="true">info</span>About</button>
   </div>
-  <div class="subtabs" role="tablist" aria-label="Explore" data-group="explore">
+  <div class="subtabs" role="tablist" aria-label="Home" data-group="explore">
     <button type="button" role="tab" id="s-overview" aria-controls="tab-overview" aria-selected="true" class="active" data-tab="overview">Topics</button>
     <button type="button" role="tab" id="s-layers" aria-controls="tab-layers" aria-selected="false" tabindex="-1" data-tab="layers">Map layers</button>
     <button type="button" role="tab" id="s-catalog" aria-controls="tab-catalog" aria-selected="false" tabindex="-1" data-tab="catalog">Data Catalog</button>
@@ -175,7 +174,7 @@
       <button type="button" class="help-btn" data-help="protected" aria-label="What is this?"><span class="ms-icon" aria-hidden="true">help</span></button>
     </div>
     <div class="layer">
-      <label><input type="checkbox" id="lyLanduse"><span class="sw" style="background:#79901E;opacity:.7"></span><span class="ly-name">Land use 2015 <small class="src" translate="no">Junta de Planificación</small></span></label>
+      <label><input type="checkbox" id="lyLanduse"><span class="sw" style="background:#79901E;opacity:.7"></span><span class="ly-name">Land Use Plan (2015) <small class="src" translate="no">Junta de Planificación</small></span></label>
       <button type="button" class="help-btn" data-help="landuse" aria-label="What is this?"><span class="ms-icon" aria-hidden="true">help</span></button>
     </div>
     <div class="btn-row lu-open"><button type="button" class="btn small" id="luAnalyze"><span class="ms-icon" aria-hidden="true">bar_chart</span>Land use by municipality and for Puerto Rico</button></div>
@@ -472,105 +471,6 @@
     <div id="econRoot"><div class="note">Loading the economy data…</div></div>
   </section>
 
-  <!-- ABOUT -->
-  <section class="tab-page" id="tab-about" role="tabpanel" aria-labelledby="t-about" data-t-wait aria-hidden="true">
-    <div class="about-lead">
-      <h2 class="about-h">What is the PR Data Observatory?</h2>
-      <p><b>A living, open model of Puerto Rico.</b> It puts public data from many fields on one map and one timeline so you can see how things connect: where people live and what is near them, what things cost and what people earn, what is exposed to risk, and how all of it has changed.</p>
-      <p class="about-fpr">Developed by <a href="https://foundationforpuertorico.org/" target="_blank" rel="noopener">Foundation for Puerto Rico</a> as a <b>tool for public use and benefit</b>. It is free, needs no account, and is built from open and public data.</p>
-    </div>
-    <div class="kpis" id="aboutKpis"></div>
-
-    <h2 class="sec">What it covers</h2>
-    <ul class="about-list" id="aboutDomains"></ul>
-    <p class="note">The observatory keeps growing: a new field appears here and in the Overview when data for it is added. Fields marked “no data yet” are planned.</p>
-
-    <h2 class="sec">Who it is for</h2>
-    <ul class="about-list">
-      <li><b>Residents and community groups:</b> see how your municipality compares with others and what is near where you live.</li>
-      <li><b>Local and island planners:</b> find where people live far from services, test a new transit route and compare municipalities side by side.</li>
-      <li><b>Researchers, students and journalists:</b> every number has a definition, a source and a way to cite it in the data dictionary, and tables download as CSV.</li>
-      <li><b>Funders, nonprofits and recovery teams:</b> set money, needs and risks side by side to see where they meet.</li>
-    </ul>
-
-    <h2 class="sec">Start here: six steps</h2>
-    <ol class="about-steps">
-      <li><b>Explore by topic.</b> The <i>Explore</i> tab lists ten topics, from population to communities. Open one to see its maps and add them to the map, or search all the data. <i>Map layers</i> lists every layer of points, lines and areas, and <i>Catalog</i> every dataset.</li>
-      <li><b>See what is on the map.</b> The <i>On the map</i> panel lists every layer that is on, with its legend and year. Change, hide or remove a layer there.</li>
-      <li><b>Click a municipality or a place.</b> The <i>Place</i> tab shows its profile: housing, exposure to hazards, transit access and visitor places, and the profile of a region.</li>
-      <li><b>Analyze.</b> The <i>Tools</i> tab gathers the map tools, plans a route and holds the workbench: ready-made views, indexes and scenarios. <i>Place › Rankings</i> ranks the municipalities.</li>
-      <li><b>Ask a question.</b> Press <i>Ask</i> at the top, in English or Spanish. Try the examples below.</li>
-      <li><b>Check and share.</b> Open the <i>Data dictionary</i> to see what any number means, where it comes from and how to cite it. Copy a link to share your view. Download tables as CSV.</li>
-    </ol>
-    <div class="note"><b>New to maps?</b> <a href="learn.html">Learn</a> has short lessons that use this map: what a map is made of, how to compare places fairly and how to find what is near a place.</div>
-    <div class="btn-row"><button type="button" class="btn primary" data-ask-open="1"><span class="ms-icon" aria-hidden="true">chat_bubble</span>Ask the observatory</button><a class="btn" href="dictionary.html"><span class="ms-icon" aria-hidden="true">menu_book</span>Data dictionary</a></div>
-    <div class="note">Questions to try:</div>
-    <div class="chips" id="aboutAsk">
-      <button type="button" class="chip" data-ask="Where is unemployment highest?" style="background:#BDE0F2;color:#205D7B">Where is unemployment highest?</button>
-      <button type="button" class="chip" data-ask="Show poverty and unemployment together" style="background:#BDE0F2;color:#205D7B">Show poverty and unemployment together</button>
-      <button type="button" class="chip" data-ask="Tell me about Ponce" style="background:#BDE0F2;color:#205D7B">Tell me about Ponce</button>
-      <button type="button" class="chip" data-ask="What are the most interesting patterns?" style="background:#BDE0F2;color:#205D7B">What are the most interesting patterns?</button>
-      <button type="button" class="chip" data-ask="What data is missing?" style="background:#BDE0F2;color:#205D7B">What data is missing?</button>
-    </div>
-
-    <h2 class="sec">What is in each part</h2>
-    <details class="about-d"><summary>The tabs on this map</summary>
-      <dl class="about-dl">
-        <dt>Overview</dt><dd>One headline figure for each field, for the whole island, with a trend where there is one. Press Show on map to see where.</dd>
-        <dt>Layers</dt><dd>Switch map layers on and off, in groups that go from the whole island to single places: territory (municipal and barrio boundaries, and shading by any of the listed measures), hazards and environment, land and housing, infrastructure and mobility, community services, communities, and the visitor economy (tourism places by category).</dd>
-        <dt>Data Catalog</dt><dd>Search everything the observatory documents, filter it by field, geography, year, license and source, and add it to the map.</dd>
-        <dt>Municipality</dt><dd>Click a municipality for its profile: population, housing costs, share in flood zones, transit access, visitor places and more.</dd>
-        <dt>Rankings</dt><dd>Rank the 78 municipalities by any measure and download the table.</dd>
-        <dt>Map tools</dt><dd>Every tool that works on the map, in one list: the area around a point, walking time, what drains here, your own areas and points, slope and contour lines, route planning, comparing and combining layers, and sharing.</dd>
-        <dt>Transit</dt><dd>Every operator on the island and the state of its timetable, vehicles on their schedule right now, residents far from service, and a route planner that follows roads and scores a route.</dd>
-        <dt>Economy</dt><dd>More than 100 yearly datasets on jobs, pay, industries, unemployment, income, poverty, commuting, internet, housing and federal money. Layer as many as you like, compare two at once, and open a workbench with a table, scatter plot and trends.</dd>
-        <dt>About</dt><dd>This page.</dd>
-      </dl>
-    </details>
-    <details class="about-d"><summary>The top bar</summary>
-      <dl class="about-dl">
-        <dt>Search</dt><dd>Find a municipality, barrio, street, landmark, transit stop, route number or tourism place. Press <kbd>/</kbd> to jump to it.</dd>
-        <dt>Ask</dt><dd>A chat that finds datasets, answers questions with real numbers, puts the answer on the map and tells you what is missing. It builds every answer from the data loaded here (it is not a generative AI), and nothing you type leaves your browser.</dd>
-        <dt>Map</dt><dd>This 2D map.</dd>
-        <dt>3D + Time</dt><dd>An immersive 3D view with terrain and buildings, sea level rise by year, a replay of a day of transit, and hurricane tracks since 1851.</dd>
-        <dt>Housing</dt><dd>FPR's 2023 study <i>The State of Housing in Puerto Rico</i>, table by table, with live data for every year from 2010 to 2025.</dd>
-        <dt>Data dictionary</dt><dd>What every dataset, variable and measure means, its source and license, the glossary, the published data files, and how to cite.</dd>
-      </dl>
-    </details>
-
-    <h2 class="sec">Where the data come from</h2>
-    <p class="note">Public data from the US Census Bureau, Bureau of Labor Statistics, FEMA, NOAA, USGS, FAA, the Health Resources and Services Administration (HRSA), the Junta de Planificación, the Autoridad de Transporte Integrado and municipal transit feeds, OpenStreetMap, Overture Maps, and FPR's own 2023 housing study. Most have an open license, but not all: some sources, such as the municipal transit feeds and the Junta de Planificación's maps, state no license. The <a href="data-management.html">Data management</a> page gives the license class and review of every file.</p>
-    <p class="note">The <a href="dictionary.html#sources">data dictionary</a> lists every source with its license, the credit line to use and how often it changes, and <a href="dictionary.html#cite">how to cite</a> the observatory and any variable.</p>
-
-    <h2 class="sec">Keep in mind</h2>
-    <ul class="about-list tight">
-      <li><b>It is a snapshot.</b> The label at the top says which one. Transit timetables refresh every night; the rest is rebuilt in snapshots. Each dataset shows the year of its data.</li>
-      <li><b>Places are listings, not a census of businesses.</b> Tourism places come from Overture Maps and can be missing, duplicated or out of date. The confidence slider filters them.</li>
-      <li><b>Hazards are mapped zones.</b> A flood zone is FEMA's map of risk at a point, not a prediction, and it says nothing about a building's elevation or insurance.</li>
-      <li><b>Timetables are not live.</b> Real-time bus positions are not public today. “On their timetable” is a schedule calculation.</li>
-      <li><b>Survey numbers are estimates.</b> Margins of error are large in small municipalities. Jobs are counted where the work is done, not where people live, and informal work is not counted.</li>
-      <li><b>Patterns are not causes.</b> Use the observatory to ask better questions and plan, not as a legal, financial or engineering determination.</li>
-    </ul>
-
-    <h2 class="sec">Privacy</h2>
-    <p class="note" data-t="html">There are no accounts, cookies or analytics. What you type in the search box or the chat stays in your browser; the one exception is “Look up as an address online”, which sends that text to OpenStreetMap's Nominatim service (<span translate="no">nominatim.openstreetmap.org</span>).</p>
-    <p class="note">To draw the pages, your browser also asks other servers for files. Each server receives your IP address, the browser's usual HTTP headers and the file or tile it sends; a map tile shows which area of the map you are viewing. These are the servers:</p>
-    <ul class="about-list tight">
-      <li><b>GitHub Pages</b>, which hosts the observatory itself: every page and its data.</li>
-      <li><b>Google Fonts</b> (<span translate="no">fonts.googleapis.com</span>, <span translate="no">fonts.gstatic.com</span>): the fonts, on every page.</li>
-      <li><b>cdnjs</b> (<span translate="no">cdnjs.cloudflare.com</span>): code libraries (Leaflet, MapLibre, Chart.js) on the map, 3D and Housing pages and the barrio vulnerability page.</li>
-      <li><b>unpkg</b> (<span translate="no">unpkg.com</span>): the deck.gl and PMTiles libraries of the 3D view.</li>
-      <li><b>OpenFreeMap</b> (<span translate="no">tiles.openfreemap.org</span>, served through Cloudflare): the base map's style, vector tiles, icons and label fonts, on the map, 3D and barrio vulnerability pages.</li>
-      <li><b>Amazon Web Services</b> (<span translate="no">s3.amazonaws.com</span>): the terrain elevation tiles of the 3D view.</li>
-      <li><b>NOAA</b> (<span translate="no">coast.noaa.gov</span>): the sea level rise tiles, on the map and 3D pages, only while that layer is on.</li>
-    </ul>
-
-    <h2 class="sec">Cite it and tell us what is missing</h2>
-    <p class="note"><b>To cite:</b> Foundation for Puerto Rico, <i>PR Data Observatory</i>, <span class="snap"></span>. Please also credit the original sources, which the <a href="dictionary.html#cite">data dictionary</a> writes out for you.</p>
-    <p class="note">The observatory's database keeps growing as FPR adds open datasets. Ask the chat “What data is missing?” to see what is planned, or write to Foundation for Puerto Rico at <a href="https://foundationforpuertorico.org/" target="_blank" rel="noopener">foundationforpuertorico.org</a> with a correction or a dataset to add.</p>
-    <p class="note" id="aboutBuilt"></p>
-    <div class="note" style="margin-top:14px">Developed by <a href="https://foundationforpuertorico.org/" target="_blank" rel="noopener">Foundation for Puerto Rico</a> as a tool for public use and benefit.</div>
-  </section>
 </aside>
 
 <main id="map" aria-label="Interactive map of Puerto Rico">
@@ -579,17 +479,19 @@
   <div class="map-legend" id="mapLegend"></div>
 </main>
 
-<!-- The map workspace (js/ws_map.js, css/ws.css; docs/workspace.md): the project bar above the map, the timeline under it, the widgets beside it -->
+<!-- The map workspace (js/ws_map.js, css/ws.css; docs/workspace.md): the project bar above the map, the timeline under it, the Insights beside it -->
 <div class="ws-bar" id="wsBar" role="toolbar" aria-label="This map">
   <button type="button" class="ws-name" id="wsName" title="Name and save this map">Untitled map</button>
   <span class="ws-sep" aria-hidden="true"></span>
   <button type="button" class="icon-btn small" id="wsUndo" aria-label="Undo the last change to the layers" title="Undo the last change to the layers" disabled><span class="ms-icon" aria-hidden="true">undo</span></button>
   <button type="button" class="icon-btn small" id="wsRedo" aria-label="Redo" title="Redo" disabled><span class="ms-icon" aria-hidden="true">redo</span></button>
+  <span class="ws-sep" aria-hidden="true"></span>
+  <div class="ws-mode" id="wsMode" role="group" aria-label="Map view"><button type="button" id="wsMode2d" aria-pressed="true" title="This is the 2D view">2D</button><a id="wsMode3d" href="3d.html" title="See this map in 3D: terrain, buildings and time">3D</a></div>
   <span class="ws-grow"></span>
   <button type="button" class="btn small" id="wsLink"><span class="ms-icon" aria-hidden="true">link</span><span class="lbl">Copy link</span></button>
   <button type="button" class="btn small" id="wsSave"><span class="ms-icon" aria-hidden="true">save</span><span class="lbl">Save</span></button>
   <button type="button" class="btn small" id="wsOpen"><span class="ms-icon" aria-hidden="true">folder_open</span><span class="lbl">My maps</span></button>
-  <button type="button" class="icon-btn small" id="wsRightShow" aria-label="Show the widgets" title="Show the widgets" aria-controls="wsRight" hidden><span class="ms-icon" aria-hidden="true">bar_chart</span></button>
+  <button type="button" class="icon-btn small" id="wsRightShow" aria-label="Show the Insights" title="Show the Insights" aria-controls="wsRight" hidden><span class="ms-icon" aria-hidden="true">bar_chart</span></button>
 </div>
 <section class="ws-time" id="wsTime" aria-label="Timeline">
   <div class="wt-row">
@@ -604,8 +506,8 @@
   <div class="wt-track"><input type="range" id="wtRange" min="0" max="0" step="1" value="0" aria-label="Timeline: the year of the data on the map" aria-describedby="wtLayers" disabled><div class="wt-ticks" id="wtTicks" aria-hidden="true"></div></div>
   <div class="wt-modes" id="wtModes" hidden></div>
 </section>
-<aside class="ws-right" id="wsRight" aria-label="Widgets">
-  <div class="ws-right-head"><h2><span class="ms-icon" aria-hidden="true">bar_chart</span>Widgets</h2><button type="button" class="icon-btn small" id="wsRightHide" aria-label="Hide the widgets" title="Hide the widgets"><span class="ms-icon" aria-hidden="true">chevron_right</span></button></div>
+<aside class="ws-right" id="wsRight" aria-label="Insights">
+  <div class="ws-right-head"><h2><span class="ms-icon" aria-hidden="true">bar_chart</span>Insights</h2><button type="button" class="icon-btn small" id="wsRightHide" aria-label="Hide the Insights" title="Hide the Insights"><span class="ms-icon" aria-hidden="true">chevron_right</span></button></div>
   <div class="ws-filter" id="wsFilter"></div>
   <div class="ws-right-body" id="wsRightBody" aria-live="polite"></div>
 </aside>
@@ -620,7 +522,7 @@
 <script src="js/icons.js?v=4"></script>
 <script src="js/common.js?v=20"></script>
 <script src="js/core/text.js?v=1"></script>
-<script src="js/core/palettes.js?v=2"></script>
+<script src="js/core/palettes.js?v=3"></script>
 <script src="js/core/stats.js?v=4"></script>
 <script src="js/core/classify.js?v=2"></script>
 <script src="js/core/legend.js?v=3"></script>
@@ -631,11 +533,11 @@
 <script src="js/roads.js?v=2"></script>
 <script src="js/plan.js?v=10"></script>
 <script src="js/core/cleanview.js?v=1"></script>
-<script src="js/app.js?v=121"></script>
+<script src="js/app.js?v=123"></script>
 <script src="js/network.js?v=18"></script>
-<script src="js/econ_shell.js?v=31"></script>
+<script src="js/econ_shell.js?v=32"></script>
 <script src="js/chatboot.js?v=63"></script>
 <script src="js/catalog.js?v=16"></script>
-<script src="js/ws_map.js?v=2"></script>
+<script src="js/ws_map.js?v=3"></script>
 </body>
 </html>

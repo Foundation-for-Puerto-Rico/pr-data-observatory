@@ -11,7 +11,7 @@ for every municipio, barrio and census tract.
 Method, in one paragraph. The unit of count is the 2020 Census block (41,987 in Puerto Rico; geo.py and network.py keep them with their ids). A block is counted
 whole, by its internal point (the Census Bureau's point guaranteed to lie inside it): in a layer if the point is inside a polygon, near transit if the point is within
 400 m of a stop. Its 2020 residents and housing units are then added up to the municipio, the barrio and the tract that hold it (counts add up exactly between levels).
-Nothing here is measured: it is computed from open layers and labelled so (see docs/exposure.md).
+Nothing here is measured: it is computed from open layers and labeled so (see docs/exposure.md).
 
 Families (each has residents, "pop", and housing units, "hu", per area):
   flood_sfha, flood_any          FEMA flood hazard areas (site/data/flood.geojson): the 1% annual chance area, and that or the 0.2% annual chance area
@@ -19,7 +19,7 @@ Families (each has residents, "pop", and housing units, "hu", per area):
   low_1ft ... low_10ft           NOAA low-lying areas at the same heights that are not connected to the ocean and "may flood"
   surge_cat1 ... surge_cat5     NOAA National Hurricane Center storm surge (SLOSH Maximum of MEOWs, high tide, 2018 maps): the block point is flooded by the near worst
                                  case surge of a category 1 to 5 hurricane, at any depth
-  surge_deep_cat1 ... _cat5      the same, under 3 ft of water or more (the maps give the depth in 1 ft bands; NHC's own map starts a colour at 3 ft)
+  surge_deep_cat1 ... _cat5      the same, under 3 ft of water or more (the maps give the depth in 1 ft bands; NHC's own map starts a color at 3 ft)
   protected, protected_strict    USGS PAD-US protected areas (not proclamation boundaries), and those with GAP status 1 or 2
   stop_any ... stop_sun          within 400 m of a stop: any mapped stop; a stop with a timetable on file; a stop with a current timetable; a frequent stop (20 or more
                                  weekday departures); a current stop with Saturday service; with Sunday service (the classes access.py gives places, on the block points
@@ -187,7 +187,7 @@ class Blocks:
 def points_in_polygons(polys, x, y, ptree=None):
     """Boolean array: which of the points (x, y) lie inside any of `polys` (a point on an edge counts as outside).
 
-    Candidates come from a point index queried with each polygon's bounding box, and each polygon is tested once against all its candidates (vectorised, prepared
+    Candidates come from a point index queried with each polygon's bounding box, and each polygon is tested once against all its candidates (vectorized, prepared
     geometry): about 0.4 s for NOAA's 5,000 polygons against 42,000 points, where testing point by point took minutes."""
     inside = np.zeros(len(x), dtype=bool)
     if len(polys) == 0 or len(x) == 0:

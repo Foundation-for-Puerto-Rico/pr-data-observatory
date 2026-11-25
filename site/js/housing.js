@@ -76,7 +76,7 @@ function titleOf(k, y) {
   return T(v.label);
 }
 const pooledCache = {};
-function pooled(k) {   // the classes of a variable: cut from its values in every year at once, so a colour means the same in every year
+function pooled(k) {   // the classes of a variable: cut from its values in every year at once, so a color means the same in every year
   const key = k + '|' + S.base; if (pooledCache[key]) return pooledCache[key];
   const v = S.V[k], all = [];
   for (const y of v.ys) { const a = arr(k, y); if (a) for (let i = 0; i < S.PR; i++) if (a[i] != null) all.push(a[i]); }
@@ -115,7 +115,7 @@ function legendHTML(k, a) {
     items = RAMP.map((color, i) => ({ color, label: T('{a} to {b}', { a: fv(k, b.edges[i]), b: fv(k, b.edges[i + 1]) }), n: n[i] }));
   }
   items = items.filter(i => i.n || !c.diverging);
-  return Core.legend.inline(items, (c.diverging ? T('Diverging around 0.') : T('Five equal-count classes (quintiles) taken over every year together.')) + ' ' + T('Colours keep the same meaning in every year, so you can watch the map change. Small numbers are municipalities per class.'));
+  return Core.legend.inline(items, (c.diverging ? T('Diverging around 0.') : T('Five equal-count classes (quintiles) taken over every year together.')) + ' ' + T('Colors keep the same meaning in every year, so you can watch the map change. Small numbers are municipalities per class.'));
 }
 function updateReadout(el) {
   const k = el.dataset.var, r = el.querySelector('.readout'); if (!r) return;
@@ -355,7 +355,7 @@ const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g
 function dsMeta(v) {
   const src = S.series.sources[v.kind === 'derived' ? 'derived' : v.kind === 'acs' ? 'acs' : v.kind] || {};
   const parts = [`<b>${esc(T('Source:'))}</b> ${src.url ? `<a href="${esc(src.url)}" target="_blank" rel="noopener">${esc(src.name || v.ref)}</a>` : esc(v.ref || 'Plan de Uso de Terrenos 2015, Junta de Planificación')}`, `<b>${esc(T('Table:'))}</b> ${esc(v.ref)}`];
-  if (v.kind === 'acs' || v.kind === 'derived') parts.push(Th('<b>Years:</b> each column is a five-year ACS window labelled by its last year (2024 = 2020–2024); neighbouring windows share four of five years, so compare windows that do not overlap (2012, 2017, 2022) for real change.'));
+  if (v.kind === 'acs' || v.kind === 'derived') parts.push(Th('<b>Years:</b> each column is a five-year ACS window labeled by its last year (2024 = 2020–2024); neighboring windows share four of five years, so compare windows that do not overlap (2012, 2017, 2022) for real change.'));
   if (v.kind === 'pop') parts.push(Th('<b>Basis:</b> {note}', { note: T(S.series.notes.pop_break) }));
   if (v.kind === 'fema') { const nt = S.series.notes.fema || {}; parts.push(Th('<b>Disasters:</b> {list}', { list: Object.keys(nt).sort().map(y => `${y}: ${[...new Set(Object.values(nt[y]))].join(', ')}`).join('; ') })); }
   if (v.moe) parts.push(Core.reliability.moeKey());

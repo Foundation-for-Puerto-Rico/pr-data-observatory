@@ -50,7 +50,7 @@ details.gp-pillar, details.gp-sub, details.gp-ind { margin: 0; }
 .gp-upd small { color: var(--color-text-muted); }
 .gp-r26 b { min-width: 58px; }
 .gp-fn { font-weight: 700; color: var(--color-text); margin-left: 1px; cursor: help; }
-/* the change marker: only the arrow is coloured; its shape and its label carry the meaning too (design tokens, WCAG AA on white) */
+/* the change marker: only the arrow is colored; its shape and its label carry the meaning too (design tokens, WCAG AA on white) */
 .gp-chg { font-weight: 700; font-size: 12px; cursor: help; }
 .gp-chg.better { color: var(--tint-green-fg); }
 .gp-chg.worse { color: var(--color-danger); }

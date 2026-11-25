@@ -1,8 +1,8 @@
-"""The Explore tab of the 2D map (navigation plan PR 3, decision 81): the Overview tab grown into ten topics with their pages and a search.
+"""The Home tab of the 2D map (navigation plan PR 3, decision 81): the Overview tab grown into ten topics with their pages and a search.
 
   python -m unittest tests.test_explore
 
-Every published Knowledge Area page is listed under its home domain in catalog.json, once; the page has the Explore tab, its search box and the two places a
+Every published Knowledge Area page is listed under its home domain in catalog.json, once; the page has the Home tab, its search box and the two places a
 topic's page and the search results are drawn; catalog.js opens a topic and answers Ask's question "which topic is this dataset in"; Ask offers "Open its
 topic" on the 2D map only.
 """
@@ -34,7 +34,7 @@ class Explore(unittest.TestCase):
         self.assertEqual(sorted(listed), sorted(areas), "each page once among the top domains")
 
     def test_the_tab_its_search_and_its_places(self):
-        self.assertRegex(self.html, r'data-tab="overview"><span class="ms-icon" aria-hidden="true">explore</span>Explore')
+        self.assertRegex(self.html, r'data-tab="overview"><span class="ms-icon" aria-hidden="true">home</span>Home')
         for i in ('id="exQ"', 'id="exResults"', 'id="exDomain"', 'id="ovCards"'):
             self.assertIn(i, self.html)
         self.assertIn("explore", re.search(r"icon_names=([a-z0-9_,]+)", self.html).group(1).split(","))

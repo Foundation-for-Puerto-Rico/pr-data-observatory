@@ -41,7 +41,7 @@ Both sources are read with no key:
 
 ## Why there is no map of bank offices
 
-Since 2023 the FDIC places about half of Puerto Rico's offices at the centre of their ZIP code. Their geocode is "M", the same point as the "US_Zipcode" match of 2022. In June 2026 only 113 of the 260 offices have a location at their street or address. A points layer would put half the banks where they are not, so the observatory counts the offices by municipio and draws none. Geocoding the offices' addresses is left for step 6 (access to essentials), which needs bank points.
+Since 2023 the FDIC places about half of Puerto Rico's offices at the center of their ZIP code. Their geocode is "M", the same point as the "US_Zipcode" match of 2022. In June 2026 only 113 of the 260 offices have a location at their street or address. A points layer would put half the banks where they are not, so the observatory counts the offices by municipio and draws none. Geocoding the offices' addresses is left for step 6 (access to essentials), which needs bank points.
 
 ## Rent vouchers: not published
 

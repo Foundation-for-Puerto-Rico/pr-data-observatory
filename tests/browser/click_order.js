@@ -82,7 +82,7 @@ const HELPERS = `window.__k = (() => {
       return null;
     },
     // a point feature of 'layers' whose pixel has, as its top clickable feature, one of 'layers'; o.need: other layers also under it (o.needRe: one matching this); o.allow: other small layers allowed near it;
-    // o.scan: look for that pixel up to this many px from the point's centre (a route line under a stop's circle, not always through its centre)
+    // o.scan: look for that pixel up to this many px from the point's center (a route line under a stop's circle, not always through its center)
     point(layers, o = {}) {
       const fs = map.queryRenderedFeatures({ layers: layers.filter(id => map.getLayer(id)) }), done = new Set(), allow = o.allow ? new RegExp(o.allow) : null;
       for (const f of fs) {
@@ -90,7 +90,7 @@ const HELPERS = `window.__k = (() => {
         const q0 = map.project(c), d = o.scan || 0, offs = []; let q = null, here = null, top = null;
         if (!onCanvas(q0) || (d && o.needRe && !at(q0, d).some(g => new RegExp(o.needRe).test(g.layer.id)))) continue;   // one box query before the pixels (a scan of every stop is slow)
         for (let dy = -d; dy <= d; dy++) for (let dx = -d; dx <= d; dx++) offs.push([dx, dy]);
-        offs.sort((a, b) => Math.hypot(...a) - Math.hypot(...b));   // the centre first
+        offs.sort((a, b) => Math.hypot(...a) - Math.hypot(...b));   // the center first
         for (const [dx, dy] of offs) {
           if (q) break; const t = { x: q0.x + dx, y: q0.y + dy }; if (!onCanvas(t)) continue;
           const h = at(t), tp = h.find(g => kind(g.layer.id) !== 'base'); if (!tp || !layers.includes(tp.layer.id)) continue;

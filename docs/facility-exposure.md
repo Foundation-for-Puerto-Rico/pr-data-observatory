@@ -34,7 +34,7 @@ In Puerto Rico, **327 of the 2,274 facilities** tested stand in the 1% flood are
 - **The flood layer is a simplified copy** of FEMA's map, and FEMA's 1% area is the regulatory map: it has no sea level rise, and some places flood that it does not show.
 - **Bridges are left out.** A bridge over a river stands in the flood area by design.
 - **Public housing developments whose location is approximate** are not drawn on the map and are not tested.
-- **Points that share their coordinates with another point of the same layer are not tested** (234: libraries 216, public housing developments 18). Several facilities listed at one address, such as a municipio's technology centres at its main library, are not where the buildings stand; counting each would multiply one spot's hazard by the size of the stack.
+- **Points that share their coordinates with another point of the same layer are not tested** (234: libraries 216, public housing developments 18). Several facilities listed at one address, such as a municipio's technology centers at its main library, are not where the buildings stand; counting each would multiply one spot's hazard by the size of the stack.
 - **Library points within 150 m of an open public school may be the same building; both are counted.**
 - **A share in a municipio with few facilities** moves a lot with one building: read the count beside it.
 
@@ -74,7 +74,7 @@ On the main island, **26 of 2,249 facilities** (1.2%), 0.0% of public school stu
 | Public housing developments | 143 | 0 |
 | Public schools | 855 | 0 |
 
-It says what the ground is rated, not that a slide will happen. It is not a substitute for a site-specific slope-stability study. **A building's own cell reads low:** a building stands on a levelled pad, and the 5 m map rates the pad by its own slope. 94% of public schools read Low, while 11.5% of residents (census block points, as `landslide.py` counts them) live on High or higher land. A low count means the building's own cell is not rated high, not that it is safe from a slide above or below it. Roads, read every 20 m, are a better guide here: 8.9% of main road km run on High or higher land. Checked: this reader gives 11.48% of residents on High or higher land with the census block points, against 11.47% published by `landslide.py`.
+It says what the ground is rated, not that a slide will happen. It is not a substitute for a site-specific slope-stability study. **A building's own cell reads low:** a building stands on a leveled pad, and the 5 m map rates the pad by its own slope. 94% of public schools read Low, while 11.5% of residents (census block points, as `landslide.py` counts them) live on High or higher land. A low count means the building's own cell is not rated high, not that it is safe from a slide above or below it. Roads, read every 20 m, are a better guide here: 8.9% of main road km run on High or higher land. Checked: this reader gives 11.48% of residents on High or higher land with the census block points, against 11.47% published by `landslide.py`.
 
 ## On the map (added 2026-11-16)
 
@@ -83,7 +83,7 @@ It says what the ground is rated, not that a slide will happen. It is not a subs
 
 ## Correction (2026-11-16)
 
-The first figures (PRs #261 and #264) counted every point, including stacks of facilities listed at one address. The largest were libraries: 17 technology centres at one point in Guaynabo, 12 in Ciales, 12 in Villalba. Those stacks carried 42 of the 68 facilities first counted on high landslide land, which put Ciales and Villalba at the top of that list, and 27 of the 356 first counted in the flood area. With stacked points left out: 327 facilities in the flood area, 17 in the 3 ft sea level rise area and 26 on high landslide land. Students and roads did not change.
+The first figures (PRs #261 and #264) counted every point, including stacks of facilities listed at one address. The largest were libraries: 17 technology centers at one point in Guaynabo, 12 in Ciales, 12 in Villalba. Those stacks carried 42 of the 68 facilities first counted on high landslide land, which put Ciales and Villalba at the top of that list, and 27 of the 356 first counted in the flood area. With stacked points left out: 327 facilities in the flood area, 17 in the 3 ft sea level rise area and 26 on high landslide land. Students and roads did not change.
 
 ## Checks (`tests/test_facility_exposure.py`)
 

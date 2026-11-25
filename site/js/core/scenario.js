@@ -7,8 +7,8 @@
      Scenario.parseModel(text, ids)       a model output file (CSV with a "#" header, or GeoJSON with a "model" member) -> { header, series, errors }; ids are the municipio codes
      Scenario.diffSeries(a, b, ids)       the difference B − A of two series of one variable, per place and period, where both have a value
 
-   A model output is never observed data: every series it gives carries its header (model, version, run, date, assumptions, licence, contact label) and the pages label it
-   "Model output (not observed data)". Contact details are refused: the header names a team or organisation, never a person's e-mail or telephone. */
+   A model output is never observed data: every series it gives carries its header (model, version, run, date, assumptions, license, contact label) and the pages label it
+   "Model output (not observed data)". Contact details are refused: the header names a team or organization, never a person's e-mail or telephone. */
 (function (name, root, factory) {
   const api = factory();
   if (typeof module === 'object' && module.exports) module.exports = api; else { root.Core = root.Core || {}; root.Core[name] = api; }
@@ -100,7 +100,7 @@
     for (const k of HEADER) if (!h[k]) errors.push(`the header has no ${k}`);
     if (h.date && !/^\d{4}-\d{2}-\d{2}$/.test(h.date)) errors.push('date must be YYYY-MM-DD');
     if (h.assumptions_url && !/^https?:\/\/\S+$/.test(h.assumptions_url)) errors.push('assumptions_url must be a web address');
-    for (const k of HEADER) if (h[k] && personal(h[k])) errors.push(`${k} holds an e-mail address or a telephone number: name a team or organisation, not a person's contact`);
+    for (const k of HEADER) if (h[k] && personal(h[k])) errors.push(`${k} holds an e-mail address or a telephone number: name a team or organization, not a person's contact`);
   }
 
   /** text: the file's text. ids: the municipio codes (five digits), in order; "72" is Puerto Rico as a whole. */

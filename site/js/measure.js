@@ -1,13 +1,13 @@
 /* PR Data Observatory: Measure distance and area, and Draw an area, on the 2D map (Tools › Map tools, decision 97 step 2; docs/measure.md).
    js/maptools.js loads this file, core/measure.js and their Spanish (I18N.load('measure')) the first time either tool is used, so the map's first load does not carry them.
    A box at the top left of the map holds the tool: click the map to add points; double-click, or press Finish, to end; Esc or Clear starts again.
-   - Distance: the length of the path, in metres or kilometres and in miles, along straight lines between the points (not along roads).
+   - Distance: the length of the path, in meters or kilometers and in miles, along straight lines between the points (not along roads).
    - Area: the area the points outline, in km², hectares, cuerdas and acres, and its perimeter. A finished area can be added to Study areas (Draw an area), where it is
      measured like any study area: residents, transit and, on request, flood zones, heat and more.
    The clicks are caught on the map's box before any layer gets them (capture phase), as Study areas' "Pick a point" does, so a click does not also select a municipio.
    Nothing is sent anywhere; a drawn area is kept only if it is added to Study areas (this browser's storage). */
 const Measure = (() => {
-  const M = Core.measure, C = '#C2410C';   // a dark orange that reads on the light and the detailed base maps and is not a layer's colour
+  const M = Core.measure, C = '#C2410C';   // a dark orange that reads on the light and the detailed base maps and is not a layer's color
   const st = { mode: 'line', pts: [], done: false, hover: null, box: null, ctl: null, layer: null, raf: 0, dbl: false, msg: '' };
 
   const lenTxt = (km) => (km < 1 ? T('{v} m', { v: fmt(km * 1000, 0) }) : T('{v} km', { v: fmt(km, km < 10 ? 2 : 1) })) + ' (' + T('{v} mi', { v: fmt(km / 1.609344, km < 16 ? 2 : 1) }) + ')';

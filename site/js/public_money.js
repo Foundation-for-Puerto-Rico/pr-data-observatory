@@ -19,7 +19,7 @@
   const MONEY = [['pa', 'FEMA Public Assistance obligated'], ['ia', 'FEMA Individual Assistance approved'], ['hma', 'FEMA Hazard Mitigation approved'], ['all', 'The three FEMA programs together'],
     ['cdbg_dr', 'HUD CDBG-DR and CDBG-MIT subawards'], ['cdbg', 'HUD CDBG yearly grants']];
   const NEED = [['eal', 'Expected annual loss from natural hazards, per resident'], ['cre3', 'Residents with three or more risk factors']];
-  // Nine colours: rows are money (low to high), columns are need (low to high); the corners differ in hue and the diagonal darkens (Stevens' scheme)
+  // Nine colors: rows are money (low to high), columns are need (low to high); the corners differ in hue and the diagonal darkens (Stevens' scheme)
   const BIV = [['#e8e8e8', '#e4acac', '#c85a5a'], ['#b0d5df', '#ad9ea5', '#985356'], ['#64acbe', '#627f8c', '#574249']];
   const S = { m: 'pa', n: 'eal', g: null, sort: { pmHma: ['name', 1], pmHud: ['name', 1] } };
   let D, GEO, PROJ;

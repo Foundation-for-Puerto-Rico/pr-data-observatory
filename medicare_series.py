@@ -5,7 +5,7 @@
     python medicare_series.py --check     # rebuild from the cache and exit 1 when site/data/medicare_series.json is not what it gives (no network, nothing written)
 
 Source, no key, US federal data (public domain): the Centers for Medicare & Medicaid Services (CMS) "Medicare Monthly Enrollment" dataset on data.cms.gov, the yearly rows
-(MONTH = "Year") of every county-level row of Puerto Rico. A yearly row counts the average of the year's monthly enrolment. The file has no personal data: only counts by county.
+(MONTH = "Year") of every county-level row of Puerto Rico. A yearly row counts the average of the year's monthly enrollment. The file has no personal data: only counts by county.
 CMS suppresses small counts with "*": they are read as no value, never as zero.
 
 Variables:
@@ -113,7 +113,7 @@ def compute(refresh=False, offline=False, order_file=hs.OUT / "economy_series.js
             d.append(share("DSBLD_TOT_BENES"))
         tot[y], ma[y], dis[y] = t, m, d
     G = "Medicare"
-    YEAR = "A year's figure is the average of the monthly enrolment counts of that year (CMS's yearly rows). "
+    YEAR = "A year's figure is the average of the monthly enrollment counts of that year (CMS's yearly rows). "
     vs = [
         var("medicare_benes", G, "People enrolled in Medicare", "", 0, "count",
             YEAR + "People with Medicare who live in the municipality: people 65 and older and younger people entitled by a disability or end-stage renal disease. CMS suppresses a very small count; it shows as no value.", tot),

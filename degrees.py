@@ -12,7 +12,7 @@ Institute's portal, which had no completions after 2021 for Puerto Rico on 2026-
 The year is the end of the academic year: 2024 = July 2023 to June 2024. When NCES publishes a revised file (C{year}_a_RV.csv inside the ZIP), it is read.
 
 What is counted. First majors only (MAJORNUM 1), so a student with two majors counts once. Each institution's awards go to the municipio of its campus
-in that year's directory. Most university systems report campus by campus, but not all: NUC University reports all of its campuses and online programmes
+in that year's directory. Most university systems report campus by campus, but not all: NUC University reports all of its campuses and online programs
 from Bayamón (14,321 of the island's 48,725 awards in 2023-24, mostly certificates), so a municipio's count follows where a college reports, not always
 where its students studied. The notes name each year's largest reporter. A municipio with no college has 0. The island is the sum.
   deg_total        every award: certificates, associate, bachelor's, master's and doctor's degrees (CIP 99, the file's own total)
@@ -46,7 +46,7 @@ FIELDS = [   # key, label, Spanish, 2-digit CIP families
     ("business", "Business", "Negocios", {"52"}),
     ("education", "Education", "Educación", {"13"}),
     ("stem", "Science, technology, engineering and mathematics", "Ciencias, tecnología, ingeniería y matemáticas", {"01", "03", "11", "14", "15", "26", "27", "40", "41"}),
-    ("social", "Social and behavioural sciences", "Ciencias sociales y de la conducta", {"42", "44", "45"}),
+    ("social", "Social and behavioral sciences", "Ciencias sociales y de la conducta", {"42", "44", "45"}),
     ("arts", "Arts and humanities", "Artes y humanidades", {"05", "09", "16", "23", "24", "38", "39", "50", "54"}),
 ]
 SOURCES = {"nces_ipeds": {"name": "NCES, Integrated Postsecondary Education Data System (IPEDS): completions and directory", "url": "https://nces.ed.gov/ipeds/datacenter/DataFiles.aspx",
@@ -145,7 +145,7 @@ def assemble(refresh=False, offline=False):
         per[y], notes[str(y)] = year_counts(y, ids, refresh, offline)
     REF = "NCES IPEDS completions (first majors) and directory, academic years ending 2015 to 2024, read from NCES's complete data files; counted by the municipio of each campus"
     WHERE = (" Counted at the campus that reports to IPEDS, not where the graduates live; a municipio with no college has 0. A college may report all its campuses from one place: "
-             "NUC University reports its campuses and online programmes from Bayamón. The year is the end of the academic year (2024 = 2023-24).")
+             "NUC University reports its campuses and online programs from Bayamón. The year is the end of the academic year (2024 = 2023-24).")
 
     def var(key, label, definition):
         return {"key": key, "group": G, "label": label, "unit": "", "d": 0, "type": "count", "sources": ["nces_ipeds"], "ref": REF, "definition": definition + WHERE,
