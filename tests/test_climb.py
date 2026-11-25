@@ -24,7 +24,7 @@ DATA = ROOT / "site" / "data"
 
 
 def grid_net():
-    """A 3 x 3 grid of roads 100 m apart, in local metres: nodes 0..8 row by row, edges right and down."""
+    """A 3 x 3 grid of roads 100 m apart, in local meters: nodes 0..8 row by row, edges right and down."""
     xy = {n: (100.0 * (n % 3), -100.0 * (n // 3)) for n in range(9)}
     eu, ev, geoms = [], [], []
     for n in range(9):
@@ -35,14 +35,14 @@ def grid_net():
 
 
 def ll(x, y):
-    """Local metres back to lon/lat."""
+    """Local meters back to lon/lat."""
     return {"lng": x / (walknet.M_PER_DEG * walknet.COS0) + walknet.LON0, "lat": y / walknet.M_PER_DEG + walknet.LAT0}
 
 
 class Walks(unittest.TestCase):
     def test_the_walk_is_joined_from_the_place_to_the_stop_and_has_the_searched_length(self):
         net = grid_net()
-        places = [ll(5.0, -150.0), ll(150.0, -205.0), ll(190.0, 3.0)]          # beside roads, a few metres off
+        places = [ll(5.0, -150.0), ll(150.0, -205.0), ll(190.0, 3.0)]          # beside roads, a few meters off
         stops = [ll(200.0, -60.0)]
         paths = walknet.nearest_paths(net, stops, places, 1000)
         dist = walknet.from_stops(net, stops, places, 1000)[0]

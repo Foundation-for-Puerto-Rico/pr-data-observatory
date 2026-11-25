@@ -55,7 +55,7 @@ async function run3d(lang, w) {
     await p.eval("document.querySelectorAll('.maplibregl-popup').forEach(e => e.remove()), 0");
     await click(p, pt.x, pt.y); await sleep(1200);
     const pop = await p.eval(POPUP3D);
-    check(/^directions_bus/.test(pop), `${label}: a click on a stop of the hour ("${pt.name.replace(/\s+/g, ' ')}") shows a stop's card, not the area under it ("${pop.slice(0, 90)}")`);   // two stops a few metres apart (antes / después) can be picked either way
+    check(/^directions_bus/.test(pop), `${label}: a click on a stop of the hour ("${pt.name.replace(/\s+/g, ' ')}") shows a stop's card, not the area under it ("${pop.slice(0, 90)}")`);   // two stops a few meters apart (antes / después) can be picked either way
   }
   await p.eval("document.getElementById('lySupStops').click(), 0");
   // 3. a facility switched on before the barrios: its point still wins; bare land shows the barrio

@@ -1,4 +1,4 @@
-"""Traffic on the roads of Puerto Rico for the PR Data Observatory: how many vehicles a day pass each stretch of the main roads, and the vehicle-kilometres,
+"""Traffic on the roads of Puerto Rico for the PR Data Observatory: how many vehicles a day pass each stretch of the main roads, and the vehicle-kilometers,
 truck traffic, road length and pavement condition of each municipio, from the Highway Performance Monitoring System (HPMS).
 
     python traffic.py            # download the pages missing from cache/traffic/ and build the two files below
@@ -8,7 +8,7 @@ truck traffic, road length and pavement condition of each municipio, from the Hi
 Writes
   site/data/traffic_roads.geojson  the map layer traffic: the arterials and major collectors with a traffic count, one line per stretch of a route with one
                                    count, wider and darker where more vehicles pass (2D map, 3D view and any map that reads Core.facilities)
-  site/data/traffic_series.json    one value per municipio (the shape of economy_series.json): daily vehicle-kilometres, per resident, km of arterials and
+  site/data/traffic_series.json    one value per municipio (the shape of economy_series.json): daily vehicle-kilometers, per resident, km of arterials and
                                    major collectors, truck share, pavement in poor condition, the busiest count
 The Connections between municipios page and layer read traffic_roads.geojson for the traffic on the road each simulated connection follows
 (transit_links.py; docs/traffic.md, HANDOFF decision 105, step 2).
@@ -60,7 +60,7 @@ LAYER_WHERE = "f_system<=5 AND aadt>0 AND facility_type IN (1,2)"
 MILE_KM = 1.609344
 IRI_POOR = 170          # inches per mile (FHWA, 23 CFR 490.313)
 SIMPLIFY_M = 12
-CLASSES = [2000, 5000, 10000, 20000, 40000]   # vehicles a day: the layer's six colour classes start at 0 and at each of these
+CLASSES = [2000, 5000, 10000, 20000, 40000]   # vehicles a day: the layer's six color classes start at 0 and at each of these
 CLASS_NAMES = ["Fewer than 2,000 vehicles a day", "2,000 to 5,000", "5,000 to 10,000", "10,000 to 20,000", "20,000 to 40,000", "40,000 or more"]
 FSYS = {1: "Interstate", 2: "Other freeway or expressway", 3: "Other principal arterial", 4: "Minor arterial", 5: "Major collector"}
 LAT0 = 18.2
@@ -139,7 +139,7 @@ def to_deg(geom):
 
 
 def colour_class(aadt):
-    """1 to 6: the layer's colour class of a count (1 under 2,000 vehicles a day ... 6 at 40,000 or more)."""
+    """1 to 6: the layer's color class of a count (1 under 2,000 vehicles a day ... 6 at 40,000 or more)."""
     return 1 + sum(1 for c in CLASSES if aadt >= c)
 
 
@@ -189,20 +189,20 @@ def stretches(layer, ftype):
 
 
 V = [   # the series' variables: key, label, unit, decimals, type, definition
-    ("traffic_vkt", "Vehicle-kilometres a day (HPMS)", "vehicle-km a day", 0, "count",
-     "The vehicle-kilometres driven on an average day on the municipio's public roads: each road section's annual average daily traffic times its length, added up. "
+    ("traffic_vkt", "Vehicle-kilometers a day (HPMS)", "vehicle-km a day", 0, "count",
+     "The vehicle-kilometers driven on an average day on the municipio's public roads: each road section's annual average daily traffic times its length, added up. "
      "Local streets are included with the traffic the Department of Transportation and Public Works estimates for them; ramps are left out."),
-    ("traffic_vkt_pc", "Vehicle-kilometres a day per resident (HPMS)", "vehicle-km a day per resident", 1, "ratio",
-     "The daily vehicle-kilometres on the municipio's roads over its residents in the 2020 Census. It counts every vehicle on those roads, also those of people who "
+    ("traffic_vkt_pc", "Vehicle-kilometers a day per resident (HPMS)", "vehicle-km a day per resident", 1, "ratio",
+     "The daily vehicle-kilometers on the municipio's roads over its residents in the 2020 Census. It counts every vehicle on those roads, also those of people who "
      "live elsewhere, so it is high where through traffic is heavy."),
     ("traffic_main_km", "Arterials and major collectors, km (HPMS)", "km", 1, "count",
      "The length of the municipio's main roads: freeways and expressways, principal and minor arterials and major collectors (functional classes 1 to 5), each road counted once."),
     ("traffic_max_aadt", "Busiest road, vehicles a day (HPMS)", "vehicles a day", 0, "count",
      "The highest annual average daily traffic on any section of the municipio's arterials and major collectors."),
     ("traffic_truck_pct", "Trucks, % of traffic on the main roads (HPMS)", "%", 1, "rate",
-     "Single-unit and combination trucks as a share of all vehicles, in vehicle-kilometres, on the arterials and major collectors whose sections report trucks."),
+     "Single-unit and combination trucks as a share of all vehicles, in vehicle-kilometers, on the arterials and major collectors whose sections report trucks."),
     ("traffic_poor_pct", "Main roads with rough pavement, % of km measured (HPMS)", "% of km", 1, "rate",
-     f"The share of the measured kilometres of arterials and major collectors whose International Roughness Index is over {IRI_POOR} inches per mile, FHWA's threshold for poor pavement."),
+     f"The share of the measured kilometers of arterials and major collectors whose International Roughness Index is over {IRI_POOR} inches per mile, FHWA's threshold for poor pavement."),
 ]
 
 

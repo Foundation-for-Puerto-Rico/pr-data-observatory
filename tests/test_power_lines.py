@@ -47,7 +47,7 @@ class File(unittest.TestCase):
         n = self.d["notes"]
         self.assertEqual(n["simplified_deg"], pl.TOL)
         km = sum(n["km_by_kv"].values())
-        self.assertLess(n["points"] / km, 5, "about 100 m simplification leaves a point every few hundred metres")
+        self.assertLess(n["points"] / km, 5, "about 100 m simplification leaves a point every few hundred meters")
         s, w, nn, e = pl.BBOX
         for f in self.d["features"]:
             for line in f["geometry"]["coordinates"]:

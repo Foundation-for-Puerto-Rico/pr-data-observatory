@@ -5,14 +5,14 @@
 const pad2 = (n) => String(n).padStart(2, '0');
 
 const HELP = {
-  places3d: [T('Tourism places'), T('Overture Maps places classified into the VIEWPR taxonomy, confidence ≥ 0.50, places of worship excluded. Heat at island scale, coloured points when zoomed in; points inside a FEMA flood hazard area have a dark rim. Holiday rentals and rented units named by a street address are counted in their municipality but not drawn. Private homes, residential buildings and care, shelter or treatment services are not tourism and are left out.')],
+  places3d: [T('Tourism places'), T('Overture Maps places classified into the VIEWPR taxonomy, confidence ≥ 0.50, places of worship excluded. Heat at island scale, colored points when zoomed in; points inside a FEMA flood hazard area have a dark rim. Holiday rentals and rented units named by a street address are counted in their municipality but not drawn. Private homes, residential buildings and care, shelter or treatment services are not tourism and are left out.')],
   comunidades: [T('Comunidades Especiales'), T('The 713 communities designated under Ley 1-2001, as delimited by the Junta de Planificación in 2006. Draped on the terrain; click inside one for its name, housing units and the hazards residents reported in the 2006 inventory. Communities designated after 2006 may be missing.')],
-  wcrp: [T('WCRP communities'), T('The communities in FPR\'s Whole Community Resilience Planning program, with the state of each plan (approved by the Puerto Rico Department of Housing, or in progress) and the organisation that leads it. The plans draw their area only in a PDF map, so each community is one approximate point: the popup says where the point comes from. The marker is the centre figure of the WCRP logo: solid orange for an approved plan, an orange outline for a plan in progress.')],
+  wcrp: [T('WCRP communities'), T('The communities in FPR\'s Whole Community Resilience Planning program, with the state of each plan (approved by the Puerto Rico Department of Housing, or in progress) and the organization that leads it. The plans draw their area only in a PDF map, so each community is one approximate point: the popup says where the point comes from. The marker is the center figure of the WCRP logo: solid orange for an approved plan, an orange outline for a plan in progress.')],
   surfheat: [T("Surface heat, summer mornings and nights"), T("The temperature of the ground's surface (roofs, pavement, soil and tree canopy) on clear summer mornings, measured by the thermal sensor of Landsat 8 and 9 at about 10:30, June to September of the last three summers: the median of each 60 m cell's clear views. It is not the air temperature. Blue is cooler than Puerto Rico's median surface, red hotter; the mountains are cooler partly because they are higher. Mona, Monito and Desecheo are left out. The legend's Night switch shows instead how warm the surface stays on clear summer nights (NASA ECOSTRESS, 21:00 to 06:00).")],
   flood: [T('Flood zones'), T('Special Flood Hazard Areas (1% annual chance) in blue, 0.2% annual chance in light blue, from the National Flood Hazard Layer. Draped on the terrain.')],
   slr: [T('Sea level rise'), T('NOAA Sea Level Rise Viewer inundation tiles, streamed live. The Time tab turns a year and a NOAA 2022 scenario into the nearest whole foot (1–10 ft). Indicative, not a forecast.')],
   trips: [T('Scheduled vehicles'), T('Every scheduled weekday trip in the ATI and municipal GTFS feeds replayed against the clock: positions are interpolated between consecutive stops using the timetable, so they show where vehicles are scheduled to be, not real-time locations.')],
-  storms: [T('Hurricane tracks'), T('NOAA HURDAT2 best tracks for every Atlantic cyclone since 1851 that passed within 250 km of Puerto Rico. Colour is the Saffir-Simpson category of the peak wind while near the island; the filter uses the same value.')],
+  storms: [T('Hurricane tracks'), T('NOAA HURDAT2 best tracks for every Atlantic cyclone since 1851 that passed within 250 km of Puerto Rico. Color is the Saffir-Simpson category of the peak wind while near the island; the filter uses the same value.')],
   // the layers the 2D map has too: the same texts as its help (help.js), but the boundaries, which have columns here instead of shading
   muni: [T('Municipal boundaries'), T('2020 Census boundaries of the 78 municipios, off when the view opens. Click a municipality for its summary; Columns by municipality compares a measure across them.')],
   barrios: [T('Barrios'), T('Sub-municipal districts (the US Census Bureau calls them county subdivisions). Dashed outlines; click inside one for its tourism places, flood exposure and transit access. Boundaries are the 2020 Census subdivisions.')],
@@ -22,14 +22,14 @@ const HELP = {
   gaps: [T('Service gaps'), T('Census blocks with 40 or more residents whose nearest scheduled stop is more than an 800 m walk away, along mapped roads (a block with no mapped road within 150 m is measured in a straight line). Circle size follows the number of residents. Stops from expired timetables still count, so real gaps are larger. The road map has no footpaths, so the walk is an estimate.')],
   xfer: [T('Integration points'), T('Places where a stop of one transit system is within 250 m of a stop of another system. These are the natural places to align timetables, fares and signage.')],
 };
-const SCENARIOS = { // NOAA 2022 global mean sea level scenarios, metres above 2000 baseline (approx. from the report's tables)
+const SCENARIOS = { // NOAA 2022 global mean sea level scenarios, meters above 2000 baseline (approx. from the report's tables)
   int_low:  { label: T('Intermediate-Low'),  pts: [[2020, .07], [2050, .24], [2100, .5], [2150, .8]] },
   int:      { label: T('Intermediate'),      pts: [[2020, .07], [2050, .3], [2100, 1.0], [2150, 1.9]] },
   int_high: { label: T('Intermediate-High'), pts: [[2020, .07], [2050, .37], [2100, 1.5], [2150, 2.9]] },
   high:     { label: T('High'),              pts: [[2020, .07], [2050, .44], [2100, 2.0], [2150, 3.9]] },
 };
 const CAT_COLORS = { 0: '#8C8E8E', 1: '#5FAFDA', 2: '#A6BF33', 3: '#FFA600', 4: '#FF4D38', 5: '#8C180D' };
-// badge colours: FPR tint backgrounds with their dark text, all above 4.5:1
+// badge colors: FPR tint backgrounds with their dark text, all above 4.5:1
 const STORM_BADGE = { 0: ['#E6E6E6', '#2A2E2E'], 1: ['#BDE0F2', '#205D7B'], 2: ['#E4EFB8', '#47560F'], 3: ['#FFE9A8', '#8A5200'], 4: ['#FFD0C9', '#B82415'], 5: ['#B82415', '#FFFFFF'] };
 const RAMP = Core.palettes.RAMPS.blue;
 const stormName = (s) => s.name === 'Unnamed' ? T('Unnamed') : s.name;   // HURDAT2 data: most storms before naming began are "Unnamed"
@@ -314,7 +314,7 @@ function setMetric(key) {
   map.setLayoutProperty('muni-cols', 'visibility', key ? 'visible' : 'none');
   if (!key) { map.setPaintProperty('muni-cols', 'fill-extrusion-height', 0); lg.innerHTML = ''; return; }
   const c = METRIC[key];
-  if (c.bool) {   // a yes/no listing (Uber): a column of one height where it is listed, a flat grey sheet where it is not
+  if (c.bool) {   // a yes/no listing (Uber): a column of one height where it is listed, a flat gray sheet where it is not
     const n = Object.values(S.muni).filter(m => m[key] === true).length, all = Object.values(S.muni).filter(m => m[key] != null).length, yes = ['==', ['get', key], true];
     map.setPaintProperty('muni-cols', 'fill-extrusion-color', ['case', yes, RAMP[3], '#E6E6E6']);
     map.setPaintProperty('muni-cols', 'fill-extrusion-height', ['case', yes, 6000, 0]);
@@ -343,12 +343,12 @@ function setMetric(key) {
   const stops = Core.classify.risingStops(q);
   map.setPaintProperty('muni-cols', 'fill-extrusion-color', ['step', ['coalesce', ['get', key], 0], RAMP[0], stops[0], RAMP[1], stops[1], RAMP[2], stops[2], RAMP[3], stops[3], RAMP[4]]);
   map.setPaintProperty('muni-cols', 'fill-extrusion-height', ['*', ['coalesce', ['get', key], 0], 14000 / max]);
-  lg.innerHTML = Core.legend.swatches(RAMP, [`${fmt(min, c.d)}${c.pct ? '%' : ''}`, `${fmt(q[1], c.d)}${c.pct ? '%' : ''}`, `${fmt(max, c.d)}${c.pct ? '%' : ''}`], T('{label} · column height ∝ value, colour by quintile.', { label: c.label }));
+  lg.innerHTML = Core.legend.swatches(RAMP, [`${fmt(min, c.d)}${c.pct ? '%' : ''}`, `${fmt(q[1], c.d)}${c.pct ? '%' : ''}`, `${fmt(max, c.d)}${c.pct ? '%' : ''}`], T('{label} · column height ∝ value, color by quintile.', { label: c.label }));
 }
 
 // ── Columns from any dataset of the Economy tab (plan item 16, B7) ──────────
-// The 17 measures above stay as they were (municipalities.json). "Any dataset…" takes the column's height from one dataset and its colour from another (or the
-// same), each normalised as a shaded map of the Economy tab starts it (counts per 1,000 residents, dollar totals per resident, the rest as published), in the year chosen.
+// The 17 measures above stay as they were (municipalities.json). "Any dataset…" takes the column's height from one dataset and its color from another (or the
+// same), each normalized as a shaded map of the Economy tab starts it (counts per 1,000 residents, dollar totals per resident, the rest as published), in the year chosen.
 // The shared engine, its data files and, in Spanish, the map page's names of the datasets load only then, so the 3D view's first load does not carry them (docs/engine.md).
 const ENG = { E: null, loading: null, filled: false, h: 'poverty_pct', c: '', y: null, ho: {}, co: {}, failed: [] };   // ho, co: the rescaling the chat asked for (ask3d.js); the menus reset them
 const ENGINE_JS = ['core/stats.js?v=4', 'core/time.js?v=1', 'core/format.js?v=2', 'core/normalize.js?v=4', 'core/reliability.js?v=4', 'core/engine.js?v=11', 'core/hexbin.js?v=1', 'core/adapters.js?v=15', 'core/datasets.js?v=29'];   // the versions index.html loads, so the browser can reuse them
@@ -406,7 +406,7 @@ function engineDraw() {
   const b = E.breaks(C.L, C.y), cols = b.div ? Core.palettes.DIVERGING : RAMP, at = new Map(E.geo.names.slice(0, E.geo.pr).map((n, i) => [n, i]));
   for (const f of S.muniFc.features) {
     const i = at.get(f.properties.municipality), h = i == null ? null : H.a[i], k = i == null ? -1 : Core.classify.classOf(b, C.a[i]);
-    f.properties.__h = h == null || !isFinite(h) ? 0 : Math.abs(h);   // a negative value (a loss) stands as tall as a gain of the same size; the colour tells them apart when it is the same dataset
+    f.properties.__h = h == null || !isFinite(h) ? 0 : Math.abs(h);   // a negative value (a loss) stands as tall as a gain of the same size; the color tells them apart when it is the same dataset
     f.properties.__col = k < 0 ? Core.palettes.NOVAL : cols[k];
   }
   map.getSource('munis').setData(S.muniFc);
@@ -416,7 +416,7 @@ function engineDraw() {
   map.setPaintProperty('muni-cols', 'fill-extrusion-color', ['coalesce', ['get', '__col'], Core.palettes.NOVAL]);
   const e = b.edges || [], lab = (x) => x == null || !isFinite(x) ? '' : esc(E.fmt(C.L, x, Math.abs(x) >= 1000));
   lg.innerHTML = `<div class="note">${Th('<b>Height:</b> {name}, {period}. The tallest column is {max}.', { name: H.title, period: H.chip, max: E.fmt(H.L, top) })}${hv.some(x => x < 0) ? ' ' + esc(T('A negative value stands as tall as a positive one of the same size.')) : ''}</div>`
-    + Core.legend.swatches(cols, [lab(e[0]), lab(e[Math.floor(e.length / 2)]), lab(e[e.length - 1])], T('Colour: {name}, {period}, in five classes. Grey: no value.', { name: C.title, period: C.chip }));
+    + Core.legend.swatches(cols, [lab(e[0]), lab(e[Math.floor(e.length / 2)]), lab(e[e.length - 1])], T('Color: {name}, {period}, in five classes. Gray: no value.', { name: C.title, period: C.chip }));
   if (window.Series) Series.sync();   // the time series panel (series3d.js) follows the dataset and the year
 }
 
@@ -429,7 +429,7 @@ async function addFlood() {
   clickable('flood-fill', 'area', f => floodPopup(f.properties, false));   // the sections of the area card are access.js's, as on the 2D map
 }
 // The surface heat images (heat.py: summer mornings, Landsat; ecostress.py: summer nights; surface_image.py; HANDOFF decision 88): one at a time, draped on the terrain over
-// the hillshade and under the 3D buildings and every data layer. Its colours follow the ground in view by default (core/surfscale.js, loaded with it), or Puerto Rico's
+// the hillshade and under the 3D buildings and every data layer. Its colors follow the ground in view by default (core/surfscale.js, loaded with it), or Puerto Rico's
 let surfMode = 'view', surfTime = 'day';
 const surfs = {}, SURF_FILE = { day: 'data/heat_surface.json', night: 'data/night_heat_surface.json' };
 const surfOpen = (t) => surfs[t] || (surfs[t] = (async () => { const m = await loadJson(SURF_FILE[t]), o = await Core.surfscale.open('data/' + m.image, m); o.meta = m; return o; })().catch(e => { delete surfs[t]; throw e; }));
@@ -483,7 +483,7 @@ async function addWcrp() {
   if (map.getSource('wcrp')) return;
   addImage('wcrp-pin', pin, { pixelRatio: 2 }); addImage('wcrp-pin-open', open, { pixelRatio: 2 });   // the SVGs are drawn at 2x
   map.addSource('wcrp', { type: 'geojson', data });
-  // the centre figure of the WCRP logo: solid for an approved plan, an outline for a plan in progress. Approved pins sort on top where plans share a point.
+  // the center figure of the WCRP logo: solid for an approved plan, an outline for a plan in progress. Approved pins sort on top where plans share a point.
   const approved = ['==', ['get', 'estado'], 'plan_aprobado'];
   map.addLayer({ id: 'wcrp-pts', type: 'symbol', source: 'wcrp', layout: { 'icon-image': ['case', approved, 'wcrp-pin', 'wcrp-pin-open'], 'icon-anchor': 'bottom', 'icon-offset': [0, 2], 'icon-size': 1.3, 'icon-allow-overlap': true, 'icon-ignore-placement': true, 'symbol-sort-key': ['case', approved, 1, 0] } }, topBefore('wcrp-'));
   clickable('wcrp-pts', 'point', (f, all) => {   // plans that share a point all come back under the click; list each once
@@ -500,7 +500,7 @@ async function addRoutes() {
   if (map.getSource('routes')) return;
   S.routes = S.routes || await loadJson('data/transit_routes.geojson');
   map.addSource('routes', { type: 'geojson', data: S.routes });
-  // colour by operator: Tren Urbano red, ATI buses blue, municipal systems green, públicos (OpenStreetMap) gold; solid = follows the roads or the operator's shape, dashed = stop order inferred, dotted = no road path found
+  // color by operator: Tren Urbano red, ATI buses blue, municipal systems green, públicos (OpenStreetMap) gold; solid = follows the roads or the operator's shape, dashed = stop order inferred, dotted = no road path found
   const ROUTE_COLOR = ['case', ['==', ['get', 'mode'], 'rail'], '#B82415', ['==', ['get', 'operator'], 'osm'], '#B56D00', ['==', ['get', 'operator'], 'ati'], '#205D7B', '#607316'];
   map.addLayer({ id: 'routes-line', type: 'line', source: 'routes', filter: ['all', ['!=', ['get', 'mode'], 'ferry'], ['!=', ['get', 'geometry_source'], 'stops'], ['!=', ['get', 'geometry_source'], 'roads_inferred']], layout: { 'line-cap': 'round', 'line-join': 'round' }, paint: { 'line-color': ROUTE_COLOR, 'line-width': ['match', ['get', 'mode'], 'rail', 4, 2], 'line-opacity': .85 } }, slotBefore('routes-'));
   map.addLayer({ id: 'routes-inferred', type: 'line', source: 'routes', filter: ['==', ['get', 'geometry_source'], 'roads_inferred'], layout: { 'line-cap': 'round', 'line-join': 'round' }, paint: { 'line-color': ROUTE_COLOR, 'line-width': 2, 'line-opacity': .6, 'line-dasharray': [3, 2] } }, slotBefore('routes-'));
@@ -547,7 +547,7 @@ async function addTaxi() {
   transportPop('taxi-pts'); hoverCursor('taxi-pts');
 }
 // The 400 m walk rings around every stop, bus station, Tren Urbano station and ferry terminal (as on the 2D map), drawn from zoom 14 while stops or stations are on.
-// A circle 400 m across on the ground: MapLibre's world is 512 px wide at zoom 0 and twice as wide at each zoom, and a metre at latitude φ is 1 / cos φ of a metre at the equator.
+// A circle 400 m across on the ground: MapLibre's world is 512 px wide at zoom 0 and twice as wide at each zoom, and a meter at latitude φ is 1 / cos φ of a meter at the equator.
 const ringR0 = (lat) => 400 * 512 / (40075016.686 * Math.cos(lat * Math.PI / 180));   // the radius in pixels at zoom 0
 const ringsOn = () => $('#walkRings').checked && ($('#lyStops').checked || $('#lyHubs').checked);
 const ringsDrawn = () => ringsOn() && map.getZoom() >= 14;
@@ -572,7 +572,7 @@ async function setGaps(on) {
   if (!on) { $('#gapNote').textContent = ''; return; }
   const blocks = await Data.json('data/population_blocks.json');
   if (!$('#lyGaps').checked) return;
-  const walk = blocks.length > 0 && blocks[0].length > 4, dist = b => walk ? b[4] : b[3];   // [lon, lat, residents, metres straight, metres walked along mapped roads]
+  const walk = blocks.length > 0 && blocks[0].length > 4, dist = b => walk ? b[4] : b[3];   // [lon, lat, residents, meters straight, meters walked along mapped roads]
   const people = blocks.filter(b => dist(b) > 800).reduce((a, b) => a + b[2], 0), all = blocks.reduce((a, b) => a + b[2], 0);
   if (!map.getSource('gaps')) {
     map.addSource('gaps', { type: 'geojson', data: { type: 'FeatureCollection', features: blocks.filter(b => dist(b) > 800 && b[2] >= 40).map(b => ({ type: 'Feature', geometry: { type: 'Point', coordinates: [b[0], b[1]] }, properties: { n: b[2], s: b[3], m: walk ? b[4] : null } })) } });
@@ -823,8 +823,8 @@ class NavPad {
     const btn = (name, label, fn) => { const b = document.createElement('button'); b.type = 'button'; b.title = label; b.setAttribute('aria-label', label); b.innerHTML = `<span class="ms-icon" aria-hidden="true">${name}</span>`; b.onclick = fn; el.appendChild(b); return b; };
     btn('rotate_left', T('Rotate the view left (Q)'), () => ease({ bearing: map.getBearing() - 30 }));
     btn('rotate_right', T('Rotate the view right (E)'), () => ease({ bearing: map.getBearing() + 30 }));
-    btn('keyboard_arrow_up', T('Tilt up, towards the horizon'), () => ease({ pitch: Math.min(map.getMaxPitch(), map.getPitch() + 10) }));
-    btn('keyboard_arrow_down', T('Tilt down, towards a top-down view'), () => ease({ pitch: Math.max(0, map.getPitch() - 10) }));
+    btn('keyboard_arrow_up', T('Tilt up, toward the horizon'), () => ease({ pitch: Math.min(map.getMaxPitch(), map.getPitch() + 10) }));
+    btn('keyboard_arrow_down', T('Tilt down, toward a top-down view'), () => ease({ pitch: Math.max(0, map.getPitch() - 10) }));
     btn('explore', T('Look straight down, or return to the tilted view (T)'), topDown);
     btn('home', T('Show the whole island (H)'), goHome);
     const help = btn('keyboard', T('How to move around: mouse, touch and keyboard'), () => { const h = $('#navHelp'); h.hidden = !h.hidden; help.setAttribute('aria-expanded', String(!h.hidden)); });

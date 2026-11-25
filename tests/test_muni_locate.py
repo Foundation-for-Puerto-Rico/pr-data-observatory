@@ -3,7 +3,7 @@
   python -m unittest discover -s tests -v
 
 An invented shore checks the rule: a stop 50 m off a shore counts in the municipality whose outline is nearest, even when another municipality's
-town centre is nearer. Two tests read the published files in site/data: the scheduled stops on Cataño's waterfront are in Cataño, and both scripts
+town center is nearer. Two tests read the published files in site/data: the scheduled stops on Cataño's waterfront are in Cataño, and both scripts
 that place stops (build.py and refresh_network.py) use this rule.
 """
 import json
@@ -25,7 +25,7 @@ M_LNG = 111_320 * math.cos(math.radians(LAT0))
 
 
 def deg(north_m, east_m):
-    """(lat, lng) a given number of metres north and east of (18.4, -66.0)."""
+    """(lat, lng) a given number of meters north and east of (18.4, -66.0)."""
     return LAT0 + north_m / M_LAT, -66.0 + east_m / M_LNG
 
 
@@ -38,7 +38,7 @@ def square(south_m, west_m, north_m, east_m):
 class NearestOutline(unittest.TestCase):
     def setUp(self):
         # "Shore" is a long strip (35 km east to west) whose north edge is the shoreline; "Big" lies along the coast to the east, behind a 1 km gap of water.
-        # Big's centre is nearer than Shore's to a stop just off Shore's east end; the outline rule must still give Shore.
+        # Big's center is nearer than Shore's to a stop just off Shore's east end; the outline rule must still give Shore.
         self.geoms = [square(-3_000, -30_000, 0, 5_000), square(-3_000, 6_000, 2_000, 12_000)]
         self.names = ["Shore", "Big"]
         self.locate = muni_locate.Locator(self.geoms, self.names)
@@ -53,8 +53,8 @@ class NearestOutline(unittest.TestCase):
         self.assertEqual(self.locate(lat, lng), "Shore")
         i, m = self.locate.nearest(lat, lng)
         self.assertEqual(self.names[i], "Shore")
-        self.assertAlmostEqual(m, 50, delta=1)                        # metres, with longitude scaled by cos(latitude)
-        # Big's centroid is nearer than Shore's: the old nearest-centre rule would have said "Big"
+        self.assertAlmostEqual(m, 50, delta=1)                        # meters, with longitude scaled by cos(latitude)
+        # Big's centroid is nearer than Shore's: the old nearest-center rule would have said "Big"
         cs, cb = (g.centroid for g in self.geoms)
         k = math.cos(math.radians(lat))
         self.assertLess(math.hypot((cb.x - lng) * k, cb.y - lat), math.hypot((cs.x - lng) * k, cs.y - lat))

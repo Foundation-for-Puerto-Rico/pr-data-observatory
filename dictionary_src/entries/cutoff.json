@@ -35,7 +35,7 @@
       "last": 2026,
       "frequency": "Rebuilt by hand with python cutoff.py when the roads, the flood map or the bridge inventory change."
     },
-    "method": "cutoff.py places a test point every 25 m along every road of the graph the map uses (roads.bin, from OpenStreetMap) and closes each stretch whose points fall in FEMA's 1% annual chance flood area, except motorways and trunk roads (raised expressways) and the span of each bridge the National Bridge Inventory rates good or fair. Bridges in poor condition, and those listed as closed, close the road under their point. Each 2020 Census block with residents is placed on its nearest road joined to the network within 2 km; it is cut off when no open road leads from it to a hospital (the hospitals and medical centres of OpenStreetMap in the observatory's place index). A block whose own stretch is closed is cut off too. A barrio's or municipio's figure is the share of its residents, Vieques and Culebra left out.",
+    "method": "cutoff.py places a test point every 25 m along every road of the graph the map uses (roads.bin, from OpenStreetMap) and closes each stretch whose points fall in FEMA's 1% annual chance flood area, except motorways and trunk roads (raised expressways) and the span of each bridge the National Bridge Inventory rates good or fair. Bridges in poor condition, and those listed as closed, close the road under their point. Each 2020 Census block with residents is placed on its nearest road joined to the network within 2 km; it is cut off when no open road leads from it to a hospital (the hospitals and medical centers of OpenStreetMap in the observatory's place index). A block whose own stretch is closed is cut off too. A barrio's or municipio's figure is the share of its residents, Vieques and Culebra left out.",
     "sources": [
       "osm",
       "fema_nfhl",
@@ -48,7 +48,7 @@
       "A worst case: the 1% flood everywhere at once, every flooded stretch closed for its whole length. In a real storm only some rivers rise, for a few hours.",
       "Check: of the 8 WCRP communities whose plans say floods or a failing bridge leave them cut off, 5 have half or more of the residents within 800 m cut off in the model (59.4% on average), against 16 of the other 67 WCRP communities (27.7%). It misses Mariana (Humacao), Punta Tuna (Maunabo), Río Blanco (Naguabo).",
       "Landslides, fallen trees and power lines also cut roads; they are not in the model. Nor are private roads missing from OpenStreetMap.",
-      "Hospitals are those of OpenStreetMap named hospital or medical centre; a community health centre (CDT or 330 centre) is not one."
+      "Hospitals are those of OpenStreetMap named hospital or medical center; a community health center (CDT or 330 center) is not one."
     ],
     "see_also": [
       "cutoff.cut_flood_dry_pct",
@@ -102,7 +102,7 @@
       "last": 2026,
       "frequency": "Rebuilt by hand with python cutoff.py when the roads, the flood map or the bridge inventory change."
     },
-    "method": "cutoff.py places a test point every 25 m along every road of the graph the map uses (roads.bin, from OpenStreetMap) and closes each stretch whose points fall in FEMA's 1% annual chance flood area, except motorways and trunk roads (raised expressways) and the span of each bridge the National Bridge Inventory rates good or fair. Bridges in poor condition, and those listed as closed, close the road under their point. Each 2020 Census block with residents is placed on its nearest road joined to the network within 2 km; it is cut off when no open road leads from it to a hospital (the hospitals and medical centres of OpenStreetMap in the observatory's place index). A block whose own stretch is closed is cut off too. A barrio's or municipio's figure is the share of its residents, Vieques and Culebra left out.",
+    "method": "cutoff.py places a test point every 25 m along every road of the graph the map uses (roads.bin, from OpenStreetMap) and closes each stretch whose points fall in FEMA's 1% annual chance flood area, except motorways and trunk roads (raised expressways) and the span of each bridge the National Bridge Inventory rates good or fair. Bridges in poor condition, and those listed as closed, close the road under their point. Each 2020 Census block with residents is placed on its nearest road joined to the network within 2 km; it is cut off when no open road leads from it to a hospital (the hospitals and medical centers of OpenStreetMap in the observatory's place index). A block whose own stretch is closed is cut off too. A barrio's or municipio's figure is the share of its residents, Vieques and Culebra left out.",
     "sources": [
       "osm",
       "fema_nfhl",
@@ -167,7 +167,7 @@
       "last": 2026,
       "frequency": "Rebuilt by hand with python cutoff.py when the roads, the flood map or the bridge inventory change."
     },
-    "method": "cutoff.py places a test point every 25 m along every road of the graph the map uses (roads.bin, from OpenStreetMap) and closes each stretch whose points fall in FEMA's 1% annual chance flood area, except motorways and trunk roads (raised expressways) and the span of each bridge the National Bridge Inventory rates good or fair. Bridges in poor condition, and those listed as closed, close the road under their point. Each 2020 Census block with residents is placed on its nearest road joined to the network within 2 km; it is cut off when no open road leads from it to a hospital (the hospitals and medical centres of OpenStreetMap in the observatory's place index). A block whose own stretch is closed is cut off too. A barrio's or municipio's figure is the share of its residents, Vieques and Culebra left out.",
+    "method": "cutoff.py places a test point every 25 m along every road of the graph the map uses (roads.bin, from OpenStreetMap) and closes each stretch whose points fall in FEMA's 1% annual chance flood area, except motorways and trunk roads (raised expressways) and the span of each bridge the National Bridge Inventory rates good or fair. Bridges in poor condition, and those listed as closed, close the road under their point. Each 2020 Census block with residents is placed on its nearest road joined to the network within 2 km; it is cut off when no open road leads from it to a hospital (the hospitals and medical centers of OpenStreetMap in the observatory's place index). A block whose own stretch is closed is cut off too. A barrio's or municipio's figure is the share of its residents, Vieques and Culebra left out.",
     "sources": [
       "osm",
       "fema_nfhl",
@@ -179,7 +179,7 @@
     "caveats": [
       "Poor condition is the National Bridge Inventory's rating of the deck, superstructure or substructure: it does not mean the bridge will fail.",
       "A bridge's point is placed on the nearest road within 60 m; where a bridge crosses over another road, the wrong one may close.",
-      "Hospitals are those of OpenStreetMap named hospital or medical centre; a community health centre (CDT or 330 centre) is not one."
+      "Hospitals are those of OpenStreetMap named hospital or medical center; a community health center (CDT or 330 center) is not one."
     ],
     "see_also": [
       "cutoff.cut_flood_pct",
@@ -231,7 +231,7 @@
       "last": 2026,
       "frequency": "Rebuilt by hand with python cutoff.py when the roads, the flood map or the bridge inventory change."
     },
-    "method": "cutoff.py places a test point every 25 m along every road of the graph the map uses (roads.bin, from OpenStreetMap) and closes each stretch whose points fall in FEMA's 1% annual chance flood area, except motorways and trunk roads (raised expressways) and the span of each bridge the National Bridge Inventory rates good or fair. Bridges in poor condition, and those listed as closed, close the road under their point. Each 2020 Census block with residents is placed on its nearest road joined to the network within 2 km; it is cut off when no open road leads from it to a hospital (the hospitals and medical centres of OpenStreetMap in the observatory's place index). A block whose own stretch is closed is cut off too. A barrio's or municipio's figure is the share of its residents, Vieques and Culebra left out.",
+    "method": "cutoff.py places a test point every 25 m along every road of the graph the map uses (roads.bin, from OpenStreetMap) and closes each stretch whose points fall in FEMA's 1% annual chance flood area, except motorways and trunk roads (raised expressways) and the span of each bridge the National Bridge Inventory rates good or fair. Bridges in poor condition, and those listed as closed, close the road under their point. Each 2020 Census block with residents is placed on its nearest road joined to the network within 2 km; it is cut off when no open road leads from it to a hospital (the hospitals and medical centers of OpenStreetMap in the observatory's place index). A block whose own stretch is closed is cut off too. A barrio's or municipio's figure is the share of its residents, Vieques and Culebra left out.",
     "sources": [
       "osm",
       "fema_nfhl",
@@ -294,7 +294,7 @@
       "last": 2026,
       "frequency": "Rebuilt by hand with python cutoff.py when the roads, the flood map or the bridge inventory change."
     },
-    "method": "cutoff.py places a test point every 25 m along every road of the graph the map uses (roads.bin, from OpenStreetMap) and closes each stretch whose points fall in FEMA's 1% annual chance flood area, except motorways and trunk roads (raised expressways) and the span of each bridge the National Bridge Inventory rates good or fair. Bridges in poor condition, and those listed as closed, close the road under their point. Each 2020 Census block with residents is placed on its nearest road joined to the network within 2 km; it is cut off when no open road leads from it to a hospital (the hospitals and medical centres of OpenStreetMap in the observatory's place index). A block whose own stretch is closed is cut off too. A barrio's or municipio's figure is the share of its residents, Vieques and Culebra left out.",
+    "method": "cutoff.py places a test point every 25 m along every road of the graph the map uses (roads.bin, from OpenStreetMap) and closes each stretch whose points fall in FEMA's 1% annual chance flood area, except motorways and trunk roads (raised expressways) and the span of each bridge the National Bridge Inventory rates good or fair. Bridges in poor condition, and those listed as closed, close the road under their point. Each 2020 Census block with residents is placed on its nearest road joined to the network within 2 km; it is cut off when no open road leads from it to a hospital (the hospitals and medical centers of OpenStreetMap in the observatory's place index). A block whose own stretch is closed is cut off too. A barrio's or municipio's figure is the share of its residents, Vieques and Culebra left out.",
     "sources": [
       "osm",
       "fema_nfhl",

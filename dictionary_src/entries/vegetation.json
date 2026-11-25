@@ -31,7 +31,7 @@
    "last": 2026,
    "frequency": "One window of three summers (June to September 2024-2026), the window of surface heat; rebuilt each October when a new summer is complete (refresh unit vegetation)."
   },
-  "method": "vegetation.py lists every Sentinel-2 Level-2A scene over Puerto Rico of June to September 2024-2026 with less than 70% cloud cover (984 scenes on eight MGRS tiles, 241 passes), reads each scene's red and near-infrared bands and its scene classification at 40 m with raster.py, only the tiles over the barrios, by HTTP range requests, and maps them onto heat.py's 60 m grid in UTM zone 20 (scenes in zone 19 through pyproj). An observation counts when the scene classification says vegetation or not vegetated (clouds, cirrus, shadows, water and unclassified pixels are left out); where two tiles of one pass overlap, a cell keeps one view. NDVI = (near-infrared − red) / (near-infrared + red). Each cell's value is the median of its clear views (at least 3; the typical cell has 30). A cell belongs to the barrio whose outline holds its centre; municipios and Puerto Rico pool the cells of their barrios. 99.4% of the 2,485,382 cells have a value. Checks at every build: Puerto Rico's median NDVI between 0.4 and 0.9, San Juan's below it, Jayuya's and Adjuntas's above it, and greener barrios cooler in the surface heat file (a Spearman rank correlation of −0.3 or less; -0.894 across 901 barrios in this build).",
+  "method": "vegetation.py lists every Sentinel-2 Level-2A scene over Puerto Rico of June to September 2024-2026 with less than 70% cloud cover (984 scenes on eight MGRS tiles, 241 passes), reads each scene's red and near-infrared bands and its scene classification at 40 m with raster.py, only the tiles over the barrios, by HTTP range requests, and maps them onto heat.py's 60 m grid in UTM zone 20 (scenes in zone 19 through pyproj). An observation counts when the scene classification says vegetation or not vegetated (clouds, cirrus, shadows, water and unclassified pixels are left out); where two tiles of one pass overlap, a cell keeps one view. NDVI = (near-infrared − red) / (near-infrared + red). Each cell's value is the median of its clear views (at least 3; the typical cell has 30). A cell belongs to the barrio whose outline holds its center; municipios and Puerto Rico pool the cells of their barrios. 99.4% of the 2,485,382 cells have a value. Checks at every build: Puerto Rico's median NDVI between 0.4 and 0.9, San Juan's below it, Jayuya's and Adjuntas's above it, and greener barrios cooler in the surface heat file (a Spearman rank correlation of −0.3 or less; -0.894 across 901 barrios in this build).",
   "sources": [
    "copernicus_sentinel2_l2a",
    "census_tiger"
@@ -41,7 +41,7 @@
   "caveats": [
    "NDVI shows how green the land looks from above, not tree cover: a lawn or a pasture in leaf can read as green as a forest, and a tree's shade on a street is not counted as such.",
    "Summer (June to September) on clear days: dry-season vegetation, after a drought or after a hurricane, reads lower.",
-   "Read at 40 m: each pixel mixes roofs, yards, streets and trees, so a city street lined with trees reads in between, and a single park smaller than a pixel is blurred into its neighbours."
+   "Read at 40 m: each pixel mixes roofs, yards, streets and trees, so a city street lined with trees reads in between, and a single park smaller than a pixel is blurred into its neighbors."
   ],
   "see_also": [
    "vegetation.veg_dense_pct",
@@ -82,7 +82,7 @@
    "last": 2026,
    "frequency": "One window of three summers (June to September 2024-2026), the window of surface heat; rebuilt each October when a new summer is complete (refresh unit vegetation)."
   },
-  "method": "vegetation.py lists every Sentinel-2 Level-2A scene over Puerto Rico of June to September 2024-2026 with less than 70% cloud cover (984 scenes on eight MGRS tiles, 241 passes), reads each scene's red and near-infrared bands and its scene classification at 40 m with raster.py, only the tiles over the barrios, by HTTP range requests, and maps them onto heat.py's 60 m grid in UTM zone 20 (scenes in zone 19 through pyproj). An observation counts when the scene classification says vegetation or not vegetated (clouds, cirrus, shadows, water and unclassified pixels are left out); where two tiles of one pass overlap, a cell keeps one view. NDVI = (near-infrared − red) / (near-infrared + red). Each cell's value is the median of its clear views (at least 3; the typical cell has 30). A cell belongs to the barrio whose outline holds its centre; municipios and Puerto Rico pool the cells of their barrios. 99.4% of the 2,485,382 cells have a value. Checks at every build: Puerto Rico's median NDVI between 0.4 and 0.9, San Juan's below it, Jayuya's and Adjuntas's above it, and greener barrios cooler in the surface heat file (a Spearman rank correlation of −0.3 or less; -0.894 across 901 barrios in this build).",
+  "method": "vegetation.py lists every Sentinel-2 Level-2A scene over Puerto Rico of June to September 2024-2026 with less than 70% cloud cover (984 scenes on eight MGRS tiles, 241 passes), reads each scene's red and near-infrared bands and its scene classification at 40 m with raster.py, only the tiles over the barrios, by HTTP range requests, and maps them onto heat.py's 60 m grid in UTM zone 20 (scenes in zone 19 through pyproj). An observation counts when the scene classification says vegetation or not vegetated (clouds, cirrus, shadows, water and unclassified pixels are left out); where two tiles of one pass overlap, a cell keeps one view. NDVI = (near-infrared − red) / (near-infrared + red). Each cell's value is the median of its clear views (at least 3; the typical cell has 30). A cell belongs to the barrio whose outline holds its center; municipios and Puerto Rico pool the cells of their barrios. 99.4% of the 2,485,382 cells have a value. Checks at every build: Puerto Rico's median NDVI between 0.4 and 0.9, San Juan's below it, Jayuya's and Adjuntas's above it, and greener barrios cooler in the surface heat file (a Spearman rank correlation of −0.3 or less; -0.894 across 901 barrios in this build).",
   "sources": [
    "copernicus_sentinel2_l2a",
    "census_tiger"
@@ -92,7 +92,7 @@
   "caveats": [
    "NDVI shows how green the land looks from above, not tree cover: a lawn or a pasture in leaf can read as green as a forest, and a tree's shade on a street is not counted as such.",
    "Summer (June to September) on clear days: dry-season vegetation, after a drought or after a hurricane, reads lower.",
-   "Read at 40 m: each pixel mixes roofs, yards, streets and trees, so a city street lined with trees reads in between, and a single park smaller than a pixel is blurred into its neighbours."
+   "Read at 40 m: each pixel mixes roofs, yards, streets and trees, so a city street lined with trees reads in between, and a single park smaller than a pixel is blurred into its neighbors."
   ],
   "see_also": [
    "vegetation.veg_ndvi_med",
@@ -145,7 +145,7 @@
    "last": 2026,
    "frequency": "One window of three summers (June to September 2024-2026), the window of surface heat; rebuilt each October when a new summer is complete (refresh unit vegetation)."
   },
-  "method": "vegetation.py lists every Sentinel-2 Level-2A scene over Puerto Rico of June to September 2024-2026 with less than 70% cloud cover (984 scenes on eight MGRS tiles, 241 passes), reads each scene's red and near-infrared bands and its scene classification at 40 m with raster.py, only the tiles over the barrios, by HTTP range requests, and maps them onto heat.py's 60 m grid in UTM zone 20 (scenes in zone 19 through pyproj). An observation counts when the scene classification says vegetation or not vegetated (clouds, cirrus, shadows, water and unclassified pixels are left out); where two tiles of one pass overlap, a cell keeps one view. NDVI = (near-infrared − red) / (near-infrared + red). Each cell's value is the median of its clear views (at least 3; the typical cell has 30). A cell belongs to the barrio whose outline holds its centre; municipios and Puerto Rico pool the cells of their barrios. 99.4% of the 2,485,382 cells have a value. Checks at every build: Puerto Rico's median NDVI between 0.4 and 0.9, San Juan's below it, Jayuya's and Adjuntas's above it, and greener barrios cooler in the surface heat file (a Spearman rank correlation of −0.3 or less; -0.894 across 901 barrios in this build).",
+  "method": "vegetation.py lists every Sentinel-2 Level-2A scene over Puerto Rico of June to September 2024-2026 with less than 70% cloud cover (984 scenes on eight MGRS tiles, 241 passes), reads each scene's red and near-infrared bands and its scene classification at 40 m with raster.py, only the tiles over the barrios, by HTTP range requests, and maps them onto heat.py's 60 m grid in UTM zone 20 (scenes in zone 19 through pyproj). An observation counts when the scene classification says vegetation or not vegetated (clouds, cirrus, shadows, water and unclassified pixels are left out); where two tiles of one pass overlap, a cell keeps one view. NDVI = (near-infrared − red) / (near-infrared + red). Each cell's value is the median of its clear views (at least 3; the typical cell has 30). A cell belongs to the barrio whose outline holds its center; municipios and Puerto Rico pool the cells of their barrios. 99.4% of the 2,485,382 cells have a value. Checks at every build: Puerto Rico's median NDVI between 0.4 and 0.9, San Juan's below it, Jayuya's and Adjuntas's above it, and greener barrios cooler in the surface heat file (a Spearman rank correlation of −0.3 or less; -0.894 across 901 barrios in this build).",
   "sources": [
    "copernicus_sentinel2_l2a",
    "census_tiger"
@@ -155,8 +155,8 @@
   "caveats": [
    "NDVI shows how green the land looks from above, not tree cover: a lawn or a pasture in leaf can read as green as a forest, and a tree's shade on a street is not counted as such.",
    "Summer (June to September) on clear days: dry-season vegetation, after a drought or after a hurricane, reads lower.",
-   "Read at 40 m: each pixel mixes roofs, yards, streets and trees, so a city street lined with trees reads in between, and a single park smaller than a pixel is blurred into its neighbours.",
-   "Little or no vegetation (NDVI below 0.2) is mostly pavement, roofs and bare soil; it is a description of the land, not a judgement."
+   "Read at 40 m: each pixel mixes roofs, yards, streets and trees, so a city street lined with trees reads in between, and a single park smaller than a pixel is blurred into its neighbors.",
+   "Little or no vegetation (NDVI below 0.2) is mostly pavement, roofs and bare soil; it is a description of the land, not a judgment."
   ],
   "see_also": [
    "vegetation.veg_ndvi_med",
@@ -198,7 +198,7 @@
    "last": 2026,
    "frequency": "One window of three summers (June to September 2024-2026), the window of surface heat; rebuilt each October when a new summer is complete (refresh unit vegetation)."
   },
-  "method": "vegetation.py lists every Sentinel-2 Level-2A scene over Puerto Rico of June to September 2024-2026 with less than 70% cloud cover (984 scenes on eight MGRS tiles, 241 passes), reads each scene's red and near-infrared bands and its scene classification at 40 m with raster.py, only the tiles over the barrios, by HTTP range requests, and maps them onto heat.py's 60 m grid in UTM zone 20 (scenes in zone 19 through pyproj). An observation counts when the scene classification says vegetation or not vegetated (clouds, cirrus, shadows, water and unclassified pixels are left out); where two tiles of one pass overlap, a cell keeps one view. NDVI = (near-infrared − red) / (near-infrared + red). Each cell's value is the median of its clear views (at least 3; the typical cell has 30). A cell belongs to the barrio whose outline holds its centre; municipios and Puerto Rico pool the cells of their barrios. 99.4% of the 2,485,382 cells have a value. Checks at every build: Puerto Rico's median NDVI between 0.4 and 0.9, San Juan's below it, Jayuya's and Adjuntas's above it, and greener barrios cooler in the surface heat file (a Spearman rank correlation of −0.3 or less; -0.894 across 901 barrios in this build).",
+  "method": "vegetation.py lists every Sentinel-2 Level-2A scene over Puerto Rico of June to September 2024-2026 with less than 70% cloud cover (984 scenes on eight MGRS tiles, 241 passes), reads each scene's red and near-infrared bands and its scene classification at 40 m with raster.py, only the tiles over the barrios, by HTTP range requests, and maps them onto heat.py's 60 m grid in UTM zone 20 (scenes in zone 19 through pyproj). An observation counts when the scene classification says vegetation or not vegetated (clouds, cirrus, shadows, water and unclassified pixels are left out); where two tiles of one pass overlap, a cell keeps one view. NDVI = (near-infrared − red) / (near-infrared + red). Each cell's value is the median of its clear views (at least 3; the typical cell has 30). A cell belongs to the barrio whose outline holds its center; municipios and Puerto Rico pool the cells of their barrios. 99.4% of the 2,485,382 cells have a value. Checks at every build: Puerto Rico's median NDVI between 0.4 and 0.9, San Juan's below it, Jayuya's and Adjuntas's above it, and greener barrios cooler in the surface heat file (a Spearman rank correlation of −0.3 or less; -0.894 across 901 barrios in this build).",
   "sources": [
    "copernicus_sentinel2_l2a",
    "census_tiger"
@@ -207,7 +207,7 @@
   "how_to_read": "Puerto Rico: 875,584 residents (26.6%). Most: San Juan (170,752), Bayamón (87,439), Carolina (74,789).",
   "caveats": [
    "An estimate from whole census blocks: rough for a barrio, where the edge of bare or built land can cut a block.",
-   "Little or no vegetation (NDVI below 0.2) is mostly pavement, roofs and bare soil; it is a description of the land, not a judgement.",
+   "Little or no vegetation (NDVI below 0.2) is mostly pavement, roofs and bare soil; it is a description of the land, not a judgment.",
    "NDVI shows how green the land looks from above, not tree cover: a lawn or a pasture in leaf can read as green as a forest, and a tree's shade on a street is not counted as such.",
    "Summer (June to September) on clear days: dry-season vegetation, after a drought or after a hurricane, reads lower."
   ],
@@ -251,7 +251,7 @@
    "last": 2026,
    "frequency": "One window of three summers (June to September 2024-2026), the window of surface heat; rebuilt each October when a new summer is complete (refresh unit vegetation)."
   },
-  "method": "vegetation.py lists every Sentinel-2 Level-2A scene over Puerto Rico of June to September 2024-2026 with less than 70% cloud cover (984 scenes on eight MGRS tiles, 241 passes), reads each scene's red and near-infrared bands and its scene classification at 40 m with raster.py, only the tiles over the barrios, by HTTP range requests, and maps them onto heat.py's 60 m grid in UTM zone 20 (scenes in zone 19 through pyproj). An observation counts when the scene classification says vegetation or not vegetated (clouds, cirrus, shadows, water and unclassified pixels are left out); where two tiles of one pass overlap, a cell keeps one view. NDVI = (near-infrared − red) / (near-infrared + red). Each cell's value is the median of its clear views (at least 3; the typical cell has 30). A cell belongs to the barrio whose outline holds its centre; municipios and Puerto Rico pool the cells of their barrios. 99.4% of the 2,485,382 cells have a value. Checks at every build: Puerto Rico's median NDVI between 0.4 and 0.9, San Juan's below it, Jayuya's and Adjuntas's above it, and greener barrios cooler in the surface heat file (a Spearman rank correlation of −0.3 or less; -0.894 across 901 barrios in this build).",
+  "method": "vegetation.py lists every Sentinel-2 Level-2A scene over Puerto Rico of June to September 2024-2026 with less than 70% cloud cover (984 scenes on eight MGRS tiles, 241 passes), reads each scene's red and near-infrared bands and its scene classification at 40 m with raster.py, only the tiles over the barrios, by HTTP range requests, and maps them onto heat.py's 60 m grid in UTM zone 20 (scenes in zone 19 through pyproj). An observation counts when the scene classification says vegetation or not vegetated (clouds, cirrus, shadows, water and unclassified pixels are left out); where two tiles of one pass overlap, a cell keeps one view. NDVI = (near-infrared − red) / (near-infrared + red). Each cell's value is the median of its clear views (at least 3; the typical cell has 30). A cell belongs to the barrio whose outline holds its center; municipios and Puerto Rico pool the cells of their barrios. 99.4% of the 2,485,382 cells have a value. Checks at every build: Puerto Rico's median NDVI between 0.4 and 0.9, San Juan's below it, Jayuya's and Adjuntas's above it, and greener barrios cooler in the surface heat file (a Spearman rank correlation of −0.3 or less; -0.894 across 901 barrios in this build).",
   "sources": [
    "copernicus_sentinel2_l2a",
    "census_tiger"
@@ -260,7 +260,7 @@
   "how_to_read": "Puerto Rico: 26.6% of the residents, more than the 4.2% of the land, because people live where the land is built. Highest: Santa Isabel (53.1%), San Juan (49.9%), Cataño (49.1%).",
   "caveats": [
    "An estimate from whole census blocks: rough for a barrio, where the edge of bare or built land can cut a block.",
-   "Little or no vegetation (NDVI below 0.2) is mostly pavement, roofs and bare soil; it is a description of the land, not a judgement.",
+   "Little or no vegetation (NDVI below 0.2) is mostly pavement, roofs and bare soil; it is a description of the land, not a judgment.",
    "NDVI shows how green the land looks from above, not tree cover: a lawn or a pasture in leaf can read as green as a forest, and a tree's shade on a street is not counted as such.",
    "Summer (June to September) on clear days: dry-season vegetation, after a drought or after a hurricane, reads lower."
   ],

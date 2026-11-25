@@ -2,7 +2,7 @@
 
 Date: 2026-11-13. Status: **approved by the project lead on 2026-11-13 ("Approve, start step 1"): decision 104 (a) to (g) as proposed. Step 1 is being built on branch `data/power-plants`.** This pull request changes no page and publishes no data. It adds this document and a preview map made from the real data (`docs/analysis/energy-2026-11/preview.svg`, built by `make_preview.py` in the same folder).
 
-**In one paragraph.** On 2026-11-13 the project lead shared a #30DayMapChallenge map of Romania's power grid: OpenStreetMap plants as glowing dots sized by MW and coloured by fuel, over the 400 kV and 220 kV lines. Drawn the same way, Puerto Rico's map would miss most of its solar power. Utility plants hold 398 MW of renewable capacity (EIA-860M, September 2026). Rooftop systems already hold **1,666 MW at 209,404 installations, with 189,459 batteries** (LUMA, September 2026). The rooftop figure is 4.2 times the utility-scale renewable capacity and 26% of the capacity of every utility plant together (6,436 MW). This proposal maps four things together:
+**In one paragraph.** On 2026-11-13 the project lead shared a #30DayMapChallenge map of Romania's power grid: OpenStreetMap plants as glowing dots sized by MW and colored by fuel, over the 400 kV and 220 kV lines. Drawn the same way, Puerto Rico's map would miss most of its solar power. Utility plants hold 398 MW of renewable capacity (EIA-860M, September 2026). Rooftop systems already hold **1,666 MW at 209,404 installations, with 189,459 batteries** (LUMA, September 2026). The rooftop figure is 4.2 times the utility-scale renewable capacity and 26% of the capacity of every utility plant together (6,436 MW). This proposal maps four things together:
 
 - where power is made;
 - how it moves;
@@ -17,7 +17,7 @@ Each is placed by municipio wherever a public source allows. Every figure was me
 |---|---|
 | OSM plants; capacity only where volunteers tagged it | **EIA-860M** for plants: official MW by technology, status, operating year and a point for every plant of 1 MW or more, monthly. OSM gives MW for only 31 of its 70 Puerto Rico plants. |
 | Rooftop solar invisible | **Rooftop solar and batteries by municipio and LUMA district**, monthly, from LUMA's reports to the Energy Bureau. Counts only, never a roof (sensitive-places rule). |
-| Red and green fuel colours, neon on black | Okabe-Ito colours, safe for colour-vision deficiency. Circle area proportional to MW, with a size legend. The dark base map (OpenFreeMap Dark, decision 102) is an option, not the default. |
+| Red and green fuel colors, neon on black | Okabe-Ito colors, safe for color-vision deficiency. Circle area proportional to MW, with a size legend. The dark base map (OpenFreeMap Dark, decision 102) is an option, not the default. |
 | One date | **Time:** capacity and generation by month (EIA-860M and EIA-923), rooftop solar every month since 2010, batteries and electricity use by municipio every month since June 2021. |
 | Lines as decoration | Lines to show the island's main fact: most capacity sits on the south coast (Aguirre, Costa Sur, EcoEléctrica, AES), while the most electricity is used in the north, so power crosses the Cordillera Central. LUMA's **electricity sales by municipio** make that visible. |
 | No context | Reliability (SAIDI by LUMA district), price against the US, households' electricity bills by tract, hazards along the lines, and solar and wind potential, each beside the map. |
@@ -70,8 +70,8 @@ LUMA's own website bars automated access, so the `power` row of the wanted-data 
   - The 2019 Integrated Resource Plan gives 413, 702 and 1,376 circuit miles. So OSM has the whole 230 kV network, about 82% of the 115 kV length and about **half of the 38 kV length**.
   - 549 substations, 296 with a voltage.
   - 24,886 solar generators, 24,303 of them tagged on roofs.
-- **HIFLD Open** went offline in August 2025. An archived copy of its transmission lines (Esri, licence of the Esri master agreement) holds data from 2016 to 2020. HIFLD never published substations.
-- **Island government GIS** (PRITS): a 2014 file of the Electric Power Authority (44,713 line segments, 961 substations), no licence stated. **NREL PR100** has a 115/230 kV line file with no licence of its own. Both are useful as checks only.
+- **HIFLD Open** went offline in August 2025. An archived copy of its transmission lines (Esri, license of the Esri master agreement) holds data from 2016 to 2020. HIFLD never published substations.
+- **Island government GIS** (PRITS): a 2014 file of the Electric Power Authority (44,713 line segments, 961 substations), no license stated. **NREL PR100** has a 115/230 kV line file with no license of its own. Both are useful as checks only.
 - **Sensitivity.** In a 2024 filing with the Energy Bureau, LUMA asked that the location and availability of its lines be treated as Critical Energy Infrastructure Information (CEII; 6 U.S.C. §§ 671-674, 18 C.F.R. § 388.113, Bureau policy CEPR-MI-2016-0009). EIA's FAQ says that EIA and HIFLD do not publish the location of substations. The lines are drawn in OpenStreetMap and visible on the ground, but FPR is choosing what it republishes (decision (c)).
 
 ### Reliability, price and bills
@@ -80,7 +80,7 @@ LUMA's own website bars automated access, so the `power` row of the wanted-data 
   - SAIDI 3,547 minutes and SAIFI 17.17 interruptions per customer, with major event days.
   - 2,151 minutes and 15.5 without them.
   - LUMA's transmission-and-distribution-only measure for fiscal year 2026 is 1,656 minutes and 7.83. It leaves out generation shortfalls, and LUMA restates past values.
-- **Outages**, EAGLE-I (ORNL, CC BY 4.0, keyless figshare API): 2021 to 2025. Puerto Rico is reported as LUMA's six regions under six municipio codes, so every use is labelled regional.
+- **Outages**, EAGLE-I (ORNL, CC BY 4.0, keyless figshare API): 2021 to 2025. Puerto Rico is reported as LUMA's six regions under six municipio codes, so every use is labeled regional.
 - **Price** (EIA-861M, August 2026, residential): Puerto Rico 26.36 cents per kWh, the United States 18.16.
 - **Bills** (ACS 2020-2024, table B25132, keyless summary file, tract to island): 11.8% of the households that pay for electricity separately pay $250 or more a month (147,196 of 1,247,570).
 
@@ -88,11 +88,11 @@ LUMA's own website bars automated access, so the `power` row of the wanted-data 
 
 - **Global Solar Atlas** (World Bank and Solargis):
   - Rasters: PVOUT about 1 km, mean 4.57 kWh/kWp a day (range 3.61-5.01); GHI 250 m. Zip of 3.6 MB, files dated 2019.
-  - Licence: CC BY 4.0, but the file's metadata adds **a binding mediation and arbitration clause** (decision (f)).
+  - License: CC BY 4.0, but the file's metadata adds **a binding mediation and arbitration clause** (decision (f)).
 - **Global Wind Atlas 4.0** (DTU, CC BY 4.0): wind speed, power density and capacity factor at 250 m, 100 m above ground, keyless.
 - **NREL PR100** (CC BY 4.0, OEDI):
   - Rooftop PV technical potential by roof plane, partitioned by municipio.
-  - Modelled rooftop solar and storage adoption by municipio to 2050. Its scenario for 2026 is 828 MW; the real figure is about 1,650 MW, which is worth saying on the page.
+  - Modeled rooftop solar and storage adoption by municipio to 2050. Its scenario for 2026 is 828 MW; the real figure is about 1,650 MW, which is worth saying on the page.
 - **NASA POWER:** a keyless API for points. **NSRDB:** its API needs a key. The S3 copy is 6 GB a year.
 
 ### Policy (for the page's context, facts only)
@@ -113,13 +113,13 @@ Effort as in `docs/proposal-2026-10.md`: **S** under 1 day, **M** 2-4 days, **L*
 
 1. **Power plants on the map (S-M). Shows on the site first.**
    - Build: `energy.py` reads EIA-860M `Operating_PR` and `Planned_PR`, finding the newest file's link on EIA's page, and writes `power_plants.geojson`. Each plant is one point: EIA id, plant name, MW by technology, main technology, standby MW, first and last operating year, and status (operating or planned).
-   - Map: a new subheading **Energy / Energía** under Infrastructure and mobility, in the 2D map and the 3D view, through `Core.facilities` (a new "sized" point kind). Circle area is proportional to MW and colour shows the main technology; planned plants have a dashed outline and standby capacity a hollow ring. The pop-up shows MW by technology.
+   - Map: a new subheading **Energy / Energía** under Infrastructure and mobility, in the 2D map and the 3D view, through `Core.facilities` (a new "sized" point kind). Circle area is proportional to MW and color shows the main technology; planned plants have a dashed outline and standby capacity a hollow ring. The pop-up shows MW by technology.
    - Refresh: the bot refreshes it monthly after EIA's release (around the 24th).
    - Also in this PR: the wanted-data rows (`eia-860m`, `power`, `grid-assets`, `eagle-i`, plus new rows for EIA-923, EIA-861M, the LUMA filings, OSM power, Global Solar Atlas, Global Wind Atlas, PR100 and B25132), with the dictionary's counts updated; glossary terms for transmission line, kV, net generation, standby and capacity factor.
 2. **Transmission lines (M).**
    - Build: OSM 230, 115 and 38 kV from Overpass, monthly, as `power_lines.geojson` (ODbL, its own layer, never joined to EIA's data, so EIA's data stay public domain).
-   - Map: lines coloured by voltage, with 38 kV marked "about half mapped". Shape and substations as decided in (c).
-   - Also: kilometres of line by voltage in FEMA flood areas, in landslide susceptibility classes and under sea level rise, as counts for step 3.
+   - Map: lines colored by voltage, with 38 kV marked "about half mapped". Shape and substations as decided in (c).
+   - Also: kilometers of line by voltage in FEMA flood areas, in landslide susceptibility classes and under sea level rise, as counts for step 3.
 3. **Knowledge Area page "Energy in Puerto Rico" / "Energía en Puerto Rico" (M).** The page shows:
    - generation by fuel every month (EIA-923) and capacity by technology (EIA-860M);
    - the renewable share against the law's target, with utility plants and rooftop solar shown apart;
@@ -139,7 +139,7 @@ Effort as in `docs/proposal-2026-10.md`: **S** under 1 day, **M** 2-4 days, **L*
    - Map: a wind speed image (Global Wind Atlas, 100 m) and, if cleared, the solar image (Global Solar Atlas).
    - PR100 rooftop technical potential summed by barrio, never by roof.
    - On the page: PR100's projected adoption against the real figures.
-6. **Outages (S).** EAGLE-I 2021-2025 on the page, labelled by LUMA region. It fits beside the night lights (VNP46A3) that the observatory already has.
+6. **Outages (S).** EAGLE-I 2021-2025 on the page, labeled by LUMA region. It fits beside the night lights (VNP46A3) that the observatory already has.
 
 ## Rules that apply to every step
 
@@ -148,18 +148,18 @@ Effort as in `docs/proposal-2026-10.md`: **S** under 1 day, **M** 2-4 days, **L*
 - **Every technical word** gets a sourced English and Spanish glossary entry in the PR that first shows it. Examples: kV, transmission line, substation, net metering, battery energy storage (kWh against kW), SAIDI, SAIFI, major event day, net generation, capacity factor, renewable portfolio standard, CEII, AMI.
 - **Credit lines:** "US Energy Information Administration (EIA-860M, EIA-923, EIA-861M)"; "LUMA Energy, filed with the Puerto Rico Energy Bureau (case …)"; "© OpenStreetMap contributors (ODbL)"; "USGS/LBNL US Wind Turbine Database"; "Global Wind Atlas 4.0 (DTU), CC BY 4.0"; "NREL PR100 (CC BY 4.0)"; "US Census Bureau, ACS 2020-2024".
 - **Weight:** map scripts 189.5 of 250 KB on main (measured 2026-11-13 on an LF copy). The energy layers load on first use, as the facility layers do.
-- **Colours** are checked with `docs/palettes.md`'s method before the first PR.
+- **Colors** are checked with `docs/palettes.md`'s method before the first PR.
 
 ## Not taken, and why
 
 - **LUMA's outage map and website:** its terms bar automated access.
-- **HIFLD archive lines:** data from 2016-2020 under Esri's licence.
-- **PRITS 2014 grid file:** no licence stated, and 12 years old.
-- **PR100 line file:** no licence of its own. Like PRITS, it serves as an internal check only.
+- **HIFLD archive lines:** data from 2016-2020 under Esri's license.
+- **PRITS 2014 grid file:** no license stated, and 12 years old.
+- **PR100 line file:** no license of its own. Like PRITS, it serves as an internal check only.
 - **EIA ELEC.zip** and **USPVDB:** neither has Puerto Rico data.
 - **NSRDB API:** needs a key.
 - **Google Project Sunroof:** Google-derived data, which the observatory does not use.
-- **DOE's Puerto Rico Energy Resilience Fund (Acceso Solar):** more than 6,000 households received systems (DOE, 2026-03-04), but there is no dataset and nothing by municipio. Its eight awards were cancelled on 2026-01-09. It can be a sentence on the page.
+- **DOE's Puerto Rico Energy Resilience Fund (Acceso Solar):** more than 6,000 households received systems (DOE, 2026-03-04), but there is no dataset and nothing by municipio. Its eight awards were canceled on 2026-01-09. It can be a sentence on the page.
 - **LUMA's battery demand-response program:** about 115,000 customers enrolled (LUMA filing of 2026-10-06), in PDF filings only. It can be a sentence on the page.
 
 ## Decisions for the project lead (decision 104)
@@ -171,7 +171,7 @@ Effort as in `docs/proposal-2026-10.md`: **S** under 1 day, **M** 2-4 days, **L*
   - draw no substations or towers; count substations by municipio only.
 
   The alternative is to draw the 115 and 230 kV substations without names, as public OSM viewers already do. The reason for the recommendation is LUMA's CEII stance in its filings and EIA's practice of not publishing substations.
-- **(d)** Read LUMA's filings on the Energy Bureau's site by script, credited to LUMA and the Bureau, with "no licence stated" in the data contract, as for USAspending. Recommended: yes. It turns the blocked `power` row into monthly data by municipio.
+- **(d)** Read LUMA's filings on the Energy Bureau's site by script, credited to LUMA and the Bureau, with "no license stated" in the data contract, as for USAspending. Recommended: yes. It turns the blocked `power` row into monthly data by municipio.
 - **(e)** A new sub-domain **Energy / Energía** under Infrastructure (`infrastructure.energy` in `domains.json`), so energy datasets group together in Explore, the Catalog and the menu. Recommended: yes.
 - **(f)** The Global Solar Atlas's arbitration clause: ask Compliance, and meanwhile use only the Global Wind Atlas. The other way is to leave the solar image out and give the page NASA POWER's coarse solar figure. Recommended: ask Compliance.
 - **(g)** Name of the page: "Energía en Puerto Rico" / "Energy in Puerto Rico". Recommended: yes.

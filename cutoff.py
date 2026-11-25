@@ -1,6 +1,6 @@
 """Residents who can be cut off from every hospital for the PR Data Observatory: when the roads in FEMA's 1% annual chance flood area close, when the bridges in
 poor condition (and those already closed) close, and both. By barrio and municipio. HANDOFF decision 107, step 9, third part (row derived-cut-off-communities);
-docs/cutoff.md. An estimate (decision 107 b): a road-network model, labelled so, with a check and a range.
+docs/cutoff.md. An estimate (decision 107 b): a road-network model, labeled so, with a check and a range.
 
     python cutoff.py           # build site/data/cutoff_series.json and cutoff_barrio.json (no network: every input is in the repository or the block cache)
     python cutoff.py --check   # rebuild and exit 1 when a published file is not what it gives (nothing written)
@@ -14,8 +14,8 @@ What is closed:
   both     the two together.
 Who is cut off: each 2020 Census block with residents is placed on its nearest road (within 2 km, on a road joined to the island's network) and is cut off when,
 with those stretches closed, no open road leads from it to a hospital. A block whose own stretch of road is closed is cut off too: its street is under water. The
-hospitals are the ones in the observatory's place index from OpenStreetMap (gazetteer.json) whose name says hospital or medical centre (conditions.py's rule): 73 on
-2026-11-20. Vieques and Culebra have no road to a hospital with nothing closed (their health centres are not hospitals by that rule), so they are left out and
+hospitals are the ones in the observatory's place index from OpenStreetMap (gazetteer.json) whose name says hospital or medical center (conditions.py's rule): 73 on
+2026-11-20. Vieques and Culebra have no road to a hospital with nothing closed (their health centers are not hospitals by that rule), so they are left out and
 counted in the notes; the barrios with no residents have no value.
 
 The range: low, the same model with primary roads also kept open; high, the 0.2% annual chance area closed too and every road class closed. The check: the
@@ -75,7 +75,7 @@ def log(*a):
 # ── the closures ─────────────────────────────────────────────────────────────
 
 def samples(R):
-    """Points every STEP_M along every edge: (lon, lat, edge, metres along the edge), as arrays."""
+    """Points every STEP_M along every edge: (lon, lat, edge, meters along the edge), as arrays."""
     ex, ey, ee, ea = [], [], [], []
     for i, (ll, c) in enumerate(zip(R.poly, R.cum)):
         L = c[-1]
@@ -119,7 +119,7 @@ def bridge_sets(R, fc):
 
 
 def flood_closures(R, smp, inside, spans, keep=RAISED):
-    """{edge: [metres along it of each closed test point]}: the test points inside the flood area, except on the kept road classes and on sound bridges."""
+    """{edge: [meters along it of each closed test point]}: the test points inside the flood area, except on the kept road classes and on sound bridges."""
     _, _, ee, ea = smp
     out = collections.defaultdict(list)
     for e, a in zip(ee[inside].tolist(), ea[inside].tolist()):
@@ -355,7 +355,7 @@ def assemble(R, blocks, block_barrio, muni_ids, muni_names, barrio_ids, hospital
              "range": {"flood_low": {**island(res["flood_low"][0]), "rule": "primary roads also kept open"},
                        "flood_high": {**island(res["flood_high"][0]), "rule": "the 0.2% annual chance area closed too, and every road class, sound bridges included"}},
              "rules": {"test_point_every_m": STEP_M, "kept_open": "motorways and trunk roads and their ramps; the span of each bridge in good or fair condition plus 15 m",
-                       "bridge_to_road_m": BRIDGE_SNAP_M, "hospitals": "OpenStreetMap hospitals and medical centres of gazetteer.json (conditions.osm_hospitals, named)"},
+                       "bridge_to_road_m": BRIDGE_SNAP_M, "hospitals": "OpenStreetMap hospitals and medical centers of gazetteer.json (conditions.osm_hospitals, named)"},
              "check": wcrp_check(blocks, cut, measured, wcrp_fc)}
     series = {"as_of": date.today().isoformat(), "years": [year], "geo": {"ids": [*muni_ids, "72"], "names": [*muni_names, "Puerto Rico"]}, "vars": vars_,
               "sources": SOURCES, "notes": notes}

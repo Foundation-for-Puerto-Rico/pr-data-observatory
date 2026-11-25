@@ -211,7 +211,7 @@ class Routes(unittest.TestCase):
         self.assertIn({"route": "map", "when": "first"}, rows["catalog.json"]["loaded_by"])
         self.assertEqual(rows["places.json"]["loaded_by"], [], "the places load only when their layer is switched on, on the map and in the 3D view")
         self.assertIn({"route": "3d", "when": "later"}, rows["trips.json"]["loaded_by"])
-        self.assertEqual(rows["catalog_index.json"]["loaded_by"], [], "the index of the dictionary loads on first use, on the map and on the area profile (its chat)")
+        self.assertEqual(rows["catalog_index.json"]["loaded_by"], [{"route": "data", "when": "first"}], "the index of the dictionary loads on first use on the map and on the area profile (its chat); only the Data page (data.html), which is the catalog, reads it before it is ready")
         self.assertEqual(rows["catalog_domains.json"]["loaded_by"], [{"route": "profile", "when": "first"}], "the area profile groups its tables by the domain of each entry before they draw")
         self.assertEqual(rows["catalog_es.json"]["loaded_by"], [])
         self.assertTrue(all(f["gzip_bytes"] <= f["bytes"] or f["bytes"] < 200 for f in reg["files"]))

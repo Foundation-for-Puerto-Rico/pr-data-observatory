@@ -74,11 +74,11 @@ function ecBenchMatrix() {
   const cell = (i, j) => { if (i === j) return `<td class="num mx-d">—</td>`; const r = M.r[i][j], c = cls(r); return `<td class="num" style="background:${c < 0 ? '#fff' : DIV[c]};color:${c === 0 || c === 4 ? '#fff' : '#2A2E2E'}"><b>${r == null ? '—' : r.toFixed(2)}</b><small>n = ${M.n[i][j]}</small></td>`; };
   $('#ebBody').innerHTML = `<div class="eb-tools"><label>${esc(T('Method'))} <select id="mxM"><option value="pearson"${st.method === 'pearson' ? ' selected' : ''}>${esc(T('Pearson (straight-line)'))}</option><option value="spearman"${st.method === 'spearman' ? ' selected' : ''}>${esc(T('Spearman (rank order)'))}</option></select></label><span class="note">${esc(T('Each pair uses the municipalities that have a value for both (n). A correlation across places is a pattern, not cause and effect: large places, survey noise and a third factor can drive it.'))}${vis.length > 8 ? ' ' + esc(T('The first 8 visible layers are shown.')) : ''}</span></div>
     <div class="eb-scroll" tabindex="0" role="region" aria-label="${esc(T('Correlation matrix of the visible layers, scrollable'))}"><table class="ec-tbl wide mx"><thead><tr><th scope="col">${esc(T('Layer'))}</th>${use.map((L, j) => `<th scope="col" class="num">${j + 1}</th>`).join('')}</tr></thead><tbody>${use.map((L, i) => `<tr><th scope="row"><b>${i + 1}</b> ${esc(ecLabel(L))}<small>${esc(ecChip(L))}${L.norm !== 'value' ? ' · ' + esc(ecLc(E.normLabel(L))) : ''}</small></th>${use.map((_, j) => cell(i, j)).join('')}</tr>`).join('')}</tbody></table></div>
-    <div class="note">${esc(T('Colours: dark red is a strong negative correlation (below -0.5), dark blue a strong positive one (above 0.5); grey is near none (-0.1 to 0.1).'))}</div>`;
+    <div class="note">${esc(T('Colors: dark red is a strong negative correlation (below -0.5), dark blue a strong positive one (above 0.5); gray is near none (-0.1 to 0.1).'))}</div>`;
   $('#mxM').onchange = e => { st.method = e.target.value; ecBenchMatrix(); };
 }
 const ecPaths = () => EC.mm || (EC.mm = Core.minimap.project(S.muniFc, EC.NM.slice(0, EC.PR), 600));
-function ecClassFill(L, y, a) {   // the colours of one shaded map of layer L in year y, with the layer's own classes (held across years when the layer holds them)
+function ecClassFill(L, y, a) {   // the colors of one shaded map of layer L in year y, with the layer's own classes (held across years when the layer holds them)
   const b = E.breaks(L, y), cols = b.div ? Core.palettes.DIVERGING : E.ramp(L);
   return { fills: a.slice(0, EC.PR).map(x => { const c = Core.classify.classOf(b, x); return c < 0 ? Core.palettes.NOVAL : cols[c]; }), rows: cols.map((c, i) => ({ color: c, label: b.div ? Core.stack.divLabels(E, L, b)[i] : Core.classify.single(b, i) ? E.fmt(L, b.edges[i], true) : T('{from} to {to}', { from: E.fmt(L, b.edges[i], true), to: E.fmt(L, b.edges[i + 1], true) }) })).filter((_, i) => !Core.classify.hidden(b, i)) };
 }
@@ -90,12 +90,12 @@ function ecBenchMultiples() {
   const L = vis.find(l => l.id === st.id), v = EC.V[L.key], P = ecPaths();
   let maps = [], legend = '', note;
   if (st.by === 'year') {
-    const H = { ...L, fixed: true }, ys = v.ys.filter(y => E.calc(H, y)).slice(-12);   // one set of classes for every year, so a colour means the same in each map
+    const H = { ...L, fixed: true }, ys = v.ys.filter(y => E.calc(H, y)).slice(-12);   // one set of classes for every year, so a color means the same in each map
     maps = ys.map(y => { const a = E.calc(H, y), f = ecClassFill(H, y, a); legend = ecMiniLegend(f.rows); return { cap: Core.time.label(v, y), sub: `${T('Puerto Rico')}: ${a[EC.PR] == null ? '—' : ecFmt(H, a[EC.PR])}`, svg: Core.minimap.svg(P, f.fills, { label: T('{name}, {year}', { name: ecLabel(L), year: y }), titles: ecTitles(H, a), thin: true }) }; });
-    note = v.ys.length > 12 ? T('The last 12 years with values; the classes are the same in every map.') : T('The classes are the same in every map, so a colour means the same in each year.');
+    note = v.ys.length > 12 ? T('The last 12 years with values; the classes are the same in every map.') : T('The classes are the same in every map, so a color means the same in each year.');
   } else {
     maps = vis.slice(0, 8).map(M => { const ev = EC.eval[M.id], f = ecClassFill(M, ev.y, ev.a); return { cap: ecLabel(M), sub: ecChip(M), svg: Core.minimap.svg(P, f.fills, { label: ecLabel(M), titles: ecTitles(M, ev.a), thin: true }), legend: ecMiniLegend(f.rows) }; });
-    note = T('Each map has its own classes: compare where values are high or low, not the colours across maps.');
+    note = T('Each map has its own classes: compare where values are high or low, not the colors across maps.');
   }
   $('#ebBody').innerHTML = `<div class="eb-tools"><label>${esc(T('One map for each'))} <select id="smBy"><option value="year"${st.by === 'year' ? ' selected' : ''}>${esc(T('year of one layer'))}</option><option value="layer"${st.by === 'layer' ? ' selected' : ''}>${esc(T('visible layer'))}</option></select></label>${st.by === 'year' ? `<label>${esc(T('Layer'))} <select id="smL">${vis.map(l => `<option value="${l.id}"${l.id === st.id ? ' selected' : ''}>${esc(ecLabel(l))}</option>`).join('')}</select></label>` : ''}<span class="note">${esc(note)}</span></div>
     <div class="eb-scroll"><div class="mm-grid">${maps.map(m => `<figure class="mm-cell">${m.svg}<figcaption><b>${esc(m.cap)}</b><small>${esc(m.sub)}</small></figcaption>${m.legend || ''}</figure>`).join('')}</div>${st.by === 'year' ? `<div class="mm-key"><b>${esc(E.title(L))}</b>${legend}</div>` : ''}</div>`;

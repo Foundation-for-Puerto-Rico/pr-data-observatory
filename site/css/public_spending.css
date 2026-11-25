@@ -6,18 +6,18 @@ body.research.embed .page { padding-top: 16px; }
 body.research .block, body.research .hero { scroll-margin-top: calc(var(--topbar-height) + 50px); }
 html:has(body.research) { scroll-padding-top: calc(var(--topbar-height) + 50px); }
 .ps-p { margin:6px 0 10px; }
-.ps-small { font-size:12.5px; color:#5b6475; margin:4px 0; }
+.ps-small { font-size:12.5px; color:var(--ws-n-muted); margin:4px 0; }
 .ps-controls { display:flex; flex-wrap:wrap; gap:10px 18px; align-items:center; margin:8px 0; font-size:13px; }
 .ps-controls label { max-width:100%; min-width:0; }
-.ps-controls select { font:inherit; font-size:13px; padding:4px 6px; border-radius:6px; border:1px solid #c9ced8; max-width:100%; min-height:28px; }
+.ps-controls select { font:inherit; font-size:13px; padding:4px 6px; border-radius:6px; border:1px solid var(--ws-n-line); max-width:100%; min-height:28px; }
 .ps-controls .btn { display:inline-flex; align-items:center; gap:4px; }
 @media (max-width: 560px) { .ps-controls label { display:flex; flex-direction:column; gap:4px; width:100%; } .ps-controls select { width:100%; } }
 .ps-tiles { display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:10px; margin:10px 0; }
 @media (max-width: 720px) { .ps-tiles { grid-template-columns:repeat(2, minmax(0,1fr)); } }
-.ps-tile { background:#fff; border:1px solid var(--color-border); border-radius:var(--radius-md); padding:10px 12px; display:flex; flex-direction:column; gap:2px; position:relative; }
-.ps-tile span { font-size:12.5px; color:#5b6475; }
-.ps-tile b { font-size:20px; font-variant-numeric:tabular-nums; color:#1d2433; }
-.ps-tile small { font-size:12px; color:#5b6475; }
+.ps-tile { background:var(--color-surface); border:1px solid var(--color-border); border-radius:var(--radius-md); padding:10px 12px; display:flex; flex-direction:column; gap:2px; position:relative; }
+.ps-tile span { font-size:12.5px; color:var(--ws-n-muted); }
+.ps-tile b { font-size:20px; font-variant-numeric:tabular-nums; color:var(--ws-n-ink); }
+.ps-tile small { font-size:12px; color:var(--ws-n-muted); }
 .ps-tile i { position:absolute; top:12px; right:12px; width:12px; height:12px; border-radius:3px; }
 .ps-chart { padding:12px 14px; margin:10px 0; }
 .ps-chart svg text { font-family:inherit; }
@@ -30,21 +30,21 @@ html:has(body.research) { scroll-padding-top: calc(var(--topbar-height) + 50px);
 #psTree .tile:focus-visible rect { stroke:#FF4D38; stroke-width:3; }
 #psTree .tl { font-size:13px; font-weight:600; fill:#fff; }
 #psTree .tv { font-size:12px; fill:#fff; }
-.ps-chart .tick { font-size:12px; fill:#5b6475; }
-.ps-chart .lab { font-size:13px; fill:#1d2433; }
-.ps-chart .val { font-size:12px; font-weight:600; fill:#1d2433; }
+.ps-chart .tick { font-size:12px; fill:var(--ws-n-muted); }
+.ps-chart .lab { font-size:13px; fill:var(--ws-n-ink); }
+.ps-chart .val { font-size:12px; font-weight:600; fill:var(--ws-n-ink); }
 .ps-chart .seg { font-size:12px; font-weight:600; fill:#fff; }
 .ps-chart .grid { stroke:#e6e8ec; }
 .ps-chart .link { stroke:#9aa3b2; stroke-width:2; }
 .ps-chart circle.ap { fill:#fff; stroke:#205D7B; stroke-width:2.5; }
-.ps-chart circle.sp { fill:#205D7B; }
-.ps-legend { display:flex; flex-wrap:wrap; gap:4px 14px; font-size:12px; color:#5b6475; margin-top:6px; }
+.ps-chart circle.sp { fill:var(--color-primary-dark); }
+.ps-legend { display:flex; flex-wrap:wrap; gap:4px 14px; font-size:12px; color:var(--ws-n-muted); margin-top:6px; }
 .ps-legend i { display:inline-block; width:14px; height:12px; border-radius:3px; margin-right:5px; vertical-align:-1px; }
-.ps-legend .dot { width:12px; height:12px; border-radius:50%; border:2.5px solid #205D7B; background:#fff; box-sizing:border-box; }
+.ps-legend .dot { width:12px; height:12px; border-radius:50%; border:2.5px solid var(--color-primary-dark); background:var(--color-surface); box-sizing:border-box; }
 .ps-legend .dot.f { background:#205D7B; }
 .ps-bars { list-style:none; margin:0; padding:0; display:grid; gap:8px; }
 .ps-bars li { display:grid; grid-template-columns:minmax(150px, 2fr) minmax(80px, 3fr) auto; gap:10px; align-items:center; font-size:13px; }
-.ps-bars .b { background:#eef0f3; border-radius:4px; height:14px; overflow:hidden; }
+.ps-bars .b { background:var(--ws-n-paper2); border-radius:4px; height:14px; overflow:hidden; }
 .ps-bars .b i { display:block; height:100%; background:#338CB3; border-radius:4px; }
 .ps-bars .v { font-variant-numeric:tabular-nums; font-weight:600; white-space:nowrap; }
 @media (max-width: 560px) { .ps-bars li { grid-template-columns:1fr auto; } .ps-bars .b { grid-column:1 / -1; grid-row:2; } }
@@ -52,7 +52,7 @@ details.ps-more { margin:8px 0; font-size:13px; }
 details.ps-more summary { cursor:pointer; color:var(--color-primary-strong); }
 .ps-table { border-collapse:collapse; width:100%; font-size:13px; margin-top:8px; }
 .ps-table caption { text-align:left; font-weight:600; padding:4px 0 6px; }
-.ps-table th, .ps-table td { padding:5px 8px; border-bottom:1px solid #eef0f3; text-align:right; font-variant-numeric:tabular-nums; }
+.ps-table th, .ps-table td { padding:5px 8px; border-bottom:1px solid var(--ws-n-line2); text-align:right; font-variant-numeric:tabular-nums; }
 .ps-table th[scope="row"], .ps-table thead th:first-child { text-align:left; font-weight:500; }
 .ps-tablebox { max-height:420px; overflow:auto; }
 .ps-maprow { display:grid; grid-template-columns:minmax(0,3fr) minmax(260px,1fr); gap:14px; align-items:start; }
@@ -62,7 +62,7 @@ details.ps-more summary { cursor:pointer; color:var(--color-primary-strong); }
 .ps-unplaced h3, .ps-place h3 { margin:0 0 6px; font-size:15px; }
 .ps-big { font-size:22px; font-weight:700; margin:2px 0; font-variant-numeric:tabular-nums; }
 .ps-place dl { display:grid; grid-template-columns:1fr auto; gap:4px 12px; margin:6px 0 10px; font-size:13.5px; }
-.ps-place dt { color:#5b6475; }
+.ps-place dt { color:var(--ws-n-muted); }
 .ps-place dd { margin:0; text-align:right; font-variant-numeric:tabular-nums; font-weight:600; }
 .ps-side { min-width:0; }
 .ps-place .ps-bars li { grid-template-columns:minmax(0, 1fr) auto; font-size:12.5px; gap:2px 8px; }
@@ -72,17 +72,17 @@ details.ps-more summary { cursor:pointer; color:var(--color-primary-strong); }
 #psMap path.mu.on { stroke:#1d2433; stroke-width:2.4; }
 #psMap path.mu:focus-visible { outline:none; stroke:#FF4D38; stroke-width:3.5; paint-order:stroke; }
 /* PR 7: hex grid labels, fund-to-function bands */
-#psMap text.hx { font-size:13px; font-weight:600; fill:#1d2433; pointer-events:none; }
+#psMap text.hx { font-size:13px; font-weight:600; fill:var(--ws-n-ink); pointer-events:none; }
 #psMap text.hx.dk { fill:#fff; }
 #psFlow path.band:hover { fill-opacity:.62; }
 #psFlow text.sk { font-size:11px; }
 /* PR 8: data age, sector view */
-.ps-age { font-size:12px; color:#5b6475; margin:4px 0 8px; }
-.ps-age.old { color:#8a4b00; background:#fff4e0; border-radius:6px; padding:4px 8px; display:inline-block; }
+.ps-age { font-size:12px; color:var(--ws-n-muted); margin:4px 0 8px; }
+.ps-age.old { color:#8a4b00; background:var(--ws-n-warn); border-radius:6px; padding:4px 8px; display:inline-block; }
 .ps-sector h3 { margin:0 0 6px; font-size:17px; }
 .ps-sector h4 { margin:14px 0 6px; font-size:14px; }
 .ps-dl { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:4px 14px; margin:6px 0 10px; font-size:13.5px; }
-.ps-dl dt { color:#5b6475; }
+.ps-dl dt { color:var(--ws-n-muted); }
 .ps-dl dd { margin:0; text-align:right; font-variant-numeric:tabular-nums; font-weight:600; }
 @media (max-width: 560px) { .ps-dl { grid-template-columns:1fr; } .ps-dl dd { text-align:left; margin-bottom:4px; } }
 /* PR 9: disaster recovery map */
@@ -110,7 +110,7 @@ details.ps-more summary { cursor:pointer; color:var(--color-primary-strong); }
 /* share paid out by signing year (decision 109, step 1): one column per year, 0 to 100% */
 .ps-cols { list-style:none; margin:8px 0; padding:0; display:flex; gap:10px; align-items:flex-end; }
 .ps-cols li { flex:1; display:flex; flex-direction:column; align-items:center; font-size:12.5px; }
-.ps-cols .c { width:100%; max-width:56px; height:110px; background:#eef0f3; border-radius:4px; display:flex; align-items:flex-end; overflow:hidden; }
+.ps-cols .c { width:100%; max-width:56px; height:110px; background:var(--ws-n-paper2); border-radius:4px; display:flex; align-items:flex-end; overflow:hidden; }
 .ps-cols .c i { display:block; width:100%; background:#205D7B; }
 .ps-cols .v { font-weight:600; font-variant-numeric:tabular-nums; }
 /* section 8, FEMA Public Assistance by stage and age (decision 109, step 2) */

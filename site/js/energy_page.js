@@ -17,7 +17,7 @@
   const pct = (v, d = 1) => v == null || !isFinite(v) ? '—' : fmt(v, d) + (lang() === 'es' ? ' %' : '%');
   const escH = (s) => String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   const MON = (m) => { const [y, k] = m.split('-').map(Number); return new Date(Date.UTC(y, k - 1, 15)).toLocaleDateString(loc(), { year: 'numeric', month: 'long', timeZone: 'UTC' }); };
-  // the fuels, in the colours of the Power plants layer (core/facilities.js; Okabe-Ito); rooftop exports in a darker gold
+  // the fuels, in the colors of the Power plants layer (core/facilities.js; Okabe-Ito); rooftop exports in a darker gold
   const FUEL = { oil: ['#E69F00', 'Oil'], gas: ['#CC79A7', 'Natural gas'], coal: ['#3a3a3a', 'Coal'], hydro: ['#009E73', 'Hydroelectric'], solar: ['#F0E442', 'Solar plants'],
     wind: ['#56B4E9', 'Wind'], landfill: ['#D55E00', 'Landfill gas'], dg: ['#9c7a00', 'Rooftop solar sent to the grid'] };
   const RENEW = ['hydro', 'solar', 'wind', 'landfill'];

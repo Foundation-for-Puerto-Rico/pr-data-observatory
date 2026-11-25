@@ -1,7 +1,7 @@
 /* The Urban heat page (urban-heat.html, Knowledge Area): what it adds to public_money.css, whose layout it shares (controls, charts, sortable tables). */
-.uh-table td.weak { font-style:italic; color:#5b6475; }
-.uh-table th:first-child, .uh-table td:first-child { position:sticky; left:0; background:#fff; z-index:1; }
-.uh-table thead th:first-child { background:#f6f7f9; z-index:2; }
+.uh-table td.weak { font-style:italic; color:var(--ws-n-muted); }
+.uh-table th:first-child, .uh-table td:first-child { position:sticky; left:0; background:var(--color-surface); z-index:1; }
+.uh-table thead th:first-child { background:var(--ws-n-paper); z-index:2; }
 .uh-tablebox { max-height:520px; }
 .uh-grid th[scope="row"] { font-weight:600; max-width:240px; }
 .uh-land { margin:8px 0 0; padding-left:18px; }

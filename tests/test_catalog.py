@@ -262,7 +262,7 @@ class PublishedCatalog(unittest.TestCase):
                 self.assertIn(h["map"][1], series, h["variable"])
 
     def test_every_old_shading_measure_opens_a_dataset(self):
-        """s= links of the retired "Shade municipalities by" menu (app.js SHADE_DS): every measure is mapped, to a dataset the engine has, with a normalisation it allows."""
+        """s= links of the retired "Shade municipalities by" menu (app.js SHADE_DS): every measure is mapped, to a dataset the engine has, with a normalization it allows."""
         app = (ROOT / "site" / "js" / "app.js").read_text(encoding="utf-8")
         adapters = (ROOT / "site" / "js" / "core" / "adapters.js").read_text(encoding="utf-8")
         shade = catalog.shade_datasets()

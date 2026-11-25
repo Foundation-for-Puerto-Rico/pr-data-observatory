@@ -39,7 +39,7 @@ def load(p):
 
 
 def records():
-    """File records of the data contract (dictionary_src/datasets.json): titles, domains, licence class, geography, time, reviews and flags of every file."""
+    """File records of the data contract (dictionary_src/datasets.json): titles, domains, license class, geography, time, reviews and flags of every file."""
     p = SRC / "datasets.json"
     return {r["file"]: r for r in load(p)["datasets"]} if p.exists() else {}
 
@@ -100,8 +100,8 @@ def sources():
 
 
 def licence_from(rec, srcs=None):
-    """The sources that set a file's licence class: a file takes the most restrictive class of its sources, so a file 'unstated' has at least one
-    source that states no licence. [{id, en, es}] with the source's short name, for the Compliance review column ("License not stated: municipal
+    """The sources that set a file's license class: a file takes the most restrictive class of its sources, so a file 'unstated' has at least one
+    source that states no license. [{id, en, es}] with the source's short name, for the Compliance review column ("License not stated: municipal
     GTFS feeds"); empty when no source has the file's class."""
     s, aliases = srcs or sources()
     out = []
@@ -116,8 +116,8 @@ def licence_from(rec, srcs=None):
 
 def review_of(rec, srcs=None):
     """The Compliance review column: 'open' (with the short reason of each open review), else 'cleared' (with the latest date), else 'unstated' (at
-    least one source states no licence; the file takes the most restrictive class of its sources), else 'none' (no review is needed). Flags:
-    federal-grant, counts-only (the contract's flags) and the licence class when it is unstated or licensed-not-open, with licence_from, the
+    least one source states no license; the file takes the most restrictive class of its sources), else 'none' (no review is needed). Flags:
+    federal-grant, counts-only (the contract's flags) and the license class when it is unstated or licensed-not-open, with licence_from, the
     sources that set it."""
     revs = [r for r in rec.get("review") or [] if isinstance(r, dict)]
     open_ = [{"type": r["type"], "summary": r.get("summary")} for r in revs if r.get("status") == "open"]

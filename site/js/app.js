@@ -6,7 +6,7 @@
 const HELP = {};
 
 // "Shade municipalities by" was retired on 2026-11-04 (navigation plan, decision 81 (d)): each of its 35 measures is a dataset of the layer engine, and a link with s=<measure> opens that
-// dataset, shaded, with the normalisation that gave the same figure ([key] as published, [key, norm] per resident or per km²). The three "places shown" measures counted only the
+// dataset, shaded, with the normalization that gave the same figure ([key] as published, [key, norm] per resident or per km²). The three "places shown" measures counted only the
 // listings the filters let through; they open the count of every tourism place (the hexagon view of the Tourism places layer still follows the filters). catalog.py reads this list.
 const SHADE_DS = { assets: ['tourism_places'], assets_per_1000_residents: ['tourism_places', 'per1000'], assets_per_km2: ['tourism_places', 'perkm2'], shown: ['tourism_places'], shown_per_1000_residents: ['tourism_places', 'per1000'], shown_per_km2: ['tourism_places', 'perkm2'], sfha_pct: ['sfha_pct'], in_sfha: ['in_sfha'], in_protected: ['in_protected'], with_website: ['with_website'], transit_pct: ['transit_pct'], acc_walk400_pct: ['acc_walk400_pct'], acc_wfreq400_pct: ['acc_wfreq400_pct'], acc_walk800_pct: ['acc_walk800_pct'], acc_cur400_pct: ['acc_cur400_pct'], acc_freq400_pct: ['acc_freq400_pct'], acc_sat400_pct: ['acc_sat400_pct'], acc_sun400_pct: ['acc_sun400_pct'], acc_paper_pct: ['acc_paper_pct'], transit_stops: ['transit_stops'], uber_listed: ['uber_listed'], affordability_ratio: ['affordability_ratio'], median_home_value: ['median_home_value'], median_gross_rent: ['median_gross_rent'], renter_cost_burden_pct: ['renter_cost_burden_pct'], vacancy_pct: ['vacancy_pct'], seasonal_pct: ['seasonal_pct'], gross_rent_change_pct: ['gross_rent_change_pct'], urban_pct: ['urban_pct'], protected_land_pct: ['protected_land_pct'], population_2020: ['population'], pop_walk_active_pct: ['pop_walk_active_pct'], pop_walk_pct: ['pop_walk_pct'], pop_served_pct: ['pop_served_pct'], pop_served_active_pct: ['pop_served_active_pct'] };
 const RAMP = Core.palettes.RAMPS.blue;
@@ -25,7 +25,7 @@ const map = L.map('map', { zoomControl: false, preferCanvas: true, scrollWheelZo
 if (embedded) { map.on('focus', () => map.scrollWheelZoom.enable()); map.on('blur', () => map.scrollWheelZoom.disable()); }
 map.fitBounds(PR_BOUNDS, { animate: false });
 const viewKey = () => { const c = map.getCenter(); return c.lat.toFixed(4) + ',' + c.lng.toFixed(4) + ',' + map.getZoom(); };
-let mapHome = viewKey();   // the whole-island view: re-centred in the free area when the On the map panel opens or closes, while nobody has moved the map
+let mapHome = viewKey();   // the whole-island view: re-centered in the free area when the On the map panel opens or closes, while nobody has moved the map
 L.control.zoom({ position: 'bottomright', zoomInTitle: T('Zoom in'), zoomOutTitle: T('Zoom out') }).addTo(map);
 L.control.scale({ imperial: true, position: 'bottomright' }).addTo(map);
 if (window.CleanView) { const cv = L.control({ position: 'bottomright' }); cv.onAdd = () => { const d = L.DomUtil.create('div', 'leaflet-bar cv-ctl'); d.appendChild(CleanView.button()); L.DomEvent.disableClickPropagation(d); return d; }; cv.addTo(map); }   // Clean view (core/cleanview.js): above the zoom buttons
@@ -312,7 +312,7 @@ function flyToPlace(id) {
 }
 
 // ── Rankings ───────────────────────────────────────────────────────────────
-// Rankings rank any dataset of the layer engine (navigation plan, decision 81 (e)): the menu lists every dataset by group, in the order of the layer menu, with the normalisations
+// Rankings rank any dataset of the layer engine (navigation plan, decision 81 (e)): the menu lists every dataset by group, in the order of the layer menu, with the normalizations
 // it allows; the value is the dataset's latest year. The datasets load the first time the tab opens (economy.js ready()).
 let rankDesc = true, rankBuilt = false;
 async function renderRank() {
@@ -455,7 +455,7 @@ function openToolLink(spec) {
 }
 function onTabShown(name) { if (name === 'muni' && !S.selected && !$('#lyMuni').checked) $('#lyMuni').click();   // show where to click
   if (name === 'region') regionOpen(); else if (typeof Region !== 'undefined') Region.hide();
-  if (name === 'rank') renderRank(); if (name === 'maptools') mtP = mtP || addJs('js/maptools.js?v=5').catch(() => { mtP = null; $('#tab-maptools').removeAttribute('data-t-wait'); }); if (name === 'about') { loadAboutText(); loadAboutNumbers(); } if (typeof econShown === 'function') econShown(name); if (typeof Catalog !== 'undefined') Catalog.shown(name); }
+  if (name === 'rank') renderRank(); if (name === 'maptools') mtP = mtP || addJs('js/maptools.js?v=5').catch(() => { mtP = null; $('#tab-maptools').removeAttribute('data-t-wait'); }); if (typeof econShown === 'function') econShown(name); if (typeof Catalog !== 'undefined') Catalog.shown(name); }
 function toast(msg, ms = 3500) { Core.activelayers.toast(msg, ms); }   // core/activelayers.js: the same message, which can also carry an Undo button
 initHelp(k => HELP[k]);
 
@@ -470,37 +470,13 @@ function renderCatChips() {
 function renderAbout() {
   const m = S.meta, c = m.counts || {}, t = m.transport || {}, kd = t.kinds || {};
   const stopsAndStations = (kd.transit_stop || 0) + (kd.bus_stop || 0) + (kd.bus_station || 0) + (kd.rail_station || 0) + (kd.ferry_terminal || 0);
-  $('#aboutKpis').innerHTML = [[c.municipalities || 78, T('municipalities')], [c.population_2020, T('residents (2020 Census)')], [c.tourism_places, T('tourism places')], [(m.network || {}).routes, T('transit routes, all operators')], [stopsAndStations, T('stops and stations')]]
+  if ($('#aboutKpis')) $('#aboutKpis').innerHTML = [[c.municipalities || 78, T('municipalities')], [c.population_2020, T('residents (2020 Census)')], [c.tourism_places, T('tourism places')], [(m.network || {}).routes, T('transit routes, all operators')], [stopsAndStations, T('stops and stations')]]
     .map(([v, l]) => `<div class="kpi"><div class="v">${fmt(v)}</div><div class="l">${esc(l)}</div></div>`).join('');
   $('#snapshotLabel').innerHTML = `<b>${esc(snapshotLabel(m.label))}</b>`; $('#snapshotLabel').title = T('Built {date}', { date: (m.generated_at || '').slice(0, 10) });
-  $('#aboutBuilt').innerHTML = Th('Current snapshot: <b>{label}</b>, built {date}.', { label: snapshotLabel(m.label), date: (m.generated_at || '').slice(0, 10) });
+  if ($('#aboutBuilt')) $('#aboutBuilt').innerHTML = Th('Current snapshot: <b>{label}</b>, built {date}.', { label: snapshotLabel(m.label), date: (m.generated_at || '').slice(0, 10) });
   document.title = T('PR Data Observatory · Foundation for Puerto Rico');
   document.querySelectorAll('.snap').forEach(e => e.textContent = m.label ? snapshotLabel(m.label) : '');
 }
-let aboutText = null;
-/** The About tab's own text: its Spanish (es.map.about.js, module "about" in i18n_src/pages.json) loads the first time the tab opens, so the map's first load does
-    not carry it. Until then the tab's content waits unseen (data-t-wait: twin.css; aria-hidden, which the glossary leaves alone), then it is translated and the glossary reads it. */
-function loadAboutText() {
-  const tab = $('#tab-about');
-  return aboutText || (aboutText = I18N.load('about').then(() => {
-    const snap = (tab.querySelector('.snap') || {}).textContent || '';
-    tab.querySelectorAll('.snap').forEach(e => { e.textContent = ''; });   // a sentence is translated as written in the page, with its snapshot label still empty
-    I18N.apply(tab);
-    tab.querySelectorAll('.snap').forEach(e => { e.textContent = snap; });
-  }, e => { aboutText = null; console.error(e); }).finally(() => {
-    tab.removeAttribute('data-t-wait'); tab.removeAttribute('aria-hidden');
-    if (window.Core && Core.glossary && Core.glossary.mark) Core.glossary.mark(tab);
-  }));
-}
-let aboutNumbers = null;
-async function loadAboutNumbers() {   // the dictionary's size, fetched once when the About tab is first opened
-  if (aboutNumbers) return; aboutNumbers = true;
-  try {
-    const d = await fetchJson('data/dictionary_summary.json');
-    $('#aboutKpis').insertAdjacentHTML('beforeend', [[d.entries, T('documented datasets, variables and measures')], [d.data_sources, T('data sources, each with its license')]].map(([v, l]) => `<div class="kpi"><div class="v">${fmt(v)}</div><div class="l">${esc(l)}</div></div>`).join(''));
-  } catch { /* the dictionary is optional here */ }
-}
-
 // ── Shareable state: #Municipality&c=lat,lng,zoom&l=layers&s=shading ──────────
 // The schema is shared with the 3D view (js/core/viewstate.js, docs/view-state.md): what this map does not use (the 3D camera's b= and p=, a layer or a measure
 // of the 3D view only, a key of a later version) is kept as it came, and the 3D link carries the whole address.
@@ -609,7 +585,7 @@ const facLoad = () => facP || (facP = allIn([I18N.load('facilities'), facJs = fa
 ['oz', 'pubhousing', 'lihtc', 'fire', 'police', 'libraries', 'schools', 'historic', 'townhalls', 'reservoirs', 'broadband', 'hexgrid', 'powerlines', 'plants', 'rivers', 'groundwater', 'rain', 'dumping', 'fprroutes', 'publicos', 'links', 'traffic', 'bridges', 'airports', 'ferries', 'evcharge'].forEach(k => { $('#' + LAYER_KEYS[k]).onchange = guarded(async e => { if (e.target.checked) { await facLoad(); await Facilities.show(k); } else if (typeof Facilities !== 'undefined') Facilities.hide(k); }); });
 // A help button whose text has not arrived: load it (the facilities' texts come with their script), then press the button again
 let helpP = null, helpJs = null;
-const helpLoad = () => helpP || (helpP = allIn([I18N.load('help'), helpJs = helpJs || new Promise((ok, fail) => { const s = document.createElement('script'); s.src = 'js/help.js?v=12'; s.onload = ok; s.onerror = () => { s.remove(); helpJs = null; fail(new Error(s.src)); }; document.body.appendChild(s); })]).catch(e => { helpP = null; throw e; }));
+const helpLoad = () => helpP || (helpP = allIn([I18N.load('help'), helpJs = helpJs || new Promise((ok, fail) => { const s = document.createElement('script'); s.src = 'js/help.js?v=13'; s.onload = ok; s.onerror = () => { s.remove(); helpJs = null; fail(new Error(s.src)); }; document.body.appendChild(s); })]).catch(e => { helpP = null; throw e; }));
 document.addEventListener('click', e => { const h = e.target.closest('[data-help]'), key = h && h.dataset.help; if (!h || HELP[key]) return; e.preventDefault(); e.stopPropagation(); (key.startsWith('fac_') ? facLoad() : helpLoad()).then(() => { if (HELP[key]) h.click(); }, () => toast(T('The help could not be loaded. Check your connection and try again.'), 5000)); }, true);
 $('#lyMuni').onchange = e => { if (muniLayer) { e.target.checked ? (map.addLayer(muniLayer), map.getZoom() >= 10 && map.addLayer(labelLayer)) : (map.removeLayer(muniLayer), map.removeLayer(labelLayer)); } writeHash(); };
 $('#lySlr').onchange = e => { setSlr(e.target.checked); writeHash(); };
@@ -632,7 +608,7 @@ Core.activelayers.mount(Core.activelayers.combine(
   Core.activelayers.econ(() => typeof ECON !== 'undefined' && ECON.api),
   Core.activelayers.plan(() => typeof Plan !== 'undefined' && Plan.root ? Plan : null)), $('#map'));
 // Map space (review 2026-11-05): what covers the map, in px from each edge: the chip and message at the top, the On the map panel pinned on the right of a wide screen,
-// the legend at the bottom. Pop-ups open inside what is left, and the island's whole view is centred in it (a pan, not a padded fit: that would drop a zoom level).
+// the legend at the bottom. Pop-ups open inside what is left, and the island's whole view is centered in it (a pan, not a padded fit: that would drop a zoom level).
 function mapInsets() {
   const m = $('#map').getBoundingClientRect(), i = { t: 56, r: 16, b: 16, l: 16 }, w = $('#alWrap'), p = $('#alPanel'), g = $('#econLegend');
   if (w && p && !w.hidden && !p.hidden && w.classList.contains('pinned')) { const b = p.getBoundingClientRect(); if (b.width) i.r = Math.max(i.r, m.right - b.left + 12); }
@@ -668,7 +644,7 @@ async function loadFlood() {
   if ($('#lyFlood').checked) floodLayer.addTo(map);
 }
 // The classes of the land-use plan: every class of the legend starts ticked; an unticked class is hidden on the map and in the click pop-up (landuse.py class_key: a
-// code without its own colour, such as SREP-AE, draws as SREP)
+// code without its own color, such as SREP-AE, draws as SREP)
 const LU_KEYS = ['SU', 'SURP', 'SURNP', 'SRC', 'SREP', 'SREP-E', 'SREP-A', 'SREP-H', 'SREP-EH', 'SREP-AH'], luHidden = new Set();
 const luKey = cls => { const c = String(cls || '').toUpperCase(); return LU_KEYS.includes(c) ? c : c.split('-')[0]; };
 const luShown = p => !luHidden.has(luKey(p.cls));
@@ -727,7 +703,7 @@ async function loadWcrp() {
     const at = new Map();   // group plans that share a point, so every one of them can be clicked
     fc.features.forEach(f => { const k = f.geometry.coordinates.join(); at.set(k, [...(at.get(k) || []), f.properties]); });
     wcrpLayer = L.layerGroup([...at].map(([k, list]) => {
-      // the centre figure of the WCRP logo: solid for an approved plan, an outline for a plan in progress
+      // the center figure of the WCRP logo: solid for an approved plan, an outline for a plan in progress
       const [lng, lat] = k.split(',').map(Number), names = list.map(p => p.comunidad).join(' · ');
       return L.marker([lat, lng], { icon: list.some(p => p.estado === 'plan_aprobado') ? WCRP_PIN.done : WCRP_PIN.open, alt: names, zIndexOffset: 1000 })
         .bindTooltip(names, { direction: 'top', offset: [0, -28] }).bindPopup(() => wcrpPopup(list), { maxWidth: 320, offset: [0, -24] });
@@ -743,7 +719,7 @@ async function loadBarrios() {
   if ($('#lyBarrios').checked) barrioLayer.addTo(map);
 }
 // The surface heat images (heat.py: summer mornings, Landsat; ecostress.py: summer nights; surface_image.py; HANDOFF decision 88): one Web Mercator picture at a time,
-// under every other layer. Its colours follow the land in view by default (core/surfscale.js, loaded with it), or Puerto Rico's own scale; the legend switches both
+// under every other layer. Its colors follow the land in view by default (core/surfscale.js, loaded with it), or Puerto Rico's own scale; the legend switches both
 let surfLayer = null, surfMode = 'view', surfTime = 'day';
 const surfs = {}, SURF_FILE = { day: 'data/heat_surface.json', night: 'data/night_heat_surface.json' };
 const surfOpen = (t) => surfs[t] || (surfs[t] = (async () => { const m = await getJson(SURF_FILE[t], T('surface heat')), o = await Core.surfscale.open('data/' + m.image, m); o.meta = m; return o; })().catch(e => { delete surfs[t]; throw e; }));
@@ -753,7 +729,7 @@ async function loadSurf() {
   if (!surfLayer) { surfLayer = L.imageOverlay('data/' + o.meta.image, [[s, w], [n, e]], { pane: 'surfheat', opacity: .8, interactive: false, attribution: T('Surface heat: USGS Landsat, NASA ECOSTRESS') }); map.on('moveend', surfPaint); }
   if ($('#lySurfHeat').checked) { surfLayer.addTo(map); surfPaint(); }
 }
-function surfPaint() {   // after a move or a switch: the image of the time shown, coloured for the land in view (or Puerto Rico), and the legend's numbers
+function surfPaint() {   // after a move or a switch: the image of the time shown, colored for the land in view (or Puerto Rico), and the legend's numbers
   if (!surfLayer || !map.hasLayer(surfLayer)) return;
   clearTimeout(surfPaint.t);
   surfPaint.t = setTimeout(async () => {
@@ -815,7 +791,7 @@ async function loadProt() {
  *  tab (#basemap): a pick changes only the base map, is kept in the address (bm=) and the 3D link, and in this browser as the viewer's default. */
 function startBasemap() {
   const off = () => map.getContainer().dataset.basemap = 'off';
-  (window.Core.basemap ? Promise.resolve() : addJs('js/core/basemap.js?v=7')).then(() => {
+  (window.Core.basemap ? Promise.resolve() : addJs('js/core/basemap.js?v=8')).then(() => {
     const B = Core.basemap;
     bmH = Core.basemap.leaflet(map, { style: bmLink || B.stored(), onState: (st, msg) => { osmiSync(st); if (st === 'off') Core.basemap.notice(map.getContainer(), msg); } });   // its own notice: the message bar may hold an Undo
     // a pick is kept as the viewer's default only once its style has loaded (keep), as in 3D; a style that loads also takes away a pending failure notice

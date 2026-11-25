@@ -41,7 +41,7 @@ const counted = JSON.parse(fs.readFileSync(path.join(site, 'data', 'places.json'
 const munis = JSON.parse(fs.readFileSync(path.join(site, 'data', 'municipios.geojson'), 'utf8')).features.map(f => ({ g: f.geometry, box: Study.bbox(f.geometry) }));
 const barrioGeo = JSON.parse(fs.readFileSync(path.join(site, 'data', 'barrios.geojson'), 'utf8')).features.map(f => f.geometry);
 const rings = (g) => (g.type === 'Polygon' ? g.coordinates : g.coordinates.flat());
-const segM = (px, py, a, b2, k) => {   // metres from a point to a segment, on the flat projection at the point's latitude
+const segM = (px, py, a, b2, k) => {   // meters from a point to a segment, on the flat projection at the point's latitude
   const ax = (a[0] - px) * k, ay = (a[1] - py) * 110574, bx = (b2[0] - px) * k, by = (b2[1] - py) * 110574, dx = bx - ax, dy = by - ay, L = dx * dx + dy * dy;
   const t = L ? Math.max(0, Math.min(1, -(ax * dx + ay * dy) / L)) : 0;
   return Math.hypot(ax + t * dx, ay + t * dy);

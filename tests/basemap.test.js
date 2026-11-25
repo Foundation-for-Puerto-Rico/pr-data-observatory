@@ -9,7 +9,7 @@ const SITE = path.join(ROOT, 'site');
 const B = require(path.join(SITE, 'js', 'core', 'basemap.js'));
 const read = (f) => fs.readFileSync(path.join(SITE, f), 'utf8');
 
-test('the four kinds of source are named apart, each with its licence, link and role', () => {
+test('the four kinds of source are named apart, each with its license, link and role', () => {
   const roles = Object.values(B.SOURCES).map(s => s.role);
   for (const r of ['geographic data source', 'vector schema', 'tile provider', 'rendering library', 'terrain source']) assert.ok(roles.includes(r), r);
   for (const [id, s] of Object.entries(B.SOURCES)) {
@@ -51,7 +51,7 @@ test('a provider key would come from the non-committed file, never from this one
   assert.strictEqual(B.LIBS.local.src, 'js/basemap.local.js');
 });
 
-test('the 2D maps load the same MapLibre file and integrity as the 3D view, and the vendored bridge with its licence', () => {
+test('the 2D maps load the same MapLibre file and integrity as the 3D view, and the vendored bridge with its license', () => {
   const h3 = read('3d.html');
   assert.ok(h3.includes(`<script src="${B.LIBS.maplibre.src}" integrity="${B.LIBS.maplibre.integrity}"`));
   assert.ok(h3.includes(`href="${B.LIBS.css.href}" integrity="${B.LIBS.css.integrity}"`));
@@ -112,7 +112,7 @@ test('the switcher offers five OpenStreetMap styles, three USGS maps and no base
   assert.match(B.OPTIONS.liberty.desc.en, /streets, places, buildings/);
   assert.strictEqual(B.defaultOf('2d'), 'positron');
   assert.strictEqual(B.defaultOf('3d'), 'liberty');
-  // every style but "none" names its provider, whose sources, licences and credits are kept (SOURCES); "none" has none and loads nothing
+  // every style but "none" names its provider, whose sources, licenses and credits are kept (SOURCES); "none" has none and loads nothing
   for (const n of B.NAMES.filter(x => x !== 'none')) {
     const o = B.OPTIONS[n], p = B.PROVIDERS[o.provider]; assert.ok(p && p.styles[o.style], n);
     for (const id of o.credits || p.credits) assert.ok(B.SOURCES[id].licence && B.SOURCES[id].credit.en && B.SOURCES[id].credit.es, `${n}: ${id}`);
@@ -304,7 +304,7 @@ test('the stop counts added again after a switch of base map are shown as their 
   assert.ok(fs.existsSync(path.join(ROOT, 'tests', 'browser', 'basemap_switch.js')), 'the browser check of the case');
 });
 
-test('a base map that goes off takes its credits with it, even when its map loads afterwards (the bridge adds them again on load)', async () => {
+test('a base map that goes off takes its credits with it, even when its map loads afterward (the bridge adds them again on load)', async () => {
   await withPage(async (f) => {
     const h = B.leaflet(f.map, {});
     await tick();

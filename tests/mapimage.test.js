@@ -20,7 +20,7 @@ test('the file is named by the date', () => {
   assert.strictEqual(K.fileName(new Date(2026, 10, 9)), 'pr-data-observatory-map-2026-11-09.png');
 });
 
-test('legend swatches: fills, lines, pins and colour ramps', () => {
+test('legend swatches: fills, lines, pins and color ramps', () => {
   assert.deepStrictEqual(K.swatch({ cls: 'sw', bg: 'rgb(32, 93, 123)' }), { kind: 'fill', colors: ['rgb(32, 93, 123)', ''] });
   assert.strictEqual(K.swatch({ cls: 'sw line', bg: 'rgb(32, 93, 123)' }).kind, 'line');
   assert.deepStrictEqual(K.swatch({ cls: 'sw line', bg: 'rgba(0, 0, 0, 0)', border: 'rgb(92, 51, 20) 2px' }).colors, ['rgb(92, 51, 20)'], 'a contour line drawn by its border');

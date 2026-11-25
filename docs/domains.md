@@ -44,7 +44,7 @@ A domain is a field of information (housing, education and so on). The set is op
 - Icon: `work`; accent token: `--fpr-yellow`; status: active
 - Headline indicator: `economy.qcew_jobs`
 - Example questions: "Where are the jobs?"; "Which municipalities have the most poverty?"
-- Ready-made views: Jobs and pay; Poverty and unemployment; Job centres and commuting
+- Ready-made views: Jobs and pay; Poverty and unemployment; Job centers and commuting
 
 ### Visitor economy / Economía del visitante (`economy.visitor-economy`)
 

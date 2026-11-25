@@ -17,7 +17,8 @@ ROOT = HERE.parents[2]
 ES = {}
 MONTHS_EN = "January February March April May June July August September October November December".split()
 MONTHS_ES = "enero febrero marzo abril mayo junio julio agosto septiembre octubre noviembre diciembre".split()
-ICONS = ("account_balance,bar_chart,bolt,calculate,chat_bubble,close,commute,delete,diversity_3,download,elderly,family_restroom,home_work,hourglass_bottom,info,lightbulb,map,menu_book,"
+ICONS = ("account_tree,dark_mode,explore,grid_view,light_mode,"   # the rail and the light/dark switch (css/ws.css)
+         "account_balance,bar_chart,bolt,calculate,chat_bubble,close,commute,delete,diversity_3,download,elderly,family_restroom,home_work,hourglass_bottom,info,lightbulb,map,menu_book,"
          "payments,pie_chart,price_change,query_stats,restart_alt,rocket_launch,route,savings,school,send,show_chart,table_view,thermostat,view_in_ar,warning,water,wifi,woman,work")
 
 
@@ -141,12 +142,13 @@ def build():
 <link rel="icon" href="img/fpr-mark.png">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0&icon_names={ICONS}&display=block">
-<link rel="stylesheet" href="css/twin.css?v=62">
-<link rel="stylesheet" href="css/housing.css?v=21">
-<link rel="stylesheet" href="css/public_money.css?v=1">
-<link rel="stylesheet" href="css/inflation.css?v=2">
-<link rel="stylesheet" href="css/chat.css?v=4">
-<script src="js/i18n.js?v=73" data-page="inflation"></script>
+<link rel="stylesheet" href="css/twin.css?v=63">
+<link rel="stylesheet" href="css/housing.css?v=22">
+<link rel="stylesheet" href="css/public_money.css?v=2">
+<link rel="stylesheet" href="css/inflation.css?v=3">
+<link rel="stylesheet" href="css/chat.css?v=5">
+<link rel="stylesheet" href="css/ws.css?v=2">
+<script src="js/i18n.js?v=74" data-page="inflation"></script>
 </head>
 <body class="research">
 <a class="skip" href="#headline">{t("Skip to the content", "Ir al contenido")}</a>
@@ -155,11 +157,14 @@ def build():
   <div class="brand"><b>{t("Knowledge Area · Inflation", "Área de conocimiento · Inflación")}</b><span>{t("Prices in Puerto Rico and the United States, a five-year projection and what it means for families", "Los precios en Puerto Rico y en Estados Unidos, una proyección a cinco años y lo que significa para las familias")}</span></div>
   <div class="spacer"></div>
   <nav class="views" aria-label="{t("Views", "Vistas")}">
-    <a class="btn" href="index.html"><span class="ms-icon" aria-hidden="true">map</span><span class="lbl">{t("Map", "Mapa")}</span></a>
-    <a class="btn" href="3d.html" title="{t("Immersive 3D + time view", "Vista inmersiva en 3D y tiempo")}"><span class="ms-icon" aria-hidden="true">view_in_ar</span><span class="lbl">{t("3D + Time", "3D + Tiempo")}</span></a>
+    <a class="btn" href="index.html" title="{t("Map: every layer and tool, in 2D or 3D", "Mapa: todas las capas y herramientas, en 2D o 3D")}"><span class="ms-icon" aria-hidden="true">map</span><span class="lbl">{t("Map", "Mapa")}</span></a>
+    <a class="btn" href="explore.html" title="{t("Map Gallery: ready-made maps, topics and your saved maps", "Galería de mapas: mapas preparados, temas y sus mapas guardados")}"><span class="ms-icon" aria-hidden="true">explore</span><span class="lbl">{t("Map Gallery", "Galería de mapas")}</span></a>
+    <a class="btn" href="data.html" title="{t("Data: every dataset, map layer and set of places", "Datos: todos los conjuntos de datos, capas del mapa y grupos de lugares")}"><span class="ms-icon" aria-hidden="true">grid_view</span><span class="lbl">{t("Data", "Datos")}</span></a>
+    <a class="btn" href="workflows.html" title="{t("Workflows: steps that turn data into a result on the map", "Flujos de trabajo: pasos que convierten datos en un resultado en el mapa")}"><span class="ms-icon" aria-hidden="true">account_tree</span><span class="lbl">{t("Workflows", "Flujos")}</span></a>
     <a class="btn" href="knowledge.html" aria-current="page" title="{t("Knowledge: FPR studies, analyses and tools", "Conocimiento: estudios, análisis y herramientas de FPR")}"><span class="ms-icon" aria-hidden="true">lightbulb</span><span class="lbl">{t("Knowledge", "Conocimiento")}</span></a>
-    <a class="btn" href="dictionary.html" title="{t("Data dictionary: meanings, sources, licenses, how to cite", "Diccionario de datos: significados, fuentes, licencias y cómo citar")}"><span class="ms-icon" aria-hidden="true">menu_book</span><span class="lbl">{t("Data dictionary", "Diccionario de datos")}</span></a>
+    <a class="btn" href="dictionary.html" title="{t("Data Dictionary: meanings, sources, licenses, how to cite", "Diccionario de datos: significados, fuentes, licencias y cómo citar")}"><span class="ms-icon" aria-hidden="true">menu_book</span><span class="lbl">{t("Data Dictionary", "Diccionario de datos")}</span></a>
     <a class="btn" href="learn.html" title="{t("Learn: short lessons about maps and spatial analysis", "Aprende: lecciones cortas sobre mapas y análisis espacial")}"><span class="ms-icon" aria-hidden="true">school</span><span class="lbl">{t("Learn", "Aprende")}</span></a>
+    <a class="btn" href="about.html" title="{t("About: this initiative, how to use the Observatory, terms", "Acerca de: esta iniciativa, cómo usar el Observatorio y los términos")}"><span class="ms-icon" aria-hidden="true">info</span><span class="lbl">{t("About", "Acerca de")}</span></a>
   </nav>
 </header>
 

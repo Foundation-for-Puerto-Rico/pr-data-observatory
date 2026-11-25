@@ -1,4 +1,4 @@
-/* The Power plants layer of core/facilities.js (HANDOFF decision 104, step 1): circle area by MW, colour by main technology, a planned plant hollow, the pop-up and
+/* The Power plants layer of core/facilities.js (HANDOFF decision 104, step 1): circle area by MW, color by main technology, a planned plant hollow, the pop-up and
    the legend, on the published file (power_plants.py).
      node --test tests/facilities_plants.test.js */
 const test = require('node:test');
@@ -9,15 +9,15 @@ const path = require('path');
 const F = require('../site/js/core/facilities.js');
 const d = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'site', 'data', 'power_plants.geojson'), 'utf8'));
 
-test('Power plants is a sized layer with a switch, a file, a help text and a colour for every technology the file holds', () => {
+test('Power plants is a sized layer with a switch, a file, a help text and a color for every technology the file holds', () => {
   const L = F.LAYERS.plants;
   assert.strictEqual(L.id, 'lyPlants');
   assert.strictEqual(L.file, 'power_plants.geojson');
   assert.ok(L.sized && !L.area && !L.line);
   assert.ok(F.HELP_TEXT.fac_plants && /owners are not shown/.test(F.HELP_TEXT.fac_plants[1]) && /Rooftop solar/.test(F.HELP_TEXT.fac_plants[1]));
   assert.ok(F.TYPES.includes('Power plant'), 'the type the file holds is translated');
-  for (const f of d.features) assert.ok(L.sized.colors[f.properties.tech], `no colour for ${f.properties.tech}`);
-  assert.strictEqual(new Set(Object.values(L.sized.colors)).size, L.sized.cats.length, 'one colour per technology');
+  for (const f of d.features) assert.ok(L.sized.colors[f.properties.tech], `no color for ${f.properties.tech}`);
+  assert.strictEqual(new Set(Object.values(L.sized.colors)).size, L.sized.cats.length, 'one color per technology');
 });
 
 test('circle AREA is in proportion to MW, with a smallest radius; a planned plant is drawn hollow', () => {
@@ -46,7 +46,7 @@ test('the legend shows only the technologies in the file, the sizes and the plan
   const html = F.legendHtml('plants', d), have = new Set(d.features.map(f => f.properties.tech));
   for (const c of F.LAYERS.plants.sized.cats) assert.strictEqual(html.includes(`>${F.LAYERS.plants.sized.labels[c]}</span>`), have.has(c), c);
   assert.ok(html.includes('stroke-dasharray'));
-  const note = F.noteText('plants', d, 'Explore tab');
+  const note = F.noteText('plants', d, 'Home tab');
   assert.ok(note.includes(String(d.notes.plants)) && /not in this inventory/.test(note));
   assert.ok(F.tip('plants', d.features[0].properties).includes(' MW'));
 });
@@ -62,7 +62,7 @@ test('a built plant that EIA does not list yet (power_plants.py, energy_src/plan
     assert.ok(html.includes(p.url.replace(/&/g, '&amp;')) && html.includes('OpenStreetMap'), 'the source and the outline');
     assert.ok(!html.includes('eia.gov'), 'no EIA link: EIA does not list it');
   }
-  const note = F.noteText('plants', d, 'Explore tab');
+  const note = F.noteText('plants', d, 'Home tab');
   assert.ok(note.includes('built but not yet in commercial operation') && note.includes(String(d.notes.built_plants)), 'the note counts them apart from EIA\'s totals');
   assert.ok(/OpenStreetMap/.test(F.LAYERS.plants.attribution), 'OpenStreetMap is credited');
 });

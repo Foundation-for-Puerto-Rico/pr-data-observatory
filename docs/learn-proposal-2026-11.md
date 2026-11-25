@@ -22,7 +22,7 @@ The preview (`docs/analysis/learn-2026-11/preview.svg`, drawn by `make_preview.p
 
 - **A general GIS textbook or a video course.** They exist, they are free, and they go out of date. The lessons link to them.
 - **Accounts, certificates or tracked quizzes.** The observatory has no accounts and stores nothing about a visitor.
-- **A copy of the shared infographic.** Its source and licence are unknown, and it has an error ("totalar."). It is the model for the layout only.
+- **A copy of the shared infographic.** Its source and license are unknown, and it has an error ("totalar."). It is the model for the layout only.
 
 ## 2. What was checked (2026-11-14, main `023d38b`)
 
@@ -48,7 +48,7 @@ The preview (`docs/analysis/learn-2026-11/preview.svg`, drawn by `make_preview.p
 |---|---|---|---|
 | Spatial data (vector and raster) | What is a map made of? | Fire and EMS stations (points), Transit routes (lines), Barrios (areas), Surface heat and Slope (grids) | Have it |
 | Attribute data | What does a shape know? | See the map as a table; the pop-up of a barrio or a municipio | Have it |
-| Topology | How do shapes relate? | Build my region (merges neighbours); tourism places inside a flood zone | Have it |
+| Topology | How do shapes relate? | Build my region (merges neighbors); tourism places inside a flood zone | Have it |
 | Descriptive analysis | How many, how much? | Count my points; Place › Rankings; Land-use analysis | Have it |
 | Overlay analysis | What overlaps? | Share of tourism places in a FEMA flood zone; Compare two maps; two shaded layers as one bivariate map; Composite index; Study areas | Have it |
 | Buffering and proximity | What is near? | Area around a point; 400 m walk radius around transit stops | Have it |
@@ -70,7 +70,7 @@ The preview (`docs/analysis/learn-2026-11/preview.svg`, drawn by `make_preview.p
 | A1 | Layers and shapes | Points, lines, areas and grids; vector and raster | Fire stations, Transit routes, Barrios, Surface heat |
 | A2 | What a shape knows | Attributes: the table behind the map | See the map as a table |
 | A3 | How shapes relate | Inside, touching, crossing | Build my region; places inside a flood zone |
-| A4 | Colours and classes | The same numbers drawn three ways: quantile, equal intervals, natural breaks | A dataset of the Analysis tab, with each method |
+| A4 | Colors and classes | The same numbers drawn three ways: quantile, equal intervals, natural breaks | A dataset of the Analysis tab, with each method |
 | A5 | Counts and rates | A count shows where people are; a rate shows something about the place | The same dataset as published and per 1,000 residents |
 | A6 | How old, how sure | The year of a figure, the margin of error, small numbers | A barrio estimate that the map flags |
 
@@ -91,7 +91,7 @@ The preview (`docs/analysis/learn-2026-11/preview.svg`, drawn by `make_preview.p
 |---|---|---|---|
 | C1 | The size of the area changes the answer | The same data by municipio, barrio and hexagon tell different stories (the modifiable areal unit problem) | A dataset published by municipio and by barrio |
 | C2 | Two patterns that match are not a cause | Correlation; what is true of an area is not true of each person in it (the ecological fallacy) | Two shaded layers as a bivariate map |
-| C3 | What a map leaves out, and why | Privacy and licences: counted, not drawn; suppression; withheld names | A layer that counts sites without drawing them |
+| C3 | What a map leaves out, and why | Privacy and licenses: counted, not drawn; suppression; withheld names | A layer that counts sites without drawing them |
 
 **Part D. Take it further (2)**
 
@@ -114,7 +114,7 @@ About 300 words in each language.
 
 ## 6. How the visuals are made
 
-- **Drawn for the observatory.** Each diagram is an SVG in the site's colours (`docs/palettes.md`), with its words in English and Spanish, a text alternative for screen readers, and a size that reads at 390 px and on paper.
+- **Drawn for the observatory.** Each diagram is an SVG in the site's colors (`docs/palettes.md`), with its words in English and Spanish, a text alternative for screen readers, and a size that reads at 390 px and on paper.
 - **An overview laid out like the infographic.** One card per lesson: diagram, question, GIS term, and the tools it uses.
 - **Three small demos where the idea needs movement:** switch the class method (A4), switch count and rate (A5), change the distance of a ring (B3). They reuse `core/classify.js`, `core/normalize.js` and `core/study.js` on published data. No new engine.
 - **Real numbers come from a script.** `learn.py` computes every figure a lesson quotes from the published data files and writes `site/data/learn.json`; a test fails when a lesson's figure is stale. No number is typed by hand.
@@ -148,7 +148,7 @@ Effort as in `docs/proposal-2026-10.md`: **S** under 1 day, **M** 2-4 days, **L*
 ## 8. What is not proposed, and why
 
 - **An interpolation tool (IDW, kriging).** Decision 93 (c) stands. Lesson B5 teaches why.
-- **A hot-spot tool.** A test such as Getis-Ord Gi* needs choices (the neighbourhood, the correction for many tests) that are easy to get wrong and hard to explain. If the lessons show a demand for it, it is proposed on its own, with its method written first.
+- **A hot-spot tool.** A test such as Getis-Ord Gi* needs choices (the neighborhood, the correction for many tests) that are easy to get wrong and hard to explain. If the lessons show a demand for it, it is proposed on its own, with its method written first.
 - **Lessons as Knowledge Area items.** The Knowledge Area holds FPR's research and program tools. A lesson is neither, so Learn has its own page and registry; the Knowledge home page links to it.
 - **Video, accounts, certificates, tracked quizzes** (section 1).
 

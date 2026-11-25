@@ -9,7 +9,7 @@ file used here, and Data.gov lists the sites file and the three shortage-area fi
   Health_Center_Service_Delivery_and_LookAlike_Sites   the sites of health centers that hold a federal grant (FQHC) or look-alike status, with the county that holds each one
   BCD_HPSA_FCT_DET_PC / _DH / _MH                      Health Professional Shortage Area (HPSA) designations for primary care, dental health and mental health: a priority
                                                        score, the practitioners in place (FTE) and the practitioners still needed to end the designation ("shortage")
-The Area Health Resources File (AHRF) is NOT used: its documentation does not authorise re-use without the Bureau's permission (docs/health.md).
+The Area Health Resources File (AHRF) is NOT used: its documentation does not authorize re-use without the Bureau's permission (docs/health.md).
 
 What is kept. Each file is read as a stream and only the Puerto Rico rows, and only the columns listed in FILES below, are written to cache/hrsa/<key>.pr.csv. Names, addresses,
 telephone numbers, web addresses and coordinates are dropped as each row is read: they never reach the cache or the output, which holds counts and figures for each municipality only.
@@ -299,8 +299,8 @@ def compute(refresh=False, order_file=hs.OUT / "economy_series.json", floors=FLO
     G0 = "Health centers"   # the engine puts "Health care · " in front of every group of this file (adapters.snapshotFile)
     vs.append(var("hc_sites", G0, "Health center sites (permanent)", "", 0, "count", ["hrsa_sites"], "HRSA Data Warehouse: Health Center Service Delivery and Look-Alike Sites",
                   "Permanent sites where a health center that holds a federal grant (a Federally Qualified Health Center, FQHC) or a look-alike designation delivers care, in the municipality HRSA gives for the site. "
-                  "HRSA lists a site only while its organisation holds the grant or the look-alike status and the site is open. Administrative-only buildings, mobile vans and seasonal sites are not counted here. "
-                  "A site is a place, not an organisation (one organisation can run many) and says nothing about hours, services or how many people it serves. A municipality with none shows 0: HRSA lists no site there.",
+                  "HRSA lists a site only while its organization holds the grant or the look-alike status and the site is open. Administrative-only buildings, mobile vans and seasonal sites are not counted here. "
+                  "A site is a place, not an organization (one organization can run many) and says nothing about hours, services or how many people it serves. A municipality with none shows 0: HRSA lists no site there.",
                   {str(year): column(perm)}, dPer=3, noPerHU=True, classes="jenks"))
     vs.append(var("hc_vans", G0, "Health center mobile vans", "", 0, "count", ["hrsa_sites"], "HRSA Data Warehouse: Health Center Service Delivery and Look-Alike Sites",
                   "Mobile vans that HRSA lists as service delivery sites of a health center, in the municipality HRSA gives for the van. A van can serve other municipalities, so this shows where it is listed, "

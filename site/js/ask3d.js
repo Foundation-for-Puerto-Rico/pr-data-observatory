@@ -1,6 +1,6 @@
 /* PR Data Observatory: the "Ask the observatory" chat on the 3D view. chatboot.js adds the button and loads chat.js the first time someone uses it, as on the 2D map.
    chat.js talks to the page through window.ECON.api; this file gives the 3D view that interface over its own copy of the shared engine (ENG in twin3d.js), so every
-   answer is computed from the same datasets. An answer shows on the map as the municipality columns: the first dataset is the height, the second (if any) the colour.
+   answer is computed from the same datasets. An answer shows on the map as the municipality columns: the first dataset is the height, the second (if any) the color.
    The 2D map's workbench (scatter plot, trend chart, table, inspector, composite) has no 3D form: its buttons in the chat open the 2D map in a new tab with the same
    datasets and year, on that view. A chart the chat would open by itself, while it builds an answer, is not opened here; the button stays in the answer. */
 const Ask3D = (() => {

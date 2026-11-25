@@ -116,7 +116,7 @@
    "access": "40ac4079",
    "cadence": "ba1415f6",
    "used_for": "7d73da66",
-   "terms_note": "a3f7789f"
+   "terms_note": "987f1485"
   }
  },
  "bls_qcew": {
@@ -173,10 +173,10 @@
   "used_for": "Las trayectorias de tormentas desde 1851 en la vista 3D (hurricanes.json). En el corte de datos 2026-10, 157 tormentas del archivo 1851-2025 pasaron a menos de 250 km de Puerto Rico; cada una tiene su trayectoria, sus vientos y una categoría de huracán.",
   "terms_note": "El NHC indica que la información de los servidores del gobierno puede usarse libremente, y que su información no debe modificarse y luego presentarse como material oficial del gobierno. El observatorio selecciona las tormentas por distancia y calcula la categoría Saffir-Simpson a partir del viento más alto registrado mientras la tormenta estaba a menos de 250 km del punto central de la isla. Esa categoría es el viento más fuerte de la tormenta en esa zona, no necesariamente el viento que se sintió en Puerto Rico. Ambos pasos son cálculos de FPR, no del NHC. La escala Saffir-Simpson (enlazada aquí) clasifica solo el viento sostenido; el NHC señala que no toma en cuenta la marejada ciclónica, las inundaciones por lluvia ni los tornados. El NHC revisa temporadas pasadas de vez en cuando.",
   "_en": {
-   "access": "2d470f80",
+   "access": "b85876e4",
    "cadence": "b70998a9",
    "used_for": "2089321a",
-   "terms_note": "b54fb87a"
+   "terms_note": "3c7ce379"
   }
  },
  "osm": {
@@ -187,7 +187,7 @@
   "_en": {
    "access": "b1b1d3c0",
    "cadence": "256e9ab0",
-   "used_for": "906af0b2",
+   "used_for": "cc5039e1",
    "terms_note": "1d69c9b0"
   }
  },
@@ -198,7 +198,7 @@
   "terms_note": "Los términos de la ATI indican que ni la ATI ni sus contratistas garantizan que los datos sean completamente exactos, que los datos se ofrecen 'tal cual' y que la ATI no garantiza que estén siempre disponibles o actualizados. Indican que las agencias conservan sus derechos sobre los datos, que usar los datos no otorga ningún derecho sobre ellos y que quienes los usen deben cumplir las leyes aplicables. También indican que los logos de las agencias están reservados para uso oficial, y que una aplicación creada con los datos debe dejar claro que no está afiliada a la ATI ni patrocinada por ella, salvo que exista un acuerdo explícito. La página de la ATI dice 'Nos encontramos en el desarrollo del GTFS-RT' (el GTFS-RT es la fuente de datos en tiempo real), así que el observatorio muestra el servicio según el horario, no las posiciones de los vehículos en vivo.",
   "_en": {
    "access": "bad44bb7",
-   "cadence": "c0bc0532",
+   "cadence": "a5a38532",
    "used_for": "20c83f61",
    "terms_note": "e7d709e8"
   }
@@ -248,7 +248,7 @@
    "access": "40690894",
    "cadence": "7328e47c",
    "used_for": "5907f5b7",
-   "terms_note": "f2c17de5"
+   "terms_note": "a2421f70"
   }
  },
  "jp_put2015": {
@@ -260,7 +260,7 @@
    "access": "3bd3652c",
    "cadence": "62de3501",
    "used_for": "10c21395",
-   "terms_note": "a2713200"
+   "terms_note": "798ff6c3"
   }
  },
  "jp_calificacion": {
@@ -284,7 +284,7 @@
    "access": "c73ee80e",
    "cadence": "bc4b06c0",
    "used_for": "8a70ef26",
-   "terms_note": "58544ce0"
+   "terms_note": "c4748249"
   }
  },
  "openfreemap": {
@@ -320,7 +320,7 @@
    "access": "00c6802f",
    "cadence": "3330b66a",
    "used_for": "fc4cc899",
-   "terms_note": "36980d75"
+   "terms_note": "dcff1801"
   }
  },
  "nominatim": {
@@ -413,7 +413,7 @@
   "used_for": "El reloj Años de la vista 3D: un año y un escenario dan un aumento en pies, que selecciona la capa más cercana (de 1 a 10 pies) del Visor de Aumento del Nivel del Mar de NOAA.",
   "terms_note": "Los valores son aproximaciones de las tablas de nivel medio global del mar del informe. Los valores de 2100 coinciden con el informe, pero algunos otros difieren: el valor Intermedio-bajo de 2050 (0.24 m) es la extrapolación del informe basada en observaciones, no el escenario (0.20 m); los valores Intermedio (0.30 m) y Alto (0.44 m) de 2050 están 0.02 m y 0.01 m por encima del informe (0.28 m y 0.43 m); los valores Intermedio-alto y Alto de 2020 (0.07 m) están 0.01 m por debajo del informe (0.08 m), y los valores Intermedio-alto y Alto de 2150 (2.9 m y 3.9 m) están 0.2 m por encima del informe (2.7 m y 3.7 m). Los valores son promedios globales, no valores para la costa de Puerto Rico. El resultado es indicativo, no un pronóstico. El informe define cinco escenarios (de Bajo a Alto) y el observatorio ofrece cuatro, sin el Bajo. El aviso del informe indica que no se autoriza usar su información para la publicidad o la promoción de productos comerciales de marca ni de sus pruebas. Se volvió a verificar el 2026-10-19 para la página Gestión de datos: el informe no indica ninguna licencia ni aviso de dominio público, y su aviso restringe un solo uso (la publicidad o la promoción de productos comerciales de marca), así que la clase sigue como no declarada.",
   "_en": {
-   "access": "8b248302",
+   "access": "6b6c61ae",
    "cadence": "84b52e67",
    "used_for": "04262a53",
    "terms_note": "feef542f"
@@ -461,7 +461,7 @@
   "used_for": "Los contornos de las Comunidades Especiales en el mapa 2D (comunidades.geojson) y el nombre, el lugar, las unidades de vivienda, el tipo de comunidad y los riesgos informados que se muestran al hacer clic en una de ellas.",
   "terms_note": "La capa no incluye texto de licencia. La Ley 1-2001 creó el programa de Comunidades Especiales; pueden faltar comunidades designadas después de esta delimitación. Los atributos provienen de un inventario de comunidades realizado junto con la delimitación y describen las condiciones de ese momento.",
   "_en": {
-   "access": "7b183a04",
+   "access": "a5a5d1a8",
    "cadence": "115c439d",
    "used_for": "4fc4c3b8",
    "terms_note": "48bde219"
@@ -487,7 +487,7 @@
   "_en": {
    "access": "1f324e82",
    "cadence": "0bb90a7d",
-   "used_for": "09f1f221",
+   "used_for": "d2874a9d",
    "terms_note": "df55ad28"
   }
  },
@@ -512,7 +512,7 @@
    "access": "b498e985",
    "cadence": "82e8f91b",
    "used_for": "a4adb132",
-   "terms_note": "d26e9495"
+   "terms_note": "0207580a"
   }
  },
  "wipo_gii2026": {
@@ -524,7 +524,7 @@
    "access": "4426d8a0",
    "cadence": "77f551a4",
    "used_for": "55f50918",
-   "terms_note": "1bfd82b4"
+   "terms_note": "569a6926"
   }
  },
  "wb_wgi": {
@@ -548,7 +548,7 @@
    "access": "bc0334a5",
    "cadence": "e48160a7",
    "used_for": "180255f6",
-   "terms_note": "072db950"
+   "terms_note": "a8f8ecf7"
   }
  },
  "unesco_uis": {
@@ -560,7 +560,7 @@
    "access": "20167da2",
    "cadence": "49953004",
    "used_for": "fdef2bda",
-   "terms_note": "fb9fe5f1"
+   "terms_note": "a166cb04"
   }
  },
  "imf_weo": {
@@ -584,7 +584,7 @@
    "access": "f3d8b29b",
    "cadence": "293cb668",
    "used_for": "705496fc",
-   "terms_note": "cbaf0820"
+   "terms_note": "b605af5d"
   }
  },
  "maplibre_gl_leaflet": {
@@ -593,10 +593,10 @@
   "used_for": "Dibujar el mapa base vectorial de OpenFreeMap con MapLibre GL JS como una capa debajo de todas las capas de Leaflet del mapa 2D (index.html) y de los mapas de WCRP (wcrp.html).",
   "terms_note": "La licencia (ISC) está en el archivo LICENSE del paquete, copiado junto al script. La versión 0.1.4 (npm, 2026-08-16) declara Leaflet ^1.9.3 y MapLibre GL JS de ^2.4 a ^6, lo que cubre el Leaflet 1.9.4 y el MapLibre GL JS 4.7.1 que usa el observatorio. Como se sirve desde el propio sitio del observatorio, no envía nada a otro servidor.",
   "_en": {
-   "access": "2f6cd23b",
+   "access": "02e3a0f9",
    "cadence": "2de14677",
    "used_for": "43c2f4e0",
-   "terms_note": "c6249dbe"
+   "terms_note": "53607880"
   }
  },
  "nasa_black_marble": {
@@ -608,7 +608,7 @@
    "access": "bf891252",
    "cadence": "37dcffb1",
    "used_for": "b9ba9e9b",
-   "terms_note": "6d93e9d2"
+   "terms_note": "5166e5f0"
   }
  },
  "usgs_landsat_c2_st": {
@@ -620,7 +620,7 @@
    "access": "45448c7e",
    "cadence": "a3b1cc94",
    "used_for": "538bd7f2",
-   "terms_note": "317e920d"
+   "terms_note": "03eea9d4"
   }
  },
  "copernicus_sentinel2_l2a": {
@@ -632,7 +632,7 @@
    "access": "ccfce285",
    "cadence": "28e3fcd5",
    "used_for": "9a516bbf",
-   "terms_note": "8539c8c0"
+   "terms_note": "6aceb973"
   }
  },
  "nasa_ecostress_lste": {
@@ -680,7 +680,7 @@
    "access": "b319987b",
    "cadence": "040d45ef",
    "used_for": "e0bbd747",
-   "terms_note": "0b80cc44"
+   "terms_note": "3f5eb5d6"
   }
  },
  "fpr_baseline": {
@@ -788,7 +788,7 @@
    "access": "3a0a27c0",
    "cadence": "8027aa3b",
    "used_for": "ae3a35b7",
-   "terms_note": "1b966aee"
+   "terms_note": "09724655"
   }
  },
  "un_wpp": {

@@ -526,7 +526,7 @@ def build(refresh=False):
     filled = []
     for k in months((1999, 1), last_us):
         if k not in U:
-            U[k] = math.sqrt(U[add(k, -1)] * U[add(k, 1)])   # the model reads a missing month as the geometric mean of its neighbours
+            U[k] = math.sqrt(U[add(k, -1)] * U[add(k, 1)])   # the model reads a missing month as the geometric mean of its neighbors
             filled.append(mkey(k))
     CL = cleveland(refresh)
     last_cl = max(CL)

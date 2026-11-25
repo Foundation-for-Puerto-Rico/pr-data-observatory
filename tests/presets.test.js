@@ -1,5 +1,5 @@
 // The ready-made views of each topic (navigation plan PR 6, decision 81) against the map's data engine: every dataset a view shows is one the engine has, and every
-// scale it asks for (norm) is one that dataset offers (Core.normalize.options), and every colour ramp is one of core/palettes.js, so ECON.api.show draws the view as
+// scale it asks for (norm) is one that dataset offers (Core.normalize.options), and every color ramp is one of core/palettes.js, so ECON.api.show draws the view as
 // written; every layer is an l= key of app.js.
 // The build checks the rest (catalog.py presets(); tests/test_catalog.py ReadyMadeViews).  Run: node --test tests/presets.test.js
 const test = require('node:test');

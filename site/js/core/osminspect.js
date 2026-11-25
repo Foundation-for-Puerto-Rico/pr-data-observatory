@@ -82,20 +82,20 @@
   const POI = {
     hospital: TK('Hospital'), pharmacy: TK('Pharmacy'), chemist: TK('Pharmacy'), veterinary: TK('Veterinary clinic'),
     police: TK('Police station'), fire_station: TK('Fire station'), townhall: TK('City hall'), courthouse: TK('Courthouse'), prison: TK('Prison'), public_building: TK('Public building'),
-    community_centre: TK('Community centre'), town_hall: TK('Public building'), post_office: TK('Post office'), post_box: TK('Post box'), post: TK('Post office'), library: TK('Library'), books: TK('Bookshop'),
+    community_centre: TK('Community center'), town_hall: TK('Public building'), post_office: TK('Post office'), post_box: TK('Post box'), post: TK('Post office'), library: TK('Library'), books: TK('Bookshop'),
     school: TK('School'), college: TK('College or university'), university: TK('College or university'),
     place_of_worship: TK('Place of worship'), cemetery: TK('Cemetery'), grave_yard: TK('Cemetery'),
     bank: TK('Bank'), atm: TK('ATM'), fuel: TK('Fuel station'), charging_station: TK('EV charging station'), parking: TK('Parking'), bicycle_parking: TK('Bicycle parking'), motorcycle_parking: TK('Motorcycle parking'),
     bus_stop: TK('Bus stop'), bus_station: TK('Bus station'), bus: TK('Bus stop'), railway: TK('Rail station'), station: TK('Station'), halt: TK('Rail stop'), tram_stop: TK('Tram stop'),
     subway_entrance: TK('Station entrance'), train_station_entrance: TK('Station entrance'), entrance: TK('Entrance'), ferry_terminal: TK('Ferry terminal'), taxi: TK('Taxi stand'),
-    airport: TK('Airport'), harbor: TK('Harbour or marina'), marina: TK('Marina'), dock: TK('Dock'),
+    airport: TK('Airport'), harbor: TK('Harbor or marina'), marina: TK('Marina'), dock: TK('Dock'),
     restaurant: TK('Restaurant'), fast_food: TK('Fast food'), food_court: TK('Food court'), cafe: TK('Café'), bar: TK('Bar'), pub: TK('Bar'), beer: TK('Bar'), biergarten: TK('Bar'), nightclub: TK('Night club'), ice_cream: TK('Ice cream shop'),
     lodging: TK('Lodging'), hotel: TK('Hotel'), motel: TK('Motel'), hostel: TK('Hostel'), campsite: TK('Campsite'), camp_site: TK('Campsite'), caravan_site: TK('Campsite'),
-    museum: TK('Museum'), theatre: TK('Theatre'), cinema: TK('Cinema'), art_gallery: TK('Art gallery'), arts_centre: TK('Arts centre'), gallery: TK('Art gallery'), artwork: TK('Artwork'), attraction: TK('Tourist attraction'),
+    museum: TK('Museum'), theatre: TK('Theater'), cinema: TK('Cinema'), art_gallery: TK('Art gallery'), arts_centre: TK('Arts center'), gallery: TK('Art gallery'), artwork: TK('Artwork'), attraction: TK('Tourist attraction'),
     viewpoint: TK('Viewpoint'), information: TK('Tourist information'), castle: TK('Castle or fort'), ruins: TK('Ruins'), monument: TK('Monument'), memorial: TK('Memorial'), fort: TK('Castle or fort'), historic: TK('Historic site'),
-    park: TK('Park'), playground: TK('Playground'), garden: TK('Garden'), pitch: TK('Sports field'), sports_centre: TK('Sports centre'), stadium: TK('Stadium'), golf: TK('Golf course'), golf_course: TK('Golf course'),
+    park: TK('Park'), playground: TK('Playground'), garden: TK('Garden'), pitch: TK('Sports field'), sports_centre: TK('Sports center'), stadium: TK('Stadium'), golf: TK('Golf course'), golf_course: TK('Golf course'),
     swimming: TK('Swimming area'), swimming_area: TK('Swimming area'), water_park: TK('Water park'), beach: TK('Beach'), zoo: TK('Zoo'), aquarium: TK('Aquarium'), fitness_centre: TK('Gym'),
-    shop: TK('Shop'), grocery: TK('Grocery store'), supermarket: TK('Supermarket'), convenience: TK('Convenience store'), mall: TK('Shopping centre'), department_store: TK('Department store'), marketplace: TK('Market'),
+    shop: TK('Shop'), grocery: TK('Grocery store'), supermarket: TK('Supermarket'), convenience: TK('Convenience store'), mall: TK('Shopping center'), department_store: TK('Department store'), marketplace: TK('Market'),
     clothing_store: TK('Clothing store'), clothes: TK('Clothing store'), hardware: TK('Hardware store'), doityourself: TK('Hardware store'), alcohol_shop: TK('Liquor store'), bakery: TK('Bakery'),
     car: TK('Car shop or garage'), car_repair: TK('Car repair'), laundry: TK('Laundry'), hairdresser: TK('Hairdresser'), music: TK('Music shop'),
     office: TK('Office'), government: TK('Government office'), diplomatic: TK('Consulate or embassy'), ngo: TK('Nonprofit organization'),
@@ -103,7 +103,7 @@
   };
   const PLACE = {
     continent: TK('Continent'), country: TK('Country'), state: TK('State or territory'), province: TK('Province'), city: TK('City'), town: TK('Town'),
-    village: TK('Village'), hamlet: TK('Hamlet'), suburb: TK('Suburb'), quarter: TK('City district'), neighbourhood: TK('Neighbourhood'), island: TK('Island'), islet: TK('Islet'),
+    village: TK('Village'), hamlet: TK('Hamlet'), suburb: TK('Suburb'), quarter: TK('City district'), neighbourhood: TK('Neighborhood'), island: TK('Island'), islet: TK('Islet'),
   };
   const WATER = {
     ocean: TK('Ocean'), sea: TK('Sea'), bay: TK('Bay'), strait: TK('Strait'), lake: TK('Lake'), lagoon: TK('Lagoon'), reservoir: TK('Reservoir'), pond: TK('Pond'),

@@ -52,7 +52,7 @@ APART = {
                  "listings": ["93.778"]},
     "carryover": {"why": "A program whose money stays available without a deadline: a State or territory may carry unspent TANF funds forward to later years (42 U.S.C. 604(e)), so a balance after the end date is not money left behind",
                   "listings": ["93.558"]},
-    "federal": {"why": "Programs the federal government ended: the Environmental Protection Agency terminated Solar for All on 2025-08-07 and cancelled the Community Change Grants in 2025, so their balances are a federal decision, not unspent money",
+    "federal": {"why": "Programs the federal government ended: the Environmental Protection Agency terminated Solar for All on 2025-08-07 and canceled the Community Change Grants in 2025, so their balances are a federal decision, not unspent money",
                 "listings": ["66.959", "66.616"]},
 }
 # Programs that stay in the main figures with a note on the page: their money has a longer life than the end date suggests.

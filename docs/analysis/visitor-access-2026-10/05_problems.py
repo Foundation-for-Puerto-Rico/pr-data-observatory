@@ -50,7 +50,7 @@ for ft in mg["features"]:
     n = ft["properties"].get("municipality")
     if n:
         geoms.append(shape(ft["geometry"])); names.append(n)
-# project polygons to metres for distances
+# project polygons to meters for distances
 import pyproj
 from shapely.ops import transform
 tr_ = pyproj.Transformer.from_crs("EPSG:4326", "EPSG:32161", always_xy=True).transform
@@ -204,7 +204,7 @@ res["pii_screen"] = {"transport_json_has_email_pattern": bool(re.search(r"[\w.+-
                      "stop_names_that_embed_a_business_or_organisation_name": "yes (not counted, not printed)"}
 # population blocks: 4th value
 blocks = jload("population_blocks.json")
-res["population_blocks_fourth_value"] = {"meaning": "metres to the nearest scheduled stop, capped at 9,999 (network.py coverage), NOT housing units", "n_blocks": len(blocks), "n_capped_9999": int(sum(1 for b in blocks if b[3] >= 9999)),
+res["population_blocks_fourth_value"] = {"meaning": "meters to the nearest scheduled stop, capped at 9,999 (network.py coverage), NOT housing units", "n_blocks": len(blocks), "n_capped_9999": int(sum(1 for b in blocks if b[3] >= 9999)),
                                          "includes_expired_feeds": True}
 # airports
 res["faa_airports_in_file"] = 14

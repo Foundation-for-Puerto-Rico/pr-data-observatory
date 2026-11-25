@@ -22,7 +22,7 @@
       "last": 2026,
       "frequency": "Rebuilt with python hexgrid.py when the blocks, the building release or the flood areas change."
     },
-    "method": "hexgrid.py lays the map's own equal-area hexagons (core/hexbin.js: a Lambert azimuthal equal-area projection centred on Puerto Rico, pointy-topped hexagons of exactly 1 km²) and counts in each the census blocks by their internal point and the building footprints by their point. A block is counted whole in one hexagon, so a count per hexagon is calculated, not spread: a large rural block puts all its residents in one hexagon. A block is in the flood area when its internal point is (exposure.py's rule). Equal area means a count per hexagon is also a density per km².",
+    "method": "hexgrid.py lays the map's own equal-area hexagons (core/hexbin.js: a Lambert azimuthal equal-area projection centered on Puerto Rico, pointy-topped hexagons of exactly 1 km²) and counts in each the census blocks by their internal point and the building footprints by their point. A block is counted whole in one hexagon, so a count per hexagon is calculated, not spread: a large rural block puts all its residents in one hexagon. A block is in the flood area when its internal point is (exposure.py's rule). Equal area means a count per hexagon is also a density per km².",
     "sources": [
       "census_tiger",
       "overture_buildings",

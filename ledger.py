@@ -247,7 +247,7 @@ def a_hurricanes(name, doc, t):
 
 
 def a_population_blocks(name, doc, t):
-    """A 2020 census block with residents: [lon, lat, residents, metres to the nearest scheduled stop, metres walking]; the point is a vertex."""
+    """A 2020 census block with residents: [lon, lat, residents, meters to the nearest scheduled stop, meters walking]; the point is a vertex."""
     t.geometry = True
     for r in doc:
         t.vertices += 1
@@ -269,7 +269,7 @@ def a_transit_supply(name, doc, t):
 
 def a_trips(name, doc, t):
     """Scheduled trips of one day: a trip is a record (route, mode, operator, path, stops, times); a path is a record of the paths table (kind and its
-    stops), and its points [lon, lat, metres along] are vertices."""
+    stops), and its points [lon, lat, meters along] are vertices."""
     t.geometry = True
     for r in doc.get("trips") or []:
         if "p" in r:   # format 1 (before 2026-10-09): the trip carried its own points [lon, lat, seconds]
@@ -574,7 +574,7 @@ def kinds(path=DATASETS):
 
 def a_surface_png(name, raw, t):
     """heat_surface.png (surface_image.py): an 8-bit indexed PNG whose index 0 is transparent. Each drawn pixel (index above 0) is a record with one value (its
-    colour step). No vertices: it is a picture, not a geometry."""
+    color step). No vertices: it is a picture, not a geometry."""
     import struct
     import zlib
     if raw[:8] != b"\x89PNG\r\n\x1a\n":
@@ -591,7 +591,7 @@ def a_surface_png(name, raw, t):
     drawn = sum(len(px[r * (w + 1) + 1:(r + 1) * (w + 1)].replace(b"\x00", b"")) for r in range(h))   # each row starts with its filter byte (0)
     t.records += drawn; t.values += drawn
     if drawn:
-        t.fields.add(("pixels", "colour step"))
+        t.fields.add(("pixels", "color step"))
 
 
 def a_pmtiles(name, raw, t):

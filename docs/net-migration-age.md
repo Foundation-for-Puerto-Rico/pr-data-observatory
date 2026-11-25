@@ -1,7 +1,7 @@
 # Net migration by age (decision 107, step 9, sixth part)
 
 Built 2026-11-24 (row `derived-net-migration-age`). For every municipio: how many people it gained or lost to migration between the 2010 and 2020 censuses, by age group, as a share of the people it would have had with no migration, and in people.
-The code is `netmig_age.py`, the tests are `tests/test_netmig_age.py` and a test in `tests/core.test.js`, the file is `site/data/netmig_age_series.json` (labelled 2020, the end of the window).
+The code is `netmig_age.py`, the tests are `tests/test_netmig_age.py` and a test in `tests/core.test.js`, the file is `site/data/netmig_age_series.json` (labeled 2020, the end of the window).
 
 **An estimate** (decision 107 b): a demographic model, with the word "estimate" in every name, a check and a range below.
 

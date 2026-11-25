@@ -166,7 +166,7 @@ test('"Also show on the map" holds the whole list of the layers the Economy tab 
   const items = [...body.matchAll(/\['(\w+)', (?:T\('([^']+)'\)|'([^']+)')\]/g)].map(m => [m[1], m[2] || m[3]]);
   const set = eco.slice(eco.indexOf('function ecSetContext'), eco.indexOf('function ecContextSync')), sets = [...set.matchAll(/\[('ly\w+'(?:, 'ly\w+')*)\]\.forEach/g)].flatMap(m => eval('[' + m[1] + ']'));
   const order = LY.rows().map(r => r.id), byMenu = (ids) => [...ids].sort((a, b) => order.indexOf(a) - order.indexOf(b));
-  assert.deepStrictEqual(items.map(i => i[0]), ['lyMuni', 'lyBarrios', 'lyProt', 'lyLanduse', 'lyFlood', 'lyRoutes', 'lyStops', 'lyPlaces'], 'the whole list');
+  assert.deepStrictEqual(items.map(i => i[0]), ['lyMuni', 'lyBarrios', 'lyProt', 'lyFlood', 'lyRoutes', 'lyStops', 'lyPlaces'], 'the whole list');   // 2026-11-25: the Land Use Plan is in Map layers only
   assert.deepStrictEqual(items.map(i => i[0]), byMenu(items.map(i => i[0])), 'in the menu\'s order');
   items.filter(([id]) => id !== 'lyMuni').forEach(([id]) => assert.ok(sets.includes(id), `${id}: the tab sets it from the chat too (ecSetContext)`));
   items.forEach(([id, name]) => assert.strictEqual(name, LY.rows().find(r => r.id === id).en, `${id}: the menu's name`));

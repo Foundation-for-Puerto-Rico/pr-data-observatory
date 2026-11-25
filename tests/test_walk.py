@@ -114,7 +114,7 @@ class Fallbacks(unittest.TestCase):
         net = street_plan({"o": (0, 0), "n": (900, 0)}, [("o", "n")])
         res = access.compute([place()], [stop("X", east=-300, calls=30)], operators(), AS_OF, net=net)   # 300 m west, no street within 150 m
         self.assertEqual(res.n_stops_off_road, 1)
-        self.assertEqual((int(res.tw_m[0]), int(res.tw_calls[0])), (int(res.ts_m[0]), 30), "the same metres as the straight line to that stop")
+        self.assertEqual((int(res.tw_m[0]), int(res.tw_calls[0])), (int(res.ts_m[0]), 30), "the same meters as the straight line to that stop")
         self.assertIn(int(res.ts_m[0]), (300, 301))
 
     def test_without_a_road_file_no_walking_fields_are_written(self):
@@ -203,7 +203,7 @@ class Residents(unittest.TestCase):
         blocks = [blk(0, 0, 100), blk(1000, 1000, 7)]        # the corner, and a block with no street within 150 m
         out, cov = network.coverage(blocks, [ati, muni], {"72001": "A"}, inactive_ops={"ati"}, net=net)
         c = cov["A"]
-        self.assertIn(out[0][3], (299, 300), "straight line to A, cut to whole metres (at() keeps 7 decimals: about 1 cm)")
+        self.assertIn(out[0][3], (299, 300), "straight line to A, cut to whole meters (at() keeps 7 decimals: about 1 cm)")
         self.assertLessEqual(abs(out[0][4] - 300), 2, "walked up the street to A")
         self.assertEqual(out[1][4], out[1][3], "no street nearby: the walk repeats the straight line")
         self.assertEqual((c["served"], c["walk_served"]), (100, 100))

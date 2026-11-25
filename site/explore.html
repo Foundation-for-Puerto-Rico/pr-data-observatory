@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Map Gallery · PR Data Observatory</title>
+<meta name="description" content="Start from a question, a topic or a saved map: ready-made views, the topics of the PR Data Observatory, your saved maps and every topic page and tool.">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="canonical" href="https://observatory.foundationpr.org/explore.html">
+<link rel="icon" href="img/fpr-mark.png">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0&icon_names=account_balance,account_tree,bolt,build,chat_bubble,close,commute,construction,dark_mode,delete,directions_bus,diversity_3,explore,flood,forest,grid_view,groups,health_and_safety,history,home_work,hourglass_bottom,info,inventory_2,light_mode,lightbulb,luggage,map,menu_book,payments,place,price_change,rocket_launch,route,school,search,send,settings,terrain,thermostat,view_in_ar,water,wifi,woman,work&display=block">
+<link rel="stylesheet" href="css/twin.css?v=65">
+<link rel="stylesheet" href="css/housing.css?v=22">
+<link rel="stylesheet" href="css/chat.css?v=5">
+<link rel="stylesheet" href="css/ws.css?v=2">
+<script src="js/i18n.js?v=59" data-page="explore"></script>
+</head>
+<body class="research ws-page">
+<noscript><div style="padding:16px;background:#FFE9A8;color:#5A3500">This page needs JavaScript. The data dictionary lists every dataset without it.</div></noscript>
+<a class="skip" href="#exViews">Skip to the content</a>
+<header class="topbar">
+  <a class="logo" href="index.html" title="PR Data Observatory home"><img src="img/fpr-logo.png" alt="Foundation for Puerto Rico. PR Data Observatory home"></a>
+  <div class="brand"><b>Map Gallery</b><span>Ready-made maps, topics and your saved maps</span></div>
+  <div class="spacer"></div>
+  <nav class="views" aria-label="Views">
+    <a class="btn" href="index.html" title="Map: every layer and tool, in 2D or 3D"><span class="ms-icon" aria-hidden="true">map</span><span class="lbl">Map</span></a>
+    <a class="btn" href="explore.html" aria-current="page" title="Map Gallery: ready-made maps, topics and your saved maps"><span class="ms-icon" aria-hidden="true">explore</span><span class="lbl">Map Gallery</span></a>
+    <a class="btn" href="data.html" title="Data: every dataset, map layer and set of places"><span class="ms-icon" aria-hidden="true">grid_view</span><span class="lbl">Data</span></a>
+    <a class="btn" href="workflows.html" title="Workflows: steps that turn data into a result on the map"><span class="ms-icon" aria-hidden="true">account_tree</span><span class="lbl">Workflows</span></a>
+    <a class="btn" href="knowledge.html" title="Knowledge: FPR studies, analyses and tools"><span class="ms-icon" aria-hidden="true">lightbulb</span><span class="lbl">Knowledge</span></a>
+    <a class="btn" href="dictionary.html" title="Data Dictionary: meanings, sources, licenses, how to cite"><span class="ms-icon" aria-hidden="true">menu_book</span><span class="lbl">Data Dictionary</span></a>
+    <a class="btn" href="learn.html" title="Learn: short lessons about maps and spatial analysis"><span class="ms-icon" aria-hidden="true">school</span><span class="lbl">Learn</span></a>
+    <a class="btn" href="about.html" title="About: this initiative, how to use the Observatory, terms"><span class="ms-icon" aria-hidden="true">info</span><span class="lbl">About</span></a>
+  </nav>
+</header>
+
+<main class="ws-wrap">
+  <div class="ws-head"><h1>Map Gallery</h1><p>Start from a question, reopen a saved map, or go to a topic page. <span id="exCount"></span></p></div>
+  <section class="ws-sec" aria-labelledby="exH1"><h2 id="exH1">Start from a view</h2><p class="ws-muted">Each one opens the map with a few datasets already on it. You can change everything once it is open.</p><div id="exViews" aria-live="polite"><p class="ws-muted" role="status">Loading…</p></div></section>
+  <section class="ws-sec" aria-labelledby="exH2"><h2 id="exH2">Explore by topic</h2><p class="ws-muted">Open a topic on the map for its headline figure and its maps, or browse its datasets.</p><div id="exTopics" aria-live="polite"></div></section>
+  <section class="ws-sec" aria-labelledby="exH3"><h2 id="exH3">Your saved maps</h2><div id="exSaved"></div></section>
+  <section class="ws-sec" aria-labelledby="exH4"><h2 id="exH4">Topic pages and tools</h2><p class="ws-muted">Studies, analyses and tools, each on its own page.</p><div id="exPages"></div></section>
+</main>
+
+<script>I18N.apply();</script>
+<script src="js/common.js?v=20"></script>
+<script src="js/knowledge_items.js?v=20"></script>
+<script src="js/ws_explore.js?v=1"></script>
+<script src="js/chatboot.js?v=62"></script>
+</body>
+</html>

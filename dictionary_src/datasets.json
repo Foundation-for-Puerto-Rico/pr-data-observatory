@@ -733,7 +733,7 @@
       "rvi_housing_rebuild",
       "rvi_infra_rebuild"
      ],
-     "note": "Foundation for Puerto Rico runs WCRP in collaboration with the Puerto Rico Department of Housing (PRDOH), with HUD CDBG-DR funds. The original index was built with those funds by Hunter College for the program; the rebuild applies the same method. FPR approved publication of the page, both versions of the index, their framing and their Spanish on 2026-10-19 (HANDOFF decision 51). The page (wcrp.html) carries an 'In review' marker, may change and is noindex while the marker is on; the Spanish is released (i18n_src/held_for_review.json 'released'). The licence review records that FPR's approval covers republishing the original on the observatory (decision 54); no open license is stated.",
+     "note": "Foundation for Puerto Rico runs WCRP in collaboration with the Puerto Rico Department of Housing (PRDOH), with HUD CDBG-DR funds. The original index was built with those funds by Hunter College for the program; the rebuild applies the same method. FPR approved publication of the page, both versions of the index, their framing and their Spanish on 2026-10-19 (HANDOFF decision 51). The page (wcrp.html) carries an 'In review' marker, may change and is noindex while the marker is on; the Spanish is released (i18n_src/held_for_review.json 'released'). The license review records that FPR's approval covers republishing the original on the observatory (decision 54); no open license is stated.",
      "date": "2026-10-19"
     }
    ]
@@ -784,7 +784,7 @@
    "flags": [
     "federal-grant"
    ],
-   "note": "The input values behind each barrio's WCRP vulnerability index, for the pop-up of wcrp.html (loaded on the first click): the original's barrio columns of Master_Data_Table_Update as published (the municipio and Puerto Rico columns are left out because several are mislabelled) and the rebuild's values: ACS 2020-2024 shares and, from conditions_barrio.json (conditions.py), the EPA site counts and flags (TRI, Facility Registry Service, ATTAINS, Green Book, LMOP), HUD CHAS severe housing problems (estimated), Census TIGER/Line street intersection density and the drive time to a CMS general hospital along OpenStreetMap roads (ODbL), with each version's population (ACS). Aggregates only.",
+   "note": "The input values behind each barrio's WCRP vulnerability index, for the pop-up of wcrp.html (loaded on the first click): the original's barrio columns of Master_Data_Table_Update as published (the municipio and Puerto Rico columns are left out because several are mislabeled) and the rebuild's values: ACS 2020-2024 shares and, from conditions_barrio.json (conditions.py), the EPA site counts and flags (TRI, Facility Registry Service, ATTAINS, Green Book, LMOP), HUD CHAS severe housing problems (estimated), Census TIGER/Line street intersection density and the drive time to a CMS general hospital along OpenStreetMap roads (ODbL), with each version's population (ACS). Aggregates only.",
    "review": [
     {
      "type": "licence",
@@ -803,7 +803,7 @@
       "o_*",
       "population"
      ],
-     "note": "Foundation for Puerto Rico runs WCRP in collaboration with the Puerto Rico Department of Housing (PRDOH), with HUD CDBG-DR funds. The original index was built with those funds by Hunter College for the program; the rebuild applies the same method. FPR approved publication of the page, both versions of the index, their framing and their Spanish on 2026-10-19 (HANDOFF decision 51). The page (wcrp.html) carries an 'In review' marker, may change and is noindex while the marker is on; the Spanish is released (i18n_src/held_for_review.json 'released'). The licence review records that FPR's approval covers republishing the original on the observatory (decision 54); no open license is stated.",
+     "note": "Foundation for Puerto Rico runs WCRP in collaboration with the Puerto Rico Department of Housing (PRDOH), with HUD CDBG-DR funds. The original index was built with those funds by Hunter College for the program; the rebuild applies the same method. FPR approved publication of the page, both versions of the index, their framing and their Spanish on 2026-10-19 (HANDOFF decision 51). The page (wcrp.html) carries an 'In review' marker, may change and is noindex while the marker is on; the Spanish is released (i18n_src/held_for_review.json 'released'). The license review records that FPR's approval covers republishing the original on the observatory (decision 54); no open license is stated.",
      "date": "2026-10-19"
     }
    ]
@@ -879,7 +879,7 @@
       "listed",
       "matched"
      ],
-     "note": "Foundation for Puerto Rico runs WCRP in collaboration with the Puerto Rico Department of Housing (PRDOH), with HUD CDBG-DR funds; the Social Capital Mapping tool was built with those funds, jointly with PRDOH. FPR approved publication of the page, the Social Capital map and their Spanish on 2026-10-19 (HANDOFF decision 51). The page (wcrp.html) carries an 'In review' marker, may change and is noindex while the marker is on; the Spanish is released (i18n_src/held_for_review.json 'released'). The licence review records that FPR's approval covers republishing the list on the observatory (decision 54); no open license is stated.",
+     "note": "Foundation for Puerto Rico runs WCRP in collaboration with the Puerto Rico Department of Housing (PRDOH), with HUD CDBG-DR funds; the Social Capital Mapping tool was built with those funds, jointly with PRDOH. FPR approved publication of the page, the Social Capital map and their Spanish on 2026-10-19 (HANDOFF decision 51). The page (wcrp.html) carries an 'In review' marker, may change and is noindex while the marker is on; the Spanish is released (i18n_src/held_for_review.json 'released'). The license review records that FPR's approval covers republishing the list on the observatory (decision 54); no open license is stated.",
      "date": "2026-10-19"
     }
    ]
@@ -945,7 +945,7 @@
    "cadence": "annual",
    "tier": "small",
    "published": "2026-10",
-   "note": "Storms with a recorded position within 250 km of the island centre; the build reads the newest NHC file when run with the refresh option.",
+   "note": "Storms with a recorded position within 250 km of the island center; the build reads the newest NHC file when run with the refresh option.",
    "review": []
   },
   {
@@ -1067,7 +1067,7 @@
    "cadence": "as-needed",
    "tier": "small",
    "published": "2026-10",
-   "note": "97 bus routes (the ATI, the municipal systems of the metro area and of the east), one record each, and the 12 operators with the end date of their timetable, for the Knowledge Area's Route analysis page (route-analysis.html), which loads it. Built by docs/analysis/route-analysis-2026-10/ (route_compare.py, then make_page.py) from the weekday timetables of 2026-10-19 (trips.json), the stops and route lines (transport.json, transit_routes.geojson), the 2020 Census blocks (population_blocks.json) and the road-features analysis: OpenStreetMap junctions and footbridges (ODbL, credit 'OpenStreetMap contributors') and their design-hour volume estimated from FHWA HPMS 2024 (AADT x K factor, the 30th-busiest hour of the year; the class-median K, the observatory's own estimate, for 48% of the junctions). Not rebuilt nightly: it is a snapshot of the analysis. The licence class is that of the municipal GTFS feeds (no license stated); the OpenStreetMap counts are shared under the ODbL and HPMS is a US Government work.",
+   "note": "97 bus routes (the ATI, the municipal systems of the metro area and of the east), one record each, and the 12 operators with the end date of their timetable, for the Knowledge Area's Route analysis page (route-analysis.html), which loads it. Built by docs/analysis/route-analysis-2026-10/ (route_compare.py, then make_page.py) from the weekday timetables of 2026-10-19 (trips.json), the stops and route lines (transport.json, transit_routes.geojson), the 2020 Census blocks (population_blocks.json) and the road-features analysis: OpenStreetMap junctions and footbridges (ODbL, credit 'OpenStreetMap contributors') and their design-hour volume estimated from FHWA HPMS 2024 (AADT x K factor, the 30th-busiest hour of the year; the class-median K, the observatory's own estimate, for 48% of the junctions). Not rebuilt nightly: it is a snapshot of the analysis. The license class is that of the municipal GTFS feeds (no license stated); the OpenStreetMap counts are shared under the ODbL and HPMS is a US Government work.",
    "review": []
   },
   {
@@ -1342,7 +1342,7 @@
    "cadence": "daily",
    "tier": "medium",
    "published": "2026-10",
-   "note": "36,570 populated blocks as [longitude, latitude, population, metres to the nearest scheduled stop (straight line, capped at 9,999; expired timetables count), and since 2026-10-16 the metres walked to it along mapped roads (network.coverage with walknet.py; 9,999 past 1,000 m; a block with no mapped road within 150 m repeats the straight line)], in the order of the build's block table (network.load_block_table; cache/network/census_blocks_ids.json), which holds the 15-digit id and the housing units of all 41,987 blocks. The ids are not published: they would add 141 KB compressed (45%) to a file the Transit tab loads. Block population is noise-injected by the Census Bureau. Medium tier since 2026-10-16: the walking column took the file from 1.0 to 1.1 MB (it loads only with the Residents far from service layer, the study areas and the route planner).",
+   "note": "36,570 populated blocks as [longitude, latitude, population, meters to the nearest scheduled stop (straight line, capped at 9,999; expired timetables count), and since 2026-10-16 the meters walked to it along mapped roads (network.coverage with walknet.py; 9,999 past 1,000 m; a block with no mapped road within 150 m repeats the straight line)], in the order of the build's block table (network.load_block_table; cache/network/census_blocks_ids.json), which holds the 15-digit id and the housing units of all 41,987 blocks. The ids are not published: they would add 141 KB compressed (45%) to a file the Transit tab loads. Block population is noise-injected by the Census Bureau. Medium tier since 2026-10-16: the walking column took the file from 1.0 to 1.1 MB (it loads only with the Residents far from service layer, the study areas and the route planner).",
    "review": []
   },
   {
@@ -1430,7 +1430,7 @@
    "flags": [
     "federal-grant"
    ],
-   "note": "ACS 5-year windows are labelled by their end year; population estimates and census counts are single years. The key list includes 72 (Puerto Rico as a whole).",
+   "note": "ACS 5-year windows are labeled by their end year; population estimates and census counts are single years. The key list includes 72 (Puerto Rico as a whole).",
    "review": [
     {
      "type": "compliance",
@@ -1490,7 +1490,7 @@
    "flags": [
     "federal-grant"
    ],
-   "note": "Calendar or fiscal year values; ACS items are 5-year windows labelled by end year. The key list includes 72 (Puerto Rico as a whole).",
+   "note": "Calendar or fiscal year values; ACS items are 5-year windows labeled by end year. The key list includes 72 (Puerto Rico as a whole).",
    "review": [
     {
      "type": "compliance",
@@ -1573,7 +1573,7 @@
    "flags": [
     "counts-only"
    ],
-   "note": "Counts and figures for each municipality, as of the day the HRSA files were made (as_of in the file); never names, addresses, telephone numbers, web addresses or coordinates. A municipality with no area-level shortage designation has no value (not a zero). The Area Health Resources File is not used because its documentation does not authorise re-use without the Bureau's permission; see docs/health.md. The key list includes 72 (Puerto Rico as a whole).",
+   "note": "Counts and figures for each municipality, as of the day the HRSA files were made (as_of in the file); never names, addresses, telephone numbers, web addresses or coordinates. A municipality with no area-level shortage designation has no value (not a zero). The Area Health Resources File is not used because its documentation does not authorize re-use without the Bureau's permission; see docs/health.md. The key list includes 72 (Puerto Rico as a whole).",
    "review": [
     {
      "type": "licence",
@@ -2669,7 +2669,7 @@
    "cadence": "annual",
    "tier": "small",
    "published": "2026-10",
-   "note": "The Population domain's first series: 10 variables, four windows (2017-2021 to 2020-2024, labelled by their last year) with margins of error. The key list includes 72 (Puerto Rico as a whole). The Census Bureau controls the total population of the island and of 76 municipios to its own estimates and gives it no margin; a share of such a total keeps the margin of its numerator. Built by small_area.py; docs/small-area.md. Since 2026-10-14 (Phase 3 item 9) it also holds the share of people without health insurance (B27010) and of adults 25+ without a high school diploma (B15002), which the barrio and tract files hold too. Since 2026-10-18 it also holds the shares of seven age groups (under 3 and 3 to 4 from B09001, children in households; 5 to 17, 18 to 24, 25 to 44, 45 to 64 and 18 to 44 from B01001): 17 variables; the five-year bands are in population_age.json. Since 2026-10-18 (second step) also the counts of nine age groups (under 3, 3-4, 5-17, 18-24, 25-44, 45-64, 65+, under 18, 18-44), for the municipios only: 26 variables.",
+   "note": "The Population domain's first series: 10 variables, four windows (2017-2021 to 2020-2024, labeled by their last year) with margins of error. The key list includes 72 (Puerto Rico as a whole). The Census Bureau controls the total population of the island and of 76 municipios to its own estimates and gives it no margin; a share of such a total keeps the margin of its numerator. Built by small_area.py; docs/small-area.md. Since 2026-10-14 (Phase 3 item 9) it also holds the share of people without health insurance (B27010) and of adults 25+ without a high school diploma (B15002), which the barrio and tract files hold too. Since 2026-10-18 it also holds the shares of seven age groups (under 3 and 3 to 4 from B09001, children in households; 5 to 17, 18 to 24, 25 to 44, 45 to 64 and 18 to 44 from B01001): 17 variables; the five-year bands are in population_age.json. Since 2026-10-18 (second step) also the counts of nine age groups (under 3, 3-4, 5-17, 18-24, 25-44, 45-64, 65+, under 18, 18-44), for the municipios only: 26 variables.",
    "review": []
   },
   {
@@ -2702,7 +2702,7 @@
    "cadence": "as-needed",
    "tier": "small",
    "published": "2026-11",
-   "note": "A calculated dataset (decision 107, step 1; commuting.py): the daytime population is the residents of the 2020 Census plus the workers who come in minus the workers who leave, by the Census Bureau's formula for the commuter-adjusted population; the flows are the survey's of 2016-2020, labelled by their last year. Margins of error at 90 percent.",
+   "note": "A calculated dataset (decision 107, step 1; commuting.py): the daytime population is the residents of the 2020 Census plus the workers who come in minus the workers who leave, by the Census Bureau's formula for the commuter-adjusted population; the flows are the survey's of 2016-2020, labeled by their last year. Margins of error at 90 percent.",
    "review": []
   },
   {
@@ -2833,7 +2833,7 @@
    "published": "2026-11",
    "review": [],
    "tier": "small",
-   "note": "Six datasets for the 78 municipios and Puerto Rico (the key list ends with 72; decision 107, step 4; credit.py). FDIC: the offices of FDIC-insured banks and the deposits booked at them, June 30 of each year 2000-2026; cooperativas (COSSEC) are not in it. HMDA: home loans made, home purchase loans, their amount and the share of decided applications denied, 2018-2025, counts and sums only; a municipio's amount and denial share have no value under 10 loans or decided applications. No office points: the FDIC places about half the offices at the centre of their ZIP code."
+   "note": "Six datasets for the 78 municipios and Puerto Rico (the key list ends with 72; decision 107, step 4; credit.py). FDIC: the offices of FDIC-insured banks and the deposits booked at them, June 30 of each year 2000-2026; cooperativas (COSSEC) are not in it. HMDA: home loans made, home purchase loans, their amount and the share of decided applications denied, 2018-2025, counts and sums only; a municipio's amount and denial share have no value under 10 loans or decided applications. No office points: the FDIC places about half the offices at the center of their ZIP code."
   },
   {
    "id": "drought_series",
@@ -3137,7 +3137,7 @@
    "published": "2026-11",
    "review": [],
    "tier": "small",
-   "note": "7 estimates for the 78 municipios and Puerto Rico (the key list ends with 72; decision 107, step 9, sixth part; netmig_age.py): net migration between the 2010 and 2020 censuses of the people aged 10 and over in 2020, by age group, per 100 expected, and the number of people, by the residual (cohort survival) method with Puerto Rico's UN life table. Labelled 2020, the end of the window. docs/net-migration-age.md."
+   "note": "7 estimates for the 78 municipios and Puerto Rico (the key list ends with 72; decision 107, step 9, sixth part; netmig_age.py): net migration between the 2010 and 2020 censuses of the people aged 10 and over in 2020, by age group, per 100 expected, and the number of people, by the residual (cohort survival) method with Puerto Rico's UN life table. Labeled 2020, the end of the window. docs/net-migration-age.md."
   },
   {
    "id": "upstream",
@@ -3424,7 +3424,7 @@
    "cadence": "annual",
    "tier": "medium",
    "published": "2026-10",
-   "note": "34 variables for the 901 barrios, which the Census Bureau calls county subdivisions and which do not nest in tracts. Windows 2017-2021 to 2020-2024, labelled by their last year; the estimate and the margin of error (90% confidence) of every area. Every variable also exists for the 78 municipios, under the same key, in housing_series.json, economy_series.json or population_series.json. Built by small_area.py from the ACS tables that acs_small.py reads by byte ranges; method and measured margins: docs/small-area.md. Over 1 MB, so the medium tier; the Analysis tab reads it only when a person asks for the level. Since 2026-10-18 it also holds the shares of people aged 18 to 44 and 45 to 64 (38 variables): of the age groups, only those whose share is flagged less reliable for under half of the barrios are published below the municipio (docs/small-area.md). The counts of the age groups are municipio only: below the municipio each is flagged for more than half of the barrios (docs/small-area.md section 9).",
+   "note": "34 variables for the 901 barrios, which the Census Bureau calls county subdivisions and which do not nest in tracts. Windows 2017-2021 to 2020-2024, labeled by their last year; the estimate and the margin of error (90% confidence) of every area. Every variable also exists for the 78 municipios, under the same key, in housing_series.json, economy_series.json or population_series.json. Built by small_area.py from the ACS tables that acs_small.py reads by byte ranges; method and measured margins: docs/small-area.md. Over 1 MB, so the medium tier; the Analysis tab reads it only when a person asks for the level. Since 2026-10-18 it also holds the shares of people aged 18 to 44 and 45 to 64 (38 variables): of the age groups, only those whose share is flagged less reliable for under half of the barrios are published below the municipio (docs/small-area.md). The counts of the age groups are municipio only: below the municipio each is flagged for more than half of the barrios (docs/small-area.md section 9).",
    "review": []
   },
   {
@@ -3457,7 +3457,7 @@
    "cadence": "annual",
    "tier": "medium",
    "published": "2026-10",
-   "note": "34 variables for the 981 census tracts of the 2020 geography. Windows 2017-2021 to 2020-2024, labelled by their last year; the estimate and the margin of error (90% confidence) of every area. Every variable also exists for the 78 municipios, under the same key, in housing_series.json, economy_series.json or population_series.json. Built by small_area.py from the ACS tables that acs_small.py reads by byte ranges; method and measured margins: docs/small-area.md. Over 1 MB, so the medium tier; the Analysis tab reads it only when a person asks for the level. Since 2026-10-18 it also holds the shares of people aged 18 to 44 and 45 to 64 (38 variables): of the age groups, only those whose share is flagged less reliable for under half of the barrios are published below the municipio (docs/small-area.md). The counts of the age groups are municipio only: below the municipio each is flagged for more than half of the barrios (docs/small-area.md section 9).",
+   "note": "34 variables for the 981 census tracts of the 2020 geography. Windows 2017-2021 to 2020-2024, labeled by their last year; the estimate and the margin of error (90% confidence) of every area. Every variable also exists for the 78 municipios, under the same key, in housing_series.json, economy_series.json or population_series.json. Built by small_area.py from the ACS tables that acs_small.py reads by byte ranges; method and measured margins: docs/small-area.md. Over 1 MB, so the medium tier; the Analysis tab reads it only when a person asks for the level. Since 2026-10-18 it also holds the shares of people aged 18 to 44 and 45 to 64 (38 variables): of the age groups, only those whose share is flagged less reliable for under half of the barrios are published below the municipio (docs/small-area.md). The counts of the age groups are municipio only: below the municipio each is flagged for more than half of the barrios (docs/small-area.md section 9).",
    "review": []
   },
   {
@@ -3490,7 +3490,7 @@
    "cadence": "annual",
    "tier": "medium",
    "published": "2026-10",
-   "note": "13 variables for the 2,555 block groups of the 2020 geography: the plan's first wave and three age variables, because the margins are widest here. Tables that the Census Bureau does not publish for block groups (poverty, the Gini index, income by tenure, disability) are not in it. Windows 2017-2021 to 2020-2024, labelled by their last year; the estimate and the margin of error (90% confidence) of every area. Every variable also exists for the 78 municipios, under the same key, in housing_series.json, economy_series.json or population_series.json. Built by small_area.py from the ACS tables that acs_small.py reads by byte ranges; method and measured margins: docs/small-area.md. Over 1 MB, so the medium tier; the Analysis tab reads it only when a person asks for the level.",
+   "note": "13 variables for the 2,555 block groups of the 2020 geography: the plan's first wave and three age variables, because the margins are widest here. Tables that the Census Bureau does not publish for block groups (poverty, the Gini index, income by tenure, disability) are not in it. Windows 2017-2021 to 2020-2024, labeled by their last year; the estimate and the margin of error (90% confidence) of every area. Every variable also exists for the 78 municipios, under the same key, in housing_series.json, economy_series.json or population_series.json. Built by small_area.py from the ACS tables that acs_small.py reads by byte ranges; method and measured margins: docs/small-area.md. Over 1 MB, so the medium tier; the Analysis tab reads it only when a person asks for the level.",
    "review": []
   },
   {
@@ -3552,7 +3552,7 @@
    "cadence": "annual",
    "tier": "small",
    "published": "2026-10",
-   "note": "Seven variables for the 78 municipios and Puerto Rico (key 72, last), each with its 90% margin of error: the labor force participation rate of women 16 and over, of men 16 and over and of women 25 to 54, the gap between men and women in percentage points, the unemployment rate of women, the women 16 and over and the women in the labor force. Three five-year windows that share no year, 2010-2014, 2015-2019 and 2020-2024, labelled 2014, 2019 and 2024, so they can be compared with each other. From ACS table B23001 (sex by age by employment status); participation counts the Armed Forces in the labor force, as table S2301 does; unemployment is over the civilian labor force. Built by women_labor.py with women_labor.json, the file of the Knowledge Area page women-labor.html; the Analysis tab lists the variables under 'Labor force by sex'.",
+   "note": "Seven variables for the 78 municipios and Puerto Rico (key 72, last), each with its 90% margin of error: the labor force participation rate of women 16 and over, of men 16 and over and of women 25 to 54, the gap between men and women in percentage points, the unemployment rate of women, the women 16 and over and the women in the labor force. Three five-year windows that share no year, 2010-2014, 2015-2019 and 2020-2024, labeled 2014, 2019 and 2024, so they can be compared with each other. From ACS table B23001 (sex by age by employment status); participation counts the Armed Forces in the labor force, as table S2301 does; unemployment is over the civilian labor force. Built by women_labor.py with women_labor.json, the file of the Knowledge Area page women-labor.html; the Analysis tab lists the variables under 'Labor force by sex'.",
    "review": []
   },
   {
@@ -3583,7 +3583,7 @@
    "cadence": "annual",
    "tier": "small",
    "published": "2026-10",
-   "note": "The data of the Knowledge Area page women-labor.html, which loads it. For Puerto Rico (72) and each of the 78 municipios (keyed by GEOID under areas.<window>), in the three five-year windows that share no year (2010-2014, 2015-2019, 2020-2024; window_ends 2014, 2019, 2024): for each sex and seven age groups (16-19 to 65 and over), the population 16 and over, the labor force (civilian and Armed Forces), the civilian labor force and the unemployed, each as [estimate, 90% margin] (ACS B23001); the women 20 to 64 and those in the labor force by age of own children (B23003); and, for 2020-2024, the survey's unweighted sample of people and housing units (B98003, B98001). groups lists the municipios of the 15-municipio Eastern Region of FPR's Eastern Region Strategic Vision (ERSV, the geography key the contract checks) and of the seven tourism regions, so the page can add counts for any group. analysis holds the page's headline results for the ERSV, computed from these counts: pooled rates (sums of counts, not averages of rates), differences with the rest of the island and their significance at 90%, the age-adjusted rate (direct standardisation to the island's age mix) and its Kitagawa split, and the unweighted mean of the municipio rates for comparison. Built by women_labor.py; method in its docstring and docs/analysis/women-labor-2026-10/README.md.",
+   "note": "The data of the Knowledge Area page women-labor.html, which loads it. For Puerto Rico (72) and each of the 78 municipios (keyed by GEOID under areas.<window>), in the three five-year windows that share no year (2010-2014, 2015-2019, 2020-2024; window_ends 2014, 2019, 2024): for each sex and seven age groups (16-19 to 65 and over), the population 16 and over, the labor force (civilian and Armed Forces), the civilian labor force and the unemployed, each as [estimate, 90% margin] (ACS B23001); the women 20 to 64 and those in the labor force by age of own children (B23003); and, for 2020-2024, the survey's unweighted sample of people and housing units (B98003, B98001). groups lists the municipios of the 15-municipio Eastern Region of FPR's Eastern Region Strategic Vision (ERSV, the geography key the contract checks) and of the seven tourism regions, so the page can add counts for any group. analysis holds the page's headline results for the ERSV, computed from these counts: pooled rates (sums of counts, not averages of rates), differences with the rest of the island and their significance at 90%, the age-adjusted rate (direct standardization to the island's age mix) and its Kitagawa split, and the unweighted mean of the municipio rates for comparison. Built by women_labor.py; method in its docstring and docs/analysis/women-labor-2026-10/README.md.",
    "review": []
   },
   {
@@ -3929,7 +3929,7 @@
    "flags": [
     "counts-only"
    ],
-   "note": "One point per public housing development whose location HUD geocoded to the rooftop or the ZIP+4 centroid (172 of 304 on 2026-10-17), as HUD says to map: name, type (development or scattered site), units, municipio and GEOID. The other developments sit at the centre of a block group or tract in HUD's layer; they are counted in facility_series.json, not drawn. No telephone, e-mail, director or address. The FeatureCollection also carries source, vintage (HUD's date of coverage), notes and built. Built by facilities.py; loaded by the 2D map on first use.",
+   "note": "One point per public housing development whose location HUD geocoded to the rooftop or the ZIP+4 centroid (172 of 304 on 2026-10-17), as HUD says to map: name, type (development or scattered site), units, municipio and GEOID. The other developments sit at the center of a block group or tract in HUD's layer; they are counted in facility_series.json, not drawn. No telephone, e-mail, director or address. The FeatureCollection also carries source, vintage (HUD's date of coverage), notes and built. Built by facilities.py; loaded by the 2D map on first use.",
    "review": [
     {
      "type": "compliance",
@@ -4083,7 +4083,7 @@
    "cadence": "snapshot",
    "tier": "small",
    "published": "2026-10",
-   "note": "Active E-Rate libraries that USAC marks as public libraries, drawn where USAC's point falls within 1 km of the municipio of the library's address (1,099 of 1,228 on 2026-11-07): name (any telephone number in it removed), type (main library, library or branch, kiosk, bookmobile), municipio and GEOID. No contact, telephone, e-mail or address. In Puerto Rico the list includes community technology centres registered as public libraries. Built by facilities.py; loaded by the 2D map on first use.",
+   "note": "Active E-Rate libraries that USAC marks as public libraries, drawn where USAC's point falls within 1 km of the municipio of the library's address (1,099 of 1,228 on 2026-11-07): name (any telephone number in it removed), type (main library, library or branch, kiosk, bookmobile), municipio and GEOID. No contact, telephone, e-mail or address. In Puerto Rico the list includes community technology centers registered as public libraries. Built by facilities.py; loaded by the 2D map on first use.",
    "review": []
   },
   {
@@ -4324,7 +4324,7 @@
       "type",
       "listed"
      ],
-     "note": "Cleared on 2026-10-18: decided by FPR to treat the National Register's public spatial data as a US Government work in the public domain, as other federal data are (sources.json: nps_nrhp). NPS states no named licence; the map service's licence field says 'For general public distribution' and the metadata says the public data are provided as general reference data.",
+     "note": "Cleared on 2026-10-18: decided by FPR to treat the National Register's public spatial data as a US Government work in the public domain, as other federal data are (sources.json: nps_nrhp). NPS states no named license; the map service's license field says 'For general public distribution' and the metadata says the public data are provided as general reference data.",
      "date": "2026-10-18"
     },
     {
@@ -4520,7 +4520,7 @@
    "tier": "small",
    "published": "2026-11",
    "review": [],
-   "note": "The same 5 datasets as heat_series.json for the 901 barrios, under the same keys, in the order of geo.ids (the crosswalk's). A 60 m cell belongs to the barrio whose outline (barrios.geojson) holds its centre; residents count whole 2020 census blocks by their internal point (an estimate, rough for a barrio). The Analysis tab reads it the first time a layer of these datasets is shaded by barrio. Built by heat.py; docs/heat.md."
+   "note": "The same 5 datasets as heat_series.json for the 901 barrios, under the same keys, in the order of geo.ids (the crosswalk's). A 60 m cell belongs to the barrio whose outline (barrios.geojson) holds its center; residents count whole 2020 census blocks by their internal point (an estimate, rough for a barrio). The Analysis tab reads it the first time a layer of these datasets is shaded by barrio. Built by heat.py; docs/heat.md."
   },
   {
    "id": "heat_surface_png",
@@ -4549,13 +4549,13 @@
    "tier": "medium",
    "published": "2026-11",
    "review": [],
-   "note": "The 60 m composite of heat.py drawn as an indexed PNG (64 colour steps of a blue-grey-red scale around Puerto Rico's median; transparent where there is no value). About one cell per pixel, Web Mercator, under 4,096 pixels wide. Mona, Monito and Desecheo are left out. Its corners and scale are in heat_surface.json. The 2D map and the 3D view draw it when its switch is on. Built by heat.py with surface_image.py; docs/heat.md. Over 1 MB, so the medium tier."
+   "note": "The 60 m composite of heat.py drawn as an indexed PNG (64 color steps of a blue-gray-red scale around Puerto Rico's median; transparent where there is no value). About one cell per pixel, Web Mercator, under 4,096 pixels wide. Mona, Monito and Desecheo are left out. Its corners and scale are in heat_surface.json. The 2D map and the 3D view draw it when its switch is on. Built by heat.py with surface_image.py; docs/heat.md. Over 1 MB, so the medium tier."
   },
   {
    "id": "heat_surface",
    "file": "heat_surface.json",
    "title": {
-    "en": "Surface heat image: its corners, size and colour scale",
+    "en": "Surface heat image: its corners, size and color scale",
     "es": "Imagen del calor de la superficie: sus esquinas, su tamaño y su escala de color"
    },
    "geography": {
@@ -4576,7 +4576,7 @@
    "tier": "small",
    "published": "2026-11",
    "review": [],
-   "note": "The corners (west, south, east, north), size, pixel size and colour scale (low, centre and high in °C, steps and colour stops) of heat_surface.png, with the window and source of the composite. Built by heat.py; docs/heat.md."
+   "note": "The corners (west, south, east, north), size, pixel size and color scale (low, center and high in °C, steps and color stops) of heat_surface.png, with the window and source of the composite. Built by heat.py; docs/heat.md."
   },
   {
    "id": "night_heat_surface_png",
@@ -4605,13 +4605,13 @@
    "tier": "medium",
    "published": "2026-11",
    "review": [],
-   "note": "The night composite of ecostress.py (ECOSTRESS read at 70 m onto heat.py's 60 m grid) drawn as an indexed PNG (64 colour steps of a blue-grey-red scale around Puerto Rico's night median; transparent where there is no value), like heat_surface.png. Its corners and scale are in night_heat_surface.json. The maps show it when the surface heat layer's legend is switched to Night. Built by ecostress.py with surface_image.py; docs/ecostress.md."
+   "note": "The night composite of ecostress.py (ECOSTRESS read at 70 m onto heat.py's 60 m grid) drawn as an indexed PNG (64 color steps of a blue-gray-red scale around Puerto Rico's night median; transparent where there is no value), like heat_surface.png. Its corners and scale are in night_heat_surface.json. The maps show it when the surface heat layer's legend is switched to Night. Built by ecostress.py with surface_image.py; docs/ecostress.md."
   },
   {
    "id": "night_heat_surface",
    "file": "night_heat_surface.json",
    "title": {
-    "en": "Night surface heat image: its corners, size and colour scale",
+    "en": "Night surface heat image: its corners, size and color scale",
     "es": "Imagen del calor de la superficie de noche: sus esquinas, su tamaño y su escala de color"
    },
    "geography": {
@@ -4632,7 +4632,7 @@
    "tier": "small",
    "published": "2026-11",
    "review": [],
-   "note": "The corners, size, pixel size and colour scale of night_heat_surface.png, with the window and source of the night composite. Built by ecostress.py; docs/ecostress.md."
+   "note": "The corners, size, pixel size and color scale of night_heat_surface.png, with the window and source of the night composite. Built by ecostress.py; docs/ecostress.md."
   },
   {
    "id": "vegetation_series",
@@ -4690,7 +4690,7 @@
    "tier": "small",
    "published": "2026-11",
    "review": [],
-   "note": "The same 5 datasets as vegetation_series.json for the 901 barrios, under the same keys, in the order of geo.ids (the crosswalk's). A 60 m cell belongs to the barrio whose outline (barrios.geojson) holds its centre; residents count whole 2020 census blocks by their internal point (an estimate, rough for a barrio). The Analysis tab reads it the first time a layer of these datasets is shaded by barrio. Built by vegetation.py; docs/vegetation.md."
+   "note": "The same 5 datasets as vegetation_series.json for the 901 barrios, under the same keys, in the order of geo.ids (the crosswalk's). A 60 m cell belongs to the barrio whose outline (barrios.geojson) holds its center; residents count whole 2020 census blocks by their internal point (an estimate, rough for a barrio). The Analysis tab reads it the first time a layer of these datasets is shaded by barrio. Built by vegetation.py; docs/vegetation.md."
   },
   {
    "id": "buildings_series",
@@ -4808,7 +4808,7 @@
    "tier": "small",
    "published": "2026-11",
    "review": [],
-   "note": "Counts for the 78 municipios and Puerto Rico (the key list ends with 72) of VIIRS 375 m active fire detections on NOAA-20 that FIRMS tags as presumed vegetation fires (type 0) with nominal or high confidence: each complete year from 2019 (yearly country files, no key) and the last 12 months (area API with the FIRMS_MAP_KEY secret; near-real-time detections near a static land source left out). A detection belongs to the municipio of the barrio that holds its pixel's centre. No point is published. Built by fires.py in GitHub Actions (.github/workflows/fires.yml, refresh unit fires); docs/fires.md."
+   "note": "Counts for the 78 municipios and Puerto Rico (the key list ends with 72) of VIIRS 375 m active fire detections on NOAA-20 that FIRMS tags as presumed vegetation fires (type 0) with nominal or high confidence: each complete year from 2019 (yearly country files, no key) and the last 12 months (area API with the FIRMS_MAP_KEY secret; near-real-time detections near a static land source left out). A detection belongs to the municipio of the barrio that holds its pixel's center. No point is published. Built by fires.py in GitHub Actions (.github/workflows/fires.yml, refresh unit fires); docs/fires.md."
   },
   {
    "id": "night_heat_series",
@@ -4870,7 +4870,7 @@
    "tier": "small",
    "published": "2026-11",
    "review": [],
-   "note": "The same 5 datasets as night_heat_series.json for the 901 barrios, under the same keys, in the order of geo.ids (the crosswalk's). A 60 m cell belongs to the barrio whose outline (barrios.geojson) holds its centre; residents count whole 2020 census blocks by their internal point (an estimate, rough for a barrio). The Analysis tab reads it the first time a layer of these datasets is shaded by barrio. Built by ecostress.py; docs/ecostress.md."
+   "note": "The same 5 datasets as night_heat_series.json for the 901 barrios, under the same keys, in the order of geo.ids (the crosswalk's). A 60 m cell belongs to the barrio whose outline (barrios.geojson) holds its center; residents count whole 2020 census blocks by their internal point (an estimate, rough for a barrio). The Analysis tab reads it the first time a layer of these datasets is shaded by barrio. Built by ecostress.py; docs/ecostress.md."
   },
   {
    "id": "climb_series",
@@ -4961,7 +4961,7 @@
    "cadence": "monthly",
    "tier": "small",
    "published": "2026-11",
-   "note": "One point per reservoir with a live USGS gauge (25, 19 in AAA's daily report): name, type, municipio, GEOID, USGS monitoring location, whether AAA reports it, the latest level at build time, 120 daily levels and the usual level of each week (10th to 90th percentile of 2011-2025). The page replaces the latest level with a live reading from USGS when the layer is switched on. AAA's alert levels are not included (no licence stated). The FeatureCollection also carries source, vintage, built and notes. Built by reservoirs.py; loaded by the maps on first use.",
+   "note": "One point per reservoir with a live USGS gauge (25, 19 in AAA's daily report): name, type, municipio, GEOID, USGS monitoring location, whether AAA reports it, the latest level at build time, 120 daily levels and the usual level of each week (10th to 90th percentile of 2011-2025). The page replaces the latest level with a live reading from USGS when the layer is switched on. AAA's alert levels are not included (no license stated). The FeatureCollection also carries source, vintage, built and notes. Built by reservoirs.py; loaded by the maps on first use.",
    "review": []
   },
   {
@@ -4994,7 +4994,7 @@
    "cadence": "monthly",
    "tier": "small",
    "published": "2026-11",
-   "note": "One point per river or stream with a live USGS gauge (71 gauges on 54 rivers and streams on 2026-11-11): the river's name, type, municipio, GEOID, USGS monitoring location, the name USGS gives the gauge, the latest flow at build time, 120 daily flows and the usual flow of each week (10th to 90th percentile of 2011-2025), in cubic metres per second. The page replaces the latest flow with a live reading from USGS when the layer is switched on. No flood stage is included: a flow higher than usual is not a flood warning. The FeatureCollection also carries source, vintage, built and notes. Built by river_gauges.py; loaded by the maps on first use. Since 2026-11-12 also each gauge's height of water (metres on the gauge's own scale) and, for 1 gauge, the flood reference levels USGS has surveyed (USGS Real-Time Flood Impacts). Since 2026-11-12 also, for 66 gauges, nws: the flood stages the National Weather Service has set there (action, minor, moderate, major), in metres of gauge height.",
+   "note": "One point per river or stream with a live USGS gauge (71 gauges on 54 rivers and streams on 2026-11-11): the river's name, type, municipio, GEOID, USGS monitoring location, the name USGS gives the gauge, the latest flow at build time, 120 daily flows and the usual flow of each week (10th to 90th percentile of 2011-2025), in cubic meters per second. The page replaces the latest flow with a live reading from USGS when the layer is switched on. No flood stage is included: a flow higher than usual is not a flood warning. The FeatureCollection also carries source, vintage, built and notes. Built by river_gauges.py; loaded by the maps on first use. Since 2026-11-12 also each gauge's height of water (meters on the gauge's own scale) and, for 1 gauge, the flood reference levels USGS has surveyed (USGS Real-Time Flood Impacts). Since 2026-11-12 also, for 66 gauges, nws: the flood stages the National Weather Service has set there (action, minor, moderate, major), in meters of gauge height.",
    "review": []
   },
   {
@@ -5026,7 +5026,7 @@
    "cadence": "monthly",
    "tier": "small",
    "published": "2026-11",
-   "note": "One point per well with a live USGS gauge (34 wells in 24 municipios on 2026-11-12): the well's name, type, municipio, GEOID, USGS monitoring location, the name USGS gives the well, the latest depth to water at build time, how deep the well was built (where USGS records it), 120 daily depths and the usual depth of each week (10th to 90th percentile of 2011-2025), in metres below the ground. The page replaces the latest depth with a live reading from USGS when the layer is switched on. A well shows one point of one aquifer; the file says nothing about water quality. The FeatureCollection also carries source, vintage, built and notes. Built by groundwater.py; loaded by the maps on first use.",
+   "note": "One point per well with a live USGS gauge (34 wells in 24 municipios on 2026-11-12): the well's name, type, municipio, GEOID, USGS monitoring location, the name USGS gives the well, the latest depth to water at build time, how deep the well was built (where USGS records it), 120 daily depths and the usual depth of each week (10th to 90th percentile of 2011-2025), in meters below the ground. The page replaces the latest depth with a live reading from USGS when the layer is switched on. A well shows one point of one aquifer; the file says nothing about water quality. The FeatureCollection also carries source, vintage, built and notes. Built by groundwater.py; loaded by the maps on first use.",
    "review": []
   },
   {
@@ -5057,7 +5057,7 @@
    "cadence": "monthly",
    "tier": "small",
    "published": "2026-11",
-   "note": "One point per USGS rain gauge that is reporting now (54 gauges in 30 municipios on 2026-11-12): the gauge's name, type, municipio, GEOID, USGS monitoring location, the name USGS gives the site, 120 daily rain totals and the usual rain of each week (10th to 90th percentile of 2011-2025), in millimetres. The page reads the rain of the last 24 hours and the last 7 days from USGS when the layer is switched on. A gauge measures one spot; the file is not a flood warning or a forecast. The FeatureCollection also carries source, vintage, built and notes. Built by rain_gauges.py; loaded by the maps on first use.",
+   "note": "One point per USGS rain gauge that is reporting now (54 gauges in 30 municipios on 2026-11-12): the gauge's name, type, municipio, GEOID, USGS monitoring location, the name USGS gives the site, 120 daily rain totals and the usual rain of each week (10th to 90th percentile of 2011-2025), in millimeters. The page reads the rain of the last 24 hours and the last 7 days from USGS when the layer is switched on. A gauge measures one spot; the file is not a flood warning or a forecast. The FeatureCollection also carries source, vintage, built and notes. Built by rain_gauges.py; loaded by the maps on first use.",
    "review": []
   },
   {
@@ -5155,7 +5155,7 @@
    "cadence": "monthly",
    "tier": "small",
    "published": "2026-11",
-   "note": "Production by source every month since 2010, rooftop solar customers and capacity, batteries, electricity sales and smart meters by municipio, rooftop solar by LUMA district, SAIDI, the residential price against the United States and the transmission lines and plants inside FEMA flood hazard areas (HANDOFF decision 104, step 3). LUMA's filings state no licence.",
+   "note": "Production by source every month since 2010, rooftop solar customers and capacity, batteries, electricity sales and smart meters by municipio, rooftop solar by LUMA district, SAIDI, the residential price against the United States and the transmission lines and plants inside FEMA flood hazard areas (HANDOFF decision 104, step 3). LUMA's filings state no license.",
    "review": []
   },
   {
@@ -5283,7 +5283,7 @@
    "published": "2026-11",
    "review": [],
    "tier": "small",
-   "note": "Two datasets for the 78 municipios and Puerto Rico (the key list ends with 72), for each complete calendar year 2012-2025: the mean night-time radiance (nW/cm²/sr) of the 15 arc-second pixels whose centre lies in the area, pooled over the year's twelve monthly composites, and the share of those pixels flagged poor quality or gap-filled. A municipio's and Puerto Rico's figures pool all their pixels, not barrio means. A proxy for activity and electric power, not a count. Read with a free NASA Earthdata login used only by the build (HANDOFF decision 75). Built by nightlights.py; docs/nightlights.md."
+   "note": "Two datasets for the 78 municipios and Puerto Rico (the key list ends with 72), for each complete calendar year 2012-2025: the mean night-time radiance (nW/cm²/sr) of the 15 arc-second pixels whose center lies in the area, pooled over the year's twelve monthly composites, and the share of those pixels flagged poor quality or gap-filled. A municipio's and Puerto Rico's figures pool all their pixels, not barrio means. A proxy for activity and electric power, not a count. Read with a free NASA Earthdata login used only by the build (HANDOFF decision 75). Built by nightlights.py; docs/nightlights.md."
   },
   {
    "id": "nightlights_barrio",
@@ -6175,7 +6175,7 @@
     "census_tiger"
    ],
    "tier": "small",
-   "note": "The same 3 datasets as slope_series.json for the 901 barrios, under the same keys, in the order of geo.ids (the crosswalk's). A block of 6 x 6 cells (about 60 m) belongs to the barrio whose outline (barrios.geojson) holds its centre. Built by slope.py."
+   "note": "The same 3 datasets as slope_series.json for the 901 barrios, under the same keys, in the order of geo.ids (the crosswalk's). A block of 6 x 6 cells (about 60 m) belongs to the barrio whose outline (barrios.geojson) holds its center. Built by slope.py."
   },
   {
    "id": "slope_surface_png",
@@ -6203,13 +6203,13 @@
     "usgs_3dep_13"
    ],
    "tier": "medium",
-   "note": "The blocks of slope.py drawn as an indexed PNG (64 colour steps from pale to dark earth on a fixed scale from 0% to 60%; transparent over the sea). One block per pixel, Web Mercator, under 4,096 pixels wide. Mona, Monito and Desecheo are left out of the image, not of the figures. Built by slope.py; docs/slope.md."
+   "note": "The blocks of slope.py drawn as an indexed PNG (64 color steps from pale to dark earth on a fixed scale from 0% to 60%; transparent over the sea). One block per pixel, Web Mercator, under 4,096 pixels wide. Mona, Monito and Desecheo are left out of the image, not of the figures. Built by slope.py; docs/slope.md."
   },
   {
    "id": "slope_surface",
    "file": "slope_surface.json",
    "title": {
-    "en": "Slope image: its corners, size and colour scale",
+    "en": "Slope image: its corners, size and color scale",
     "es": "Imagen de la pendiente: sus esquinas, su tamaño y su escala de color"
    },
    "geography": {
@@ -6230,7 +6230,7 @@
     "usgs_3dep_13"
    ],
    "tier": "small",
-   "note": "The corners (west, south, east, north), size, pixel size and colour scale (0% to 60%, steps and colour stops) of slope_surface.png, with the version of the elevation tiles. Built by slope.py."
+   "note": "The corners (west, south, east, north), size, pixel size and color scale (0% to 60%, steps and color stops) of slope_surface.png, with the version of the elevation tiles. Built by slope.py."
   },
   {
    "id": "inflation",
@@ -6293,7 +6293,7 @@
    "cadence": "monthly",
    "tier": "small",
    "published": "2026-11",
-   "note": "For each of the 25 reservoirs of the map's Reservoir levels layer (19 in AAA's daily report): its lowest and highest daily level in 2011-2025, its record low, the mean of each week of the year in each year 2011-2025, its monthly means since its first daily value and its last 400 daily levels, in metres above local mean sea level. Older years on another reference or while a reservoir was filling are left out. Built by reservoirs.py; read by the Reservoirs page of the Knowledge Area (reservoirs.html), which adds the latest readings from USGS in the visitor's browser.",
+   "note": "For each of the 25 reservoirs of the map's Reservoir levels layer (19 in AAA's daily report): its lowest and highest daily level in 2011-2025, its record low, the mean of each week of the year in each year 2011-2025, its monthly means since its first daily value and its last 400 daily levels, in meters above local mean sea level. Older years on another reference or while a reservoir was filling are left out. Built by reservoirs.py; read by the Reservoirs page of the Knowledge Area (reservoirs.html), which adds the latest readings from USGS in the visitor's browser.",
    "review": []
   },
   {
@@ -6417,7 +6417,7 @@
    "tier": "small",
    "published": "2026-11",
    "review": [],
-   "note": "The data of the Knowledge Area page transit-links.html (HANDOFF decision 105). pairs: the 1,084 pairs of municipios with workers travelling between them (pair_fields: a and b (GEOIDs), ab and ba (workers in each direction), workers (both), moe (90 percent margin of the sum), low (margin as large as the estimate), status (timetable, expired, publico, none), via (joined by timetabled routes with a transfer), tt_routes, tt_trips (weekday) and tt_ops (the operators), publicos (routes of the 2020 list), km and min (fastest road path between the town centres), sim (its place among the simulated connections)); municipios: the 78 (muni_fields: geoid, name, town centre, resident_workers, work_elsewhere and its share, come_in, top_dest, linked_pct, linked_pairs, sim_links, own_system); pr: the totals by status. Workers: ACS 2016-2020; timetables as of 2026-10-29; público list of 2020-03-19. Built by transit_links.py; docs/transit-links.md. Step 5 (2026-11-14): pairs also carry tt_best, tt_typ, tt_xfers and tt_why (trips by the weekday timetables between the town centres) and, for simulated connections, along_res, along_far, bridges_poor and bridges_closed; municipios carry no_vehicle_pct, poverty_pct (ACS 2020-2024) and stop_km."
+   "note": "The data of the Knowledge Area page transit-links.html (HANDOFF decision 105). pairs: the 1,084 pairs of municipios with workers traveling between them (pair_fields: a and b (GEOIDs), ab and ba (workers in each direction), workers (both), moe (90 percent margin of the sum), low (margin as large as the estimate), status (timetable, expired, publico, none), via (joined by timetabled routes with a transfer), tt_routes, tt_trips (weekday) and tt_ops (the operators), publicos (routes of the 2020 list), km and min (fastest road path between the town centers), sim (its place among the simulated connections)); municipios: the 78 (muni_fields: geoid, name, town center, resident_workers, work_elsewhere and its share, come_in, top_dest, linked_pct, linked_pairs, sim_links, own_system); pr: the totals by status. Workers: ACS 2016-2020; timetables as of 2026-10-29; público list of 2020-03-19. Built by transit_links.py; docs/transit-links.md. Step 5 (2026-11-14): pairs also carry tt_best, tt_typ, tt_xfers and tt_why (trips by the weekday timetables between the town centers) and, for simulated connections, along_res, along_far, bridges_poor and bridges_closed; municipios carry no_vehicle_pct, poverty_pct (ACS 2020-2024) and stop_km."
   },
   {
    "id": "transit_reach",
@@ -6457,7 +6457,7 @@
    "id": "simulated_links",
    "file": "simulated_links.geojson",
    "title": {
-    "en": "Simulated connections between municipios: the fastest road path between the town centres of each pair with 500 workers or more and no timetabled route (FPR simulation), map layer",
+    "en": "Simulated connections between municipios: the fastest road path between the town centers of each pair with 500 workers or more and no timetabled route (FPR simulation), map layer",
     "es": "Conexiones simuladas entre municipios: el camino más rápido por carretera entre los centros de pueblo de cada par con 500 personas o más y sin ruta con horario (simulación de FPR), capa del mapa"
    },
    "domains": [
@@ -6523,7 +6523,7 @@
    "tier": "small",
    "published": "2026-11",
    "review": [],
-   "note": "One line per pair of municipios with a current timetabled route (22): name, geoid_a and geoid_b, workers (ACS 2016-2020, both directions), trips (weekday trips of the pair's routes), mode (bus, rail or ferry; road when no route of the pair has a line inside both municipios) and route. The line is the stretch of the route with the most weekday trips from its point in each municipio nearest the town centre, as transit_routes.geojson draws it, simplified to 12 m. The geography record says point because the contract checks the geoid_a field; the features are lines. Built by transit_links.py; read only by transit-links.html."
+   "note": "One line per pair of municipios with a current timetabled route (22): name, geoid_a and geoid_b, workers (ACS 2016-2020, both directions), trips (weekday trips of the pair's routes), mode (bus, rail or ferry; road when no route of the pair has a line inside both municipios) and route. The line is the stretch of the route with the most weekday trips from its point in each municipio nearest the town center, as transit_routes.geojson draws it, simplified to 12 m. The geography record says point because the contract checks the geoid_a field; the features are lines. Built by transit_links.py; read only by transit-links.html."
   },
   {
    "id": "bridges",
@@ -6675,13 +6675,13 @@
    "tier": "medium",
    "published": "2026-11",
    "review": [],
-   "note": "One line per público route (334, from 361 rows of the list): type (between municipios or within a municipio), code, name and municipio (the municipios the route joins: where its line ends and those whose town centre it passes within 1 km). Published 2020-03-19 and not updated: no timetable, a route may no longer run. Lines simplified to 12 m. Drawn by the 2D map and the 3D view from core/facilities.js on first use (layer publicos). Built by transit_links.py."
+   "note": "One line per público route (334, from 361 rows of the list): type (between municipios or within a municipio), code, name and municipio (the municipios the route joins: where its line ends and those whose town center it passes within 1 km). Published 2020-03-19 and not updated: no timetable, a route may no longer run. Lines simplified to 12 m. Drawn by the 2D map and the 3D view from core/facilities.js on first use (layer publicos). Built by transit_links.py."
   },
   {
    "id": "traffic_series",
    "file": "traffic_series.json",
    "title": {
-    "en": "Traffic, main roads and pavement by municipio: daily vehicle-kilometres, per resident, km of arterials and major collectors, the busiest count, trucks and rough pavement (FHWA HPMS)",
+    "en": "Traffic, main roads and pavement by municipio: daily vehicle-kilometers, per resident, km of arterials and major collectors, the busiest count, trucks and rough pavement (FHWA HPMS)",
     "es": "Tránsito, carreteras principales y pavimento por municipio: vehículo-kilómetros diarios, por residente, km de arterias y colectoras principales, el conteo más alto, camiones y pavimento áspero (HPMS de la FHWA)"
    },
    "domains": [
@@ -6735,7 +6735,7 @@
    "tier": "medium",
    "published": "2026-11",
    "review": [],
-   "note": "One line per stretch (3,829, 5,396.1 km): c (colour class 1-6 by vehicles a day), a (annual average daily traffic), r (route), f (functional class 1-5), y (year of the count), l (through lanes), km, t (trucks, % of vehicles, where reported), s (speed limit, mph), o (one direction of a divided road). Consecutive sections with the same count joined; lines simplified to 12 m. Drawn by the 2D map and the 3D view from core/facilities.js on first use (layer traffic). Built by traffic.py."
+   "note": "One line per stretch (3,829, 5,396.1 km): c (color class 1-6 by vehicles a day), a (annual average daily traffic), r (route), f (functional class 1-5), y (year of the count), l (through lanes), km, t (trucks, % of vehicles, where reported), s (speed limit, mph), o (one direction of a divided road). Consecutive sections with the same count joined; lines simplified to 12 m. Drawn by the 2D map and the 3D view from core/facilities.js on first use (layer traffic). Built by traffic.py."
   },
   {
    "id": "crashes_series",

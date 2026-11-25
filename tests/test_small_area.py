@@ -162,7 +162,7 @@ class WhatIsNotAnEstimate(unittest.TestCase):
 
     def test_a_share_of_one_hundred_has_no_margin_and_a_share_of_zero_keeps_its_margin(self):
         self.assertEqual(hs.pct((141.0, 58.0), (141.0, 58.0)), (100.0, 0.0), "the premise: the proportion formula gives a margin of zero when the numerator is the denominator")
-        zero = hs.pct((0.0, 15.0), (800.0, 90.0))   # no veterans among 800 adults: a zero cell carries a modelled margin, so the share keeps one
+        zero = hs.pct((0.0, 15.0), (800.0, 90.0))   # no veterans among 800 adults: a zero cell carries a modeled margin, so the share keeps one
         self.assertGreater(zero[1], 0, "the premise: the formula gives a share of 0% the margin of its numerator, not zero")
         out = sa.clean({"owner_occupied_pct": (100.0, 0.0), "poverty_pct": (0.0, 0.0), "acs_veteran_pct": (100, 3.2), "vacancy_pct": (4.0, 1.1), "housing_units": (0, 0), "acs_disability_pct": zero})
         self.assertEqual(out["owner_occupied_pct"], (100.0, None))

@@ -716,7 +716,7 @@
    "hot_months": [],
    "unit": "health",
    "review": "human",
-   "note": "HRSA remakes the files daily; their size is the only steady sign of a change. Licence under review (decision 19)."
+   "note": "HRSA remakes the files daily; their size is the only steady sign of a change. License under review (decision 19)."
   },
   {
    "id": "hrsa_sites",
@@ -912,7 +912,7 @@
    ],
    "unit": "police",
    "review": "human",
-   "note": "Licence still to confirm (decision 24)."
+   "note": "License still to confirm (decision 24)."
   },
   {
    "id": "urban_ccd",
@@ -2069,7 +2069,7 @@
   },
   {
    "id": "usgs_3dep_13",
-   "why": "USGS replaces a 3DEP tile only when new lidar arrives (the Puerto Rico tiles: 2026-07-22). climb.py and slope.py take the newest tile listed in USGS's catalogue whenever cache/dem/tiles.json is cleared; the climb figures themselves follow the transit stops nightly (refresh_network.py), and the slope figures and image are rebuilt by hand (python slope.py) when USGS replaces a tile."
+   "why": "USGS replaces a 3DEP tile only when new lidar arrives (the Puerto Rico tiles: 2026-07-22). climb.py and slope.py take the newest tile listed in USGS's catalog whenever cache/dem/tiles.json is cleared; the climb figures themselves follow the transit stops nightly (refresh_network.py), and the slope figures and image are rebuilt by hand (python slope.py) when USGS replaces a tile."
   },
   {
    "id": "census_cartographic",

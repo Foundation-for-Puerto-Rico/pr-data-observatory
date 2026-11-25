@@ -4,10 +4,10 @@
     python tests/browser/compare.py CAPTURES_DIR economy_en --show 40  # print up to 40 differences (default 12)
     python tests/browser/compare.py CAPTURES_DIR economy_en --expect tests/browser/expected.json   # differences that a change was meant to make are listed, with their reason, and do not fail the run
 
-The file given to --expect lists two kinds of entry. { "path": regex, "why": text } lets every difference at a path that matches pass, and says why. A normaliser is applied to BOTH captures
+The file given to --expect lists two kinds of entry. { "path": regex, "why": text } lets every difference at a path that matches pass, and says why. A normalizer is applied to BOTH captures
 before they are compared, so that what a change meant to add is taken out and everything else is still compared exactly: { "sub": [regex, replacement], "why": text } rewrites every
 string (replacement "$window" turns a five-year window "2020\u20132024" back into its last year), { "drop_key": regex, "why": text } leaves out dictionary keys, { "drop_item": value, "why": text }
-leaves out list items equal to value, { "drop_pair": regex, "why": text } leaves out [id, label] pairs whose id matches. The run says how many things each normaliser changed in the new capture, so a rule that matches nothing is visible.
+leaves out list items equal to value, { "drop_pair": regex, "why": text } leaves out [id, label] pairs whose id matches. The run says how many things each normalizer changed in the new capture, so a rule that matches nothing is visible.
 
 A capture is the JSON a capture script posted from the browser. Numbers are compared with a relative tolerance of 1e-9; text and structure must be identical, except for
 the map view in a link (`c=lat,lng,zoom`), which depends on how far an animation had run when the page was read. Exit status 1 when anything differs.
@@ -143,7 +143,7 @@ def main(argv):
         old = apply_norm(old, rules, [0] * len(rules))
         new = apply_norm(new, rules, counts)
         for r, n in zip(rules, counts):
-            print(f"  normalised ({n}): {r['why']}")
+            print(f"  normalized ({n}): {r['why']}")
     out = []
     walk(old, new, name, out)
     if not out:

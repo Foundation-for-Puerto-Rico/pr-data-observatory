@@ -24,7 +24,7 @@ The files give the municipio (`COUNTY`, the county code) from 2020. Before 2020 
 - **Pedestrians and bicyclists killed** (`crash_walk_bike`): people with a fatal injury (`INJ_SEV` 4) who were pedestrians (`PER_TYP` 5) or cyclists (6, 7).
 - **Motorcyclists killed** (`crash_moto`): drivers and passengers (`PER_TYP` 1, 2) with a fatal injury in a motorcycle (`BODY_TYP` 80-89).
 - **Deaths per 100,000 residents, 2020-2024** (`crash_rate_5y`): five years of deaths over the sum of the municipio's residents in those years (Census Bureau population estimates, `housing_series.json`), times 100,000. Puerto Rico: 8.9. It is high where much traffic passes through (Santa Isabel, Guánica, Salinas).
-- **Deaths per 100 million vehicle-km, 2020-2024** (`crash_per_vkm`): five years of deaths over five times the yearly vehicle-km of HPMS data year 2025 (`traffic_series.json`), times 100 million: the risk per kilometre driven. Puerto Rico: 1.05, about 1.69 per 100 million vehicle-miles, above the US average of about 1.3 (NHTSA, 2023).
+- **Deaths per 100 million vehicle-km, 2020-2024** (`crash_per_vkm`): five years of deaths over five times the yearly vehicle-km of HPMS data year 2025 (`traffic_series.json`), times 100 million: the risk per kilometer driven. Puerto Rico: 1.05, about 1.69 per 100 million vehicle-miles, above the US average of about 1.3 (NHTSA, 2023).
 - **Along a simulated connection** (`deaths_5y`, `walk_bike_5y`): the people killed in located crashes of 2020-2024 within 100 m of the connection's line. The page divides by the connection's length (per 10 km). Connections share roads, so these counts must not be added up; a crash at a crossing road within 100 m counts too. 1,383 of the 1,390 crashes of 2020-2024 have a location.
 
 ## Privacy

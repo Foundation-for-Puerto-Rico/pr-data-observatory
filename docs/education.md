@@ -2,14 +2,14 @@
 
 `education_series.py` writes `site/data/education_series.json`: seven datasets for the 78 municipios and Puerto Rico, one value for each school year from 2010 (2010-11) to 2024 (2024-25). The Economy tab lists them under "Education · Public schools" and "Education · Colleges and universities". Plan: `docs/proposal-2026-10.md` (J row 8, D2).
 
-## Source and licence
+## Source and license
 
 The Urban Institute's Education Data Portal API (https://educationdata.urban.org), no key. It republishes two US federal collections of the National Center for Education Statistics (NCES):
 
 - **Common Core of Data (CCD) school directory**: one row for each public school each school year, with its county, status, students and teachers.
 - **IPEDS**: the directory of colleges, universities and other postsecondary institutions, and their fall enrollment.
 
-The portal's data are under the Open Data Commons Attribution License (ODC-By 1.0): credit the Urban Institute and NCES. The NCES data themselves are US federal and in the public domain. Licence class: `open-with-conditions` (attribution). The dictionary, the dataset window and the source records (`urban_ccd`, `urban_ipeds` in `dictionary_src/sources.json`) carry the credit line.
+The portal's data are under the Open Data Commons Attribution License (ODC-By 1.0): credit the Urban Institute and NCES. The NCES data themselves are US federal and in the public domain. License class: `open-with-conditions` (attribution). The dictionary, the dataset window and the source records (`urban_ccd`, `urban_ipeds` in `dictionary_src/sources.json`) carry the credit line.
 
 ## Privacy
 
@@ -42,8 +42,8 @@ Urban codes a missing value as a negative number (-1 missing, -2 not applicable,
 
 - **School points on the map.** The CCD has coordinates for each school. They are not published here; a school layer is an institution layer (not personal data) and could come later if FPR wants it.
 - **Adults without a high school diploma** (ACS B15002, the table that already gives `bachelors_pct`). Adding it means rebuilding the Housing series of every year, which takes hours; it waits for the next full build.
-- **The chat.** It does not yet recognise words such as "schools" or "students" (item 14 builds the chat's vocabulary from the registry).
-- **Head Start, College Scorecard, Civil Rights Data Collection, E-Rate.** Still `checked` in `wanted.json`: Head Start and the Scorecard state no licence, the CRDC adds little for Puerto Rico, and E-Rate (which covers private schools) is the next candidate.
+- **The chat.** It does not yet recognize words such as "schools" or "students" (item 14 builds the chat's vocabulary from the registry).
+- **Head Start, College Scorecard, Civil Rights Data Collection, E-Rate.** Still `checked` in `wanted.json`: Head Start and the Scorecard state no license, the CRDC adds little for Puerto Rico, and E-Rate (which covers private schools) is the next candidate.
 
 ## How to update
 

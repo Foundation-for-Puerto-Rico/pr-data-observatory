@@ -4,7 +4,7 @@
    Turn all off has nothing to take off, and any other call to ECON.api loads the engine and then answers. Once economy.js runs it puts the
    real window.ECON in place (econInit) and its own econShown replaces the one below; a caller that kept ECON.api from before reaches the
    real methods through the proxy. docs/performance.md, "Make room 4". */
-const ECON_JS = ['js/core/time.js?v=1', 'js/core/format.js?v=2', 'js/core/normalize.js?v=4', 'js/core/reliability.js?v=4', 'js/core/engine.js?v=11', 'js/core/adapters.js?v=15', 'js/core/datasets.js?v=29', 'js/core/popup.js?v=5', 'js/core/panel.js?v=6', 'js/economy.js?v=86'];   // in the order the page loaded them
+const ECON_JS = ['js/core/time.js?v=1', 'js/core/format.js?v=2', 'js/core/normalize.js?v=4', 'js/core/reliability.js?v=4', 'js/core/engine.js?v=11', 'js/core/adapters.js?v=15', 'js/core/datasets.js?v=29', 'js/core/popup.js?v=5', 'js/core/panel.js?v=7', 'js/economy.js?v=87'];   // in the order the page loaded them
 function ecCentroid(g) {   // also used before the tab loads (mapextras.js town names): area-weighted centroid of the largest polygon, so islands and detached parts do not drag the point into the sea
   const polys = g.type === 'Polygon' ? [g.coordinates] : g.coordinates; let best = null, bestA = -1;
   for (const p of polys) { const r = p[0]; let a = 0, cx = 0, cy = 0; for (let i = 0, j = r.length - 1; i < r.length; j = i++) { const f = r[j][0] * r[i][1] - r[i][0] * r[j][1]; a += f; cx += (r[j][0] + r[i][0]) * f; cy += (r[j][1] + r[i][1]) * f; } a /= 2; if (Math.abs(a) > bestA) { bestA = Math.abs(a); best = a ? [cy / (6 * a), cx / (6 * a)] : [r[0][1], r[0][0]]; } }

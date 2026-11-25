@@ -1,5 +1,5 @@
 /* PR Data Observatory: map extras that load after the map is ready, off its first load (like the base map; budget.py "deferred"). Map review 2026-11-05.
-   - Town names above the shading: with a shaded layer on, the base map's own names sit under the colours and wash out. These sit in their own pane,
+   - Town names above the shading: with a shaded layer on, the base map's own names sit under the colors and wash out. These sit in their own pane,
      above the shading and the symbols and below pop-ups: at zoom 9 the 20 most populous municipios (all 78 would collide), from zoom 10 every one.
    The Islands control was removed on 2026-11-12 (the project lead: keep the map uncluttered; what matters is that the data covers every island).
    Uses app.js and econ_shell.js globals: map, S, esc, ecCentroid. */

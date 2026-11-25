@@ -3,7 +3,7 @@ summer mornings, from Landsat 8 and 9, and how many residents live on the hottes
 HANDOFF decision 80; method in docs/heat.md).
 
     python heat.py             # build site/data/heat_series.json and site/data/heat_barrio.json (downloads only the Landsat tiles missing from cache/heat/)
-    python heat.py --refresh   # search the scene catalogue again (new scenes are downloaded; cached tiles are kept)
+    python heat.py --refresh   # search the scene catalog again (new scenes are downloaded; cached tiles are kept)
     python heat.py --check     # rebuild from the cache and exit 1 when a published file is not what the cache gives (no network, nothing written)
 
 The source. USGS Landsat Collection 2 Level-2 surface temperature (band ST_B10, from the thermal infrared sensor TIRS, about 100 m, delivered on a 30 m grid) and its
@@ -15,7 +15,7 @@ How it is made (docs/heat.md):
   - Scenes: every Landsat 8 and 9 Level-2 scene over Puerto Rico from June to September of the last three complete summers, with less than 70% cloud cover (six path/rows,
     004-006 by 047-048, about 90 scenes a summer; UTM zones 19 and 20).
   - Grid: one 60 m grid in UTM zone 20 (EPSG:32620) over the barrios; scenes are read at their first overview (60 m; the thermal band is natively about 100 m) with
-    raster.py, by HTTP range requests, and each grid cell takes the value of the scene pixel under its centre (scenes in zone 19 are mapped through pyproj).
+    raster.py, by HTTP range requests, and each grid cell takes the value of the scene pixel under its center (scenes in zone 19 are mapped through pyproj).
   - Clear pixels: an observation counts when QA_PIXEL says clear (bit 6), not cloud shadow (bit 4), not water (bit 7), not fill (bit 0), and the surface temperature is set.
   - Composite: each cell's value is the median of its clear observations, so a thin cloud edge the flags miss (it reads cold) or a hot outlier moves it little; the
     median is exact (all clear observations are kept in memory, about 60 million). Cells with fewer than 3 clear observations have no value. (A mean clipped at 2.5
@@ -24,7 +24,7 @@ How it is made (docs/heat.md):
     Moca, Isabela) and the east, in every scene. There the build computes it from the same scene's thermal radiance and atmosphere bands with an emissivity from NDVI,
     fitted on USGS's own emissivity; every build checks the method against USGS where both exist and stops if the bias passes 0.5 K or the spread 1.2 K (see
     EMIS_NDVI and fill_check). The files say how much of each municipio was filled (notes.gap_fill).
-  - Areas: a cell belongs to the barrio whose outline (site/data/barrios.geojson) holds its centre (the rule of landslide.py). Municipios and Puerto Rico pool the cells of
+  - Areas: a cell belongs to the barrio whose outline (site/data/barrios.geojson) holds its center (the rule of landslide.py). Municipios and Puerto Rico pool the cells of
     their barrios (not an average of barrio figures).
   - Hot land: the cells above Puerto Rico's 90th percentile of the composite (all barrios). A barrio's share of hot land is its cells above that threshold over its cells
     with a value; Puerto Rico's is 10% by construction.
@@ -110,7 +110,7 @@ def summers(today=None):
     return list(range(last - SUMMERS + 1, last + 1))
 
 
-# ── Scene catalogue ──────────────────────────────────────────────────────────
+# ── Scene catalog ──────────────────────────────────────────────────────────
 
 def post(url, body, tries=6):
     for attempt in range(tries):
@@ -180,7 +180,7 @@ class Token:
 # ── Grid ─────────────────────────────────────────────────────────────────────
 
 def grid(B):
-    """The cells of the 60 m grid whose centre is in a barrio: (barrio index of each cell, x, y in EPSG:32620, shape, transform)."""
+    """The cells of the 60 m grid whose center is in a barrio: (barrio index of each cell, x, y in EPSG:32620, shape, transform)."""
     import numpy as np
     import shapely
     from shapely.ops import transform as shp_transform
@@ -200,7 +200,7 @@ def grid(B):
         cc, rr = np.meshgrid(np.arange(c0, c1), np.arange(r0, r1))
         inside = shapely.contains_xy(g, x0 + (cc + 0.5) * RES, y0 - (rr + 0.5) * RES)
         sub = lab[r0:r1, c0:c1]
-        sub[inside & (sub < 0)] = i            # a centre on a shared edge goes to the lower index (the crosswalk's order)
+        sub[inside & (sub < 0)] = i            # a center on a shared edge goes to the lower index (the crosswalk's order)
     rows, cols = np.nonzero(lab >= 0)
     return lab[rows, cols], x0 + (cols + 0.5) * RES, y0 - (rows + 0.5) * RES, (H, W), (RES, 0.0, x0, 0.0, -RES, y0), lab
 
@@ -407,7 +407,7 @@ def block_cells(B, shape, gtr, labgrid, n_cells):
 
 
 def residents_on(sel, have, ci, pop, bi, nb):
-    """(residents per barrio on the cells `sel` marks, residents whose point is on no cell with a value). A point on water or off the generalised outlines counts
+    """(residents per barrio on the cells `sel` marks, residents whose point is on no cell with a value). A point on water or off the generalized outlines counts
     as not on the selected land."""
     import numpy as np
     known = (ci >= 0) & have[np.maximum(ci, 0)]
@@ -481,7 +481,7 @@ def compute(refresh=False, offline=False, today=None):
            "it is not the air temperature, and on a sunny morning a dark roof or a parking lot can be 20 °C or more above the air. Landsat passes at about 10:30 local time, "
            f"so these are mid-morning values on clear days of {win}, not the afternoon peak or the night. Each 60 m cell's value is the median of its cloud-free views "
            f"(at least {MIN_OBS}; the typical cell has {isl['obs']}), so a cloud edge the quality flags miss moves it little. "
-           "A cell belongs to the barrio that holds its centre; a municipio's and Puerto Rico's figures pool the cells of their barrios. Water is left out. "
+           "A cell belongs to the barrio that holds its center; a municipio's and Puerto Rico's figures pool the cells of their barrios. Water is left out. "
            "Elevation matters: the Cordillera is cooler than the coast, so compare places at similar heights.")
     HOT = (f" Hot land is the land above Puerto Rico's {HOT_PCT}th percentile of the cells ({thr:.1f} °C), so Puerto Rico's share is 10% by construction.")
     RES_ = (" Each 2020 census block with residents counts whole on the cell under its internal point, in the barrio that holds the point (a block that the edge of hot land "
@@ -522,7 +522,7 @@ def compute(refresh=False, offline=False, today=None):
              "residents_on_cells_without_value": int(pop_unknown),
              "no_value": {"barrios": [B.ids[i] for i in range(nb) if brow[i] is None], "municipios": [f for f in B.mids if mrows[f] is None]}}
     series = {"as_of": Y_, "years": [int(Y_)], "geo": {"ids": B.mids + ["72"], "names": B.names + ["Puerto Rico"]}, "vars": vs, "sources": SOURCES, "notes": notes}
-    # the surface on the maps (surface_image.py): every cell, coloured around Puerto Rico's median; the ends of the scale hold 2% of the land each side
+    # the surface on the maps (surface_image.py): every cell, colored around Puerto Rico's median; the ends of the scale hold 2% of the land each side
     v = lst[have]
     half = float(math.ceil(max(isl["med"] - np.percentile(v, 2), np.percentile(v, 98) - isl["med"])))
     png, meta = surface_image.mercator_png(lst, X, Y, EPSG, RES, isl["med"], half, min_lon=SURFACE_MIN_LON)

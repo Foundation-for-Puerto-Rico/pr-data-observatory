@@ -1,6 +1,6 @@
-"""A licence line shown to visitors says 'public domain' only where the data contract (dictionary_src/sources.json) says it.
+"""A license line shown to visitors says 'public domain' only where the data contract (dictionary_src/sources.json) says it.
 
-The pages show each source's licence from the data files (economy_series.json, housing_series.json, meta.json). The contract was written from the sources' own terms; the texts in the
+The pages show each source's license from the data files (economy_series.json, housing_series.json, meta.json). The contract was written from the sources' own terms; the texts in the
 builders were not, and two reviews of pull request 3 found lines that claimed more than the contract (USAspending, the Census Bureau's products, FEMA, the FAA). Add the source to
 the table below when a builder gets a new one: the test fails for a source it does not know, so that somebody decides what the contract says about it.
 

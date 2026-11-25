@@ -1,5 +1,5 @@
 """Q6 support: access classes, hub proximity and the size of the proposed per-place fields and per-area series (measured, not guessed).
-Nothing here modifies the repository: places are re-serialised in memory to measure the added bytes.
+Nothing here modifies the repository: places are re-serialized in memory to measure the added bytes.
 """
 from service import *
 import gzip
@@ -171,7 +171,7 @@ for k, f in enumerate(tj):
         f["feed"] = "c"
 b = dumps(tj)
 res["transport_json_added_for_scheduled_stops"] = {"fields": "calls_sat, calls_sun, feed", "raw_added_kb": round((len(b) - len(base_t)) / 1024, 1), "gzip6_added_kb": round((gz(b) - gz(base_t)) / 1024, 1)}
-# gateways table (aggregate estimate by serialising the real records with the proposed fields)
+# gateways table (aggregate estimate by serializing the real records with the proposed fields)
 gws = []
 for i_, f in enumerate(T):
     if f["kind"] in ("airport", "ferry_terminal", "rail_station", "bus_station") and (f["source"] != "faa_airports" or f.get("public_use")):

@@ -8,7 +8,7 @@ Decision 80 (b) left the choice to this step. The build reads Cloud Optimized Ge
 
 - **Only Puerto Rico's tiles are downloaded.** A COG keeps its tile index at the front of the file, so the reader fetches the header and then only the tiles under the area asked for, with HTTP range requests. Reading the 1 km around Cerro de Punta from a 3DEP tile took 2 requests and 0.9 MB, out of a file of about 450 MB.
 - **No GDAL stack** in the build or the GitHub Actions runs. `landslide.py` already avoided rasterio for the same reason.
-- **The family of files is small and known.** Every source the plan names uses the same few TIFF features (below). The reader refuses anything else with an error that names the tag, so a file it would misread is never summarised.
+- **The family of files is small and known.** Every source the plan names uses the same few TIFF features (below). The reader refuses anything else with an error that names the tag, so a file it would misread is never summarized.
 
 If a later source needs more (JPEG or WebP compression, several bands in one file, rotated grids), adding `rasterio` stays possible, and the summaries would not change.
 
@@ -47,7 +47,7 @@ heights = cog.sample(lons, lats)                         # values at points (nan
 ```
 
 - **Transform:** `(a, b, c, d, e, f)`, where x = a·col + c and y = e·row + f (GDAL's order).
-- **Summaries (`zonal`):** a pixel belongs to a polygon when its centre is inside it, the rule of `landslide.py`. Each polygon gets `pixels` (centres inside), `valid` (with a value after nodata and the optional mask), and `mean`, `min`, `max`, `p10`, `p50`, `p90`. Polygons are reprojected to the raster's CRS with pyproj, and the statistics are `None` when no pixel is valid.
+- **Summaries (`zonal`):** a pixel belongs to a polygon when its center is inside it, the rule of `landslide.py`. Each polygon gets `pixels` (centers inside), `valid` (with a value after nodata and the optional mask), and `mean`, `min`, `max`, `p10`, `p50`, `p90`. Polygons are reprojected to the raster's CRS with pyproj, and the statistics are `None` when no pixel is valid.
 - **Values are returned as stored.** Scale and offset belong to the step that uses them, and that step names them. For example, Landsat surface temperature in kelvin is DN × 0.00341802 + 149.0.
 - **Scattered pixels (`values_at`, added for `heat.py`):** `cog.values_at(cols, rows, level)` returns the stored values at pixel positions and reads only the tiles that hold them, in parallel. For Puerto Rico's land cells in a Landsat scene that is about 2 MB, against several times more for the rectangle around the island, which is mostly sea. `sample()` uses it.
 - **Sentinel-2 (`vegetation.py`):** Earth Search's Sentinel-2 files carry overviews made with GDAL; the tag `OVR_RESAMPLING_ALG` says how. The 10 m bands' overviews are averaged (AVERAGE) and the scene classification's keep the most common class (MODE), so both can be read at an overview without mixing classes. Read the tag before using an overview of a class band: an averaged class is not a class.
@@ -60,7 +60,7 @@ heights = cog.sample(lons, lats)                         # values at points (nan
 ## How it is checked
 
 - **`python -m unittest tests.test_raster`** (no network) writes small GeoTIFFs and reads them back exactly. It covers 144 combinations: byte order, classic or BigTIFF, three compressions, six sample types and two predictors each. It also checks windows across tile edges and outside the image, that only the tiles under a window are read, sparse tiles, overviews, the georeferencing cases, point sampling in lon/lat over a UTM grid, `zonal` against values counted by hand, the cache, and the refusals. Its LZW encoder sits in the test file and round-trips a 60,000-byte stream through every code width and a table reset.
-- **Mutation check (2026-11-04):** six deliberate bugs in `raster.py` were each caught by the tests: LZW early change off by one, floating-point byte order, zonal counting the bounding box, pixel corner instead of centre, no PixelIsPoint shift, and sparse tiles read as data.
+- **Mutation check (2026-11-04):** six deliberate bugs in `raster.py` were each caught by the tests: LZW early change off by one, floating-point byte order, zonal counting the bounding box, pixel corner instead of center, no PixelIsPoint shift, and sparse tiles read as data.
 - **`python raster.py --check`** (network) reads real files and compares them with known facts. All passed on 2026-11-04:
 
 | Check | Result |

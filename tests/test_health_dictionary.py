@@ -133,14 +133,14 @@ class HealthDictionary(unittest.TestCase):
 
     def test_the_sources_say_what_the_pages_say(self):
         for k in ("hrsa_sites", "hrsa_hpsa"):
-            self.assertNotIn("403", json.dumps(self.sources[k]), "a sentence about a page that refused a request is not a licence statement")
+            self.assertNotIn("403", json.dumps(self.sources[k]), "a sentence about a page that refused a request is not a license statement")
             self.assertIn("no usage limitations", self.sources[k]["licence"])
         self.assertIn("CC0", self.sources["hrsa_sites"]["licence"])
         self.assertFalse("HTTP 403" in self.guide, "docs/health.md still has the sentence about a page that refused a request")
 
 
 class HealthDictionaryRound2(unittest.TestCase):
-    """What the second review found: figures rounded twice, lists that were not checked, the licence, the names and the plain wording."""
+    """What the second review found: figures rounded twice, lists that were not checked, the license, the names and the plain wording."""
 
     @classmethod
     def setUpClass(cls):

@@ -2,7 +2,7 @@
 
      MiniMap.project(fc, names, width)   the outlines of a GeoJSON of municipios (feature property `municipality`) as SVG paths, in the order of `names`: { w, h, d: [path per place] }.
                                          A plain projection with the longitude scaled by the cosine of 18.2°N; points closer than half a unit are dropped.
-     MiniMap.svg(P, fills, o)            one map: fills[i] is the colour of place i; o = { label, titles: [text per place], strong: Set of places drawn with a dark outline, cls } */
+     MiniMap.svg(P, fills, o)            one map: fills[i] is the color of place i; o = { label, titles: [text per place], strong: Set of places drawn with a dark outline, cls } */
 (function (name, root, factory) {
   const dep = (n) => (typeof module === 'object' && module.exports ? require('./' + n + '.js') : root.Core[n]);   // the other core modules, in Node or in a page
   const api = factory(root, dep);

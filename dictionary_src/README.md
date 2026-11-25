@@ -86,7 +86,7 @@ Use the canonical ids in `sources.json`. Old ids resolve through `_aliases`. Eve
 - Short sentences, active voice, concrete words. Say "people below the poverty line", not "poverty-status denominator". Define a term the first time it matters, or point to the glossary.
 - Always give the unit and the year basis. Say who or what is counted (people, households, jobs, places, dollars of which year).
 - Say what the number does **not** mean. Caveats are specific and true (suppression, survey margins, vintage breaks, workplace versus residence, snapshot dates).
-- No marketing words, no hedging without a reason, no legal or tax advice. Licence text is what the source states; users must check the source's terms.
+- No marketing words, no hedging without a reason, no legal or tax advice. License text is what the source states; users must check the source's terms.
 - No personal information of any kind (no names of private people, no contact details).
 - Spell out acronyms once, in the glossary and the first use in each entry.
 - Be exact: every claim must be checkable in the code (`build.py`, `housing_series.py`, `economy_series.py`, `network.py`, `transport.py`, `landuse.py`, `site/js/*.js`) or the data files.
@@ -120,7 +120,7 @@ One list of terms, the single source of truth for the Glossary section of the di
 - **`highlight_why`**: a priority-1 term that appears in the interface (the static text of the pages or any string in `i18n_src/es/*.json`) must be highlighted. To leave one unmarked, set `highlight: false` and say why here; `dictionary.py` fails otherwise, and fails `highlight_why` on a highlighted term.
 - **Standing rule**: a change that shows a new technical word on a page adds its term here, with a source, in the same PR, and runs `python dictionary.py`. The highlighter then underlines the word on every page by itself; no page needs a change. A page can mark a term on purpose, even in a heading, with `data-gloss="<id>"`, and keep a part unmarked with `data-gloss="off"`.
 
-## The data contract (`datasets.json`) and licence classes
+## The data contract (`datasets.json`) and license classes
 
 One record per file in `site/data/`. `python contract.py` fails when a record breaks a rule; the build runs it. A file without a record fails too.
 
@@ -136,11 +136,11 @@ One record per file in `site/data/`. `python contract.py` fails when a record br
 | `licence_class` | open, open-with-conditions, own, unstated or licensed-not-open; never laxer than the worst class among the sources; licensed-not-open needs a `licence` review |
 | `cadence` | static, snapshot, annual, monthly, weekly, daily, live or as-needed |
 | `tier` | small (up to 1 MB), medium (up to 8 MB), large (up to 50 MB); a file over its tier fails |
-| `review` | open questions about personal data (`pii`), licence or federal-grant compliance, each with a note. They are listed at every build until cleared. An open review has a short `summary` (`en`, `es`) and a cleared one the `date` it was cleared: the Data management page shows them in its Compliance review column |
+| `review` | open questions about personal data (`pii`), license or federal-grant compliance, each with a note. They are listed at every build until cleared. An open review has a short `summary` (`en`, `es`) and a cleared one the `date` it was cleared: the Data management page shows them in its Compliance review column |
 | `flags` | optional: `federal-grant` (federal grant money or a grant-funded program; needs a `compliance` review) and `counts-only` (sensitive items counted but not drawn or named) |
 
-Licence classes (also on each data source in `sources.json`): **open** (public domain or equivalent), **open-with-conditions** (an open licence with credit or share-alike, such as ODbL or CC BY),
-**own** (FPR's own work), **unstated** (published, but the source states no licence: confirm before relying on it), **licensed-not-open** (needs written permission; publication must be documented).
+License classes (also on each data source in `sources.json`): **open** (public domain or equivalent), **open-with-conditions** (an open license with credit or share-alike, such as ODbL or CC BY),
+**own** (FPR's own work), **unstated** (published, but the source states no license: confirm before relying on it), **licensed-not-open** (needs written permission; publication must be documented).
 
 Personal data: the build fails when a published file has a column named like personal or business contact data (address, website, email, phone, contact, mayor, contractor and similar) or values that look like
 an email address, phone number or SSN, unless a `pii` review names it. The project rule is never to publish business contact details or any personal data; aggregated data only.

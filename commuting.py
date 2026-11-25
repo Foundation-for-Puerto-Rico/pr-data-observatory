@@ -21,7 +21,7 @@ Sources, no key:
 Margins of error (90 percent): the margin of a sum is the square root of the sum of the squares of its flows' margins; the 2020 Census count has none; a share
 uses the Census Bureau's proportion formula (housing_series.pct). A sum of many small flows has a wide margin: it is published as it comes out.
 
-Output: commuting_series.json (78 municipios and Puerto Rico, in the shape of economy_series.json; one period, labelled 2020, the last year of the window).
+Output: commuting_series.json (78 municipios and Puerto Rico, in the shape of economy_series.json; one period, labeled 2020, the last year of the window).
 """
 
 import datetime
@@ -38,7 +38,7 @@ ROOT = Path(__file__).resolve().parent
 OUT = hs.OUT / "commuting_series.json"
 log = hs.log
 GROUP = "Population · Daytime population"
-YEAR = int(tl.FLOWS_PERIOD.split("-")[1])   # the window is labelled by its last year, as the survey's five-year windows are
+YEAR = int(tl.FLOWS_PERIOD.split("-")[1])   # the window is labeled by its last year, as the survey's five-year windows are
 FLOWS_REF = "US Census Bureau, County-to-County Commuting Flows, American Community Survey " + tl.FLOWS_PERIOD + " (5-year), Table 1"
 WINDOW = {"type": "window", "windowYears": 5}
 
@@ -141,7 +141,7 @@ def document(inside, away, from_out):
                                         "license": "US Government work; cite the Census Bureau as the source", "note": basis}},
             "notes": {"kind": "calculated: arithmetic on published figures, nothing assumed (HANDOFF decision 107)",
                       "formula": "daytime population = residents + workers who come in - workers who leave (US Census Bureau, Calculating Commuter-Adjusted Population Estimates)",
-                      "period": f"flows of {tl.FLOWS_PERIOD}, labelled {YEAR}; residents of the 2020 Census",
+                      "period": f"flows of {tl.FLOWS_PERIOD}, labeled {YEAR}; residents of the 2020 Census",
                       "outside_puerto_rico": f"{leave_out:,} workers who live in Puerto Rico work outside it and {come_out:,} who work in it live outside it; both are counted",
                       "work_elsewhere": "the workers who work outside Puerto Rico are left out of both sides of the share, as on the Connections between municipios page (transit_links.json)",
                       "margins": "90 percent; the root of the sum of the squares of the flows' margins; the census count has none"}}

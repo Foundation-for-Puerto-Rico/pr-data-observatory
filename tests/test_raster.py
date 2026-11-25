@@ -365,7 +365,7 @@ class Zonal(unittest.TestCase):
         arr[2, 2] = -9999
         valid = np.ones_like(arr, bool)
         valid[3, 3] = False
-        shapes = {"sq": box(2, 6, 5, 8.2),                           # centres x 2.5-4.5, y 6.5-7.5 -> rows 2-3, cols 2-4
+        shapes = {"sq": box(2, 6, 5, 8.2),                           # centers x 2.5-4.5, y 6.5-7.5 -> rows 2-3, cols 2-4
                   "out": box(50, 50, 60, 60)}
         z = raster.zonal(arr, tr, 32620, shapes, nodata=-9999, shapes_crs=32620, valid=valid)
         self.assertEqual(z["sq"]["pixels"], 6)

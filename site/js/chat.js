@@ -81,7 +81,7 @@ const HPSA_ASKS = (q) => /\b(need met|percent of need|share of need|necesidad (?
 const HPSA = (q, kind) => `hpsa_${/\b(dental|dentist\w*|dentistas?)\b/.test(q) ? 'dh' : /\b(mental|psychiatr\w*|psiquiatr\w*)\b/.test(q) ? 'mh' : 'pc'}_${kind}`;
 const CONCEPTS = [
   // transit stops (ideas from PR #8 by Maite Barragán): residents near a stop are the 400 m walk to a stop with a current timetable, not the 10 km road distance to a health
-  // centre, which took "near" from its own words; a count of stops is the stops dataset with its rank; transit to work is how people commute, not the jobs. Before the jobs rule ("trabajo").
+  // center, which took "near" from its own words; a count of stops is the stops dataset with its rank; transit to work is how people commute, not the jobs. Before the jobs rule ("trabajo").
   [/\b(?:near|nearby|close to|within (?:a )?(?:short )?walk(?:ing distance)? (?:of|to|from)|(?:in |at )?walking distance (?:of|to|from)|(?:within |a )?400 ?m(?:eters|etres|etros)? (?:of|from|de)|cerca(?:nos?|nas?)? (?:de|a)|a pie de|a poca distancia de|a (?:una )?distancia (?:a pie|caminable) de)\s+(?:(?:an?|the|una?|la|las|el|los|alguna)\s+)?(?:(?:(?:bus|transit|train)\s+)?stops?|(?:bus|transit|train)\s+stations?|paradas?|estaciones de (?:tren|guaguas?))(?:\s+(?:de|del)\s+(?:la\s+|el\s+|las\s+|los\s+)?(?:guaguas?|autobus\w*|tren(?: urbano)?|t\w*port\w*(?:\s+(?:colectivo|publico))?))?\b/, 'pop_walk_active_pct'],
   [/\b(?:(?:(?:bus|transit|train)\s+)?stops|(?:bus|transit|train)\s+stations|paradas|estaciones de (?:tren|guaguas?))(?:\s+(?:de|del)\s+(?:la\s+|el\s+|las\s+|los\s+)?(?:guaguas?|autobus\w*|tren(?: urbano)?|t\w*port\w*(?:\s+(?:colectivo|publico))?))?\b/, (n, m) => /\b(?:(?:number|count|total|amount)\s+of|how many|cuant[ao]s|numero\s+de|cantidad\s+de|total\s+de|most|more|fewest|fewer|least|mas|menos)\s+(?:(?:the|las|los)\s+)?$/.test(n.slice(0, m.index)) ? 'transit_stops' : null],   // a count or a ranking right before the stops; read on the text before them, not with a lookbehind (Safari before 16.4 cannot parse one), so the cue stays for the intent ("most", "fewest")
   [/\b(?:t\w*port\w*\s+(?:publico|publica|colec\w*)|guaguas?|autobus(?:es)?|public transport\w*|transit|bus(?:es)?|tren(?: urbano)?|trains?)\s+(?:al|para (?:ir|llegar) al|hacia el|para el|to|for)\s+(?:trabajo|work)\b|\b(?:al|to)\s+(?:trabajo|work)\s+(?:en|by|on|in)\s+(?:(?:el|la|the)\s+)?(?:t\w*port\w*\s+(?:publico|publica|colec\w*)|guaguas?|autobus(?:es)?|bus(?:es)?|transit|public transport\w*|tren|trains?)\b|\bcommut\w*\s+(?:by|on|via)\s+(?:the\s+)?(?:bus(?:es)?|transit|public transport\w*|trains?)\b/, 'commute_transit_pct'],
@@ -721,7 +721,7 @@ const Tools = {
 };
 
 // ── Chat messages ────────────────────────────────────────────────────────────
-/** A dataset's home topic in Explore (navigation plan PR 3, decision 81 h): "Abrir su tema / Open its topic" on the 2D map, where the Explore tab is. */
+/** A dataset's home topic in Explore (navigation plan PR 3, decision 81 h): "Abrir su tema / Open its topic" on the 2D map, where the Home tab is. */
 function chTopic(k, lang) {
   const api = chApi(); if (chMapless() || typeof Catalog === 'undefined' || !Catalog.openDomain || !api || !api.dictId) return null;
   const id = api.dictId(k); if (!id) return null;
@@ -809,7 +809,7 @@ const Handlers = {
       html += chP(`${B(chTitle(k, v.norm, r.year))}${st.dir === 'asc' ? ` — ${st.lang === 'es' ? 'los más bajos' : 'lowest'}` : ''}`) + chTable([st.lang === 'es' ? 'Municipio' : 'Municipality', chClip(chLabel(k), 34)], [...r.top.map((x, j) => [x.place, chVal(k, x.value, v.norm, false, true) + (rows && rows[j].m != null && isFinite(rows[j].m) ? ` ±${m.type === 'rate' ? fmt(rows[j].m, 1) : chVal(k, rows[j].m)}` + (chUnreliable(rows[j].v, rows[j].m) ? (st.lang === 'es' ? ' (poco confiable)' : ' (unreliable)') : '') : '')]), [t.island, chVal(k, r.puertoRico, v.norm, false, true)]], st.lang);
       if (rows && rows.some(x => x.m != null)) { const all = api.places().slice(0, -1).map((p, i) => ({ name: p, v: chVec(k, { year: r.year }).values[i], m: mo[i] })).filter(x => x.v != null); html += chMoeRead(rows, all, st.lang, st.lang === 'es' ? 'municipios' : 'municipios'); }
     }
-    if (views.length > 1) html += `<p class="ch-note">${st.lang === 'es' ? 'Los totales favorecen a los municipios grandes; la segunda tabla lo corrige por población.' : 'Totals favour big municipalities; the second table corrects for population.'}</p>`;
+    if (views.length > 1) html += `<p class="ch-note">${st.lang === 'es' ? 'Los totales favorecen a los municipios grandes; la segunda tabla lo corrige por población.' : 'Totals favor big municipalities; the second table corrects for population.'}</p>`;
     html += chRankNotes(m, st.rest, st.n, st.lang);
     const notes = chYearNotes({ years: year ? [year] : [] }, [k], [chVec(k, { year })], st.lang); if (notes.length) html += `<p class="ch-note">${notes.map(esc).join(' ')}</p>`;
     const pl = st.u && st.places.length === 1 ? st.places[0] : null;
@@ -1024,7 +1024,7 @@ function chGoTo(t) {   // the map to a municipio (selected, as an answer selects
   const reduce = typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches, leaflet = typeof map.invalidateSize === 'function';
   const go = () => leaflet ? map.flyTo([t.lat, t.lon], t.z || 14, { duration: reduce ? 0 : .8 }) : map.flyTo({ center: [t.lon, t.lat], zoom: t.z || 14, duration: reduce ? 0 : 1200 });
   go();
-  // the municipio's selection may move the map to its centre a moment later (economy.js): the point is where the map ends
+  // the municipio's selection may move the map to its center a moment later (economy.js): the point is where the map ends
   if (typeof map.on === 'function' && typeof map.off === 'function') {
     const t0 = Date.now(), back = () => { const c = map.getCenter(), lat = c.lat, lng = c.lng; if (Date.now() - t0 > 3000) { map.off('moveend', back); return; } if (Math.abs(lat - t.lat) > .01 || Math.abs(lng - t.lon) > .01) { map.off('moveend', back); go(); } };
     map.on('moveend', back);
@@ -1048,7 +1048,7 @@ function chAskModule() {
     const api = chApi(), es = I18N.lang === 'es', boot = typeof ChatBoot !== 'undefined' && ChatBoot.extra ? ChatBoot.extra() : null;   // chatboot.js starts ask.js and the layer registry beside chat.js
     // the Spanish summaries of the datasets (catalog_es.json, 33 KB) only on a Spanish page: an English page's index has no Spanish dataset names to match them with
     const files = Promise.all([...(es ? ['data/catalog_es.json'] : []), 'data/glossary_forms_en.json', 'data/glossary_forms_es.json'].map(f => Data.json(f).catch(() => null)));
-    await (boot || Promise.all([typeof Ask === 'undefined' ? chScript('js/ask.js?v=15') : null, !(typeof Core !== 'undefined' && Core.layers) ? chScript('js/core/layers.js?v=19').catch(() => null) : null]));
+    await (boot || Promise.all([typeof Ask === 'undefined' ? chScript('js/ask.js?v=15') : null, !(typeof Core !== 'undefined' && Core.layers) ? chScript('js/core/layers.js?v=20').catch(() => null) : null]));
     if (typeof Ask === 'undefined') await chScript('js/ask.js?v=15');
     // the index needs the page's datasets and municipios, and the dictionary's ask words: built before them (the chat opens before the Economy tab has loaded), it held no
     // municipio and no dataset, so a misspelt municipio was never read and the datasets' own words never matched (docs/ask.md, round 4)
@@ -1088,7 +1088,7 @@ function chSensKeys(st, A) {   // the counts by area that answer what is never d
   if (kind === 'names') return /\b(?:estudiantes|alumnos|students|pupils)\b/.test(n) ? ['sch_enroll'] : /\b(?:maestros|teachers)\b/.test(n) ? ['sch_teachers'] : /\b(?:residentes|personas|vecinos|residents|people|neighbou?rs)\b/.test(n) ? ['population'] : [];
   if (kind === 'healthPerson') return /\b(?:discapacidad\w*|disabilit\w*|disabled)\b/.test(n) ? ['acs_disability_pct'] : [];
   if (kind === 'nearMe') return st.keys.slice(0, 1);   // "hospitals near me": the topic's count by municipio
-  if (kind === 'aid' && (st.u.sens.find(x => x.kind === 'aid') || {}).food) return ['poverty_pct'];   // food stamps, welfare: no data by municipio; poverty stands in, labelled (chRefine)
+  if (kind === 'aid' && (st.u.sens.find(x => x.kind === 'aid') || {}).food) return ['poverty_pct'];   // food stamps, welfare: no data by municipio; poverty stands in, labeled (chRefine)
   return CH_SENS_KEYS[kind] || [];
 }
 /** What ask.js adds to chParse's reading (st): layers, a place and its point, a time, topics the rules left, approximations, what must not be drawn; then the intent again. */
@@ -1111,7 +1111,7 @@ function chRefine(st, { A, ix }) {
   if (st.sens.includes('officials')) { st.officials = true; if (st.places.length) { st.intent = 'muni'; st.keys = []; return st; } st.intent = 'sensitive'; st.keys = []; st.ctx = []; return st; }   // the observatory does not rate officials; a municipio's data as context
   if (st.sens.some(k => A.PRIVATE.has(k))) {   // never a point, an address, a name or a person: the answer says why; a count by area follows when there is one
     st.intent = 'sensitive'; st.keys = chSensKeys(st, A).filter(ok); st.ctx = [];
-    if (st.keys[0] === 'poverty_pct' && A.CONCEPT.welfare) st.proxy = [A.CONCEPT.welfare];   // where aid recipients live: poverty as a labelled approximation, no relation drawn
+    if (st.keys[0] === 'poverty_pct' && A.CONCEPT.welfare) st.proxy = [A.CONCEPT.welfare];   // where aid recipients live: poverty as a labeled approximation, no relation drawn
     return st;
   }
   if (CH_OFF_ALL.test(n)) { st.intent = 'clear'; st.keys = []; return st; }   // "quita todas las capas", "turn off all layers"
@@ -1167,7 +1167,7 @@ function chRefine(st, { A, ix }) {
     if (t.c.missing) st.standIn.push({ c: t.c, words: n.slice(t.a, t.b) });   // "apagones de luz": the rules' dataset stands in for what the observatory does not have
     else if (t.c.group && st.keys.length && !t.c.data.includes(st.keys[0])) st.groups.push(t.c);   // "desempleo juvenil": the figure is for all ages
     else if (t.c.proxy && t.data.length && st.keys.length && !st.keys.some(k => t.data.includes(k))) {   // "hogares que reciben el PAN": a topic only approached, which qualifies the rules' dataset
-      if (st.keys.every(k => CH_COUNTS_OF.has(k))) { st.keys = t.data.slice(0, 1); st.proxy.push(t.c); } else st.standIn.push({ c: t.c, words: n.slice(t.a, t.b) });   // a bare count of homes or people: the topic's own stand-in, labelled; else the rules' dataset, labelled
+      if (st.keys.every(k => CH_COUNTS_OF.has(k))) { st.keys = t.data.slice(0, 1); st.proxy.push(t.c); } else st.standIn.push({ c: t.c, words: n.slice(t.a, t.b) });   // a bare count of homes or people: the topic's own stand-in, labeled; else the rules' dataset, labeled
     }
   }
   const dataTopics = used.filter(t => t.data.length), add = [], layers = [];
@@ -1418,7 +1418,7 @@ Object.assign(Handlers, {
     }
     if (e.layer) {
       const done = chLayersOn([e.layer]);
-      return { html: chP(`${B(chLayerName(e.layer, st.lang))}: ${esc(es ? 'fuente' : 'source')}: ${esc(chLayerSrc(e.layer, st.lang) || '—')}.`) + (done.length ? chP(esc(es ? 'La encendí en el mapa.' : 'I switched it on.')) : '') + (typeof Ask !== 'undefined' && Ask.SCHEDULE.has(e.layer) ? `<p class="ch-note">${esc(es ? 'Horarios programados (GTFS), no posiciones en vivo.' : 'Scheduled timetables (GTFS), not live positions.')}</p>` : ''), actions: [{ href: 'dictionary.html', label: es ? 'Fuentes y licencias en el diccionario' : 'Sources and licences in the dictionary' }] };
+      return { html: chP(`${B(chLayerName(e.layer, st.lang))}: ${esc(es ? 'fuente' : 'source')}: ${esc(chLayerSrc(e.layer, st.lang) || '—')}.`) + (done.length ? chP(esc(es ? 'La encendí en el mapa.' : 'I switched it on.')) : '') + (typeof Ask !== 'undefined' && Ask.SCHEDULE.has(e.layer) ? `<p class="ch-note">${esc(es ? 'Horarios programados (GTFS), no posiciones en vivo.' : 'Scheduled timetables (GTFS), not live positions.')}</p>` : ''), actions: [{ href: 'dictionary.html', label: es ? 'Fuentes y licencias en el diccionario' : 'Sources and licenses in the dictionary' }] };
     }
     return Handlers.unknown(st);
   },
@@ -1473,7 +1473,7 @@ Object.assign(Handlers, {
     return { html, actions: [{ label: t.actWorkbench, run: () => api.benchOpen('table') }, { label: t.actSources, run: () => api.info(k) }], follow: es ? [`¿Qué barrios de ${r.muni} tienen más ${chLc(chLabel(k))}?`] : [`Which barrios of ${r.muni} rank highest?`] };
     }
   },
-  async crisis(st) {   // suicide, self-harm, overdose deaths: said plainly, the crisis line, nothing shaded, no ranking, not a data wish; related data only as a labelled chip
+  async crisis(st) {   // suicide, self-harm, overdose deaths: said plainly, the crisis line, nothing shaded, no ranking, not a data wish; related data only as a labeled chip
     const es = st.lang === 'es', A = typeof Ask !== 'undefined' ? Ask : null, api = chApi(), rel = ['hpsa_mh_short', 'bh_mh'].filter(k => api.meta(k));
     let html = chP(esc(A ? A.SENS_TEXT.crisis[es ? 'es' : 'en'] : '')) + chPasNote(es);
     if (rel.length) html += `<p class="ch-note">${esc(es ? 'Datos relacionados con la salud mental, que no responden la pregunta:' : 'Related mental health data, which do not answer the question:')} ${rel.map(k => esc(chLabel(k))).join('; ')}.</p>`;
@@ -1509,7 +1509,7 @@ async function chInsights(st) {
   let html = chP(`${B(st.lang === 'es' ? 'Patrones en los datos reales' : 'Patterns in the real data')} <small>${st.lang === 'es' ? '(los vínculos más fuertes entre áreas distintas, en los 78 municipios, año más reciente de cada dato)' : '(strongest links between different areas of life, across the 78 municipalities, latest year of each dataset)'}</small>`);
   const items = [];
   const j = I.jobs;
-  items.push({ text: st.lang === 'es' ? `${j.place} concentra ${fmt(j.jobShare, 0)}% de los empleos de la isla pero solo ${j.popShare ? fmt(j.popShare, 0) + '%' : '—'} de los residentes; los cinco municipios con más empleos suman ${fmt(j.top5, 0)}%. Mucha gente cruza municipios para trabajar.` : `${j.place} holds ${fmt(j.jobShare, 0)}% of the island's jobs but only ${j.popShare ? fmt(j.popShare, 0) + '%' : '—'} of its residents, and the five biggest job centres hold ${fmt(j.top5, 0)}%. Many people cross municipal lines to work.`, run: () => api.show({ layers: [{ key: 'jobs_per_employed_resident', mode: 'fill' }, { key: 'qcew_jobs', mode: 'symbol' }], context: [], bench: 'table' }) });
+  items.push({ text: st.lang === 'es' ? `${j.place} concentra ${fmt(j.jobShare, 0)}% de los empleos de la isla pero solo ${j.popShare ? fmt(j.popShare, 0) + '%' : '—'} de los residentes; los cinco municipios con más empleos suman ${fmt(j.top5, 0)}%. Mucha gente cruza municipios para trabajar.` : `${j.place} holds ${fmt(j.jobShare, 0)}% of the island's jobs but only ${j.popShare ? fmt(j.popShare, 0) + '%' : '—'} of its residents, and the five biggest job centers hold ${fmt(j.top5, 0)}%. Many people cross municipal lines to work.`, run: () => api.show({ layers: [{ key: 'jobs_per_employed_resident', mode: 'fill' }, { key: 'qcew_jobs', mode: 'symbol' }], context: [], bench: 'table' }) });
   I.pairs.forEach(p => {
     const a = chLabel(p.a.k), b = chLabel(p.b.k), dir = p.c.r > 0 ? t.together : t.apart, out = p.c.outliers.slice(0, 2).map(o => api.places()[o.i]).join(', ');
     items.push({ text: `${t.corr(p.c.r, p.c.n, a + (p.a.nm !== 'value' ? ' (' + chLc(chNormLabel(p.a.k, p.a.nm)) + ')' : ''), b + (p.b.nm !== 'value' ? ' (' + chLc(chNormLabel(p.b.k, p.b.nm)) + ')' : ''), dir)} ${out ? t.outliers(out) : ''}`, run: () => api.show({ layers: [{ key: p.a.k, mode: 'fill', norm: p.a.nm }, { key: p.b.k, mode: 'fill', norm: p.b.nm }], context: [], bench: 'scatter' }) });
@@ -1612,7 +1612,7 @@ function chInit() {   // called by chatboot.js once this file has loaded: the bu
 
 /* ── Language-model back end (not enabled) ─────────────────────────────────────
    To let a model answer open-ended questions, set TWIN_CHAT = { endpoint: 'https://…' } to a small proxy FPR hosts, which holds the API key,
-   adds the system prompt below, limits tokens and rate, and forwards to the Anthropic Messages API. The page would send { system, messages, tools },
+   adds the system prompt below, limits tokens and rate, and forward to the Anthropic Messages API. The page would send { system, messages, tools },
    run any tool_use block with Tools[name](input) and send the tool_result back, so the model only ever sees numbers computed here. Tool names:
    search_datasets, rank, correlate, trend (above), plus show_on_map (ECON.api.show) and missing_data (data/wanted.json). Never put a key in this file.
    System prompt: "You are the PR Data Observatory's data guide for Foundation for Puerto Rico. Answer only from tool results. Say patterns, not causes.

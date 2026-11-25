@@ -28,7 +28,7 @@
   "how_to_read": "El color muestra la familia de la zona, no la profundidad. Use la letra de la zona y el subtipo para leer lo que dice FEMA. Un área sin sombrear no es prueba de que sea segura. La capa 'Zonas inundables' cubre las zonas de 1% y la zona de 0.2%. En las cifras de lugares y municipios, 'en zona de riesgo de inundación' significa solo el área de 1% (el Área Especial de Riesgo de Inundación).",
   "_en": {
    "name": "ec6712ee",
-   "how_to_read": "092a82a9"
+   "how_to_read": "a6e17585"
   }
  },
  "hazards.flood_exposure_flag": {
@@ -123,7 +123,7 @@
   "name": "Paso más cercano al centro de Puerto Rico (min_dist_km)",
   "how_to_read": "Un valor pequeño significa que la tormenta pasó cerca del medio de la isla. Un valor de 100 km todavía puede significar que alguna costa estuvo cerca de la tormenta, porque la isla grande mide unos 180 km de largo de oeste a este.",
   "_en": {
-   "name": "c641f52b",
+   "name": "38bf98a8",
    "how_to_read": "cd8c28d2"
   }
  },
@@ -132,7 +132,7 @@
   "how_to_read": "El mapa 3D une los puntos con líneas rectas. La trayectoria real es curva entre ellos. El tamaño y el color de cada punto dependen de su propio viento.",
   "_en": {
    "name": "c9fcde3b",
-   "how_to_read": "87048d0b"
+   "how_to_read": "8329f2d6"
   }
  },
  "hazards.hurricane_scale": {
@@ -140,7 +140,7 @@
   "how_to_read": "En la vista 3D, los colores van del gris (categoría 0), pasando por azul, verde, anaranjado y rojo, hasta rojo oscuro (categoría 5).",
   "_en": {
    "name": "69a12820",
-   "how_to_read": "04ff713f"
+   "how_to_read": "ce3d3940"
   }
  },
  "hazards.storm_layer": {
@@ -148,7 +148,7 @@
   "how_to_read": "Las líneas más gruesas indican una tormenta más fuerte cerca de la isla. El color sigue la categoría: gris 0, azul 1, verde 2, anaranjado 3, rojo 4, rojo oscuro 5. Una línea puede extenderse mucho más allá de Puerto Rico, porque se dibuja toda la trayectoria. Al activar la capa, muestra solo las tormentas de categoría 3 o más (29 de las 157 en el corte de datos 2026-10). Elija Todas (incl. tormentas tropicales) para ver todas las tormentas del archivo.",
   "_en": {
    "name": "09531fa1",
-   "how_to_read": "c9d8afdf"
+   "how_to_read": "86cad428"
   }
  },
  "hazards.storm_limits": {

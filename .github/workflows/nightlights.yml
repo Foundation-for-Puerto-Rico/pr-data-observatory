@@ -23,7 +23,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 330   # the first run downloads every month since 2012: about 177 files of 70 MB, one at a time, each deleted once summarised
+    timeout-minutes: 330   # the first run downloads every month since 2012: about 177 files of 70 MB, one at a time, each deleted once summarized
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

@@ -57,7 +57,7 @@
    "environment",
    "hazards"
   ],
-  "plain": "A tool that traces the land whose rain flows to a point you pick, down the USGS stream network, and summarises it like any study area.",
+  "plain": "A tool that traces the land whose rain flows to a point you pick, down the USGS stream network, and summarizes it like any study area.",
   "definition": "catchments.geojson holds the 13,809 catchments of NHDPlus High Resolution in Puerto Rico (8,860.4 km2), each linked to the next one downstream by its stream's hydrologic sequence, and each minor branch linked to the reaches it splits from. Picking a point finds the catchment under it and walks the links upstream in the browser; the catchments found become one study area.",
   "unit": "polygons (longitude and latitude, WGS 84)",
   "value_type": "geometry",

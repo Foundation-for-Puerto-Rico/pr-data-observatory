@@ -200,15 +200,15 @@
       "last": 2026,
       "frequency": "Retrieved from FEMA on 1 October 2026 (Snapshot 2026-10). The observatory keeps that copy until its next snapshot. FEMA changes its maps as new flood maps take effect, so a later copy can differ. 2026 is the year the observatory retrieved the layer, not the year FEMA drew each map. Map dates vary by panel and are not stored here."
     },
-    "method": "Both maps draw the polygons in the SFHA and the zone X polygons whose subtype contains 0.2. They hide zone D, unshaded X and the two FEMA labels named above. Colours are red (floodway), darkest blue (V zones), mid blue (other SFHA zones) and light blue (0.2% zone), drawn at about 45% opacity. Place flags are not read from this file. They come from FEMA's unsimplified polygons.",
+    "method": "Both maps draw the polygons in the SFHA and the zone X polygons whose subtype contains 0.2. They hide zone D, unshaded X and the two FEMA labels named above. Colors are red (floodway), darkest blue (V zones), mid blue (other SFHA zones) and light blue (0.2% zone), drawn at about 45% opacity. Place flags are not read from this file. They come from FEMA's unsimplified polygons.",
     "sources": [
       "fema_nfhl"
     ],
     "source_detail": "flood.geojson, built from FEMA NFHL layer 28 (Flood Hazard Zones). Cite as: FEMA, National Flood Hazard Layer, layer 28 Flood Hazard Zones, Puerto Rico (DFIRM_ID beginning 72), https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/28, retrieved 1 October 2026 for observatory Snapshot 2026-10.",
-    "how_to_read": "Colour shows the zone family, not depth. Use the zone letter and subtype to read what FEMA says. An unshaded area is not proof of safety. The layer 'Flood zones' covers the 1% zones and the 0.2% zone. In the place and municipality figures, 'in a flood hazard area' means the 1% area only (the Special Flood Hazard Area).",
+    "how_to_read": "Color shows the zone family, not depth. Use the zone letter and subtype to read what FEMA says. An unshaded area is not proof of safety. The layer 'Flood zones' covers the 1% zones and the 0.2% zone. In the place and municipality figures, 'in a flood hazard area' means the 1% area only (the Special Flood Hazard Area).",
     "caveats": [
       "Drawn outlines are simplified to about 5 m. A place at a zone edge can look inside or outside on the map while its flag uses FEMA's unsimplified outline.",
-      "In the 2026-10 snapshot, Florida municipio shows no flood colour because FEMA maps all of it as one unshaded zone X polygon (minimal hazard), which the layer does not draw. The blank is a mapped result, not missing data. FEMA's panels for that municipio took effect between 2005 and 2009 (checked 5 October 2026).",
+      "In the 2026-10 snapshot, Florida municipio shows no flood color because FEMA maps all of it as one unshaded zone X polygon (minimal hazard), which the layer does not draw. The blank is a mapped result, not missing data. FEMA's panels for that municipio took effect between 2005 and 2009 (checked 5 October 2026).",
       "Coastal polygons extend over open water. A shoreline place can sit in a VE zone.",
       "The layer shows FEMA's mapped hazard, not sea level rise. The sea level layer of the National Oceanic and Atmospheric Administration (NOAA) is separate."
     ],
@@ -244,7 +244,7 @@
     "group": "Flood hazard zones (FEMA)",
     "kind": "method",
     "plain": "The observatory flags a tourism place as in a flood hazard area when its map point lies inside an area that the US Federal Emergency Management Agency (FEMA) maps with a 1% chance of flooding each year. A second, wider flag also covers the area FEMA maps with a 0.2% chance. Places in areas that FEMA marks as minimal hazard, or has not studied, get neither flag.",
-    "definition": "For every place the build tests its coordinates against FEMA's flood polygons (point in polygon) and records two results. The sfha flag (Special Flood Hazard Area, SFHA) is yes when the point is inside a polygon where SFHA_TF is T. The flood zone value holds the zone and subtype when the point is in an SFHA polygon or in a zone X polygon with the 0.2% subtype. A point in unshaded X or zone D gets neither. If a point lies in more than one polygon, an SFHA polygon wins over a 0.2% polygon. Polygons labelled OPEN WATER or AREA NOT INCLUDED are skipped before testing (none occur in the 2026-10 snapshot).",
+    "definition": "For every place the build tests its coordinates against FEMA's flood polygons (point in polygon) and records two results. The sfha flag (Special Flood Hazard Area, SFHA) is yes when the point is inside a polygon where SFHA_TF is T. The flood zone value holds the zone and subtype when the point is in an SFHA polygon or in a zone X polygon with the 0.2% subtype. A point in unshaded X or zone D gets neither. If a point lies in more than one polygon, an SFHA polygon wins over a 0.2% polygon. Polygons labeled OPEN WATER or AREA NOT INCLUDED are skipped before testing (none occur in the 2026-10 snapshot).",
     "unit": "not applicable (yes or no per place)",
     "value_type": "flag",
     "geography": "Every place in Puerto Rico's places file (32,541 listings in the 2026-10 snapshot). Municipality figures use the 24,209 counted places of that snapshot: tourism places with confidence 0.50 or higher, places of worship excluded (see 'Which places each municipality count includes').",
@@ -263,7 +263,7 @@
     "how_to_read": "'In a flood hazard area' means the pin sits inside a polygon that FEMA maps with a 1% yearly chance of flooding. It does not say the place floods, how deep the water gets or whether the place has insurance.",
     "caveats": [
       "Only the pin is tested. A building, beach or park can be partly inside a zone and partly outside.",
-      "The pin comes from Overture Maps and can be off the building by metres or more.",
+      "The pin comes from Overture Maps and can be off the building by meters or more.",
       "Coastal zones run along the shore, so shoreline places are flagged more often. In the 2026-10 snapshot, 428 of 817 counted beaches (52%) are in the SFHA, against 18% of all counted places.",
       "No flag does not mean safe. Zone D and unshaded X are treated as not flagged, and FEMA's map covers only what FEMA studied.",
       "Places of worship are flagged in the places file but left out of municipality percentages.",
@@ -448,8 +448,8 @@
     "name": "Sea level rise by year and scenario (3D view)",
     "group": "Sea level rise",
     "kind": "measure",
-    "plain": "The 3D view picks a layer of the US National Oceanic and Atmospheric Administration (NOAA) from a year and a scenario. It reads the scenario's rise in metres for that year, converts it to feet, rounds to a whole foot and keeps it between 1 and 10.",
-    "definition": "In the Time tab of the 3D view, you choose a year (2020 to 2150, in steps of 5) and one of four NOAA 2022 scenarios. The page holds a small table of global mean sea level rise, in metres above the year-2000 level, for 2020, 2050, 2100 and 2150 in each scenario. It joins those points with straight lines, multiplies the metres by 3.28084 to get feet, rounds to the nearest whole foot and limits the result to 1 to 10 ft. It then loads NOAA's layer for that number of feet.",
+    "plain": "The 3D view picks a layer of the US National Oceanic and Atmospheric Administration (NOAA) from a year and a scenario. It reads the scenario's rise in meters for that year, converts it to feet, rounds to a whole foot and keeps it between 1 and 10.",
+    "definition": "In the Time tab of the 3D view, you choose a year (2020 to 2150, in steps of 5) and one of four NOAA 2022 scenarios. The page holds a small table of global mean sea level rise, in meters above the year-2000 level, for 2020, 2050, 2100 and 2150 in each scenario. It joins those points with straight lines, multiplies the meters by 3.28084 to get feet, rounds to the nearest whole foot and limits the result to 1 to 10 ft. It then loads NOAA's layer for that number of feet.",
     "unit": "feet of sea level rise (whole feet, 1 to 10)",
     "value_type": "level",
     "geography": "Global mean curves applied to Puerto Rico",
@@ -459,7 +459,7 @@
       "last": 2150,
       "frequency": "Fixed in the page code. It changes only when the code changes."
     },
-    "method": "For a year y between two table years y0 and y1, the page works out: metres = m0 + (m1 - m0) x (y - y0) / (y1 - y0). Feet = metres x 3.28084, rounded half up, then at least 1 and at most 10. The 2D map has no year. Its slider sets the feet directly.",
+    "method": "For a year y between two table years y0 and y1, the page works out: meters = m0 + (m1 - m0) x (y - y0) / (y1 - y0). Feet = meters x 3.28084, rounded half up, then at least 1 and at most 10. The 2D map has no year. Its slider sets the feet directly.",
     "sources": [
       "noaa_slr_scenarios",
       "noaa_slr"
@@ -472,7 +472,7 @@
       "Only four scenarios are offered: Intermediate-Low, Intermediate, Intermediate-High and High. NOAA's 2022 report also has a Low scenario, which the observatory does not offer.",
       "The result is capped at 10 ft, so the High scenario in 2150 (12.8 ft) shows the 10 ft layer.",
       "The layer is never lower than 1 ft. In 2020 the table value is 0.07 m (0.2 ft) in every scenario, so the 1 ft layer shows more water than the table gives. The floor changes the result only while the table value is under 0.5 ft: up to 2025 in High and Intermediate-High, and up to 2030 in Intermediate and Intermediate-Low.",
-      "These metres are the observatory's own approximate readings of NOAA's tables, not NOAA's published numbers. For scenario values to cite, use the NOAA report."
+      "These meters are the observatory's own approximate readings of NOAA's tables, not NOAA's published numbers. For scenario values to cite, use the NOAA report."
     ],
     "see_also": [
       "hazards.slr_inundation",
@@ -489,10 +489,10 @@
       ]
     },
     "values": {
-      "Intermediate-Low": "Approximate reading of the NOAA 2022 tables, in metres above the year-2000 level: 2020 0.07; 2050 0.24; 2100 0.50; 2150 0.80.",
-      "Intermediate": "Approximate reading of the NOAA 2022 tables, in metres above the year-2000 level: 2020 0.07; 2050 0.30; 2100 1.00; 2150 1.90.",
-      "Intermediate-High": "Approximate reading of the NOAA 2022 tables, in metres above the year-2000 level: 2020 0.07; 2050 0.37; 2100 1.50; 2150 2.90.",
-      "High": "Approximate reading of the NOAA 2022 tables, in metres above the year-2000 level: 2020 0.07; 2050 0.44; 2100 2.00; 2150 3.90."
+      "Intermediate-Low": "Approximate reading of the NOAA 2022 tables, in meters above the year-2000 level: 2020 0.07; 2050 0.24; 2100 0.50; 2150 0.80.",
+      "Intermediate": "Approximate reading of the NOAA 2022 tables, in meters above the year-2000 level: 2020 0.07; 2050 0.30; 2100 1.00; 2150 1.90.",
+      "Intermediate-High": "Approximate reading of the NOAA 2022 tables, in meters above the year-2000 level: 2020 0.07; 2050 0.37; 2100 1.50; 2150 2.90.",
+      "High": "Approximate reading of the NOAA 2022 tables, in meters above the year-2000 level: 2020 0.07; 2050 0.44; 2100 2.00; 2150 3.90."
     },
     "example": "NOAA layer shown in 2050, 2100 and 2150. Intermediate-Low: 1, 2, 3 ft. Intermediate: 1, 3, 6 ft. Intermediate-High: 1, 5, 10 ft. High: 1, 7, 10 ft. Worked example: Intermediate in 2100 is 1.0 m, which is 3.28 ft, so the 3 ft layer.",
     "domain": "hazards",
@@ -504,18 +504,18 @@
     "name": "How storms near Puerto Rico are selected",
     "group": "Hurricanes and tropical storms",
     "kind": "method",
-    "plain": "The observatory keeps every Atlantic storm from 1851 to 2025 that had a recorded position within 250 km (155 miles) of the centre of Puerto Rico. The storms come from the Hurricane Database, 2nd generation (HURDAT2) of the US National Oceanic and Atmospheric Administration (NOAA). In the 2026-10 snapshot that is 157 storms.",
+    "plain": "The observatory keeps every Atlantic storm from 1851 to 2025 that had a recorded position within 250 km (155 miles) of the center of Puerto Rico. The storms come from the Hurricane Database, 2nd generation (HURDAT2) of the US National Oceanic and Atmospheric Administration (NOAA). In the 2026-10 snapshot that is 157 storms.",
     "definition": "The National Hurricane Center (NHC), part of NOAA, publishes HURDAT2, the Atlantic hurricane database: a list of storms, each with positions and winds every 6 hours. The build measures the distance from each best-track position to a fixed point at 18.22 N, 66.45 W, near the middle of the main island. A storm is kept when its closest position is 250 km (about 155 miles) or less from that point. Each kept storm carries four derived values: min_dist_km, max_wind, wind_near_pr and cat_near_pr.",
     "unit": "not applicable",
     "value_type": "text",
-    "geography": "Atlantic storms with a best-track position within 250 km of the centre of Puerto Rico (157 storms in the 2026-10 snapshot)",
+    "geography": "Atlantic storms with a best-track position within 250 km of the center of Puerto Rico (157 storms in the 2026-10 snapshot)",
     "coverage": {
       "timeline": "event-based",
       "first": 1851,
       "last": 2025,
       "frequency": "The observatory uses NOAA's release file hurdat2-1851-2025-092326.txt, retrieved on 5 October 2026 (Snapshot 2026-10). The build looks up the newest NOAA file only when it is run with the refresh option; it does not check on its own. NOAA adds each season after it ends and may revise earlier seasons."
     },
-    "method": "1) Read the HURDAT2 Atlantic file (hurdat2-1851-2025-092326.txt): one header line per storm (id, name), then one row per position (date, time, status, latitude, longitude, wind in knots). 2) Keep every row of a kept storm as its track, so the track covers the storm's whole life. 3) min_dist_km is the smallest great-circle (haversine) distance from any position to the centre point, rounded to a whole km. Keep the storm when the unrounded value is 250 km or less. 4) max_wind is the largest wind on the whole track. 5) wind_near_pr is the largest wind among positions within 250 km of the centre point. 6) cat_near_pr is the Saffir-Simpson category of wind_near_pr, with 0 for winds below 64 knots. 7) Sort storms by the time of their first position. meta.json records the count and the year range.",
+    "method": "1) Read the HURDAT2 Atlantic file (hurdat2-1851-2025-092326.txt): one header line per storm (id, name), then one row per position (date, time, status, latitude, longitude, wind in knots). 2) Keep every row of a kept storm as its track, so the track covers the storm's whole life. 3) min_dist_km is the smallest great-circle (haversine) distance from any position to the center point, rounded to a whole km. Keep the storm when the unrounded value is 250 km or less. 4) max_wind is the largest wind on the whole track. 5) wind_near_pr is the largest wind among positions within 250 km of the center point. 6) cat_near_pr is the Saffir-Simpson category of wind_near_pr, with 0 for winds below 64 knots. 7) Sort storms by the time of their first position. meta.json records the count and the year range.",
     "sources": [
       "nhc_hurdat2"
     ],
@@ -558,7 +558,7 @@
     "definition": "id holds the HURDAT2 storm identifier: the basin code AL (Atlantic), a two-digit storm number within the year, and the four-digit year. In the 2026-10 snapshot, all 156 ids start with AL and are different. It is the only reliable key, because names repeat (two storms are named Earl, in 2010 and 2022) and 85 storms have no name.",
     "unit": "text code",
     "value_type": "code",
-    "geography": "Atlantic storms with a best-track position within 250 km of the centre of Puerto Rico (157 storms in the 2026-10 snapshot)",
+    "geography": "Atlantic storms with a best-track position within 250 km of the center of Puerto Rico (157 storms in the 2026-10 snapshot)",
     "coverage": {
       "timeline": "event-based",
       "first": 1851,
@@ -604,7 +604,7 @@
     "definition": "name is the storm name from HURDAT2, written in title case (Maria, not MARIA). A storm that HURDAT2 lists as UNNAMED shows as Unnamed. In the 2026-10 snapshot there are 65 different values, including Unnamed.",
     "unit": "text",
     "value_type": "text",
-    "geography": "Atlantic storms with a best-track position within 250 km of the centre of Puerto Rico (157 storms in the 2026-10 snapshot)",
+    "geography": "Atlantic storms with a best-track position within 250 km of the center of Puerto Rico (157 storms in the 2026-10 snapshot)",
     "coverage": {
       "timeline": "event-based",
       "first": 1851,
@@ -648,7 +648,7 @@
     "definition": "year is the four-digit year in the storm identifier of the Hurricane Database, 2nd generation (HURDAT2), stored as a whole number. In the 2026-10 snapshot it is also the calendar year of the storm's first and last position, so no storm in the file runs across New Year. In that snapshot, 108 of the 175 years from 1851 to 2025 have at least one storm.",
     "unit": "calendar year",
     "value_type": "date",
-    "geography": "Atlantic storms with a best-track position within 250 km of the centre of Puerto Rico (157 storms in the 2026-10 snapshot)",
+    "geography": "Atlantic storms with a best-track position within 250 km of the center of Puerto Rico (157 storms in the 2026-10 snapshot)",
     "coverage": {
       "timeline": "event-based",
       "first": 1851,
@@ -692,7 +692,7 @@
     "definition": "max_wind is the largest value of the 'maximum sustained wind' (the wind averaged over one minute near the surface) among all best-track positions of the storm. It is in knots. One knot is 1.15 miles per hour or 1.85 km per hour. In the 2026-10 snapshot, values run from 30 to 160 knots, in steps of 5.",
     "unit": "knots",
     "value_type": "level",
-    "geography": "Atlantic storms with a best-track position within 250 km of the centre of Puerto Rico (157 storms in the 2026-10 snapshot)",
+    "geography": "Atlantic storms with a best-track position within 250 km of the center of Puerto Rico (157 storms in the 2026-10 snapshot)",
     "coverage": {
       "timeline": "event-based",
       "first": 1851,
@@ -706,7 +706,7 @@
     "source_detail": "Hurricane Database, 2nd generation (HURDAT2), maximum sustained wind column. National Oceanic and Atmospheric Administration (NOAA), National Hurricane Center (NHC), HURDAT2 Atlantic best-track database 1851-2025, file hurdat2-1851-2025-092326.txt, https://www.nhc.noaa.gov/data/#hurdat, retrieved 5 October 2026. Format reference: Landsea and Franklin (2013), Atlantic Hurricane Database Uncertainty and Presentation of a New Database Format, Monthly Weather Review 141, 3576-3592.",
     "how_to_read": "Compare it with wind_near_pr. If the two differ, the storm was stronger somewhere else. In the 2026-10 snapshot, Dorian (2019) peaked at 160 knots far from the island, but its highest wind within 250 km was 75 knots.",
     "caveats": [
-      "The peak can occur thousands of kilometres from Puerto Rico.",
+      "The peak can occur thousands of kilometers from Puerto Rico.",
       "In the 2026-10 snapshot, all 156 values are multiples of 5 knots, which is how HURDAT2 reports wind.",
       "It is a sustained wind, not a gust."
     ],
@@ -735,25 +735,25 @@
     "name": "Peak wind near Puerto Rico (wind_near_pr)",
     "group": "Hurricanes and tropical storms",
     "kind": "variable",
-    "plain": "The highest sustained wind of the storm, in knots, among its best-track positions within 250 km of the centre of Puerto Rico.",
+    "plain": "The highest sustained wind of the storm, in knots, among its best-track positions within 250 km of the center of Puerto Rico.",
     "definition": "wind_near_pr is the largest 'maximum sustained wind' (one-minute average, in knots) among the storm's positions that lie within 250 km of the point 18.22 N, 66.45 W. In the 2026-10 snapshot, values run from 25 to 155 knots, in steps of 5. A knot is 1.15 miles per hour. The category value cat_near_pr is worked out from it.",
     "unit": "knots",
     "value_type": "level",
-    "geography": "Atlantic storms with a best-track position within 250 km of the centre of Puerto Rico (157 storms in the 2026-10 snapshot)",
+    "geography": "Atlantic storms with a best-track position within 250 km of the center of Puerto Rico (157 storms in the 2026-10 snapshot)",
     "coverage": {
       "timeline": "event-based",
       "first": 1851,
       "last": 2025,
       "frequency": "The observatory uses NOAA's release file hurdat2-1851-2025-092326.txt, retrieved on 5 October 2026 (Snapshot 2026-10). The build looks up the newest NOAA file only when it is run with the refresh option; it does not check on its own. NOAA adds each season after it ends and may revise earlier seasons."
     },
-    "method": "Filter the track to positions with a wind value and a distance of 250 km or less from the centre point, then take the maximum wind.",
+    "method": "Filter the track to positions with a wind value and a distance of 250 km or less from the center point, then take the maximum wind.",
     "sources": [
       "nhc_hurdat2"
     ],
     "source_detail": "Hurricane Database, 2nd generation (HURDAT2), maximum sustained wind column and positions. National Oceanic and Atmospheric Administration (NOAA), National Hurricane Center (NHC), HURDAT2 Atlantic best-track database 1851-2025, file hurdat2-1851-2025-092326.txt, https://www.nhc.noaa.gov/data/#hurdat, retrieved 5 October 2026. Format reference: Landsea and Franklin (2013), Atlantic Hurricane Database Uncertainty and Presentation of a New Database Format, Monthly Weather Review 141, 3576-3592.",
     "how_to_read": "It is the storm's own wind at a position near the island. It is not a wind measured on land or in a town.",
     "caveats": [
-      "The position can be as far as 250 km away. In the 2026-10 snapshot, Maria (2017) shows 150 knots from a position about 212 km from the centre. Its best-track winds were 135 knots at 63 km and 115 knots at 26 km.",
+      "The position can be as far as 250 km away. In the 2026-10 snapshot, Maria (2017) shows 150 knots from a position about 212 km from the center. Its best-track winds were 135 knots at 63 km and 115 knots at 26 km.",
       "Positions are 6 hours apart, so the true peak between two positions may be higher or lower."
     ],
     "see_also": [
@@ -782,18 +782,18 @@
     "name": "Saffir-Simpson category near Puerto Rico (cat_near_pr)",
     "group": "Hurricanes and tropical storms",
     "kind": "variable",
-    "plain": "The storm's hurricane category, 1 to 5, based on its peak wind while within 250 km of the centre of Puerto Rico. 0 means below hurricane strength.",
+    "plain": "The storm's hurricane category, 1 to 5, based on its peak wind while within 250 km of the center of Puerto Rico. 0 means below hurricane strength.",
     "definition": "cat_near_pr is the Saffir-Simpson category of wind_near_pr, using the wind thresholds in knots: 137 or more is 5, 113 to 136 is 4, 96 to 112 is 3, 83 to 95 is 2, 64 to 82 is 1, and below 64 is 0. Counts in the 2026-10 snapshot: category 0, 92; 1, 21; 2, 15; 3, 16; 4, 8; 5, 5. 29 storms are category 3 or higher (major).",
     "unit": "category 0 to 5",
     "value_type": "code",
-    "geography": "Atlantic storms with a best-track position within 250 km of the centre of Puerto Rico (157 storms in the 2026-10 snapshot)",
+    "geography": "Atlantic storms with a best-track position within 250 km of the center of Puerto Rico (157 storms in the 2026-10 snapshot)",
     "coverage": {
       "timeline": "event-based",
       "first": 1851,
       "last": 2025,
       "frequency": "The observatory uses NOAA's release file hurdat2-1851-2025-092326.txt, retrieved on 5 October 2026 (Snapshot 2026-10). The build looks up the newest NOAA file only when it is run with the refresh option; it does not check on its own. NOAA adds each season after it ends and may revise earlier seasons."
     },
-    "method": "A chain of thresholds on wind_near_pr. The same thresholds colour the storm tracks in the 3D view and drive its minimum-category filter (the menu's All (incl. tropical storms), Hurricane (Cat 1+), Major (Cat 3+) and Cat 4+).",
+    "method": "A chain of thresholds on wind_near_pr. The same thresholds color the storm tracks in the 3D view and drive its minimum-category filter (the menu's All (incl. tropical storms), Hurricane (Cat 1+), Major (Cat 3+) and Cat 4+).",
     "sources": [
       "nhc_hurdat2"
     ],
@@ -803,7 +803,7 @@
       "Category 0 is not a Saffir-Simpson category. It groups storms below hurricane strength. In the 2026-10 snapshot, 21 of the 92 have winds under 34 knots (tropical depression strength or weaker) and 71 have 34 to 63 knots (tropical storm strength). The 3D hover tip labels every category 0 storm 'Tropical storm', and the list badge shows TS (tropical storm), although some had only depression-strength winds near the island.",
       "The value uses any position within 250 km, whatever its status code. In the 2026-10 snapshot those positions are hurricane (205), tropical storm (204), tropical depression (50), low (8), disturbance (5), subtropical storm (4) and tropical wave (2). No extratropical position is within 250 km.",
       "The scale rates wind only. It does not rate rain, storm surge or flooding, which caused much of the harm in many storms.",
-      "Category 4 and 5 here often come from a position far from the island. In the 2026-10 snapshot, all 13 storms in categories 4 and 5 had a peak-wind position 155 km or more from the centre. The unnamed 1928 storm also recorded its peak wind (140 knots) 63 km away. Do not read the category counts as hits on the island.",
+      "Category 4 and 5 here often come from a position far from the island. In the 2026-10 snapshot, all 13 storms in categories 4 and 5 had a peak-wind position 155 km or more from the center. The unnamed 1928 storm also recorded its peak wind (140 knots) 63 km away. Do not read the category counts as hits on the island.",
       "In the 2026-10 snapshot, Maria (2017) shows category 5 here because of a 150-knot position about 212 km away. Its best-track winds were 135 knots at 63 km and 115 knots at 26 km."
     ],
     "see_also": [
@@ -836,28 +836,28 @@
   },
   {
     "id": "hazards.storm_min_dist_km",
-    "name": "Closest approach to the centre of Puerto Rico (min_dist_km)",
+    "name": "Closest approach to the center of Puerto Rico (min_dist_km)",
     "group": "Hurricanes and tropical storms",
     "kind": "variable",
-    "plain": "How close the storm's nearest recorded position came to the centre of Puerto Rico, in kilometres. It is never more than 250.",
-    "definition": "min_dist_km is the smallest great-circle distance between any best-track position of the storm and the point 18.22 N, 66.45 W, rounded to a whole kilometre. The distance uses an Earth radius of 6,371 km. In the 2026-10 snapshot, values run from 6 to 250.",
-    "unit": "kilometres (whole km)",
+    "plain": "How close the storm's nearest recorded position came to the center of Puerto Rico, in kilometers. It is never more than 250.",
+    "definition": "min_dist_km is the smallest great-circle distance between any best-track position of the storm and the point 18.22 N, 66.45 W, rounded to a whole kilometer. The distance uses an Earth radius of 6,371 km. In the 2026-10 snapshot, values run from 6 to 250.",
+    "unit": "kilometers (whole km)",
     "value_type": "level",
-    "geography": "Atlantic storms with a best-track position within 250 km of the centre of Puerto Rico (157 storms in the 2026-10 snapshot)",
+    "geography": "Atlantic storms with a best-track position within 250 km of the center of Puerto Rico (157 storms in the 2026-10 snapshot)",
     "coverage": {
       "timeline": "event-based",
       "first": 1851,
       "last": 2025,
       "frequency": "The observatory uses NOAA's release file hurdat2-1851-2025-092326.txt, retrieved on 5 October 2026 (Snapshot 2026-10). The build looks up the newest NOAA file only when it is run with the refresh option; it does not check on its own. NOAA adds each season after it ends and may revise earlier seasons."
     },
-    "method": "Haversine distance from every track position to the centre point, minimum, then rounded.",
+    "method": "Haversine distance from every track position to the center point, minimum, then rounded.",
     "sources": [
       "nhc_hurdat2"
     ],
     "source_detail": "Hurricane Database, 2nd generation (HURDAT2) positions. National Oceanic and Atmospheric Administration (NOAA), National Hurricane Center (NHC), HURDAT2 Atlantic best-track database 1851-2025, file hurdat2-1851-2025-092326.txt, https://www.nhc.noaa.gov/data/#hurdat, retrieved 5 October 2026. Format reference: Landsea and Franklin (2013), Atlantic Hurricane Database Uncertainty and Presentation of a New Database Format, Monthly Weather Review 141, 3576-3592.",
     "how_to_read": "A small value means the storm passed near the middle of the island. A value of 100 km can still mean a coastline close to the storm, because the main island is about 180 km long from west to east.",
     "caveats": [
-      "It is measured to the centre point, not to the coast, and not to Vieques, Culebra or Mona.",
+      "It is measured to the center point, not to the coast, and not to Vieques, Culebra or Mona.",
       "Positions are 6 hours apart. The true closest distance may be smaller.",
       "A value of 6 km does not mean the eye passed over land. Positions are rounded to 0.1 degree, about 11 km."
     ],
@@ -889,19 +889,19 @@
     "definition": "track is a list of points. Each point is five values: [longitude, latitude, time, wind, status]. Longitude is in degrees (negative is west). Latitude is in degrees north. Time is text in the form YYYYMMDDHHMM, in Coordinated Universal Time (UTC), as the format of the National Hurricane Center (NHC) specifies. Wind is the maximum sustained wind in knots. Status is a code from the Hurricane Database, 2nd generation (HURDAT2). In the 2026-10 snapshot, the 157 tracks hold 6,624 points, from 1 to 133 per storm. Most points are at 00, 06, 12 and 18 UTC. 189 are at other times, such as landfall or peak intensity.",
     "unit": "list of points [longitude, latitude, time, wind in knots, status]",
     "value_type": "geometry",
-    "geography": "Atlantic storms with a best-track position within 250 km of the centre of Puerto Rico (157 storms in the 2026-10 snapshot)",
+    "geography": "Atlantic storms with a best-track position within 250 km of the center of Puerto Rico (157 storms in the 2026-10 snapshot)",
     "coverage": {
       "timeline": "event-based",
       "first": 1851,
       "last": 2025,
       "frequency": "The observatory uses NOAA's release file hurdat2-1851-2025-092326.txt, retrieved on 5 October 2026 (Snapshot 2026-10). The build looks up the newest NOAA file only when it is run with the refresh option; it does not check on its own. NOAA adds each season after it ends and may revise earlier seasons."
     },
-    "method": "Every row of the storm is kept, so the track covers the storm's whole life and not only the part within 250 km. Positions are rounded to 0.01 degree (HURDAT2 gives 0.1 degree). HURDAT2's record identifier (for example L for landfall), pressure and wind-radius columns are not kept. In the 2026-10 snapshot, 478 of the points lie within 250 km of the centre point.",
+    "method": "Every row of the storm is kept, so the track covers the storm's whole life and not only the part within 250 km. Positions are rounded to 0.01 degree (HURDAT2 gives 0.1 degree). HURDAT2's record identifier (for example L for landfall), pressure and wind-radius columns are not kept. In the 2026-10 snapshot, 478 of the points lie within 250 km of the center point.",
     "sources": [
       "nhc_hurdat2"
     ],
     "source_detail": "HURDAT2 data rows: date, time, status, latitude, longitude, maximum sustained wind. National Oceanic and Atmospheric Administration (NOAA), National Hurricane Center (NHC), HURDAT2 Atlantic best-track database 1851-2025, file hurdat2-1851-2025-092326.txt, https://www.nhc.noaa.gov/data/#hurdat, retrieved 5 October 2026. Format reference: Landsea and Franklin (2013), Atlantic Hurricane Database Uncertainty and Presentation of a New Database Format, Monthly Weather Review 141, 3576-3592.",
-    "how_to_read": "The 3D map joins the points with straight lines. The real path curves between them. Point size and colour follow each point's own wind.",
+    "how_to_read": "The 3D map joins the points with straight lines. The real path curves between them. Point size and color follow each point's own wind.",
     "caveats": [
       "Winds are in 5-knot steps and positions in 0.1 degree. These are best estimates, not exact measurements.",
       "Early records rely on ships and land stations, so older tracks are less certain.",
@@ -953,12 +953,12 @@
       "timeline": "static",
       "frequency": "Fixed in the code"
     },
-    "method": "The observatory applies the thresholds 64, 83, 96, 113 and 137 knots when it works out each storm's category and when the 3D view colours each point by its own wind.",
+    "method": "The observatory applies the thresholds 64, 83, 96, 113 and 137 knots when it works out each storm's category and when the 3D view colors each point by its own wind.",
     "sources": [
       "nhc_hurdat2"
     ],
     "source_detail": "Wind thresholds as the observatory applies them. They match the National Hurricane Center's published Saffir-Simpson Hurricane Wind Scale (nhc.noaa.gov/aboutsshws.php).",
-    "how_to_read": "Colours in the 3D view run from grey (category 0) through blue, green, orange and red to dark red (category 5).",
+    "how_to_read": "Colors in the 3D view run from gray (category 0) through blue, green, orange and red to dark red (category 5).",
     "caveats": [
       "Category 0 is added by the observatory and is not part of the official scale.",
       "A storm's category near Puerto Rico is not its category at landfall."
@@ -987,11 +987,11 @@
     "name": "Hurricane tracks (map layer, 3D view)",
     "group": "Hurricanes and tropical storms",
     "kind": "layer",
-    "plain": "A 3D map layer that draws the path of storms near Puerto Rico since 1851, coloured by category near the island. At first it shows only category 3 and higher; you can filter by years and strength and play it through time.",
-    "definition": "The layer 'Storm tracks within 250 km' draws each storm's track as a line and each recorded position as a dot. Line colour is cat_near_pr. Line width is 1.5 pixels plus the category. Dot colour follows each point's own wind with the same thresholds, and dot size grows with that wind. Hovering a line shows the name, year, category, peak wind near the island and closest distance. A list shows the 25 strongest storms in the window.",
+    "plain": "A 3D map layer that draws the path of storms near Puerto Rico since 1851, colored by category near the island. At first it shows only category 3 and higher; you can filter by years and strength and play it through time.",
+    "definition": "The layer 'Storm tracks within 250 km' draws each storm's track as a line and each recorded position as a dot. Line color is cat_near_pr. Line width is 1.5 pixels plus the category. Dot color follows each point's own wind with the same thresholds, and dot size grows with that wind. Hovering a line shows the name, year, category, peak wind near the island and closest distance. A list shows the 25 strongest storms in the window.",
     "unit": "map lines and points",
     "value_type": "geometry",
-    "geography": "Atlantic storms with a best-track position within 250 km of the centre of Puerto Rico (157 storms in the 2026-10 snapshot)",
+    "geography": "Atlantic storms with a best-track position within 250 km of the center of Puerto Rico (157 storms in the 2026-10 snapshot)",
     "coverage": {
       "timeline": "event-based",
       "first": 1851,
@@ -1003,7 +1003,7 @@
       "nhc_hurdat2"
     ],
     "source_detail": "hurricanes.json, built from the Hurricane Database, 2nd generation (HURDAT2) of the US National Oceanic and Atmospheric Administration (NOAA). National Oceanic and Atmospheric Administration (NOAA), National Hurricane Center (NHC), HURDAT2 Atlantic best-track database 1851-2025, file hurdat2-1851-2025-092326.txt, https://www.nhc.noaa.gov/data/#hurdat, retrieved 5 October 2026. Format reference: Landsea and Franklin (2013), Atlantic Hurricane Database Uncertainty and Presentation of a New Database Format, Monthly Weather Review 141, 3576-3592.",
-    "how_to_read": "Thicker lines mean a stronger storm near the island. Colour follows the category: grey 0, blue 1, green 2, orange 3, red 4, dark red 5. A line may extend far beyond Puerto Rico, because the whole track is drawn. When you switch the layer on, it shows only category 3 and higher storms (29 of the 157 in the 2026-10 snapshot). Choose All (incl. tropical storms) to see every storm in the file.",
+    "how_to_read": "Thicker lines mean a stronger storm near the island. Color follows the category: gray 0, blue 1, green 2, orange 3, red 4, dark red 5. A line may extend far beyond Puerto Rico, because the whole track is drawn. When you switch the layer on, it shows only category 3 and higher storms (29 of the 157 in the 2026-10 snapshot). Choose All (incl. tropical storms) to see every storm in the file.",
     "caveats": [
       "Lines join recorded positions with straight segments.",
       "The 3D hover tip labels every category 0 storm 'Tropical storm', and the list badge shows TS (tropical storm), although some had only depression-strength winds near the island.",
@@ -1129,7 +1129,7 @@
     "group": "Protected areas (PAD-US)",
     "kind": "variable",
     "plain": "A short code for the type of protected area. Examples are local park (LP), state conservation area (SCA), marine protected area (MPA) and national wildlife refuge (NWR). The codes come from PAD-US, the Protected Areas Database of the United States, kept by the US Geological Survey.",
-    "definition": "Des_Tp is the designation type in PAD-US: the legal or planning category that created or recognises the area. In the 2026-10 snapshot, 22 codes occur in Puerto Rico. Local parks (LP) are 411 of the 665 records. The same place can appear under several types.",
+    "definition": "Des_Tp is the designation type in PAD-US: the legal or planning category that created or recognizes the area. In the 2026-10 snapshot, 22 codes occur in Puerto Rico. Local parks (LP) are 411 of the 665 records. The same place can appear under several types.",
     "unit": "designation code (text)",
     "value_type": "code",
     "geography": "Puerto Rico: 665 records in the 2026-10 snapshot, on the main island, Vieques, Culebra, Mona and nearby waters",
@@ -1321,7 +1321,7 @@
     "group": "Protected areas (PAD-US)",
     "kind": "variable",
     "plain": "A short code for the agency or group that manages the protected area. In the 2026-10 snapshot, 411 of the 665 records, all local parks, have no manager recorded.",
-    "definition": "Mang_Name is the manager name code in the Protected Areas Database of the United States (PAD-US). In the 2026-10 snapshot, 13 codes occur. PAD-US describes the field as the land manager or administrative agency, standardised for the US. This file keeps the manager code only. It has no owner field.",
+    "definition": "Mang_Name is the manager name code in the Protected Areas Database of the United States (PAD-US). In the 2026-10 snapshot, 13 codes occur. PAD-US describes the field as the land manager or administrative agency, standardized for the US. This file keeps the manager code only. It has no owner field.",
     "unit": "manager code (text)",
     "value_type": "code",
     "geography": "Puerto Rico: 665 records in the 2026-10 snapshot, on the main island, Vieques, Culebra, Mona and nearby waters",
@@ -1405,7 +1405,7 @@
       "Records overlap. A refuge can appear as a proclamation boundary, a wildlife refuge and a marine area, so a sum counts the same land more than once.",
       "The 37 marine protected area records in the 2026-10 snapshot include open water, so their acres are not land area.",
       "Some records are tiny. In the 2026-10 snapshot, 90 show 0 acres, and the median record is 5 acres.",
-      "The map popups print acres. The rest of the observatory uses square kilometres."
+      "The map popups print acres. The rest of the observatory uses square kilometers."
     ],
     "see_also": [
       "land.padus_unit_name",

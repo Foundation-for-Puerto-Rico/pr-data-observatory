@@ -2,7 +2,7 @@
 
 Date: 2026-11-14. Status: **approved by the project lead on 2026-11-14 ("Approve, start step 1"): decision 107 (a) to (h) as proposed. Step 1 is being built on branch `data/people-movement`.** This pull request changes no page and publishes no data. It adds this document and 27 rows to the wanted-data list (`site/data/wanted.json`), and moves one row (`fdic`) from candidate to checked.
 
-**In one paragraph.** On 2026-11-14 the project lead asked what data the observatory could add, as map layers and in the catalogue, to support multidimensional analysis of Puerto Rico. They then asked for layers that do not exist yet but can be computed from data the observatory already holds, "like in algebra when you get the value of X based on the other variables". This proposal answers both. Track A adds sources: seven were tested that day and returned Puerto Rico rows with no key, and ten are still to confirm. Track B adds nine computed layers that need no new source. The observatory has room: it holds 140 MB of data against a limit of 1,000 MB (13%).
+**In one paragraph.** On 2026-11-14 the project lead asked what data the observatory could add, as map layers and in the catalog, to support multidimensional analysis of Puerto Rico. They then asked for layers that do not exist yet but can be computed from data the observatory already holds, "like in algebra when you get the value of X based on the other variables". This proposal answers both. Track A adds sources: seven were tested that day and returned Puerto Rico rows with no key, and ten are still to confirm. Track B adds nine computed layers that need no new source. The observatory has room: it holds 140 MB of data against a limit of 1,000 MB (13%).
 
 ## What the observatory holds today (main, 2026-11-14)
 
@@ -41,7 +41,7 @@ Two limits cut across the domains:
 
 ### Tested on 2026-11-14 (no key; each returned Puerto Rico rows)
 
-One request was made to each source. The licence and terms of each still need the usual check before anything is collected.
+One request was made to each source. The license and terms of each still need the usual check before anything is collected.
 
 | Row | What it adds | Level | What the test returned |
 |---|---|---|---|
@@ -64,7 +64,7 @@ These rows were tested on 2026-10-05 or later and wait only for a decision to bu
 - Race and ethnicity (`acs-race-ethnicity`) and migration (`pr-migration`) from the ACS; population by age and sex each year (`pop-estimates`).
 - Storm surge by hurricane category (`storm-surge`).
 - Land cover each year (`landcover-annual`, `esa-worldcover`) and tree cover loss (`forest-loss`).
-- Head Start sites (`head-start`, licence not stated) and college data (`college-scorecard`).
+- Head Start sites (`head-start`, license not stated) and college data (`college-scorecard`).
 - Hotel occupancy by tourism region (`tourism-stats`) and cruise calls (`cruise`).
 
 ### Not confirmed (rows added as candidates)
@@ -148,14 +148,14 @@ Building step 1 changed four things in the plan above. Each is a finding, not a 
 
 ### Step 3 as built, first part (2026-11-16)
 
-- **Built: the flood area** (`facility_exposure.py`, `docs/facility-exposure.md`). Seven overlaid datasets by municipio: public facilities, public schools and their students, and kilometres of main road inside FEMA's 1% flood area. In Puerto Rico: 327 of 2,274 facilities (corrected; first published as 356 of 2,508), 96 schools with 27,178 students, and 596.3 km of main road.
+- **Built: the flood area** (`facility_exposure.py`, `docs/facility-exposure.md`). Seven overlaid datasets by municipio: public facilities, public schools and their students, and kilometers of main road inside FEMA's 1% flood area. In Puerto Rico: 327 of 2,274 facilities (corrected; first published as 356 of 2,508), 96 schools with 27,178 students, and 596.3 km of main road.
 - **Changed from the plan:** bridges are left out, because a bridge over a river stands in the flood area by design.
 - **Still to do in step 3:** sea level rise and landslide susceptibility, and the facility points with their flag on the map (public school points with them).
 
 ### Step 3 as built, second part (2026-11-16)
 
 - **Built: sea level rise and landslides** in the same file and group (renamed *Facilities and roads in hazard areas*): ten more overlaid datasets. NOAA's 3 ft area: 17 facilities (0.7%; first published as 19), 17.0 km of main road. USGS High or higher landslide susceptibility (main island): 26 facilities (1.2%; first published as 68), 474.3 km of main road (8.9%).
-- **Changed from the plan:** roads are read every 20 m for these two hazards (NOAA's coastline is too detailed to cut every road by it). A building's own cell reads low on the landslide map because buildings stand on levelled pads; the caveat says so, and roads are the better guide.
+- **Changed from the plan:** roads are read every 20 m for these two hazards (NOAA's coastline is too detailed to cut every road by it). A building's own cell reads low on the landslide map because buildings stand on leveled pads; the caveat says so, and roads are the better guide.
 - **Room made first:** the area profile reads `catalog_domains.json` (7 KB compressed) instead of the whole catalog index (42 KB), which now loads on first use.
 - **Still to do in step 3:** the facility points with their flag on the map, and public school points as a layer.
 
@@ -168,7 +168,7 @@ Building step 1 changed four things in the plan above. Each is a finding, not a 
 
 - **Built: bank offices, deposits and home loans** (`credit.py`, `docs/credit.md`). Six yearly datasets by municipio: offices of FDIC-insured banks and their deposits (June 30, 2000-2026), and home loans made, home purchase loans, their amount and the denial share (HMDA, 2018-2025). Puerto Rico had 571 bank offices in 2006 and 260 in 2026; 14,269 home loans were made in 2025 and 18.5% of decided applications were denied.
 - **Changed from the plan:**
-  - **No office points.** Since 2023 the FDIC places about half the offices at the centre of their ZIP code (113 of 260 have a street-level location), so the observatory counts offices by municipio and draws none. Geocoding the addresses is left for step 6, which needs bank points.
+  - **No office points.** Since 2023 the FDIC places about half the offices at the center of their ZIP code (113 of 260 have a street-level location), so the observatory counts offices by municipio and draws none. Geocoding the addresses is left for step 6, which needs bank points.
   - **HMDA by municipio, not by census tract.** The rows describe single borrowers, and municipio counts with a floor of 10 keep them unidentifiable.
   - **Rent vouchers are not published.** HUD leaves out every tract with 10 or fewer voucher holders: the 176 tracts shown hold 5,841 of about 26,000 vouchers in use. The `hud-vouchers` row is blocked with the numbers.
 
@@ -206,9 +206,9 @@ Building step 1 changed four things in the plan above. Each is a finding, not a 
 - **What it shows.** On the island, residents live 2.81 km by road from a supermarket on average, 2.24 km from a pharmacy and 4.58 km from a fire or EMS station. 16.0% live more than 5 km from a supermarket. Maricao, Comerío and Yabucoa are the farthest from a supermarket.
 - **Checks.** Most of OpenStreetMap's shops have an Overture shop within 300 m (76.0% of supermarkets, 87.1% of pharmacies, 84.1% of banks); the rest are added. Overture alone gives island figures within 0.15 km.
 - **Changed from the plan:**
-  - Banks come from Overture and OpenStreetMap, not FDIC: half of FDIC's offices sit at the centre of their ZIP code, and FDIC leaves out the cooperativas.
+  - Banks come from Overture and OpenStreetMap, not FDIC: half of FDIC's offices sit at the center of their ZIP code, and FDIC leaves out the cooperativas.
   - A distance to any food store was added: in small towns the only food stores either directory lists are colmados.
-  - The libraries are USAC's list, which also counts community and church libraries and technology centres, so the label says "a library".
+  - The libraries are USAC's list, which also counts community and church libraries and technology centers, so the label says "a library".
 - **Not done:** travel time and transit; the shops are not drawn.
 
 ### Step 7 as built, first part (2026-11-18)
@@ -217,7 +217,7 @@ Building step 1 changed four things in the plan above. Each is a finding, not a 
 - **What it shows.** Bachelor's degrees fell from 20,459 to 14,779 (−28%); education degrees fell most (−57%); health and STEM held.
 - **Changed from the plan:**
   - Read straight from NCES's IPEDS files, not the Urban Institute's portal, which has no completions after 2021 for Puerto Rico.
-  - Counted where the college reports: NUC University reports all its campuses and online programmes from Bayamón (29.4% of the island's awards in 2023-24). Every definition says so.
+  - Counted where the college reports: NUC University reports all its campuses and online programs from Bayamón (29.4% of the island's awards in 2023-24). Every definition says so.
 - **Still to do in step 7:** school conditions from the Civil Rights Data Collection (2021-22) and reading and math proficiency (newest readable by school: 2017-18).
 
 ### Step 7 as built, second part (2026-11-18)
@@ -259,7 +259,7 @@ Building step 1 changed four things in the plan above. Each is a finding, not a 
 - **Built: residents cut off from hospitals** (`cutoff.py`, `docs/cutoff.md`), by municipio and barrio: the share with no open road to a hospital when the roads in FEMA's 1% flood area close, when bridges in poor condition close, and both.
 - **What it shows.** 16.2% of residents (range 14.9% to 24.5%) in a worst case of floods; half of them live on dry streets. Bridges in poor condition alone cut off 0.1%.
 - **Checks.** 5 of the 8 WCRP communities whose plans say they are cut off come out cut off, against 16 of the other 67.
-- **Changed from the plan:** the test is a hospital, not the town centre (a town centre in the flood area is often itself cut off); expressways and sound bridges stay open; landslides are left out.
+- **Changed from the plan:** the test is a hospital, not the town center (a town center in the flood area is often itself cut off); expressways and sound bridges stay open; landslides are left out.
 
 ### Step 9 as built, fourth part (2026-11-23)
 
@@ -290,7 +290,7 @@ Building step 1 changed four things in the plan above. Each is a finding, not a 
 
 ## Rules that apply to every step
 
-- Sources a script can read with no key. No data from the Contralor. Licence and terms confirmed before collecting.
+- Sources a script can read with no key. No data from the Contralor. License and terms confirmed before collecting.
 - The newest source, or one a script can refresh, over a static copy.
 - Private homes and sensitive sites are counted, never drawn or named.
 - Rows about single people, loans or households (`hmda`, `nppes`, `fema-housing-damage`) are published as counts and sums only, with a minimum count per cell.

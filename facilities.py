@@ -7,10 +7,10 @@ libraries, as points on the 2D map and the 3D view and as counts for the 78 muni
     python facilities.py --only lihtc          # after saving a new cache/facilities/lihtcpub.zip by hand (see "lihtc" below): rebuild only the LIHTC layer and counts
     python facilities.py --check               # rebuild from the cache and exit 1 when a published file is not what the cache gives (no network, nothing written)
 
-Sources, no key, each read through its live service (never a static copy) except HUD's LIHTC database, each layer labelled with its own vintage:
-  hud   HUD eGIS, "Public Housing Developments" (ArcGIS REST feature service, updated quarterly; licence: U.S. Public Domain, as HUD's open data catalog states).
+Sources, no key, each read through its live service (never a static copy) except HUD's LIHTC database, each layer labeled with its own vintage:
+  hud   HUD eGIS, "Public Housing Developments" (ArcGIS REST feature service, updated quarterly; license: U.S. Public Domain, as HUD's open data catalog states).
         One point per development: the building with the most units. HUD says to map only points geocoded to the rooftop or the ZIP+4 centroid (LVL2KX R or 4):
-        the others sit at the centre of their block group or tract, so they are counted in their municipio but not drawn.
+        the others sit at the center of their block group or tract, so they are counted in their municipio but not drawn.
   lihtc HUD USER, National Low-Income Housing Tax Credit (LIHTC) Database (LIHTCPUB.ZIP, released once a year in the spring; US government work). HUD USER
         answers scripts with a bot check, so the archive is saved by hand from https://www.huduser.gov/lihtc/lihtcpub.zip to cache/facilities/lihtcpub.zip and
         never fetched here (HANDOFF decision 71; HUD's eGIS layer of the same name stops at projects placed in service in 2020). The build reads LIHTCPUB.xlsx
@@ -22,7 +22,7 @@ Sources, no key, each read through its live service (never a static copy) except
         On a clean runner with neither the archive nor the cache, the published layer and its three counts are kept as they are.
   usgs  USGS The National Map, National Structures Dataset (ArcGIS REST, layer "Fire Stations/EMS Stations"; US federal data, public domain).
   osm   OpenStreetMap through the Overpass API (amenity=police; Open Database License 1.0, credit "© OpenStreetMap contributors").
-  usac  USAC open data, "E-Rate Supplemental Entity Information" (Socrata, updated daily; licence: Public Domain, as the dataset states): active entities of
+  usac  USAC open data, "E-Rate Supplemental Entity Information" (Socrata, updated daily; license: Public Domain, as the dataset states): active entities of
         type Library that USAC marks as a public library. Each library is placed in the municipio of its address; its pin is drawn only where USAC's
         coordinates fall within 1 km of that municipio, because some coordinates point to another town.
 
@@ -103,7 +103,7 @@ PLACE_ALIAS = {"rio piedras": "San Juan", "santurce": "San Juan", "hato rey": "S
 SOURCES = {
     "hud_public_housing": {"name": "HUD — Public Housing Developments (eGIS open data)", "url": "https://hudgis-hud.opendata.arcgis.com/datasets/HUD::public-housing-developments", "license": "U.S. Public Domain (HUD open data catalog)",
                            "note": "One point per public housing development. The observatory publishes the development's name, type, units, municipio and point, never the housing authority's telephone, e-mail or director, nor the tenants' figures."},
-    "hud_lihtc": {"name": "HUD — National Low-Income Housing Tax Credit (LIHTC) Database", "url": "https://www.huduser.gov/portal/datasets/lihtc/property.html", "license": "US Government work (17 U.S.C. 105: no copyright in the United States); HUD USER states no other licence for the database",
+    "hud_lihtc": {"name": "HUD — National Low-Income Housing Tax Credit (LIHTC) Database", "url": "https://www.huduser.gov/portal/datasets/lihtc/property.html", "license": "US Government work (17 U.S.C. 105: no copyright in the United States); HUD USER states no other license for the database",
                   "note": "Every LIHTC project placed in service in Puerto Rico that the Puerto Rico Housing Finance Authority reported to HUD. The observatory publishes each drawn project's name, municipio, units, low-income units, year placed in service and point, never its street address; projects for people who are homeless or living with HIV, and care homes for older adults, are counted, not drawn or named."},
     "usgs_structures": {"name": "USGS — The National Map, National Structures Dataset", "url": "https://carto.nationalmap.gov/arcgis/rest/services/structures/MapServer", "license": "US federal government data (public domain)",
                         "note": "Fire and EMS stations of Puerto Rico. The observatory publishes each station's name, type, municipio and point, not its address."},
@@ -498,7 +498,7 @@ def compute(refresh=(), offline=False):
             "Police stations and other police facilities mapped in OpenStreetMap (amenity=police), in the municipio that holds each point. A station mapped twice (a point and its building, same name, within 30 m) counts once. Volunteers map them, so a missing station is possible.",
             {str(year): col(built["osm"][1]["police_stations"])}, ["osm"], f"OpenStreetMap, data of {V['osm']}", noPerHU=True),
         var("libraries", "Education · Libraries", "Public libraries (USAC E-Rate)",
-            "Active libraries registered for the federal E-Rate program that USAC marks as public libraries, in the municipio of their address. In Puerto Rico the list includes community technology centres and other community libraries registered as public libraries, not only municipal libraries.",
+            "Active libraries registered for the federal E-Rate program that USAC marks as public libraries, in the municipio of their address. In Puerto Rico the list includes community technology centers and other community libraries registered as public libraries, not only municipal libraries.",
             {str(year): col(built["usac"][1]["libraries"])}, ["usac_erate"], f"USAC E-Rate Supplemental Entity Information, updated {V['usac']}", noPerHU=True),
     ]
     notes = {"public_housing": built["hud"][2], "lihtc": built["lihtc"][2], "fire_stations": built["usgs"][2], "police_stations": built["osm"][2], "libraries": built["usac"][2],

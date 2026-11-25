@@ -34,9 +34,9 @@ All four are built by `transport_inventories.py` (cache `cache/inventories/`) an
 
 ## How the map draws them
 
-The `sized` kind of `core/facilities.js` (first used by the power plants) is now general: a circle's area is in proportion to a number (`prop`, radius `k·√value`, at least `min`), or one radius for all (`r`); the colour is a category; `hollow` names the features drawn hollow (dashed in 2D) and the legend's label for them; `unit` is the legend's size note.
+The `sized` kind of `core/facilities.js` (first used by the power plants) is now general: a circle's area is in proportion to a number (`prop`, radius `k·√value`, at least `min`), or one radius for all (`r`); the color is a category; `hollow` names the features drawn hollow (dashed in 2D) and the legend's label for them; `unit` is the legend's size note.
 
-- Bridges: area by daily traffic (k 0.024, min 2.5), colour by condition in ColorBrewer RdBu (poor `#b2182b`, fair `#f4a582`, good `#2166ac`; tunnels grey), closed bridges hollow. The file is sorted busiest first, so quieter bridges are drawn on top.
+- Bridges: area by daily traffic (k 0.024, min 2.5), color by condition in ColorBrewer RdBu (poor `#b2182b`, fair `#f4a582`, good `#2166ac`; tunnels gray), closed bridges hollow. The file is sorted busiest first, so quieter bridges are drawn on top.
 - Airports: one radius (6), dark blue for the certificated airports, light blue for the other public-use airports, pink for the heliports.
 - Ferries: a dashed blue line, wider with passengers (650,000 a year at the widest).
 - EV charging: area by ports (k 3.7, min 3.5), green with DC fast charging, light blue Level 2 only, hollow when temporarily unavailable.

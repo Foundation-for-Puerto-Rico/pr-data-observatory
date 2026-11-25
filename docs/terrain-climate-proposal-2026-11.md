@@ -9,7 +9,7 @@ Date: 2026-11-04. Status: **approved by the project lead on 2026-11-04 (decision
 Two LinkedIn posts the project lead shared on 2026-11-03:
 
 - **friGIS, Phase 2 (EcoRestoration Alliance):** a city digital twin first, then PALM-4U simulations of air temperature, thermal comfort (PET, UTCI), surface temperature and wind, day and night, made explorable for non-experts. The lesson: model output only helps when a non-expert can explore it, which is the observatory's purpose too.
-- **A browser 3D terrain tool (built for defence planning):** elevation profiles, slope and climb, line of sight, sun direction and vertical exaggeration. The terrain methods have civilian uses here. **The defence features (own and enemy positions, cover and concealment, fire sectors) are out of scope** and are not proposed.
+- **A browser 3D terrain tool (built for defense planning):** elevation profiles, slope and climb, line of sight, sun direction and vertical exaggeration. The terrain methods have civilian uses here. **The defense features (own and enemy positions, cover and concealment, fire sectors) are out of scope** and are not proposed.
 
 ## What the observatory already has
 
@@ -35,7 +35,7 @@ Every satellite and lidar step reads Cloud Optimized GeoTIFFs. `landslide.py` de
 
 ### Step 1. Daytime surface heat by barrio (M)
 **Built on 2026-11-04 (branch `data/urban-heat-landsat`): `heat.py`, `heat_series.json` and `heat_barrio.json`, shaded on the Economy tab; method and checks in `docs/heat.md`. Sentinel-2 vegetation followed on the same day (branch `data/vegetation-sentinel2`): `vegetation.py`, `vegetation_series.json` and `vegetation_barrio.json`, from the same summers and on the same 60 m grid, so the two compare; `docs/vegetation.md`.**
-A dry-season and a summer composite of Landsat 8 and 9 surface temperature (about 10:30 local time), cloud-masked, summarised by barrio and municipio: the median and the hottest tenth of the land. Shown next to Sentinel-2 vegetation from the same months. Each figure is labelled **surface** temperature: a roof or a parking lot can be 20 °C or more above the air on a sunny day, so this shows hot surfaces, not what people feel.
+A dry-season and a summer composite of Landsat 8 and 9 surface temperature (about 10:30 local time), cloud-masked, summarized by barrio and municipio: the median and the hottest tenth of the land. Shown next to Sentinel-2 vegetation from the same months. Each figure is labeled **surface** temperature: a roof or a parking lot can be 20 °C or more above the air on a sunny day, so this shows hot surfaces, not what people feel.
 
 ### Step 2. Night-time surface heat (M)
 **Built on 2026-11-04 (branch `data/night-heat-ecostress`): `ecostress.py`, `night_heat_series.json` and `night_heat_barrio.json`, from the same summers and grid as steps 1; FPR's Earthdata token worked with no new terms; the build runs in GitHub Actions (`ecostress.yml`). Method and checks in `docs/ecostress.md`.**
@@ -43,7 +43,7 @@ NASA ECOSTRESS passes at varying hours, night included, at 70 m. Night heat matt
 
 ### Step 3. Heat and people (S, after step 1)
 **Built on 2026-11-04 (branch `knowledge/urban-heat`): the Knowledge Area page `urban-heat.html` with `urban_heat.json` (`urban_heat.py`), barrio by barrio: morning heat, night heat and greenness beside residents 65 and older, poverty, households without a vehicle, people living alone and drive time to a general hospital, with margins of error; never combined, no conclusions. The Community Resilience Estimates have no barrio values, so they are not on the page. Published with the In review marker and the AI notice.**
-Set the barrio heat figures against data already live: residents 65 and older, poverty, households without a vehicle, distance to health centres, the Community Resilience Estimates. Shown side by side in a Knowledge Area page "Urban heat", never combined into one score, with no conclusion in the text (the rule of the FEMA funding page, decision 72).
+Set the barrio heat figures against data already live: residents 65 and older, poverty, households without a vehicle, distance to health centers, the Community Resilience Estimates. Shown side by side in a Knowledge Area page "Urban heat", never combined into one score, with no conclusion in the text (the rule of the FEMA funding page, decision 72).
 
 ### Step 4. Terrain on the ground: climb on walks and sun direction (M, plus S)
 **Built on 2026-11-04 (branch `data/walk-climb`): `climb.py` with `walknet.nearest_paths`, `climb_series.json` and `climb_barrio.json` (round-trip climb and walks steeper than a ramp may be, USGS 3DEP 10 m, refreshed with the nightly transit refresh; `docs/climb.md`), and a "Light from" control in the 3D view (the hillshade's light direction, tied to the map). The real sun position for a date and hour was left out: a fixed direction reads relief better.**
@@ -54,18 +54,18 @@ Set the barrio heat figures against data already live: residents 65 and older, p
 For each barrio, whether any registered tower within a set distance has a clear line over the terrain to the barrio's populated blocks. Published as the residents in blocks no tower can see. **Label it as terrain-only**: it ignores trees, buildings, antenna height and power, and frequency, and the FCC registry includes towers that carry no cellular service. It is a first check of possible gaps for emergency communications, not a coverage map, and it is never compared with a carrier's coverage claims.
 
 ### Step 6. Street-level heat simulation, PALM-4U pilot (XL, with a partner)
-PALM-4U simulates air temperature, wind and the comfort indices PET and UTCI on a grid of a few metres, day and night, and can test what trees, shade or cool roofs would change. It needs 3D buildings, trees and surface materials for the pilot area and high-performance computing. FPR would not run it: a university or research centre would, for one or two pilot neighbourhoods (for example Santurce or Río Piedras), and the observatory would publish summaries and map tiles of the results, labelled as model output for a stated day (row `urban-microclimate-sim`). Approaching a partner is an FPR decision and needs leadership approval.
+PALM-4U simulates air temperature, wind and the comfort indices PET and UTCI on a grid of a few meters, day and night, and can test what trees, shade or cool roofs would change. It needs 3D buildings, trees and surface materials for the pilot area and high-performance computing. FPR would not run it: a university or research center would, for one or two pilot neighborhoods (for example Santurce or Río Piedras), and the observatory would publish summaries and map tiles of the results, labeled as model output for a stated day (row `urban-microclimate-sim`). Approaching a partner is an FPR decision and needs leadership approval.
 
 ## What is not proposed
 
-- Defence or targeting features of the source post.
+- Defense or targeting features of the source post.
 - Treating surface temperature as air temperature, or any heat "risk score" that merges heat with social data.
 - Publishing satellite images or lidar tiles (size and the map budget): summaries only.
 - A radio coverage model.
 
 ## Compliance and approvals
 
-- Not federal grant work (NASA, USGS and FCC open data; no HUD, USDA or EDA programme), so no Finance and Compliance review is needed for steps 0-5 (decision 9 applies to grant content).
+- Not federal grant work (NASA, USGS and FCC open data; no HUD, USDA or EDA program), so no Finance and Compliance review is needed for steps 0-5 (decision 9 applies to grant content).
 - Health framing: the pages describe exposure; they give no medical advice and take no policy position.
 - Step 6 (a partnership) and any public statement about heat adaptation need leadership approval.
 

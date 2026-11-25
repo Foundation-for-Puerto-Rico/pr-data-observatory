@@ -17,7 +17,7 @@
   const fmt = (v, d = 0) => v == null || !isFinite(v) ? '—' : Number(v).toLocaleString(loc(), { minimumFractionDigits: d, maximumFractionDigits: d });
   const pct = (v, d = 1) => v == null || !isFinite(v) ? '—' : fmt(v, d) + (lang() === 'es' ? ' %' : '%');
   const escH = (s) => (typeof esc === 'function' ? esc(s) : String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'));
-  // what is listed today for a pair (transit_links.py), from the most service down; colours: green for a timetable, purple and orange as on the map layer
+  // what is listed today for a pair (transit_links.py), from the most service down; colors: green for a timetable, purple and orange as on the map layer
   const STATUS = {
     timetable: { label: 'Timetabled route', color: '#1b7837' },
     expired: { label: 'Timetable expired', color: '#8a8f99' },
@@ -90,8 +90,8 @@
       card(STATUS.publico.color, T('With only a público route on the 2020 list'), fmt(b.publico.workers), sub('publico')),
       card(STATUS.none.color, T('With no route listed'), fmt(b.none.workers), sub('none')),
       card('#8a6d1f', T('Simulated connections'), fmt(p.simulated), T('pairs with {w} workers or more and no timetabled route; {n} workers', { w: fmt(D.d.rules.sim_min_workers), n: fmt(p.simulated_workers) })),
-      ...(tt.pairs_with_a_journey != null ? [card('#1b7837', T('Pairs with a journey by timetable'), fmt(tt.pairs_with_a_journey), T('of {n} pairs, town centre to town centre leaving from 6 to 9 a.m.; a median of {r} times as long as by car', { n: fmt(p.pairs), r: fmt(ratio, 1) })),
-        card('#8a8f99', T('Town centres with no stop of a weekday timetable within 1 km'), T('{n} of {m}', { n: fmt(tt.centres_without_a_stop), m: fmt(D.ms.length) }), T('there a trip starts with a longer walk, a car or a público'))] : [])].join('')}</div>`;
+      ...(tt.pairs_with_a_journey != null ? [card('#1b7837', T('Pairs with a journey by timetable'), fmt(tt.pairs_with_a_journey), T('of {n} pairs, town center to town center leaving from 6 to 9 a.m.; a median of {r} times as long as by car', { n: fmt(p.pairs), r: fmt(ratio, 1) })),
+        card('#8a8f99', T('Town centers with no stop of a weekday timetable within 1 km'), T('{n} of {m}', { n: fmt(tt.centres_without_a_stop), m: fmt(D.ms.length) }), T('there a trip starts with a longer walk, a car or a público'))] : [])].join('')}</div>`;
     $('#tlNow').dataset.done = '1';
   }
 
@@ -126,7 +126,7 @@
       + ['none', 'publico'].map(k => `<span class="pm-keyrow"><i class="tl-key" style="border-top:3px dashed ${STATUS[k].color}"></i>${escH(T('Simulated connection'))}: ${escH(T(STATUS[k].label).toLowerCase())}</span>`).join('')
       + `<span class="pm-keyrow">${escH(T('Thicker lines: more workers'))}</span></div>`;
     $('#tlMap svg').addEventListener('click', (e) => { const p = e.target.closest('path[data-id]'); if (!p) return; S.m = S.m === p.dataset.id ? '' : p.dataset.id; S.all = false; writeHash(); drawPick(); drawMap(); drawPairs(); });
-    $('#tlMapNote').textContent = T('Select a municipio to see only its connections. Simulated connections follow the fastest roads between two town centres (OpenStreetMap); they are not proposed routes.');
+    $('#tlMapNote').textContent = T('Select a municipio to see only its connections. Simulated connections follow the fastest roads between two town centers (OpenStreetMap); they are not proposed routes.');
     $('#tlMap').dataset.done = '1';
   }
 
@@ -146,14 +146,14 @@
     return `<span class="tl-chip" style="--c:${st.color}">${escH(T(st.label))}</span>${more ? ` <small>${escH(more)}</small>` : ''}`;
   }
   function byTimetable(p) {   // the fastest journey by timetable, its multiple of the car and its transfers, or why there is none
-    if (p.tt_best == null) return p.tt_why ? `<small>${escH(T(p.tt_why === 1 ? 'no stop within 1 km of a centre' : 'none within 3 hours'))}</small>` : '—';
+    if (p.tt_best == null) return p.tt_why ? `<small>${escH(T(p.tt_why === 1 ? 'no stop within 1 km of a center' : 'none within 3 hours'))}</small>` : '—';
     const x = p.tt_xfers ? T(p.tt_xfers === 1 ? '1 transfer' : '{n} transfers', { n: fmt(p.tt_xfers) }) : T('direct');
     return `${fmt(p.tt_best)} <small>(${escH(p.tt_ratio != null ? T('{r} times the car', { r: fmt(p.tt_ratio, 1) }) + '; ' : '')}${escH(x)})</small>`;
   }
   function drawPairs() {
     const list = select(D.P, S.m, S.s, S.sort), t = tally(list), total = list.reduce((s, p) => s + p.workers, 0);
     const shown = S.all ? list : list.slice(0, TOP);
-    const cap = S.m ? T('{n} pairs of {m} with workers travelling between them: {w} workers; {a} between pairs with a timetabled route, {b} with only a público route on the 2020 list, {c} with no route listed.', { n: fmt(list.length), m: name(S.m), w: fmt(total), a: fmt(t.timetable.workers), b: fmt(t.publico.workers), c: fmt(t.none.workers) })
+    const cap = S.m ? T('{n} pairs of {m} with workers traveling between them: {w} workers; {a} between pairs with a timetabled route, {b} with only a público route on the 2020 list, {c} with no route listed.', { n: fmt(list.length), m: name(S.m), w: fmt(total), a: fmt(t.timetable.workers), b: fmt(t.publico.workers), c: fmt(t.none.workers) })
       : T('{n} pairs of municipios, {w} workers. Select a heading to sort. Workers are survey estimates ({period}); ± is the margin of error.', { n: fmt(list.length), w: fmt(total), period: D.d.flows.period });
     const row = (p) => `<tr><th scope="row">${escH(pairName(p))}${p.low ? ` <small title="${escH(T('The margin of error is as large as the estimate'))}">${escH(T('low reliability'))}</small>` : ''}</th><td>${fmt(p.workers)} <small>± ${fmt(p.moe)}</small></td><td class="tl-l">${today(p)}</td><td>${p.publicos ? fmt(p.publicos) : '—'}</td><td>${fmt(p.km, 1)}</td><td>${fmt(p.min)}</td><td class="tl-l">${byTimetable(p)}</td><td>${p.nv_a != null ? `${pct(p.nv_a)} · ${pct(p.nv_b)}` : '—'}</td><td>${p.sim ? '#' + fmt(p.sim) : '—'}</td><td>${p.aadt_med ? fmt(p.aadt_med) : '—'}</td><td>${p.sim && p.deaths_5y != null && p.km ? fmt(10 * p.deaths_5y / p.km, 1) : '—'}</td><td>${p.along_res != null ? `${fmt(p.along_res)} <small>(${fmt(p.along_far)})</small>` : '—'}</td><td>${p.bridges_poor != null ? fmt(p.bridges_poor) : '—'}</td></tr>`;
     $('#tlPairs').innerHTML = `<table class="pm-table oz-table"><caption>${escH(cap)}</caption><thead><tr><th scope="col">${escH(T('Pair of municipios'))}</th>${th('workers', T('Workers who travel between them'), S.sort)}<th scope="col">${escH(T('Listed today'))}</th>${th('publicos', T('Público routes (2020 list)'), S.sort)}${th('km', T('Road distance, km'), S.sort)}${th('min', T('Minutes by car, no traffic'), S.sort)}${th('tt_best', T('By timetable, minutes (fastest, 6 to 9 a.m.)'), S.sort)}${th('nv', T('Households with no vehicle, each end'), S.sort)}${th('sim', T('Simulated connection'), S.sort)}${th('aadt_med', T('Traffic on its roads, vehicles a day'), S.sort)}${th('death_km', T('Road deaths on its roads, per 10 km, five years'), S.sort)}${th('along_res', T('Residents within 1 km of its roads (beyond 400 m of a stop)'), S.sort)}${th('bridges_poor', T('Bridges in poor condition on its roads'), S.sort)}</tr></thead>
@@ -169,7 +169,7 @@
     const rows = D.ms.slice(), [k, dir] = S.msort;
     rows.sort((a, b) => (k === 'name' ? a.name.localeCompare(b.name, loc()) : (a[k] ?? -1) - (b[k] ?? -1)) * dir);
     const row = (r) => `<tr><th scope="row">${escH(r.name)}</th><td>${fmt(r.resident_workers)}</td><td>${fmt(r.work_elsewhere)}</td><td>${pct(r.work_elsewhere_pct)}</td><td>${fmt(r.come_in)}</td><td class="tl-l">${r.top_dest ? `${escH(name(r.top_dest))} <small>(${fmt(r.top_dest_workers)})</small>` : '—'}</td><td>${pct(r.linked_pct)}</td><td>${fmt(r.sim_links)}</td><td class="tl-l">${escH(r.own_system ? T(OWN[r.own_system]) : T('None listed'))}</td><td>${r.stop_km != null ? fmt(r.stop_km, 1) : '—'}</td><td>${pct(r.no_vehicle_pct)}</td><td>${pct(r.poverty_pct)}</td></tr>`;
-    $('#tlMunis').innerHTML = `<table class="pm-table oz-table"><caption>${escH(T('Municipios: select a heading to sort. Workers 16 and over, {period}.', { period: D.d.flows.period }))}</caption><thead><tr>${th('name', T('Municipio'), S.msort)}${th('resident_workers', T('Workers who live here'), S.msort)}${th('work_elsewhere', T('Work in another municipio'), S.msort)}${th('work_elsewhere_pct', T('Share who work in another municipio'), S.msort)}${th('come_in', T('Come in from another municipio'), S.msort)}<th scope="col">${escH(T('Where most go'))}</th>${th('linked_pct', T('Share of that travel with a timetabled route'), S.msort)}${th('sim_links', T('Simulated connections'), S.msort)}<th scope="col">${escH(T('Its own transit system'))}</th>${th('stop_km', T('Nearest weekday timetable stop to the town centre, km'), S.msort)}${th('no_vehicle_pct', T('Households with no vehicle'), S.msort)}${th('poverty_pct', T('Below the poverty level'), S.msort)}</tr></thead>
+    $('#tlMunis').innerHTML = `<table class="pm-table oz-table"><caption>${escH(T('Municipios: select a heading to sort. Workers 16 and over, {period}.', { period: D.d.flows.period }))}</caption><thead><tr>${th('name', T('Municipio'), S.msort)}${th('resident_workers', T('Workers who live here'), S.msort)}${th('work_elsewhere', T('Work in another municipio'), S.msort)}${th('work_elsewhere_pct', T('Share who work in another municipio'), S.msort)}${th('come_in', T('Come in from another municipio'), S.msort)}<th scope="col">${escH(T('Where most go'))}</th>${th('linked_pct', T('Share of that travel with a timetabled route'), S.msort)}${th('sim_links', T('Simulated connections'), S.msort)}<th scope="col">${escH(T('Its own transit system'))}</th>${th('stop_km', T('Nearest weekday timetable stop to the town center, km'), S.msort)}${th('no_vehicle_pct', T('Households with no vehicle'), S.msort)}${th('poverty_pct', T('Below the poverty level'), S.msort)}</tr></thead>
       <tbody>${rows.map(row).join('')}</tbody></table>`;
     $('#tlMunis').querySelectorAll('button[data-k]').forEach(b => { b.onclick = () => { const kk = b.dataset.k; S.msort = [kk, S.msort[0] === kk ? -S.msort[1] : (kk === 'name' ? 1 : -1)]; drawMunis(); }; });
     $('#tlMunis').dataset.done = '1';

@@ -48,7 +48,7 @@ One more check, run while building (not in the build): the law's test applied to
 
 ## The map layer
 
-`oz` (Layers > Economy, `l=oz`), in the shared list `site/js/core/facilities.js` as an area layer (`area: { prop: 'c', breaks: [2], colors, labels, title }`): purple `#5e3c99` for zones not rural, orange `#e66101` for rural zones, a pair that colour-blind readers tell apart. `labels` and `title` are new keys of the area kind: the classes' names when they are kinds, not ranges; `tip(k, p)` gives the 2D map's hover text of any area layer. The 2D map and the 3D view draw it with no code of their own. The eligible tracts that were not designated are only on the page, so the map does not read as a second kind of zone.
+`oz` (Layers > Economy, `l=oz`), in the shared list `site/js/core/facilities.js` as an area layer (`area: { prop: 'c', breaks: [2], colors, labels, title }`): purple `#5e3c99` for zones not rural, orange `#e66101` for rural zones, a pair that color-blind readers tell apart. `labels` and `title` are new keys of the area kind: the classes' names when they are kinds, not ranges; `tip(k, p)` gives the 2D map's hover text of any area layer. The 2D map and the 3D view draw it with no code of their own. The eligible tracts that were not designated are only on the page, so the map does not read as a second kind of zone.
 
 The layer adds a group **Economy** (icon `work`) to both menus, after Reference and before Housing (the order of `dictionary_src/domains.json`).
 

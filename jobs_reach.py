@@ -1,5 +1,5 @@
 """Jobs within reach for the PR Data Observatory: how many jobs the residents of each municipio can reach within 30 and 45 minutes by road. HANDOFF decision 107,
-step 9, fifth part (row derived-jobs-reach); docs/jobs-reach.md. An estimate (decision 107 b): a road-network model, labelled so, with a check and a range.
+step 9, fifth part (row derived-jobs-reach); docs/jobs-reach.md. An estimate (decision 107 b): a road-network model, labeled so, with a check and a range.
 
     python jobs_reach.py --refresh   # read the Census Bureau's commuting flows into cache/jobs_reach/, then build
     python jobs_reach.py             # build site/data/jobs_reach_series.json from the cache and the published files (no network)
@@ -140,7 +140,7 @@ def main_nodes(R):
 
 
 def snap(R, ok, lon, lat):
-    """The nearest node of the joined network to each point, and its distance in metres (np.inf beyond SNAP_M)."""
+    """The nearest node of the joined network to each point, and its distance in meters (np.inf beyond SNAP_M)."""
     from scipy.spatial import cKDTree
     k = math.cos(math.radians(18.2)) * 111320
     idx = np.flatnonzero(ok)

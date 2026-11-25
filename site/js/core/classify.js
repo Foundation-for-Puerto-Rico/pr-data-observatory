@@ -1,10 +1,10 @@
-/* PR Data Observatory core: classification of values into classes for a shaded map, a legend or a bar colour.
+/* PR Data Observatory core: classification of values into classes for a shaded map, a legend or a bar color.
 
    Core.classify.make(pool, { method, k, div, center, edges }) -> breaks
      pool     the values to classify, ascending (Core.stats.pool)
      method   'quantile' (equal counts), 'equal' (equal intervals), 'jenks' (natural breaks) or 'manual' (the inner breaks you give in `edges`)
      k        number of classes (5 for a map of one layer, 3 for each layer of a bivariate map)
-     div      the scale runs both ways around `center`: five classes cut at 0.1 and 0.5 of the largest distance from the centre (only for k = 5)
+     div      the scale runs both ways around `center`: five classes cut at 0.1 and 0.5 of the largest distance from the center (only for k = 5)
    A breaks object is { edges: [min, b1 ... b(k-1), max], min, max }, or { div: true, center, span, min, max }.
    Core.classify.classOf(breaks, value, k) -> -1 (no value) or 0 ... k-1. A value on a break belongs to the lower class, as in every legend of the observatory.
    Quantile breaks are the values at ranks floor(n * i / k); when the lowest value fills two classes or more (mostly zeros), it gets one class (minFirst). */
@@ -14,7 +14,7 @@
   if (typeof module === 'object' && module.exports) module.exports = api; else { root.Core = root.Core || {}; root.Core[name] = api; }
 })('classify', typeof window !== 'undefined' ? window : globalThis, function () {
   'use strict';
-  const JENKS_CAP = 1500;   // the dynamic programme is quadratic in the number of values: a longer pool is thinned to every nth value first
+  const JENKS_CAP = 1500;   // the dynamic program is quadratic in the number of values: a longer pool is thinned to every nth value first
 
   function jenks(sorted, k) {
     const n = sorted.length; if (n <= k) return [sorted[0], ...sorted.slice(1), sorted[n - 1]].slice(0, k + 1);

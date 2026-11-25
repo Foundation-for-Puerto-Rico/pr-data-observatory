@@ -43,7 +43,7 @@ A hot day is easier to bear when the night cools down; health harm from heat ris
 **Granules.** Every ECOSTRESS Tiled Land Surface Temperature and Emissivity granule, version 2 (ECO_L2T_LSTE.002, 70 m), over Puerto Rico from June to September of the three summers, that NASA flags as night and that was taken between 21:00 and 05:59 local time.
 - This build found 295 granules (2024: 96, 2025: 91, 2026: 108) from 47 passes of the space station; 39 passes had at least one clear cell.
 - By local hour: 21h 31, 22h 29, 23h 36, 00h 22, 01h 45, 02h 36, 03h 30, 04h 35, 05h 31 (`notes.window.granules_by_local_hour`).
-- They come from NASA's open catalogue (CMR) and are read from the LP DAAC's cloud store.
+- They come from NASA's open catalog (CMR) and are read from the LP DAAC's cloud store.
 
 **The login.** The files need a NASA Earthdata login. The build uses FPR's Earthdata token, the one night lights uses (decisions 75 and 80; `docs/nightlights-setup.md`):
 - The token is sent only to NASA's hosts (`NASA_HOSTS`). The LP DAAC answers with a short-lived signed address of the file, read without the token.
@@ -52,7 +52,7 @@ A hot day is easier to bear when the night cools down; health harm from heat ris
 
 **Reading.** `raster.py` reads four layers of each granule at 70 m: the temperature (`LST`, kelvin, empty where not produced), the quality flags (`QC`), the cloud mask and the water mask. The tiles carry their map projection as text, not as an EPSG code, so the build gives it from the tile's name (19QHA is UTM zone 19, EPSG:32619; `raster.COG(..., epsg=)`). The layers must share one grid, or the build stops.
 
-**Grid.** `heat.py`'s 60 m grid in UTM zone 20: 2,485,382 cells. Each cell takes the 70 m pixel under its centre.
+**Grid.** `heat.py`'s 60 m grid in UTM zone 20: 2,485,382 cells. Each cell takes the 70 m pixel under its center.
 
 **Clear observations.** An observation counts when the temperature is set, QC bits 0–1 say best (0) or nominal (1) quality, the cloud mask is 0, the water mask is 0, and the value is between 250 and 350 K. There are 33.7 million clear observations.
 
@@ -62,7 +62,7 @@ A hot day is easier to bear when the night cools down; health harm from heat ris
 
 **Cache.** For each granule, the cells it saw clear and their temperature (`cache/ecostress/values/`, 47 MB for the 295 granules). The folder's name holds the reading rule (`RULE`).
 
-**Areas, warm land and residents** follow `heat.py`: a cell belongs to the barrio that holds its centre; municipios and Puerto Rico pool their barrios' cells; warm land is the cells above Puerto Rico's night 90th percentile (26.2 °C); residents count by `heat.block_cells`. 4,515 residents live in blocks whose point falls on no cell with a value and count as not on warm land.
+**Areas, warm land and residents** follow `heat.py`: a cell belongs to the barrio that holds its center; municipios and Puerto Rico pool their barrios' cells; warm land is the cells above Puerto Rico's night 90th percentile (26.2 °C); residents count by `heat.block_cells`. 4,515 residents live in blocks whose point falls on no cell with a value and count as not on warm land.
 
 **Coverage.** 99.5% of the cells have a value. Every municipio has at least 94.9% (Hormigueros, the lowest; `notes.municipios_cover_pct`).
 
@@ -93,10 +93,10 @@ The build stops when any of these fails:
 - **Review.** A person reads the rebuild (review `human`).
 - **The token** expires (FPR's, on 2027-01-02): see `docs/nightlights-setup.md`.
 
-## Licence
+## License
 
 NASA's data use guidance: data from NASA-led missions carry no restriction on use (CC0), and users are strongly urged to cite them. Citation: Hook, S., Hulley, G. (2022). ECOSTRESS Tiled Land Surface Temperature and Emissivity Instantaneous L2 Global 70 m V002. NASA EOSDIS Land Processes DAAC. https://doi.org/10.5067/ECOSTRESS/ECO_L2T_LSTE.002. The source card is `nasa_ecostress_lste`. No image is published, only figures by area.
 
 ## The night surface on the map (HANDOFF decision 88)
 
-The build also writes `night_heat_surface.png` and `night_heat_surface.json` with `surface_image.py`: every 60 m cell of the night composite as one Web Mercator picture on a blue-grey-red scale around Puerto Rico's night median, like `heat.py`'s morning image (docs/heat.md, "The surface on the map"). The maps show it when the surface heat layer's legend is switched to Night. `--check` compares it with what the cache gives; `--from-cache` writes it with no network and no token.
+The build also writes `night_heat_surface.png` and `night_heat_surface.json` with `surface_image.py`: every 60 m cell of the night composite as one Web Mercator picture on a blue-gray-red scale around Puerto Rico's night median, like `heat.py`'s morning image (docs/heat.md, "The surface on the map"). The maps show it when the surface heat layer's legend is switched to Night. `--check` compares it with what the cache gives; `--from-cache` writes it with no network and no token.

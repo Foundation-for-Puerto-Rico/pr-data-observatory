@@ -7,8 +7,8 @@ Plan: `docs/map-tools-proposal-2026-11.md`, step 3 (HANDOFF decision 97). Code: 
 **Tools › Map tools › Share and download › Save the map as an image** saves a PNG named `pr-data-observatory-map-YYYY-MM-DD.png`: the map as it is on screen, at up to twice the screen's resolution, and under it
 
 - a title: the legends' titles (up to three), or the switched-on layers when nothing is shaded;
-- the legends on screen: the Analysis layers' legend and each switched-on layer's legend, colour ramps (slope, heat) included, with the "Show only above" threshold when one is set; up to 12 rows each, and a line that says how many rows or legends did not fit;
-- a scale bar at the map's centre latitude (1, 2 or 5 × 10ⁿ m);
+- the legends on screen: the Analysis layers' legend and each switched-on layer's legend, color ramps (slope, heat) included, with the "Show only above" threshold when one is set; up to 12 rows each, and a line that says how many rows or legends did not fit;
+- a scale bar at the map's center latitude (1, 2 or 5 × 10ⁿ m);
 - the sources: the map's own credit line;
 - "PR Data Observatory · Foundation for Puerto Rico", the date and the address of the view, which reopens it.
 

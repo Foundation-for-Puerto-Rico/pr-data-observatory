@@ -1,5 +1,5 @@
 // "Ask the observatory": the second review of PR #79 (docs/ask.md, "Round 2"). Every example the review gave, as a regression test: real words and place
-// names are never read as typos, stop words and words of the other language are not topics, a dataset shown in place of what was asked is labelled, survey
+// names are never read as typos, stop words and words of the other language are not topics, a dataset shown in place of what was asked is labeled, survey
 // estimates by barrio say when they are unreliable, what is never drawn says why, places are read beside topics, and the small fixes.
 'use strict';
 const test = require('node:test'), assert = require('node:assert');
@@ -101,7 +101,7 @@ test('small fixes: counting words, clear as a command, "quita todas las capas", 
 });
 
 // ── Round 3 (the measurement of 98f7359): crisis topics, register, misspelt municipios, prices, barrio twins, more privacy kinds, stand-ins, names that are not places
-test('crisis topics: no stand-in, no ranking, nothing shaded, the 988 line and the Línea PAS with its source, not a data wish; related data only as a labelled chip', async () => {
+test('crisis topics: no stand-in, no ranking, nothing shaded, the 988 line and the Línea PAS with its source, not a data wish; related data only as a labeled chip', async () => {
   for (const [q, lang] of [['suicidios en Ponce', 'es'], ['¿dónde hay más suicidios?', 'es'], ['tasa de suicidio por municipio', 'es'], ['¿en qué pueblos se quita la vida más gente?', 'es'], ['autolesión en jóvenes', 'es'], ['muertes por sobredosis', 'es'],
     ['how many suicides in Ponce', 'en'], ['suicide rates by town', 'en'], ['self-harm among teens', 'en'], ['overdose deaths by town', 'en']]) {
     const e = envOf(lang), o = await e.answer(q);
@@ -113,7 +113,7 @@ test('crisis topics: no stand-in, no ranking, nothing shaded, the 988 line and t
     assert.ok(lang === 'es' ? /Fuente: ASSMCA \( ?assmca\.pr\.gov y lineapas\.assmca\.pr\.gov ?\), consultadas el 2026-10-21\./.test(o.text) : /Source: ASSMCA \( ?assmca\.pr\.gov and lineapas\.assmca\.pr\.gov ?\), checked 2026-10-21\./.test(o.text), q + ': the source line and the date checked');   // the runtime's text puts a space where a tag was
     assert.strictEqual((o.text.match(/1-800-981-0023/g) || []).length, 1, q + ': one number, no other 1-800 line');
     assert.ok(!/puesto|highest|lowest|más alto|más bajo/i.test(o.text), q + ': no ranking');
-    assert.ok(/no responden|do not answer/.test(o.text), q + ': related data labelled as related');
+    assert.ok(/no responden|do not answer/.test(o.text), q + ': related data labeled as related');
     assert.ok(!e.chat.chWish().some(x => x.q === q), q + ': not a data wish');
   }
   assert.ok(!/\b(?:tu|ti)\b/.test(A.SENS_TEXT.nearMeTx.es) && /usted/.test(A.SENS_TEXT.nearMeTx.es), 'usted, as the rest of the chat');
@@ -183,7 +183,7 @@ test('one place for the labels: every answer that shades a dataset for something
   const e = envOf('es');
   for (const [q, lang] of [['dentistas en Caguas', 'es'], ['tiempo de espera en sala de emergencia', 'es'], ['¿cuántos hogares reciben el PAN?', 'es'], ['how many households get food stamps', 'en'], ['apagones de luz', 'es'], ['dentists in Ponce', 'en'],
     ['residenciales públicos con más crimen', 'es'], ['public housing with the most crime', 'en'], ['¿dónde viven las personas que reciben cupones?', 'es'], ['homes of food stamp recipients', 'en']]) {
-    const o = await ask(q, lang); assert.ok(o.data.length, q + ': shows a dataset'); assert.ok(/Aproximación|Approximation/.test(o.text), q + ': labelled: ' + o.text.slice(-200));
+    const o = await ask(q, lang); assert.ok(o.data.length, q + ': shows a dataset'); assert.ok(/Aproximación|Approximation/.test(o.text), q + ': labeled: ' + o.text.slice(-200));
   }
   for (const [q, lang] of [['placas solares en las casas de Ponce', 'es'], ['rooftop solar on the houses of Ponce', 'en'], ['vuelos de carga', 'es']]) {
     const o = await ask(q, lang); assert.strictEqual(o.intent, 'nodata', q); assert.ok(!o.data.length && !o.data.includes('median_gross_rent'), q);
@@ -203,7 +203,7 @@ test('more reasons: abortion services, short-term rental hosts, owners of abando
     assert.ok(o.data.every(k => ok.includes(k)), q + ': only counts by municipio: ' + o.data); assert.ok(!o.layers.length, q + ': no layer');
     assert.ok(!/r = |patr[oó]n|pattern/.test(o.text), q + ': no relation drawn');
   }
-  assert.ok(!/Sitios de centros|Health center sites/.test((await ask('¿dónde hay clínicas de aborto?')).text), 'no list of health centres');
+  assert.ok(!/Sitios de centros|Health center sites/.test((await ask('¿dónde hay clínicas de aborto?')).text), 'no list of health centers');
   for (const [q, lang] of [['¿cuántos hogares recibieron ayuda de FEMA?', 'es'], ['which municipios get the most federal aid', 'en'], ['names of the municipios with the most vacant homes', 'en'], ['¿qué pueblos reciben más ayuda federal?', 'es']])
     assert.notStrictEqual((await ask(q, lang)).intent, 'sensitive', q + ': a count or a place is not a person');
   for (const [q, lang, re] of [['residenciales públicos con más crimen', 'es', /solo se publica por municipio/], ['public housing with the most crime', 'en', /only published by municipio/], ['¿qué barrios de Ponce tienen más crimen?', 'es', /solo se publica por municipio/]]) {
@@ -238,9 +238,9 @@ test('a barrio whose name is also a word of a topic ("barrio Playa de Ponce", "M
   for (const q of ['pobreza en Playita', 'pobreza en el barrio Playita']) { o = await ask(q); assert.ok(o.data.includes('poverty_pct'), q + ': the poverty stays'); }
 });
 
-test('a topic before a word the observatory lacks keeps its dataset, labelled; a word of the missing topic\'s phrase after it does not', async () => {
+test('a topic before a word the observatory lacks keeps its dataset, labeled; a word of the missing topic\'s phrase after it does not', async () => {
   for (const [q, k] of [['pobreza en la playa', 'poverty_pct'], ['desempleo en la playa', 'laus_unemp_rate'], ['escuelas cerca de los centros comerciales', 'sch_open'], ['ingreso cerca del mall', 'median_hh_income']]) {
-    const o = await ask(q); assert.ok(o.data.includes(k), q + ': ' + o.data); assert.ok(/Aproximación/.test(o.text), q + ': labelled');
+    const o = await ask(q); assert.ok(o.data.includes(k), q + ': ' + o.data); assert.ok(/Aproximación/.test(o.text), q + ': labeled');
   }
   for (const [q, lang] of [['placas solares en las casas de Ponce', 'es'], ['rooftop solar on the houses of Ponce', 'en']]) assert.strictEqual((await ask(q, lang)).intent, 'nodata', q);
 });

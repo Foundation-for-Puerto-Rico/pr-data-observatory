@@ -2,7 +2,7 @@
    so a value, its margin of error, its rank and its trend look the same in all three (docs/engine.md, "Legend and popup").
 
      Popup.value(E, L, ev, i)              { txt, moe, rank, y, a } for place i under layer L (ev is the layer's evaluation: { y, a, exact, early })
-     Popup.swatch(E, L)                    the little colour mark in front of a layer's name
+     Popup.swatch(E, L)                    the little color mark in front of a layer's name
      Popup.spark(E, L, ev, i)              the trend of place i over the years, as a small line with the shown year marked
      Popup.inspect(E, layers, evals, i, compact, footer)   the table of every visible layer for place i (beside Puerto Rico and with the trend unless `compact`)
      Popup.hover(E, layers, evals, i)      the hover card: one line for each visible layer
@@ -45,7 +45,7 @@
       const ev = evals[L.id], r = value(E, L, ev, i), p = value(E, L, ev, pr), v = E.V[L.key], chip = E.chip(L, ev); if (r.flagged) anyFlag = true;
       return `<tr><th scope="row">${swatch(E, L)}<button type="button" class="linklike" data-ecinfo="${esc(L.key)}">${esc(T(v.label))}</button><small>${esc(E.title(L, r.y).replace(T(v.label), '').replace(/^ · /, ''))}${chip ? ' · ' + esc(chip) : ''}</small></th><td class="num${r.flagged ? ' unrel' : ''}${r.miss ? ' miss' : ''}"><b>${esc(r.txt)}</b>${r.flagged ? `<span class="sr-only"> (${esc(reliability.lessReliable())})</span>` : ''} ${r.moe ? `<span class="moe">${esc(r.moe)}</span>` : ''}${r.rank ? `<small class="rk">${esc(r.rank)}</small>` : ''}</td>${compact ? '' : `<td class="num">${esc(p.txt)}</td><td class="sp">${spark(E, L, ev, i)}</td>`}</tr>`;
     }).join('');
-    return `<div class="ec-insp"><h4>${esc(name)}</h4>${rows ? `<table class="ec-tbl"><thead><tr><th scope="col">${esc(T('Layer'))}</th><th scope="col" class="num">${esc(name)}</th>${compact ? '' : `<th scope="col" class="num">Puerto Rico</th><th scope="col">${esc(T('Trend'))}<small class="th-sub">${esc(T('years shown; dot = chosen year'))}</small></th>`}</tr></thead><tbody>${rows}</tbody></table>${anyFlag ? `<div class="note rel-note">${esc(reliability.flagKey())}</div>` : ''}` : `<div class="note">${esc(T('No visible layers. Add a dataset from Explore.'))}</div>`}${footer ? footer(i) : ''}</div>`;
+    return `<div class="ec-insp"><h4>${esc(name)}</h4>${rows ? `<table class="ec-tbl"><thead><tr><th scope="col">${esc(T('Layer'))}</th><th scope="col" class="num">${esc(name)}</th>${compact ? '' : `<th scope="col" class="num">Puerto Rico</th><th scope="col">${esc(T('Trend'))}<small class="th-sub">${esc(T('years shown; dot = chosen year'))}</small></th>`}</tr></thead><tbody>${rows}</tbody></table>${anyFlag ? `<div class="note rel-note">${esc(reliability.flagKey())}</div>` : ''}` : `<div class="note">${esc(T('No visible layers. Add a dataset from Home.'))}</div>`}${footer ? footer(i) : ''}</div>`;
   }
 
   function hover(E, layers, evals, i) {

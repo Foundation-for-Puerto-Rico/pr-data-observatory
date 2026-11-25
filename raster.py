@@ -1,4 +1,4 @@
-"""A small reader of Cloud Optimized GeoTIFFs (COGs) for the PR Data Observatory's build: satellite and lidar rasters summarised by barrio and municipio.
+"""A small reader of Cloud Optimized GeoTIFFs (COGs) for the PR Data Observatory's build: satellite and lidar rasters summarized by barrio and municipio.
 
     python raster.py --check      # read three real files over the network and check them against known facts (Cerro de Punta, Landsat, Sentinel-2)
 
@@ -15,7 +15,7 @@ cover Puerto Rico with HTTP range requests, instead of whole scenes of 100 to 40
 This module reads exactly that family: classic TIFF and BigTIFF, either byte order, tiled (not striped), one sample per pixel, compression none, Deflate or
 LZW, predictor 1, 2 or 3, unsigned and signed integers and floats of 8 to 64 bits, overviews (the later full-resolution-reduced IFDs), the GDAL nodata tag,
 and the georeferencing of a north-up image (ModelTiepoint + ModelPixelScale, or ModelTransformation without rotation) with an EPSG code from the GeoKeys.
-Anything else stops with a clear error naming the tag, so a file the reader would misread is never summarised.
+Anything else stops with a clear error naming the tag, so a file the reader would misread is never summarized.
 
 Use:
 
@@ -483,9 +483,9 @@ def to_crs_bounds(bbox, src, dst, densify=21):
 def zonal(arr, transform, epsg, shapes, nodata=None, shapes_crs=4326, valid=None, percentiles=(10, 50, 90)):
     """Summaries of `arr` for each polygon of `shapes` ({id: shapely geometry in `shapes_crs`}).
 
-    A pixel belongs to a polygon when its centre is inside it (the rule of landslide.py). `valid` is an optional boolean array of the same shape
+    A pixel belongs to a polygon when its center is inside it (the rule of landslide.py). `valid` is an optional boolean array of the same shape
     (for example a cloud mask) that removes pixels on top of nodata. Returns {id: {pixels, valid, mean, min, max, p10, p50, p90}}; pixels counts
-    every centre inside the polygon, valid the ones with a value, and the statistics are None when no pixel is valid.
+    every center inside the polygon, valid the ones with a value, and the statistics are None when no pixel is valid.
     """
     import shapely
     from shapely.ops import transform as shp_transform

@@ -1,20 +1,20 @@
 # Browser regression harness
 
-Written for plan item 6 (the shared layer engine), which moved the colour, class, normalisation and legend code of four pages into shared modules. The question it answers: **does a change leave everything the pages show exactly as it was?** It is used by hand in a browser (the Claude Browser pane, or any browser); it is not part of `python -m unittest discover`.
+Written for plan item 6 (the shared layer engine), which moved the color, class, normalization and legend code of four pages into shared modules. The question it answers: **does a change leave everything the pages show exactly as it was?** It is used by hand in a browser (the Claude Browser pane, or any browser); it is not part of `python -m unittest discover`.
 
 ## How it works
 
 1. A **baseline** is a frozen copy of the site at a commit you trust: `git archive <commit> site | tar -x -C <dir>`, served on its own port (port 8022 in `.claude/launch.json`, entry `twin-baseline`).
 2. A **collector** (`collector.py`, entry `twin-collect`, port 8099) receives what the capture scripts post and writes it to a folder of JSON files. It also serves the scripts, so one line starts a capture.
-3. A **capture script** runs inside a page, drives it through its public surface (`ECON.api`, the shading menu, the year bar, `setMetric`, the chat), and posts what the page shows: legends and layer cards as HTML, the colour of each municipality on the map, values under every normalisation, the workbench's tables, the chat's answers, the paint of the 3D columns. Scripts name the capture `old_<page>_<lang>` when the page is on port 8022 and `new_<page>_<lang>` otherwise.
-4. `compare.py` compares an `old_` and a `new_` capture. Numbers are compared with a relative tolerance of 1e-9; text and structure must be identical, except for what a change meant to add: `expected.json` lists those as **normalisers** (a substitution, a dropped key, a dropped item or pair) that are applied to both captures before they are compared, so everything else is still compared exactly, and the run says how many things each normaliser changed (a rule that matches nothing is visible). A path-only entry lets every difference under a path pass, and is kept for what cannot be normalised (new datasets).
+3. A **capture script** runs inside a page, drives it through its public surface (`ECON.api`, the shading menu, the year bar, `setMetric`, the chat), and posts what the page shows: legends and layer cards as HTML, the color of each municipality on the map, values under every normalization, the workbench's tables, the chat's answers, the paint of the 3D columns. Scripts name the capture `old_<page>_<lang>` when the page is on port 8022 and `new_<page>_<lang>` otherwise.
+4. `compare.py` compares an `old_` and a `new_` capture. Numbers are compared with a relative tolerance of 1e-9; text and structure must be identical, except for what a change meant to add: `expected.json` lists those as **normalizers** (a substitution, a dropped key, a dropped item or pair) that are applied to both captures before they are compared, so everything else is still compared exactly, and the run says how many things each normalizer changed (a rule that matches nothing is visible). A path-only entry lets every difference under a path pass, and is kept for what cannot be normalized (new datasets).
 
 | Script | Page | Capture name | What it records |
 |---|---|---|---|
-| `capture_economy.js` | `index.html` | `economy_<lang>` | the 108 datasets' options, units, formats and values (3 years, every normalisation, inflation-adjusted dollars); 26 layer stacks as the tab draws them (legend, layer cards, colour of each municipality, symbols, inspector, table, popup, scatter and trend data, link state); the dataset browser, presets, sources and three dataset dialogs |
-| `capture_choro.js` | `index.html` | `choro_<lang>` | the shading menu (every option: legend, colours, link state) and the ranking table (every option) |
+| `capture_economy.js` | `index.html` | `economy_<lang>` | the 108 datasets' options, units, formats and values (3 years, every normalization, inflation-adjusted dollars); 26 layer stacks as the tab draws them (legend, layer cards, color of each municipality, symbols, inspector, table, popup, scatter and trend data, link state); the dataset browser, presets, sources and three dataset dialogs |
+| `capture_choro.js` | `index.html` | `choro_<lang>` | the shading menu (every option: legend, colors, link state) and the ranking table (every option) |
 | `capture_chat.js` | `index.html` | `chat_<lang>` | 26 questions in English and Spanish, with the map state each leaves, and three of the chat's tools |
-| `capture_housing.js` | `housing.html` | `housing_<lang>` | all 28 maps and charts for 7 combinations of year and base year (title, chip, statistics, readout, legend, colours, bars), the text of each block, the profile of three municipalities, six dataset dialogs |
+| `capture_housing.js` | `housing.html` | `housing_<lang>` | all 28 maps and charts for 7 combinations of year and base year (title, chip, statistics, readout, legend, colors, bars), the text of each block, the profile of three municipalities, six dataset dialogs |
 | `capture_3d.js` | `3d.html` (tab in front) | `3d_<lang>` | the 18 column metrics: legend and the paint of the columns |
 
 Run each capture in English and in Spanish (`?lang=en`, `?lang=es`). The Housing and 3D captures run in the background of the page and report through `window.__capture`; poll it.
@@ -32,7 +32,7 @@ eval(await (await fetch('http://127.0.0.1:8099/s/capture_economy.js')).text())
 python tests/browser/compare.py <captures dir> economy_en --expect tests/browser/expected.json
 ```
 
-When a change is meant to alter what a page shows, add a normaliser for it to `expected.json` with the reason, in the same commit, and re-run all ten captures (five pages, two languages). Take the captures in a page loaded fresh at 1280 × 900 with the tab in front (the 3D capture waits for the map and fails if the tab is in the background); load order, layer ids and the width of the page change what is captured.
+When a change is meant to alter what a page shows, add a normalizer for it to `expected.json` with the reason, in the same commit, and re-run all ten captures (five pages, two languages). Take the captures in a page loaded fresh at 1280 × 900 with the tab in front (the 3D capture waits for the map and fails if the tab is in the background); load order, layer ids and the width of the page change what is captured.
 
 ## What it found, and its limits
 
@@ -128,7 +128,7 @@ It exits 2 on an error, 1 when a check fails and 0 when all pass.
 
 ## Ask the observatory (`ask_chat.js`)
 
-`ask_chat.js` asks the chat a question of each kind on the 2D map and the 3D view (`docs/ask.md`), in each language and width, and checks what the page then shows: two topics ("transporte y vivienda": the routes and stops switched on, the rent shaded, the relation told as a pattern) and the chip listing them; "Turn all off" and Undo after a chat answer; a layer named alone; a place's barrios ranked and shaded by barrio; a typo read; an approximation labelled; a shelter for victims of violence not drawn; a glossary term defined; El Yunque reached beside its protected areas, a real word ("trees") answered as missing data with the nearest layers on, "turn off all layers"; the "See in 3D" hand-over (`3d.html#ask=`), the 3D buildings and storm tracks switched on; no horizontal scroll, no missing Spanish and a clean console. Pass a folder to save screenshots. It then opens Ask on every page without a map (the dictionary, Data management, the Knowledge Areas, an area profile; `docs/ask.md`, "Pages without a map"): the button before the views, the chat not loaded before use, a definition and a ranking answered in the chat, "what is this?" from the page, "Show on the map" handing the bus routes to `index.html#ask=` (where they come on) and 3D buildings to `3d.html#ask=`, the crisis and shelter replies with no map button, the Knowledge Area tabs in view and the focus back on the button. `ONLY_PAGES=1` runs only these.
+`ask_chat.js` asks the chat a question of each kind on the 2D map and the 3D view (`docs/ask.md`), in each language and width, and checks what the page then shows: two topics ("transporte y vivienda": the routes and stops switched on, the rent shaded, the relation told as a pattern) and the chip listing them; "Turn all off" and Undo after a chat answer; a layer named alone; a place's barrios ranked and shaded by barrio; a typo read; an approximation labeled; a shelter for victims of violence not drawn; a glossary term defined; El Yunque reached beside its protected areas, a real word ("trees") answered as missing data with the nearest layers on, "turn off all layers"; the "See in 3D" hand-over (`3d.html#ask=`), the 3D buildings and storm tracks switched on; no horizontal scroll, no missing Spanish and a clean console. Pass a folder to save screenshots. It then opens Ask on every page without a map (the dictionary, Data management, the Knowledge Areas, an area profile; `docs/ask.md`, "Pages without a map"): the button before the views, the chat not loaded before use, a definition and a ranking answered in the chat, "what is this?" from the page, "Show on the map" handing the bus routes to `index.html#ask=` (where they come on) and 3D buildings to `3d.html#ask=`, the crisis and shelter replies with no map button, the Knowledge Area tabs in view and the focus back on the button. `ONLY_PAGES=1` runs only these.
 
 ```
 node tests/browser/ask_chat.js http://127.0.0.1:8041 <screenshots folder> es,en 1400,390
@@ -192,7 +192,7 @@ It exits 2 on an error, 1 when a check fails and 0 when all pass. `basemap_fallb
 
 ## The view state shared by the 2D map and the 3D view (`view_state.js`)
 
-`view_state.js` checks the address both views share (`site/js/core/viewstate.js`, `docs/view-state.md`), in each language and width. On the 2D map it selects Ponce, turns on flood zones and routes, shades the municipios, adds two Economy layers (one Shaded, one Symbol) and a year, and checks the address and the 3D link. It opens the 3D view from that link and checks the camera (the zoom one less), the layers (the 3D vehicles and terrain as by default), the columns (height from the Symbol layer, colour from the Shaded one, the year) and Ponce's card. It then changes layers, the camera and the columns' height, and checks that the address follows with no new history entry. Back on the 2D map from the 3D link, it checks the layers, the Economy layers and year, the shading (off: the columns, changed in 3D, show the Economy datasets), Ponce and the camera, with the 3D-only parts kept in the address. Last, an old 3D link (defaults) and a bogus one (what reads applied, the rest ignored and kept). A clean console throughout.
+`view_state.js` checks the address both views share (`site/js/core/viewstate.js`, `docs/view-state.md`), in each language and width. On the 2D map it selects Ponce, turns on flood zones and routes, shades the municipios, adds two Economy layers (one Shaded, one Symbol) and a year, and checks the address and the 3D link. It opens the 3D view from that link and checks the camera (the zoom one less), the layers (the 3D vehicles and terrain as by default), the columns (height from the Symbol layer, color from the Shaded one, the year) and Ponce's card. It then changes layers, the camera and the columns' height, and checks that the address follows with no new history entry. Back on the 2D map from the 3D link, it checks the layers, the Economy layers and year, the shading (off: the columns, changed in 3D, show the Economy datasets), Ponce and the camera, with the 3D-only parts kept in the address. Last, an old 3D link (defaults) and a bogus one (what reads applied, the rest ignored and kept). A clean console throughout.
 
 ```
 node tests/browser/view_state.js http://127.0.0.1:8041 es,en 1400
@@ -222,3 +222,15 @@ node tests/browser/usability.js http://127.0.0.1:8041 es,en 1400,390
 ```
 
 It exits 2 on an error, 1 when a check fails and 0 when all pass.
+
+## The workspace (`workspace.js`)
+
+`workspace.js` walks the redesigned pages (`docs/workspace.md`): the map's timeline (enabled with the engine's years, Previous, Latest, 41 rapid moves that end on the last, play and pause, each layer's own period, a snapshot layer alone, sea level rise named as a scenario), undo and redo, the eight tabs of the panel, the ten workbench views and the grip, Ask, the widgets and their filters, a saved map, the map at four widths in Spanish, and twelve other pages (the rail's eight areas, the light/dark switch, no console error, no sideways scroll). 55 checks; it found 0 problems on the branch that added it.
+
+```
+chrome --headless=new --remote-debugging-port=9333 --user-data-dir=<a scratch folder> --use-angle=swiftshader --enable-unsafe-swiftshader
+python -m http.server 8151 --bind 127.0.0.1 --directory site
+node tests/browser/workspace.js http://127.0.0.1:8151/ <screenshots folder>
+```
+
+`usability.js` and `bars.js` were written for the earlier top bar (a row of view buttons, and two rows on a phone). The views are now a rail (`css/ws.css`), so both need their expectations updated before they are used again.

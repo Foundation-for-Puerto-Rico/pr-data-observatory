@@ -33,17 +33,17 @@ The tab takes up to eight visible layers, each as the map shows it (year, rescal
   - Pearson measures a straight-line pattern.
   - Spearman is Pearson on the ranks; tied values share the mean of their ranks.
 - **Small pairs:** fewer than 3 municipalities gives no r.
-- **Colours:** the cells use the diverging palette at the cut points ±0.1 and ±0.5.
+- **Colors:** the cells use the diverging palette at the cut points ±0.1 and ±0.5.
 - **Reading the result:** the "pattern, not cause" note stays above the table.
 
 ## Small multiples and the swipe view
 
 **By year:** one map for each of the last 12 years with values of one layer.
 
-- The classes come from every year together, the same rule as "Hold classes fixed across years". A colour therefore means the same in each map.
+- The classes come from every year together, the same rule as "Hold classes fixed across years". A color therefore means the same in each map.
 - The Puerto Rico value is under each map.
 
-**By layer:** one map for each visible layer (up to 8), each with its own classes. The note says the colours are not comparable between maps.
+**By layer:** one map for each visible layer (up to 8), each with its own classes. The note says the colors are not comparable between maps.
 
 **Swipe view:** two layers on one SVG; the second is clipped at the divider.
 

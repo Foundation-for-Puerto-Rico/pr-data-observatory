@@ -258,7 +258,7 @@ class Context(unittest.TestCase):
                 v, m = V[var]["years"][str(window)][at[g]], V[var]["moe"][str(window)][at[g]]
                 self.assertEqual(ctx[key][i], None if v is None else round(v, 1), f"{key} {g}: run python wcrp_rvi.py after small_area.py")
                 self.assertEqual(moe[key][i], None if m is None else round(m, 1), f"{key} {g}")
-        self.assertTrue(all(x["estimate"] for x in self.doc["method"]["context"]), "labelled as estimates")
+        self.assertTrue(all(x["estimate"] for x in self.doc["method"]["context"]), "labeled as estimates")
 
     def test_the_landslide_context_is_read_from_main_s_file_not_copied(self):
         ls = load(DATA / "landslide_barrio.json")
@@ -272,8 +272,8 @@ class Context(unittest.TestCase):
 
 
 class Held(unittest.TestCase):
-    """WCRP is a HUD CDBG-DR program: FPR approved publication on 2026-10-19 (decision 51), the licences included (decision 54). The original states no open
-    license, so its class stays 'unstated' and the texts tell others to ask PRDOH and FPR before re-use; no licence is invented."""
+    """WCRP is a HUD CDBG-DR program: FPR approved publication on 2026-10-19 (decision 51), the licenses included (decision 54). The original states no open
+    license, so its class stays 'unstated' and the texts tell others to ask PRDOH and FPR before re-use; no license is invented."""
 
     def test_the_originals_license_is_unstated_and_its_review_cleared(self):
         s = load(ROOT / "dictionary_src" / "sources.json")["wcrp_rvi"]
@@ -281,7 +281,7 @@ class Held(unittest.TestCase):
         for text in (s["licence"], s["terms_note"]):
             self.assertIn("no open license", text.lower())
             self.assertIn("ask PRDOH and FPR", text)
-            self.assertNotRegex(text, r"CC[- ]?BY|CC0|Creative Commons|public domain|ODbL|Open Data Commons", "no licence is invented")
+            self.assertNotRegex(text, r"CC[- ]?BY|CC0|Creative Commons|public domain|ODbL|Open Data Commons", "no license is invented")
             self.assertNotIn("Francis", text, "no staff names in the dictionary")
         self.assertIn("program's approval", s["licence"])
         self.assertIn("confirmed the same day that its approval covers republishing this source on the observatory", s["terms_note"])
@@ -363,7 +363,7 @@ class Page(unittest.TestCase):
     def test_the_version_is_a_slider_from_the_original_through_each_survey_window(self):
         self.assertRegex(self.html, r'<input type="range" id="wmVer" min="0"', "the project lead, 2026-11-04: a slider, the original 2022 first")
         self.assertIn('<label for="wmVer">Version</label>', self.html)
-        self.assertIn('class="wm-vernote"', self.html, "the slider says that neighbouring windows share years")
+        self.assertIn('class="wm-vernote"', self.html, "the slider says that neighboring windows share years")
         self.assertIn('id="cmpShow"', self.html, "Change opens from the comparison section, not from the slider")
         self.assertIn('id="wmBack"', self.html)
         doc = json.loads((ROOT / "site" / "data" / "wcrp_rvi_barrio.json").read_text(encoding="utf-8"))

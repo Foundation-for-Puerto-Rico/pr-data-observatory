@@ -28,7 +28,7 @@ The key is read from the environment and goes only into request addresses. It is
 
 - **Which detections count.** In the yearly files, a detection counts when FIRMS's type is 0 (presumed vegetation fire) and its confidence is nominal or high. Low confidence is left out, and so are types 2 (static land source: industry, a power plant) and 3 (offshore).
 - **Near-real-time rows have no type.** A detection within 400 m of any place the yearly files mark as type 2 is left out.
-- **Places.** A detection belongs to the municipio of the barrio whose outline holds its pixel's centre, or of the nearest barrio within about 500 m. Farther ones, at sea, are left out.
+- **Places.** A detection belongs to the municipio of the barrio whose outline holds its pixel's center, or of the nearest barrio within about 500 m. Farther ones, at sea, are left out.
 - **Per 100 km².** Detections divided by the Census land area, times 100.
 
 ## The figures (build of 2026-11-10)

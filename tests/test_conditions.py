@@ -32,7 +32,7 @@ def load(name):
 
 
 class StubBarrios:
-    """Three square barrios in two municipios, on a plane where a degree is a kilometre (enough for the rules)."""
+    """Three square barrios in two municipios, on a plane where a degree is a kilometer (enough for the rules)."""
     ids = ["7200100001", "7200100002", "7200300003"]
     mids, names = ["72001", "72003"], ["Uno", "Tres"]
 

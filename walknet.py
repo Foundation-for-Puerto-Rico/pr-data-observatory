@@ -11,7 +11,7 @@ found with a bounded Dijkstra search from each stop. roads.bin holds no footways
 within 400 m 0.4 point away from the one on a full OpenStreetMap walking network (26.6% against 27.0%).
 
 Distances use the flat-earth metric of access.py (111,320 m per degree, longitude shortened by the cosine of the latitude), on a local
-plane centred on Puerto Rico, so a walking distance and a straight-line distance from access.py are on one scale. Across the island the
+plane centered on Puerto Rico, so a walking distance and a straight-line distance from access.py are on one scale. Across the island the
 plane differs from access.py's per-pair formula by under 0.3%; the caller keeps a walking distance from falling below the straight line.
 """
 import heapq
@@ -33,13 +33,13 @@ NO_WALK = ("motorway", "motorway_link")
 
 
 def to_xy(lon, lat):
-    """Metres on the local plane."""
+    """Meters on the local plane."""
     lon, lat = np.asarray(lon, dtype=float), np.asarray(lat, dtype=float)
     return (lon - LON0) * M_PER_DEG * COS0, (lat - LAT0) * M_PER_DEG
 
 
 class WalkNet:
-    """An undirected graph of edges (u, v, polyline in local metres) with a spatial index for snapping."""
+    """An undirected graph of edges (u, v, polyline in local meters) with a spatial index for snapping."""
 
     def __init__(self, eu, ev, geoms, n_nodes):
         self.eu = np.asarray(eu, dtype=np.int64)
@@ -58,7 +58,7 @@ class WalkNet:
         self.tree = STRtree(self.geoms)
 
     def snap(self, lon, lat, max_m=SNAP_M):
-        """Arrays (edge, metres along it, connector metres); edge -1 when no walkable road is within max_m."""
+        """Arrays (edge, meters along it, connector meters); edge -1 when no walkable road is within max_m."""
         x, y = to_xy(lon, lat)
         pts = points(x, y)
         edge = np.full(len(x), -1, dtype=np.int64)
@@ -72,7 +72,7 @@ class WalkNet:
         return edge, along, conn
 
     def targets(self, edge, along, conn):
-        """The snapped targets indexed for search: node -> [(target, metres to that node incl. connector)], edge -> [(target, along, connector)]."""
+        """The snapped targets indexed for search: node -> [(target, meters to that node incl. connector)], edge -> [(target, along, connector)]."""
         node_reg, edge_reg = {}, {}
         for k, (e, a, c) in enumerate(zip(edge.tolist(), along.tolist(), conn.tolist())):
             if e < 0:
@@ -84,7 +84,7 @@ class WalkNet:
         return node_reg, edge_reg
 
     def search(self, e, a, c, bound, node_reg, edge_reg):
-        """Bounded Dijkstra from a point on edge e, `a` metres along it, `c` metres off it. Returns {target: metres} within bound."""
+        """Bounded Dijkstra from a point on edge e, `a` meters along it, `c` meters off it. Returns {target: meters} within bound."""
         best = {}
         for k, a2, c2 in edge_reg.get(e, ()):   # a target on the same edge: straight along it
             dd = abs(a - a2) + c + c2
@@ -137,7 +137,7 @@ def load(path=ROADS_BIN):
 
 
 def from_stops(net, stops, places, bound):
-    """For each place, {stop index: walking metres} for the stops within `bound`, searching once from each snapped stop.
+    """For each place, {stop index: walking meters} for the stops within `bound`, searching once from each snapped stop.
 
     Returns (per_place, place_snapped, stop_snapped): per_place[i] is a dict, place_snapped and stop_snapped are boolean arrays."""
     pe, pa, pc = net.snap([p["lng"] for p in places], [p["lat"] for p in places])
@@ -154,7 +154,7 @@ def from_stops(net, stops, places, bound):
 
 def walk_to_stops(net, stops, places, bound):
     """from_stops, plus the stops on no walkable road counted at their straight-line distance (access.py's formula, so the same stop gives the
-    same metres as the straight line). Points are dicts with lat and lng. Returns (per_place, place_snapped, stop_snapped)."""
+    same meters as the straight line). Points are dicts with lat and lng. Returns (per_place, place_snapped, stop_snapped)."""
     per_place, place_ok, stop_ok = from_stops(net, stops, places, bound)
     lost = np.flatnonzero(~stop_ok)
     if len(lost) and len(places):
@@ -171,7 +171,7 @@ def walk_to_stops(net, stops, places, bound):
 
 
 def _piece(line, d0, d1):
-    """The part of a line between d0 and d1 metres along it (in either order), as an (n, 2) array of local metres."""
+    """The part of a line between d0 and d1 meters along it (in either order), as an (n, 2) array of local meters."""
     from shapely.ops import substring
     a, b = (d0, d1) if d0 <= d1 else (d1, d0)
     g = substring(line, a, b)
@@ -180,10 +180,10 @@ def _piece(line, d0, d1):
 
 
 def nearest_paths(net, stops, places, bound):
-    """For each place, the walk to its nearest stop along mapped roads within `bound`: (stop index, metres, [pieces]) or None.
+    """For each place, the walk to its nearest stop along mapped roads within `bound`: (stop index, meters, [pieces]) or None.
 
     The same search as from_stops (a bounded Dijkstra from each snapped stop), keeping each node's parent, so the walk can be drawn: the pieces are (n, 2) arrays
-    of local metres in walking order from the place to the stop, made of the place's connector, the part of its road, the whole roads between, the part of the
+    of local meters in walking order from the place to the stop, made of the place's connector, the part of its road, the whole roads between, the part of the
     stop's road and the stop's connector. Added for climb.py, which reads the ground's height along them. Places or stops on no walkable road get no walk here."""
     pe, pa, pc = net.snap([p["lng"] for p in places], [p["lat"] for p in places])
     se, sa, sc = net.snap([s["lng"] for s in stops], [s["lat"] for s in stops])
@@ -193,7 +193,7 @@ def nearest_paths(net, stops, places, bound):
     best = [None] * len(places)
     geoms, eu, ev, L = net.geoms, net.eu, net.ev, net.len
     indptr, nbr, w = net.indptr, net.nbr, net.w
-    # the edge of each neighbour entry, to rebuild the walk: the entries are the edges sorted by their start (src), first as u->v then as v->u
+    # the edge of each neighbor entry, to rebuild the walk: the entries are the edges sorted by their start (src), first as u->v then as v->u
     src = np.concatenate([eu, ev]); eid = np.concatenate([np.arange(len(eu)), np.arange(len(eu))])
     nbr_edge = eid[np.argsort(src, kind="stable")].tolist()
 
@@ -216,7 +216,7 @@ def nearest_paths(net, stops, places, bound):
         dist, par, heap, won = {}, {}, [], set()
         for n, d, start in ((u, a + c, 0.0), (v, L[e] - a + c, float(L[e]))):
             if d <= bound and d < dist.get(n, math.inf):
-                dist[n], par[n] = d, (None, e, start)                     # reached from the stop along its own edge, from `start` metres to the stop's point
+                dist[n], par[n] = d, (None, e, start)                     # reached from the stop along its own edge, from `start` meters to the stop's point
                 heap.append((d, n))
         heapq.heapify(heap)
         settled = set()

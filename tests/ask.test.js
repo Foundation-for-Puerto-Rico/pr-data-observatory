@@ -83,7 +83,7 @@ test('answers: two topics compose (a layer for one, the data of the other, their
   assert.deepStrictEqual([o.intent, o.layers, o.data], ['show', ['lyRoutes', 'lyStops'], ['median_gross_rent']]);
   assert.deepStrictEqual(o.plan.relation, ['median_gross_rent', 'pop_walk_active_pct']);
   assert.match(o.text, /patrón, no una causa/);
-  assert.match(o.text, /horarios programados/, 'transit is labelled as scheduled');
+  assert.match(o.text, /horarios programados/, 'transit is labeled as scheduled');
   o = await ask('Transportation and housing', 'en');
   assert.deepStrictEqual([o.lang, o.layers, o.data], ['en', ['lyRoutes', 'lyStops'], ['median_gross_rent']]);
   o = await ask('pobreza y escuelas en Ponce');

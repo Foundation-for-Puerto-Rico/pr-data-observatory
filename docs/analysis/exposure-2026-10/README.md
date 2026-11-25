@@ -56,5 +56,5 @@ Reading: for the island and for most municipios the two ways of counting agree t
 ## Method notes
 
 - Each block outline is sampled with a regular grid (about 60 m apart, 5 to 40 points on a side, only the points inside the block) plus the block's internal point; 2,456,925 points in 36,611 blocks (blocks with no residents and no housing units are skipped). "Wholly inside" means every sample is inside the layer; "touched" means any is. A sliver thinner than the grid can be missed, so the bounds are close, not exact.
-- The outlines come from TIGERweb layer 10 (2020 blocks) generalised by about 2 m. The layers are the ones `exposure.py` reads (`flood.geojson`, `protected.geojson`, and NOAA's `PR_slr_{n}ft`).
+- The outlines come from TIGERweb layer 10 (2020 blocks) generalized by about 2 m. The layers are the ones `exposure.py` reads (`flood.geojson`, `protected.geojson`, and NOAA's `PR_slr_{n}ft`).
 - Housing units give the same picture (the JSON holds both measures).

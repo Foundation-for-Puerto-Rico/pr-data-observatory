@@ -1,5 +1,5 @@
 """Boxes over the map (2026-11-11): the time bar folds, status boxes are see-through at rest and solid in use, and Clean view hides the boxes but keeps
-the scale and the map credits (their licences ask for them). Static checks of site/3d.html, site/index.html, the CSS and the scripts."""
+the scale and the map credits (their licenses ask for them). Static checks of site/3d.html, site/index.html, the CSS and the scripts."""
 import re
 import unittest
 from pathlib import Path
@@ -63,7 +63,7 @@ class Overlays(unittest.TestCase):
         css = read("css/twin.css")
         self.assertIn(".map-legend { background: rgba(255,255,255,.86);", css)
         self.assertRegex(css, r"\.map-legend:hover, \.map-legend:focus-within \{ background: rgba\(255,255,255,\.9\d\); \}")
-        self.assertRegex(css, r"\.al-panel \{[^}]*background: #fff;", "the On the map panel (read) stays solid")
+        self.assertRegex(css, r"\.al-panel \{[^}]*background: (#fff|var\(--color-surface\));", "the On the map panel (read) stays solid: white, or the surface token that is white in the light theme and charcoal in the dark one (css/ws.css)")
         self.assertNotIn("backdrop-filter", css + read("css/twin3d.css"), "no frosted glass (FPR brand)")
 
 

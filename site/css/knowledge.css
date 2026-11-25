@@ -1,11 +1,11 @@
 /* The Knowledge home page (knowledge.html). */
 .kh-page { padding-top: calc(var(--topbar-height) + 24px); }
 .kh-controls { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; }
-.kh-search { flex: 1 1 260px; max-width: 420px; display: flex; align-items: center; gap: 8px; padding: 8px 14px; border: 1px solid var(--color-border); border-radius: 999px; background: #fff; }
+.kh-search { flex: 1 1 260px; max-width: 420px; display: flex; align-items: center; gap: 8px; padding: 8px 14px; border: 1px solid var(--color-border); border-radius: 999px; background: var(--color-surface); }
 .kh-search input { border: 0; outline: none; font: inherit; flex: 1; min-width: 0; background: transparent; }
 .kh-search:focus-within { box-shadow: 0 0 0 3px rgba(51, 140, 179, .35); }
 .kh-kinds { display: flex; flex-wrap: wrap; gap: 6px; }
-.kh-chip { font: inherit; font-size: 13px; padding: 8px 12px; min-height: 36px; border-radius: 999px; border: 1px solid var(--color-border); background: #fff; color: var(--color-text); cursor: pointer; }
+.kh-chip { font: inherit; font-size: 13px; padding: 8px 12px; min-height: 36px; border-radius: 999px; border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); cursor: pointer; }
 .kh-chip[aria-pressed="true"] { background: var(--color-text); border-color: var(--color-text); color: #fff; }
 .kh-pub { font-size: 13px; display: flex; gap: 6px; align-items: center; }
 .kh-group h2 { font-size: 18px; }
@@ -19,8 +19,8 @@
 .kh-sum { margin: 0; font-size: 14px; line-height: 1.5; color: var(--color-text-muted); }
 .kh-meta { margin: 0; font-size: 12.5px; line-height: 1.5; color: var(--color-text-muted); }
 .kh-badges { display: flex; flex-wrap: wrap; gap: 6px; }
-.kh-badge { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 999px; background: #EEF1F2; color: var(--color-text); }
-.kh-pub-b { background: #EEF3D6; color: #4A5710; }
-.kh-rev-b { background: #FFF1D6; color: #7A4A00; }
+.kh-badge { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 999px; background: var(--ws-n-paper2); color: var(--color-text); }
+.kh-pub-b { background: var(--ws-n-ok); color: var(--tint-green-fg); }
+.kh-rev-b { background: var(--ws-n-warn); color: var(--tint-yellow-fg); }
 .kh-links { margin: auto 0 0; display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: 13px; font-weight: 600; }
 .kh-empty { max-width: 700px; }

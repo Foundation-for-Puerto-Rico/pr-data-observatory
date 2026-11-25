@@ -17,7 +17,7 @@
       "timeline": "five-year window",
       "first": 2021,
       "last": 2024,
-      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labeled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
     },
     "method": "The observatory reads table B01003 (Total Population) of the Census Bureau's American Community Survey (ACS) 5-year files, for each of the four five-year windows, and works the value out by using its total (cell 001). The same arithmetic makes the value for a municipality, a barrio, a census tract and a block group. The margin of error follows the Census Bureau's formulas: the margin of a sum is the square root of the sum of the squares of the margins of its cells, and a share uses the Bureau's proportion formula. A total that the Census Bureau controls to its own estimate has no margin; the observatory gives it a margin of zero, as the Bureau says may be done, so a share of it keeps the margin of its numerator. A cell the Census Bureau leaves empty gives no value, never a zero. A share whose margin works out to zero (a share of exactly 100%, for example) is published without a margin: the proportion formula would give zero, which would read as exact. The Puerto Rico value is the Census Bureau's own island row. The code is small_area.py in the project's repository.",
     "sources": [
@@ -71,7 +71,7 @@
       "timeline": "five-year window",
       "first": 2021,
       "last": 2024,
-      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labeled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
     },
     "method": "The observatory reads table B01001 (Sex by Age) of the Census Bureau's American Community Survey (ACS) 5-year files, for each of the four five-year windows, and works the value out by adding the cells for under 5, 5 to 9, 10 to 14 and 15 to 17 years, male and female (003-006 and 027-030), and dividing by the total (001). The same arithmetic makes the value for a municipality, a barrio, a census tract and a block group. The margin of error follows the Census Bureau's formulas: the margin of a sum is the square root of the sum of the squares of the margins of its cells, and a share uses the Bureau's proportion formula. A total that the Census Bureau controls to its own estimate has no margin; the observatory gives it a margin of zero, as the Bureau says may be done, so a share of it keeps the margin of its numerator. A cell the Census Bureau leaves empty gives no value, never a zero. A share whose margin works out to zero (a share of exactly 100%, for example) is published without a margin: the proportion formula would give zero, which would read as exact. The Puerto Rico value is the Census Bureau's own island row. The code is small_area.py in the project's repository.",
     "sources": [
@@ -123,7 +123,7 @@
       "timeline": "five-year window",
       "first": 2021,
       "last": 2024,
-      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labeled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
     },
     "method": "The observatory reads table B01001 (Sex by Age) of the Census Bureau's American Community Survey (ACS) 5-year files, for each of the four five-year windows, and works the value out by adding the cells from 65 and 66 years to 85 years and over, male and female (020-025 and 044-049), and dividing by the total (001). The same arithmetic makes the value for a municipality, a barrio, a census tract and a block group. The margin of error follows the Census Bureau's formulas: the margin of a sum is the square root of the sum of the squares of the margins of its cells, and a share uses the Bureau's proportion formula. A total that the Census Bureau controls to its own estimate has no margin; the observatory gives it a margin of zero, as the Bureau says may be done, so a share of it keeps the margin of its numerator. A cell the Census Bureau leaves empty gives no value, never a zero. A share whose margin works out to zero (a share of exactly 100%, for example) is published without a margin: the proportion formula would give zero, which would read as exact. The Puerto Rico value is the Census Bureau's own island row. The code is small_area.py in the project's repository.",
     "sources": [
@@ -175,7 +175,7 @@
       "timeline": "five-year window",
       "first": 2021,
       "last": 2024,
-      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labeled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
     },
     "method": "The observatory reads table B01001 (Sex by Age) of the Census Bureau's American Community Survey (ACS) 5-year files, for each of the four five-year windows, and works the value out by dividing the female total (026) by the total (001). The same arithmetic makes the value for a municipality, a barrio, a census tract. The margin of error follows the Census Bureau's formulas: the margin of a sum is the square root of the sum of the squares of the margins of its cells, and a share uses the Bureau's proportion formula. A total that the Census Bureau controls to its own estimate has no margin; the observatory gives it a margin of zero, as the Bureau says may be done, so a share of it keeps the margin of its numerator. A cell the Census Bureau leaves empty gives no value, never a zero. A share whose margin works out to zero (a share of exactly 100%, for example) is published without a margin: the proportion formula would give zero, which would read as exact. The Puerto Rico value is the Census Bureau's own island row. The code is small_area.py in the project's repository.",
     "sources": [
@@ -227,7 +227,7 @@
       "timeline": "five-year window",
       "first": 2021,
       "last": 2024,
-      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labeled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
     },
     "method": "The observatory reads table B11001 (Household Type (Including Living Alone)) of the Census Bureau's American Community Survey (ACS) 5-year files, for each of the four five-year windows, and works the value out by dividing the family households (002) by all households (001). The same arithmetic makes the value for a municipality, a barrio, a census tract. The margin of error follows the Census Bureau's formulas: the margin of a sum is the square root of the sum of the squares of the margins of its cells, and a share uses the Bureau's proportion formula. A total that the Census Bureau controls to its own estimate has no margin; the observatory gives it a margin of zero, as the Bureau says may be done, so a share of it keeps the margin of its numerator. A cell the Census Bureau leaves empty gives no value, never a zero. A share whose margin works out to zero (a share of exactly 100%, for example) is published without a margin: the proportion formula would give zero, which would read as exact. The Puerto Rico value is the Census Bureau's own island row. The code is small_area.py in the project's repository.",
     "sources": [
@@ -278,7 +278,7 @@
       "timeline": "five-year window",
       "first": 2021,
       "last": 2024,
-      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labeled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
     },
     "method": "The observatory reads table B11001 (Household Type (Including Living Alone)) of the Census Bureau's American Community Survey (ACS) 5-year files, for each of the four five-year windows, and works the value out by dividing the householders living alone (008) by all households (001). The same arithmetic makes the value for a municipality, a barrio, a census tract. The margin of error follows the Census Bureau's formulas: the margin of a sum is the square root of the sum of the squares of the margins of its cells, and a share uses the Bureau's proportion formula. A total that the Census Bureau controls to its own estimate has no margin; the observatory gives it a margin of zero, as the Bureau says may be done, so a share of it keeps the margin of its numerator. A cell the Census Bureau leaves empty gives no value, never a zero. A share whose margin works out to zero (a share of exactly 100%, for example) is published without a margin: the proportion formula would give zero, which would read as exact. The Puerto Rico value is the Census Bureau's own island row. The code is small_area.py in the project's repository.",
     "sources": [
@@ -329,7 +329,7 @@
       "timeline": "five-year window",
       "first": 2021,
       "last": 2024,
-      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labeled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
     },
     "method": "The observatory reads table B21001 (Sex by Age by Veteran Status for the Civilian Population 18 Years and Over) of the Census Bureau's American Community Survey (ACS) 5-year files, for each of the four five-year windows, and works the value out by dividing the veterans (002) by the civilian population 18 and older (001). The same arithmetic makes the value for a municipality, a barrio, a census tract. The margin of error follows the Census Bureau's formulas: the margin of a sum is the square root of the sum of the squares of the margins of its cells, and a share uses the Bureau's proportion formula. A total that the Census Bureau controls to its own estimate has no margin; the observatory gives it a margin of zero, as the Bureau says may be done, so a share of it keeps the margin of its numerator. A cell the Census Bureau leaves empty gives no value, never a zero. A share whose margin works out to zero (a share of exactly 100%, for example) is published without a margin: the proportion formula would give zero, which would read as exact. The Puerto Rico value is the Census Bureau's own island row. The code is small_area.py in the project's repository.",
     "sources": [
@@ -339,7 +339,7 @@
     "how_to_read": "In 2020-2024, 2.4% of the civilian adults of Puerto Rico are veterans. The share is highest in Culebra (5.2%, ±4.2 points, less reliable), Ceiba (4.1%, ±1.4 points, less reliable) and Fajardo (4.1%, ±0.8 points); a margin above 30% of the estimate is what the site calls less reliable, so these are not firm rankings. In 2020-2024 the margin of error is above 30% of the estimate (the CSV by area marks such values as less reliable; no map or table draws areas below the municipality yet) for 62% of municipalities, 98% of barrios and 100% of census tracts that have a value.",
     "caveats": [
       "In a very small area the share can read 0% or 100% from a handful of people, with a margin of hundreds of points: do not quote it (methods.small_area_estimates says how many areas are that small).",
-      "The counts are small, so the margins are wide even for a municipality: in 2020-2024 the typical margin is 35% of the estimate for a municipality and 88% for a census tract. Compare broad groups of municipalities, not two neighbouring places.",
+      "The counts are small, so the margins are wide even for a municipality: in 2020-2024 the typical margin is 35% of the estimate for a municipality and 88% for a census tract. Compare broad groups of municipalities, not two neighboring places.",
       "Below the municipality the figure is a rough survey estimate: read it with its margin of error and see methods.small_area_estimates for how large the margins are.",
       "Adjacent five-year windows share four of their five years, so a change from one window to the next is not a trend to read closely."
     ],
@@ -381,7 +381,7 @@
       "timeline": "five-year window",
       "first": 2021,
       "last": 2024,
-      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labeled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
     },
     "method": "The observatory reads table B18101 (Sex by Age by Disability Status) of the Census Bureau's American Community Survey (ACS) 5-year files, for each of the four five-year windows, and works the value out by adding the twelve cells \"With a disability\" (004, 007, 010, 013, 016, 019, 023, 026, 029, 032, 035, 038) and dividing by the total (001). The Census Bureau does not publish this table for block groups, so there is no block-group value. The same arithmetic makes the value for a municipality, a barrio, a census tract. The margin of error follows the Census Bureau's formulas: the margin of a sum is the square root of the sum of the squares of the margins of its cells, and a share uses the Bureau's proportion formula. A total that the Census Bureau controls to its own estimate has no margin; the observatory gives it a margin of zero, as the Bureau says may be done, so a share of it keeps the margin of its numerator. A cell the Census Bureau leaves empty gives no value, never a zero. A share whose margin works out to zero (a share of exactly 100%, for example) is published without a margin: the proportion formula would give zero, which would read as exact. The Puerto Rico value is the Census Bureau's own island row. The code is small_area.py in the project's repository.",
     "sources": [
@@ -447,7 +447,7 @@
       "timeline": "five-year window",
       "first": 2021,
       "last": 2024,
-      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labeled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
     },
     "method": "The observatory reads table B27010 (Types of Health Insurance Coverage by Age) of the Census Bureau's American Community Survey (ACS) 5-year files, for each of the four five-year windows, and works the value out by adding the four cells \"No health insurance coverage\" (017, 033, 050, 066) and dividing by the total (001). The Census Bureau does not publish this table for block groups, so there is no block-group value. The same arithmetic makes the value for a municipality, a barrio, a census tract. The margin of error follows the Census Bureau's formulas: the margin of a sum is the square root of the sum of the squares of the margins of its cells, and a share uses the Bureau's proportion formula. A total that the Census Bureau controls to its own estimate has no margin; the observatory gives it a margin of zero, as the Bureau says may be done, so a share of it keeps the margin of its numerator. A cell the Census Bureau leaves empty gives no value, never a zero. A share whose margin works out to zero (a share of exactly 100%, for example) is published without a margin: the proportion formula would give zero, which would read as exact. The Puerto Rico value is the Census Bureau's own island row. The code is small_area.py in the project's repository.",
     "sources": [
@@ -508,7 +508,7 @@
       "timeline": "five-year window",
       "first": 2021,
       "last": 2024,
-      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labeled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
     },
     "method": "The observatory reads table B15002 (Sex by Educational Attainment for the Population 25 Years and Over) of the Census Bureau's American Community Survey (ACS) 5-year files, for each of the four five-year windows, and works the value out by adding the sixteen cells below a high school diploma (003 to 010 and 020 to 027) and dividing by the total (001). The Census Bureau does not publish this table for block groups, so there is no block-group value. The same arithmetic makes the value for a municipality, a barrio, a census tract. The margin of error follows the Census Bureau's formulas: the margin of a sum is the square root of the sum of the squares of the margins of its cells, and a share uses the Bureau's proportion formula. A total that the Census Bureau controls to its own estimate has no margin; the observatory gives it a margin of zero, as the Bureau says may be done, so a share of it keeps the margin of its numerator. A cell the Census Bureau leaves empty gives no value, never a zero. A share whose margin works out to zero (a share of exactly 100%, for example) is published without a margin: the proportion formula would give zero, which would read as exact. The Puerto Rico value is the Census Bureau's own island row. The code is small_area.py in the project's repository.",
     "sources": [
@@ -557,7 +557,7 @@
       "timeline": "five-year window",
       "first": 2021,
       "last": 2024,
-      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labeled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
     },
     "method": "The observatory reads table B09001 and B01001 of the Census Bureau's American Community Survey (ACS) 5-year files for each of the four windows and divides the children under 3 in households (B09001_003) by all people of the area (B01001_001), in percent. The margin of error follows the Census Bureau's formulas: a sum adds the squares of its cells' margins, and a share uses the proportion formula; a total the Census Bureau controls to its own estimate gets a margin of zero, so the share keeps the margin of its count. The cells are worked out from the Census Bureau's own labels and checked against them in every vintage at every build. The code is small_area.py (age_counts, derive_pop).",
     "sources": [
@@ -608,7 +608,7 @@
       "timeline": "five-year window",
       "first": 2021,
       "last": 2024,
-      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labeled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
     },
     "method": "The observatory reads table B09001 and B01001 of the Census Bureau's American Community Survey (ACS) 5-year files for each of the four windows and divides the children aged 3 and 4 in households (B09001_004) by all people of the area (B01001_001), in percent. The margin of error follows the Census Bureau's formulas: a sum adds the squares of its cells' margins, and a share uses the proportion formula; a total the Census Bureau controls to its own estimate gets a margin of zero, so the share keeps the margin of its count. The cells are worked out from the Census Bureau's own labels and checked against them in every vintage at every build. The code is small_area.py (age_counts, derive_pop).",
     "sources": [
@@ -659,7 +659,7 @@
       "timeline": "five-year window",
       "first": 2021,
       "last": 2024,
-      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labeled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
     },
     "method": "The observatory reads table B01001 of the Census Bureau's American Community Survey (ACS) 5-year files for each of the four windows and divides the people aged 5 to 17 by all people of the area (B01001_001), in percent. The cells are 004-006 (male) and 028-030 (female). The margin of error follows the Census Bureau's formulas: a sum adds the squares of its cells' margins, and a share uses the proportion formula; a total the Census Bureau controls to its own estimate gets a margin of zero, so the share keeps the margin of its count. The cells are worked out from the Census Bureau's own labels and checked against them in every vintage at every build. The code is small_area.py (age_counts, derive_pop).",
     "sources": [
@@ -710,7 +710,7 @@
       "timeline": "five-year window",
       "first": 2021,
       "last": 2024,
-      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labeled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
     },
     "method": "The observatory reads table B01001 of the Census Bureau's American Community Survey (ACS) 5-year files for each of the four windows and divides the people aged 18 to 24 by all people of the area (B01001_001), in percent. The cells are 007-010 (male) and 031-034 (female). The margin of error follows the Census Bureau's formulas: a sum adds the squares of its cells' margins, and a share uses the proportion formula; a total the Census Bureau controls to its own estimate gets a margin of zero, so the share keeps the margin of its count. The cells are worked out from the Census Bureau's own labels and checked against them in every vintage at every build. The code is small_area.py (age_counts, derive_pop).",
     "sources": [
@@ -761,7 +761,7 @@
       "timeline": "five-year window",
       "first": 2021,
       "last": 2024,
-      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labeled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
     },
     "method": "The observatory reads table B01001 of the Census Bureau's American Community Survey (ACS) 5-year files for each of the four windows and divides the people aged 25 to 44 by all people of the area (B01001_001), in percent. The cells are 011-014 (male) and 035-038 (female). The margin of error follows the Census Bureau's formulas: a sum adds the squares of its cells' margins, and a share uses the proportion formula; a total the Census Bureau controls to its own estimate gets a margin of zero, so the share keeps the margin of its count. The cells are worked out from the Census Bureau's own labels and checked against them in every vintage at every build. The code is small_area.py (age_counts, derive_pop).",
     "sources": [
@@ -812,7 +812,7 @@
       "timeline": "five-year window",
       "first": 2021,
       "last": 2024,
-      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labeled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
     },
     "method": "The observatory reads table B01001 of the Census Bureau's American Community Survey (ACS) 5-year files for each of the four windows and divides the people aged 45 to 64 by all people of the area (B01001_001), in percent. The cells are 015-019 (male) and 039-043 (female). The margin of error follows the Census Bureau's formulas: a sum adds the squares of its cells' margins, and a share uses the proportion formula; a total the Census Bureau controls to its own estimate gets a margin of zero, so the share keeps the margin of its count. The cells are worked out from the Census Bureau's own labels and checked against them in every vintage at every build. The code is small_area.py (age_counts, derive_pop).",
     "sources": [
@@ -865,7 +865,7 @@
       "timeline": "five-year window",
       "first": 2021,
       "last": 2024,
-      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labeled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
     },
     "method": "The observatory reads table B01001 of the Census Bureau's American Community Survey (ACS) 5-year files for each of the four windows and divides the people aged 18 to 44 by all people of the area (B01001_001), in percent. The cells are 007-014 (male) and 031-038 (female). The margin of error follows the Census Bureau's formulas: a sum adds the squares of its cells' margins, and a share uses the proportion formula; a total the Census Bureau controls to its own estimate gets a margin of zero, so the share keeps the margin of its count. The cells are worked out from the Census Bureau's own labels and checked against them in every vintage at every build. The code is small_area.py (age_counts, derive_pop).",
     "sources": [
@@ -918,7 +918,7 @@
       "timeline": "five-year window",
       "first": 2021,
       "last": 2024,
-      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labeled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
     },
     "method": "The observatory reads table B09001 of the Census Bureau's American Community Survey (ACS) 5-year files for each of the four windows and takes cell 003 of B09001 (children under 3 in households; the few in group quarters are left out), with the Census Bureau's margin of error. The cell is checked against the Census Bureau's own labels in every vintage at every build. The same count and its share are in population_age.json. The code is small_area.py (age_counts, derive_pop).",
     "sources": [
@@ -970,7 +970,7 @@
       "timeline": "five-year window",
       "first": 2021,
       "last": 2024,
-      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labeled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
     },
     "method": "The observatory reads table B09001 of the Census Bureau's American Community Survey (ACS) 5-year files for each of the four windows and takes cell 004 of B09001 (children aged 3 and 4 in households), with the Census Bureau's margin of error. The cell is checked against the Census Bureau's own labels in every vintage at every build. The same count and its share are in population_age.json. The code is small_area.py (age_counts, derive_pop).",
     "sources": [
@@ -1022,7 +1022,7 @@
       "timeline": "five-year window",
       "first": 2021,
       "last": 2024,
-      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labeled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
     },
     "method": "The observatory reads table B01001 of the Census Bureau's American Community Survey (ACS) 5-year files for each of the four windows and adds the B01001 groups 5 to 9, 10 to 14 and 15 to 17, male and female (cells 004-006 and 028-030). The margin of error follows the Census Bureau's formulas: the margin of a sum is the square root of the sum of the squares of its cells' margins. A cell the Census Bureau controls to its own estimate prints no margin and adds none, and a count made only of such cells has no margin (it is not exact). The cells are worked out from the Census Bureau's own labels and checked against them in every vintage at every build. The same count and its share are in population_age.json. The code is small_area.py (age_counts, derive_pop).",
     "sources": [
@@ -1074,7 +1074,7 @@
       "timeline": "five-year window",
       "first": 2021,
       "last": 2024,
-      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labeled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
     },
     "method": "The observatory reads table B01001 of the Census Bureau's American Community Survey (ACS) 5-year files for each of the four windows and adds the B01001 groups 18 and 19, 20, 21 and 22 to 24, male and female (cells 007-010 and 031-034). The margin of error follows the Census Bureau's formulas: the margin of a sum is the square root of the sum of the squares of its cells' margins. A cell the Census Bureau controls to its own estimate prints no margin and adds none, and a count made only of such cells has no margin (it is not exact). The cells are worked out from the Census Bureau's own labels and checked against them in every vintage at every build. The same count and its share are in population_age.json. The code is small_area.py (age_counts, derive_pop).",
     "sources": [
@@ -1126,7 +1126,7 @@
       "timeline": "five-year window",
       "first": 2021,
       "last": 2024,
-      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labeled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
     },
     "method": "The observatory reads table B01001 of the Census Bureau's American Community Survey (ACS) 5-year files for each of the four windows and adds the B01001 groups 25 to 29 ... 40 to 44, male and female (cells 011-014 and 035-038). The margin of error follows the Census Bureau's formulas: the margin of a sum is the square root of the sum of the squares of its cells' margins. A cell the Census Bureau controls to its own estimate prints no margin and adds none, and a count made only of such cells has no margin (it is not exact). The cells are worked out from the Census Bureau's own labels and checked against them in every vintage at every build. The same count and its share are in population_age.json. The code is small_area.py (age_counts, derive_pop).",
     "sources": [
@@ -1178,7 +1178,7 @@
       "timeline": "five-year window",
       "first": 2021,
       "last": 2024,
-      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labeled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
     },
     "method": "The observatory reads table B01001 of the Census Bureau's American Community Survey (ACS) 5-year files for each of the four windows and adds the B01001 groups 45 to 49 ... 62 to 64, male and female (cells 015-019 and 039-043). The margin of error follows the Census Bureau's formulas: the margin of a sum is the square root of the sum of the squares of its cells' margins. A cell the Census Bureau controls to its own estimate prints no margin and adds none, and a count made only of such cells has no margin (it is not exact). The cells are worked out from the Census Bureau's own labels and checked against them in every vintage at every build. The same count and its share are in population_age.json. The code is small_area.py (age_counts, derive_pop).",
     "sources": [
@@ -1230,7 +1230,7 @@
       "timeline": "five-year window",
       "first": 2021,
       "last": 2024,
-      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labeled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
     },
     "method": "The observatory reads table B01001 of the Census Bureau's American Community Survey (ACS) 5-year files for each of the four windows and adds the B01001 groups 65 and 66 ... 85 and over, male and female (cells 020-025 and 044-049). The margin of error follows the Census Bureau's formulas: the margin of a sum is the square root of the sum of the squares of its cells' margins. A cell the Census Bureau controls to its own estimate prints no margin and adds none, and a count made only of such cells has no margin (it is not exact). The cells are worked out from the Census Bureau's own labels and checked against them in every vintage at every build. The same count and its share are in population_age.json. The code is small_area.py (age_counts, derive_pop).",
     "sources": [
@@ -1282,7 +1282,7 @@
       "timeline": "five-year window",
       "first": 2021,
       "last": 2024,
-      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labeled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
     },
     "method": "The observatory reads table B01001 of the Census Bureau's American Community Survey (ACS) 5-year files for each of the four windows and adds the B01001 groups under 5 ... 15 to 17, male and female (cells 003-006 and 027-030). The margin of error follows the Census Bureau's formulas: the margin of a sum is the square root of the sum of the squares of its cells' margins. A cell the Census Bureau controls to its own estimate prints no margin and adds none, and a count made only of such cells has no margin (it is not exact). The cells are worked out from the Census Bureau's own labels and checked against them in every vintage at every build. The same count and its share are in population_age.json. The code is small_area.py (age_counts, derive_pop).",
     "sources": [
@@ -1334,7 +1334,7 @@
       "timeline": "five-year window",
       "first": 2021,
       "last": 2024,
-      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labeled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
     },
     "method": "The observatory reads table B01001 of the Census Bureau's American Community Survey (ACS) 5-year files for each of the four windows and adds the B01001 groups 18 and 19 ... 40 to 44, male and female (cells 007-014 and 031-038). The margin of error follows the Census Bureau's formulas: the margin of a sum is the square root of the sum of the squares of its cells' margins. A cell the Census Bureau controls to its own estimate prints no margin and adds none, and a count made only of such cells has no margin (it is not exact). The cells are worked out from the Census Bureau's own labels and checked against them in every vintage at every build. The same count and its share are in population_age.json. The code is small_area.py (age_counts, derive_pop).",
     "sources": [
@@ -1401,7 +1401,7 @@
       "timeline": "five-year window",
       "first": 2021,
       "last": 2024,
-      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labeled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
     },
     "method": "The observatory reads table B16004 (Age by Language Spoken at Home by Ability to Speak English for the Population 5 Years and Over) of the Census Bureau's American Community Survey (ACS) 5-year files, for each of the four five-year windows. It adds the 15 cells of people who speak only English at home or speak English \"very well\" (in each of the three age groups, the cell \"Speak only English\" and the cell 'Speak English \"very well\"' of each of the four language groups), divides by the total (001) and takes that share from 100. The complement of a share has the margin of error of the share. The Census Bureau does not publish block-group values here. The same arithmetic makes the value for a municipality, a barrio, a census tract. A total that the Census Bureau controls to its own estimate has no margin; the observatory gives it a margin of zero, as the Bureau says may be done. The margin of error follows the Census Bureau's formulas: the margin of a sum is the square root of the sum of the squares of the margins of its cells, and a share uses the Bureau's proportion formula. A cell the Census Bureau leaves empty gives no value, never a zero. A share whose margin works out to zero (a share of exactly 100%, for example) is published without a margin. The Puerto Rico value is the Census Bureau's own island row. The code is small_area.py in the project's repository.",
     "sources": [
@@ -1468,7 +1468,7 @@
       "timeline": "five-year window",
       "first": 2021,
       "last": 2024,
-      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labeled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
     },
     "method": "The observatory reads table B22010 (Receipt of Food Stamps/SNAP in the Past 12 Months by Disability Status for Households) of the Census Bureau's American Community Survey (ACS) 5-year files, for each of the four five-year windows, and divides the households that received the benefit (002) by all households (001). The same arithmetic makes the value for a municipality, a barrio, a census tract; block groups are not published by the observatory. The margin of error follows the Census Bureau's formulas: the margin of a sum is the square root of the sum of the squares of the margins of its cells, and a share uses the Bureau's proportion formula. A cell the Census Bureau leaves empty gives no value, never a zero. A share whose margin works out to zero (a share of exactly 100%, for example) is published without a margin. The Puerto Rico value is the Census Bureau's own island row. The code is small_area.py in the project's repository.",
     "sources": [
@@ -1535,7 +1535,7 @@
       "timeline": "five-year window",
       "first": 2021,
       "last": 2024,
-      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labeled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
     },
     "method": "The observatory reads table B17001 (Poverty Status in the Past 12 Months by Sex by Age) of the Census Bureau's American Community Survey (ACS) 5-year files, for each of the four five-year windows. It adds the twelve cells of boys and girls under 18 below the poverty level (004-009 and 018-023) and the twelve at or above it (033-038 and 047-052), and divides the first sum by the two together. The poverty level is the federal one, the same in Puerto Rico as in the states. The margin of error follows the Census Bureau's formulas: the margin of a sum is the square root of the sum of the squares of the margins of its cells, and a share uses the Bureau's proportion formula. A cell the Census Bureau leaves empty gives no value, never a zero. A share whose margin works out to zero (a share of exactly 100%, for example) is published without a margin. The Puerto Rico value is the Census Bureau's own island row. The code is small_area.py in the project's repository.",
     "sources": [
@@ -1598,7 +1598,7 @@
       "timeline": "five-year window",
       "first": 2021,
       "last": 2024,
-      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labeled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
     },
     "method": "The observatory reads table B17001 (Poverty Status in the Past 12 Months by Sex by Age) of the Census Bureau's American Community Survey (ACS) 5-year files, for each of the four five-year windows. It adds the four cells of men and women 65 to 74 and 75 and over below the poverty level (015, 016, 029, 030) and the four at or above it (044, 045, 058, 059), and divides the first sum by the two together. The poverty level is the federal one, the same in Puerto Rico as in the states. The margin of error follows the Census Bureau's formulas: the margin of a sum is the square root of the sum of the squares of the margins of its cells, and a share uses the Bureau's proportion formula. A cell the Census Bureau leaves empty gives no value, never a zero. A share whose margin works out to zero (a share of exactly 100%, for example) is published without a margin. The Puerto Rico value is the Census Bureau's own island row. The code is small_area.py in the project's repository.",
     "sources": [
@@ -1648,7 +1648,7 @@
       "timeline": "five-year window",
       "first": 2021,
       "last": 2024,
-      "frequency": "Four windows, 2017-2021 to 2020-2024, labelled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
+      "frequency": "Four windows, 2017-2021 to 2020-2024, labeled by their last year (2021 to 2024). They share years, so the change from one window to the next is not a trend. Rebuilt with each snapshot (python small_area.py), which adds a window when the Census Bureau publishes one."
     },
     "method": "small_area.py (age_file) reads tables B01001 (Sex by Age) and B09001 (Population Under 18 Years by Age) for every window and level through acs_small.py. A five-year band adds the B01001 groups inside it (15 to 19 is 15-17 plus 18-19; 20 to 24 is 20, 21 and 22-24; 60 to 64 is 60-61 plus 62-64; 65 to 69 is 65-66 plus 67-69), male and female. Under 3 and 3 and 4 are B09001's children in households. A count's margin is the square root of the sum of the squares of its cells' margins; a cell the Census Bureau controls to its own estimate prints no margin and adds none, and a count made only of such cells has no margin (it is not exact). A share is over all people (B01001_001) by the proportion formula, with a controlled total given a margin of zero. The five-year bands add up to all people in every area, and so do under 5, 5 to 17, 18 to 24, 25 to 44, 45 to 64 and 65 and older, and under 18, 18 to 44, 45 to 64 and 65 and older (tests/test_small_area.py). Reliability decided what is published below the municipality (2020-2024): every five-year band has a margin above 30% of the estimate for 89% or more of the barrios and 95% or more of the census tracts, so the bands are for municipalities only; of the age groups, the shares of 18 to 44 (39% of barrios flagged), 45 to 64 (31%) and 65 and older (36%) are flagged for under half of the barrios and are published there, with under 18 (70%), published since 2026-10-06; 5 to 17 (79%), 18 to 24 (89%), 25 to 44 (53%), under 3 and 3 and 4 (99% or more) are not.",
     "sources": [

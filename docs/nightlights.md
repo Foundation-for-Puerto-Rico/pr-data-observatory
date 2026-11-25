@@ -10,8 +10,8 @@ NASA's Black Marble monthly product, **VNP46A3** collection 2 (https://doi.org/1
 - **Layers read.** `AllAngle_Composite_Snow_Free` (radiance in nW/cm²/sr) and `AllAngle_Composite_Snow_Free_Quality`, which is 0 for good (more than three clear observations), 1 for poor (three or fewer), 2 for gap-filled (none: the value comes from earlier data) and 255 for no value. In collection 2 the radiance is a 32-bit float with fill value −999.9 and scale 1 (Black Marble User Guide v2.0, October 2024, tables 11 and 12). The reader uses the file's own attributes when it has them.
 - **Tile.** All of Puerto Rico is in **h11v07** (70–60° W, 20–10° N), from Mona and Desecheo to Culebra and Vieques. h10v07 (80–70° W) holds Hispaniola and no barrio, so it is not downloaded. `tiles_for` works this out from the barrio outlines, and a test checks it.
 - **Access.** LAADS DAAC lists the archive openly (`…/archive/allData/5200/VNP46A3/<year>/<day>.json`). A download without a login gets an HTTP 303 to a sign-in page (checked 2026-11-02). The build reads a user token from `EARTHDATA_TOKEN` and sends it only to LAADS, in the `Authorization` header. It never prints, caches or publishes the token. Without the token, the script says so, exits with status 0 and changes nothing.
-- **Size.** About 70 MB a month for h11v07. The first run downloads about 177 months (roughly 12 GB). Each file is summarised into `cache/nightlights/summary/YYYY-MM.json` (a few hundred KB) and then deleted, unless `--keep`. Later runs download only months that are new or that NASA reprocessed (a new file name).
-- **Licence.** Under NASA's data use guidance, data from a NASA-led mission are CC0 unless marked otherwise, and NASA strongly urges users to cite them. The source card `nasa_black_marble` gives the citation.
+- **Size.** About 70 MB a month for h11v07. The first run downloads about 177 months (roughly 12 GB). Each file is summarized into `cache/nightlights/summary/YYYY-MM.json` (a few hundred KB) and then deleted, unless `--keep`. Later runs download only months that are new or that NASA reprocessed (a new file name).
+- **License.** Under NASA's data use guidance, data from a NASA-led mission are CC0 unless marked otherwise, and NASA strongly urges users to cite them. The source card `nasa_black_marble` gives the citation.
 
 ## How each figure is made
 
@@ -20,7 +20,7 @@ NASA's Black Marble monthly product, **VNP46A3** collection 2 (https://doi.org/1
 | `ntl_radiance` | Mean night-time radiance of the area's pixels | nW/cm²/sr |
 | `ntl_poor_pct` | Share of the area's pixels flagged poor or gap-filled | % |
 
-- **Pixels to areas.** A pixel counts in the barrio whose outline (`barrios.geojson`) holds its centre. 43,925 pixels fall in a barrio. Three barrios are smaller than a pixel and hold no centre; each takes the pixel under its representative point, for its own figure only. Pixels over the sea count nowhere.
+- **Pixels to areas.** A pixel counts in the barrio whose outline (`barrios.geojson`) holds its center. 43,925 pixels fall in a barrio. Three barrios are smaller than a pixel and hold no center; each takes the pixel under its representative point, for its own figure only. Pixels over the sea count nowhere.
 - **Pooled, not averaged.** A municipio's and Puerto Rico's mean is over all their pixels, each pixel once. It is not an average of barrio means. A year's value pools the pixels of its twelve months. A year with fewer than twelve months appears only in the monthly file, and the series notes say so (`partial_years`).
 - **Quality share.** Pixels flagged 1 or 2 over pixels with a quality value. A high share means the month's (or the year's) light rests on few clear nights.
 

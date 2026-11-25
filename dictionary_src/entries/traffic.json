@@ -3,10 +3,10 @@
   "id": "infrastructure.traffic_vkt",
   "ask": {
    "en": [
-    "vehicle kilometres",
+    "vehicle kilometers",
     "vehicle km",
     "vmt",
-    "vehicle miles travelled",
+    "vehicle miles traveled",
     "traffic volume"
    ],
    "es": [
@@ -15,7 +15,7 @@
     "volumen de transito"
    ]
   },
-  "name": "Vehicle-kilometres a day (HPMS)",
+  "name": "Vehicle-kilometers a day (HPMS)",
   "domain": "infrastructure.mobility",
   "domains": [
    "infrastructure.mobility",
@@ -23,8 +23,8 @@
   ],
   "group": "Traffic",
   "kind": "variable",
-  "plain": "How many kilometres all vehicles drive in a day on the municipio's roads, added up.",
-  "definition": "The vehicle-kilometres driven on an average day on the municipio's public roads: each road section's annual average daily traffic times its length, added up. Local streets are included with the traffic the Department of Transportation and Public Works estimates for them; ramps are left out.",
+  "plain": "How many kilometers all vehicles drive in a day on the municipio's roads, added up.",
+  "definition": "The vehicle-kilometers driven on an average day on the municipio's public roads: each road section's annual average daily traffic times its length, added up. Local streets are included with the traffic the Department of Transportation and Public Works estimates for them; ramps are left out.",
   "unit": "vehicle-km a day",
   "value_type": "count",
   "geography": "78 municipalities and Puerto Rico",
@@ -53,7 +53,7 @@
    ],
    "view": [
     {
-     "label": "Map, Analysis tab: Vehicle-kilometres a day (HPMS)",
+     "label": "Map, Analysis tab: Vehicle-kilometers a day (HPMS)",
      "href": "index.html#e=traffic_vkt.s"
     }
    ]
@@ -64,7 +64,7 @@
   "id": "infrastructure.traffic_vkt_pc",
   "ask": {
    "en": [
-    "vehicle kilometres per resident",
+    "vehicle kilometers per resident",
     "traffic per resident",
     "how much driving"
    ],
@@ -73,7 +73,7 @@
     "transito por residente"
    ]
   },
-  "name": "Vehicle-kilometres a day per resident (HPMS)",
+  "name": "Vehicle-kilometers a day per resident (HPMS)",
   "domain": "infrastructure.mobility",
   "domains": [
    "infrastructure.mobility",
@@ -81,8 +81,8 @@
   ],
   "group": "Traffic",
   "kind": "variable",
-  "plain": "The daily vehicle-kilometres on the municipio's roads for each resident: high where much traffic passes through.",
-  "definition": "The daily vehicle-kilometres on the municipio's roads over its residents in the 2020 Census. It counts every vehicle on those roads, also those of people who live elsewhere, so it is high where through traffic is heavy.",
+  "plain": "The daily vehicle-kilometers on the municipio's roads for each resident: high where much traffic passes through.",
+  "definition": "The daily vehicle-kilometers on the municipio's roads over its residents in the 2020 Census. It counts every vehicle on those roads, also those of people who live elsewhere, so it is high where through traffic is heavy.",
   "unit": "vehicle-km a day per resident",
   "value_type": "ratio",
   "geography": "78 municipalities and Puerto Rico",
@@ -113,7 +113,7 @@
    ],
    "view": [
     {
-     "label": "Map, Analysis tab: Vehicle-kilometres a day per resident (HPMS)",
+     "label": "Map, Analysis tab: Vehicle-kilometers a day per resident (HPMS)",
      "href": "index.html#e=traffic_vkt_pc.f"
     }
    ]
@@ -143,7 +143,7 @@
   ],
   "group": "Traffic",
   "kind": "variable",
-  "plain": "How many kilometres of freeways, arterials and major collectors the municipio has.",
+  "plain": "How many kilometers of freeways, arterials and major collectors the municipio has.",
   "definition": "The length of the municipio's main roads: freeways and expressways, principal and minor arterials and major collectors (functional classes 1 to 5), each road counted once.",
   "unit": "km",
   "value_type": "count",
@@ -263,7 +263,7 @@
   "group": "Traffic",
   "kind": "variable",
   "plain": "Out of every 100 vehicles on the municipio's main roads, how many are trucks.",
-  "definition": "Single-unit and combination trucks as a share of all vehicles, in vehicle-kilometres, on the arterials and major collectors whose sections report trucks.",
+  "definition": "Single-unit and combination trucks as a share of all vehicles, in vehicle-kilometers, on the arterials and major collectors whose sections report trucks.",
   "unit": "% of vehicle-km",
   "value_type": "rate",
   "geography": "78 municipalities and Puerto Rico",
@@ -324,8 +324,8 @@
   ],
   "group": "Traffic",
   "kind": "variable",
-  "plain": "Out of every 100 measured kilometres of main road, how many have rough pavement by the roughness index FHWA uses.",
-  "definition": "The share of the measured kilometres of arterials and major collectors whose International Roughness Index is over 170 inches per mile, FHWA's threshold for poor pavement.",
+  "plain": "Out of every 100 measured kilometers of main road, how many have rough pavement by the roughness index FHWA uses.",
+  "definition": "The share of the measured kilometers of arterials and major collectors whose International Roughness Index is over 170 inches per mile, FHWA's threshold for poor pavement.",
   "unit": "% of km",
   "value_type": "rate",
   "geography": "78 municipalities and Puerto Rico",
@@ -390,7 +390,7 @@
   ],
   "group": "Traffic",
   "plain": "A map layer of the main roads drawn by how many vehicles pass each stretch on an average day: wider and darker where traffic is heavier.",
-  "definition": "traffic_roads.geojson: one line per stretch of a route with one count, with c (colour class: 1 fewer than 2,000 vehicles a day, 2 2,000-5,000, 3 5,000-10,000, 4 10,000-20,000, 5 20,000-40,000, 6 40,000 or more), a (annual average daily traffic), r (route), f (functional class: 1 interstate, 2 other freeway or expressway, 3 other principal arterial, 4 minor arterial, 5 major collector), y (year of the count or estimate), l (through lanes), km, t (trucks as % of vehicles, where reported), s (speed limit, mph) and o (one direction of a divided road).",
+  "definition": "traffic_roads.geojson: one line per stretch of a route with one count, with c (color class: 1 fewer than 2,000 vehicles a day, 2 2,000-5,000, 3 5,000-10,000, 4 10,000-20,000, 5 20,000-40,000, 6 40,000 or more), a (annual average daily traffic), r (route), f (functional class: 1 interstate, 2 other freeway or expressway, 3 other principal arterial, 4 minor arterial, 5 major collector), y (year of the count or estimate), l (through lanes), km, t (trucks as % of vehicles, where reported), s (speed limit, mph) and o (one direction of a divided road).",
   "geography": "3,829 stretches, 5,396.1 km of arterials and major collectors",
   "coverage": {
    "timeline": "snapshot",

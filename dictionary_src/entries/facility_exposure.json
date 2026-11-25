@@ -161,7 +161,7 @@
       "last": 2026,
       "frequency": "One snapshot, rebuilt with the build: the flood layer and facility layers as published, and the public schools of school year 2024."
     },
-    "method": "facility_exposure.py lays points and lines on FEMA's 1% annual chance flood area (the Special Flood Hazard Area of the observatory's flood layer, flood.geojson; the rule of the exposure series). It is an overlaid figure (decision 107): one published layer laid on another, with nothing assumed. The schools are the open public schools of the NCES Common Core of Data directory for school year 2024 (Urban Institute Education Data API), each at its published point with its enrolment. 0 open schools had no point.",
+    "method": "facility_exposure.py lays points and lines on FEMA's 1% annual chance flood area (the Special Flood Hazard Area of the observatory's flood layer, flood.geojson; the rule of the exposure series). It is an overlaid figure (decision 107): one published layer laid on another, with nothing assumed. The schools are the open public schools of the NCES Common Core of Data directory for school year 2024 (Urban Institute Education Data API), each at its published point with its enrollment. 0 open schools had no point.",
     "sources": [
       "fema_nfhl",
       "urban_ccd"
@@ -220,7 +220,7 @@
       "last": 2026,
       "frequency": "One snapshot, rebuilt with the build: the flood layer and facility layers as published, and the public schools of school year 2024."
     },
-    "method": "facility_exposure.py lays points and lines on FEMA's 1% annual chance flood area (the Special Flood Hazard Area of the observatory's flood layer, flood.geojson; the rule of the exposure series). It is an overlaid figure (decision 107): one published layer laid on another, with nothing assumed. The schools are the open public schools of the NCES Common Core of Data directory for school year 2024 (Urban Institute Education Data API), each at its published point with its enrolment. 0 open schools had no point.",
+    "method": "facility_exposure.py lays points and lines on FEMA's 1% annual chance flood area (the Special Flood Hazard Area of the observatory's flood layer, flood.geojson; the rule of the exposure series). It is an overlaid figure (decision 107): one published layer laid on another, with nothing assumed. The schools are the open public schools of the NCES Common Core of Data directory for school year 2024 (Urban Institute Education Data API), each at its published point with its enrollment. 0 open schools had no point.",
     "sources": [
       "fema_nfhl",
       "urban_ccd"
@@ -279,7 +279,7 @@
       "last": 2026,
       "frequency": "One snapshot, rebuilt with the build: the flood layer and facility layers as published, and the public schools of school year 2024."
     },
-    "method": "facility_exposure.py lays points and lines on FEMA's 1% annual chance flood area (the Special Flood Hazard Area of the observatory's flood layer, flood.geojson; the rule of the exposure series). It is an overlaid figure (decision 107): one published layer laid on another, with nothing assumed. The schools are the open public schools of the NCES Common Core of Data directory for school year 2024 (Urban Institute Education Data API), each at its published point with its enrolment. 0 open schools had no point.",
+    "method": "facility_exposure.py lays points and lines on FEMA's 1% annual chance flood area (the Special Flood Hazard Area of the observatory's flood layer, flood.geojson; the rule of the exposure series). It is an overlaid figure (decision 107): one published layer laid on another, with nothing assumed. The schools are the open public schools of the NCES Common Core of Data directory for school year 2024 (Urban Institute Education Data API), each at its published point with its enrollment. 0 open schools had no point.",
     "sources": [
       "fema_nfhl",
       "urban_ccd"
@@ -329,8 +329,8 @@
     ],
     "group": "Facilities and roads in hazard zones",
     "kind": "variable",
-    "plain": "How many kilometres of each municipio's main roads run inside FEMA's 1% flood area.",
-    "definition": "The kilometres of the municipio's main roads (arterials and major collectors with a traffic count) that run inside FEMA's 1% annual chance flood area. It says where the road runs, not that it floods: a road may be raised.",
+    "plain": "How many kilometers of each municipio's main roads run inside FEMA's 1% flood area.",
+    "definition": "The kilometers of the municipio's main roads (arterials and major collectors with a traffic count) that run inside FEMA's 1% annual chance flood area. It says where the road runs, not that it floods: a road may be raised.",
     "unit": "km",
     "value_type": "count",
     "geography": "78 municipalities and Puerto Rico",
@@ -340,7 +340,7 @@
       "last": 2026,
       "frequency": "One snapshot, rebuilt with the build: the flood layer and facility layers as published, and the public schools of school year 2024."
     },
-    "method": "facility_exposure.py lays points and lines on FEMA's 1% annual chance flood area (the Special Flood Hazard Area of the observatory's flood layer, flood.geojson; the rule of the exposure series). It is an overlaid figure (decision 107): one published layer laid on another, with nothing assumed. The roads are the main roads of the traffic layer (traffic_roads.geojson: arterials and major collectors with a traffic count, FHWA HPMS). Each line is cut by the municipio outlines and each piece by the flood polygons it meets; lengths are measured in metres on a local flat projection.",
+    "method": "facility_exposure.py lays points and lines on FEMA's 1% annual chance flood area (the Special Flood Hazard Area of the observatory's flood layer, flood.geojson; the rule of the exposure series). It is an overlaid figure (decision 107): one published layer laid on another, with nothing assumed. The roads are the main roads of the traffic layer (traffic_roads.geojson: arterials and major collectors with a traffic count, FHWA HPMS). Each line is cut by the municipio outlines and each piece by the flood polygons it meets; lengths are measured in meters on a local flat projection.",
     "sources": [
       "fema_nfhl",
       "fhwa_hpms"
@@ -389,7 +389,7 @@
     "group": "Facilities and roads in hazard zones",
     "kind": "variable",
     "plain": "Out of every 100 km of main road in a municipio, how many run inside FEMA's 1% flood area.",
-    "definition": "The share of the kilometres of the municipio's main roads that run inside FEMA's 1% annual chance flood area. A road may be raised above it.",
+    "definition": "The share of the kilometers of the municipio's main roads that run inside FEMA's 1% annual chance flood area. A road may be raised above it.",
     "unit": "%",
     "value_type": "rate",
     "geography": "78 municipalities and Puerto Rico",
@@ -399,7 +399,7 @@
       "last": 2026,
       "frequency": "One snapshot, rebuilt with the build: the flood layer and facility layers as published, and the public schools of school year 2024."
     },
-    "method": "facility_exposure.py lays points and lines on FEMA's 1% annual chance flood area (the Special Flood Hazard Area of the observatory's flood layer, flood.geojson; the rule of the exposure series). It is an overlaid figure (decision 107): one published layer laid on another, with nothing assumed. The roads are the main roads of the traffic layer (traffic_roads.geojson: arterials and major collectors with a traffic count, FHWA HPMS). Each line is cut by the municipio outlines and each piece by the flood polygons it meets; lengths are measured in metres on a local flat projection.",
+    "method": "facility_exposure.py lays points and lines on FEMA's 1% annual chance flood area (the Special Flood Hazard Area of the observatory's flood layer, flood.geojson; the rule of the exposure series). It is an overlaid figure (decision 107): one published layer laid on another, with nothing assumed. The roads are the main roads of the traffic layer (traffic_roads.geojson: arterials and major collectors with a traffic count, FHWA HPMS). Each line is cut by the municipio outlines and each piece by the flood polygons it meets; lengths are measured in meters on a local flat projection.",
     "sources": [
       "fema_nfhl",
       "fhwa_hpms"
@@ -637,8 +637,8 @@
     ],
     "group": "Facilities and roads in hazard zones",
     "kind": "variable",
-    "plain": "How many kilometres of each municipio's main roads run inside the area 3 ft of sea level rise would flood.",
-    "definition": "The kilometres of the municipio's main roads (arterials and major collectors with a traffic count) that run inside NOAA's area flooded by 3 ft of sea level rise above today's high tide (connected to the ocean), read every 20 m. It says where the road runs today, not that it will be under water: a road may be raised.",
+    "plain": "How many kilometers of each municipio's main roads run inside the area 3 ft of sea level rise would flood.",
+    "definition": "The kilometers of the municipio's main roads (arterials and major collectors with a traffic count) that run inside NOAA's area flooded by 3 ft of sea level rise above today's high tide (connected to the ocean), read every 20 m. It says where the road runs today, not that it will be under water: a road may be raised.",
     "unit": "km",
     "value_type": "count",
     "geography": "78 municipalities and Puerto Rico",
@@ -697,7 +697,7 @@
     "group": "Facilities and roads in hazard zones",
     "kind": "variable",
     "plain": "Out of every 100 km of main road in a municipio, how many run inside the area 3 ft of sea level rise would flood.",
-    "definition": "The share of the kilometres of the municipio's main roads that run inside NOAA's area flooded by 3 ft of sea level rise above today's high tide (connected to the ocean), read every 20 m. A road may be raised above it.",
+    "definition": "The share of the kilometers of the municipio's main roads that run inside NOAA's area flooded by 3 ft of sea level rise above today's high tide (connected to the ocean), read every 20 m. A road may be raised above it.",
     "unit": "%",
     "value_type": "rate",
     "geography": "78 municipalities and Puerto Rico",
@@ -782,7 +782,7 @@
     "how_to_read": "On the main island, 26 of the 2,249 facilities tested stand on High or higher landslide susceptibility land (1.2%): airports and heliports 0 of 14; city halls 0 of 63; fire and ems stations 0 of 92; libraries 23 of 876; police stations 0 of 140; power plants 3 of 66; public housing developments 0 of 143; public schools 0 of 855. Most: Barranquitas (4), Yauco (3), Utuado (3).",
     "caveats": [
       "It says what the ground under a building or road is rated, not that a slide will happen there; the map is not a substitute for a site-specific slope-stability study.",
-      "A building stands on a levelled pad, and the 5 m map rates the pad by its own gentle slope: the point under a building reads Low far more often than the slope around it. 94% of public schools read Low, while 11.5% of residents (census block points, landslide.py) live on High or higher land. Read a low count as 'the building's own cell is not rated high', not as 'safe from slides': a slope above or below it, or the road to it, may be.",
+      "A building stands on a leveled pad, and the 5 m map rates the pad by its own gentle slope: the point under a building reads Low far more often than the slope around it. 94% of public schools read Low, while 11.5% of residents (census block points, landslide.py) live on High or higher land. Read a low count as 'the building's own cell is not rated high', not as 'safe from slides': a slope above or below it, or the road to it, may be.",
       "Vieques and Culebra are not in the USGS map: they have no value, and Puerto Rico's figure is of the main island.",
       "2 points of the main island fall on a cell with no class (water or the edge of the map) and count as not high.",
       "Roads are read every 20 m, so a stretch shorter than that may be missed or counted whole."
@@ -848,7 +848,7 @@
     "how_to_read": "Main island: 1.2%. Highest: Las Marías (18.2%), Barranquitas (14.3%), Patillas (10.5%). A municipio with few facilities moves a lot with one building: read the count beside the share.",
     "caveats": [
       "It says what the ground under a building or road is rated, not that a slide will happen there; the map is not a substitute for a site-specific slope-stability study.",
-      "A building stands on a levelled pad, and the 5 m map rates the pad by its own gentle slope: the point under a building reads Low far more often than the slope around it. 94% of public schools read Low, while 11.5% of residents (census block points, landslide.py) live on High or higher land. Read a low count as 'the building's own cell is not rated high', not as 'safe from slides': a slope above or below it, or the road to it, may be.",
+      "A building stands on a leveled pad, and the 5 m map rates the pad by its own gentle slope: the point under a building reads Low far more often than the slope around it. 94% of public schools read Low, while 11.5% of residents (census block points, landslide.py) live on High or higher land. Read a low count as 'the building's own cell is not rated high', not as 'safe from slides': a slope above or below it, or the road to it, may be.",
       "Vieques and Culebra are not in the USGS map: they have no value, and Puerto Rico's figure is of the main island.",
       "2 points of the main island fall on a cell with no class (water or the edge of the map) and count as not high.",
       "Roads are read every 20 m, so a stretch shorter than that may be missed or counted whole."
@@ -911,7 +911,7 @@
     "how_to_read": "Main island: 0.0%. Highest: Yauco (0.0%), Yabucoa (0.0%), Villalba (0.0%). It counts where the school stands, not the road to it.",
     "caveats": [
       "It says what the ground under a building or road is rated, not that a slide will happen there; the map is not a substitute for a site-specific slope-stability study.",
-      "A building stands on a levelled pad, and the 5 m map rates the pad by its own gentle slope: the point under a building reads Low far more often than the slope around it. 94% of public schools read Low, while 11.5% of residents (census block points, landslide.py) live on High or higher land. Read a low count as 'the building's own cell is not rated high', not as 'safe from slides': a slope above or below it, or the road to it, may be.",
+      "A building stands on a leveled pad, and the 5 m map rates the pad by its own gentle slope: the point under a building reads Low far more often than the slope around it. 94% of public schools read Low, while 11.5% of residents (census block points, landslide.py) live on High or higher land. Read a low count as 'the building's own cell is not rated high', not as 'safe from slides': a slope above or below it, or the road to it, may be.",
       "Vieques and Culebra are not in the USGS map: they have no value, and Puerto Rico's figure is of the main island.",
       "2 points of the main island fall on a cell with no class (water or the edge of the map) and count as not high.",
       "Roads are read every 20 m, so a stretch shorter than that may be missed or counted whole."
@@ -954,8 +954,8 @@
     ],
     "group": "Facilities and roads in hazard zones",
     "kind": "variable",
-    "plain": "How many kilometres of each municipio's main roads run on land the USGS rates highly susceptible to landslides.",
-    "definition": "The kilometres of the municipio's main roads (arterials and major collectors with a traffic count) that run on land the USGS map rates High, Very High or Extremely High for landslides triggered by intense rainfall (the most susceptible 30% of the main island), read every 20 m. It says what the ground under it is rated, not that a slide will happen there; Vieques and Culebra are not in the map.",
+    "plain": "How many kilometers of each municipio's main roads run on land the USGS rates highly susceptible to landslides.",
+    "definition": "The kilometers of the municipio's main roads (arterials and major collectors with a traffic count) that run on land the USGS map rates High, Very High or Extremely High for landslides triggered by intense rainfall (the most susceptible 30% of the main island), read every 20 m. It says what the ground under it is rated, not that a slide will happen there; Vieques and Culebra are not in the map.",
     "unit": "km",
     "value_type": "count",
     "geography": "78 municipalities and Puerto Rico",
@@ -974,7 +974,7 @@
     "how_to_read": "On the main island, 474.3 km of main road run on High or higher landslide susceptibility land (8.9%). Most: Utuado (32.4 km), Orocovis (22.7 km), Adjuntas (22.7 km).",
     "caveats": [
       "It says what the ground under a building or road is rated, not that a slide will happen there; the map is not a substitute for a site-specific slope-stability study.",
-      "A building stands on a levelled pad, and the 5 m map rates the pad by its own gentle slope: the point under a building reads Low far more often than the slope around it. 94% of public schools read Low, while 11.5% of residents (census block points, landslide.py) live on High or higher land. Read a low count as 'the building's own cell is not rated high', not as 'safe from slides': a slope above or below it, or the road to it, may be.",
+      "A building stands on a leveled pad, and the 5 m map rates the pad by its own gentle slope: the point under a building reads Low far more often than the slope around it. 94% of public schools read Low, while 11.5% of residents (census block points, landslide.py) live on High or higher land. Read a low count as 'the building's own cell is not rated high', not as 'safe from slides': a slope above or below it, or the road to it, may be.",
       "Vieques and Culebra are not in the USGS map: they have no value, and Puerto Rico's figure is of the main island.",
       "2 points of the main island fall on a cell with no class (water or the edge of the map) and count as not high.",
       "Roads are read every 20 m, so a stretch shorter than that may be missed or counted whole."
@@ -1016,7 +1016,7 @@
     "group": "Facilities and roads in hazard zones",
     "kind": "variable",
     "plain": "Out of every 100 km of main road in a municipio, how many run on land the USGS rates highly susceptible to landslides.",
-    "definition": "The share of the kilometres of the municipio's main roads that run on land the USGS map rates High, Very High or Extremely High for landslides triggered by intense rainfall (the most susceptible 30% of the main island), read every 20 m. It says what the ground under it is rated, not that a slide will happen there; Vieques and Culebra are not in the map.",
+    "definition": "The share of the kilometers of the municipio's main roads that run on land the USGS map rates High, Very High or Extremely High for landslides triggered by intense rainfall (the most susceptible 30% of the main island), read every 20 m. It says what the ground under it is rated, not that a slide will happen there; Vieques and Culebra are not in the map.",
     "unit": "%",
     "value_type": "rate",
     "geography": "78 municipalities and Puerto Rico",
@@ -1035,7 +1035,7 @@
     "how_to_read": "Main island: 8.9%. Highest: Maricao (42.2%), Orocovis (28.5%), Utuado (28.3%). A road cut into a slope is rated by the ground under its middle line.",
     "caveats": [
       "It says what the ground under a building or road is rated, not that a slide will happen there; the map is not a substitute for a site-specific slope-stability study.",
-      "A building stands on a levelled pad, and the 5 m map rates the pad by its own gentle slope: the point under a building reads Low far more often than the slope around it. 94% of public schools read Low, while 11.5% of residents (census block points, landslide.py) live on High or higher land. Read a low count as 'the building's own cell is not rated high', not as 'safe from slides': a slope above or below it, or the road to it, may be.",
+      "A building stands on a leveled pad, and the 5 m map rates the pad by its own gentle slope: the point under a building reads Low far more often than the slope around it. 94% of public schools read Low, while 11.5% of residents (census block points, landslide.py) live on High or higher land. Read a low count as 'the building's own cell is not rated high', not as 'safe from slides': a slope above or below it, or the road to it, may be.",
       "Vieques and Culebra are not in the USGS map: they have no value, and Puerto Rico's figure is of the main island.",
       "2 points of the main island fall on a cell with no class (water or the edge of the map) and count as not high.",
       "Roads are read every 20 m, so a stretch shorter than that may be missed or counted whole."

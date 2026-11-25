@@ -75,7 +75,7 @@ const Scenarios = (() => {
       <section class="sc-box" aria-labelledby="scSaveH"><h3 class="sec" id="scSaveH">${esc(T('Save this view as a scenario'))}</h3>
         <div class="note">${esc(T('A scenario keeps the map\'s layers, year, composite and planned route, the figures they give, and the model outputs on the map. It stays in this browser; export it to share it.'))}${st.persistent ? '' : ' ' + esc(T('This browser keeps no stored data here (a private window, for example): scenarios last until the page closes. Export the ones to keep.'))}</div>
         <label class="sc-f">${esc(T('Name'))} <input type="text" id="scName" maxlength="120" required></label>
-        <label class="sc-f">${esc(T('Prepared by (a team or organisation, not a person\'s contact)'))} <input type="text" id="scLabel" maxlength="120"></label>
+        <label class="sc-f">${esc(T('Prepared by (a team or organization, not a person\'s contact)'))} <input type="text" id="scLabel" maxlength="120"></label>
         <label class="sc-f">${esc(T('Notes'))} <textarea id="scNotes" rows="2" maxlength="4000"></textarea></label>
         <div class="btn-row"><button type="button" class="btn primary" id="scSave">${esc(T('Save the scenario'))}</button><label class="btn" for="scImport">${esc(T('Import a scenario (JSON)'))}</label><input type="file" id="scImport" accept=".json,application/json" hidden></div>
       </section>
@@ -98,7 +98,7 @@ const Scenarios = (() => {
     body.querySelector('#scSave').onclick = async () => {
       const name = body.querySelector('#scName').value.trim(), label = body.querySelector('#scLabel').value.trim(), notes = body.querySelector('#scNotes').value.trim();
       if (!name) { body.querySelector('#scName').focus(); return say(T('Give the scenario a name.')); }
-      if ([name, label, notes].some(S_.personal)) return say(T('Leave out e-mail addresses and telephone numbers: name a team or organisation instead.'));
+      if ([name, label, notes].some(S_.personal)) return say(T('Leave out e-mail addresses and telephone numbers: name a team or organization instead.'));
       ecWriteHash(true); await new Promise(r => setTimeout(r, 300));   // the link of this view, written now
       const onMap = new Set(EC.layers.map(l => l.key)), models = [...st.models, ...(EC.scenario ? EC.scenario.models : [])].filter((m, i, a) => a.findIndex(x => keyOf(x.header, '') === keyOf(m.header, '')) === i && m.series.some(sr => onMap.has(keyOf(m.header, sr.variable))));   // the model outputs whose layers are on the map: a scenario holds the runs it shows
       const sc = S_.make({ name, label, notes, hash: location.hash, outputs: outputs(), models });
@@ -111,7 +111,7 @@ const Scenarios = (() => {
       const m = S_.parseModel(await f.text(), EC.ids.slice(0, EC.PR));
       if (m.errors.length) return say(T('The file was not loaded: fix these and try again.'), m.errors);
       const keys = register(m); st.models.push({ header: m.header, series: m.series }); shade(keys[0]);
-      say(Tn(keys.length, 'Loaded {n} variable from {model}: it is on the map, labelled as a model output. Save the view as a scenario to keep it.', 'Loaded {n} variables from {model}: the first is on the map, labelled as a model output. Save the view as a scenario to keep them.', { model: `${m.header.model_name} ${m.header.model_version}` }));
+      say(Tn(keys.length, 'Loaded {n} variable from {model}: it is on the map, labeled as a model output. Save the view as a scenario to keep it.', 'Loaded {n} variables from {model}: the first is on the map, labeled as a model output. Save the view as a scenario to keep them.', { model: `${m.header.model_name} ${m.header.model_version}` }));
     };
     body.onclick = async (e) => {
       const b = e.target.closest('[data-open],[data-export],[data-del]'); if (!b) return;

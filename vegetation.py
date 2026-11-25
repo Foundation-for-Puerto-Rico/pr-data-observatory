@@ -4,12 +4,12 @@ heat of heat.py, from the same months and on the same grid. Step 1 of the terrai
 method in docs/vegetation.md).
 
     python vegetation.py             # build site/data/vegetation_series.json and site/data/vegetation_barrio.json (reads only the scenes missing from cache/vegetation/)
-    python vegetation.py --refresh   # search the scene catalogue again (new scenes are read; cached scenes are kept)
+    python vegetation.py --refresh   # search the scene catalog again (new scenes are read; cached scenes are kept)
     python vegetation.py --check     # rebuild from the cache and exit 1 when a published file is not what the cache gives (no network, nothing written)
 
 The source. Copernicus Sentinel-2 Level-2A surface reflectance, Collection 1 (reprocessed by ESA with one processing baseline, so older and newer scenes compare),
-read from the Earth Search catalogue on AWS (Element 84), whose files are public and need no key: the red band (B04), the near-infrared band (B08), both 10 m, and the
-scene classification (SCL, 20 m). Licence: the Copernicus Sentinel data terms (free, full and open use; credit "Contains modified Copernicus Sentinel data").
+read from the Earth Search catalog on AWS (Element 84), whose files are public and need no key: the red band (B04), the near-infrared band (B08), both 10 m, and the
+scene classification (SCL, 20 m). License: the Copernicus Sentinel data terms (free, full and open use; credit "Contains modified Copernicus Sentinel data").
 NDVI, the normalized difference vegetation index, is (near-infrared - red) / (near-infrared + red): green leaves reflect near-infrared and absorb red, so it is near 0
 on bare ground, pavement and roofs, and 0.6 to 0.9 under dense forest. It measures how green the land looks from above, not tree cover or species.
 
@@ -18,7 +18,7 @@ How it is made (docs/vegetation.md):
     cover (eight 110 km MGRS tiles, UTM zones 19 and 20; about 330 scenes a summer).
   - Grid: heat.py's 60 m grid in UTM zone 20 over the barrios. Each scene is read at 40 m (the second overview of the 10 m bands, which the files average from the
     10 m pixels; the first overview of SCL, which keeps the most common class: the files' OVR_RESAMPLING_ALG is AVERAGE and MODE), by HTTP range requests with raster.py, and each cell takes the pixel
-    under its centre (zone 19 scenes are mapped through pyproj).
+    under its center (zone 19 scenes are mapped through pyproj).
   - Clear pixels: an observation counts when SCL says vegetation (4) or not vegetated (5), and both reflectances are above zero. Clouds, cirrus, cloud shadow, dark
     or terrain shadow, water, unclassified and saturated pixels are left out.
   - One view per pass: where two MGRS tiles of the same pass overlap, the cell keeps one value (the first tile in name order), so a pass is not counted twice.
@@ -26,7 +26,7 @@ How it is made (docs/vegetation.md):
     no value.
   - The cache keeps, for each scene, the cells it saw clear and their NDVI (cache/vegetation/values/, about 1 MB a scene), not the image tiles: a rebuild reads
     the cache, and the nightly rebuild's cache stays small.
-  - Areas: a cell belongs to the barrio whose outline holds its centre (heat.grid). Municipios and Puerto Rico pool the cells of their barrios.
+  - Areas: a cell belongs to the barrio whose outline holds its center (heat.grid). Municipios and Puerto Rico pool the cells of their barrios.
   - Classes (USGS's reading of NDVI): dense vegetation at 0.6 and above (forest, crops at their peak); little or no vegetation below 0.2 (rock, sand, pavement,
     roofs). The pixel size matters: a 40 m pixel mixes a roof, a yard and a tree, so a city street lined with trees reads in between.
   - Residents: each 2020 census block with residents counts whole on the cell under its internal point, in the barrio the crosswalk gives it (heat.block_cells).
@@ -81,12 +81,12 @@ SOURCES = {
         "name": "Copernicus Sentinel-2 Level-2A surface reflectance, Collection 1 — red (B04), near-infrared (B08) and scene classification (SCL)",
         "url": "https://element84.com/earth-search/",
         "license": "Copernicus Sentinel data terms: free, full and open use; credit \"Contains modified Copernicus Sentinel data\"",
-        "note": "Read from the Earth Search catalogue on AWS (collection sentinel-2-c1-l2a, public files, no key) at 40 m, by HTTP range requests (raster.py). Contains modified Copernicus Sentinel data."},
+        "note": "Read from the Earth Search catalog on AWS (collection sentinel-2-c1-l2a, public files, no key) at 40 m, by HTTP range requests (raster.py). Contains modified Copernicus Sentinel data."},
     "census_tiger": heat.SOURCES["census_tiger"],
 }
 
 
-# ── Scene catalogue ──────────────────────────────────────────────────────────
+# ── Scene catalog ──────────────────────────────────────────────────────────
 
 def search(body, tries=6):
     """All the features of a STAC search, following its next links (Earth Search pages by POST with a body, or by GET)."""
@@ -347,12 +347,12 @@ def compute(refresh=False, offline=False, today=None):
     G = "Environment · Vegetation (Sentinel-2)"
     win = f"June to September {years[0]}-{years[-1]}"
     REF = (f"Copernicus Sentinel-2 Level-2A surface reflectance (Collection 1), red B04, near-infrared B08 and scene classification SCL, {len(scs)} scenes of {win} with "
-           f"less than {MAX_CLOUD}% cloud cover, read from the Earth Search catalogue on AWS at 40 m; the median of each 60 m cell's clear views. Contains modified "
+           f"less than {MAX_CLOUD}% cloud cover, read from the Earth Search catalog on AWS at 40 m; the median of each 60 m cell's clear views. Contains modified "
            f"Copernicus Sentinel data {years[0]}-{years[-1]}")
     NDVI = ("NDVI, the normalized difference vegetation index, is (near-infrared − red) / (near-infrared + red): green leaves reflect near-infrared light and absorb red, "
             "so it is near 0 on pavement, roofs and bare ground and 0.6 to 0.9 under dense forest. It shows how green the land looks from above, not tree cover. "
             f"Sentinel-2 passes at about 11:00 local time; each 60 m cell's value is the median of its cloud-free views of {win} (at least {MIN_OBS}; the typical cell "
-            f"has {isl['obs']}), read at 40 m, so a pixel mixes roofs, yards and trees. A cell belongs to the barrio that holds its centre; a municipio's and Puerto "
+            f"has {isl['obs']}), read at 40 m, so a pixel mixes roofs, yards and trees. A cell belongs to the barrio that holds its center; a municipio's and Puerto "
             "Rico's figures pool the cells of their barrios. Water is left out. The same months and grid as the surface heat figures (Landsat), so the two compare.")
     DENSE_ = f" Dense vegetation is NDVI {DENSE} or more, the range USGS gives for forests and crops at their peak."
     SPARSE_ = f" Little or no vegetation is NDVI below {SPARSE}: USGS reads 0.1 or less as rock, sand or bare ground and 0.2 to 0.5 as sparse cover; here that is mostly pavement, roofs and bare soil."

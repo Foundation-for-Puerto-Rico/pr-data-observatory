@@ -8,7 +8,7 @@ function soilRowExpr(m) {
   const tests = SOIL[m].rows.flatMap((r, i) => [SOIL[m].ramp ? ['<=', v, r[0] === Infinity ? 1e9 : r[0]] : Array.isArray(r[0]) ? ['in', v, ['literal', r[0]]] : ['==', v, r[0]], i]);
   return ['case', ['==', v, null], -1, ...tests, -1];
 }
-// The colours and the rows unticked in the legend: a hidden row is filtered out, so a click there answers with the layers under it
+// The colors and the rows unticked in the legend: a hidden row is filtered out, so a click there answers with the layers under it
 soilRedraw = () => {
   if (!map.getLayer('soil-fill')) return;
   const m = soilMode(), row = soilRowExpr(m), hid = [...soilHidden].filter(k => k.startsWith(m) && /^-?\d+$/.test(k.slice(m.length))).map(k => +k.slice(m.length));

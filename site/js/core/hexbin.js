@@ -1,14 +1,14 @@
 /* PR Data Observatory core: hexagon binning of points (plan item 6, B2). A point layer drawn as pins says where each place is; counted in hexagons it says how many are where, and the user's own filters
    (a category, a confidence) can be applied first, because the counting is done in the browser, on the points that pass the filter.
 
-   The hexagons are all the same size on the ground: points are projected with a Lambert azimuthal equal-area projection centred on Puerto Rico, in which equal areas on the plane are equal areas on
+   The hexagons are all the same size on the ground: points are projected with a Lambert azimuthal equal-area projection centered on Puerto Rico, in which equal areas on the plane are equal areas on
    the ground, and the hexagons are laid on the plane. So a count per hexagon is also a density: no cell has more room than another. (The projection is exact on a sphere of the earth's mean radius;
    on the real, slightly flattened earth the areas are right to about 0.3%.)
 
      Hexbin.bin(points, { area })      points are { lat, lng, w? }; area is the area of one hexagon in km² (default 10). Returns { km2, size, cells: [{ id, q, r, n, w }] }, one cell for each hexagon that holds a point
      Hexbin.features(bins)             GeoJSON polygons of those cells, with their counts n and weights w in the properties
      Hexbin.corners(q, r, size)        the six corners of one hexagon, as [lat, lng]
-     Hexbin.project(lat, lng), Hexbin.unproject(x, y)    km east and north of the centre, and back
+     Hexbin.project(lat, lng), Hexbin.unproject(x, y)    km east and north of the center, and back
    Cell ids are "q,r" (axial coordinates); they depend on `area`, so a count at one size is never compared with a count at another. */
 (function (name, root, factory) {
   const api = factory(root);
@@ -17,7 +17,7 @@
   'use strict';
   const R = 6371.0088;   // km, the mean radius of the earth
   const rad = (d) => d * Math.PI / 180, deg = (r) => r * 180 / Math.PI;
-  const LAT0 = rad(18.2), LON0 = rad(-66.45), S0 = Math.sin(LAT0), C0 = Math.cos(LAT0);   // the centre of Puerto Rico
+  const LAT0 = rad(18.2), LON0 = rad(-66.45), S0 = Math.sin(LAT0), C0 = Math.cos(LAT0);   // the center of Puerto Rico
 
   function project(lat, lng) {
     const f = rad(lat), l = rad(lng) - LON0, k = Math.sqrt(2 / (1 + S0 * Math.sin(f) + C0 * Math.cos(f) * Math.cos(l)));
@@ -29,7 +29,7 @@
     return [deg(Math.asin(cc * S0 + y * sc * C0 / rho)), deg(LON0 + Math.atan2(x * sc, rho * C0 * cc - y * S0 * sc))];
   }
 
-  const size = (km2) => Math.sqrt(2 * km2 / (3 * Math.sqrt(3)));   // the corner-to-centre length of a regular hexagon of this area
+  const size = (km2) => Math.sqrt(2 * km2 / (3 * Math.sqrt(3)));   // the corner-to-center length of a regular hexagon of this area
   function cellAt(x, y, s) {   // axial coordinates of the pointy-topped hexagon that holds the point (x, y)
     const q = (Math.sqrt(3) / 3 * x - y / 3) / s, r = (2 / 3 * y) / s, t = -q - r;
     let rq = Math.round(q), rr = Math.round(r), rt = Math.round(t);

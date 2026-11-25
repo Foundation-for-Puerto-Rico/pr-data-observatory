@@ -5,13 +5,13 @@ body.wcrp .block, body.wcrp .hero { scroll-margin-top: calc(var(--topbar-height)
 html:has(body.wcrp) { scroll-padding-top: calc(var(--topbar-height) + 50px); }
 .wm-controls { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: end; margin-bottom: 10px; font-size: 13px; }
 .wm-controls label { display: flex; flex-direction: column; gap: 3px; font-weight: 600; color: var(--color-text-muted); font-size: 12px; }
-.wm-controls select { font: inherit; font-size: 13px; padding: 5px 8px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: #fff; color: var(--color-text); max-width: 220px; }
+.wm-controls select { font: inherit; font-size: 13px; padding: 5px 8px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: var(--color-surface); color: var(--color-text); max-width: 220px; }
 .wm-controls .wm-check { flex-direction: row; align-items: center; gap: 6px; font-weight: 500; color: var(--color-text); font-size: 13px; padding-bottom: 6px; }
 .wm-seg { border: 0; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0; }
 .wm-seg legend { font-weight: 600; color: var(--color-text-muted); font-size: 12px; padding: 0; margin-bottom: 3px; }
 .wm-seg label { flex-direction: row; font-weight: 500; }
 .wm-seg input { position: absolute; opacity: 0; width: 1px; height: 1px; }
-.wm-seg span { display: inline-block; padding: 6px 11px; border: 1px solid var(--color-border); background: #fff; color: var(--color-text); font-size: 12.5px; cursor: pointer; }
+.wm-seg span { display: inline-block; padding: 6px 11px; border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); font-size: 12.5px; cursor: pointer; }
 .wm-seg label:first-of-type span { border-radius: var(--radius-sm) 0 0 var(--radius-sm); }
 .wm-seg label:last-of-type span { border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
 .wm-seg label + label span { border-left: 0; }
@@ -76,7 +76,7 @@ table.pt td.miss { color: var(--tint-yellow-fg); background: var(--tint-yellow-b
 }
 /* Social Capital map (js/wcrp_social.js) */
 .sc-themes { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
-.sc-themes label { display: inline-flex; align-items: center; gap: 6px; padding: 5px 10px; border: 1px solid var(--color-border); border-radius: 999px; background: #fff; font-size: 12.5px; cursor: pointer; }
+.sc-themes label { display: inline-flex; align-items: center; gap: 6px; padding: 5px 10px; border: 1px solid var(--color-border); border-radius: 999px; background: var(--color-surface); font-size: 12.5px; cursor: pointer; }
 .sc-themes label:has(input:checked) { background: var(--tint-blue-bg); border-color: var(--color-primary-strong); }
 .sc-themes input:focus-visible { outline: 3px solid var(--color-primary-dark); outline-offset: 1px; }
 .sc-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 8px; }

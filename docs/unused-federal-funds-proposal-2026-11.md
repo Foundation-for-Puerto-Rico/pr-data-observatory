@@ -97,9 +97,9 @@ By a rough match on the name of the body: Commonwealth agencies and public corpo
 
 - **Commonwealth money that replaces a denied federal payment** (the column's first case, $14.8 M for an education project). It appears in letters of the Oversight Board, case by case, not in a data source.
 - **Services not delivered** because the money was not used. No source has it.
-- **Why** a balance was returned, and what the agency did afterwards. Audit texts and corrective action plans say some of it, in prose.
+- **Why** a balance was returned, and what the agency did afterward. Audit texts and corrective action plans say some of it, in prose.
 - **Lists held by agencies**, such as the one the Departamento de la Familia offered the Senate. The observatory makes no data requests (lean open data rule).
-- **Audits of the Oficina del Contralor**: left out on 2026-11-04 (no licence stated).
+- **Audits of the Oficina del Contralor**: left out on 2026-11-04 (no license stated).
 
 The page says this in its scope note instead of leaving a silence.
 
@@ -127,7 +127,7 @@ Glossary terms come with each step (deobligation, recapture, period of performan
 - A register of cases compiled by hand from inspector general reports or Oversight Board letters.
 - The Contralor, COR3, DRGR and any source that needs a request or a login.
 - Contracts: a reduced contract is a purchasing matter, not a lost grant. Loans and direct payments to people are out for the same reason.
-- Any judgement on an agency. The page states amounts, dates and rules, and recommends no policy.
+- Any judgment on an agency. The page states amounts, dates and rules, and recommends no policy.
 
 ## 7. Choices for the project lead
 

@@ -35,21 +35,21 @@
  },
  {
   "drop_key": "^perHU($|\\|)",
-  "why": "the new normalisation per 1,000 housing units (its unit, formats and values)"
+  "why": "the new normalization per 1,000 housing units (its unit, formats and values)"
  },
  {
   "drop_item": [
    "perHU",
    "Per 1,000 housing units"
   ],
-  "why": "the new normalisation per 1,000 housing units in the list a dataset offers"
+  "why": "the new normalization per 1,000 housing units in the list a dataset offers"
  },
  {
   "drop_item": [
    "perHU",
    "Por cada 1,000 unidades de vivienda"
   ],
-  "why": "the new normalisation per 1,000 housing units in the list a dataset offers (Spanish)"
+  "why": "the new normalization per 1,000 housing units in the list a dataset offers (Spanish)"
  },
  {
   "sub": [

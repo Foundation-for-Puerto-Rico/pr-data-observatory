@@ -14,7 +14,7 @@
    Loads after twin3d.js and uses its ENG, engineLoad, engineFill, engineDraw, metricKey, map, pop, popup, S and tip. */
 const Series = (() => {
   // Without WebGL twin3d.js stops before it creates the map (webglOk): then the panel is not built and nothing here touches the map. The binding may not exist at all, or
-  // exist uninitialised, and both throw a ReferenceError, so the check is a try.
+  // exist uninitialized, and both throw a ReferenceError, so the check is a try.
   const mapOk = (() => { try { return !!map && typeof map.on === 'function'; } catch { return false; } })();
   if (!mapOk) return null;
   const X = { name: null, open: false, pts: null, y: null, hit: null, at: null, kb: false, opener: null };   // y: the chart's own year while the columns are off (null: the latest); at: the chosen year's point; kb: its tooltip is shown for the keys
@@ -78,7 +78,7 @@ const Series = (() => {
     const f = (v) => E.fmt(L, v, Math.abs(v) >= 1000);
     const line = (k, y) => { let d = '', on = false; for (const r of rows) { if (r[k] == null) { on = false; continue; } d += `${on ? 'L' : 'M'}${x(r.y).toFixed(1)},${y(r[k]).toFixed(1)}`; on = true; } return d; };
     const ticks = tk.map(v => { const yy = yl(v).toFixed(1); return `<line class="sr-grid" x1="${P.l}" x2="${W - P.r}" y1="${yy}" y2="${yy}"/><text class="sr-ax" x="${P.l - 8}" y="${yy}" dy=".32em" text-anchor="end">${esc(f(v))}</text>`; }).join('');
-    const every = Math.max(1, Math.ceil(rows.length / Math.max(2, Math.floor((W - P.l - P.r) / 56))));   // a year label every ~56 px; a 5-year window is labelled by its last year (the note says so)
+    const every = Math.max(1, Math.ceil(rows.length / Math.max(2, Math.floor((W - P.l - P.r) / 56))));   // a year label every ~56 px; a 5-year window is labeled by its last year (the note says so)
     const xl = rows.filter((r, k) => (rows.length - 1 - k) % every === 0).map(r => `<text class="sr-ax" x="${x(r.y).toFixed(1)}" y="${H - 8}" text-anchor="middle">${r.y}</text>`).join('');
     // the margin of error: a band around the municipality's line, one piece for each run of years that have one
     let band = '', run = [];

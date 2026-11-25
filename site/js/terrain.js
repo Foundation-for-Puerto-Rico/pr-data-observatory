@@ -34,7 +34,7 @@ async function slopePaint() {
     + `<div class="surf-bar" style="background:linear-gradient(90deg,${stops.join(',')})"></div>`
     + `<div class="surf-ticks"><span>${pct(sc.low)}</span><span>${pct(sc.centre)}</span><span>${esc(T('{v} or more', { v: pct(sc.high) }))}</span></div>`
     + o.threshold(sc.low, sc.high, 5, (v) => v == null ? T('All the land') : T('Only the land at {v} or steeper', { v: pct(v) }))
-    + `<div class="note">${esc(SLOPE_MARKS.map(([v, what]) => T('{v}: {what}', { v: pct(v), what: T(what) })).join(' · '))}. ${esc(T('USGS 3DEP 10 m elevation, the mean slope of each block of about {m} m; Mona and Desecheo are not drawn. The share of steep land by barrio is in Explore (Environment and climate).', { m: fmt(o.meta.pixel_m, 0) }))}</div></div>`;
+    + `<div class="note">${esc(SLOPE_MARKS.map(([v, what]) => T('{v}: {what}', { v: pct(v), what: T(what) })).join(' · '))}. ${esc(T('USGS 3DEP 10 m elevation, the mean slope of each block of about {m} m; Mona and Desecheo are not drawn. The share of steep land by barrio is in Home (Environment and climate).', { m: fmt(o.meta.pixel_m, 0) }))}</div></div>`;
 }
 window.slopePaint = slopePaint;
 /** The slope under a point, for the map's pop-up: from the image's step (within half a step, about 0.5%). */
@@ -51,7 +51,7 @@ window.slopeAt = slopeAt;
 
 // ── Contour lines ────────────────────────────────────────────────────────────
 const TERRARIUM = 'https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png', TERRAIN_MAX_Z = 15;
-const contourStep = (z) => z <= 11 ? 100 : z === 12 ? 50 : z === 13 ? 20 : 10;   // metres between lines at a zoom; every fifth line is thicker
+const contourStep = (z) => z <= 11 ? 100 : z === 12 ? 50 : z === 13 ? 20 : 10;   // meters between lines at a zoom; every fifth line is thicker
 /** Heights (m) of a 256 x 256 Terrarium tile: (R x 256 + G + B / 256) - 32768. */
 function heights(img) {
   const cv = document.createElement('canvas'); cv.width = cv.height = 256;
@@ -60,7 +60,7 @@ function heights(img) {
   for (let i = 0, p = 0; i < 65536; i++, p += 4) h[i] = d[p] * 256 + d[p + 1] + d[p + 2] / 256 - 32768;
   return h;
 }
-/** The contour segments of a height grid (N x N, values at pixel centres) at every multiple of `step` above 0, by marching squares (the saddle cases split by
+/** The contour segments of a height grid (N x N, values at pixel centers) at every multiple of `step` above 0, by marching squares (the saddle cases split by
     the cell's mean): [[level, x0, y0, x1, y1], ...] in pixels. Pure, so the tests run it. */
 function marching(h, N, step) {
   const out = [];

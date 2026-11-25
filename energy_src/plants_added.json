@@ -1,5 +1,5 @@
 {
- "about": "Solar plants of 1 MW or more that are built in Puerto Rico but not yet in EIA-860M, added to power_plants.geojson by power_plants.py (HANDOFF decision 104, docs/energy.md). Each is drawn hollow (not in commercial operation) and leaves the file by itself once EIA lists a plant whose name matches eia_match. Points: the area-weighted centre of the plant's OpenStreetMap outlines (ODbL), which mappers traced from Esri World Imagery; the build dates were read on Esri's Wayback imagery. Capacity, batteries and status: the source named for each. No owner is kept (decision 104 (b)).",
+ "about": "Solar plants of 1 MW or more that are built in Puerto Rico but not yet in EIA-860M, added to power_plants.geojson by power_plants.py (HANDOFF decision 104, docs/energy.md). Each is drawn hollow (not in commercial operation) and leaves the file by itself once EIA lists a plant whose name matches eia_match. Points: the area-weighted center of the plant's OpenStreetMap outlines (ODbL), which mappers traced from Esri World Imagery; the build dates were read on Esri's Wayback imagery. Capacity, batteries and status: the source named for each. No owner is kept (decision 104 (b)).",
  "checked": "2026-11-17",
  "plants": [
   {

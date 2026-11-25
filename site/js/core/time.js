@@ -4,7 +4,7 @@
    period    a calendar or fiscal year (QCEW, USAspending) the exact year, otherwise the latest at or before it (flagged)
    window    a survey window (ACS 5-year)                 the window ending at or before the year; the label gives the whole window (2020-2024)
    vintage   population estimates                         the latest vintage for each year
-   snapshot  transit, places, flood, exposure             always the current one, labelled with its date; not animated
+   snapshot  transit, places, flood, exposure             always the current one, labeled with its date; not animated
    static    boundaries, the land use plan                always shown
    event     storms, declarations                         filtered to the year (a count or a list, not a value for each place)
 

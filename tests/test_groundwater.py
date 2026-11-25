@@ -72,7 +72,7 @@ class Published(unittest.TestCase):
             self.assertRegex(p["usgs"], r"^USGS-\d+$")
             self.assertTrue(p["name"] and p["station"] and p["municipio"])
             self.assertEqual(p["type"], "Groundwater well")
-            self.assertTrue(-5 < p["depth"] < 300 and p["depth_time"], p["usgs"])   # metres below the ground; a flowing well reads a little above it
+            self.assertTrue(-5 < p["depth"] < 300 and p["depth_time"], p["usgs"])   # meters below the ground; a flowing well reads a little above it
             if "well_depth" in p:
                 self.assertTrue(0 < p["well_depth"] < 1500, p["usgs"])
         self.assertEqual(len({p["usgs"] for p in self.props}), len(self.props), "one point a well")

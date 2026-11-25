@@ -81,7 +81,7 @@
     "url": "https://opendatacommons.org/licenses/odbl/1-0/"
    },
    {
-    "label": "Release catalogue (STAC)",
+    "label": "Release catalog (STAC)",
     "url": "https://stac.overturemaps.org/catalog.json"
    }
   ],
@@ -380,7 +380,7 @@
   "access": "Public summary files on www2.census.gov, no key. For the 2010 to 2020 vintages: per-sequence files under 5_year_seq_by_state/PuertoRico (and the 2012 Puerto Rico ZIP used for the 2008-2012 baseline). For 2021 to 2024: table-based files named acsdt5y{year}-{table}.dat. The build keeps the island and its 78 municipios. A second reader, acs_small.py, reads the tract, block group and barrio rows of the 2021 to 2024 table-based files by byte ranges (all five levels of a table cost 0.5 to 1.5 MB, against 18 to 121 MB for the nationwide file). small_area.py builds from it the files of barrios, census tracts and block groups (acs_barrio.json, acs_tract.json, acs_blockgroup.json) and the Population domain's series (population_series.json). The build also reads the Census Bureau's keyless table definitions at api.census.gov (the cell labels of each table, https://api.census.gov/data/{year}/acs/acs5/groups/{table}.json) to check that the cells it uses are the ones it means; no page of the site calls that host.",
   "cadence": "The Census Bureau releases a new 5-year vintage every year. In the 2026-10 snapshot the newest window the observatory holds is 2020-2024. The build checks for a newer table-based file and adds it when FPR rebuilds the data (a new snapshot).",
   "used_for": "Municipality housing, income, poverty, employment, education, cost-burden, commuting, vehicle and internet variables (housing_series.json and economy_series.json), plus the 2008-2012 baseline and the affordability figures. For 2021 to 2024, the same variables and the age, household, veteran and disability shares for 901 barrios, 981 census tracts and 2,555 block groups, with their margins of error. The age bands and age groups (population_age.json; the shares of the age groups also in population_series.json and, for 18 to 44 and 45 to 64, the barrio and tract files), from B01001 and B09001. Women's and men's labor force participation, unemployment and the counts behind them by sex and age group, for the 78 municipios and any group of them, in the three windows that share no year (2010-2014, 2015-2019, 2020-2024), from B23001, B23003, B98003 and B98001 (labor_sex_series.json and women_labor.json, women_labor.py).",
-  "terms_note": "These are survey estimates. Each pools 60 months of answers, and the Census Bureau publishes margins of error at a 90 percent confidence level (see its 'Accuracy of the Data' document), which the observatory keeps where they exist. Windows are labelled by their last year. Dollar values are in the dollars of that last year, not adjusted for inflation. The product pages state no license. The Census Bureau's TIGER/Line documentation, which covers a different product, says copyright protection is not available for works of the US Government. The Bureau's citation page asks users to cite it as the source and says conclusions drawn from any analysis of the data are the sole responsibility of the performing party. FPR's use of these data is not endorsed by the Census Bureau.",
+  "terms_note": "These are survey estimates. Each pools 60 months of answers, and the Census Bureau publishes margins of error at a 90 percent confidence level (see its 'Accuracy of the Data' document), which the observatory keeps where they exist. Windows are labeled by their last year. Dollar values are in the dollars of that last year, not adjusted for inflation. The product pages state no license. The Census Bureau's TIGER/Line documentation, which covers a different product, says copyright protection is not available for works of the US Government. The Bureau's citation page asks users to cite it as the source and says conclusions drawn from any analysis of the data are the sole responsibility of the performing party. FPR's use of these data is not endorsed by the Census Bureau.",
   "verified": {
    "date": "2026-10-06",
    "status": "link-works-licence-unclear"
@@ -503,7 +503,7 @@
   "access": "Direct download of three CSV files from data.hrsa.gov (one for each discipline, all states and territories); no key. The build streams each file, keeps the Puerto Rico rows (Primary State or Common State = PR) and sixteen columns (status, designation type, score, practitioners in place and needed, population, county code and the like), and drops the names of the designations before anything is written to disk.",
   "cadence": "HRSA says it refreshes the files daily; designations change when HRSA reviews them and when withdrawals are published in the Federal Register, generally once a year. The observatory keeps one snapshot (6 October 2026) and renews it only when FPR rebuilds the data (python health_series.py).",
   "used_for": "Priority score, practitioners still needed and share of need met of the area-level shortage designations in each municipality, for primary care, dental health and mental health (health_series.json).",
-  "terms_note": "HRSA's download page lists \"Usage limitations: None\" for these files. Data.gov's record for the Shortage Designation Management System (published by HRSA's Bureau of Health Workforce; a file entry is dated 3 September 2026 and Data.gov last crawled the record on 28 September 2026) lists the three files and gives the license as CC0 1.0 and the rights statement \"No rights reserved. This data is in the public domain.\" It also sets the access level \"restricted public\" (the federal metadata schema defines it as \"available under certain use restrictions\") and marks every file \"Restricted - Partly\": the record contradicts itself, which is why the source is marked link-works-licence-unclear. Data.gov's record for the HRSA Data Warehouse as a whole (modified 26 July 2023, last crawled 10 September 2026) names the Open Database License 1.0, which asks for credit and share-alike, and says the portal offers downloadable data files on health center sites and shortage areas, so it may cover these files too: if it applied, the credit line would need to say so. The observatory treats the files as open, credits HRSA in the dataset window, the data dictionary and the About tab, and HANDOFF decision 38 asks the owner whether to ask HRSA to confirm the terms in writing. The observatory publishes counts for each municipality only and never names, addresses, telephone numbers, web addresses or coordinates. HRSA warns that its formulas count certain practitioners only: primary care physicians (not nurse practitioners or physician assistants), dentists, and, for every mental health designation of Puerto Rico, psychiatrists (not psychologists, social workers or other providers).",
+  "terms_note": "HRSA's download page lists \"Usage limitations: None\" for these files. Data.gov's record for the Shortage Designation Management System (published by HRSA's Bureau of Health Workforce; a file entry is dated 3 September 2026 and Data.gov last crawled the record on 28 September 2026) lists the three files and gives the license as CC0 1.0 and the rights statement \"No rights reserved. This data is in the public domain.\" It also sets the access level \"restricted public\" (the federal metadata schema defines it as \"available under certain use restrictions\") and marks every file \"Restricted - Partly\": the record contradicts itself, which is why the source is marked link-works-license-unclear. Data.gov's record for the HRSA Data Warehouse as a whole (modified 26 July 2023, last crawled 10 September 2026) names the Open Database License 1.0, which asks for credit and share-alike, and says the portal offers downloadable data files on health center sites and shortage areas, so it may cover these files too: if it applied, the credit line would need to say so. The observatory treats the files as open, credits HRSA in the dataset window, the data dictionary and the About tab, and HANDOFF decision 38 asks the owner whether to ask HRSA to confirm the terms in writing. The observatory publishes counts for each municipality only and never names, addresses, telephone numbers, web addresses or coordinates. HRSA warns that its formulas count certain practitioners only: primary care physicians (not nurse practitioners or physician assistants), dentists, and, for every mental health designation of Puerto Rico, psychiatrists (not psychologists, social workers or other providers).",
   "verified": {
    "date": "2026-10-07",
    "status": "link-works-licence-unclear"
@@ -704,7 +704,7 @@
   "access": "JSON API, no key: api.water.noaa.gov/nwps/v1/gauges with a bounding box lists the gauges of Puerto Rico; /gauges/{id} gives one gauge's USGS site number and its flood categories (action, minor, moderate, major) as a stage in feet. river_gauges.py reads them at build time; the page does not ask NWS anything.",
   "cadence": "NWS revises a gauge's flood stages from time to time, after a survey or a flood. The observatory reads them when it rebuilds the river file, once a month (python river_gauges.py --refresh).",
   "used_for": "The flood stages in the pop-up of the River flow layer (river_gauges.geojson, field nws).",
-  "terms_note": "NWS says the information on its servers is in the public domain unless noted otherwise, may not be modified and then presented as official government material, and may not be used in a way that implies endorsement by NOAA or NWS (weather.gov/disclaimer, read 2026-11-12). The observatory converts the stages from feet to metres, shows the feet beside them, and says the comparison with the water's level is its own, not an official warning. Checked 2026-11-12: 118 gauges listed for Puerto Rico, 66 of the 71 river gauges of the layer with flood stages; at each, NWS's latest reading and USGS's gauge height agreed to within 0.2 ft.",
+  "terms_note": "NWS says the information on its servers is in the public domain unless noted otherwise, may not be modified and then presented as official government material, and may not be used in a way that implies endorsement by NOAA or NWS (weather.gov/disclaimer, read 2026-11-12). The observatory converts the stages from feet to meters, shows the feet beside them, and says the comparison with the water's level is its own, not an official warning. Checked 2026-11-12: 118 gauges listed for Puerto Rico, 66 of the 71 river gauges of the layer with flood stages; at each, NWS's latest reading and USGS's gauge height agreed to within 0.2 ft.",
   "verified": {
    "date": "2026-11-12",
    "status": "link-works"
@@ -738,10 +738,10 @@
   "licence_class": "open",
   "licence_url": "https://www.nhc.noaa.gov/disclaimer.shtml",
   "credit": "Source: NOAA National Hurricane Center, Atlantic hurricane database (HURDAT2), 1851-2025",
-  "access": "One public text file, no key: https://www.nhc.noaa.gov/data/hurdat/hurdat2-1851-2025-092326.txt. When the build runs with the refresh option it reads the NHC directory (https://www.nhc.noaa.gov/data/hurdat/) and downloads the newest file. The build keeps every storm whose track comes within 250 km of a point near the centre of the island (18.22 N, 66.45 W), with its track points.",
+  "access": "One public text file, no key: https://www.nhc.noaa.gov/data/hurdat/hurdat2-1851-2025-092326.txt. When the build runs with the refresh option it reads the NHC directory (https://www.nhc.noaa.gov/data/hurdat/) and downloads the newest file. The build keeps every storm whose track comes within 250 km of a point near the center of the island (18.22 N, 66.45 W), with its track points.",
   "cadence": "NHC updates the file after each season and when it revises older seasons. The 1851-2025 file used here was updated on 23 September 2026 and includes revisions of the 1971 to 1975 seasons. The observatory reads it as retrieved on 5 October 2026 (Snapshot 2026-10). A new file is used only when FPR rebuilds the data with the refresh option.",
   "used_for": "Storm tracks since 1851 on the 3D map (hurricanes.json). In the 2026-10 snapshot, 157 storms in the 1851-2025 file came within 250 km of Puerto Rico; each has its track, winds and a hurricane category.",
-  "terms_note": "NHC says information on government servers may be used freely, and that its information must not be modified and then presented as official government material. The observatory picks storms by distance and works out the Saffir-Simpson category from the highest wind recorded while the storm was within 250 km of the island's centre point. That category is the storm's strongest wind in that zone, not necessarily the wind Puerto Rico felt. Both steps are FPR's calculation, not NHC's. The Saffir-Simpson scale (linked here) rates sustained wind only; NHC notes it does not take into account storm surge, rainfall flooding or tornadoes. NHC revises past seasons from time to time.",
+  "terms_note": "NHC says information on government servers may be used freely, and that its information must not be modified and then presented as official government material. The observatory picks storms by distance and works out the Saffir-Simpson category from the highest wind recorded while the storm was within 250 km of the island's center point. That category is the storm's strongest wind in that zone, not necessarily the wind Puerto Rico felt. Both steps are FPR's calculation, not NHC's. The Saffir-Simpson scale (linked here) rates sustained wind only; NHC notes it does not take into account storm surge, rainfall flooding or tornadoes. NHC revises past seasons from time to time.",
   "verified": {
    "date": "2026-10-03",
    "status": "verified"
@@ -777,7 +777,7 @@
   "credit": "Data © OpenStreetMap contributors, available under the Open Database License (ODbL)",
   "access": "Two routes, no key. Overpass API queries (overpass-api.de, with overpass.kumi.systems, now operated as overpass.private.coffee, as a fallback) fetch bus stops, stations, ferry terminals, taxi stands, bicycle rental, EV charging, aerodromes and public-transport route relations. The daily Geofabrik extract for Puerto Rico (download.geofabrik.de/north-america/us/puerto-rico-latest.osm.pbf) is read on a local computer to build the road graph (roads.bin) and the place-name index (gazetteer.json). Police stations (amenity=police) are read through Overpass by facilities.py, which also tries a third public Overpass server (maps.mail.ru) when the others are busy.",
   "cadence": "OpenStreetMap changes all the time, and Geofabrik refreshes its Puerto Rico file daily. The observatory took the stops on 1 October 2026 and the routes and the extract on 2 October 2026, and renews them when FPR rebuilds the data (a new snapshot). A nightly update also re-reads the ATI and municipal transit feeds and tries to re-read the OpenStreetMap routes. If the Overpass servers do not answer, the observatory keeps the routes from the last full rebuild. The Overpass servers refused requests from GitHub's servers when tested on 2 October 2026, so in the 2026-10 snapshot the OpenStreetMap routes change only at a rebuild.",
-  "used_for": "Bus stops, stations, terminals, taxi stands, bicycle rental, EV charging and aerodromes (transport.json); públicos (shared taxi and van routes) and other routes (transit_routes.geojson); the road network for snapping and planning routes (roads.bin); and the place-name index for search (gazetteer.json); police stations (police_stations.geojson) and their count in each municipio (facility_series.json: police_stations); city halls (town_halls.geojson, amenity=townhall, read by community_assets.py on 2026-10-18); and the signalised junctions, roundabouts and pedestrian bridges counted along each bus route in the Route analysis (route_compare.json, from road_features.geojson in docs/analysis/route-analysis-2026-10/, Geofabrik extract of 2026-10-15); and the transmission lines of 230, 115 and 38 kV, simplified, with the substations counted by municipio (power_lines.geojson, read by power_lines.py on 2026-11-14). Also the roads that the distance to essentials follows, and the check of Overture's shops: OpenStreetMap's supermarkets, pharmacies, banks and fire stations that Overture or USGS lack are added (essentials_series.json, essentials_barrio.json). Also the roads and hospitals of the estimate of residents cut off from hospitals when flooded roads or poor bridges close (cutoff_series.json, cutoff_barrio.json).",
+  "used_for": "Bus stops, stations, terminals, taxi stands, bicycle rental, EV charging and aerodromes (transport.json); públicos (shared taxi and van routes) and other routes (transit_routes.geojson); the road network for snapping and planning routes (roads.bin); and the place-name index for search (gazetteer.json); police stations (police_stations.geojson) and their count in each municipio (facility_series.json: police_stations); city halls (town_halls.geojson, amenity=townhall, read by community_assets.py on 2026-10-18); and the signalized junctions, roundabouts and pedestrian bridges counted along each bus route in the Route analysis (route_compare.json, from road_features.geojson in docs/analysis/route-analysis-2026-10/, Geofabrik extract of 2026-10-15); and the transmission lines of 230, 115 and 38 kV, simplified, with the substations counted by municipio (power_lines.geojson, read by power_lines.py on 2026-11-14). Also the roads that the distance to essentials follows, and the check of Overture's shops: OpenStreetMap's supermarkets, pharmacies, banks and fire stations that Overture or USGS lack are added (essentials_series.json, essentials_barrio.json). Also the roads and hospitals of the estimate of residents cut off from hospitals when flooded roads or poor bridges close (cutoff_series.json, cutoff_barrio.json).",
   "terms_note": "OpenStreetMap's copyright page says the data may be copied, distributed, transmitted and adapted 'as long as you credit OpenStreetMap and its contributors', and that anyone who alters or builds on the data may distribute the result only under the same license. Files in the observatory built from OpenStreetMap are the OpenStreetMap parts of transport.json and transit_routes.geojson, roads.bin, gazetteer.json, police_stations.geojson, town_halls.geojson and the junction and footbridge counts of route_compare.json. Check the license text before reusing them. OpenStreetMap is edited by volunteers, so a missing stop or route may simply be unmapped.",
   "verified": {
    "date": "2026-10-03",
@@ -805,7 +805,7 @@
   "licence_url": "https://www.ati.pr.gov/relaciones-comunidad?tab=DatosAbiertos",
   "credit": "Source: Autoridad de Transporte Integrado (ATI), GTFS open data (Tren Urbano, AMA/Metrobús, AcuaExpreso). The PR Data Observatory is not affiliated with or sponsored by ATI",
   "access": "One public ZIP file in the GTFS format, no key: https://docs.pr.gov/files/ATI/DATOS_ABIERTOS/GTFS/PRITA_GTFS.zip.",
-  "cadence": "ATI replaces the file when schedules change. On 3 October 2026 ATI's page named a 10 August 2026 version, but the feed itself is labelled 'Updated: Aug 26, 2026'. Its service dates run from 20 July 2026 to 19 July 2027. The observatory downloads it every night at 04:17 Puerto Rico time and publishes only if something changed.",
+  "cadence": "ATI replaces the file when schedules change. On 3 October 2026 ATI's page named a 10 August 2026 version, but the feed itself is labeled 'Updated: Aug 26, 2026'. Its service dates run from 20 July 2026 to 19 July 2027. The observatory downloads it every night at 04:17 Puerto Rico time and publishes only if something changed.",
   "used_for": "Tren Urbano, AMA, Metrobús and AcuaExpreso routes, stops and timetables (transit_routes.geojson, transport.json, trips.json, trips_sa.json, trips_su.json) and the service coverage figures.",
   "terms_note": "ATI's terms say that neither ATI nor its contractors guarantee the data are fully accurate, that the data are provided 'as is', and that ATI does not guarantee they are always available or up to date. They say the agencies keep their rights over the data, that using the data gives no rights over it and that users must follow applicable laws. They also say agency logos are reserved for official use, and that an app built on the data must make clear it is not affiliated with or sponsored by ATI unless there is an explicit agreement. ATI's page says 'Nos encontramos en el desarrollo del GTFS-RT' (it is developing GTFS-RT, the real-time feed), so the observatory shows scheduled service, not live vehicle positions.",
   "verified": {
@@ -926,7 +926,7 @@
   "access": "FPR read Uber's page and typed the municipality names it lists into the observatory by hand (57 names, checked 1 October 2026). The observatory does not call Uber's servers.",
   "cadence": "Uber can change its page at any time. The observatory's list is a dated snapshot that FPR updates by hand.",
   "used_for": "The 'listed on Uber's cities page' yes or no for each municipality (municipalities.json) and the ride-hailing note in the Transit tab.",
-  "terms_note": "The page lists towns and neighbourhoods and says Uber's service reaches beyond the places listed, so 'not listed' does not mean Uber does not operate there. Only a yes or no per municipality is recorded; the observatory copies nothing else from the page. On 4 October 2026 the page linked 167 places. Counted by the municipality named in each link's address, the page lists places in 58 of the 78 municipios. The observatory's list, checked on 1 October 2026, has 57 names. On 4 October 2026 the page also listed Maunabo, which the observatory shows as not listed.",
+  "terms_note": "The page lists towns and neighborhoods and says Uber's service reaches beyond the places listed, so 'not listed' does not mean Uber does not operate there. Only a yes or no per municipality is recorded; the observatory copies nothing else from the page. On 4 October 2026 the page linked 167 places. Counted by the municipality named in each link's address, the page lists places in 58 of the 78 municipios. The observatory's list, checked on 1 October 2026, has 57 names. On 4 October 2026 the page also listed Maunabo, which the observatory shows as not listed.",
   "verified": {
    "date": "2026-10-03",
    "status": "link-works-licence-unclear"
@@ -963,7 +963,7 @@
   "access": "The observatory uses a copy of the Junta's official shapefile (a standard map-data file), in the version of 30 November 2015, converted to the WGS 84 coordinate system. The Junta's page links the map and the memorial as PDFs but offers no shapefile, so it gives no download link for the file the observatory uses. If the observatory's copy is missing, the build reads a public copy on ArcGIS Online (services6.arcgis.com, Puerto_Rico_Land_Use_Plan, layer 0), which shows no owner or license text and was last edited on 24 January 2019.",
   "cadence": "The plan has a ten-year term (the Junta's page); the observatory's shapefile is the 30 November 2015 version. The Junta's page lists a review process for a new plan (PUT-2025). The observatory uses the 2015 version and does not refresh it.",
   "used_for": "The land-use classes drawn on the maps (landuse.geojson), the land class of each tourism place, and each municipality's share of urban, urbanizable, rustic and protected land.",
-  "terms_note": "The Junta's page footer carries a general website notice ('© 2022 Puerto Rico Innovation & Technology Service. Todos los derechos reservados', meaning all rights reserved) that does not mention the land-use data. The plan classifies land. Zoning districts are in each municipality's territorial plan. The maps draw outlines simplified by up to about 100 metres; the statistics use the full shapes. The 2015 plan may be replaced by the review the Junta lists.",
+  "terms_note": "The Junta's page footer carries a general website notice ('© 2022 Puerto Rico Innovation & Technology Service. Todos los derechos reservados', meaning all rights reserved) that does not mention the land-use data. The plan classifies land. Zoning districts are in each municipality's territorial plan. The maps draw outlines simplified by up to about 100 meters; the statistics use the full shapes. The 2015 plan may be replaced by the review the Junta lists.",
   "verified": {
    "date": "2026-10-03",
    "status": "link-works-licence-unclear"
@@ -1040,7 +1040,7 @@
   "access": "Calculated by the build from ACS tables: B19013 (median household income) and B25077 (median home value) for the affordability figures, and B25070 and B25091 for the study-style cost-burden distributions. There is no separate download.",
   "cadence": "Recalculated whenever the ACS figures are rebuilt, each time FPR rebuilds the data (a new snapshot). The method constants never change, so years differ only through incomes and prices.",
   "used_for": "The maximum affordable 30-year loan and the home ownership affordability ratio, by municipality and year.",
-  "terms_note": "The method: 30 percent of income goes to housing, about 78 percent of that (430/549) to principal and interest, on a 30-year loan at a fixed 5 percent rate. FPR inferred the 5 percent rate from the study's published Puerto Rico example, so it is a modelling assumption, not the market rate of any particular year. The Housing page calls this method 'Table 6'. In the PDF at this link, Table 6 is the rent-burden table (Gross Rent as a Percentage of Household Income) and the Home Ownership Affordability Ratio is Table 8, so cite Table 8. The result is an indicator, not a loan limit and not advice on buying a home.",
+  "terms_note": "The method: 30 percent of income goes to housing, about 78 percent of that (430/549) to principal and interest, on a 30-year loan at a fixed 5 percent rate. FPR inferred the 5 percent rate from the study's published Puerto Rico example, so it is a modeling assumption, not the market rate of any particular year. The Housing page calls this method 'Table 6'. In the PDF at this link, Table 6 is the rent-burden table (Gross Rent as a Percentage of Household Income) and the Home Ownership Affordability Ratio is Table 8, so cite Table 8. The result is an indicator, not a loan limit and not advice on buying a home.",
   "verified": {
    "date": "2026-10-03",
    "status": "link-works-licence-unclear"
@@ -1138,7 +1138,7 @@
   "url": "https://openmaptiles.org/",
   "more_links": [
    {
-    "label": "OpenMapTiles licence (code BSD 3-Clause, design CC BY 4.0)",
+    "label": "OpenMapTiles license (code BSD 3-Clause, design CC BY 4.0)",
     "url": "https://github.com/openmaptiles/openmaptiles/blob/master/LICENSE.md"
    }
   ],
@@ -1148,7 +1148,7 @@
   "access": "Not downloaded by itself: it is the layout (layers such as transportation, building, place and poi, and their fields) of the OpenFreeMap vector tiles that the base maps draw.",
   "cadence": "A schema version (3.16 in the OpenFreeMap tiles on 2026-10-23). It changes only when OpenFreeMap moves to a new version.",
   "used_for": "The layout of the base map's vector tiles on every map; the 3D map raises buildings from its 'building' layer and 'render_height' field.",
-  "terms_note": "The licence asks products that use maps made with the schema to credit 'OpenMapTiles' visibly, with a link to openmaptiles.org, in the corner of an interactive map, next to the OpenStreetMap credit. Every map of the observatory shows '© OpenMapTiles' in its credit line.",
+  "terms_note": "The license asks products that use maps made with the schema to credit 'OpenMapTiles' visibly, with a link to openmaptiles.org, in the corner of an interactive map, next to the OpenStreetMap credit. Every map of the observatory shows '© OpenMapTiles' in its credit line.",
   "verified": {
    "date": "2026-10-23",
    "status": "verified"
@@ -1172,7 +1172,7 @@
   "access": "Elevation tiles (Terrarium-encoded PNG images) streamed live from s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png to each visitor's browser, up to zoom level 15. No key. The observatory stores no tiles.",
   "cadence": "The registry says new data are added based on community feedback. The observatory does nothing to refresh them.",
   "used_for": "The 3D terrain and hillshade on the 3D map (3d.html).",
-  "terms_note": "Mapzen's attribution page asks for 'Mapzen' plus an acknowledgement of each elevation dataset behind the tiles. It lists 3DEP, GMTED2010 and SRTM (courtesy of the U.S. Geological Survey) for the United States and ETOPO1 (NOAA) for the globe. It does not say which dataset fills each tile around Puerto Rico, so the credit line names all of them. The AWS registry asks users to state the access date and the registry address. Each tile request goes to Amazon's servers and sends the visitor's IP address.",
+  "terms_note": "Mapzen's attribution page asks for 'Mapzen' plus an acknowledgment of each elevation dataset behind the tiles. It lists 3DEP, GMTED2010 and SRTM (courtesy of the U.S. Geological Survey) for the United States and ETOPO1 (NOAA) for the globe. It does not say which dataset fills each tile around Puerto Rico, so the credit line names all of them. The AWS registry asks users to state the access date and the registry address. Each tile request goes to Amazon's servers and sends the visitor's IP address.",
   "verified": {
    "date": "2026-10-23",
    "status": "verified"
@@ -1273,10 +1273,10 @@
   "licence": "ISC",
   "licence_url": "https://github.com/maplibre/maplibre-gl-leaflet/blob/main/LICENSE",
   "credit": "Software: MapLibre GL Leaflet 0.1.4",
-  "access": "One JavaScript file copied unchanged from the npm package (version 0.1.4, integrity checked on download) into site/vendor/maplibre-gl-leaflet/0.1.4/ with its licence, and loaded from the observatory's own site by site/js/core/basemap.js once a page with a 2D map is ready.",
+  "access": "One JavaScript file copied unchanged from the npm package (version 0.1.4, integrity checked on download) into site/vendor/maplibre-gl-leaflet/0.1.4/ with its license, and loaded from the observatory's own site by site/js/core/basemap.js once a page with a 2D map is ready.",
   "cadence": "A fixed version. It changes only if FPR replaces the file.",
   "used_for": "Drawing the OpenFreeMap vector base map with MapLibre GL JS as a layer under every Leaflet layer of the 2D map (index.html) and the WCRP maps (wcrp.html).",
-  "terms_note": "The licence (ISC) is in the package's LICENSE file, copied beside the script. Version 0.1.4 (npm, 2026-08-16) declares Leaflet ^1.9.3 and MapLibre GL JS ^2.4 to ^6, which covers the Leaflet 1.9.4 and MapLibre GL JS 4.7.1 the observatory uses. Served from the observatory's own site, it sends nothing to another server.",
+  "terms_note": "The license (ISC) is in the package's LICENSE file, copied beside the script. Version 0.1.4 (npm, 2026-08-16) declares Leaflet ^1.9.3 and MapLibre GL JS ^2.4 to ^6, which covers the Leaflet 1.9.4 and MapLibre GL JS 4.7.1 the observatory uses. Served from the observatory's own site, it sends nothing to another server.",
   "verified": {
    "date": "2026-10-23",
    "status": "verified"
@@ -1398,7 +1398,7 @@
   },
   "licence_url": "https://earth.gov/sealevel/us/internal_resources/756/noaa-nos-techrpt01-global-regional-SLR-scenarios-US.pdf",
   "credit": "Adapted from: Sweet, W.V., et al., 2022: Global and Regional Sea Level Rise Scenarios for the United States. NOAA Technical Report NOS 01. Values approximated by Foundation for Puerto Rico",
-  "access": "No file is downloaded. FPR typed approximate values into the 3D map. They give global mean sea level in metres above the year-2000 level for four scenarios (Intermediate-Low, Intermediate, Intermediate-High and High) at 2020, 2050, 2100 and 2150. Values between those years are interpolated in a straight line.",
+  "access": "No file is downloaded. FPR typed approximate values into the 3D map. They give global mean sea level in meters above the year-2000 level for four scenarios (Intermediate-Low, Intermediate, Intermediate-High and High) at 2020, 2050, 2100 and 2150. Values between those years are interpolated in a straight line.",
   "cadence": "NOAA issued the report in 2022, its first update since 2017. The observatory's numbers change only when FPR updates them by hand.",
   "used_for": "The Years clock on the 3D map: a year and a scenario give a rise in feet, which picks the nearest layer (1 to 10 feet) from NOAA's Sea Level Rise Viewer.",
   "terms_note": "The values are approximations of the report's global mean sea level tables. The 2100 values match the report, but some others differ: the 2050 Intermediate-Low value (0.24 m) is the report's observation-based extrapolation, not the scenario (0.20 m); the 2050 Intermediate (0.30 m) and High (0.44 m) values are 0.02 m and 0.01 m above the report (0.28 m and 0.43 m); the 2020 Intermediate-High and High values (0.07 m) are 0.01 m below the report (0.08 m); and the 2150 Intermediate-High and High values (2.9 m and 3.9 m) are 0.2 m above the report (2.7 m and 3.7 m). The values are global averages, not values for Puerto Rico's coast. The result is indicative, not a forecast. The report defines five scenarios (Low to High) and the observatory offers four, without Low. The report's notice says that use of its information for publicity or advertising of proprietary products or their tests is not authorized. Checked again on 2026-10-19 for the Data management page: the report states no license and no public-domain notice, and its notice restricts one use (publicity or advertising of proprietary products), so the class stays unstated.",
@@ -1508,7 +1508,7 @@
   },
   "licence_url": "https://services6.arcgis.com/a523XM128lX5Nsff/arcgis/rest/services/Comunidades_Especiales/FeatureServer/0",
   "credit": "Source: Junta de Planificación de Puerto Rico, delimitation of the Comunidades Especiales (Ley 1-2001), 2006",
-  "access": "The build reads a public copy of the Junta's layer on ArcGIS Online (services6.arcgis.com, Comunidades_Especiales, layer 0), held by the same account as the copy of the Land Use Plan the observatory uses. It shows no description, owner organisation or license text. A second public copy with the same 713 polygons and fields is named delim_comunidades_especiales_2006. The Junta's own map service (MIPR, Comunidades) did not answer on 2026-10-06.",
+  "access": "The build reads a public copy of the Junta's layer on ArcGIS Online (services6.arcgis.com, Comunidades_Especiales, layer 0), held by the same account as the copy of the Land Use Plan the observatory uses. It shows no description, owner organization or license text. A second public copy with the same 713 polygons and fields is named delim_comunidades_especiales_2006. The Junta's own map service (MIPR, Comunidades) did not answer on 2026-10-06.",
   "cadence": "A 2006 delimitation. The observatory downloads it once and does not refresh it unless the build is run with its refresh option.",
   "used_for": "The Comunidades Especiales outlines on the 2D map (comunidades.geojson) and the name, place, housing units, community type and reported hazards shown when you click one.",
   "terms_note": "The layer comes with no license text. Ley 1-2001 created the Comunidades Especiales program; communities designated after this delimitation may be missing. The attributes come from a community inventory taken with the delimitation and describe conditions at that time.",
@@ -1738,7 +1738,7 @@
   "access": "The monthly full replacement file from https://download.cms.gov/nppes/NPI_Files.html (about 1.1 GB zipped, 11.8 GB unzipped), no key. providers.py reads the national CSV inside the ZIP as a stream and keeps, for Puerto Rico's individual providers only, the primary taxonomy code, practice city and ZIP code, last update year and whether the NPI is active: no name, NPI, address or telephone reaches the cache.",
   "cadence": "CMS publishes a new full file each month. The observatory holds NPPES_November_2026_V2.zip; python providers.py --refresh downloads the newest.",
   "used_for": "Health care providers by type (physicians, psychiatrists, dentists, nurse practitioners and physician assistants, psychologists, counselors and social workers, pharmacists), by municipio (providers_series.json).",
-  "terms_note": "NPPES data are a US Government work and public by law (45 CFR 162.410 lets CMS disclose them). The rows name individual providers: the observatory keeps none of that and publishes counts by municipio only, with no count from 1 to 9. Providers register and update their own records; many never update a record, so a listing does not prove a provider still practises.",
+  "terms_note": "NPPES data are a US Government work and public by law (45 CFR 162.410 lets CMS disclose them). The rows name individual providers: the observatory keeps none of that and publishes counts by municipio only, with no count from 1 to 9. Providers register and update their own records; many never update a record, so a listing does not prove a provider still practices.",
   "verified": {
    "date": "2026-11-18",
    "status": "verified"
@@ -2110,7 +2110,7 @@
   "credit": "Source: US Department of Transportation, Federal Highway Administration, Office of Highway Policy Information, Highway Performance Monitoring System (HPMS), Puerto Rico, data year 2025 (traffic) and 2024 (route analysis)",
   "access": "Two reads, no key. (1) traffic.py: FHWA's HPMS_FULL_PR_<year> feature service on geo.dot.gov, newest data year (2025: 262,462 road sections, about 160 requests), cached in cache/traffic/; it publishes the main roads with a count (traffic_roads.geojson) and municipio figures (traffic_series.json). (2) The road-features analysis of the Route analysis (road_flow.py, kept with that work): the BTS layer HPMS_National_Current, 2024 data, cached on a local computer; only counts of junctions reach site/data.",
   "cadence": "Puerto Rico, through the DTOP, reports to FHWA every year; FHWA publishes a data year the year after (2025 in 2026). The list of services on geo.dot.gov is checked every 30 days; a new year is rebuilt with traffic.py --refresh after a person looks at it. The Route analysis keeps its 2024 snapshot until it is redone.",
-  "used_for": "The map layer Traffic on the main roads and, for each municipio, daily vehicle-kilometres, per resident, km of arterials and major collectors, the busiest count, the truck share and the share of measured main roads with rough pavement (traffic.py); the traffic on the roads each simulated connection between municipios follows (transit_links.py); and the estimated design-hour volume at each signalised junction and roundabout in the Route analysis (route_compare.json).",
+  "used_for": "The map layer Traffic on the main roads and, for each municipio, daily vehicle-kilometers, per resident, km of arterials and major collectors, the busiest count, the truck share and the share of measured main roads with rough pavement (traffic.py); the traffic on the roads each simulated connection between municipios follows (transit_links.py); and the estimated design-hour volume at each signalized junction and roundabout in the Route analysis (route_compare.json).",
   "terms_note": "HPMS reports state and federal-aid roads, not most local streets, so a junction with no HPMS road nearby has no flow. K is required only on Sample Panel sections, and the Field Manual says statewide or system-wide values shall not be used. For 764 of the 1,582 junctions (48%) the road has no K and the observatory used the median K of its functional class (k_imputed): the observatory's own estimate, which HPMS guidance does not endorse. AADT is an annual average of both directions; AADT x K is a design-hour volume (one of the busiest hours of the year), not a typical weekday peak, and says nothing about speed or delay. The NTAD item advises against comparing states on the sampled items; only Puerto Rico is used.",
   "verified": {
    "date": "2026-10-16",
@@ -2181,7 +2181,7 @@
   "licence_class": "open",
   "licence_url": "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits",
   "credit": "Source: Hughes, K.S., Bayouth García, D., Martínez Milian, G.O., Schulz, W.H., and Baum, R.L., 2019, Map of slope-failure locations in Puerto Rico after Hurricane María: U.S. Geological Survey data release, https://doi.org/10.5066/P9BVMD74",
-  "access": "The USGS catalogue (ScienceBase) refuses scripts, so the build reads the copy the data release's first author keeps on ArcGIS Online at UPRM (no key): only each point's location. The copy's municipio and barrio fields are not used; each point is placed by the municipal boundary.",
+  "access": "The USGS catalog (ScienceBase) refuses scripts, so the build reads the copy the data release's first author keeps on ArcGIS Online at UPRM (no key): only each point's location. The copy's municipio and barrio fields are not used; each point is placed by the municipal boundary.",
   "cadence": "Static: one storm (2017).",
   "used_for": "Landslides mapped after Hurricane María in each municipio, in all and per km² of land (environment_series.json: landslides_*).",
   "verified": {
@@ -2213,7 +2213,7 @@
   "licence_class": "open",
   "licence_url": "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits",
   "credit": "Source: Hughes, K.S., and Schulz, W.H., 2020, Map depicting susceptibility to landslides triggered by intense rainfall, Puerto Rico: U.S. Geological Survey Open-File Report 2020-1022, https://doi.org/10.3133/ofr20201022; Schulz, W.H., and Hughes, K.S., 2021, Geographic information system layer of a map depicting susceptibility to landslides triggered by intense rainfall, Puerto Rico: U.S. Geological Survey data release, https://doi.org/10.5066/P990ZP4C",
-  "access": "The data release (a 5 m GeoTIFF of the main island in five classes) is on ScienceBase, which refuses scripted downloads behind a bot check; the observatory does not get around it. The build reads the copy the first author keeps on ArcGIS Online at UPRM (no key): the PNG map tiles of zoom 15 (about 4.5 m a pixel on the ground), one flat colour per class, decoded back into the classes. Two checks against the report prove they are the published map: the area of each class is the report's share of the island (40, 30, 20, 9 and 1%) and the 71,431 slope failures of Hurricane María fall in the classes as the report's table 5 says. Only areas and counts are kept; no tile or raster is published.",
+  "access": "The data release (a 5 m GeoTIFF of the main island in five classes) is on ScienceBase, which refuses scripted downloads behind a bot check; the observatory does not get around it. The build reads the copy the first author keeps on ArcGIS Online at UPRM (no key): the PNG map tiles of zoom 15 (about 4.5 m a pixel on the ground), one flat color per class, decoded back into the classes. Two checks against the report prove they are the published map: the area of each class is the report's share of the island (40, 30, 20, 9 and 1%) and the 71,431 slope failures of Hurricane María fall in the classes as the report's table 5 says. Only areas and counts are kept; no tile or raster is published.",
   "cadence": "Static: one model (2020; GIS layer 2022). The build checks the copy's last edit date on ArcGIS Online.",
   "used_for": "The share of the land in the high, very high and extremely high classes, and the 2020 residents living there, for each barrio and municipio (landslide_series.json, landslide_barrio.json). The Landslide susceptibility layer of the 2D map, drawn from the same tile copy while the layer is on (nothing is stored).",
   "terms_note": "USGS-authored data are in the public domain in the United States; the USGS data release page states CC0 1.0. The authors say the map is for planning and emergency preparation and is not a substitute for a site-specific slope-stability study by licensed geologists and engineers; it does not show where a landslide travels downhill, and deep bedrock landslides and earthquake-triggered ones are poorly represented.",
@@ -2274,7 +2274,7 @@
   "access": "The three 1:100,000 sheets of the main island, downloaded once by hand as ArcInfo export files into cache/geology/ (soils.py does not download them). Only the outlines of the young river, swamp and beach deposits (map units Qa, Qs and Qb) are used, to say what lies under land that the soil survey maps as Urban land alone; no geologic polygon is published.",
   "cadence": "Static: published in 1998.",
   "used_for": "The flooding answer of the Soils layer where the soil survey maps only Urban land: on young river, swamp or beach deposits, or not.",
-  "terms_note": "USGS-authored data are in the public domain in the United States. The map is at 1:100,000: it tells the kind of ground under a neighbourhood, not under a lot. It does not cover Vieques or Culebra.",
+  "terms_note": "USGS-authored data are in the public domain in the United States. The map is at 1:100,000: it tells the kind of ground under a neighborhood, not under a lot. It does not cover Vieques or Culebra.",
   "verified": {
    "date": "2026-11-06",
    "status": "verified"
@@ -2311,7 +2311,7 @@
  "usgs_comcat": {
   "id": "usgs_comcat",
   "kind": "data",
-  "name": "USGS — ComCat earthquake catalogue",
+  "name": "USGS — ComCat earthquake catalog",
   "publisher": "US Geological Survey (USGS) Earthquake Hazards Program, with the Puerto Rico Seismic Network",
   "url": "https://earthquake.usgs.gov/earthquakes/search/",
   "more_links": [
@@ -2323,7 +2323,7 @@
   "licence": "US federal government data (public domain)",
   "licence_class": "open",
   "licence_url": "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits",
-  "credit": "Source: US Geological Survey, ComCat earthquake catalogue, magnitude 2.5 or more around Puerto Rico, 2000-2025",
+  "credit": "Source: US Geological Survey, ComCat earthquake catalog, magnitude 2.5 or more around Puerto Rico, 2000-2025",
   "access": "The event web service (no key), one request a year, magnitude 2.5 or more in a box around Puerto Rico. The build keeps each event's epicenter and magnitude in the local cache and publishes counts only.",
   "cadence": "Live. The observatory counts whole years and renews the last two when FPR rebuilds the data.",
   "used_for": "Earthquakes of magnitude 2.5 or more, and 4.0 or more, placed in each municipio every year (hazard_series.json: quakes_*).",
@@ -2404,18 +2404,18 @@
     "url": "https://services.arcgis.com/VTyQ9soqVukalItT/arcgis/rest/services/Public_Housing_Developments/FeatureServer/0"
    },
    {
-    "label": "HUD open data catalog (DCAT, states the licence)",
+    "label": "HUD open data catalog (DCAT, states the license)",
     "url": "https://hudgis-hud.opendata.arcgis.com/api/feed/dcat-us/1.1.json"
    }
   ],
-  "licence": "U.S. Public Domain (the licence HUD's open data catalog gives this dataset: the usa.gov public domain label); HUD adds a disclaimer of warranty and liability",
+  "licence": "U.S. Public Domain (the license HUD's open data catalog gives this dataset: the usa.gov public domain label); HUD adds a disclaimer of warranty and liability",
   "licence_class": "open",
   "licence_url": "http://www.usa.gov/publicdomain/label/1.0/",
   "credit": "Source: US Department of Housing and Urban Development, Public Housing Developments (eGIS), Puerto Rico",
   "access": "ArcGIS REST query of the feature service (no key), STATE2KX = '72'. The build keeps the development code and name, total units, the scattered-site flag, the county and the geocoding accuracy code (LVL2KX), and the point. The housing authority's telephone, fax and e-mail, its executive director's, the address and the tenants' characteristics are not requested.",
   "cadence": "HUD updates the layer quarterly (date of coverage 06/2026 on 2026-10-17). The observatory re-reads it when the data are rebuilt (python facilities.py --refresh hud).",
   "used_for": "Public housing developments on the 2D map (public_housing.geojson) and developments and units in each municipio (facility_series.json: ph_devs, ph_units).",
-  "terms_note": "HUD says to map only addresses geocoded to the rooftop or the ZIP+4 centroid (LVL2KX R or 4); the others sit at the centre of a block group or tract. The observatory follows that: those developments are counted in their municipio but not drawn.",
+  "terms_note": "HUD says to map only addresses geocoded to the rooftop or the ZIP+4 centroid (LVL2KX R or 4); the others sit at the center of a block group or tract. The observatory follows that: those developments are counted in their municipio but not drawn.",
   "verified": {
    "date": "2026-10-17",
    "status": "link-works"
@@ -2465,7 +2465,7 @@
   "access": "Socrata API (no key), physical_state = 'PR' and entity_type = 'Library', asking only for the entity number and name, type, status, city, county, state, the public, main, bookmobile and kiosk flags and the point. Contacts, telephone, e-mail, web address and street address are never requested.",
   "cadence": "USAC updates the dataset daily (2026-10-16 on 2026-10-17). The observatory re-reads it when the data are rebuilt (python facilities.py --refresh usac).",
   "used_for": "Public libraries on the 2D map (libraries.geojson) and their count in each municipio (facility_series.json: libraries). Also the road distance to the nearest library, by barrio and municipio (essentials_series.json, essentials_barrio.json).",
-  "terms_note": "IMLS's Public Libraries Survey has no Puerto Rico rows, so USAC's list is the only machine-readable national source. In Puerto Rico it includes community technology centres and other community libraries registered as public libraries. Some of USAC's points fall in another town: those libraries are counted in the municipio of their address and not drawn. A few names carry a telephone number, which the build removes.",
+  "terms_note": "IMLS's Public Libraries Survey has no Puerto Rico rows, so USAC's list is the only machine-readable national source. In Puerto Rico it includes community technology centers and other community libraries registered as public libraries. Some of USAC's points fall in another town: those libraries are counted in the municipio of their address and not drawn. A few names carry a telephone number, which the build removes.",
   "verified": {
    "date": "2026-10-17",
    "status": "link-works"
@@ -2483,7 +2483,7 @@
     "url": "https://www.irs.gov/pub/irs-soi/eo_pr.csv"
    }
   ],
-  "licence": "US federal government work, public domain (17 U.S.C. 105); neither the IRS page nor Treasury's data catalog states a licence; FPR confirmed this reading on 2026-10-17",
+  "licence": "US federal government work, public domain (17 U.S.C. 105); neither the IRS page nor Treasury's data catalog states a license; FPR confirmed this reading on 2026-10-17",
   "licence_class": "open",
   "licence_url": "https://www.law.cornell.edu/uscode/text/17/105",
   "credit": "Source: Internal Revenue Service, Exempt Organizations Business Master File Extract, Puerto Rico",
@@ -2618,7 +2618,7 @@
     "url": "https://edg.epa.gov/EPA_Data_License.html"
    }
   ],
-  "licence": "EPA Standard Open Data License: unless otherwise specified, data EPA produces are in the public domain (17 U.S.C. 105); EPA disclaims any warranty; the layer's own licence text says EPA geospatial data are public domain unless otherwise specified",
+  "licence": "EPA Standard Open Data License: unless otherwise specified, data EPA produces are in the public domain (17 U.S.C. 105); EPA disclaims any warranty; the layer's own license text says EPA geospatial data are public domain unless otherwise specified",
   "licence_class": "open",
   "licence_url": "https://edg.epa.gov/EPA_Data_License.html",
   "credit": "Source: US EPA, ATTAINS, Puerto Rico assessment units (2024 reporting cycle), downloaded October 2026",
@@ -2682,7 +2682,7 @@
   "access": "ArcGIS REST query of EPA's hosted layer (no key), county_state ending ', PR'. The build keeps each landfill's name, status, LMOP category, opening and closure years and point; the owner organization is not requested.",
   "cadence": "EPA updates the LMOP Database about once a year (the layer was last edited on 2024-09-20). The observatory re-reads it when the conditions unit is rebuilt (python conditions.py --refresh lmop).",
   "used_for": "Municipal solid waste landfills, open or closed and still open, in each barrio and municipio (conditions_series.json and conditions_barrio.json: epa_landfills, epa_landfills_open).",
-  "terms_note": "EPA's data catalog lists 'All Landfills in LMOP Database with Coordinates' under the EPA Standard Open Data License. LMOP lists municipal solid waste landfills only: no open dumps, transfer stations, recycling centres, industrial or hazardous waste landfills. No source of open dumps or other solid waste facilities in Puerto Rico states terms (wanted.json: open-dumps).",
+  "terms_note": "EPA's data catalog lists 'All Landfills in LMOP Database with Coordinates' under the EPA Standard Open Data License. LMOP lists municipal solid waste landfills only: no open dumps, transfer stations, recycling centers, industrial or hazardous waste landfills. No source of open dumps or other solid waste facilities in Puerto Rico states terms (wanted.json: open-dumps).",
   "verified": {
    "date": "2026-10-17",
    "status": "link-works"
@@ -2700,7 +2700,7 @@
     "url": "https://services.arcgis.com/VTyQ9soqVukalItT/arcgis/rest/services/ACS_5YR_ESTIMATES_CHAS_TRACT/FeatureServer/1"
    },
    {
-    "label": "HUD open data catalog (DCAT, states the licence)",
+    "label": "HUD open data catalog (DCAT, states the license)",
     "url": "https://hudgis-hud.opendata.arcgis.com/api/feed/dcat-us/1.1.json"
    },
    {
@@ -2708,7 +2708,7 @@
     "url": "https://www.huduser.gov/portal/datasets/cp.html"
    }
   ],
-  "licence": "U.S. Public Domain (the licence HUD's open data catalog gives this dataset: the usa.gov public domain label); HUD adds a disclaimer of warranty and liability",
+  "licence": "U.S. Public Domain (the license HUD's open data catalog gives this dataset: the usa.gov public domain label); HUD adds a disclaimer of warranty and liability",
   "licence_class": "open",
   "licence_url": "http://www.usa.gov/publicdomain/label/1.0/",
   "credit": "Source: US Department of Housing and Urban Development, Comprehensive Housing Affordability Strategy (CHAS) data, 2016-2020 ACS 5-year, census tracts (HUD eGIS), downloaded October 2026",
@@ -2794,7 +2794,7 @@
     "url": "https://irma.nps.gov/DataStore/Reference/Profile/2319397"
    }
   ],
-  "licence": "Public domain: a US federal government work. NPS states no named licence; the map service's licence field says 'For general public distribution' and its metadata calls the public data general reference data. Treated as public domain, as other federal data are (decided by FPR on 2026-10-18)",
+  "licence": "Public domain: a US federal government work. NPS states no named license; the map service's license field says 'For general public distribution' and its metadata calls the public data general reference data. Treated as public domain, as other federal data are (decided by FPR on 2026-10-18)",
   "licence_class": "open",
   "licence_url": "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer/0/iteminfo?f=pjson",
   "credit": "Source: National Park Service, National Register of Historic Places, public spatial data",
@@ -2834,7 +2834,7 @@
   "access": "The Excel file of each directory, found on SAMHSA's National Directories page (no key), read in memory. For each Puerto Rico row the build keeps the city, the state, the type-of-care codes (substance use, mental health, co-occurring) and a one-way hash of the name and address that joins the two directories; names, addresses, telephones and the files themselves are never written to disk.",
   "cadence": "Yearly: the 2025 directories (survey of 2024) were released on 2026-03-06. The observatory looks for a newer edition on the National Directories page and re-reads it when the data are rebuilt (python community_assets.py --refresh samhsa).",
   "used_for": "Substance use and mental health treatment facilities in each municipio, in all and by type of care (community_series.json: bh_all, bh_su, bh_mh, bh_both). Counts only.",
-  "terms_note": "These are sensitive services, so the observatory publishes counts only: no facility name, address, telephone or point. The directories list the facilities that answered the survey and agreed to be listed; most individual practitioners are not in them. FindTreatment.gov, SAMHSA's live locator, is more current, but its API guide states no licence and speaks of 'approved users', so it is not used (wanted.json: samhsa-locator).",
+  "terms_note": "These are sensitive services, so the observatory publishes counts only: no facility name, address, telephone or point. The directories list the facilities that answered the survey and agreed to be listed; most individual practitioners are not in them. FindTreatment.gov, SAMHSA's live locator, is more current, but its API guide states no license and speaks of 'approved users', so it is not used (wanted.json: samhsa-locator).",
   "verified": {
    "date": "2026-10-18",
    "status": "link-works"
@@ -2887,7 +2887,7 @@
   "access": "The report and its Appendix III, read for the framework (7 pillars, 21 sub-pillars, 80 indicators), the definitions (summarized in FPR's own words) and the marks of each indicator (composite, survey, half weight, higher is worse).",
   "cadence": "A fixed edition (2020).",
   "used_for": "The structure and the definitions of the Global Innovation Index page (gii_profile.json), and the method behind FPR's printed ranks. No other economy's GII 2020 data are published.",
-  "terms_note": "Licensed CC BY-NC-ND 3.0 IGO: no derivatives without WIPO's permission. FPR's ranks place Puerto Rico's value among the GII 2020 values, so they derive from that edition; the page shows only Puerto Rico's values and the ranks FPR printed in 2021, and an open licence review records the question for Compliance.",
+  "terms_note": "Licensed CC BY-NC-ND 3.0 IGO: no derivatives without WIPO's permission. FPR's ranks place Puerto Rico's value among the GII 2020 values, so they derive from that edition; the page shows only Puerto Rico's values and the ranks FPR printed in 2021, and an open license review records the question for Compliance.",
   "verified": {
    "date": "2026-10-23",
    "status": "verified"
@@ -2920,7 +2920,7 @@
   "access": "The database file (943,159 bytes as WIPO serves it, SHA-256 bbce0a2d...ffd73; a copy in a folder that SharePoint or OneDrive syncs gains customXml metadata parts and so another hash, which gii.py also records; downloaded on 2026-10-23 with FPR's approval) is kept in the local cache (cache/gii/2026/) and read with openpyxl in read-only mode by 'python -I gii.py --extract-2026', which keeps, for each of the 79 indicators, the screened values (no economy names), the year most economies use and FPR's checks of WIPO's method on its own data (direction, plain min-max or log transform, the range no winsorization caps, the rank rule). The extract stays in the cache.",
   "cadence": "One edition a year (the 19th, 2026-09-29, 139 economies, 79 indicators). A new edition is read when FPR updates the page.",
   "used_for": "The indicative GII 2026 position of Puerto Rico's updated value in 10 indicators whose source and definition match (gii_profile.json: c26_*): the number of economies with data, the year most use, the 25th, 50th and 75th percentiles and Puerto Rico's place among them, written X/N. Also the threshold of the change marker (chg_thr: 5% of the interquartile range of each indicator) and the structure, method and indicator list behind 'Changes in the index since 2020' (gii_changes.json).",
-  "terms_note": "CC BY 4.0 allows reuse and adaptation with credit to WIPO, the changes marked and a statement that WIPO is not liable. Third-party data in the database are excluded from WIPO's licence, so no economy's values are republished and no economy is named: only counts, the data year, three percentiles and Puerto Rico's indicative place. A percentile can coincide with one economy's value (the median in 8 of the 10 compared indicators), without saying which. Not an official GII rank.",
+  "terms_note": "CC BY 4.0 allows reuse and adaptation with credit to WIPO, the changes marked and a statement that WIPO is not liable. Third-party data in the database are excluded from WIPO's license, so no economy's values are republished and no economy is named: only counts, the data year, three percentiles and Puerto Rico's indicative place. A percentile can coincide with one economy's value (the median in 8 of the 10 compared indicators), without saying which. Not an official GII rank.",
   "verified": {
    "date": "2026-10-23",
    "status": "verified"
@@ -2978,7 +2978,7 @@
   "access": "World Bank API, no key: api.worldbank.org/v2/country/PRI/indicator/{series} (the United States, USA, for the tariff), read by gii.py and cached in cache/gii/.",
   "cadence": "Updated several times a year (last updated 2026-10-08 for the series used).",
   "used_for": "The updated values of indicators 3.2.3 (NE.GDI.TOTL.ZS), 6.2.2 (IC.BUS.NDNS.ZS) and 4.3.1 (TM.TAX.MRCH.WM.AR.ZS of the United States, FPR's method), the ICT components shown beside 3.1.1 and 3.1.2, and the mirror of UNESCO series used when it is newer (gii_profile.json).",
-  "terms_note": "Many WDI series for Puerto Rico are blank (logistics, domestic credit, market capitalization, patents, FDI, high-tech exports). The tariff of the United States stands for Puerto Rico because the US tariff schedule applies there; it is labelled as FPR's method.",
+  "terms_note": "Many WDI series for Puerto Rico are blank (logistics, domestic credit, market capitalization, patents, FDI, high-tech exports). The tariff of the United States stands for Puerto Rico because the US tariff schedule applies there; it is labeled as FPR's method.",
   "verified": {
    "date": "2026-10-23",
    "status": "verified"
@@ -3007,7 +3007,7 @@
   "access": "UIS Data API, no key: api.uis.unesco.org/api/public/data/indicators?indicator={code}&geoUnit=PRI, read by gii.py and cached in cache/gii/.",
   "cadence": "Data releases about twice a year (February 2026 for the series used).",
   "used_for": "The updated values of indicators 2.1.1 (XGDP.FSGOV), 2.1.3 (SLE.1T8), 2.1.5 (PTRHC.2T3.QUALIFIED), 2.2.1 (GER.5T8), 2.2.2 (FOSGP.5T8.F500600700) and 2.2.3 (MOR.5T8.40510) of the Global Innovation Index page (gii_profile.json).",
-  "terms_note": "Share-alike: an adaptation must carry the same licence. The series are revised between releases, so the printed 2021 values may differ from the current ones for the same year. Inbound mobility for Puerto Rico is a UIS estimate.",
+  "terms_note": "Share-alike: an adaptation must carry the same license. The series are revised between releases, so the printed 2021 values may differ from the current ones for the same year. Inbound mobility for Puerto Rico is a UIS estimate.",
   "verified": {
    "date": "2026-10-23",
    "status": "verified"
@@ -3103,7 +3103,7 @@
     "url": "https://www.law.cornell.edu/uscode/text/26/42"
    }
   ],
-  "licence": "US Government work (17 U.S.C. 105: no copyright in the United States); HUD USER states no other licence for the database",
+  "licence": "US Government work (17 U.S.C. 105: no copyright in the United States); HUD USER states no other license for the database",
   "licence_class": "open",
   "licence_url": "https://www.law.cornell.edu/uscode/text/17/105",
   "short": {
@@ -3136,7 +3136,7 @@
     "url": "https://www.law.cornell.edu/uscode/text/26/45D"
    }
   ],
-  "licence": "US Government work (17 U.S.C. 105: no copyright in the United States); the CDFI Fund states no other licence for the file",
+  "licence": "US Government work (17 U.S.C. 105: no copyright in the United States); the CDFI Fund states no other license for the file",
   "licence_class": "open",
   "licence_url": "https://www.law.cornell.edu/uscode/text/17/105",
   "short": {
@@ -3225,7 +3225,7 @@
   "access": "LAADS DAAC lists the files openly; a download needs a free NASA Earthdata login. The build reads one user token from the EARTHDATA_TOKEN environment variable (a GitHub Actions secret) and sends it only to LAADS; the site never calls NASA and visitors need no login (HANDOFF decision 75). One HDF5 file a month for tile h11v07, which holds all of Puerto Rico (about 70 MB); the build keeps a summary for each area and deletes the file. No image is published.",
   "cadence": "NASA posts each month about seven weeks after it ends. The observatory reads the new months when FPR runs the build (python nightlights.py, or the Night-time lights workflow).",
   "used_for": "The mean night-time radiance and the share of pixels of poor quality or gap-filled, by month (2012-01 to 2026-09) and by year (2012-2025), for the 78 municipios, the 901 barrios and Puerto Rico (nightlights_series.json, nightlights_barrio.json, nightlights_monthly.json). Also the months for night-time light to come back after Hurricanes María and Fiona, and the lowest month after each, by barrio and municipio (storm_recovery_series.json, storm_recovery_barrio.json).",
-  "terms_note": "NASA's data use guidance says data from NASA-led missions are CC0 unless marked otherwise, places no restriction on their use and strongly urges users to cite them; it also asks that NASA be acknowledged as the source and that use not suggest endorsement. The observatory will cite the product's DOI and Román et al. (2018) wherever the figures appear. The login is NASA's condition for downloading, not a licence term.",
+  "terms_note": "NASA's data use guidance says data from NASA-led missions are CC0 unless marked otherwise, places no restriction on their use and strongly urges users to cite them; it also asks that NASA be acknowledged as the source and that use not suggest endorsement. The observatory will cite the product's DOI and Román et al. (2018) wherever the figures appear. The login is NASA's condition for downloading, not a license term.",
   "verified": {
    "date": "2026-11-02",
    "status": "link-works"
@@ -3258,7 +3258,7 @@
   "access": "The build reads Microsoft Planetary Computer's copy with its anonymous access token (no account; the AWS copy is requester-pays), by HTTP range requests at the first overview (60 m), only the tiles over Puerto Rico (raster.py, about 2 MB a scene). The site never calls Planetary Computer. No image is published.",
   "cadence": "A scene every 8 days on each of six path/rows with Landsat 8 and 9 together; the observatory uses the last three complete summers (June to September), so its figures change once a year, after September (refresh unit heat).",
   "used_for": "The median and 90th-percentile land surface temperature on clear summer mornings, the share of land among Puerto Rico's hottest tenth and the residents living there, for the 78 municipios, the 901 barrios and Puerto Rico (heat_series.json, heat_barrio.json).",
-  "terms_note": "USGS-authored or produced data and information are in the public domain; USGS asks for credit ('courtesy of the U.S. Geological Survey'). Planetary Computer's terms of use cover access to its copy, not the data's licence.",
+  "terms_note": "USGS-authored or produced data and information are in the public domain; USGS asks for credit ('courtesy of the U.S. Geological Survey'). Planetary Computer's terms of use cover access to its copy, not the data's license.",
   "verified": {
    "date": "2026-11-04",
    "status": "link-works"
@@ -3268,7 +3268,7 @@
   "id": "copernicus_sentinel2_l2a",
   "kind": "data",
   "name": "Copernicus Sentinel-2 Level-2A surface reflectance, Collection 1 — red (B04), near-infrared (B08) and scene classification (SCL)",
-  "publisher": "European Space Agency (ESA) for the European Union's Copernicus programme; copy served by Element 84's Earth Search on AWS (Registry of Open Data)",
+  "publisher": "European Space Agency (ESA) for the European Union's Copernicus program; copy served by Element 84's Earth Search on AWS (Registry of Open Data)",
   "url": "https://sentiwiki.copernicus.eu/web/s2-mission",
   "more_links": [
    {
@@ -3291,7 +3291,7 @@
   "access": "The build reads Earth Search's public copy on AWS (no account, no key) by HTTP range requests at 40 m (the second overview of the 10 m bands, the first of the 20 m scene classification), only the tiles over Puerto Rico (raster.py), and keeps each scene's clear cells and their NDVI (about 1 MB a scene at most). The site never calls Earth Search. No image is published.",
   "cadence": "A view every 2 to 5 days with Sentinel-2A, 2B and 2C; the observatory uses the last three complete summers (June to September), the window of surface heat, so its figures change once a year, after September (refresh unit vegetation).",
   "used_for": "The median vegetation greenness (NDVI) on clear summer days, the share of land with dense vegetation and with little or none, and the residents living on land with little or no vegetation, for the 78 municipios, the 901 barrios and Puerto Rico (vegetation_series.json, vegetation_barrio.json).",
-  "terms_note": "The Copernicus Sentinel data terms allow free, full and open use, including reproduction, distribution, adaptation and commercial use, with the credit 'Contains modified Copernicus Sentinel data [year]' for modified data. Earth Search and the AWS Registry of Open Data serve the copy; their terms cover access, not the data's licence.",
+  "terms_note": "The Copernicus Sentinel data terms allow free, full and open use, including reproduction, distribution, adaptation and commercial use, with the credit 'Contains modified Copernicus Sentinel data [year]' for modified data. Earth Search and the AWS Registry of Open Data serve the copy; their terms cover access, not the data's license.",
   "verified": {
    "date": "2026-11-04",
    "status": "link-works"
@@ -3383,7 +3383,7 @@
     "url": "https://bvirtualogp.pr.gov/ogp/Bvirtual/leyesreferencia/PDF/2-ingles/141-2019.pdf"
    }
   ],
-  "licence": "Public documents of the Government of Puerto Rico; OGP states no licence for the data sheets",
+  "licence": "Public documents of the Government of Puerto Rico; OGP states no license for the data sheets",
   "licence_class": "unstated",
   "short": {
    "en": "OGP budget data sheets",
@@ -3411,7 +3411,7 @@
     "url": "https://docs.pr.gov/files/JP-Junta%20de%20Planificacion/Programa%20de%20Planificaci%C3%B3n%20Econ%C3%B3mica%20y%20Social/Estudios/Programa%20de%20Inversiones%20a%20Cuatro%20A%C3%B1os%20(PICA)/A%C3%B1os%20Fiscales%202026%20a%202029/PICA-2025-2026-a-2028-2029-Adoptado%20(1).pdf"
    }
   ],
-  "licence": "Public document of the Government of Puerto Rico; the Planning Board states no licence",
+  "licence": "Public document of the Government of Puerto Rico; the Planning Board states no license",
   "licence_class": "unstated",
   "short": {
    "en": "Planning Board PICA",
@@ -3487,7 +3487,7 @@
   "access": "The state file oesmYYst.zip (no key; 7,563,829 bytes for May 2025, one .xlsx) is downloaded by gii.py with a descriptive User-Agent (plus the contact in FRESHNESS_CONTACT when it is set, as freshness.py does; bls.gov refuses anonymous requests) and read with the standard library. Only Puerto Rico's total employment (00-0000) and its 22 SOC major groups are kept, in cache/gii/.",
   "cadence": "Once a year: the May estimates appear the following spring (May 2025 in May 2026). gii.py takes the newest file with --refresh.",
   "used_for": "The FPR estimate of indicator 5.1.1 (knowledge-intensive employment: SOC major groups 11 to 29 as a share of all employment; gii_profile.json).",
-  "terms_note": "OEWS counts wage and salary jobs in establishments and leaves out the self-employed, so it is not the labour force survey measure the GII 2026 takes from the ILO. Estimates are from three years of survey panels. BLS asks users to cite it as the source.",
+  "terms_note": "OEWS counts wage and salary jobs in establishments and leaves out the self-employed, so it is not the labor force survey measure the GII 2026 takes from the ILO. Estimates are from three years of survey panels. BLS asks users to cite it as the source.",
   "verified": {
    "date": "2026-10-29",
    "status": "verified"
@@ -3707,7 +3707,7 @@
     "url": "https://www.law.cornell.edu/uscode/text/26/1400Z-2"
    }
   ],
-  "licence": "US Government work (17 U.S.C. 105: no copyright in the United States); Treasury and the CDFI Fund state no other licence for the files",
+  "licence": "US Government work (17 U.S.C. 105: no copyright in the United States); Treasury and the CDFI Fund state no other license for the files",
   "licence_class": "open",
   "licence_url": "https://www.law.cornell.edu/uscode/text/17/105",
   "short": {
@@ -3851,7 +3851,7 @@
     "url": "https://energia.pr.gov/en/dockets/?docket=nepr-mi-2019-0007"
    }
   ],
-  "licence": "No licence stated (public filings with the Energy Bureau)",
+  "licence": "No license stated (public filings with the Energy Bureau)",
   "licence_class": "unstated",
   "licence_url": "https://energia.pr.gov/",
   "credit": "Source: LUMA Energy, filings with the Puerto Rico Energy Bureau (cases NEPR-MI-2019-0016 and NEPR-MI-2019-0007)",
@@ -3909,7 +3909,7 @@
  "afdc_stations": {
   "id": "afdc_stations",
   "kind": "data",
-  "name": "US DOE Alternative Fuels Data Center — fuelling stations (BTS National Transportation Atlas Database)",
+  "name": "US DOE Alternative Fuels Data Center — fueling stations (BTS National Transportation Atlas Database)",
   "publisher": "US Department of Energy, Alternative Fuels Data Center (National Laboratory of the Rockies, formerly NREL), distributed by the Bureau of Transportation Statistics (BTS) National Transportation Atlas Database (NTAD)",
   "url": "https://afdc.energy.gov/stations",
   "more_links": [
@@ -3943,7 +3943,7 @@
     "url": "https://www.atsdr.cdc.gov/place-health/php/svi/index.html"
    }
   ],
-  "licence": "US federal government data; the page states no licence and gives a suggested citation",
+  "licence": "US federal government data; the page states no license and gives a suggested citation",
   "licence_class": "open",
   "licence_url": "https://www.atsdr.cdc.gov/place-health/php/svi/svi-data-documentation-download.html",
   "credit": "Source: Centers for Disease Control and Prevention/Agency for Toxic Substances and Disease Registry/Geospatial Research, Analysis, and Services Program. CDC/ATSDR Social Vulnerability Index 2022 Database, Puerto Rico, downloaded November 2026",
@@ -4041,7 +4041,7 @@
   "url": "https://population.un.org/wpp/",
   "more_links": [
    {
-    "label": "Methodology report (states the CC BY 3.0 IGO licence)",
+    "label": "Methodology report (states the CC BY 3.0 IGO license)",
     "url": "https://www.un.org/development/desa/pd/node/4326"
    }
   ],

@@ -11,8 +11,8 @@ The original. Hunter College built the RVI for Foundation for Puerto Rico's Whol
 collaboration with the Puerto Rico Department of Housing with HUD CDBG-DR funds (white paper, December 2021; services published March 2022). Inputs are mostly ACS 2015-2019.
 It is read live from the public ArcGIS REST services of the PlanningCDBG account: All_Indicator (the six area indices and the overall index of each
 barrio, with their ranks) and Master_Data_Table_Update (the barrio input values behind the dashboard). Nothing is recomputed: the index values are
-published as the services give them. The services state no licence (licenseInfo and accessInformation are empty), so the files keep the licence
-class 'unstated' and carry a licence review, cleared on 2026-10-19 (FPR confirmed that its approval covers republishing the original on the observatory;
+published as the services give them. The services state no license (licenseInfo and accessInformation are empty), so the files keep the license
+class 'unstated' and carry a license review, cleared on 2026-10-19 (FPR confirmed that its approval covers republishing the original on the observatory;
 others should ask PRDOH and FPR before re-use; HANDOFF decision 54), and a compliance review that records FPR's approval of 2026-10-19
 (dictionary_src/datasets.json; HANDOFF decision 51); the page keeps an "In review" marker.
 
@@ -55,7 +55,7 @@ AREA_LABEL = {"overall": "Overall", "econ": "Economy", "edu": "Education", "envi
 # All_Indicator: the index of each area and its rank, as the service names them (the names are cut at ten characters)
 FIELD = {"overall": ("OVERALL", "OVERA_RANK"), "econ": ("ECON", "ECON_RANK"), "edu": ("EDU", "EDU_RANK"), "envir": ("ENVIR", "ENVIR_RANK"),
          "health": ("HEALTH", "HEALTH_RAN"), "housing": ("HOUSING", "HOUSING_RA"), "infra": ("INFRA", "INFRA_RANK")}
-# Master_Data_Table_Update: the barrio columns of each indicator's rows (the municipio and Puerto Rico columns are left out: several are mislabelled, see KNOWN_ERRORS)
+# Master_Data_Table_Update: the barrio columns of each indicator's rows (the municipio and Puerto Rico columns are left out: several are mislabeled, see KNOWN_ERRORS)
 MASTER_INDICATOR = {"econ": "ECON", "edu": "EDU", "envir": "ENVIR", "health": "HEALTH", "housing": "Housing", "infra": "INFRA", "overall": "OVERALL"}
 ORIGINAL_INPUTS = [   # (key, area, field in the Master table, label, unit); labels from the dashboard's barrio list, checked against the white paper
     ("o_public_assist_pct", "econ", "Var1", "Population on public assistance (%)", "%"),
@@ -265,7 +265,7 @@ def _query(service, where, fields):
 
 
 def _about(service):
-    """What the service and its ArcGIS Online item say about themselves: the last edit of the data and the licence fields."""
+    """What the service and its ArcGIS Online item say about themselves: the last edit of the data and the license fields."""
     layer = _get(f"{SERVICES}/{service}/FeatureServer/0", {"f": "json"})
     svc = _get(f"{SERVICES}/{service}/FeatureServer", {"f": "json"})
     item_id = svc.get("serviceItemId")
@@ -335,7 +335,7 @@ def original(h, ids):
 
 
 def known_errors(h, orig):
-    """The errors the page discloses, measured on the harvest: the mislabelled comparison columns and the shares above 100%."""
+    """The errors the page discloses, measured on the harvest: the mislabeled comparison columns and the shares above 100%."""
     m = orig["master"]
     lead_muni = [num(r["Var16"]) for r in m["ENVIR"].values() if num(r["Var16"]) is not None]
     lead_bar = [v for v in orig["inputs"]["o_lead_paint_pct"] if v is not None]

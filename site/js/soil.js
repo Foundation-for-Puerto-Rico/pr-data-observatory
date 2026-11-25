@@ -3,7 +3,7 @@
    (soilLoad), so neither page's first load carries them (docs/performance.md); their legends are drawn here for the same reason. */
 // Soil (soils.py, NRCS SSURGO): the soil type (its order, in the categorical hues in fixed order, largest first) and its origin, then four plain questions
 // about each soil map unit, flooding first. Flooding runs magenta to green so each answer reads apart, clear of the FEMA layer's blues and the landslide layer's reds and yellows; the other answers are ordered, so each is one earth-brown
-// ramp, darker for more of what the question asks (better farmland, more limits, steeper). No blue: that is the FEMA flood layer's. A legend row can be unticked to hide it: with nine colours on a map, that and the pop-up name each one
+// ramp, darker for more of what the question asks (better farmland, more limits, steeper). No blue: that is the FEMA flood layer's. A legend row can be unticked to hide it: with nine colors on a map, that and the pop-up name each one
 if (map.createPane) {   // the 2D map (Leaflet); the 3D view keeps the same order in twin3d.js (AREAS)
   map.createPane('soil'); map.getPane('soil').style.zIndex = 356;
   map.createPane('slide'); map.getPane('slide').style.zIndex = 353;   // under the soil layer: with its "does not flood" row unticked, the flooding soils show over the landslide map

@@ -1,9 +1,9 @@
-"""Public spending (Gasto Público): the one record shape every spending source is normalised to, its checks, and the rules for adding records up.
+"""Public spending (Gasto Público): the one record shape every spending source is normalized to, its checks, and the rules for adding records up.
 
-    python spending.py --check cache/spending/records/<source>.csv   # check a normalised file against the schema
+    python spending.py --check cache/spending/records/<source>.csv   # check a normalized file against the schema
     python spending.py --tag                                          # write the spending tags into the public-money series of economy_series.json
 
-Each source keeps its raw download untouched under cache/spending/<source>/ and writes its normalised records to cache/spending/records/<source>.csv
+Each source keeps its raw download untouched under cache/spending/<source>/ and writes its normalized records to cache/spending/records/<source>.csv
 (cache only, never published). Published files are aggregates built from these records. The record fields, their allowed values and the allocation
 tiers are explained in docs/spending.md (HANDOFF decision 73).
 
@@ -156,7 +156,7 @@ def add_up(records, by=("municipio_fips",), tiers=("direct", "island_wide")):
 
 
 def check_file(path):
-    """Problems in a normalised CSV, as (row number, problem)."""
+    """Problems in a normalized CSV, as (row number, problem)."""
     P = []
     with open(path, encoding="utf-8", newline="") as f:
         rd = csv.DictReader(f)

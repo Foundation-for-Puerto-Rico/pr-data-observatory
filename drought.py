@@ -7,7 +7,7 @@
 Source, no key: the US Drought Monitor's data service (usdmdataservices.unl.edu), one request a municipio. Every Tuesday map since January 4, 2000
 gives the share of each municipio's area in each drought class, cumulative: d0 is the share in D0 (abnormally dry) or worse, d1 in D1 (moderate
 drought) or worse, d2 in D2 (severe) or worse, d3 in D3 (extreme) or worse, d4 in D4 (exceptional). The map is drawn by the authors each week from
-rainfall, soil moisture, stream flow, reservoirs and reports; it is an expert judgement, not a measurement.
+rainfall, soil moisture, stream flow, reservoirs and reports; it is an expert judgment, not a measurement.
 Credit as the Drought Monitor asks (droughtmonitor.unl.edu/About/Permission.aspx): "Data courtesy of NDMC, via https://droughtmonitor.unl.edu".
 
 Output: drought_series.json (the shape of nightlights_series.json: yearly values for the 78 municipios and Puerto Rico, which is the last value).
@@ -97,7 +97,7 @@ def documents(rows_by_geo):
     last_date = dates[years[-1]][-1]
     partial = f" {years[-1]} holds the weeks published so far (up to the map of {last_date})."
     ref = f"US Drought Monitor, weekly maps {dates[years[0]][0]} to {last_date}. {CREDIT}"
-    judge = " The Drought Monitor is drawn each week by experts from rainfall, soil moisture, stream flow, reservoir levels and reports; it is a judgement, not a measurement, and its lines follow no municipio."
+    judge = " The Drought Monitor is drawn each week by experts from rainfall, soil moisture, stream flow, reservoir levels and reports; it is a judgment, not a measurement, and its lines follow no municipio."
     vs = [
         {"key": "drought_area_pct", "group": G, "label": "Area in drought, average of the year (%)", "unit": "%", "d": 1, "type": "rate",
          "sources": ["usdm"], "ref": ref, "family": "drought", "counted": False, "noPerHU": True,

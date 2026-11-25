@@ -7,7 +7,7 @@
      - one reservoir in detail: the last 400 days over its usual range, the same month in every year, and its whole monthly history;
      - Puerto Rico over time: how many of AAA's reservoirs were below their usual level for the month, month by month.
    "Usual" is the rule of the map layer (core/facilities.js): below the 10th percentile of the same week's yearly means in 2011-2025 is lower than usual, above
-   the 90th higher. AAA's own alert levels are not shown (no licence stated); the page links to AAA's page. Every visible string goes through T(): its Spanish
+   the 90th higher. AAA's own alert levels are not shown (no license stated); the page links to AAA's page. Every visible string goes through T(): its Spanish
    is in i18n_src/es/reservoirs.json, written by docs/analysis/reservoirs-2026-11/make_page.py. The chosen reservoir is kept in the address (#r=USGS-...). */
 (function (root) {
   'use strict';
@@ -19,7 +19,7 @@
   const API = 'https://api.waterdata.usgs.gov/ogcapi/v1/collections';
   const AAA_PAGE = 'https://www.acueductos.pr.gov/infraestructura/niveles-de-los-embalses';
   const FT = 0.3048, DAY = 864e5;
-  const STATUS = {   // the map layer's three bands; colour never alone: an icon and a word go with it
+  const STATUS = {   // the map layer's three bands; color never alone: an icon and a word go with it
     low: { icon: 'arrow_downward', label: 'Lower than usual', cls: 'rv-low' },
     usual: { icon: 'check', label: 'Usual for this time of year', cls: 'rv-usual' },
     high: { icon: 'arrow_upward', label: 'Higher than usual', cls: 'rv-high' },

@@ -110,7 +110,7 @@ r["levels"]["tract"]["72001956400"]["B25077_001"]       # [estimate, margin of e
 3. **Margins are wide.** The typical margin as a share of the estimate (median gross rent): 9% for a municipio, 23% for a barrio, 24.5% for a tract, 32% for a block group. Median household income: 9%, 30%, 25%, 40%. For the share of renter households paying 30% or more of income the typical margin is about plus or minus 18 points for a municipio, 36 for a tract and 55 for a block group. These come from `docs/analysis/small-area-2026-10/small_area_reliability.py`; re-run it after a new vintage. The same measure for every variable the observatory publishes, taken from the published files, is in `docs/small-area.md` (section 4; `python small_area.py --measure`).
 4. **Medians and rates cannot be summed** or averaged. Counts add up; percentages are worked out again from numerator and denominator.
 5. Adjacent five-year windows share four of their five years: they are not independent, so a change from one window to the next is not a trend to read closely.
-6. Estimates are for a five-year window (labelled by its last year) and dollar values are in the dollars of that year. They are not the 2020 Census counts of the crosswalk.
+6. Estimates are for a five-year window (labeled by its last year) and dollar values are in the dollars of that year. They are not the 2020 Census counts of the crosswalk.
 
 ## 6. Outlines for drawing (`tracts.geojson`, `blockgroups.geojson`)
 

@@ -32,7 +32,7 @@ AS_OF = date(2026, 10, 6)
 
 
 def at(north_m=0.0, east_m=0.0):
-    """(lat, lng) a given number of metres north and east of the origin, on the scale the observatory uses (111,320 m per degree of latitude)."""
+    """(lat, lng) a given number of meters north and east of the origin, on the scale the observatory uses (111,320 m per degree of latitude)."""
     lat = LAT + north_m / 111_320
     lng = LNG + east_m / (111_320 * math.cos(math.radians(LAT + north_m / 222_640)))
     return round(lat, 7), round(lng, 7)

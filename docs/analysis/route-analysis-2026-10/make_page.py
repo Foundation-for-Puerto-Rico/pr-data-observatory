@@ -155,7 +155,7 @@ def main():
     title = t("Knowledge Area · Public transit route profile: crossings at high-volume intersections", "Área de conocimiento · Perfil de rutas de transporte colectivo: cruces por intersecciones de alto volumen vehicular")
     desc = ("An exploratory, comparative analysis of the bus routes of the ATI and of the municipal systems of the San Juan metro area and "
             "eastern Puerto Rico: service, route, peak-hour intersections, connections and nearby residents.")
-    icons = "account_balance,bolt,chat_bubble,close,commute,compare_arrows,delete,directions_bus,diversity_3,home_work,hourglass_bottom,info,lightbulb,map,menu_book,payments,price_change,rocket_launch,route,school,send,thermostat,view_in_ar,warning,water,wifi,woman,work"
+    icons = "account_balance,account_tree,bolt,chat_bubble,close,commute,compare_arrows,dark_mode,delete,directions_bus,diversity_3,explore,grid_view,home_work,hourglass_bottom,info,light_mode,lightbulb,map,menu_book,payments,price_change,rocket_launch,route,school,send,thermostat,view_in_ar,warning,water,wifi,woman,work"
     page = f"""<!doctype html>
 <html lang="en">
 <head>
@@ -169,11 +169,12 @@ def main():
 <link rel="icon" href="img/fpr-mark.png">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0&icon_names={icons}&display=block">
-<link rel="stylesheet" href="css/twin.css?v=62">
-<link rel="stylesheet" href="css/housing.css?v=21">
-<link rel="stylesheet" href="css/route_analysis.css?v=5">
-<link rel="stylesheet" href="css/chat.css?v=4">
-<script src="js/i18n.js?v=69" data-page="routes"></script>
+<link rel="stylesheet" href="css/twin.css?v=63">
+<link rel="stylesheet" href="css/housing.css?v=22">
+<link rel="stylesheet" href="css/route_analysis.css?v=6">
+<link rel="stylesheet" href="css/chat.css?v=5">
+<link rel="stylesheet" href="css/ws.css?v=2">
+<script src="js/i18n.js?v=70" data-page="routes"></script>
 </head>
 <body class="research">
 <a class="skip" href="#about">Skip to the content</a>
@@ -182,11 +183,14 @@ def main():
   <div class="brand"><b>{t("Knowledge Area · Transit congestion", "Área de conocimiento · Congestión en las rutas")}</b><span>{t("Bus routes of the metro area and the east, one by one", "Rutas de autobús del área metro y del este, una por una")}</span></div>
   <div class="spacer"></div>
   <nav class="views" aria-label="Views">
-    <a class="btn" href="index.html"><span class="ms-icon" aria-hidden="true">map</span><span class="lbl">Map</span></a>
-    <a class="btn" href="3d.html" title="Immersive 3D + time view"><span class="ms-icon" aria-hidden="true">view_in_ar</span><span class="lbl">3D + Time</span></a>
+    <a class="btn" href="index.html" title="Map: every layer and tool, in 2D or 3D"><span class="ms-icon" aria-hidden="true">map</span><span class="lbl">Map</span></a>
+    <a class="btn" href="explore.html" title="Map Gallery: ready-made maps, topics and your saved maps"><span class="ms-icon" aria-hidden="true">explore</span><span class="lbl">Map Gallery</span></a>
+    <a class="btn" href="data.html" title="Data: every dataset, map layer and set of places"><span class="ms-icon" aria-hidden="true">grid_view</span><span class="lbl">Data</span></a>
+    <a class="btn" href="workflows.html" title="Workflows: steps that turn data into a result on the map"><span class="ms-icon" aria-hidden="true">account_tree</span><span class="lbl">Workflows</span></a>
     <a class="btn" href="knowledge.html" aria-current="page" title="Knowledge: FPR studies, analyses and tools"><span class="ms-icon" aria-hidden="true">lightbulb</span><span class="lbl">Knowledge</span></a>
-    <a class="btn" href="dictionary.html" title="Data dictionary: meanings, sources, licenses, how to cite"><span class="ms-icon" aria-hidden="true">menu_book</span><span class="lbl">Data dictionary</span></a>
+    <a class="btn" href="dictionary.html" title="Data Dictionary: meanings, sources, licenses, how to cite"><span class="ms-icon" aria-hidden="true">menu_book</span><span class="lbl">Data Dictionary</span></a>
     <a class="btn" href="learn.html" title="Learn: short lessons about maps and spatial analysis"><span class="ms-icon" aria-hidden="true">school</span><span class="lbl">Learn</span></a>
+    <a class="btn" href="about.html" title="About: this initiative, how to use the Observatory, terms"><span class="ms-icon" aria-hidden="true">info</span><span class="lbl">About</span></a>
   </nav>
 </header>
 
@@ -203,7 +207,7 @@ def main():
     <h1>{t("Public transit route profile: crossings at high-volume intersections", "Perfil de rutas de transporte colectivo: cruces por intersecciones de alto volumen vehicular")}</h1>
     <p class="lede">{t(
         "This exploratory, comparative analysis examines, one by one, the bus routes that run in the San Juan metropolitan area and in the municipios of eastern Puerto Rico. "
-        "Using the official weekday timetables (GTFS), each route is analysed on five dimensions: the level of service, the route, the intersections with heavy traffic on its path at peak hours, "
+        "Using the official weekday timetables (GTFS), each route is analyzed on five dimensions: the level of service, the route, the intersections with heavy traffic on its path at peak hours, "
         "the integration with other services and the population near its stops. The analysis focuses on crossings at high-volume intersections; the other four dimensions help compare the routes.",
         "Este análisis exploratorio y comparativo examina, una por una, las rutas de autobús que operan en el área metropolitana de San Juan y en los municipios del este de Puerto Rico. "
         "A partir de los horarios oficiales de un día de semana (GTFS), cada ruta se analiza en cinco dimensiones: el nivel de servicio, el recorrido, las intersecciones con mucho tránsito en su camino en horas pico, "

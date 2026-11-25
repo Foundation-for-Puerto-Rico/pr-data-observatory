@@ -884,7 +884,7 @@
    "acs5"
   ],
   "source_detail": "US Census Bureau, American Community Survey 5-year estimates, table B08303 (Travel Time to Work), cells 001 and 011-013; windows from 2006-2010 to the latest published (2020-2024 in the 2026-10 snapshot).",
-  "how_to_read": "A value of 19 means that 19 of every 100 workers who travel to work spend 45 minutes or more getting there. In the 2026-10 snapshot, it fell island-wide from 21.8% in 2006-2010 to 18.7% in 2020-2024. The Analysis tab's view 'Job centres and commuting' shades it next to jobs per employed resident. The number after the plus-minus sign (±) is the margin of error: with 90% confidence, the true value lies within that distance of the estimate. The Analysis tab prints it in percentage points, for example ±0.4 pts. The percentage is not printed in the Census Bureau's table; the observatory calculates it from the cells named in the definition. To cite it: 'Share calculated by Foundation for Puerto Rico, PR Data Observatory, from US Census Bureau, American Community Survey 5-year estimates 2020-2024, table B08303 (Travel Time to Work), cells 11 to 13 divided by cell 1, Ponce Municipio, Puerto Rico.' To cite the Census Bureau's own numbers, cite the table cells, not the percentage.",
+  "how_to_read": "A value of 19 means that 19 of every 100 workers who travel to work spend 45 minutes or more getting there. In the 2026-10 snapshot, it fell island-wide from 21.8% in 2006-2010 to 18.7% in 2020-2024. The Analysis tab's view 'Job centers and commuting' shades it next to jobs per employed resident. The number after the plus-minus sign (±) is the margin of error: with 90% confidence, the true value lies within that distance of the estimate. The Analysis tab prints it in percentage points, for example ±0.4 pts. The percentage is not printed in the Census Bureau's table; the observatory calculates it from the cells named in the definition. To cite it: 'Share calculated by Foundation for Puerto Rico, PR Data Observatory, from US Census Bureau, American Community Survey 5-year estimates 2020-2024, table B08303 (Travel Time to Work), cells 11 to 13 divided by cell 1, Ponce Municipio, Puerto Rico.' To cite the Census Bureau's own numbers, cite the table cells, not the percentage.",
   "caveats": [
    "The base differs from the means-of-transportation shares: it leaves out people who worked from home. The two kinds of shares are not directly comparable.",
    "The base is the Census table's workers 16 and over who did not work from home (in the 2026-10 snapshot, 1,050,989 for Puerto Rico in 2020-2024): the means-of-transportation total minus those who worked from home. It is not the same count as the civilian employed residents in the class-of-worker table (1,150,831 in the same window). Do not multiply this share by 'Employed residents 16+ (ACS)'.",
@@ -892,7 +892,7 @@
    "Small municipalities are less precise. In the 2026-10 snapshot, the margin of error for 2020-2024 runs from ±0.8 to ±8.7 points across the 78 municipalities, and 19 of the 78 are larger than 30% of the estimate (18 with an estimate above zero, plus Vieques, which shows 0.0% (± 1.8 points), a sample result).",
    "The Puerto Rico share is calculated from the Census Bureau's island-wide counts, not averaged from the 78 municipal shares. In the 2026-10 snapshot, the middle (median) municipality has 18.3% for 2020-2024 and the island value is 18.7%.",
    "Neighboring windows share four of their five years of survey responses, so the change from one window to the next mostly reflects one year of new responses. To judge real change, compare windows that do not overlap, for example 2012, 2017 and 2022. In some municipalities one new year can move the value a lot. In the 2026-10 snapshot, Manatí goes from 31.65% (2007-2011) to 23.58% (2008-2012). Do not read a trend from one small municipality.",
-   "Different periods side by side. With Year set to Latest, each layer in the view 'Job centres and commuting' uses its own latest period. In the 2026-10 snapshot, the jobs symbols show the 2025 annual average from the Quarterly Census of Employment and Wages (QCEW), while the commute-time and jobs-per-employed-resident layers show the 2020-2024 survey window. Check the year chip in the legend."
+   "Different periods side by side. With Year set to Latest, each layer in the view 'Job centers and commuting' uses its own latest period. In the 2026-10 snapshot, the jobs symbols show the 2025 annual average from the Quarterly Census of Employment and Wages (QCEW), while the commute-time and jobs-per-employed-resident layers show the 2020-2024 survey window. Check the year chip in the legend."
   ],
   "see_also": [
    "economy.commute_drive_alone_pct",
@@ -914,7 +914,7 @@
      "href": "index.html#e=commute_45plus_pct.f.value.blue.q.1.1.0.85.0"
     },
     {
-     "label": "Map, Analysis tab, view 'Job centres and commuting' (jobs per employed resident, 45-minute commutes, jobs)",
+     "label": "Map, Analysis tab, view 'Job centers and commuting' (jobs per employed resident, 45-minute commutes, jobs)",
      "href": "index.html#e=jobs_per_employed_resident.f.value.blue.q.1.1.0.85.0,commute_45plus_pct.f.value.green.q.1.1.0.85.0,qcew_jobs.s.value.blue.q.1.1.0.75.0"
     }
    ]

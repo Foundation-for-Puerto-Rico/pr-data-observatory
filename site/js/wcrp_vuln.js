@@ -1,7 +1,7 @@
 /* PR Data Observatory · Knowledge Area · WCRP (wcrp.html), section 2: the vulnerability map. Loaded by wcrp.js (loadVuln) when the section comes near, when one
    of the explanations it fills opens, or at once for an address that names a view of it, with its Spanish (es.wcrp.vuln.js) and the barrio outlines
    (barrios.geojson). The Risk and Vulnerability Indicators by barrio, the original as published (2022) and the observatory's updated version ("Updated 2020–2024"; 'rebuild' in ids and data keys) with the same method on the
-   survey and the local conditions (wcrp_rvi.py, conditions.py), on one map with one legend ("What the levels mean": the five levels in the map's colours, what
+   survey and the local conditions (wcrp_rvi.py, conditions.py), on one map with one legend ("What the levels mean": the five levels in the map's colors, what
    they mean, the inputs of the area shown and what the version is). Change (the rebuild's level minus the original's) is not in the version selector: it
    opens from "More about the comparison" (showChange) or an old link (#v=change), with a way back. The input values behind a barrio (wcrp_rvi_inputs.json) load
    with the first pop-up, with the observatory's landslide susceptibility by barrio (landslide_barrio.json, landslide.py), shown beside the index with the age
@@ -11,7 +11,7 @@ const Vuln = (() => {
   const RANK_NAME = [TK('Low'), TK('Medium-low'), TK('Medium'), TK('Medium-high'), TK('High')];
   const RANK_NOTE = [TK('among the 20% least vulnerable barrios'), null, null, null, TK('among the 20% most vulnerable barrios')];   // a level holds a fifth of the barrios ranked
   const CHANGE_NAME = [TK('2 or more levels lower'), TK('1 level lower'), TK('Same level'), TK('1 level higher'), TK('2 or more levels higher')];
-  const SUB_NAME = { quality: TK('neighbourhood quality'), problems: TK('housing problems'), telecom: TK('telecommunications'), transport: TK('transportation') };
+  const SUB_NAME = { quality: TK('neighborhood quality'), problems: TK('housing problems'), telecom: TK('telecommunications'), transport: TK('transportation') };
   // Each input in plain words, for the legend's line about the area shown ("Looks at: ..."); both versions' keys (tests/test_wcrp_rvi.py checks that every input has one).
   const PLAIN = {
     o_public_assist_pct: TK('public assistance'), public_assist_hh_pct: TK('public assistance'),
@@ -82,7 +82,7 @@ const Vuln = (() => {
     writeHash();
   }
 
-  // ── The legend: what the levels mean, in the map's colours; the inputs of the area shown; what the version is ──
+  // ── The legend: what the levels mean, in the map's colors; the inputs of the area shown; what the version is ──
   const inputsOf = (ver, area) => W.doc.method[ver === 'orig' ? 'orig' : 'rebuild'].filter(x => x.area === area && !NOT_INPUT.has(x.key));
   const plain = (x) => T(PLAIN[x.key] || x.label);
   function areaLine() {
@@ -260,7 +260,7 @@ const Vuln = (() => {
   function renderErrors() {
     const E = W.doc.checks.known_errors, pr = E.econ_pr_columns;
     $('#errorsList').innerHTML = [
-      Th('<b>Mislabelled comparison columns.</b> The dashboard compares each barrio with its municipio and with Puerto Rico. In the economy panel the municipio column shows unemployment under the label "public assistance", public assistance under "poverty" and poverty under "unemployed", and the Puerto Rico column shows {pa}% (public assistance) as poverty, which is {pov}%. The housing panel\'s municipio column is shifted too. The barrio values are labelled correctly. This page shows only barrio values.', { pa: fmt(pr.public_assistance, 1), pov: fmt(pr.poverty, 1) }),
+      Th('<b>Mislabeled comparison columns.</b> The dashboard compares each barrio with its municipio and with Puerto Rico. In the economy panel the municipio column shows unemployment under the label "public assistance", public assistance under "poverty" and poverty under "unemployed", and the Puerto Rico column shows {pa}% (public assistance) as poverty, which is {pov}%. The housing panel\'s municipio column is shifted too. The barrio values are labeled correctly. This page shows only barrio values.', { pa: fmt(pr.public_assistance, 1), pov: fmt(pr.poverty, 1) }),
       Th('<b>Lead-paint shares above 100%.</b> The municipio values of the lead-paint indicator (homes built before 1960) run from {lo}% to {hi}%; {n} municipio values are above 100%, which is impossible for a share. The barrio values used in the index are all at or below 100%.', { lo: fmt(E.lead_paint_municipio_range[0], 1), hi: fmt(E.lead_paint_municipio_range[1], 1), n: fmt(E.lead_paint_municipio_over_100) }),
       Th('<b>Homes built before 1990.</b> The share reaches {max}% in {n} barrios of the original.', { max: fmt(E.built_pre1990_barrio_max, 1), n: fmt(E.built_pre1990_barrio_over_100) }),
       Th('<b>No license.</b> The ArcGIS services that publish the original state no license or access terms (their license and access fields are empty). The observatory shows the values as published and credits Hunter College and FPR. FPR publishes them with the program\'s approval. That is not an open license: to re-use them, ask the Puerto Rico Department of Housing and FPR.'),

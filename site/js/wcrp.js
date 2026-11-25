@@ -21,7 +21,7 @@ const verName = (ver) => ver === 'orig' ? T('Original 2022') : T('Updated {windo
 /** The slider: Original 2022, then each survey window the rebuild has (the last is the updated version); the change view keeps the last stop. */
 function syncVer() { const s = $('#wmVer'), k = W.steps.indexOf(W.ver), v = W.ver === 'change' ? 'rebuild' : W.ver; s.value = k < 0 ? W.steps.length - 1 : k; $('#wmVerOut').textContent = verName(v); s.setAttribute('aria-valuetext', verName(v)); }
 const muniOf = (geoid) => W.code.get(String(geoid).slice(0, 5)) || '';   // a barrio's GEOID starts with its municipio's
-const inkOn = (r) => r >= 4 ? '#fff' : '#2A2E2E';   // the text on a level's colour
+const inkOn = (r) => r >= 4 ? '#fff' : '#2A2E2E';   // the text on a level's color
 
 /** Every pop-up of a map stays narrower than the map (Leaflet's maxWidth is in pixels: 340 is wider than a phone's map), so its right column is never cut off. */
 function capPopups(map, room = 64) {
@@ -64,7 +64,7 @@ const script = (src) => new Promise((ok, fail) => { const s = document.createEle
 // off the first load; with no WebGL or no answer from the provider, a map goes on over a plain background with a notice in its credits line (docs/basemap.md) ──
 let readyNow = null; const readyP = new Promise(r => { readyNow = r; });
 let basemapJs = null;
-W.basemap = (map) => readyP.then(() => basemapJs || (basemapJs = window.Core.basemap ? Promise.resolve() : script('js/core/basemap.js?v=7').catch(e => { basemapJs = null; throw e; })))
+W.basemap = (map) => readyP.then(() => basemapJs || (basemapJs = window.Core.basemap ? Promise.resolve() : script('js/core/basemap.js?v=8').catch(e => { basemapJs = null; throw e; })))
   .then(() => Core.basemap.leaflet(map), () => { map.getContainer().dataset.basemap = 'off'; });
 let vulnP = null, vulnJs = null;
 function loadVuln() {
@@ -113,7 +113,7 @@ function renderAbout() {
 
 // ── Page ─────────────────────────────────────────────────────────────────────
 const obs = new IntersectionObserver(entries => entries.forEach(en => { if (en.isIntersecting) document.querySelectorAll('.toc a[href^="#"]').forEach(a => { const on = a.getAttribute('href') === '#' + en.target.id; a.classList.toggle('active', on); if (on) a.setAttribute('aria-current', 'location'); else a.removeAttribute('aria-current'); }); }), { rootMargin: '-45% 0px -50% 0px' });
-document.querySelectorAll('#wmLevels .rk[data-r]').forEach(e => { const r = +e.dataset.r; e.style.background = r ? RAMP[r - 1] : NOVAL; e.style.color = inkOn(r); });   // the legend in the map's own colours, before the map loads
+document.querySelectorAll('#wmLevels .rk[data-r]').forEach(e => { const r = +e.dataset.r; e.style.background = r ? RAMP[r - 1] : NOVAL; e.style.color = inkOn(r); });   // the legend in the map's own colors, before the map loads
 W.coreP = (async () => {
   Social.start();   // its map and its files, at once
   const [meta, doc, comm, sd] = await Promise.all(['meta.json', 'wcrp_rvi_barrio.json', 'wcrp.geojson', 'wcrp_social.json'].map(f => fetchJson('data/' + f)));

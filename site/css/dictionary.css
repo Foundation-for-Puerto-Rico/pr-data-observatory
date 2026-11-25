@@ -27,7 +27,7 @@ html { scroll-padding-top: calc(var(--topbar-height) + 12px); }
 .d-search { position: relative; margin: 6px 0 10px; }
 .d-search > .ms-icon { position: absolute; left: 14px; top: 12px; color: var(--color-text-muted); font-size: 20px; }
 .d-search input { width: 100%; height: 46px; border: 1px solid var(--color-border); border-radius: 23px; padding: 0 44px 0 44px; font: inherit; font-size: 15px; background: var(--color-bg); }
-.d-search input:focus { outline: 2px solid var(--color-primary-dark); outline-offset: 1px; background: #fff; }
+.d-search input:focus { outline: 2px solid var(--color-primary-dark); outline-offset: 1px; background: var(--color-surface); }
 .d-search .icon-btn { position: absolute; right: 7px; top: 7px; border-color: transparent; }
 .d-search .icon-btn[hidden] { display: none; }
 
@@ -43,7 +43,7 @@ html { scroll-padding-top: calc(var(--topbar-height) + 12px); }
 .filters label { display: flex; flex-direction: column; gap: 3px; font-size: 11.5px; color: var(--color-text-muted); }
 .filters label.chk { flex-direction: row; align-items: center; gap: 6px; color: var(--color-text); font-size: 12.5px; padding-bottom: 6px; }
 .filters label.grow { flex: 1; min-width: 200px; }
-.filters select, .filters input[type=search] { height: 34px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font: inherit; font-size: 13px; padding: 0 8px; background: #fff; max-width: 260px; }
+.filters select, .filters input[type=search] { height: 34px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font: inherit; font-size: 13px; padding: 0 8px; background: var(--color-surface); max-width: 260px; }
 .filters label.grow input { max-width: none; width: 100%; }
 .count { font-size: 12.5px; color: var(--color-text-muted); margin: 8px 0; }
 .empty { padding: 24px; background: var(--color-surface); border-radius: var(--radius-md); color: var(--color-text-muted); }
@@ -87,12 +87,12 @@ span.chip { padding: 2px 9px; font-size: 11.5px; font-weight: 500; white-space: 
 .seg { display: inline-flex; border: 0; padding: 0; margin: 0 0 8px; gap: 0; }
 .seg label { cursor: pointer; }
 .seg input { position: absolute; opacity: 0; }
-.seg span { display: inline-block; padding: 5px 12px; font-size: 12px; border: 1px solid var(--color-border); background: #fff; margin-left: -1px; }
+.seg span { display: inline-block; padding: 5px 12px; font-size: 12px; border: 1px solid var(--color-border); background: var(--color-surface); margin-left: -1px; }
 .seg label:first-child span { border-radius: 14px 0 0 14px; margin-left: 0; }
 .seg label:last-child span { border-radius: 0 14px 14px 0; }
 .seg input:checked + span { background: var(--color-primary-strong); color: #fff; border-color: var(--color-primary-strong); }
 .seg input:focus-visible + span { outline: 3px solid var(--color-primary-dark); outline-offset: 2px; }
-.cite-pre { white-space: pre-wrap; word-break: break-word; margin: 0 0 4px; padding: 10px 12px; background: #fff; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font: 12.5px/1.5 ui-monospace, Consolas, monospace; max-height: 260px; overflow: auto; }
+.cite-pre { white-space: pre-wrap; word-break: break-word; margin: 0 0 4px; padding: 10px 12px; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-sm); font: 12.5px/1.5 ui-monospace, Consolas, monospace; max-height: 260px; overflow: auto; }
 .cite-box { margin-bottom: 12px; padding: 14px; background: var(--color-surface); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); }
 .flat-row { margin-bottom: 4px; }
 .flat-dom { font-size: 11px; color: var(--color-text-muted); margin: 8px 0 2px 4px; }
@@ -144,6 +144,6 @@ table.codes { box-shadow: none; border: 1px solid var(--color-border-light); }
 @media print {
   .topbar, .dict-side, .filters, .b-tools, .d-search, .de-actions, .skip { display: none !important; }
   .dict { display: block; padding-top: 0; }
-  details.de { box-shadow: none; border: 1px solid #ccc; break-inside: avoid; }
+  details.de { box-shadow: none; border: 1px solid var(--ws-n-line); break-inside: avoid; }
   .d-block, .src-card { break-inside: avoid; }
 }

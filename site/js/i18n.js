@@ -218,10 +218,28 @@
       }
       const snap = bar.querySelector('.snapshot');
       snap ? bar.insertBefore(wrap, snap) : bar.appendChild(wrap);
+      // the light / dark switch (css/ws.css, docs/workspace.md): beside the language switch, on every page
+      const tb = doc.createElement('button'), label = () => {
+        const dark = theme() === 'dark', txt = state.lang === 'es' ? (dark ? 'Cambiar al fondo claro' : 'Cambiar al fondo oscuro') : (dark ? 'Switch to the light background' : 'Switch to the dark background');
+        tb.title = txt; tb.setAttribute('aria-label', txt); tb.innerHTML = '<span class="ms-icon" aria-hidden="true">' + (dark ? 'light_mode' : 'dark_mode') + '</span>';
+      };
+      tb.type = 'button'; tb.className = 'icon-btn theme-btn'; tb.id = 'themeBtn'; tb.setAttribute('translate', 'no'); label();
+      tb.onclick = () => { setTheme(theme() === 'dark' ? 'light' : 'dark'); label(); };
+      bar.insertBefore(tb, wrap);
+    }
+    // ── Light or dark ───────────────────────────────────────────────────────────
+    // The choice is kept in this browser (twin.theme); without one the pages open dark. html[data-theme] is set before the first paint, and a page that draws
+    // with colors of its own (a base map, a canvas) listens for the "themechange" event on the document.
+    function theme() { try { return env.storage && env.storage.getItem('twin.theme') === 'light' ? 'light' : 'dark'; } catch (e) { return 'dark'; } }
+    function setTheme(t) {
+      try { if (env.storage) env.storage.setItem('twin.theme', t); } catch (e) { /* private window: the choice lasts for this page */ }
+      if (doc && doc.documentElement && doc.documentElement.dataset) doc.documentElement.dataset.theme = t;
+      if (doc && doc.dispatchEvent && typeof Event === 'function') doc.dispatchEvent(new Event('themechange'));
     }
     function init() {
       if (!doc) return;
       doc.documentElement.lang = state.lang;
+      if (doc.documentElement.dataset) doc.documentElement.dataset.theme = theme();
       // keep the choice in the address, so a shared link opens in the same language
       if (state.source === 'url') storageSet(env.session, state.lang);   // so the other pages open in the same language
       else if (env.replace) env.replace(href(state.lang));
@@ -229,7 +247,7 @@
 
     return {
       get lang() { return state.lang; }, get locale() { return locale(); }, get source() { return state.source; },
-      supported: SUPPORTED, t, tn, th, raw, en, add, load, apply, audit, keep, fmt, date, list, name, text, mount, set, init, href, has: (key) => state.lang === 'en' || state.dict[key] !== undefined,
+      supported: SUPPORTED, t, tn, th, raw, en, add, load, apply, audit, keep, fmt, date, list, name, text, mount, set, init, href, theme, setTheme, has: (key) => state.lang === 'en' || state.dict[key] !== undefined,
       get missed() { return Array.from(state.missed); }, get pending() { return Array.from(state.pending); }, size: () => Object.keys(state.dict).length,
     };
   }

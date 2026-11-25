@@ -24,8 +24,8 @@
   "group": "Infrastructure · Climb on the walk to a stop (USGS 3DEP)",
   "kind": "variable",
   "plain": "How much the walk to the nearest bus or train stop with a current timetable typically climbs, going and coming back, for the people who live within a 400 m walk of one.",
-  "definition": "The median, weighted by residents, of the round-trip climb (the sum of the rises and falls) of the walk along mapped roads from each block within a 400 m walk of a current stop to its nearest one. In metres.",
-  "unit": "metres (round trip)",
+  "definition": "The median, weighted by residents, of the round-trip climb (the sum of the rises and falls) of the walk along mapped roads from each block within a 400 m walk of a current stop to its nearest one. In meters.",
+  "unit": "meters (round trip)",
   "value_type": "ratio",
   "geography": "78 municipalities and Puerto Rico; also 901 barrios (values only where residents live within a 400 m walk of a current stop)",
   "coverage": {

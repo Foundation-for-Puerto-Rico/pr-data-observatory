@@ -9,7 +9,7 @@ The project lead approved these datasets on 2026-10-17 (HANDOFF decision 41). Th
 
 ## The datasets
 
-| Key | What | Source | Licence | Vintage | Puerto Rico |
+| Key | What | Source | License | Vintage | Puerto Rico |
 |---|---|---|---|---|---|
 | `epa_tri` | Toxics Release Inventory facilities | EPA TRI Basic Data File, Puerto Rico (Envirofacts download) | EPA Standard Open Data License (public domain) | reporting year 2024 | 104 |
 | `epa_rmp` | Risk Management Plan facilities, active | EPA Facility Registry Service, layer 8 | same | read 2026-10-17 | 33 |
@@ -21,7 +21,7 @@ The project lead approved these datasets on 2026-10-17 (HANDOFF decision 41). Th
 | `street_intersections`, `street_intersection_density` | Street intersections, and per square mile of land | Census TIGER/Line EDGES | US Government work | TIGER/Line 2026 | 116,462; 34.0 |
 | `hosp_drive_min`, `hosp_road_km` | Drive time and road distance to the nearest general hospital (estimate) | CMS Hospital General Information; OpenStreetMap and HHS hospital points; `roads.bin` (OpenStreetMap) | public domain; ODbL for OpenStreetMap | CMS read 2026-10-17 | 10.9 min; 8.4 km |
 
-The licence of each source is recorded in `dictionary_src/sources.json`. EPA's data catalog (`edg.epa.gov/data.json`) lists every dataset used here under the EPA Standard Open Data License: EPA data are public domain unless otherwise specified. The files' class is `open-with-conditions` because the drive time uses OpenStreetMap (ODbL).
+The license of each source is recorded in `dictionary_src/sources.json`. EPA's data catalog (`edg.epa.gov/data.json`) lists every dataset used here under the EPA Standard Open Data License: EPA data are public domain unless otherwise specified. The files' class is `open-with-conditions` because the drive time uses OpenStreetMap (ODbL).
 
 ## How each figure is made
 
@@ -29,7 +29,7 @@ The licence of each source is recorded in `dictionary_src/sources.json`. EPA's d
   - TRI: the facilities with a report for the newest year EPA publishes (the build tries this year and the three before). A count of facilities, not of releases.
   - RMP: FRS lists 157 RMP interests in Puerto Rico; only the 33 marked active are counted.
   - NPL: the 18 sites currently on the final list; the 8 deleted ones are not counted.
-- **Impaired waters and non-attainment.** The share of the barrio's area (as drawn) inside the union of the areas, on an equal-area plane centred on Puerto Rico. A barrio "touches" one when its share is above 0. A municipio's and Puerto Rico's shares come from the areas of their barrios.
+- **Impaired waters and non-attainment.** The share of the barrio's area (as drawn) inside the union of the areas, on an equal-area plane centered on Puerto Rico. A barrio "touches" one when its share is above 0. A municipio's and Puerto Rico's shares come from the areas of their barrios.
   - Puerto Rico maps its river and stream assessment units as the land that drains to each assessed reach. So a listed unit covers a watershed, and 782 of 901 barrios touch one. The original WCRP index (2022) flagged 448 barrios; it does not say which representation of the waters it used.
   - Only units on the 303(d) list (category 5, `on303dlist = Y`, 179 of 336) count. Impaired units that already have a cleanup plan (category 4A, 128) do not.
   - Non-attainment: San Juan and Guayama-Salinas for sulfur dioxide (2018), Arecibo for lead (2011). Areas now in maintenance would not count.
@@ -46,7 +46,7 @@ The licence of each source is recorded in `dictionary_src/sources.json`. EPA's d
   - Hospitals: CMS's acute care (and critical access) hospitals with emergency services, 52 on 2026-10-17. VA, Department of Defense, psychiatric and children's hospitals are left out.
   - Each hospital is placed, in this order:
     1. at the OpenStreetMap hospital of its municipio whose name shares at least 60% of its words (29, from `gazetteer.json`);
-    2. at the OpenStreetMap hospital within 1 km of HHS's geocoded address whose name says hospital or medical centre and shares a word with CMS's, when no other one there shares as many (8; `conditions.near_hhs`). Two independent signs must agree: the name and HHS's address. A word is compared without a final o, a or s, so "Metropolitan" meets "Metropolitano". Added on 2026-10-17 (branch `conditions-followups`): it places Ashford Presbyterian, Hospital del Maestro, San Lucas in Ponce, Menonita Guayama, Metropolitano, Manatí Medical Center, Professional in Guaynabo and Doctors' Center in Dorado at their buildings. The 2026-10-17 trap of rule 1 (Bayamón Medical Center against Doctors' Center Hospital Bayamón, 1.8 km away) stays out;
+    2. at the OpenStreetMap hospital within 1 km of HHS's geocoded address whose name says hospital or medical center and shares a word with CMS's, when no other one there shares as many (8; `conditions.near_hhs`). Two independent signs must agree: the name and HHS's address. A word is compared without a final o, a or s, so "Metropolitan" meets "Metropolitano". Added on 2026-10-17 (branch `conditions-followups`): it places Ashford Presbyterian, Hospital del Maestro, San Lucas in Ponce, Menonita Guayama, Metropolitano, Manatí Medical Center, Professional in Guaynabo and Doctors' Center in Dorado at their buildings. The 2026-10-17 trap of rule 1 (Bayamón Medical Center against Doctors' Center Hospital Bayamón, 1.8 km away) stays out;
     3. at HHS's geocoded address (15; HHS stopped updating the dataset in 2024);
     4. or by hand (`conditions.HAND_POINTS`, empty).
 
@@ -98,7 +98,7 @@ Every download goes through `conditions.get`, which waits and asks again on HTTP
 
 ## Not built
 
-- **Open dumps and other solid waste facilities** (transfer stations, recycling, composting). EPA lists municipal solid waste landfills only. The only machine-readable list found, DRNA's "Vertederos Activos 2014" on ArcGIS Online, states no licence. `wanted.json`: `open-dumps`, blocked, with the question for DRNA.
+- **Open dumps and other solid waste facilities** (transfer stations, recycling, composting). EPA lists municipal solid waste landfills only. The only machine-readable list found, DRNA's "Vertederos Activos 2014" on ArcGIS Online, states no license. `wanted.json`: `open-dumps`, blocked, with the question for DRNA.
 - **The newest CHAS window** (2018-2022, on HUD User, also for county subdivisions, which would avoid the tract-to-barrio estimate). HUD User refuses scripted downloads behind a bot check, and the observatory does not get around it. `wanted.json`: `chas-latest`, blocked, with the question for HUD.
 
 ## Weight

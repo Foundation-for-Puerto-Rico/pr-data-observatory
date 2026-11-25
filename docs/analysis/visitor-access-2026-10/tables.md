@@ -133,7 +133,7 @@
 | Ratio: 90th percentile | 2.36 |
 | Ratio: 95th percentile | 2.93 |
 | Detour factor to the same (straight-line nearest) stop: median / 90th | 1.45 / 2.69 |
-| Extra metres (network minus straight line): median / 90th percentile | 52.4 / 204.4 |
+| Extra meters (network minus straight line): median / 90th percentile | 52.4 / 204.4 |
 | Share of places with ratio above 1.5 / above 2 | 42.5% / 17.7% |
 | Places within 400 m straight line | 870 |
 | of which beyond 400 m on the network (road within 150 m) | 122 (14.3%) |

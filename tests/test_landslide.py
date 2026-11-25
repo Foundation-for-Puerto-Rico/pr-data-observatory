@@ -2,7 +2,7 @@
 
   python -m unittest tests.test_landslide
 
-The PNG reader is checked on tiles made here with every row filter, the colour rule on the legend's colours and on one that is not in it, the pixel areas on the sphere. The published
+The PNG reader is checked on tiles made here with every row filter, the color rule on the legend's colors and on one that is not in it, the pixel areas on the sphere. The published
 files are checked without the cache: the 901 barrios in the crosswalk's order, shares between 0 and 100 and the five class datasets that add up to 100, residents never above the barrio's, no value
 only where the map does not reach, the municipios as the sums of their barrios, and the two checks against the report. With the cache of tiles, a rebuild gives the files again.
 """
@@ -22,7 +22,7 @@ DATA = ROOT / "site" / "data"
 
 
 def png(idx, palette, alpha=None, filters=None):
-    """A palette PNG (colour type 3, depth 8) of the rows `idx`, each row written with filters[i] (0 to 4)."""
+    """A palette PNG (color type 3, depth 8) of the rows `idx`, each row written with filters[i] (0 to 4)."""
     h, w = len(idx), len(idx[0])
     raw, prev = b"", [0] * w
     for y, row in enumerate(idx):

@@ -209,14 +209,14 @@ def assemble(ys):
     if per_vkm:
         variables.append({"key": "crash_per_vkm", "group": "Infrastructure · Road safety (NHTSA FARS)", "label": f"Traffic deaths per 100 million vehicle-km, {span_txt} (FARS, HPMS)",
                           "unit": "deaths per 100 million vehicle-km", "d": 2, "type": "ratio", "sources": ["nhtsa_fars", "fhwa_hpms"], "ref": ref + f"; FHWA HPMS, data year {traffic_year}",
-                          "definition": f"The people killed in traffic crashes in the municipio over {span_txt}, divided by the vehicle-kilometres driven on its roads in those years, times 100 million. The vehicle-kilometres are those of HPMS data year {traffic_year} (traffic_series.json), counted for each of the {len(span)} years: a measure of risk per kilometre driven, where the rate per resident is high because much traffic passes through.",
+                          "definition": f"The people killed in traffic crashes in the municipio over {span_txt}, divided by the vehicle-kilometers driven on its roads in those years, times 100 million. The vehicle-kilometers are those of HPMS data year {traffic_year} (traffic_series.json), counted for each of the {len(span)} years: a measure of risk per kilometer driven, where the rate per resident is high because much traffic passes through.",
                           "family": "crashes", "counted": False, "noPerHU": True, "years": {str(last): per_vkm}})
     doc = {"years": myears, "geo": {"ids": order, "names": [munis[g]["municipality"] for g in ids] + ["Puerto Rico"]}, "vars": variables,
            "sources": {"nhtsa_fars": {"name": "NHTSA · Fatality Analysis Reporting System (FARS), Puerto Rico files", "url": "https://www.nhtsa.gov/research-data/fatality-analysis-reporting-system-fars",
                                       "license": "US Government work (no US copyright)",
                                       "note": "Every fatal crash on a public road; the observatory publishes counts by municipio and year, never a crash's place, date or time."},
                        **({"fhwa_hpms": {"name": "FHWA · Highway Performance Monitoring System (HPMS), Puerto Rico", "url": "https://www.fhwa.dot.gov/policyinformation/hpms.cfm",
-                                         "license": "US Government work (no US copyright)", "note": f"Daily vehicle-kilometres of data year {traffic_year} (traffic_series.json), for the deaths per vehicle-km."}} if per_vkm else {}),
+                                         "license": "US Government work (no US copyright)", "note": f"Daily vehicle-kilometers of data year {traffic_year} (traffic_series.json), for the deaths per vehicle-km."}} if per_vkm else {}),
                        "census_pep": {"name": "US Census Bureau · Population Estimates Program", "url": "https://www.census.gov/programs-surveys/popest.html",
                                       "license": "US Government work (no US copyright)", "note": "Residents of each municipio each year, for the rate (housing_series.json)."}},
            "notes": {"first_release": last, "traffic_year": int(traffic_year) if traffic_year else None, "rate_years": [span[0], span[-1]], "island": island, "municipio_not_given": unplaced, "located_pct": {str(y): round(100 * located[y] / island[str(y)]["crashes"], 1) for y in ys},

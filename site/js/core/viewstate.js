@@ -1,5 +1,5 @@
 /* PR Data Observatory core: the view state the 2D map (app.js) and the 3D view (twin3d.js) share through the address's hash, and carry in their links to
-   each other (docs/view-state.md: the keys, what each view honours, the rules). The keys the 2D map has always written keep their names and formats; the 3D
+   each other (docs/view-state.md: the keys, what each view honors, the rules). The keys the 2D map has always written keep their names and formats; the 3D
    view adds its camera's b= and p=. A key or a layer a view does not use is kept as it came when it writes; a value that does not read is ignored; ask, wb and
    wc are one-time requests, never written again. */
 (function (name, root, factory) {
@@ -118,15 +118,15 @@
   const cOf = (lat, lng, z) => `${(+lat).toFixed(4)},${(+lng).toFixed(4)},${+(+z).toFixed(2)}`;
 
   /** The 3D columns from e= (tokens "key.mode.norm…", core/engine.js; mode f or b Shaded, s Symbol): height from the first Symbol layer, else the first
-   *  Shaded; colour from the first Shaded when another dataset ('' = the height); with their normalisations. null when e= names none. */
+   *  Shaded; color from the first Shaded when another dataset ('' = the height); with their normalizations. null when e= names none. */
   function econColumns(e) {
     const toks = String(e || '').split(',').map(t => t.split('.')).filter(f => f[0] && KEY_RE.test(f[0]));
     if (!toks.length) return null;
     const fill = toks.find(f => f[1] !== 's'), sym = toks.find(f => f[1] === 's'), h = sym || fill;
-    const c = fill && fill[0] !== h[0] ? fill : null;   // the same dataset as the height: no colour of its own
+    const c = fill && fill[0] !== h[0] ? fill : null;   // the same dataset as the height: no color of its own
     return { h: h[0], c: c ? c[0] : '', hNorm: h[2] || null, cNorm: c ? c[2] || null : null };
   }
-  /** e= for the 3D columns: the colour Shaded and the height a Symbol, or one Shaded layer; the tokens of `prev` that still apply are kept whole. */
+  /** e= for the 3D columns: the color Shaded and the height a Symbol, or one Shaded layer; the tokens of `prev` that still apply are kept whole. */
   function econOf(h, c, prev, norms = {}) {
     const was = econColumns(prev);
     if (was && was.h === h && was.c === (c || '')) return prev;

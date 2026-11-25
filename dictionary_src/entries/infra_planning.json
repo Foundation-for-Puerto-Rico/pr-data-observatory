@@ -10,7 +10,7 @@
     "kind": "table",
     "plain": "A compact map of Puerto Rico's drivable roads, stored as junctions and the road pieces between them. The route planner uses it to follow streets. The file itself is not drawn on the map; transit route lines that follow streets are drawn from it.",
     "definition": "A directed graph built from OpenStreetMap roads: junctions (including points where a long road piece was cut), road pieces (edges) and interior bend points. A divided road has one road piece for each direction, so total length counts both directions. Each road piece stores its two end junctions, its length in 2 m steps, a road class code (0 to 14), a one-way flag and the number of bend points between its ends.",
-    "unit": "Counts of junctions, road pieces and bend points; lengths in metres (stored in 2 m steps); coordinates in steps of 0.00001 degree (about 1.1 m)",
+    "unit": "Counts of junctions, road pieces and bend points; lengths in meters (stored in 2 m steps); coordinates in steps of 0.00001 degree (about 1.1 m)",
     "value_type": "geometry",
     "geography": "Main island of Puerto Rico, Vieques and Culebra (separate pieces of the graph). Mona Island has no roads in the file",
     "coverage": {
@@ -69,8 +69,8 @@
     "group": "Road network",
     "kind": "category",
     "plain": "Every road piece has a class code from 0 to 14, taken from OpenStreetMap, and each class has a planning speed. The router uses the speeds to pick the fastest road and to estimate time.",
-    "definition": "The road class is stored in the low four bits of each road piece's flag byte. The planning speed is a fixed number of kilometres per hour for each class, set in roads.py and repeated in the same order in roads.js.",
-    "unit": "Class code (0 to 14); planning speed in kilometres per hour",
+    "definition": "The road class is stored in the low four bits of each road piece's flag byte. The planning speed is a fixed number of kilometers per hour for each class, set in roads.py and repeated in the same order in roads.js.",
+    "unit": "Class code (0 to 14); planning speed in kilometers per hour",
     "value_type": "code",
     "geography": "Main island of Puerto Rico, Vieques and Culebra (separate pieces of the graph). Mona Island has no roads in the file",
     "coverage": {
@@ -88,7 +88,7 @@
     "caveats": [
       "Planning speeds are not speed limits, observed speeds or bus speeds.",
       "The class comes from volunteers' tags in OpenStreetMap. It can differ from a road's official class or its PR route number.",
-      "Kilometres add up the length of every road piece. A divided road is mapped as two one-way pieces, one for each direction, so both are counted: the motorway total is the length of both carriageways added together, not the length of the road itself. It is not lane-kilometres.",
+      "Kilometers add up the length of every road piece. A divided road is mapped as two one-way pieces, one for each direction, so both are counted: the motorway total is the length of both carriageways added together, not the length of the road itself. It is not lane-kilometers.",
       "Class 13 (service) exists in the code but no road piece carries it."
     ],
     "see_also": [
@@ -108,7 +108,7 @@
       "8": "tertiary (local road linking smaller places): 40 km/h. In the 2026-10 snapshot: 28,915 road pieces, 5,658.3 km; 2,871 one-way.",
       "9": "tertiary_link (ramp): 30 km/h. In the 2026-10 snapshot: 480 road pieces, 30.9 km; 428 one-way.",
       "10": "unclassified (minor public road that is not a residential street): 35 km/h. In the 2026-10 snapshot: 5,675 road pieces, 1,352.7 km; 560 one-way.",
-      "11": "residential (street in a neighbourhood): 25 km/h. In the 2026-10 snapshot: 169,502 road pieces, 21,778.2 km; 5,761 one-way.",
+      "11": "residential (street in a neighborhood): 25 km/h. In the 2026-10 snapshot: 169,502 road pieces, 21,778.2 km; 5,761 one-way.",
       "12": "living_street (street where walkers have priority and cars go slowly): 12 km/h. In the 2026-10 snapshot: 197 road pieces, 18.0 km; 9 one-way.",
       "13": "service (driveway, parking aisle or alley; not kept): planning speed 12 km/h is defined in the code, but no road piece carries this code, because service roads (driveways, parking aisles, alleys) are not kept.",
       "14": "busway (road for buses only): 40 km/h. In the 2026-10 snapshot: 48 road pieces, 3.3 km; 38 one-way."
@@ -171,7 +171,7 @@
     "kind": "method",
     "plain": "The planner snaps each point you choose to the nearest road within 500 m, then finds the fastest road path between the points at planning speeds. A leg with no road path is drawn as a straight line.",
     "definition": "Fastest path on the road graph, where each road piece costs its length divided by the planning speed of its class. Two-way pieces can be used in both directions; one-way pieces only from start to end. The same method runs in the browser (roads.js, for the route planner) and at build time (roads.py, for drawing published transit routes).",
-    "unit": "Metres and seconds",
+    "unit": "Meters and seconds",
     "value_type": "text",
     "geography": "Main island of Puerto Rico, Vieques and Culebra (separate pieces of the graph). Mona Island has no roads in the file",
     "coverage": {
@@ -238,7 +238,7 @@
       "last": 2026,
       "frequency": "Redone at each full build and by a nightly transit refresh that finds a changed feed; a route whose stops did not change keeps its earlier line"
     },
-    "method": "For each pair of consecutive stops: closer than 25 m, keep a two-point line. Otherwise snap both stops to roads within 500 m and find the fastest road path. Accept it when its length is at most 3 times the straight-line distance plus 400 m; if not, that pair stays a straight line. A route counts as road-following when at least 60% of the pairs in each direction snap. When the feed's stop order is not geographic (the path through the stops in listed order is more than 2.5 times longer than a nearest-neighbour tour, or the stops are in alphabetical order), the order of visit is inferred from road travel distances for routes with up to 45 distinct stops. The final line is simplified to about 3 m (0.00003 degree).",
+    "method": "For each pair of consecutive stops: closer than 25 m, keep a two-point line. Otherwise snap both stops to roads within 500 m and find the fastest road path. Accept it when its length is at most 3 times the straight-line distance plus 400 m; if not, that pair stays a straight line. A route counts as road-following when at least 60% of the pairs in each direction snap. When the feed's stop order is not geographic (the path through the stops in listed order is more than 2.5 times longer than a nearest-neighbor tour, or the stops are in alphabetical order), the order of visit is inferred from road travel distances for routes with up to 45 distinct stops. The final line is simplified to about 3 m (0.00003 degree).",
     "sources": [
       "osm",
       "ati_gtfs",
@@ -344,7 +344,7 @@
     ],
     "group": "Place names and search",
     "kind": "category",
-    "plain": "Each name in the place-name index has one of 19 types, such as municipality, street, highway number, hospital or beach. The type sets how the name is ranked and labelled in search results.",
+    "plain": "Each name in the place-name index has one of 19 types, such as municipality, street, highway number, hospital or beach. The type sets how the name is ranked and labeled in search results.",
     "definition": "The kind is a number in each row of the index: its position in the 'kinds' list. The observatory's pages show a plain label for it in search results and rank some types ahead of others (a municipality ahead of a street).",
     "unit": "Type code (19 values) and count of names",
     "value_type": "code",
@@ -377,7 +377,7 @@
       "town": "Town or city: a point tagged place=town or place=city, except towns named like a municipality (those are the municipality rows). In the 2026-10 snapshot: 2 rows. Search shows it as 'Town'.",
       "village": "Small community: a point tagged place=village or place=hamlet. In the 2026-10 snapshot: 3,102 rows, all tagged hamlet. The note holds the OpenStreetMap place type. Search shows it as 'Community'.",
       "barrio": "Barrio (a division of a municipality): the barrio boundaries from the Census Bureau (TIGERweb county subdivisions; 901 in the 2026-10 snapshot), written as 'Barrio' followed by the name and placed at a point inside the boundary. The note holds the barrio name alone. Search shows it as 'Barrio'.",
-      "neighborhood": "Neighbourhood: a point tagged place=suburb, neighbourhood, quarter or locality. In the 2026-10 snapshot: 2,277 rows. The note holds the place type. Search shows it as 'Neighborhood'.",
+      "neighborhood": "Neighborhood: a point tagged place=suburb, neighbourhood, quarter or locality. In the 2026-10 snapshot: 2,277 rows. The note holds the place type. Search shows it as 'Neighborhood'.",
       "road": "Named street: a way with a name and highway=motorway, trunk, primary, secondary, tertiary, unclassified, residential, living_street or pedestrian. One row for each name and each municipality that holds the middle point of at least one of the name's pieces; names whose pieces total less than 60 m are dropped. In the 2026-10 snapshot: 34,781 rows. Search shows it as 'Street'.",
       "route": "Highway number: Puerto Rico (PR) route numbers read from the ref tag, for example PR-52. One row for each number and each municipality that holds the middle point of at least one of its pieces. In the 2026-10 snapshot: 1,679 rows, of which 1,224 carry a note with the road's local name. Search shows it as 'Highway'.",
       "hospital": "Hospital or clinic: amenity=hospital or clinic. In the 2026-10 snapshot: 372 rows. Search shows it as 'Hospital'.",
@@ -391,7 +391,7 @@
       "water": "Water feature: leisure=marina, natural=bay or cape, or a point tagged place=island or islet. In the 2026-10 snapshot: 172 rows. Search shows it as 'Water'.",
       "landmark": "Landmark: amenity=theatre or arts_centre, natural=cave_entrance, or historic=castle, fort, monument, memorial, ruins, lighthouse, archaeological_site, building or church. In the 2026-10 snapshot: 470 rows. Search shows it as 'Landmark'.",
       "airport": "Airport: aeroway=aerodrome or terminal. In the 2026-10 snapshot: 32 rows. Search shows it as 'Airport'.",
-      "mall": "Shopping centre: shop=mall or amenity=marketplace. In the 2026-10 snapshot: 66 rows. Search shows it as 'Shopping center'."
+      "mall": "Shopping center: shop=mall or amenity=marketplace. In the 2026-10 snapshot: 66 rows. Search shows it as 'Shopping center'."
     },
     "where": {
       "files": []
@@ -418,7 +418,7 @@
       "last": 2026,
       "frequency": "Rebuilt only when the place-name index is rebuilt, from the OpenStreetMap extract downloaded for the road network; not on a fixed schedule"
     },
-    "method": "1. Read OpenStreetMap nodes and ways that have a name and a matching tag. Place tags (town, city, village, hamlet, suburb, neighbourhood, quarter, locality, island, islet) are read from points only. Ways that are not roads are placed at the average of their corner points. 2. Add one row for each municipality and each barrio in the published boundaries. 3. Give each name its municipality by point-in-polygon (checking which boundary contains the point) on the municipality boundaries. A point offshore (a pier or a cay) goes to the nearest municipality when it is within about 2 km (0.02 degree); any other name outside every municipality is dropped. 4. For roads, give each way to the municipality that holds its middle point (the middle mapped point by count of points, not by length). Group ways by name and municipality, place the row at that middle point of the longest piece, and drop street names whose pieces total less than 60 m. A road with a Puerto Rico (PR) route number but no name is also read. Route numbers are taken from the ref tag (the first one, for example PR-52, with an optional letter) and grouped the same way, with the road's local name as the note. Highway numbers are not dropped for length. 5. Drop exact repeats: the same name (ignoring accents and capitals), the same type, and latitude and longitude that are equal when rounded to 3 decimals (cells of about 110 m). 6. Sort by type, then name, round coordinates to 5 decimals and write the file.",
+    "method": "1. Read OpenStreetMap nodes and ways that have a name and a matching tag. Place tags (town, city, village, hamlet, suburb, neighborhood, quarter, locality, island, islet) are read from points only. Ways that are not roads are placed at the average of their corner points. 2. Add one row for each municipality and each barrio in the published boundaries. 3. Give each name its municipality by point-in-polygon (checking which boundary contains the point) on the municipality boundaries. A point offshore (a pier or a cay) goes to the nearest municipality when it is within about 2 km (0.02 degree); any other name outside every municipality is dropped. 4. For roads, give each way to the municipality that holds its middle point (the middle mapped point by count of points, not by length). Group ways by name and municipality, place the row at that middle point of the longest piece, and drop street names whose pieces total less than 60 m. A road with a Puerto Rico (PR) route number but no name is also read. Route numbers are taken from the ref tag (the first one, for example PR-52, with an optional letter) and grouped the same way, with the road's local name as the note. Highway numbers are not dropped for length. 5. Drop exact repeats: the same name (ignoring accents and capitals), the same type, and latitude and longitude that are equal when rounded to 3 decimals (cells of about 110 m). 6. Sort by type, then name, round coordinates to 5 decimals and write the file.",
     "sources": [
       "osm",
       "census_tiger"
@@ -428,7 +428,7 @@
     "caveats": [
       "The index uses the OpenStreetMap 'name' tag only. Alternative names and translations are not read.",
       "Place polygons mapped as relations are not read.",
-      "Place tags (town, city, village, hamlet, suburb, neighbourhood, quarter, locality, island, islet) are read from points only. A place mapped only as an area (a closed way) is not in the index.",
+      "Place tags (town, city, village, hamlet, suburb, neighborhood, quarter, locality, island, islet) are read from points only. A place mapped only as an area (a closed way) is not in the index.",
       "The note on a place is the OpenStreetMap place type, for example hamlet or suburb. It is not an official classification."
     ],
     "see_also": [
@@ -459,13 +459,13 @@
       "timeline": "live",
       "frequency": "Runs in your browser each time you type (about 0.1 second after you stop); uses the index published in the current snapshot"
     },
-    "method": "1. Clean the text: remove accents, change to lower case, turn the marks . , ; : ( ) \" ' into spaces. 2. If the whole text is pr, ruta, route, carr, carretera, hwy or highway followed by a number of up to 4 digits and an optional letter (for example 'pr 52', 'carr52' or 'highway 52'), it becomes 'pr-52'. Longer text such as 'pr 52 caguas' is not changed this way. 3. Expand words one by one: av, ave, avda to avenida; cll to calle; carr, ctra to carretera; urb to urbanizacion; bo to barrio; res to residencial; hosp to hospital; univ to universidad; pza to plaza; mt to monte. 4. Score each name: 0 exact match; 1 starts with the text; 2 every typed word starts a word of the name; 3 every typed word appears somewhere in the name; no match otherwise. 5. Rank by score, with a small advantage for some types (a municipality ranks ahead of a street); equal scores go to the name nearest the map centre, then to the shorter name. 6. Keep up to 4 rows with the same name and type for streets and highways (6 for other types). The combined list shows at most 12 results, with at most 4 streets, 3 highways, 5 tourism places, 4 stops and 4 of any other type. 7. Two numbers that each have at least two decimals, separated by a comma or a space (for example 18.40, -66.05), are read as latitude and longitude, latitude first. Search starts at 2 characters.",
+    "method": "1. Clean the text: remove accents, change to lower case, turn the marks . , ; : ( ) \" ' into spaces. 2. If the whole text is pr, ruta, route, carr, carretera, hwy or highway followed by a number of up to 4 digits and an optional letter (for example 'pr 52', 'carr52' or 'highway 52'), it becomes 'pr-52'. Longer text such as 'pr 52 caguas' is not changed this way. 3. Expand words one by one: av, ave, avda to avenida; cll to calle; carr, ctra to carretera; urb to urbanizacion; bo to barrio; res to residencial; hosp to hospital; univ to universidad; pza to plaza; mt to monte. 4. Score each name: 0 exact match; 1 starts with the text; 2 every typed word starts a word of the name; 3 every typed word appears somewhere in the name; no match otherwise. 5. Rank by score, with a small advantage for some types (a municipality ranks ahead of a street); equal scores go to the name nearest the map center, then to the shorter name. 6. Keep up to 4 rows with the same name and type for streets and highways (6 for other types). The combined list shows at most 12 results, with at most 4 streets, 3 highways, 5 tourism places, 4 stops and 4 of any other type. 7. Two numbers that each have at least two decimals, separated by a comma or a space (for example 18.40, -66.05), are read as latitude and longitude, latitude first. Search starts at 2 characters.",
     "sources": [
       "osm",
       "nominatim"
     ],
     "source_detail": "site/js/plan.js (parseQuery, textScore, Gaz.search, searchEverything, attachSearch)",
-    "how_to_read": "Type a part of the name. If a name is stored with an abbreviation, type another word from it. If nothing matches, try fewer words. Names with equal scores are listed nearest to the map centre first, so move the map near the place you want. For a street address, use the online lookup. To search by coordinates, type latitude first, then longitude, each with at least 2 decimals.",
+    "how_to_read": "Type a part of the name. If a name is stored with an abbreviation, type another word from it. If nothing matches, try fewer words. Names with equal scores are listed nearest to the map center first, so move the map near the place you want. For a street address, use the online lookup. To search by coordinates, type latitude first, then longitude, each with at least 2 decimals.",
     "caveats": [
       "Abbreviations are expanded in what you type, not in the stored names. In the 2026-10 snapshot, 66 stored names contain a word that search expands, such as 'Av.', 'Urb.' or 'Bo.' (for example 'Urb. Marbella'). Typing that word does not find them, because the typed word is expanded and the stored word is not. Typing another word from the name does.",
       "Matching is exact on letters. A misspelling finds nothing.",
@@ -532,7 +532,7 @@
     "caveats": [
       "Parts of the file can be from different dates. 'network' is rewritten by the nightly transit refresh when it finds a changed feed, and 'access' (with the count places_near_transit in 'transport') when an access value changes; every other part keeps the values of the last full build.",
       "Some counts (for example time.trips) were not refreshed with 'network', so they can differ from the matching count in 'network'.",
-      "The license field of each source is named 'license' in this file; the source records of this dictionary name it 'licence'."
+      "The license field of each source is named 'license' in this file; the source records of this dictionary name it 'license'."
     ],
     "see_also": [
       "data.build_label",
@@ -939,7 +939,7 @@
     "definition": "The number of listings removed by duplicate folding: for each group of listings judged to be the same place, the group size minus one.",
     "unit": "listings",
     "geography": "Puerto Rico (the map box, see the entry on the map box)",
-    "method": "Listings are compared only when they have the same category and the same address town (the municipality named in the address, or the nearest municipality centre when the address names none). Two such listings are treated as one place when they are close (within 600 m; within 1,000 m for beaches, parks, nature reserves, scenic areas, historic sites and tourist attractions) and their names are very similar (a match score of at least 0.95, or at least 0.8 when within 150 m or, for those types, 600 m). Listings that share a phone number, have somewhat similar names (at least 0.5) and are within 500 m are also merged. The kept record has the highest confidence, then the most contact details, then the most social links.",
+    "method": "Listings are compared only when they have the same category and the same address town (the municipality named in the address, or the nearest municipality center when the address names none). Two such listings are treated as one place when they are close (within 600 m; within 1,000 m for beaches, parks, nature reserves, scenic areas, historic sites and tourist attractions) and their names are very similar (a match score of at least 0.95, or at least 0.8 when within 150 m or, for those types, 600 m). Listings that share a phone number, have somewhat similar names (at least 0.5) and are within 500 m are also merged. The kept record has the highest confidence, then the most contact details, then the most social links.",
     "sources": [
       "overture"
     ],
@@ -1033,7 +1033,7 @@
       "fema_nfhl"
     ],
     "source_detail": "FEMA National Flood Hazard Layer, layer 28, DFIRM_ID LIKE '72%'",
-    "how_to_read": "It counts polygon records, not square kilometres and not flooded places. Zone X includes areas of moderate and minimal hazard. In the 2026-10 snapshot, the polygons by zone were X 2,368, AE 1,760, VE 539, A 191, AO 25, D 9, AH 1 and A99 1. The 2,517 in zones A, AE, AH, AO, A99 and VE are Special Flood Hazard Areas.",
+    "how_to_read": "It counts polygon records, not square kilometers and not flooded places. Zone X includes areas of moderate and minimal hazard. In the 2026-10 snapshot, the polygons by zone were X 2,368, AE 1,760, VE 539, A 191, AO 25, D 9, AH 1 and A99 1. The 2,517 in zones A, AE, AH, AO, A99 and VE are Special Flood Hazard Areas.",
     "caveats": [
       "A flood map shows hazard at a point, not what the building or road is built to withstand.",
       "FEMA can revise the layer. The observatory shows it as downloaded on the build date."
@@ -1289,7 +1289,7 @@
       "The 2020-2024 estimates have margins of error, which are larger for small municipalities.",
       "The method text is a build setting. The housing entries explain each measure.",
       "The method text in the file calls the affordability table Table 6, the number this dictionary and the Housing page use. The study PDF prints that table as Table 8.",
-      "The 5% rate is the one the study states in its endnotes for the maximum mortgage. The study's printed maximum loans work out at a rate of 4.994%, so using exactly 5% leaves the observatory's figures $19 to $65 below them. It is a modelling assumption, not a mortgage rate in force in any year, and the result is an indicator, not a loan limit and not advice on buying a home."
+      "The 5% rate is the one the study states in its endnotes for the maximum mortgage. The study's printed maximum loans work out at a rate of 4.994%, so using exactly 5% leaves the observatory's figures $19 to $65 below them. It is a modeling assumption, not a mortgage rate in force in any year, and the result is an indicator, not a loan limit and not advice on buying a home."
     ],
     "see_also": [
       "data.build_info",
@@ -1393,7 +1393,7 @@
       "census_tiger"
     ],
     "source_detail": "US Census Bureau TIGERweb Generalized_ACS2023 Places_CouSub_ConCity_SubMCD MapServer layer 7 (County Subdivisions 500K); landuse.py (BARRIOS_URL, build_barrios)",
-    "how_to_read": "Barrios are divisions of a municipality. The count is the number of polygons, not of neighbourhoods.",
+    "how_to_read": "Barrios are divisions of a municipality. The count is the number of polygons, not of neighborhoods.",
     "caveats": [
       "Barrio boundaries are the Census Bureau's. Some barrios are named the same in different municipalities."
     ],
@@ -1422,7 +1422,7 @@
     "kind": "table",
     "plain": "Counts of transit features, the 400 m walking distance, and how many tourism places are near any mapped stop. It also records the date of the ride-hailing listing check.",
     "definition": "gtfs counts operators with a feed, routes and scheduled stops. osm_features and faa_airports count the other features. features is the total number of rows in the transit features file. kinds counts the rows by kind. walk_access_m is the walking distance used for access to a stop: 400 m. places_near_transit counts tourism places within that distance of any mapped stop, station or terminal, including stops whose timetable has ended and stops that volunteers mapped. uber_listed_municipalities and uber_checked record the ride-hailing listing. sources holds the credit records of the four sources.",
-    "unit": "Counts, metres and a date",
+    "unit": "Counts, meters and a date",
     "value_type": "text",
     "geography": "Puerto Rico",
     "coverage": {
@@ -1445,7 +1445,7 @@
     "caveats": [
       "In the 2026-10 snapshot, gtfs.routes (165) counts every route on the map, including 16 routes mapped by volunteers in OpenStreetMap that have no timetable. The routes with a timetable feed number 149.",
       "places_near_transit counts the nearest stop, station or terminal of any of those kinds, including the 459 OpenStreetMap bus stops that have no timetable (2026-10 snapshot). It is not on the same basis as the 'scheduled stop' figures in the Transit tab.",
-      "places_near_transit counts straight-line distance to the nearest stop; the places file stores the distance as a whole number of metres, cut and not rounded, so in the 2026-10 snapshot 14 listings just over 400 m (11 of them counted tourism places; 3 are places of worship) show a value of 400 there.",
+      "places_near_transit counts straight-line distance to the nearest stop; the places file stores the distance as a whole number of meters, cut and not rounded, so in the 2026-10 snapshot 14 listings just over 400 m (11 of them counted tourism places; 3 are places of worship) show a value of 400 there.",
       "The ride-hailing figure is a listing on Uber's public cities page (57 municipalities, checked 45-10-01). It is not measured coverage.",
       "'Not listed' on Uber's page does not mean Uber does not operate there."
     ],
@@ -1460,7 +1460,7 @@
       "faa_airports": "In the 2026-10 snapshot: 14 airports from the FAA list.",
       "features": "In the 2026-10 snapshot: 4,405 rows in the transit features file (3,847 scheduled stops + 544 OpenStreetMap features + 14 airports).",
       "kinds": "In the 2026-10 snapshot: transit_stop 3,781; bus_station 91; rail_station 16; ferry_terminal 13; airport 25; bus_stop 459; taxi 9; ev_charging (electric vehicle charging) 11.",
-      "walk_access_m": "400: the walking distance, in metres, used for access to a stop.",
+      "walk_access_m": "400: the walking distance, in meters, used for access to a stop.",
       "places_near_transit": "In the 2026-10 snapshot: 11,507 tourism places (statistics basis) within 400 m of any mapped stop, station or terminal. Before the 2026-10 access update the stored value was 12,369, from stale place fields.",
       "uber_listed_municipalities": "In the 2026-10 snapshot: 57 municipalities on Uber's Puerto Rico cities page.",
       "uber_checked": "2026-10-01: date the page was checked.",
@@ -1522,8 +1522,8 @@
       "as_of": "In the 2026-10 snapshot: 2026-10-06. The date against which each timetable was judged. A feed counts as current when its end date is on or after it.",
       "basis": "Text: 'confidence 0.50 or higher, places of worship left out'. The places counted.",
       "places": "In the 2026-10 snapshot: 24,209 tourism places counted.",
-      "near_m": "400: the distance, in metres, of the near tests.",
-      "far_m": "800: the distance, in metres, of the longer test (cur800_pct and the 'Stop 400–800 m away' class).",
+      "near_m": "400: the distance, in meters, of the near tests.",
+      "far_m": "800: the distance, in meters, of the longer test (cur800_pct and the 'Stop 400–800 m away' class).",
       "frequent_calls": "20: the number of weekday calls from which a stop counts as frequent.",
       "any400_pct": "In the 2026-10 snapshot: 47.5, the % of places within 400 m of any mapped stop (11,507 places).",
       "cur400_pct": "In the 2026-10 snapshot: 32.2, the % of places within 400 m of a stop with a current timetable (7,790 places).",
@@ -1614,7 +1614,7 @@
     "group": "Build information",
     "kind": "table",
     "plain": "Facts for the time views: the number of weekday trips, which weekday the timetable stands for, and how many Atlantic storms passed near Puerto Rico (from 1851 through 2025 in the 2026-10 snapshot).",
-    "definition": "trips is the weekday trip count at the last full build. trips_day is the label of the timetable day used. The weekday timetable uses each feed's Wednesday service or, if a feed has none, the first of Tuesday, Thursday, Monday or Friday that it serves. storms_near_pr counts Atlantic tropical cyclones whose track came within 250 km of a point at the centre of the island (18.22, -66.45). major_hurricanes_near_pr counts those whose strongest wind near Puerto Rico was category 3 or higher on the Saffir-Simpson scale. storm_years gives the first and last year in the list.",
+    "definition": "trips is the weekday trip count at the last full build. trips_day is the label of the timetable day used. The weekday timetable uses each feed's Wednesday service or, if a feed has none, the first of Tuesday, Thursday, Monday or Friday that it serves. storms_near_pr counts Atlantic tropical cyclones whose track came within 250 km of a point at the center of the island (18.22, -66.45). major_hurricanes_near_pr counts those whose strongest wind near Puerto Rico was category 3 or higher on the Saffir-Simpson scale. storm_years gives the first and last year in the list.",
     "unit": "Counts, text and years",
     "value_type": "text",
     "geography": "Puerto Rico and its surrounding waters",
@@ -1624,7 +1624,7 @@
       "last": 2026,
       "frequency": "Rewritten at each full build (build.py); the last full build is dated 2026-10-02 UTC. In the 2026-10 snapshot the storms run from 1851 to 2025"
     },
-    "method": "build.py counts the weekday trips it writes. timeseries.py reads the HURDAT2 best-track database of NOAA (the National Oceanic and Atmospheric Administration), keeps storms within 250 km of the island's centre and assigns a category from the peak wind (in knots) within that distance: 64 or more category 1, 83 category 2, 96 category 3, 113 category 4, 137 category 5.",
+    "method": "build.py counts the weekday trips it writes. timeseries.py reads the HURDAT2 best-track database of NOAA (the National Oceanic and Atmospheric Administration), keeps storms within 250 km of the island's center and assigns a category from the peak wind (in knots) within that distance: 64 or more category 1, 83 category 2, 96 category 3, 113 category 4, 137 category 5.",
     "sources": [
       "ati_gtfs",
       "muni_gtfs",
@@ -1636,7 +1636,7 @@
       "In the 2026-10 snapshot, trips (3,312) is the weekday trip count written by the last full build. It includes 15 trips on five routes whose stop order is unreliable. A later nightly refresh leaves those routes out, which gives 3,297, the count in the network part of meta.json and in trips.json. Use 3,297 for the timetable replay.",
       "The category is from the wind near Puerto Rico, not the storm's peak anywhere on its track.",
       "Distance and category come from the recorded track points (about every six hours), not from the line between them. A storm whose recorded points were all farther than 250 km is left out even if its path crossed the circle.",
-      "250 km is measured from one point at the centre of the island, so a storm can pass nearer the east or west end than the centre and still be left out.",
+      "250 km is measured from one point at the center of the island, so a storm can pass nearer the east or west end than the center and still be left out.",
       "Observation methods changed a great deal between 1851 and 2025. Older tracks and winds are less certain, and the National Hurricane Center (NHC) revises past seasons from time to time, so do not read the counts as a trend by decade."
     ],
     "see_also": [
@@ -1720,12 +1720,12 @@
       "last": 2026,
       "frequency": "Updated by registry.py at the end of each full build, on each nightly transit refresh and whenever it is run by hand; registry.json is rewritten only when its content changes (its built field gives that date)"
     },
-    "method": "registry.py calls ledger.py for every published file: ledger.py reads the file, counts its records, fields, values and vertices with the adapter of the file's family (docs/data-management.md) and computes its content hash. registry.py then updates the ledger (dictionary_src/data_ledger.json: the first-published and last-updated dates, the versions and the history of the totals), adds the titles, domains, licence classes, reviews and flags of the data contract (dictionary_src/datasets.json) and the number of dictionary entries that name each file, and writes registry.json only when something other than the date changed. python registry.py --check fails when the ledger or registry.json does not describe the files as they are; it never compares a date with today.",
+    "method": "registry.py calls ledger.py for every published file: ledger.py reads the file, counts its records, fields, values and vertices with the adapter of the file's family (docs/data-management.md) and computes its content hash. registry.py then updates the ledger (dictionary_src/data_ledger.json: the first-published and last-updated dates, the versions and the history of the totals), adds the titles, domains, license classes, reviews and flags of the data contract (dictionary_src/datasets.json) and the number of dictionary entries that name each file, and writes registry.json only when something other than the date changed. python registry.py --check fails when the ledger or registry.json does not describe the files as they are; it never compares a date with today.",
     "sources": [
       "fpr_twin"
     ],
     "source_detail": "registry.py and ledger.py; written by the observatory's own build step, not an external source",
-    "how_to_read": "Use it to see what the observatory holds, how big each file is and when it changed. The Data management page shows it as a table with totals, a growth chart and the counts of what is not published; the data dictionary summarises it. In the map's Ask the observatory chat, ask 'how big is the database?' to see it summarised.",
+    "how_to_read": "Use it to see what the observatory holds, how big each file is and when it changed. The Data management page shows it as a table with totals, a growth chart and the counts of what is not published; the data dictionary summarizes it. In the map's Ask the observatory chat, ask 'how big is the database?' to see it summarized.",
     "caveats": [
       "A file added after the last registry run is not listed until registry.py runs again; the tests (python registry.py --check) fail until it does.",
       "In a full build the registry is written last, after the dictionary and the catalog, so their sizes are current. catalog.json is written before it, so the weight it gives registry.json is one build behind.",
@@ -1938,7 +1938,7 @@
     "how_to_read": "In the file of 2026-10-19 the 60 data files hold 409,574 records, 1,381 fields and 3,520,446 values; roads.bin holds 679,263 of the values (226,421 road edges). A value that two files repeat counts in each, so the total measures what is published, not distinct facts.",
     "caveats": [
       "A record is not the same unit in every file: a municipio in a year, a barrio in a window, a place, a trip. Compare records within a family of files.",
-      "Coded values such as 99,999 metres (beyond the search limit) count as values; only null, absent and empty text are missing.",
+      "Coded values such as 99,999 meters (beyond the search limit) count as values; only null, absent and empty text are missing.",
       "The counts of the versions published before 2026-10-19 (the growth history) use today's adapters on the old files."
     ],
     "see_also": [
@@ -2027,7 +2027,7 @@
     "kind": "variable",
     "value_type": "code",
     "plain": "Whether a published file still needs a review before it can be relied on, and why: a review of personal data, of a license or of federal grant content that is still open, one that was cleared and when, a license the sources do not state, or nothing to review.",
-    "definition": "review.status is open when a review of the file in the data contract (dictionary_src/datasets.json) is open, cleared when every review was cleared, unstated when the file has no review and its licence class is unstated, that is, at least one of its sources states no licence (a file takes the most restrictive licence class of its sources, and review.licence_from names the sources that set it), and none otherwise. review.open lists each open review with its type (pii, licence or compliance) and a short reason in Spanish and English; review.cleared is the latest date a review was cleared. review.flags lists federal-grant (the file holds or describes federal grant money or a grant-funded program), counts-only (sensitive items are counted but not drawn or named), licence-unstated and licensed-not-open.",
+    "definition": "review.status is open when a review of the file in the data contract (dictionary_src/datasets.json) is open, cleared when every review was cleared, unstated when the file has no review and its license class is unstated, that is, at least one of its sources states no license (a file takes the most restrictive license class of its sources, and review.licence_from names the sources that set it), and none otherwise. review.open lists each open review with its type (pii, license or compliance) and a short reason in Spanish and English; review.cleared is the latest date a review was cleared. review.flags lists federal-grant (the file holds or describes federal grant money or a grant-funded program), counts-only (sensitive items are counted but not drawn or named), license-unstated and licensed-not-open.",
     "unit": "Status and flags",
     "geography": "Whole observatory (not geographic)",
     "coverage": {
@@ -2036,7 +2036,7 @@
       "last": 2026,
       "frequency": "Updated by registry.py at the end of each full build, on each nightly transit refresh and whenever it is run by hand; registry.json is rewritten only when its content changes (its built field gives that date)"
     },
-    "method": "registry.py reads the reviews, flags and licence class of the file's record in datasets.json. contract.py checks them: a review needs a type, a status and a note; an open review should have a summary and a cleared one a date; a file flagged federal-grant must have a compliance review.",
+    "method": "registry.py reads the reviews, flags and license class of the file's record in datasets.json. contract.py checks them: a review needs a type, a status and a note; an open review should have a summary and a cleared one a date; a file flagged federal-grant must have a compliance review.",
     "sources": [
       "fpr_twin"
     ],
@@ -2245,7 +2245,7 @@
     "kind": "variable",
     "value_type": "text",
     "plain": "Each row of the wanted-data list says what the dataset is and why it would help. It gives the publisher, license, geography, update rate, size, status and what to check first.",
-    "definition": "A row has the fields id, theme, domain, domains, title, why, source, url, licence, geography, cadence, size, status and check. Rows that were tested by request also have checked_on, and rows for blocked data may have who_to_ask. All are text, except domains (a list), url (a link or empty) and checked_on (a date).",
+    "definition": "A row has the fields id, theme, domain, domains, title, why, source, url, license, geography, cadence, size, status and check. Rows that were tested by request also have checked_on, and rows for blocked data may have who_to_ask. All are text, except domains (a list), url (a link or empty) and checked_on (a date).",
     "unit": "Text",
     "geography": "Whole observatory (not geographic)",
     "coverage": {
@@ -2276,7 +2276,7 @@
       "domains": "All domain ids, primary first, then secondary ones.",
       "title": "Name of the dataset.",
       "why": "What the observatory would gain from it.",
-      "source": "Organisation that publishes it.",
+      "source": "Organization that publishes it.",
       "url": "Link to the publisher's page; empty when the row gives none.",
       "licence": "The license or terms as understood so far, for example 'US Government work, public domain' or 'To confirm'.",
       "geography": "Finest geography the source offers, for example Municipio, Station or Raster.",
@@ -2285,7 +2285,7 @@
       "status": "One of candidate, checked, building, live, blocked. See the entry on statuses.",
       "check": "What was found when the source was tested by request, and what still has to be confirmed before the dataset could be added.",
       "checked_on": "Date the source was tested by request (2026-10-05 for rows tested in the audit of that date).",
-      "who_to_ask": "For blocked data: the organisation to ask in writing. The observatory contacts nobody by itself."
+      "who_to_ask": "For blocked data: the organization to ask in writing. The observatory contacts nobody by itself."
     },
     "where": {
       "files": [
@@ -2333,7 +2333,7 @@
       "checked": "In the file of 2026-11-19: 47 rows. The source was tested by request on 2026-10-05 or later (the row's 'checked_on'); the 'check' field gives what was found and what still needs confirming. Collection has not started.",
       "building": "In the file of 2026-11-20: 0 rows. FPR is collecting the dataset for the observatory.",
       "live": "In the file of 2026-11-24: 63 rows (public EV charging stations; OpenStreetMap transmission lines; road deaths by municipio; traffic on the main roads; workers who travel between municipios; wastewater discharge permits by municipio; river flow at the USGS stream gauges; fixed broadband availability from the FCC; satellite fire detections by municipio; building footprints by barrio; hurricane tracks, through the 2025 season; the census block identifiers; the Census small-area tables; the demographics tables of the American Community Survey; HRSA health center sites; HRSA shortage-area designations; the Police's Type I crimes by municipality; NCES public schools (Common Core of Data); NCES colleges and universities (IPEDS); CMS hospitals and other facility lists; CMS Medicare enrollment; and the American Community Survey's health insurance table; EPA ECHO drinking water systems; EIA-860M power plants; and the National Bridge Inventory; the National Risk Index; the Community Resilience Estimates; earthquakes; wetlands; the landslides after Hurricane María; BTS T-100 and FAA airport passengers; and the BTS ferry census; HUD public housing developments; fire, EMS and police stations; E-Rate public libraries; and the IRS list of tax-exempt organizations; EPA's landfills (LMOP); the National Register of Historic Places; FEMA Public Assistance by damage category and Hazard Mitigation Assistance; USGS reservoir levels; NASA Black Marble night-time lights; Landsat land surface temperature; Sentinel-2 vegetation greenness; ECOSTRESS night land surface temperature; FDIC bank offices and deposits; HMDA home loans; US Drought Monitor; storm recovery from night-time light; NOAA storm surge; road distance to essentials; school results, conditions and degrees; health providers by type; the hexagon grid of 1 km²; residents cut off from hospitals; what lies upstream of each reservoir and river gauge; jobs within reach by car; net migration by age). The dataset is published in the observatory.",
-      "blocked": "In the file of 2026-11-16: 31 rows, for example hurricane shelters (no licence stated), open dumps (no licence stated), the locations of the water systems outside PRASA (not public), SAMHSA's live treatment locator (no licence stated), the newest HUD CHAS window (HUD User refuses scripts), real-time bus and train positions and the police incident feed. The dataset could not be collected when the file was last edited (2026-10-06); the 'check' field gives the reason and 'who_to_ask' names the organisation to ask in writing."
+      "blocked": "In the file of 2026-11-16: 31 rows, for example hurricane shelters (no license stated), open dumps (no license stated), the locations of the water systems outside PRASA (not public), SAMHSA's live treatment locator (no license stated), the newest HUD CHAS window (HUD User refuses scripts), real-time bus and train positions and the police incident feed. The dataset could not be collected when the file was last edited (2026-10-06); the 'check' field gives the reason and 'who_to_ask' names the organization to ask in writing."
     },
     "where": {
       "files": [
@@ -2392,7 +2392,7 @@
       "domains": "The ten areas used to group entries, in display order.",
       "kinds": "The seven kinds of entry: variable, layer, table, boundary, category, measure and method.",
       "entries": "List of entry records. Each has id, name, domain, group, kind, plain, definition, unit, value_type, geography, coverage, method, sources, where and added, and may have source_detail, how_to_read, caveats, see_also, values, example and status. 'authored' is true when an author wrote the entry and false when a series catalog filled it.",
-      "sources": "One record for each source, keyed by its id: kind (data or software), name, publisher, url, licence, licence_url, credit (the credit line), access, cadence, used_for, terms_note, verified (when its link was last checked) and used_by (how many entries cite it).",
+      "sources": "One record for each source, keyed by its id: kind (data or software), name, publisher, url, license, licence_url, credit (the credit line), access, cadence, used_for, terms_note, verified (when its link was last checked) and used_by (how many entries cite it).",
       "aliases": "Older source ids and the canonical id each one stands for, for example 'osm_roads' for 'osm'. Entries and meta.json can use an older id.",
       "id_alias": "Economy series ids that share one entry with a housing series, so that a link with either id opens the same entry.",
       "glossary": "List of terms and abbreviations: term, expansion, plain explanation and see_also links.",
@@ -2418,9 +2418,9 @@
     "id": "measures.route_length",
     "name": "Route length",
     "value_type": "level",
-    "plain": "How long the planned route is, in kilometres, along the roads it follows. The label under the number says 'by road', 'partly by road' or 'straight line'.",
+    "plain": "How long the planned route is, in kilometers, along the roads it follows. The label under the number says 'by road', 'partly by road' or 'straight line'.",
     "definition": "The sum of the lengths of all legs between the points you chose (From, any added stops and To; 8 points at most). A leg that follows roads counts the length of its road path plus the straight-line gap from each chosen point to the nearest point on a road. A leg that cannot follow roads counts its straight-line length.",
-    "unit": "kilometres (shown with one decimal)",
+    "unit": "kilometers (shown with one decimal)",
     "geography": "Any route in Puerto Rico (calculated for the route you draw)",
     "coverage": {
       "timeline": "snapshot",
@@ -2521,7 +2521,7 @@
     "id": "measures.route_residents",
     "name": "Residents within 400 m of the route",
     "value_type": "count",
-    "plain": "How many people live in census blocks whose point is within 400 metres of the planned route. It shows who lives near the line, not who would ride it.",
+    "plain": "How many people live in census blocks whose point is within 400 meters of the planned route. It shows who lives near the line, not who would ride it.",
     "definition": "The sum of the 2020 Census resident counts of every census block with residents whose internal point lies within 400 m (straight line) of the route line. A block counts whole when its point qualifies. Blocks are not split.",
     "unit": "people (2020 Census residents)",
     "geography": "Census blocks of Puerto Rico (36,570 blocks have residents in the 2020 Census)",
@@ -2584,7 +2584,7 @@
       "last": 2026,
       "frequency": "Recalculated in your browser each time the route changes, from the data published in the current snapshot. Resident counts are from the 2020 Census"
     },
-    "method": "population_blocks.json gives each block's distance in metres to its nearest scheduled stop, capped at 9,999. plan.js adds the residents of the blocks near the route whose distance is above 400. The distances are recomputed by the transit refresh.",
+    "method": "population_blocks.json gives each block's distance in meters to its nearest scheduled stop, capped at 9,999. plan.js adds the residents of the blocks near the route whose distance is above 400. The distances are recomputed by the transit refresh.",
     "sources": [
       "census_tiger",
       "ati_gtfs",
@@ -2691,7 +2691,7 @@
       "last": 2026,
       "frequency": "Recalculated in your browser each time the route changes, from the data published in the current snapshot. Resident counts are from the 2020 Census"
     },
-    "method": "plan.js indexes every segment of the published route lines in grid cells of 0.002 degree (about 220 m) and tests each sample point against the segments in its own and the neighbouring cells. See the entry on how the route is sampled.",
+    "method": "plan.js indexes every segment of the published route lines in grid cells of 0.002 degree (about 220 m) and tests each sample point against the segments in its own and the neighboring cells. See the entry on how the route is sampled.",
     "sources": [
       "ati_gtfs",
       "muni_gtfs"
@@ -2866,7 +2866,7 @@
     "caveats": [
       "A municipality touched between two sample points (100 to 500 m apart) is not counted.",
       "The boundaries follow the shoreline, so a sample point on a bridge or offshore can belong to no municipality.",
-      "The boundaries are simplified by about 22 m (0.0002 degree), so a sample point near a boundary can be assigned to the neighbouring municipality."
+      "The boundaries are simplified by about 22 m (0.0002 degree), so a sample point near a boundary can be assigned to the neighboring municipality."
     ],
     "example": "Snapshot 2026-10, From Río Piedras (town) To Caguas (municipality): 3 (San Juan, Trujillo Alto, Caguas).",
     "see_also": [
@@ -2899,8 +2899,8 @@
     "name": "Connections at the ends and stops along the route",
     "value_type": "text",
     "plain": "Two checks: whether the start and the end are within 300 m of a scheduled stop, and how many scheduled stops lie within 250 m of the route, by operator.",
-    "definition": "Start and End: the scheduled stop nearest to the first and to the last point you chose, if one lies within 300 m in a straight line. The card shows the stop name, its operator and the distance in metres, or 'no scheduled stop within 300 m'. Existing stops within 250 m of the route: the number of scheduled stops within 250 m of the route line, grouped by operator. A scheduled stop is a stop in a public timetable feed (GTFS, the General Transit Feed Specification) from ATI (Autoridad de Transporte Integrado) or from a municipal system.",
-    "unit": "stop name, operator and metres; stops per operator (count)",
+    "definition": "Start and End: the scheduled stop nearest to the first and to the last point you chose, if one lies within 300 m in a straight line. The card shows the stop name, its operator and the distance in meters, or 'no scheduled stop within 300 m'. Existing stops within 250 m of the route: the number of scheduled stops within 250 m of the route line, grouped by operator. A scheduled stop is a stop in a public timetable feed (GTFS, the General Transit Feed Specification) from ATI (Autoridad de Transporte Integrado) or from a municipal system.",
+    "unit": "stop name, operator and meters; stops per operator (count)",
     "geography": "Any route in Puerto Rico (calculated for the route you draw)",
     "coverage": {
       "timeline": "snapshot",
@@ -2965,12 +2965,12 @@
       "last": 2026,
       "frequency": "Recalculated in your browser each time the route changes, from the data published in the current snapshot. Resident counts are from the 2020 Census"
     },
-    "method": "plan.js applies Douglas-Peucker simplification (a method that drops points that lie close to a straight line between their neighbours) with a 12 m tolerance, then calls samples() with a step of 100, 250 or 500 m chosen from the route length.",
+    "method": "plan.js applies Douglas-Peucker simplification (a method that drops points that lie close to a straight line between their neighbors) with a 12 m tolerance, then calls samples() with a step of 100, 250 or 500 m chosen from the route length.",
     "sources": [
       "osm"
     ],
     "source_detail": "site/js/plan.js (simplifyLine, samples, score)",
-    "how_to_read": "A percentage is a share of points, not a share of kilometres. Short features between points can be missed.",
+    "how_to_read": "A percentage is a share of points, not a share of kilometers. Short features between points can be missed.",
     "caveats": [
       "A curvy stretch has many short pieces, each with at least one point, so it weighs a little more than a straight stretch of the same length.",
       "Residents, tourism places and stops use the distance to the line, not these points."
@@ -3007,7 +3007,7 @@
     "value_type": "text",
     "plain": "The GeoJSON button saves the planned route as planned_route.geojson. The file holds the line, the points you chose and six of the results shown.",
     "definition": "A GeoJSON file (a standard text format for map shapes) with one line feature (the route) and one point feature for each chosen point. The line has the properties name, created, source, follows_roads, length_km, stops, residents_within_400m, tourism_places_within_400m, share_parallel_to_existing_routes_pct, share_in_flood_hazard_area_pct and municipalities. Each point has name, order and role.",
-    "unit": "Text, kilometres, people, places, percent",
+    "unit": "Text, kilometers, people, places, percent",
     "geography": "Any route in Puerto Rico (calculated for the route you draw)",
     "coverage": {
       "timeline": "live",
@@ -3066,9 +3066,9 @@
     "id": "measures.distance_rules",
     "name": "Distances used by the planner and the Transit tab",
     "value_type": "text",
-    "plain": "The route planner and the Transit tab use a few fixed distances, all in a straight line: 150, 250, 300, 400, 500 and 800 metres. This entry says what each is for.",
-    "definition": "Each distance is a setting chosen for this tool. 400 m (about a quarter mile) is a common rule of thumb for walking access to a stop. Check any agency's or programme's own definition before comparing. All are straight-line distances calculated with a flat-earth approximation, not walking distances along streets.",
-    "unit": "metres",
+    "plain": "The route planner and the Transit tab use a few fixed distances, all in a straight line: 150, 250, 300, 400, 500 and 800 meters. This entry says what each is for.",
+    "definition": "Each distance is a setting chosen for this tool. 400 m (about a quarter mile) is a common rule of thumb for walking access to a stop. Check any agency's or program's own definition before comparing. All are straight-line distances calculated with a flat-earth approximation, not walking distances along streets.",
+    "unit": "meters",
     "geography": "Any route in Puerto Rico (calculated for the route you draw)",
     "coverage": {
       "timeline": "snapshot",
@@ -3241,7 +3241,7 @@
     "value_type": "count",
     "plain": "Places where a stop of one transit system lies within 250 m of a stop of another system. They are natural places to coordinate timetables, fares and signs.",
     "definition": "Places where scheduled stops of two different operators are 250 m or less apart (straight line). To avoid near-duplicates, the build keeps one pair for each pair of operators in each 0.001-degree cell (about 110 m) of the first stop. One marker is drawn for each kept pair, halfway between its two stops. The map draws at most the 600 closest.",
-    "unit": "places (count); distance in metres",
+    "unit": "places (count); distance in meters",
     "geography": "Puerto Rico",
     "coverage": {
       "timeline": "snapshot",
@@ -3306,7 +3306,7 @@
     "source_detail": "trips.json, trips_sa.json, trips_su.json (network.py); site/js/network.js (updateNow)",
     "how_to_read": "Dots show where vehicles should be if they follow the timetable. The count changes with the hour and the day.",
     "caveats": [
-      "It is a timetable, not a position. Late or cancelled trips, breakdowns and holidays are not modelled.",
+      "It is a timetable, not a position. Late or canceled trips, breakdowns and holidays are not modeled.",
       "Timetables of expired operators are left out: in the data of 2026-10-02, 372 of the 3,297 weekday trips and 48 of the 1,648 Saturday trips. Routes whose feed lists stops out of order are left out of the timetable files. In the data of 2026-10-02, five such routes (15 weekday trips) still show trip counts in their pop-ups and in the Operators list, so a route can show trips but have no moving dots.",
       "The weekday count uses each feed's Wednesday service for every weekday, or, if a feed has no Wednesday service, the first of Tuesday, Thursday, Monday or Friday that it serves.",
       "In the data of 2026-10-02, on Saturday only 4 operators have trips in the timetable files (3 once the expired one is dropped), and on Sunday only ATI (Autoridad de Transporte Integrado). A system with no dots on a weekend may simply publish no weekend timetable.",
@@ -3506,7 +3506,7 @@
       "index": "In catalog_index.json. {fields: [...], rows: [[...], ...]}. One row for each dictionary entry; the column 'map' is how it goes on the map: ['econ', dataset key] or ['econ', dataset key, scale], ['layers', layer keys] or none.",
       "sources": "In catalog_index.json. The data sources behind the index, with their license class. Base maps, libraries and tools are left out.",
       "weights": "{file name: {raw, gz}} in bytes for every published file except the four catalog files.",
-      "presets": "In catalog_views.json. {topic id: [ready-made views]}; each view {id, name, note, show: [[dataset key, 'fill' or 'symbol', {norm: its scale, ramp: its colours}]], on: [layer keys], sources: [source ids]}. A view replaces what is on the map.",
+      "presets": "In catalog_views.json. {topic id: [ready-made views]}; each view {id, name, note, show: [[dataset key, 'fill' or 'symbol', {norm: its scale, ramp: its colors}]], on: [layer keys], sources: [source ids]}. A view replaces what is on the map.",
       "words_es": "In catalog_es.json. {entry id: the words of its Spanish summary, separated by spaces}, for the entries that have a Spanish summary."
     },
     "where": {
